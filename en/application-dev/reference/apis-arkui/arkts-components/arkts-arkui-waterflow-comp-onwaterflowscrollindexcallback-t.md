@@ -20,5 +20,5 @@ Represents a callback for item changes in the visible area of the **WaterFlow** 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| first | number | Yes | Index of the first item of the component. |
-| last | number | Yes | Index of the last item of the component. |
+| first | number | Yes | Index of the start position of the currently displayed WaterFlow.<br>Normal value range: [0, total child components - 1]. When the list is empty, special values apply. For details, see [onScrollIndex](arkts-arkui-waterflow-comp-attribute.md#onscrollindex). |
+| last | number | Yes | Index of the end position of the currently displayed WaterFlow.<br>Normal value range: [0, total child components - 1]. When the list is empty, special values apply. For details, see [onScrollIndex](arkts-arkui-waterflow-comp-attribute.md#onscrollindex). |

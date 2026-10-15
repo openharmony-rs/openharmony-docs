@@ -55,6 +55,7 @@ function deleteVlanIp(ifName: string, vlanId: number, address: LinkAddress): Pro
 | [2100400](../errorcode-net-connection.md#2100400-传入网卡名不正确非以太网) | The input network interface name is incorrect. |
 | [2100401](../errorcode-net-connection.md#2100401-未找到vlan上配置的ip地址) | The input IP address is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -77,3 +78,5 @@ connection.deleteVlanIp(ifName, vlanId, address).then(() => {
   console.error(`Failed to delete vlan ip. Code:${error.code}, message:${error.message}`);
 });
 ```
+
+<!--DelEnd-->

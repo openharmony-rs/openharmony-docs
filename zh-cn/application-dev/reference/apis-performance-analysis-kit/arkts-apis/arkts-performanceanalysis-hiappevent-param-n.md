@@ -1,4 +1,4 @@
-# param(应用事件打点)
+# param（应用事件打点）
 
 ```TypeScript
 namespace param
@@ -30,6 +30,6 @@ import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [USER_ID](arkts-performanceanalysis-param-con.md#user_id) | 用户自定义ID。 |
-| [DISTRIBUTED_SERVICE_NAME](arkts-performanceanalysis-param-con.md#distributed_service_name) | 分布式服务名称。 |
 | [DISTRIBUTED_SERVICE_INSTANCE_ID](arkts-performanceanalysis-param-con.md#distributed_service_instance_id) | 分布式服务实例ID。 |
+| [DISTRIBUTED_SERVICE_NAME](arkts-performanceanalysis-param-con.md#distributed_service_name) | 分布式服务名称。 |
+| [USER_ID](arkts-performanceanalysis-param-con.md#user_id) | 用户自定义ID。 |

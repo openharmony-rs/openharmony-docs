@@ -28,22 +28,6 @@ Whether the file exists.
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
-## WRITE
-
-```TypeScript
-WRITE = 2
-```
-
-Verify the write permission on the file.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-AccessModeType-WRITE = 2--><!--Device-AccessModeType-WRITE = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.File.FileIO
-
 ## READ
 
 ```TypeScript
@@ -73,5 +57,21 @@ Verify the read/write permission on the file.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AccessModeType-READ_WRITE = 6--><!--Device-AccessModeType-READ_WRITE = 6-End-->
+
+**System capability:** SystemCapability.FileManagement.File.FileIO
+
+## WRITE
+
+```TypeScript
+WRITE = 2
+```
+
+Verify the write permission on the file.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-AccessModeType-WRITE = 2--><!--Device-AccessModeType-WRITE = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

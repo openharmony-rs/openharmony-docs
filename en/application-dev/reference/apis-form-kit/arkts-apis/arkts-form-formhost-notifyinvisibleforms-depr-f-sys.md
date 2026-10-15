@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="notifyinvisibleforms1"></a>
+
 ## notifyInvisibleForms
 
 ```TypeScript
@@ -34,8 +36,24 @@ Instructs the widget framework to make a widget invisible. After this API is cal
 | formIds | Array&lt;string&gt; | Yes | List of widget IDs. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If a notification is sent to the widget framework to make the widget invisible, **error** is undefined; otherwise, **error** is an error object. |
 
+<!--Del-->
+**Examples**
 
-<a id="notifyinvisibleforms-1"></a>
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds, (error: Base.BusinessError) => {
+  if (error.code) {
+    console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
+  }
+});
+```
+
+<!--DelEnd-->
+
+
+<a id="notifyinvisibleforms2"></a>
 
 ## notifyInvisibleForms
 
@@ -70,3 +88,19 @@ Instructs the widget framework to make a widget invisible. After this API is cal
 | Type | Description |
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import Base from '@ohos.base';
+
+let formIds: string[] = ['12400633174999288'];
+formHost.notifyInvisibleForms(formIds).then(() => {
+  console.info('formHost notifyInvisibleForms success');
+}).catch((error: Base.BusinessError) => {
+  console.error(`formHost notifyInvisibleForms, error: ${JSON.stringify(error)}`);
+});
+```
+
+<!--DelEnd-->

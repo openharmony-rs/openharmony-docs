@@ -5,12 +5,12 @@
 本模块提供了两种生成XML文件的方式:
 
 * [XmlSerializer](arkts-arkts-xml-xmlserializer-c.md)：适用于已知XML文本大小的情况。需要开发者自行创建ArrayBuffer作为缓存区域，需确保缓存区域足以容纳生成的文本内容。  
-* [XmlDynamicSerializer&lt;sup&gt;20+&lt;/sup&gt;](arkts-arkts-xml-xmldynamicserializer-c.md)：适用于未知XML文本大小的情况。无需自行创建ArrayBuffer，程序动态扩容，但序列化结果字符串长度上限为100000。
+* [XmlDynamicSerializer<sup>20+</sup>](arkts-arkts-xml-xmldynamicserializer-c.md)：适用于未知XML文本大小的情况。无需自行创建ArrayBuffer，程序动态扩容，但序列化结果字符串长度上限为100000。
 
 本模块提供了两种解析XML文件的方式:
 
 * [XmlPullParser](arkts-arkts-xml-xmlpullparser-c.md)：适用于对XML文本进行随机访问和灵活解析的场景。  
-* [XmlSAXParser&lt;sup&gt;24+&lt;/sup&gt;](arkts-arkts-xml-xmlsaxparser-c.md)：适用于流式解析XML文本的场景，当XML文本较大，其他解析方式会消耗较多内存，建议采用流式解析。
+* [XmlSAXParser<sup>24+</sup>](arkts-arkts-xml-xmlsaxparser-c.md)：适用于流式解析XML文本的场景，当XML文本较大，其他解析方式会消耗较多内存，建议采用流式解析。
 
 > **说明：** 
 > 

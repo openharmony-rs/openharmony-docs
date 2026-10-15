@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getabilityicon1"></a>
+
 ## getAbilityIcon
 
 ```TypeScript
@@ -54,7 +56,7 @@ bundle.getAbilityIcon(bundleName, abilityName, (err, data) => {
 ```
 
 
-<a id="getabilityicon-1"></a>
+<a id="getabilityicon2"></a>
 
 ## getAbilityIcon
 

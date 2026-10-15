@@ -30,22 +30,6 @@ Carrier.
 
 **System API:** This is a system API.
 
-## DIAL_VOICE_MAIL_TYPE
-
-```TypeScript
-DIAL_VOICE_MAIL_TYPE = 1
-```
-
-Voice mail.
-
-**Since:** 8
-
-<!--Device-DialType-DIAL_VOICE_MAIL_TYPE = 1--><!--Device-DialType-DIAL_VOICE_MAIL_TYPE = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
 ## DIAL_OTT_TYPE
 
 ```TypeScript
@@ -57,6 +41,22 @@ OTT.
 **Since:** 8
 
 <!--Device-DialType-DIAL_OTT_TYPE = 2--><!--Device-DialType-DIAL_OTT_TYPE = 2-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## DIAL_VOICE_MAIL_TYPE
+
+```TypeScript
+DIAL_VOICE_MAIL_TYPE = 1
+```
+
+Voice mail.
+
+**Since:** 8
+
+<!--Device-DialType-DIAL_VOICE_MAIL_TYPE = 1--><!--Device-DialType-DIAL_VOICE_MAIL_TYPE = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

@@ -12,24 +12,6 @@ Describes the dynamic range of the image to be displayed.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## HIGH
-
-```TypeScript
-HIGH = 0
-```
-
-Unrestricted dynamic range, which allows for the maximum brightening of an image.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-DynamicRangeMode-HIGH = 0--><!--Device-DynamicRangeMode-HIGH = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## CONSTRAINT
 
 ```TypeScript
@@ -45,6 +27,24 @@ Restricted dynamic range, which brightens an image within certain constraints.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DynamicRangeMode-CONSTRAINT = 1--><!--Device-DynamicRangeMode-CONSTRAINT = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## HIGH
+
+```TypeScript
+HIGH = 0
+```
+
+Unrestricted dynamic range, which allows for the maximum brightening of an image.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DynamicRangeMode-HIGH = 0--><!--Device-DynamicRangeMode-HIGH = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

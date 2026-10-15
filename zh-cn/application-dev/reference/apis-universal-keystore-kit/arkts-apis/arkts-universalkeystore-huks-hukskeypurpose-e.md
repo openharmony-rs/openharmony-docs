@@ -14,23 +14,25 @@ export enum HuksKeyPurpose
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-## HUKS_KEY_PURPOSE_ENCRYPT
+## HUKS_KEY_PURPOSE_AGREE
 
 ```TypeScript
-HUKS_KEY_PURPOSE_ENCRYPT = 1
+HUKS_KEY_PURPOSE_AGREE = 256
 ```
 
-表示密钥用于对明文进行加密操作。
+表示密钥用于进行密钥协商。
 
 **起始版本：** 8
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_ENCRYPT = 1--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_ENCRYPT = 1-End-->
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_AGREE = 256--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_AGREE = 256-End-->
 
-**系统能力：** SystemCapability.Security.Huks.Core
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_KEY_PURPOSE_DECRYPT
 
@@ -49,46 +51,6 @@ HUKS_KEY_PURPOSE_DECRYPT = 2
 <!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_DECRYPT = 2--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_DECRYPT = 2-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core
-
-## HUKS_KEY_PURPOSE_SIGN
-
-```TypeScript
-HUKS_KEY_PURPOSE_SIGN = 4
-```
-
-表示密钥用于对数据进行签名。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_SIGN = 4--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_SIGN = 4-End-->
-
-**系统能力：** 
-- API版本12+：SystemCapability.Security.Huks.Core
-- API版本8-11：SystemCapability.Security.Huks.Extension
-
-## HUKS_KEY_PURPOSE_VERIFY
-
-```TypeScript
-HUKS_KEY_PURPOSE_VERIFY = 8
-```
-
-表示密钥用于验证签名后的数据。
-
-**起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_VERIFY = 8--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_VERIFY = 8-End-->
-
-**系统能力：** 
-- API版本12+：SystemCapability.Security.Huks.Core
-- API版本8-11：SystemCapability.Security.Huks.Extension
 
 ## HUKS_KEY_PURPOSE_DERIVE
 
@@ -110,13 +72,31 @@ HUKS_KEY_PURPOSE_DERIVE = 16
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本8-11：SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_PURPOSE_WRAP
+## HUKS_KEY_PURPOSE_ENCRYPT
 
 ```TypeScript
-HUKS_KEY_PURPOSE_WRAP = 32
+HUKS_KEY_PURPOSE_ENCRYPT = 1
 ```
 
-表示密钥用于加密导出。
+表示密钥用于对明文进行加密操作。
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_ENCRYPT = 1--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_ENCRYPT = 1-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+## HUKS_KEY_PURPOSE_MAC
+
+```TypeScript
+HUKS_KEY_PURPOSE_MAC = 128
+```
+
+表示密钥用于生成消息验证码。
 
 **起始版本：** 8
 
@@ -124,7 +104,27 @@ HUKS_KEY_PURPOSE_WRAP = 32
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_WRAP = 32--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_WRAP = 32-End-->
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_MAC = 128--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_MAC = 128-End-->
+
+**系统能力：** 
+- API版本12+：SystemCapability.Security.Huks.Core
+- API版本8-11：SystemCapability.Security.Huks.Extension
+
+## HUKS_KEY_PURPOSE_SIGN
+
+```TypeScript
+HUKS_KEY_PURPOSE_SIGN = 4
+```
+
+表示密钥用于对数据进行签名。
+
+**起始版本：** 8
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_SIGN = 4--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_SIGN = 4-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
@@ -150,13 +150,13 @@ HUKS_KEY_PURPOSE_UNWRAP = 64
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本8-11：SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_PURPOSE_MAC
+## HUKS_KEY_PURPOSE_VERIFY
 
 ```TypeScript
-HUKS_KEY_PURPOSE_MAC = 128
+HUKS_KEY_PURPOSE_VERIFY = 8
 ```
 
-表示密钥用于生成消息验证码。
+表示密钥用于验证签名后的数据。
 
 **起始版本：** 8
 
@@ -164,19 +164,19 @@ HUKS_KEY_PURPOSE_MAC = 128
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_MAC = 128--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_MAC = 128-End-->
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_VERIFY = 8--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_VERIFY = 8-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core
 - API版本8-11：SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_PURPOSE_AGREE
+## HUKS_KEY_PURPOSE_WRAP
 
 ```TypeScript
-HUKS_KEY_PURPOSE_AGREE = 256
+HUKS_KEY_PURPOSE_WRAP = 32
 ```
 
-表示密钥用于进行密钥协商。
+表示密钥用于加密导出。
 
 **起始版本：** 8
 
@@ -184,7 +184,7 @@ HUKS_KEY_PURPOSE_AGREE = 256
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_AGREE = 256--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_AGREE = 256-End-->
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_WRAP = 32--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_WRAP = 32-End-->
 
 **系统能力：** 
 - API版本12+：SystemCapability.Security.Huks.Core

@@ -47,6 +47,7 @@ When the user enables AccessibilityExtensionAbility, the system service calls th
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,6 +59,8 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onAccessibilityDisconnect
 
@@ -86,6 +89,7 @@ When the user disables AccessibilityExtensionAbility, the system service calls t
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -97,6 +101,8 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onAccessibilityEventInfo
 
@@ -129,6 +135,7 @@ When an accessibility event occurs, the system distributes the event to the conn
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -143,6 +150,8 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onAccessibilityKeyEvent
 
@@ -181,6 +190,7 @@ Called when a key is pressed. You can determine whether to consume the event bas
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -198,3 +208,5 @@ class MyAccessibilityExtensionAbility extends AccessibilityExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->

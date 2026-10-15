@@ -50,24 +50,6 @@ A sub-profile has been deleted. This event is triggered when an OS account sub-p
 
 **System API:** This is a system API.
 
-## SWITCHING
-
-```TypeScript
-SWITCHING = 2
-```
-
-A sub-profile is about to be switched. This event is triggered when the switching of an OS account sub-profile starts.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-OsAccountSubProfileEvent-SWITCHING = 2--><!--Device-OsAccountSubProfileEvent-SWITCHING = 2-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
 ## SWITCHED
 
 ```TypeScript
@@ -81,6 +63,24 @@ A sub-profile has been switched. This event is triggered when the switching of a
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-OsAccountSubProfileEvent-SWITCHED = 3--><!--Device-OsAccountSubProfileEvent-SWITCHED = 3-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## SWITCHING
+
+```TypeScript
+SWITCHING = 2
+```
+
+A sub-profile is about to be switched. This event is triggered when the switching of an OS account sub-profile starts.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OsAccountSubProfileEvent-SWITCHING = 2--><!--Device-OsAccountSubProfileEvent-SWITCHING = 2-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

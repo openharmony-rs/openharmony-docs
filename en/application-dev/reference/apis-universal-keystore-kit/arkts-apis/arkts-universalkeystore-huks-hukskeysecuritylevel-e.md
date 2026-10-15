@@ -12,24 +12,6 @@ Enumerates the key security levels.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
-## HUKS_KEY_SECURITY_LEVEL_TEE
-
-```TypeScript
-HUKS_KEY_SECURITY_LEVEL_TEE = 0
-```
-
-The key is generated and used in the trusted execution environment.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
 ## HUKS_KEY_SECURITY_LEVEL_SE
 
 ```TypeScript
@@ -47,5 +29,23 @@ The key is generated and used in the secure environment.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_SE = 1--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_SE = 1-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_KEY_SECURITY_LEVEL_TEE
+
+```TypeScript
+HUKS_KEY_SECURITY_LEVEL_TEE = 0
+```
+
+The key is generated and used in the trusted execution environment.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core

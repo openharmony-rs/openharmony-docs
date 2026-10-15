@@ -34,21 +34,21 @@ Widget dimension.
 
 **System capability:** SystemCapability.Ability.Form
 
-## NAME_KEY
+## HEIGHT_KEY
 
 ```TypeScript
-NAME_KEY = 'ohos.extra.param.key.form_name'
+HEIGHT_KEY = 'ohos.extra.param.key.form_height'
 ```
 
-Widget name.
+Widget height.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [NAME_KEY](arkts-form-forminfo-formparam-e.md#name_key)
+**Substitutes:** [HEIGHT_KEY](arkts-form-forminfo-formparam-e.md#height_key)
 
-<!--Device-FormParam-NAME_KEY = 'ohos.extra.param.key.form_name'--><!--Device-FormParam-NAME_KEY = 'ohos.extra.param.key.form_name'-End-->
+<!--Device-FormParam-HEIGHT_KEY = 'ohos.extra.param.key.form_height'--><!--Device-FormParam-HEIGHT_KEY = 'ohos.extra.param.key.form_height'-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -70,39 +70,21 @@ Name of the module to which the widget belongs.
 
 **System capability:** SystemCapability.Ability.Form
 
-## WIDTH_KEY
+## NAME_KEY
 
 ```TypeScript
-WIDTH_KEY = 'ohos.extra.param.key.form_width'
+NAME_KEY = 'ohos.extra.param.key.form_name'
 ```
 
-Widget width.
+Widget name.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [WIDTH_KEY](arkts-form-forminfo-formparam-e.md#width_key)
+**Substitutes:** [NAME_KEY](arkts-form-forminfo-formparam-e.md#name_key)
 
-<!--Device-FormParam-WIDTH_KEY = 'ohos.extra.param.key.form_width'--><!--Device-FormParam-WIDTH_KEY = 'ohos.extra.param.key.form_width'-End-->
-
-**System capability:** SystemCapability.Ability.Form
-
-## HEIGHT_KEY
-
-```TypeScript
-HEIGHT_KEY = 'ohos.extra.param.key.form_height'
-```
-
-Widget height.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [HEIGHT_KEY](arkts-form-forminfo-formparam-e.md#height_key)
-
-<!--Device-FormParam-HEIGHT_KEY = 'ohos.extra.param.key.form_height'--><!--Device-FormParam-HEIGHT_KEY = 'ohos.extra.param.key.form_height'-End-->
+<!--Device-FormParam-NAME_KEY = 'ohos.extra.param.key.form_name'--><!--Device-FormParam-NAME_KEY = 'ohos.extra.param.key.form_name'-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -121,5 +103,23 @@ Temporary widget.
 **Substitutes:** [TEMPORARY_KEY](arkts-form-forminfo-formparam-e.md#temporary_key)
 
 <!--Device-FormParam-TEMPORARY_KEY = 'ohos.extra.param.key.form_temporary'--><!--Device-FormParam-TEMPORARY_KEY = 'ohos.extra.param.key.form_temporary'-End-->
+
+**System capability:** SystemCapability.Ability.Form
+
+## WIDTH_KEY
+
+```TypeScript
+WIDTH_KEY = 'ohos.extra.param.key.form_width'
+```
+
+Widget width.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [WIDTH_KEY](arkts-form-forminfo-formparam-e.md#width_key)
+
+<!--Device-FormParam-WIDTH_KEY = 'ohos.extra.param.key.form_width'--><!--Device-FormParam-WIDTH_KEY = 'ohos.extra.param.key.form_width'-End-->
 
 **System capability:** SystemCapability.Ability.Form

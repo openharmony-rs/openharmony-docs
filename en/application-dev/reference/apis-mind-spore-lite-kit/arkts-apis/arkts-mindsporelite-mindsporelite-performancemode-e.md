@@ -12,19 +12,35 @@ Enum for performance mode
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## PERFORMANCE_NONE
+## PERFORMANCE_EXTREME
 
 ```TypeScript
-PERFORMANCE_NONE = 0
+PERFORMANCE_EXTREME = 4
 ```
 
-No performance mode preference
+Ultimate performance mode
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PerformanceMode-PERFORMANCE_NONE = 0--><!--Device-PerformanceMode-PERFORMANCE_NONE = 0-End-->
+<!--Device-PerformanceMode-PERFORMANCE_EXTREME = 4--><!--Device-PerformanceMode-PERFORMANCE_EXTREME = 4-End-->
+
+**System capability:** SystemCapability.AI.MindSporeLite
+
+## PERFORMANCE_HIGH
+
+```TypeScript
+PERFORMANCE_HIGH = 3
+```
+
+High performance mode
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PerformanceMode-PERFORMANCE_HIGH = 3--><!--Device-PerformanceMode-PERFORMANCE_HIGH = 3-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -60,34 +76,18 @@ Medium performance mode
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## PERFORMANCE_HIGH
+## PERFORMANCE_NONE
 
 ```TypeScript
-PERFORMANCE_HIGH = 3
+PERFORMANCE_NONE = 0
 ```
 
-High performance mode
+No performance mode preference
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-PerformanceMode-PERFORMANCE_HIGH = 3--><!--Device-PerformanceMode-PERFORMANCE_HIGH = 3-End-->
-
-**System capability:** SystemCapability.AI.MindSporeLite
-
-## PERFORMANCE_EXTREME
-
-```TypeScript
-PERFORMANCE_EXTREME = 4
-```
-
-Ultimate performance mode
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PerformanceMode-PERFORMANCE_EXTREME = 4--><!--Device-PerformanceMode-PERFORMANCE_EXTREME = 4-End-->
+<!--Device-PerformanceMode-PERFORMANCE_NONE = 0--><!--Device-PerformanceMode-PERFORMANCE_NONE = 0-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

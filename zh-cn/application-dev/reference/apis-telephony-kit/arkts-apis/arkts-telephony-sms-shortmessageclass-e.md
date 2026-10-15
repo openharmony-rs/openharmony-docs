@@ -12,17 +12,17 @@ export enum ShortMessageClass
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
-## UNKNOWN
+## FORWARD_MESSAGE
 
 ```TypeScript
-UNKNOWN = 0
+FORWARD_MESSAGE = 4
 ```
 
-未知类型。
+要转发到另一台设备的短信。
 
 **起始版本：** 6
 
-<!--Device-ShortMessageClass-UNKNOWN = 0--><!--Device-ShortMessageClass-UNKNOWN = 0-End-->
+<!--Device-ShortMessageClass-FORWARD_MESSAGE = 4--><!--Device-ShortMessageClass-FORWARD_MESSAGE = 4-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
@@ -68,16 +68,16 @@ SIM_MESSAGE = 3
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 
-## FORWARD_MESSAGE
+## UNKNOWN
 
 ```TypeScript
-FORWARD_MESSAGE = 4
+UNKNOWN = 0
 ```
 
-要转发到另一台设备的短信。
+未知类型。
 
 **起始版本：** 6
 
-<!--Device-ShortMessageClass-FORWARD_MESSAGE = 4--><!--Device-ShortMessageClass-FORWARD_MESSAGE = 4-End-->
+<!--Device-ShortMessageClass-UNKNOWN = 0--><!--Device-ShortMessageClass-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms

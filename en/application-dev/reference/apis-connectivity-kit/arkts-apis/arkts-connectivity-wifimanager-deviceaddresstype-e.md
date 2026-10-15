@@ -4,7 +4,7 @@
 enum DeviceAddressType
 ```
 
-Wi-Fi device address( mac / bssid ) type. @enum { int }
+Wi-Fi device address( mac / bssid ) type.
 
 **Since:** 12
 
@@ -22,7 +22,7 @@ random device address
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DeviceAddressType-RANDOM_DEVICE_ADDRESS--><!--Device-DeviceAddressType-RANDOM_DEVICE_ADDRESS-End-->
 
@@ -38,7 +38,7 @@ real device address
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DeviceAddressType-REAL_DEVICE_ADDRESS--><!--Device-DeviceAddressType-REAL_DEVICE_ADDRESS-End-->
 

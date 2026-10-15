@@ -12,24 +12,6 @@ declare enum WordBreak
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-CJK(中文、日文、韩文)文本可以在任意2个字符间断行，而Non-CJK文本（如英文等）只能在空白符处断行。
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## BREAK_ALL
 
 ```TypeScript
@@ -81,5 +63,23 @@ HYPHENATION = 3
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-WordBreak-HYPHENATION = 3--><!--Device-WordBreak-HYPHENATION = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+CJK(中文、日文、韩文)文本可以在任意2个字符间断行，而Non-CJK文本（如英文等）只能在空白符处断行。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WordBreak-NORMAL = 0--><!--Device-WordBreak-NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

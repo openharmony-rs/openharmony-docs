@@ -31,7 +31,7 @@ authResults: Array<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionRequestResult-authResults: Array<int>--><!--Device-PermissionRequestResult-authResults: Array<int>-End-->
 
@@ -56,7 +56,7 @@ dialogShownResults?: Array<boolean>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionRequestResult-dialogShownResults?: Array<boolean>--><!--Device-PermissionRequestResult-dialogShownResults?: Array<boolean>-End-->
 
@@ -86,7 +86,7 @@ errorReasons?: Array<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionRequestResult-errorReasons?: Array<int>--><!--Device-PermissionRequestResult-errorReasons?: Array<int>-End-->
 
@@ -106,7 +106,7 @@ permissions: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionRequestResult-permissions: Array<string>--><!--Device-PermissionRequestResult-permissions: Array<string>-End-->
 

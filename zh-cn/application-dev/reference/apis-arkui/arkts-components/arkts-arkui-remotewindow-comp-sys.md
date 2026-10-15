@@ -26,7 +26,7 @@ RemoteWindow(target: WindowAnimationTarget)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| target | WindowAnimationTarget | 是 | 需要控制的动画窗口的描述。 |
+| target | [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | 是 | 需要控制的动画窗口的描述。 |
 
 ## 汇总
 
@@ -34,9 +34,10 @@ RemoteWindow(target: WindowAnimationTarget)
 
 | 名称 | 说明 |
 | --- | --- |
-| RRect | 圆角矩形。 |
-| WindowAnimationTarget | 目标窗口，用来远程控制实现动画。 |
+| [RRect](arkts-arkui-remotewindow-comp-rrect-i-sys.md) | 圆角矩形。 |
+| [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | 目标窗口，用来远程控制实现动画。 |
 
+<!--Del-->
 ## 示例
 
 RemoteWindow需要接收由windowAnimationManager设置的WindowAnimationController对象传入对应窗口WindowAnimationTarget对象，可以创建一个RemoteWindowExample.ets作为示例组件将RemoteWindow组件和传入的WindowAnimationTarget对象关联封装起来。
@@ -148,3 +149,5 @@ export default struct RemoteWindowExample {
   }
 }
 ```
+
+<!--DelEnd-->

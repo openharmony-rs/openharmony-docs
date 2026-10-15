@@ -14,6 +14,38 @@ export enum AudioDeviceType
 
 **系统接口：** 此接口为系统接口。
 
+## DEVICE_BLUETOOTH_SCO
+
+```TypeScript
+DEVICE_BLUETOOTH_SCO = 3
+```
+
+蓝牙SCO设备。
+
+**起始版本：** 10
+
+<!--Device-AudioDeviceType-DEVICE_BLUETOOTH_SCO = 3--><!--Device-AudioDeviceType-DEVICE_BLUETOOTH_SCO = 3-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## DEVICE_DISTRIBUTED_AUTOMOTIVE
+
+```TypeScript
+DEVICE_DISTRIBUTED_AUTOMOTIVE = 4
+```
+
+分布式车机设备。
+
+**起始版本：** 11
+
+<!--Device-AudioDeviceType-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4--><!--Device-AudioDeviceType-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
 ## DEVICE_EARPIECE
 
 ```TypeScript
@@ -57,38 +89,6 @@ DEVICE_WIRED_HEADSET = 2
 **起始版本：** 10
 
 <!--Device-AudioDeviceType-DEVICE_WIRED_HEADSET = 2--><!--Device-AudioDeviceType-DEVICE_WIRED_HEADSET = 2-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
-## DEVICE_BLUETOOTH_SCO
-
-```TypeScript
-DEVICE_BLUETOOTH_SCO = 3
-```
-
-蓝牙SCO设备。
-
-**起始版本：** 10
-
-<!--Device-AudioDeviceType-DEVICE_BLUETOOTH_SCO = 3--><!--Device-AudioDeviceType-DEVICE_BLUETOOTH_SCO = 3-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
-## DEVICE_DISTRIBUTED_AUTOMOTIVE
-
-```TypeScript
-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4
-```
-
-分布式车机设备。
-
-**起始版本：** 11
-
-<!--Device-AudioDeviceType-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4--><!--Device-AudioDeviceType-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

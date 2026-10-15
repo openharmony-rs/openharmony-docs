@@ -58,6 +58,8 @@ let collator = new intl.Collator('en-GB');
 let compareResult = collator.compare('first', 'second'); // compareResult = -1
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -83,7 +85,7 @@ import { intl } from '@kit.LocalizationKit';
 let collator = new intl.Collator();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

@@ -11,7 +11,7 @@
 function trigger(agent: WantAgent, triggerInfo: TriggerInfo, callback?: Callback<CompleteData>): void
 ```
 
-Triggers a WantAgent.
+Triggers a WantAgent object. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
 
@@ -29,9 +29,9 @@ Triggers a WantAgent.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | to trigger. |
-| triggerInfo | [TriggerInfo](arkts-ability-triggerinfo-triggerinfo-i.md) | Yes | parameters. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;CompleteData&gt; | No | Indicates the callback method to be called after the [WantAgent](arkts-ability-wantagent-depr-t.md) is triggered. |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | WantAgent object. |
+| triggerInfo | [TriggerInfo](arkts-ability-triggerinfo-i.md) | Yes | TriggerInfo object. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;CompleteData&gt; | No | Callback used to return the result. |
 
 **Examples**
 

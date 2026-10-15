@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getbundleinstaller1"></a>
+
 ## getBundleInstaller
 
 ```TypeScript
@@ -32,8 +34,9 @@ Obtains the installation package. This API uses an asynchronous callback to retu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInstaller](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)&gt; | Yes | Callback used to return the installation package. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInstaller](arkts-ability-bundleinstaller-depr-i-sys.md)&gt; | Yes | Callback used to return the installation package. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,8 +62,10 @@ bundle.getBundleInstaller((err, data) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getbundleinstaller-1"></a>
+
+<a id="getbundleinstaller2"></a>
 
 ## getBundleInstaller
 
@@ -88,8 +93,11 @@ Obtains the installation package. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[BundleInstaller](arkts-ability-bundleinstaller-bundleinstaller-depr-i-sys.md)&gt; | Promise used to return the installation package. |
+| Promise&lt;[BundleInstaller](arkts-ability-bundleinstaller-depr-i-sys.md)&gt; | Promise used to return the installation package. |
 
+<!--Del-->
 **Examples**
 
 See [getBundleInstaller](#getbundleinstaller)
+
+<!--DelEnd-->

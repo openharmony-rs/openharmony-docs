@@ -12,7 +12,7 @@ Converts a number in units of px to a number in units of fp.
 
 **废弃版本：** 18
 
-**替代接口：** px2fp
+**替代接口：** [px2fp](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#px2fp)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

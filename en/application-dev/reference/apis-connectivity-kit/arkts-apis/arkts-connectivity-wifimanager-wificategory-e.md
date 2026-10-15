@@ -4,7 +4,7 @@
 enum WifiCategory
 ```
 
-Wi-Fi Category. @enum { int }
+Wi-Fi Category.
 
 **Since:** 12
 

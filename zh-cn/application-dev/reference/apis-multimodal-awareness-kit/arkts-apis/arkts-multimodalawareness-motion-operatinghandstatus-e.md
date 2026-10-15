@@ -12,20 +12,6 @@ export enum OperatingHandStatus
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion
 
-## UNKNOWN_STATUS
-
-```TypeScript
-UNKNOWN_STATUS = 0
-```
-
-表示未识别。
-
-**起始版本：** 15
-
-<!--Device-OperatingHandStatus-UNKNOWN_STATUS = 0--><!--Device-OperatingHandStatus-UNKNOWN_STATUS = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.Motion
-
 ## LEFT_HAND_OPERATED
 
 ```TypeScript
@@ -51,5 +37,19 @@ RIGHT_HAND_OPERATED = 2
 **起始版本：** 15
 
 <!--Device-OperatingHandStatus-RIGHT_HAND_OPERATED = 2--><!--Device-OperatingHandStatus-RIGHT_HAND_OPERATED = 2-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.Motion
+
+## UNKNOWN_STATUS
+
+```TypeScript
+UNKNOWN_STATUS = 0
+```
+
+表示未识别。
+
+**起始版本：** 15
+
+<!--Device-OperatingHandStatus-UNKNOWN_STATUS = 0--><!--Device-OperatingHandStatus-UNKNOWN_STATUS = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.Motion

@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="setcbconfig1"></a>
+
 ## setCBConfig
 
 ```TypeScript
@@ -43,6 +45,7 @@ function setCBConfig(options: CBConfigOptions, callback: AsyncCallback<void>): v
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,8 +64,10 @@ sms.setCBConfig(cbConfigOptions, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setcbconfig-1"></a>
+
+<a id="setcbconfig2"></a>
 
 ## setCBConfig
 
@@ -106,6 +111,7 @@ function setCBConfig(options: CBConfigOptions): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,3 +132,5 @@ promise.then(() => {
     console.error(`setCBConfig failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

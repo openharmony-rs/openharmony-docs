@@ -12,19 +12,19 @@ Startup wizard completion scenario. When the initial switch to a sub-user (only 
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## USER_SETUP
+## DEVICE_PROVISION
 
 ```TypeScript
-USER_SETUP = 0
+DEVICE_PROVISION = 2
 ```
 
-A sub-user is switched to for the first time and the startup wizard for the sub-user is complete (only on PCs). The callback will not be triggered when the sub-user is switched again.
+The initial startup wizard is complete.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-StartupScene-USER_SETUP = 0--><!--Device-StartupScene-USER_SETUP = 0-End-->
+<!--Device-StartupScene-DEVICE_PROVISION = 2--><!--Device-StartupScene-DEVICE_PROVISION = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,18 +44,18 @@ The OTA upgrade is complete.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DEVICE_PROVISION
+## USER_SETUP
 
 ```TypeScript
-DEVICE_PROVISION = 2
+USER_SETUP = 0
 ```
 
-The initial startup wizard is complete.
+A sub-user is switched to for the first time and the startup wizard for the sub-user is complete (only on PCs). The callback will not be triggered when the sub-user is switched again.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-StartupScene-DEVICE_PROVISION = 2--><!--Device-StartupScene-DEVICE_PROVISION = 2-End-->
+<!--Device-StartupScene-USER_SETUP = 0--><!--Device-StartupScene-USER_SETUP = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

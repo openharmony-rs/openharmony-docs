@@ -12,59 +12,17 @@ Enum for the profile's uuid
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## PROFILE_UUID_HFP_AG
+## PROFILE_UUID_A2DP_SINK
 
 ```TypeScript
-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'
+PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'
 ```
 
-Hands-Free Profile: Audio Gateway
+Advanced Audio Distribution Profile: Sink
 
 **Since:** 12
 
-<!--Device-ProfileUuids-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## PROFILE_UUID_HFP_HF
-
-```TypeScript
-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'
-```
-
-Hands-Free Profile: Hands Free
-
-**Since:** 12
-
-<!--Device-ProfileUuids-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## PROFILE_UUID_HSP_AG
-
-```TypeScript
-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'
-```
-
-Headset Profile: Audio Gateway
-
-**Since:** 12
-
-<!--Device-ProfileUuids-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## PROFILE_UUID_HSP_HS
-
-```TypeScript
-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'
-```
-
-Headset Profile: Headset
-
-**Since:** 12
-
-<!--Device-ProfileUuids-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'-End-->
+<!--Device-ProfileUuids-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -79,20 +37,6 @@ Advanced Audio Distribution Profile: Source
 **Since:** 12
 
 <!--Device-ProfileUuids-PROFILE_UUID_A2DP_SRC = '0000110A-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_A2DP_SRC = '0000110A-0000-1000-8000-00805F9B34FB'-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## PROFILE_UUID_A2DP_SINK
-
-```TypeScript
-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'
-```
-
-Advanced Audio Distribution Profile: Sink
-
-**Since:** 12
-
-<!--Device-ProfileUuids-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -124,6 +68,34 @@ Audio/Video Remote Control Profile: Target
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
+## PROFILE_UUID_HFP_AG
+
+```TypeScript
+PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'
+```
+
+Hands-Free Profile: Audio Gateway
+
+**Since:** 12
+
+<!--Device-ProfileUuids-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## PROFILE_UUID_HFP_HF
+
+```TypeScript
+PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'
+```
+
+Hands-Free Profile: Hands Free
+
+**Since:** 12
+
+<!--Device-ProfileUuids-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
 ## PROFILE_UUID_HID
 
 ```TypeScript
@@ -149,5 +121,33 @@ HID over GATT Profile
 **Since:** 12
 
 <!--Device-ProfileUuids-PROFILE_UUID_HOGP = '00001812-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HOGP = '00001812-0000-1000-8000-00805F9B34FB'-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## PROFILE_UUID_HSP_AG
+
+```TypeScript
+PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'
+```
+
+Headset Profile: Audio Gateway
+
+**Since:** 12
+
+<!--Device-ProfileUuids-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## PROFILE_UUID_HSP_HS
+
+```TypeScript
+PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'
+```
+
+Headset Profile: Headset
+
+**Since:** 12
+
+<!--Device-ProfileUuids-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

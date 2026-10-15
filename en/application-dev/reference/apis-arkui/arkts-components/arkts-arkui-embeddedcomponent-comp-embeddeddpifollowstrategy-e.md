@@ -4,7 +4,7 @@
 declare enum EmbeddedDpiFollowStrategy
 ```
 
-Enumeration of different types of EmbeddedDpiFollowStrategy.
+Defines the DPI follow strategy, which is used to set the DPI to follow either the host or the **EmbeddedUIExtensionAbility**. For example, when the **EmbeddedUIExtensionAbility** needs to maintain visual consistency with the host app, you can choose to follow the host DPI. When the **EmbeddedUIExtensionAbility** needs to independently adapt to the DPI configuration of its own resources, you can choose to follow the **EmbeddedUIExtensionAbility** DPI.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Enumeration of different types of EmbeddedDpiFollowStrategy.
 FOLLOW_HOST_DPI = 0
 ```
 
-Followed the host DPI.
+The DPI follows the host.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ Followed the host DPI.
 FOLLOW_UI_EXTENSION_ABILITY_DPI = 1
 ```
 
-Followed the EmbeddedUIExtensionAbility.
+The DPI follows the **EmbeddedUIExtensionAbility**.
 
 **Since:** 26.0.0
 

@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="notifyformsenableupdate1"></a>
+
 ## notifyFormsEnableUpdate
 
 ```TypeScript
@@ -39,6 +41,7 @@ function notifyFormsEnableUpdate(
 | isEnableUpdate | boolean | 是 | 是否使能更新。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当通知卡片是否启用更新状态成功，error为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,8 +55,10 @@ formHost.notifyFormsEnableUpdate(formIds, true, (error: Base.BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="notifyformsenableupdate-1"></a>
+
+<a id="notifyformsenableupdate2"></a>
 
 ## notifyFormsEnableUpdate
 
@@ -90,6 +95,7 @@ function notifyFormsEnableUpdate(formIds: Array<string>, isEnableUpdate: boolean
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -102,3 +108,5 @@ formHost.notifyFormsEnableUpdate(formIds, true).then(() => {
   console.error(`formHost notifyFormsEnableUpdate, error: ${JSON.stringify(error)}`);
 });
 ```
+
+<!--DelEnd-->

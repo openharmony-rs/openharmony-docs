@@ -4,7 +4,7 @@
 export declare class SelectOptions
 ```
 
-Declare type SelectOption
+Declare type SelectOption.
 
 **Since:** 10
 
@@ -24,10 +24,11 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 onSelect?: (index: number, value?: string) => void
 ```
 
-Callback invoked when an item in the drop-down list box is selected.
+Callback for when an item is selected in the dropdown menu.
 
-- **index**: index of the selected option.  
-- **value**: value of the selected option.
+- index: index of the selected item.
+
+- value: value of the selected item.
 
 **Since:** 10
 
@@ -52,11 +53,11 @@ Callback invoked when an item in the drop-down list box is selected.
 defaultFocus?: boolean
 ```
 
-Whether the drop-down button is the default focus.
+Whether the dropdown button is the default focus.
 
-**true**: The drop-down button is the default focus.
+**true**: The dropdown button is the default focus.
 
-**false**: The drop-down button is not the default focus.
+**false**: The dropdown button is not the default focus.
 
 Default value: **false**
 
@@ -80,7 +81,7 @@ Default value: **false**
 id?: string
 ```
 
-Set the id for the select.
+Dropdown button ID. Set this parameter when an ID needs to be set for the dropdown button. When omitted, this parameter is not set. indicating that no dropdown button ID is set. Default value: **undefined**.
 
 **Type:** string
 
@@ -100,7 +101,7 @@ Set the id for the select.
 options: Array<SelectOption>
 ```
 
-Options of an item in the drop-down list box.
+Dropdown option content.
 
 **Type:** Array&lt;[SelectOption](../arkts-components/arkts-arkui-select-comp-selectoption-i.md)&gt;
 
@@ -120,15 +121,15 @@ Options of an item in the drop-down list box.
 selected?: number
 ```
 
-Index of the initially selected item in the drop-down list box.
+Index of the initial option in the dropdown menu.
 
-The value must be greater than or equal to -1.
+Value range: greater than or equal to -1.
 
 The index of the first item is 0.
 
-If this attribute is not set, the default value **-1** is used, indicating that the option is not selected.
+When the selected attribute is not set, the default value is -1, and no menu item is selected.
 
-Values less than -1 are treated as no selection.
+If the value is set to less than -1, it is treated as no selection.
 
 **Type:** number
 
@@ -148,11 +149,11 @@ Values less than -1 are treated as no selection.
 value?: ResourceStr
 ```
 
-Text content of the drop-down list button itself.
+Text content of the dropdown button itself.
 
-The default value is an empty string.
+Default value: empty string.
 
-Note: If the text length exceeds the column width, it will be truncated. The Resource type is supported since API version 20.
+**Note:**  Text exceeding the column width will be truncated. Since API version 20, the Resource type is supported.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

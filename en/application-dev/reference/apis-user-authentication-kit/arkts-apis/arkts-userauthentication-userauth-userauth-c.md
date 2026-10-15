@@ -79,7 +79,7 @@ auth.auth(challenge, userAuth.UserAuthType.FACE, userAuth.AuthTrustLevel.ATL1, {
         // Add the logic to be executed when the authentication fails.
       }
     } catch (error) {
-      console.error(`auth onResult failed. Code: ${error?.code}, message: ${error?.message}`);
+      console.error(`Failed to auth onResult. Code: ${error?.code}, message: ${error?.message}`);
     }
   }
 });
@@ -129,7 +129,7 @@ let cancelCode = auth.cancelAuth(contextId);
 if (cancelCode == userAuth.ResultCode.SUCCESS) {
   console.info('cancel auth successfully.');
 } else {
-  console.error('cancel auth failed.');
+  console.error('Failed to cancel auth.');
 }
 ```
 
@@ -202,7 +202,7 @@ let checkCode = auth.getAvailableStatus(userAuth.UserAuthType.FACE, userAuth.Aut
 if (checkCode == userAuth.ResultCode.SUCCESS) {
   console.info('check auth support successfully.');
 } else {
-  console.error(`check auth support failed, code = ${checkCode}`);
+  console.error(`Failed to check auth support. Code: ${checkCode}`);
 }
 ```
 

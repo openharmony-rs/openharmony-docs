@@ -14,17 +14,17 @@ Enumerates data role types.
 
 **System API:** This is a system API.
 
-## NONE
+## DEVICE
 
 ```TypeScript
-NONE = 0
+DEVICE = 2
 ```
 
-None.
+USB device.
 
 **Since:** 9
 
-<!--Device-DataRoleType-NONE = 0--><!--Device-DataRoleType-NONE = 0-End-->
+<!--Device-DataRoleType-DEVICE = 2--><!--Device-DataRoleType-DEVICE = 2-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -46,17 +46,17 @@ USB host.
 
 **System API:** This is a system API.
 
-## DEVICE
+## NONE
 
 ```TypeScript
-DEVICE = 2
+NONE = 0
 ```
 
-USB device.
+None.
 
 **Since:** 9
 
-<!--Device-DataRoleType-DEVICE = 2--><!--Device-DataRoleType-DEVICE = 2-End-->
+<!--Device-DataRoleType-NONE = 0--><!--Device-DataRoleType-NONE = 0-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

@@ -4,7 +4,7 @@
 interface PageIntentInfo
 ```
 
-Describes the parameters supported by the [@InsightIntentPage](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage) decorator, such as the [NavDestination](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) name of the target page.
+PageIntentInfo is used to describe the parameters supported by the [@InsightIntentPage](arkts-ability-app-ability-insightintentdecorator-insightintentpage-d.md#insightintentpage) decorator, for example, the [navDestination](../../apis-arkui/arkts-components/arkts-arkui-navdestination-comp.md) name of the target page.
 
 **Since:** 20
 
@@ -26,7 +26,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 readonly navDestinationName: string
 ```
 
-Name of the [NavDestination](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10) component bound to the intent.
+Name of the [NavDestination](../../apis-arkui/arkts-components/arkts-arkui-navdestination-comp.md) component bound to the intent.
 
 **Type:** string
 
@@ -86,7 +86,7 @@ Page name.
 readonly uiAbility: string
 ```
 
-Ability name.
+Name of the UIAbility component.
 
 **Type:** string
 

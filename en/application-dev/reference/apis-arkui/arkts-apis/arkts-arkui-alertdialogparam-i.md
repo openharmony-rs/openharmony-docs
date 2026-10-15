@@ -867,8 +867,9 @@ Transition effect for the appearance and disappearance of the dialog box.
 **NOTE:** 
 
 1. If this parameter is not set, the default effect is used.
-2. Touching the Back button during the appearance animation pauses the appearance animation and starts the disappearance animation. The final effect is one obtained after the curves of the appearance and disappearance animations are combined.
-3. Touching the Back button during the exit animation does not affect the animation playback. Touching the Back button again closes the application.
+
+  2. Touching the Back button during the appearance animation pauses the appearance animation and starts the disappearance animation. The final effect is one obtained after the curves of the appearance and disappearance animations are combined.
+  3. Touching the Back button during the exit animation does not affect the animation playback. Touching the Back button again closes the application.
 
 **Type:** [TransitionEffect](../arkts-components/arkts-arkui-common-comp-transitioneffect-c.md)
 

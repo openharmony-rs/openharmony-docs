@@ -42,6 +42,7 @@ Triggered to receive commands from the user authentication framework. The user a
 | --- | --- | --- | --- |
 | cmdData | string | Yes | Command data. It is a JSON string, containing the command content sent by the user authentication framework to the authentication widget. The JSON structure contains fields based on the command type. Common fields include **commandType** (string, command type), **authType** (array, authentication type list), and **result** (number, authentication result code). The widget needs to parse the data and perform the corresponding operations based on the command type. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`userAuth widgetMgr failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

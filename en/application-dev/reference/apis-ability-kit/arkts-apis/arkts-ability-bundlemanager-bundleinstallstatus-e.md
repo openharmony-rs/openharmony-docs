@@ -12,17 +12,17 @@ Enumerates the application installation statuses.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-## BUNDLE_NOT_EXIST
+## BUNDLE_INSTALLED
 
 ```TypeScript
-BUNDLE_NOT_EXIST = 1
+BUNDLE_INSTALLED = 3
 ```
 
-The application is not installed.
+The application has been installed.
 
 **Since:** 26.0.1
 
-<!--Device-BundleInstallStatus-BUNDLE_NOT_EXIST = 1--><!--Device-BundleInstallStatus-BUNDLE_NOT_EXIST = 1-End-->
+<!--Device-BundleInstallStatus-BUNDLE_INSTALLED = 3--><!--Device-BundleInstallStatus-BUNDLE_INSTALLED = 3-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -40,16 +40,16 @@ The application is being installed.
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
-## BUNDLE_INSTALLED
+## BUNDLE_NOT_EXIST
 
 ```TypeScript
-BUNDLE_INSTALLED = 3
+BUNDLE_NOT_EXIST = 1
 ```
 
-The application has been installed.
+The application is not installed.
 
 **Since:** 26.0.1
 
-<!--Device-BundleInstallStatus-BUNDLE_INSTALLED = 3--><!--Device-BundleInstallStatus-BUNDLE_INSTALLED = 3-End-->
+<!--Device-BundleInstallStatus-BUNDLE_NOT_EXIST = 1--><!--Device-BundleInstallStatus-BUNDLE_NOT_EXIST = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core

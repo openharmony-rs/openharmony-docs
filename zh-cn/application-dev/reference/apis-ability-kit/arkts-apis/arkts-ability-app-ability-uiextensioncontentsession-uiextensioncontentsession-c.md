@@ -113,7 +113,7 @@ loadContent(path: string, storage?: LocalStorage): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**
@@ -229,6 +229,8 @@ struct UIExtensionPage {
 }
 ```
 
+<a id="setwindowprivacymode1"></a>
+
 ## setWindowPrivacyMode
 
 ```TypeScript
@@ -264,7 +266,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 
@@ -297,7 +299,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-<a id="setwindowprivacymode-1"></a>
+<a id="setwindowprivacymode2"></a>
 
 ## setWindowPrivacyMode
 
@@ -329,7 +331,7 @@ setWindowPrivacyMode(isPrivacyMode: boolean, callback: AsyncCallback<void>): voi
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 
@@ -361,6 +363,8 @@ export default class ShareExtAbility extends ShareExtensionAbility {
   // ...
 }
 ```
+
+<a id="startabilitybytype1"></a>
 
 ## startAbilityByType
 
@@ -436,7 +440,7 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
-<a id="startabilitybytype-2"></a>
+<a id="startabilitybytype3"></a>
 
 ## startAbilityByType
 
@@ -517,6 +521,8 @@ export default class ShareExtAbility extends ShareExtensionAbility {
 }
 ```
 
+<a id="terminateself1"></a>
+
 ## terminateSelf
 
 ```TypeScript
@@ -543,7 +549,7 @@ terminateSelf(callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 
@@ -579,7 +585,7 @@ struct Index {
 }
 ```
 
-<a id="terminateself-1"></a>
+<a id="terminateself2"></a>
 
 ## terminateSelf
 
@@ -637,6 +643,8 @@ struct Index {
 }
 ```
 
+<a id="terminateselfwithresult1"></a>
+
 ## terminateSelfWithResult
 
 ```TypeScript
@@ -657,14 +665,14 @@ terminateSelfWithResult(parameter: AbilityResult, callback: AsyncCallback<void>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给宿主应用的信息。 |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | 是 | 返回给宿主应用的信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当接口调用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 
@@ -710,7 +718,7 @@ struct Index {
 }
 ```
 
-<a id="terminateselfwithresult-1"></a>
+<a id="terminateselfwithresult2"></a>
 
 ## terminateSelfWithResult
 
@@ -732,7 +740,7 @@ terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给宿主应用的信息。 |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | 是 | 返回给宿主应用的信息。 |
 
 **返回值：**
 
@@ -744,7 +752,7 @@ terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 

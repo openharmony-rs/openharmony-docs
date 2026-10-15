@@ -8,10 +8,10 @@ type Image = string
 
 @typedef { string } Image
 
+**类型：** string
+
 **起始版本：** 15
 
 <!--Device-intelligence-type Image = string--><!--Device-intelligence-type Image = string-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**类型：** string

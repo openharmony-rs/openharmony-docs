@@ -18,7 +18,15 @@ Describes the app backup icon information.
 readonly enabled: boolean
 ```
 
-Whether the backup icon is enabled. true: The current backup icon is enabled. false: The current backup icon is not enabled.
+Whether the backup icon is enabled.
+
+true: The current backup icon is enabled.
+
+false: The current backup icon is not enabled.
+
+NOTE
+
+An app can enable at most one backup icon.
 
 **Type:** boolean
 

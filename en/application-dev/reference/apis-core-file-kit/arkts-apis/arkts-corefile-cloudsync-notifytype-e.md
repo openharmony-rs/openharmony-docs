@@ -26,20 +26,6 @@ A file is created.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## NOTIFY_MODIFIED
-
-```TypeScript
-NOTIFY_MODIFIED = 1
-```
-
-The file is modified.
-
-**Since:** 12
-
-<!--Device-NotifyType-NOTIFY_MODIFIED = 1--><!--Device-NotifyType-NOTIFY_MODIFIED = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## NOTIFY_DELETED
 
 ```TypeScript
@@ -51,6 +37,20 @@ The file is deleted.
 **Since:** 12
 
 <!--Device-NotifyType-NOTIFY_DELETED = 2--><!--Device-NotifyType-NOTIFY_DELETED = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## NOTIFY_MODIFIED
+
+```TypeScript
+NOTIFY_MODIFIED = 1
+```
+
+The file is modified.
+
+**Since:** 12
+
+<!--Device-NotifyType-NOTIFY_MODIFIED = 1--><!--Device-NotifyType-NOTIFY_MODIFIED = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

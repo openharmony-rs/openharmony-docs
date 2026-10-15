@@ -97,7 +97,7 @@ Callback called when the backup_sa service return result information. The first 
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13500006 | Tar error |
 | 13500008 | Untar error |
 | 13600001 | IPC error |
@@ -107,6 +107,7 @@ Callback called when the backup_sa service return result information. The first 
 | 13900020 | Invalid argument |
 | 13900025 | No space left on device |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -117,6 +118,8 @@ onProcess: (bundleName: string, process: string) => {
   console.info('onProcess processInfo : ' + process);
 }
 ```
+
+<!--DelEnd-->
 
 ## onResultReport
 
@@ -148,13 +151,14 @@ Callback called when the backup service return result information. The first ret
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13600001 | IPC error |
 | 13900005 | I/O error |
 | 13900011 | Out of memory |
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -165,6 +169,8 @@ onResultReport: (bundleName: string, result: string) => {
   console.info('onResultReport result : ' + result);
 }
 ```
+
+<!--DelEnd-->
 
 ## onAllBundlesEnd
 
@@ -195,6 +201,7 @@ Callback called when the all the bundles to backup/restore are done or aborted u
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -208,6 +215,8 @@ onAllBundlesEnd: (err: BusinessError) => {
   console.info('onAllBundlesEnd success');
 }
 ```
+
+<!--DelEnd-->
 
 ## onBackupServiceDied
 
@@ -227,6 +236,7 @@ Callback called when the backup service dies unexpectedly.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -234,6 +244,8 @@ onBackupServiceDied: () => {
   console.info('onBackupServiceDied success');
 }
 ```
+
+<!--DelEnd-->
 
 ## onBundleBegin
 
@@ -257,7 +269,7 @@ Callback called when a backup/restore procedure for an bundle is started. The fi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13500001 | The application is not added to the backup or restore |
 | 13500002 | Failed to start application extension Procedure |
 | 13600001 | IPC error |
@@ -266,6 +278,7 @@ Callback called when a backup/restore procedure for an bundle is started. The fi
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -279,6 +292,8 @@ onBundleBegin: (err: BusinessError, bundleName: string) => {
   console.info('onBundleBegin success');
 }
 ```
+
+<!--DelEnd-->
 
 ## onBundleEnd
 
@@ -302,7 +317,7 @@ Callback called when a backup/restore procedure for an bundle ends successfully 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3.Parameter verification failed. |
 | 13500003 | Backup or restore timed out |
 | 13500004 | Application extension death |
 | 13600001 | IPC error |
@@ -311,6 +326,7 @@ Callback called when a backup/restore procedure for an bundle ends successfully 
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -324,6 +340,8 @@ onBundleEnd: (err: BusinessError, bundleName: string) => {
   console.info('onBundleEnd success');
 }
 ```
+
+<!--DelEnd-->
 
 ## onFileReady
 
@@ -354,6 +372,7 @@ Callback called when the backup service tries to send files to the client. The F
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -369,6 +388,8 @@ onFileReady: (err: BusinessError, file: backup.File) => {
   fileIo.closeSync(file.fd);
 }
 ```
+
+<!--DelEnd-->
 
 ## onMigrateResult
 

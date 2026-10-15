@@ -18,7 +18,7 @@ In the following API examples, you must first use [getController](arkts-ime-inpu
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="hidesoftkeyboard-2"></a>
+<a id="hidesoftkeyboard3"></a>
 
 ## hideSoftKeyboard
 
@@ -64,6 +64,7 @@ Hides the soft keyboard on a specified screen. This API uses a promise to return
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-input-method-manager-service-error) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -77,7 +78,9 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
 });
 ```
 
-<a id="showsoftkeyboard-2"></a>
+<!--DelEnd-->
+
+<a id="showsoftkeyboard3"></a>
 
 ## showSoftKeyboard
 
@@ -123,6 +126,7 @@ Shows the soft keyboard on a specified screen. This API uses a promise to return
 | [12800003](../errorcode-inputmethod-framework.md#12800003-input-method-client-error) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-input-method-manager-service-error) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -135,3 +139,5 @@ inputMethod.getController().showSoftKeyboard(displayId).then(() => {
   console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

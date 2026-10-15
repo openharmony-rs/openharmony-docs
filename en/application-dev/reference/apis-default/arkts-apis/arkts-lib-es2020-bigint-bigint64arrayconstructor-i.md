@@ -9,6 +9,8 @@ interface BigInt64ArrayConstructor
 ```TypeScript
 ```
 
+<a id="construct1"></a>
+
 ## [[Construct]]
 
 ```TypeScript
@@ -21,7 +23,7 @@ new(length?: number): BigInt64Array
 | --- | --- | --- | --- |
 | length | number | No |  |
 
-<a id="construct-1"></a>
+<a id="construct2"></a>
 
 ## [[Construct]]
 
@@ -35,7 +37,7 @@ new(array: Iterable<bigint>): BigInt64Array
 | --- | --- | --- | --- |
 | array | Iterable&lt;bigint&gt; | Yes |  |
 
-<a id="construct-2"></a>
+<a id="construct3"></a>
 
 ## [[Construct]]
 
@@ -50,6 +52,8 @@ new(buffer: ArrayBufferLike, byteOffset?: number, length?: number): BigInt64Arra
 | buffer | [ArrayBufferLike](arkts-arraybufferlike-t.md) | Yes |  |
 | byteOffset | number | No |  |
 | length | number | No |  |
+
+<a id="from1"></a>
 
 ## from
 
@@ -67,7 +71,7 @@ Creates an array from an array-like or iterable object.
 | --- | --- | --- | --- |
 | arrayLike | ArrayLike&lt;bigint&gt; | Yes |  |
 
-<a id="from-1"></a>
+<a id="from2"></a>
 
 ## from
 

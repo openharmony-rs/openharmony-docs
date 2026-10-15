@@ -6,7 +6,9 @@ type DefaultData<T> = object
 
 Used for ide.
 
-@typedef { object } DefaultData&lt;T&gt;
+@typedef { object } DefaultData<T>
+
+**Type:** object
 
 **Since:** 4
 
@@ -17,5 +19,3 @@ Used for ide.
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **System API:** This is a system API.
-
-**Type:** object

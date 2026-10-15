@@ -12,19 +12,21 @@ enum SourceType
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## SOURCE_TYPE_WAKEUP
+## SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT
 
 ```TypeScript
-SOURCE_TYPE_WAKEUP = 3
+SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19
 ```
 
-语音唤醒音频流录制音频源。
+未处理的语音助手音频源。
 
-ohos.permission.MANAGE_INTELLIGENT_VOICE
+此接口仅可在Stage模型下使用。
 
-**起始版本：** 10
+**起始版本：** 23
 
-<!--Device-SourceType-SOURCE_TYPE_WAKEUP = 3--><!--Device-SourceType-SOURCE_TYPE_WAKEUP = 3-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SourceType-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19--><!--Device-SourceType-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -64,21 +66,19 @@ SOURCE_TYPE_VOICE_TRANSCRIPTION = 12
 
 **系统接口：** 此接口为系统接口。
 
-## SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT
+## SOURCE_TYPE_WAKEUP
 
 ```TypeScript
-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19
+SOURCE_TYPE_WAKEUP = 3
 ```
 
-未处理的语音助手音频源。
+语音唤醒音频流录制音频源。
 
-此接口仅可在Stage模型下使用。
+ohos.permission.MANAGE_INTELLIGENT_VOICE
 
-**起始版本：** 23
+**起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SourceType-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19--><!--Device-SourceType-SOURCE_TYPE_UNPROCESSED_VOICE_ASSISTANT = 19-End-->
+<!--Device-SourceType-SOURCE_TYPE_WAKEUP = 3--><!--Device-SourceType-SOURCE_TYPE_WAKEUP = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

@@ -28,22 +28,6 @@ A low battery alert is displayed.
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
-## BATTERY_STATUS_OKAY
-
-```TypeScript
-BATTERY_STATUS_OKAY = 1
-```
-
-The battery level is restored from low to normal.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-BatteryStatus-BATTERY_STATUS_OKAY = 1--><!--Device-BatteryStatus-BATTERY_STATUS_OKAY = 1-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
-
 ## BATTERY_STATUS_LOW_OR_OKAY
 
 ```TypeScript
@@ -57,5 +41,21 @@ The battery level is restored from low to normal, or a low battery alert is disp
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-BatteryStatus-BATTERY_STATUS_LOW_OR_OKAY = 2--><!--Device-BatteryStatus-BATTERY_STATUS_LOW_OR_OKAY = 2-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
+
+## BATTERY_STATUS_OKAY
+
+```TypeScript
+BATTERY_STATUS_OKAY = 1
+```
+
+The battery level is restored from low to normal.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BatteryStatus-BATTERY_STATUS_OKAY = 1--><!--Device-BatteryStatus-BATTERY_STATUS_OKAY = 1-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler

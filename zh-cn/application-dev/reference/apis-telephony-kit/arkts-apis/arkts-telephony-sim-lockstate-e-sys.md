@@ -20,7 +20,7 @@ Indicates the lock states.
 LOCK_OFF = 0
 ```
 
-Indicates that the lock state card is in the &lt;b&gt;off&lt;/b&gt; state.
+Indicates that the lock state card is in the <b>off</b> state.
 
 **起始版本：** 8
 
@@ -36,7 +36,7 @@ Indicates that the lock state card is in the &lt;b&gt;off&lt;/b&gt; state.
 LOCK_ON = 1
 ```
 
-Indicates that the lock state card is in the &lt;b&gt;on&lt;/b&gt; state.
+Indicates that the lock state card is in the <b>on</b> state.
 
 **起始版本：** 8
 

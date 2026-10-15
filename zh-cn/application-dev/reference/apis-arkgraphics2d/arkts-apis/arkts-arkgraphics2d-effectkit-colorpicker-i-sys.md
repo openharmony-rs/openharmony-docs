@@ -4,7 +4,7 @@
 interface ColorPicker
 ```
 
-取色类，用于从一张图像数据中获取它的主要颜色，适用于UI主题色提取、图片配色分析、智能配色推荐等场景，可帮助开发者基于图片内容动态生成和谐的配色方案。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md)创建一个ColorPicker实例。
+取色类，用于从一张图像数据中获取它的主要颜色，适用于UI主题色提取、图片配色分析、智能配色推荐等场景，可帮助开发者基于图片内容动态生成和谐的配色方案。在调用ColorPicker的方法前，需要先通过[createColorPicker](arkts-arkgraphics2d-effectkit-createcolorpicker-f.md#createcolorpicker1)创建一个ColorPicker实例。
 
 **起始版本：** 9
 
@@ -30,7 +30,7 @@ discriminatePictureLightDegree(): PictureLightDegree
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-discriminatePictureLightDegree(): PictureLightDegree--><!--Device-ColorPicker-discriminatePictureLightDegree(): PictureLightDegree-End-->
 
@@ -44,6 +44,7 @@ discriminatePictureLightDegree(): PictureLightDegree
 | --- | --- |
 | [PictureLightDegree](arkts-arkgraphics2d-effectkit-picturelightdegree-e-sys.md) | 图像颜色明亮程度。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,6 +73,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getAlphaZeroTransparentProportion
 
 ```TypeScript
@@ -82,7 +85,7 @@ getAlphaZeroTransparentProportion(): number
 
 **起始版本：** 23
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getAlphaZeroTransparentProportion(): double--><!--Device-ColorPicker-getAlphaZeroTransparentProportion(): double-End-->
 
@@ -100,8 +103,9 @@ getAlphaZeroTransparentProportion(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -123,12 +127,14 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-        let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
+      let percentage: number = colorPicker.getAlphaZeroTransparentProportion();
       console.info('Get proportion of fully transparent pixels: ' + percentage);
     }
   });
 });
 ```
+
+<!--DelEnd-->
 
 ## getComplexityDegree
 
@@ -140,7 +146,7 @@ getComplexityDegree(): PictureComplexityDegree
 
 **起始版本：** 22
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getComplexityDegree(): PictureComplexityDegree--><!--Device-ColorPicker-getComplexityDegree(): PictureComplexityDegree-End-->
 
@@ -158,8 +164,9 @@ getComplexityDegree(): PictureComplexityDegree
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -188,6 +195,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getDeepenImmersionColor
 
 ```TypeScript
@@ -200,7 +209,7 @@ getDeepenImmersionColor(): Color
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getDeepenImmersionColor(): Color--><!--Device-ColorPicker-getDeepenImmersionColor(): Color-End-->
 
@@ -214,6 +223,7 @@ getDeepenImmersionColor(): Color
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color实例，即图像强沉浸色对应的颜色值。当图像处理失败或无法生成沉浸色时返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -235,12 +245,14 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let color = colorPicker.getDeepenImmersionColor();
-      console.info('get deepen immersion color =' + color);
+      let deepenImmersionColor = colorPicker.getDeepenImmersionColor();
+      console.info('get deepen immersion color =' + deepenImmersionColor);
     }
   });
 });
 ```
+
+<!--DelEnd-->
 
 ## getImmersiveBackgroundColor
 
@@ -254,7 +266,7 @@ getImmersiveBackgroundColor(): Color
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getImmersiveBackgroundColor(): Color--><!--Device-ColorPicker-getImmersiveBackgroundColor(): Color-End-->
 
@@ -268,6 +280,7 @@ getImmersiveBackgroundColor(): Color
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color实例，即图像沉浸式背景色对应的颜色值。当图像处理失败或无法生成沉浸式背景色时返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -289,12 +302,14 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let color = colorPicker.getImmersiveBackgroundColor();
-      console.info('get immersive background color =' + color);
+      let immersiveBackgroundColor = colorPicker.getImmersiveBackgroundColor();
+      console.info('get immersive background color =' + immersiveBackgroundColor);
     }
   })
 });
 ```
+
+<!--DelEnd-->
 
 ## getImmersiveForegroundColor
 
@@ -308,7 +323,7 @@ getImmersiveForegroundColor(): Color
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getImmersiveForegroundColor(): Color--><!--Device-ColorPicker-getImmersiveForegroundColor(): Color-End-->
 
@@ -322,6 +337,7 @@ getImmersiveForegroundColor(): Color
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color实例，即图像沉浸式前景色对应的颜色值。当图像处理失败或无法生成沉浸式前景色时返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -343,12 +359,14 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let color = colorPicker.getImmersiveForegroundColor();
-      console.info('get immersive foreground color =' + color);
+      let immersiveForegroundColor = colorPicker.getImmersiveForegroundColor();
+      console.info('get immersive foreground color =' + immersiveForegroundColor);
     }
   });
 });
 ```
+
+<!--DelEnd-->
 
 ## getMorandiShadowColor
 
@@ -362,7 +380,7 @@ getMorandiShadowColor(): Color
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getMorandiShadowColor(): Color--><!--Device-ColorPicker-getMorandiShadowColor(): Color-End-->
 
@@ -376,6 +394,7 @@ getMorandiShadowColor(): Color
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color实例，即图像莫兰迪阴影色对应的颜色值。当图像处理失败或无法获取莫兰迪阴影色时返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -397,12 +416,14 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let color = colorPicker.getMorandiShadowColor();
-      console.info('get Morandi shadow color =' + color);
+      let morandiColor = colorPicker.getMorandiShadowColor();
+      console.info('get Morandi shadow color =' + morandiColor);
     }
   });
 });
 ```
+
+<!--DelEnd-->
 
 ## getReverseColor
 
@@ -416,7 +437,7 @@ getReverseColor(): Color
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getReverseColor(): Color--><!--Device-ColorPicker-getReverseColor(): Color-End-->
 
@@ -430,6 +451,7 @@ getReverseColor(): Color
 | --- | --- |
 | [Color](arkts-arkgraphics2d-effectkit-color-i.md) | Color实例，即图像反向颜色对应的颜色值。当图像处理失败或无法生成反向颜色时返回null。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -451,12 +473,14 @@ image.createPixelMap(color, opts).then((pixelMap) => {
       console.error('Failed to create color picker.');
     } else {
       console.info('Succeeded in creating color picker.');
-      let color = colorPicker.getReverseColor();
-      console.info('get reverse color =' + color);
+      let reverseColor = colorPicker.getReverseColor();
+      console.info('get reverse color =' + reverseColor);
     }
   });
 });
 ```
+
+<!--DelEnd-->
 
 ## getShadeDegree
 
@@ -468,7 +492,7 @@ getShadeDegree(): PictureShadeDegree
 
 **起始版本：** 22
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getShadeDegree(): PictureShadeDegree--><!--Device-ColorPicker-getShadeDegree(): PictureShadeDegree-End-->
 
@@ -486,8 +510,9 @@ getShadeDegree(): PictureShadeDegree
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -516,6 +541,8 @@ image.createPixelMap(color, opts).then((pixelMap) => {
 });
 ```
 
+<!--DelEnd-->
+
 ## getTopProportionColorsAndPercentage
 
 ```TypeScript
@@ -526,7 +553,7 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 
 **起始版本：** 22
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本22开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ColorPicker-getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double | null>--><!--Device-ColorPicker-getTopProportionColorsAndPercentage(colorCount: int): Map<Color | null, double | null>-End-->
 
@@ -544,14 +571,15 @@ getTopProportionColorsAndPercentage(colorCount: number): Map<Color | null, numbe
 
 | 类型 | 说明 |
 | --- | --- |
-| Map&lt;[Color](arkts-arkgraphics2d-effectkit-color-i.md) &#124; null, number &#124; null&gt; | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。   - 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。   - 取色失败或取色个数小于1返回`Map()`。 |
+| Map&lt;[Color](arkts-arkgraphics2d-effectkit-color-i.md) &#124; null, number &#124; null&gt; | 图像占比前`colorCount`的颜色值与对应比例的字典，比例的取值范围为[0,1]。           - 当实际读取的特征色个数小于`colorCount`时，字典大小为实际特征色个数。           - 取色失败或取色个数小于1返回`Map()`。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -581,3 +609,5 @@ image.createPixelMap(color, opts).then((pixelMap) => {
   });
 });
 ```
+
+<!--DelEnd-->

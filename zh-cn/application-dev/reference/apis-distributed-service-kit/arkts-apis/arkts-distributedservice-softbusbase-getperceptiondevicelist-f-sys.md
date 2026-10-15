@@ -48,3 +48,31 @@ function getPerceptionDeviceList(type: PerceptionType): Promise<PerceptionDevice
 | [2000002](../errorcode-softbusBase.md#2000002-调用顺序错误) | Caller error. The caller did not call the API in the specified order. |
 | [2000003](../errorcode-softbusBase.md#2000003-临时错误) | Temporary error. The request failed due to a temporary error and can be retried. |
 | [2006001](../errorcode-softbusBase.md#2006001-底层模块错误) | Underlying module error. The request failed due to an error in another underlying module and can be retried after a period of time. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import softbusBase from '@ohos.distributed.softbusBase';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  softbusBase.getPerceptionDeviceList(softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE)
+    .then((devices: Array<softbusBase.PerceptionDeviceInfo>) => {
+      console.info(`getPerceptionDeviceList success, count: ${devices.length}`);
+      devices.forEach((device, idx) => {
+        let idView = new Uint8Array(device.deviceId);
+        let dataView = new Uint8Array(device.customData);
+        console.info(`device[${idx}]: type=${device.deviceType}, idLen=${idView.length}, customDataLen=${dataView.length}`);
+      });
+    })
+    .catch((err: BusinessError) => {
+      console.error(`Failed to getPerceptionDeviceList. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (err) {
+  const error: BusinessError = err as BusinessError;
+  console.error(`Failed to getPerceptionDeviceList. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 export interface RealTimeWeatherInfo
 ```
 
-Interface for realtime weather response info.
+Interface for real-time weather response info.
 
 **Since:** 26.0.1
 
@@ -24,7 +24,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 timestamp: number
 ```
 
-Indicates timestamp . Unit: milliseconds.
+Timestamp of the recognition result. Unit: ms.
 
 **Type:** number
 
@@ -42,7 +42,9 @@ Indicates timestamp . Unit: milliseconds.
 weather: number
 ```
 
-Indicates current weather.
+Weather status.  
+- 1: Invalid  
+0: Other 1: Fog 2: Dense fog 3: Snow 4: Heavy snow 5: Rain 6: Heavy rain.
 
 **Type:** number
 

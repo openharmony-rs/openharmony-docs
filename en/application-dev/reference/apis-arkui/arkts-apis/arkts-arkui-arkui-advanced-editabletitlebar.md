@@ -18,7 +18,7 @@ import { EditableLeftIconType, EditableTitleBar, EditableTitleBarMenuItem, Edita
 
 | Name | Description |
 | --- | --- |
-| [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md) | The editable title bar is a title bar that comes with button icons, typically **Cancel** on the left and **Confirm** on the right, on a multi-select or editing page. |
+| [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md) | An editable title bar component that provides a standard title bar implementation for editing scenarios. It supports custom left button types (back/cancel), profile picture display, right-side menu items, background blur styles, and other features. It is suitable for scenarios requiring content editing and multi-selection operations, such as album multi-select editing, text editors, and form editing pages. This component encapsulates common UI interaction patterns for editing scenarios (left close, right confirm), so developers do not need to implement the title bar layout and interaction logic themselves. It enables rapid construction of editing pages that comply with design specifications, improving development efficiency and ensuring UI consistency. It also supports accessibility property configuration to meet accessibility requirements. |
 
 ### Interfaces
 

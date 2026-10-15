@@ -55,7 +55,7 @@ Obtains the flags of a specified permission for a specified app. This API uses a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission specified below. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
@@ -64,6 +64,7 @@ Obtains the flags of a specified permission for a specified app. This API uses a
 | [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | The operation is not allowed. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -78,6 +79,10 @@ atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIO
   console.error(`getPermissionFlags fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="getpermissionrequesttogglestatus1"></a>
 
 ## getPermissionRequestToggleStatus
 
@@ -115,14 +120,15 @@ Obtains the toggle state of a permission. This API uses a promise to return the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission specified below. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | [12100003](../errorcode-access-token.md#12100003-permission-not-exist) | The specified permission does not exist. |
-| [12100004](../errorcode-access-token.md#12100004-listener-apis-not-used-in-pairs) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**Applicable version:** 26.0.1 and later |
+| [12100004](../errorcode-access-token.md#12100004-listener-apis-not-used-in-pairs) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus1).<br>**Applicable version:** 26.0.1 and later |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -143,7 +149,9 @@ atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessC
 });
 ```
 
-<a id="getpermissionrequesttogglestatus-1"></a>
+<!--DelEnd-->
+
+<a id="getpermissionrequesttogglestatus2"></a>
 
 ## getPermissionRequestToggleStatus
 
@@ -192,9 +200,12 @@ Obtains the permission dialog toggle status for a specified permission under a s
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-internal-service-error) | Common inner error. A database error occurs. |
 
+<!--Del-->
 **Examples**
 
 See [getPermissionRequestToggleStatus](#getpermissionrequesttogglestatus)
+
+<!--DelEnd-->
 
 ## getPermissionsStatus
 
@@ -233,13 +244,14 @@ Obtains the status of the specified permissions. This API uses a promise to retu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0 or the permissionList is empty or exceeds the size limit. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid-not-exist) | The specified tokenID does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -254,6 +266,8 @@ atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: 
   console.error(`getPermissionsStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getVersion
 
@@ -285,6 +299,7 @@ Obtains the data version number of the current permission management. This API u
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -299,6 +314,8 @@ promise.then((data: number) => {
   console.error(`getVersion fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## grantPermission
 
@@ -347,6 +364,7 @@ Grants an app permission. After the call is successful, the specified app obtain
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100014](../errorcode-access-token.md#12100014-unexpected-permission) | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -362,6 +380,10 @@ atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags
   console.error(`grantPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="grantusergrantedpermission1"></a>
 
 ## grantUserGrantedPermission
 
@@ -403,7 +425,7 @@ This API only supports granting permissions of the user_grant type. If you need 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
@@ -412,6 +434,7 @@ This API only supports granting permissions of the user_grant type. If you need 
 | [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -428,7 +451,9 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 });
 ```
 
-<a id="grantusergrantedpermission-1"></a>
+<!--DelEnd-->
+
+<a id="grantusergrantedpermission2"></a>
 
 ## grantUserGrantedPermission
 
@@ -468,7 +493,7 @@ Grants a user_grant permission to an app. This API uses an asynchronous callback
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
@@ -477,6 +502,7 @@ Grants a user_grant permission to an app. This API uses an asynchronous callback
 | [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -495,6 +521,8 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 });
 ```
 
+<!--DelEnd-->
+
 ## off('permissionStateChange')
 
 ```TypeScript
@@ -510,7 +538,7 @@ Unsubscribes from changes in the state of the specified permissions for the toke
 
 When unsubscribing, if no callback is passed in, all listening callbacks that completely match the tokenIDList and permissionList will be unsubscribed in batches.
 
-This API is usually used together with [on](#onpermissionstatechange) to cancel the listening relationship created by on.
+This API is usually used together with [on](arkts-ability-abilityaccessctrl-atmanager-i.md#on) to cancel the listening relationship created by on.
 
 **Since:** 9
 
@@ -529,20 +557,21 @@ This API is usually used together with [on](#onpermissionstatechange) to cancel 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'permissionStateChange' | Yes | Event type. The value is **'permissionStateChange'**, which indicates the permission state changes. |
-| tokenIDList | Array&lt;number&gt; | Yes | List of token IDs to unsubscribe from. If this parameter is left empty, it indicates unsubscribing from permission state changes of all apps. This parameter must be consistent with the input of [on](#onpermissionstatechange). The app identity can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The maximum length is 1024. Value constraint: Each token ID in the list must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names to unsubscribe from. If this parameter is left empty, it indicates unsubscribing from all permission state changes. This parameter must be consistent with the input of [on](#onpermissionstatechange). Passing an invalid value returns error code 12100001. <br>The maximum length is 1024. Value constraint: Each permission name in the list must be a valid permission name, and its length cannot exceed 256 characters. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)&gt; | No | Callback used to return the object for unsubscribing from state change events of the specified tokenID and permission name. This callback must be consistent with the callback registered in [on](#onpermissionstatechange). If this parameter is not passed, all listener callbacks that exactly match tokenIDList and permissionList will be canceled. |
+| tokenIDList | Array&lt;number&gt; | Yes | List of token IDs to unsubscribe from. If this parameter is left empty, it indicates unsubscribing from permission state changes of all apps. This parameter must be consistent with the input of [on](arkts-ability-abilityaccessctrl-atmanager-i.md#on). The app identity can be obtained through the [accessTokenId](arkts-ability-applicationinfo-i.md#accesstokenid) field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The maximum length is 1024. Value constraint: Each token ID in the list must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
+| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names to unsubscribe from. If this parameter is left empty, it indicates unsubscribing from all permission state changes. This parameter must be consistent with the input of [on](arkts-ability-abilityaccessctrl-atmanager-i.md#on). Passing an invalid value returns error code 12100001. <br>The maximum length is 1024. Value constraint: Each permission name in the list must be a valid permission name, and its length cannot exceed 256 characters. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)&gt; | No | Callback used to return the object for unsubscribing from state change events of the specified tokenID and permission name. This callback must be consistent with the callback registered in [on](arkts-ability-abilityaccessctrl-atmanager-i.md#on). If this parameter is not passed, all listener callbacks that exactly match tokenIDList and permissionList will be canceled. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenIDList or permissionList is not in the listening list. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -561,6 +590,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## on('permissionStateChange')
 
 ```TypeScript
@@ -578,7 +609,7 @@ Multiple callbacks can be registered for the specified **tokenIDList** and **per
 
 If a new subscription overlaps with an existing subscription in terms of the tokenID list and permission list, the same callback cannot be used for subscription.
 
-This API is usually used together with [off](#offpermissionstatechange). When listening is no longer needed, off should be called to unsubscribe.
+This API is usually used together with [off](arkts-ability-abilityaccessctrl-atmanager-i.md#off). When listening is no longer needed, off should be called to unsubscribe.
 
 **Since:** 9
 
@@ -598,14 +629,14 @@ This API is usually used together with [off](#offpermissionstatechange). When li
 | --- | --- | --- | --- |
 | type | 'permissionStateChange' | Yes | Event type. The value is **'permissionStateChange'**, which indicates the permission state changes. |
 | tokenIDList | Array&lt;number&gt; | Yes | List of token IDs to subscribe to. If left empty, it subscribes to permission status changes of all apps. The app identity can be obtained through the [accessTokenId]{@link./bundleManager/ApplicationInfo:ApplicationInfo.accessTokenId} field in ApplicationInfo of BundleInfo. Passing an invalid value returns error code 12100001. <br>The maximum length is 1024. Value constraint: Each token ID in the list must be an integer greater than 0. <br>For BundleInfo acquisition, please refer to: [bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md). |
-| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names to subscribe to. Passing an invalid value returns error code 12100001.<br>The maximum length is 1024 and cannot be empty. Value constraint: Each permission name in the list must be a valid permission name, and its length cannot exceed 256 characters. |
+| permissionList | Array&lt;[Permissions](arkts-ability-permissions-t.md)&gt; | Yes | List of permission names to subscribe to. If left empty, it subscribes to permission state changes of all permissions. Passing an invalid value returns error code 12100001.<br>The maximum length is 1024. Value constraint: Each permission name in the list must be a valid permission name, and its length cannot exceed 256 characters. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)&gt; | Yes | Callback used to return the result. Callback for subscribing to the status change events of the specified tokenID and permission name. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. Possible causes: 1. The tokenIDList or permissionList exceeds the size limit; 2. The tokenIDs or permissionNames in the list are all invalid. |
@@ -613,6 +644,7 @@ This API is usually used together with [off](#offpermissionstatechange). When li
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-out-of-memory) | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -634,6 +666,8 @@ try {
   console.error(`catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## queryStatusByPermission
 
@@ -679,6 +713,7 @@ Queries all apps that have requested the specified permissions and their permiss
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100015](../errorcode-access-token.md#12100015-queried-data-exceeds-the-upper-limit) | The queried data exceeds the upper limit. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -693,6 +728,8 @@ atManager.queryStatusByPermission(permissionList).then((data: Array<abilityAcces
   console.error(`queryStatusByPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## queryStatusByTokenID
 
@@ -737,6 +774,7 @@ Queries all permission statuses of an app based on its tokenID list. This API us
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100015](../errorcode-access-token.md#12100015-queried-data-exceeds-the-upper-limit) | The queried data exceeds the upper limit. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -752,6 +790,8 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
   console.error(`queryStatusByTokenID fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## requestPermissionOnApplicationSetting
 
@@ -792,6 +832,7 @@ Starts the permission settings page for an application. This API uses a promise 
 | [12100002](../errorcode-access-token.md#12100002-tokenid-not-exist) | The specified tokenID does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -806,6 +847,8 @@ atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
   console.error(`requestPermissionOnApplicationSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## requestPermissionsFromUserWithWindowId
 
@@ -853,6 +896,7 @@ If the user denies authorization, the dialog cannot be pulled up again. Permissi
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. windowId is invalid. |
 | [12100009](../errorcode-access-token.md#12100009-internal-service-error) | Common inner error. An error occurs when creating the popup window or obtaining the user operation result. |
 
+<!--Del-->
 **Examples**
 
 For details about how to obtain the context in the example, see [Obtaining the Context of UIAbility](../../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
@@ -879,6 +923,8 @@ atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permi
   console.error(`requestPermissionsFromUserWithWindowId fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## revokePermission
 
@@ -934,6 +980,7 @@ When the killProcess parameter is true and the permission status changes from "a
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100014](../errorcode-access-token.md#12100014-unexpected-permission) | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -956,6 +1003,10 @@ atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlag
   console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="revokeusergrantedpermission1"></a>
 
 ## revokeUserGrantedPermission
 
@@ -999,7 +1050,7 @@ When the permission status changes from "authorized" to "unauthorized", the app 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
@@ -1008,6 +1059,7 @@ When the permission status changes from "authorized" to "unauthorized", the app 
 | [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1024,7 +1076,9 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 });
 ```
 
-<a id="revokeusergrantedpermission-1"></a>
+<!--DelEnd-->
+
+<a id="revokeusergrantedpermission2"></a>
 
 ## revokeUserGrantedPermission
 
@@ -1064,7 +1118,7 @@ Revokes a user_grant permission from an app. This API uses an asynchronous callb
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
@@ -1073,6 +1127,7 @@ Revokes a user_grant permission from an app. This API uses an asynchronous callb
 | [12100006](../errorcode-access-token.md#12100006-operation-not-allowed) | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1090,6 +1145,10 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
   }
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setpermissionrequesttogglestatus1"></a>
 
 ## setPermissionRequestToggleStatus
 
@@ -1128,7 +1187,7 @@ Sets the dialog toggle status for a specified permission of the current user. Af
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. Interface caller does not have permission specified below. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-invalid-parameters) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
@@ -1137,6 +1196,7 @@ Sets the dialog toggle status for a specified permission of the current user. Af
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-internal-service-error) | Common inner error. A database error occurs. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1153,7 +1213,9 @@ atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.Permiss
 });
 ```
 
-<a id="setpermissionrequesttogglestatus-1"></a>
+<!--DelEnd-->
+
+<a id="setpermissionrequesttogglestatus2"></a>
 
 ## setPermissionRequestToggleStatus
 
@@ -1205,6 +1267,9 @@ Sets the dialog toggle status for a specified permission under a specified sub-p
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-internal-service-error) | Common inner error. A database error occurs. |
 
+<!--Del-->
 **Examples**
 
 See [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus)
+
+<!--DelEnd-->

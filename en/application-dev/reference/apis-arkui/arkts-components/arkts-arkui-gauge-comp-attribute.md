@@ -6,7 +6,7 @@ declare class GaugeAttribute extends CommonMethod<GaugeAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** GaugeAttribute extends CommonMethod<GaugeAttribute>
+**Inheritance/Implementation:** GaugeAttribute extends CommonMethod&lt;GaugeAttribute&gt;
 
 **Since:** 8
 
@@ -46,7 +46,7 @@ A ring of the gradient type contains a maximum of nine color segments. If there 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| colors | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient &#124; Array&lt;[ResourceColor &#124; LinearGradient, number]&gt; | Yes | Colors of the gauge, which support segmented color settings.<br>Default value since API version 9: Color.Black <br>Default value since API version 11: <br>If no color is passed or the array is empty, the ring type and colors cannot be determined, and the ring is a gradient ring with the colors "0xFF64BB5C", "0xFFF7CE00", and "0xFFE84026". <br>If a color is passed but the color value is invalid, the color is "0xFFE84026". <br>If the proportion of a color is 0, the color is not displayed in the ring. If the proportions of all colors are 0, the ring is not displayed. <br>Since API version 10, the Array&lt;ResourceColor, number&gt; type is supported. <br>Since API version 11, the LinearGradient and Array&lt;LinearGradient, number&gt; types are supported.<br>**Since:** 11 |
+| colors | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient &#124; Array&lt;[ResourceColor &#124; LinearGradient, number]&gt; | Yes | Colors of the gauge, which support segmented color settings.<br>Default value since API version 9: Color.Black <br>Default value since API version 11: <br>If no color is passed or the array is empty, the ring type and colors cannot be determined, and the ring is a gradient ring with the colors "0xFF64BB5C", "0xFFF7CE00", and "0xFFE84026". <br>If a color is passed but the color value is invalid, the color is "0xFFE84026". <br>If the proportion of a color is 0, the color is not displayed in the ring. If the proportions of all colors are 0, the ring is not displayed. <br>Since API version 10, the Array<ResourceColor, number> type is supported. <br>Since API version 11, the LinearGradient and Array<LinearGradient, number> types are supported.<br>**Since:** 11 |
 
 ## contentModifier
 

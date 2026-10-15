@@ -12,19 +12,19 @@ export enum RecurrenceFrequency
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
-## YEARLY
+## DAILY
 
 ```TypeScript
-YEARLY = 0
+DAILY = 3
 ```
 
-每年重复。
+每天重复。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-RecurrenceFrequency-YEARLY = 0--><!--Device-RecurrenceFrequency-YEARLY = 0-End-->
+<!--Device-RecurrenceFrequency-DAILY = 3--><!--Device-RecurrenceFrequency-DAILY = 3-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -60,18 +60,18 @@ WEEKLY = 2
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
-## DAILY
+## YEARLY
 
 ```TypeScript
-DAILY = 3
+YEARLY = 0
 ```
 
-每天重复。
+每年重复。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-RecurrenceFrequency-DAILY = 3--><!--Device-RecurrenceFrequency-DAILY = 3-End-->
+<!--Device-RecurrenceFrequency-YEARLY = 0--><!--Device-RecurrenceFrequency-YEARLY = 0-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData

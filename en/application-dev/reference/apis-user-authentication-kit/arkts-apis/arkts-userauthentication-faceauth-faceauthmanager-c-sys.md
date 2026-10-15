@@ -36,6 +36,7 @@ Creates a face authentication manager object.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -43,6 +44,8 @@ import { faceAuth } from '@kit.UserAuthenticationKit';
 
 let faceAuthManager = new faceAuth.FaceAuthManager();
 ```
+
+<!--DelEnd-->
 
 ## setSurfaceId
 
@@ -76,6 +79,7 @@ Sets the **SurfaceId** of the face preview page during face enrollment. This API
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied. Called by non-system application. |
 | [12700001](../errorcode-useriam.md#12700001-facial-authentication-service-unavailable) | The service is unavailable. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -93,3 +97,5 @@ try {
   console.error(`set surface id failed, Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

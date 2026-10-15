@@ -12,22 +12,6 @@ enum SessionStatus
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core
 
-## RUNNING
-
-```TypeScript
-RUNNING = 'running'
-```
-
-会话正在进行中。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SessionStatus-RUNNING = 'running'--><!--Device-SessionStatus-RUNNING = 'running'-End-->
-
-**系统能力：** SystemCapability.Ability.AgentRuntime.Core
-
 ## COMPLETED
 
 ```TypeScript
@@ -57,5 +41,21 @@ FAILED = 'failed'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-SessionStatus-FAILED = 'failed'--><!--Device-SessionStatus-FAILED = 'failed'-End-->
+
+**系统能力：** SystemCapability.Ability.AgentRuntime.Core
+
+## RUNNING
+
+```TypeScript
+RUNNING = 'running'
+```
+
+会话正在进行中。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SessionStatus-RUNNING = 'running'--><!--Device-SessionStatus-RUNNING = 'running'-End-->
 
 **系统能力：** SystemCapability.Ability.AgentRuntime.Core

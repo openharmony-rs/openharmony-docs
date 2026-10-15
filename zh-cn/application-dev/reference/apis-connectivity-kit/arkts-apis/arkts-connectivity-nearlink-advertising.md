@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace advertising--><!--Device-unnamed-declare namespace advertising-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -22,10 +20,10 @@ import { advertising } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md) | 取消订阅星闪广播状态变化事件。使用callback异步回调。 |
-| [onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md) | 订阅星闪广播状态变化事件。使用callback异步回调。当调用[advertising.startAdvertising](arkts-connectivity-advertising-startadvertising-f.md)启动广播或[advertising.stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md)停止广播时，回调函数会被触发，返回对应的广播ID与广播状态。需与[advertising.offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md)配对使用。 |
-| [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md) | 发送星闪广播。使用Promise异步回调。适用于设备发现、设备信息广播等需要将本端设备能力或数据对外发布的业务场景，配合[advertising.onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md)可监听广播启停状态。 |
-| [stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md) | 停止发送星闪广播。使用Promise异步回调。 |
+| [offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md#offadvertisingstatechange) | 取消订阅星闪广播状态变化事件。使用callback异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md#onadvertisingstatechange) | 订阅星闪广播状态变化事件。使用callback异步回调。当调用[advertising.startAdvertising](arkts-connectivity-advertising-startadvertising-f.md)启动广播或[advertising.stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md)停止广播时，回调函数会被触发，返回对应的广播ID与广播状态。需与[advertising.offAdvertisingStateChange](arkts-connectivity-advertising-offadvertisingstatechange-f.md)配对使用。 |
+| [startAdvertising](arkts-connectivity-advertising-startadvertising-f.md#startadvertising) | 发送星闪广播。使用Promise异步回调。适用于设备发现、设备信息广播等需要将本端设备能力或数据对外发布的业务场景，配合[advertising.onAdvertisingStateChange](arkts-connectivity-advertising-onadvertisingstatechange-f.md)可监听广播启停状态。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [stopAdvertising](arkts-connectivity-advertising-stopadvertising-f.md#stopadvertising) | 停止发送星闪广播。使用Promise异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
 
 ### 接口
 

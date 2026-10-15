@@ -14,22 +14,6 @@ Enumerates USB device function types.
 
 **System API:** This is a system API.
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-No function.
-
-**Since:** 9
-
-<!--Device-FunctionType-NONE = 0--><!--Device-FunctionType-NONE = 0-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-**System API:** This is a system API.
-
 ## ACM
 
 ```TypeScript
@@ -41,6 +25,22 @@ Abstract control model (ACM) with serial port communication function, which is u
 **Since:** 9
 
 <!--Device-FunctionType-ACM = 1--><!--Device-FunctionType-ACM = 1-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+**System API:** This is a system API.
+
+## AUDIO_SOURCE
+
+```TypeScript
+AUDIO_SOURCE = 128
+```
+
+Audio source, which is used for audio data transfer (not supported currently).
+
+**Since:** 9
+
+<!--Device-FunctionType-AUDIO_SOURCE = 128--><!--Device-FunctionType-AUDIO_SOURCE = 128-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -78,6 +78,22 @@ HarmonyOS device connector (HDC).
 
 **System API:** This is a system API.
 
+## MIDI
+
+```TypeScript
+MIDI = 64
+```
+
+Musical instrument digital interface (MIDI), which is used for communication with MIDI devices (not supported currently).
+
+**Since:** 9
+
+<!--Device-FunctionType-MIDI = 64--><!--Device-FunctionType-MIDI = 64-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+**System API:** This is a system API.
+
 ## MTP
 
 ```TypeScript
@@ -89,6 +105,38 @@ Media transfer protocol (MTP).
 **Since:** 9
 
 <!--Device-FunctionType-MTP = 8--><!--Device-FunctionType-MTP = 8-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+**System API:** This is a system API.
+
+## NCM
+
+```TypeScript
+NCM = 256
+```
+
+Network control model (NCM), which is used for high-speed network sharing (not supported currently).
+
+**Since:** 9
+
+<!--Device-FunctionType-NCM = 256--><!--Device-FunctionType-NCM = 256-End-->
+
+**System capability:** SystemCapability.USB.USBManager
+
+**System API:** This is a system API.
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+No function.
+
+**Since:** 9
+
+<!--Device-FunctionType-NONE = 0--><!--Device-FunctionType-NONE = 0-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -121,54 +169,6 @@ Remote network driver interface specification (RNDIS), which is used for network
 **Since:** 9
 
 <!--Device-FunctionType-RNDIS = 32--><!--Device-FunctionType-RNDIS = 32-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-**System API:** This is a system API.
-
-## MIDI
-
-```TypeScript
-MIDI = 64
-```
-
-Musical instrument digital interface (MIDI), which is used for communication with MIDI devices (not supported currently).
-
-**Since:** 9
-
-<!--Device-FunctionType-MIDI = 64--><!--Device-FunctionType-MIDI = 64-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-**System API:** This is a system API.
-
-## AUDIO_SOURCE
-
-```TypeScript
-AUDIO_SOURCE = 128
-```
-
-Audio source, which is used for audio data transfer (not supported currently).
-
-**Since:** 9
-
-<!--Device-FunctionType-AUDIO_SOURCE = 128--><!--Device-FunctionType-AUDIO_SOURCE = 128-End-->
-
-**System capability:** SystemCapability.USB.USBManager
-
-**System API:** This is a system API.
-
-## NCM
-
-```TypeScript
-NCM = 256
-```
-
-Network control model (NCM), which is used for high-speed network sharing (not supported currently).
-
-**Since:** 9
-
-<!--Device-FunctionType-NCM = 256--><!--Device-FunctionType-NCM = 256-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

@@ -34,7 +34,7 @@ name: string
 
 **废弃版本：** 9
 
-**替代接口：** name
+**替代接口：** [name](arkts-basicservices-agent-formitem-i.md#name)
 
 <!--Device-RequestData-name: string--><!--Device-RequestData-name: string-End-->
 
@@ -54,7 +54,7 @@ value: string
 
 **废弃版本：** 9
 
-**替代接口：** value
+**替代接口：** [value](arkts-basicservices-agent-formitem-i.md#value)
 
 <!--Device-RequestData-value: string--><!--Device-RequestData-value: string-End-->
 

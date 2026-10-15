@@ -44,8 +44,8 @@ function hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOpt
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed: call the hasKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | algorithm param is invalid |
 | [12000004](../errorcode-huks.md#12000004-文件错误) | operating file failed |
@@ -53,8 +53,9 @@ function hasKeyItemAsUser(userId: number, keyAlias: string, huksOptions: HuksOpt
 | [12000006](../errorcode-huks.md#12000006-算法库操作失败) | error occurred in crypto engine |
 | [12000012](../errorcode-huks.md#12000012-外部错误) | Device environment or input parameter abnormal |
 | [12000014](../errorcode-huks.md#12000014-内存不足) | memory is insufficient |
-| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Feature is not supported. Possible causes: 1. The group key is not supported. 2. The crypto extension key is not supported.<br>**适用版本：** 23+ |
+| [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Feature is not supported. Possible causes:         1. The group key is not supported.         2. The crypto extension key is not supported.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 以下代码示例接口调用的前置条件同上文generateKeyItemAsUser的前置条件
@@ -128,3 +129,5 @@ export default function HuksAsUserTest() {
   TestHuksHasKey()
 }
 ```
+
+<!--DelEnd-->

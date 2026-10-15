@@ -12,20 +12,6 @@ enum EncryptionAlgo
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## AES_256_GCM
-
-```TypeScript
-AES_256_GCM = 0
-```
-
-数据库使用AES_256_GCM加密。
-
-**起始版本：** 14
-
-<!--Device-EncryptionAlgo-AES_256_GCM = 0--><!--Device-EncryptionAlgo-AES_256_GCM = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## AES_256_CBC
 
 ```TypeScript
@@ -37,6 +23,20 @@ AES_256_CBC = 1
 **起始版本：** 14
 
 <!--Device-EncryptionAlgo-AES_256_CBC = 1--><!--Device-EncryptionAlgo-AES_256_CBC = 1-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## AES_256_GCM
+
+```TypeScript
+AES_256_GCM = 0
+```
+
+数据库使用AES_256_GCM加密。
+
+**起始版本：** 14
+
+<!--Device-EncryptionAlgo-AES_256_GCM = 0--><!--Device-EncryptionAlgo-AES_256_GCM = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 

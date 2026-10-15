@@ -6,13 +6,13 @@ export type ElementAttributeKeys = keyof ElementAttributeValues
 
 表示[ElementAttributeValues](arkts-accessibility-accessibilityextensioncontext-elementattributevalues-i.md)的属性名称。
 
+**类型：** keyof ElementAttributeValues
+
 **起始版本：** 10
 
 <!--Device-unnamed-export type ElementAttributeKeys = keyof ElementAttributeValues--><!--Device-unnamed-export type ElementAttributeKeys = keyof ElementAttributeValues-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**类型：** keyof ElementAttributeValues
 
 **示例**
 

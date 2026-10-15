@@ -46,6 +46,7 @@ function getNotificationStatisticsByBundle(bundles: BundleOption[]): Promise<Bun
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ notificationManager.getNotificationStatisticsByBundle(bundles).then(
   console.error(`getNotificationStatisticsByBundle err: ${JSON.stringify(err)}`)
 });
 ```
+
+<!--DelEnd-->

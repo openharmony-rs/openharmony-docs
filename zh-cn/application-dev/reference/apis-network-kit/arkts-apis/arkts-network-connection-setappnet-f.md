@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="setappnet1"></a>
+
 ## setAppNet
 
 ```TypeScript
@@ -43,7 +45,7 @@ function setAppNet(netHandle: NetHandle, callback: AsyncCallback<void>): void
 
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
-以下示例以绑定WIFI网络为例，结合[on('netAvailable')](arkts-network-connection-netconnection-i.md#onnetavailable)、[on('netLost')](arkts-network-connection-netconnection-i.md#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+以下示例以绑定WIFI网络为例，结合on('netAvailable')、on('netLost')接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
 
 ```TypeScript
 import { connection } from '@kit.NetworkKit';
@@ -91,7 +93,7 @@ netCon.register((error: BusinessError) => {
 ```
 
 
-<a id="setappnet-1"></a>
+<a id="setappnet2"></a>
 
 ## setAppNet
 
@@ -135,7 +137,7 @@ function setAppNet(netHandle: NetHandle): Promise<void>
 
 当应用绑定WIFI网络，WIFI弱信号或者断开时，如果不解绑，会导致应用无法上网。
 
-以下示例以绑定WIFI网络为例，结合[on('netAvailable')](arkts-network-connection-netconnection-i.md#onnetavailable)、[on('netLost')](arkts-network-connection-netconnection-i.md#onnetlost)接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
+以下示例以绑定WIFI网络为例，结合on('netAvailable')、on('netLost')接口，当监听到WIFI网络可用时绑定WIFI网络，不可用时解绑，使用默认网络。
 
 ```TypeScript
 import { connection } from '@kit.NetworkKit';

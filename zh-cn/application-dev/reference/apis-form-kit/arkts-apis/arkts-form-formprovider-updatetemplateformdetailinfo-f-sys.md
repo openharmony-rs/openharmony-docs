@@ -44,6 +44,7 @@ function updateTemplateFormDetailInfo(templateFormInfo: Array<formInfo.TemplateF
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16501013](../errorcode-form.md#16501013-系统不支持当前操作) | The system does not support the current operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,3 +71,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

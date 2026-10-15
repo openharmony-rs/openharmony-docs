@@ -48,6 +48,7 @@ function getSeniorModeStateForApp(bundleName: string, appIndex?: number): Promis
 | [9300000](../errorcode-accessibility.md#9300000-无障碍系统服务工作异常) | System abnormality. |
 | [9300008](../errorcode-accessibility.md#9300008-应用分身索引不合法) | The appIndex is invalid. Possible causes:<br>1.The appIndex is out of the valid range. <br>2.The application corresponding to the appIndex does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,3 +61,5 @@ config.getSeniorModeStateForApp('com.example.myapplication', 0).then((data: bool
   console.error(`Failed to get seniorModeState for app. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

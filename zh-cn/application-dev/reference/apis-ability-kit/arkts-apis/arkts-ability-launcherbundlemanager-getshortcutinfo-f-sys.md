@@ -6,6 +6,8 @@
 import { launcherBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getshortcutinfo1"></a>
+
 ## getShortcutInfo
 
 ```TypeScript
@@ -31,7 +33,7 @@ function getShortcutInfo(bundleName :string, callback: AsyncCallback<Array<Short
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)&gt;&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为当前用户下指定应用的[ShortcutInfo](arkts-ability-shortcutinfo-i.md)信息。否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为当前用户下指定应用的ShortcutInfo信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -44,6 +46,7 @@ function getShortcutInfo(bundleName :string, callback: AsyncCallback<Array<Short
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,8 +69,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getshortcutinfo-1"></a>
+
+<a id="getshortcutinfo2"></a>
 
 ## getShortcutInfo
 
@@ -112,6 +117,7 @@ function getShortcutInfo(bundleName : string) : Promise<Array<ShortcutInfo>>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -131,3 +137,5 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+
+<!--DelEnd-->

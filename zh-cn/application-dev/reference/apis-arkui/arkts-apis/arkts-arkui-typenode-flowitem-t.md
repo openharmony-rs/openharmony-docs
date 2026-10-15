@@ -6,6 +6,8 @@ type FlowItem = TypedFrameNode<FlowItemInterface, FlowItemAttribute>
 
 FlowItem类型的FrameNode节点类型。允许添加一个子组件。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;FlowItemInterface, [FlowItemAttribute](../arkts-components/arkts-arkui-flowitem-comp-attribute.md)&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ FlowItem类型的FrameNode节点类型。允许添加一个子组件。
 <!--Device-typeNode-type FlowItem = TypedFrameNode<FlowItemInterface, FlowItemAttribute>--><!--Device-typeNode-type FlowItem = TypedFrameNode<FlowItemInterface, FlowItemAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;FlowItemInterface, [FlowItemAttribute](../arkts-components/arkts-arkui-flowitem-comp-attribute.md)&gt;

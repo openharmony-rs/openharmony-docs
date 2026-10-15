@@ -11,8 +11,6 @@ The **performanceMonitor** module provides APIs for monitoring performance metri
 
 **Since:** 10
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace performanceMonitor--><!--Device-unnamed-declare namespace performanceMonitor-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -32,9 +30,9 @@ import { performanceMonitor } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [begin](arkts-arkui-performancemonitor-begin-f-sys.md) | Marks the start of a user scene. Call this API when the scene begins. |
-| [end](arkts-arkui-performancemonitor-end-f-sys.md) | Marks the end of a user scene. Call this API when the scene ends. |
-| [recordInputEventTime](arkts-arkui-performancemonitor-recordinputeventtime-f-sys.md) | Records the trigger event type and time before the start of the animation scene. |
+| [begin](arkts-arkui-performancemonitor-begin-f-sys.md#begin) | Marks the start of a user scene. Call this API when the scene begins. |
+| [end](arkts-arkui-performancemonitor-end-f-sys.md#end) | Marks the end of a user scene. Call this API when the scene ends. |
+| [recordInputEventTime](arkts-arkui-performancemonitor-recordinputeventtime-f-sys.md#recordinputeventtime) | Records the trigger event type and time before the start of the animation scene. |
 <!--DelEnd-->
 
 <!--Del-->

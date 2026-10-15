@@ -14,24 +14,6 @@ Enumerates the result codes of blinking operations.
 
 **System API:** This is a system API.
 
-## SUCCESS
-
-```TypeScript
-SUCCESS = 0
-```
-
-The blinking API is executed successfully.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-BlinkResultCode-SUCCESS = 0--><!--Device-BlinkResultCode-SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
 ## ALREADY_FLASHING
 
 ```TypeScript
@@ -63,6 +45,24 @@ The device is in use.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-BlinkResultCode-DEVICE_IN_USE = 2--><!--Device-BlinkResultCode-DEVICE_IN_USE = 2-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## FEATURE_DISABLED
+
+```TypeScript
+FEATURE_DISABLED = 5
+```
+
+The blinking feature is not enabled.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlinkResultCode-FEATURE_DISABLED = 5--><!--Device-BlinkResultCode-FEATURE_DISABLED = 5-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -104,19 +104,19 @@ The device does not support screen blinking.
 
 **System API:** This is a system API.
 
-## FEATURE_DISABLED
+## SUCCESS
 
 ```TypeScript
-FEATURE_DISABLED = 5
+SUCCESS = 0
 ```
 
-The blinking feature is not enabled.
+The blinking API is executed successfully.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-BlinkResultCode-FEATURE_DISABLED = 5--><!--Device-BlinkResultCode-FEATURE_DISABLED = 5-End-->
+<!--Device-BlinkResultCode-SUCCESS = 0--><!--Device-BlinkResultCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

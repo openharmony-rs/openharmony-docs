@@ -4,7 +4,7 @@
 declare interface TabContentAnimatedTransition
 ```
 
-Provides the information about the custom tab switching animation.
+Defines the information about the custom switching animation of **Tabs**.
 
 **Since:** 11
 
@@ -18,13 +18,13 @@ Provides the information about the custom tab switching animation.
 timeout?: number
 ```
 
-Timeout for the custom tab switching animation. The timer starts when the switching begins. If this timeframe passes without you calling the **finishTransition** API in [TabContentTransitionProxy](arkts-arkui-tabs-comp-tabcontenttransitionproxy-i.md), the component will assume that the custom animation has ended and will proceed directly with subsequent operations.
+Timeout duration of the custom switching animation. If the developer has not called the **finishTransition** API of [TabContentTransitionProxy](arkts-arkui-tabs-comp-tabcontenttransitionproxy-i.md) to notify the **Tabs** component that the custom animation has ended after this duration elapses, the component considers the custom animation ended and directly performs subsequent operations.
 
 Default value: **1000**
 
 Unit: ms
 
-Value range: [0, +∞)
+Value range: [0, +∞). If a value less than 0 is set, the default value is used.
 
 **Type:** number
 
@@ -48,7 +48,7 @@ Value range: [0, +∞)
 transition: Callback<TabContentTransitionProxy>
 ```
 
-Content of the custom tab switching animation.
+Specific content of the custom switching animation.
 
 **Type:** Callback&lt;[TabContentTransitionProxy](arkts-arkui-tabs-comp-tabcontenttransitionproxy-i.md)&gt;
 

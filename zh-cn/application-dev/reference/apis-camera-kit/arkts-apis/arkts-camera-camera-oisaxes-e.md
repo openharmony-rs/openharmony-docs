@@ -24,7 +24,7 @@ PITCH = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-OISAxes-PITCH = 0--><!--Device-OISAxes-PITCH = 0-End-->
 
@@ -42,7 +42,7 @@ YAW = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-OISAxes-YAW = 1--><!--Device-OISAxes-YAW = 1-End-->
 

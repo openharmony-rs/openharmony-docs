@@ -81,7 +81,7 @@ Return value
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html)
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
@@ -142,7 +142,7 @@ Adds an interceptor chain to the target HTTP request. Each HTTP request instance
 > [HTTP Interceptor Function Code Example](../../../network/http-request.md#http-interceptor).
 
 > The HTTP interceptor feature is supported only by
-> [HttpRequest.request](arkts-network-http-httprequest-i.md#request) APIs,
+> [HttpRequest.request](arkts-network-http-httprequest-i.md#request1) APIs,
 > and is not supported by
 > [HttpRequest.requestInStream](arkts-network-http-httprequest-i.md#requestinstream)
 > APIs (streaming transmission).
@@ -196,7 +196,7 @@ Return value
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html)
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';

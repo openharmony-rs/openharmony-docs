@@ -51,6 +51,7 @@ function getNotificationSwitch(switchName: string, userId: number): Promise<Swit
 | [1600008](../errorcode-notification.md#1600008-用户不存在) | The user does not exist. |
 | [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,3 +66,5 @@ notificationManager.getNotificationSwitch(switchName, userId).then((data: notifi
     console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -108,7 +108,7 @@ struct Index {
         }
 
         Column() {
-          Text('Layered')
+          Text('Multilayer')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_folder_badge_plus'))
               .fontSize(96)
@@ -129,7 +129,7 @@ struct Index {
         }
 
         Column() {
-          Text('Whole scaling effect')
+          Text('Overall scale effect')
           Text() {
             SymbolSpan($r('sys.symbol.ohos_wifi'))
               .fontSize(96)
@@ -185,11 +185,11 @@ struct Index {
 }
 ```
 
-### Example 3: Setting Font Weight
+### Example 3: Setting the Font Weight
 
-This example uses the [fontWeight](#fontweight-1) attribute to demonstrate the effects of different font weight configurations of SymbolSpan: the first row of small icon symbols shows the effects of setting the font weight values to 220 and 660 respectively after enabling variable font weight; the second row of small icon symbols shows the effects of setting whether to follow the device's system font weight level for automatic update, after the device's system font weight is set to bold.
+This example shows how to use the [fontWeight](#fontweight-1) attribute to display the effects of SymbolSpan with different font weights. The icon symbol in the first line displays the effect of setting the font weight to 220 and 660 after the variable font weight adjustment is enabled. The icon symbol in the second line displays the effect of automatically updating or not updating the font weight after the system font weight is set to bold.
 
-Since API version 26.0.0, the [fontWeight](#fontweight-1) attribute is added.
+The [fontWeight](#fontweight-1) attribute is added since API version 26.0.0.
 
 ```TypeScript
 // xxx.ets
@@ -202,7 +202,7 @@ struct Index {
         Column() {
           Text('font weight: 220')
           Text() {
-            // ohos_trash is a system preset trash can symbol.
+            // ohos_trash is the trash can symbol preset by the system.
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontWeight(220, { enableVariableFontWeight: true })
               .fontSize(96)
@@ -214,7 +214,7 @@ struct Index {
         Column() {
           Text('font weight: 660')
           Text() {
-            // ohos_trash is a system preset trash can symbol.
+            // ohos_trash is the trash can symbol preset by the system.
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontWeight(660, { enableVariableFontWeight: true })
               .fontSize(96)
@@ -231,7 +231,7 @@ struct Index {
         Column() {
           Text('device category: true')
           Text() {
-            // ohos_trash is a system preset trash can symbol.
+            // ohos_trash is the trash can symbol preset by the system.
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: true })
               .fontSize(96)
@@ -243,7 +243,7 @@ struct Index {
         Column() {
           Text('device category: false')
           Text() {
-            // ohos_trash is a system preset trash can symbol.
+            // ohos_trash is the trash can symbol preset by the system.
             SymbolSpan($r('sys.symbol.ohos_trash'))
               .fontWeight(FontWeight.Normal, { enableDeviceFontWeightCategory: false })
               .fontSize(96)

@@ -6,6 +6,8 @@ export type Context = _Context.default
 
 Defines the context base class for the [stage model](../../../application-models/ability-terminology.md#stage-model).
 
+**Type:** _Context.default
+
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the context base class for the [stage model](../../../application-models
 <!--Device-common-export type Context = _Context.default--><!--Device-common-export type Context = _Context.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _Context.default

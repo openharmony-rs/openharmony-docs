@@ -6,13 +6,15 @@ export declare interface AccessibilityElement
 
 无障碍节点元素，提供查询父/子元素、按内容或焦点方向查找元素、执行无障碍操作等能力，适用于无障碍辅助应用需要与界面节点交互和操作的场景。
 
-调用AccessibilityElement的方法前，先通过AccessibilityExtensionContext.getAccessibilityFocusedElement()或AccessibilityExtensionContext.getRootInActiveWindow()获取AccessibilityElement实例。
+调用AccessibilityElement的方法前，先通过[AccessibilityExtensionContext.getAccessibilityFocusedElement()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getaccessibilityfocusedelement)或[AccessibilityExtensionContext.getRootInActiveWindow()](arkts-accessibility-accessibilityextensioncontext-c-sys.md#getrootinactivewindow)获取AccessibilityElement实例。
 
 **起始版本：** 9
 
 <!--Device-unnamed-export declare interface AccessibilityElement--><!--Device-unnamed-export declare interface AccessibilityElement-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+<a id="actionnames1"></a>
 
 ## actionNames
 
@@ -51,7 +53,7 @@ rootElement.actionNames((err: BusinessError, data: string[]) => {
 });
 ```
 
-<a id="actionnames-1"></a>
+<a id="actionnames2"></a>
 
 ## actionNames
 
@@ -87,6 +89,8 @@ rootElement.actionNames().then((data: string[]) => {
   console.error(`Failed to get action names. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="attributenames1"></a>
 
 ## attributeNames
 
@@ -126,7 +130,7 @@ rootElement.attributeNames((err: BusinessError, data: ElementAttributeKeys[]) =>
 });
 ```
 
-<a id="attributenames-1"></a>
+<a id="attributenames2"></a>
 
 ## attributeNames
 
@@ -164,6 +168,8 @@ rootElement.attributeNames().then((data: ElementAttributeKeys[]) => {
 });
 ```
 
+<a id="attributevalue1"></a>
+
 ## attributeValue
 
 ```TypeScript
@@ -194,7 +200,7 @@ attributeValue<T extends keyof ElementAttributeValues>(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300004](../errorcode-accessibility.md#9300004-属性不存在) | This property does not exist. |
 
 **示例**
@@ -215,7 +221,7 @@ rootElement.attributeValue(attributeName, (err: BusinessError, data: string) => 
 });
 ```
 
-<a id="attributevalue-1"></a>
+<a id="attributevalue2"></a>
 
 ## attributeValue
 
@@ -249,7 +255,7 @@ attributeValue<T extends keyof ElementAttributeValues>(attributeName: T): Promis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300004](../errorcode-accessibility.md#9300004-属性不存在) | This property does not exist. |
 
 **示例**
@@ -296,7 +302,7 @@ findElement(type: 'content', condition: string, callback: AsyncCallback<Array<Ac
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -349,7 +355,7 @@ findElement(type: 'content', condition: string): Promise<Array<AccessibilityElem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -395,7 +401,7 @@ findElement(type: 'focusType', condition: FocusType, callback: AsyncCallback<Acc
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -448,7 +454,7 @@ findElement(type: 'focusType', condition: FocusType): Promise<AccessibilityEleme
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -494,7 +500,7 @@ findElement(type: 'focusDirection', condition: FocusDirection, callback: AsyncCa
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -547,7 +553,7 @@ findElement(type: 'focusDirection', condition: FocusDirection): Promise<Accessib
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -564,6 +570,8 @@ rootElement.findElement('focusDirection', condition).then((data: AccessibilityEl
   console.error(`Failed to find element. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="performaction1"></a>
 
 ## performAction
 
@@ -593,7 +601,7 @@ performAction(actionName: string, parameters: object, callback: AsyncCallback<vo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
 **示例**
@@ -614,7 +622,7 @@ rootElement.performAction(actionName, parameters, (err: BusinessError) => {
 });
 ```
 
-<a id="performaction-1"></a>
+<a id="performaction2"></a>
 
 ## performAction
 
@@ -649,7 +657,7 @@ performAction(actionName: string, parameters?: object): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
 **示例**
@@ -702,7 +710,7 @@ rootElement.performAction('setCursorPosition', {
 });
 ```
 
-<a id="performaction-2"></a>
+<a id="performaction3"></a>
 
 ## performAction
 
@@ -731,7 +739,7 @@ performAction(actionName: string, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300005](../errorcode-accessibility.md#9300005-不支持该操作) | This action is not supported. |
 
 **示例**

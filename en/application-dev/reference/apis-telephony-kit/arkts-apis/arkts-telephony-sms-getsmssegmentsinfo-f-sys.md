@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="getsmssegmentsinfo1"></a>
+
 ## getSmsSegmentsInfo
 
 ```TypeScript
@@ -42,6 +44,7 @@ Obtains SMS message segment information. This API uses an asynchronous callback 
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,8 +57,10 @@ sms.getSmsSegmentsInfo(slotId, "message", false, (err: BusinessError, data: sms.
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getsmssegmentsinfo-1"></a>
+
+<a id="getsmssegmentsinfo2"></a>
 
 ## getSmsSegmentsInfo
 
@@ -98,6 +103,7 @@ Obtains SMS message segment information. This API uses a promise to return the r
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -112,3 +118,5 @@ promise.then((data: sms.SmsSegmentsInfo) => {
     console.error(`getSmsSegmentsInfo failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -12,19 +12,19 @@ Defines the input method immersive mode in the WebView, which controls the displ
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## NONE_IMMERSIVE
+## DARK_IMMERSIVE
 
 ```TypeScript
-NONE_IMMERSIVE = 0
+DARK_IMMERSIVE = 3
 ```
 
-Default appearance mode, without immersive style.
+Dark immersive style.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-WebKeyboardAppearanceMode-NONE_IMMERSIVE = 0--><!--Device-WebKeyboardAppearanceMode-NONE_IMMERSIVE = 0-End-->
+<!--Device-WebKeyboardAppearanceMode-DARK_IMMERSIVE = 3--><!--Device-WebKeyboardAppearanceMode-DARK_IMMERSIVE = 3-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -60,18 +60,18 @@ Light immersive style.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## DARK_IMMERSIVE
+## NONE_IMMERSIVE
 
 ```TypeScript
-DARK_IMMERSIVE = 3
+NONE_IMMERSIVE = 0
 ```
 
-Dark immersive style.
+Default appearance mode, without immersive style.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-WebKeyboardAppearanceMode-DARK_IMMERSIVE = 3--><!--Device-WebKeyboardAppearanceMode-DARK_IMMERSIVE = 3-End-->
+<!--Device-WebKeyboardAppearanceMode-NONE_IMMERSIVE = 0--><!--Device-WebKeyboardAppearanceMode-NONE_IMMERSIVE = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

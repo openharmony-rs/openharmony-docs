@@ -1,4 +1,4 @@
-# BLE(蓝牙)
+# BLE（蓝牙）
 
 ```TypeScript
 namespace BLE
@@ -28,10 +28,10 @@ import { bluetoothManager } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createGattServer](arkts-connectivity-ble-creategattserver-f.md) | 创建一个可使用的GattServer实例。 |
-| [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md) | 创建一个可使用的GattClientDevice实例。 |
-| [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md) | 获取和当前设备连接的BLE设备。 |
-| [startBLEScan](arkts-connectivity-ble-startblescan-f.md) | 发起BLE扫描流程。 |
-| [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md) | 停止BLE扫描流程。 |
-| [on](arkts-connectivity-ble-on-f.md#onbledevicefind) | 订阅BLE设备发现上报事件。 |
-| [off](arkts-connectivity-ble-off-f.md#offbledevicefind) | 取消订阅BLE设备发现上报事件。 |
+| [createGattClientDevice](arkts-connectivity-ble-creategattclientdevice-f.md#creategattclientdevice) | 创建一个可使用的GattClientDevice实例。 |
+| [createGattServer](arkts-connectivity-ble-creategattserver-f.md#creategattserver) | 创建一个可使用的GattServer实例。 |
+| [getConnectedBLEDevices](arkts-connectivity-ble-getconnectedbledevices-f.md#getconnectedbledevices) | 获取和当前设备连接的BLE设备。 |
+| [off('BLEDeviceFind')](arkts-connectivity-ble-off-f.md#offbledevicefind) | 取消订阅BLE设备发现上报事件。 |
+| [on('BLEDeviceFind')](arkts-connectivity-ble-on-f.md#onbledevicefind) | 订阅BLE设备发现上报事件。 |
+| [startBLEScan](arkts-connectivity-ble-startblescan-f.md#startblescan) | 发起BLE扫描流程。 |
+| [stopBLEScan](arkts-connectivity-ble-stopblescan-f.md#stopblescan) | 停止BLE扫描流程。 |

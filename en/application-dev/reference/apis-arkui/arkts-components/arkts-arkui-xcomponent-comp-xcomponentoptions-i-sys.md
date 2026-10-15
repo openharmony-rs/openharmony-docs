@@ -18,7 +18,7 @@ Defines the options of the **XComponent**.
 screenId?: number
 ```
 
-Identifier of a screen.
+Sets the ID of the screen associated with the component. With this parameter, the screen content associated with the component can be displayed on the component. The screen ID can be obtained through the getAllScreens API of the [@ohos.screen](../arkts-apis/arkts-arkui-screen.md) module. Default value: **0**, which indicates the primary screen.
 
 **Type:** number
 

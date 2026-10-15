@@ -12,19 +12,19 @@ Enum for nnrt device type
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## NNRTDEVICE_OTHERS
+## NNRTDEVICE_ACCELERATOR
 
 ```TypeScript
-NNRTDEVICE_OTHERS = 0
+NNRTDEVICE_ACCELERATOR = 3
 ```
 
-Devices that are not CPU, GPU, or dedicated accelerator
+Dedicated hardware accelerator
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-NNRTDeviceType-NNRTDEVICE_OTHERS = 0--><!--Device-NNRTDeviceType-NNRTDEVICE_OTHERS = 0-End-->
+<!--Device-NNRTDeviceType-NNRTDEVICE_ACCELERATOR = 3--><!--Device-NNRTDeviceType-NNRTDEVICE_ACCELERATOR = 3-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -60,18 +60,18 @@ GPU device
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## NNRTDEVICE_ACCELERATOR
+## NNRTDEVICE_OTHERS
 
 ```TypeScript
-NNRTDEVICE_ACCELERATOR = 3
+NNRTDEVICE_OTHERS = 0
 ```
 
-Dedicated hardware accelerator
+Devices that are not CPU, GPU, or dedicated accelerator
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-NNRTDeviceType-NNRTDEVICE_ACCELERATOR = 3--><!--Device-NNRTDeviceType-NNRTDEVICE_ACCELERATOR = 3-End-->
+<!--Device-NNRTDeviceType-NNRTDEVICE_OTHERS = 0--><!--Device-NNRTDeviceType-NNRTDEVICE_OTHERS = 0-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

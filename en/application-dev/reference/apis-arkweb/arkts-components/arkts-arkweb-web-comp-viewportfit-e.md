@@ -4,7 +4,7 @@
 declare enum ViewportFit
 ```
 
-Enumerates the viewport types available for **viewport-fit** in the web page **\&lt;meta&gt;** tag.
+Enumerates the viewport types available for **viewport-fit** in the web page **\<meta>** tag.
 
 **Since:** 12
 

@@ -48,7 +48,7 @@ Size of the buffer for receiving the encoded data, in bytes. If this parameter i
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PackingOption-bufferSize?: int--><!--Device-PackingOption-bufferSize?: int-End-->
 
@@ -78,7 +78,7 @@ format: string
 
 Format of the packed image.
 
-Currently, only the following formats are supported: image/jpeg, image/webp, image/png, image/heic (or image/heif)&lt;sup&gt;12+&lt;/sup&gt;, image/sdr_astc_4x4&lt;sup&gt;18+&lt;/sup&gt;, image/sdr_sut_superfast_4x4&lt;sup&gt;18+&lt;/sup&gt; (depending on the hardware), and image/hdr_astc_4x4&lt;sup&gt;20+&lt;/sup&gt;.
+Currently, only the following formats are supported: image/jpeg, image/webp, image/png, image/heic (or image/heif)<sup>12+</sup>, image/sdr_astc_4x4<sup>18+</sup>, image/sdr_sut_superfast_4x4<sup>18+</sup> (depending on the hardware), and image/hdr_astc_4x4<sup>20+</sup>.
 
 **NOTE:**  The JPEG format does not support the alpha channel. If the JPEG format with the alpha channel is used for data encoding, the transparent color turns black.
 
@@ -86,7 +86,7 @@ Currently, only the following formats are supported: image/jpeg, image/webp, ima
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PackingOption-format: string--><!--Device-PackingOption-format: string-End-->
 
@@ -162,7 +162,7 @@ In the case of sut encoding, the parameter can be set to **92**.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PackingOption-quality: int--><!--Device-PackingOption-quality: int-End-->
 

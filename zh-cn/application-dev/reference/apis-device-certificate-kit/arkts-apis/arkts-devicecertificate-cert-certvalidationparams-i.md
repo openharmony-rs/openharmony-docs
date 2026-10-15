@@ -37,7 +37,7 @@ allowDownloadIntermediateCa?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-allowDownloadIntermediateCa?: boolean--><!--Device-CertValidationParams-allowDownloadIntermediateCa?: boolean-End-->
 
@@ -57,7 +57,7 @@ date?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-date?: string--><!--Device-CertValidationParams-date?: string-End-->
 
@@ -77,7 +77,7 @@ emailAddresses?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-emailAddresses?: Array<string>--><!--Device-CertValidationParams-emailAddresses?: Array<string>-End-->
 
@@ -97,7 +97,7 @@ hostnames?: Array<string>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-hostnames?: Array<string>--><!--Device-CertValidationParams-hostnames?: Array<string>-End-->
 
@@ -117,7 +117,7 @@ ignoreErrs?: Array<CertResult>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-ignoreErrs?: Array<CertResult>--><!--Device-CertValidationParams-ignoreErrs?: Array<CertResult>-End-->
 
@@ -137,7 +137,7 @@ keyUsage?: Array<KeyUsageType>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-keyUsage?: Array<KeyUsageType>--><!--Device-CertValidationParams-keyUsage?: Array<KeyUsageType>-End-->
 
@@ -161,7 +161,7 @@ partialChain?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-partialChain?: boolean--><!--Device-CertValidationParams-partialChain?: boolean-End-->
 
@@ -181,7 +181,7 @@ revokedParams?: X509CertRevokedParams
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-revokedParams?: X509CertRevokedParams--><!--Device-CertValidationParams-revokedParams?: X509CertRevokedParams-End-->
 
@@ -201,7 +201,7 @@ trustedCerts?: Array<X509Cert>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-trustedCerts?: Array<X509Cert>--><!--Device-CertValidationParams-trustedCerts?: Array<X509Cert>-End-->
 
@@ -225,7 +225,7 @@ trustSystemCa?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-trustSystemCa?: boolean--><!--Device-CertValidationParams-trustSystemCa?: boolean-End-->
 
@@ -245,7 +245,7 @@ untrustedCerts?: Array<X509Cert>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-untrustedCerts?: Array<X509Cert>--><!--Device-CertValidationParams-untrustedCerts?: Array<X509Cert>-End-->
 
@@ -265,7 +265,7 @@ userId?: Uint8Array
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-userId?: Uint8Array--><!--Device-CertValidationParams-userId?: Uint8Array-End-->
 
@@ -287,7 +287,7 @@ validateDate?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-CertValidationParams-validateDate?: boolean--><!--Device-CertValidationParams-validateDate?: boolean-End-->
 

@@ -34,6 +34,7 @@ Checks whether a device serving as a Wi-Fi hotspot supports both the 2.4 GHz and
 | --- | --- |
 | boolean | Returns `true` if the method is called successfully, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

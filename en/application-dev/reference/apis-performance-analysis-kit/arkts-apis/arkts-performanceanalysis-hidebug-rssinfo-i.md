@@ -32,7 +32,7 @@ Resident set size (RSS), in KB. It includes anonymous pages, file mapping pages,
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-RssInfo-rss: bigint--><!--Device-RssInfo-rss: bigint-End-->
 
@@ -52,7 +52,7 @@ Total size of anonymous private pages swapped out to the swap partition, in KB. 
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-RssInfo-swapRss: bigint--><!--Device-RssInfo-swapRss: bigint-End-->
 

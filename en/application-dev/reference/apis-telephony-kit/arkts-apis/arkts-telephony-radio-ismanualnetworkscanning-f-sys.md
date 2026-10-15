@@ -49,6 +49,7 @@ Determine whether the current manual network scan is in progress.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,3 +59,5 @@ radio.isManualNetworkScanning(0).then((state: boolean) => {
     console.error(`isManualNetworkScanning failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

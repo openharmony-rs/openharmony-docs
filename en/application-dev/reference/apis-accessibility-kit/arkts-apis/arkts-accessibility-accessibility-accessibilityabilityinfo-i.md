@@ -16,7 +16,7 @@ Provides information about an accessibility application.
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
 ## abilityTypes
@@ -31,9 +31,9 @@ Accessibility application type.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly abilityTypes: Array<AbilityType>--><!--Device-AccessibilityAbilityInfo-readonly abilityTypes: Array<AbilityType>-End-->
 
@@ -51,9 +51,9 @@ Bundle name.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly bundleName: string--><!--Device-AccessibilityAbilityInfo-readonly bundleName: string-End-->
 
@@ -71,9 +71,9 @@ Capabilities list of the accessibility application.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly capabilities: Array<Capability>--><!--Device-AccessibilityAbilityInfo-readonly capabilities: Array<Capability>-End-->
 
@@ -91,9 +91,9 @@ Description of the accessibility application.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly description: string--><!--Device-AccessibilityAbilityInfo-readonly description: string-End-->
 
@@ -111,9 +111,9 @@ List of events that the accessibility application focuses on.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly eventTypes: Array<EventType>--><!--Device-AccessibilityAbilityInfo-readonly eventTypes: Array<EventType>-End-->
 
@@ -131,9 +131,9 @@ Ability ID.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly id: string--><!--Device-AccessibilityAbilityInfo-readonly id: string-End-->
 
@@ -151,9 +151,9 @@ Name of the accessibility app in the extended service list.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly label: string--><!--Device-AccessibilityAbilityInfo-readonly label: string-End-->
 
@@ -171,9 +171,9 @@ Ability name.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly name: string--><!--Device-AccessibilityAbilityInfo-readonly name: string-End-->
 
@@ -191,9 +191,9 @@ Whether the auxiliary application is hidden in the list of installed extended se
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly needHide: boolean--><!--Device-AccessibilityAbilityInfo-readonly needHide: boolean-End-->
 
@@ -211,9 +211,9 @@ Name of the target bundle.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-AccessibilityAbilityInfo-readonly targetBundleNames: Array<string>--><!--Device-AccessibilityAbilityInfo-readonly targetBundleNames: Array<string>-End-->
 

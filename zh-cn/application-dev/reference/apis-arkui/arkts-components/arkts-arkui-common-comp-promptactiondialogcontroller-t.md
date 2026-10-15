@@ -8,6 +8,8 @@ declare type PromptActionDialogController = import('../api/@ohos.promptAction').
 
 @typedef { import('../api/@ohos.promptAction').promptAction.DialogController } PromptActionDialogController
 
+**类型：** import('../api/@ohos.promptAction').promptAction.DialogController
+
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type PromptActionDialogController = import('../api/@ohos.promptAction').
 <!--Device-unnamed-declare type PromptActionDialogController = import('../api/@ohos.promptAction').promptAction.DialogController--><!--Device-unnamed-declare type PromptActionDialogController = import('../api/@ohos.promptAction').promptAction.DialogController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.promptAction').promptAction.DialogController

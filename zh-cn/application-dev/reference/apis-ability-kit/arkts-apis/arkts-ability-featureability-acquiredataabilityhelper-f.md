@@ -38,7 +38,7 @@ function acquireDataAbilityHelper(uri: string): DataAbilityHelper
 
 | 类型 | 说明 |
 | --- | --- |
-| [DataAbilityHelper](arkts-ability-dataabilityhelper-dataabilityhelper-i.md) | 用来协助其他Ability访问DataAbility的工具类。 |
+| [DataAbilityHelper](arkts-ability-dataabilityhelper-i.md) | 用来协助其他Ability访问DataAbility的工具类。 |
 
 **示例**
 

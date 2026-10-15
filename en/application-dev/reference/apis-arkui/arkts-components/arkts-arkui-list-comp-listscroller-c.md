@@ -10,12 +10,6 @@ Implements the scroll controller of the **List** component. A **List** component
 > 
 > **ListScroller** inherits from [Scroller](arkts-arkui-scroll-comp-scroller-c.md) and has all methods of [Scroller](arkts-arkui-scroll-comp-scroller-c.md).
 
-## Objects to Import
-
-```ts
-listScroller: ListScroller = new ListScroller();
-```
-
 **Inheritance/Implementation:** ListScroller extends [Scroller](arkts-arkui-scroll-comp-scroller-c.md)
 
 **Since:** 11
@@ -23,6 +17,12 @@ listScroller: ListScroller = new ListScroller();
 <!--Device-unnamed-declare class ListScroller extends Scroller--><!--Device-unnamed-declare class ListScroller extends Scroller-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Objects to Import
+
+```ts
+listScroller: ListScroller = new ListScroller();
+```
 
 ## closeAllSwipeActions
 

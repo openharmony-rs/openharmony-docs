@@ -12,6 +12,36 @@ enum InterruptHint
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
+## INTERRUPT_HINT_DUCK
+
+```TypeScript
+INTERRUPT_HINT_DUCK = 4
+```
+
+提示音频躲避开始，降低音量播放。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4--><!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+## INTERRUPT_HINT_MUTE
+
+```TypeScript
+INTERRUPT_HINT_MUTE = 6
+```
+
+提示音频静音。
+
+**起始版本：** 20
+
+<!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6--><!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
 ## INTERRUPT_HINT_NONE
 
 ```TypeScript
@@ -22,27 +52,9 @@ INTERRUPT_HINT_NONE = 0
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterruptHint-INTERRUPT_HINT_NONE = 0--><!--Device-InterruptHint-INTERRUPT_HINT_NONE = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-## INTERRUPT_HINT_RESUME
-
-```TypeScript
-INTERRUPT_HINT_RESUME = 1
-```
-
-提示音频恢复，应用可主动触发开始渲染或开始采集的相关操作。
-
-此操作无法由系统强制执行，其对应的[InterruptForceType](arkts-audio-audio-interruptforcetype-e.md)一定为INTERRUPT_SHARE类型。
-
-**起始版本：** 7
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1--><!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -58,9 +70,27 @@ INTERRUPT_HINT_PAUSE = 2
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterruptHint-INTERRUPT_HINT_PAUSE = 2--><!--Device-InterruptHint-INTERRUPT_HINT_PAUSE = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Renderer
+
+## INTERRUPT_HINT_RESUME
+
+```TypeScript
+INTERRUPT_HINT_RESUME = 1
+```
+
+提示音频恢复，应用可主动触发开始渲染或开始采集的相关操作。
+
+此操作无法由系统强制执行，其对应的[InterruptForceType](arkts-audio-audio-interruptforcetype-e.md)一定为INTERRUPT_SHARE类型。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1--><!--Device-InterruptHint-INTERRUPT_HINT_RESUME = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -74,25 +104,9 @@ INTERRUPT_HINT_STOP = 3
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterruptHint-INTERRUPT_HINT_STOP = 3--><!--Device-InterruptHint-INTERRUPT_HINT_STOP = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-## INTERRUPT_HINT_DUCK
-
-```TypeScript
-INTERRUPT_HINT_DUCK = 4
-```
-
-提示音频躲避开始，降低音量播放。
-
-**起始版本：** 7
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4--><!--Device-InterruptHint-INTERRUPT_HINT_DUCK = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 
@@ -106,23 +120,9 @@ INTERRUPT_HINT_UNDUCK = 5
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterruptHint-INTERRUPT_HINT_UNDUCK = 5--><!--Device-InterruptHint-INTERRUPT_HINT_UNDUCK = 5-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-## INTERRUPT_HINT_MUTE
-
-```TypeScript
-INTERRUPT_HINT_MUTE = 6
-```
-
-提示音频静音。
-
-**起始版本：** 20
-
-<!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6--><!--Device-InterruptHint-INTERRUPT_HINT_MUTE = 6-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
 

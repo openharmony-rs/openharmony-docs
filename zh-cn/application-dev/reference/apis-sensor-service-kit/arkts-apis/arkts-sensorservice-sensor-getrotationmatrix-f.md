@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getrotationmatrix1"></a>
+
 ## getRotationMatrix
 
 ```TypeScript
@@ -59,7 +61,7 @@ try {
 ```
 
 
-<a id="getrotationmatrix-1"></a>
+<a id="getrotationmatrix2"></a>
 
 ## getRotationMatrix
 
@@ -118,7 +120,7 @@ try {
 ```
 
 
-<a id="getrotationmatrix-2"></a>
+<a id="getrotationmatrix3"></a>
 
 ## getRotationMatrix
 
@@ -173,7 +175,7 @@ try {
 ```
 
 
-<a id="getrotationmatrix-3"></a>
+<a id="getrotationmatrix4"></a>
 
 ## getRotationMatrix
 

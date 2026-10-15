@@ -40,6 +40,20 @@ INTERSECT = 1
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+## REVERSE_DIFFERENCE
+
+```TypeScript
+REVERSE_DIFFERENCE = 4
+```
+
+反向差集操作，保留第二条路径中不与第一条路径重叠的区域。适用于需要反向减去路径的场景。
+
+**起始版本：** 12
+
+<!--Device-PathOp-REVERSE_DIFFERENCE = 4--><!--Device-PathOp-REVERSE_DIFFERENCE = 4-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
 ## UNION
 
 ```TypeScript
@@ -65,19 +79,5 @@ XOR = 3
 **起始版本：** 12
 
 <!--Device-PathOp-XOR = 3--><!--Device-PathOp-XOR = 3-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## REVERSE_DIFFERENCE
-
-```TypeScript
-REVERSE_DIFFERENCE = 4
-```
-
-反向差集操作，保留第二条路径中不与第一条路径重叠的区域。适用于需要反向减去路径的场景。
-
-**起始版本：** 12
-
-<!--Device-PathOp-REVERSE_DIFFERENCE = 4--><!--Device-PathOp-REVERSE_DIFFERENCE = 4-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

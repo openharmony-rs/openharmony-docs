@@ -32,27 +32,27 @@ Enumerates the gesture event types. A gesture event is triggered by the accessib
 | 'downThenLeft' | Down-then-left gesture. |
 | 'downThenRight' | Down-then-right gesture. |
 | 'downThenUp' | Down-then-up gesture. |
-| 'twoFingerSingleTap' | Two-finger single-tap gesture. [since 11] |
-| 'twoFingerDoubleTap' | Two-finger double-tap gesture. [since 11] |
-| 'twoFingerDoubleTapAndHold' | Two-finger double-tap-and-hold gesture. [since 11] |
-| 'twoFingerTripleTap' | Two-finger triple-tap gesture. [since 11] |
-| 'twoFingerTripleTapAndHold' | Two-finger triple-tap-and-hold gesture. [since 11] |
-| 'threeFingerSingleTap' | Three-finger single-tap gesture. [since 11] |
-| 'threeFingerDoubleTap' | Three-finger double-tap gesture. [since 11] |
-| 'threeFingerDoubleTapAndHold' | Three-finger double-tap-and-hold gesture. [since 11] |
-| 'threeFingerTripleTap' | Three-finger triple-tap gesture. [since 11] |
-| 'threeFingerTripleTapAndHold' | Three-finger triple-tap-and-hold gesture. [since 11] |
-| 'fourFingerSingleTap' | Four-finger single-tap gesture. [since 11] |
-| 'fourFingerDoubleTap' | Four-finger double-tap gesture. [since 11] |
-| 'fourFingerDoubleTapAndHold' | Four-finger double-tap-and-hold gesture. [since 11] |
-| 'fourFingerTripleTap' | Four-finger triple-tap gesture. [since 11] |
-| 'fourFingerTripleTapAndHold' | Four-finger triple-tap-and-hold gesture. [since 11] |
-| 'threeFingerSwipeUp' | Three-finger swipe-up gesture. [since 11] |
-| 'threeFingerSwipeDown' | Three-finger swipe-down gesture. [since 11] |
-| 'threeFingerSwipeLeft' | Three-finger swipe-left gesture. [since 11] |
-| 'threeFingerSwipeRight' | Three-finger swipe-right gesture. [since 11] |
-| 'fourFingerSwipeUp' | Four-finger swipe-up gesture. [since 11] |
-| 'fourFingerSwipeDown' | Four-finger swipe-down gesture. [since 11] |
-| 'fourFingerSwipeLeft' | Four-finger swipe-left gesture. [since 11] |
-| 'fourFingerSwipeRight' | Four-finger swipe-right gesture. [since 11] |
-| 'oneFingerDoubleTap' | Single-finger double-tap gesture. [since 26.0.0] |
+| 'twoFingerSingleTap' | Two-finger single-tap gesture.<br>**Since:** 11 |
+| 'twoFingerDoubleTap' | Two-finger double-tap gesture.<br>**Since:** 11 |
+| 'twoFingerDoubleTapAndHold' | Two-finger double-tap-and-hold gesture.<br>**Since:** 11 |
+| 'twoFingerTripleTap' | Two-finger triple-tap gesture.<br>**Since:** 11 |
+| 'twoFingerTripleTapAndHold' | Two-finger triple-tap-and-hold gesture.<br>**Since:** 11 |
+| 'threeFingerSingleTap' | Three-finger single-tap gesture.<br>**Since:** 11 |
+| 'threeFingerDoubleTap' | Three-finger double-tap gesture.<br>**Since:** 11 |
+| 'threeFingerDoubleTapAndHold' | Three-finger double-tap-and-hold gesture.<br>**Since:** 11 |
+| 'threeFingerTripleTap' | Three-finger triple-tap gesture.<br>**Since:** 11 |
+| 'threeFingerTripleTapAndHold' | Three-finger triple-tap-and-hold gesture.<br>**Since:** 11 |
+| 'fourFingerSingleTap' | Four-finger single-tap gesture.<br>**Since:** 11 |
+| 'fourFingerDoubleTap' | Four-finger double-tap gesture.<br>**Since:** 11 |
+| 'fourFingerDoubleTapAndHold' | Four-finger double-tap-and-hold gesture.<br>**Since:** 11 |
+| 'fourFingerTripleTap' | Four-finger triple-tap gesture.<br>**Since:** 11 |
+| 'fourFingerTripleTapAndHold' | Four-finger triple-tap-and-hold gesture.<br>**Since:** 11 |
+| 'threeFingerSwipeUp' | Three-finger swipe-up gesture.<br>**Since:** 11 |
+| 'threeFingerSwipeDown' | Three-finger swipe-down gesture.<br>**Since:** 11 |
+| 'threeFingerSwipeLeft' | Three-finger swipe-left gesture.<br>**Since:** 11 |
+| 'threeFingerSwipeRight' | Three-finger swipe-right gesture.<br>**Since:** 11 |
+| 'fourFingerSwipeUp' | Four-finger swipe-up gesture.<br>**Since:** 11 |
+| 'fourFingerSwipeDown' | Four-finger swipe-down gesture.<br>**Since:** 11 |
+| 'fourFingerSwipeLeft' | Four-finger swipe-left gesture.<br>**Since:** 11 |
+| 'fourFingerSwipeRight' | Four-finger swipe-right gesture.<br>**Since:** 11 |
+| 'oneFingerDoubleTap' | Single-finger double-tap gesture.<br>**Since:** 26.0.0 |

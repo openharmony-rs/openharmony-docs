@@ -47,6 +47,7 @@ UIServiceExtension生命周期回调。如果是[connectUIServiceExtensionAbilit
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前[UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 一个[UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md)对象，用于客户端和服务端进行通信。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,6 +59,8 @@ class UIServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onCreate
 
@@ -83,6 +86,7 @@ onCreate(want: Want): void
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前[UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -95,6 +99,8 @@ class UIServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onData
 
@@ -121,6 +127,7 @@ onData(proxy: UIServiceHostProxy, data: Record<string, Object>): void
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 往客户端发送数据的Proxy。 |
 | data | Record&lt;string, Object&gt; | 是 | 表示接收到的数据。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -132,6 +139,8 @@ class ServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDestroy
 
@@ -151,6 +160,7 @@ UIServiceExtension销毁时回调，执行资源清理等操作。
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -162,6 +172,8 @@ class ServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDisconnect
 
@@ -188,6 +200,7 @@ onDisconnect(want: Want, proxy: UIServiceHostProxy): void
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前[UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | 是 | 往发起方发送数据的Proxy。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -200,13 +213,15 @@ class UIServiceExt extends UIServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## onRequest
 
 ```TypeScript
 onRequest(want: Want, startId: number): void
 ```
 
-请求拉起UIServiceExtension服务处理。如果是[startAbility](arkts-ability-uiabilitycontext-c.md#startability)或者[startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability)拉起的服务，会在[onCreate](#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
+请求拉起UIServiceExtension服务处理。如果是[startAbility](arkts-ability-uiabilitycontext-c.md#startability1)或者[startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability)拉起的服务，会在[onCreate](#oncreate)之后回调。每次拉起服务都会回调，startId会递增。
 
 **起始版本：** 14
 
@@ -225,6 +240,7 @@ onRequest(want: Want, startId: number): void
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前[UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md)相关的[Want](arkts-ability-app-ability-want-want-c.md)类型信息，包括Ability名称、Bundle名称等。 |
 | startId | number | 是 | 返回浮窗拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -236,6 +252,8 @@ class UIServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onWindowDidCreate
 
@@ -261,6 +279,7 @@ UIServiceExtension创建后回调。UIServiceExtension服务创建窗口成功�
 | --- | --- | --- | --- |
 | window | [window.Window](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md) | 是 | 表示已创建的Window。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -273,6 +292,8 @@ class ServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onWindowWillCreate
 
@@ -298,6 +319,7 @@ UIServiceExtension窗体创建前的回调。前台应用把要创建windows的�
 | --- | --- | --- | --- |
 | config | [window.ExtensionWindowConfig](../../apis-arkui/arkts-apis/arkts-arkui-window-extensionwindowconfig-i-sys.md) | 是 | UIServiceExtension窗体配置信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -310,6 +332,8 @@ class UIServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## context
 

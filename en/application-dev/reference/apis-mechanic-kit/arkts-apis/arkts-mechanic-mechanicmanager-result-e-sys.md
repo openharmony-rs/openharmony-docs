@@ -6,8 +6,6 @@ export enum Result
 
 Rotation execution results.
 
-@enum { int }
-
 **Since:** 20
 
 <!--Device-mechanicManager-export enum Result--><!--Device-mechanicManager-export enum Result-End-->
@@ -64,33 +62,17 @@ Device reached limitation.
 
 **System API:** This is a system API.
 
-## TIMEOUT
+## SYSTEM_ERROR
 
 ```TypeScript
-TIMEOUT = 3
+SYSTEM_ERROR = 100
 ```
 
-Rotation time out.
+Rotation failed due to system error.
 
 **Since:** 20
 
-<!--Device-Result-TIMEOUT = 3--><!--Device-Result-TIMEOUT = 3-End-->
-
-**System capability:** SystemCapability.Mechanic.Core
-
-**System API:** This is a system API.
-
-## TERMINATE_OBSTACLE
-
-```TypeScript
-TERMINATE_OBSTACLE  = 4
-```
-
-Termination caused by an obstacle.
-
-**Since:** 26.0.0
-
-<!--Device-Result-TERMINATE_OBSTACLE  = 4--><!--Device-Result-TERMINATE_OBSTACLE  = 4-End-->
+<!--Device-Result-SYSTEM_ERROR = 100--><!--Device-Result-SYSTEM_ERROR = 100-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 
@@ -112,17 +94,33 @@ Termination caused by a cliff.
 
 **System API:** This is a system API.
 
-## SYSTEM_ERROR
+## TERMINATE_OBSTACLE
 
 ```TypeScript
-SYSTEM_ERROR = 100
+TERMINATE_OBSTACLE  = 4
 ```
 
-Rotation failed due to system error.
+Termination caused by an obstacle.
+
+**Since:** 26.0.0
+
+<!--Device-Result-TERMINATE_OBSTACLE  = 4--><!--Device-Result-TERMINATE_OBSTACLE  = 4-End-->
+
+**System capability:** SystemCapability.Mechanic.Core
+
+**System API:** This is a system API.
+
+## TIMEOUT
+
+```TypeScript
+TIMEOUT = 3
+```
+
+Rotation time out.
 
 **Since:** 20
 
-<!--Device-Result-SYSTEM_ERROR = 100--><!--Device-Result-SYSTEM_ERROR = 100-End-->
+<!--Device-Result-TIMEOUT = 3--><!--Device-Result-TIMEOUT = 3-End-->
 
 **System capability:** SystemCapability.Mechanic.Core
 

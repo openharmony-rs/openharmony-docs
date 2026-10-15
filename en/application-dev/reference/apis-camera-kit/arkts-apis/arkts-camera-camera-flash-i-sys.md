@@ -53,6 +53,7 @@ Before the setting, call [isLcdFlashSupported](arkts-camera-camera-flashquery-i-
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,3 +69,5 @@ function enableLcdFlash(session: camera.PhotoSessionForSys | camera.VideoSession
   }
 }
 ```
+
+<!--DelEnd-->

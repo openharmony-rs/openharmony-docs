@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="transformcoordinatesystem1"></a>
+
 ## transformCoordinateSystem
 
 ```TypeScript
@@ -60,7 +62,7 @@ sensor.transformCoordinateSystem([1, 0, 0, 0, 1, 0, 0, 0, 1], { x: 2, y: 3 },
 ```
 
 
-<a id="transformcoordinatesystem-1"></a>
+<a id="transformcoordinatesystem2"></a>
 
 ## transformCoordinateSystem
 

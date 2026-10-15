@@ -30,22 +30,6 @@ DEVICE_DIRECTION_0 = 0
 
 **系统接口：** 此接口为系统接口。
 
-## DEVICE_DIRECTION_90
-
-```TypeScript
-DEVICE_DIRECTION_90 = 90
-```
-
-视频画面90度方向。
-
-**起始版本：** 11
-
-<!--Device-DeviceDirection-DEVICE_DIRECTION_90 = 90--><!--Device-DeviceDirection-DEVICE_DIRECTION_90 = 90-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
 ## DEVICE_DIRECTION_180
 
 ```TypeScript
@@ -73,6 +57,22 @@ DEVICE_DIRECTION_270 = 270
 **起始版本：** 11
 
 <!--Device-DeviceDirection-DEVICE_DIRECTION_270 = 270--><!--Device-DeviceDirection-DEVICE_DIRECTION_270 = 270-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## DEVICE_DIRECTION_90
+
+```TypeScript
+DEVICE_DIRECTION_90 = 90
+```
+
+视频画面90度方向。
+
+**起始版本：** 11
+
+<!--Device-DeviceDirection-DEVICE_DIRECTION_90 = 90--><!--Device-DeviceDirection-DEVICE_DIRECTION_90 = 90-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

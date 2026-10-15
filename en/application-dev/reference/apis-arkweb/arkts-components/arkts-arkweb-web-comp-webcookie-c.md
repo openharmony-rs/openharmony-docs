@@ -70,7 +70,7 @@ Sets the cookie. This API returns the result synchronously. **true** is returned
 
 **Deprecated since:** 9
 
-**Substitutes:** setCookie
+**Substitutes:** [setCookie](../arkts-apis/arkts-arkweb-webview-webcookiemanager-c.md#setcookie)
 
 <!--Device-WebCookie-setCookie()--><!--Device-WebCookie-setCookie()-End-->
 

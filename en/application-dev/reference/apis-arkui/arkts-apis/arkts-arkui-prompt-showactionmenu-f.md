@@ -6,6 +6,8 @@
 import { prompt } from '@kit.ArkUI';
 ```
 
+<a id="showactionmenu1"></a>
+
 ## showActionMenu
 
 ```TypeScript
@@ -18,7 +20,7 @@ Shows an action menu. This API uses a callback to return the result asynchronous
 
 **Deprecated since:** 9
 
-**Substitutes:** showActionMenu
+**Substitutes:** [showActionMenu](arkts-arkui-arkui-uicontext-promptaction-c.md#showactionmenu)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -59,7 +61,7 @@ prompt.showActionMenu({
 ```
 
 
-<a id="showactionmenu-1"></a>
+<a id="showactionmenu2"></a>
 
 ## showActionMenu
 
@@ -73,7 +75,7 @@ Shows an action menu. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** showActionMenu
+**Substitutes:** [showActionMenu](arkts-arkui-arkui-uicontext-promptaction-c.md#showactionmenu)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

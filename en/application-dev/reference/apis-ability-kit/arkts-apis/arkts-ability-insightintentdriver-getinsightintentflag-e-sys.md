@@ -31,12 +31,30 @@ Enumerates the flags of intent information ([InsightIntentInfo](arkts-ability-in
 > | subIntentInfo | Yes| Yes|
 > | parameters | Yes| Yes|
 > | entities | No| No|
-> | developType&lt;sup&gt;23+&lt;/sup&gt; | Yes| Yes|
-> | subIntentInfoForConfiguration&lt;sup&gt;23+&lt;/sup&gt; | No| No|
+> | developType<sup>23+</sup> | Yes| Yes|
+> | subIntentInfoForConfiguration<sup>23+</sup> | No| No|
 
 **Since:** 20
 
 <!--Device-insightIntentDriver-enum GetInsightIntentFlag--><!--Device-insightIntentDriver-enum GetInsightIntentFlag-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+**System API:** This is a system API.
+
+## GET_ENTITY_INFO
+
+```TypeScript
+GET_ENTITY_INFO = 0x00000004
+```
+
+Used to query [EntityInfo](arkts-ability-insightintentdriver-entityinfo-i-sys.md). It must be used together with **GET_FULL_INSIGHT_INTENT** or **GET_SUMMARY_INSIGHT_INTENT**. Example usage: `GET_FULL_INSIGHT_INTENT | GET_ENTITY_INFO`.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004--><!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -73,24 +91,6 @@ Used to query brief intent information in [InsightIntentInfo](arkts-ability-insi
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-GetInsightIntentFlag-GET_SUMMARY_INSIGHT_INTENT = 0x00000002--><!--Device-GetInsightIntentFlag-GET_SUMMARY_INSIGHT_INTENT = 0x00000002-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**System API:** This is a system API.
-
-## GET_ENTITY_INFO
-
-```TypeScript
-GET_ENTITY_INFO = 0x00000004
-```
-
-Used to query [EntityInfo](arkts-ability-insightintentdriver-entityinfo-i-sys.md). It must be used together with **GET_FULL_INSIGHT_INTENT** or **GET_SUMMARY_INSIGHT_INTENT**. Example usage: `GET_FULL_INSIGHT_INTENT | GET_ENTITY_INFO`.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004--><!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 

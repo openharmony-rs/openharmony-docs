@@ -1,15 +1,15 @@
 # ArkTS API<!--arkts-ipckit-->
 
-- [@ohos.rpc(RPC通信)](arkts-ipc-rpc.md)
+- [@ohos.rpc（RPC通信）](arkts-ipc-rpc.md)
   - [Ashmem](arkts-ipc-rpc-ashmem-c.md)
   - [CallingInfo](arkts-ipc-rpc-callinginfo-c.md)
   - [IPCSkeleton](arkts-ipc-rpc-ipcskeleton-c.md)
   - [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md)
   - [MessageOption](arkts-ipc-rpc-messageoption-c.md)
-  - [MessageParcel](arkts-ipc-rpc-messageparcel-c.md)
   - [MessageSequence](arkts-ipc-rpc-messagesequence-c.md)
   - [RemoteObject](arkts-ipc-rpc-remoteobject-c.md)
   - [RemoteProxy](arkts-ipc-rpc-remoteproxy-c.md)
+  - [MessageParcel](arkts-ipc-rpc-messageparcel-c.md)
   - [DeathRecipient](arkts-ipc-rpc-deathrecipient-i.md)
   - [IRemoteBroker](arkts-ipc-rpc-iremotebroker-i.md)
   - [Parcelable](arkts-ipc-rpc-parcelable-i.md)

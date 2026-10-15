@@ -6,6 +6,8 @@ export type Validity = _AppProvisionInfo.Validity
 
 Defines the validity period in the configuration file.
 
+**Type:** [_AppProvisionInfo.Validity](arkts-ability-appprovisioninfo-validity-i-sys.md)
+
 **Since:** 10
 
 <!--Device-bundleManager-export type Validity = _AppProvisionInfo.Validity--><!--Device-bundleManager-export type Validity = _AppProvisionInfo.Validity-End-->
@@ -13,5 +15,3 @@ Defines the validity period in the configuration file.
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
-
-**Type:** [_AppProvisionInfo.Validity](arkts-ability-appprovisioninfo-validity-i-sys.md)

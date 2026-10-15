@@ -6,6 +6,8 @@ type Toggle = TypedFrameNode<ToggleInterface, ToggleAttribute>
 
 [Toggle](../arkts-components/arkts-arkui-toggle-comp.md)类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ToggleInterface, [ToggleAttribute](../arkts-components/arkts-arkui-toggle-comp-attribute.md)&gt;
+
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ type Toggle = TypedFrameNode<ToggleInterface, ToggleAttribute>
 <!--Device-typeNode-type Toggle = TypedFrameNode<ToggleInterface, ToggleAttribute>--><!--Device-typeNode-type Toggle = TypedFrameNode<ToggleInterface, ToggleAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ToggleInterface, [ToggleAttribute](../arkts-components/arkts-arkui-toggle-comp-attribute.md)&gt;

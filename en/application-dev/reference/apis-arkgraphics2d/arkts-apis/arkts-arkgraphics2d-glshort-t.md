@@ -6,6 +6,8 @@ type GLshort = number
 
 WebGL 1.0
 
+**Type:** number
+
 **Since:** 7
 
 **Model restriction:** This API can be used only in the FA model.
@@ -13,5 +15,3 @@ WebGL 1.0
 <!--Device-unnamed-type GLshort = number--><!--Device-unnamed-type GLshort = number-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.WebGL
-
-**Type:** number

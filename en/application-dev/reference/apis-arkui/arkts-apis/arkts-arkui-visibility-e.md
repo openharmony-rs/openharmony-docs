@@ -12,24 +12,6 @@ Defines the visibility and layout placeholder status of the component.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Visible
-
-```TypeScript
-Visible
-```
-
-The component is visible.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-Visibility-Visible--><!--Device-Visibility-Visible-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Hidden
 
 ```TypeScript
@@ -63,5 +45,23 @@ The component is hidden. It is not involved in the layout, and no placeholder is
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-Visibility-None--><!--Device-Visibility-None-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Visible
+
+```TypeScript
+Visible
+```
+
+The component is visible.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-Visibility-Visible--><!--Device-Visibility-Visible-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

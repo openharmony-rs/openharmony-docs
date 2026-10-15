@@ -14,17 +14,33 @@ Enumerates the shade degrees of image colors.
 
 **System API:** This is a system API.
 
-## UNKNOWN_SHADE_DEGREE_PICTURE
+## DARK_PICTURE
 
 ```TypeScript
-UNKNOWN_SHADE_DEGREE_PICTURE = 0
+DARK_PICTURE = 5
 ```
 
-Default value. The shade degree of the image color is unknown.
+The shade degree of the image color is dark.
 
 **Since:** 22
 
-<!--Device-PictureShadeDegree-UNKNOWN_SHADE_DEGREE_PICTURE = 0--><!--Device-PictureShadeDegree-UNKNOWN_SHADE_DEGREE_PICTURE = 0-End-->
+<!--Device-PictureShadeDegree-DARK_PICTURE = 5--><!--Device-PictureShadeDegree-DARK_PICTURE = 5-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+**System API:** This is a system API.
+
+## EXTREMELY_DARK_PICTURE
+
+```TypeScript
+EXTREMELY_DARK_PICTURE = 6
+```
+
+The shade degree of the image color is extremely dark.
+
+**Since:** 22
+
+<!--Device-PictureShadeDegree-EXTREMELY_DARK_PICTURE = 6--><!--Device-PictureShadeDegree-EXTREMELY_DARK_PICTURE = 6-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -41,22 +57,6 @@ The shade degree of the image color is extremely light.
 **Since:** 22
 
 <!--Device-PictureShadeDegree-EXTREMELY_LIGHT_PICTURE = 1--><!--Device-PictureShadeDegree-EXTREMELY_LIGHT_PICTURE = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-**System API:** This is a system API.
-
-## VERY_LIGHT_PICTURE
-
-```TypeScript
-VERY_LIGHT_PICTURE = 2
-```
-
-The shade degree of the image color is very light.
-
-**Since:** 22
-
-<!--Device-PictureShadeDegree-VERY_LIGHT_PICTURE = 2--><!--Device-PictureShadeDegree-VERY_LIGHT_PICTURE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -94,33 +94,33 @@ The shade degree of the image color is moderate.
 
 **System API:** This is a system API.
 
-## DARK_PICTURE
+## UNKNOWN_SHADE_DEGREE_PICTURE
 
 ```TypeScript
-DARK_PICTURE = 5
+UNKNOWN_SHADE_DEGREE_PICTURE = 0
 ```
 
-The shade degree of the image color is dark.
+Default value. The shade degree of the image color is unknown.
 
 **Since:** 22
 
-<!--Device-PictureShadeDegree-DARK_PICTURE = 5--><!--Device-PictureShadeDegree-DARK_PICTURE = 5-End-->
+<!--Device-PictureShadeDegree-UNKNOWN_SHADE_DEGREE_PICTURE = 0--><!--Device-PictureShadeDegree-UNKNOWN_SHADE_DEGREE_PICTURE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.
 
-## EXTREMELY_DARK_PICTURE
+## VERY_LIGHT_PICTURE
 
 ```TypeScript
-EXTREMELY_DARK_PICTURE = 6
+VERY_LIGHT_PICTURE = 2
 ```
 
-The shade degree of the image color is extremely dark.
+The shade degree of the image color is very light.
 
 **Since:** 22
 
-<!--Device-PictureShadeDegree-EXTREMELY_DARK_PICTURE = 6--><!--Device-PictureShadeDegree-EXTREMELY_DARK_PICTURE = 6-End-->
+<!--Device-PictureShadeDegree-VERY_LIGHT_PICTURE = 2--><!--Device-PictureShadeDegree-VERY_LIGHT_PICTURE = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

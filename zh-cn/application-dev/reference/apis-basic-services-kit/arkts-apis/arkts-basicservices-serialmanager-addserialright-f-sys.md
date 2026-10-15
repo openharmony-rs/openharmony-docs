@@ -48,12 +48,12 @@ ohos.permission.MANAGE_USB_CONFIG）来识别是否允许静默授权，跳过�
 | [31400001](../errorcode-usb.md#31400001-串口服务异常) |  |
 | [31400003](../errorcode-usb.md#31400003-端口号不存在) |  |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 import { bundleManager } from '@kit.AbilityKit';
-import { BusinessError } from '@kit.BasicServicesKit';
-import { serialManager } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 
 function addSerialRight() {
@@ -84,3 +84,5 @@ function addSerialRight() {
   });
 }
 ```
+
+<!--DelEnd-->

@@ -28,8 +28,11 @@ Gets system sound manager for all type sound.
 | --- | --- |
 | [SystemSoundManager](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md) | SystemSoundManager instance. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 ```
+
+<!--DelEnd-->

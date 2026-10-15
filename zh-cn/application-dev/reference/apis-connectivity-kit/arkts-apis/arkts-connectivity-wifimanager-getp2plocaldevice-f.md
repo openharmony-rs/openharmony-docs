@@ -6,6 +6,8 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
+<a id="getp2plocaldevice1"></a>
+
 ## getP2pLocalDevice
 
 ```TypeScript
@@ -57,7 +59,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
-<a id="getp2plocaldevice-1"></a>
+<a id="getp2plocaldevice2"></a>
 
 ## getP2pLocalDevice
 
@@ -94,4 +96,4 @@ function getP2pLocalDevice(callback: AsyncCallback<WifiP2pDevice>): void
 
 **示例**
 
-参见 getP2pLocalDevice
+参见 [getP2pLocalDevice](#getp2plocaldevice)

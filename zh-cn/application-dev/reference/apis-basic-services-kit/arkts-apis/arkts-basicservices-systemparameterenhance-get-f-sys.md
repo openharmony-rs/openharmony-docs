@@ -6,6 +6,8 @@
 import { systemParameterEnhance } from '@kit.BasicServicesKit';
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -38,6 +40,7 @@ function get(key: string, callback: AsyncCallback<string>): void
 | [14700103](../errorcode-device-info.md#14700103-操作因权限被拒绝) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-系统内部错误包括内存不足死锁等) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,8 +59,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="get-1"></a>
+
+<a id="get2"></a>
 
 ## get
 
@@ -92,6 +97,7 @@ function get(key: string, def: string, callback: AsyncCallback<string>): void
 | [14700103](../errorcode-device-info.md#14700103-操作因权限被拒绝) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-系统内部错误包括内存不足死锁等) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -110,8 +116,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="get-2"></a>
+
+<a id="get3"></a>
 
 ## get
 
@@ -151,6 +159,7 @@ function get(key: string, def?: string): Promise<string>
 | [14700103](../errorcode-device-info.md#14700103-操作因权限被拒绝) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-系统内部错误包括内存不足死锁等) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -167,3 +176,5 @@ try {
   console.error('get unexpected error: ' + e);
 }
 ```
+
+<!--DelEnd-->

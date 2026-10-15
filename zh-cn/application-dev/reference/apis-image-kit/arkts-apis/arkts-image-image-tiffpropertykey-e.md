@@ -56,214 +56,6 @@ enum TiffPropertyKey
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## COMPRESSION
-
-```TypeScript
-COMPRESSION = 'TiffCompression'
-```
-
-Compression scheme used for image data (e.g., None, LZW, JPEG, Deflate).
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-COMPRESSION = 'TiffCompression'--><!--Device-TiffPropertyKey-COMPRESSION = 'TiffCompression'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## PHOTOMETRIC_INTERPRETATION
-
-```TypeScript
-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'
-```
-
-Defines how pixel colors are interpreted (e.g., RGB, grayscale).
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'--><!--Device-TiffPropertyKey-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## TRANSFER_FUNCTION
-
-```TypeScript
-TRANSFER_FUNCTION = 'TiffTransferFunction'
-```
-
-Tone transfer curve mapping pixel values to output intensity.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-TRANSFER_FUNCTION = 'TiffTransferFunction'--><!--Device-TiffPropertyKey-TRANSFER_FUNCTION = 'TiffTransferFunction'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## ORIENTATION
-
-```TypeScript
-ORIENTATION = 'TiffOrientation'
-```
-
-Indicates image orientation for correct display rotation/flip.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-ORIENTATION = 'TiffOrientation'--><!--Device-TiffPropertyKey-ORIENTATION = 'TiffOrientation'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## X_RESOLUTION
-
-```TypeScript
-X_RESOLUTION = 'TiffXResolution'
-```
-
-Horizontal resolution (pixels per resolution unit).
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-X_RESOLUTION = 'TiffXResolution'--><!--Device-TiffPropertyKey-X_RESOLUTION = 'TiffXResolution'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## Y_RESOLUTION
-
-```TypeScript
-Y_RESOLUTION = 'TiffYResolution'
-```
-
-Vertical resolution (pixels per resolution unit).
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-Y_RESOLUTION = 'TiffYResolution'--><!--Device-TiffPropertyKey-Y_RESOLUTION = 'TiffYResolution'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## RESOLUTION_UNIT
-
-```TypeScript
-RESOLUTION_UNIT = 'TiffResolutionUnit'
-```
-
-Unit for X/Y resolution.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-RESOLUTION_UNIT = 'TiffResolutionUnit'--><!--Device-TiffPropertyKey-RESOLUTION_UNIT = 'TiffResolutionUnit'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## WHITE_POINT
-
-```TypeScript
-WHITE_POINT = 'TiffWhitePoint'
-```
-
-Chromaticity coordinates of the reference white point.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-WHITE_POINT = 'TiffWhitePoint'--><!--Device-TiffPropertyKey-WHITE_POINT = 'TiffWhitePoint'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## PRIMARY_CHROMATICITIES
-
-```TypeScript
-PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'
-```
-
-Chromaticity coordinates of the RGB primaries.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'--><!--Device-TiffPropertyKey-PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## TILE_LENGTH
-
-```TypeScript
-TILE_LENGTH = 'TiffTileLength'
-```
-
-Height of each image tile in pixels.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-TILE_LENGTH = 'TiffTileLength'--><!--Device-TiffPropertyKey-TILE_LENGTH = 'TiffTileLength'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## TILE_WIDTH
-
-```TypeScript
-TILE_WIDTH = 'TiffTileWidth'
-```
-
-Width of each image tile in pixels.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-TILE_WIDTH = 'TiffTileWidth'--><!--Device-TiffPropertyKey-TILE_WIDTH = 'TiffTileWidth'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## DOCUMENT_NAME
-
-```TypeScript
-DOCUMENT_NAME = 'TiffDocumentName'
-```
-
-Name of the document or image.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-DOCUMENT_NAME = 'TiffDocumentName'--><!--Device-TiffPropertyKey-DOCUMENT_NAME = 'TiffDocumentName'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## IMAGE_DESCRIPTION
-
-```TypeScript
-IMAGE_DESCRIPTION = 'TiffImageDescription'
-```
-
-Description of the image content.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TiffPropertyKey-IMAGE_DESCRIPTION = 'TiffImageDescription'--><!--Device-TiffPropertyKey-IMAGE_DESCRIPTION = 'TiffImageDescription'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## ARTIST
 
 ```TypeScript
@@ -277,6 +69,22 @@ Name of the image creator or artist.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-TiffPropertyKey-ARTIST = 'TiffArtist'--><!--Device-TiffPropertyKey-ARTIST = 'TiffArtist'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## COMPRESSION
+
+```TypeScript
+COMPRESSION = 'TiffCompression'
+```
+
+Compression scheme used for image data (e.g., None, LZW, JPEG, Deflate).
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-COMPRESSION = 'TiffCompression'--><!--Device-TiffPropertyKey-COMPRESSION = 'TiffCompression'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -312,6 +120,54 @@ Date and time associated with the image (typically last modification).
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## DOCUMENT_NAME
+
+```TypeScript
+DOCUMENT_NAME = 'TiffDocumentName'
+```
+
+Name of the document or image.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-DOCUMENT_NAME = 'TiffDocumentName'--><!--Device-TiffPropertyKey-DOCUMENT_NAME = 'TiffDocumentName'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## HOST_COMPUTER
+
+```TypeScript
+HOST_COMPUTER = 'TiffHostComputer'
+```
+
+Host computer/system used for image processing.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-HOST_COMPUTER = 'TiffHostComputer'--><!--Device-TiffPropertyKey-HOST_COMPUTER = 'TiffHostComputer'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## IMAGE_DESCRIPTION
+
+```TypeScript
+IMAGE_DESCRIPTION = 'TiffImageDescription'
+```
+
+Description of the image content.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-IMAGE_DESCRIPTION = 'TiffImageDescription'--><!--Device-TiffPropertyKey-IMAGE_DESCRIPTION = 'TiffImageDescription'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## MAKE
 
 ```TypeScript
@@ -344,6 +200,70 @@ Model name/number of the capture device.
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## ORIENTATION
+
+```TypeScript
+ORIENTATION = 'TiffOrientation'
+```
+
+Indicates image orientation for correct display rotation/flip.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-ORIENTATION = 'TiffOrientation'--><!--Device-TiffPropertyKey-ORIENTATION = 'TiffOrientation'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## PHOTOMETRIC_INTERPRETATION
+
+```TypeScript
+PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'
+```
+
+Defines how pixel colors are interpreted (e.g., RGB, grayscale).
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'--><!--Device-TiffPropertyKey-PHOTOMETRIC_INTERPRETATION = 'TiffPhotometricInterpretation'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## PRIMARY_CHROMATICITIES
+
+```TypeScript
+PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'
+```
+
+Chromaticity coordinates of the RGB primaries.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'--><!--Device-TiffPropertyKey-PRIMARY_CHROMATICITIES = 'TiffPrimaryChromaticities'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## RESOLUTION_UNIT
+
+```TypeScript
+RESOLUTION_UNIT = 'TiffResolutionUnit'
+```
+
+Unit for X/Y resolution.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-RESOLUTION_UNIT = 'TiffResolutionUnit'--><!--Device-TiffPropertyKey-RESOLUTION_UNIT = 'TiffResolutionUnit'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## SOFTWARE
 
 ```TypeScript
@@ -360,18 +280,98 @@ Software used to create or process the image.
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## HOST_COMPUTER
+## TILE_LENGTH
 
 ```TypeScript
-HOST_COMPUTER = 'TiffHostComputer'
+TILE_LENGTH = 'TiffTileLength'
 ```
 
-Host computer/system used for image processing.
+Height of each image tile in pixels.
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TiffPropertyKey-HOST_COMPUTER = 'TiffHostComputer'--><!--Device-TiffPropertyKey-HOST_COMPUTER = 'TiffHostComputer'-End-->
+<!--Device-TiffPropertyKey-TILE_LENGTH = 'TiffTileLength'--><!--Device-TiffPropertyKey-TILE_LENGTH = 'TiffTileLength'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## TILE_WIDTH
+
+```TypeScript
+TILE_WIDTH = 'TiffTileWidth'
+```
+
+Width of each image tile in pixels.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-TILE_WIDTH = 'TiffTileWidth'--><!--Device-TiffPropertyKey-TILE_WIDTH = 'TiffTileWidth'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## TRANSFER_FUNCTION
+
+```TypeScript
+TRANSFER_FUNCTION = 'TiffTransferFunction'
+```
+
+Tone transfer curve mapping pixel values to output intensity.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-TRANSFER_FUNCTION = 'TiffTransferFunction'--><!--Device-TiffPropertyKey-TRANSFER_FUNCTION = 'TiffTransferFunction'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## WHITE_POINT
+
+```TypeScript
+WHITE_POINT = 'TiffWhitePoint'
+```
+
+Chromaticity coordinates of the reference white point.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-WHITE_POINT = 'TiffWhitePoint'--><!--Device-TiffPropertyKey-WHITE_POINT = 'TiffWhitePoint'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## X_RESOLUTION
+
+```TypeScript
+X_RESOLUTION = 'TiffXResolution'
+```
+
+Horizontal resolution (pixels per resolution unit).
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-X_RESOLUTION = 'TiffXResolution'--><!--Device-TiffPropertyKey-X_RESOLUTION = 'TiffXResolution'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## Y_RESOLUTION
+
+```TypeScript
+Y_RESOLUTION = 'TiffYResolution'
+```
+
+Vertical resolution (pixels per resolution unit).
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TiffPropertyKey-Y_RESOLUTION = 'TiffYResolution'--><!--Device-TiffPropertyKey-Y_RESOLUTION = 'TiffYResolution'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

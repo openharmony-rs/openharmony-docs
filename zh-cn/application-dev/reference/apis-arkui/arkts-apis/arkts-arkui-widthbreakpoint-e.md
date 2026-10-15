@@ -14,13 +14,13 @@ declare enum WidthBreakpoint
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## WIDTH_XS
+## WIDTH_LG
 
 ```TypeScript
-WIDTH_XS = 0
+WIDTH_LG = 3
 ```
 
-窗口宽度小于320vp。
+窗口宽度大于等于840vp，且小于1440vp。
 
 **起始版本：** 13
 
@@ -28,25 +28,7 @@ WIDTH_XS = 0
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
-<!--Device-WidthBreakpoint-WIDTH_XS = 0--><!--Device-WidthBreakpoint-WIDTH_XS = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## WIDTH_SM
-
-```TypeScript
-WIDTH_SM = 1
-```
-
-窗口宽度大于等于320vp，且小于600vp。
-
-**起始版本：** 13
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
-
-<!--Device-WidthBreakpoint-WIDTH_SM = 1--><!--Device-WidthBreakpoint-WIDTH_SM = 1-End-->
+<!--Device-WidthBreakpoint-WIDTH_LG = 3--><!--Device-WidthBreakpoint-WIDTH_LG = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -68,13 +50,13 @@ WIDTH_MD = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## WIDTH_LG
+## WIDTH_SM
 
 ```TypeScript
-WIDTH_LG = 3
+WIDTH_SM = 1
 ```
 
-窗口宽度大于等于840vp，且小于1440vp。
+窗口宽度大于等于320vp，且小于600vp。
 
 **起始版本：** 13
 
@@ -82,7 +64,7 @@ WIDTH_LG = 3
 
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
-<!--Device-WidthBreakpoint-WIDTH_LG = 3--><!--Device-WidthBreakpoint-WIDTH_LG = 3-End-->
+<!--Device-WidthBreakpoint-WIDTH_SM = 1--><!--Device-WidthBreakpoint-WIDTH_SM = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -101,5 +83,23 @@ WIDTH_XL = 4
 **原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
 <!--Device-WidthBreakpoint-WIDTH_XL = 4--><!--Device-WidthBreakpoint-WIDTH_XL = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## WIDTH_XS
+
+```TypeScript
+WIDTH_XS = 0
+```
+
+窗口宽度小于320vp。
+
+**起始版本：** 13
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-WidthBreakpoint-WIDTH_XS = 0--><!--Device-WidthBreakpoint-WIDTH_XS = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="enablenotification1"></a>
+
 ## enableNotification
 
 ```TypeScript
@@ -36,7 +38,7 @@ Sets whether to enable notification for a specified application. This API uses a
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
-<a id="enablenotification-1"></a>
+<a id="enablenotification2"></a>
 
 ## enableNotification
 

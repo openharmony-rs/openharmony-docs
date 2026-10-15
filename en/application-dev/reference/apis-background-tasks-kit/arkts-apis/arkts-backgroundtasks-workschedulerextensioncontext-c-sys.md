@@ -50,9 +50,9 @@ Starts a **ServiceExtensionAbility**. This API uses a promise to return the resu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -65,6 +65,7 @@ Starts a **ServiceExtensionAbility**. This API uses a promise to return the resu
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-caller-released) | The caller has been released. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -80,11 +81,11 @@ let want : Want = {
 export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtensionAbility {
   onWorkStart(workInfo: workScheduler.WorkInfo) {
     console.info(`onWorkStart, workInfo = ${JSON.stringify(workInfo)}`);
-      // Start the corresponding service.
+      // Start the corresponding Service.
       this.context.startServiceExtensionAbility(want).then(() => {
         console.info('succeeded in starting ServiceExtensionAbility.');
-      }).catch ((err: BusinessError) => {
-        console.error('failed to start ServiceExtensionAbility.');
+      }).catch((err: BusinessError) => {
+        console.error(`failed to start ServiceExtensionAbility. Code: ${err.code}, message: ${err.message}`);
       });
   }
 
@@ -93,6 +94,8 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## stopServiceExtensionAbility
 
@@ -128,9 +131,9 @@ Stops a **ServiceExtensionAbility**. This API uses a promise to return the resul
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not system-app, can not use system-api. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Async] Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameters types; <br>3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -140,6 +143,7 @@ Stops a **ServiceExtensionAbility**. This API uses a promise to return the resul
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. |
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-caller-released) | The caller has been released. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -163,8 +167,10 @@ export default class MyWorkSchedulerExtensionAbility extends WorkSchedulerExtens
       this.context.stopServiceExtensionAbility(want).then(() => {
         console.info('succeeded in stopping ServiceExtensionAbility.');
       }).catch ((err: BusinessError) => {
-        console.error('failed to stop ServiceExtensionAbility.');
+        console.error(`failed to stop ServiceExtensionAbility. Code: ${err.code}, message: ${err.message}`);
       });
   }
 }
 ```
+
+<!--DelEnd-->

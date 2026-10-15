@@ -4,9 +4,9 @@
 declare class PinchGestureHandler extends GestureHandler<PinchGestureHandler>
 ```
 
-Defines a type of gesture handler object for pinch gestures.
+Defines the pinch gesture handler object type, which is used to recognize multi-finger pinch interactions on a component. It is suitable for scaling operation scenarios, and supports configuring recognition conditions such as the number of triggering fingers, the minimum recognition distance, and the finger count limit.
 
-**Inheritance/Implementation:** PinchGestureHandler extends GestureHandler<PinchGestureHandler>
+**Inheritance/Implementation:** PinchGestureHandler extends GestureHandler&lt;PinchGestureHandler&gt;
 
 **Since:** 12
 
@@ -36,7 +36,9 @@ Constructor used to create a pinch gesture handler instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [PinchGestureHandlerOptions](arkts-arkui-tapgesture-comp-pinchgesturehandleroptions-i.md) | No | Parameters of the pinch gesture handler. |
+| options | [PinchGestureHandlerOptions](arkts-arkui-tapgesture-comp-pinchgesturehandleroptions-i.md) | No | Configuration parameters of the pinch gesture handler. Pass this parameter when you need to customize the minimum finger count for triggering a pinch, the minimum recognition distance, or the finger count check. If this parameter is not passed, the default configuration of the pinch gesture handler is used, for example, the trigger finger count is 2, the minimum recognition distance is 5 vp, and the finger count on the touch screen is not checked by default. |
+
+<a id="onactioncancel1"></a>
 
 ## onActionCancel
 
@@ -68,7 +70,7 @@ Sets the callback for pinch gesture cancellation. This callback is triggered whe
 | --- | --- |
 | [PinchGestureHandler](arkts-arkui-tapgesture-comp-pinchgesturehandler-c.md) | Pinch gesture handler object. |
 
-<a id="onactioncancel-1"></a>
+<a id="onactioncancel2"></a>
 
 ## onActionCancel
 
@@ -76,7 +78,7 @@ Sets the callback for pinch gesture cancellation. This callback is triggered whe
 onActionCancel(event: Callback<GestureEvent>): PinchGestureHandler
 ```
 
-Sets the callback for pinch gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel), this API returns gesture event information.
+Sets the callback for pinch gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel1), this API returns gesture event information.
 
 **Since:** 18
 

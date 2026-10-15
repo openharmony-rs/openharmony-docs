@@ -45,6 +45,7 @@ Send image data.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -82,3 +83,5 @@ try {
   hilog.error(0x0000, 'testTag', 'photoPicker failed with error: ' + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

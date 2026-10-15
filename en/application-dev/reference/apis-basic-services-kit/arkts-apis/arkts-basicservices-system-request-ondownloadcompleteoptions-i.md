@@ -8,7 +8,7 @@ export interface OnDownloadCompleteOptions
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-unnamed-export interface OnDownloadCompleteOptions--><!--Device-unnamed-export interface OnDownloadCompleteOptions-End-->
 
@@ -32,7 +32,7 @@ Called when API call is complete.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-OnDownloadCompleteOptions-complete?: () => void--><!--Device-OnDownloadCompleteOptions-complete?: () => void-End-->
 
@@ -50,7 +50,7 @@ Called when API call has failed. Header information and HTTP status code returne
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-OnDownloadCompleteOptions-fail?: (data: any, code: number) => void--><!--Device-OnDownloadCompleteOptions-fail?: (data: any, code: number) => void-End-->
 
@@ -75,7 +75,7 @@ Called when API call is successful.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-OnDownloadCompleteOptions-success?: (data: OnDownloadCompleteResponse) => void--><!--Device-OnDownloadCompleteOptions-success?: (data: OnDownloadCompleteResponse) => void-End-->
 
@@ -101,7 +101,7 @@ Result token returned by the download API.
 
 **Deprecated since:** 9
 
-**Substitutes:** tid
+**Substitutes:** [tid](arkts-basicservices-agent-task-i.md#tid)
 
 <!--Device-OnDownloadCompleteOptions-token: string--><!--Device-OnDownloadCompleteOptions-token: string-End-->
 

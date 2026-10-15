@@ -12,6 +12,22 @@ Enumerates the audio sample formats.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
+## SAMPLE_FORMAT_F32LE
+
+```TypeScript
+SAMPLE_FORMAT_F32LE = 4
+```
+
+Signed 32-bit floating-point number, little endian.
+
+Due to system restrictions, only some devices support this sampling format.
+
+**Since:** 9
+
+<!--Device-AudioSampleFormat-SAMPLE_FORMAT_F32LE = 4--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_F32LE = 4-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
 ## SAMPLE_FORMAT_INVALID
 
 ```TypeScript
@@ -23,20 +39,6 @@ Invalid format.
 **Since:** 8
 
 <!--Device-AudioSampleFormat-SAMPLE_FORMAT_INVALID = -1--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_INVALID = -1-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## SAMPLE_FORMAT_U8
-
-```TypeScript
-SAMPLE_FORMAT_U8 = 0
-```
-
-Unsigned 8-bit integer.
-
-**Since:** 8
-
-<!--Device-AudioSampleFormat-SAMPLE_FORMAT_U8 = 0--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_U8 = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -86,18 +88,16 @@ Due to system restrictions, only some devices support this sampling format.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## SAMPLE_FORMAT_F32LE
+## SAMPLE_FORMAT_U8
 
 ```TypeScript
-SAMPLE_FORMAT_F32LE = 4
+SAMPLE_FORMAT_U8 = 0
 ```
 
-Signed 32-bit floating-point number, little endian.
+Unsigned 8-bit integer.
 
-Due to system restrictions, only some devices support this sampling format.
+**Since:** 8
 
-**Since:** 9
-
-<!--Device-AudioSampleFormat-SAMPLE_FORMAT_F32LE = 4--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_F32LE = 4-End-->
+<!--Device-AudioSampleFormat-SAMPLE_FORMAT_U8 = 0--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_U8 = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

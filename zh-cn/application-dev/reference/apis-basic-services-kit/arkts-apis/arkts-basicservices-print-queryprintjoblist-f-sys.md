@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryprintjoblist1"></a>
+
 ## queryPrintJobList
 
 ```TypeScript
@@ -37,6 +39,7 @@ function queryPrintJobList(callback: AsyncCallback<Array<PrintJob>>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,8 +55,10 @@ print.queryPrintJobList((error: BusinessError, printJobs : print.PrintJob[]) => 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="queryprintjoblist-1"></a>
+
+<a id="queryprintjoblist2"></a>
 
 ## queryPrintJobList
 
@@ -86,6 +91,7 @@ function queryPrintJobList(): Promise<Array<PrintJob>>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -98,3 +104,5 @@ print.queryPrintJobList().then((printJobs : print.PrintJob[]) => {
     console.error(`Failed to query print job list. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

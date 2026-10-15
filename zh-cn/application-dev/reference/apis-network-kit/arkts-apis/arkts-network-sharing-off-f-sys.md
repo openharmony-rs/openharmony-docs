@@ -39,6 +39,7 @@ function off(type: 'sharingStateChange', callback?: Callback<boolean>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,6 +49,8 @@ sharing.off('sharingStateChange', (data: boolean) => {
   console.info(JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('interfaceSharingStateChange')
@@ -83,6 +86,7 @@ function off(type: 'interfaceSharingStateChange', callback?: Callback<InterfaceS
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -92,6 +96,8 @@ sharing.off('interfaceSharingStateChange', (data: object) => {
   console.info(JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->
 
 
 ## off('sharingUpstreamChange')
@@ -127,6 +133,7 @@ function off(type: 'sharingUpstreamChange', callback?: Callback<NetHandle>): voi
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -136,3 +143,5 @@ sharing.off('sharingUpstreamChange', (data: object) => {
   console.info(JSON.stringify(data));
 });
 ```
+
+<!--DelEnd-->

@@ -14,55 +14,91 @@ declare enum TextChangeReason
 
 **系统接口：** 此接口为系统接口。
 
-## UNKNOWN
+## ACCESSIBILITY
 
 ```TypeScript
-UNKNOWN = 0
+ACCESSIBILITY = 10
 ```
 
-未知原因。
+无障碍接口。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TextChangeReason-UNKNOWN = 0--><!--Device-TextChangeReason-UNKNOWN = 0-End-->
+<!--Device-TextChangeReason-ACCESSIBILITY = 10--><!--Device-TextChangeReason-ACCESSIBILITY = 10-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
 
-## INPUT
+## AI_WRITE
 
 ```TypeScript
-INPUT = 1
+AI_WRITE = 6
 ```
 
-用户输入。
+AI帮写。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TextChangeReason-INPUT = 1--><!--Device-TextChangeReason-INPUT = 1-End-->
+<!--Device-TextChangeReason-AI_WRITE = 6--><!--Device-TextChangeReason-AI_WRITE = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
 
-## PASTE
+## AUTO_FILL
 
 ```TypeScript
-PASTE = 2
+AUTO_FILL = 5
 ```
 
-粘贴。
+自动填充。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TextChangeReason-PASTE = 2--><!--Device-TextChangeReason-PASTE = 2-End-->
+<!--Device-TextChangeReason-AUTO_FILL = 5--><!--Device-TextChangeReason-AUTO_FILL = 5-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+## COLLABORATION
+
+```TypeScript
+COLLABORATION = 11
+```
+
+跨端拍照。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-COLLABORATION = 11--><!--Device-TextChangeReason-COLLABORATION = 11-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
+## CONTROLLER
+
+```TypeScript
+CONTROLLER = 9
+```
+
+开发者调用组件接口。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-CONTROLLER = 9--><!--Device-TextChangeReason-CONTROLLER = 9-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,37 +140,37 @@ DRAG = 4
 
 **系统接口：** 此接口为系统接口。
 
-## AUTO_FILL
+## INPUT
 
 ```TypeScript
-AUTO_FILL = 5
+INPUT = 1
 ```
 
-自动填充。
+用户输入。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TextChangeReason-AUTO_FILL = 5--><!--Device-TextChangeReason-AUTO_FILL = 5-End-->
+<!--Device-TextChangeReason-INPUT = 1--><!--Device-TextChangeReason-INPUT = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **系统接口：** 此接口为系统接口。
 
-## AI_WRITE
+## PASTE
 
 ```TypeScript
-AI_WRITE = 6
+PASTE = 2
 ```
 
-AI帮写。
+粘贴。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TextChangeReason-AI_WRITE = 6--><!--Device-TextChangeReason-AI_WRITE = 6-End-->
+<!--Device-TextChangeReason-PASTE = 2--><!--Device-TextChangeReason-PASTE = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +194,24 @@ REDO = 7
 
 **系统接口：** 此接口为系统接口。
 
+## STYLUS
+
+```TypeScript
+STYLUS = 12
+```
+
+手写笔。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-TextChangeReason-STYLUS = 12--><!--Device-TextChangeReason-STYLUS = 12-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**系统接口：** 此接口为系统接口。
+
 ## UNDO
 
 ```TypeScript
@@ -176,73 +230,19 @@ UNDO = 8
 
 **系统接口：** 此接口为系统接口。
 
-## CONTROLLER
+## UNKNOWN
 
 ```TypeScript
-CONTROLLER = 9
+UNKNOWN = 0
 ```
 
-开发者调用组件接口。
+未知原因。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-TextChangeReason-CONTROLLER = 9--><!--Device-TextChangeReason-CONTROLLER = 9-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
-
-## ACCESSIBILITY
-
-```TypeScript
-ACCESSIBILITY = 10
-```
-
-无障碍接口。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TextChangeReason-ACCESSIBILITY = 10--><!--Device-TextChangeReason-ACCESSIBILITY = 10-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
-
-## COLLABORATION
-
-```TypeScript
-COLLABORATION = 11
-```
-
-跨端拍照。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TextChangeReason-COLLABORATION = 11--><!--Device-TextChangeReason-COLLABORATION = 11-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**系统接口：** 此接口为系统接口。
-
-## STYLUS
-
-```TypeScript
-STYLUS = 12
-```
-
-手写笔。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-TextChangeReason-STYLUS = 12--><!--Device-TextChangeReason-STYLUS = 12-End-->
+<!--Device-TextChangeReason-UNKNOWN = 0--><!--Device-TextChangeReason-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

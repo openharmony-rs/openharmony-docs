@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array<PluginBundleInfo>>
 ```
 
-根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。
+根据给定的hostBundleName和userId获取所有的PluginBundleInfo。使用Promise异步回调。接口调用失败时可能返回空数组，需校验返回值后使用。
 
 **起始版本：** 19
 
@@ -35,7 +35,7 @@ function getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Arra
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;PluginBundleInfo&gt;&gt; | Promise对象，返回Array&lt;PluginBundleInfo&gt;。 |
+| Promise&lt;Array&lt;PluginBundleInfo&gt;&gt; | Promise对象，返回Array<PluginBundleInfo>。 |
 
 **错误码：**
 
@@ -46,6 +46,7 @@ function getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Arra
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -86,3 +87,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllPluginInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

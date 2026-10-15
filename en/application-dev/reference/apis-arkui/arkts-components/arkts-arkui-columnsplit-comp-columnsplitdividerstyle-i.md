@@ -12,7 +12,7 @@ Sets the distance between the child component and the upper and lower dividers.
 > components. However, this adjustment is only applied to the extent that the resulting height stays within the
 > height limits of the child components.
 > 
-> Universal attributes such as [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) and
+> Universal attributes such as [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) and
 > [margin](arkts-arkui-common-comp-commonmethod-c.md#margin) are supported. If **clip** is not set, the default value **true** is used.
 
 **Since:** 10

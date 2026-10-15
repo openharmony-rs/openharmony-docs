@@ -30,24 +30,6 @@ Three-column display: year, month, and day.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## YEAR_AND_MONTH
-
-```TypeScript
-YEAR_AND_MONTH = 1
-```
-
-Two-column display: year and month.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-DatePickerMode-YEAR_AND_MONTH = 1--><!--Device-DatePickerMode-YEAR_AND_MONTH = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## MONTH_AND_DAY
 
 ```TypeScript
@@ -65,5 +47,23 @@ In this mode, the year remains unchanged and takes the value specified by the **
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-DatePickerMode-MONTH_AND_DAY = 2--><!--Device-DatePickerMode-MONTH_AND_DAY = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## YEAR_AND_MONTH
+
+```TypeScript
+YEAR_AND_MONTH = 1
+```
+
+Two-column display: year and month.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-DatePickerMode-YEAR_AND_MONTH = 1--><!--Device-DatePickerMode-YEAR_AND_MONTH = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

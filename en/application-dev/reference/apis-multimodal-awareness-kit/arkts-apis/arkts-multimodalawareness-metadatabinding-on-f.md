@@ -40,16 +40,18 @@ Subscribes to the event of a system application requesting to obtain encoded con
 **Examples**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 
-let bundleName: string = '';
+let bundleName: string = 'com.example.app';
 try {
   metadataBinding.on('operationSubmitMetadata', bundleName, (event: number) => {
     if (event == 1) {
-      console.info("The screenshot request is intercepted and the app link is obtained");
+      console.info('The screenshot request is received and the app link is obtained');
     }
   });
 } catch (error) {
-  console.error("register screenshot event error");
+  const err = error as BusinessError;
+  console.error(`Failed to register operationSubmitMetadata event. Code: ${err.code}, message: ${err.message}`);
 }
 ```

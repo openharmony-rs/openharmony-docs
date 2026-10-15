@@ -40,8 +40,11 @@ Remove a paired remote device.
 | --- | --- |
 | boolean | Returns `true` if the cancel process is started; returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let result : boolean = bluetooth.cancelPairedDevice("XX:XX:XX:XX:XX:XX");
 ```
+
+<!--DelEnd-->

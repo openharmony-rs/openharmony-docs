@@ -8,6 +8,8 @@ The event data of cli execute.
 
 @typedef { _CliToolEvent }
 
+**Type:** _CliToolEvent
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ The event data of cli execute.
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _CliToolEvent

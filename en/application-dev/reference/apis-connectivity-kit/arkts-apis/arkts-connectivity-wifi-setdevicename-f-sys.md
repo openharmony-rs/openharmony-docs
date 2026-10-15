@@ -40,6 +40,7 @@ Sets the name of the Wi-Fi P2P device.
 | --- | --- |
 | boolean | Returns `true` if the operation is successful, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

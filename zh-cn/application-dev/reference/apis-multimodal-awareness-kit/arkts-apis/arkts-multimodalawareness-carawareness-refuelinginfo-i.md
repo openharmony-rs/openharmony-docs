@@ -4,7 +4,7 @@
 export interface RefuelingInfo
 ```
 
-加油响应信息接口。
+补能识别的结果信息接口。
 
 **起始版本：** 26.0.1
 
@@ -24,7 +24,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 status: number
 ```
 
-指示加油状态。
+加油状态。-1：无效0：空闲（未开始加油）1：开始加油2：加油结束。
 
 **类型：** number
 
@@ -44,7 +44,7 @@ status: number
 timestamp: number
 ```
 
-时间戳。单位为：毫秒。
+识别结果的时间戳。单位为：ms。
 
 **类型：** number
 

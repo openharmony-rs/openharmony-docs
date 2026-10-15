@@ -12,34 +12,6 @@ export enum NsaState
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## NSA_STATE_NOT_SUPPORT
-
-```TypeScript
-NSA_STATE_NOT_SUPPORT = 1
-```
-
-设备在不支持NSA的LTE小区下处于空闲状态或连接状态。
-
-**起始版本：** 6
-
-<!--Device-NsaState-NSA_STATE_NOT_SUPPORT = 1--><!--Device-NsaState-NSA_STATE_NOT_SUPPORT = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## NSA_STATE_NO_DETECT
-
-```TypeScript
-NSA_STATE_NO_DETECT = 2
-```
-
-在支持NSA但不支持NR覆盖检测的LTE小区下，设备处于空闲状态。
-
-**起始版本：** 6
-
-<!--Device-NsaState-NSA_STATE_NO_DETECT = 2--><!--Device-NsaState-NSA_STATE_NO_DETECT = 2-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
 ## NSA_STATE_CONNECTED_DETECT
 
 ```TypeScript
@@ -51,6 +23,20 @@ NSA_STATE_CONNECTED_DETECT = 3
 **起始版本：** 6
 
 <!--Device-NsaState-NSA_STATE_CONNECTED_DETECT = 3--><!--Device-NsaState-NSA_STATE_CONNECTED_DETECT = 3-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## NSA_STATE_DUAL_CONNECTED
+
+```TypeScript
+NSA_STATE_DUAL_CONNECTED = 5
+```
+
+设备在支持NSA的LTE小区下连接到LTE + NR网络。
+
+**起始版本：** 6
+
+<!--Device-NsaState-NSA_STATE_DUAL_CONNECTED = 5--><!--Device-NsaState-NSA_STATE_DUAL_CONNECTED = 5-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -68,17 +54,31 @@ NSA_STATE_IDLE_DETECT = 4
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## NSA_STATE_DUAL_CONNECTED
+## NSA_STATE_NO_DETECT
 
 ```TypeScript
-NSA_STATE_DUAL_CONNECTED = 5
+NSA_STATE_NO_DETECT = 2
 ```
 
-设备在支持NSA的LTE小区下连接到LTE + NR网络。
+在支持NSA但不支持NR覆盖检测的LTE小区下，设备处于空闲状态。
 
 **起始版本：** 6
 
-<!--Device-NsaState-NSA_STATE_DUAL_CONNECTED = 5--><!--Device-NsaState-NSA_STATE_DUAL_CONNECTED = 5-End-->
+<!--Device-NsaState-NSA_STATE_NO_DETECT = 2--><!--Device-NsaState-NSA_STATE_NO_DETECT = 2-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## NSA_STATE_NOT_SUPPORT
+
+```TypeScript
+NSA_STATE_NOT_SUPPORT = 1
+```
+
+设备在不支持NSA的LTE小区下处于空闲状态或连接状态。
+
+**起始版本：** 6
+
+<!--Device-NsaState-NSA_STATE_NOT_SUPPORT = 1--><!--Device-NsaState-NSA_STATE_NOT_SUPPORT = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

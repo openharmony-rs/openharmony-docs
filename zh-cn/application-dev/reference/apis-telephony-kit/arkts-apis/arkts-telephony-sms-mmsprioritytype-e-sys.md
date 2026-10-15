@@ -14,6 +14,22 @@ export enum MmsPriorityType
 
 **系统接口：** 此接口为系统接口。
 
+## MMS_HIGH
+
+```TypeScript
+MMS_HIGH = 130
+```
+
+彩信优先级高
+
+**起始版本：** 8
+
+<!--Device-MmsPriorityType-MMS_HIGH = 130--><!--Device-MmsPriorityType-MMS_HIGH = 130-End-->
+
+**系统能力：** SystemCapability.Telephony.SmsMms
+
+**系统接口：** 此接口为系统接口。
+
 ## MMS_LOW
 
 ```TypeScript
@@ -41,22 +57,6 @@ MMS_NORMAL = 129
 **起始版本：** 8
 
 <!--Device-MmsPriorityType-MMS_NORMAL = 129--><!--Device-MmsPriorityType-MMS_NORMAL = 129-End-->
-
-**系统能力：** SystemCapability.Telephony.SmsMms
-
-**系统接口：** 此接口为系统接口。
-
-## MMS_HIGH
-
-```TypeScript
-MMS_HIGH = 130
-```
-
-彩信优先级高
-
-**起始版本：** 8
-
-<!--Device-MmsPriorityType-MMS_HIGH = 130--><!--Device-MmsPriorityType-MMS_HIGH = 130-End-->
 
 **系统能力：** SystemCapability.Telephony.SmsMms
 

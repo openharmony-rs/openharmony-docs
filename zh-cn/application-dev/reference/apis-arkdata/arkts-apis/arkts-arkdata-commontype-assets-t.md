@@ -6,10 +6,10 @@ type Assets = Array<Asset>
 
 表示[Asset](arkts-arkdata-commontype-asset-i.md)类型的数组。
 
+**类型：** Array&lt;[Asset](arkts-arkdata-commontype-asset-i.md)&gt;
+
 **起始版本：** 11
 
 <!--Device-commonType-type Assets = Array<Asset>--><!--Device-commonType-type Assets = Array<Asset>-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CommonType
-
-**类型：** Array&lt;[Asset](arkts-arkdata-commontype-asset-i.md)&gt;

@@ -24,7 +24,7 @@ Unregisters the callback that receives bundle status changes. This API uses an a
 
 **Deprecated since:** 9
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-ability-bundlemonitor-off-f-sys.md)
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 
@@ -60,7 +60,7 @@ Unregisters the callback that receives bundle status changes. This API uses an a
 
 **Deprecated since:** 9
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-ability-bundlemonitor-off-f-sys.md)
 
 **Required permissions:** ohos.permission.LISTEN_BUNDLE_CHANGE
 

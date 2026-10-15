@@ -12,22 +12,6 @@ Defines the MDNS error information.
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 
-## INTERNAL_ERROR
-
-```TypeScript
-INTERNAL_ERROR = 0
-```
-
-Operation failed because of an internal error.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-MdnsError-INTERNAL_ERROR = 0--><!--Device-MdnsError-INTERNAL_ERROR = 0-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.MDNS
-
 ## ALREADY_ACTIVE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Operation failed because the service already exists.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-MdnsError-ALREADY_ACTIVE = 1--><!--Device-MdnsError-ALREADY_ACTIVE = 1-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.MDNS
+
+## INTERNAL_ERROR
+
+```TypeScript
+INTERNAL_ERROR = 0
+```
+
+Operation failed because of an internal error.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MdnsError-INTERNAL_ERROR = 0--><!--Device-MdnsError-INTERNAL_ERROR = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.MDNS
 

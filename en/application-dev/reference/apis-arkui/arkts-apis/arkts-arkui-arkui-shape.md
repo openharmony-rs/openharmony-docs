@@ -2,8 +2,8 @@
 
 The **Shape** module provides multiple shape definitions such as **CircleShape**, **EllipseShape**, **PathShape**,
  and **RectShape**, which can be passed to the
- [clipShape](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#clipshape) and
- [maskShape](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#maskshape) APIs to clip and
+ [clipShape](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#clipshape1) and
+ [maskShape](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#maskshape1) APIs to clip and
  mask components. It is suitable for scenarios where components need to be clipped into specific shapes such as
  circles, ellipses, and rectangles, or where visual effects are achieved through shape masking, such as avatar
  clipping and icon masking.

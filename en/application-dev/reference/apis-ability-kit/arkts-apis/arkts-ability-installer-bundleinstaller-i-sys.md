@@ -42,7 +42,7 @@ Adds extended resources based on the specified bundle name and HSP file path. Th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name of the application to which extended resources are to be added. |
+| bundleName | string | Yes | Bundle name of the application to which extension resources are added. |
 | filePaths | Array&lt;string&gt; | Yes | Path of the extended resources to be added. |
 
 **Return value:**
@@ -61,6 +61,7 @@ Adds extended resources based on the specified bundle name and HSP file path. Th
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700301](../errorcode-bundle.md#17700301-failed-to-add-extended-resources) | AddExtResource failed due to parse file failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -85,6 +86,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## createAppClone
 
 ```TypeScript
@@ -108,7 +111,7 @@ Creates an application clone. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application for which a clone is to be created. |
-| createAppCloneParam | [CreateAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md) | No | Other parameters required for creating the clone. For details about the default values of these parameters, see [createAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md). |
+| createAppCloneParam | [CreateAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md) | No | Specifies other parameters required for creating an app clone. Default value: refer to the default value of [CreateAppCloneParam](arkts-ability-installer-createappcloneparam-i-sys.md). |
 
 **Return value:**
 
@@ -128,6 +131,7 @@ Creates an application clone. This API uses a promise to return the result.
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The appIndex is not in valid range or already exists. |
 | [17700069](../errorcode-bundle.md#17700069-application-clone-is-not-supported) | The app does not support the creation of an appClone instance. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -157,13 +161,17 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="destroyappclone1"></a>
+
 ## destroyAppClone
 
 ```TypeScript
 destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<void>
 ```
 
-Destroys an application clone. This API uses a promise to return the result.
+Destroys an app clone or a CLI sandbox app. This API uses a promise to return the result.
 
 **Since:** 12
 
@@ -179,9 +187,9 @@ Destroys an application clone. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name of the application for which a clone is to be destroyed. |
-| appIndex | number | Yes | Index of the clone to destroy. |
-| userId | number | No | ID of the user for whom the clone is to be destroyed. You can obtain the user ID by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller. |
+| bundleName | string | Yes | Bundle name of the app clone or CLI sandbox app to be deleted. |
+| appIndex | number | Yes | Index of the app clone or CLI sandbox app to be deleted. Value range: [1, 5] and [2000, 3000]. 1 to 5 indicates an app clone, and 2000 to 3000 indicates a CLI sandbox app. Since API version 26.0.0, the value range [2000, 3000] is supported. |
+| userId | number | No | User ID to which the app clone or CLI sandbox app to be deleted belongs. It can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). Default value: the caller's user. |
 
 **Return value:**
 
@@ -200,6 +208,7 @@ Destroys an application clone. This API uses a promise to return the result.
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The userId is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex not in valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -227,7 +236,9 @@ try {
 }
 ```
 
-<a id="destroyappclone-1"></a>
+<!--DelEnd-->
+
+<a id="destroyappclone2"></a>
 
 ## destroyAppClone
 
@@ -235,7 +246,7 @@ try {
 destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>
 ```
 
-Destroys an application clone. This API uses a promise to return the result.
+Destroys an app clone or a CLI sandbox app. This API uses a promise to return the result.
 
 **Since:** 15
 
@@ -251,9 +262,9 @@ Destroys an application clone. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name of the application for which a clone is to be destroyed. |
-| appIndex | number | Yes | Index of the clone to destroy. |
-| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | No | Other parameters required for destroying the clone. For details about the default values of these parameters, see [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md). |
+| bundleName | string | Yes | Bundle name of the app clone or CLI sandbox app to be deleted. |
+| appIndex | number | Yes | Index of the app clone or CLI sandbox app to be deleted. Value range: [1, 5] and [2000, 3000]. 1 to 5 indicates an app clone, and 2000 to 3000 indicates a CLI sandbox app. Since API version 26.0.0, the value range [2000, 3000] is supported. |
+| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | No | Other parameters required for deleting the app clone or CLI sandbox app. Default value: refer to the default value of [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md). |
 
 **Return value:**
 
@@ -273,6 +284,7 @@ Destroys an application clone. This API uses a promise to return the result.
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex not in valid range. |
 | [17700062](../errorcode-bundle.md#17700062-failed-to-uninstall-an-application-configured-with-an-uninstallation-disposed-rule) | Failed to uninstall the app because the app is locked. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -308,18 +320,22 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="install1"></a>
+
 ## install
 
 ```TypeScript
 install(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void
 ```
 
-Installs an application. This API uses an asynchronous callback to return the result.
+Installs a specified app. This API uses an asynchronous callback to return the result. Since API version 26.0.0, installing an APP package is supported.
 
 > **NOTE:** 
 > 
-> To install applications of different distribution types, the appropriate permissions must be requested. For
-> details on distribution types, see the **appDistributionType** field in
+> To install apps of different distribution types, you need to apply for the corresponding permissions. For
+> details about the distribution types, see the description of the appDistributionType field in
 > [ApplicationInfo](arkts-ability-applicationinfo-i.md).
 
 **Since:** 9
@@ -341,9 +357,9 @@ Installs an application. This API uses an asynchronous callback to return the re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | Yes | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature. |
+| hapFilePaths | Array&lt;string&gt; | Yes | Path for storing the application package. The path should be the data directory where the HAP or APP of the current app is stored. When the path is a directory, the directory can contain only the HAPs of the same app or one APP. The signatures of the HAPs of the same app must be consistent. |
 | installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | Yes | Parameters required for the installation. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the app is installed successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -378,6 +394,7 @@ Installs an application. This API uses an asynchronous callback to return the re
 | [17700077](../errorcode-bundle.md#17700077-application-installation-fails-but-preinstallation-is-successful) | Failed to install the HAP and restore to preinstalled bundle.<br>**Applicable version:** 17 and later |
 | [17700076](../errorcode-bundle.md#17700076-application-installation-failure-due-to-unsupported-distribution-type-in-the-signing-certificate-profile) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**Applicable version:** 18 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -409,7 +426,9 @@ try {
 }
 ```
 
-<a id="install-1"></a>
+<!--DelEnd-->
+
+<a id="install2"></a>
 
 ## install
 
@@ -417,12 +436,12 @@ try {
 install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 ```
 
-Installs an application. This API uses an asynchronous callback to return the result.
+Installs a specified app. This API uses an asynchronous callback to return the result. Since API version 26.0.0, installing an APP package is supported.
 
 > **NOTE:** 
 > 
-> To install applications of different distribution types, the appropriate permissions must be requested. For
-> details on distribution types, see the **appDistributionType** field in
+> To install apps of different distribution types, you need to apply for the corresponding permissions. For
+> details about the distribution types, see the description of the appDistributionType field in
 > [ApplicationInfo](arkts-ability-applicationinfo-i.md).
 
 **Since:** 9
@@ -444,8 +463,8 @@ Installs an application. This API uses an asynchronous callback to return the re
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | Yes | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| hapFilePaths | Array&lt;string&gt; | Yes | Paths for storing the application packages. The path should be the data directory where the HAP or APP is stored in the current app. When the path passed in is a directory, the directory can contain only the HAPs of the same app or one APP. The signatures of the HAPs of the same app must be consistent. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the app is installed successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -479,6 +498,7 @@ Installs an application. This API uses an asynchronous callback to return the re
 | [17700077](../errorcode-bundle.md#17700077-application-installation-fails-but-preinstallation-is-successful) | Failed to install the HAP and restore to preinstalled bundle.<br>**Applicable version:** 17 and later |
 | [17700076](../errorcode-bundle.md#17700076-application-installation-failure-due-to-unsupported-distribution-type-in-the-signing-certificate-profile) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**Applicable version:** 18 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -505,7 +525,9 @@ try {
 }
 ```
 
-<a id="install-2"></a>
+<!--DelEnd-->
+
+<a id="install3"></a>
 
 ## install
 
@@ -513,12 +535,12 @@ try {
 install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 ```
 
-Installs an application. This API uses a promise to return the result.
+Installs a specified app. This API uses a promise to return the result. Since API version 26.0.0, installing an APP package is supported.
 
 > **NOTE:** 
 > 
-> To install applications of different distribution types, the appropriate permissions must be requested. For
-> details on distribution types, see the **appDistributionType** field in
+> To install apps of different distribution types, you need to apply for the corresponding permissions. For
+> details about the distribution types, see the description of the appDistributionType field in
 > [ApplicationInfo](arkts-ability-applicationinfo-i.md).
 
 **Since:** 9
@@ -540,7 +562,7 @@ Installs an application. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | Yes | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature. |
+| hapFilePaths | Array&lt;string&gt; | Yes | Path for storing the application package. The path should be the data directory where the HAP or APP is stored in the current app. When the path passed in is a directory, the directory can contain only the HAPs of the same app or one APP. The signatures of the HAPs of the same app must be consistent. |
 | installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | No | Parameters required for the installation. For details about their default values, see [InstallParam](arkts-ability-installer-installparam-i-sys.md).<br>**Since:** 12 |
 
 **Return value:**
@@ -582,6 +604,7 @@ Installs an application. This API uses a promise to return the result.
 | [17700077](../errorcode-bundle.md#17700077-application-installation-fails-but-preinstallation-is-successful) | Failed to install the HAP and restore to preinstalled bundle.<br>**Applicable version:** 17 and later |
 | [17700076](../errorcode-bundle.md#17700076-application-installation-failure-due-to-unsupported-distribution-type-in-the-signing-certificate-profile) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**Applicable version:** 18 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -611,6 +634,8 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->
 
 ## installPlugin
 
@@ -667,6 +692,7 @@ Installs a plugin for an application. This API uses a promise to return the resu
 | [17700090](../errorcode-bundle.md#17700090-plugin-installation-failure-because-of-plugin-id-verification-failure) | Failed to install the plugin because the plugin id fails to be verified. |
 | [17700091](../errorcode-bundle.md#17700091-plugin-installation-failure-because-of-the-same-plugin-name-and-host-bundle-name) | Failed to install the plugin because the plugin name is same as host bundle name. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -696,19 +722,21 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## installPreexistingApp
 
 ```TypeScript
 installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 ```
 
-Installs an application. This API uses a promise to return the result.
+Installs the app with the specified bundleName for the specified user. This API uses a promise to return the result.
 
 > **NOTE:** 
 > 
-> This API does not support the installation of applications whose
-> [distribution type of the application signing certificate](arkts-ability-applicationinfo-i.md)
-> is set to **enterprise**, **enterprise_mdm**, or **enterprise_normal**.
+> This API does not support installing apps whose
+> [appDistributionType](arkts-ability-applicationinfo-i.md) is enterprise, enterprise_mdm, or
+> enterprise_normal.
 
 **Since:** 12
 
@@ -725,7 +753,7 @@ Installs an application. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application to install. |
-| userId | number | No | ID of the user for whom the bundle is to be installed. You can obtain the user ID by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The value must be greater than 0. The default value is the user ID of the caller. |
+| userId | number | No | User ID of the app to be installed. It can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The value must be greater than 0. Default value: the user of the caller. |
 
 **Return value:**
 
@@ -745,6 +773,7 @@ Installs an application. This API uses a promise to return the result.
 | [17700071](../errorcode-bundle.md#17700071-enterprise-applications-cannot-be-installed) | It is not allowed to install the enterprise bundle. |
 | [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -771,6 +800,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="recover1"></a>
+
 ## recover
 
 ```TypeScript
@@ -794,8 +827,8 @@ Rolls back an application to the initial installation state. This API uses an as
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Name of the target bundle. |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | Yes | Parameters required for the installation. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | Yes | Other parameters required for recovery. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) invoked to return the result. If the app rollback is successful, err is undefined; otherwise, err is an error object. |
 
 **Error codes:**
 
@@ -809,6 +842,7 @@ Rolls back an application to the initial installation state. This API uses an as
 | [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
 | [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -840,7 +874,9 @@ try {
 }
 ```
 
-<a id="recover-1"></a>
+<!--DelEnd-->
+
+<a id="recover2"></a>
 
 ## recover
 
@@ -865,7 +901,7 @@ Rolls back an application to the initial installation state. This API uses an as
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Name of the target bundle. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the app is rolled back successfully, err is undefined; otherwise, err is an error object. |
 
 **Error codes:**
 
@@ -878,6 +914,7 @@ Rolls back an application to the initial installation state. This API uses an as
 | [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
 | [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -904,7 +941,9 @@ try {
 }
 ```
 
-<a id="recover-2"></a>
+<!--DelEnd-->
+
+<a id="recover3"></a>
 
 ## recover
 
@@ -928,8 +967,8 @@ Rolls back an application to the initial installation state. This API uses a pro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Name of the target bundle. |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | No | Parameters required for the installation. For details about their default values, see [InstallParam](arkts-ability-installer-installparam-i-sys.md). |
+| bundleName | string | Yes | Bundle name of the application to be recovered. |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | No | Specifies other parameters required for recovery. Default value: refer to the default value of [InstallParam](arkts-ability-installer-installparam-i-sys.md). |
 
 **Return value:**
 
@@ -949,6 +988,7 @@ Rolls back an application to the initial installation state. This API uses a pro
 | [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
 | [17700058](../errorcode-bundle.md#17700058-specified-application-cannot-be-installed-on-this-device-or-by-this-user) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**Applicable version:** 14 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -979,6 +1019,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## removeExtResource
 
 ```TypeScript
@@ -1001,7 +1043,7 @@ Removes extended resources based on the specified bundle name and module names. 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Bundle name of the application for which extended resources are to be removed. |
+| bundleName | string | Yes | Bundle name of the application whose extended resources are to be deleted. |
 | moduleNames | Array&lt;string&gt; | Yes | Names of the modules whose extended resources are to be removed. |
 
 **Return value:**
@@ -1020,6 +1062,7 @@ Removes extended resources based on the specified bundle name and module names. 
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700302](../errorcode-bundle.md#17700302-failed-to-delete-extended-resources) | RemoveExtResource failed due to module does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1044,6 +1087,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="uninstall1"></a>
+
 ## uninstall
 
 ```TypeScript
@@ -1067,8 +1114,8 @@ Uninstalls an application. This API uses an asynchronous callback to return the 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Name of the target bundle. |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | Yes | Parameters required for the installation. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | Yes | Specifies other parameters required for uninstallation. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the app is uninstalled successfully, **err** is undefined; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1086,6 +1133,7 @@ Uninstalls an application. This API uses an asynchronous callback to return the 
 | [17700060](../errorcode-bundle.md#17700060-specified-application-cannot-be-uninstalled) | The specified application cannot be uninstalled.<br>**Applicable version:** 13 and later |
 | [17700062](../errorcode-bundle.md#17700062-failed-to-uninstall-an-application-configured-with-an-uninstallation-disposed-rule) | Failed to uninstall the app because the app is locked.<br>**Applicable version:** 15 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1117,7 +1165,9 @@ try {
 }
 ```
 
-<a id="uninstall-1"></a>
+<!--DelEnd-->
+
+<a id="uninstall2"></a>
 
 ## uninstall
 
@@ -1142,7 +1192,7 @@ Uninstalls an application. This API uses an asynchronous callback to return the 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Name of the target bundle. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the app is uninstalled successfully, **err** is undefined; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1158,6 +1208,7 @@ Uninstalls an application. This API uses an asynchronous callback to return the 
 | [17700067](../errorcode-bundle.md#17700067-failed-to-uninstall-the-native-software-package) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**Applicable version:** 12 and later |
 | [17700060](../errorcode-bundle.md#17700060-specified-application-cannot-be-uninstalled) | The specified application cannot be uninstalled.<br>**Applicable version:** 13 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1184,7 +1235,9 @@ try {
 }
 ```
 
-<a id="uninstall-2"></a>
+<!--DelEnd-->
+
+<a id="uninstall3"></a>
 
 ## uninstall
 
@@ -1209,7 +1262,7 @@ Uninstalls an application. This API uses a promise to return the result.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Name of the target bundle. |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | No | Parameters required for the installation. For details about their default values, see [InstallParam](arkts-ability-installer-installparam-i-sys.md).<br>**Since:** 15 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | No | Specifies other parameters required for uninstallation. Default value: refer to the default values of [InstallParam](arkts-ability-installer-installparam-i-sys.md).<br>**Since:** 15 |
 
 **Return value:**
 
@@ -1233,6 +1286,7 @@ Uninstalls an application. This API uses a promise to return the result.
 | [17700060](../errorcode-bundle.md#17700060-specified-application-cannot-be-uninstalled) | The specified application cannot be uninstalled.<br>**Applicable version:** 13 and later |
 | [17700062](../errorcode-bundle.md#17700062-failed-to-uninstall-an-application-configured-with-an-uninstallation-disposed-rule) | Failed to uninstall the app because the app is locked.<br>**Applicable version:** 15 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1263,7 +1317,9 @@ try {
 }
 ```
 
-<a id="uninstall-3"></a>
+<!--DelEnd-->
+
+<a id="uninstall4"></a>
 
 ## uninstall
 
@@ -1288,7 +1344,7 @@ Uninstalls a shared package. This API uses an asynchronous callback to return th
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uninstallParam | [UninstallParam](arkts-ability-installer-uninstallparam-i-sys.md) | Yes | Parameters required for the uninstall. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md), which is used to return the result. If the app is uninstalled successfully, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -1301,6 +1357,7 @@ Uninstalls a shared package. This API uses an asynchronous callback to return th
 | [17700037](../errorcode-bundle.md#17700037-failure-in-uninstalling-the-shared-library-due-to-dependency) | The version of shared bundle is dependent on other applications. |
 | [17700038](../errorcode-bundle.md#17700038-shared-library-to-uninstall-does-not-exist) | The specified shared bundle does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1329,7 +1386,9 @@ try {
 }
 ```
 
-<a id="uninstall-4"></a>
+<!--DelEnd-->
+
+<a id="uninstall5"></a>
 
 ## uninstall
 
@@ -1372,6 +1431,7 @@ Uninstalls a shared package. This API uses a promise to return the result.
 | [17700037](../errorcode-bundle.md#17700037-failure-in-uninstalling-the-shared-library-due-to-dependency) | The version of shared bundle is dependent on other applications. |
 | [17700038](../errorcode-bundle.md#17700038-shared-library-to-uninstall-does-not-exist) | The specified shared bundle does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1400,13 +1460,15 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## uninstallNewPreinstalledApps
 
 ```TypeScript
 uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>
 ```
 
-Uninstall new preinstalled applications. Only supports uninstalling pre installed applications added during device OTA upgrade. Asynchronous execution of application uninstallation tasks, the interface return value only indicates successful interface invocation and does not return uninstallation results.
+Uninstalls newly added preinstalled apps in batches. This API uses a promise to return the result.
 
 **Since:** 24
 
@@ -1424,13 +1486,13 @@ Uninstall new preinstalled applications. Only supports uninstalling pre installe
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleNames | Array&lt;string&gt; | Yes | Indicates the bundle name list to be uninstalled. |
+| bundleNames | Array&lt;string&gt; | Yes | List of bundle names of the apps to be uninstalled. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | the promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 
@@ -1439,6 +1501,7 @@ Uninstall new preinstalled applications. Only supports uninstalling pre installe
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1463,6 +1526,8 @@ try {
     console.error('uninstallNewPreinstalledApps failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->
 
 ## uninstallPlugin
 
@@ -1506,6 +1571,7 @@ Uninstalls a plugin for an application. This API uses a promise to return the re
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The user id is invalid. |
 | [17700092](../errorcode-bundle.md#17700092-plugin-uninstall-failure-because-of-nonexistent-plugin-bundle-name) | Failed to uninstall the plugin because the specified plugin is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1534,6 +1600,8 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->
 
 ## uninstallUpdates
 
@@ -1580,6 +1648,7 @@ Uninstalls and updates a preinstalled application and restores it to the initial
 | [17700067](../errorcode-bundle.md#17700067-failed-to-uninstall-the-native-software-package) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**Applicable version:** 13 and later |
 | [17700073](../errorcode-bundle.md#17700073-installation-failure-caused-by-an-application-with-the-same-bundle-name-but-different-signature-information) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**Applicable version:** 13 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1609,6 +1678,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="updatebundleforself1"></a>
+
 ## updateBundleForSelf
 
 ```TypeScript
@@ -1632,8 +1705,8 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | Yes | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature. |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | Yes | Parameters required for the installation. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | Yes | Other parameters required for the update. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md), invoked when the application is updated successfully, in which case err is undefined; otherwise, an error object is returned. |
 
 **Error codes:**
 
@@ -1641,7 +1714,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature;         4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700010](../errorcode-bundle.md#17700010-bundle-installation-failure-due-to-file-parsing-failure) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-bundle-installation-failure-due-to-signature-verification-failure) | Failed to install the HAP because the HAP signature fails to be verified. |
@@ -1661,6 +1734,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | [17700050](../errorcode-bundle.md#17700050-installation-of-enterprise-mdm-applications-and-standard-enterprise-applications-not-allowed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | [17700051](../errorcode-bundle.md#17700051-hap-installation-failure-due-to-incorrect-distribution-type-in-the-signing-certificate-profile-of-the-caller) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1692,7 +1766,9 @@ try {
 }
 ```
 
-<a id="updatebundleforself-1"></a>
+<!--DelEnd-->
+
+<a id="updatebundleforself2"></a>
 
 ## updateBundleForSelf
 
@@ -1717,7 +1793,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | Yes | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md), invoked to return the result. If the application is updated successfully, err is undefined; otherwise, err is an error object. |
 
 **Error codes:**
 
@@ -1744,6 +1820,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | [17700050](../errorcode-bundle.md#17700050-installation-of-enterprise-mdm-applications-and-standard-enterprise-applications-not-allowed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | [17700051](../errorcode-bundle.md#17700051-hap-installation-failure-due-to-incorrect-distribution-type-in-the-signing-certificate-profile-of-the-caller) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1770,7 +1847,9 @@ try {
 }
 ```
 
-<a id="updatebundleforself-2"></a>
+<!--DelEnd-->
+
+<a id="updatebundleforself3"></a>
 
 ## updateBundleForSelf
 
@@ -1795,7 +1874,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | Yes | Paths where the HAP files of the bundle are stored, which are the data directories. If only one directory is passed, the HAP files in the directory must belong to the same bundle and have the same signature. |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | No | Parameters required for the installation. For details about their default values, see [InstallParam](arkts-ability-installer-installparam-i-sys.md). |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | No | Other parameters required for the update. Default value: refer to the default values of [InstallParam](arkts-ability-installer-installparam-i-sys.md). |
 
 **Return value:**
 
@@ -1809,7 +1888,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature;         4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700010](../errorcode-bundle.md#17700010-bundle-installation-failure-due-to-file-parsing-failure) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-bundle-installation-failure-due-to-signature-verification-failure) | Failed to install the HAP because the HAP signature fails to be verified. |
@@ -1829,6 +1908,7 @@ Updates the current bundle. This API can be called only by enterprise MDM applic
 | [17700050](../errorcode-bundle.md#17700050-installation-of-enterprise-mdm-applications-and-standard-enterprise-applications-not-allowed) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | [17700051](../errorcode-bundle.md#17700051-hap-installation-failure-due-to-incorrect-distribution-type-in-the-signing-certificate-profile-of-the-caller) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1858,3 +1938,5 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->

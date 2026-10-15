@@ -16,46 +16,6 @@ export enum WantAgentFlags
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## ONE_TIME_FLAG
-
-```TypeScript
-ONE_TIME_FLAG = 0
-```
-
-WantAgent仅能使用一次。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [ONE_TIME_FLAG](arkts-ability-wantagent-wantagentflags-e.md#one_time_flag)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-WantAgentFlags-ONE_TIME_FLAG = 0--><!--Device-WantAgentFlags-ONE_TIME_FLAG = 0-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## NO_BUILD_FLAG
-
-```TypeScript
-NO_BUILD_FLAG
-```
-
-如果指定WantAgent对象不存在，则不创建它，直接返回null。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [NO_BUILD_FLAG](arkts-ability-wantagent-wantagentflags-e.md#no_build_flag)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-WantAgentFlags-NO_BUILD_FLAG--><!--Device-WantAgentFlags-NO_BUILD_FLAG-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 ## CANCEL_PRESENT_FLAG
 
 ```TypeScript
@@ -73,26 +33,6 @@ CANCEL_PRESENT_FLAG
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-WantAgentFlags-CANCEL_PRESENT_FLAG--><!--Device-WantAgentFlags-CANCEL_PRESENT_FLAG-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## UPDATE_PRESENT_FLAG
-
-```TypeScript
-UPDATE_PRESENT_FLAG
-```
-
-使用新的WantAgent的额外数据替换已存在的WantAgent中的额外数据。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [UPDATE_PRESENT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#update_present_flag)
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG--><!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -116,23 +56,43 @@ WantAgent是不可变的。
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## REPLACE_ELEMENT
+## NO_BUILD_FLAG
 
 ```TypeScript
-REPLACE_ELEMENT
+NO_BUILD_FLAG
 ```
 
-当前Want中的element属性可被WantAgent.trigger()中Want的element属性取代。
+如果指定WantAgent对象不存在，则不创建它，直接返回null。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [REPLACE_ELEMENT](arkts-ability-wantagent-wantagentflags-e.md#replace_element)
+**替代接口：** [NO_BUILD_FLAG](arkts-ability-wantagent-wantagentflags-e.md#no_build_flag)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-WantAgentFlags-REPLACE_ELEMENT--><!--Device-WantAgentFlags-REPLACE_ELEMENT-End-->
+<!--Device-WantAgentFlags-NO_BUILD_FLAG--><!--Device-WantAgentFlags-NO_BUILD_FLAG-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## ONE_TIME_FLAG
+
+```TypeScript
+ONE_TIME_FLAG = 0
+```
+
+WantAgent仅能使用一次。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [ONE_TIME_FLAG](arkts-ability-wantagent-wantagentflags-e.md#one_time_flag)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WantAgentFlags-ONE_TIME_FLAG = 0--><!--Device-WantAgentFlags-ONE_TIME_FLAG = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -156,23 +116,43 @@ REPLACE_ACTION
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## REPLACE_URI
+## REPLACE_BUNDLE
 
 ```TypeScript
-REPLACE_URI
+REPLACE_BUNDLE
 ```
 
-当前Want中的uri属性可被WantAgent.trigger()中Want的uri属性取代。
+当前Want中的bundleName属性可被WantAgent.trigger()中Want的bundleName属性取代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [REPLACE_URI](arkts-ability-wantagent-wantagentflags-e.md#replace_uri)
+**替代接口：** [REPLACE_BUNDLE](arkts-ability-wantagent-wantagentflags-e.md#replace_bundle)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-WantAgentFlags-REPLACE_URI--><!--Device-WantAgentFlags-REPLACE_URI-End-->
+<!--Device-WantAgentFlags-REPLACE_BUNDLE--><!--Device-WantAgentFlags-REPLACE_BUNDLE-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## REPLACE_ELEMENT
+
+```TypeScript
+REPLACE_ELEMENT
+```
+
+当前Want中的element属性可被WantAgent.trigger()中Want的element属性取代。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [REPLACE_ELEMENT](arkts-ability-wantagent-wantagentflags-e.md#replace_element)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WantAgentFlags-REPLACE_ELEMENT--><!--Device-WantAgentFlags-REPLACE_ELEMENT-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -196,22 +176,42 @@ REPLACE_ENTITIES
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## REPLACE_BUNDLE
+## REPLACE_URI
 
 ```TypeScript
-REPLACE_BUNDLE
+REPLACE_URI
 ```
 
-当前Want中的bundleName属性可被WantAgent.trigger()中Want的bundleName属性取代。
+当前Want中的uri属性可被WantAgent.trigger()中Want的uri属性取代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [REPLACE_BUNDLE](arkts-ability-wantagent-wantagentflags-e.md#replace_bundle)
+**替代接口：** [REPLACE_URI](arkts-ability-wantagent-wantagentflags-e.md#replace_uri)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-WantAgentFlags-REPLACE_BUNDLE--><!--Device-WantAgentFlags-REPLACE_BUNDLE-End-->
+<!--Device-WantAgentFlags-REPLACE_URI--><!--Device-WantAgentFlags-REPLACE_URI-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## UPDATE_PRESENT_FLAG
+
+```TypeScript
+UPDATE_PRESENT_FLAG
+```
+
+使用新的WantAgent的额外数据替换已存在的WantAgent中的额外数据。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [UPDATE_PRESENT_FLAG](arkts-ability-wantagent-wantagentflags-e.md#update_present_flag)
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG--><!--Device-WantAgentFlags-UPDATE_PRESENT_FLAG-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

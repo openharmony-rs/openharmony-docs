@@ -47,6 +47,7 @@ query domains verify associated with bundleName.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. |
 | [29900001](../errorcode-appDomainVerify-sys.md#29900001-internal-system-service-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,3 +61,5 @@ domains.forEach(domain => {
   hilog.info(0x0000, 'testTag', `app:${bundleName} associate with domain:${domain}`);
 });
 ```
+
+<!--DelEnd-->

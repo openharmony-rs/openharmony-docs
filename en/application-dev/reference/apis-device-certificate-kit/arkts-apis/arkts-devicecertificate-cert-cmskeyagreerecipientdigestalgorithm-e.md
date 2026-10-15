@@ -22,7 +22,7 @@ SHA-256.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-CmsKeyAgreeRecipientDigestAlgorithm-SHA256 = 0--><!--Device-CmsKeyAgreeRecipientDigestAlgorithm-SHA256 = 0-End-->
 
@@ -38,7 +38,7 @@ SHA-384.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-CmsKeyAgreeRecipientDigestAlgorithm-SHA384 = 1--><!--Device-CmsKeyAgreeRecipientDigestAlgorithm-SHA384 = 1-End-->
 
@@ -54,7 +54,7 @@ SHA-512.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-CmsKeyAgreeRecipientDigestAlgorithm-SHA512 = 2--><!--Device-CmsKeyAgreeRecipientDigestAlgorithm-SHA512 = 2-End-->
 

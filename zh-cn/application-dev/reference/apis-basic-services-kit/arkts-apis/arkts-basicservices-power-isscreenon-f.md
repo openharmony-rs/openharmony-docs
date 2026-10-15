@@ -6,6 +6,8 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
+<a id="isscreenon1"></a>
+
 ## isScreenOn
 
 ```TypeScript
@@ -43,7 +45,7 @@ power.isScreenOn((err: BusinessError, data: boolean) => {
 ```
 
 
-<a id="isscreenon-1"></a>
+<a id="isscreenon2"></a>
 
 ## isScreenOn
 

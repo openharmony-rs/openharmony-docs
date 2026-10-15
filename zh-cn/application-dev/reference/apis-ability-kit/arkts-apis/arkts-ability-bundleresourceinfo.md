@@ -1,4 +1,4 @@
-# BundleResourceInfo
+# BundleResourceInfo(BundleResourceInfo)
 
 ## 汇总
 

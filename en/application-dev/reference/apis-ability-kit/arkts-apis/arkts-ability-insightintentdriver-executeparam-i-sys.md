@@ -26,7 +26,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 abilityName: string
 ```
 
-Name of the ability to be called. If an intent defined by the [@InsightIntentLink](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this parameter can be left empty.
+Name of the ability to be called. If an intent defined by the [@InsightIntentLink](arkts-ability-app-ability-insightintentdecorator-insightintentlink-d.md#insightintentlink) decorator is used to implement application redirection, this parameter can be left empty.
 
 **Type:** string
 
@@ -66,7 +66,12 @@ Name of the bundle to which the ability to be called belongs.
 deviceId?: string
 ```
 
-Indicates the device identifier. Obtained from [getAvailableDeviceListSync](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-distributeddevicemanager-devicemanager-i.md#getavailabledevicelistsync)
+ID of the target device to connect to.
+
+> **NOTE:** 
+> 
+> If the device ID of the calling application differs from the device ID to which the target intent belongs,
+> the permission ohos.permission.EXECUTE_DISTRIBUTED_INTENT must be requested.
 
 **Type:** string
 
@@ -106,7 +111,7 @@ Physical screen ID specified during intent call. The value must be an integer. T
 executeMode: insightIntent.ExecuteMode
 ```
 
-Intent execution mode. If an intent defined by the [@InsightIntentLink](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this parameter must be filled (with any value that conforms to the definition), although it will not actually take effect.
+Intent execution mode. If an intent defined by the [@InsightIntentLink](arkts-ability-app-ability-insightintentdecorator-insightintentlink-d.md#insightintentlink) decorator is used to implement application redirection, this parameter must be filled (with any value that conforms to the definition), although it will not actually take effect.
 
 **Type:** [insightIntent.ExecuteMode](arkts-ability-insightintent-executemode-e.md)
 
@@ -128,9 +133,10 @@ flags?: number
 
 [Flags](arkts-ability-wantconstant-flags-e.md) of the URIs authorized by the intent caller to the intent executor during the call.
 
-**NOTE:** 
-
-This parameter supports only **FLAG_AUTH_READ_URI_PERMISSION**, **FLAG_AUTH_WRITE_URI_PERMISSION**, and FLAG_AUTH_READ_URI_PERMISSION|
+> **NOTE:** 
+> 
+> This parameter supports only FLAG_AUTH_READ_URI_PERMISSION, FLAG_AUTH_WRITE_URI_PERMISSION, and
+> FLAG_AUTH_READ_URI_PERMISSION|FLAG_AUTH_WRITE_URI_PERMISSION.
 
 **Type:** number
 
@@ -232,7 +238,7 @@ Indicates the tool call ID. Used to associate this intent execute with a test st
 uris?: Array<string>
 ```
 
-List of URIs authorized by the intent caller to the intent executor during the call. If an intent defined by the [@InsightIntentLink](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentlink) decorator is used to implement application redirection, this field is mandatory. Only the first element in the array is read as the URI of [openLink](arkts-ability-uiabilitycontext-c.md#openlink).
+List of URIs authorized by the intent caller to the intent executor during the call. If an intent defined by the [@InsightIntentLink](arkts-ability-app-ability-insightintentdecorator-insightintentlink-d.md#insightintentlink) decorator is used to implement application redirection, this field is mandatory. Only the first element in the array is read as the URI of [openLink](arkts-ability-uiabilitycontext-c.md#openlink).
 
 **Type:** Array&lt;string&gt;
 
@@ -254,9 +260,10 @@ userId?: number
 
 ID of the user to which the intent belongs.
 
-**NOTE:** 
-
-If the user ID of the calling application is different from the user ID of the intent, the calling application must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
+> **NOTE:** 
+> 
+> If the user ID of the calling application is different from the user ID of the intent, the calling application
+> must request the ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS permission.
 
 **Type:** number
 

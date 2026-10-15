@@ -15,6 +15,7 @@ Defines the result of a privacy search operation, containing the result cipherte
 ## Modules to Import
 
 ```TypeScript
+import { privacyComputation } from '@kit.DataProtectionKit';
 ```
 
 ## resultCipherText

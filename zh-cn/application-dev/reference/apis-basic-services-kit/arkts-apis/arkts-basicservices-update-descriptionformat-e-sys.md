@@ -14,22 +14,6 @@ export enum DescriptionFormat
 
 **系统接口：** 此接口为系统接口。
 
-## STANDARD
-
-```TypeScript
-STANDARD = 0
-```
-
-标准格式。适合需要完整描述信息的场景。
-
-**起始版本：** 9
-
-<!--Device-DescriptionFormat-STANDARD = 0--><!--Device-DescriptionFormat-STANDARD = 0-End-->
-
-**系统能力：** SystemCapability.Update.UpdateService
-
-**系统接口：** 此接口为系统接口。
-
 ## SIMPLIFIED
 
 ```TypeScript
@@ -41,6 +25,22 @@ SIMPLIFIED = 1
 **起始版本：** 9
 
 <!--Device-DescriptionFormat-SIMPLIFIED = 1--><!--Device-DescriptionFormat-SIMPLIFIED = 1-End-->
+
+**系统能力：** SystemCapability.Update.UpdateService
+
+**系统接口：** 此接口为系统接口。
+
+## STANDARD
+
+```TypeScript
+STANDARD = 0
+```
+
+标准格式。适合需要完整描述信息的场景。
+
+**起始版本：** 9
+
+<!--Device-DescriptionFormat-STANDARD = 0--><!--Device-DescriptionFormat-STANDARD = 0-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

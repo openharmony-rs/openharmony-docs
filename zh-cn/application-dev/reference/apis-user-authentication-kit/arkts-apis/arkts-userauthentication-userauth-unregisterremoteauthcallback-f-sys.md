@@ -34,6 +34,7 @@ function unregisterRemoteAuthCallback(): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. Called by non-system application. |
 | [12500002](../errorcode-useriam.md#12500002-身份认证系统通用错误码) | General operation error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,3 +49,5 @@ try {
   console.error(`Failed to unregister remote auth callback. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

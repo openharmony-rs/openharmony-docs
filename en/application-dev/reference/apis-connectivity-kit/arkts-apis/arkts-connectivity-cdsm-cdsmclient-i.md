@@ -39,6 +39,8 @@ Queries information about the coordinated devices set of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-CdsmClient-getCdsmInfo(): CdsmInfo--><!--Device-CdsmClient-getCdsmInfo(): CdsmInfo-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -53,7 +55,7 @@ Queries information about the coordinated devices set of a remote device.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -69,9 +71,13 @@ Unsubscribes from the CDSM information change event. This API uses an asynchrono
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-CdsmClient-offCdsmInfoChange(callback?: Callback<CdsmInfo>): void--><!--Device-CdsmClient-offCdsmInfoChange(callback?: Callback<CdsmInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [onCdsmInfoChange](#oncdsminfochange) Subscribes to the CDSM information change event.
 
 **Parameters:**
 
@@ -93,9 +99,13 @@ The app must have the **ohos.permission.ACCESS_NEARLINK** permission to receive 
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-CdsmClient-onCdsmInfoChange(callback: Callback<CdsmInfo>): void--><!--Device-CdsmClient-onCdsmInfoChange(callback: Callback<CdsmInfo>): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
+
+**See also:** [offCdsmInfoChange](#offcdsminfochange) Unsubscribes from the CDSM information change event.
 
 **Parameters:**
 

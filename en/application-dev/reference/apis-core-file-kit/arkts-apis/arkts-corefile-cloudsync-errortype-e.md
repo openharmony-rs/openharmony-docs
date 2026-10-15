@@ -21,48 +21,6 @@ the cloud.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## NO_ERROR
-
-```TypeScript
-NO_ERROR = 0
-```
-
-No error.
-
-**Since:** 12
-
-<!--Device-ErrorType-NO_ERROR = 0--><!--Device-ErrorType-NO_ERROR = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## NETWORK_UNAVAILABLE
-
-```TypeScript
-NETWORK_UNAVAILABLE = 1
-```
-
-No network is available.
-
-**Since:** 12
-
-<!--Device-ErrorType-NETWORK_UNAVAILABLE = 1--><!--Device-ErrorType-NETWORK_UNAVAILABLE = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## WIFI_UNAVAILABLE
-
-```TypeScript
-WIFI_UNAVAILABLE = 2
-```
-
-Wi-Fi is unavailable.
-
-**Since:** 12
-
-<!--Device-ErrorType-WIFI_UNAVAILABLE = 2--><!--Device-ErrorType-WIFI_UNAVAILABLE = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## BATTERY_LEVEL_LOW
 
 ```TypeScript
@@ -105,20 +63,6 @@ The cloud space is insufficient.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## LOCAL_STORAGE_FULL
-
-```TypeScript
-LOCAL_STORAGE_FULL = 6
-```
-
-The local space is insufficient.
-
-**Since:** 12
-
-<!--Device-ErrorType-LOCAL_STORAGE_FULL = 6--><!--Device-ErrorType-LOCAL_STORAGE_FULL = 6-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## DEVICE_TEMPERATURE_TOO_HIGH
 
 ```TypeScript
@@ -133,6 +77,48 @@ The device temperature is too high.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+## LOCAL_STORAGE_FULL
+
+```TypeScript
+LOCAL_STORAGE_FULL = 6
+```
+
+The local space is insufficient.
+
+**Since:** 12
+
+<!--Device-ErrorType-LOCAL_STORAGE_FULL = 6--><!--Device-ErrorType-LOCAL_STORAGE_FULL = 6-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## NETWORK_UNAVAILABLE
+
+```TypeScript
+NETWORK_UNAVAILABLE = 1
+```
+
+No network is available.
+
+**Since:** 12
+
+<!--Device-ErrorType-NETWORK_UNAVAILABLE = 1--><!--Device-ErrorType-NETWORK_UNAVAILABLE = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## NO_ERROR
+
+```TypeScript
+NO_ERROR = 0
+```
+
+No error.
+
+**Since:** 12
+
+<!--Device-ErrorType-NO_ERROR = 0--><!--Device-ErrorType-NO_ERROR = 0-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
 ## REMOTE_SERVER_ABNORMAL
 
 ```TypeScript
@@ -144,5 +130,19 @@ The remote service is unavailable.
 **Since:** 20
 
 <!--Device-ErrorType-REMOTE_SERVER_ABNORMAL = 8--><!--Device-ErrorType-REMOTE_SERVER_ABNORMAL = 8-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## WIFI_UNAVAILABLE
+
+```TypeScript
+WIFI_UNAVAILABLE = 2
+```
+
+Wi-Fi is unavailable.
+
+**Since:** 12
+
+<!--Device-ErrorType-WIFI_UNAVAILABLE = 2--><!--Device-ErrorType-WIFI_UNAVAILABLE = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

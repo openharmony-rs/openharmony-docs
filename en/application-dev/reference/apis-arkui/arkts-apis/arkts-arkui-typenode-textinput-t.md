@@ -6,6 +6,8 @@ type TextInput = TypedFrameNode<TextInputInterface, TextInputAttribute>
 
 Represents a FrameNode of the **TextInput** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextInputInterface, [TextInputAttribute](../arkts-components/arkts-arkui-textinput-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **TextInput** type.
 <!--Device-typeNode-type TextInput = TypedFrameNode<TextInputInterface, TextInputAttribute>--><!--Device-typeNode-type TextInput = TypedFrameNode<TextInputInterface, TextInputAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextInputInterface, [TextInputAttribute](../arkts-components/arkts-arkui-textinput-comp-attribute.md)&gt;

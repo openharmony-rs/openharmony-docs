@@ -29,7 +29,7 @@ Sends a notification from the user authentication widget. When the unified authe
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | noticeType | [NoticeType](arkts-userauthentication-userauth-noticetype-e-sys.md) | Yes | Notification type. It identifies the source of a notification. Currently, **WIDGET_NOTICE (1)** is supported, indicating that the notification is from the authentication widget. |
-| eventData | string | Yes | Event data. It is a string in JSON format, containing the notification details, such as the authentication type and ready event. The data length ranges from 0 to 65536 bytes. The JSON object must contain the following fields: **widgetContextId** (context ID of the component, number type), **event** (event type, string type), **version** (version number, string type), and **payload** (event payload object, object type). |
+| eventData | string | Yes | Event data, in bytes. It is a string in JSON format, containing the notification details, such as the authentication type and ready event. The data length range is (0, 65536). The JSON object must contain the following fields: **widgetContextId** (context ID of the component, number type), **event** (event type, string type), **version** (version number, string type), and **payload** (event payload object, object type). |
 
 **Error codes:**
 
@@ -40,6 +40,7 @@ Sends a notification from the user authentication widget. When the unified authe
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. Parameter verification failed. |
 | [12500002](../errorcode-useriam.md#12500002-common-error-code-of-the-identity-authentication-system) | General operation error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -73,3 +74,5 @@ try {
   console.error(`sendNotice failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

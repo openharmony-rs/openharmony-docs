@@ -6,6 +6,8 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="gettimezone1"></a>
+
 ## getTimezone
 
 ```TypeScript
@@ -46,7 +48,7 @@ try {
 ```
 
 
-<a id="gettimezone-1"></a>
+<a id="gettimezone2"></a>
 
 ## getTimezone
 

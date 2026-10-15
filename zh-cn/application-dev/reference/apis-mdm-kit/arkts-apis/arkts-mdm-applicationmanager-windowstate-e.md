@@ -12,19 +12,35 @@ enum WindowState
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DISCONNECT
+## ACTIVE
 
 ```TypeScript
-DISCONNECT = 0
+ACTIVE = 3
 ```
 
-表示窗口已创建，但是暂不可用状态。
+前台激活状态，表示当前窗口已前台显示。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-WindowState-DISCONNECT = 0--><!--Device-WindowState-DISCONNECT = 0-End-->
+<!--Device-WindowState-ACTIVE = 3--><!--Device-WindowState-ACTIVE = 3-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## BACKGROUND
+
+```TypeScript
+BACKGROUND = 5
+```
+
+后台状态，表示当前窗口退到后台，不可见状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowState-BACKGROUND = 5--><!--Device-WindowState-BACKGROUND = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,6 +60,22 @@ CONNECT = 1
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## DISCONNECT
+
+```TypeScript
+DISCONNECT = 0
+```
+
+表示窗口已创建，但是暂不可用状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-WindowState-DISCONNECT = 0--><!--Device-WindowState-DISCONNECT = 0-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## FOREGROUND
 
 ```TypeScript
@@ -60,22 +92,6 @@ FOREGROUND = 2
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## ACTIVE
-
-```TypeScript
-ACTIVE = 3
-```
-
-前台激活状态，表示当前窗口已前台显示。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowState-ACTIVE = 3--><!--Device-WindowState-ACTIVE = 3-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## INACTIVE
 
 ```TypeScript
@@ -89,21 +105,5 @@ INACTIVE = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-WindowState-INACTIVE = 4--><!--Device-WindowState-INACTIVE = 4-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## BACKGROUND
-
-```TypeScript
-BACKGROUND = 5
-```
-
-后台状态，表示当前窗口退到后台，不可见状态。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-WindowState-BACKGROUND = 5--><!--Device-WindowState-BACKGROUND = 5-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

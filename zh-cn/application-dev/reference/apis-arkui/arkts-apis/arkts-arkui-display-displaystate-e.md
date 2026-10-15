@@ -12,54 +12,6 @@ enum DisplayState
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-## STATE_UNKNOWN
-
-```TypeScript
-STATE_UNKNOWN = 0
-```
-
-表示显示设备状态未知。
-
-**起始版本：** 7
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-DisplayState-STATE_UNKNOWN = 0--><!--Device-DisplayState-STATE_UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-## STATE_OFF
-
-```TypeScript
-STATE_OFF = 1
-```
-
-表示显示设备状态为关闭。
-
-**起始版本：** 7
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-DisplayState-STATE_OFF = 1--><!--Device-DisplayState-STATE_OFF = 1-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-## STATE_ON
-
-```TypeScript
-STATE_ON = 2
-```
-
-表示显示设备状态为开启。
-
-**起始版本：** 7
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-DisplayState-STATE_ON = 2--><!--Device-DisplayState-STATE_ON = 2-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
 ## STATE_DOZE
 
 ```TypeScript
@@ -70,7 +22,7 @@ STATE_DOZE = 3
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DisplayState-STATE_DOZE = 3--><!--Device-DisplayState-STATE_DOZE = 3-End-->
 
@@ -86,25 +38,41 @@ STATE_DOZE_SUSPEND = 4
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DisplayState-STATE_DOZE_SUSPEND = 4--><!--Device-DisplayState-STATE_DOZE_SUSPEND = 4-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
-## STATE_VR
+## STATE_OFF
 
 ```TypeScript
-STATE_VR = 5
+STATE_OFF = 1
 ```
 
-表示显示设备为VR模式。
+表示显示设备状态为关闭。
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-DisplayState-STATE_VR = 5--><!--Device-DisplayState-STATE_VR = 5-End-->
+<!--Device-DisplayState-STATE_OFF = 1--><!--Device-DisplayState-STATE_OFF = 1-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## STATE_ON
+
+```TypeScript
+STATE_ON = 2
+```
+
+表示显示设备状态为开启。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DisplayState-STATE_ON = 2--><!--Device-DisplayState-STATE_ON = 2-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
@@ -118,8 +86,40 @@ STATE_ON_SUSPEND = 6
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DisplayState-STATE_ON_SUSPEND = 6--><!--Device-DisplayState-STATE_ON_SUSPEND = 6-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## STATE_UNKNOWN
+
+```TypeScript
+STATE_UNKNOWN = 0
+```
+
+表示显示设备状态未知。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DisplayState-STATE_UNKNOWN = 0--><!--Device-DisplayState-STATE_UNKNOWN = 0-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+## STATE_VR
+
+```TypeScript
+STATE_VR = 5
+```
+
+表示显示设备为VR模式。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DisplayState-STATE_VR = 5--><!--Device-DisplayState-STATE_VR = 5-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core

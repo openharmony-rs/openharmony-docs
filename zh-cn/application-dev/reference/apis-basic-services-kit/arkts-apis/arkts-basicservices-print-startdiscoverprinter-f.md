@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="startdiscoverprinter1"></a>
+
 ## startDiscoverPrinter
 
 ```TypeScript
@@ -58,7 +60,7 @@ print.startDiscoverPrinter(extensionList, (error: BusinessError) => {
 ```
 
 
-<a id="startdiscoverprinter-1"></a>
+<a id="startdiscoverprinter2"></a>
 
 ## startDiscoverPrinter
 

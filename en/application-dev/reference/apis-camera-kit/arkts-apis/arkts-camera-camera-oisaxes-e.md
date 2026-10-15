@@ -24,7 +24,7 @@ Pitch axis. It controls the up-down rotation of the camera body, that is, the ca
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-OISAxes-PITCH = 0--><!--Device-OISAxes-PITCH = 0-End-->
 
@@ -42,7 +42,7 @@ Yaw axis. It controls the left-right rotation of the camera body, that is, the c
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-OISAxes-YAW = 1--><!--Device-OISAxes-YAW = 1-End-->
 

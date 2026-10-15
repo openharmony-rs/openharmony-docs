@@ -18,7 +18,7 @@ Defines the [multi-app mode](../../../quick-start/multiInstance.md).
 readonly maxCount: number
 ```
 
-Indicates the max count of the bundle,the unit is quantity.
+Maximum number of accounts that can log in to the application at the same time.
 
 **Type:** number
 
@@ -34,7 +34,7 @@ Indicates the max count of the bundle,the unit is quantity.
 readonly multiAppModeType: bundleManager.MultiAppModeType
 ```
 
-Indicates the multiAppModeType of the bundle
+Type of the multi-app mode.
 
 **Type:** [bundleManager.MultiAppModeType](arkts-ability-bundlemanager-multiappmodetype-e.md)
 

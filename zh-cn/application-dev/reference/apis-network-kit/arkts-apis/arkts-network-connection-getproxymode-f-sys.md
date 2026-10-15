@@ -37,6 +37,7 @@ function getProxyMode(): Promise<ProxyMode>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ connection.getProxyMode().then(mode => {
     console.error("Error getting proxy mode:", error);
 });
 ```
+
+<!--DelEnd-->

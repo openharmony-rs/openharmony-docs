@@ -4,7 +4,7 @@
 enum ShieldMode
 ```
 
-Enumerates shortcut key shield modes.
+Enumerates system hotkey shield modes.
 
 **Since:** 11
 
@@ -20,7 +20,7 @@ Enumerates shortcut key shield modes.
 FACTORY_MODE = 0
 ```
 
-Factory mode, which means to shield all shortcut keys.
+Factory mode, which means to shield all system hotkeys.
 
 **Since:** 11
 

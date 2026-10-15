@@ -8,7 +8,7 @@ Defines the **TextTimer** configuration used by the **ContentModifier** API.
 
 You need a custom class to implement the **ContentModifier** API.
 
-**Inheritance/Implementation:** TextTimerConfiguration extends CommonConfiguration<TextTimerConfiguration>
+**Inheritance/Implementation:** TextTimerConfiguration extends CommonConfiguration&lt;TextTimerConfiguration&gt;
 
 **Since:** 12
 

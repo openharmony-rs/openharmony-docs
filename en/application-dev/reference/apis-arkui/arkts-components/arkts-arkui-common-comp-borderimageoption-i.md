@@ -118,7 +118,7 @@ source?: string | Resource | LinearGradient
 
 Source or gradient color of the border image. When the type is string, this parameter sets the border image source. For details about how to reference image resources, see Loading Image Resources.
 
-<p>&lt;strong&gt;NOTE&lt;/strong&gt;: <br>The border image source applies only to container components, such as Row, Column, and Flex. </p>
+<p><strong>NOTE</strong>: <br>The border image source applies only to container components, such as Row, Column, and Flex. </p>
 
 **Type:** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [LinearGradient](arkts-arkui-common-comp-lineargradient-i.md)
 

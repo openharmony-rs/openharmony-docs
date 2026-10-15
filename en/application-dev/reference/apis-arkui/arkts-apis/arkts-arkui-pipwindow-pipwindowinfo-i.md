@@ -30,7 +30,7 @@ Size of the PiP window.
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-PiPWindowInfo-size: PiPWindowSize--><!--Device-PiPWindowInfo-size: PiPWindowSize-End-->
 
@@ -48,7 +48,7 @@ ID of the PiP window.
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-PiPWindowInfo-windowId: int--><!--Device-PiPWindowInfo-windowId: int-End-->
 

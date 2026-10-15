@@ -12,7 +12,7 @@ import { router } from '@kit.ArkUI';
 function disableAlertBeforeBackPage(): void
 ```
 
-Disables the display of a confirm dialog box before returning to the previous page.
+Disables the display of a confirm dialog box before returning to the previous page. After this API is called, the return confirm dialog box enabled by [enableAlertBeforeBackPage](arkts-arkui-router-enablealertbeforebackpage-f.md) will be closed, and the [back](arkts-arkui-router-back-f.md) operation will no longer display a confirm dialog box but will directly perform the page return.
 
 **Since:** 8
 

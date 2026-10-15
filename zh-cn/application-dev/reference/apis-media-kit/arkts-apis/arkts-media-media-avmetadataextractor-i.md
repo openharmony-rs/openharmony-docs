@@ -4,7 +4,7 @@
 interface AVMetadataExtractor
 ```
 
-元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor-2)构建一个AVMetadataExtractor实例。
+元数据获取类，用于从媒体资源中获取元数据、缩略图。在调用AVMetadataExtractor的方法前，需要先通过[media.createAVMetadataExtractor](arkts-media-media-createavmetadataextractor-f.md#createavmetadataextractor3)构建一个AVMetadataExtractor实例。
 
 获取音频或视频元数据、视频缩略图的demo可参考：[使用AVMetadataExtractor提取音视频元数据信息(ArkTS)](../../../media/media/avmetadataextractor.md)。
 
@@ -59,6 +59,8 @@ media.createAVMetadataExtractor((error: BusinessError, extractor: media.AVMetada
 });
 ```
 
+<a id="fetchalbumcover1"></a>
+
 ## fetchAlbumCover
 
 ```TypeScript
@@ -108,7 +110,7 @@ async function test() {
 }
 ```
 
-<a id="fetchalbumcover-2"></a>
+<a id="fetchalbumcover3"></a>
 
 ## fetchAlbumCover
 
@@ -363,6 +365,7 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
+  let pixelMap: image.PixelMap | undefined = undefined;
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimes(timesUs, queryOption, param, (frameInfo: media.FrameInfo, err: BusinessError) => {
@@ -371,7 +374,7 @@ async function fetchFramesByTimesDemo() {
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        this.pixelMap = frameInfo.image;
+        pixelMap = frameInfo.image;
       }});
   }
 }
@@ -441,6 +444,7 @@ async function fetchFramesByTimesDemo() {
   };
   // 获取缩略图。
   let avMetadataExtractor = await media.createAVMetadataExtractor();
+  let pixelMap: image.PixelMap | undefined = undefined;
   if (avMetadataExtractor) {
     console.info('Succeeded in creating AVMetadataExtractor');
     avMetadataExtractor.fetchFramesByTimesWithTimeout(timesUs, queryOption, param, timeoutMs, (frameInfo: media.FrameInfo, err: BusinessError) => {
@@ -449,11 +453,13 @@ async function fetchFramesByTimesDemo() {
         return;
       }
       if (frameInfo != undefined && frameInfo.image != undefined) {
-        this.pixelMap = frameInfo.image;
+        pixelMap = frameInfo.image;
       }});
   }
 }
 ```
+
+<a id="fetchmetadata1"></a>
 
 ## fetchMetadata
 
@@ -502,7 +508,7 @@ async function test() {
 }
 ```
 
-<a id="fetchmetadata-2"></a>
+<a id="fetchmetadata3"></a>
 
 ## fetchMetadata
 
@@ -607,6 +613,8 @@ async function test() {
 }
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -652,7 +660,7 @@ async function test() {
 }
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -705,7 +713,7 @@ async function test() {
 setUrlSource(url: string, headers?: Record<string, string>): void
 ```
 
-网络点播资源地址描述，通过该接口设置数据源。只支持获取网络[fetchMetadata](#fetchmetadata)（元数据）和[fetchFrameByTime](#fetchframebytime)（缩略图），在获取之前，必须设置媒体资源URL。
+网络点播资源地址描述，通过该接口设置数据源。只支持获取网络[fetchMetadata](#fetchmetadata1)（元数据）和[fetchFrameByTime](#fetchframebytime)（缩略图），在获取之前，必须设置媒体资源URL。
 
 **起始版本：** 20
 

@@ -6,6 +6,8 @@
 import { relationalStore } from '@kit.ArkData';
 ```
 
+<a id="getrdbstore1"></a>
+
 ## getRdbStore
 
 ```TypeScript
@@ -116,7 +118,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="getrdbstore-1"></a>
+<a id="getrdbstore2"></a>
 
 ## getRdbStore
 

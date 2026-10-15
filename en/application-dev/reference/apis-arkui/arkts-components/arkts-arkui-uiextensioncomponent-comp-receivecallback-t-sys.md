@@ -6,6 +6,8 @@ declare type ReceiveCallback = import('../api/@ohos.base').Callback<Record<strin
 
 Triggered to encapsulate the data sent by the started ability.
 
+**Type:** import('../api/@ohos.base').Callback&lt;Record&lt;string, Object&gt;&gt;
+
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Triggered to encapsulate the data sent by the started ability.
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
-
-**Type:** import('../api/@ohos.base').Callback&lt;Record&lt;string, Object&gt;&gt;

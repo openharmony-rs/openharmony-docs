@@ -12,6 +12,20 @@ Defines the microphone capture states, which identify the current working status
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## ACTIVE
+
+```TypeScript
+ACTIVE = 2
+```
+
+The microphone is active.
+
+**Since:** 23
+
+<!--Device-MicrophoneCaptureState-ACTIVE = 2--><!--Device-MicrophoneCaptureState-ACTIVE = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## NONE
 
 ```TypeScript
@@ -37,19 +51,5 @@ The microphone is paused.
 **Since:** 23
 
 <!--Device-MicrophoneCaptureState-PAUSED = 1--><!--Device-MicrophoneCaptureState-PAUSED = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## ACTIVE
-
-```TypeScript
-ACTIVE = 2
-```
-
-The microphone is active.
-
-**Since:** 23
-
-<!--Device-MicrophoneCaptureState-ACTIVE = 2--><!--Device-MicrophoneCaptureState-ACTIVE = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

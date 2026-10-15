@@ -20,6 +20,8 @@ Implements a generic task. **GenericsTask** inherits from [Task](arkts-arkts-tas
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -75,7 +77,7 @@ let task2: taskpool.Task = new taskpool.GenericsTask<[number, string, number], s
 let task3: taskpool.Task = new taskpool.GenericsTask<[[number, string]], string>(testWithArray, [100, "test"]);
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

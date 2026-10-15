@@ -46,9 +46,9 @@ This operation requires Internet access and takes time.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed: call the anonAttestKeyItemAsUser API, missing Permission: ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS, or the system has not been unlocked by user, or the user does not exist. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | non-system applications are not allowed to use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
-| [12000001](../errorcode-huks.md#12000001-feature-not-supported) | Feature is not supported. Possible causes: 1. The algorithm mode is not supported. 2. The group key is not supported. 3. The crypto extension key is not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
+| [12000001](../errorcode-huks.md#12000001-feature-not-supported) | Feature is not supported. Possible causes:         1. The algorithm mode is not supported.         2. The group key is not supported.         3. The crypto extension key is not supported. |
 | [12000002](../errorcode-huks.md#12000002-missing-key-algorithm-parameter) | algorithm param is missing |
 | [12000003](../errorcode-huks.md#12000003-invalid-key-algorithm-parameter) | algorithm param is invalid |
 | [12000004](../errorcode-huks.md#12000004-file-error) | operating file failed |
@@ -58,6 +58,7 @@ This operation requires Internet access and takes time.
 | [12000012](../errorcode-huks.md#12000012-external-error) | Device environment or input parameter abnormal |
 | [12000014](../errorcode-huks.md#12000014-insufficient-memory) | memory is insufficient |
 
+<!--Del-->
 **Examples**
 
 Prerequisites: see Example of generateKeyItemAsUser.
@@ -166,3 +167,5 @@ export default function HuksAsUserTest() {
   TestHuksAnonAttest()
 }
 ```
+
+<!--DelEnd-->

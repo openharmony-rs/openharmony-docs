@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="lockmission1"></a>
+
 ## lockMission
 
 ```TypeScript
@@ -34,6 +36,7 @@ Locks a given mission. This API uses an asynchronous callback to return the resu
 | missionId | number | Yes | Mission ID. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the mission is locked, **err** is **undefined**. Otherwise, **err** is an error object. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,8 +59,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="lockmission-1"></a>
+
+<a id="lockmission2"></a>
 
 ## lockMission
 
@@ -93,6 +98,7 @@ Locks a given mission. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -112,3 +118,5 @@ try {
   console.error(`lockMission sync failed. Code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->

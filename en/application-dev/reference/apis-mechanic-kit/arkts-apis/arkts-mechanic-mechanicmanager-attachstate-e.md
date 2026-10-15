@@ -6,8 +6,6 @@ export enum AttachState
 
 Device attach states.
 
-@enum { int }
-
 **Since:** 20
 
 <!--Device-mechanicManager-export enum AttachState--><!--Device-mechanicManager-export enum AttachState-End-->

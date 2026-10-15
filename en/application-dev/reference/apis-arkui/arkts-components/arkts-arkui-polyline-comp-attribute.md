@@ -6,7 +6,7 @@ declare class PolylineAttribute extends CommonShapeMethod<PolylineAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [universal drawing attributes](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
-**Inheritance/Implementation:** PolylineAttribute extends CommonShapeMethod<PolylineAttribute>
+**Inheritance/Implementation:** PolylineAttribute extends CommonShapeMethod&lt;PolylineAttribute&gt;
 
 **Since:** 7
 

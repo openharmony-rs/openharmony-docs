@@ -33,11 +33,12 @@ Called when the remote window interface is used.
 | [RRect](arkts-arkui-remotewindow-comp-rrect-i-sys.md) | Round rect. |
 | [WindowAnimationTarget](arkts-arkui-remotewindow-comp-windowanimationtarget-i-sys.md) | Window animation target. |
 
+<!--Del-->
 ## Examples
 
 The RemoteWindow component needs to receive the WindowAnimationTarget object from the WindowAnimationController object set by windowAnimationManager. You can create a RemoteWindowExample.ets file as an example to encapsulate the RemoteWindow component and the passed WindowAnimationTarget object.
 
-Since RemoteWindow can be used only in the system application Launcher, you can place the RemoteWindowExample component in the build function of the EntryView.ets page of Launcher, compile Launcher, and then push the Launcher installation package to the device system for running.
+Since RemoteWindow can be used only in the system application Launcher, you can place the RemoteWindowExample component in the build function of the EntryView.ets page of Launcher, compile Launcher, and push the Launcher installation package to the device system for running.
 
 ```TypeScript
 // WindowAnimationControllerImpl.ets file
@@ -144,3 +145,5 @@ export default struct RemoteWindowExample {
   }
 }
 ```
+
+<!--DelEnd-->

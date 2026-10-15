@@ -12,17 +12,59 @@ Enumerates the function types represented by the Enter key of the input method.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## UNSPECIFIED
+## DONE
 
 ```TypeScript
-UNSPECIFIED = 0
+DONE
 ```
 
-Not specified.
+Done.
 
 **Since:** 10
 
-<!--Device-EnterKeyType-UNSPECIFIED = 0--><!--Device-EnterKeyType-UNSPECIFIED = 0-End-->
+<!--Device-EnterKeyType-DONE--><!--Device-EnterKeyType-DONE-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## GO
+
+```TypeScript
+GO
+```
+
+Go.
+
+**Since:** 10
+
+<!--Device-EnterKeyType-GO--><!--Device-EnterKeyType-GO-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## NEWLINE
+
+```TypeScript
+NEWLINE
+```
+
+Line break.
+
+**Since:** 12
+
+<!--Device-EnterKeyType-NEWLINE--><!--Device-EnterKeyType-NEWLINE-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## NEXT
+
+```TypeScript
+NEXT
+```
+
+Next.
+
+**Since:** 10
+
+<!--Device-EnterKeyType-NEXT--><!--Device-EnterKeyType-NEXT-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -40,17 +82,17 @@ None.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## GO
+## PREVIOUS
 
 ```TypeScript
-GO
+PREVIOUS
 ```
 
-Go.
+Previous.
 
 **Since:** 10
 
-<!--Device-EnterKeyType-GO--><!--Device-EnterKeyType-GO-End-->
+<!--Device-EnterKeyType-PREVIOUS--><!--Device-EnterKeyType-PREVIOUS-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -82,58 +124,16 @@ Send.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## NEXT
+## UNSPECIFIED
 
 ```TypeScript
-NEXT
+UNSPECIFIED = 0
 ```
 
-Next.
+Not specified.
 
 **Since:** 10
 
-<!--Device-EnterKeyType-NEXT--><!--Device-EnterKeyType-NEXT-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-## DONE
-
-```TypeScript
-DONE
-```
-
-Done.
-
-**Since:** 10
-
-<!--Device-EnterKeyType-DONE--><!--Device-EnterKeyType-DONE-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-## PREVIOUS
-
-```TypeScript
-PREVIOUS
-```
-
-Previous.
-
-**Since:** 10
-
-<!--Device-EnterKeyType-PREVIOUS--><!--Device-EnterKeyType-PREVIOUS-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-## NEWLINE
-
-```TypeScript
-NEWLINE
-```
-
-Line break.
-
-**Since:** 12
-
-<!--Device-EnterKeyType-NEWLINE--><!--Device-EnterKeyType-NEWLINE-End-->
+<!--Device-EnterKeyType-UNSPECIFIED = 0--><!--Device-EnterKeyType-UNSPECIFIED = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

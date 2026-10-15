@@ -6,17 +6,17 @@ declare class PatternLockController
 
 PatternLock组件的控制器，用于重置组件状态和设置图案密码状态。
 
-## 导入对象
-
-```typescript
-let patternLockController: PatternLockController = new PatternLockController();
-```
-
 **起始版本：** 9
 
 <!--Device-unnamed-declare class PatternLockController--><!--Device-unnamed-declare class PatternLockController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+```typescript
+let patternLockController: PatternLockController = new PatternLockController();
+```
 
 ## constructor
 

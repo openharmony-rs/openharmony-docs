@@ -32,7 +32,7 @@ area: window.AvoidArea
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AvoidAreaInfo-area: window.AvoidArea--><!--Device-AvoidAreaInfo-area: window.AvoidArea-End-->
 
@@ -52,7 +52,7 @@ type: window.AvoidAreaType
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AvoidAreaInfo-type: window.AvoidAreaType--><!--Device-AvoidAreaInfo-type: window.AvoidAreaType-End-->
 

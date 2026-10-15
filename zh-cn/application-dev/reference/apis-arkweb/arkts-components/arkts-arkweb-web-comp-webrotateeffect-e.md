@@ -12,20 +12,6 @@ declare enum WebRotateEffect
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## TOPLEFT_EFFECT
-
-```TypeScript
-TOPLEFT_EFFECT = 0
-```
-
-默认值，组件旋转时，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。
-
-**起始版本：** 22
-
-<!--Device-WebRotateEffect-TOPLEFT_EFFECT = 0--><!--Device-WebRotateEffect-TOPLEFT_EFFECT = 0-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## RESIZE_COVER_EFFECT
 
 ```TypeScript
@@ -37,5 +23,19 @@ RESIZE_COVER_EFFECT = 1
 **起始版本：** 22
 
 <!--Device-WebRotateEffect-RESIZE_COVER_EFFECT = 1--><!--Device-WebRotateEffect-RESIZE_COVER_EFFECT = 1-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## TOPLEFT_EFFECT
+
+```TypeScript
+TOPLEFT_EFFECT = 0
+```
+
+默认值，组件旋转时，保持动画终态的内容大小，并且内容始终与组件保持左上角对齐。
+
+**起始版本：** 22
+
+<!--Device-WebRotateEffect-TOPLEFT_EFFECT = 0--><!--Device-WebRotateEffect-TOPLEFT_EFFECT = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

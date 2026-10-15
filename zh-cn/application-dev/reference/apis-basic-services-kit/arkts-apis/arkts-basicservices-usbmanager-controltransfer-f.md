@@ -50,8 +50,8 @@ function controlTransfer(pipe: USBDevicePipe, controlparam: USBControlParams, ti
 import {BusinessError} from '@kit.BasicServicesKit';
 let param: usbManager.USBControlParams = {
   request: 0x06,
-  reqType: 0x80,
-  target: 0,
+  reqType: usbManager.USBControlRequestType.USB_REQUEST_TYPE_STANDARD,
+  target: usbManager.USBRequestTargetType.USB_REQUEST_TARGET_DEVICE,
   value: 0x01 << 8 | 0,
   index: 0,
   data: new Uint8Array(18)
@@ -74,6 +74,7 @@ async function controlTransfer() {
     console.error(`connect device failed`);
     return;
   }
+  // 发起控制传输，Promise返回传输或接收到的数据块大小，完成后在finally中关闭设备通道
   usbManager.controlTransfer(devicePipe, param).then((ret: number) => {
     console.info(`controlTransfer = ${ret}`);
   }).catch((error: BusinessError) => {

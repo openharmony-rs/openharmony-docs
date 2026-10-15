@@ -4,7 +4,9 @@
 export type MissionParameter = _MissionParameter
 ```
 
-作为[startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md)的入参，表示同步远端设备任务列表时所需的参数对象，包含deviceId、fixConflict和tag等字段。
+作为[startSyncRemoteMissions](arkts-ability-distributedmissionmanager-startsyncremotemissions-f-sys.md#startsyncremotemissions1)的入参，表示同步远端设备任务列表时所需的参数对象，包含deviceId、fixConflict和tag等字段。
+
+**类型：** _MissionParameter
 
 **起始版本：** 10
 
@@ -15,5 +17,3 @@ export type MissionParameter = _MissionParameter
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Mission
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _MissionParameter

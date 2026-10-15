@@ -12,38 +12,6 @@ Enumerates the properties available for the metadata of a HEIFS image.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## HEIFS_DELAY_TIME
-
-```TypeScript
-HEIFS_DELAY_TIME = 'HeifsDelayTime'
-```
-
-Playback duration of each frame in an HEIF image sequence, in milliseconds.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-HeifsPropertyKey-HEIFS_DELAY_TIME = 'HeifsDelayTime'--><!--Device-HeifsPropertyKey-HEIFS_DELAY_TIME = 'HeifsDelayTime'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## HEIFS_UNCLAMPED_DELAY_TIME
-
-```TypeScript
-HEIFS_UNCLAMPED_DELAY_TIME = 'HeifsUnclampedDelayTime'
-```
-
-Unclamped delay of each frame in milliseconds.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-HeifsPropertyKey-HEIFS_UNCLAMPED_DELAY_TIME = 'HeifsUnclampedDelayTime'--><!--Device-HeifsPropertyKey-HEIFS_UNCLAMPED_DELAY_TIME = 'HeifsUnclampedDelayTime'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## HEIFS_CANVAS_HEIGHT
 
 ```TypeScript
@@ -73,5 +41,37 @@ Canvas width.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-HeifsPropertyKey-HEIFS_CANVAS_WIDTH = 'HeifsCanvasWidth'--><!--Device-HeifsPropertyKey-HEIFS_CANVAS_WIDTH = 'HeifsCanvasWidth'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## HEIFS_DELAY_TIME
+
+```TypeScript
+HEIFS_DELAY_TIME = 'HeifsDelayTime'
+```
+
+Playback duration of each frame in an HEIF image sequence, in milliseconds.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HeifsPropertyKey-HEIFS_DELAY_TIME = 'HeifsDelayTime'--><!--Device-HeifsPropertyKey-HEIFS_DELAY_TIME = 'HeifsDelayTime'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## HEIFS_UNCLAMPED_DELAY_TIME
+
+```TypeScript
+HEIFS_UNCLAMPED_DELAY_TIME = 'HeifsUnclampedDelayTime'
+```
+
+Unclamped delay of each frame in milliseconds.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HeifsPropertyKey-HEIFS_UNCLAMPED_DELAY_TIME = 'HeifsUnclampedDelayTime'--><!--Device-HeifsPropertyKey-HEIFS_UNCLAMPED_DELAY_TIME = 'HeifsUnclampedDelayTime'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

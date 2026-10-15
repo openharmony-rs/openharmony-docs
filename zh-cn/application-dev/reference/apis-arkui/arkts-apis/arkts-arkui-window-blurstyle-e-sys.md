@@ -30,22 +30,6 @@ OFF = 0
 
 **系统接口：** 此接口为系统接口。
 
-## THIN
-
-```TypeScript
-THIN = 1
-```
-
-表示较薄的模糊类型。
-
-**起始版本：** 9
-
-<!--Device-BlurStyle-THIN = 1--><!--Device-BlurStyle-THIN = 1-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## REGULAR
 
 ```TypeScript
@@ -73,6 +57,22 @@ THICK = 3
 **起始版本：** 9
 
 <!--Device-BlurStyle-THICK = 3--><!--Device-BlurStyle-THICK = 3-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+## THIN
+
+```TypeScript
+THIN = 1
+```
+
+表示较薄的模糊类型。
+
+**起始版本：** 9
+
+<!--Device-BlurStyle-THIN = 1--><!--Device-BlurStyle-THIN = 1-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

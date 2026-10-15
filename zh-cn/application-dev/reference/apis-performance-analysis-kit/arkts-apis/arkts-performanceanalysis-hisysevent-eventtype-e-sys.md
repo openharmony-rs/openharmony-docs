@@ -14,6 +14,22 @@ enum EventType
 
 **系统接口：** 此接口为系统接口。
 
+## BEHAVIOR
+
+```TypeScript
+BEHAVIOR = 4
+```
+
+用户行为事件类型。
+
+**起始版本：** 9
+
+<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiSysEvent
+
+**系统接口：** 此接口为系统接口。
+
 ## FAULT
 
 ```TypeScript
@@ -25,22 +41,6 @@ FAULT = 1
 **起始版本：** 9
 
 <!--Device-EventType-FAULT = 1--><!--Device-EventType-FAULT = 1-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiSysEvent
-
-**系统接口：** 此接口为系统接口。
-
-## STATISTIC
-
-```TypeScript
-STATISTIC = 2
-```
-
-统计事件类型。
-
-**起始版本：** 9
-
-<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -62,17 +62,17 @@ SECURITY = 3
 
 **系统接口：** 此接口为系统接口。
 
-## BEHAVIOR
+## STATISTIC
 
 ```TypeScript
-BEHAVIOR = 4
+STATISTIC = 2
 ```
 
-用户行为事件类型。
+统计事件类型。
 
 **起始版本：** 9
 
-<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiSysEvent
 

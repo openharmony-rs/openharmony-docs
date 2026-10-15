@@ -12,59 +12,45 @@ Enumerates the window anchor points.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## TOP_START
+## BOTTOM
 
 ```TypeScript
-TOP_START = 0
+BOTTOM = 7
 ```
 
-Top-left corner of the window.
+Horizontal center point along the bottom edge of the window.
 
 **Since:** 20
 
-<!--Device-WindowAnchor-TOP_START = 0--><!--Device-WindowAnchor-TOP_START = 0-End-->
+<!--Device-WindowAnchor-BOTTOM = 7--><!--Device-WindowAnchor-BOTTOM = 7-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## TOP
+## BOTTOM_END
 
 ```TypeScript
-TOP = 1
+BOTTOM_END = 8
 ```
 
-Horizontal center point along the top edge of the window.
+Bottom-right corner of the window.
 
 **Since:** 20
 
-<!--Device-WindowAnchor-TOP = 1--><!--Device-WindowAnchor-TOP = 1-End-->
+<!--Device-WindowAnchor-BOTTOM_END = 8--><!--Device-WindowAnchor-BOTTOM_END = 8-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## TOP_END
+## BOTTOM_START
 
 ```TypeScript
-TOP_END = 2
+BOTTOM_START = 6
 ```
 
-Top-right corner of the window.
+Bottom-left corner of the window.
 
 **Since:** 20
 
-<!--Device-WindowAnchor-TOP_END = 2--><!--Device-WindowAnchor-TOP_END = 2-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
-## START
-
-```TypeScript
-START = 3
-```
-
-Vertical center point along the left edge of the window.
-
-**Since:** 20
-
-<!--Device-WindowAnchor-START = 3--><!--Device-WindowAnchor-START = 3-End-->
+<!--Device-WindowAnchor-BOTTOM_START = 6--><!--Device-WindowAnchor-BOTTOM_START = 6-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -96,44 +82,58 @@ Vertical center point along the right edge of the window.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## BOTTOM_START
+## START
 
 ```TypeScript
-BOTTOM_START = 6
+START = 3
 ```
 
-Bottom-left corner of the window.
+Vertical center point along the left edge of the window.
 
 **Since:** 20
 
-<!--Device-WindowAnchor-BOTTOM_START = 6--><!--Device-WindowAnchor-BOTTOM_START = 6-End-->
+<!--Device-WindowAnchor-START = 3--><!--Device-WindowAnchor-START = 3-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## BOTTOM
+## TOP
 
 ```TypeScript
-BOTTOM = 7
+TOP = 1
 ```
 
-Horizontal center point along the bottom edge of the window.
+Horizontal center point along the top edge of the window.
 
 **Since:** 20
 
-<!--Device-WindowAnchor-BOTTOM = 7--><!--Device-WindowAnchor-BOTTOM = 7-End-->
+<!--Device-WindowAnchor-TOP = 1--><!--Device-WindowAnchor-TOP = 1-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## BOTTOM_END
+## TOP_END
 
 ```TypeScript
-BOTTOM_END = 8
+TOP_END = 2
 ```
 
-Bottom-right corner of the window.
+Top-right corner of the window.
 
 **Since:** 20
 
-<!--Device-WindowAnchor-BOTTOM_END = 8--><!--Device-WindowAnchor-BOTTOM_END = 8-End-->
+<!--Device-WindowAnchor-TOP_END = 2--><!--Device-WindowAnchor-TOP_END = 2-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+## TOP_START
+
+```TypeScript
+TOP_START = 0
+```
+
+Top-left corner of the window.
+
+**Since:** 20
+
+<!--Device-WindowAnchor-TOP_START = 0--><!--Device-WindowAnchor-TOP_START = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

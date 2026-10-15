@@ -40,20 +40,6 @@ Printer deleted.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## PRINTER_EVENT_STATE_CHANGED
-
-```TypeScript
-PRINTER_EVENT_STATE_CHANGED = 2
-```
-
-Printer state changed.
-
-**Since:** 18
-
-<!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2--><!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## PRINTER_EVENT_INFO_CHANGED
 
 ```TypeScript
@@ -65,6 +51,20 @@ Printer information changed.
 **Since:** 18
 
 <!--Device-PrinterEvent-PRINTER_EVENT_INFO_CHANGED = 3--><!--Device-PrinterEvent-PRINTER_EVENT_INFO_CHANGED = 3-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## PRINTER_EVENT_LAST_USED_PRINTER_CHANGED
+
+```TypeScript
+PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5
+```
+
+The last used printer changed.
+
+**Since:** 18
+
+<!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5--><!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -82,16 +82,16 @@ Printer preferences changed.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## PRINTER_EVENT_LAST_USED_PRINTER_CHANGED
+## PRINTER_EVENT_STATE_CHANGED
 
 ```TypeScript
-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5
+PRINTER_EVENT_STATE_CHANGED = 2
 ```
 
-The last used printer changed.
+Printer state changed.
 
 **Since:** 18
 
-<!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5--><!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5-End-->
+<!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2--><!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

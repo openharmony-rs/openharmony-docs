@@ -6,7 +6,7 @@ declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.Vis
 
 Represents a visual effect configuration object.
 
-@typedef { import('../api/@ohos.graphics.uiEffect').default.VisualEffect } VisualEffect
+**Type:** import('../api/@ohos.graphics.uiEffect').default.VisualEffect
 
 **Since:** 12
 
@@ -17,5 +17,3 @@ Represents a visual effect configuration object.
 <!--Device-unnamed-declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect--><!--Device-unnamed-declare type VisualEffect = import('../api/@ohos.graphics.uiEffect').default.VisualEffect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.uiEffect').default.VisualEffect

@@ -26,20 +26,6 @@ QUALITY_DRAFT = 3
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## QUALITY_NORMAL
-
-```TypeScript
-QUALITY_NORMAL = 4
-```
-
-表示标准的打印质量。
-
-**起始版本：** 14
-
-<!--Device-PrintQuality-QUALITY_NORMAL = 4--><!--Device-PrintQuality-QUALITY_NORMAL = 4-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## QUALITY_HIGH
 
 ```TypeScript
@@ -51,5 +37,19 @@ QUALITY_HIGH = 5
 **起始版本：** 14
 
 <!--Device-PrintQuality-QUALITY_HIGH = 5--><!--Device-PrintQuality-QUALITY_HIGH = 5-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## QUALITY_NORMAL
+
+```TypeScript
+QUALITY_NORMAL = 4
+```
+
+表示标准的打印质量。
+
+**起始版本：** 14
+
+<!--Device-PrintQuality-QUALITY_NORMAL = 4--><!--Device-PrintQuality-QUALITY_NORMAL = 4-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

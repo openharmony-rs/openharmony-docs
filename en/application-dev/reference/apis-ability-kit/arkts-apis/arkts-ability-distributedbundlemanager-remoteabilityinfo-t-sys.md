@@ -6,6 +6,8 @@ export type RemoteAbilityInfo = _RemoteAbilityInfo
 
 Defines the remote ability information.
 
+**Type:** _RemoteAbilityInfo
+
 **Since:** 9
 
 <!--Device-distributedBundleManager-export type RemoteAbilityInfo = _RemoteAbilityInfo--><!--Device-distributedBundleManager-export type RemoteAbilityInfo = _RemoteAbilityInfo-End-->
@@ -13,5 +15,3 @@ Defines the remote ability information.
 **System capability:** SystemCapability.BundleManager.DistributedBundleFramework
 
 **System API:** This is a system API.
-
-**Type:** _RemoteAbilityInfo

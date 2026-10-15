@@ -6,6 +6,8 @@ export type PackageSummary = _PackInfo.PackageSummary
 
 Defines the package summary information in the **pack.info** file.
 
+**Type:** [_PackInfo.PackageSummary](arkts-ability-bundlepackinfo-packagesummary-i-sys.md)
+
 **Since:** 9
 
 <!--Device-freeInstall-export type PackageSummary = _PackInfo.PackageSummary--><!--Device-freeInstall-export type PackageSummary = _PackInfo.PackageSummary-End-->
@@ -13,5 +15,3 @@ Defines the package summary information in the **pack.info** file.
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **System API:** This is a system API.
-
-**Type:** [_PackInfo.PackageSummary](arkts-ability-bundlepackinfo-packagesummary-i-sys.md)

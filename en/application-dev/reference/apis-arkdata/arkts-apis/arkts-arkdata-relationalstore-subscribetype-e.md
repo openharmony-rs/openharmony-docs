@@ -12,20 +12,6 @@ Enumerates the subscription types. Use the enum name rather than the enum value.
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## SUBSCRIBE_TYPE_REMOTE
-
-```TypeScript
-SUBSCRIBE_TYPE_REMOTE = 0
-```
-
-Subscribe to remote data changes.
-
-**Since:** 9
-
-<!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0--><!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## SUBSCRIBE_TYPE_CLOUD
 
 ```TypeScript
@@ -73,5 +59,19 @@ Subscribe to detailed information about local data changes.
 **Since:** 12
 
 <!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL_DETAILS--><!--Device-SubscribeType-SUBSCRIBE_TYPE_LOCAL_DETAILS-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## SUBSCRIBE_TYPE_REMOTE
+
+```TypeScript
+SUBSCRIBE_TYPE_REMOTE = 0
+```
+
+Subscribe to remote data changes.
+
+**Since:** 9
+
+<!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0--><!--Device-SubscribeType-SUBSCRIBE_TYPE_REMOTE = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

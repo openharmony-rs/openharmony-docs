@@ -12,6 +12,20 @@ Enumerates the notification flag states.
 
 **System capability:** SystemCapability.Notification.Notification
 
+## TYPE_CLOSE
+
+```TypeScript
+TYPE_CLOSE = 2
+```
+
+The notification flag is closed.
+
+**Since:** 11
+
+<!--Device-NotificationFlagStatus-TYPE_CLOSE = 2--><!--Device-NotificationFlagStatus-TYPE_CLOSE = 2-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
 ## TYPE_NONE
 
 ```TypeScript
@@ -37,19 +51,5 @@ The notification flag is opened.
 **Since:** 11
 
 <!--Device-NotificationFlagStatus-TYPE_OPEN = 1--><!--Device-NotificationFlagStatus-TYPE_OPEN = 1-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-## TYPE_CLOSE
-
-```TypeScript
-TYPE_CLOSE = 2
-```
-
-The notification flag is closed.
-
-**Since:** 11
-
-<!--Device-NotificationFlagStatus-TYPE_CLOSE = 2--><!--Device-NotificationFlagStatus-TYPE_CLOSE = 2-End-->
 
 **System capability:** SystemCapability.Notification.Notification

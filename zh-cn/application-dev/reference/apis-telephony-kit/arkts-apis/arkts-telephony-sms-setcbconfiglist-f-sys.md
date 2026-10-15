@@ -46,3 +46,25 @@ function setCBConfigList(configs: CBConfigListConfigs): Promise<void>
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Operation failed. Cannot connect to service. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let cbConfigListConfigs: sms.CBConfigListConfigs = {
+    slotId: 0,
+    messageIds: [100, 200, 300],
+    ranType: sms.RanType.TYPE_GSM
+};
+let promise = sms.setCBConfigList(cbConfigListConfigs);
+promise.then(() => {
+    console.info('setCBConfigList success.');
+}).catch((err: BusinessError) => {
+    console.error('setCBConfigList failed, code: ${err.code}, message: ${err.message}');
+})
+```
+
+<!--DelEnd-->

@@ -12,19 +12,19 @@ Enumerates contact data fields.
 
 **System capability:** SystemCapability.Applications.ContactsData
 
-## PHONE
+## EMAIL
 
 ```TypeScript
-PHONE = 1
+EMAIL = 0
 ```
 
-Phone number of the contact.
+Email of the contact.
 
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
-<!--Device-DataField-PHONE = 1--><!--Device-DataField-PHONE = 1-End-->
+<!--Device-DataField-EMAIL = 0--><!--Device-DataField-EMAIL = 0-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 
@@ -44,18 +44,18 @@ Organization of the contact.
 
 **System capability:** SystemCapability.Applications.Contacts
 
-## EMAIL
+## PHONE
 
 ```TypeScript
-EMAIL = 0
+PHONE = 1
 ```
 
-Email of the contact.
+Phone number of the contact.
 
 **Since:** 15
 
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
-<!--Device-DataField-EMAIL = 0--><!--Device-DataField-EMAIL = 0-End-->
+<!--Device-DataField-PHONE = 1--><!--Device-DataField-PHONE = 1-End-->
 
 **System capability:** SystemCapability.Applications.Contacts

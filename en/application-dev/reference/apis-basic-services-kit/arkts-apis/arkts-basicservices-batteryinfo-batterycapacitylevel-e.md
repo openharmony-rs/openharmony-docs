@@ -12,17 +12,17 @@ Enumerates battery levels.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## LEVEL_NONE
+## LEVEL_CRITICAL
 
 ```TypeScript
-LEVEL_NONE
+LEVEL_CRITICAL
 ```
 
-Unknown battery level.
+Ultra-low battery level.
 
-**Since:** 23
+**Since:** 9
 
-<!--Device-BatteryCapacityLevel-LEVEL_NONE--><!--Device-BatteryCapacityLevel-LEVEL_NONE-End-->
+<!--Device-BatteryCapacityLevel-LEVEL_CRITICAL--><!--Device-BatteryCapacityLevel-LEVEL_CRITICAL-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -54,20 +54,6 @@ High battery level.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## LEVEL_NORMAL
-
-```TypeScript
-LEVEL_NORMAL
-```
-
-Normal battery level.
-
-**Since:** 9
-
-<!--Device-BatteryCapacityLevel-LEVEL_NORMAL--><!--Device-BatteryCapacityLevel-LEVEL_NORMAL-End-->
-
-**System capability:** SystemCapability.PowerManager.BatteryManager.Core
-
 ## LEVEL_LOW
 
 ```TypeScript
@@ -82,31 +68,31 @@ Low battery level.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## LEVEL_WARNING
+## LEVEL_NONE
 
 ```TypeScript
-LEVEL_WARNING
+LEVEL_NONE
 ```
 
-Alarm battery level.
+Unknown battery level.
 
-**Since:** 9
+**Since:** 23
 
-<!--Device-BatteryCapacityLevel-LEVEL_WARNING--><!--Device-BatteryCapacityLevel-LEVEL_WARNING-End-->
+<!--Device-BatteryCapacityLevel-LEVEL_NONE--><!--Device-BatteryCapacityLevel-LEVEL_NONE-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## LEVEL_CRITICAL
+## LEVEL_NORMAL
 
 ```TypeScript
-LEVEL_CRITICAL
+LEVEL_NORMAL
 ```
 
-Ultra-low battery level.
+Normal battery level.
 
 **Since:** 9
 
-<!--Device-BatteryCapacityLevel-LEVEL_CRITICAL--><!--Device-BatteryCapacityLevel-LEVEL_CRITICAL-End-->
+<!--Device-BatteryCapacityLevel-LEVEL_NORMAL--><!--Device-BatteryCapacityLevel-LEVEL_NORMAL-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -121,5 +107,19 @@ Power-down battery level.
 **Since:** 9
 
 <!--Device-BatteryCapacityLevel-LEVEL_SHUTDOWN--><!--Device-BatteryCapacityLevel-LEVEL_SHUTDOWN-End-->
+
+**System capability:** SystemCapability.PowerManager.BatteryManager.Core
+
+## LEVEL_WARNING
+
+```TypeScript
+LEVEL_WARNING
+```
+
+Alarm battery level.
+
+**Since:** 9
+
+<!--Device-BatteryCapacityLevel-LEVEL_WARNING--><!--Device-BatteryCapacityLevel-LEVEL_WARNING-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core

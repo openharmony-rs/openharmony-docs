@@ -6,6 +6,8 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="setstaticsubscriberstate1"></a>
+
 ## setStaticSubscriberState
 
 ```TypeScript
@@ -36,10 +38,11 @@ function setStaticSubscriberState(enable: boolean, callback: AsyncCallback<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1500007](../errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,8 +57,10 @@ commonEventManager.setStaticSubscriberState(true, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setstaticsubscriberstate-1"></a>
+
+<a id="setstaticsubscriberstate2"></a>
 
 ## setStaticSubscriberState
 
@@ -92,10 +97,11 @@ function setStaticSubscriberState(enable: boolean): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1500007](../errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -108,8 +114,10 @@ commonEventManager.setStaticSubscriberState(false).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setstaticsubscriberstate-2"></a>
+
+<a id="setstaticsubscriberstate3"></a>
 
 ## setStaticSubscriberState
 
@@ -147,10 +155,11 @@ function setStaticSubscriberState(enable: boolean, events?: Array<string>): Prom
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1500007](../errorcode-CommonEventService.md#1500007-ipc请求发送失败) | Failed to send the message to the common event service. |
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -163,3 +172,5 @@ commonEventManager.setStaticSubscriberState(true, eventName).then(() => {
   console.error(`setStaticSubscriberState failed, errCode: ${err.code}, errMsg: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

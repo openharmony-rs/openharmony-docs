@@ -32,6 +32,8 @@ Cancels the ongoing pairing request. This API uses a promise to return the resul
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-cancelDevicePairing(): Promise<void>--><!--Device-RemoteDevice-cancelDevicePairing(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -48,8 +50,8 @@ Cancels the ongoing pairing request. This API uses a promise to return the resul
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -67,6 +69,8 @@ Initiates a connection request to a remote device. This API uses a promise to re
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-connect(): Promise<void>--><!--Device-RemoteDevice-connect(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -83,8 +87,8 @@ Initiates a connection request to a remote device. This API uses a promise to re
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -102,6 +106,8 @@ Disconnects from the remote device. This API uses a promise to return the result
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-disconnect(): Promise<void>--><!--Device-RemoteDevice-disconnect(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -118,8 +124,8 @@ Disconnects from the remote device. This API uses a promise to return the result
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -137,6 +143,8 @@ Obtains the alias of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-getDeviceAlias(): string--><!--Device-RemoteDevice-getDeviceAlias(): string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -153,8 +161,8 @@ Obtains the alias of a remote device.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -169,6 +177,8 @@ Obtains the model of a remote device.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-RemoteDevice-getDeviceModel(): DeviceModel--><!--Device-RemoteDevice-getDeviceModel(): DeviceModel-End-->
 
@@ -186,7 +196,7 @@ Obtains the model of a remote device.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -204,6 +214,8 @@ Obtains the received signal strength indicator (RSSI) of a remote device. This A
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-getRssiValue(): Promise<int>--><!--Device-RemoteDevice-getRssiValue(): Promise<int>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -220,8 +232,8 @@ Obtains the received signal strength indicator (RSSI) of a remote device. This A
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -239,6 +251,8 @@ Removes a paired device. This API uses a promise to return the result.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-removePairedDevice(): Promise<void>--><!--Device-RemoteDevice-removePairedDevice(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -255,8 +269,8 @@ Removes a paired device. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -274,6 +288,8 @@ Sets the interval for connecting to a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-setConnectionInterval(interval: ConnectionInterval): void--><!--Device-RemoteDevice-setConnectionInterval(interval: ConnectionInterval): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -290,8 +306,8 @@ Sets the interval for connecting to a remote device.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -309,6 +325,8 @@ Sets the alias of a remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-setDeviceAlias(alias: string): void--><!--Device-RemoteDevice-setDeviceAlias(alias: string): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -325,8 +343,8 @@ Sets the alias of a remote device.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | 36100046 | String exceeds maximum length. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
@@ -337,13 +355,15 @@ Sets the alias of a remote device.
 setPairingConfirmation(accept: boolean): void
 ```
 
-Sets the pairing confirmation. You can obtain the pairing request of the peer device using [remoteDevice.onPairingRequest](../../../reference/apis-connectivity-kit/js-apis-nearlink-remote-device-sys.md#remotedeviceonpairingrequest).
+Sets the pairing confirmation. You can obtain the pairing request of the peer device using [remoteDevice.onPairingRequest](arkts-connectivity-remotedevice-onpairingrequest-f-sys.md).
 
 **Since:** 26.0.0
 
 **Required permissions:** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-RemoteDevice-setPairingConfirmation(accept: boolean): void--><!--Device-RemoteDevice-setPairingConfirmation(accept: boolean): void-End-->
 
@@ -361,8 +381,8 @@ Sets the pairing confirmation. You can obtain the pairing request of the peer de
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
 
@@ -379,6 +399,8 @@ Sets the pairing passcode. This API uses a promise to return the result.
 **Required permissions:** ohos.permission.ACCESS_NEARLINK and ohos.permission.MANAGE_NEARLINK
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-RemoteDevice-setPairingPasscode(passcode: string): Promise<void>--><!--Device-RemoteDevice-setPairingPasscode(passcode: string): Promise<void>-End-->
 
@@ -402,8 +424,8 @@ Sets the pairing passcode. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | 36100045 | Passcode must be a 6-digit number. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |
@@ -422,6 +444,8 @@ Initiates pairing with a trusted remote device without a dialog box. This API us
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-RemoteDevice-startCrediblePairing(): Promise<void>--><!--Device-RemoteDevice-startCrediblePairing(): Promise<void>-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -438,7 +462,7 @@ Initiates pairing with a trusted remote device without a dialog box. This API us
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-nearlink-disabled) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |

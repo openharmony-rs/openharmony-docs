@@ -12,22 +12,6 @@ Describe the l2cap service type.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## SERVICE_NO_TRAFFIC
-
-```TypeScript
-SERVICE_NO_TRAFFIC = 0
-```
-
-Service type no traffic.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0--><!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## SERVICE_BEST_EFFORT
 
 ```TypeScript
@@ -57,5 +41,21 @@ Service type guaranteed.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ServiceType-SERVICE_GUARANTEED = 2--><!--Device-ServiceType-SERVICE_GUARANTEED = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## SERVICE_NO_TRAFFIC
+
+```TypeScript
+SERVICE_NO_TRAFFIC = 0
+```
+
+Service type no traffic.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0--><!--Device-ServiceType-SERVICE_NO_TRAFFIC = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

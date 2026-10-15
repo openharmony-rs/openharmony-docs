@@ -1,5 +1,7 @@
 # bindController
 
+<a id="bindcontroller1"></a>
+
 ## bindController
 
 ```TypeScript
@@ -81,7 +83,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="bindcontroller-1"></a>
+<a id="bindcontroller2"></a>
 
 ## bindController
 
@@ -121,7 +123,7 @@ export function bindController(node: FrameNode, controller: SwiperController, no
 请参考createNode('Swiper')12+示例。
 
 
-<a id="bindcontroller-2"></a>
+<a id="bindcontroller3"></a>
 
 ## bindController
 
@@ -153,7 +155,7 @@ function bindController(node: FrameNode, controller: Scroller, nodeType: 'Scroll
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. the type of the node is error. 2. the node is null or undefined. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. the type of the node is error.         2. the node is null or undefined. |
 | [100021](../errorcode-node.md#100021-framenode节点不可修改) | The FrameNode is not modifiable. Introduced in API version 15 and will not be thrown above API version 24.<br>**适用版本：** 15 - 24 |
 
 **示例**
@@ -163,7 +165,7 @@ typeNode.bindController(node, scroller, 'Scroll');
 ```
 
 
-<a id="bindcontroller-3"></a>
+<a id="bindcontroller4"></a>
 
 ## bindController
 
@@ -205,7 +207,7 @@ typeNode.bindController(node, scroller, 'List');
 ```
 
 
-<a id="bindcontroller-4"></a>
+<a id="bindcontroller5"></a>
 
 ## bindController
 
@@ -281,7 +283,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="bindcontroller-5"></a>
+<a id="bindcontroller6"></a>
 
 ## bindController
 
@@ -323,7 +325,7 @@ typeNode.bindController(node, scroller, 'WaterFlow');
 ```
 
 
-<a id="bindcontroller-6"></a>
+<a id="bindcontroller7"></a>
 
 ## bindController
 
@@ -399,7 +401,7 @@ struct FrameNodeTypeTest {
 ```
 
 
-<a id="bindcontroller-7"></a>
+<a id="bindcontroller8"></a>
 
 ## bindController
 

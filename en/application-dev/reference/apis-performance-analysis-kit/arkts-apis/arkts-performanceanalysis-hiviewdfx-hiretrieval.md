@@ -4,8 +4,6 @@ Provide interfaces and functions for HiRetrieval feature.
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used in both the stage model and FA model.
-
 <!--Device-unnamed-declare namespace hiRetrieval--><!--Device-unnamed-declare namespace hiRetrieval-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiRetrieval
@@ -22,13 +20,13 @@ import { hiRetrieval } from '@kit.PerformanceAnalysisKit';
 
 | Name | Description |
 | --- | --- |
-| [getCurrentConfig](arkts-performanceanalysis-hiretrieval-getcurrentconfig-f.md) | Query the current HiRetrieval config. |
-| [getLastParticipationTimestamp](arkts-performanceanalysis-hiretrieval-getlastparticipationtimestamp-f.md) | Query the UNIX timestamp of the last participating time. |
-| [init](arkts-performanceanalysis-hiretrieval-init-f.md) | Init the HiRetrieval functionality. |
-| [isParticipant](arkts-performanceanalysis-hiretrieval-isparticipant-f.md) | Query if the app is participating the HiRetrieval project. |
-| [participate](arkts-performanceanalysis-hiretrieval-participate-f.md) | Participate the HiRetrieval project with given HiRetrievalConfig. |
-| [quit](arkts-performanceanalysis-hiretrieval-quit-f.md) | Quit the HiRetrieval project. This operation clears the current HiRetrieval config. Invoking init function again is required after invoking quit function. |
-| [run](arkts-performanceanalysis-hiretrieval-run-f.md) | Trigger the HiRetrieval functionality, make it start working. |
+| [getCurrentConfig](arkts-performanceanalysis-hiretrieval-getcurrentconfig-f.md#getcurrentconfig) | Query the current HiRetrieval config. |
+| [getLastParticipationTimestamp](arkts-performanceanalysis-hiretrieval-getlastparticipationtimestamp-f.md#getlastparticipationtimestamp) | Query the UNIX timestamp of the last participating time. |
+| [init](arkts-performanceanalysis-hiretrieval-init-f.md#init) | Init the HiRetrieval functionality. |
+| [isParticipant](arkts-performanceanalysis-hiretrieval-isparticipant-f.md#isparticipant) | Query if the app is participating the HiRetrieval project. |
+| [participate](arkts-performanceanalysis-hiretrieval-participate-f.md#participate) | Participate the HiRetrieval project with given HiRetrievalConfig. |
+| [quit](arkts-performanceanalysis-hiretrieval-quit-f.md#quit) | Quit the HiRetrieval project. This operation clears the current HiRetrieval config. Invoking init function again is required after invoking quit function. |
+| [run](arkts-performanceanalysis-hiretrieval-run-f.md#run) | Trigger the HiRetrieval functionality, make it start working. |
 
 ### Interfaces
 

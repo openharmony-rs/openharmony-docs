@@ -26,60 +26,6 @@ declare enum NavigationSystemTransitionType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DEFAULT
-
-```TypeScript
-DEFAULT = 0
-```
-
-默认系统转场动画。
-
-**起始版本：** 14
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-NavigationSystemTransitionType-DEFAULT = 0--><!--Device-NavigationSystemTransitionType-DEFAULT = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## NONE
-
-```TypeScript
-NONE = 1
-```
-
-无系统转场动画。
-
-**起始版本：** 14
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-NavigationSystemTransitionType-NONE = 1--><!--Device-NavigationSystemTransitionType-NONE = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## TITLE
-
-```TypeScript
-TITLE = 2
-```
-
-标题栏系统转场动画。
-
-**起始版本：** 14
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-NavigationSystemTransitionType-TITLE = 2--><!--Device-NavigationSystemTransitionType-TITLE = 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## CONTENT
 
 ```TypeScript
@@ -98,21 +44,21 @@ CONTENT = 3
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## FADE
+## DEFAULT
 
 ```TypeScript
-FADE = 4
+DEFAULT = 0
 ```
 
-渐变类型的系统转场动画。
+默认系统转场动画。
 
-**起始版本：** 15
+**起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
-<!--Device-NavigationSystemTransitionType-FADE = 4--><!--Device-NavigationSystemTransitionType-FADE = 4-End-->
+<!--Device-NavigationSystemTransitionType-DEFAULT = 0--><!--Device-NavigationSystemTransitionType-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -134,13 +80,13 @@ EXPLODE = 5
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SLIDE_RIGHT
+## FADE
 
 ```TypeScript
-SLIDE_RIGHT = 6
+FADE = 4
 ```
 
-右侧平移类型的系统转场动画。
+渐变类型的系统转场动画。
 
 **起始版本：** 15
 
@@ -148,7 +94,25 @@ SLIDE_RIGHT = 6
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
-<!--Device-NavigationSystemTransitionType-SLIDE_RIGHT = 6--><!--Device-NavigationSystemTransitionType-SLIDE_RIGHT = 6-End-->
+<!--Device-NavigationSystemTransitionType-FADE = 4--><!--Device-NavigationSystemTransitionType-FADE = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NONE
+
+```TypeScript
+NONE = 1
+```
+
+无系统转场动画。
+
+**起始版本：** 14
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationSystemTransitionType-NONE = 1--><!--Device-NavigationSystemTransitionType-NONE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -167,5 +131,41 @@ SLIDE_BOTTOM = 7
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-NavigationSystemTransitionType-SLIDE_BOTTOM = 7--><!--Device-NavigationSystemTransitionType-SLIDE_BOTTOM = 7-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SLIDE_RIGHT
+
+```TypeScript
+SLIDE_RIGHT = 6
+```
+
+右侧平移类型的系统转场动画。
+
+**起始版本：** 15
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationSystemTransitionType-SLIDE_RIGHT = 6--><!--Device-NavigationSystemTransitionType-SLIDE_RIGHT = 6-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TITLE
+
+```TypeScript
+TITLE = 2
+```
+
+标题栏系统转场动画。
+
+**起始版本：** 14
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationSystemTransitionType-TITLE = 2--><!--Device-NavigationSystemTransitionType-TITLE = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

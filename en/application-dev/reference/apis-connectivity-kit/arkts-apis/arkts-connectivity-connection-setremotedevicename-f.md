@@ -20,7 +20,7 @@ Modify remote device name.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-connection-function setRemoteDeviceName(deviceId: string, name: string): Promise<void>--><!--Device-connection-function setRemoteDeviceName(deviceId: string, name: string): Promise<void>-End-->
 
@@ -44,7 +44,7 @@ Modify remote device name.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
 

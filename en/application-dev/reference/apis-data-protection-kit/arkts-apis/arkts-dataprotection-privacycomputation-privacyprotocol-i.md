@@ -15,6 +15,7 @@ Defines the privacy protocol configuration, including the data set size and prot
 ## Modules to Import
 
 ```TypeScript
+import { privacyComputation } from '@kit.DataProtectionKit';
 ```
 
 ## dataSetSize

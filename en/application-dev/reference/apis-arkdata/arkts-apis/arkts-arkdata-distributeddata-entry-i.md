@@ -10,7 +10,7 @@ Defines the KV pairs stored in the KV store.
 
 **Deprecated since:** 9
 
-**Substitutes:** Entry
+**Substitutes:** [Entry](arkts-arkdata-distributedkvstore-entry-i.md)
 
 <!--Device-distributedData-interface Entry--><!--Device-distributedData-interface Entry-End-->
 
@@ -35,7 +35,7 @@ Key of the KV pair stored in the KV store.
 
 **Deprecated since:** 9
 
-**Substitutes:** key
+**Substitutes:** [key](arkts-arkdata-distributedkvstore-entry-i.md#key)
 
 <!--Device-Entry-key: string--><!--Device-Entry-key: string-End-->
 
@@ -55,7 +55,7 @@ Value of the KV pair stored in the KV store.
 
 **Deprecated since:** 9
 
-**Substitutes:** value
+**Substitutes:** [value](arkts-arkdata-distributedkvstore-entry-i.md#value)
 
 <!--Device-Entry-value: Value--><!--Device-Entry-value: Value-End-->
 

@@ -12,19 +12,19 @@ export enum CollaborationKeys
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
-## PEER_INFO
+## COLLABORATE_TYPE
 
 ```TypeScript
-PEER_INFO = 'ohos.collaboration.key.peerInfo'
+COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'
 ```
 
-表示对端设备信息的键值。
+表示协作类型的键值。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CollaborationKeys-PEER_INFO = 'ohos.collaboration.key.peerInfo'--><!--Device-CollaborationKeys-PEER_INFO = 'ohos.collaboration.key.peerInfo'-End-->
+<!--Device-CollaborationKeys-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'--><!--Device-CollaborationKeys-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
@@ -44,18 +44,18 @@ CONNECT_OPTIONS = 'ohos.collaboration.key.connectOptions'
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
-## COLLABORATE_TYPE
+## PEER_INFO
 
 ```TypeScript
-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'
+PEER_INFO = 'ohos.collaboration.key.peerInfo'
 ```
 
-表示协作类型的键值。
+表示对端设备信息的键值。
 
 **起始版本：** 18
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-CollaborationKeys-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'--><!--Device-CollaborationKeys-COLLABORATE_TYPE = 'ohos.collaboration.key.abilityCollaborateType'-End-->
+<!--Device-CollaborationKeys-PEER_INFO = 'ohos.collaboration.key.peerInfo'--><!--Device-CollaborationKeys-PEER_INFO = 'ohos.collaboration.key.peerInfo'-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration

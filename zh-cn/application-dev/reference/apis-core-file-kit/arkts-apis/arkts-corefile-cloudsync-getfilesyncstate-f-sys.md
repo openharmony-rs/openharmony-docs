@@ -6,6 +6,8 @@
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="getfilesyncstate1"></a>
+
 ## getFileSyncState
 
 ```TypeScript
@@ -47,6 +49,7 @@ function getFileSyncState(uri: Array<string>): Promise<Array<FileSyncState>>
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid uri. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ cloudSync.getFileSyncState(uris).then((syncStates: Array<cloudSync.FileSyncState
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getfilesyncstate-1"></a>
+
+<a id="getfilesyncstate2"></a>
 
 ## getFileSyncState
 
@@ -101,6 +106,7 @@ function getFileSyncState(uri: Array<string>, callback: AsyncCallback<Array<File
 | 13900002 | No such file or directory. |
 | 14000002 | Invalid uri. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -118,8 +124,10 @@ cloudSync.getFileSyncState(uris, (err: BusinessError, syncStates: Array<cloudSyn
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getfilesyncstate-2"></a>
+
+<a id="getfilesyncstate3"></a>
 
 ## getFileSyncState
 
@@ -163,6 +171,7 @@ function getFileSyncState(uri: string): FileSyncState
 | 13900042 | Unknown error |
 | 14000002 | Invalid uri. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -178,3 +187,5 @@ try {
   console.error("getFileSyncStatefailed with error: " + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

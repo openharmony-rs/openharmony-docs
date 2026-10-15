@@ -49,6 +49,7 @@ Obtains the sound card information. This method uses a Promise to return the que
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,3 +66,5 @@ deviceEnhanceManager.getSoundCardInfo().then((soundCardInfo: audio.SoundCardInfo
   console.error(`Failed to get sound card info. Code: ${err.code}, Message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

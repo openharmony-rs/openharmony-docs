@@ -24,7 +24,7 @@ import { vibrator } from '@kit.SensorServiceKit';
 deviceId: number
 ```
 
-设备ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-4)等接口指定目标设备。
+设备ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration5)等接口指定目标设备。
 
 **类型：** number
 
@@ -88,7 +88,7 @@ isLocalVibrator: boolean
 vibratorId: number
 ```
 
-马达ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration-4)等接口指定目标马达。
+马达ID。可用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)和[stopVibration](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration5)等接口指定目标马达。
 
 **类型：** number
 

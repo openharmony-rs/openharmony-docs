@@ -30,22 +30,6 @@ GET_EXTENSION_ABILITY_INFO_DEFAULT = 0x00000000
 
 **系统接口：** 此接口为系统接口。
 
-## GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
-
-```TypeScript
-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001
-```
-
-用于获取包含permission的extensionAbilityInfo。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION
 
 ```TypeScript
@@ -73,6 +57,22 @@ GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004
 **起始版本：** 9
 
 <!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+**系统接口：** 此接口为系统接口。
+
+## GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
+
+```TypeScript
+GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001
+```
+
+用于获取包含permission的extensionAbilityInfo。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 

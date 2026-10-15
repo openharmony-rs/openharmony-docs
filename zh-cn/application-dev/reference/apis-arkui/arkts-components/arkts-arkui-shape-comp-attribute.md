@@ -4,7 +4,7 @@
 declare class ShapeAttribute extends CommonMethod<ShapeAttribute>
 ```
 
-除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及图形绘制通用属性外，还支持以下属性：
+除支持[通用属性](arkts-arkui-common-comp-commonmethod-c.md)以及[图形绘制通用属性](../../../reference/apis-arkui/arkui-ts/ts-drawing-components-common.md)外，还支持以下属性：
 
 **继承/实现关系：** ShapeAttribute extends CommonMethod&lt;ShapeAttribute&gt;
 
@@ -105,7 +105,7 @@ mesh(value: Array<any>, column: number, row: number)
 > **说明：** 
 > 
 > mesh只对shape传入pixelMap时生效，且效果作用于传入的pixelMap。与[绘制模块](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-graphics-drawing.md)的
-> [drawPixelMapMesh&lt;sup&gt;12+&lt;/sup&gt;](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-canvas-c.md#drawpixelmapmesh)效果一致，建议使用
+> [drawPixelMapMesh<sup>12+</sup>](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-drawing-canvas-c.md#drawpixelmapmesh)效果一致，建议使用
 > drawPixelMapMesh。
 
 **起始版本：** 8
@@ -178,7 +178,7 @@ strokeDashArray(value: Array<any>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | 是 | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br>默认值：[]（空数组）<br>默认单位：vp <br>异常值undefined和null按照默认值处理。<br>**说明：** <br>空数组：实线<br>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a-&gt;间隙长度b-&gt;线段长度c-&gt;间隙长度d-&gt;线段长度a-&gt;... <br>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a-&gt;间隙长度b-&gt;线段长度c-&gt;间隙长度a-&gt;线段长度b-&gt;间隙长度c-&gt;线段长度a-&gt;... |
+| value | Array&lt;any&gt; | 是 | 定义Shape轮廓的虚线模式的数组，数组元素交替表示线段长度和间隙长度。<br>默认值：[]（空数组）<br>默认单位：vp <br>异常值undefined和null按照默认值处理。<br>**说明：** <br>空数组：实线<br>偶数多元素数组：数组元素按顺序循环，如[a, b, c, d]表示线段长度a->间隙长度b->线段长度c->间隙长度d->线段长度a->... <br>奇数多元素数组：重复一次该数组元素，按偶数多元素数组的规则顺序循环，如[a, b, c]等效于[a, b, c, a, b, c]，表示线段长度a->间隙长度b->线段长度c->间隙长度a->线段长度b->间隙长度c->线段长度a->... |
 
 ## strokeDashOffset
 

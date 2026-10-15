@@ -26,7 +26,7 @@ function getAlternateIcons(): Promise<Array<AlternateIconInfo>>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[AlternateIconInfo](arkts-ability-bundlemanager-alternateiconinfo-t.md)&gt;&gt; | Promise对象，返回当前应用的备用图标信息。 |
+| Promise&lt;Array&lt;[AlternateIconInfo](arkts-ability-bundlemanager-alternateiconinfo-t.md)&gt;&gt; | Promise对象，返回当前应用的备用图标信息列表。 |
 
 **错误码：**
 

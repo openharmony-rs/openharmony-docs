@@ -23,93 +23,21 @@ Enumerates the memory levels of the entire device. You can use it in [onMemoryLe
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## MEMORY_LEVEL_MODERATE
+## MEMORY_LEVEL_BACKGROUND_CRITICAL
 
 ```TypeScript
-MEMORY_LEVEL_MODERATE = 0
+MEMORY_LEVEL_BACKGROUND_CRITICAL = 6
 ```
 
-Indicates that the system has a moderate amount of available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0--><!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## MEMORY_LEVEL_LOW
-
-```TypeScript
-MEMORY_LEVEL_LOW = 1
-```
-
-Indicates that the system has low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1--><!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## MEMORY_LEVEL_CRITICAL
-
-```TypeScript
-MEMORY_LEVEL_CRITICAL = 2
-```
-
-Indicates that the system has critically low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2--><!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## MEMORY_LEVEL_UI_HIDDEN
-
-```TypeScript
-MEMORY_LEVEL_UI_HIDDEN = 3
-```
-
-All UI elements of the application are invisible. At this point, some resources should be released. This enum only takes effect for applications that switch from the foreground to the background.
+Indicates that the application has not been used for a long time, that is, it is at the tail of the Least Recently Used (LRU) list, and will be prioritized for cleanup by the system. This enum only takes effect for background applications.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-<!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3--><!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## MEMORY_LEVEL_BACKGROUND_MODERATE
-
-```TypeScript
-MEMORY_LEVEL_BACKGROUND_MODERATE = 4
-```
-
-Indicates that the application has just been used, that is, it is at the head of the Least Recently Used (LRU) list, and will not be cleaned up by the system for the time being. This enum only takes effect for background applications.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
-
-<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4-End-->
+<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -125,26 +53,98 @@ Indicates that the application has not been used for a period of time, that is, 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_LOW = 5--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_LOW = 5-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## MEMORY_LEVEL_BACKGROUND_CRITICAL
+## MEMORY_LEVEL_BACKGROUND_MODERATE
 
 ```TypeScript
-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6
+MEMORY_LEVEL_BACKGROUND_MODERATE = 4
 ```
 
-Indicates that the application has not been used for a long time, that is, it is at the tail of the Least Recently Used (LRU) list, and will be prioritized for cleanup by the system. This enum only takes effect for background applications.
+Indicates that the application has just been used, that is, it is at the head of the Least Recently Used (LRU) list, and will not be cleaned up by the system for the time being. This enum only takes effect for background applications.
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
-<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6-End-->
+<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## MEMORY_LEVEL_CRITICAL
+
+```TypeScript
+MEMORY_LEVEL_CRITICAL = 2
+```
+
+Indicates that the system has critically low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2--><!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## MEMORY_LEVEL_LOW
+
+```TypeScript
+MEMORY_LEVEL_LOW = 1
+```
+
+Indicates that the system has low available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1--><!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## MEMORY_LEVEL_MODERATE
+
+```TypeScript
+MEMORY_LEVEL_MODERATE = 0
+```
+
+Indicates that the system has a moderate amount of available memory. Due to differences in system-wide memory thresholds across devices, the actual performance may vary by product. For details, please refer to the notes below.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0--><!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## MEMORY_LEVEL_UI_HIDDEN
+
+```TypeScript
+MEMORY_LEVEL_UI_HIDDEN = 3
+```
+
+All UI elements of the application are invisible. At this point, some resources should be released. This enum only takes effect for applications that switch from the foreground to the background.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3--><!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

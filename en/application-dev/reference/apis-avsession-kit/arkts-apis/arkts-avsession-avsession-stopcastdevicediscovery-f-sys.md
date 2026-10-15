@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="stopcastdevicediscovery1"></a>
+
 ## stopCastDeviceDiscovery
 
 ```TypeScript
@@ -34,6 +36,7 @@ Stop device discovery.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -42,8 +45,10 @@ avSession.stopCastDeviceDiscovery(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="stopcastdevicediscovery-1"></a>
+
+<a id="stopcastdevicediscovery2"></a>
 
 ## stopCastDeviceDiscovery
 
@@ -73,6 +78,7 @@ Stop device discovery.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -80,3 +86,5 @@ avSession.stopCastDeviceDiscovery().then(() => {
   console.info('Succeeded in stopping cast device discovery.');
 });
 ```
+
+<!--DelEnd-->

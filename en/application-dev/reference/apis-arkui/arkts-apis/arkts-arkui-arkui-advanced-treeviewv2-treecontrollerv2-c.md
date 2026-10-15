@@ -4,7 +4,7 @@
 export declare class TreeControllerV2
 ```
 
-Declare TreeControllerV2
+Controller of the tree view component, used to control the node information of the tree. Bind this object to the tree view component before use. The same controller cannot control multiple tree view components.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { CallbackParamV2, NodeParamV2, TreeControllerV2, TreeListenerV2, TreeLis
 addNode(nodeParam?: NodeParamV2): TreeControllerV2
 ```
 
-Initialize the interface of the tree view. This interface is used to generate ListNodeDataSource data. addNode is only designed for initialization. It can only be invoked during initialization. A maximum of 50 directory levels can be added. For details, see the comment description of NodeParam.
+Adds a child node to the tapped node. After the node is added, you must call [buildDone()](#builddone) to trigger the saving of tree information; otherwise, the added node will not be displayed in the tree view. Chained calls are supported, for example, **addNode().addNode().buildDone()**.
 
 **Since:** 26.0.0
 
@@ -40,13 +40,13 @@ Initialize the interface of the tree view. This interface is used to generate Li
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| nodeParam | [NodeParamV2](arkts-arkui-arkui-advanced-treeviewv2-nodeparamv2-i.md) | No | Configuration information of the newly added node. |
+| nodeParam | [NodeParamV2](arkts-arkui-arkui-advanced-treeviewv2-nodeparamv2-i.md) | No | Node information, used to specify the attributes of the node to be added. If this parameter is not passed, a node titled "New Folder" is added under the currently selected node. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [TreeControllerV2](arkts-arkui-arkui-advanced-treeviewv2-treecontrollerv2-c.md) | ListTreeNode Tree view component proxy class. |
+| [TreeControllerV2](arkts-arkui-arkui-advanced-treeviewv2-treecontrollerv2-c.md) | Controller of the tree view component, used to chain other tree view control methods. |
 
 ## buildDone
 
@@ -54,7 +54,7 @@ Initialize the interface of the tree view. This interface is used to generate Li
 buildDone(): void
 ```
 
-After the initialization is complete by calling the addNode interface, call this interface to complete initialization. This interface must be called when you finish initializing the ListTreeViewV2 by addNode.
+Builds the tree view. After all nodes are added, this method must be called to trigger the saving of tree information. This API uses a two-phase build mode: first add nodes to the memory through **addNode**, and then call this method to save the node information in a unified manner and render it into the tree view. If this method is not called, the added nodes will not be displayed in the tree view.
 
 **Since:** 26.0.0
 
@@ -72,7 +72,7 @@ After the initialization is complete by calling the addNode interface, call this
 modifyNode(): void
 ```
 
-Modify the node name. Register an ON_ITEM_MODIFY callback to obtain the ID, parent node ID, and node name of the modified node.
+Modifies the tapped node.
 
 **Since:** 26.0.0
 
@@ -90,7 +90,7 @@ Modify the node name. Register an ON_ITEM_MODIFY callback to obtain the ID, pare
 refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
 ```
 
-This interface is called when a secondaryTitle needs to be updated
+Locates the parent node based on the passed **parentId**, and updates the subtitle of the parent node (**parentSubTitle**) and the subtitle of the current node (**currentSubtitle**).
 
 **Since:** 26.0.0
 
@@ -106,9 +106,9 @@ This interface is called when a secondaryTitle needs to be updated
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parentId | number | Yes | ID of the parent node.<br>Value range:The value must be greater than or equal to -1. |
-| parentSubTitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | Yes | secondaryTitle of parent node. |
-| currentSubtitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | Yes | secondaryTitle of current node. |
+| parentId | number | Yes | ID of the parent node.<br>Value range: greater than or equal to -1.<br>If a value less than -1 is passed, the node is invalid. |
+| parentSubTitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | Yes | Subtitle of the parent node, used to update the subtitle displayed on the parent node. |
+| currentSubtitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | Yes | Subtitle of the current node, used to update the subtitle displayed on the current node. |
 
 ## removeNode
 
@@ -116,7 +116,7 @@ This interface is called when a secondaryTitle needs to be updated
 removeNode(): void
 ```
 
-Delete a node. Register an ON_ITEM_DELETE callback through the ListTreeListenerV2 mechanism to obtain the IDs of all deleted nodes.
+Deletes the tapped node.
 
 **Since:** 26.0.0
 

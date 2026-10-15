@@ -6,7 +6,7 @@ declare class TextTimerAttribute extends CommonMethod<TextTimerAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** TextTimerAttribute extends CommonMethod<TextTimerAttribute>
+**Inheritance/Implementation:** TextTimerAttribute extends CommonMethod&lt;TextTimerAttribute&gt;
 
 **Since:** 8
 

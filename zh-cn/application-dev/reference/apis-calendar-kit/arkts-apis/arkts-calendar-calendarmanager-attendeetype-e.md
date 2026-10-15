@@ -12,22 +12,6 @@ export enum AttendeeType
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
-## REQUIRED
-
-```TypeScript
-REQUIRED = 1
-```
-
-会议日程主送者。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-AttendeeType-REQUIRED = 1--><!--Device-AttendeeType-REQUIRED = 1-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
 ## OPTIONAL
 
 ```TypeScript
@@ -41,6 +25,22 @@ OPTIONAL = 2
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-AttendeeType-OPTIONAL = 2--><!--Device-AttendeeType-OPTIONAL = 2-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## REQUIRED
+
+```TypeScript
+REQUIRED = 1
+```
+
+会议日程主送者。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-AttendeeType-REQUIRED = 1--><!--Device-AttendeeType-REQUIRED = 1-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 

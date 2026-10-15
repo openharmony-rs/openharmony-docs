@@ -12,22 +12,6 @@ Enumerates the [PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SCREENSHOT
-
-```TypeScript
-SCREENSHOT = 1
-```
-
-Screenshot and screen recording file.
-
-**Since:** 10
-
-<!--Device-PhotoSubtype-SCREENSHOT = 1--><!--Device-PhotoSubtype-SCREENSHOT = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## CINEMATIC_VIDEO
 
 ```TypeScript
@@ -39,6 +23,38 @@ Cinematic video file.
 **Since:** 26.0.1
 
 <!--Device-PhotoSubtype-CINEMATIC_VIDEO = 5--><!--Device-PhotoSubtype-CINEMATIC_VIDEO = 5-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## CINEMATIC_VIDEO_V2
+
+```TypeScript
+CINEMATIC_VIDEO_V2 = 8
+```
+
+Cinematic version 2 video file. Compared to CINEMATIC_VIDEO, it adds more effects such as Hitchcock.
+
+**Since:** 26.0.1
+
+<!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8--><!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## SCREENSHOT
+
+```TypeScript
+SCREENSHOT = 1
+```
+
+Screenshot and screen recording file.
+
+**Since:** 10
+
+<!--Device-PhotoSubtype-SCREENSHOT = 1--><!--Device-PhotoSubtype-SCREENSHOT = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -71,22 +87,6 @@ Video file using the 3D Gaussian Splatting (3DGS) rendering format.
 **Since:** 22
 
 <!--Device-PhotoSubtype-SPATIAL_3DGS = 7--><!--Device-PhotoSubtype-SPATIAL_3DGS = 7-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## CINEMATIC_VIDEO_V2
-
-```TypeScript
-CINEMATIC_VIDEO_V2 = 8
-```
-
-Cinematic version 2 video file. Compared to CINEMATIC_VIDEO, it adds more effects such as Hitchcock.
-
-**Since:** 26.0.1
-
-<!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8--><!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

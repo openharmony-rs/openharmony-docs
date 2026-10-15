@@ -47,8 +47,8 @@ struct Index {
             try {
               let isSupport: boolean = childProcessManager.isNativeChildProcessSupported();
               console.info(`isNativeChildProcessSupported: ${isSupport}`);
-            } catch (err: BusinessError) {
-              console.error(`isNativeChildProcessSupported error, errorCode: ${err.code}, errorMsg: ${err.message}`);
+            } catch (err) {
+              console.error(`isNativeChildProcessSupported error, errorCode: ${(err as BusinessError).code}, errorMsg: ${(err as BusinessError).message}`);
             }
           });
       }

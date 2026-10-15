@@ -5,9 +5,9 @@ declare class SyncedPropertyTwoWay<T> extends SubscribedAbstractProperty<T>
   implements ISinglePropertyChangeSubscriber<T>
 ```
 
-继承自[SubscribedAbstractProperty\&lt;T\&gt;](arkts-arkui-subscribedabstractproperty-c.md)。用于实现父子组件之间的双向状态数据同步。
+继承自[SubscribedAbstractProperty\<T\>](arkts-arkui-subscribedabstractproperty-c.md)。用于实现父子组件之间的双向状态数据同步。
 
-**继承/实现关系：** SyncedPropertyTwoWay extends SubscribedAbstractProperty<T> implements ISinglePropertyChangeSubscriber<T>
+**继承/实现关系：** SyncedPropertyTwoWay extends SubscribedAbstractProperty&lt;T&gt; implements ISinglePropertyChangeSubscriber&lt;T&gt;
 
 **起始版本：** 7
 

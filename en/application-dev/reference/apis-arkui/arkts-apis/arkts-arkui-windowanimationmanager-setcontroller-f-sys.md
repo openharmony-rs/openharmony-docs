@@ -28,6 +28,7 @@ Set the window animation controller.
 | --- | --- | --- | --- |
 | controller | [WindowAnimationController](arkts-arkui-windowanimationmanager-windowanimationcontroller-i-sys.md) | Yes | Window animation controller. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,3 +70,5 @@ let controller: windowAnimationManager.WindowAnimationController = {
 
 windowAnimationManager.setController(controller);
 ```
+
+<!--DelEnd-->

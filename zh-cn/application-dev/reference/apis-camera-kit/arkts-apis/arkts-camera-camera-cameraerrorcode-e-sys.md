@@ -14,22 +14,6 @@ enum CameraErrorCode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-## DEVICE_FREQUENTLY_SWITCHED
-
-```TypeScript
-DEVICE_FREQUENTLY_SWITCHED = 7400111
-```
-
-Camera frequently switched.
-
-**起始版本：** 18
-
-<!--Device-CameraErrorCode-DEVICE_FREQUENTLY_SWITCHED = 7400111--><!--Device-CameraErrorCode-DEVICE_FREQUENTLY_SWITCHED = 7400111-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## CAMERA_LENS_RETRACTED
 
 ```TypeScript
@@ -41,6 +25,22 @@ Camera lens retracted.
 **起始版本：** 18
 
 <!--Device-CameraErrorCode-CAMERA_LENS_RETRACTED = 7400112--><!--Device-CameraErrorCode-CAMERA_LENS_RETRACTED = 7400112-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
+## DEVICE_FREQUENTLY_SWITCHED
+
+```TypeScript
+DEVICE_FREQUENTLY_SWITCHED = 7400111
+```
+
+Camera frequently switched.
+
+**起始版本：** 18
+
+<!--Device-CameraErrorCode-DEVICE_FREQUENTLY_SWITCHED = 7400111--><!--Device-CameraErrorCode-DEVICE_FREQUENTLY_SWITCHED = 7400111-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

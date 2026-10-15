@@ -14,19 +14,19 @@ Authorization status.
 
 **System API:** This is a system API.
 
-## REQUIRE_AUTH
+## AUTHORIZED
 
 ```TypeScript
-REQUIRE_AUTH = 0
+AUTHORIZED = 2
 ```
 
-Requires authorization.
+Authorized.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-<!--Device-AuthStatus-REQUIRE_AUTH = 0--><!--Device-AuthStatus-REQUIRE_AUTH = 0-End-->
+<!--Device-AuthStatus-AUTHORIZED = 2--><!--Device-AuthStatus-AUTHORIZED = 2-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -50,19 +50,37 @@ Forbidden.
 
 **System API:** This is a system API.
 
-## AUTHORIZED
+## REMOTE_RESTRICTED
 
 ```TypeScript
-AUTHORIZED = 2
+REMOTE_RESTRICTED = 4
 ```
 
-Authorized.
+Remote authorization restricted by policy.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-<!--Device-AuthStatus-AUTHORIZED = 2--><!--Device-AuthStatus-AUTHORIZED = 2-End-->
+<!--Device-AuthStatus-REMOTE_RESTRICTED = 4--><!--Device-AuthStatus-REMOTE_RESTRICTED = 4-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+**System API:** This is a system API.
+
+## REQUIRE_AUTH
+
+```TypeScript
+REQUIRE_AUTH = 0
+```
+
+Requires authorization.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-AuthStatus-REQUIRE_AUTH = 0--><!--Device-AuthStatus-REQUIRE_AUTH = 0-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -81,24 +99,6 @@ Restricted by policy, authorization not allowed.
 **Model restriction:** This API can be used in both the stage model and FA model.
 
 <!--Device-AuthStatus-RESTRICTED = 3--><!--Device-AuthStatus-RESTRICTED = 3-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-**System API:** This is a system API.
-
-## REMOTE_RESTRICTED
-
-```TypeScript
-REMOTE_RESTRICTED = 4
-```
-
-Remote authorization restricted by policy.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-<!--Device-AuthStatus-REMOTE_RESTRICTED = 4--><!--Device-AuthStatus-REMOTE_RESTRICTED = 4-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

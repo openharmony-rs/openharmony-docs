@@ -6,6 +6,8 @@
 import { ethernet } from '@kit.NetworkKit';
 ```
 
+<a id="setifaceconfig1"></a>
+
 ## setIfaceConfig
 
 ```TypeScript
@@ -47,6 +49,7 @@ Sets the network interface configuration information. This API uses an asynchron
 | [2201006](../errorcode-net-ethernet.md#2201006-device-not-connected) | Ethernet device not connected. |
 | [2201007](../errorcode-net-ethernet.md#2201007-failed-to-write-the-user-configuration) | Ethernet failed to write user configuration information. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,8 +74,10 @@ ethernet.setIfaceConfig("eth0", config, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setifaceconfig-1"></a>
+
+<a id="setifaceconfig2"></a>
 
 ## setIfaceConfig
 
@@ -120,6 +125,7 @@ Sets the network interface configuration information. This API uses a promise to
 | [2201006](../errorcode-net-ethernet.md#2201006-device-not-connected) | Ethernet device not connected. |
 | [2201007](../errorcode-net-ethernet.md#2201007-failed-to-write-the-user-configuration) | Ethernet failed to write user configuration information. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -143,3 +149,5 @@ setConfigPromise.then(() => {
   console.error("setIfaceConfig promise error = " + JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

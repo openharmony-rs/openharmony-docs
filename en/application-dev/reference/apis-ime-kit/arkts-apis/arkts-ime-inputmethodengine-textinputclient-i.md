@@ -22,6 +22,8 @@ In the following API examples, you must first use [on('inputStart')](arkts-ime-i
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
+<a id="deletebackward1"></a>
+
 ## deleteBackward
 
 ```TypeScript
@@ -66,7 +68,7 @@ textInputClient.deleteBackward(length, (err: BusinessError, result: boolean) => 
 });
 ```
 
-<a id="deletebackward-1"></a>
+<a id="deletebackward2"></a>
 
 ## deleteBackward
 
@@ -115,6 +117,8 @@ textInputClient.deleteBackward(length).then((result: boolean) => {
 });
 ```
 
+<a id="deleteforward1"></a>
+
 ## deleteForward
 
 ```TypeScript
@@ -159,7 +163,7 @@ textInputClient.deleteForward(length, (err: BusinessError, result: boolean) => {
 });
 ```
 
-<a id="deleteforward-1"></a>
+<a id="deleteforward2"></a>
 
 ## deleteForward
 
@@ -208,6 +212,8 @@ textInputClient.deleteForward(length).then((result: boolean) => {
 });
 ```
 
+<a id="getbackward1"></a>
+
 ## getBackward
 
 ```TypeScript
@@ -248,7 +254,7 @@ textInputClient.getBackward(length, (err: BusinessError, text: string) => {
 });
 ```
 
-<a id="getbackward-1"></a>
+<a id="getbackward2"></a>
 
 ## getBackward
 
@@ -293,6 +299,8 @@ textInputClient.getBackward(length).then((text: string) => {
 });
 ```
 
+<a id="geteditorattribute1"></a>
+
 ## getEditorAttribute
 
 ```TypeScript
@@ -305,7 +313,7 @@ Obtains the attribute of the edit box. This API uses an asynchronous callback to
 
 **Deprecated since:** 9
 
-**Substitutes:** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute)(callback: AsyncCallback&lt;EditorAttribute&gt;)
+**Substitutes:** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute1)(callback: AsyncCallback&lt;EditorAttribute&gt;)
 
 <!--Device-TextInputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void--><!--Device-TextInputClient-getEditorAttribute(callback: AsyncCallback<EditorAttribute>): void-End-->
 
@@ -334,7 +342,7 @@ textInputClient.getEditorAttribute((err: BusinessError,
 });
 ```
 
-<a id="geteditorattribute-1"></a>
+<a id="geteditorattribute2"></a>
 
 ## getEditorAttribute
 
@@ -348,7 +356,7 @@ Obtains the attribute of the edit box. This API uses a promise to return the res
 
 **Deprecated since:** 9
 
-**Substitutes:** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute)(callback: AsyncCallback&lt;EditorAttribute&gt;)
+**Substitutes:** [getEditorAttribute](arkts-ime-inputmethodengine-inputclient-i.md#geteditorattribute1)(callback: AsyncCallback&lt;EditorAttribute&gt;)
 
 <!--Device-TextInputClient-getEditorAttribute(): Promise<EditorAttribute>--><!--Device-TextInputClient-getEditorAttribute(): Promise<EditorAttribute>-End-->
 
@@ -372,6 +380,8 @@ textInputClient.getEditorAttribute().then((editorAttribute: inputMethodEngine.Ed
   console.error(`Failed to getEditorAttribute. Code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="getforward1"></a>
 
 ## getForward
 
@@ -413,7 +423,7 @@ textInputClient.getForward(length, (err: BusinessError, text: string) => {
 });
 ```
 
-<a id="getforward-1"></a>
+<a id="getforward2"></a>
 
 ## getForward
 
@@ -458,6 +468,8 @@ textInputClient.getForward(length).then((text: string) => {
 });
 ```
 
+<a id="inserttext1"></a>
+
 ## insertText
 
 ```TypeScript
@@ -470,7 +482,7 @@ Inserts text. This API uses an asynchronous callback to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext)(text: string, callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext1)(text: string, callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-TextInputClient-insertText(text: string, callback: AsyncCallback<boolean>): void--><!--Device-TextInputClient-insertText(text: string, callback: AsyncCallback<boolean>): void-End-->
 
@@ -501,7 +513,7 @@ textInputClient.insertText('test', (err: BusinessError, result: boolean) => {
 });
 ```
 
-<a id="inserttext-1"></a>
+<a id="inserttext2"></a>
 
 ## insertText
 
@@ -515,7 +527,7 @@ Inserts text. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext-1)(text: string): Promise&lt;boolean&gt;
+**Substitutes:** [insertText](arkts-ime-inputmethodengine-inputclient-i.md#inserttext2)(text: string): Promise&lt;boolean&gt;
 
 <!--Device-TextInputClient-insertText(text: string): Promise<boolean>--><!--Device-TextInputClient-insertText(text: string): Promise<boolean>-End-->
 
@@ -548,6 +560,8 @@ textInputClient.insertText('test').then((result: boolean) => {
   console.error(`Failed to insertText. Code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<a id="sendkeyfunction1"></a>
 
 ## sendKeyFunction
 
@@ -593,7 +607,7 @@ textInputClient.sendKeyFunction(action, (err: BusinessError, result: boolean) =>
 });
 ```
 
-<a id="sendkeyfunction-1"></a>
+<a id="sendkeyfunction2"></a>
 
 ## sendKeyFunction
 

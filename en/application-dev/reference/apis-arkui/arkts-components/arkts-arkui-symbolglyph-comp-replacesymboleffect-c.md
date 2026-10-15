@@ -14,6 +14,8 @@ Inherits from **SymbolEffect**.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -40,7 +42,7 @@ A constructor used to create a **ReplaceSymbolEffect** instance, which comes wit
 | --- | --- | --- | --- |
 | scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | No | Animation scope. For details about the specific enumeration values and descriptions, see EffectScope Enumeration Description.<br>Default value: EffectScope.LAYER |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

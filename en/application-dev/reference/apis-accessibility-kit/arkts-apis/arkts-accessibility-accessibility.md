@@ -10,7 +10,7 @@ This module provides accessibility features, including obtaining the accessibili
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
 ## Summary
@@ -20,6 +20,13 @@ import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, Injec
 | Name | Description |
 | --- | --- |
 | [accessibility](arkts-accessibility-accessibility-n.md) | This module provides accessibility features, including obtaining the accessibility application list, obtaining the accessibility application enabling state, obtaining the captions configuration, sending accessibility events, and listening for accessibility application state changes. |
+
+### Interfaces
+
+| Name | Description |
+| --- | --- |
+| [UIAccessibilityElement](arkts-accessibility-accessibility-uiaccessibilityelement-i.md) | Accessible node element. |
+| [UIRect](arkts-accessibility-accessibility-uirect-i.md) | Defines a rectangle. |
 
 <!--Del-->
 ### Enums(System API)

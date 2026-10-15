@@ -28,7 +28,7 @@ destroy(): void
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequest-destroy(): void--><!--Device-HttpRequest-destroy(): void-End-->
 
@@ -290,7 +290,7 @@ off(type: "headerReceive", callback?: AsyncCallback<Object>): void
 
 **废弃版本：** 8
 
-**替代接口：** [off_headersReceive](#offheadersreceive)
+**替代接口：** off_headersReceive
 
 <!--Device-HttpRequest-off(type: "headerReceive", callback?: AsyncCallback<Object>): void--><!--Device-HttpRequest-off(type: "headerReceive", callback?: AsyncCallback<Object>): void-End-->
 
@@ -499,7 +499,7 @@ on(type: "headerReceive", callback: AsyncCallback<Object>): void
 
 **废弃版本：** 8
 
-**替代接口：** [on_headersReceive](#onheadersreceive)
+**替代接口：** on_headersReceive
 
 <!--Device-HttpRequest-on(type: "headerReceive", callback: AsyncCallback<Object>): void--><!--Device-HttpRequest-on(type: "headerReceive", callback: AsyncCallback<Object>): void-End-->
 
@@ -558,6 +558,8 @@ httpRequest.once("headersReceive", (header: Object) => {
 });
 ```
 
+<a id="request1"></a>
+
 ## request
 
 ```TypeScript
@@ -580,7 +582,7 @@ request(url: string, callback: AsyncCallback<HttpResponse>): void
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequest-request(url: string, callback: AsyncCallback<HttpResponse>): void--><!--Device-HttpRequest-request(url: string, callback: AsyncCallback<HttpResponse>): void-End-->
 
@@ -653,7 +655,7 @@ httpRequest.request("EXAMPLE_URL", (err: Error, data: http.HttpResponse) => {
 });
 ```
 
-<a id="request-1"></a>
+<a id="request2"></a>
 
 ## request
 
@@ -677,7 +679,7 @@ request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpRe
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequest-request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): void--><!--Device-HttpRequest-request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): void-End-->
 
@@ -774,7 +776,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 });
 ```
 
-<a id="request-2"></a>
+<a id="request3"></a>
 
 ## request
 
@@ -798,7 +800,7 @@ request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
 
 **需要权限：** ohos.permission.INTERNET
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpRequest-request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>--><!--Device-HttpRequest-request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>-End-->
 
@@ -889,6 +891,8 @@ promise.then((data:http.HttpResponse) => {
 });
 ```
 
+<a id="requestinstream1"></a>
+
 ## requestInStream
 
 ```TypeScript
@@ -969,7 +973,7 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) =>
 })
 ```
 
-<a id="requestinstream-1"></a>
+<a id="requestinstream2"></a>
 
 ## requestInStream
 
@@ -1074,7 +1078,7 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , 
 })
 ```
 
-<a id="requestinstream-2"></a>
+<a id="requestinstream3"></a>
 
 ## requestInStream
 

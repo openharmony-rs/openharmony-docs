@@ -12,7 +12,7 @@ class Matrix
 
 矩阵中的元素从左到右，从上到下分别表示水平缩放因子、水平倾斜系数、水平位移系数、垂直倾斜系数、垂直缩放因子、垂直位移系数、x轴透视系数、y轴透视系数、透视缩放因子。
 
-设(x&lt;sub&gt;1&lt;/sub&gt;, y&lt;sub&gt;1&lt;/sub&gt;)为源坐标点，(x&lt;sub&gt;2&lt;/sub&gt;, y&lt;sub&gt;2&lt;/sub&gt;)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：
+设(x<sub>1</sub>, y<sub>1</sub>)为源坐标点，(x<sub>2</sub>, y<sub>2</sub>)为源坐标点通过矩阵变换后的坐标点，则两个坐标点的关系如下：
 
 ![matrix-xy](../../../reference/apis-arkgraphics2d/figures/matrix-xy.PNG)
 
@@ -36,6 +36,8 @@ class Matrix
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -58,7 +60,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 let matrix = new drawing.Matrix();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -112,7 +114,7 @@ getAll(): Array<number>
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 console.info("matrix "+ matrix.getAll());
@@ -153,7 +155,7 @@ getValue(index: number): number
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 for (let i = 0; i < 9; i++) {
@@ -356,7 +358,7 @@ mapPoints(src: Array<common2D.Point>): Array<common2D.Point>
 **示例**
 
 ```TypeScript
-import { drawing, common2D } from "@kit.ArkGraphics2D";
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 let src: Array<common2D.Point> = [];
 src.push({x: 15, y: 20});
@@ -397,7 +399,7 @@ mapRadius(radius: number): number
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.setMatrix([2, 1, 3, 1, 2, 1, 3, 1, 2]);
@@ -443,7 +445,7 @@ mapRect(dst: common2D.Rect, src: common2D.Rect): boolean
 **示例**
 
 ```TypeScript
-import { drawing, common2D } from "@kit.ArkGraphics2D";
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 let dst: common2D.Rect = { left: 100, top: 20, right: 130, bottom: 60 };
 let src: common2D.Rect = { left: 100, top: 80, right: 130, bottom: 120 };
@@ -523,7 +525,7 @@ postRotate(degree: number, px: number, py: number): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -565,7 +567,7 @@ postScale(sx: number, sy: number, px: number, py: number): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -602,7 +604,7 @@ postSkew(kx: number, ky: number, px: number, py: number): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.postSkew(2.0, 1.0, 2.0, 1.0);
@@ -638,7 +640,7 @@ postTranslate(dx: number, dy: number): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -716,7 +718,7 @@ preRotate(degree: number, px: number, py: number): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let degree: number = 2;
@@ -758,7 +760,7 @@ preScale(sx: number, sy: number, px: number, py: number): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let sx: number = 2;
@@ -795,7 +797,7 @@ preSkew(kx: number, ky: number, px: number, py: number): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.preSkew(2.0, 1.0, 2.0, 1.0);
@@ -831,7 +833,7 @@ preTranslate(dx: number, dy: number): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 let dx: number = 3;
@@ -889,7 +891,7 @@ reset(): void
 **示例**
 
 ```TypeScript
-import { drawing } from "@kit.ArkGraphics2D";
+import { drawing } from '@kit.ArkGraphics2D';
 
 let matrix = new drawing.Matrix();
 matrix.postScale(2, 3, 4, 5);
@@ -930,6 +932,8 @@ matrix2.setMatrix([-2, 1, 3, 1, 0, -1, 3, -1, 2]);
 matrix1.setConcat(matrix2, matrix1);
 ```
 
+<a id="setmatrix1"></a>
+
 ## setMatrix
 
 ```TypeScript
@@ -966,7 +970,7 @@ let value : Array<number> = [2, 2, 2, 2, 2, 2, 2, 2, 2];
 matrix.setMatrix(value);
 ```
 
-<a id="setmatrix-1"></a>
+<a id="setmatrix2"></a>
 
 ## setMatrix
 
@@ -1036,7 +1040,7 @@ setPolyToPoly(src: Array<common2D.Point>, dst: Array<common2D.Point>, count: num
 **示例**
 
 ```TypeScript
-import { drawing, common2D } from "@kit.ArkGraphics2D";
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 let srcPoints: Array<common2D.Point> = [ {x: 10, y: 20}, {x: 200, y: 150} ];
 let dstPoints: Array<common2D.Point> = [{ x:0, y: 10 }, { x:300, y: 600 }];
@@ -1083,7 +1087,7 @@ setRectToRect(src: common2D.Rect, dst: common2D.Rect, scaleToFit: ScaleToFit): b
 **示例**
 
 ```TypeScript
-import { drawing, common2D } from "@kit.ArkGraphics2D";
+import { drawing, common2D } from '@kit.ArkGraphics2D';
 
 let src: common2D.Rect = { left: 100, top: 100, right: 300, bottom: 300 };
 let dst: common2D.Rect = { left: 200, top: 200, right: 600, bottom: 600 };

@@ -32,7 +32,7 @@ administrativeArea?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DistrictInfo-administrativeArea?: string--><!--Device-DistrictInfo-administrativeArea?: string-End-->
 
@@ -52,7 +52,7 @@ countryCode?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DistrictInfo-countryCode?: string--><!--Device-DistrictInfo-countryCode?: string-End-->
 
@@ -72,7 +72,7 @@ countryName?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DistrictInfo-countryName?: string--><!--Device-DistrictInfo-countryName?: string-End-->
 
@@ -92,7 +92,7 @@ locale?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DistrictInfo-locale?: string--><!--Device-DistrictInfo-locale?: string-End-->
 
@@ -112,7 +112,7 @@ locality?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DistrictInfo-locality?: string--><!--Device-DistrictInfo-locality?: string-End-->
 
@@ -132,7 +132,7 @@ subAdministrativeArea?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DistrictInfo-subAdministrativeArea?: string--><!--Device-DistrictInfo-subAdministrativeArea?: string-End-->
 
@@ -152,7 +152,7 @@ subLocality?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-DistrictInfo-subLocality?: string--><!--Device-DistrictInfo-subLocality?: string-End-->
 

@@ -6,6 +6,8 @@
 import { wifiManagerExt } from '@kit.ConnectivityKit';
 ```
 
+<a id="getpowermode1"></a>
+
 ## getPowerMode
 
 ```TypeScript
@@ -55,7 +57,7 @@ async function getWifiPowerMode() {
 ```
 
 
-<a id="getpowermode-1"></a>
+<a id="getpowermode2"></a>
 
 ## getPowerMode
 
@@ -94,7 +96,7 @@ import { wifiManagerExt } from '@kit.ConnectivityKit';
 
   wifiManagerExt.getPowerMode((err, data:wifiManagerExt.PowerMode) => {
       if (err) {
-          console.error("Failed to get linked information");
+          console.error("getPowerMode failed");
           return;
       }
       console.info("get power mode info: " + JSON.stringify(data));

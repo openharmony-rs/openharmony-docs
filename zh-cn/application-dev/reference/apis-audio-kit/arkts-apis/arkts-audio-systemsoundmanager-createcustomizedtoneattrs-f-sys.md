@@ -34,8 +34,11 @@ function createCustomizedToneAttrs(): ToneAttrs
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let toneAttrs: systemSoundManager.ToneAttrs = systemSoundManager.createCustomizedToneAttrs();
 ```
+
+<!--DelEnd-->

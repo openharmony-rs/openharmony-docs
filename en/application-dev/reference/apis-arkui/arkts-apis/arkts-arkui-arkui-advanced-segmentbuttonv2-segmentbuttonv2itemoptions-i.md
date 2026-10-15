@@ -31,7 +31,7 @@ import { SegmentButtonV2ItemOptions, OnSelectedIndexChange, OnSelectedIndexesCha
 accessibilityDescription?: ResourceStr
 ```
 
-[Accessibility description](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription) of the segmented button item.
+[Accessibility description](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription1) of the segmented button item.
 
 Default value: **""**
 
@@ -79,7 +79,7 @@ If the value is **undefined**, the default value is used.
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text of the segmented button item. For details, see [accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext).
+Accessibility text of the segmented button item. For details, see [accessibilityText](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1).
 
 Default value: **""**
 

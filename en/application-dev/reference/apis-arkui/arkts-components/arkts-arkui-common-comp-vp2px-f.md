@@ -12,7 +12,7 @@ Converts a value in vp units to a value in px. By default, the virtual pixel rat
 
 **Deprecated since:** 18
 
-**Substitutes:** vp2px
+**Substitutes:** [vp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#vp2px)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

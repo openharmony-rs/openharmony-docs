@@ -12,6 +12,22 @@ declare enum MappingMode
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO
 
+## PRIVATE
+
+```TypeScript
+PRIVATE = 2
+```
+
+私有映射模式。是一种写时复制的映射机制，对映射区的修改仅对当前进程可见，不会影响原始文件。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-MappingMode-PRIVATE = 2--><!--Device-MappingMode-PRIVATE = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 ## READ_ONLY
 
 ```TypeScript
@@ -41,21 +57,5 @@ READ_WRITE = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-MappingMode-READ_WRITE = 1--><!--Device-MappingMode-READ_WRITE = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.File.FileIO
-
-## PRIVATE
-
-```TypeScript
-PRIVATE = 2
-```
-
-私有映射模式。是一种写时复制的映射机制，对映射区的修改仅对当前进程可见，不会影响原始文件。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-MappingMode-PRIVATE = 2--><!--Device-MappingMode-PRIVATE = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.File.FileIO

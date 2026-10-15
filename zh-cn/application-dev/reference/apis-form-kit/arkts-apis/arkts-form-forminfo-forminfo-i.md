@@ -30,7 +30,7 @@ abilityName: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-abilityName: string--><!--Device-FormInfo-abilityName: string-End-->
 
@@ -48,7 +48,7 @@ bundleName: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-bundleName: string--><!--Device-FormInfo-bundleName: string-End-->
 
@@ -66,7 +66,7 @@ customizeData: Record<string, string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-customizeData: Record<string, string>--><!--Device-FormInfo-customizeData: Record<string, string>-End-->
 
@@ -86,7 +86,7 @@ defaultDimension: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-defaultDimension: int--><!--Device-FormInfo-defaultDimension: int-End-->
 
@@ -104,7 +104,7 @@ description: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-description: string--><!--Device-FormInfo-description: string-End-->
 
@@ -124,7 +124,7 @@ descriptionId: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-descriptionId: int--><!--Device-FormInfo-descriptionId: int-End-->
 
@@ -142,7 +142,7 @@ displayName: string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-displayName: string--><!--Device-FormInfo-displayName: string-End-->
 
@@ -162,7 +162,7 @@ displayNameId: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-displayNameId: int--><!--Device-FormInfo-displayNameId: int-End-->
 
@@ -180,7 +180,7 @@ formConfigAbility: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-formConfigAbility: string--><!--Device-FormInfo-formConfigAbility: string-End-->
 
@@ -202,7 +202,7 @@ formVisibleNotify: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-formVisibleNotify: boolean--><!--Device-FormInfo-formVisibleNotify: boolean-End-->
 
@@ -224,7 +224,7 @@ isDefault: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-isDefault: boolean--><!--Device-FormInfo-isDefault: boolean-End-->
 
@@ -248,7 +248,7 @@ isDynamic: boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-isDynamic: boolean--><!--Device-FormInfo-isDynamic: boolean-End-->
 
@@ -266,7 +266,7 @@ JS卡片的组件名，仅当卡片类型为JS时有效。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-jsComponentName: string--><!--Device-FormInfo-jsComponentName: string-End-->
 
@@ -284,7 +284,7 @@ moduleName: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-moduleName: string--><!--Device-FormInfo-moduleName: string-End-->
 
@@ -302,7 +302,7 @@ name: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-name: string--><!--Device-FormInfo-name: string-End-->
 
@@ -320,7 +320,7 @@ scheduledUpdateTime: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-scheduledUpdateTime: string--><!--Device-FormInfo-scheduledUpdateTime: string-End-->
 
@@ -340,7 +340,7 @@ supportDimensions: Array<number>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-supportDimensions: Array<int>--><!--Device-FormInfo-supportDimensions: Array<int>-End-->
 
@@ -352,7 +352,7 @@ supportDimensions: Array<number>
 supportedShapes: Array<number>
 ```
 
-卡片支持的形状。具体可选形状参考[FormShape&lt;sup&gt;12+&lt;/sup&gt;](arkts-form-forminfo-formshape-e.md)
+卡片支持的形状。具体可选形状参考[FormShape<sup>12+</sup>](arkts-form-forminfo-formshape-e.md)
 
 **说明：** 1代表方形，2代表圆形。
 
@@ -360,7 +360,7 @@ supportedShapes: Array<number>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-supportedShapes: Array<int>--><!--Device-FormInfo-supportedShapes: Array<int>-End-->
 
@@ -386,7 +386,7 @@ ArkTS卡片由用户配置决定是否支持，JS卡片均不支持。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-transparencyEnabled: boolean--><!--Device-FormInfo-transparencyEnabled: boolean-End-->
 
@@ -406,7 +406,7 @@ type: FormType
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-type: FormType--><!--Device-FormInfo-type: FormType-End-->
 
@@ -426,7 +426,7 @@ updateDuration: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-updateDuration: int--><!--Device-FormInfo-updateDuration: int-End-->
 
@@ -448,7 +448,7 @@ updateEnabled: boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormInfo-updateEnabled: boolean--><!--Device-FormInfo-updateEnabled: boolean-End-->
 

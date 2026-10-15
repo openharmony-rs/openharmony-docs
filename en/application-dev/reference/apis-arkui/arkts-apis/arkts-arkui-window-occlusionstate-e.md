@@ -12,6 +12,20 @@ Enumerates the window visibility states.
 
 **System capability:** SystemCapability.Window.SessionManager
 
+## FULL_OCCLUSION
+
+```TypeScript
+FULL_OCCLUSION = 2
+```
+
+The window is completely invisible, either fully obscured by other non-transparent windows, minimized, or hidden.
+
+**Since:** 22
+
+<!--Device-OcclusionState-FULL_OCCLUSION = 2--><!--Device-OcclusionState-FULL_OCCLUSION = 2-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
 ## NO_OCCLUSION
 
 ```TypeScript
@@ -37,19 +51,5 @@ The window is partially visible, with some parts obscured by other non-transpare
 **Since:** 22
 
 <!--Device-OcclusionState-PARTIAL_OCCLUSION = 1--><!--Device-OcclusionState-PARTIAL_OCCLUSION = 1-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
-## FULL_OCCLUSION
-
-```TypeScript
-FULL_OCCLUSION = 2
-```
-
-The window is completely invisible, either fully obscured by other non-transparent windows, minimized, or hidden.
-
-**Since:** 22
-
-<!--Device-OcclusionState-FULL_OCCLUSION = 2--><!--Device-OcclusionState-FULL_OCCLUSION = 2-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

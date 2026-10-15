@@ -82,8 +82,8 @@ fetch.fetch({
     console.info('fetch success');
     console.info(JSON.stringify(response));
   },
-  fail: () => {
-    console.error('fetch failed');
+  fail: (data: Object, code) => {
+    console.error('fetch failed, data: ' + JSON.stringify(data) + ', code: ' + code);
   }
 });
 ```
@@ -143,9 +143,9 @@ export default {
                 console.info('fetch success');
                 console.info(JSON.stringify(response));
             },
-            fail: function() {
+            fail: function(data, code) {
                 that.fontColor = '#FF0000';
-                that.result = 'FAILED';
+                that.result = 'FAILED code ' + code;
                 console.error('fetch failed');
             }
         });

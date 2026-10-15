@@ -28,7 +28,7 @@ Column name in the data table.
 
 Currently, only the following key fields are supported: **URI**, **PHOTO_TYPE**, **DISPLAY_NAME**, **SIZE**, **DURATION**, **WIDTH**, **HEIGHT**, **ORIENTATION**, **FAVORITE**, **TITLE**, **POSITION**, **PHOTO_SUBTYPE**, **DYNAMIC_RANGE_TYPE**, **COVER_POSITION**, **BURST_KEY**, **LCD_SIZE**, **THM_SIZE**, **DETAIL_TIME**, **MEDIA_SUFFIX**, **OWNER_ALBUM_ID**, **ASPECT_RATIO** and **DATE_TAKEN_MS**.
 
-When [select](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select) is used to set this parameter, an invalid field results in error code 401. When [@ohos.file.PhotoPickerComponent (PhotoPickerComponent)](arkts-medialibrary-file-photopickercomponent-photopickercomponent-s.md) is used to set this parameter, an invalid field does not trigger the **onPickerControllerReady** callback.
+When [select](arkts-medialibrary-photoaccesshelper-photoviewpicker-c.md#select1) is used to set this parameter, an invalid field results in error code 401. When [@ohos.file.PhotoPickerComponent (PhotoPickerComponent)](arkts-medialibrary-file-photopickercomponent-photopickercomponent-s.md) is used to set this parameter, an invalid field does not trigger the **onPickerControllerReady** callback.
 
 This field is not involved in non-conditional predicates such as **and**, **or**, **beginWrap**, and **endWrap**.
 
@@ -38,7 +38,7 @@ This field is not involved in non-conditional predicates such as **and**, **or**
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-OperationItem-field?: PhotoKeys--><!--Device-OperationItem-field?: PhotoKeys-End-->
 
@@ -58,7 +58,7 @@ Predicates.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-OperationItem-operationType: OperationType--><!--Device-OperationItem-operationType: OperationType-End-->
 
@@ -82,7 +82,7 @@ The maximum length is 10; if exceeded, only the first 10 values are considered.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-OperationItem-value?: Array<OperationValueType>--><!--Device-OperationItem-value?: Array<OperationValueType>-End-->
 

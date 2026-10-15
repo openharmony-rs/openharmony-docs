@@ -113,10 +113,10 @@ struct Index {
                   console.info(`startArkChildProcess success, pid: ${pid}`);
                 })
                 .catch((err: BusinessError) => {
-                  console.error(`startArkChildProcess business error, errorCode: ${err.code}, errorMsg:${err.message}`);
+                  console.error(`startArkChildProcess business error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
                 })
-            } catch (err: BusinessError) {
-              console.error(`startArkChildProcess error, errorCode: ${err.code}, errorMsg:${err.message}`);
+            } catch (err) {
+              console.error(`startArkChildProcess error, errorCode: ${(err as BusinessError).code}, errorMsg:${(err as BusinessError).message}`);
             }
           });
       }

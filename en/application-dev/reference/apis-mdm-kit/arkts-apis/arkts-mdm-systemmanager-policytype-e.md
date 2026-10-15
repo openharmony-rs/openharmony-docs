@@ -28,6 +28,22 @@ Default update policy, which periodically notifies the user of the update and st
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## POSTPONE
+
+```TypeScript
+POSTPONE = 4
+```
+
+Postpone updates. After the time specified by **delayUpdateTime** is over, the default update policy is used.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PolicyType-POSTPONE = 4--><!--Device-PolicyType-POSTPONE = 4-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## PROHIBIT
 
 ```TypeScript
@@ -73,21 +89,5 @@ Update at the specified time window. In this case, **installStartTime** and **in
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PolicyType-WINDOWS = 3--><!--Device-PolicyType-WINDOWS = 3-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## POSTPONE
-
-```TypeScript
-POSTPONE = 4
-```
-
-Postpone updates. After the time specified by **delayUpdateTime** is over, the default update policy is used.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PolicyType-POSTPONE = 4--><!--Device-PolicyType-POSTPONE = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

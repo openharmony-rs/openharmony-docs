@@ -12,6 +12,22 @@ Defines the file selector mode, which controls how the file selector is opened a
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## FileOpenFolderMode
+
+```TypeScript
+FileOpenFolderMode = 2
+```
+
+Open and upload a folder.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FileSelectorMode-FileOpenFolderMode = 2--><!--Device-FileSelectorMode-FileOpenFolderMode = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## FileOpenMode
 
 ```TypeScript
@@ -41,22 +57,6 @@ Open and upload multiple files.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FileSelectorMode-FileOpenMultipleMode = 1--><!--Device-FileSelectorMode-FileOpenMultipleMode = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## FileOpenFolderMode
-
-```TypeScript
-FileOpenFolderMode = 2
-```
-
-Open and upload a folder.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-FileSelectorMode-FileOpenFolderMode = 2--><!--Device-FileSelectorMode-FileOpenFolderMode = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

@@ -6,8 +6,6 @@ enum SplitRatioPreference
 
 描述分屏窗口分屏比例
 
-@enum { number }
-
 **起始版本：** 26.0.0
 
 <!--Device-window-enum SplitRatioPreference--><!--Device-window-enum SplitRatioPreference-End-->

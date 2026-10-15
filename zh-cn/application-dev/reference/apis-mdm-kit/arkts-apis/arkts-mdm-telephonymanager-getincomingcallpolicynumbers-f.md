@@ -6,6 +6,8 @@
 import { telephonyManager } from '@kit.MDMKit';
 ```
 
+<a id="getincomingcallpolicynumbers1"></a>
+
 ## getIncomingCallPolicyNumbers
 
 ```TypeScript
@@ -50,8 +52,7 @@ function getIncomingCallPolicyNumbers(admin: Want, policy: adminManager.Policy):
 
 ```TypeScript
 import { Want } from '@kit.AbilityKit';
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 let wantTemp: Want = {
   // 需根据实际情况进行替换
@@ -70,7 +71,7 @@ try {
 ```
 
 
-<a id="getincomingcallpolicynumbers-1"></a>
+<a id="getincomingcallpolicynumbers2"></a>
 
 ## getIncomingCallPolicyNumbers
 
@@ -115,8 +116,7 @@ function getIncomingCallPolicyNumbers(admin: Want | null, policy: adminManager.P
 **示例**
 
 ```TypeScript
-import { telephonyManager } from '@kit.MDMKit';
-import { adminManager } from '@kit.MDMKit';
+import { adminManager, telephonyManager } from '@kit.MDMKit';
 
 try {
   // 设置策略类型为禁用名单

@@ -5,13 +5,15 @@
 ```TypeScript
 ```
 
+<a id="getwant1"></a>
+
 ## getWant
 
 ```TypeScript
 function getWant(agent: WantAgent, callback: AsyncCallback<Want>): void
 ```
 
-Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](arkts-ability-wantagent-depr-t.md).
+Obtains the Want in a WantAgent object. This API uses an asynchronous callback to return the result.
 
 **Since:** 7
 
@@ -29,11 +31,11 @@ Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | Indicates the [WantAgent](arkts-ability-wantagent-depr-t.md) whose UID is to be obtained. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | Yes | Obtain the callback method for Want in WantAgent. |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | WantAgent object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | Yes | Callback used to return the Want. |
 
 
-<a id="getwant-1"></a>
+<a id="getwant2"></a>
 
 ## getWant
 
@@ -41,7 +43,7 @@ Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](a
 function getWant(agent: WantAgent): Promise<Want>
 ```
 
-Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](arkts-ability-wantagent-depr-t.md).
+Obtains the Want in a WantAgent object. This API uses a promise to return the result.
 
 **Since:** 7
 
@@ -59,10 +61,10 @@ Obtains the [Want](arkts-ability-app-ability-want-want-c.md) of an [WantAgent](a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | Indicates the [WantAgent](arkts-ability-wantagent-depr-t.md) whose UID is to be obtained. |
+| agent | [WantAgent](arkts-ability-wantagent-depr-t.md) | Yes | WantAgent object. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | Returns the [Want](arkts-ability-app-ability-want-want-c.md) of the [WantAgent](arkts-ability-wantagent-depr-t.md). |
+| Promise&lt;[Want](arkts-ability-app-ability-want-want-c.md)&gt; | Promise used to return the Want. |

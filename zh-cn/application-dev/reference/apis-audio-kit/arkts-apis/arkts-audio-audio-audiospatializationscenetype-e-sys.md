@@ -14,6 +14,22 @@ enum AudioSpatializationSceneType
 
 **系统接口：** 此接口为系统接口。
 
+## AUDIOBOOK
+
+```TypeScript
+AUDIOBOOK = 3
+```
+
+空间音频有声读物渲染场景。
+
+**起始版本：** 12
+
+<!--Device-AudioSpatializationSceneType-AUDIOBOOK = 3--><!--Device-AudioSpatializationSceneType-AUDIOBOOK = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
+
+**系统接口：** 此接口为系统接口。
+
 ## DEFAULT
 
 ```TypeScript
@@ -25,22 +41,6 @@ DEFAULT = 0
 **起始版本：** 12
 
 <!--Device-AudioSpatializationSceneType-DEFAULT = 0--><!--Device-AudioSpatializationSceneType-DEFAULT = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Spatialization
-
-**系统接口：** 此接口为系统接口。
-
-## MUSIC
-
-```TypeScript
-MUSIC = 1
-```
-
-空间音频音乐渲染场景。
-
-**起始版本：** 12
-
-<!--Device-AudioSpatializationSceneType-MUSIC = 1--><!--Device-AudioSpatializationSceneType-MUSIC = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 
@@ -62,17 +62,17 @@ MOVIE = 2
 
 **系统接口：** 此接口为系统接口。
 
-## AUDIOBOOK
+## MUSIC
 
 ```TypeScript
-AUDIOBOOK = 3
+MUSIC = 1
 ```
 
-空间音频有声读物渲染场景。
+空间音频音乐渲染场景。
 
 **起始版本：** 12
 
-<!--Device-AudioSpatializationSceneType-AUDIOBOOK = 3--><!--Device-AudioSpatializationSceneType-AUDIOBOOK = 3-End-->
+<!--Device-AudioSpatializationSceneType-MUSIC = 1--><!--Device-AudioSpatializationSceneType-MUSIC = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Spatialization
 

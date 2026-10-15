@@ -12,20 +12,6 @@ enum AudioPrivacyType
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
-## PRIVACY_TYPE_PUBLIC
-
-```TypeScript
-PRIVACY_TYPE_PUBLIC = 0
-```
-
-表示音频流可以被其他应用录制或屏幕投射，不包含隐私类型的流。
-
-**起始版本：** 10
-
-<!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0--><!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
-
 ## PRIVACY_TYPE_PRIVATE
 
 ```TypeScript
@@ -37,6 +23,20 @@ PRIVACY_TYPE_PRIVATE = 1
 **起始版本：** 10
 
 <!--Device-AudioPrivacyType-PRIVACY_TYPE_PRIVATE = 1--><!--Device-AudioPrivacyType-PRIVACY_TYPE_PRIVATE = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+## PRIVACY_TYPE_PUBLIC
+
+```TypeScript
+PRIVACY_TYPE_PUBLIC = 0
+```
+
+表示音频流可以被其他应用录制或屏幕投射，不包含隐私类型的流。
+
+**起始版本：** 10
+
+<!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0--><!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 

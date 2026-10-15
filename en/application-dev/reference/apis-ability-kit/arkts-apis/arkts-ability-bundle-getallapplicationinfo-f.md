@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getallapplicationinfo1"></a>
+
 ## getAllApplicationInfo
 
 ```TypeScript
@@ -31,7 +33,7 @@ Obtains the information about all applications. This API uses an asynchronous ca
 | --- | --- | --- | --- |
 | bundleFlags | number | Yes | Type of information that will be returned. For details about the available enumerated values, see the application information flags in [BundleFlag](arkts-ability-bundle-bundleflag-e.md). |
 | userId | number | Yes | User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return the application information. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-applicationinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return the application information. |
 
 **Examples**
 
@@ -51,7 +53,7 @@ bundle.getAllApplicationInfo(bundleFlags, userId, (err, data) => {
 ```
 
 
-<a id="getallapplicationinfo-1"></a>
+<a id="getallapplicationinfo2"></a>
 
 ## getAllApplicationInfo
 
@@ -76,7 +78,7 @@ Obtains the information about all applications of the current user. This API use
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleFlags | number | Yes | Type of information that will be returned. For details about the available enumerated values, see the application information flags in [BundleFlag](arkts-ability-bundle-bundleflag-e.md). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return the application information. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[ApplicationInfo](arkts-ability-applicationinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return the application information. |
 
 **Examples**
 
@@ -95,7 +97,7 @@ bundle.getAllApplicationInfo(bundleFlags, (err, data) => {
 ```
 
 
-<a id="getallapplicationinfo-2"></a>
+<a id="getallapplicationinfo3"></a>
 
 ## getAllApplicationInfo
 
@@ -126,7 +128,7 @@ Obtains the information about all applications of the specified user. This API u
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[ApplicationInfo](arkts-ability-applicationinfo-applicationinfo-depr-i.md)&gt;&gt; | Promise used to return the application information. |
+| Promise&lt;Array&lt;[ApplicationInfo](arkts-ability-applicationinfo-depr-i.md)&gt;&gt; | Promise used to return the application information. |
 
 **Examples**
 

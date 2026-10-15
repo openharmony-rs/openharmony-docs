@@ -26,17 +26,17 @@ CURSOR_FIELD = '#_cursor'
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-## ORIGIN_FIELD
+## DATA_STATUS_FIELD
 
 ```TypeScript
-ORIGIN_FIELD = '#_origin'
+DATA_STATUS_FIELD = '#_data_status'
 ```
 
-用于cursor查找时指定数据来源的字段名。
+用于cursor查找的结果集返回时填充的字段，返回的结果集中，该字段对应的0表示正常数据，1表示退出账号保留数据，2表示云侧同步删除，3表示退出账户删除数据。
 
-**起始版本：** 11
+**起始版本：** 12
 
-<!--Device-Field-ORIGIN_FIELD = '#_origin'--><!--Device-Field-ORIGIN_FIELD = '#_origin'-End-->
+<!--Device-Field-DATA_STATUS_FIELD = '#_data_status'--><!--Device-Field-DATA_STATUS_FIELD = '#_data_status'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -56,17 +56,17 @@ DELETED_FLAG_FIELD = '#_deleted_flag'
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-## DATA_STATUS_FIELD
+## ORIGIN_FIELD
 
 ```TypeScript
-DATA_STATUS_FIELD = '#_data_status'
+ORIGIN_FIELD = '#_origin'
 ```
 
-用于cursor查找的结果集返回时填充的字段，返回的结果集中，该字段对应的0表示正常数据，1表示退出账号保留数据，2表示云侧同步删除，3表示退出账户删除数据。
+用于cursor查找时指定数据来源的字段名。
 
-**起始版本：** 12
+**起始版本：** 11
 
-<!--Device-Field-DATA_STATUS_FIELD = '#_data_status'--><!--Device-Field-DATA_STATUS_FIELD = '#_data_status'-End-->
+<!--Device-Field-ORIGIN_FIELD = '#_origin'--><!--Device-Field-ORIGIN_FIELD = '#_origin'-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

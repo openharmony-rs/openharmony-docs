@@ -68,8 +68,8 @@ onLayout?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| children | Array&lt;[LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)&gt; | 是 | Child component layout information. |
-| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | Size constraint of the parent component. |
+| children | Array&lt;[LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)&gt; | 是 | 子组件的布局信息。 |
+| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 父组件的尺寸约束。 |
 
 ## onMeasure
 
@@ -93,5 +93,5 @@ onMeasure?(children: Array<LayoutChild>, constraint: ConstraintSizeOptions): voi
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| children | Array&lt;[LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)&gt; | 是 | Child component layout information. |
-| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | Size constraint of the parent component. |
+| children | Array&lt;[LayoutChild](arkts-arkui-common-comp-layoutchild-i.md)&gt; | 是 | 子组件的布局信息。 |
+| constraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 父组件的尺寸约束。 |

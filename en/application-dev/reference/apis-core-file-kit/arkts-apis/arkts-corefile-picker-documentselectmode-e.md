@@ -22,7 +22,7 @@ File (default).
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentSelectMode-FILE = 0--><!--Device-DocumentSelectMode-FILE = 0-End-->
 
@@ -38,7 +38,7 @@ Folder.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentSelectMode-FOLDER = 1--><!--Device-DocumentSelectMode-FOLDER = 1-End-->
 
@@ -54,7 +54,7 @@ Mixed type of files and folders.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DocumentSelectMode-MIXED = 2--><!--Device-DocumentSelectMode-MIXED = 2-End-->
 

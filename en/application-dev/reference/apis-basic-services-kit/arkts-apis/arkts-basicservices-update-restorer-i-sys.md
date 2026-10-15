@@ -9,11 +9,12 @@ Defines a tool class for restoring factory settings, such as clearing data in th
 > **Factory reset**
 
 - Call **getRestorer** to obtain a **Restorer** object.  
-- Select a factory reset mode as required:  
-1. **factoryReset**: Common factory reset. Only data in the user partition is cleared in this mode.
-2. **forceFactoryReset**: Forcible factory reset. Both data in the user partition and file keys are cleared in
+- Select a factory reset mode as required:
+
+  1. **factoryReset**: Common factory reset. Only data in the user partition is cleared in this mode.
+  2. **forceFactoryReset**: Forcible factory reset. Both data in the user partition and file keys are cleared in
 this mode.
-3. **deepFactoryReset**: Deep factory reset. Data in the scope specified by **scope** is cleared in this mode.  
+  3. **deepFactoryReset**: Deep factory reset. Data in the scope specified by **scope** is cleared in this mode.  
 **DATA**: Clear data in the user partition only; **DATA_AND_OS**: Clear data in both the user partition and OS partition.  
 - After corresponding factory reset method is called, the device will clear data and restore to its factory  
 settings.
@@ -103,6 +104,7 @@ app status needs to be saved in advance.
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -125,6 +127,10 @@ try {
   console.error(`Fail to get factoryRestorer: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="factoryreset1"></a>
 
 ## factoryReset
 
@@ -172,6 +178,7 @@ The process is as follows: Verify the permission to call APIs. Clear data in the
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -194,7 +201,9 @@ try {
 }
 ```
 
-<a id="factoryreset-1"></a>
+<!--DelEnd-->
+
+<a id="factoryreset2"></a>
 
 ## factoryReset
 
@@ -242,6 +251,7 @@ The process is as follows: Verify the permission to call APIs. Clear data in the
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -260,6 +270,8 @@ try {
   console.error(`Fail to get factoryRestorer: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## forceFactoryReset
 
@@ -311,6 +323,7 @@ and device handover.
 | [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -328,6 +341,8 @@ try {
   console.error(`Fail to get factoryRestorer: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getDeepFactoryResetInfo
 
@@ -384,6 +399,7 @@ not perform the deep factory reset. Otherwise, the operation may fail due to pow
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [11500104](../errorcode-update.md#11500104-ipc-error) | IPC error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -407,3 +423,5 @@ try {
   console.error(`Fail to get factoryRestorer: ${error}`);
 }
 ```
+
+<!--DelEnd-->

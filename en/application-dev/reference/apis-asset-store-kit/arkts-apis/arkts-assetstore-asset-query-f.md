@@ -40,7 +40,7 @@ If no asset is found, an exception indicating that no asset is found is thrown i
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-asset-store-service-unavailable) | The ASSET service is unavailable. |
 | [24000002](../errorcode-asset.md#24000002-asset-not-found) | The asset is not found. |
 | [24000004](../errorcode-asset.md#24000004-access-denied) | Access denied. |

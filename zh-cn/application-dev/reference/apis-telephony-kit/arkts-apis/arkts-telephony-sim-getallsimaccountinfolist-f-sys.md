@@ -6,6 +6,8 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getallsimaccountinfolist1"></a>
+
 ## getAllSimAccountInfoList
 
 ```TypeScript
@@ -42,6 +44,7 @@ Get the list of all SIM card account information.
 | [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -53,8 +56,10 @@ sim.getAllSimAccountInfoList((err: BusinessError, data: Array<sim.IccAccountInfo
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getallsimaccountinfolist-1"></a>
+
+<a id="getallsimaccountinfolist2"></a>
 
 ## getAllSimAccountInfoList
 
@@ -91,6 +96,7 @@ Get the list of all SIM card account information.
 | [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -107,3 +113,5 @@ sim.getAllSimAccountInfoList().then((data: Array<sim.IccAccountInfo>) => {
     }
   }
 ```
+
+<!--DelEnd-->

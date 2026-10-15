@@ -9,10 +9,11 @@ export interface Restorer
 > **恢复出厂设置流程**：
 
 - 开发者调用getRestorer方法获取Restorer对象。  
-- 开发者根据需求选择恢复出厂方式：  
-1. factoryReset：普通恢复出厂，仅清除用户数据分区。
-2. forceFactoryReset：强制恢复出厂，清除用户数据分区并同步清除文件密钥。
-3. deepFactoryReset：深度恢复出厂，可通过scope参数指定清除范围：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。  
+- 开发者根据需求选择恢复出厂方式：
+
+  1. factoryReset：普通恢复出厂，仅清除用户数据分区。
+  2. forceFactoryReset：强制恢复出厂，清除用户数据分区并同步清除文件密钥。
+  3. deepFactoryReset：深度恢复出厂，可通过scope参数指定清除范围：DATA仅清除用户数据分区，DATA_AND_OS同时清除用户数据和操作系统分区。  
 - 开发者调用相应的恢复出厂方法执行恢复出厂操作，设备将清除数据并恢复到出厂状态。
 
 选取建议：日常维护场景优先选择factoryReset；涉及敏感数据或设备交接场景选择forceFactoryReset；设备报废或需要物理销毁数据场景选择deepFactoryReset。
@@ -94,6 +95,7 @@ deepFactoryReset(factoryResetStrategy: FactoryResetStrategy): Promise<void>
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -116,6 +118,10 @@ try {
   console.error(`Fail to get factoryRestorer: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="factoryreset1"></a>
 
 ## factoryReset
 
@@ -163,6 +169,7 @@ factoryReset(callback: AsyncCallback<void>): void
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -185,7 +192,9 @@ try {
 }
 ```
 
-<a id="factoryreset-1"></a>
+<!--DelEnd-->
+
+<a id="factoryreset2"></a>
 
 ## factoryReset
 
@@ -233,6 +242,7 @@ factoryReset(): Promise<void>
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -251,6 +261,8 @@ try {
   console.error(`Fail to get factoryRestorer: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## forceFactoryReset
 
@@ -300,6 +312,7 @@ forceFactoryReset(): Promise<void>
 | [203](../../errorcode-universal.md#203-企业管理策略禁止使用此系统功能) | This function is prohibited by enterprise management policies. |
 | 11500104 | IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -317,6 +330,8 @@ try {
   console.error(`Fail to get factoryRestorer: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getDeepFactoryResetInfo
 
@@ -372,6 +387,7 @@ getDeepFactoryResetInfo(factoryResetStrategy: FactoryResetStrategy): Promise<Fac
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 11500104 | IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -395,3 +411,5 @@ try {
   console.error(`Fail to get factoryRestorer: ${error}`);
 }
 ```
+
+<!--DelEnd-->

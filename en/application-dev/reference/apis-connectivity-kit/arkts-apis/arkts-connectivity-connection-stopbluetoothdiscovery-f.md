@@ -20,7 +20,7 @@ Stops Bluetooth device scanning.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-connection-function stopBluetoothDiscovery(): void--><!--Device-connection-function stopBluetoothDiscovery(): void-End-->
 

@@ -24,21 +24,21 @@ declare enum TextSpanType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TEXT
+## DEFAULT
 
 ```TypeScript
-TEXT = 0
+DEFAULT = 3
 ```
 
-Span为文字类型。
+注册此类型菜单但未注册TEXT、IMAGE、MIXED菜单时，文字类型、图片类型、图文混合类型都会触发并显示此类型对应的菜单。
 
-**起始版本：** 11
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextSpanType-TEXT = 0--><!--Device-TextSpanType-TEXT = 0-End-->
+<!--Device-TextSpanType-DEFAULT = 3--><!--Device-TextSpanType-DEFAULT = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,20 +78,20 @@ Span为图文混合类型。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DEFAULT
+## TEXT
 
 ```TypeScript
-DEFAULT = 3
+TEXT = 0
 ```
 
-注册此类型菜单但未注册TEXT、IMAGE、MIXED菜单时，文字类型、图片类型、图文混合类型都会触发并显示此类型对应的菜单。
+Span为文字类型。
 
-**起始版本：** 15
+**起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextSpanType-DEFAULT = 3--><!--Device-TextSpanType-DEFAULT = 3-End-->
+<!--Device-TextSpanType-TEXT = 0--><!--Device-TextSpanType-TEXT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

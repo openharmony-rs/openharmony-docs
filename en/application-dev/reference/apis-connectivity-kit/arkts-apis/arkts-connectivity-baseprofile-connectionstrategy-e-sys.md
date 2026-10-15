@@ -14,24 +14,6 @@ Enum for connection strategy of the profile
 
 **System API:** This is a system API.
 
-## CONNECTION_STRATEGY_UNSUPPORTED
-
-```TypeScript
-CONNECTION_STRATEGY_UNSUPPORTED = 0
-```
-
-The value of connection strategy unsupported.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ConnectionStrategy-CONNECTION_STRATEGY_UNSUPPORTED = 0--><!--Device-ConnectionStrategy-CONNECTION_STRATEGY_UNSUPPORTED = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
 ## CONNECTION_STRATEGY_ALLOWED
 
 ```TypeScript
@@ -63,6 +45,24 @@ The value of connection strategy forbidden.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ConnectionStrategy-CONNECTION_STRATEGY_FORBIDDEN = 2--><!--Device-ConnectionStrategy-CONNECTION_STRATEGY_FORBIDDEN = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## CONNECTION_STRATEGY_UNSUPPORTED
+
+```TypeScript
+CONNECTION_STRATEGY_UNSUPPORTED = 0
+```
+
+The value of connection strategy unsupported.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ConnectionStrategy-CONNECTION_STRATEGY_UNSUPPORTED = 0--><!--Device-ConnectionStrategy-CONNECTION_STRATEGY_UNSUPPORTED = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

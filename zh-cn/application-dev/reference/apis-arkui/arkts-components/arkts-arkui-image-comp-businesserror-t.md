@@ -8,6 +8,8 @@ declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError
 
 以下是错误信息的详细介绍：ImageError的error属性为错误信息对象，其中code为错误码，message为错误信息。
 
+**类型：** import('../api/@ohos.base').BusinessError&lt;T&gt;
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -19,5 +21,3 @@ declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError
 <!--Device-unnamed-declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError<T>--><!--Device-unnamed-declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError<T>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.base').BusinessError&lt;T&gt;

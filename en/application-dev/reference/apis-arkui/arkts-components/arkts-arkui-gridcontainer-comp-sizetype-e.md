@@ -34,13 +34,13 @@ Automatically matches the appropriate size type based on the device width.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## XS
+## LG
 
 ```TypeScript
-XS
+LG
 ```
 
-Device with minimum width. Width ≤320 vp.
+Device with large width. Width ≥840 vp.
 
 **Since:** 7
 
@@ -48,25 +48,7 @@ Device with minimum width. Width ≤320 vp.
 
 **Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
 
-<!--Device-SizeType-XS--><!--Device-SizeType-XS-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## SM
-
-```TypeScript
-SM
-```
-
-Device with small width. Width 320 vp–600 vp.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
-
-<!--Device-SizeType-SM--><!--Device-SizeType-SM-End-->
+<!--Device-SizeType-LG--><!--Device-SizeType-LG-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -88,13 +70,13 @@ Device with medium width. Width 600 vp–840 vp.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## LG
+## SM
 
 ```TypeScript
-LG
+SM
 ```
 
-Device with large width. Width ≥840 vp.
+Device with small width. Width 320 vp–600 vp.
 
 **Since:** 7
 
@@ -102,6 +84,24 @@ Device with large width. Width ≥840 vp.
 
 **Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
 
-<!--Device-SizeType-LG--><!--Device-SizeType-LG-End-->
+<!--Device-SizeType-SM--><!--Device-SizeType-SM-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## XS
+
+```TypeScript
+XS
+```
+
+Device with minimum width. Width ≤320 vp.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
+
+<!--Device-SizeType-XS--><!--Device-SizeType-XS-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

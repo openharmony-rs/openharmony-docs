@@ -36,7 +36,7 @@ Activates an audio session. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AudioSessionManager-activateAudioSession(strategy: AudioSessionStrategy): Promise<void>--><!--Device-AudioSessionManager-activateAudioSession(strategy: AudioSessionStrategy): Promise<void>-End-->
 
@@ -126,7 +126,7 @@ Deactivates this audio session. This API uses a promise to return the result.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AudioSessionManager-deactivateAudioSession(): Promise<void>--><!--Device-AudioSessionManager-deactivateAudioSession(): Promise<void>-End-->
 
@@ -369,7 +369,7 @@ Checks whether this audio session is activated.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AudioSessionManager-isAudioSessionActivated(): boolean--><!--Device-AudioSessionManager-isAudioSessionActivated(): boolean-End-->
 
@@ -1086,7 +1086,7 @@ Sets the default audio output device. This API uses a promise to return the resu
 
 > **NOTE:** 
 > 
-> - This API applies to the following scenario: When [AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md) is set to **VoIP**, the setting takes effect immediately after the AudioSession is activated. For non-VoIP scenarios, the setting does not take effect upon AudioSession activation. Instead, the setting applies when [StreamUsage](arkts-audio-audio-streamusage-e.md) for playback is voice message, VoIP voice call,or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
+> - This API applies to the following scenario: When [AudioSessionScene](arkts-audio-audio-audiosessionscene-e.md) is set to **VoIP** or **voice message**, the setting takes effect immediately after the AudioSession is activated. For other scenarios, the setting does not take effect upon AudioSession activation. Instead, the setting applies when [StreamUsage](arkts-audio-audio-streamusage-e.md) for playback is voice message, VoIP voice call,or VoIP video call. Supported devices include the earpiece, speaker, and system default device.
 > 
 > - This API can be called at any time after an AudioSessionManager instance is created. The system records the device set by the application. However, the setting takes effect only after the AudioSession is activated. When the application starts playing, if an external device like Bluetooth headsets or wired headsets is connected,the system prioritizes audio output through the external device. Otherwise, the system uses the device set by the application.
 

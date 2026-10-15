@@ -12,22 +12,6 @@ export declare enum ArcButtonPosition
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-## TOP_EDGE
-
-```TypeScript
-TOP_EDGE = 0
-```
-
-上弧形按钮，位于圆形屏幕上方。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-ArcButtonPosition-TOP_EDGE = 0--><!--Device-ArcButtonPosition-TOP_EDGE = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
-
 ## BOTTOM_EDGE
 
 ```TypeScript
@@ -41,5 +25,21 @@ BOTTOM_EDGE = 1
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-ArcButtonPosition-BOTTOM_EDGE = 1--><!--Device-ArcButtonPosition-BOTTOM_EDGE = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
+## TOP_EDGE
+
+```TypeScript
+TOP_EDGE = 0
+```
+
+上弧形按钮，位于圆形屏幕上方。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonPosition-TOP_EDGE = 0--><!--Device-ArcButtonPosition-TOP_EDGE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

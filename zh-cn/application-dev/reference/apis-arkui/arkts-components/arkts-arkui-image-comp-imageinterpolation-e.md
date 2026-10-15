@@ -12,13 +12,13 @@ declare enum ImageInterpolation
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## None
+## High
 
 ```TypeScript
-None
+High
 ```
 
-最近邻插值。
+High usage of interpolated image data may affect the speed of image rendering.
 
 **起始版本：** 7
 
@@ -28,7 +28,7 @@ None
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ImageInterpolation-None--><!--Device-ImageInterpolation-None-End-->
+<!--Device-ImageInterpolation-High--><!--Device-ImageInterpolation-High-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,13 +72,13 @@ Interpolated image data is used moderately.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## High
+## None
 
 ```TypeScript
-High
+None
 ```
 
-High usage of interpolated image data may affect the speed of image rendering.
+最近邻插值。
 
 **起始版本：** 7
 
@@ -88,6 +88,6 @@ High usage of interpolated image data may affect the speed of image rendering.
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-ImageInterpolation-High--><!--Device-ImageInterpolation-High-End-->
+<!--Device-ImageInterpolation-None--><!--Device-ImageInterpolation-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

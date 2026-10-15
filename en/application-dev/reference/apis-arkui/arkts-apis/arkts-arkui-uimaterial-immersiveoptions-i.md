@@ -26,7 +26,7 @@ applyShadow?: boolean
 
 Whether to add a shadow effect for a material.
 
-If this parameter is set to **true**, the added shadow effect in the material always takes effect, which takes precedence over the general [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) attribute. If this parameter is set to **false**, only the general shadow attribute takes effect.
+If this parameter is set to **true**, the added shadow effect in the material always takes effect, which takes precedence over the general [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1) attribute. If this parameter is set to **false**, only the general shadow attribute takes effect.
 
 Note: This parameter takes effect on the display effect of all computing power devices that support immersive materials.
 
@@ -64,9 +64,9 @@ The automatic complementary color adaptation capability takes effect only when s
 
 [fontColor](../arkts-components/arkts-arkui-button-comp-attribute.md#fontcolor) of the **Button** component;
 
-[fontColor](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor) of the **SymbolGlyph** component;
+[fontColor](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor1) of the **SymbolGlyph** component;
 
-[fillColor](../arkts-components/arkts-arkui-image-comp-attribute.md#fillcolor) of the **Image** component;
+[fillColor](../arkts-components/arkts-arkui-image-comp-attribute.md#fillcolor1) of the **Image** component;
 
 [placeholderColor](../arkts-components/arkts-arkui-search-comp-attribute.md#placeholdercolor), [fontColor](../arkts-components/arkts-arkui-search-comp-attribute.md#fontcolor), icon color in [searchIcon](../arkts-components/arkts-arkui-search-comp-attribute.md#searchicon), icon color in [cancelButton](../arkts-components/arkts-arkui-search-comp-attribute.md#cancelbutton), caret color in [caretStyle](../arkts-components/arkts-arkui-search-comp-attribute.md#caretstyle), and button color in [searchButton](../arkts-components/arkts-arkui-search-comp-attribute.md#searchbutton) under the **Search** component;
 
@@ -160,7 +160,7 @@ Default value: undefined, meaning the light sensory interaction feedback effect 
 materialColor?: ResourceColor
 ```
 
-Coloring of the material layer. For high- and medium-computing devices that support immersive materials, if this parameter is not specified or is set to **undefined**, no additional pure color effect is mixed. If this parameter is set to a valid color value, this parameter will mix a pure color effect for the material filter. If the color is completely opaque, the material filter effect will be blocked. For low-computing devices that support immersive materials, if this parameter is not specified or is set to **undefined**, the background color effect of the material on the devices takes effect. If this parameter is set to a valid color value, this parameter value is used as the value of the [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor) attribute.
+Coloring of the material layer. For high- and medium-computing devices that support immersive materials, if this parameter is not specified or is set to **undefined**, no additional pure color effect is mixed. If this parameter is set to a valid color value, this parameter will mix a pure color effect for the material filter. If the color is completely opaque, the material filter effect will be blocked. For low-computing devices that support immersive materials, if this parameter is not specified or is set to **undefined**, the background color effect of the material on the devices takes effect. If this parameter is set to a valid color value, this parameter value is used as the value of the [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1) attribute.
 
 Note: This parameter takes effect on the display effect of all computing power devices that support immersive materials.
 

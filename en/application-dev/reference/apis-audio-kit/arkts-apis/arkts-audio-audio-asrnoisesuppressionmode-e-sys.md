@@ -30,17 +30,17 @@ Bypass noise suppression.
 
 **System API:** This is a system API.
 
-## STANDARD
+## FAR_FIELD
 
 ```TypeScript
-STANDARD = 1
+FAR_FIELD = 3
 ```
 
-Standard noise suppression.
+Far field noise suppression.
 
 **Since:** 12
 
-<!--Device-AsrNoiseSuppressionMode-STANDARD = 1--><!--Device-AsrNoiseSuppressionMode-STANDARD = 1-End-->
+<!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3--><!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 
@@ -62,17 +62,17 @@ Near field noise suppression.
 
 **System API:** This is a system API.
 
-## FAR_FIELD
+## STANDARD
 
 ```TypeScript
-FAR_FIELD = 3
+STANDARD = 1
 ```
 
-Far field noise suppression.
+Standard noise suppression.
 
 **Since:** 12
 
-<!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3--><!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3-End-->
+<!--Device-AsrNoiseSuppressionMode-STANDARD = 1--><!--Device-AsrNoiseSuppressionMode-STANDARD = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Capturer
 

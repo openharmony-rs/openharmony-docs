@@ -12,6 +12,60 @@ export enum UIState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## DISABLED
+
+```TypeScript
+DISABLED = 1 << 2
+```
+
+禁用状态。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIState-DISABLED = 1 << 2--><!--Device-UIState-DISABLED = 1 << 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## FOCUSED
+
+```TypeScript
+FOCUSED = 1 << 1
+```
+
+获焦状态。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIState-FOCUSED = 1 << 1--><!--Device-UIState-FOCUSED = 1 << 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## HOVERED
+
+```TypeScript
+HOVERED = 1 << 4
+```
+
+悬浮状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-UIState-HOVERED = 1 << 4--><!--Device-UIState-HOVERED = 1 << 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## NORMAL
 
 ```TypeScript
@@ -48,42 +102,6 @@ PRESSED = 1 << 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## FOCUSED
-
-```TypeScript
-FOCUSED = 1 << 1
-```
-
-获焦状态。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-UIState-FOCUSED = 1 << 1--><!--Device-UIState-FOCUSED = 1 << 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DISABLED
-
-```TypeScript
-DISABLED = 1 << 2
-```
-
-禁用状态。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-UIState-DISABLED = 1 << 2--><!--Device-UIState-DISABLED = 1 << 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## SELECTED
 
 ```TypeScript
@@ -101,23 +119,5 @@ SELECTED = 1 << 3
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-UIState-SELECTED = 1 << 3--><!--Device-UIState-SELECTED = 1 << 3-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## HOVERED
-
-```TypeScript
-HOVERED = 1 << 4
-```
-
-悬浮状态。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-UIState-HOVERED = 1 << 4--><!--Device-UIState-HOVERED = 1 << 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

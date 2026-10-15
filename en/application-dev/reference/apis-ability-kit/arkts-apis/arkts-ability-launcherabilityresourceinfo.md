@@ -1,4 +1,4 @@
-# LauncherAbilityResourceInfo
+# LauncherAbilityResourceInfo(LauncherAbilityResourceInfo)
 
 ## Summary
 

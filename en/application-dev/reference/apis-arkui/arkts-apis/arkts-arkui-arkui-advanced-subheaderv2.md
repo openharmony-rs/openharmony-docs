@@ -34,9 +34,9 @@ import { SubHeaderV2IconType, SubHeaderV2Title, SubHeaderV2Select, SubHeaderV2, 
 
 | Name | Description |
 | --- | --- |
-| [SubHeaderV2IconType](arkts-arkui-subheaderv2icontype-t.md) | [SubHeaderV2IconType](arkts-arkui-subheaderv2icontype-t.md) |
+| [SubHeaderV2IconType](arkts-arkui-subheaderv2icontype-t.md) | Defines the union type for the icon content. |
 | [SubHeaderV2OperationItemAction](arkts-arkui-subheaderv2operationitemaction-t.md) | Defines the callback for items in the operation area. |
-| [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) | [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) |
+| [SubHeaderV2OperationItemType](arkts-arkui-subheaderv2operationitemtype-t.md) | Defines the union type for the content of elements in the operation area. |
 | [SubHeaderV2SelectOnSelect](arkts-arkui-subheaderv2selectonselect-t.md) | Defines the callback invoked when an item in the drop-down list box is selected. |
 | [SubHeaderV2TitleBuilder](arkts-arkui-subheaderv2titlebuilder-t.md) | Defines the callback used to customize the content of the title area. |
 

@@ -41,7 +41,7 @@ Creates a **Scroll** component.
 | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | Provides parameters for page scrolling behavior. |
 | [ScrollSnapOptions](arkts-arkui-scroll-comp-scrollsnapoptions-i.md) | Defines a scroll snapping mode object. |
 | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | Provides parameters for scrolling to a specific index. |
-| [UIScrollEvent](arkts-arkui-scroll-comp-uiscrollevent-i.md) | Represents the return value of the [getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md) method in **frameNode**, which can be used to set scroll events for a **Scroll** node. |
+| [UIScrollEvent](arkts-arkui-scroll-comp-uiscrollevent-i.md) | Represents the return value of the [getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent1) method in **frameNode**, which can be used to set scroll events for a **Scroll** node. |
 
 ### Types
 

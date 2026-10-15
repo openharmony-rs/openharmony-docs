@@ -51,6 +51,7 @@ offBackgroundLuminanceChange(samplingCallback?: Callback<number>): void
 | --- | --- | --- | --- |
 | samplingCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 否 | 监听回调。 |
 
+<!--Del-->
 **示例**
 
 从API version 23开始，新增支持[setBackgroundLuminanceSamplingConfigs](#setbackgroundluminancesamplingconfigs)、[onBackgroundLuminanceChange](#onbackgroundluminancechange)、[offBackgroundLuminanceChange](#offbackgroundluminancechange)接口，该示例通过调用这三个接口，展示了获取对应组件的取色器，并通过取色器给组件设置取色参数和取色回调，通过取色回调实现自定义的根据背景色反色效果。
@@ -141,6 +142,8 @@ struct PagePicker {
 }
 ```
 
+<!--DelEnd-->
+
 ## onBackgroundLuminanceChange
 
 ```TypeScript
@@ -165,11 +168,14 @@ onBackgroundLuminanceChange(samplingCallback: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| samplingCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 监听回调。触发同时返回当前背景亮度。<br>**说明：** 监听回调里不能调用[offBackgroundLuminanceChange](#offbackgroundluminancechange)。 |
+| samplingCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 监听回调。触发同时返回当前背景亮度。<br>**说明：** 监听回调里不能调用offBackgroundLuminanceChange。 |
 
+<!--Del-->
 **示例**
 
 参考[offBackgroundLuminanceChange](#offbackgroundluminancechange)的示例。
+
+<!--DelEnd-->
 
 ## setBackgroundLuminanceSamplingConfigs
 
@@ -201,6 +207,9 @@ setBackgroundLuminanceSamplingConfigs(configs: BackgroundLuminanceSamplingConfig
 | --- | --- |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error.<br> 1. Incorrect parameter values. <br> 2. Incorrect parameters types. |
 
+<!--Del-->
 **示例**
 
 参考[offBackgroundLuminanceChange](#offbackgroundluminancechange)的示例。
+
+<!--DelEnd-->

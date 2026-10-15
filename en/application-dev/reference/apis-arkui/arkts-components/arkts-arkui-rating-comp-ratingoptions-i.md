@@ -60,7 +60,7 @@ Default value: **0**
 
 Value range: [0, stars]
 
-Values less than 0 are treated as **0**, and values greater than the value of [stars](arkts-arkui-rating-comp-attribute.md#stars) are treated as the value of **stars**.
+Values less than 0 are treated as **0**, and values greater than the value of [stars](arkts-arkui-rating-comp-attribute.md#stars1) are treated as the value of **stars**.
 
 This parameter supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md).
 

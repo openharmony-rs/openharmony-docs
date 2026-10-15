@@ -34,7 +34,7 @@ Acceleration along the x-axis of the device, in m/s². The value is equal to the
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AccelerometerResponse-x: double--><!--Device-AccelerometerResponse-x: double-End-->
 
@@ -52,7 +52,7 @@ Acceleration along the y-axis of the device, in m/s². The value is equal to the
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AccelerometerResponse-y: double--><!--Device-AccelerometerResponse-y: double-End-->
 
@@ -70,7 +70,7 @@ Acceleration along the z-axis of the device, in m/s². The value is equal to the
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AccelerometerResponse-z: double--><!--Device-AccelerometerResponse-z: double-End-->
 

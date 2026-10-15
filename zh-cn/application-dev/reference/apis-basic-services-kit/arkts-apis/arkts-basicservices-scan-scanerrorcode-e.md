@@ -12,6 +12,146 @@ enum ScanErrorCode
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+## SCAN_ERROR_CANCELED
+
+```TypeScript
+SCAN_ERROR_CANCELED = 13100005
+```
+
+操作取消。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_CANCELED = 13100005--><!--Device-ScanErrorCode-SCAN_ERROR_CANCELED = 13100005-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_COVER_OPEN
+
+```TypeScript
+SCAN_ERROR_COVER_OPEN = 13100010
+```
+
+盖子打开。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_COVER_OPEN = 13100010--><!--Device-ScanErrorCode-SCAN_ERROR_COVER_OPEN = 13100010-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_DEVICE_BUSY
+
+```TypeScript
+SCAN_ERROR_DEVICE_BUSY = 13100006
+```
+
+设备忙。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_DEVICE_BUSY = 13100006--><!--Device-ScanErrorCode-SCAN_ERROR_DEVICE_BUSY = 13100006-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_GENERIC_FAILURE
+
+```TypeScript
+SCAN_ERROR_GENERIC_FAILURE = 13100001
+```
+
+通用失败。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_GENERIC_FAILURE = 13100001--><!--Device-ScanErrorCode-SCAN_ERROR_GENERIC_FAILURE = 13100001-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_INVALID
+
+```TypeScript
+SCAN_ERROR_INVALID = 13100007
+```
+
+无效操作。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_INVALID = 13100007--><!--Device-ScanErrorCode-SCAN_ERROR_INVALID = 13100007-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_INVALID_PARAMETER
+
+```TypeScript
+SCAN_ERROR_INVALID_PARAMETER = 401
+```
+
+无效参数。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_INVALID_PARAMETER = 401--><!--Device-ScanErrorCode-SCAN_ERROR_INVALID_PARAMETER = 401-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_IO_ERROR
+
+```TypeScript
+SCAN_ERROR_IO_ERROR = 13100011
+```
+
+I/O错误。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_IO_ERROR = 13100011--><!--Device-ScanErrorCode-SCAN_ERROR_IO_ERROR = 13100011-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_JAMMED
+
+```TypeScript
+SCAN_ERROR_JAMMED = 13100008
+```
+
+卡纸。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_JAMMED = 13100008--><!--Device-ScanErrorCode-SCAN_ERROR_JAMMED = 13100008-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_NO_DOCS
+
+```TypeScript
+SCAN_ERROR_NO_DOCS = 13100009
+```
+
+缺纸。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_NO_DOCS = 13100009--><!--Device-ScanErrorCode-SCAN_ERROR_NO_DOCS = 13100009-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_ERROR_NO_MEMORY
+
+```TypeScript
+SCAN_ERROR_NO_MEMORY = 13100012
+```
+
+内存不足。
+
+**起始版本：** 20
+
+<!--Device-ScanErrorCode-SCAN_ERROR_NO_MEMORY = 13100012--><!--Device-ScanErrorCode-SCAN_ERROR_NO_MEMORY = 13100012-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
 ## SCAN_ERROR_NO_PERMISSION
 
 ```TypeScript
@@ -37,34 +177,6 @@ SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202
 **起始版本：** 20
 
 <!--Device-ScanErrorCode-SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202--><!--Device-ScanErrorCode-SCAN_ERROR_NOT_SYSTEM_APPLICATION = 202-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_INVALID_PARAMETER
-
-```TypeScript
-SCAN_ERROR_INVALID_PARAMETER = 401
-```
-
-无效参数。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_INVALID_PARAMETER = 401--><!--Device-ScanErrorCode-SCAN_ERROR_INVALID_PARAMETER = 401-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_GENERIC_FAILURE
-
-```TypeScript
-SCAN_ERROR_GENERIC_FAILURE = 13100001
-```
-
-通用失败。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_GENERIC_FAILURE = 13100001--><!--Device-ScanErrorCode-SCAN_ERROR_GENERIC_FAILURE = 13100001-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -107,117 +219,5 @@ SCAN_ERROR_UNSUPPORTED = 13100004
 **起始版本：** 20
 
 <!--Device-ScanErrorCode-SCAN_ERROR_UNSUPPORTED = 13100004--><!--Device-ScanErrorCode-SCAN_ERROR_UNSUPPORTED = 13100004-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_CANCELED
-
-```TypeScript
-SCAN_ERROR_CANCELED = 13100005
-```
-
-操作取消。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_CANCELED = 13100005--><!--Device-ScanErrorCode-SCAN_ERROR_CANCELED = 13100005-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_DEVICE_BUSY
-
-```TypeScript
-SCAN_ERROR_DEVICE_BUSY = 13100006
-```
-
-设备忙。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_DEVICE_BUSY = 13100006--><!--Device-ScanErrorCode-SCAN_ERROR_DEVICE_BUSY = 13100006-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_INVALID
-
-```TypeScript
-SCAN_ERROR_INVALID = 13100007
-```
-
-无效操作。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_INVALID = 13100007--><!--Device-ScanErrorCode-SCAN_ERROR_INVALID = 13100007-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_JAMMED
-
-```TypeScript
-SCAN_ERROR_JAMMED = 13100008
-```
-
-卡纸。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_JAMMED = 13100008--><!--Device-ScanErrorCode-SCAN_ERROR_JAMMED = 13100008-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_NO_DOCS
-
-```TypeScript
-SCAN_ERROR_NO_DOCS = 13100009
-```
-
-缺纸。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_NO_DOCS = 13100009--><!--Device-ScanErrorCode-SCAN_ERROR_NO_DOCS = 13100009-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_COVER_OPEN
-
-```TypeScript
-SCAN_ERROR_COVER_OPEN = 13100010
-```
-
-盖子打开。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_COVER_OPEN = 13100010--><!--Device-ScanErrorCode-SCAN_ERROR_COVER_OPEN = 13100010-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_IO_ERROR
-
-```TypeScript
-SCAN_ERROR_IO_ERROR = 13100011
-```
-
-I/O错误。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_IO_ERROR = 13100011--><!--Device-ScanErrorCode-SCAN_ERROR_IO_ERROR = 13100011-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## SCAN_ERROR_NO_MEMORY
-
-```TypeScript
-SCAN_ERROR_NO_MEMORY = 13100012
-```
-
-内存不足。
-
-**起始版本：** 20
-
-<!--Device-ScanErrorCode-SCAN_ERROR_NO_MEMORY = 13100012--><!--Device-ScanErrorCode-SCAN_ERROR_NO_MEMORY = 13100012-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

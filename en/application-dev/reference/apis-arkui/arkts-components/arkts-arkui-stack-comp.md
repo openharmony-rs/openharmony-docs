@@ -4,7 +4,7 @@ Defines a stack container where child components are successively stacked and th
 
 > **NOTE:** 
 > 
-> - The general attribute [align](arkts-arkui-common-comp-commonmethod-c.md#align) supports the mirroring capability on this component.
+> - The general attribute [align](arkts-arkui-common-comp-commonmethod-c.md#align1) supports the mirroring capability on this component.
 
 ## Child Components
 
@@ -25,7 +25,7 @@ Defines a stack container where child components are successively stacked and th
 > thereby optimize performance. For best practices, see
 > [Optimizing Component Nesting - Preferentially Using Component Properties Instead of Nested Components](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-component-nesting-optimization#section78181114123811).
 > 
-> When both the **alignContent** parameter of this API and [align](arkts-arkui-common-comp-commonmethod-c.md#align) are
+> When both the **alignContent** parameter of this API and [align](arkts-arkui-common-comp-commonmethod-c.md#align1) are
 > set, whichever is set last takes effect. When both the **alignContent** parameter of this API and the
 > **alignContent** attribute are set, the value set by the attribute takes effect.
 

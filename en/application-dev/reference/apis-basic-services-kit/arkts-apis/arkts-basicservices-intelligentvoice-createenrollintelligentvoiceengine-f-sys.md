@@ -6,6 +6,8 @@
 import { intelligentVoice } from '@kit.BasicServicesKit';
 ```
 
+<a id="createenrollintelligentvoiceengine1"></a>
+
 ## createEnrollIntelligentVoiceEngine
 
 ```TypeScript
@@ -41,6 +43,7 @@ Obtains an [EnrollIntelligentVoiceEngine](arkts-basicservices-intelligentvoice-e
 | [22700101](../errorcode-intelligentVoice.md#22700101-insufficient-memory) | No memory. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,8 +63,10 @@ intelligentVoice.createEnrollIntelligentVoiceEngine(engineDescriptor, (err: Busi
 });
 ```
 
+<!--DelEnd-->
 
-<a id="createenrollintelligentvoiceengine-1"></a>
+
+<a id="createenrollintelligentvoiceengine2"></a>
 
 ## createEnrollIntelligentVoiceEngine
 
@@ -103,6 +108,7 @@ Obtains an [EnrollIntelligentVoiceEngine](arkts-basicservices-intelligentvoice-e
 | [22700101](../errorcode-intelligentVoice.md#22700101-insufficient-memory) | No memory. |
 | [22700102](../errorcode-intelligentVoice.md#22700102-invalid-parameter) | Invalid parameter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -119,3 +125,5 @@ intelligentVoice.createEnrollIntelligentVoiceEngine(engineDescriptor).then((data
   console.error(`Failed to create enrollIntelligentVoice engine, Code:${err.code}, message:${err.message}`);
 });
 ```
+
+<!--DelEnd-->

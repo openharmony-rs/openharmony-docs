@@ -30,7 +30,7 @@ name: string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-StatisticKeyValue-name: string--><!--Device-StatisticKeyValue-name: string-End-->
 
@@ -48,7 +48,7 @@ value: string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-StatisticKeyValue-value: string--><!--Device-StatisticKeyValue-value: string-End-->
 

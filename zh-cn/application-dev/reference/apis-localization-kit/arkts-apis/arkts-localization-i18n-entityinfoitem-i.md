@@ -30,7 +30,7 @@ begin: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-EntityInfoItem-begin: int--><!--Device-EntityInfoItem-begin: int-End-->
 
@@ -48,7 +48,7 @@ end: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-EntityInfoItem-end: int--><!--Device-EntityInfoItem-end: int-End-->
 
@@ -66,7 +66,7 @@ type: string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-EntityInfoItem-type: string--><!--Device-EntityInfoItem-type: string-End-->
 

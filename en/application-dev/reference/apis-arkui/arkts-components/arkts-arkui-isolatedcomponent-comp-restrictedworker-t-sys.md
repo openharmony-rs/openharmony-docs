@@ -4,7 +4,9 @@
 declare type RestrictedWorker = import('../api/@ohos.worker').default.RestrictedWorker
 ```
 
-Indicates restricted worker for run abc.
+Restricted worker that runs the .abc file.
+
+**Type:** import('../api/@ohos.worker').default.RestrictedWorker
 
 **Since:** 12
 
@@ -15,5 +17,3 @@ Indicates restricted worker for run abc.
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
-
-**Type:** import('../api/@ohos.worker').default.RestrictedWorker

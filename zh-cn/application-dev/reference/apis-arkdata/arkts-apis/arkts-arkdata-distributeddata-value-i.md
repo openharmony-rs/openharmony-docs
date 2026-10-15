@@ -10,7 +10,7 @@ interface Value
 
 **废弃版本：** 9
 
-**替代接口：** Value
+**替代接口：** [Value](arkts-arkdata-distributedkvstore-value-i.md)
 
 <!--Device-distributedData-interface Value--><!--Device-distributedData-interface Value-End-->
 
@@ -35,7 +35,7 @@ type: ValueType
 
 **废弃版本：** 9
 
-**替代接口：** type
+**替代接口：** [type](arkts-arkdata-distributedkvstore-value-i.md#type)
 
 <!--Device-Value-type: ValueType--><!--Device-Value-type: ValueType-End-->
 
@@ -55,7 +55,7 @@ value: Uint8Array | string | number | boolean
 
 **废弃版本：** 9
 
-**替代接口：** value
+**替代接口：** [value](arkts-arkdata-distributedkvstore-value-i.md)
 
 <!--Device-Value-value: Uint8Array | string | number | boolean--><!--Device-Value-value: Uint8Array | string | number | boolean-End-->
 

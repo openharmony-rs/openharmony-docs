@@ -12,19 +12,19 @@ Enumerates the event source types that trigger the context menu.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## None
+## LongPress
 
 ```TypeScript
-None = 0
+LongPress = 2
 ```
 
-Other event sources.
+Long press event.
 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ContextMenuSourceType-None = 0--><!--Device-ContextMenuSourceType-None = 0-End-->
+<!--Device-ContextMenuSourceType-LongPress = 2--><!--Device-ContextMenuSourceType-LongPress = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -44,18 +44,18 @@ Mouse event.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## LongPress
+## None
 
 ```TypeScript
-LongPress = 2
+None = 0
 ```
 
-Long press event.
+Other event sources.
 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ContextMenuSourceType-LongPress = 2--><!--Device-ContextMenuSourceType-LongPress = 2-End-->
+<!--Device-ContextMenuSourceType-None = 0--><!--Device-ContextMenuSourceType-None = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

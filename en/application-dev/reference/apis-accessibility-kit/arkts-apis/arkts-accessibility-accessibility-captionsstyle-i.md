@@ -16,7 +16,7 @@ Describes the style of captions.
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
 ## backgroundColor
@@ -37,9 +37,9 @@ Example: opaque red, number: 0xffff0000, string: '#ff0000', '#ff0000ff', '#f00',
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-CaptionsStyle-backgroundColor: int | string--><!--Device-CaptionsStyle-backgroundColor: int | string-End-->
 
@@ -63,9 +63,9 @@ Example: opaque red, number: 0xffff0000, string: '#ff0000', '#ff0000ff', '#f00',
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-CaptionsStyle-fontColor: int | string--><!--Device-CaptionsStyle-fontColor: int | string-End-->
 
@@ -83,9 +83,9 @@ Font edge type of captions.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-CaptionsStyle-fontEdgeType: CaptionsFontEdgeType--><!--Device-CaptionsStyle-fontEdgeType: CaptionsFontEdgeType-End-->
 
@@ -103,9 +103,9 @@ Font family of captions.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-CaptionsStyle-fontFamily: CaptionsFontFamily--><!--Device-CaptionsStyle-fontFamily: CaptionsFontFamily-End-->
 
@@ -123,9 +123,9 @@ Font scale factor of captions, in percentage. The value ranges from 1 to 200.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-CaptionsStyle-fontScale: int--><!--Device-CaptionsStyle-fontScale: int-End-->
 
@@ -149,9 +149,9 @@ Example: opaque red, number: 0xffff0000, string: '#ff0000', '#ff0000ff', '#f00',
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-CaptionsStyle-windowColor: int | string--><!--Device-CaptionsStyle-windowColor: int | string-End-->
 

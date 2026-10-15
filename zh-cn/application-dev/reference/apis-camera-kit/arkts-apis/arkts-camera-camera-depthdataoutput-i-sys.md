@@ -51,6 +51,7 @@ Unsubscribes from depth data availability events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,6 +68,8 @@ function unRegisterDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): 
   depthDataOutput.off('depthDataAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('error')
 
@@ -97,6 +100,7 @@ Unsubscribes from DepthDataOutput error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -104,6 +108,8 @@ function unregisterDepthDataOutputError(depthDataOutput: camera.DepthDataOutput)
   depthDataOutput.off('error');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('depthDataAvailable')
 
@@ -138,6 +144,7 @@ Subscribes to depth data availability events. This API uses an asynchronous call
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -154,6 +161,8 @@ function registerDepthDataAvailable(depthDataOutput: camera.DepthDataOutput): vo
   depthDataOutput.on('depthDataAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('error')
 
@@ -188,6 +197,7 @@ Subscribes to DepthDataOutput error events. This API uses an asynchronous callba
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -201,6 +211,8 @@ function registerDepthDataOutputError(depthDataOutput: camera.DepthDataOutput): 
   depthDataOutput.on('error', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## start
 
@@ -232,6 +244,7 @@ Starts depth data output. This API uses a promise to return the result.
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -245,6 +258,8 @@ function startDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## stop
 
@@ -276,6 +291,7 @@ Stops depth data output. This API uses a promise to return the result.
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -289,3 +305,5 @@ function stopDepthDataOutput(depthDataOutput: camera.DepthDataOutput): void {
   });
 }
 ```
+
+<!--DelEnd-->

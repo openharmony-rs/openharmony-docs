@@ -28,22 +28,6 @@ NONE = 0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## PLAYING
-
-```TypeScript
-PLAYING = 1
-```
-
-页面音视频播放中。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-MediaPlaybackState-PLAYING = 1--><!--Device-MediaPlaybackState-PLAYING = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## PAUSED
 
 ```TypeScript
@@ -57,6 +41,22 @@ PAUSED = 2
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-MediaPlaybackState-PAUSED = 2--><!--Device-MediaPlaybackState-PAUSED = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## PLAYING
+
+```TypeScript
+PLAYING = 1
+```
+
+页面音视频播放中。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-MediaPlaybackState-PLAYING = 1--><!--Device-MediaPlaybackState-PLAYING = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

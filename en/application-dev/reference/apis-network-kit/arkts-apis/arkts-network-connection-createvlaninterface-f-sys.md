@@ -53,6 +53,7 @@ Creates a virtual local area network (VLAN) with specified **vlanId** on a speci
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 | [2100400](../errorcode-net-connection.md#2100400-incorrect-nic-name-non-ethernet) | The input network interface name is incorrect. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,3 +67,5 @@ connection.createVlanInterface(ifName, vlanId).then(() => {
   console.error(`Failed to create vlan. Code:${error.code}, message:${error.message}`);
 });
 ```
+
+<!--DelEnd-->

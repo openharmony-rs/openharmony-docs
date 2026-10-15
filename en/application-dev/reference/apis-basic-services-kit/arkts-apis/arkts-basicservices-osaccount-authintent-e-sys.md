@@ -14,33 +14,17 @@ Enumerates the authentication intents.
 
 **System API:** This is a system API.
 
-## UNLOCK
+## ABANDONED_PIN_AUTH
 
 ```TypeScript
-UNLOCK = 1
+ABANDONED_PIN_AUTH = 4
 ```
 
-Unlock.
+Abandoned PIN authentication. After a user changes the lock screen password, the old PIN is abandoned. If a user forgets the current password, the user can reset the lock screen password after passing the authentication with the abandoned PIN.
 
-**Since:** 12
+**Since:** 20
 
-<!--Device-AuthIntent-UNLOCK = 1--><!--Device-AuthIntent-UNLOCK = 1-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## SILENT_AUTH
-
-```TypeScript
-SILENT_AUTH = 2
-```
-
-Silent authentication.
-
-**Since:** 14
-
-<!--Device-AuthIntent-SILENT_AUTH = 2--><!--Device-AuthIntent-SILENT_AUTH = 2-End-->
+<!--Device-AuthIntent-ABANDONED_PIN_AUTH = 4--><!--Device-AuthIntent-ABANDONED_PIN_AUTH = 4-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -62,17 +46,33 @@ Security question authentication.
 
 **System API:** This is a system API.
 
-## ABANDONED_PIN_AUTH
+## SILENT_AUTH
 
 ```TypeScript
-ABANDONED_PIN_AUTH = 4
+SILENT_AUTH = 2
 ```
 
-Abandoned PIN authentication. After a user changes the lock screen password, the old PIN is abandoned. If a user forgets the current password, the user can reset the lock screen password after passing the authentication with the abandoned PIN.
+Silent authentication.
 
-**Since:** 20
+**Since:** 14
 
-<!--Device-AuthIntent-ABANDONED_PIN_AUTH = 4--><!--Device-AuthIntent-ABANDONED_PIN_AUTH = 4-End-->
+<!--Device-AuthIntent-SILENT_AUTH = 2--><!--Device-AuthIntent-SILENT_AUTH = 2-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## UNLOCK
+
+```TypeScript
+UNLOCK = 1
+```
+
+Unlock.
+
+**Since:** 12
+
+<!--Device-AuthIntent-UNLOCK = 1--><!--Device-AuthIntent-UNLOCK = 1-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

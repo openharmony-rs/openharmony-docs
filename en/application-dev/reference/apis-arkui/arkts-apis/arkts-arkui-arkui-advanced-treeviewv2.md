@@ -12,29 +12,29 @@ import { CallbackParamV2, NodeParamV2, TreeControllerV2, TreeListenerV2, TreeLis
 
 | Name | Description |
 | --- | --- |
-| [TreeControllerV2](arkts-arkui-arkui-advanced-treeviewv2-treecontrollerv2-c.md) | Declare TreeControllerV2 |
-| [TreeListenerManagerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenermanagerv2-c.md) | Declare class TreeListenerManagerV2 |
-| [TreeListenerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenerv2-c.md) | Declare class TreeListenerV2 |
+| [TreeControllerV2](arkts-arkui-arkui-advanced-treeviewv2-treecontrollerv2-c.md) | Controller of the tree view component, used to control the node information of the tree. Bind this object to the tree view component before use. The same controller cannot control multiple tree view components. |
+| [TreeListenerManagerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenermanagerv2-c.md) | Defines the listener manager of the tree view component, which is used to manage changes to tree view listeners. Bind this object to the tree view component before use. The same listener manager cannot control multiple tree view components. This manager is designed in singleton mode. Obtain the globally unique instance through **getInstance**, and then obtain the listener instance through **getTreeListener**. |
+| [TreeListenerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenerv2-c.md) | Defines the listener of the tree view component, which is used to listen for changes to tree view nodes. Bind this object to a tree view component before use. A single tree view listener cannot control multiple tree view components. This listener provides two event registration modes: **on** and **once**. The **on** method continuously listens for events until canceled, while the **once** method listens once and then is automatically destroyed. After use, call **offNodeClick**, **offNodeAdd**, and other methods to cancel listening when the component is destroyed, to avoid memory leaks. |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [TreeViewV2](arkts-arkui-arkui-advanced-treeviewv2-treeviewv2-s.md) | Declare TreeViewV2 Component |
+| [TreeViewV2](arkts-arkui-arkui-advanced-treeviewv2-treeviewv2-s.md) | The **TreeViewV2** component is displayed as a list in a hierarchical manner, which is suitable for displaying nested structures. It has parent nodes and child nodes, can be expanded or collapsed, and supports node addition, deletion, modification, drag-and-drop movement, custom icons, event listening, and context menus. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [CallbackParamV2](arkts-arkui-arkui-advanced-treeviewv2-callbackparamv2-i.md) | Declare CallbackParamV2 |
-| [NodeParamV2](arkts-arkui-arkui-advanced-treeviewv2-nodeparamv2-i.md) | Declare NodeParamV2 |
+| [CallbackParamV2](arkts-arkui-arkui-advanced-treeviewv2-callbackparamv2-i.md) | Defines the node callback parameter API, used to pass parameter information of node event callbacks. |
+| [NodeParamV2](arkts-arkui-arkui-advanced-treeviewv2-nodeparamv2-i.md) | Defines the node parameter API, which is used to configure the properties of a tree node. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Callback method of event registration and processing. |
-| [OnContainerCallback](arkts-arkui-oncontainercallback-t.md) | Set subcomponent binded on tree item. |
+| [OnChangedCallback](arkts-arkui-onchangedcallback-t.md) | Defines the node event callback function. |
+| [OnContainerCallback](arkts-arkui-oncontainercallback-t.md) | Defines a container callback function type, which is used to define child component callbacks bound to tree nodes. |
 
 ## Examples
 

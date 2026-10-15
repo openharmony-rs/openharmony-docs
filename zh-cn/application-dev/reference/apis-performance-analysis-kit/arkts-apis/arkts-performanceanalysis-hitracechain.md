@@ -20,16 +20,16 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [begin](arkts-performanceanalysis-hitracechain-begin-f.md) | 开始跟踪，同步接口。用于在业务流程的起始节点启动分布式跟踪，例如在用户点击按钮发起请求、服务端收到请求开始处理、启动后台任务等场景。 |
-| [clearId](arkts-performanceanalysis-hitracechain-clearid-f.md) | 清除跟踪标识，同步接口。用于在需要切断当前跟踪链的场景，例如业务逻辑分支不再需要跟踪、任务完成后清理跟踪标识、或者在开始新的跟踪前清理旧的跟踪标识。 |
-| [createSpan](arkts-performanceanalysis-hitracechain-createspan-f.md) | 创建跟踪分支，同步接口。用于在业务流程中标记重要的子流程，例如在请求处理过程中的关键步骤、服务端处理链中的各个阶段、或者需要重点关注的业务分支。 |
-| [enableFlag](arkts-performanceanalysis-hitracechain-enableflag-f.md) | 启用HiTraceId中指定的跟踪标志，同步接口。用于在业务流程中动态调整跟踪行为，例如在调试时启用TP_INFO标志以打印埋点信息、在需要跟踪异步调用时启用INCLUDE_ASYNC标志、在需要禁用日志关联时启用DISABLE_LOG标志。 |
-| [end](arkts-performanceanalysis-hitracechain-end-f.md) | 结束跟踪，同步接口。用于在业务流程的结束节点终止分布式跟踪，例如在请求处理完成返回结果、用户操作流程结束、后台任务执行完毕等场景。 |
-| [getId](arkts-performanceanalysis-hitracechain-getid-f.md) | 获取跟踪标识，同步接口。用于在需要传递当前跟踪标识的场景，例如将跟踪标识传递给子线程、传递给其他进程、或者在日志中记录当前跟踪标识。 |
-| [isFlagEnabled](arkts-performanceanalysis-hitracechain-isflagenabled-f.md) | 判断HiTraceId是否启用了跟踪标志flag，同步接口。用于在业务逻辑中根据跟踪标志进行不同处理，例如检查是否启用了INCLUDE_ASYNC标志以决定是否等待异步操作完成、检查是否启用了TP_INFO标志以决定是否打印调试信息。 |
-| [isValid](arkts-performanceanalysis-hitracechain-isvalid-f.md) | 判断HiTraceId是否有效，同步接口。 |
-| [setId](arkts-performanceanalysis-hitracechain-setid-f.md) | 设置跟踪标识，同步接口。用于在需要将外部跟踪标识设置到当前线程的场景，例如从父线程继承跟踪标识、从其他进程接收跟踪标识、从设备间通信获取跟踪标识。 |
-| [tracepoint](arkts-performanceanalysis-hitracechain-tracepoint-f.md) | [@ohos.hiTraceMeter (性能打点)](arkts-performanceanalysis-hitracemeter.md)跟踪信息埋点，同步接口。 |
+| [begin](arkts-performanceanalysis-hitracechain-begin-f.md#begin) | 开始跟踪，同步接口。用于在业务流程的起始节点启动分布式跟踪，例如在用户点击按钮发起请求、服务端收到请求开始处理、启动后台任务等场景。 |
+| [clearId](arkts-performanceanalysis-hitracechain-clearid-f.md#clearid) | 清除跟踪标识，同步接口。用于在需要切断当前跟踪链的场景，例如业务逻辑分支不再需要跟踪、任务完成后清理跟踪标识、或者在开始新的跟踪前清理旧的跟踪标识。 |
+| [createSpan](arkts-performanceanalysis-hitracechain-createspan-f.md#createspan) | 创建跟踪分支，同步接口。用于在业务流程中标记重要的子流程，例如在请求处理过程中的关键步骤、服务端处理链中的各个阶段、或者需要重点关注的业务分支。 |
+| [enableFlag](arkts-performanceanalysis-hitracechain-enableflag-f.md#enableflag) | 启用HiTraceId中指定的跟踪标志，同步接口。用于在业务流程中动态调整跟踪行为，例如在调试时启用TP_INFO标志以打印埋点信息、在需要跟踪异步调用时启用INCLUDE_ASYNC标志、在需要禁用日志关联时启用DISABLE_LOG标志。 |
+| [end](arkts-performanceanalysis-hitracechain-end-f.md#end) | 结束跟踪，同步接口。用于在业务流程的结束节点终止分布式跟踪，例如在请求处理完成返回结果、用户操作流程结束、后台任务执行完毕等场景。 |
+| [getId](arkts-performanceanalysis-hitracechain-getid-f.md#getid) | 获取跟踪标识，同步接口。用于在需要传递当前跟踪标识的场景，例如将跟踪标识传递给子线程、传递给其他进程、或者在日志中记录当前跟踪标识。 |
+| [isFlagEnabled](arkts-performanceanalysis-hitracechain-isflagenabled-f.md#isflagenabled) | 判断HiTraceId是否启用了跟踪标志flag，同步接口。用于在业务逻辑中根据跟踪标志进行不同处理，例如检查是否启用了INCLUDE_ASYNC标志以决定是否等待异步操作完成、检查是否启用了TP_INFO标志以决定是否打印调试信息。 |
+| [isValid](arkts-performanceanalysis-hitracechain-isvalid-f.md#isvalid) | 判断HiTraceId是否有效，同步接口。 |
+| [setId](arkts-performanceanalysis-hitracechain-setid-f.md#setid) | 设置跟踪标识，同步接口。用于在需要将外部跟踪标识设置到当前线程的场景，例如从父线程继承跟踪标识、从其他进程接收跟踪标识、从设备间通信获取跟踪标识。 |
+| [tracepoint](arkts-performanceanalysis-hitracechain-tracepoint-f.md#tracepoint) | [@ohos.hiTraceMeter (性能打点)](arkts-performanceanalysis-hitracemeter.md)跟踪信息埋点，同步接口。 |
 
 ### 接口
 

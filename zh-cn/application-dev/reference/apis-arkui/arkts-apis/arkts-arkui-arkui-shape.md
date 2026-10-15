@@ -1,7 +1,8 @@
 # @ohos.arkui.shape(形状)
 
-[clipShape](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#clipshape)和
- [maskShape](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#maskshape)接口中传入对应的形状，实现对组件的
+@ohos.arkui.shape模块提供了CircleShape、EllipseShape、PathShape、RectShape等多种形状定义，用于在
+ [clipShape](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#clipshape1)和
+ [maskShape](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#maskshape1)接口中传入对应的形状，实现对组件的
  裁剪和遮罩效果。适用于需要将组件裁剪为圆形、椭圆、矩形等特定形状，或通过形状遮罩实现视觉效果的场景，如头像裁剪、图标遮罩等。
 
 
@@ -36,7 +37,7 @@ import { RectShape, CircleShape, EllipseShape, PathShape } from '@kit.ArkUI';
 
 ## 示例
 
-该示例主要演示通过clipShape和maskShape将图片裁剪和遮罩成不同形状。
+该示例主要演示通过[clipShape](../arkui-ts/ts-universal-attributes-sharp-clipping.md#clipshape12)和[maskShape](../arkui-ts/ts-universal-attributes-sharp-clipping.md#maskshape12)将图片裁剪和遮罩成不同形状。
 
 ```TypeScript
 import { CircleShape, EllipseShape, PathShape, RectShape } from '@kit.ArkUI';

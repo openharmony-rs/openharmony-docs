@@ -8,13 +8,7 @@ The swipe refresher is a component used to obtain and load content, typically wi
 
 > **NOTE:** 
 > 
-> - This component and its child components are supported since API version 10. Updates will be marked with a superscript to indicate their
-> 
-> - This component can be used only in the stage model.
-> 
-> - If the **SwipeRefresher** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **SwipeRefresher** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SwipeRefresher** component.
-
-The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
+> - If the **SwipeRefresher** component has [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **SwipeRefresher** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SwipeRefresher** component.
 
 **Since:** 10
 
@@ -42,7 +36,7 @@ The default value is an empty string.
 
 **NOTE:** 
 
-If the text length exceeds the column width, it will be truncated. The Resource type is supported since API version 20.
+If the text length exceeds the column width, it will be truncated.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

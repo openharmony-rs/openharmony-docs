@@ -18,7 +18,7 @@ Obtains the credential state. This API is used to obtain the credential enrollme
 
 **Required permissions:** ohos.permission.ACCESS_BIOMETRIC
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-userAuth-function getEnrolledState(authType: UserAuthType): EnrolledState--><!--Device-userAuth-function getEnrolledState(authType: UserAuthType): EnrolledState-End-->
 
@@ -57,6 +57,6 @@ try {
   console.info('get current enrolled state successfully.');
 } catch (error) {
   const err: BusinessError = error as BusinessError;
-  console.error(`get current enrolled state failed, Code is ${err?.code}, message is ${err?.message}`);
+  console.error(`Failed to get current enrolled state. Code: ${err?.code}, message: ${err?.message}`);
 }
 ```

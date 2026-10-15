@@ -12,20 +12,6 @@ Enumerates the constraints on the source rectangle. It is used to specify whethe
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## STRICT
-
-```TypeScript
-STRICT = 0
-```
-
-The sampling range is strictly confined to the source rectangle, resulting in a slow sampling speed.
-
-**Since:** 12
-
-<!--Device-SrcRectConstraint-STRICT = 0--><!--Device-SrcRectConstraint-STRICT = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## FAST
 
 ```TypeScript
@@ -37,5 +23,19 @@ The sampling range is not limited to the source rectangle and can extend beyond 
 **Since:** 12
 
 <!--Device-SrcRectConstraint-FAST = 1--><!--Device-SrcRectConstraint-FAST = 1-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## STRICT
+
+```TypeScript
+STRICT = 0
+```
+
+The sampling range is strictly confined to the source rectangle, resulting in a slow sampling speed.
+
+**Since:** 12
+
+<!--Device-SrcRectConstraint-STRICT = 0--><!--Device-SrcRectConstraint-STRICT = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

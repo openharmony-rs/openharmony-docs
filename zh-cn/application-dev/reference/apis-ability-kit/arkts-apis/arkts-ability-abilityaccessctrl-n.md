@@ -1,12 +1,10 @@
-# abilityAccessCtrl(程序访问控制管理)
+# abilityAccessCtrl（程序访问控制管理）
 
 ```TypeScript
 declare namespace abilityAccessCtrl
 ```
 
 **起始版本：** 8
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-unnamed-declare namespace abilityAccessCtrl--><!--Device-unnamed-declare namespace abilityAccessCtrl-End-->
 
@@ -24,7 +22,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 
 | 名称 | 说明 |
 | --- | --- |
-| [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md) | 创建程序访问控制管理实例，用于权限校验、运行时权限申请、设置页授权引导和权限状态变化监听等场景。调用成功后返回AtManager实例，可用于后续的权限管理操作。 |
+| [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager) | 创建程序访问控制管理实例，用于权限校验、运行时权限申请、设置页授权引导和权限状态变化监听等场景。调用成功后返回AtManager实例，可用于后续的权限管理操作。 |
 
 ### 接口
 
@@ -47,9 +45,9 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 | 名称 | 说明 |
 | --- | --- |
 | [GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md) | 表示授权状态的枚举。 |
-| [SelectedResult](arkts-ability-abilityaccessctrl-selectedresult-e.md) | 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../../security/AccessToken/app-permission-mgmt-overview.md)。 |
 | [PermissionStateChangeType](arkts-ability-abilityaccessctrl-permissionstatechangetype-e.md) | 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../../security/AccessToken/app-permission-mgmt-overview.md)。 |
 | [PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md) | 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../../security/AccessToken/app-permission-mgmt-overview.md)。 |
+| [SelectedResult](arkts-ability-abilityaccessctrl-selectedresult-e.md) | 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../../security/AccessToken/app-permission-mgmt-overview.md)。 |
 | [SwitchType](arkts-ability-abilityaccessctrl-switchtype-e.md) | 程序访问控制提供应用程序的权限校验和管理能力，支持应用在访问受保护资源前进行权限状态判断、运行时授权申请、设置页授权引导和权限状态变化监听。权限分为system_grant（系统自动授权）、user_grant（需用户手动授权）和manual_settings（手动设置授权）三类，应用需在配置文件中声明所需权限。权限管理机制详见[应用权限管控概述](../../../security/AccessToken/app-permission-mgmt-overview.md)。 |
 
 <!--Del-->

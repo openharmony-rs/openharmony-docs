@@ -14,33 +14,97 @@ Enumerates the error codes for device-cloud sharing.
 
 **System API:** This is a system API.
 
-## SUCCESS
+## CLOUD_DISABLED
 
 ```TypeScript
-SUCCESS = 0
+CLOUD_DISABLED = 8
 ```
 
-Operation successful. Use the enum name rather than the enum value.
+Cloud is disabled. Use the enum name rather than the enum value.
 
 **Since:** 11
 
-<!--Device-SharingCode-SUCCESS = 0--><!--Device-SharingCode-SUCCESS = 0-End-->
+<!--Device-SharingCode-CLOUD_DISABLED = 8--><!--Device-SharingCode-CLOUD_DISABLED = 8-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
 
-## REPEATED_REQUEST
+## CUSTOM_ERROR
 
 ```TypeScript
-REPEATED_REQUEST = 1
+CUSTOM_ERROR = 1000
 ```
 
-Repeated invitation, which means the participant has been invited. Use the enum name rather than the enum value.
+Customized error. Error codes smaller than **1000** are used to define internal error codes, and error codes greater than **1000** are used to customize error codes. Use the enum name rather than the enum value.
 
 **Since:** 11
 
-<!--Device-SharingCode-REPEATED_REQUEST = 1--><!--Device-SharingCode-REPEATED_REQUEST = 1-End-->
+<!--Device-SharingCode-CUSTOM_ERROR = 1000--><!--Device-SharingCode-CUSTOM_ERROR = 1000-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**System API:** This is a system API.
+
+## INNER_ERROR
+
+```TypeScript
+INNER_ERROR = 10
+```
+
+System internal error. Use the enum name rather than the enum value.
+
+**Since:** 11
+
+<!--Device-SharingCode-INNER_ERROR = 10--><!--Device-SharingCode-INNER_ERROR = 10-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**System API:** This is a system API.
+
+## INVALID_ARGS
+
+```TypeScript
+INVALID_ARGS = 6
+```
+
+Invalid parameter. Use the enum name rather than the enum value.
+
+**Since:** 11
+
+<!--Device-SharingCode-INVALID_ARGS = 6--><!--Device-SharingCode-INVALID_ARGS = 6-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**System API:** This is a system API.
+
+## INVALID_INVITATION
+
+```TypeScript
+INVALID_INVITATION = 11
+```
+
+Invalid invitation, which means the current invitation has expired or does not exist. Use the enum name rather than the enum value.
+
+**Since:** 11
+
+<!--Device-SharingCode-INVALID_INVITATION = 11--><!--Device-SharingCode-INVALID_INVITATION = 11-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**System API:** This is a system API.
+
+## NETWORK_ERROR
+
+```TypeScript
+NETWORK_ERROR = 7
+```
+
+Network error. Use the enum name rather than the enum value.
+
+**Since:** 11
+
+<!--Device-SharingCode-NETWORK_ERROR = 7--><!--Device-SharingCode-NETWORK_ERROR = 7-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -94,65 +158,33 @@ The number of device-cloud sharing times has reached the limit for the current a
 
 **System API:** This is a system API.
 
-## TOO_MANY_PARTICIPANTS
+## RATE_LIMIT
 
 ```TypeScript
-TOO_MANY_PARTICIPANTS = 5
+RATE_LIMIT = 12
 ```
 
-The number of device-cloud sharing participants has reached the limit. Use the enum name rather than the enum value.
+The amount of data to be synced at a time has reached the limit. Use the enum name rather than the enum value.
 
 **Since:** 11
 
-<!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5--><!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5-End-->
+<!--Device-SharingCode-RATE_LIMIT = 12--><!--Device-SharingCode-RATE_LIMIT = 12-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
 
-## INVALID_ARGS
+## REPEATED_REQUEST
 
 ```TypeScript
-INVALID_ARGS = 6
+REPEATED_REQUEST = 1
 ```
 
-Invalid parameter. Use the enum name rather than the enum value.
+Repeated invitation, which means the participant has been invited. Use the enum name rather than the enum value.
 
 **Since:** 11
 
-<!--Device-SharingCode-INVALID_ARGS = 6--><!--Device-SharingCode-INVALID_ARGS = 6-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**System API:** This is a system API.
-
-## NETWORK_ERROR
-
-```TypeScript
-NETWORK_ERROR = 7
-```
-
-Network error. Use the enum name rather than the enum value.
-
-**Since:** 11
-
-<!--Device-SharingCode-NETWORK_ERROR = 7--><!--Device-SharingCode-NETWORK_ERROR = 7-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**System API:** This is a system API.
-
-## CLOUD_DISABLED
-
-```TypeScript
-CLOUD_DISABLED = 8
-```
-
-Cloud is disabled. Use the enum name rather than the enum value.
-
-**Since:** 11
-
-<!--Device-SharingCode-CLOUD_DISABLED = 8--><!--Device-SharingCode-CLOUD_DISABLED = 8-End-->
+<!--Device-SharingCode-REPEATED_REQUEST = 1--><!--Device-SharingCode-REPEATED_REQUEST = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -174,65 +206,33 @@ Server error. Use the enum name rather than the enum value.
 
 **System API:** This is a system API.
 
-## INNER_ERROR
+## SUCCESS
 
 ```TypeScript
-INNER_ERROR = 10
+SUCCESS = 0
 ```
 
-System internal error. Use the enum name rather than the enum value.
+Operation successful. Use the enum name rather than the enum value.
 
 **Since:** 11
 
-<!--Device-SharingCode-INNER_ERROR = 10--><!--Device-SharingCode-INNER_ERROR = 10-End-->
+<!--Device-SharingCode-SUCCESS = 0--><!--Device-SharingCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **System API:** This is a system API.
 
-## INVALID_INVITATION
+## TOO_MANY_PARTICIPANTS
 
 ```TypeScript
-INVALID_INVITATION = 11
+TOO_MANY_PARTICIPANTS = 5
 ```
 
-Invalid invitation, which means the current invitation has expired or does not exist. Use the enum name rather than the enum value.
+The number of device-cloud sharing participants has reached the limit. Use the enum name rather than the enum value.
 
 **Since:** 11
 
-<!--Device-SharingCode-INVALID_INVITATION = 11--><!--Device-SharingCode-INVALID_INVITATION = 11-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**System API:** This is a system API.
-
-## RATE_LIMIT
-
-```TypeScript
-RATE_LIMIT = 12
-```
-
-The amount of data to be synced at a time has reached the limit. Use the enum name rather than the enum value.
-
-**Since:** 11
-
-<!--Device-SharingCode-RATE_LIMIT = 12--><!--Device-SharingCode-RATE_LIMIT = 12-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**System API:** This is a system API.
-
-## CUSTOM_ERROR
-
-```TypeScript
-CUSTOM_ERROR = 1000
-```
-
-Customized error. Error codes smaller than **1000** are used to define internal error codes, and error codes greater than **1000** are used to customize error codes. Use the enum name rather than the enum value.
-
-**Since:** 11
-
-<!--Device-SharingCode-CUSTOM_ERROR = 1000--><!--Device-SharingCode-CUSTOM_ERROR = 1000-End-->
+<!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5--><!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

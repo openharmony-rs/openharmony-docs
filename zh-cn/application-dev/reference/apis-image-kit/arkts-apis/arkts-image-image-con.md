@@ -3,208 +3,234 @@
 ## CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW
 
 ```TypeScript
-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW = 7
+const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW : number
 ```
 
-拍摄模式：前置摄像头夜景模式。
+拍摄模式：前置摄像头夜景模式，取值为7。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW = 7--><!--Device-image-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW = 7-End-->
+<!--Device-image-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW : int--><!--Device-image-const CAPTURE_MODE_FRONT_LENS_NIGHT_VIEW : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_LIGHT_GRAFFITI
 
 ```TypeScript
-const CAPTURE_MODE_LIGHT_GRAFFITI = 10
+const CAPTURE_MODE_LIGHT_GRAFFITI : number
 ```
 
-拍摄模式：轻涂鸦模式。
+拍摄模式：光绘涂鸦模式，取值为10。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_LIGHT_GRAFFITI = 10--><!--Device-image-const CAPTURE_MODE_LIGHT_GRAFFITI = 10-End-->
+<!--Device-image-const CAPTURE_MODE_LIGHT_GRAFFITI : int--><!--Device-image-const CAPTURE_MODE_LIGHT_GRAFFITI : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_MOVING_PHOTO
 
 ```TypeScript
-const CAPTURE_MODE_MOVING_PHOTO = 20
+const CAPTURE_MODE_MOVING_PHOTO : number
 ```
 
-拍摄模式：动态照片模式。
+拍摄模式：动态照片模式，取值为20。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_MOVING_PHOTO = 20--><!--Device-image-const CAPTURE_MODE_MOVING_PHOTO = 20-End-->
+<!--Device-image-const CAPTURE_MODE_MOVING_PHOTO : int--><!--Device-image-const CAPTURE_MODE_MOVING_PHOTO : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_PANORAMA
 
 ```TypeScript
-const CAPTURE_MODE_PANORAMA = 8
+const CAPTURE_MODE_PANORAMA : number
 ```
 
-拍摄模式：全景模式。
+拍摄模式：全景模式，取值为8。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_PANORAMA = 8--><!--Device-image-const CAPTURE_MODE_PANORAMA = 8-End-->
+<!--Device-image-const CAPTURE_MODE_PANORAMA : int--><!--Device-image-const CAPTURE_MODE_PANORAMA : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_PORTRAIT
 
 ```TypeScript
-const CAPTURE_MODE_PORTRAIT = 23
+const CAPTURE_MODE_PORTRAIT : number
 ```
 
-拍摄模式：人像模式。
+拍摄模式：人像模式，取值为23。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_PORTRAIT = 23--><!--Device-image-const CAPTURE_MODE_PORTRAIT = 23-End-->
+<!--Device-image-const CAPTURE_MODE_PORTRAIT : int--><!--Device-image-const CAPTURE_MODE_PORTRAIT : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_PROFESSIONAL
 
 ```TypeScript
-const CAPTURE_MODE_PROFESSIONAL = 2
+const CAPTURE_MODE_PROFESSIONAL : number
 ```
 
-拍摄模式：专业模式。
+拍摄模式：专业模式，取值为2。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_PROFESSIONAL = 2--><!--Device-image-const CAPTURE_MODE_PROFESSIONAL = 2-End-->
+<!--Device-image-const CAPTURE_MODE_PROFESSIONAL : int--><!--Device-image-const CAPTURE_MODE_PROFESSIONAL : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_REAR_LENS_NIGHT_VIEW
 
 ```TypeScript
-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW = 42
+const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW : number
 ```
 
-拍摄模式：后镜头夜景模式。
+拍摄模式：后镜头夜景模式，取值为42。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW = 42--><!--Device-image-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW = 42-End-->
+<!--Device-image-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW : int--><!--Device-image-const CAPTURE_MODE_REAR_LENS_NIGHT_VIEW : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_SILKY_WATER
 
 ```TypeScript
-const CAPTURE_MODE_SILKY_WATER = 11
+const CAPTURE_MODE_SILKY_WATER : number
 ```
 
-拍摄模式：缎面感水流模式。
+拍摄模式：缎面感水流模式，取值为11。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_SILKY_WATER = 11--><!--Device-image-const CAPTURE_MODE_SILKY_WATER = 11-End-->
+<!--Device-image-const CAPTURE_MODE_SILKY_WATER : int--><!--Device-image-const CAPTURE_MODE_SILKY_WATER : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_SNAP_SHOT
 
 ```TypeScript
-const CAPTURE_MODE_SNAP_SHOT = 62
+const CAPTURE_MODE_SNAP_SHOT : number
 ```
 
-拍摄模式：抓拍模式。
+拍摄模式：抓拍模式，取值为62。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_SNAP_SHOT = 62--><!--Device-image-const CAPTURE_MODE_SNAP_SHOT = 62-End-->
+<!--Device-image-const CAPTURE_MODE_SNAP_SHOT : int--><!--Device-image-const CAPTURE_MODE_SNAP_SHOT : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_STAR_TRACK
 
 ```TypeScript
-const CAPTURE_MODE_STAR_TRACK = 12
+const CAPTURE_MODE_STAR_TRACK : number
 ```
 
-拍摄模式：星轨模式。
+拍摄模式：星轨模式，取值为12。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_STAR_TRACK = 12--><!--Device-image-const CAPTURE_MODE_STAR_TRACK = 12-End-->
+<!--Device-image-const CAPTURE_MODE_STAR_TRACK : int--><!--Device-image-const CAPTURE_MODE_STAR_TRACK : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_SUPER_MACRO
 
 ```TypeScript
-const CAPTURE_MODE_SUPER_MACRO = 47
+const CAPTURE_MODE_SUPER_MACRO : number
 ```
 
-拍摄模式：超微距模式。
+拍摄模式：超微距模式，取值为47。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_SUPER_MACRO = 47--><!--Device-image-const CAPTURE_MODE_SUPER_MACRO = 47-End-->
+<!--Device-image-const CAPTURE_MODE_SUPER_MACRO : int--><!--Device-image-const CAPTURE_MODE_SUPER_MACRO : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_TAIL_LIGHT
 
 ```TypeScript
-const CAPTURE_MODE_TAIL_LIGHT = 9
+const CAPTURE_MODE_TAIL_LIGHT : number
 ```
 
-拍摄模式：尾灯模式。
+拍摄模式：尾灯模式，取值为9。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_TAIL_LIGHT = 9--><!--Device-image-const CAPTURE_MODE_TAIL_LIGHT = 9-End-->
+<!--Device-image-const CAPTURE_MODE_TAIL_LIGHT : int--><!--Device-image-const CAPTURE_MODE_TAIL_LIGHT : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## CAPTURE_MODE_WIDEAPERTURE
 
 ```TypeScript
-const CAPTURE_MODE_WIDEAPERTURE = 19
+const CAPTURE_MODE_WIDEAPERTURE : number
 ```
 
-拍摄模式：广角模式。
+拍摄模式：大光圈模式，取值为19。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const CAPTURE_MODE_WIDEAPERTURE = 19--><!--Device-image-const CAPTURE_MODE_WIDEAPERTURE = 19-End-->
+<!--Device-image-const CAPTURE_MODE_WIDEAPERTURE : int--><!--Device-image-const CAPTURE_MODE_WIDEAPERTURE : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -265,32 +291,36 @@ TIFF图像格式参数命名空间。Namespace uri: 'http://ns.adobe.com/tiff/1.
 ## XMAGE_WATERMARK_MODE_AT_THE_BOTTOM
 
 ```TypeScript
-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM = 9
+const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM : number
 ```
 
-XMAGE水印模式：XMAGE水印固定位于图像底部中央。
+XMAGE水印模式：水印位于图像底部，取值为9。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM = 9--><!--Device-image-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM = 9-End-->
+<!--Device-image-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM : int--><!--Device-image-const XMAGE_WATERMARK_MODE_AT_THE_BOTTOM : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
 ## XMAGE_WATERMARK_MODE_BORDER
 
 ```TypeScript
-const XMAGE_WATERMARK_MODE_BORDER = 10
+const XMAGE_WATERMARK_MODE_BORDER : number
 ```
 
-XMAGE水印模式：XMAGE水印会自动调整到边界位置，系统根据图像内容选择最适合的边界区域。
+XMAGE水印模式：水印位于图像边缘，取值为10。
+
+**类型：** number
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-image-const XMAGE_WATERMARK_MODE_BORDER = 10--><!--Device-image-const XMAGE_WATERMARK_MODE_BORDER = 10-End-->
+<!--Device-image-const XMAGE_WATERMARK_MODE_BORDER : int--><!--Device-image-const XMAGE_WATERMARK_MODE_BORDER : int-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

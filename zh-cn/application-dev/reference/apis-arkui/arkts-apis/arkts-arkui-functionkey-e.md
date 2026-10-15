@@ -12,6 +12,78 @@ declare enum FunctionKey
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## DPAD_DOWN
+
+```TypeScript
+DPAD_DOWN
+```
+
+表示键盘上DOWN方向键。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-DPAD_DOWN--><!--Device-FunctionKey-DPAD_DOWN-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DPAD_LEFT
+
+```TypeScript
+DPAD_LEFT
+```
+
+表示键盘上LEFT方向键。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-DPAD_LEFT--><!--Device-FunctionKey-DPAD_LEFT-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DPAD_RIGHT
+
+```TypeScript
+DPAD_RIGHT
+```
+
+表示键盘上RIGHT方向键。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-DPAD_RIGHT--><!--Device-FunctionKey-DPAD_RIGHT-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DPAD_UP
+
+```TypeScript
+DPAD_UP
+```
+
+表示键盘上UP方向键。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-DPAD_UP--><!--Device-FunctionKey-DPAD_UP-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## ESC
 
 ```TypeScript
@@ -45,6 +117,60 @@ F1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FunctionKey-F1--><!--Device-FunctionKey-F1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## F10
+
+```TypeScript
+F10
+```
+
+表示键盘上F10功能键。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-F10--><!--Device-FunctionKey-F10-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## F11
+
+```TypeScript
+F11
+```
+
+表示键盘上F11功能键。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-F11--><!--Device-FunctionKey-F11-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## F12
+
+```TypeScript
+F12
+```
+
+表示键盘上F12功能键。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FunctionKey-F12--><!--Device-FunctionKey-F12-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,60 +318,6 @@ F9
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## F10
-
-```TypeScript
-F10
-```
-
-表示键盘上F10功能键。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FunctionKey-F10--><!--Device-FunctionKey-F10-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## F11
-
-```TypeScript
-F11
-```
-
-表示键盘上F11功能键。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FunctionKey-F11--><!--Device-FunctionKey-F11-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## F12
-
-```TypeScript
-F12
-```
-
-表示键盘上F12功能键。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FunctionKey-F12--><!--Device-FunctionKey-F12-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## TAB
 
 ```TypeScript
@@ -261,77 +333,5 @@ TAB
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-FunctionKey-TAB--><!--Device-FunctionKey-TAB-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DPAD_UP
-
-```TypeScript
-DPAD_UP
-```
-
-表示键盘上UP方向键。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-FunctionKey-DPAD_UP--><!--Device-FunctionKey-DPAD_UP-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DPAD_DOWN
-
-```TypeScript
-DPAD_DOWN
-```
-
-表示键盘上DOWN方向键。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-FunctionKey-DPAD_DOWN--><!--Device-FunctionKey-DPAD_DOWN-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DPAD_LEFT
-
-```TypeScript
-DPAD_LEFT
-```
-
-表示键盘上LEFT方向键。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-FunctionKey-DPAD_LEFT--><!--Device-FunctionKey-DPAD_LEFT-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DPAD_RIGHT
-
-```TypeScript
-DPAD_RIGHT
-```
-
-表示键盘上RIGHT方向键。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-FunctionKey-DPAD_RIGHT--><!--Device-FunctionKey-DPAD_RIGHT-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

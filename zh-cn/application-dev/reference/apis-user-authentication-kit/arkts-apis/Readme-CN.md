@@ -1,142 +1,142 @@
 # ArkTS API<!--arkts-userauthenticationkit-->
 
 <!--Del-->
-- [@ohos.app.ability.UserAuthExtensionAbility(用户认证扩展能力组件)](arkts-userauthentication-app-ability-userauthextensionability.md)<!--DelEnd-->
+- [@ohos.app.ability.UserAuthExtensionAbility（用户认证扩展能力组件）](arkts-userauthentication-app-ability-userauthextensionability.md)<!--DelEnd-->
   <!--Del-->
-  - [UserAuthExtensionAbility(系统接口)](arkts-userauthentication-app-ability-userauthextensionability-userauthextensionability-c-sys.md)<!--DelEnd-->
+  - [UserAuthExtensionAbility（系统接口）](arkts-userauthentication-app-ability-userauthextensionability-userauthextensionability-c-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.userIAM.companionDeviceAuth(伴随设备认证)](arkts-userauthentication-useriam-companiondeviceauth.md)<!--DelEnd-->
+- [@ohos.userIAM.companionDeviceAuth（伴随设备认证）](arkts-userauthentication-useriam-companiondeviceauth.md)<!--DelEnd-->
   <!--Del-->
-  - [getStatusMonitor(系统接口)](arkts-userauthentication-companiondeviceauth-getstatusmonitor-f-sys.md)<!--DelEnd-->
+  - [getStatusMonitor（系统接口）](arkts-userauthentication-companiondeviceauth-getstatusmonitor-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [registerDeviceSelectCallback(系统接口)](arkts-userauthentication-companiondeviceauth-registerdeviceselectcallback-f-sys.md)<!--DelEnd-->
+  - [registerDeviceSelectCallback（系统接口）](arkts-userauthentication-companiondeviceauth-registerdeviceselectcallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [registerPasscodePromptCallback(系统接口)](arkts-userauthentication-companiondeviceauth-registerpasscodepromptcallback-f-sys.md)<!--DelEnd-->
+  - [registerPasscodePromptCallback（系统接口）](arkts-userauthentication-companiondeviceauth-registerpasscodepromptcallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [unregisterDeviceSelectCallback(系统接口)](arkts-userauthentication-companiondeviceauth-unregisterdeviceselectcallback-f-sys.md)<!--DelEnd-->
+  - [unregisterDeviceSelectCallback（系统接口）](arkts-userauthentication-companiondeviceauth-unregisterdeviceselectcallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [unregisterPasscodePromptCallback(系统接口)](arkts-userauthentication-companiondeviceauth-unregisterpasscodepromptcallback-f-sys.md)<!--DelEnd-->
+  - [unregisterPasscodePromptCallback（系统接口）](arkts-userauthentication-companiondeviceauth-unregisterpasscodepromptcallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [updateEnabledBusinessIds(系统接口)](arkts-userauthentication-companiondeviceauth-updateenabledbusinessids-f-sys.md)<!--DelEnd-->
+  - [updateEnabledBusinessIds（系统接口）](arkts-userauthentication-companiondeviceauth-updateenabledbusinessids-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [ContinuousAuthParam(系统接口)](arkts-userauthentication-companiondeviceauth-continuousauthparam-i-sys.md)<!--DelEnd-->
+  - [ContinuousAuthParam（系统接口）](arkts-userauthentication-companiondeviceauth-continuousauthparam-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [DeviceKey(系统接口)](arkts-userauthentication-companiondeviceauth-devicekey-i-sys.md)<!--DelEnd-->
+  - [DeviceKey（系统接口）](arkts-userauthentication-companiondeviceauth-devicekey-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [DeviceSelectResult(系统接口)](arkts-userauthentication-companiondeviceauth-deviceselectresult-i-sys.md)<!--DelEnd-->
+  - [DeviceSelectResult（系统接口）](arkts-userauthentication-companiondeviceauth-deviceselectresult-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [DeviceStatus(系统接口)](arkts-userauthentication-companiondeviceauth-devicestatus-i-sys.md)<!--DelEnd-->
+  - [DeviceStatus（系统接口）](arkts-userauthentication-companiondeviceauth-devicestatus-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [PasscodePromptParams(系统接口)](arkts-userauthentication-companiondeviceauth-passcodepromptparams-i-sys.md)<!--DelEnd-->
+  - [PasscodePromptParams（系统接口）](arkts-userauthentication-companiondeviceauth-passcodepromptparams-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [StatusMonitor(系统接口)](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md)<!--DelEnd-->
+  - [StatusMonitor（系统接口）](arkts-userauthentication-companiondeviceauth-statusmonitor-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [TemplateStatus(系统接口)](arkts-userauthentication-companiondeviceauth-templatestatus-i-sys.md)<!--DelEnd-->
+  - [TemplateStatus（系统接口）](arkts-userauthentication-companiondeviceauth-templatestatus-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [AvailableDeviceStatusCallback(系统接口)](arkts-userauthentication-companiondeviceauth-availabledevicestatuscallback-t-sys.md)<!--DelEnd-->
+  - [AvailableDeviceStatusCallback（系统接口）](arkts-userauthentication-companiondeviceauth-availabledevicestatuscallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [ContinuousAuthStatusCallback(系统接口)](arkts-userauthentication-companiondeviceauth-continuousauthstatuscallback-t-sys.md)<!--DelEnd-->
+  - [ContinuousAuthStatusCallback（系统接口）](arkts-userauthentication-companiondeviceauth-continuousauthstatuscallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [DeviceSelectCallback(系统接口)](arkts-userauthentication-companiondeviceauth-deviceselectcallback-t-sys.md)<!--DelEnd-->
+  - [DeviceSelectCallback（系统接口）](arkts-userauthentication-companiondeviceauth-deviceselectcallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [PasscodePromptCallback(系统接口)](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md)<!--DelEnd-->
+  - [PasscodePromptCallback（系统接口）](arkts-userauthentication-companiondeviceauth-passcodepromptcallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [PasscodeSubmitCallback(系统接口)](arkts-userauthentication-companiondeviceauth-passcodesubmitcallback-t-sys.md)<!--DelEnd-->
+  - [PasscodeSubmitCallback（系统接口）](arkts-userauthentication-companiondeviceauth-passcodesubmitcallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [TemplateStatusCallback(系统接口)](arkts-userauthentication-companiondeviceauth-templatestatuscallback-t-sys.md)<!--DelEnd-->
+  - [TemplateStatusCallback（系统接口）](arkts-userauthentication-companiondeviceauth-templatestatuscallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [BusinessId(系统接口)](arkts-userauthentication-companiondeviceauth-businessid-e-sys.md)<!--DelEnd-->
+  - [BusinessId（系统接口）](arkts-userauthentication-companiondeviceauth-businessid-e-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [DeviceIdType(系统接口)](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md)<!--DelEnd-->
+  - [DeviceIdType（系统接口）](arkts-userauthentication-companiondeviceauth-deviceidtype-e-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [SelectPurpose(系统接口)](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md)<!--DelEnd-->
+  - [SelectPurpose（系统接口）](arkts-userauthentication-companiondeviceauth-selectpurpose-e-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.userIAM.faceAuth(人脸认证)](arkts-userauthentication-useriam-faceauth.md)<!--DelEnd-->
+- [@ohos.userIAM.faceAuth（人脸认证）](arkts-userauthentication-useriam-faceauth.md)<!--DelEnd-->
   <!--Del-->
-  - [FaceAuthManager(系统接口)](arkts-userauthentication-faceauth-faceauthmanager-c-sys.md)<!--DelEnd-->
+  - [FaceAuthManager（系统接口）](arkts-userauthentication-faceauth-faceauthmanager-c-sys.md)<!--DelEnd-->
 <!--Del-->
-- [@ohos.userIAM.userAccessCtrl(用户访问控制)](arkts-userauthentication-useriam-useraccessctrl.md)<!--DelEnd-->
+- [@ohos.userIAM.userAccessCtrl（用户访问控制）](arkts-userauthentication-useriam-useraccessctrl.md)<!--DelEnd-->
   <!--Del-->
-  - [verifyAuthToken(系统接口)](arkts-userauthentication-useraccessctrl-verifyauthtoken-f-sys.md)<!--DelEnd-->
+  - [verifyAuthToken（系统接口）](arkts-userauthentication-useraccessctrl-verifyauthtoken-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [AuthToken(系统接口)](arkts-userauthentication-useraccessctrl-authtoken-i-sys.md)<!--DelEnd-->
+  - [AuthToken（系统接口）](arkts-userauthentication-useraccessctrl-authtoken-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [AuthTokenType(系统接口)](arkts-userauthentication-useraccessctrl-authtokentype-e-sys.md)<!--DelEnd-->
-- [@ohos.userIAM.userAuth(用户认证)](arkts-userauthentication-useriam-userauth.md)
-  - [getAuthenticator](arkts-userauthentication-userauth-getauthenticator-f.md)
-  - [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
+  - [AuthTokenType（系统接口）](arkts-userauthentication-useraccessctrl-authtokentype-e-sys.md)<!--DelEnd-->
+- [@ohos.userIAM.userAuth（用户认证）](arkts-userauthentication-useriam-userauth.md)
   - [getAuthLockState](arkts-userauthentication-userauth-getauthlockstate-f.md)
   - [getAvailableStatus](arkts-userauthentication-userauth-getavailablestatus-f.md)
   - [getEnrolledState](arkts-userauthentication-userauth-getenrolledstate-f.md)
   - [getUserAuthInstance](arkts-userauthentication-userauth-getuserauthinstance-f.md)
   <!--Del-->
-  - [getUserAuthWidgetMgr(系统接口)](arkts-userauthentication-userauth-getuserauthwidgetmgr-f-sys.md)<!--DelEnd-->
+  - [getUserAuthWidgetMgr（系统接口）](arkts-userauthentication-userauth-getuserauthwidgetmgr-f-sys.md)<!--DelEnd-->
   - [getUserRecognitionMgr](arkts-userauthentication-userauth-getuserrecognitionmgr-f.md)
   <!--Del-->
-  - [queryReusableAuthResult(系统接口)](arkts-userauthentication-userauth-queryreusableauthresult-f-sys.md)<!--DelEnd-->
+  - [queryReusableAuthResult（系统接口）](arkts-userauthentication-userauth-queryreusableauthresult-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [registerRemoteAuthCallback(系统接口)](arkts-userauthentication-userauth-registerremoteauthcallback-f-sys.md)<!--DelEnd-->
+  - [registerRemoteAuthCallback（系统接口）](arkts-userauthentication-userauth-registerremoteauthcallback-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [sendNotice(系统接口)](arkts-userauthentication-userauth-sendnotice-f-sys.md)<!--DelEnd-->
+  - [sendNotice（系统接口）](arkts-userauthentication-userauth-sendnotice-f-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [unregisterRemoteAuthCallback(系统接口)](arkts-userauthentication-userauth-unregisterremoteauthcallback-f-sys.md)<!--DelEnd-->
+  - [unregisterRemoteAuthCallback（系统接口）](arkts-userauthentication-userauth-unregisterremoteauthcallback-f-sys.md)<!--DelEnd-->
+  - [getAuthenticator](arkts-userauthentication-userauth-getauthenticator-f.md)
+  - [getAuthInstance](arkts-userauthentication-userauth-getauthinstance-f.md)
   - [UserAuth](arkts-userauthentication-userauth-userauth-c.md)
-  - [Authenticator](arkts-userauthentication-userauth-authenticator-i.md)
-  - [AuthEvent](arkts-userauthentication-userauth-authevent-i.md)
-  - [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
   - [AuthLockState](arkts-userauthentication-userauth-authlockstate-i.md)
   - [AuthParam](arkts-userauthentication-userauth-authparam-i.md)
   <!--Del-->
-  - [AuthParam(系统接口)](arkts-userauthentication-userauth-authparam-i-sys.md)<!--DelEnd-->
-  - [AuthResult](arkts-userauthentication-userauth-authresult-i.md)
-  - [AuthResultInfo](arkts-userauthentication-userauth-authresultinfo-i.md)
+  - [AuthParam（系统接口）](arkts-userauthentication-userauth-authparam-i-sys.md)<!--DelEnd-->
   - [AuthTipInfo](arkts-userauthentication-userauth-authtipinfo-i.md)
   - [EnrolledState](arkts-userauthentication-userauth-enrolledstate-i.md)
   - [IAuthCallback](arkts-userauthentication-userauth-iauthcallback-i.md)
   <!--Del-->
-  - [IAuthWidgetCallback(系统接口)](arkts-userauthentication-userauth-iauthwidgetcallback-i-sys.md)<!--DelEnd-->
+  - [IAuthWidgetCallback（系统接口）](arkts-userauthentication-userauth-iauthwidgetcallback-i-sys.md)<!--DelEnd-->
   <!--Del-->
-  - [IRemoteAuthCallback(系统接口)](arkts-userauthentication-userauth-iremoteauthcallback-i-sys.md)<!--DelEnd-->
-  - [IUserAuthCallback](arkts-userauthentication-userauth-iuserauthcallback-i.md)
+  - [IRemoteAuthCallback（系统接口）](arkts-userauthentication-userauth-iremoteauthcallback-i-sys.md)<!--DelEnd-->
   - [ReuseUnlockResult](arkts-userauthentication-userauth-reuseunlockresult-i.md)
-  - [TipInfo](arkts-userauthentication-userauth-tipinfo-i.md)
   - [UserAuthInstance](arkts-userauthentication-userauth-userauthinstance-i.md)
   - [UserAuthResult](arkts-userauthentication-userauth-userauthresult-i.md)
   <!--Del-->
-  - [UserAuthWidgetMgr(系统接口)](arkts-userauthentication-userauth-userauthwidgetmgr-i-sys.md)<!--DelEnd-->
+  - [UserAuthWidgetMgr（系统接口）](arkts-userauthentication-userauth-userauthwidgetmgr-i-sys.md)<!--DelEnd-->
   - [UserRecognitionMgr](arkts-userauthentication-userauth-userrecognitionmgr-i.md)
   - [UserRecognitionResult](arkts-userauthentication-userauth-userrecognitionresult-i.md)
   - [WidgetParam](arkts-userauthentication-userauth-widgetparam-i.md)
   <!--Del-->
-  - [WidgetParam(系统接口)](arkts-userauthentication-userauth-widgetparam-i-sys.md)<!--DelEnd-->
-  - [AuthEventKey](arkts-userauthentication-userauth-autheventkey-t.md)
+  - [WidgetParam（系统接口）](arkts-userauthentication-userauth-widgetparam-i-sys.md)<!--DelEnd-->
+  - [Authenticator](arkts-userauthentication-userauth-authenticator-i.md)
+  - [AuthEvent](arkts-userauthentication-userauth-authevent-i.md)
+  - [AuthInstance](arkts-userauthentication-userauth-authinstance-i.md)
+  - [AuthResult](arkts-userauthentication-userauth-authresult-i.md)
+  - [AuthResultInfo](arkts-userauthentication-userauth-authresultinfo-i.md)
+  - [IUserAuthCallback](arkts-userauthentication-userauth-iuserauthcallback-i.md)
+  - [TipInfo](arkts-userauthentication-userauth-tipinfo-i.md)
   - [AuthTipCallback](arkts-userauthentication-userauth-authtipcallback-t.md)
-  - [AuthType](arkts-userauthentication-userauth-authtype-t.md)
-  - [EventInfo](arkts-userauthentication-userauth-eventinfo-t.md)
   <!--Del-->
-  - [ResultCallback(系统接口)](arkts-userauthentication-userauth-resultcallback-t-sys.md)<!--DelEnd-->
-  - [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md)
+  - [ResultCallback（系统接口）](arkts-userauthentication-userauth-resultcallback-t-sys.md)<!--DelEnd-->
   - [UserRecognitionResultCallback](arkts-userauthentication-userauth-userrecognitionresultcallback-t.md)
   <!--Del-->
-  - [WidgetParamCallback(系统接口)](arkts-userauthentication-userauth-widgetparamcallback-t-sys.md)<!--DelEnd-->
-  - [AuthenticationResult](arkts-userauthentication-userauth-authenticationresult-e.md)
+  - [WidgetParamCallback（系统接口）](arkts-userauthentication-userauth-widgetparamcallback-t-sys.md)<!--DelEnd-->
+  - [AuthEventKey](arkts-userauthentication-userauth-autheventkey-t.md)
+  - [AuthType](arkts-userauthentication-userauth-authtype-t.md)
+  - [EventInfo](arkts-userauthentication-userauth-eventinfo-t.md)
+  - [SecureLevel](arkts-userauthentication-userauth-securelevel-t.md)
   - [AuthTrustLevel](arkts-userauthentication-userauth-authtrustlevel-e.md)
-  - [FaceTips](arkts-userauthentication-userauth-facetips-e.md)
-  - [FingerprintTips](arkts-userauthentication-userauth-fingerprinttips-e.md)
   <!--Del-->
-  - [NoticeType(系统接口)](arkts-userauthentication-userauth-noticetype-e-sys.md)<!--DelEnd-->
-  - [ResultCode](arkts-userauthentication-userauth-resultcode-e.md)
+  - [NoticeType（系统接口）](arkts-userauthentication-userauth-noticetype-e-sys.md)<!--DelEnd-->
   - [ReuseMode](arkts-userauthentication-userauth-reusemode-e.md)
   - [UserAuthResultCode](arkts-userauthentication-userauth-userauthresultcode-e.md)
   <!--Del-->
-  - [UserAuthResultCode(系统接口)](arkts-userauthentication-userauth-userauthresultcode-e-sys.md)<!--DelEnd-->
+  - [UserAuthResultCode（系统接口）](arkts-userauthentication-userauth-userauthresultcode-e-sys.md)<!--DelEnd-->
   - [UserAuthTipCode](arkts-userauthentication-userauth-userauthtipcode-e.md)
   - [UserAuthType](arkts-userauthentication-userauth-userauthtype-e.md)
   <!--Del-->
-  - [UserAuthType(系统接口)](arkts-userauthentication-userauth-userauthtype-e-sys.md)<!--DelEnd-->
+  - [UserAuthType（系统接口）](arkts-userauthentication-userauth-userauthtype-e-sys.md)<!--DelEnd-->
   - [UserRecognitionStatus](arkts-userauthentication-userauth-userrecognitionstatus-e.md)
   <!--Del-->
-  - [WindowModeType(系统接口)](arkts-userauthentication-userauth-windowmodetype-e-sys.md)<!--DelEnd-->
+  - [WindowModeType（系统接口）](arkts-userauthentication-userauth-windowmodetype-e-sys.md)<!--DelEnd-->
+  - [AuthenticationResult](arkts-userauthentication-userauth-authenticationresult-e.md)
+  - [FaceTips](arkts-userauthentication-userauth-facetips-e.md)
+  - [FingerprintTips](arkts-userauthentication-userauth-fingerprinttips-e.md)
+  - [ResultCode](arkts-userauthentication-userauth-resultcode-e.md)
   - [常量](arkts-userauthentication-userauth-con.md)
-- [@ohos.userIAM.userAuthIcon(嵌入式用户身份认证控件)](arkts-userauthentication-useriam-userauthicon.md)
+- [@ohos.userIAM.userAuthIcon（嵌入式用户身份认证控件）](arkts-userauthentication-useriam-userauthicon.md)
   - [UserAuthIcon](arkts-userauthentication-useriam-userauthicon-userauthicon-s.md)

@@ -6,6 +6,8 @@ export type ApplicationContext = _ApplicationContext.default
 
 Defines the application context. It inherits from Context.
 
+**Type:** _ApplicationContext.default
+
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the application context. It inherits from Context.
 <!--Device-common-export type ApplicationContext = _ApplicationContext.default--><!--Device-common-export type ApplicationContext = _ApplicationContext.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _ApplicationContext.default

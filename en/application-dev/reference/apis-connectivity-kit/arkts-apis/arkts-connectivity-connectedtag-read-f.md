@@ -6,6 +6,8 @@
 import { connectedTag } from '@kit.ConnectivityKit';
 ```
 
+<a id="read1"></a>
+
 ## read
 
 ```TypeScript
@@ -50,7 +52,7 @@ connectedTag.read().then((data) => {
 ```
 
 
-<a id="read-1"></a>
+<a id="read2"></a>
 
 ## read
 

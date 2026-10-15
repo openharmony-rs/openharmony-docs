@@ -43,7 +43,7 @@ Performs preprocessing for the asset query in the specified user space. This API
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-asset-store-service-unavailable) | The ASSET service is unavailable. |
 | [24000002](../errorcode-asset.md#24000002-asset-not-found) | The asset is not found. |
 | [24000005](../errorcode-asset.md#24000005-incorrect-screen-lock-status) | The screen lock status does not match. |
@@ -58,6 +58,7 @@ Performs preprocessing for the asset query in the specified user space. This API
 | [24000016](../errorcode-asset.md#24000016-cached-assets-reaches-the-limit) | The cache exceeds the limit. |
 | [24000017](../errorcode-asset.md#24000017-function-not-supported) | The capability is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -76,3 +77,5 @@ asset.preQueryAsUser(userId, query).then((challenge: Uint8Array) => {
   console.info(`Succeeded in pre-querying Asset from user space.`);
 });
 ```
+
+<!--DelEnd-->

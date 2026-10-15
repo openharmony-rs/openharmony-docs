@@ -12,7 +12,7 @@ import { scriptManager } from '@kit.AbilityKit';
 function completeArkTSScriptInApp(context: Context, requestCode: string, result: ExecuteResult): Promise<void>
 ```
 
-complete arkTS script for in-app skills.
+Completes the ArkTS script execution of an app and reports the execution result. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -28,15 +28,15 @@ complete arkTS script for in-app skills.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](arkts-ability-context-c.md) | Yes | Ability context, Used for temporary file authorization. |
-| requestCode | string | Yes | Identifying the current operation. It is from ArkTSScriptInfo.requestCode. |
-| result | [ExecuteResult](arkts-ability-scriptmanager-executeresult-i.md) | Yes | The result of arkTS script execution. |
+| context | [Context](arkts-ability-context-c.md) | Yes | Ability context, used for temporary file authorization. |
+| requestCode | string | Yes | Request code used to identify the current operation. |
+| result | [ExecuteResult](arkts-ability-scriptmanager-executeresult-i.md) | Yes | Execution result of the ArkTS script. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise object that returns no value. |
 
 **Error codes:**
 

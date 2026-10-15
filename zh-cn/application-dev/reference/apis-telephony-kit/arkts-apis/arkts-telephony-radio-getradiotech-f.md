@@ -6,6 +6,8 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
+<a id="getradiotech1"></a>
+
 ## getRadioTech
 
 ```TypeScript
@@ -34,7 +36,7 @@ function getRadioTech(slotId: number, callback: AsyncCallback<NetworkRadioTech>)
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -69,7 +71,7 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 ```
 
 
-<a id="getradiotech-1"></a>
+<a id="getradiotech2"></a>
 
 ## getRadioTech
 
@@ -98,14 +100,14 @@ function getRadioTech(slotId: number): Promise<NetworkRadioTech>
 | 类型 | 说明 |
 | --- | --- |
 | Promise&lt;{psRadioTech: RadioTechnology, csRadioTech: RadioTechnology}&gt; | 以Promise形式返回当前接入的CS域和PS域技术。CS域为电路交换域，PS为分组交换域。<br>**适用版本：** 6 - 10 |
-| Promise&lt;[NetworkRadioTech](arkts-telephony-radio-networkradiotech-i.md)&gt; | Returns the RAT of PS domain and CS domain of registered network. The values of RAT are as follows: &lt;ul&gt; &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_UNKNOWN` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_GSM` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_1XRTT` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_WCDMA` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_HSPA` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_HSPAP` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_TD_SCDMA` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_EVDO` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_EHRPD` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_LTE` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_LTE_CA` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_IWLAN` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_NR` &lt;/ul&gt;<br>**适用版本：** 11 |
+| Promise&lt;[NetworkRadioTech](arkts-telephony-radio-networkradiotech-i.md)&gt; | Returns the RAT of PS domain and CS domain of registered network. The values of RAT are as follows: <ul> <li>`RadioTechnology#RADIO_TECHNOLOGY_UNKNOWN` <li>`RadioTechnology#RADIO_TECHNOLOGY_GSM` <li>`RadioTechnology#RADIO_TECHNOLOGY_1XRTT` <li>`RadioTechnology#RADIO_TECHNOLOGY_WCDMA` <li>`RadioTechnology#RADIO_TECHNOLOGY_HSPA` <li>`RadioTechnology#RADIO_TECHNOLOGY_HSPAP` <li>`RadioTechnology#RADIO_TECHNOLOGY_TD_SCDMA` <li>`RadioTechnology#RADIO_TECHNOLOGY_EVDO` <li>`RadioTechnology#RADIO_TECHNOLOGY_EHRPD` <li>`RadioTechnology#RADIO_TECHNOLOGY_LTE` <li>`RadioTechnology#RADIO_TECHNOLOGY_LTE_CA` <li>`RadioTechnology#RADIO_TECHNOLOGY_IWLAN` <li>`RadioTechnology#RADIO_TECHNOLOGY_NR` </ul><br>**适用版本：** 11 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -113,4 +115,4 @@ function getRadioTech(slotId: number): Promise<NetworkRadioTech>
 
 **示例**
 
-参见 getRadioTech
+参见 [getRadioTech](#getradiotech)

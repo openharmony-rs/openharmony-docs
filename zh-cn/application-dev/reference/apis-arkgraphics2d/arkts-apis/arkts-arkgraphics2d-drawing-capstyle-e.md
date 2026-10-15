@@ -26,20 +26,6 @@ FLAT_CAP = 0
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## SQUARE_CAP
-
-```TypeScript
-SQUARE_CAP = 1
-```
-
-线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。
-
-**起始版本：** 12
-
-<!--Device-CapStyle-SQUARE_CAP = 1--><!--Device-CapStyle-SQUARE_CAP = 1-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
 ## ROUND_CAP
 
 ```TypeScript
@@ -51,5 +37,19 @@ ROUND_CAP = 2
 **起始版本：** 12
 
 <!--Device-CapStyle-ROUND_CAP = 2--><!--Device-CapStyle-ROUND_CAP = 2-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## SQUARE_CAP
+
+```TypeScript
+SQUARE_CAP = 1
+```
+
+线帽的样式为方框，线条的头尾端点处多出一个方框，方框宽度和线段一样宽，高度是线段宽度的一半。
+
+**起始版本：** 12
+
+<!--Device-CapStyle-SQUARE_CAP = 1--><!--Device-CapStyle-SQUARE_CAP = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

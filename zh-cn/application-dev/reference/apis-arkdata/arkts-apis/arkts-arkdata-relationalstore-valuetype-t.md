@@ -20,7 +20,7 @@ type ValueType = null | number | string | boolean | Uint8Array | Asset | Assets 
 | string | 表示值类型为字符串。 |
 | boolean | 表示值类型为布尔值。 |
 | Uint8Array | 表示值类型为Uint8类型的数组。 |
-| [Asset](arkts-arkdata-relationalstore-asset-i.md) | 表示值类型为附件Asset。[since 10] |
-| [Assets](arkts-arkdata-relationalstore-assets-t.md) | 表示值类型为附件数组Assets。[since 10] |
-| Float32Array | 表示值类型为浮点数组。[since 12] |
-| bigint | 表示值类型为任意长度的整数。[since 12] |
+| [Asset](arkts-arkdata-relationalstore-asset-i.md) | 表示值类型为附件Asset。<br>**起始版本：** 10 |
+| [Assets](arkts-arkdata-relationalstore-assets-t.md) | 表示值类型为附件数组Assets。<br>**起始版本：** 10 |
+| Float32Array | 表示值类型为浮点数组。<br>**起始版本：** 12 |
+| bigint | 表示值类型为任意长度的整数。<br>**起始版本：** 12 |

@@ -9,8 +9,7 @@ export interface UsedScene
 > 
 > This API has been supported since API version 7 and deprecated since API version 9. You are advised to use
 > [UsedScene](arkts-ability-bundleinfo-usedscene-depr-i.md) instead.
-
-Describes the application scenario and timing for using the permission.
+> Describes the application scenario and timing for using the permission.
 
 **Since:** 7
 

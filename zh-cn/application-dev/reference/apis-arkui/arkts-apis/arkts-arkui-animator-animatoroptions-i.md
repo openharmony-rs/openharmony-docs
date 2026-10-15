@@ -28,6 +28,8 @@ begin: number
 
 **说明：** 会影响[onFrame](arkts-arkui-animator-animatorresult-i.md#onframe)回调的入参值。
 
+取值范围：(-∞, +∞)
+
 默认值：0
 
 **类型：** number
@@ -47,6 +49,8 @@ delay: number
 ```
 
 动画延时播放时长，单位毫秒，设置为0时，表示不延时。设置为负数时动画提前播放，如果提前播放的时长大于动画总时长（由duration和iterations参数共同决定），动画直接过渡到终点。
+
+取值范围：(-∞, +∞)
 
 默认值：0
 
@@ -144,6 +148,8 @@ end: number
 
 **说明：** 会影响[onFrame](arkts-arkui-animator-animatorresult-i.md#onframe)回调的入参值。
 
+取值范围：(-∞, +∞)
+
 默认值：1
 
 **类型：** number
@@ -190,9 +196,11 @@ iterations: number
 
 动画播放次数。设置为0时不播放，设置为-1时无限次播放，设置大于0时为播放次数。
 
+取值范围：大于等于-1的整数。
+
 **说明：** 使用interpolating-spring曲线时，iterations固定设置为1，其他设置无效。
 
-**说明：** 设置为除-1外其他负数视为无效取值，无效取值动画默认播放1次。
+设置为除-1外其他负数视为无效取值，无效取值动画默认播放1次。
 
 **类型：** number
 

@@ -6,6 +6,8 @@
 import { securityManager } from '@kit.MDMKit';
 ```
 
+<a id="getexternalsourceextensionspolicy1"></a>
+
 ## getExternalSourceExtensionsPolicy
 
 ```TypeScript
@@ -66,7 +68,7 @@ try {
 ```
 
 
-<a id="getexternalsourceextensionspolicy-1"></a>
+<a id="getexternalsourceextensionspolicy2"></a>
 
 ## getExternalSourceExtensionsPolicy
 

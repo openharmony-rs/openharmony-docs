@@ -12,17 +12,17 @@ Enumerates mouse axis types.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## SCROLL_VERTICAL
+## PINCH
 
 ```TypeScript
-SCROLL_VERTICAL = 0
+PINCH = 2
 ```
 
-Vertical scroll axis of the mouse.
+Pinch axis of the mouse.
 
 **Since:** 9
 
-<!--Device-Axis-SCROLL_VERTICAL = 0--><!--Device-Axis-SCROLL_VERTICAL = 0-End-->
+<!--Device-Axis-PINCH = 2--><!--Device-Axis-PINCH = 2-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -40,16 +40,16 @@ Horizontal scroll axis of the mouse.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## PINCH
+## SCROLL_VERTICAL
 
 ```TypeScript
-PINCH = 2
+SCROLL_VERTICAL = 0
 ```
 
-Pinch axis of the mouse.
+Vertical scroll axis of the mouse.
 
 **Since:** 9
 
-<!--Device-Axis-PINCH = 2--><!--Device-Axis-PINCH = 2-End-->
+<!--Device-Axis-SCROLL_VERTICAL = 0--><!--Device-Axis-SCROLL_VERTICAL = 0-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

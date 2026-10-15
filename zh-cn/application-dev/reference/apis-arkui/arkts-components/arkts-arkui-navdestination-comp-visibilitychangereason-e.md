@@ -12,13 +12,13 @@ NavDestination可见性发生变化的原因。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TRANSITION
+## APP_STATE
 
 ```TypeScript
-TRANSITION = 0
+APP_STATE = 2
 ```
 
-通过页面跳转的方式使NavDestination可见性发生变化。
+通过前后台切换使NavDestination可见性发生变化。
 
 **起始版本：** 21
 
@@ -26,7 +26,7 @@ TRANSITION = 0
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
-<!--Device-VisibilityChangeReason-TRANSITION = 0--><!--Device-VisibilityChangeReason-TRANSITION = 0-End-->
+<!--Device-VisibilityChangeReason-APP_STATE = 2--><!--Device-VisibilityChangeReason-APP_STATE = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ CONTENT_COVER = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## APP_STATE
+## TRANSITION
 
 ```TypeScript
-APP_STATE = 2
+TRANSITION = 0
 ```
 
-通过前后台切换使NavDestination可见性发生变化。
+通过页面跳转的方式使NavDestination可见性发生变化。
 
 **起始版本：** 21
 
@@ -62,6 +62,6 @@ APP_STATE = 2
 
 **原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
-<!--Device-VisibilityChangeReason-APP_STATE = 2--><!--Device-VisibilityChangeReason-APP_STATE = 2-End-->
+<!--Device-VisibilityChangeReason-TRANSITION = 0--><!--Device-VisibilityChangeReason-TRANSITION = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

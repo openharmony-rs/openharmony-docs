@@ -18,6 +18,8 @@ class DomainAccountManager
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="auth1"></a>
+
 ## auth
 
 ```TypeScript
@@ -65,6 +67,7 @@ static auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callba
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -88,7 +91,9 @@ try {
 }
 ```
 
-<a id="auth-1"></a>
+<!--DelEnd-->
+
+<a id="auth2"></a>
 
 ## auth
 
@@ -141,6 +146,7 @@ static auth(
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -170,6 +176,10 @@ try {
   console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="authwithpopup1"></a>
 
 ## authWithPopup
 
@@ -216,6 +226,7 @@ static authWithPopup(callback: IUserAuthCallback): void
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 11+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -234,7 +245,9 @@ try {
 }
 ```
 
-<a id="authwithpopup-1"></a>
+<!--DelEnd-->
+
+<a id="authwithpopup2"></a>
 
 ## authWithPopup
 
@@ -283,6 +296,7 @@ static authWithPopup(localId: number, callback: IUserAuthCallback): void
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The account authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 11+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -300,6 +314,10 @@ try {
   console.error(`authWithPopup exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getaccesstoken1"></a>
 
 ## getAccessToken
 
@@ -340,6 +358,7 @@ static getAccessToken(businessParams: Record<string, Object>, callback: AsyncCal
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -364,7 +383,9 @@ try {
 }
 ```
 
-<a id="getaccesstoken-2"></a>
+<!--DelEnd-->
+
+<a id="getaccesstoken3"></a>
 
 ## getAccessToken
 
@@ -410,6 +431,7 @@ static getAccessToken(businessParams: Record<string, Object>): Promise<Uint8Arra
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -431,6 +453,10 @@ try {
   console.error(`getAccessToken exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getaccountinfo1"></a>
 
 ## getAccountInfo
 
@@ -473,6 +499,7 @@ static getAccountInfo(options: GetDomainAccountInfoOptions, callback: AsyncCallb
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -497,7 +524,9 @@ try {
 }
 ```
 
-<a id="getaccountinfo-1"></a>
+<!--DelEnd-->
+
+<a id="getaccountinfo2"></a>
 
 ## getAccountInfo
 
@@ -545,6 +574,7 @@ static getAccountInfo(options: GetDomainAccountInfoOptions): Promise<DomainAccou
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -566,6 +596,10 @@ try {
   console.error(`getAccountInfo exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="hasaccount1"></a>
 
 ## hasAccount
 
@@ -608,6 +642,7 @@ static hasAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -631,7 +666,9 @@ try {
 }
 ```
 
-<a id="hasaccount-1"></a>
+<!--DelEnd-->
+
+<a id="hasaccount2"></a>
 
 ## hasAccount
 
@@ -679,6 +716,7 @@ static hasAccount(domainAccountInfo: DomainAccountInfo): Promise<boolean>
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -699,6 +737,8 @@ try {
   console.error(`hasAccount exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isAuthenticationExpired
 
@@ -741,6 +781,7 @@ static isAuthenticationExpired(domainAccountInfo: DomainAccountInfo): Promise<bo
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Domain account not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -759,6 +800,8 @@ try {
   console.error('isAuthenticationExpired exception: ' + e);
 }
 ```
+
+<!--DelEnd-->
 
 ## registerPlugin
 
@@ -791,8 +834,9 @@ static registerPlugin(plugin: DomainPlugin): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
-| 12300201 | The domain plugin has been registered. |
+| [12300201](../errorcode-account.md#12300201-域插件已注册) | The domain plugin has been registered. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -825,6 +869,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## unregisterPlugin
 
 ```TypeScript
@@ -851,6 +897,7 @@ static unregisterPlugin(): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -864,6 +911,10 @@ try {
   console.error(`unregisterPlugin code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="updateaccounttoken1"></a>
 
 ## updateAccountToken
 
@@ -906,6 +957,7 @@ static updateAccountToken(
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid token. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -931,7 +983,9 @@ try {
 }
 ```
 
-<a id="updateaccounttoken-1"></a>
+<!--DelEnd-->
+
+<a id="updateaccounttoken2"></a>
 
 ## updateAccountToken
 
@@ -975,6 +1029,7 @@ static updateAccountToken(domainAccountInfo: DomainAccountInfo, token: Uint8Arra
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid token. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -997,3 +1052,5 @@ try {
   console.error(`updateAccountToken exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

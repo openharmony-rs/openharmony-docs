@@ -12,6 +12,22 @@ Enum for quantization type
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
+## FULL_QUANT
+
+```TypeScript
+FULL_QUANT = 2
+```
+
+Full quantization.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-QuantizationType-FULL_QUANT = 2--><!--Device-QuantizationType-FULL_QUANT = 2-End-->
+
+**System capability:** SystemCapability.AI.MindSporeLite
+
 ## NO_QUANT
 
 ```TypeScript
@@ -41,21 +57,5 @@ Weight quantization.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-QuantizationType-WEIGHT_QUANT = 1--><!--Device-QuantizationType-WEIGHT_QUANT = 1-End-->
-
-**System capability:** SystemCapability.AI.MindSporeLite
-
-## FULL_QUANT
-
-```TypeScript
-FULL_QUANT = 2
-```
-
-Full quantization.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-QuantizationType-FULL_QUANT = 2--><!--Device-QuantizationType-FULL_QUANT = 2-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

@@ -4,7 +4,7 @@
 export interface VideoElement extends Element
 ```
 
-The &lt;video&gt; component provides a video player.
+The <video> component provides a video player.
 
 @extends Element @interface VideoElement
 

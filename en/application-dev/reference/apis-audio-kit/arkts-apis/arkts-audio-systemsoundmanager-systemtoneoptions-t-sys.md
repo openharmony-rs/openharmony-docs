@@ -6,6 +6,8 @@ type SystemToneOptions = _SystemToneOptions
 
 System tone options.
 
+**Type:** _SystemToneOptions
+
 **Since:** 11
 
 <!--Device-systemSoundManager-type SystemToneOptions = _SystemToneOptions--><!--Device-systemSoundManager-type SystemToneOptions = _SystemToneOptions-End-->
@@ -13,5 +15,3 @@ System tone options.
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 
 **System API:** This is a system API.
-
-**Type:** _SystemToneOptions

@@ -46,17 +46,17 @@ Distributed camera.
 
 **System API:** This is a system API.
 
-## SCREEN
+## MIC
 
 ```TypeScript
-SCREEN = 8
+MIC = 1024
 ```
 
-Distributed screen.
+Distributed microphone.
 
 **Since:** 11
 
-<!--Device-DistributedHardwareType-SCREEN = 8--><!--Device-DistributedHardwareType-SCREEN = 8-End-->
+<!--Device-DistributedHardwareType-MIC = 1024--><!--Device-DistributedHardwareType-MIC = 1024-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DistributedHardwareFWK
 
@@ -94,17 +94,17 @@ Distributed speaker for mobile calls.
 
 **System API:** This is a system API.
 
-## MIC
+## SCREEN
 
 ```TypeScript
-MIC = 1024
+SCREEN = 8
 ```
 
-Distributed microphone.
+Distributed screen.
 
 **Since:** 11
 
-<!--Device-DistributedHardwareType-MIC = 1024--><!--Device-DistributedHardwareType-MIC = 1024-End-->
+<!--Device-DistributedHardwareType-SCREEN = 8--><!--Device-DistributedHardwareType-SCREEN = 8-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DistributedHardwareFWK
 

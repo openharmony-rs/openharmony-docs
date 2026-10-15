@@ -14,24 +14,6 @@ enum DeepOptimizeState
 
 **系统接口：** 此接口为系统接口。
 
-## RUNNING
-
-```TypeScript
-RUNNING = 0
-```
-
-深度优化存储空间正在进行。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeepOptimizeState-RUNNING = 0--><!--Device-DeepOptimizeState-RUNNING = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## COMPLETED
 
 ```TypeScript
@@ -68,24 +50,6 @@ FAILED = 2
 
 **系统接口：** 此接口为系统接口。
 
-## STOPPED
-
-```TypeScript
-STOPPED = 3
-```
-
-深度优化存储空间已停止。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DeepOptimizeState-STOPPED = 3--><!--Device-DeepOptimizeState-STOPPED = 3-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## INTERRUPTED
 
 ```TypeScript
@@ -99,6 +63,42 @@ INTERRUPTED = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DeepOptimizeState-INTERRUPTED = 4--><!--Device-DeepOptimizeState-INTERRUPTED = 4-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+深度优化存储空间正在进行。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DeepOptimizeState-RUNNING = 0--><!--Device-DeepOptimizeState-RUNNING = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## STOPPED
+
+```TypeScript
+STOPPED = 3
+```
+
+深度优化存储空间已停止。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DeepOptimizeState-STOPPED = 3--><!--Device-DeepOptimizeState-STOPPED = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

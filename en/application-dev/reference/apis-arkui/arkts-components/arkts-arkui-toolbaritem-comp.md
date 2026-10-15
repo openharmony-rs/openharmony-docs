@@ -31,7 +31,7 @@ Creates a toolbar item at the beginning of the corresponding column in the title
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [ToolBarItemOptions](arkts-arkui-toolbaritem-comp-toolbaritemoptions-i.md) | No | Optional parameters for **ToolBarItem**, including the **placement** parameter of the [ToolBarItemPlacement](arkts-arkui-toolbaritem-comp-toolbaritemplacement-e.md) type.<br>Default value: **placement: ToolBarItemPlacement.TOP_BAR_LEADING** |
+| options | [ToolBarItemOptions](arkts-arkui-toolbaritem-comp-toolbaritemoptions-i.md) | No | Optional parameters for **ToolBarItem**. This object contains the **placement** parameter of the [ToolBarItemPlacement](arkts-arkui-toolbaritem-comp-toolbaritemplacement-e.md) enum type.<br>Default value: **placement: ToolBarItemPlacement.TOP_BAR_LEADING** |
 
 ## Summary
 

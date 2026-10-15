@@ -6,6 +6,8 @@ export declare type CustomDarkColors = Partial<Colors>
 
 自定义深色主题颜色资源类型。
 
+**类型：** Partial&lt;[Colors](arkts-arkui-arkui-theme-colors-i.md)&gt;
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export declare type CustomDarkColors = Partial<Colors>
 <!--Device-unnamed-export declare type CustomDarkColors = Partial<Colors>--><!--Device-unnamed-export declare type CustomDarkColors = Partial<Colors>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** Partial&lt;[Colors](arkts-arkui-arkui-theme-colors-i.md)&gt;

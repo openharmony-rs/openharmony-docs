@@ -28,19 +28,35 @@ Non-input field, referring to non-editable web elements such as buttons, divs, s
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## PlainText
+## Number
 
 ```TypeScript
-PlainText = 1
+Number = 3
 ```
 
-Plain text field, such as the text, search, or email field.
+Number field.
 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ContextMenuInputFieldType-PlainText = 1--><!--Device-ContextMenuInputFieldType-PlainText = 1-End-->
+<!--Device-ContextMenuInputFieldType-Number = 3--><!--Device-ContextMenuInputFieldType-Number = 3-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## Other
+
+```TypeScript
+Other = 5
+```
+
+Field of any other type.
+
+**Since:** 9
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ContextMenuInputFieldType-Other = 5--><!--Device-ContextMenuInputFieldType-Other = 5-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -60,19 +76,19 @@ Password field.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## Number
+## PlainText
 
 ```TypeScript
-Number = 3
+PlainText = 1
 ```
 
-Number field.
+Plain text field, such as the text, search, or email field.
 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ContextMenuInputFieldType-Number = 3--><!--Device-ContextMenuInputFieldType-Number = 3-End-->
+<!--Device-ContextMenuInputFieldType-PlainText = 1--><!--Device-ContextMenuInputFieldType-PlainText = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -89,21 +105,5 @@ Phone number field.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ContextMenuInputFieldType-Telephone = 4--><!--Device-ContextMenuInputFieldType-Telephone = 4-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## Other
-
-```TypeScript
-Other = 5
-```
-
-Field of any other type.
-
-**Since:** 9
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ContextMenuInputFieldType-Other = 5--><!--Device-ContextMenuInputFieldType-Other = 5-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

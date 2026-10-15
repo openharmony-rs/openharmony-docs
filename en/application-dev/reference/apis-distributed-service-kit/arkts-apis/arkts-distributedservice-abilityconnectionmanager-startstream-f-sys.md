@@ -38,6 +38,7 @@ Start Streaming
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [32300002](../errorcode-device-manager.md#32300002-stream-receive-end-not-started) | The stream at the receive end is not started. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ let sessionId = 100;
 hilog.info(0x0000, 'testTag', 'startStream called');
 abilityConnectionManager.startStream(sessionId)
 ```
+
+<!--DelEnd-->

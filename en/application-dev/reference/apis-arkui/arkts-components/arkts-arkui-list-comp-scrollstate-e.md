@@ -12,6 +12,30 @@ Enumerates the scrolling states.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Fling
+
+```TypeScript
+Fling
+```
+
+Inertial scrolling state. Triggered by all animated scroll actions. This includes: Inertial scrolling that occurs after a fling;
+
+Bounce-back scrolling when the swipe reaches the edge; Inertial scrolling after quickly dragging the built-in scrollbar and releasing;
+
+Scrolling controlled by the animated methods provided by the scroller.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ScrollState-Fling--><!--Device-ScrollState-Fling-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Idle
 
 ```TypeScript
@@ -49,29 +73,5 @@ Scrolling state. Triggered when the list is dragged with the finger, when the sc
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-ScrollState-Scroll--><!--Device-ScrollState-Scroll-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Fling
-
-```TypeScript
-Fling
-```
-
-Inertial scrolling state. Triggered by all animated scroll actions. This includes: Inertial scrolling that occurs after a fling;
-
-Bounce-back scrolling when the swipe reaches the edge; Inertial scrolling after quickly dragging the built-in scrollbar and releasing;
-
-Scrolling controlled by the animated methods provided by the scroller.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-ScrollState-Fling--><!--Device-ScrollState-Fling-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

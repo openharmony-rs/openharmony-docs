@@ -50,9 +50,13 @@ function removeRight(): boolean {
   }
 
   let device: usbManager.USBDevice = devicesList?.[0];
+  try {
   if (usbManager.removeRight(device.name)) {
     console.info(`Succeed in removing right`);
     return true;
+    }
+  } catch (err) {
+    console.error(`remove right failed. Code: ${err.code}, message: ${err.message}`);
   }
   return false;
 }

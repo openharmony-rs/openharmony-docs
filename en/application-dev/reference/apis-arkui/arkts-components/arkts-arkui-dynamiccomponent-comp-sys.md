@@ -1,8 +1,8 @@
 # DynamicComponent(System API) (System API)
 
-**DynamicComponent** is designed to support the embedding and display of UIs provided by independent .abc files within the current page, with the displayed content running in a worker thread.
+**DynamicComponent** is designed to support the embedding and display of UIs provided by independent Abc (Ark bytecode,abc files) within the current page, with the displayed content running in a worker thread.
 
-It is typically used in modular development scenarios where .abc pages are dynamically loaded.
+It is typically used in modular development scenarios where .abc pages are dynamically loaded. The .abc UI runs in isolation in a worker thread, preventing the main thread from being blocked and improving app smoothness.
 
 ## Child Components
 
@@ -30,7 +30,7 @@ Creates a **DynamicComponent** component to display the .abc UI running in the w
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [DynamicOptions](arkts-arkui-dynamiccomponent-comp-dynamicoptions-i-sys.md) | Yes | Configuration parameters for constructing a **DynamicComponent**, which are used to configure the entry of the .abc page to be loaded, worker thread to run, and display options. |
+| options | [DynamicOptions](arkts-arkui-dynamiccomponent-comp-dynamicoptions-i-sys.md) | Yes | Configuration parameters for constructing a **DynamicComponent**, which are used to configure the entry of the .abc page to be loaded, worker thread to run, display options, and cross-process nesting. |
 
 ## Summary
 
@@ -45,4 +45,4 @@ Creates a **DynamicComponent** component to display the .abc UI running in the w
 | Name | Description |
 | --- | --- |
 | [ErrorCallback](arkts-arkui-dynamiccomponent-comp-errorcallback-t-sys.md) | Defines the error callback type, which is used to receive exception information. |
-| [Worker](arkts-arkui-dynamiccomponent-comp-worker-t-sys.md) | Defines the worker thread object for running the .abc file. |
+| [Worker](arkts-arkui-dynamiccomponent-comp-worker-t-sys.md) | Worker thread object used to run .abc. It must be created through **worker.ThreadWorker**. |

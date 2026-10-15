@@ -30,7 +30,7 @@ authType?: UserAuthType
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResult-authType?: UserAuthType--><!--Device-UserAuthResult-authType?: UserAuthType-End-->
 
@@ -48,7 +48,7 @@ enrolledState?: EnrolledState
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResult-enrolledState?: EnrolledState--><!--Device-UserAuthResult-enrolledState?: EnrolledState-End-->
 
@@ -75,7 +75,7 @@ result: number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResult-result: int--><!--Device-UserAuthResult-result: int-End-->
 
@@ -93,7 +93,7 @@ token?: Uint8Array
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-UserAuthResult-token?: Uint8Array--><!--Device-UserAuthResult-token?: Uint8Array-End-->
 

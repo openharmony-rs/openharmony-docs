@@ -12,17 +12,17 @@ Enumerates SMS message types.
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
-## UNKNOWN
+## FORWARD_MESSAGE
 
 ```TypeScript
-UNKNOWN = 0
+FORWARD_MESSAGE = 4
 ```
 
-Unknown type.
+Message to be forwarded to another device.
 
 **Since:** 6
 
-<!--Device-ShortMessageClass-UNKNOWN = 0--><!--Device-ShortMessageClass-UNKNOWN = 0-End-->
+<!--Device-ShortMessageClass-FORWARD_MESSAGE = 4--><!--Device-ShortMessageClass-FORWARD_MESSAGE = 4-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
@@ -68,16 +68,16 @@ Message containing SIM card information, which is to be stored in the SIM card.
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
-## FORWARD_MESSAGE
+## UNKNOWN
 
 ```TypeScript
-FORWARD_MESSAGE = 4
+UNKNOWN = 0
 ```
 
-Message to be forwarded to another device.
+Unknown type.
 
 **Since:** 6
 
-<!--Device-ShortMessageClass-FORWARD_MESSAGE = 4--><!--Device-ShortMessageClass-FORWARD_MESSAGE = 4-End-->
+<!--Device-ShortMessageClass-UNKNOWN = 0--><!--Device-ShortMessageClass-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms

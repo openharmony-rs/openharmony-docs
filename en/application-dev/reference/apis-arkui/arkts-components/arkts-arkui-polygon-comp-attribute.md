@@ -6,7 +6,7 @@ declare class PolygonAttribute extends CommonShapeMethod<PolygonAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) and [common attributes of drawing components](arkts-arkui-common-comp-commonmethod-c.md), the following attributes are supported:
 
-**Inheritance/Implementation:** PolygonAttribute extends CommonShapeMethod<PolygonAttribute>
+**Inheritance/Implementation:** PolygonAttribute extends CommonShapeMethod&lt;PolygonAttribute&gt;
 
 **Since:** 7
 

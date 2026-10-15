@@ -1,6 +1,6 @@
 # ArkTS API<!--arkts-cryptoarchitecturekit-->
 
-- [@ohos.security.cryptoFramework(加解密算法库框架)](arkts-cryptoarchitecture-security-cryptoframework.md)
+- [@ohos.security.cryptoFramework（加解密算法库框架）](arkts-cryptoarchitecture-security-cryptoframework.md)
   - [createAsyKeyGenerator](arkts-cryptoarchitecture-cryptoframework-createasykeygenerator-f.md)
   - [createAsyKeyGeneratorBySpec](arkts-cryptoarchitecture-cryptoframework-createasykeygeneratorbyspec-f.md)
   - [createCipher](arkts-cryptoarchitecture-cryptoframework-createcipher-f.md)
@@ -85,7 +85,7 @@
   - [KemAlgNameId](arkts-cryptoarchitecture-cryptoframework-kemalgnameid-e.md)
   - [Result](arkts-cryptoarchitecture-cryptoframework-result-e.md)
   - [SignSpecItem](arkts-cryptoarchitecture-cryptoframework-signspecitem-e.md)
-- [@system.cipher(加密算法)](arkts-cryptoarchitecture-system-cipher.md)
+- [@system.cipher（加密算法）](arkts-cryptoarchitecture-system-cipher.md)
   - [Cipher](arkts-cryptoarchitecture-system-cipher-cipher-c.md)
   - [CipherAesOptions](arkts-cryptoarchitecture-system-cipher-cipheraesoptions-i.md)
   - [CipherResponse](arkts-cryptoarchitecture-system-cipher-cipherresponse-i.md)

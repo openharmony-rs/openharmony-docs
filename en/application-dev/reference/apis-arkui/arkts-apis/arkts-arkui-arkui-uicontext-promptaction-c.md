@@ -28,6 +28,8 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
+<a id="closecustomdialog1"></a>
+
 ## closeCustomDialog
 
 ```TypeScript
@@ -131,7 +133,7 @@ struct Index {
 }
 ```
 
-<a id="closecustomdialog-1"></a>
+<a id="closecustomdialog2"></a>
 
 ## closeCustomDialog
 
@@ -568,6 +570,8 @@ struct Index {
 }
 ```
 
+<a id="opencustomdialog1"></a>
+
 ## openCustomDialog
 
 ```TypeScript
@@ -705,7 +709,7 @@ struct Index {
 }
 ```
 
-<a id="opencustomdialog-1"></a>
+<a id="opencustomdialog2"></a>
 
 ## openCustomDialog
 
@@ -1377,7 +1381,7 @@ struct Index {
 }
 ```
 
-<a id="showactionmenu-1"></a>
+<a id="showactionmenu2"></a>
 
 ## showActionMenu
 
@@ -1536,7 +1540,7 @@ struct Index {
 }
 ```
 
-<a id="showactionmenu-2"></a>
+<a id="showactionmenu3"></a>
 
 ## showActionMenu
 
@@ -1615,6 +1619,8 @@ struct Index {
 }
 ```
 
+<a id="showactionmenu1"></a>
+
 ## showActionMenu
 
 ```TypeScript
@@ -1652,6 +1658,8 @@ Shows an action menu in the given settings. This API uses an asynchronous callba
 **Examples**
 
 See [showActionMenu](#showactionmenu)
+
+<a id="showdialog1"></a>
 
 ## showDialog
 
@@ -1734,7 +1742,7 @@ struct Index {
 }
 ```
 
-<a id="showdialog-1"></a>
+<a id="showdialog2"></a>
 
 ## showDialog
 

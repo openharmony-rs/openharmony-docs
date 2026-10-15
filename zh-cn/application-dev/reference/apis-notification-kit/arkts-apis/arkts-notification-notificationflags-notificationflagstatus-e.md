@@ -12,6 +12,20 @@ export enum NotificationFlagStatus
 
 **系统能力：** SystemCapability.Notification.Notification
 
+## TYPE_CLOSE
+
+```TypeScript
+TYPE_CLOSE = 2
+```
+
+通知标志关闭。
+
+**起始版本：** 11
+
+<!--Device-NotificationFlagStatus-TYPE_CLOSE = 2--><!--Device-NotificationFlagStatus-TYPE_CLOSE = 2-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
 ## TYPE_NONE
 
 ```TypeScript
@@ -37,19 +51,5 @@ TYPE_OPEN = 1
 **起始版本：** 11
 
 <!--Device-NotificationFlagStatus-TYPE_OPEN = 1--><!--Device-NotificationFlagStatus-TYPE_OPEN = 1-End-->
-
-**系统能力：** SystemCapability.Notification.Notification
-
-## TYPE_CLOSE
-
-```TypeScript
-TYPE_CLOSE = 2
-```
-
-通知标志关闭。
-
-**起始版本：** 11
-
-<!--Device-NotificationFlagStatus-TYPE_CLOSE = 2--><!--Device-NotificationFlagStatus-TYPE_CLOSE = 2-End-->
 
 **系统能力：** SystemCapability.Notification.Notification

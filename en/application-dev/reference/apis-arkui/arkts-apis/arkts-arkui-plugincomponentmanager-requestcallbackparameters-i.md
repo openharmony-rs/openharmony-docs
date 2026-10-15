@@ -4,7 +4,7 @@
 interface RequestCallbackParameters
 ```
 
-Provides the result returned after the **PluginManager.Request** API is called.
+Provides the result returned after the **pluginComponentManager.request** API is called.
 
 **Since:** 8
 
@@ -42,7 +42,7 @@ Component template.
 data: KVObject
 ```
 
-Component data.
+Component data stored in key-value pairs. The key and value types are defined by the service.
 
 **Type:** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 
@@ -60,7 +60,7 @@ Component data.
 extraData: KVObject
 ```
 
-Extra data.
+Extra data. This is an optional parameter. If not provided, it is not included in the returned result by default.
 
 **Type:** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 

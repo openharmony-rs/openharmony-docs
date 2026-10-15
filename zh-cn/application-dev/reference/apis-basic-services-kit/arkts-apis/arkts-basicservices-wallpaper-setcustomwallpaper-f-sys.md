@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="setcustomwallpaper1"></a>
+
 ## setCustomWallpaper
 
 ```TypeScript
@@ -40,6 +42,7 @@ function setCustomWallpaper(source: string, wallpaperType: WallpaperType, callba
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,8 +63,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setcustomwallpaper-1"></a>
+
+<a id="setcustomwallpaper2"></a>
 
 ## setCustomWallpaper
 
@@ -102,6 +107,7 @@ function setCustomWallpaper(source: string, wallpaperType: WallpaperType): Promi
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -118,3 +124,5 @@ try {
     console.error(`Failed to setCustomWallpaper. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

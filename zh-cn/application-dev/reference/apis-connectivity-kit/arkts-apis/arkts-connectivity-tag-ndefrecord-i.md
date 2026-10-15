@@ -30,7 +30,7 @@ NDEF Record的ID，每个number十六进制表示，范围是0x00~0xFF。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefRecord-id: int[]--><!--Device-NdefRecord-id: int[]-End-->
 
@@ -48,7 +48,7 @@ NDEF Record的PAYLOAD，每个number十六进制表示，范围是0x00~0xFF。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefRecord-payload: int[]--><!--Device-NdefRecord-payload: int[]-End-->
 
@@ -66,7 +66,7 @@ NDEF Record的RTD(Record Type Definition)类型值，每个number十六进制表
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefRecord-rtdType: int[]--><!--Device-NdefRecord-rtdType: int[]-End-->
 
@@ -84,7 +84,7 @@ NDEF Record的TNF(Type Name Field)。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-NdefRecord-tnf: int--><!--Device-NdefRecord-tnf: int-End-->
 

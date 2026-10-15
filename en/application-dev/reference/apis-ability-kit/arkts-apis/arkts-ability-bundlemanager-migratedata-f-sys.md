@@ -30,8 +30,8 @@ Migrates files from the source path to the destination path. This API uses a pro
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| sourcePaths | Array&lt;string&gt; | Yes | Array of source paths. The value can be a single file path such as **\/example1/test.txt** or a directory path such as **\/example2/test**. |
-| destinationPath | string | Yes | Destination path. Only one directory path is supported, for example, **\/example2/test**. |
+| sourcePaths | Array&lt;string&gt; | Yes | Array of source paths. The value can be a single file path such as **\/example1\/test.txt** or a directory path such as **\/example2\/test**. |
+| destinationPath | string | Yes | Destination path. Only one directory path is supported, for example, **\/example2\/test**. |
 
 **Return value:**
 
@@ -53,6 +53,7 @@ Migrates files from the source path to the destination path. This API uses a pro
 | [17700085](../errorcode-bundle.md#17700085-no-write-permissions-for-the-destination-path) | The destination path cannot be accessed. |
 | [17700086](../errorcode-bundle.md#17700086-system-error) | System error occurred during copy execution. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -78,3 +79,5 @@ try {
   hilog.error(0x0000, 'testTag', 'migrateData call err: %{public}s', JSON.stringify(err));
 }
 ```
+
+<!--DelEnd-->

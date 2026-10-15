@@ -30,22 +30,6 @@ The task is in progress.
 
 **System API:** This is a system API.
 
-## PAUSED
-
-```TypeScript
-PAUSED = 1
-```
-
-The task is paused.
-
-**Since:** 14
-
-<!--Device-CloudMediaAssetTaskStatus-PAUSED = 1--><!--Device-CloudMediaAssetTaskStatus-PAUSED = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## IDLE
 
 ```TypeScript
@@ -57,6 +41,22 @@ There is no download task.
 **Since:** 14
 
 <!--Device-CloudMediaAssetTaskStatus-IDLE = 2--><!--Device-CloudMediaAssetTaskStatus-IDLE = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## PAUSED
+
+```TypeScript
+PAUSED = 1
+```
+
+The task is paused.
+
+**Since:** 14
+
+<!--Device-CloudMediaAssetTaskStatus-PAUSED = 1--><!--Device-CloudMediaAssetTaskStatus-PAUSED = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

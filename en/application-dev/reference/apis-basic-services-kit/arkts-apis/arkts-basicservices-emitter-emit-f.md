@@ -6,6 +6,8 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
+<a id="emit1"></a>
+
 ## emit
 
 ```TypeScript
@@ -20,7 +22,7 @@ After an event is published using this API, the event may not be executed immedi
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-emitter-function emit(event: InnerEvent, data?: EventData): void--><!--Device-emitter-function emit(event: InnerEvent, data?: EventData): void-End-->
 
@@ -52,7 +54,7 @@ emitter.emit(innerEvent, eventData);
 ```
 
 
-<a id="emit-1"></a>
+<a id="emit2"></a>
 
 ## emit
 
@@ -95,7 +97,7 @@ emitter.emit('eventId', eventData);
 ```
 
 
-<a id="emit-4"></a>
+<a id="emit5"></a>
 
 ## emit
 
@@ -145,7 +147,7 @@ emitter.emit('eventId', eventData);
 ```
 
 
-<a id="emit-6"></a>
+<a id="emit7"></a>
 
 ## emit
 
@@ -193,7 +195,7 @@ emitter.emit('eventId', options, eventData);
 ```
 
 
-<a id="emit-9"></a>
+<a id="emit10"></a>
 
 ## emit
 

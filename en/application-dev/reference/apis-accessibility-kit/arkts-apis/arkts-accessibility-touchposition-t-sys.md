@@ -6,6 +6,8 @@ export type TouchPosition = _TouchPosition
 
 Touch tap position. For details, see [TouchPosition](arkts-accessibility-accessibilityextensioncontext-touchposition-i-sys.md).
 
+**Type:** _TouchPosition
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Touch tap position. For details, see [TouchPosition](arkts-accessibility-accessi
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
-
-**Type:** _TouchPosition

@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="sendshortmessage1"></a>
+
 ## sendShortMessage
 
 ```TypeScript
@@ -48,17 +50,17 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
     if (err) {
-        console.error('sendCallback: err->${JSON.stringify(err)}');
+        console.error(`sendCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('sendCallback: data->${JSON.stringify(data)}');
+    console.info(`sendCallback: data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
     if (err) {
-        console.error('deliveryCallback: err->${JSON.stringify(err)}');
+        console.error(`deliveryCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('deliveryCallback: data->${JSON.stringify(data)}');
+    console.info(`deliveryCallback: data->${JSON.stringify(data)}`);
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,
@@ -70,12 +72,15 @@ let options: sms.SendMessageOptions = {
     deliveryCallback: deliveryCallback
 };
 sms.sendShortMessage(options, (err: BusinessError) => {
-    console.info(`callback: err->${JSON.stringify(err)}`);
+    if (err) {
+        console.error(`callback: err->${JSON.stringify(err)}`);
+        return;
+    }
 });
 ```
 
 
-<a id="sendshortmessage-1"></a>
+<a id="sendshortmessage2"></a>
 
 ## sendShortMessage
 
@@ -124,17 +129,17 @@ import { AsyncCallback, BusinessError } from '@kit.BasicServicesKit';
 
 let sendCallback: AsyncCallback<sms.ISendShortMessageCallback> = (err: BusinessError, data: sms.ISendShortMessageCallback) => {
     if (err) {
-        console.error('sendCallback: err->${JSON.stringify(err)}');
+        console.error(`sendCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('sendCallback: data->${JSON.stringify(data)}');
+    console.info(`sendCallback: data->${JSON.stringify(data)}`);
 };
 let deliveryCallback: AsyncCallback<sms.IDeliveryShortMessageCallback> = (err: BusinessError, data: sms.IDeliveryShortMessageCallback) => {
     if (err) {
-        console.error('deliveryCallback: err->${JSON.stringify(err)}');
+        console.error(`deliveryCallback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('deliveryCallback: data->${JSON.stringify(data)}');
+    console.info(`deliveryCallback: data->${JSON.stringify(data)}`);
 };
 let options: sms.SendMessageOptions = {
     slotId: 0,

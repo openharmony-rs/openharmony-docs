@@ -12,35 +12,51 @@ Enum for provides MSTensor data type
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## TYPE_UNKNOWN
+## NUMBER_TYPE_FLOAT16
 
 ```TypeScript
-TYPE_UNKNOWN = 0
+NUMBER_TYPE_FLOAT16 = 42
 ```
 
-data type is unknown
+data type is float16
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DataType-TYPE_UNKNOWN = 0--><!--Device-DataType-TYPE_UNKNOWN = 0-End-->
+<!--Device-DataType-NUMBER_TYPE_FLOAT16 = 42--><!--Device-DataType-NUMBER_TYPE_FLOAT16 = 42-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## NUMBER_TYPE_INT8
+## NUMBER_TYPE_FLOAT32
 
 ```TypeScript
-NUMBER_TYPE_INT8 = 32
+NUMBER_TYPE_FLOAT32 = 43
 ```
 
-data type is int8
+data type is float32
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DataType-NUMBER_TYPE_INT8 = 32--><!--Device-DataType-NUMBER_TYPE_INT8 = 32-End-->
+<!--Device-DataType-NUMBER_TYPE_FLOAT32 = 43--><!--Device-DataType-NUMBER_TYPE_FLOAT32 = 43-End-->
+
+**System capability:** SystemCapability.AI.MindSporeLite
+
+## NUMBER_TYPE_FLOAT64
+
+```TypeScript
+NUMBER_TYPE_FLOAT64 = 44
+```
+
+data type is float64
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-NUMBER_TYPE_FLOAT64 = 44--><!--Device-DataType-NUMBER_TYPE_FLOAT64 = 44-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -92,19 +108,19 @@ data type is int64
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## NUMBER_TYPE_UINT8
+## NUMBER_TYPE_INT8
 
 ```TypeScript
-NUMBER_TYPE_UINT8 = 37
+NUMBER_TYPE_INT8 = 32
 ```
 
-data type is uint8
+data type is int8
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DataType-NUMBER_TYPE_UINT8 = 37--><!--Device-DataType-NUMBER_TYPE_UINT8 = 37-End-->
+<!--Device-DataType-NUMBER_TYPE_INT8 = 32--><!--Device-DataType-NUMBER_TYPE_INT8 = 32-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -156,50 +172,34 @@ data type is uint64
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## NUMBER_TYPE_FLOAT16
+## NUMBER_TYPE_UINT8
 
 ```TypeScript
-NUMBER_TYPE_FLOAT16 = 42
+NUMBER_TYPE_UINT8 = 37
 ```
 
-data type is float16
+data type is uint8
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DataType-NUMBER_TYPE_FLOAT16 = 42--><!--Device-DataType-NUMBER_TYPE_FLOAT16 = 42-End-->
+<!--Device-DataType-NUMBER_TYPE_UINT8 = 37--><!--Device-DataType-NUMBER_TYPE_UINT8 = 37-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## NUMBER_TYPE_FLOAT32
+## TYPE_UNKNOWN
 
 ```TypeScript
-NUMBER_TYPE_FLOAT32 = 43
+TYPE_UNKNOWN = 0
 ```
 
-data type is float32
+data type is unknown
 
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DataType-NUMBER_TYPE_FLOAT32 = 43--><!--Device-DataType-NUMBER_TYPE_FLOAT32 = 43-End-->
-
-**System capability:** SystemCapability.AI.MindSporeLite
-
-## NUMBER_TYPE_FLOAT64
-
-```TypeScript
-NUMBER_TYPE_FLOAT64 = 44
-```
-
-data type is float64
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DataType-NUMBER_TYPE_FLOAT64 = 44--><!--Device-DataType-NUMBER_TYPE_FLOAT64 = 44-End-->
+<!--Device-DataType-TYPE_UNKNOWN = 0--><!--Device-DataType-TYPE_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

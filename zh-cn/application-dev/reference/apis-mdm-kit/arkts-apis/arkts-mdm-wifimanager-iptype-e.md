@@ -12,22 +12,6 @@ enum IpType
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## STATIC
-
-```TypeScript
-STATIC = 0
-```
-
-静态IP，一般用于需要固定IP的场景、例如办公室打印机，固定打印机IP地址，便于大家稳定地添加和使用。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-IpType-STATIC = 0--><!--Device-IpType-STATIC = 0-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## DHCP
 
 ```TypeScript
@@ -41,6 +25,22 @@ DHCP = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-IpType-DHCP = 1--><!--Device-IpType-DHCP = 1-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## STATIC
+
+```TypeScript
+STATIC = 0
+```
+
+静态IP，一般用于需要固定IP的场景、例如办公室打印机，固定打印机IP地址，便于大家稳定地添加和使用。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-IpType-STATIC = 0--><!--Device-IpType-STATIC = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

@@ -30,6 +30,24 @@ Data addition.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## CHANGE
+
+```TypeScript
+CHANGE = 'change'
+```
+
+Data change.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DataOperationType-CHANGE = 'change'--><!--Device-DataOperationType-CHANGE = 'change'-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## DELETE
 
 ```TypeScript
@@ -81,24 +99,6 @@ Data movement.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DataOperationType-MOVE = 'move'--><!--Device-DataOperationType-MOVE = 'move'-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## CHANGE
-
-```TypeScript
-CHANGE = 'change'
-```
-
-Data change.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-DataOperationType-CHANGE = 'change'--><!--Device-DataOperationType-CHANGE = 'change'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

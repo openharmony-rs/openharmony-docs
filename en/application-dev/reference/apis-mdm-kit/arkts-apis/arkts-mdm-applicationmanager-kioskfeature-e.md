@@ -12,22 +12,6 @@ Defines the features of the kiosk mode.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## ALLOW_NOTIFICATION_CENTER
-
-```TypeScript
-ALLOW_NOTIFICATION_CENTER = 1
-```
-
-Allow access to the notification center (by swiping down from the upper left corner with one finger).
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-KioskFeature-ALLOW_NOTIFICATION_CENTER = 1--><!--Device-KioskFeature-ALLOW_NOTIFICATION_CENTER = 1-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## ALLOW_CONTROL_CENTER
 
 ```TypeScript
@@ -57,6 +41,22 @@ Allow access to the recent task bar (by swiping up from the bottom with one fing
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-KioskFeature-ALLOW_GESTURE_CONTROL = 3--><!--Device-KioskFeature-ALLOW_GESTURE_CONTROL = 3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## ALLOW_NOTIFICATION_CENTER
+
+```TypeScript
+ALLOW_NOTIFICATION_CENTER = 1
+```
+
+Allow access to the notification center (by swiping down from the upper left corner with one finger).
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KioskFeature-ALLOW_NOTIFICATION_CENTER = 1--><!--Device-KioskFeature-ALLOW_NOTIFICATION_CENTER = 1-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

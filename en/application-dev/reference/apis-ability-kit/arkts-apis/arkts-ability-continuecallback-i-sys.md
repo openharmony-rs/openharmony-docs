@@ -34,6 +34,7 @@ Called by system when continue mission done.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,3 +65,5 @@ distributedMissionManager.continueMission(
   console.info(`continueMission finished`);
 });
 ```
+
+<!--DelEnd-->

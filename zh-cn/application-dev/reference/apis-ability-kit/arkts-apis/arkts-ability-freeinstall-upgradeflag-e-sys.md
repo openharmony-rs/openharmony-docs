@@ -4,7 +4,11 @@
 export enum UpgradeFlag
 ```
 
-仅供内部系统使用标志位
+应用模块升级策略的标志。
+
+> **说明：** 
+> 
+> 不支持组合使用，如：let flag = UpgradeFlag.NOT_UPGRADE | UpgradeFlag.SINGLE_UPGRADE，只支持单个枚举类型传入。
 
 **起始版本：** 9
 
@@ -30,22 +34,6 @@ NOT_UPGRADE = 0
 
 **系统接口：** 此接口为系统接口。
 
-## SINGLE_UPGRADE
-
-```TypeScript
-SINGLE_UPGRADE = 1
-```
-
-单个模块需要升级。
-
-**起始版本：** 9
-
-<!--Device-UpgradeFlag-SINGLE_UPGRADE = 1--><!--Device-UpgradeFlag-SINGLE_UPGRADE = 1-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
-
-**系统接口：** 此接口为系统接口。
-
 ## RELATION_UPGRADE
 
 ```TypeScript
@@ -57,6 +45,22 @@ RELATION_UPGRADE = 2
 **起始版本：** 9
 
 <!--Device-UpgradeFlag-RELATION_UPGRADE = 2--><!--Device-UpgradeFlag-RELATION_UPGRADE = 2-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**系统接口：** 此接口为系统接口。
+
+## SINGLE_UPGRADE
+
+```TypeScript
+SINGLE_UPGRADE = 1
+```
+
+单个模块需要升级。
+
+**起始版本：** 9
+
+<!--Device-UpgradeFlag-SINGLE_UPGRADE = 1--><!--Device-UpgradeFlag-SINGLE_UPGRADE = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

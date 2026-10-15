@@ -6,6 +6,8 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
+<a id="getdispatchinfo1"></a>
+
 ## getDispatchInfo
 
 ```TypeScript
@@ -28,7 +30,7 @@ function getDispatchInfo(callback: AsyncCallback<DispatchInfo>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DispatchInfo](arkts-ability-freeinstall-dispatchinfo-t-sys.md)&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为获取到的[DispatchInfo](arkts-ability-dispatchinfo-i-sys.md)信息。否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DispatchInfo](arkts-ability-freeinstall-dispatchinfo-t-sys.md)&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)。当函数调用成功，err为undefined，data为获取到的[DispatchInfo](arkts-ability-dispatchinfo-i-sys.md)信息。否则为错误对象。 |
 
 **错误码：**
 
@@ -39,7 +41,7 @@ function getDispatchInfo(callback: AsyncCallback<DispatchInfo>): void
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
 
-<a id="getdispatchinfo-1"></a>
+<a id="getdispatchinfo2"></a>
 
 ## getDispatchInfo
 

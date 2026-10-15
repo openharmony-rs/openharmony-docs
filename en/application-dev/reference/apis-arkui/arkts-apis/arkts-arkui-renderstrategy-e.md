@@ -48,7 +48,7 @@ Offscreen rendering mode. The content to be rendered is first rendered to the of
 2. In offscreen rendering, the content is first rendered on an additional canvas, and then rendered on the main
 canvas.
 3. Use offscreen rendering primarily for multi-layer components requiring rounded corners. For single components,
-it has effect only when the [clip](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#clip) attribute, [background](../arkts-components/arkts-arkui-common-comp.md), or [foreground color](../arkts-components/arkts-arkui-common-comp.md) is configured.
+it has effect only when the [clip](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#clip1) attribute, [background](../arkts-components/arkts-arkui-common-comp.md), or [foreground color](../arkts-components/arkts-arkui-common-comp.md) is configured.
 
 **Since:** 22
 

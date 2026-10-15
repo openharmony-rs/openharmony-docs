@@ -21,17 +21,17 @@ import { vpn } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [addSysVpnConfig](arkts-network-vpn-addsysvpnconfig-f-sys.md) | Add a system VPN network configuration. |
-| [createVpnConnection](arkts-network-vpn-createvpnconnection-f-sys.md) | Creates a VPN connection. |
-| [deleteSysVpnConfig](arkts-network-vpn-deletesysvpnconfig-f-sys.md) | Delete the configuration of system VPN network by the specified vpnId. |
-| [getConnectedSysVpnConfig](arkts-network-vpn-getconnectedsysvpnconfig-f-sys.md) | Get the connected VPN network configuration. |
-| [getConnectedVpnAppInfo](arkts-network-vpn-getconnectedvpnappinfo-f-sys.md) | Get the connected VPN App Info. |
-| [getSysVpnConfig](arkts-network-vpn-getsysvpnconfig-f-sys.md) | Get the configuration of system VPN network by the specified vpnId. |
-| [getSysVpnConfigList](arkts-network-vpn-getsysvpnconfiglist-f-sys.md) | Get all system VPN network configuration. |
-| [off](arkts-network-vpn-off-f-sys.md#offconnect) | Unsubscribes from vpn connect state changes. |
-| [off](arkts-network-vpn-off-f-sys.md#offconnectmulti) | Unsubscribes from vpn connect state changes. |
-| [on](arkts-network-vpn-on-f-sys.md#onconnect) | Subscribes to vpn connect state changes. |
-| [on](arkts-network-vpn-on-f-sys.md#onconnectmulti) | Subscribes to vpn connect state changes. |
+| [addSysVpnConfig](arkts-network-vpn-addsysvpnconfig-f-sys.md#addsysvpnconfig) | Add a system VPN network configuration. |
+| [createVpnConnection](arkts-network-vpn-createvpnconnection-f-sys.md#createvpnconnection) | Creates a VPN connection. |
+| [deleteSysVpnConfig](arkts-network-vpn-deletesysvpnconfig-f-sys.md#deletesysvpnconfig) | Delete the configuration of system VPN network by the specified vpnId. |
+| [getConnectedSysVpnConfig](arkts-network-vpn-getconnectedsysvpnconfig-f-sys.md#getconnectedsysvpnconfig) | Get the connected VPN network configuration. |
+| [getConnectedVpnAppInfo](arkts-network-vpn-getconnectedvpnappinfo-f-sys.md#getconnectedvpnappinfo) | Get the connected VPN App Info. |
+| [getSysVpnConfig](arkts-network-vpn-getsysvpnconfig-f-sys.md#getsysvpnconfig) | Get the configuration of system VPN network by the specified vpnId. |
+| [getSysVpnConfigList](arkts-network-vpn-getsysvpnconfiglist-f-sys.md#getsysvpnconfiglist) | Get all system VPN network configuration. |
+| [off('connect')](arkts-network-vpn-off-f-sys.md#offconnect) | Unsubscribes from vpn connect state changes. |
+| [off('connectMulti')](arkts-network-vpn-off-f-sys.md#offconnectmulti) | Unsubscribes from vpn connect state changes. |
+| [on('connect')](arkts-network-vpn-on-f-sys.md#onconnect) | Subscribes to vpn connect state changes. |
+| [on('connectMulti')](arkts-network-vpn-on-f-sys.md#onconnectmulti) | Subscribes to vpn connect state changes. |
 <!--DelEnd-->
 
 <!--Del-->

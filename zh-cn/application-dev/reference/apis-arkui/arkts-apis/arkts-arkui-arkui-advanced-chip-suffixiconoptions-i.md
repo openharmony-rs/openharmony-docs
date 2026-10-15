@@ -6,8 +6,6 @@ export interface SuffixIconOptions extends IconCommonOptions
 
 SuffixIconOptions定义后缀图标的属性。
 
-继承于[IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md)。
-
 **继承/实现关系：** SuffixIconOptions extends [IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md)
 
 **起始版本：** 11
@@ -28,7 +26,7 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 action?: () => void
 ```
 
-后缀图标点击事件回调。
+后缀图标点击事件回调，无参数和返回值。当用户点击后缀图标时触发该回调。
 
 值为undefined时，不设定后缀图标事件。
 

@@ -6,10 +6,10 @@ type PlayParameters = _PlayParameters
 
 表示音频池播放参数设置。
 
+**类型：** _PlayParameters
+
 **起始版本：** 10
 
 <!--Device-media-type PlayParameters = _PlayParameters--><!--Device-media-type PlayParameters = _PlayParameters-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.SoundPool
-
-**类型：** _PlayParameters

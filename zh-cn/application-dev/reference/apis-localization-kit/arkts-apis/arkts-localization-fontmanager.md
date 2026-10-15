@@ -22,20 +22,20 @@ import { fontManager } from '@kit.LocalizationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getFontScope](arkts-localization-fontmanager-getfontscope-f.md) | 查询指定路径字体的作用范围。使用Promise异步回调。 |
-| [installScopeFont](arkts-localization-fontmanager-installscopefont-f.md) | 安装指定路径下的字体文件为应用级或会话级字体。使用Promise异步回调。 |
-| [offFontObserver](arkts-localization-fontmanager-offfontobserver-f.md) | 注销字体服务状态变化监听器。 |
-| [onFontObserver](arkts-localization-fontmanager-onfontobserver-f.md) | 注册字体服务状态变化监听器。 |
-| [uninstallScopeFont](arkts-localization-fontmanager-uninstallscopefont-f.md) | 根据字体路径卸载已安装的应用级或会话级字体。使用Promise异步回调。 |
+| [getFontScope](arkts-localization-fontmanager-getfontscope-f.md#getfontscope) | 查询指定路径字体的作用范围。使用Promise异步回调。 |
+| [installScopeFont](arkts-localization-fontmanager-installscopefont-f.md#installscopefont) | 安装指定路径下的字体文件为应用级或会话级字体。使用Promise异步回调。 |
+| [offFontObserver](arkts-localization-fontmanager-offfontobserver-f.md#offfontobserver) | 注销字体服务状态变化监听器。 |
+| [onFontObserver](arkts-localization-fontmanager-onfontobserver-f.md#onfontobserver) | 注册字体服务状态变化监听器。 |
+| [uninstallScopeFont](arkts-localization-fontmanager-uninstallscopefont-f.md#uninstallscopefont) | 根据字体路径卸载已安装的应用级或会话级字体。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [dataMigration](arkts-localization-fontmanager-datamigration-f-sys.md) | 设备升级时使用的数据迁移接口，用于启动迁移任务，通过回调函数实时反馈迁移进度和结果。 |
-| [installFont](arkts-localization-fontmanager-installfont-f-sys.md) | 将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。 |
-| [uninstallFont](arkts-localization-fontmanager-uninstallfont-f-sys.md) | 根据字体名称从系统字体库中卸载已安装的字体文件。使用Promise异步回调。 |
+| [dataMigration](arkts-localization-fontmanager-datamigration-f-sys.md#datamigration) | 设备升级时使用的数据迁移接口，用于启动迁移任务，通过回调函数实时反馈迁移进度和结果。 |
+| [installFont](arkts-localization-fontmanager-installfont-f-sys.md#installfont) | 将指定路径下的字体文件安装到系统字体库中。使用Promise异步回调。 |
+| [uninstallFont](arkts-localization-fontmanager-uninstallfont-f-sys.md#uninstallfont) | 根据字体名称从系统字体库中卸载已安装的字体文件。使用Promise异步回调。 |
 <!--DelEnd-->
 
 ### 接口

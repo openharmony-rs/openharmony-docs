@@ -15,6 +15,7 @@ interface TargetElement
 ## 导入模块
 
 ```TypeScript
+import { privacyComputation } from '@kit.DataProtectionKit';
 ```
 
 ## elemData
@@ -43,7 +44,7 @@ elemData: Uint8Array
 hashAlg?: HashAlg
 ```
 
-用于散列目标元素的散列算法。如果未指定，则元素数据将与SHA256默认值一起使用。
+用于散列目标元素的散列算法。如果未指定，则元素数据将与无哈希算法默认值一起使用。
 
 **类型：** [HashAlg](arkts-dataprotection-privacycomputation-hashalg-e.md)
 

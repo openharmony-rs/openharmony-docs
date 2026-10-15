@@ -6,10 +6,6 @@
 
 支持根据设备尺寸和断点动态调整列数与间距，实现响应式布局。
 
-> **说明：** 
-> 
-> 该组件从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 ## 子组件
 
 可以包含GridCol子组件。
@@ -36,7 +32,7 @@ GridRow(option?: GridRowOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| option | [GridRowOptions](arkts-arkui-gridrow-comp-gridrowoptions-i.md) | 否 |  |
+| option | [GridRowOptions](arkts-arkui-gridrow-comp-gridrowoptions-i.md) | 否 | 栅格行布局选项，包含columns、gutter、breakpoints等布局属性。不传入时使用各属性默认值。 |
 
 ## 汇总
 

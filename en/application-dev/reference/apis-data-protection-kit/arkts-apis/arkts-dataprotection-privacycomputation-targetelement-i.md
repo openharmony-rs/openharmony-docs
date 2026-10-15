@@ -15,6 +15,7 @@ Defines the target element for privacy computation, including the raw element da
 ## Modules to Import
 
 ```TypeScript
+import { privacyComputation } from '@kit.DataProtectionKit';
 ```
 
 ## elemData
@@ -43,7 +44,7 @@ The raw data of the target element to be searched for.
 hashAlg?: HashAlg
 ```
 
-The hash algorithm used for hashing the target element. If not specified, the element data will be used with SHA256 default.
+The hash algorithm used for hashing the target element. If not specified, the element data will be used with no hash algorithm default.
 
 **Type:** [HashAlg](arkts-dataprotection-privacycomputation-hashalg-e.md)
 

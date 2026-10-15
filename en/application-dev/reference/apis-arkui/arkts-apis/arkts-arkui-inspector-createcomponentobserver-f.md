@@ -12,13 +12,13 @@ import { inspector } from '@kit.ArkUI';
 function createComponentObserver(id: string): ComponentObserver
 ```
 
-Sets the component after layout or draw criteria and returns the corresponding listening handle
+Binds to the specified component and returns the corresponding observation handle.
 
 **Since:** 10
 
 **Deprecated since:** 18
 
-**Substitutes:** createComponentObserver
+**Substitutes:** [createComponentObserver](arkts-arkui-arkui-uicontext-uiinspector-c.md#createcomponentobserver)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -32,13 +32,13 @@ Sets the component after layout or draw criteria and returns the corresponding l
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | component id. |
+| id | string | Yes | ID of the target component, set using the universal attributes [id](../arkui-ts/ts-universal-attributes-component-id.md#id) or [key](../arkui-ts/ts-universal-attributes-component-id.md#key12). |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [ComponentObserver](arkts-arkui-inspector-componentobserver-i.md) | create listener for observer component event. |
+| [ComponentObserver](arkts-arkui-inspector-componentobserver-i.md) | Component observer handle, which is used to register and unregister callbacks. |
 
 **Examples**
 

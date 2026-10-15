@@ -6,7 +6,7 @@ declare type FractionStop = [ number, number ]
 
 Defines a gradient blur stop.
 
-@typedef { [ number, number ] } FractionStop
+**Type:** [ number, number ]
 
 **Since:** 12
 
@@ -17,5 +17,3 @@ Defines a gradient blur stop.
 <!--Device-unnamed-declare type FractionStop = [ number, number ]--><!--Device-unnamed-declare type FractionStop = [ number, number ]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [ number, number ]

@@ -18,13 +18,13 @@ declare enum PanelMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Mini
+## Full
 
 ```TypeScript
-Mini = 0
+Full
 ```
 
-类型为Minibar和Foldable时，为最小状态；类型为Temporary，则不生效。
+类型为Minibar、Foldable和Temporary时，为类全屏状态；类型为CUSTOM，则不生效。
 
 **起始版本：** 7
 
@@ -34,7 +34,7 @@ Mini = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-PanelMode-Mini = 0--><!--Device-PanelMode-Mini = 0-End-->
+<!--Device-PanelMode-Full--><!--Device-PanelMode-Full-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,13 +58,13 @@ Half
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Full
+## Mini
 
 ```TypeScript
-Full
+Mini = 0
 ```
 
-类型为Minibar、Foldable和Temporary时，为类全屏状态；类型为CUSTOM，则不生效。
+类型为Minibar和Foldable时，为最小状态；类型为Temporary，则不生效。
 
 **起始版本：** 7
 
@@ -74,6 +74,6 @@ Full
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-PanelMode-Full--><!--Device-PanelMode-Full-End-->
+<!--Device-PanelMode-Mini = 0--><!--Device-PanelMode-Mini = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

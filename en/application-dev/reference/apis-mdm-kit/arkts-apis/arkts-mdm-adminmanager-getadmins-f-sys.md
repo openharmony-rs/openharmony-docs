@@ -36,6 +36,7 @@ Queries all device administrator applications of the current user. This API uses
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ adminManager.getAdmins().then((result) => {
   console.error(`Failed to get admins. Code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+<!--DelEnd-->

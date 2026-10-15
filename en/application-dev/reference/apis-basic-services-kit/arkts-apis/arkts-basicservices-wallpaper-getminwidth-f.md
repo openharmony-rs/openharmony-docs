@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="getminwidth1"></a>
+
 ## getMinWidth
 
 ```TypeScript
@@ -43,7 +45,7 @@ wallpaper.getMinWidth((error: BusinessError, data: Number) => {
 ```
 
 
-<a id="getminwidth-1"></a>
+<a id="getminwidth2"></a>
 
 ## getMinWidth
 

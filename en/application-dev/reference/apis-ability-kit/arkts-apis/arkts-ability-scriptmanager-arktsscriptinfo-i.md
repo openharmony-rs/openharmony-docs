@@ -4,7 +4,7 @@
 interface ArkTSScriptInfo
 ```
 
-arkTS script info.
+The first parameter of the ArkTS script entry function of an app, used to receive the script context information passed by the system.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { scriptManager } from '@kit.AbilityKit';
 readonly context: Context
 ```
 
-The context of the bound ability.
+Context of the bound ability.
 
 **Type:** [Context](arkts-ability-context-c.md)
 
@@ -32,7 +32,7 @@ The context of the bound ability.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ArkTSScriptInfo-readonly context: Context--><!--Device-ArkTSScriptInfo-readonly context: Context-End-->
 
@@ -44,7 +44,7 @@ The context of the bound ability.
 readonly requestCode: string
 ```
 
-Request code for identifying the current operation
+Request code used to identify the current operation.
 
 **Type:** string
 
@@ -52,7 +52,7 @@ Request code for identifying the current operation
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ArkTSScriptInfo-readonly requestCode: string--><!--Device-ArkTSScriptInfo-readonly requestCode: string-End-->
 

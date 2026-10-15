@@ -6,6 +6,8 @@
 import { identifier } from '@kit.AdsKit';
 ```
 
+<a id="getoaid1"></a>
+
 ## getOAID
 
 ```TypeScript
@@ -54,7 +56,7 @@ identifier.getOAID((err: BusinessError, data: string) => {
 ```
 
 
-<a id="getoaid-1"></a>
+<a id="getoaid2"></a>
 
 ## getOAID
 

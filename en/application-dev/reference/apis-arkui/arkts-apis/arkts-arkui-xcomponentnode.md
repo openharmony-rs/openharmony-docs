@@ -6,7 +6,7 @@
 
 | Name | Description |
 | --- | --- |
-| [XComponentNode](arkts-arkui-xcomponentnode-c.md) | Defines XComponent Node. |
+| [XComponentNode](arkts-arkui-xcomponentnode-c.md) | Provides APIs for the XComponentNode, which represents an XComponent in the component tree. You can write EGL/OpenGL ES and media data and display it on the XComponent, whose render type can be dynamically modified. It is suitable for scenarios where native self-rendering content needs to be embedded in the ArkUI component tree. |
 
 ## Examples
 

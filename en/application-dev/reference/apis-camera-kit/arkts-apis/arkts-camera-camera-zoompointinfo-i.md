@@ -30,7 +30,7 @@ Equivalent focal length corresponding to the current focal length ratio.
 
 **Since:** 26.0.0
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ZoomPointInfo-readonly equivalentFocalLength: int--><!--Device-ZoomPointInfo-readonly equivalentFocalLength: int-End-->
 
@@ -48,7 +48,7 @@ Zoom ratio.
 
 **Since:** 26.0.0
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ZoomPointInfo-readonly zoomRatio: double--><!--Device-ZoomPointInfo-readonly zoomRatio: double-End-->
 

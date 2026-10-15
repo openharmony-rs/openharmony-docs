@@ -14,42 +14,6 @@ enum UploadState
 
 **系统接口：** 此接口为系统接口。
 
-## WAITING
-
-```TypeScript
-WAITING = 0
-```
-
-等待上传。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UploadState-WAITING = 0--><!--Device-UploadState-WAITING = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-**系统接口：** 此接口为系统接口。
-
-## RUNNING
-
-```TypeScript
-RUNNING = 1
-```
-
-正在上传中。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UploadState-RUNNING = 1--><!--Device-UploadState-RUNNING = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## COMPLETED
 
 ```TypeScript
@@ -86,6 +50,42 @@ FAILED = 3
 
 **系统接口：** 此接口为系统接口。
 
+## PAUSED
+
+```TypeScript
+PAUSED = 5
+```
+
+上传已暂停。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UploadState-PAUSED = 5--><!--Device-UploadState-PAUSED = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口：** 此接口为系统接口。
+
+## RUNNING
+
+```TypeScript
+RUNNING = 1
+```
+
+正在上传中。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UploadState-RUNNING = 1--><!--Device-UploadState-RUNNING = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## STOPPED
 
 ```TypeScript
@@ -104,19 +104,19 @@ STOPPED = 4
 
 **系统接口：** 此接口为系统接口。
 
-## PAUSED
+## WAITING
 
 ```TypeScript
-PAUSED = 5
+WAITING = 0
 ```
 
-上传已暂停。
+等待上传。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UploadState-PAUSED = 5--><!--Device-UploadState-PAUSED = 5-End-->
+<!--Device-UploadState-WAITING = 0--><!--Device-UploadState-WAITING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

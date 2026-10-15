@@ -4,7 +4,7 @@
 export interface ToolBarV2ItemOptions
 ```
 
-Declare the options of ToolBarV2Item
+Defines the options for initializing a **ToolBarV2Item** object.
 
 **Since:** 18
 
@@ -24,7 +24,9 @@ import { ToolBarV2ItemState, ToolBarV2SymbolGlyph, ToolBarV2SymbolGlyphOptions, 
 action?: ToolBarV2ItemAction
 ```
 
-Define the action event.
+Click event of the toolbar item.
+
+By default, there is no click event.
 
 **Since:** 18
 
@@ -42,7 +44,9 @@ Define the action event.
 accessibilityDescription?: ResourceStr
 ```
 
-The accessibilityDescription of item.
+Accessible description of the toolbar item. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.
+
+Default value: **"Double-tap to activate"**
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -62,7 +66,19 @@ The accessibilityDescription of item.
 accessibilityLevel?: string
 ```
 
-The accessibilityLevel of item.
+Accessibility level of the toolbar item, which controls whether the current item can be recognized by the accessibility service.
+
+</div>Supported values:
+
+**"auto"**: The current value is converted to **"yes"**.
+
+**"yes"**: The current component can be recognized by the accessibility service.
+
+**"no"**: The current component cannot be recognized by the accessibility service.
+
+**"no-hide-descendants"**: The current component and all its child components cannot be recognized by the accessibility service.
+
+Default value: **"auto"**
 
 **Type:** string
 
@@ -84,7 +100,9 @@ The accessibilityLevel of item.
 accessibilityText?: ResourceStr
 ```
 
-The accessibilityText of item.
+Accessibility text, that is, accessible label name, of the toolbar item. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.
+
+Default value: value of **content**
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -104,7 +122,7 @@ The accessibilityText of item.
 content: ToolBarV2ItemText
 ```
 
-Define text content.
+Text of the toolbar item.
 
 **Type:** [ToolBarV2ItemText](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemtext-c.md)
 
@@ -124,7 +142,9 @@ Define text content.
 icon?: ToolBarV2ItemIconType
 ```
 
-Define icon resource.
+Icon of the toolbar item.
+
+By default, there is no icon.
 
 **Type:** [ToolBarV2ItemIconType](arkts-arkui-toolbarv2itemicontype-t.md)
 
@@ -144,7 +164,9 @@ Define icon resource.
 state?: ToolBarV2ItemState
 ```
 
-Define item type.
+State of the toolbar item.
+
+Default value: **ToolBarV2ItemState.ENABLE**.
 
 **Type:** [ToolBarV2ItemState](arkts-arkui-arkui-advanced-toolbarv2-toolbarv2itemstate-e.md)
 

@@ -12,26 +12,6 @@ Enumerates the transition edge types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
-
-```TypeScript
-TOP = 0
-```
-
-Top edge of the window.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 10.
-
-<!--Device-TransitionEdge-TOP = 0--><!--Device-TransitionEdge-TOP = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## BOTTOM
 
 ```TypeScript
@@ -49,6 +29,26 @@ Bottom edge of the window.
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
 <!--Device-TransitionEdge-BOTTOM = 1--><!--Device-TransitionEdge-BOTTOM = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## END
+
+```TypeScript
+END = 3
+```
+
+End edge of the window, which is the right edge for left-to-right scripts and the left edge for right-to-left scripts.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 10.
+
+<!--Device-TransitionEdge-END = 3--><!--Device-TransitionEdge-END = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,13 +72,13 @@ Start edge of the window, which is the left edge for left-to-right scripts and t
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## END
+## TOP
 
 ```TypeScript
-END = 3
+TOP = 0
 ```
 
-End edge of the window, which is the right edge for left-to-right scripts and the left edge for right-to-left scripts.
+Top edge of the window.
 
 **Since:** 10
 
@@ -88,6 +88,6 @@ End edge of the window, which is the right edge for left-to-right scripts and th
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
-<!--Device-TransitionEdge-END = 3--><!--Device-TransitionEdge-END = 3-End-->
+<!--Device-TransitionEdge-TOP = 0--><!--Device-TransitionEdge-TOP = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

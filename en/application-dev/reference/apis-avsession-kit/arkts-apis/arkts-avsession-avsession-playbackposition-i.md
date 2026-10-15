@@ -30,7 +30,7 @@ Elapsed time(position) of this media set by the app, described by milliseconds.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlaybackPosition-elapsedTime: long--><!--Device-PlaybackPosition-elapsedTime: long-End-->
 
@@ -48,7 +48,7 @@ Record the system time when elapsedTime is set, described by milliseconds.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PlaybackPosition-updateTime: long--><!--Device-PlaybackPosition-updateTime: long-End-->
 

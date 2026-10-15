@@ -12,38 +12,6 @@ export enum ContinuousTaskDetailedCancelReason
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## USER_CANCEL_REMOVE_NOTIFICATION
-
-```TypeScript
-USER_CANCEL_REMOVE_NOTIFICATION = 3
-```
-
-用户移除通知。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ContinuousTaskDetailedCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3--><!--Device-ContinuousTaskDetailedCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED
-
-```TypeScript
-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4
-```
-
-申请DATA_TRANSFER类型长时任务，但是数据传输速率低。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
 ## SYSTEM_CANCEL_AUDIO_PLAYBACK_NOT_RUNNING
 
 ```TypeScript
@@ -78,67 +46,19 @@ SYSTEM_CANCEL_AUDIO_RECORDING_NOT_RUNNING = 7
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SYSTEM_CANCEL_NOT_USE_LOCATION
+## SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED
 
 ```TypeScript
-SYSTEM_CANCEL_NOT_USE_LOCATION = 8
+SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4
 ```
 
-申请LOCATION类型长时任务，但是未使用定位导航。
+申请DATA_TRANSFER类型长时任务，但是数据传输速率低。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SYSTEM_CANCEL_NOT_USE_BLUETOOTH
-
-```TypeScript
-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9
-```
-
-申请BLUETOOTH_INTERACTION类型长时任务，但是未使用蓝牙相关业务。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE
-
-```TypeScript
-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10
-```
-
-申请MULTI_DEVICE_CONNECTION类型长时任务，但是未使用多设备互联。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SYSTEM_CANCEL_USE_ILLEGALLY
-
-```TypeScript
-SYSTEM_CANCEL_USE_ILLEGALLY = 11
-```
-
-使用非法类型的长时任务，如申请AUDIO_PLAYBACK类型长时任务，但是使用音视频播放及定位导航业务。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11-End-->
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_DATA_TRANSFER_LOW_SPEED = 4-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -158,35 +78,51 @@ SYSTEM_CANCEL_DATA_TRANSFER_NOT_UPDATE = 12
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SYSTEM_CANCEL_VOIP_NOT_RUNNING
+## SYSTEM_CANCEL_NOT_USE_BLUETOOTH
 
 ```TypeScript
-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13
+SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9
 ```
 
-申请VOIP类型长时任务，但是未检测到音频流或者录音流。
+申请BLUETOOTH_INTERACTION类型长时任务，但是未使用蓝牙相关业务。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13-End-->
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_BLUETOOTH = 9-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SYSTEM_CANCEL_USER_UNAUTHORIZED
+## SYSTEM_CANCEL_NOT_USE_LOCATION
 
 ```TypeScript
-SYSTEM_CANCEL_USER_UNAUTHORIZED = 14
+SYSTEM_CANCEL_NOT_USE_LOCATION = 8
 ```
 
-申请特殊场景类型长时任务，但是用户未授权。
+申请LOCATION类型长时任务，但是未使用定位导航。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USER_UNAUTHORIZED = 14--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USER_UNAUTHORIZED = 14-End-->
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_LOCATION = 8-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE
+
+```TypeScript
+SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10
+```
+
+申请MULTI_DEVICE_CONNECTION类型长时任务，但是未使用多设备互联。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_MULTI_DEVICE = 10-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -214,10 +150,74 @@ SYSTEM_CANCEL_NOT_USE_USB = 16
 
 申请USB类型长时任务，但是未检测到USB设备。
 
-**起始版本：** 26.2.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_USB = 16--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_NOT_USE_USB = 16-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SYSTEM_CANCEL_USE_ILLEGALLY
+
+```TypeScript
+SYSTEM_CANCEL_USE_ILLEGALLY = 11
+```
+
+使用非法类型的长时任务，如申请AUDIO_PLAYBACK类型长时任务，但是使用音视频播放及定位导航业务。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USE_ILLEGALLY = 11-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SYSTEM_CANCEL_USER_UNAUTHORIZED
+
+```TypeScript
+SYSTEM_CANCEL_USER_UNAUTHORIZED = 14
+```
+
+申请特殊场景类型长时任务，但是用户未授权。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USER_UNAUTHORIZED = 14--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_USER_UNAUTHORIZED = 14-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SYSTEM_CANCEL_VOIP_NOT_RUNNING
+
+```TypeScript
+SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13
+```
+
+申请VOIP类型长时任务，但是未检测到音频流或者录音流。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13--><!--Device-ContinuousTaskDetailedCancelReason-SYSTEM_CANCEL_VOIP_NOT_RUNNING = 13-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## USER_CANCEL_REMOVE_NOTIFICATION
+
+```TypeScript
+USER_CANCEL_REMOVE_NOTIFICATION = 3
+```
+
+用户移除通知。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ContinuousTaskDetailedCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3--><!--Device-ContinuousTaskDetailedCancelReason-USER_CANCEL_REMOVE_NOTIFICATION = 3-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask

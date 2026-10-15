@@ -20,7 +20,7 @@ data: WebResourceRequest
 
 url请求的相关信息。
 
-**类型：** WebResourceRequest
+**类型：** [WebResourceRequest](arkts-arkweb-web-comp-webresourcerequest-c.md)
 
 **起始版本：** 12
 

@@ -68,7 +68,7 @@ Creates a stream based on a file path. This API uses a promise to return the res
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
-<a id="createstream-1"></a>
+<a id="createstream2"></a>
 
 ## createStream
 

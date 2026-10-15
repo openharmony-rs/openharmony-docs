@@ -4,13 +4,13 @@
 export declare struct EditableTitleBar
 ```
 
-The editable title bar is a title bar that comes with button icons, typically **Cancel** on the left and **Confirm** on the right, on a multi-select or editing page.
+An editable title bar component that provides a standard title bar implementation for editing scenarios. It supports custom left button types (back/cancel), profile picture display, right-side menu items, background blur styles, and other features. It is suitable for scenarios requiring content editing and multi-selection operations, such as album multi-select editing, text editors, and form editing pages. This component encapsulates common UI interaction patterns for editing scenarios (left close, right confirm), so developers do not need to implement the title bar layout and interaction logic themselves. It enables rapid construction of editing pages that comply with design specifications, improving development efficiency and ensuring UI consistency. It also supports accessibility property configuration to meet accessibility requirements.
 
 > **NOTE:** 
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **EditableTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **EditableTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **EditableTitleBar** component.
+> - If the **EditableTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **EditableTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **EditableTitleBar** component.
 
 **Since:** 10
 
@@ -126,13 +126,11 @@ Note: Accessibility properties are not supported.
 isSaveIconRequired: boolean
 ```
 
-Whether the save button on the right is required.
+Whether to show the save button on the right. The value **true** indicates that the save button on the right is required, and **false** indicates the opposite.
 
-Default value: **true**, indicating that the save button on the right is required.
+Default value: **true**
 
-**NOTE:** 
-
-If not decorated by @Require, this parameter is not subject to mandatory validation during construction.
+**Note:** This parameter is not decorated with **@Require**, so it is not mandatory during construction. When **isSaveIconRequired** is set to **false**, the save button is not displayed and the **onSave** callback is not triggered.
 
 **Type:** boolean
 
@@ -154,9 +152,11 @@ If not decorated by @Require, this parameter is not subject to mandatory validat
 leftIconDefaultFocus?: boolean
 ```
 
-Whether the left icon is the default focus.
+Whether the left icon is the default focus. The value **true** indicates that it is the default focus, and **false** indicates the opposite.
 
-Default value: **false**, indicating that the left icon is not the default focus.
+Default value: **false**
+
+**Note:** If multiple operable areas are set as the default focus simultaneously, the first one in display order among them is the default focus.
 
 **Type:** boolean
 
@@ -260,9 +260,11 @@ If not decorated by @Require, this parameter is not subject to mandatory validat
 saveIconDefaultFocus?: boolean
 ```
 
-Whether the save icon is the default focus.
+Whether the save icon is the default focus. The value **true** indicates that it is the default focus, and **false** indicates the opposite.
 
-Default value: **false**, indicating that the save icon is not the default focus.
+Default value: **false**
+
+**Note:** This attribute takes effect only when the save button on the right is required (**isSaveIconRequired** is **true**). If multiple operable areas are set as the default focus simultaneously, the first one in display order among them is the default focus.
 
 **Type:** boolean
 
@@ -284,9 +286,9 @@ Default value: **false**, indicating that the save icon is not the default focus
 subtitle?: ResourceStr
 ```
 
-Subtitle. This parameter is required to display a subtitle below the title bar. If this parameter is not passed, the default value is used and no subtitle is displayed.
+Subtitle. Pass this parameter when supplementary information needs to be displayed below the title. If not passed, no subtitle is displayed.
 
-Default value: **''**, indicating that the subtitle is empty.
+Default value: **''**, indicating that the subtitle content is empty.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

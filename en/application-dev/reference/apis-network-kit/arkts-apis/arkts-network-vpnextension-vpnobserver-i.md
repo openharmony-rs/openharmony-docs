@@ -28,7 +28,7 @@ Unregisters a listener for the user authorization result.
 
 > **NOTE:** 
 > 
-> If you have called [onAuthorizationResult](#onauthorizationresult) multiple times to register
+> If you have called onAuthorizationResult multiple times to register
 > listeners and want to unregister the listener, you need to pass the callback passed in the last call or pass no
 > parameter.
 
@@ -72,7 +72,7 @@ vpnObserver.offAuthorizationResult();
 onAuthorizationResult(callback: Callback<boolean>): void
 ```
 
-Registers a listener for the user authorization result. The authorization result is displayed in a dialog box after [startVpnExtensionAbility](arkts-network-vpnextension-startvpnextensionability-f.md) is called. The notification is sent only when the user taps the dialog box, and only the result of the current VPN is received. If you do not need to listen for the authorization result, call [offAuthorizationResult](#offauthorizationresult) to cancel the registration.
+Registers a listener for the user authorization result. The authorization result is displayed in a dialog box after [startVpnExtensionAbility](arkts-network-vpnextension-startvpnextensionability-f.md) is called. The notification is sent only when the user taps the dialog box, and only the result of the current VPN is received. If you do not need to listen for the authorization result, call offAuthorizationResult to cancel the registration.
 
 > **NOTE:** 
 > 

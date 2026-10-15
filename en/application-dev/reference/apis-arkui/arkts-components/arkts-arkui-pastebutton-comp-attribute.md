@@ -4,11 +4,11 @@
 declare class PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>
 ```
 
-This component can only inherit the [universal attributes of security components](../arkts-apis/arkts-arkui-securitycomponent.md#security_component).
+Universal attributes are not supported. This component can only inherit the [universal attributes of security components](../arkts-apis/arkts-arkui-securitycomponent.md#security_component).
 
-<br>Only the following events are supported.
+Universal events are not supported. Only the following events are supported.
 
-**Inheritance/Implementation:** PasteButtonAttribute extends SecurityComponentMethod<PasteButtonAttribute>
+**Inheritance/Implementation:** PasteButtonAttribute extends SecurityComponentMethod&lt;PasteButtonAttribute&gt;
 
 **Since:** 10
 
@@ -25,7 +25,11 @@ onClick(event: PasteButtonCallback)
 Triggered when the paste button is clicked, returning the authorization result. Upon successful authorization, the application obtains temporary permission to read clipboard content.
 
 > **NOTE:** 
-> - You may want to learn the [restrictions on security component styles](../../../security/AccessToken/security-component-overview.md#constraints)to avoid authorization failures caused by incompliant styles.
+> 
+> You may want to learn the
+> [restrictions on security component
+> styles](../../../security/AccessToken/security-component-overview.md#constraints)
+> to avoid authorization failures caused by incompliant styles.
 
 **Since:** 10
 

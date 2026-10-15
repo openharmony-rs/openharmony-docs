@@ -6,6 +6,8 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="execute1"></a>
+
 ## execute
 
 ```TypeScript
@@ -58,7 +60,7 @@ taskpool.execute(printArgs, 100).then((value: Object) => { // 100: test number
 ```
 
 
-<a id="execute-1"></a>
+<a id="execute2"></a>
 
 ## execute
 
@@ -129,7 +131,7 @@ taskpool.execute<[[number, string]], string>(testWithArray, [100, "test"]).then(
 ```
 
 
-<a id="execute-2"></a>
+<a id="execute3"></a>
 
 ## execute
 
@@ -194,7 +196,7 @@ taskpool.execute(task3, taskpool.Priority.HIGH).then((value: Object) => {
 ```
 
 
-<a id="execute-3"></a>
+<a id="execute4"></a>
 
 ## execute
 
@@ -258,7 +260,7 @@ taskpool.execute<[number], number>(task3, taskpool.Priority.HIGH).then((value: n
 ```
 
 
-<a id="execute-4"></a>
+<a id="execute5"></a>
 
 ## execute
 
@@ -326,7 +328,7 @@ taskpool.execute(taskGroup2).then((res: Array<Object>) => {
 ```
 
 
-<a id="execute-5"></a>
+<a id="execute6"></a>
 
 ## execute
 
@@ -481,7 +483,7 @@ taskpool.execute(taskGroup2).then((res: Array<Object>) => {
 ```
 
 
-<a id="execute-6"></a>
+<a id="execute7"></a>
 
 ## execute
 
@@ -636,7 +638,7 @@ taskpool.execute(taskGroup2).then((res: Array<Object>) => {
 ```
 
 
-<a id="execute-7"></a>
+<a id="execute8"></a>
 
 ## execute
 

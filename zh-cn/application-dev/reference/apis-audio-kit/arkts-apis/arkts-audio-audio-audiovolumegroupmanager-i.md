@@ -128,6 +128,8 @@ audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo
 });
 ```
 
+<a id="getringermode1"></a>
+
 ## getRingerMode
 
 ```TypeScript
@@ -162,7 +164,7 @@ audioVolumeGroupManager.getRingerMode((err: BusinessError, ringerMode: audio.Aud
 });
 ```
 
-<a id="getringermode-1"></a>
+<a id="getringermode2"></a>
 
 ## getRingerMode
 
@@ -230,6 +232,8 @@ try {
 }
 ```
 
+<a id="ismicrophonemute1"></a>
+
 ## isMicrophoneMute
 
 ```TypeScript
@@ -264,7 +268,7 @@ audioVolumeGroupManager.isMicrophoneMute((err: BusinessError, isMute: boolean) =
 });
 ```
 
-<a id="ismicrophonemute-1"></a>
+<a id="ismicrophonemute2"></a>
 
 ## isMicrophoneMute
 
@@ -378,7 +382,7 @@ off(type: 'ringerModeChange', callback?: Callback<AudioRingMode>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('ringerModeChange')](#onringermodechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与on('ringerModeChange')绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -421,7 +425,7 @@ off(type: 'micStateChange', callback?: Callback<MicStateChangeEvent>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'micStateChange' | 是 | 事件回调类型，支持的事件为'micStateChange'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('micStateChange')](#onmicstatechange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与on('micStateChange')绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -518,6 +522,8 @@ audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChan
 });
 ```
 
+<a id="getmaxvolume1"></a>
+
 ## getMaxVolume
 
 ```TypeScript
@@ -562,7 +568,7 @@ audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: Business
 });
 ```
 
-<a id="getmaxvolume-1"></a>
+<a id="getmaxvolume2"></a>
 
 ## getMaxVolume
 
@@ -667,6 +673,8 @@ try {
 }
 ```
 
+<a id="getminvolume1"></a>
+
 ## getMinVolume
 
 ```TypeScript
@@ -711,7 +719,7 @@ audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: Business
 });
 ```
 
-<a id="getminvolume-1"></a>
+<a id="getminvolume2"></a>
 
 ## getMinVolume
 
@@ -816,6 +824,8 @@ try {
 }
 ```
 
+<a id="getsystemvolumeindb1"></a>
+
 ## getSystemVolumeInDb
 
 ```TypeScript
@@ -871,7 +881,7 @@ audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audi
 });
 ```
 
-<a id="getsystemvolumeindb-1"></a>
+<a id="getsystemvolumeindb2"></a>
 
 ## getSystemVolumeInDb
 
@@ -990,6 +1000,8 @@ try {
 }
 ```
 
+<a id="getvolume1"></a>
+
 ## getVolume
 
 ```TypeScript
@@ -1034,7 +1046,7 @@ audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessErr
 });
 ```
 
-<a id="getvolume-1"></a>
+<a id="getvolume2"></a>
 
 ## getVolume
 
@@ -1139,6 +1151,8 @@ try {
 }
 ```
 
+<a id="ismute1"></a>
+
 ## isMute
 
 ```TypeScript
@@ -1183,7 +1197,7 @@ audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError,
 });
 ```
 
-<a id="ismute-1"></a>
+<a id="ismute2"></a>
 
 ## isMute
 
@@ -1288,6 +1302,8 @@ try {
 }
 ```
 
+<a id="setmicrophonemute1"></a>
+
 ## setMicrophoneMute
 
 ```TypeScript
@@ -1331,7 +1347,7 @@ audioVolumeGroupManager.setMicrophoneMute(true, (err: BusinessError) => {
 });
 ```
 
-<a id="setmicrophonemute-1"></a>
+<a id="setmicrophonemute2"></a>
 
 ## setMicrophoneMute
 

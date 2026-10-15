@@ -30,6 +30,7 @@ Resets the OAID.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
 | [17300002](../errorcode-oaid.md#17300002-not-in-the-trust-list) | Not in the trust list.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -37,3 +38,5 @@ import { identifier } from '@kit.AdsKit';
 
 identifier.resetOAID();
 ```
+
+<!--DelEnd-->

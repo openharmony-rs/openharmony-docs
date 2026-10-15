@@ -46,6 +46,7 @@ function sendControlEvent(event: ControlEvent): Promise<void>
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [34000005](../errorcode-onScreen.md#34000005-目标未找到) | The target is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -84,3 +85,5 @@ if (event != undefined) {
    }
 }
 ```
+
+<!--DelEnd-->

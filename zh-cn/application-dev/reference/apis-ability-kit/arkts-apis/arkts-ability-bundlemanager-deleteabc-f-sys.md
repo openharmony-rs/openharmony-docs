@@ -45,6 +45,7 @@ function deleteAbc(abcPath: string): Promise<void>
 | [17700202](../errorcode-bundle.md#17700202-abc文件删除失败) | Failed to delete the abc file. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,3 +66,5 @@ try {
   hilog.error(0x0000, 'testTag', 'deleteAbc failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

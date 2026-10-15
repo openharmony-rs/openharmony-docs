@@ -42,6 +42,7 @@ function stopMoving(mechId: number): Promise<void>
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ mechanicManager.stopMoving(0)
   });
 console.info('Stop succeeded');
 ```
+
+<!--DelEnd-->

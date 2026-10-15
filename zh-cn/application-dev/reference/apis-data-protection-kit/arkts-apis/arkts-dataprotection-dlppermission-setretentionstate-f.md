@@ -6,6 +6,8 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="setretentionstate1"></a>
+
 ## setRetentionState
 
 ```TypeScript
@@ -36,7 +38,7 @@ function setRetentionState(docUris: Array<string>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100006](../errorcode-dlp.md#19100006-非dlp沙箱应用) | No permission to call this API, which is available only for DLP sandbox applications. |
@@ -58,7 +60,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => {
 ```
 
 
-<a id="setretentionstate-1"></a>
+<a id="setretentionstate2"></a>
 
 ## setRetentionState
 
@@ -85,7 +87,7 @@ function setRetentionState(docUris: Array<string>, callback: AsyncCallback<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported because car not support DLP feature.<br>**适用版本：** 26.0.1+ |
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100006](../errorcode-dlp.md#19100006-非dlp沙箱应用) | No permission to call this API, which is available only for DLP sandbox applications. |

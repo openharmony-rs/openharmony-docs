@@ -29,11 +29,11 @@ declare interface ContextMenuOptions
 
 | 接口 | 菜单默认位置 |  
 |------|-------------|  
-| [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindMenu&lt;sup&gt;11+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindContextMenu&lt;sup&gt;8+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) | Placement.Top |
-| [bindContextMenu&lt;sup&gt;12+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindContextMenuWithResponse&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse) | Placement.Top |
+| [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu1) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
+| [bindMenu<sup>11+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindmenu2) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
+| [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1) | Placement.Top |
+| [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
+| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse1) | Placement.Top |
 
 **起始版本：** 10
 
@@ -425,7 +425,7 @@ enableHoverMode?: boolean
 gridStyle?: MenuGridStyleOptions
 ```
 
-设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu)、[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)、[bindContextMenuByResponseType](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenubyresponsetype)、[bindContextMenuByIsShow](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenubyisshow)、[bindContextMenuWithResponse](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse)中使用[MenuElement](arkts-arkui-common-comp-menuelement-i.md)或在MenuItem中使用MenuItemOptions。
+设置菜单的栅格样式。仅固定样式菜单生效，例如在[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu1)、[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1)、[bindContextMenuByResponseType](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenubyresponsetype)、[bindContextMenuByIsShow](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenubyisshow)、[bindContextMenuWithResponse](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse1)中使用[MenuElement](arkts-arkui-common-comp-menuelement-i.md)或在MenuItem中使用MenuItemOptions。
 
 **类型：** [MenuGridStyleOptions](arkts-arkui-common-comp-menugridstyleoptions-i.md)
 
@@ -847,9 +847,9 @@ placement?: Placement
 
 **说明：** 
 
-1. 作为[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1)入参时，默认值为Placement.BottomLeft。
-2. 作为[bindContextMenu&lt;sup&gt;8+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)或[bindContextMenuWithResponse&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse)入参时，默认效果为菜单跟随点击位置弹出。
-3. 作为[bindContextMenu&lt;sup&gt;12+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)入参时，默认值为Placement.BottomLeft。
+1. 作为[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu2)入参时，默认值为Placement.BottomLeft。
+2. 作为[bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1)或[bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse1)入参时，默认效果为菜单跟随点击位置弹出。
+3. 作为[bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2)入参时，默认值为Placement.BottomLeft。
 4. placement值设置为undefined、null或缺省时，按默认值处理。
 
 **类型：** [Placement](../arkts-apis/arkts-arkui-placement-e.md)
@@ -874,7 +874,7 @@ placement?: Placement
 preview?: MenuPreviewMode | CustomBuilder
 ```
 
-长按悬浮菜单或使用[bindContextMenu&lt;sup&gt;12+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1)显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。
+长按悬浮菜单或使用[bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2)显示菜单的预览内容样式，可以为目标组件的截图，也可以为用户自定义的内容。
 
 默认值：MenuPreviewMode.NONE，无预览内容。
 
@@ -1019,7 +1019,7 @@ scrollBar?: BarState
 systemMaterial?: SystemUiMaterial
 ```
 
-设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)，不建议与上述接口一起使用。材质设置为非法值、undefined时，按照不设置系统材质处理。
+设置菜单的系统材质。不同系统材质对应不同的属性影响效果，该接口影响背景色[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、边框颜色[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1)，不建议与上述接口一起使用。材质设置为非法值、undefined时，按照不设置系统材质处理。
 
 默认值： undefined
 

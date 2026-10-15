@@ -32,26 +32,6 @@ COMPATIBILITY = 'compatibility'
 
 **系统能力：** SystemCapability.Base
 
-## SYSCAP
-
-```TypeScript
-SYSCAP = 'syscap'
-```
-
-支持消除多设备告警。当调用API的系统能力在目标设备上不支持时产生的告警。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-SuppressWarningsType-SYSCAP = 'syscap'--><!--Device-SuppressWarningsType-SYSCAP = 'syscap'-End-->
-
-**系统能力：** SystemCapability.Base
-
 ## PERMISSION
 
 ```TypeScript
@@ -69,5 +49,25 @@ PERMISSION = 'permission'
 **卡片能力：** 从API版本26.0.0开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-SuppressWarningsType-PERMISSION = 'permission'--><!--Device-SuppressWarningsType-PERMISSION = 'permission'-End-->
+
+**系统能力：** SystemCapability.Base
+
+## SYSCAP
+
+```TypeScript
+SYSCAP = 'syscap'
+```
+
+支持消除多设备告警。当调用API的系统能力在目标设备上不支持时产生的告警。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-SuppressWarningsType-SYSCAP = 'syscap'--><!--Device-SuppressWarningsType-SYSCAP = 'syscap'-End-->
 
 **系统能力：** SystemCapability.Base

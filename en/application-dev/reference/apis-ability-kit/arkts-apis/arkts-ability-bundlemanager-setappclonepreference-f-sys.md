@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function setAppClonePreference(bundleName: string, appClonePreference: AppClonePreference): Promise<void>
 ```
 
-Sets the application clone preference configuration.
+Sets the app clone preference based on the given bundle name. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -31,7 +31,7 @@ Sets the application clone preference configuration.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the target application. |
-| appClonePreference | [AppClonePreference](arkts-ability-bundlemanager-appclonepreference-t-sys.md) | Yes | Application clone preference configuration to set. |
+| appClonePreference | [AppClonePreference](arkts-ability-bundlemanager-appclonepreference-t-sys.md) | Yes | App clone preference to set. |
 
 **Return value:**
 
@@ -50,6 +50,7 @@ Sets the application clone preference configuration.
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The specified app index is invalid. |
 | [17700094](../errorcode-bundle.md#17700094-the-specified-application-has-not-created-a-clone) | The specified bundle did not create a clone. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -74,3 +75,5 @@ try {
   hilog.error(0x0000, 'testTag', 'setAppClonePreference failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

@@ -14,54 +14,6 @@ enum CloudAssetDownloadNotifyType
 
 **系统接口：** 此接口为系统接口。
 
-## DOWNLOAD_PROGRESS
-
-```TypeScript
-DOWNLOAD_PROGRESS = 0
-```
-
-下载进度通知。
-
-**起始版本：** 21
-
-<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_PROGRESS = 0--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_PROGRESS = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## DOWNLOAD_FINISHED
-
-```TypeScript
-DOWNLOAD_FINISHED = 1
-```
-
-下载完成通知。
-
-**起始版本：** 21
-
-<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FINISHED = 1--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FINISHED = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## DOWNLOAD_FAILED
-
-```TypeScript
-DOWNLOAD_FAILED = 2
-```
-
-下载失败通知。
-
-**起始版本：** 21
-
-<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FAILED = 2--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FAILED = 2-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## DOWNLOAD_ASSET_DELETED
 
 ```TypeScript
@@ -105,6 +57,54 @@ DOWNLOAD_AUTO_RESUMED = 5
 **起始版本：** 21
 
 <!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_AUTO_RESUMED = 5--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_AUTO_RESUMED = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## DOWNLOAD_FAILED
+
+```TypeScript
+DOWNLOAD_FAILED = 2
+```
+
+下载失败通知。
+
+**起始版本：** 21
+
+<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FAILED = 2--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FAILED = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## DOWNLOAD_FINISHED
+
+```TypeScript
+DOWNLOAD_FINISHED = 1
+```
+
+下载完成通知。
+
+**起始版本：** 21
+
+<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FINISHED = 1--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FINISHED = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## DOWNLOAD_PROGRESS
+
+```TypeScript
+DOWNLOAD_PROGRESS = 0
+```
+
+下载进度通知。
+
+**起始版本：** 21
+
+<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_PROGRESS = 0--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_PROGRESS = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -125,6 +125,8 @@ Matches a string with a regular expression, and returns an array containing the 
 | --- | --- | --- | --- |
 | regexp | string &#124; RegExp | Yes |  |
 
+<a id="replace1"></a>
+
 ## replace
 
 ```TypeScript
@@ -142,7 +144,7 @@ Replaces text in a string, using a regular expression or search string.
 | searchValue | string &#124; RegExp | Yes |  |
 | replaceValue | string | Yes |  |
 
-<a id="replace-1"></a>
+<a id="replace2"></a>
 
 ## replace
 

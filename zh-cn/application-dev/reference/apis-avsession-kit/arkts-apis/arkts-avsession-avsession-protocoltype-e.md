@@ -12,19 +12,19 @@ enum ProtocolType
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-## TYPE_LOCAL
+## TYPE_CAST_PLUS_AUDIO
 
 ```TypeScript
-TYPE_LOCAL = 0
+TYPE_CAST_PLUS_AUDIO = 8
 ```
 
-本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。
+PCM模式。表示媒体正在其他设备上展示。
 
-**起始版本：** 11
+**起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-ProtocolType-TYPE_LOCAL = 0--><!--Device-ProtocolType-TYPE_LOCAL = 0-End-->
+<!--Device-ProtocolType-TYPE_CAST_PLUS_AUDIO = 8--><!--Device-ProtocolType-TYPE_CAST_PLUS_AUDIO = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
@@ -38,7 +38,7 @@ Cast+的Stream模式。表示媒体正在其他设备上展示。
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ProtocolType-TYPE_CAST_PLUS_STREAM = 2--><!--Device-ProtocolType-TYPE_CAST_PLUS_STREAM = 2-End-->
 
@@ -54,24 +54,24 @@ DLNA协议。表示媒体正在其他设备上展示。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ProtocolType-TYPE_DLNA = 4--><!--Device-ProtocolType-TYPE_DLNA = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast
 
-## TYPE_CAST_PLUS_AUDIO
+## TYPE_LOCAL
 
 ```TypeScript
-TYPE_CAST_PLUS_AUDIO = 8
+TYPE_LOCAL = 0
 ```
 
-PCM模式。表示媒体正在其他设备上展示。
+本地设备，包括设备本身的内置扬声器或音频插孔、A2DP 设备。
 
-**起始版本：** 20
+**起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-ProtocolType-TYPE_CAST_PLUS_AUDIO = 8--><!--Device-ProtocolType-TYPE_CAST_PLUS_AUDIO = 8-End-->
+<!--Device-ProtocolType-TYPE_LOCAL = 0--><!--Device-ProtocolType-TYPE_LOCAL = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.AVSession.AVCast

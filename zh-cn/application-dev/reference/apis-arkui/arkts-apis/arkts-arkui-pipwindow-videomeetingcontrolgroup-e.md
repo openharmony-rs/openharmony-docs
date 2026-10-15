@@ -12,22 +12,6 @@ enum VideoMeetingControlGroup
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## HANG_UP_BUTTON
-
-```TypeScript
-HANG_UP_BUTTON = 301
-```
-
-挂断控件组。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-VideoMeetingControlGroup-HANG_UP_BUTTON = 301--><!--Device-VideoMeetingControlGroup-HANG_UP_BUTTON = 301-End-->
-
-**系统能力：** SystemCapability.Window.SessionManager
-
 ## CAMERA_SWITCH
 
 ```TypeScript
@@ -38,25 +22,25 @@ CAMERA_SWITCH = 302
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoMeetingControlGroup-CAMERA_SWITCH = 302--><!--Device-VideoMeetingControlGroup-CAMERA_SWITCH = 302-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-## MUTE_SWITCH
+## HANG_UP_BUTTON
 
 ```TypeScript
-MUTE_SWITCH = 303
+HANG_UP_BUTTON = 301
 ```
 
-静音控件组。
+挂断控件组。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-VideoMeetingControlGroup-MUTE_SWITCH = 303--><!--Device-VideoMeetingControlGroup-MUTE_SWITCH = 303-End-->
+<!--Device-VideoMeetingControlGroup-HANG_UP_BUTTON = 301--><!--Device-VideoMeetingControlGroup-HANG_UP_BUTTON = 301-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager
 
@@ -70,8 +54,24 @@ MICROPHONE_SWITCH = 304
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoMeetingControlGroup-MICROPHONE_SWITCH = 304--><!--Device-VideoMeetingControlGroup-MICROPHONE_SWITCH = 304-End-->
+
+**系统能力：** SystemCapability.Window.SessionManager
+
+## MUTE_SWITCH
+
+```TypeScript
+MUTE_SWITCH = 303
+```
+
+静音控件组。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoMeetingControlGroup-MUTE_SWITCH = 303--><!--Device-VideoMeetingControlGroup-MUTE_SWITCH = 303-End-->
 
 **系统能力：** SystemCapability.Window.SessionManager

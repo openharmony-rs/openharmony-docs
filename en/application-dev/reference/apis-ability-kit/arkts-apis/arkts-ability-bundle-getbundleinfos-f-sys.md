@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getbundleinfos1"></a>
+
 ## getBundleInfos
 
 ```TypeScript
@@ -18,7 +20,7 @@ Obtains all BundleInfo for a specified user in the system. This API uses an asyn
 
 **Deprecated since:** 8
 
-**Substitutes:** getAllBundleInfo
+**Substitutes:** [getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md)
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -34,8 +36,9 @@ Obtains all BundleInfo for a specified user in the system. This API uses an asyn
 | --- | --- | --- | --- |
 | bundleFlag | [BundleFlag](arkts-ability-bundle-bundleflag-e.md) | Yes | Flag used to specify the information contained in the returned bundle information object. Value range: see the bundle information related flags in [BundleFlag](arkts-ability-bundle-bundleflag-e.md). |
 | userId | number | Yes | User ID. Value range: greater than or equal to 0. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return the result. If getBundleInfos is successful, **err** is **undefined**, and the BundleInfo of all bundles under the specified user as the input parameter at program startup. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleInfo](arkts-ability-bundleinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return the result. If getBundleInfos is successful, **err** is **undefined**, and the BundleInfo of all bundles under the specified user as the input parameter at program startup. Otherwise, **err** is an error object. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,8 +56,10 @@ bundle.getBundleInfos(bundleFlag, userId, (err, data) => {
 })
 ```
 
+<!--DelEnd-->
 
-<a id="getbundleinfos-1"></a>
+
+<a id="getbundleinfos2"></a>
 
 ## getBundleInfos
 
@@ -68,7 +73,7 @@ Obtains all BundleInfo for the current user. This API uses an asynchronous callb
 
 **Deprecated since:** 8
 
-**Substitutes:** getAllBundleInfo
+**Substitutes:** [getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md)
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -83,8 +88,9 @@ Obtains all BundleInfo for the current user. This API uses an asynchronous callb
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleFlag | [BundleFlag](arkts-ability-bundle-bundleflag-e.md) | Yes | Flag used to specify the information contained in the returned bundle information object. Value range: see the bundle information related flags in [BundleFlag](arkts-ability-bundle-bundleflag-e.md). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return the result. If getBundleInfos is successful, **err** is **undefined**, and all available BundleInfo as the input parameter at program startup. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleInfo](arkts-ability-bundleinfo-depr-i.md)&gt;&gt; | Yes | Callback used to return the result. If getBundleInfos is successful, **err** is **undefined**, and all available BundleInfo as the input parameter at program startup. Otherwise, **err** is an error object. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -101,8 +107,10 @@ bundle.getBundleInfos(bundleFlag, (err, data) => {
 })
 ```
 
+<!--DelEnd-->
 
-<a id="getbundleinfos-2"></a>
+
+<a id="getbundleinfos3"></a>
 
 ## getBundleInfos
 
@@ -116,7 +124,7 @@ Obtains all BundleInfo for a specified user. This API uses a promise to return t
 
 **Deprecated since:** 8
 
-**Substitutes:** getAllBundleInfo
+**Substitutes:** [getAllBundleInfo](arkts-ability-bundlemanager-getallbundleinfo-f-sys.md)
 
 **Required permissions:** ohos.permission.GET_BUNDLE_INFO_PRIVILEGED
 
@@ -137,8 +145,9 @@ Obtains all BundleInfo for a specified user. This API uses a promise to return t
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[BundleInfo](arkts-ability-bundleinfo-bundleinfo-depr-i.md)&gt;&gt; | Promise used to return all available BundleInfo. |
+| Promise&lt;Array&lt;[BundleInfo](arkts-ability-bundleinfo-depr-i.md)&gt;&gt; | Promise used to return all available BundleInfo. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -155,3 +164,5 @@ bundle.getBundleInfos(bundleFlag, userId)
     console.error('Operation failed. Cause: ' + JSON.stringify(error));
   })
 ```
+
+<!--DelEnd-->

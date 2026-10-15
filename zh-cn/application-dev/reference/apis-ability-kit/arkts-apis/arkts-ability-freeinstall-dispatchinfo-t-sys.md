@@ -6,6 +6,8 @@ export type DispatchInfo = _DispatchInfo
 
 免安装结构体和接口版本信息类。
 
+**类型：** _DispatchInfo
+
 **起始版本：** 9
 
 <!--Device-freeInstall-export type DispatchInfo = _DispatchInfo--><!--Device-freeInstall-export type DispatchInfo = _DispatchInfo-End-->
@@ -13,5 +15,3 @@ export type DispatchInfo = _DispatchInfo
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _DispatchInfo

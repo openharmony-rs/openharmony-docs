@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace ssap--><!--Device-unnamed-declare namespace ssap-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -22,8 +20,8 @@ import { ssap } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createClient](arkts-connectivity-ssap-createclient-f.md) | 创建SSAP客户端实例。 |
-| [createServer](arkts-connectivity-ssap-createserver-f.md) | 创建SSAP服务端实例。 |
+| [createClient](arkts-connectivity-ssap-createclient-f.md#createclient) | 创建SSAP客户端实例。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [createServer](arkts-connectivity-ssap-createserver-f.md#createserver) | 创建SSAP服务端实例。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
 
 ### 接口
 

@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="notifyvisibleforms1"></a>
+
 ## notifyVisibleForms
 
 ```TypeScript
@@ -34,6 +36,7 @@ function notifyVisibleForms(formIds: Array<string>, callback: AsyncCallback<void
 | formIds | Array&lt;string&gt; | 是 | 卡片标识列表。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当向卡片框架发送通知以使指定的卡片可见成功，error为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,8 +50,10 @@ formHost.notifyVisibleForms(formIds, (error: Base.BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="notifyvisibleforms-1"></a>
+
+<a id="notifyvisibleforms2"></a>
 
 ## notifyVisibleForms
 
@@ -84,6 +89,7 @@ function notifyVisibleForms(formIds: Array<string>): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,3 +102,5 @@ formHost.notifyVisibleForms(formIds).then(() => {
   console.error(`formHost notifyVisibleForms, error: ${JSON.stringify(error)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -50,6 +50,7 @@ The integrity check verifies the digital signature of the **AuthToken** to ensur
 | [12500015](../errorcode-useriam.md#12500015-authtoken-integrity-check-failed) | AuthToken integrity check failed. |
 | [12500016](../errorcode-useriam.md#12500016-authtoken-has-expired) | AuthToken has expired. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -118,3 +119,5 @@ try {
   console.error(`auth failed. Code is ${err?.code}, message is ${err?.message}`);
 }
 ```
+
+<!--DelEnd-->

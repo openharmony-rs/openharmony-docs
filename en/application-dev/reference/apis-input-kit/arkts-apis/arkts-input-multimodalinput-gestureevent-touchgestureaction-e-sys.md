@@ -14,65 +14,17 @@ Enumerates touchscreen gesture types.
 
 **System API:** This is a system API.
 
-## SWIPE_DOWN
+## GESTURE_END
 
 ```TypeScript
-SWIPE_DOWN = 0
+GESTURE_END = 6
 ```
 
-Multi-finger downward swipe.
+Gesture ended.
 
 **Since:** 18
 
-<!--Device-TouchGestureAction-SWIPE_DOWN = 0--><!--Device-TouchGestureAction-SWIPE_DOWN = 0-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-**System API:** This is a system API.
-
-## SWIPE_UP
-
-```TypeScript
-SWIPE_UP = 1
-```
-
-Multi-finger upward swipe.
-
-**Since:** 18
-
-<!--Device-TouchGestureAction-SWIPE_UP = 1--><!--Device-TouchGestureAction-SWIPE_UP = 1-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-**System API:** This is a system API.
-
-## SWIPE_LEFT
-
-```TypeScript
-SWIPE_LEFT = 2
-```
-
-Multi-finger leftward swipe.
-
-**Since:** 18
-
-<!--Device-TouchGestureAction-SWIPE_LEFT = 2--><!--Device-TouchGestureAction-SWIPE_LEFT = 2-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-**System API:** This is a system API.
-
-## SWIPE_RIGHT
-
-```TypeScript
-SWIPE_RIGHT = 3
-```
-
-Multi-finger rightward swipe.
-
-**Since:** 18
-
-<!--Device-TouchGestureAction-SWIPE_RIGHT = 3--><!--Device-TouchGestureAction-SWIPE_RIGHT = 3-End-->
+<!--Device-TouchGestureAction-GESTURE_END = 6--><!--Device-TouchGestureAction-GESTURE_END = 6-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -110,17 +62,65 @@ Multi-finger pinch opened.
 
 **System API:** This is a system API.
 
-## GESTURE_END
+## SWIPE_DOWN
 
 ```TypeScript
-GESTURE_END = 6
+SWIPE_DOWN = 0
 ```
 
-Gesture ended.
+Multi-finger downward swipe.
 
 **Since:** 18
 
-<!--Device-TouchGestureAction-GESTURE_END = 6--><!--Device-TouchGestureAction-GESTURE_END = 6-End-->
+<!--Device-TouchGestureAction-SWIPE_DOWN = 0--><!--Device-TouchGestureAction-SWIPE_DOWN = 0-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+**System API:** This is a system API.
+
+## SWIPE_LEFT
+
+```TypeScript
+SWIPE_LEFT = 2
+```
+
+Multi-finger leftward swipe.
+
+**Since:** 18
+
+<!--Device-TouchGestureAction-SWIPE_LEFT = 2--><!--Device-TouchGestureAction-SWIPE_LEFT = 2-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+**System API:** This is a system API.
+
+## SWIPE_RIGHT
+
+```TypeScript
+SWIPE_RIGHT = 3
+```
+
+Multi-finger rightward swipe.
+
+**Since:** 18
+
+<!--Device-TouchGestureAction-SWIPE_RIGHT = 3--><!--Device-TouchGestureAction-SWIPE_RIGHT = 3-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+**System API:** This is a system API.
+
+## SWIPE_UP
+
+```TypeScript
+SWIPE_UP = 1
+```
+
+Multi-finger upward swipe.
+
+**Since:** 18
+
+<!--Device-TouchGestureAction-SWIPE_UP = 1--><!--Device-TouchGestureAction-SWIPE_UP = 1-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 

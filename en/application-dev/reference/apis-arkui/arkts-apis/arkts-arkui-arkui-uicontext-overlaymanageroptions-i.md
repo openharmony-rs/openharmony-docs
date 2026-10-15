@@ -29,13 +29,13 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 onBackPress?: OnOverlayBackPressCallback
 ```
 
-Callback for intercepting back-press events on an overlay.
+Callback for intercepting the overlay swipe-back event.
 
 **NOTE:** 
 1. When this callback is registered and **enableBackPressedEvent** is set to **true**,
-the back-press event will not close the overlay automatically. Instead, the overlay invokes this callback to decide whether the event should be propagated to the underlying components.
-2. Return **true** to intercept the event (the event is consumed and will not be passed
-to lower layers), or **false** to allow the event to propagate through to the components below the overlay.
+the swipe-back event does not automatically close the overlay. Instead, this callback is invoked to determine whether the event is passed to lower-level components.
+2. The value **true** indicates that the event is intercepted (consumed and not passed to
+lower-level components), and **false** indicates that the event is not intercepted and will be passed through to lower-level components.
 
 **Since:** 26.0.0
 
@@ -53,7 +53,7 @@ to lower layers), or **false** to allow the event to propagate through to the co
 enableBackPressedEvent?: boolean
 ```
 
-hether to enable the swipe-to-dismiss gesture for **ComponentContent** under **OverlayManager**. The value **true** means to enable the swipe-to-dismiss gesture, and **false** means the opposite. Default value: **false**.<br> **Atomic service API**: This API can be used in atomic services since API version 19.
+Whether to support closing the **ComponentContent** under **OverlayManager** through a swipe gesture. The value **true** indicates yes, and **false** indicates no. The default value is **false**.<br> **Atomic service API**: This API can be used in atomic services since API version 19.
 
 **Type:** boolean
 
@@ -75,7 +75,7 @@ hether to enable the swipe-to-dismiss gesture for **ComponentContent** under **O
 renderRootOverlay?: boolean
 ```
 
-Whether to render the overlay root node. The value **true** means to render the overlay root node, and **false** means the opposite. The default value is **true**.<br> **Atomic service API**: This API can be used in atomic services since API version 15.
+Whether to render the overlay root node. The value **true** indicates that the overlay root node is rendered, and **false** indicates the opposite. The default value is **true**. By setting this parameter to **false**, you can resolve the issue where **PhotoPickerComponent** cannot select photos when **OverlayManager** is displayed on top of it.<br> **Atomic service API**: This API can be used in atomic services since API version 15.
 
 **Type:** boolean
 

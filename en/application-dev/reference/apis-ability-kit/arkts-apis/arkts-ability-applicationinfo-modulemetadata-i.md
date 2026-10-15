@@ -24,7 +24,7 @@ Metadata list of the module.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ModuleMetadata-readonly metadata: Array<Metadata>--><!--Device-ModuleMetadata-readonly metadata: Array<Metadata>-End-->
 
@@ -42,7 +42,7 @@ Module name.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ModuleMetadata-readonly moduleName: string--><!--Device-ModuleMetadata-readonly moduleName: string-End-->
 

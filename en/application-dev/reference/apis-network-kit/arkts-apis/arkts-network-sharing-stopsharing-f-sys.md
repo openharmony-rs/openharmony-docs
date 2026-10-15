@@ -6,6 +6,8 @@
 import { sharing } from '@kit.NetworkKit';
 ```
 
+<a id="stopsharing1"></a>
+
 ## stopSharing
 
 ```TypeScript
@@ -46,6 +48,7 @@ Disables sharing of a specified type. This API uses an asynchronous callback to 
 | [2202006](../errorcode-net-sharing.md#2202006-bluetooth-sharing-failure) | Bluetooth sharing failed. |
 | [2202011](../errorcode-net-sharing.md#2202011-failed-to-obtain-the-network-sharing-configuration) | Cannot get network sharing configuration. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,8 +61,10 @@ sharing.stopSharing(SHARING_WIFI, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="stopsharing-1"></a>
+
+<a id="stopsharing2"></a>
 
 ## stopSharing
 
@@ -106,6 +111,7 @@ Disables sharing of a specified type. This API uses a promise to return the resu
 | [2202006](../errorcode-net-sharing.md#2202006-bluetooth-sharing-failure) | Bluetooth sharing failed. |
 | [2202011](../errorcode-net-sharing.md#2202011-failed-to-obtain-the-network-sharing-configuration) | Cannot get network sharing configuration. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -122,3 +128,5 @@ sharing
     console.error('stop wifi sharing failed');
   });
 ```
+
+<!--DelEnd-->

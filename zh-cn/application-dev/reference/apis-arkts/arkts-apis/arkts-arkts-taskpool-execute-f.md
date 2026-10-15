@@ -6,6 +6,8 @@
 import { taskpool } from '@kit.ArkTS';
 ```
 
+<a id="execute1"></a>
+
 ## execute
 
 ```TypeScript
@@ -26,8 +28,8 @@ function execute(func: Function, ...args: Object[]): Promise<Object>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
-| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
+| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **返回值：**
 
@@ -58,7 +60,7 @@ taskpool.execute(printArgs, 100).then((value: Object) => { // 100: test number
 ```
 
 
-<a id="execute-1"></a>
+<a id="execute2"></a>
 
 ## execute
 
@@ -80,8 +82,8 @@ function execute<A extends Array<Object>, R>(func: (...args: A) => R | Promise<R
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | (...args: A) =&gt; R &#124; Promise&lt;R&gt; | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考序列化支持类型。 |
-| args | A | 是 | 任务执行函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
+| func | (...args: A) =&gt; R &#124; Promise&lt;R&gt; | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | A | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **返回值：**
 
@@ -129,7 +131,7 @@ taskpool.execute<[[number, string]], string>(testWithArray, [100, "test"]).then(
 ```
 
 
-<a id="execute-2"></a>
+<a id="execute3"></a>
 
 ## execute
 
@@ -199,7 +201,7 @@ taskpool.execute(task3, taskpool.Priority.HIGH).then((value: Object) => {
 ```
 
 
-<a id="execute-3"></a>
+<a id="execute4"></a>
 
 ## execute
 
@@ -263,7 +265,7 @@ taskpool.execute<[number], number>(task3, taskpool.Priority.HIGH).then((value: n
 ```
 
 
-<a id="execute-4"></a>
+<a id="execute5"></a>
 
 ## execute
 
@@ -331,7 +333,7 @@ taskpool.execute(taskGroup2).then((res: Array<Object>) => {
 ```
 
 
-<a id="execute-5"></a>
+<a id="execute6"></a>
 
 ## execute
 
@@ -423,7 +425,7 @@ try {
 ```
 
 
-<a id="execute-6"></a>
+<a id="execute7"></a>
 
 ## execute
 
@@ -515,7 +517,7 @@ try {
 ```
 
 
-<a id="execute-7"></a>
+<a id="execute8"></a>
 
 ## execute
 

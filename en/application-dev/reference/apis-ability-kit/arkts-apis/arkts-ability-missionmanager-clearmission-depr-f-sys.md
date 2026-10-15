@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="clearmission1"></a>
+
 ## clearMission
 
 ```TypeScript
@@ -34,6 +36,7 @@ Clears a given mission, regardless of whether it is locked. This API uses an asy
 | missionId | number | Yes | Mission ID. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the mission is cleared, **err** is **undefined**. Otherwise, **err** is an error object. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,8 +59,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="clearmission-1"></a>
+
+<a id="clearmission2"></a>
 
 ## clearMission
 
@@ -93,6 +98,7 @@ Clears a given mission, regardless of whether it is locked. This API uses a prom
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -112,3 +118,5 @@ try {
   console.error(`clearMission sync failed. Code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->

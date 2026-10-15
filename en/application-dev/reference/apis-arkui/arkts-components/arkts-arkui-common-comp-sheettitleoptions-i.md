@@ -18,7 +18,7 @@ Component sheet title options
 subtitle?: ResourceStr
 ```
 
-Defines subtitle text
+Subtitle of the half-modal panel. By default, no subtitle is displayed when this parameter is not passed. Pass this parameter when supplementary text needs to be displayed below the title.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 
@@ -38,7 +38,7 @@ Defines subtitle text
 title: ResourceStr
 ```
 
-Defines title text
+Main title of the sheet.
 
 **Type:** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)
 

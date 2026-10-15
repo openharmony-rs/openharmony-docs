@@ -14,22 +14,6 @@ enum Action
 
 **系统接口：** 此接口为系统接口。
 
-## RETAIN_DATA
-
-```TypeScript
-RETAIN_DATA = 0
-```
-
-仅清除云端标识，保留本地缓存文件。
-
-**起始版本：** 10
-
-<!--Device-Action-RETAIN_DATA = 0--><!--Device-Action-RETAIN_DATA = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-**系统接口：** 此接口为系统接口。
-
 ## CLEAR_DATA
 
 ```TypeScript
@@ -41,6 +25,22 @@ CLEAR_DATA = 1
 **起始版本：** 10
 
 <!--Device-Action-CLEAR_DATA = 1--><!--Device-Action-CLEAR_DATA = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**系统接口：** 此接口为系统接口。
+
+## RETAIN_DATA
+
+```TypeScript
+RETAIN_DATA = 0
+```
+
+仅清除云端标识，保留本地缓存文件。
+
+**起始版本：** 10
+
+<!--Device-Action-RETAIN_DATA = 0--><!--Device-Action-RETAIN_DATA = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

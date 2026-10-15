@@ -6,6 +6,8 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
+<a id="getvaluesync1"></a>
+
 ## getValueSync
 
 ```TypeScript
@@ -30,7 +32,7 @@ Get value from settingsdata(synchronous method)
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| dataAbilityHelper | [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-dataabilityhelper-i.md) | Yes | Indicates dataAbilityHelper instance. |
+| dataAbilityHelper | [DataAbilityHelper](../../apis-ability-kit/arkts-apis/arkts-ability-dataabilityhelper-i.md) | Yes | Indicates dataAbilityHelper instance. |
 | name | string | Yes | Indicates the name of the character string. |
 | defValue | string | Yes | Indicates the default value of the character string. |
 
@@ -52,7 +54,7 @@ let value:string = settings.getValueSync(helper, settings.display.SCREEN_BRIGHTN
 ```
 
 
-<a id="getvaluesync-1"></a>
+<a id="getvaluesync2"></a>
 
 ## getValueSync
 
@@ -97,7 +99,7 @@ let value = settings.getValueSync(context, settings.display.SCREEN_BRIGHTNESS_ST
 ```
 
 
-<a id="getvaluesync-2"></a>
+<a id="getvaluesync3"></a>
 
 ## getValueSync
 

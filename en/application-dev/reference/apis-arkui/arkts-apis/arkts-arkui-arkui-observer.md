@@ -8,8 +8,6 @@ Provides APIs for listening for UI component behavior changes, including listeni
 
 **Since:** 11
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace uiObserver--><!--Device-unnamed-declare namespace uiObserver-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
@@ -26,30 +24,30 @@ import { uiObserver } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [off](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate) | Unsubscribes from status changes of the **NavDestination** component. Compared with [uiObserver.off](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate), this API supports the **options** parameter, which enables you to specify the ID of the target **Navigation** component to observe. |
-| [off](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate) | Unsubscribes from status changes of the **NavDestination** component. |
-| [off](arkts-arkui-uiobserver-off-f.md#offscrollevent) | Unregisters the listener for the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md). |
-| [off](arkts-arkui-uiobserver-off-f.md#offscrollevent) | Unregisters the listener for the start and end of scroll events of all scrollable components. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md). |
-| [off](arkts-arkui-uiobserver-off-f.md#offrouterpageupdate) | Unsubscribes from state changes of the page during routing. |
-| [off](arkts-arkui-uiobserver-off-f.md#offdensityupdate) | Unregisters the listener for screen pixel density changes. |
-| [off](arkts-arkui-uiobserver-off-f.md#offwilldraw) | Unregisters the listener for drawing instruction dispatch in each frame. |
-| [off](arkts-arkui-uiobserver-off-f.md#offdidlayout) | Unregisters the listener for layout completion status in each frame. |
-| [off](arkts-arkui-uiobserver-off-f.md#offtabcontentupdate) | Unsubscribes from **TabContent** page switching events for the specified **Tabs** component identified by its ID. |
-| [off](arkts-arkui-uiobserver-off-f.md#offtabcontentupdate) | Unsubscribes from the **TabContent** switching event. |
-| [off](arkts-arkui-uiobserver-off-f.md#offnavdestinationswitch) | Unsubscribes from **Navigation** component page switching events. |
-| [off](arkts-arkui-uiobserver-off-f.md#offnavdestinationswitch) | Unsubscribes from **Navigation** component page switching events. Compared with uiObserver.off, this API supports the **observerOptions** parameter, which enables you to configure observation options. |
-| [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate) | Subscribes to status changes of the **NavDestination** component. Compared with [uiObserver.on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate), this API supports the **options** parameter, which enables you to specify the ID of the target **Navigation** component to observe. |
-| [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate) | Subscribes to status changes of the **NavDestination** component. |
-| [on](arkts-arkui-uiobserver-on-f.md#onscrollevent) | Listens for the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md). |
-| [on](arkts-arkui-uiobserver-on-f.md#onscrollevent) | Listens for the start and end of scroll events of all scrollable components. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md). |
-| [on](arkts-arkui-uiobserver-on-f.md#onrouterpageupdate) | Subscribes to state changes of the page during routing. |
-| [on](arkts-arkui-uiobserver-on-f.md#ondensityupdate) | Listens for screen pixel density changes. |
-| [on](arkts-arkui-uiobserver-on-f.md#onwilldraw) | Listens for drawing instruction dispatch in each frame. |
-| [on](arkts-arkui-uiobserver-on-f.md#ondidlayout) | Listens for layout completion status in each frame. |
-| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | Subscribes to **TabContent** page switching events for the specified **Tabs** component identified by its ID. Unlike [on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22), this API does not support listening for the initial tab display event when the **Tabs** component is initialized. |
-| [on](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | Subscribes to **TabContent** switch events. Unlike [on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22), this API does not support listening for the initial tab display event when the **Tabs** component is initialized. |
-| [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationswitch) | Subscribes to **Navigation** component page switching events. |
-| [on](arkts-arkui-uiobserver-on-f.md#onnavdestinationswitch) | Subscribes to **Navigation** component page switching events. Compared with uiObserver.on, this API supports the **observerOptions** parameter, which enables you to configure observation options. |
+| [off('navDestinationUpdate')](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate) | Unsubscribes from status changes of the **NavDestination** component. Compared with [uiObserver.off](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate), this API supports the **options** parameter, which enables you to specify the ID of the target **Navigation** component to observe. |
+| [off('navDestinationUpdate')](arkts-arkui-uiobserver-off-f.md#offnavdestinationupdate) | Unsubscribes from status changes of the **NavDestination** component. |
+| [off('scrollEvent')](arkts-arkui-uiobserver-off-f.md#offscrollevent) | Unregisters the listener for the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md). |
+| [off('scrollEvent')](arkts-arkui-uiobserver-off-f.md#offscrollevent) | Unregisters the listener for the start and end of scroll events of all scrollable components. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md). |
+| [off('routerPageUpdate')](arkts-arkui-uiobserver-off-f.md#offrouterpageupdate) | Unsubscribes from state changes of the page during routing. |
+| [off('densityUpdate')](arkts-arkui-uiobserver-off-f.md#offdensityupdate) | Unregisters the listener for screen pixel density changes. |
+| [off('willDraw')](arkts-arkui-uiobserver-off-f.md#offwilldraw) | Unregisters the listener for drawing instruction dispatch in each frame. |
+| [off('didLayout')](arkts-arkui-uiobserver-off-f.md#offdidlayout) | Unregisters the listener for layout completion status in each frame. |
+| [off('tabContentUpdate')](arkts-arkui-uiobserver-off-f.md#offtabcontentupdate) | Unsubscribes from **TabContent** page switching events for the specified **Tabs** component identified by its ID. |
+| [off('tabContentUpdate')](arkts-arkui-uiobserver-off-f.md#offtabcontentupdate) | Unsubscribes from the **TabContent** switching event. |
+| [off('navDestinationSwitch')](arkts-arkui-uiobserver-off-f.md#offnavdestinationswitch) | Unsubscribes from **Navigation** component page switching events. |
+| [off('navDestinationSwitch')](arkts-arkui-uiobserver-off-f.md#offnavdestinationswitch) | Unsubscribes from **Navigation** component page switching events. Compared with uiObserver.off, this API supports the **observerOptions** parameter, which enables you to configure observation options. |
+| [on('navDestinationUpdate')](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate) | Subscribes to status changes of the **NavDestination** component. Compared with [uiObserver.on](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate), this API supports the **options** parameter, which enables you to specify the ID of the target **Navigation** component to observe. |
+| [on('navDestinationUpdate')](arkts-arkui-uiobserver-on-f.md#onnavdestinationupdate) | Subscribes to status changes of the **NavDestination** component. |
+| [on('scrollEvent')](arkts-arkui-uiobserver-on-f.md#onscrollevent) | Listens for the start and end of scroll events of a specific scrollable component identified by its ID. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md). |
+| [on('scrollEvent')](arkts-arkui-uiobserver-on-f.md#onscrollevent) | Listens for the start and end of scroll events of all scrollable components. Supported components include [List](../arkts-components/arkts-arkui-list-comp.md), [Grid](../arkts-components/arkts-arkui-grid-comp.md), [Scroll](../arkts-components/arkts-arkui-scroll-comp.md), [WaterFlow](../arkts-components/arkts-arkui-waterflow-comp.md), and [ArcList](../arkts-components/arkts-arkui-arclist-comp.md). |
+| [on('routerPageUpdate')](arkts-arkui-uiobserver-on-f.md#onrouterpageupdate) | Subscribes to state changes of the page during routing. |
+| [on('densityUpdate')](arkts-arkui-uiobserver-on-f.md#ondensityupdate) | Listens for screen pixel density changes. |
+| [on('willDraw')](arkts-arkui-uiobserver-on-f.md#onwilldraw) | Listens for drawing instruction dispatch in each frame. |
+| [on('didLayout')](arkts-arkui-uiobserver-on-f.md#ondidlayout) | Listens for layout completion status in each frame. |
+| [on('tabContentUpdate')](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | Subscribes to **TabContent** page switching events for the specified **Tabs** component identified by its ID. Unlike [on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22), this API does not support listening for the initial tab display event when the **Tabs** component is initialized. |
+| [on('tabContentUpdate')](arkts-arkui-uiobserver-on-f.md#ontabcontentupdate) | Subscribes to **TabContent** switch events. Unlike [on('tabChange')](../../../reference/apis-arkui/arkts-apis-uicontext-uiobserver.md#ontabchange22), this API does not support listening for the initial tab display event when the **Tabs** component is initialized. |
+| [on('navDestinationSwitch')](arkts-arkui-uiobserver-on-f.md#onnavdestinationswitch) | Subscribes to **Navigation** component page switching events. |
+| [on('navDestinationSwitch')](arkts-arkui-uiobserver-on-f.md#onnavdestinationswitch) | Subscribes to **Navigation** component page switching events. Compared with uiObserver.on, this API supports the **observerOptions** parameter, which enables you to configure observation options. |
 
 ### Classes
 

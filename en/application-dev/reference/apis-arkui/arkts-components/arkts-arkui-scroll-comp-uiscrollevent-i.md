@@ -4,7 +4,7 @@
 declare interface UIScrollEvent extends UIScrollableCommonEvent
 ```
 
-Represents the return value of the [getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md) method in **frameNode**, which can be used to set scroll events for a **Scroll** node.
+Represents the return value of the [getEvent('Scroll')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent1) method in **frameNode**, which can be used to set scroll events for a **Scroll** node.
 
 **UIScrollEvent** inherits from [UIScrollableCommonEvent](arkts-arkui-common-comp-uiscrollablecommonevent-i.md).
 

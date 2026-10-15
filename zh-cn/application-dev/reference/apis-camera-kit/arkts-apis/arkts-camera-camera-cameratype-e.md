@@ -22,41 +22,9 @@ CAMERA_TYPE_DEFAULT = 0
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraType-CAMERA_TYPE_DEFAULT = 0--><!--Device-CameraType-CAMERA_TYPE_DEFAULT = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## CAMERA_TYPE_WIDE_ANGLE
-
-```TypeScript
-CAMERA_TYPE_WIDE_ANGLE = 1
-```
-
-广角相机。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-CameraType-CAMERA_TYPE_WIDE_ANGLE = 1--><!--Device-CameraType-CAMERA_TYPE_WIDE_ANGLE = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## CAMERA_TYPE_ULTRA_WIDE
-
-```TypeScript
-CAMERA_TYPE_ULTRA_WIDE = 2
-```
-
-超广角相机。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-CameraType-CAMERA_TYPE_ULTRA_WIDE = 2--><!--Device-CameraType-CAMERA_TYPE_ULTRA_WIDE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -70,7 +38,7 @@ CAMERA_TYPE_TELEPHOTO = 3
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraType-CAMERA_TYPE_TELEPHOTO = 3--><!--Device-CameraType-CAMERA_TYPE_TELEPHOTO = 3-End-->
 
@@ -86,8 +54,40 @@ CAMERA_TYPE_TRUE_DEPTH = 4
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraType-CAMERA_TYPE_TRUE_DEPTH = 4--><!--Device-CameraType-CAMERA_TYPE_TRUE_DEPTH = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## CAMERA_TYPE_ULTRA_WIDE
+
+```TypeScript
+CAMERA_TYPE_ULTRA_WIDE = 2
+```
+
+超广角相机。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-CameraType-CAMERA_TYPE_ULTRA_WIDE = 2--><!--Device-CameraType-CAMERA_TYPE_ULTRA_WIDE = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## CAMERA_TYPE_WIDE_ANGLE
+
+```TypeScript
+CAMERA_TYPE_WIDE_ANGLE = 1
+```
+
+广角相机。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-CameraType-CAMERA_TYPE_WIDE_ANGLE = 1--><!--Device-CameraType-CAMERA_TYPE_WIDE_ANGLE = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

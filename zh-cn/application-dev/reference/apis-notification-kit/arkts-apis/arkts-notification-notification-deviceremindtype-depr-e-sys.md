@@ -18,46 +18,6 @@ export enum DeviceRemindType
 
 **系统接口：** 此接口为系统接口。
 
-## IDLE_DONOT_REMIND
-
-```TypeScript
-IDLE_DONOT_REMIND = 0
-```
-
-设备未被使用，无需提醒。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [IDLE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idle_donot_remind)
-
-<!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0--><!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0-End-->
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
-## IDLE_REMIND
-
-```TypeScript
-IDLE_REMIND = 1
-```
-
-提醒设备未被使用。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [IDLE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idle_remind)
-
-<!--Device-DeviceRemindType-IDLE_REMIND = 1--><!--Device-DeviceRemindType-IDLE_REMIND = 1-End-->
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
 ## ACTIVE_DONOT_REMIND
 
 ```TypeScript
@@ -93,6 +53,46 @@ ACTIVE_REMIND = 3
 **替代接口：** [ACTIVE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#active_remind)
 
 <!--Device-DeviceRemindType-ACTIVE_REMIND = 3--><!--Device-DeviceRemindType-ACTIVE_REMIND = 3-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## IDLE_DONOT_REMIND
+
+```TypeScript
+IDLE_DONOT_REMIND = 0
+```
+
+设备未被使用，无需提醒。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [IDLE_DONOT_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idle_donot_remind)
+
+<!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0--><!--Device-DeviceRemindType-IDLE_DONOT_REMIND = 0-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## IDLE_REMIND
+
+```TypeScript
+IDLE_REMIND = 1
+```
+
+提醒设备未被使用。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [IDLE_REMIND](arkts-notification-notificationmanager-deviceremindtype-e-sys.md#idle_remind)
+
+<!--Device-DeviceRemindType-IDLE_REMIND = 1--><!--Device-DeviceRemindType-IDLE_REMIND = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

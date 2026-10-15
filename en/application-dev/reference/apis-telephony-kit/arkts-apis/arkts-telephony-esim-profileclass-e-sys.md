@@ -14,17 +14,33 @@ Enumerates the profile classes.
 
 **System API:** This is a system API.
 
-## PROFILE_CLASS_UNSPECIFIED
+## PROFILE_CLASS_OPERATIONAL
 
 ```TypeScript
-PROFILE_CLASS_UNSPECIFIED = -1
+PROFILE_CLASS_OPERATIONAL = 2
 ```
 
-Profile class unspecified.
+Profile that can be preloaded or downloaded.
 
 **Since:** 18
 
-<!--Device-ProfileClass-PROFILE_CLASS_UNSPECIFIED = -1--><!--Device-ProfileClass-PROFILE_CLASS_UNSPECIFIED = -1-End-->
+<!--Device-ProfileClass-PROFILE_CLASS_OPERATIONAL = 2--><!--Device-ProfileClass-PROFILE_CLASS_OPERATIONAL = 2-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## PROFILE_CLASS_PROVISIONING
+
+```TypeScript
+PROFILE_CLASS_PROVISIONING = 1
+```
+
+Profile preloaded to the eUICC.
+
+**Since:** 18
+
+<!--Device-ProfileClass-PROFILE_CLASS_PROVISIONING = 1--><!--Device-ProfileClass-PROFILE_CLASS_PROVISIONING = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -48,33 +64,17 @@ Test profile.
 
 **Test API:** This API is used only in automated test scripts.
 
-## PROFILE_CLASS_PROVISIONING
+## PROFILE_CLASS_UNSPECIFIED
 
 ```TypeScript
-PROFILE_CLASS_PROVISIONING = 1
+PROFILE_CLASS_UNSPECIFIED = -1
 ```
 
-Profile preloaded to the eUICC.
+Profile class unspecified.
 
 **Since:** 18
 
-<!--Device-ProfileClass-PROFILE_CLASS_PROVISIONING = 1--><!--Device-ProfileClass-PROFILE_CLASS_PROVISIONING = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## PROFILE_CLASS_OPERATIONAL
-
-```TypeScript
-PROFILE_CLASS_OPERATIONAL = 2
-```
-
-Profile that can be preloaded or downloaded.
-
-**Since:** 18
-
-<!--Device-ProfileClass-PROFILE_CLASS_OPERATIONAL = 2--><!--Device-ProfileClass-PROFILE_CLASS_OPERATIONAL = 2-End-->
+<!--Device-ProfileClass-PROFILE_CLASS_UNSPECIFIED = -1--><!--Device-ProfileClass-PROFILE_CLASS_UNSPECIFIED = -1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

@@ -8,6 +8,8 @@ The context of live form extension. It allows access to liveFormExtension-specif
 
 @typedef { _LiveFormExtensionContext.default }
 
+**Type:** _LiveFormExtensionContext.default
+
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ The context of live form extension. It allows access to liveFormExtension-specif
 <!--Device-common-export type LiveFormExtensionContext = _LiveFormExtensionContext.default--><!--Device-common-export type LiveFormExtensionContext = _LiveFormExtensionContext.default-End-->
 
 **System capability:** SystemCapability.Ability.Form
-
-**Type:** _LiveFormExtensionContext.default

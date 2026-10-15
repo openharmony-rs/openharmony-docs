@@ -16,7 +16,7 @@ function stopPassiveRanging(handle: number, capabilityType: RangingTypes): void
 
 只有[startPassiveRanging](arkts-connectivity-ranging-startpassiveranging-f.md)接口调用成功之后，才需要调用本接口停止被动测距广播。如果未调用过[startPassiveRanging](arkts-connectivity-ranging-startpassiveranging-f.md)直接调用[stopPassiveRanging](arkts-connectivity-ranging-stoppassiveranging-f.md)，由于handle无效将抛出参数不符合规格错误34900054。为实现正确的资源管理，[startPassiveRanging](arkts-connectivity-ranging-startpassiveranging-f.md)启动被动测距后必须调用[stopPassiveRanging](arkts-connectivity-ranging-stoppassiveranging-f.md)停止被动测距，避免测距资源泄漏。
 
-停止测距的状态变化通过[onRangingStateChange](arkts-connectivity-ranging-onrangingstatechange-f.md)回调通知。
+停止测距的状态变化通过onRangingStateChange回调通知。
 
 **起始版本：** 26.0.0
 

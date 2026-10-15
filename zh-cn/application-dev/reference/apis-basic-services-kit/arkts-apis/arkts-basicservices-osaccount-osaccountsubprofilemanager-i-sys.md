@@ -64,6 +64,7 @@ createOsAccountSubProfile(osAccountLocalId: number): Promise<OsAccountSubProfile
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target OS account is being operated. |
 | [12300402](../errorcode-account.md#12300402-系统账号下的子身份资料数量已达到上限) | The number of sub-profiles under the OS account has reached limit. |
 
+<!--Del-->
 **示例**
 
 创建ID为100的系统账号的子身份资料。
@@ -84,6 +85,8 @@ try {
   console.error(`createOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## deleteOsAccountSubProfile
 
@@ -130,6 +133,7 @@ deleteOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promi
 | [12300403](../errorcode-account.md#12300403-受限的系统账号子身份资料) | Restricted sub-profile cannot be deleted. |
 | [12300404](../errorcode-account.md#12300404-系统账号的前台子身份资料不允许被删除) | The foreground sub-profile cannot be deleted. |
 
+<!--Del-->
 **示例**
 
 删除ID为100的系统账号中ID为100001的子身份资料。
@@ -151,6 +155,10 @@ try {
   console.error(`deleteOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getosaccountforegroundsubprofileid1"></a>
 
 ## getOsAccountForegroundSubProfileId
 
@@ -184,6 +192,7 @@ getOsAccountForegroundSubProfileId(): Promise<number>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300401](../errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -202,7 +211,9 @@ try {
 }
 ```
 
-<a id="getosaccountforegroundsubprofileid-1"></a>
+<!--DelEnd-->
+
+<a id="getosaccountforegroundsubprofileid2"></a>
 
 ## getOsAccountForegroundSubProfileId
 
@@ -243,6 +254,7 @@ getOsAccountForegroundSubProfileId(osAccountLocalId: number): Promise<number>
 | [12300003](../errorcode-account.md#12300003-账号不存在) | OS account not found. |
 | [12300401](../errorcode-account.md#12300401-系统账号子身份资料不存在) | The foreground sub-profile not found. |
 
+<!--Del-->
 **示例**
 
 获取ID为100的系统账号的前台子身份资料标识符。
@@ -263,6 +275,8 @@ try {
   console.error(`getOsAccountForegroundSubProfileId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getOsAccountLocalIdForSubProfile
 
@@ -302,6 +316,7 @@ getOsAccountLocalIdForSubProfile(subProfileId: number): Promise<number>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300401](../errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
 
+<!--Del-->
 **示例**
 
 获取ID为100001的子身份资料所属的系统账号本地标识符。
@@ -322,6 +337,10 @@ try {
   console.error(`getOsAccountLocalIdForSubProfile exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getosaccountsubprofile1"></a>
 
 ## getOsAccountSubProfile
 
@@ -364,6 +383,7 @@ getOsAccountSubProfile(subProfileId: number): Promise<OsAccountSubProfile>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300401](../errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
 
+<!--Del-->
 **示例**
 
 获取ID为100001的子身份资料对象信息。
@@ -385,7 +405,9 @@ try {
 }
 ```
 
-<a id="getosaccountsubprofile-1"></a>
+<!--DelEnd-->
+
+<a id="getosaccountsubprofile2"></a>
 
 ## getOsAccountSubProfile
 
@@ -429,6 +451,7 @@ getOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promise<
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300401](../errorcode-account.md#12300401-系统账号子身份资料不存在) | Sub-profile not found. |
 
+<!--Del-->
 **示例**
 
 获取ID为100的系统账号中ID为100001的子身份资料对象信息。
@@ -450,6 +473,10 @@ try {
   console.error(`getOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getosaccountsubprofileids1"></a>
 
 ## getOsAccountSubProfileIds
 
@@ -485,6 +512,7 @@ getOsAccountSubProfileIds(): Promise<number[]>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -503,7 +531,9 @@ try {
 }
 ```
 
-<a id="getosaccountsubprofileids-1"></a>
+<!--DelEnd-->
+
+<a id="getosaccountsubprofileids2"></a>
 
 ## getOsAccountSubProfileIds
 
@@ -546,6 +576,7 @@ getOsAccountSubProfileIds(osAccountLocalId: number): Promise<number[]>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | OS account not found. |
 
+<!--Del-->
 **示例**
 
 获取ID为100的系统账号的子身份资料标识符列表。
@@ -566,6 +597,8 @@ try {
   console.error(`getOsAccountSubProfileIds exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## offOsAccountSubProfileEvent
 
@@ -598,6 +631,7 @@ offOsAccountSubProfileEvent(callback?: Callback<OsAccountSubProfileEventData>): 
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -611,6 +645,8 @@ try {
   console.error(`offOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## onOsAccountSubProfileEvent
 
@@ -647,6 +683,7 @@ onOsAccountSubProfileEvent(
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid event. |
 
+<!--Del-->
 **示例**
 
 订阅系统账号子身份的创建事件。
@@ -665,6 +702,8 @@ try {
   console.error(`onOsAccountSubProfileEvent failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## switchOsAccountSubProfile
 
@@ -711,6 +750,7 @@ switchOsAccountSubProfile(osAccountLocalId: number, subProfileId: number): Promi
 | [12300403](../errorcode-account.md#12300403-受限的系统账号子身份资料) | Restricted sub-profile cannot be switched to foreground. |
 | [12300405](../errorcode-account.md#12300405-已登录分布式账号的前台子身份不可直接切换到后台) | The foreground sub-profile bound with a logged-in distributed account cannot be directly switched to background. |
 
+<!--Del-->
 **示例**
 
 将ID为100的系统账号的当前子身份资料切换到ID为100001的子身份资料。
@@ -732,3 +772,5 @@ try {
   console.error(`switchOsAccountSubProfile exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

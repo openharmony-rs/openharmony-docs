@@ -6,8 +6,6 @@ export enum PrimitiveTopology
 
 图元拓扑枚举，在顶点处理过程中，指定顶点的不同处理方式。
 
-@enum { int }
-
 **起始版本：** 18
 
 <!--Device-unnamed-export enum PrimitiveTopology--><!--Device-unnamed-export enum PrimitiveTopology-End-->

@@ -6,6 +6,8 @@ export type ChainContinue = boolean
 
 是否继续处理拦截器链。
 
+**类型：** boolean
+
 **起始版本：** 22
 
 **原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
@@ -13,5 +15,3 @@ export type ChainContinue = boolean
 <!--Device-http-export type ChainContinue = boolean--><!--Device-http-export type ChainContinue = boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NetStack
-
-**类型：** boolean

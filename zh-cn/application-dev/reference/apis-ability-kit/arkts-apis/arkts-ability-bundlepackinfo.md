@@ -1,14 +1,4 @@
-# BundlePackInfo
-
-The module provides information in the **pack.info** file. The information can be obtained using
- [freeInstall.getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md)
- .
-
-> **NOTE**
- >
- > The APIs provided by this module are system APIs.
-
-
+# BundlePackInfo(BundlePackInfo)
 
 ## 汇总
 
@@ -20,7 +10,7 @@ The module provides information in the **pack.info** file. The information can b
 | [AbilityFormInfo](arkts-ability-bundlepackinfo-abilityforminfo-i-sys.md) | 卡片信息。 |
 | [ApiVersion](arkts-ability-bundlepackinfo-apiversion-i-sys.md) | module的api版本。 |
 | [BundleConfigInfo](arkts-ability-bundlepackinfo-bundleconfiginfo-i-sys.md) | 包的配置信息。 |
-| [BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md) | 应用包信息 |
+| [BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md) | 应用包信息，通过接口[freeInstall.getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md)获取。 |
 | [ExtensionAbility](arkts-ability-bundlepackinfo-extensionability-i-sys.md) | 描述extensionAbilities的配置信息。 |
 | [ModuleAbilityInfo](arkts-ability-bundlepackinfo-moduleabilityinfo-i-sys.md) | module包含的ability组件信息。 |
 | [ModuleConfigInfo](arkts-ability-bundlepackinfo-moduleconfiginfo-i-sys.md) | 包的module配置信息。 |

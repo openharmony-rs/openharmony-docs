@@ -32,6 +32,8 @@ Properties of a service.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Service-properties: Property[]--><!--Device-Service-properties: Property[]-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-Service-serviceUuid: string--><!--Device-Service-serviceUuid: string-End-->
 

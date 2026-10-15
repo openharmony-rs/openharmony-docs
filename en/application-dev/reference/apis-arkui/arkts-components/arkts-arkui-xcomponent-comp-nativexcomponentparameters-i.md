@@ -4,7 +4,7 @@
 declare interface NativeXComponentParameters
 ```
 
-Defines the options of the **XComponent**. An XComponent created with such constructor parameters can pass its corresponding [FrameNode](../arkts-apis/arkts-arkui-typenode-n.md) object to the Native side, enabling the use of NDK APIs for surface lifecycle–related settings and [component event listening](../../../ui/ndk-listen-to-component-events.md).
+Defines the specific configuration parameters used by XComponent on the native side. An XComponent created with this constructor can pass its corresponding [FrameNode](../arkts-apis/arkts-arkui-typenode-n.md) object to the native side, where NDK APIs can be used to configure the surface lifecycle and [add event listeners] (../../../ui/ndk-listen-to-component-events.md).
 
 **Since:** 19
 
@@ -18,7 +18,7 @@ Defines the options of the **XComponent**. An XComponent created with such const
 imageAIOptions?: ImageAIOptions
 ```
 
-AI analysis options. You can configure the analysis type or bind an analyzer controller through this parameter.
+Sets an AI analysis option for the component. Through this option, you can configure the analysis type or bind an analysis controller. It takes effect only when the type is SURFACE or TEXTURE. If it is not set, no AI analysis option is configured, and AI analysis can be enabled separately through the enableAnalyzer attribute.
 
 **Type:** [ImageAIOptions](../arkts-apis/arkts-arkui-imageaioptions-i.md)
 

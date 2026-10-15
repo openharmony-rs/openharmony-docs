@@ -12,21 +12,21 @@ declare enum BarStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## STANDARD
+## SAFE_AREA_PADDING
 
 ```TypeScript
-STANDARD = 0
+SAFE_AREA_PADDING = 2
 ```
 
-指定该模式的标题栏或工具栏与内容区采用上下布局。
+将指定该模式的标题栏或工具栏设置为[组件级安全区](arkts-arkui-common-comp-commonmethod-c.md#safeareapadding)。
 
-**起始版本：** 12
+**起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
-<!--Device-BarStyle-STANDARD = 0--><!--Device-BarStyle-STANDARD = 0-End-->
+<!--Device-BarStyle-SAFE_AREA_PADDING = 2--><!--Device-BarStyle-SAFE_AREA_PADDING = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,20 +48,20 @@ STACK = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SAFE_AREA_PADDING
+## STANDARD
 
 ```TypeScript
-SAFE_AREA_PADDING = 2
+STANDARD = 0
 ```
 
-将指定该模式的标题栏或工具栏设置为[组件级安全区](arkts-arkui-common-comp-commonmethod-c.md#safeareapadding)。
+指定该模式的标题栏或工具栏与内容区采用上下布局。
 
-**起始版本：** 14
+**起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-BarStyle-SAFE_AREA_PADDING = 2--><!--Device-BarStyle-SAFE_AREA_PADDING = 2-End-->
+<!--Device-BarStyle-STANDARD = 0--><!--Device-BarStyle-STANDARD = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

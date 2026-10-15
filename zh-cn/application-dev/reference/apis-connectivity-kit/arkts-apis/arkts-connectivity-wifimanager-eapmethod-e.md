@@ -12,6 +12,34 @@ enum EapMethod
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
+## EAP_AKA
+
+```TypeScript
+EAP_AKA
+```
+
+AKA类型。
+
+**起始版本：** 10
+
+<!--Device-EapMethod-EAP_AKA--><!--Device-EapMethod-EAP_AKA-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+## EAP_AKA_PRIME
+
+```TypeScript
+EAP_AKA_PRIME
+```
+
+AKA Prime类型。
+
+**起始版本：** 10
+
+<!--Device-EapMethod-EAP_AKA_PRIME--><!--Device-EapMethod-EAP_AKA_PRIME-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
 ## EAP_NONE
 
 ```TypeScript
@@ -37,34 +65,6 @@ PEAP类型。
 **起始版本：** 10
 
 <!--Device-EapMethod-EAP_PEAP--><!--Device-EapMethod-EAP_PEAP-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-## EAP_TLS
-
-```TypeScript
-EAP_TLS
-```
-
-TLS类型。
-
-**起始版本：** 10
-
-<!--Device-EapMethod-EAP_TLS--><!--Device-EapMethod-EAP_TLS-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-## EAP_TTLS
-
-```TypeScript
-EAP_TTLS
-```
-
-TTLS类型。
-
-**起始版本：** 10
-
-<!--Device-EapMethod-EAP_TTLS--><!--Device-EapMethod-EAP_TTLS-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -96,31 +96,31 @@ SIM类型。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-## EAP_AKA
+## EAP_TLS
 
 ```TypeScript
-EAP_AKA
+EAP_TLS
 ```
 
-AKA类型。
+TLS类型。
 
 **起始版本：** 10
 
-<!--Device-EapMethod-EAP_AKA--><!--Device-EapMethod-EAP_AKA-End-->
+<!--Device-EapMethod-EAP_TLS--><!--Device-EapMethod-EAP_TLS-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-## EAP_AKA_PRIME
+## EAP_TTLS
 
 ```TypeScript
-EAP_AKA_PRIME
+EAP_TTLS
 ```
 
-AKA Prime类型。
+TTLS类型。
 
 **起始版本：** 10
 
-<!--Device-EapMethod-EAP_AKA_PRIME--><!--Device-EapMethod-EAP_AKA_PRIME-End-->
+<!--Device-EapMethod-EAP_TTLS--><!--Device-EapMethod-EAP_TTLS-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

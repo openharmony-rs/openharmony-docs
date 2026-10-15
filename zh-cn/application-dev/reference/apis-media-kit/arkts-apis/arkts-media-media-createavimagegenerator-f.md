@@ -6,6 +6,8 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createavimagegenerator1"></a>
+
 ## createAVImageGenerator
 
 ```TypeScript
@@ -51,7 +53,7 @@ media.createAVImageGenerator().then((generator: media.AVImageGenerator) => {
 ```
 
 
-<a id="createavimagegenerator-2"></a>
+<a id="createavimagegenerator3"></a>
 
 ## createAVImageGenerator
 

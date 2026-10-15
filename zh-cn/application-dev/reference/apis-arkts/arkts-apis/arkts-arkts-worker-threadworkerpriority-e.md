@@ -12,6 +12,22 @@ Worker线程的优先级枚举，各优先级对应关系请参考QoS等级定�
 
 **系统能力：** SystemCapability.Utils.Lang
 
+## DEADLINE
+
+```TypeScript
+DEADLINE = 4
+```
+
+适用于页面加载等越快越好的关键任务，任务几乎是瞬间完成的。对应QOS_DEADLINE_REQUEST。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ThreadWorkerPriority-DEADLINE = 4--><!--Device-ThreadWorkerPriority-DEADLINE = 4-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
 ## HIGH
 
 ```TypeScript
@@ -25,38 +41,6 @@ HIGH = 0
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-ThreadWorkerPriority-HIGH = 0--><!--Device-ThreadWorkerPriority-HIGH = 0-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## MEDIUM
-
-```TypeScript
-MEDIUM = 1
-```
-
-任务完成需要几秒钟。是ThreadWorkerPriority的默认值。对应QOS_DEFAULT。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-ThreadWorkerPriority-MEDIUM = 1--><!--Device-ThreadWorkerPriority-MEDIUM = 1-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
-## LOW
-
-```TypeScript
-LOW = 2
-```
-
-适用于下载等不需要立即看到响应效果的任务，任务完成需要几秒到几分钟。对应QOS_UTILITY。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-ThreadWorkerPriority-LOW = 2--><!--Device-ThreadWorkerPriority-LOW = 2-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 
@@ -76,19 +60,35 @@ IDLE = 3
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## DEADLINE
+## LOW
 
 ```TypeScript
-DEADLINE = 4
+LOW = 2
 ```
 
-适用于页面加载等越快越好的关键任务，任务几乎是瞬间完成的。对应QOS_DEADLINE_REQUEST。
+适用于下载等不需要立即看到响应效果的任务，任务完成需要几秒到几分钟。对应QOS_UTILITY。
 
-**起始版本：** 20
+**起始版本：** 18
 
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
-<!--Device-ThreadWorkerPriority-DEADLINE = 4--><!--Device-ThreadWorkerPriority-DEADLINE = 4-End-->
+<!--Device-ThreadWorkerPriority-LOW = 2--><!--Device-ThreadWorkerPriority-LOW = 2-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## MEDIUM
+
+```TypeScript
+MEDIUM = 1
+```
+
+任务完成需要几秒钟。是ThreadWorkerPriority的默认值。对应QOS_DEFAULT。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ThreadWorkerPriority-MEDIUM = 1--><!--Device-ThreadWorkerPriority-MEDIUM = 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

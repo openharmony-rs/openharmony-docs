@@ -12,19 +12,19 @@ Enumerates the features that can be disabled or enabled for a specified user.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MULTI_WINDOW
+## DISK_RECOVERY_KEY
 
 ```TypeScript
-MULTI_WINDOW = 0
+DISK_RECOVERY_KEY = 7
 ```
 
-System multi-window. Currently, this feature is available only on phones and tablets. Once disabled, the system multi-window feature (split-screen, one-click split-screen, Multi-Window, and floating window) cannot be used. If the feature is currently active, the current usage remains unaffected. However, it cannot be used once closed.
+[Key export](../../../security/UniversalKeystoreKit/huks-export-key-arkts.md) recovery capability. Currently, it is supported only on PCs/2-in-1 devices.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForAccount-MULTI_WINDOW = 0--><!--Device-FeatureForAccount-MULTI_WINDOW = 0-End-->
+<!--Device-FeatureForAccount-DISK_RECOVERY_KEY = 7--><!--Device-FeatureForAccount-DISK_RECOVERY_KEY = 7-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,19 +44,19 @@ DISTRIBUTED_TRANSMISSION = 1
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SUPER_HUB
+## DISTRIBUTED_TRANSMISSION_OUTGOING
 
 ```TypeScript
-SUPER_HUB = 2
+DISTRIBUTED_TRANSMISSION_OUTGOING = 9
 ```
 
-SuperHub. Currently, this feature is available only on phones and tablets. Once disabled, the SuperHub feature cannot be used. If SuperHub is currently active, the current usage remains unaffected. However, it cannot be used once closed.
+Distributed one-way data transmission between devices (only data transmission to other devices is supported). Disabling distributed one-way data transmission capability between devices after the distributed management service ([DISTRIBUTED_TRANSMISSION](arkts-mdm-restrictions-featureforaccount-e.md)) has been disabled will result in a policy conflict.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForAccount-SUPER_HUB = 2--><!--Device-FeatureForAccount-SUPER_HUB = 2-End-->
+<!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION_OUTGOING = 9--><!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION_OUTGOING = 9-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -81,6 +81,54 @@ this capability ([FeatureForDevice.FINGERPRINT](arkts-mdm-restrictions-featurefo
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## MTP_CLIENT
+
+```TypeScript
+MTP_CLIENT = 5
+```
+
+MTP client capability (including read and write capabilities). Currently, it is supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. After the device MTP client capability ([FeatureForDevice.MTP_CLIENT](arkts-mdm-restrictions-featurefordevice-e.md)) is disabled, disabling the MTP client write capability for a specific user will result in a policy conflict.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-MTP_CLIENT = 5--><!--Device-FeatureForAccount-MTP_CLIENT = 5-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MULTI_WINDOW
+
+```TypeScript
+MULTI_WINDOW = 0
+```
+
+System multi-window. Currently, this feature is available only on phones and tablets. Once disabled, the system multi-window feature (split-screen, one-click split-screen, Multi-Window, and floating window) cannot be used. If the feature is currently active, the current usage remains unaffected. However, it cannot be used once closed.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-MULTI_WINDOW = 0--><!--Device-FeatureForAccount-MULTI_WINDOW = 0-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## OPEN_FILE_BOOST
+
+```TypeScript
+OPEN_FILE_BOOST = 10
+```
+
+File open acceleration capability, providing applications with the ability to sense the file open acceleration status. By integrating the corresponding APIs, apps can detect the acceleration status of files, and further implement features such as displaying unique UI identifiers for accelerated files, thereby optimizing user experience of file opening. Currently, this feature is supported only on PCs/2-in-1 devices.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-OPEN_FILE_BOOST = 10--><!--Device-FeatureForAccount-OPEN_FILE_BOOST = 10-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## PRINT
 
 ```TypeScript
@@ -97,19 +145,35 @@ Device printing capability. If the device printing capability is disabled for a 
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MTP_CLIENT
+## SUDO
 
 ```TypeScript
-MTP_CLIENT = 5
+SUDO = 8
 ```
 
-MTP client capability (including read and write capabilities). Currently, it is supported only on PC/2-in-1 devices. MTP allows users to linearly access media files on mobile devices. After the device MTP client capability ([FeatureForDevice.MTP_CLIENT](arkts-mdm-restrictions-featurefordevice-e.md)) is disabled, disabling the MTP client write capability for a specific user will result in a policy conflict.
+superuser do (execution with superuser privileges). Currently, it is supported only on PCs/2-in-1 devices. If this feature is disabled, neither enterprise spaces nor personal spaces can perform operations with superuser privileges.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForAccount-MTP_CLIENT = 5--><!--Device-FeatureForAccount-MTP_CLIENT = 5-End-->
+<!--Device-FeatureForAccount-SUDO = 8--><!--Device-FeatureForAccount-SUDO = 8-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SUPER_HUB
+
+```TypeScript
+SUPER_HUB = 2
+```
+
+SuperHub. Currently, this feature is available only on phones and tablets. Once disabled, the SuperHub feature cannot be used. If SuperHub is currently active, the current usage remains unaffected. However, it cannot be used once closed.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForAccount-SUPER_HUB = 2--><!--Device-FeatureForAccount-SUPER_HUB = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -133,69 +197,5 @@ Disabling the USB storage device write capability for a specific user in any of 
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-FeatureForAccount-USB_STORAGE_DEVICE_WRITE = 6--><!--Device-FeatureForAccount-USB_STORAGE_DEVICE_WRITE = 6-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## DISK_RECOVERY_KEY
-
-```TypeScript
-DISK_RECOVERY_KEY = 7
-```
-
-[Key export](../../../security/UniversalKeystoreKit/huks-export-key-arkts.md) recovery capability. Currently, it is supported only on PCs/2-in-1 devices.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForAccount-DISK_RECOVERY_KEY = 7--><!--Device-FeatureForAccount-DISK_RECOVERY_KEY = 7-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SUDO
-
-```TypeScript
-SUDO = 8
-```
-
-superuser do (execution with superuser privileges). Currently, it is supported only on PCs/2-in-1 devices. If this feature is disabled, neither enterprise spaces nor personal spaces can perform operations with superuser privileges.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForAccount-SUDO = 8--><!--Device-FeatureForAccount-SUDO = 8-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## DISTRIBUTED_TRANSMISSION_OUTGOING
-
-```TypeScript
-DISTRIBUTED_TRANSMISSION_OUTGOING = 9
-```
-
-Distributed one-way data transmission between devices (only data transmission to other devices is supported). Disabling distributed one-way data transmission capability between devices after the distributed management service ([DISTRIBUTED_TRANSMISSION](arkts-mdm-restrictions-featureforaccount-e.md)) has been disabled will result in a policy conflict.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION_OUTGOING = 9--><!--Device-FeatureForAccount-DISTRIBUTED_TRANSMISSION_OUTGOING = 9-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## OPEN_FILE_BOOST
-
-```TypeScript
-OPEN_FILE_BOOST = 10
-```
-
-File open acceleration capability, providing applications with the ability to sense the file open acceleration status. By integrating the corresponding APIs, apps can detect the acceleration status of files, and further implement features such as displaying unique UI identifiers for accelerated files, thereby optimizing user experience of file opening. Currently, this feature is supported only on PCs/2-in-1 devices.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForAccount-OPEN_FILE_BOOST = 10--><!--Device-FeatureForAccount-OPEN_FILE_BOOST = 10-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

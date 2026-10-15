@@ -42,6 +42,7 @@ Lists the files and directories in the **Recently deleted** list.
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,3 +57,5 @@ for(let i = 0; i < fileinfos.length; i++){
   console.info('ctime: ' + fileinfos[i].ctime);
 }
 ```
+
+<!--DelEnd-->

@@ -6,25 +6,23 @@ export enum TrackingEvent
 
 跟踪事件
 
-@enum { int }
-
 **起始版本：** 20
 
 <!--Device-mechanicManager-export enum TrackingEvent--><!--Device-mechanicManager-export enum TrackingEvent-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
-## CAMERA_TRACKING_USER_ENABLED
+## CAMERA_TRACKING_LAYOUT_CHANGED
 
 ```TypeScript
-CAMERA_TRACKING_USER_ENABLED = 0
+CAMERA_TRACKING_LAYOUT_CHANGED = 2
 ```
 
-用户操作相机跟踪使能
+Camera tracking layout changed. You can call getCameraTrackingLayout to obtain the new layout.
 
 **起始版本：** 20
 
-<!--Device-TrackingEvent-CAMERA_TRACKING_USER_ENABLED = 0--><!--Device-TrackingEvent-CAMERA_TRACKING_USER_ENABLED = 0-End-->
+<!--Device-TrackingEvent-CAMERA_TRACKING_LAYOUT_CHANGED = 2--><!--Device-TrackingEvent-CAMERA_TRACKING_LAYOUT_CHANGED = 2-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -42,16 +40,16 @@ CAMERA_TRACKING_USER_DISABLED = 1
 
 **系统能力：** SystemCapability.Mechanic.Core
 
-## CAMERA_TRACKING_LAYOUT_CHANGED
+## CAMERA_TRACKING_USER_ENABLED
 
 ```TypeScript
-CAMERA_TRACKING_LAYOUT_CHANGED = 2
+CAMERA_TRACKING_USER_ENABLED = 0
 ```
 
-Camera tracking layout changed. You can call getCameraTrackingLayout to obtain the new layout.
+用户操作相机跟踪使能
 
 **起始版本：** 20
 
-<!--Device-TrackingEvent-CAMERA_TRACKING_LAYOUT_CHANGED = 2--><!--Device-TrackingEvent-CAMERA_TRACKING_LAYOUT_CHANGED = 2-End-->
+<!--Device-TrackingEvent-CAMERA_TRACKING_USER_ENABLED = 0--><!--Device-TrackingEvent-CAMERA_TRACKING_USER_ENABLED = 0-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core

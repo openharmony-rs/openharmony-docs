@@ -6,6 +6,8 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="destroyvirtualscreen1"></a>
+
 ## destroyVirtualScreen
 
 ```TypeScript
@@ -38,6 +40,7 @@ function destroyVirtualScreen(screenId:number, callback: AsyncCallback<void>): v
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400002](../errorcode-display.md#1400002-无权限操作) | Unauthorized operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,8 +59,10 @@ screen.destroyVirtualScreen(screenId, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="destroyvirtualscreen-1"></a>
+
+<a id="destroyvirtualscreen2"></a>
 
 ## destroyVirtualScreen
 
@@ -96,6 +101,7 @@ function destroyVirtualScreen(screenId:number): Promise<void>
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 | [1400002](../errorcode-display.md#1400002-无权限操作) | Unauthorized operation. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -110,3 +116,5 @@ screen.destroyVirtualScreen(screenId).then(() => {
   console.error(`Failed to destroy the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

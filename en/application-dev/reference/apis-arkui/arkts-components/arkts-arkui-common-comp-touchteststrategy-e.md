@@ -32,26 +32,6 @@ Custom dispatch has no effect; the system dispatches events based on the hit sta
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## FORWARD_COMPETITION
-
-```TypeScript
-FORWARD_COMPETITION = 1
-```
-
-The event is dispatched to a specified child node, and the system determines whether to dispatch events to other sibling nodes.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
-
-<!--Device-TouchTestStrategy-FORWARD_COMPETITION = 1--><!--Device-TouchTestStrategy-FORWARD_COMPETITION = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## FORWARD
 
 ```TypeScript
@@ -69,5 +49,25 @@ The event is dispatched to a specified child node, and the system will not dispa
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
 <!--Device-TouchTestStrategy-FORWARD = 2--><!--Device-TouchTestStrategy-FORWARD = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## FORWARD_COMPETITION
+
+```TypeScript
+FORWARD_COMPETITION = 1
+```
+
+The event is dispatched to a specified child node, and the system determines whether to dispatch events to other sibling nodes.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-TouchTestStrategy-FORWARD_COMPETITION = 1--><!--Device-TouchTestStrategy-FORWARD_COMPETITION = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

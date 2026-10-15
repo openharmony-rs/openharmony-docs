@@ -18,6 +18,8 @@ Provides APIs to decode byte arrays into strings. It supports multiple formats, 
 import { util } from '@kit.ArkTS';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -43,7 +45,7 @@ console.info('retStr = ' + retStr);
 // Output: retStr = utf-8
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

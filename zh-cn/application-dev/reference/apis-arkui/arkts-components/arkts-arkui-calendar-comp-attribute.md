@@ -4,6 +4,8 @@
 declare class CalendarAttribute
 ```
 
+定义Calendar组件的属性。
+
 **起始版本：** 7
 
 **废弃版本：** 20

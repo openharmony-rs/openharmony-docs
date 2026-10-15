@@ -53,6 +53,7 @@ function setExtBundleStats(userId: number, stats: ExtBundleStats): Promise<void>
 | 13600010 | The input parameter is invalid. |
 | 13600011 | Failed to report the specified business space usage. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,3 +72,5 @@ storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
   console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

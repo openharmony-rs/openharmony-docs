@@ -19,6 +19,20 @@ enum BlurType
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
+## INNER
+
+```TypeScript
+INNER = 3
+```
+
+只有内部实体模糊，外圈边缘清晰。
+
+**起始版本：** 12
+
+<!--Device-BlurType-INNER = 3--><!--Device-BlurType-INNER = 3-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
 ## NORMAL
 
 ```TypeScript
@@ -30,20 +44,6 @@ NORMAL = 0
 **起始版本：** 12
 
 <!--Device-BlurType-NORMAL = 0--><!--Device-BlurType-NORMAL = 0-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## SOLID
-
-```TypeScript
-SOLID = 1
-```
-
-内部实体不变，只模糊外圈边缘部分。
-
-**起始版本：** 12
-
-<!--Device-BlurType-SOLID = 1--><!--Device-BlurType-SOLID = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -61,16 +61,16 @@ OUTER = 2
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## INNER
+## SOLID
 
 ```TypeScript
-INNER = 3
+SOLID = 1
 ```
 
-只有内部实体模糊，外圈边缘清晰。
+内部实体不变，只模糊外圈边缘部分。
 
 **起始版本：** 12
 
-<!--Device-BlurType-INNER = 3--><!--Device-BlurType-INNER = 3-End-->
+<!--Device-BlurType-SOLID = 1--><!--Device-BlurType-SOLID = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

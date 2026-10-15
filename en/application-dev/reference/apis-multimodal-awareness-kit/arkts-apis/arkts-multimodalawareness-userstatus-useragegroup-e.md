@@ -14,22 +14,6 @@ Enumerates the user age groups, for example, child or adult.
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus
 
-## OTHERS
-
-```TypeScript
-OTHERS = 0
-```
-
-Adult.
-
-**Since:** 20
-
-**Deprecated since:** 24
-
-<!--Device-UserAgeGroup-OTHERS = 0--><!--Device-UserAgeGroup-OTHERS = 0-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.UserStatus
-
 ## CHILD
 
 ```TypeScript
@@ -43,5 +27,21 @@ Child.
 **Deprecated since:** 24
 
 <!--Device-UserAgeGroup-CHILD = 1--><!--Device-UserAgeGroup-CHILD = 1-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.UserStatus
+
+## OTHERS
+
+```TypeScript
+OTHERS = 0
+```
+
+Adult.
+
+**Since:** 20
+
+**Deprecated since:** 24
+
+<!--Device-UserAgeGroup-OTHERS = 0--><!--Device-UserAgeGroup-OTHERS = 0-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.UserStatus

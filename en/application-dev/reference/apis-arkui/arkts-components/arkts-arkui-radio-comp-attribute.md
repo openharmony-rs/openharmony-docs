@@ -8,13 +8,15 @@ In addition to the universal attributes, the following attributes are supported.
 
 In addition to the universal events, the following events are supported.
 
-**Inheritance/Implementation:** RadioAttribute extends CommonMethod<RadioAttribute>
+**Inheritance/Implementation:** RadioAttribute extends CommonMethod&lt;RadioAttribute&gt;
 
 **Since:** 8
 
 <!--Device-unnamed-declare class RadioAttribute extends CommonMethod<RadioAttribute>--><!--Device-unnamed-declare class RadioAttribute extends CommonMethod<RadioAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="checked1"></a>
 
 ## checked
 
@@ -46,7 +48,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether the radio button is selected.<br>Default value: **false**<br>**true**: The radio button is selected. **false**: The radio button is not selected. |
 
-<a id="checked-1"></a>
+<a id="checked2"></a>
 
 ## checked
 
@@ -54,7 +56,7 @@ Since API version 18, this attribute supports two-way binding through [!!](../..
 checked(isChecked: Optional<boolean>)
 ```
 
-Sets whether the radio button is selected. Compared with [checked](#checked), this API supports the **undefined** type for the **isChecked** parameter.
+Sets whether the radio button is selected. Compared with [checked](#checked1), this API supports the **undefined** type for the **isChecked** parameter.
 
 This attribute supports two-way binding through [$$](../../../ui/state-management/arkts-two-way-sync.md) and [!!](../../../ui/state-management/arkts-new-binding.md#two-way-binding-between-built-in-component-parameters).
 
@@ -75,6 +77,8 @@ This attribute supports two-way binding through [$$](../../../ui/state-managemen
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | isChecked | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether the radio button is selected.<br>If **isChecked** is set to **undefined**, the default value **false** is used.<br>**true**: The radio button is selected. **false**: The radio button is not selected. |
+
+<a id="contentmodifier1"></a>
 
 ## contentModifier
 
@@ -100,7 +104,7 @@ Creates a content modifier.
 | --- | --- | --- | --- |
 | modifier | [ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[RadioConfiguration](arkts-arkui-radio-comp-radioconfiguration-i.md)&gt; | Yes | Content modifier to apply to the current component.<br> **modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. |
 
-<a id="contentmodifier-1"></a>
+<a id="contentmodifier2"></a>
 
 ## contentModifier
 
@@ -108,7 +112,7 @@ Creates a content modifier.
 contentModifier(modifier: Optional<ContentModifier<RadioConfiguration>>)
 ```
 
-Creates a content modifier. Compared with [contentModifier](#contentmodifier)&lt;sup&gt;12+&lt;/sup &gt;, this API supports the **undefined** type for the **modifier** parameter.
+Creates a content modifier. Compared with [contentModifier](#contentmodifier1)<sup>12+</sup >, this API supports the **undefined** type for the **modifier** parameter.
 
 **Since:** 18
 
@@ -125,6 +129,8 @@ Creates a content modifier. Compared with [contentModifier](#contentmodifier)&lt
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | modifier | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ContentModifier](arkts-arkui-common-comp-contentmodifier-i.md)&lt;[RadioConfiguration](arkts-arkui-radio-comp-radioconfiguration-i.md)&gt;&gt; | Yes | Content modifier to apply to the current component.<br>**modifier**: content modifier. You need a custom class to implement the **ContentModifier** API. <br>If **modifier** is set to **undefined**, no content modifier is used. |
+
+<a id="onchange1"></a>
 
 ## onChange
 
@@ -152,7 +158,7 @@ Triggered when the selected state of the radio button changes.
 | --- | --- | --- | --- |
 | callback | (isChecked: boolean) =&gt; void | Yes | Selected state of the radio button.<br>The value **true** means that the radio button changes from unselected to selected, and **false** means that the radio button changes from selected to unselected. |
 
-<a id="onchange-1"></a>
+<a id="onchange2"></a>
 
 ## onChange
 
@@ -160,7 +166,7 @@ Triggered when the selected state of the radio button changes.
 onChange(callback: Optional<OnRadioChangeCallback>)
 ```
 
-Triggered when the selected state of the radio button changes. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when the selected state of the radio button changes. Compared with [onChange](#onchange1), this API supports the **undefined** type for the **callback** parameter.
 
 **Since:** 18
 

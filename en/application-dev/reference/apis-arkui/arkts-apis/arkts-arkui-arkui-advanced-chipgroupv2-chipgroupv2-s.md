@@ -4,9 +4,7 @@
 export declare struct ChipGroupV2
 ```
 
-The **ChipGroupV2** component provides a chip group container that supports single or multiple selection, custom styles and spacing, and custom suffix content. It is suitable for scenarios such as file or resource content categorization, tag selection, and filtering, helping you quickly build visually appealing and interactive chip group UIs.
-
-This component is implemented based on [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1), state management V2 delivers enhanced capabilities for deep observation and management of data objects, and is no longer limited to the component level. With state management V2, you can control component data and state more flexibly, achieving more efficient UI refresh.
+Creates a **ChipGroupV2** component.
 
 **Since:** 26.0.0
 

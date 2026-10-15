@@ -20,5 +20,5 @@ Callback type for the component area change event.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| oldValue | [Area](../arkts-apis/arkts-arkui-area-i.md) | Yes | Information before the area change, including the width, height, coordinates relative to the parent element, and position coordinates of the upper-left corner in the current window coordinate system. |
-| newValue | [Area](../arkts-apis/arkts-arkui-area-i.md) | Yes | Information after the area change, including the width, height, coordinates relative to the parent element, and position coordinates of the upper-left corner in the current window coordinate system. |
+| oldValue | [Area](../arkts-apis/arkts-arkui-area-i.md) | Yes | Information before the area change, including the width and height of the target element, the coordinates relative to the parent element, and the position coordinates of the upper left corner of the target element in the current window coordinate system. |
+| newValue | [Area](../arkts-apis/arkts-arkui-area-i.md) | Yes | Information after the area change, including the width and height of the target element, the coordinates relative to the parent element, and the position coordinates of the upper left corner of the target element in the current window coordinate system. |

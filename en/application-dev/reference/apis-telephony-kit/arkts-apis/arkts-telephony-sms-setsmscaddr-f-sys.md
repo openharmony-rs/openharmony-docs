@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="setsmscaddr1"></a>
+
 ## setSmscAddr
 
 ```TypeScript
@@ -44,6 +46,7 @@ Sets the short message service center (SMSC) address. This API uses an asynchron
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,8 +60,10 @@ sms.setSmscAddr(slotId, smscAddr, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setsmscaddr-1"></a>
+
+<a id="setsmscaddr2"></a>
 
 ## setSmscAddr
 
@@ -103,6 +108,7 @@ Sets the SMSC address. This API uses a promise to return the result.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -117,3 +123,5 @@ sms.setSmscAddr(slotId, smscAddr).then(() => {
     console.error(`setSmscAddr failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

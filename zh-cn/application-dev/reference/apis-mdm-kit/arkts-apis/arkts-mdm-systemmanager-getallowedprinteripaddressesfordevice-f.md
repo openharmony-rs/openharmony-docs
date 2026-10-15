@@ -43,3 +43,16 @@ function getAllowedPrinterIPAddressesForDevice(queryPolicy?: common.QueryPolicy)
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
+
+**示例**
+
+```TypeScript
+import { common, systemManager } from '@kit.MDMKit';
+
+try {
+  let result: string[] = systemManager.getAllowedPrinterIPAddressesForDevice(common.QueryPolicy.ALL);
+  console.info(`Succeeded in querying the allowed printer IP Addresses for the device.`);
+} catch (err) {
+  console.error(`Failed to query the allowed printer IP Addresses for the device. Code is ${err.code}, message is ${err.message}`);
+}
+```

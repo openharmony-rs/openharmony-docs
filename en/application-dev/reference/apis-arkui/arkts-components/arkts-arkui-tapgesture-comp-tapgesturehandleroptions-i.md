@@ -56,6 +56,8 @@ Default value: **2^31-1**
 
 Unit: vp
 
+Value range: (0, +∞)
+
 **NOTE:** 
 
 If the finger movement exceeds the preset movement threshold, the gesture recognition fails. If the default threshold is used during initialization and the finger moves beyond the component's touch target, the tap gesture recognition fails.
@@ -80,15 +82,16 @@ If the finger movement exceeds the preset movement threshold, the gesture recogn
 fingers?: number
 ```
 
-Number of fingers required to trigger a tap. The value ranges from 1 to 10. If the value is less than 1 or is not set, the default value is used.
+Number of fingers that trigger a tap. The minimum is 1 finger, and the maximum is 10 fingers. If the value is less than 1 or is not set, the default value is used.
 
 Default value: **1**
 
 **NOTE:** 
 
-1. If the value is greater than 1, the tap gesture will fail to be recognized when the required number of fingers
-is not pressed within 300 milliseconds after the first finger touches down, or when the required number of fingers is not lifted within 300 milliseconds after the first finger is lifted.
-2. When the number of fingers touching the screen exceeds the set value, the gesture can be recognized.
+1. When multiple fingers are configured, if a sufficient number of fingers are not pressed within 300 ms after the
+first finger is pressed, gesture recognition fails. If a sufficient number of fingers are not lifted within 300 ms after the first finger is lifted, gesture recognition fails.
+2. When **isFingerCountLimited** is not enabled, if the actual number of tapping fingers exceeds the configured
+value, gesture recognition succeeds. When **isFingerCountLimited** is enabled, the number of fingers touching the screen must be equal to the configured value; otherwise, gesture recognition fails.
 
 **Type:** number
 

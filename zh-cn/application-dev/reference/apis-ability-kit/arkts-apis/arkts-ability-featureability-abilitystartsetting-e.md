@@ -30,22 +30,6 @@ BOUNDS_KEY = 'abilityBounds'
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
-## WINDOW_MODE_KEY
-
-```TypeScript
-WINDOW_MODE_KEY = 'windowMode'
-```
-
-窗口显示模式属性的参数名。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'--><!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
 ## DISPLAY_ID_KEY
 
 ```TypeScript
@@ -59,5 +43,21 @@ DISPLAY_ID_KEY = 'displayId'
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-AbilityStartSetting-DISPLAY_ID_KEY = 'displayId'--><!--Device-AbilityStartSetting-DISPLAY_ID_KEY = 'displayId'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
+
+## WINDOW_MODE_KEY
+
+```TypeScript
+WINDOW_MODE_KEY = 'windowMode'
+```
+
+窗口显示模式属性的参数名。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+<!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'--><!--Device-AbilityStartSetting-WINDOW_MODE_KEY = 'windowMode'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel

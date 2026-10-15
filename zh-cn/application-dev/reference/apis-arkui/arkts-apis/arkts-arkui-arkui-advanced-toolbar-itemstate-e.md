@@ -12,13 +12,13 @@ export declare enum ItemState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ENABLE
+## ACTIVATE
 
 ```TypeScript
-ENABLE = 1
+ACTIVATE = 3
 ```
 
-工具栏子项为正常可点击状态。
+工具栏子项为激活状态，可点击。
 
 **起始版本：** 10
 
@@ -26,7 +26,7 @@ ENABLE = 1
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ItemState-ENABLE = 1--><!--Device-ItemState-ENABLE = 1-End-->
+<!--Device-ItemState-ACTIVATE = 3--><!--Device-ItemState-ACTIVATE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ DISABLE = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ACTIVATE
+## ENABLE
 
 ```TypeScript
-ACTIVATE = 3
+ENABLE = 1
 ```
 
-工具栏子项为激活状态，可点击。
+工具栏子项为正常可点击状态。
 
 **起始版本：** 10
 
@@ -62,6 +62,6 @@ ACTIVATE = 3
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ItemState-ACTIVATE = 3--><!--Device-ItemState-ACTIVATE = 3-End-->
+<!--Device-ItemState-ENABLE = 1--><!--Device-ItemState-ENABLE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

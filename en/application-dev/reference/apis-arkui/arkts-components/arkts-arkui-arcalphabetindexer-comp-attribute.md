@@ -4,11 +4,11 @@
 declare class ArcAlphabetIndexerAttribute extends CommonMethod<ArcAlphabetIndexerAttribute>
 ```
 
-In addition to the universal attributes, the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-In addition to the universal events, the following events are supported.
+In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
-**Inheritance/Implementation:** ArcAlphabetIndexerAttribute extends CommonMethod<ArcAlphabetIndexerAttribute>
+**Inheritance/Implementation:** ArcAlphabetIndexerAttribute extends CommonMethod&lt;ArcAlphabetIndexerAttribute&gt;
 
 **Since:** 18
 
@@ -28,7 +28,7 @@ import { ArcAlphabetIndexer, ArcAlphabetIndexerAttribute } from '@kit.ArkUI';
 autoCollapse(enable: Optional<boolean>)
 ```
 
-Sets whether to enable the adaptive collapse behavior for the indexer.
+Sets whether to use the adaptive collapse mode. When there are too many index items, the component automatically adjusts the display layout of the index items based on the available display space.
 
 **Since:** 18
 
@@ -42,7 +42,7 @@ Sets whether to enable the adaptive collapse behavior for the indexer.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the adaptive collapse behavior for the indexer.<br>Default value: **true**.<br>**true**: Enable the adaptive collapse behavior.<br>**false**: Disable the adaptive collapse behavior. |
+| enable | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to enable the adaptive collapse behavior for the indexer.<br>Default value: **true**. <br>**true**: Enable the adaptive collapse behavior. <br>**false**: Disable the adaptive collapse behavior. |
 
 ## color
 
@@ -72,7 +72,7 @@ Sets the text color of the index items in the normal state.
 font(font: Optional<Font>)
 ```
 
-Sets the default font style of the index items.
+Sets the default font style of the arc alphabet index bar, that is, the font style of index items in the unselected state.
 
 **Since:** 18
 
@@ -86,7 +86,7 @@ Sets the default font style of the index items.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| font | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Default font style of the index items.<br>Default value:<br>{<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Default font style of the alphabet index bar, used to set the display effect of all letters on the index bar, including font size, font weight, tilt angle, and font family.<br>Default value: **<br>{<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>}** |
 
 ## itemSize
 
@@ -94,7 +94,7 @@ Sets the default font style of the index items.
 itemSize(size: Optional<LengthMetrics>)
 ```
 
-Sets the size of the index item area.
+Sets the size of the index item area for the arc alphabet indexer.
 
 **Since:** 18
 
@@ -108,7 +108,7 @@ Sets the size of the index item area.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| size | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Size of the index item area. For the circular item area, this represents the diameter of the circle. Percentage values are not supported.<br>Default value: **24.0**<br>Unit: vp |
+| size | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;LengthMetrics&gt; | Yes | Size of the index item area of the arc index bar (diameter of the circular area). Percentage setting is not supported.<br>Default value: **24.0**<br>Unit: vp |
 
 ## onSelect
 
@@ -130,7 +130,7 @@ Triggered when an index item is selected. The return value is the index of the s
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| handler | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnSelectCallback](arkts-arkui-arcalphabetindexer-comp-onselectcallback-t.md)&gt; | Yes | Callback used to return the result. |
+| handler | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[OnSelectCallback](arkts-arkui-arcalphabetindexer-comp-onselectcallback-t.md)&gt; | Yes | Callback invoked when an item is selected on the index bar. It is triggered when the user taps or swipes on the index bar to select an item, and returns the index value of the currently selected item. |
 
 ## popupBackground
 
@@ -163,7 +163,7 @@ popupBackgroundBlurStyle(style: Optional<BlurStyle>)
 Sets the background blur style of the pop-up window. If this API is not used, the blur is disabled by default. The corresponding value is **NONE** in **BlurStyle**.
 
 > **NOTE:** 
-
+> 
 > After configuring the pop-up window background blur style with **popupBackgroundBlurStyle**, avoid applying
 > background colors via [popupBackground](#popupbackground).
 
@@ -179,7 +179,7 @@ Sets the background blur style of the pop-up window. If this API is not used, th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BlurStyle](arkts-arkui-common-comp-blurstyle-e.md)&gt; | Yes | Background blur style of the pop-up window. |
+| style | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[BlurStyle](arkts-arkui-common-comp-blurstyle-e.md)&gt; | Yes | Background blur style of the pop-up window.<br>Default value: **BlurStyle.NONE**.<br>With this attribute set, it is not recommended to set the [popupBackground](#popupbackground) attribute. |
 
 ## popupColor
 
@@ -223,7 +223,7 @@ Sets the font style of the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| font | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Font style of the pop-up window.<br>Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Font style of the pop-up window, which sets the display effect of the currently selected letter shown in the pop-up window, including font size, font weight, tilt angle, font family, etc.<br/>Default value:<br>{<br>size:'19.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
 
 ## selected
 
@@ -245,7 +245,7 @@ Sets the index of the selected item.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Index of the selected item.<br>Default value: **0**<br>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md). |
+| index | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Index value of the selected item. If the value exceeds the valid index range, the default value **0** is used.<br>Default value: **0**<br>This parameter supports two-way binding through [!!](../../../ui/state-management/arkts-new-binding.md). |
 
 ## selectedBackgroundColor
 
@@ -311,7 +311,7 @@ Sets the font style of the selected item, including size, weight, style, and fon
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| font | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Font style of the selected item.<br>Default value: {<br>size:'13.0fp',<br> style: FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>} |
+| font | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Font&gt; | Yes | Text style of the selected item, used to set the display effect of the selected letter in the index bar, including font size, font weight, tilt angle, and font family.<br>Default value: **{<br>size:'13.0fp',<br> style:FontStyle.Normal,<br> weight:500,<br> family:'HarmonyOS Sans'<br>}** |
 
 ## usePopup
 
@@ -333,4 +333,4 @@ Sets whether to display the pop-up window.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to display the pop-up window.<br>**true**: yes; **false**: no<br> Default value: **false** |
+| enabled | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;boolean&gt; | Yes | Whether to display the pop-up window.<br>**true**: yes; **false**: no <br>Default value: **false** |

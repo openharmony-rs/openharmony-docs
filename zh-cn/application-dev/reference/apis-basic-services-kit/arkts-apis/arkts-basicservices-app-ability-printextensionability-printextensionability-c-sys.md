@@ -54,6 +54,7 @@ onRequestPreview(jobInfo: print.PrintJob): string
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,3 +69,5 @@ export default class HWPrintExtension extends PrintExtensionAbility {
     }
 }
 ```
+
+<!--DelEnd-->

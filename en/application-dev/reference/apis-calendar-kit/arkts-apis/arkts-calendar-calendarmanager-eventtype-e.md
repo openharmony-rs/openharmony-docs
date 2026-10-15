@@ -12,22 +12,6 @@ Enumerates event types.
 
 **System capability:** SystemCapability.Applications.CalendarData
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-Normal event, such as conference or an alarm clock.
-
-**Since:** 10
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-EventType-NORMAL = 0--><!--Device-EventType-NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Applications.CalendarData
-
 ## IMPORTANT
 
 ```TypeScript
@@ -41,5 +25,21 @@ Important event, such as wedding anniversary, are not recommended for third-part
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-EventType-IMPORTANT = 1--><!--Device-EventType-IMPORTANT = 1-End-->
+
+**System capability:** SystemCapability.Applications.CalendarData
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+Normal event, such as conference or an alarm clock.
+
+**Since:** 10
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-EventType-NORMAL = 0--><!--Device-EventType-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

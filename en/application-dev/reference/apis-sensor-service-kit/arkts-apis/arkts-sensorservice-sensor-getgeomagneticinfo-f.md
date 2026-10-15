@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getgeomagneticinfo1"></a>
+
 ## getGeomagneticInfo
 
 ```TypeScript
@@ -64,7 +66,7 @@ try {
 ```
 
 
-<a id="getgeomagneticinfo-1"></a>
+<a id="getgeomagneticinfo2"></a>
 
 ## getGeomagneticInfo
 

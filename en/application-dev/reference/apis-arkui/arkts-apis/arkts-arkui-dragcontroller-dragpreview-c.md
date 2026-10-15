@@ -40,7 +40,7 @@ Applies a foreground color animation to the drag preview. This API does not work
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [AnimationOptions](arkts-arkui-dragcontroller-animationoptions-i.md) | Yes | Animation settings. |
+| options | [AnimationOptions](arkts-arkui-dragcontroller-animationoptions-i.md) | Yes | Animation options for the foreground color change, which are used to set the animation duration, animation curve, and other effects. |
 | handler | () =&gt;void | Yes | Callback used to change attributes such as the background mask color. |
 
 **Examples**

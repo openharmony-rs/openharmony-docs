@@ -24,35 +24,35 @@ import { scan } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [cancelScan](arkts-basicservices-scan-cancelscan-f.md) | Cancels scanning. This API uses a promise to return the result. |
-| [closeScanner](arkts-basicservices-scan-closescanner-f.md) | Closes a scanner. This API uses a promise to return the result. |
-| [exit](arkts-basicservices-scan-exit-f.md) | Exits the scan service. This API uses a promise to return the result. |
-| [getPictureScanProgress](arkts-basicservices-scan-getpicturescanprogress-f.md) | Obtains the progress of scanning a picture. This API uses a promise to return the result. |
-| [getScannerCurrentSetting](arkts-basicservices-scan-getscannercurrentsetting-f.md) | Obtains the current scanner settings. This API uses a promise to return the result. |
-| [getScannerParameter](arkts-basicservices-scan-getscannerparameter-f.md) | Obtains scanner parameters. This API uses a promise to return the result. |
-| [init](arkts-basicservices-scan-init-f.md) | Initializes the scan service. This API uses a promise to return the result. |
-| [off](arkts-basicservices-scan-off-f.md#offscandevicefound) | Unregisters a callback used to listen for the scanner discovery event. This API uses an asynchronous callback to return the result. |
-| [off](arkts-basicservices-scan-off-f.md#offscandevicesync) | Unregisters a callback used to listen for the scanner sync event. This API uses an asynchronous callback to return the result. |
-| [on](arkts-basicservices-scan-on-f.md#onscandevicefound) | Registers a callback used to listen for the scanner discovery event. This API uses an asynchronous callback to return the result. |
-| [on](arkts-basicservices-scan-on-f.md#onscandevicesync) | Registers a callback used to listen for the scanner sync event. This API uses an asynchronous callback to return the result. |
-| [openScanner](arkts-basicservices-scan-openscanner-f.md) | Opens a scanner. This API uses a promise to return the result. |
-| [setScanAutoOption](arkts-basicservices-scan-setscanautooption-f.md) | Sets the scan option to auto mode. This API uses a promise to return the result. |
-| [setScannerParameter](arkts-basicservices-scan-setscannerparameter-f.md) | Sets scanner parameters. This API uses a promise to return the result. |
-| [startScan](arkts-basicservices-scan-startscan-f.md) | Starts scanning. This API uses a promise to return the result. |
-| [startScannerDiscovery](arkts-basicservices-scan-startscannerdiscovery-f.md) | Starts scanner discovery. This API uses a promise to return the result. |
+| [cancelScan](arkts-basicservices-scan-cancelscan-f.md#cancelscan) | Cancels scanning. This API uses a promise to return the result. |
+| [closeScanner](arkts-basicservices-scan-closescanner-f.md#closescanner) | Closes a scanner. This API uses a promise to return the result. |
+| [exit](arkts-basicservices-scan-exit-f.md#exit) | Exits the scan service. This API uses a promise to return the result. |
+| [getPictureScanProgress](arkts-basicservices-scan-getpicturescanprogress-f.md#getpicturescanprogress) | Obtains the progress of scanning a picture. This API uses a promise to return the result. |
+| [getScannerCurrentSetting](arkts-basicservices-scan-getscannercurrentsetting-f.md#getscannercurrentsetting) | Obtains the current scanner settings. This API uses a promise to return the result. |
+| [getScannerParameter](arkts-basicservices-scan-getscannerparameter-f.md#getscannerparameter) | Obtains scanner parameters. This API uses a promise to return the result. |
+| [init](arkts-basicservices-scan-init-f.md#init) | Initializes the scan service. This API uses a promise to return the result. |
+| [off('scanDeviceFound')](arkts-basicservices-scan-off-f.md#offscandevicefound) | Unregisters a callback used to listen for the scanner discovery event. This API uses an asynchronous callback to return the result. |
+| [off('scanDeviceSync')](arkts-basicservices-scan-off-f.md#offscandevicesync) | Unregisters a callback used to listen for the scanner sync event. This API uses an asynchronous callback to return the result. |
+| [on('scanDeviceFound')](arkts-basicservices-scan-on-f.md#onscandevicefound) | Registers a callback used to listen for the scanner discovery event. This API uses an asynchronous callback to return the result. |
+| [on('scanDeviceSync')](arkts-basicservices-scan-on-f.md#onscandevicesync) | Registers a callback used to listen for the scanner sync event. This API uses an asynchronous callback to return the result. |
+| [openScanner](arkts-basicservices-scan-openscanner-f.md#openscanner) | Opens a scanner. This API uses a promise to return the result. |
+| [setScanAutoOption](arkts-basicservices-scan-setscanautooption-f.md#setscanautooption) | Sets the scan option to auto mode. This API uses a promise to return the result. |
+| [setScannerParameter](arkts-basicservices-scan-setscannerparameter-f.md#setscannerparameter) | Sets scanner parameters. This API uses a promise to return the result. |
+| [startScan](arkts-basicservices-scan-startscan-f.md#startscan) | Starts scanning. This API uses a promise to return the result. |
+| [startScannerDiscovery](arkts-basicservices-scan-startscannerdiscovery-f.md#startscannerdiscovery) | Starts scanner discovery. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [addScanner](arkts-basicservices-scan-addscanner-f-sys.md) | Adds a scanner. This API uses a promise to return the result. |
-| [deleteScanner](arkts-basicservices-scan-deletescanner-f-sys.md) | Deletes a scanner. This API uses a promise to return the result. |
-| [getAddedScanners](arkts-basicservices-scan-getaddedscanners-f-sys.md) | Obtains the added scanners. This API uses a promise to return the result. |
-| [off](arkts-basicservices-scan-off-f-sys.md#offscandeviceadd) | Unregisters the callback used to listen for the scanner addition event. This API uses an asynchronous callback to return the result. |
-| [off](arkts-basicservices-scan-off-f-sys.md#offscandevicedel) | Unregisters the callback used to listen for the scanner deletion event. This API uses an asynchronous callback to return the result. |
-| [on](arkts-basicservices-scan-on-f-sys.md#onscandeviceadd) | Registers a callback used to listen for the scanner addition event. This API uses an asynchronous callback to return the result. |
-| [on](arkts-basicservices-scan-on-f-sys.md#onscandevicedel) | Registers a callback used to listen for the scanner deletion event. This API uses an asynchronous callback to return the result. |
+| [addScanner](arkts-basicservices-scan-addscanner-f-sys.md#addscanner) | Adds a scanner. This API uses a promise to return the result. |
+| [deleteScanner](arkts-basicservices-scan-deletescanner-f-sys.md#deletescanner) | Deletes a scanner. This API uses a promise to return the result. |
+| [getAddedScanners](arkts-basicservices-scan-getaddedscanners-f-sys.md#getaddedscanners) | Obtains the added scanners. This API uses a promise to return the result. |
+| [off('scanDeviceAdd')](arkts-basicservices-scan-off-f-sys.md#offscandeviceadd) | Unregisters the callback used to listen for the scanner addition event. This API uses an asynchronous callback to return the result. |
+| [off('scanDeviceDel')](arkts-basicservices-scan-off-f-sys.md#offscandevicedel) | Unregisters the callback used to listen for the scanner deletion event. This API uses an asynchronous callback to return the result. |
+| [on('scanDeviceAdd')](arkts-basicservices-scan-on-f-sys.md#onscandeviceadd) | Registers a callback used to listen for the scanner addition event. This API uses an asynchronous callback to return the result. |
+| [on('scanDeviceDel')](arkts-basicservices-scan-on-f-sys.md#onscandevicedel) | Registers a callback used to listen for the scanner deletion event. This API uses an asynchronous callback to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

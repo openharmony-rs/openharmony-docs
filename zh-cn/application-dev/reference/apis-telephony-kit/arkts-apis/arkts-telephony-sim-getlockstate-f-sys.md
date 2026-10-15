@@ -6,6 +6,8 @@
 import { sim } from '@kit.TelephonyKit';
 ```
 
+<a id="getlockstate1"></a>
+
 ## getLockState
 
 ```TypeScript
@@ -38,7 +40,7 @@ Get the lock status of the SIM card in the specified slot.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -46,6 +48,7 @@ Get the lock status of the SIM card in the specified slot.
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 | [8301002](../errorcode-telephony.md#8301002-sim卡读取数据或者更新数据失败) | The SIM card failed to read or update data. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ sim.getLockState(0, 1, (err: BusinessError, data: sim.LockState) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getlockstate-1"></a>
+
+<a id="getlockstate2"></a>
 
 ## getLockState
 
@@ -97,7 +102,7 @@ Get the lock status of the SIM card in the specified slot.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -105,6 +110,7 @@ Get the lock status of the SIM card in the specified slot.
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 | [8301002](../errorcode-telephony.md#8301002-sim卡读取数据或者更新数据失败) | The SIM card failed to read or update data. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -117,3 +123,5 @@ sim.getLockState(0, 1).then((data: sim.LockState) => {
     console.error(`getLockState failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -26,20 +26,6 @@ USB_REQUEST_TARGET_DEVICE = 0
 
 **系统能力：** SystemCapability.USB.USBManager
 
-## USB_REQUEST_TARGET_INTERFACE
-
-```TypeScript
-USB_REQUEST_TARGET_INTERFACE = 1
-```
-
-将控制请求的目标设置为USB设备的某个接口，用于对接口进行控制操作（如设置接口特性、获取接口描述符等）。
-
-**起始版本：** 9
-
-<!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1-End-->
-
-**系统能力：** SystemCapability.USB.USBManager
-
 ## USB_REQUEST_TARGET_ENDPOINT
 
 ```TypeScript
@@ -51,6 +37,20 @@ USB_REQUEST_TARGET_ENDPOINT = 2
 **起始版本：** 9
 
 <!--Device-USBRequestTargetType-USB_REQUEST_TARGET_ENDPOINT = 2--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_ENDPOINT = 2-End-->
+
+**系统能力：** SystemCapability.USB.USBManager
+
+## USB_REQUEST_TARGET_INTERFACE
+
+```TypeScript
+USB_REQUEST_TARGET_INTERFACE = 1
+```
+
+将控制请求的目标设置为USB设备的某个接口，用于对接口进行控制操作（如设置接口特性、获取接口描述符等）。
+
+**起始版本：** 9
+
+<!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1--><!--Device-USBRequestTargetType-USB_REQUEST_TARGET_INTERFACE = 1-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

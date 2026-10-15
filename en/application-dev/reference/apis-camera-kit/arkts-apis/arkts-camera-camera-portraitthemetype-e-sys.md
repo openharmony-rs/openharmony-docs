@@ -14,22 +14,6 @@ Enumerates the camera portrait theme types.
 
 **System API:** This is a system API.
 
-## NATURAL
-
-```TypeScript
-NATURAL = 0
-```
-
-Natural portrait theme type.
-
-**Since:** 14
-
-<!--Device-PortraitThemeType-NATURAL = 0--><!--Device-PortraitThemeType-NATURAL = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
 ## DELICATE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Delicate portrait theme type.
 **Since:** 14
 
 <!--Device-PortraitThemeType-DELICATE = 1--><!--Device-PortraitThemeType-DELICATE = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## NATURAL
+
+```TypeScript
+NATURAL = 0
+```
+
+Natural portrait theme type.
+
+**Since:** 14
+
+<!--Device-PortraitThemeType-NATURAL = 0--><!--Device-PortraitThemeType-NATURAL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -24,7 +24,7 @@ Default value: **8.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞) If the value is abnormal, the default value is used.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 

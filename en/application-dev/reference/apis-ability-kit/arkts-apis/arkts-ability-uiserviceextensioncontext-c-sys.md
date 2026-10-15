@@ -50,7 +50,7 @@ Connects to a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | Want parameter. |
-| options | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | Yes | Connection options. |
+| options | [ConnectOptions](arkts-ability-connectoptions-i.md) | Yes | Connection options. |
 
 **Return value:**
 
@@ -63,7 +63,7 @@ Connects to a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -77,6 +77,7 @@ Connects to a [UIExtensionAbility](arkts-ability-app-ability-uiextensionability-
 | [16000053](../errorcode-ability.md#16000053-ability-not-in-the-foreground) | The ability is not on the top of the UI. |
 | [16000055](../errorcode-ability.md#16000055-installation-free-timeout) | Installation-free timed out. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -140,6 +141,8 @@ struct Page_UIServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -174,10 +177,11 @@ Disconnects from a [UIExtensionAbility](arkts-ability-app-ability-uiextensionabi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000011](../errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -222,6 +226,8 @@ struct Page_UIServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## startAbility
 
 ```TypeScript
@@ -263,7 +269,7 @@ Starts an ability. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -281,6 +287,7 @@ Starts an ability. This API uses a promise to return the result.
 | [16000055](../errorcode-ability.md#16000055-installation-free-timeout) | Installation-free timed out. |
 | [16200001](../errorcode-ability.md#16200001-caller-released) | The caller has been released. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -316,6 +323,8 @@ class UIEntryAbility extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## startAbilityByType
 
@@ -359,9 +368,10 @@ Starts a [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md) or [UIE
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -425,6 +435,8 @@ struct SubIndex {
 }
 ```
 
+<!--DelEnd-->
+
 ## terminateSelf
 
 ```TypeScript
@@ -449,6 +461,7 @@ Terminates this [UIServiceExtensionAbility](arkts-ability-app-ability-uiservicee
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -468,3 +481,5 @@ class UIEntryAbility extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->

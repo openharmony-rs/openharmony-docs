@@ -12,24 +12,6 @@ export enum HuksKeySecurityLevel
 
 **系统能力：** SystemCapability.Security.Huks.Core
 
-## HUKS_KEY_SECURITY_LEVEL_TEE
-
-```TypeScript
-HUKS_KEY_SECURITY_LEVEL_TEE = 0
-```
-
-密钥在可信执行环境中生成并使用。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0-End-->
-
-**系统能力：** SystemCapability.Security.Huks.Core
-
 ## HUKS_KEY_SECURITY_LEVEL_SE
 
 ```TypeScript
@@ -47,5 +29,23 @@ HUKS_KEY_SECURITY_LEVEL_SE = 1
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_SE = 1--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_SE = 1-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Core
+
+## HUKS_KEY_SECURITY_LEVEL_TEE
+
+```TypeScript
+HUKS_KEY_SECURITY_LEVEL_TEE = 0
+```
+
+密钥在可信执行环境中生成并使用。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0--><!--Device-HuksKeySecurityLevel-HUKS_KEY_SECURITY_LEVEL_TEE = 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Core

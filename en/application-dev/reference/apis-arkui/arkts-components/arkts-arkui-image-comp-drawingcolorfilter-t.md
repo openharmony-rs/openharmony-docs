@@ -6,6 +6,8 @@ declare type DrawingColorFilter = import('../api/@ohos.graphics.drawing').defaul
 
 Represents a color filter object.
 
+**Type:** import('../api/@ohos.graphics.drawing').default.ColorFilter
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a color filter object.
 <!--Device-unnamed-declare type DrawingColorFilter = import('../api/@ohos.graphics.drawing').default.ColorFilter--><!--Device-unnamed-declare type DrawingColorFilter = import('../api/@ohos.graphics.drawing').default.ColorFilter-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.drawing').default.ColorFilter

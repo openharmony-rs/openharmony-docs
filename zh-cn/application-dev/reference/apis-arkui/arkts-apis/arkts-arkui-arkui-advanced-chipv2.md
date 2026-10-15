@@ -1,5 +1,13 @@
 # @ohos.arkui.advanced.ChipV2
 
+ChipV2是提供丰富样式和交互能力的操作块组件，支持前缀图标、后缀图标、激活状态、关闭按钮等特性，支持Symbol和Image两种图标类型，并提供完善的无障碍访问能力。该组件适用于搜索历史记录、邮件发送列表、标签选择、过滤器、联系人
+ 展示等场景。
+
+该组件基于[状态管理（V2）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v2)实现，相较于
+ [状态管理（V1）](../../../ui/state-management/arkts-state-management-overview.md#状态管理v1)，状态管理（V2）增强了对数据对象的深度观察与管理能力，不再局限于组
+ 件层级。借助状态管理（V2），开发者可以更灵活地控制组件的数据和状态，实现更高效的用户界面刷新。
+
+
 ## 导入模块
 
 ```TypeScript
@@ -28,7 +36,7 @@ import { ChipV2Size, ChipV2AccessibilitySelectedType, ChipV2ImageIconConfig, Chi
 
 | 名称 | 说明 |
 | --- | --- |
-| [ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md) | ChipV2是提供丰富样式和交互能力的操作块组件，支持前缀图标、后缀图标、激活状态、关闭按钮等特性，支持Symbol和Image两种图标类型，并提供完善的无障碍访问能力。该组件适用于搜索历史记录、邮件发送列表、标签选择、过滤器、联系人展示等场景。 |
+| [ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md) | 创建ChipV2组件。 |
 
 ### 接口
 
@@ -181,7 +189,7 @@ struct Index {
 
 ### 示例3（设置Symbol类型图标）
 
-该示例通过SymbolGlyphModifier实现了[ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md)设置Symbol类型图标。
+该示例通过[SymbolGlyphModifier](ts-universal-attributes-attribute-symbolglyphmodifier.md#symbolglyphmodifier)实现了[ChipV2](arkts-arkui-arkui-advanced-chipv2-chipv2-s.md)设置Symbol类型图标。
 
 从API版本26.0.0开始，新增ChipV2。
 

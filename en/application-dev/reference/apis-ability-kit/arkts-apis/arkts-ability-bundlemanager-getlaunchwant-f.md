@@ -12,11 +12,11 @@ import { bundleManager } from '@kit.AbilityKit';
 function getLaunchWant(): Want
 ```
 
-Obtains the **Want** parameters of the [entry UIAbility](../../../application-models/ability-terminology.md#uiability) of the current application.
+Obtains the **Want** parameters of the [entry UIAbility](../../../quick-start/application-package-glossary.md#entry-uiability) of the current application.
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 13.
+**Atomic service API:** This API can be used in atomic services since API version 13.
 
 <!--Device-bundleManager-function getLaunchWant(): Want--><!--Device-bundleManager-function getLaunchWant(): Want-End-->
 

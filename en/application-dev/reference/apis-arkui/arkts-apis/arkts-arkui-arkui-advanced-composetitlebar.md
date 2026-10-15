@@ -18,7 +18,7 @@ import { ComposeTitleBar, ComposeTitleBarMenuItem } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [ComposeTitleBar](arkts-arkui-arkui-advanced-composetitlebar-composetitlebar-s.md) | **ComposeTitleBar** represents a common title bar that contains a title, subtitle (optional), and profile picture (optional). It can come with a Back button for switching between pages of different levels. |
+| [ComposeTitleBar](arkts-arkui-arkui-advanced-composetitlebar-composetitlebar-s.md) | **ComposeTitleBar** is a standard title bar component that supports setting a title, avatar (optional), and subtitle (optional). It can be used on first-level pages, as well as second-level and higher pages to display a back button. It helps quickly build a unified-style title bar, simplifies page development, supports flexible menu item configuration and icon customization, and helps developers quickly implement navigation and operation entry points. |
 
 ## Examples
 

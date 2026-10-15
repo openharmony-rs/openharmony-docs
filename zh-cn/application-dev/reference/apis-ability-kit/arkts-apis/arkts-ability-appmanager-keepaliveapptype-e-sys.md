@@ -30,22 +30,6 @@ ALL = 0
 
 **系统接口：** 此接口为系统接口。
 
-## THIRD_PARTY
-
-```TypeScript
-THIRD_PARTY = 1
-```
-
-三方应用。
-
-**起始版本：** 14
-
-<!--Device-KeepAliveAppType-THIRD_PARTY = 1--><!--Device-KeepAliveAppType-THIRD_PARTY = 1-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**系统接口：** 此接口为系统接口。
-
 ## SYSTEM
 
 ```TypeScript
@@ -57,6 +41,22 @@ SYSTEM = 2
 **起始版本：** 14
 
 <!--Device-KeepAliveAppType-SYSTEM = 2--><!--Device-KeepAliveAppType-SYSTEM = 2-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**系统接口：** 此接口为系统接口。
+
+## THIRD_PARTY
+
+```TypeScript
+THIRD_PARTY = 1
+```
+
+三方应用。
+
+**起始版本：** 14
+
+<!--Device-KeepAliveAppType-THIRD_PARTY = 1--><!--Device-KeepAliveAppType-THIRD_PARTY = 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

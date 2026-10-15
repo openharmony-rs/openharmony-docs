@@ -16,6 +16,38 @@ enum EapMethod
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## EAP_AKA
+
+```TypeScript
+EAP_AKA = 6
+```
+
+AKA类型，使用USIM卡（3G/4G/5G SIM卡）中的增强密钥和算法进行认证。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EapMethod-EAP_AKA = 6--><!--Device-EapMethod-EAP_AKA = 6-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+## EAP_AKA_PRIME
+
+```TypeScript
+EAP_AKA_PRIME = 7
+```
+
+AKA Prime类型，EAP-AKA增强版，在密钥派生中绑定网络名称。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EapMethod-EAP_AKA_PRIME = 7--><!--Device-EapMethod-EAP_AKA_PRIME = 7-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## EAP_NONE
 
 ```TypeScript
@@ -45,38 +77,6 @@ PEAP类型，受保护的可扩展认证协议。先建立安全的TLS隧道、�
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-EapMethod-EAP_PEAP = 1--><!--Device-EapMethod-EAP_PEAP = 1-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## EAP_TLS
-
-```TypeScript
-EAP_TLS = 2
-```
-
-TLS类型，传输层安全协议。双向证书认证。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EapMethod-EAP_TLS = 2--><!--Device-EapMethod-EAP_TLS = 2-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## EAP_TTLS
-
-```TypeScript
-EAP_TTLS = 3
-```
-
-TTLS类型，隧道传输层安全协议。与PEAP类似，但后续隧道内部认证方法更加丰富。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-EapMethod-EAP_TTLS = 3--><!--Device-EapMethod-EAP_TTLS = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -112,35 +112,35 @@ SIM类型，使用手机SIM卡中的密钥和算法进行认证。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## EAP_AKA
+## EAP_TLS
 
 ```TypeScript
-EAP_AKA = 6
+EAP_TLS = 2
 ```
 
-AKA类型，使用USIM卡（3G/4G/5G SIM卡）中的增强密钥和算法进行认证。
+TLS类型，传输层安全协议。双向证书认证。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EapMethod-EAP_AKA = 6--><!--Device-EapMethod-EAP_AKA = 6-End-->
+<!--Device-EapMethod-EAP_TLS = 2--><!--Device-EapMethod-EAP_TLS = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## EAP_AKA_PRIME
+## EAP_TTLS
 
 ```TypeScript
-EAP_AKA_PRIME = 7
+EAP_TTLS = 3
 ```
 
-AKA Prime类型，EAP-AKA增强版，在密钥派生中绑定网络名称。
+TTLS类型，隧道传输层安全协议。与PEAP类似，但后续隧道内部认证方法更加丰富。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-EapMethod-EAP_AKA_PRIME = 7--><!--Device-EapMethod-EAP_AKA_PRIME = 7-End-->
+<!--Device-EapMethod-EAP_TTLS = 3--><!--Device-EapMethod-EAP_TTLS = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 

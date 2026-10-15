@@ -39,3 +39,20 @@ Unsubscribes from controls on cross-bundle widget addition to the home screen. T
 | [201](../../errorcode-universal.md#201-permission-denied) | Permissions denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formProvider.offPublishFormCrossBundleControl();
+  console.info(`offPublishFormCrossBundleControl success`);
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

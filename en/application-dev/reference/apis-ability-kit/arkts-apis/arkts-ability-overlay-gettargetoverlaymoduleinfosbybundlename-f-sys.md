@@ -6,6 +6,8 @@
 import { overlay } from '@kit.AbilityKit';
 ```
 
+<a id="gettargetoverlaymoduleinfosbybundlename1"></a>
+
 ## getTargetOverlayModuleInfosByBundleName
 
 ```TypeScript
@@ -32,7 +34,7 @@ No permission is required when the specified application is the caller itself.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | targetBundleName | string | Yes | Bundle name of the application. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result, which is an array of [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). When the information of all [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) associated with all modules in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object. |
 
 **Error codes:**
 
@@ -44,6 +46,7 @@ No permission is required when the specified application is the caller itself.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700035](../errorcode-bundle.md#17700035-application-contains-only-modules-with-the-overlay-feature) | The specified bundle is an overlay bundle. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,8 +72,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="gettargetoverlaymoduleinfosbybundlename-1"></a>
+
+<a id="gettargetoverlaymoduleinfosbybundlename2"></a>
 
 ## getTargetOverlayModuleInfosByBundleName
 
@@ -97,8 +102,8 @@ No permission is required when the specified application is the caller itself.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | targetBundleName | string | Yes | Bundle name of the application. |
-| moduleName | string | Yes | Name of the target module. If this parameter is not specified, the API obtains the information associated with all modules in that application. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result, which is an array of [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) objects. If the operation is successful, **err** is **null**; otherwise, **err** is an error object. |
+| moduleName | string | Yes | Name of the target module in the specified application. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[OverlayModuleInfo](arkts-ability-overlay-overlaymoduleinfo-t.md)&gt;&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). When all associated [OverlayModuleInfo](arkts-ability-overlaymoduleinfo-i.md) information of the specified module in the specified application is obtained successfully, err returns undefined. Otherwise, the callback returns a specific error object. |
 
 **Error codes:**
 
@@ -112,6 +117,7 @@ No permission is required when the specified application is the caller itself.
 | [17700034](../errorcode-bundle.md#17700034-module-is-configured-with-the-overlay-feature) | The specified module is an overlay module. |
 | [17700035](../errorcode-bundle.md#17700035-application-contains-only-modules-with-the-overlay-feature) | The specified bundle is an overlay bundle. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -138,8 +144,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="gettargetoverlaymoduleinfosbybundlename-2"></a>
+
+<a id="gettargetoverlaymoduleinfosbybundlename3"></a>
 
 ## getTargetOverlayModuleInfosByBundleName
 
@@ -147,9 +155,9 @@ try {
 function getTargetOverlayModuleInfosByBundleName(targetBundleName: string, moduleName?: string): Promise<Array<OverlayModuleInfo>>
 ```
 
-Obtains the information about modules with the overlay feature in another application based on the target module name. This API uses a promise to return the result.
+Obtains all OverlayModuleInfo information associated with the specified module in the specified application. This API uses a promise to return the result.
 
-No permission is required when the specified application is the caller itself.
+No permission is required when the specified application is the caller itself. If the API call fails, null may be returned. Verify the return value before using it.
 
 **Since:** 10
 
@@ -186,6 +194,7 @@ No permission is required when the specified application is the caller itself.
 | [17700034](../errorcode-bundle.md#17700034-module-is-configured-with-the-overlay-feature) | The specified module is an overlay module. |
 | [17700035](../errorcode-bundle.md#17700035-application-contains-only-modules-with-the-overlay-feature) | The specified bundle is an overlay bundle. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -207,3 +216,5 @@ let moduleName = "feature";
   }
 })();
 ```
+
+<!--DelEnd-->

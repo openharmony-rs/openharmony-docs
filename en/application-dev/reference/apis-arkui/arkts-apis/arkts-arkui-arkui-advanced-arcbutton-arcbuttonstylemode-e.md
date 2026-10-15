@@ -12,19 +12,19 @@ Enumerates the style modes that can be set for **ArcButton**.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
-## EMPHASIZED_LIGHT
+## CUSTOM
 
 ```TypeScript
-EMPHASIZED_LIGHT = 0
+CUSTOM = 4
 ```
 
-Emphasized style in light color mode. Displayed as a blue background with white text.
+Custom button color and font color.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0--><!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0-End-->
+<!--Device-ArcButtonStyleMode-CUSTOM = 4--><!--Device-ArcButtonStyleMode-CUSTOM = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -44,19 +44,19 @@ Warning style in dark color mode. Displayed as a red background with white text.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
-## NORMAL_LIGHT
+## EMPHASIZED_LIGHT
 
 ```TypeScript
-NORMAL_LIGHT = 2
+EMPHASIZED_LIGHT = 0
 ```
 
-Normal style in light color mode. Displayed as a dark blue background with blue text.
+Emphasized style in light color mode. Displayed as a blue background with white text.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2--><!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2-End-->
+<!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0--><!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -76,18 +76,18 @@ Normal style in dark color mode. Displayed as a dark gray background with blue t
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle
 
-## CUSTOM
+## NORMAL_LIGHT
 
 ```TypeScript
-CUSTOM = 4
+NORMAL_LIGHT = 2
 ```
 
-Custom button color and font color.
+Normal style in light color mode. Displayed as a dark blue background with blue text.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ArcButtonStyleMode-CUSTOM = 4--><!--Device-ArcButtonStyleMode-CUSTOM = 4-End-->
+<!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2--><!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Circle

@@ -45,7 +45,7 @@ declare function fsync(fd: number): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="fsync-1"></a>
+<a id="fsync2"></a>
 
 ## fsync
 

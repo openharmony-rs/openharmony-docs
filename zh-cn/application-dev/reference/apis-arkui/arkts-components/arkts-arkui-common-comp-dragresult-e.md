@@ -12,31 +12,13 @@ declare enum DragResult
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## UNKNOWN
+## DRAG_CANCELED
 
 ```TypeScript
-UNKNOWN = -1
+DRAG_CANCELED = 2
 ```
 
-拖拽结果尚未设置，在[onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart)，[onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave)，[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中使用。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
-
-<!--Device-DragResult-UNKNOWN = -1--><!--Device-DragResult-UNKNOWN = -1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DRAG_SUCCESSFUL
-
-```TypeScript
-DRAG_SUCCESSFUL = 0
-```
-
-拖拽成功，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中使用。
+拖拽取消，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop1)中使用。
 
 **起始版本：** 10
 
@@ -44,7 +26,7 @@ DRAG_SUCCESSFUL = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-DragResult-DRAG_SUCCESSFUL = 0--><!--Device-DragResult-DRAG_SUCCESSFUL = 0-End-->
+<!--Device-DragResult-DRAG_CANCELED = 2--><!--Device-DragResult-DRAG_CANCELED = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,7 +36,7 @@ DRAG_SUCCESSFUL = 0
 DRAG_FAILED = 1
 ```
 
-拖拽失败，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中使用。
+拖拽失败，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop1)中使用。
 
 **起始版本：** 10
 
@@ -66,13 +48,13 @@ DRAG_FAILED = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DRAG_CANCELED
+## DRAG_SUCCESSFUL
 
 ```TypeScript
-DRAG_CANCELED = 2
+DRAG_SUCCESSFUL = 0
 ```
 
-拖拽取消，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop)中使用。
+拖拽成功，在[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop1)中使用。
 
 **起始版本：** 10
 
@@ -80,7 +62,25 @@ DRAG_CANCELED = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-DragResult-DRAG_CANCELED = 2--><!--Device-DragResult-DRAG_CANCELED = 2-End-->
+<!--Device-DragResult-DRAG_SUCCESSFUL = 0--><!--Device-DragResult-DRAG_SUCCESSFUL = 0-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DROP_DISABLED
+
+```TypeScript
+DROP_DISABLED = 4
+```
+
+组件不允许落入，在[onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave)中使用。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragResult-DROP_DISABLED = 4--><!--Device-DragResult-DROP_DISABLED = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,20 +102,20 @@ DROP_ENABLED = 3
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DROP_DISABLED
+## UNKNOWN
 
 ```TypeScript
-DROP_DISABLED = 4
+UNKNOWN = -1
 ```
 
-组件不允许落入，在[onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave)中使用。
+拖拽结果尚未设置，在[onDragStart](arkts-arkui-common-comp-commonmethod-c.md#ondragstart)，[onDragEnter](arkts-arkui-common-comp-commonmethod-c.md#ondragenter)，[onDragMove](arkts-arkui-common-comp-commonmethod-c.md#ondragmove)，[onDragLeave](arkts-arkui-common-comp-commonmethod-c.md#ondragleave)，[onDrop](arkts-arkui-common-comp-commonmethod-c.md#ondrop1)中使用。
 
-**起始版本：** 10
+**起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
-<!--Device-DragResult-DROP_DISABLED = 4--><!--Device-DragResult-DROP_DISABLED = 4-End-->
+<!--Device-DragResult-UNKNOWN = -1--><!--Device-DragResult-UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

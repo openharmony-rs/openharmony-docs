@@ -12,39 +12,57 @@ Describes the state of the **NavDestination** component.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_SHOWN
+## ABOUT_TO_APPEAR
 
 ```TypeScript
-ON_SHOWN = 0
+ABOUT_TO_APPEAR = 10
 ```
 
-The **NavDestination** component is displayed.
+The outer custom component of the **NavDestination** component is about to appear.
 
-**Since:** 11
+**Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
-<!--Device-NavDestinationState-ON_SHOWN = 0--><!--Device-NavDestinationState-ON_SHOWN = 0-End-->
+<!--Device-NavDestinationState-ABOUT_TO_APPEAR = 10--><!--Device-NavDestinationState-ABOUT_TO_APPEAR = 10-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_HIDDEN
+## ABOUT_TO_DISAPPEAR
 
 ```TypeScript
-ON_HIDDEN = 1
+ABOUT_TO_DISAPPEAR = 11
 ```
 
-The **NavDestination** component is hidden.
+The outer custom component of the **NavDestination** component is about to disappear.
 
-**Since:** 11
+**Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
-<!--Device-NavDestinationState-ON_HIDDEN = 1--><!--Device-NavDestinationState-ON_HIDDEN = 1-End-->
+<!--Device-NavDestinationState-ABOUT_TO_DISAPPEAR = 11--><!--Device-NavDestinationState-ABOUT_TO_DISAPPEAR = 11-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ON_ACTIVE
+
+```TypeScript
+ON_ACTIVE = 8
+```
+
+The **NavDestination** component is active.
+
+**Since:** 17
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-NavDestinationState-ON_ACTIVE = 8--><!--Device-NavDestinationState-ON_ACTIVE = 8-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,6 +84,24 @@ The **NavDestination** component is attached to the component tree.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## ON_BACKPRESS
+
+```TypeScript
+ON_BACKPRESS = 100
+```
+
+The back button is pressed on the **NavDestination** component.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavDestinationState-ON_BACKPRESS = 100--><!--Device-NavDestinationState-ON_BACKPRESS = 100-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## ON_DISAPPEAR
 
 ```TypeScript
@@ -84,39 +120,57 @@ The **NavDestination** component is detached from the component tree.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_WILL_SHOW
+## ON_HIDDEN
 
 ```TypeScript
-ON_WILL_SHOW = 4
+ON_HIDDEN = 1
 ```
 
-The **NavDestination** component is about to be displayed.
+The **NavDestination** component is hidden.
 
-**Since:** 12
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-NavDestinationState-ON_WILL_SHOW = 4--><!--Device-NavDestinationState-ON_WILL_SHOW = 4-End-->
+<!--Device-NavDestinationState-ON_HIDDEN = 1--><!--Device-NavDestinationState-ON_HIDDEN = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_WILL_HIDE
+## ON_INACTIVE
 
 ```TypeScript
-ON_WILL_HIDE = 5
+ON_INACTIVE = 9
 ```
 
-The **NavDestination** component is about to be hidden.
+The **NavDestination** component is inactive.
 
-**Since:** 12
+**Since:** 17
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 17.
+
+<!--Device-NavDestinationState-ON_INACTIVE = 9--><!--Device-NavDestinationState-ON_INACTIVE = 9-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ON_SHOWN
+
+```TypeScript
+ON_SHOWN = 0
+```
+
+The **NavDestination** component is displayed.
+
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-NavDestinationState-ON_WILL_HIDE = 5--><!--Device-NavDestinationState-ON_WILL_HIDE = 5-End-->
+<!--Device-NavDestinationState-ON_SHOWN = 0--><!--Device-NavDestinationState-ON_SHOWN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -156,85 +210,13 @@ The **NavDestination** component is about to be unmounted from the component tre
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_ACTIVE
+## ON_WILL_HIDE
 
 ```TypeScript
-ON_ACTIVE = 8
+ON_WILL_HIDE = 5
 ```
 
-The **NavDestination** component is active.
-
-**Since:** 17
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 17.
-
-<!--Device-NavDestinationState-ON_ACTIVE = 8--><!--Device-NavDestinationState-ON_ACTIVE = 8-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ON_INACTIVE
-
-```TypeScript
-ON_INACTIVE = 9
-```
-
-The **NavDestination** component is inactive.
-
-**Since:** 17
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 17.
-
-<!--Device-NavDestinationState-ON_INACTIVE = 9--><!--Device-NavDestinationState-ON_INACTIVE = 9-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABOUT_TO_APPEAR
-
-```TypeScript
-ABOUT_TO_APPEAR = 10
-```
-
-The outer custom component of the **NavDestination** component is about to appear.
-
-**Since:** 26.2.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
-
-<!--Device-NavDestinationState-ABOUT_TO_APPEAR = 10--><!--Device-NavDestinationState-ABOUT_TO_APPEAR = 10-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ABOUT_TO_DISAPPEAR
-
-```TypeScript
-ABOUT_TO_DISAPPEAR = 11
-```
-
-The outer custom component of the **NavDestination** component is about to disappear.
-
-**Since:** 26.2.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
-
-<!--Device-NavDestinationState-ABOUT_TO_DISAPPEAR = 11--><!--Device-NavDestinationState-ABOUT_TO_DISAPPEAR = 11-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ON_BACKPRESS
-
-```TypeScript
-ON_BACKPRESS = 100
-```
-
-The back button is pressed on the **NavDestination** component.
+The **NavDestination** component is about to be hidden.
 
 **Since:** 12
 
@@ -242,6 +224,24 @@ The back button is pressed on the **NavDestination** component.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-NavDestinationState-ON_BACKPRESS = 100--><!--Device-NavDestinationState-ON_BACKPRESS = 100-End-->
+<!--Device-NavDestinationState-ON_WILL_HIDE = 5--><!--Device-NavDestinationState-ON_WILL_HIDE = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ON_WILL_SHOW
+
+```TypeScript
+ON_WILL_SHOW = 4
+```
+
+The **NavDestination** component is about to be displayed.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NavDestinationState-ON_WILL_SHOW = 4--><!--Device-NavDestinationState-ON_WILL_SHOW = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

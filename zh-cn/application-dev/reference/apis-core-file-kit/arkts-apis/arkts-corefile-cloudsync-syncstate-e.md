@@ -16,45 +16,17 @@ enum SyncState
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## UPLOADING
+## COMPLETED
 
 ```TypeScript
-UPLOADING = 0
+COMPLETED = 4
 ```
 
-上行同步中。
+同步成功。
 
 **起始版本：** 12
 
-<!--Device-SyncState-UPLOADING = 0--><!--Device-SyncState-UPLOADING = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## UPLOAD_FAILED
-
-```TypeScript
-UPLOAD_FAILED = 1
-```
-
-上行同步失败。
-
-**起始版本：** 12
-
-<!--Device-SyncState-UPLOAD_FAILED = 1--><!--Device-SyncState-UPLOAD_FAILED = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## DOWNLOADING
-
-```TypeScript
-DOWNLOADING = 2
-```
-
-下行同步中。
-
-**起始版本：** 12
-
-<!--Device-SyncState-DOWNLOADING = 2--><!--Device-SyncState-DOWNLOADING = 2-End-->
+<!--Device-SyncState-COMPLETED = 4--><!--Device-SyncState-COMPLETED = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -72,17 +44,17 @@ DOWNLOAD_FAILED = 3
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## COMPLETED
+## DOWNLOADING
 
 ```TypeScript
-COMPLETED = 4
+DOWNLOADING = 2
 ```
 
-同步成功。
+下行同步中。
 
 **起始版本：** 12
 
-<!--Device-SyncState-COMPLETED = 4--><!--Device-SyncState-COMPLETED = 4-End-->
+<!--Device-SyncState-DOWNLOADING = 2--><!--Device-SyncState-DOWNLOADING = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -97,5 +69,33 @@ STOPPED = 5
 **起始版本：** 12
 
 <!--Device-SyncState-STOPPED = 5--><!--Device-SyncState-STOPPED = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## UPLOAD_FAILED
+
+```TypeScript
+UPLOAD_FAILED = 1
+```
+
+上行同步失败。
+
+**起始版本：** 12
+
+<!--Device-SyncState-UPLOAD_FAILED = 1--><!--Device-SyncState-UPLOAD_FAILED = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## UPLOADING
+
+```TypeScript
+UPLOADING = 0
+```
+
+上行同步中。
+
+**起始版本：** 12
+
+<!--Device-SyncState-UPLOADING = 0--><!--Device-SyncState-UPLOADING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

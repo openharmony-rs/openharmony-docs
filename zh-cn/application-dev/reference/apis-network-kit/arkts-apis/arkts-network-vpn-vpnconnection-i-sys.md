@@ -20,6 +20,8 @@ VPN 连接对象。在调用 VpnConnection 的方法前，需要先通过[vpn.cr
 import { vpn } from '@kit.NetworkKit';
 ```
 
+<a id="destroy1"></a>
+
 ## destroy
 
 ```TypeScript
@@ -54,6 +56,7 @@ destroy(callback: AsyncCallback<void>): void
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 > 说明：
@@ -79,7 +82,9 @@ struct Index {
 }
 ```
 
-<a id="destroy-1"></a>
+<!--DelEnd-->
+
+<a id="destroy2"></a>
 
 ## destroy
 
@@ -115,6 +120,7 @@ destroy(): Promise<void>
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 > 说明：
@@ -141,6 +147,10 @@ struct Index {
   build() { }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="protect1"></a>
 
 ## protect
 
@@ -179,6 +189,7 @@ protect(socketFd: number, callback: AsyncCallback<void>): void
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2203004](../errorcode-net-vpn.md#2203004-无效描述符) | Invalid socket file descriptor. |
 
+<!--Del-->
 **示例**
 
 > 说明：
@@ -222,7 +233,9 @@ struct Index {
 }
 ```
 
-<a id="protect-1"></a>
+<!--DelEnd-->
+
+<a id="protect2"></a>
 
 ## protect
 
@@ -266,6 +279,7 @@ protect(socketFd: number): Promise<void>
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2203004](../errorcode-net-vpn.md#2203004-无效描述符) | Invalid socket file descriptor. |
 
+<!--Del-->
 **示例**
 
 > 说明：
@@ -311,6 +325,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="setup1"></a>
+
 ## setUp
 
 ```TypeScript
@@ -349,6 +367,7 @@ setUp(config: VpnConfig, callback: AsyncCallback<number>): void
 | [2203001](../errorcode-net-vpn.md#2203001-vpn创建失败) | VPN creation denied. Check the user type. |
 | [2203002](../errorcode-net-vpn.md#2203002-vpn已存在) | VPN already exists. |
 
+<!--Del-->
 **示例**
 
 > 说明：
@@ -389,7 +408,9 @@ struct Index {
 }
 ```
 
-<a id="setup-1"></a>
+<!--DelEnd-->
+
+<a id="setup2"></a>
 
 ## setUp
 
@@ -434,6 +455,7 @@ setUp(config: VpnConfig): Promise<number>
 | [2203001](../errorcode-net-vpn.md#2203001-vpn创建失败) | VPN creation denied. Check the user type. |
 | [2203002](../errorcode-net-vpn.md#2203002-vpn已存在) | VPN already exists. |
 
+<!--Del-->
 **示例**
 
 > 说明：
@@ -471,3 +493,5 @@ struct Index {
   build() { }
 }
 ```
+
+<!--DelEnd-->

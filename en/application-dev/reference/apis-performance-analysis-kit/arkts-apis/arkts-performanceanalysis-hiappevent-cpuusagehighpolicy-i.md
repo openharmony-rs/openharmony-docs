@@ -37,7 +37,7 @@ High CPU usage threshold of the application background, in percentage. The value
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-CpuUsageHighPolicy-backgroundLoadThreshold?: int--><!--Device-CpuUsageHighPolicy-backgroundLoadThreshold?: int-End-->
 
@@ -57,7 +57,7 @@ High CPU usage threshold of the application foreground, in percentage. The value
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-CpuUsageHighPolicy-foregroundLoadThreshold?: int--><!--Device-CpuUsageHighPolicy-foregroundLoadThreshold?: int-End-->
 
@@ -82,14 +82,15 @@ If the value is not within the threshold range, the default value **1** is used.
 **NOTE:** 
 
 1. The value **-1** indicates that log collection times are not limited.
-2. The value **0** indicates that logs are not collected.
-3. A value greater than **0** indicates the maximum number of daily collection times.
+
+  2. The value **0** indicates that logs are not collected.
+  3. A value greater than **0** indicates the maximum number of daily collection times.
 
 **Type:** number
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-CpuUsageHighPolicy-perfLogCaptureCount?: int--><!--Device-CpuUsageHighPolicy-perfLogCaptureCount?: int-End-->
 
@@ -109,7 +110,7 @@ If the value is not within the threshold range, the default value **60** is used
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-CpuUsageHighPolicy-threadLoadInterval?: int--><!--Device-CpuUsageHighPolicy-threadLoadInterval?: int-End-->
 
@@ -127,7 +128,7 @@ High CPU usage threshold of the application thread, in percentage. The value ran
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-CpuUsageHighPolicy-threadLoadThreshold?: int--><!--Device-CpuUsageHighPolicy-threadLoadThreshold?: int-End-->
 

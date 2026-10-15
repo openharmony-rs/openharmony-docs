@@ -12,34 +12,6 @@ Enumerates radio access technologies.
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## RADIO_TECHNOLOGY_UNKNOWN
-
-```TypeScript
-RADIO_TECHNOLOGY_UNKNOWN = 0
-```
-
-Unknown RAT
-
-**Since:** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-## RADIO_TECHNOLOGY_GSM
-
-```TypeScript
-RADIO_TECHNOLOGY_GSM = 1
-```
-
-Global System for Mobile Communication (GSM)
-
-**Since:** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
 ## RADIO_TECHNOLOGY_1XRTT
 
 ```TypeScript
@@ -54,17 +26,45 @@ Single-Carrier Radio Transmission Technology (1XRTT)
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## RADIO_TECHNOLOGY_WCDMA
+## RADIO_TECHNOLOGY_EHRPD
 
 ```TypeScript
-RADIO_TECHNOLOGY_WCDMA = 3
+RADIO_TECHNOLOGY_EHRPD = 8
 ```
 
-Wideband Code Division Multiple Access (WCDMA)
+Evolved High Rate Package Data (EHRPD)
 
 **Since:** 6
 
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3-End-->
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_EVDO
+
+```TypeScript
+RADIO_TECHNOLOGY_EVDO = 7
+```
+
+Evolution-Data Optimized (EVDO)
+
+**Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_GSM
+
+```TypeScript
+RADIO_TECHNOLOGY_GSM = 1
+```
+
+Global System for Mobile Communication (GSM)
+
+**Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -96,45 +96,17 @@ Evolved High Speed Packet Access (HSPA+)
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## RADIO_TECHNOLOGY_TD_SCDMA
+## RADIO_TECHNOLOGY_IWLAN
 
 ```TypeScript
-RADIO_TECHNOLOGY_TD_SCDMA = 6
+RADIO_TECHNOLOGY_IWLAN = 11
 ```
 
-TD-SCDMA.
+Industrial Wireless LAN (IWLAN)
 
 **Since:** 6
 
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-## RADIO_TECHNOLOGY_EVDO
-
-```TypeScript
-RADIO_TECHNOLOGY_EVDO = 7
-```
-
-Evolution-Data Optimized (EVDO)
-
-**Since:** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-## RADIO_TECHNOLOGY_EHRPD
-
-```TypeScript
-RADIO_TECHNOLOGY_EHRPD = 8
-```
-
-Evolved High Rate Package Data (EHRPD)
-
-**Since:** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8-End-->
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -166,20 +138,6 @@ Long Term Evolution_Carrier Aggregation (LTE_CA)
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## RADIO_TECHNOLOGY_IWLAN
-
-```TypeScript
-RADIO_TECHNOLOGY_IWLAN = 11
-```
-
-Industrial Wireless LAN (IWLAN)
-
-**Since:** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
 ## RADIO_TECHNOLOGY_NR
 
 ```TypeScript
@@ -191,5 +149,47 @@ New Radio (NR)
 **Since:** 6
 
 <!--Device-RadioTechnology-RADIO_TECHNOLOGY_NR = 12--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_NR = 12-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_TD_SCDMA
+
+```TypeScript
+RADIO_TECHNOLOGY_TD_SCDMA = 6
+```
+
+TD-SCDMA.
+
+**Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_UNKNOWN
+
+```TypeScript
+RADIO_TECHNOLOGY_UNKNOWN = 0
+```
+
+Unknown RAT
+
+**Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_WCDMA
+
+```TypeScript
+RADIO_TECHNOLOGY_WCDMA = 3
+```
+
+Wideband Code Division Multiple Access (WCDMA)
+
+**Since:** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

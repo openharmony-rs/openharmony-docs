@@ -30,7 +30,7 @@ Display mode of the device. The value is **0** for non-foldable devices.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DisplayPhysicalResolution-foldDisplayMode: FoldDisplayMode--><!--Device-DisplayPhysicalResolution-foldDisplayMode: FoldDisplayMode-End-->
 
@@ -48,7 +48,7 @@ Height of the device, in px. The value is an integer greater than 0.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DisplayPhysicalResolution-physicalHeight: long--><!--Device-DisplayPhysicalResolution-physicalHeight: long-End-->
 
@@ -66,7 +66,7 @@ Width of the device, in px. The value is an integer greater than 0.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DisplayPhysicalResolution-physicalWidth: long--><!--Device-DisplayPhysicalResolution-physicalWidth: long-End-->
 

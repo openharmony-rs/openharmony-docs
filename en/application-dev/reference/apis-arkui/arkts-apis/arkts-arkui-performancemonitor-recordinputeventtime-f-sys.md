@@ -38,6 +38,7 @@ Records the trigger event type and time before the start of the animation scene.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ let time = systemDateTime.getTime(false);
 // Update the user trigger event type and time.
 performanceMonitor.recordInputEventTime(performanceMonitor.ActionType.LAST_UP, performanceMonitor.SourceType.PERF_MOUSE_EVENT, time);
 ```
+
+<!--DelEnd-->

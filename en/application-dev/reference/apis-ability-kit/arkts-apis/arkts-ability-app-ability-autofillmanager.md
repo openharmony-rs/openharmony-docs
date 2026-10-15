@@ -6,8 +6,6 @@ Unlike the system's auto-save feature that triggers during page transitions, thi
 
 **Since:** 11
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace autoFillManager--><!--Device-unnamed-declare namespace autoFillManager-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
@@ -24,9 +22,9 @@ import { autoFillManager } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [requestAutoFill](arkts-ability-autofillmanager-requestautofill-f.md) | Trigger an auto fill request. |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave) | Requests to automatically save the widget data. This API uses an asynchronous callback to return the result. If the current widget does not support widget switching, you can call this API to save historical widget input data. The callback is triggered when the auto-save request is complete. |
-| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave-1) | Trigger an auto save request. |
+| [requestAutoFill](arkts-ability-autofillmanager-requestautofill-f.md#requestautofill) | Trigger an auto fill request. |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave1) | Requests to automatically save the widget data. This API uses an asynchronous callback to return the result. If the current widget does not support widget switching, you can call this API to save historical widget input data. The callback is triggered when the auto-save request is complete. |
+| [requestAutoSave](arkts-ability-autofillmanager-requestautosave-f.md#requestautosave2) | Trigger an auto save request. |
 
 ### Interfaces
 

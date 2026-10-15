@@ -12,22 +12,6 @@ Enumerates switch names.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## NEARLINK
-
-```TypeScript
-NEARLINK = 0
-```
-
-NearLink.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SwitchKey-NEARLINK = 0--><!--Device-SwitchKey-NEARLINK = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## BLUETOOTH
 
 ```TypeScript
@@ -44,19 +28,19 @@ Bluetooth.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## WIFI
+## NEARLINK
 
 ```TypeScript
-WIFI = 2
+NEARLINK = 0
 ```
 
-Wi-Fi.
+NearLink.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SwitchKey-WIFI = 2--><!--Device-SwitchKey-WIFI = 2-End-->
+<!--Device-SwitchKey-NEARLINK = 0--><!--Device-SwitchKey-NEARLINK = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -73,5 +57,21 @@ NFC.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-SwitchKey-NFC = 3--><!--Device-SwitchKey-NFC = 3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## WIFI
+
+```TypeScript
+WIFI = 2
+```
+
+Wi-Fi.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SwitchKey-WIFI = 2--><!--Device-SwitchKey-WIFI = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

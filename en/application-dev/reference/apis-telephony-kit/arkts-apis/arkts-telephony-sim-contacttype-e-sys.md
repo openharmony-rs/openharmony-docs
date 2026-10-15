@@ -14,22 +14,6 @@ Indicates the contact types.
 
 **System API:** This is a system API.
 
-## GENERAL_CONTACT
-
-```TypeScript
-GENERAL_CONTACT = 1
-```
-
-Indicates the common contact number.
-
-**Since:** 8
-
-<!--Device-ContactType-GENERAL_CONTACT = 1--><!--Device-ContactType-GENERAL_CONTACT = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-**System API:** This is a system API.
-
 ## FIXED_DIALING
 
 ```TypeScript
@@ -41,6 +25,22 @@ Indicates the fixed dialing number.
 **Since:** 8
 
 <!--Device-ContactType-FIXED_DIALING = 2--><!--Device-ContactType-FIXED_DIALING = 2-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+**System API:** This is a system API.
+
+## GENERAL_CONTACT
+
+```TypeScript
+GENERAL_CONTACT = 1
+```
+
+Indicates the common contact number.
+
+**Since:** 8
+
+<!--Device-ContactType-GENERAL_CONTACT = 1--><!--Device-ContactType-GENERAL_CONTACT = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

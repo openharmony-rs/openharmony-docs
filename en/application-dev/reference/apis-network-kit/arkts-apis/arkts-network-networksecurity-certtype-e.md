@@ -12,20 +12,6 @@ Enumerates certificate types.
 
 **System capability:** SystemCapability.Communication.NetStack
 
-## CERT_TYPE_PEM
-
-```TypeScript
-CERT_TYPE_PEM = 0
-```
-
-PEM certificate
-
-**Since:** 11
-
-<!--Device-CertType-CERT_TYPE_PEM = 0--><!--Device-CertType-CERT_TYPE_PEM = 0-End-->
-
-**System capability:** SystemCapability.Communication.NetStack
-
 ## CERT_TYPE_DER
 
 ```TypeScript
@@ -37,5 +23,19 @@ DER certificate.
 **Since:** 11
 
 <!--Device-CertType-CERT_TYPE_DER = 1--><!--Device-CertType-CERT_TYPE_DER = 1-End-->
+
+**System capability:** SystemCapability.Communication.NetStack
+
+## CERT_TYPE_PEM
+
+```TypeScript
+CERT_TYPE_PEM = 0
+```
+
+PEM certificate
+
+**Since:** 11
+
+<!--Device-CertType-CERT_TYPE_PEM = 0--><!--Device-CertType-CERT_TYPE_PEM = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

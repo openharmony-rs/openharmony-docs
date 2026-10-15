@@ -16,7 +16,7 @@ Checks whether the system supports the specified font file. You can use this API
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-text-function isFontSupported(fontURL: string | Resource): boolean--><!--Device-text-function isFontSupported(fontURL: string | Resource): boolean-End-->
 
@@ -26,7 +26,7 @@ Checks whether the system supports the specified font file. You can use this API
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| fontURL | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | Yes | Path of the font file to be checked. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the**resources/rawfile** directory in the project, which includes the font file name). |
+| fontURL | string &#124; [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | Yes | Path of the font file to be checked. The path must be in the format of "**file://** + Absolute path of the font file" or **$rawfile** (a file path relative to the**resources/rawfile** directory in the project, which includes the font file name). |
 
 **Return value:**
 

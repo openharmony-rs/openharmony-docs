@@ -4,7 +4,7 @@
 export interface ApplicationInfo
 ```
 
-应用程序信息。
+应用程序信息，可以通过[bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md)获取自身的应用程序信息，其中参数[bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md)至少包含GET_BUNDLE_INFO_WITH_APPLICATION。
 
 **起始版本：** 9
 
@@ -18,7 +18,7 @@ export interface ApplicationInfo
 readonly applicationReservedFlag?: bundleManager.ApplicationReservedFlag
 ```
 
-标识应用的保留标志。
+应用预留标志。
 
 **类型：** [bundleManager.ApplicationReservedFlag](arkts-ability-bundlemanager-applicationreservedflag-e-sys.md)
 

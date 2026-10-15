@@ -12,19 +12,19 @@ Enumerates the results of the dialog box for redirection to the settings page.
 
 **System capability:** SystemCapability.Security.AccessToken
 
-## REJECTED
+## GRANTED
 
 ```TypeScript
-REJECTED = -1
+GRANTED = 1
 ```
 
-The user chooses not to go to the settings.
+The permission has been granted and no dialog box is displayed.
 
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SelectedResult-REJECTED = -1--><!--Device-SelectedResult-REJECTED = -1-End-->
+<!--Device-SelectedResult-GRANTED = 1--><!--Device-SelectedResult-GRANTED = 1-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -44,18 +44,18 @@ The user chooses to go to the settings.
 
 **System capability:** SystemCapability.Security.AccessToken
 
-## GRANTED
+## REJECTED
 
 ```TypeScript
-GRANTED = 1
+REJECTED = -1
 ```
 
-The permission has been granted and no dialog box is displayed.
+The user chooses not to go to the settings.
 
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SelectedResult-GRANTED = 1--><!--Device-SelectedResult-GRANTED = 1-End-->
+<!--Device-SelectedResult-REJECTED = -1--><!--Device-SelectedResult-REJECTED = -1-End-->
 
 **System capability:** SystemCapability.Security.AccessToken

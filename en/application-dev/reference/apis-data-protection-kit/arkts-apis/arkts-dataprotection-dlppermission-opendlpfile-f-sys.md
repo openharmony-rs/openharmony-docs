@@ -6,6 +6,8 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="opendlpfile1"></a>
+
 ## openDLPFile
 
 ```TypeScript
@@ -32,7 +34,7 @@ When a DLP management application or an authorized application needs to access a
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
+| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | appId | string | Yes | ID of the caller. The value contains 8 to 1024 bytes. If the value is out of range, error code 401 is thrown. |
 
 **Return value:**
@@ -47,7 +49,7 @@ When a DLP management application or an authorized application needs to access a
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -61,6 +63,7 @@ When a DLP management application or an authorized application needs to access a
 | [19100019](../errorcode-dlp.md#19100019-dlp-file-has-expired) | The DLP file has expired. |
 | [19100020](../errorcode-dlp.md#19100020-network-disconnected) | No network connection. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -92,8 +95,10 @@ async function ExampleFunction() {
 ExampleFunction();
 ```
 
+<!--DelEnd-->
 
-<a id="opendlpfile-1"></a>
+
+<a id="opendlpfile2"></a>
 
 ## openDLPFile
 
@@ -117,7 +122,7 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2&lt;sup&gt;31&lt;/sup&gt;-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2&lt;sup&gt;31&lt;/sup&gt;-1, the excess part will be truncated. |
+| ciphertextFd | number | Yes | FD of the encrypted file. The value range is [0, 2<[sup](../../apis-default/arkts-apis/arkts-lib-es2015-core-string-i.md)>31</sup>-1]. If the value of **fd** is less than 0, an error log is generated, and the function stops running. If the value of **fd** is greater than 2<sup>31</sup>-1, the excess part will be truncated. |
 | appId | string | Yes | ID of the caller. The value contains 8 to 1024 bytes. If the value is out of range, error code 401 is thrown. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DLPFile](arkts-dataprotection-dlppermission-dlpfile-i-sys.md)&gt; | Yes | Callback used to receive the result of opening a DLP file. The callback parameters include **err** and **res**. **err** is **undefined** when the operation is successful; otherwise, **err** is an error object. **res** is a **DLPFile** object that represents the DLP file opened. |
 
@@ -127,7 +132,7 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100002](../errorcode-dlp.md#19100002-encryption-and-decryption-error) | Credential service busy due to too many tasks or duplicate tasks. |
@@ -141,6 +146,7 @@ Opens a DLP file. This API uses an asynchronous callback to return the result. A
 | [19100019](../errorcode-dlp.md#19100019-dlp-file-has-expired) | The DLP file has expired. |
 | [19100020](../errorcode-dlp.md#19100020-network-disconnected) | No network connection. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -171,3 +177,5 @@ dlpPermission.openDLPFile(file, appId, async (err, res) => { // Open a DLP file.
   }
 });
 ```
+
+<!--DelEnd-->

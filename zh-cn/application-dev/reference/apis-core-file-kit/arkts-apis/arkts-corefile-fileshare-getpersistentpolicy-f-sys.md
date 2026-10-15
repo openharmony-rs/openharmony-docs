@@ -49,6 +49,7 @@ function getPersistentPolicy(tokenID: number): Promise<Array<PolicyInfo>>
 | 13900011 | Out of memory |
 | 13900020 | Invalid tokenID |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,3 +71,5 @@ async function getPersistentPolicyExample() {
   }
 }
 ```
+
+<!--DelEnd-->

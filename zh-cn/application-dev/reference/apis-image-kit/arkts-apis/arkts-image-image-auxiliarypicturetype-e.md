@@ -16,24 +16,6 @@ enum AuxiliaryPictureType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## GAINMAP
-
-```TypeScript
-GAINMAP = 1
-```
-
-增益图（Gain Map）。
-
-用于更准确地生成HDR图像。
-
-HDR合成通常需要同时使用SDR主图、增益图和HDR元数据（[getMetadata](arkts-image-image-pixelmap-i.md#getmetadata)）共同计算亮度映射关系。
-
-**起始版本：** 13
-
-<!--Device-AuxiliaryPictureType-GAINMAP = 1--><!--Device-AuxiliaryPictureType-GAINMAP = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## DEPTH_MAP
 
 ```TypeScript
@@ -49,42 +31,6 @@ DEPTH_MAP = 2
 **起始版本：** 13
 
 <!--Device-AuxiliaryPictureType-DEPTH_MAP = 2--><!--Device-AuxiliaryPictureType-DEPTH_MAP = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## UNREFOCUS_MAP
-
-```TypeScript
-UNREFOCUS_MAP = 3
-```
-
-未重对焦原图（UnReFocus Map）。
-
-用于保存拍摄时未重对焦的图片像素内容。
-
-可用于人像虚化等后期处理，便于用户自由选择焦点区域。
-
-**起始版本：** 13
-
-<!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3--><!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## LINEAR_MAP
-
-```TypeScript
-LINEAR_MAP = 4
-```
-
-线性图（Linear Map）。
-
-以线性方式记录光照、颜色或其他视觉要素，为图像处理提供补充信息。
-
-可用于视觉效果增强与色彩后期处理。
-
-**起始版本：** 13
-
-<!--Device-AuxiliaryPictureType-LINEAR_MAP = 4--><!--Device-AuxiliaryPictureType-LINEAR_MAP = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -106,6 +52,24 @@ FRAGMENT_MAP = 5
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## GAINMAP
+
+```TypeScript
+GAINMAP = 1
+```
+
+增益图（Gain Map）。
+
+用于更准确地生成HDR图像。
+
+HDR合成通常需要同时使用SDR主图、增益图和HDR元数据（[getMetadata](arkts-image-image-pixelmap-i.md#getmetadata)）共同计算亮度映射关系。
+
+**起始版本：** 13
+
+<!--Device-AuxiliaryPictureType-GAINMAP = 1--><!--Device-AuxiliaryPictureType-GAINMAP = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## LHDR_GAINMAP
 
 ```TypeScript
@@ -119,5 +83,41 @@ LHDR_GAINMAP = 10
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AuxiliaryPictureType-LHDR_GAINMAP = 10--><!--Device-AuxiliaryPictureType-LHDR_GAINMAP = 10-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## LINEAR_MAP
+
+```TypeScript
+LINEAR_MAP = 4
+```
+
+线性图（Linear Map）。
+
+以线性方式记录光照、颜色或其他视觉要素，为图像处理提供补充信息。
+
+可用于视觉效果增强与色彩后期处理。
+
+**起始版本：** 13
+
+<!--Device-AuxiliaryPictureType-LINEAR_MAP = 4--><!--Device-AuxiliaryPictureType-LINEAR_MAP = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## UNREFOCUS_MAP
+
+```TypeScript
+UNREFOCUS_MAP = 3
+```
+
+未重对焦原图（UnReFocus Map）。
+
+用于保存拍摄时未重对焦的图片像素内容。
+
+可用于人像虚化等后期处理，便于用户自由选择焦点区域。
+
+**起始版本：** 13
+
+<!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3--><!--Device-AuxiliaryPictureType-UNREFOCUS_MAP = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

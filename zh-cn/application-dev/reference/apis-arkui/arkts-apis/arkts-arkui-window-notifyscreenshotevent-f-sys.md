@@ -42,6 +42,7 @@ function notifyScreenshotEvent(eventType: ScreenshotEventType): Promise<void>
 | [1300003](../errorcode-window.md#1300003-系统服务工作异常) | This window manager service works abnormally. |
 | [1300016](../errorcode-window.md#1300016-参数校验错误) | Parameter error. Possible cause: 1. Invalid parameter range. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,3 +60,5 @@ try {
   console.error(`Failed to notify screenshot event type. Cause code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->

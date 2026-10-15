@@ -12,38 +12,6 @@ enum CalendarType
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
-## LOCAL
-
-```TypeScript
-LOCAL = 'local'
-```
-
-本地账户。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-CalendarType-LOCAL = 'local'--><!--Device-CalendarType-LOCAL = 'local'-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
-## EMAIL
-
-```TypeScript
-EMAIL = 'email'
-```
-
-邮箱账户。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-CalendarType-EMAIL = 'email'--><!--Device-CalendarType-EMAIL = 'email'-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
 ## BIRTHDAY
 
 ```TypeScript
@@ -73,6 +41,38 @@ CALDAV = 'caldav'
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-CalendarType-CALDAV = 'caldav'--><!--Device-CalendarType-CALDAV = 'caldav'-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## EMAIL
+
+```TypeScript
+EMAIL = 'email'
+```
+
+邮箱账户。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarType-EMAIL = 'email'--><!--Device-CalendarType-EMAIL = 'email'-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## LOCAL
+
+```TypeScript
+LOCAL = 'local'
+```
+
+本地账户。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarType-LOCAL = 'local'--><!--Device-CalendarType-LOCAL = 'local'-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 

@@ -12,6 +12,20 @@ enum AudioLoopbackEqualizerPreset
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
+## BRIGHT
+
+```TypeScript
+BRIGHT = 3
+```
+
+使人声更明亮。
+
+**起始版本：** 21
+
+<!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3--><!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
 ## FLAT
 
 ```TypeScript
@@ -37,19 +51,5 @@ FULL = 2
 **起始版本：** 21
 
 <!--Device-AudioLoopbackEqualizerPreset-FULL = 2--><!--Device-AudioLoopbackEqualizerPreset-FULL = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-## BRIGHT
-
-```TypeScript
-BRIGHT = 3
-```
-
-使人声更明亮。
-
-**起始版本：** 21
-
-<!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3--><!--Device-AudioLoopbackEqualizerPreset-BRIGHT = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer

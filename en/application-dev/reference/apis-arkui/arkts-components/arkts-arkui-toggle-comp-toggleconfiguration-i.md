@@ -6,7 +6,7 @@ declare interface ToggleConfiguration extends CommonConfiguration<ToggleConfigur
 
 You need a custom class to implement the **ContentModifier** API. This API inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** ToggleConfiguration extends CommonConfiguration<ToggleConfiguration>
+**Inheritance/Implementation:** ToggleConfiguration extends CommonConfiguration&lt;ToggleConfiguration&gt;
 
 **Since:** 12
 

@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="updateprinterstate1"></a>
+
 ## updatePrinterState
 
 ```TypeScript
@@ -40,6 +42,7 @@ Updates the printer state. This API uses an asynchronous callback to return the 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,8 +60,10 @@ print.updatePrinterState(printerId, state, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="updateprinterstate-1"></a>
+
+<a id="updateprinterstate2"></a>
 
 ## updatePrinterState
 
@@ -99,6 +104,7 @@ Updates the printer state. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,3 +119,5 @@ print.updatePrinterState(printerId, state).then(() => {
     console.error(`Failed to update printer state. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

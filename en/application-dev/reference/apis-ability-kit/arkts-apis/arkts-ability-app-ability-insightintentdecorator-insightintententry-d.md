@@ -8,12 +8,12 @@ Decorates a class that inherits from [InsightIntentEntryExecutor](arkts-ability-
 
 > **NOTE:** 
 > 
-> If this decorator is used to access a standard intent, all mandatory parameters defined in the standard intent
-> JSON schema must be implemented and their parameter types must match.
-> If this decorator is used to access a custom intent, all mandatory parameters defined in parameters must be
-> implemented and their parameter types must match.
-> Classes decorated by this decorator must be exported using export default. Class properties are limited to basic
-> types or intent entities, and the return value must be intent entities.
+> If this decorator is used to integrate a standard intent, all mandatory parameters defined in the standard intent
+> JSON Schema must be implemented and their types must match.
+> If a custom intent is created, all mandatory parameters defined in the parameters field must be implemented and
+> their types must match.
+> The decorated class must be exported using export default. The attributes of the class support only basic types
+> or intent entities, and the return value supports only intent entities.
 
 **Since:** 20
 

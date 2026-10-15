@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="equal1"></a>
+
 ## equal
 
 ```TypeScript
@@ -90,7 +92,7 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="equal-1"></a>
+<a id="equal2"></a>
 
 ## equal
 

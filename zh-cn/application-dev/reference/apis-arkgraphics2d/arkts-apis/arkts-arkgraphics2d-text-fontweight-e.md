@@ -22,7 +22,7 @@ W100 = 0
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W100 = 0--><!--Device-FontWeight-W100 = 0-End-->
 
@@ -38,7 +38,7 @@ W200 = 1
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W200 = 1--><!--Device-FontWeight-W200 = 1-End-->
 
@@ -54,7 +54,7 @@ W300 = 2
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W300 = 2--><!--Device-FontWeight-W300 = 2-End-->
 
@@ -70,7 +70,7 @@ W400 = 3
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W400 = 3--><!--Device-FontWeight-W400 = 3-End-->
 
@@ -86,7 +86,7 @@ W500 = 4
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W500 = 4--><!--Device-FontWeight-W500 = 4-End-->
 
@@ -102,7 +102,7 @@ W600 = 5
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W600 = 5--><!--Device-FontWeight-W600 = 5-End-->
 
@@ -118,7 +118,7 @@ W700 = 6
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W700 = 6--><!--Device-FontWeight-W700 = 6-End-->
 
@@ -134,7 +134,7 @@ W800 = 7
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W800 = 7--><!--Device-FontWeight-W800 = 7-End-->
 
@@ -150,7 +150,7 @@ W900 = 8
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontWeight-W900 = 8--><!--Device-FontWeight-W900 = 8-End-->
 

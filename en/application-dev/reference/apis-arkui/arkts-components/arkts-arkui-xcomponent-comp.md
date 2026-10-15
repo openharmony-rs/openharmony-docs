@@ -1,36 +1,12 @@
 # XComponent
 
-**XComponent** provides a [surface](../../../ui/napi-xcomponent-guidelines.md#overview) for graphics rendering and media data input into your view. You can customize the position and size of the surface as needed. For details, see [Native XComponent](../../../ui/napi-xcomponent-guidelines.md).
+Provides a surface for graphics rendering and media data writing. XComponent embeds the surface into the view and supports customizing the position and size of the surface. It also supports capabilities such as AI image analysis, HDR video brightness adjustment, screen capture and recording privacy protection, and canvas self-rendering. It is applicable to scenarios that require high-performance self-rendering and media content display, such as video playback, camera preview, game rendering, and AI image recognition. For details, see [Custom Rendering (XComponent)](../../../ui/napi-xcomponent-guidelines.md).
 
 > **NOTE:** 
 
 ## Child Components
 
 Not supported
-
-## XComponent
-
-```TypeScript
-XComponent(value: { id: string; type: string; libraryname?: string; controller?: XComponentController })
-```
-
-Constructor parameters
-
-**Since:** 8
-
-**Deprecated since:** 12
-
-**Substitutes:** (value: { id: string; type: XComponentType; libraryname?: string; controller?: XComponentController })
-
-<!--Device-XComponentInterface-(value: { id: string; type: string; libraryname?: string; controller?: XComponentController }): XComponentAttribute--><!--Device-XComponentInterface-(value: { id: string; type: string; libraryname?: string; controller?: XComponentController }): XComponentAttribute-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Parameters:**
-
-| Name | Type | Mandatory | Description |
-| --- | --- | --- | --- |
-| value | { id: string; type: string; libraryname?: string; controller?: XComponentController } | Yes | Indicates the options of the xcomponent. |
 
 ## XComponent
 
@@ -80,7 +56,7 @@ Creates an **XComponent** component, allowing you to obtain the **SurfaceId** va
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [XComponentOptions](arkts-arkui-xcomponent-comp-xcomponentoptions-i.md) | Yes | Options of the **XComponent**. |
+| options | [XComponentOptions](arkts-arkui-xcomponent-comp-xcomponentoptions-i.md) | Yes | Configuration options of XComponent, used to obtain the surface ID, register surface lifecycle callbacks and component event callbacks, and configure AI analysis on the ArkTS side. |
 
 ## XComponent
 
@@ -104,7 +80,31 @@ Obtains an **XComponent** node instance on the native side, and registers the li
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| params | [NativeXComponentParameters](arkts-arkui-xcomponent-comp-nativexcomponentparameters-i.md) | Yes | Options of the **XComponent**. |
+| params | [NativeXComponentParameters](arkts-arkui-xcomponent-comp-nativexcomponentparameters-i.md) | Yes | Configuration parameters of the XComponent, used to obtain the XComponent node instance on the native side and register the Surface lifecycle callback and component event callback. |
+
+## XComponent
+
+```TypeScript
+XComponent(value: { id: string; type: string; libraryname?: string; controller?: XComponentController })
+```
+
+Constructor parameters
+
+**Since:** 8
+
+**Deprecated since:** 12
+
+**Substitutes:** (value: { id: string; type: XComponentType; libraryname?: string; controller?: XComponentController })
+
+<!--Device-XComponentInterface-(value: { id: string; type: string; libraryname?: string; controller?: XComponentController }): XComponentAttribute--><!--Device-XComponentInterface-(value: { id: string; type: string; libraryname?: string; controller?: XComponentController }): XComponentAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | { id: string; type: string; libraryname?: string; controller?: XComponentController } | Yes | Indicates the options of the xcomponent. |
 
 ## Summary
 
@@ -112,8 +112,8 @@ Obtains an **XComponent** node instance on the native side, and registers the li
 
 | Name | Description |
 | --- | --- |
-| [NativeXComponentParameters](arkts-arkui-xcomponent-comp-nativexcomponentparameters-i.md) | Defines the options of the **XComponent**. An XComponent created with such constructor parameters can pass its corresponding [FrameNode](../arkts-apis/arkts-arkui-typenode-n.md) object to the Native side, enabling the use of NDK APIs for surface lifecycle–related settings and [component event listening](../../../ui/ndk-listen-to-component-events.md). |
-| [SurfaceConfig](arkts-arkui-xcomponent-comp-surfaceconfig-i.md) | Describes whether the surface held by the **XComponent** is treated as opaque during rendering. |
+| [NativeXComponentParameters](arkts-arkui-xcomponent-comp-nativexcomponentparameters-i.md) | Defines the specific configuration parameters used by XComponent on the native side. An XComponent created with this constructor can pass its corresponding [FrameNode](../arkts-apis/arkts-arkui-typenode-n.md) object to the native side, where NDK APIs can be used to configure the surface lifecycle and [add event listeners] (../../../ui/ndk-listen-to-component-events.md). |
+| [SurfaceConfig](arkts-arkui-xcomponent-comp-surfaceconfig-i.md) | Describes whether the surface held by the XComponent component is opaque during rendering. |
 | [SurfaceRect](arkts-arkui-xcomponent-comp-surfacerect-i.md) | Describes the rectangle of the surface held by the **XComponent**. |
 | [SurfaceRotationOptions](arkts-arkui-xcomponent-comp-surfacerotationoptions-i.md) | Defines whether the orientation of the surface held by the current **XComponent** is locked when the screen rotates. |
 | [XComponentOptions](arkts-arkui-xcomponent-comp-xcomponentoptions-i.md) | Defines the options of the **XComponent**. |
@@ -122,30 +122,30 @@ Obtains an **XComponent** node instance on the native side, and registers the li
 
 | Name | Description |
 | --- | --- |
-| [OnNativeLoadCallback](arkts-arkui-xcomponent-comp-onnativeloadcallback-t.md) | Triggered after the surface held by **XComponent** is created. |
+| [OnNativeLoadCallback](arkts-arkui-xcomponent-comp-onnativeloadcallback-t.md) | Callback event triggered after the native loading of the **XComponent** is complete, used to pass the context of the **XComponent** instance object to the developer. Difference from [onSurfaceCreated](arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#onsurfacecreated): the **onLoad** callback parameter is the **context** object, which applies to the scenario where the **libraryname** parameter is set; the **onSurfaceCreated** callback parameter is **surfaceId**, which applies to the scenario where the **libraryname** parameter is not set. **onLoad** is triggered earlier than **onSurfaceCreated**. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [HdrType](arkts-arkui-xcomponent-comp-hdrtype-e.md) | Sets the HDR type of the XComponent. |
+| [HdrType](arkts-arkui-xcomponent-comp-hdrtype-e.md) | Enumerates the high dynamic range rendering types of HDR content. |
 
 ## Examples
 
 ### Example 1: Enabling AI Image Analyzer
 
-This example shows how to use the enableAnalyzer attribute to enable image AI analysis. You can use XComponentController to start or stop image AI analysis.
+This example shows how to use the enableAnalyzer attribute to enable the AI image analyzer. You can use XComponentController to start or stop the AI image analyzer.
 
 > NOTE
 > 
-> For details about the specific implementation of the drawing logic in this example (the implementation of functions related to nativeRender), see [ArkTS XComponent Sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent).
+> For details about how to implement the rendering logic (functions related to nativeRender), see [ArkTS XComponent Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent).
 
 
 
 ```TypeScript
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
-import nativeRender from 'libnativerender.so'; // The .so file implemented by the developer. For details, see the description above.
+import nativeRender from 'libnativerender.so'; // Custom own .so file implementation (see the preceding note for details).
 
 class CustomXComponentController extends XComponentController {
   onSurfaceCreated(surfaceId: string): void {
@@ -264,13 +264,13 @@ struct XComponentExample {
 }
 ```
 
-### Example 2 (Locking During Surface Rotation)
+### Example 2: Locking the Surface Orientation During Screen Rotation
 
-Uses setXComponentSurfaceRotation to lock the Surface orientation during screen rotation so that it does not rotate with the screen.
+This example shows how to use setXComponentSurfaceRotation to lock the surface orientation during screen rotation so that the surface does not rotate with the screen.
 
 > NOTE
 > 
-> For details about the implementation of the drawing logic in this example (the function implementation related to nativeRender), see [ArkTS XComponent Sample](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent).
+> For details about how to implement the rendering logic (functions related to nativeRender), see [ArkTS XComponent Example](https://gitcode.com/openharmony/applications_app_samples/tree/master/code/DocsSample/ArkUISample/ArkTSXComponent).
 
 ```TypeScript
 // xxx.ets
@@ -328,7 +328,7 @@ struct Index {
 
 ### Example 3: Drawing Content on the XComponent Using a Canvas Object
 
-From API version 20, this example returns a canvas object by calling [lockCanvas](arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#lockcanvas), calls the corresponding drawing API via the canvas object, and then calls [unlockCanvasAndPost](arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#unlockcanvasandpost) to draw content on the XComponent.
+From API version 20, this example demonstrates how to return a canvas object by calling [lockCanvas](arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#lockcanvas), call the corresponding drawing API via the canvas object, and then call [unlockCanvasAndPost](arkts-arkui-xcomponent-comp-xcomponentcontroller-c.md#unlockcanvasandpost) to draw content on the XComponent.
 
 
 
@@ -350,7 +350,7 @@ struct Index {
         .onLoad(() => {
           this.mCanvas = this.xcController.lockCanvas();
           if (this.mCanvas) {
-            this.mCanvas.drawColor(255, 240, 250, 255); // The entire XComponent area must be completely redrawn before each drawing. You can call this method to implement it.
+            this.mCanvas.drawColor(255, 240, 250, 255); // Before each drawing operation, the entire XComponent area must be fully redrawn. This API can be used to achieve this.
             const brush = new drawing.Brush(); // Create a brush object.
             brush.setColor({ // Set the color of the brush.
               alpha: 255,
@@ -378,7 +378,7 @@ struct Index {
 
 ### Example 4: Implementing an Immersive Effect
 
-From API version 20, the setXComponentSurfaceRect API is called to set the surface display area to achieve the immersive effect.
+From API version 20, building upon Example 3, the setXComponentSurfaceRect API is called to set the surface area to achieve an immersive effect.
 
 
 
@@ -412,7 +412,7 @@ struct Index {
           this.xcController.setXComponentSurfaceRect({surfaceWidth: this.screenWidth, surfaceHeight: this.screenHeight, offsetX: 0, offsetY: 0});
           this.mCanvas = this.xcController.lockCanvas();
           if (this.mCanvas) {
-            this.mCanvas.drawColor(255, 39, 135, 217); // This method must be called to redraw the entire XComponent area before each drawing.
+            this.mCanvas.drawColor(255, 39, 135, 217); // Before each drawing operation, the entire XComponent area must be fully redrawn. This API can be used to achieve this.
             this.xcController.unlockCanvasAndPost(this.mCanvas);
           }
         })

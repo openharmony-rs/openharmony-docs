@@ -24,15 +24,15 @@ import { image } from '@kit.ImageKit';
 size: Size
 ```
 
-区域大小。
+区域尺寸。
 
 **类型：** Size
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-Region-size: Size--><!--Device-Region-size: Size-End-->
 
@@ -44,15 +44,15 @@ size: Size
 x: number
 ```
 
-区域左上角横坐标。单位：像素（px）。
+区域左上角像素的横坐标（X坐标）。单位：像素（px）。
 
 **类型：** number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-Region-x: int--><!--Device-Region-x: int-End-->
 
@@ -64,15 +64,15 @@ x: number
 y: number
 ```
 
-区域左上角纵坐标。单位：像素（px）。
+区域左上角像素的纵坐标（Y坐标）。单位：像素（px）。
 
 **类型：** number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-Region-y: int--><!--Device-Region-y: int-End-->
 

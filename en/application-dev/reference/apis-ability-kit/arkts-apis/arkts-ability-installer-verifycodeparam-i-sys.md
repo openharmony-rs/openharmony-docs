@@ -4,7 +4,10 @@
 export interface VerifyCodeParam
 ```
 
-Defines the information about the code signature file.
+
+> Starting from API version 11, the code signature file of an application is integrated into the installation
+> package, rather than being specified by using this field.
+> Defines the information about the code signature file.
 
 **Since:** 10
 

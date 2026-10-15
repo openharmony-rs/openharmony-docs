@@ -1,4 +1,4 @@
-# promptAction(弹窗)
+# promptAction（弹窗）
 
 ```TypeScript
 declare namespace promptAction
@@ -13,8 +13,6 @@ declare namespace promptAction
 > - 本模块功能依赖UI的执行上下文，不可在[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的地方使用，参见[UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md)说明。建议<!--Del-->在除[ServiceExtensionAbility](../../../application-models/serviceextensionability-sys.md)等无UI界面的场景外，均<!--DelEnd-->使用UIContext中的弹窗方法。
 
 **起始版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-unnamed-declare namespace promptAction--><!--Device-unnamed-declare namespace promptAction-End-->
 
@@ -32,15 +30,15 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [showToast](arkts-arkui-promptaction-showtoast-f.md) | Creates and displays a toast. |
-| [openToast](arkts-arkui-promptaction-opentoast-f.md) | 显示即时反馈并通过Promise返回其id。 |
-| [closeToast](arkts-arkui-promptaction-closetoast-f.md) | 关闭即时反馈。 |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
-| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog-1) | 创建并显示对话框，对话框通过Promise返回结果。 |
-| [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md) | 打开自定义弹窗。通过Promise返回结果。 |
-| [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md) | 关闭自定义弹窗。 |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
-| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu-1) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
+| [closeToast](arkts-arkui-promptaction-closetoast-f.md#closetoast) | 关闭即时反馈。 |
+| [openToast](arkts-arkui-promptaction-opentoast-f.md#opentoast) | 显示即时反馈并通过Promise返回其id。 |
+| [closeCustomDialog](arkts-arkui-promptaction-closecustomdialog-f.md#closecustomdialog) | 关闭自定义弹窗。 |
+| [openCustomDialog](arkts-arkui-promptaction-opencustomdialog-f.md#opencustomdialog) | 打开自定义弹窗。通过Promise返回结果。 |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu1) | 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。 |
+| [showActionMenu](arkts-arkui-promptaction-showactionmenu-f.md#showactionmenu2) | 创建并显示操作菜单，菜单响应后通过Promise返回结果。 |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog1) | 创建并显示对话框，对话框响应结果使用callback异步回调返回。 |
+| [showDialog](arkts-arkui-promptaction-showdialog-f.md#showdialog2) | 创建并显示对话框，对话框通过Promise返回结果。 |
+| [showToast](arkts-arkui-promptaction-showtoast-f.md#showtoast) | Creates and displays a toast. |
 
 ### 类
 
@@ -53,42 +51,42 @@ import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md) | Toast的选项。 |
-| [Button](arkts-arkui-promptaction-button-i.md) | 菜单中的菜单项按钮。 |
-| [ShowDialogSuccessResponse](arkts-arkui-promptaction-showdialogsuccessresponse-i.md) | 对话框的响应结果。 |
-| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md) | 对话框的选项。 |
+| [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md) | 操作菜单的选项。 |
+| [ActionMenuSuccessResponse](arkts-arkui-promptaction-actionmenusuccessresponse-i.md) | 操作菜单的响应结果。 |
 | [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md) | 弹窗的选项。 |
+| [Button](arkts-arkui-promptaction-button-i.md) | 菜单中的菜单项按钮。 |
 | [CustomDialogOptions](arkts-arkui-promptaction-customdialogoptions-i.md) | 自定义弹窗的内容，继承自[BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)。 |
 | [DialogOptions](arkts-arkui-promptaction-dialogoptions-i.md) | 自定义弹窗的内容，继承自[BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i.md)，用于配置自定义弹窗的显示参数和行为。 |
-| [ActionMenuSuccessResponse](arkts-arkui-promptaction-actionmenusuccessresponse-i.md) | 操作菜单的响应结果。 |
-| [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i.md) | 操作菜单的选项。 |
+| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i.md) | 对话框的选项。 |
+| [ShowDialogSuccessResponse](arkts-arkui-promptaction-showdialogsuccessresponse-i.md) | 对话框的响应结果。 |
+| [ShowToastOptions](arkts-arkui-promptaction-showtoastoptions-i.md) | Toast的选项。 |
 
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i-sys.md) | 对话框的选项。 |
-| [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i-sys.md) | 弹窗的选项。 |
 | [ActionMenuOptions](arkts-arkui-promptaction-actionmenuoptions-i-sys.md) | 操作菜单的选项。 |
+| [BaseDialogOptions](arkts-arkui-promptaction-basedialogoptions-i-sys.md) | 弹窗的选项。 |
+| [ShowDialogOptions](arkts-arkui-promptaction-showdialogoptions-i-sys.md) | 对话框的选项。 |
 <!--DelEnd-->
 
 ### 类型
 
 | 名称 | 说明 |
 | --- | --- |
-| [DialogOptionsCornerRadius](arkts-arkui-promptaction-dialogoptionscornerradius-t.md) | 表示弹窗背板的圆角半径允许的数据字段类型。 |
-| [DialogOptionsBorderWidth](arkts-arkui-promptaction-dialogoptionsborderwidth-t.md) | 表示弹窗背板的边框宽度允许的数据字段类型。 |
 | [DialogOptionsBorderColor](arkts-arkui-promptaction-dialogoptionsbordercolor-t.md) | 表示弹窗背板的边框颜色允许的数据字段类型。 |
 | [DialogOptionsBorderStyle](arkts-arkui-promptaction-dialogoptionsborderstyle-t.md) | 表示弹窗背板的边框样式允许的数据字段类型。 |
+| [DialogOptionsBorderWidth](arkts-arkui-promptaction-dialogoptionsborderwidth-t.md) | 表示弹窗背板的边框宽度允许的数据字段类型。 |
+| [DialogOptionsCornerRadius](arkts-arkui-promptaction-dialogoptionscornerradius-t.md) | 表示弹窗背板的圆角半径允许的数据字段类型。 |
 | [DialogOptionsShadow](arkts-arkui-promptaction-dialogoptionsshadow-t.md) | 表示弹窗背板的阴影允许的数据字段类型。 |
 
 ### 枚举
 
 | 名称 | 说明 |
 | --- | --- |
-| [ToastShowMode](arkts-arkui-promptaction-toastshowmode-e.md) | 设置Toast的显示模式，默认显示在应用内，支持显示在子窗。 |
 | [CommonState](arkts-arkui-promptaction-commonstate-e.md) | 自定义弹窗的状态。 |
+| [ToastShowMode](arkts-arkui-promptaction-toastshowmode-e.md) | 设置Toast的显示模式，默认显示在应用内，支持显示在子窗。 |
 
 <!--Del-->
 ### 枚举（系统接口）
@@ -199,6 +197,94 @@ struct Index {
       .height('100%')
     }
     .height('100%')
+  }
+}
+```
+
+### 示例1（文本对话框设置沉浸式材质、非线性形变与流光）
+
+该示例通过调用showDialog，设置ShowDialogOptions中的系统材质systemMaterial，以及非线性形变distortionMode和流光edgeLightMode，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，ShowDialogOptions新增distortionMode和edgeLightMode属性。
+
+该示例配图为设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+
+
+该示例配图为未设置沉浸式材质、非线性形变与流光的高算力设备强档效果。
+
+
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShowDialogExample {
+  build() {
+    Column() {
+      Button("showDialog")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showDialog({
+            title: 'showDialog Title',
+            message: 'showDialog Text',
+            buttons: [
+              { text: 'button1', color: '#0000ff' },
+              { text: 'button2', color: '#0000ff' }
+            ],
+            // 设置沉浸式材质
+            systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+            // 非线性形变自适应
+            distortionMode: DistortionMode.DISTORTION_AUTO,
+            // 流光自适应
+            edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+### 示例2（操作菜单设置沉浸式材质、非线性形变与流光）
+
+该示例通过调用[showActionMenu](./arkts-apis-uicontext-promptaction.md#showactionmenu11)，设置ActionMenuOptions中的系统材质systemMaterial，以及非线性形变distortionMode和流光edgeLightMode，两者均设置为AUTO模式（依据设备算力档位和系统设置中的沉浸光感配置自适应生效）。
+
+从API版本26.0.0开始，ActionMenuOptions新增distortionMode和edgeLightMode属性。
+
+```TypeScript
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ShowActionMenuExample {
+  build() {
+    Column() {
+      Button("showActionMenu")
+        .margin(20)
+        .onClick(() => {
+          this.getUIContext().getPromptAction().showActionMenu({
+            title: 'showActionMenu Title',
+            buttons: [
+              { text: 'button1', color: '#0000ff' },
+              { text: 'button2', color: '#0000ff' },
+              { text: 'button3', color: '#0000ff' }
+            ],
+            // 设置沉浸式材质
+            systemMaterial: new uiMaterial.ImmersiveMaterial({ style: uiMaterial.ImmersiveStyle.ULTRA_THICK }),
+            // 非线性形变自适应
+            distortionMode: DistortionMode.DISTORTION_AUTO,
+            // 流光自适应
+            edgeLightMode: EdgeLightMode.EDGELIGHT_AUTO,
+          });
+        })
+    }
+    .height('100%')
+    .width('100%')
+    .backgroundColor(Color.Gray)
   }
 }
 ```

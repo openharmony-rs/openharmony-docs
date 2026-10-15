@@ -34,6 +34,7 @@ function isHotspotActive(): boolean
 | --- | --- |
 | boolean | 热点是否已激活 true:已激活， false:未激活。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

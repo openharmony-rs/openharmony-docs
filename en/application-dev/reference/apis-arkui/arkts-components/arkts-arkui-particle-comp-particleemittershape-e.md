@@ -12,21 +12,21 @@ Particle emitter shape.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## RECTANGLE
+## ANNULUS
 
 ```TypeScript
-RECTANGLE = 'rectangle'
+ANNULUS = 'annulus'
 ```
 
-The particle emitter is a rectangle.
+The particle emitter is an annulus. When this shape is used, the **annulusRegion** parameter must be configured, and the **position** and **size** parameters do not take effect.
 
-**Since:** 10
+**Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-ParticleEmitterShape-RECTANGLE = 'rectangle'--><!--Device-ParticleEmitterShape-RECTANGLE = 'rectangle'-End-->
+<!--Device-ParticleEmitterShape-ANNULUS = 'annulus'--><!--Device-ParticleEmitterShape-ANNULUS = 'annulus'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,20 +66,20 @@ The particle emitter is an ellipse.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ANNULUS
+## RECTANGLE
 
 ```TypeScript
-ANNULUS = 'annulus'
+RECTANGLE = 'rectangle'
 ```
 
-The particle emitter is an annulus. When this shape is used, the **annulusRegion** parameter must be configured, and the **position** and **size** parameters do not take effect.
+The particle emitter is a rectangle.
 
-**Since:** 20
+**Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ParticleEmitterShape-ANNULUS = 'annulus'--><!--Device-ParticleEmitterShape-ANNULUS = 'annulus'-End-->
+<!--Device-ParticleEmitterShape-RECTANGLE = 'rectangle'--><!--Device-ParticleEmitterShape-RECTANGLE = 'rectangle'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

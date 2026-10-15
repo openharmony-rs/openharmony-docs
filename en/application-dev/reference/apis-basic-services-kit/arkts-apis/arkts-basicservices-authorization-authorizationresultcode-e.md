@@ -12,22 +12,6 @@ Enumerates authorization result codes.
 
 **System capability:** SystemCapability.Account.OsAccount
 
-## AUTHORIZATION_GRANTED
-
-```TypeScript
-AUTHORIZATION_GRANTED = 0
-```
-
-The authorization is granted.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0--><!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
 ## AUTHORIZATION_CANCELED
 
 ```TypeScript
@@ -71,6 +55,22 @@ Possible causes: The authorization policy for the privilege is not met. For exam
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303--><!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+## AUTHORIZATION_GRANTED
+
+```TypeScript
+AUTHORIZATION_GRANTED = 0
+```
+
+The authorization is granted.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0--><!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

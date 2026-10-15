@@ -10,12 +10,12 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 > **NOTE:** 
 > 
 > This component overrides the universal attribute
-> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor). When applied directly to the
+> [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1). When applied directly to the
 > **Progress** component, it sets the background color of the progress indicator itself. To set the background color
 > for the entire **Progress** component area, apply **backgroundColor** to the outer container that wraps the
 > **Progress** component.
 
-**Inheritance/Implementation:** ProgressAttribute extends CommonMethod<ProgressAttribute<Type>>
+**Inheritance/Implementation:** ProgressAttribute extends CommonMethod&lt;ProgressAttribute&lt;Type&gt;&gt;
 
 **Since:** 7
 

@@ -4,7 +4,7 @@
 export interface SpatialMotionInfo
 ```
 
-空间运动响应信息的接口。
+隔空手势感知的结果信息接口。
 
 **起始版本：** 26.0.1
 
@@ -24,7 +24,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 event: number
 ```
 
-指示屏幕上的手移动。取值限定为整数。
+手势事件类型。-1：无效0：准备就绪1：移动2：点击。
 
 **类型：** number
 
@@ -42,7 +42,7 @@ event: number
 pointX: number
 ```
 
-指示手在屏幕上的X坐标。
+手部在屏幕上的 X 轴坐标。
 
 **类型：** number
 
@@ -60,7 +60,7 @@ pointX: number
 pointY: number
 ```
 
-指示手在屏幕上的Y坐标。
+手部在屏幕上的 Y 轴坐标。
 
 **类型：** number
 
@@ -78,7 +78,7 @@ pointY: number
 timestamp: number
 ```
 
-时间戳。单位为：毫秒。
+识别结果的时间戳。单位为：ms。
 
 **类型：** number
 

@@ -4,7 +4,7 @@
 interface ExecuteResult
 ```
 
-Enumerates the return results of intent execution.
+Return result of intent execution.
 
 **Since:** 11
 
@@ -32,7 +32,7 @@ Error code returned by the intent execution, defined by the developer.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ExecuteResult-code: int--><!--Device-ExecuteResult-code: int-End-->
 
@@ -56,7 +56,7 @@ This parameter supports only FLAG_AUTH_READ_URI_PERMISSION, FLAG_AUTH_WRITE_URI_
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-ExecuteResult-flags?: int--><!--Device-ExecuteResult-flags?: int-End-->
 
@@ -96,7 +96,7 @@ List of URIs returned by the intent execution. This field must be used together 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-ExecuteResult-uris?: Array<string>--><!--Device-ExecuteResult-uris?: Array<string>-End-->
 

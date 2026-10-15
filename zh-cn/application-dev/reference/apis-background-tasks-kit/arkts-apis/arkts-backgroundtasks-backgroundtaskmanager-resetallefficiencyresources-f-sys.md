@@ -35,6 +35,7 @@ function resetAllEfficiencyResources(): void
 | [9800004](../errorcode-backgroundTaskMgr.md#9800004-系统服务失败) | System service operation failed. |
 | [18700001](../errorcode-backgroundTaskMgr.md#18700001-资源申请接口信息校验失败) | Caller information verification failed for an energy resource request. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,3 +48,5 @@ try {
     console.error(`resetAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

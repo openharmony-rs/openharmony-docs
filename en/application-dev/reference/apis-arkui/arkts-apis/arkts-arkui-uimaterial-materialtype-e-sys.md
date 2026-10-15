@@ -18,7 +18,7 @@ Enumerates the system material types. This section contains only the system APIs
 NONE = 0
 ```
 
-No system material effect. The corresponding effects are: [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor) is transparent, [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor) is transparent, [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth) is 0, and no [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow).
+No system material effect. The corresponding effects are: [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1) is transparent, [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor) is transparent, [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth) is 0, and no [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1).
 
 **Since:** 23
 
@@ -40,13 +40,13 @@ SEMI_TRANSPARENT = 1
 
 Semi-transparent system material effect. The corresponding effects are:
 
-[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor): "#f2f1f3f5" in light mode and "#f2303131" in dark mode.
+[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1): "#f2f1f3f5" in light mode and "#f2303131" in dark mode.
 
 [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor): [token](../../../ui/theme_skinning.md#system-default-token-color-values) value of theme.colors.compForegroundPrimary blended with 10% transparency (alpha value).
 
 [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth): 1 vp.
 
-[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow): ShadowStyle.OUTER_DEFAULT_SM.
+[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1): ShadowStyle.OUTER_DEFAULT_SM.
 
 **Since:** 23
 

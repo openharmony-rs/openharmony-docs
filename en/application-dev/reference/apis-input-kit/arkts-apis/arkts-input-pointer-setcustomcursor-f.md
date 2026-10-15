@@ -6,6 +6,8 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="setcustomcursor1"></a>
+
 ## setCustomCursor
 
 ```TypeScript
@@ -13,6 +15,8 @@ function setCustomCursor(windowId: number, pixelMap: image.PixelMap, focusX?: nu
 ```
 
 Sets a custom pointer style for a specified window. This API can set only the custom pointer style of windows within the current application process. For details about how to set the custom pointer style of the host window through the **UIExtensionAbility** process, see [setCustomCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcustomcursor). This API uses a promise to return the result.
+
+Changes to the app window layout, hot zone switching, page navigation, the cursor moving out of and back into the window, and the cursor moving across different areas of the window may cause the cursor to switch back to the system style. In these scenarios, you need to set the cursor style again.
 
 **Since:** 11
 
@@ -24,7 +28,7 @@ Sets a custom pointer style for a specified window. This API can set only the cu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| windowId | number | Yes | Window ID. |
+| windowId | number | Yes | Window ID. The value is an integer greater than 0. |
 | pixelMap | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | Custom cursor resource. |
 | focusX | number | No | Custom cursor focus X, in px. The value must be greater than or equal to 0. The default value is **0**. |
 | focusY | number | No | Custom cursor focus Y, in px. The value must be greater than or equal to 0. The default value is **0**. |
@@ -39,7 +43,7 @@ Sets a custom pointer style for a specified window. This API can set only the cu
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 
@@ -85,7 +89,7 @@ struct Index {
 ```
 
 
-<a id="setcustomcursor-1"></a>
+<a id="setcustomcursor2"></a>
 
 ## setCustomCursor
 
@@ -107,9 +111,9 @@ The cursor may be switched back to the system style in the following cases: appl
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| windowId | number | Yes | Window ID. |
+| windowId | number | Yes | Window ID. The value is an integer greater than 0. |
 | cursor | [CustomCursor](arkts-input-pointer-customcursor-i.md) | Yes | Custom cursor resource. |
-| config | [CursorConfig](arkts-input-pointer-cursorconfig-i.md) | Yes | Custom cursor configuration, which specifies whether to adjust the cursor size based on system settings. If **followSystem** in **CursorConfig** is set to **true**, the supported adjustment range is [size of the cursor image, 256 x 256]. |
+| config | [CursorConfig](arkts-input-pointer-cursorconfig-i.md) | Yes | Custom cursor configuration, used to configure whether to adjust the cursor size based on system settings. If followSystem in CursorConfig is set to true, the adjustable range of the cursor size is [cursor resource image size, 256×256]. |
 
 **Return value:**
 
@@ -121,7 +125,7 @@ The cursor may be switched back to the system style in the following cases: appl
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Abnormal windowId parameter passed in;<br>2. Abnormal pixelMap parameter passed in; 3. Abnormal focusX parameter passed in; <br>4. Abnormal focusY parameter passed in. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Abnormal windowId parameter passed in.         2. Abnormal pixelMap parameter passed in; 3. Abnormal focusX parameter passed in.4. Abnormal focusY parameter passed in. |
 | [26500001](../errorcode-pointer.md#26500001-invalid-window-id) | Invalid windowId. Possible causes: The window id does not belong to the current process. |
 
 **Examples**

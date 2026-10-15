@@ -50,6 +50,7 @@ function snoozeNotification(hashCode: string, delayTime: number): Promise<void>
 | [1600007](../errorcode-notification.md#1600007-通知不存在) | The notification does not exist. |
 | [1600028](../errorcode-notification.md#1600028-当前通知不支持该接口) | This notification is not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,3 +65,5 @@ notificationManager.snoozeNotification(hashCode, delayTime).then(() => {
   console.error(`snoozeNotification failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

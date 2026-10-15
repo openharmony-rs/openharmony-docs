@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function recoverBackupBundleData(bundleName: string, userId: number, appIndex: number): Promise<void>
 ```
 
-Restores the backup data for a specified application under a given user. This API uses a promise to return the result.
+Restores the backup data for a specified application or application clone under a specified user. This API uses a promise to return the result.
 
 **Since:** 21
 
@@ -48,6 +48,7 @@ Restores the backup data for a specified application under a given user. This AP
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex not in valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,3 +72,5 @@ try {
   hilog.error(0x0000, 'testTag', 'recoverBackupBundleData failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

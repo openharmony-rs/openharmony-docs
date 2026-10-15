@@ -12,17 +12,31 @@ enum CodecSampleRate
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_SAMPLE_RATE_NONE
+## CODEC_SAMPLE_RATE_176400
 
 ```TypeScript
-CODEC_SAMPLE_RATE_NONE = 0
+CODEC_SAMPLE_RATE_176400 = 5
 ```
 
-采样率未知。
+176.4kHz
 
 **起始版本：** 11
 
-<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_NONE = 0--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_NONE = 0-End-->
+<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_176400 = 5--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_176400 = 5-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## CODEC_SAMPLE_RATE_192000
+
+```TypeScript
+CODEC_SAMPLE_RATE_192000 = 6
+```
+
+192kHz
+
+**起始版本：** 11
+
+<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_192000 = 6--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_192000 = 6-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -82,30 +96,16 @@ CODEC_SAMPLE_RATE_96000 = 4
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_SAMPLE_RATE_176400
+## CODEC_SAMPLE_RATE_NONE
 
 ```TypeScript
-CODEC_SAMPLE_RATE_176400 = 5
+CODEC_SAMPLE_RATE_NONE = 0
 ```
 
-176.4kHz
+采样率未知。
 
 **起始版本：** 11
 
-<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_176400 = 5--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_176400 = 5-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## CODEC_SAMPLE_RATE_192000
-
-```TypeScript
-CODEC_SAMPLE_RATE_192000 = 6
-```
-
-192kHz
-
-**起始版本：** 11
-
-<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_192000 = 6--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_192000 = 6-End-->
+<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_NONE = 0--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_NONE = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

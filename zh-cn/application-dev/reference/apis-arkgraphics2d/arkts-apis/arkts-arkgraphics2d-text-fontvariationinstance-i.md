@@ -30,7 +30,7 @@ coordinates: Array<FontVariation>
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationInstance-coordinates: Array<FontVariation>--><!--Device-FontVariationInstance-coordinates: Array<FontVariation>-End-->
 
@@ -48,7 +48,7 @@ localName: string
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationInstance-localName: string--><!--Device-FontVariationInstance-localName: string-End-->
 
@@ -66,7 +66,7 @@ name: string
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontVariationInstance-name: string--><!--Device-FontVariationInstance-name: string-End-->
 

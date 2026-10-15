@@ -24,7 +24,7 @@ In the custom preview (**preview** is of the CustomBuilder type) and menu displa
 
 If the value is less than or equal to **0**, this parameter does not take effect.
 
-This API does not take effect in [bindContextMenu&lt;sup&gt;12+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1) scenarios.
+This API does not take effect in [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2) scenarios.
 
 This API does not take effect when **transition** is set.
 

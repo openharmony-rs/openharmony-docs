@@ -36,7 +36,7 @@ declare function stat(path: string): Promise<Stat>
 | Promise&lt;[Stat](arkts-corefile-fileio-stat-depr-i.md)&gt; | Promise对象。返回文件的具体信息。 |
 
 
-<a id="stat-1"></a>
+<a id="stat2"></a>
 
 ## stat
 

@@ -40,6 +40,7 @@ Sets the role types supported by a specified port, which can be **powerRole** (f
 | --- | --- |
 | Promise&lt;boolean&gt; | Promise used to return the result. The value **true** indicates that the operation is successful, and **false** indicates the opposite. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,3 +51,5 @@ usb.setPortRoles(portId, usb.PowerRoleType.SOURCE, usb.DataRoleType.HOST).then((
     console.error('usb setPortRoles failed: ' + err.code + ' message: ' + err.message);
 });
 ```
+
+<!--DelEnd-->

@@ -42,6 +42,7 @@ This API is used to obtain the remaining storage space of the eUICC hardware. Th
 | [3120001](../errorcode-telephony.md#3120001-service-connection-error) | Service connection failed. |
 | [3120002](../errorcode-telephony.md#3120002-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,3 +55,5 @@ eSIM.getEsimFreeStorage().then((data) => {
     console.error(`getEsimFreeStorage , promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

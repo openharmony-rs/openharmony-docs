@@ -12,22 +12,6 @@ enum InterruptMode
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt
 
-## SHARE_MODE
-
-```TypeScript
-SHARE_MODE = 0
-```
-
-共享焦点模式。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-InterruptMode-SHARE_MODE = 0--><!--Device-InterruptMode-SHARE_MODE = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Interrupt
-
 ## INDEPENDENT_MODE
 
 ```TypeScript
@@ -38,8 +22,24 @@ INDEPENDENT_MODE = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-InterruptMode-INDEPENDENT_MODE = 1--><!--Device-InterruptMode-INDEPENDENT_MODE = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Interrupt
+
+## SHARE_MODE
+
+```TypeScript
+SHARE_MODE = 0
+```
+
+共享焦点模式。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-InterruptMode-SHARE_MODE = 0--><!--Device-InterruptMode-SHARE_MODE = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Interrupt

@@ -28,7 +28,7 @@ The agent extension ability name the agent card belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentAppInfo-abilityName: string--><!--Device-AgentAppInfo-abilityName: string-End-->
 
@@ -48,7 +48,7 @@ The bundle name the agent card belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentAppInfo-bundleName: string--><!--Device-AgentAppInfo-bundleName: string-End-->
 
@@ -68,7 +68,7 @@ Device types supported by the agent.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentAppInfo-deviceTypes?: Array<string>--><!--Device-AgentAppInfo-deviceTypes?: Array<string>-End-->
 
@@ -88,7 +88,7 @@ Agent's minimum supported application version.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentAppInfo-minAppVersion?: string--><!--Device-AgentAppInfo-minAppVersion?: string-End-->
 
@@ -108,7 +108,7 @@ The module name the agent card belongs.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-AgentAppInfo-moduleName: string--><!--Device-AgentAppInfo-moduleName: string-End-->
 

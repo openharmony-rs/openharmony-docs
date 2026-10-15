@@ -54,6 +54,7 @@ function off(
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-内存申请失败) | Out of memory. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -69,3 +70,5 @@ try {
     console.error(`Catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

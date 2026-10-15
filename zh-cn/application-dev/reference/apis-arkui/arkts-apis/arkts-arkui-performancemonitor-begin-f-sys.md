@@ -32,6 +32,7 @@ function begin(scene: string, startInputType: ActionType, note?: string): void
 | startInputType | [ActionType](arkts-arkui-performancemonitor-actiontype-e-sys.md) | 是 | 用户场景触发模式。 |
 | note | string | 否 | 用户场景备注信息。字符串长度无限制，建议控制在255个字符以内，可以空缺不填，填写后性能指标上报会携带备注信息，不填无影响。 |
 
+<!--Del-->
 **示例**
 
 用户点击图标启动应用场景动效开始点，由离手事件LAST_UP触发。
@@ -39,3 +40,5 @@ function begin(scene: string, startInputType: ActionType, note?: string): void
 ```TypeScript
 performanceMonitor.begin("LAUNCHER_APP_LAUNCH_FROM_ICON", performanceMonitor.ActionType.LAST_UP, "APP_START_BEGIN");
 ```
+
+<!--DelEnd-->

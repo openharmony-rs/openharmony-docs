@@ -4,7 +4,7 @@
 declare type OnTabsAnimationEndCallback = (index: number, extraInfo: TabsAnimationEvent) => void
 ```
 
-Defines the callback triggered when the tab switching animation ends.
+Defines the callback triggered when the page transition animation ends.
 
 **Since:** 18
 
@@ -20,5 +20,5 @@ Defines the callback triggered when the tab switching animation ends.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the currently displayed element. The index is zero-based. |
-| extraInfo | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | Yes | Extra information of the animation, which is the offset of the currently displayed element relative to the start position of the **Tabs** along the main axis. |
+| index | number | Yes | Index of the currently displayed element, starting from 0. |
+| extraInfo | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | Yes | Animation information, which returns only the offset of the currently displayed element relative to the start position of **Tabs** along the main axis. |

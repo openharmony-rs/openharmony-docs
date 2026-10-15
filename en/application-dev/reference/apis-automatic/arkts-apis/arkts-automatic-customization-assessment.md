@@ -4,8 +4,6 @@ The **assessment** module provides APIs for assessment scenario management.
 
 **Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace assessment--><!--Device-unnamed-declare namespace assessment-End-->
 
 **System capability:** SystemCapability.Customization.AssessmentConfiguration
@@ -21,10 +19,10 @@ The **assessment** module provides APIs for assessment scenario management.
 
 | Name | Description |
 | --- | --- |
-| [begin](arkts-automatic-assessment-begin-f.md) | Begins an assessment session. A confirmation dialog box will be displayed for the user to confirm before the assessment session starts. |
-| [end](arkts-automatic-assessment-end-f.md) | Ends an assessment session. |
-| [getConfiguration](arkts-automatic-assessment-getconfiguration-f.md) | Queries the current assessment configuration. |
-| [isActive](arkts-automatic-assessment-isactive-f.md) | Queries whether an assessment session is active. |
+| [begin](arkts-automatic-assessment-begin-f.md#begin) | Begins an assessment session. A confirmation dialog box will be displayed for the user to confirm before the assessment session starts. |
+| [end](arkts-automatic-assessment-end-f.md#end) | Ends an assessment session. |
+| [getConfiguration](arkts-automatic-assessment-getconfiguration-f.md#getconfiguration) | Queries the current assessment configuration. |
+| [isActive](arkts-automatic-assessment-isactive-f.md#isactive) | Queries whether an assessment session is active. |
 
 ### Interfaces
 

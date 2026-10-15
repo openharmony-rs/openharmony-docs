@@ -6,7 +6,7 @@ interface Screen
 
 Defines the [physical screen](../../../displaymanager/display-terminology.md#physical-screen) instance.
 
-Before calling any API in Screen, you must use [getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md) or [createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md) to obtain a Screen instance.
+Before calling any API in Screen, you must use [getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens1) or [createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen1) to obtain a Screen instance.
 
 **Since:** 9
 
@@ -21,6 +21,8 @@ Before calling any API in Screen, you must use [getAllScreens()](arkts-arkui-scr
 ```TypeScript
 import { screen } from '@kit.ArkUI';
 ```
+
+<a id="setdensitydpi1"></a>
 
 ## setDensityDpi
 
@@ -53,6 +55,7 @@ Sets the pixel density of the screen. This API uses an asynchronous callback to 
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -95,7 +98,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-<a id="setdensitydpi-1"></a>
+<!--DelEnd-->
+
+<a id="setdensitydpi2"></a>
 
 ## setDensityDpi
 
@@ -133,6 +138,7 @@ Sets the pixel density of the screen. This API uses a promise to return the resu
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -172,6 +178,10 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+<!--DelEnd-->
+
+<a id="setorientation1"></a>
+
 ## setOrientation
 
 ```TypeScript
@@ -203,6 +213,7 @@ Sets the screen orientation. This API uses an asynchronous callback to return th
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -244,7 +255,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-<a id="setorientation-1"></a>
+<!--DelEnd-->
+
+<a id="setorientation2"></a>
 
 ## setOrientation
 
@@ -282,6 +295,7 @@ Sets the screen orientation. This API uses a promise to return the result. The s
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -321,7 +335,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-<a id="setorientation-2"></a>
+<!--DelEnd-->
+
+<a id="setorientation3"></a>
 
 ## setOrientation
 
@@ -362,6 +378,7 @@ Set the orientation of the screen
 | [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. Possible cause: The screen is not a wired external display in extended mode. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -390,6 +407,10 @@ screensPromise.then((data: Array<screen.Screen>) => {
   console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setscreenactivemode1"></a>
 
 ## setScreenActiveMode
 
@@ -422,6 +443,7 @@ Sets the active mode of the screen. This API uses an asynchronous callback to re
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -464,7 +486,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-<a id="setscreenactivemode-1"></a>
+<!--DelEnd-->
+
+<a id="setscreenactivemode2"></a>
 
 ## setScreenActiveMode
 
@@ -502,6 +526,7 @@ Sets the active mode of the screen. This API uses a promise to return the result
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -541,6 +566,8 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
   console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## activeModeIndex
 

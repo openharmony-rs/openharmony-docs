@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 In addition to the [universal events](arkts-arkui-common-comp-commonmethod-c.md), the following events are supported.
 
-**Inheritance/Implementation:** VideoAttribute extends CommonMethod<VideoAttribute>
+**Inheritance/Implementation:** VideoAttribute extends CommonMethod&lt;VideoAttribute&gt;
 
 **Since:** 7
 

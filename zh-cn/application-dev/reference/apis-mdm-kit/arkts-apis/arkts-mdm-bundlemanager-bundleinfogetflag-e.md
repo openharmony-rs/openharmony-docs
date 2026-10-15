@@ -28,6 +28,22 @@ DEFAULT = 0
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## WITH_APPLICATION_ICON_INFO
+
+```TypeScript
+WITH_APPLICATION_ICON_INFO = 1 << 2
+```
+
+用于获取默认包信息和applicationInfo的iconData信息。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2--><!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## WITH_APPLICATION_INFO
 
 ```TypeScript
@@ -57,21 +73,5 @@ WITH_SIGNATURE_INFO = 1 << 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BundleInfoGetFlag-WITH_SIGNATURE_INFO = 1 << 1--><!--Device-BundleInfoGetFlag-WITH_SIGNATURE_INFO = 1 << 1-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## WITH_APPLICATION_ICON_INFO
-
-```TypeScript
-WITH_APPLICATION_ICON_INFO = 1 << 2
-```
-
-用于获取默认包信息和applicationInfo的iconData信息。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2--><!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

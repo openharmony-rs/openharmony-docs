@@ -127,7 +127,8 @@ import {
   NoneActionProposal,
   PageSwitchActionProposal,
   ScrollActionProposal,
-  SelectActionProposal
+  SelectActionProposal,
+  SmartGestureAction
 } from '@kit.ArkUI';
 
 @Entry
@@ -252,6 +253,10 @@ struct SmartGestureControllerExample {
     .onAppear(() => {
       this.controller.enableSmartTapAndSlideGestures(true);
       this.controller.registerMonitor(this.callback);
+    })
+    .onDisappear(() => {
+      this.controller.unregisterMonitor(this.callback);
+      this.controller.enableSmartTapAndSlideGestures(false);
     })
     .width('100%')
     .height('100%')

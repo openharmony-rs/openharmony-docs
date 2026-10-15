@@ -14,22 +14,6 @@ Enumerates the device-cloud sharing states.
 
 **System API:** This is a system API.
 
-## STATE_UNKNOWN
-
-```TypeScript
-STATE_UNKNOWN = 0
-```
-
-Unknown state. Use the enum name rather than the enum value.
-
-**Since:** 11
-
-<!--Device-State-STATE_UNKNOWN = 0--><!--Device-State-STATE_UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**System API:** This is a system API.
-
 ## STATE_ACCEPTED
 
 ```TypeScript
@@ -89,6 +73,22 @@ The device-cloud sharing is unavailable. Use the enum name rather than the enum 
 **Since:** 12
 
 <!--Device-State-STATE_UNAVAILABLE = 4--><!--Device-State-STATE_UNAVAILABLE = 4-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**System API:** This is a system API.
+
+## STATE_UNKNOWN
+
+```TypeScript
+STATE_UNKNOWN = 0
+```
+
+Unknown state. Use the enum name rather than the enum value.
+
+**Since:** 11
+
+<!--Device-State-STATE_UNKNOWN = 0--><!--Device-State-STATE_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

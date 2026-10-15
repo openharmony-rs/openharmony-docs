@@ -40,3 +40,70 @@ function claimInterfaceExclusive(pipe: USBDevicePipe, iface: USBInterface, force
 | [14400004](../errorcode-usb.md#14400004-服务异常) | Service exception. |
 | [14400007](../errorcode-usb.md#14400007-资源繁忙) | Resource busy. Possible cause: The interface is claimed by another program or driver. |
 | [14400010](../errorcode-usb.md#14400010-无法识别的错误) | USB driver error. Possible causes: <br>1. The device is not connected using [usbManager.connectDevice](arkts-basicservices-usbmanager-connectdevice-f.md). <br>2. The USB device state is abnormal. |
+
+**示例**
+
+```TypeScript
+async function claimInterfaceExclusive() {
+  // 获取USB设备列表
+  let devicesList: Array<usbManager.USBDevice>;
+  try {
+    devicesList = usbManager.getDevices();
+  } catch (err) {
+    console.error(`getDevices failed, err=${JSON.stringify(err)}`);
+    return;
+  }
+  if (!devicesList || devicesList.length == 0) {
+    console.info(`device list is empty`);
+    return;
+  }
+
+  let device: usbManager.USBDevice = devicesList?.[0];
+  // 申请设备访问权限
+  let rightResult: boolean;
+  try {
+    rightResult = await usbManager.requestRight(device.name);
+  } catch (err) {
+    console.error(`requestRight failed, err=${JSON.stringify(err)}`);
+    return;
+  }
+  if (!rightResult) {
+    console.error(`request right failed`);
+    return;
+  }
+  // 建立设备连接
+  let devicePipe: usbManager.USBDevicePipe;
+  try {
+    devicePipe = usbManager.connectDevice(device);
+  } catch (err) {
+    console.error(`connectDevice failed, err=${JSON.stringify(err)}`);
+    return;
+  }
+  if (devicePipe == undefined) {
+    console.error(`connect device failed`);
+    return;
+  }
+  let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[0];
+  // 独占声明接口，并注册冲突回调
+  try {
+    usbManager.claimInterfaceExclusive(devicePipe, interfaces, false, (conflictInfo: usbManager.InterfaceConflictInfo) => {
+      console.info(`interface conflict: busNum=${conflictInfo.busNum}, devAddr=${conflictInfo.devAddr}, interfaceId=${conflictInfo.interfaceId}`);
+    });
+  } catch (err) {
+    console.error(`claimInterfaceExclusive failed, err=${JSON.stringify(err)}`);
+  }
+  console.info(`claimInterfaceExclusive success`);
+  // 释放接口并关闭连接
+  try {
+    let ret: number = usbManager.releaseInterface(devicePipe, interfaces);
+    console.info(`releaseInterface = ${ret}`);
+  } catch (err) {
+    console.error(`releaseInterface failed, err=${JSON.stringify(err)}`);
+  }
+  try {
+    usbManager.closePipe(devicePipe);
+  } catch (err) {
+    console.error(`closePipe failed, err=${JSON.stringify(err)}`);
+  }
+}
+```

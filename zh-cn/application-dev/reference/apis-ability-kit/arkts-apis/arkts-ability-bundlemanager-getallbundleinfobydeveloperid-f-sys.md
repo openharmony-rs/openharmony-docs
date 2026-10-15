@@ -34,7 +34,7 @@ function getAllBundleInfoByDeveloperId(developerId: string): Array<BundleInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Array&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt; | 同步返回Array&lt;BundleInfo&gt;。 |
+| Array&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt; | 同步返回Array<[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)>。 |
 
 **错误码：**
 
@@ -42,9 +42,10 @@ function getAllBundleInfoByDeveloperId(developerId: string): Array<BundleInfo>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter developerId is empty. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter developerId is empty. |
 | [17700059](../errorcode-bundle.md#17700059-指定的开发者id不存在) | The specified developerId is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllBundleInfoByDeveloperId failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

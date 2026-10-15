@@ -6,6 +6,8 @@ type TextArea = TypedFrameNode<TextAreaInterface, TextAreaAttribute>
 
 TextArea类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextAreaInterface, [TextAreaAttribute](../arkts-components/arkts-arkui-textarea-comp-attribute.md)&gt;
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ TextArea类型的FrameNode节点类型。
 <!--Device-typeNode-type TextArea = TypedFrameNode<TextAreaInterface, TextAreaAttribute>--><!--Device-typeNode-type TextArea = TypedFrameNode<TextAreaInterface, TextAreaAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextAreaInterface, [TextAreaAttribute](../arkts-components/arkts-arkui-textarea-comp-attribute.md)&gt;

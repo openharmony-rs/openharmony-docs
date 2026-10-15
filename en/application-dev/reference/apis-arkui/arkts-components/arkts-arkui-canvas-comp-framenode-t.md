@@ -8,6 +8,8 @@ Import the frame node type object for Canvas.
 
 @typedef { import('../api/arkui/FrameNode').FrameNode } FrameNode
 
+**Type:** import('../api/arkui/FrameNode').FrameNode
+
 **Since:** 13
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Import the frame node type object for Canvas.
 <!--Device-unnamed-declare type FrameNode = import('../api/arkui/FrameNode').FrameNode--><!--Device-unnamed-declare type FrameNode = import('../api/arkui/FrameNode').FrameNode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/arkui/FrameNode').FrameNode

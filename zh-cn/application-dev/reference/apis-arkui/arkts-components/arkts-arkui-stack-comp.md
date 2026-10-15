@@ -6,7 +6,7 @@
 > 
 > - 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> - 通用属性[align](arkts-arkui-common-comp-commonmethod-c.md#align)在该组件上支持镜像能力。
+> - 通用属性[align](arkts-arkui-common-comp-commonmethod-c.md#align1)在该组件上支持镜像能力。
 
 ## 子组件
 
@@ -24,7 +24,7 @@ Stack(options?: StackOptions)
 > 
 > 组件嵌套层数过多会导致性能下降。在可通过组件属性或系统API实现相同布局效果的场景中，使用这些替代方法可以减少嵌套层数，从而优化性能。最佳实践请参考组件嵌套优化-优先使用组件属性代替嵌套组件。
 > 
-> 该接口的alignContent参数与[align](arkts-arkui-common-comp-commonmethod-c.md#align)同时设置时，后设置的属性值会覆盖先设置的属性值。该接口的alignContent参数与
+> 该接口的alignContent参数与[align](arkts-arkui-common-comp-commonmethod-c.md#align1)同时设置时，后设置的属性值会覆盖先设置的属性值。该接口的alignContent参数与
 > alignContent属性同时设置时，以属性设置的值为准。
 
 **起始版本：** 7

@@ -12,7 +12,7 @@ import { manager } from '@kit.ConnectivityKit';
 function enable(): void
 ```
 
-Enables NearLink.
+Enables NearLink. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink.
 
 **Since:** 26.0.0
 
@@ -20,18 +20,22 @@ Enables NearLink.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-manager-function enable(): void--><!--Device-manager-function enable(): void-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
 **System API:** This is a system API.
 
+**See also:** [disable](arkts-connectivity-manager-disable-f-sys.md) Disables NearLink.
+
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications are not allowed to use system APIs. |
-| [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | EDM denied. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because the chip does not support it. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [203](../../errorcode-universal.md#203-system-function-prohibited-by-enterprise-management-policies) | This function is prohibited by enterprise management policies. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability;         2. The chip does not support the capability;         3. A dependent service feature is not supported. |
 | [36100099](../errorcode-nearlink-service.md#36100099-operation-failed) | Operation failed. |

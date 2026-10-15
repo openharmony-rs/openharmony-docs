@@ -26,6 +26,8 @@ class Region
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -60,37 +62,13 @@ class DrawingRenderNode extends RenderNode {
     canvas.attachPen(pen);
     let region = new drawing.Region();
     region.setRect(200, 200, 400, 400);
-    let region2 = new drawing.Region(region);
-    canvas.drawRegion(region2);
-    canvas.detachPen();
-  }
-}
-```
-
-```TypeScript
-import { RenderNode } from '@kit.ArkUI';
-import { drawing } from '@kit.ArkGraphics2D';
-
-class DrawingRenderNode extends RenderNode {
-  draw(context: DrawContext) {
-    const canvas = context.canvas;
-    const pen = new drawing.Pen();
-    pen.setColor({
-      alpha: 255,
-      red: 255,
-      green: 0,
-      blue: 0
-    });
-    pen.setStrokeWidth(10);
-    canvas.attachPen(pen);
-    let region = new drawing.Region(100, 100, 200, 200);
     canvas.drawRegion(region);
     canvas.detachPen();
   }
 }
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -139,7 +117,7 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 

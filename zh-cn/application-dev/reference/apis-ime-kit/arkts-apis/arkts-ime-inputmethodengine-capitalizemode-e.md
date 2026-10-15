@@ -19,6 +19,20 @@ export enum CapitalizeMode
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
+## CHARACTERS
+
+```TypeScript
+CHARACTERS
+```
+
+每个字母都大写。
+
+**起始版本：** 20
+
+<!--Device-CapitalizeMode-CHARACTERS--><!--Device-CapitalizeMode-CHARACTERS-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 ## NONE
 
 ```TypeScript
@@ -58,19 +72,5 @@ WORDS
 **起始版本：** 20
 
 <!--Device-CapitalizeMode-WORDS--><!--Device-CapitalizeMode-WORDS-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
-## CHARACTERS
-
-```TypeScript
-CHARACTERS
-```
-
-每个字母都大写。
-
-**起始版本：** 20
-
-<!--Device-CapitalizeMode-CHARACTERS--><!--Device-CapitalizeMode-CHARACTERS-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

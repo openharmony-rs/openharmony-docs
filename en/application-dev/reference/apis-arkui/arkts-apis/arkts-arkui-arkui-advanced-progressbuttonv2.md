@@ -1,5 +1,16 @@
 # @ohos.arkui.advanced.ProgressButtonV2
 
+The **ProgressButtonV2** component is a text-based download button with a progress indicator that shows the download
+ progress.
+
+This component is implemented based on
+ [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2). Compared
+ with [state management V1](../../../ui/state-management/arkts-state-management-overview.md#state-management-v1),
+ state management V2 delivers enhanced capabilities for deep observation and management of data objects, and is no
+ longer limited to the component level. With state management V2, you can control the data and states of the text
+ download button more flexibly through this component, achieving more efficient UI refresh.
+
+
 ## Modules to Import
 
 ```TypeScript
@@ -18,7 +29,7 @@ import { ProgressButtonV2, ProgressButtonV2Color, ProgressButtonV2ColorOptions }
 
 | Name | Description |
 | --- | --- |
-| [ProgressButtonV2](arkts-arkui-arkui-advanced-progressbuttonv2-progressbuttonv2-s.md) | Declare Component ProgressButtonV2 |
+| [ProgressButtonV2](arkts-arkui-arkui-advanced-progressbuttonv2-progressbuttonv2-s.md) | Creates a **ProgressButtonV2** component. |
 
 ### Interfaces
 

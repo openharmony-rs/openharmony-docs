@@ -10,12 +10,6 @@ List组件的滚动控制器，通过它控制List组件的滚动，仅支持一
 > 
 > ListScroller继承自[Scroller](arkts-arkui-scroll-comp-scroller-c.md)，具有[Scroller](arkts-arkui-scroll-comp-scroller-c.md)的全部方法。
 
-## 导入对象
-
-```ts
-listScroller: ListScroller = new ListScroller();
-```
-
 **继承/实现关系：** ListScroller extends [Scroller](arkts-arkui-scroll-comp-scroller-c.md)
 
 **起始版本：** 11
@@ -23,6 +17,12 @@ listScroller: ListScroller = new ListScroller();
 <!--Device-unnamed-declare class ListScroller extends Scroller--><!--Device-unnamed-declare class ListScroller extends Scroller-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+```ts
+listScroller: ListScroller = new ListScroller();
+```
 
 ## closeAllSwipeActions
 

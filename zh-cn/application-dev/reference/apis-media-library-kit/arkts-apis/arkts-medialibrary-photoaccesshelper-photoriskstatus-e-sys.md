@@ -14,24 +14,6 @@ enum PhotoRiskStatus
 
 **系统接口：** 此接口为系统接口。
 
-## UNIDENTIFIED
-
-```TypeScript
-UNIDENTIFIED = 0
-```
-
-默认类型。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PhotoRiskStatus-UNIDENTIFIED = 0--><!--Device-PhotoRiskStatus-UNIDENTIFIED = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## APPROVED
 
 ```TypeScript
@@ -45,6 +27,24 @@ APPROVED = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PhotoRiskStatus-APPROVED = 1--><!--Device-PhotoRiskStatus-APPROVED = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## REJECTED
+
+```TypeScript
+REJECTED = 3
+```
+
+确认风险图片。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PhotoRiskStatus-REJECTED = 3--><!--Device-PhotoRiskStatus-REJECTED = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -68,19 +68,19 @@ SUSPICIOUS = 2
 
 **系统接口：** 此接口为系统接口。
 
-## REJECTED
+## UNIDENTIFIED
 
 ```TypeScript
-REJECTED = 3
+UNIDENTIFIED = 0
 ```
 
-确认风险图片。
+默认类型。
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PhotoRiskStatus-REJECTED = 3--><!--Device-PhotoRiskStatus-REJECTED = 3-End-->
+<!--Device-PhotoRiskStatus-UNIDENTIFIED = 0--><!--Device-PhotoRiskStatus-UNIDENTIFIED = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

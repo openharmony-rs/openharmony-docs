@@ -41,7 +41,7 @@ Save image data by image pixmap.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Returns the result of save. |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Returns the result of save. |
 
 **Error codes:**
 
@@ -118,7 +118,7 @@ Save image data by uri.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AbilityResult](arkts-ability-abilityresult-abilityresult-i.md)&gt; | Returns the result of save. |
+| Promise&lt;[AbilityResult](arkts-ability-abilityresult-i.md)&gt; | Returns the result of save. |
 
 **Error codes:**
 

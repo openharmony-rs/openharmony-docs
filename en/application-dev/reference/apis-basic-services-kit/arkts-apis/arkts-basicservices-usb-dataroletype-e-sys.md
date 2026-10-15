@@ -18,21 +18,21 @@ Enumerates data role types.
 
 **System API:** This is a system API.
 
-## NONE
+## DEVICE
 
 ```TypeScript
-NONE = 0
+DEVICE = 2
 ```
 
-None
+USB device.
 
 **Since:** 9
 
 **Deprecated since:** 9
 
-**Substitutes:** [NONE](arkts-basicservices-usbmanager-dataroletype-e-sys.md#none)
+**Substitutes:** [DEVICE](arkts-basicservices-usbmanager-dataroletype-e-sys.md#device)
 
-<!--Device-DataRoleType-NONE = 0--><!--Device-DataRoleType-NONE = 0-End-->
+<!--Device-DataRoleType-DEVICE = 2--><!--Device-DataRoleType-DEVICE = 2-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 
@@ -58,21 +58,21 @@ USB host.
 
 **System API:** This is a system API.
 
-## DEVICE
+## NONE
 
 ```TypeScript
-DEVICE = 2
+NONE = 0
 ```
 
-USB device.
+None
 
 **Since:** 9
 
 **Deprecated since:** 9
 
-**Substitutes:** [DEVICE](arkts-basicservices-usbmanager-dataroletype-e-sys.md#device)
+**Substitutes:** [NONE](arkts-basicservices-usbmanager-dataroletype-e-sys.md#none)
 
-<!--Device-DataRoleType-DEVICE = 2--><!--Device-DataRoleType-DEVICE = 2-End-->
+<!--Device-DataRoleType-NONE = 0--><!--Device-DataRoleType-NONE = 0-End-->
 
 **System capability:** SystemCapability.USB.USBManager
 

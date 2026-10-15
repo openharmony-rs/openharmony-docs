@@ -6,6 +6,8 @@ export type Rotation = Vector3
 
 Sets the rotation angle of the component.
 
+**Type:** [Vector3](arkts-arkui-graphics-vector3-i.md)
+
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Sets the rotation angle of the component.
 <!--Device-unnamed-export type Rotation = Vector3--><!--Device-unnamed-export type Rotation = Vector3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [Vector3](arkts-arkui-graphics-vector3-i.md)

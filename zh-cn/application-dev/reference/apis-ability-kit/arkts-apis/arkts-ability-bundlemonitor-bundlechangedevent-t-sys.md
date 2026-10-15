@@ -6,6 +6,8 @@ type BundleChangedEvent = 'add' | 'update' | 'remove'
 
 监听的事件类型。
 
+取值类型为下表类型中的一个。
+
 **起始版本：** 9
 
 <!--Device-bundleMonitor-type BundleChangedEvent = 'add' | 'update' | 'remove'--><!--Device-bundleMonitor-type BundleChangedEvent = 'add' | 'update' | 'remove'-End-->

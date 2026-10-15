@@ -51,6 +51,7 @@ onSetData(authSubType: AuthSubType, data: Uint8Array): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid pinSubType. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ let inputer: osAccount.IInputer = {
   }
 };
 ```
+
+<!--DelEnd-->

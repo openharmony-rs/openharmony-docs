@@ -8,6 +8,8 @@ Defines the PixelMap type object for ui component.
 
 @typedef { import('../api/@ohos.multimedia.image').default.PixelMap } PixelMap
 
+**Type:** import('../api/@ohos.multimedia.image').default.PixelMap
+
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
@@ -15,5 +17,3 @@ Defines the PixelMap type object for ui component.
 <!--Device-unnamed-declare type PixelMap = import('../api/@ohos.multimedia.image').default.PixelMap--><!--Device-unnamed-declare type PixelMap = import('../api/@ohos.multimedia.image').default.PixelMap-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.multimedia.image').default.PixelMap

@@ -6,29 +6,9 @@ declare enum BlurStyleActivePolicy
 
 Enumerates the policies for activating the blur style.
 
-@enum { number }
-
 **Since:** 14
 
 <!--Device-unnamed-declare enum BlurStyleActivePolicy--><!--Device-unnamed-declare enum BlurStyleActivePolicy-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## FOLLOWS_WINDOW_ACTIVE_STATE
-
-```TypeScript
-FOLLOWS_WINDOW_ACTIVE_STATE = 0
-```
-
-The blur effect changes according to the window's focus state; it is inactive when the window is not in focus and active when the window is in focus.
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-BlurStyleActivePolicy-FOLLOWS_WINDOW_ACTIVE_STATE = 0--><!--Device-BlurStyleActivePolicy-FOLLOWS_WINDOW_ACTIVE_STATE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -65,5 +45,23 @@ The blur effect is always inactive.
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-BlurStyleActivePolicy-ALWAYS_INACTIVE = 2--><!--Device-BlurStyleActivePolicy-ALWAYS_INACTIVE = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## FOLLOWS_WINDOW_ACTIVE_STATE
+
+```TypeScript
+FOLLOWS_WINDOW_ACTIVE_STATE = 0
+```
+
+The blur effect changes according to the window's focus state; it is inactive when the window is not in focus and active when the window is in focus.
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-BlurStyleActivePolicy-FOLLOWS_WINDOW_ACTIVE_STATE = 0--><!--Device-BlurStyleActivePolicy-FOLLOWS_WINDOW_ACTIVE_STATE = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

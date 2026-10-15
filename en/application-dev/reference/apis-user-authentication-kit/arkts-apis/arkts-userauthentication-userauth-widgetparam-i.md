@@ -30,7 +30,7 @@ Description text of the navigation button, with a maximum length of 60 character
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WidgetParam-navigationButtonText?: string--><!--Device-WidgetParam-navigationButtonText?: string-End-->
 
@@ -48,7 +48,7 @@ Title of the user authentication page, which cannot be empty or exceed 500 chara
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-WidgetParam-title: string--><!--Device-WidgetParam-title: string-End-->
 
@@ -68,7 +68,7 @@ Used to display an application modal dialog for authentication. Since API versio
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-WidgetParam-uiContext?: Context--><!--Device-WidgetParam-uiContext?: Context-End-->
 

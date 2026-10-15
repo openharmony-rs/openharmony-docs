@@ -24,7 +24,7 @@ UIAbility对象状态变成后台时，触发该回调函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-onAbilityBackground?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityBackground?: AbilityCallbackFn-End-->
 
@@ -42,7 +42,7 @@ UIAbility对象被创建时，触发该回调函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-onAbilityCreate?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityCreate?: AbilityCallbackFn-End-->
 
@@ -60,7 +60,7 @@ UIAbility对象被销毁前，触发该回调函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-onAbilityDestroy?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityDestroy?: AbilityCallbackFn-End-->
 
@@ -78,7 +78,7 @@ UIAbility对象状态变成前台时，触发该回调函数。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-onAbilityForeground?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityForeground?: AbilityCallbackFn-End-->
 
@@ -96,7 +96,7 @@ onWindowStageCreate?: AbilityCallbackFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-onWindowStageCreate?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageCreate?: AbilityCallbackFn-End-->
 
@@ -114,7 +114,7 @@ onWindowStageDestroy?: AbilityCallbackFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-onWindowStageDestroy?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageDestroy?: AbilityCallbackFn-End-->
 
@@ -132,7 +132,7 @@ onWindowStageRestore?: AbilityCallbackFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-onWindowStageRestore?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageRestore?: AbilityCallbackFn-End-->
 
@@ -152,7 +152,7 @@ abilityName: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-abilityName: string--><!--Device-InteropAbilityMonitor-abilityName: string-End-->
 
@@ -172,7 +172,7 @@ moduleName?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-InteropAbilityMonitor-moduleName?: string--><!--Device-InteropAbilityMonitor-moduleName?: string-End-->
 

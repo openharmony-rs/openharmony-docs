@@ -51,6 +51,7 @@ Obtains the notification switch state. This API uses a promise to return the res
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,3 +66,5 @@ notificationManager.getNotificationSwitch(switchName, userId).then((data: notifi
     console.error(`getNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

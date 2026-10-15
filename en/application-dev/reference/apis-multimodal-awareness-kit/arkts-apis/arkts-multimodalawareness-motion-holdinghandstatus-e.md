@@ -12,17 +12,17 @@ Defines the holding hand state information, which represents the result of a hol
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
-## NOT_HELD
+## BOTH_HANDS_HELD
 
 ```TypeScript
-NOT_HELD = 0
+BOTH_HANDS_HELD = 3
 ```
 
-No holding.
+Holding with both hands.
 
 **Since:** 20
 
-<!--Device-HoldingHandStatus-NOT_HELD = 0--><!--Device-HoldingHandStatus-NOT_HELD = 0-End-->
+<!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3--><!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
@@ -40,6 +40,20 @@ Holding with the left hand.
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
+## NOT_HELD
+
+```TypeScript
+NOT_HELD = 0
+```
+
+No holding.
+
+**Since:** 20
+
+<!--Device-HoldingHandStatus-NOT_HELD = 0--><!--Device-HoldingHandStatus-NOT_HELD = 0-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.Motion
+
 ## RIGHT_HAND_HELD
 
 ```TypeScript
@@ -51,20 +65,6 @@ Holding with the right hand.
 **Since:** 20
 
 <!--Device-HoldingHandStatus-RIGHT_HAND_HELD = 2--><!--Device-HoldingHandStatus-RIGHT_HAND_HELD = 2-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.Motion
-
-## BOTH_HANDS_HELD
-
-```TypeScript
-BOTH_HANDS_HELD = 3
-```
-
-Holding with both hands.
-
-**Since:** 20
-
-<!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3--><!--Device-HoldingHandStatus-BOTH_HANDS_HELD = 3-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 

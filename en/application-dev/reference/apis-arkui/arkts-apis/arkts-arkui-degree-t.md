@@ -6,6 +6,8 @@ declare type Degree = `${number}deg`
 
 Angle type, used to describe an angle in deg.
 
+**Type:** `${number}deg`
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Angle type, used to describe an angle in deg.
 <!--Device-unnamed-declare type Degree = `${number}deg`--><!--Device-unnamed-declare type Degree = `${number}deg`-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** `${number}deg`

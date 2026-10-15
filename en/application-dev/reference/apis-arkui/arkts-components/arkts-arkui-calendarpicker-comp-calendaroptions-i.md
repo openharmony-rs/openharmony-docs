@@ -6,6 +6,12 @@ declare interface CalendarOptions
 
 Describes the parameters of the calendar picker.
 
+**Since:** 10
+
+<!--Device-unnamed-declare interface CalendarOptions--><!--Device-unnamed-declare interface CalendarOptions-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Rules for Setting start and end
 
 | Scenario | Description |  
@@ -19,12 +25,6 @@ Describes the parameters of the calendar picker.
 | The end date is earlier than the current system date, and the selected date is not set. | The selected date is set as the end date. |
 
 | The set date is in invalid format, for example, **1999-13-32**.| The start or end date setting is invalid,and the selected date is the default value.|
-
-**Since:** 10
-
-<!--Device-unnamed-declare interface CalendarOptions--><!--Device-unnamed-declare interface CalendarOptions-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 ## disabledDateRange
 

@@ -102,7 +102,7 @@ Content displayed in the confirm dialog box.
 
 **Deprecated since:** 8
 
-**Substitutes:** message
+**Substitutes:** [message](arkts-arkui-router-enablealertoptions-i.md#message)
 
 <!--Device-EnableAlertBeforeBackPageOptions-message: string--><!--Device-EnableAlertBeforeBackPageOptions-message: string-End-->
 

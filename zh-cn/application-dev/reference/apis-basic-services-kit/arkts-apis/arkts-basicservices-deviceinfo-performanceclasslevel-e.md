@@ -26,20 +26,6 @@ CLASS_LEVEL_HIGH
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-## CLASS_LEVEL_MEDIUM
-
-```TypeScript
-CLASS_LEVEL_MEDIUM
-```
-
-值为1,表示设备能力定级为中。
-
-**起始版本：** 19
-
-<!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM--><!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM-End-->
-
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 ## CLASS_LEVEL_LOW
 
 ```TypeScript
@@ -51,5 +37,19 @@ CLASS_LEVEL_LOW
 **起始版本：** 19
 
 <!--Device-PerformanceClassLevel-CLASS_LEVEL_LOW--><!--Device-PerformanceClassLevel-CLASS_LEVEL_LOW-End-->
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+## CLASS_LEVEL_MEDIUM
+
+```TypeScript
+CLASS_LEVEL_MEDIUM
+```
+
+值为1,表示设备能力定级为中。
+
+**起始版本：** 19
+
+<!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM--><!--Device-PerformanceClassLevel-CLASS_LEVEL_MEDIUM-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo

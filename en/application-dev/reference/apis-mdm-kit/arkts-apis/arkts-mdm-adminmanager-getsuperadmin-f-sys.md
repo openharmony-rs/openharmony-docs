@@ -36,6 +36,7 @@ Queries the super device administrator application of this first user (u100). Th
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ adminManager.getSuperAdmin().then((result) => {
   console.error(`Failed to get super admin. Code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getanglemodify1"></a>
+
 ## getAngleModify
 
 ```TypeScript
@@ -52,7 +54,7 @@ sensor.getAngleModify([1, 0, 0, 0, 1, 0, 0, 0, 1], [1, 0, 0, 0, 0.87, -0.50, 0, 
 ```
 
 
-<a id="getanglemodify-1"></a>
+<a id="getanglemodify2"></a>
 
 ## getAngleModify
 

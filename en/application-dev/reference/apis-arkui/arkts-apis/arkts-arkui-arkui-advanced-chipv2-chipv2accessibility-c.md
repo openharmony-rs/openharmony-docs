@@ -56,8 +56,6 @@ Default value: empty string.
 
 When the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **Since:** 26.0.0
@@ -94,8 +92,6 @@ Default value: **"auto"**
 
 When the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** string
 
 **Default:** auto
@@ -123,8 +119,6 @@ Accessibility text. When a component has no text attribute, the screen reader do
 Default value: empty string.
 
 When the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

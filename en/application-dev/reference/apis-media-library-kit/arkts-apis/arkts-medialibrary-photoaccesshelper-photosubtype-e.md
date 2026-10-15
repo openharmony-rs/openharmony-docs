@@ -12,6 +12,22 @@ Enumerates the [PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasset-i.md
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## BURST
+
+```TypeScript
+BURST = 4
+```
+
+Burst photo.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PhotoSubtype-BURST = 4--><!--Device-PhotoSubtype-BURST = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## DEFAULT
 
 ```TypeScript
@@ -22,7 +38,7 @@ Photo, which is the default type.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PhotoSubtype-DEFAULT = 0--><!--Device-PhotoSubtype-DEFAULT = 0-End-->
 
@@ -38,24 +54,8 @@ Moving photo.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PhotoSubtype-MOVING_PHOTO = 3--><!--Device-PhotoSubtype-MOVING_PHOTO = 3-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-## BURST
-
-```TypeScript
-BURST = 4
-```
-
-Burst photo.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-PhotoSubtype-BURST = 4--><!--Device-PhotoSubtype-BURST = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

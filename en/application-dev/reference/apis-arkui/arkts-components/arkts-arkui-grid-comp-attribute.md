@@ -8,7 +8,7 @@ In addition to [universal attributes](arkts-arkui-common-comp.md) and [scrollabl
 
 In addition to [universal events](arkts-arkui-common-comp.md) and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
 
-**Inheritance/Implementation:** GridAttribute extends ScrollableCommonMethod<GridAttribute>
+**Inheritance/Implementation:** GridAttribute extends ScrollableCommonMethod&lt;GridAttribute&gt;
 
 **Since:** 7
 
@@ -40,6 +40,8 @@ Sets the alignment mode of grid items in the grid. For details about the usage, 
 | --- | --- | --- | --- |
 | alignment | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[GridItemAlignment](arkts-arkui-grid-comp-griditemalignment-e.md)&gt; | Yes | Alignment mode of grid items in the grid.<br>Default value: **GridItemAlignment.DEFAULT** |
 
+<a id="cachedcount1"></a>
+
 ## cachedCount
 
 ```TypeScript
@@ -68,7 +70,7 @@ After caching is set, **cachedCount** grid rows/columns are preloaded on both si
 | --- | --- | --- | --- |
 | value | number | Yes | Number of grid items to be cached (preloaded).<br>Default value: the number of rows visible on the screen for vertical scrolling, or the number of columns visible on the screen for horizontal scrolling. The maximum value is 16. <br>Value range: [0, +∞). <br>Values less than 0 are treated as **1**. <br>When **value** is updated using a state variable, the **Grid** component does not trigger a layout update. The number of cached nodes is updated only during the next layout. |
 
-<a id="cachedcount-1"></a>
+<a id="cachedcount2"></a>
 
 ## cachedCount
 
@@ -78,7 +80,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of grid rows/columns to be preloaded on both sides along the main axis, and configures whether to display the preloaded nodes. This attribute takes effect only in [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) with [virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll) enabled.
 
-After caching is set, **cachedCount** grid rows/columns are preloaded on both sides of the display area of the **Grid** component along the main axis. During vertical scrolling, **cachedCount** rows are preloaded on the top and bottom sides respectively. During horizontal scrolling, **cachedCount** columns are preloaded on the left and right sides respectively. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
+After caching is set, **cachedCount** grid rows/columns are preloaded on both sides of the display area of the **Grid** component along the main axis. During vertical scrolling, **cachedCount** rows are preloaded on the top and bottom sides respectively. During horizontal scrolling, **cachedCount** columns are preloaded on the left and right sides respectively. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
 
 **Since:** 14
 
@@ -153,6 +155,8 @@ Sets the gap between columns. A value less than 0 evaluates to the default value
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Gap between columns.<br>Default value: **0**<br>Value range: [0, +∞). If a value less than 0 is set, the default value 0 is used. |
 
+<a id="columnstemplate1"></a>
+
 ## columnsTemplate
 
 ```TypeScript
@@ -193,7 +197,7 @@ If this attribute is set to **'0fr'**, the column width is 0, and grid item in t
 | --- | --- | --- | --- |
 | value | string | Yes | Number of columns or minimum column width of the grid. |
 
-<a id="columnstemplate-1"></a>
+<a id="columnstemplate2"></a>
 
 ## columnsTemplate
 
@@ -203,7 +207,7 @@ columnsTemplate(value: string | ItemFillPolicy)
 
 Number of columns in the current grid layout. If this attribute is not set, one column will be used.
 
-When the value is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate) for the usage.
+When the value is of the string type, refer to [columnsTemplate(value: string)](#columnstemplate1) for the usage.
 
 When the value is of the **ItemFillPolicy** type, the number of columns is determined based on the [breakpoint type](../../../ui/arkts-layout-development-grid-layout.md#breakpoints) corresponding to the width of the **Grid** component.
 
@@ -974,6 +978,8 @@ Sets the scrollbar state.
 | --- | --- | --- | --- |
 | value | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Scrollbar state.<br>Default value: **BarState.Auto** <br>**NOTE:** <br>In API version 9 and earlier versions, the default value is **BarState.Off**. Since API version 10, the default value is **BarState.Auto**. |
 
+<a id="scrollbarcolor1"></a>
+
 ## scrollBarColor
 
 ```TypeScript
@@ -998,7 +1004,7 @@ Sets the scrollbar color.
 | --- | --- | --- | --- |
 | value | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string | Yes | Scrollbar color.<br>Default value: **'#182431'** (40% opacity) <br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. <br>A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
 
-<a id="scrollbarcolor-1"></a>
+<a id="scrollbarcolor2"></a>
 
 ## scrollBarColor
 
@@ -1006,7 +1012,7 @@ Sets the scrollbar color.
 scrollBarColor(color: Color | number | string | Resource)
 ```
 
-Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), the parameter name is changed to **color** and the Resource type is supported.
+Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor1), the parameter name is changed to **color** and the Resource type is supported.
 
 **Since:** 22
 
@@ -1023,6 +1029,8 @@ Sets the scrollbar color. Compared with [scrollBarColor](#scrollbarcolor), the p
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | color | [Color](../arkts-apis/arkts-arkui-color-e.md) &#124; number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Scrollbar color.<br>Default value: **'#182431'** (40% opacity) <br>A number value indicates a HEX color in RGB or ARGB format, for example, **0xffffff**. A string value indicates a color in RGB or ARGB format, for example, **'#ffffff'**. |
+
+<a id="scrollbarwidth1"></a>
 
 ## scrollBarWidth
 
@@ -1048,7 +1056,7 @@ Sets the width of the scrollbar. Percentage values are not supported. After the 
 | --- | --- | --- | --- |
 | value | number &#124; string | Yes | Width of the scrollbar.<br>Default value: **4**<br>Unit: vp<br>Value range: [0, +∞). If the value is less than 0, the default value is used. If the value is 0, the scrollbar is not displayed. |
 
-<a id="scrollbarwidth-1"></a>
+<a id="scrollbarwidth2"></a>
 
 ## scrollBarWidth
 
@@ -1075,6 +1083,66 @@ If this attribute is not set, the scrollbar width is 4 vp.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Scrollbar width.<br>Unit: vp <br>The value range is [0, +∞). If this parameter is set to a value less than 0, **4vp** is used. The value **0** means not to show the scrollbar. |
+
+## scrollPlaceholder
+
+```TypeScript
+scrollPlaceholder(provider?: PlaceholderProvider)
+```
+
+Sets a scroll placeholder provider for the **Grid** component. When the framework predicts that creating the next item within the remaining frame budget would overrun the frame, it first displays a placeholder for that item and creates the real item across frames on the UI thread.
+
+The provider returns the placeholder description of an item: **id** refers to a template registered through [getPlaceholderRegister()](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getplaceholderregister).register and **size** is a layout suggestion. If the provider returns **undefined**, or the returned **id** is missing or not registered, the system default placeholder is used and scrolling is not interrupted.
+
+<br>**NOTE:** <br>
+1. This attribute is opt-in: if it is not set, the **Grid** component keeps the current behavior,
+including the semantics of **syncLoad**.
+2. The placeholder template must be a global, parameterless  
+**@Builder({ isPlaceholder: true })** function that performs read-only static rendering.
+3. After the real item has been created, it is re-laid out under the normal layout constraints of
+GridItem and replaces the placeholder, keeping the scroll anchor.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-GridAttribute-scrollPlaceholder(provider?: PlaceholderProvider): GridAttribute--><!--Device-GridAttribute-scrollPlaceholder(provider?: PlaceholderProvider): GridAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| provider | [PlaceholderProvider](arkts-arkui-grid-comp-placeholderprovider-t.md) | No | Placeholder provider of the item at the given index. |
+
+## scrollSnapStrategy
+
+```TypeScript
+scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider)
+```
+
+Sets the two-stage scroll snap strategy of the Grid.
+
+START, CENTER, and END align items with the start, center, and end of the viewport along the scrolling axis. A custom provider calculates the approach distance and final target through its two callbacks. NONE or undefined clears the strategy and restores the default scrolling behavior. Snapping is disabled for unsupported layouts. Targets are constrained to the legal scroll range.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-GridAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): GridAttribute--><!--Device-GridAttribute-scrollSnapStrategy(strategy?: ScrollSnapAlign | ScrollSnapOffsetProvider): GridAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| strategy | [ScrollSnapAlign](arkts-arkui-list-comp-scrollsnapalign-e.md) &#124; [ScrollSnapOffsetProvider](../arkts-apis/arkts-arkui-scrollsnapoffsetprovider-i.md) | No | Built-in alignment or custom provider. |
 
 ## supportAnimation
 
@@ -1164,7 +1232,7 @@ Called When sliding the grid.
 
 **Deprecated since:** 12
 
-**Substitutes:** onDidScroll
+**Substitutes:** [onDidScroll](arkts-arkui-common-comp-scrollablecommonmethod-c.md#ondidscroll)
 
 **Model restriction:** This API can be used only in the stage model.
 

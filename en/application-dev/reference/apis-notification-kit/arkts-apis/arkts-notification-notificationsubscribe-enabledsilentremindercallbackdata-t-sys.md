@@ -6,6 +6,8 @@ export type EnabledSilentReminderCallbackData = _EnabledSilentReminderCallbackDa
 
 Describes the switch state for silent reminder notification.
 
+**Type:** _EnabledSilentReminderCallbackData
+
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Describes the switch state for silent reminder notification.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _EnabledSilentReminderCallbackData

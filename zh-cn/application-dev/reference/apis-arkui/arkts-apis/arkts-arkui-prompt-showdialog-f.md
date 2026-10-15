@@ -6,6 +6,8 @@
 import { prompt } from '@kit.ArkUI';
 ```
 
+<a id="showdialog1"></a>
+
 ## showDialog
 
 ```TypeScript
@@ -18,7 +20,7 @@ function showDialog(options: ShowDialogOptions, callback: AsyncCallback<ShowDial
 
 **废弃版本：** 9
 
-**替代接口：** showDialog
+**替代接口：** [showDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#showdialog)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
@@ -60,7 +62,7 @@ prompt.showDialog({
 ```
 
 
-<a id="showdialog-1"></a>
+<a id="showdialog2"></a>
 
 ## showDialog
 
@@ -74,7 +76,7 @@ function showDialog(options: ShowDialogOptions): Promise<ShowDialogSuccessRespon
 
 **废弃版本：** 9
 
-**替代接口：** showDialog
+**替代接口：** [showDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#showdialog)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 

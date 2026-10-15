@@ -56,6 +56,7 @@ function getShortcutInfoByAbility(bundleName: string, moduleName: string, abilit
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,3 +114,5 @@ try {
   console.error(`getShortcutInfoByAbility errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

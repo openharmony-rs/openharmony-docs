@@ -12,22 +12,6 @@ export enum HuksChallengeType
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
-## HUKS_CHALLENGE_TYPE_NORMAL
-
-```TypeScript
-HUKS_CHALLENGE_TYPE_NORMAL = 0
-```
-
-表示challenge为普通类型，默认32字节。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NORMAL = 0--><!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NORMAL = 0-End-->
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
 ## HUKS_CHALLENGE_TYPE_CUSTOM
 
 ```TypeScript
@@ -57,5 +41,21 @@ HUKS_CHALLENGE_TYPE_NONE = 2
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NONE = 2--><!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NONE = 2-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
+## HUKS_CHALLENGE_TYPE_NORMAL
+
+```TypeScript
+HUKS_CHALLENGE_TYPE_NORMAL = 0
+```
+
+表示challenge为普通类型，默认32字节。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NORMAL = 0--><!--Device-HuksChallengeType-HUKS_CHALLENGE_TYPE_NORMAL = 0-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension

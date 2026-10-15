@@ -32,7 +32,7 @@ Current muted status.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCallState-muted: boolean--><!--Device-AVCallState-muted: boolean-End-->
 
@@ -50,7 +50,7 @@ Current call state. See [CallState](arkts-avsession-avsession-callstate-e.md)
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCallState-state: CallState--><!--Device-AVCallState-state: CallState-End-->
 

@@ -12,19 +12,19 @@ declare enum ContextMenuEditStateFlags
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## NONE
+## CAN_COPY
 
 ```TypeScript
-NONE = 0
+CAN_COPY = 1 << 1
 ```
 
-不可编辑。
+支持拷贝。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ContextMenuEditStateFlags-NONE = 0--><!--Device-ContextMenuEditStateFlags-NONE = 0-End-->
+<!--Device-ContextMenuEditStateFlags-CAN_COPY = 1 << 1--><!--Device-ContextMenuEditStateFlags-CAN_COPY = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -41,22 +41,6 @@ CAN_CUT = 1 << 0
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContextMenuEditStateFlags-CAN_CUT = 1 << 0--><!--Device-ContextMenuEditStateFlags-CAN_CUT = 1 << 0-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## CAN_COPY
-
-```TypeScript
-CAN_COPY = 1 << 1
-```
-
-支持拷贝。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ContextMenuEditStateFlags-CAN_COPY = 1 << 1--><!--Device-ContextMenuEditStateFlags-CAN_COPY = 1 << 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -89,5 +73,21 @@ CAN_SELECT_ALL = 1 << 3
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ContextMenuEditStateFlags-CAN_SELECT_ALL = 1 << 3--><!--Device-ContextMenuEditStateFlags-CAN_SELECT_ALL = 1 << 3-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+不可编辑。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ContextMenuEditStateFlags-NONE = 0--><!--Device-ContextMenuEditStateFlags-NONE = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

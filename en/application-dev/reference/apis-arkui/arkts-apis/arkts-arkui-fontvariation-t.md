@@ -6,6 +6,8 @@ declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVa
 
 Properties of a variable font.
 
+**Type:** import('../api/@ohos.graphics.text').default.FontVariation
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Properties of a variable font.
 <!--Device-unnamed-declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation--><!--Device-unnamed-declare type FontVariation = import('../api/@ohos.graphics.text').default.FontVariation-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.text').default.FontVariation

@@ -14,24 +14,6 @@ The figure below illustrates the clipping areas corresponding to each enumeratio
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## CONTENT_ONLY
-
-```TypeScript
-CONTENT_ONLY = 0
-```
-
-Clip to the content area, corresponding to the green area in the figure.
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-ContentClipMode-CONTENT_ONLY = 0--><!--Device-ContentClipMode-CONTENT_ONLY = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## BOUNDARY
 
 ```TypeScript
@@ -47,6 +29,24 @@ Clip to the component area, corresponding to the entire blue area in the figure.
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-ContentClipMode-BOUNDARY = 1--><!--Device-ContentClipMode-BOUNDARY = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## CONTENT_ONLY
+
+```TypeScript
+CONTENT_ONLY = 0
+```
+
+Clip to the content area, corresponding to the green area in the figure.
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ContentClipMode-CONTENT_ONLY = 0--><!--Device-ContentClipMode-CONTENT_ONLY = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -28,22 +28,6 @@ ProcessAbnormalTermination = 0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## ProcessWasKilled
-
-```TypeScript
-ProcessWasKilled = 1
-```
-
-收到SIGKILL，或被手动终止。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-RenderExitReason-ProcessWasKilled = 1--><!--Device-RenderExitReason-ProcessWasKilled = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## ProcessCrashed
 
 ```TypeScript
@@ -57,6 +41,22 @@ ProcessCrashed = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-RenderExitReason-ProcessCrashed = 2--><!--Device-RenderExitReason-ProcessCrashed = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## ProcessExitUnknown
+
+```TypeScript
+ProcessExitUnknown = 4
+```
+
+其他原因，比如渲染进程孵化失败。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-RenderExitReason-ProcessExitUnknown = 4--><!--Device-RenderExitReason-ProcessExitUnknown = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -76,18 +76,18 @@ ProcessOom = 3
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## ProcessExitUnknown
+## ProcessWasKilled
 
 ```TypeScript
-ProcessExitUnknown = 4
+ProcessWasKilled = 1
 ```
 
-其他原因，比如渲染进程孵化失败。
+收到SIGKILL，或被手动终止。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-RenderExitReason-ProcessExitUnknown = 4--><!--Device-RenderExitReason-ProcessExitUnknown = 4-End-->
+<!--Device-RenderExitReason-ProcessWasKilled = 1--><!--Device-RenderExitReason-ProcessWasKilled = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

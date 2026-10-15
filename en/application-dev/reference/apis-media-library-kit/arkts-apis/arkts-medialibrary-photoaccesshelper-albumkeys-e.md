@@ -12,34 +12,6 @@ Enumerates the album keys.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## URI
-
-```TypeScript
-URI = 'uri'
-```
-
-URI of the album.
-
-**Since:** 10
-
-<!--Device-AlbumKeys-URI = 'uri'--><!--Device-AlbumKeys-URI = 'uri'-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-## ALBUM_NAME
-
-```TypeScript
-ALBUM_NAME = 'album_name'
-```
-
-Name of the album.
-
-**Since:** 10
-
-<!--Device-AlbumKeys-ALBUM_NAME = 'album_name'--><!--Device-AlbumKeys-ALBUM_NAME = 'album_name'-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## ALBUM_LPATH
 
 ```TypeScript
@@ -61,6 +33,20 @@ Albums and their virtual path values:
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## ALBUM_NAME
+
+```TypeScript
+ALBUM_NAME = 'album_name'
+```
+
+Name of the album.
+
+**Since:** 10
+
+<!--Device-AlbumKeys-ALBUM_NAME = 'album_name'--><!--Device-AlbumKeys-ALBUM_NAME = 'album_name'-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## CHANGE_TIME
 
 ```TypeScript
@@ -72,5 +58,19 @@ Time when the album is changed.
 **Since:** 23
 
 <!--Device-AlbumKeys-CHANGE_TIME = 'change_time'--><!--Device-AlbumKeys-CHANGE_TIME = 'change_time'-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## URI
+
+```TypeScript
+URI = 'uri'
+```
+
+URI of the album.
+
+**Since:** 10
+
+<!--Device-AlbumKeys-URI = 'uri'--><!--Device-AlbumKeys-URI = 'uri'-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

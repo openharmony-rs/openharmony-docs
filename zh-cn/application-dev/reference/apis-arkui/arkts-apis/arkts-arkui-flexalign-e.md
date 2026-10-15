@@ -12,24 +12,6 @@ declare enum FlexAlign
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Start
-
-```TypeScript
-Start
-```
-
-元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-FlexAlign-Start--><!--Device-FlexAlign-Start-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Center
 
 ```TypeScript
@@ -66,24 +48,6 @@ End
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SpaceBetween
-
-```TypeScript
-SpaceBetween
-```
-
-Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-FlexAlign-SpaceBetween--><!--Device-FlexAlign-SpaceBetween-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## SpaceAround
 
 ```TypeScript
@@ -102,6 +66,24 @@ Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第�
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## SpaceBetween
+
+```TypeScript
+SpaceBetween
+```
+
+Flex主轴方向均匀分配弹性元素，相邻元素之间距离相同。第一个元素与行首对齐，最后一个元素与行尾对齐。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexAlign-SpaceBetween--><!--Device-FlexAlign-SpaceBetween-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## SpaceEvenly
 
 ```TypeScript
@@ -117,5 +99,23 @@ Flex主轴方向均匀分配弹性元素，相邻元素之间的距离、第一�
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-FlexAlign-SpaceEvenly--><!--Device-FlexAlign-SpaceEvenly-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Start
+
+```TypeScript
+Start
+```
+
+元素在主轴方向首端对齐，第一个元素与行首对齐，后续元素与前一个对齐。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexAlign-Start--><!--Device-FlexAlign-Start-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

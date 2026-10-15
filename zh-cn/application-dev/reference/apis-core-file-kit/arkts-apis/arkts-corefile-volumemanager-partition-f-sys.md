@@ -6,6 +6,8 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="partition1"></a>
+
 ## partition
 
 ```TypeScript
@@ -44,7 +46,7 @@ function partition(diskId: string, type: number, callback: AsyncCallback<void>):
 | 13900042 | Unknown error. |
 
 
-<a id="partition-1"></a>
+<a id="partition2"></a>
 
 ## partition
 

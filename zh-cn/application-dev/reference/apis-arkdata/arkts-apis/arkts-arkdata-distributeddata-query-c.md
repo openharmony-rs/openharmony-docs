@@ -10,7 +10,7 @@ class Query
 
 **废弃版本：** 9
 
-**替代接口：** Query
+**替代接口：** [Query](arkts-arkdata-distributedkvstore-query-c.md)
 
 <!--Device-distributedData-class Query--><!--Device-distributedData-class Query-End-->
 
@@ -33,7 +33,7 @@ and(): Query
 
 **废弃版本：** 9
 
-**替代接口：** and
+**替代接口：** [and](arkts-arkdata-distributedkvstore-query-c.md#and)
 
 <!--Device-Query-and(): Query--><!--Device-Query-and(): Query-End-->
 
@@ -72,7 +72,7 @@ beginGroup(): Query
 
 **废弃版本：** 9
 
-**替代接口：** beginGroup
+**替代接口：** [beginGroup](arkts-arkdata-distributedkvstore-query-c.md#begingroup)
 
 <!--Device-Query-beginGroup(): Query--><!--Device-Query-beginGroup(): Query-End-->
 
@@ -111,7 +111,7 @@ constructor()
 
 **废弃版本：** 9
 
-**替代接口：** constructor
+**替代接口：** [constructor](arkts-arkdata-distributedkvstore-query-c.md#constructor)
 
 <!--Device-Query-constructor()--><!--Device-Query-constructor()-End-->
 
@@ -129,7 +129,7 @@ deviceId(deviceId: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** deviceId
+**替代接口：** [deviceId](arkts-arkdata-distributedkvstore-query-c.md#deviceid)
 
 <!--Device-Query-deviceId(deviceId: string): Query--><!--Device-Query-deviceId(deviceId: string): Query-End-->
 
@@ -171,7 +171,7 @@ endGroup(): Query
 
 **废弃版本：** 9
 
-**替代接口：** endGroup
+**替代接口：** [endGroup](arkts-arkdata-distributedkvstore-query-c.md#endgroup)
 
 <!--Device-Query-endGroup(): Query--><!--Device-Query-endGroup(): Query-End-->
 
@@ -210,7 +210,7 @@ equalTo(field: string, value: number | string | boolean): Query
 
 **废弃版本：** 9
 
-**替代接口：** equalTo
+**替代接口：** [equalTo](arkts-arkdata-distributedkvstore-query-c.md#equalto)
 
 <!--Device-Query-equalTo(field: string, value: number | string | boolean): Query--><!--Device-Query-equalTo(field: string, value: number | string | boolean): Query-End-->
 
@@ -254,7 +254,7 @@ getSqlLike(): string
 
 **废弃版本：** 9
 
-**替代接口：** getSqlLike
+**替代接口：** [getSqlLike](arkts-arkdata-distributedkvstore-query-c.md#getsqllike)
 
 <!--Device-Query-getSqlLike(): string--><!--Device-Query-getSqlLike(): string-End-->
 
@@ -290,7 +290,7 @@ greaterThan(field: string, value: number | string | boolean): Query
 
 **废弃版本：** 9
 
-**替代接口：** greaterThan
+**替代接口：** [greaterThan](arkts-arkdata-distributedkvstore-query-c.md#greaterthan)
 
 <!--Device-Query-greaterThan(field: string, value: number | string | boolean): Query--><!--Device-Query-greaterThan(field: string, value: number | string | boolean): Query-End-->
 
@@ -334,7 +334,7 @@ greaterThanOrEqualTo(field: string, value: number | string): Query
 
 **废弃版本：** 9
 
-**替代接口：** greaterThanOrEqualTo
+**替代接口：** [greaterThanOrEqualTo](arkts-arkdata-distributedkvstore-query-c.md#greaterthanorequalto)
 
 <!--Device-Query-greaterThanOrEqualTo(field: string, value: number | string): Query--><!--Device-Query-greaterThanOrEqualTo(field: string, value: number | string): Query-End-->
 
@@ -378,7 +378,7 @@ inNumber(field: string, valueList: number[]): Query
 
 **废弃版本：** 9
 
-**替代接口：** inNumber
+**替代接口：** [inNumber](arkts-arkdata-distributedkvstore-query-c.md#innumber)
 
 <!--Device-Query-inNumber(field: string, valueList: number[]): Query--><!--Device-Query-inNumber(field: string, valueList: number[]): Query-End-->
 
@@ -422,7 +422,7 @@ inString(field: string, valueList: string[]): Query
 
 **废弃版本：** 9
 
-**替代接口：** inString
+**替代接口：** [inString](arkts-arkdata-distributedkvstore-query-c.md#instring)
 
 <!--Device-Query-inString(field: string, valueList: string[]): Query--><!--Device-Query-inString(field: string, valueList: string[]): Query-End-->
 
@@ -466,7 +466,7 @@ isNotNull(field: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** isNotNull
+**替代接口：** [isNotNull](arkts-arkdata-distributedkvstore-query-c.md#isnotnull)
 
 <!--Device-Query-isNotNull(field: string): Query--><!--Device-Query-isNotNull(field: string): Query-End-->
 
@@ -509,7 +509,7 @@ isNull(field: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** isNull
+**替代接口：** [isNull](arkts-arkdata-distributedkvstore-query-c.md#isnull)
 
 <!--Device-Query-isNull(field: string): Query--><!--Device-Query-isNull(field: string): Query-End-->
 
@@ -552,7 +552,7 @@ lessThan(field: string, value: number | string): Query
 
 **废弃版本：** 9
 
-**替代接口：** lessThan
+**替代接口：** [lessThan](arkts-arkdata-distributedkvstore-query-c.md#lessthan)
 
 <!--Device-Query-lessThan(field: string, value: number | string): Query--><!--Device-Query-lessThan(field: string, value: number | string): Query-End-->
 
@@ -596,7 +596,7 @@ lessThanOrEqualTo(field: string, value: number | string): Query
 
 **废弃版本：** 9
 
-**替代接口：** lessThanOrEqualTo
+**替代接口：** [lessThanOrEqualTo](arkts-arkdata-distributedkvstore-query-c.md#lessthanorequalto)
 
 <!--Device-Query-lessThanOrEqualTo(field: string, value: number | string): Query--><!--Device-Query-lessThanOrEqualTo(field: string, value: number | string): Query-End-->
 
@@ -640,7 +640,7 @@ like(field: string, value: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** like
+**替代接口：** [like](arkts-arkdata-distributedkvstore-query-c.md#like)
 
 <!--Device-Query-like(field: string, value: string): Query--><!--Device-Query-like(field: string, value: string): Query-End-->
 
@@ -684,7 +684,7 @@ limit(total: number, offset: number): Query
 
 **废弃版本：** 9
 
-**替代接口：** limit
+**替代接口：** [limit](arkts-arkdata-distributedkvstore-query-c.md#limit)
 
 <!--Device-Query-limit(total: number, offset: number): Query--><!--Device-Query-limit(total: number, offset: number): Query-End-->
 
@@ -731,7 +731,7 @@ notEqualTo(field: string, value: number | string | boolean): Query
 
 **废弃版本：** 9
 
-**替代接口：** notEqualTo
+**替代接口：** [notEqualTo](arkts-arkdata-distributedkvstore-query-c.md#notequalto)
 
 <!--Device-Query-notEqualTo(field: string, value: number | string | boolean): Query--><!--Device-Query-notEqualTo(field: string, value: number | string | boolean): Query-End-->
 
@@ -775,7 +775,7 @@ notInNumber(field: string, valueList: number[]): Query
 
 **废弃版本：** 9
 
-**替代接口：** notInNumber
+**替代接口：** [notInNumber](arkts-arkdata-distributedkvstore-query-c.md#notinnumber)
 
 <!--Device-Query-notInNumber(field: string, valueList: number[]): Query--><!--Device-Query-notInNumber(field: string, valueList: number[]): Query-End-->
 
@@ -819,7 +819,7 @@ notInString(field: string, valueList: string[]): Query
 
 **废弃版本：** 9
 
-**替代接口：** notInString
+**替代接口：** [notInString](arkts-arkdata-distributedkvstore-query-c.md#notinstring)
 
 <!--Device-Query-notInString(field: string, valueList: string[]): Query--><!--Device-Query-notInString(field: string, valueList: string[]): Query-End-->
 
@@ -863,7 +863,7 @@ or(): Query
 
 **废弃版本：** 9
 
-**替代接口：** or
+**替代接口：** [or](arkts-arkdata-distributedkvstore-query-c.md#or)
 
 <!--Device-Query-or(): Query--><!--Device-Query-or(): Query-End-->
 
@@ -902,7 +902,7 @@ orderByAsc(field: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** orderByAsc
+**替代接口：** [orderByAsc](arkts-arkdata-distributedkvstore-query-c.md#orderbyasc)
 
 <!--Device-Query-orderByAsc(field: string): Query--><!--Device-Query-orderByAsc(field: string): Query-End-->
 
@@ -946,7 +946,7 @@ orderByDesc(field: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** orderByDesc
+**替代接口：** [orderByDesc](arkts-arkdata-distributedkvstore-query-c.md#orderbydesc)
 
 <!--Device-Query-orderByDesc(field: string): Query--><!--Device-Query-orderByDesc(field: string): Query-End-->
 
@@ -990,7 +990,7 @@ prefixKey(prefix: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** prefixKey
+**替代接口：** [prefixKey](arkts-arkdata-distributedkvstore-query-c.md#prefixkey)
 
 <!--Device-Query-prefixKey(prefix: string): Query--><!--Device-Query-prefixKey(prefix: string): Query-End-->
 
@@ -1034,7 +1034,7 @@ reset(): Query
 
 **废弃版本：** 9
 
-**替代接口：** reset
+**替代接口：** [reset](arkts-arkdata-distributedkvstore-query-c.md#reset)
 
 <!--Device-Query-reset(): Query--><!--Device-Query-reset(): Query-End-->
 
@@ -1073,7 +1073,7 @@ setSuggestIndex(index: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** setSuggestIndex
+**替代接口：** [setSuggestIndex](arkts-arkdata-distributedkvstore-query-c.md#setsuggestindex)
 
 <!--Device-Query-setSuggestIndex(index: string): Query--><!--Device-Query-setSuggestIndex(index: string): Query-End-->
 
@@ -1117,7 +1117,7 @@ unlike(field: string, value: string): Query
 
 **废弃版本：** 9
 
-**替代接口：** unlike
+**替代接口：** [unlike](arkts-arkdata-distributedkvstore-query-c.md#unlike)
 
 <!--Device-Query-unlike(field: string, value: string): Query--><!--Device-Query-unlike(field: string, value: string): Query-End-->
 

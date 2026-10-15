@@ -8,7 +8,7 @@ export interface OnDownloadCompleteOptions
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-unnamed-export interface OnDownloadCompleteOptions--><!--Device-unnamed-export interface OnDownloadCompleteOptions-End-->
 
@@ -32,7 +32,7 @@ complete?: () => void
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-OnDownloadCompleteOptions-complete?: () => void--><!--Device-OnDownloadCompleteOptions-complete?: () => void-End-->
 
@@ -50,7 +50,7 @@ fail?: (data: any, code: number) => void
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-OnDownloadCompleteOptions-fail?: (data: any, code: number) => void--><!--Device-OnDownloadCompleteOptions-fail?: (data: any, code: number) => void-End-->
 
@@ -75,7 +75,7 @@ success?: (data: OnDownloadCompleteResponse) => void
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-OnDownloadCompleteOptions-success?: (data: OnDownloadCompleteResponse) => void--><!--Device-OnDownloadCompleteOptions-success?: (data: OnDownloadCompleteResponse) => void-End-->
 
@@ -101,7 +101,7 @@ download 接口返回的结果 token。
 
 **废弃版本：** 9
 
-**替代接口：** tid
+**替代接口：** [tid](arkts-basicservices-agent-task-i.md#tid)
 
 <!--Device-OnDownloadCompleteOptions-token: string--><!--Device-OnDownloadCompleteOptions-token: string-End-->
 

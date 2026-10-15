@@ -18,26 +18,6 @@ Defines the notification source type.
 
 **System API:** This is a system API.
 
-## TYPE_NORMAL
-
-```TypeScript
-TYPE_NORMAL = 0
-```
-
-Normal notification.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [TYPE_NORMAL](arkts-notification-notificationmanager-sourcetype-e-sys.md#type_normal)
-
-<!--Device-SourceType-TYPE_NORMAL = 0--><!--Device-SourceType-TYPE_NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
 ## TYPE_CONTINUOUS
 
 ```TypeScript
@@ -53,6 +33,26 @@ Continuous notification.
 **Substitutes:** [TYPE_CONTINUOUS](arkts-notification-notificationmanager-sourcetype-e-sys.md#type_continuous)
 
 <!--Device-SourceType-TYPE_CONTINUOUS = 1--><!--Device-SourceType-TYPE_CONTINUOUS = 1-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## TYPE_NORMAL
+
+```TypeScript
+TYPE_NORMAL = 0
+```
+
+Normal notification.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [TYPE_NORMAL](arkts-notification-notificationmanager-sourcetype-e-sys.md#type_normal)
+
+<!--Device-SourceType-TYPE_NORMAL = 0--><!--Device-SourceType-TYPE_NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

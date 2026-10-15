@@ -46,7 +46,7 @@ addResource(path: string) : void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-addResource(path: string) : void--><!--Device-ResourceManager-addResource(path: string) : void-End-->
 
@@ -86,6 +86,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="closerawfd1"></a>
+
 ## closeRawFd
 
 ```TypeScript
@@ -96,7 +98,7 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-closeRawFd(path: string, callback: _AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFd(path: string, callback: _AsyncCallback<void>): void-End-->
 
@@ -109,7 +111,7 @@ closeRawFd(path: string, callback: _AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | _AsyncCallback&lt;void&gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;void&gt; | 是 | 回调函数。当关闭rawfile所在HAP的文件描述符（fd）成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -146,7 +148,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="closerawfd-1"></a>
+<a id="closerawfd2"></a>
 
 ## closeRawFd
 
@@ -158,7 +160,7 @@ closeRawFd(path: string): Promise<void>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-closeRawFd(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFd(path: string): Promise<void>-End-->
 
@@ -218,7 +220,7 @@ closeRawFdSync(path: string): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-closeRawFdSync(path: string): void--><!--Device-ResourceManager-closeRawFdSync(path: string): void-End-->
 
@@ -263,6 +265,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getboolean1"></a>
+
 ## getBoolean
 
 ```TypeScript
@@ -273,7 +277,7 @@ getBoolean(resId: number): boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getBoolean(resId: long): boolean--><!--Device-ResourceManager-getBoolean(resId: long): boolean-End-->
 
@@ -334,7 +338,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getboolean-1"></a>
+<a id="getboolean2"></a>
 
 ## getBoolean
 
@@ -423,7 +427,7 @@ getBooleanByName(resName: string): boolean
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getBooleanByName(resName: string): boolean--><!--Device-ResourceManager-getBooleanByName(resName: string): boolean-End-->
 
@@ -484,6 +488,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getcolor1"></a>
+
 ## getColor
 
 ```TypeScript
@@ -494,7 +500,7 @@ getColor(resId: number, callback: _AsyncCallback<number>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getColor(resId: long, callback: _AsyncCallback<long>): void--><!--Device-ResourceManager-getColor(resId: long, callback: _AsyncCallback<long>): void-End-->
 
@@ -505,7 +511,7 @@ getColor(resId: number, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;number&gt; | 是 | 回调函数，返回资源ID值对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -587,7 +593,7 @@ this.context.resourceManager.getColor(resource)
   });
 ```
 
-<a id="getcolor-1"></a>
+<a id="getcolor2"></a>
 
 ## getColor
 
@@ -599,7 +605,7 @@ getColor(resId: number): Promise<number>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getColor(resId: long): Promise<long>--><!--Device-ResourceManager-getColor(resId: long): Promise<long>-End-->
 
@@ -659,7 +665,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getcolor-2"></a>
+<a id="getcolor3"></a>
 
 ## getColor
 
@@ -688,7 +694,7 @@ getColor(resource: Resource, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;number&gt; | 是 | 回调函数，返回resource对象对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -732,7 +738,7 @@ this.context.resourceManager.getColor(resource, (error: BusinessError, value: nu
 });
 ```
 
-<a id="getcolor-3"></a>
+<a id="getcolor4"></a>
 
 ## getColor
 
@@ -810,6 +816,8 @@ this.context.resourceManager.getColor(resource)
   });
 ```
 
+<a id="getcolorbyname1"></a>
+
 ## getColorByName
 
 ```TypeScript
@@ -820,7 +828,7 @@ getColorByName(resName: string, callback: _AsyncCallback<number>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getColorByName(resName: string, callback: _AsyncCallback<long>): void--><!--Device-ResourceManager-getColorByName(resName: string, callback: _AsyncCallback<long>): void-End-->
 
@@ -831,7 +839,7 @@ getColorByName(resName: string, callback: _AsyncCallback<number>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback&lt;number&gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;number&gt; | 是 | 回调函数，返回资源名称对应的颜色值（十进制）。 |
 
 **错误码：**
 
@@ -875,7 +883,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getcolorbyname-1"></a>
+<a id="getcolorbyname2"></a>
 
 ## getColorByName
 
@@ -887,7 +895,7 @@ getColorByName(resName: string): Promise<number>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getColorByName(resName: string): Promise<long>--><!--Device-ResourceManager-getColorByName(resName: string): Promise<long>-End-->
 
@@ -957,7 +965,7 @@ getColorByNameSync(resName: string) : number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getColorByNameSync(resName: string) : long--><!--Device-ResourceManager-getColorByNameSync(resName: string) : long-End-->
 
@@ -1018,6 +1026,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getcolorsync1"></a>
+
 ## getColorSync
 
 ```TypeScript
@@ -1028,7 +1038,7 @@ getColorSync(resId: number) : number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getColorSync(resId: long) : long--><!--Device-ResourceManager-getColorSync(resId: long) : long-End-->
 
@@ -1089,7 +1099,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getcolorsync-1"></a>
+<a id="getcolorsync2"></a>
 
 ## getColorSync
 
@@ -1168,6 +1178,8 @@ try {
 }
 ```
 
+<a id="getconfiguration1"></a>
+
 ## getConfiguration
 
 ```TypeScript
@@ -1178,7 +1190,7 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getConfiguration(callback: _AsyncCallback<Configuration>): void--><!--Device-ResourceManager-getConfiguration(callback: _AsyncCallback<Configuration>): void-End-->
 
@@ -1188,7 +1200,7 @@ getConfiguration(callback: _AsyncCallback<Configuration>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | _AsyncCallback&lt;[Configuration](arkts-localization-resourcemanager-configuration-c.md)&gt; | 是 | 回调函数，返回设备的Configuration。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;[Configuration](arkts-localization-resourcemanager-configuration-c.md)&gt; | 是 | 回调函数，返回设备的Configuration。 |
 
 **示例**
 
@@ -1215,7 +1227,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getconfiguration-1"></a>
+<a id="getconfiguration2"></a>
 
 ## getConfiguration
 
@@ -1227,7 +1239,7 @@ getConfiguration(): Promise<Configuration>
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getConfiguration(): Promise<Configuration>--><!--Device-ResourceManager-getConfiguration(): Promise<Configuration>-End-->
 
@@ -1272,7 +1284,7 @@ getConfigurationSync(): Configuration
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getConfigurationSync(): Configuration--><!--Device-ResourceManager-getConfigurationSync(): Configuration-End-->
 
@@ -1302,6 +1314,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getdevicecapability1"></a>
+
 ## getDeviceCapability
 
 ```TypeScript
@@ -1312,7 +1326,7 @@ getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void--><!--Device-ResourceManager-getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void-End-->
 
@@ -1322,7 +1336,7 @@ getDeviceCapability(callback: _AsyncCallback<DeviceCapability>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | _AsyncCallback&lt;[DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)&gt; | 是 | 回调函数，返回设备的DeviceCapability。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;[DeviceCapability](arkts-localization-resourcemanager-devicecapability-c.md)&gt; | 是 | 回调函数，返回设备的DeviceCapability。 |
 
 **示例**
 
@@ -1349,7 +1363,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getdevicecapability-1"></a>
+<a id="getdevicecapability2"></a>
 
 ## getDeviceCapability
 
@@ -1361,7 +1375,7 @@ getDeviceCapability(): Promise<DeviceCapability>
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getDeviceCapability(): Promise<DeviceCapability>--><!--Device-ResourceManager-getDeviceCapability(): Promise<DeviceCapability>-End-->
 
@@ -1406,7 +1420,7 @@ getDeviceCapabilitySync(): DeviceCapability
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getDeviceCapabilitySync(): DeviceCapability--><!--Device-ResourceManager-getDeviceCapabilitySync(): DeviceCapability-End-->
 
@@ -1526,6 +1540,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getdoublepluralstringvaluesync1"></a>
+
 ## getDoublePluralStringValueSync
 
 ```TypeScript
@@ -1616,7 +1632,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getdoublepluralstringvaluesync-2"></a>
+<a id="getdoublepluralstringvaluesync3"></a>
 
 ## getDoublePluralStringValueSync
 
@@ -1634,7 +1650,7 @@ getDoublePluralStringValueSync(resource: Resource, num: number, ...args: Array<s
 
 **废弃版本：** 20
 
-**替代接口：** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
+**替代接口：** [getDoublePluralStringValueSync](#getdoublepluralstringvaluesync1)(resId: number, num: number, ...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -1705,13 +1721,15 @@ try {
   // 在资源文件中用quantity字段表示单复数类别，因此会获取quantity为other的字符串
   let pluralStr = this.context.resourceManager.getDoublePluralStringValueSync(resource, 2.1, 2, "basket", 0.6);
   console.info(`getDoublePluralStringValueSync, result: ${pluralStr}`);
-  // 打印输出结果: getIntPluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
+  // 打印输出结果: getDoublePluralStringValueSync, result: There are 2 apples in the basket, the total amount is 0.6 kg.
 } catch (error) {
   let code = (error as BusinessError).code;
   let message = (error as BusinessError).message;
   console.error(`getDoublePluralStringValueSync failed, error code: ${code}, message: ${message}.`);
 }
 ```
+
+<a id="getdrawabledescriptor1"></a>
 
 ## getDrawableDescriptor
 
@@ -1723,7 +1741,7 @@ getDrawableDescriptor(resId: number, density?: number, type?: number): DrawableD
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescriptor--><!--Device-ResourceManager-getDrawableDescriptor(resId: long, density?: int, type?: int): DrawableDescriptor-End-->
 
@@ -1788,7 +1806,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getdrawabledescriptor-1"></a>
+<a id="getdrawabledescriptor2"></a>
 
 ## getDrawableDescriptor
 
@@ -1879,7 +1897,7 @@ getDrawableDescriptorByName(resName: string, density?: number, type?: number): D
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getDrawableDescriptorByName(resName: string, density?: int, type?: int): DrawableDescriptor--><!--Device-ResourceManager-getDrawableDescriptorByName(resName: string, density?: int, type?: int): DrawableDescriptor-End-->
 
@@ -2034,6 +2052,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getintpluralstringvaluesync1"></a>
+
 ## getIntPluralStringValueSync
 
 ```TypeScript
@@ -2124,7 +2144,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getintpluralstringvaluesync-2"></a>
+<a id="getintpluralstringvaluesync3"></a>
 
 ## getIntPluralStringValueSync
 
@@ -2142,7 +2162,7 @@ getIntPluralStringValueSync(resource: Resource, num: number, ...args: Array<stri
 
 **废弃版本：** 20
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -2231,7 +2251,7 @@ getLocales(includeSystem?: boolean): Array<string>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getLocales(includeSystem?: boolean): Array<string>--><!--Device-ResourceManager-getLocales(includeSystem?: boolean): Array<string>-End-->
 
@@ -2291,6 +2311,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getmediabase64byname1"></a>
+
 ## getMediaBase64ByName
 
 ```TypeScript
@@ -2301,7 +2323,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void-End-->
 
@@ -2312,7 +2334,7 @@ getMediaBase64ByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2348,7 +2370,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediabase64byname-1"></a>
+<a id="getmediabase64byname2"></a>
 
 ## getMediaBase64ByName
 
@@ -2360,7 +2382,7 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback<
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int, callback: _AsyncCallback<string>): void-End-->
 
@@ -2372,7 +2394,7 @@ getMediaBase64ByName(resName: string, density: number, callback: _AsyncCallback<
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源名称的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -2408,7 +2430,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediabase64byname-2"></a>
+<a id="getmediabase64byname3"></a>
 
 ## getMediaBase64ByName
 
@@ -2420,7 +2442,7 @@ getMediaBase64ByName(resName: string): Promise<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByName(resName: string): Promise<string>--><!--Device-ResourceManager-getMediaBase64ByName(resName: string): Promise<string>-End-->
 
@@ -2470,7 +2492,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediabase64byname-3"></a>
+<a id="getmediabase64byname4"></a>
 
 ## getMediaBase64ByName
 
@@ -2482,7 +2504,7 @@ getMediaBase64ByName(resName: string, density: number): Promise<string>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int): Promise<string>--><!--Device-ResourceManager-getMediaBase64ByName(resName: string, density: int): Promise<string>-End-->
 
@@ -2543,7 +2565,7 @@ getMediaBase64ByNameSync(resName: string, density?: number): string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaBase64ByNameSync(resName: string, density?: int): string--><!--Device-ResourceManager-getMediaBase64ByNameSync(resName: string, density?: int): string-End-->
 
@@ -2599,6 +2621,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getmediabyname1"></a>
+
 ## getMediaByName
 
 ```TypeScript
@@ -2609,7 +2633,7 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void-End-->
 
@@ -2620,7 +2644,7 @@ getMediaByName(resName: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2656,7 +2680,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediabyname-1"></a>
+<a id="getmediabyname2"></a>
 
 ## getMediaByName
 
@@ -2668,7 +2692,7 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback<Uint8A
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaByName(resName: string, density: int, callback: _AsyncCallback<Uint8Array>): void-End-->
 
@@ -2680,7 +2704,7 @@ getMediaByName(resName: string, density: number, callback: _AsyncCallback<Uint8A
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源名称对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2716,7 +2740,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediabyname-2"></a>
+<a id="getmediabyname3"></a>
 
 ## getMediaByName
 
@@ -2728,7 +2752,7 @@ getMediaByName(resName: string): Promise<Uint8Array>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaByName(resName: string): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaByName(resName: string): Promise<Uint8Array>-End-->
 
@@ -2778,7 +2802,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediabyname-3"></a>
+<a id="getmediabyname4"></a>
 
 ## getMediaByName
 
@@ -2790,7 +2814,7 @@ getMediaByName(resName: string, density: number): Promise<Uint8Array>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaByName(resName: string, density: int): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaByName(resName: string, density: int): Promise<Uint8Array>-End-->
 
@@ -2851,7 +2875,7 @@ getMediaByNameSync(resName: string, density?: number): Uint8Array
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaByNameSync(resName: string, density?: int): Uint8Array--><!--Device-ResourceManager-getMediaByNameSync(resName: string, density?: int): Uint8Array-End-->
 
@@ -2907,7 +2931,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontent-4"></a>
+<a id="getmediacontent5"></a>
 
 ## getMediaContent
 
@@ -2919,7 +2943,7 @@ getMediaContent(resId: number, callback: _AsyncCallback<Uint8Array>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaContent(resId: long, callback: _AsyncCallback<Uint8Array>): void-End-->
 
@@ -2930,7 +2954,7 @@ getMediaContent(resId: number, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -2967,7 +2991,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontent-5"></a>
+<a id="getmediacontent6"></a>
 
 ## getMediaContent
 
@@ -2979,7 +3003,7 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback<Uint8Ar
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getMediaContent(resId: long, density: int, callback: _AsyncCallback<Uint8Array>): void-End-->
 
@@ -2991,7 +3015,7 @@ getMediaContent(resId: number, density: number, callback: _AsyncCallback<Uint8Ar
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回资源ID对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3027,7 +3051,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontent-6"></a>
+<a id="getmediacontent7"></a>
 
 ## getMediaContent
 
@@ -3039,7 +3063,7 @@ getMediaContent(resId: number): Promise<Uint8Array>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContent(resId: long): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaContent(resId: long): Promise<Uint8Array>-End-->
 
@@ -3089,7 +3113,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontent-7"></a>
+<a id="getmediacontent8"></a>
 
 ## getMediaContent
 
@@ -3101,7 +3125,7 @@ getMediaContent(resId: number, density: number): Promise<Uint8Array>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContent(resId: long, density: int): Promise<Uint8Array>--><!--Device-ResourceManager-getMediaContent(resId: long, density: int): Promise<Uint8Array>-End-->
 
@@ -3152,6 +3176,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getmediacontent1"></a>
+
 ## getMediaContent
 
 ```TypeScript
@@ -3179,7 +3205,7 @@ getMediaContent(resource: Resource, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3215,7 +3241,7 @@ try {
 }
 ```
 
-<a id="getmediacontent-1"></a>
+<a id="getmediacontent2"></a>
 
 ## getMediaContent
 
@@ -3245,7 +3271,7 @@ getMediaContent(resource: Resource, density: number, callback: _AsyncCallback<Ui
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回resource对象对应的媒体文件内容。 |
 
 **错误码：**
 
@@ -3281,7 +3307,7 @@ try {
 }
 ```
 
-<a id="getmediacontent-2"></a>
+<a id="getmediacontent3"></a>
 
 ## getMediaContent
 
@@ -3349,7 +3375,7 @@ try {
 }
 ```
 
-<a id="getmediacontent-3"></a>
+<a id="getmediacontent4"></a>
 
 ## getMediaContent
 
@@ -3418,7 +3444,7 @@ try {
 }
 ```
 
-<a id="getmediacontentbase64-4"></a>
+<a id="getmediacontentbase645"></a>
 
 ## getMediaContentBase64
 
@@ -3430,7 +3456,7 @@ getMediaContentBase64(resId: number, callback: _AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaContentBase64(resId: long, callback: _AsyncCallback<string>): void-End-->
 
@@ -3441,7 +3467,7 @@ getMediaContentBase64(resId: number, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3477,7 +3503,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontentbase64-5"></a>
+<a id="getmediacontentbase646"></a>
 
 ## getMediaContentBase64
 
@@ -3489,7 +3515,7 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback<s
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int, callback: _AsyncCallback<string>): void-End-->
 
@@ -3501,7 +3527,7 @@ getMediaContentBase64(resId: number, density: number, callback: _AsyncCallback<s
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3537,7 +3563,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontentbase64-6"></a>
+<a id="getmediacontentbase647"></a>
 
 ## getMediaContentBase64
 
@@ -3549,7 +3575,7 @@ getMediaContentBase64(resId: number): Promise<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64(resId: long): Promise<string>--><!--Device-ResourceManager-getMediaContentBase64(resId: long): Promise<string>-End-->
 
@@ -3599,7 +3625,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontentbase64-7"></a>
+<a id="getmediacontentbase648"></a>
 
 ## getMediaContentBase64
 
@@ -3611,7 +3637,7 @@ getMediaContentBase64(resId: number, density: number): Promise<string>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int): Promise<string>--><!--Device-ResourceManager-getMediaContentBase64(resId: long, density: int): Promise<string>-End-->
 
@@ -3662,6 +3688,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getmediacontentbase641"></a>
+
 ## getMediaContentBase64
 
 ```TypeScript
@@ -3689,7 +3717,7 @@ getMediaContentBase64(resource: Resource, callback: _AsyncCallback<string>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3725,7 +3753,7 @@ try {
 }
 ```
 
-<a id="getmediacontentbase64-1"></a>
+<a id="getmediacontentbase642"></a>
 
 ## getMediaContentBase64
 
@@ -3755,7 +3783,7 @@ getMediaContentBase64(resource: Resource, density: number, callback: _AsyncCallb
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
 | density | number | 是 | 资源获取需要的屏幕密度，0表示默认屏幕密度。取值具体请参考枚举[ScreenDensity](arkts-localization-resourcemanager-screendensity-e.md)。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回resource对象对应的图片资源Base64编码。 |
 
 **错误码：**
 
@@ -3791,7 +3819,7 @@ try {
 }
 ```
 
-<a id="getmediacontentbase64-2"></a>
+<a id="getmediacontentbase643"></a>
 
 ## getMediaContentBase64
 
@@ -3859,7 +3887,7 @@ try {
 }
 ```
 
-<a id="getmediacontentbase64-3"></a>
+<a id="getmediacontentbase644"></a>
 
 ## getMediaContentBase64
 
@@ -3928,6 +3956,8 @@ try {
 }
 ```
 
+<a id="getmediacontentbase64sync1"></a>
+
 ## getMediaContentBase64Sync
 
 ```TypeScript
@@ -3938,7 +3968,7 @@ getMediaContentBase64Sync(resId: number, density?: number): string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContentBase64Sync(resId: long, density?: int): string--><!--Device-ResourceManager-getMediaContentBase64Sync(resId: long, density?: int): string-End-->
 
@@ -3994,7 +4024,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontentbase64sync-1"></a>
+<a id="getmediacontentbase64sync2"></a>
 
 ## getMediaContentBase64Sync
 
@@ -4067,6 +4097,8 @@ try {
 }
 ```
 
+<a id="getmediacontentsync1"></a>
+
 ## getMediaContentSync
 
 ```TypeScript
@@ -4077,7 +4109,7 @@ getMediaContentSync(resId: number, density?: number): Uint8Array
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getMediaContentSync(resId: long, density?: int): Uint8Array--><!--Device-ResourceManager-getMediaContentSync(resId: long, density?: int): Uint8Array-End-->
 
@@ -4133,7 +4165,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getmediacontentsync-1"></a>
+<a id="getmediacontentsync2"></a>
 
 ## getMediaContentSync
 
@@ -4205,6 +4237,8 @@ try {
   console.error(`getMediaContentSync failed, error code: ${code}, message: ${message}.`);
 }
 ```
+
+<a id="getnumber1"></a>
 
 ## getNumber
 
@@ -4303,7 +4337,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getnumber-1"></a>
+<a id="getnumber2"></a>
 
 ## getNumber
 
@@ -4317,7 +4351,7 @@ getNumber(resource: Resource): number
 
 **废弃版本：** 20
 
-**替代接口：** [getNumber](#getnumber)(resId: number)
+**替代接口：** [getNumber](#getnumber1)(resId: number)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -4492,7 +4526,7 @@ getOverrideConfiguration(): Configuration
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getOverrideConfiguration(): Configuration--><!--Device-ResourceManager-getOverrideConfiguration(): Configuration-End-->
 
@@ -4539,7 +4573,7 @@ getOverrideResourceManager(configuration?: Configuration): ResourceManager
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getOverrideResourceManager(configuration?: Configuration): ResourceManager--><!--Device-ResourceManager-getOverrideResourceManager(configuration?: Configuration): ResourceManager-End-->
 
@@ -4586,6 +4620,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getrawfd1"></a>
+
 ## getRawFd
 
 ```TypeScript
@@ -4597,12 +4633,12 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd)关闭
+> [closeRawFd](#closerawfd1)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void-End-->
 
@@ -4615,7 +4651,7 @@ getRawFd(path: string, callback: _AsyncCallback<RawFileDescriptor>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | _AsyncCallback&lt;[RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)&gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;[RawFileDescriptor](arkts-localization-resourcemanager-rawfiledescriptor-t.md)&gt; | 是 | 回调函数，返回的rawfile文件所在HAP的文件描述符（fd）。 |
 
 **错误码：**
 
@@ -4653,7 +4689,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getrawfd-1"></a>
+<a id="getrawfd2"></a>
 
 ## getRawFd
 
@@ -4666,12 +4702,12 @@ getRawFd(path: string): Promise<RawFileDescriptor>
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd)关闭
+> [closeRawFd](#closerawfd1)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFd(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFd(path: string): Promise<RawFileDescriptor>-End-->
 
@@ -4736,12 +4772,12 @@ getRawFdSync(path: string): RawFileDescriptor
 > **说明：** 
 > 
 > 文件描述符（fd）使用完毕后需调用[closeRawFdSync](#closerawfdsync)或
-> [closeRawFd](#closerawfd)关闭
+> [closeRawFd](#closerawfd1)关闭
 > fd，避免资源泄露。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFdSync(path: string): RawFileDescriptor--><!--Device-ResourceManager-getRawFdSync(path: string): RawFileDescriptor-End-->
 
@@ -4788,6 +4824,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getrawfilecontent1"></a>
+
 ## getRawFileContent
 
 ```TypeScript
@@ -4798,7 +4836,7 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void-End-->
 
@@ -4811,7 +4849,7 @@ getRawFileContent(path: string, callback: _AsyncCallback<Uint8Array>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile文件路径，如"test.txt"、"subdir/test.txt"，不以"/"开头。 |
-| callback | _AsyncCallback&lt;Uint8Array&gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Uint8Array&gt; | 是 | 回调函数，返回获取的rawfile文件内容。 |
 
 **错误码：**
 
@@ -4846,7 +4884,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getrawfilecontent-1"></a>
+<a id="getrawfilecontent2"></a>
 
 ## getRawFileContent
 
@@ -4858,7 +4896,7 @@ getRawFileContent(path: string): Promise<Uint8Array>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFileContent(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFileContent(path: string): Promise<Uint8Array>-End-->
 
@@ -4919,7 +4957,7 @@ getRawFileContentSync(path: string): Uint8Array
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFileContentSync(path: string): Uint8Array--><!--Device-ResourceManager-getRawFileContentSync(path: string): Uint8Array-End-->
 
@@ -4966,6 +5004,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getrawfilelist1"></a>
+
 ## getRawFileList
 
 ```TypeScript
@@ -4980,7 +5020,7 @@ getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void-End-->
 
@@ -4991,7 +5031,7 @@ getRawFileList(path: string, callback: _AsyncCallback<Array<string>>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | path | string | 是 | 相对resources/rawfile目录的rawfile子目录路径，如"subdir"，不以"/"开头。<br>空字符串""表示获取rawfile根目录下的文件夹及文件列表。 |
-| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回rawfile子目录下的文件夹及文件列表。 |
 
 **错误码：**
 
@@ -5022,7 +5062,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getrawfilelist-1"></a>
+<a id="getrawfilelist2"></a>
 
 ## getRawFileList
 
@@ -5038,7 +5078,7 @@ getRawFileList(path: string): Promise<Array<string>>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFileList(path: string): Promise<Array<string>>--><!--Device-ResourceManager-getRawFileList(path: string): Promise<Array<string>>-End-->
 
@@ -5099,7 +5139,7 @@ getRawFileListSync(path: string): Array<string>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getRawFileListSync(path: string): Array<string>--><!--Device-ResourceManager-getRawFileListSync(path: string): Array<string>-End-->
 
@@ -5159,7 +5199,7 @@ getResourceName(resId: number): string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getResourceName(resId: long): string--><!--Device-ResourceManager-getResourceName(resId: long): string-End-->
 
@@ -5217,6 +5257,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getstringarraybyname1"></a>
+
 ## getStringArrayByName
 
 ```TypeScript
@@ -5227,7 +5269,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): void-End-->
 
@@ -5238,7 +5280,7 @@ getStringArrayByName(resName: string, callback: _AsyncCallback<Array<string>>): 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源名称对应的字符串数组。 |
 
 **错误码：**
 
@@ -5287,7 +5329,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringarraybyname-1"></a>
+<a id="getstringarraybyname2"></a>
 
 ## getStringArrayByName
 
@@ -5299,7 +5341,7 @@ getStringArrayByName(resName: string): Promise<Array<string>>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringArrayByName(resName: string): Promise<Array<string>>--><!--Device-ResourceManager-getStringArrayByName(resName: string): Promise<Array<string>>-End-->
 
@@ -5373,7 +5415,7 @@ getStringArrayByNameSync(resName: string): Array<string>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringArrayByNameSync(resName: string): Array<string>--><!--Device-ResourceManager-getStringArrayByNameSync(resName: string): Array<string>-End-->
 
@@ -5438,7 +5480,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringarrayvalue-2"></a>
+<a id="getstringarrayvalue3"></a>
 
 ## getStringArrayValue
 
@@ -5450,7 +5492,7 @@ getStringArrayValue(resId: number, callback: _AsyncCallback<Array<string>>): voi
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void--><!--Device-ResourceManager-getStringArrayValue(resId: long, callback: _AsyncCallback<Array<string>>): void-End-->
 
@@ -5461,7 +5503,7 @@ getStringArrayValue(resId: number, callback: _AsyncCallback<Array<string>>): voi
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回资源ID值对应的字符串数组。 |
 
 **错误码：**
 
@@ -5510,7 +5552,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringarrayvalue-3"></a>
+<a id="getstringarrayvalue4"></a>
 
 ## getStringArrayValue
 
@@ -5522,7 +5564,7 @@ getStringArrayValue(resId: number): Promise<Array<string>>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringArrayValue(resId: long): Promise<Array<string>>--><!--Device-ResourceManager-getStringArrayValue(resId: long): Promise<Array<string>>-End-->
 
@@ -5586,6 +5628,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getstringarrayvalue1"></a>
+
 ## getStringArrayValue
 
 ```TypeScript
@@ -5613,7 +5657,7 @@ getStringArrayValue(resource: Resource, callback: _AsyncCallback<Array<string>>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;Array&lt;string&gt;&gt; | 是 | 回调函数，返回resource对象对应的字符串数组。 |
 
 **错误码：**
 
@@ -5661,7 +5705,7 @@ this.context.resourceManager.getStringArrayValue(resource, (error: BusinessError
 });
 ```
 
-<a id="getstringarrayvalue-1"></a>
+<a id="getstringarrayvalue2"></a>
 
 ## getStringArrayValue
 
@@ -5743,6 +5787,8 @@ this.context.resourceManager.getStringArrayValue(resource)
   });
 ```
 
+<a id="getstringarrayvaluesync1"></a>
+
 ## getStringArrayValueSync
 
 ```TypeScript
@@ -5753,7 +5799,7 @@ getStringArrayValueSync(resId: number): Array<string>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringArrayValueSync(resId: long): Array<string>--><!--Device-ResourceManager-getStringArrayValueSync(resId: long): Array<string>-End-->
 
@@ -5818,7 +5864,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringarrayvaluesync-1"></a>
+<a id="getstringarrayvaluesync2"></a>
 
 ## getStringArrayValueSync
 
@@ -5901,6 +5947,8 @@ try {
 }
 ```
 
+<a id="getstringbyname1"></a>
+
 ## getStringByName
 
 ```TypeScript
@@ -5911,7 +5959,7 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringByName(resName: string, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getStringByName(resName: string, callback: _AsyncCallback<string>): void-End-->
 
@@ -5922,7 +5970,7 @@ getStringByName(resName: string, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
@@ -5966,7 +6014,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringbyname-1"></a>
+<a id="getstringbyname2"></a>
 
 ## getStringByName
 
@@ -5978,7 +6026,7 @@ getStringByName(resName: string): Promise<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringByName(resName: string): Promise<string>--><!--Device-ResourceManager-getStringByName(resName: string): Promise<string>-End-->
 
@@ -6035,6 +6083,8 @@ export default class EntryAbility extends UIAbility {
     }
 }
 ```
+
+<a id="getstringbynamesync1"></a>
 
 ## getStringByNameSync
 
@@ -6107,7 +6157,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringbynamesync-1"></a>
+<a id="getstringbynamesync2"></a>
 
 ## getStringByNameSync
 
@@ -6182,6 +6232,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getstringsync1"></a>
+
 ## getStringSync
 
 ```TypeScript
@@ -6253,7 +6305,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringsync-1"></a>
+<a id="getstringsync2"></a>
 
 ## getStringSync
 
@@ -6328,7 +6380,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getstringsync-3"></a>
+<a id="getstringsync4"></a>
 
 ## getStringSync
 
@@ -6407,7 +6459,7 @@ try {
 }
 ```
 
-<a id="getstringsync-4"></a>
+<a id="getstringsync5"></a>
 
 ## getStringSync
 
@@ -6421,7 +6473,7 @@ getStringSync(resource: Resource, ...args: Array<string | number>): string
 
 **废弃版本：** 20
 
-**替代接口：** [getStringSync](#getstringsync-1)(resId: number, ...args: Array&lt;string | number&gt;)
+**替代接口：** [getStringSync](#getstringsync2)(resId: number, ...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -6488,7 +6540,7 @@ try {
 }
 ```
 
-<a id="getstringvalue-2"></a>
+<a id="getstringvalue3"></a>
 
 ## getStringValue
 
@@ -6500,7 +6552,7 @@ getStringValue(resId: number, callback: _AsyncCallback<string>): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringValue(resId: long, callback: _AsyncCallback<string>): void--><!--Device-ResourceManager-getStringValue(resId: long, callback: _AsyncCallback<string>): void-End-->
 
@@ -6511,7 +6563,7 @@ getStringValue(resId: number, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回获取的字符串。 |
 
 **错误码：**
 
@@ -6572,7 +6624,7 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 });
 ```
 
-<a id="getstringvalue-3"></a>
+<a id="getstringvalue4"></a>
 
 ## getStringValue
 
@@ -6584,7 +6636,7 @@ getStringValue(resId: number): Promise<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getStringValue(resId: long): Promise<string>--><!--Device-ResourceManager-getStringValue(resId: long): Promise<string>-End-->
 
@@ -6642,6 +6694,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="getstringvalue1"></a>
+
 ## getStringValue
 
 ```TypeScript
@@ -6669,7 +6723,7 @@ getStringValue(resource: Resource, callback: _AsyncCallback<string>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回resource对象对应的字符串。 |
 
 **错误码：**
 
@@ -6713,7 +6767,7 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 });
 ```
 
-<a id="getstringvalue-1"></a>
+<a id="getstringvalue2"></a>
 
 ## getStringValue
 
@@ -6779,6 +6833,8 @@ this.context.resourceManager.getStringValue(resource, (error: BusinessError, val
 });
 ```
 
+<a id="getsymbol1"></a>
+
 ## getSymbol
 
 ```TypeScript
@@ -6789,7 +6845,7 @@ getSymbol(resId: number) : number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getSymbol(resId: long) : long--><!--Device-ResourceManager-getSymbol(resId: long) : long-End-->
 
@@ -6838,7 +6894,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="getsymbol-1"></a>
+<a id="getsymbol2"></a>
 
 ## getSymbol
 
@@ -6915,7 +6971,7 @@ getSymbolByName(resName: string) : number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-getSymbolByName(resName: string) : long--><!--Device-ResourceManager-getSymbolByName(resName: string) : long-End-->
 
@@ -6974,7 +7030,7 @@ isRawDir(path: string): boolean
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-isRawDir(path: string): boolean--><!--Device-ResourceManager-isRawDir(path: string): boolean-End-->
 
@@ -7044,7 +7100,7 @@ removeResource(path: string) : void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-removeResource(path: string) : void--><!--Device-ResourceManager-removeResource(path: string) : void-End-->
 
@@ -7096,7 +7152,7 @@ updateOverrideConfiguration(configuration: Configuration): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceManager-updateOverrideConfiguration(configuration: Configuration): void--><!--Device-ResourceManager-updateOverrideConfiguration(configuration: Configuration): void-End-->
 
@@ -7137,6 +7193,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="closerawfiledescriptor1"></a>
+
 ## closeRawFileDescriptor
 
 ```TypeScript
@@ -7149,7 +7207,7 @@ closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [closeRawFd](#closerawfd)(path: string, callback: _AsyncCallback&lt;void&gt;)
+**替代接口：** [closeRawFd](#closerawfd1)(path: string, callback: _AsyncCallback&lt;void&gt;)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void--><!--Device-ResourceManager-closeRawFileDescriptor(path: string, callback: AsyncCallback<void>): void-End-->
 
@@ -7178,7 +7236,7 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="closerawfiledescriptor-1"></a>
+<a id="closerawfiledescriptor2"></a>
 
 ## closeRawFileDescriptor
 
@@ -7192,7 +7250,7 @@ closeRawFileDescriptor(path: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** [closeRawFd](#closerawfd-1)(path: string)
+**替代接口：** [closeRawFd](#closerawfd2)(path: string)
 
 <!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>--><!--Device-ResourceManager-closeRawFileDescriptor(path: string): Promise<void>-End-->
 
@@ -7221,6 +7279,8 @@ resourceManager.getResourceManager((error, mgr) => {
     mgr.closeRawFileDescriptor("test.txt");
 });
 ```
+
+<a id="getmedia1"></a>
 
 ## getMedia
 
@@ -7261,7 +7321,7 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getmedia-1"></a>
+<a id="getmedia2"></a>
 
 ## getMedia
 
@@ -7307,6 +7367,8 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
+<a id="getmediabase641"></a>
+
 ## getMediaBase64
 
 ```TypeScript
@@ -7346,7 +7408,7 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getmediabase64-1"></a>
+<a id="getmediabase642"></a>
 
 ## getMediaBase64
 
@@ -7392,6 +7454,8 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
+<a id="getpluralstring1"></a>
+
 ## getPluralString
 
 ```TypeScript
@@ -7409,7 +7473,7 @@ getPluralString(resId: number, num: number, callback: AsyncCallback<string>): vo
 
 **废弃版本：** 9
 
-**替代接口：** [getPluralStringValue](#getpluralstringvalue-2)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
+**替代接口：** [getPluralStringValue](#getpluralstringvalue3)(resId: number, num: number, callback: _AsyncCallback&lt;string&gt;)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void--><!--Device-ResourceManager-getPluralString(resId: number, num: number, callback: AsyncCallback<string>): void-End-->
 
@@ -7439,7 +7503,7 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getpluralstring-1"></a>
+<a id="getpluralstring2"></a>
 
 ## getPluralString
 
@@ -7458,7 +7522,7 @@ getPluralString(resId: number, num: number): Promise<string>
 
 **废弃版本：** 9
 
-**替代接口：** [getPluralStringValue](#getpluralstringvalue-3)(resId: number, num: number)
+**替代接口：** [getPluralStringValue](#getpluralstringvalue4)(resId: number, num: number)
 
 <!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>--><!--Device-ResourceManager-getPluralString(resId: number, num: number): Promise<string>-End-->
 
@@ -7491,6 +7555,8 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
+<a id="getpluralstringbyname1"></a>
+
 ## getPluralStringByName
 
 ```TypeScript
@@ -7522,7 +7588,7 @@ getPluralStringByName(resName: string, num: number, callback: _AsyncCallback<str
 | --- | --- | --- | --- |
 | resName | string | 是 | 资源名称。 |
 | num | number | 是 | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源名称对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -7571,7 +7637,7 @@ this.context.resourceManager.getPluralStringByName("test", 1, (error: BusinessEr
 });
 ```
 
-<a id="getpluralstringbyname-1"></a>
+<a id="getpluralstringbyname2"></a>
 
 ## getPluralStringByName
 
@@ -7744,6 +7810,8 @@ try {
 }
 ```
 
+<a id="getpluralstringvalue1"></a>
+
 ## getPluralStringValue
 
 ```TypeScript
@@ -7761,7 +7829,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7777,7 +7845,7 @@ getPluralStringValue(resource: Resource, num: number, callback: _AsyncCallback<s
 | --- | --- | --- | --- |
 | resource | [Resource](arkts-localization-resourcemanager-resource-t.md) | 是 | 资源信息。 |
 | num | number | 是 | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回resource对象对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -7833,7 +7901,7 @@ this.context.resourceManager.getPluralStringValue(resource, 1,
   });
 ```
 
-<a id="getpluralstringvalue-1"></a>
+<a id="getpluralstringvalue2"></a>
 
 ## getPluralStringValue
 
@@ -7852,7 +7920,7 @@ getPluralStringValue(resource: Resource, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -7928,7 +7996,7 @@ this.context.resourceManager.getPluralStringValue(resource, 1)
   });
 ```
 
-<a id="getpluralstringvalue-2"></a>
+<a id="getpluralstringvalue3"></a>
 
 ## getPluralStringValue
 
@@ -7947,7 +8015,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -7961,7 +8029,7 @@ getPluralStringValue(resId: number, num: number, callback: _AsyncCallback<string
 | --- | --- | --- | --- |
 | resId | number | 是 | 资源ID值。 |
 | num | number | 是 | 数量值。根据当前语言的[单复数规则](https://www.unicode.org/cldr/charts/45/supplemental/language_plural_rules.html)获取该数量值对应的字符串。 |
-| callback | _AsyncCallback&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
+| callback | [_AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basic-services-base.md)&lt;string&gt; | 是 | 回调函数，返回资源ID值对应的指定数量的单复数字符串。 |
 
 **错误码：**
 
@@ -8011,7 +8079,7 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1,
   });
 ```
 
-<a id="getpluralstringvalue-3"></a>
+<a id="getpluralstringvalue4"></a>
 
 ## getPluralStringValue
 
@@ -8030,7 +8098,7 @@ getPluralStringValue(resId: number, num: number): Promise<string>
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -8098,6 +8166,8 @@ this.context.resourceManager.getPluralStringValue($r("app.plural.test").id, 1)
   });
 ```
 
+<a id="getpluralstringvaluesync1"></a>
+
 ## getPluralStringValueSync
 
 ```TypeScript
@@ -8115,7 +8185,7 @@ getPluralStringValueSync(resId: number, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -8184,7 +8254,7 @@ try {
 }
 ```
 
-<a id="getpluralstringvaluesync-1"></a>
+<a id="getpluralstringvaluesync2"></a>
 
 ## getPluralStringValueSync
 
@@ -8203,7 +8273,7 @@ getPluralStringValueSync(resource: Resource, num: number): string
 
 **废弃版本：** 18
 
-**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync)(resId: number, num: number,...args: Array&lt;string | number&gt;)
+**替代接口：** [getIntPluralStringValueSync](#getintpluralstringvaluesync1)(resId: number, num: number,...args: Array&lt;string | number&gt;)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -8280,6 +8350,8 @@ try {
 }
 ```
 
+<a id="getrawfile1"></a>
+
 ## getRawFile
 
 ```TypeScript
@@ -8292,7 +8364,7 @@ getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFileContent](#getrawfilecontent)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
+**替代接口：** [getRawFileContent](#getrawfilecontent1)(path: string, callback: _AsyncCallback&lt;Uint8Array&gt;)
 
 <!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void--><!--Device-ResourceManager-getRawFile(path: string, callback: AsyncCallback<Uint8Array>): void-End-->
 
@@ -8323,7 +8395,7 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getrawfile-1"></a>
+<a id="getrawfile2"></a>
 
 ## getRawFile
 
@@ -8337,7 +8409,7 @@ getRawFile(path: string): Promise<Uint8Array>
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFileContent](#getrawfilecontent-1)(path: string)
+**替代接口：** [getRawFileContent](#getrawfilecontent2)(path: string)
 
 <!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>--><!--Device-ResourceManager-getRawFile(path: string): Promise<Uint8Array>-End-->
 
@@ -8371,6 +8443,8 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
+<a id="getrawfiledescriptor1"></a>
+
 ## getRawFileDescriptor
 
 ```TypeScript
@@ -8383,7 +8457,7 @@ getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): 
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFd](#getrawfd)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
+**替代接口：** [getRawFd](#getrawfd1)(path: string, callback: _AsyncCallback&lt;RawFileDescriptor&gt;)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void--><!--Device-ResourceManager-getRawFileDescriptor(path: string, callback: AsyncCallback<RawFileDescriptor>): void-End-->
 
@@ -8416,7 +8490,7 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getrawfiledescriptor-1"></a>
+<a id="getrawfiledescriptor2"></a>
 
 ## getRawFileDescriptor
 
@@ -8430,7 +8504,7 @@ getRawFileDescriptor(path: string): Promise<RawFileDescriptor>
 
 **废弃版本：** 9
 
-**替代接口：** [getRawFd](#getrawfd-1)(path: string)
+**替代接口：** [getRawFd](#getrawfd2)(path: string)
 
 <!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>--><!--Device-ResourceManager-getRawFileDescriptor(path: string): Promise<RawFileDescriptor>-End-->
 
@@ -8465,6 +8539,8 @@ resourceManager.getResourceManager((error, mgr) => {
     });
 });
 ```
+
+<a id="getstring1"></a>
 
 ## getString
 
@@ -8505,7 +8581,7 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getstring-1"></a>
+<a id="getstring2"></a>
 
 ## getString
 
@@ -8551,6 +8627,8 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
+<a id="getstringarray1"></a>
+
 ## getStringArray
 
 ```TypeScript
@@ -8590,7 +8668,7 @@ resourceManager.getResourceManager((error, mgr) => {
 });
 ```
 
-<a id="getstringarray-1"></a>
+<a id="getstringarray2"></a>
 
 ## getStringArray
 

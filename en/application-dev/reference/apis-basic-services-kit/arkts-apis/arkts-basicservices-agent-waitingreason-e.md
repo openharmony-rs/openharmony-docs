@@ -12,17 +12,17 @@ Enumerates the reasons why a task is waiting.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
-## TASK_QUEUE_FULL
+## APP_BACKGROUND
 
 ```TypeScript
-TASK_QUEUE_FULL = 0x00
+APP_BACKGROUND = 0x02
 ```
 
-The task queue is full.
+The application has been running in the background for a long time.
 
 **Since:** 20
 
-<!--Device-WaitingReason-TASK_QUEUE_FULL = 0x00--><!--Device-WaitingReason-TASK_QUEUE_FULL = 0x00-End-->
+<!--Device-WaitingReason-APP_BACKGROUND = 0x02--><!--Device-WaitingReason-APP_BACKGROUND = 0x02-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
@@ -40,17 +40,17 @@ The required network conditions are not met.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
-## APP_BACKGROUND
+## TASK_QUEUE_FULL
 
 ```TypeScript
-APP_BACKGROUND = 0x02
+TASK_QUEUE_FULL = 0x00
 ```
 
-The application has been running in the background for a long time.
+The task queue is full.
 
 **Since:** 20
 
-<!--Device-WaitingReason-APP_BACKGROUND = 0x02--><!--Device-WaitingReason-APP_BACKGROUND = 0x02-End-->
+<!--Device-WaitingReason-TASK_QUEUE_FULL = 0x00--><!--Device-WaitingReason-TASK_QUEUE_FULL = 0x00-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 

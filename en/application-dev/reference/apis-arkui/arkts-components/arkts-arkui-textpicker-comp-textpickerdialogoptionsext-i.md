@@ -783,7 +783,7 @@ System material of the dialog box. Set this parameter when you need to use the p
 
 - The default value is the **ImmersiveMaterial** object whose style is **ImmersiveStyle.ULTRA_THICK** in  
 **ImmersiveOptions**. If this parameter is set to **undefined**, the default value is used. Different materials have different effects.  
-- This API affects the background color ([backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)), background blur ([backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle)), background effect ([backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect)), border color ([borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)), border width ([borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)), and shadow ([shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)). When the system material is set, the preceding APIs do not take effect.
+- This API affects the background color ([backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)), background blur ([backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1)), background effect ([backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect1)), border color ([borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)), border width ([borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)), and shadow ([shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1)). When the system material is set, the preceding APIs do not take effect.
 
 **Type:** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
 

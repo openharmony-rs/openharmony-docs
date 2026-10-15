@@ -16,24 +16,6 @@ Defines the database sync mode.
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## SYNC_MODE_PUSH
-
-```TypeScript
-SYNC_MODE_PUSH = 0
-```
-
-Data is pushed from a local device to a remote device.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [SYNC_MODE_PUSH](arkts-arkdata-relationalstore-syncmode-e.md#sync_mode_push)
-
-<!--Device-SyncMode-SYNC_MODE_PUSH = 0--><!--Device-SyncMode-SYNC_MODE_PUSH = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## SYNC_MODE_PULL
 
 ```TypeScript
@@ -49,5 +31,23 @@ Data is pulled from a remote device to a local device.
 **Substitutes:** [SYNC_MODE_PULL](arkts-arkdata-relationalstore-syncmode-e.md#sync_mode_pull)
 
 <!--Device-SyncMode-SYNC_MODE_PULL = 1--><!--Device-SyncMode-SYNC_MODE_PULL = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## SYNC_MODE_PUSH
+
+```TypeScript
+SYNC_MODE_PUSH = 0
+```
+
+Data is pushed from a local device to a remote device.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [SYNC_MODE_PUSH](arkts-arkdata-relationalstore-syncmode-e.md#sync_mode_push)
+
+<!--Device-SyncMode-SYNC_MODE_PUSH = 0--><!--Device-SyncMode-SYNC_MODE_PUSH = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

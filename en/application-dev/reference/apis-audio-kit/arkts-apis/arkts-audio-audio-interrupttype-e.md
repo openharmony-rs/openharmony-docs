@@ -22,7 +22,7 @@ Audio interruption started.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-InterruptType-INTERRUPT_TYPE_BEGIN = 1--><!--Device-InterruptType-INTERRUPT_TYPE_BEGIN = 1-End-->
 
@@ -38,7 +38,7 @@ Audio interruption ended.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-InterruptType-INTERRUPT_TYPE_END = 2--><!--Device-InterruptType-INTERRUPT_TYPE_END = 2-End-->
 

@@ -75,6 +75,7 @@ getWithRange(start: NodeIdentity, end: NodeIdentity, isStartRect: boolean,
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Invalid ID detected. |
 | [160003](../errorcode-snapshot.md#160003-截图选项中设置的色彩空间或动态范围模式不受支持) | Unsupported color space or dynamic range mode in snapshot options.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -148,3 +149,5 @@ struct SnapshotExample {
   }
 }
 ```
+
+<!--DelEnd-->

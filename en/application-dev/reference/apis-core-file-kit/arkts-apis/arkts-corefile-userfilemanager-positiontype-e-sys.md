@@ -18,21 +18,21 @@ Enumerates the file location.
 
 **System API:** This is a system API.
 
-## LOCAL
+## BOTH
 
 ```TypeScript
-LOCAL = 1
+BOTH = 3
 ```
 
-Stored only on a local device.
+Stored both on a local device and the cloud.
 
 **Since:** 10
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [LOCAL](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-positiontype-e.md#local)
+**Substitutes:** [LOCAL_AND_CLOUD](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-positiontype-e.md#local_and_cloud)
 
-<!--Device-PositionType-LOCAL = 1--><!--Device-PositionType-LOCAL = 1-End-->
+<!--Device-PositionType-BOTH = 3--><!--Device-PositionType-BOTH = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -58,21 +58,21 @@ Stored only on the cloud.
 
 **System API:** This is a system API.
 
-## BOTH
+## LOCAL
 
 ```TypeScript
-BOTH = 3
+LOCAL = 1
 ```
 
-Stored both on a local device and the cloud.
+Stored only on a local device.
 
 **Since:** 10
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [LOCAL_AND_CLOUD](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-positiontype-e.md#local_and_cloud)
+**Substitutes:** [LOCAL](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-positiontype-e.md#local)
 
-<!--Device-PositionType-BOTH = 3--><!--Device-PositionType-BOTH = 3-End-->
+<!--Device-PositionType-LOCAL = 1--><!--Device-PositionType-LOCAL = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

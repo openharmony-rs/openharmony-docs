@@ -4,7 +4,7 @@
 export interface GestureObserverConfigs
 ```
 
-Specifies the gesture callback phases to listen for (passing an empty array will be ineffective). Notifications are sent only when the gesture triggers the specified phases.
+Specifies the gesture callback phases to listen for (passing an empty array means no gesture callback stage is listened for). Notifications are sent only when the gesture triggers the specified phases.
 
 **Since:** 20
 
@@ -27,7 +27,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 actionPhases: Array<GestureActionPhase>
 ```
 
-Gesture event object.
+Gesture callback phases to listen for. An empty array is invalid. Notifications are sent only when the gesture triggers the specified phases.
 
 **Type:** Array&lt;[GestureActionPhase](arkts-arkui-arkui-uicontext-gestureactionphase-e.md)&gt;
 

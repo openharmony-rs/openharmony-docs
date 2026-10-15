@@ -4,7 +4,7 @@
 declare interface CalendarSelectedDate
 ```
 
-Defines the struct of CalendarSelectedDate.
+定义CalendarSelectedDate结构体。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ Defines the struct of CalendarSelectedDate.
 day: number
 ```
 
-Application day
+选中日期
 
 **类型：** number
 
@@ -46,7 +46,7 @@ Application day
 month: number
 ```
 
-Application month
+选中月份
 
 **类型：** number
 
@@ -70,7 +70,7 @@ Application month
 year: number
 ```
 
-Application year
+选中年份
 
 **类型：** number
 

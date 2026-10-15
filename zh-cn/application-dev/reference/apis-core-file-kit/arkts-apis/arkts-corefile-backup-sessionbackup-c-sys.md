@@ -20,6 +20,8 @@ class SessionBackup
 import { backup } from '@kit.CoreFileKit';
 ```
 
+<a id="appendbundles1"></a>
+
 ## appendBundles
 
 ```TypeScript
@@ -63,6 +65,7 @@ appendBundles(bundlesToBackup: string[], infos?: string[]): Promise<void>
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -168,7 +171,9 @@ async function appendBundles() {
 }
 ```
 
-<a id="appendbundles-1"></a>
+<!--DelEnd-->
+
+<a id="appendbundles2"></a>
 
 ## appendBundles
 
@@ -207,6 +212,7 @@ appendBundles(bundlesToBackup: string[], callback: AsyncCallback<void>): void
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -271,6 +277,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## cancel
 
 ```TypeScript
@@ -309,6 +317,7 @@ cancel(bundleName: string): number
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -370,6 +379,8 @@ async function cancelTest() {
 }
 ```
 
+<!--DelEnd-->
+
 ## cleanBundleTempDir
 
 ```TypeScript
@@ -407,6 +418,7 @@ cleanBundleTempDir(bundleName: string): Promise<boolean>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -473,6 +485,8 @@ let generalCallbacks: backup.GeneralCallbacks = { // 定义备份/恢复过程�
 let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
 ```
 
+<!--DelEnd-->
+
 ## constructor
 
 ```TypeScript
@@ -497,6 +511,7 @@ constructor(callbacks: GeneralCallbacks)
 | --- | --- | --- | --- |
 | callbacks | [GeneralCallbacks](arkts-corefile-backup-generalcallbacks-i-sys.md) | 是 | 备份流程所需的回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -546,6 +561,8 @@ let generalCallbacks: backup.GeneralCallbacks = {
 let sessionBackup = new backup.SessionBackup(generalCallbacks); // 创建备份流程
 ```
 
+<!--DelEnd-->
+
 ## getBackupDataSize
 
 ```TypeScript
@@ -589,6 +606,7 @@ getBackupDataSize(isPreciseScan: boolean, dataList: Array<IncrementalBackupTime>
 | 13900020 | Invalid argument |
 | 13900042 | Internal error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -696,6 +714,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## getCompatibilityInfo
 
 ```TypeScript
@@ -734,6 +754,7 @@ getCompatibilityInfo(bundleName: string, extInfo: string): Promise<string>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -799,6 +820,8 @@ async function getBackupCompatibilityInfo() {
 }
 ```
 
+<!--DelEnd-->
+
 ## getLocalCapabilities
 
 ```TypeScript
@@ -834,6 +857,7 @@ getLocalCapabilities(): Promise<FileData>
 | 13900020 | Invalid argument |
 | 13900042 | Internal error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -962,6 +986,8 @@ async function getLocalCapabilitiesTest() {
 }
 ```
 
+<!--DelEnd-->
+
 ## release
 
 ```TypeScript
@@ -998,6 +1024,7 @@ release(): Promise<void>
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1055,3 +1082,5 @@ async function release() {
   }
 }
 ```
+
+<!--DelEnd-->

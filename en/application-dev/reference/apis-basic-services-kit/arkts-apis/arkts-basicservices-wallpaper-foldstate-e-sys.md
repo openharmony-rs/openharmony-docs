@@ -6,8 +6,6 @@ enum FoldState
 
 Define the folding state of wallpaper
 
-@enum { int } FoldState
-
 **Since:** 14
 
 <!--Device-wallpaper-enum FoldState--><!--Device-wallpaper-enum FoldState-End-->

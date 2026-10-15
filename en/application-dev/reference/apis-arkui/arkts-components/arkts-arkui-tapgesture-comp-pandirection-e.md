@@ -12,19 +12,35 @@ Enumerates the pan directions. Unlike **SwipeDirection**, **PanDirection** has n
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## None
+## All
 
 ```TypeScript
-None
+All
 ```
 
-Panning disabled.
+All directions.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-PanDirection-None--><!--Device-PanDirection-None-End-->
+<!--Device-PanDirection-All--><!--Device-PanDirection-All-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Down
+
+```TypeScript
+Down
+```
+
+Downward.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanDirection-Down--><!--Device-PanDirection-Down-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +76,22 @@ Leftward.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## None
+
+```TypeScript
+None
+```
+
+Panning disabled.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanDirection-None--><!--Device-PanDirection-None-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Right
 
 ```TypeScript
@@ -73,22 +105,6 @@ Rightward.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PanDirection-Right--><!--Device-PanDirection-Right-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Vertical
-
-```TypeScript
-Vertical
-```
-
-Vertical direction.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-PanDirection-Vertical--><!--Device-PanDirection-Vertical-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,34 +124,18 @@ Upward.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Down
+## Vertical
 
 ```TypeScript
-Down
+Vertical
 ```
 
-Downward.
+Vertical direction.
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-PanDirection-Down--><!--Device-PanDirection-Down-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## All
-
-```TypeScript
-All
-```
-
-All directions.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-PanDirection-All--><!--Device-PanDirection-All-End-->
+<!--Device-PanDirection-Vertical--><!--Device-PanDirection-Vertical-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -24,8 +24,8 @@ import { ArkTSUtils } from '@kit.ArkTS';
 
 | Name | Description |
 | --- | --- |
-| [parse](arkts-arkts-ason-parse-f.md) | Converts a JavaScript Object Notation (JSON) string into an ArkTS Value. |
-| [stringify](arkts-arkts-ason-stringify-f.md) | Converts an ArkTS value to a JavaScript Object Notation (JSON) string. Extra supports Map and Set. |
+| [parse](arkts-arkts-ason-parse-f.md#parse) | Converts a JavaScript Object Notation (JSON) string into an ArkTS Value. |
+| [stringify](arkts-arkts-ason-stringify-f.md#stringify) | Converts an ArkTS value to a JavaScript Object Notation (JSON) string. Extra supports Map and Set. |
 
 ### Interfaces
 

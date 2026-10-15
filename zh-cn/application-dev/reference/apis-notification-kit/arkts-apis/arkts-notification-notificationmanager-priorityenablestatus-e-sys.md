@@ -30,22 +30,6 @@ DISABLE = 0
 
 **系统接口：** 此接口为系统接口。
 
-## ENABLE_BY_INTELLIGENT
-
-```TypeScript
-ENABLE_BY_INTELLIGENT = 1
-```
-
-应用通知的优先级开关为智能识别状态。
-
-**起始版本：** 23
-
-<!--Device-PriorityEnableStatus-ENABLE_BY_INTELLIGENT = 1--><!--Device-PriorityEnableStatus-ENABLE_BY_INTELLIGENT = 1-End-->
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
 ## ENABLE
 
 ```TypeScript
@@ -57,6 +41,22 @@ ENABLE = 2
 **起始版本：** 23
 
 <!--Device-PriorityEnableStatus-ENABLE = 2--><!--Device-PriorityEnableStatus-ENABLE = 2-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## ENABLE_BY_INTELLIGENT
+
+```TypeScript
+ENABLE_BY_INTELLIGENT = 1
+```
+
+应用通知的优先级开关为智能识别状态。
+
+**起始版本：** 23
+
+<!--Device-PriorityEnableStatus-ENABLE_BY_INTELLIGENT = 1--><!--Device-PriorityEnableStatus-ENABLE_BY_INTELLIGENT = 1-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

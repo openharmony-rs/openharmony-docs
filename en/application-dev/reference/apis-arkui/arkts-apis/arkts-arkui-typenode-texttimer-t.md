@@ -6,6 +6,8 @@ type TextTimer = TypedFrameNode<TextTimerInterface, TextTimerAttribute>
 
 Represents a FrameNode of the **TextTimer** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextTimerInterface, [TextTimerAttribute](../arkts-components/arkts-arkui-texttimer-comp-attribute.md)&gt;
+
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **TextTimer** type.
 <!--Device-typeNode-type TextTimer = TypedFrameNode<TextTimerInterface, TextTimerAttribute>--><!--Device-typeNode-type TextTimer = TypedFrameNode<TextTimerInterface, TextTimerAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextTimerInterface, [TextTimerAttribute](../arkts-components/arkts-arkui-texttimer-comp-attribute.md)&gt;

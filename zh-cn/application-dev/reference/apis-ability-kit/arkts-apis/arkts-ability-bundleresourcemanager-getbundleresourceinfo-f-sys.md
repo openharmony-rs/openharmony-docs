@@ -6,13 +6,15 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
+<a id="getbundleresourceinfo1"></a>
+
 ## getBundleResourceInfo
 
 ```TypeScript
 function getBundleResourceInfo(bundleName: string, resourceFlags?: number): BundleResourceInfo
 ```
 
-以同步方法根据给定的bundleName和resourceFlags获取当前应用的BundleResourceInfo。
+以同步方法根据给定的bundleName和resourceFlags获取应用的BundleResourceInfo。
 
 **起始版本：** 11
 
@@ -46,6 +48,7 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: number): Bund
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -83,8 +86,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getbundleresourceinfo-1"></a>
+
+<a id="getbundleresourceinfo2"></a>
 
 ## getBundleResourceInfo
 
@@ -92,7 +97,7 @@ try {
 function getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIndex?: number): BundleResourceInfo
 ```
 
-以同步方法根据给定的bundleName、resourceFlags和appIndex获取当前应用或分身应用的BundleResourceInfo。
+以同步方法根据给定的bundleName、resourceFlags和appIndex获取应用或分身应用的BundleResourceInfo。
 
 **起始版本：** 12
 
@@ -128,6 +133,9 @@ function getBundleResourceInfo(bundleName: string, resourceFlags?: number, appIn
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range or not found. |
 
+<!--Del-->
 **示例**
 
 参见 [getBundleResourceInfo](#getbundleresourceinfo)
+
+<!--DelEnd-->

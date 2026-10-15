@@ -6,6 +6,8 @@ export type EnterpriseAdminExtensionContext = _EnterpriseAdminExtensionContext.d
 
 EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)的上下文环境，继承自[ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)。
 
+**类型：** _EnterpriseAdminExtensionContext.default
+
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -13,5 +15,3 @@ EnterpriseAdminExtensionContext是[EnterpriseAdminExtensionAbility](arkts-mdm-en
 <!--Device-common-export type EnterpriseAdminExtensionContext = _EnterpriseAdminExtensionContext.default--><!--Device-common-export type EnterpriseAdminExtensionContext = _EnterpriseAdminExtensionContext.default-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-**类型：** _EnterpriseAdminExtensionContext.default

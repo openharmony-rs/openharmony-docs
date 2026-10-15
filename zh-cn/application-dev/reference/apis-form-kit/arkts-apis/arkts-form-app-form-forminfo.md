@@ -71,7 +71,6 @@ import { formInfo } from '@kit.FormKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [ColorMode](arkts-form-forminfo-colormode-e.md) | 卡片主题样式统一跟随系统的颜色模式，卡片支持的颜色模式枚举。 |
 | [FormDimension](arkts-form-forminfo-formdimension-e.md) | 定义卡片尺寸枚举。 |
 | [FormLocation](arkts-form-forminfo-formlocation-e.md) | 卡片当前位置枚举。 |
 | [FormParam](arkts-form-forminfo-formparam-e.md) | 卡片参数枚举。 |
@@ -81,6 +80,7 @@ import { formInfo } from '@kit.FormKit';
 | [FormUpdateReason](arkts-form-forminfo-formupdatereason-e.md) | 卡片更新原因枚举。 |
 | [LaunchReason](arkts-form-forminfo-launchreason-e.md) | 卡片创建原因枚举。 |
 | [VisibilityType](arkts-form-forminfo-visibilitytype-e.md) | 卡片当前可见类型枚举。表示卡片在宿主界面上的可见状态，当卡片从桌面移入/移出屏幕或切换应用时状态会发生变化，开发者可据此优化卡片刷新策略。 |
+| [ColorMode](arkts-form-forminfo-colormode-e.md) | 卡片主题样式统一跟随系统的颜色模式，卡片支持的颜色模式枚举。 |
 
 <!--Del-->
 ### 枚举（系统接口）

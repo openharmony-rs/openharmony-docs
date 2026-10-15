@@ -6,6 +6,8 @@ declare type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').def
 
 Defines the data loading parameters used during a drop operation.
 
+**Type:** import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams
+
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the data loading parameters used during a drop operation.
 <!--Device-unnamed-declare type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams--><!--Device-unnamed-declare type DataLoadParams = import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.data.unifiedDataChannel').default.DataLoadParams

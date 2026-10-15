@@ -24,7 +24,7 @@ Default value: **0.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞) If the value is abnormal, the default value is used.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -48,7 +48,7 @@ color?: ResourceColor
 
 Color of the indicator and board.
 
-Default value: **#FF007DFF**
+Default value: **#FF007DFF** (light blue)
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -74,7 +74,7 @@ Default value: **2.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞) If the value is abnormal, the default value is used.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -100,7 +100,7 @@ Default value: **8.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞) If the value is abnormal, the default value is used.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -128,7 +128,7 @@ Default value: **0.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞) If the value is abnormal, the default value is used.
 
 **NOTE:** 
 

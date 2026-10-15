@@ -12,24 +12,6 @@ Defines the shape of the disturbance field.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## RECT
-
-```TypeScript
-RECT = 0
-```
-
-Rectangle.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-DisturbanceFieldShape-RECT = 0--><!--Device-DisturbanceFieldShape-RECT = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## CIRCLE
 
 ```TypeScript
@@ -63,5 +45,23 @@ Ellipse.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DisturbanceFieldShape-ELLIPSE = 2--><!--Device-DisturbanceFieldShape-ELLIPSE = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## RECT
+
+```TypeScript
+RECT = 0
+```
+
+Rectangle.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-DisturbanceFieldShape-RECT = 0--><!--Device-DisturbanceFieldShape-RECT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

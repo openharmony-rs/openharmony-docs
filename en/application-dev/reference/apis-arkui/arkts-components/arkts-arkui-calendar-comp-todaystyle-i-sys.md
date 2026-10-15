@@ -4,7 +4,7 @@
 interface TodayStyle
 ```
 
-Non current day style.
+Today style.
 
 **Since:** 7
 

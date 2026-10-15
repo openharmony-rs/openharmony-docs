@@ -6,8 +6,6 @@ declare enum ReusableMemOptStrategy
 
 Enumerates the memory optimization strategies of reusable custom components.
 
-@enum { number }
-
 **Since:** 26.0.0
 
 <!--Device-unnamed-declare enum ReusableMemOptStrategy--><!--Device-unnamed-declare enum ReusableMemOptStrategy-End-->

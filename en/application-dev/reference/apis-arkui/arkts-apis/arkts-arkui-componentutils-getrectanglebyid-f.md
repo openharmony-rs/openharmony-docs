@@ -17,12 +17,18 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 > **NOTE:** 
 > 
 > - Since API version 10, you can use the [getComponentUtils](arkts-arkui-arkui-uicontext-uicontext-c.md#getcomponentutils) API in [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) to obtain the [ComponentUtils](arkts-arkui-arkui-uicontext-uicontext-c.md) object associated with the current UI context. This API provides access to component coordinates and size information after the target component completes layout. It is recommended that you invoke this API within [layout completion callbacks](arkts-arkui-arkui-inspector.md). Note that dynamically created components must be mounted to the component tree before this API can obtain their information, as unmounted components are not measured or laid out by the UI framework. Always ensure that component mounting precedes information retrieval attempts.
+> 
+> - The component position returned by this API is the layout position. Certain attribute calculations are not supported, such as position-related attributes like **offset**, **markAnchor**, and **position** of the
+> **Edges** and **LocalizedEdges** types, as well as transformation-related attributes like **rotate**,
+> **translate**, **scale**, and **transform**. You can use the alternative API
+> [getPositionToWindowWithTransform](arkts-arkui-framenode-c.md#getpositiontowindowwithtransform) to obtain the
+> position offset of a component relative to the window with drawing attributes.
 
 **Since:** 10
 
 **Deprecated since:** 18
 
-**Substitutes:** getRectangleById
+**Substitutes:** [getRectangleById](arkts-arkui-arkui-uicontext-componentutils-c.md#getrectanglebyid)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -36,7 +42,7 @@ Obtains a **ComponentInfo** object based on the component ID and synchronously r
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | Component ID. |
+| id | string | Yes | Component ID. The target component must be mounted to the component tree and have completed layout. |
 
 **Return value:**
 

@@ -6,6 +6,8 @@
 import { hash } from '@kit.CoreFileKit';
 ```
 
+<a id="hash1"></a>
+
 ## hash
 
 ```TypeScript
@@ -20,7 +22,7 @@ function hash(path: string, algorithm: string): Promise<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-hash-function hash(path: string, algorithm: string): Promise<string>--><!--Device-hash-function hash(path: string, algorithm: string): Promise<string>-End-->
 
@@ -60,7 +62,7 @@ hash.hash(filePath, "sha256").then((str: string) => {
 ```
 
 
-<a id="hash-1"></a>
+<a id="hash2"></a>
 
 ## hash
 
@@ -76,7 +78,7 @@ function hash(path: string, algorithm: string, callback: AsyncCallback<string>):
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-hash-function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void--><!--Device-hash-function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void-End-->
 

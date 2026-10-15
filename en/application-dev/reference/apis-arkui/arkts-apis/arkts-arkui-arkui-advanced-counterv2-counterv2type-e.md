@@ -18,24 +18,6 @@ For the display effect of each **CounterV2** component type, see [Example 1: Lis
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## LIST
-
-```TypeScript
-LIST = 0
-```
-
-List **CounterV2**.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-CounterV2Type-LIST = 0--><!--Device-CounterV2Type-LIST = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## COMPACT
 
 ```TypeScript
@@ -87,5 +69,23 @@ Inline date **CounterV2**.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-CounterV2Type-INLINE_DATE = 3--><!--Device-CounterV2Type-INLINE_DATE = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## LIST
+
+```TypeScript
+LIST = 0
+```
+
+List **CounterV2**.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-CounterV2Type-LIST = 0--><!--Device-CounterV2Type-LIST = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

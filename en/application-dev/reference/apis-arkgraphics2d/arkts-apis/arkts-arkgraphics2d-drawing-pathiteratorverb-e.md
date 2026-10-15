@@ -12,45 +12,17 @@ Enumerates the path operation types contained in an iterator. It is used to read
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## MOVE
+## CLOSE
 
 ```TypeScript
-MOVE = 0
+CLOSE = 5
 ```
 
-Sets the start point.
+Closes a path.
 
 **Since:** 18
 
-<!--Device-PathIteratorVerb-MOVE = 0--><!--Device-PathIteratorVerb-MOVE = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## LINE
-
-```TypeScript
-LINE = 1
-```
-
-Adds a line segment.
-
-**Since:** 18
-
-<!--Device-PathIteratorVerb-LINE = 1--><!--Device-PathIteratorVerb-LINE = 1-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## QUAD
-
-```TypeScript
-QUAD = 2
-```
-
-Adds a quadratic Bezier curve for smooth transitions.
-
-**Since:** 18
-
-<!--Device-PathIteratorVerb-QUAD = 2--><!--Device-PathIteratorVerb-QUAD = 2-End-->
+<!--Device-PathIteratorVerb-CLOSE = 5--><!--Device-PathIteratorVerb-CLOSE = 5-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -82,20 +54,6 @@ Adds a cubic Bezier curve for smooth transitions.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## CLOSE
-
-```TypeScript
-CLOSE = 5
-```
-
-Closes a path.
-
-**Since:** 18
-
-<!--Device-PathIteratorVerb-CLOSE = 5--><!--Device-PathIteratorVerb-CLOSE = 5-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## DONE
 
 ```TypeScript
@@ -107,5 +65,47 @@ The path setting is complete.
 **Since:** 18
 
 <!--Device-PathIteratorVerb-DONE = CLOSE + 1--><!--Device-PathIteratorVerb-DONE = CLOSE + 1-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## LINE
+
+```TypeScript
+LINE = 1
+```
+
+Adds a line segment.
+
+**Since:** 18
+
+<!--Device-PathIteratorVerb-LINE = 1--><!--Device-PathIteratorVerb-LINE = 1-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## MOVE
+
+```TypeScript
+MOVE = 0
+```
+
+Sets the start point.
+
+**Since:** 18
+
+<!--Device-PathIteratorVerb-MOVE = 0--><!--Device-PathIteratorVerb-MOVE = 0-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## QUAD
+
+```TypeScript
+QUAD = 2
+```
+
+Adds a quadratic Bezier curve for smooth transitions.
+
+**Since:** 18
+
+<!--Device-PathIteratorVerb-QUAD = 2--><!--Device-PathIteratorVerb-QUAD = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

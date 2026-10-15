@@ -113,7 +113,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | Yes | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability-1). |
+| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | Yes | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability2). |
 
 **Return value:**
 
@@ -128,6 +128,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -146,6 +147,8 @@ function createDepthDataOutput(cameraOutputCapability: camera.CameraOutputCapabi
   return depthDataOutput;
 }
 ```
+
+<!--DelEnd-->
 
 ## isCameraMuteSupported
 
@@ -175,6 +178,7 @@ Checks whether the camera device can be muted.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 13 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -183,6 +187,8 @@ function isCameraMuteSupported(cameraManager: camera.CameraManager): boolean {
   return isMuteSupported;
 }
 ```
+
+<!--DelEnd-->
 
 ## isControlCenterActive
 
@@ -247,6 +253,7 @@ Checks whether a camera device supports prelaunch.
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -264,6 +271,8 @@ function isPreLaunchSupported(context: common.BaseContext): boolean {
   return isSupported;
 }
 ```
+
+<!--DelEnd-->
 
 ## muteCameraPersistent
 
@@ -298,6 +307,7 @@ Mutes the camera device permanently.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -306,6 +316,8 @@ function muteCameraPersistent(cameraManager: camera.CameraManager): void {
   cameraManager.muteCameraPersistent(mute, camera.PolicyType.PRIVACY);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('cameraMute')
 
@@ -336,6 +348,7 @@ Unsubscribes from camera mute status events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 13 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -349,6 +362,8 @@ function unregisterCameraMute(cameraManager: camera.CameraManager): void {
   cameraManager.off('cameraMute', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('controlCenterStatusChange')
 
@@ -438,6 +453,7 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 13 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -456,6 +472,8 @@ function registerCameraMute(cameraManager: camera.CameraManager): void {
   cameraManager.on('cameraMute', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('controlCenterStatusChange')
 
@@ -538,6 +556,7 @@ Prelaunches the camera device. This API is called when a user clicks the system 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 13 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -555,6 +574,8 @@ function preLaunch(context: common.BaseContext): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## preSwitchCamera
 
@@ -586,6 +607,7 @@ Pre-switches a camera device to speed up its startup.
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -602,6 +624,8 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setPrelaunchConfig
 
@@ -636,6 +660,7 @@ Sets prelaunch configuration. Before the setting, call [isPrelaunchSupported](#i
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application.<br>**Applicable version:** 12 and later |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -658,6 +683,8 @@ function setPrelaunchConfig(context: common.BaseContext): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## muteCamera
 
@@ -685,6 +712,7 @@ Mutes or unmutes the camera device.
 | --- | --- | --- | --- |
 | mute | boolean | Yes | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -693,3 +721,5 @@ function muteCamera(cameraManager: camera.CameraManager): void {
   cameraManager.muteCamera(mute);
 }
 ```
+
+<!--DelEnd-->

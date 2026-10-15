@@ -103,7 +103,7 @@ image, cross-package or cross-module invocation is not supported. Files in the *
 - Supports `http` and `https` network image addresses. When using a network image, you must apply for the  
 `ohos.permission.INTERNET` permission.  
 - Supports strings with the `file://` path prefix. The application sandbox URI is  
-`file://&lt;bundleName&gt;/&lt;sandboxPath&gt;`. For the sandbox path, you need to use [fileUri.getUriFromPath(path)](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md) to convert the path into an application sandbox URI, and then pass it for display. At the same time, ensure that the files under the directory package path have read permission.  
+`file://<bundleName>/<sandboxPath>`. For the sandbox path, you need to use [fileUri.getUriFromPath(path)](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md) to convert the path into an application sandbox URI, and then pass it for display. At the same time, ensure that the files under the directory package path have read permission.  
 - Supports `Base64` strings.
 
 **Type:** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [PixelMap](arkts-arkui-common-comp-pixelmap-t.md)

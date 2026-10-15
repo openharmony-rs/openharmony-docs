@@ -1,4 +1,4 @@
-# document(文件交互)
+# document（文件交互）
 
 ```TypeScript
 declare namespace document

@@ -52,6 +52,7 @@ function updateFormCrossBundle(formId: string, formBindingData: formBindingData.
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form to be operated has been deleted already. |
 | [16501007](../errorcode-form.md#16501007-卡片不可信) | The form to be operated is not trusted. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -74,3 +75,5 @@ try {
   console.error(`catch error, code: ${error?.code}, message: ${error?.message}`);
 }
 ```
+
+<!--DelEnd-->

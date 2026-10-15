@@ -16,6 +16,24 @@ declare enum NavigationType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## Back
+
+```TypeScript
+Back
+```
+
+**起始版本：** 7
+
+**废弃版本：** 13
+
+**替代接口：** [pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop)
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NavigationType-Back--><!--Device-NavigationType-Back-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## Push
 
 ```TypeScript
@@ -35,24 +53,6 @@ Push
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-NavigationType-Push--><!--Device-NavigationType-Push-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Back
-
-```TypeScript
-Back
-```
-
-**起始版本：** 7
-
-**废弃版本：** 13
-
-**替代接口：** [pop](arkts-arkui-navigation-comp-navpathstack-c.md#pop)
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-NavigationType-Back--><!--Device-NavigationType-Back-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

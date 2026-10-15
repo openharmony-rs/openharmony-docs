@@ -20,7 +20,9 @@ Custom ComponentV2
 aboutToReuse?(): void
 ```
 
-aboutToReuse Method for @ComponentV2, it is executed when fetching instance of custom component from RecyclePool. It is different from the @Reusable in CustomComponent, there is no param parameter in this callback.
+When a reusable custom component of state management V2 is re-added to the node tree from the reuse cache, the **aboutToReuse** lifecycle callback is triggered. In frequently invoked scenarios, avoid performing time-consuming operations in it, otherwise frame loss and lag may occur.
+
+For details, see [\@ReusableV2](../../../ui/state-management/arkts-new-reusableV2.md).
 
 **Since:** 18
 

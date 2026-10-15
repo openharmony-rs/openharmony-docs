@@ -28,7 +28,7 @@ effectStrategy(value: SymbolEffectStrategy)
 > 
 > - 动效属性，仅支持使用effectStrategy属性或单个symbolEffect属性，不支持多种动效属性混合使用。
 > 
-> - 本接口仅支持NONE、SCALE、HIERARCHICAL三种预置动效类型，设置后动效自动播放。如需使用更丰富的动效类型（如出现、消失、弹跳、替换、脉冲动效等）或控制动效的播放状态和触发时机，请使用[symbolEffect](#symboleffect)接口。两者不可同时使用，详见[symbolEffect](#symboleffect)接口说明。
+> - 本接口仅支持NONE、SCALE、HIERARCHICAL三种预置动效类型，设置后动效自动播放。如需使用更丰富的动效类型（如出现、消失、弹跳、替换、脉冲动效等）或控制动效的播放状态和触发时机，请使用[symbolEffect](#symboleffect1)接口。两者不可同时使用，详见[symbolEffect](#symboleffect1)接口说明。
 
 **起始版本：** 11
 
@@ -47,6 +47,8 @@ effectStrategy(value: SymbolEffectStrategy)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [SymbolEffectStrategy](arkts-arkui-symbolglyph-comp-symboleffectstrategy-e.md) | 是 | SymbolGlyph组件动效策略。 |
+
+<a id="fontcolor1"></a>
 
 ## fontColor
 
@@ -78,7 +80,7 @@ fontColor(value: Array<ResourceColor>)
 | --- | --- | --- | --- |
 | value | Array&lt;[ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)&gt; | 是 | SymbolGlyph组件字体颜色。<br> 当value为undefined时，使用图标的默认颜色，默认颜色跟随主题。<br>不同渲染策略下颜色设置效果不同，详见[SymbolRenderingStrategy](arkts-arkui-symbolglyph-comp-symbolrenderingstrategy-e.md)枚举说明。 |
 
-<a id="fontcolor-1"></a>
+<a id="fontcolor2"></a>
 
 ## fontColor
 
@@ -86,7 +88,7 @@ fontColor(value: Array<ResourceColor>)
 fontColor(value: Array<ResourceColor | ColorMetrics> | undefined)
 ```
 
-设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor)接口，本接口支持传入[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型参数。
+设置SymbolGlyph组件的字体颜色，相比[fontColor](#fontcolor1)接口，本接口支持传入[ColorMetrics](../arkts-apis/arkts-arkui-graphics-colormetrics-c.md)类型参数。
 
 > **说明：** 
 > 
@@ -140,7 +142,9 @@ fontSize(value: number | string | Resource)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolGlyph组件字体大小。<br>取值范围：[0, +∞) <br>单位：fp <br>不支持设置百分比字符串。 |
+| value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | 是 | SymbolGlyph组件字体大小。<br>取值范围：[0, +∞) <br>单位：[fp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>不支持设置百分比字符串。 |
+
+<a id="fontweight1"></a>
 
 ## fontWeight
 
@@ -174,7 +178,7 @@ sys.symbol.ohos_lungs图标不支持设置fontWeight。
 | --- | --- | --- | --- |
 | value | number &#124; [FontWeight](../arkts-apis/arkts-arkui-fontweight-e.md) &#124; string | 是 | SymbolGlyph组件字体粗细。<br>number类型取值[100, 900]，取值间隔为100，默认为400，取值越大，字体越粗。string类型支持number类型取值的字符串形式，例如“400”，以及“bold”、“bolder”、“ lighter”、“regular”、“medium”，分别对应FontWeight中相应的枚举值。设置过大可能会在不同字体下有截断。<br>**说明：** <br>传入超出取值范围的值时取默认值。传入不符合间隔要求的值时也取默认值（仅支持100整数倍的值）。 |
 
-<a id="fontweight-1"></a>
+<a id="fontweight2"></a>
 
 ## fontWeight
 
@@ -289,7 +293,7 @@ shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle)
 
 设置SymbolGlyph组件的渐变色效果。
 
-可以显示为径向渐变[RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md)或线性渐变[LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md)或纯色[ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md)，shaderStyle的优先级高于[fontColor](#fontcolor)和AI识别，纯色建议使用[fontColor](#fontcolor)。
+可以显示为径向渐变[RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md)或线性渐变[LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md)或纯色[ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md)，shaderStyle的优先级高于[fontColor](#fontcolor1)和AI识别，纯色建议使用[fontColor](#fontcolor1)。
 
 **起始版本：** 20
 
@@ -306,6 +310,8 @@ shaderStyle(shader: Array<ShaderStyle | undefined> | ShaderStyle)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | shader | Array&lt;[ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) &#124; undefined&gt; &#124; [ShaderStyle](../arkts-apis/arkts-arkui-shaderstyle-c.md) | 是 | 径向渐变或线性渐变或纯色。<br>传入ShaderStyle时，覆盖所有层；传入数组时，数据项是ShaderStyle，则应用该层；数组项是undefined，则该层使用SymbolGlyph默认颜色，未设置的层也应用默认颜色。根据传入的参数区分处理径向渐变[RadialGradientStyle](../arkts-apis/arkts-arkui-radialgradientstyle-c.md)或线性渐变[LinearGradientStyle](../arkts-apis/arkts-arkui-lineargradientstyle-c.md)或纯色[ColorShaderStyle](../arkts-apis/arkts-arkui-colorshaderstyle-c.md)，最终设置到SymbolGlyph组件上显示为渐变色效果。<br>**说明：** <br>中心点请按百分比使用。如果使用的是非百分比（例如10PX），效果等同于设置1000%。<br>半径建议使用百分比。<br>百分比是基于图标大小的百分比，建议取值范围[0, 1)。 |
+
+<a id="symboleffect1"></a>
 
 ## symbolEffect
 
@@ -338,7 +344,7 @@ symbolEffect(symbolEffect: SymbolEffect, isActive?: boolean)
 | symbolEffect | [SymbolEffect](arkts-arkui-symbolglyph-comp-symboleffect-c.md) | 是 | SymbolGlyph组件动效策略。 |
 | isActive | boolean | 否 | SymbolGlyph组件动效播放状态。<br>true表示播放，false表示不播放。 |
 
-<a id="symboleffect-1"></a>
+<a id="symboleffect2"></a>
 
 ## symbolEffect
 
@@ -391,4 +397,4 @@ symbolShadow(shadow: Optional<ShadowOptions>)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | SymbolGlyph组件的阴影效果。<br>单位：vp <br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。 |
+| shadow | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[ShadowOptions](arkts-arkui-common-comp-shadowoptions-i.md)&gt; | 是 | SymbolGlyph组件的阴影效果。<br>单位：[vp](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) <br>**说明：** <br>仅支持ShadowOptions中的radius、color、offsetX、offsetY属性，不支持fill、type属性和color中的ColoringStrategy枚举值。 |

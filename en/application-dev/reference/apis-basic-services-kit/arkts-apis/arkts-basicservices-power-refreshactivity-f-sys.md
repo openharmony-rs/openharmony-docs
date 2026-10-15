@@ -42,6 +42,7 @@ This API takes effect only when the device is active. For details about the devi
 | [4900201](../errorcode-power.md#4900201-frequent-status-refreshes) | The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. This API cannot work in car devices.<br>**Applicable version:** 26.0.1 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -51,3 +52,5 @@ try {
     console.error('refreshActivity failed, err: ' + err);
 }
 ```
+
+<!--DelEnd-->

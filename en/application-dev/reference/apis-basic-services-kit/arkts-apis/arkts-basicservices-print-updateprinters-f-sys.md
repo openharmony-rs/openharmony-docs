@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="updateprinters1"></a>
+
 ## updatePrinters
 
 ```TypeScript
@@ -39,6 +41,7 @@ Updates information about the specified printers. This API uses an asynchronous 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,8 +66,10 @@ print.updatePrinters([printerInfo], (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="updateprinters-1"></a>
+
+<a id="updateprinters2"></a>
 
 ## updatePrinters
 
@@ -104,6 +109,7 @@ Updates information about the specified printers. This API uses a promise to ret
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -125,3 +131,5 @@ print.updatePrinters([printerInfo]).then(() => {
     console.error(`Failed to update printers. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

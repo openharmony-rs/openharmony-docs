@@ -30,7 +30,7 @@ Color of the rectangle.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-RectStyle-color: common2D.Color--><!--Device-RectStyle-color: common2D.Color-End-->
 
@@ -48,7 +48,7 @@ Lower left radius of the rectangle, in physical pixels (px).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-RectStyle-leftBottomRadius: double--><!--Device-RectStyle-leftBottomRadius: double-End-->
 
@@ -66,7 +66,7 @@ Upper left radius of the rectangle, in physical pixels (px).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-RectStyle-leftTopRadius: double--><!--Device-RectStyle-leftTopRadius: double-End-->
 
@@ -84,7 +84,7 @@ Lower right radius of the rectangle, in physical pixels (px).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-RectStyle-rightBottomRadius: double--><!--Device-RectStyle-rightBottomRadius: double-End-->
 
@@ -102,7 +102,7 @@ Upper right radius of the rectangle, in physical pixels (px).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-RectStyle-rightTopRadius: double--><!--Device-RectStyle-rightTopRadius: double-End-->
 

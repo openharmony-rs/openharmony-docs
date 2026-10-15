@@ -36,7 +36,7 @@ Creates a **RenderingContextSettings** object, with support for configuring anti
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| antialias | boolean | No | Whether to enable anti-aliasing for the canvas. <br>Abnormal values **undefined** or **null** are processed as the default value. <br>**true**: anti-aliasing is enabled; **false**: anti-aliasing is disabled. <br>Default value: **false** <br>**NOTE:** <br> Anti-aliasing is enabled by default for text drawing. The **antialias** attribute of **RenderingContextSettings** does not affect the anti-aliasing effect of text drawing. To modify the text anti-aliasing effect, use the [antialias&lt;sup&gt;24+&lt;/sup&gt;](#antialias) API. |
+| antialias | boolean | No | Whether to enable anti-aliasing for the canvas. <br>Abnormal values **undefined** or **null** are processed as the default value. <br>**true**: anti-aliasing is enabled; **false**: anti-aliasing is disabled. <br>Default value: **false** <br>**NOTE:** <br> Anti-aliasing is enabled by default for text drawing. The **antialias** attribute of **RenderingContextSettings** does not affect the anti-aliasing effect of text drawing. To modify the text anti-aliasing effect, use the [antialias<sup>24+</sup>](#antialias) API. |
 
 ## antialias
 
@@ -44,7 +44,7 @@ Creates a **RenderingContextSettings** object, with support for configuring anti
 antialias?: boolean
 ```
 
-Whether to enable anti-aliasing for the canvas. <br>Abnormal values **undefined** or **null** are processed as the default value. <br>**true**: anti-aliasing is enabled; **false**: anti-aliasing is disabled. <br>Default value: **false** <br>**NOTE:** <br> Anti-aliasing is enabled by default for text drawing. The **antialias** attribute of **RenderingContextSettings** does not affect the anti-aliasing effect of text drawing. To modify the text anti-aliasing effect, use the [antialias&lt;sup&gt;24+&lt;/sup&gt;](#antialias) API.
+Whether to enable anti-aliasing for the canvas. <br>Abnormal values **undefined** or **null** are processed as the default value. <br>**true**: anti-aliasing is enabled; **false**: anti-aliasing is disabled. <br>Default value: **false** <br>**NOTE:** <br> Anti-aliasing is enabled by default for text drawing. The **antialias** attribute of **RenderingContextSettings** does not affect the anti-aliasing effect of text drawing. To modify the text anti-aliasing effect, use the [antialias<sup>24+</sup>](#antialias) API.
 
 **Type:** boolean
 

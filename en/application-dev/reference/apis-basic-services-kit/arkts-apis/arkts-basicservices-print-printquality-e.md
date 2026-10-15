@@ -26,20 +26,6 @@ Draft
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## QUALITY_NORMAL
-
-```TypeScript
-QUALITY_NORMAL = 4
-```
-
-Standard
-
-**Since:** 14
-
-<!--Device-PrintQuality-QUALITY_NORMAL = 4--><!--Device-PrintQuality-QUALITY_NORMAL = 4-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## QUALITY_HIGH
 
 ```TypeScript
@@ -51,5 +37,19 @@ High
 **Since:** 14
 
 <!--Device-PrintQuality-QUALITY_HIGH = 5--><!--Device-PrintQuality-QUALITY_HIGH = 5-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## QUALITY_NORMAL
+
+```TypeScript
+QUALITY_NORMAL = 4
+```
+
+Standard
+
+**Since:** 14
+
+<!--Device-PrintQuality-QUALITY_NORMAL = 4--><!--Device-PrintQuality-QUALITY_NORMAL = 4-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

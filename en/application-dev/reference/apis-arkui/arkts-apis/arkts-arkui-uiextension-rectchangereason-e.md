@@ -24,7 +24,7 @@ The rectangle of the host window containing the component changes.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-RectChangeReason-HOST_WINDOW_RECT_CHANGE = 0x0001--><!--Device-RectChangeReason-HOST_WINDOW_RECT_CHANGE = 0x0001-End-->
 

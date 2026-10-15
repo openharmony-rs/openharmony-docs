@@ -130,6 +130,8 @@ console.info("range = " + range);
 // Output: range = [30, 40]
 ```
 
+<a id="contains1"></a>
+
 ## contains
 
 ```TypeScript
@@ -190,7 +192,7 @@ console.info("result = " + result);
 // Output: result = true
 ```
 
-<a id="contains-1"></a>
+<a id="contains2"></a>
 
 ## contains
 
@@ -254,6 +256,8 @@ console.info("result = " + result);
 // Output: result = false
 ```
 
+<a id="expand1"></a>
+
 ## expand
 
 ```TypeScript
@@ -316,7 +320,7 @@ console.info("result = " + result);
 // Output: result = [30, 40]
 ```
 
-<a id="expand-1"></a>
+<a id="expand2"></a>
 
 ## expand
 
@@ -380,7 +384,7 @@ console.info("result = " + result);
 // Output: result = [30, 40]
 ```
 
-<a id="expand-2"></a>
+<a id="expand3"></a>
 
 ## expand
 
@@ -548,6 +552,8 @@ console.info("result = " + result);
 // Output: result = 40
 ```
 
+<a id="intersect1"></a>
+
 ## intersect
 
 ```TypeScript
@@ -610,7 +616,7 @@ console.info("result = " + result);
 // Output: result = [35, 39]
 ```
 
-<a id="intersect-1"></a>
+<a id="intersect2"></a>
 
 ## intersect
 

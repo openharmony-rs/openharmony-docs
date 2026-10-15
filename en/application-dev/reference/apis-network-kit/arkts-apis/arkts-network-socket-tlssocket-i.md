@@ -18,6 +18,8 @@ Defines a TLS socket connection. Before calling TLSSocket APIs, you need to call
 import { socket } from '@kit.NetworkKit';
 ```
 
+<a id="bind1"></a>
+
 ## bind
 
 ```TypeScript
@@ -75,7 +77,7 @@ tls.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-<a id="bind-1"></a>
+<a id="bind2"></a>
 
 ## bind
 
@@ -137,6 +139,8 @@ tls.bind(bindAddr).then(() => {
 });
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -183,7 +187,7 @@ tls.close((err: BusinessError) => {
 });
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -228,6 +232,8 @@ tls.close().then(() => {
   console.error("failed" + err);
 });
 ```
+
+<a id="connect1"></a>
 
 ## connect
 
@@ -430,7 +436,7 @@ tlsOneWay.connect(tlsOneWayConnectOptions, (err: BusinessError) => {
 });
 ```
 
-<a id="connect-1"></a>
+<a id="connect2"></a>
 
 ## connect
 
@@ -646,6 +652,8 @@ tlsOneWay.connect(tlsOneWayConnectOptions).then(() => {
 });
 ```
 
+<a id="getcertificate1"></a>
+
 ## getCertificate
 
 ```TypeScript
@@ -705,7 +713,7 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getcertificate-1"></a>
+<a id="getcertificate2"></a>
 
 ## getCertificate
 
@@ -766,6 +774,8 @@ tls.getCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
+<a id="getciphersuite1"></a>
+
 ## getCipherSuite
 
 ```TypeScript
@@ -811,7 +821,7 @@ tls.getCipherSuite((err: BusinessError, data: Array<string>) => {
 });
 ```
 
-<a id="getciphersuite-1"></a>
+<a id="getciphersuite2"></a>
 
 ## getCipherSuite
 
@@ -902,6 +912,8 @@ tls.getLocalAddress().then((localAddress: socket.NetAddress) => {
 })
 ```
 
+<a id="getprotocol1"></a>
+
 ## getProtocol
 
 ```TypeScript
@@ -946,7 +958,7 @@ tls.getProtocol((err: BusinessError, data: string) => {
 });
 ```
 
-<a id="getprotocol-1"></a>
+<a id="getprotocol2"></a>
 
 ## getProtocol
 
@@ -989,6 +1001,8 @@ tls.getProtocol().then((data: string) => {
   console.error("failed" + err);
 });
 ```
+
+<a id="getremoteaddress1"></a>
 
 ## getRemoteAddress
 
@@ -1033,7 +1047,7 @@ tls.getRemoteAddress((err: BusinessError, data: socket.NetAddress) => {
 });
 ```
 
-<a id="getremoteaddress-1"></a>
+<a id="getremoteaddress2"></a>
 
 ## getRemoteAddress
 
@@ -1075,6 +1089,8 @@ tls.getRemoteAddress().then(() => {
   console.error('getRemoteAddress fail');
 });
 ```
+
+<a id="getremotecertificate1"></a>
 
 ## getRemoteCertificate
 
@@ -1137,7 +1153,7 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getremotecertificate-1"></a>
+<a id="getremotecertificate2"></a>
 
 ## getRemoteCertificate
 
@@ -1200,6 +1216,8 @@ tls.getRemoteCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
+<a id="getsignaturealgorithms1"></a>
+
 ## getSignatureAlgorithms
 
 ```TypeScript
@@ -1243,7 +1261,7 @@ tls.getSignatureAlgorithms((err: BusinessError, data: Array<string>) => {
 });
 ```
 
-<a id="getsignaturealgorithms-1"></a>
+<a id="getsignaturealgorithms2"></a>
 
 ## getSignatureAlgorithms
 
@@ -1298,7 +1316,7 @@ Obtains the file descriptor of the **TLSSocket** object. This API uses a promise
 > 
 > - This API can be called only after **bind** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 16
 
@@ -1333,6 +1351,8 @@ tls.getSocketFd().then((data: number) => {
   console.info("tls socket fd: " + data);
 })
 ```
+
+<a id="getstate1"></a>
 
 ## getState
 
@@ -1388,7 +1408,7 @@ tls.getState((err: BusinessError, data: socket.SocketStateBase) => {
 });
 ```
 
-<a id="getstate-1"></a>
+<a id="getstate2"></a>
 
 ## getState
 
@@ -1756,6 +1776,8 @@ tls.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
+<a id="send1"></a>
+
 ## send
 
 ```TypeScript
@@ -1804,7 +1826,7 @@ tls.send("xxxx", (err: BusinessError) => {
 });
 ```
 
-<a id="send-1"></a>
+<a id="send2"></a>
 
 ## send
 
@@ -1856,6 +1878,8 @@ tls.send("xxxx").then(() => {
   console.error("failed" + err);
 });
 ```
+
+<a id="setextraoptions1"></a>
 
 ## setExtraOptions
 
@@ -1930,7 +1954,7 @@ tls.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
 });
 ```
 
-<a id="setextraoptions-1"></a>
+<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

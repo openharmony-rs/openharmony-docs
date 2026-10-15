@@ -32,7 +32,7 @@ technology: number[]
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TagInfo-technology: int[]--><!--Device-TagInfo-technology: int[]-End-->
 
@@ -52,7 +52,7 @@ uid: number[]
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TagInfo-uid: int[]--><!--Device-TagInfo-uid: int[]-End-->
 

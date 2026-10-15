@@ -12,6 +12,22 @@ declare enum FileSelectorMode
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+## FileOpenFolderMode
+
+```TypeScript
+FileOpenFolderMode = 2
+```
+
+打开上传文件夹模式。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FileSelectorMode-FileOpenFolderMode = 2--><!--Device-FileSelectorMode-FileOpenFolderMode = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
 ## FileOpenMode
 
 ```TypeScript
@@ -41,22 +57,6 @@ FileOpenMultipleMode = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FileSelectorMode-FileOpenMultipleMode = 1--><!--Device-FileSelectorMode-FileOpenMultipleMode = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## FileOpenFolderMode
-
-```TypeScript
-FileOpenFolderMode = 2
-```
-
-打开上传文件夹模式。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FileSelectorMode-FileOpenFolderMode = 2--><!--Device-FileSelectorMode-FileOpenFolderMode = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

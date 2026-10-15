@@ -48,24 +48,6 @@ DISABLE_SCALE = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ENABLE_DEFAULT_SHADOW
-
-```TypeScript
-ENABLE_DEFAULT_SHADOW = 3
-```
-
-启用非文本类组件默认阴影效果。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-DragPreviewMode-ENABLE_DEFAULT_SHADOW = 3--><!--Device-DragPreviewMode-ENABLE_DEFAULT_SHADOW = 3-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## ENABLE_DEFAULT_RADIUS
 
 ```TypeScript
@@ -81,6 +63,24 @@ ENABLE_DEFAULT_RADIUS = 4
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DragPreviewMode-ENABLE_DEFAULT_RADIUS = 4--><!--Device-DragPreviewMode-ENABLE_DEFAULT_RADIUS = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## ENABLE_DEFAULT_SHADOW
+
+```TypeScript
+ENABLE_DEFAULT_SHADOW = 3
+```
+
+启用非文本类组件默认阴影效果。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragPreviewMode-ENABLE_DEFAULT_SHADOW = 3--><!--Device-DragPreviewMode-ENABLE_DEFAULT_SHADOW = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

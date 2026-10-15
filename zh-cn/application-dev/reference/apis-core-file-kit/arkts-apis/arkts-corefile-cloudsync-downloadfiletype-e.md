@@ -26,20 +26,6 @@ content类型文件。
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## THUMBNAIL
-
-```TypeScript
-THUMBNAIL = 1
-```
-
-thumbnail类型文件。
-
-**起始版本：** 20
-
-<!--Device-DownloadFileType-THUMBNAIL = 1--><!--Device-DownloadFileType-THUMBNAIL = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## LCD
 
 ```TypeScript
@@ -51,5 +37,19 @@ lcd类型文件。
 **起始版本：** 20
 
 <!--Device-DownloadFileType-LCD = 2--><!--Device-DownloadFileType-LCD = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## THUMBNAIL
+
+```TypeScript
+THUMBNAIL = 1
+```
+
+thumbnail类型文件。
+
+**起始版本：** 20
+
+<!--Device-DownloadFileType-THUMBNAIL = 1--><!--Device-DownloadFileType-THUMBNAIL = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

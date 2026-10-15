@@ -8,8 +8,8 @@ interface WindowLimits
 
 窗口尺寸限制的最终生效结果由默认系统限制、应用配置和运行时设置的数据取交集得到，优先级从高到低依次为：
 
-1. 应用通过[setWindowLimits](arkts-arkui-window-window-i.md#setwindowlimits)设置窗口尺寸限制。
-2. 应用在[startAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability-2)拉起窗口时通过[StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md)指定窗口尺寸限制（API version 17开始支持）。
+1. 应用通过[setWindowLimits](arkts-arkui-window-window-i.md#setwindowlimits1)设置窗口尺寸限制。
+2. 应用在[startAbility](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability3)拉起窗口时通过[StartOptions](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-startoptions-startoptions-c.md)指定窗口尺寸限制（API version 17开始支持）。
 3. 应用在[module.json5配置文件中的abilities标签](../../../quick-start/module-configuration-file.md#abilities标签)中配置windowLimits。
 4. 默认系统限制（基于不同产品和窗口类型，其windowLimits系统默认限制存在差异）。
 
@@ -51,7 +51,7 @@ maxHeight?: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowLimits-maxHeight?: int--><!--Device-WindowLimits-maxHeight?: int-End-->
 
@@ -69,7 +69,7 @@ maxWidth?: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowLimits-maxWidth?: int--><!--Device-WindowLimits-maxWidth?: int-End-->
 
@@ -87,7 +87,7 @@ minHeight?: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowLimits-minHeight?: int--><!--Device-WindowLimits-minHeight?: int-End-->
 
@@ -105,7 +105,7 @@ minWidth?: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-WindowLimits-minWidth?: int--><!--Device-WindowLimits-minWidth?: int-End-->
 

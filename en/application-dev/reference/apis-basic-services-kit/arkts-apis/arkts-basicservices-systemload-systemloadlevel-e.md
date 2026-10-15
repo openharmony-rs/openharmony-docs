@@ -12,6 +12,48 @@ Enumerates system load levels.
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
+## EMERGENCY
+
+```TypeScript
+EMERGENCY = 6
+```
+
+The device is overheated or significantly heavy loaded and is about to enter the Emergency state. You need to stop all services except those for fundamental use.
+
+**Since:** 12
+
+<!--Device-SystemLoadLevel-EMERGENCY = 6--><!--Device-SystemLoadLevel-EMERGENCY = 6-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.SystemLoad
+
+## ESCAPE
+
+```TypeScript
+ESCAPE = 7
+```
+
+The device is overheated or extremely heavy loaded and is about to enter the Escape state. You need to stop all services and take necessary emergency measures such as data backup.
+
+**Since:** 12
+
+<!--Device-SystemLoadLevel-ESCAPE = 7--><!--Device-SystemLoadLevel-ESCAPE = 7-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.SystemLoad
+
+## HIGH
+
+```TypeScript
+HIGH = 3
+```
+
+The device temperature and load are relatively high. You need to stop all imperceptible services and downgrade or reduce the load of non-critical services.
+
+**Since:** 12
+
+<!--Device-SystemLoadLevel-HIGH = 3--><!--Device-SystemLoadLevel-HIGH = 3-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.SystemLoad
+
 ## LOW
 
 ```TypeScript
@@ -23,20 +65,6 @@ The device temperature and load are low.
 **Since:** 12
 
 <!--Device-SystemLoadLevel-LOW = 0--><!--Device-SystemLoadLevel-LOW = 0-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.SystemLoad
-
-## NORMAL
-
-```TypeScript
-NORMAL = 1
-```
-
-The device temperature and load are normal but are approaching the medium range. You need to downgrade or reduce the load of imperceptible services.
-
-**Since:** 12
-
-<!--Device-SystemLoadLevel-NORMAL = 1--><!--Device-SystemLoadLevel-NORMAL = 1-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
@@ -54,17 +82,17 @@ One or more device temperature or load items are slightly high, or the device te
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
-## HIGH
+## NORMAL
 
 ```TypeScript
-HIGH = 3
+NORMAL = 1
 ```
 
-The device temperature and load are relatively high. You need to stop all imperceptible services and downgrade or reduce the load of non-critical services.
+The device temperature and load are normal but are approaching the medium range. You need to downgrade or reduce the load of imperceptible services.
 
 **Since:** 12
 
-<!--Device-SystemLoadLevel-HIGH = 3--><!--Device-SystemLoadLevel-HIGH = 3-End-->
+<!--Device-SystemLoadLevel-NORMAL = 1--><!--Device-SystemLoadLevel-NORMAL = 1-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad
 
@@ -93,33 +121,5 @@ The device is overheated or heavily loaded and is about to enter the Warning sta
 **Since:** 12
 
 <!--Device-SystemLoadLevel-WARNING = 5--><!--Device-SystemLoadLevel-WARNING = 5-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.SystemLoad
-
-## EMERGENCY
-
-```TypeScript
-EMERGENCY = 6
-```
-
-The device is overheated or significantly heavy loaded and is about to enter the Emergency state. You need to stop all services except those for fundamental use.
-
-**Since:** 12
-
-<!--Device-SystemLoadLevel-EMERGENCY = 6--><!--Device-SystemLoadLevel-EMERGENCY = 6-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.SystemLoad
-
-## ESCAPE
-
-```TypeScript
-ESCAPE = 7
-```
-
-The device is overheated or extremely heavy loaded and is about to enter the Escape state. You need to stop all services and take necessary emergency measures such as data backup.
-
-**Since:** 12
-
-<!--Device-SystemLoadLevel-ESCAPE = 7--><!--Device-SystemLoadLevel-ESCAPE = 7-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.SystemLoad

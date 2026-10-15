@@ -4,7 +4,7 @@
 declare interface ReuseOptions
 ```
 
-Defining the reusable configuration parameters.
+Reuse options, used to configure the reuse ID. Components with the same reuse ID are reused with each other, improving the precision of reuse matching.
 
 **Since:** 18
 
@@ -18,7 +18,11 @@ Defining the reusable configuration parameters.
 reuseId? : ReuseIdCallback
 ```
 
-Defining reuseId function. The default reuseId is the custom component name.
+Reuse ID. V2 custom components with the same reuse ID are reused with each other. The default reuse ID is the custom component name.
+
+Before API version 26.0.0, when reuseId is not a callback method that explicitly returns a string literal, the actual reuse ID is the name of the custom component. For example, the actual reuse ID of `Child().reuse({ reuseId: () =&gt; getReuseId() })` is `"Child"`.
+
+Since API version 26.0.0, a reuseId that does not explicitly return a string literal is supported as the actual reuse ID. For example, the actual reuse ID of `Child().reuse({ reuseId: () =&gt; getReuseId() })` is the return value of `getReuseId()`.
 
 **Since:** 18
 

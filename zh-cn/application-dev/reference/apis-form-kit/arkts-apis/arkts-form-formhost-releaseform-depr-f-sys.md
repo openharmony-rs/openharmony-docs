@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="releaseform1"></a>
+
 ## releaseForm
 
 ```TypeScript
@@ -34,6 +36,7 @@ function releaseForm(formId: string, callback: AsyncCallback<void>): void
 | formId | string | 是 | 卡片标识。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当释放指定的卡片成功，error为undefined；否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,8 +52,10 @@ formHost.releaseForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="releaseform-1"></a>
+
+<a id="releaseform2"></a>
 
 ## releaseForm
 
@@ -82,6 +87,7 @@ function releaseForm(formId: string, isReleaseCache: boolean, callback: AsyncCal
 | isReleaseCache | boolean | 是 | 是否释放缓存。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当释放指定的卡片成功，error为undefined；否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -97,8 +103,10 @@ formHost.releaseForm(formId, true, (error: Base.BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="releaseform-2"></a>
+
+<a id="releaseform3"></a>
 
 ## releaseForm
 
@@ -135,6 +143,7 @@ function releaseForm(formId: string, isReleaseCache?: boolean): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -147,3 +156,5 @@ formHost.releaseForm(formId, true).then(() => {
   console.error(`formHost releaseForm, error: ${JSON.stringify(error)}`);
 });
 ```
+
+<!--DelEnd-->

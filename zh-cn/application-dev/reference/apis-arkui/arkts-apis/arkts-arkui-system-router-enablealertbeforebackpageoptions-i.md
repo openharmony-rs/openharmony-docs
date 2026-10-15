@@ -102,7 +102,7 @@ message: string
 
 **废弃版本：** 8
 
-**替代接口：** message
+**替代接口：** [message](arkts-arkui-router-enablealertoptions-i.md#message)
 
 <!--Device-EnableAlertBeforeBackPageOptions-message: string--><!--Device-EnableAlertBeforeBackPageOptions-message: string-End-->
 

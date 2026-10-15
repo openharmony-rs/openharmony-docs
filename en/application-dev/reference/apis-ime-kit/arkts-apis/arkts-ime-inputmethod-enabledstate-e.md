@@ -12,20 +12,6 @@ Indicates whether the input method is enabled.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## DISABLED
-
-```TypeScript
-DISABLED = 0
-```
-
-Disabled.
-
-**Since:** 15
-
-<!--Device-EnabledState-DISABLED = 0--><!--Device-EnabledState-DISABLED = 0-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
 ## BASIC_MODE
 
 ```TypeScript
@@ -37,6 +23,20 @@ Basic mode.
 **Since:** 15
 
 <!--Device-EnabledState-BASIC_MODE--><!--Device-EnabledState-BASIC_MODE-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## DISABLED
+
+```TypeScript
+DISABLED = 0
+```
+
+Disabled.
+
+**Since:** 15
+
+<!--Device-EnabledState-DISABLED = 0--><!--Device-EnabledState-DISABLED = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

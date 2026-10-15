@@ -17,7 +17,7 @@ Sets the edge effect of the chain animation effect, which determines how the spa
 ## DEFAULT
 
 ```TypeScript
-DEFAULT
+DEFAULT = 0
 ```
 
 Default effect. When the list continues to be dragged after scrolling to the edge, the spacing between list items in the drag direction decreases,
@@ -28,7 +28,7 @@ and the spacing between list items in the opposite direction increases. This is 
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ChainEdgeEffect-DEFAULT--><!--Device-ChainEdgeEffect-DEFAULT-End-->
+<!--Device-ChainEdgeEffect-DEFAULT = 0--><!--Device-ChainEdgeEffect-DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -37,7 +37,7 @@ and the spacing between list items in the opposite direction increases. This is 
 ## STRETCH
 
 ```TypeScript
-STRETCH
+STRETCH = 1
 ```
 
 When the list continues to be dragged after scrolling to the edge, the spacing between all list items increases. This is suitable for scenarios that require synchronous stretching feedback of all list items.
@@ -46,7 +46,7 @@ When the list continues to be dragged after scrolling to the edge, the spacing b
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-ChainEdgeEffect-STRETCH--><!--Device-ChainEdgeEffect-STRETCH-End-->
+<!--Device-ChainEdgeEffect-STRETCH = 1--><!--Device-ChainEdgeEffect-STRETCH = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

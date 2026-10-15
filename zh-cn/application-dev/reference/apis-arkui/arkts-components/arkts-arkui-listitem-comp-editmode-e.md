@@ -14,24 +14,6 @@ ListItem元素编辑模式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## None
-
-```TypeScript
-None
-```
-
-编辑操作不限制。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-<!--Device-EditMode-None--><!--Device-EditMode-None-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Deletable
 
 ```TypeScript
@@ -65,5 +47,23 @@ Movable.
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
 <!--Device-EditMode-Movable--><!--Device-EditMode-Movable-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None
+```
+
+编辑操作不限制。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+<!--Device-EditMode-None--><!--Device-EditMode-None-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

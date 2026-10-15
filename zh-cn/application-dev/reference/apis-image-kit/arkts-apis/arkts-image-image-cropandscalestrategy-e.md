@@ -22,20 +22,6 @@ enum CropAndScaleStrategy
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## SCALE_FIRST
-
-```TypeScript
-SCALE_FIRST = 1
-```
-
-解码参数如果同时设置desiredRegion与desiredSize，先根据desiredSize进行缩放，再根据desiredRegion进行区域裁剪。
-
-**起始版本：** 18
-
-<!--Device-CropAndScaleStrategy-SCALE_FIRST = 1--><!--Device-CropAndScaleStrategy-SCALE_FIRST = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## CROP_FIRST
 
 ```TypeScript
@@ -47,5 +33,19 @@ CROP_FIRST = 2
 **起始版本：** 18
 
 <!--Device-CropAndScaleStrategy-CROP_FIRST = 2--><!--Device-CropAndScaleStrategy-CROP_FIRST = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## SCALE_FIRST
+
+```TypeScript
+SCALE_FIRST = 1
+```
+
+解码参数如果同时设置desiredRegion与desiredSize，先根据desiredSize进行缩放，再根据desiredRegion进行区域裁剪。
+
+**起始版本：** 18
+
+<!--Device-CropAndScaleStrategy-SCALE_FIRST = 1--><!--Device-CropAndScaleStrategy-SCALE_FIRST = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

@@ -4,13 +4,13 @@
 interface KVManager
 ```
 
-数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md)构建一个KVManager实例。
+数据管理实例，用于获取KVStore的相关信息。在调用KVManager的方法前，需要先通过[createKVManager](arkts-arkdata-distributeddata-createkvmanager-f.md#createkvmanager1)构建一个KVManager实例。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** KVManager
+**替代接口：** [KVManager](arkts-arkdata-distributedkvstore-kvmanager-i.md)
 
 <!--Device-distributedData-interface KVManager--><!--Device-distributedData-interface KVManager-End-->
 
@@ -20,6 +20,8 @@ interface KVManager
 
 ```TypeScript
 ```
+
+<a id="closekvstore1"></a>
 
 ## closeKVStore
 
@@ -33,7 +35,7 @@ closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCa
 
 **废弃版本：** 9
 
-**替代接口：** closeKVStore
+**替代接口：** [closeKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#closekvstore)
 
 <!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void--><!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore, callback: AsyncCallback<void>): void-End-->
 
@@ -75,7 +77,7 @@ try {
 }
 ```
 
-<a id="closekvstore-1"></a>
+<a id="closekvstore2"></a>
 
 ## closeKVStore
 
@@ -89,7 +91,7 @@ closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** closeKVStore
+**替代接口：** [closeKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#closekvstore)
 
 <!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>--><!--Device-KVManager-closeKVStore(appId: string, storeId: string, kvStore: KVStore): Promise<void>-End-->
 
@@ -140,6 +142,8 @@ try {
 }
 ```
 
+<a id="deletekvstore1"></a>
+
 ## deleteKVStore
 
 ```TypeScript
@@ -152,7 +156,7 @@ deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): vo
 
 **废弃版本：** 9
 
-**替代接口：** deleteKVStore
+**替代接口：** [deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore)
 
 <!--Device-KVManager-deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void--><!--Device-KVManager-deleteKVStore(appId: string, storeId: string, callback: AsyncCallback<void>): void-End-->
 
@@ -193,7 +197,7 @@ try {
 }
 ```
 
-<a id="deletekvstore-1"></a>
+<a id="deletekvstore2"></a>
 
 ## deleteKVStore
 
@@ -207,7 +211,7 @@ deleteKVStore(appId: string, storeId: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** deleteKVStore
+**替代接口：** [deleteKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#deletekvstore)
 
 <!--Device-KVManager-deleteKVStore(appId: string, storeId: string): Promise<void>--><!--Device-KVManager-deleteKVStore(appId: string, storeId: string): Promise<void>-End-->
 
@@ -257,19 +261,21 @@ try {
 }
 ```
 
+<a id="getallkvstoreid1"></a>
+
 ## getAllKVStoreId
 
 ```TypeScript
 getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void
 ```
 
-获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的KVStore数据库的storeId，使用callback异步回调。
+获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore1)方法删除的KVStore数据库的storeId，使用callback异步回调。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** getAllKVStoreId
+**替代接口：** [getAllKVStoreId](arkts-arkdata-distributedkvstore-kvmanager-i.md#getallkvstoreid)
 
 <!--Device-KVManager-getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void--><!--Device-KVManager-getAllKVStoreId(appId: string, callback: AsyncCallback<string[]>): void-End-->
 
@@ -296,7 +302,7 @@ try {
 }
 ```
 
-<a id="getallkvstoreid-1"></a>
+<a id="getallkvstoreid2"></a>
 
 ## getAllKVStoreId
 
@@ -304,13 +310,13 @@ try {
 getAllKVStoreId(appId: string): Promise<string[]>
 ```
 
-获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore)方法删除的KVStore数据库的storeId，使用Promise异步回调。
+获取所有通过getKVStore方法创建的且没有调用[deleteKVStore](#deletekvstore1)方法删除的KVStore数据库的storeId，使用Promise异步回调。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** getAllKVStoreId
+**替代接口：** [getAllKVStoreId](arkts-arkdata-distributedkvstore-kvmanager-i.md#getallkvstoreid)
 
 <!--Device-KVManager-getAllKVStoreId(appId: string): Promise<string[]>--><!--Device-KVManager-getAllKVStoreId(appId: string): Promise<string[]>-End-->
 
@@ -345,6 +351,8 @@ try {
 }
 ```
 
+<a id="getkvstore1"></a>
+
 ## getKVStore
 
 ```TypeScript
@@ -357,7 +365,7 @@ getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>
 
 **废弃版本：** 9
 
-**替代接口：** getKVStore
+**替代接口：** [getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore)
 
 <!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>--><!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options): Promise<T>-End-->
 
@@ -401,7 +409,7 @@ try {
 }
 ```
 
-<a id="getkvstore-1"></a>
+<a id="getkvstore2"></a>
 
 ## getKVStore
 
@@ -415,7 +423,7 @@ getKVStore<T extends KVStore>(storeId: string, options: Options, callback: Async
 
 **废弃版本：** 9
 
-**替代接口：** getKVStore
+**替代接口：** [getKVStore](arkts-arkdata-distributedkvstore-kvmanager-i.md#getkvstore)
 
 <!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void--><!--Device-KVManager-getKVStore<T extends KVStore>(storeId: string, options: Options, callback: AsyncCallback<T>): void-End-->
 
@@ -468,7 +476,7 @@ off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** off
+**替代接口：** [off](arkts-arkdata-distributedkvstore-kvmanager-i.md#off)
 
 <!--Device-KVManager-off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void--><!--Device-KVManager-off(event: 'distributedDataServiceDie', deathCallback?: Callback<void>): void-End-->
 
@@ -508,7 +516,7 @@ on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** on
+**替代接口：** [on](arkts-arkdata-distributedkvstore-kvmanager-i.md#on)
 
 <!--Device-KVManager-on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void--><!--Device-KVManager-on(event: 'distributedDataServiceDie', deathCallback: Callback<void>): void-End-->
 

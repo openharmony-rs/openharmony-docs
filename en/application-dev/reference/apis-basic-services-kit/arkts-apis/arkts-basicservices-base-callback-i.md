@@ -6,7 +6,7 @@ export interface Callback<T>
 
 Defines a common callback used to return the processing result when an asynchronous operation is successful. You need to define the callback type.
 
-@typedef { Callback } [since 6 - 11] @typedef { Callback&lt;T&gt; } [since 12]
+@typedef { Callback } [since 6 - 11] @typedef { Callback<T> } [since 12]
 
 **Since:** 6
 

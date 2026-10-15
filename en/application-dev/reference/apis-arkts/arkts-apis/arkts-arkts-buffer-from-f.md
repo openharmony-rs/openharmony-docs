@@ -6,6 +6,8 @@
 import { buffer } from '@kit.ArkTS';
 ```
 
+<a id="from1"></a>
+
 ## from
 
 ```TypeScript
@@ -16,7 +18,7 @@ Creates a **Buffer** object with the specified array.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-buffer-function from(array: double[]): Buffer--><!--Device-buffer-function from(array: double[]): Buffer-End-->
 
@@ -45,7 +47,7 @@ console.info(buf.toString('hex'));
 ```
 
 
-<a id="from-1"></a>
+<a id="from2"></a>
 
 ## from
 
@@ -94,7 +96,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[0,0]}
 ```
 
 
-<a id="from-3"></a>
+<a id="from4"></a>
 
 ## from
 
@@ -106,7 +108,7 @@ Copies the data of a passed **Buffer** object to create a new **Buffer** object 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-buffer-function from(buffer: Buffer | Uint8Array): Buffer--><!--Device-buffer-function from(buffer: Buffer | Uint8Array): Buffer-End-->
 
@@ -142,7 +144,7 @@ console.info("uint8Array:", uint8Array);
 ```
 
 
-<a id="from-4"></a>
+<a id="from5"></a>
 
 ## from
 
@@ -154,7 +156,7 @@ Creates a **Buffer** object based on the specified object.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-buffer-function from(object: Object, offsetOrEncoding: int | string, length: int): Buffer--><!--Device-buffer-function from(object: Object, offsetOrEncoding: int | string, length: int): Buffer-End-->
 
@@ -184,7 +186,7 @@ console.info(JSON.stringify(buf)); // {"type":"Buffer","data":[116,104,105,115,3
 ```
 
 
-<a id="from-5"></a>
+<a id="from6"></a>
 
 ## from
 
@@ -196,7 +198,7 @@ Creates a **Buffer** object based on a string in the given encoding format.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-buffer-function from(string: String, encoding?: BufferEncoding): Buffer--><!--Device-buffer-function from(string: String, encoding?: BufferEncoding): Buffer-End-->
 

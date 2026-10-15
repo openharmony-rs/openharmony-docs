@@ -54,12 +54,12 @@ JS示例：
 
 ```xml
  <!-- xxx.hml -->
- &lt;div class="container"&gt;
- &lt;text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};"&gt;
+ <div class="container">
+ <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
  Get Data
- &lt;/text&gt;
- &lt;input type="button" value="Get Data" style="width: 240px; height: 50px; margin: 5px;" onclick="storageGet"&gt;&lt;/input&gt;
- &lt;/div&gt;
+ </text>
+ <input type="button" value="Get Data" style="width: 240px; height: 50px; margin: 5px;" onclick="storageGet"></input>
+ </div>
  ```
 
   
@@ -151,12 +151,12 @@ JS示例：
 
 ```xml
  <!-- xxx.hml -->
- &lt;div class="container"&gt;
- &lt;text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};"&gt;
+ <div class="container">
+ <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
  Set Data
- &lt;/text&gt;
- &lt;input type="button" value="Set Data" style="width: 240px; height: 50px; margin: 5px;" onclick="storageSet"&gt;&lt;/input&gt;
- &lt;/div&gt;
+ </text>
+ <input type="button" value="Set Data" style="width: 240px; height: 50px; margin: 5px;" onclick="storageSet"></input>
+ </div>
  ```
 
   
@@ -247,12 +247,12 @@ JS示例：
 
 ```xml
  <!-- xxx.hml -->
- &lt;div class="container"&gt;
- &lt;text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};"&gt;
+ <div class="container">
+ <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
  Clear Data
- &lt;/text&gt;
- &lt;input type="button" value="Clear Data" style="width: 240px; height: 50px; margin: 5px;" onclick="storageClear"&gt;&lt;/input&gt;
- &lt;/div&gt;
+ </text>
+ <input type="button" value="Clear Data" style="width: 240px; height: 50px; margin: 5px;" onclick="storageClear"></input>
+ </div>
  ```
 
   
@@ -346,12 +346,12 @@ JS示例：
 
 ```xml
  <!-- xxx.hml -->
- &lt;div class="container"&gt;
- &lt;text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};"&gt;
+ <div class="container">
+ <text class="title" style="font-size: {{fontSize}}; color: {{fontColor}};">
  Delete Data
- &lt;/text&gt;
- &lt;input type="button" value="Delete Data" style="width: 240px; height: 50px; margin: 5px;" onclick="storageDelete"&gt;&lt;/input&gt;
- &lt;/div&gt;
+ </text>
+ <input type="button" value="Delete Data" style="width: 240px; height: 50px; margin: 5px;" onclick="storageDelete"></input>
+ </div>
  ```
 
   

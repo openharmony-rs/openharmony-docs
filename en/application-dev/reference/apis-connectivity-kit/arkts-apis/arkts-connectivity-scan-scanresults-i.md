@@ -32,6 +32,8 @@ Address of the device discovered. The address format is **11:22:33:AA:BB:FF**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-ScanResults-address: string--><!--Device-ScanResults-address: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ Advertising packet data.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ScanResults-data: ArrayBuffer--><!--Device-ScanResults-data: ArrayBuffer-End-->
 
@@ -68,6 +72,8 @@ Type of the device discovered. This field is not returned if the device advertis
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-ScanResults-deviceClass?: nearlinkConstant.DeviceClass--><!--Device-ScanResults-deviceClass?: nearlinkConstant.DeviceClass-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -86,7 +92,29 @@ Name of the device discovered. The value contains 0 to 30 characters.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-ScanResults-deviceName: string--><!--Device-ScanResults-deviceName: string-End-->
+
+**System capability:** SystemCapability.Communication.NearLink.Base
+
+## frameType
+
+```TypeScript
+frameType?: nearlinkConstant.FrameType
+```
+
+Radio frame type of the received advertising packet. If this field is not returned, the frame type is **FRAME_TYPE_1**.
+
+**Type:** [nearlinkConstant.FrameType](arkts-connectivity-nearlinkconstant-frametype-e.md)
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ScanResults-frameType?: nearlinkConstant.FrameType--><!--Device-ScanResults-frameType?: nearlinkConstant.FrameType-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -103,6 +131,8 @@ Whether the discovered device is connectable. The value **true** indicates that 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ScanResults-isConnectable: boolean--><!--Device-ScanResults-isConnectable: boolean-End-->
 
@@ -121,6 +151,8 @@ RSSI of the device discovered. The value range is [–128, +127], in dBm. The va
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ScanResults-rssi: int--><!--Device-ScanResults-rssi: int-End-->
 

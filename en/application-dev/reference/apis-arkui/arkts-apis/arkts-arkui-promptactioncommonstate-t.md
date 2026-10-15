@@ -8,6 +8,8 @@ Import the CommonState type from promptAction.
 
 @typedef { import('../api/@ohos.promptAction').promptAction.CommonState } PromptActionCommonState
 
+**Type:** import('../api/@ohos.promptAction').promptAction.CommonState
+
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Import the CommonState type from promptAction.
 <!--Device-unnamed-declare type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.CommonState--><!--Device-unnamed-declare type PromptActionCommonState = import('../api/@ohos.promptAction').promptAction.CommonState-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.promptAction').promptAction.CommonState

@@ -18,6 +18,8 @@ Provides APIs for the file manager application to perform device-cloud sync of t
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -43,6 +45,8 @@ A constructor used to create a **FileSync** instance.
 ```TypeScript
 let fileSync = new cloudSync.FileSync()
 ```
+
+<a id="getlastsynctime1"></a>
 
 ## getLastSyncTime
 
@@ -86,7 +90,7 @@ fileSync.getLastSyncTime().then((timeStamp: number) => {
 });
 ```
 
-<a id="getlastsynctime-1"></a>
+<a id="getlastsynctime2"></a>
 
 ## getLastSyncTime
 
@@ -213,6 +217,8 @@ let callback = (pg: cloudSync.SyncProgress) => {
 fileSync.on('progress', callback);
 ```
 
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -263,7 +269,7 @@ fileSync.start().then(() => {
 });
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -311,6 +317,8 @@ fileSync.start((err: BusinessError) => {
 });
 ```
 
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -354,7 +362,7 @@ fileSync.stop().then(() => {
 });
 ```
 
-<a id="stop-1"></a>
+<a id="stop2"></a>
 
 ## stop
 

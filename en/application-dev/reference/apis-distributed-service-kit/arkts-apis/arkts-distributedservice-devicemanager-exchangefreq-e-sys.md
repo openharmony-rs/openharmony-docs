@@ -16,6 +16,24 @@ Enumerates the device discovery frequencies.
 
 **System API:** This is a system API.
 
+## HIGH
+
+```TypeScript
+HIGH = 2
+```
+
+High frequency.
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+<!--Device-ExchangeFreq-HIGH = 2--><!--Device-ExchangeFreq-HIGH = 2-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+**System API:** This is a system API.
+
 ## LOW
 
 ```TypeScript
@@ -47,24 +65,6 @@ Medium frequency.
 **Deprecated since:** 11
 
 <!--Device-ExchangeFreq-MID = 1--><!--Device-ExchangeFreq-MID = 1-End-->
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
-**System API:** This is a system API.
-
-## HIGH
-
-```TypeScript
-HIGH = 2
-```
-
-High frequency.
-
-**Since:** 7
-
-**Deprecated since:** 11
-
-<!--Device-ExchangeFreq-HIGH = 2--><!--Device-ExchangeFreq-HIGH = 2-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

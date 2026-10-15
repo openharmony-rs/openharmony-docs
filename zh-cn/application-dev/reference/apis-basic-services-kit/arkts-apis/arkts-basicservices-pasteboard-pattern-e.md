@@ -12,34 +12,6 @@ enum Pattern
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-## URL
-
-```TypeScript
-URL = 0
-```
-
-URL类型。
-
-**起始版本：** 13
-
-<!--Device-Pattern-URL = 0--><!--Device-Pattern-URL = 0-End-->
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
-## NUMBER
-
-```TypeScript
-NUMBER = 1
-```
-
-数字类型。
-
-**起始版本：** 13
-
-<!--Device-Pattern-NUMBER = 1--><!--Device-Pattern-NUMBER = 1-End-->
-
-**系统能力：** SystemCapability.MiscServices.Pasteboard
-
 ## EMAIL_ADDRESS
 
 ```TypeScript
@@ -51,6 +23,22 @@ EMAIL_ADDRESS = 2
 **起始版本：** 13
 
 <!--Device-Pattern-EMAIL_ADDRESS = 2--><!--Device-Pattern-EMAIL_ADDRESS = 2-End-->
+
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+## FLIGHT_NUMBER
+
+```TypeScript
+FLIGHT_NUMBER = 4
+```
+
+航班号类型。模型约束：此接口仅可在Stage模型下使用。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-Pattern-FLIGHT_NUMBER = 4--><!--Device-Pattern-FLIGHT_NUMBER = 4-End-->
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
@@ -70,18 +58,30 @@ HTTP web链接类型。模型约束：此接口仅可在Stage模型下使用。
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard
 
-## FLIGHT_NUMBER
+## NUMBER
 
 ```TypeScript
-FLIGHT_NUMBER = 4
+NUMBER = 1
 ```
 
-航班号类型。模型约束：此接口仅可在Stage模型下使用。
+数字类型。
 
-**起始版本：** 24
+**起始版本：** 13
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+<!--Device-Pattern-NUMBER = 1--><!--Device-Pattern-NUMBER = 1-End-->
 
-<!--Device-Pattern-FLIGHT_NUMBER = 4--><!--Device-Pattern-FLIGHT_NUMBER = 4-End-->
+**系统能力：** SystemCapability.MiscServices.Pasteboard
+
+## URL
+
+```TypeScript
+URL = 0
+```
+
+URL类型。
+
+**起始版本：** 13
+
+<!--Device-Pattern-URL = 0--><!--Device-Pattern-URL = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.Pasteboard

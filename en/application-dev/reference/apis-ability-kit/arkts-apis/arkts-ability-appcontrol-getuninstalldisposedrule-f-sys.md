@@ -12,7 +12,7 @@ import { appControl } from '@kit.AbilityKit';
 function getUninstallDisposedRule(appIdentifier: string, appIndex?: number): UninstallDisposedRule
 ```
 
-Obtains the uninstallation disposed rule of an application or an application clone.
+Obtains the uninstall disposition rule with the highest priority that has been set for a specified application or application clone.
 
 **Since:** 15
 
@@ -28,7 +28,7 @@ Obtains the uninstallation disposed rule of an application or an application clo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appIdentifier | string | Yes | appIdentifier of the target application.<br> If the application does not have an appIdentifier, use its appId instead. **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to set **appId**, see [How do I obtain appId from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information). |
+| appIdentifier | string | Yes | appIdentifier of the application whose uninstall disposition rule is to be obtained. <br> If the application does not have an appIdentifier, appId can be used instead. appId is the unique identifier of the application, determined by the application Bundle name and signature information. For details about how to obtain it, see [obtain the appId of the application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). |
 | appIndex | number | No | Index of the application clone. The default value is **0**.<br> The value **0** means to obtain the uninstallation disposed rule of the main application. A value greater than 0 means to obtain the uninstallation disposed rule of the application clone. |
 
 **Return value:**
@@ -48,6 +48,7 @@ Obtains the uninstallation disposed rule of an application or an application clo
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex is not in the valid range. |
 | [17700074](../errorcode-bundle.md#17700074-invalid-appidentifier) | The specified appIdentifier is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   console.error('getUninstallDisposedRule failed ' + message);
 }
 ```
+
+<!--DelEnd-->

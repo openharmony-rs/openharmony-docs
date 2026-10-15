@@ -18,4 +18,4 @@ Defines the callback used in [onSelect](arkts-arkui-arcalphabetindexer-comp-attr
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the selected item. |
+| index | number | Yes | Index value of the selected item. |

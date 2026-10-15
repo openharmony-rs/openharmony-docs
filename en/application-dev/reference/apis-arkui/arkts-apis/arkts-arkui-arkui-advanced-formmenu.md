@@ -12,7 +12,7 @@ import { AddFormMenuItem, FormMenuItemStyle, AddFormOptions } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [AddFormMenuItem](arkts-arkui-arkui-advanced-formmenu-addformmenuitem-f.md) | Build function of AddFormMenuItem. |
+| [AddFormMenuItem](arkts-arkui-arkui-advanced-formmenu-addformmenuitem-f.md#addformmenuitem) | Build function of AddFormMenuItem. |
 
 ### Interfaces
 

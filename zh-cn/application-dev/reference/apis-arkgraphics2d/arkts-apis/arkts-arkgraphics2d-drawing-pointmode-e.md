@@ -12,20 +12,6 @@ enum PointMode
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## POINTS
-
-```TypeScript
-POINTS = 0
-```
-
-分别绘制每个点。
-
-**起始版本：** 12
-
-<!--Device-PointMode-POINTS = 0--><!--Device-PointMode-POINTS = 0-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
 ## LINES
 
 ```TypeScript
@@ -37,6 +23,20 @@ LINES = 1
 **起始版本：** 12
 
 <!--Device-PointMode-LINES = 1--><!--Device-PointMode-LINES = 1-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## POINTS
+
+```TypeScript
+POINTS = 0
+```
+
+分别绘制每个点。
+
+**起始版本：** 12
+
+<!--Device-PointMode-POINTS = 0--><!--Device-PointMode-POINTS = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

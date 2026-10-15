@@ -47,6 +47,7 @@ Obtains the list of widget IDs at a specified location on the device. This API u
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16501016](../errorcode-form.md#16501016-invalid-widget-location-information) | The location of the widget is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

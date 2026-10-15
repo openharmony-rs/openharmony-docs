@@ -2,10 +2,6 @@
 
 栅格布局系统中的列组件，必须作为栅格容器组件([GridRow](arkts-arkui-gridrow-comp.md))的子组件使用。适用于响应式布局、多设备适配等需要动态调整列宽的场景。支持响应式断点配置、跨列布局、偏移和排序功能。使用GridCol组件可以快速实现响应式布局，简化多设备适配的开发工作。
 
-> **说明：** 
-> 
-> 该组件从API version 9开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 ## 子组件
 
 可以包含单个子组件。
@@ -32,7 +28,7 @@ GridCol(option?: GridColOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| option | [GridColOptions](arkts-arkui-gridcol-comp-gridcoloptions-i.md) | 否 |  |
+| option | [GridColOptions](arkts-arkui-gridcol-comp-gridcoloptions-i.md) | 否 | 栅格列布局选项，包含span、offset、order等布局属性。不传入时使用各属性默认值。 |
 
 ## 汇总
 

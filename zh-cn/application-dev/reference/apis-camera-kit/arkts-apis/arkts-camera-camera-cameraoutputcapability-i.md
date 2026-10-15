@@ -30,7 +30,7 @@ readonly photoProfiles: Array<Profile>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraOutputCapability-readonly photoProfiles: Array<Profile>--><!--Device-CameraOutputCapability-readonly photoProfiles: Array<Profile>-End-->
 
@@ -48,7 +48,7 @@ readonly previewProfiles: Array<Profile>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraOutputCapability-readonly previewProfiles: Array<Profile>--><!--Device-CameraOutputCapability-readonly previewProfiles: Array<Profile>-End-->
 
@@ -66,7 +66,7 @@ readonly supportedMetadataObjectTypes: Array<MetadataObjectType>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraOutputCapability-readonly supportedMetadataObjectTypes: Array<MetadataObjectType>--><!--Device-CameraOutputCapability-readonly supportedMetadataObjectTypes: Array<MetadataObjectType>-End-->
 
@@ -84,7 +84,7 @@ readonly videoProfiles: Array<VideoProfile>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraOutputCapability-readonly videoProfiles: Array<VideoProfile>--><!--Device-CameraOutputCapability-readonly videoProfiles: Array<VideoProfile>-End-->
 

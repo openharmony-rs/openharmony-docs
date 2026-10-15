@@ -6,6 +6,8 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="getfreezeexemptedapps1"></a>
+
 ## getFreezeExemptedApps
 
 ```TypeScript
@@ -65,7 +67,7 @@ try {
 ```
 
 
-<a id="getfreezeexemptedapps-1"></a>
+<a id="getfreezeexemptedapps2"></a>
 
 ## getFreezeExemptedApps
 

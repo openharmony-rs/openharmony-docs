@@ -25,15 +25,15 @@ import { socket } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [constructLocalSocketInstance](arkts-network-socket-constructlocalsocketinstance-f.md) | Creates a **LocalSocket** object. |
-| [constructLocalSocketServerInstance](arkts-network-socket-constructlocalsocketserverinstance-f.md) | Creates a **LocalSocketServer** object. |
-| [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md) | Creates a **MulticastSocket** object. |
-| [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md) | Creates a **TCPSocket** object. |
-| [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md) | Creates a **TCPSocketServer** object. |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance) | Creates a **TLSSocket** object. |
-| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance-1) | Upgrades a **TCPSocket** connection to a **TLSSocket** connection. |
-| [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md) | Creates a **TLSSocketServer** object. |
-| [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md) | Creates a **UDPSocket** object. |
+| [constructLocalSocketInstance](arkts-network-socket-constructlocalsocketinstance-f.md#constructlocalsocketinstance) | Creates a **LocalSocket** object. |
+| [constructLocalSocketServerInstance](arkts-network-socket-constructlocalsocketserverinstance-f.md#constructlocalsocketserverinstance) | Creates a **LocalSocketServer** object. |
+| [constructMulticastSocketInstance](arkts-network-socket-constructmulticastsocketinstance-f.md#constructmulticastsocketinstance) | Creates a **MulticastSocket** object. |
+| [constructTCPSocketInstance](arkts-network-socket-constructtcpsocketinstance-f.md#constructtcpsocketinstance) | Creates a **TCPSocket** object. |
+| [constructTCPSocketServerInstance](arkts-network-socket-constructtcpsocketserverinstance-f.md#constructtcpsocketserverinstance) | Creates a **TCPSocketServer** object. |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance1) | Creates a **TLSSocket** object. |
+| [constructTLSSocketInstance](arkts-network-socket-constructtlssocketinstance-f.md#constructtlssocketinstance2) | Upgrades a **TCPSocket** connection to a **TLSSocket** connection. |
+| [constructTLSSocketServerInstance](arkts-network-socket-constructtlssocketserverinstance-f.md#constructtlssocketserverinstance) | Creates a **TLSSocketServer** object. |
+| [constructUDPSocketInstance](arkts-network-socket-constructudpsocketinstance-f.md#constructudpsocketinstance) | Creates a **UDPSocket** object. |
 
 ### Interfaces
 
@@ -84,4 +84,4 @@ import { socket } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [NetAddress](arkts-network-socket-p.md) | Define a network address. |
+| [NetAddress](arkts-network-socket-p.md#netaddress) | Define a network address. |

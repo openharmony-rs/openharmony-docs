@@ -14,22 +14,6 @@ This capability can be configured since API version 20. If this capability is se
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## VERTICAL
-
-```TypeScript
-VERTICAL = 0
-```
-
-Vertical direction.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-PickerOrientation-VERTICAL = 0--><!--Device-PickerOrientation-VERTICAL = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## HORIZONTAL
 
 ```TypeScript
@@ -43,5 +27,21 @@ Horizontal direction.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PickerOrientation-HORIZONTAL = 1--><!--Device-PickerOrientation-HORIZONTAL = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## VERTICAL
+
+```TypeScript
+VERTICAL = 0
+```
+
+Vertical direction.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerOrientation-VERTICAL = 0--><!--Device-PickerOrientation-VERTICAL = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

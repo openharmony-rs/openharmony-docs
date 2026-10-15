@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="killprocesswithaccount1"></a>
+
 ## killProcessWithAccount
 
 ```TypeScript
@@ -40,6 +42,7 @@ Kill process with account.
 | --- | --- |
 | Promise&lt;void&gt; | The promise returned by the function. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,8 +60,10 @@ appManager.killProcessWithAccount(bundleName, accountId)
   });
 ```
 
+<!--DelEnd-->
 
-<a id="killprocesswithaccount-1"></a>
+
+<a id="killprocesswithaccount2"></a>
 
 ## killProcessWithAccount
 
@@ -90,6 +95,7 @@ Kill process with account.
 | accountId | number | Yes | The account id. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Cut off the callback function of the account process. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,3 +115,5 @@ function killProcessWithAccountCallback(err: BusinessError, data: void) {
 
 appManager.killProcessWithAccount(bundleName, accountId, killProcessWithAccountCallback);
 ```
+
+<!--DelEnd-->

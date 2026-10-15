@@ -1,46 +1,5 @@
 # ArkTS API<!--arkts-backgroundtaskskit-->
 
-- [@ohos.backgroundTaskManager(Background Task Management)](arkts-backgroundtasks-backgroundtaskmanager.md)
-  - [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-depr-f.md)
-  - [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md)
-  - [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md)
-  - [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md)
-  - [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md)
-  - [DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-depr-i.md)
-  - [BackgroundMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e.md)
-  <!--Del-->
-  - [BackgroundMode(system api)](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e-sys.md)<!--DelEnd-->
-- [@ohos.bundleState(Device Usage Statistics)](arkts-backgroundtasks-bundlestate.md)
-  - [isIdleState](arkts-backgroundtasks-bundlestate-isidlestate-f.md)
-  - [queryAppUsagePriorityGroup](arkts-backgroundtasks-bundlestate-queryappusageprioritygroup-f.md)
-  <!--Del-->
-  - [queryBundleActiveStates(system api)](arkts-backgroundtasks-bundlestate-querybundleactivestates-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [queryBundleStateInfoByInterval(system api)](arkts-backgroundtasks-bundlestate-querybundlestateinfobyinterval-f-sys.md)<!--DelEnd-->
-  <!--Del-->
-  - [queryBundleStateInfos(system api)](arkts-backgroundtasks-bundlestate-querybundlestateinfos-f-sys.md)<!--DelEnd-->
-  - [queryCurrentBundleActiveStates](arkts-backgroundtasks-bundlestate-querycurrentbundleactivestates-f.md)
-  - [BundleActiveInfoResponse](arkts-backgroundtasks-bundlestate-bundleactiveinforesponse-i.md)
-  - [BundleActiveState](arkts-backgroundtasks-bundlestate-bundleactivestate-i.md)
-  - [BundleStateInfo](arkts-backgroundtasks-bundlestate-bundlestateinfo-i.md)
-  - [IntervalType](arkts-backgroundtasks-bundlestate-intervaltype-e.md)
-- [@ohos.reminderAgent(Agent-powered Reminder)](arkts-backgroundtasks-reminderagent.md)
-  - [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md)
-  - [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md)
-  - [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md)
-  - [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md)
-  - [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md)
-  - [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md)
-  - [ActionButton](arkts-backgroundtasks-reminderagent-actionbutton-i.md)
-  - [LocalDateTime](arkts-backgroundtasks-reminderagent-localdatetime-i.md)
-  - [MaxScreenWantAgent](arkts-backgroundtasks-reminderagent-maxscreenwantagent-i.md)
-  - [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)
-  - [ReminderRequestAlarm](arkts-backgroundtasks-reminderagent-reminderrequestalarm-i.md)
-  - [ReminderRequestCalendar](arkts-backgroundtasks-reminderagent-reminderrequestcalendar-i.md)
-  - [ReminderRequestTimer](arkts-backgroundtasks-reminderagent-reminderrequesttimer-i.md)
-  - [WantAgent](arkts-backgroundtasks-reminderagent-wantagent-i.md)
-  - [ActionButtonType](arkts-backgroundtasks-reminderagent-actionbuttontype-e.md)
-  - [ReminderType](arkts-backgroundtasks-reminderagent-remindertype-e.md)
 - [@ohos.reminderAgentManager(Agent-powered Reminder)](arkts-backgroundtasks-reminderagentmanager.md)
   - [addExcludeDate](arkts-backgroundtasks-reminderagentmanager-addexcludedate-f.md)
   - [addNotificationSlot](arkts-backgroundtasks-reminderagentmanager-addnotificationslot-f.md)
@@ -81,7 +40,7 @@
   - [ReminderType](arkts-backgroundtasks-reminderagentmanager-remindertype-e.md)
   - [RingChannel](arkts-backgroundtasks-reminderagentmanager-ringchannel-e.md)
   - [TimeZoneType](arkts-backgroundtasks-reminderagentmanager-timezonetype-e.md)
-- [@ohos.resourceschedule.backgroundLoader](arkts-backgroundtasks-resourceschedule-backgroundloader.md)
+- [@ohos.resourceschedule.backgroundLoader(Application data background loading)](arkts-backgroundtasks-resourceschedule-backgroundloader.md)
   - [finishTask](arkts-backgroundtasks-backgroundloader-finishtask-f.md)
   - [getTaskInfo](arkts-backgroundtasks-backgroundloader-gettaskinfo-f.md)
   - [registerTask](arkts-backgroundtasks-backgroundloader-registertask-f.md)
@@ -257,6 +216,47 @@
 - [@ohos.WorkSchedulerExtensionAbility(Deferred Task Scheduling Callbacks)](arkts-backgroundtasks-workschedulerextensionability.md)
   - [WorkSchedulerExtensionAbility](arkts-backgroundtasks-workschedulerextensionability-c.md)
   - [WorkSchedulerExtensionContext](arkts-backgroundtasks-workschedulerextensioncontext-t.md)
+- [@ohos.backgroundTaskManager(Background Task Management)](arkts-backgroundtasks-backgroundtaskmanager.md)
+  - [cancelSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-cancelsuspenddelay-depr-f.md)
+  - [getRemainingDelayTime](arkts-backgroundtasks-backgroundtaskmanager-getremainingdelaytime-depr-f.md)
+  - [requestSuspendDelay](arkts-backgroundtasks-backgroundtaskmanager-requestsuspenddelay-depr-f.md)
+  - [startBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-startbackgroundrunning-depr-f.md)
+  - [stopBackgroundRunning](arkts-backgroundtasks-backgroundtaskmanager-stopbackgroundrunning-depr-f.md)
+  - [DelaySuspendInfo](arkts-backgroundtasks-backgroundtaskmanager-delaysuspendinfo-depr-i.md)
+  - [BackgroundMode](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e.md)
+  <!--Del-->
+  - [BackgroundMode(system api)](arkts-backgroundtasks-backgroundtaskmanager-backgroundmode-depr-e-sys.md)<!--DelEnd-->
+- [@ohos.bundleState(Device Usage Statistics)](arkts-backgroundtasks-bundlestate.md)
+  - [isIdleState](arkts-backgroundtasks-bundlestate-isidlestate-f.md)
+  - [queryAppUsagePriorityGroup](arkts-backgroundtasks-bundlestate-queryappusageprioritygroup-f.md)
+  <!--Del-->
+  - [queryBundleActiveStates(system api)](arkts-backgroundtasks-bundlestate-querybundleactivestates-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [queryBundleStateInfoByInterval(system api)](arkts-backgroundtasks-bundlestate-querybundlestateinfobyinterval-f-sys.md)<!--DelEnd-->
+  <!--Del-->
+  - [queryBundleStateInfos(system api)](arkts-backgroundtasks-bundlestate-querybundlestateinfos-f-sys.md)<!--DelEnd-->
+  - [queryCurrentBundleActiveStates](arkts-backgroundtasks-bundlestate-querycurrentbundleactivestates-f.md)
+  - [BundleActiveInfoResponse](arkts-backgroundtasks-bundlestate-bundleactiveinforesponse-i.md)
+  - [BundleActiveState](arkts-backgroundtasks-bundlestate-bundleactivestate-i.md)
+  - [BundleStateInfo](arkts-backgroundtasks-bundlestate-bundlestateinfo-i.md)
+  - [IntervalType](arkts-backgroundtasks-bundlestate-intervaltype-e.md)
+- [@ohos.reminderAgent(Agent-powered Reminder)](arkts-backgroundtasks-reminderagent.md)
+  - [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md)
+  - [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md)
+  - [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md)
+  - [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md)
+  - [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md)
+  - [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md)
+  - [ActionButton](arkts-backgroundtasks-reminderagent-actionbutton-i.md)
+  - [LocalDateTime](arkts-backgroundtasks-reminderagent-localdatetime-i.md)
+  - [MaxScreenWantAgent](arkts-backgroundtasks-reminderagent-maxscreenwantagent-i.md)
+  - [ReminderRequest](arkts-backgroundtasks-reminderagent-reminderrequest-i.md)
+  - [ReminderRequestAlarm](arkts-backgroundtasks-reminderagent-reminderrequestalarm-i.md)
+  - [ReminderRequestCalendar](arkts-backgroundtasks-reminderagent-reminderrequestcalendar-i.md)
+  - [ReminderRequestTimer](arkts-backgroundtasks-reminderagent-reminderrequesttimer-i.md)
+  - [WantAgent](arkts-backgroundtasks-reminderagent-wantagent-i.md)
+  - [ActionButtonType](arkts-backgroundtasks-reminderagent-actionbuttontype-e.md)
+  - [ReminderType](arkts-backgroundtasks-reminderagent-remindertype-e.md)
 - application<!--arkts-backgroundtaskskit-application-->
   <!--Del-->
   - [WorkSchedulerExtensionContext(Work Scheduler Callback Context)](arkts-backgroundtasks-workschedulerextensioncontext.md)<!--DelEnd-->

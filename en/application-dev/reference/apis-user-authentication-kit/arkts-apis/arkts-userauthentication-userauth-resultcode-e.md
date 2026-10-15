@@ -16,21 +16,39 @@ Enumerates the authentication result codes.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## SUCCESS
+## BUSY
 
 ```TypeScript
-SUCCESS = 0
+BUSY = 7
 ```
 
-The operation is successful.
+The system is busy.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [SUCCESS](arkts-userauthentication-userauth-userauthresultcode-e.md#success)
+**Substitutes:** [BUSY](arkts-userauthentication-userauth-userauthresultcode-e.md#busy)
 
-<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
+<!--Device-ResultCode-BUSY = 7--><!--Device-ResultCode-BUSY = 7-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
+## CANCELED
+
+```TypeScript
+CANCELED = 3
+```
+
+The authentication is canceled.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [CANCELED](arkts-userauthentication-userauth-userauthresultcode-e.md#canceled)
+
+<!--Device-ResultCode-CANCELED = 3--><!--Device-ResultCode-CANCELED = 3-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -67,96 +85,6 @@ A general operation error occurred.
 **Substitutes:** [GENERAL_ERROR](arkts-userauthentication-userauth-userauthresultcode-e.md#general_error)
 
 <!--Device-ResultCode-GENERAL_ERROR = 2--><!--Device-ResultCode-GENERAL_ERROR = 2-End-->
-
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
-## CANCELED
-
-```TypeScript
-CANCELED = 3
-```
-
-The authentication is canceled.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [CANCELED](arkts-userauthentication-userauth-userauthresultcode-e.md#canceled)
-
-<!--Device-ResultCode-CANCELED = 3--><!--Device-ResultCode-CANCELED = 3-End-->
-
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
-## TIMEOUT
-
-```TypeScript
-TIMEOUT = 4
-```
-
-The authentication timed out.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [TIMEOUT](arkts-userauthentication-userauth-userauthresultcode-e.md#timeout)
-
-<!--Device-ResultCode-TIMEOUT = 4--><!--Device-ResultCode-TIMEOUT = 4-End-->
-
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
-## TYPE_NOT_SUPPORT
-
-```TypeScript
-TYPE_NOT_SUPPORT = 5
-```
-
-The authentication type is not supported.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#type_not_support)
-
-<!--Device-ResultCode-TYPE_NOT_SUPPORT = 5--><!--Device-ResultCode-TYPE_NOT_SUPPORT = 5-End-->
-
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
-## TRUST_LEVEL_NOT_SUPPORT
-
-```TypeScript
-TRUST_LEVEL_NOT_SUPPORT = 6
-```
-
-The authentication trust level is not supported.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [TRUST_LEVEL_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#trust_level_not_support)
-
-<!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6--><!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6-End-->
-
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
-## BUSY
-
-```TypeScript
-BUSY = 7
-```
-
-The system is busy.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [BUSY](arkts-userauthentication-userauth-userauthresultcode-e.md#busy)
-
-<!--Device-ResultCode-BUSY = 7--><!--Device-ResultCode-BUSY = 7-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
@@ -211,5 +139,77 @@ The user has not enrolled the authentication information.
 **Substitutes:** [NOT_ENROLLED](arkts-userauthentication-userauth-userauthresultcode-e.md#not_enrolled)
 
 <!--Device-ResultCode-NOT_ENROLLED = 10--><!--Device-ResultCode-NOT_ENROLLED = 10-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+The operation is successful.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [SUCCESS](arkts-userauthentication-userauth-userauthresultcode-e.md#success)
+
+<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
+## TIMEOUT
+
+```TypeScript
+TIMEOUT = 4
+```
+
+The authentication timed out.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [TIMEOUT](arkts-userauthentication-userauth-userauthresultcode-e.md#timeout)
+
+<!--Device-ResultCode-TIMEOUT = 4--><!--Device-ResultCode-TIMEOUT = 4-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
+## TRUST_LEVEL_NOT_SUPPORT
+
+```TypeScript
+TRUST_LEVEL_NOT_SUPPORT = 6
+```
+
+The authentication trust level is not supported.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [TRUST_LEVEL_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#trust_level_not_support)
+
+<!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6--><!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
+## TYPE_NOT_SUPPORT
+
+```TypeScript
+TYPE_NOT_SUPPORT = 5
+```
+
+The authentication type is not supported.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [TYPE_NOT_SUPPORT](arkts-userauthentication-userauth-userauthresultcode-e.md#type_not_support)
+
+<!--Device-ResultCode-TYPE_NOT_SUPPORT = 5--><!--Device-ResultCode-TYPE_NOT_SUPPORT = 5-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core

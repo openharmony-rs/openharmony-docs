@@ -6,6 +6,8 @@
 import { commonEventManager } from '@kit.BasicServicesKit';
 ```
 
+<a id="publishasuser1"></a>
+
 ## publishAsUser
 
 ```TypeScript
@@ -41,6 +43,7 @@ function publishAsUser(event: string, userId: number, callback: AsyncCallback<vo
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 | [1500009](../errorcode-CommonEventService.md#1500009-获取系统参数失败) | Failed to obtain system parameters. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,8 +67,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="publishasuser-1"></a>
+
+<a id="publishasuser2"></a>
 
 ## publishAsUser
 
@@ -108,6 +113,7 @@ function publishAsUser(
 | [1500008](../errorcode-CommonEventService.md#1500008-公共事件服务端初始化失败) | Failed to initialize the common event service. |
 | [1500009](../errorcode-CommonEventService.md#1500009-获取系统参数失败) | Failed to obtain system parameters. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -135,3 +141,5 @@ try {
   console.error(`publishAsUser failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

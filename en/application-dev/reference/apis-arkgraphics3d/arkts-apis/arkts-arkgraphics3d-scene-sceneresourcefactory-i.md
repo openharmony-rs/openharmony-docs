@@ -16,6 +16,8 @@ Provides APIs for creating resources, such as cameras and light sources, used in
 
 **System capability:** SystemCapability.ArkUi.Graphics3D
 
+<a id="createcamera1"></a>
+
 ## createCamera
 
 ```TypeScript
@@ -65,7 +67,7 @@ function createCameraPromise(): Promise<Camera> {
 }
 ```
 
-<a id="createcamera-1"></a>
+<a id="createcamera2"></a>
 
 ## createCamera
 

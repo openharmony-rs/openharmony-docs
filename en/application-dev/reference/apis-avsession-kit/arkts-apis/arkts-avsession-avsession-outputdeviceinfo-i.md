@@ -30,7 +30,7 @@ Arrays of device information
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-OutputDeviceInfo-devices: Array<DeviceInfo>--><!--Device-OutputDeviceInfo-devices: Array<DeviceInfo>-End-->
 

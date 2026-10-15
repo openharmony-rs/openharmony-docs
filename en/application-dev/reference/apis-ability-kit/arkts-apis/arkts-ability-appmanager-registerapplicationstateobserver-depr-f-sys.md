@@ -39,6 +39,7 @@ Register application state observer.
 | --- | --- |
 | number | Returns the number code of the observer. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,3 +70,5 @@ const observerCode = appManager.registerApplicationStateObserver({
 });
 console.info(`observerCode: ${observerCode}.`);
 ```
+
+<!--DelEnd-->

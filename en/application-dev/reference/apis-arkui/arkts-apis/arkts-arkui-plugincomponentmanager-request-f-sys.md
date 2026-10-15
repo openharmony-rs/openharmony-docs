@@ -6,7 +6,7 @@
 import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
-<a id="request-1"></a>
+<a id="request2"></a>
 
 ## request
 
@@ -14,7 +14,7 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 function request(param: RequestParameterForStage, callback: AsyncCallback<RequestCallbackParameters>): void
 ```
 
-Plugin component request method used to send a request for the information of the template it wants.
+Requests the component from the component provider. This API applies to scenarios where the component user needs to dynamically obtain the plug-in component template on demand, for example, dynamically loading plug-in content provided by other applications and displaying cross-application components on demand. The component provider must listen for the request response through the **onRequest** event, and return the component template information through a callback. For details about the event listener API, see [@ohos.pluginComponent (PluginComponentManager)](../../../reference/apis-arkui/js-apis-plugincomponent.md#plugincomponentmanageron).
 
 **Since:** 9
 
@@ -30,9 +30,10 @@ Plugin component request method used to send a request for the information of th
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [RequestParameterForStage](arkts-arkui-plugincomponentmanager-requestparameterforstage-i-sys.md) | Yes | Plugin component request parameters for stage. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestCallbackParameters](arkts-arkui-plugincomponentmanager-requestcallbackparameters-i.md)&gt; | Yes | Plugin component request event callback. |
+| param | [RequestParameterForStage](arkts-arkui-plugincomponentmanager-requestparameterforstage-i-sys.md) | Yes | Details about the component template request. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestCallbackParameters](arkts-arkui-plugincomponentmanager-requestcallbackparameters-i.md)&gt; | Yes | Asynchronous callback for this request, which returns the request response data through the parameter of the callback. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ pluginComponentManager.request(
   }
 )
 ```
+
+<!--DelEnd-->

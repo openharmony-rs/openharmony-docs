@@ -14,22 +14,6 @@ export enum DisposedType
 
 **系统接口：** 此接口为系统接口。
 
-## BLOCK_APPLICATION
-
-```TypeScript
-BLOCK_APPLICATION = 1
-```
-
-应用所有能力都将被禁用。
-
-**起始版本：** 11
-
-<!--Device-DisposedType-BLOCK_APPLICATION = 1--><!--Device-DisposedType-BLOCK_APPLICATION = 1-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
-
-**系统接口：** 此接口为系统接口。
-
 ## BLOCK_ABILITY
 
 ```TypeScript
@@ -41,6 +25,22 @@ BLOCK_ABILITY = 2
 **起始版本：** 11
 
 <!--Device-DisposedType-BLOCK_ABILITY = 2--><!--Device-DisposedType-BLOCK_ABILITY = 2-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**系统接口：** 此接口为系统接口。
+
+## BLOCK_APPLICATION
+
+```TypeScript
+BLOCK_APPLICATION = 1
+```
+
+应用所有能力都将被禁用。
+
+**起始版本：** 11
+
+<!--Device-DisposedType-BLOCK_APPLICATION = 1--><!--Device-DisposedType-BLOCK_APPLICATION = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
 

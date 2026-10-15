@@ -1,4 +1,4 @@
-# LauncherAbilityInfo
+# LauncherAbilityInfo(LauncherAbilityInfo)
 
 ## 汇总
 

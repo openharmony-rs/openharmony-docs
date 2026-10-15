@@ -42,7 +42,7 @@ GradientDirection.Bottom
 fractionStops: FractionStop[]
 ```
 
-Gradient blur stops. The value is a set of binary arrays, each of which indicates [blur degree, blur position] and consists of numbers ranging from 0 to 1 (those less than 0 are treated as **0**, and those greater than 1 are treated as **1**). The blur positions in the arrays must be in strict ascending order. Noncompliance will be logged. For the blur settings to take effect, the number of binary arrays must be greater than or equal to 2.
+Each binary array stored in the array (value from 0 to 1; values less than 0 are treated as 0, and values greater than 1 are treated as 1) represents [blur fraction, blur position]. The blur positions must be strictly increasing. If the data passed in by the developer does not comply with the specification, a log is recorded. The number of binary arrays in the gradient blur array must be greater than or equal to 2; otherwise, the gradient blur does not take effect.
 
 **Type:** [FractionStop](arkts-arkui-common-comp-fractionstop-t.md)[]
 

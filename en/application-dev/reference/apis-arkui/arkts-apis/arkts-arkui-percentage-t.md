@@ -6,6 +6,8 @@ declare type Percentage = `${number}%`
 
 Length type, used to describe a length in percentage units.
 
+**Type:** `${number}%`
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Length type, used to describe a length in percentage units.
 <!--Device-unnamed-declare type Percentage = `${number}%`--><!--Device-unnamed-declare type Percentage = `${number}%`-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** `${number}%`

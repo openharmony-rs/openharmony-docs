@@ -37,10 +37,11 @@ Unsubscribe Wi-Fi stream change events. All callback functions will be deregiste
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,6 +57,8 @@ wifiManager.on("streamChange", recvStreamChangeFunc);
 // Unregister an event.
 wifiManager.off("streamChange", recvStreamChangeFunc);
 ```
+
+<!--DelEnd-->
 
 
 ## off('deviceConfigChange')
@@ -89,10 +92,11 @@ Subscribe Wi-Fi device config change events.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -108,6 +112,8 @@ wifiManager.on("deviceConfigChange", recvDeviceConfigChangeFunc);
 // Unregister an event.
 wifiManager.off("deviceConfigChange", recvDeviceConfigChangeFunc);
 ```
+
+<!--DelEnd-->
 
 
 ## off('hotspotStaJoin')
@@ -141,10 +147,11 @@ Unsubscribe Wi-Fi hotspot sta join events. All callback functions will be deregi
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot-module-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -160,6 +167,8 @@ wifiManager.on("hotspotStaJoin", recvHotspotStaJoinFunc);
 // Unregister an event.
 wifiManager.off("hotspotStaJoin", recvHotspotStaJoinFunc);
 ```
+
+<!--DelEnd-->
 
 
 ## off('hotspotStaLeave')
@@ -193,10 +202,11 @@ Unsubscribe Wi-Fi hotspot sta leave events.
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot-module-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -212,3 +222,5 @@ wifiManager.on("hotspotStaLeave", recvHotspotStaLeaveFunc);
 // Unregister an event.
 wifiManager.off("hotspotStaLeave", recvHotspotStaLeaveFunc);
 ```
+
+<!--DelEnd-->

@@ -30,7 +30,7 @@ The callback is used to return the form id.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AddFormOptions-callback?: AsyncCallback<string>--><!--Device-AddFormOptions-callback?: AsyncCallback<string>-End-->
 
@@ -48,7 +48,7 @@ Indicates the form data.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AddFormOptions-formBindingData?: formBindingData.FormBindingData--><!--Device-AddFormOptions-formBindingData?: formBindingData.FormBindingData-End-->
 
@@ -66,7 +66,7 @@ The style of the menu item.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AddFormOptions-style?: FormMenuItemStyle--><!--Device-AddFormOptions-style?: FormMenuItemStyle-End-->
 

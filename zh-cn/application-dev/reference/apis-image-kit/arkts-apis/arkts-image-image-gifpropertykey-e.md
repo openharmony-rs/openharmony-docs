@@ -12,6 +12,42 @@ enum GifPropertyKey
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## GIF_CANVAS_HEIGHT
+
+```TypeScript
+GIF_CANVAS_HEIGHT = 'GifCanvasHeight'
+```
+
+GIF图像的画布高度。
+
+单位：像素（px）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'--><!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## GIF_CANVAS_WIDTH
+
+```TypeScript
+GIF_CANVAS_WIDTH = 'GifCanvasWidth'
+```
+
+GIF图像的画布宽度。
+
+单位：像素（px）。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'--><!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## GIF_DELAY_TIME
 
 ```TypeScript
@@ -62,42 +98,6 @@ GIF图像是否包含全局调色板。
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-GifPropertyKey-GIF_HAS_GLOBAL_COLOR_MAP = 'GifHasGlobalColorMap'--><!--Device-GifPropertyKey-GIF_HAS_GLOBAL_COLOR_MAP = 'GifHasGlobalColorMap'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## GIF_CANVAS_WIDTH
-
-```TypeScript
-GIF_CANVAS_WIDTH = 'GifCanvasWidth'
-```
-
-GIF图像的画布宽度。
-
-单位：像素（px）。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'--><!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## GIF_CANVAS_HEIGHT
-
-```TypeScript
-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'
-```
-
-GIF图像的画布高度。
-
-单位：像素（px）。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'--><!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

@@ -48,13 +48,13 @@ page即将销毁。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_PAGE_SHOW
+## ON_BACK_PRESS
 
 ```TypeScript
-ON_PAGE_SHOW = 2
+ON_BACK_PRESS = 4
 ```
 
-page显示。
+page返回时。
 
 **起始版本：** 11
 
@@ -62,7 +62,7 @@ page显示。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-RouterPageState-ON_PAGE_SHOW = 2--><!--Device-RouterPageState-ON_PAGE_SHOW = 2-End-->
+<!--Device-RouterPageState-ON_BACK_PRESS = 4--><!--Device-RouterPageState-ON_BACK_PRESS = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,13 +84,13 @@ page隐藏。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ON_BACK_PRESS
+## ON_PAGE_SHOW
 
 ```TypeScript
-ON_BACK_PRESS = 4
+ON_PAGE_SHOW = 2
 ```
 
-page返回时。
+page显示。
 
 **起始版本：** 11
 
@@ -98,6 +98,6 @@ page返回时。
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-RouterPageState-ON_BACK_PRESS = 4--><!--Device-RouterPageState-ON_BACK_PRESS = 4-End-->
+<!--Device-RouterPageState-ON_PAGE_SHOW = 2--><!--Device-RouterPageState-ON_PAGE_SHOW = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

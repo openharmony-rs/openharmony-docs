@@ -6,13 +6,15 @@
 import { pointer } from '@kit.InputKit';
 ```
 
+<a id="setpointervisible1"></a>
+
 ## setPointerVisible
 
 ```TypeScript
 function setPointerVisible(visible: boolean, callback: AsyncCallback<void>): void
 ```
 
-Sets whether the mouse pointer is visible in the current window. This API uses an asynchronous callback to return the result.
+Sets the cursor display/hidden state. This state applies to all windows of the current process. The actual display/hidden effect of the cursor on the screen is also affected by the render service process. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
@@ -31,8 +33,8 @@ Sets whether the mouse pointer is visible in the current window. This API uses a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported;<br>**Applicable version:** 18 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 18 and later |
 
 **Examples**
 
@@ -66,7 +68,7 @@ struct Index {
 ```
 
 
-<a id="setpointervisible-1"></a>
+<a id="setpointervisible2"></a>
 
 ## setPointerVisible
 
@@ -74,7 +76,7 @@ struct Index {
 function setPointerVisible(visible: boolean): Promise<void>
 ```
 
-Sets whether the mouse pointer is visible in the current window. This API uses a promise to return the result.
+Sets the cursor display/hidden state. This state applies to all windows of the current process. The actual display/hidden effect of the cursor on the screen is also affected by the render service process. This API uses a promise to return the result.
 
 **Since:** 9
 
@@ -98,8 +100,8 @@ Sets whether the mouse pointer is visible in the current window. This API uses a
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported;<br>**Applicable version:** 18 and later |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 18 and later |
 
 **Examples**
 

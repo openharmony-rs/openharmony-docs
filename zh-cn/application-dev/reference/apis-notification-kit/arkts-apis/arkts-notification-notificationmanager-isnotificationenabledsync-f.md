@@ -22,7 +22,7 @@ function isNotificationEnabledSync(): boolean
 
 **系统能力：** SystemCapability.Notification.Notification
 
-**参见：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification-3) 请求通知使能。
+**参见：** [requestEnableNotification](arkts-notification-notificationmanager-requestenablenotification-f.md#requestenablenotification4) 请求通知使能。
 
 **返回值：**
 

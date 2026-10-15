@@ -22,7 +22,7 @@ NORMAL_PHOTO = 1
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-SceneMode-NORMAL_PHOTO = 1--><!--Device-SceneMode-NORMAL_PHOTO = 1-End-->
 
@@ -38,7 +38,7 @@ NORMAL_VIDEO = 2
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-SceneMode-NORMAL_VIDEO = 2--><!--Device-SceneMode-NORMAL_VIDEO = 2-End-->
 
@@ -54,7 +54,7 @@ SECURE_PHOTO = 12
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-SceneMode-SECURE_PHOTO = 12--><!--Device-SceneMode-SECURE_PHOTO = 12-End-->
 

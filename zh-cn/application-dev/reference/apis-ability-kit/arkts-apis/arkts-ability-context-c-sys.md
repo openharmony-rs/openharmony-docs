@@ -55,6 +55,7 @@ createModuleResourceManager(bundleName: string, moduleName: string): resmgr.Reso
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -74,6 +75,8 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## createSystemHspModuleResourceManager
 
@@ -113,6 +116,7 @@ createSystemHspModuleResourceManager(bundleName: string, moduleName: string): re
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16400001](../errorcode-ability.md#16400001-目标应用类型不是系统级hsp) | The input bundleName is not a system HSP. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -125,6 +129,8 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## createBundleContext
 
@@ -174,6 +180,7 @@ createBundleContext(bundleName: string): Context
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -193,7 +200,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="createmodulecontext-1"></a>
+<!--DelEnd-->
+
+<a id="createmodulecontext2"></a>
 
 ## createModuleContext
 
@@ -236,6 +245,7 @@ createModuleContext(bundleName: string, moduleName: string): Context
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -254,3 +264,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

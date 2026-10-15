@@ -14,17 +14,17 @@ enum FileSyncState
 
 **系统接口：** 此接口为系统接口。
 
-## UPLOADING
+## COMPLETED
 
 ```TypeScript
-UPLOADING = 0
+COMPLETED = 2
 ```
 
-上行同步中。
+同步成功。
 
 **起始版本：** 11
 
-<!--Device-FileSyncState-UPLOADING = 0--><!--Device-FileSyncState-UPLOADING = 0-End-->
+<!--Device-FileSyncState-COMPLETED = 2--><!--Device-FileSyncState-COMPLETED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -41,22 +41,6 @@ DOWNLOADING = 1
 **起始版本：** 11
 
 <!--Device-FileSyncState-DOWNLOADING = 1--><!--Device-FileSyncState-DOWNLOADING = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-**系统接口：** 此接口为系统接口。
-
-## COMPLETED
-
-```TypeScript
-COMPLETED = 2
-```
-
-同步成功。
-
-**起始版本：** 11
-
-<!--Device-FileSyncState-COMPLETED = 2--><!--Device-FileSyncState-COMPLETED = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -94,6 +78,22 @@ TO_BE_UPLOADED = 4
 
 **系统接口：** 此接口为系统接口。
 
+## UPLOAD_FAILURE
+
+```TypeScript
+UPLOAD_FAILURE = 6
+```
+
+文件上行失败。
+
+**起始版本：** 12
+
+<!--Device-FileSyncState-UPLOAD_FAILURE = 6--><!--Device-FileSyncState-UPLOAD_FAILURE = 6-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## UPLOAD_SUCCESS
 
 ```TypeScript
@@ -110,17 +110,17 @@ UPLOAD_SUCCESS = 5
 
 **系统接口：** 此接口为系统接口。
 
-## UPLOAD_FAILURE
+## UPLOADING
 
 ```TypeScript
-UPLOAD_FAILURE = 6
+UPLOADING = 0
 ```
 
-文件上行失败。
+上行同步中。
 
-**起始版本：** 12
+**起始版本：** 11
 
-<!--Device-FileSyncState-UPLOAD_FAILURE = 6--><!--Device-FileSyncState-UPLOAD_FAILURE = 6-End-->
+<!--Device-FileSyncState-UPLOADING = 0--><!--Device-FileSyncState-UPLOADING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

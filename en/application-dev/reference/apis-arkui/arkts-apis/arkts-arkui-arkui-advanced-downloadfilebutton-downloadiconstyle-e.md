@@ -6,8 +6,6 @@ export declare enum DownloadIconStyle
 
 Enum for DownloadIconStyle
 
-@enum { number }
-
 **Since:** 12
 
 <!--Device-unnamed-export declare enum DownloadIconStyle--><!--Device-unnamed-export declare enum DownloadIconStyle-End-->

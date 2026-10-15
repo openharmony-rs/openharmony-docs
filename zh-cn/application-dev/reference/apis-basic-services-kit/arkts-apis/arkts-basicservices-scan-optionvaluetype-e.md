@@ -26,20 +26,6 @@ SCAN_TYPE_BOOL = 0
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## SCAN_TYPE_INT
-
-```TypeScript
-SCAN_TYPE_INT = 1
-```
-
-整数类型。
-
-**起始版本：** 20
-
-<!--Device-OptionValueType-SCAN_TYPE_INT = 1--><!--Device-OptionValueType-SCAN_TYPE_INT = 1-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## SCAN_TYPE_FIXED
 
 ```TypeScript
@@ -51,6 +37,20 @@ SCAN_TYPE_FIXED = 2
 **起始版本：** 20
 
 <!--Device-OptionValueType-SCAN_TYPE_FIXED = 2--><!--Device-OptionValueType-SCAN_TYPE_FIXED = 2-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## SCAN_TYPE_INT
+
+```TypeScript
+SCAN_TYPE_INT = 1
+```
+
+整数类型。
+
+**起始版本：** 20
+
+<!--Device-OptionValueType-SCAN_TYPE_INT = 1--><!--Device-OptionValueType-SCAN_TYPE_INT = 1-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

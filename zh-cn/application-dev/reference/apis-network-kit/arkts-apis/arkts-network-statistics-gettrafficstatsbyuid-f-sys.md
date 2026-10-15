@@ -6,6 +6,8 @@
 import { statistics } from '@kit.NetworkKit';
 ```
 
+<a id="gettrafficstatsbyuid1"></a>
+
 ## getTrafficStatsByUid
 
 ```TypeScript
@@ -29,7 +31,7 @@ function getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback<NetStats
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uidInfo | [UidInfo](arkts-network-statistics-uidinfo-i-sys.md) | 是 | 指定查询的应用信息，参见[UidInfo](arkts-network-statistics-uidinfo-i-sys.md)。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;NetStatsInfo&gt; | 是 | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | 是 | 回调函数。成功时 statsInfo 返回包含应用历史流量信息，error 为 undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -43,6 +45,7 @@ function getTrafficStatsByUid(uidInfo: UidInfo, callback: AsyncCallback<NetStats
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-读取数据库失败) | Failed to read the database. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -85,8 +88,10 @@ statistics.getTrafficStatsByUid(
 );
 ```
 
+<!--DelEnd-->
 
-<a id="gettrafficstatsbyuid-1"></a>
+
+<a id="gettrafficstatsbyuid2"></a>
 
 ## getTrafficStatsByUid
 
@@ -116,7 +121,7 @@ function getTrafficStatsByUid(uidInfo: UidInfo): Promise<NetStatsInfo>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;NetStatsInfo&gt; | 以 Promise 形式返回获取结果,返回应用历史流量信息。 |
+| Promise&lt;[NetStatsInfo](arkts-network-statistics-netstatsinfo-i.md)&gt; | 以 Promise 形式返回获取结果,返回应用历史流量信息。 |
 
 **错误码：**
 
@@ -130,6 +135,7 @@ function getTrafficStatsByUid(uidInfo: UidInfo): Promise<NetStatsInfo>
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-读取数据库失败) | Failed to read the database. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -151,3 +157,5 @@ statistics.getTrafficStatsByUid(uidInfo).then((statsInfo: statistics.NetStatsInf
   console.info("getTrafficStatsByUid packets of sent = " + JSON.stringify(statsInfo.txPackets));
 })
 ```
+
+<!--DelEnd-->

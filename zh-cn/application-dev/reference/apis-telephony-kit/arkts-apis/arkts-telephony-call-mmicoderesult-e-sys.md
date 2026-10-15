@@ -14,22 +14,6 @@ MMI码结果。
 
 **系统接口：** 此接口为系统接口。
 
-## MMI_CODE_SUCCESS
-
-```TypeScript
-MMI_CODE_SUCCESS = 0
-```
-
-表示MMI码成功。
-
-**起始版本：** 9
-
-<!--Device-MmiCodeResult-MMI_CODE_SUCCESS = 0--><!--Device-MmiCodeResult-MMI_CODE_SUCCESS = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
 ## MMI_CODE_FAILED
 
 ```TypeScript
@@ -41,6 +25,22 @@ MMI_CODE_FAILED = 1
 **起始版本：** 9
 
 <!--Device-MmiCodeResult-MMI_CODE_FAILED = 1--><!--Device-MmiCodeResult-MMI_CODE_FAILED = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## MMI_CODE_SUCCESS
+
+```TypeScript
+MMI_CODE_SUCCESS = 0
+```
+
+表示MMI码成功。
+
+**起始版本：** 9
+
+<!--Device-MmiCodeResult-MMI_CODE_SUCCESS = 0--><!--Device-MmiCodeResult-MMI_CODE_SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

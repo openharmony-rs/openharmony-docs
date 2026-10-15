@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace videoProcessing--><!--Device-unnamed-declare namespace videoProcessing-End-->
 
 **系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
@@ -22,7 +20,7 @@ import { videoProcessing } from '@kit.MediaKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createVideoProcessor](arkts-media-videoprocessing-createvideoprocessor-f.md) | 创建视频处理实例。 |
+| [createVideoProcessor](arkts-media-videoprocessing-createvideoprocessor-f.md#createvideoprocessor) | 创建视频处理实例。 |
 
 ### 接口
 

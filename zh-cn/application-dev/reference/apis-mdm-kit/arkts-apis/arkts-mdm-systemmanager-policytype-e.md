@@ -28,6 +28,22 @@ DEFAULT = 0
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## POSTPONE
+
+```TypeScript
+POSTPONE = 4
+```
+
+延迟升级策略。延迟指定时间（delayUpdateTime）后进入DEFAULT模式，周期提示用户升级。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PolicyType-POSTPONE = 4--><!--Device-PolicyType-POSTPONE = 4-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## PROHIBIT
 
 ```TypeScript
@@ -73,21 +89,5 @@ WINDOWS = 3
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PolicyType-WINDOWS = 3--><!--Device-PolicyType-WINDOWS = 3-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## POSTPONE
-
-```TypeScript
-POSTPONE = 4
-```
-
-延迟升级策略。延迟指定时间（delayUpdateTime）后进入DEFAULT模式，周期提示用户升级。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PolicyType-POSTPONE = 4--><!--Device-PolicyType-POSTPONE = 4-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

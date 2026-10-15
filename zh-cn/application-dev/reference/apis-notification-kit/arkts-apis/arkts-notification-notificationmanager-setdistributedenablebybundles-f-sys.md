@@ -50,6 +50,7 @@ function setDistributedEnableByBundles(bundleEnableInfos: Array<DistributedBundl
 | [1600010](../errorcode-notification.md#1600010-分布式操作失败) | Distributed operation failed. |
 | [1600012](../errorcode-notification.md#1600012-内存空间不足) | No memory space. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -76,3 +77,5 @@ notificationManager.setDistributedEnableByBundles(bundles, deviceType).then(() =
     console.error(`setDistributedEnableByBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

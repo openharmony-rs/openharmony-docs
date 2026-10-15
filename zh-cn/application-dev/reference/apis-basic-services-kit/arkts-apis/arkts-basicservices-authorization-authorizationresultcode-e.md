@@ -12,22 +12,6 @@ enum AuthorizationResultCode
 
 **系统能力：** SystemCapability.Account.OsAccount
 
-## AUTHORIZATION_GRANTED
-
-```TypeScript
-AUTHORIZATION_GRANTED = 0
-```
-
-授权成功。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0--><!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
 ## AUTHORIZATION_CANCELED
 
 ```TypeScript
@@ -71,6 +55,22 @@ AUTHORIZATION_DENIED = 12300303
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303--><!--Device-AuthorizationResultCode-AUTHORIZATION_DENIED = 12300303-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+## AUTHORIZATION_GRANTED
+
+```TypeScript
+AUTHORIZATION_GRANTED = 0
+```
+
+授权成功。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0--><!--Device-AuthorizationResultCode-AUTHORIZATION_GRANTED = 0-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

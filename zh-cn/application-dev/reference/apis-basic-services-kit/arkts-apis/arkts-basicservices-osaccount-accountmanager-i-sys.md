@@ -18,6 +18,8 @@ interface AccountManager
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="activateosaccount1"></a>
+
 ## activateOsAccount
 
 ```TypeScript
@@ -57,6 +59,7 @@ activateOsAccount(localId: number, callback: AsyncCallback<void>): void
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target account is being operated.<br>**适用版本：** 12+ |
 | [12300016](../errorcode-account.md#12300016-账号登录数已达上限) | The number of logged in accounts reaches the upper limit.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 激活ID为100的系统账号。
@@ -80,7 +83,9 @@ try {
 }
 ```
 
-<a id="activateosaccount-1"></a>
+<!--DelEnd-->
+
+<a id="activateosaccount2"></a>
 
 ## activateOsAccount
 
@@ -126,6 +131,7 @@ activateOsAccount(localId: number): Promise<void>
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target account is being operated.<br>**适用版本：** 12+ |
 | [12300016](../errorcode-account.md#12300016-账号登录数已达上限) | The number of logged in accounts reaches the upper limit.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 激活ID为100的系统账号。
@@ -147,7 +153,9 @@ try {
 }
 ```
 
-<a id="activateosaccount-2"></a>
+<!--DelEnd-->
+
+<a id="activateosaccount3"></a>
 
 ## activateOsAccount
 
@@ -195,6 +203,7 @@ activateOsAccount(localId: number, displayId: number): Promise<void>
 | [12300018](../errorcode-account.md#12300018-逻辑屏未找到) | Display not found. |
 | [12300019](../errorcode-account.md#12300019-不支持跨逻辑屏激活) | Cross-display activation not supported. |
 
+<!--Del-->
 **示例**
 
 在ID为0的逻辑屏上激活ID为100的系统账号。
@@ -216,6 +225,8 @@ try {
   console.error(`activateOsAccount with displayId exception: ${err.code} ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## bindDomainAccount
 
@@ -263,6 +274,7 @@ bindDomainAccount(localId: number, domainAccountInfo: DomainAccountInfo): Promis
 | [12300021](../errorcode-account.md#12300021-系统账号已绑定域账号) | The OS account is already bound. |
 | [12300022](../errorcode-account.md#12300022-域账号已被绑定) | The domain account is already bound. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -283,6 +295,10 @@ try {
   console.error(`bindDomainAccount error, errCode=${err.code}, errMsg=${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="createosaccount1"></a>
 
 ## createOsAccount
 
@@ -316,7 +332,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback<
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localName or type. |
 | [12300004](../errorcode-account.md#12300004-账号已存在) | Local name already exists.<br>**适用版本：** 12+ |
@@ -325,6 +341,7 @@ createOsAccount(localName: string, type: OsAccountType, callback: AsyncCallback<
 | [12300007](../errorcode-account.md#12300007-账号数量已达上限) | The number of accounts has reached the upper limit. |
 | [12300023](../errorcode-account.md#12300023-指定类型的账号数量已达到上限) | The number of accounts of the specified type has reached the upper limit.<br>**适用版本：** 24+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -346,7 +363,9 @@ try {
 }
 ```
 
-<a id="createosaccount-1"></a>
+<!--DelEnd-->
+
+<a id="createosaccount2"></a>
 
 ## createOsAccount
 
@@ -386,7 +405,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localName, type or options. |
 | [12300004](../errorcode-account.md#12300004-账号已存在) | Local name already exists.<br>**适用版本：** 12+ |
@@ -396,6 +415,7 @@ createOsAccount(localName: string, type: OsAccountType, options?: CreateOsAccoun
 | [12300015](../errorcode-account.md#12300015-短名称已存在) | The short name already exists.<br>**适用版本：** 12+ |
 | [12300023](../errorcode-account.md#12300023-指定类型的账号数量已达到上限) | The number of accounts of the specified type has reached the upper limit.<br>**适用版本：** 24+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -419,6 +439,10 @@ try {
   console.error(`createOsAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="createosaccountfordomain1"></a>
 
 ## createOsAccountForDomain
 
@@ -456,7 +480,7 @@ createOsAccountForDomain(
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 12+ |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type or domainInfo. |
@@ -466,6 +490,7 @@ createOsAccountForDomain(
 | [12300007](../errorcode-account.md#12300007-账号数量已达上限) | The number of accounts has reached the upper limit. |
 | [12300023](../errorcode-account.md#12300023-指定类型的账号数量已达到上限) | The number of accounts of the specified type has reached the upper limit.<br>**适用版本：** 24+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -489,7 +514,9 @@ try {
 }
 ```
 
-<a id="createosaccountfordomain-1"></a>
+<!--DelEnd-->
+
+<a id="createosaccountfordomain2"></a>
 
 ## createOsAccountForDomain
 
@@ -529,7 +556,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 12+ |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type, domainInfo or options. |
@@ -540,6 +567,7 @@ createOsAccountForDomain(type: OsAccountType, domainInfo: DomainAccountInfo, opt
 | [12300015](../errorcode-account.md#12300015-短名称已存在) | The short name already exists.<br>**适用版本：** 12+ |
 | [12300023](../errorcode-account.md#12300023-指定类型的账号数量已达到上限) | The number of accounts of the specified type has reached the upper limit.<br>**适用版本：** 24+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -563,6 +591,8 @@ try {
   console.error(`createOsAccountForDomain exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## deactivateOsAccount
 
@@ -606,6 +636,7 @@ deactivateOsAccount(localId: number): Promise<void>
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target account is being operated. |
 
+<!--Del-->
 **示例**
 
 注销ID为100的系统账号。
@@ -626,6 +657,10 @@ try {
   console.error(`deactivateOsAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getbundleidforuid1"></a>
 
 ## getBundleIdForUid
 
@@ -659,6 +694,7 @@ getBundleIdForUid(uid: number, callback: AsyncCallback<number>): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -681,7 +717,9 @@ try {
 }
 ```
 
-<a id="getbundleidforuid-1"></a>
+<!--DelEnd-->
+
+<a id="getbundleidforuid2"></a>
 
 ## getBundleIdForUid
 
@@ -720,6 +758,7 @@ getBundleIdForUid(uid: number): Promise<number>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -738,6 +777,8 @@ try {
   console.error(`getBundleIdForUid exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getBundleIdForUidSync
 
@@ -775,6 +816,7 @@ getBundleIdForUidSync(uid: number): number
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid uid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -790,6 +832,8 @@ try {
   console.error(`getBundleIdForUidSync exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getEnabledOsAccountConstraints
 
@@ -831,6 +875,7 @@ getEnabledOsAccountConstraints(localId: number): Promise<Array<string>>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 获取ID为100的系统账号的全部约束。
@@ -851,6 +896,8 @@ try {
   console.error(`getEnabledOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getForegroundOsAccountDisplayId
 
@@ -891,6 +938,7 @@ getForegroundOsAccountDisplayId(localId: number): Promise<number>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300017](../errorcode-account.md#12300017-前台系统账号未找到) | The foreground OS account is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -910,7 +958,9 @@ try {
 }
 ```
 
-<a id="getforegroundosaccountlocalid-1"></a>
+<!--DelEnd-->
+
+<a id="getforegroundosaccountlocalid2"></a>
 
 ## getForegroundOsAccountLocalId
 
@@ -951,6 +1001,7 @@ getForegroundOsAccountLocalId(displayId: number): Promise<number>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300017](../errorcode-account.md#12300017-前台系统账号未找到) | The foreground OS account is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -969,6 +1020,10 @@ try {
   console.error(`getForegroundOsAccountLocalId exception: ${err.code} ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getosaccountconstraintsourcetypes1"></a>
 
 ## getOsAccountConstraintSourceTypes
 
@@ -1007,6 +1062,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string, callback:
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or constraint. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1028,7 +1084,9 @@ try {
 }
 ```
 
-<a id="getosaccountconstraintsourcetypes-1"></a>
+<!--DelEnd-->
+
+<a id="getosaccountconstraintsourcetypes2"></a>
 
 ## getOsAccountConstraintSourceTypes
 
@@ -1072,6 +1130,7 @@ getOsAccountConstraintSourceTypes(localId: number, constraint: string): Promise<
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid name or constraint. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1090,6 +1149,10 @@ try {
   console.error(`getOsAccountConstraintSourceTypes exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getosaccountprofilephoto1"></a>
 
 ## getOsAccountProfilePhoto
 
@@ -1127,6 +1190,7 @@ getOsAccountProfilePhoto(localId: number, callback: AsyncCallback<string>): void
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 获取ID为100的系统账号的头像。
@@ -1150,7 +1214,9 @@ try {
 }
 ```
 
-<a id="getosaccountprofilephoto-1"></a>
+<!--DelEnd-->
+
+<a id="getosaccountprofilephoto2"></a>
 
 ## getOsAccountProfilePhoto
 
@@ -1193,6 +1259,7 @@ getOsAccountProfilePhoto(localId: number): Promise<string>
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 获取ID为100的系统账号的头像。
@@ -1214,7 +1281,9 @@ try {
 }
 ```
 
-<a id="getosaccounttype-2"></a>
+<!--DelEnd-->
+
+<a id="getosaccounttype3"></a>
 
 ## getOsAccountType
 
@@ -1256,6 +1325,7 @@ getOsAccountType(localId: number): Promise<OsAccountType>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1274,6 +1344,10 @@ try {
   console.error(`getOsAccountType exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="ismainosaccount1"></a>
 
 ## isMainOsAccount
 
@@ -1308,6 +1382,7 @@ isMainOsAccount(callback: AsyncCallback<boolean>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1328,7 +1403,9 @@ try {
 }
 ```
 
-<a id="ismainosaccount-1"></a>
+<!--DelEnd-->
+
+<a id="ismainosaccount2"></a>
 
 ## isMainOsAccount
 
@@ -1362,6 +1439,7 @@ isMainOsAccount(): Promise<boolean>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1379,6 +1457,8 @@ try {
   console.error(`isMainOsAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isOsAccountActivated
 
@@ -1420,6 +1500,7 @@ isOsAccountActivated(localId: number): Promise<boolean>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 判断ID为100的系统账号是否处于激活状态。
@@ -1441,7 +1522,9 @@ try {
 }
 ```
 
-<a id="isosaccountconstraintenabled-1"></a>
+<!--DelEnd-->
+
+<a id="isosaccountconstraintenabled2"></a>
 
 ## isOsAccountConstraintEnabled
 
@@ -1484,6 +1567,7 @@ isOsAccountConstraintEnabled(localId: number, constraint: string): Promise<boole
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 判断ID为100的系统账号是否有禁止使用Wi-Fi的约束。
@@ -1506,7 +1590,9 @@ try {
 }
 ```
 
-<a id="isosaccountunlocked-1"></a>
+<!--DelEnd-->
+
+<a id="isosaccountunlocked2"></a>
 
 ## isOsAccountUnlocked
 
@@ -1548,6 +1634,7 @@ isOsAccountUnlocked(localId: number): Promise<boolean>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1566,6 +1653,8 @@ try {
   console.error(`isOsAccountUnlocked exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('activate' | 'activating')
 
@@ -1603,6 +1692,7 @@ off(type: 'activate' | 'activating', name: string, callback?: Callback<number>):
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type or name. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1621,6 +1711,8 @@ try {
   console.error(`off exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('switching')
 
@@ -1658,6 +1750,7 @@ off(type: 'switching', callback?: Callback<OsAccountSwitchEventData>): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1671,6 +1764,8 @@ try {
   console.error(`off exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('switched')
 
@@ -1708,6 +1803,7 @@ off(type: 'switched', callback?: Callback<OsAccountSwitchEventData>): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1721,6 +1817,8 @@ try {
   console.error(`off exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## offConstraintChanged
 
@@ -1751,6 +1849,7 @@ offConstraintChanged(callback?: Callback<ConstraintChangeInfo>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1776,6 +1875,8 @@ try {
   console.error(`offConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('activate' | 'activating')
 
@@ -1813,6 +1914,7 @@ on(type: 'activate' | 'activating', name: string, callback: Callback<number>): v
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type or name. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1831,6 +1933,8 @@ try {
   console.error(`receive localId exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('switching')
 
@@ -1868,6 +1972,7 @@ on(type: 'switching', callback: Callback<OsAccountSwitchEventData>): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1886,6 +1991,8 @@ try {
   console.error(`receive eventData exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('switched')
 
@@ -1923,6 +2030,7 @@ on(type: 'switched', callback: Callback<OsAccountSwitchEventData>): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1941,6 +2049,8 @@ try {
   console.error(`receive eventData exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## onConstraintChanged
 
@@ -1973,6 +2083,7 @@ onConstraintChanged(constraints: string[], callback: Callback<ConstraintChangeIn
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | One or more constraints are invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1991,6 +2102,10 @@ try {
   console.error(`onConstraintChanged exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="queryallcreatedosaccounts1"></a>
 
 ## queryAllCreatedOsAccounts
 
@@ -2025,6 +2140,7 @@ queryAllCreatedOsAccounts(callback: AsyncCallback<Array<OsAccountInfo>>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2045,7 +2161,9 @@ try {
 }
 ```
 
-<a id="queryallcreatedosaccounts-1"></a>
+<!--DelEnd-->
+
+<a id="queryallcreatedosaccounts2"></a>
 
 ## queryAllCreatedOsAccounts
 
@@ -2079,6 +2197,7 @@ queryAllCreatedOsAccounts(): Promise<Array<OsAccountInfo>>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2096,6 +2215,8 @@ try {
   console.error(`queryAllCreatedOsAccounts exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## queryMaxLoggedInOsAccountNumber
 
@@ -2126,6 +2247,7 @@ queryMaxLoggedInOsAccountNumber(): Promise<number>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2143,6 +2265,10 @@ try {
   console.error(`queryMaxLoggedInOsAccountNumber exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="querymaxosaccountnumber1"></a>
 
 ## queryMaxOsAccountNumber
 
@@ -2174,6 +2300,7 @@ queryMaxOsAccountNumber(callback: AsyncCallback<number>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2194,7 +2321,9 @@ try {
 }
 ```
 
-<a id="querymaxosaccountnumber-1"></a>
+<!--DelEnd-->
+
+<a id="querymaxosaccountnumber2"></a>
 
 ## queryMaxOsAccountNumber
 
@@ -2225,6 +2354,7 @@ queryMaxOsAccountNumber(): Promise<number>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2242,6 +2372,8 @@ try {
   console.error(`queryMaxOsAccountNumber exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## queryOsAccount
 
@@ -2275,6 +2407,7 @@ queryOsAccount(): Promise<OsAccountInfo>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2292,6 +2425,10 @@ try {
   console.error(`queryOsAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="queryosaccountbyid1"></a>
 
 ## queryOsAccountById
 
@@ -2329,6 +2466,7 @@ queryOsAccountById(localId: number, callback: AsyncCallback<OsAccountInfo>): voi
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 查询ID为100的系统账号信息。
@@ -2352,7 +2490,9 @@ try {
 }
 ```
 
-<a id="queryosaccountbyid-1"></a>
+<!--DelEnd-->
+
+<a id="queryosaccountbyid2"></a>
 
 ## queryOsAccountById
 
@@ -2395,6 +2535,7 @@ queryOsAccountById(localId: number): Promise<OsAccountInfo>
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 
+<!--Del-->
 **示例**
 
 查询ID为100的系统账号信息。
@@ -2415,6 +2556,10 @@ try {
   console.error(`queryOsAccountById exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="removeosaccount1"></a>
 
 ## removeOsAccount
 
@@ -2447,13 +2592,14 @@ removeOsAccount(localId: number, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target account is being operated on. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2478,7 +2624,9 @@ try {
 }
 ```
 
-<a id="removeosaccount-1"></a>
+<!--DelEnd-->
+
+<a id="removeosaccount2"></a>
 
 ## removeOsAccount
 
@@ -2516,13 +2664,14 @@ removeOsAccount(localId: number): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**适用版本：** 24+ |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target account is being operated. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2545,7 +2694,9 @@ try {
 }
 ```
 
-<a id="removeosaccount-2"></a>
+<!--DelEnd-->
+
+<a id="removeosaccount3"></a>
 
 ## removeOsAccount
 
@@ -2584,13 +2735,14 @@ removeOsAccount(localId: number, options: RemoveOsAccountOptions): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted. |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid localId or options. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target account is being operated on. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -2616,6 +2768,10 @@ try {
   console.error(`removeOsAccount exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setosaccountconstraints1"></a>
 
 ## setOsAccountConstraints
 
@@ -2656,6 +2812,7 @@ setOsAccountConstraints(localId: number, constraints: Array<string>, enable: boo
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 
+<!--Del-->
 **示例**
 
 给ID为100的系统账号设置禁止使用Wi-Fi的约束。
@@ -2680,7 +2837,9 @@ try {
 }
 ```
 
-<a id="setosaccountconstraints-1"></a>
+<!--DelEnd-->
+
+<a id="setosaccountconstraints2"></a>
 
 ## setOsAccountConstraints
 
@@ -2726,6 +2885,7 @@ setOsAccountConstraints(localId: number, constraints: Array<string>, enable: boo
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 
+<!--Del-->
 **示例**
 
 删除ID为100的系统账号的禁止使用Wi-Fi的约束。
@@ -2746,6 +2906,10 @@ try {
   console.error(`setOsAccountConstraints exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setosaccountname1"></a>
 
 ## setOsAccountName
 
@@ -2785,6 +2949,7 @@ setOsAccountName(localId: number, localName: string, callback: AsyncCallback<voi
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 
+<!--Del-->
 **示例**
 
 将ID为100的系统账号的账号名设置成demoName。
@@ -2809,7 +2974,9 @@ try {
 }
 ```
 
-<a id="setosaccountname-1"></a>
+<!--DelEnd-->
+
+<a id="setosaccountname2"></a>
 
 ## setOsAccountName
 
@@ -2854,6 +3021,7 @@ setOsAccountName(localId: number, localName: string): Promise<void>
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 
+<!--Del-->
 **示例**
 
 将ID为100的系统账号的账号名设置成demoName。
@@ -2875,6 +3043,10 @@ try {
   console.error(`setOsAccountName exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="setosaccountprofilephoto1"></a>
 
 ## setOsAccountProfilePhoto
 
@@ -2914,6 +3086,7 @@ setOsAccountProfilePhoto(localId: number, photo: string, callback: AsyncCallback
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 
+<!--Del-->
 **示例**
 
 给ID为100的系统账号设置头像。
@@ -2941,7 +3114,9 @@ try {
 }
 ```
 
-<a id="setosaccountprofilephoto-1"></a>
+<!--DelEnd-->
+
+<a id="setosaccountprofilephoto2"></a>
 
 ## setOsAccountProfilePhoto
 
@@ -2986,6 +3161,7 @@ setOsAccountProfilePhoto(localId: number, photo: string): Promise<void>
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted Account. |
 
+<!--Del-->
 **示例**
 
 给ID为100的系统账号设置头像。
@@ -3010,6 +3186,8 @@ try {
   console.error(`setOsAccountProfilePhoto exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setOsAccountType
 
@@ -3049,7 +3227,7 @@ setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTyp
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted. |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid type or options. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
@@ -3057,6 +3235,7 @@ setOsAccountType(localId: number, type: OsAccountType, options?: SetOsAccountTyp
 | [12300010](../errorcode-account.md#12300010-账号服务忙碌) | Service busy. Possible causes: The target account is being operated. |
 | [12300023](../errorcode-account.md#12300023-指定类型的账号数量已达到上限) | The number of accounts of the specified type has reached the upper limit. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -3079,3 +3258,5 @@ try {
   console.error(`setOsAccountType exception: code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

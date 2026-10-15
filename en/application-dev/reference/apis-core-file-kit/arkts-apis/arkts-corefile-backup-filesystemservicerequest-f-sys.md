@@ -46,6 +46,7 @@ Requests filesystem garbage collection with specified configuration.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
 | 13900020 | Invalid argument |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,3 +67,5 @@ async function testFunction(size: number) {
   }
 }
 ```
+
+<!--DelEnd-->

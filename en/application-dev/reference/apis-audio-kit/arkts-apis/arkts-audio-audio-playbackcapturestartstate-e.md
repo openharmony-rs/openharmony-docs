@@ -12,22 +12,6 @@ Defines the playback capture start state, which is returned asynchronously after
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
-## STATE_SUCCESS
-
-```TypeScript
-STATE_SUCCESS = 0
-```
-
-Start playback capture success state.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PlaybackCaptureStartState-STATE_SUCCESS = 0--><!--Device-PlaybackCaptureStartState-STATE_SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
-
 ## STATE_FAILED
 
 ```TypeScript
@@ -57,5 +41,21 @@ Start playback capture but user not authorized state.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PlaybackCaptureStartState-STATE_NOT_AUTHORIZED = 2--><!--Device-PlaybackCaptureStartState-STATE_NOT_AUTHORIZED = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+## STATE_SUCCESS
+
+```TypeScript
+STATE_SUCCESS = 0
+```
+
+Start playback capture success state.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PlaybackCaptureStartState-STATE_SUCCESS = 0--><!--Device-PlaybackCaptureStartState-STATE_SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture

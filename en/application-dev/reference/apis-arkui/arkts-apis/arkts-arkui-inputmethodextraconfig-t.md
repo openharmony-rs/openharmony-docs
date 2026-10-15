@@ -6,6 +6,8 @@ declare type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConf
 
 Represents the extension configuration of an input method.
 
+**Type:** import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig
+
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents the extension configuration of an input method.
 <!--Device-unnamed-declare type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig--><!--Device-unnamed-declare type InputMethodExtraConfig = import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.inputMethod.ExtraConfig').InputMethodExtraConfig

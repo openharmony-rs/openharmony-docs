@@ -6,6 +6,8 @@ type GridRow = TypedFrameNode<GridRowInterface, GridRowAttribute>
 
 GridRow类型的FrameNode节点类型。只允许添加GridCol类型子组件。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;GridRowInterface, [GridRowAttribute](../arkts-components/arkts-arkui-gridrow-comp-attribute.md)&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ GridRow类型的FrameNode节点类型。只允许添加GridCol类型子组件。
 <!--Device-typeNode-type GridRow = TypedFrameNode<GridRowInterface, GridRowAttribute>--><!--Device-typeNode-type GridRow = TypedFrameNode<GridRowInterface, GridRowAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;GridRowInterface, [GridRowAttribute](../arkts-components/arkts-arkui-gridrow-comp-attribute.md)&gt;

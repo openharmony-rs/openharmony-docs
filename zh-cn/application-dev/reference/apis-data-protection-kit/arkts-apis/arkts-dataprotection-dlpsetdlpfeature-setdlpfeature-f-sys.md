@@ -49,6 +49,7 @@ function setDlpFeature(status: DlpFeatureStatus): Promise<StatusInfoResult>
 | [19100001](../errorcode-dlp.md#19100001-入参错误) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-系统服务工作异常) | The system ability works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ async function exampleFunction() {
 
 exampleFunction();
 ```
+
+<!--DelEnd-->

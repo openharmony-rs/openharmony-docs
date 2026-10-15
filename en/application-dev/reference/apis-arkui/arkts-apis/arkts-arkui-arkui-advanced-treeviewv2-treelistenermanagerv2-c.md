@@ -4,7 +4,7 @@
 export declare class TreeListenerManagerV2
 ```
 
-Declare class TreeListenerManagerV2
+Defines the listener manager of the tree view component, which is used to manage changes to tree view listeners. Bind this object to the tree view component before use. The same listener manager cannot control multiple tree view components. This manager is designed in singleton mode. Obtain the globally unique instance through **getInstance**, and then obtain the listener instance through **getTreeListener**.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,7 @@ import { CallbackParamV2, NodeParamV2, TreeControllerV2, TreeListenerV2, TreeLis
 static getInstance(): TreeListenerManagerV2
 ```
 
-Get instance of treeListenerManagerV2.
+Obtains the singleton object of the tree view component listener manager.
 
 **Since:** 26.0.0
 
@@ -40,7 +40,7 @@ Get instance of treeListenerManagerV2.
 
 | Type | Description |
 | --- | --- |
-| [TreeListenerManagerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenermanagerv2-c.md) | Returns the treeListenerManagerV2 instance. |
+| [TreeListenerManagerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenermanagerv2-c.md) | Singleton object of the listener manager of the tree view component. |
 
 ## getTreeListener
 
@@ -48,7 +48,7 @@ Get instance of treeListenerManagerV2.
 getTreeListener(): TreeListenerV2
 ```
 
-Get treeListenerV2.
+Obtains a tree view listener instance.
 
 **Since:** 26.0.0
 
@@ -64,4 +64,4 @@ Get treeListenerV2.
 
 | Type | Description |
 | --- | --- |
-| [TreeListenerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenerv2-c.md) | Returns the treeListenerV2 object. |
+| [TreeListenerV2](arkts-arkui-arkui-advanced-treeviewv2-treelistenerv2-c.md) | Tree view listener instance, used to register or unregister event listeners for node click, add, delete, modify, and move operations of the tree view. |

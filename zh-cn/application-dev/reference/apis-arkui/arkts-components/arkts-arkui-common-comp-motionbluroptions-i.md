@@ -18,7 +18,7 @@ declare interface MotionBlurOptions
 anchor: MotionBlurAnchor
 ```
 
-运动模糊锚点坐标，需要与动画缩放[scale](arkts-arkui-common-comp-commonmethod-c.md#scale)属性的锚点（centerX/centerY）保持一致，否则会产生非预期效果。
+运动模糊锚点坐标，需要与动画缩放[scale](arkts-arkui-common-comp-commonmethod-c.md#scale1)属性的锚点（centerX/centerY）保持一致，否则会产生非预期效果。
 
 **类型：** [MotionBlurAnchor](arkts-arkui-common-comp-motionbluranchor-i.md)
 

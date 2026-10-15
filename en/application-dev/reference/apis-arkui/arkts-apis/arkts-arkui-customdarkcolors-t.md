@@ -6,6 +6,8 @@ export declare type CustomDarkColors = Partial<Colors>
 
 Defines the struct of CustomDarkColors.
 
+**Type:** Partial&lt;[Colors](arkts-arkui-arkui-theme-colors-i.md)&gt;
+
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the struct of CustomDarkColors.
 <!--Device-unnamed-export declare type CustomDarkColors = Partial<Colors>--><!--Device-unnamed-export declare type CustomDarkColors = Partial<Colors>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** Partial&lt;[Colors](arkts-arkui-arkui-theme-colors-i.md)&gt;

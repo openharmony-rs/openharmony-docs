@@ -47,9 +47,12 @@ onAppTransition(fromWindowTarget: WindowAnimationTarget, toWindowTarget: WindowA
 | toWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | 是 | 转场后的动画窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->
 
 ## onCloseWindow
 
@@ -76,9 +79,12 @@ onCloseWindow(closingWindowTarget: WindowAnimationTarget, finishCallback: Window
 | closingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->
 
 ## onMinimizeWindow
 
@@ -106,9 +112,12 @@ onMinimizeWindow(minimizingWindowTarget: WindowAnimationTarget,
 | minimizingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->
 
 ## onScreenUnlock
 
@@ -134,9 +143,12 @@ onScreenUnlock(finishCallback: WindowAnimationFinishedCallback): void
 | --- | --- | --- | --- |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->
 
 ## onStartAppFromLauncher
 
@@ -164,9 +176,12 @@ onStartAppFromLauncher(startingWindowTarget: WindowAnimationTarget,
 | startingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->
 
 ## onStartAppFromOther
 
@@ -194,9 +209,12 @@ onStartAppFromOther(startingWindowTarget: WindowAnimationTarget,
 | startingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调 |
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->
 
 ## onStartAppFromRecent
 
@@ -224,9 +242,12 @@ onStartAppFromRecent(startingWindowTarget: WindowAnimationTarget,
 | startingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | 是 | 动画目标窗口。 |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | 是 | 动画完成后的回调。 |
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->
 
 ## onWindowAnimationTargetsUpdate
 
@@ -254,6 +275,9 @@ onWindowAnimationTargetsUpdate(fullScreenWindowTarget: WindowAnimationTarget,
 | fullScreenWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | 是 | 全屏状态的动画目标窗口。 |
 | floatingWindowTargets | Array&lt;[WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md)&gt; | 是 | 悬浮状态的动画目标窗口。 |
 
+<!--Del-->
 **示例**
 
 请参考windowAnimationManager.setController的示例代码。
+
+<!--DelEnd-->

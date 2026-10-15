@@ -6,6 +6,8 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="notifydatachange1"></a>
+
 ## notifyDataChange
 
 ```TypeScript
@@ -43,6 +45,7 @@ function notifyDataChange(accountId: string, bundleName: string): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ cloudSyncManager.notifyDataChange(accountId, bundleName).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="notifydatachange-1"></a>
+
+<a id="notifydatachange2"></a>
 
 ## notifyDataChange
 
@@ -92,6 +97,7 @@ function notifyDataChange(accountId: string, bundleName: string, callback: Async
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -108,8 +114,10 @@ cloudSyncManager.notifyDataChange(accountId, bundleName, (err: BusinessError) =>
 });
 ```
 
+<!--DelEnd-->
 
-<a id="notifydatachange-2"></a>
+
+<a id="notifydatachange3"></a>
 
 ## notifyDataChange
 
@@ -151,6 +159,7 @@ function notifyDataChange(userId: number, extraData: ExtraData): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -165,8 +174,10 @@ cloudSyncManager.notifyDataChange(userId, extraData).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="notifydatachange-3"></a>
+
+<a id="notifydatachange4"></a>
 
 ## notifyDataChange
 
@@ -203,6 +214,7 @@ function notifyDataChange(userId: number, extraData: ExtraData, callback: AsyncC
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -218,3 +230,5 @@ cloudSyncManager.notifyDataChange(userId, extraData, (err: BusinessError) => {
   }
 });
 ```
+
+<!--DelEnd-->

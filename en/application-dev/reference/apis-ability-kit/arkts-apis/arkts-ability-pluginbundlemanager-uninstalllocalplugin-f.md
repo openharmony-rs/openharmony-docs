@@ -12,7 +12,7 @@ import { pluginBundleManager } from '@kit.AbilityKit';
 function uninstallLocalPlugin(pluginBundleName: string): Promise<void>
 ```
 
-Uninstall the plugin for self application.
+Uninstalls the specified plugin installed by the current app through self-distribution. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -28,13 +28,13 @@ Uninstall the plugin for self application.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| pluginBundleName | string | Yes | Indicates the bundle name of plugin application. |
+| pluginBundleName | string | Yes | Bundle name of the plugin, indicating the application bundle name of the plugin to be uninstalled. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | Promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

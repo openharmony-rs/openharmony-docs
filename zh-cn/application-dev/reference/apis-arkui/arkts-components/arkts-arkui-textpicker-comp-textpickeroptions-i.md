@@ -31,7 +31,7 @@ columnWidths?: LengthMetrics[]
 
 **类型：** LengthMetrics[]
 
-**默认值：** Each column has equal width, calculated by dividing the total component width by the number of columns.
+**默认值：** 各列宽度均等，按组件总宽度除以列数计算。
 
 **起始版本：** 18
 
@@ -126,7 +126,7 @@ value?: ResourceStr[]
 **类型：** [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md)[]
 
 **默认值：** 
-- API版本8-9：value of the first item
+- API版本8-9：第一项的值
 
 **起始版本：** 8
 

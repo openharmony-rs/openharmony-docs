@@ -12,19 +12,19 @@ export declare enum TitleBarType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SQUARED_ICON
+## DRAWER
 
 ```TypeScript
-SQUARED_ICON = 1
+DRAWER = 3
 ```
 
-方形图标样式。
+抽屉样式。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
-<!--Device-TitleBarType-SQUARED_ICON = 1--><!--Device-TitleBarType-SQUARED_ICON = 1-End-->
+<!--Device-TitleBarType-DRAWER = 3--><!--Device-TitleBarType-DRAWER = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,18 +44,18 @@ ROUND_ICON = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DRAWER
+## SQUARED_ICON
 
 ```TypeScript
-DRAWER = 3
+SQUARED_ICON = 1
 ```
 
-抽屉样式。
+方形图标样式。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
-<!--Device-TitleBarType-DRAWER = 3--><!--Device-TitleBarType-DRAWER = 3-End-->
+<!--Device-TitleBarType-SQUARED_ICON = 1--><!--Device-TitleBarType-SQUARED_ICON = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

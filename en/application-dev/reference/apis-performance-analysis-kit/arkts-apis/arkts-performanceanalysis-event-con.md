@@ -14,7 +14,7 @@ Application address sanitizer event. This is a system event name constant.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-event-const ADDRESS_SANITIZER: string--><!--Device-event-const ADDRESS_SANITIZER: string-End-->
 
@@ -34,7 +34,7 @@ Application crash event. This is a system event name constant.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-event-const APP_CRASH: string--><!--Device-event-const APP_CRASH: string-End-->
 
@@ -54,7 +54,7 @@ Application freeze event. This is a system event name constant.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-event-const APP_FREEZE: string--><!--Device-event-const APP_FREEZE: string-End-->
 
@@ -74,7 +74,7 @@ Application task execution timeout event. This is a system event name constant.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-event-const APP_HICOLLIE: string--><!--Device-event-const APP_HICOLLIE: string-End-->
 
@@ -94,7 +94,7 @@ Application killed event. This is a system event name constant.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-event-const APP_KILLED: string--><!--Device-event-const APP_KILLED: string-End-->
 
@@ -114,7 +114,7 @@ Event indicating the application launch duration. This is a system event name co
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-event-const APP_LAUNCH: string--><!--Device-event-const APP_LAUNCH: string-End-->
 
@@ -136,7 +136,7 @@ Application freeze warning event. This is a system event name constant.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-event-const appFreezeWarning: string--><!--Device-event-const appFreezeWarning: string-End-->
 
@@ -156,7 +156,7 @@ Audio jank event. This is a system event name constant.
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-event-const AUDIO_JANK_FRAME: string--><!--Device-event-const AUDIO_JANK_FRAME: string-End-->
 
@@ -176,7 +176,7 @@ Event indicating battery usage statistics. This is a system event name constant.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-event-const BATTERY_USAGE: string--><!--Device-event-const BATTERY_USAGE: string-End-->
 
@@ -196,7 +196,7 @@ Event indicating a high CPU usage. This is a system event name constant.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-event-const CPU_USAGE_HIGH: string--><!--Device-event-const CPU_USAGE_HIGH: string-End-->
 
@@ -216,7 +216,7 @@ Distributed service startup event. This is a reserved application event name con
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-event-const DISTRIBUTED_SERVICE_START: string--><!--Device-event-const DISTRIBUTED_SERVICE_START: string-End-->
 
@@ -236,7 +236,7 @@ Main thread jank event. This is a system event name constant.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-event-const MAIN_THREAD_JANK: string--><!--Device-event-const MAIN_THREAD_JANK: string-End-->
 
@@ -256,7 +256,7 @@ Application resource leak event. This is a system event name constant.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-event-const RESOURCE_OVERLIMIT: string--><!--Device-event-const RESOURCE_OVERLIMIT: string-End-->
 
@@ -278,7 +278,7 @@ ArkWeb fling jank event. This is a system event name constant.
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-event-const SCROLL_ARKWEB_FLING_JANK: string--><!--Device-event-const SCROLL_ARKWEB_FLING_JANK: string-End-->
 
@@ -298,7 +298,7 @@ Event indicating frame loss during swiping. This is a system event name constant
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-event-const SCROLL_JANK: string--><!--Device-event-const SCROLL_JANK: string-End-->
 
@@ -318,7 +318,7 @@ User login event. This is a reserved application event name constant.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-event-const USER_LOGIN: string--><!--Device-event-const USER_LOGIN: string-End-->
 
@@ -338,7 +338,7 @@ User logout event. This is a reserved application event name constant.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-event-const USER_LOGOUT: string--><!--Device-event-const USER_LOGOUT: string-End-->
 

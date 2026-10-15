@@ -14,70 +14,6 @@ export enum ResultCode
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_SOLVABLE_ERRORS
-
-```TypeScript
-RESULT_SOLVABLE_ERRORS = -2
-```
-
-用户必须解决可解决的错误。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_SOLVABLE_ERRORS = -2--><!--Device-ResultCode-RESULT_SOLVABLE_ERRORS = -2-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_MUST_DISABLE_PROFILE
-
-```TypeScript
-RESULT_MUST_DISABLE_PROFILE = -1
-```
-
-必须禁用活动配置文件才能执行操作。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_MUST_DISABLE_PROFILE = -1--><!--Device-ResultCode-RESULT_MUST_DISABLE_PROFILE = -1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_OK
-
-```TypeScript
-RESULT_OK = 0
-```
-
-成功。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_OK = 0--><!--Device-ResultCode-RESULT_OK = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_GET_EID_FAILED
-
-```TypeScript
-RESULT_GET_EID_FAILED = 201
-```
-
-获取EID失败。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_GET_EID_FAILED = 201--><!--Device-ResultCode-RESULT_GET_EID_FAILED = 201-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
 ## RESULT_ACTIVATION_CODE_CHANGED
 
 ```TypeScript
@@ -110,49 +46,113 @@ RESULT_ACTIVATION_CODE_INVALID = 204
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_SMDP_ADDRESS_INVALID
+## RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED
 
 ```TypeScript
-RESULT_SMDP_ADDRESS_INVALID = 205
+RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231
 ```
 
-SM-DP+服务器地址非法。
+由于匹配ID被拒绝，解析客户端身份验证响应错误。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_SMDP_ADDRESS_INVALID = 205--><!--Device-ResultCode-RESULT_SMDP_ADDRESS_INVALID = 205-End-->
+<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_EUICC_INFO_INVALID
+## RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED
 
 ```TypeScript
-RESULT_EUICC_INFO_INVALID = 206
+RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229
 ```
 
-无效的eUICC信息。
+解析客户端身份验证响应错误。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_EUICC_INFO_INVALID = 206--><!--Device-ResultCode-RESULT_EUICC_INFO_INVALID = 206-End-->
+<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_TLS_HANDSHAKE_FAILED
+## RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED
 
 ```TypeScript
-RESULT_TLS_HANDSHAKE_FAILED = 207
+RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228
 ```
 
-TLS握手失败。
+解析服务器身份验证响应错误。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_TLS_HANDSHAKE_FAILED = 207--><!--Device-ResultCode-RESULT_TLS_HANDSHAKE_FAILED = 207-End-->
+<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_AUTHENTICATION_FAILED
+
+```TypeScript
+RESULT_AUTHENTICATION_FAILED = 210
+```
+
+鉴权失败。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_AUTHENTICATION_FAILED = 210--><!--Device-ResultCode-RESULT_AUTHENTICATION_FAILED = 210-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_CARRIER_SERVER_REFUSED_ERRORS
+
+```TypeScript
+RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249
+```
+
+运营商服务器拒绝原因码为3.8的错误。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249--><!--Device-ResultCode-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_CAT_BUSY
+
+```TypeScript
+RESULT_CAT_BUSY = 283
+```
+
+会话正在进行。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_CAT_BUSY = 283--><!--Device-ResultCode-RESULT_CAT_BUSY = 283-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_CERTIFICATE_INVALID
+
+```TypeScript
+RESULT_CERTIFICATE_INVALID = 251
+```
+
+证书无效。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_CERTIFICATE_INVALID = 251--><!--Device-ResultCode-RESULT_CERTIFICATE_INVALID = 251-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
@@ -190,38 +190,6 @@ RESULT_CERTIFICATE_RESPONSE_TIMEOUT = 209
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_AUTHENTICATION_FAILED
-
-```TypeScript
-RESULT_AUTHENTICATION_FAILED = 210
-```
-
-鉴权失败。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_AUTHENTICATION_FAILED = 210--><!--Device-ResultCode-RESULT_AUTHENTICATION_FAILED = 210-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_RESPONSE_HTTP_FAILED
-
-```TypeScript
-RESULT_RESPONSE_HTTP_FAILED = 211
-```
-
-HTTP响应失败。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_RESPONSE_HTTP_FAILED = 211--><!--Device-ResultCode-RESULT_RESPONSE_HTTP_FAILED = 211-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
 ## RESULT_CONFIRMATION_CODE_INCORRECT
 
 ```TypeScript
@@ -233,6 +201,38 @@ RESULT_CONFIRMATION_CODE_INCORRECT = 212
 **起始版本：** 18
 
 <!--Device-ResultCode-RESULT_CONFIRMATION_CODE_INCORRECT = 212--><!--Device-ResultCode-RESULT_CONFIRMATION_CODE_INCORRECT = 212-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_DOWNLOAD_TIMEOUT
+
+```TypeScript
+RESULT_DOWNLOAD_TIMEOUT = 287
+```
+
+下载超时。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_DOWNLOAD_TIMEOUT = 287--><!--Device-ResultCode-RESULT_DOWNLOAD_TIMEOUT = 287-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_EUICC_INFO_INVALID
+
+```TypeScript
+RESULT_EUICC_INFO_INVALID = 206
+```
+
+无效的eUICC信息。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_EUICC_INFO_INVALID = 206--><!--Device-ResultCode-RESULT_EUICC_INFO_INVALID = 206-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
@@ -254,54 +254,6 @@ RESULT_EXCEEDED_CONFIRMATION_CODE_TRY_LIMIT = 213
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_NO_PROFILE_ON_SERVER
-
-```TypeScript
-RESULT_NO_PROFILE_ON_SERVER = 214
-```
-
-服务器上没有可供下载的配置文件。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_NO_PROFILE_ON_SERVER = 214--><!--Device-ResultCode-RESULT_NO_PROFILE_ON_SERVER = 214-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_TRANSACTION_ID_INVALID
-
-```TypeScript
-RESULT_TRANSACTION_ID_INVALID = 215
-```
-
-事务ID无效。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_TRANSACTION_ID_INVALID = 215--><!--Device-ResultCode-RESULT_TRANSACTION_ID_INVALID = 215-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_SERVER_ADDRESS_INVALID
-
-```TypeScript
-RESULT_SERVER_ADDRESS_INVALID = 216
-```
-
-服务器地址无效。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_SERVER_ADDRESS_INVALID = 216--><!--Device-ResultCode-RESULT_SERVER_ADDRESS_INVALID = 216-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
 ## RESULT_GET_BOUND_PROFILE_PACKAGE_FAILED
 
 ```TypeScript
@@ -318,161 +270,81 @@ RESULT_GET_BOUND_PROFILE_PACKAGE_FAILED = 217
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_USER_CANCEL_DOWNLOAD
+## RESULT_GET_EID_FAILED
 
 ```TypeScript
-RESULT_USER_CANCEL_DOWNLOAD = 218
+RESULT_GET_EID_FAILED = 201
 ```
 
-最终用户取消下载。
+获取EID失败。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_USER_CANCEL_DOWNLOAD = 218--><!--Device-ResultCode-RESULT_USER_CANCEL_DOWNLOAD = 218-End-->
+<!--Device-ResultCode-RESULT_GET_EID_FAILED = 201--><!--Device-ResultCode-RESULT_GET_EID_FAILED = 201-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_SERVER_UNAVAILABLE
+## RESULT_MUST_DISABLE_PROFILE
 
 ```TypeScript
-RESULT_SERVER_UNAVAILABLE = 220
+RESULT_MUST_DISABLE_PROFILE = -1
 ```
 
-运营商服务器不可用。
+必须禁用活动配置文件才能执行操作。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_SERVER_UNAVAILABLE = 220--><!--Device-ResultCode-RESULT_SERVER_UNAVAILABLE = 220-End-->
+<!--Device-ResultCode-RESULT_MUST_DISABLE_PROFILE = -1--><!--Device-ResultCode-RESULT_MUST_DISABLE_PROFILE = -1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_PROFILE_NON_DELETE
+## RESULT_NO_PROFILE_ON_SERVER
 
 ```TypeScript
-RESULT_PROFILE_NON_DELETE = 223
+RESULT_NO_PROFILE_ON_SERVER = 214
 ```
 
-PPR禁止删除文件。
+服务器上没有可供下载的配置文件。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_PROFILE_NON_DELETE = 223--><!--Device-ResultCode-RESULT_PROFILE_NON_DELETE = 223-End-->
+<!--Device-ResultCode-RESULT_NO_PROFILE_ON_SERVER = 214--><!--Device-ResultCode-RESULT_NO_PROFILE_ON_SERVER = 214-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_SMDP_ADDRESS_INCORRECT
+## RESULT_NOTHING_TO_DELETE
 
 ```TypeScript
-RESULT_SMDP_ADDRESS_INCORRECT = 226
+RESULT_NOTHING_TO_DELETE = 270
 ```
 
-认证响应服务器地址不匹配。
+没有可删除的配置文件。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_SMDP_ADDRESS_INCORRECT = 226--><!--Device-ResultCode-RESULT_SMDP_ADDRESS_INCORRECT = 226-End-->
+<!--Device-ResultCode-RESULT_NOTHING_TO_DELETE = 270--><!--Device-ResultCode-RESULT_NOTHING_TO_DELETE = 270-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED
+## RESULT_OK
 
 ```TypeScript
-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228
+RESULT_OK = 0
 ```
 
-解析服务器身份验证响应错误。
+成功。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED
-
-```TypeScript
-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229
-```
-
-解析客户端身份验证响应错误。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED
-
-```TypeScript
-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231
-```
-
-由于匹配ID被拒绝，解析客户端身份验证响应错误。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED
-
-```TypeScript
-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233
-```
-
-由于配置文件类型中的错误，身份验证已停止。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233--><!--Device-ResultCode-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_CARRIER_SERVER_REFUSED_ERRORS
-
-```TypeScript
-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249
-```
-
-运营商服务器拒绝原因码为3.8的错误。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249--><!--Device-ResultCode-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_CERTIFICATE_INVALID
-
-```TypeScript
-RESULT_CERTIFICATE_INVALID = 251
-```
-
-证书无效。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_CERTIFICATE_INVALID = 251--><!--Device-ResultCode-RESULT_CERTIFICATE_INVALID = 251-End-->
+<!--Device-ResultCode-RESULT_OK = 0--><!--Device-ResultCode-RESULT_OK = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
@@ -510,22 +382,6 @@ PPR规则禁止此操作。
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_NOTHING_TO_DELETE
-
-```TypeScript
-RESULT_NOTHING_TO_DELETE = 270
-```
-
-没有可删除的配置文件。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_NOTHING_TO_DELETE = 270--><!--Device-ResultCode-RESULT_NOTHING_TO_DELETE = 270-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
 ## RESULT_PPR_NOT_MATCH
 
 ```TypeScript
@@ -537,22 +393,6 @@ RESULT_PPR_NOT_MATCH = 276
 **起始版本：** 18
 
 <!--Device-ResultCode-RESULT_PPR_NOT_MATCH = 276--><!--Device-ResultCode-RESULT_PPR_NOT_MATCH = 276-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## RESULT_CAT_BUSY
-
-```TypeScript
-RESULT_CAT_BUSY = 283
-```
-
-会话正在进行。
-
-**起始版本：** 18
-
-<!--Device-ResultCode-RESULT_CAT_BUSY = 283--><!--Device-ResultCode-RESULT_CAT_BUSY = 283-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
@@ -574,17 +414,81 @@ RESULT_PROFILE_EID_INVALID = 284
 
 **系统接口：** 此接口为系统接口。
 
-## RESULT_DOWNLOAD_TIMEOUT
+## RESULT_PROFILE_NON_DELETE
 
 ```TypeScript
-RESULT_DOWNLOAD_TIMEOUT = 287
+RESULT_PROFILE_NON_DELETE = 223
 ```
 
-下载超时。
+PPR禁止删除文件。
 
 **起始版本：** 18
 
-<!--Device-ResultCode-RESULT_DOWNLOAD_TIMEOUT = 287--><!--Device-ResultCode-RESULT_DOWNLOAD_TIMEOUT = 287-End-->
+<!--Device-ResultCode-RESULT_PROFILE_NON_DELETE = 223--><!--Device-ResultCode-RESULT_PROFILE_NON_DELETE = 223-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED
+
+```TypeScript
+RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233
+```
+
+由于配置文件类型中的错误，身份验证已停止。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233--><!--Device-ResultCode-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_RESPONSE_HTTP_FAILED
+
+```TypeScript
+RESULT_RESPONSE_HTTP_FAILED = 211
+```
+
+HTTP响应失败。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_RESPONSE_HTTP_FAILED = 211--><!--Device-ResultCode-RESULT_RESPONSE_HTTP_FAILED = 211-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_SERVER_ADDRESS_INVALID
+
+```TypeScript
+RESULT_SERVER_ADDRESS_INVALID = 216
+```
+
+服务器地址无效。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_SERVER_ADDRESS_INVALID = 216--><!--Device-ResultCode-RESULT_SERVER_ADDRESS_INVALID = 216-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_SERVER_UNAVAILABLE
+
+```TypeScript
+RESULT_SERVER_UNAVAILABLE = 220
+```
+
+运营商服务器不可用。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_SERVER_UNAVAILABLE = 220--><!--Device-ResultCode-RESULT_SERVER_UNAVAILABLE = 220-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
@@ -601,6 +505,102 @@ SGP.22中定义的其他错误。
 **起始版本：** 18
 
 <!--Device-ResultCode-RESULT_SGP_22_OTHER = 400--><!--Device-ResultCode-RESULT_SGP_22_OTHER = 400-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_SMDP_ADDRESS_INCORRECT
+
+```TypeScript
+RESULT_SMDP_ADDRESS_INCORRECT = 226
+```
+
+认证响应服务器地址不匹配。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_SMDP_ADDRESS_INCORRECT = 226--><!--Device-ResultCode-RESULT_SMDP_ADDRESS_INCORRECT = 226-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_SMDP_ADDRESS_INVALID
+
+```TypeScript
+RESULT_SMDP_ADDRESS_INVALID = 205
+```
+
+SM-DP+服务器地址非法。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_SMDP_ADDRESS_INVALID = 205--><!--Device-ResultCode-RESULT_SMDP_ADDRESS_INVALID = 205-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_SOLVABLE_ERRORS
+
+```TypeScript
+RESULT_SOLVABLE_ERRORS = -2
+```
+
+用户必须解决可解决的错误。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_SOLVABLE_ERRORS = -2--><!--Device-ResultCode-RESULT_SOLVABLE_ERRORS = -2-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_TLS_HANDSHAKE_FAILED
+
+```TypeScript
+RESULT_TLS_HANDSHAKE_FAILED = 207
+```
+
+TLS握手失败。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_TLS_HANDSHAKE_FAILED = 207--><!--Device-ResultCode-RESULT_TLS_HANDSHAKE_FAILED = 207-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_TRANSACTION_ID_INVALID
+
+```TypeScript
+RESULT_TRANSACTION_ID_INVALID = 215
+```
+
+事务ID无效。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_TRANSACTION_ID_INVALID = 215--><!--Device-ResultCode-RESULT_TRANSACTION_ID_INVALID = 215-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## RESULT_USER_CANCEL_DOWNLOAD
+
+```TypeScript
+RESULT_USER_CANCEL_DOWNLOAD = 218
+```
+
+最终用户取消下载。
+
+**起始版本：** 18
+
+<!--Device-ResultCode-RESULT_USER_CANCEL_DOWNLOAD = 218--><!--Device-ResultCode-RESULT_USER_CANCEL_DOWNLOAD = 218-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 

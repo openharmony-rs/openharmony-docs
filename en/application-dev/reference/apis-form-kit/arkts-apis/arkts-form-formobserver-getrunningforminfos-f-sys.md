@@ -6,6 +6,8 @@
 import { formObserver } from '@kit.FormKit';
 ```
 
+<a id="getrunningforminfos1"></a>
+
 ## getRunningFormInfos
 
 ```TypeScript
@@ -41,8 +43,32 @@ Obtains the RunningFormInfo objects provided by a specific card host application
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 
+<!--Del-->
+**Examples**
 
-<a id="getrunningforminfos-1"></a>
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formObserver.getRunningFormInfos((error: BusinessError, data: formInfo.RunningFormInfo[]) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      data.forEach(data => {
+        console.info(`formObserver getRunningFormInfos, formId: ${data.formId}`);
+      });
+    }
+  }, 'com.example.ohos.formjsdemo');
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="getrunningforminfos2"></a>
 
 ## getRunningFormInfos
 
@@ -84,8 +110,32 @@ Obtains the RunningFormInfo objects provided by a specific card host application
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 
+<!--Del-->
+**Examples**
 
-<a id="getrunningforminfos-2"></a>
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formObserver.getRunningFormInfos((error: BusinessError, data: formInfo.RunningFormInfo[]) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      data.forEach(data => {
+        console.info(`formObserver getRunningFormInfos, formId: ${data.formId}`);
+      });
+    }
+  }, true, 'com.example.ohos.formjsdemo');
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="getrunningforminfos3"></a>
 
 ## getRunningFormInfos
 
@@ -127,8 +177,28 @@ Obtains the RunningFormInfo objects provided by a specific card host application
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 
+<!--Del-->
+**Examples**
 
-<a id="getrunningforminfos-3"></a>
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formObserver.getRunningFormInfos('com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
+    console.info('formObserver getRunningFormInfos success.');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="getrunningforminfos4"></a>
 
 ## getRunningFormInfos
 
@@ -173,3 +243,23 @@ Obtains the RunningFormInfo objects provided by a specific card host application
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formInfo, formObserver } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  formObserver.getRunningFormInfos(true, 'com.example.ohos.formjsdemo').then((data: formInfo.RunningFormInfo[]) => {
+    console.info('formObserver getRunningFormInfos success.');
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->

@@ -36,6 +36,7 @@ Obtains the list of clients that are connected to a Wi-Fi hotspot.
 | --- | --- |
 | Array&lt;[StationInfo](arkts-connectivity-wifi-stationinfo-i-sys.md)&gt; | Returns the list of clients that are connected to the Wi-Fi hotspot. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

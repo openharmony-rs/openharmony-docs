@@ -12,24 +12,6 @@ Enumerates counter types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## LIST
-
-```TypeScript
-LIST = 0
-```
-
-List counter.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-CounterType-LIST = 0--><!--Device-CounterType-LIST = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## COMPACT
 
 ```TypeScript
@@ -81,5 +63,23 @@ Inline date counter.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CounterType-INLINE_DATE = 3--><!--Device-CounterType-INLINE_DATE = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## LIST
+
+```TypeScript
+LIST = 0
+```
+
+List counter.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-CounterType-LIST = 0--><!--Device-CounterType-LIST = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

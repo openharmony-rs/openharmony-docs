@@ -23,6 +23,8 @@ interface Storage
 ```TypeScript
 ```
 
+<a id="clear1"></a>
+
 ## clear
 
 ```TypeScript
@@ -57,7 +59,7 @@ storage.clear(function (err) {
 })
 ```
 
-<a id="clear-1"></a>
+<a id="clear2"></a>
 
 ## clear
 
@@ -114,6 +116,8 @@ clearSync(): void
 storage.clearSync();
 ```
 
+<a id="delete1"></a>
+
 ## delete
 
 ```TypeScript
@@ -149,7 +153,7 @@ storage.delete('startup', function (err) {
 })
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -218,6 +222,8 @@ deleteSync(key: string): void
 storage.deleteSync('startup');
 ```
 
+<a id="flush1"></a>
+
 ## flush
 
 ```TypeScript
@@ -252,7 +258,7 @@ storage.flush(function (err) {
 })
 ```
 
-<a id="flush-1"></a>
+<a id="flush2"></a>
 
 ## flush
 
@@ -309,6 +315,8 @@ flushSync(): void
 storage.flushSync();
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -345,7 +353,7 @@ storage.get('startup', 'default', function(err, value) {
 })
 ```
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -423,6 +431,8 @@ let value = storage.getSync('startup', 'default');
 console.info("The value of startup is " + value);
 ```
 
+<a id="has1"></a>
+
 ## has
 
 ```TypeScript
@@ -466,7 +476,7 @@ storage.has('startup', function (err, isExist) {
 })
 ```
 
-<a id="has-1"></a>
+<a id="has2"></a>
 
 ## has
 
@@ -612,6 +622,8 @@ storage.putSync('startup', 'auto');
 storage.flushSync();  // observer will be called.
 ```
 
+<a id="put1"></a>
+
 ## put
 
 ```TypeScript
@@ -648,7 +660,7 @@ storage.put('startup', 'auto', function (err) {
 })
 ```
 
-<a id="put-1"></a>
+<a id="put2"></a>
 
 ## put
 

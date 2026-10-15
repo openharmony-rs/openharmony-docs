@@ -55,6 +55,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,6 +63,8 @@ function unregisterSessionError(highResolutionPhotoSession: camera.HighResolutio
   highResolutionPhotoSession.off('error');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('focusStateChange')
 
@@ -92,6 +95,7 @@ Unsubscribes from focus state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -99,6 +103,8 @@ function unregisterFocusStateChange(highResolutionPhotoSession: camera.HighResol
   highResolutionPhotoSession.off('focusStateChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('error')
 
@@ -129,6 +135,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -142,6 +149,8 @@ function registerSessionError(highResolutionPhotoSession: camera.HighResolutionP
   highResolutionPhotoSession.on('error', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('focusStateChange')
 
@@ -172,6 +181,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -189,3 +199,5 @@ function registerFocusStateChange(highResolutionPhotoSession: camera.HighResolut
   highResolutionPhotoSession.on('focusStateChange', callback);
 }
 ```
+
+<!--DelEnd-->

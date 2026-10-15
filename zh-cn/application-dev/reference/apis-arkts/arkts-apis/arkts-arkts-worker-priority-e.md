@@ -12,24 +12,6 @@ export enum Priority
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## IMMEDIATE
-
-```TypeScript
-IMMEDIATE = 1
-```
-
-立即执行优先级，对应EventHandler IMMEDIATE优先级。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-Priority-IMMEDIATE = 1--><!--Device-Priority-IMMEDIATE = 1-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## HIGH
 
 ```TypeScript
@@ -48,24 +30,6 @@ HIGH = 2
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## LOW
-
-```TypeScript
-LOW = 3
-```
-
-低优先级，对应EventHandler LOW优先级。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-Priority-LOW = 3--><!--Device-Priority-LOW = 3-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## IDLE
 
 ```TypeScript
@@ -81,5 +45,41 @@ IDLE = 4
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Priority-IDLE = 4--><!--Device-Priority-IDLE = 4-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## IMMEDIATE
+
+```TypeScript
+IMMEDIATE = 1
+```
+
+立即执行优先级，对应EventHandler IMMEDIATE优先级。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Priority-IMMEDIATE = 1--><!--Device-Priority-IMMEDIATE = 1-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## LOW
+
+```TypeScript
+LOW = 3
+```
+
+低优先级，对应EventHandler LOW优先级。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Priority-LOW = 3--><!--Device-Priority-LOW = 3-End-->
 
 **系统能力：** SystemCapability.Utils.Lang

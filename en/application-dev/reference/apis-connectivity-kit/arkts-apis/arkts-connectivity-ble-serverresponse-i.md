@@ -32,7 +32,7 @@ Indicates the address of the client to which to send the response
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ServerResponse-deviceId: string--><!--Device-ServerResponse-deviceId: string-End-->
 
@@ -52,7 +52,7 @@ Indicates the byte offset of the start position for reading or writing operation
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ServerResponse-offset: int--><!--Device-ServerResponse-offset: int-End-->
 
@@ -72,7 +72,7 @@ Indicates the status of the read or write request, set this parameter to '0' in 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ServerResponse-status: int--><!--Device-ServerResponse-status: int-End-->
 
@@ -92,7 +92,7 @@ The Id of the write request
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ServerResponse-transId: int--><!--Device-ServerResponse-transId: int-End-->
 
@@ -112,7 +112,7 @@ Indicates the value to be sent
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ServerResponse-value: ArrayBuffer--><!--Device-ServerResponse-value: ArrayBuffer-End-->
 

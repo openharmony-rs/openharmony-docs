@@ -46,6 +46,7 @@ function getExtResource(bundleName: string): Promise<Array<string>>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700303](../errorcode-bundle.md#17700303-扩展资源查询失败) | Failed to obtain extended resources. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,3 +69,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getExtResource failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

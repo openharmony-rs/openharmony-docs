@@ -6,6 +6,8 @@
 import { statistics } from '@kit.NetworkKit';
 ```
 
+<a id="getalltxbytes1"></a>
+
 ## getAllTxBytes
 
 ```TypeScript
@@ -16,7 +18,7 @@ Obtains the total uplink traffic of all NICs (in bytes) from the last startup to
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-statistics-function getAllTxBytes(callback: AsyncCallback<long>): void--><!--Device-statistics-function getAllTxBytes(callback: AsyncCallback<long>): void-End-->
 
@@ -53,7 +55,7 @@ statistics.getAllTxBytes((error: BusinessError, stats: number) => {
 ```
 
 
-<a id="getalltxbytes-1"></a>
+<a id="getalltxbytes2"></a>
 
 ## getAllTxBytes
 
@@ -65,7 +67,7 @@ Obtains the total uplink traffic (in bytes) of all NICs from the last startup to
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-statistics-function getAllTxBytes(): Promise<long>--><!--Device-statistics-function getAllTxBytes(): Promise<long>-End-->
 

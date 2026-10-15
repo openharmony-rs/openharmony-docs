@@ -14,6 +14,96 @@ enum LivePhoto4dStatus
 
 **系统接口：** 此接口为系统接口。
 
+## GRAMMY
+
+```TypeScript
+GRAMMY = 9
+```
+
+格莱美效果3D动态照片
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LivePhoto4dStatus-GRAMMY = 9--><!--Device-LivePhoto4dStatus-GRAMMY = 9-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HITCHCOCK
+
+```TypeScript
+HITCHCOCK = 8
+```
+
+希区柯克效果3D动态照片
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LivePhoto4dStatus-HITCHCOCK = 8--><!--Device-LivePhoto4dStatus-HITCHCOCK = 8-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## LEFT_ROTATE
+
+```TypeScript
+LEFT_ROTATE = 5
+```
+
+左旋效果3D动态照片
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LivePhoto4dStatus-LEFT_ROTATE = 5--><!--Device-LivePhoto4dStatus-LEFT_ROTATE = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## LIVEPHOTO_4D
+
+```TypeScript
+LIVEPHOTO_4D = 4
+```
+
+该动图本身是子弹时间
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LivePhoto4dStatus-LIVEPHOTO_4D = 4--><!--Device-LivePhoto4dStatus-LIVEPHOTO_4D = 4-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SUPPORTED
+
+```TypeScript
+SUPPORTED = 2
+```
+
+该动图支持生成子弹时刻
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-LivePhoto4dStatus-SUPPORTED = 2--><!--Device-LivePhoto4dStatus-SUPPORTED = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## UNIDENTIFIED
 
 ```TypeScript
@@ -50,19 +140,19 @@ UNSUPPORTED = 1
 
 **系统接口：** 此接口为系统接口。
 
-## SUPPORTED
+## UP_ROTATE
 
 ```TypeScript
-SUPPORTED = 2
+UP_ROTATE = 6
 ```
 
-该动图支持生成子弹时刻
+上旋效果3D动态照片
 
-**起始版本：** 24
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-LivePhoto4dStatus-SUPPORTED = 2--><!--Device-LivePhoto4dStatus-SUPPORTED = 2-End-->
+<!--Device-LivePhoto4dStatus-UP_ROTATE = 6--><!--Device-LivePhoto4dStatus-UP_ROTATE = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -86,60 +176,6 @@ USED = 3
 
 **系统接口：** 此接口为系统接口。
 
-## LIVEPHOTO_4D
-
-```TypeScript
-LIVEPHOTO_4D = 4
-```
-
-该动图本身是子弹时间
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LivePhoto4dStatus-LIVEPHOTO_4D = 4--><!--Device-LivePhoto4dStatus-LIVEPHOTO_4D = 4-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## LEFT_ROTATE
-
-```TypeScript
-LEFT_ROTATE = 5
-```
-
-左旋效果3D动态照片
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LivePhoto4dStatus-LEFT_ROTATE = 5--><!--Device-LivePhoto4dStatus-LEFT_ROTATE = 5-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## UP_ROTATE
-
-```TypeScript
-UP_ROTATE = 6
-```
-
-上旋效果3D动态照片
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LivePhoto4dStatus-UP_ROTATE = 6--><!--Device-LivePhoto4dStatus-UP_ROTATE = 6-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## ZOOM_OUT
 
 ```TypeScript
@@ -153,42 +189,6 @@ ZOOM_OUT = 7
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-LivePhoto4dStatus-ZOOM_OUT = 7--><!--Device-LivePhoto4dStatus-ZOOM_OUT = 7-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## HITCHCOCK
-
-```TypeScript
-HITCHCOCK = 8
-```
-
-希区柯克效果3D动态照片
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LivePhoto4dStatus-HITCHCOCK = 8--><!--Device-LivePhoto4dStatus-HITCHCOCK = 8-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## GRAMMY
-
-```TypeScript
-GRAMMY = 9
-```
-
-格莱美效果3D动态照片
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-LivePhoto4dStatus-GRAMMY = 9--><!--Device-LivePhoto4dStatus-GRAMMY = 9-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

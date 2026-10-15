@@ -12,20 +12,6 @@ Enumerates the reasons for requesting the keyboard.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-The keyboard request is triggered for no reason.
-
-**Since:** 15
-
-<!--Device-RequestKeyboardReason-NONE = 0--><!--Device-RequestKeyboardReason-NONE = 0-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
 ## MOUSE
 
 ```TypeScript
@@ -40,17 +26,17 @@ The keyboard request is triggered by a mouse operation.
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
-## TOUCH
+## NONE
 
 ```TypeScript
-TOUCH = 2
+NONE = 0
 ```
 
-The keyboard request is triggered by a touch operation.
+The keyboard request is triggered for no reason.
 
 **Since:** 15
 
-<!--Device-RequestKeyboardReason-TOUCH = 2--><!--Device-RequestKeyboardReason-TOUCH = 2-End-->
+<!--Device-RequestKeyboardReason-NONE = 0--><!--Device-RequestKeyboardReason-NONE = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
@@ -65,5 +51,19 @@ The keyboard request is triggered by other reasons.
 **Since:** 15
 
 <!--Device-RequestKeyboardReason-OTHER = 20--><!--Device-RequestKeyboardReason-OTHER = 20-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+## TOUCH
+
+```TypeScript
+TOUCH = 2
+```
+
+The keyboard request is triggered by a touch operation.
+
+**Since:** 15
+
+<!--Device-RequestKeyboardReason-TOUCH = 2--><!--Device-RequestKeyboardReason-TOUCH = 2-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

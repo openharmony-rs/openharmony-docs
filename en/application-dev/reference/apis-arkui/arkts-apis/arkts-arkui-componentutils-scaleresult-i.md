@@ -24,7 +24,7 @@ import { componentUtils } from '@kit.ArkUI';
 centerX: number
 ```
 
-X-coordinate of the center point.
+X-axis coordinate of the transform center point.
 
 Unit: vp
 
@@ -46,7 +46,7 @@ Unit: vp
 centerY: number
 ```
 
-Y-coordinate of the center point.
+Y-axis coordinate of the transform center point.
 
 Unit: vp
 

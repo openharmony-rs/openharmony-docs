@@ -4,7 +4,7 @@
 declare type OnTabsAnimationStartCallback = (index: number, targetIndex: number, extraInfo: TabsAnimationEvent) => void
 ```
 
-Defines the callback triggered when the tab switching animation starts.
+Defines the callback triggered when the page transition animation starts.
 
 **Since:** 18
 
@@ -20,6 +20,6 @@ Defines the callback triggered when the tab switching animation starts.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the currently displayed element. The index is zero-based. |
-| targetIndex | number | Yes | Index of the target element to switch to. The index is zero-based. |
-| extraInfo | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | Yes | Extra information of the animation, including the offset of the currently displayed element and target element relative to the start position of the **Tabs** along the main axis, and the hands-off velocity. |
+| index | number | Yes | Index of the currently displayed element. The index starts from 0. |
+| targetIndex | number | Yes | Index of the target element of the switching animation. The index starts from 0. |
+| extraInfo | [TabsAnimationEvent](arkts-arkui-tabs-comp-tabsanimationevent-i.md) | Yes | Animation-related information, including the displacement of the currently displayed element and the target element relative to the start position of **Tabs** along the main axis, and the release velocity. |

@@ -44,6 +44,7 @@ Authenticates a domain account.
 | credential | Uint8Array | Yes | Credentials of the domain account. |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | Yes | Callback used to return the authentication result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -94,6 +95,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## authWithPopup
 
 ```TypeScript
@@ -117,6 +120,7 @@ Authenticates a domain account in a pop-up window.
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | Yes | Domain account information. |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | Yes | Callback used to return the authentication result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -151,6 +155,8 @@ let plugin: osAccount.DomainPlugin = {
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
+
+<!--DelEnd-->
 
 ## authWithToken
 
@@ -176,6 +182,7 @@ Authenticates a domain account by the authorization token.
 | token | Uint8Array | Yes | Authorization token generated when the PIN or biometric authentication is successful. |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | Yes | Callback used to return the authentication result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -211,6 +218,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## bindAccount
 
 ```TypeScript
@@ -235,6 +244,7 @@ Binds a domain account.
 | localId | number | Yes | ID of the target OS account. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -270,6 +280,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## getAccessToken
 
 ```TypeScript
@@ -293,6 +305,7 @@ Obtains the domain access token based on the specified conditions. This API uses
 | options | [GetDomainAccessTokenOptions](arkts-basicservices-osaccount-getdomainaccesstokenoptions-i-sys.md) | Yes | Options specified for obtaining the domain access token. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -329,6 +342,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## getAccountInfo
 
 ```TypeScript
@@ -352,6 +367,7 @@ Obtains information about a domain account. This API uses an asynchronous callba
 | options | [GetDomainAccountInfoPluginOptions](arkts-basicservices-osaccount-getdomainaccountinfopluginoptions-i-sys.md) | Yes | Domain account information. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -392,6 +408,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## getAuthStatusInfo
 
 ```TypeScript
@@ -415,6 +433,7 @@ Obtains the authentication status of a domain account.
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | Yes | Domain account information. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[AuthStatusInfo](arkts-basicservices-osaccount-authstatusinfo-i-sys.md)&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -452,6 +471,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## isAccountTokenValid
 
 ```TypeScript
@@ -480,6 +501,7 @@ Checks whether the specified domain account token is valid.
 | token | Uint8Array | Yes | Domain account token to check. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. The value **true** means that the specified domain account token is valid; the value **false** means the opposite. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -515,6 +537,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## unbindAccount
 
 ```TypeScript
@@ -538,6 +562,7 @@ Unbinds a domain account.
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | Yes | Domain account information. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -572,3 +597,5 @@ let plugin: osAccount.DomainPlugin = {
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
+
+<!--DelEnd-->

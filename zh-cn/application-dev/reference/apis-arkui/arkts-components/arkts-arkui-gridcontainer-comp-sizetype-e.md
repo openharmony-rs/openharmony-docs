@@ -38,13 +38,13 @@ Auto = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## XS
+## LG
 
 ```TypeScript
-XS
+LG
 ```
 
-最小宽度类型设备，宽度≤320vp。
+大宽度类型设备，宽度≥840vp。
 
 **起始版本：** 7
 
@@ -52,25 +52,7 @@ XS
 
 **替代接口：** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
 
-<!--Device-SizeType-XS--><!--Device-SizeType-XS-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## SM
-
-```TypeScript
-SM
-```
-
-小宽度类型设备，宽度320vp-600vp。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
-
-<!--Device-SizeType-SM--><!--Device-SizeType-SM-End-->
+<!--Device-SizeType-LG--><!--Device-SizeType-LG-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,13 +74,13 @@ MD
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## LG
+## SM
 
 ```TypeScript
-LG
+SM
 ```
 
-大宽度类型设备，宽度≥840vp。
+小宽度类型设备，宽度320vp-600vp。
 
 **起始版本：** 7
 
@@ -106,6 +88,24 @@ LG
 
 **替代接口：** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
 
-<!--Device-SizeType-LG--><!--Device-SizeType-LG-End-->
+<!--Device-SizeType-SM--><!--Device-SizeType-SM-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## XS
+
+```TypeScript
+XS
+```
+
+最小宽度类型设备，宽度≤320vp。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** grid_col/GridColColumnOption and grid_row/GridRowColumnOption
+
+<!--Device-SizeType-XS--><!--Device-SizeType-XS-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

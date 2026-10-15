@@ -22,10 +22,10 @@ import { intelligence } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [getImageEmbeddingModel](arkts-arkdata-intelligence-getimageembeddingmodel-f.md) | Obtains an image embedding model. |
-| [getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md) | Obtains the supported cloud embedding models. |
-| [getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md) | Obtains a text embedding model. |
-| [splitText](arkts-arkdata-intelligence-splittext-f.md) | Splits text. |
+| [getImageEmbeddingModel](arkts-arkdata-intelligence-getimageembeddingmodel-f.md#getimageembeddingmodel) | Obtains an image embedding model. |
+| [getSupportedCloudModel](arkts-arkdata-intelligence-getsupportedcloudmodel-f.md#getsupportedcloudmodel) | Obtains the supported cloud embedding models. |
+| [getTextEmbeddingModel](arkts-arkdata-intelligence-gettextembeddingmodel-f.md#gettextembeddingmodel) | Obtains a text embedding model. |
+| [splitText](arkts-arkdata-intelligence-splittext-f.md#splittext) | Splits text. |
 
 ### Interfaces
 

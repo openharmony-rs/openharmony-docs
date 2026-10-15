@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="cancel1"></a>
+
 ## cancel
 
 ```TypeScript
@@ -24,9 +26,9 @@ function cancel(id: number, callback: AsyncCallback<void>): void
 
 **参见：**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) 发布通知。
+[publish](arkts-notification-notificationmanager-publish-f.md#publish1) 发布通知。
 
-[cancelAll](arkts-notification-notificationmanager-cancelall-f.md) 取消当前应用所有已发布的通知。
+[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall1) 取消当前应用所有已发布的通知。
 
 [cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md) 取消当前应用指定组下的通知。
 
@@ -41,7 +43,7 @@ function cancel(id: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -64,7 +66,7 @@ notificationManager.cancel(0, cancelCallback);
 ```
 
 
-<a id="cancel-1"></a>
+<a id="cancel2"></a>
 
 ## cancel
 
@@ -84,9 +86,9 @@ function cancel(id: number, label: string, callback: AsyncCallback<void>): void
 
 **参见：**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) 发布通知。
+[publish](arkts-notification-notificationmanager-publish-f.md#publish1) 发布通知。
 
-[cancelAll](arkts-notification-notificationmanager-cancelall-f.md) 取消当前应用所有已发布的通知。
+[cancelAll](arkts-notification-notificationmanager-cancelall-f.md#cancelall1) 取消当前应用所有已发布的通知。
 
 [cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md) 取消当前应用指定组下的通知。
 
@@ -95,14 +97,14 @@ function cancel(id: number, label: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 通知ID，用于标识目标通知。该值由发布通知时NotificationRequest的id字段指定。 |
-| label | string | 是 | 通知标签。该值由发布通知时NotificationRequest的label字段指定。   - 若标签为空，则取消与指定通知ID匹配，标签为空的已发布通知。   - 若标签不为空，则取消与指定通知ID和标签同时匹配的已发布通知。 |
+| label | string | 是 | 通知标签。该值由发布通知时NotificationRequest的label字段指定。           - 若标签为空，则取消与指定通知ID匹配，标签为空的已发布通知。           - 若标签不为空，则取消与指定通知ID和标签同时匹配的已发布通知。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。根据通知ID和标签取消已发布的通知成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
@@ -125,7 +127,7 @@ notificationManager.cancel(0, 'label', cancelCallback);
 ```
 
 
-<a id="cancel-2"></a>
+<a id="cancel3"></a>
 
 ## cancel
 
@@ -145,18 +147,18 @@ function cancel(id: number, label?: string): Promise<void>
 
 **参见：**
 
-[publish](arkts-notification-notificationmanager-publish-f.md) 发布通知。
+[publish](arkts-notification-notificationmanager-publish-f.md#publish1) 发布通知。
 
 [cancelAll](arkts-notification-notificationmanager-cancelall-f.md) 取消当前应用所有已发布的通知。
 
-[cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md#cancelgroup-1) 取消当前应用指定组下的通知。
+[cancelGroup](arkts-notification-notificationmanager-cancelgroup-f.md#cancelgroup2) 取消当前应用指定组下的通知。
 
 **参数：**
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | id | number | 是 | 通知ID，用于标识目标通知。该值由发布通知时NotificationRequest的id字段指定。 |
-| label | string | 否 | 通知标签，默认为空。该值由发布通知时NotificationRequest的label字段指定。   - 若标签为空，则取消与指定通知ID匹配，标签为空的已发布通知。   - 若标签不为空，则取消与指定通知ID和标签同时匹配的已发布通知。 |
+| label | string | 否 | 通知标签，默认为空。该值由发布通知时NotificationRequest的label字段指定。           - 若标签为空，则取消与指定通知ID匹配，标签为空的已发布通知。           - 若标签不为空，则取消与指定通知ID和标签同时匹配的已发布通知。 |
 
 **返回值：**
 
@@ -168,7 +170,7 @@ function cancel(id: number, label?: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |

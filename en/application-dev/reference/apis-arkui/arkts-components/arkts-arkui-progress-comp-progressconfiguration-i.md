@@ -6,7 +6,7 @@ declare interface ProgressConfiguration extends CommonConfiguration<ProgressConf
 
 Provides progress indicator configuration. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** ProgressConfiguration extends CommonConfiguration<ProgressConfiguration>
+**Inheritance/Implementation:** ProgressConfiguration extends CommonConfiguration&lt;ProgressConfiguration&gt;
 
 **Since:** 12
 

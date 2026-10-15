@@ -6,6 +6,8 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="getallvolumes1"></a>
+
 ## getAllVolumes
 
 ```TypeScript
@@ -41,7 +43,7 @@ Obtains information about all volumes of this external storage device. This API 
 | 13900042 | Unknown error. |
 
 
-<a id="getallvolumes-1"></a>
+<a id="getallvolumes2"></a>
 
 ## getAllVolumes
 

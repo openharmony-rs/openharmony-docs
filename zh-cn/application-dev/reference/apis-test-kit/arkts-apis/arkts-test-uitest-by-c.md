@@ -12,13 +12,13 @@ By提供的API能力具有以下几个特点：
 
 2、控件属性支持多种匹配模式。
 
-3、支持控件绝对定位，相对定位，可通过[By.isBefore&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isbefore)和[By.isAfter&lt;sup&gt;(deprecated)&lt;/sup&gt;](#isafter)等API限定邻近控件特征进行辅助定位。
+3、支持控件绝对定位，相对定位，可通过[By.isBefore<sup>(deprecated)</sup>](#isbefore)和[By.isAfter<sup>(deprecated)</sup>](#isafter)等API限定邻近控件特征进行辅助定位。
 
 By类提供的所有API均为同步接口，建议使用者通过静态构造器BY来链式创建By对象。
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[On&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[On<sup>9+</sup>](arkts-test-uitest-on-c.md)替代。
 
 **起始版本：** 8
 
@@ -49,7 +49,7 @@ clickable(b?: boolean): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[clickable&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#clickable)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[clickable<sup>9+</sup>](arkts-test-uitest-on-c.md#clickable)替代。
 
 **起始版本：** 8
 
@@ -94,7 +94,7 @@ enabled(b?: boolean): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[enabled&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#enabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[enabled<sup>9+</sup>](arkts-test-uitest-on-c.md#enabled)替代。
 
 **起始版本：** 8
 
@@ -139,7 +139,7 @@ focused(b?: boolean): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[focused&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#focused)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[focused<sup>9+</sup>](arkts-test-uitest-on-c.md#focused)替代。
 
 **起始版本：** 8
 
@@ -184,13 +184,13 @@ id(id: number): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[id&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#id)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](arkts-test-uitest-on-c.md#id1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [id](arkts-test-uitest-on-c.md#id)(id: string)
+**替代接口：** [id](arkts-test-uitest-on-c.md#id1)(id: string)
 
 <!--Device-By-id(id: number): By--><!--Device-By-id(id: number): By-End-->
 
@@ -229,7 +229,7 @@ isAfter(by: By): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[isAfter&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#isafter)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isAfter<sup>9+</sup>](arkts-test-uitest-on-c.md#isafter)替代。
 
 **起始版本：** 8
 
@@ -275,7 +275,7 @@ isBefore(by: By): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[isBefore&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#isbefore)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isBefore<sup>9+</sup>](arkts-test-uitest-on-c.md#isbefore)替代。
 
 **起始版本：** 8
 
@@ -321,13 +321,13 @@ key(key: string): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[id&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#id)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[id<sup>9+</sup>](arkts-test-uitest-on-c.md#id1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [id](arkts-test-uitest-on-c.md#id)(id: string)
+**替代接口：** [id](arkts-test-uitest-on-c.md#id1)(id: string)
 
 <!--Device-By-key(key: string): By--><!--Device-By-key(key: string): By-End-->
 
@@ -366,7 +366,7 @@ scrollable(b?: boolean): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollable&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#scrollable)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollable<sup>9+</sup>](arkts-test-uitest-on-c.md#scrollable)替代。
 
 **起始版本：** 8
 
@@ -411,7 +411,7 @@ selected(b?: boolean): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[selected&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#selected)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[selected<sup>9+</sup>](arkts-test-uitest-on-c.md#selected)替代。
 
 **起始版本：** 8
 
@@ -456,7 +456,7 @@ text(txt: string, pattern?: MatchPattern): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[text&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#text)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[text<sup>9+</sup>](arkts-test-uitest-on-c.md#text)替代。
 
 **起始版本：** 8
 
@@ -502,13 +502,13 @@ type(tp: string): By
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[type&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-on-c.md#type)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[type<sup>9+</sup>](arkts-test-uitest-on-c.md#type1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [type](arkts-test-uitest-on-c.md#type)(tp: string)
+**替代接口：** [type](arkts-test-uitest-on-c.md#type1)(tp: string)
 
 <!--Device-By-type(tp: string): By--><!--Device-By-type(tp: string): By-End-->
 

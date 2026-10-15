@@ -12,20 +12,6 @@ enum AudioVolumeMode
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 
-## SYSTEM_GLOBAL
-
-```TypeScript
-SYSTEM_GLOBAL = 0
-```
-
-系统级音量（默认模式）。
-
-**起始版本：** 19
-
-<!--Device-AudioVolumeMode-SYSTEM_GLOBAL = 0--><!--Device-AudioVolumeMode-SYSTEM_GLOBAL = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
 ## APP_INDIVIDUAL
 
 ```TypeScript
@@ -37,5 +23,19 @@ APP_INDIVIDUAL = 1
 **起始版本：** 19
 
 <!--Device-AudioVolumeMode-APP_INDIVIDUAL = 1--><!--Device-AudioVolumeMode-APP_INDIVIDUAL = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+## SYSTEM_GLOBAL
+
+```TypeScript
+SYSTEM_GLOBAL = 0
+```
+
+系统级音量（默认模式）。
+
+**起始版本：** 19
+
+<!--Device-AudioVolumeMode-SYSTEM_GLOBAL = 0--><!--Device-AudioVolumeMode-SYSTEM_GLOBAL = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume

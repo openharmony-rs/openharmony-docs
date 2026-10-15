@@ -4,7 +4,7 @@
 export enum ReportingMode
 ```
 
-Enum for distance measurement result reporting modes. @enum { int } ReportingMode
+Enum for distance measurement result reporting modes.
 
 **Since:** 23
 

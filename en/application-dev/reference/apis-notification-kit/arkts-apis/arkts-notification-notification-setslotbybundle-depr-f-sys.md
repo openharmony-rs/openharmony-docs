@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="setslotbybundle1"></a>
+
 ## setSlotByBundle
 
 ```TypeScript
@@ -32,11 +34,11 @@ Sets the notification slot for a specified application. This API uses an asynchr
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundle | BundleOption | Yes | Bundle information of the application. |
-| slot | [NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md) | Yes | Notification slot. |
+| slot | [NotificationSlot](arkts-notification-notificationslot-i.md) | Yes | Notification slot. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
-<a id="setslotbybundle-1"></a>
+<a id="setslotbybundle2"></a>
 
 ## setSlotByBundle
 
@@ -65,7 +67,7 @@ Sets the notification slot for a specified application. This API uses a promise 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundle | BundleOption | Yes | Bundle information of the application. |
-| slot | [NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md) | Yes | Notification slot. |
+| slot | [NotificationSlot](arkts-notification-notificationslot-i.md) | Yes | Notification slot. |
 
 **Return value:**
 

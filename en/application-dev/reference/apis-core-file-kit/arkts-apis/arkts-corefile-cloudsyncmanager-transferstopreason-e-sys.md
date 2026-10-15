@@ -14,24 +14,6 @@ Describes the state type of transfer stop reason.
 
 **System API:** This is a system API.
 
-## SWITCH_OFF
-
-```TypeScript
-SWITCH_OFF = 0
-```
-
-Indicates that the transfer task stopped by switch off.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TransferStopReason-SWITCH_OFF = 0--><!--Device-TransferStopReason-SWITCH_OFF = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-**System API:** This is a system API.
-
 ## ACCOUNT_LOGOUT
 
 ```TypeScript
@@ -63,6 +45,24 @@ Indicates that the transfer task stopped by other reason.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TransferStopReason-OTHER_REASON = 2--><!--Device-TransferStopReason-OTHER_REASON = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+**System API:** This is a system API.
+
+## SWITCH_OFF
+
+```TypeScript
+SWITCH_OFF = 0
+```
+
+Indicates that the transfer task stopped by switch off.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TransferStopReason-SWITCH_OFF = 0--><!--Device-TransferStopReason-SWITCH_OFF = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 

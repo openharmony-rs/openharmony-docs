@@ -37,7 +37,7 @@ declare function createStream(path: string, mode: string): Promise<Stream>
 | Promise&lt;[Stream](arkts-corefile-fileio-stream-depr-i.md)&gt; | Promise对象。返回文件流的结果。 |
 
 
-<a id="createstream-1"></a>
+<a id="createstream2"></a>
 
 ## createStream
 

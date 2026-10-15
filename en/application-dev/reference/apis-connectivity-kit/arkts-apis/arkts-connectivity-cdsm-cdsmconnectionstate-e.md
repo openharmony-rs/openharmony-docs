@@ -12,22 +12,6 @@ Enumerates the connection states of member devices in a coordinated device set.
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-## DISCONNECTED
-
-```TypeScript
-DISCONNECTED = 0
-```
-
-Disconnected.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-CdsmConnectionState-DISCONNECTED = 0--><!--Device-CdsmConnectionState-DISCONNECTED = 0-End-->
-
-**System capability:** SystemCapability.Communication.NearLink.Base
-
 ## CONNECTED
 
 ```TypeScript
@@ -40,6 +24,26 @@ Connected.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-CdsmConnectionState-CONNECTED = 1--><!--Device-CdsmConnectionState-CONNECTED = 1-End-->
+
+**System capability:** SystemCapability.Communication.NearLink.Base
+
+## DISCONNECTED
+
+```TypeScript
+DISCONNECTED = 0
+```
+
+Disconnected.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-CdsmConnectionState-DISCONNECTED = 0--><!--Device-CdsmConnectionState-DISCONNECTED = 0-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

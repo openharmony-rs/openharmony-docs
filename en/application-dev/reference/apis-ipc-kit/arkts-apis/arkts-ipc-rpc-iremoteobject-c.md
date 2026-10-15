@@ -125,6 +125,8 @@ Registers a callback for receiving death notifications of the remote object.
 | [1900005](../errorcode-rpc.md#1900005-ipc-object-permission-error) | Operation allowed only for the proxy object. |
 | [1900008](../errorcode-rpc.md#1900008-invalid-ipc-object) | The proxy or remote object is invalid. |
 
+<a id="sendmessagerequest1"></a>
+
 ## sendMessageRequest
 
 ```TypeScript
@@ -165,7 +167,7 @@ Sends a **MessageSequence** message to the remote process in synchronous or asyn
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.The number of parameters is incorrect; 2.The parameter type does not match; 3.Failed to obtain the passed object instance. |
 
-<a id="sendmessagerequest-1"></a>
+<a id="sendmessagerequest2"></a>
 
 ## sendMessageRequest
 
@@ -348,6 +350,8 @@ Removes the callback used to receive death notifications of the remote object.
 | --- | --- |
 | boolean | Returns **true** if the callback is removed; returns **false** otherwise. |
 
+<a id="sendrequest1"></a>
+
 ## sendRequest
 
 ```TypeScript
@@ -381,7 +385,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 | --- | --- |
 | boolean | Returns **true** if the message is sent successfully; returns **false** otherwise. |
 
-<a id="sendrequest-1"></a>
+<a id="sendrequest2"></a>
 
 ## sendRequest
 
@@ -421,7 +425,7 @@ Sends a **MessageParcel** message to the remote process in synchronous or asynch
 | --- | --- |
 | Promise&lt;[SendRequestResult](arkts-ipc-rpc-sendrequestresult-i.md)&gt; | Promise used to return the response to the request. |
 
-<a id="sendrequest-2"></a>
+<a id="sendrequest3"></a>
 
 ## sendRequest
 

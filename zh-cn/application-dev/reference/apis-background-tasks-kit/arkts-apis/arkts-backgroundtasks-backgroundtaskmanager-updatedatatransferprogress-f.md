@@ -46,8 +46,7 @@ function updateDataTransferProgress(context: Context, progressInfo: DataTransfer
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { UIAbility } from '@kit.AbilityKit';
-import { wantAgent, WantAgent } from '@kit.AbilityKit';
+import { UIAbility, wantAgent, WantAgent } from '@kit.AbilityKit';
 
 export default class EntryAbility extends UIAbility {
   continuousTaskId : number = -1; // 保存长时任务Id
@@ -83,7 +82,7 @@ export default class EntryAbility extends UIAbility {
           backgroundTaskManager.startBackgroundRunning(this.context, list, wantAgentObj).then((res: backgroundTaskManager.ContinuousTaskNotification) => {
             console.info('Operation startBackgroundRunning succeeded');
             // 对于数据传输类的长时任务，应用可以使用res中返回的continuousTaskId来更新通知，比如发送带进度条的模板通知
-            this.continuousTaskId = res.continuousTaskId;
+            this.continuousTaskId = res.continuousTaskId ?? -1;
             try {
               let progressInfo: backgroundTaskManager.DataTransferProgress = {
                 continuousTaskId: this.continuousTaskId,

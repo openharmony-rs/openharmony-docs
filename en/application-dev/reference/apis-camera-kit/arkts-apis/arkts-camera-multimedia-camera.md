@@ -24,7 +24,7 @@ import { camera } from '@kit.CameraKit';
 
 | Name | Description |
 | --- | --- |
-| [getCameraManager](arkts-camera-camera-getcameramanager-f.md) | Obtains a CameraManager instance. This API returns the result synchronously. |
+| [getCameraManager](arkts-camera-camera-getcameramanager-f.md#getcameramanager) | Obtains a CameraManager instance. This API returns the result synchronously. |
 
 <!--Del-->
 ### Classes(System API)
@@ -45,6 +45,7 @@ import { camera } from '@kit.CameraKit';
 | [AutoDeviceSwitchStatus](arkts-camera-camera-autodeviceswitchstatus-i.md) | Describes the information about the automatic camera switch status. |
 | [AutoExposure](arkts-camera-camera-autoexposure-i.md) | **AutoExposure** inherits from [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md). |
 | [AutoExposureQuery](arkts-camera-camera-autoexposurequery-i.md) | AutoExposureQuery provides APIs to query the automatic exposure feature of a camera device.  >  > - In this version, a compatibility change was made that preserved the initial version information of inner elements. As a result, you might see outer element's |
+| [C2PASignatureConfig](arkts-camera-camera-c2pasignatureconfig-i.md) | Describes the C2PA signature configuration, which includes the author name and author ID for C2PA signature generation. |
 | [CameraConcurrentInfo](arkts-camera-camera-cameraconcurrentinfo-i.md) | Describes the camera's concurrency information. |
 | [CameraDevice](arkts-camera-camera-cameradevice-i.md) | Describes the camera device information. |
 | [CameraInput](arkts-camera-camera-camerainput-i.md) | **CameraInput** defines the camera input object. |
@@ -55,7 +56,6 @@ import { camera } from '@kit.CameraKit';
 | [CameraStatusInfo](arkts-camera-camera-camerastatusinfo-i.md) | Describes the camera status information. |
 | [CaptureEndInfo](arkts-camera-camera-captureendinfo-i.md) | Describes the capture end information. |
 | [CapturePhoto](arkts-camera-camera-capturephoto-i.md) | **CapturePhoto** provides APIs for obtaining the objects of the full-quality image and the uncompressed image. |
-| [CaptureSession](arkts-camera-camera-capturesession-i.md) | **CaptureSession** implements a capture session, which saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera and requests the camera to complete shooting or video recording. |
 | [CaptureStartInfo](arkts-camera-camera-capturestartinfo-i.md) | Describes the capture start information. |
 | [ColorManagement](arkts-camera-camera-colormanagement-i.md) | **ColorManagement** inherits from [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md). |
 | [ColorManagementQuery](arkts-camera-camera-colormanagementquery-i.md) | ColorManagementQuery provides the APIs for color space query. |
@@ -119,6 +119,7 @@ import { camera } from '@kit.CameraKit';
 | [ZoomPointInfo](arkts-camera-camera-zoompointinfo-i.md) | Describes the equivalent focal length information. |
 | [ZoomQuery](arkts-camera-camera-zoomquery-i.md) | ZoomQuery provides APIs to query the zoom feature of a device camera, including the API to obtain the supported zoom ratio range. |
 | [ZoomRange](arkts-camera-camera-zoomrange-i.md) | Describes the zoom range. |
+| [CaptureSession](arkts-camera-camera-capturesession-i.md) | **CaptureSession** implements a capture session, which saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera and requests the camera to complete shooting or video recording. |
 
 <!--Del-->
 ### Interfaces(System API)
@@ -136,7 +137,6 @@ import { camera } from '@kit.CameraKit';
 | [CameraManager](arkts-camera-camera-cameramanager-i-sys.md) | **CameraManager** implements camera management. Before calling any API in **CameraManager**, you must use [getCameraManager](arkts-camera-camera-getcameramanager-f.md) to obtain a **CameraManager** instance. |
 | [CameraOutputCapability](arkts-camera-camera-cameraoutputcapability-i-sys.md) | Describes the camera output capability. |
 | [CameraSharedStatusInfo](arkts-camera-camera-camerasharedstatusinfo-i-sys.md) | Camera shared status info. |
-| [CaptureSession](arkts-camera-camera-capturesession-i-sys.md) | **CaptureSession** implements a capture session, which saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera and requests the camera to complete shooting or video recording. |
 | [ColorControls](arkts-camera-camera-colorcontrols-i-sys.md) | Implements color controls. It inherits from [ColorControlsQuery](arkts-camera-camera-colorcontrolsquery-i-sys.md). |
 | [ColorControlsQuery](arkts-camera-camera-colorcontrolsquery-i-sys.md) | Color controls query object. |
 | [ColorEffect](arkts-camera-camera-coloreffect-i-sys.md) | ColorEffect extends [ColorEffectQuery](arkts-camera-camera-coloreffectquery-i-sys.md) Provides the APIs to obtain and set the lens color effect. |
@@ -207,6 +207,7 @@ import { camera } from '@kit.CameraKit';
 | [VideoSessionForSys](arkts-camera-camera-videosessionforsys-i-sys.md) | Implements a video session for system applications, which sets the parameters of the normal video mode and saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera. It inherits from [Session](arkts-camera-camera-session-i.md). |
 | [Zoom](arkts-camera-camera-zoom-i-sys.md) | **Zoom** inherits from [ZoomQuery](arkts-camera-camera-zoomquery-i.md). |
 | [ZoomQuery](arkts-camera-camera-zoomquery-i-sys.md) | ZoomQuery provides APIs to query the zoom feature of a device camera, including the API to obtain the supported zoom ratio range. |
+| [CaptureSession](arkts-camera-camera-capturesession-i-sys.md) | **CaptureSession** implements a capture session, which saves all [CameraInput](arkts-camera-camera-camerainput-i.md) and [CameraOutput](arkts-camera-camera-cameraoutput-i.md) instances required to run the camera and requests the camera to complete shooting or video recording. |
 <!--DelEnd-->
 
 ### Types

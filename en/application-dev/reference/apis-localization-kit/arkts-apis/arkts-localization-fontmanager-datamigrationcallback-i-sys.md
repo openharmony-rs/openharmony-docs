@@ -36,6 +36,7 @@ Callback function that is periodically invoked during the execution of the data 
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,6 +62,8 @@ async function dataMigration() {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onProgress
 
@@ -84,6 +87,7 @@ Callback function that is periodically invoked during the execution of the data 
 | --- | --- | --- | --- |
 | progress | [DataMigrationProgress](arkts-localization-fontmanager-datamigrationprogress-i-sys.md) | Yes | Data migration progress. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,6 +113,8 @@ async function dataMigration() {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onResult
 
@@ -132,6 +138,7 @@ Callback function that is invoked after the data migration task is completed (wh
 | --- | --- | --- | --- |
 | result | number | Yes | Data migration result.<br>**0**: Data migration succeeded. <br>**1**: No data migration is required. <br>**2**: Failed to obtain the user ID. <br>**3**: Failed to check the directory. <br>**4**: Failed to initialize the cache directory. <br>**5**: Failed to open the source file. <br>**6**: Failed to copy the file. <br>**7**: Failed to rename the file. <br>**8**: Failed to delete the file. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -157,3 +164,5 @@ async function dataMigration() {
   }
 }
 ```
+
+<!--DelEnd-->

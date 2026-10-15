@@ -38,6 +38,7 @@ function createHdrDarkenBlender(hdrBrightnessRatio: number,
 | --- | --- |
 | [HdrDarkenBlender](arkts-arkgraphics2d-uieffect-hdrdarkenblender-i-sys.md) | 返回HDR压暗混合器，用于将压暗效果添加到指定的组件上。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ struct Example {
   }
 }
 ```
+
+<!--DelEnd-->

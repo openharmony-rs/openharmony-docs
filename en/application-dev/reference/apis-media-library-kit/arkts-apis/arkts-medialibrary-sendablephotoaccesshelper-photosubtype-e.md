@@ -12,6 +12,22 @@ Enumerates the [PhotoAsset](arkts-medialibrary-sendablephotoaccesshelper-photoas
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## BURST
+
+```TypeScript
+BURST = 4
+```
+
+Burst photo.
+
+**Since:** 14
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-PhotoSubtype-BURST = 4--><!--Device-PhotoSubtype-BURST = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## DEFAULT
 
 ```TypeScript
@@ -41,21 +57,5 @@ Moving photo.
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-PhotoSubtype-MOVING_PHOTO = 3--><!--Device-PhotoSubtype-MOVING_PHOTO = 3-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-## BURST
-
-```TypeScript
-BURST = 4
-```
-
-Burst photo.
-
-**Since:** 14
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-PhotoSubtype-BURST = 4--><!--Device-PhotoSubtype-BURST = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

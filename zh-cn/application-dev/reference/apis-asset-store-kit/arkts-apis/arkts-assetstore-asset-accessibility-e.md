@@ -12,22 +12,6 @@ enum Accessibility
 
 **系统能力：** SystemCapability.Security.Asset
 
-## DEVICE_POWERED_ON
-
-```TypeScript
-DEVICE_POWERED_ON = 0
-```
-
-开机后可访问。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-Accessibility-DEVICE_POWERED_ON = 0--><!--Device-Accessibility-DEVICE_POWERED_ON = 0-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
 ## DEVICE_FIRST_UNLOCKED
 
 ```TypeScript
@@ -43,6 +27,22 @@ DEVICE_FIRST_UNLOCKED = 1
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-Accessibility-DEVICE_FIRST_UNLOCKED = 1--><!--Device-Accessibility-DEVICE_FIRST_UNLOCKED = 1-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## DEVICE_POWERED_ON
+
+```TypeScript
+DEVICE_POWERED_ON = 0
+```
+
+开机后可访问。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-Accessibility-DEVICE_POWERED_ON = 0--><!--Device-Accessibility-DEVICE_POWERED_ON = 0-End-->
 
 **系统能力：** SystemCapability.Security.Asset
 

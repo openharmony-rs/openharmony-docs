@@ -34,6 +34,7 @@ function startWifiDetection(): void
 | [2501000](../errorcode-wifi.md#2501000-sta内部异常) | Operation failed. |
 | [2501001](../errorcode-wifi.md#2501001-sta功能未打开) | Wi-Fi STA disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

@@ -4,8 +4,6 @@ The webNativeMessagingExtensionManager module is a Web native message extension 
 
 **Since:** 21
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace webNativeMessagingExtensionManager--><!--Device-unnamed-declare namespace webNativeMessagingExtensionManager-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
@@ -22,8 +20,8 @@ import { webNativeMessagingExtensionManager } from '@kit.ArkWeb';
 
 | Name | Description |
 | --- | --- |
-| [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md) | Connects the current ability to the specified web native message extension ability. |
-| [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md) | Disconnects the connection of a specified web native message extension. |
+| [connectNative](arkts-arkweb-webnativemessagingextensionmanager-connectnative-f.md#connectnative) | Connects the current ability to the specified web native message extension ability. |
+| [disconnectNative](arkts-arkweb-webnativemessagingextensionmanager-disconnectnative-f.md#disconnectnative) | Disconnects the connection of a specified web native message extension. |
 
 ### Interfaces
 

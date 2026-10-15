@@ -6,6 +6,8 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -24,7 +26,7 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 **Deprecated since:** 18
 
-**Substitutes:** get
+**Substitutes:** [get](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#get)
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -93,7 +95,7 @@ struct SnapshotExample {
 ```
 
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -113,7 +115,7 @@ Obtains the snapshot of a component that has been loaded based on the provided c
 
 **Deprecated since:** 18
 
-**Substitutes:** get
+**Substitutes:** [get](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#get)
 
 **Model restriction:** This API can be used only in the stage model.
 

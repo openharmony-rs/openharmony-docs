@@ -12,7 +12,7 @@ declare class AnimatorAttribute extends CommonMethod<AnimatorAttribute>
 
 **废弃版本：** 22
 
-**替代接口：** createAnimator
+**替代接口：** [createAnimator](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#createanimator)
 
 <!--Device-unnamed-declare class AnimatorAttribute extends CommonMethod<AnimatorAttribute>--><!--Device-unnamed-declare class AnimatorAttribute extends CommonMethod<AnimatorAttribute>-End-->
 

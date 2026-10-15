@@ -12,6 +12,24 @@ Sets the text decoration type.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## LineThrough
+
+```TypeScript
+LineThrough
+```
+
+Line through the text.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextDecorationType-LineThrough--><!--Device-TextDecorationType-LineThrough-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## None
 
 ```TypeScript
@@ -27,24 +45,6 @@ No text decorations.
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-TextDecorationType-None--><!--Device-TextDecorationType-None-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Underline
-
-```TypeScript
-Underline
-```
-
-Line below the text.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-TextDecorationType-Underline--><!--Device-TextDecorationType-Underline-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +66,13 @@ Line above the text.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## LineThrough
+## Underline
 
 ```TypeScript
-LineThrough
+Underline
 ```
 
-Line through the text.
+Line below the text.
 
 **Since:** 7
 
@@ -80,6 +80,6 @@ Line through the text.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-TextDecorationType-LineThrough--><!--Device-TextDecorationType-LineThrough-End-->
+<!--Device-TextDecorationType-Underline--><!--Device-TextDecorationType-Underline-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

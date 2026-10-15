@@ -6,8 +6,6 @@ export enum LightType
 
 光源类型枚举。
 
-@enum { int }
-
 **起始版本：** 12
 
 <!--Device-unnamed-export enum LightType--><!--Device-unnamed-export enum LightType-End-->

@@ -47,6 +47,7 @@ function getBundlesLocalFilePresentStatus(bundleNames: Array<string>): Promise<A
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameter are left unspecified. 2.The length of the input parameter exceeds the upper limit. <br>3.The input parameter contains an invalid bundleName. |
 | 22400005 | Inner error. Possible causes:<br>1.Failed to access the database or execute the SQL statement. <br>2.System error, such as a null pointer, insufficient memory or a JS engine exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,3 +62,5 @@ cloudSyncManager.getBundlesLocalFilePresentStatus(bundles).then((results: Array<
   console.error(`getBundlesLocalFilePresentStatus failed, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

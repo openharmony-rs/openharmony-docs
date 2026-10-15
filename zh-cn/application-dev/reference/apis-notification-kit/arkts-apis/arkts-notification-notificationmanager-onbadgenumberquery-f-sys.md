@@ -40,6 +40,7 @@ function onBadgeNumberQuery(callback: (bundle: BundleOption) => Promise<number>)
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -53,3 +54,5 @@ try{
     console.error(`OnBadgeNumberQuery failed, code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

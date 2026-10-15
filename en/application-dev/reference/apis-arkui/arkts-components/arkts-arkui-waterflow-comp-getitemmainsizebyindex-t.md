@@ -20,7 +20,7 @@ Obtains the main axis size of a specified water flow item based on its index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the target water flow item.<br>Value range: [0, total number of child nodes - 1]. |
+| index | number | Yes | Index of the **FlowItem** in the **WaterFlow**.<br>Value range: [0, total number of child components - 1] |
 
 **Return value:**
 

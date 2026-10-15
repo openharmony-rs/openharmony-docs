@@ -33,6 +33,7 @@ Reset all saved device configure.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -44,3 +45,5 @@ try {
   console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

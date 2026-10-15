@@ -6,9 +6,9 @@ declare class RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>
 
 Inheritance CommonMethod Set Styles
 
-@extends CommonMethod&lt;RemoteWindowAttribute&gt;
+@extends CommonMethod<RemoteWindowAttribute>
 
-**Inheritance/Implementation:** RemoteWindowAttribute extends CommonMethod<RemoteWindowAttribute>
+**Inheritance/Implementation:** RemoteWindowAttribute extends CommonMethod&lt;RemoteWindowAttribute&gt;
 
 **Since:** 9
 

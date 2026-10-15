@@ -4,7 +4,7 @@
 declare class TapRecognizer extends GestureRecognizer
 ```
 
-Implements a tap gesture recognizer object. Inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md).
+Defines the tap gesture recognizer object, which inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) and supports obtaining the tap count threshold. It is applicable to querying the recognition configuration of single-tap or multi-tap gestures.
 
 **Inheritance/Implementation:** TapRecognizer extends [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)
 

@@ -11,12 +11,12 @@ Defines the specific attributes of individual chips.
 > When the **suffixSymbol** parameter is passed in, **allowClose** does not take effect. When the **suffixImageIcon**
 > parameter is passed in but **suffixSymbol** is not, **allowClose** does not take effect. When neither
 > **suffixSymbol** nor **suffixImageIcon** is passed in, **allowClose** determines whether the close icon is
-> displayed. **suffixIcon** is deprecated. Use **suffixImageIcon** instead.
+> displayed.
 > 
 > **suffixSymbol** and **suffixImageIcon** are both suffix icons, and only one of them can be configured for the same
 > chip item. If both are configured, only the one with the higher priority takes effect (priority: **suffixSymbol**
 > 
-> **suffixImageIcon**). **suffixIcon** is deprecated. Use **suffixImageIcon** instead.
+> **suffixImageIcon**).
 
 **Since:** 12
 

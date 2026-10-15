@@ -24,7 +24,7 @@ import { EditableLeftIconType, EditableTitleBar, EditableTitleBarMenuItem, Edita
 action?: () => void
 ```
 
-Right-side custom button click event of the title bar.
+Tap event for the custom button on the right side of the title bar. When this parameter is not set, tapping the button has no response.
 
 **Since:** 10
 
@@ -98,9 +98,9 @@ Default value: **"auto"**
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.
+Accessibility text attribute for the custom button on the right side of the title bar. When a component does not contain a text attribute, the screen reader does not announce anything when this component is selected, and the user cannot clearly know which component is currently selected. To address this scenario, developers can set accessibility text for components that do not contain text information. When the screen reader selects this component, it announces the accessibility text, helping screen reader users clearly know which component they have selected.
 
-Default value: value of the **label** property if it is set and an empty string otherwise.
+Default value: **" "** when the label attribute is not set; the content of the label attribute when the label attribute is set.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -120,15 +120,17 @@ Default value: value of the **label** property if it is set and an empty string 
 defaultFocus?: boolean
 ```
 
-Whether to set the item as the default focus.
+Whether to set as the default focus.
 
-**true**: Set the item as the default focus.
+**true**: The item gains focus.
 
-**false**: Do not set the item as the default focus.
+**false**: The item does not gain focus.
 
 Default value: **false**
 
-The **defaultFocus** attribute requires the **isEnabled** attribute to be set to **true** beforehand; otherwise, **defaultFocus** will be treated as **false**.
+When using the **defaultFocus** attribute, set the **isEnabled** attribute to **true** beforehand; otherwise, the **defaultFocus** setting does not take effect.
+
+**Note:** If multiple operable areas are set as the default focus at the same time, the first operable area in the display order among those set as the default focus becomes the default focus.
 
 **Type:** boolean
 
@@ -150,11 +152,13 @@ The **defaultFocus** attribute requires the **isEnabled** attribute to be set to
 isEnabled?: boolean
 ```
 
-Whether to enable the item. Default value: **true**.
+Whether to enable.
 
-**true**: The item is enabled.
+Default value: **true**, meaning enabled by default.
 
-**false**: The item is disabled.
+When **isEnabled** is **true**, the item is enabled.
+
+When **isEnabled** is **false**, the item is disabled.
 
 **Type:** boolean
 
@@ -174,7 +178,7 @@ Whether to enable the item. Default value: **true**.
 label?: ResourceStr
 ```
 
-Icon label.
+Icon label description. When this parameter is not set, no icon label is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -194,7 +198,7 @@ Icon label.
 symbolStyle?: SymbolGlyphModifier
 ```
 
-Symbol icon resource, which has higher priority than **value**.
+Symbol icon resource, which takes precedence over value. When this parameter is not set, the value parameter is used to display the icon.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 

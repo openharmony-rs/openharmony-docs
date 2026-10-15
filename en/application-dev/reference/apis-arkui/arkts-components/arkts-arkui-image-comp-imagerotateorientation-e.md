@@ -36,48 +36,6 @@ Images of the [PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixel
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## UP
-
-```TypeScript
-UP = 1
-```
-
-Display original pixel data without transformation.
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
-
-<!--Device-ImageRotateOrientation-UP = 1--><!--Device-ImageRotateOrientation-UP = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## RIGHT
-
-```TypeScript
-RIGHT = 2
-```
-
-Display the image after rotating it 90 degrees clockwise.
-
-![imageRotateOrientation_2](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_2.png)
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
-
-<!--Device-ImageRotateOrientation-RIGHT = 2--><!--Device-ImageRotateOrientation-RIGHT = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## DOWN
 
 ```TypeScript
@@ -97,72 +55,6 @@ Display the image after rotating it 180 degrees clockwise.
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-ImageRotateOrientation-DOWN = 3--><!--Device-ImageRotateOrientation-DOWN = 3-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## LEFT
-
-```TypeScript
-LEFT = 4
-```
-
-Display the image after rotating it 270 degrees clockwise.
-
-![imageRotateOrientation_4](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_4.png)
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
-
-<!--Device-ImageRotateOrientation-LEFT = 4--><!--Device-ImageRotateOrientation-LEFT = 4-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## UP_MIRRORED
-
-```TypeScript
-UP_MIRRORED = 5
-```
-
-Display the image after flipping it horizontally.
-
-![imageRotateOrientation_5](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_5.png)
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
-
-<!--Device-ImageRotateOrientation-UP_MIRRORED = 5--><!--Device-ImageRotateOrientation-UP_MIRRORED = 5-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## RIGHT_MIRRORED
-
-```TypeScript
-RIGHT_MIRRORED = 6
-```
-
-Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.
-
-![imageRotateOrientation_6](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_6.png)
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
-
-<!--Device-ImageRotateOrientation-RIGHT_MIRRORED = 6--><!--Device-ImageRotateOrientation-RIGHT_MIRRORED = 6-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -188,6 +80,28 @@ Display the image after flipping it vertically.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## LEFT
+
+```TypeScript
+LEFT = 4
+```
+
+Display the image after rotating it 270 degrees clockwise.
+
+![imageRotateOrientation_4](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_4.png)
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-ImageRotateOrientation-LEFT = 4--><!--Device-ImageRotateOrientation-LEFT = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## LEFT_MIRRORED
 
 ```TypeScript
@@ -207,5 +121,91 @@ Display the image after flipping it horizontally and then rotating it 270 degree
 **Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-ImageRotateOrientation-LEFT_MIRRORED = 8--><!--Device-ImageRotateOrientation-LEFT_MIRRORED = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## RIGHT
+
+```TypeScript
+RIGHT = 2
+```
+
+Display the image after rotating it 90 degrees clockwise.
+
+![imageRotateOrientation_2](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_2.png)
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-ImageRotateOrientation-RIGHT = 2--><!--Device-ImageRotateOrientation-RIGHT = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## RIGHT_MIRRORED
+
+```TypeScript
+RIGHT_MIRRORED = 6
+```
+
+Display the image after flipping it horizontally and then rotating it 90 degrees clockwise.
+
+![imageRotateOrientation_6](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_6.png)
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-ImageRotateOrientation-RIGHT_MIRRORED = 6--><!--Device-ImageRotateOrientation-RIGHT_MIRRORED = 6-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## UP
+
+```TypeScript
+UP = 1
+```
+
+Display original pixel data without transformation.
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-ImageRotateOrientation-UP = 1--><!--Device-ImageRotateOrientation-UP = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## UP_MIRRORED
+
+```TypeScript
+UP_MIRRORED = 5
+```
+
+Display the image after flipping it horizontally.
+
+![imageRotateOrientation_5](../../../reference/apis-arkui/arkui-ts/figures/imageRotateOrientation_5.png)
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-ImageRotateOrientation-UP_MIRRORED = 5--><!--Device-ImageRotateOrientation-UP_MIRRORED = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

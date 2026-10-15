@@ -8,6 +8,8 @@ The context of live form extension. It allows access to liveFormExtension-specif
 
 @typedef { _LiveFormExtensionContext.default }
 
+**类型：** _LiveFormExtensionContext.default
+
 **起始版本：** 22
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ The context of live form extension. It allows access to liveFormExtension-specif
 <!--Device-common-export type LiveFormExtensionContext = _LiveFormExtensionContext.default--><!--Device-common-export type LiveFormExtensionContext = _LiveFormExtensionContext.default-End-->
 
 **系统能力：** SystemCapability.Ability.Form
-
-**类型：** _LiveFormExtensionContext.default

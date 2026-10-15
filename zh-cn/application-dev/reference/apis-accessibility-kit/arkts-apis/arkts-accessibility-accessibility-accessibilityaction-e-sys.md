@@ -32,6 +32,22 @@ ACCESSIBILITY_FOCUS = 0
 
 **系统接口：** 此接口为系统接口。
 
+## BACK
+
+```TypeScript
+BACK = 16
+```
+
+表示执行返回操作。
+
+**起始版本：** 20
+
+<!--Device-AccessibilityAction-BACK = 16--><!--Device-AccessibilityAction-BACK = 16-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## CLEAR_ACCESSIBILITY_FOCUS
 
 ```TypeScript
@@ -43,22 +59,6 @@ CLEAR_ACCESSIBILITY_FOCUS = 1
 **起始版本：** 20
 
 <!--Device-AccessibilityAction-CLEAR_ACCESSIBILITY_FOCUS = 1--><!--Device-AccessibilityAction-CLEAR_ACCESSIBILITY_FOCUS = 1-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-## FOCUS
-
-```TypeScript
-FOCUS = 2
-```
-
-表示组件获得焦点。
-
-**起始版本：** 20
-
-<!--Device-AccessibilityAction-FOCUS = 2--><!--Device-AccessibilityAction-FOCUS = 2-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -96,33 +96,17 @@ CLICK = 4
 
 **系统接口：** 此接口为系统接口。
 
-## LONG_CLICK
+## CONTROL_CENTER
 
 ```TypeScript
-LONG_CLICK = 5
+CONTROL_CENTER = 19
 ```
 
-表示长按组件。
+表示显示控制中心。
 
 **起始版本：** 20
 
-<!--Device-AccessibilityAction-LONG_CLICK = 5--><!--Device-AccessibilityAction-LONG_CLICK = 5-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-## CUT
-
-```TypeScript
-CUT = 6
-```
-
-表示剪切组件内容。
-
-**起始版本：** 20
-
-<!--Device-AccessibilityAction-CUT = 6--><!--Device-AccessibilityAction-CUT = 6-End-->
+<!--Device-AccessibilityAction-CONTROL_CENTER = 19--><!--Device-AccessibilityAction-CONTROL_CENTER = 19-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -144,113 +128,51 @@ COPY = 7
 
 **系统接口：** 此接口为系统接口。
 
-## PASTE
+## CUT
 
 ```TypeScript
-PASTE = 8
+CUT = 6
 ```
 
-表示粘贴内容到组件。
+表示剪切组件内容。
 
 **起始版本：** 20
 
-<!--Device-AccessibilityAction-PASTE = 8--><!--Device-AccessibilityAction-PASTE = 8-End-->
+<!--Device-AccessibilityAction-CUT = 6--><!--Device-AccessibilityAction-CUT = 6-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
 
-## SELECT
+## EXECUTE_CUSTOM_ACTION
 
 ```TypeScript
-SELECT = 9
+EXECUTE_CUSTOM_ACTION = 22
 ```
 
-表示选择组件。
+表示执行自定义操作。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).customAction，参数值为自定义操作的名称。
 
-**起始版本：** 20
+**起始版本：** 26.0.0
 
-<!--Device-AccessibilityAction-SELECT = 9--><!--Device-AccessibilityAction-SELECT = 9-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AccessibilityAction-EXECUTE_CUSTOM_ACTION = 22--><!--Device-AccessibilityAction-EXECUTE_CUSTOM_ACTION = 22-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
 
-## SET_TEXT
+## FOCUS
 
 ```TypeScript
-SET_TEXT = 10
+FOCUS = 2
 ```
 
-表示设置组件的文本。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).setText，参数值为要设置的文本内容。
+表示组件获得焦点。
 
 **起始版本：** 20
 
-<!--Device-AccessibilityAction-SET_TEXT = 10--><!--Device-AccessibilityAction-SET_TEXT = 10-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-## SCROLL_FORWARD
-
-```TypeScript
-SCROLL_FORWARD = 11
-```
-
-表示向前滚动组件（向内容末尾方向滚动）。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).scrollType，参数值为'fullScreen'或'halfScreen'。
-
-**起始版本：** 20
-
-<!--Device-AccessibilityAction-SCROLL_FORWARD = 11--><!--Device-AccessibilityAction-SCROLL_FORWARD = 11-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-## SCROLL_BACKWARD
-
-```TypeScript
-SCROLL_BACKWARD = 12
-```
-
-表示向后滚动组件（向内容起始方向滚动）。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).scrollType，参数值为'fullScreen'或'halfScreen'。
-
-**起始版本：** 20
-
-<!--Device-AccessibilityAction-SCROLL_BACKWARD = 12--><!--Device-AccessibilityAction-SCROLL_BACKWARD = 12-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-## SET_SELECTION
-
-```TypeScript
-SET_SELECTION = 13
-```
-
-表示选定组件内文本范围。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextBegin、[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextEnd、[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextInForWard，参数值为选定文本的起始坐标、结束坐标及是否向前选择。
-
-**起始版本：** 20
-
-<!--Device-AccessibilityAction-SET_SELECTION = 13--><!--Device-AccessibilityAction-SET_SELECTION = 13-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-## SET_CURSOR_POSITION
-
-```TypeScript
-SET_CURSOR_POSITION = 14
-```
-
-表示设置组件内的光标位置。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).offset，参数值为光标的字符偏移量。
-
-**起始版本：** 20
-
-<!--Device-AccessibilityAction-SET_CURSOR_POSITION = 14--><!--Device-AccessibilityAction-SET_CURSOR_POSITION = 14-End-->
+<!--Device-AccessibilityAction-FOCUS = 2--><!--Device-AccessibilityAction-FOCUS = 2-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -274,33 +196,35 @@ HOME = 15
 
 **系统接口：** 此接口为系统接口。
 
-## BACK
+## INJECT_ACTION
 
 ```TypeScript
-BACK = 16
+INJECT_ACTION = 21
 ```
 
-表示执行返回操作。
+表示注入模拟用户操作的动作。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).injectActionType，参数值为注入动作类型。
 
-**起始版本：** 20
+**起始版本：** 26.0.0
 
-<!--Device-AccessibilityAction-BACK = 16--><!--Device-AccessibilityAction-BACK = 16-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AccessibilityAction-INJECT_ACTION = 21--><!--Device-AccessibilityAction-INJECT_ACTION = 21-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
 **系统接口：** 此接口为系统接口。
 
-## RECENT_TASK
+## LONG_CLICK
 
 ```TypeScript
-RECENT_TASK = 17
+LONG_CLICK = 5
 ```
 
-表示显示最近任务。
+表示长按组件。
 
 **起始版本：** 20
 
-<!--Device-AccessibilityAction-RECENT_TASK = 17--><!--Device-AccessibilityAction-RECENT_TASK = 17-End-->
+<!--Device-AccessibilityAction-LONG_CLICK = 5--><!--Device-AccessibilityAction-LONG_CLICK = 5-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -322,17 +246,129 @@ NOTIFICATION_CENTER = 18
 
 **系统接口：** 此接口为系统接口。
 
-## CONTROL_CENTER
+## PASTE
 
 ```TypeScript
-CONTROL_CENTER = 19
+PASTE = 8
 ```
 
-表示显示控制中心。
+表示粘贴内容到组件。
 
 **起始版本：** 20
 
-<!--Device-AccessibilityAction-CONTROL_CENTER = 19--><!--Device-AccessibilityAction-CONTROL_CENTER = 19-End-->
+<!--Device-AccessibilityAction-PASTE = 8--><!--Device-AccessibilityAction-PASTE = 8-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## RECENT_TASK
+
+```TypeScript
+RECENT_TASK = 17
+```
+
+表示显示最近任务。
+
+**起始版本：** 20
+
+<!--Device-AccessibilityAction-RECENT_TASK = 17--><!--Device-AccessibilityAction-RECENT_TASK = 17-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SCROLL_BACKWARD
+
+```TypeScript
+SCROLL_BACKWARD = 12
+```
+
+表示向后滚动组件（向内容起始方向滚动）。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).scrollType，参数值为'fullScreen'或'halfScreen'。
+
+**起始版本：** 20
+
+<!--Device-AccessibilityAction-SCROLL_BACKWARD = 12--><!--Device-AccessibilityAction-SCROLL_BACKWARD = 12-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SCROLL_FORWARD
+
+```TypeScript
+SCROLL_FORWARD = 11
+```
+
+表示向前滚动组件（向内容末尾方向滚动）。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).scrollType，参数值为'fullScreen'或'halfScreen'。
+
+**起始版本：** 20
+
+<!--Device-AccessibilityAction-SCROLL_FORWARD = 11--><!--Device-AccessibilityAction-SCROLL_FORWARD = 11-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SELECT
+
+```TypeScript
+SELECT = 9
+```
+
+表示选择组件。
+
+**起始版本：** 20
+
+<!--Device-AccessibilityAction-SELECT = 9--><!--Device-AccessibilityAction-SELECT = 9-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SET_CURSOR_POSITION
+
+```TypeScript
+SET_CURSOR_POSITION = 14
+```
+
+表示设置组件内的光标位置。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).offset，参数值为光标的字符偏移量。
+
+**起始版本：** 20
+
+<!--Device-AccessibilityAction-SET_CURSOR_POSITION = 14--><!--Device-AccessibilityAction-SET_CURSOR_POSITION = 14-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SET_SELECTION
+
+```TypeScript
+SET_SELECTION = 13
+```
+
+表示选定组件内文本范围。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextBegin、[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextEnd、[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextInForWard，参数值为选定文本的起始坐标、结束坐标及是否向前选择。
+
+**起始版本：** 20
+
+<!--Device-AccessibilityAction-SET_SELECTION = 13--><!--Device-AccessibilityAction-SET_SELECTION = 13-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SET_TEXT
+
+```TypeScript
+SET_TEXT = 10
+```
+
+表示设置组件的文本。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).setText，参数值为要设置的文本内容。
+
+**起始版本：** 20
+
+<!--Device-AccessibilityAction-SET_TEXT = 10--><!--Device-AccessibilityAction-SET_TEXT = 10-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -349,42 +385,6 @@ SPAN_CLICK = 20
 **起始版本：** 20
 
 <!--Device-AccessibilityAction-SPAN_CLICK = 20--><!--Device-AccessibilityAction-SPAN_CLICK = 20-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-## INJECT_ACTION
-
-```TypeScript
-INJECT_ACTION = 21
-```
-
-表示注入模拟用户操作的动作。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).injectActionType，参数值为注入动作类型。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AccessibilityAction-INJECT_ACTION = 21--><!--Device-AccessibilityAction-INJECT_ACTION = 21-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
-
-**系统接口：** 此接口为系统接口。
-
-## EXECUTE_CUSTOM_ACTION
-
-```TypeScript
-EXECUTE_CUSTOM_ACTION = 22
-```
-
-表示执行自定义操作。需配置参数[Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).customAction，参数值为自定义操作的名称。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AccessibilityAction-EXECUTE_CUSTOM_ACTION = 22--><!--Device-AccessibilityAction-EXECUTE_CUSTOM_ACTION = 22-End-->
 
 **系统能力：** SystemCapability.BarrierFree.Accessibility.Core
 

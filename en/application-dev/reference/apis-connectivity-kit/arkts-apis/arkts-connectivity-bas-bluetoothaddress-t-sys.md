@@ -6,6 +6,8 @@ type BluetoothAddress = common.BluetoothAddress
 
 Bluetooth device address.
 
+**Type:** [common.BluetoothAddress](arkts-connectivity-common-bluetoothaddress-i.md)
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Bluetooth device address.
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
 **System API:** This is a system API.
-
-**Type:** [common.BluetoothAddress](arkts-connectivity-common-bluetoothaddress-i.md)

@@ -6,6 +6,8 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
+<a id="getcurrentlocation1"></a>
+
 ## getCurrentLocation
 
 ```TypeScript
@@ -19,7 +21,7 @@ Obtain current location.
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-geoLocationManager-function getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest,  callback: AsyncCallback<Location>): void--><!--Device-geoLocationManager-function getCurrentLocation(request: CurrentLocationRequest | SingleLocationRequest,  callback: AsyncCallback<Location>): void-End-->
 
@@ -91,7 +93,7 @@ try {
 ```
 
 
-<a id="getcurrentlocation-1"></a>
+<a id="getcurrentlocation2"></a>
 
 ## getCurrentLocation
 
@@ -105,7 +107,7 @@ Obtain current location.
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-geoLocationManager-function getCurrentLocation(callback: AsyncCallback<Location>): void--><!--Device-geoLocationManager-function getCurrentLocation(callback: AsyncCallback<Location>): void-End-->
 
@@ -151,7 +153,7 @@ try {
 ```
 
 
-<a id="getcurrentlocation-2"></a>
+<a id="getcurrentlocation3"></a>
 
 ## getCurrentLocation
 
@@ -166,7 +168,7 @@ Obtain current location.
 
 **Required permissions:** ohos.permission.APPROXIMATELY_LOCATION
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-geoLocationManager-function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest):  Promise<Location>--><!--Device-geoLocationManager-function getCurrentLocation(request?: CurrentLocationRequest | SingleLocationRequest):  Promise<Location>-End-->
 

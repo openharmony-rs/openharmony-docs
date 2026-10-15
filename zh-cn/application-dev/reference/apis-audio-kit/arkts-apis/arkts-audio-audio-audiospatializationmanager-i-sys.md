@@ -93,6 +93,7 @@ getCurrentSpatialAudioSourceType(): SpatialAudioSourceType
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -107,6 +108,8 @@ try {
   console.error(`ERROR: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSpatializationSceneType
 
@@ -136,6 +139,7 @@ getSpatializationSceneType(): AudioSpatializationSceneType
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -150,6 +154,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isAdaptiveSpatialRenderingEnabled
 
@@ -186,6 +192,7 @@ isAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor): bool
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -218,7 +225,9 @@ try {
 }
 ```
 
-<a id="isheadtrackingenabled-1"></a>
+<!--DelEnd-->
+
+<a id="isheadtrackingenabled2"></a>
 
 ## isHeadTrackingEnabled
 
@@ -256,6 +265,7 @@ isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -286,6 +296,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="isheadtrackingenabled1"></a>
+
 ## isHeadTrackingEnabled
 
 ```TypeScript
@@ -297,7 +311,7 @@ isHeadTrackingEnabled(): boolean
 > **说明：** 
 > 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isheadtrackingenabled-1)
+> [isHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isheadtrackingenabled2)
 > 替代。
 
 **起始版本：** 11
@@ -324,6 +338,7 @@ isHeadTrackingEnabled(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -338,6 +353,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isHeadTrackingSupported
 
@@ -367,6 +384,7 @@ isHeadTrackingSupported(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -381,6 +399,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isHeadTrackingSupportedForDevice
 
@@ -418,6 +438,7 @@ isHeadTrackingSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boole
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -447,6 +468,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isPersonalizedSpatializationEnabled
 
@@ -515,7 +538,7 @@ isPersonalizedSpatializationSupported(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
-<a id="isspatializationenabled-1"></a>
+<a id="isspatializationenabled2"></a>
 
 ## isSpatializationEnabled
 
@@ -553,6 +576,7 @@ isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -583,6 +607,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="isspatializationenabled1"></a>
+
 ## isSpatializationEnabled
 
 ```TypeScript
@@ -593,7 +621,7 @@ isSpatializationEnabled(): boolean
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled-1)
+> [isSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor): boolean](#isspatializationenabled2)
 > 替代。
 
 **起始版本：** 11
@@ -620,6 +648,7 @@ isSpatializationEnabled(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -634,6 +663,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isSpatializationSupported
 
@@ -663,6 +694,7 @@ isSpatializationSupported(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -676,6 +708,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isSpatializationSupportedForDevice
 
@@ -713,6 +747,7 @@ isSpatializationSupportedForDevice(deviceDescriptor: AudioDeviceDescriptor): boo
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -742,6 +777,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('spatializationEnabledChangeForAnyDevice')
 
@@ -774,6 +811,7 @@ off(type: 'spatializationEnabledChangeForAnyDevice', callback?: Callback<AudioSp
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -792,6 +830,8 @@ audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', spatial
 
 audioSpatializationManager.off('spatializationEnabledChangeForAnyDevice', spatializationEnabledChangeForAnyDeviceCallback);
 ```
+
+<!--DelEnd-->
 
 ## off('headTrackingEnabledChangeForAnyDevice')
 
@@ -824,6 +864,7 @@ off(type: 'headTrackingEnabledChangeForAnyDevice', callback?: Callback<AudioSpat
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -843,6 +884,8 @@ audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', headTrack
 audioSpatializationManager.off('headTrackingEnabledChangeForAnyDevice', headTrackingEnabledChangeForAnyDeviceCallback);
 ```
 
+<!--DelEnd-->
+
 ## off('spatializationEnabledChange')
 
 ```TypeScript
@@ -853,14 +896,14 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean>): void
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [off('spatializationEnabledChangeForAnyDevice')](#offspatializationenabledchangeforanydevice)
+> off('spatializationEnabledChangeForAnyDevice')
 > 替代。
 
 **起始版本：** 11
 
 **废弃版本：** 12
 
-**替代接口：** off
+**替代接口：** [off](arkts-audio-audio-audiospatializationmanager-i.md#off)
 
 <!--Device-AudioSpatializationManager-off(type: 'spatializationEnabledChange', callback?: Callback<boolean>): void--><!--Device-AudioSpatializationManager-off(type: 'spatializationEnabledChange', callback?: Callback<boolean>): void-End-->
 
@@ -883,6 +926,7 @@ off(type: 'spatializationEnabledChange', callback?: Callback<boolean>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -899,6 +943,8 @@ audioSpatializationManager.on('spatializationEnabledChange', spatializationEnabl
 audioSpatializationManager.off('spatializationEnabledChange', spatializationEnabledChangeCallback);
 ```
 
+<!--DelEnd-->
+
 ## off('headTrackingEnabledChange')
 
 ```TypeScript
@@ -909,14 +955,14 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean>): void
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [off('headTrackingEnabledChangeForAnyDevice')](#offheadtrackingenabledchangeforanydevice)
+> off('headTrackingEnabledChangeForAnyDevice')
 > 替代。
 
 **起始版本：** 11
 
 **废弃版本：** 12
 
-**替代接口：** off
+**替代接口：** [off](arkts-audio-audio-audiospatializationmanager-i.md#off)
 
 <!--Device-AudioSpatializationManager-off(type: 'headTrackingEnabledChange', callback?: Callback<boolean>): void--><!--Device-AudioSpatializationManager-off(type: 'headTrackingEnabledChange', callback?: Callback<boolean>): void-End-->
 
@@ -939,6 +985,7 @@ off(type: 'headTrackingEnabledChange', callback?: Callback<boolean>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -956,6 +1003,8 @@ audioSpatializationManager.on('headTrackingEnabledChange', headTrackingEnabledCh
 
 audioSpatializationManager.off('headTrackingEnabledChange', headTrackingEnabledChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## offAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
@@ -986,6 +1035,7 @@ offAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback?: Callback<AudioSp
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1004,6 +1054,8 @@ audioSpatializationManager.onAdaptiveSpatialRenderingEnabledChangeForAnyDevice(a
 
 audioSpatializationManager.offAdaptiveSpatialRenderingEnabledChangeForAnyDevice(adaptiveSpatialRenderingEnabledChangeForAnyDeviceCallback);
 ```
+
+<!--DelEnd-->
 
 ## offPersonalizedSpatializationEnabledChangeForAnyDevice
 
@@ -1067,6 +1119,7 @@ offSpatialAudioSourceTypeChange(callback?: Callback<SpatialAudioSourceType>): vo
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1082,6 +1135,8 @@ let spatialAudioSourceTypeChangeCallback = (spatialAudioSourceType: audio.Spatia
 audioSpatializationManager.onSpatialAudioSourceTypeChange(spatialAudioSourceTypeChangeCallback);
 audioSpatializationManager.offSpatialAudioSourceTypeChange(spatialAudioSourceTypeChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## on('spatializationEnabledChangeForAnyDevice')
 
@@ -1114,6 +1169,7 @@ on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpat
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1124,6 +1180,8 @@ audioSpatializationManager.on('spatializationEnabledChangeForAnyDevice', (audioS
   console.info(`isSpatializationEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('headTrackingEnabledChangeForAnyDevice')
 
@@ -1156,6 +1214,7 @@ on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatia
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1167,6 +1226,8 @@ audioSpatializationManager.on('headTrackingEnabledChangeForAnyDevice', (audioSpa
 });
 ```
 
+<!--DelEnd-->
+
 ## on('spatializationEnabledChange')
 
 ```TypeScript
@@ -1177,14 +1238,14 @@ on(type: 'spatializationEnabledChange', callback: Callback<boolean>): void
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback&lt;AudioSpatialEnabledStateForDevice\&gt;): void](#onspatializationenabledchangeforanydevice)
+> on(type: 'spatializationEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void
 > 替代。
 
 **起始版本：** 11
 
 **废弃版本：** 12
 
-**替代接口：** on
+**替代接口：** [on](arkts-audio-audio-audiospatializationmanager-i.md#on)
 
 <!--Device-AudioSpatializationManager-on(type: 'spatializationEnabledChange', callback: Callback<boolean>): void--><!--Device-AudioSpatializationManager-on(type: 'spatializationEnabledChange', callback: Callback<boolean>): void-End-->
 
@@ -1207,6 +1268,7 @@ on(type: 'spatializationEnabledChange', callback: Callback<boolean>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1216,6 +1278,8 @@ audioSpatializationManager.on('spatializationEnabledChange', (isSpatializationEn
   console.info(`isSpatializationEnabled: ${isSpatializationEnabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('headTrackingEnabledChange')
 
@@ -1227,14 +1291,14 @@ on(type: 'headTrackingEnabledChange', callback: Callback<boolean>): void
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback&lt;AudioSpatialEnabledStateForDevice\&gt;): void](#onheadtrackingenabledchangeforanydevice)
+> on(type: 'headTrackingEnabledChangeForAnyDevice', callback: Callback<AudioSpatialEnabledStateForDevice\>): void
 > 替代。
 
 **起始版本：** 11
 
 **废弃版本：** 12
 
-**替代接口：** on
+**替代接口：** [on](arkts-audio-audio-audiospatializationmanager-i.md#on)
 
 <!--Device-AudioSpatializationManager-on(type: 'headTrackingEnabledChange', callback: Callback<boolean>): void--><!--Device-AudioSpatializationManager-on(type: 'headTrackingEnabledChange', callback: Callback<boolean>): void-End-->
 
@@ -1257,6 +1321,7 @@ on(type: 'headTrackingEnabledChange', callback: Callback<boolean>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1266,6 +1331,8 @@ audioSpatializationManager.on('headTrackingEnabledChange', (isHeadTrackingEnable
   console.info(`isHeadTrackingEnabled: ${isHeadTrackingEnabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## onAdaptiveSpatialRenderingEnabledChangeForAnyDevice
 
@@ -1296,6 +1363,7 @@ onAdaptiveSpatialRenderingEnabledChangeForAnyDevice(callback: Callback<AudioSpat
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1306,6 +1374,8 @@ audioSpatializationManager.onAdaptiveSpatialRenderingEnabledChangeForAnyDevice((
   console.info(`isAdaptiveSpatialRenderingEnabled: ${audioSpatialEnabledStateForDevice.enabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## onPersonalizedSpatializationEnabledChangeForAnyDevice
 
@@ -1369,6 +1439,7 @@ onSpatialAudioSourceTypeChange(callback: Callback<SpatialAudioSourceType>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1378,6 +1449,8 @@ audioSpatializationManager.onSpatialAudioSourceTypeChange((spatialAudioSourceTyp
   console.info(`spatial audio source type changed to: ${spatialAudioSourceType}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAdaptiveSpatialRenderingEnabled
 
@@ -1419,6 +1492,7 @@ setAdaptiveSpatialRenderingEnabled(deviceDescriptor: AudioDeviceDescriptor, enab
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported on the device. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1449,7 +1523,9 @@ audioSpatializationManager.setAdaptiveSpatialRenderingEnabled(deviceDescriptor, 
 });
 ```
 
-<a id="setheadtrackingenabled-2"></a>
+<!--DelEnd-->
+
+<a id="setheadtrackingenabled3"></a>
 
 ## setHeadTrackingEnabled
 
@@ -1491,6 +1567,7 @@ setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1520,6 +1597,10 @@ audioSpatializationManager.setHeadTrackingEnabled(deviceDescriptor, enable).then
 });
 ```
 
+<!--DelEnd-->
+
+<a id="setheadtrackingenabled1"></a>
+
 ## setHeadTrackingEnabled
 
 ```TypeScript
@@ -1530,7 +1611,7 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback<void>): void
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setheadtrackingenabled-2)
+> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled3)
 > 替代。
 
 **起始版本：** 11
@@ -1563,6 +1644,7 @@ setHeadTrackingEnabled(enable: boolean, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1580,7 +1662,9 @@ audioSpatializationManager.setHeadTrackingEnabled(enable, (err: BusinessError) =
 });
 ```
 
-<a id="setheadtrackingenabled-1"></a>
+<!--DelEnd-->
+
+<a id="setheadtrackingenabled2"></a>
 
 ## setHeadTrackingEnabled
 
@@ -1592,7 +1676,7 @@ setHeadTrackingEnabled(enable: boolean): Promise<void>
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setheadtrackingenabled-2)
+> [setHeadTrackingEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setheadtrackingenabled3)
 > 替代。
 
 **起始版本：** 11
@@ -1629,6 +1713,7 @@ setHeadTrackingEnabled(enable: boolean): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1643,6 +1728,8 @@ audioSpatializationManager.setHeadTrackingEnabled(enable).then(() => {
   console.error(`Result ERROR: ${err}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setPersonalizedSpatializationEnabled
 
@@ -1686,7 +1773,7 @@ setPersonalizedSpatializationEnabled(selectedAudioDevice: AudioDeviceDescriptor,
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability is not supported in this device. |
 
-<a id="setspatializationenabled-2"></a>
+<a id="setspatializationenabled3"></a>
 
 ## setSpatializationEnabled
 
@@ -1728,6 +1815,7 @@ setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boole
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1757,6 +1845,10 @@ audioSpatializationManager.setSpatializationEnabled(deviceDescriptor, enabled).t
 });
 ```
 
+<!--DelEnd-->
+
+<a id="setspatializationenabled1"></a>
+
 ## setSpatializationEnabled
 
 ```TypeScript
@@ -1768,7 +1860,7 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setspatializationenabled-2)
+> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled3)
 > 替代。
 
 **起始版本：** 11
@@ -1801,6 +1893,7 @@ setSpatializationEnabled(enable: boolean, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1818,7 +1911,9 @@ audioSpatializationManager.setSpatializationEnabled(enable, (err: BusinessError)
 });
 ```
 
-<a id="setspatializationenabled-1"></a>
+<!--DelEnd-->
+
+<a id="setspatializationenabled2"></a>
 
 ## setSpatializationEnabled
 
@@ -1830,7 +1925,7 @@ setSpatializationEnabled(enable: boolean): Promise<void>
 
 > **说明：** 
 > 从 API version 11 开始支持，从 API version 12 开始废弃，建议使用
-> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\&lt;void&gt;](#setspatializationenabled-2)
+> [setSpatializationEnabled(deviceDescriptor: AudioDeviceDescriptor, enabled: boolean): Promise\<void>](#setspatializationenabled3)
 > 替代。
 
 **起始版本：** 11
@@ -1867,6 +1962,7 @@ setSpatializationEnabled(enable: boolean): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1881,6 +1977,8 @@ audioSpatializationManager.setSpatializationEnabled(enable).then(() => {
   console.error(`Result ERROR: ${err}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setSpatializationSceneType
 
@@ -1915,6 +2013,7 @@ setSpatializationSceneType(spatializationSceneType: AudioSpatializationSceneType
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1929,6 +2028,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## updateSpatialDeviceState
 
@@ -1963,6 +2064,7 @@ updateSpatialDeviceState(spatialDeviceState: AudioSpatialDeviceState): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1984,3 +2086,5 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->

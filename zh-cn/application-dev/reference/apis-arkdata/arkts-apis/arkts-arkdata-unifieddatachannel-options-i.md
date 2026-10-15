@@ -32,7 +32,7 @@ intention?: Intention
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Options-intention?: Intention--><!--Device-Options-intention?: Intention-End-->
 
@@ -56,7 +56,7 @@ UDMF中数据对象的唯一标识符，可通过[insertData](arkts-arkdata-unif
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Options-key?: string--><!--Device-Options-key?: string-End-->
 
@@ -78,7 +78,7 @@ visibility?: Visibility
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-Options-visibility?: Visibility--><!--Device-Options-visibility?: Visibility-End-->
 

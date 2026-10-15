@@ -25,5 +25,5 @@ import { keyManager } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [deactivateUserKey](arkts-corefile-keymanager-deactivateuserkey-f-sys.md) | When the screen is locked, the specified user key is uninstalled synchronously. **(Currently, this API is available only to lock screen applications.)** |
+| [deactivateUserKey](arkts-corefile-keymanager-deactivateuserkey-f-sys.md#deactivateuserkey) | When the screen is locked, the specified user key is uninstalled synchronously. **(Currently, this API is available only to lock screen applications.)** |
 <!--DelEnd-->

@@ -12,6 +12,34 @@ Enumerates the print page types.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
+## PAGE_B_TABLOID
+
+```TypeScript
+PAGE_B_TABLOID = 11
+```
+
+B Tabloid.
+
+**Since:** 11
+
+<!--Device-PrintPageType-PAGE_B_TABLOID = 11--><!--Device-PrintPageType-PAGE_B_TABLOID = 11-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## PAGE_INT_DL_ENVELOPE
+
+```TypeScript
+PAGE_INT_DL_ENVELOPE = 10
+```
+
+International envelope DL.
+
+**Since:** 11
+
+<!--Device-PrintPageType-PAGE_INT_DL_ENVELOPE = 10--><!--Device-PrintPageType-PAGE_INT_DL_ENVELOPE = 10-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
 ## PAGE_ISO_A3
 
 ```TypeScript
@@ -54,20 +82,6 @@ A5.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## PAGE_JIS_B5
-
-```TypeScript
-PAGE_JIS_B5 = 3
-```
-
-B5.
-
-**Since:** 11
-
-<!--Device-PrintPageType-PAGE_JIS_B5 = 3--><!--Device-PrintPageType-PAGE_JIS_B5 = 3-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## PAGE_ISO_C5
 
 ```TypeScript
@@ -96,17 +110,17 @@ DL.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## PAGE_LETTER
+## PAGE_JIS_B5
 
 ```TypeScript
-PAGE_LETTER = 6
+PAGE_JIS_B5 = 3
 ```
 
-Letter.
+B5.
 
 **Since:** 11
 
-<!--Device-PrintPageType-PAGE_LETTER = 6--><!--Device-PrintPageType-PAGE_LETTER = 6-End-->
+<!--Device-PrintPageType-PAGE_JIS_B5 = 3--><!--Device-PrintPageType-PAGE_JIS_B5 = 3-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -121,6 +135,20 @@ Legal.
 **Since:** 11
 
 <!--Device-PrintPageType-PAGE_LEGAL = 7--><!--Device-PrintPageType-PAGE_LEGAL = 7-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## PAGE_LETTER
+
+```TypeScript
+PAGE_LETTER = 6
+```
+
+Letter.
+
+**Since:** 11
+
+<!--Device-PrintPageType-PAGE_LETTER = 6--><!--Device-PrintPageType-PAGE_LETTER = 6-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -149,33 +177,5 @@ PAGE_PHOTO_5X7 = 9
 **Since:** 11
 
 <!--Device-PrintPageType-PAGE_PHOTO_5X7 = 9--><!--Device-PrintPageType-PAGE_PHOTO_5X7 = 9-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## PAGE_INT_DL_ENVELOPE
-
-```TypeScript
-PAGE_INT_DL_ENVELOPE = 10
-```
-
-International envelope DL.
-
-**Since:** 11
-
-<!--Device-PrintPageType-PAGE_INT_DL_ENVELOPE = 10--><!--Device-PrintPageType-PAGE_INT_DL_ENVELOPE = 10-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## PAGE_B_TABLOID
-
-```TypeScript
-PAGE_B_TABLOID = 11
-```
-
-B Tabloid.
-
-**Since:** 11
-
-<!--Device-PrintPageType-PAGE_B_TABLOID = 11--><!--Device-PrintPageType-PAGE_B_TABLOID = 11-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

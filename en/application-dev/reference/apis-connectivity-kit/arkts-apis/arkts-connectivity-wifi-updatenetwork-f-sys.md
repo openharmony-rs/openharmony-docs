@@ -40,6 +40,7 @@ Updates the specified Wi-Fi configuration.
 | --- | --- |
 | number | Returns the network ID in the updated Wi-Fi configuration if the update is successful; returns `-1` if the specified Wi-Fi configuration is not contained in the list. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,3 +72,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

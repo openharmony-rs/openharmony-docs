@@ -6,13 +6,13 @@ export type ProcessData = _ProcessData.default
 
 The process data.
 
+**Type:** _ProcessData.default
+
 **Since:** 14
 
 <!--Device-unnamed-export type ProcessData = _ProcessData.default--><!--Device-unnamed-export type ProcessData = _ProcessData.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _ProcessData.default
 
 **Examples**
 

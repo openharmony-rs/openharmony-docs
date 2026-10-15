@@ -14,54 +14,6 @@ Enumerates the types of events reported during a cloud asset download.
 
 **System API:** This is a system API.
 
-## DOWNLOAD_PROGRESS
-
-```TypeScript
-DOWNLOAD_PROGRESS = 0
-```
-
-Fired when download progress is updated.
-
-**Since:** 21
-
-<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_PROGRESS = 0--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_PROGRESS = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## DOWNLOAD_FINISHED
-
-```TypeScript
-DOWNLOAD_FINISHED = 1
-```
-
-Fired when a download completes successfully.
-
-**Since:** 21
-
-<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FINISHED = 1--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FINISHED = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## DOWNLOAD_FAILED
-
-```TypeScript
-DOWNLOAD_FAILED = 2
-```
-
-Fired when a download fails.
-
-**Since:** 21
-
-<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FAILED = 2--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FAILED = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## DOWNLOAD_ASSET_DELETED
 
 ```TypeScript
@@ -105,6 +57,54 @@ Fired when the system automatically resumes a download.
 **Since:** 21
 
 <!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_AUTO_RESUMED = 5--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_AUTO_RESUMED = 5-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## DOWNLOAD_FAILED
+
+```TypeScript
+DOWNLOAD_FAILED = 2
+```
+
+Fired when a download fails.
+
+**Since:** 21
+
+<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FAILED = 2--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FAILED = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## DOWNLOAD_FINISHED
+
+```TypeScript
+DOWNLOAD_FINISHED = 1
+```
+
+Fired when a download completes successfully.
+
+**Since:** 21
+
+<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FINISHED = 1--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_FINISHED = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## DOWNLOAD_PROGRESS
+
+```TypeScript
+DOWNLOAD_PROGRESS = 0
+```
+
+Fired when download progress is updated.
+
+**Since:** 21
+
+<!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_PROGRESS = 0--><!--Device-CloudAssetDownloadNotifyType-DOWNLOAD_PROGRESS = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

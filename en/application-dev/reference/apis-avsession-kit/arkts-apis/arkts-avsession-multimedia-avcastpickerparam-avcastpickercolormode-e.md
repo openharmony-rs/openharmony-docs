@@ -4,7 +4,7 @@
 export declare enum AVCastPickerColorMode
 ```
 
-Definition of color mode of picker @enum { int }
+Definition of color mode of picker
 
 **Since:** 12
 
@@ -22,7 +22,7 @@ Auto mode that follows the system definition.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastPickerColorMode-AUTO--><!--Device-AVCastPickerColorMode-AUTO-End-->
 
@@ -38,7 +38,7 @@ Dark mode.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastPickerColorMode-DARK--><!--Device-AVCastPickerColorMode-DARK-End-->
 
@@ -54,7 +54,7 @@ Light mode.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastPickerColorMode-LIGHT--><!--Device-AVCastPickerColorMode-LIGHT-End-->
 

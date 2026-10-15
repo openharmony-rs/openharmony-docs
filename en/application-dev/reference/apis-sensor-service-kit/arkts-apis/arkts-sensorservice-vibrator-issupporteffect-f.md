@@ -6,6 +6,8 @@
 import { vibrator } from '@kit.SensorServiceKit';
 ```
 
+<a id="issupporteffect1"></a>
+
 ## isSupportEffect
 
 ```TypeScript
@@ -78,7 +80,7 @@ try {
 ```
 
 
-<a id="issupporteffect-1"></a>
+<a id="issupporteffect2"></a>
 
 ## isSupportEffect
 

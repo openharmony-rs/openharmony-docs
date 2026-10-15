@@ -4,13 +4,13 @@
 
 API版本26.0.0之前，其父组件支持[WaterFlow](arkts-arkui-waterflow-comp.md)和[FlowItem](arkts-arkui-flowitem-comp-attribute.md)组件，并支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在WaterFlow或FlowItem中。
 
-从API版本26.0.0开始，其父组件新增支持[List](arkts-arkui-list-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)和[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md)，同时新增支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
+从API版本26.0.0开始，其父组件新增支持[List](arkts-arkui-list-comp.md)、[Scroll](arkts-arkui-scroll-comp.md)和[LazyColumnLayout](arkts-arkui-lazycolumnlayout-comp-attribute.md#lazycolumnlayout)，同时新增支持使用自定义组件或[NodeContainer](arkts-arkui-nodecontainer-comp-attribute.md)组件封装后应用在List、Scroll或LazyColumnLayout中。
 
 更多关于懒加载布局的使用场景和完整示例，可参考[创建懒加载布局](../../../ui/arkts-layout-development-create-lazy-layout.md)。
 
 > **说明：** 
 > 
-> - LazyVGridLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](arkts-arkui-common-comp-commonmethod-c.md#height)、[size](arkts-arkui-common-comp-commonmethod-c.md#size)中的height、[constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)，以及[height](arkts-arkui-common-comp-commonmethod-c.md#height-1)取[LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md)值的场景。
+> - LazyVGridLayout组件高度默认自适应内容，不建议设置会固定或约束组件垂直方向尺寸的属性，设置后会导致显示异常或无法正常滚动。涉及的属性包括[height](arkts-arkui-common-comp-commonmethod-c.md#height1)、[size](arkts-arkui-common-comp-commonmethod-c.md#size)中的height、[constraintSize](arkts-arkui-common-comp-commonmethod-c.md#constraintsize)中的minHeight/maxHeight、[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[layoutWeight](arkts-arkui-common-comp-commonmethod-c.md#layoutweight)，以及[height](arkts-arkui-common-comp-commonmethod-c.md#height2)取[LayoutPolicy](arkts-arkui-common-comp-layoutpolicy-c.md)值的场景。
 > 
 > - 当父组件设置主轴方向尺寸时，LazyVGridLayout按照父组件可视区域进行懒加载；当父组件未设置主轴方向尺寸时，LazyVGridLayout会被内容撑开，导致所有子组件都会被加载布局。
 > 
@@ -18,7 +18,7 @@ API版本26.0.0之前，其父组件支持[WaterFlow](arkts-arkui-waterflow-comp
 > 
 > 1. 在WaterFlow组件下，仅在WaterFlow组件的单列模式或分段布局中的单列分段，并且布局方向[FlexDirection](../arkts-apis/arkts-arkui-flexdirection-e.md)设置为FlexDirection.Column的情况下支持懒加载。在WaterFlow的多列模式或横向布局（FlexDirection.Row或FlexDirection.RowReverse）下使用该组件，则不支持懒加载。此外，在布局方向为FlexDirection.ColumnReverse的WaterFlow组件下使用该组件会导致显示异常。
 > 
-> 2. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](arkts-arkui-list-comp-attribute.md#listdirection)属性设置为Axis.Vertical）。在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](arkts-arkui-list-comp-attribute.md#lanes)、[chainAnimation](arkts-arkui-list-comp-attribute.md#chainanimation)、[scrollSnapAlign](arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个或多个时，该组件的懒加载功能会失效。
+> 2. 在List组件下，要求List组件布局方向必须是竖直方向（即[listDirection](arkts-arkui-list-comp-attribute.md#listdirection)属性设置为Axis.Vertical）。在非竖直方向的List中使用该组件会导致应用崩溃。当List设置了[lanes](arkts-arkui-list-comp-attribute.md#lanes1)、[chainAnimation](arkts-arkui-list-comp-attribute.md#chainanimation)、[scrollSnapAlign](arkts-arkui-list-comp-attribute.md#scrollsnapalign)属性中的任意一个或多个时，该组件的懒加载功能会失效。
 > 
 > 3. 在Scroll组件下，要求Scroll组件布局方向必须是竖直方向（即[scrollable](arkts-arkui-scroll-comp-attribute.md#scrollable)属性设置为ScrollDirection.Vertical）。在非竖直方向的Scroll中使用该组件会导致应用崩溃。
 > 
@@ -50,9 +50,9 @@ LazyVGridLayout()
 
 ### 示例1（实现懒加载网格布局）
 
-该示例通过WaterFlow和LazyVGridLayout实现懒加载网格布局，并通过onVisibleIndexesChange在可视区域发生变化时触发回调，返回当前可视区域内子组件的起始索引值和结束索引值。
+该示例通过[WaterFlow](ts-container-waterflow.md)和LazyVGridLayout实现懒加载网格布局，并通过[onVisibleIndexesChange](#onvisibleindexeschange)在可视区域发生变化时触发回调，返回当前可视区域内子组件的起始索引值和结束索引值。
 
-MyDataSource实现了LazyForEach数据源接口IDataSource，用于通过LazyForEach给LazyVGridLayout提供子组件。
+MyDataSource实现了[LazyForEach](ts-rendering-control-lazyforeach.md)数据源接口[IDataSource](ts-rendering-control-lazyforeach.md#idatasource)，用于通过LazyForEach给LazyVGridLayout提供子组件。
 
 从API版本26.0.0开始，新增onVisibleIndexesChange事件。
 
@@ -214,7 +214,7 @@ export class MyDataSource<T> extends BasicDataSource<T> {
 
 ### 示例2（设置头部组件或尾部组件及吸附效果）
 
-该示例通过WaterFlow嵌套LazyVGridLayout，并通过header、footer、sticky实现网格顶部和底部吸附效果。滚动过程中header吸附在可视区域顶部，footer吸附在可视区域底部。
+该示例通过[WaterFlow](ts-container-waterflow.md)嵌套LazyVGridLayout，并通过[header](#header)、[footer](#footer)、[sticky](#sticky)实现网格顶部和底部吸附效果。滚动过程中header吸附在可视区域顶部，footer吸附在可视区域底部。
 
 从API版本26.0.0开始，新增支持header、footer和sticky属性。
 
@@ -294,9 +294,11 @@ struct LazyVGridLayoutStickyDemo {
 
 ### 示例3（设置自适应列数）
 
-该示例通过设置[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate)属性实现了LazyVGridLayout组件自适应列数，并使用了属性[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate)中的auto-fill、auto-fit和auto-stretch。
+该示例通过设置[columnsTemplate](#columnstemplate)属性实现了LazyVGridLayout组件自适应列数，并使用了属性[columnsTemplate](#columnstemplate)中的auto-fill、auto-fit和auto-stretch。
 
-从API version 19开始，新增[columnsTemplate](arkts-arkui-lazyvgridlayout-comp-attribute.md#columnstemplate)接口。
+从API version 19开始，新增[columnsTemplate](#columnstemplate)接口。
+
+
 
 ```TypeScript
 import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';
@@ -405,6 +407,91 @@ struct LazyVGridLayoutColumnsTemplateDemo {
           .rowsGap(LengthMetrics.vp(8))
           .columnsGap(LengthMetrics.vp(8))
           .header(this.AutoStretchHeader)
+          .padding(8)
+          .backgroundColor('#F7F9FC')
+          .border({ width: 1, color: '#D0D5DD' })
+          .borderRadius(8)
+        }
+        .space(LengthMetrics.vp(16))
+        .width('100%')
+      }
+      .width('100%')
+      .scrollable(ScrollDirection.Vertical)
+      .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+    .padding({ top: 48, left: 12, right: 12, bottom: 12 })
+  }
+}
+```
+
+### 示例4（基于断点配置列数）
+
+该示例通过[columnsTemplate](#columnstemplate-1)设置ItemFillPolicy，并将fillType设置为PresetFillType.BREAKPOINT_SM1MD2LG3，实现LazyVGridLayout根据内容区宽度对应的断点类型自动确定列数。
+
+LazyVGridLayout内容区宽度属于sm及更小的断点区间时显示1列，属于md断点区间时显示2列，属于lg及更大的断点区间时显示3列。
+
+从API版本26.2.0开始，新增支持columnsTemplate设置为ItemFillPolicy类型。
+
+```TypeScript
+import { LazyColumnLayout, LazyColumnLayoutAttribute, LengthMetrics } from '@kit.ArkUI';
+// MyDataSource是自定义数据源类，实现了LazyForEach所需的IDataSource接口
+import { MyDataSource } from './MyDataSource';
+
+@Entry
+@Component
+struct LazyVGridLayoutItemFillPolicyDemo {
+  private sm1md2lg3Data: MyDataSource<number> = new MyDataSource<number>();
+
+  aboutToAppear(): void {
+    // 初始化LazyForEach数据
+    for (let i = 0; i < 12; i++) {
+      this.sm1md2lg3Data.pushData(i);
+    }
+  }
+
+  // 构建Header，展示当前使用的断点列数策略
+  @Builder
+  HeaderBuilder() {
+    Column() {
+      Text('ItemFillPolicy: BREAKPOINT_SM1MD2LG3')
+        .fontSize(16)
+        .fontWeight(FontWeight.Medium)
+        .fontColor('#182230')
+    }
+    .alignItems(HorizontalAlign.Start)
+    .width('100%')
+    .padding({ bottom: 8 })
+  }
+
+  @Builder
+  GridItemBuilder(item: number, backgroundColor: string) {
+    Text(item.toString())
+      .height(56)
+      .width('100%')
+      .borderRadius(6)
+      .backgroundColor(backgroundColor)
+      .fontColor('#182230')
+      .textAlign(TextAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Scroll() {
+        LazyColumnLayout() {
+          LazyVGridLayout() {
+            LazyForEach(this.sm1md2lg3Data, (item: number) => {
+              this.GridItemBuilder(item, '#FFE6A8')
+            })
+          }
+          // 根据LazyVGridLayout内容区宽度对应的断点自动调整列数
+          // sm及以下显示1列，md显示2列，lg及以上显示3列
+          .columnsTemplate({ fillType: PresetFillType.BREAKPOINT_SM1MD2LG3 })
+          // 行间距和列间距均为8vp
+          .rowsGap(LengthMetrics.vp(8))
+          .columnsGap(LengthMetrics.vp(8))
+          .header(this.HeaderBuilder)
           .padding(8)
           .backgroundColor('#F7F9FC')
           .border({ width: 1, color: '#D0D5DD' })

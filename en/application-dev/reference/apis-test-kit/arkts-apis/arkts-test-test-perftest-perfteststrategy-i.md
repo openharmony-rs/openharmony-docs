@@ -8,7 +8,7 @@ Represents the performance test strategy.
 
 > **NOTE:** 
 > 
-> The input parameter type of the **actionCode** and **resetCode** attributes is **Callback\&lt;boolean&gt;**. You need to call
+> The input parameter type of the **actionCode** and **resetCode** attributes is **Callback\<boolean>**. You need to call
 > this callback in the code segment to notify the framework that the code segment execution is complete. Otherwise, the
 > code segment execution times out. The callback parameter is of the **Boolean** type. The value **true** indicates that
 > the code segment execution meets the expectation, and **false** indicates the opposite.
@@ -39,7 +39,7 @@ Code segment to test. The input parameter is a callback function, which needs to
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTestStrategy-actionCode: Callback<Callback<boolean>>--><!--Device-PerfTestStrategy-actionCode: Callback<Callback<boolean>>-End-->
 
@@ -59,7 +59,7 @@ Bundle name of the application to test. The format must be the same as that of *
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTestStrategy-bundleName?: string--><!--Device-PerfTestStrategy-bundleName?: string-End-->
 
@@ -79,7 +79,7 @@ Number of test iterations. The value must be an integer greater than 0. The defa
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTestStrategy-iterations?: int--><!--Device-PerfTestStrategy-iterations?: int-End-->
 
@@ -99,7 +99,7 @@ Array of performance metrics to test. If the array is empty, no performance metr
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTestStrategy-metrics: Array<PerfMetric>--><!--Device-PerfTestStrategy-metrics: Array<PerfMetric>-End-->
 
@@ -119,7 +119,7 @@ Code segment for resetting the environment after the test is complete. This para
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTestStrategy-resetCode?: Callback<Callback<boolean>>--><!--Device-PerfTestStrategy-resetCode?: Callback<Callback<boolean>>-End-->
 
@@ -139,7 +139,7 @@ resetCode**) at a time. The value is an integer greater than 0, in milliseconds.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-PerfTestStrategy-timeout?: int--><!--Device-PerfTestStrategy-timeout?: int-End-->
 

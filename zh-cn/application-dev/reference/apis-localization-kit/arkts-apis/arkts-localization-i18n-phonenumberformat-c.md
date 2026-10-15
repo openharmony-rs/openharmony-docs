@@ -28,7 +28,7 @@ constructor(country: string, options?: PhoneNumberFormatOptions)
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhoneNumberFormat-constructor(country: string, options?: PhoneNumberFormatOptions)--><!--Device-PhoneNumberFormat-constructor(country: string, options?: PhoneNumberFormatOptions)-End-->
 
@@ -64,7 +64,7 @@ format(phoneNumber: string): string
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhoneNumberFormat-format(phoneNumber: string): string--><!--Device-PhoneNumberFormat-format(phoneNumber: string): string-End-->
 
@@ -96,10 +96,10 @@ let option: i18n.PhoneNumberFormatOptions = { type: 'TYPING' };
 let typingFormatter: i18n.PhoneNumberFormat = new i18n.PhoneNumberFormat('CN', option);
 let phoneNumber: string = '130493';
 let formatResult: string = '';
-for (let i = 0; i < phoneNumber.length; i++) {
-  formatResult += phoneNumber.charAt(i);
+phoneNumber.split('').forEach((char: string) => {
+  formatResult += char;
   formatResult = typingFormatter.format(formatResult); // formatResult = '130 493'
-}
+});
 ```
 
 ## getLocationName
@@ -116,7 +116,7 @@ getLocationName(phoneNumber: string, locale: string): string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhoneNumberFormat-getLocationName(phoneNumber: string, locale: string): string--><!--Device-PhoneNumberFormat-getLocationName(phoneNumber: string, locale: string): string-End-->
 
@@ -166,7 +166,7 @@ isValidNumber(phoneNumber: string): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhoneNumberFormat-isValidNumber(phoneNumber: string): boolean--><!--Device-PhoneNumberFormat-isValidNumber(phoneNumber: string): boolean-End-->
 

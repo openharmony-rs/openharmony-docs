@@ -6,6 +6,8 @@ declare type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').
 
 Describes the download information when an online image fails to load or encounters an exception. This object contains resource information, network information, and performance statistics of the download task, which can be used to locate the cause of the loading exception.
 
+**Type:** import('../api/@ohos.request.cacheDownload').default.DownloadInfo
+
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Describes the download information when an online image fails to load or encount
 <!--Device-unnamed-declare type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo--><!--Device-unnamed-declare type RequestDownloadInfo = import('../api/@ohos.request.cacheDownload').default.DownloadInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.request.cacheDownload').default.DownloadInfo

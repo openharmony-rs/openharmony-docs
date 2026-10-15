@@ -20,7 +20,7 @@ Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md).
 getCurrentLocalPosition?(): Coordinate2D
 ```
 
-Gets the coordinates of the top-left corner of the current component based on its real-time position.
+Obtains the coordinates of the click position relative to the upper-left corner of the current component's real-time position. It is suitable for scenarios where the coordinates of the click point relative to the component's current position need to be obtained after the component has been displaced, animated, or its layout has changed.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ Gets the coordinates of the top-left corner of the current component based on it
 
 | Type | Description |
 | --- | --- |
-| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | return the coordinates of the top-left corner of the current component based on its real-time position. |
+| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | Coordinates of the click position relative to the upper left corner of the current component's real-time position. |
 
 ## preventDefault
 
@@ -70,7 +70,7 @@ Note: This API is only supported by the following components: **RichEditor** and
 displayX: number
 ```
 
-X coordinate of the click position in the coordinate system of the current application screen.
+X coordinate of the click position in the coordinate system of the current application screen. After distanceThreshold is set for **onClick**, the click position is the lift-off point.
 
 Unit: vp
 
@@ -92,7 +92,7 @@ Unit: vp
 displayY: number
 ```
 
-Y coordinate of the click position in the coordinate system of the current application screen.
+Y coordinate of the click position in the coordinate system of the current application screen. After distanceThreshold is set for **onClick**, the click position is the lift-off point.
 
 Unit: vp
 
@@ -226,7 +226,7 @@ Unit: vp
 x: number
 ```
 
-X coordinate of the click position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element. After [distanceThreshold](arkts-arkui-common-comp-commonmethod-c.md#onclick-1) is set for **onClick**, the click position is the lift-off point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.
+X coordinate of the click position in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element. After [distanceThreshold](arkts-arkui-common-comp-commonmethod-c.md#onclick2) is set for **onClick**, the click position is the lift-off point. If the event is triggered by a keyboard or gamepad device, the click position is the center of the clicked element.
 
 Unit: vp
 

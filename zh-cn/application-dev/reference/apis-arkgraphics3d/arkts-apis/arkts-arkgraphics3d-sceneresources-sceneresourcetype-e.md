@@ -6,39 +6,37 @@ export enum SceneResourceType
 
 场景资源类型枚举，对场景中的资源进行分类。
 
-@enum { int }
-
 **起始版本：** 12
 
 <!--Device-unnamed-export enum SceneResourceType--><!--Device-unnamed-export enum SceneResourceType-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## UNKNOWN
+## ANIMATION
 
 ```TypeScript
-UNKNOWN = 0
+ANIMATION = 5
 ```
 
-未定义类型。
+动画类型。
 
 **起始版本：** 12
 
-<!--Device-SceneResourceType-UNKNOWN = 0--><!--Device-SceneResourceType-UNKNOWN = 0-End-->
+<!--Device-SceneResourceType-ANIMATION = 5--><!--Device-SceneResourceType-ANIMATION = 5-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## NODE
+## EFFECT
 
 ```TypeScript
-NODE = 1
+EFFECT = 9
 ```
 
-节点类型。
+后处理特效类型。
 
-**起始版本：** 12
+**起始版本：** 21
 
-<!--Device-SceneResourceType-NODE = 1--><!--Device-SceneResourceType-NODE = 1-End-->
+<!--Device-SceneResourceType-EFFECT = 9--><!--Device-SceneResourceType-EFFECT = 9-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -53,6 +51,20 @@ ENVIRONMENT = 2
 **起始版本：** 12
 
 <!--Device-SceneResourceType-ENVIRONMENT = 2--><!--Device-SceneResourceType-ENVIRONMENT = 2-End-->
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+## IMAGE
+
+```TypeScript
+IMAGE = 7
+```
+
+图片类型。
+
+**起始版本：** 12
+
+<!--Device-SceneResourceType-IMAGE = 7--><!--Device-SceneResourceType-IMAGE = 7-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -84,17 +96,31 @@ MESH = 4
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## ANIMATION
+## MESH_RESOURCE
 
 ```TypeScript
-ANIMATION = 5
+MESH_RESOURCE = 8
 ```
 
-动画类型。
+网格资源类型。
+
+**起始版本：** 18
+
+<!--Device-SceneResourceType-MESH_RESOURCE = 8--><!--Device-SceneResourceType-MESH_RESOURCE = 8-End-->
+
+**系统能力：** SystemCapability.ArkUi.Graphics3D
+
+## NODE
+
+```TypeScript
+NODE = 1
+```
+
+节点类型。
 
 **起始版本：** 12
 
-<!--Device-SceneResourceType-ANIMATION = 5--><!--Device-SceneResourceType-ANIMATION = 5-End-->
+<!--Device-SceneResourceType-NODE = 1--><!--Device-SceneResourceType-NODE = 1-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -112,44 +138,16 @@ SHADER = 6
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## IMAGE
+## UNKNOWN
 
 ```TypeScript
-IMAGE = 7
+UNKNOWN = 0
 ```
 
-图片类型。
+未定义类型。
 
 **起始版本：** 12
 
-<!--Device-SceneResourceType-IMAGE = 7--><!--Device-SceneResourceType-IMAGE = 7-End-->
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-## MESH_RESOURCE
-
-```TypeScript
-MESH_RESOURCE = 8
-```
-
-网格资源类型。
-
-**起始版本：** 18
-
-<!--Device-SceneResourceType-MESH_RESOURCE = 8--><!--Device-SceneResourceType-MESH_RESOURCE = 8-End-->
-
-**系统能力：** SystemCapability.ArkUi.Graphics3D
-
-## EFFECT
-
-```TypeScript
-EFFECT = 9
-```
-
-后处理特效类型。
-
-**起始版本：** 21
-
-<!--Device-SceneResourceType-EFFECT = 9--><!--Device-SceneResourceType-EFFECT = 9-End-->
+<!--Device-SceneResourceType-UNKNOWN = 0--><!--Device-SceneResourceType-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D

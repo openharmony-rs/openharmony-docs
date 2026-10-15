@@ -30,7 +30,7 @@ Color of the text on the status bar. The value is in ARGB format, for example, *
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-StatusBarProperty-contentColor: string--><!--Device-StatusBarProperty-contentColor: string-End-->
 

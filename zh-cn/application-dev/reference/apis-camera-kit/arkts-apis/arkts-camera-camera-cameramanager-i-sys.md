@@ -113,7 +113,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | 是 | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability-1). |
+| profile | [DepthProfile](arkts-camera-camera-depthprofile-i-sys.md) | 是 | Supported preview profile, which is obtained through  [getSupportedOutputCapability](arkts-camera-camera-cameramanager-i.md#getsupportedoutputcapability2). |
 
 **返回值：**
 
@@ -128,6 +128,7 @@ Creates a DepthDataOutput instance. This API returns the result synchronously.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -146,6 +147,8 @@ function createDepthDataOutput(cameraOutputCapability: camera.CameraOutputCapabi
   return depthDataOutput;
 }
 ```
+
+<!--DelEnd-->
 
 ## isCameraMuteSupported
 
@@ -175,6 +178,7 @@ Checks whether the camera device can be muted.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -183,6 +187,8 @@ function isCameraMuteSupported(cameraManager: camera.CameraManager): boolean {
   return isMuteSupported;
 }
 ```
+
+<!--DelEnd-->
 
 ## isControlCenterActive
 
@@ -247,6 +253,7 @@ Checks whether a camera device supports prelaunch.
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -264,6 +271,8 @@ function isPreLaunchSupported(context: common.BaseContext): boolean {
   return isSupported;
 }
 ```
+
+<!--DelEnd-->
 
 ## muteCameraPersistent
 
@@ -298,6 +307,7 @@ Mutes the camera device permanently.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -306,6 +316,8 @@ function muteCameraPersistent(cameraManager: camera.CameraManager): void {
   cameraManager.muteCameraPersistent(mute, camera.PolicyType.PRIVACY);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('cameraMute')
 
@@ -336,6 +348,7 @@ Unsubscribes from camera mute status events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -349,6 +362,8 @@ function unregisterCameraMute(cameraManager: camera.CameraManager): void {
   cameraManager.off('cameraMute', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('controlCenterStatusChange')
 
@@ -379,6 +394,36 @@ Unsubscribes control center status change event callback.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+## offCameraSharedStatus
+
+```TypeScript
+offCameraSharedStatus(callback?: Callback<CameraSharedStatusInfo>): void
+```
+
+取消订阅相机共享状态变更事件回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CameraManager-offCameraSharedStatus(callback?: Callback<CameraSharedStatusInfo>): void--><!--Device-CameraManager-offCameraSharedStatus(callback?: Callback<CameraSharedStatusInfo>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CameraSharedStatusInfo](arkts-camera-camera-camerasharedstatusinfo-i-sys.md)&gt; | 否 | 用于获取相机共享状态变更的回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
 ## on('cameraMute')
 
 ```TypeScript
@@ -408,6 +453,7 @@ Subscribes to camera mute status events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 13+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -426,6 +472,8 @@ function registerCameraMute(cameraManager: camera.CameraManager): void {
   cameraManager.on('cameraMute', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('controlCenterStatusChange')
 
@@ -456,6 +504,36 @@ Subscribes control center status change event callback.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+## onCameraSharedStatus
+
+```TypeScript
+onCameraSharedStatus(callback: Callback<CameraSharedStatusInfo>): void
+```
+
+订阅相机共享状态变更事件回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CameraManager-onCameraSharedStatus(callback: Callback<CameraSharedStatusInfo>): void--><!--Device-CameraManager-onCameraSharedStatus(callback: Callback<CameraSharedStatusInfo>): void-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[CameraSharedStatusInfo](arkts-camera-camera-camerasharedstatusinfo-i-sys.md)&gt; | 是 | 用于获取相机共享状态变更的回调函数。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
+
 ## prelaunch
 
 ```TypeScript
@@ -478,6 +556,7 @@ Prelaunches the camera device. This API is called when a user clicks the system 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 13+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -495,6 +574,8 @@ function preLaunch(context: common.BaseContext): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## preSwitchCamera
 
@@ -526,6 +607,7 @@ Pre-switches a camera device to speed up its startup.
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -542,6 +624,8 @@ function preSwitch(cameraDevice: camera.CameraDevice, context: common.BaseContex
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## setPrelaunchConfig
 
@@ -576,6 +660,7 @@ Sets prelaunch configuration. Before the setting, call [isPrelaunchSupported](#i
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12+ |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -598,6 +683,8 @@ function setPrelaunchConfig(context: common.BaseContext): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## muteCamera
 
@@ -625,6 +712,7 @@ Mutes or unmutes the camera device.
 | --- | --- | --- | --- |
 | mute | boolean | 是 | Mutes or unmutes the camera device. **true** to mute, **false** otherwise. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -633,3 +721,5 @@ function muteCamera(cameraManager: camera.CameraManager): void {
   cameraManager.muteCamera(mute);
 }
 ```
+
+<!--DelEnd-->

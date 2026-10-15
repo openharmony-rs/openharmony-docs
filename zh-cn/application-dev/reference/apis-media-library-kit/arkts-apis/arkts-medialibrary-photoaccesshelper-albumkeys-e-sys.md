@@ -28,17 +28,19 @@ BUNDLE_NAME = 'bundle_name'
 
 **系统接口：** 此接口为系统接口。
 
-## DATE_MODIFIED
+## CLOUD_ID
 
 ```TypeScript
-DATE_MODIFIED = 'date_modified'
+CLOUD_ID = 'cloud_id'
 ```
 
-相册修改的时间戳（单位：毫秒）。
+相册的cloudId。
 
-**起始版本：** 18
+**起始版本：** 26.0.1
 
-<!--Device-AlbumKeys-DATE_MODIFIED = 'date_modified'--><!--Device-AlbumKeys-DATE_MODIFIED = 'date_modified'-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AlbumKeys-CLOUD_ID = 'cloud_id'--><!--Device-AlbumKeys-CLOUD_ID = 'cloud_id'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -60,17 +62,35 @@ COVER_URI_SOURCE = 'cover_uri_source'
 
 **系统接口：** 此接口为系统接口。
 
-## UPLOAD_STATUS
+## DATE_MODIFIED
 
 ```TypeScript
-UPLOAD_STATUS = 'upload_status'
+DATE_MODIFIED = 'date_modified'
 ```
 
-相册同步状态。
+相册修改的时间戳（单位：毫秒）。
 
-**起始版本：** 22
+**起始版本：** 18
 
-<!--Device-AlbumKeys-UPLOAD_STATUS = 'upload_status'--><!--Device-AlbumKeys-UPLOAD_STATUS = 'upload_status'-End-->
+<!--Device-AlbumKeys-DATE_MODIFIED = 'date_modified'--><!--Device-AlbumKeys-DATE_MODIFIED = 'date_modified'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## FILE_HIDDEN
+
+```TypeScript
+FILE_HIDDEN = 'file_hidden'
+```
+
+文件管理中文件夹的隐藏状态。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AlbumKeys-FILE_HIDDEN = 'file_hidden'--><!--Device-AlbumKeys-FILE_HIDDEN = 'file_hidden'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -94,19 +114,19 @@ HIDDEN = 'hidden'
 
 **系统接口：** 此接口为系统接口。
 
-## FILE_HIDDEN
+## SHARE_ALBUM_OWNER
 
 ```TypeScript
-FILE_HIDDEN = 'file_hidden'
+SHARE_ALBUM_OWNER = 'share_album_owner'
 ```
 
-文件管理中文件夹的隐藏状态。
+共享相册的所有者。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AlbumKeys-FILE_HIDDEN = 'file_hidden'--><!--Device-AlbumKeys-FILE_HIDDEN = 'file_hidden'-End-->
+<!--Device-AlbumKeys-SHARE_ALBUM_OWNER = 'share_album_owner'--><!--Device-AlbumKeys-SHARE_ALBUM_OWNER = 'share_album_owner'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -148,37 +168,17 @@ SHARE_RISK_TYPE = 'share_risk_type'
 
 **系统接口：** 此接口为系统接口。
 
-## SHARE_ALBUM_OWNER
+## UPLOAD_STATUS
 
 ```TypeScript
-SHARE_ALBUM_OWNER = 'share_album_owner'
+UPLOAD_STATUS = 'upload_status'
 ```
 
-共享相册的所有者。
+相册同步状态。
 
-**起始版本：** 26.0.1
+**起始版本：** 22
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AlbumKeys-SHARE_ALBUM_OWNER = 'share_album_owner'--><!--Device-AlbumKeys-SHARE_ALBUM_OWNER = 'share_album_owner'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## CLOUD_ID
-
-```TypeScript
-CLOUD_ID = 'cloud_id'
-```
-
-相册的cloudId。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AlbumKeys-CLOUD_ID = 'cloud_id'--><!--Device-AlbumKeys-CLOUD_ID = 'cloud_id'-End-->
+<!--Device-AlbumKeys-UPLOAD_STATUS = 'upload_status'--><!--Device-AlbumKeys-UPLOAD_STATUS = 'upload_status'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

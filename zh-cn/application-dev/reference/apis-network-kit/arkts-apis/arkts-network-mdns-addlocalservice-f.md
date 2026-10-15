@@ -6,6 +6,8 @@
 import { mdns } from '@kit.NetworkKit';
 ```
 
+<a id="addlocalservice1"></a>
+
 ## addLocalService
 
 ```TypeScript
@@ -75,7 +77,7 @@ mdns.addLocalService(context, localServiceInfo, (error:BusinessError, data:mdns.
 ```
 
 
-<a id="addlocalservice-1"></a>
+<a id="addlocalservice2"></a>
 
 ## addLocalService
 

@@ -28,6 +28,8 @@ This API will be deprecated. Use [Album](arkts-corefile-userfilemanager-album-i-
 import { userFileManager } from '@kit.CoreFileKit';
 ```
 
+<a id="delete1"></a>
+
 ## delete
 
 ```TypeScript
@@ -36,7 +38,7 @@ delete(uri: string, callback: AsyncCallback<void>): void
 
 Deletes a file from the system album. Only the files in the trash can be deleted. This API uses an asynchronous callback to return the result.
 
-This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfilemanager-album-i-sys.md#deletephotoassets) instead.
+This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfilemanager-album-i-sys.md#deletephotoassets1) instead.
 
 **Since:** 9
 
@@ -59,6 +61,7 @@ This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfi
 | uri | string | Yes | File URI. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -88,7 +91,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="delete-1"></a>
+<!--DelEnd-->
+
+<a id="delete2"></a>
 
 ## delete
 
@@ -98,7 +103,7 @@ delete(uri: string): Promise<void>
 
 Deletes a file from the system album. Only the files in the trash can be deleted. This API uses a promise to return the result.
 
-This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfilemanager-album-i-sys.md#deletephotoassets) instead.
+This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfilemanager-album-i-sys.md#deletephotoassets1) instead.
 
 **Since:** 9
 
@@ -126,6 +131,7 @@ This API will be deprecated. Use [Album.deletePhotoAssets](arkts-corefile-userfi
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -154,6 +160,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="recover1"></a>
+
 ## recover
 
 ```TypeScript
@@ -162,7 +172,7 @@ recover(uri: string, callback: AsyncCallback<void>): void
 
 Recovers a file in the system album. Only the files in the trash can be recovered. This API uses an asynchronous callback to return the result.
 
-This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userfilemanager-album-i-sys.md#recoverphotoassets) instead.
+This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userfilemanager-album-i-sys.md#recoverphotoassets1) instead.
 
 **Since:** 9
 
@@ -185,6 +195,7 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userf
 | uri | string | Yes | File URI. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -222,7 +233,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="recover-1"></a>
+<!--DelEnd-->
+
+<a id="recover2"></a>
 
 ## recover
 
@@ -232,7 +245,7 @@ recover(uri: string): Promise<void>
 
 Recovers a file in the system album. Only the files in the trash can be recovered. This API uses a promise to return the result.
 
-This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userfilemanager-album-i-sys.md#recoverphotoassets) instead.
+This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userfilemanager-album-i-sys.md#recoverphotoassets1) instead.
 
 **Since:** 9
 
@@ -260,6 +273,7 @@ This API will be deprecated. Use [Album.recoverPhotoAssets](arkts-corefile-userf
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -287,3 +301,5 @@ async function example(mgr: userFileManager.UserFileManager) {
   });
 }
 ```
+
+<!--DelEnd-->

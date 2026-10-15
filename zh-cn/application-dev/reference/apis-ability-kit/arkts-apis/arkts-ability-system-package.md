@@ -1,9 +1,8 @@
-# @system.package
+# @system.package(应用管理)
 
-> **NOTE**
+> **说明：**
  >
- > - The APIs of this module have been deprecated since API version 9. You are advised to use
- > [@ohos.bundle.bundleManager](arkts-ability-bundle-bundlemanager.md) instead.
+ > - 从API version 9开始不再维护，推荐使用该模块[@ohos.bundle.bundleManager](arkts-ability-bundle-bundlemanager.md)。
 
 
 

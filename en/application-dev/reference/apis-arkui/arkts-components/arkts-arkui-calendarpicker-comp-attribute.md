@@ -8,13 +8,15 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
-**Inheritance/Implementation:** CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>
+**Inheritance/Implementation:** CalendarPickerAttribute extends CommonMethod&lt;CalendarPickerAttribute&gt;
 
 **Since:** 10
 
 <!--Device-unnamed-declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>--><!--Device-unnamed-declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="edgealign1"></a>
 
 ## edgeAlign
 
@@ -41,7 +43,7 @@ Sets how the picker is aligned with the entry component.
 | alignType | [CalendarAlign](arkts-arkui-calendarpicker-comp-calendaralign-e.md) | Yes | Alignment type.<br>Default value: **CalendarAlign.END**. |
 | offset | Offset | No | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}** <br>Unit: vp. |
 
-<a id="edgealign-1"></a>
+<a id="edgealign2"></a>
 
 ## edgeAlign
 
@@ -49,7 +51,7 @@ Sets how the picker is aligned with the entry component.
 edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset)
 ```
 
-Sets how the picker is aligned with the entry component. Compared with [edgeAlign](#edgealign), this API supports the **undefined** type for the **alignType** parameter.
+Sets how the picker is aligned with the entry component. Compared with [edgeAlign](#edgealign1), this API supports the **undefined** type for the **alignType** parameter.
 
 **Since:** 18
 
@@ -67,6 +69,30 @@ Sets how the picker is aligned with the entry component. Compared with [edgeAlig
 | --- | --- | --- | --- |
 | alignType | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CalendarAlign](arkts-arkui-calendarpicker-comp-calendaralign-e.md)&gt; | Yes | Alignment type.<br>Default value: **CalendarAlign.END**. <br>If the value of **alignType** is **undefined**, the default value is used. |
 | offset | Offset | No | Offset of the picker relative to the entry component after alignment based on the specified alignment type.<br>Default value: **{dx: 0, dy: 0}** <br>Unit: vp. |
+
+## firstDayOfWeek
+
+```TypeScript
+firstDayOfWeek(value: CalendarFirstDayOfWeek)
+```
+
+Sets the first day of the week for the CalendarPicker.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-CalendarPickerAttribute-firstDayOfWeek(value: CalendarFirstDayOfWeek): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-firstDayOfWeek(value: CalendarFirstDayOfWeek): CalendarPickerAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| value | [CalendarFirstDayOfWeek](arkts-arkui-calendarpicker-comp-calendarfirstdayofweek-e.md) | Yes | First day of the week.<br> Default value: **CalendarFirstDayOfWeek.LOCAL** (follows the system region). |
 
 ## markToday
 
@@ -92,6 +118,8 @@ Whether to highlight the current system date.
 | --- | --- | --- | --- |
 | enabled | boolean | Yes | Whether to highlight the current system date.<br>- **true**: Highlight the current system date. <br>- **false**: Do not highlight the current system date. <br>Default value: **false**. |
 
+<a id="onchange1"></a>
+
 ## onChange
 
 ```TypeScript
@@ -116,7 +144,7 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 | --- | --- | --- | --- |
 | callback | Callback&lt;Date&gt; | Yes | Called when a date is selected. The callback parameter is the selected date of the **Date** type. You can obtain the selected date in the callback function and perform corresponding processing.<br>**Since:** 18 |
 
-<a id="onchange-1"></a>
+<a id="onchange2"></a>
 
 ## onChange
 
@@ -124,7 +152,7 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 onChange(callback: Optional<Callback<Date>>)
 ```
 
-Triggered when a date is selected. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange), this API supports the **undefined** type for the **callback** parameter.
+Triggered when a date is selected. This event cannot be triggered by two-way bound state variables. Compared with [onChange](#onchange1), this API supports the **undefined** type for the **callback** parameter.
 
 > **NOTE:** 
 > 
@@ -145,6 +173,8 @@ Triggered when a date is selected. This event cannot be triggered by two-way bou
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;Date&gt;&gt; | Yes | Called when a date is selected. The callback parameter is the selected date.<br>If **callback** is set to **undefined**, the callback function is not used. |
+
+<a id="textstyle1"></a>
 
 ## textStyle
 
@@ -170,7 +200,7 @@ Sets the font color, font size, and font weight in the entry area.
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | Yes | Font color, font size, and font weight in the entry area.<br>Default value: <br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
-<a id="textstyle-1"></a>
+<a id="textstyle2"></a>
 
 ## textStyle
 
@@ -178,7 +208,7 @@ Sets the font color, font size, and font weight in the entry area.
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-Sets the font color, font size, and font weight in the entry area. Compared with [textStyle](#textstyle), this API supports the **undefined** type for the **style** parameter.
+Sets the font color, font size, and font weight in the entry area. Compared with [textStyle](#textstyle1), this API supports the **undefined** type for the **style** parameter.
 
 **Since:** 18
 

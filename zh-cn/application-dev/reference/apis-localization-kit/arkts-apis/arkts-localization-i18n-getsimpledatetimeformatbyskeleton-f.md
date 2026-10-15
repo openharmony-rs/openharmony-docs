@@ -6,6 +6,8 @@
 import { i18n } from '@kit.LocalizationKit';
 ```
 
+<a id="getsimpledatetimeformatbyskeleton1"></a>
+
 ## getSimpleDateTimeFormatBySkeleton
 
 ```TypeScript
@@ -16,7 +18,7 @@ export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Int
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-i18n-export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleDateTimeFormat--><!--Device-i18n-export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: Intl.Locale): SimpleDateTimeFormat-End-->
 
@@ -57,7 +59,7 @@ try {
 ```
 
 
-<a id="getsimpledatetimeformatbyskeleton-1"></a>
+<a id="getsimpledatetimeformatbyskeleton2"></a>
 
 ## getSimpleDateTimeFormatBySkeleton
 
@@ -71,7 +73,7 @@ export function getSimpleDateTimeFormatBySkeleton(skeleton: string, locale?: int
 
 **废弃版本：** 20
 
-**替代接口：** [getSimpleDateTimeFormatBySkeleton](arkts-localization-i18n-getsimpledatetimeformatbyskeleton-f.md)(skeleton: string, locale?: Intl.Locale)
+**替代接口：** [getSimpleDateTimeFormatBySkeleton](#getsimpledatetimeformatbyskeleton1)(skeleton: string, locale?: Intl.Locale)
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 

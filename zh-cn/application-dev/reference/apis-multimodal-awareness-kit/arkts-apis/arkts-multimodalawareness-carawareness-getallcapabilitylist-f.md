@@ -12,7 +12,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 function getAllCapabilityList(): Promise<Capability[]>
 ```
 
-返回所有能力列表
+获取当前设备支持的所有车辆感知能力列表。
 
 **起始版本：** 26.0.1
 
@@ -26,11 +26,11 @@ function getAllCapabilityList(): Promise<Capability[]>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[Capability](arkts-multimodalawareness-carawareness-capability-e.md)[]&gt; | Promise用于返回所有的能力列表。 |
+| Promise&lt;[Capability](arkts-multimodalawareness-carawareness-capability-e.md)[]&gt; | Promise对象，返回设备支持的感知能力枚举列表。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |

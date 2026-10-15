@@ -10,7 +10,7 @@ Defines the values needed for matching different predicates.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-photoAccessHelper-export type OperationValueType = long | double | string | boolean--><!--Device-photoAccessHelper-export type OperationValueType = long | double | string | boolean-End-->
 

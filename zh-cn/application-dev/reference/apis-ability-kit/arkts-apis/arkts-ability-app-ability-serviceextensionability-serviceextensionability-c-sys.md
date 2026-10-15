@@ -44,6 +44,7 @@ onConfigurationUpdate(newConfig: Configuration): void
 | --- | --- | --- | --- |
 | newConfig | [Configuration](arkts-ability-app-ability-configuration-configuration-i.md) | 是 | 表示需要更新的配置信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,6 +56,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onConnect
 
@@ -86,6 +89,7 @@ Extension生命周期回调，如果是connectAbility拉起的服务，会在onC
 | --- | --- |
 | [rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md) &#124; Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | RemoteObject or Promise used to return a RemoteObject, which is used for communication between the client and server. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -133,6 +137,8 @@ class ServiceExt extends ServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## onCreate
 
 ```TypeScript
@@ -157,6 +163,7 @@ Extension生命周期回调，在创建时回调，执行初始化业务逻辑�
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -168,6 +175,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDestroy
 
@@ -187,6 +196,7 @@ Extension生命周期回调，在销毁时回调，执行资源清理等操作�
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -198,6 +208,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDisconnect
 
@@ -223,6 +235,7 @@ Extension的生命周期回调，客户端执行断开连接服务时回调。
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
 
+<!--Del-->
 **示例**
 
 同步回调示例如下：
@@ -249,6 +262,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDump
 
@@ -280,6 +295,7 @@ onDump(params: Array<string>): Array<string>
 | --- | --- |
 | Array&lt;string&gt; | 表示转存客户端信息数组。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -292,6 +308,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onReconnect
 
@@ -317,6 +335,7 @@ Extension的生命周期回调，当所有以前的客户端都断开连接之�
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -328,6 +347,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onRequest
 
@@ -354,6 +375,7 @@ Extension生命周期回调，如果是startAbility或者startServiceExtensionAb
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 当前Extension相关的Want类型信息，包括ability名称、bundle名称等。 |
 | startId | number | 是 | 返回拉起次数。首次拉起初始值返回1，多次之后自动递增。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -365,6 +387,8 @@ class ServiceExt extends ServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## context
 

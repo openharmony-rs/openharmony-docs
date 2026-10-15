@@ -28,6 +28,54 @@ data format is default
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
+## HWCK
+
+```TypeScript
+HWCK = 4
+```
+
+data format is HWCK
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Format-HWCK = 4--><!--Device-Format-HWCK = 4-End-->
+
+**System capability:** SystemCapability.AI.MindSporeLite
+
+## HWKC
+
+```TypeScript
+HWKC = 3
+```
+
+data format is HWKC
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Format-HWKC = 3--><!--Device-Format-HWKC = 3-End-->
+
+**System capability:** SystemCapability.AI.MindSporeLite
+
+## KCHW
+
+```TypeScript
+KCHW = 5
+```
+
+data format is KCHW
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Format-KCHW = 5--><!--Device-Format-KCHW = 5-End-->
+
+**System capability:** SystemCapability.AI.MindSporeLite
+
 ## NCHW
 
 ```TypeScript
@@ -73,53 +121,5 @@ data format is NHWC4
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Format-NHWC4 = 2--><!--Device-Format-NHWC4 = 2-End-->
-
-**System capability:** SystemCapability.AI.MindSporeLite
-
-## HWKC
-
-```TypeScript
-HWKC = 3
-```
-
-data format is HWKC
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Format-HWKC = 3--><!--Device-Format-HWKC = 3-End-->
-
-**System capability:** SystemCapability.AI.MindSporeLite
-
-## HWCK
-
-```TypeScript
-HWCK = 4
-```
-
-data format is HWCK
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Format-HWCK = 4--><!--Device-Format-HWCK = 4-End-->
-
-**System capability:** SystemCapability.AI.MindSporeLite
-
-## KCHW
-
-```TypeScript
-KCHW = 5
-```
-
-data format is KCHW
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Format-KCHW = 5--><!--Device-Format-KCHW = 5-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

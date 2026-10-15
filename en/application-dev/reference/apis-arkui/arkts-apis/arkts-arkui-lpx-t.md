@@ -6,6 +6,8 @@ declare type LPX = `${number}lpx`
 
 Defines a length in lpx.
 
+**Type:** `${number}lpx`
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Defines a length in lpx.
 <!--Device-unnamed-declare type LPX = `${number}lpx`--><!--Device-unnamed-declare type LPX = `${number}lpx`-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** `${number}lpx`

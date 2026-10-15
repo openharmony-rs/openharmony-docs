@@ -8,7 +8,7 @@ Implements imaging mode.
 
 **继承/实现关系：** ImagingMode extends [ImagingModeQuery](arkts-camera-camera-imagingmodequery-i-sys.md)
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 <!--Device-camera-interface ImagingMode extends ImagingModeQuery--><!--Device-camera-interface ImagingMode extends ImagingModeQuery-End-->
 
@@ -30,7 +30,7 @@ getImagingMode(): CameraImagingMode
 
 Gets current imaging mode.
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -61,7 +61,7 @@ setImagingMode(mode: CameraImagingMode): void
 
 Sets imaging mode.
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

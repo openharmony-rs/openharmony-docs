@@ -39,6 +39,7 @@ function getKeepAliveAppServiceExtensions(): Promise<Array<KeepAliveBundleInfo>>
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,3 +58,5 @@ try {
   console.error(`[appManager] getKeepAliveAppServiceExtensions error: ${code}, ${message}`);
 }
 ```
+
+<!--DelEnd-->

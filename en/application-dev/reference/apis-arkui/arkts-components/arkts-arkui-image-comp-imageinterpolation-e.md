@@ -12,13 +12,13 @@ Interpolation effect of the image.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## None
+## High
 
 ```TypeScript
-None
+High
 ```
 
-Nearest neighbor interpolation.
+Cubic interpolation. This mode produces scaled images of the highest possible quality, but may require more image rendering time.
 
 **Since:** 7
 
@@ -28,7 +28,7 @@ Nearest neighbor interpolation.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-ImageInterpolation-None--><!--Device-ImageInterpolation-None-End-->
+<!--Device-ImageInterpolation-High--><!--Device-ImageInterpolation-High-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -72,13 +72,13 @@ MipMap interpolation.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## High
+## None
 
 ```TypeScript
-High
+None
 ```
 
-Cubic interpolation. This mode produces scaled images of the highest possible quality, but may require more image rendering time.
+Nearest neighbor interpolation.
 
 **Since:** 7
 
@@ -88,6 +88,6 @@ Cubic interpolation. This mode produces scaled images of the highest possible qu
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-ImageInterpolation-High--><!--Device-ImageInterpolation-High-End-->
+<!--Device-ImageInterpolation-None--><!--Device-ImageInterpolation-None-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

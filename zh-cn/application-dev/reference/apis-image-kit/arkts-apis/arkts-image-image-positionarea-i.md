@@ -30,9 +30,9 @@ offset: number
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-PositionArea-offset: int--><!--Device-PositionArea-offset: int-End-->
 
@@ -44,15 +44,15 @@ offset: number
 pixels: ArrayBuffer
 ```
 
-像素数据缓冲区。仅支持BGRA_8888格式的像素数据。
+像素数据缓冲区。
 
 **类型：** ArrayBuffer
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-PositionArea-pixels: ArrayBuffer--><!--Device-PositionArea-pixels: ArrayBuffer-End-->
 
@@ -64,15 +64,15 @@ pixels: ArrayBuffer
 region: Region
 ```
 
-区域信息，用于按区域进行图像数据的读写。写入的区域宽度加X坐标不能大于原图的宽度，写入的区域高度加Y坐标不能大于原图的高度。
+区域信息，用于按区域进行图像数据的读写。指定的区域宽度加X坐标不能大于原图的宽度，指定的区域高度加Y坐标不能大于原图的高度。
 
 **类型：** [Region](arkts-image-image-region-i.md)
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-PositionArea-region: Region--><!--Device-PositionArea-region: Region-End-->
 
@@ -84,15 +84,15 @@ region: Region
 stride: number
 ```
 
-跨距，内存中每行像素所占的空间。单位：字节（Byte）。stride &gt;= region.size.width * 4，不满足时数据读取异常。
+跨距，内存中每行像素所占的空间。单位：字节（Byte）。
 
 **类型：** number
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-PositionArea-stride: int--><!--Device-PositionArea-stride: int-End-->
 

@@ -14,22 +14,6 @@ Enumerates audio effect flags.
 
 **System API:** This is a system API.
 
-## RENDER_EFFECT_FLAG
-
-```TypeScript
-RENDER_EFFECT_FLAG = 0
-```
-
-Audio render effect.
-
-**Since:** 18
-
-<!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0--><!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-**System API:** This is a system API.
-
 ## CAPTURE_EFFECT_FLAG
 
 ```TypeScript
@@ -41,6 +25,22 @@ Audio capture effect.
 **Since:** 18
 
 <!--Device-EffectFlag-CAPTURE_EFFECT_FLAG = 1--><!--Device-EffectFlag-CAPTURE_EFFECT_FLAG = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+**System API:** This is a system API.
+
+## RENDER_EFFECT_FLAG
+
+```TypeScript
+RENDER_EFFECT_FLAG = 0
+```
+
+Audio render effect.
+
+**Since:** 18
+
+<!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0--><!--Device-EffectFlag-RENDER_EFFECT_FLAG = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 

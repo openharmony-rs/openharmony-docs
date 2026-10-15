@@ -12,7 +12,7 @@ import { inputDevice } from '@kit.InputKit';
 function bindToDisplay(inputDeviceId: number, displayId: number): Promise<void>
 ```
 
-Bind input devices to a display group. Only external USB and Bluetooth mice, touchpads, keyboards, and game controllers are supported. After binding, the device will be fixed to operate on the display group where the specified display is located. This API uses a promise to return the result.
+Binds an input device to a display group. Only external USB and Bluetooth mice, touchpads, keyboards, and gamepads are supported. After binding, the input device operates only on the display group where the specified display resides. This API uses a promise to return the result.
 
 **Since:** 26.0.1
 
@@ -30,7 +30,7 @@ Bind input devices to a display group. Only external USB and Bluetooth mice, tou
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| inputDeviceId | number | Yes | ID of the specified input device. If the input service restarts or the input device is reconnects, its ID may change. The value must be an integer greater than or equal to 0. |
+| inputDeviceId | number | Yes | ID of the input device. If the input service restarts or the input device reconnects, this ID may change. The value must be an integer greater than or equal to 0. |
 | displayId | number | Yes | ID of the target display. The value must be an integer greater than or equal to 0. |
 
 **Return value:**
@@ -43,13 +43,14 @@ Bind input devices to a display group. Only external USB and Bluetooth mice, tou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. The application does not have the required permission. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied. Called by non-system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [3800001](../errorcode-infraredemitter.md#3800001-multimodal-input-service-internal-error) | Input service exception. |
 | [3900001](../errorcode-inputdevice.md#3900001-device-not-exist) | The specified input device does not exist. |
 | [3900004](../errorcode-inputdevice.md#3900004-specified-display-does-not-exist) | The specified display does not exist. |
 | [3900005](../errorcode-inputdevice.md#3900005-unsupported-input-device) | Unsupported input device. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -78,3 +79,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

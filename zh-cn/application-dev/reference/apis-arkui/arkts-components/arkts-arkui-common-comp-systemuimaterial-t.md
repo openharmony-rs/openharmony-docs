@@ -6,6 +6,8 @@ declare type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.
 
 系统材质对象基类。
 
+**类型：** import('../api/@ohos.arkui.uiMaterial').default.Material
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.
 <!--Device-unnamed-declare type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material--><!--Device-unnamed-declare type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.uiMaterial').default.Material

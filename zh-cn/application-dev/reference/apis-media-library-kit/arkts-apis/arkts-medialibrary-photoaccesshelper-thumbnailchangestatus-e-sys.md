@@ -14,22 +14,6 @@ enum ThumbnailChangeStatus
 
 **系统接口：** 此接口为系统接口。
 
-## THUMBNAIL_NOT_EXISTS
-
-```TypeScript
-THUMBNAIL_NOT_EXISTS = 0
-```
-
-缩略图不存在。
-
-**起始版本：** 20
-
-<!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_EXISTS = 0--><!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_EXISTS = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## THUMBNAIL_ADD
 
 ```TypeScript
@@ -46,22 +30,6 @@ THUMBNAIL_ADD = 1
 
 **系统接口：** 此接口为系统接口。
 
-## THUMBNAIL_UPDATE
-
-```TypeScript
-THUMBNAIL_UPDATE = 2
-```
-
-缩略图已更新。
-
-**起始版本：** 20
-
-<!--Device-ThumbnailChangeStatus-THUMBNAIL_UPDATE = 2--><!--Device-ThumbnailChangeStatus-THUMBNAIL_UPDATE = 2-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## THUMBNAIL_NOT_CHANGE
 
 ```TypeScript
@@ -73,6 +41,38 @@ THUMBNAIL_NOT_CHANGE = 3
 **起始版本：** 20
 
 <!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_CHANGE = 3--><!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_CHANGE = 3-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## THUMBNAIL_NOT_EXISTS
+
+```TypeScript
+THUMBNAIL_NOT_EXISTS = 0
+```
+
+缩略图不存在。
+
+**起始版本：** 20
+
+<!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_EXISTS = 0--><!--Device-ThumbnailChangeStatus-THUMBNAIL_NOT_EXISTS = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## THUMBNAIL_UPDATE
+
+```TypeScript
+THUMBNAIL_UPDATE = 2
+```
+
+缩略图已更新。
+
+**起始版本：** 20
+
+<!--Device-ThumbnailChangeStatus-THUMBNAIL_UPDATE = 2--><!--Device-ThumbnailChangeStatus-THUMBNAIL_UPDATE = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

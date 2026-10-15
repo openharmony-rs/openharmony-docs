@@ -16,7 +16,7 @@ function deinitializeEnvironment(): Promise<void>
 
 **起始版本：** 18
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-videoProcessingEngine-function deinitializeEnvironment(): Promise<void>--><!--Device-videoProcessingEngine-function deinitializeEnvironment(): Promise<void>-End-->
 

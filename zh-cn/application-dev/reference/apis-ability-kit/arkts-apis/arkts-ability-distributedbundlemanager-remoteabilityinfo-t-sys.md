@@ -6,6 +6,8 @@ export type RemoteAbilityInfo = _RemoteAbilityInfo
 
 包含远程的ability信息。
 
+**类型：** _RemoteAbilityInfo
+
 **起始版本：** 9
 
 <!--Device-distributedBundleManager-export type RemoteAbilityInfo = _RemoteAbilityInfo--><!--Device-distributedBundleManager-export type RemoteAbilityInfo = _RemoteAbilityInfo-End-->
@@ -13,5 +15,3 @@ export type RemoteAbilityInfo = _RemoteAbilityInfo
 **系统能力：** SystemCapability.BundleManager.DistributedBundleFramework
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _RemoteAbilityInfo

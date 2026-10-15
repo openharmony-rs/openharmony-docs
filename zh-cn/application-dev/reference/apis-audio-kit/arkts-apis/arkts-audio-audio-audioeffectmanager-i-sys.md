@@ -54,6 +54,7 @@ getAudioEffectProperty(): Array<AudioEffectProperty>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,6 +68,8 @@ try {
   console.error(`getAudioEffectProperty ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getSupportedAudioEffectProperty
 
@@ -100,6 +103,7 @@ getSupportedAudioEffectProperty(): Array<AudioEffectProperty>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,6 +117,8 @@ try {
   console.error(`getSupportedAudioEffectProperty ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isAudioSeparationEffectSupported
 
@@ -148,6 +154,7 @@ isAudioSeparationEffectSupported(): boolean
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -156,6 +163,8 @@ import { audio } from '@kit.AudioKit';
 let isSupported: boolean = audioEffectManager.isAudioSeparationEffectSupported();
 console.info(`Audio separation effect is supported: ${isSupported}`);
 ```
+
+<!--DelEnd-->
 
 ## offAudioSeparationEffectEnabledChange
 
@@ -188,6 +197,7 @@ offAudioSeparationEffectEnabledChange(callback?: Callback<boolean>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -195,6 +205,8 @@ import { audio } from '@kit.AudioKit';
 
 audioEffectManager.offAudioSeparationEffectEnabledChange();
 ```
+
+<!--DelEnd-->
 
 ## onAudioSeparationEffectEnabledChange
 
@@ -226,6 +238,7 @@ onAudioSeparationEffectEnabledChange(callback: Callback<boolean>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -235,6 +248,8 @@ audioEffectManager.onAudioSeparationEffectEnabledChange((isEnabled: boolean) => 
   console.info(`Audio separation effect enabled state changed: ${isEnabled}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAudioEffectProperty
 
@@ -266,9 +281,10 @@ setAudioEffectProperty(propertyArray: Array<AudioEffectProperty>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
-| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes: 1. More than one effect property name of the same effect property category are in the input array. 2. The input audioEffectProperties are not supported by the current device. 3. The name or catergory of the input audioEffectProperties is incorrect. |
+| [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. Possible causes:                                                                 1. More than one effect property name of the same effect property category are in the input array.                                                                 2. The input audioEffectProperties are not supported by the current device.                                                                 3. The name or catergory of the input audioEffectProperties is incorrect. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | System error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -283,6 +299,8 @@ try {
   console.error(`setAudioEffectProperty ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## setAudioSeparationEffectEnabled
 
@@ -334,6 +352,7 @@ setAudioSeparationEffectEnabled(enabled: boolean, uid: number, streamId?: number
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Effect is not supported in this device. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs like service died. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -346,6 +365,8 @@ audioEffectManager.setAudioSeparationEffectEnabled(true, 10001).then(() => {
   console.error(`Failed to set audio separation effect enabled. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAudioSeparationEffectVolume
 
@@ -390,6 +411,7 @@ setAudioSeparationEffectVolume(type: AudioSeparationVolumeType, volume: number):
 | [6800104](../errorcode-audio.md#6800104-参数选项不支持) | Effect is not supported in this device. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio service error occurs like service died. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -402,3 +424,5 @@ audioEffectManager.setAudioSeparationEffectVolume(audio.AudioSeparationVolumeTyp
   console.error(`Failed to set audio separation effect volume. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

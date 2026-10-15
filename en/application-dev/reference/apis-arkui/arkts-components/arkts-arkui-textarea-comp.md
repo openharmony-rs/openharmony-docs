@@ -58,9 +58,9 @@ Defines the constructor of TextArea.
 
 ## Examples
 
-### Example 1 (Setting and Obtaining the Cursor Position)
+### Example 1: Setting and Obtaining the Caret Position
 
-Since API version 8, this example implements the setting and obtaining of the cursor position through [controller](arkts-arkui-textarea-comp-textareacontroller-c.md).
+This example shows how to set and obtain the caret position using [controller](arkts-arkui-textarea-comp-textareacontroller-c.md), available since API version 8.
 
 
 
@@ -95,7 +95,7 @@ struct TextAreaExample {
         .backgroundColor('#007DFF')
         .margin(15)
         .onClick(() => {
-          // Set the cursor position after the first character.
+          // Move the caret to after the first entered character.
           this.controller.caretPosition(1);
         })
       Button('Get CaretOffset')
@@ -109,9 +109,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 2 (Setting the Counter)
+### Example 2: Implementing a Counter
 
-Since API version 10, this example implements the counter feature through the [maxLength](#maxlength10) and [showCounter](#showcounter10) attributes.
+This example demonstrates how to implement the character counter functionality using the [maxLength](#maxlength10) and [showCounter](#showcounter10) attributes, both available since API version 10.
 
 
 
@@ -138,9 +138,9 @@ struct TextAreaExample {
         .fontColor('#182431')
         .backgroundColor('#FFFFFF')
         .maxLength(4)
-        // The counter displays the number of characters currently entered by the user over the maximum character limit. The maximum character limit is set through the maxLength() API.
-        // The character counter is displayed when the number of characters currently entered by the user reaches 50% (thresholdPercentage) of the maximum character limit.
-        // When the user sets highlightBorder to false, the red border is disabled. If this parameter is not set, the default value is true.
+        // The character counter is in this format: Number of characters that have been entered/Maximum number of characters allowed, which is specified by maxLength().
+        // The character counter is displayed when the number of characters that have been entered is greater than the maximum number of characters multiplied by 50% (threshold percentage).
+        // When highlightBorder is set to false, the text box border does not turn red when the input exceeds the maximum character limit. The default value is true.
         .showCounter(true, { thresholdPercentage: 50, highlightBorder: true })
         .onChange((value: string) => {
           this.text = value;
@@ -150,11 +150,11 @@ struct TextAreaExample {
 }
 ```
 
-### Example 3 (Setting a Custom Keyboard)
+### Example 3: Implementing a Custom Keyboard
 
-This example uses the [customKeyboard](#customkeyboard10) attribute (available since API version 10) to set the input parameter type in value to [CustomBuilder](ts-types.md#custombuilder8) and ComponentContent, respectively, thereby implementing a custom keyboard.
+This example implements a custom keyboard using the [customKeyboard](#customkeyboard10) attribute (available since API version 10) to set the input parameter type in value to [CustomBuilder](ts-types.md#custombuilder8) and ComponentContent.
 
-Since API version 22, the [customKeyboard](#customkeyboard10) attribute supports the input parameter type ComponentContent.
+Since API version 22, ComponentContent is added to the input parameter type of [customKeyboard](#customkeyboard10).
 
 
 
@@ -175,7 +175,7 @@ function CustomKeyboardBuilder(builderParams: BuilderParams) {
   Column() {
     Row() {
       Button('x').onClick(() => {
-        // Close the custom keyboard.
+        // Disable the custom keyboard.
         builderParams.controller.stopEditing();
       }).margin(10)
     }
@@ -221,9 +221,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 4 (Setting the Enter Key Type of the Input Method)
+### Example 4: Setting the Enter Key Type
 
-Since API version 11, this example uses the [enterKeyType](#enterkeytype11) attribute to dynamically switch the Enter key type of the input method.
+This example shows how to use the [enterKeyType](#enterkeytype11) attribute, which is supported since API version 11, to dynamically change the effect of the Enter key on the soft keyboard.
 
 
 
@@ -240,7 +240,7 @@ struct TextAreaExample {
 
   build() {
     Column({ space: 20 }) {
-      TextArea({ placeholder: 'Please enter the username', text: this.text })
+      TextArea({ placeholder: 'Enter user name', text: this.text })
         .width(380)
         .enterKeyType(this.enterTypes[this.index])
         .onChange((value: string) => {
@@ -258,9 +258,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 5 (Setting Text Line Break Rules)
+### Example 5: Setting Text Wrapping Rules
 
-Since API version 12, this example uses the [wordBreak](#wordbreak12) attribute to implement the effects of TextArea under different line break rules.
+This example demonstrates the effects of different text wrapping rules using the [wordBreak](#wordbreak12) attribute, available since API version 12.
 
 
 
@@ -271,28 +271,28 @@ Since API version 12, this example uses the [wordBreak](#wordbreak12) attribute 
 struct TextAreaExample {
   build() {
     Column() {
-      Text('Style with wordBreak set to NORMAL:').fontSize(16).fontColor(0xFF0000)
+      Text('wordBreak is set to NORMAL: ').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.NORMAL)
-      Text('English text, style with wordBreak set to BREAK_ALL:').fontSize(16).fontColor(0xFF0000)
+      Text('English text with wordBreak set to BREAK_ALL: ').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.BREAK_ALL)
-      Text('Chinese text, style with wordBreak set to BREAK_ALL:').fontSize(16).fontColor(0xFF0000)
+      Text('Chinese text with wordBreak set to BREAK_ALL: ').fontSize(16).fontColor(0xFF0000)
       TextArea({
-        text: 'A multi-line text input component. When the entered text content exceeds the component width, it automatically wraps to a new line. \n When the height is not set, the component has no default height and adapts its height to the content. When the width is not set, it fills the maximum width by default.'
+        text: '多行文本输入框组件，当输入的文本内容超过组件宽度时会自动换行显示。\n高度未设置时，组件无默认高度，自适应内容高度。宽度未设置时，默认撑满最大宽度。'
       })
         .fontSize(16)
         .border({ width: 1 })
         .wordBreak(WordBreak.BREAK_ALL)
-      Text('Style with wordBreak set to BREAK_WORD:').fontSize(16).fontColor(0xFF0000)
+      Text('wordBreak is set to BREAK_WORD: ').fontSize(16).fontColor(0xFF0000)
       TextArea({
         text: 'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.'
       })
@@ -304,9 +304,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 6 (Setting Text Style)
+### Example 6: Setting the Text Style
 
-Since API version 12, this example demonstrates text effects in different styles through the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes.
+This example showcases various text styles by using the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes, which are supported since API version 12.
 
 
 
@@ -352,9 +352,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 7 (Setting Font Feature Effects)
+### Example 7: Setting Text Feature Effects
 
-Since API version 12, this example uses the [fontFeature](#fontfeature12) attribute to implement the display effect of text under different font features.
+This example demonstrates how to display text with various typographic features using the [fontFeature](#fontfeature12) attribute, available since API version 12.
 
 
 
@@ -383,9 +383,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 8 (Custom Keyboard Avoidance)
+### Example 8: Setting Custom Keyboard Avoidance
 
-This example uses the [customKeyboard](#customkeyboard10) (available since API version 10) attribute to configure the [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12) (available since API version 12) interface to implement custom keyboard avoidance.
+This example implements the custom keyboard avoidance effect by configuring the [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12) API (available since API version 12) through the [customKeyboard](#customkeyboard10) attribute (available since API version 10).
 
 
 
@@ -399,13 +399,13 @@ struct TextAreaExample {
   @State height1: string | number = '80%';
   @State supportAvoidance: boolean = true;
 
-  // Custom keyboard component
+  // Create a custom keyboard component.
   @Builder
   CustomKeyboardBuilder() {
     Column() {
       Row() {
         Button('x').onClick(() => {
-          // Close the custom keyboard.
+          // Disable the custom keyboard.
           this.controller.stopEditing();
         }).margin(10)
       }
@@ -444,7 +444,7 @@ struct TextAreaExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      TextArea({ controller: this.controller, text: this.inputValue })// Bind the custom keyboard.
+      TextArea({ controller: this.controller, text: this.inputValue }) // Bind the custom keyboard.
         .height(100)
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
@@ -454,9 +454,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 9 (Setting Text Auto-Adaptation)
+### Example 9: Setting Text Auto-Adaptation
 
-Since API version 12, this example demonstrates the effect of auto-adaptive font size through the [minFontSize](#minfontsize12), [maxFontSize](#maxfontsize12), and [heightAdaptivePolicy](#heightadaptivepolicy12) attributes.
+This example shows how to implement adaptive font sizing for text through the [minFontSize](#minfontsize12), [maxFontSize](#maxfontsize12), and [heightAdaptivePolicy](#heightadaptivepolicy12) attributes, available since API version 12.
 
 
 
@@ -495,9 +495,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 10 (Setting Text Line Spacing)
+### Example 10: Setting the Text Line Spacing
 
-Since API version 12, this example uses the [lineSpacing](#linespacing12) attribute to show how text is displayed under different line spacing. In addition, by configuring the onlyBetweenLines attribute (since API version 20) in [LineSpacingOptions](ts-text-common.md#linespacingoptions20), you can set whether the line spacing of text takes effect only between lines.
+This example demonstrates the display effect of text under different line spacing settings through the [lineSpacing](#linespacing12) attribute, available since API version 12. The onlyBetweenLines attribute in [LineSpacingOptions](ts-text-common.md#linespacingoptions20) (available since API version 20) controls whether line spacing applies only between lines.
 
 
 
@@ -536,9 +536,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 11 (Setting Auto-Fill)
+### Example 11: Setting Autofill
 
-Since API version 12, this example implements text auto-fill through the [contentType](#contenttype12) and [enableAutoFill](#enableautofill12) attributes.
+This example illustrates how to implement the autofill feature for text input using the [contentType](#contenttype12) and [enableAutoFill](#enableautofill12) attributes, available since API version 12.
 
 ```TypeScript
 // xxx.ets
@@ -549,7 +549,7 @@ struct TextAreaExample {
 
   build() {
     Column() {
-      // Email address auto-fill type.
+      // Email address autofill.
       TextArea({ placeholder: 'input your email...' })
         .width('95%')
         .height(40)
@@ -557,7 +557,7 @@ struct TextAreaExample {
         .contentType(ContentType.EMAIL_ADDRESS)
         .enableAutoFill(true)
         .maxLength(20)
-      // Street address auto-fill type.
+      // Full street address autofill.
       TextArea({ placeholder: 'input your street address...' })
         .width('95%')
         .height(40)
@@ -570,9 +570,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 12 (Setting the Line Breaking Rule)
+### Example 12: Setting Line Break Rules
 
-Since API version 12, this example uses the [lineBreakStrategy](#linebreakstrategy12) attribute to implement the effects of TextArea under different line breaking rules.
+This example demonstrates the effects of different line break rules using the [lineBreakStrategy](#linebreakstrategy12) attribute, available since API version 12.
 
 
 
@@ -600,7 +600,7 @@ struct TextAreaExample {
         .width('100%')
         .lineBreakStrategy(this.lineBreakStrategy[this.lineBreakStrategyIndex])
       Row() {
-        Button('Current lineBreakStrategy mode:' + this.lineBreakStrategyStr[this.lineBreakStrategyIndex]).onClick(() => {
+        Button('lineBreakStrategy Value: ' + this.lineBreakStrategyStr[this.lineBreakStrategyIndex]).onClick(() => {
           this.lineBreakStrategyIndex++;
           if (this.lineBreakStrategyIndex > (this.lineBreakStrategyStr.length - 1)) {
             this.lineBreakStrategyIndex = 0;
@@ -612,9 +612,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 13 (Supporting Insert and Delete Callbacks)
+### Example 13: Setting Insert and Delete Callbacks
 
-Since API version 12, this example implements the insert and delete functions through the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12), and [onDidDelete](#ondiddelete12) APIs.
+This example showcases the implementation of insert and delete operations using the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12), and [onDidDelete](#ondiddelete12) APIs, available since API version 12.
 
 
 
@@ -634,7 +634,7 @@ struct TextAreaExample {
   build() {
     Row() {
       Column() {
-        TextArea({ text: 'TextArea supports inserting callback text' })
+        TextArea({ text: 'Insert callbacks' })
           .width(300)
           .height(60)
           .onWillInsert((info: InsertValue) => {
@@ -652,7 +652,7 @@ struct TextAreaExample {
         Text('insertValue:' + this.insertValue + '  insertOffset:' + this.insertOffset).height(30)
         Text('currentValue_1:' + this.currentValue_1).height(30)
 
-        TextArea({ text: 'TextArea supports deleting callback text b' })
+        TextArea({ text: 'Delete callbacks' })
           .width(300)
           .height(60)
           .onWillDelete((info: DeleteValue) => {
@@ -680,9 +680,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 14 (Custom Menu for Text Extension)
+### Example 14: Setting Custom Menu Extensions
 
-Since API version 12, this example uses the [editMenuOptions](#editmenuoptions12) API to set the text content, icon, and callback of custom menu extension items. In addition, menu data can be set in the [onPrepareMenu](ts-text-common.md#properties-1) callback (since API version 20).
+This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can also be configured through the [onPrepareMenu](ts-text-common.md#properties-1) callback (available since API version 20).
 
 
 
@@ -694,7 +694,7 @@ struct TextAreaExample {
   @State text: string = 'TextArea editMenuOptions';
   @State endIndex: number = 0;
   onCreateMenu = (menuItems: Array<TextMenuItem>) => {
-    // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+    // Replace $r('app.media.startIcon') with the image resource file you use.
     let item1: TextMenuItem = {
       content: 'create1',
       icon: $r('app.media.startIcon'),
@@ -708,7 +708,7 @@ struct TextAreaExample {
     // TextMenuItemId.autoFill is supported since API version 23.
     let targetIndex = menuItems.findIndex(item => item.id.equals(TextMenuItemId.autoFill));
     if (targetIndex !== -1) {
-      menuItems.splice(targetIndex, 1); // Delete one element from the target index.
+      menuItems.splice(targetIndex, 1); // Delete an element at the target index.
     }
     menuItems.push(item1);
     menuItems.unshift(item2);
@@ -734,7 +734,7 @@ struct TextAreaExample {
     return false;
   }
   onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
-    // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+    // Replace $r('app.media.startIcon') with the image resource file you use.
     let item1: TextMenuItem = {
       content: 'prepare1_' + this.endIndex,
       icon: $r('app.media.startIcon'),
@@ -766,17 +766,17 @@ struct TextAreaExample {
 }
 ```
 
-### Example 15 (Setting the Text Ellipsis Mode)
+### Example 15: Setting Text Overflow
 
-This example uses the [textOverflow](#textoverflow12), [ellipsisMode](#ellipsismode18), and [maxLines](#maxlines10) attributes to demonstrate the effect of truncating overlong text and adjusting the ellipsis position. Through the MULTILINE_START and MULTILINE_CENTER types, it implements the effect of placing the ellipsis at the beginning and in the middle of a line in single-line and multi-line text scenarios.
+This example demonstrates text ellipsis for overflow content and ellipsis position adjustment using the [textOverflow](#textoverflow12), [ellipsisMode](#ellipsismode18), and [maxLines](#maxlines10) attributes. The MULTILINE_START and MULTILINE_CENTER types are used to implement ellipsis at the start and middle positions for both single-line and multi-line text scenarios.
 
-Since API version 10, the [maxLines](#maxlines10) attribute is used to set the maximum number of lines for text display.
+The [maxLines](#maxlines10) attribute can be used to set the maximum number of lines to display, available since API version 10.
 
-Since API version 12, the [textOverflow](#textoverflow12) attribute is used to set how text is displayed when it is overlong.
+The [textOverflow](#textoverflow12) attribute can be used to set the display mode for overflow text, available since API version 12.
 
-Since API version 18, the [ellipsisMode](#ellipsismode18) attribute is used to set the ellipsis position.
+The [ellipsisMode](#ellipsismode18) attribute can be used to set the ellipsis position, available since API version 18.
 
-Since API version 24, [EllipsisMode](ts-appendix-enums.md#ellipsismode11) has added the MULTILINE_START and MULTILINE_CENTER enums.
+The MULTILINE_START and MULTILINE_CENTER enums are added to [EllipsisMode](ts-appendix-enums.md#ellipsismode11) since API version 24.
 
 
 
@@ -816,25 +816,25 @@ struct EllipsisModeExample {
         .fontSize(30)
         .margin(30)
 
-      Button('Change ellipsisMode mode:' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick(() => {
+      Button('ellipsisMode Value: ' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick(() => {
         this.ellipsisModeIndex++;
         if (this.ellipsisModeIndex > (this.ellipsisModeStr.length - 1)) {
           this.ellipsisModeIndex = 0;
         }
       }).fontSize(20)
-      Button('Change textOverflow mode:' + this.textOverflowStr[this.textOverflowIndex]).onClick(() => {
+      Button('textOverflow Value: ' + this.textOverflowStr[this.textOverflowIndex]).onClick(() => {
         this.textOverflowIndex++;
         if (this.textOverflowIndex > (this.textOverflowStr.length - 1)) {
           this.textOverflowIndex = 0;
         }
       }).fontSize(20)
-      Button('Change maxLines size:' + this.maxLinesStr[this.maxLinesIndex]).onClick(() => {
+      Button('maxLines Value: ' + this.maxLinesStr[this.maxLinesIndex]).onClick(() => {
         this.maxLinesIndex++;
         if (this.maxLinesIndex > (this.maxLinesStr.length - 1)) {
           this.maxLinesIndex = 0;
         }
       }).fontSize(20)
-      Button('Change Style Size:' + this.styleAreaStr[this.styleAreaIndex]).onClick(() => {
+      Button('Style Value: ' + this.styleAreaStr[this.styleAreaIndex]).onClick(() => {
         this.styleAreaIndex++;
         if (this.styleAreaIndex > (this.styleAreaStr.length - 1)) {
           this.styleAreaIndex = 0;
@@ -845,11 +845,11 @@ struct EllipsisModeExample {
 }
 ```
 
-### Example 16 (Customizing Copy, Cut, and Paste)
+### Example 16: Implementing Custom Copy, Cut, and Paste Behavior
 
-This example uses [onCopy](#oncopy8), [onCut](#oncut8), [onPaste](#onpaste), [onWillCopy](#onwillcopy), and [onWillCut](#onwillcut) to demonstrate how to listen for the copy, cut, and paste buttons in the text selection menu, how to block the system paste function and implement a custom paste capability, how to block the system copy function, and how to block the system cut function. In addition, the [maxFontScale](#maxfontscale18) and [minFontScale](#minfontscale18) attributes can be used to set the maximum and minimum font scale factors of the text.
+This example shows how to use [onCopy](#oncopy8), [onCut](#oncut8), [onPaste](#onpaste), [onWillCopy](#onwillcopy), and [onWillCut](#onwillcut) to listen to the copy, cut, and paste buttons of the text selection menu, to shield the system paste feature and implement the custom paste capability, to shield the system copy feature, and to shield the system cut feature. In addition, [maxFontScale](#maxfontscale18) and [minFontScale](#minfontscale18) can be used to set the maximum and minimum font scale factors of the text.
 
-Since API version 26.0.0, the [onWillCopy](#onwillcopy) and [onWillCut](#onwillcut) APIs are added.
+The [onWillCopy](#onwillcopy) and [onWillCut](#onwillcut) APIs are added since API version 26.0.0.
 
 
 
@@ -875,7 +875,7 @@ struct TextAreaExample {
         .fontStyle(FontStyle.Italic)
         .fontWeight(FontWeight.Bold)
         .fontFamily('HarmonyOS Sans')
-        .inputFilter('[a-zA-Z]+', (value) => { // Allow only letters.
+        .inputFilter('[a-zA-Z]+', (value) => { // Only alphabetic input is allowed.
           console.error(`unsupported char ${value}`);
         })
         .copyOption(CopyOptions.LocalDevice)
@@ -890,7 +890,7 @@ struct TextAreaExample {
         .maxFontScale(2)
         .enablePreviewText(true)
         .enableHapticFeedback(true)
-        .stopBackPress(false)// Hand over the back key to other components.
+        .stopBackPress(false) // Delegate back press to other components.
         .width(336)
         .height(56)
         .margin(20)
@@ -901,7 +901,7 @@ struct TextAreaExample {
         .onCopy((value) => {
           console.info(`copy ${value}`);
         })
-        // Support onWillCopy since API version 26.0.0.
+        // onWillCopy is supported since API version 26.0.0.
         .onWillCopy((value: string) => {
           console.info(`on will copy ${value}`);
           return false;
@@ -909,13 +909,13 @@ struct TextAreaExample {
         .onCut((value) => {
           console.info(`cut ${value}`);
         })
-        // Support onWillCut since API version 26.0.0.
+        // onWillCut is supported since API version 26.0.0.
         .onWillCut((value: string) => {
           console.info(`on will cut ${value}`);
           return false;
         })
         .onPaste((value, event) => {
-          // Block the system paste function. Developers can implement it on their own.
+          // Prevent the default system paste behavior and implement custom logic.
           if (event.preventDefault) {
             event.preventDefault();
           }
@@ -935,13 +935,13 @@ struct TextAreaExample {
 
 ### Example 17: Setting the Minimum and Maximum Font Scale Factors
 
-Since API version 18, this example uses [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18) to set the minimum and maximum font display range (this example uses system APIs, so the application type must be changed to a system application; for details, see [Available APIs](../../../reference/development-intro-api.md#available-apis)).
+This example demonstrates how to set the minimum and maximum font scale factors using [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18), available since API version 18. (This example uses system APIs. The application type needs to be adjusted to a system application. For details, see [Available APIs](../../../reference/development-intro-api.md#available-apis).)
 
 ```TypeScript
-// Enable the application to scale with the system.
-// Create the profile folder in AppScope/resources/base.
-// Create the configuration.json file in AppScope/resources/base/profile.
-// Add the following code to AppScope/resources/base/profile/configuration.json.
+// Enable application font scaling to follow system settings.
+// Create a new directory named profile in the following path: AppScope/resources/base.
+// Inside the newly created profile directory, create a file named configuration.json.
+// Add the following code to the configuration.json file:
 {
   "configuration": {
     "fontSizeScale": "followSystem",
@@ -951,7 +951,7 @@ Since API version 18, this example uses [minFontScale](#minfontscale18) and [max
 ```
 
 ```TypeScript
-// Modify the following code in AppScope/app.json5.
+// Modify the app.json5 file in AppScope as follows:
 {
   "app": {
     "bundleName": "com.example.myapplication",
@@ -982,8 +982,8 @@ struct TextAreaExample {
     let configInit: Configuration = {
       fontSizeScale: scale
     };
-    // Update the configuration - font size, and call the system API to update the font configuration.
-    // Configure the ohos.permission.UPDATE_CONFIGURATION permission in the requestPermissions field of the module.json5 file in the project.
+    // Update system font scaling.
+    // Add the ohos.permission.UPDATE_CONFIGURATION permission to the requestPermissions field in the module.json5 file of the project.
     abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to updateConfiguration. Code: ${err.code}, message: ${err.message}`);
@@ -997,15 +997,15 @@ struct TextAreaExample {
   build() {
     Column() {
       Column({ space: 30 }) {
-        Text('Adjust the maximum and minimum font scale factors for text display through minFontScale and maxFontScale.')
+        Text('Use minFontScale and maxFontScale to adjust the maximum and minimum font scale factors of the text display.')
         TextArea({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
-          text: 'Adjust the maximum and minimum font scale factors for text display through minFontScale and maxFontScale.'
+          text: 'Use minFontScale and maxFontScale to adjust the maximum and minimum font scale factors of the text display.'
         })
-          .minFontScale(this.minFontScale)// Set the minimum font scale factor. If the parameter is undefined, the system default scale factor is used.
-          .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is undefined, the system default scale factor is used.
+          .minFontScale(this.minFontScale) // Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
+          .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is set to undefined, the default scale factor is used.
       }.width('100%')
-      // The following buttons are used only to adjust the font scale factor and are not shown in the sample figure.
+      // The following buttons are used only to adjust the font size and are not displayed in the example.
       Column() {
         Row() {
           Button('1x').onClick(() => {
@@ -1030,9 +1030,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 18 (Setting the Text Content of a Selected Area)
+### Example 18: Setting Text Selection for a Specified Region
 
-Since API version 10, this example uses [setTextSelection](#settextselection10) to show how to set the text content of a selected area and the menu visibility policy.
+This example demonstrates how to set text selection for a specified region and the display/hide strategy of the menu using the [setTextSelection](#settextselection10) API, available since API version 10.
 
 
 
@@ -1071,11 +1071,11 @@ struct TextAreaExample {
 }
 ```
 
-### Example 19 (Setting Text Stroke)
+### Example 19: Setting Text Stroke
 
-Since API version 20, this example sets the stroke width and color of text through the [strokeWidth](#strokewidth20) and [strokeColor](#strokecolor20) attributes.
+This example demonstrates how to set the stroke width and color for text using the [strokeWidth](#strokewidth20) and [strokeColor](#strokecolor20) attributes, available since API version 20.
 
-Since API version 26.0.0, the [strokeJoinStyle](#strokejoinstyle) API is added to set the text stroke join style.
+The [strokeJoinStyle](#strokejoinstyle) API is added since API version 26.0.0 to set the stroke join style for text.
 
 
 
@@ -1119,9 +1119,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 20 (Setting Auto Spacing Between Chinese and Western Text)
+### Example 20: Configuring Automatic Spacing Between Chinese and Western Text
 
-Since API version 20, this example sets auto spacing between Chinese and Western text through the [enableAutoSpacing](#enableautospacing20) attribute.
+This example shows how to configure automatic spacing between Chinese and Western characters using the [enableAutoSpacing](#enableautospacing20) attribute, available since API version 20.
 
 
 
@@ -1133,11 +1133,11 @@ struct TextAreaExample {
   build() {
     Row() {
       Column() {
-        Text('Enable auto spacing between Chinese and Western text').margin(5)
-        TextArea({text: 'Chinese and Western Auto Spacing'})
+        Text('Automatic spacing: Enabled').margin(5)
+        TextArea({text: '中文Text'})
           .enableAutoSpacing(true)
-        Text('Disable auto spacing between Chinese and Western text').margin(5)
-        TextArea({text: 'Chinese and Western Auto Spacing'})
+        Text('Automatic spacing: Disabled').margin(5)
+        TextArea({text: '中文Text'})
           .enableAutoSpacing(false)
       }.height('100%')
     }
@@ -1146,9 +1146,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 21 (Setting the Maximum Number of Lines)
+### Example 21: Setting the Maximum Number of Lines
 
-Since API version 20, this example uses the [maxLines](#maxlines20) attribute to set the maximum number of lines to display. When the content exceeds the maximum number of lines, it can be scrolled.
+This example shows how to set the maximum number of lines using the [maxLines](#maxlines20) attribute, available since API version 20. The text becomes scrollable when the maximum number of lines is exceeded.
 
 
 
@@ -1175,9 +1175,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 22 (Setting the Minimum Number of Lines)
+### Example 22: Setting the Minimum Number of Lines
 
-Since API version 20, this example sets the minimum number of lines to display through the [minLines](#minlines20) attribute.
+This example shows how to set the minimum number of lines using the [minLines](#minlines20) attribute, available since API version 20.
 
 
 
@@ -1204,9 +1204,9 @@ struct Index {
 }
 ```
 
-### Example 23 (Setting the Character Count Color and Overflow Character Color)
+### Example 23 Setting the Normal and Overflow Colors of the Character Counter
 
-Since API version 22, this example uses the counterTextColor and counterTextOverflowColor of [showCounter](#showcounter10) to set the character count color and the overflow character color.
+This example demonstrates how to set the normal and overflow colors of the character counter using the counterTextColor and counterTextOverflowColor parameters (available since API version 22) of the [showCounter](#showcounter10) attribute.
 
 
 
@@ -1246,9 +1246,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 24 (Setting the Scrollbar Color)
+### Example 24 Setting the Scrollbar Color
 
-Since API version 22, this example sets the scrollbar color through the [scrollBarColor](#scrollbarcolor22)22 attribute.
+This example demonstrates how to set the color of the scrollbar using the [scrollBarColor](#scrollbarcolor22) attribute, available since API version 22.
 
 
 
@@ -1306,11 +1306,11 @@ struct Index {
 }
 ```
 
-### Example 25 (Setting the Placeholder Rich Text Style)
+### Example 25: Setting the Placeholder Rich Text Style
 
-Since API version 22, this example sets the placeholder rich text style through the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API.
+This example demonstrates how to set the placeholder rich text style using the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API, available since API version 22.
 
-The original text supports multiple languages. For content in different languages, the style start index subscript start and length may differ. The following uses Chinese as an example to set the rich text style.
+The base text supports multiple languages, and start and length values vary by language. This example implements rich text styling on Chinese text.
 
 
 
@@ -1322,7 +1322,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Component
 struct TextAreaExample {
   styledString: MutableStyledString =
-    new MutableStyledString('Paragraph title \n Body text paragraph 1 \n Body text paragraph 2 indent 40 vp\n Body text paragraph 3 textAlign center-aligned',
+    new MutableStyledString('Paragraph title\nFirst paragraph\nSecond paragraph with indent 40 vp\nThird paragraph with textAlign set to center alignment',
       [
         {
           start: 0,
@@ -1377,9 +1377,9 @@ struct TextAreaExample {
 }
 ```
 
-### Example 26 (Setting IME Extension Information)
+### Example 26 Setting Input Method Extension Information
 
-Since API version 22, this example uses [IMEClient](ts-text-common.md#imeclient20) to set the IME extension information through setExtraConfig.
+This example demonstrates how to set input method extension information using the setExtraConfig method of [IMEClient](ts-text-common.md#imeclient20), available since API version 22.
 
 ```TypeScript
 // xxx.ets
@@ -1388,12 +1388,12 @@ Since API version 22, this example uses [IMEClient](ts-text-common.md#imeclient2
 struct TextAreaExample {
   build() {
     Column() {
-      TextArea({ text: 'Execute the onWillAttachIME callback before the input method is pulled up' })
+      TextArea({ text: 'Execute the onWillAttachIME callback before starting the input method.'})
         .onWillAttachIME((client: IMEClient) => {
           client.setExtraConfig({
             customSettings: {
-              name: 'TextArea', // Custom attribute
-              id: client.nodeId // Custom attribute
+              name: 'TextArea', // Custom property
+              id: client.nodeId // Custom property
             }
           })
         })
@@ -1402,13 +1402,13 @@ struct TextAreaExample {
 }
 ```
 
-### Example 27 (Setting Leading Punctuation Compression and Trailing Punctuation Overhang)
+### Example 27: Setting Leading Punctuation Compression and Trailing Punctuation Hanging
 
-This example uses the [compressLeadingPunctuation](#compressleadingpunctuation23) API to set leading punctuation compression, and the [punctuationOverflow](#punctuationoverflow) API to set trailing punctuation overhang.
+This example shows how to use [compressLeadingPunctuation](#compressleadingpunctuation23) to set the punctuation compression at the beginning of a line, and use [punctuationOverflow](#punctuationoverflow) to set the punctuation hanging at the end of a line.
 
-When a punctuation mark with spacing on its left is at the beginning of a line, the spacing is compressed directly to the left boundary.
+If the punctuation with spacing on the left is at the beginning of the line, the punctuation directly compresses the spacing to the left boundary.
 
-After the text wraps automatically, if the remaining content (including the punctuation mark) can fit into the previous line, the punctuation overhang takes effect.
+After the text automatically wraps, if the remaining content (including punctuation) can be placed in the previous line, the punctuation hanging takes effect.
 
 Since API version 23, the compressLeadingPunctuation API is added.
 
@@ -1435,16 +1435,16 @@ struct PunctuationDemo {
         .width('50%')
 
       Column() {
-        Button('Enable leading punctuation compression').onClick(() => {
+        Button('Enable Leading Punctuation Compression').onClick(() => {
           this.compressLeadingPunctuation = true;
         }).margin(5)
-        Button('Disable leading punctuation compression').onClick(() => {
+        Button('Disable Leading Punctuation Compression').onClick(() => {
           this.compressLeadingPunctuation = false;
         }).margin(5)
-        Button('Enable trailing punctuation overhang').onClick(() => {
+        Button('Enable Trailing Punctuation Hanging').onClick(() => {
           this.punctuationOverflow = true;
         }).margin(5)
-        Button('Disable trailing punctuation overhang').onClick(() => {
+        Button('Disable Trailing Punctuation Hanging').onClick(() => {
           this.punctuationOverflow = false;
         }).margin(5)
       }
@@ -1453,11 +1453,11 @@ struct PunctuationDemo {
 }
 ```
 
-### Example 28 (Setting Adaptive Spacing)
+### Example 28: Setting Adaptive Spacing
 
-This example uses the [includeFontPadding](#includefontpadding23) API to increase the spacing of the first and last lines, and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
+This example uses the [includeFontPadding](#includefontpadding23) API to add the spacing of the first and last lines and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
 
-Since API version 23, the [includeFontPadding](#includefontpadding23) and [fallbackLineSpacing](#fallbacklinespacing23) APIs are added.
+The [includeFontPadding](#includefontpadding23) and [fallbackLineSpacing](#fallbacklinespacing23) APIs are supported since API version 23.
 
 
 
@@ -1476,7 +1476,7 @@ struct Index {
     Column() {
       TextArea({
         text: this.displayText,
-        placeholder: 'Please enter content...'
+        placeholder: 'Enter'
       })
         .includeFontPadding(this.include)
         .fallbackLineSpacing(this.fallback)
@@ -1489,14 +1489,14 @@ struct Index {
 
       Scroll() {
         Column() {
-          // --- Buttons related to includeFontPadding ---
+          // --- Buttons related to IncludeFontPadding ---
           Button('Set includePadding: ' + this.include)
             .onClick(() => {
               this.include = this.include === false ? true : false;
             })
             .margin({ bottom: 10 })
 
-          // --- Buttons related to fallbackLineSpacing ---
+          // --- Button related to FallbackLineSpacing ---
           Button('Set fallbackLineSpacing: ' + this.fallback)
             .onClick(() => {
               this.fallback = this.fallback === false ? true : false;
@@ -1520,11 +1520,11 @@ struct Index {
 }
 ```
 
-### Example 29 (Setting the Backplate Style During Text Dragging)
+### Example 29: Setting the Drag Preview Style for Text Being Dragged
 
-This example uses the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API to set the backplate style during text dragging.
+This example demonstrates how to set the drag preview style for text being dragged using the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API.
 
-Since API version 23, the selectedDragPreviewStyle API is added.
+The selectedDragPreviewStyle API is supported since API version 23.
 
 
 
@@ -1547,11 +1547,11 @@ struct TextAreaTest {
 }
 ```
 
-### Example 30 (Deleting the Last Character in the Text Box)
+### Example 30: Deleting the Last Character in a Text Box
 
-This example calls the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API to delete the last character in the text box.
+This example demonstrates how to delete the last character in a text box using the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API.
 
-Since API version 23, the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API is added.
+The [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API is added since API version 23.
 
 
 
@@ -1563,7 +1563,7 @@ struct Page {
 
   build() {
     Column() {
-      TextArea({ text: 'TextArea Deletebackward example', controller: this.controller })
+      TextArea({ text: 'Deletebackward example in TextArea', controller: this.controller })
       Button('Delete backward')
         .onClick(() => {
           this.controller.deleteBackward();
@@ -1573,11 +1573,11 @@ struct Page {
 }
 ```
 
-### Example 31 (Setting the Text Direction)
+### Example 31: Setting the Text Layout Direction
 
-This example uses [textDirection](#textdirection23) to set the text direction.
+This example demonstrates how to set the text layout direction using the [textDirection](#textdirection23) API.
 
-The textDirection API is available since API version 23.
+The textDirection API is supported since API version 23.
 
 
 
@@ -1590,7 +1590,7 @@ struct TextAreaExample {
 
   build() {
     Column() {
-      Text('TextArea text direction RTL, layout direction default')
+      Text('TextArea text direction: RTL, component layout direction: default')
         .fontSize(12).width('90%')
       TextArea({ text: this.text })
         .width(336)
@@ -1600,7 +1600,7 @@ struct TextAreaExample {
         .textDirection(TextDirection.RTL)
         .showCounter(true)
         .maxLength(50)
-      Text('TextArea text direction RTL, layout direction default, text horizontal alignment LEFT')
+      Text('TextArea text direction: RTL, component layout direction: default, horizontal alignment: LEFT')
         .fontSize(12).width('90%')
       TextArea({ text: this.text })
         .width(336)
@@ -1611,7 +1611,7 @@ struct TextAreaExample {
         .textAlign(TextAlign.LEFT)
         .showCounter(true)
         .maxLength(50)
-      Text('TextArea text direction LTR, layout direction Rtl')
+      Text('TextArea text direction: LTR, component layout direction: Rtl')
         .fontSize(12).width('90%')
       TextArea({ text: this.text })
         .width(336)
@@ -1627,11 +1627,11 @@ struct TextAreaExample {
 }
 ```
 
-### Example 32 (Scrolling Text in a Specified Range into the Visible Area)
+### Example 32: Scrolling the Text in a Specified Range to the Visible Area
 
-This example uses [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) to scroll text outside the visible area into the visible area.
+This example demonstrates how to scroll the text in a specified range to the visible area using the [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) API.
 
-Since API version 23, the scrollToVisible API is added.
+The scrollToVisible API is added since API version 23.
 
 
 
@@ -1648,7 +1648,7 @@ struct TextAreaExample {
       TextArea({ text: this.text, controller: this.controller })
         .width(336)
         .height(150)
-      Button('Scroll text to the visible area').onClick(() => {
+      Button('Scroll Text to Visible Area').onClick(() => {
         this.controller.scrollToVisible({ start: 110, end: 115 });
       })
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
@@ -1662,11 +1662,11 @@ struct TextAreaExample {
 }
 ```
 
-### Example 33 (Setting Horizontal Scrolling)
+### Example 33: Setting Horizontal Scrolling
 
-This example sets horizontal scrolling through [horizontalScrolling](#horizontalscrolling24).
+This example demonstrates how to set horizontal scrolling using [horizontalScrolling](#horizontalscrolling24).
 
-Since API version 24, the horizontalScrolling API is added.
+The horizontalScrolling API is added since API version 24.
 
 
 
@@ -1698,13 +1698,13 @@ Hello World Hello World Hello World Hello World Hello World\n
 }
 ```
 
-### Example 34 (Setting Whether to Enable Orphan Character Optimization During Text Layout)
+### Example 34: Enabling/Disabling Orphan Character Optimization During Text Typesetting
 
-This example uses the [orphanCharOptimization](#orphancharoptimization) API to enable orphan character optimization, ensuring that no orphan character appears on the last line of a paragraph.
+This example demonstrates how to use the [orphanCharOptimization](#orphancharoptimization) API to enable/disable orphan character optimization, ensuring no orphan character appears in the last line of a paragraph.
 
-Since API version 26.0.0, the orphanCharOptimization API is added.
+The orphanCharOptimization API is supported since API version 26.0.0.
 
-The effect shown in the figure may vary depending on the device size and is for reference only.
+The display effect may vary depending on the device sizes and is for reference only.
 
 
 
@@ -1713,11 +1713,11 @@ The effect shown in the figure may vary depending on the device size and is for 
 @Entry
 @Component
 struct TextExample {
-  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaatextaaaaaaaaaaaaa';
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本aaaaaaaaaaaaa';
 
   build() {
     Column({ space: 3 }) {
-      Text('TextArea does not enable orphan character optimization')
+      Text('TextArea disables orphan character optimization')
         .fontSize(12).width('90%').margin(5)
       TextArea({ text: this.text })
         .fontSize(20)
@@ -1737,9 +1737,9 @@ struct TextExample {
 }
 ```
 
-### Example 35 (Setting the Text Shader Effect)
+### Example 35: Setting the Text Shader Effect
 
-This example uses the [shaderStyle](#shaderstyle) API to apply a shader effect to the text in the TextArea component.
+This example demonstrates how to use [shaderStyle](#shaderstyle) to set the text shader effect in the TextArea component.
 
 Since API version 26.0.0, the shaderStyle API is added.
 
@@ -1774,14 +1774,14 @@ struct ShaderColorStyle {
     };
   build() {
     Column({ space: 5 }) {
-      Text('Linear gradient with an angle of 45°').fontSize(18).width('90%')
+      Text('Linear gradient with angle setting to 45°').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       TextArea({ text: this.message })
         .fontSize(20)
         .width('80%')
         .height(40)
         .shaderStyle(this.linearGradientOptions1)
-      Text('Linear gradient with direction LeftTop').fontSize(18).width('90%')
+      Text('Linear gradient with direction setting to LeftTop').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       TextArea({ text: this.message })
         .fontSize(20)
@@ -1807,17 +1807,17 @@ struct ShaderColorStyle {
 }
 ```
 
-### Example 36 (Setting the AI Menu for Text Selection)
+### Example 36: Setting an AI Menu for Text Selection
 
-This example configures the AI menu for text selection through [enableSelectedDataDetector](#enableselecteddatadetector22).
+This example demonstrates how to configure the AI menu for text selection using the [enableSelectedDataDetector](#enableselecteddatadetector22) API.
 
-Since API version 22, enableSelectedDataDetector is added.
+The enableSelectedDataDetector API is added in API version 22.
 
 ```TypeScript
 @Entry
 @Component
 struct Demo36 {
-  exampleText: string = 'Example URL: www.example.com';
+  exampleText: string ='Example website: www.example.com';
 
   build() {
     Column() {

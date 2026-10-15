@@ -12,20 +12,6 @@ Enumerates the encryption algorithms for the database. Use the enum name rather 
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## AES_256_GCM
-
-```TypeScript
-AES_256_GCM = 0
-```
-
-AES_256_GCM: Database is encrypted using AES_256_GCM.
-
-**Since:** 14
-
-<!--Device-EncryptionAlgo-AES_256_GCM = 0--><!--Device-EncryptionAlgo-AES_256_GCM = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## AES_256_CBC
 
 ```TypeScript
@@ -37,6 +23,20 @@ AES_256_CBC: Database is encrypted using AES_256_CBC.
 **Since:** 14
 
 <!--Device-EncryptionAlgo-AES_256_CBC = 1--><!--Device-EncryptionAlgo-AES_256_CBC = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## AES_256_GCM
+
+```TypeScript
+AES_256_GCM = 0
+```
+
+AES_256_GCM: Database is encrypted using AES_256_GCM.
+
+**Since:** 14
+
+<!--Device-EncryptionAlgo-AES_256_GCM = 0--><!--Device-EncryptionAlgo-AES_256_GCM = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 

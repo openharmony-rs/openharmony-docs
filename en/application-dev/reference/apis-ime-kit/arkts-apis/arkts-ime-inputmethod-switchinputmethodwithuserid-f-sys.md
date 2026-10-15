@@ -52,6 +52,7 @@ Switch input method and subtype of a specified user.
 | [12800024](../errorcode-inputmethod-framework.md#12800024-specified-user-not-in-the-foreground) | the specified user is not in the foreground. |
 | [12800025](../errorcode-inputmethod-framework.md#12800025-cross-user-operation-denied) | cross-user operation denied. Only user 0 applications are authorized for this operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ inputMethod.switchInputMethodWithUserId('com.example.keyboard', 'subtype_001', 1
   console.error(`Failed to switchInputMethodWithUserId, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

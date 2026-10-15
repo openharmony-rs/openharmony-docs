@@ -30,7 +30,7 @@ Alpha component of the color. The value is an integer ranging from 0 to 255.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Color-alpha: int--><!--Device-Color-alpha: int-End-->
 
@@ -48,7 +48,7 @@ Blue component of the color. The value is an integer ranging from 0 to 255.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Color-blue: int--><!--Device-Color-blue: int-End-->
 
@@ -66,7 +66,7 @@ Green component of the color. The value is an integer ranging from 0 to 255.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Color-green: int--><!--Device-Color-green: int-End-->
 
@@ -84,7 +84,7 @@ Red component of the color. The value is an integer ranging from 0 to 255.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-Color-red: int--><!--Device-Color-red: int-End-->
 

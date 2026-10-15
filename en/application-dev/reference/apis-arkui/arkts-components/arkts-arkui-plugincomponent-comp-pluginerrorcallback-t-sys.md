@@ -20,4 +20,4 @@ Callback invoked when an error occurs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| info | [PluginErrorData](arkts-arkui-plugincomponent-comp-pluginerrordata-i-sys.md) | Yes | Plugin error data |
+| info | [PluginErrorData](arkts-arkui-plugincomponent-comp-pluginerrordata-i-sys.md) | Yes | Data provided when an error occurs. |

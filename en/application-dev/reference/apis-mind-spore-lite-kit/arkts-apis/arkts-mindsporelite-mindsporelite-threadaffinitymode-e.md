@@ -12,22 +12,6 @@ Enum for provides CPU thread affinity mode
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## NO_AFFINITIES
-
-```TypeScript
-NO_AFFINITIES = 0
-```
-
-Thread affinity mode is no bind.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ThreadAffinityMode-NO_AFFINITIES = 0--><!--Device-ThreadAffinityMode-NO_AFFINITIES = 0-End-->
-
-**System capability:** SystemCapability.AI.MindSporeLite
-
 ## BIG_CORES_FIRST
 
 ```TypeScript
@@ -57,5 +41,21 @@ Thread affinity mode is little cores first
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ThreadAffinityMode-LITTLE_CORES_FIRST = 2--><!--Device-ThreadAffinityMode-LITTLE_CORES_FIRST = 2-End-->
+
+**System capability:** SystemCapability.AI.MindSporeLite
+
+## NO_AFFINITIES
+
+```TypeScript
+NO_AFFINITIES = 0
+```
+
+Thread affinity mode is no bind.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ThreadAffinityMode-NO_AFFINITIES = 0--><!--Device-ThreadAffinityMode-NO_AFFINITIES = 0-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

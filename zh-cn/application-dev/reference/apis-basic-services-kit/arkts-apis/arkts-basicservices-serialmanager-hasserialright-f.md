@@ -56,7 +56,7 @@ import { serialManager } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 function hasSerialRightExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('portList is empty');

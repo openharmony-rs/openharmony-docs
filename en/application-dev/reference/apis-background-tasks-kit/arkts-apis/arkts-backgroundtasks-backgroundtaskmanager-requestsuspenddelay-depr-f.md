@@ -42,17 +42,16 @@ The default duration of delayed suspension is 3 minutes when the battery level i
 
 ```TypeScript
 import backgroundTaskManager from '@ohos.backgroundTaskManager';
-import { BusinessError } from '@ohos.base';
-
+  
 // Set the reason for delayed suspension.
 let myReason = 'test requestSuspendDelay';
 // Request delayed suspension.
 let delayInfo = backgroundTaskManager.requestSuspendDelay(myReason, () => {
-    console.info("Request suspension delay will time out.");
+  console.info('Request suspension delay will time out.');
 })
 // Print the delayed suspension information.
 let id = delayInfo.requestId;
 let time = delayInfo.actualDelayTime;
-console.info("The requestId is: " + id);
-console.info("The actualDelayTime is: " + time);
+console.info('The requestId is: ' + id);
+console.info('The actualDelayTime is: ' + time);
 ```

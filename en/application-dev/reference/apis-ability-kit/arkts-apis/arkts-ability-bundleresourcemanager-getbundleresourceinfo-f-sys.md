@@ -6,6 +6,8 @@
 import { bundleResourceManager } from '@kit.AbilityKit';
 ```
 
+<a id="getbundleresourceinfo1"></a>
+
 ## getBundleResourceInfo
 
 ```TypeScript
@@ -46,6 +48,7 @@ Obtains the resource information of an application based on the given bundle nam
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -83,8 +86,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getbundleresourceinfo-1"></a>
+
+<a id="getbundleresourceinfo2"></a>
 
 ## getBundleResourceInfo
 
@@ -128,6 +133,9 @@ Obtains the resource information of an application based on the given bundle nam
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex not in valid range or not found. |
 
+<!--Del-->
 **Examples**
 
 See [getBundleResourceInfo](#getbundleresourceinfo)
+
+<!--DelEnd-->

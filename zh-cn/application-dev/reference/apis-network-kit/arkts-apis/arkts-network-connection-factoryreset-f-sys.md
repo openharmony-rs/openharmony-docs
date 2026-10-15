@@ -39,6 +39,7 @@ function factoryReset(): Promise<void>
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -51,3 +52,5 @@ connection.factoryReset().then(() => {
     console.error(JSON.stringify(error));
 })
 ```
+
+<!--DelEnd-->

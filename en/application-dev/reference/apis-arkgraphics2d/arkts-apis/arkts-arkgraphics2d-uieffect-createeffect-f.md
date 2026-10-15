@@ -16,7 +16,7 @@ Creates a VisualEffect instance for adding multiple VisualEffect effects to a co
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 24.
+**Widget capability:** This API can be used in ArkTS widgets since API version 24.
 
 <!--Device-uiEffect-function createEffect(): VisualEffect--><!--Device-uiEffect-function createEffect(): VisualEffect-End-->
 

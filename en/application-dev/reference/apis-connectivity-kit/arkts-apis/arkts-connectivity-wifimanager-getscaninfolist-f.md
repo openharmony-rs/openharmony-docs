@@ -18,7 +18,7 @@ Obtain the scanned station list. If does't have the permission of ohos.permissio
 
 **Required permissions:** ohos.permission.GET_WIFI_INFO
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-wifiManager-function getScanInfoList(): Array<WifiScanInfo>--><!--Device-wifiManager-function getScanInfoList(): Array<WifiScanInfo>-End-->
 

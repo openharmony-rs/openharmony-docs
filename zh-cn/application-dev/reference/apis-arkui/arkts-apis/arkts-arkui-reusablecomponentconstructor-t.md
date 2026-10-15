@@ -6,6 +6,8 @@ declare type ReusableComponentConstructor = Function
 
 复用自定义组件初始化函数。
 
+**类型：** Function
+
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type ReusableComponentConstructor = Function
 <!--Device-unnamed-declare type ReusableComponentConstructor = Function--><!--Device-unnamed-declare type ReusableComponentConstructor = Function-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** Function

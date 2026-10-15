@@ -26,18 +26,18 @@ import { reminderAgent } from '@kit.BackgroundTasksKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md) | 添加一个NotificationSlot，使用回调的方式实现异步调用。 |
-| [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md#addnotificationslot-1) | 添加一个NotificationSlot，使用Promise方式实现异步调用。 |
-| [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md) | 取消当前应用所有的提醒，使用回调的方式实现异步调用。 |
-| [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md#cancelallreminders-1) | 取消当前应用所有的提醒，使用Promise方式实现异步调用。 |
-| [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md) | 取消指定id的提醒，使用回调的方式实现异步调用。 |
-| [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md#cancelreminder-1) | 取消指定id的提醒，使用Promise方式实现异步调用。 |
-| [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md) | 获取当前应用已设置的所有有效（未过期）的提醒，使用回调的方式实现异步调用。 |
-| [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md#getvalidreminders-1) | 获取当前应用已设置的所有有效（未过期）的提醒，使用Promise方式实现异步调用。 |
-| [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md) | 发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md)后才能调用。 |
-| [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md#publishreminder-1) | 发布一个后台代理提醒，使用Promise方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md)后才能调用。 |
-| [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md) | 删除目标NotificationSlot，使用callback方式实现异步调用。 |
-| [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md#removenotificationslot-1) | 删除目标NotificationSlot，使用Promise方式实现异步调用。 |
+| [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md#addnotificationslot1) | 添加一个NotificationSlot，使用回调的方式实现异步调用。 |
+| [addNotificationSlot](arkts-backgroundtasks-reminderagent-addnotificationslot-f.md#addnotificationslot2) | 添加一个NotificationSlot，使用Promise方式实现异步调用。 |
+| [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md#cancelallreminders1) | 取消当前应用所有的提醒，使用回调的方式实现异步调用。 |
+| [cancelAllReminders](arkts-backgroundtasks-reminderagent-cancelallreminders-f.md#cancelallreminders2) | 取消当前应用所有的提醒，使用Promise方式实现异步调用。 |
+| [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md#cancelreminder1) | 取消指定id的提醒，使用回调的方式实现异步调用。 |
+| [cancelReminder](arkts-backgroundtasks-reminderagent-cancelreminder-f.md#cancelreminder2) | 取消指定id的提醒，使用Promise方式实现异步调用。 |
+| [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md#getvalidreminders1) | 获取当前应用已设置的所有有效（未过期）的提醒，使用回调的方式实现异步调用。 |
+| [getValidReminders](arkts-backgroundtasks-reminderagent-getvalidreminders-f.md#getvalidreminders2) | 获取当前应用已设置的所有有效（未过期）的提醒，使用Promise方式实现异步调用。 |
+| [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md#publishreminder1) | 发布一个后台代理提醒，使用回调的方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification1)后才能调用。 |
+| [publishReminder](arkts-backgroundtasks-reminderagent-publishreminder-f.md#publishreminder2) | 发布一个后台代理提醒，使用Promise方式实现异步调用，该方法需要申请通知弹窗权限[Notification.requestEnableNotification](../../apis-notification-kit/arkts-apis/arkts-notification-notification-requestenablenotification-depr-f.md#requestenablenotification1)后才能调用。 |
+| [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md#removenotificationslot1) | 删除目标NotificationSlot，使用callback方式实现异步调用。 |
+| [removeNotificationSlot](arkts-backgroundtasks-reminderagent-removenotificationslot-f.md#removenotificationslot2) | 删除目标NotificationSlot，使用Promise方式实现异步调用。 |
 
 ### 接口
 

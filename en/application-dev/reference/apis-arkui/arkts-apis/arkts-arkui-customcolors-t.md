@@ -4,7 +4,9 @@
 export declare type CustomColors = Partial<Colors>
 ```
 
-Defines the struct of CustomColors.
+Defines the type for custom theme color resources.
+
+**Type:** Partial&lt;[Colors](arkts-arkui-arkui-theme-colors-i.md)&gt;
 
 **Since:** 12
 
@@ -15,5 +17,3 @@ Defines the struct of CustomColors.
 <!--Device-unnamed-export declare type CustomColors = Partial<Colors>--><!--Device-unnamed-export declare type CustomColors = Partial<Colors>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** Partial&lt;[Colors](arkts-arkui-arkui-theme-colors-i.md)&gt;

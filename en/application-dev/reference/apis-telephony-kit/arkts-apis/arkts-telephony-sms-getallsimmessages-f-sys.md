@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="getallsimmessages1"></a>
+
 ## getAllSimMessages
 
 ```TypeScript
@@ -43,6 +45,7 @@ Obtains all SIM card messages. This API uses an asynchronous callback to return 
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,8 +58,10 @@ sms.getAllSimMessages(slotId, (err: BusinessError, data: sms.SimShortMessage[]) 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getallsimmessages-1"></a>
+
+<a id="getallsimmessages2"></a>
 
 ## getAllSimMessages
 
@@ -100,6 +105,7 @@ Obtains all SIM card messages. This API uses a promise to return the result.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -114,3 +120,5 @@ promise.then((data: sms.SimShortMessage[]) => {
     console.error(`getAllSimMessages failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

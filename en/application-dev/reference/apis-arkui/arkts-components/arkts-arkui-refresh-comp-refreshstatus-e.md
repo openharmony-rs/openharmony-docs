@@ -12,13 +12,13 @@ Enumerates the states of a refresh operation.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Inactive
+## Done
 
 ```TypeScript
-Inactive = 0
+Done = 4
 ```
 
-The component is not pulled down. This is the default value.
+The refresh is complete, and the component returns to the initial state (at the top).
 
 **Since:** 8
 
@@ -26,7 +26,7 @@ The component is not pulled down. This is the default value.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-RefreshStatus-Inactive = 0--><!--Device-RefreshStatus-Inactive = 0-End-->
+<!--Device-RefreshStatus-Done = 4--><!--Device-RefreshStatus-Done = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -47,6 +47,24 @@ If you release the component, it enters the **Inactive** state. If you continue 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-RefreshStatus-Drag = 1--><!--Device-RefreshStatus-Drag = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Inactive
+
+```TypeScript
+Inactive = 0
+```
+
+The component is not pulled down. This is the default value.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RefreshStatus-Inactive = 0--><!--Device-RefreshStatus-Inactive = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -85,23 +103,5 @@ The pull-down ends, and the component rebounds to the minimum length required to
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-RefreshStatus-Refresh = 3--><!--Device-RefreshStatus-Refresh = 3-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## Done
-
-```TypeScript
-Done = 4
-```
-
-The refresh is complete, and the component returns to the initial state (at the top).
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-RefreshStatus-Done = 4--><!--Device-RefreshStatus-Done = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

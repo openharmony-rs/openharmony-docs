@@ -133,7 +133,7 @@ Creates a **UiDriver** object and returns the object created. This API is a stat
 > **NOTE:** 
 > 
 > This method is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [create&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-driver-c.md#create) instead.
+> [create<sup>9+</sup>](arkts-test-uitest-driver-c.md#create) instead.
 
 **Since:** 8
 
@@ -436,7 +436,7 @@ Captures the current screen of this **UiDriver** object and saves it as a PNG im
 
 **Deprecated since:** 9
 
-**Substitutes:** [screenCap](arkts-test-uitest-driver-c.md#screencap)(savePath: string)
+**Substitutes:** [screenCap](arkts-test-uitest-driver-c.md#screencap1)(savePath: string)
 
 <!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>--><!--Device-UiDriver-screenCap(savePath: string): Promise<boolean>-End-->
 

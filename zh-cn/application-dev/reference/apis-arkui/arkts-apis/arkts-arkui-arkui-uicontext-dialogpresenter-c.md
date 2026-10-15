@@ -64,6 +64,8 @@ dismiss(target: number | ComponentContent<Object>): Promise<void>
 | [103301](../errorcode-promptAction.md#103301-自定义弹窗内容节点错误) | Dialog content error. The ComponentContent is incorrect. |
 | [103303](../errorcode-promptAction.md#103303-无法找到内容节点对应的自定义弹窗) | Dialog content not found. The ComponentContent cannot be found. |
 
+<a id="present1"></a>
+
 ## present
 
 ```TypeScript
@@ -101,7 +103,7 @@ present(options?: dialog.DialogStyleOptions): Promise<DialogResult>
 | [103306](../errorcode-promptAction.md#103306-节点挂载失败导致无法打开弹出框) | The dialog cannot be opened due to node mount failure. |
 | [103308](../errorcode-promptAction.md#103308-子窗口创建失败导致无法打开弹出框) | The dialog cannot be opened due to subwindow create failure. |
 
-<a id="present-1"></a>
+<a id="present2"></a>
 
 ## present
 

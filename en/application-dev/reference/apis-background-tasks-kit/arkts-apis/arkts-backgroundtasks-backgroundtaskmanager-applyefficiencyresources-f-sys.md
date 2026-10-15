@@ -41,6 +41,7 @@ Requests efficiency resources.
 | [9800004](../errorcode-backgroundTaskMgr.md#9800004-system-service-failure) | System service operation failed. |
 | [18700001](../errorcode-backgroundTaskMgr.md#18700001-caller-information-verification-failure-for-an-energy-resource-request) | Caller information verification failed for an energy resource request. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,18 +49,20 @@ import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 let request: backgroundTaskManager.EfficiencyResourcesRequest = {
-    resourceTypes: backgroundTaskManager.ResourceType.CPU,
-    isApply: true,
-    timeOut: 0,
-    reason: "apply",
-    isPersist: true,
-    isProcess: false,
+    resourceTypes: backgroundTaskManager.ResourceType.CPU, // The request is used to apply for the CPU resources.
+    isApply: true, // The request is used to apply for the resources.
+    timeOut: 0, // Duration for which the resource will be used, in milliseconds
+    reason: 'apply', // Reason for applying for the resources.
+    isPersist: true, // The resources are permanently held.
+    isProcess: false, // The request is initiated by an app.
     cpuLevel: backgroundTaskManager.EfficiencyResourcesCpuLevel.SMALL_CPU // The application's background task runs on the small CPU core. This parameter is supported since API version 23.
 };
 try {
     backgroundTaskManager.applyEfficiencyResources(request);
-    console.info("applyEfficiencyResources success. ");
+    console.info('applyEfficiencyResources success.');
 } catch (error) {
     console.error(`applyEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

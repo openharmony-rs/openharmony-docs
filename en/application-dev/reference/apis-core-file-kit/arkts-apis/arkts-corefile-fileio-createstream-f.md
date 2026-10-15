@@ -37,7 +37,7 @@ Creates a stream based on the file path. This API uses a promise to return the r
 | Promise&lt;[Stream](arkts-corefile-fileio-stream-depr-i.md)&gt; | Promise that returns the file stream. |
 
 
-<a id="createstream-1"></a>
+<a id="createstream2"></a>
 
 ## createStream
 

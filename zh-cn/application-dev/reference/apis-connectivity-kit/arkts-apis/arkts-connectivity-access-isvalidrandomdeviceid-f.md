@@ -20,7 +20,7 @@ function isValidRandomDeviceId(deviceId: string): boolean
 
 **需要权限：** ohos.permission.ACCESS_BLUETOOTH
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本16开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本16开始，该接口支持在原子化服务中使用。
 
 <!--Device-access-function isValidRandomDeviceId(deviceId: string): boolean--><!--Device-access-function isValidRandomDeviceId(deviceId: string): boolean-End-->
 
@@ -43,7 +43,7 @@ function isValidRandomDeviceId(deviceId: string): boolean
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
 | [2900099](../errorcode-bluetoothManager.md#2900099-操作失败) | Check persistent device address failed. |

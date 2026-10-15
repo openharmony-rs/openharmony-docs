@@ -47,6 +47,7 @@ function decomposeToPicture(hdrPixelMap : PixelMap, options?: HdrDecomposeOption
 | [7600208](../errorcode-image.md#7600208-hdr图片分解失败) | HDR image decomposition failed. Possible causes: 1. Decomposition processing is not supported. 2. Processing error occurs. |
 | [7600301](../errorcode-image.md#7600301-申请内存失败) | Alloc memory failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -74,3 +75,5 @@ async function DecomposeToPictureTest(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->

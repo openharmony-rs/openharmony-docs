@@ -12,6 +12,34 @@ Enumerates the EAP authentication methods.
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
+## EAP_AKA
+
+```TypeScript
+EAP_AKA = 6
+```
+
+AKA.
+
+**Since:** 20
+
+<!--Device-EapMethod-EAP_AKA = 6--><!--Device-EapMethod-EAP_AKA = 6-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Eap
+
+## EAP_AKA_PRIME
+
+```TypeScript
+EAP_AKA_PRIME = 7
+```
+
+AKA Prime.
+
+**Since:** 20
+
+<!--Device-EapMethod-EAP_AKA_PRIME = 7--><!--Device-EapMethod-EAP_AKA_PRIME = 7-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Eap
+
 ## EAP_NONE
 
 ```TypeScript
@@ -37,34 +65,6 @@ PEAP.
 **Since:** 20
 
 <!--Device-EapMethod-EAP_PEAP = 1--><!--Device-EapMethod-EAP_PEAP = 1-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Eap
-
-## EAP_TLS
-
-```TypeScript
-EAP_TLS = 2
-```
-
-TLS.
-
-**Since:** 20
-
-<!--Device-EapMethod-EAP_TLS = 2--><!--Device-EapMethod-EAP_TLS = 2-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Eap
-
-## EAP_TTLS
-
-```TypeScript
-EAP_TTLS = 3
-```
-
-TTLS.
-
-**Since:** 20
-
-<!--Device-EapMethod-EAP_TTLS = 3--><!--Device-EapMethod-EAP_TTLS = 3-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -96,31 +96,31 @@ SIM.
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
-## EAP_AKA
+## EAP_TLS
 
 ```TypeScript
-EAP_AKA = 6
+EAP_TLS = 2
 ```
 
-AKA.
+TLS.
 
 **Since:** 20
 
-<!--Device-EapMethod-EAP_AKA = 6--><!--Device-EapMethod-EAP_AKA = 6-End-->
+<!--Device-EapMethod-EAP_TLS = 2--><!--Device-EapMethod-EAP_TLS = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
-## EAP_AKA_PRIME
+## EAP_TTLS
 
 ```TypeScript
-EAP_AKA_PRIME = 7
+EAP_TTLS = 3
 ```
 
-AKA Prime.
+TTLS.
 
 **Since:** 20
 
-<!--Device-EapMethod-EAP_AKA_PRIME = 7--><!--Device-EapMethod-EAP_AKA_PRIME = 7-End-->
+<!--Device-EapMethod-EAP_TTLS = 3--><!--Device-EapMethod-EAP_TTLS = 3-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 

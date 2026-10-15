@@ -12,21 +12,21 @@ Enumerates the scrolling directions.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Vertical
+## FREE
 
 ```TypeScript
-Vertical
+FREE = 4
 ```
 
-Only vertical scrolling is supported.
+Free scrolling is supported.
 
-**Since:** 7
+**Since:** 20
 
-**Model restriction:** This API can be used in both the stage model and FA model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-ScrollDirection-Vertical--><!--Device-ScrollDirection-Vertical-End-->
+<!--Device-ScrollDirection-FREE = 4--><!--Device-ScrollDirection-FREE = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,26 +48,6 @@ Only horizontal scrolling is supported.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Free
-
-```TypeScript
-Free
-```
-
-Vertical or horizontal scrolling is supported.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [FREE](#free)
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-<!--Device-ScrollDirection-Free--><!--Device-ScrollDirection-Free-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## None
 
 ```TypeScript
@@ -86,20 +66,40 @@ Scrolling is disabled.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## FREE
+## Vertical
 
 ```TypeScript
-FREE = 4
+Vertical
 ```
 
-Free scrolling is supported.
+Only vertical scrolling is supported.
 
-**Since:** 20
+**Since:** 7
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ScrollDirection-FREE = 4--><!--Device-ScrollDirection-FREE = 4-End-->
+<!--Device-ScrollDirection-Vertical--><!--Device-ScrollDirection-Vertical-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Free
+
+```TypeScript
+Free
+```
+
+Vertical or horizontal scrolling is supported.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [FREE](#free)
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-ScrollDirection-Free--><!--Device-ScrollDirection-Free-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -1,6 +1,7 @@
 # @system.sensor(传感器模块)
 
-本模块帮助应用实时获取传感器数据变化通知，实现运动监测、健康追踪、环境感知、方向识别、屏幕自适应等功能。每种传感器提供subscribe/unsubscribe配对接口，佩戴状态传感器额外提供getOnBodyState单次查询接口。
+@system.sensor模块是面向轻量穿戴（Lite Wearable）设备的传感器数据订阅模块，提供对加速度、罗盘、距离、环境光、计步、气压计、心率、佩戴状态、设备方向及陀螺仪传感器的数据订阅与取消订阅能力。
+ 本模块帮助应用实时获取传感器数据变化通知，实现运动监测、健康追踪、环境感知、方向识别、屏幕自适应等功能。每种传感器提供subscribe/unsubscribe配对接口，佩戴状态传感器额外提供getOnBodyState单次查询接口。
  非轻量穿戴设备从API version 8起不再维护本模块，建议使用[@ohos.sensor](arkts-sensorservice-sensor.md)模块替代。
  本模块采用"订阅-取消订阅"模式：通过subscribe订阅数据，数据变化时回调上报；通过unsubscribe取消订阅。subscribe与unsubscribe需配对使用，同一应用对同一传感器多次subscribe仅最后一次生效。
  加速度传感器、设备方向传感器和陀螺仪传感器的subscribe支持通过interval配置回调频率，默认为"normal"（200ms/次）。
@@ -9,12 +10,11 @@
 > **说明：**
 
 > - 模块维护策略：
- > >     - 对于Lite Wearable设备类型，该模块长期维护，正常使用。
- > >     - 对于支持该模块的其他设备类型，该模块从API version 8开始不再维护，建议使用新接口[@ohos.sensor](arkts-sensorservice-sensor.md)替代。
-
-> - 该功能使用需要对应硬件支持，仅支持真机调试。
-
-> - 建议在页面销毁时（即onDestroy回调中），取消数据订阅，避免不必要的性能开销。
+ > > - 对于Lite Wearable设备类型，该模块长期维护，正常使用。
+ > > - 对于支持该模块的其他设备类型，该模块从API version 8开始不再维护，建议使用新接口[@ohos.sensor](arkts-sensorservice-sensor.md)替代。
+ > - 本模块首批接口从API version 3开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+ > - 该功能使用需要对应硬件支持，仅支持真机调试。
+ > - 建议在页面销毁时（即onDestroy回调中），取消数据订阅，避免不必要的性能开销。
 
 
 

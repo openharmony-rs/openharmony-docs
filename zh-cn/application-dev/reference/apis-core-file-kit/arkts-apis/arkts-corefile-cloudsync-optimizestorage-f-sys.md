@@ -39,6 +39,7 @@ function optimizeStorage():Promise<void>
 | 13600001 | IPC error. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -50,3 +51,5 @@ cloudSync.optimizeStorage().then(() => {
   console.error(`optimize storage failed with error message: ${err.message}, error code: ${err.code}`);
 });
 ```
+
+<!--DelEnd-->

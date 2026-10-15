@@ -4,7 +4,7 @@
 export interface SharedBundleInfo
 ```
 
-Defines the shared bundle information.
+The module provides information about the shared bundle. The information can be obtained by calling [bundleManager.getSharedBundleInfo](arkts-ability-bundlemanager-getsharedbundleinfo-f-sys.md).
 
 **Since:** 10
 

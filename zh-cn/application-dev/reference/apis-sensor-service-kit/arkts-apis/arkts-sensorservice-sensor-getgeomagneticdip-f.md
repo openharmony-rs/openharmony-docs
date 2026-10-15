@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getgeomagneticdip1"></a>
+
 ## getGeomagneticDip
 
 ```TypeScript
@@ -53,7 +55,7 @@ sensor.getGeomagneticDip([1, 0, 0, 0, 1, 0, 0, 0, 1], (err: BusinessError, data:
 ```
 
 
-<a id="getgeomagneticdip-1"></a>
+<a id="getgeomagneticdip2"></a>
 
 ## getGeomagneticDip
 

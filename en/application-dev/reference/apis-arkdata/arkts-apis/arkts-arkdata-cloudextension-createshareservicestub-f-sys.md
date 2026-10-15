@@ -34,6 +34,7 @@ Creates a RemoteObject instance based on a ShareCenter instance. The system uses
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise used to return the RemoteObject instance of ShareCenter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,3 +53,5 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->

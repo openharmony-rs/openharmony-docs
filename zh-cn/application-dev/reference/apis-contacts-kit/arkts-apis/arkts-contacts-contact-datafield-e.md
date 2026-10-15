@@ -12,19 +12,19 @@ enum DataField
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
-## PHONE
+## EMAIL
 
 ```TypeScript
-PHONE = 1
+EMAIL = 0
 ```
 
-联系人电话。
+联系人邮箱。
 
 **起始版本：** 15
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
-<!--Device-DataField-PHONE = 1--><!--Device-DataField-PHONE = 1-End-->
+<!--Device-DataField-EMAIL = 0--><!--Device-DataField-EMAIL = 0-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -44,18 +44,18 @@ ORGANIZATION = 2
 
 **系统能力：** SystemCapability.Applications.Contacts
 
-## EMAIL
+## PHONE
 
 ```TypeScript
-EMAIL = 0
+PHONE = 1
 ```
 
-联系人邮箱。
+联系人电话。
 
 **起始版本：** 15
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
-<!--Device-DataField-EMAIL = 0--><!--Device-DataField-EMAIL = 0-End-->
+<!--Device-DataField-PHONE = 1--><!--Device-DataField-PHONE = 1-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts

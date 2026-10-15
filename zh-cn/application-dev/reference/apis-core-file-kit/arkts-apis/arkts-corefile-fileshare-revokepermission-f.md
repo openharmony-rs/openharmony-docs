@@ -6,6 +6,8 @@
 import { fileShare } from '@kit.CoreFileKit';
 ```
 
+<a id="revokepermission1"></a>
+
 ## revokePermission
 
 ```TypeScript

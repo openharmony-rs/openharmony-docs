@@ -35,7 +35,7 @@ Opens a file. This API uses a promise to return the result.
 | Promise&lt;void&gt; | Promise used to return the result. An error code is returned. |
 
 
-<a id="show-1"></a>
+<a id="show2"></a>
 
 ## show
 

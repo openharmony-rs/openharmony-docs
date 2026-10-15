@@ -2,39 +2,9 @@
 
 用于绘制圆形的组件。
 
-> **说明：** 
-> 
-> 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-
 ## 子组件
 
 无
-
-## Circle
-
-```TypeScript
-Circle(value?: CircleOptions)
-```
-
-use new function to set the value.
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-CircleInterface-new (value?: CircleOptions): CircleAttribute--><!--Device-CircleInterface-new (value?: CircleOptions): CircleAttribute-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数:**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | [CircleOptions](arkts-arkui-circle-comp-circleoptions-i.md) | 否 |  |
 
 ## Circle
 
@@ -53,6 +23,32 @@ Circle(value?: CircleOptions)
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-CircleInterface-(value?: CircleOptions): CircleAttribute--><!--Device-CircleInterface-(value?: CircleOptions): CircleAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [CircleOptions](arkts-arkui-circle-comp-circleoptions-i.md) | 否 | 设置圆形尺寸。当需要自定义圆形大小时传入此参数，不传入时width和height默认为0。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
+
+## Circle
+
+```TypeScript
+Circle(value?: CircleOptions)
+```
+
+用于绘制圆形的构造函数。调用后创建一个Circle对象，可设置宽高属性。
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-CircleInterface-new (value?: CircleOptions): CircleAttribute--><!--Device-CircleInterface-new (value?: CircleOptions): CircleAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -128,8 +124,6 @@ struct CircleTypeExample {
 
 以下示例展示了如何使用attributeModifier动态设置Circle组件的fill、fillOpacity、stroke、strokeDashArray、strokeDashOffset、strokeLineCap、strokeOpacity、strokeWidth和antiAlias属性。
 
-
-
 ```TypeScript
 // xxx.ets
 class MyCircleModifier implements AttributeModifier<CircleAttribute> {
@@ -158,47 +152,6 @@ struct CircleModifierDemo {
         .attributeModifier(this.modifier)
         .offset({ x: 20, y: 20 })
     }
-  }
-}
-```
-
-### 示例4（使用ColorMetrics设置HDR填充和边框颜色）
-
-通过ColorMetrics可为Circle组件设置HDR颜色，实现超出普通显示范围的亮度效果。其中，[fill](arkts-arkui-circle-comp-attribute.md#fill)接口用于设置填充区域的颜色，[stroke](arkts-arkui-circle-comp-attribute.md#stroke)接口用于设置边框颜色。以下示例左侧使用HDR暖金色填充和冰蓝色边框（亮度倍数大于1.0），右侧使用普通SDR颜色作为对照。在支持HDR的屏幕上可观察到左侧明显比右侧更亮且色彩更鲜艳。
-
-从API版本26.0.0开始，新增Circle组件专有的[fill](arkts-arkui-circle-comp-attribute.md#fill)和[stroke](arkts-arkui-circle-comp-attribute.md#stroke)接口，支持传入ColorMetrics类型以实现HDR提亮效果。
-
-```TypeScript
-// xxx.ets
-import { ColorMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct CircleHDRDemo {
-  build() {
-    Column({ space: 30 }) {
-      Row({ space: 60 }) {
-        // HDR填充和边框：颜色分量值可以超过1.0，超过1.0的部分用于表现超出普通屏幕亮度范围的高亮效果
-        Column({ space: 8 }) {
-          Circle()
-            .width(120).height(120).strokeWidth(6)
-            .fill(ColorMetrics.createHDRColor(ColorSpace.BT2020, 2.5, 1.2, 0.0, 1)) // 高亮暖金
-            .stroke(ColorMetrics.createHDRColor(ColorSpace.BT2020, 0.0, 0.8, 2.5, 1)) // 高亮冰蓝
-          Text('HDR').fontColor(Color.White).fontSize(14)
-        }
-
-        // SDR填充和边框：颜色分量值的范围为0.0到1.0，是常规标准动态范围的颜色显示方式
-        Column({ space: 8 }) {
-          Circle()
-            .width(120).height(120).strokeWidth(6)
-            .fill('#ffc800') // 普通金黄
-            .stroke('#0066ff') // 普通深蓝
-          Text('SDR').fontColor(Color.White).fontSize(14)
-        }
-      }
-    }
-    .width('100%').height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```

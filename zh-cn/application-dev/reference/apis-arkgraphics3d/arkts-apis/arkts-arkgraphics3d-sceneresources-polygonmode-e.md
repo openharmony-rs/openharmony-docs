@@ -6,8 +6,6 @@ export enum PolygonMode
 
 控制多边形绘制模式的枚举。
 
-@enum { int }
-
 **起始版本：** 23
 
 <!--Device-unnamed-export enum PolygonMode--><!--Device-unnamed-export enum PolygonMode-End-->

@@ -41,6 +41,7 @@ Hibernates a device.
 | [4900101](../errorcode-power.md#4900101-service-connection-failure) | Failed to connect to the service. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 19 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -50,3 +51,5 @@ try {
     console.error('hibernate failed, err: ' + err);
 }
 ```
+
+<!--DelEnd-->

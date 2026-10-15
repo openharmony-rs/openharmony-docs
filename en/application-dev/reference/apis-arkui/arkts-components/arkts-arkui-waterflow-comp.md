@@ -1,40 +1,69 @@
 # WaterFlow
 
-The **WaterFlow** component is a water flow container that consists of cells formed by rows and columns and arranges items of different sizes from top to bottom according to the preset rules.
+The **WaterFlow** component is a waterfall flow container that consists of cells formed by rows and columns and arranges items of different sizes from top to bottom according to the preset rules. It supports multi-column layout, group mixing layout, lazy loading, auto calculation of the number of columns, and edge fading, and is suitable for scenarios such as image galleries, product displays, and content feeds that need to display content of different sizes.
 
 > **NOTE:** 
-
-> The **WaterFlow** component supports the waterfall layout but does not support the edit mode or dragging of child
-> elements.
 > 
-> The component has been bound with gestures to implement functions such as following the finger. If you need to add
-> custom gestures, refer to Enhanced Gesture Interception.
+> The **WaterFlow** component supports displaying the waterfall flow layout, but does not support the editing mode or
+> child element dragging.
+> 
+> The component has built-in gestures for functions such as scroll-following. To add custom gesture operations, refer
+> to [Gesture Blocking Enhancement](arkts-arkui-common-comp.md).
+> 
+> For more development instructions on **WaterFlow**, see
+> [Creating a Waterfall Flow (WaterFlow)](../../../ui/arkts-layout-development-create-waterflow.md). For NDK
+> development, see [Implementing a Waterfall Flow Layout](../../../ui/ndk-waterflow.md). For C APIs, see
+> [ArkUI_NodeAttributeType (Scrollable Container Component Attribute)](../../../reference/apis-arkui/capi-native-node-h-nodeattributetype-scrollablecontainer.md)
+> and
+> [ArkUI_WaterFlowSectionOption](../../../reference/apis-arkui/capi-arkui-nativemodule-arkui-waterflowsectionoption.md).
 
 ## Child Components
 
-Only the FlowItem child component and custom components are supported. When a custom component is used in **WaterFlow**, you are advised to use **FlowItem** as the top-level component of the custom component. You are not advised to set attributes and event methods for the custom component.
+Only the [FlowItem](arkts-arkui-flowitem-comp-attribute.md#flowitemattribute) child component and custom components are supported. When a custom component is used in **WaterFlow**, you are advised to use **FlowItem** as the top-level component of the custom component. You are not advised to set attributes and event methods for the custom component.
 
 Child components can be dynamically generated using rendering control types [if/else](../../../ui/rendering-control/arkts-rendering-control-ifelse.md), [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). **LazyForEach** or **Repeat** is recommended to optimize performance.
 
 > **NOTE:** 
 > 
-> When the **visibility** attribute of a child component of **WaterFlow** is set to **None**, this child component is
-> not displayed in the container, but its **columnsGap**, **rowsGap**, and **margin** settings are still effective.
+> When the **visibility** attribute of a **WaterFlow** child component is set to **None**, the child component is not
+> displayed, but the **columnsGap**, **rowsGap**, and **margin** around it still take effect.
 > 
-> If there are a large number of child components, you are advised to adopt methods such as lazy loading, data
-> caching, component reuse, fixed dimensions, and layout optimization to improve performance and reduce memory usage.
-> For best practices, see
+> When a large number of child components are involved, it is recommended to use methods such as lazy loading, data
+> caching, component reuse, fixed width and height, and layout optimization to improve performance and reduce memory
+> usage. For best practices, see
 > [Optimizing Frame Loss for Waterfall Loading](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-waterflow-performance-optimization).
 > 
-> In vertical layout mode, **WaterFlow** calculates the cumulative height of child components in each column and
-> places new child components in the column with the smallest cumulative height to maintain a compact overall layout.
+> In vertical layout, **WaterFlow** calculates the accumulated height of the placed child components in each column
+> and places a new child component in the column with the smallest accumulated height to keep the overall layout
+> compact.
 > 
-> If the heights of multiple columns are the same, the leftmost column is prioritized. In RTL mode, the rightmost
-> column is prioritized.
+> When the main axis size of a **FlowItem** changes after it is displayed, **WaterFlow** clears the affected layout
+> information and recalculates the layout positions of the related **FlowItem** components from the changed position
+> or the start position of the current window according to the current [layoutMode](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md).
+> Because the waterfall flow places the **FlowItem** components that rejoin the layout into the column or row with
+> the smallest current accumulated main axis size, the columns or rows and offsets of these **FlowItem** components
+> may change, which appears as position jumping. To reduce position jumping, it is recommended to keep the main axis
+> size of **FlowItem** stable. For asynchronous content such as images, it is recommended to preset a fixed width and
+> height or a placeholder size. When using group mixing layout, you can also provide a stable main axis size through
+> the [GetItemMainSizeByIndex](arkts-arkui-waterflow-comp-getitemmainsizebyindex-t.md) callback.
 > 
-> Starting from API version 21, the maximum width or height for a single child component inside a **WaterFlow**
-> container is 16,777,216 px. In API version 20 and earlier versions, the limit was 1,000,000 px. If a child
-> component exceeds the applicable size limit, scrolling or display behavior may become abnormal.
+> When [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md) or
+> [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md) is used to dynamically generate
+> **FlowItem** components, if the data that affects the main axis size of **FlowItem** changes, the framework should
+> be notified that the data has changed: in the **LazyForEach** scenario, call the corresponding method of
+> [DataChangeListener](arkts-arkui-lazyforeach-comp-datachangelistener-i.md) (such as [onDataChange](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatachange),
+> [onDataReloaded](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatareloaded), or
+> [onDatasetChange](arkts-arkui-lazyforeach-comp-datachangelistener-i.md#ondatasetchange)); in the **Repeat** scenario, modify the state array
+> according to the data update rules of
+> [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md). Otherwise, old nodes or old caches
+> may be reused, causing the displayed content and layout results to be inconsistent with the data.
+> 
+> If multiple columns have the same height, the leftmost column is used first. In RTL mode, the rightmost column is
+> used first.
+> 
+> Since API version 21, the maximum width and height of a single **WaterFlow** child component is 16777216 px. In API
+> version 20 and earlier, the maximum width and height of a single **WaterFlow** child component is 1000000 px. A
+> child component exceeding this size may cause scrolling or display exceptions.
 
 ## WaterFlow
 
@@ -58,7 +87,7 @@ Creates a **WaterFlow** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [WaterFlowOptions](arkts-arkui-waterflow-comp-waterflowoptions-i.md) | No | Parameters of the **WaterFlow** component. |
+| options | [WaterFlowOptions](arkts-arkui-waterflow-comp-waterflowoptions-i.md) | No | Parameters of the **WaterFlow** component, used to set the scroll controller, footer component, groups, and layout mode. |
 
 ## Summary
 
@@ -66,7 +95,7 @@ Creates a **WaterFlow** component.
 
 | Name | Description |
 | --- | --- |
-| [UIWaterFlowEvent](arkts-arkui-waterflow-comp-uiwaterflowevent-i.md) | Represents the return value of the [getEvent('WaterFlow')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent-2) method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node. |
+| [UIWaterFlowEvent](arkts-arkui-waterflow-comp-uiwaterflowevent-i.md) | Represents the return value of the [getEvent('WaterFlow')](../arkts-apis/arkts-arkui-typenode-getevent-f.md#getevent3) method in **frameNode**, which can be used to set scroll events for a **WaterFlow** node. |
 | [WaterFlowOptions](arkts-arkui-waterflow-comp-waterflowoptions-i.md) | Provides parameters of the **WaterFlow** component. |
 
 ### Types
@@ -75,6 +104,7 @@ Creates a **WaterFlow** component.
 | --- | --- |
 | [GetItemMainSizeByIndex](arkts-arkui-waterflow-comp-getitemmainsizebyindex-t.md) | Obtains the main axis size of a specified water flow item based on its index. |
 | [OnWaterFlowScrollIndexCallback](arkts-arkui-waterflow-comp-onwaterflowscrollindexcallback-t.md) | Represents a callback for item changes in the visible area of the **WaterFlow** component. |
+| [PlaceholderProvider](arkts-arkui-waterflow-comp-placeholderprovider-t.md) | Provides the placeholder description for an item of a scrollable component. |
 
 ### Enums
 

@@ -16,17 +16,17 @@ declare class Scroller
 
 > 4. 以[onAppear](arkts-arkui-common-comp-commonmethod-c.md#onappear)为例，组件挂载显示后触发此回调。因此在滚动组件的onAppear回调执行时，滚动组件已经创建并已经和Scroller绑定成功，是可以正常调用Scroller方法的。
 
-## 导入对象
-
-```ts
-scroller: Scroller = new Scroller();
-```
-
 **起始版本：** 7
 
 <!--Device-unnamed-declare class Scroller--><!--Device-unnamed-declare class Scroller-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+```ts
+scroller: Scroller = new Scroller();
+```
 
 ## constructor
 
@@ -258,6 +258,36 @@ getItemRect(index: number): RectResult
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameters types. <br> 3. Parameter verification failed. |
 | [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | Controller not bound to a component. |
 
+## getScrollState
+
+```TypeScript
+getScrollState(): ScrollState
+```
+
+获取绑定到此Scroller的可滚动组件的当前滚动状态。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-Scroller-getScrollState(): ScrollState--><!--Device-Scroller-getScrollState(): ScrollState-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [ScrollState](arkts-arkui-list-comp-scrollstate-e.md) | 当前滚动状态。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [100004](../errorcode-router.md#100004-命名路由页面跳转时输入的name错误) | 控制器未绑定到组件。 |
+
 ## isAtEnd
 
 ```TypeScript
@@ -372,7 +402,9 @@ Scroll组件默认有动画，Grid、List、WaterFlow组件默认无动画。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | value | [Edge](../arkts-apis/arkts-arkui-edge-e.md) | 是 | 滚动到的边缘位置。 |
-| options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | 否 | 设置滚动到边缘位置的模式。<br>&lt;em&gt;原子化服务API&lt;/em&gt;：该API可在原子化服务中使用，从API version 12开始。<br>**适用版本：** 12 |
+| options | [ScrollEdgeOptions](arkts-arkui-scroll-comp-scrolledgeoptions-i.md) | 否 | 设置滚动到边缘位置的模式。<br><em>原子化服务API</em>：该API可在原子化服务中使用，从API version 12开始。<br>**适用版本：** 12 |
+
+<a id="scrollpage1"></a>
 
 ## scrollPage
 
@@ -398,7 +430,7 @@ scrollPage(value: ScrollPageOptions)
 | --- | --- | --- | --- |
 | value | [ScrollPageOptions](arkts-arkui-scroll-comp-scrollpageoptions-i.md) | 是 | 设置翻页模式。包含next（是否向下翻页）和animation（是否开启翻页动画）字段，用于指定翻页行为。<br>**适用版本：** 14 |
 
-<a id="scrollpage-1"></a>
+<a id="scrollpage2"></a>
 
 ## scrollPage
 
@@ -478,7 +510,7 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 > 
 > 2. 在[LazyForEach](arkts-arkui-lazyforeach-comp.md)、[ForEach](arkts-arkui-foreach-comp-attribute.md)、[Repeat](arkts-arkui-repeat-comp.md)刷新数据源时，需确保在数据刷新完成之后再调用此接口。
 > 
-> 3. 从API version 11开始，在List中支持[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset)和[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset)。从API version 22开始，在Grid和WaterFlow组件中支持设置contentStartOffset和contentEndOffset。
+> 3. 从API version 11开始，在List中支持[contentStartOffset](arkts-arkui-list-comp-attribute.md#contentstartoffset1)和[contentEndOffset](arkts-arkui-list-comp-attribute.md#contentendoffset1)。从API version 22开始，在Grid和WaterFlow组件中支持设置contentStartOffset和contentEndOffset。
 > 
 > - 当滚动容器组件设置contentStartOffset时，如果ScrollAlign设置为START，滚动结束时，指定item首部会与滚动容器组件contentStartOffset处对齐。
 > 
@@ -503,4 +535,4 @@ scrollToIndex(value: number, smooth?: boolean, align?: ScrollAlign, options?: Sc
 | value | number | 是 | 要滑动到的目标元素在当前容器中的索引值。<br>**说明：** <br>value值设置成负值或者大于当前容器子组件的最大索引值，视为异常值，本次跳转不生效。 |
 | smooth | boolean | 否 | 设置滑动到列表项在列表中的索引值时是否有动画，true表示有动画，false表示没有动画。不传入时默认无动画。<br>默认值：false。<br>**适用版本：** 12 |
 | align | [ScrollAlign](arkts-arkui-scroll-comp-scrollalign-e.md) | 否 | 指定滑动到的元素与当前容器的对齐方式，可根据期望item首部、尾部或居中显示选择对应对齐方式。<br>默认值：List为ScrollAlign.START，Grid为ScrollAlign.AUTO，WaterFlow为ScrollAlign.START。<br>**说明：** <br>仅List、Grid、WaterFlow组件支持该参数。<br>**适用版本：** 12 |
-| options | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | 否 | 设置滑动到指定Index的选项，包含extraOffset字段，用于指定滚动后的额外偏移量。<br>不传入时无额外偏移量。&lt;br/ &gt;<br>**适用版本：** 12 |
+| options | [ScrollToIndexOptions](arkts-arkui-scroll-comp-scrolltoindexoptions-i.md) | 否 | 设置滑动到指定Index的选项，包含extraOffset字段，用于指定滚动后的额外偏移量。<br>不传入时无额外偏移量。<br/ ><br>**适用版本：** 12 |

@@ -2,9 +2,6 @@
 
 - [MovingPhotoView(A component which support applications to show moving photo data)](arkts-medialibrary-movingphotoview-comp.md)
   - [MovingPhotoView properties/events](arkts-medialibrary-movingphotoview-comp-attribute.md)
-  - [MovingPhotoViewOptions](arkts-medialibrary-movingphotoview-comp-movingphotoviewoptions-i.md)
-  <!--Del-->
-  - [MovingPhotoViewOptions(system api)](arkts-medialibrary-movingphotoview-comp-movingphotoviewoptions-i-sys.md)<!--DelEnd-->
   - [MovingPhotoViewController](arkts-medialibrary-movingphotoview-comp-movingphotoviewcontroller-c.md)
   <!--Del-->
   - [MovingPhotoViewController(system api)](arkts-medialibrary-movingphotoview-comp-movingphotoviewcontroller-c-sys.md)<!--DelEnd-->

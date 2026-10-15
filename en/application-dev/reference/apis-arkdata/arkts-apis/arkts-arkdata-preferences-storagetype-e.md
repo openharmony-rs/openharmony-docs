@@ -22,24 +22,6 @@ Enumerates the storage types of preferences.
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core
 
-## XML
-
-```TypeScript
-XML = 0
-```
-
-[XML](../../../database/data-persistence-by-preferences.md#xml) format, which is the default storage type of **Preferences**.
-
-In this mode, data is stored in XML format. Data operations are performed in the memory. To persist data, call **flush()**.
-
-**Since:** 18
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
-
-<!--Device-StorageType-XML = 0--><!--Device-StorageType-XML = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.Preferences.Core
-
 ## GSKV
 
 ```TypeScript
@@ -52,8 +34,26 @@ Data is stored in GSKV mode. Data operations are flushed on a real-time basis wi
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-StorageType-GSKV--><!--Device-StorageType-GSKV-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.Preferences.Core
+
+## XML
+
+```TypeScript
+XML = 0
+```
+
+[XML](../../../database/data-persistence-by-preferences.md#xml) format, which is the default storage type of **Preferences**.
+
+In this mode, data is stored in XML format. Data operations are performed in the memory. To persist data, call **flush()**.
+
+**Since:** 18
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-StorageType-XML = 0--><!--Device-StorageType-XML = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.Preferences.Core

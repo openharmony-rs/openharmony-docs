@@ -22,7 +22,7 @@ INAPP = 0
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ShareOption-INAPP = 0--><!--Device-ShareOption-INAPP = 0-End-->
 
@@ -38,7 +38,7 @@ LOCALDEVICE = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ShareOption-LOCALDEVICE = 1--><!--Device-ShareOption-LOCALDEVICE = 1-End-->
 

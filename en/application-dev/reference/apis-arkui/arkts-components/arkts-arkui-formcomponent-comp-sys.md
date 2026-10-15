@@ -44,6 +44,7 @@ Set a new value of form info.
 | [FormRenderingMode](arkts-arkui-formcomponent-comp-formrenderingmode-e-sys.md) | Enumerates the widget rendering modes. |
 | [FormShape](arkts-arkui-formcomponent-comp-formshape-e-sys.md) | Defines the FormShape enum. |
 
+<!--Del-->
 ## Examples
 
 Widget example
@@ -103,3 +104,5 @@ struct CardExample {
   }
 }
 ```
+
+<!--DelEnd-->

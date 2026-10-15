@@ -12,17 +12,17 @@ export declare enum Axis
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## SCROLL_VERTICAL
+## PINCH
 
 ```TypeScript
-SCROLL_VERTICAL = 0
+PINCH = 2
 ```
 
-鼠标垂直滚动轴。
+鼠标捏合轴。
 
 **起始版本：** 9
 
-<!--Device-Axis-SCROLL_VERTICAL = 0--><!--Device-Axis-SCROLL_VERTICAL = 0-End-->
+<!--Device-Axis-PINCH = 2--><!--Device-Axis-PINCH = 2-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -40,16 +40,16 @@ SCROLL_HORIZONTAL = 1
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## PINCH
+## SCROLL_VERTICAL
 
 ```TypeScript
-PINCH = 2
+SCROLL_VERTICAL = 0
 ```
 
-鼠标捏合轴。
+鼠标垂直滚动轴。
 
 **起始版本：** 9
 
-<!--Device-Axis-PINCH = 2--><!--Device-Axis-PINCH = 2-End-->
+<!--Device-Axis-SCROLL_VERTICAL = 0--><!--Device-Axis-SCROLL_VERTICAL = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core

@@ -12,19 +12,19 @@ USB存储设备访问策略的枚举。
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## READ_WRITE
+## DISABLED
 
 ```TypeScript
-READ_WRITE = 0
+DISABLED = 2
 ```
 
-可读可写。
+禁用。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UsbPolicy-READ_WRITE = 0--><!--Device-UsbPolicy-READ_WRITE = 0-End-->
+<!--Device-UsbPolicy-DISABLED = 2--><!--Device-UsbPolicy-DISABLED = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,18 +44,18 @@ READ_ONLY = 1
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DISABLED
+## READ_WRITE
 
 ```TypeScript
-DISABLED = 2
+READ_WRITE = 0
 ```
 
-禁用。
+可读可写。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-UsbPolicy-DISABLED = 2--><!--Device-UsbPolicy-DISABLED = 2-End-->
+<!--Device-UsbPolicy-READ_WRITE = 0--><!--Device-UsbPolicy-READ_WRITE = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

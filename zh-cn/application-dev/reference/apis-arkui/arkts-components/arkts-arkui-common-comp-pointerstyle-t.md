@@ -13,6 +13,8 @@ declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').defau
 > getCursorController获取绑定实例
 > 的cursorControl。
 
+**类型：** import('../api/@ohos.multimodalInput.pointer').default.PointerStyle
+
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -22,5 +24,3 @@ declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').defau
 <!--Device-unnamed-declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle--><!--Device-unnamed-declare type PointerStyle = import('../api/@ohos.multimodalInput.pointer').default.PointerStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.multimodalInput.pointer').default.PointerStyle

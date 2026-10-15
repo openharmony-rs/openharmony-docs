@@ -12,13 +12,15 @@ Enumerates alignment modes.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## START
+## AUTO
 
 ```TypeScript
-START
+AUTO
 ```
 
-Start alignment. Aligns the start of the specified item with the start of the scrollable container.
+Automatic alignment.
+
+If the specified item is entirely within the visible area, no adjustment is made. Otherwise, following the shortest -scroll-distance principle, either the start or the end of the item is aligned with the scrollable container to make the item fully visible.
 
 **Since:** 10
 
@@ -26,7 +28,7 @@ Start alignment. Aligns the start of the specified item with the start of the sc
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ScrollAlign-START--><!--Device-ScrollAlign-START-End-->
+<!--Device-ScrollAlign-AUTO--><!--Device-ScrollAlign-AUTO-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,15 +68,13 @@ End alignment. Aligns the end of the specified item with the end of the scrollab
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## AUTO
+## START
 
 ```TypeScript
-AUTO
+START
 ```
 
-Automatic alignment.
-
-If the specified item is entirely within the visible area, no adjustment is made. Otherwise, following the shortest -scroll-distance principle, either the start or the end of the item is aligned with the scrollable container to make the item fully visible.
+Start alignment. Aligns the start of the specified item with the start of the scrollable container.
 
 **Since:** 10
 
@@ -82,6 +82,6 @@ If the specified item is entirely within the visible area, no adjustment is made
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ScrollAlign-AUTO--><!--Device-ScrollAlign-AUTO-End-->
+<!--Device-ScrollAlign-START--><!--Device-ScrollAlign-START-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

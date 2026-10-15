@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="uninstall1"></a>
+
 ## uninstall
 
 ```TypeScript
@@ -24,7 +26,7 @@ Uninstalls an application of the current user without retaining the bundle data.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-4)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -52,8 +54,9 @@ Uninstalls an application of the current user without retaining the bundle data.
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,8 +78,10 @@ bundleManager.uninstall(wantTemp, 'bundleName', (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="uninstall-1"></a>
+
+<a id="uninstall2"></a>
 
 ## uninstall
 
@@ -96,7 +101,7 @@ Uninstalls an application of the specified user without retaining the bundle dat
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-4)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -125,8 +130,9 @@ Uninstalls an application of the specified user without retaining the bundle dat
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -148,8 +154,10 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="uninstall-2"></a>
+
+<a id="uninstall3"></a>
 
 ## uninstall
 
@@ -169,7 +177,7 @@ Uninstalls an application of the current user. The **isKeepData** parameter spec
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-4)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -198,8 +206,9 @@ Uninstalls an application of the current user. The **isKeepData** parameter spec
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -221,8 +230,10 @@ bundleManager.uninstall(wantTemp, 'bundleName', true, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="uninstall-3"></a>
+
+<a id="uninstall4"></a>
 
 ## uninstall
 
@@ -242,7 +253,7 @@ Uninstalls an application of the specified user. The **isKeepData** parameter sp
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall-4)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
+**Substitutes:** [uninstall](arkts-mdm-bundlemanager-uninstall-f.md#uninstall5)(admin: Want, bundleName: string, userId?: number, isKeepData?: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -272,8 +283,9 @@ Uninstalls an application of the specified user. The **isKeepData** parameter sp
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -294,3 +306,5 @@ bundleManager.uninstall(wantTemp, 'bundleName', 100, true, (err) => {
   console.info('Succeeded in uninstalling bundles');
 });
 ```
+
+<!--DelEnd-->

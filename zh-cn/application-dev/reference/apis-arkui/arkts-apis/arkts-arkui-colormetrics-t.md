@@ -6,6 +6,8 @@ declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
 
 定义混合颜色。
 
+**类型：** import('../api/arkui/Graphics').ColorMetrics
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics
 <!--Device-unnamed-declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics--><!--Device-unnamed-declare type ColorMetrics = import('../api/arkui/Graphics').ColorMetrics-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/arkui/Graphics').ColorMetrics

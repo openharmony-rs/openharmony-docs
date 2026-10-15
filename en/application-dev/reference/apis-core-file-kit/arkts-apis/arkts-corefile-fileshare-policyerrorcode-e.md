@@ -6,25 +6,9 @@ export enum PolicyErrorCode
 
 Enumerates the error code of the permission policy for the URI operation.
 
-@enum { int } PolicyErrorCode
-
 **Since:** 11
 
 <!--Device-fileShare-export enum PolicyErrorCode--><!--Device-fileShare-export enum PolicyErrorCode-End-->
-
-**System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
-
-## PERSISTENCE_FORBIDDEN
-
-```TypeScript
-PERSISTENCE_FORBIDDEN = 1
-```
-
-Indicates that the policy is not allowed to be persisted.
-
-**Since:** 11
-
-<!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1--><!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
 
@@ -67,5 +51,19 @@ Indicates that the permission is not persistent.
 **Since:** 12
 
 <!--Device-PolicyErrorCode-PERMISSION_NOT_PERSISTED = 4--><!--Device-PolicyErrorCode-PERMISSION_NOT_PERSISTED = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization
+
+## PERSISTENCE_FORBIDDEN
+
+```TypeScript
+PERSISTENCE_FORBIDDEN = 1
+```
+
+Indicates that the policy is not allowed to be persisted.
+
+**Since:** 11
+
+<!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1--><!--Device-PolicyErrorCode-PERSISTENCE_FORBIDDEN = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.AppFileService.FolderAuthorization

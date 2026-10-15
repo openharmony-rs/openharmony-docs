@@ -4,7 +4,7 @@
 interface PageIntentInfo
 ```
 
-PageIntentInfo用于描述[@InsightIntentPage](../../../reference/apis-ability-kit/js-apis-app-ability-InsightIntentDecorator.md#insightintentpage)装饰器支持的参数，例如目标页面的[NavDestination](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)名称。
+PageIntentInfo用于描述[@InsightIntentPage](arkts-ability-app-ability-insightintentdecorator-insightintentpage-d.md#insightintentpage)装饰器支持的参数，例如目标页面的[NavDestination](../../apis-arkui/arkts-components/arkts-arkui-navdestination-comp.md)名称。
 
 **起始版本：** 20
 
@@ -26,7 +26,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 readonly navDestinationName: string
 ```
 
-表示与意图绑定[NavDestination组件](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#navdestination10)的名称。
+表示与意图绑定[NavDestination组件](../../apis-arkui/arkts-components/arkts-arkui-navdestination-comp.md)的名称。
 
 **类型：** string
 
@@ -86,7 +86,7 @@ readonly pagePath: string
 readonly uiAbility: string
 ```
 
-Ability名称。
+UIAbility组件名称。
 
 **类型：** string
 

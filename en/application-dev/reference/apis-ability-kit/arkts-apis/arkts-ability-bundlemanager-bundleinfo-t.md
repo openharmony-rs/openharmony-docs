@@ -6,6 +6,8 @@ export type BundleInfo = _BundleInfo.BundleInfo
 
 Defines the bundle information.
 
+**Type:** [_BundleInfo.BundleInfo](arkts-ability-bundleinfo-i.md)
+
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
@@ -13,5 +15,3 @@ Defines the bundle information.
 <!--Device-bundleManager-export type BundleInfo = _BundleInfo.BundleInfo--><!--Device-bundleManager-export type BundleInfo = _BundleInfo.BundleInfo-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Type:** [_BundleInfo.BundleInfo](arkts-ability-bundleinfo-i.md)

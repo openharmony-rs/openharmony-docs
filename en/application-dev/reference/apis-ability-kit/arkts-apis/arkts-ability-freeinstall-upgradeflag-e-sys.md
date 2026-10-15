@@ -30,22 +30,6 @@ No module needs an upgrade.
 
 **System API:** This is a system API.
 
-## SINGLE_UPGRADE
-
-```TypeScript
-SINGLE_UPGRADE = 1
-```
-
-A single module needs an upgrade.
-
-**Since:** 9
-
-<!--Device-UpgradeFlag-SINGLE_UPGRADE = 1--><!--Device-UpgradeFlag-SINGLE_UPGRADE = 1-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
-
-**System API:** This is a system API.
-
 ## RELATION_UPGRADE
 
 ```TypeScript
@@ -57,6 +41,22 @@ The module that has a relationship with the current one needs an upgrade.
 **Since:** 9
 
 <!--Device-UpgradeFlag-RELATION_UPGRADE = 2--><!--Device-UpgradeFlag-RELATION_UPGRADE = 2-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
+
+**System API:** This is a system API.
+
+## SINGLE_UPGRADE
+
+```TypeScript
+SINGLE_UPGRADE = 1
+```
+
+A single module needs an upgrade.
+
+**Since:** 9
+
+<!--Device-UpgradeFlag-SINGLE_UPGRADE = 1--><!--Device-UpgradeFlag-SINGLE_UPGRADE = 1-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.FreeInstall
 

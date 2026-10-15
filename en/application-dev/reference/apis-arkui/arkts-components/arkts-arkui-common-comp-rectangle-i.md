@@ -17,11 +17,12 @@ The data type used to describe a rectangular area.
 > 
 > - **width** and **height** can only be set to positive percentage values. When **width** is set to **'100%'**, the width of the touch target is equal to that of the component. For example, if the width of a component is 100 vp,
 > **'100%'** indicates that the width of the touch target is also 100 vp. When **height** is set to **'100%'**, the
-> height of the touch target is equal to that of the component.
+> height of the touch target is equal to that of the component. When set to **0** or a negative percentage, the
+> default value **'100%'** is used.
 > 
 > - The percentage is measured relative to the component itself.
 > 
-> - When the parent component has [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) set to **true**, child component interaction is affected by the parent component's response region. Children outside the parent component's response region won't respond to gestures or events.
+> - When the parent component has [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) set to **true**, child component interaction is affected by the parent component's response region. Children outside the parent component's response region won't respond to gestures or events.
 > 
 > - **width** and **height** do not support **calc()** dynamic calculations.
 

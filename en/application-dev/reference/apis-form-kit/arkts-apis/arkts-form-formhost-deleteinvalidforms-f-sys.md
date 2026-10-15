@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="deleteinvalidforms1"></a>
+
 ## deleteInvalidForms
 
 ```TypeScript
@@ -42,8 +44,30 @@ Deletes invalid widgets from the list. This API uses an asynchronous callback to
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
+<!--Del-->
+**Examples**
 
-<a id="deleteinvalidforms-1"></a>
+```TypeScript
+import { formHost } from '@kit.FormKit';
+
+try {
+  let formIds: string[] = new Array('12400633174999288', '12400633174999289');
+  formHost.deleteInvalidForms(formIds, (error: BusinessError, data: number) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info(`formHost deleteInvalidForms, data: ${data}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="deleteinvalidforms2"></a>
 
 ## deleteInvalidForms
 
@@ -85,3 +109,23 @@ Deletes invalid widgets from the list. This API uses a promise to return the res
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+
+try {
+  let formIds: string[] = new Array('12400633174999288', '12400633174999289');
+  formHost.deleteInvalidForms(formIds).then((data: number) => {
+    console.info(`formHost deleteInvalidForms, data: ${data}`);
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->

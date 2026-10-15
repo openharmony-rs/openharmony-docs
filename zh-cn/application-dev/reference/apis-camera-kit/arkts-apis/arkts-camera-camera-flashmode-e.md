@@ -12,6 +12,38 @@ enum FlashMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+## FLASH_MODE_ALWAYS_OPEN
+
+```TypeScript
+FLASH_MODE_ALWAYS_OPEN = 3
+```
+
+闪光灯常亮。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-FlashMode-FLASH_MODE_ALWAYS_OPEN = 3--><!--Device-FlashMode-FLASH_MODE_ALWAYS_OPEN = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## FLASH_MODE_AUTO
+
+```TypeScript
+FLASH_MODE_AUTO = 2
+```
+
+自动闪光灯。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-FlashMode-FLASH_MODE_AUTO = 2--><!--Device-FlashMode-FLASH_MODE_AUTO = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 ## FLASH_MODE_CLOSE
 
 ```TypeScript
@@ -22,7 +54,7 @@ FLASH_MODE_CLOSE = 0
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-FlashMode-FLASH_MODE_CLOSE = 0--><!--Device-FlashMode-FLASH_MODE_CLOSE = 0-End-->
 
@@ -38,40 +70,8 @@ FLASH_MODE_OPEN = 1
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-FlashMode-FLASH_MODE_OPEN = 1--><!--Device-FlashMode-FLASH_MODE_OPEN = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## FLASH_MODE_AUTO
-
-```TypeScript
-FLASH_MODE_AUTO = 2
-```
-
-自动闪光灯。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-FlashMode-FLASH_MODE_AUTO = 2--><!--Device-FlashMode-FLASH_MODE_AUTO = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## FLASH_MODE_ALWAYS_OPEN
-
-```TypeScript
-FLASH_MODE_ALWAYS_OPEN = 3
-```
-
-闪光灯常亮。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-FlashMode-FLASH_MODE_ALWAYS_OPEN = 3--><!--Device-FlashMode-FLASH_MODE_ALWAYS_OPEN = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

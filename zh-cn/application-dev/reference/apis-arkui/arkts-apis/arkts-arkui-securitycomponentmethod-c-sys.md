@@ -9,6 +9,12 @@ declare class SecurityComponentMethod<T>
 - 在满足安全控件规范的前提下，调整安全控件显示效果和交互体验。具体约束请参见[约束与限制](../../../security/AccessToken/security-component-overview.md#约束与限制)。  
 - 通过链式调用方式复用安全控件通用属性能力。
 
+**起始版本：** 10
+
+<!--Device-unnamed-declare class SecurityComponentMethod<T>--><!--Device-unnamed-declare class SecurityComponentMethod<T>-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## 核心枚举类型
 
 - **[SecurityComponentLayoutDirection](arkts-arkui-securitycomponentlayoutdirection-e.md)：** 安全控件图标和文字排列方向枚举，用于指定横向或纵向布局。  
@@ -21,12 +27,6 @@ declare class SecurityComponentMethod<T>
 ## 子组件
 
 不支持
-
-**起始版本：** 10
-
-<!--Device-unnamed-declare class SecurityComponentMethod<T>--><!--Device-unnamed-declare class SecurityComponentMethod<T>-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ## key
 

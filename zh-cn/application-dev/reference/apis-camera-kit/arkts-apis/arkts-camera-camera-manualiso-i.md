@@ -30,7 +30,7 @@ Gets current ISO.
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-ManualIso-getIso(): int--><!--Device-ManualIso-getIso(): int-End-->
 
@@ -60,7 +60,7 @@ Sets ISO sensitivity value, within the range of getSupportedIsoRange. This contr
 
 **起始版本：** 24
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-ManualIso-setIso(iso: int): void--><!--Device-ManualIso-setIso(iso: int): void-End-->
 

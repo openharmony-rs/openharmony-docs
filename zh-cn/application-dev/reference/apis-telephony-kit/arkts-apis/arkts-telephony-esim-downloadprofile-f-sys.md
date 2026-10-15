@@ -46,11 +46,12 @@ function downloadProfile(slotId: number, portIndex: number, profile: Downloadabl
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3120001](../errorcode-telephony.md#3120001-服务连接失败) | Service connection failed. |
 | [3120002](../errorcode-telephony.md#3120002-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -80,3 +81,5 @@ eSIM.downloadProfile(1, 0, profile, configuration).then((data: eSIM.DownloadProf
     console.error(`downloadProfile, DownloadProfileResult: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

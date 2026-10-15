@@ -12,35 +12,19 @@ Enumerates the text decoration styles.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## SOLID
+## DASHED
 
 ```TypeScript
-SOLID = 0
+DASHED = 3
 ```
 
-Solid style.
+Dashed style.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## DOUBLE
-
-```TypeScript
-DOUBLE = 1
-```
-
-Double style.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
-
-<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
+<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -54,25 +38,41 @@ Dotted style.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextDecorationStyle-DOTTED = 2--><!--Device-TextDecorationStyle-DOTTED = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## DASHED
+## DOUBLE
 
 ```TypeScript
-DASHED = 3
+DOUBLE = 1
 ```
 
-Dashed style.
+Double style.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
-<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
+<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SOLID
+
+```TypeScript
+SOLID = 0
+```
+
+Solid style.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -86,7 +86,7 @@ Wavy style.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-TextDecorationStyle-WAVY = 4--><!--Device-TextDecorationStyle-WAVY = 4-End-->
 

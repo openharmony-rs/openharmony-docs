@@ -15,6 +15,20 @@ Enumerates the state types of the input method panel. <br> <br>
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 
+## FLAG_CANDIDATE
+
+```TypeScript
+FLAG_CANDIDATE
+```
+
+Candidate state type. <br> <br>- When in the candidate state type, the input method panel is a window displaying candidates based on user input. <br>- The input method service does not proactively control the visibility of the candidate panel. You need to control the visibility on your own.
+
+**Since:** 11
+
+<!--Device-PanelFlag-FLAG_CANDIDATE--><!--Device-PanelFlag-FLAG_CANDIDATE-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
 ## FLAG_FIXED
 
 ```TypeScript
@@ -40,19 +54,5 @@ Floating state type.
 **Since:** 11
 
 <!--Device-PanelFlag-FLAG_FLOATING--><!--Device-PanelFlag-FLAG_FLOATING-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-## FLAG_CANDIDATE
-
-```TypeScript
-FLAG_CANDIDATE
-```
-
-Candidate state type. <br> <br>- When in the candidate state type, the input method panel is a window displaying candidates based on user input. <br>- The input method service does not proactively control the visibility of the candidate panel. You need to control the visibility on your own.
-
-**Since:** 11
-
-<!--Device-PanelFlag-FLAG_CANDIDATE--><!--Device-PanelFlag-FLAG_CANDIDATE-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework

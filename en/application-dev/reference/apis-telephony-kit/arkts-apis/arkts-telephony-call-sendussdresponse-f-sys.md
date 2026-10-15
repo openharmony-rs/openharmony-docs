@@ -43,6 +43,7 @@ Sends a response to the Unstructured Supplementary Service Data (USSD) service t
 | 8400002 | Operation failed. Cannot connect to service. |
 | 8400003 | System internal error, system database write fail. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ function testSendUssdResponse() {
     }
 }
 ```
+
+<!--DelEnd-->

@@ -20,7 +20,7 @@ export interface ExtensionAbility
 readonly forms: Array<AbilityFormInfo>
 ```
 
-卡片信息。
+表示form卡片的规格，form卡片是可以嵌入桌面上并接收定时更新的应用简要视图。
 
 **类型：** Array&lt;[AbilityFormInfo](arkts-ability-bundlepackinfo-abilityforminfo-i-sys.md)&gt;
 

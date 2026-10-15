@@ -108,9 +108,9 @@ userId?: number
 
 目标意图所属的用户ID。
 
-**说明：** 
-
-如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
+> **说明：** 
+> 
+> 如果调用方应用的用户ID与目标意图所属的用户ID不同，则需要申请权限`ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS`。
 
 **类型：** number
 

@@ -12,13 +12,13 @@ Enumerates the badge display positions.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## RightTop
+## Left
 
 ```TypeScript
-RightTop
+Left
 ```
 
-The badge is displayed in the upper right corner.
+The badge is displayed vertically centered on the left.
 
 **Since:** 7
 
@@ -26,7 +26,7 @@ The badge is displayed in the upper right corner.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-BadgePosition-RightTop--><!--Device-BadgePosition-RightTop-End-->
+<!--Device-BadgePosition-Left--><!--Device-BadgePosition-Left-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ The badge is displayed vertically centered on the right.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Left
+## RightTop
 
 ```TypeScript
-Left
+RightTop
 ```
 
-The badge is displayed vertically centered on the left.
+The badge is displayed in the upper right corner.
 
 **Since:** 7
 
@@ -62,6 +62,6 @@ The badge is displayed vertically centered on the left.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-BadgePosition-Left--><!--Device-BadgePosition-Left-End-->
+<!--Device-BadgePosition-RightTop--><!--Device-BadgePosition-RightTop-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -18,6 +18,8 @@ interface ImageProcessor
 import { videoProcessingEngine } from '@kit.ImageKit';
 ```
 
+<a id="enhancedetail1"></a>
+
 ## enhanceDetail
 
 ```TypeScript
@@ -28,7 +30,7 @@ enhanceDetail(sourceImage: image.PixelMap, width: number, height: number, level?
 
 **起始版本：** 18
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageProcessor-enhanceDetail(sourceImage: image.PixelMap, width: int, height: int, level?: QualityLevel): Promise<image.PixelMap>--><!--Device-ImageProcessor-enhanceDetail(sourceImage: image.PixelMap, width: int, height: int, level?: QualityLevel): Promise<image.PixelMap>-End-->
 
@@ -71,7 +73,7 @@ async function enhanceDetail(sourceImage: image.PixelMap, width: number, height:
 }
 ```
 
-<a id="enhancedetail-1"></a>
+<a id="enhancedetail2"></a>
 
 ## enhanceDetail
 
@@ -83,7 +85,7 @@ enhanceDetail(sourceImage: image.PixelMap, scale: number, level?: QualityLevel):
 
 **起始版本：** 18
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageProcessor-enhanceDetail(sourceImage: image.PixelMap, scale: double, level?: QualityLevel): Promise<image.PixelMap>--><!--Device-ImageProcessor-enhanceDetail(sourceImage: image.PixelMap, scale: double, level?: QualityLevel): Promise<image.PixelMap>-End-->
 
@@ -125,6 +127,8 @@ async function enhanceDetail(sourceImage: image.PixelMap, scale: number) {
 }
 ```
 
+<a id="enhancedetailsync1"></a>
+
 ## enhanceDetailSync
 
 ```TypeScript
@@ -135,7 +139,7 @@ enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: number, le
 
 **起始版本：** 18
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageProcessor-enhanceDetailSync(sourceImage: image.PixelMap, width: int, height: int, level?: QualityLevel): image.PixelMap--><!--Device-ImageProcessor-enhanceDetailSync(sourceImage: image.PixelMap, width: int, height: int, level?: QualityLevel): image.PixelMap-End-->
 
@@ -179,7 +183,7 @@ function enhanceDetailSync(sourceImage: image.PixelMap, width: number, height: n
 }
 ```
 
-<a id="enhancedetailsync-1"></a>
+<a id="enhancedetailsync2"></a>
 
 ## enhanceDetailSync
 
@@ -191,7 +195,7 @@ enhanceDetailSync(sourceImage: image.PixelMap, scale: number, level?: QualityLev
 
 **起始版本：** 18
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本18开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageProcessor-enhanceDetailSync(sourceImage: image.PixelMap, scale: double, level?: QualityLevel): image.PixelMap--><!--Device-ImageProcessor-enhanceDetailSync(sourceImage: image.PixelMap, scale: double, level?: QualityLevel): image.PixelMap-End-->
 

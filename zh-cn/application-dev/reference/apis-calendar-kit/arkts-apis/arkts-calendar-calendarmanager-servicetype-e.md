@@ -12,51 +12,19 @@ export enum ServiceType
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
-## MEETING
+## CLASS
 
 ```TypeScript
-MEETING = 'Meeting'
+CLASS = 'Class'
 ```
 
-一键入会。
+一键上课。
 
 **起始版本：** 10
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ServiceType-MEETING = 'Meeting'--><!--Device-ServiceType-MEETING = 'Meeting'-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
-## WATCHING
-
-```TypeScript
-WATCHING = 'Watching'
-```
-
-一键追剧。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ServiceType-WATCHING = 'Watching'--><!--Device-ServiceType-WATCHING = 'Watching'-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
-## REPAYMENT
-
-```TypeScript
-REPAYMENT = 'Repayment'
-```
-
-一键还款。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ServiceType-REPAYMENT = 'Repayment'--><!--Device-ServiceType-REPAYMENT = 'Repayment'-End-->
+<!--Device-ServiceType-CLASS = 'Class'--><!--Device-ServiceType-CLASS = 'Class'-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -76,6 +44,38 @@ LIVE = 'Live'
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
+## MEETING
+
+```TypeScript
+MEETING = 'Meeting'
+```
+
+一键入会。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ServiceType-MEETING = 'Meeting'--><!--Device-ServiceType-MEETING = 'Meeting'-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## REPAYMENT
+
+```TypeScript
+REPAYMENT = 'Repayment'
+```
+
+一键还款。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ServiceType-REPAYMENT = 'Repayment'--><!--Device-ServiceType-REPAYMENT = 'Repayment'-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
 ## SHOPPING
 
 ```TypeScript
@@ -89,38 +89,6 @@ SHOPPING = 'Shopping'
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ServiceType-SHOPPING = 'Shopping'--><!--Device-ServiceType-SHOPPING = 'Shopping'-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
-## TRIP
-
-```TypeScript
-TRIP = 'Trip'
-```
-
-一键查看。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ServiceType-TRIP = 'Trip'--><!--Device-ServiceType-TRIP = 'Trip'-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
-## CLASS
-
-```TypeScript
-CLASS = 'Class'
-```
-
-一键上课。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ServiceType-CLASS = 'Class'--><!--Device-ServiceType-CLASS = 'Class'-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
@@ -153,5 +121,37 @@ SPORTS_EXERCISE = 'SportsExercise'
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ServiceType-SPORTS_EXERCISE = 'SportsExercise'--><!--Device-ServiceType-SPORTS_EXERCISE = 'SportsExercise'-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## TRIP
+
+```TypeScript
+TRIP = 'Trip'
+```
+
+一键查看。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ServiceType-TRIP = 'Trip'--><!--Device-ServiceType-TRIP = 'Trip'-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## WATCHING
+
+```TypeScript
+WATCHING = 'Watching'
+```
+
+一键追剧。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ServiceType-WATCHING = 'Watching'--><!--Device-ServiceType-WATCHING = 'Watching'-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData

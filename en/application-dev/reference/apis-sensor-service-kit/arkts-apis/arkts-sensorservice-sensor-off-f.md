@@ -6,7 +6,7 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="off-4"></a>
+<a id="off5"></a>
 
 ## off
 
@@ -71,7 +71,7 @@ try {
 ```
 
 
-<a id="off-5"></a>
+<a id="off6"></a>
 
 ## off
 
@@ -169,7 +169,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-6"></a>
+<a id="off7"></a>
 
 ## off
 
@@ -230,7 +230,7 @@ try {
 ```
 
 
-<a id="off-7"></a>
+<a id="off8"></a>
 
 ## off
 
@@ -324,7 +324,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-8"></a>
+<a id="off9"></a>
 
 ## off
 
@@ -382,7 +382,7 @@ try {
 ```
 
 
-<a id="off-9"></a>
+<a id="off10"></a>
 
 ## off
 
@@ -473,7 +473,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-10"></a>
+<a id="off11"></a>
 
 ## off
 
@@ -531,7 +531,7 @@ try {
 ```
 
 
-<a id="off-11"></a>
+<a id="off12"></a>
 
 ## off
 
@@ -622,7 +622,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-12"></a>
+<a id="off13"></a>
 
 ## off
 
@@ -680,7 +680,7 @@ try {
 ```
 
 
-<a id="off-13"></a>
+<a id="off14"></a>
 
 ## off
 
@@ -771,7 +771,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-14"></a>
+<a id="off15"></a>
 
 ## off
 
@@ -829,7 +829,7 @@ try {
 ```
 
 
-<a id="off-15"></a>
+<a id="off16"></a>
 
 ## off
 
@@ -920,7 +920,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-16"></a>
+<a id="off17"></a>
 
 ## off
 
@@ -985,7 +985,7 @@ try {
 ```
 
 
-<a id="off-17"></a>
+<a id="off18"></a>
 
 ## off
 
@@ -1083,7 +1083,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-18"></a>
+<a id="off19"></a>
 
 ## off
 
@@ -1144,7 +1144,7 @@ try {
 ```
 
 
-<a id="off-19"></a>
+<a id="off20"></a>
 
 ## off
 
@@ -1238,7 +1238,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-20"></a>
+<a id="off21"></a>
 
 ## off
 
@@ -1296,7 +1296,7 @@ try {
 ```
 
 
-<a id="off-21"></a>
+<a id="off22"></a>
 
 ## off
 
@@ -1387,7 +1387,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-22"></a>
+<a id="off23"></a>
 
 ## off
 
@@ -1448,7 +1448,7 @@ try {
 ```
 
 
-<a id="off-23"></a>
+<a id="off24"></a>
 
 ## off
 
@@ -1542,7 +1542,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-24"></a>
+<a id="off25"></a>
 
 ## off
 
@@ -1600,7 +1600,7 @@ try {
 ```
 
 
-<a id="off-25"></a>
+<a id="off26"></a>
 
 ## off
 
@@ -1691,7 +1691,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-26"></a>
+<a id="off27"></a>
 
 ## off
 
@@ -1752,7 +1752,7 @@ try {
 ```
 
 
-<a id="off-27"></a>
+<a id="off28"></a>
 
 ## off
 
@@ -1846,7 +1846,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-28"></a>
+<a id="off29"></a>
 
 ## off
 
@@ -1904,7 +1904,7 @@ try {
 ```
 
 
-<a id="off-29"></a>
+<a id="off30"></a>
 
 ## off
 
@@ -1995,7 +1995,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-30"></a>
+<a id="off31"></a>
 
 ## off
 
@@ -2053,7 +2053,7 @@ try {
 ```
 
 
-<a id="off-31"></a>
+<a id="off32"></a>
 
 ## off
 
@@ -2144,7 +2144,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-32"></a>
+<a id="off33"></a>
 
 ## off
 
@@ -2206,7 +2206,7 @@ try {
 ```
 
 
-<a id="off-33"></a>
+<a id="off34"></a>
 
 ## off
 
@@ -2301,7 +2301,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-34"></a>
+<a id="off35"></a>
 
 ## off
 
@@ -2362,7 +2362,7 @@ try {
 ```
 
 
-<a id="off-35"></a>
+<a id="off36"></a>
 
 ## off
 
@@ -2456,7 +2456,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-36"></a>
+<a id="off37"></a>
 
 ## off
 
@@ -2517,7 +2517,7 @@ try {
 ```
 
 
-<a id="off-37"></a>
+<a id="off38"></a>
 
 ## off
 
@@ -2611,7 +2611,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-38"></a>
+<a id="off39"></a>
 
 ## off
 
@@ -2669,7 +2669,7 @@ try {
 ```
 
 
-<a id="off-39"></a>
+<a id="off40"></a>
 
 ## off
 
@@ -2760,7 +2760,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-40"></a>
+<a id="off41"></a>
 
 ## off
 
@@ -2818,7 +2818,7 @@ try {
 ```
 
 
-<a id="off-41"></a>
+<a id="off42"></a>
 
 ## off
 
@@ -2909,7 +2909,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-42"></a>
+<a id="off43"></a>
 
 ## off
 
@@ -2967,7 +2967,7 @@ try {
 ```
 
 
-<a id="off-43"></a>
+<a id="off44"></a>
 
 ## off
 
@@ -3058,7 +3058,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-44"></a>
+<a id="off45"></a>
 
 ## off
 
@@ -3116,7 +3116,7 @@ try {
 ```
 
 
-<a id="off-45"></a>
+<a id="off46"></a>
 
 ## off
 
@@ -3208,7 +3208,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-46"></a>
+<a id="off47"></a>
 
 ## off
 
@@ -3299,7 +3299,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-47"></a>
+<a id="off48"></a>
 
 ## off
 
@@ -3312,14 +3312,14 @@ Unsubscribes from data of the acceleration sensor. The **off** API for canceling
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.ACCELEROMETER](#off-4)
+> [sensor.off.ACCELEROMETER](#off5)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-4)(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;)
+**Substitutes:** [off](#off5)(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -3349,7 +3349,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
 ```
 
 
-<a id="off-48"></a>
+<a id="off49"></a>
 
 ## off
 
@@ -3363,14 +3363,14 @@ Unsubscribes from data of the uncalibrated acceleration sensor. The **off** API 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.ACCELEROMETER_UNCALIBRATED](#off-6)
+> [sensor.off.ACCELEROMETER_UNCALIBRATED](#off7)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-6)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;)
+**Substitutes:** [off](#off7)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -3403,7 +3403,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback
 ```
 
 
-<a id="off-49"></a>
+<a id="off50"></a>
 
 ## off
 
@@ -3416,14 +3416,14 @@ Unsubscribes from data of the ambient light sensor. The **off** API for cancelin
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.AMBIENT_LIGHT](#off-8)
+> [sensor.off.AMBIENT_LIGHT](#off9)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-8)(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;)
+**Substitutes:** [off](#off9)(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback<LightResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback<LightResponse>): void-End-->
 
@@ -3449,7 +3449,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
 ```
 
 
-<a id="off-50"></a>
+<a id="off51"></a>
 
 ## off
 
@@ -3462,14 +3462,14 @@ Unsubscribes from data of the ambient temperature sensor. The **off** API for ca
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.AMBIENT_TEMPERATURE](#off-10)
+> [sensor.off.AMBIENT_TEMPERATURE](#off11)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-10)(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;)
+**Substitutes:** [off](#off11)(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback<AmbientTemperatureResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback<AmbientTemperatureResponse>): void-End-->
 
@@ -3495,7 +3495,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback);
 ```
 
 
-<a id="off-51"></a>
+<a id="off52"></a>
 
 ## off
 
@@ -3508,14 +3508,14 @@ Unsubscribes from data of the barometer sensor. The **off** API for canceling su
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.BAROMETER](#off-12)
+> [sensor.off.BAROMETER](#off13)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-12)(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;)
+**Substitutes:** [off](#off13)(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback<BarometerResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback<BarometerResponse>): void-End-->
 
@@ -3541,7 +3541,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, callback);
 ```
 
 
-<a id="off-52"></a>
+<a id="off53"></a>
 
 ## off
 
@@ -3554,14 +3554,14 @@ Unsubscribes from data of the gravity sensor. The **off** API for canceling subs
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.GRAVITY](#off-14)
+> [sensor.off.GRAVITY](#off15)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-14)(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;)
+**Substitutes:** [off](#off15)(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback<GravityResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback<GravityResponse>): void-End-->
 
@@ -3589,7 +3589,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
 ```
 
 
-<a id="off-53"></a>
+<a id="off54"></a>
 
 ## off
 
@@ -3602,14 +3602,14 @@ Unsubscribes from data of the gyroscope sensor. The **off** API for canceling su
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.GYROSCOPE](#off-16)
+> [sensor.off.GYROSCOPE](#off17)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-16)(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;)
+**Substitutes:** [off](#off17)(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -3639,7 +3639,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
 ```
 
 
-<a id="off-54"></a>
+<a id="off55"></a>
 
 ## off
 
@@ -3652,14 +3652,14 @@ Unsubscribes from data of the uncalibrated gyroscope sensor. The **off** API for
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.GYROSCOPE_UNCALIBRATED](#off-18)
+> [sensor.off.GYROSCOPE_UNCALIBRATED](#off19)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-18)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;)
+**Substitutes:** [off](#off19)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;)
 
 **Required permissions:** ohos.permission.GYROSCOPE
 
@@ -3689,7 +3689,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback);
 ```
 
 
-<a id="off-55"></a>
+<a id="off56"></a>
 
 ## off
 
@@ -3702,14 +3702,14 @@ Unsubscribes from data of the Hall effect sensor. The **off** API for canceling 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.HALL](#off-20)
+> [sensor.off.HALL](#off21)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-20)(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;)
+**Substitutes:** [off](#off21)(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback<HallResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback<HallResponse>): void-End-->
 
@@ -3735,7 +3735,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
 ```
 
 
-<a id="off-56"></a>
+<a id="off57"></a>
 
 ## off
 
@@ -3748,14 +3748,14 @@ Unsubscribes from data of the heart rate sensor. The **off** API for canceling s
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.HEART_RATE](#off-22)
+> [sensor.off.HEART_RATE](#off23)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-22)(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;)
+**Substitutes:** [off](#off23)(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;)
 
 **Required permissions:** ohos.permission.HEALTH_DATA
 
@@ -3783,7 +3783,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
 ```
 
 
-<a id="off-57"></a>
+<a id="off58"></a>
 
 ## off
 
@@ -3796,14 +3796,14 @@ Unsubscribes from data of the humidity sensor. The **off** API for canceling sub
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.HUMIDITY](#off-24)
+> [sensor.off.HUMIDITY](#off25)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-24)(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;)
+**Substitutes:** [off](#off25)(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback<HumidityResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback<HumidityResponse>): void-End-->
 
@@ -3829,7 +3829,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, callback);
 ```
 
 
-<a id="off-58"></a>
+<a id="off59"></a>
 
 ## off
 
@@ -3842,14 +3842,14 @@ Unsubscribes from data of the linear acceleration sensor. The **off** API for ca
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.LINEAR_ACCELEROMETER](#off-26)
+> [sensor.off.LINEAR_ACCELEROMETER](#off27)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-26)(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerometerResponse&gt;)
+**Substitutes:** [off](#off27)(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerometerResponse&gt;)
 
 **Required permissions:** ohos.permission.ACCELEROMETER
 
@@ -3879,7 +3879,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
 ```
 
 
-<a id="off-59"></a>
+<a id="off60"></a>
 
 ## off
 
@@ -3892,14 +3892,14 @@ Unsubscribes from data of the magnetic field sensor. The **off** API for canceli
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.MAGNETIC_FIELD](#off-28)
+> [sensor.off.MAGNETIC_FIELD](#off29)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-28)(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;)
+**Substitutes:** [off](#off29)(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback?: Callback<MagneticFieldResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback?: Callback<MagneticFieldResponse>): void-End-->
 
@@ -3927,7 +3927,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
 ```
 
 
-<a id="off-60"></a>
+<a id="off61"></a>
 
 ## off
 
@@ -3940,14 +3940,14 @@ Unsubscribes from data of the uncalibrated magnetic field sensor. The **off** AP
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.MAGNETIC_FIELD_UNCALIBRATED](#off-30)
+> [sensor.off.MAGNETIC_FIELD_UNCALIBRATED](#off31)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-30)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;)
+**Substitutes:** [off](#off31)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback<MagneticFieldUncalibratedResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback<MagneticFieldUncalibratedResponse>): void-End-->
 
@@ -3978,7 +3978,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callbac
 ```
 
 
-<a id="off-61"></a>
+<a id="off62"></a>
 
 ## off
 
@@ -3991,14 +3991,14 @@ Unsubscribes from data of the orientation sensor. The **off** API for canceling 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.ORIENTATION](#off-32)
+> [sensor.off.ORIENTATION](#off33)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-32)(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
+**Substitutes:** [off](#off33)(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback<OrientationResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback<OrientationResponse>): void-End-->
 
@@ -4026,7 +4026,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
 ```
 
 
-<a id="off-62"></a>
+<a id="off63"></a>
 
 ## off
 
@@ -4039,14 +4039,14 @@ Unsubscribes from data of the pedometer sensor. The **off** API for canceling su
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.PEDOMETER](#off-34)
+> [sensor.off.PEDOMETER](#off35)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-34)(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;)
+**Substitutes:** [off](#off35)(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -4074,7 +4074,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, callback);
 ```
 
 
-<a id="off-63"></a>
+<a id="off64"></a>
 
 ## off
 
@@ -4087,14 +4087,14 @@ Unsubscribes from data of the pedometer detection sensor. The **off** API for ca
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.PEDOMETER_DETECTION](#off-36)
+> [sensor.off.PEDOMETER_DETECTION](#off37)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-36)(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;)
+**Substitutes:** [off](#off37)(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;)
 
 **Required permissions:** ohos.permission.ACTIVITY_MOTION
 
@@ -4122,7 +4122,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback);
 ```
 
 
-<a id="off-64"></a>
+<a id="off65"></a>
 
 ## off
 
@@ -4135,14 +4135,14 @@ Unsubscribes from data of the proximity sensor. The **off** API for canceling su
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.PROXIMITY](#off-38)
+> [sensor.off.PROXIMITY](#off39)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-38)(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;)
+**Substitutes:** [off](#off39)(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback<ProximityResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback<ProximityResponse>): void-End-->
 
@@ -4168,7 +4168,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, callback);
 ```
 
 
-<a id="off-65"></a>
+<a id="off66"></a>
 
 ## off
 
@@ -4181,14 +4181,14 @@ Unsubscribes from data of the rotation vector sensor. The **off** API for cancel
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.ROTATION_VECTOR](#off-40)
+> [sensor.off.ROTATION_VECTOR](#off41)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-40)(type: SensorId.ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;)
+**Substitutes:** [off](#off41)(type: SensorId.ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback<RotationVectorResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback<RotationVectorResponse>): void-End-->
 
@@ -4217,7 +4217,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
 ```
 
 
-<a id="off-66"></a>
+<a id="off67"></a>
 
 ## off
 
@@ -4230,14 +4230,14 @@ Unsubscribes from significant motion sensor data. The **off** API for canceling 
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.SIGNIFICANT_MOTION](#off-42)
+> [sensor.off.SIGNIFICANT_MOTION](#off43)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-42)(type: SensorId.SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;)
+**Substitutes:** [off](#off43)(type: SensorId.SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback<SignificantMotionResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback<SignificantMotionResponse>): void-End-->
 
@@ -4263,7 +4263,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
 ```
 
 
-<a id="off-67"></a>
+<a id="off68"></a>
 
 ## off
 
@@ -4276,14 +4276,14 @@ Unsubscribes from data of the wear detection sensor. The **off** API for canceli
 > **NOTE:** 
 > 
 > This API is supported since API version 8 and deprecated since API version 9. You are advised to use
-> [sensor.off.WEAR_DETECTION](#off-44)
+> [sensor.off.WEAR_DETECTION](#off45)
 > instead.
 
 **Since:** 8
 
 **Deprecated since:** 9
 
-**Substitutes:** [off](#off-44)(type: SensorId.WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;)
+**Substitutes:** [off](#off45)(type: SensorId.WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback<WearDetectionResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback<WearDetectionResponse>): void-End-->
 

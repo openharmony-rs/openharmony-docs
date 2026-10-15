@@ -22,7 +22,7 @@ Distinguished Encoding Rules (DER) format.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EncodingFormat-FORMAT_DER = 0--><!--Device-EncodingFormat-FORMAT_DER = 0-End-->
 
@@ -38,7 +38,7 @@ Privacy-Enhanced Mail (PEM) format.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EncodingFormat-FORMAT_PEM = 1--><!--Device-EncodingFormat-FORMAT_PEM = 1-End-->
 
@@ -54,7 +54,7 @@ PKCS #7 format.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EncodingFormat-FORMAT_PKCS7 = 2--><!--Device-EncodingFormat-FORMAT_PKCS7 = 2-End-->
 

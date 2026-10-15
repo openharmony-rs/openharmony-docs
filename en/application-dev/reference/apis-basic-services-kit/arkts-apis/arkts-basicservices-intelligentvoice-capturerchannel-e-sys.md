@@ -4,7 +4,7 @@
 enum CapturerChannel
 ```
 
-Enumerates capturer channel. @enum {number}
+Enumerates capturer channel.
 
 **Since:** 12
 

@@ -18,7 +18,7 @@ The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are suppor
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** DynamicLayoutAttribute extends CommonMethod<DynamicLayoutAttribute>
+**Inheritance/Implementation:** DynamicLayoutAttribute extends CommonMethod&lt;DynamicLayoutAttribute&gt;
 
 **Since:** 24
 

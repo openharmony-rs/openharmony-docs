@@ -12,7 +12,7 @@ import { audio } from '@kit.AudioKit';
 function createAudioLoopback(mode: AudioLoopbackMode): Promise<AudioLoopback>
 ```
 
-Creates an &lt;b&gt;AudioLoopback&lt;/b&gt; instance, which provides low-latency in-ear monitoring using a fast capturer and renderer.
+Creates an <b>AudioLoopback</b> instance, which provides low-latency in-ear monitoring using a fast capturer and renderer.
 
 **Since:** 26.0.0
 
@@ -30,7 +30,7 @@ Creates an &lt;b&gt;AudioLoopback&lt;/b&gt; instance, which provides low-latency
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AudioLoopback](arkts-audio-audio-audioloopback-i.md)&gt; | Promise used to return the &lt;b&gt;AudioLoopback&lt;/b&gt; instance. |
+| Promise&lt;[AudioLoopback](arkts-audio-audio-audioloopback-i.md)&gt; | Promise used to return the<b>AudioLoopback</b> instance. |
 
 **Error codes:**
 

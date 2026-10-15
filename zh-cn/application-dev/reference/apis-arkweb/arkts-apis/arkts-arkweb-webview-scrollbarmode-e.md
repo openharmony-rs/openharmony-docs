@@ -12,20 +12,6 @@ Web页面场景下，全局滚动条模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## OVERLAY_LAYOUT_SCROLLBAR
-
-```TypeScript
-OVERLAY_LAYOUT_SCROLLBAR = 0
-```
-
-非常驻滚动条，可以拖拽。
-
-**起始版本：** 23
-
-<!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0--><!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## FORCE_DISPLAY_SCROLLBAR
 
 ```TypeScript
@@ -37,6 +23,20 @@ FORCE_DISPLAY_SCROLLBAR = 1
 **起始版本：** 23
 
 <!--Device-ScrollbarMode-FORCE_DISPLAY_SCROLLBAR = 1--><!--Device-ScrollbarMode-FORCE_DISPLAY_SCROLLBAR = 1-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## OVERLAY_LAYOUT_SCROLLBAR
+
+```TypeScript
+OVERLAY_LAYOUT_SCROLLBAR = 0
+```
+
+非常驻滚动条，可以拖拽。
+
+**起始版本：** 23
+
+<!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0--><!--Device-ScrollbarMode-OVERLAY_LAYOUT_SCROLLBAR = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

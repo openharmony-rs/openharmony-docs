@@ -34,7 +34,7 @@ Obtains the volume of the application. (The volume range is 0 to 100.) This API 
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AudioVolumeManager-getAppVolumePercentage(): Promise<int>--><!--Device-AudioVolumeManager-getAppVolumePercentage(): Promise<int>-End-->
 
@@ -66,7 +66,7 @@ Obtains the maximum volume of a specified audio stream.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AudioVolumeManager-getMaxVolumeByStream(streamUsage: StreamUsage): int--><!--Device-AudioVolumeManager-getMaxVolumeByStream(streamUsage: StreamUsage): int-End-->
 
@@ -116,7 +116,7 @@ Obtains the minimum volume of a specified audio stream.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AudioVolumeManager-getMinVolumeByStream(streamUsage: StreamUsage): int--><!--Device-AudioVolumeManager-getMinVolumeByStream(streamUsage: StreamUsage): int-End-->
 
@@ -166,7 +166,7 @@ Obtains the volume of a specified audio stream.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AudioVolumeManager-getVolumeByStream(streamUsage: StreamUsage): int--><!--Device-AudioVolumeManager-getVolumeByStream(streamUsage: StreamUsage): int-End-->
 
@@ -205,6 +205,8 @@ try {
   console.error(`Failed to obtains the volume of a stream, error: ${error}`);
 }
 ```
+
+<a id="getvolumegroupmanager1"></a>
 
 ## getVolumeGroupManager
 
@@ -245,7 +247,7 @@ audioVolumeManager.getVolumeGroupManager(groupId, (err: BusinessError, value: au
 });
 ```
 
-<a id="getvolumegroupmanager-1"></a>
+<a id="getvolumegroupmanager2"></a>
 
 ## getVolumeGroupManager
 
@@ -300,7 +302,7 @@ Obtains a VolumeGroupManager instance. This API returns the result synchronously
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AudioVolumeManager-getVolumeGroupManagerSync(groupId: int): AudioVolumeGroupManager--><!--Device-AudioVolumeManager-getVolumeGroupManagerSync(groupId: int): AudioVolumeGroupManager-End-->
 
@@ -699,7 +701,7 @@ Sets the volume (within a range of 0 to 100) for the application. This API uses 
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AudioVolumeManager-setAppVolumePercentage(volume: int): Promise<void>--><!--Device-AudioVolumeManager-setAppVolumePercentage(volume: int): Promise<void>-End-->
 

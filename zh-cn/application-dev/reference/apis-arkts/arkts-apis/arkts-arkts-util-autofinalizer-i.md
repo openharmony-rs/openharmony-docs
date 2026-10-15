@@ -8,7 +8,7 @@ interface AutoFinalizer<T>
 
 > **说明：** 
 > 
-> AutoFinalizer&lt;T&gt;需要和AutoFinalizerCleaner&lt;T&gt;一起使用，只实现该接口类没有任何功能。
+> AutoFinalizer<T>需要和AutoFinalizerCleaner<T>一起使用，只实现该接口类没有任何功能。
 
 **起始版本：** 22
 
@@ -28,7 +28,7 @@ import { util } from '@kit.ArkTS';
 onFinalization(heldValue: T): void
 ```
 
-开发者自定义的用于释放资源的回调。
+开发者自定义的用于释放资源的回调。当注册对象被回收时自动触发，并将heldValue传递给onFinalization。
 
 **起始版本：** 22
 

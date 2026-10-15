@@ -32,7 +32,7 @@ Asymmetric key algorithm, for example, **RSA**, **DSA**, **ECC**, **SM2**, **Ed2
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeySpec-algName: string--><!--Device-AsyKeySpec-algName: string-End-->
 
@@ -52,7 +52,7 @@ Key parameter type, which is used to distinguish public and private key paramete
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AsyKeySpec-specType: AsyKeySpecType--><!--Device-AsyKeySpec-specType: AsyKeySpecType-End-->
 

@@ -8,6 +8,8 @@ Defines the margins in different directions of a component.
 
 To reference this object, at least one parameter must be passed.
 
+**Type:** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -19,5 +21,3 @@ To reference this object, at least one parameter must be passed.
 <!--Device-unnamed-declare type LocalizedMargin = LocalizedPadding--><!--Device-unnamed-declare type LocalizedMargin = LocalizedPadding-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)

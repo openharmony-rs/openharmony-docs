@@ -44,6 +44,7 @@ Get session descriptors of the system based on different session category.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,3 +57,5 @@ avSession.getSessionDescriptors(avSession.SessionCategory.CATEGORY_ALL).then((de
   }
 });
 ```
+
+<!--DelEnd-->

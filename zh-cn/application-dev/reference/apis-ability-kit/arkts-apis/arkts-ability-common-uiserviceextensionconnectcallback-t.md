@@ -6,6 +6,8 @@ export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallba
 
 在连接指定的UIServiceExtensionAbility服务时作为入参，用于提供UIServiceExtensionAbility连接回调数据能力。
 
+**类型：** _UIServiceExtensionConnectCallback.default
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallba
 <!--Device-common-export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.default--><!--Device-common-export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.default-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _UIServiceExtensionConnectCallback.default

@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="setimage1"></a>
+
 ## setImage
 
 ```TypeScript
@@ -40,6 +42,7 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType,
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -77,8 +80,10 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setimage-1"></a>
+
+<a id="setimage2"></a>
 
 ## setImage
 
@@ -119,6 +124,7 @@ function setImage(source: string | image.PixelMap, wallpaperType: WallpaperType)
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -151,3 +157,5 @@ imageSource.createPixelMap(opts).then((pixelMap: image.PixelMap) => {
     console.error(`Failed to createPixelMap. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

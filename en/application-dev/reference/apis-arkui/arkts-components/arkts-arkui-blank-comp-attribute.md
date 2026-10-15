@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** BlankAttribute extends CommonMethod<BlankAttribute>
+**Inheritance/Implementation:** BlankAttribute extends CommonMethod&lt;BlankAttribute&gt;
 
 **Since:** 7
 

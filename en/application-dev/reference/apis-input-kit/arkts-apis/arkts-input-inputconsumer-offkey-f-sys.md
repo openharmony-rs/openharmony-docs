@@ -6,7 +6,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-<a id="offkey-1"></a>
+<a id="offkey2"></a>
 
 ## offKey
 
@@ -14,7 +14,7 @@ import { inputConsumer } from '@kit.InputKit';
 function offKey(keyOptions: KeyOptions, callback?: KeyCommandCallback): void
 ```
 
-Unsubscribe system keys.
+Unsubscribes from system hotkeys. This API uses an asynchronous callback to return the result.
 
 **Since:** 26.0.0
 
@@ -30,15 +30,16 @@ Unsubscribe system keys.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyOptions | [KeyOptions](arkts-input-inputconsumer-keyoptions-i-sys.md) | Yes | the key events about input which is to be subscribed. |
-| callback | [KeyCommandCallback](arkts-input-inputconsumer-keycommandcallback-t-sys.md) | No | Callback function that receives reported data. |
+| keyOptions | [KeyOptions](arkts-input-inputconsumer-keyoptions-i-sys.md) | Yes | Key combination options, which must be consistent with the keyOptions passed in during subscription. |
+| callback | [KeyCommandCallback](arkts-input-inputconsumer-keycommandcallback-t-sys.md) | No | Callback function to be unsubscribed from. If this parameter is not specified, all callback functions subscribed to by the current app for the key combination options are unsubscribed from. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -88,3 +89,5 @@ try {
   console.error(`Failed to execute operation. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

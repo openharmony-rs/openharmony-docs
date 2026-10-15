@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="createrotationmatrix1"></a>
+
 ## createRotationMatrix
 
 ```TypeScript
@@ -56,7 +58,7 @@ sensor.createRotationMatrix([0.20046076, 0.21907, 0.73978853, 0.60376877],
 ```
 
 
-<a id="createrotationmatrix-1"></a>
+<a id="createrotationmatrix2"></a>
 
 ## createRotationMatrix
 
@@ -111,7 +113,7 @@ promise.then((data: Array<number>) => {
 ```
 
 
-<a id="createrotationmatrix-2"></a>
+<a id="createrotationmatrix3"></a>
 
 ## createRotationMatrix
 
@@ -162,7 +164,7 @@ sensor.createRotationMatrix([-0.27775216, 0.5351276, 9.788099], [210.87253, -78.
 ```
 
 
-<a id="createrotationmatrix-3"></a>
+<a id="createrotationmatrix4"></a>
 
 ## createRotationMatrix
 

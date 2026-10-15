@@ -28,22 +28,6 @@ CONNECTED_SESSION_EXISTS = 0
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
-## PEER_APP_REJECTED
-
-```TypeScript
-PEER_APP_REJECTED = 1
-```
-
-表示对端应用拒绝了协作请求。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectErrorCode-PEER_APP_REJECTED = 1--><!--Device-ConnectErrorCode-PEER_APP_REJECTED = 1-End-->
-
-**系统能力：** SystemCapability.DistributedSched.AppCollaboration
-
 ## LOCAL_WIFI_NOT_OPEN
 
 ```TypeScript
@@ -60,22 +44,6 @@ LOCAL_WIFI_NOT_OPEN = 2
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
-## PEER_WIFI_NOT_OPEN
-
-```TypeScript
-PEER_WIFI_NOT_OPEN = 3
-```
-
-表示对端WiFi未开启。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ConnectErrorCode-PEER_WIFI_NOT_OPEN = 3--><!--Device-ConnectErrorCode-PEER_WIFI_NOT_OPEN = 3-End-->
-
-**系统能力：** SystemCapability.DistributedSched.AppCollaboration
-
 ## PEER_ABILITY_NO_ONCOLLABORATE
 
 ```TypeScript
@@ -89,6 +57,38 @@ PEER_ABILITY_NO_ONCOLLABORATE = 4
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ConnectErrorCode-PEER_ABILITY_NO_ONCOLLABORATE = 4--><!--Device-ConnectErrorCode-PEER_ABILITY_NO_ONCOLLABORATE = 4-End-->
+
+**系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
+## PEER_APP_REJECTED
+
+```TypeScript
+PEER_APP_REJECTED = 1
+```
+
+表示对端应用拒绝了协作请求。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ConnectErrorCode-PEER_APP_REJECTED = 1--><!--Device-ConnectErrorCode-PEER_APP_REJECTED = 1-End-->
+
+**系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
+## PEER_WIFI_NOT_OPEN
+
+```TypeScript
+PEER_WIFI_NOT_OPEN = 3
+```
+
+表示对端WiFi未开启。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ConnectErrorCode-PEER_WIFI_NOT_OPEN = 3--><!--Device-ConnectErrorCode-PEER_WIFI_NOT_OPEN = 3-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 

@@ -6,6 +6,8 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="create1"></a>
+
 ## create
 
 ```TypeScript
@@ -35,7 +37,7 @@ function create(name: string, type: RunningLockType, callback: AsyncCallback<Run
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | If the permission is denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types;         2. Parameter verification failed. |
 
 **示例**
 
@@ -50,7 +52,7 @@ runningLock.create('running_lock_test', runningLock.RunningLockType.PROXIMITY_SC
 ```
 
 
-<a id="create-1"></a>
+<a id="create2"></a>
 
 ## create
 
@@ -86,7 +88,7 @@ function create(name: string, type: RunningLockType): Promise<RunningLock>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | If the permission is denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types;         2. Parameter verification failed. |
 
 **示例**
 

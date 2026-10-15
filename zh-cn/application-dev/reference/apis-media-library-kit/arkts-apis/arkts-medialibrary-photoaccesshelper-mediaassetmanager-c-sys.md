@@ -68,9 +68,10 @@ AI增强会额外产生一张图片，该图片与原始图组成复合图。复
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: 1. The asset is not a cloud-enhanced composite photo asset. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: The asset is not a cloud-enhanced composite photo asset. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:         1. The database is corrupted;         2. The file system is abnormal;         3. The IPC request timed out. |
 
+<!--Del-->
 **示例**
 
 phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
@@ -107,6 +108,10 @@ async function example(context: Context) {
     console.info('Succeeded in getting assets');
     // 获取查询结果中的第一个资产。
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+    if (photoAsset === undefined) {
+      console.error('photoAsset is undefined');
+      return;
+    }
     try {
       // 请求复合图中的辅助图的数据，返回的requestId可用于cancelRequest接口取消该请求。
       let requestId: string = await photoAccessHelper.MediaAssetManager.requestCompositeAuxiliaryImageData(context, photoAsset, handler);
@@ -117,6 +122,8 @@ async function example(context: Context) {
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## requestEnhancementImage
 
@@ -165,5 +172,5 @@ AI增强分类端侧AI增强和云侧AI增强，该接口仅限于端侧AI增强
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 23800108 | The specified asset does not exist. |
-| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes: 1. The context is invalid. 2. The photoAsset does not support local AI enhancement. |
-| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
+| [23800151](../errorcode-medialibrary.md#23800151-场景参数校验不通过) | Scene parameters validate failed, possible causes:         1. The context is invalid. 2. The photoAsset does not support local AI enhancement. |
+| [23800301](../errorcode-medialibrary.md#23800301-系统内部错误) | Internal system error. It is recommended to retry and check the logs. Possible causes:         1. The database is corrupted;         2. The file system is abnormal;         3. The IPC request timed out. |

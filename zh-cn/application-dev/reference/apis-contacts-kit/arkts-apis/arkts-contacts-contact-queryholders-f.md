@@ -6,6 +6,8 @@
 import { contact } from '@kit.ContactsKit';
 ```
 
+<a id="queryholders1"></a>
+
 ## queryHolders
 
 ```TypeScript
@@ -18,7 +20,7 @@ function queryHolders(callback: AsyncCallback<Array<Holder>>): void
 
 **废弃版本：** 10
 
-**替代接口：** [queryHolders](#queryholders-1)(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;)
+**替代接口：** [queryHolders](#queryholders2)(context: Context, callback: AsyncCallback&lt;Array&lt;Holder&gt;&gt;)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -48,7 +50,7 @@ contact.queryHolders((err: BusinessError, data) => {
 ```
 
 
-<a id="queryholders-1"></a>
+<a id="queryholders2"></a>
 
 ## queryHolders
 
@@ -103,7 +105,7 @@ contact.queryHolders(context, (err: BusinessError, data) => {
 ```
 
 
-<a id="queryholders-2"></a>
+<a id="queryholders3"></a>
 
 ## queryHolders
 
@@ -117,7 +119,7 @@ function queryHolders(): Promise<Array<Holder>>
 
 **废弃版本：** 10
 
-**替代接口：** [queryHolders](#queryholders-3)(context: Context)
+**替代接口：** [queryHolders](#queryholders4)(context: Context)
 
 **需要权限：** ohos.permission.READ_CONTACTS
 
@@ -143,7 +145,7 @@ promise.then((data) => {
 ```
 
 
-<a id="queryholders-3"></a>
+<a id="queryholders4"></a>
 
 ## queryHolders
 

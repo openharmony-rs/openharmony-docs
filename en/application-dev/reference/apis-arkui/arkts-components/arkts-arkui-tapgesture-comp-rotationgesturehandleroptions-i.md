@@ -20,9 +20,11 @@ Provides the parameters of the rotation gesture handler. Inherits from [BaseHand
 angle?: number
 ```
 
-Minimum angle change required to trigger the rotation gesture, in degrees (deg).
+Minimum angle change required to trigger the rotation gesture, in degrees (deg). To recognize slight rotations more sensitively, set a smaller positive angle. To reduce accidental touches or respond only to obvious rotations, set a larger angle. It is recommended to use the default value first and then adjust it based on the rotation interaction precision requirements.
 
 Default value: **1**
+
+Value range: (0, 360]
 
 **NOTE:** 
 
@@ -46,13 +48,13 @@ If the value is less than or equal to 0 or greater than 360, it will be converte
 fingers?: number
 ```
 
-Minimum number of fingers required to trigger the rotation gesture. The value ranges from 2 to 5.
+Minimum number of fingers required to trigger rotation. The minimum is 2 and the maximum is 5.
 
 Default value: **2**
 
 Value range: [2, 5]
 
-While more fingers than the minimum number can be pressed to trigger the gesture, only the first two fingers participate in gesture calculation.
+If the value is less than 2 or greater than 5, the default value **2** is used. When **isFingerCountLimited** is not enabled, the number of fingers touching the screen can be greater than the value of **fingers** when the gesture is triggered, but only the first two fingers that touch the screen participate in gesture calculation. When **isFingerCountLimited** is enabled, the number of fingers touching the screen must be equal to the value of **fingers**; otherwise, the gesture will not be recognized.
 
 **Type:** number
 

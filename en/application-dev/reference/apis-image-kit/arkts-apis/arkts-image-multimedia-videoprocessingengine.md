@@ -20,9 +20,9 @@ import { videoProcessingEngine } from '@kit.ImageKit';
 
 | Name | Description |
 | --- | --- |
-| [create](arkts-image-videoprocessingengine-create-f.md) | Create an image processing instance. |
-| [deinitializeEnvironment](arkts-image-videoprocessingengine-deinitializeenvironment-f.md) | Deinitialize global environment for image processing. |
-| [initializeEnvironment](arkts-image-videoprocessingengine-initializeenvironment-f.md) | Initialize global environment for image processing. |
+| [create](arkts-image-videoprocessingengine-create-f.md#create) | Create an image processing instance. |
+| [deinitializeEnvironment](arkts-image-videoprocessingengine-deinitializeenvironment-f.md#deinitializeenvironment) | Deinitialize global environment for image processing. |
+| [initializeEnvironment](arkts-image-videoprocessingengine-initializeenvironment-f.md#initializeenvironment) | Initialize global environment for image processing. |
 
 ### Interfaces
 
@@ -34,4 +34,4 @@ import { videoProcessingEngine } from '@kit.ImageKit';
 
 | Name | Description |
 | --- | --- |
-| [QualityLevel](arkts-image-videoprocessingengine-qualitylevel-e.md) | Levels of processing quality for detail enhancement. @enum {int} |
+| [QualityLevel](arkts-image-videoprocessingengine-qualitylevel-e.md) | Levels of processing quality for detail enhancement. |

@@ -4,9 +4,30 @@
 declare class OffscreenCanvasRenderingContext2D extends CanvasRenderer
 ```
 
+使用OffscreenCanvasRenderingContext2D在Canvas上进行离屏绘制，绘制对象可以是形状、文本、图片等。离屏绘制是指将需要绘制的内容先绘制在缓存区，然后将其转换成图片，一次性绘制到Canvas上。离屏绘制使用CPU进行绘制，绘制速度较慢，对绘制速度有要求的场景应避免使用离屏绘制。
+
+> **说明：** 
+> 
+> OffscreenCanvasRenderingContext2D无法在ServiceExtensionAbility中使用，
+> ServiceExtensionAbility中建议使用
+> [Drawing模块](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-graphics-drawing.md)
+> 进行离屏绘制。
+> 
+> beginPath、moveTo、lineTo、closePath、bezierCurveTo、quadraticCurveTo、arc、arcTo、ellipse、rect和
+> roundRect接口只能对OffscreenCanvasRenderingContext2D中的路径生效，无法对
+> [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md)
+> 和[Path2D](arkts-arkui-canvas-comp-path2d-c.md)
+> 对象中设置的路径生效。
+
 **继承/实现关系：** OffscreenCanvasRenderingContext2D extends [CanvasRenderer](arkts-arkui-canvas-comp-canvasrenderer-c.md)
 
+**起始版本：** 8
+
 <!--Device-unnamed-declare class OffscreenCanvasRenderingContext2D extends CanvasRenderer--><!--Device-unnamed-declare class OffscreenCanvasRenderingContext2D extends CanvasRenderer-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="constructor1"></a>
 
 ## constructor
 
@@ -36,7 +57,7 @@ constructor(width: number, height: number, settings?: RenderingContextSettings)
 | height | number | 是 | 离屏画布的高度，默认单位：vp。<br>异常值NaN和Infinity按无效值处理。 |
 | settings | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | 否 | 用来配置OffscreenCanvasRenderingContext2D对象的参数，见RenderingContextSettings接口描述。<br>异常值undefined按RenderingContextSettings的默认值处理。<br>默认值：null。 |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

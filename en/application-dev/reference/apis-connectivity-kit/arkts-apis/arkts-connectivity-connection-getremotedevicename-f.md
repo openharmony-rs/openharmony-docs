@@ -6,6 +6,8 @@
 import { connection } from '@kit.ConnectivityKit';
 ```
 
+<a id="getremotedevicename1"></a>
+
 ## getRemoteDeviceName
 
 ```TypeScript
@@ -43,7 +45,7 @@ Obtains the name of a peer Bluetooth device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |
@@ -61,7 +63,7 @@ try {
 ```
 
 
-<a id="getremotedevicename-1"></a>
+<a id="getremotedevicename2"></a>
 
 ## getRemoteDeviceName
 
@@ -77,7 +79,7 @@ Obtains the name or alias of the Bluetooth peer device.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 16.
+**Atomic service API:** This API can be used in atomic services since API version 16.
 
 <!--Device-connection-function getRemoteDeviceName(deviceId: string, alias?: boolean): string--><!--Device-connection-function getRemoteDeviceName(deviceId: string, alias?: boolean): string-End-->
 
@@ -101,7 +103,7 @@ Obtains the name or alias of the Bluetooth peer device.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900001 | Service stopped. |
 | 2900003 | Bluetooth disabled. |

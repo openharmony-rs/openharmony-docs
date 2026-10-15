@@ -26,20 +26,6 @@ PRINTER_ADDED = 0
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## PRINTER_REMOVED
-
-```TypeScript
-PRINTER_REMOVED = 1
-```
-
-表示打印机丢失。
-
-**起始版本：** 14
-
-<!--Device-PrinterState-PRINTER_REMOVED = 1--><!--Device-PrinterState-PRINTER_REMOVED = 1-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## PRINTER_CAPABILITY_UPDATED
 
 ```TypeScript
@@ -79,6 +65,20 @@ PRINTER_DISCONNECTED = 4
 **起始版本：** 14
 
 <!--Device-PrinterState-PRINTER_DISCONNECTED = 4--><!--Device-PrinterState-PRINTER_DISCONNECTED = 4-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## PRINTER_REMOVED
+
+```TypeScript
+PRINTER_REMOVED = 1
+```
+
+表示打印机丢失。
+
+**起始版本：** 14
+
+<!--Device-PrinterState-PRINTER_REMOVED = 1--><!--Device-PrinterState-PRINTER_REMOVED = 1-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 

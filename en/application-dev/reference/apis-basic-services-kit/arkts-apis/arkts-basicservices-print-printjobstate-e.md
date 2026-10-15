@@ -12,6 +12,34 @@ Enumerates the print job states.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
+## PRINT_JOB_BLOCKED
+
+```TypeScript
+PRINT_JOB_BLOCKED = 3
+```
+
+The print job is blocked.
+
+**Since:** 14
+
+<!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3--><!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## PRINT_JOB_COMPLETED
+
+```TypeScript
+PRINT_JOB_COMPLETED = 4
+```
+
+The print job is complete.
+
+**Since:** 14
+
+<!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4--><!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
 ## PRINT_JOB_PREPARE
 
 ```TypeScript
@@ -51,33 +79,5 @@ The print job is being executed.
 **Since:** 14
 
 <!--Device-PrintJobState-PRINT_JOB_RUNNING = 2--><!--Device-PrintJobState-PRINT_JOB_RUNNING = 2-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## PRINT_JOB_BLOCKED
-
-```TypeScript
-PRINT_JOB_BLOCKED = 3
-```
-
-The print job is blocked.
-
-**Since:** 14
-
-<!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3--><!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## PRINT_JOB_COMPLETED
-
-```TypeScript
-PRINT_JOB_COMPLETED = 4
-```
-
-The print job is complete.
-
-**Since:** 14
-
-<!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4--><!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

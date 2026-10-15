@@ -20,6 +20,8 @@ class UserAuth
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="auth1"></a>
+
 ## auth
 
 ```TypeScript
@@ -67,9 +69,9 @@ auth(
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge, authType or authTrustLevel. |
 | [12300013](../errorcode-account.md#12300013-网络异常) | Network exception.<br>**适用版本：** 12+ |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 20+ |
-| 12300090 | Cross-device capability not supported.<br>**适用版本：** 20+ |
-| 12300091 | Cross-device communication failed.<br>**适用版本：** 20+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 20+ |
+| [12300090](../errorcode-account.md#12300090-不支持跨设备认证能力) | Cross-device capability not supported.<br>**适用版本：** 20+ |
+| [12300091](../errorcode-account.md#12300091-跨设备通信失败) | Cross-device communication failed.<br>**适用版本：** 20+ |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The credential is incorrect. |
 | [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
 | [12300105](../errorcode-account.md#12300105-可信等级不支持) | The trust level is not supported. |
@@ -81,10 +83,11 @@ auth(
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | The authentication service does not exist.<br>**适用版本：** 12+ |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally.<br>**适用版本：** 12+ |
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired.<br>**适用版本：** 12+ |
-| 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
+| [12300119](../errorcode-account.md#12300119-多因子认证失败) | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -107,7 +110,9 @@ try {
 }
 ```
 
-<a id="auth-1"></a>
+<!--DelEnd-->
+
+<a id="auth2"></a>
 
 ## auth
 
@@ -159,9 +164,9 @@ auth(
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge, authType, authTrustLevel or options. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
 | [12300013](../errorcode-account.md#12300013-网络异常) | Network exception. |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 20+ |
-| 12300090 | Cross-device capability not supported.<br>**适用版本：** 20+ |
-| 12300091 | Cross-device communication failed.<br>**适用版本：** 20+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 20+ |
+| [12300090](../errorcode-account.md#12300090-不支持跨设备认证能力) | Cross-device capability not supported.<br>**适用版本：** 20+ |
+| [12300091](../errorcode-account.md#12300091-跨设备通信失败) | Cross-device communication failed.<br>**适用版本：** 20+ |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The credential is incorrect. |
 | [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
 | [12300105](../errorcode-account.md#12300105-可信等级不支持) | The trust level is not supported. |
@@ -173,10 +178,11 @@ auth(
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | The authentication service does not exist. |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally. |
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired. |
-| 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
+| [12300119](../errorcode-account.md#12300119-多因子认证失败) | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -201,6 +207,8 @@ try {
   console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## authUser
 
@@ -252,9 +260,9 @@ authUser(
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge, authType or authTrustLevel. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [12300013](../errorcode-account.md#12300013-网络异常) | Network exception.<br>**适用版本：** 12+ |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 20+ |
-| 12300090 | Cross-device capability not supported.<br>**适用版本：** 20+ |
-| 12300091 | Cross-device communication failed.<br>**适用版本：** 20+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 20+ |
+| [12300090](../errorcode-account.md#12300090-不支持跨设备认证能力) | Cross-device capability not supported.<br>**适用版本：** 20+ |
+| [12300091](../errorcode-account.md#12300091-跨设备通信失败) | Cross-device communication failed.<br>**适用版本：** 20+ |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The credential is incorrect. |
 | [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
 | [12300105](../errorcode-account.md#12300105-可信等级不支持) | The trust level is not supported. |
@@ -266,10 +274,11 @@ authUser(
 | [12300113](../errorcode-account.md#12300113-认证服务不存在) | The authentication service does not exist.<br>**适用版本：** 12+ |
 | [12300114](../errorcode-account.md#12300114-认证服务异常) | The authentication service works abnormally.<br>**适用版本：** 12+ |
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired.<br>**适用版本：** 12+ |
-| 12300119 | Multi-factor authentication failed.<br>**适用版本：** 20+ |
+| [12300119](../errorcode-account.md#12300119-多因子认证失败) | Multi-factor authentication failed.<br>**适用版本：** 20+ |
 | [12300120](../errorcode-account.md#12300120-凭据已失效) | The credentials are no longer valid.<br>**适用版本：** 23+ |
 | [12300211](../errorcode-account.md#12300211-服务器不可达) | Server unreachable.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -292,6 +301,8 @@ try {
   console.error(`authUser exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## cancelAuth
 
@@ -327,6 +338,7 @@ cancelAuth(contextID: Uint8Array): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid contextId. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -348,6 +360,8 @@ try {
   console.error(`cancelAuth exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## constructor
 
@@ -371,11 +385,14 @@ constructor()
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let userAuth = new osAccount.UserAuth();
 ```
+
+<!--DelEnd-->
 
 ## getAvailableStatus
 
@@ -419,6 +436,7 @@ getAvailableStatus(authType: AuthType, authTrustLevel: AuthTrustLevel): number
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType or authTrustLevel. |
 | [12300117](../errorcode-account.md#12300117-pin码过期) | PIN is expired. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -435,6 +453,10 @@ try {
   console.error(`getAvailableStatus exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getproperty1"></a>
 
 ## getProperty
 
@@ -470,8 +492,9 @@ getProperty(request: GetPropertyRequest, callback: AsyncCallback<ExecutorPropert
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -501,7 +524,9 @@ try {
 }
 ```
 
-<a id="getproperty-1"></a>
+<!--DelEnd-->
+
+<a id="getproperty2"></a>
 
 ## getProperty
 
@@ -542,8 +567,9 @@ getProperty(request: GetPropertyRequest): Promise<ExecutorProperty>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -570,6 +596,8 @@ try {
   console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getPropertyByCredentialId
 
@@ -610,9 +638,10 @@ getPropertyByCredentialId(credentialId: Uint8Array, keys: Array<GetPropertyType>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid keys. |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
 | [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -652,6 +681,8 @@ async function getProperty() {
 }
 ```
 
+<!--DelEnd-->
+
 ## getVersion
 
 ```TypeScript
@@ -680,6 +711,7 @@ getVersion(): number
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -687,6 +719,8 @@ let userAuth = new osAccount.UserAuth();
 let version: number = userAuth.getVersion();
 console.info('getVersion version = ' + version);
 ```
+
+<!--DelEnd-->
 
 ## prepareRemoteAuth
 
@@ -726,10 +760,11 @@ prepareRemoteAuth(remoteNetworkId: string): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid remoteNetworkId. |
-| 12300090 | Cross-device capability not supported.<br>**适用版本：** 20+ |
-| 12300091 | Cross-device communication failed.<br>**适用版本：** 20+ |
+| [12300090](../errorcode-account.md#12300090-不支持跨设备认证能力) | Cross-device capability not supported.<br>**适用版本：** 20+ |
+| [12300091](../errorcode-account.md#12300091-跨设备通信失败) | Cross-device communication failed.<br>**适用版本：** 20+ |
 | [12300111](../errorcode-account.md#12300111-认证超时) | Operation timeout.<br>**适用版本：** 20+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -754,6 +789,10 @@ distributedDeviceMgr.getAvailableDeviceList().then((data: Array<distributedDevic
   }
 )
 ```
+
+<!--DelEnd-->
+
+<a id="setproperty1"></a>
 
 ## setProperty
 
@@ -790,6 +829,7 @@ setProperty(request: SetPropertyRequest, callback: AsyncCallback<void>): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -815,7 +855,9 @@ try {
 }
 ```
 
-<a id="setproperty-1"></a>
+<!--DelEnd-->
+
+<a id="setproperty2"></a>
 
 ## setProperty
 
@@ -857,6 +899,7 @@ setProperty(request: SetPropertyRequest): Promise<void>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid request. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -879,3 +922,5 @@ try {
   console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

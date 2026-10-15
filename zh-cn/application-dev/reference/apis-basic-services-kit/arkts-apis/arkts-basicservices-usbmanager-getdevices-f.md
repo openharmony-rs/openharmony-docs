@@ -39,8 +39,12 @@ function getDevices(): Array<Readonly<USBDevice>>
 **示例**
 
 ```TypeScript
-let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
-console.info(`devicesList = ${devicesList}`);
+try {
+  let devicesList: Array<usbManager.USBDevice> = usbManager.getDevices();
+  console.info(`devicesList = ${devicesList}`);
+} catch (err) {
+  console.error(`getDevices failed. Code: ${err.code}, message: ${err.message}`);
+}
 /*
   devicesList 返回的数据结构，此处提供一个简单的示例，如下
   [

@@ -52,26 +52,6 @@ The image is repeatedly drawn only along the horizontal axis.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Y
-
-```TypeScript
-Y
-```
-
-Images are repeatedly drawn only on the vertical axis.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-ImageRepeat-Y--><!--Device-ImageRepeat-Y-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## XY
 
 ```TypeScript
@@ -89,5 +69,25 @@ The image is repeatedly drawn along both axes.
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-ImageRepeat-XY--><!--Device-ImageRepeat-XY-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Y
+
+```TypeScript
+Y
+```
+
+Images are repeatedly drawn only on the vertical axis.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageRepeat-Y--><!--Device-ImageRepeat-Y-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

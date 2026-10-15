@@ -6,6 +6,8 @@ declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').de
 
 Defines the input parameter object for **startDataLoading**.
 
+**Type:** import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams
+
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the input parameter object for **startDataLoading**.
 <!--Device-unnamed-declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams--><!--Device-unnamed-declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams

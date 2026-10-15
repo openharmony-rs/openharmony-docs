@@ -6,6 +6,8 @@
 import { relationalStore } from '@kit.ArkData';
 ```
 
+<a id="deleterdbstore1"></a>
+
 ## deleteRdbStore
 
 ```TypeScript
@@ -14,7 +16,7 @@ function deleteRdbStore(context: Context, name: string, callback: AsyncCallback<
 
 Deletes the RDB store with the specified database file name. This API uses a promise to return the result.
 
-If **vector** is set to **true** in [StoreConfig] [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) when an RDB store is created, using this API cannot delete the RDB store. Use [deleteRdbStore] [deleteRdbStore](#deleterdbstore-3) instead.
+If **vector** is set to **true** in [StoreConfig] [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) when an RDB store is created, using this API cannot delete the RDB store. Use [deleteRdbStore] [deleteRdbStore](#deleterdbstore4) instead.
 
 Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet** of the vector store have been closed.
 
@@ -84,7 +86,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deleterdbstore-1"></a>
+<a id="deleterdbstore2"></a>
 
 ## deleteRdbStore
 
@@ -175,7 +177,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deleterdbstore-2"></a>
+<a id="deleterdbstore3"></a>
 
 ## deleteRdbStore
 
@@ -185,7 +187,7 @@ function deleteRdbStore(context: Context, name: string): Promise<void>
 
 Deletes an RDB store. This API uses a promise to return the result.
 
-After the deletion, you are advised to set the database object to null. If a custom path is set in [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) when an RDB store is created, using this API cannot delete the RDB store. Use [deleteRdbStore](#deleterdbstore-3) instead.
+After the deletion, you are advised to set the database object to null. If a custom path is set in [StoreConfig](arkts-arkdata-relationalstore-storeconfig-i.md) when an RDB store is created, using this API cannot delete the RDB store. Use [deleteRdbStore](#deleterdbstore4) instead.
 
 Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet** of the vector store have been closed.
 
@@ -256,7 +258,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deleterdbstore-3"></a>
+<a id="deleterdbstore4"></a>
 
 ## deleteRdbStore
 
@@ -298,7 +300,7 @@ Before calling **deleteRdbStore**, ensure that the **RdbStore** and **ResultSet*
 | [14800010](../errorcode-data-rdb.md#14800010-invalid-database-path) | Failed to open or delete the database by an invalid database path. |
 | [14801001](../errorcode-data-rdb.md#14801001-stage-model-required) | The operation is supported in the stage model only. |
 | [14801002](../errorcode-data-rdb.md#14801002-invalid-datagroupid-in-storeconfig) | Invalid data group ID. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**Applicable version:** 12 and later |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**Applicable version:** 12 and later |
 
 **Examples**
 

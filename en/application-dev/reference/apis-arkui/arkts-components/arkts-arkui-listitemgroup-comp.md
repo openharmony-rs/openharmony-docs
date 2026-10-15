@@ -12,8 +12,8 @@ out, and rendered at a time. When a user swipes, the nodes that are out of the s
 
 Preloading in **ListItemGroup** refers to loading not only the child components within the display area but also some child components outside the display area in advance during idle time slots. Preloading can reduce frame drops during scrolling and improve smoothness. Preloading takes effect only when combined with lazy loading. When the **ListItemGroup** component is used together with [ForEach](../../../ui/rendering-control/arkts-rendering-control-foreach.md), [LazyForEach](../../../ui/rendering-control/arkts-rendering-control-lazyforeach.md), and [Repeat](../../../ui/rendering-control/arkts-new-rendering-control-repeat.md), the preloading capabilities differ:
 
-- When the **ListItemGroup** component is used together with **ForEach** and [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount) is set, in addition to laying out child components within the display area, child components outside the display area within the range specified by the **cachedCount** attribute of the **List** component are pre-laid out during idle time slots.  
-- When the **ListItemGroup** component is used together with **LazyForEach** and [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount) is set, in addition to creating and laying out child components within the display area, child components outside the display area within the range specified by the **cachedCount** attribute of the **List** component are pre-created and pre-laid out during idle time slots.  
+- When the **ListItemGroup** component is used together with **ForEach** and [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount1) is set, in addition to laying out child components within the display area, child components outside the display area within the range specified by the **cachedCount** attribute of the **List** component are pre-laid out during idle time slots.  
+- When the **ListItemGroup** component is used together with **LazyForEach** and [cachedCount](arkts-arkui-list-comp-attribute.md#cachedcount1) is set, in addition to creating and laying out child components within the display area, child components outside the display area within the range specified by the **cachedCount** attribute of the **List** component are pre-created and pre-laid out during idle time slots.  
 - When the **ListItemGroup** component is used together with **Repeat** with [virtualScroll](arkts-arkui-repeat-comp-attribute.md#virtualscroll), the preloading behavior is the same as that of **LazyForEach**. When the **ListItemGroup** component is used together with **Repeat** without **virtualScroll**, the preloading behavior is the same as that of **ForEach**.
 
 > **NOTE:** 
@@ -23,11 +23,11 @@ Preloading in **ListItemGroup** refers to loading not only the child components 
 > - The **ListItemGroup** component does not support the [universal attribute aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio).
 > 
 > - When the [listDirection](arkts-arkui-list-comp-attribute.md#listdirection) attribute of the parent **List** component is
-> **Axis.Vertical**, setting the [universal attribute height](arkts-arkui-common-comp-commonmethod-c.md#height) does not take
+> **Axis.Vertical**, setting the [universal attribute height](arkts-arkui-common-comp-commonmethod-c.md#height1) does not take
 > effect. The height of the **ListItemGroup** is the sum of the header height, footer height, and the total height of
 > all **ListItem** components after layout.
 > 
-> - When the **listDirection** attribute of the parent **List** component is **Axis.Horizontal**, setting the [universal attribute width](arkts-arkui-common-comp-commonmethod-c.md#width) does not take effect. The width of the
+> - When the **listDirection** attribute of the parent **List** component is **Axis.Horizontal**, setting the [universal attribute width](arkts-arkui-common-comp-commonmethod-c.md#width1) does not take effect. The width of the
 > **ListItemGroup** is the sum of the header width, footer width, and the total width of all **ListItem** components
 > after layout.
 > 

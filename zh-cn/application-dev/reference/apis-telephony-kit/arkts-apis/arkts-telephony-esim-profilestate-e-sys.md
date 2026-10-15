@@ -14,22 +14,6 @@ export enum ProfileState
 
 **系统接口：** 此接口为系统接口。
 
-## PROFILE_STATE_UNSPECIFIED
-
-```TypeScript
-PROFILE_STATE_UNSPECIFIED = -1
-```
-
-未设置配置文件状态。
-
-**起始版本：** 18
-
-<!--Device-ProfileState-PROFILE_STATE_UNSPECIFIED = -1--><!--Device-ProfileState-PROFILE_STATE_UNSPECIFIED = -1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
 ## PROFILE_STATE_DISABLED
 
 ```TypeScript
@@ -57,6 +41,22 @@ PROFILE_STATE_ENABLED = 1
 **起始版本：** 18
 
 <!--Device-ProfileState-PROFILE_STATE_ENABLED = 1--><!--Device-ProfileState-PROFILE_STATE_ENABLED = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## PROFILE_STATE_UNSPECIFIED
+
+```TypeScript
+PROFILE_STATE_UNSPECIFIED = -1
+```
+
+未设置配置文件状态。
+
+**起始版本：** 18
+
+<!--Device-ProfileState-PROFILE_STATE_UNSPECIFIED = -1--><!--Device-ProfileState-PROFILE_STATE_UNSPECIFIED = -1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 

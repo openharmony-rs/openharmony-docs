@@ -12,21 +12,21 @@ AutoFillType enumerates the types of elements to be automatically filled in.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
-## UNSPECIFIED
+## NEW_PASSWORD
 
 ```TypeScript
-UNSPECIFIED = 0
+NEW_PASSWORD = 3
 ```
 
-Unspecified type.
+New password type.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-AutoFillType-UNSPECIFIED = 0--><!--Device-AutoFillType-UNSPECIFIED = 0-End-->
+<!--Device-AutoFillType-NEW_PASSWORD = 3--><!--Device-AutoFillType-NEW_PASSWORD = 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -42,9 +42,27 @@ Password type.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AutoFillType-PASSWORD = 1--><!--Device-AutoFillType-PASSWORD = 1-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+## UNSPECIFIED
+
+```TypeScript
+UNSPECIFIED = 0
+```
+
+Unspecified type.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-AutoFillType-UNSPECIFIED = 0--><!--Device-AutoFillType-UNSPECIFIED = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -60,26 +78,8 @@ Username type.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AutoFillType-USER_NAME = 2--><!--Device-AutoFillType-USER_NAME = 2-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-## NEW_PASSWORD
-
-```TypeScript
-NEW_PASSWORD = 3
-```
-
-New password type.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-AutoFillType-NEW_PASSWORD = 3--><!--Device-AutoFillType-NEW_PASSWORD = 3-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore

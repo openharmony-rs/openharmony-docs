@@ -4,7 +4,9 @@
 export type BundleExtensionPolicyInfo = _BundleInfo.BundleExtensionPolicyInfo
 ```
 
-描述包扩展策略信息。
+描述套餐扩展策略信息。
+
+**类型：** [_BundleInfo.BundleExtensionPolicyInfo](arkts-ability-bundleinfo-bundleextensionpolicyinfo-i-sys.md)
 
 **起始版本：** 26.0.1
 
@@ -15,5 +17,3 @@ export type BundleExtensionPolicyInfo = _BundleInfo.BundleExtensionPolicyInfo
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [_BundleInfo.BundleExtensionPolicyInfo](arkts-ability-bundleinfo-bundleextensionpolicyinfo-i-sys.md)

@@ -6,6 +6,8 @@
 import { geolocation } from '@kit.LocationKit';
 ```
 
+<a id="getlastlocation1"></a>
+
 ## getLastLocation
 
 ```TypeScript
@@ -47,7 +49,7 @@ geolocation.getLastLocation((err, data) => {
 ```
 
 
-<a id="getlastlocation-1"></a>
+<a id="getlastlocation2"></a>
 
 ## getLastLocation
 

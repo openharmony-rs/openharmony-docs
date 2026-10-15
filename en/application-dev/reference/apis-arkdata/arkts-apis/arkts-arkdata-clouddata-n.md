@@ -32,9 +32,9 @@ import { cloudData } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md) | Sets the cloud sync strategy of an application. This API uses a promise to return the result. |
-| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md) | Describes the triggering method for automatic device-cloud synchronization subscription. |
-| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md) | Describes unsubscribing from the device-cloud automatic synchronization trigger mode. |
+| [offAutoSyncTrigger](arkts-arkdata-clouddata-offautosynctrigger-f.md#offautosynctrigger) | Describes unsubscribing from the device-cloud automatic synchronization trigger mode. |
+| [onAutoSyncTrigger](arkts-arkdata-clouddata-onautosynctrigger-f.md#onautosynctrigger) | Describes the triggering method for automatic device-cloud synchronization subscription. |
+| [setCloudStrategy](arkts-arkdata-clouddata-setcloudstrategy-f.md#setcloudstrategy) | Sets the cloud sync strategy of an application. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Classes(System API)
@@ -55,23 +55,23 @@ import { cloudData } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
+| [BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md) | Bundle information configuration. |
+| [ClearConfig](arkts-arkdata-clouddata-clearconfig-i-sys.md) | Defines the clearance configuration of a device-cloud synergy database. |
+| [DBActionInfo](arkts-arkdata-clouddata-dbactioninfo-i-sys.md) | Defines the clearance information of a device-cloud synergy database. |
+| [DBSwitchInfo](arkts-arkdata-clouddata-dbswitchinfo-i-sys.md) | Defines the switch information of a device-cloud synergy database. |
 | [ExtraData](arkts-arkdata-clouddata-extradata-i-sys.md) | Represents the transparently transmitted data, which contains information required for a data change notification. |
 | [StatisticInfo](arkts-arkdata-clouddata-statisticinfo-i-sys.md) | Represents the device-cloud sync statistics. |
-| [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md) | Represents information about the last device-cloud sync. |
-| [DBSwitchInfo](arkts-arkdata-clouddata-dbswitchinfo-i-sys.md) | Defines the switch information of a device-cloud synergy database. |
 | [SwitchConfig](arkts-arkdata-clouddata-switchconfig-i-sys.md) | Defines the switch configuration of a device-cloud synergy database. |
-| [DBActionInfo](arkts-arkdata-clouddata-dbactioninfo-i-sys.md) | Defines the clearance information of a device-cloud synergy database. |
-| [ClearConfig](arkts-arkdata-clouddata-clearconfig-i-sys.md) | Defines the clearance configuration of a device-cloud synergy database. |
-| [BundleInfo](arkts-arkdata-clouddata-bundleinfo-i-sys.md) | Bundle information configuration. |
+| [SyncInfo](arkts-arkdata-clouddata-syncinfo-i-sys.md) | Represents information about the last device-cloud sync. |
 <!--DelEnd-->
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | Enumerates the types of the cloud-device sync strategy. |
-| [NetWorkStrategy](arkts-arkdata-clouddata-networkstrategy-e.md) | Enumerates the network sync options. |
 | [AutoSyncTriggerMode](arkts-arkdata-clouddata-autosynctriggermode-e.md) | Indicates automatic synchronization triggering method for Device-Cloud data. |
+| [NetWorkStrategy](arkts-arkdata-clouddata-networkstrategy-e.md) | Enumerates the network sync options. |
+| [StrategyType](arkts-arkdata-clouddata-strategytype-e.md) | Enumerates the types of the cloud-device sync strategy. |
 
 <!--Del-->
 ### Enums(System API)

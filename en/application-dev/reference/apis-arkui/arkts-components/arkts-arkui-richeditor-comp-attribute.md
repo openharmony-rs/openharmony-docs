@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 In addition to the [universal events](arkts-arkui-common-comp.md), [OnDidChangeCallback](../arkts-apis/arkts-arkui-ondidchangecallback-t.md), [StyledStringChangedListener](../arkts-apis/arkts-arkui-styledstringchangedlistener-i.md), [StyledStringChangeValue](../arkts-apis/arkts-arkui-styledstringchangevalue-i.md), and the following events are supported.
 
-**Inheritance/Implementation:** RichEditorAttribute extends CommonMethod<RichEditorAttribute>
+**Inheritance/Implementation:** RichEditorAttribute extends CommonMethod&lt;RichEditorAttribute&gt;
 
 **Since:** 10
 

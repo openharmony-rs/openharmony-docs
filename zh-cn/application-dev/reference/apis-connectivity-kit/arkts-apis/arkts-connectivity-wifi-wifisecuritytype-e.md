@@ -56,24 +56,6 @@ WIFI_SEC_TYPE_OPEN = 1
 
 **系统能力：** SystemCapability.Communication.WiFi.Core
 
-## WIFI_SEC_TYPE_WEP
-
-```TypeScript
-WIFI_SEC_TYPE_WEP = 2
-```
-
-Wired Equivalent Privacy (WEP)加密类型。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-**替代接口：** [WIFI_SEC_TYPE_WEP](arkts-connectivity-wifimanager-wifisecuritytype-e.md#wifi_sec_type_wep)
-
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.Core
-
 ## WIFI_SEC_TYPE_PSK
 
 ```TypeScript
@@ -107,5 +89,23 @@ Simultaneous Authentication of Equals (SAE)加密类型。
 **替代接口：** [WIFI_SEC_TYPE_SAE](arkts-connectivity-wifimanager-wifisecuritytype-e.md#wifi_sec_type_sae)
 
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_SAE = 4--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_SAE = 4-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.Core
+
+## WIFI_SEC_TYPE_WEP
+
+```TypeScript
+WIFI_SEC_TYPE_WEP = 2
+```
+
+Wired Equivalent Privacy (WEP)加密类型。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+**替代接口：** [WIFI_SEC_TYPE_WEP](arkts-connectivity-wifimanager-wifisecuritytype-e.md#wifi_sec_type_wep)
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.Core

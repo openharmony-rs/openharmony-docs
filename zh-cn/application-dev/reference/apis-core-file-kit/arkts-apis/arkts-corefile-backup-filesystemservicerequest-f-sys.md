@@ -46,6 +46,7 @@ function fileSystemServiceRequest(config: FileSystemRequestConfig): Promise<numb
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | 13900020 | Invalid argument |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ async function testFunction(size: number) {
   }
 }
 ```
+
+<!--DelEnd-->

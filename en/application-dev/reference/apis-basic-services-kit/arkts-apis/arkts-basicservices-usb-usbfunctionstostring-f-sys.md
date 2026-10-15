@@ -38,9 +38,12 @@ Converts the USB function list in the numeric mask format to a string in Device 
 | --- | --- |
 | string | Function list in string format after conversion. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let funcs = usb.FunctionType.ACM | usb.FunctionType.ECM;
 let ret = usb.usbFunctionsToString(funcs);
 ```
+
+<!--DelEnd-->

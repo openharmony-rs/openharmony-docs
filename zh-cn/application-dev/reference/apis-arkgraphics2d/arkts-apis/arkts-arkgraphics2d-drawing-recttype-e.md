@@ -26,20 +26,6 @@ DEFAULT = 0
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## TRANSPARENT
-
-```TypeScript
-TRANSPARENT = 1
-```
-
-将矩形网格设置为透明的。
-
-**起始版本：** 12
-
-<!--Device-RectType-TRANSPARENT = 1--><!--Device-RectType-TRANSPARENT = 1-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
 ## FIXEDCOLOR
 
 ```TypeScript
@@ -51,5 +37,19 @@ FIXEDCOLOR = 2
 **起始版本：** 12
 
 <!--Device-RectType-FIXEDCOLOR = 2--><!--Device-RectType-FIXEDCOLOR = 2-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## TRANSPARENT
+
+```TypeScript
+TRANSPARENT = 1
+```
+
+将矩形网格设置为透明的。
+
+**起始版本：** 12
+
+<!--Device-RectType-TRANSPARENT = 1--><!--Device-RectType-TRANSPARENT = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

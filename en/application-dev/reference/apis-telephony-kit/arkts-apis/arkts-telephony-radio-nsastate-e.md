@@ -12,34 +12,6 @@ Enumerates NSA network states.
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## NSA_STATE_NOT_SUPPORT
-
-```TypeScript
-NSA_STATE_NOT_SUPPORT = 1
-```
-
-The device is in idle or connected state in an LTE cell that does not support NSA.
-
-**Since:** 6
-
-<!--Device-NsaState-NSA_STATE_NOT_SUPPORT = 1--><!--Device-NsaState-NSA_STATE_NOT_SUPPORT = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-## NSA_STATE_NO_DETECT
-
-```TypeScript
-NSA_STATE_NO_DETECT = 2
-```
-
-The device is in the idle state in an LTE cell that supports NSA but not NR coverage detection.
-
-**Since:** 6
-
-<!--Device-NsaState-NSA_STATE_NO_DETECT = 2--><!--Device-NsaState-NSA_STATE_NO_DETECT = 2-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
 ## NSA_STATE_CONNECTED_DETECT
 
 ```TypeScript
@@ -51,6 +23,20 @@ The device is connected to the LTE network in an LTE cell that supports NSA and 
 **Since:** 6
 
 <!--Device-NsaState-NSA_STATE_CONNECTED_DETECT = 3--><!--Device-NsaState-NSA_STATE_CONNECTED_DETECT = 3-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## NSA_STATE_DUAL_CONNECTED
+
+```TypeScript
+NSA_STATE_DUAL_CONNECTED = 5
+```
+
+The device is connected to the LTE/NR network in an LTE cell that supports NSA.
+
+**Since:** 6
+
+<!--Device-NsaState-NSA_STATE_DUAL_CONNECTED = 5--><!--Device-NsaState-NSA_STATE_DUAL_CONNECTED = 5-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -68,17 +54,31 @@ The device is in the idle state in an LTE cell that supports NSA and NR coverage
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## NSA_STATE_DUAL_CONNECTED
+## NSA_STATE_NO_DETECT
 
 ```TypeScript
-NSA_STATE_DUAL_CONNECTED = 5
+NSA_STATE_NO_DETECT = 2
 ```
 
-The device is connected to the LTE/NR network in an LTE cell that supports NSA.
+The device is in the idle state in an LTE cell that supports NSA but not NR coverage detection.
 
 **Since:** 6
 
-<!--Device-NsaState-NSA_STATE_DUAL_CONNECTED = 5--><!--Device-NsaState-NSA_STATE_DUAL_CONNECTED = 5-End-->
+<!--Device-NsaState-NSA_STATE_NO_DETECT = 2--><!--Device-NsaState-NSA_STATE_NO_DETECT = 2-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## NSA_STATE_NOT_SUPPORT
+
+```TypeScript
+NSA_STATE_NOT_SUPPORT = 1
+```
+
+The device is in idle or connected state in an LTE cell that does not support NSA.
+
+**Since:** 6
+
+<!--Device-NsaState-NSA_STATE_NOT_SUPPORT = 1--><!--Device-NsaState-NSA_STATE_NOT_SUPPORT = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

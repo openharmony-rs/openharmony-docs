@@ -6,6 +6,8 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="getdisallowedpolicy1"></a>
+
 ## getDisallowedPolicy
 
 ```TypeScript
@@ -18,7 +20,7 @@ function getDisallowedPolicy(admin: Want | null, feature: string): boolean
 
 **废弃版本：** 26.0.0
 
-**替代接口：** [getDisallowedPolicy](#getdisallowedpolicy-1)(admin: Want | null, feature: FeatureForDevice)
+**替代接口：** [getDisallowedPolicy](#getdisallowedpolicy2)(admin: Want | null, feature: FeatureForDevice)
 
 **需要权限：** 
 - API版本20+：ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -74,7 +76,7 @@ try {
 ```
 
 
-<a id="getdisallowedpolicy-1"></a>
+<a id="getdisallowedpolicy2"></a>
 
 ## getDisallowedPolicy
 

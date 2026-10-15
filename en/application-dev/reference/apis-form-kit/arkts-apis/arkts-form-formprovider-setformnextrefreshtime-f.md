@@ -6,6 +6,8 @@
 import { formProvider } from '@kit.FormKit';
 ```
 
+<a id="setformnextrefreshtime1"></a>
+
 ## setFormNextRefreshTime
 
 ```TypeScript
@@ -16,7 +18,7 @@ Sets the next refresh time for a widget. This API uses an asynchronous callback 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-formProvider-function setFormNextRefreshTime(formId: string, minute: int, callback: AsyncCallback<void>): void--><!--Device-formProvider-function setFormNextRefreshTime(formId: string, minute: int, callback: AsyncCallback<void>): void-End-->
 
@@ -64,7 +66,7 @@ try {
 ```
 
 
-<a id="setformnextrefreshtime-1"></a>
+<a id="setformnextrefreshtime2"></a>
 
 ## setFormNextRefreshTime
 
@@ -76,7 +78,7 @@ Sets the next refresh time for a widget. This API uses a promise to return the r
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-formProvider-function setFormNextRefreshTime(formId: string, minute: int): Promise<void>--><!--Device-formProvider-function setFormNextRefreshTime(formId: string, minute: int): Promise<void>-End-->
 

@@ -16,43 +16,23 @@ Identifies the operation for using a WantAgent, such as starting an ability or s
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## UNKNOWN_TYPE
+## SEND_COMMON_EVENT
 
 ```TypeScript
-UNKNOWN_TYPE = 0
+SEND_COMMON_EVENT
 ```
 
-Unknown operation.
+Sends a common event.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [UNKNOWN_TYPE](arkts-ability-wantagent-operationtype-e.md#unknown_type)
+**Substitutes:** [SEND_COMMON_EVENT](arkts-ability-wantagent-operationtype-e.md#send_common_event)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-OperationType-UNKNOWN_TYPE = 0--><!--Device-OperationType-UNKNOWN_TYPE = 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## START_ABILITY
-
-```TypeScript
-START_ABILITY
-```
-
-Starts an ability with a UI.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [START_ABILITY](arkts-ability-wantagent-operationtype-e.md#start_ability)
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-OperationType-START_ABILITY--><!--Device-OperationType-START_ABILITY-End-->
+<!--Device-OperationType-SEND_COMMON_EVENT--><!--Device-OperationType-SEND_COMMON_EVENT-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -76,13 +56,33 @@ Starts multiple abilities with a UI.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
+## START_ABILITY
+
+```TypeScript
+START_ABILITY
+```
+
+Starts an ability with a UI.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [START_ABILITY](arkts-ability-wantagent-operationtype-e.md#start_ability)
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-OperationType-START_ABILITY--><!--Device-OperationType-START_ABILITY-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
 ## START_SERVICE
 
 ```TypeScript
 START_SERVICE
 ```
 
-Starts an ability without a UI.
+Starts an Ability without a page.
 
 **Since:** 7
 
@@ -96,22 +96,22 @@ Starts an ability without a UI.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## SEND_COMMON_EVENT
+## UNKNOWN_TYPE
 
 ```TypeScript
-SEND_COMMON_EVENT
+UNKNOWN_TYPE = 0
 ```
 
-Sends a common event.
+Unknown operation type.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [SEND_COMMON_EVENT](arkts-ability-wantagent-operationtype-e.md#send_common_event)
+**Substitutes:** [UNKNOWN_TYPE](arkts-ability-wantagent-operationtype-e.md#unknown_type)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-OperationType-SEND_COMMON_EVENT--><!--Device-OperationType-SEND_COMMON_EVENT-End-->
+<!--Device-OperationType-UNKNOWN_TYPE = 0--><!--Device-OperationType-UNKNOWN_TYPE = 0-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

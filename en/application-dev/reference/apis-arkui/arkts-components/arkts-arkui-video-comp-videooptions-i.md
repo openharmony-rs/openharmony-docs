@@ -141,7 +141,7 @@ The string format can be used to load local images and network images.
 - Network image URLs are supported.  
 - Relative paths are supported for referencing local images, for example, **previewUri: "common/test.jpg"**. When a  
 relative path is used to reference a local image, cross-package or cross-module calls are not supported.  
-- Strings with the file:// path prefix are supported, that is, the app sandbox URI (see [uriOrPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)): **file://&lt;bundleName&gt;/&lt;sandboxPath&gt;**. It is used to read resources in the app sandbox path. Ensure that the files in the directory package path have read permission.
+- Strings with the file:// path prefix are supported, that is, the app sandbox URI (see [uriOrPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)): **file://<bundleName>/<sandboxPath>**. It is used to read resources in the app sandbox path. Ensure that the files in the directory package path have read permission.
 
 The Resource format can access resource files across packages or modules.
 
@@ -181,7 +181,7 @@ The Resource format can access resource files across packages or modules and is 
 The string format can be used to load network videos and local videos, and is commonly used to load network videos.
 
 - Network video URLs are supported. For details about the formats supported by network video URLs, see [Formats Supported by Streaming Media](../../../media/media/streaming-media-playback-development-guide.md#formats-supported-by-streaming-media).  
-- Strings with the file:// path prefix are supported, that is, the app sandbox URI (see [uriOrPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)): **file://&lt;bundleName&gt;/&lt;sandboxPath&gt;**. It is used to read resources in the app sandbox path. Ensure that the files in the directory package path have read permission.
+- Strings with the file:// path prefix are supported, that is, the app sandbox URI (see [uriOrPath](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-fileuri-c.md#constructor)): **file://<bundleName>/<sandboxPath>**. It is used to read resources in the app sandbox path. Ensure that the files in the directory package path have read permission.
 
 Default value: empty string
 

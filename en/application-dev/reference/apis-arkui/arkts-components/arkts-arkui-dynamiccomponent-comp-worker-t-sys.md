@@ -4,7 +4,9 @@
 declare type Worker = import('../api/@ohos.worker').default.Worker
 ```
 
-Defines the worker thread object for running the .abc file.
+Worker thread object used to run .abc. It must be created through **worker.ThreadWorker**.
+
+**Type:** import('../api/@ohos.worker').default.Worker
 
 **Since:** 26.0.0
 
@@ -15,5 +17,3 @@ Defines the worker thread object for running the .abc file.
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
-
-**Type:** import('../api/@ohos.worker').default.Worker

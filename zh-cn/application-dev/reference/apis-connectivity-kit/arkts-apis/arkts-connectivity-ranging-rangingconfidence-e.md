@@ -28,22 +28,6 @@ HIGH = 0
 
 **系统能力：** SystemCapability.Communication.FusionConnectivity.Core
 
-## MEDIUM
-
-```TypeScript
-MEDIUM = 1
-```
-
-中置信度测量，测量值有一定可信度，建议结合其他信息综合判断。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-RangingConfidence-MEDIUM = 1--><!--Device-RangingConfidence-MEDIUM = 1-End-->
-
-**系统能力：** SystemCapability.Communication.FusionConnectivity.Core
-
 ## LOW
 
 ```TypeScript
@@ -57,5 +41,21 @@ LOW = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-RangingConfidence-LOW = 2--><!--Device-RangingConfidence-LOW = 2-End-->
+
+**系统能力：** SystemCapability.Communication.FusionConnectivity.Core
+
+## MEDIUM
+
+```TypeScript
+MEDIUM = 1
+```
+
+中置信度测量，测量值有一定可信度，建议结合其他信息综合判断。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-RangingConfidence-MEDIUM = 1--><!--Device-RangingConfidence-MEDIUM = 1-End-->
 
 **系统能力：** SystemCapability.Communication.FusionConnectivity.Core

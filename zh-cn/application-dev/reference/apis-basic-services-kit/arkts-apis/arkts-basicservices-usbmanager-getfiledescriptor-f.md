@@ -59,6 +59,7 @@ async function getFileDescriptor() {
     console.error(`connect device failed`);
     return;
   }
+  // 获取设备对应的文件描述符
   let ret: number = usbManager.getFileDescriptor(devicePipe);
   console.info(`getFileDescriptor = ${ret}`);
   let closeRet: number = usbManager.closePipe(devicePipe);

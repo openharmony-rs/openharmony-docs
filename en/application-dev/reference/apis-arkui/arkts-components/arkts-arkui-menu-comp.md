@@ -6,7 +6,7 @@ The **Menu** component is a vertical list of items presented to the user. It sup
 > 
 > - This component is supported since API version 9. Newly added APIs will be marked with a superscript to indicate their
 > 
-> - The **Menu** component must be used together with the [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu) or [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)method. It does not work when used alone.
+> - The **Menu** component must be used together with the [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu1) or [bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1)method. It does not work when used alone.
 
 ## Child Components
 
@@ -35,7 +35,7 @@ Creates a fixed container for a menu. This API does not have any parameters.
 > 
 > - The minimum width is 64 vp.
 > 
-> - Common attributes that are not supported by **Menu** include the following: attributes [Outline Styling](arkts-arkui-common-comp.md) and the [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow) attribute.
+> - Common attributes that are not supported by **Menu** include the following: attributes [Outline Styling](arkts-arkui-common-comp.md) and the [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1) attribute.
 
 **Since:** 9
 

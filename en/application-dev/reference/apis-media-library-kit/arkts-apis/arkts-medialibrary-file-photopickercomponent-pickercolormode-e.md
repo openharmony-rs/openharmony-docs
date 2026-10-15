@@ -28,22 +28,6 @@ Same with the system.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## LIGHT
-
-```TypeScript
-LIGHT = 1
-```
-
-Light mode.
-
-**Since:** 12
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-PickerColorMode-LIGHT = 1--><!--Device-PickerColorMode-LIGHT = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## DARK
 
 ```TypeScript
@@ -57,5 +41,21 @@ Dark mode.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PickerColorMode-DARK = 2--><!--Device-PickerColorMode-DARK = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## LIGHT
+
+```TypeScript
+LIGHT = 1
+```
+
+Light mode.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PickerColorMode-LIGHT = 1--><!--Device-PickerColorMode-LIGHT = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

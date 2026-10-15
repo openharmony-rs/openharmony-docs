@@ -1,10 +1,8 @@
 # @ohos.arkui.inspector(Layout Callback)
 
-Used to do observer layout and draw event for component.
+Provides APIs for registering the component layout and drawing completion callbacks. By registering callbacks, you can receive notifications in a timely manner after component layout or drawing is complete. It is suitable for scenarios where custom logic needs to be executed after component layout or drawing is complete, helping you precisely control the component rendering timing.
 
 **Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
 
 <!--Device-unnamed-declare namespace inspector--><!--Device-unnamed-declare namespace inspector-End-->
 
@@ -22,10 +20,10 @@ import { inspector } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md) | Sets the component after layout or draw criteria and returns the corresponding listening handle |
+| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md#createcomponentobserver) | Binds to the specified component and returns the corresponding observation handle. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [ComponentObserver](arkts-arkui-inspector-componentobserver-i.md) | The ComponentObserver is used to listen for layout, draw and drawChildren events. |
+| [ComponentObserver](arkts-arkui-inspector-componentobserver-i.md) | Defines the handle for component layout and drawing completion callbacks. You can call the following APIs through this handle: |

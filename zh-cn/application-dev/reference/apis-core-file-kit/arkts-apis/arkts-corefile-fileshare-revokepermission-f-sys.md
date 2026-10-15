@@ -6,7 +6,7 @@
 import { fileShare } from '@kit.CoreFileKit';
 ```
 
-<a id="revokepermission-1"></a>
+<a id="revokepermission2"></a>
 
 ## revokePermission
 
@@ -50,6 +50,7 @@ function revokePermission(tokenID: number): Promise<void>
 | 13900001 | Operation not permitted. |
 | 13900020 | Invalid tokenID |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,8 +71,10 @@ async function revokeAllPermissionExample() {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="revokepermission-2"></a>
+
+<a id="revokepermission3"></a>
 
 ## revokePermission
 
@@ -118,6 +121,7 @@ function revokePermission(tokenID: number, policies: Array<PolicyInfo>): Promise
 | 13900011 | Out of memory |
 | 13900020 | Invalid tokenID |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -149,3 +153,5 @@ async function revokeSpecificPermissionExample() {
   }
 }
 ```
+
+<!--DelEnd-->

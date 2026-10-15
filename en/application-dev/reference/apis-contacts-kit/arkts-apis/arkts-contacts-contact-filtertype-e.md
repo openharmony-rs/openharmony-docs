@@ -12,22 +12,6 @@ Enumerates contact filter types.
 
 **System capability:** SystemCapability.Applications.ContactsData
 
-## SHOW_FILTER
-
-```TypeScript
-SHOW_FILTER = 0
-```
-
-Shows only contacts that meet the filter criteria.
-
-**Since:** 15
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-FilterType-SHOW_FILTER = 0--><!--Device-FilterType-SHOW_FILTER = 0-End-->
-
-**System capability:** SystemCapability.Applications.Contacts
-
 ## DEFAULT_SELECT
 
 ```TypeScript
@@ -41,6 +25,22 @@ Selects contacts that meet the filter criteria by default.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-FilterType-DEFAULT_SELECT = 1--><!--Device-FilterType-DEFAULT_SELECT = 1-End-->
+
+**System capability:** SystemCapability.Applications.Contacts
+
+## SHOW_FILTER
+
+```TypeScript
+SHOW_FILTER = 0
+```
+
+Shows only contacts that meet the filter criteria.
+
+**Since:** 15
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FilterType-SHOW_FILTER = 0--><!--Device-FilterType-SHOW_FILTER = 0-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 

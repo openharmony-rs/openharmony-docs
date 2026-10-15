@@ -12,26 +12,6 @@ export enum ExpandMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NOT_EXPAND
-
-```TypeScript
-NOT_EXPAND = 0
-```
-
-表示不展开当前FrameNode的子节点。如果FrameNode包含[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md)子节点，获取在主节点树上的子节点时，不展开当前FrameNode的子节点。子节点序列号按在主节点树上的子节点计算。
-
-使用场景：仅需获取主节点树上已展开子节点且不触发展开操作的场景。
-
-**起始版本：** 15
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
-
-<!--Device-ExpandMode-NOT_EXPAND = 0--><!--Device-ExpandMode-NOT_EXPAND = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## EXPAND
 
 ```TypeScript
@@ -89,5 +69,25 @@ LAZY_NOT_EXPAND = 3
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExpandMode-LAZY_NOT_EXPAND = 3--><!--Device-ExpandMode-LAZY_NOT_EXPAND = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NOT_EXPAND
+
+```TypeScript
+NOT_EXPAND = 0
+```
+
+表示不展开当前FrameNode的子节点。如果FrameNode包含[LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md)子节点，获取在主节点树上的子节点时，不展开当前FrameNode的子节点。子节点序列号按在主节点树上的子节点计算。
+
+使用场景：仅需获取主节点树上已展开子节点且不触发展开操作的场景。
+
+**起始版本：** 15
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-ExpandMode-NOT_EXPAND = 0--><!--Device-ExpandMode-NOT_EXPAND = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

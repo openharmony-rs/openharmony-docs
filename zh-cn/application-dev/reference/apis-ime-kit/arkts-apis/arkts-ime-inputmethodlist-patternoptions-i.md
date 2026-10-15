@@ -60,7 +60,7 @@ defaultSelected?: number
 patterns: Array<Pattern>
 ```
 
-模式选项资源数组，每个Pattern定义一个键盘模式的图标和选中状态图标。<br> <br>使用场景：当默认输入法需要提供多种键盘模式（如单手模式、全屏模式等）供用户选择时，需配置此参数。<br> <br>使用后效果：设置后，输入法切换列表弹窗中会在默认输入法区域展示该数组中定义的所有模式选项供用户选择。<br> <br>说明：patterns数组中的每个Pattern的icon和selectedIcon均需为有效的[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)资源引用；建议至少配置2个模式选项以提供有意义的选择功能。
+模式选项资源数组，每个Pattern定义一个键盘模式的图标和选中状态图标。<br> <br>使用场景：当默认输入法需要提供多种键盘模式（如单手模式、全屏模式等）供用户选择时，需配置此参数。<br> <br>使用后效果：设置后，输入法切换列表弹窗中会在默认输入法区域展示该数组中定义的所有模式选项供用户选择。<br> <br>说明：patterns数组中的每个Pattern的icon和selectedIcon均需为有效的[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)资源引用；建议至少配置2个模式选项以提供有意义的选择功能。
 
 **类型：** Array&lt;[Pattern](arkts-ime-inputmethodlist-pattern-i.md)&gt;
 

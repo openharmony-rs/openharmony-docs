@@ -35,7 +35,7 @@ Called when the UIExtensionAbility fails to start.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | code | number | Yes | Result code returned when the UIExtensionAbility fails to start. |
-| name | string | Yes | Name returned when the UIExtensionAbility fails to start. |
+| name | string | Yes | Error name returned when the UIExtensionAbility fails to be started, used to identify the error type. |
 | message | string | Yes | Error information returned when the UIExtensionAbility fails to start. |
 
 ## onResult
@@ -60,7 +60,7 @@ Called when the UIExtensionAbility is terminated.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | Yes | Result returned when [terminateSelfWithResult](arkts-ability-uiextensioncontext-c.md#terminateselfwithresult) is called to terminate the UIExtensionAbility. |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | Yes | Result returned when [terminateSelfWithResult](arkts-ability-uiextensioncontext-c.md#terminateselfwithresult1) is called to terminate the UIExtensionAbility. |
 
 ## completionHandler
 

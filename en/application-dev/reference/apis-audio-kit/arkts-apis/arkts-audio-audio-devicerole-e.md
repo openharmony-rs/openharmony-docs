@@ -22,7 +22,7 @@ Input role.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DeviceRole-INPUT_DEVICE = 1--><!--Device-DeviceRole-INPUT_DEVICE = 1-End-->
 
@@ -38,7 +38,7 @@ Output role.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-DeviceRole-OUTPUT_DEVICE = 2--><!--Device-DeviceRole-OUTPUT_DEVICE = 2-End-->
 

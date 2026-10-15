@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getanglemodify1"></a>
+
 ## getAngleModify
 
 ```TypeScript
@@ -13,7 +15,12 @@ function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix:
     callback: AsyncCallback<Array<number>>): void
 ```
 
-Obtains the angle change between two rotation matrices. This API uses an asynchronous callback to return the result.
+获取两个旋转矩阵之间的角度变化。使用callback异步回调。
+
+> **说明：** 
+> 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用
+> [sensor.getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md)替代。
 
 **起始版本：** 8
 
@@ -29,9 +36,9 @@ Obtains the angle change between two rotation matrices. This API uses an asynchr
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| currentRotationMatrix | Array&lt;number&gt; | 是 | Current rotation matrix. |
-| preRotationMatrix | Array&lt;number&gt; | 是 | The other rotation matrix. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | Callback used to return the angle change around the z, x, and y axes, in degrees. |
+| currentRotationMatrix | Array&lt;number&gt; | 是 | 表示当前旋转矩阵。 |
+| preRotationMatrix | Array&lt;number&gt; | 是 | 表示旋转矩阵。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;number&gt;&gt; | 是 | 异步返回z、x、y轴方向的旋转角度变化，单位：°（度）。 |
 
 **示例**
 
@@ -52,7 +59,7 @@ sensor.getAngleModify([1, 0, 0, 0, 1, 0, 0, 0, 1], [1, 0, 0, 0, 0.87, -0.50, 0, 
 ```
 
 
-<a id="getanglemodify-1"></a>
+<a id="getanglemodify2"></a>
 
 ## getAngleModify
 
@@ -60,7 +67,12 @@ sensor.getAngleModify([1, 0, 0, 0, 1, 0, 0, 0, 1], [1, 0, 0, 0, 0.87, -0.50, 0, 
 function getAngleModify(currentRotationMatrix: Array<number>, preRotationMatrix: Array<number>): Promise<Array<number>>
 ```
 
-Obtains the angle change between two rotation matrices. This API uses a promise to return the result.
+获取两个旋转矩阵之间的角度变化。使用Promise异步回调。
+
+> **说明：** 
+> 
+> 从API version 8 开始支持，从API version 9 开始废弃，建议使用
+> [sensor.getAngleVariation](arkts-sensorservice-sensor-getanglevariation-f.md)替代。
 
 **起始版本：** 8
 
@@ -76,14 +88,14 @@ Obtains the angle change between two rotation matrices. This API uses a promise 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| currentRotationMatrix | Array&lt;number&gt; | 是 | Current rotation matrix. |
-| preRotationMatrix | Array&lt;number&gt; | 是 | The other rotation matrix. |
+| currentRotationMatrix | Array&lt;number&gt; | 是 | 表示当前旋转矩阵。 |
+| preRotationMatrix | Array&lt;number&gt; | 是 | 表示旋转矩阵。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;number&gt;&gt; | Promise used to return the angle change around the z, x, and y axes, in degrees. |
+| Promise&lt;Array&lt;number&gt;&gt; | 使用异步方式返回z、x、y轴方向的旋转角度变化，单位：°（度）。 |
 
 **示例**
 

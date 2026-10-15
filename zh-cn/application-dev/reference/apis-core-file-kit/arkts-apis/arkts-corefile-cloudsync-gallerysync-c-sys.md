@@ -36,11 +36,16 @@ constructor()
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let gallerySync = new cloudSync.GallerySync()
 ```
+
+<!--DelEnd-->
+
+<a id="off1"></a>
 
 ## off
 
@@ -76,6 +81,7 @@ off(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -90,7 +96,9 @@ gallerySync.on('progress', callback);
 gallerySync.off('progress', callback);
 ```
 
-<a id="off-1"></a>
+<!--DelEnd-->
+
+<a id="off2"></a>
 
 ## off
 
@@ -125,6 +133,7 @@ off(evt: 'progress'): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -136,6 +145,8 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 
 gallerySync.off('progress');
 ```
+
+<!--DelEnd-->
 
 ## on
 
@@ -171,6 +182,7 @@ on(evt: 'progress', callback: (pg: SyncProgress) => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -180,6 +192,10 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
   console.info("syncState: " + pg.state);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="start1"></a>
 
 ## start
 
@@ -216,6 +232,7 @@ start(): Promise<void>
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -234,7 +251,9 @@ gallerySync.start().then(() => {
 });
 ```
 
-<a id="start-1"></a>
+<!--DelEnd-->
+
+<a id="start2"></a>
 
 ## start
 
@@ -271,6 +290,7 @@ start(callback: AsyncCallback<void>): void
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -286,6 +306,93 @@ gallerySync.start((err: BusinessError) => {
   }
 });
 ```
+
+<!--DelEnd-->
+
+<a id="startwithtype1"></a>
+
+## startWithType
+
+```TypeScript
+startWithType(type: SyncType): Promise<void>
+```
+
+启动端云同步。该接口使用promise返回结果。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GallerySync-startWithType(type: SyncType): Promise<void>--><!--Device-GallerySync-startWithType(type: SyncType): Promise<void>-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| type | [SyncType](arkts-corefile-cloudsync-synctype-e-sys.md) | 是 | 云同步的同步类型。 |
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| Promise&lt;void&gt; | 不返回任何值的Promise。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
+
+<a id="startwithtype2"></a>
+
+## startWithType
+
+```TypeScript
+startWithType(callback: Callback<void>, type: SyncType): void
+```
+
+启动端云同步。该接口使用异步回调返回结果。
+
+**起始版本：** 26.0.1
+
+**需要权限：** ohos.permission.CLOUDFILE_SYNC
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GallerySync-startWithType(callback: Callback<void>, type: SyncType): void--><!--Device-GallerySync-startWithType(callback: Callback<void>, type: SyncType): void-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**系统接口：** 此接口为系统接口。
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | 是 | 启动端云同步回调。 |
+| type | [SyncType](arkts-corefile-cloudsync-synctype-e-sys.md) | 是 | 云同步的同步类型。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
+
+<a id="stop1"></a>
 
 ## stop
 
@@ -323,6 +430,7 @@ stop(): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -337,7 +445,9 @@ gallerySync.stop().then(() => {
 });
 ```
 
-<a id="stop-1"></a>
+<!--DelEnd-->
+
+<a id="stop2"></a>
 
 ## stop
 
@@ -375,6 +485,7 @@ stop(callback: AsyncCallback<void>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -390,3 +501,5 @@ gallerySync.stop((err: BusinessError) => {
   }
 });
 ```
+
+<!--DelEnd-->

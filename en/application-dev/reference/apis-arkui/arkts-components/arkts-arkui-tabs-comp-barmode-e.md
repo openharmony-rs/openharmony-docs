@@ -12,34 +12,34 @@ Enumerates layout modes of the tab bar.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Scrollable
-
-```TypeScript
-Scrollable = 0
-```
-
-The width of each tab is determined by the actual layout. The tabs are scrollable in the following case: In horizontal layout, the total width exceeds the tab bar width; in vertical layout, the total height exceeds the tab bar height.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-BarMode-Scrollable = 0--><!--Device-BarMode-Scrollable = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Fixed
 
 ```TypeScript
 Fixed = 1
 ```
 
-The width of each tab is determined by equally dividing the number of tabs by the bar width (or bar height in the vertical layout).
+All **TabBars** evenly share the **barWidth** (or the **barHeight** for a vertical **Tabs**).
 
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-BarMode-Fixed = 1--><!--Device-BarMode-Fixed = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Scrollable
+
+```TypeScript
+Scrollable = 0
+```
+
+Each tab bar uses its actual layout width. When the total length exceeds the [barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth) of a horizontal **Tabs** or the [barHeight](arkts-arkui-tabs-comp-attribute.md#barheight1) of a vertical **Tabs**, the tab bar can be scrolled.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-BarMode-Scrollable = 0--><!--Device-BarMode-Scrollable = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

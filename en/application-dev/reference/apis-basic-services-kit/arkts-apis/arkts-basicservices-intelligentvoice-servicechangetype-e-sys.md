@@ -4,7 +4,7 @@
 enum ServiceChangeType
 ```
 
-Enumerates service change type. @enum {number}
+Enumerates service change type.
 
 **Since:** 10
 

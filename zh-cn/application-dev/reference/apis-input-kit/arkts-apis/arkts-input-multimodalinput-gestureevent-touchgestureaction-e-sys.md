@@ -14,65 +14,17 @@ export declare enum TouchGestureAction
 
 **系统接口：** 此接口为系统接口。
 
-## SWIPE_DOWN
+## GESTURE_END
 
 ```TypeScript
-SWIPE_DOWN = 0
+GESTURE_END = 6
 ```
 
-多指向下滑动。
+手势结束。
 
 **起始版本：** 18
 
-<!--Device-TouchGestureAction-SWIPE_DOWN = 0--><!--Device-TouchGestureAction-SWIPE_DOWN = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
-**系统接口：** 此接口为系统接口。
-
-## SWIPE_UP
-
-```TypeScript
-SWIPE_UP = 1
-```
-
-多指向上滑动。
-
-**起始版本：** 18
-
-<!--Device-TouchGestureAction-SWIPE_UP = 1--><!--Device-TouchGestureAction-SWIPE_UP = 1-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
-**系统接口：** 此接口为系统接口。
-
-## SWIPE_LEFT
-
-```TypeScript
-SWIPE_LEFT = 2
-```
-
-多指向左滑动。
-
-**起始版本：** 18
-
-<!--Device-TouchGestureAction-SWIPE_LEFT = 2--><!--Device-TouchGestureAction-SWIPE_LEFT = 2-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
-**系统接口：** 此接口为系统接口。
-
-## SWIPE_RIGHT
-
-```TypeScript
-SWIPE_RIGHT = 3
-```
-
-多指向右滑动。
-
-**起始版本：** 18
-
-<!--Device-TouchGestureAction-SWIPE_RIGHT = 3--><!--Device-TouchGestureAction-SWIPE_RIGHT = 3-End-->
+<!--Device-TouchGestureAction-GESTURE_END = 6--><!--Device-TouchGestureAction-GESTURE_END = 6-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -110,17 +62,65 @@ PINCH_OPENED = 5
 
 **系统接口：** 此接口为系统接口。
 
-## GESTURE_END
+## SWIPE_DOWN
 
 ```TypeScript
-GESTURE_END = 6
+SWIPE_DOWN = 0
 ```
 
-手势结束。
+多指向下滑动。
 
 **起始版本：** 18
 
-<!--Device-TouchGestureAction-GESTURE_END = 6--><!--Device-TouchGestureAction-GESTURE_END = 6-End-->
+<!--Device-TouchGestureAction-SWIPE_DOWN = 0--><!--Device-TouchGestureAction-SWIPE_DOWN = 0-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SWIPE_LEFT
+
+```TypeScript
+SWIPE_LEFT = 2
+```
+
+多指向左滑动。
+
+**起始版本：** 18
+
+<!--Device-TouchGestureAction-SWIPE_LEFT = 2--><!--Device-TouchGestureAction-SWIPE_LEFT = 2-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SWIPE_RIGHT
+
+```TypeScript
+SWIPE_RIGHT = 3
+```
+
+多指向右滑动。
+
+**起始版本：** 18
+
+<!--Device-TouchGestureAction-SWIPE_RIGHT = 3--><!--Device-TouchGestureAction-SWIPE_RIGHT = 3-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SWIPE_UP
+
+```TypeScript
+SWIPE_UP = 1
+```
+
+多指向上滑动。
+
+**起始版本：** 18
+
+<!--Device-TouchGestureAction-SWIPE_UP = 1--><!--Device-TouchGestureAction-SWIPE_UP = 1-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 

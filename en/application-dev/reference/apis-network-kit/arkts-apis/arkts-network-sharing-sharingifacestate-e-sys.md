@@ -14,22 +14,6 @@ Enumerates the network sharing states of an NIC.
 
 **System API:** This is a system API.
 
-## SHARING_NIC_SERVING
-
-```TypeScript
-SHARING_NIC_SERVING = 1
-```
-
-Network sharing is in progress.
-
-**Since:** 9
-
-<!--Device-SharingIfaceState-SHARING_NIC_SERVING = 1--><!--Device-SharingIfaceState-SHARING_NIC_SERVING = 1-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.NetSharing
-
-**System API:** This is a system API.
-
 ## SHARING_NIC_CAN_SERVER
 
 ```TypeScript
@@ -57,6 +41,22 @@ An error occurred during network sharing.
 **Since:** 9
 
 <!--Device-SharingIfaceState-SHARING_NIC_ERROR = 3--><!--Device-SharingIfaceState-SHARING_NIC_ERROR = 3-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.NetSharing
+
+**System API:** This is a system API.
+
+## SHARING_NIC_SERVING
+
+```TypeScript
+SHARING_NIC_SERVING = 1
+```
+
+Network sharing is in progress.
+
+**Since:** 9
+
+<!--Device-SharingIfaceState-SHARING_NIC_SERVING = 1--><!--Device-SharingIfaceState-SHARING_NIC_SERVING = 1-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetSharing
 

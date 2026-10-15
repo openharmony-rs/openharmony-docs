@@ -54,6 +54,8 @@ Adds a path to this path.
 | path | [Path2D](arkts-arkui-canvas-comp-path2d-c.md) | Yes | Path object to be added to the current path.<br> The abnormal values **undefined** and **null** are treated as invalid values. |
 | transform | Matrix2D | No | Transformation matrix object for the added path, used to perform transformations such as translation, rotation, and scaling on the added path. Pass this parameter when graphic transformation is needed for the added path; it can be omitted when no transformation is required. If not passed, the default value is **null**, indicating that no transformation is applied to the path.<br> The abnormal values **undefined** and **null** are treated as invalid values.<br> Default value: **null** |
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -74,7 +76,7 @@ Constructs an empty **Path2D** object.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -102,7 +104,7 @@ Constructs an empty Path2D object. The unit mode of the Path2D object can be con
 | --- | --- | --- | --- |
 | unit | LengthMetricsUnit | Yes | Unit mode of the **Path2D** object. Once configured, it cannot be dynamically changed. The configuration method is the same as that of [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md).<br> Abnormal values **NaN** and **Infinity** are processed as the default value.<br> Default value: **DEFAULT** |
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 
@@ -130,7 +132,7 @@ Constructs a Path2D object using a path object.
 | --- | --- | --- | --- |
 | path | [Path2D](arkts-arkui-canvas-comp-path2d-c.md) | Yes | Path object to be copied. The newly created **Path2D** object will contain the same path data as the original path. An empty path object is created when the value is **null** or **undefined**. |
 
-<a id="constructor-3"></a>
+<a id="constructor4"></a>
 
 ## constructor
 
@@ -159,7 +161,7 @@ When a path object is used to construct a Path2D object, the unit mode of the Pa
 | path | [Path2D](arkts-arkui-canvas-comp-path2d-c.md) | Yes | **Path2D** path object to be copied. Used to create a new **Path2D** object based on an existing path. The incoming path object is not modified, and the newly created object contains a complete copy of the path. |
 | unit | LengthMetricsUnit | Yes | Unit mode for configuring the **Path2D** object. It cannot be dynamically changed after configuration. The configuration method is the same as that of [CanvasRenderingContext2D](arkts-arkui-canvas-comp-canvasrenderingcontext2d-c.md).<br> Abnormal values **NaN** and **Infinity** are treated as the default value.<br> Default value: **DEFAULT** |
 
-<a id="constructor-4"></a>
+<a id="constructor5"></a>
 
 ## constructor
 
@@ -187,7 +189,7 @@ Constructs a Path2D object using a path string that complies with the SVG path d
 | --- | --- | --- | --- |
 | d | string | Yes | Path string that complies with the SVG path description specification. For the format, see SVG Path Syntax. Abnormal values are treated as invalid values. |
 
-<a id="constructor-5"></a>
+<a id="constructor6"></a>
 
 ## constructor
 

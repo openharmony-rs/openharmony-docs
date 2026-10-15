@@ -20,7 +20,7 @@ curve?: Curve
 
 Curve type of the animation.
 
-Default value: Curve.EaseInOut](ts-appendix-enums.md#curve)
+Default value: Curve.EaseInOut
 
 **Type:** Curve
 

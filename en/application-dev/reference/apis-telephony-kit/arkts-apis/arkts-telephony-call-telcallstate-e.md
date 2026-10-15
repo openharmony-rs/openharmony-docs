@@ -12,62 +12,6 @@ Enumerates call states.
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## TEL_CALL_STATE_UNKNOWN
-
-```TypeScript
-TEL_CALL_STATE_UNKNOWN = -1
-```
-
-The call status fails to be obtained and is unknown.
-
-**Since:** 21
-
-<!--Device-TelCallState-TEL_CALL_STATE_UNKNOWN = -1--><!--Device-TelCallState-TEL_CALL_STATE_UNKNOWN = -1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-## TEL_CALL_STATE_IDLE
-
-```TypeScript
-TEL_CALL_STATE_IDLE = 0
-```
-
-No call is in progress.
-
-**Since:** 21
-
-<!--Device-TelCallState-TEL_CALL_STATE_IDLE = 0--><!--Device-TelCallState-TEL_CALL_STATE_IDLE = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-## TEL_CALL_STATE_RINGING
-
-```TypeScript
-TEL_CALL_STATE_RINGING = 1
-```
-
-The call is in the ringing or waiting state.
-
-**Since:** 21
-
-<!--Device-TelCallState-TEL_CALL_STATE_RINGING = 1--><!--Device-TelCallState-TEL_CALL_STATE_RINGING = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-## TEL_CALL_STATE_OFFHOOK
-
-```TypeScript
-TEL_CALL_STATE_OFFHOOK = 2
-```
-
-At least one call is being dialed, and no new incoming call is in the ringing or waiting state.
-
-**Since:** 21
-
-<!--Device-TelCallState-TEL_CALL_STATE_OFFHOOK = 2--><!--Device-TelCallState-TEL_CALL_STATE_OFFHOOK = 2-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
 ## TEL_CALL_STATE_ANSWERED
 
 ```TypeScript
@@ -93,5 +37,61 @@ The call is being connected or placed on hold.
 **Since:** 21
 
 <!--Device-TelCallState-TEL_CALL_STATE_CONNECTED = 4--><!--Device-TelCallState-TEL_CALL_STATE_CONNECTED = 4-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+## TEL_CALL_STATE_IDLE
+
+```TypeScript
+TEL_CALL_STATE_IDLE = 0
+```
+
+No call is in progress.
+
+**Since:** 21
+
+<!--Device-TelCallState-TEL_CALL_STATE_IDLE = 0--><!--Device-TelCallState-TEL_CALL_STATE_IDLE = 0-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+## TEL_CALL_STATE_OFFHOOK
+
+```TypeScript
+TEL_CALL_STATE_OFFHOOK = 2
+```
+
+At least one call is being dialed, and no new incoming call is in the ringing or waiting state.
+
+**Since:** 21
+
+<!--Device-TelCallState-TEL_CALL_STATE_OFFHOOK = 2--><!--Device-TelCallState-TEL_CALL_STATE_OFFHOOK = 2-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+## TEL_CALL_STATE_RINGING
+
+```TypeScript
+TEL_CALL_STATE_RINGING = 1
+```
+
+The call is in the ringing or waiting state.
+
+**Since:** 21
+
+<!--Device-TelCallState-TEL_CALL_STATE_RINGING = 1--><!--Device-TelCallState-TEL_CALL_STATE_RINGING = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+## TEL_CALL_STATE_UNKNOWN
+
+```TypeScript
+TEL_CALL_STATE_UNKNOWN = -1
+```
+
+The call status fails to be obtained and is unknown.
+
+**Since:** 21
+
+<!--Device-TelCallState-TEL_CALL_STATE_UNKNOWN = -1--><!--Device-TelCallState-TEL_CALL_STATE_UNKNOWN = -1-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager

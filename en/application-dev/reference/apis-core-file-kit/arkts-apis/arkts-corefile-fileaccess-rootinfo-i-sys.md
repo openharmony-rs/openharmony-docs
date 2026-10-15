@@ -97,6 +97,7 @@ Obtains a **FileIterator** object that lists the next-level files or directories
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -128,6 +129,8 @@ try {
   console.error("listFile failed, errCode:" + error.code + ", errMessage:" + error.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## scanFile
 
@@ -202,6 +205,7 @@ Obtains a **FileIterator** object that recursively retrieves the files matching 
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -233,6 +237,8 @@ try {
   console.error("scanFile failed, errCode:" + error.code + ", errMessage:" + error.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## deviceFlags
 

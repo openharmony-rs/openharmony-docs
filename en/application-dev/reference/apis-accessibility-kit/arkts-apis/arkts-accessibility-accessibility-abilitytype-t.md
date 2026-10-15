@@ -8,9 +8,9 @@ Enumerates the types of accessibility applications.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 23.
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
 
 <!--Device-accessibility-type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'--><!--Device-accessibility-type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'-End-->
 
@@ -23,4 +23,4 @@ Enumerates the types of accessibility applications.
 | 'haptic' | The accessibility application provides haptic feedback. |
 | 'spoken' | The accessibility application provides spoken feedback. |
 | 'visual' | The accessibility application provides visual feedback. |
-| 'all' | All the preceding types. [since 9] |
+| 'all' | All the preceding types.<br>**Since:** 9 |

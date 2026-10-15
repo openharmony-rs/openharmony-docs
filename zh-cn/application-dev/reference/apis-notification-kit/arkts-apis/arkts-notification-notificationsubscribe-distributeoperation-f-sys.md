@@ -43,25 +43,28 @@ function distributeOperation(hashcode: string, operationInfo?: OperationInfo): P
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600010](../errorcode-notification.md#1600010-分布式操作失败) | Distributed operation failed. |
 | [1600021](../errorcode-notification.md#1600021-跨设备通信超时) | Distributed operation timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-let hashcode: string = 'hashcode';
+let hashCode: string = 'hashCode';
 let operationInfo: notificationSubscribe.OperationInfo = {
   actionName: 'actionName',
   userInput: 'userInput',
   operationType: 1,
   buttonIndex: 1,
 };
-notificationSubscribe.distributeOperation(hashcode, operationInfo).then(() => {
+notificationSubscribe.distributeOperation(hashCode, operationInfo).then(() => {
   console.info('distributeOperation success');
 }).catch((err: BusinessError) => {
   console.error(`distributeOperation fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

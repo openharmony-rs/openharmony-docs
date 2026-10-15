@@ -12,19 +12,35 @@ Defines an HTTP request method.
 
 **System capability:** SystemCapability.Communication.NetStack
 
-## OPTIONS
+## CONNECT
 
 ```TypeScript
-OPTIONS = "OPTIONS"
+CONNECT = "CONNECT"
 ```
 
-Describes the communication options of the target resource.
+Establishes a tunnel to the server identified by the target resource.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-RequestMethod-OPTIONS = "OPTIONS"--><!--Device-RequestMethod-OPTIONS = "OPTIONS"-End-->
+<!--Device-RequestMethod-CONNECT = "CONNECT"--><!--Device-RequestMethod-CONNECT = "CONNECT"-End-->
+
+**System capability:** SystemCapability.Communication.NetStack
+
+## DELETE
+
+```TypeScript
+DELETE = "DELETE"
+```
+
+Deletes the specified resource.
+
+**Since:** 6
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RequestMethod-DELETE = "DELETE"--><!--Device-RequestMethod-DELETE = "DELETE"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -38,7 +54,7 @@ Requests the representation of the specified resource. The GET request should on
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-RequestMethod-GET = "GET"--><!--Device-RequestMethod-GET = "GET"-End-->
 
@@ -54,91 +70,25 @@ Requests the same response (but does not have a response body) as the GET reques
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-RequestMethod-HEAD = "HEAD"--><!--Device-RequestMethod-HEAD = "HEAD"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
-## POST
+## OPTIONS
 
 ```TypeScript
-POST = "POST"
+OPTIONS = "OPTIONS"
 ```
 
-Submits an entity to a specified resource, which usually causes a status change on the server.
+Describes the communication options of the target resource.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-RequestMethod-POST = "POST"--><!--Device-RequestMethod-POST = "POST"-End-->
-
-**System capability:** SystemCapability.Communication.NetStack
-
-## PUT
-
-```TypeScript
-PUT = "PUT"
-```
-
-Replaces all current representations of the target resource with the requested content.
-
-**Since:** 6
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-RequestMethod-PUT = "PUT"--><!--Device-RequestMethod-PUT = "PUT"-End-->
-
-**System capability:** SystemCapability.Communication.NetStack
-
-## DELETE
-
-```TypeScript
-DELETE = "DELETE"
-```
-
-Deletes the specified resource.
-
-**Since:** 6
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-RequestMethod-DELETE = "DELETE"--><!--Device-RequestMethod-DELETE = "DELETE"-End-->
-
-**System capability:** SystemCapability.Communication.NetStack
-
-## TRACE
-
-```TypeScript
-TRACE = "TRACE"
-```
-
-Performs a message loopback test along the path to the target resource.
-
-**Since:** 6
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-RequestMethod-TRACE = "TRACE"--><!--Device-RequestMethod-TRACE = "TRACE"-End-->
-
-**System capability:** SystemCapability.Communication.NetStack
-
-**Test API:** This API is used only in automated test scripts.
-
-## CONNECT
-
-```TypeScript
-CONNECT = "CONNECT"
-```
-
-Establishes a tunnel to the server identified by the target resource.
-
-**Since:** 6
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
-
-<!--Device-RequestMethod-CONNECT = "CONNECT"--><!--Device-RequestMethod-CONNECT = "CONNECT"-End-->
+<!--Device-RequestMethod-OPTIONS = "OPTIONS"--><!--Device-RequestMethod-OPTIONS = "OPTIONS"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -159,3 +109,53 @@ Modifies a resource partially.
 <!--Device-RequestMethod-PATCH = "PATCH"--><!--Device-RequestMethod-PATCH = "PATCH"-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
+
+## POST
+
+```TypeScript
+POST = "POST"
+```
+
+Submits an entity to a specified resource, which usually causes a status change on the server.
+
+**Since:** 6
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RequestMethod-POST = "POST"--><!--Device-RequestMethod-POST = "POST"-End-->
+
+**System capability:** SystemCapability.Communication.NetStack
+
+## PUT
+
+```TypeScript
+PUT = "PUT"
+```
+
+Replaces all current representations of the target resource with the requested content.
+
+**Since:** 6
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RequestMethod-PUT = "PUT"--><!--Device-RequestMethod-PUT = "PUT"-End-->
+
+**System capability:** SystemCapability.Communication.NetStack
+
+## TRACE
+
+```TypeScript
+TRACE = "TRACE"
+```
+
+Performs a message loopback test along the path to the target resource.
+
+**Since:** 6
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-RequestMethod-TRACE = "TRACE"--><!--Device-RequestMethod-TRACE = "TRACE"-End-->
+
+**System capability:** SystemCapability.Communication.NetStack
+
+**Test API:** This API is used only in automated test scripts.

@@ -40,7 +40,7 @@ actionType: InterruptActionType
 
 **废弃版本：** 9
 
-**替代接口：** eventType
+**替代接口：** [eventType](arkts-audio-audio-interruptevent-i.md#eventtype)
 
 <!--Device-InterruptAction-actionType: InterruptActionType--><!--Device-InterruptAction-actionType: InterruptActionType-End-->
 
@@ -100,7 +100,7 @@ type?: InterruptType
 
 **废弃版本：** 9
 
-**替代接口：** eventType
+**替代接口：** [eventType](arkts-audio-audio-interruptevent-i.md#eventtype)
 
 <!--Device-InterruptAction-type?: InterruptType--><!--Device-InterruptAction-type?: InterruptType-End-->
 

@@ -6,8 +6,6 @@ export abstract class ChipV2ImageIcon extends ChipV2Icon
 
 ChipV2ImageIcon定义图标图片的基类。
 
-继承自[ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)。
-
 **继承/实现关系：** ChipV2ImageIcon extends [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 
 **起始版本：** 26.0.0
@@ -114,7 +112,7 @@ public modifier?: ImageModifier
 
 默认值：undefined，不应用修饰器。
 
-**类型：** ImageModifier
+**类型：** [ImageModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **起始版本：** 26.0.0
 

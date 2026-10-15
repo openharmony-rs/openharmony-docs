@@ -12,59 +12,17 @@ export enum ProfileUuids
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## PROFILE_UUID_HFP_AG
+## PROFILE_UUID_A2DP_SINK
 
 ```TypeScript
-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'
+PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'
 ```
 
-表示Hands-Free Audio Gateway Profile。
+表示A2DP Sink Profile。
 
 **起始版本：** 12
 
-<!--Device-ProfileUuids-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## PROFILE_UUID_HFP_HF
-
-```TypeScript
-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'
-```
-
-表示Hands-Free Profile。
-
-**起始版本：** 12
-
-<!--Device-ProfileUuids-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## PROFILE_UUID_HSP_AG
-
-```TypeScript
-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'
-```
-
-表示Headset Audio Gateway Profile。
-
-**起始版本：** 12
-
-<!--Device-ProfileUuids-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## PROFILE_UUID_HSP_HS
-
-```TypeScript
-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'
-```
-
-表示Headset Profile。
-
-**起始版本：** 12
-
-<!--Device-ProfileUuids-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'-End-->
+<!--Device-ProfileUuids-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -79,20 +37,6 @@ PROFILE_UUID_A2DP_SRC = '0000110A-0000-1000-8000-00805F9B34FB'
 **起始版本：** 12
 
 <!--Device-ProfileUuids-PROFILE_UUID_A2DP_SRC = '0000110A-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_A2DP_SRC = '0000110A-0000-1000-8000-00805F9B34FB'-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-## PROFILE_UUID_A2DP_SINK
-
-```TypeScript
-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'
-```
-
-表示A2DP Sink Profile。
-
-**起始版本：** 12
-
-<!--Device-ProfileUuids-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_A2DP_SINK = '0000110B-0000-1000-8000-00805F9B34FB'-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -124,6 +68,34 @@ PROFILE_UUID_AVRCP_TG = '0000110C-0000-1000-8000-00805F9B34FB'
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
+## PROFILE_UUID_HFP_AG
+
+```TypeScript
+PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'
+```
+
+表示Hands-Free Audio Gateway Profile。
+
+**起始版本：** 12
+
+<!--Device-ProfileUuids-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HFP_AG = '0000111F-0000-1000-8000-00805F9B34FB'-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## PROFILE_UUID_HFP_HF
+
+```TypeScript
+PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'
+```
+
+表示Hands-Free Profile。
+
+**起始版本：** 12
+
+<!--Device-ProfileUuids-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HFP_HF = '0000111E-0000-1000-8000-00805F9B34FB'-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
 ## PROFILE_UUID_HID
 
 ```TypeScript
@@ -149,5 +121,33 @@ PROFILE_UUID_HOGP = '00001812-0000-1000-8000-00805F9B34FB'
 **起始版本：** 12
 
 <!--Device-ProfileUuids-PROFILE_UUID_HOGP = '00001812-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HOGP = '00001812-0000-1000-8000-00805F9B34FB'-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## PROFILE_UUID_HSP_AG
+
+```TypeScript
+PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'
+```
+
+表示Headset Audio Gateway Profile。
+
+**起始版本：** 12
+
+<!--Device-ProfileUuids-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HSP_AG = '00001112-0000-1000-8000-00805F9B34FB'-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## PROFILE_UUID_HSP_HS
+
+```TypeScript
+PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'
+```
+
+表示Headset Profile。
+
+**起始版本：** 12
+
+<!--Device-ProfileUuids-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'--><!--Device-ProfileUuids-PROFILE_UUID_HSP_HS = '00001108-0000-1000-8000-00805F9B34FB'-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

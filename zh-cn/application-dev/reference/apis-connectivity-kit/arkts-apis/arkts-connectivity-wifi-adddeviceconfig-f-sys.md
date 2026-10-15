@@ -6,6 +6,8 @@
 import { wifi } from '@kit.ConnectivityKit';
 ```
 
+<a id="adddeviceconfig1"></a>
+
 ## addDeviceConfig
 
 ```TypeScript
@@ -40,6 +42,7 @@ function addDeviceConfig(config: WifiDeviceConfig): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象。返回添加的网络配置ID，如果值为-1表示添加失败。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -73,8 +76,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="adddeviceconfig-1"></a>
+
+<a id="adddeviceconfig2"></a>
 
 ## addDeviceConfig
 
@@ -105,6 +110,7 @@ function addDeviceConfig(config: WifiDeviceConfig, callback: AsyncCallback<numbe
 | config | [WifiDeviceConfig](arkts-connectivity-wifi-wifideviceconfig-i.md) | 是 | Wi-Fi配置信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | 是 | 回调函数。当操作成功时，error为0，data为添加的网络配置ID，如果data值为-1，表示添加失败。当error为非0，表示处理出现错误。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -137,3 +143,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

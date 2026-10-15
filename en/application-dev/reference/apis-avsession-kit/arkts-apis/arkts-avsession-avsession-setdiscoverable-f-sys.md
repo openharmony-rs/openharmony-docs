@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="setdiscoverable1"></a>
+
 ## setDiscoverable
 
 ```TypeScript
@@ -36,6 +38,7 @@ Enable or disable device to be discoverable, used at sink side.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -44,8 +47,10 @@ avSession.setDiscoverable(true, () => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setdiscoverable-1"></a>
+
+<a id="setdiscoverable2"></a>
 
 ## setDiscoverable
 
@@ -82,6 +87,7 @@ Enable or disable device to be discoverable, used at sink side.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -89,3 +95,5 @@ avSession.setDiscoverable(true).then(() => {
   console.info('Succeeded in setting discoverable.');
 });
 ```
+
+<!--DelEnd-->

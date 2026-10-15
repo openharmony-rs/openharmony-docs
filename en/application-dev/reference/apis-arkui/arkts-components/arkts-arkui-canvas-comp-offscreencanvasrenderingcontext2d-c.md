@@ -34,6 +34,8 @@ Use **OffscreenCanvasRenderingContext2D** to draw shapes, images, and text offsc
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -62,7 +64,7 @@ Creates an offscreen canvas object. You can configure the canvas width, canvas h
 | height | number | Yes | Height of the offscreen canvas. The default unit is vp.<br> Invalid values **NaN** and **Infinity** are treated as invalid. |
 | settings | [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md) | No | Used to configure the parameters of the **OffscreenCanvasRenderingContext2D** object. Pass this parameter when advanced configurations such as antialiasing need to be enabled. See the description of the **RenderingContextSettings** API.<br>The exception value **undefined** is handled as the default value of [RenderingContextSettings](arkts-arkui-canvas-comp-renderingcontextsettings-c.md).<br> Default value: **null** |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

@@ -4,13 +4,13 @@
 export declare struct SelectTitleBar
 ```
 
-The **SelectTitleBar** component represents a drop-down menu title bar used for switching between pages of different levels (configured with the **Back** button).
+The dropdown menu title bar is a title bar component that includes a dropdown menu, supports quick switching between pages, and can be configured with a back button and right-side menu items. This component is suitable for scenarios where navigation and switching between different views or pages are required, and it supports first-level pages as well as second-level and higher-level interfaces. Using this component facilitates quick access to and switching between different content views, improving the convenience of page navigation and user experience.
 
 > **NOTE:** 
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **SelectTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SelectTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SelectTitleBar** component.
+> - If the **SelectTitleBar** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **SelectTitleBar** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SelectTitleBar** component.
 
 **Since:** 10
 
@@ -32,13 +32,15 @@ import { SelectTitleBar, SelectTitleBarMenuItem } from '@kit.ArkUI';
 badgeValue?: number
 ```
 
-Value for the badge.
+New event badge, which displays a count on the menu icon on the right side of the title bar.
 
-Value range: [-2147483648, 2147483647]. If the value is out of the range, 4294967296 is added or subtracted so that the value is within the range. If the value is not an integer, it is rounded off to the nearest integer. For example, 5.5 is rounded off to 5.
+Value range: [-2147483648, 2147483647]. If the value exceeds the range, 4294967296 is added to or subtracted from it to bring it within the range. If the value is not an integer, the decimal part is truncated, for example, 5.5 becomes 5.
 
-Note: The badge will not be displayed if the value is less than or equal to 0.
+**NOTE:** 
 
-The maximum number of messages is 99. If this limit is exceeded, only **99+** is displayed. Extremely large values are considered exceptional and will result in the badge not being displayed.
+If this parameter is not passed or is less than or equal to 0, the event badge is not displayed.
+
+The maximum number of messages is 99. If the number exceeds the maximum, only 99+ is displayed. An excessively large value is considered abnormal, and the event badge is not displayed.
 
 **Type:** number
 
@@ -80,7 +82,7 @@ Default value: **false**. **true** to hide, **false** to show.
 menuItems?: Array<SelectTitleBarMenuItem>
 ```
 
-List of menu items on the right side of the title bar. This parameter is passed to add a list of menu items to the right side of the title bar. If this parameter is not specified, the menu area on the right is not displayed.
+List of menu items on the right side, which defines the menu items on the right side of the title bar. This parameter is passed when menu items need to be added on the right side. If not specified, the right-side menu area is not displayed.
 
 **Type:** Array&lt;[SelectTitleBarMenuItem](arkts-arkui-arkui-advanced-selecttitlebar-selecttitlebarmenuitem-c.md)&gt;
 
@@ -100,7 +102,7 @@ List of menu items on the right side of the title bar. This parameter is passed 
 onSelected?: ((index: number) => void)
 ```
 
-Callback invoked when an option in the drop-down menu is selected. The index of the selected option is passed in. This parameter is passed to handle specific service logic after an option in the drop-down menu is selected. This parameter can be omitted when there is no specific service logic.
+Callback triggered when a dropdown menu item is selected. It passes the index of the selected item. This parameter is passed when specific business logic needs to be processed after a dropdown menu item is selected. If there is no specific business logic, this parameter can be omitted.
 
 **Type:** ((index: number) =&gt; void)
 
@@ -120,7 +122,7 @@ Callback invoked when an option in the drop-down menu is selected. The index of 
 options: Array<SelectOption>
 ```
 
-Options in the drop-down menu.
+Items in the dropdown menu.
 
 **Type:** Array&lt;[SelectOption](../arkts-components/arkts-arkui-select-comp-selectoption-i.md)&gt;
 
@@ -142,7 +144,7 @@ selected: number
 
 Index of the currently selected item.
 
-The index of the first item is 0. If this attribute is not set, the default value **0** will be used.
+The index of the first item is 0, and the default value is **0**.
 
 **Type:** number
 

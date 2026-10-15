@@ -6,7 +6,7 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
-<a id="getusergrantedenabledbundles-1"></a>
+<a id="getusergrantedenabledbundles2"></a>
 
 ## getUserGrantedEnabledBundles
 

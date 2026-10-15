@@ -6,7 +6,7 @@ export type LauncherAbilityResourceInfo = _LauncherAbilityResourceInfo
 
 Defines the entry icon and name of an application.
 
-<!--no_check-->
+**Type:** _LauncherAbilityResourceInfo
 
 **Since:** 11
 
@@ -15,5 +15,3 @@ Defines the entry icon and name of an application.
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
-
-**Type:** _LauncherAbilityResourceInfo

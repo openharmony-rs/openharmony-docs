@@ -4,7 +4,7 @@
 interface InputMethodController
 ```
 
-下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md)获取到InputMethodController实例，再通过实例调用对应方法。<br> <br>InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作：<br> <br>- 绑定管理：通过[attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach)建立与输入法的绑定，通过[detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach)解除绑定。attach和detach必须配对使用。<br>- 键盘控制：通过[showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput)拉起软键盘进入编辑状态，通过[hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput)隐藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。<br>- 编辑框状态同步：通过[updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor)、[changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection)、[updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute)等接口向输入法同步光标、选区、属性等编辑框状态信息。<br>- 事件订阅：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。<br> <br>典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` <br> <br>  
+下列API示例中都需使用[getController](arkts-ime-inputmethod-getcontroller-f.md)获取到InputMethodController实例，再通过实例调用对应方法。<br> <br>InputMethodController是输入法客户端控制器，面向前台应用提供与输入法交互的核心能力。通过`inputMethod.getController()`获取实例后，可进行以下操作：<br> <br>- 绑定管理：通过[attach](arkts-ime-inputmethod-inputmethodcontroller-i.md#attach1)建立与输入法的绑定，通过[detach](arkts-ime-inputmethod-inputmethodcontroller-i.md#detach1)解除绑定。attach和detach必须配对使用。<br>- 键盘控制：通过[showTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#showtextinput1)拉起软键盘进入编辑状态，通过[hideTextInput](arkts-ime-inputmethod-inputmethodcontroller-i.md#hidetextinput1)隐藏软键盘退出编辑状态。showTextInput和hideTextInput必须配对使用。<br>- 编辑框状态同步：通过[updateCursor](arkts-ime-inputmethod-inputmethodcontroller-i.md#updatecursor1)、[changeSelection](arkts-ime-inputmethod-inputmethodcontroller-i.md#changeselection)、[updateAttribute](arkts-ime-inputmethod-inputmethodcontroller-i.md#updateattribute1)等接口向输入法同步光标、选区、属性等编辑框状态信息。<br>- 事件订阅：通过on('insertText')、on('deleteLeft')等接口订阅输入法应用发送的文本操作事件。<br> <br>典型调用序列：`getController()` → `attach()` → `showTextInput()`/`hideTextInput()` → `detach()` <br> <br>  
 > **说明：** <br>
 > <br>
 > attach和detach必须配对使用，showTextInput和hideTextInput必须配对使用，否则可能导致资源泄漏或状态不一致。
@@ -21,7 +21,7 @@ interface InputMethodController
 import { inputMethod } from '@kit.IMEKit';
 ```
 
-<a id="hidesoftkeyboard-2"></a>
+<a id="hidesoftkeyboard3"></a>
 
 ## hideSoftKeyboard
 
@@ -67,6 +67,7 @@ hideSoftKeyboard(displayId: number): Promise<void>
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -80,7 +81,9 @@ inputMethod.getController().hideSoftKeyboard(displayId).then(() => {
 });
 ```
 
-<a id="showsoftkeyboard-2"></a>
+<!--DelEnd-->
+
+<a id="showsoftkeyboard3"></a>
 
 ## showSoftKeyboard
 
@@ -126,6 +129,7 @@ showSoftKeyboard(displayId: number): Promise<void>
 | [12800003](../errorcode-inputmethod-framework.md#12800003-客户端应用异常) | input method client error. Possible causes: 1.the edit box is not focused. 2.no edit box is bound to current input method application. 3.ipc failed due to the large amount of data transferred or other reasons. |
 | [12800008](../errorcode-inputmethod-framework.md#12800008-输入法管理服务异常) | input method manager service error. Possible cause: a system error, such as null pointer, IPC exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -138,3 +142,5 @@ inputMethod.getController().showSoftKeyboard(displayId).then(() => {
   console.error(`Failed to show softKeyboard, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

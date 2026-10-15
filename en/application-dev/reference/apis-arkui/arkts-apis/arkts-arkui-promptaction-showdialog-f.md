@@ -6,6 +6,8 @@
 import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
+<a id="showdialog1"></a>
+
 ## showDialog
 
 ```TypeScript
@@ -24,7 +26,7 @@ Creates and displays a dialog box. This API uses an asynchronous callback to ret
 
 **Deprecated since:** 18
 
-**Substitutes:** showDialog
+**Substitutes:** [showDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#showdialog)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
@@ -204,7 +206,7 @@ struct DialogExample {
 ```
 
 
-<a id="showdialog-1"></a>
+<a id="showdialog2"></a>
 
 ## showDialog
 
@@ -224,7 +226,7 @@ Creates and displays a dialog box in the given settings. This API uses a promise
 
 **Deprecated since:** 18
 
-**Substitutes:** showDialog
+**Substitutes:** [showDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#showdialog)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

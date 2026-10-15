@@ -12,34 +12,6 @@ Enumerates SMS message sending results.
 
 **System capability:** SystemCapability.Telephony.SmsMms
 
-## SEND_SMS_SUCCESS
-
-```TypeScript
-SEND_SMS_SUCCESS = 0
-```
-
-The SMS message is sent successfully.
-
-**Since:** 6
-
-<!--Device-SendSmsResult-SEND_SMS_SUCCESS = 0--><!--Device-SendSmsResult-SEND_SMS_SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.Telephony.SmsMms
-
-## SEND_SMS_FAILURE_UNKNOWN
-
-```TypeScript
-SEND_SMS_FAILURE_UNKNOWN = 1
-```
-
-Failed to send the SMS message due to an unknown reason.
-
-**Since:** 6
-
-<!--Device-SendSmsResult-SEND_SMS_FAILURE_UNKNOWN = 1--><!--Device-SendSmsResult-SEND_SMS_FAILURE_UNKNOWN = 1-End-->
-
-**System capability:** SystemCapability.Telephony.SmsMms
-
 ## SEND_SMS_FAILURE_RADIO_OFF
 
 ```TypeScript
@@ -65,5 +37,33 @@ Failed to send the SMS message because the network is unavailable or SMS message
 **Since:** 6
 
 <!--Device-SendSmsResult-SEND_SMS_FAILURE_SERVICE_UNAVAILABLE = 3--><!--Device-SendSmsResult-SEND_SMS_FAILURE_SERVICE_UNAVAILABLE = 3-End-->
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+## SEND_SMS_FAILURE_UNKNOWN
+
+```TypeScript
+SEND_SMS_FAILURE_UNKNOWN = 1
+```
+
+Failed to send the SMS message due to an unknown reason.
+
+**Since:** 6
+
+<!--Device-SendSmsResult-SEND_SMS_FAILURE_UNKNOWN = 1--><!--Device-SendSmsResult-SEND_SMS_FAILURE_UNKNOWN = 1-End-->
+
+**System capability:** SystemCapability.Telephony.SmsMms
+
+## SEND_SMS_SUCCESS
+
+```TypeScript
+SEND_SMS_SUCCESS = 0
+```
+
+The SMS message is sent successfully.
+
+**Since:** 6
+
+<!--Device-SendSmsResult-SEND_SMS_SUCCESS = 0--><!--Device-SendSmsResult-SEND_SMS_SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Telephony.SmsMms

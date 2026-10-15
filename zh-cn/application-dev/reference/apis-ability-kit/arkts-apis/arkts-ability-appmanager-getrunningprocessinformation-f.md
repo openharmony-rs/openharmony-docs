@@ -6,6 +6,8 @@
 import { appManager } from '@kit.AbilityKit';
 ```
 
+<a id="getrunningprocessinformation1"></a>
+
 ## getRunningProcessInformation
 
 ```TypeScript
@@ -26,7 +28,7 @@ function getRunningProcessInformation(): Promise<Array<ProcessInformation>>
 - API版本11+：N/A
 - API版本9-10：ohos.permission.GET_RUNNING_INFO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-appManager-function getRunningProcessInformation(): Promise<Array<ProcessInformation>>--><!--Device-appManager-function getRunningProcessInformation(): Promise<Array<ProcessInformation>>-End-->
 
@@ -58,7 +60,7 @@ appManager.getRunningProcessInformation().then((data) => {
 ```
 
 
-<a id="getrunningprocessinformation-1"></a>
+<a id="getrunningprocessinformation2"></a>
 
 ## getRunningProcessInformation
 
@@ -80,7 +82,7 @@ function getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInfor
 - API版本11+：N/A
 - API版本9-10：ohos.permission.GET_RUNNING_INFO
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-appManager-function getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>): void--><!--Device-appManager-function getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInformation>>): void-End-->
 
@@ -96,7 +98,7 @@ function getRunningProcessInformation(callback: AsyncCallback<Array<ProcessInfor
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
 **示例**

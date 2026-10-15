@@ -30,8 +30,8 @@ The launched ability can obtain the launch reason through the **launchReasonMess
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| shortcutInfo | [ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md) | Yes | Shortcut information of the application. |
-| startReason | string | Yes | Reason for launching the shortcut. The value can be [AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](../../../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#constants), indicating a home screen shortcut launch. |
+| shortcutInfo | [ShortcutInfo](arkts-ability-launcherbundlemanager-shortcutinfo-t.md) | Yes | Shortcut information of the app. |
+| startReason | string | Yes | Reason for starting the shortcut. The value range is [AbilityConstant.REASON_MESSAGE_DESKTOP_SHORTCUT](../../../reference/apis-ability-kit/js-apis-app-ability-abilityConstant.md#constants), which indicates that the shortcut is started from the home screen. |
 | options | [StartOptions](arkts-ability-app-ability-startoptions-startoptions-c.md) | No | Parameters used to specify the window mode of the target ability. |
 
 **Return value:**
@@ -49,6 +49,7 @@ The launched ability can obtain the launch reason through the **launchReasonMess
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not support. |
 | [17700065](../errorcode-bundle.md#17700065-ability-specified-by-want-in-the-shortcutinfo-struct-cannot-be-started) | The specified shortcut want in shortcut info is not supported to be started. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -81,3 +82,5 @@ try {
   console.error(`startShortcutWithReason errData is errCode:${code}  message:${message}`);
 }
 ```
+
+<!--DelEnd-->

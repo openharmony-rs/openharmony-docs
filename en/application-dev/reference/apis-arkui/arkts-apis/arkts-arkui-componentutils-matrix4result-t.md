@@ -21,17 +21,7 @@ type Matrix4Result = [
   ]
 ```
 
-The matrix is column-first fourth-order matrix.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-componentUtils-type Matrix4Result = [    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,  ]--><!--Device-componentUtils-type Matrix4Result = [    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,  ]-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
+Number array whose length is 16 (4 x 4). The matrix is column-first.
 
 **Type:** [
     number,
@@ -51,3 +41,13 @@ The matrix is column-first fourth-order matrix.
     number,
     number,
   ]
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-componentUtils-type Matrix4Result = [    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,  ]--><!--Device-componentUtils-type Matrix4Result = [    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,    number,  ]-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full

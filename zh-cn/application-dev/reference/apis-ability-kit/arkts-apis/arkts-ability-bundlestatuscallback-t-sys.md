@@ -6,6 +6,8 @@ export type BundleStatusCallback = _BundleStatusCallback
 
 应用状态发生变化时回调的信息。
 
+**类型：** _BundleStatusCallback
+
 **起始版本：** 8
 
 **废弃版本：** 9
@@ -17,5 +19,3 @@ export type BundleStatusCallback = _BundleStatusCallback
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _BundleStatusCallback

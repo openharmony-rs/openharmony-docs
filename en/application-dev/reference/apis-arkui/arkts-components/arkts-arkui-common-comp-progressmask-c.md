@@ -34,8 +34,8 @@ Constructs a **ProgressMask** object.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Current value of the progress mask.<br> Value range: [0.0, +∞) |
-| total | number | Yes | Maximum value of the progress mask.<br> Value range: [0.0, +∞) |
+| value | number | Yes | Current value of the progress mask. It is used together with total to determine the progress ratio. When value equals total, the progress is full.<br>Value range: [0.0, +∞). If a negative number is passed in, it is automatically corrected to 0. |
+| total | number | Yes | Maximum value of the progress mask.<br> Value range: [0.0, +∞). If a negative number is passed in, it is automatically corrected to 100. |
 | color | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the progress mask. |
 
 ## enableBreathingAnimation
@@ -44,7 +44,7 @@ Constructs a **ProgressMask** object.
 enableBreathingAnimation(value: boolean): void
 ```
 
-Sets whether to enable the breathing animation when the progress indicator is full. If this API is not set, the breathing animation is disabled by default.
+Switch for the breathing glow animation when the progress is full. When enabled, a periodic brightening and dimming glow effect appears at the mask edge when the progress is full. When not set, the breathing glow animation is disabled by default.
 
 **Since:** 12
 
@@ -60,7 +60,7 @@ Sets whether to enable the breathing animation when the progress indicator is fu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to enable the breathing animation.<br>**true**: The breathing animation is enabled.<br>**false**: The breathing halo animation is disabled. |
+| value | boolean | Yes | Whether to enable the breathing halo animation when the progress is full.<br>true: enables the breathing halo animation. <br>false: disables the breathing halo animation. |
 
 ## updateColor
 

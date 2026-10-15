@@ -26,11 +26,11 @@ barModifier?: CommonModifier
 
 由一个CommonModifier切换为另一个CommonModifier时，重复属性会进行覆盖，非重复属性会同时生效，不会重置前一个CommonModifier的通用属性。
 
-Tabs的[barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth)、[barHeight](arkts-arkui-tabs-comp-attribute.md#barheight)、[barBackgroundColor](arkts-arkui-tabs-comp-attribute.md#barbackgroundcolor)、[barBackgroundBlurStyle](arkts-arkui-tabs-comp-attribute.md#barbackgroundblurstyle-1)、[barBackgroundEffect](arkts-arkui-tabs-comp-attribute.md#barbackgroundeffect)属性会覆盖CommonModifier的[width](arkts-arkui-common-comp-commonmethod-c.md#width)、[height](arkts-arkui-common-comp-commonmethod-c.md#height)、[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor-1)、[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle-1)、[backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect-1)属性。
+Tabs的[barWidth](arkts-arkui-tabs-comp-attribute.md#barwidth)、[barHeight](arkts-arkui-tabs-comp-attribute.md#barheight1)、[barBackgroundColor](arkts-arkui-tabs-comp-attribute.md#barbackgroundcolor)、[barBackgroundBlurStyle](arkts-arkui-tabs-comp-attribute.md#barbackgroundblurstyle2)、[barBackgroundEffect](arkts-arkui-tabs-comp-attribute.md#barbackgroundeffect)属性会覆盖CommonModifier的[width](arkts-arkui-common-comp-commonmethod-c.md#width1)、[height](arkts-arkui-common-comp-commonmethod-c.md#height1)、[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor2)、[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle2)、[backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect2)属性。
 
-[align](arkts-arkui-common-comp-commonmethod-c.md#align)属性仅在[BarMode.Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode-1)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](arkts-arkui-tabs-comp-scrollablebarmodeoptions-i.md)未设置或设置为异常值时才能生效。
+[align](arkts-arkui-common-comp-commonmethod-c.md#align1)属性仅在[BarMode.Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode2)模式下生效，且Tabs为横向时还需[nonScrollableLayoutStyle](arkts-arkui-tabs-comp-scrollablebarmodeoptions-i.md)未设置或设置为异常值时才能生效。
 
-TabContent组件的[tabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar-2)属性为底部页签样式时不支持拖拽功能。
+TabContent组件的[tabBar](arkts-arkui-tabcontent-comp-attribute.md#tabbar3)属性为底部页签样式时不支持拖拽功能。
 
 **类型：** [CommonModifier](arkts-arkui-tabs-comp-commonmodifier-t.md)
 

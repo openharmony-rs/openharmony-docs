@@ -134,6 +134,8 @@ audio.getAudioManager().getRoutingManager().getPreferOutputDeviceForRendererInfo
 })
 ```
 
+<a id="getringermode1"></a>
+
 ## getRingerMode
 
 ```TypeScript
@@ -168,7 +170,7 @@ audioVolumeGroupManager.getRingerMode((err: BusinessError, value: audio.AudioRin
 });
 ```
 
-<a id="getringermode-1"></a>
+<a id="getringermode2"></a>
 
 ## getRingerMode
 
@@ -236,6 +238,8 @@ try {
 }
 ```
 
+<a id="ismicrophonemute1"></a>
+
 ## isMicrophoneMute
 
 ```TypeScript
@@ -270,7 +274,7 @@ audioVolumeGroupManager.isMicrophoneMute((err: BusinessError, value: boolean) =>
 });
 ```
 
-<a id="ismicrophonemute-1"></a>
+<a id="ismicrophonemute2"></a>
 
 ## isMicrophoneMute
 
@@ -526,6 +530,8 @@ audioVolumeGroupManager.on('micStateChange', (micStateChange: audio.MicStateChan
 });
 ```
 
+<a id="getmaxvolume1"></a>
+
 ## getMaxVolume
 
 ```TypeScript
@@ -565,7 +571,7 @@ audioVolumeGroupManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: Business
 });
 ```
 
-<a id="getmaxvolume-1"></a>
+<a id="getmaxvolume2"></a>
 
 ## getMaxVolume
 
@@ -656,6 +662,8 @@ try {
 }
 ```
 
+<a id="getminvolume1"></a>
+
 ## getMinVolume
 
 ```TypeScript
@@ -695,7 +703,7 @@ audioVolumeGroupManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: Business
 });
 ```
 
-<a id="getminvolume-1"></a>
+<a id="getminvolume2"></a>
 
 ## getMinVolume
 
@@ -786,6 +794,8 @@ try {
 }
 ```
 
+<a id="getsystemvolumeindb1"></a>
+
 ## getSystemVolumeInDb
 
 ```TypeScript
@@ -835,7 +845,7 @@ audioVolumeGroupManager.getSystemVolumeInDb(audio.AudioVolumeType.MEDIA, 3, audi
 });
 ```
 
-<a id="getsystemvolumeindb-1"></a>
+<a id="getsystemvolumeindb2"></a>
 
 ## getSystemVolumeInDb
 
@@ -942,6 +952,8 @@ try {
 }
 ```
 
+<a id="getvolume1"></a>
+
 ## getVolume
 
 ```TypeScript
@@ -981,7 +993,7 @@ audioVolumeGroupManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessErr
 });
 ```
 
-<a id="getvolume-1"></a>
+<a id="getvolume2"></a>
 
 ## getVolume
 
@@ -1072,6 +1084,8 @@ try {
 }
 ```
 
+<a id="ismute1"></a>
+
 ## isMute
 
 ```TypeScript
@@ -1111,7 +1125,7 @@ audioVolumeGroupManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError,
 });
 ```
 
-<a id="ismute-1"></a>
+<a id="ismute2"></a>
 
 ## isMute
 
@@ -1202,6 +1216,8 @@ try {
 }
 ```
 
+<a id="setmicrophonemute1"></a>
+
 ## setMicrophoneMute
 
 ```TypeScript
@@ -1241,7 +1257,7 @@ audioVolumeGroupManager.setMicrophoneMute(true, (err: BusinessError) => {
 });
 ```
 
-<a id="setmicrophonemute-1"></a>
+<a id="setmicrophonemute2"></a>
 
 ## setMicrophoneMute
 

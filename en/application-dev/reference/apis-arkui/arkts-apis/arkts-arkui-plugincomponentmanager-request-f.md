@@ -6,13 +6,15 @@
 import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 ```
 
+<a id="request1"></a>
+
 ## request
 
 ```TypeScript
 function request(param: RequestParameters, callback: AsyncCallback<RequestCallbackParameters>): void
 ```
 
-Requests the component from the component provider.
+Requests the component from the component provider. This API is applicable to scenarios where the user needs to obtain the provider's components and data on demand. <br>Cooperation method: The provider must first call [on('request', callback)](../../../reference/apis-arkui/js-apis-plugincomponent.md#plugincomponentmanageron) to register a request event listener before receiving the request initiated by the user through this API and returning data. If the provider does not register the listener, the request cannot be responded to.
 
 **Since:** 8
 
@@ -26,8 +28,8 @@ Requests the component from the component provider.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| param | [RequestParameters](arkts-arkui-plugincomponentmanager-requestparameters-i.md) | Yes | Information about the component request. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestCallbackParameters](arkts-arkui-plugincomponentmanager-requestcallbackparameters-i.md)&gt; | Yes | Asynchronous callback used to return the requested data. |
+| param | [RequestParameters](arkts-arkui-plugincomponentmanager-requestparameters-i.md) | Yes | Details about the component template request. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RequestCallbackParameters](arkts-arkui-plugincomponentmanager-requestcallbackparameters-i.md)&gt; | Yes | Asynchronous callback for this request, used to return the data obtained from the request through the parameter of the callback. |
 
 **Examples**
 

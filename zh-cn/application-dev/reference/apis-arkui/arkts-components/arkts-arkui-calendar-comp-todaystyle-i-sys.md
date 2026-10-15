@@ -4,7 +4,7 @@
 interface TodayStyle
 ```
 
-Non current day style.
+今日样式。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ Non current day style.
 focusedAreaBackgroundColor?: ResourceColor
 ```
 
-Background color of the focus area.
+聚焦区域背景颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -46,7 +46,7 @@ Background color of the focus area.
 focusedAreaRadius?: number
 ```
 
-Focus area radius.
+聚焦区域半径。
 
 **类型：** number
 
@@ -70,7 +70,7 @@ Focus area radius.
 focusedDayColor?: ResourceColor
 ```
 
-Style of focus color.
+聚焦日期颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -94,7 +94,7 @@ Style of focus color.
 focusedLunarColor?: ResourceColor
 ```
 
-Focus on Lunar Colors.
+聚焦农历颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 

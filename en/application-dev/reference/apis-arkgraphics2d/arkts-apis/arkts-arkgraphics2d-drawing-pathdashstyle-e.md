@@ -18,17 +18,17 @@ Enumerates the drawing styles for path effects.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## TRANSLATE
+## MORPH
 
 ```TypeScript
-TRANSLATE = 0
+MORPH = 2
 ```
 
-Translates only, not rotating with the path.
+Rotates with the path and stretches or compresses at turns to enhance smoothness.
 
 **Since:** 18
 
-<!--Device-PathDashStyle-TRANSLATE = 0--><!--Device-PathDashStyle-TRANSLATE = 0-End-->
+<!--Device-PathDashStyle-MORPH = 2--><!--Device-PathDashStyle-MORPH = 2-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 
@@ -46,16 +46,16 @@ Rotates with the path.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## MORPH
+## TRANSLATE
 
 ```TypeScript
-MORPH = 2
+TRANSLATE = 0
 ```
 
-Rotates with the path and stretches or compresses at turns to enhance smoothness.
+Translates only, not rotating with the path.
 
 **Since:** 18
 
-<!--Device-PathDashStyle-MORPH = 2--><!--Device-PathDashStyle-MORPH = 2-End-->
+<!--Device-PathDashStyle-TRANSLATE = 0--><!--Device-PathDashStyle-TRANSLATE = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

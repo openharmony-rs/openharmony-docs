@@ -14,22 +14,6 @@ Enumerates number mark types.
 
 **System API:** This is a system API.
 
-## MARK_TYPE_NONE
-
-```TypeScript
-MARK_TYPE_NONE = 0
-```
-
-No mark.
-
-**Since:** 12
-
-<!--Device-MarkType-MARK_TYPE_NONE = 0--><!--Device-MarkType-MARK_TYPE_NONE = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
 ## MARK_TYPE_CRANK
 
 ```TypeScript
@@ -46,17 +30,33 @@ Spam call.
 
 **System API:** This is a system API.
 
-## MARK_TYPE_FRAUD
+## MARK_TYPE_CUSTOM
 
 ```TypeScript
-MARK_TYPE_FRAUD = 2
+MARK_TYPE_CUSTOM = 8
 ```
 
-Fraud call.
+User-defined.
 
 **Since:** 12
 
-<!--Device-MarkType-MARK_TYPE_FRAUD = 2--><!--Device-MarkType-MARK_TYPE_FRAUD = 2-End-->
+<!--Device-MarkType-MARK_TYPE_CUSTOM = 8--><!--Device-MarkType-MARK_TYPE_CUSTOM = 8-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## MARK_TYPE_ENTERPRISE
+
+```TypeScript
+MARK_TYPE_ENTERPRISE = 11
+```
+
+Enterprise contact.
+
+**Since:** 14
+
+<!--Device-MarkType-MARK_TYPE_ENTERPRISE = 11--><!--Device-MarkType-MARK_TYPE_ENTERPRISE = 11-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -78,17 +78,17 @@ Express & delivery.
 
 **System API:** This is a system API.
 
-## MARK_TYPE_PROMOTE_SALES
+## MARK_TYPE_FRAUD
 
 ```TypeScript
-MARK_TYPE_PROMOTE_SALES = 4
+MARK_TYPE_FRAUD = 2
 ```
 
-Advertising.
+Fraud call.
 
 **Since:** 12
 
-<!--Device-MarkType-MARK_TYPE_PROMOTE_SALES = 4--><!--Device-MarkType-MARK_TYPE_PROMOTE_SALES = 4-End-->
+<!--Device-MarkType-MARK_TYPE_FRAUD = 2--><!--Device-MarkType-MARK_TYPE_FRAUD = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -126,33 +126,17 @@ Insurance & loans.
 
 **System API:** This is a system API.
 
-## MARK_TYPE_TAXI
+## MARK_TYPE_NONE
 
 ```TypeScript
-MARK_TYPE_TAXI = 7
+MARK_TYPE_NONE = 0
 ```
 
-Taxi.
+No mark.
 
 **Since:** 12
 
-<!--Device-MarkType-MARK_TYPE_TAXI = 7--><!--Device-MarkType-MARK_TYPE_TAXI = 7-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## MARK_TYPE_CUSTOM
-
-```TypeScript
-MARK_TYPE_CUSTOM = 8
-```
-
-User-defined.
-
-**Since:** 12
-
-<!--Device-MarkType-MARK_TYPE_CUSTOM = 8--><!--Device-MarkType-MARK_TYPE_CUSTOM = 8-End-->
+<!--Device-MarkType-MARK_TYPE_NONE = 0--><!--Device-MarkType-MARK_TYPE_NONE = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -174,6 +158,38 @@ Other.
 
 **System API:** This is a system API.
 
+## MARK_TYPE_PROMOTE_SALES
+
+```TypeScript
+MARK_TYPE_PROMOTE_SALES = 4
+```
+
+Advertising.
+
+**Since:** 12
+
+<!--Device-MarkType-MARK_TYPE_PROMOTE_SALES = 4--><!--Device-MarkType-MARK_TYPE_PROMOTE_SALES = 4-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## MARK_TYPE_TAXI
+
+```TypeScript
+MARK_TYPE_TAXI = 7
+```
+
+Taxi.
+
+**Since:** 12
+
+<!--Device-MarkType-MARK_TYPE_TAXI = 7--><!--Device-MarkType-MARK_TYPE_TAXI = 7-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
 ## MARK_TYPE_YELLOW_PAGE
 
 ```TypeScript
@@ -185,22 +201,6 @@ Yellow page.
 **Since:** 12
 
 <!--Device-MarkType-MARK_TYPE_YELLOW_PAGE = 10--><!--Device-MarkType-MARK_TYPE_YELLOW_PAGE = 10-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## MARK_TYPE_ENTERPRISE
-
-```TypeScript
-MARK_TYPE_ENTERPRISE = 11
-```
-
-Enterprise contact.
-
-**Since:** 14
-
-<!--Device-MarkType-MARK_TYPE_ENTERPRISE = 11--><!--Device-MarkType-MARK_TYPE_ENTERPRISE = 11-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

@@ -14,17 +14,17 @@ enum WatermarkType
 
 **系统接口：** 此接口为系统接口。
 
-## DEFAULT
+## BRAND
 
 ```TypeScript
-DEFAULT = 0
+BRAND = 3
 ```
 
-不支持水印可编辑。
+支持品牌水印可编辑。
 
 **起始版本：** 14
 
-<!--Device-WatermarkType-DEFAULT = 0--><!--Device-WatermarkType-DEFAULT = 0-End-->
+<!--Device-WatermarkType-BRAND = 3--><!--Device-WatermarkType-BRAND = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,17 +62,17 @@ COMMON = 2
 
 **系统接口：** 此接口为系统接口。
 
-## BRAND
+## DEFAULT
 
 ```TypeScript
-BRAND = 3
+DEFAULT = 0
 ```
 
-支持品牌水印可编辑。
+不支持水印可编辑。
 
 **起始版本：** 14
 
-<!--Device-WatermarkType-BRAND = 3--><!--Device-WatermarkType-BRAND = 3-End-->
+<!--Device-WatermarkType-DEFAULT = 0--><!--Device-WatermarkType-DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

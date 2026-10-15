@@ -6,13 +6,15 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="print1"></a>
+
 ## print
 
 ```TypeScript
 function print(files: Array<string>, callback: AsyncCallback<PrintTask>): void
 ```
 
-Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#print-3) API and pass in context.
+Prints files. This API uses an asynchronous callback to return the result. To start the system print preview page, call the [print](#print4) API and pass in context.
 
 **Since:** 10
 
@@ -62,7 +64,7 @@ print.print([fileUri.getUriFromPath(filePath)], (error: BusinessError, printTask
 ```
 
 
-<a id="print-1"></a>
+<a id="print2"></a>
 
 ## print
 
@@ -70,7 +72,7 @@ print.print([fileUri.getUriFromPath(filePath)], (error: BusinessError, printTask
 function print(files: Array<string>): Promise<PrintTask>
 ```
 
-Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#print-3) API and pass in context.
+Prints files. This API uses a promise to return the result. To start the system print preview page, call the [print](#print4) API and pass in context.
 
 **Since:** 10
 
@@ -123,7 +125,7 @@ print.print([fileUri.getUriFromPath(filePath)]).then((printTask: print.PrintTask
 ```
 
 
-<a id="print-2"></a>
+<a id="print3"></a>
 
 ## print
 
@@ -194,7 +196,7 @@ struct Index {
 ```
 
 
-<a id="print-3"></a>
+<a id="print4"></a>
 
 ## print
 
@@ -268,7 +270,7 @@ struct Index {
 ```
 
 
-<a id="print-4"></a>
+<a id="print5"></a>
 
 ## print
 

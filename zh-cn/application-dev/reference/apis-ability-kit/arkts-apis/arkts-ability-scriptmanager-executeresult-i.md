@@ -44,7 +44,12 @@ code: number
 flags?: number
 ```
 
-表示URI的读写权限，与flags的flags字段含义一致。取值范围如下：FLAG_AUTH_READ_URI_PERMISSION：读权限。FLAG_AUTH_WRITE_URI_PERMISSION：写权限。以上两个标志的组合：同时授权读写权限。
+表示URI的读写权限，与[Want](arkts-ability-app-ability-want-want-c.md)的flags字段含义一致。取值范围如下：  
+- [wantConstant.Flags.FLAG_AUTH_READ_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md#flag_auth_read_uri_permission)：  
+读权限。  
+- [wantConstant.Flags.FLAG_AUTH_WRITE_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md#flag_auth_write_uri_permission)：  
+写权限。  
+- 以上两个标志的组合：同时授权读写权限。
 
 **类型：** number
 

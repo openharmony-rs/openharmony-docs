@@ -4,7 +4,7 @@
 export enum AppDistributionType
 ```
 
-Enumerates the application [distribution types](../../../security/app-provision-structure.md).
+Identifies an application's [HarmonyAppProvision Configuration File](../../../security/app-provision-structure.md).
 
 **Since:** 12
 
@@ -30,6 +30,22 @@ Application installed from AppGallery.
 
 **System API:** This is a system API.
 
+## CROWDTESTING
+
+```TypeScript
+CROWDTESTING = 6
+```
+
+Application under crowdtesting, which is distributed by AppGallery to a limited number of users and come with a set expiration date. When the system detects that the validity period of the application expires, it prompts the user to update to the release version available on AppGallery.
+
+**Since:** 12
+
+<!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**System API:** This is a system API.
+
 ## ENTERPRISE
 
 ```TypeScript
@@ -41,6 +57,22 @@ Enterprise application that can be installed on personal devices.
 **Since:** 12
 
 <!--Device-AppDistributionType-ENTERPRISE = 2--><!--Device-AppDistributionType-ENTERPRISE = 2-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**System API:** This is a system API.
+
+## ENTERPRISE_MDM
+
+```TypeScript
+ENTERPRISE_MDM = 4
+```
+
+Enterprise MDM application that can be installed only on enterprise devices. To install a common enterprise application, you must have [adminManager.enableAdmin](../../../reference/apis-mdm-kit/js-apis-enterprise-adminManager-sys.md#adminmanagerenableadmin) activated.
+
+**Since:** 12
+
+<!--Device-AppDistributionType-ENTERPRISE_MDM = 4--><!--Device-AppDistributionType-ENTERPRISE_MDM = 4-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -62,17 +94,17 @@ Common enterprise application that can be installed on enterprise devices only t
 
 **System API:** This is a system API.
 
-## ENTERPRISE_MDM
+## NONE
 
 ```TypeScript
-ENTERPRISE_MDM = 4
+NONE = 7
 ```
 
-Enterprise MDM application that can be installed only on enterprise devices. To install a common enterprise application, you must have [administrator privileges](../../apis-mdm-kit/arkts-apis/arkts-mdm-adminmanager-enableadmin-f-sys.md).
+Other.
 
 **Since:** 12
 
-<!--Device-AppDistributionType-ENTERPRISE_MDM = 4--><!--Device-AppDistributionType-ENTERPRISE_MDM = 4-End-->
+<!--Device-AppDistributionType-NONE = 7--><!--Device-AppDistributionType-NONE = 7-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -89,38 +121,6 @@ Preinstalled system application.
 **Since:** 12
 
 <!--Device-AppDistributionType-OS_INTEGRATION = 5--><!--Device-AppDistributionType-OS_INTEGRATION = 5-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**System API:** This is a system API.
-
-## CROWDTESTING
-
-```TypeScript
-CROWDTESTING = 6
-```
-
-Application under crowdtesting, which is distributed by AppGallery to a limited number of users and come with a set expiration date. When the system detects that the validity period of the application expires, it prompts the user to update to the release version available on AppGallery.
-
-**Since:** 12
-
-<!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**System API:** This is a system API.
-
-## NONE
-
-```TypeScript
-NONE = 7
-```
-
-Other.
-
-**Since:** 12
-
-<!--Device-AppDistributionType-NONE = 7--><!--Device-AppDistributionType-NONE = 7-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

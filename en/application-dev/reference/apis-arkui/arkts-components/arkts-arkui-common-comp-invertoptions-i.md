@@ -18,9 +18,9 @@ Describes the options for inverting the foreground color.
 high: number
 ```
 
-Value when the background color is less than the grayscale threshold.
+Value used when the grayscale value of the background color is less than the threshold range.
 
-Value range: [0, 1].
+Value range: [0, 1]. If a value less than 0 is set, the value 0 is used. If a value greater than 1 is set, the value 1 is used.
 
 **Type:** number
 
@@ -40,9 +40,9 @@ Value range: [0, 1].
 low: number
 ```
 
-Value when the background color is greater than the grayscale threshold.
+Value used when the grayscale value of the background color is greater than the threshold range.
 
-Value range: [0, 1].
+Value range: [0, 1]. If a value less than 0 is set, the value 0 is used. If a value greater than 1 is set, the value 1 is used.
 
 **Type:** number
 
@@ -62,9 +62,9 @@ Value range: [0, 1].
 threshold: number
 ```
 
-Grayscale threshold.
+Grayscale threshold. Used together with thresholdRange. The threshold range is formed by offsetting the grayscale threshold upward and downward by thresholdRange.
 
-Value range: [0, 1].
+Value range: [0, 1]
 
 **Type:** number
 
@@ -84,13 +84,13 @@ Value range: [0, 1].
 thresholdRange: number
 ```
 
-Threshold value range.
+Threshold range.
 
-Value range: [0, 1].
+Value range: [0, 1]. If a value less than 0 is set, the value 0 is used; if a value greater than 1 is set, the value 1 is used.
 
-**NOTE:** 
+**Note:** 
 
-This range defines the upper and lower bounds of the grayscale threshold. The grayscale value changes linearly from high to low within the range.
+The threshold range is formed by offsetting the grayscale threshold upward and downward by thresholdRange. Within this range, the value of the background color grayscale transitions linearly from high to low.
 
 **Type:** number
 

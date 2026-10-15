@@ -4,7 +4,7 @@
 export interface AppClonePreference
 ```
 
-Defines the application clone preference configuration.
+App clone preference, used to configure the selection policy between the main app and the clone app at app startup.
 
 **Since:** 26.0.0
 
@@ -20,7 +20,7 @@ Defines the application clone preference configuration.
 appIndex?: number
 ```
 
-Index of the application clone. This value is valid only when the mode is CLONE_APP. The value ranges from 1 to 5 (maximum 5 clones are supported). The value should be an integer.
+Index of the app clone.<br>This parameter is mandatory when **mode** is set to **AppClonePreferenceMode.CLONE_APP**, and is used to specify a specific clone app. The value is an integer ranging from 1 to 5 (the system supports a maximum of 5 clones).
 
 **Type:** number
 
@@ -40,7 +40,7 @@ Index of the application clone. This value is valid only when the mode is CLONE_
 mode: bundleManager.AppClonePreferenceMode
 ```
 
-Preference mode for application cloning.
+Mode of the app clone preference settings.
 
 **Type:** [bundleManager.AppClonePreferenceMode](arkts-ability-bundlemanager-appclonepreferencemode-e-sys.md)
 

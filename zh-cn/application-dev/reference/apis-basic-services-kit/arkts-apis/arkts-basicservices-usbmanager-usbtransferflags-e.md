@@ -12,17 +12,17 @@ USB传输标志。
 
 **系统能力：** SystemCapability.USB.USBManager
 
-## USB_TRANSFER_SHORT_NOT_OK
+## USB_TRANSFER_ADD_ZERO_PACKET
 
 ```TypeScript
-USB_TRANSFER_SHORT_NOT_OK = 0
+USB_TRANSFER_ADD_ZERO_PACKET = 3
 ```
 
-将短帧报告为错误。
+传输将增加一个额外的数据包。
 
 **起始版本：** 18
 
-<!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0--><!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0-End-->
+<!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3--><!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 
@@ -54,16 +54,16 @@ USB_TRANSFER_FREE_TRANSFER = 2
 
 **系统能力：** SystemCapability.USB.USBManager
 
-## USB_TRANSFER_ADD_ZERO_PACKET
+## USB_TRANSFER_SHORT_NOT_OK
 
 ```TypeScript
-USB_TRANSFER_ADD_ZERO_PACKET = 3
+USB_TRANSFER_SHORT_NOT_OK = 0
 ```
 
-传输将增加一个额外的数据包。
+将短帧报告为错误。
 
 **起始版本：** 18
 
-<!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3--><!--Device-UsbTransferFlags-USB_TRANSFER_ADD_ZERO_PACKET = 3-End-->
+<!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0--><!--Device-UsbTransferFlags-USB_TRANSFER_SHORT_NOT_OK = 0-End-->
 
 **系统能力：** SystemCapability.USB.USBManager

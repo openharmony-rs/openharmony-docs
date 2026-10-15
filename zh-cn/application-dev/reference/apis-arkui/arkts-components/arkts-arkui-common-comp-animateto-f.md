@@ -6,7 +6,7 @@
 declare function animateTo(value: AnimateParam, event: () => void): void
 ```
 
-显式动画接口。在需要动画时，显式调用该接口改变状态以产生动画。对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，如果希望内容跟随宽高变化，可以使用[renderFit](arkts-arkui-common-comp-commonmethod-c.md#renderfit)属性进行配置。
+显式动画接口。在需要动画时，显式调用该接口改变状态以产生动画。对于改变布局类属性（如宽高）的动画，内容通常会直接跳转到最终状态，如果希望内容跟随宽高变化，可以使用[renderFit](arkts-arkui-common-comp-commonmethod-c.md#renderfit1)属性进行配置。
 
 > **说明：** 
 > 
@@ -28,7 +28,7 @@ declare function animateTo(value: AnimateParam, event: () => void): void
 
 **废弃版本：** 18
 
-**替代接口：** animateTo
+**替代接口：** [animateTo](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#animateto)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

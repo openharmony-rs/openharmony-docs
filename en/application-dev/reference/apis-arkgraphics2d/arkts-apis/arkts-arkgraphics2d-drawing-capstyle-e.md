@@ -26,20 +26,6 @@ There is no cap style. Both ends of the line segment are cut off square.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## SQUARE_CAP
-
-```TypeScript
-SQUARE_CAP = 1
-```
-
-Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.
-
-**Since:** 12
-
-<!--Device-CapStyle-SQUARE_CAP = 1--><!--Device-CapStyle-SQUARE_CAP = 1-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## ROUND_CAP
 
 ```TypeScript
@@ -51,5 +37,19 @@ Round cap style. Both ends have a semicircle centered, the diameter of which is 
 **Since:** 12
 
 <!--Device-CapStyle-ROUND_CAP = 2--><!--Device-CapStyle-ROUND_CAP = 2-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## SQUARE_CAP
+
+```TypeScript
+SQUARE_CAP = 1
+```
+
+Square cap style. Both ends have a square, the height of which is half of the width of the line segment, with the same width.
+
+**Since:** 12
+
+<!--Device-CapStyle-SQUARE_CAP = 1--><!--Device-CapStyle-SQUARE_CAP = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

@@ -4,7 +4,7 @@
 export class NoneActionProposal extends BaseGestureHandlingProposal
 ```
 
-Smart gesture no-op action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this typetriggers no action.
+Smart gesture no-action handling. When dynamically customizing smart gesture behavior through the [registerMonitor](arkts-arkui-arkui-uicontext-smartgesturecontroller-c.md#registermonitor) API, setting the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)'s **selectedProposal** to an object of this type willnot trigger any action.
 
 **Inheritance/Implementation:** NoneActionProposal extends [BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md)
 
@@ -29,7 +29,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 constructor()
 ```
 
-Constructor for the smart gesture no-op action handling.
+Constructor of smart gesture no-action handling.
 
 **Since:** 26.0.0
 

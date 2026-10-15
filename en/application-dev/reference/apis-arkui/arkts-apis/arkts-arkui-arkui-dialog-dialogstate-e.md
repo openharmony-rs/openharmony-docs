@@ -12,13 +12,13 @@ Enum for dialog state.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## UNINITIALIZED
+## APPEARED
 
 ```TypeScript
-UNINITIALIZED = 0
+APPEARED = 3
 ```
 
-Indicates it is uninitialized.
+Indicates it is appeared.
 
 **Since:** 26.0.1
 
@@ -26,25 +26,7 @@ Indicates it is uninitialized.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
-<!--Device-DialogState-UNINITIALIZED = 0--><!--Device-DialogState-UNINITIALIZED = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## INITIALIZED
-
-```TypeScript
-INITIALIZED = 1
-```
-
-Indicates it is initialized.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
-
-<!--Device-DialogState-INITIALIZED = 1--><!--Device-DialogState-INITIALIZED = 1-End-->
+<!--Device-DialogState-APPEARED = 3--><!--Device-DialogState-APPEARED = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +48,13 @@ Indicates it is appearing.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## APPEARED
+## DISAPPEARED
 
 ```TypeScript
-APPEARED = 3
+DISAPPEARED = 5
 ```
 
-Indicates it is appeared.
+Indicates it is disappeared.
 
 **Since:** 26.0.1
 
@@ -80,7 +62,7 @@ Indicates it is appeared.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
-<!--Device-DialogState-APPEARED = 3--><!--Device-DialogState-APPEARED = 3-End-->
+<!--Device-DialogState-DISAPPEARED = 5--><!--Device-DialogState-DISAPPEARED = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,13 +84,13 @@ Indicates it is disappearing.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## DISAPPEARED
+## INITIALIZED
 
 ```TypeScript
-DISAPPEARED = 5
+INITIALIZED = 1
 ```
 
-Indicates it is disappeared.
+Indicates it is initialized.
 
 **Since:** 26.0.1
 
@@ -116,6 +98,24 @@ Indicates it is disappeared.
 
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
-<!--Device-DialogState-DISAPPEARED = 5--><!--Device-DialogState-DISAPPEARED = 5-End-->
+<!--Device-DialogState-INITIALIZED = 1--><!--Device-DialogState-INITIALIZED = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## UNINITIALIZED
+
+```TypeScript
+UNINITIALIZED = 0
+```
+
+Indicates it is uninitialized.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-DialogState-UNINITIALIZED = 0--><!--Device-DialogState-UNINITIALIZED = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

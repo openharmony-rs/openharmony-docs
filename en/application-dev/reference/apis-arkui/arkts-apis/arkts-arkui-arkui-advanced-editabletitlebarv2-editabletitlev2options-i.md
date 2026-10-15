@@ -4,7 +4,7 @@
 export declare interface EditableTitleV2Options
 ```
 
-Indicates the options of the title.
+Defines the title configuration options.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,9 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 mainTitle?: ResourceStr
 ```
 
-Main title content.
+Primary title content.
+
+Default value: **''**, which means the title content is empty.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -44,7 +46,9 @@ Main title content.
 subTitle?: ResourceStr
 ```
 
-Subtitle content.
+Subtitle content. Pass this parameter when supplementary information needs to be displayed below the title.
+
+Default value: **undefined**, which means no subtitle is displayed.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

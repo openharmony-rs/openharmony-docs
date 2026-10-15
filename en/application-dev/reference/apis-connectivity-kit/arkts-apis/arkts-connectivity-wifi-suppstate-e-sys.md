@@ -6,8 +6,6 @@ export enum SuppState
 
 The state of the supplicant enumeration.
 
-@enum { number } SuppState
-
 **Since:** 6
 
 **Deprecated since:** 9
@@ -20,101 +18,21 @@ The state of the supplicant enumeration.
 
 **System API:** This is a system API.
 
-## DISCONNECTED
+## ASSOCIATED
 
 ```TypeScript
-DISCONNECTED
+ASSOCIATED
 ```
 
-The supplicant is not associated with or is disconnected from the AP.
+The supplicant is associated with a specified AP.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-**Substitutes:** [DISCONNECTED](arkts-connectivity-wifimanager-suppstate-e-sys.md#disconnected)
+**Substitutes:** [ASSOCIATED](arkts-connectivity-wifimanager-suppstate-e-sys.md#associated)
 
-<!--Device-SuppState-DISCONNECTED--><!--Device-SuppState-DISCONNECTED-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-**System API:** This is a system API.
-
-## INTERFACE_DISABLED
-
-```TypeScript
-INTERFACE_DISABLED
-```
-
-The network interface is disabled.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [INTERFACE_DISABLED](arkts-connectivity-wifimanager-suppstate-e-sys.md#interface_disabled)
-
-<!--Device-SuppState-INTERFACE_DISABLED--><!--Device-SuppState-INTERFACE_DISABLED-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-**System API:** This is a system API.
-
-## INACTIVE
-
-```TypeScript
-INACTIVE
-```
-
-The supplicant is disabled.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [INACTIVE](arkts-connectivity-wifimanager-suppstate-e-sys.md#inactive)
-
-<!--Device-SuppState-INACTIVE--><!--Device-SuppState-INACTIVE-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-**System API:** This is a system API.
-
-## SCANNING
-
-```TypeScript
-SCANNING
-```
-
-The supplicant is scanning for a Wi-Fi connection.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [SCANNING](arkts-connectivity-wifimanager-suppstate-e-sys.md#scanning)
-
-<!--Device-SuppState-SCANNING--><!--Device-SuppState-SCANNING-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-**System API:** This is a system API.
-
-## AUTHENTICATING
-
-```TypeScript
-AUTHENTICATING
-```
-
-The supplicant is authenticating with a specified AP.
-
-**Since:** 6
-
-**Deprecated since:** 9
-
-**Substitutes:** [AUTHENTICATING](arkts-connectivity-wifimanager-suppstate-e-sys.md#authenticating)
-
-<!--Device-SuppState-AUTHENTICATING--><!--Device-SuppState-AUTHENTICATING-End-->
+<!--Device-SuppState-ASSOCIATED--><!--Device-SuppState-ASSOCIATED-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -140,21 +58,61 @@ The supplicant is associating with a specified AP.
 
 **System API:** This is a system API.
 
-## ASSOCIATED
+## AUTHENTICATING
 
 ```TypeScript
-ASSOCIATED
+AUTHENTICATING
 ```
 
-The supplicant is associated with a specified AP.
+The supplicant is authenticating with a specified AP.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-**Substitutes:** [ASSOCIATED](arkts-connectivity-wifimanager-suppstate-e-sys.md#associated)
+**Substitutes:** [AUTHENTICATING](arkts-connectivity-wifimanager-suppstate-e-sys.md#authenticating)
 
-<!--Device-SuppState-ASSOCIATED--><!--Device-SuppState-ASSOCIATED-End-->
+<!--Device-SuppState-AUTHENTICATING--><!--Device-SuppState-AUTHENTICATING-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+**System API:** This is a system API.
+
+## COMPLETED
+
+```TypeScript
+COMPLETED
+```
+
+All authentication is completed.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [COMPLETED](arkts-connectivity-wifimanager-suppstate-e-sys.md#completed)
+
+<!--Device-SuppState-COMPLETED--><!--Device-SuppState-COMPLETED-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+**System API:** This is a system API.
+
+## DISCONNECTED
+
+```TypeScript
+DISCONNECTED
+```
+
+The supplicant is not associated with or is disconnected from the AP.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [DISCONNECTED](arkts-connectivity-wifimanager-suppstate-e-sys.md#disconnected)
+
+<!--Device-SuppState-DISCONNECTED--><!--Device-SuppState-DISCONNECTED-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -200,41 +158,41 @@ The group handshake is ongoing.
 
 **System API:** This is a system API.
 
-## COMPLETED
+## INACTIVE
 
 ```TypeScript
-COMPLETED
+INACTIVE
 ```
 
-All authentication is completed.
+The supplicant is disabled.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-**Substitutes:** [COMPLETED](arkts-connectivity-wifimanager-suppstate-e-sys.md#completed)
+**Substitutes:** [INACTIVE](arkts-connectivity-wifimanager-suppstate-e-sys.md#inactive)
 
-<!--Device-SuppState-COMPLETED--><!--Device-SuppState-COMPLETED-End-->
+<!--Device-SuppState-INACTIVE--><!--Device-SuppState-INACTIVE-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
 **System API:** This is a system API.
 
-## UNINITIALIZED
+## INTERFACE_DISABLED
 
 ```TypeScript
-UNINITIALIZED
+INTERFACE_DISABLED
 ```
 
-Failed to establish a connection to the supplicant.
+The network interface is disabled.
 
 **Since:** 6
 
 **Deprecated since:** 9
 
-**Substitutes:** [UNINITIALIZED](arkts-connectivity-wifimanager-suppstate-e-sys.md#uninitialized)
+**Substitutes:** [INTERFACE_DISABLED](arkts-connectivity-wifimanager-suppstate-e-sys.md#interface_disabled)
 
-<!--Device-SuppState-UNINITIALIZED--><!--Device-SuppState-UNINITIALIZED-End-->
+<!--Device-SuppState-INTERFACE_DISABLED--><!--Device-SuppState-INTERFACE_DISABLED-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -255,6 +213,46 @@ The supplicant is in an unknown or invalid state.
 **Substitutes:** [INVALID](arkts-connectivity-wifimanager-suppstate-e-sys.md#invalid)
 
 <!--Device-SuppState-INVALID--><!--Device-SuppState-INVALID-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+**System API:** This is a system API.
+
+## SCANNING
+
+```TypeScript
+SCANNING
+```
+
+The supplicant is scanning for a Wi-Fi connection.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [SCANNING](arkts-connectivity-wifimanager-suppstate-e-sys.md#scanning)
+
+<!--Device-SuppState-SCANNING--><!--Device-SuppState-SCANNING-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+**System API:** This is a system API.
+
+## UNINITIALIZED
+
+```TypeScript
+UNINITIALIZED
+```
+
+Failed to establish a connection to the supplicant.
+
+**Since:** 6
+
+**Deprecated since:** 9
+
+**Substitutes:** [UNINITIALIZED](arkts-connectivity-wifimanager-suppstate-e-sys.md#uninitialized)
+
+<!--Device-SuppState-UNINITIALIZED--><!--Device-SuppState-UNINITIALIZED-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

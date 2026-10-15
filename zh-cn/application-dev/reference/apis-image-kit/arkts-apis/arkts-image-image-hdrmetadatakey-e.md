@@ -12,6 +12,34 @@ enum HdrMetadataKey
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## HDR_DYNAMIC_METADATA
+
+```TypeScript
+HDR_DYNAMIC_METADATA = 2
+```
+
+动态元数据。
+
+**起始版本：** 12
+
+<!--Device-HdrMetadataKey-HDR_DYNAMIC_METADATA = 2--><!--Device-HdrMetadataKey-HDR_DYNAMIC_METADATA = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## HDR_GAINMAP_METADATA
+
+```TypeScript
+HDR_GAINMAP_METADATA = 3
+```
+
+增益图使用的元数据。
+
+**起始版本：** 12
+
+<!--Device-HdrMetadataKey-HDR_GAINMAP_METADATA = 3--><!--Device-HdrMetadataKey-HDR_GAINMAP_METADATA = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## HDR_METADATA_TYPE
 
 ```TypeScript
@@ -37,33 +65,5 @@ HDR_STATIC_METADATA = 1
 **起始版本：** 12
 
 <!--Device-HdrMetadataKey-HDR_STATIC_METADATA = 1--><!--Device-HdrMetadataKey-HDR_STATIC_METADATA = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## HDR_DYNAMIC_METADATA
-
-```TypeScript
-HDR_DYNAMIC_METADATA = 2
-```
-
-动态元数据。
-
-**起始版本：** 12
-
-<!--Device-HdrMetadataKey-HDR_DYNAMIC_METADATA = 2--><!--Device-HdrMetadataKey-HDR_DYNAMIC_METADATA = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## HDR_GAINMAP_METADATA
-
-```TypeScript
-HDR_GAINMAP_METADATA = 3
-```
-
-Gainmap使用的元数据。
-
-**起始版本：** 12
-
-<!--Device-HdrMetadataKey-HDR_GAINMAP_METADATA = 3--><!--Device-HdrMetadataKey-HDR_GAINMAP_METADATA = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

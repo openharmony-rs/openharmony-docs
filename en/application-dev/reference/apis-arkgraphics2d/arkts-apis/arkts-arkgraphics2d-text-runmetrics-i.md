@@ -30,7 +30,7 @@ Font measurement information.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-RunMetrics-fontMetrics: drawing.FontMetrics--><!--Device-RunMetrics-fontMetrics: drawing.FontMetrics-End-->
 
@@ -48,7 +48,7 @@ Text style.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-RunMetrics-textStyle: TextStyle--><!--Device-RunMetrics-textStyle: TextStyle-End-->
 

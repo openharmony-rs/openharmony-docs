@@ -34,7 +34,7 @@ x: number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AccelerometerResponse-x: double--><!--Device-AccelerometerResponse-x: double-End-->
 
@@ -52,7 +52,7 @@ y: number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AccelerometerResponse-y: double--><!--Device-AccelerometerResponse-y: double-End-->
 
@@ -70,7 +70,7 @@ z: number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-AccelerometerResponse-z: double--><!--Device-AccelerometerResponse-z: double-End-->
 

@@ -6,13 +6,15 @@
 import { overlay } from '@kit.AbilityKit';
 ```
 
+<a id="setoverlayenabled1"></a>
+
 ## setOverlayEnabled
 
 ```TypeScript
 function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: AsyncCallback<void>): void
 ```
 
-设置当前应用中overlay module的禁用使能状态。使用callback异步回调。
+设置当前应用中overlay特征模块的禁用启用状态。使用callback异步回调。
 
 **起始版本：** 10
 
@@ -24,9 +26,9 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean, callback: Asyn
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | overlay特征module的名称。 |
-| isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置指定module的overlay禁用使能状态成功时，err为undefined，否则为错误对象。 |
+| moduleName | string | 是 | 当前应用中具有overlay特征模块名称。 |
+| isEnabled | boolean | 是 | 值为true表示启用，值为false表示禁用。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，当设置指定module的overlay禁用启用状态成功时，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -61,7 +63,7 @@ try {
 ```
 
 
-<a id="setoverlayenabled-1"></a>
+<a id="setoverlayenabled2"></a>
 
 ## setOverlayEnabled
 
@@ -69,7 +71,7 @@ try {
 function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 ```
 
-设置当前应用中overlay特征module的禁用使能状态。使用Promise异步回调。
+设置当前应用中overlay特征模块的禁用启用状态。使用Promise异步回调。接口调用失败时可能返回null，需校验返回值后使用。
 
 **起始版本：** 10
 
@@ -81,8 +83,8 @@ function setOverlayEnabled(moduleName:string, isEnabled: boolean): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| moduleName | string | 是 | overlay特征module的名称。 |
-| isEnabled | boolean | 是 | 值为true表示使能，值为false表示禁用。 |
+| moduleName | string | 是 | 当前应用中具有overlay特征模块名称。 |
+| isEnabled | boolean | 是 | 值为true表示启用，值为false表示禁用。 |
 
 **返回值：**
 

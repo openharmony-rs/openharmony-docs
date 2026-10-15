@@ -54,6 +54,7 @@ Reports the space usage of system applications or system services. This API uses
 | 13600010 | The input parameter is invalid. |
 | 13600011 | Failed to report the specified business space usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,3 +73,5 @@ storageStatistics.setExtBundleStats(userId, extBundleStats).then(() => {
   console.error(`setExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

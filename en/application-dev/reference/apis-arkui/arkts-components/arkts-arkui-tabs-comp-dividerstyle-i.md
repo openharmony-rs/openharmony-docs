@@ -4,7 +4,7 @@
 interface DividerStyle
 ```
 
-Describes the divider style.
+Defines a divider style object.
 
 **Since:** 10
 
@@ -40,13 +40,13 @@ Default value: **#33182431**
 endMargin?: Length
 ```
 
-Distance between the divider and the bottom of the sidebar. It cannot be set in percentage.
+Distance between the divider and the bottom of the sidebar (percentage setting is not supported).
 
 Default value: **0.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞). When the value is set to less than 0, the default value is used.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -68,13 +68,13 @@ Value range: [0, +∞)
 startMargin?: Length
 ```
 
-Distance between the divider and the top of the sidebar. It cannot be set in percentage.
+Distance between the divider and the top of the sidebar (percentage setting is not supported).
 
 Default value: **0.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞). When the value is set to less than 0, the default value is used.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -96,13 +96,13 @@ Value range: [0, +∞)
 strokeWidth: Length
 ```
 
-Width of the divider. It cannot be set in percentage.
+Line width of the divider (percentage setting is not supported).
 
 Default value: **0.0**
 
 Unit: vp
 
-Value range: [0, +∞)
+Value range: [0, +∞). When the value is set to less than 0, the default value is used.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 

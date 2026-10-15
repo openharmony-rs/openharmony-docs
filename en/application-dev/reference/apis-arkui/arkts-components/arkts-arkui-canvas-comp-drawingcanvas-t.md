@@ -8,6 +8,8 @@ Defines a canvas object for drawing content on the **XComponent** component.
 
 @typedef { import('../api/@ohos.graphics.drawing').default.Canvas } DrawingCanvas
 
+**Type:** import('../api/@ohos.graphics.drawing').default.Canvas
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Defines a canvas object for drawing content on the **XComponent** component.
 <!--Device-unnamed-declare type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas--><!--Device-unnamed-declare type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.drawing').default.Canvas

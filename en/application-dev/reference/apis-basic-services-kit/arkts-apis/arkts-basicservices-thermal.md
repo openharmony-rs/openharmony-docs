@@ -20,12 +20,12 @@ import { thermal } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getLevel](arkts-basicservices-thermal-getlevel-f.md) | Obtains the current thermal level. |
-| [getThermalLevel](arkts-basicservices-thermal-getthermallevel-f.md) | Obtains the current thermal level. |
-| [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md) | Registers a callback to be invoked when the thermal level changes. This API uses an asynchronous callback to return the result. |
-| [subscribeThermalLevel](arkts-basicservices-thermal-subscribethermallevel-f.md) | Subscribes to the thermal level changes. This API uses an asynchronous callback to return the result. |
-| [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md) | Unregisters from the thermal level changes. This API uses an asynchronous callback to return the result. |
-| [unsubscribeThermalLevel](arkts-basicservices-thermal-unsubscribethermallevel-f.md) | Unsubscribes from the thermal level changes. This API uses an asynchronous callback to return the result. |
+| [getLevel](arkts-basicservices-thermal-getlevel-f.md#getlevel) | Obtains the current thermal level. |
+| [registerThermalLevelCallback](arkts-basicservices-thermal-registerthermallevelcallback-f.md#registerthermallevelcallback) | Registers a callback to be invoked when the thermal level changes. This API uses an asynchronous callback to return the result. |
+| [unregisterThermalLevelCallback](arkts-basicservices-thermal-unregisterthermallevelcallback-f.md#unregisterthermallevelcallback) | Unregisters from the thermal level changes. This API uses an asynchronous callback to return the result. |
+| [getThermalLevel](arkts-basicservices-thermal-getthermallevel-f.md#getthermallevel) | Obtains the current thermal level. |
+| [subscribeThermalLevel](arkts-basicservices-thermal-subscribethermallevel-f.md#subscribethermallevel) | Subscribes to the thermal level changes. This API uses an asynchronous callback to return the result. |
+| [unsubscribeThermalLevel](arkts-basicservices-thermal-unsubscribethermallevel-f.md#unsubscribethermallevel) | Unsubscribes from the thermal level changes. This API uses an asynchronous callback to return the result. |
 
 ### Enums
 

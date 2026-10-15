@@ -28,8 +28,11 @@ function getSystemSoundManager(): SystemSoundManager
 | --- | --- |
 | [SystemSoundManager](arkts-audio-systemsoundmanager-systemsoundmanager-i-sys.md) | 系统声音管理类。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let systemSoundManagerInstance: systemSoundManager.SystemSoundManager = systemSoundManager.getSystemSoundManager();
 ```
+
+<!--DelEnd-->

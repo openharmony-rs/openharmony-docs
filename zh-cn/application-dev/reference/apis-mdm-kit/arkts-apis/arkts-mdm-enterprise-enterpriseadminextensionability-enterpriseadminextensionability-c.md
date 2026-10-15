@@ -388,6 +388,8 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+<a id="onbundleadded1"></a>
+
 ## onBundleAdded
 
 ```TypeScript
@@ -437,7 +439,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
-<a id="onbundleadded-1"></a>
+<a id="onbundleadded2"></a>
 
 ## onBundleAdded
 
@@ -490,6 +492,8 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
+<a id="onbundleremoved1"></a>
+
 ## onBundleRemoved
 
 ```TypeScript
@@ -539,7 +543,7 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
 }
 ```
 
-<a id="onbundleremoved-1"></a>
+<a id="onbundleremoved2"></a>
 
 ## onBundleRemoved
 
@@ -784,8 +788,7 @@ onKeyEvent(keyEvent: systemManager.KeyEvent): void
 **示例**
 
 ```TypeScript
-import { EnterpriseAdminExtensionAbility } from '@kit.MDMKit';
-import { systemManager } from '@kit.MDMKit';
+import { EnterpriseAdminExtensionAbility, systemManager } from '@kit.MDMKit';
 
 export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbility {
 
@@ -1187,6 +1190,28 @@ export default class EnterpriseAdminAbility extends EnterpriseAdminExtensionAbil
   }
 }
 ```
+
+## onUnmountExternalStorageDevice
+
+```TypeScript
+onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void
+```
+
+挂载外部存储回调。当需要挂载外置存储时，会触发回调。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-EnterpriseAdminExtensionAbility-onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void--><!--Device-EnterpriseAdminExtensionAbility-onUnmountExternalStorageDevice(deviceInfo: common.ExternalStorageDeviceInfo): void-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| deviceInfo | [common.ExternalStorageDeviceInfo](arkts-mdm-common-externalstoragedeviceinfo-i.md) | 是 | 未挂载的外部存储设备信息。 |
 
 ## context
 

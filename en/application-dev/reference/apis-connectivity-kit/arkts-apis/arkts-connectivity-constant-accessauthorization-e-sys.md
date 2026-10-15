@@ -14,22 +14,6 @@ Enum for the PBAP or MAP access authorization.
 
 **System API:** This is a system API.
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-Authorization unknown.
-
-**Since:** 11
-
-<!--Device-AccessAuthorization-UNKNOWN = 0--><!--Device-AccessAuthorization-UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
 ## ALLOWED
 
 ```TypeScript
@@ -57,6 +41,22 @@ Access rejected.
 **Since:** 11
 
 <!--Device-AccessAuthorization-REJECTED = 2--><!--Device-AccessAuthorization-REJECTED = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+Authorization unknown.
+
+**Since:** 11
+
+<!--Device-AccessAuthorization-UNKNOWN = 0--><!--Device-AccessAuthorization-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

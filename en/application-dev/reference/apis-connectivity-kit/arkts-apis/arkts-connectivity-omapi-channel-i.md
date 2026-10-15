@@ -4,7 +4,7 @@
 export interface Channel
 ```
 
-A **Channel** instance indicates a channel set up by a **Session** instance. The channel can be a basic channel or a logical channel. You can use [Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel) or [Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel) to obtain a channel instance.
+A **Channel** instance indicates a channel set up by a **Session** instance. The channel can be a basic channel or a logical channel. You can use [Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel1) or [Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel1) to obtain a channel instance.
 
 **Since:** 10
 
@@ -227,6 +227,8 @@ try {
 }
 ```
 
+<a id="transmit1"></a>
+
 ## transmit
 
 ```TypeScript
@@ -285,7 +287,7 @@ try {
 }
 ```
 
-<a id="transmit-1"></a>
+<a id="transmit2"></a>
 
 ## transmit
 

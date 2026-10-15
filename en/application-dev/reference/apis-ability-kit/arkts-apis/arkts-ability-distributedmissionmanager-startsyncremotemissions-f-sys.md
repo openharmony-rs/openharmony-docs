@@ -6,6 +6,8 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="startsyncremotemissions1"></a>
+
 ## startSyncRemoteMissions
 
 ```TypeScript
@@ -40,6 +42,7 @@ Starts to synchronize the remote mission list. This API uses an asynchronous cal
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,8 +69,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="startsyncremotemissions-1"></a>
+
+<a id="startsyncremotemissions2"></a>
 
 ## startSyncRemoteMissions
 
@@ -108,6 +113,7 @@ Starts to synchronize the remote mission list. This API uses a promise to return
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -130,3 +136,5 @@ try {
   console.error(`startSyncRemoteMissions failed. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 export interface CarAwarenessOptions
 ```
 
-Interface for car awareness information
+Interface for car awareness subscription options.
 
 **Since:** 26.0.1
 
@@ -26,7 +26,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 parameters?: Record<string, Object>
 ```
 
-Awareness parameters in custom key-value pairs format.
+Custom awareness parameter key-value pairs, used to pass in configuration items for a specific capability.
 
 **Type:** Record&lt;string, Object&gt;
 

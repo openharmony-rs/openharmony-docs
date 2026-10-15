@@ -6,6 +6,8 @@ export type SubscribeCallbackData = _SubscribeCallbackData
 
 Provides methods that will be called back when the subscriber receives a new notification or a notification is canceled.
 
+**Type:** _SubscribeCallbackData
+
 **Since:** 9
 
 <!--Device-notificationSubscribe-export type SubscribeCallbackData = _SubscribeCallbackData--><!--Device-notificationSubscribe-export type SubscribeCallbackData = _SubscribeCallbackData-End-->
@@ -13,5 +15,3 @@ Provides methods that will be called back when the subscriber receives a new not
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _SubscribeCallbackData

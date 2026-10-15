@@ -6,6 +6,8 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="isscreenrotationlocked1"></a>
+
 ## isScreenRotationLocked
 
 ```TypeScript
@@ -34,6 +36,7 @@ function isScreenRotationLocked(callback: AsyncCallback<boolean>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -50,8 +53,10 @@ screen.isScreenRotationLocked((err: BusinessError, isLocked: boolean) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="isscreenrotationlocked-1"></a>
+
+<a id="isscreenrotationlocked2"></a>
 
 ## isScreenRotationLocked
 
@@ -81,6 +86,7 @@ function isScreenRotationLocked(): Promise<boolean>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -93,3 +99,5 @@ screen.isScreenRotationLocked().then((isLocked: boolean) => {
   console.error(`Failed to get the screen rotation lock status. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

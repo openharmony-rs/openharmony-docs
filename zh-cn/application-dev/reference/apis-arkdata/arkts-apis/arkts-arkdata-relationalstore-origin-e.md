@@ -12,20 +12,6 @@ enum Origin
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
-## LOCAL
-
-```TypeScript
-LOCAL = 0
-```
-
-表示本地数据。
-
-**起始版本：** 11
-
-<!--Device-Origin-LOCAL = 0--><!--Device-Origin-LOCAL = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
 ## CLOUD
 
 ```TypeScript
@@ -37,6 +23,20 @@ CLOUD = 1
 **起始版本：** 11
 
 <!--Device-Origin-CLOUD = 1--><!--Device-Origin-CLOUD = 1-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+## LOCAL
+
+```TypeScript
+LOCAL = 0
+```
+
+表示本地数据。
+
+**起始版本：** 11
+
+<!--Device-Origin-LOCAL = 0--><!--Device-Origin-LOCAL = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

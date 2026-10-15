@@ -12,26 +12,6 @@ Enumerates the expansion mode of child nodes.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NOT_EXPAND
-
-```TypeScript
-NOT_EXPAND = 0
-```
-
-The child nodes of the current FrameNode are not expanded. If the FrameNode contains [LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md) child nodes, the child nodes of the current FrameNode are not expanded when the child nodes on the main node tree are being obtained. The child node sequence numbers are calculated based on the child nodes on the main node tree.
-
-Application scenario: Only expanded child nodes on the main node tree need to be obtained without triggering expansion.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-ExpandMode-NOT_EXPAND = 0--><!--Device-ExpandMode-NOT_EXPAND = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## EXPAND
 
 ```TypeScript
@@ -89,5 +69,25 @@ Application scenario: Child nodes need to be obtained precisely by position with
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ExpandMode-LAZY_NOT_EXPAND = 3--><!--Device-ExpandMode-LAZY_NOT_EXPAND = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NOT_EXPAND
+
+```TypeScript
+NOT_EXPAND = 0
+```
+
+The child nodes of the current FrameNode are not expanded. If the FrameNode contains [LazyForEach](../arkts-components/arkts-arkui-lazyforeach-comp.md) child nodes, the child nodes of the current FrameNode are not expanded when the child nodes on the main node tree are being obtained. The child node sequence numbers are calculated based on the child nodes on the main node tree.
+
+Application scenario: Only expanded child nodes on the main node tree need to be obtained without triggering expansion.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-ExpandMode-NOT_EXPAND = 0--><!--Device-ExpandMode-NOT_EXPAND = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

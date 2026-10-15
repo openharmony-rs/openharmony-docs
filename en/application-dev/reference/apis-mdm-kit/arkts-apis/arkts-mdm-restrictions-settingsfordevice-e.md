@@ -12,22 +12,6 @@ Enumerates device setting items.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SET_APN
-
-```TypeScript
-SET_APN = 0
-```
-
-APN configuration, currently supported only on phones and tablets.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SettingsForDevice-SET_APN = 0--><!--Device-SettingsForDevice-SET_APN = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## POWER_LONG_PRESS
 
 ```TypeScript
@@ -44,19 +28,35 @@ Opens the power menu by long-pressing the power button. Currently, this item is 
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SET_ETHERNET_IP
+## SET_APN
 
 ```TypeScript
-SET_ETHERNET_IP = 2
+SET_APN = 0
 ```
 
-Changes the Ethernet IP address. Currently, this item is supported only on PCs/2-in-1 devices.
+APN configuration, currently supported only on phones and tablets.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingsForDevice-SET_ETHERNET_IP = 2--><!--Device-SettingsForDevice-SET_ETHERNET_IP = 2-End-->
+<!--Device-SettingsForDevice-SET_APN = 0--><!--Device-SettingsForDevice-SET_APN = 0-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SET_BIOMETRICS_AND_SCREEN_LOCK
+
+```TypeScript
+SET_BIOMETRICS_AND_SCREEN_LOCK = 4
+```
+
+Changes the screen lock password. Currently, this item is supported only on PCs/2-in-1 devices, phones, and tablets.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SettingsForDevice-SET_BIOMETRICS_AND_SCREEN_LOCK = 4--><!--Device-SettingsForDevice-SET_BIOMETRICS_AND_SCREEN_LOCK = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -77,18 +77,18 @@ Changes the device name configuration. Currently, this item is supported only on
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SET_BIOMETRICS_AND_SCREEN_LOCK
+## SET_ETHERNET_IP
 
 ```TypeScript
-SET_BIOMETRICS_AND_SCREEN_LOCK = 4
+SET_ETHERNET_IP = 2
 ```
 
-Changes the screen lock password. Currently, this item is supported only on PCs/2-in-1 devices, phones, and tablets.
+Changes the Ethernet IP address. Currently, this item is supported only on PCs/2-in-1 devices.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SettingsForDevice-SET_BIOMETRICS_AND_SCREEN_LOCK = 4--><!--Device-SettingsForDevice-SET_BIOMETRICS_AND_SCREEN_LOCK = 4-End-->
+<!--Device-SettingsForDevice-SET_ETHERNET_IP = 2--><!--Device-SettingsForDevice-SET_ETHERNET_IP = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

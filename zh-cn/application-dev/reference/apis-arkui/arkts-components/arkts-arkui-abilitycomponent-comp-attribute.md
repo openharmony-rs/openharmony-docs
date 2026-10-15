@@ -6,7 +6,7 @@ declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAtt
 
 定义AbilityComponent的属性函数。
 
-@extends CommonMethod&lt;AbilityComponentAttribute&gt;
+@extends CommonMethod<AbilityComponentAttribute>
 
 **继承/实现关系：** AbilityComponentAttribute extends CommonMethod&lt;AbilityComponentAttribute&gt;
 
@@ -14,7 +14,7 @@ declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAtt
 
 **废弃版本：** 10
 
-**替代接口：** UIExtensionComponentAttribute
+**替代接口：** [UIExtensionComponentAttribute](arkts-arkui-uiextensioncomponent-comp-attribute.md#uiextensioncomponentattribute系统接口)
 
 <!--Device-unnamed-declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAttribute>--><!--Device-unnamed-declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAttribute>-End-->
 

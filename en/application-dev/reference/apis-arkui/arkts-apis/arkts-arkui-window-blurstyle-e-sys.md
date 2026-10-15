@@ -30,22 +30,6 @@ Blur disabled.
 
 **System API:** This is a system API.
 
-## THIN
-
-```TypeScript
-THIN = 1
-```
-
-Thin blur.
-
-**Since:** 9
-
-<!--Device-BlurStyle-THIN = 1--><!--Device-BlurStyle-THIN = 1-End-->
-
-**System capability:** SystemCapability.WindowManager.WindowManager.Core
-
-**System API:** This is a system API.
-
 ## REGULAR
 
 ```TypeScript
@@ -73,6 +57,22 @@ Thick blur.
 **Since:** 9
 
 <!--Device-BlurStyle-THICK = 3--><!--Device-BlurStyle-THICK = 3-End-->
+
+**System capability:** SystemCapability.WindowManager.WindowManager.Core
+
+**System API:** This is a system API.
+
+## THIN
+
+```TypeScript
+THIN = 1
+```
+
+Thin blur.
+
+**Since:** 9
+
+<!--Device-BlurStyle-THIN = 1--><!--Device-BlurStyle-THIN = 1-End-->
 
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 

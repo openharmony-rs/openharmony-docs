@@ -30,7 +30,7 @@ Keyword identifier in the font feature key-value pair, such as 'liga' (standard 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontFeature-name: string--><!--Device-FontFeature-name: string-End-->
 
@@ -48,7 +48,7 @@ Value in the font feature key-value pair.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-FontFeature-value: int--><!--Device-FontFeature-value: int-End-->
 

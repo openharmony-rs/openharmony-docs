@@ -24,6 +24,8 @@ WebCookieManager是Web组件的cookie管理器，提供对Web组件中cookie的�
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="clearallcookies1"></a>
+
 ## clearAllCookies
 
 ```TypeScript
@@ -82,7 +84,7 @@ struct WebComponent {
 }
 ```
 
-<a id="clearallcookies-1"></a>
+<a id="clearallcookies2"></a>
 
 ## clearAllCookies
 
@@ -90,7 +92,7 @@ struct WebComponent {
 static clearAllCookies(callback: AsyncCallback<void>): void
 ```
 
-清除所有cookie（包括会话cookie和持久化cookie），使用callback异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie-1)。
+清除所有cookie（包括会话cookie和持久化cookie），使用callback异步回调。如需仅清除会话cookie，请使用[clearSessionCookie](#clearsessioncookie2)。
 
 **起始版本：** 11
 
@@ -189,6 +191,8 @@ struct WebComponent {
 }
 ```
 
+<a id="clearsessioncookie1"></a>
+
 ## clearSessionCookie
 
 ```TypeScript
@@ -251,7 +255,7 @@ struct WebComponent {
 }
 ```
 
-<a id="clearsessioncookie-1"></a>
+<a id="clearsessioncookie2"></a>
 
 ## clearSessionCookie
 
@@ -352,6 +356,8 @@ struct WebComponent {
 }
 ```
 
+<a id="configcookie1"></a>
+
 ## configCookie
 
 ```TypeScript
@@ -364,7 +370,7 @@ static configCookie(url: string, value: string): Promise<void>
 > 
 > - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-1)进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -439,7 +445,7 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookie-1"></a>
+<a id="configcookie2"></a>
 
 ## configCookie
 
@@ -453,7 +459,7 @@ static configCookie(url: string, value: string, incognito: boolean, includeHttpO
 > 
 > - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-1)进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -526,7 +532,7 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookie-2"></a>
+<a id="configcookie3"></a>
 
 ## configCookie
 
@@ -540,7 +546,7 @@ static configCookie(url: string, value: string, callback: AsyncCallback<void>): 
 > 
 > - configCookie中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-1)进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -608,6 +614,8 @@ struct WebComponent {
 }
 ```
 
+<a id="configcookiesync1"></a>
+
 ## configCookieSync
 
 ```TypeScript
@@ -620,7 +628,7 @@ static configCookieSync(url: string, value: string, incognito?: boolean): void
 > 
 > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-1)进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -685,7 +693,7 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookiesync-1"></a>
+<a id="configcookiesync2"></a>
 
 ## configCookieSync
 
@@ -699,7 +707,7 @@ static configCookieSync(url: string, value: string, incognito: boolean, includeH
 > 
 > - configCookieSync中的url，可以指定域名的方式来使得页面内请求也附带上cookie。
 > 
-> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync-1)进行强制落盘。
+> - cookie每30s周期性保存到磁盘中，也可以使用接口[saveCookieAsync](#savecookieasync2)进行强制落盘。
 > 
 > - value参数必须遵循Set-Cookie HTTP响应头的格式。形式为"key=value"的键值对，后面可跟随以"; "分隔的cookie属性列表（例如"key=value; Max-Age=100"）。
 > 
@@ -880,6 +888,8 @@ struct WebComponent {
 }
 ```
 
+<a id="fetchcookie1"></a>
+
 ## fetchCookie
 
 ```TypeScript
@@ -949,7 +959,7 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie-1"></a>
+<a id="fetchcookie2"></a>
 
 ## fetchCookie
 
@@ -1019,7 +1029,7 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie-2"></a>
+<a id="fetchcookie3"></a>
 
 ## fetchCookie
 
@@ -1093,7 +1103,7 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie-3"></a>
+<a id="fetchcookie4"></a>
 
 ## fetchCookie
 
@@ -1160,6 +1170,8 @@ struct WebComponent {
   }
 }
 ```
+
+<a id="fetchcookiesync1"></a>
 
 ## fetchCookieSync
 
@@ -1234,7 +1246,7 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookiesync-1"></a>
+<a id="fetchcookiesync2"></a>
 
 ## fetchCookieSync
 
@@ -1513,6 +1525,8 @@ struct WebComponent {
 }
 ```
 
+<a id="savecookieasync1"></a>
+
 ## saveCookieAsync
 
 ```TypeScript
@@ -1579,7 +1593,7 @@ struct WebComponent {
 }
 ```
 
-<a id="savecookieasync-1"></a>
+<a id="savecookieasync2"></a>
 
 ## saveCookieAsync
 

@@ -20,20 +20,20 @@ import { netFirewall } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md) | Adds a firewall rule for the system user ID. The supported rule types are IP, Domain, and DNS. This API uses a promise to return the result. |
-| [getNetFirewallPolicy](arkts-network-netfirewall-getnetfirewallpolicy-f.md) | Queries the firewall policy for a system user ID, including the firewall switch status and default inbound or outbound behavior (allow or deny). This API uses a promise to return the result. |
-| [getNetFirewallRule](arkts-network-netfirewall-getnetfirewallrule-f.md) | Obtains a firewall rule based on the specified user ID and rule ID. This API uses a promise to return the result. |
-| [getNetFirewallRules](arkts-network-netfirewall-getnetfirewallrules-f.md) | Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API. Currently, firewall rules can be sorted by name. This API uses a promise to return the result. |
-| [removeNetFirewallRule](arkts-network-netfirewall-removenetfirewallrule-f.md) | Deletes a specified firewall rule of a system user ID. This API uses a promise to return the result. |
-| [setNetFirewallPolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md) | Sets the firewall policy for a system user ID, including the firewall switch status and default inbound or outbound behavior (allow or deny). Different firewall policies can be configured for different system user IDs. This API uses a promise to return the result. |
-| [updateNetFirewallRule](arkts-network-netfirewall-updatenetfirewallrule-f.md) | Updates a firewall rule. This API uses a promise to return the result. |
+| [addNetFirewallRule](arkts-network-netfirewall-addnetfirewallrule-f.md#addnetfirewallrule) | Adds a firewall rule for the system user ID. The supported rule types are IP, Domain, and DNS. This API uses a promise to return the result. |
+| [getNetFirewallPolicy](arkts-network-netfirewall-getnetfirewallpolicy-f.md#getnetfirewallpolicy) | Queries the firewall policy for a system user ID, including the firewall switch status and default inbound or outbound behavior (allow or deny). This API uses a promise to return the result. |
+| [getNetFirewallRule](arkts-network-netfirewall-getnetfirewallrule-f.md#getnetfirewallrule) | Obtains a firewall rule based on the specified user ID and rule ID. This API uses a promise to return the result. |
+| [getNetFirewallRules](arkts-network-netfirewall-getnetfirewallrules-f.md#getnetfirewallrules) | Obtains firewall rules by user ID. You need to specify the pagination query parameter when calling this API. Currently, firewall rules can be sorted by name. This API uses a promise to return the result. |
+| [removeNetFirewallRule](arkts-network-netfirewall-removenetfirewallrule-f.md#removenetfirewallrule) | Deletes a specified firewall rule of a system user ID. This API uses a promise to return the result. |
+| [setNetFirewallPolicy](arkts-network-netfirewall-setnetfirewallpolicy-f.md#setnetfirewallpolicy) | Sets the firewall policy for a system user ID, including the firewall switch status and default inbound or outbound behavior (allow or deny). Different firewall policies can be configured for different system user IDs. This API uses a promise to return the result. |
+| [updateNetFirewallRule](arkts-network-netfirewall-updatenetfirewallrule-f.md#updatenetfirewallrule) | Updates a firewall rule. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [getInterceptedRecords](arkts-network-netfirewall-getinterceptedrecords-f-sys.md) | Get intercepted records by userId, and it is necessary to specify the pagination query parameters. |
+| [getInterceptedRecords](arkts-network-netfirewall-getinterceptedrecords-f-sys.md#getinterceptedrecords) | Get intercepted records by userId, and it is necessary to specify the pagination query parameters. |
 <!--DelEnd-->
 
 ### Interfaces

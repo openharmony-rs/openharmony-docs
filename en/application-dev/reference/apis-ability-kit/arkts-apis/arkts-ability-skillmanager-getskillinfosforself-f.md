@@ -40,4 +40,4 @@ Obtains all SkillInfo objects of the calling application.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [17700101](../errorcode-bundle.md#17700101-bundle-manager-service-abnormal) | Bundle manager service is exception. Possible causes: 1. Failed to connect to the system service. 2. IPC data transmission failed. 3. Failed to obtain the object constructor. |
+| [17700101](../errorcode-bundle.md#17700101-bundle-manager-service-abnormal) | Bundle manager service is exception. Possible causes:         1. Failed to connect to the system service.         2. IPC data transmission failed.         3. Failed to obtain the object constructor. |

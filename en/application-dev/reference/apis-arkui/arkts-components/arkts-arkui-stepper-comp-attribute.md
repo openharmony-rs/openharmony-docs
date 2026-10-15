@@ -6,9 +6,9 @@ declare class StepperAttribute extends CommonMethod<StepperAttribute>
 
 Defines the stepper attribute functions
 
-@extends CommonMethod&lt;StepperAttribute&gt;
+@extends CommonMethod<StepperAttribute>
 
-**Inheritance/Implementation:** StepperAttribute extends CommonMethod<StepperAttribute>
+**Inheritance/Implementation:** StepperAttribute extends CommonMethod&lt;StepperAttribute&gt;
 
 **Since:** 8
 
@@ -28,8 +28,6 @@ onChange(callback: (prevIndex: number, index: number) => void)
 
 Triggered when the step navigation switches by clicking [prevLabel](arkts-arkui-stepperitem-comp-attribute.md#prevlabel) of the **StepperItem** component; or when clicking [nextLabel](arkts-arkui-stepperitem-comp-attribute.md#nextlabel) of the current **StepperItem** component, provided that the current page is not the last **StepperItem** in the stepper and the ItemState attribute is **Normal**.
 
-> **NOTE:** 
-
 **Since:** 8
 
 **Deprecated since:** 22
@@ -46,7 +44,7 @@ Triggered when the step navigation switches by clicking [prevLabel](arkts-arkui-
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | (prevIndex: number, index: number) =&gt; void | Yes | Callback triggered when the page is switched.<br>prevIndex: Index of the step page before the switching.<br>Value range: [0, +∞).<br>index: Index of the step page after the switching, that is, index of the previous or next page. <br>Value range: [0, +∞). |
+| callback | (prevIndex: number, index: number) =&gt; void | Yes | Callback triggered when the page is switched.<br>prevIndex: Index of the step page before the switching. <br>Value range: [0, +∞).<br>index: Index of the step page after the switching, that is, index of the previous or next page. <br>Value range: [0, +∞). |
 
 ## onFinish
 
@@ -54,9 +52,7 @@ Triggered when the step navigation switches by clicking [prevLabel](arkts-arkui-
 onFinish(callback: () => void)
 ```
 
-Triggered when [nextLabel](arkts-arkui-stepperitem-comp-attribute.md#nextlabel) of the last StepperItem in the stepper is clicked and the ItemState attribute is **Normal**.
-
-> **NOTE:** 
+Triggered when [nextLabel](arkts-arkui-stepperitem-comp-attribute.md#nextlabel) of the last [StepperItem](arkts-arkui-stepperitem-comp.md) in the stepper is clicked and the ItemState attribute is **Normal**.
 
 **Since:** 8
 
@@ -84,8 +80,6 @@ onNext(callback: (index: number, pendingIndex: number) => void)
 
 Triggered when switching to the next step by clicking [nextLabel](arkts-arkui-stepperitem-comp-attribute.md#nextlabel) of a **StepperItem**, provided that the current page is not the last **StepperItem** in the stepper and the ItemState attribute is **Normal**.
 
-> **NOTE:** 
-
 **Since:** 8
 
 **Deprecated since:** 22
@@ -112,8 +106,6 @@ onPrevious(callback: (index: number, pendingIndex: number) => void)
 
 Triggered when switching to the previous step by clicking [prevLabel](arkts-arkui-stepperitem-comp-attribute.md#prevlabel) of a **StepperItem**.
 
-> **NOTE:** 
-
 **Since:** 8
 
 **Deprecated since:** 22
@@ -138,9 +130,7 @@ Triggered when switching to the previous step by clicking [prevLabel](arkts-arku
 onSkip(callback: () => void)
 ```
 
-Triggered when [nextLabel](arkts-arkui-stepperitem-comp-attribute.md#nextlabel) is clicked and the StepperItem status is **ItemState.Skip**.
-
-> **NOTE:** 
+Triggered when [nextLabel](arkts-arkui-stepperitem-comp-attribute.md#nextlabel) is clicked and the [StepperItem](arkts-arkui-stepperitem-comp.md) status is **ItemState.Skip**.
 
 **Since:** 8
 

@@ -10,7 +10,7 @@ interface Entry
 
 **废弃版本：** 9
 
-**替代接口：** Entry
+**替代接口：** [Entry](arkts-arkdata-distributedkvstore-entry-i.md)
 
 <!--Device-distributedData-interface Entry--><!--Device-distributedData-interface Entry-End-->
 
@@ -35,7 +35,7 @@ key: string
 
 **废弃版本：** 9
 
-**替代接口：** key
+**替代接口：** [key](arkts-arkdata-distributedkvstore-entry-i.md#key)
 
 <!--Device-Entry-key: string--><!--Device-Entry-key: string-End-->
 
@@ -55,7 +55,7 @@ value: Value
 
 **废弃版本：** 9
 
-**替代接口：** value
+**替代接口：** [value](arkts-arkdata-distributedkvstore-entry-i.md#value)
 
 <!--Device-Entry-value: Value--><!--Device-Entry-value: Value-End-->
 

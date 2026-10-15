@@ -38,7 +38,7 @@ Measures the single-line display width of the specified text. For multi-line tex
 
 **Deprecated since:** 18
 
-**Substitutes:** measureText
+**Substitutes:** [measureText](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretext)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -100,7 +100,7 @@ Measures the width and height of the given text.
 
 **Deprecated since:** 18
 
-**Substitutes:** measureTextSize
+**Substitutes:** [measureTextSize](arkts-arkui-arkui-uicontext-measureutils-c.md#measuretextsize)
 
 **Model restriction:** This API can be used only in the stage model.
 

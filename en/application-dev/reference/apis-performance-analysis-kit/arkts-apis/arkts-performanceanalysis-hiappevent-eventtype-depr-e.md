@@ -16,6 +16,24 @@ Enumerates the event types.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
+## BEHAVIOR
+
+```TypeScript
+BEHAVIOR = 4
+```
+
+User behavior event.
+
+**Since:** 7
+
+**Deprecated since:** 9
+
+**Substitutes:** [BEHAVIOR](arkts-performanceanalysis-hiappevent-eventtype-e.md#behavior)
+
+<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+
+**System capability:** SystemCapability.HiviewDFX.HiAppEvent
+
 ## FAULT
 
 ```TypeScript
@@ -31,24 +49,6 @@ Fault event.
 **Substitutes:** [FAULT](arkts-performanceanalysis-hiappevent-eventtype-e.md#fault)
 
 <!--Device-EventType-FAULT = 1--><!--Device-EventType-FAULT = 1-End-->
-
-**System capability:** SystemCapability.HiviewDFX.HiAppEvent
-
-## STATISTIC
-
-```TypeScript
-STATISTIC = 2
-```
-
-Statistic event.
-
-**Since:** 7
-
-**Deprecated since:** 9
-
-**Substitutes:** [STATISTIC](arkts-performanceanalysis-hiappevent-eventtype-e.md#statistic)
-
-<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -70,20 +70,20 @@ Security event.
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent
 
-## BEHAVIOR
+## STATISTIC
 
 ```TypeScript
-BEHAVIOR = 4
+STATISTIC = 2
 ```
 
-User behavior event.
+Statistic event.
 
 **Since:** 7
 
 **Deprecated since:** 9
 
-**Substitutes:** [BEHAVIOR](arkts-performanceanalysis-hiappevent-eventtype-e.md#behavior)
+**Substitutes:** [STATISTIC](arkts-performanceanalysis-hiappevent-eventtype-e.md#statistic)
 
-<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiAppEvent

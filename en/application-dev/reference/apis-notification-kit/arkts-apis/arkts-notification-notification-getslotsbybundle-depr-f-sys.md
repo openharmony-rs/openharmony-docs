@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getslotsbybundle1"></a>
+
 ## getSlotsByBundle
 
 ```TypeScript
@@ -32,10 +34,10 @@ Obtains the notification slots of a specified application. This API uses an asyn
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundle | BundleOption | Yes | Bundle information of the application. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md)&gt;&gt; | Yes | Callback used to return the result. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[NotificationSlot](arkts-notification-notificationslot-i.md)&gt;&gt; | Yes | Callback used to return the result. |
 
 
-<a id="getslotsbybundle-1"></a>
+<a id="getslotsbybundle2"></a>
 
 ## getSlotsByBundle
 
@@ -69,4 +71,4 @@ Obtains the notification slots of a specified application. This API uses a promi
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md)&gt;&gt; | Promise used to return the result. |
+| Promise&lt;Array&lt;[NotificationSlot](arkts-notification-notificationslot-i.md)&gt;&gt; | Promise used to return the result. |

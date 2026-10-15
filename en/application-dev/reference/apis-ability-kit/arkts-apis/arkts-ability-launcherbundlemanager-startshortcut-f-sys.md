@@ -47,6 +47,7 @@ Starts an ability based on the specified [shortcut information](arkts-ability-sh
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not support. |
 | [17700065](../errorcode-bundle.md#17700065-ability-specified-by-want-in-the-shortcutinfo-struct-cannot-be-started) | The specified shortcut want in shortcut info is not supported to be started. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -76,3 +77,5 @@ try {
   console.error(`errData is errCode:${code}  message:${message}`);
 }
 ```
+
+<!--DelEnd-->

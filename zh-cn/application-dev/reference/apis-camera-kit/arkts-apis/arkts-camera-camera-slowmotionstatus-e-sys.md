@@ -30,6 +30,22 @@ Disabled.
 
 **系统接口：** 此接口为系统接口。
 
+## FINISHED
+
+```TypeScript
+FINISHED = 4
+```
+
+Finished.
+
+**起始版本：** 12
+
+<!--Device-SlowMotionStatus-FINISHED = 4--><!--Device-SlowMotionStatus-FINISHED = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## READY
 
 ```TypeScript
@@ -41,22 +57,6 @@ Ready.
 **起始版本：** 12
 
 <!--Device-SlowMotionStatus-READY = 1--><!--Device-SlowMotionStatus-READY = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
-## VIDEO_START
-
-```TypeScript
-VIDEO_START = 2
-```
-
-Video start.
-
-**起始版本：** 12
-
-<!--Device-SlowMotionStatus-VIDEO_START = 2--><!--Device-SlowMotionStatus-VIDEO_START = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -78,17 +78,17 @@ Video complete.
 
 **系统接口：** 此接口为系统接口。
 
-## FINISHED
+## VIDEO_START
 
 ```TypeScript
-FINISHED = 4
+VIDEO_START = 2
 ```
 
-Finished.
+Video start.
 
 **起始版本：** 12
 
-<!--Device-SlowMotionStatus-FINISHED = 4--><!--Device-SlowMotionStatus-FINISHED = 4-End-->
+<!--Device-SlowMotionStatus-VIDEO_START = 2--><!--Device-SlowMotionStatus-VIDEO_START = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

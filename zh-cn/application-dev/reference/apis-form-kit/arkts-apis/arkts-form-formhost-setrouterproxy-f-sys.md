@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="setrouterproxy1"></a>
+
 ## setRouterProxy
 
 ```TypeScript
@@ -16,7 +18,7 @@ function setRouterProxy(formIds: Array<string>, proxy: Callback<Want>, callback:
 
 > **说明：** 
 > 
-> - 一般情况下，对于桌面添加的卡片，当卡片触发router跳转时，卡片框架会检测其跳转目的地是否合理，是否有跳转权限，然后进行应用跳转。如果卡片使用方添加了卡片，并设置了卡片跳转代理，那么卡片触发router跳转时，卡片框架不会再为其进行跳转操作，会把包含跳转目的地的want参数返回给卡片使用方。因此如果卡片使用方希望使用该want信息进行应用跳转，需要确保自身拥有应用跳转的权限，参考[UIAbilityContext.startAbility()](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)接口。
+> - 一般情况下，对于桌面添加的卡片，当卡片触发router跳转时，卡片框架会检测其跳转目的地是否合理，是否有跳转权限，然后进行应用跳转。如果卡片使用方添加了卡片，并设置了卡片跳转代理，那么卡片触发router跳转时，卡片框架不会再为其进行跳转操作，会把包含跳转目的地的want参数返回给卡片使用方。因此如果卡片使用方希望使用该want信息进行应用跳转，需要确保自身拥有应用跳转的权限，参考[UIAbilityContext.startAbility()](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability1)接口。
 > 
 > - 一个formId最多只能设置一个跳转代理，多次设置后，最后设置的proxy生效。
 
@@ -50,6 +52,7 @@ function setRouterProxy(formIds: Array<string>, proxy: Callback<Want>, callback:
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -104,8 +107,10 @@ struct CardExample {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setrouterproxy-1"></a>
+
+<a id="setrouterproxy2"></a>
 
 ## setRouterProxy
 
@@ -117,7 +122,7 @@ function setRouterProxy(formIds: Array<string>, proxy: Callback<Want>): Promise<
 
 > **说明：** 
 > 
-> - 一般情况下，对于桌面添加的卡片，当卡片触发router跳转时，卡片框架会检测其跳转目的地是否合理，是否有跳转权限，然后进行应用跳转。如果卡片使用方添加了卡片，并设置了卡片跳转代理，那么卡片触发router跳转时，卡片框架不会再为其进行跳转操作，会把包含跳转目的地的want参数返回给卡片使用方。因此如果卡片使用方希望使用该want信息进行应用跳转，需要确保自身拥有应用跳转的权限，参考[UIAbilityContext.startAbility()](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability)接口。
+> - 一般情况下，对于桌面添加的卡片，当卡片触发router跳转时，卡片框架会检测其跳转目的地是否合理，是否有跳转权限，然后进行应用跳转。如果卡片使用方添加了卡片，并设置了卡片跳转代理，那么卡片触发router跳转时，卡片框架不会再为其进行跳转操作，会把包含跳转目的地的want参数返回给卡片使用方。因此如果卡片使用方希望使用该want信息进行应用跳转，需要确保自身拥有应用跳转的权限，参考[UIAbilityContext.startAbility()](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#startability1)接口。
 > 
 > - 一个formId最多只能设置一个跳转代理，多次设置后，最后设置的proxy生效。
 
@@ -156,6 +161,7 @@ function setRouterProxy(formIds: Array<string>, proxy: Callback<Want>): Promise<
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 | [16501003](../errorcode-form.md#16501003-无法操作指定卡片) | The form cannot be operated by the current application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -211,3 +217,5 @@ struct CardExample {
   }
 }
 ```
+
+<!--DelEnd-->

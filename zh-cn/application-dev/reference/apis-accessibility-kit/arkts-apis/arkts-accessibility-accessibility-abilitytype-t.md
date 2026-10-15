@@ -8,9 +8,9 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 
 **起始版本：** 7
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-accessibility-type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'--><!--Device-accessibility-type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all'-End-->
 
@@ -23,4 +23,4 @@ type AbilityType = 'audible' | 'generic' | 'haptic' | 'spoken' | 'visual' | 'all
 | 'haptic' | 表示具有触觉反馈。 |
 | 'spoken' | 表示具有语音反馈。 |
 | 'visual' | 表示具有视觉反馈。 |
-| 'all' | 表示以上所有类别。 [since 9] |
+| 'all' | 表示以上所有类别。<br>**起始版本：** 9 |

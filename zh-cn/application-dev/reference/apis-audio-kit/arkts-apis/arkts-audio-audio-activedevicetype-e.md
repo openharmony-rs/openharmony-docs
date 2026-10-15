@@ -20,24 +20,6 @@ enum ActiveDeviceType
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device
 
-## SPEAKER
-
-```TypeScript
-SPEAKER = 2
-```
-
-扬声器。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** SPEAKER
-
-<!--Device-ActiveDeviceType-SPEAKER = 2--><!--Device-ActiveDeviceType-SPEAKER = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Device
-
 ## BLUETOOTH_SCO
 
 ```TypeScript
@@ -50,8 +32,26 @@ BLUETOOTH_SCO = 7
 
 **废弃版本：** 9
 
-**替代接口：** BLUETOOTH_SCO
+**替代接口：** [BLUETOOTH_SCO](arkts-audio-audio-devicetype-e.md#bluetooth_sco)
 
 <!--Device-ActiveDeviceType-BLUETOOTH_SCO = 7--><!--Device-ActiveDeviceType-BLUETOOTH_SCO = 7-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Device
+
+## SPEAKER
+
+```TypeScript
+SPEAKER = 2
+```
+
+扬声器。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [SPEAKER](arkts-audio-audio-communicationdevicetype-e.md#speaker)
+
+<!--Device-ActiveDeviceType-SPEAKER = 2--><!--Device-ActiveDeviceType-SPEAKER = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Device

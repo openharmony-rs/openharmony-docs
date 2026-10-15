@@ -5,13 +5,15 @@
 ```TypeScript
 ```
 
+<a id="issupporttemplate1"></a>
+
 ## isSupportTemplate
 
 ```TypeScript
 function isSupportTemplate(templateName: string, callback: AsyncCallback<boolean>): void
 ```
 
-Checks whether a specified template is supported before using [NotificationTemplate](arkts-notification-notificationtemplate-notificationtemplate-i.md) to publish a notification. This API uses an asynchronous callback to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](arkts-notification-notificationtemplate-i.md) to publish a notification. This API uses an asynchronous callback to return the result.
 
 **Since:** 8
 
@@ -31,7 +33,7 @@ Checks whether a specified template is supported before using [NotificationTempl
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | Callback used to return the result. |
 
 
-<a id="issupporttemplate-1"></a>
+<a id="issupporttemplate2"></a>
 
 ## isSupportTemplate
 
@@ -39,7 +41,7 @@ Checks whether a specified template is supported before using [NotificationTempl
 function isSupportTemplate(templateName: string): Promise<boolean>
 ```
 
-Checks whether a specified template is supported before using [NotificationTemplate](arkts-notification-notificationtemplate-notificationtemplate-i.md) to publish a notification. This API uses a promise to return the result.
+Checks whether a specified template is supported before using [NotificationTemplate](arkts-notification-notificationtemplate-i.md) to publish a notification. This API uses a promise to return the result.
 
 **Since:** 8
 

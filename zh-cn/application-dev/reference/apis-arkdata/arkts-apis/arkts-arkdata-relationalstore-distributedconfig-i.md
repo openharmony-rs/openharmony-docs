@@ -94,7 +94,7 @@ asyncDownloadAsset?: boolean
 autoSync: boolean
 ```
 
-表示该表是否支持端云自动同步。为true时，支持系统自动触发端云同步；为false时不支持系统自动触发端云同步，需要调用[cloudSync](arkts-arkdata-relationalstore-rdbstore-i.md#cloudsync-3)接口触发端云同步。
+表示该表是否支持端云自动同步。为true时，支持系统自动触发端云同步；为false时不支持系统自动触发端云同步，需要调用[cloudSync](arkts-arkdata-relationalstore-rdbstore-i.md#cloudsync4)接口触发端云同步。
 
 **类型：** boolean
 

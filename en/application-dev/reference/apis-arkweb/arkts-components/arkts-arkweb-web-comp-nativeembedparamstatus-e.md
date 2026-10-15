@@ -26,20 +26,6 @@ Triggered when a **param** element is added.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## UPDATE
-
-```TypeScript
-UPDATE = 1
-```
-
-Triggered when a **param** element is modified.
-
-**Since:** 21
-
-<!--Device-NativeEmbedParamStatus-UPDATE = 1--><!--Device-NativeEmbedParamStatus-UPDATE = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## DELETE
 
 ```TypeScript
@@ -51,5 +37,19 @@ Triggered when a **param** element is deleted.
 **Since:** 21
 
 <!--Device-NativeEmbedParamStatus-DELETE = 2--><!--Device-NativeEmbedParamStatus-DELETE = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## UPDATE
+
+```TypeScript
+UPDATE = 1
+```
+
+Triggered when a **param** element is modified.
+
+**Since:** 21
+
+<!--Device-NativeEmbedParamStatus-UPDATE = 1--><!--Device-NativeEmbedParamStatus-UPDATE = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

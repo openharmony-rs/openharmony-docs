@@ -34,13 +34,15 @@ Sets the background style (board style) of the selected subtab. It takes effect 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [BoardStyle](arkts-arkui-tabcontent-comp-boardstyle-i.md) | Yes | Background style object for the selected subtab. |
+| value | [BoardStyle](arkts-arkui-tabcontent-comp-boardstyle-i.md) | Yes | Backing board style object of the selected subtab, which is used to set the corner radius and other styles of the backing board. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | The **SubTabBarStyle** object itself, which is used for chain calling. |
+
+<a id="constructor1"></a>
 
 ## constructor
 
@@ -64,7 +66,7 @@ Constructor used to create a **SubTabBarStyle** instance.
 | --- | --- | --- | --- |
 | content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) | Yes | Text for the tab. |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -88,7 +90,7 @@ Constructor used to create a **SubTabBarStyle** instance. You can set custom con
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; ComponentContent | Yes | Content on the tab.<br>**NOTE:** <br>1. Custom content does not support the **labelStyle** attribute.<br>2. If the custom content exceeds the content box of the tab page, the excess part is not displayed.<br>3. If the custom content is within the content box of the tab page, it is aligned in the center.<br>4. If the custom content is abnormal or no display component is available, a blank area is displayed. |
+| content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; ComponentContent | Yes | Content on the tab.<br>**NOTE:** <br>1. Custom content does not support the **labelStyle** attribute. <br>2. If the custom content exceeds the content box of the tab page, the excess part is not displayed. <br>3. If the custom content is within the content box of the tab page, it is aligned in the center. <br>4. If the custom content is abnormal or no display component is available, a blank area is displayed. |
 
 ## id
 
@@ -96,7 +98,7 @@ Constructor used to create a **SubTabBarStyle** instance. You can set custom con
 id(value: string): SubTabBarStyle
 ```
 
-Sets the [ID](arkts-arkui-common-comp-commonmethod-c.md#id) of the subtab.
+Sets the subtab ID. It can be used to find or control a specified tab through **TabsController**, and identify different tabs in status management and event processing.
 
 **Since:** 11
 
@@ -112,13 +114,15 @@ Sets the [ID](arkts-arkui-common-comp-commonmethod-c.md#id) of the subtab.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | [ID](arkts-arkui-common-comp-commonmethod-c.md#id) of the subtab. |
+| value | string | Yes | ID of a subtab, which is used to identify and distinguish different tabs. This parameter can be set when you need to display, hide, or perform other operations on a specified tab using code. The ID must be unique in the same **Tabs** component. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | The **SubTabBarStyle** object itself, which is used for chain calling. |
+
+<a id="indicator1"></a>
 
 ## indicator
 
@@ -142,15 +146,15 @@ Sets the indicator style of the selected subtab. It takes effect only in the hor
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [IndicatorStyle](arkts-arkui-tabcontent-comp-indicatorstyle-i.md) | Yes | Indicator style object for the selected subtab. |
+| value | [IndicatorStyle](arkts-arkui-tabcontent-comp-indicatorstyle-i.md) | Yes | Underline style object of the selected subtab, which is used to set the color, height, width, and corner radius of the underline. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | Returns the **SubTabBarStyle** object itself for chain calls. |
 
-<a id="indicator-1"></a>
+<a id="indicator2"></a>
 
 ## indicator
 
@@ -158,7 +162,7 @@ Sets the indicator style of the selected subtab. It takes effect only in the hor
 indicator(value: IndicatorStyle | DrawableTabBarIndicator): SubTabBarStyle
 ```
 
-Sets the indicator style of the selected subtab. Compared with [indicator](#indicator), the image format is added. For details about the display effect of the image, see [ImageFit.Cover](../arkts-apis/arkts-arkui-imagefit-e.md). It takes effect only in the horizontal layout.
+Sets the indicator style of the selected subtab. Compared with [indicator](#indicator1), the image format is added. For details about the display effect of the image, see [ImageFit.Cover](../arkts-apis/arkts-arkui-imagefit-e.md). It takes effect only in the horizontal layout.
 
 **Since:** 22
 
@@ -180,7 +184,7 @@ Sets the indicator style of the selected subtab. Compared with [indicator](#indi
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | The **SubTabBarStyle** object itself, which is used for chain calling. |
 
 ## labelStyle
 
@@ -188,7 +192,7 @@ Sets the indicator style of the selected subtab. Compared with [indicator](#indi
 labelStyle(value: LabelStyle): SubTabBarStyle
 ```
 
-Sets the style of the label text and font for the subtab.
+Sets the style of the label text and font for the subtab. The label text and font style of the subtab are valid only in horizontal mode.
 
 **Since:** 10
 
@@ -204,13 +208,15 @@ Sets the style of the label text and font for the subtab.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [LabelStyle](arkts-arkui-tabcontent-comp-labelstyle-i.md) | Yes | Style object for the label text and font of the subtab. |
+| value | [LabelStyle](arkts-arkui-tabcontent-comp-labelstyle-i.md) | Yes | Label text and font style object of a subtab, which is used to set the text color, size, font, and number of lines. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | The **SubTabBarStyle** object itself, which is used for chain call. |
+
+<a id="of1"></a>
 
 ## of
 
@@ -240,9 +246,9 @@ Static constructor used to create a **SubTabBarStyle** instance.
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object created. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | Returns the created **SubTabBarStyle** object, which is used to set the child tab style. |
 
-<a id="of-1"></a>
+<a id="of2"></a>
 
 ## of
 
@@ -266,13 +272,15 @@ Static constructor used to create a **SubTabBarStyle** instance. You can set cus
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; ComponentContent | Yes | Content on the tab. You can set custom content with **ComponentContent**.<br>**NOTE:** <br>1. Custom content does not support the **labelStyle** attribute.<br>2. If the custom content exceeds the content box of the tab page, the excess part is not displayed.<br>3. If the custom content is within the content box of the tab page, it is aligned in the center.<br>4. If the custom content is abnormal or no display component is available, a blank area is displayed. |
+| content | [ResourceStr](../arkts-apis/arkts-arkui-resourcestr-t.md) &#124; ComponentContent | Yes | Content on the tab. You can set custom content with **ComponentContent**.<br>**NOTE:** <br>1. Custom content does not support the **labelStyle** attribute. <br>2. If the custom content exceeds the content box of the tab page, the excess part is not displayed. <br>3. If the custom content is within the content box of the tab page, it is aligned in the center. <br>4. If the custom content is abnormal or no display component is available, a blank area is displayed. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object created. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | Returns the created **SubTabBarStyle** object, which is used to set the style of the selected subtab. |
+
+<a id="padding1"></a>
 
 ## padding
 
@@ -296,15 +304,15 @@ Sets the padding of the subtab. It cannot be set in percentage. When the paramet
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Padding of the subtab.<br>Value range: [0, +∞]<br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}** |
+| value | Padding &#124; [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Padding attributes of a subtab (percentage setting is not supported), which are used to adjust the distance between the tab content and the boundary. <br>Value range: [0, +∞] <br>If the value is abnormal, the default value is used. <br>Default value: **{left:8.0vp,right:8.0vp,top:17.0vp,bottom:18.0vp}** <br>**NOTE:** <br>Since API version 12, the [padding<sup>12+</sup>](#padding2) method is added to support the [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) type and the mirroring capability. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | The **SubTabBarStyle** object itself, which is used for chain call. |
 
-<a id="padding-1"></a>
+<a id="padding2"></a>
 
 ## padding
 
@@ -328,13 +336,13 @@ Sets the padding of the subtab. This API supports mirroring but does not support
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| padding | [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) | Yes | Padding of the subtab.<br>Value range: [0, +∞]<br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)**<br> **top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}** |
+| padding | [LocalizedPadding](../arkts-apis/arkts-arkui-localizedpadding-i.md) | Yes | Inner margin of the subtab, which is used to adjust the distance between the tab content and the boundary. The value cannot be set to a percentage. This property supports the mirroring capability.<br>Value range: [0, +∞] <br>If the value is abnormal, the default value is used. <br>Default value: **{start:LengthMetrics.vp(8),end:LengthMetrics.vp(8)** <br>**top:LengthMetrics.vp(17),bottom:LengthMetrics.vp(18)}** |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | The **SubTabBarStyle** object itself, which is used for chain calling. |
 
 ## selectedMode
 
@@ -358,10 +366,10 @@ Sets the display mode of the selected subtab. It takes effect only in the horizo
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [SelectedMode](arkts-arkui-tabcontent-comp-selectedmode-e.md) | Yes | Display mode of the selected subtab.<br>Default value: **SelectedMode.INDICATOR** |
+| value | [SelectedMode](arkts-arkui-tabcontent-comp-selectedmode-e.md) | Yes | Display mode of the selected subtab, which is used to control the style of the selected subtab. The value can be **SelectedMode.INDICATOR** (underline mode, which is applicable to scenarios where the selected state needs to be clearly indicated) or **SelectedMode.BOARD** (backing board mode, which is applicable to scenarios where the selected tab needs to be highlighted).<br>Default value: **SelectedMode.INDICATOR** |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | **SubTabBarStyle** object. |
+| [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) | The **SubTabBarStyle** object itself, which is used for chain calling. |

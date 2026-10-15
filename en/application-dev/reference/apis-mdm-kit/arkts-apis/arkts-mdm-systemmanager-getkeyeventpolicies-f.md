@@ -6,6 +6,8 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
+<a id="getkeyeventpolicies1"></a>
+
 ## getKeyEventPolicies
 
 ```TypeScript
@@ -66,7 +68,7 @@ try {
 ```
 
 
-<a id="getkeyeventpolicies-1"></a>
+<a id="getkeyeventpolicies2"></a>
 
 ## getKeyEventPolicies
 

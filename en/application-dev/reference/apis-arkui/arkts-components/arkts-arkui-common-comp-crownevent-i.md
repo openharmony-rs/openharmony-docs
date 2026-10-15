@@ -38,7 +38,7 @@ Crown action.
 angularVelocity: number
 ```
 
-Angular velocity.
+Angular velocity of rotation.
 
 Unit: deg/s
 
@@ -84,7 +84,7 @@ Value range: [-360, 360]
 stopPropagation: Callback<void>
 ```
 
-Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation.
+Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#event-bubbling) propagation. This can be used when the currently focused component has already handled the crown event and the parent component should not continue to respond to crown rotation.
 
 **Type:** [Callback](arkts-arkui-common-comp-callback-i.md)&lt;void&gt;
 
@@ -104,7 +104,7 @@ Disables [event bubbling](../../../ui/arkts-interaction-basic-principles.md#even
 timestamp: number
 ```
 
-Timestamp.
+Timestamp, that is, the time elapsed since system startup when the event is triggered.
 
 Unit: ns
 

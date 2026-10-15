@@ -37,6 +37,7 @@ function isFusionFenceSupported(): boolean
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-位置服务不可用) | The location service is unavailable. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,3 +49,5 @@ try {
   console.error("errCode:" + err.code + ", message:"  + err.message);
 }
 ```
+
+<!--DelEnd-->

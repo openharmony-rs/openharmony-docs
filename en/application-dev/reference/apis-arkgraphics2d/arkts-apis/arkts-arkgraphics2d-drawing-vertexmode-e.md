@@ -26,20 +26,6 @@ Every three vertices come from different triangles.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## TRIANGLESSTRIP_VERTEXMODE
-
-```TypeScript
-TRIANGLESSTRIP_VERTEXMODE = 1
-```
-
-Consecutive triangles share one edge. It is efficient for continuous surfaces.
-
-**Since:** 23
-
-<!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1--><!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## TRIANGLESFAN_VERTEXMODE
 
 ```TypeScript
@@ -51,5 +37,19 @@ All triangles share one vertex. It is suitable for circles and sectors.
 **Since:** 23
 
 <!--Device-VertexMode-TRIANGLESFAN_VERTEXMODE = 2--><!--Device-VertexMode-TRIANGLESFAN_VERTEXMODE = 2-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## TRIANGLESSTRIP_VERTEXMODE
+
+```TypeScript
+TRIANGLESSTRIP_VERTEXMODE = 1
+```
+
+Consecutive triangles share one edge. It is efficient for continuous surfaces.
+
+**Since:** 23
+
+<!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1--><!--Device-VertexMode-TRIANGLESSTRIP_VERTEXMODE = 1-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

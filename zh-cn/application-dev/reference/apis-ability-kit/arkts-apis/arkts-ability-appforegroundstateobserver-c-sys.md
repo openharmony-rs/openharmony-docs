@@ -36,6 +36,7 @@ onAppStateChanged(appStateData: AppStateData): void
 | --- | --- | --- | --- |
 | appStateData | [AppStateData](arkts-ability-appstatedata-c.md) | 是 | 应用状态信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,3 +49,5 @@ let observer: appManager.AppForegroundStateObserver = {
 };
 appManager.on('appForegroundState', observer);
 ```
+
+<!--DelEnd-->

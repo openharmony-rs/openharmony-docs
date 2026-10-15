@@ -44,6 +44,7 @@ function setFontWeightScale(fontWeightScale: number): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [500001](../errorcode-uiappearance.md#500001-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`Set fontWeightScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

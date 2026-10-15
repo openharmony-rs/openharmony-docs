@@ -6,6 +6,8 @@
 import { sendableColorSpaceManager } from '@kit.ArkGraphics2D';
 ```
 
+<a id="create1"></a>
+
 ## create
 
 ```TypeScript
@@ -49,7 +51,7 @@ colorSpace = sendableColorSpaceManager.create(colorSpaceManager.ColorSpace.SRGB)
 ```
 
 
-<a id="create-1"></a>
+<a id="create2"></a>
 
 ## create
 

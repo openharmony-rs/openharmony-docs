@@ -32,7 +32,7 @@ Support authenticated signed write property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-GattProperties-authenticatedSignedWrite?: boolean--><!--Device-GattProperties-authenticatedSignedWrite?: boolean-End-->
 
@@ -52,7 +52,7 @@ Support broadcast property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-GattProperties-broadcast?: boolean--><!--Device-GattProperties-broadcast?: boolean-End-->
 
@@ -72,7 +72,7 @@ Support extended properties property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-GattProperties-extendedProperties?: boolean--><!--Device-GattProperties-extendedProperties?: boolean-End-->
 
@@ -92,7 +92,7 @@ Support indicate property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattProperties-indicate?: boolean--><!--Device-GattProperties-indicate?: boolean-End-->
 
@@ -112,7 +112,7 @@ Support notify property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattProperties-notify?: boolean--><!--Device-GattProperties-notify?: boolean-End-->
 
@@ -132,7 +132,7 @@ Support read property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattProperties-read?: boolean--><!--Device-GattProperties-read?: boolean-End-->
 
@@ -152,7 +152,7 @@ Support write property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattProperties-write?: boolean--><!--Device-GattProperties-write?: boolean-End-->
 
@@ -172,7 +172,7 @@ Support write no response property of the characteristic.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-GattProperties-writeNoResponse?: boolean--><!--Device-GattProperties-writeNoResponse?: boolean-End-->
 

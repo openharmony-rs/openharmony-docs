@@ -12,20 +12,6 @@ enum GroupOwnerBand
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P
 
-## GO_BAND_AUTO
-
-```TypeScript
-GO_BAND_AUTO = 0
-```
-
-自动模式。
-
-**起始版本：** 9
-
-<!--Device-GroupOwnerBand-GO_BAND_AUTO = 0--><!--Device-GroupOwnerBand-GO_BAND_AUTO = 0-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.P2P
-
 ## GO_BAND_2GHZ
 
 ```TypeScript
@@ -51,5 +37,19 @@ GO_BAND_5GHZ = 2
 **起始版本：** 9
 
 <!--Device-GroupOwnerBand-GO_BAND_5GHZ = 2--><!--Device-GroupOwnerBand-GO_BAND_5GHZ = 2-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.P2P
+
+## GO_BAND_AUTO
+
+```TypeScript
+GO_BAND_AUTO = 0
+```
+
+自动模式。
+
+**起始版本：** 9
+
+<!--Device-GroupOwnerBand-GO_BAND_AUTO = 0--><!--Device-GroupOwnerBand-GO_BAND_AUTO = 0-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.P2P

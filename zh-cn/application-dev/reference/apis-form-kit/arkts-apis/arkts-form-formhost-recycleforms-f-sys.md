@@ -49,6 +49,7 @@ function recycleForms(formIds: Array<string>): Promise<void>
 | [16500060](../errorcode-form.md#16500060-连接服务失败) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,3 +67,5 @@ try {
   console.error(`catch error, code: ${e.code}, message: ${e.message}`);
 }
 ```
+
+<!--DelEnd-->

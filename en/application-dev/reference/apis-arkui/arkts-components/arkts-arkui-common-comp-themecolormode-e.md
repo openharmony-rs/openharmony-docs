@@ -12,13 +12,13 @@ Enumerates the color modes.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SYSTEM
+## DARK
 
 ```TypeScript
-SYSTEM = 0
+DARK = 2
 ```
 
-System color mode.
+Dark color mode.
 
 **Since:** 10
 
@@ -26,7 +26,7 @@ System color mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ThemeColorMode-SYSTEM = 0--><!--Device-ThemeColorMode-SYSTEM = 0-End-->
+<!--Device-ThemeColorMode-DARK = 2--><!--Device-ThemeColorMode-DARK = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ Light color mode.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## DARK
+## SYSTEM
 
 ```TypeScript
-DARK = 2
+SYSTEM = 0
 ```
 
-Dark color mode.
+System color mode.
 
 **Since:** 10
 
@@ -62,6 +62,6 @@ Dark color mode.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ThemeColorMode-DARK = 2--><!--Device-ThemeColorMode-DARK = 2-End-->
+<!--Device-ThemeColorMode-SYSTEM = 0--><!--Device-ThemeColorMode-SYSTEM = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

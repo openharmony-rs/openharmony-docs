@@ -6,6 +6,8 @@ export type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo
 
 业务路由信息。
 
+**类型：** [_BusinessAbilityInfo.BusinessAbilityInfo](arkts-ability-businessabilityinfo-i-sys.md)
+
 **起始版本：** 10
 
 <!--Device-businessAbilityRouter-export type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo--><!--Device-businessAbilityRouter-export type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo-End-->
@@ -13,5 +15,3 @@ export type BusinessAbilityInfo = _BusinessAbilityInfo.BusinessAbilityInfo
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [_BusinessAbilityInfo.BusinessAbilityInfo](arkts-ability-businessabilityinfo-i-sys.md)

@@ -6,10 +6,6 @@ export interface RecoverableApplicationInfo
 
 预置应用被卸载后可以恢复的预置应用信息，通过接口[bundleManager.getRecoverableApplicationInfo](arkts-ability-bundlemanager-getrecoverableapplicationinfo-f-sys.md)获取。
 
-> **说明：** 
-> 
-> 本模块为系统接口。
-
 **起始版本：** 11
 
 <!--Device-unnamed-export interface RecoverableApplicationInfo--><!--Device-unnamed-export interface RecoverableApplicationInfo-End-->

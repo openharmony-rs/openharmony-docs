@@ -45,6 +45,7 @@ Get distributed avsession controller
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600109](../errorcode-avsession.md#6600109-remote-session-does-not-exist) | The remote connection is not established. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,3 +55,5 @@ avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_
   console.info(`Succeeded in getting distributed session controller, length: ${sessionControllers.length}`);
 });
 ```
+
+<!--DelEnd-->

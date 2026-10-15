@@ -32,7 +32,7 @@ Prints "debug" logs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| message | string | Yes | Text to print @static |
+| message | string | Yes | Text to print |
 
 ## error
 
@@ -54,7 +54,7 @@ Prints "error" logs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| message | string | Yes | Text to print @static |
+| message | string | Yes | Text to print |
 
 ## info
 
@@ -76,7 +76,7 @@ Prints "info" logs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| message | string | Yes | Text to print @static |
+| message | string | Yes | Text to print |
 
 ## log
 
@@ -98,7 +98,7 @@ Prints "log" logs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| message | string | Yes | Text to print @static |
+| message | string | Yes | Text to print |
 
 ## warn
 
@@ -120,4 +120,4 @@ Prints "warn" logs.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| message | string | Yes | Text to print @static |
+| message | string | Yes | Text to print |

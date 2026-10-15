@@ -30,6 +30,22 @@ CS call.
 
 **System API:** This is a system API.
 
+## TYPE_ERR_CALL
+
+```TypeScript
+TYPE_ERR_CALL = 3
+```
+
+Error call type.
+
+**Since:** 7
+
+<!--Device-CallType-TYPE_ERR_CALL = 3--><!--Device-CallType-TYPE_ERR_CALL = 3-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
 ## TYPE_IMS
 
 ```TypeScript
@@ -57,22 +73,6 @@ OTT call.
 **Since:** 7
 
 <!--Device-CallType-TYPE_OTT = 2--><!--Device-CallType-TYPE_OTT = 2-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## TYPE_ERR_CALL
-
-```TypeScript
-TYPE_ERR_CALL = 3
-```
-
-Error call type.
-
-**Since:** 7
-
-<!--Device-CallType-TYPE_ERR_CALL = 3--><!--Device-CallType-TYPE_ERR_CALL = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

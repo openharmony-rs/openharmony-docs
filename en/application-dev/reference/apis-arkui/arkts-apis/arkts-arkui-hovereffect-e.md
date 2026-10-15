@@ -28,22 +28,6 @@ Default hover effect.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Scale
-
-```TypeScript
-Scale
-```
-
-Zoom-in and zoom-out effect.
-
-**Since:** 8
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-HoverEffect-Scale--><!--Device-HoverEffect-Scale-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Highlight
 
 ```TypeScript
@@ -73,5 +57,21 @@ No effect.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HoverEffect-None--><!--Device-HoverEffect-None-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Scale
+
+```TypeScript
+Scale
+```
+
+Zoom-in and zoom-out effect.
+
+**Since:** 8
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HoverEffect-Scale--><!--Device-HoverEffect-Scale-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

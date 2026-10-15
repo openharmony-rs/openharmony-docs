@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="setdefaultsmsslotid1"></a>
+
 ## setDefaultSmsSlotId
 
 ```TypeScript
@@ -44,6 +46,7 @@ Sets the default slot ID of the SIM card used to send SMS messages. This API use
 | [8300004](../errorcode-telephony.md#8300004-sim-card-not-detected) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,8 +58,10 @@ sms.setDefaultSmsSlotId(0, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setdefaultsmsslotid-1"></a>
+
+<a id="setdefaultsmsslotid2"></a>
 
 ## setDefaultSmsSlotId
 
@@ -101,6 +106,7 @@ Sets the default slot ID of the SIM card used to send SMS messages. This API use
 | [8300004](../errorcode-telephony.md#8300004-sim-card-not-detected) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,3 +119,5 @@ sms.setDefaultSmsSlotId(0).then(() => {
     console.error(`setDefaultSmsSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

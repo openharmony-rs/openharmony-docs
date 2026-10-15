@@ -12,20 +12,6 @@ export enum BatteryPluggedType
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## NONE
-
-```TypeScript
-NONE
-```
-
-表示未连接充电器。
-
-**起始版本：** 6
-
-<!--Device-BatteryPluggedType-NONE--><!--Device-BatteryPluggedType-NONE-End-->
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
 ## AC
 
 ```TypeScript
@@ -37,6 +23,20 @@ AC
 **起始版本：** 6
 
 <!--Device-BatteryPluggedType-AC--><!--Device-BatteryPluggedType-AC-End-->
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+## NONE
+
+```TypeScript
+NONE
+```
+
+表示未连接充电器。
+
+**起始版本：** 6
+
+<!--Device-BatteryPluggedType-NONE--><!--Device-BatteryPluggedType-NONE-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 

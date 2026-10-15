@@ -14,81 +14,83 @@ export enum ActionType
 
 **系统接口：** 此接口为系统接口。
 
-## LANDSCAPE_PORTRAIT_SWITCH
+## ACTING_CUTE
 
 ```TypeScript
-LANDSCAPE_PORTRAIT_SWITCH = 0
+ACTING_CUTE = 2001
 ```
 
-横竖屏旋转
+卖萌动作
 
 **起始版本：** 26.0.0
 
-<!--Device-ActionType-LANDSCAPE_PORTRAIT_SWITCH = 0--><!--Device-ActionType-LANDSCAPE_PORTRAIT_SWITCH = 0-End-->
+<!--Device-ActionType-ACTING_CUTE = 2001--><!--Device-ActionType-ACTING_CUTE = 2001-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
 
-## PATROL_MODE
+## ANGRY
 
 ```TypeScript
-PATROL_MODE = 1
+ANGRY = 1001
 ```
 
-巡桌模式
+生气动作
 
 **起始版本：** 26.0.0
 
-<!--Device-ActionType-PATROL_MODE = 1--><!--Device-ActionType-PATROL_MODE = 1-End-->
+<!--Device-ActionType-ANGRY = 1001--><!--Device-ActionType-ANGRY = 1001-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
 
-## GREET_MODE
+## BASE_TURN_TO_HEAD
 
 ```TypeScript
-GREET_MODE = 2
+BASE_TURN_TO_HEAD = 12
 ```
 
-迎人模式
+底座向头回正
 
-**起始版本：** 26.0.0
+**起始版本：** 26.2.0
 
-<!--Device-ActionType-GREET_MODE = 2--><!--Device-ActionType-GREET_MODE = 2-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ActionType-BASE_TURN_TO_HEAD = 12--><!--Device-ActionType-BASE_TURN_TO_HEAD = 12-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
 
-## HEAD_UP
+## CELEBRATE
 
 ```TypeScript
-HEAD_UP = 3
+CELEBRATE = 2002
 ```
 
-仰头
+庆祝动作
 
 **起始版本：** 26.0.0
 
-<!--Device-ActionType-HEAD_UP = 3--><!--Device-ActionType-HEAD_UP = 3-End-->
+<!--Device-ActionType-CELEBRATE = 2002--><!--Device-ActionType-CELEBRATE = 2002-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
 
-## HEAD_UP_SLIGHTLY
+## DANCE
 
 ```TypeScript
-HEAD_UP_SLIGHTLY = 4
+DANCE = 2000
 ```
 
-微抬
+舞蹈动作
 
 **起始版本：** 26.0.0
 
-<!--Device-ActionType-HEAD_UP_SLIGHTLY = 4--><!--Device-ActionType-HEAD_UP_SLIGHTLY = 4-End-->
+<!--Device-ActionType-DANCE = 2000--><!--Device-ActionType-DANCE = 2000-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -110,17 +112,51 @@ EYE_LEVEL = 5
 
 **系统接口：** 此接口为系统接口。
 
-## HEAD_DOWN_SLIGHTLY
+## FRONT_TO_BACK_FLIP
 
 ```TypeScript
-HEAD_DOWN_SLIGHTLY = 6
+FRONT_TO_BACK_FLIP = 13
 ```
 
-微低
+云台前后方向翻转
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ActionType-FRONT_TO_BACK_FLIP = 13--><!--Device-ActionType-FRONT_TO_BACK_FLIP = 13-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## GREET_MODE
+
+```TypeScript
+GREET_MODE = 2
+```
+
+迎人模式
 
 **起始版本：** 26.0.0
 
-<!--Device-ActionType-HEAD_DOWN_SLIGHTLY = 6--><!--Device-ActionType-HEAD_DOWN_SLIGHTLY = 6-End-->
+<!--Device-ActionType-GREET_MODE = 2--><!--Device-ActionType-GREET_MODE = 2-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HAPPY
+
+```TypeScript
+HAPPY = 1000
+```
+
+开心动作
+
+**起始版本：** 26.0.0
+
+<!--Device-ActionType-HAPPY = 1000--><!--Device-ActionType-HAPPY = 1000-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -142,33 +178,17 @@ HEAD_DOWN = 7
 
 **系统接口：** 此接口为系统接口。
 
-## HEAD_WIGGLE
+## HEAD_DOWN_SLIGHTLY
 
 ```TypeScript
-HEAD_WIGGLE = 8
+HEAD_DOWN_SLIGHTLY = 6
 ```
 
-晃头
+微低
 
 **起始版本：** 26.0.0
 
-<!--Device-ActionType-HEAD_WIGGLE = 8--><!--Device-ActionType-HEAD_WIGGLE = 8-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
-## NOD
-
-```TypeScript
-NOD = 9
-```
-
-点头
-
-**起始版本：** 26.0.0
-
-<!--Device-ActionType-NOD = 9--><!--Device-ActionType-NOD = 9-End-->
+<!--Device-ActionType-HEAD_DOWN_SLIGHTLY = 6--><!--Device-ActionType-HEAD_DOWN_SLIGHTLY = 6-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -208,69 +228,113 @@ HEAD_TURN_TO_BASE = 11
 
 **系统接口：** 此接口为系统接口。
 
-## BASE_TURN_TO_HEAD
+## HEAD_UP
 
 ```TypeScript
-BASE_TURN_TO_HEAD = 12
+HEAD_UP = 3
 ```
 
-底座向头回正
-
-**起始版本：** 26.2.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ActionType-BASE_TURN_TO_HEAD = 12--><!--Device-ActionType-BASE_TURN_TO_HEAD = 12-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
-## FRONT_TO_BACK_FLIP
-
-```TypeScript
-FRONT_TO_BACK_FLIP = 13
-```
-
-云台前后方向翻转
-
-**起始版本：** 26.2.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ActionType-FRONT_TO_BACK_FLIP = 13--><!--Device-ActionType-FRONT_TO_BACK_FLIP = 13-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
-## HAPPY
-
-```TypeScript
-HAPPY = 1000
-```
-
-开心动作
+仰头
 
 **起始版本：** 26.0.0
 
-<!--Device-ActionType-HAPPY = 1000--><!--Device-ActionType-HAPPY = 1000-End-->
+<!--Device-ActionType-HEAD_UP = 3--><!--Device-ActionType-HEAD_UP = 3-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
 **系统接口：** 此接口为系统接口。
 
-## ANGRY
+## HEAD_UP_SLIGHTLY
 
 ```TypeScript
-ANGRY = 1001
+HEAD_UP_SLIGHTLY = 4
 ```
 
-生气动作
+微抬
 
 **起始版本：** 26.0.0
 
-<!--Device-ActionType-ANGRY = 1001--><!--Device-ActionType-ANGRY = 1001-End-->
+<!--Device-ActionType-HEAD_UP_SLIGHTLY = 4--><!--Device-ActionType-HEAD_UP_SLIGHTLY = 4-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HEAD_WIGGLE
+
+```TypeScript
+HEAD_WIGGLE = 8
+```
+
+晃头
+
+**起始版本：** 26.0.0
+
+<!--Device-ActionType-HEAD_WIGGLE = 8--><!--Device-ActionType-HEAD_WIGGLE = 8-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## LANDSCAPE_PORTRAIT_SWITCH
+
+```TypeScript
+LANDSCAPE_PORTRAIT_SWITCH = 0
+```
+
+横竖屏旋转
+
+**起始版本：** 26.0.0
+
+<!--Device-ActionType-LANDSCAPE_PORTRAIT_SWITCH = 0--><!--Device-ActionType-LANDSCAPE_PORTRAIT_SWITCH = 0-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## LOW_POWER
+
+```TypeScript
+LOW_POWER = 2005
+```
+
+低电量动作
+
+**起始版本：** 26.0.0
+
+<!--Device-ActionType-LOW_POWER = 2005--><!--Device-ActionType-LOW_POWER = 2005-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## NOD
+
+```TypeScript
+NOD = 9
+```
+
+点头
+
+**起始版本：** 26.0.0
+
+<!--Device-ActionType-NOD = 9--><!--Device-ActionType-NOD = 9-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PATROL_MODE
+
+```TypeScript
+PATROL_MODE = 1
+```
+
+巡桌模式
+
+**起始版本：** 26.0.0
+
+<!--Device-ActionType-PATROL_MODE = 1--><!--Device-ActionType-PATROL_MODE = 1-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -308,70 +372,6 @@ SCARED = 1003
 
 **系统接口：** 此接口为系统接口。
 
-## DANCE
-
-```TypeScript
-DANCE = 2000
-```
-
-舞蹈动作
-
-**起始版本：** 26.0.0
-
-<!--Device-ActionType-DANCE = 2000--><!--Device-ActionType-DANCE = 2000-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
-## ACTING_CUTE
-
-```TypeScript
-ACTING_CUTE = 2001
-```
-
-卖萌动作
-
-**起始版本：** 26.0.0
-
-<!--Device-ActionType-ACTING_CUTE = 2001--><!--Device-ActionType-ACTING_CUTE = 2001-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
-## CELEBRATE
-
-```TypeScript
-CELEBRATE = 2002
-```
-
-庆祝动作
-
-**起始版本：** 26.0.0
-
-<!--Device-ActionType-CELEBRATE = 2002--><!--Device-ActionType-CELEBRATE = 2002-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
-## WAKEUP
-
-```TypeScript
-WAKEUP = 2003
-```
-
-唤醒动作
-
-**起始版本：** 26.0.0
-
-<!--Device-ActionType-WAKEUP = 2003--><!--Device-ActionType-WAKEUP = 2003-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## SLEEP
 
 ```TypeScript
@@ -388,22 +388,6 @@ SLEEP = 2004
 
 **系统接口：** 此接口为系统接口。
 
-## LOW_POWER
-
-```TypeScript
-LOW_POWER = 2005
-```
-
-低电量动作
-
-**起始版本：** 26.0.0
-
-<!--Device-ActionType-LOW_POWER = 2005--><!--Device-ActionType-LOW_POWER = 2005-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## THINKING
 
 ```TypeScript
@@ -415,6 +399,22 @@ THINKING = 2006
 **起始版本：** 26.0.0
 
 <!--Device-ActionType-THINKING = 2006--><!--Device-ActionType-THINKING = 2006-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## WAKEUP
+
+```TypeScript
+WAKEUP = 2003
+```
+
+唤醒动作
+
+**起始版本：** 26.0.0
+
+<!--Device-ActionType-WAKEUP = 2003--><!--Device-ActionType-WAKEUP = 2003-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 

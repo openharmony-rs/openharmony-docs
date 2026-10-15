@@ -26,20 +26,6 @@ Content file.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## THUMBNAIL
-
-```TypeScript
-THUMBNAIL = 1
-```
-
-Thumbnail file.
-
-**Since:** 20
-
-<!--Device-DownloadFileType-THUMBNAIL = 1--><!--Device-DownloadFileType-THUMBNAIL = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## LCD
 
 ```TypeScript
@@ -51,5 +37,19 @@ LCD file.
 **Since:** 20
 
 <!--Device-DownloadFileType-LCD = 2--><!--Device-DownloadFileType-LCD = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## THUMBNAIL
+
+```TypeScript
+THUMBNAIL = 1
+```
+
+Thumbnail file.
+
+**Since:** 20
+
+<!--Device-DownloadFileType-THUMBNAIL = 1--><!--Device-DownloadFileType-THUMBNAIL = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

@@ -19,6 +19,24 @@ Enumerates depth space types.
 
 **System API:** This is a system API.
 
+## GLOBAL
+
+```TypeScript
+GLOBAL = 1
+```
+
+Global mode, which uses the global background, depth map, camera parameters, and lighting parameters.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DepthSpaceType-GLOBAL = 1--><!--Device-DepthSpaceType-GLOBAL = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
 ## INSTANCE
 
 ```TypeScript
@@ -34,24 +52,6 @@ Instance mode, which uses the background, depth map, camera parameters, and ligh
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-DepthSpaceType-INSTANCE = 0--><!--Device-DepthSpaceType-INSTANCE = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## GLOBAL
-
-```TypeScript
-GLOBAL = 1
-```
-
-Global mode, which uses the global background, depth map, camera parameters, and lighting parameters.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DepthSpaceType-GLOBAL = 1--><!--Device-DepthSpaceType-GLOBAL = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

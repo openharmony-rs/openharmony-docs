@@ -40,6 +40,7 @@ function setUserOperation(operation: Operation, mac: string, params: string): vo
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,3 +48,5 @@ console.info('User operate');
 mechanicManager.setUserOperation(mechanicManager.Operation.CONNECT, "58:51:9e:e7:79:6d", "operatingParams");
 console.info('User operation was successful');
 ```
+
+<!--DelEnd-->

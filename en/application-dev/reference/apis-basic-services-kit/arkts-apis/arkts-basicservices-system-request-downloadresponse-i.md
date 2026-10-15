@@ -34,7 +34,7 @@ Download token, which is used to obtain the download status
 
 **Deprecated since:** 9
 
-**Substitutes:** tid
+**Substitutes:** [tid](arkts-basicservices-agent-task-i.md#tid)
 
 <!--Device-DownloadResponse-token: string--><!--Device-DownloadResponse-token: string-End-->
 

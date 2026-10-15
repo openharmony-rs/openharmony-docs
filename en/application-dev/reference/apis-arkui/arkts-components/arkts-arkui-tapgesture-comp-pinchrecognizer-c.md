@@ -4,7 +4,7 @@
 declare class PinchRecognizer extends GestureRecognizer
 ```
 
-Implements a pinch gesture recognizer. Inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md).
+Defines the pinch gesture recognizer object, which inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) and supports querying the minimum recognition distance threshold of the pinch gesture. It is applicable to querying the recognition configuration of scaling gestures.
 
 **Inheritance/Implementation:** PinchRecognizer extends [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)
 

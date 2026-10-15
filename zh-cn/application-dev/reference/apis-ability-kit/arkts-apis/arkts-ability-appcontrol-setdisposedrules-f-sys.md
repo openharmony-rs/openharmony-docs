@@ -40,6 +40,7 @@ function setDisposedRules(disposedRuleConfigurations: Array<DisposedRuleConfigur
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex is not in the valid range. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -98,3 +99,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

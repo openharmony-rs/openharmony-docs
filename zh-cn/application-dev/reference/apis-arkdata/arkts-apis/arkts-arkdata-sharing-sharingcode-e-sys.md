@@ -14,33 +14,97 @@ enum SharingCode
 
 **系统接口：** 此接口为系统接口。
 
-## SUCCESS
+## CLOUD_DISABLED
 
 ```TypeScript
-SUCCESS = 0
+CLOUD_DISABLED = 8
 ```
 
-成功。请使用枚举名称而非枚举值。
+云开关未打开。请使用枚举名称而非枚举值。
 
 **起始版本：** 11
 
-<!--Device-SharingCode-SUCCESS = 0--><!--Device-SharingCode-SUCCESS = 0-End-->
+<!--Device-SharingCode-CLOUD_DISABLED = 8--><!--Device-SharingCode-CLOUD_DISABLED = 8-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
 
-## REPEATED_REQUEST
+## CUSTOM_ERROR
 
 ```TypeScript
-REPEATED_REQUEST = 1
+CUSTOM_ERROR = 1000
 ```
 
-重复邀请，表示当前参与者已被邀请。请使用枚举名称而非枚举值。
+定制错误，小于该枚举值的错误码用于定义系统内部的标准错误码，大于该枚举值的错误码用于使用者自定义错误码。请使用枚举名称而非枚举值。
 
 **起始版本：** 11
 
-<!--Device-SharingCode-REPEATED_REQUEST = 1--><!--Device-SharingCode-REPEATED_REQUEST = 1-End-->
+<!--Device-SharingCode-CUSTOM_ERROR = 1000--><!--Device-SharingCode-CUSTOM_ERROR = 1000-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**系统接口：** 此接口为系统接口。
+
+## INNER_ERROR
+
+```TypeScript
+INNER_ERROR = 10
+```
+
+系统发生内部错误。请使用枚举名称而非枚举值。
+
+**起始版本：** 11
+
+<!--Device-SharingCode-INNER_ERROR = 10--><!--Device-SharingCode-INNER_ERROR = 10-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**系统接口：** 此接口为系统接口。
+
+## INVALID_ARGS
+
+```TypeScript
+INVALID_ARGS = 6
+```
+
+无效的参数。请使用枚举名称而非枚举值。
+
+**起始版本：** 11
+
+<!--Device-SharingCode-INVALID_ARGS = 6--><!--Device-SharingCode-INVALID_ARGS = 6-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**系统接口：** 此接口为系统接口。
+
+## INVALID_INVITATION
+
+```TypeScript
+INVALID_INVITATION = 11
+```
+
+无效的邀请，表示当前邀请已失效或不存在。请使用枚举名称而非枚举值。
+
+**起始版本：** 11
+
+<!--Device-SharingCode-INVALID_INVITATION = 11--><!--Device-SharingCode-INVALID_INVITATION = 11-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**系统接口：** 此接口为系统接口。
+
+## NETWORK_ERROR
+
+```TypeScript
+NETWORK_ERROR = 7
+```
+
+网络错误。请使用枚举名称而非枚举值。
+
+**起始版本：** 11
+
+<!--Device-SharingCode-NETWORK_ERROR = 7--><!--Device-SharingCode-NETWORK_ERROR = 7-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -94,65 +158,33 @@ OVER_QUOTA = 4
 
 **系统接口：** 此接口为系统接口。
 
-## TOO_MANY_PARTICIPANTS
+## RATE_LIMIT
 
 ```TypeScript
-TOO_MANY_PARTICIPANTS = 5
+RATE_LIMIT = 12
 ```
 
-端云共享参与者数量达到上限。请使用枚举名称而非枚举值。
+速率限制，表示单次同步的数据量达到上限。请使用枚举名称而非枚举值。
 
 **起始版本：** 11
 
-<!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5--><!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5-End-->
+<!--Device-SharingCode-RATE_LIMIT = 12--><!--Device-SharingCode-RATE_LIMIT = 12-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
 
-## INVALID_ARGS
+## REPEATED_REQUEST
 
 ```TypeScript
-INVALID_ARGS = 6
+REPEATED_REQUEST = 1
 ```
 
-无效的参数。请使用枚举名称而非枚举值。
+重复邀请，表示当前参与者已被邀请。请使用枚举名称而非枚举值。
 
 **起始版本：** 11
 
-<!--Device-SharingCode-INVALID_ARGS = 6--><!--Device-SharingCode-INVALID_ARGS = 6-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**系统接口：** 此接口为系统接口。
-
-## NETWORK_ERROR
-
-```TypeScript
-NETWORK_ERROR = 7
-```
-
-网络错误。请使用枚举名称而非枚举值。
-
-**起始版本：** 11
-
-<!--Device-SharingCode-NETWORK_ERROR = 7--><!--Device-SharingCode-NETWORK_ERROR = 7-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**系统接口：** 此接口为系统接口。
-
-## CLOUD_DISABLED
-
-```TypeScript
-CLOUD_DISABLED = 8
-```
-
-云开关未打开。请使用枚举名称而非枚举值。
-
-**起始版本：** 11
-
-<!--Device-SharingCode-CLOUD_DISABLED = 8--><!--Device-SharingCode-CLOUD_DISABLED = 8-End-->
+<!--Device-SharingCode-REPEATED_REQUEST = 1--><!--Device-SharingCode-REPEATED_REQUEST = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
@@ -174,65 +206,33 @@ SERVER_ERROR = 9
 
 **系统接口：** 此接口为系统接口。
 
-## INNER_ERROR
+## SUCCESS
 
 ```TypeScript
-INNER_ERROR = 10
+SUCCESS = 0
 ```
 
-系统发生内部错误。请使用枚举名称而非枚举值。
+成功。请使用枚举名称而非枚举值。
 
 **起始版本：** 11
 
-<!--Device-SharingCode-INNER_ERROR = 10--><!--Device-SharingCode-INNER_ERROR = 10-End-->
+<!--Device-SharingCode-SUCCESS = 0--><!--Device-SharingCode-SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 
 **系统接口：** 此接口为系统接口。
 
-## INVALID_INVITATION
+## TOO_MANY_PARTICIPANTS
 
 ```TypeScript
-INVALID_INVITATION = 11
+TOO_MANY_PARTICIPANTS = 5
 ```
 
-无效的邀请，表示当前邀请已失效或不存在。请使用枚举名称而非枚举值。
+端云共享参与者数量达到上限。请使用枚举名称而非枚举值。
 
 **起始版本：** 11
 
-<!--Device-SharingCode-INVALID_INVITATION = 11--><!--Device-SharingCode-INVALID_INVITATION = 11-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**系统接口：** 此接口为系统接口。
-
-## RATE_LIMIT
-
-```TypeScript
-RATE_LIMIT = 12
-```
-
-速率限制，表示单次同步的数据量达到上限。请使用枚举名称而非枚举值。
-
-**起始版本：** 11
-
-<!--Device-SharingCode-RATE_LIMIT = 12--><!--Device-SharingCode-RATE_LIMIT = 12-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**系统接口：** 此接口为系统接口。
-
-## CUSTOM_ERROR
-
-```TypeScript
-CUSTOM_ERROR = 1000
-```
-
-定制错误，小于该枚举值的错误码用于定义系统内部的标准错误码，大于该枚举值的错误码用于使用者自定义错误码。请使用枚举名称而非枚举值。
-
-**起始版本：** 11
-
-<!--Device-SharingCode-CUSTOM_ERROR = 1000--><!--Device-SharingCode-CUSTOM_ERROR = 1000-End-->
+<!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5--><!--Device-SharingCode-TOO_MANY_PARTICIPANTS = 5-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

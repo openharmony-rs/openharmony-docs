@@ -32,7 +32,7 @@ X coordinate of the point on an elliptic curve.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Point-x: bigint--><!--Device-Point-x: bigint-End-->
 
@@ -52,7 +52,7 @@ Y coordinate of the point on an elliptic curve.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Point-y: bigint--><!--Device-Point-y: bigint-End-->
 

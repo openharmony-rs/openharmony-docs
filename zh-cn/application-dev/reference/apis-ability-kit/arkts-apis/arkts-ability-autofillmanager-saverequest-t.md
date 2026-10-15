@@ -6,7 +6,9 @@ export type SaveRequest = _AutoFillRequest.SaveRequest
 
 自动保存的请求信息。
 
-**起始版本：** 11
+**类型：** [_AutoFillRequest.SaveRequest](arkts-ability-autofillrequest-saverequest-i.md)
+
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -15,5 +17,3 @@ export type SaveRequest = _AutoFillRequest.SaveRequest
 <!--Device-autoFillManager-export type SaveRequest = _AutoFillRequest.SaveRequest--><!--Device-autoFillManager-export type SaveRequest = _AutoFillRequest.SaveRequest-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**类型：** _AutoFillRequest.SaveRequest

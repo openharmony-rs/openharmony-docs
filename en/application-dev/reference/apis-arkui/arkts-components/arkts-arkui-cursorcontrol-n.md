@@ -4,9 +4,17 @@
 declare namespace cursorControl
 ```
 
-**Since:** 11
+Mouse cursor control is used to set the display style of the mouse cursor. It supports setting multiple preset cursor styles and restoring the default arrow style. It is applicable to scenarios where the cursor style needs to be switched based on the component state or interaction area, resolving the issue that the default cursor style cannot match the interaction intent, and helping improve the user's interaction recognition and operation feedback experience.
 
-**Model restriction:** This API can be used only in the stage model.
+> **NOTE:** 
+> 
+> Directly using **cursorControl** can lead to the issue of
+> [ambiguous UI context](../../../ui/arkts-global-interface.md#ambiguous-ui-context). To avoid this, obtain the
+> [UIContext](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md) object using the **getUIContext()** API and then obtain the
+> **cursorControl** bound to the instance using the
+> getCursorController API.
+
+**Since:** 11
 
 <!--Device-unnamed-declare namespace cursorControl--><!--Device-unnamed-declare namespace cursorControl-End-->
 
@@ -18,8 +26,8 @@ declare namespace cursorControl
 
 | Name | Description |
 | --- | --- |
-| [setCursor](arkts-arkui-cursorcontrol-setcursor-f.md) | Sets the current mouse cursor style. This API can be used globally in method statements. |
-| [restoreDefault](arkts-arkui-cursorcontrol-restoredefault-f.md) | Restores the mouse cursor to the default arrow style. This API can be used globally in method statements. |
+| [restoreDefault](arkts-arkui-cursorcontrol-restoredefault-f.md#restoredefault) | A global API that can be used in component methods or event callbacks. Calling this API restores the mouse cursor to the default arrow style, for example, restoring the default cursor when the mouse leaves a hover area, when a component loses focus, or when an interaction ends. |
+| [setCursor](arkts-arkui-cursorcontrol-setcursor-f.md#setcursor) | A global API that can be used in component methods or event callbacks. Calling this API sets the current mouse cursor style, for example, displaying an I-beam cursor when hovering over a text editing area, displaying a move cursor on a draggable element, or displaying a pointing-hand cursor when hovering over a map marker. |
 
 ## Examples
 
@@ -69,164 +77,6 @@ struct Index {
       })
     }
     .width('100%')
-  }
-}
-```
-
-### Example 1: Implementing a Frame-by-Frame Layout Effect
-
-The following example implements the frame-by-frame layout effects by changing the width of the Text component.
-
-
-
-```TypeScript
-@AnimatableExtend(Text)
-function animatableWidth(width: number) {
-  .width(width)
-}
-
-@Entry
-@Component
-struct AnimatablePropertyExample {
-  @State textWidth: number = 80;
-
-  build() {
-    Column() {
-      Text("AnimatableProperty")
-        .animatableWidth(this.textWidth)
-        .animation({ duration: 2000, curve: Curve.Ease })
-      Button("Play")
-        .onClick(() => {
-          this.textWidth = this.textWidth === 80 ? 160 : 80;
-        })
-    }.width("100%")
-    .padding(10)
-  }
-}
-```
-
-### Example 2: Implementing a Polyline Animation Effect
-
-The following example implements a polyline animation effect.
-
-```TypeScript
-class Point {
-  x: number
-  y: number
-
-  constructor(x: number, y: number) {
-    this.x = x;
-    this.y = y;
-  }
-
-  plus(rhs: Point): Point {
-    return new Point(this.x + rhs.x, this.y + rhs.y);
-  }
-
-  subtract(rhs: Point): Point {
-    return new Point(this.x - rhs.x, this.y - rhs.y);
-  }
-
-  multiply(scale: number): Point {
-    return new Point(this.x * scale, this.y * scale);
-  }
-
-  equals(rhs: Point): boolean {
-    return this.x === rhs.x && this.y === rhs.y;
-  }
-}
-
-// PointVector implements the AnimatableArithmetic<T> API.
-class PointVector extends Array<Point> implements AnimatableArithmetic<PointVector> {
-  constructor(value: Array<Point>) {
-    super();
-    value.forEach(point => this.push(point));
-  }
-
-  plus(rhs: PointVector): PointVector {
-    let result = new PointVector([]);
-    const len = Math.min(this.length, rhs.length);
-    for (let i = 0; i < len; i++) {
-      result.push((this as Array<Point>)[i].plus((rhs as Array<Point>)[i]));
-    }
-    return result;
-  }
-
-  subtract(rhs: PointVector): PointVector {
-    let result = new PointVector([]);
-    const len = Math.min(this.length, rhs.length);
-    for (let i = 0; i < len; i++) {
-      result.push((this as Array<Point>)[i].subtract((rhs as Array<Point>)[i]));
-    }
-    return result;
-  }
-
-  multiply(scale: number): PointVector {
-    let result = new PointVector([]);
-    for (let i = 0; i < this.length; i++) {
-      result.push((this as Array<Point>)[i].multiply(scale));
-    }
-    return result;
-  }
-
-  equals(rhs: PointVector): boolean {
-    if (this.length !== rhs.length) {
-      return false;
-    }
-    for (let i = 0; i < this.length; i++) {
-      if (!(this as Array<Point>)[i].equals((rhs as Array<Point>)[i])) {
-        return false;
-      }
-    }
-    return true;
-  }
-
-  get(): Array<Object[]> {
-    let result: Array<Object[]> = [];
-    this.forEach(point => result.push([point.x, point.y]));
-    return result;
-  }
-}
-
-@AnimatableExtend(Polyline)
-function animatablePoints(points: PointVector) {
-  // Convert PointVector to the array format required by the points attribute of Polyline.
-  .points(points.get())
-}
-
-@Entry
-@Component
-struct AnimatablePropertyExample {
-  @State points: PointVector = new PointVector([
-    new Point(50, Math.random() * 200),
-    new Point(100, Math.random() * 200),
-    new Point(150, Math.random() * 200),
-    new Point(200, Math.random() * 200),
-    new Point(250, Math.random() * 200),
-  ])
-
-  build() {
-    Column() {
-      Polyline()
-        .animatablePoints(this.points)
-        .animation({ duration: 1000, curve: Curve.Ease }) // Set the animation parameters.
-        .size({ height: 220, width: 300 })
-        .fill(Color.Green)
-        .stroke(Color.Red)
-        .backgroundColor('#eeaacc')
-      Button("Play")
-        .onClick(() => {
-          // points is a data type that implements the animation protocol. During the animation, points can be changed from the previous PointVector data to the new one based on the defined operation rules and animation parameters to generate the PointVector data of each frame and then generate an animation.
-          this.points = new PointVector([
-            new Point(50, Math.random() * 200),
-            new Point(100, Math.random() * 200),
-            new Point(150, Math.random() * 200),
-            new Point(200, Math.random() * 200),
-            new Point(250, Math.random() * 200),
-          ]);
-        })
-    }.width("100%")
-    .padding(10)
   }
 }
 ```
@@ -438,89 +288,6 @@ struct OnAccessibilityFocusExample {
       .padding(24)
       .width('100%')
     }
-  }
-}
-```
-
-This example demonstrates how to set the hover effect for components using hoverEffect.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct HoverExample {
-  @State isHoverVal: boolean = false
-
-  build() {
-    Column({ space: 5 }) {
-      Column({ space: 5 }) {
-        Text('Scale').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 80 })
-        Column()
-          .width('80%')
-          .height(200)
-          .backgroundColor(Color.Gray)
-          .position({ x: 40, y: 120 })
-          .hoverEffect(HoverEffect.Scale)
-          .onHover((isHover: boolean) => {
-            console.info(`Scale isHover: ${isHover}`);
-            this.isHoverVal = isHover;
-          })
-
-        Text('Board').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 380 });
-        Column()
-          .width('80%')
-          .height(200)
-          .backgroundColor(Color.Yellow)
-          .hoverEffect(HoverEffect.Highlight)
-          .position({ x: 40, y: 420 })
-          .onHover((isHover: boolean) => {
-            console.info(`Highlight isHover: ${isHover}`);
-            this.isHoverVal = isHover;
-          })
-      }
-      .hoverEffect(HoverEffect.None)
-      .width('100%')
-      .height('100%')
-      .border({ width: 1 })
-      .onHover((isHover: boolean) => {
-        console.info('HoverEffect.None');
-        this.isHoverVal = isHover;
-      })
-    }
-  }
-}
-```
-
-```TypeScript
-// After the allowForceDark(false) attribute is added to a component, the color inversion is not used for the current component and all its child components.
-@Entry
-@Component
-struct ComponentPage {
-  build() {
-    Column() {
-      Column() {
-        Text("Hello World")
-          .fontSize(20)
-          .fontColor(Color.Blue)
-          .onClick(() => {
-            console.info(`Text is clicked`);
-          })
-      }
-      .allowForceDark(false) // Column and its child component Text do not use the color inversion, and are not affected by the color inversion used by the parent component Column.
-
-      Row() {
-        Button('BUTTON')
-          .backgroundColor(Color.Grey)
-          .allowForceDark(true)
-          .onClick(() => {
-            console.info(`Button is clicked`);
-          })
-      }
-      .allowForceDark(false) // Row and its child component Button do not use the color inversion, and are not affected by the color inversion used by the parent component Column.
-    }
-    .allowForceDark(true)
-    .width('100%')
-    .height('100%')
   }
 }
 ```
@@ -843,6 +610,8265 @@ struct TouchableExample {
 }
 ```
 
+This example demonstrates property animations using the animation API.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AttrAnimationExample {
+  @State widthSize: number = 250
+  @State heightSize: number = 100
+  @State rotateAngle: number = 0
+  @State flag: boolean = true
+
+  build() {
+    Column() {
+      Button('change size')
+        .onClick(() => {
+          if (this.flag) {
+            this.widthSize = 150
+            this.heightSize = 60
+          } else {
+            this.widthSize = 250
+            this.heightSize = 100
+          }
+          this.flag = !this.flag
+        })
+        .margin(30)
+        .width(this.widthSize)
+        .height(this.heightSize)
+        .animation({
+          duration: 2000,
+          curve: Curve.EaseOut,
+          iterations: 3,
+          playMode: PlayMode.Normal
+        })
+      Button('change rotate angle')
+        .onClick(() => {
+          this.rotateAngle = 90
+        })
+        .margin(50)
+        .rotate({ angle: this.rotateAngle })
+        // Configure a damping curve for the rotation angle change, with a 500 ms delay before starting, and alternating playback in an infinite loop.
+        .animation({
+          duration: 1200,
+          curve: Curve.Friction,
+          delay: 500,
+          iterations: -1, // The value -1 indicates that the animation is played for an unlimited number of times.
+          playMode: PlayMode.Alternate,
+          expectedFrameRateRange: {
+            min: 20,
+            max: 120,
+            expected: 90,
+          }
+        })
+    }.width('100%').margin({ top: 20 })
+  }
+}
+```
+
+### Example 1: Setting Sheets with Different Heights
+
+This example demonstrates how to set different heights for sheets using the height attribute.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SheetTransitionExample {
+  @State isShow: boolean = false;
+  @State sheetHeight: number = 300;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Button("change height")
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.sheetHeight = 500;
+        })
+
+      Button("Set Illegal height")
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.sheetHeight = -1;
+        })
+
+      Button("close modal 1")
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.isShow = false;
+        })
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Column() {
+      Button("transition modal 1")
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          height: this.sheetHeight,
+          backgroundColor: Color.Green,
+          onWillAppear: () => {
+            console.info("BindSheet onWillAppear.");
+          },
+          onAppear: () => {
+            console.info("BindSheet onAppear.");
+          },
+          onWillDisappear: () => {
+            console.info("BindSheet onWillDisappear.");
+          },
+          onDisappear: () => {
+            console.info("BindSheet onDisappear.");
+          }
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 2: Setting Three Different Height Detents
+
+This example demonstrates how to use the detents attribute of bindSheet to set three different height detents for a sheet.
+
+The drag bar is effective only when there are multiple height detents.
+
+Unlike the height attribute, which can set different heights at different times, the detents attribute provides a gesture to switch between detent heights and is more suitable for fixed height intervals.
+
+If the height range is uncertain or there may be more than three different heights, avoid using the detents attribute.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SheetTransitionExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Button("content1")
+        .margin(10)
+        .fontSize(20)
+
+      Button("content2")
+        .margin(10)
+        .fontSize(20)
+    }
+    .width('100%')
+  }
+
+  build() {
+    Column() {
+      Button("transition modal 1")
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
+          blurStyle: BlurStyle.Thick,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+        })
+    }
+    .justifyContent(FlexAlign.Start)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 3: Setting the Border Width and Color
+
+This example demonstrates how to use the borderWidth and borderColor attributes with LocalizedEdgeWidths and LocalizedEdgeColors types in bindSheet.
+
+The following shows how the example is represented with left-to-right scripts.
+
+
+
+The following shows how the example is represented with right-to-left scripts.
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetTransitionExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Button("content1")
+        .margin(10)
+        .fontSize(20)
+
+      Button("content2")
+        .margin(10)
+        .fontSize(20)
+    }
+    .width('100%')
+  }
+
+  build() {
+    Column() {
+      Button("transition modal 1")
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.Thick,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+          borderWidth: { top: LengthMetrics.vp(10), start: LengthMetrics.vp(10), end: LengthMetrics.vp(20) },
+          borderColor: { top: Color.Pink, start: Color.Blue, end: Color.Yellow },
+        })
+    }
+    .justifyContent(FlexAlign.Start)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 4: Using Dismiss Callbacks
+
+This example shows how to register onWillDismiss and onWillSpringBackWhenDismiss with bindSheet.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BindSheetExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Button("CONTEXT")
+        .margin(10)
+        .fontSize(20)
+    }
+  }
+
+  build() {
+    Column() {
+      Button("NoRegisterSpringback")
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          height: SheetSize.MEDIUM,
+          blurStyle: BlurStyle.Thick,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+          preferType: SheetType.CENTER,
+
+          onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
+            // Call dismiss to close the half-modal page only when the user swipes down.
+            if (dismissSheetAction.reason == DismissReason.SLIDE_DOWN) {
+                dismissSheetAction.dismiss(); // Close the half-modal page.
+            }
+          }),
+
+          onWillSpringBackWhenDismiss: ((springBackAction: SpringBackAction) => {
+          // No springBack is registered, so the modal sheet will not bounce back when swiped down.
+          // SpringBackAction.springBack();
+          }),
+        })
+    }
+  }
+}
+```
+
+### Example 5: Setting the Content Update Mode
+
+ScrollSizeMode.CONTINUOUS continuously updates the content and is suitable for scenarios where detents switch between multiple heights.
+
+Whenever possible, minimize UI loading time within the builder, as real-time content refreshing during scrolling has higher performance requirements.
+
+When the sheet is dragged to switch between detents, the content height is refreshed only after the sheet is released.
+
+
+
+When the sheet is dragged to switch between detents, the content height is refreshed in real time during the drag.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Column()
+        .backgroundColor(Color.Blue)
+        .height(200)
+        .width('100%')
+      Column()
+        .backgroundColor(Color.Green)
+        .height(200)
+        .width('100%')
+    }
+  }
+
+  build() {
+    Column() {
+      Button("BindSheet")
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          detents: [300, 600, 900],
+          uiContext: this.getUIContext(),
+          mode: SheetMode.OVERLAY,
+          scrollSizeMode: ScrollSizeMode.CONTINUOUS,
+          backgroundColor: Color.Orange,
+          title: { title: 'Title', subtitle: 'Subtitle' }
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 6: Configuring the Sheet to Resize to Avoid the Keyboard
+
+This example demonstrates how to adjust the scrollable content within a sheet when the keyboard height changes by setting SheetKeyboardAvoidMode to RESIZE_ONLY.
+
+
+
+```TypeScript
+// xxx.ets
+import window from '@ohos.window';
+import { BusinessError } from '@ohos.base';
+
+@Entry
+@Component
+struct ListenKeyboardHeightChange {
+  @State isShow: boolean = false;
+  @State avoidMode: SheetKeyboardAvoidMode = SheetKeyboardAvoidMode.RESIZE_ONLY;
+  scroller = new Scroller();
+  private numberList: number[] = [0, 1, 2, 3, 4, 5, 6];
+  windowClass: window.Window | undefined = undefined;
+
+  aboutToAppear(): void {
+    try {
+      window.getLastWindow(this.getUIContext().getHostContext(), (err: BusinessError, data) => {
+        if (err && err.code) {
+          console.error(`Failed to obtain the top window, Code: ${err.code}, message: ${err.message}`);
+          return;
+        }
+        this.windowClass = data;
+        try {
+          if (this.windowClass !== undefined) {
+            console.info('success in listen height change');
+            this.windowClass.on('keyboardHeightChange', this.callback);
+          }
+        } catch (exception) {
+          console.error(`Failed to enable the listener for keyboard height changes, Cause code: ${exception.code}, message: ${exception.message}`);
+        }
+        console.info('Succeeded in obtaining the top window. Data: ' + JSON.stringify(data));
+      });
+    } catch (exception) {
+      console.error(`Failed to obtain the top window, Cause code: ${exception.code}, message: ${exception.message}`);
+    }
+  }
+
+  callback = (height: number) => {
+    console.info('height change: ' + height);
+    if (height !== 0) {
+      this.scroller.scrollTo({
+        xOffset: 0, yOffset: height + this.scroller.currentOffset().yOffset,
+        animation: { duration: 1000, curve: Curve.Ease, canOverScroll: false }
+      });
+    }
+  }
+
+  @Builder
+  myBuilder() {
+    Scroll(this.scroller) {
+      Column() {
+        ForEach(this.numberList, (item: number) => {
+          Row() {
+            Text(item.toString())
+              .width('80%')
+              .height(60)
+              .backgroundColor('#3366CC')
+              .borderRadius(15)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .margin({ top: 5 })
+          }
+        }, (item: number) => item.toString())
+
+        TextInput().height('100')
+
+        Flex({ alignItems: ItemAlign.End }) {
+          Row() {
+            Button("click")
+              .margin(10)
+              .fontSize(20)
+              .width('45%')
+
+            Button("cancel")
+              .margin(10)
+              .fontSize(20)
+              .width('45%')
+          }.width('100%')
+        }.height(100)
+      }.margin({ right: 15, bottom: 50 })
+    }
+    .height('100%')
+    .scrollBar(BarState.On)
+    .scrollable(ScrollDirection.Vertical)
+  }
+
+  build() {
+    Column() {
+      Button("transition modal 1")
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          height: 750,
+          backgroundColor: Color.Gray,
+          blurStyle: BlurStyle.Thick,
+          showClose: true,
+          title: { title: "title", subtitle: "subtitle" },
+          keyboardAvoidMode: SheetKeyboardAvoidMode.RESIZE_ONLY,
+        })
+    }
+    .justifyContent(FlexAlign.Start)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 7: Setting the Corner Radius in a Mirrored Layout
+
+This example demonstrates how to set different corner radii for a sheet in a mirrored layout. Typically, to avoid a poor visual experience, do not set different values.
+
+Since API version 15, the radius attribute supports the LocalizedBorderRadiuses type.
+
+The following shows how the example is represented with left-to-right scripts.
+
+
+
+The following shows how the example is represented with right-to-left scripts.
+
+
+
+```TypeScript
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetTransitionExample {
+  @State isShow: boolean = false;
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Button("content1")
+        .margin(10)
+        .fontSize(20)
+
+      Button("content2")
+        .margin(10)
+        .fontSize(20)
+    }
+    .width('100%')
+  }
+
+  build() {
+    Column() {
+      Button("transition modal 1")
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$this.isShow, this.myBuilder(), {
+          detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
+          title: { title: "title", subtitle: "subtitle" },
+          radius: { topStart: LengthMetrics.vp(50), topEnd: LengthMetrics.vp(10) },
+        })
+    }
+    .justifyContent(FlexAlign.Start)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 8: Implementing a Side Sheet
+
+This example demonstrates how to implement a side sheet. This feature is supported since API version 20.
+
+```TypeScript
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetSideExample {
+  @State isShowSide: boolean = false;
+  @State enableOutsideInteractive: boolean = false;
+  @State borderWidths: LocalizedEdgeWidths | undefined = undefined;
+  @State borderColors: Resource | undefined = undefined;
+  private numberList: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+
+  @Builder
+  sideBuilder() {
+    Column() {
+      ForEach(this.numberList, (item: number) => {
+        Row() {
+          Text(item.toString())
+            .width('90%')
+            .height(60)
+            .backgroundColor('#3366CC')
+            .borderRadius(15)
+            .fontSize(16)
+            .textAlign(TextAlign.Center)
+            .margin({ top: 5 })
+        }
+      }, (item: number) => item.toString())
+      TextInput()
+        .margin({ top: 5 })
+      Text('Change Sheet Interaction Mode')
+        .fontSize(22).fontColor(Color.White).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
+        .width('100%').height(50).backgroundColor('#2ebd82')
+      Button("change enableOutsideInteractive = " + this.enableOutsideInteractive)
+        .margin({ top: 5 })
+        .onClick(() => {
+          this.enableOutsideInteractive = !this.enableOutsideInteractive;
+          if (this.enableOutsideInteractive) {
+            this.borderWidths = {start : LengthMetrics.vp(1)};
+            this.borderColors = $r('sys.color.comp_divider');
+          } else {
+            this.borderWidths = undefined;
+            this.borderColors = undefined;
+          }
+        })
+    }
+    .width('100%')
+    .height('auto')
+  }
+
+
+  build() {
+    Column({space:3}) {
+      Button("Side sheet")
+        .onClick(() => {
+          this.isShowSide = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet($$this.isShowSide, this.sideBuilder(), {
+          title: { title: "SideSheet", subtitle: "Default width" },
+          backgroundColor: Color.Grey,
+          onWillAppear: () => {
+            console.info("SideSheet onWillAppear.");
+          },
+          onAppear: () => {
+            console.info("SideSheet onAppear.");
+          },
+          onWillDisappear: () => {
+            console.info("SideSheet onWillDisappear.");
+          },
+          onDisappear: () => {
+            console.info("SideSheet onDisappear.");
+          },
+
+          preferType: SheetType.SIDE,
+          blurStyle: BlurStyle.Regular,
+          maskColor: "#4bffc62d",  // Customize the mask color.
+          enableOutsideInteractive: this.enableOutsideInteractive,
+
+          borderWidth: this.borderWidths,
+          borderColor: this.borderColors,
+
+          onHeightDidChange: (height: number) => {
+            console.info("SideSheet height change:" + height);
+          },
+          onTypeDidChange: (type: SheetType) => {
+            console.info("SideSheet type change:" + type);
+          },
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 9: Implementing a Full-Screen Content Cover Sheet
+
+This example demonstrates how to implement a full-screen sheet. This feature is supported since API version 20.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ContentCoverExample {
+  @State isShow: boolean = false
+
+  @Builder
+  myBuilder() {
+    Column() {
+      Button("Close Content Cover Sheet")
+        .margin(10)
+        .fontSize(20)
+        .onClick(() => {
+          this.isShow = false;
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  build() {
+    Column() {
+      Button("Show Content Cover Sheet")
+        .onClick(() => {
+          this.isShow = true;
+        })
+        .fontSize(20)
+        .margin(10)
+        .bindSheet(this.isShow, this.myBuilder(), {
+          modalTransition: ModalTransition.DEFAULT,
+          preferType: SheetType.CONTENT_COVER,
+          backgroundColor: '#ffd5d5d5',
+          onWillAppear: () => {
+            console.info("ContentCover onWillAppear.");
+          },
+          onAppear: () => {
+            console.info("ContentCover onAppear.");
+          },
+          onWillDisappear: () => {
+            console.info("ContentCover onWillDisappear.");
+          },
+          onDisappear: () => {
+            console.info("ContentCover onDisappear.");
+          },
+        })
+    }
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor(Color.White)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 10: Setting the System Material for a Half-Modal
+
+This example sets the system material through the systemMaterial attribute of the half-modal.
+
+Since API version 26.0.0, the [SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md) adds the systemMaterial attribute.
+
+```TypeScript
+// xxx.ets
+import { uiMaterial } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct SheetMaterialExample {
+  @State isShow: boolean = false;
+  @State sheetHeight: number = 300;
+  @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
+    style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
+  });
+
+  @Builder
+  myBuilder() {
+    Column({ space: 10 }) {
+      Text("Text")
+        .fontSize(20)
+        .margin(10)
+    }
+    .width('100%')
+    .height('100%')
+  }
+
+  build() {
+    Stack() {
+      // Replace this with the actual resource file.
+      Image($r('app.media.startIcon'))
+      Column() {
+        Button("open Sheet")
+          .onClick(() => {
+            this.isShow = true;
+          })
+          .fontSize(20)
+          .margin(10)
+          .bindSheet($$this.isShow, this.myBuilder(), {
+            height: this.sheetHeight,
+            // The following APIs are not recommended for use together with systemMaterial.
+            // borderWidth: 20,
+            // borderColor: Color.Red,
+            // backgroundColor: Color.Green,
+            // shadow: { radius: 30, type: ShadowType.COLOR, color: Color.Yellow },
+            // Some material effects do not have a background of their own and will be overridden by the color set through backgroundColor. To present such material effects, set the background color to transparent.
+            backgroundColor: Color.Transparent,
+            systemMaterial: this.myMaterial // The systemMaterial attribute is added since API version 26.0.0.
+          })
+      }
+      .justifyContent(FlexAlign.Center)
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+This example demonstrates how to set the motion path for the translation animation of a component. This method only configures the motion path parameters. To produce an actual translation animation effect, it must be used together with animation trigger methods such as animateTo and changes in component attribute states. Setting motionPath alone does not trigger an animation.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct MotionPathExample {
+  @State toggle: boolean = true;
+
+  build() {
+    Column() {
+      Button('click me').margin(50)
+        .motionPath({
+          path: 'Mstart.x start.y L300 200 L300 500 Lend.x end.y',
+          from: 0.0,
+          to: 1.0,
+          rotatable: true
+        }) // Set the motion path: from the start point through (300,200) and (300,500) to the end point.
+        .onClick(() => {
+          this.getUIContext()?.animateTo({ duration: 4000, curve: Curve.Linear }, () => {
+            this.toggle = !this.toggle; // Change the component's position using this.toggle.
+          });
+        })
+    }.width('100%').height('100%').alignItems(this.toggle ? HorizontalAlign.Start : HorizontalAlign.Center)
+  }
+}
+```
+
+This example demonstrates how to use reuseId to identify the reuse group of a custom component.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct MyComponent {
+  @State isShow: boolean = true;
+  private type: string = 'type1';
+
+  build() {
+    Column() {
+      Button('ChangeType')
+        .onClick(() => {
+          this.type = 'type2';
+        })
+      Button('Switch')
+        .onClick(() => {
+          this.isShow = !this.isShow;
+        })
+      if (this.isShow) {
+        ReusableChildComponent({ type: this.type })
+          .reuseId(this.type)
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+
+@Reusable
+@Component
+struct ReusableChildComponent {
+  @State type: string = '';
+
+  aboutToAppear() {
+    console.info(`ReusableChildComponent Appear ${this.type}`);
+  }
+
+  aboutToReuse(params: ESObject) {
+    console.info(`ReusableChildComponent Reuse ${this.type}`);
+    this.type = params.type;
+  }
+
+  build() {
+    Row() {
+      Text(this.type)
+        .fontSize(20)
+        .margin({ left: 10 })
+    }.margin({ left: 10, right: 10 })
+  }
+}
+```
+
+This example sets the component size change event on the Text component. When the Text size changes, the onSizeChange event is triggered to obtain the oldValue and newValue parameters.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AreaExample {
+  @State value: string = 'Text'
+  @State sizeValue: string = ''
+
+  build() {
+    Column() {
+      Text(this.value)
+        .backgroundColor(Color.Green)
+        .margin(30)
+        .fontSize(20)
+        .onClick(() => {
+          this.value = this.value + 'Text';
+        })
+        .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
+          console.info(`Ace: on size change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
+          this.sizeValue = JSON.stringify(newValue);
+        })
+      Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
+    }
+    .width('100%').height('100%').margin({ top: 30 })
+  }
+}
+```
+
+This example demonstrates how to use [animateToImmediately](#animatetoimmediately) to implement the immediate delivery of explicit animations.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AnimateToImmediatelyExample {
+  @State widthSize: number = 250;
+  @State heightSize: number = 100;
+  @State opacitySize: number = 0;
+  private flag: boolean = true;
+
+  build() {
+    Column() {
+      Column()
+      .width(this.widthSize)
+      .height(this.heightSize)
+      .backgroundColor(Color.Green)
+      .opacity(this.opacitySize)
+      Button('change size')
+        .margin(30)
+        .onClick(() => {
+          // Compare and demonstrate, through if/else branches, the difference in effect between the immediate delivery of animation by animateToImmediately and the delayed delivery of animation by animateTo.
+          // Demonstrate the flag switching scenario: when true, opacity is delivered immediately and size is delivered with delay; when false, size is delivered immediately and opacity is delivered with delay.
+          if (this.flag) {
+            animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 1;
+            })
+            this.getUIContext()?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.widthSize = 150;
+              this.heightSize = 60;
+            })
+          } else {
+            animateToImmediately({
+              delay: 0,
+              duration: 1000
+            }, () => {
+              this.widthSize = 250;
+              this.heightSize = 100;
+            })
+            this.getUIContext()?.animateTo({
+              delay: 1000,
+              duration: 1000
+            }, () => {
+              this.opacitySize = 0;
+            })
+          }
+          this.flag = !this.flag;
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### Example 1: Setting the Brightness Effect
+
+This example demonstrates how to add a brightness effect to a component using advancedBlendMode.
+
+Below is how the component looks with the brightness effect applied:
+
+
+
+```TypeScript
+// xxx.ets
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// Use uiEffect.createBrightnessBlender to create a BrightnessBlender instance, which can be used to apply the brightness effect to a component.
+let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
+  cubicRate: 0.5,
+  quadraticRate: 0.5,
+  linearRate: 0.5,
+  degree: 0.5,
+  saturation: 0.5,
+  positiveCoefficient: [2.3, 4.5, 2.0],
+  negativeCoefficient: [0.5, 2.0, 0.5],
+  fraction: 0.5
+});
+// Caution: Using a custom object as the Blender input parameter does not take effect. Use the uiEffect.createBrightnessBlender method to create a Blender instance.
+let customBlender: uiEffect.BrightnessBlender = {
+  cubicRate: 0.5,
+  quadraticRate: 0.5,
+  linearRate: 0.5,
+  degree: 0.5,
+  saturation: 0.5,
+  positiveCoefficient: [2.3, 4.5, 2.0],
+  negativeCoefficient: [0.5, 2.0, 0.5],
+  fraction: 0.5
+};
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Stack() {
+      Image($r('app.media.img_1'))
+
+      Column() {
+        Text(String.fromCodePoint(0x1F600) + 'TEST')
+          .fontSize(60)
+
+        Text(String.fromCodePoint(0x1F600) + 'FAST')
+          .fontSize(60)
+          .advancedBlendMode(blender)
+
+        Text(String.fromCodePoint(0x1F600) + 'OFFSCREEN')
+          .fontSize(60)
+          .advancedBlendMode(blender, BlendApplyType.OFFSCREEN)
+
+        Text(String.fromCodePoint(0x1F600) + 'TEST')
+          .fontSize(60)
+          .advancedBlendMode(customBlender)
+      }
+    }
+  }
+}
+```
+
+### Example 2: Setting the Render Group Exclusion Attribute
+
+This example demonstrates how to use the [excludeFromRenderGroup](arkts-arkui-common-comp-commonmethod-c-sys.md#excludefromrendergroup) to avoid repeated invalidations of the render group cache in scenarios involving attribute animations on the component.
+
+The [excludeFromRenderGroup](arkts-arkui-common-comp-commonmethod-c-sys.md#excludefromrendergroup) attribute is supported since API version 22.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ExcludeFromRenderGroupDemo {
+  readonly color1: ResourceColor = '#2787d9';
+  readonly color2: ResourceColor = '#ffc000';
+  @State myColor: ResourceColor = this.color1;
+  @State isExcluded: boolean = false;
+  animationCnt: number = 0;
+
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        Column()
+          .width(100)
+          .height(100)
+          .backgroundColor(this.myColor)
+          // Set the excludeFromRenderGroup attribute. When this component performs a background color animation, the actual display effect requires frequent attribute updates, and the component area occupies only part of the render group area. Therefore, set the excludeFromRenderGroup attribute to reuse the render group cache.
+          .excludeFromRenderGroup(this.isExcluded)
+          .onClick(() => {
+            this.isExcluded = true; // Before playing the animation, change the is attribute of the render group to true.
+            this.animationCnt++;
+            this.getUIContext().animateTo({
+              duration: 600,
+              onFinish: () => {
+                this.animationCnt--;
+                if (this.animationCnt === 0) { // animationCnt becomes 0, indicating that all animations have ended.
+                  this.isExcluded = false; // After the animations of the component end, if no attribute change occurs on the component, you can reset this attribute of the render group.
+                }
+              }
+            }, () => {
+              this.myColor = (this.myColor === this.color1) ? this.color2 : this.color1;
+            })
+          })
+        // Other components in the render group.
+        Image($r('app.media.bg1')) // $r('app.media.bg1') needs to be replaced with the image resource file required by the developer.
+          .width(100)
+          .height(100)
+        Image($r('app.media.bg1')) // $r('app.media.bg1') needs to be replaced with the image resource file required by the developer.
+          .width(100)
+          .height(100)
+      }.renderGroup(true)
+      .width('100%')
+      .height('70%')
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+### Example 3: Setting the Brightening and Fade-Out Effects
+
+Since API version 23, this example demonstrates how to use advancedBlendMode to add both the brightening and fade-out effects to a component.
+
+
+
+```TypeScript
+// xxx.ets
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+// Use uiEffect.createBrightnessBlender to create a BrightnessBlender instance, which can be used to apply the brightness effect to a component.
+let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
+  cubicRate: 0.5,
+  quadraticRate: 0.5,
+  linearRate: 0.5,
+  degree: 0.5,
+  saturation: 0.5,
+  positiveCoefficient: [2.3, 4.5, 2.0],
+  negativeCoefficient: [0.5, 2.0, 0.5],
+  fraction: 0.3
+});
+
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Stack() {
+        Column() {
+          Text(String.fromCodePoint(0x1F600) + ' BlendApplyType OFFSCREEN WITH BACKGROUND ' +
+          String.fromCodePoint(0x1F600))
+            .fontSize(35)
+            .fontColor(Color.Black)
+        }
+        .advancedBlendMode(blender, BlendApplyType.FAST)
+
+        Column()
+          .width('100%')
+          .height('100%')
+          .linearGradient({
+            direction: GradientDirection.Right,
+            colors: [
+              [Color.Transparent, 0.0],
+              [Color.Black, 0.50],
+              [Color.Black, 0.55],
+              [Color.Transparent, 1.0]
+            ]
+          })
+          .blendMode(BlendMode.DST_IN, BlendApplyType.FAST)
+      }
+      .advancedBlendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN_WITH_BACKGROUND)
+      .width('100%')
+      .height('20%')
+    }
+    .backgroundColor('rgb(254, 238, 239)')
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+This example demonstrates how to set a keyframe animation through keyframeAnimateTo, including the delay, the onFinish completion callback, and the curve configuration of each keyframe.
+
+```TypeScript
+// xxx.ets
+import { UIContext } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct KeyframeDemo {
+  @State myScale: number = 1.0;
+  uiContext: UIContext | undefined = undefined;
+
+  aboutToAppear() {
+    this.uiContext = this.getUIContext?.();
+  }
+
+  build() {
+    Column() {
+      Circle()
+        .width(100)
+        .height(100)
+        .fill('#46B1E3')
+        .margin(100)
+        .scale({ x: this.myScale, y: this.myScale })
+        .onClick(() => {
+          if (!this.uiContext) {
+            console.info('no uiContext, keyframe failed');
+            return;
+          }
+          this.myScale = 1;
+          // Set the keyframe animation to play three times in total, with a delay of 200 ms, and trigger the onFinish callback when it ends.
+          this.uiContext.keyframeAnimateTo({
+              iterations: 3,
+              delay: 200,
+              onFinish: () => {
+                console.info('keyframe animate finish');
+              },
+              // expectedFrameRateRange is added since API version 19.
+              expectedFrameRateRange: {
+                min: 10,
+                max: 120,
+                expected: 60,
+              }
+            }, [
+            {
+              // The first keyframe animation lasts 800 ms, uses the EaseIn curve, and animates the scale attribute from 1 to 1.5.
+              duration: 800,
+              curve: Curve.EaseIn,
+              event: () => {
+                this.myScale = 1.5;
+              }
+            },
+            {
+              // The second keyframe animation lasts 500 ms, uses the EaseOut curve, and animates the scale attribute from 1.5 to 1.
+              duration: 500,
+              curve: Curve.EaseOut,
+              event: () => {
+                this.myScale = 1;
+              }
+            }
+          ]);
+        })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+This example demonstrates how to use the visibility configuration to achieve different visibility control effects.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct VisibilityExample {
+  build() {
+    Column() {
+      Column() {
+        // The component is hidden and does not take up space in the layout.
+        Text('None').fontSize(9).width('90%').fontColor(0xCCCCCC);
+        Row().visibility(Visibility.None).width('90%').height(80).backgroundColor(0xAFEEEE);
+
+        // The component is hidden but takes up space in the layout.
+        Text('Hidden').fontSize(9).width('90%').fontColor(0xCCCCCC);
+        Row().visibility(Visibility.Hidden).width('90%').height(80).backgroundColor(0xAFEEEE);
+
+        // The component is visible, which is the default display mode.
+        Text('Visible').fontSize(9).width('90%').fontColor(0xCCCCCC);
+        Row().visibility(Visibility.Visible).width('90%').height(80).backgroundColor(0xAFEEEE);
+      }.width('90%').border({ width: 1 });
+    }.width('100%').margin({ top: 5 });
+  }
+}
+```
+
+### Example 1: Implementing Custom Gesture Judgment
+
+In this example, the [onGestureJudgeBegin](arkts-arkui-common-comp-commonmethod-c.md#ongesturejudgebegin) event is configured to implement customized judgment of the press and hold, fast swipe, swipe, pinch, and drag gestures. From API version 21, the [BaseEvent](ts-universal-events-click.md#baseevent8) axisPinch attribute can be used to obtain the two-finger zoom ratio.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = '';
+
+  build() {
+    Column() {
+      Row({ space: 20 }) {
+        Text(this.message).width(200).height(80).backgroundColor(Color.Pink)
+          .fontSize(25)
+      }.margin(20)
+    }
+    .width('100%')
+    .height(200)
+    .borderWidth(2)
+    .onDragStart(() => {
+      this.message = 'drag';
+      console.info('Drag start.');
+    })
+    .gesture(
+      TapGesture()
+        .tag('tap1') // Set the tap gesture flag.
+        .onAction(() => {
+          this.message = 'tap1';
+        })
+    )
+    .gesture(
+      LongPressGesture()
+        .tag('longPress1') // Set the long press gesture flag.
+        .onAction(() => {
+          this.message = 'longPress';
+        })
+    )
+    .gesture(
+      SwipeGesture()
+        .tag('swipe1') // Set the fast swipe gesture flag.
+        .onAction(() => {
+          this.message = 'swipe1';
+        })
+    )
+    .gesture(
+      PanGesture()
+        .tag('pan1') // Set the swipe gesture flag.
+        .onActionStart(() => {
+          this.message = 'pan1';
+        })
+    )
+    .gesture(
+      PinchGesture()
+        .tag('pinch1') // Set the pinch gesture flag.
+        .onActionStart(() => {
+          this.message = 'pinch1'
+        })
+    )
+    .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+      // If the gesture type is a long press gesture, convert the event to a long press gesture event.
+      if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
+        let longPressEvent = event as LongPressGestureEvent;
+        console.info(`repeat ${longPressEvent.repeat}`);
+      }
+      // If the gesture type is a swipe gesture, convert the event to a swipe event.
+      if (gestureInfo.type == GestureControl.GestureType.SWIPE_GESTURE) {
+        let swipeEvent = event as SwipeGestureEvent;
+        console.info(`angle ${swipeEvent.angle}`);
+      }
+      // If the gesture type is a swipe gesture, convert the event to a swipe gesture event.
+      if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
+        let panEvent = event as PanGestureEvent;
+        console.info(`velocity ${panEvent.velocity}`);
+      }
+      // If the gesture type is a pinch gesture, convert the event to a pinch event.
+      if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
+        let pinchEvent = event as PinchGestureEvent;
+        console.info(`axisPinch ${pinchEvent.axisPinch}`);
+      }
+      // Custom criteria
+      if (gestureInfo.type == GestureControl.GestureType.DRAG) {
+        // If GestureJudgeResult.REJECT is returned, the pan gesture recognition fails.
+        return GestureJudgeResult.REJECT;
+      } else if (gestureInfo.tag === 'longPress1' && event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+        // If GestureJudgeResult.CONTINUE is returned, the system recognition result is retained.
+        return GestureJudgeResult.CONTINUE;
+      }
+      return GestureJudgeResult.CONTINUE;
+    })
+  }
+}
+```
+
+### Example 2: Implementing Custom Area Gesture Judgment
+
+This example uses onGestureJudgeBegin to determine whether to respond to the press and hold gesture and drag gesture based on the area where the gesture is triggered.
+
+
+
+```TypeScript
+// xxx.ets
+import { PromptAction } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  scroller: Scroller = new Scroller()
+  promptAction: PromptAction = this.getUIContext().getPromptAction();
+
+  build() {
+    Scroll(this.scroller) {
+      Column({ space: 8 }) {
+        Text('The upper red area is bound to the long press gesture, and the lower blue area is bound to a drag gesture. If a pan is performed after a long press in the upper red area, the area only responds to the long press. In the same case, the lower blue area only responds to the drag.')
+          .width('100%')
+          .fontSize(20)
+          .fontColor('0xffdd00')
+          .backgroundColor(0xeeddaa00)
+        Stack({ alignContent: Alignment.Center }) {
+          Column() {
+            // Simulate the upper and lower half areas.
+            Stack().width('200').height('100').backgroundColor(Color.Red)
+            Stack().width('200').height('100').backgroundColor(Color.Blue)
+          }.width('200vp').height('200vp')
+
+          // The lower part of the Stack component is the image area bound to the pan gesture.
+          Image($r('sys.media.ohos_app_icon'))
+            .draggable(true)
+            .onDragStart(() => {
+              this.promptAction.showToast({ message: 'When the blue area is dragged, the image responds.' })
+            })
+            .width('200').height('200')
+          // The upper part of the Stack component is the floating area bound to the long press gesture.
+          Stack() {
+          }
+          .width('200')
+          .height('200')
+          .hitTestBehavior(HitTestMode.Transparent)
+          .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+            // Check whether the tag of gestureInfo has a value.
+            if (gestureInfo.tag) {
+              console.info(`gestureInfo tag ${gestureInfo.tag.toString()}`);
+            }
+            console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
+            console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
+            console.info(`pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
+              `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourceTool ${event.sourceTool.toString()}`);
+            // If the gesture is a long press gesture, check whether the touch position is in the upper half area.
+            if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
+              if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
+                return GestureJudgeResult.CONTINUE
+              } else {
+                return GestureJudgeResult.REJECT
+              }
+            }
+            return GestureJudgeResult.CONTINUE
+          })
+          .gesture(GestureGroup(GestureMode.Parallel,
+            LongPressGesture()
+              .onAction((event: GestureEvent) => {
+                this.promptAction.showToast({ message: 'Long-press the upper red area. The red area responds.' })
+              })
+              .tag('tap111')
+          ))
+
+        }.width('100%')
+      }.width('100%')
+    }
+  }
+}
+```
+
+### Example 3: Implementing Real-time Monitoring of Active Touch Points in Gestures
+
+This example configures the onGestureJudgeBegin callback to read fingerInfos to detect the number of valid touch points, ID of each touch point, and coordinates of each touch point in real time.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GestureDetectorExample {
+  @State message: string = 'Touch area'
+  @State fingerCount: number = 0
+  @State fingerDetails: string = ''
+
+  build() {
+    Column() {
+      // Information display area
+      Column() {
+        Text(this.message)
+          .fontSize(20)
+          .fontWeight(FontWeight.Bold)
+
+        Text(`Active touch points: ${this.fingerCount}`)
+          .fontSize(16)
+          .margin({ top: 8 })
+
+
+        Text(this.fingerDetails)
+          .fontSize(14)
+          .margin({ top: 8 })
+      }
+      .padding(10)
+      .border({ width: 1, color: Color.Gray })
+
+      // Gesture detection area
+      Column()
+        .width('90%')
+        .height(200)
+        .margin(20)
+        .border({ width: 2, color: Color.Black })
+        .gesture(
+          GestureGroup(GestureMode.Exclusive,
+            TapGesture()
+              .onAction(() => {
+                this.message = 'Tap event'
+              }),
+            LongPressGesture()
+              .onAction(() => {
+                this.message = 'Long press event'
+              }),
+            PanGesture()
+              .onActionStart(() => {
+                this.message = 'Drag started'
+              })
+              .onActionUpdate(() => {
+                this.message = 'Dragging...'
+              })
+              .onActionEnd(() => {
+                this.message = 'Drag ended'
+                this.fingerCount = 0;
+                this.fingerDetails = '';
+              })
+          )
+        )
+        .onGestureJudgeBegin((_gestureInfo: GestureInfo, event: BaseGestureEvent) => {
+          // Access fingerInfos data.
+          if (event?.fingerInfos) {
+            this.fingerCount = event.fingerInfos.length;
+            this.fingerDetails = event.fingerInfos.map(finger =>
+            `ID: ${finger.id}: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})`
+            ).join('\n');
+            console.info(`Touch point data: ${JSON.stringify(event.fingerInfos)}`)
+          }
+          // When the number of touch points exceeds 2, the current gesture is rejected.
+          if (this.fingerCount > 2) {
+            return GestureJudgeResult.REJECT
+          }
+          return GestureJudgeResult.CONTINUE
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .padding(10)
+  }
+}
+```
+
+### Example 1: Switching the Background Color with a Modifier
+
+This example demonstrates how to switch the background color of a Button component by binding it to a modifier.
+
+
+
+```TypeScript
+// xxx.ets
+// Set the custom AttributeModifier for the Button component attributes.
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  public isDark: boolean = false;
+
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    if (this.isDark) {
+      instance.backgroundColor(Color.Black);
+    } else {
+      instance.backgroundColor(Color.Red);
+    }
+  }
+}
+
+@Entry
+@Component
+struct AttributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+          .onClick(() => {
+            this.modifier.isDark = !this.modifier.isDark;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 2: Implementing the Pressed State Effect with a Modifier
+
+This example implements the pressed state effect by binding a modifier to a Button. For details about using it with state management V2, see [Modifier and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#modifier).
+
+
+
+```TypeScript
+// xxx.ets
+// Set the custom AttributeModifier for the Button component attributes.
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Black);
+  }
+
+  applyPressedAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Red);
+  }
+}
+
+@Entry
+@Component
+struct AttributePressedDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 3: Understanding Custom Modifiers Do Not Support State Data Changes
+
+This example shows how to set the width of a custom modifier using state data. Custom modifiers do not support observing changes in data decorated with the @State decorator. Therefore, the width does not change when the button is clicked.
+
+
+
+```TypeScript
+import { CommonModifier } from '@kit.ArkUI';
+
+const TEST_TAG: string = 'AttributeModifier';
+
+// Set the custom AttributeModifier for the universal component attributes.
+class MyModifier extends CommonModifier {
+  applyNormalAttribute(instance: CommonAttribute): void {
+    super.applyNormalAttribute?.(instance);
+  }
+}
+
+@Component
+struct MyImage1 {
+  @Link modifier: CommonModifier;
+
+  build() {
+    Image($r('app.media.startIcon')).attributeModifier(this.modifier as MyModifier)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  index: number = 0;
+  @State width1: number = 100;
+  @State height1: number = 100;
+  @State myModifier: CommonModifier = new MyModifier().width(this.width1).height(this.height1).margin(10);
+
+  build() {
+    Column() {
+      Button($r('app.string.EntryAbility_label'))
+        .margin(10)
+        .onClick(() => {
+          console.info(TEST_TAG, 'onClick');
+          this.index++;
+          if (this.index % 2 === 1) {
+            this.width1 = 10;
+            console.info(TEST_TAG, 'setGroup1');
+          } else {
+            this.height1 = 10;
+            console.info(TEST_TAG, 'setGroup2');
+          }
+        })
+      MyImage1({ modifier: this.myModifier })
+    }
+    .width('100%')
+  }
+}
+```
+
+### Example 4: Combining Modifier and Custom Modifier Attributes
+
+This example sets width, height, and margin through a custom modifier. When the button is clicked, [borderStyle](ts-appendix-enums.md#borderstyle) and [borderWidth](ts-universal-attributes-border.md#borderwidth) are set. After the click, all five attributes take effect.
+
+
+
+```TypeScript
+import { CommonModifier } from '@kit.ArkUI';
+
+const TEST_TAG: string = 'AttributeModifier';
+
+// Set the custom AttributeModifier for the universal component attributes.
+class MyModifier extends CommonModifier {
+  applyNormalAttribute(instance: CommonAttribute): void {
+    super.applyNormalAttribute?.(instance);
+  }
+
+  public setGroup1(): void {
+    this.borderStyle(BorderStyle.Dotted);
+    this.borderWidth(8);
+  }
+
+  public setGroup2(): void {
+    this.borderStyle(BorderStyle.Dashed);
+    this.borderWidth(8);
+  }
+}
+
+@Component
+struct MyImage1 {
+  @Link modifier: CommonModifier;
+
+  build() {
+    Image($r('app.media.startIcon')).attributeModifier(this.modifier as MyModifier)
+  }
+}
+
+@Entry
+@Component
+struct Index {
+  @State myModifier: CommonModifier = new MyModifier().width(100).height(100).margin(10);
+  index: number = 0;
+
+  build() {
+    Column() {
+      Button($r('app.string.EntryAbility_label'))
+        .margin(10)
+        .onClick(() => {
+          console.info(TEST_TAG, 'onClick');
+          this.index++;
+          if (this.index % 2 === 1) {
+            (this.myModifier as MyModifier).setGroup1();
+            console.info(TEST_TAG, 'setGroup1');
+          } else {
+            (this.myModifier as MyModifier).setGroup2();
+            console.info(TEST_TAG, 'setGroup2');
+          }
+        })
+      MyImage1({ modifier: this.myModifier })
+    }
+    .width('100%')
+  }
+}
+```
+
+### Example 5: Setting the Focused State Style with a Modifier
+
+This example demonstrates how to implement a focused state style for a Button component by binding it to a modifier. After Button2 is clicked, the Button component displays the focused style when it has focus.
+
+
+
+```TypeScript
+// Set the custom AttributeModifier for the Button component attributes.
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Blue);
+  }
+  applyFocusedAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Green);
+  }
+}
+
+@Entry
+@Component
+struct AttributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+  @State isDisable: boolean = true;
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+          .enabled(this.isDisable)
+          .id('app')
+        Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
+        Button('Button2')
+          .onClick(() => {
+            this.getUIContext().getFocusController().activate(true);
+            this.getUIContext().getFocusController().requestFocus('app');
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 6: Setting the Disabled State Style with a Modifier
+
+This example demonstrates how to implement a disabled state style for a Button component by binding it to a modifier. After Button2 is clicked, the Button component displays the disabled style when it is disabled.
+
+
+
+```TypeScript
+// Set the custom AttributeModifier for the Button component attributes.
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyDisabledAttribute(instance: ButtonAttribute): void {
+    instance.width(200);
+  }
+}
+
+@Entry
+@Component
+struct AttributeDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+  @State isDisable: boolean = true;
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+          .enabled(this.isDisable)
+        Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
+        Button('Button2')
+          .onClick(() => {
+            this.isDisable = !this.isDisable;
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 7: Setting the Selected State Style with a Modifier
+
+This example implements the style effect when a component is selected by binding a modifier to a Radio.
+
+
+
+```TypeScript
+// Set the custom AttributeModifier for the Radio component attributes.
+class MyRadioModifier implements AttributeModifier<RadioAttribute> {
+  applyNormalAttribute(instance: RadioAttribute): void {
+    instance.backgroundColor(Color.Blue);
+  }
+
+  applySelectedAttribute(instance: RadioAttribute): void {
+    instance.backgroundColor(Color.Red);
+    instance.borderWidth(2);
+  }
+}
+
+@Entry
+@Component
+struct AttributeDemo {
+  @State modifier: MyRadioModifier = new MyRadioModifier();
+  @State value: boolean = false;
+
+  build() {
+    Row() {
+      Column() {
+        Radio({ value: 'Radio1', group: 'radioGroup1' })
+          .checked(this.value)
+          .height(50)
+          .width(50)
+          .borderWidth(0)
+          .borderRadius(30)
+          .onClick(() => {
+            this.value = !this.value;
+          })
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 8: Implementing the Pressed State Effect for a Custom Component with a Modifier
+
+This example demonstrates how to implement a pressed state effect for a custom component (Common) by binding it to a modifier.
+
+
+
+```TypeScript
+// xxx.ets
+// Set the custom AttributeModifier for the custom component attributes.
+class CustomModifier implements AttributeModifier<CommonAttribute> {
+  applyNormalAttribute(instance: CommonAttribute): void {
+    instance.backgroundColor(Color.Blue);
+  }
+
+  applyPressedAttribute(instance: CommonAttribute): void {
+    instance.backgroundColor(Color.Gray);
+  }
+}
+
+@Entry
+@Component
+struct AttributePressedDemo {
+  @State modifier: CustomModifier = new CustomModifier();
+
+  build() {
+    Row() {
+      Column() {
+        ChildComponent()
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+
+// Custom component
+@Component
+struct ChildComponent {
+  build() {
+    Text('common')
+      .fontColor(Color.White)
+      .fontSize(28)
+      .textAlign(TextAlign.Center)
+      .width('35%')
+      .height('10%')
+  }
+}
+```
+
+### Example 9: Implementing the Mouse Hover Effect with a Modifier
+
+This example implements the mouse hover effect by binding a modifier to aButton. When the mouse moves over the Button, the background color of the Button changes to red, which is the hover effect; when the mouse leaves the Button, the background color changes to black, which is the normal state effect. The hover style is set through the [applyHoveredAttribute](arkts-arkui-common-comp-attributemodifier-i.md#applyhoveredattribute) API.
+
+Since API version 26.0.0, the [applyHoveredAttribute](arkts-arkui-common-comp-attributemodifier-i.md#applyhoveredattribute) API is added.
+
+```TypeScript
+// xxx.ets
+// Set the custom AttributeModifier for the Button component attributes.
+class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
+  applyNormalAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Black);
+  }
+
+  // Set the hover state style.
+  applyHoveredAttribute(instance: ButtonAttribute): void {
+    instance.backgroundColor(Color.Red);
+  }
+}
+
+@Entry
+@Component
+struct AttributeHoveredDemo {
+  @State modifier: MyButtonModifier = new MyButtonModifier();
+
+  build() {
+    Row() {
+      Column() {
+        Button('Button')
+          .attributeModifier(this.modifier)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 1: Adding Graphical Transformation Effects
+
+This example applies rotation, translation, scaling, and transformation matrix effects to the component using [rotate](#rotate), [translate](#translate), [scale](#scale), and [transform](#transform).
+
+
+
+```TypeScript
+// xxx.ets
+import { matrix4 } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct TransformExample {
+  build() {
+    Column() {
+      Text('rotate').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
+      Row()
+        .rotate({
+          x: 0,
+          y: 0,
+          z: 1,
+          centerX: '50%',
+          centerY: '50%',
+          angle: 300
+        }) // Rotate the component 300 degrees clockwise around its center point with the vector (0,0,1) as the rotation axis.
+        .width(100).height(100).backgroundColor(0xAFEEEE)
+
+      Text('translate').width('90%').fontColor(0xCCCCCC).padding(10).fontSize(14)
+      Row()
+        .translate({ x: 100, y: 10 }) // Translate 100 along the x-axis and 10 along the y-axis.
+        .width(100)
+        .height(100)
+        .backgroundColor(0xAFEEEE)
+        .margin({ bottom: 10 })
+
+      Text('scale').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
+      Row()
+        .scale({ x: 2, y: 0.5 }) // Reduce the height by half and double the width; the z-axis has no effect in 2D.
+        .width(100).height(100).backgroundColor(0xAFEEEE)
+
+      Text('Matrix4').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
+      Row()
+        .width(100).height(100).backgroundColor(0xAFEEEE)
+        .transform(matrix4.identity().translate({ x: 50, y: 50 }).scale({ x: 1.5, y: 1 }).rotate({
+          x: 0,
+          y: 0,
+          z: 1,
+          angle: 60
+        }))
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### Example 2: Setting the Rotation Perspective
+
+This example demonstrates how to set the rotation perspective for a component by using [perspective](#rotateoptions).
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State prep: number = 10;
+
+  build() {
+    Row() {
+      Column() {
+        Stack()
+          .width(100)
+          .height(100)
+          .backgroundColor(Color.Red)
+          .rotate({ y: 1, angle: 45, perspective: this.prep })
+        Button('change prep')
+          .margin({ top: 100 })
+          .onClick(() => {
+            this.getUIContext()?.animateTo({
+              duration: 2000,
+              curve: Curve.EaseIn,
+              iterations: 1,
+              playMode: PlayMode.Normal,
+              onFinish: () => {
+                console.info('play end');
+              }
+            }, () => {
+              this.prep = 500; // Transform the component view distance from 10 to 500.
+            })
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 3: Implementing Rotation Around a Center Point
+
+This example shows how to achieve the same rotation effect by setting different parameters for [rotate](#rotate) and [transform](#transform).
+
+
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MatrixExample {
+  build() {
+    Column({ space: 100 }) {
+      Text('Hello1')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+
+      Text('Hello2')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .rotate({
+          // Rotate 90 degrees around the anchor (100 vp, 60 vp), where the value of centerX and centerY in rotate or scale are the component's anchors.
+          z: 1,
+          angle: 90,
+          centerX: 100,
+          centerY: 60
+        })
+
+      Text('Hello3')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .transform(matrix4.identity()
+          .rotate({
+            // The component's anchor (centerX, centerY) is (50%, 50%) by default, which is (50 vp, 30 vp).
+            // Set (centerX, centerY) of rotate in transform to (50 vp, 30 vp), which is an additional offset from the component's own anchor.
+            // This transformation is equivalent to rotating around (100 vp, 60 vp), achieving the same rotation effect as "Hello2."
+            z: 1,
+            angle: 90,
+            centerX: this.getUIContext().vp2px(50),
+            centerY: this.getUIContext().vp2px(30)
+          }))
+
+      Text('Hello4')
+        .textAlign(TextAlign.Center)
+        .width(100)
+        .height(60)
+        .backgroundColor(0xAFEEEE)
+        .borderWidth(1)
+        .scale({
+          // centerX and centerY take effect only when x or y is set.
+          // Set the component anchor to (100 vp, 60 vp).
+          x: 1,
+          y: 1,
+          centerX: 100,
+          centerY: 60
+        }) // For transform's rotate without specifying centerX and centerY, the rotation center has no additional offset relative to the component's own anchor point.
+          // Here, the component rotates around (100 vp, 60 vp) through the anchor set by scale, achieving the same rotation effect as "Hello2."
+        .transform(matrix4.identity().rotate({ z: 1, angle: 90 }))
+    }.width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 4: Implementing Graphical Transformation Through transform3D
+
+This example demonstrates how to implement image transformation by setting [transform3D](arkts-arkui-common-comp-commonmethod-c.md#transform3d). This functionality is supported since API version 20.
+
+
+
+```TypeScript
+import { matrix4 } from '@kit.ArkUI';
+
+// Initialize the 3D transformation matrix to demonstrate the graphic transformation effect of transform3D.
+let matrix: matrix4.Matrix4Transit = matrix4.init([
+  0.53033, 0, -0.53033, 0.00053033,
+  0, 0.75, 0, 0,
+  0.707107, 0, 0.707107, -0.000707107,
+  0, 0, 0, 1
+]);
+
+@Entry
+@Component
+struct Transform3DExample {
+  build() {
+    Column() {
+      Stack() {
+        Stack()
+          .width(200)
+          .height(100)
+          .backgroundColor(Color.Grey)
+        Stack()
+          .width(200)
+          .height(100)
+          .backgroundColor(Color.Blue)
+          .transform3D(matrix)
+      }
+    }.width('100%')
+  }
+}
+```
+
+### Example 5: Rotating an Image Based on Angles of Each Axis
+
+This example demonstrates how to implement rotation by setting the [RotateAngleOptions](arkts-arkui-common-comp-rotateangleoptions-i.md) parameter of rotate. This functionality is supported since API version 20.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      Column() {
+        Stack()
+          .width(100)
+          .height(100)
+          .backgroundColor(Color.Blue)
+          .rotate({ angleZ: -45 })
+        Button('rotateAngle')
+          .width('40%')
+          .margin({ top: 100 })
+          .rotate({ angleY: 30, centerX: '90%', perspective: 10 })
+        Image($r('app.media.startIcon'))
+          .width(200)
+          .height(200)
+          .rotate({
+            angleX: 60,
+            angleY: -125,
+            angleZ: 75,
+            centerX: 100,
+            centerZ: 20
+          })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 1: Setting Basic Styles
+
+This example shows how to set the border width, color, border radius, and styles such as dotted or dashed lines.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        // Dashed line.
+        Text('dashed')
+          .borderStyle(BorderStyle.Dashed)
+          .borderWidth(5)
+          .borderColor(0xAFEEEE)
+          .borderRadius(10)
+          .width(120)
+          .height(120)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+        // Dotted border
+        Text('dotted')
+          .border({
+            width: 5,
+            color: 0x317AF7,
+            radius: 10,
+            style: BorderStyle.Dotted
+          })
+          .width(120)
+          .height(120)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+      }.width('100%').height(150)
+
+      Text('.border')
+        .fontSize(50)
+        .width(300)
+        .height(300)
+        // Use the border attribute to set the width, color, corner radius, and style of the left, right, top, and bottom edges respectively.
+        .border({
+          width: {
+            left: 3,
+            right: 6,
+            top: 10,
+            bottom: 15
+          },
+          color: {
+            left: '#e3bbbb',
+            right: Color.Blue,
+            top: Color.Red,
+            bottom: Color.Green
+          },
+          radius: {
+            topLeft: 10,
+            topRight: 20,
+            bottomLeft: 40,
+            bottomRight: 80
+          },
+          style: {
+            left: BorderStyle.Dotted,
+            right: BorderStyle.Dotted,
+            top: BorderStyle.Solid,
+            bottom: BorderStyle.Dashed
+          }
+        })
+        .textAlign(TextAlign.Center)
+    }
+  }
+}
+```
+
+### Example 2: Border Width, Corner Radius, and Color Types
+
+The width, radius, and color attribute values of the border attribute use the LocalizedEdgeWidths, LocalizedBorderRadiuses, and LocalizedEdgeColors types, respectively.
+
+Example image for left-to-right (LTR) display languages
+
+
+
+Example image for right-to-left (RTL) display languages
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        // Dashed line.
+        Text('dashed')
+          .borderStyle(BorderStyle.Dashed)
+          .borderWidth(5)
+          .borderColor(0xAFEEEE)
+          .borderRadius(10)
+          .width(120)
+          .height(120)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+        // Dotted border
+        Text('dotted')
+          .border({
+            width: 5,
+            color: 0x317AF7,
+            radius: 10,
+            style: BorderStyle.Dotted
+          })
+          .width(120)
+          .height(120)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+      }.width('100%').height(150)
+
+      Text('.border')
+        .fontSize(50)
+        .width(300)
+        .height(300)
+        // Use the LocalizedEdgeWidths and LocalizedBorderRadiuses types to adapt the start/end directions to RTL/LTR layouts.
+        .border({
+          width: {
+            start: LengthMetrics.vp(3),
+            end: LengthMetrics.vp(6),
+            top: LengthMetrics.vp(10),
+            bottom: LengthMetrics.vp(15)
+          },
+          color: {
+            start: '#e3bbbb',
+            end: Color.Blue,
+            top: Color.Red,
+            bottom: Color.Green
+          },
+          radius: {
+            topStart: LengthMetrics.vp(10),
+            topEnd: LengthMetrics.vp(20),
+            bottomStart: LengthMetrics.vp(40),
+            bottomEnd: LengthMetrics.vp(80)
+          },
+          style: {
+            left: BorderStyle.Dotted,
+            right: BorderStyle.Dotted,
+            top: BorderStyle.Solid,
+            bottom: BorderStyle.Dashed
+          }
+        })
+        .textAlign(TextAlign.Center)
+    }
+  }
+}
+```
+
+### Example 3: Configuring Offscreen Rounded Corners
+
+This example demonstrates how to set the rendering strategy for drawing rounded corners on components, supported since API version 22.
+
+The fast rendering mode (RenderStrategy.FAST) performs real-time rendering through GPU hardware acceleration and is suitable for common corner radius scenarios. The offscreen rendering mode (RenderStrategy.OFFSCREEN) first draws the component to an offscreen buffer and then composites it, which is suitable for corner radius scenarios involving complex content such as blur and scrolling, and can avoid corner radius clipping anomalies. The following illustration compares the online rendering mode (top) with the offscreen rendering mode (bottom):
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct RenderStrategyExample {
+  build() {
+    NavDestination() {
+      Column({ space: 20 }) {
+        // Fast rendering mode: suitable for regular corner radius scenarios, with better performance.
+        Stack() {
+          Column()
+            .width(320)
+            .height(320)
+            .backgroundColor(Color.Black)
+
+          Stack() {
+            Stack() {
+              Scroll(new Scroller()) {
+                Image($r('app.media.startIcon'))
+                  .width('100%')
+                  .height('200%')
+              }
+
+              Column()
+                .blur(50) // Set the blur effect.
+                .width(300)
+                .height(100)
+                .position({ x: 0, y: 0 })
+            }
+          }
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Pink)
+          .borderRadius(50, RenderStrategy.FAST) // Set the corner radius in fast rendering mode.
+          .clip(true)
+        }
+
+        // Offscreen rendering mode: suitable for corner radius scenarios with blur effects, avoiding clipping anomalies.
+        Stack() {
+          Column()
+            .width(320)
+            .height(320)
+            .backgroundColor(Color.Black)
+
+          Stack() {
+            Stack() {
+              Scroll(new Scroller()) {
+                Image($r('app.media.startIcon'))
+                  .width('100%')
+                  .height('200%')
+              }
+
+              Column()
+                .blur(50) // Set the blur effect.
+                .width(300)
+                .height(100)
+                .position({ x: 0, y: 0 })
+            }
+          }
+          .width(300)
+          .height(300)
+          .backgroundColor(Color.Pink)
+          .borderRadius(50, RenderStrategy.OFFSCREEN) // Set the corner radius in offscreen rendering mode.
+          .clip(true)
+        }
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 4: Setting Irregular Corner Radii
+
+This example uses [borderRadius](#borderradius) to set four different corner radius values. When one of the corner radius values exceeds half of the smaller value of the height or width, the irregular corner radius is drawn by value ratio.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BorderExample {
+  build() {
+    Column() {
+      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
+        Text('Text')
+          .borderWidth(5)
+          .borderColor(0xAFEEEE)
+          // topLeft: 2000 exceeds half of the minimum value (100), draw the irregular corner radius by value ratio.
+          .borderRadius({
+            topLeft: 2000,
+            topRight: 10,
+            bottomLeft: 30,
+            bottomRight: 50
+          })
+          .width(100)
+          .height(100)
+          .textAlign(TextAlign.Center)
+          .fontSize(16)
+      }
+    }
+  }
+}
+```
+
+### Example 1: Setting the Alignment Mode and Main Axis Layout
+
+Sets the alignment mode of the content within the element and the layout of child elements along the main axis of the parent component.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PositionExample1 {
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        // When the element content is smaller than the element width and height, set the alignment mode of the content within the element.
+        Text('align').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Stack() {
+          Text('First show in bottom end').height('65%').backgroundColor(0xD2B48C)
+          Text('Second show in bottom end').backgroundColor(0xF5DEB3).opacity(0.9)
+        }.width('90%').height(50).margin({ top: 5 }).backgroundColor(0xFFE4C4)
+        .align(Alignment.BottomEnd)
+        Stack() {
+          Text('top start')
+        }.width('90%').height(50).margin({ top: 5 }).backgroundColor(0xFFE4C4)
+        .align(Alignment.TopStart)
+
+        // The parent component sets direction to Direction.Ltr, and child elements are arranged from left to right.
+        Text('direction').fontSize(9).fontColor(0xCCCCCC).width('90%')
+        Row() {
+          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
+          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
+          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
+          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
+        }
+        .width('90%')
+        .direction(Direction.Ltr)
+        // The parent component sets direction to Direction.Rtl, and child elements are arranged from right to left.
+        Row() {
+          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
+          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
+          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
+          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
+        }
+        .width('90%')
+        .direction(Direction.Rtl)
+      }
+    }
+    .width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### Example 2: Setting the Position Offset
+
+This example demonstrates position offsets based on the parent component, relative positioning, and anchors.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PositionExample2 {
+  build() {
+    Column({ space: 20 }) {
+      // Set the offset of the component's upper left corner relative to the parent component's upper left corner.
+      Text('position').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2 position(30, 10)')
+          .size({ width: '60%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .align(Alignment.Start)
+          .position({ x: 30, y: 10 })
+        Text('3').size({ width: '45%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 position(50%, 70%)')
+          .size({ width: '50%', height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .position({ x: '50%', y: '70%' })
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+
+      // Offset relative to the start point. x indicates the horizontal distance between the end point and the start point. If the value of x is greater than 0, the component is offset to the left. Otherwise, the component is offset to the right.
+      // y indicates the vertical distance between the end point and the start point. If the value of y is greater than 0, the component is offset to the top. Otherwise, the component is offset to the bottom.
+      Text('markAnchor').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Stack({ alignContent: Alignment.TopStart }) {
+        Row()
+          .size({ width: '100', height: '100' })
+          .backgroundColor(0xdeb887)
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: 25, y: 25 })
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: -100, y: -25 })
+        Text('text')
+          .fontSize('30px')
+          .textAlign(TextAlign.Center)
+          .size({ width: 25, height: 25 })
+          .backgroundColor(Color.Green)
+          .markAnchor({ x: 25, y: -25 })
+      }.margin({ top: 25 }).border({ width: 1, style: BorderStyle.Dashed })
+
+      // Offset of the component relative to itself. If the value of x is greater than 0, the component is offset to the right. Otherwise, the component is offset to the left. If the value of y is greater than 0, the component is offset to the bottom. Otherwise, the component is offset to the top.
+      Text('offset').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2  offset(15, 30)')
+          .size({ width: 120, height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .align(Alignment.Start)
+          .offset({ x: 15, y: 30 })
+        Text('3').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 offset(-5%, 20%)')
+          .size({ width: 100, height: '50' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .offset({ x: '-5%', y: '20%' })
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+    }
+    .width('100%').margin({ top: 25 })
+  }
+}
+```
+
+### Example 3: Setting the Absolute Positioning and Relative Offset
+
+This example demonstrates how to use position to set absolute positioning, which determines the position of child components relative to the parent component. It also shows how to use offset to set relative offsets for moving components from their original layout positions.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Example3 {
+  build() {
+    Column({ space: 20 }) {
+      Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('bottom:0, right:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, right: 0 })
+        Text('top:0, left:0')
+          .size({ width: '30%', height: '50' })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: 0, left: 0 })
+        Text('top:10%, left:50%')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ top: '10%', left: '50%' })
+        Text('bottom:0, left:30')
+          .size({ width: '50%', height: '30' })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .position({ bottom: 0, left: 30 })
+      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
+
+
+      Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
+      Row() {
+        Text('1')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('2 top:30, left:0')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+          .offset({ top: 30, left: 0 })
+        Text('3')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xdeb887)
+          .border({ width: 1 })
+          .fontSize(16)
+          .textAlign(TextAlign.Center)
+        Text('4 bottom:10, right:30')
+          .size({ width: '25%', height: 50 })
+          .backgroundColor(0xbbb2cb)
+          .border({ width: 1 })
+          .fontSize(12)
+          .textAlign(TextAlign.Center)
+          .offset({ bottom: 10, right: 30 })
+      }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
+    }.width('100%').margin({ top: 25 })
+  }
+}
+```
+
+### Example 4: Implementing a Mirror Effect
+
+Common layout attributes support the [mirroring capability](./../../../ui/arkts-internationalization.md#using-the-mirroring-capability). This example demonstrates how to implement a mirroring effect using the [position](#position), [offset](#offset), and [markAnchor](#markanchor) attributes. The light blue blocks indicate the original effect, and the dark blue blocks indicate the mirroring effect.
+
+Before mirroring:
+
+
+
+After mirroring (For details about the conditions for mirroring to take effect, see [Using the Mirroring Capability](./../../../ui/arkts-internationalization.md#using-the-mirroring-capability)):
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Example4 {
+  private scroller: Scroller = new Scroller()
+
+  build() {
+    Column() {
+      Stack({ alignContent: Alignment.End }) {
+        Scroll(this.scroller) {
+          Flex({ direction: FlexDirection.Column }) {
+            RelativeContainer() {
+              Row() {
+              }
+              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) }) // The parameters in the position API use the LocalizedEdges type, supporting the mirroring effect.
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .position({ left: '200px', top: '100px' }) // The parameters in the position API use the Edges type, not supporting the mirroring effect.
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) }) // The parameters in the offset API use the LocalizedEdges type, supporting the mirroring effect.
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .offset({ left: 100, top: 200 }) // The parameters in the offset API use the Edges type, not supporting the mirroring effect.
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .markAnchor({
+                start: LengthMetrics.fp(100),
+                top: LengthMetrics.fp(-350)
+              }) // The parameters in the markAnchor API use the LocalizedPosition type, supporting the mirroring effect.
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(0, 74, 175)')
+              .padding(50)
+              .margin(50)
+
+              Row() {
+              }
+              .markAnchor({ x: '100fp', y: '-350fp' }) // The parameters in the markAnchor API use the Position type, not supporting the mirroring effect.
+              .width("30%")
+              .height("20%")
+              .backgroundColor('rgb(39, 135, 217)')
+              .padding(50)
+              .margin(50)
+            }
+            .backgroundColor(Color.White)
+            .padding(50)
+            .margin(50)
+          }
+        }
+        .width('100%')
+        .scrollBar(BarState.Off)
+        .scrollable(ScrollDirection.Vertical)
+
+        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }) {
+          Text()
+            .width(20)
+            .height(100)
+            .borderRadius(10)
+            .backgroundColor('#C0C0C0')
+        }.width(20).backgroundColor('#ededed')
+      }
+    }.height('90%')
+  }
+}
+```
+
+### Example 5: Using the align Property with Mirroring Adaptation
+
+Sets the alignment mode of the content within the element and the layout of child elements along the main axis of the parent component.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct buttonTestDemo {
+  @State isLocalizedAlignment: LocalizedAlignment[] =
+    [LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END, LocalizedAlignment.START,
+      LocalizedAlignment.CENTER, LocalizedAlignment.END, LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM,
+      LocalizedAlignment.BOTTOM_END]
+  @State isLocalizedAlignmentIndex: number = 4
+  @State isDirection: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto]
+  @State isDirectionIndex: number = 0
+
+  build() {
+    Row() {
+      Column() {
+
+        Row({ space: 5 }) {
+          Button('START')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 3
+            })
+          Button('CENTER')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 4
+            })
+          Button('END')
+            .onClick(() => {
+              this.isLocalizedAlignmentIndex = 5
+            })
+        }.margin(20)
+
+        Row({ space: 5 }) {
+          Button('Ltr')
+            .onClick(() => {
+              this.isDirectionIndex = 0
+            })
+          Button('Rtl')
+            .onClick(() => {
+              this.isDirectionIndex = 1
+            })
+          Button('Auto')
+            .onClick(() => {
+              this.isDirectionIndex = 2
+            })
+        }.margin(20)
+
+        Row() {
+          Button('OK', { type: ButtonType.Capsule, stateEffect: true })
+            .backgroundColor(0x317aff)
+            .width(200)
+            .height(100)
+            .direction(this.isDirection[this.isDirectionIndex])
+            .align(this.isLocalizedAlignment[this.isLocalizedAlignmentIndex])
+        }.margin(20)
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 6: Using layoutGravity to Individually Set the Alignment Rule of a Child Component in the Stack Component
+
+This example shows how to adjust the text position within the Stack container.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index5 {
+  private layoutGravityArr: LocalizedAlignment[] = [
+    LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END,
+    LocalizedAlignment.START, LocalizedAlignment.CENTER, LocalizedAlignment.END,
+    LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM, LocalizedAlignment.BOTTOM_END];
+  @State layoutGravityIndex: number = 0;
+  private directionArr: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto];
+  @State directionIndex: number = 0;
+
+  build() {
+    Row() {
+      Column() {
+        Stack({
+          alignContent: Alignment.TopStart
+        }) {
+          Text('StackChildAlign_TopStart').fontSize(15)
+          Text('Child Text')
+            .width(150)
+            .height(150)
+            .backgroundColor(Color.Yellow)
+            .fontSize(15)
+            .layoutGravity(this.layoutGravityArr[this.layoutGravityIndex])
+        }
+        .width('100%')
+        .height(400)
+        .backgroundColor(Color.Grey)
+        .margin({ top: 10, bottom: 10 })
+        .direction(this.directionArr[this.directionIndex])
+
+        Button("LayoutGravity: " + this.layoutGravityArr[this.layoutGravityIndex])
+          .width(300)
+          .fontSize(16)
+          .onClick(() => {
+            this.layoutGravityIndex = ++this.layoutGravityIndex % this.layoutGravityArr.length;
+          })
+          .margin({ bottom: 10 })
+
+        Button("Direction: " + this.directionArr[this.directionIndex])
+          .width(150)
+          .fontSize(16)
+          .onClick(() => {
+            this.directionIndex = ++this.directionIndex % this.directionArr.length;
+          })
+          .margin({ bottom: 10 })
+      }
+      .width('100%')
+    }
+    .height('100%')
+  }
+}
+```
+
+The sample code implements the custom transition animation of a shared element image when a click on the image area triggers page redirection.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SharedTransitionExample {
+
+  build() {
+    Column() {
+      // Replace $r('app.media.ic_health_heart') with the image resource file you use.
+      Image($r('app.media.ic_health_heart')).width(50).height(50).margin({ left: 20, top: 20 })
+        .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 }) 
+    }.width('100%').height('100%').alignItems(HorizontalAlign.Start)
+    .onClick(() => {
+      this.getUIContext().getRouter().pushUrl({ url: 'pages/PageB' });
+    })
+  }
+
+  pageTransition() {
+    PageTransitionEnter({ type: RouteType.None, duration: 0 })
+    PageTransitionExit({ type: RouteType.None, duration: 0 })
+  }
+}
+```
+
+```TypeScript
+// PageB.ets
+@Entry
+@Component
+struct PageBExample {
+  build() {
+    Stack() {
+      // Replace $r('app.media.ic_health_heart') with the image resource file you use.
+      Image($r('app.media.ic_health_heart')).width(150).height(150)
+        .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 })
+    }.width('100%').height('100%')
+  }
+
+  pageTransition() {
+    PageTransitionEnter({ type: RouteType.None, duration: 0 })
+    PageTransitionExit({ type: RouteType.None, duration: 0 })
+  }
+}
+```
+
+### Example 1: Setting Basic Background Styles
+
+This example shows how to configure basic background styles by setting backgroundColor, backgroundImage, backgroundImageSize, and backgroundImagePosition.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BackgroundExample {
+  build() {
+    Column({ space: 5 }) {
+      Text('background color').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Row().width('90%').height(50).backgroundColor(0xE5E5E5).border({ width: 1 })
+
+      Text('background image repeat along X').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Row()
+      // Replace $r('app.media.image') with the image resource file you use.
+        .backgroundImage($r('app.media.image'), ImageRepeat.X)
+        .backgroundImageSize({ width: '250px', height: '140px' })
+        .width('90%')
+        .height(70)
+        .border({ width: 1 })
+
+      Text('background image repeat along Y').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Row()
+      // Replace $r('app.media.image') with the image resource file you use.
+        .backgroundImage($r('app.media.image'), ImageRepeat.Y)
+        .backgroundImageSize({ width: '500px', height: '120px' })
+        .width('90%')
+        .height(100)
+        .border({ width: 1 })
+
+      Text('background image size').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Row()
+        .width('90%')
+        .height(150)
+        // Replace $r('app.media.image') with the image resource file you use.
+        .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
+        .backgroundImageSize({ width: 1000, height: 500 })
+        .border({ width: 1 })
+
+      Text('background fill the box(Cover)').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      // Occupy all the space of the container, without ensuring that the image is completely displayed.
+      Row()
+        .width(200)
+        .height(50)
+        // Replace $r('app.media.image') with the image resource file you use.
+        .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
+        .backgroundImageSize(ImageSize.Cover)
+        .border({ width: 1 })
+
+      Text('background fill the box(Contain)').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      // Maximize the image while ensuring that it can be completely displayed.
+      Row()
+        .width(200)
+        .height(50)
+        // Replace $r('app.media.image') with the image resource file you use.
+        .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
+        .backgroundImageSize(ImageSize.Contain)
+        .border({ width: 1 })
+
+      Text('background image position').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Row()
+        .width(100)
+        .height(50)
+        // Replace $r('app.media.image') with the image resource file you use.
+        .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
+        .backgroundImageSize({ width: 1000, height: 560 })
+        .backgroundImagePosition({ x: -500, y: -300 })
+        .border({ width: 1 })
+    }
+    .width('100%').height('100%').padding({ top: 5 })
+  }
+}
+```
+
+### Example 2: Setting the Background Blur Style
+
+This example sets the background blur style using backgroundBlurStyle.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BackgroundBlurStyleDemo {
+  build() {
+    Column() {
+      Row() {
+        Text('Thin Material')
+      }
+      .width('50%')
+      .height('50%')
+      .backgroundBlurStyle(BlurStyle.Thin,
+        { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT, scale: 1.0 })
+      .position({ x: '15%', y: '30%' })
+    }
+    .height('100%')
+    .width('100%')
+    // Replace $r('app.media.bg') with the image resource file you use.
+    .backgroundImage($r('app.media.bg'))
+    .backgroundImageSize(ImageSize.Cover)
+  }
+}
+```
+
+### Example 3: Setting the Component Background
+
+This example shows how to set the component background using background.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BackgroundExample {
+  @Builder
+  renderBackground() {
+    Column() {
+      Progress({ value: 50 })
+    }
+  }
+
+  build() {
+    Column() {
+      Text("content")
+        .width(100)
+        .height(40)
+        .fontColor("#FFF")
+        .position({ x: 50, y: 80 })
+        .textAlign(TextAlign.Center)
+        .backgroundColor(Color.Green)
+    }
+    .width(200).height(200)
+    .background(this.renderBackground)
+    .backgroundColor(Color.Gray)
+  }
+}
+```
+
+### Example 4: Setting Component Background Brightness
+
+This example sets the component background brightness using backgroundBrightness.
+
+The following figures show how the component looks with the background brightness set.
+
+When rate and lightUpDegree are both set to 0.5
+
+
+
+When rate is set to 0.5 and lightUpDegree -0.1
+
+
+
+The following figure shows how the component looks without the background brightness set.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BackgroundBrightnessDemo {
+  build() {
+    Column() {
+      Row() {
+        Text("BackgroundBrightness")
+      }
+      .width(200)
+      .height(100)
+      .position({ x: 100, y: 100 })
+      .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT})
+      .backgroundBrightness({rate:0.5,lightUpDegree:0.5}) // Background brightness
+    }
+    .width('100%')
+    .height('100%')
+    // Replace $r('app.media.image') with the image resource file you use.
+    .backgroundImage($r('app.media.image'))
+    .backgroundImageSize(ImageSize.Cover)
+  }
+}
+```
+
+### Example 5: Setting Blur Effects
+
+This example shows how to use blur to apply a foreground blur effect and backdropBlur to apply a background blur effect.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BlurEffectsExample {
+  build() {
+    Column({ space: 10 }) {
+      // Blur the font.
+      Text('font').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Flex({ alignItems: ItemAlign.Center }) {
+        Text('original').margin(10)
+        Text('blur')
+          .blur(5).margin(10)
+        Text('blur')
+          .blur(10, undefined).margin(10) // Content blur radius is 10, with no grayscale set.
+        Text('blur')
+          .blur(15).margin(10)
+      }.width('90%').height(40)
+      .backgroundColor(0xF9CF93)
+
+
+      // Blur the background.
+      Text('backdropBlur').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      Text()
+        .width('90%')
+        .height(40)
+        .fontSize(16)
+        .backdropBlur(3)
+        // Replace $r('app.media.image') with the image resource file you use.
+        .backgroundImage($r('app.media.image'))
+        .backgroundImageSize({ width: 1200, height: 160 })
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### Example 6: Setting Text Blur Effects
+
+This example uses [blendMode](ts-universal-attributes-image-effect.md#blendmode11) and backgroundEffect to implement an irregular text blur effect.If line leakage occurs, developers should first ensure that the components where the two blendMode attributes are set have exactly the same size. If the sizes are confirmed to be the same, the component boundary may fall on floating-point coordinates. In this case, try setting the [pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround) universal attribute to align the component boundaries on both sides of the generated white or dark lines to integer pixel coordinates.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State shadowColor: Color = Color.White;
+  @State dateFontSize: number = 20;
+  @State redValue: number = 255;
+  @State greenValue: number = 255;
+  @State blueValue: number = 255;
+  @State alphaValue: number = 0.1;
+  @State blurRadius: number = 40;
+  @State saturationValue: number = 0.8;
+  @State brightnessValue: number = 1.5;
+  build() {
+    Stack() {
+      // Replace $r('app.media.image') with the image resource file you use.
+      Image($r('app.media.image'))
+      Column() {
+        Column({ space: 0 }) {
+          Column() {
+            Text('11')
+              .fontSize(144)
+              .fontWeight(FontWeight.Bold)
+              .fontColor('rgba(255,255,255,1)')
+              .fontFamily('HarmonyOS-Sans-Digit')
+              .maxLines(1)
+              .lineHeight(120 * 1.25)
+              .height(120 * 1.25)
+              .letterSpacing(4 * 1.25)
+            Text('42')
+              .fontSize(144)
+              .fontWeight(FontWeight.Bold)
+              .fontColor('rgba(255,255,255,1)')
+              .fontFamily('HarmonyOS-Sans-Digit')
+              .maxLines(1)
+              .lineHeight(120 * 1.25)
+              .height(120 * 1.25)
+              .letterSpacing(4 * 1.25)
+              .shadow({
+                color: 'rgba(0,0,0,0)',
+                radius: 20,
+                offsetX: 0,
+                offsetY: 0
+              })
+            Row() {
+              Text('October 16')
+                .fontSize(this.dateFontSize)
+                .height(22)
+                .fontWeight('medium')
+                .fontColor('rgba(255,255,255,1)')
+              Text('Monday')
+                .fontSize(this.dateFontSize)
+                .height(22)
+                .fontWeight('medium')
+                .fontColor('rgba(255,255,255,1)')
+            }
+          }
+          // Use offscreen rendering for blendMode. In DST_IN mode, only the overlapping area of the current component and the underlying canvas is displayed.
+          .blendMode(BlendMode.DST_IN, BlendApplyType.OFFSCREEN)
+          .pixelRound({
+            start: PixelRoundCalcPolicy.FORCE_FLOOR ,
+            top: PixelRoundCalcPolicy.FORCE_FLOOR ,
+            end: PixelRoundCalcPolicy.FORCE_CEIL,
+            bottom: PixelRoundCalcPolicy.FORCE_CEIL
+          })
+        }
+        // Use offscreen rendering for blendMode. In SRC_OVER mode, the content of the current component is displayed over the underlying canvas.
+        .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
+        // Configure the blur radius, saturation, brightness, and dynamic RGBA color of the component background through backgroundEffect.
+        .backgroundEffect({
+          radius: this.blurRadius,
+          saturation: this.saturationValue,
+          brightness: this.brightnessValue,
+          color: this.getVolumeDialogWindowColor()
+        })
+        .justifyContent(FlexAlign.Center)
+        .pixelRound({
+          start: PixelRoundCalcPolicy.FORCE_FLOOR ,
+          top: PixelRoundCalcPolicy.FORCE_FLOOR ,
+          end: PixelRoundCalcPolicy.FORCE_CEIL,
+          bottom: PixelRoundCalcPolicy.FORCE_CEIL
+        })
+      }
+    }
+  }
+  getVolumeDialogWindowColor(): ResourceColor | string {
+    return `rgba(${this.redValue.toFixed(0)}, ${this.greenValue.toFixed(0)}, ${this.blueValue.toFixed(0)}, ${this.alphaValue.toFixed(2)})`;
+  }
+}
+```
+
+### Example 7: Comparing Blur Effects
+
+This example compares three different blur effects: [backgroundEffect11+](#backgroundeffect11), [backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur), and [backgroundBlurStyle9+](#backgroundblurstyle9).
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BackgroundBlur {
+  private imageSize: number = 150;
+
+  build() {
+    Column({ space: 5 }) {
+      // Use backgroundBlurStyle with an enum value to set blur parameters.
+      Stack() {
+        // Replace $r('app.media.test') with the image resource file you use.
+        Image($r('app.media.test'))
+          .width(this.imageSize)
+          .height(this.imageSize)
+        Column()
+          .width(this.imageSize)
+          .height(this.imageSize)
+          .backgroundBlurStyle(BlurStyle.Thin)
+      }
+
+      // backgroundEffect can customize parameters such as blur radius, brightness, and saturation.
+      Stack() {
+        // Replace $r('app.media.test') with the image resource file you use.
+        Image($r('app.media.test'))
+          .width(this.imageSize)
+          .height(this.imageSize)
+        Column()
+          .width(this.imageSize)
+          .height(this.imageSize)
+          .backgroundEffect({ radius: 20, brightness: 0.6, saturation: 15 })
+      }
+
+      // backdropBlur only sets blur radius and grayscale parameters.
+      Stack() {
+        // Replace $r('app.media.test') with the image resource file you use.
+        Image($r('app.media.test'))
+          .width(this.imageSize)
+          .height(this.imageSize)
+        Column()
+          .width(this.imageSize)
+          .height(this.imageSize)
+          .backdropBlur(20, { grayscale: [30, 50] })
+      }
+    }
+    .width('100%')
+    .padding({ top: 5 })
+  }
+}
+```
+
+### Example 8: Applying a P3 Color Gamut Background Effect
+
+This example demonstrates how to apply a P3 color gamut background effect using [backgroundColor](#backgroundcolor20), available since API version 20.
+
+
+
+```TypeScript
+// xxx.ets
+// To set the P3 color gamut, use the setColorSpace API in ets/entryability/EntryAbility.ets to set the current window to a wide color gamut.
+import { ColorMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct P3BackgroundDemo {
+  @State p3Color: ColorMetrics = ColorMetrics.colorWithSpace(ColorSpace.DISPLAY_P3, 0, 0.3, 0.8, 1);
+
+  build() {
+    Column({ space: 5 }) {
+      Text('background color with colorMetrics').fontSize(9).width('90%').fontColor(0xCCCCCC)
+      Row().width('90%').height(50).backgroundColor(this.p3Color)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 9: Setting Component Background Extension
+
+This example shows how to use [background](#background10) to extend the component's background to the parent component's safe area, supported since API version 20.
+
+```TypeScript
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct BackgroundExtension {
+  @Builder
+  myImages() {
+    Column() {
+      Image($r('app.media.startIcon'))
+        .width('100%')
+        .height('100%')
+    }
+  }
+
+  build() {
+    Column({space: 10}) {
+      Stack() {
+        // A background of the CustomBuilder type with the ignoresLayoutSafeAreaEdges property set extends to the parent component's safe area.
+        Column()
+          .size({ width: '100%', height: '100%' })
+          .border({ width: 1, color: Color.Red })
+          .background(
+            this.myImages(),
+            { align: Alignment.Center , ignoresLayoutSafeAreaEdges: [ LayoutSafeAreaEdge.START, LayoutSafeAreaEdge.TOP ] }
+          )
+      }
+      .size({ width: 300, height: 300 })
+      .backgroundColor('#004aaf')
+      .safeAreaPadding(LengthMetrics.vp(50))
+
+      Stack() {
+        // A background of the ResourceColor type without the ignoresLayoutSafeAreaEdges property set extends to the parent component's safe area by default.
+        Column()
+          .size({ width: '100%', height: '100%' })
+          .border({ width: 1, color: Color.Red })
+          .background('#d5d5d5', { align: Alignment.Center })
+      }
+      .size({ width: 300, height: 300 })
+      .backgroundColor('#707070')
+      .safeAreaPadding(LengthMetrics.vp(50))
+    }
+    .margin(10)
+  }
+}
+```
+
+### Example 1: Implementing Custom Drawing Through DrawModifier
+
+This example demonstrates how to implement custom drawing for the [Text](ts-basic-components-text.md) component through DrawModifier.
+
+
+
+```TypeScript
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+import { AnimatorResult } from '@kit.ArkUI';
+
+// Implement a custom drawing controller by extending DrawModifier.
+class MyFullDrawModifier extends DrawModifier {
+  public scaleX: number = 1;
+  public scaleY: number = 1;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  // Override the drawBehind API for custom background drawing. 
+  drawBehind(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 255,
+      green: 0,
+      blue: 0
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 50 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 50 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 50 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 50 * this.scaleY)
+    });
+  }
+
+  // Override the drawContent API for custom content drawing.
+  drawContent(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 255,
+      blue: 0
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 30 * this.scaleY)
+    });
+  }
+
+  // Override the drawFront API for custom foreground drawing.
+  drawFront(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 0,
+      blue: 255
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    const radiusScale = (this.scaleX + this.scaleY) / 2;
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
+  }
+}
+
+// Implement a custom drawing controller by extending DrawModifier, supporting only custom foreground drawing.
+class MyFrontDrawModifier extends DrawModifier {
+  public scaleX: number = 1;
+  public scaleY: number = 1;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  drawFront(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 0,
+      blue: 255
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    const radiusScale = (this.scaleX + this.scaleY) / 2;
+    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
+      this.uiContext.vp2px(20 * radiusScale));
+  }
+}
+
+@Entry
+@Component
+struct DrawModifierExample {
+  private fullModifier: MyFullDrawModifier = new MyFullDrawModifier(this.getUIContext());
+  private frontModifier: MyFrontDrawModifier = new MyFrontDrawModifier(this.getUIContext());
+  private drawAnimator: AnimatorResult | undefined = undefined;
+  @State modifier: DrawModifier = new MyFrontDrawModifier(this.getUIContext());
+  private count = 0;
+
+  // Create an Animator object and set the animation.
+  create() {
+    let self = this;
+    this.drawAnimator = this.getUIContext().createAnimator({
+      duration: 1000,
+      easing: 'ease',
+      delay: 0,
+      fill: 'forwards',
+      direction: 'normal',
+      iterations: 1,
+      begin: 0,
+      end: 2
+    });
+    // Set the frame callback to dynamically update the scale value and trigger redraw.
+    this.drawAnimator.onFrame = (value: number) => {
+      console.info('frame value =', value);
+      const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
+      tempModifier.scaleX = Math.abs(value - 1);
+      tempModifier.scaleY = Math.abs(value - 1);
+      // Manually trigger redraw.
+      self.modifier.invalidate();
+    };
+  }
+
+  build() {
+    Column() {
+      Row() {
+        Text('test text')
+          .width(100)
+          .height(100)
+          .margin(10)
+          .backgroundColor(Color.Gray)
+          .onClick(() => {
+            const tempModifier = this.modifier as MyFullDrawModifier | MyFrontDrawModifier;
+            tempModifier.scaleX -= 0.1;
+            tempModifier.scaleY -= 0.1;
+          })
+          .drawModifier(this.modifier)
+      }
+
+      Row() {
+        Button('create')
+          .width(100)
+          .height(100)
+          .borderRadius(50)
+          .margin(10)
+          .onClick(() => {
+            this.create();
+          })
+        Button('play')
+          .width(100)
+          .height(100)
+          .borderRadius(50)
+          .margin(10)
+          .onClick(() => {
+            if (this.drawAnimator) {
+              this.drawAnimator.play();
+            }
+          })
+        Button('changeModifier')
+          .width(100)
+          .height(100)
+          .borderRadius(50)
+          .margin(10)
+          .onClick(() => {
+            this.count += 1;
+            if (this.count % 2 === 1) {
+              console.info('change to full modifier');
+              this.modifier = this.fullModifier;
+            } else {
+              console.info('change to front modifier');
+              this.modifier = this.frontModifier;
+            }
+          })
+      }
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 2: Implementing Custom Foreground Drawing for a Container Through DrawModifier
+
+This example demonstrates how to implement custom foreground drawing for a [Column](ts-container-column.md) container using DrawModifier.
+
+```TypeScript
+// xxx.ets
+import { drawing } from '@kit.ArkGraphics2D';
+
+class MyForegroundDrawModifier extends DrawModifier {
+  public scaleX: number = 3;
+  public scaleY: number = 3;
+  uiContext: UIContext;
+
+  constructor(uiContext: UIContext) {
+    super();
+    this.uiContext = uiContext;
+  }
+
+  // Override the drawForeground method to customize foreground drawing.
+  drawForeground(context: DrawContext): void {
+    const brush = new drawing.Brush();
+    brush.setColor({
+      alpha: 255,
+      red: 0,
+      green: 50,
+      blue: 100
+    });
+    context.canvas.attachBrush(brush);
+    const halfWidth = context.size.width / 2;
+    const halfHeight = context.size.height / 2;
+    context.canvas.drawRect({
+      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
+      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
+      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
+      bottom: this.uiContext.vp2px(halfHeight + 30 * this.scaleY)
+    });
+  }
+}
+
+@Entry
+@Component
+struct DrawModifierExample {
+  // Instantiate the foreground drawing class, passing the UIContext instance.
+  private foregroundModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
+
+  build() {
+    Column() {
+      Text('Here is a child node')
+        .fontSize(36)
+        .width('100%')
+        .height('100%')
+        .textAlign(TextAlign.Center)
+    }
+    .margin(50)
+    .width(280)
+    .height(300)
+    .backgroundColor(0x87CEEB)
+    // Apply custom foreground drawing by passing the DrawModifier instance.
+    .drawModifier(this.foregroundModifier)
+  }
+}
+```
+
+This example uses enabled to set whether a button is interactive.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct EnabledExample {
+  build() {
+    Flex({ justifyContent: FlexAlign.SpaceAround }) {
+      // The button does not respond to clicks.
+      Button('disable').enabled(false).backgroundColor(0x317aff).opacity(0.4)
+      Button('enable').backgroundColor(0x317aff)
+    }
+    .width('100%')
+    .padding({ top: 5 })
+  }
+}
+```
+
+This example demonstrates how to apply a motion blur effect.
+
+```TypeScript
+// xxx.ets
+import { curves } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct MotionBlurTest {
+  @State widthSize: number = 300
+  @State heightSize: number = 240
+  @State flag: boolean = true
+  @State radius: number = 0
+  @State x: number = 0.5
+  @State y: number = 0.5
+
+  build() {
+    Column() {
+      Column() {
+        // Replace $r('app.media.test') with the image resource file you use.
+        Image($r('app.media.test'))
+          .width(this.widthSize)
+          .height(this.heightSize)
+          .scale({ x: this.flag ? 1 : 0.8, y: this.flag ? 1 : 0.8, centerX: '50%', centerY: '50%' })
+          .onClick(() => {
+            // Set the motion blur parameters and trigger the scaling animation on tap.
+            this.radius = 50;
+            this.x = 0.5;
+            this.y = 0.5;
+            this.flag = !this.flag;
+          })
+          .animation({
+            duration: 2000, // Animation playback time.
+            iterations:1, // Animation playback iterations.
+            playMode:PlayMode.Alternate, // Animation playback mode: plays forward on odd-numbered iterations (1st, 3rd, 5th...) and reverse on even-numbered iterations (2nd, 4th, 6th...).
+            curve: curves.springCurve(10, 1, 228, 30), // Animation curve.
+            onFinish: () => {
+              // Set the blur radius to 0 after the animation ends to clear the motion blur effect.
+              this.radius = 0;
+              console.info('onFinish');
+            },
+          })
+          .motionBlur({ radius: this.radius, anchor: { x: this.x, y: this.y } })
+      }
+    }.width('100%')
+    .margin({ top: 50 })
+  }
+}
+```
+
+This example shows how to use pixelRound to guide layout adjustments when there is a 1 px gap in the parent component.
+
+```TypeScript
+@Entry
+@Component
+struct PixelRoundExample {
+    // State variable: records the current width of the parent component to demonstrate floating-point width changes.
+    @State curWidth : number = 300;
+
+    build() {
+        Column() {
+            Button(){
+                Text(this.curWidth.toString())
+            }
+            .onClick(() => {
+                // Increase by 0.1 px on each click to simulate a floating-point width.
+                this.curWidth += 0.1;
+            })
+            .height(200)
+            .width(200)
+            .backgroundColor('rgb(213, 213, 213)')
+
+            Blank().height(20)
+
+            Row() {
+                // Child component: fills the parent container by 100%.
+                Row() {
+                }
+                .width('100%')
+                .height('100%')
+                .backgroundColor(Color.Yellow)
+                // Disable pixel rounding in the start and end directions of the child component.
+                .pixelRound({
+                    start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+                    end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+                })
+            }
+            .width(this.curWidth.toString() + 'px')
+            .height('300.6px') // Use a floating-point height to test the rounding behavior in the top and bottom directions.
+            .backgroundColor(Color.Red)
+            // Disable pixel rounding in the start and end directions of the parent component.
+            .pixelRound({
+                start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+                end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
+            })
+        }
+        .width("100%")
+        .height('100%')
+        .backgroundColor('#ffe5e5e5')
+    }
+}
+```
+
+### Example 1: Using the Automatic Memory Optimization Strategy
+
+In the following example, the reusable custom component ReusableComponent uses the automatic memory optimization strategy through the memoryOptimizationStrategy attribute of [ReusableOptions](arkts-arkui-common-comp-reusableoptions-i.md). Click the Recycle button to trigger the recycling of the ReusableComponent component. Then, when the app goes to the background, the reuse pool cache is released.
+
+The ReusableOptions API is added since API version 26.0.0.
+
+```TypeScript
+@Reusable({ memoryOptimizationStrategy: ReusableMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION }) // Use the automatic memory optimization strategy.
+@Component
+struct ReusableComponent {
+  aboutToRecycle() {
+    console.info('ReusableComponent aboutToRecycle');
+  }
+  aboutToDisappear() {
+    console.info('ReusableComponent aboutToDisappear');
+  }
+  build() {
+    Text('ReusableComponent')
+  }
+}
+
+@Entry
+@Component
+struct MemoryOptimizeDemo {
+  @State showReusableComponent: boolean = true;
+  build() {
+    Column() {
+      Button('Recycle').onClick(() => { // Tap the button to trigger component recycling.
+        this.showReusableComponent = false;
+      })
+      if (this.showReusableComponent) {
+        ReusableComponent()
+      }
+    }
+  }
+}
+```
+
+### Example 1: Triggering the onKeyEvent Callback
+
+This example sets a key event for a button. When the button obtains focus, pressing a key triggers the onKeyEvent callback. For details about the process and specific timing of the key event triggering, see [Key Event Data Flow](../../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct KeyEventExample {
+  @State text: string = ''
+  @State eventType: string = ''
+
+  build() {
+    Column() {
+      Button('KeyEvent')
+        .defaultFocus(true)
+        .onKeyEvent((event?: KeyEvent) => {
+          if (event) {
+            if (event.type === KeyType.Down) {
+              this.eventType = 'Down';
+            }
+            if (event.type === KeyType.Up) {
+              this.eventType = 'Up';
+            }
+            this.text = 'KeyType:' + this.eventType + '\nkeyCode:' + event.keyCode + '\nkeyText:' + event.keyText +
+              '\nintentionCode:' + event.intentionCode;
+          }
+        })
+      Text(this.text).padding(15)
+    }.height(300).width('100%').padding(35)
+  }
+}
+```
+
+### Example 2: Obtaining the Unicode Code Point
+
+This example demonstrates how to obtain the Unicode code point of the pressed key using the key event.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct KeyEventExample {
+  @State text: string = ''
+  @State eventType: string = ''
+  @State keyType: string = ''
+
+  build() {
+    Column({ space: 10 }) {
+      Button('KeyEvent')
+        .onKeyEvent((event?: KeyEvent) => {
+          if (event) {
+            if (event.type === KeyType.Down) {
+              this.eventType = 'Down';
+            }
+            if (event.type === KeyType.Up) {
+              this.eventType = 'Up';
+            }
+            if (event.unicode === 97) {
+              this.keyType = 'a';
+            } else if (event.unicode === 65) {
+              this.keyType = 'A';
+            } else {
+              this.keyType = ' ';
+            }
+            this.text =
+              'KeyType:' + this.eventType + '\nUnicode:' + event.unicode + '\nkeyCode:' + event.keyCode + '\nkeyType:' +
+              this.keyType;
+          }
+        })
+      Text(this.text).padding(15)
+    }.height(300).width('100%').padding(35)
+  }
+}
+```
+
+### Example 3: Triggering the onKeyPreIme Callback
+
+This example demonstrates how to use the onKeyPreIme callback to intercept and disable the left arrow key in a text box.
+
+```TypeScript
+import { KeyCode } from '@kit.InputKit';
+
+@Entry
+@Component
+struct PreImeEventExample {
+
+  build() {
+    Column() {
+      Search({
+        placeholder: 'Search...'
+      })
+        .width('80%')
+        .height('40vp')
+        .border({ radius: '20vp' })
+        .onKeyPreIme((event: KeyEvent) => {
+          // Prevent the left arrow key from working.
+          if (event.keyCode === KeyCode.KEYCODE_DPAD_LEFT) {
+            return true;
+          }
+          return false;
+        })
+    }
+  }
+}
+```
+
+### Example 4: Preventing Event Bubbling
+
+This example demonstrates event bubbling prevention using stopPropagation. Adding event.stopPropagation() to the Button component's onKeyEvent callback ensures only the Button component responds to keyboard events, while the parent Column remains unresponsive.
+
+> NOTE
+> 
+> The onKeyEvent event bubbles by default.
+> 
+> Event bubbling: In a tree structure, after a child node finishes processing an event, the event is passed to its parent node for processing.
+> 
+> In [onKeyEvent15+](#onkeyevent15), you can return true to consume the key event and prevent bubbling, which is equivalent to calling stopPropagation.
+
+```TypeScript
+@Entry
+@Component
+struct KeyEventExample {
+  @State buttonText: string = '';
+  @State buttonType: string = '';
+  @State columnText: string = '';
+  @State columnType: string = '';
+
+  build() {
+    Column() {
+      Button('onKeyEvent')
+        .defaultFocus(true)
+        .width(112).height(56)
+        .onKeyEvent((event?: KeyEvent) => {
+          // Use stopPropagation to prevent the key event from bubbling up.
+          if (event) {
+            event.stopPropagation();
+            if (event.type === KeyType.Down) {
+              this.buttonType = 'Down';
+            }
+            if (event.type === KeyType.Up) {
+              this.buttonType = 'Up';
+            }
+            this.buttonText = 'Button: \n' +
+              'KeyType:' + this.buttonType + '\n' +
+              'KeyCode:' + event.keyCode + '\n' +
+              'KeyText:' + event.keyText;
+          }
+        })
+
+      Divider()
+      Text(this.buttonText).fontColor(Color.Green)
+
+      Divider()
+      Text(this.columnText).fontColor(Color.Red)
+    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+    .onKeyEvent((event?: KeyEvent) => { // Set the onKeyEvent event for the parent container Column.
+      if (event) {
+        if (event.type === KeyType.Down) {
+          this.columnType = 'Down';
+        }
+        if (event.type === KeyType.Up) {
+          this.columnType = 'Up';
+        }
+        this.columnText = 'Column: \n' +
+          'KeyType:' + this.columnType + '\n' +
+          'KeyCode:' + event.keyCode + '\n' +
+          'KeyText:' + event.keyText;
+      }
+    })
+  }
+}
+```
+
+### Example 1: Obtaining Parameters Related to a Mouse Event
+
+This example demonstrates how to set a mouse event on a button. When the button is clicked using a mouse device, the [onMouse](arkts-arkui-common-comp-commonmethod-c.md#onmouse) event is triggered to obtain relevant mouse event parameters. Starting from API version 15, the [MouseEvent](#mouseevent) object provides access to the targetDisplayId, rawDeltaX, rawDeltaY, and pressedButtons parameters.
+
+For mouse wheel event examples, see [Axis Event](ts-universal-events-axis.md#example).
+
+The figure below shows how the button looks when clicked.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct MouseEventExample {
+  @State hoverText: string = 'no hover';
+  @State mouseText: string = '';
+  @State action: string = '';
+  @State mouseBtn: string = '';
+  @State color: Color = Color.Blue;
+
+  build() {
+    Column({ space: 20 }) {
+      Button(this.hoverText)
+        .width(180)
+        .height(80)
+        .backgroundColor(this.color)
+        .fontSize(24)
+        .onHover((isHover: boolean) => {
+          // Use the onHover event to dynamically change the text content and background color of a button when the mouse pointer is hovered on it.
+          if (isHover) {
+            this.hoverText = 'hover';
+            this.color = Color.Pink;
+          } else {
+            this.hoverText = 'no hover';
+            this.color = Color.Blue;
+          }
+        })
+      Button('onMouse')
+        .width(180).height(80)
+        .fontSize(24)
+        // Use onMouse to listen for mouse events, parse the buttons, actions, coordinates, and other information, and combines the information.
+        .onMouse((event: MouseEvent): void => {
+          if (event) {
+            // Determine the type of the pressed mouse button.
+            switch (event.button) {
+              case MouseButton.None:
+                this.mouseBtn = 'None';
+                break;
+              case MouseButton.Left:
+                this.mouseBtn = 'Left';
+                break;
+              case MouseButton.Right:
+                this.mouseBtn = 'Right';
+                break;
+              case MouseButton.Back:
+                this.mouseBtn = 'Back';
+                break;
+              case MouseButton.Forward:
+                this.mouseBtn = 'Forward';
+                break;
+              case MouseButton.Middle:
+                this.mouseBtn = 'Middle';
+                break;
+            }
+            // Determine the type of the triggered mouse action.
+            switch (event.action) {
+              case MouseAction.Press:
+                this.action = 'Press';
+                break;
+              case MouseAction.Move:
+                this.action = 'Move';
+                break;
+              case MouseAction.Release:
+                this.action = 'Release';
+                break;
+              case MouseAction.ENTER_WINDOW:
+                this.action = 'ENTER_WINDOW';
+                break;
+              case MouseAction.LEAVE_WINDOW:
+                this.action = 'LEAVE_WINDOW';
+                break;
+            }
+            // Combine and display all information about the mouse event.
+            this.mouseText = 'onMouse:\nButton = ' + this.mouseBtn +
+              '\nAction = ' + this.action + '\nXY=(' + event.x + ',' + event.y + ')' +
+              '\nwindowXY=(' + event.windowX + ',' + event.windowY + ')' +
+              '\ntargetDisplayId = ' + event.targetDisplayId +
+              '\nrawDeltaX = ' + event.rawDeltaX +
+              '\nrawDeltaY = ' + event.rawDeltaY +
+              '\nlength = ' + event.pressedButtons?.length;
+          }
+        })
+      Text(this.mouseText)
+    }.padding({ top: 30 }).width('100%')
+  }
+}
+```
+
+### Example 2: Obtaining Historical Points of the Current Frame
+
+This example calls the [getHistoricalPoints](#gethistoricalpoints) API to obtain the historical points of the current frame, which can be used to implement smoother drawing.
+
+The getHistoricalPoints API is added as of API version 26.0.0.
+
+```TypeScript
+@Entry
+@Component
+struct HistoricalPointsExample {
+  historicalPointsInfo: string = '';
+
+  build() {
+    Column() {
+      Button('Obtain historical points by moving the mouse')
+        .width(180)
+        .height(80)
+        .onMouse((event: MouseEvent) => {
+          if (event.action === MouseAction.Move) {
+            // Call the getHistoricalPoints API to obtain the historical points of the current frame.
+            const historicalPoints = event.getHistoricalPoints?.();
+            if (historicalPoints) {
+              this.historicalPointsInfo = `Number of historical points: ${historicalPoints.length}`;
+              historicalPoints.forEach((point: MouseHistoricalPoint, index: number) => {
+                this.historicalPointsInfo += `\nPoint ${index}: `
+                  + `x = ${point.x}, y = ${point.y}, windowX = ${point.windowX}, windowY = ${point.windowY}, `
+                  + `displayX = ${point.displayX}, displayY = ${point.displayY}, `
+                  + `globalDisplayX = ${point.globalDisplayX}, globalDisplayY = ${point.globalDisplayY}, `
+                  + `timestamp = ${point.timestamp}`;
+              });
+              console.info(this.historicalPointsInfo);
+            }
+          }
+        })
+    }.padding({ top: 30 })
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 3: Obtaining the Real-Time Position of a Component
+
+This example uses the [getCurrentLocalPosition](#getcurrentlocalposition) method to obtain the coordinates of the mouse position relative to the upper left corner of the real-time position of the current component.
+
+The getCurrentLocalPosition API is supported since API version 26.0.0.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct GetCurrentLocalPositionExample {
+  @State positionText: string = '';
+  @State textOffsetY: number = 0;
+
+  build() {
+    Column() {
+      Button('Obtain the coordinates of the mouse position relative to the upper left corner of the real-time position of the current component').translate({ y: this.textOffsetY })
+        .onMouse((event: MouseEvent) => {
+          if (event) {
+            // Obtain the coordinates of the mouse position relative to the upper left corner of the real-time position of the component after the component is moved. The coordinates are obtained after a delay.
+            this.textOffsetY = -200;
+            setTimeout(() => {
+              let localPos: Coordinate2D | undefined = event.getCurrentLocalPosition?.();
+              this.positionText = `Coordinates of the upper left corner relative to the real-time position of the current component:\n x: ${localPos?.x}\n y: ${localPos?.y}`;
+            }, 2000);
+          }
+        })
+
+      Text(this.positionText)
+    }.width('100%')
+  }
+}
+```
+
+### Example 1: Setting the Component Stacking Order
+
+This example demonstrates how to set the stacking order of components using zIndex.
+
+When no zIndex is set for child components in a Stack container, they are displayed in the order in which they are declared by default, with later-declared components overlapping earlier-declared ones.
+
+
+
+Display of child components in the Stack container when zIndex is set
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ZIndexExample {
+  build() {
+    Column() {
+      Stack() {
+        // Components in the Stack container overlap, with later-defined components on top by default. Components with higher zIndex values appear in front of those with lower zIndex values.
+        // Set the zIndex value of Text1 to 2.
+        Text('1, zIndex(2)')
+          .size({ width: '40%', height: '30%' }).backgroundColor(0xbbb2cb)
+          .zIndex(2)
+        // Set the zIndex value of Text2 to 1.
+        Text('2, zIndex(1)')
+          .size({ width: '70%', height: '50%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
+          .zIndex(1)
+        // Set the zIndex value of Text3 to 0.
+        Text('3, zIndex(0)')
+          .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
+          .zIndex(0)
+      }.width('100%').height(200)
+    }.width('100%').height(200)
+  }
+}
+```
+
+### Example 2: Dynamically Modifying the zIndex Attribute
+
+This example demonstrates dynamically modifying the zIndex attribute on a Button component.
+
+Effect without clicking the Button component to change zIndex
+
+
+
+Effect after clicking the Button component to dynamically change zIndex so that Text1 and Text2 have the same zIndex value
+
+
+
+Effect after the Button component is clicked to dynamically change zIndex so that Text2 has a higher zIndex value than Text1
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ZIndexExample {
+  @State zIndexValue: number = 0;
+
+  build() {
+    Column() {
+      // Clicking the Button component changes the zIndex value. Components are sorted stably based on their previous stacking order.
+      Button('change Text2 zIndex')
+        .onClick(() => {
+          this.zIndexValue = (this.zIndexValue + 1) % 3;
+        })
+      Stack() {
+        // Set the zIndex value of Text1 to 1.
+        Text('1, zIndex(1)')
+          .size({ width: '70%', height: '50%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
+          .zIndex(1)
+        // Set the zIndex value of Text2 to the default value 0.
+        Text('2, default zIndex(0), now zIndex:' + this.zIndexValue)
+          .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
+          .zIndex(this.zIndexValue)
+      }.width('100%').height(200)
+    }.width('100%').height(200)
+  }
+}
+```
+
+### Example 3: Setting zIndex for Components in Different Containers
+
+This example sets the zIndex attribute for components in different containers. Text1 and Text2 are in the same Stack container, while Text3 is in another Stack container. Although Text3 has the smallest zIndex value, Text1 and Text2 still cannot be displayed above Text3 based on their zIndex values.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ZIndexExample {
+  build() {
+    Stack() {
+      Stack() {
+        // Set the zIndex value of Text1 to 2.
+        Text('1, zIndex(2)')
+          .size({ width: '40%', height: '30%' }).backgroundColor(0xbbb2cb)
+          .zIndex(2)
+        // Set the zIndex value of Text2 to 1.
+        Text('2, zIndex(1)')
+          .size({ width: '70%', height: '50%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
+          .zIndex(1)
+      }.width('100%').height(200)
+
+      Stack() {
+        // zIndex cannot take effect across different container components. Text3 will be displayed on the top.
+        // Set the zIndex value of Text3 to 0.
+        Text('3, zIndex(0)')
+          .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
+          .zIndex(0)
+      }.width('100%').height(200)
+    }.width('100%').height(200)
+  }
+}
+```
+
+### Example 1: Using onVisibleAreaChange to Listen for Visible Area Changes
+
+This example demonstrates how to set an [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) event for a component, which triggers the callback when the component is fully displayed or completely hidden.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ScrollExample {
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State testTextStr: string = 'test';
+  @State testRowStr: string = 'test';
+
+  build() {
+    Column() {
+      Column() {
+        Text(this.testTextStr)
+          .fontSize(20)
+
+        Text(this.testRowStr)
+          .fontSize(20)
+      }
+      .height(100)
+      .backgroundColor(Color.Gray)
+      .opacity(0.3)
+
+      Scroll(this.scroller) {
+        Column() {
+          Text('Test Text Visible Change')
+            .fontSize(20)
+            .height(200)
+            .margin({ top: 50, bottom: 20 })
+            .backgroundColor(Color.Green)
+            // Set ratios to [0.0, 1.0] to invoke the callback when the component is fully visible or invisible on screen.
+            .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+              console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
+              if (isExpanding && currentRatio >= 1.0) {
+                console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`);
+                this.testTextStr = 'Test Text is fully visible';
+              }
+
+              if (!isExpanding && currentRatio <= 0.0) {
+                console.info('Test Text is completely invisible.');
+                this.testTextStr = 'Test Text is completely invisible';
+              }
+            })
+
+          Row() {
+            Text('Test Row Visible Change')
+              .fontSize(20)
+              .margin({ bottom: 20 })
+
+          }
+          .height(200)
+          .backgroundColor(Color.Yellow)
+          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
+            if (isExpanding && currentRatio >= 1.0) {
+              console.info('Test Row is fully visible.');
+              this.testRowStr = 'Test Row is fully visible';
+            }
+
+            if (!isExpanding && currentRatio <= 0.0) {
+              console.info('Test Row is completely invisible.');
+              this.testRowStr = 'Test Row is completely invisible';
+            }
+          })
+
+          ForEach(this.arr, (item: number) => {
+            Text(item.toString())
+              .width('90%')
+              .height(150)
+              .backgroundColor(0xFFFFFF)
+              .borderRadius(15)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .margin({ top: 10 })
+          }, (item: number) => (item.toString()))
+
+        }.width('100%')
+      }
+      .backgroundColor(0x317aff)
+      .scrollable(ScrollDirection.Vertical)
+      .scrollBar(BarState.On)
+      .scrollBarColor(Color.Gray)
+      .scrollBarWidth(10)
+      .onWillScroll((xOffset: number, yOffset: number) => {
+        console.info(`${xOffset} ${yOffset}`);
+      })
+      .onScrollEdge(() => {
+        console.info('To the edge');
+      })
+      .onScrollStop(() => {
+        console.info('Scroll Stop');
+      })
+
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+  }
+}
+```
+
+### Example 2: Using onVisibleAreaApproximateChange to Listen for Visible Area Changes
+
+This example demonstrates how to set an [onVisibleAreaApproximateChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareaapproximatechange) event for a component, which triggers the callback when the component is fully displayed or completely hidden. This feature is supported from API version 17.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ScrollExample {
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  @State testTextStr: string = 'test';
+  @State testRowStr: string = 'test';
+
+  build() {
+    Column() {
+      Column() {
+        Text(this.testTextStr)
+          .fontSize(20)
+
+        Text(this.testRowStr)
+          .fontSize(20)
+      }
+      .height(100)
+      .backgroundColor(Color.Gray)
+      .opacity(0.3)
+
+      Scroll(this.scroller) {
+        Column() {
+          Text('Test Text Visible Change')
+            .fontSize(20)
+            .height(200)
+            .margin({ top: 50, bottom: 20 })
+            .backgroundColor(Color.Green)
+            // Set ratios to [0.0, 1.0] to invoke the callback when the component is fully visible or invisible on screen.
+            .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 },
+              (isExpanding: boolean, currentRatio: number) => {
+                console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
+                if (isExpanding && currentRatio >= 1.0) {
+                  console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`);
+                  this.testTextStr = 'Test Text is fully visible';
+                }
+
+                if (!isExpanding && currentRatio <= 0.0) {
+                  console.info('Test Text is completely invisible.');
+                  this.testTextStr = 'Test Text is completely invisible';
+                }
+              })
+
+          Row() {
+            Text('Test Row Visible Change')
+              .fontSize(20)
+              .margin({ bottom: 20 })
+
+          }
+          .height(200)
+          .backgroundColor(Color.Yellow)
+          .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 }, (isExpanding: boolean, currentRatio: number) => {
+            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
+            if (isExpanding && currentRatio >= 1.0) {
+              console.info('Test Row is fully visible.');
+              this.testRowStr = 'Test Row is fully visible';
+            }
+
+            if (!isExpanding && currentRatio <= 0.0) {
+              console.info('Test Row is completely invisible.');
+              this.testRowStr = 'Test Row is completely invisible';
+            }
+          })
+
+          ForEach(this.arr, (item: number) => {
+            Text(item.toString())
+              .width('90%')
+              .height(150)
+              .backgroundColor(0xFFFFFF)
+              .borderRadius(15)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .margin({ top: 10 })
+          }, (item: number) => (item.toString()))
+
+        }.width('100%')
+      }
+      .backgroundColor(0x317aff)
+      .scrollable(ScrollDirection.Vertical)
+      .scrollBar(BarState.On)
+      .scrollBarColor(Color.Gray)
+      .scrollBarWidth(10)
+      .onWillScroll((xOffset: number, yOffset: number) => {
+        console.info(`${xOffset} ${yOffset}`);
+      })
+      .onScrollEdge(() => {
+        console.info('To the edge');
+      })
+      .onScrollStop(() => {
+        console.info('Scroll Stop');
+      })
+
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+  }
+}
+```
+
+### Example 3: Setting measureFromViewport to Calculate the Visible Area When a Child Component Extends Beyond Its Parent
+
+Starting from API version 22, this example demonstrates the effect comparison after setting the measureFromViewport parameter for the onVisibleAreaChange event. The main difference is reflected in the component visibility ratio (currentRatio) returned by the callback. When measureFromViewport is set to true, the returned component visibility ratio (currentRatio) better matches the actual effect. Because different devices have different screen pixel densities, the calculation of the visible area change event involves decimal rounding, and currentRatio may have slight differences.
+
+```TypeScript
+@Entry
+@Component
+struct OnVisibleAreaChangeSample {
+  @State ratio1: number = 0.0;
+  @State ratio2: number = 0.0;
+  @State ratio3: number = 0.0;
+
+  build() {
+    Column() {
+      Text(`onVisibleChange1 with measureFromViewport \nratio: ${this.ratio1}`)
+      Column() {
+        Row() {
+          Row() {
+
+          }
+          .backgroundColor(Color.Blue)
+          .height(120)
+          .width(120)
+          .offset({ x: 0, y: 60 })
+          // If measureFromViewport is set to true and clip(true) is not set for the parent component, any area of the child component that extends beyond its parent component's bounds is regarded as a visible area.
+          .onVisibleAreaApproximateChange({
+            ratios: [0.0, 1.0],
+            expectedUpdateInterval: 500,
+            measureFromViewport: true
+          }, (isExpanding: boolean, currentRatio: number) => {
+            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
+          })
+          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+            this.ratio1 = currentRatio;
+          }, true)
+        }
+        .backgroundColor(Color.Pink)
+        .height(120)
+        .width(120)
+      }
+      .padding(5)
+      .borderWidth(1)
+      .height(200)
+      .width(200)
+
+      Text(`onVisibleChange2 without measureFromViewport \nratio: ${this.ratio2}`)
+      Column() {
+        Row() {
+          Row() {
+
+          }
+          .backgroundColor(Color.Blue)
+          .height(120)
+          .width(120)
+          .offset({ x: 0, y: 60 })
+          // If measureFromViewport is not set (which will be treated as false) and clip(true) is not set for the parent component, any area of the child component that extends beyond its parent component's bounds is regarded as an invisible area.
+          .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
+            (isExpanding: boolean, currentRatio: number) => {
+              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
+            })
+          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+            this.ratio2 = currentRatio;
+          })
+        }
+        .backgroundColor(Color.Pink)
+        .height(120)
+        .width(120)
+      }
+      .padding(5)
+      .borderWidth(1)
+      .height(200)
+      .width(200)
+
+      Text(`parent set clip(true) onVisibleChange3 with measureFromViewport \nratio: ${this.ratio3}`)
+      Column() {
+        Row() {
+          Row() {
+
+          }
+          .backgroundColor(Color.Blue)
+          .height(120)
+          .width(120)
+          .offset({ x: 0, y: 60 })
+          // If measureFromViewport is set to true and clip(true) is set for the parent component, any area of the child component that extends beyond its parent component regarded as an invisible area.
+          .onVisibleAreaApproximateChange({
+            ratios: [0.0, 1.0],
+            expectedUpdateInterval: 500,
+            measureFromViewport: true
+          }, (isExpanding: boolean, currentRatio: number) => {
+            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
+          })
+          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
+            this.ratio3 = currentRatio;
+          }, true)
+        }
+        .clip(true)
+        .backgroundColor(Color.Pink)
+        .height(120)
+        .width(120)
+      }
+      .padding(5)
+      .borderWidth(1)
+      .height(200)
+      .width(200)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+This example sets the mouse cursor style using setCursor.
+
+```TypeScript
+// xxx.ets
+import { pointer } from '@kit.InputKit';
+
+@Entry
+@Component
+struct CursorControlExample {
+  build() {
+    Column() {
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Green)
+        .position({ x: 60, y: 70 })
+        .onHover((flag) => {
+          if (flag) {
+            // You are advised to use this.getUIContext().getCursorController().setCursor().
+            cursorControl.setCursor(pointer.PointerStyle.EAST);
+          } else {
+            // You are advised to use this.getUIContext().getCursorController().restoreDefault().
+            cursorControl.restoreDefault();
+          }
+        })
+      Row()
+        .height(200)
+        .width(200)
+        .backgroundColor(Color.Blue)
+        .position({ x: 130, y: 120 })
+        .onHover((flag) => {
+          if (flag) {
+            // You are advised to use this.getUIContext().getCursorController().setCursor().
+            cursorControl.setCursor(pointer.PointerStyle.WEST);
+          } else {
+            // You are advised to use this.getUIContext().getCursorController().restoreDefault().
+            cursorControl.restoreDefault();
+          }
+        })
+    }.width('100%')
+  }
+}
+```
+
+### Example 1: Using onAreaChange to Listen for Area Changes
+
+This example demonstrates how to set an area change event for a Text component. When the layout of the Text component changes, the onAreaChange event is triggered, allowing you to obtain relevant parameters.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AreaExample {
+  @State value: string = 'Text';
+  @State sizeValue: string = '';
+
+  build() {
+    Column() {
+      Text(this.value)
+        .backgroundColor(Color.Green)
+        .margin(30)
+        .fontSize(20)
+        .onClick(() => {
+          this.value = this.value + 'Text';
+        })
+        .onAreaChange((oldValue: Area, newValue: Area) => {
+          console.info(`Ace: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
+          this.sizeValue = JSON.stringify(newValue);
+        })
+      Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
+    }
+    .width('100%').height('100%').margin({ top: 30 })
+  }
+}
+```
+
+### Example 2: Using onAreaChange to Listen for Area Changes at a Custom Interval
+
+In this example, by setting [expectedUpdateInterval](arkts-arkui-common-comp-areachangeoptions-i.md), the [onAreaChange](#onareachange-1) event can be triggered when the Text layout changes, achieving the effect of interval callbacks.
+
+Since API version 26.0.0, [onAreaChange](#onareachange-1), [AreaChangeCallback](arkts-arkui-common-comp-areachangecallback-t.md), and [AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md) are added.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct AreaExample {
+  @State value: string = 'Text';
+  @State sizeValue: string = '';
+
+  build() {
+    Column() {
+      Text(this.value)
+        .backgroundColor(Color.Green)
+        .margin(30)
+        .fontSize(20)
+        .onClick(() => {
+          this.value = this.value + 'Text';
+        })
+        // When expectedUpdateInterval is set, the area change callback is triggered at the set interval.
+        .onAreaChange((oldValue: Area, newValue: Area) => {
+          console.info(`ACE: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
+          this.sizeValue = JSON.stringify(newValue);
+        }, {expectedUpdateInterval: 1000})
+      Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
+    }
+    .width('100%').height('100%').margin({ top: 30 })
+  }
+}
+```
+
+This example demonstrates how to use restoreId to set the ID of the List component for device matching during hopping.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct RestoreIdExample {
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  build() {
+    Column() {
+      List({ space: 20 }) {
+        ForEach(this.arr, (item:number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(Color.Pink)
+          }
+        }, (item:number) => (item.toString()))
+      }
+      .restoreId(1);
+    }
+  }
+}
+```
+
+### Example 1: Setting Polymorphic Styles for the Text Component
+
+This example shows the style changes of the Text component when the state is set to hovered, pressed, and disabled using [stateStyles](#statestyles).
+
+The hovered attribute is added to [stateStyles](#statestyles) as of API version 26.0.0.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct StyleExample {
+  @State isEnable: boolean = true
+
+  @Styles
+  hoveredStyles(): void {
+    .backgroundColor('#12db70')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Dashed)
+    .borderWidth(2)
+    .borderColor('#33000000')
+    .width(120)
+    .height(30)
+    .opacity(1)
+  }
+
+  @Styles
+  pressedStyles(): void {
+    .backgroundColor('#ED6F21')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Dashed)
+    .borderWidth(2)
+    .borderColor('#33000000')
+    .width(120)
+    .height(30)
+    .opacity(1)
+  }
+
+  @Styles
+  disabledStyles(): void {
+    .backgroundColor('#E5E5E5')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Solid)
+    .borderWidth(2)
+    .borderColor('#2a4c1919')
+    .width(90)
+    .height(25)
+    .opacity(1)
+  }
+
+  @Styles
+  normalStyles(): void {
+    .backgroundColor('#0A59F7')
+    .borderRadius(10)
+    .borderStyle(BorderStyle.Solid)
+    .borderWidth(2)
+    .borderColor('#33000000')
+    .width(100)
+    .height(25)
+    .opacity(1)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
+      Text('normal')
+        .fontSize(14)
+        .fontColor(Color.White)
+        .opacity(0.5)
+        // stateStyles sets the style of the component in its normal state.
+        .stateStyles({
+          normal: this.normalStyles,
+        })
+        .margin({ bottom: 20 })
+        .textAlign(TextAlign.Center)
+      Text('hovered')
+        .backgroundColor('#0A59F7')
+        .borderRadius(20)
+        .borderStyle(BorderStyle.Dotted)
+        .borderWidth(2)
+        .borderColor(Color.Red)
+        .width(100)
+        .height(25)
+        .opacity(1)
+        .fontSize(14)
+        .fontColor(Color.White)
+        // stateStyles: sets the style of the component when the mouse pointer is hovered over the component.
+        .stateStyles({
+          hovered: this.hoveredStyles,
+        })
+        .margin({ bottom: 20 })
+        .textAlign(TextAlign.Center)
+      Text('pressed')
+        .backgroundColor('#0A59F7')
+        .borderRadius(20)
+        .borderStyle(BorderStyle.Dotted)
+        .borderWidth(2)
+        .borderColor(Color.Red)
+        .width(100)
+        .height(25)
+        .opacity(1)
+        .fontSize(14)
+        .fontColor(Color.White)
+        // stateStyles sets the style of the component in its pressed state.
+        .stateStyles({
+          pressed: this.pressedStyles,
+        })
+        .margin({ bottom: 20 })
+        .textAlign(TextAlign.Center)
+      Text(this.isEnable ? 'effective' : 'disabled')
+        .backgroundColor('#0A59F7')
+        .borderRadius(20)
+        .borderStyle(BorderStyle.Solid)
+        .borderWidth(2)
+        .borderColor(Color.Gray)
+        .width(100)
+        .height(25)
+        .opacity(1)
+        .fontSize(14)
+        .fontColor(Color.White)
+        .enabled(this.isEnable)
+        // stateStyles sets the style of the component in its disabled state.
+        .stateStyles({
+          disabled: this.disabledStyles,
+        })
+        .textAlign(TextAlign.Center)
+      Text('control disabled')
+        .onClick(() => {
+          this.isEnable = !this.isEnable;
+          console.info(`${this.isEnable}`);
+        })
+    }
+    .width(350).height(300)
+  }
+}
+```
+
+### Example 2: Setting Polymorphic Styles for the Radio Component
+
+This example demonstrates the style changes of the Radio component when its state is selected.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State isRadio1Selected: boolean = false
+  @State isRadio2Selected: boolean = false
+
+  @Styles
+  normalStyles(): void {
+    .backgroundColor('#E5E5E1')
+  }
+
+  @Styles
+  selectStyles(): void {
+    .backgroundColor('#ED6F21')
+    .borderWidth(2)
+  }
+
+  build() {
+    Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
+      Column() {
+        Text('Radio1')
+          .fontSize(25)
+        Radio({ value: 'Radio1', group: 'radioGroup1' })
+          .checked(this.isRadio1Selected)
+          .height(50)
+          .width(50)
+          .borderWidth(0)
+          .borderRadius(30)
+          .onClick(() => {
+            this.isRadio1Selected = !this.isRadio1Selected;
+          })
+          .stateStyles({
+            normal: this.normalStyles,
+            selected: this.selectStyles,
+          })
+      }
+      .margin(30)
+
+      Column() {
+        Text('Radio2')
+          .fontSize(25)
+        Radio({ value: 'Radio2', group: 'radioGroup2' })
+          .checked($$this.isRadio2Selected)
+          .height(50)
+          .width(50)
+          .borderWidth(0)
+          .borderRadius(30)
+          .stateStyles({
+            normal: this.normalStyles,
+            selected: this.selectStyles,
+          })
+      }
+      .margin(30)
+    }.padding({ top: 30 })
+  }
+}
+```
+
+### Example 3: Setting Polymorphic Styles for the Builder Component
+
+This example shows the style change of the custom component in @Builder when the state is pressed.
+
+```TypeScript
+import { ComponentContent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+@Component
+struct Child {
+  build() {
+    Row()
+      .zIndex(10)
+      .width(200)
+      .height(200)
+      .stateStyles({
+        normal: {
+          .backgroundColor(Color.Blue)
+        },
+        pressed: {
+          .backgroundColor(Color.Black)
+        }
+      })
+  }
+}
+
+@Builder
+function buildText() {
+  Child()
+}
+
+@Entry
+@Component
+struct Index {
+  private contentNode: ComponentContent<Object> =
+    new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
+
+  build() {
+    Column() {
+      Button().margin({ top: 200 }).onClick(() => {
+        this.getUIContext()
+          .getPromptAction()
+          .openCustomDialog(this.contentNode)
+          .then(() => {
+            console.info('OpenCustomDialog complete.');
+          })
+          .catch((error: BusinessError) => {
+            let message = error.message;
+            let code = error.code;
+            console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
+          });
+      })
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 1: Setting Different Image Attributes
+
+Sets image effects, including shadow, grayscale, highlight, saturation, contrast, image inversion, color blending, hue rotation, and so on.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct ImageEffectsExample {
+  build() {
+    Column({ space: 5 }) {
+      // Apply the shadow effect.
+      Text('shadow').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image'))
+        .width('90%')
+        .height(30)
+        .shadow({
+          radius: 10,
+          color: Color.Green,
+          offsetX: 20,
+          offsetY: 20
+        })
+
+      // Add the internal shadow effect.
+      Text('shadow').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image'))
+        .width('90%')
+        .height(30)
+        .shadow({
+          radius: 5,
+          color: Color.Green,
+          offsetX: 20,
+          offsetY: 20,
+          fill: true
+        }).opacity(0.5)
+
+      // Apply the grayscale effect. The grayscale value ranges from 0 to 1. The closer the grayscale value is to 1, the more obvious the grayscale effect is.
+      Text('grayscale').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).grayscale(0.3)
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).grayscale(0.8)
+
+      // Apply the brightness effect. The value 1 indicates no effects. If the value is less than 1, the brightness decreases. If the value is greater than 1, the brightness increases.
+      Text('brightness').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).brightness(1.2)
+
+      // Apply the saturation effect. If the value is 1, the source image is displayed.
+      Text('saturate').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).saturate(2.0)
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).saturate(0.7)
+
+      // Apply the contrast effect. If the value is 1, the source image is displayed. If the value is greater than 1, a larger value indicates a higher contrast and a clearer image. If the value is less than 1, a smaller value indicates a lower contrast.
+      Text('contrast').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).contrast(2.0)
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).contrast(0.8)
+
+      // Invert the image.
+      Text('invert').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).invert(0.2)
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).invert(0.8)
+
+      // Apply the color blend effect.
+      Text('colorBlend').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).colorBlend(Color.Green)
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).colorBlend(Color.Blue)
+
+      // Convert the image color to sepia.
+      Text('sepia').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).sepia(0.8)
+
+      // Apply the hue rotation effect.
+      Text('hueRotate').fontSize(15).fontColor(0xCCCCCC).width('90%')
+      // Replace $r("app.media.image") with the image resource file you use.
+      Image($r('app.media.image')).width('90%').height(30).hueRotate(90)
+    }.width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### Example 2: Applying a Linear Gradient Blur Effect
+
+This example demonstrates how to apply a linear gradient blur effect on a component using [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur).
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct LinearGradientBlurExample {
+  // Replace $r('app.media.testlinearGradientBlurOrigin') with the resource file you use.
+  privateResource1: Resource = $r('app.media.testlinearGradientBlurOrigin')
+  @State imageSrc: Resource = this.privateResource1
+
+  build() {
+    Column() {
+      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
+        Row({ space: 5 }) {
+          Image(this.imageSrc)
+            .blur(0) // Set the blur effect of the image to none (no blur applied).
+            .linearGradientBlur(60,
+              { fractionStops: [[0, 0], [0, 0.33], [1, 0.66], [1, 1]], direction: GradientDirection.Bottom })
+        }
+      }
+    }
+  }
+}
+```
+
+### Example 3: Setting Offscreen Rendering Effect
+
+This example demonstrates how to use [renderGroup](arkts-arkui-common-comp-commonmethod-c.md#rendergroup) to set whether the component is rendered entirely offscreen and then composited with its parent component.
+
+
+
+```TypeScript
+// xxx.ets
+@Component
+struct RenderGroupChildComponent {
+  @Prop renderGroupValue: boolean;
+
+  build() {
+    Row() {
+      Row() {
+        Row()
+          .backgroundColor(Color.Black)
+          .width(100)
+          .height(100)
+          .opacity(1)
+      }
+      .backgroundColor(Color.White)
+      .width(150)
+      .height(150)
+      .justifyContent(FlexAlign.Center)
+      .opacity(0.6)
+      .renderGroup(this.renderGroupValue)
+    }
+    .backgroundColor(Color.Black)
+    .width(200)
+    .height(200)
+    .justifyContent(FlexAlign.Center)
+    .opacity(1)
+  }
+}
+
+@Entry
+@Component
+struct RenderGroupExample {
+  build() {
+    Column() {
+      RenderGroupChildComponent({ renderGroupValue: true })
+        .margin(20)
+      RenderGroupChildComponent({ renderGroupValue: false })
+        .margin(20)
+    }
+    .width("100%")
+    .height("100%")
+    .alignItems(HorizontalAlign.Center)
+  }
+}
+```
+
+### Example 4: Blending the Current Component Content with Canvas Content
+
+This example demonstrates how to blend the current component content with the canvas content below using [blendMode](#blendmode11).
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Text("blendMode")
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .fontColor('#ffff0101')
+      Row() {
+        Circle()
+          .width(200)
+          .height(200)
+          .fill(Color.Green)
+          .position({ x: 50, y: 50 })
+        Circle()
+          .width(200)
+          .height(200)
+          .fill(Color.Blue)
+          .position({ x: 150, y: 50 })
+      }
+      .blendMode(BlendMode.OVERLAY, BlendApplyType.OFFSCREEN)
+      .alignItems(VerticalAlign.Center)
+      .height(300)
+      .width('100%')
+    }
+    .height('100%')
+    .width('100%')
+    // Replace $r("app.media.image") with the image resource file you use.
+    .backgroundImage($r('app.media.image'))
+    .backgroundImageSize(ImageSize.Cover)
+  }
+}
+```
+
+### Example 5: Inverting the Foreground Color
+
+This example demonstrates how to achieve intelligent foreground color inversion using [InvertOptions](arkts-arkui-common-comp-invertoptions-i.md).
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Stack() {
+      Column()
+      Stack() {
+        // Replace $r("app.media.r") with the image resource file you use.
+        // In this example, the images are arranged from left to right, and the color is from light to dark.
+        Image($r('app.media.r')).width('100%')
+        Column() {
+          Column().width("100%").height(30).invert({
+            low: 0,
+            high: 1,
+            threshold: 0.5,
+            thresholdRange: 0.2
+          })
+          Column().width("100%").height(30).invert({
+            low: 0.2,
+            high: 0.5,
+            threshold: 0.3,
+            thresholdRange: 0.2
+          })
+        }
+      }
+      .width('100%')
+      .height('100%')
+    }
+  }
+}
+```
+
+### Example 6: Setting Non-Overlapping Same-Layer Shadows
+
+This example demonstrates how to implement non-overlapping shadow effect within the same layer using [useShadowBatching](arkts-arkui-common-comp-commonmethod-c.md#useshadowbatching) in combination with [shadow](#shadow).
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct UseShadowBatchingExample {
+  build() {
+    Column() {
+      Column({ space: 10 }) {
+        Stack() {
+
+        }
+        .width('90%')
+        .height(50)
+        .margin({ top: 5 })
+        .backgroundColor(0xFFE4C4)
+        .shadow({
+          radius: 120,
+          color: Color.Green,
+          offsetX: 0,
+          offsetY: 0
+        })
+        .align(Alignment.TopStart)
+        .shadow({
+          radius: 120,
+          color: Color.Green,
+          offsetX: 0,
+          offsetY: 0
+        })
+
+        Stack() {
+
+        }
+        .width('90%')
+        .height(50)
+        .margin({ top: 5 })
+        .backgroundColor(0xFFE4C4)
+        .align(Alignment.TopStart)
+        .shadow({
+          radius: 120,
+          color: Color.Red,
+          offsetX: 0,
+          offsetY: 0
+        })
+        .width('90%')
+        .backgroundColor(Color.White)
+
+        Column() {
+          Text()
+            .fontWeight(FontWeight.Bold)
+            .fontSize(20)
+            .fontColor(Color.White)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(150)
+        .height(150)
+        .borderRadius(10)
+        .backgroundColor(0xf56c6c)
+        .shadow({
+          radius: 300,
+          color: Color.Yellow,
+          offsetX: 0,
+          offsetY: 0
+        })
+
+        Column() {
+          Text()
+            .fontWeight(FontWeight.Bold)
+            .fontSize(20)
+            .fontColor(Color.White)
+        }
+        .justifyContent(FlexAlign.Center)
+        .width(150)
+        .height(150)
+        .backgroundColor(0x67C23A)
+        .borderRadius(10)
+        .translate({ y: -50 })
+        .shadow({
+          radius: 220,
+          color: Color.Blue,
+          offsetX: 0,
+          offsetY: 0
+        })
+      }
+      .useShadowBatching(true)
+    }
+    .width('100%').margin({ top: 5 })
+  }
+}
+```
+
+### Example 7: Applying a Spherical Effect to a Component
+
+This example demonstrates how to apply a spherical effect to a component using [sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect).
+
+Below is how the component looks with the spherical effect applied.
+
+
+
+Below is how the component looks without the spherical effect applied.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SphericalEffectExample {
+  build() {
+    Stack() {
+      TextInput({ placeholder: "Enter a percentage ([0%, 100%])." })
+        .width('50%')
+        .height(35)
+        .type(InputType.Number)
+        .enterKeyType(EnterKeyType.Done)
+        .caretColor(Color.Red)
+        .placeholderColor(Color.Blue)
+        .placeholderFont({
+          size: 20,
+          style: FontStyle.Italic,
+          weight: FontWeight.Bold
+        })
+        .sphericalEffect(0.5)
+    }.alignContent(Alignment.Center).width("100%").height("100%")
+  }
+}
+```
+
+### Example 8: Applying a Light Up Effect to a Component
+
+This example demonstrates how to apply a light up effect to a component using [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect).
+
+Below is how the component looks with the light up effect applied.
+
+
+
+Below is how the component looks with lightUpEffect set to 0.2:
+
+
+
+Below is how the component looks without the light up effect applied.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct LightUpExample {
+  build() {
+    Stack() {
+      Text('This is the text content with letterSpacing 0.')
+        .letterSpacing(0)
+        .fontSize(12)
+        .border({ width: 1 })
+        .padding(10)
+        .width('50%')
+        .lightUpEffect(0.6)
+    }.alignContent(Alignment.Center).width("100%").height("100%")
+  }
+}
+```
+
+### Example 9: Applying a Pixel Stretch Effect to a Component
+
+This example demonstrates how to apply a pixel stretch effect to a component using [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect).
+
+Below is how the component looks with the pixel stretch effect applied.
+
+
+
+Below is how the component looks without the pixel stretch effect applied.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct PixelStretchExample {
+  build() {
+    Stack() {
+      Text('This is the text content with letterSpacing 0.')
+        .letterSpacing(0)
+        .fontSize(12)
+        .border({ width: 1 })
+        .padding(10)
+        .clip(false)
+        .width('50%')
+        .pixelStretchEffect({
+          top: 10,
+          left: 10,
+          right: 10,
+          bottom: 10
+        })
+    }.alignContent(Alignment.Center).width("100%").height("100%")
+  }
+}
+```
+
+### Example 10: Applying a System Bar Effect to a Component
+
+This example demonstrates how to apply a system bar effect to a component using [systemBarEffect](arkts-arkui-common-comp-commonmethod-c.md#systembareffect).
+
+Below is how the component looks with the system bar effect applied.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Column() {
+      Stack() {
+        // Replace $r("app.media.testImage") with the image resource file you use.
+        Image($r('app.media.testImage')).width('100%').height('100%')
+        Column()
+          .width(150)
+          .height(10)
+          .systemBarEffect()
+          .border({ radius: 5 })
+          .margin({ bottom: 80 })
+      }.alignContent(Alignment.Center)
+    }
+  }
+}
+```
+
+### Example 11: Setting Whether the Component Is Double-Sided
+
+This example demonstrates how to use [doubleSided](arkts-arkui-common-comp-commonmethod-c.md#doublesided) to set whether the component is double-sided.
+
+The doubleSided method is added since API version 26.0.0.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct DoubleSided {
+  @State angleY: number = 0;
+  @State isAnimating: boolean = false;
+  @State isDoubleSided: boolean = true;
+  build() {
+    Column({space: 30}) {
+      Text('DoubleSided back-face culling verification')
+        .fontSize(24)
+        .fontWeight(FontWeight.Bold)
+        .fontColor(Color.White)
+      Stack() {
+        Stack() {
+          Text('FRONT')
+            .fontSize(32)
+            .fontColor(Color.White)
+        }
+        .width(300)
+        .height(300)
+        .backgroundColor(Color.Blue)
+        .border({ width: 2, color: Color.Gray })
+        .doubleSided(this.isDoubleSided)
+        .rotate({ x: 0, y: 1, z: 0, angle: this.angleY})
+      }
+      .width(300)
+      .height(300)
+      Text(`Y-axis rotation: ${Math.round(this.angleY)}°`)
+        .fontSize(16)
+        .fontColor(Color.White)
+      Button(this.isAnimating ? 'Restore' : 'Flip')
+        .onClick(() => {
+          if (this.isAnimating) {
+            this.angleY = 0
+            this.isAnimating = false
+          } else {
+            this.isAnimating = true
+            this.angleY = 180
+          }
+        })
+      Button(`doubleSided: ${this.isDoubleSided ? 'true (double-sided)' : 'false (single-sided)'}`)
+        .backgroundColor(this.isDoubleSided ? '#4CAF50' : '#F44336')
+        .onClick(() => {
+          this.isDoubleSided = !this.isDoubleSided
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+    .backgroundColor('#1a1a1a')
+  }
+}
+```
+
+### Example 1: Implementing Gesture-based Scrolling
+
+This example sets the [enableScrollInteraction](#enablescrollinteraction11) attribute to scroll a vertical list with gestures and call back the index when the currently displayed interface changes.
+
+For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
+
+
+
+```TypeScript
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+
+  build() {
+    Column() {
+      List({ space: 20, initialIndex: 0 }) {
+        LazyForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .enableScrollInteraction(true)
+      .listDirection(Axis.Vertical) // Arrangement direction
+      .scrollBar(BarState.Off)
+      .friction(0.6)
+      .divider({
+        strokeWidth: 2,
+        color: 0xFFFFFF,
+        startMargin: 20,
+        endMargin: 20
+      }) // Divider between rows
+      .edgeEffect(EdgeEffect.Spring) // Set the edge scrolling effect to Spring.
+      .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
+        console.info('first' + firstIndex);
+        console.info('last' + lastIndex);
+        console.info('center' + centerIndex);
+      })
+      .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo) => {
+        console.info(' start index: ' + start.index +
+          ' start item group area: ' + start.itemGroupArea +
+          ' start index in group: ' + start.itemIndexInGroup);
+        console.info(' end index: ' + end.index +
+          ' end item group area: ' + end.itemGroupArea +
+          ' end index in group: ' + end.itemIndexInGroup);
+      })
+      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
+        console.info(`onDidScroll scrollState = ` + scrollState + `, scrollOffset = ` + scrollOffset);
+      })
+      .width('90%')
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
+  }
+}
+```
+
+### Example 2: Setting Edge Fading
+
+This example sets the [fadingEdge](#fadingedge14) attribute to enable the edge fading effect for the [List](ts-container-list.md) component and set the edge fading length.
+
+For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+import { ListDataSource } from './ListDataSource';
+
+@Entry
+@Component
+struct ListExample {
+  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
+  scrollerForList: Scroller = new Scroller();
+
+  build() {
+    Column() {
+
+      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
+        LazyForEach(this.arr, (item: number) => {
+          ListItem() {
+            Text('' + item)
+              .width('100%')
+              .height(100)
+              .fontSize(16)
+              .textAlign(TextAlign.Center)
+              .borderRadius(10)
+              .backgroundColor(0xFFFFFF)
+          }
+        }, (item: number) => item.toString())
+      }
+      .fadingEdge(true, { fadingEdgeLength: LengthMetrics.vp(80) })
+    }
+    .width('100%')
+    .height('100%')
+    .backgroundColor(0xDCDCDC)
+    .padding({ top: 5 })
+  }
+}
+```
+
+### Example 3: Setting the Clipping Region
+
+This example sets the [clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent) attribute to change the clipping area of the component's content layer.
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ScrollExample {
+  scroller: Scroller = new Scroller();
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+  @State clipContent: ContentClipMode | RectShape | undefined = undefined;
+
+  build() {
+    Column() {
+      Scroll(this.scroller) {
+        Column() {
+          ForEach(this.arr, (item: number) => {
+            Text(item.toString())
+              .width(300)
+              .height(80)
+              .fontSize(20)
+              .textAlign(TextAlign.Center)
+              .backgroundColor(Color.Grey)
+          }, (item: number) => item.toString())
+        }
+      }
+      .backgroundColor(Color.Blue)
+      .clipContent(this.clipContent)
+      .scrollBar(BarState.Off)
+      .friction(0.6)
+      .width(300)
+      .height('50%')
+      .padding(10)
+      .safeAreaPadding(LengthMetrics.vp(10))
+      .initialOffset({ yOffset: 80 })
+      .margin({ top: 20 })
+
+      Button('clipContent SAFE_AREA')
+        .onClick(() => {
+          this.clipContent = ContentClipMode.SAFE_AREA;
+        }).margin({ top: 30 })
+
+      Button('clipContent BOUNDARY')
+        .onClick(() => {
+          this.clipContent = ContentClipMode.BOUNDARY;
+        }).margin({ top: 35 })
+
+      Button('clipContent CONTENT_ONLY')
+        .onClick(() => {
+          this.clipContent = ContentClipMode.CONTENT_ONLY;
+        }).margin({ top: 40 })
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
+  }
+}
+```
+
+### Example 4: Setting the Scrollbar Margin
+
+This example demonstrates how to use the [scrollBarMargin](#scrollbarmargin20) attribute to adjust the scrollbar margins of a scrollable component, available since API version 20.
+
+For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
+
+```TypeScript
+// xxx.ets
+import { ListDataSource } from './ListDataSource';
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ListExample {
+  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+  @State scrollBarMargin: ScrollBarMargin = { start: LengthMetrics.vp(0), end: LengthMetrics.vp(0) };
+
+  build() {
+    Stack({ alignContent: Alignment.TopStart }) {
+      Column() {
+        List({ space: 20, initialIndex: 0 }) {
+          LazyForEach(this.arr, (item: number) => {
+            ListItem() {
+              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
+                Text('' + item)
+                  .width('100%')
+                  .height(80)
+                  .fontSize(20)
+                  .textAlign(TextAlign.Center)
+                  .borderRadius(10)
+                  .backgroundColor(Color.White)
+                  .flexShrink(1)
+              }
+            }
+          }, (item: number) => item.toString())
+        }.width('90%')
+        .friction(0.6)
+        .scrollBar(BarState.On)
+        .scrollBarMargin(this.scrollBarMargin)
+      }.width('100%')
+
+      Button('scrollBarMargin')
+        .onClick(() => {
+          this.scrollBarMargin = { start: LengthMetrics.vp(45), end: LengthMetrics.vp(70) };
+        }).margin({ top: 5, left: 20 })
+
+      Button('scrollBarMargin2')
+        .onClick(() => {
+          this.scrollBarMargin = { start: LengthMetrics.vp(15), end: LengthMetrics.vp(100) };
+        }).margin({ top: 200, left: 20 })
+    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
+  }
+}
+```
+
+### Example 1: Using the onAccessibilityHover Event
+
+This example demonstrates how to use the onAccessibilityHover event to configure a button in accessibility mode.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OnAccessibilityHoverEventExample {
+  @State hoverText: string = 'no hover';
+  @State color: Color = Color.Blue;
+
+  build() {
+    Column({ space: 20 }) {
+      Button(this.hoverText)
+        .width(180).height(80)
+        .backgroundColor(this.color)
+        .onAccessibilityHover((isHover: boolean) => {
+          // Dynamically modify the text content and background color of the button when the accessibility hover event (finger touch enter/exit) occurs through the onAccessibilityHover event.
+          if (isHover) {
+            this.hoverText = 'hover';
+            this.color = Color.Pink;
+          } else {
+            this.hoverText = 'no hover';
+            this.color = Color.Blue;
+          }
+        })
+    }.padding({ top: 30 }).width('100%')
+  }
+}
+```
+
+### Example 2: Capturing a Touch Event on a Non-Focusable Component
+
+This example shows how to capture touch events from a component that cannot receive focus in accessibility mode using the onAccessibilityHoverTransparent API and display event details in the text area below.
+
+Starting from API version 20, the [onAccessibilityHoverTransparent](arkts-arkui-common-comp-commonmethod-c.md#onaccessibilityhovertransparent) API with the input parameter type AccessibilityTransparentCallback has been added.
+
+```TypeScript
+@Entry
+@Component
+struct OnAccessibilityHoverTransparentExample {
+  @State text: string = '';
+  @State eventType: string = '';
+
+  build() {
+    Column({ space: 50 }) {
+      Column() {
+        Button('Test Button')
+          .accessibilityLevel('no')
+      }.margin({ top: 20 })
+
+      Text(this.text)
+    }
+    .width('100%')
+    .height('100%')
+    .onAccessibilityHoverTransparent((event: TouchEvent) => {
+      if (event) {
+        // Triggered on finger press.
+        if (event.type === TouchType.HOVER_ENTER) {
+          this.eventType = 'HOVER_ENTER';
+        }
+        // Triggered on touch move.
+        if (event.type === TouchType.HOVER_MOVE) {
+          this.eventType = 'HOVER_MOVE';
+        }
+        // Triggered on hand raise.
+        if (event.type === TouchType.HOVER_EXIT) {
+          this.eventType = 'HOVER_EXIT';
+        }
+        // Cancel the current event.
+        if (event.type === TouchType.HOVER_CANCEL) {
+          this.eventType = 'HOVER_CANCEL';
+        }
+        this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
+          + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\nComponent globalPos:('
+          + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\nwidth:'
+          + event.target.area.width + '\nheight:' + event.target.area.height;
+      }
+    })
+  }
+}
+```
+
+### Example 1 (Setting Component Drag and Drop)
+
+Example 1 shows how to set the drag and drop area for some components (such as Image and Text).
+
+
+
+```TypeScript
+// xxx.ets
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
+@Entry
+@Component
+struct Index {
+  @State targetImage: string = '';
+  @State targetText: string = 'Drag Text';
+  @State imageWidth: number = 100;
+  @State imageHeight: number = 100;
+  @State imgState: Visibility = Visibility.Visible;
+  @State abstractContent: string = 'abstract';
+  @State textContent: string = '';
+  @State backGroundColor: Color = Color.Transparent;
+
+  // Obtain the Udmf data.
+  getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
+    try {
+      let data: UnifiedData = event.getData();
+      if (!data) {
+        return false;
+      }
+      let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+      if (!records || records.length <= 0) {
+        return false;
+      }
+      callback(event);
+      return true;
+    } catch (error) {
+      console.error(`Failed to get data. Code: ${error.code}, message: ${error.message}`);
+      return false;
+    }
+  }
+
+  // Automatically retry after the first attempt to obtain the Udmf data fails.
+  getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
+    if (this.getDataFromUdmfRetry(event, callback)) {
+      return;
+    }
+    setTimeout(() => {
+      this.getDataFromUdmfRetry(event, callback);
+    }, 1500);
+  }
+
+  // Change the background color based on the different stages before the drag starts.
+  private preDragChange(preDragStatus: PreDragStatus): void {
+    if (preDragStatus == PreDragStatus.READY_TO_TRIGGER_DRAG_ACTION) {
+      this.backGroundColor = Color.Red;
+    } else if (preDragStatus == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG
+      || preDragStatus == PreDragStatus.PREVIEW_LANDING_FINISHED) {
+      this.backGroundColor = Color.Blue;
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('start Drag')
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+        // $r('app.media.icon') needs to be replaced with the image resource file required by the developer.
+        Image($r('app.media.icon'))
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+          .visibility(this.imgState)
+          .onDragEnd((event) => {
+            // The result value obtained in onDragEnd is set in the receiver's onDrop.
+            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+            } else if (event.getResult() === DragResult.DRAG_FAILED) {
+              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+            }
+          })
+        Text('test drag event')
+          .width('100%')
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+          .copyOption(CopyOptions.InApp)
+        TextArea({ placeholder: 'please input words' })
+          .copyOption(CopyOptions.InApp)
+          .width('100%')
+          .height(50)
+          .draggable(true)
+        Search({ placeholder: 'please input your word' })
+          .searchButton('Search')
+          .width('100%')
+          .height(80)
+          .textFont({ size: 20 })
+
+        Column() {
+          Text('this is abstract')
+            .fontSize(20)
+            .width('100%')
+        }
+        .margin({ left: 40, top: 20 })
+        .width('100%')
+        .height(100)
+        .onDragStart((event) => {
+          this.backGroundColor = Color.Transparent;
+          let data: unifiedDataChannel.PlainText = new unifiedDataChannel.PlainText();
+          data.abstract = 'this is abstract';
+          data.textContent = 'this is content this is content';
+          (event as DragEvent).setData(new unifiedDataChannel.UnifiedData(data));
+        })
+        .onPreDrag((status: PreDragStatus) => {
+          this.preDragChange(status);
+        })
+        .backgroundColor(this.backGroundColor)
+      }.width('45%')
+      .height('100%')
+
+      Column() {
+        Text('Drag Target Area')
+          .fontSize(20)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+        Image(this.targetImage)
+          .width(this.imageWidth)
+          .height(this.imageHeight)
+          .draggable(true)
+          .margin({ left: 15 })
+          .border({ color: Color.Black, width: 1 })
+          .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+          .onDrop((dragEvent?: DragEvent) => {
+            this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+              let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
+              let rect: Rectangle = event.getPreviewRect();
+              this.imageWidth = Number(rect.width);
+              this.imageHeight = Number(rect.height);
+              this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+              event.useCustomDropAnimation = false;
+              this.imgState = Visibility.None;
+              // Explicitly set result to successful to pass the value to the drag initiator's onDragEnd.
+              event.setResult(DragResult.DRAG_SUCCESSFUL);
+            });
+          })
+
+        Text(this.targetText)
+          .width('100%')
+          .height(100)
+          .border({ color: Color.Black, width: 1 })
+          .margin(15)
+          .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+          .onDrop((dragEvent?: DragEvent) => {
+            this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+              let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
+              let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
+              this.targetText = plainText.textContent;
+            });
+          })
+
+        Column() {
+          Text(this.abstractContent).fontSize(20).width('100%')
+          Text(this.textContent).fontSize(15).width('100%')
+        }
+        .width('100%')
+        .height(100)
+        .margin(20)
+        .border({ color: Color.Black, width: 1 })
+        .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
+        .onDrop((dragEvent?: DragEvent) => {
+          this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+            let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
+            let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
+            this.abstractContent = plainText.abstract as string;
+            this.textContent = plainText.textContent;
+          });
+        })
+      }.width('45%')
+      .height('100%')
+      .margin({ left: '5%' });
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 2 (Custom Drop Animation)
+
+Since API version 18, Example 2 demonstrates how to implement a custom drop animation through the [executeDropAnimation](arkts-arkui-common-comp-dragevent-i.md#executedropanimation) API.
+
+
+
+```TypeScript
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DropAnimationExample {
+  @State targetImage: string = '';
+  @State imageWidth: number = 100;
+  @State imageHeight: number = 100;
+  @State imgState: Visibility = Visibility.Visible;
+  customDropAnimation =
+    () => {
+      this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
+        this.imageWidth = 200;
+        this.imageHeight = 200;
+        this.imgState = Visibility.None;
+      })
+    }
+
+  build() {
+    Row() {
+      Column() {
+        // Replace $r('app.media.app_icon') with the image resource file required by the developer.
+        Image($r('app.media.app_icon'))
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15, top: 40 })
+          .visibility(this.imgState)
+          .onDragStart((event) => {
+          })
+          .onDragEnd((event) => {
+            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+              console.info('Drag Success');
+            } else if (event.getResult() === DragResult.DRAG_FAILED) {
+              console.error('Drag failed');
+            }
+          })
+      }.width('45%')
+      .height('100%')
+
+      Column() {
+        Text('Drag Target Area')
+          .fontSize(20)
+          .width(180)
+          .height(40)
+          .textAlign(TextAlign.Center)
+          .margin(10)
+          .backgroundColor('rgb(240,250,255)')
+        Column() {
+          Image(this.targetImage)
+            .width(this.imageWidth)
+            .height(this.imageHeight)
+        }
+        .draggable(true)
+        .margin({ left: 15 })
+        .border({ color: Color.Black, width: 1 })
+        .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+        // In the onDrop callback, obtain the information and size of the dragged image, update the display, and enable and execute the custom drop animation.
+        .onDrop((dragEvent: DragEvent) => {
+          let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
+          let rect: Rectangle = dragEvent.getPreviewRect();
+          this.imageWidth = Number(rect.width);
+          this.imageHeight = Number(rect.height);
+          this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+          dragEvent.useCustomDropAnimation = true;
+          dragEvent.executeDropAnimation(this.customDropAnimation);
+        })
+        .width(this.imageWidth)
+        .height(this.imageHeight)
+      }.width('45%')
+      .height('100%')
+      .margin({ left: '5%' })
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 3 (Asynchronously Obtaining Data During Drag)
+
+Since API version 15, Example 3 demonstrates asynchronously obtaining data during drag through [startDataLoading](arkts-arkui-common-comp-dragevent-i.md#startdataloading).
+
+```TypeScript
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+import { fileUri, fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct ImageExample {
+  @State uri: string = '';
+  @State blockArr: string[] = [];
+  uiContext = this.getUIContext();
+  udKey: string = '';
+
+  build() {
+    Column() {
+      Text('Image drag')
+        .fontSize('30dp')
+      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+        Image($r('app.media.startIcon'))
+          .width(100)
+          .height(100)
+          .border({ width: 1 })
+          .draggable(true)
+          .onDragStart((event: DragEvent) => {
+            const context: Context | undefined = this.uiContext.getHostContext();
+            if (context) {
+              let data = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id, 120);
+              const arrayBuffer: ArrayBuffer = data.buffer.slice(data.byteOffset, data.byteLength + data.byteOffset);
+              let filePath = context.filesDir + '/test.png';
+              let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+              try {
+                fileIo.writeSync(file.fd, arrayBuffer);
+              } finally {
+                fileIo.closeSync(file.fd);
+              }
+              // Obtain the URI of the image.
+              let uri = fileUri.getUriFromPath(filePath);
+              let image: unifiedDataChannel.Image = new unifiedDataChannel.Image();
+              image.imageUri = uri;
+              let dragData: unifiedDataChannel.UnifiedData = new unifiedDataChannel.UnifiedData(image);
+              (event as DragEvent).setData(dragData);
+            }
+          })
+      }
+      .margin({ bottom: 20 })
+
+      Row() {
+        Column() {
+          Text('Droppable area')
+            .fontSize('15dp')
+            .height('10%')
+          List() {
+            ForEach(this.blockArr, (item: string, index) => {
+              ListItem() {
+                Image(item)
+                  .width(100)
+                  .height(100)
+                  .border({ width: 1 })
+              }
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
+          }
+          .border({ width: 1 })
+          .height('90%')
+          .width('100%')
+          .onDrop((event?: DragEvent, extraParams?: string) => {
+            console.info('enter onDrop');
+            let context = this.uiContext.getHostContext() as common.UIAbilityContext;
+            let pathDir: string = context.distributedFilesDir;
+            let destUri = fileUri.getUriFromPath(pathDir);
+            // Create a DataProgressListener to listen for data transfer progress.
+            let progressListener: unifiedDataChannel.DataProgressListener =
+              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
+                if (dragData != null) {
+                  // Obtain the data record array.
+                  let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
+                  if (arr.length > 0) {
+                    // Check whether the type of the first record is IMAGE.
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
+                      // The type matches. Record the data URI.
+                      let image = arr[0] as unifiedDataChannel.Image;
+                      this.uri = image.imageUri;
+                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    }
+                  } else {
+                    console.info('dragData arr is null');
+                  }
+                } else {
+                  console.info('dragData is undefined');
+                }
+                console.info(`percentage: ${progress.progress}`);
+              };
+            // Set the asynchronous data loading parameter item.
+            let options: DataSyncOptions = {
+              destUri: destUri,
+              fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+              progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+              dataProgressListener: progressListener,
+            }
+            try {
+              // Start data transfer.
+              this.udKey = (event as DragEvent).startDataLoading(options);
+              console.info(`udKey: ${this.udKey}`);
+            } catch (e) {
+              console.error(`Failed to start data loading. Code: ${e.code}, message: ${e.message}`);
+            }
+          }, { disableDataPrefetch: true })
+        }
+        .height('50%')
+        .width('90%')
+        .border({ width: 1 })
+      }
+
+      Button('Cancel data transfer')
+        .onClick(() => {
+          try {
+            this.getUIContext().getDragController().cancelDataLoading(this.udKey);
+          } catch (e) {
+            console.error(`Failed to cancel data loading. Code: ${e.code}, message: ${e.message}`);
+          }
+        })
+        .margin({ top: 10 })
+    }.width('100%')
+  }
+}
+```
+
+### Example 4 (Get the screen ID of the current drag)
+
+Since API version 20, Example 4 shows how to obtain the drag event through the onDragXXX (onDragEnd not supported) API and call the [getDisplayId](#getdisplayid20) API of the drag event to obtain the screen ID.
+
+
+
+```TypeScript
+import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
+
+@Entry
+@Component
+struct Index {
+  @State targetImage: string = '';
+  @State imageWidth: number = 100;
+  @State imageHeight: number = 100;
+  @State imgState: Visibility = Visibility.Visible;
+  @State backGroundColor: Color = Color.Transparent;
+  @State startDisplayId: number = -1;
+  @State enterDisplayId: number = -1;
+  @State moveDisplayId: number = -1;
+  @State leaveDisplayId: number = -1;
+  @State dropDisplayId: number = -1;
+
+  getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
+    try {
+      let data: UnifiedData = event.getData();
+      if (!data) {
+        return false;
+      }
+      let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
+      if (!records || records.length <= 0) {
+        return false;
+      }
+      callback(event);
+      return true;
+    } catch (error) {
+      console.error(`Failed to get data. Code: ${error.code}, message: ${error.message}`);
+      return false;
+    }
+  }
+
+  getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
+    if (this.getDataFromUdmfRetry(event, callback)) {
+      return;
+    }
+    setTimeout(() => {
+      this.getDataFromUdmfRetry(event, callback);
+    }, 1500);
+  }
+
+  private preDragChange(preDragStatus: PreDragStatus): void {
+    if (preDragStatus == PreDragStatus.READY_TO_TRIGGER_DRAG_ACTION) {
+      this.backGroundColor = Color.Red;
+    } else if (preDragStatus == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG
+      || preDragStatus == PreDragStatus.PREVIEW_LANDING_FINISHED) {
+      this.backGroundColor = Color.Blue;
+    }
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text('start Drag')
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+        // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+        Image($r('app.media.startIcon'))
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+          .visibility(this.imgState)
+          .onDragStart((event) => {
+            let id = event.getDisplayId();
+            this.startDisplayId = id;
+          })
+
+          .onDragEnd((event) => {
+            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
+              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
+            } else if (event.getResult() === DragResult.DRAG_FAILED) {
+              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
+            }
+          })
+
+        Text('displayID in onDragStart: ' + this.startDisplayId.toString())
+          .width('100%')
+          .height(50)
+          .draggable(true)
+          .margin({ left: 15 })
+        Text('displayID in onDragEnter: ' + this.enterDisplayId.toString())
+          .width('100%')
+          .height(50)
+          .draggable(true)
+          .margin({ left: 15 })
+        Text('displayID in onDragMove: ' + this.moveDisplayId.toString())
+          .width('100%')
+          .height(50)
+          .draggable(true)
+          .margin({ left: 15 })
+        Text('displayID in onDragLeave: ' + this.leaveDisplayId.toString())
+          .width('100%')
+          .height(50)
+          .draggable(true)
+          .margin({ left: 15 })
+        Text('displayID in onDrop: ' + this.dropDisplayId.toString())
+          .width('100%')
+          .height(50)
+          .draggable(true)
+          .margin({ left: 15 })
+          .onPreDrag((status: PreDragStatus) => {
+            this.preDragChange(status);
+          })
+      }.width('45%')
+      .height('100%')
+
+      Column() {
+        Text('Drag Target Area')
+          .fontSize(20)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+        Image(this.targetImage)
+          .width(this.imageWidth)
+          .height(this.imageHeight)
+          .draggable(true)
+          .margin({ left: 15 })
+          .border({ color: Color.Black, width: 1 })
+          .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
+          .onDragEnter((event) => {
+            let id = event.getDisplayId();
+            this.enterDisplayId = id;
+          })
+          .onDragMove((event) => {
+            let id = event.getDisplayId();
+            this.moveDisplayId = id;
+          })
+          .onDragLeave((event) => {
+            let id = event.getDisplayId();
+            this.leaveDisplayId = id;
+          })
+          .onDrop((dragEvent: DragEvent) => {
+            let id = dragEvent.getDisplayId();
+            this.dropDisplayId = id;
+            this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
+              let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
+              let rect: Rectangle = event.getPreviewRect();
+              this.imageWidth = Number(rect.width);
+              this.imageHeight = Number(rect.height);
+              this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
+              event.useCustomDropAnimation = false;
+              this.imgState = Visibility.None;
+              event.setResult(DragResult.DRAG_SUCCESSFUL);
+            });
+          })
+      }.width('45%')
+      .height('100%')
+      .margin({ left: '5%' })
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 5 (Obtaining the Package Name and Checking Whether It Is a Cross-Device Drag)
+
+Starting from API version 20, Example 5 shows how to obtain a drag event through the onDragXXX API, call the [getDragSource](arkts-arkui-common-comp-dragevent-i.md#getdragsource) API of the drag event to obtain the package name, and call the isRemote API to determine whether it is a cross-device drag.
+
+
+
+```TypeScript
+@Entry
+@Component
+struct Index {
+  @State targetImage: string = '';
+  @State startDragSource: string = '';
+  @State startIsRemote: boolean = true;
+  @State enterDragSource: string = '';
+  @State enterIsRemote: boolean = true;
+
+  build() {
+    Column() {
+      Row() {
+        Column() {
+          Text('start Drag Area')
+            .fontSize(18)
+            .width('100%')
+            .height(40)
+            .margin(10)
+            .backgroundColor('#008888')
+          // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+          Image($r('app.media.startIcon'))
+            .onDragStart((event) => {
+              this.startDragSource = (event as DragEvent).getDragSource();
+              this.startIsRemote = (event as DragEvent).isRemote();
+            })
+            .width(100)
+            .height(100)
+            .draggable(true)
+            .margin({ left: 15 })
+        }
+        .border({ color: Color.Black, width: 1 })
+        .width('45%')
+        .height('50%')
+
+        Column() {
+          Text('Drag Target Area')
+            .fontSize(20)
+            .width('100%')
+            .height(40)
+            .margin(10)
+            .backgroundColor('#008888')
+          Image(this.targetImage)
+            .width(100)
+            .height(100)
+            .draggable(true)
+            .margin({ left: 15 })
+            .border({ color: Color.Black, width: 1 })
+            .onDragEnter((event) => {
+              this.enterDragSource = (event as DragEvent).getDragSource();
+              this.enterIsRemote = (event as DragEvent).isRemote();
+            })
+            .onDrop(() => {
+            })
+        }
+        .border({ color: Color.Black, width: 1 })
+        .width('45%')
+        .height('50%')
+        .margin({ left: '5%' })
+      }
+      .height('70%')
+
+      Text('onDragStart dragSource: ' + this.startDragSource.toString() + '\n' + 'onDragStart isRemote: ' +
+      this.startIsRemote.toString())
+        .width('100%')
+        .height(50)
+        .margin({ left: 15 })
+      Text('onDragEnter dragSource: ' + this.enterDragSource.toString() + '\n' + 'onDragEnter isRemote: ' +
+      this.enterIsRemote.toString())
+        .width('100%')
+        .height(50)
+        .margin({ left: 15 })
+    }
+  }
+}
+```
+
+### Example 6 (Drag Supporting Hover Detection)
+
+Since API version 20, Example 6 demonstrates registering a callback through the [onDragSpringLoading](arkts-arkui-common-comp-commonmethod-c.md#ondragspringloading) API and obtaining context information (current state and notification sequence) through [SpringLoadingContext](#springloadingcontext20) in the callback.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State state: number = 0;
+  @State currentNotifySequence: number = 0;
+  @State config: DragSpringLoadingConfiguration = {
+    stillTimeLimit: 200,
+    updateInterval: 300,
+    updateNotifyCount: 4,
+    updateToFinishInterval: 300
+  };
+
+  build() {
+    Row() {
+      Column() {
+        Text('start Drag')
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+        // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+        Image($r('app.media.startIcon'))
+          .id('ori_image')
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+        Text('Current state is: ' + this.state)
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+        Text('Current notification sequence is: ' + this.currentNotifySequence)
+          .fontSize(18)
+          .width('100%')
+          .height(40)
+          .margin(10)
+      }
+      .width('45%')
+      .height('100%')
+
+      Column() {
+        Text('Drag Target Area')
+          .fontSize(20)
+          .width('100%')
+          .height(40)
+          .margin(10)
+          .backgroundColor('#008888')
+          .id('text')
+        Image('')
+          .width(100)
+          .height(100)
+          .draggable(true)
+          .margin({ left: 15 })
+          .border({ color: Color.Black, width: 2 })
+          .onDragSpringLoading((context: SpringLoadingContext) => {
+            this.state = context.state;
+            this.currentNotifySequence = context.currentNotifySequence;
+          }, this.config)
+      }
+      .width('45%')
+      .height('100%')
+      .margin({ left: '5%' })
+      .onDragSpringLoading((context: SpringLoadingContext) => {
+        this.state = context.state;
+        this.currentNotifySequence = context.currentNotifySequence;
+      }, this.config)
+      .id('column')
+      .backgroundColor(Color.Grey)
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 7 (Delayed Data Provision by the Drag Initiator)
+
+Starting from API version 20, Example 7 demonstrates calling [setDataLoadParams](arkts-arkui-common-comp-dragevent-i.md#setdataloadparams) in [onDragStart](#ondragstart) to delay data provision, and calling [startDataLoading](arkts-arkui-common-comp-dragevent-i.md#startdataloading) in [onDrop](#ondrop) to obtain data asynchronously.
+
+
+
+```TypeScript
+import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
+import { fileUri, fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct VideoExample {
+  @State uri: string = '';
+  @State blockArr: string[] = [];
+  uiContext = this.getUIContext();
+  udKey: string = '';
+
+  build() {
+    Column() {
+      Text('video drag')
+        .fontSize('30dp')
+      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
+        // $rawfile('test1.mp4') needs to be replaced with the resource file required by the developer.
+        Video({ src: $rawfile('test1.mp4'), controller: new VideoController() })
+          .width(200)
+          .height(200)
+          .border({ width: 1 })
+          .draggable(true)
+          .onDragStart((event: DragEvent) => {
+            const context: Context | undefined = this.uiContext.getHostContext();
+            if (context) {
+              // Define the delayed data loading callback, which reads the video resource and encapsulates it into UnifiedData when the target requests data.
+              let loadHandler: unifiedDataChannel.DataLoadHandler = (acceptableInfo) => {
+                console.info(`acceptableInfo recordCount ${acceptableInfo?.recordCount}`);
+                if (acceptableInfo?.types) {
+                  console.info(`acceptableInfo types ${Array.from(acceptableInfo.types)}`);
+                } else {
+                  console.error('acceptableInfo types is undefined');
+                }
+                let data = context.resourceManager.getRawFdSync('test1.mp4');
+                let filePath = context.filesDir + '/test1.mp4';
+                let file: fileIo.File = null!;
+                try {
+                  file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
+                  let bufferSize = data.length as number;
+                  let buf = new ArrayBuffer(bufferSize);
+                  fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
+                  fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
+                } catch (error) {
+                  console.error(`Failed to open file. Code: ${error.code}, message: ${error.message}`);
+                } finally {
+                  if (file !== null) {
+                    fileIo.closeSync(file.fd);
+                  }
+                }
+                context.resourceManager.closeRawFdSync('test1.mp4');
+                this.uri = fileUri.getUriFromPath(filePath);
+                let videoMp: uniformDataStruct.FileUri = {
+                  uniformDataType: 'general.file-uri',
+                  oriUri: this.uri,
+                  fileType: 'general.video',
+                };
+                let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
+                let unifiedData = new unifiedDataChannel.UnifiedData();
+                unifiedRecord.addEntry(uniformTypeDescriptor.UniformDataType.FILE_URI, videoMp);
+                unifiedData.addRecord(unifiedRecord);
+                return unifiedData;
+              }
+              (event as DragEvent).setDataLoadParams({
+                loadHandler: loadHandler,
+                dataLoadInfo: { types: new Set([uniformTypeDescriptor.UniformDataType.FILE_URI]), recordCount: 1 }
+              });
+            }
+          })
+      }
+      .margin({ bottom: 20 })
+
+      Row() {
+        Column() {
+          Text('Droppable area')
+            .fontSize('15dp')
+            .height('10%')
+          List() {
+            ForEach(this.blockArr, (item: string, index) => {
+              ListItem() {
+                Video({ src: item, controller: new VideoController() })
+                  .width(100)
+                  .height(100)
+                  .border({ width: 1 })
+              }
+              .margin({ left: 30, top: 30 })
+            }, (item: string) => item)
+          }
+          .border({ width: 1 })
+          .height('90%')
+          .width('100%')
+          .onDrop((event: DragEvent, extraParams?: string) => {
+            let context = this.uiContext.getHostContext() as common.UIAbilityContext;
+            let pathDir: string = context.distributedFilesDir;
+            let destUri = fileUri.getUriFromPath(pathDir);
+            let progressListener: unifiedDataChannel.DataProgressListener =
+              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
+                if (dragData != null) {
+                  let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
+                  if (arr.length > 0) {
+                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
+                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
+                    }
+                  } else {
+                    console.info('dragData arr is null');
+                  }
+                } else {
+                  console.info('dragData is undefined');
+                }
+                console.info(`percentage: ${progress.progress}`);
+              };
+            let info: unifiedDataChannel.DataLoadInfo =
+              { types: new Set([uniformTypeDescriptor.UniformDataType.VIDEO]), recordCount: 100 };
+            let options: DataSyncOptions = {
+              destUri: destUri,
+              fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
+              progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
+              dataProgressListener: progressListener,
+              acceptableInfo: info,
+            }
+            try {
+              // Start asynchronous data loading and save the data loading identifier for subsequent cancellation of the transfer.
+              this.udKey = (event as DragEvent).startDataLoading(options);
+              console.info(`udKey: ${this.udKey}`);
+            } catch (error) {
+              console.error(`startDataLoading errorCode: ${error.code}, errorMessage: ${error.message}`);
+            }
+          }, { disableDataPrefetch: true })
+        }
+        .height('50%')
+        .width('90%')
+        .border({ width: 1 })
+      }
+
+      Button('Cancel data transfer')
+        .onClick(() => {
+          try {
+            this.getUIContext().getDragController().cancelDataLoading(this.udKey);
+          } catch (error) {
+            console.error(`cancelDataLoading errorCode: ${error.code}, errorMessage: ${error.message}`);
+          }
+        })
+        .margin({ top: 10 })
+    }.width('100%')
+  }
+}
+```
+
+### Example 8: Automatically Hiding a Specified Component During Drag
+
+This example uses the [autoHideComponentUniqueIds](#attributes) attribute of DragEvent to automatically hide a specified component after a drag is successfully initiated.
+
+Since API version 26.0.0, DragEvent adds the autoHideComponentUniqueIds attribute.
+
+```TypeScript
+import { unifiedDataChannel } from '@kit.ArkData';
+
+@Entry
+@Component
+struct DragEventAutoHideSample {
+  @State sourceVisibility: Visibility = Visibility.Visible;
+  @State badgeVisibility: Visibility = Visibility.Visible;
+  @State statusText: string = 'Status: Waiting for drag';
+
+  private buildData(textValue: string): unifiedDataChannel.UnifiedData {
+    let plainText = new unifiedDataChannel.PlainText();
+    plainText.textContent = textValue;
+    plainText.abstract = textValue;
+    return new unifiedDataChannel.UnifiedData(plainText);
+  }
+
+  private collectHideIds(): number[] {
+    let hideIds: number[] = [];
+    let sourceNode = this.getUIContext().getFrameNodeById('drag_source');
+    let badgeNode = this.getUIContext().getFrameNodeById('drag_badge');
+    if (sourceNode?.getUniqueId() !== undefined) {
+      hideIds.push(sourceNode.getUniqueId());
+    }
+    if (badgeNode?.getUniqueId() !== undefined) {
+      hideIds.push(badgeNode.getUniqueId());
+    }
+    return hideIds;
+  }
+
+  private hideTargets(): void {
+    this.sourceVisibility = Visibility.Hidden;
+    this.badgeVisibility = Visibility.Hidden;
+    this.statusText = 'Status: Dragging, target component hidden';
+  }
+
+  private restoreTargets(): void {
+    this.sourceVisibility = Visibility.Visible;
+    this.badgeVisibility = Visibility.Visible;
+    this.statusText = 'Status: Drag ended, component restored';
+  }
+
+  build() {
+    Column({ space: 12 }) {
+      Text(this.statusText)
+        .width('100%')
+        .fontSize(14)
+        .fontColor('#BF360C')
+
+      Row({ space: 12 }) {
+        Column() {
+          Text('Drag source')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium)
+          Text('id: drag_source')
+            .fontSize(10)
+            .fontColor('#E8F5E9')
+        }
+          .id('drag_source')
+          .width(140)
+          .height(90)
+          .backgroundColor('#2E7D32')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.sourceVisibility)
+          .draggable(true)
+          .onDragStart((event: DragEvent) => {
+            let hideIds = this.collectHideIds();
+            event.autoHideComponentUniqueIds = hideIds;
+            event.setData(this.buildData('drag event auto hide test data'));
+            this.hideTargets();
+            return () => {
+              Text('Drag preview')
+            };
+          })
+          .onDragEnd(() => {
+            this.restoreTargets();
+          })
+
+        Column() {
+          Text('Follow hidden component')
+            .fontColor(Color.White)
+            .fontWeight(FontWeight.Medium)
+          Text('id: drag_badge')
+            .fontSize(10)
+            .fontColor('#E3F2FD')
+        }
+          .id('drag_badge')
+          .width(140)
+          .height(90)
+          .backgroundColor('#1565C0')
+          .borderRadius(12)
+          .justifyContent(FlexAlign.Center)
+          .visibility(this.badgeVisibility)
+      }
+
+      Column() {
+        Text('Drop target')
+          .fontWeight(FontWeight.Medium)
+        Text('Restore the component display after release')
+          .fontSize(10)
+          .fontColor('#6D4C41')
+      }
+        .width('100%')
+        .height(120)
+        .backgroundColor('#FFE082')
+        .borderRadius(12)
+        .justifyContent(FlexAlign.Center)
+        .onDrop(() => {
+          this.restoreTargets();
+        })
+    }
+    .width('100%')
+    .padding(16)
+  }
+}
+```
+
+This example demonstrates how to apply blur effects using foregroundFilter, backgroundFilter, and compositingFilter.
+
+```TypeScript
+// xxx.ets
+import { uiEffect } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct FilterEffectExample {
+  @State foregroundBlurFilter: uiEffect.Filter = uiEffect.createFilter().blur(10);
+  @State backgroundBlurFilter: uiEffect.Filter = uiEffect.createFilter().blur(10);
+  @State compositingBlurFilter: uiEffect.Filter = uiEffect.createFilter().blur(10);
+
+  build() {
+    Column({ space: 15 }) {
+
+      Text('foregroundFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
+      Text('Foreground filter')
+        .width(100)
+        .height(100)
+        .backgroundColor('#ADD8E6')
+        // $r("app.media.app_icon") requires an image resource file named app_icon to be prepared in the "resources/base/media" directory of the project.
+        .backgroundImage($r('app.media.app_icon'))
+        .backgroundImageSize({ width: 80, height: 80 })
+        .foregroundFilter(this.foregroundBlurFilter) // Set the blur effect through foregroundFilter.
+
+      Text('backgroundFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
+      Text('Background filter')
+        .width(100)
+        .height(100)
+        .backgroundColor('#ADD8E6')
+        // Replace $r("app.media.app_icon") with the resource file you use.
+        .backgroundImage($r('app.media.app_icon'))
+        .backgroundImageSize({ width: 80, height: 80 })
+        .backgroundFilter(this.backgroundBlurFilter) // Set the blur effect through backgroundFilter.
+
+      Text('compositingFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
+      Text('Compositing filter')
+        .width(100)
+        .height(100)
+        .backgroundColor('#ADD8E6')
+        // Replace $r("app.media.app_icon") with the resource file you use.
+        .backgroundImage($r('app.media.app_icon'))
+        .backgroundImageSize({ width: 80, height: 80 })
+        .compositingFilter(this.compositingBlurFilter) // Set the blur effect through compositingFilter.
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+This example demonstrates how to set whether a component monopolizes events by configuring monopolizeEvents.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State message: string = 'set monopolizeEvents false';
+  @State messageOut: string = ' ';
+  @State messageInner: string = ' ';
+  @State monopolize: boolean = false;
+
+  build() {
+    Column() {
+      Text(this.message)
+        .fontSize(22)
+        .margin(10)
+      Text(this.messageOut)
+        .fontSize(22)
+        .margin(10)
+      Text(this.messageInner)
+        .fontSize(22)
+        .margin(10)
+      Button('clean')
+        .fontSize(22)
+        .margin(10)
+        // Clear the touch event prompt information of the inner and outer columns through the button click event.
+        .onClick(() => {
+          this.messageOut = ' ';
+          this.messageInner = ' ';
+        })
+      Button('change monopolizeEvents')
+        .fontSize(22)
+        .margin(10)
+        // Toggle the monopolization control attribute of the inner column through the button click event.
+        .onClick(() => {
+          this.monopolize = !this.monopolize;
+          if (!this.monopolize) {
+            this.message = 'set monopolizeEvents false';
+          } else {
+            this.message = 'set monopolizeEvents true';
+          }
+        })
+      Column() {
+        Column() {
+        }
+        // When this.monopolize is true, tapping the inner column triggers only its own touch event, not the touch event of the outer column.
+        // When this.monopolize is false, tapping the inner column triggers both its own touch event and the touch event of the outer column.
+        .monopolizeEvents(this.monopolize)
+        .width('100%')
+        .height('40%')
+        .backgroundColor(Color.Blue)
+        // Bind the touch event to the inner column.
+        .onTouch((event: TouchEvent) => {
+          if (event.type == TouchType.Down) {
+            console.info('inner column touch down');
+            this.messageInner = 'inner column touch down';
+          }
+        })
+      }
+      .backgroundColor(Color.Gray)
+      .height('100%')
+      .width('100%')
+      // Bind the touch event to the outer column.
+      .onTouch((event) => {
+        if (event.type == TouchType.Down) {
+          console.info('outside column touch down');
+          this.messageOut = 'outside column touch down';
+        }
+      })
+    }
+    .height('100%')
+  }
+}
+```
+
+### Example 1: Understanding the Hit Test Effect When the Hit Test Mode Is Block and Transparent
+
+This example demonstrates the hit test effects of Block and Transparent hit test modes by setting different [HitTestMode](./ts-appendix-enums.md#hittestmode9) values.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct HitTestBehaviorExample {
+  build() {
+    // outer stack
+    Stack() {
+      Button('outer button')
+        .onTouch((event) => {
+          console.info(`outer button touched type: ${(event as TouchEvent).type}`);
+        })
+      // inner stack
+      Stack() {
+        Button('inner button')
+          .onTouch((event) => {
+            console.info(`inner button touched type: ${(event as TouchEvent).type}`);
+          })
+      }
+      .width('100%').height('100%')
+      // Set the hit test type to Block. The node responds to the hit test but prevents sibling nodes from participating in the hit test.
+      .hitTestBehavior(HitTestMode.Block)
+      .onTouch((event) => {
+        console.info(`stack touched type: ${(event as TouchEvent).type}`);
+      })
+
+      Text('Transparent')
+        // Set the hit test type to Transparent. The node does not intercept the hit test and allows lower-layer nodes to respond to the hit test.
+        .hitTestBehavior(HitTestMode.Transparent)
+        .width('100%').height('100%')
+        .onTouch((event) => {
+          console.info(`text touched type: ${(event as TouchEvent).type}`);
+        })
+    }.width(300).height(300)
+  }
+}
+```
+
+### Example 2: Understanding the Hit Test Effect When the Hit Test Type is BLOCK_HIERARCHY
+
+Starting from API version 20, this example demonstrates the hit test effect when the hit test mode is set to BLOCK_HIERARCHY.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BlockHierarchy {
+  build() {
+    // outer stack
+    Stack() {
+      Stack() {
+        Button('outer button')
+          .onTouch((event) => {
+            console.info(`HitTestMode outer button touched type: ${(event as TouchEvent).type}`);
+          })
+          .width(200)
+          .height(200)
+          .backgroundColor('#D5D5D5')
+        // inner stack
+        Stack() {
+          Button()
+            .id('button150')
+            .backgroundColor('#F7F7F7')
+            .width(150)
+            .height(150)
+            .onTouch((event) => {
+              console.info(`HitTestMode button150 touched type: ${(event as TouchEvent).type}`);
+            })
+            .hitTestBehavior(HitTestMode.Transparent)
+          Button()
+            .id('button100')
+            .backgroundColor('#707070')
+            .width(100)
+            .height(100)
+            .onTouch((event) => {
+              console.info(`HitTestMode button100 touched type: ${(event as TouchEvent).type}`);
+            })
+            .hitTestBehavior(HitTestMode.Transparent)
+          Button()
+            .id('button050')
+            .backgroundColor('#D5D5D5')
+            .width(50)
+            .height(50)
+            .onTouch((event) => {
+              console.info(`HitTestMode button050 touched type: ${(event as TouchEvent).type}`);
+            })
+            .hitTestBehavior(HitTestMode.Transparent)
+        }
+        .width('100%').height('100%')
+        // Set the hit test mode: The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.
+        .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
+        .onTouch((event) => {
+          console.info(`HitTestMode stack touched type: ${(event as TouchEvent).type}`);
+        })
+
+        Text('Transparent')
+          .hitTestBehavior(HitTestMode.Transparent)
+          .width('100%').height('100%')
+          .onTouch((event) => {
+            console.info(`HitTestMode text touched type: ${(event as TouchEvent).type}`);
+          })
+      }.width(300).height(300)
+      .borderWidth(2)
+      .onTouch((event) => {
+        console.info(`HitTestMode father stack touched type: ${(event as TouchEvent).type}`);
+      })
+    }.width(500).height(500)
+    .borderWidth(2)
+    .onTouch((event) => {
+      console.info(`HitTestMode grandfather stack touched type: ${(event as TouchEvent).type}`);
+    })
+  }
+}
+```
+
+### Example 3: Understanding the Hit Test Effect When the Hit Test Type is BLOCK_DESCENDANTS
+
+Starting from API version 20, this example demonstrates the hit test effect when the hit test mode is set to BLOCK_DESCENDANTS.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct BlockDescendants {
+  build() {
+    // outer stack
+    Stack() {
+      Stack() {
+        Button('outer button')
+          .onTouch((event) => {
+            console.info(`HitTestMode outer button touched type: ${(event as TouchEvent).type}`);
+          })
+          .width(200)
+          .height(200)
+          .backgroundColor('#D5D5D5')
+        // inner stack
+        Stack() {
+          Button('inner button')
+            .width(100)
+            .height(100)
+            .onTouch((event) => {
+              console.info(`HitTestMode inner button touched type: ${(event as TouchEvent).type}`);
+            })
+        }
+        .width('100%').height('100%')
+        // Set the hit test mode so that the node itself does not respond to the hit test, and all its descendants (children, grandchildren, and so on) do not respond to the hit test either, without affecting the hit test of ancestor nodes.
+        .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
+        .onTouch((event) => {
+          console.info(`HitTestMode stack touched type: ${(event as TouchEvent).type}`);
+        })
+
+        Text('Transparent')
+          .hitTestBehavior(HitTestMode.Transparent)
+          .width('100%').height('100%')
+          .onTouch((event) => {
+            console.info(`HitTestMode text touched type: ${(event as TouchEvent).type}`);
+          })
+      }.width(300).height(300)
+      .borderWidth(2)
+      .onTouch((event) => {
+        console.info(`HitTestMode father stack touched type: ${(event as TouchEvent).type}`);
+      })
+    }.width(500).height(500)
+    .borderWidth(2)
+    .onTouch((event) => {
+      console.info(`HitTestMode grandfather stack touched type: ${(event as TouchEvent).type}`);
+    })
+  }
+}
+```
+
+### Example 4: Understanding the Hit Test Effect When Multiple Nodes Overlap in the Stack Component
+
+This example demonstrates the hit testing effect when multiple nodes have overlapping touch areas within a Stack component. If [HitTestMode](./ts-appendix-enums.md#hittestmode9) is set to None, the overlapping background area cannot respond to hit testing. The background area responds to hit testing only when the attribute is set to Transparent.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  @State @Watch('onModeChange') mode: number = HitTestMode.None;
+  @State modeStr: string = 'None';
+
+  onModeChange() {
+    this.modeStr = this.mode === HitTestMode.None ? 'None' : 'Transparent';
+  }
+
+  build() {
+    Stack() {
+      Column()
+        .height('100%')
+        .width('100%')
+        .onTouch(() => {
+          console.info('background hit test!');
+        })
+      Stack() {
+        // Click the button to perform hit testing.
+        Button('HitTest')
+        // Click the button to switch between different hit test modes.
+        Button('HitTestMode: ' + this.modeStr)
+          .margin({ top: 100 })
+          .onClick(() => {
+            this.mode = this.mode === HitTestMode.None ?
+              HitTestMode.Transparent : HitTestMode.None;
+          })
+      }
+      .height('100%')
+      .width('100%')
+      //The lower node can respond to hit testing only when HitTestMode of the upper node is set to Transparent.
+      .hitTestBehavior(this.mode)
+    }
+    .height('100%')
+    .width('100%')
+  }
+}
+```
+
+This example demonstrates how components gain and lose focus. The colors of the buttons change when they gain or lose focus.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct FocusEventExample {
+  @State oneButtonColor: string = '#0066FF'
+  @State twoButtonColor: string = '#87CEFA'
+  @State threeButtonColor: string = '#90EE90'
+
+  build() {
+    Column({ space: 20 }) {
+      // When the focus moves among the three buttons, the button changes color when it gains focus and restores its original background color when it loses focus.
+      Button('First Button')
+        .backgroundColor(this.oneButtonColor)
+        .width(260)
+        .height(70)
+        .fontColor(Color.Black)
+        .onFocus(() => {
+          this.oneButtonColor = '#FFFFFF';
+        })
+        .onBlur(() => {
+          this.oneButtonColor = '#0066FF';
+        })
+      Button('Second Button')
+        .backgroundColor(this.twoButtonColor)
+        .width(260)
+        .height(70)
+        .fontColor(Color.Black)
+        .onFocus(() => {
+          this.twoButtonColor = '#FFFFFF';
+        })
+        .onBlur(() => {
+          this.twoButtonColor = '#87CEFA';
+        })
+      Button('Third Button')
+        .backgroundColor(this.threeButtonColor)
+        .width(260)
+        .height(70)
+        .fontColor(Color.Black)
+        .onFocus(() => {
+          this.threeButtonColor = '#FFFFFF';
+        })
+        .onBlur(() => {
+          this.threeButtonColor = '#90EE90';
+        })
+    }.width('100%').margin({ top: 20 })
+  }
+}
+```
+
+### Example 1: Using Different Clipping Attributes
+
+This example demonstrates how to clip and mask an image using [clipShape](arkts-arkui-common-comp-commonmethod-c.md#clipshape), [clip](#clip12), and [maskShape](arkts-arkui-common-comp-commonmethod-c.md#maskshape).
+
+
+
+```TypeScript
+// xxx.ets
+import { CircleShape, RectShape } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct ClipAndMaskExample {
+  build() {
+    Column({ space: 15 }) {
+      Text('clip').fontSize(12).width('75%').fontColor('#DCDCDC')
+      Row() {
+        // Replace $r("app.media.testImg") with the image resource file you use.
+        Image($r('app.media.testImg')).width('500px').height('280px')
+      }
+      .clip(true) // If clip is not set to true, the image is not confined by the rounded corners of the <Row> component and may extend beyond the <Row> component.
+      .borderRadius(20)
+
+      // Clip the image based on a circle with a diameter of 280 px.
+      // Replace $r("app.media.testImg") with the image resource file you use.
+      Image($r('app.media.testImg'))
+        .clipShape(new CircleShape({ width: '280px', height: '280px' }))
+        .width('500px').height('280px')
+
+      Text('mask').fontSize(12).width('75%').fontColor('#DCDCDC')
+      // Add a 500 × 280 px square mask to the image.
+      // Replace $r("app.media.testImg") with the image resource file you use.
+      Image($r('app.media.testImg'))
+        .maskShape(new RectShape({ width: '500px', height: '280px' }).fill(Color.Gray))
+        .width('500px').height('280px')
+
+      // Add a 280 × 280 px circular mask to the image.
+      // Replace $r("app.media.testImg") with the image resource file you use.
+      Image($r('app.media.testImg'))
+        .maskShape(new CircleShape({ width: '280px', height: '280px' }).fill(Color.Gray))
+        .width('500px').height('280px')
+    }
+    .width('100%')
+    .margin({ top: 15 })
+  }
+}
+```
+
+### Example 2: Implementing Component Masking
+
+This example demonstrates how to mask an image using [mask](#mask12).
+
+```TypeScript
+@Entry
+@Component
+struct ProgressMaskExample {
+  @State isRedColor: boolean = true;
+  @State value: number = 10.0;
+  @State enableBreathingAnimation: boolean = false;
+  @State progress: ProgressMask = new ProgressMask(10.0, 100.0, Color.Gray);
+
+  build() {
+    Column({ space: 15 }) {
+      Text('progress mask').fontSize(12).width('75%').fontColor('#DCDCDC')
+      // Add a progress mask to the image.
+      // Replace $r("app.media.testImg") with the image resource file you use.
+      Image($r('app.media.testImg'))
+        .width('500px').height('280px')
+        .mask(this.progress)
+        .animation({
+          duration: 2000, // Animation duration.
+          curve: Curve.Linear, // Animation curve.
+          delay: 0, // Animation delay.
+          iterations: 1, // Number of playback times.
+          playMode: PlayMode.Normal // Animation playback mode.
+        }) // Configure the animation for the mask progress change of the Image component.
+
+      // Update the progress value of the progress mask.
+      Button('updateProgress')
+        .onClick((event?: ClickEvent) => {
+          this.value += 10;
+          this.progress.updateProgress(this.value);
+        }).width(200).height(50).margin(20)
+
+      // Update the color of the progress mask.
+      Button('updateColor')
+        .onClick((event?: ClickEvent) => {
+          if (this.isRedColor) {
+            this.progress.updateColor(0x9fff0000);
+          } else {
+            this.progress.updateColor(0x9f0000ff);
+          }
+          this.isRedColor = !this.isRedColor;
+        }).width(200).height(50).margin(20)
+
+      // Enable or disable the breathing animation.
+      Button('enableBreathingAnimation:' + this.enableBreathingAnimation)
+        .onClick((event?: ClickEvent) => {
+          this.enableBreathingAnimation = !this.enableBreathingAnimation;
+          this.progress.enableBreathingAnimation(this.enableBreathingAnimation);
+        }).width(200).height(50).margin(20)
+
+      // Restore the progress mask.
+      Button('click reset')
+        .onClick((event?: ClickEvent) => {
+          this.value = 0;
+          this.progress.updateProgress(this.value);
+        }).width(200).height(50).margin(20)
+    }
+    .width('100%')
+    .margin({ top: 15 })
+  }
+}
+```
+
+This example demonstrates how to set the foreground attributes through the foregroundEffect API.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct Index {
+  build() {
+    Row() {
+      // Replace $r('app.media.icon') with the image resource file required by the developer.
+      Image($r('app.media.icon'))
+          .width(100)
+          .height(100)
+          // Set the foreground blur effect with a blur radius of 20.
+          .foregroundEffect({ radius: 20 })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+}
+```
+
+### Example 1: Implementing an Immersive Effect
+
+This example demonstrates how to use the expandSafeArea attribute to expand the safe area to the top and bottom to achieve an immersive effect.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SafeAreaExample1 {
+  build() {
+    Row() {
+      Column()
+        .width('100%')
+        .height('100%')
+        // Replace $r('app.media.bg') with the image resource file you use.
+        .backgroundImage($r('app.media.bg'))
+        .backgroundImageSize(ImageSize.Cover)
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+    }.height('100%')
+  }
+}
+```
+
+### Example 2: Setting a Fixed Width or Height with expandSafeArea
+
+This example demonstrates the effect of setting both a fixed width or height and the expandSafeArea attribute.
+
+As shown in the figure below, the Column component expands to the top status bar ([SafeAreaEdge.TOP]) but does not expand to the bottom navigation bar ([SafeAreaEdge.BOTTOM]). The height of the component after expansion remains consistent with the set value.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SafeAreaExample2 {
+  @State text: string = ''
+  controller: TextInputController = new TextInputController()
+
+  build() {
+    Column() {
+      TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
+        .placeholderFont({ size: 14, weight: 400 })
+        .width(320).height(40).offset({y: 120})
+        .fontSize(14).fontColor(Color.Black)
+        .backgroundColor(Color.White)
+    }
+    .height('780')
+    .width('100%')
+    .backgroundColor('rgb(179,217,235)')
+    .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+  }
+}
+```
+
+### Example 3: Fixing the Background Image Position During Keyboard Avoidance
+
+This example shows how to set the expandSafeArea attribute for the background image to keep it fixed when the keyboard is displayed and the layout is adjusted.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct SafeAreaExample3 {
+  @State text: string = ''
+  controller: TextInputController = new TextInputController()
+
+  build() {
+    Row() {
+      Stack() {
+        Column()
+          .width('100%')
+          .height('100%')
+          // Replace $r('app.media.bg') with the image resource file you use.
+          .backgroundImage($r('app.media.bg'))
+          .backgroundImageSize(ImageSize.Cover)
+          .expandSafeArea([SafeAreaType.KEYBOARD, SafeAreaType.SYSTEM])
+        Column() {
+          Button('Set caretPosition 1')
+            .onClick(() => {
+              this.controller.caretPosition(1)
+            })
+          TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
+            .placeholderFont({ size: 14, weight: 400 })
+            .width(320)
+            .height(40)
+            .offset({ y: 120 })
+            .fontSize(14)
+            .fontColor(Color.Black)
+            .backgroundColor(Color.White)
+        }.width('100%').alignItems(HorizontalAlign.Center)
+      }
+    }.height('100%')
+  }
+}
+```
+
+### Example 4: Setting the Keyboard Avoidance Mode to Resize
+
+This example demonstrates how to use setKeyboardAvoidMode to set the keyboard avoidance mode to RESIZE, which resizes the page when the keyboard is displayed.
+
+```TypeScript
+// EntryAbility.ets
+import { KeyboardAvoidMode } from '@kit.ArkUI';
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      // When the virtual keyboard is displayed, the page is resized to its original height minus the keyboard height.
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+}
+```
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct KeyboardAvoidExample1 {
+  build() {
+    Column() {
+      Row()
+        .width('100%')
+        .height('30%')
+        .backgroundColor(Color.Gray)
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 5: Setting Keyboard Avoidance Mode to Offset
+
+This example demonstrates how to use setKeyboardAvoidMode to set the keyboard avoidance mode to OFFSET, which lifts the page when the keyboard is displayed. However, if the input cursor is positioned more than the keyboard's height from the bottom of the screen, the page will not be lifted, as demonstrated in this example.
+
+```TypeScript
+// EntryAbility.ets
+import { KeyboardAvoidMode } from '@kit.ArkUI';
+export default class EntryAbility extends UIAbility{
+  onWindowStageCreate(windowStage: window.WindowStage) {
+    // Main window is created, set main page for this ability
+    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
+
+    windowStage.loadContent('pages/Index', (err, data) => {
+      // When the virtual keyboard is displayed, the page is moved up until the caret is displayed.
+      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+      if (err.code) {
+        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
+        return;
+      }
+      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
+    });
+  }
+}
+```
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct KeyboardAvoidExample2 {
+  build() {
+    Column() {
+      Row()
+        .width('100%')
+        .height('30%')
+        .backgroundColor(Color.Gray)
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 6: Switching Avoidance Modes
+
+This example demonstrates how to switch between OFFSET, RESIZE, and NONE modes using setKeyboardAvoidMode to achieve three different keyboard avoidance effects.
+
+
+
+```TypeScript
+import { hilog } from '@kit.PerformanceAnalysisKit';
+import { KeyboardAvoidMode } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct KeyboardAvoidExample3 {
+  build() {
+    Column() {
+      Row({space:15}) {
+        Button('OFFSET')
+          .onClick(() => {
+            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
+            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
+          })
+          .layoutWeight(1)
+        Button('RESIZE')
+          .onClick(() => {
+            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
+            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
+          })
+          .layoutWeight(1)
+        Button('NONE')
+          .onClick(() => {
+            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.NONE);
+            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
+          })
+          .layoutWeight(1)
+      }
+      .height('30%')
+      .width('100%')
+      .backgroundColor(Color.Gray)
+
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+      
+      Text('I can see the bottom of the page')
+        .width('100%')
+        .textAlign(TextAlign.Center)
+        .backgroundColor('rgb(179,217,235)')
+        .layoutWeight(1)
+      
+      TextArea()
+        .width('100%')
+        .borderWidth(1)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+### Example 7: Expanding the Safe Area in Scrollable Containers
+
+This example demonstrates how to use the expandSafeArea attribute in a scrollable container to implement an immersive effect. The Swiper component in the Scroll container can extend into the status bar.
+
+
+
+```TypeScript
+class SwiperDataSource implements IDataSource {
+  private list: Array<Color> = []
+  constructor(list: Array<Color>) {
+    this.list = list
+  }
+  totalCount(): number {
+    return this.list.length
+  }
+  getData(index: number): Color {
+    return this.list[index]
+  }
+  registerDataChangeListener(listener: DataChangeListener): void {
+  }
+  unregisterDataChangeListener(listener: DataChangeListener): void {
+  }
+}
+@Entry
+@Component
+struct ExpandSafeAreaTest {
+  private swiperController: SwiperController = new SwiperController()
+  private swiperData: SwiperDataSource = new SwiperDataSource([])
+  private list: Array<Color> = [
+    Color.Pink,
+    Color.Blue,
+    Color.Green
+  ]
+  aboutToAppear(): void {
+    this.swiperData = new SwiperDataSource(this.list)
+  }
+  build() {
+    Scroll() {
+      Column() {
+        Swiper(this.swiperController) {
+          LazyForEach(this.swiperData, (item: Color, index: number) => {
+            Column() {
+              Text('banner' + index).fontSize(50).fontColor(Color.White)
+            }
+            .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+            .width('100%')
+            .height(400)
+            .backgroundColor(item)
+          })
+        }
+        .loop(true)
+        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+        .clip(false)
+        Column(){
+          Text('Tab content').fontSize(50)
+        }.width('100%').height(1000)
+        .backgroundColor(Color.Grey)
+      }.expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
+    }
+    .clip(false)
+    .edgeEffect(EdgeEffect.None)
+    .width('100%').height('100%')
+  }
+}
+```
+
+### Example 8: Extending the Component Layout Area with ignoreLayoutSafeArea
+
+This example shows how to use [ignoreLayoutSafeArea](#ignorelayoutsafearea20) to adjust the component position. The comparison with the default behavior (without this attribute) is as follows: After ignoreLayoutSafeArea is applied, the Row component is positioned in the upper left corner of the combined range consisting of the Stack content area, the Stack component-level safe area, and the system status bar. The component occupies the upper left portion of this expanded layout boundary.
+
+```TypeScript
+import { LengthMetrics } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct IgnoreLayoutSafeAreaTest1 {
+  build() {
+    Column() {
+      Stack() {
+        Row()
+          .backgroundColor('rgb(39, 135, 217)')
+          .width(75)  // Fixed width
+          .height(75) // Fixed height
+          .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.START, LayoutSafeAreaEdge.TOP])  // Extend the layout area to the left and top edges, covering the system non-safe area (SYSTEM).
+        
+        Row()
+          .backgroundColor('rgb(0, 74, 175)')
+          .width(75)
+          .height(75)
+
+      }
+      .width(200)
+      .height(200)
+      .backgroundColor(Color.Gray)
+      .align(Alignment.TopStart) // Align child components with the upper left corner of the Stack container.
+      .padding({
+        left: 10  // Set a 10 vp normal left padding.
+      })
+      .safeAreaPadding(LengthMetrics.vp(10))  // Set a 10 vp safe area padding (that is, component-level safe area).
+    }
+    .width('100%')
+  }
+}
+```
+
+### Example 9: Extending the Component Layout Area with ignoreLayoutSafeArea and LayoutPolicy.matchParent
+
+This example demonstrates how to use both [ignoreLayoutSafeArea](#ignorelayoutsafearea20) and [LayoutPolicy.matchParent](ts-universal-attributes-size.md#layoutpolicy15) to adjust the component's size and position simultaneously. After ignoreLayoutSafeArea is applied, the Row component takes the lower right portion of the combined range consisting of the Stack content area and the Stack component-level safe area, and expands to fill the available space.
+
+
+
+```TypeScript
+import { LengthMetrics } from '@kit.ArkUI'
+
+@Entry
+@Component
+struct IgnoreLayoutSafeAreaTest2 {
+  build() {
+    Column() {
+      Stack() {
+        Row()
+          .backgroundColor('rgb(39, 135, 217)')
+          .width(LayoutPolicy.matchParent)  // Adaptive width
+          .height(LayoutPolicy.matchParent) // Adaptive height
+          .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.END, LayoutSafeAreaEdge.BOTTOM])  // Extend the layout area to the right and bottom edges, covering the system non-safe area (SYSTEM).
+
+        Row()
+          .backgroundColor('rgb(0, 74, 175)')
+          .width(LayoutPolicy.matchParent)
+          .height(LayoutPolicy.matchParent)
+
+      }
+      .width(200)
+      .height(200)
+      .backgroundColor(Color.Gray)
+      .align(Alignment.TopStart) // Align child components with the upper left corner of the Stack container.
+      .padding(10) // Set a 10 vp normal padding.
+      .safeAreaPadding(LengthMetrics.vp(10))  // Set a 10 vp safe area padding (that is, component-level safe area).
+    }
+    .width('100%')
+  }
+}
+```
+
+### Example 10: Understanding the Difference Between expandSafeArea and ignoreLayoutSafeArea
+
+This example demonstrates the layout effects of a container with expandSafeArea and ignoreLayoutSafeArea set, respectively, and their impact on the layout of child components. In both cases, the container visibly extends. However, the child components of the container with expandSafeArea are not affected by the container's extension, while the child components of the container with ignoreLayoutSafeArea have their positions adjusted due to the container's extension.
+
+```TypeScript
+@Entry
+@Component
+struct IgnoreLayoutSafeAreaTest3 {
+  build() {
+    Row(){
+      Column(){
+        Stack(){
+          Stack(){
+
+          }
+          .width(30)
+          .height(30)
+          .backgroundColor('rgb(0, 74, 175)')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('rgb(39, 135, 217)')
+        .align(Alignment.TopStart)
+
+        Text('Baseline effect').fontColor(Color.White)
+      }
+
+      Column(){
+        Stack(){
+          Stack(){
+
+          }
+          .width(30)
+          .height(30)
+          .backgroundColor('rgb(0, 74, 175)')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('rgb(39, 135, 217)')
+        .align(Alignment.TopStart)
+        .expandSafeArea()  // Extend the rendering area: the container's rendering area shifts upward, but the child component's position relative to the screen remains unchanged.
+
+        Text('expandSafeArea').fontColor(Color.White)
+      }
+
+      Column(){
+        Stack(){
+          Stack(){
+
+          }
+          .width(30)
+          .height(30)
+          .backgroundColor('rgb(0, 74, 175)')
+        }
+        .width(100)
+        .height(100)
+        .backgroundColor('rgb(39, 135, 217)')
+        .align(Alignment.TopStart)
+        .ignoreLayoutSafeArea()  // Extend the layout area: The container's layout area shifts upward, and the child component's position relative to the container remains unchanged.
+
+        Text('ignoreLayoutSafeArea').fontColor(Color.White)
+      }
+    }
+    .width('100%')
+    .backgroundColor(Color.Gray)
+    .justifyContent(FlexAlign.SpaceEvenly)
+  }
+}
+```
+
+### Example 1: Setting an Overlay Using a String
+
+This example demonstrates how to set an overlay using a string.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OverlayExample {
+  build() {
+    Column() {
+      Column() {
+        Text('floating layer')
+          .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
+        Column() {
+          // Replace $r('app.media.img') with the image resource file you use.
+          Image($r('app.media.img'))
+            .width(240).height(240)
+            .overlay('Winter is a beautiful season, especially when it snows.', {
+              align: Alignment.Bottom,
+              offset: { x: 0, y: -15 }
+            })
+        }.border({ color: Color.Black, width: 2 })
+      }.width('100%')
+    }.padding({ top: 20 })
+  }
+}
+```
+
+### Example 2: Setting an Overlay Using a Custom Builder
+
+This example demonstrates how to set an overlay using a custom builder.
+
+
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct OverlayExample {
+  @Builder
+  overlayNode() {
+    Column() {
+      // Replace $r('app.media.img1') with the image resource file you use.
+      Image($r('app.media.img1'))
+      Text('This is overlayNode').fontSize(20).fontColor(Color.White)
+    }
+    .width(180)
+    .height(180)
+    .alignItems(HorizontalAlign.Center)
+    .hitTestBehavior(HitTestMode.Transparent) // Configure the overlay not to block interaction.
+  }
+
+  build() {
+    Column() {
+      // Replace $r('app.media.img2') with the image resource file you use.
+      Image($r('app.media.img2'))
+        .overlay(this.overlayNode(), { align: Alignment.Center })
+        .objectFit(ImageFit.Contain)
+    }.width('100%')
+    .border({ color: Color.Black, width: 2 }).padding(20)
+  }
+}
+```
+
+### Example 3: Setting an Overlay Using ComponentContent
+
+This example uses overlay to pass in ComponentContent, and updates the ComponentContent parameters through the update method, so that backgroundColor keeps changing.
+
+```TypeScript
+// xxx.ets
+import { ComponentContent } from '@kit.ArkUI';
+
+class Params {
+  backgroundColor: string | Resource = '';
+
+  constructor(backgroundColor: string | Resource) {
+    this.backgroundColor = backgroundColor;
+  }
+}
+
+@Builder
+function overlayBuilder(params: Params) {
+  Row() {
+  }.width('100%').height('100%').backgroundColor(params.backgroundColor)
+}
+
+@Entry
+@Component
+struct OverlayContentPage {
+  @State overlayColor: string = 'rgba(0, 0, 0, 0.6)';
+  private uiContext: UIContext = this.getUIContext();
+  private overlayNode: ComponentContent<Params> =
+    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor));
+
+  aboutToAppear(): void {
+    setInterval(() => {
+      if (this.overlayColor.includes('0.6')) {
+        this.overlayColor = 'rgba(0, 0, 0, 0.1)';
+        this.overlayNode.update(new Params(this.overlayColor));
+      } else {
+        this.overlayColor = 'rgba(0, 0, 0, 0.6)';
+        this.overlayNode.update(new Params(this.overlayColor));
+      }
+    }, 1000);
+  }
+
+  build() {
+    Row() {
+      Column() {
+        Text(this.overlayColor)
+          .fontSize(40)
+          .fontWeight(FontWeight.Bold)
+      }
+      .width('100%')
+    }
+    .height('100%')
+    .overlay(this.overlayNode)
+  }
+}
+```
+
+### Example 1: Implementing a Frame-by-Frame Layout Effect
+
+The following example implements the frame-by-frame layout effects by changing the width of the Text component.
+
+
+
+```TypeScript
+@AnimatableExtend(Text)
+function animatableWidth(width: number) {
+  .width(width)
+}
+
+@Entry
+@Component
+struct AnimatablePropertyExample {
+  @State textWidth: number = 80;
+
+  build() {
+    Column() {
+      Text("AnimatableProperty")
+        .animatableWidth(this.textWidth)
+        .animation({ duration: 2000, curve: Curve.Ease })
+      Button("Play")
+        .onClick(() => {
+          this.textWidth = this.textWidth === 80 ? 160 : 80;
+        })
+    }.width("100%")
+    .padding(10)
+  }
+}
+```
+
+### Example 2: Implementing a Polyline Animation Effect
+
+The following example implements a polyline animation effect.
+
+```TypeScript
+class Point {
+  x: number
+  y: number
+
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
+
+  plus(rhs: Point): Point {
+    return new Point(this.x + rhs.x, this.y + rhs.y);
+  }
+
+  subtract(rhs: Point): Point {
+    return new Point(this.x - rhs.x, this.y - rhs.y);
+  }
+
+  multiply(scale: number): Point {
+    return new Point(this.x * scale, this.y * scale);
+  }
+
+  equals(rhs: Point): boolean {
+    return this.x === rhs.x && this.y === rhs.y;
+  }
+}
+
+// PointVector implements the AnimatableArithmetic<T> API.
+class PointVector extends Array<Point> implements AnimatableArithmetic<PointVector> {
+  constructor(value: Array<Point>) {
+    super();
+    value.forEach(point => this.push(point));
+  }
+
+  plus(rhs: PointVector): PointVector {
+    let result = new PointVector([]);
+    const len = Math.min(this.length, rhs.length);
+    for (let i = 0; i < len; i++) {
+      result.push((this as Array<Point>)[i].plus((rhs as Array<Point>)[i]));
+    }
+    return result;
+  }
+
+  subtract(rhs: PointVector): PointVector {
+    let result = new PointVector([]);
+    const len = Math.min(this.length, rhs.length);
+    for (let i = 0; i < len; i++) {
+      result.push((this as Array<Point>)[i].subtract((rhs as Array<Point>)[i]));
+    }
+    return result;
+  }
+
+  multiply(scale: number): PointVector {
+    let result = new PointVector([]);
+    for (let i = 0; i < this.length; i++) {
+      result.push((this as Array<Point>)[i].multiply(scale));
+    }
+    return result;
+  }
+
+  equals(rhs: PointVector): boolean {
+    if (this.length !== rhs.length) {
+      return false;
+    }
+    for (let i = 0; i < this.length; i++) {
+      if (!(this as Array<Point>)[i].equals((rhs as Array<Point>)[i])) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  get(): Array<Object[]> {
+    let result: Array<Object[]> = [];
+    this.forEach(point => result.push([point.x, point.y]));
+    return result;
+  }
+}
+
+@AnimatableExtend(Polyline)
+function animatablePoints(points: PointVector) {
+  // Convert PointVector to the array format required by the points attribute of Polyline.
+  .points(points.get())
+}
+
+@Entry
+@Component
+struct AnimatablePropertyExample {
+  @State points: PointVector = new PointVector([
+    new Point(50, Math.random() * 200),
+    new Point(100, Math.random() * 200),
+    new Point(150, Math.random() * 200),
+    new Point(200, Math.random() * 200),
+    new Point(250, Math.random() * 200),
+  ])
+
+  build() {
+    Column() {
+      Polyline()
+        .animatablePoints(this.points)
+        .animation({ duration: 1000, curve: Curve.Ease }) // Set the animation parameters.
+        .size({ height: 220, width: 300 })
+        .fill(Color.Green)
+        .stroke(Color.Red)
+        .backgroundColor('#eeaacc')
+      Button("Play")
+        .onClick(() => {
+          // points is a data type that implements the animation protocol. During the animation, points can be changed from the previous PointVector data to the new one based on the defined operation rules and animation parameters to generate the PointVector data of each frame and then generate an animation.
+          this.points = new PointVector([
+            new Point(50, Math.random() * 200),
+            new Point(100, Math.random() * 200),
+            new Point(150, Math.random() * 200),
+            new Point(200, Math.random() * 200),
+            new Point(250, Math.random() * 200),
+          ]);
+        })
+    }.width("100%")
+    .padding(10)
+  }
+}
+```
+
+This example demonstrates how to set the hover effect for components using hoverEffect.
+
+```TypeScript
+// xxx.ets
+@Entry
+@Component
+struct HoverExample {
+  @State isHoverVal: boolean = false
+
+  build() {
+    Column({ space: 5 }) {
+      Column({ space: 5 }) {
+        Text('Scale').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 80 })
+        Column()
+          .width('80%')
+          .height(200)
+          .backgroundColor(Color.Gray)
+          .position({ x: 40, y: 120 })
+          .hoverEffect(HoverEffect.Scale)
+          .onHover((isHover: boolean) => {
+            console.info(`Scale isHover: ${isHover}`);
+            this.isHoverVal = isHover;
+          })
+
+        Text('Board').fontSize(20).fontColor(Color.Gray).width('90%').position({ x: 0, y: 380 });
+        Column()
+          .width('80%')
+          .height(200)
+          .backgroundColor(Color.Yellow)
+          .hoverEffect(HoverEffect.Highlight)
+          .position({ x: 40, y: 420 })
+          .onHover((isHover: boolean) => {
+            console.info(`Highlight isHover: ${isHover}`);
+            this.isHoverVal = isHover;
+          })
+      }
+      .hoverEffect(HoverEffect.None)
+      .width('100%')
+      .height('100%')
+      .border({ width: 1 })
+      .onHover((isHover: boolean) => {
+        console.info('HoverEffect.None');
+        this.isHoverVal = isHover;
+      })
+    }
+  }
+}
+```
+
+```TypeScript
+// After the allowForceDark(false) attribute is added to a component, the color inversion is not used for the current component and all its child components.
+@Entry
+@Component
+struct ComponentPage {
+  build() {
+    Column() {
+      Column() {
+        Text("Hello World")
+          .fontSize(20)
+          .fontColor(Color.Blue)
+          .onClick(() => {
+            console.info(`Text is clicked`);
+          })
+      }
+      .allowForceDark(false) // Column and its child component Text do not use the color inversion, and are not affected by the color inversion used by the parent component Column.
+
+      Row() {
+        Button('BUTTON')
+          .backgroundColor(Color.Grey)
+          .allowForceDark(true)
+          .onClick(() => {
+            console.info(`Button is clicked`);
+          })
+      }
+      .allowForceDark(false) // Row and its child component Button do not use the color inversion, and are not affected by the color inversion used by the parent component Column.
+    }
+    .allowForceDark(true)
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
 ### Example 1: Binding a Tooltip
 
 This example shows how to bind a tooltip to a button using bindTips.
@@ -965,64 +8991,6 @@ struct OpacityExample {
     }
     .width('100%')
     .padding({ top: 5 })
-  }
-}
-```
-
-This example demonstrates property animations using the animation API.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct AttrAnimationExample {
-  @State widthSize: number = 250
-  @State heightSize: number = 100
-  @State rotateAngle: number = 0
-  @State flag: boolean = true
-
-  build() {
-    Column() {
-      Button('change size')
-        .onClick(() => {
-          if (this.flag) {
-            this.widthSize = 150
-            this.heightSize = 60
-          } else {
-            this.widthSize = 250
-            this.heightSize = 100
-          }
-          this.flag = !this.flag
-        })
-        .margin(30)
-        .width(this.widthSize)
-        .height(this.heightSize)
-        .animation({
-          duration: 2000,
-          curve: Curve.EaseOut,
-          iterations: 3,
-          playMode: PlayMode.Normal
-        })
-      Button('change rotate angle')
-        .onClick(() => {
-          this.rotateAngle = 90
-        })
-        .margin(50)
-        .rotate({ angle: this.rotateAngle })
-        // Configure a damping curve for the rotation angle change, with a 500 ms delay before starting, and alternating playback in an infinite loop.
-        .animation({
-          duration: 1200,
-          curve: Curve.Friction,
-          delay: 500,
-          iterations: -1, // The value -1 indicates that the animation is played for an unlimited number of times.
-          playMode: PlayMode.Alternate,
-          expectedFrameRateRange: {
-            min: 20,
-            max: 120,
-            expected: 90,
-          }
-        })
-    }.width('100%').margin({ top: 20 })
   }
 }
 ```
@@ -3446,703 +11414,6 @@ struct GetCurrentLocalPositionExample {
 }
 ```
 
-### Example 1: Setting Sheets with Different Heights
-
-This example demonstrates how to set different heights for sheets using the height attribute.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SheetTransitionExample {
-  @State isShow: boolean = false;
-  @State sheetHeight: number = 300;
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Button("change height")
-        .margin(10)
-        .fontSize(20)
-        .onClick(() => {
-          this.sheetHeight = 500;
-        })
-
-      Button("Set Illegal height")
-        .margin(10)
-        .fontSize(20)
-        .onClick(() => {
-          this.sheetHeight = -1;
-        })
-
-      Button("close modal 1")
-        .margin(10)
-        .fontSize(20)
-        .onClick(() => {
-          this.isShow = false;
-        })
-    }
-    .width('100%')
-    .height('100%')
-  }
-
-  build() {
-    Column() {
-      Button("transition modal 1")
-        .onClick(() => {
-          this.isShow = true;
-        })
-        .fontSize(20)
-        .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(), {
-          height: this.sheetHeight,
-          backgroundColor: Color.Green,
-          onWillAppear: () => {
-            console.info("BindSheet onWillAppear.");
-          },
-          onAppear: () => {
-            console.info("BindSheet onAppear.");
-          },
-          onWillDisappear: () => {
-            console.info("BindSheet onWillDisappear.");
-          },
-          onDisappear: () => {
-            console.info("BindSheet onDisappear.");
-          }
-        })
-    }
-    .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 2: Setting Three Different Height Detents
-
-This example demonstrates how to use the detents attribute of bindSheet to set three different height detents for a sheet.
-
-The drag bar is effective only when there are multiple height detents.
-
-Unlike the height attribute, which can set different heights at different times, the detents attribute provides a gesture to switch between detent heights and is more suitable for fixed height intervals.
-
-If the height range is uncertain or there may be more than three different heights, avoid using the detents attribute.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SheetTransitionExample {
-  @State isShow: boolean = false;
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Button("content1")
-        .margin(10)
-        .fontSize(20)
-
-      Button("content2")
-        .margin(10)
-        .fontSize(20)
-    }
-    .width('100%')
-  }
-
-  build() {
-    Column() {
-      Button("transition modal 1")
-        .onClick(() => {
-          this.isShow = true;
-        })
-        .fontSize(20)
-        .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(), {
-          detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
-          blurStyle: BlurStyle.Thick,
-          showClose: true,
-          title: { title: "title", subtitle: "subtitle" },
-        })
-    }
-    .justifyContent(FlexAlign.Start)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 3: Setting the Border Width and Color
-
-This example demonstrates how to use the borderWidth and borderColor attributes with LocalizedEdgeWidths and LocalizedEdgeColors types in bindSheet.
-
-The following shows how the example is represented with left-to-right scripts.
-
-
-
-The following shows how the example is represented with right-to-left scripts.
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SheetTransitionExample {
-  @State isShow: boolean = false;
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Button("content1")
-        .margin(10)
-        .fontSize(20)
-
-      Button("content2")
-        .margin(10)
-        .fontSize(20)
-    }
-    .width('100%')
-  }
-
-  build() {
-    Column() {
-      Button("transition modal 1")
-        .onClick(() => {
-          this.isShow = true;
-        })
-        .fontSize(20)
-        .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(), {
-          detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
-          backgroundColor: Color.Gray,
-          blurStyle: BlurStyle.Thick,
-          showClose: true,
-          title: { title: "title", subtitle: "subtitle" },
-          borderWidth: { top: LengthMetrics.vp(10), start: LengthMetrics.vp(10), end: LengthMetrics.vp(20) },
-          borderColor: { top: Color.Pink, start: Color.Blue, end: Color.Yellow },
-        })
-    }
-    .justifyContent(FlexAlign.Start)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 4: Using Dismiss Callbacks
-
-This example shows how to register onWillDismiss and onWillSpringBackWhenDismiss with bindSheet.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BindSheetExample {
-  @State isShow: boolean = false;
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Button("CONTEXT")
-        .margin(10)
-        .fontSize(20)
-    }
-  }
-
-  build() {
-    Column() {
-      Button("NoRegisterSpringback")
-        .onClick(() => {
-          this.isShow = true;
-        })
-        .fontSize(20)
-        .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(), {
-          height: SheetSize.MEDIUM,
-          blurStyle: BlurStyle.Thick,
-          showClose: true,
-          title: { title: "title", subtitle: "subtitle" },
-          preferType: SheetType.CENTER,
-
-          onWillDismiss: ((dismissSheetAction: DismissSheetAction) => {
-            // Call dismiss to close the half-modal page only when the user swipes down.
-            if (dismissSheetAction.reason == DismissReason.SLIDE_DOWN) {
-                dismissSheetAction.dismiss(); // Close the half-modal page.
-            }
-          }),
-
-          onWillSpringBackWhenDismiss: ((springBackAction: SpringBackAction) => {
-          // No springBack is registered, so the modal sheet will not bounce back when swiped down.
-          // SpringBackAction.springBack();
-          }),
-        })
-    }
-  }
-}
-```
-
-### Example 5: Setting the Content Update Mode
-
-ScrollSizeMode.CONTINUOUS continuously updates the content and is suitable for scenarios where detents switch between multiple heights.
-
-Whenever possible, minimize UI loading time within the builder, as real-time content refreshing during scrolling has higher performance requirements.
-
-When the sheet is dragged to switch between detents, the content height is refreshed only after the sheet is released.
-
-
-
-When the sheet is dragged to switch between detents, the content height is refreshed in real time during the drag.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isShow: boolean = false;
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Column()
-        .backgroundColor(Color.Blue)
-        .height(200)
-        .width('100%')
-      Column()
-        .backgroundColor(Color.Green)
-        .height(200)
-        .width('100%')
-    }
-  }
-
-  build() {
-    Column() {
-      Button("BindSheet")
-        .onClick(() => {
-          this.isShow = true;
-        })
-        .bindSheet($$this.isShow, this.myBuilder(), {
-          detents: [300, 600, 900],
-          uiContext: this.getUIContext(),
-          mode: SheetMode.OVERLAY,
-          scrollSizeMode: ScrollSizeMode.CONTINUOUS,
-          backgroundColor: Color.Orange,
-          title: { title: 'Title', subtitle: 'Subtitle' }
-        })
-    }
-    .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 6: Configuring the Sheet to Resize to Avoid the Keyboard
-
-This example demonstrates how to adjust the scrollable content within a sheet when the keyboard height changes by setting SheetKeyboardAvoidMode to RESIZE_ONLY.
-
-
-
-```TypeScript
-// xxx.ets
-import window from '@ohos.window';
-import { BusinessError } from '@ohos.base';
-
-@Entry
-@Component
-struct ListenKeyboardHeightChange {
-  @State isShow: boolean = false;
-  @State avoidMode: SheetKeyboardAvoidMode = SheetKeyboardAvoidMode.RESIZE_ONLY;
-  scroller = new Scroller();
-  private numberList: number[] = [0, 1, 2, 3, 4, 5, 6];
-  windowClass: window.Window | undefined = undefined;
-
-  aboutToAppear(): void {
-    try {
-      window.getLastWindow(this.getUIContext().getHostContext(), (err: BusinessError, data) => {
-        if (err && err.code) {
-          console.error(`Failed to obtain the top window, Code: ${err.code}, message: ${err.message}`);
-          return;
-        }
-        this.windowClass = data;
-        try {
-          if (this.windowClass !== undefined) {
-            console.info('success in listen height change');
-            this.windowClass.on('keyboardHeightChange', this.callback);
-          }
-        } catch (exception) {
-          console.error(`Failed to enable the listener for keyboard height changes, Cause code: ${exception.code}, message: ${exception.message}`);
-        }
-        console.info('Succeeded in obtaining the top window. Data: ' + JSON.stringify(data));
-      });
-    } catch (exception) {
-      console.error(`Failed to obtain the top window, Cause code: ${exception.code}, message: ${exception.message}`);
-    }
-  }
-
-  callback = (height: number) => {
-    console.info('height change: ' + height);
-    if (height !== 0) {
-      this.scroller.scrollTo({
-        xOffset: 0, yOffset: height + this.scroller.currentOffset().yOffset,
-        animation: { duration: 1000, curve: Curve.Ease, canOverScroll: false }
-      });
-    }
-  }
-
-  @Builder
-  myBuilder() {
-    Scroll(this.scroller) {
-      Column() {
-        ForEach(this.numberList, (item: number) => {
-          Row() {
-            Text(item.toString())
-              .width('80%')
-              .height(60)
-              .backgroundColor('#3366CC')
-              .borderRadius(15)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .margin({ top: 5 })
-          }
-        }, (item: number) => item.toString())
-
-        TextInput().height('100')
-
-        Flex({ alignItems: ItemAlign.End }) {
-          Row() {
-            Button("click")
-              .margin(10)
-              .fontSize(20)
-              .width('45%')
-
-            Button("cancel")
-              .margin(10)
-              .fontSize(20)
-              .width('45%')
-          }.width('100%')
-        }.height(100)
-      }.margin({ right: 15, bottom: 50 })
-    }
-    .height('100%')
-    .scrollBar(BarState.On)
-    .scrollable(ScrollDirection.Vertical)
-  }
-
-  build() {
-    Column() {
-      Button("transition modal 1")
-        .onClick(() => {
-          this.isShow = true;
-        })
-        .fontSize(20)
-        .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(), {
-          height: 750,
-          backgroundColor: Color.Gray,
-          blurStyle: BlurStyle.Thick,
-          showClose: true,
-          title: { title: "title", subtitle: "subtitle" },
-          keyboardAvoidMode: SheetKeyboardAvoidMode.RESIZE_ONLY,
-        })
-    }
-    .justifyContent(FlexAlign.Start)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 7: Setting the Corner Radius in a Mirrored Layout
-
-This example demonstrates how to set different corner radii for a sheet in a mirrored layout. Typically, to avoid a poor visual experience, do not set different values.
-
-Since API version 15, the radius attribute supports the LocalizedBorderRadiuses type.
-
-The following shows how the example is represented with left-to-right scripts.
-
-
-
-The following shows how the example is represented with right-to-left scripts.
-
-
-
-```TypeScript
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SheetTransitionExample {
-  @State isShow: boolean = false;
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Button("content1")
-        .margin(10)
-        .fontSize(20)
-
-      Button("content2")
-        .margin(10)
-        .fontSize(20)
-    }
-    .width('100%')
-  }
-
-  build() {
-    Column() {
-      Button("transition modal 1")
-        .onClick(() => {
-          this.isShow = true;
-        })
-        .fontSize(20)
-        .margin(10)
-        .bindSheet($$this.isShow, this.myBuilder(), {
-          detents: [SheetSize.MEDIUM, SheetSize.LARGE, 200],
-          title: { title: "title", subtitle: "subtitle" },
-          radius: { topStart: LengthMetrics.vp(50), topEnd: LengthMetrics.vp(10) },
-        })
-    }
-    .justifyContent(FlexAlign.Start)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 8: Implementing a Side Sheet
-
-This example demonstrates how to implement a side sheet. This feature is supported since API version 20.
-
-```TypeScript
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SheetSideExample {
-  @State isShowSide: boolean = false;
-  @State enableOutsideInteractive: boolean = false;
-  @State borderWidths: LocalizedEdgeWidths | undefined = undefined;
-  @State borderColors: Resource | undefined = undefined;
-  private numberList: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-
-  @Builder
-  sideBuilder() {
-    Column() {
-      ForEach(this.numberList, (item: number) => {
-        Row() {
-          Text(item.toString())
-            .width('90%')
-            .height(60)
-            .backgroundColor('#3366CC')
-            .borderRadius(15)
-            .fontSize(16)
-            .textAlign(TextAlign.Center)
-            .margin({ top: 5 })
-        }
-      }, (item: number) => item.toString())
-      TextInput()
-        .margin({ top: 5 })
-      Text('Change Sheet Interaction Mode')
-        .fontSize(22).fontColor(Color.White).fontWeight(FontWeight.Bold).textAlign(TextAlign.Center)
-        .width('100%').height(50).backgroundColor('#2ebd82')
-      Button("change enableOutsideInteractive = " + this.enableOutsideInteractive)
-        .margin({ top: 5 })
-        .onClick(() => {
-          this.enableOutsideInteractive = !this.enableOutsideInteractive;
-          if (this.enableOutsideInteractive) {
-            this.borderWidths = {start : LengthMetrics.vp(1)};
-            this.borderColors = $r('sys.color.comp_divider');
-          } else {
-            this.borderWidths = undefined;
-            this.borderColors = undefined;
-          }
-        })
-    }
-    .width('100%')
-    .height('auto')
-  }
-
-
-  build() {
-    Column({space:3}) {
-      Button("Side sheet")
-        .onClick(() => {
-          this.isShowSide = true;
-        })
-        .fontSize(20)
-        .margin(10)
-        .bindSheet($$this.isShowSide, this.sideBuilder(), {
-          title: { title: "SideSheet", subtitle: "Default width" },
-          backgroundColor: Color.Grey,
-          onWillAppear: () => {
-            console.info("SideSheet onWillAppear.");
-          },
-          onAppear: () => {
-            console.info("SideSheet onAppear.");
-          },
-          onWillDisappear: () => {
-            console.info("SideSheet onWillDisappear.");
-          },
-          onDisappear: () => {
-            console.info("SideSheet onDisappear.");
-          },
-
-          preferType: SheetType.SIDE,
-          blurStyle: BlurStyle.Regular,
-          maskColor: "#4bffc62d",  // Customize the mask color.
-          enableOutsideInteractive: this.enableOutsideInteractive,
-
-          borderWidth: this.borderWidths,
-          borderColor: this.borderColors,
-
-          onHeightDidChange: (height: number) => {
-            console.info("SideSheet height change:" + height);
-          },
-          onTypeDidChange: (type: SheetType) => {
-            console.info("SideSheet type change:" + type);
-          },
-        })
-    }
-    .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 9: Implementing a Full-Screen Content Cover Sheet
-
-This example demonstrates how to implement a full-screen sheet. This feature is supported since API version 20.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ContentCoverExample {
-  @State isShow: boolean = false
-
-  @Builder
-  myBuilder() {
-    Column() {
-      Button("Close Content Cover Sheet")
-        .margin(10)
-        .fontSize(20)
-        .onClick(() => {
-          this.isShow = false;
-        })
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-
-  build() {
-    Column() {
-      Button("Show Content Cover Sheet")
-        .onClick(() => {
-          this.isShow = true;
-        })
-        .fontSize(20)
-        .margin(10)
-        .bindSheet(this.isShow, this.myBuilder(), {
-          modalTransition: ModalTransition.DEFAULT,
-          preferType: SheetType.CONTENT_COVER,
-          backgroundColor: '#ffd5d5d5',
-          onWillAppear: () => {
-            console.info("ContentCover onWillAppear.");
-          },
-          onAppear: () => {
-            console.info("ContentCover onAppear.");
-          },
-          onWillDisappear: () => {
-            console.info("ContentCover onWillDisappear.");
-          },
-          onDisappear: () => {
-            console.info("ContentCover onDisappear.");
-          },
-        })
-    }
-    .justifyContent(FlexAlign.Center)
-    .backgroundColor(Color.White)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 10: Setting the System Material for a Half-Modal
-
-This example sets the system material through the systemMaterial attribute of the half-modal.
-
-Since API version 26.0.0, the [SheetOptions](arkts-arkui-common-comp-sheetoptions-i.md) adds the systemMaterial attribute.
-
-```TypeScript
-// xxx.ets
-import { uiMaterial } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct SheetMaterialExample {
-  @State isShow: boolean = false;
-  @State sheetHeight: number = 300;
-  @State myMaterial: SystemUiMaterial | undefined = new uiMaterial.ImmersiveMaterial({
-    style: uiMaterial.ImmersiveStyle.ULTRA_THICK,
-  });
-
-  @Builder
-  myBuilder() {
-    Column({ space: 10 }) {
-      Text("Text")
-        .fontSize(20)
-        .margin(10)
-    }
-    .width('100%')
-    .height('100%')
-  }
-
-  build() {
-    Stack() {
-      // Replace this with the actual resource file.
-      Image($r('app.media.startIcon'))
-      Column() {
-        Button("open Sheet")
-          .onClick(() => {
-            this.isShow = true;
-          })
-          .fontSize(20)
-          .margin(10)
-          .bindSheet($$this.isShow, this.myBuilder(), {
-            height: this.sheetHeight,
-            // The following APIs are not recommended for use together with systemMaterial.
-            // borderWidth: 20,
-            // borderColor: Color.Red,
-            // backgroundColor: Color.Green,
-            // shadow: { radius: 30, type: ShadowType.COLOR, color: Color.Yellow },
-            // Some material effects do not have a background of their own and will be overridden by the color set through backgroundColor. To present such material effects, set the background color to transparent.
-            backgroundColor: Color.Transparent,
-            systemMaterial: this.myMaterial // The systemMaterial attribute is added since API version 26.0.0.
-          })
-      }
-      .justifyContent(FlexAlign.Center)
-      .width('100%')
-      .height('100%')
-    }
-  }
-}
-```
-
 ### Example 1: Implementing Modal Transition Using bindContentCover
 
 This example demonstrates how to implement a modal transition using the bindContentCover API.
@@ -4927,34 +12198,6 @@ struct TransitionVisibilityExample {
 }
 ```
 
-This example demonstrates how to set the motion path for the translation animation of a component. This method only configures the motion path parameters. To produce an actual translation animation effect, it must be used together with animation trigger methods such as animateTo and changes in component attribute states. Setting motionPath alone does not trigger an animation.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct MotionPathExample {
-  @State toggle: boolean = true;
-
-  build() {
-    Column() {
-      Button('click me').margin(50)
-        .motionPath({
-          path: 'Mstart.x start.y L300 200 L300 500 Lend.x end.y',
-          from: 0.0,
-          to: 1.0,
-          rotatable: true
-        }) // Set the motion path: from the start point through (300,200) and (300,500) to the end point.
-        .onClick(() => {
-          this.getUIContext()?.animateTo({ duration: 4000, curve: Curve.Linear }, () => {
-            this.toggle = !this.toggle; // Change the component's position using this.toggle.
-          });
-        })
-    }.width('100%').height('100%').alignItems(this.toggle ? HorizontalAlign.Start : HorizontalAlign.Center)
-  }
-}
-```
-
 This example demonstrates the click feedback effects on different types of components.
 
 ```TypeScript
@@ -5664,60 +12907,6 @@ struct IdExample {
       Text(this.text).fontSize(25).padding(15)
     }
     .width('100%').height('100%')
-  }
-}
-```
-
-This example demonstrates how to use reuseId to identify the reuse group of a custom component.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct MyComponent {
-  @State isShow: boolean = true;
-  private type: string = 'type1';
-
-  build() {
-    Column() {
-      Button('ChangeType')
-        .onClick(() => {
-          this.type = 'type2';
-        })
-      Button('Switch')
-        .onClick(() => {
-          this.isShow = !this.isShow;
-        })
-      if (this.isShow) {
-        ReusableChildComponent({ type: this.type })
-          .reuseId(this.type)
-      }
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-
-@Reusable
-@Component
-struct ReusableChildComponent {
-  @State type: string = '';
-
-  aboutToAppear() {
-    console.info(`ReusableChildComponent Appear ${this.type}`);
-  }
-
-  aboutToReuse(params: ESObject) {
-    console.info(`ReusableChildComponent Reuse ${this.type}`);
-    this.type = params.type;
-  }
-
-  build() {
-    Row() {
-      Text(this.type)
-        .fontSize(20)
-        .margin({ left: 10 })
-    }.margin({ left: 10, right: 10 })
   }
 }
 ```
@@ -6628,96 +13817,6 @@ struct Index {
 }
 ```
 
-This example sets the component size change event on the Text component. When the Text size changes, the onSizeChange event is triggered to obtain the oldValue and newValue parameters.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct AreaExample {
-  @State value: string = 'Text'
-  @State sizeValue: string = ''
-
-  build() {
-    Column() {
-      Text(this.value)
-        .backgroundColor(Color.Green)
-        .margin(30)
-        .fontSize(20)
-        .onClick(() => {
-          this.value = this.value + 'Text';
-        })
-        .onSizeChange((oldValue: SizeOptions, newValue: SizeOptions) => {
-          console.info(`Ace: on size change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
-          this.sizeValue = JSON.stringify(newValue);
-        })
-      Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
-    }
-    .width('100%').height('100%').margin({ top: 30 })
-  }
-}
-```
-
-This example demonstrates how to use [animateToImmediately](#animatetoimmediately) to implement the immediate delivery of explicit animations.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct AnimateToImmediatelyExample {
-  @State widthSize: number = 250;
-  @State heightSize: number = 100;
-  @State opacitySize: number = 0;
-  private flag: boolean = true;
-
-  build() {
-    Column() {
-      Column()
-      .width(this.widthSize)
-      .height(this.heightSize)
-      .backgroundColor(Color.Green)
-      .opacity(this.opacitySize)
-      Button('change size')
-        .margin(30)
-        .onClick(() => {
-          // Compare and demonstrate, through if/else branches, the difference in effect between the immediate delivery of animation by animateToImmediately and the delayed delivery of animation by animateTo.
-          // Demonstrate the flag switching scenario: when true, opacity is delivered immediately and size is delivered with delay; when false, size is delivered immediately and opacity is delivered with delay.
-          if (this.flag) {
-            animateToImmediately({
-              delay: 0,
-              duration: 1000
-            }, () => {
-              this.opacitySize = 1;
-            })
-            this.getUIContext()?.animateTo({
-              delay: 1000,
-              duration: 1000
-            }, () => {
-              this.widthSize = 150;
-              this.heightSize = 60;
-            })
-          } else {
-            animateToImmediately({
-              delay: 0,
-              duration: 1000
-            }, () => {
-              this.widthSize = 250;
-              this.heightSize = 100;
-            })
-            this.getUIContext()?.animateTo({
-              delay: 1000,
-              duration: 1000
-            }, () => {
-              this.opacitySize = 0;
-            })
-          }
-          this.flag = !this.flag;
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
 This example demonstrates how to create a custom check box using ContentModifier. This check box comes in the custom pentagon style instead of the original check box style. When selected, the check box shows a red triangle pattern inside, and the title displays the word "selected"; when deselected, the check box hides the red triangle pattern inside, and the title displays the word "unselected."
 
 ```TypeScript
@@ -6794,545 +13893,6 @@ struct Index {
       .width('100%')
     }
     .height('100%')
-  }
-}
-```
-
-### Example 1: Setting the Brightness Effect
-
-This example demonstrates how to add a brightness effect to a component using advancedBlendMode.
-
-Below is how the component looks with the brightness effect applied:
-
-
-
-```TypeScript
-// xxx.ets
-import { uiEffect } from '@kit.ArkGraphics2D';
-
-// Use uiEffect.createBrightnessBlender to create a BrightnessBlender instance, which can be used to apply the brightness effect to a component.
-let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
-  cubicRate: 0.5,
-  quadraticRate: 0.5,
-  linearRate: 0.5,
-  degree: 0.5,
-  saturation: 0.5,
-  positiveCoefficient: [2.3, 4.5, 2.0],
-  negativeCoefficient: [0.5, 2.0, 0.5],
-  fraction: 0.5
-});
-// Caution: Using a custom object as the Blender input parameter does not take effect. Use the uiEffect.createBrightnessBlender method to create a Blender instance.
-let customBlender: uiEffect.BrightnessBlender = {
-  cubicRate: 0.5,
-  quadraticRate: 0.5,
-  linearRate: 0.5,
-  degree: 0.5,
-  saturation: 0.5,
-  positiveCoefficient: [2.3, 4.5, 2.0],
-  negativeCoefficient: [0.5, 2.0, 0.5],
-  fraction: 0.5
-};
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Stack() {
-      Image($r('app.media.img_1'))
-
-      Column() {
-        Text(String.fromCodePoint(0x1F600) + 'TEST')
-          .fontSize(60)
-
-        Text(String.fromCodePoint(0x1F600) + 'FAST')
-          .fontSize(60)
-          .advancedBlendMode(blender)
-
-        Text(String.fromCodePoint(0x1F600) + 'OFFSCREEN')
-          .fontSize(60)
-          .advancedBlendMode(blender, BlendApplyType.OFFSCREEN)
-
-        Text(String.fromCodePoint(0x1F600) + 'TEST')
-          .fontSize(60)
-          .advancedBlendMode(customBlender)
-      }
-    }
-  }
-}
-```
-
-### Example 2: Setting the Render Group Exclusion Attribute
-
-This example demonstrates how to use the [excludeFromRenderGroup](arkts-arkui-common-comp-commonmethod-c-sys.md#excludefromrendergroup) to avoid repeated invalidations of the render group cache in scenarios involving attribute animations on the component.
-
-The [excludeFromRenderGroup](arkts-arkui-common-comp-commonmethod-c-sys.md#excludefromrendergroup) attribute is supported since API version 22.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ExcludeFromRenderGroupDemo {
-  readonly color1: ResourceColor = '#2787d9';
-  readonly color2: ResourceColor = '#ffc000';
-  @State myColor: ResourceColor = this.color1;
-  @State isExcluded: boolean = false;
-  animationCnt: number = 0;
-
-  build() {
-    Column() {
-      Column({ space: 10 }) {
-        Column()
-          .width(100)
-          .height(100)
-          .backgroundColor(this.myColor)
-          // Set the excludeFromRenderGroup attribute. When this component performs a background color animation, the actual display effect requires frequent attribute updates, and the component area occupies only part of the render group area. Therefore, set the excludeFromRenderGroup attribute to reuse the render group cache.
-          .excludeFromRenderGroup(this.isExcluded)
-          .onClick(() => {
-            this.isExcluded = true; // Before playing the animation, change the is attribute of the render group to true.
-            this.animationCnt++;
-            this.getUIContext().animateTo({
-              duration: 600,
-              onFinish: () => {
-                this.animationCnt--;
-                if (this.animationCnt === 0) { // animationCnt becomes 0, indicating that all animations have ended.
-                  this.isExcluded = false; // After the animations of the component end, if no attribute change occurs on the component, you can reset this attribute of the render group.
-                }
-              }
-            }, () => {
-              this.myColor = (this.myColor === this.color1) ? this.color2 : this.color1;
-            })
-          })
-        // Other components in the render group.
-        Image($r('app.media.bg1')) // $r('app.media.bg1') needs to be replaced with the image resource file required by the developer.
-          .width(100)
-          .height(100)
-        Image($r('app.media.bg1')) // $r('app.media.bg1') needs to be replaced with the image resource file required by the developer.
-          .width(100)
-          .height(100)
-      }.renderGroup(true)
-      .width('100%')
-      .height('70%')
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
-### Example 3: Setting the Brightening and Fade-Out Effects
-
-Since API version 23, this example demonstrates how to use advancedBlendMode to add both the brightening and fade-out effects to a component.
-
-
-
-```TypeScript
-// xxx.ets
-import { uiEffect } from '@kit.ArkGraphics2D';
-
-// Use uiEffect.createBrightnessBlender to create a BrightnessBlender instance, which can be used to apply the brightness effect to a component.
-let blender: uiEffect.BrightnessBlender = uiEffect.createBrightnessBlender({
-  cubicRate: 0.5,
-  quadraticRate: 0.5,
-  linearRate: 0.5,
-  degree: 0.5,
-  saturation: 0.5,
-  positiveCoefficient: [2.3, 4.5, 2.0],
-  negativeCoefficient: [0.5, 2.0, 0.5],
-  fraction: 0.3
-});
-
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Stack() {
-        Column() {
-          Text(String.fromCodePoint(0x1F600) + ' BlendApplyType OFFSCREEN WITH BACKGROUND ' +
-          String.fromCodePoint(0x1F600))
-            .fontSize(35)
-            .fontColor(Color.Black)
-        }
-        .advancedBlendMode(blender, BlendApplyType.FAST)
-
-        Column()
-          .width('100%')
-          .height('100%')
-          .linearGradient({
-            direction: GradientDirection.Right,
-            colors: [
-              [Color.Transparent, 0.0],
-              [Color.Black, 0.50],
-              [Color.Black, 0.55],
-              [Color.Transparent, 1.0]
-            ]
-          })
-          .blendMode(BlendMode.DST_IN, BlendApplyType.FAST)
-      }
-      .advancedBlendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN_WITH_BACKGROUND)
-      .width('100%')
-      .height('20%')
-    }
-    .backgroundColor('rgb(254, 238, 239)')
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-This example demonstrates how to set a keyframe animation through keyframeAnimateTo, including the delay, the onFinish completion callback, and the curve configuration of each keyframe.
-
-```TypeScript
-// xxx.ets
-import { UIContext } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct KeyframeDemo {
-  @State myScale: number = 1.0;
-  uiContext: UIContext | undefined = undefined;
-
-  aboutToAppear() {
-    this.uiContext = this.getUIContext?.();
-  }
-
-  build() {
-    Column() {
-      Circle()
-        .width(100)
-        .height(100)
-        .fill('#46B1E3')
-        .margin(100)
-        .scale({ x: this.myScale, y: this.myScale })
-        .onClick(() => {
-          if (!this.uiContext) {
-            console.info('no uiContext, keyframe failed');
-            return;
-          }
-          this.myScale = 1;
-          // Set the keyframe animation to play three times in total, with a delay of 200 ms, and trigger the onFinish callback when it ends.
-          this.uiContext.keyframeAnimateTo({
-              iterations: 3,
-              delay: 200,
-              onFinish: () => {
-                console.info('keyframe animate finish');
-              },
-              // expectedFrameRateRange is added since API version 19.
-              expectedFrameRateRange: {
-                min: 10,
-                max: 120,
-                expected: 60,
-              }
-            }, [
-            {
-              // The first keyframe animation lasts 800 ms, uses the EaseIn curve, and animates the scale attribute from 1 to 1.5.
-              duration: 800,
-              curve: Curve.EaseIn,
-              event: () => {
-                this.myScale = 1.5;
-              }
-            },
-            {
-              // The second keyframe animation lasts 500 ms, uses the EaseOut curve, and animates the scale attribute from 1.5 to 1.
-              duration: 500,
-              curve: Curve.EaseOut,
-              event: () => {
-                this.myScale = 1;
-              }
-            }
-          ]);
-        })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-This example demonstrates how to use the visibility configuration to achieve different visibility control effects.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct VisibilityExample {
-  build() {
-    Column() {
-      Column() {
-        // The component is hidden and does not take up space in the layout.
-        Text('None').fontSize(9).width('90%').fontColor(0xCCCCCC);
-        Row().visibility(Visibility.None).width('90%').height(80).backgroundColor(0xAFEEEE);
-
-        // The component is hidden but takes up space in the layout.
-        Text('Hidden').fontSize(9).width('90%').fontColor(0xCCCCCC);
-        Row().visibility(Visibility.Hidden).width('90%').height(80).backgroundColor(0xAFEEEE);
-
-        // The component is visible, which is the default display mode.
-        Text('Visible').fontSize(9).width('90%').fontColor(0xCCCCCC);
-        Row().visibility(Visibility.Visible).width('90%').height(80).backgroundColor(0xAFEEEE);
-      }.width('90%').border({ width: 1 });
-    }.width('100%').margin({ top: 5 });
-  }
-}
-```
-
-### Example 1: Implementing Custom Gesture Judgment
-
-In this example, the [onGestureJudgeBegin](arkts-arkui-common-comp-commonmethod-c.md#ongesturejudgebegin) event is configured to implement customized judgment of the press and hold, fast swipe, swipe, pinch, and drag gestures. From API version 21, the [BaseEvent](ts-universal-events-click.md#baseevent8) axisPinch attribute can be used to obtain the two-finger zoom ratio.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State message: string = '';
-
-  build() {
-    Column() {
-      Row({ space: 20 }) {
-        Text(this.message).width(200).height(80).backgroundColor(Color.Pink)
-          .fontSize(25)
-      }.margin(20)
-    }
-    .width('100%')
-    .height(200)
-    .borderWidth(2)
-    .onDragStart(() => {
-      this.message = 'drag';
-      console.info('Drag start.');
-    })
-    .gesture(
-      TapGesture()
-        .tag('tap1') // Set the tap gesture flag.
-        .onAction(() => {
-          this.message = 'tap1';
-        })
-    )
-    .gesture(
-      LongPressGesture()
-        .tag('longPress1') // Set the long press gesture flag.
-        .onAction(() => {
-          this.message = 'longPress';
-        })
-    )
-    .gesture(
-      SwipeGesture()
-        .tag('swipe1') // Set the fast swipe gesture flag.
-        .onAction(() => {
-          this.message = 'swipe1';
-        })
-    )
-    .gesture(
-      PanGesture()
-        .tag('pan1') // Set the swipe gesture flag.
-        .onActionStart(() => {
-          this.message = 'pan1';
-        })
-    )
-    .gesture(
-      PinchGesture()
-        .tag('pinch1') // Set the pinch gesture flag.
-        .onActionStart(() => {
-          this.message = 'pinch1'
-        })
-    )
-    .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-      // If the gesture type is a long press gesture, convert the event to a long press gesture event.
-      if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
-        let longPressEvent = event as LongPressGestureEvent;
-        console.info(`repeat ${longPressEvent.repeat}`);
-      }
-      // If the gesture type is a swipe gesture, convert the event to a swipe event.
-      if (gestureInfo.type == GestureControl.GestureType.SWIPE_GESTURE) {
-        let swipeEvent = event as SwipeGestureEvent;
-        console.info(`angle ${swipeEvent.angle}`);
-      }
-      // If the gesture type is a swipe gesture, convert the event to a swipe gesture event.
-      if (gestureInfo.type == GestureControl.GestureType.PAN_GESTURE) {
-        let panEvent = event as PanGestureEvent;
-        console.info(`velocity ${panEvent.velocity}`);
-      }
-      // If the gesture type is a pinch gesture, convert the event to a pinch event.
-      if (gestureInfo.type == GestureControl.GestureType.PINCH_GESTURE) {
-        let pinchEvent = event as PinchGestureEvent;
-        console.info(`axisPinch ${pinchEvent.axisPinch}`);
-      }
-      // Custom criteria
-      if (gestureInfo.type == GestureControl.GestureType.DRAG) {
-        // If GestureJudgeResult.REJECT is returned, the pan gesture recognition fails.
-        return GestureJudgeResult.REJECT;
-      } else if (gestureInfo.tag === 'longPress1' && event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
-        // If GestureJudgeResult.CONTINUE is returned, the system recognition result is retained.
-        return GestureJudgeResult.CONTINUE;
-      }
-      return GestureJudgeResult.CONTINUE;
-    })
-  }
-}
-```
-
-### Example 2: Implementing Custom Area Gesture Judgment
-
-This example uses onGestureJudgeBegin to determine whether to respond to the press and hold gesture and drag gesture based on the area where the gesture is triggered.
-
-
-
-```TypeScript
-// xxx.ets
-import { PromptAction } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  scroller: Scroller = new Scroller()
-  promptAction: PromptAction = this.getUIContext().getPromptAction();
-
-  build() {
-    Scroll(this.scroller) {
-      Column({ space: 8 }) {
-        Text('The upper red area is bound to the long press gesture, and the lower blue area is bound to a drag gesture. If a pan is performed after a long press in the upper red area, the area only responds to the long press. In the same case, the lower blue area only responds to the drag.')
-          .width('100%')
-          .fontSize(20)
-          .fontColor('0xffdd00')
-          .backgroundColor(0xeeddaa00)
-        Stack({ alignContent: Alignment.Center }) {
-          Column() {
-            // Simulate the upper and lower half areas.
-            Stack().width('200').height('100').backgroundColor(Color.Red)
-            Stack().width('200').height('100').backgroundColor(Color.Blue)
-          }.width('200vp').height('200vp')
-
-          // The lower part of the Stack component is the image area bound to the pan gesture.
-          Image($r('sys.media.ohos_app_icon'))
-            .draggable(true)
-            .onDragStart(() => {
-              this.promptAction.showToast({ message: 'When the blue area is dragged, the image responds.' })
-            })
-            .width('200').height('200')
-          // The upper part of the Stack component is the floating area bound to the long press gesture.
-          Stack() {
-          }
-          .width('200')
-          .height('200')
-          .hitTestBehavior(HitTestMode.Transparent)
-          .onGestureJudgeBegin((gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-            // Check whether the tag of gestureInfo has a value.
-            if (gestureInfo.tag) {
-              console.info(`gestureInfo tag ${gestureInfo.tag.toString()}`);
-            }
-            console.info(`gestureInfo Type ${gestureInfo.type.toString()}`);
-            console.info(`isSystemGesture ${gestureInfo.isSystemGesture}`);
-            console.info(`pressure ${event.pressure}\nfingerList.length ${event.fingerList.length}\ntimeStamp ${event.timestamp}\nsourceType ${event.source.toString()}\n` +
-              `tiltX ${event.tiltX}\ntiltY ${event.tiltY}\nrollAngle ${event.rollAngle}\nsourceTool ${event.sourceTool.toString()}`);
-            // If the gesture is a long press gesture, check whether the touch position is in the upper half area.
-            if (gestureInfo.type == GestureControl.GestureType.LONG_PRESS_GESTURE) {
-              if (event.fingerList.length > 0 && event.fingerList[0].localY < 100) {
-                return GestureJudgeResult.CONTINUE
-              } else {
-                return GestureJudgeResult.REJECT
-              }
-            }
-            return GestureJudgeResult.CONTINUE
-          })
-          .gesture(GestureGroup(GestureMode.Parallel,
-            LongPressGesture()
-              .onAction((event: GestureEvent) => {
-                this.promptAction.showToast({ message: 'Long-press the upper red area. The red area responds.' })
-              })
-              .tag('tap111')
-          ))
-
-        }.width('100%')
-      }.width('100%')
-    }
-  }
-}
-```
-
-### Example 3: Implementing Real-time Monitoring of Active Touch Points in Gestures
-
-This example configures the onGestureJudgeBegin callback to read fingerInfos to detect the number of valid touch points, ID of each touch point, and coordinates of each touch point in real time.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct GestureDetectorExample {
-  @State message: string = 'Touch area'
-  @State fingerCount: number = 0
-  @State fingerDetails: string = ''
-
-  build() {
-    Column() {
-      // Information display area
-      Column() {
-        Text(this.message)
-          .fontSize(20)
-          .fontWeight(FontWeight.Bold)
-
-        Text(`Active touch points: ${this.fingerCount}`)
-          .fontSize(16)
-          .margin({ top: 8 })
-
-
-        Text(this.fingerDetails)
-          .fontSize(14)
-          .margin({ top: 8 })
-      }
-      .padding(10)
-      .border({ width: 1, color: Color.Gray })
-
-      // Gesture detection area
-      Column()
-        .width('90%')
-        .height(200)
-        .margin(20)
-        .border({ width: 2, color: Color.Black })
-        .gesture(
-          GestureGroup(GestureMode.Exclusive,
-            TapGesture()
-              .onAction(() => {
-                this.message = 'Tap event'
-              }),
-            LongPressGesture()
-              .onAction(() => {
-                this.message = 'Long press event'
-              }),
-            PanGesture()
-              .onActionStart(() => {
-                this.message = 'Drag started'
-              })
-              .onActionUpdate(() => {
-                this.message = 'Dragging...'
-              })
-              .onActionEnd(() => {
-                this.message = 'Drag ended'
-                this.fingerCount = 0;
-                this.fingerDetails = '';
-              })
-          )
-        )
-        .onGestureJudgeBegin((_gestureInfo: GestureInfo, event: BaseGestureEvent) => {
-          // Access fingerInfos data.
-          if (event?.fingerInfos) {
-            this.fingerCount = event.fingerInfos.length;
-            this.fingerDetails = event.fingerInfos.map(finger =>
-            `ID: ${finger.id}: (${finger.localX.toFixed(1)}, ${finger.localY.toFixed(1)})`
-            ).join('\n');
-            console.info(`Touch point data: ${JSON.stringify(event.fingerInfos)}`)
-          }
-          // When the number of touch points exceeds 2, the current gesture is rejected.
-          if (this.fingerCount > 2) {
-            return GestureJudgeResult.REJECT
-          }
-          return GestureJudgeResult.CONTINUE
-        })
-    }
-    .width('100%')
-    .height('100%')
-    .padding(10)
   }
 }
 ```
@@ -7551,425 +14111,6 @@ struct ListExample {
     .onChildTouchTest(() => {
       return { strategy: TouchTestStrategy.DEFAULT }
     })
-  }
-}
-```
-
-### Example 1: Switching the Background Color with a Modifier
-
-This example demonstrates how to switch the background color of a Button component by binding it to a modifier.
-
-
-
-```TypeScript
-// xxx.ets
-// Set the custom AttributeModifier for the Button component attributes.
-class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  public isDark: boolean = false;
-
-  applyNormalAttribute(instance: ButtonAttribute): void {
-    if (this.isDark) {
-      instance.backgroundColor(Color.Black);
-    } else {
-      instance.backgroundColor(Color.Red);
-    }
-  }
-}
-
-@Entry
-@Component
-struct AttributeDemo {
-  @State modifier: MyButtonModifier = new MyButtonModifier();
-
-  build() {
-    Row() {
-      Column() {
-        Button('Button')
-          .attributeModifier(this.modifier)
-          .onClick(() => {
-            this.modifier.isDark = !this.modifier.isDark;
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 2: Implementing the Pressed State Effect with a Modifier
-
-This example implements the pressed state effect by binding a modifier to a Button. For details about using it with state management V2, see [Modifier and makeObserved](../../../ui/state-management/arkts-v1-v2-migration-inner-object.md#modifier).
-
-
-
-```TypeScript
-// xxx.ets
-// Set the custom AttributeModifier for the Button component attributes.
-class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  applyNormalAttribute(instance: ButtonAttribute): void {
-    instance.backgroundColor(Color.Black);
-  }
-
-  applyPressedAttribute(instance: ButtonAttribute): void {
-    instance.backgroundColor(Color.Red);
-  }
-}
-
-@Entry
-@Component
-struct AttributePressedDemo {
-  @State modifier: MyButtonModifier = new MyButtonModifier();
-
-  build() {
-    Row() {
-      Column() {
-        Button('Button')
-          .attributeModifier(this.modifier)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 3: Understanding Custom Modifiers Do Not Support State Data Changes
-
-This example shows how to set the width of a custom modifier using state data. Custom modifiers do not support observing changes in data decorated with the @State decorator. Therefore, the width does not change when the button is clicked.
-
-
-
-```TypeScript
-import { CommonModifier } from '@kit.ArkUI';
-
-const TEST_TAG: string = 'AttributeModifier';
-
-// Set the custom AttributeModifier for the universal component attributes.
-class MyModifier extends CommonModifier {
-  applyNormalAttribute(instance: CommonAttribute): void {
-    super.applyNormalAttribute?.(instance);
-  }
-}
-
-@Component
-struct MyImage1 {
-  @Link modifier: CommonModifier;
-
-  build() {
-    Image($r('app.media.startIcon')).attributeModifier(this.modifier as MyModifier)
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  index: number = 0;
-  @State width1: number = 100;
-  @State height1: number = 100;
-  @State myModifier: CommonModifier = new MyModifier().width(this.width1).height(this.height1).margin(10);
-
-  build() {
-    Column() {
-      Button($r('app.string.EntryAbility_label'))
-        .margin(10)
-        .onClick(() => {
-          console.info(TEST_TAG, 'onClick');
-          this.index++;
-          if (this.index % 2 === 1) {
-            this.width1 = 10;
-            console.info(TEST_TAG, 'setGroup1');
-          } else {
-            this.height1 = 10;
-            console.info(TEST_TAG, 'setGroup2');
-          }
-        })
-      MyImage1({ modifier: this.myModifier })
-    }
-    .width('100%')
-  }
-}
-```
-
-### Example 4: Combining Modifier and Custom Modifier Attributes
-
-This example sets width, height, and margin through a custom modifier. When the button is clicked, [borderStyle](ts-appendix-enums.md#borderstyle) and [borderWidth](ts-universal-attributes-border.md#borderwidth) are set. After the click, all five attributes take effect.
-
-
-
-```TypeScript
-import { CommonModifier } from '@kit.ArkUI';
-
-const TEST_TAG: string = 'AttributeModifier';
-
-// Set the custom AttributeModifier for the universal component attributes.
-class MyModifier extends CommonModifier {
-  applyNormalAttribute(instance: CommonAttribute): void {
-    super.applyNormalAttribute?.(instance);
-  }
-
-  public setGroup1(): void {
-    this.borderStyle(BorderStyle.Dotted);
-    this.borderWidth(8);
-  }
-
-  public setGroup2(): void {
-    this.borderStyle(BorderStyle.Dashed);
-    this.borderWidth(8);
-  }
-}
-
-@Component
-struct MyImage1 {
-  @Link modifier: CommonModifier;
-
-  build() {
-    Image($r('app.media.startIcon')).attributeModifier(this.modifier as MyModifier)
-  }
-}
-
-@Entry
-@Component
-struct Index {
-  @State myModifier: CommonModifier = new MyModifier().width(100).height(100).margin(10);
-  index: number = 0;
-
-  build() {
-    Column() {
-      Button($r('app.string.EntryAbility_label'))
-        .margin(10)
-        .onClick(() => {
-          console.info(TEST_TAG, 'onClick');
-          this.index++;
-          if (this.index % 2 === 1) {
-            (this.myModifier as MyModifier).setGroup1();
-            console.info(TEST_TAG, 'setGroup1');
-          } else {
-            (this.myModifier as MyModifier).setGroup2();
-            console.info(TEST_TAG, 'setGroup2');
-          }
-        })
-      MyImage1({ modifier: this.myModifier })
-    }
-    .width('100%')
-  }
-}
-```
-
-### Example 5: Setting the Focused State Style with a Modifier
-
-This example demonstrates how to implement a focused state style for a Button component by binding it to a modifier. After Button2 is clicked, the Button component displays the focused style when it has focus.
-
-
-
-```TypeScript
-// Set the custom AttributeModifier for the Button component attributes.
-class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-
-  applyNormalAttribute(instance: ButtonAttribute): void {
-    instance.backgroundColor(Color.Blue);
-  }
-  applyFocusedAttribute(instance: ButtonAttribute): void {
-    instance.backgroundColor(Color.Green);
-  }
-}
-
-@Entry
-@Component
-struct AttributeDemo {
-  @State modifier: MyButtonModifier = new MyButtonModifier();
-  @State isDisable: boolean = true;
-
-  build() {
-    Row() {
-      Column() {
-        Button('Button')
-          .attributeModifier(this.modifier)
-          .enabled(this.isDisable)
-          .id('app')
-        Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
-        Button('Button2')
-          .onClick(() => {
-            this.getUIContext().getFocusController().activate(true);
-            this.getUIContext().getFocusController().requestFocus('app');
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 6: Setting the Disabled State Style with a Modifier
-
-This example demonstrates how to implement a disabled state style for a Button component by binding it to a modifier. After Button2 is clicked, the Button component displays the disabled style when it is disabled.
-
-
-
-```TypeScript
-// Set the custom AttributeModifier for the Button component attributes.
-class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  applyDisabledAttribute(instance: ButtonAttribute): void {
-    instance.width(200);
-  }
-}
-
-@Entry
-@Component
-struct AttributeDemo {
-  @State modifier: MyButtonModifier = new MyButtonModifier();
-  @State isDisable: boolean = true;
-
-  build() {
-    Row() {
-      Column() {
-        Button('Button')
-          .attributeModifier(this.modifier)
-          .enabled(this.isDisable)
-        Divider().vertical(false).strokeWidth(15).color(Color.Transparent)
-        Button('Button2')
-          .onClick(() => {
-            this.isDisable = !this.isDisable;
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 7: Setting the Selected State Style with a Modifier
-
-This example implements the style effect when a component is selected by binding a modifier to a Radio.
-
-
-
-```TypeScript
-// Set the custom AttributeModifier for the Radio component attributes.
-class MyRadioModifier implements AttributeModifier<RadioAttribute> {
-  applyNormalAttribute(instance: RadioAttribute): void {
-    instance.backgroundColor(Color.Blue);
-  }
-
-  applySelectedAttribute(instance: RadioAttribute): void {
-    instance.backgroundColor(Color.Red);
-    instance.borderWidth(2);
-  }
-}
-
-@Entry
-@Component
-struct AttributeDemo {
-  @State modifier: MyRadioModifier = new MyRadioModifier();
-  @State value: boolean = false;
-
-  build() {
-    Row() {
-      Column() {
-        Radio({ value: 'Radio1', group: 'radioGroup1' })
-          .checked(this.value)
-          .height(50)
-          .width(50)
-          .borderWidth(0)
-          .borderRadius(30)
-          .onClick(() => {
-            this.value = !this.value;
-          })
-          .attributeModifier(this.modifier)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 8: Implementing the Pressed State Effect for a Custom Component with a Modifier
-
-This example demonstrates how to implement a pressed state effect for a custom component (Common) by binding it to a modifier.
-
-
-
-```TypeScript
-// xxx.ets
-// Set the custom AttributeModifier for the custom component attributes.
-class CustomModifier implements AttributeModifier<CommonAttribute> {
-  applyNormalAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Blue);
-  }
-
-  applyPressedAttribute(instance: CommonAttribute): void {
-    instance.backgroundColor(Color.Gray);
-  }
-}
-
-@Entry
-@Component
-struct AttributePressedDemo {
-  @State modifier: CustomModifier = new CustomModifier();
-
-  build() {
-    Row() {
-      Column() {
-        ChildComponent()
-          .attributeModifier(this.modifier)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-
-// Custom component
-@Component
-struct ChildComponent {
-  build() {
-    Text('common')
-      .fontColor(Color.White)
-      .fontSize(28)
-      .textAlign(TextAlign.Center)
-      .width('35%')
-      .height('10%')
-  }
-}
-```
-
-### Example 9: Implementing the Mouse Hover Effect with a Modifier
-
-This example implements the mouse hover effect by binding a modifier to aButton. When the mouse moves over the Button, the background color of the Button changes to red, which is the hover effect; when the mouse leaves the Button, the background color changes to black, which is the normal state effect. The hover style is set through the [applyHoveredAttribute](arkts-arkui-common-comp-attributemodifier-i.md#applyhoveredattribute) API.
-
-Since API version 26.0.0, the [applyHoveredAttribute](arkts-arkui-common-comp-attributemodifier-i.md#applyhoveredattribute) API is added.
-
-```TypeScript
-// xxx.ets
-// Set the custom AttributeModifier for the Button component attributes.
-class MyButtonModifier implements AttributeModifier<ButtonAttribute> {
-  applyNormalAttribute(instance: ButtonAttribute): void {
-    instance.backgroundColor(Color.Black);
-  }
-
-  // Set the hover state style.
-  applyHoveredAttribute(instance: ButtonAttribute): void {
-    instance.backgroundColor(Color.Red);
-  }
-}
-
-@Entry
-@Component
-struct AttributeHoveredDemo {
-  @State modifier: MyButtonModifier = new MyButtonModifier();
-
-  build() {
-    Row() {
-      Column() {
-        Button('Button')
-          .attributeModifier(this.modifier)
-      }
-      .width('100%')
-    }
-    .height('100%')
   }
 }
 ```
@@ -8717,255 +14858,6 @@ struct Index {
 }
 ```
 
-### Example 1: Adding Graphical Transformation Effects
-
-This example applies rotation, translation, scaling, and transformation matrix effects to the component using [rotate](#rotate), [translate](#translate), [scale](#scale), and [transform](#transform).
-
-
-
-```TypeScript
-// xxx.ets
-import { matrix4 } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct TransformExample {
-  build() {
-    Column() {
-      Text('rotate').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
-      Row()
-        .rotate({
-          x: 0,
-          y: 0,
-          z: 1,
-          centerX: '50%',
-          centerY: '50%',
-          angle: 300
-        }) // Rotate the component 300 degrees clockwise around its center point with the vector (0,0,1) as the rotation axis.
-        .width(100).height(100).backgroundColor(0xAFEEEE)
-
-      Text('translate').width('90%').fontColor(0xCCCCCC).padding(10).fontSize(14)
-      Row()
-        .translate({ x: 100, y: 10 }) // Translate 100 along the x-axis and 10 along the y-axis.
-        .width(100)
-        .height(100)
-        .backgroundColor(0xAFEEEE)
-        .margin({ bottom: 10 })
-
-      Text('scale').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
-      Row()
-        .scale({ x: 2, y: 0.5 }) // Reduce the height by half and double the width; the z-axis has no effect in 2D.
-        .width(100).height(100).backgroundColor(0xAFEEEE)
-
-      Text('Matrix4').width('90%').fontColor(0xCCCCCC).padding(15).fontSize(14)
-      Row()
-        .width(100).height(100).backgroundColor(0xAFEEEE)
-        .transform(matrix4.identity().translate({ x: 50, y: 50 }).scale({ x: 1.5, y: 1 }).rotate({
-          x: 0,
-          y: 0,
-          z: 1,
-          angle: 60
-        }))
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-### Example 2: Setting the Rotation Perspective
-
-This example demonstrates how to set the rotation perspective for a component by using [perspective](#rotateoptions).
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State prep: number = 10;
-
-  build() {
-    Row() {
-      Column() {
-        Stack()
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Red)
-          .rotate({ y: 1, angle: 45, perspective: this.prep })
-        Button('change prep')
-          .margin({ top: 100 })
-          .onClick(() => {
-            this.getUIContext()?.animateTo({
-              duration: 2000,
-              curve: Curve.EaseIn,
-              iterations: 1,
-              playMode: PlayMode.Normal,
-              onFinish: () => {
-                console.info('play end');
-              }
-            }, () => {
-              this.prep = 500; // Transform the component view distance from 10 to 500.
-            })
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 3: Implementing Rotation Around a Center Point
-
-This example shows how to achieve the same rotation effect by setting different parameters for [rotate](#rotate) and [transform](#transform).
-
-
-
-```TypeScript
-import { matrix4 } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct MatrixExample {
-  build() {
-    Column({ space: 100 }) {
-      Text('Hello1')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-
-      Text('Hello2')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .rotate({
-          // Rotate 90 degrees around the anchor (100 vp, 60 vp), where the value of centerX and centerY in rotate or scale are the component's anchors.
-          z: 1,
-          angle: 90,
-          centerX: 100,
-          centerY: 60
-        })
-
-      Text('Hello3')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .transform(matrix4.identity()
-          .rotate({
-            // The component's anchor (centerX, centerY) is (50%, 50%) by default, which is (50 vp, 30 vp).
-            // Set (centerX, centerY) of rotate in transform to (50 vp, 30 vp), which is an additional offset from the component's own anchor.
-            // This transformation is equivalent to rotating around (100 vp, 60 vp), achieving the same rotation effect as "Hello2."
-            z: 1,
-            angle: 90,
-            centerX: this.getUIContext().vp2px(50),
-            centerY: this.getUIContext().vp2px(30)
-          }))
-
-      Text('Hello4')
-        .textAlign(TextAlign.Center)
-        .width(100)
-        .height(60)
-        .backgroundColor(0xAFEEEE)
-        .borderWidth(1)
-        .scale({
-          // centerX and centerY take effect only when x or y is set.
-          // Set the component anchor to (100 vp, 60 vp).
-          x: 1,
-          y: 1,
-          centerX: 100,
-          centerY: 60
-        }) // For transform's rotate without specifying centerX and centerY, the rotation center has no additional offset relative to the component's own anchor point.
-          // Here, the component rotates around (100 vp, 60 vp) through the anchor set by scale, achieving the same rotation effect as "Hello2."
-        .transform(matrix4.identity().rotate({ z: 1, angle: 90 }))
-    }.width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 4: Implementing Graphical Transformation Through transform3D
-
-This example demonstrates how to implement image transformation by setting [transform3D](arkts-arkui-common-comp-commonmethod-c.md#transform3d). This functionality is supported since API version 20.
-
-
-
-```TypeScript
-import { matrix4 } from '@kit.ArkUI';
-
-// Initialize the 3D transformation matrix to demonstrate the graphic transformation effect of transform3D.
-let matrix: matrix4.Matrix4Transit = matrix4.init([
-  0.53033, 0, -0.53033, 0.00053033,
-  0, 0.75, 0, 0,
-  0.707107, 0, 0.707107, -0.000707107,
-  0, 0, 0, 1
-]);
-
-@Entry
-@Component
-struct Transform3DExample {
-  build() {
-    Column() {
-      Stack() {
-        Stack()
-          .width(200)
-          .height(100)
-          .backgroundColor(Color.Grey)
-        Stack()
-          .width(200)
-          .height(100)
-          .backgroundColor(Color.Blue)
-          .transform3D(matrix)
-      }
-    }.width('100%')
-  }
-}
-```
-
-### Example 5: Rotating an Image Based on Angles of Each Axis
-
-This example demonstrates how to implement rotation by setting the [RotateAngleOptions](arkts-arkui-common-comp-rotateangleoptions-i.md) parameter of rotate. This functionality is supported since API version 20.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      Column() {
-        Stack()
-          .width(100)
-          .height(100)
-          .backgroundColor(Color.Blue)
-          .rotate({ angleZ: -45 })
-        Button('rotateAngle')
-          .width('40%')
-          .margin({ top: 100 })
-          .rotate({ angleY: 30, centerX: '90%', perspective: 10 })
-        Image($r('app.media.startIcon'))
-          .width(200)
-          .height(200)
-          .rotate({
-            angleX: 60,
-            angleY: -125,
-            angleZ: 75,
-            centerX: 100,
-            centerZ: 20
-          })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
 ### Example 1: Creating an Appearance Animation for a Component
 
 > NOTE
@@ -9102,1570 +14994,6 @@ struct AttrAnimationExample {
 }
 ```
 
-### Example 1: Setting Basic Styles
-
-This example shows how to set the border width, color, border radius, and styles such as dotted or dashed lines.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BorderExample {
-  build() {
-    Column() {
-      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // Dashed line.
-        Text('dashed')
-          .borderStyle(BorderStyle.Dashed)
-          .borderWidth(5)
-          .borderColor(0xAFEEEE)
-          .borderRadius(10)
-          .width(120)
-          .height(120)
-          .textAlign(TextAlign.Center)
-          .fontSize(16)
-        // Dotted border
-        Text('dotted')
-          .border({
-            width: 5,
-            color: 0x317AF7,
-            radius: 10,
-            style: BorderStyle.Dotted
-          })
-          .width(120)
-          .height(120)
-          .textAlign(TextAlign.Center)
-          .fontSize(16)
-      }.width('100%').height(150)
-
-      Text('.border')
-        .fontSize(50)
-        .width(300)
-        .height(300)
-        // Use the border attribute to set the width, color, corner radius, and style of the left, right, top, and bottom edges respectively.
-        .border({
-          width: {
-            left: 3,
-            right: 6,
-            top: 10,
-            bottom: 15
-          },
-          color: {
-            left: '#e3bbbb',
-            right: Color.Blue,
-            top: Color.Red,
-            bottom: Color.Green
-          },
-          radius: {
-            topLeft: 10,
-            topRight: 20,
-            bottomLeft: 40,
-            bottomRight: 80
-          },
-          style: {
-            left: BorderStyle.Dotted,
-            right: BorderStyle.Dotted,
-            top: BorderStyle.Solid,
-            bottom: BorderStyle.Dashed
-          }
-        })
-        .textAlign(TextAlign.Center)
-    }
-  }
-}
-```
-
-### Example 2: Border Width, Corner Radius, and Color Types
-
-The width, radius, and color attribute values of the border attribute use the LocalizedEdgeWidths, LocalizedBorderRadiuses, and LocalizedEdgeColors types, respectively.
-
-Example image for left-to-right (LTR) display languages
-
-
-
-Example image for right-to-left (RTL) display languages
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct BorderExample {
-  build() {
-    Column() {
-      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        // Dashed line.
-        Text('dashed')
-          .borderStyle(BorderStyle.Dashed)
-          .borderWidth(5)
-          .borderColor(0xAFEEEE)
-          .borderRadius(10)
-          .width(120)
-          .height(120)
-          .textAlign(TextAlign.Center)
-          .fontSize(16)
-        // Dotted border
-        Text('dotted')
-          .border({
-            width: 5,
-            color: 0x317AF7,
-            radius: 10,
-            style: BorderStyle.Dotted
-          })
-          .width(120)
-          .height(120)
-          .textAlign(TextAlign.Center)
-          .fontSize(16)
-      }.width('100%').height(150)
-
-      Text('.border')
-        .fontSize(50)
-        .width(300)
-        .height(300)
-        // Use the LocalizedEdgeWidths and LocalizedBorderRadiuses types to adapt the start/end directions to RTL/LTR layouts.
-        .border({
-          width: {
-            start: LengthMetrics.vp(3),
-            end: LengthMetrics.vp(6),
-            top: LengthMetrics.vp(10),
-            bottom: LengthMetrics.vp(15)
-          },
-          color: {
-            start: '#e3bbbb',
-            end: Color.Blue,
-            top: Color.Red,
-            bottom: Color.Green
-          },
-          radius: {
-            topStart: LengthMetrics.vp(10),
-            topEnd: LengthMetrics.vp(20),
-            bottomStart: LengthMetrics.vp(40),
-            bottomEnd: LengthMetrics.vp(80)
-          },
-          style: {
-            left: BorderStyle.Dotted,
-            right: BorderStyle.Dotted,
-            top: BorderStyle.Solid,
-            bottom: BorderStyle.Dashed
-          }
-        })
-        .textAlign(TextAlign.Center)
-    }
-  }
-}
-```
-
-### Example 3: Configuring Offscreen Rounded Corners
-
-This example demonstrates how to set the rendering strategy for drawing rounded corners on components, supported since API version 22.
-
-The fast rendering mode (RenderStrategy.FAST) performs real-time rendering through GPU hardware acceleration and is suitable for common corner radius scenarios. The offscreen rendering mode (RenderStrategy.OFFSCREEN) first draws the component to an offscreen buffer and then composites it, which is suitable for corner radius scenarios involving complex content such as blur and scrolling, and can avoid corner radius clipping anomalies. The following illustration compares the online rendering mode (top) with the offscreen rendering mode (bottom):
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct RenderStrategyExample {
-  build() {
-    NavDestination() {
-      Column({ space: 20 }) {
-        // Fast rendering mode: suitable for regular corner radius scenarios, with better performance.
-        Stack() {
-          Column()
-            .width(320)
-            .height(320)
-            .backgroundColor(Color.Black)
-
-          Stack() {
-            Stack() {
-              Scroll(new Scroller()) {
-                Image($r('app.media.startIcon'))
-                  .width('100%')
-                  .height('200%')
-              }
-
-              Column()
-                .blur(50) // Set the blur effect.
-                .width(300)
-                .height(100)
-                .position({ x: 0, y: 0 })
-            }
-          }
-          .width(300)
-          .height(300)
-          .backgroundColor(Color.Pink)
-          .borderRadius(50, RenderStrategy.FAST) // Set the corner radius in fast rendering mode.
-          .clip(true)
-        }
-
-        // Offscreen rendering mode: suitable for corner radius scenarios with blur effects, avoiding clipping anomalies.
-        Stack() {
-          Column()
-            .width(320)
-            .height(320)
-            .backgroundColor(Color.Black)
-
-          Stack() {
-            Stack() {
-              Scroll(new Scroller()) {
-                Image($r('app.media.startIcon'))
-                  .width('100%')
-                  .height('200%')
-              }
-
-              Column()
-                .blur(50) // Set the blur effect.
-                .width(300)
-                .height(100)
-                .position({ x: 0, y: 0 })
-            }
-          }
-          .width(300)
-          .height(300)
-          .backgroundColor(Color.Pink)
-          .borderRadius(50, RenderStrategy.OFFSCREEN) // Set the corner radius in offscreen rendering mode.
-          .clip(true)
-        }
-      }
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 4: Setting Irregular Corner Radii
-
-This example uses [borderRadius](#borderradius) to set four different corner radius values. When one of the corner radius values exceeds half of the smaller value of the height or width, the irregular corner radius is drawn by value ratio.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BorderExample {
-  build() {
-    Column() {
-      Flex({ justifyContent: FlexAlign.SpaceAround, alignItems: ItemAlign.Center }) {
-        Text('Text')
-          .borderWidth(5)
-          .borderColor(0xAFEEEE)
-          // topLeft: 2000 exceeds half of the minimum value (100), draw the irregular corner radius by value ratio.
-          .borderRadius({
-            topLeft: 2000,
-            topRight: 10,
-            bottomLeft: 30,
-            bottomRight: 50
-          })
-          .width(100)
-          .height(100)
-          .textAlign(TextAlign.Center)
-          .fontSize(16)
-      }
-    }
-  }
-}
-```
-
-### Example 1: Setting the Alignment Mode and Main Axis Layout
-
-Sets the alignment mode of the content within the element and the layout of child elements along the main axis of the parent component.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PositionExample1 {
-  build() {
-    Column() {
-      Column({ space: 10 }) {
-        // When the element content is smaller than the element width and height, set the alignment mode of the content within the element.
-        Text('align').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Stack() {
-          Text('First show in bottom end').height('65%').backgroundColor(0xD2B48C)
-          Text('Second show in bottom end').backgroundColor(0xF5DEB3).opacity(0.9)
-        }.width('90%').height(50).margin({ top: 5 }).backgroundColor(0xFFE4C4)
-        .align(Alignment.BottomEnd)
-        Stack() {
-          Text('top start')
-        }.width('90%').height(50).margin({ top: 5 }).backgroundColor(0xFFE4C4)
-        .align(Alignment.TopStart)
-
-        // The parent component sets direction to Direction.Ltr, and child elements are arranged from left to right.
-        Text('direction').fontSize(9).fontColor(0xCCCCCC).width('90%')
-        Row() {
-          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
-          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
-          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3)
-          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C)
-        }
-        .width('90%')
-        .direction(Direction.Ltr)
-        // The parent component sets direction to Direction.Rtl, and child elements are arranged from right to left.
-        Row() {
-          Text('1').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
-          Text('2').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
-          Text('3').height(50).width('25%').fontSize(16).backgroundColor(0xF5DEB3).textAlign(TextAlign.End)
-          Text('4').height(50).width('25%').fontSize(16).backgroundColor(0xD2B48C).textAlign(TextAlign.End)
-        }
-        .width('90%')
-        .direction(Direction.Rtl)
-      }
-    }
-    .width('100%').margin({ top: 5 })
-  }
-}
-```
-
-### Example 2: Setting the Position Offset
-
-This example demonstrates position offsets based on the parent component, relative positioning, and anchors.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PositionExample2 {
-  build() {
-    Column({ space: 20 }) {
-      // Set the offset of the component's upper left corner relative to the parent component's upper left corner.
-      Text('position').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Row() {
-        Text('1').size({ width: '30%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('2 position(30, 10)')
-          .size({ width: '60%', height: '30' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .align(Alignment.Start)
-          .position({ x: 30, y: 10 })
-        Text('3').size({ width: '45%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('4 position(50%, 70%)')
-          .size({ width: '50%', height: '50' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .position({ x: '50%', y: '70%' })
-      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
-
-      // Offset relative to the start point. x indicates the horizontal distance between the end point and the start point. If the value of x is greater than 0, the component is offset to the left. Otherwise, the component is offset to the right.
-      // y indicates the vertical distance between the end point and the start point. If the value of y is greater than 0, the component is offset to the top. Otherwise, the component is offset to the bottom.
-      Text('markAnchor').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Stack({ alignContent: Alignment.TopStart }) {
-        Row()
-          .size({ width: '100', height: '100' })
-          .backgroundColor(0xdeb887)
-        Text('text')
-          .fontSize('30px')
-          .textAlign(TextAlign.Center)
-          .size({ width: 25, height: 25 })
-          .backgroundColor(Color.Green)
-          .markAnchor({ x: 25, y: 25 })
-        Text('text')
-          .fontSize('30px')
-          .textAlign(TextAlign.Center)
-          .size({ width: 25, height: 25 })
-          .backgroundColor(Color.Green)
-          .markAnchor({ x: -100, y: -25 })
-        Text('text')
-          .fontSize('30px')
-          .textAlign(TextAlign.Center)
-          .size({ width: 25, height: 25 })
-          .backgroundColor(Color.Green)
-          .markAnchor({ x: 25, y: -25 })
-      }.margin({ top: 25 }).border({ width: 1, style: BorderStyle.Dashed })
-
-      // Offset of the component relative to itself. If the value of x is greater than 0, the component is offset to the right. Otherwise, the component is offset to the left. If the value of y is greater than 0, the component is offset to the bottom. Otherwise, the component is offset to the top.
-      Text('offset').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Row() {
-        Text('1').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('2  offset(15, 30)')
-          .size({ width: 120, height: '50' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .align(Alignment.Start)
-          .offset({ x: 15, y: 30 })
-        Text('3').size({ width: '15%', height: '50' }).backgroundColor(0xdeb887).border({ width: 1 }).fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('4 offset(-5%, 20%)')
-          .size({ width: 100, height: '50' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .offset({ x: '-5%', y: '20%' })
-      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
-    }
-    .width('100%').margin({ top: 25 })
-  }
-}
-```
-
-### Example 3: Setting the Absolute Positioning and Relative Offset
-
-This example demonstrates how to use position to set absolute positioning, which determines the position of child components relative to the parent component. It also shows how to use offset to set relative offsets for moving components from their original layout positions.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Example3 {
-  build() {
-    Column({ space: 20 }) {
-      Text('position use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Row() {
-        Text('bottom:0, right:0')
-          .size({ width: '30%', height: '50' })
-          .backgroundColor(0xdeb887)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .position({ bottom: 0, right: 0 })
-        Text('top:0, left:0')
-          .size({ width: '30%', height: '50' })
-          .backgroundColor(0xdeb887)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .position({ top: 0, left: 0 })
-        Text('top:10%, left:50%')
-          .size({ width: '50%', height: '30' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .position({ top: '10%', left: '50%' })
-        Text('bottom:0, left:30')
-          .size({ width: '50%', height: '30' })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .position({ bottom: 0, left: 30 })
-      }.width('90%').height(100).border({ width: 1, style: BorderStyle.Dashed })
-
-
-      Text('offset use Edges').fontSize(12).fontColor(0xCCCCCC).width('90%')
-      Row() {
-        Text('1')
-          .size({ width: '25%', height: 50 })
-          .backgroundColor(0xdeb887)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('2 top:30, left:0')
-          .size({ width: '25%', height: 50 })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-          .offset({ top: 30, left: 0 })
-        Text('3')
-          .size({ width: '25%', height: 50 })
-          .backgroundColor(0xdeb887)
-          .border({ width: 1 })
-          .fontSize(16)
-          .textAlign(TextAlign.Center)
-        Text('4 bottom:10, right:30')
-          .size({ width: '25%', height: 50 })
-          .backgroundColor(0xbbb2cb)
-          .border({ width: 1 })
-          .fontSize(12)
-          .textAlign(TextAlign.Center)
-          .offset({ bottom: 10, right: 30 })
-      }.width('90%').height(150).border({ width: 1, style: BorderStyle.Dashed })
-    }.width('100%').margin({ top: 25 })
-  }
-}
-```
-
-### Example 4: Implementing a Mirror Effect
-
-Common layout attributes support the [mirroring capability](./../../../ui/arkts-internationalization.md#using-the-mirroring-capability). This example demonstrates how to implement a mirroring effect using the [position](#position), [offset](#offset), and [markAnchor](#markanchor) attributes. The light blue blocks indicate the original effect, and the dark blue blocks indicate the mirroring effect.
-
-Before mirroring:
-
-
-
-After mirroring (For details about the conditions for mirroring to take effect, see [Using the Mirroring Capability](./../../../ui/arkts-internationalization.md#using-the-mirroring-capability)):
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Example4 {
-  private scroller: Scroller = new Scroller()
-
-  build() {
-    Column() {
-      Stack({ alignContent: Alignment.End }) {
-        Scroll(this.scroller) {
-          Flex({ direction: FlexDirection.Column }) {
-            RelativeContainer() {
-              Row() {
-              }
-              .position({ start: LengthMetrics.px(200), top: LengthMetrics.px(100) }) // The parameters in the position API use the LocalizedEdges type, supporting the mirroring effect.
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(0, 74, 175)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .position({ left: '200px', top: '100px' }) // The parameters in the position API use the Edges type, not supporting the mirroring effect.
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(39, 135, 217)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .offset({ start: LengthMetrics.vp(100), top: LengthMetrics.vp(200) }) // The parameters in the offset API use the LocalizedEdges type, supporting the mirroring effect.
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(0, 74, 175)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .offset({ left: 100, top: 200 }) // The parameters in the offset API use the Edges type, not supporting the mirroring effect.
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(39, 135, 217)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .markAnchor({
-                start: LengthMetrics.fp(100),
-                top: LengthMetrics.fp(-350)
-              }) // The parameters in the markAnchor API use the LocalizedPosition type, supporting the mirroring effect.
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(0, 74, 175)')
-              .padding(50)
-              .margin(50)
-
-              Row() {
-              }
-              .markAnchor({ x: '100fp', y: '-350fp' }) // The parameters in the markAnchor API use the Position type, not supporting the mirroring effect.
-              .width("30%")
-              .height("20%")
-              .backgroundColor('rgb(39, 135, 217)')
-              .padding(50)
-              .margin(50)
-            }
-            .backgroundColor(Color.White)
-            .padding(50)
-            .margin(50)
-          }
-        }
-        .width('100%')
-        .scrollBar(BarState.Off)
-        .scrollable(ScrollDirection.Vertical)
-
-        ScrollBar({ scroller: this.scroller, direction: ScrollBarDirection.Vertical, state: BarState.Auto }) {
-          Text()
-            .width(20)
-            .height(100)
-            .borderRadius(10)
-            .backgroundColor('#C0C0C0')
-        }.width(20).backgroundColor('#ededed')
-      }
-    }.height('90%')
-  }
-}
-```
-
-### Example 5: Using the align Property with Mirroring Adaptation
-
-Sets the alignment mode of the content within the element and the layout of child elements along the main axis of the parent component.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct buttonTestDemo {
-  @State isLocalizedAlignment: LocalizedAlignment[] =
-    [LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END, LocalizedAlignment.START,
-      LocalizedAlignment.CENTER, LocalizedAlignment.END, LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM,
-      LocalizedAlignment.BOTTOM_END]
-  @State isLocalizedAlignmentIndex: number = 4
-  @State isDirection: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto]
-  @State isDirectionIndex: number = 0
-
-  build() {
-    Row() {
-      Column() {
-
-        Row({ space: 5 }) {
-          Button('START')
-            .onClick(() => {
-              this.isLocalizedAlignmentIndex = 3
-            })
-          Button('CENTER')
-            .onClick(() => {
-              this.isLocalizedAlignmentIndex = 4
-            })
-          Button('END')
-            .onClick(() => {
-              this.isLocalizedAlignmentIndex = 5
-            })
-        }.margin(20)
-
-        Row({ space: 5 }) {
-          Button('Ltr')
-            .onClick(() => {
-              this.isDirectionIndex = 0
-            })
-          Button('Rtl')
-            .onClick(() => {
-              this.isDirectionIndex = 1
-            })
-          Button('Auto')
-            .onClick(() => {
-              this.isDirectionIndex = 2
-            })
-        }.margin(20)
-
-        Row() {
-          Button('OK', { type: ButtonType.Capsule, stateEffect: true })
-            .backgroundColor(0x317aff)
-            .width(200)
-            .height(100)
-            .direction(this.isDirection[this.isDirectionIndex])
-            .align(this.isLocalizedAlignment[this.isLocalizedAlignmentIndex])
-        }.margin(20)
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 6: Using layoutGravity to Individually Set the Alignment Rule of a Child Component in the Stack Component
-
-This example shows how to adjust the text position within the Stack container.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index5 {
-  private layoutGravityArr: LocalizedAlignment[] = [
-    LocalizedAlignment.TOP_START, LocalizedAlignment.TOP, LocalizedAlignment.TOP_END,
-    LocalizedAlignment.START, LocalizedAlignment.CENTER, LocalizedAlignment.END,
-    LocalizedAlignment.BOTTOM_START, LocalizedAlignment.BOTTOM, LocalizedAlignment.BOTTOM_END];
-  @State layoutGravityIndex: number = 0;
-  private directionArr: Direction[] = [Direction.Ltr, Direction.Rtl, Direction.Auto];
-  @State directionIndex: number = 0;
-
-  build() {
-    Row() {
-      Column() {
-        Stack({
-          alignContent: Alignment.TopStart
-        }) {
-          Text('StackChildAlign_TopStart').fontSize(15)
-          Text('Child Text')
-            .width(150)
-            .height(150)
-            .backgroundColor(Color.Yellow)
-            .fontSize(15)
-            .layoutGravity(this.layoutGravityArr[this.layoutGravityIndex])
-        }
-        .width('100%')
-        .height(400)
-        .backgroundColor(Color.Grey)
-        .margin({ top: 10, bottom: 10 })
-        .direction(this.directionArr[this.directionIndex])
-
-        Button("LayoutGravity: " + this.layoutGravityArr[this.layoutGravityIndex])
-          .width(300)
-          .fontSize(16)
-          .onClick(() => {
-            this.layoutGravityIndex = ++this.layoutGravityIndex % this.layoutGravityArr.length;
-          })
-          .margin({ bottom: 10 })
-
-        Button("Direction: " + this.directionArr[this.directionIndex])
-          .width(150)
-          .fontSize(16)
-          .onClick(() => {
-            this.directionIndex = ++this.directionIndex % this.directionArr.length;
-          })
-          .margin({ bottom: 10 })
-      }
-      .width('100%')
-    }
-    .height('100%')
-  }
-}
-```
-
-The sample code implements the custom transition animation of a shared element image when a click on the image area triggers page redirection.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SharedTransitionExample {
-
-  build() {
-    Column() {
-      // Replace $r('app.media.ic_health_heart') with the image resource file you use.
-      Image($r('app.media.ic_health_heart')).width(50).height(50).margin({ left: 20, top: 20 })
-        .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 }) 
-    }.width('100%').height('100%').alignItems(HorizontalAlign.Start)
-    .onClick(() => {
-      this.getUIContext().getRouter().pushUrl({ url: 'pages/PageB' });
-    })
-  }
-
-  pageTransition() {
-    PageTransitionEnter({ type: RouteType.None, duration: 0 })
-    PageTransitionExit({ type: RouteType.None, duration: 0 })
-  }
-}
-```
-
-```TypeScript
-// PageB.ets
-@Entry
-@Component
-struct PageBExample {
-  build() {
-    Stack() {
-      // Replace $r('app.media.ic_health_heart') with the image resource file you use.
-      Image($r('app.media.ic_health_heart')).width(150).height(150)
-        .sharedTransition('sharedImage', { duration: 800, curve: Curve.Linear, delay: 100 })
-    }.width('100%').height('100%')
-  }
-
-  pageTransition() {
-    PageTransitionEnter({ type: RouteType.None, duration: 0 })
-    PageTransitionExit({ type: RouteType.None, duration: 0 })
-  }
-}
-```
-
-### Example 1: Setting Basic Background Styles
-
-This example shows how to configure basic background styles by setting backgroundColor, backgroundImage, backgroundImageSize, and backgroundImagePosition.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BackgroundExample {
-  build() {
-    Column({ space: 5 }) {
-      Text('background color').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Row().width('90%').height(50).backgroundColor(0xE5E5E5).border({ width: 1 })
-
-      Text('background image repeat along X').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Row()
-      // Replace $r('app.media.image') with the image resource file you use.
-        .backgroundImage($r('app.media.image'), ImageRepeat.X)
-        .backgroundImageSize({ width: '250px', height: '140px' })
-        .width('90%')
-        .height(70)
-        .border({ width: 1 })
-
-      Text('background image repeat along Y').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Row()
-      // Replace $r('app.media.image') with the image resource file you use.
-        .backgroundImage($r('app.media.image'), ImageRepeat.Y)
-        .backgroundImageSize({ width: '500px', height: '120px' })
-        .width('90%')
-        .height(100)
-        .border({ width: 1 })
-
-      Text('background image size').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Row()
-        .width('90%')
-        .height(150)
-        // Replace $r('app.media.image') with the image resource file you use.
-        .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
-        .backgroundImageSize({ width: 1000, height: 500 })
-        .border({ width: 1 })
-
-      Text('background fill the box(Cover)').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      // Occupy all the space of the container, without ensuring that the image is completely displayed.
-      Row()
-        .width(200)
-        .height(50)
-        // Replace $r('app.media.image') with the image resource file you use.
-        .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
-        .backgroundImageSize(ImageSize.Cover)
-        .border({ width: 1 })
-
-      Text('background fill the box(Contain)').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      // Maximize the image while ensuring that it can be completely displayed.
-      Row()
-        .width(200)
-        .height(50)
-        // Replace $r('app.media.image') with the image resource file you use.
-        .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
-        .backgroundImageSize(ImageSize.Contain)
-        .border({ width: 1 })
-
-      Text('background image position').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Row()
-        .width(100)
-        .height(50)
-        // Replace $r('app.media.image') with the image resource file you use.
-        .backgroundImage($r('app.media.image'), ImageRepeat.NoRepeat)
-        .backgroundImageSize({ width: 1000, height: 560 })
-        .backgroundImagePosition({ x: -500, y: -300 })
-        .border({ width: 1 })
-    }
-    .width('100%').height('100%').padding({ top: 5 })
-  }
-}
-```
-
-### Example 2: Setting the Background Blur Style
-
-This example sets the background blur style using backgroundBlurStyle.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BackgroundBlurStyleDemo {
-  build() {
-    Column() {
-      Row() {
-        Text('Thin Material')
-      }
-      .width('50%')
-      .height('50%')
-      .backgroundBlurStyle(BlurStyle.Thin,
-        { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT, scale: 1.0 })
-      .position({ x: '15%', y: '30%' })
-    }
-    .height('100%')
-    .width('100%')
-    // Replace $r('app.media.bg') with the image resource file you use.
-    .backgroundImage($r('app.media.bg'))
-    .backgroundImageSize(ImageSize.Cover)
-  }
-}
-```
-
-### Example 3: Setting the Component Background
-
-This example shows how to set the component background using background.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BackgroundExample {
-  @Builder
-  renderBackground() {
-    Column() {
-      Progress({ value: 50 })
-    }
-  }
-
-  build() {
-    Column() {
-      Text("content")
-        .width(100)
-        .height(40)
-        .fontColor("#FFF")
-        .position({ x: 50, y: 80 })
-        .textAlign(TextAlign.Center)
-        .backgroundColor(Color.Green)
-    }
-    .width(200).height(200)
-    .background(this.renderBackground)
-    .backgroundColor(Color.Gray)
-  }
-}
-```
-
-### Example 4: Setting Component Background Brightness
-
-This example sets the component background brightness using backgroundBrightness.
-
-The following figures show how the component looks with the background brightness set.
-
-When rate and lightUpDegree are both set to 0.5
-
-
-
-When rate is set to 0.5 and lightUpDegree -0.1
-
-
-
-The following figure shows how the component looks without the background brightness set.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BackgroundBrightnessDemo {
-  build() {
-    Column() {
-      Row() {
-        Text("BackgroundBrightness")
-      }
-      .width(200)
-      .height(100)
-      .position({ x: 100, y: 100 })
-      .backgroundBlurStyle(BlurStyle.Thin, { colorMode: ThemeColorMode.LIGHT, adaptiveColor: AdaptiveColor.DEFAULT})
-      .backgroundBrightness({rate:0.5,lightUpDegree:0.5}) // Background brightness
-    }
-    .width('100%')
-    .height('100%')
-    // Replace $r('app.media.image') with the image resource file you use.
-    .backgroundImage($r('app.media.image'))
-    .backgroundImageSize(ImageSize.Cover)
-  }
-}
-```
-
-### Example 5: Setting Blur Effects
-
-This example shows how to use blur to apply a foreground blur effect and backdropBlur to apply a background blur effect.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BlurEffectsExample {
-  build() {
-    Column({ space: 10 }) {
-      // Blur the font.
-      Text('font').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      Flex({ alignItems: ItemAlign.Center }) {
-        Text('original').margin(10)
-        Text('blur')
-          .blur(5).margin(10)
-        Text('blur')
-          .blur(10, undefined).margin(10) // Content blur radius is 10, with no grayscale set.
-        Text('blur')
-          .blur(15).margin(10)
-      }.width('90%').height(40)
-      .backgroundColor(0xF9CF93)
-
-
-      // Blur the background.
-      Text('backdropBlur').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      Text()
-        .width('90%')
-        .height(40)
-        .fontSize(16)
-        .backdropBlur(3)
-        // Replace $r('app.media.image') with the image resource file you use.
-        .backgroundImage($r('app.media.image'))
-        .backgroundImageSize({ width: 1200, height: 160 })
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-### Example 6: Setting Text Blur Effects
-
-This example uses [blendMode](ts-universal-attributes-image-effect.md#blendmode11) and backgroundEffect to implement an irregular text blur effect.If line leakage occurs, developers should first ensure that the components where the two blendMode attributes are set have exactly the same size. If the sizes are confirmed to be the same, the component boundary may fall on floating-point coordinates. In this case, try setting the [pixelRound](ts-universal-attributes-pixelRoundForComponent.md#pixelround) universal attribute to align the component boundaries on both sides of the generated white or dark lines to integer pixel coordinates.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State shadowColor: Color = Color.White;
-  @State dateFontSize: number = 20;
-  @State redValue: number = 255;
-  @State greenValue: number = 255;
-  @State blueValue: number = 255;
-  @State alphaValue: number = 0.1;
-  @State blurRadius: number = 40;
-  @State saturationValue: number = 0.8;
-  @State brightnessValue: number = 1.5;
-  build() {
-    Stack() {
-      // Replace $r('app.media.image') with the image resource file you use.
-      Image($r('app.media.image'))
-      Column() {
-        Column({ space: 0 }) {
-          Column() {
-            Text('11')
-              .fontSize(144)
-              .fontWeight(FontWeight.Bold)
-              .fontColor('rgba(255,255,255,1)')
-              .fontFamily('HarmonyOS-Sans-Digit')
-              .maxLines(1)
-              .lineHeight(120 * 1.25)
-              .height(120 * 1.25)
-              .letterSpacing(4 * 1.25)
-            Text('42')
-              .fontSize(144)
-              .fontWeight(FontWeight.Bold)
-              .fontColor('rgba(255,255,255,1)')
-              .fontFamily('HarmonyOS-Sans-Digit')
-              .maxLines(1)
-              .lineHeight(120 * 1.25)
-              .height(120 * 1.25)
-              .letterSpacing(4 * 1.25)
-              .shadow({
-                color: 'rgba(0,0,0,0)',
-                radius: 20,
-                offsetX: 0,
-                offsetY: 0
-              })
-            Row() {
-              Text('October 16')
-                .fontSize(this.dateFontSize)
-                .height(22)
-                .fontWeight('medium')
-                .fontColor('rgba(255,255,255,1)')
-              Text('Monday')
-                .fontSize(this.dateFontSize)
-                .height(22)
-                .fontWeight('medium')
-                .fontColor('rgba(255,255,255,1)')
-            }
-          }
-          // Use offscreen rendering for blendMode. In DST_IN mode, only the overlapping area of the current component and the underlying canvas is displayed.
-          .blendMode(BlendMode.DST_IN, BlendApplyType.OFFSCREEN)
-          .pixelRound({
-            start: PixelRoundCalcPolicy.FORCE_FLOOR ,
-            top: PixelRoundCalcPolicy.FORCE_FLOOR ,
-            end: PixelRoundCalcPolicy.FORCE_CEIL,
-            bottom: PixelRoundCalcPolicy.FORCE_CEIL
-          })
-        }
-        // Use offscreen rendering for blendMode. In SRC_OVER mode, the content of the current component is displayed over the underlying canvas.
-        .blendMode(BlendMode.SRC_OVER, BlendApplyType.OFFSCREEN)
-        // Configure the blur radius, saturation, brightness, and dynamic RGBA color of the component background through backgroundEffect.
-        .backgroundEffect({
-          radius: this.blurRadius,
-          saturation: this.saturationValue,
-          brightness: this.brightnessValue,
-          color: this.getVolumeDialogWindowColor()
-        })
-        .justifyContent(FlexAlign.Center)
-        .pixelRound({
-          start: PixelRoundCalcPolicy.FORCE_FLOOR ,
-          top: PixelRoundCalcPolicy.FORCE_FLOOR ,
-          end: PixelRoundCalcPolicy.FORCE_CEIL,
-          bottom: PixelRoundCalcPolicy.FORCE_CEIL
-        })
-      }
-    }
-  }
-  getVolumeDialogWindowColor(): ResourceColor | string {
-    return `rgba(${this.redValue.toFixed(0)}, ${this.greenValue.toFixed(0)}, ${this.blueValue.toFixed(0)}, ${this.alphaValue.toFixed(2)})`;
-  }
-}
-```
-
-### Example 7: Comparing Blur Effects
-
-This example compares three different blur effects: [backgroundEffect11+](#backgroundeffect11), [backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur), and [backgroundBlurStyle9+](#backgroundblurstyle9).
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BackgroundBlur {
-  private imageSize: number = 150;
-
-  build() {
-    Column({ space: 5 }) {
-      // Use backgroundBlurStyle with an enum value to set blur parameters.
-      Stack() {
-        // Replace $r('app.media.test') with the image resource file you use.
-        Image($r('app.media.test'))
-          .width(this.imageSize)
-          .height(this.imageSize)
-        Column()
-          .width(this.imageSize)
-          .height(this.imageSize)
-          .backgroundBlurStyle(BlurStyle.Thin)
-      }
-
-      // backgroundEffect can customize parameters such as blur radius, brightness, and saturation.
-      Stack() {
-        // Replace $r('app.media.test') with the image resource file you use.
-        Image($r('app.media.test'))
-          .width(this.imageSize)
-          .height(this.imageSize)
-        Column()
-          .width(this.imageSize)
-          .height(this.imageSize)
-          .backgroundEffect({ radius: 20, brightness: 0.6, saturation: 15 })
-      }
-
-      // backdropBlur only sets blur radius and grayscale parameters.
-      Stack() {
-        // Replace $r('app.media.test') with the image resource file you use.
-        Image($r('app.media.test'))
-          .width(this.imageSize)
-          .height(this.imageSize)
-        Column()
-          .width(this.imageSize)
-          .height(this.imageSize)
-          .backdropBlur(20, { grayscale: [30, 50] })
-      }
-    }
-    .width('100%')
-    .padding({ top: 5 })
-  }
-}
-```
-
-### Example 8: Applying a P3 Color Gamut Background Effect
-
-This example demonstrates how to apply a P3 color gamut background effect using [backgroundColor](#backgroundcolor20), available since API version 20.
-
-
-
-```TypeScript
-// xxx.ets
-// To set the P3 color gamut, use the setColorSpace API in ets/entryability/EntryAbility.ets to set the current window to a wide color gamut.
-import { ColorMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct P3BackgroundDemo {
-  @State p3Color: ColorMetrics = ColorMetrics.colorWithSpace(ColorSpace.DISPLAY_P3, 0, 0.3, 0.8, 1);
-
-  build() {
-    Column({ space: 5 }) {
-      Text('background color with colorMetrics').fontSize(9).width('90%').fontColor(0xCCCCCC)
-      Row().width('90%').height(50).backgroundColor(this.p3Color)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 9: Setting Component Background Extension
-
-This example shows how to use [background](#background10) to extend the component's background to the parent component's safe area, supported since API version 20.
-
-```TypeScript
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct BackgroundExtension {
-  @Builder
-  myImages() {
-    Column() {
-      Image($r('app.media.startIcon'))
-        .width('100%')
-        .height('100%')
-    }
-  }
-
-  build() {
-    Column({space: 10}) {
-      Stack() {
-        // A background of the CustomBuilder type with the ignoresLayoutSafeAreaEdges property set extends to the parent component's safe area.
-        Column()
-          .size({ width: '100%', height: '100%' })
-          .border({ width: 1, color: Color.Red })
-          .background(
-            this.myImages(),
-            { align: Alignment.Center , ignoresLayoutSafeAreaEdges: [ LayoutSafeAreaEdge.START, LayoutSafeAreaEdge.TOP ] }
-          )
-      }
-      .size({ width: 300, height: 300 })
-      .backgroundColor('#004aaf')
-      .safeAreaPadding(LengthMetrics.vp(50))
-
-      Stack() {
-        // A background of the ResourceColor type without the ignoresLayoutSafeAreaEdges property set extends to the parent component's safe area by default.
-        Column()
-          .size({ width: '100%', height: '100%' })
-          .border({ width: 1, color: Color.Red })
-          .background('#d5d5d5', { align: Alignment.Center })
-      }
-      .size({ width: 300, height: 300 })
-      .backgroundColor('#707070')
-      .safeAreaPadding(LengthMetrics.vp(50))
-    }
-    .margin(10)
-  }
-}
-```
-
-### Example 1: Implementing Custom Drawing Through DrawModifier
-
-This example demonstrates how to implement custom drawing for the [Text](ts-basic-components-text.md) component through DrawModifier.
-
-
-
-```TypeScript
-// xxx.ets
-import { drawing } from '@kit.ArkGraphics2D';
-import { AnimatorResult } from '@kit.ArkUI';
-
-// Implement a custom drawing controller by extending DrawModifier.
-class MyFullDrawModifier extends DrawModifier {
-  public scaleX: number = 1;
-  public scaleY: number = 1;
-  uiContext: UIContext;
-
-  constructor(uiContext: UIContext) {
-    super();
-    this.uiContext = uiContext;
-  }
-
-  // Override the drawBehind API for custom background drawing. 
-  drawBehind(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 255,
-      green: 0,
-      blue: 0
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    context.canvas.drawRect({
-      left: this.uiContext.vp2px(halfWidth - 50 * this.scaleX),
-      top: this.uiContext.vp2px(halfHeight - 50 * this.scaleY),
-      right: this.uiContext.vp2px(halfWidth + 50 * this.scaleX),
-      bottom: this.uiContext.vp2px(halfHeight + 50 * this.scaleY)
-    });
-  }
-
-  // Override the drawContent API for custom content drawing.
-  drawContent(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 0,
-      green: 255,
-      blue: 0
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    context.canvas.drawRect({
-      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
-      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
-      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
-      bottom: this.uiContext.vp2px(halfHeight + 30 * this.scaleY)
-    });
-  }
-
-  // Override the drawFront API for custom foreground drawing.
-  drawFront(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 0,
-      green: 0,
-      blue: 255
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
-      this.uiContext.vp2px(20 * radiusScale));
-  }
-}
-
-// Implement a custom drawing controller by extending DrawModifier, supporting only custom foreground drawing.
-class MyFrontDrawModifier extends DrawModifier {
-  public scaleX: number = 1;
-  public scaleY: number = 1;
-  uiContext: UIContext;
-
-  constructor(uiContext: UIContext) {
-    super();
-    this.uiContext = uiContext;
-  }
-
-  drawFront(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 0,
-      green: 0,
-      blue: 255
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    const radiusScale = (this.scaleX + this.scaleY) / 2;
-    context.canvas.drawCircle(this.uiContext.vp2px(halfWidth), this.uiContext.vp2px(halfHeight),
-      this.uiContext.vp2px(20 * radiusScale));
-  }
-}
-
-@Entry
-@Component
-struct DrawModifierExample {
-  private fullModifier: MyFullDrawModifier = new MyFullDrawModifier(this.getUIContext());
-  private frontModifier: MyFrontDrawModifier = new MyFrontDrawModifier(this.getUIContext());
-  private drawAnimator: AnimatorResult | undefined = undefined;
-  @State modifier: DrawModifier = new MyFrontDrawModifier(this.getUIContext());
-  private count = 0;
-
-  // Create an Animator object and set the animation.
-  create() {
-    let self = this;
-    this.drawAnimator = this.getUIContext().createAnimator({
-      duration: 1000,
-      easing: 'ease',
-      delay: 0,
-      fill: 'forwards',
-      direction: 'normal',
-      iterations: 1,
-      begin: 0,
-      end: 2
-    });
-    // Set the frame callback to dynamically update the scale value and trigger redraw.
-    this.drawAnimator.onFrame = (value: number) => {
-      console.info('frame value =', value);
-      const tempModifier = self.modifier as MyFullDrawModifier | MyFrontDrawModifier;
-      tempModifier.scaleX = Math.abs(value - 1);
-      tempModifier.scaleY = Math.abs(value - 1);
-      // Manually trigger redraw.
-      self.modifier.invalidate();
-    };
-  }
-
-  build() {
-    Column() {
-      Row() {
-        Text('test text')
-          .width(100)
-          .height(100)
-          .margin(10)
-          .backgroundColor(Color.Gray)
-          .onClick(() => {
-            const tempModifier = this.modifier as MyFullDrawModifier | MyFrontDrawModifier;
-            tempModifier.scaleX -= 0.1;
-            tempModifier.scaleY -= 0.1;
-          })
-          .drawModifier(this.modifier)
-      }
-
-      Row() {
-        Button('create')
-          .width(100)
-          .height(100)
-          .borderRadius(50)
-          .margin(10)
-          .onClick(() => {
-            this.create();
-          })
-        Button('play')
-          .width(100)
-          .height(100)
-          .borderRadius(50)
-          .margin(10)
-          .onClick(() => {
-            if (this.drawAnimator) {
-              this.drawAnimator.play();
-            }
-          })
-        Button('changeModifier')
-          .width(100)
-          .height(100)
-          .borderRadius(50)
-          .margin(10)
-          .onClick(() => {
-            this.count += 1;
-            if (this.count % 2 === 1) {
-              console.info('change to full modifier');
-              this.modifier = this.fullModifier;
-            } else {
-              console.info('change to front modifier');
-              this.modifier = this.frontModifier;
-            }
-          })
-      }
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 2: Implementing Custom Foreground Drawing for a Container Through DrawModifier
-
-This example demonstrates how to implement custom foreground drawing for a [Column](ts-container-column.md) container using DrawModifier.
-
-```TypeScript
-// xxx.ets
-import { drawing } from '@kit.ArkGraphics2D';
-
-class MyForegroundDrawModifier extends DrawModifier {
-  public scaleX: number = 3;
-  public scaleY: number = 3;
-  uiContext: UIContext;
-
-  constructor(uiContext: UIContext) {
-    super();
-    this.uiContext = uiContext;
-  }
-
-  // Override the drawForeground method to customize foreground drawing.
-  drawForeground(context: DrawContext): void {
-    const brush = new drawing.Brush();
-    brush.setColor({
-      alpha: 255,
-      red: 0,
-      green: 50,
-      blue: 100
-    });
-    context.canvas.attachBrush(brush);
-    const halfWidth = context.size.width / 2;
-    const halfHeight = context.size.height / 2;
-    context.canvas.drawRect({
-      left: this.uiContext.vp2px(halfWidth - 30 * this.scaleX),
-      top: this.uiContext.vp2px(halfHeight - 30 * this.scaleY),
-      right: this.uiContext.vp2px(halfWidth + 30 * this.scaleX),
-      bottom: this.uiContext.vp2px(halfHeight + 30 * this.scaleY)
-    });
-  }
-}
-
-@Entry
-@Component
-struct DrawModifierExample {
-  // Instantiate the foreground drawing class, passing the UIContext instance.
-  private foregroundModifier: MyForegroundDrawModifier = new MyForegroundDrawModifier(this.getUIContext());
-
-  build() {
-    Column() {
-      Text('Here is a child node')
-        .fontSize(36)
-        .width('100%')
-        .height('100%')
-        .textAlign(TextAlign.Center)
-    }
-    .margin(50)
-    .width(280)
-    .height(300)
-    .backgroundColor(0x87CEEB)
-    // Apply custom foreground drawing by passing the DrawModifier instance.
-    .drawModifier(this.foregroundModifier)
-  }
-}
-```
-
-This example uses enabled to set whether a button is interactive.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct EnabledExample {
-  build() {
-    Flex({ justifyContent: FlexAlign.SpaceAround }) {
-      // The button does not respond to clicks.
-      Button('disable').enabled(false).backgroundColor(0x317aff).opacity(0.4)
-      Button('enable').backgroundColor(0x317aff)
-    }
-    .width('100%')
-    .padding({ top: 5 })
-  }
-}
-```
-
-This example demonstrates how to apply a motion blur effect.
-
-```TypeScript
-// xxx.ets
-import { curves } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct MotionBlurTest {
-  @State widthSize: number = 300
-  @State heightSize: number = 240
-  @State flag: boolean = true
-  @State radius: number = 0
-  @State x: number = 0.5
-  @State y: number = 0.5
-
-  build() {
-    Column() {
-      Column() {
-        // Replace $r('app.media.test') with the image resource file you use.
-        Image($r('app.media.test'))
-          .width(this.widthSize)
-          .height(this.heightSize)
-          .scale({ x: this.flag ? 1 : 0.8, y: this.flag ? 1 : 0.8, centerX: '50%', centerY: '50%' })
-          .onClick(() => {
-            // Set the motion blur parameters and trigger the scaling animation on tap.
-            this.radius = 50;
-            this.x = 0.5;
-            this.y = 0.5;
-            this.flag = !this.flag;
-          })
-          .animation({
-            duration: 2000, // Animation playback time.
-            iterations:1, // Animation playback iterations.
-            playMode:PlayMode.Alternate, // Animation playback mode: plays forward on odd-numbered iterations (1st, 3rd, 5th...) and reverse on even-numbered iterations (2nd, 4th, 6th...).
-            curve: curves.springCurve(10, 1, 228, 30), // Animation curve.
-            onFinish: () => {
-              // Set the blur radius to 0 after the animation ends to clear the motion blur effect.
-              this.radius = 0;
-              console.info('onFinish');
-            },
-          })
-          .motionBlur({ radius: this.radius, anchor: { x: this.x, y: this.y } })
-      }
-    }.width('100%')
-    .margin({ top: 50 })
-  }
-}
-```
-
 This example registers a crown event for a component and reports the received crown event data.
 
 ```TypeScript
@@ -10700,59 +15028,6 @@ struct CityList {
       }.width('100%').height('100%')
     }
   }
-}
-```
-
-This example shows how to use pixelRound to guide layout adjustments when there is a 1 px gap in the parent component.
-
-```TypeScript
-@Entry
-@Component
-struct PixelRoundExample {
-    // State variable: records the current width of the parent component to demonstrate floating-point width changes.
-    @State curWidth : number = 300;
-
-    build() {
-        Column() {
-            Button(){
-                Text(this.curWidth.toString())
-            }
-            .onClick(() => {
-                // Increase by 0.1 px on each click to simulate a floating-point width.
-                this.curWidth += 0.1;
-            })
-            .height(200)
-            .width(200)
-            .backgroundColor('rgb(213, 213, 213)')
-
-            Blank().height(20)
-
-            Row() {
-                // Child component: fills the parent container by 100%.
-                Row() {
-                }
-                .width('100%')
-                .height('100%')
-                .backgroundColor(Color.Yellow)
-                // Disable pixel rounding in the start and end directions of the child component.
-                .pixelRound({
-                    start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
-                    end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
-                })
-            }
-            .width(this.curWidth.toString() + 'px')
-            .height('300.6px') // Use a floating-point height to test the rounding behavior in the top and bottom directions.
-            .backgroundColor(Color.Red)
-            // Disable pixel rounding in the start and end directions of the parent component.
-            .pixelRound({
-                start : PixelRoundCalcPolicy.NO_FORCE_ROUND,
-                end : PixelRoundCalcPolicy.NO_FORCE_ROUND,
-            })
-        }
-        .width("100%")
-        .height('100%')
-        .backgroundColor('#ffe5e5e5')
-    }
 }
 ```
 
@@ -11673,44 +15948,6 @@ struct FatherControlChild {
         return GestureJudgeResult.CONTINUE;
       })
     }.width('100%').height('100%').backgroundColor(0xDCDCDC)
-  }
-}
-```
-
-### Example 1: Using the Automatic Memory Optimization Strategy
-
-In the following example, the reusable custom component ReusableComponent uses the automatic memory optimization strategy through the memoryOptimizationStrategy attribute of [ReusableOptions](arkts-arkui-common-comp-reusableoptions-i.md). Click the Recycle button to trigger the recycling of the ReusableComponent component. Then, when the app goes to the background, the reuse pool cache is released.
-
-The ReusableOptions API is added since API version 26.0.0.
-
-```TypeScript
-@Reusable({ memoryOptimizationStrategy: ReusableMemOptStrategy.ENABLE_AUTO_CACHE_OPTIMIZATION }) // Use the automatic memory optimization strategy.
-@Component
-struct ReusableComponent {
-  aboutToRecycle() {
-    console.info('ReusableComponent aboutToRecycle');
-  }
-  aboutToDisappear() {
-    console.info('ReusableComponent aboutToDisappear');
-  }
-  build() {
-    Text('ReusableComponent')
-  }
-}
-
-@Entry
-@Component
-struct MemoryOptimizeDemo {
-  @State showReusableComponent: boolean = true;
-  build() {
-    Column() {
-      Button('Recycle').onClick(() => { // Tap the button to trigger component recycling.
-        this.showReusableComponent = false;
-      })
-      if (this.showReusableComponent) {
-        ReusableComponent()
-      }
-    }
   }
 }
 ```
@@ -13181,794 +17418,6 @@ struct CustomLayoutText {
 }
 ```
 
-### Example 1: Triggering the onKeyEvent Callback
-
-This example sets a key event for a button. When the button obtains focus, pressing a key triggers the onKeyEvent callback. For details about the process and specific timing of the key event triggering, see [Key Event Data Flow](../../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct KeyEventExample {
-  @State text: string = ''
-  @State eventType: string = ''
-
-  build() {
-    Column() {
-      Button('KeyEvent')
-        .defaultFocus(true)
-        .onKeyEvent((event?: KeyEvent) => {
-          if (event) {
-            if (event.type === KeyType.Down) {
-              this.eventType = 'Down';
-            }
-            if (event.type === KeyType.Up) {
-              this.eventType = 'Up';
-            }
-            this.text = 'KeyType:' + this.eventType + '\nkeyCode:' + event.keyCode + '\nkeyText:' + event.keyText +
-              '\nintentionCode:' + event.intentionCode;
-          }
-        })
-      Text(this.text).padding(15)
-    }.height(300).width('100%').padding(35)
-  }
-}
-```
-
-### Example 2: Obtaining the Unicode Code Point
-
-This example demonstrates how to obtain the Unicode code point of the pressed key using the key event.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct KeyEventExample {
-  @State text: string = ''
-  @State eventType: string = ''
-  @State keyType: string = ''
-
-  build() {
-    Column({ space: 10 }) {
-      Button('KeyEvent')
-        .onKeyEvent((event?: KeyEvent) => {
-          if (event) {
-            if (event.type === KeyType.Down) {
-              this.eventType = 'Down';
-            }
-            if (event.type === KeyType.Up) {
-              this.eventType = 'Up';
-            }
-            if (event.unicode === 97) {
-              this.keyType = 'a';
-            } else if (event.unicode === 65) {
-              this.keyType = 'A';
-            } else {
-              this.keyType = ' ';
-            }
-            this.text =
-              'KeyType:' + this.eventType + '\nUnicode:' + event.unicode + '\nkeyCode:' + event.keyCode + '\nkeyType:' +
-              this.keyType;
-          }
-        })
-      Text(this.text).padding(15)
-    }.height(300).width('100%').padding(35)
-  }
-}
-```
-
-### Example 3: Triggering the onKeyPreIme Callback
-
-This example demonstrates how to use the onKeyPreIme callback to intercept and disable the left arrow key in a text box.
-
-```TypeScript
-import { KeyCode } from '@kit.InputKit';
-
-@Entry
-@Component
-struct PreImeEventExample {
-
-  build() {
-    Column() {
-      Search({
-        placeholder: 'Search...'
-      })
-        .width('80%')
-        .height('40vp')
-        .border({ radius: '20vp' })
-        .onKeyPreIme((event: KeyEvent) => {
-          // Prevent the left arrow key from working.
-          if (event.keyCode === KeyCode.KEYCODE_DPAD_LEFT) {
-            return true;
-          }
-          return false;
-        })
-    }
-  }
-}
-```
-
-### Example 4: Preventing Event Bubbling
-
-This example demonstrates event bubbling prevention using stopPropagation. Adding event.stopPropagation() to the Button component's onKeyEvent callback ensures only the Button component responds to keyboard events, while the parent Column remains unresponsive.
-
-> NOTE
-> 
-> The onKeyEvent event bubbles by default.
-> 
-> Event bubbling: In a tree structure, after a child node finishes processing an event, the event is passed to its parent node for processing.
-> 
-> In [onKeyEvent15+](#onkeyevent15), you can return true to consume the key event and prevent bubbling, which is equivalent to calling stopPropagation.
-
-```TypeScript
-@Entry
-@Component
-struct KeyEventExample {
-  @State buttonText: string = '';
-  @State buttonType: string = '';
-  @State columnText: string = '';
-  @State columnType: string = '';
-
-  build() {
-    Column() {
-      Button('onKeyEvent')
-        .defaultFocus(true)
-        .width(112).height(56)
-        .onKeyEvent((event?: KeyEvent) => {
-          // Use stopPropagation to prevent the key event from bubbling up.
-          if (event) {
-            event.stopPropagation();
-            if (event.type === KeyType.Down) {
-              this.buttonType = 'Down';
-            }
-            if (event.type === KeyType.Up) {
-              this.buttonType = 'Up';
-            }
-            this.buttonText = 'Button: \n' +
-              'KeyType:' + this.buttonType + '\n' +
-              'KeyCode:' + event.keyCode + '\n' +
-              'KeyText:' + event.keyText;
-          }
-        })
-
-      Divider()
-      Text(this.buttonText).fontColor(Color.Green)
-
-      Divider()
-      Text(this.columnText).fontColor(Color.Red)
-    }.width('100%').height('100%').justifyContent(FlexAlign.Center)
-    .onKeyEvent((event?: KeyEvent) => { // Set the onKeyEvent event for the parent container Column.
-      if (event) {
-        if (event.type === KeyType.Down) {
-          this.columnType = 'Down';
-        }
-        if (event.type === KeyType.Up) {
-          this.columnType = 'Up';
-        }
-        this.columnText = 'Column: \n' +
-          'KeyType:' + this.columnType + '\n' +
-          'KeyCode:' + event.keyCode + '\n' +
-          'KeyText:' + event.keyText;
-      }
-    })
-  }
-}
-```
-
-### Example 1: Obtaining Parameters Related to a Mouse Event
-
-This example demonstrates how to set a mouse event on a button. When the button is clicked using a mouse device, the [onMouse](#onmouse) event is triggered to obtain relevant mouse event parameters. Starting from API version 15, the [MouseEvent](#mouseevent) object provides access to the targetDisplayId, rawDeltaX, rawDeltaY, and pressedButtons parameters.
-
-For mouse wheel event examples, see [Axis Event](ts-universal-events-axis.md#example).
-
-The figure below shows how the button looks when clicked.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct MouseEventExample {
-  @State hoverText: string = 'no hover';
-  @State mouseText: string = '';
-  @State action: string = '';
-  @State mouseBtn: string = '';
-  @State color: Color = Color.Blue;
-
-  build() {
-    Column({ space: 20 }) {
-      Button(this.hoverText)
-        .width(180)
-        .height(80)
-        .backgroundColor(this.color)
-        .fontSize(24)
-        .onHover((isHover: boolean) => {
-          // Use the onHover event to dynamically change the text content and background color of a button when the mouse pointer is hovered on it.
-          if (isHover) {
-            this.hoverText = 'hover';
-            this.color = Color.Pink;
-          } else {
-            this.hoverText = 'no hover';
-            this.color = Color.Blue;
-          }
-        })
-      Button('onMouse')
-        .width(180).height(80)
-        .fontSize(24)
-        // Use onMouse to listen for mouse events, parse the buttons, actions, coordinates, and other information, and combines the information.
-        .onMouse((event: MouseEvent): void => {
-          if (event) {
-            // Determine the type of the pressed mouse button.
-            switch (event.button) {
-              case MouseButton.None:
-                this.mouseBtn = 'None';
-                break;
-              case MouseButton.Left:
-                this.mouseBtn = 'Left';
-                break;
-              case MouseButton.Right:
-                this.mouseBtn = 'Right';
-                break;
-              case MouseButton.Back:
-                this.mouseBtn = 'Back';
-                break;
-              case MouseButton.Forward:
-                this.mouseBtn = 'Forward';
-                break;
-              case MouseButton.Middle:
-                this.mouseBtn = 'Middle';
-                break;
-            }
-            // Determine the type of the triggered mouse action.
-            switch (event.action) {
-              case MouseAction.Press:
-                this.action = 'Press';
-                break;
-              case MouseAction.Move:
-                this.action = 'Move';
-                break;
-              case MouseAction.Release:
-                this.action = 'Release';
-                break;
-              case MouseAction.ENTER_WINDOW:
-                this.action = 'ENTER_WINDOW';
-                break;
-              case MouseAction.LEAVE_WINDOW:
-                this.action = 'LEAVE_WINDOW';
-                break;
-            }
-            // Combine and display all information about the mouse event.
-            this.mouseText = 'onMouse:\nButton = ' + this.mouseBtn +
-              '\nAction = ' + this.action + '\nXY=(' + event.x + ',' + event.y + ')' +
-              '\nwindowXY=(' + event.windowX + ',' + event.windowY + ')' +
-              '\ntargetDisplayId = ' + event.targetDisplayId +
-              '\nrawDeltaX = ' + event.rawDeltaX +
-              '\nrawDeltaY = ' + event.rawDeltaY +
-              '\nlength = ' + event.pressedButtons?.length;
-          }
-        })
-      Text(this.mouseText)
-    }.padding({ top: 30 }).width('100%')
-  }
-}
-```
-
-### Example 2: Obtaining Historical Points of the Current Frame
-
-This example calls the [getHistoricalPoints](#gethistoricalpoints) API to obtain the historical points of the current frame, which can be used to implement smoother drawing.
-
-The getHistoricalPoints API is added as of API version 26.0.0.
-
-```TypeScript
-@Entry
-@Component
-struct HistoricalPointsExample {
-  historicalPointsInfo: string = '';
-
-  build() {
-    Column() {
-      Button('Obtain historical points by moving the mouse')
-        .width(180)
-        .height(80)
-        .onMouse((event: MouseEvent) => {
-          if (event.action === MouseAction.Move) {
-            // Call the getHistoricalPoints API to obtain the historical points of the current frame.
-            const historicalPoints = event.getHistoricalPoints?.();
-            if (historicalPoints) {
-              this.historicalPointsInfo = `Number of historical points: ${historicalPoints.length}`;
-              historicalPoints.forEach((point: MouseHistoricalPoint, index: number) => {
-                this.historicalPointsInfo += `\nPoint ${index}: `
-                  + `x = ${point.x}, y = ${point.y}, windowX = ${point.windowX}, windowY = ${point.windowY}, `
-                  + `displayX = ${point.displayX}, displayY = ${point.displayY}, `
-                  + `globalDisplayX = ${point.globalDisplayX}, globalDisplayY = ${point.globalDisplayY}, `
-                  + `timestamp = ${point.timestamp}`;
-              });
-              console.info(this.historicalPointsInfo);
-            }
-          }
-        })
-    }.padding({ top: 30 })
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 3: Obtaining the Real-Time Position of a Component
-
-This example uses the [getCurrentLocalPosition](#getcurrentlocalposition) method to obtain the coordinates of the mouse position relative to the upper left corner of the real-time position of the current component.
-
-The getCurrentLocalPosition API is supported since API version 26.0.0.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct GetCurrentLocalPositionExample {
-  @State positionText: string = '';
-  @State textOffsetY: number = 0;
-
-  build() {
-    Column() {
-      Button('Obtain the coordinates of the mouse position relative to the upper left corner of the real-time position of the current component').translate({ y: this.textOffsetY })
-        .onMouse((event: MouseEvent) => {
-          if (event) {
-            // Obtain the coordinates of the mouse position relative to the upper left corner of the real-time position of the component after the component is moved. The coordinates are obtained after a delay.
-            this.textOffsetY = -200;
-            setTimeout(() => {
-              let localPos: Coordinate2D | undefined = event.getCurrentLocalPosition?.();
-              this.positionText = `Coordinates of the upper left corner relative to the real-time position of the current component:\n x: ${localPos?.x}\n y: ${localPos?.y}`;
-            }, 2000);
-          }
-        })
-
-      Text(this.positionText)
-    }.width('100%')
-  }
-}
-```
-
-### Example 1: Setting the Component Stacking Order
-
-This example demonstrates how to set the stacking order of components using zIndex.
-
-When no zIndex is set for child components in a Stack container, they are displayed in the order in which they are declared by default, with later-declared components overlapping earlier-declared ones.
-
-
-
-Display of child components in the Stack container when zIndex is set
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ZIndexExample {
-  build() {
-    Column() {
-      Stack() {
-        // Components in the Stack container overlap, with later-defined components on top by default. Components with higher zIndex values appear in front of those with lower zIndex values.
-        // Set the zIndex value of Text1 to 2.
-        Text('1, zIndex(2)')
-          .size({ width: '40%', height: '30%' }).backgroundColor(0xbbb2cb)
-          .zIndex(2)
-        // Set the zIndex value of Text2 to 1.
-        Text('2, zIndex(1)')
-          .size({ width: '70%', height: '50%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
-          .zIndex(1)
-        // Set the zIndex value of Text3 to 0.
-        Text('3, zIndex(0)')
-          .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
-          .zIndex(0)
-      }.width('100%').height(200)
-    }.width('100%').height(200)
-  }
-}
-```
-
-### Example 2: Dynamically Modifying the zIndex Attribute
-
-This example demonstrates dynamically modifying the zIndex attribute on a Button component.
-
-Effect without clicking the Button component to change zIndex
-
-
-
-Effect after clicking the Button component to dynamically change zIndex so that Text1 and Text2 have the same zIndex value
-
-
-
-Effect after the Button component is clicked to dynamically change zIndex so that Text2 has a higher zIndex value than Text1
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ZIndexExample {
-  @State zIndexValue: number = 0;
-
-  build() {
-    Column() {
-      // Clicking the Button component changes the zIndex value. Components are sorted stably based on their previous stacking order.
-      Button('change Text2 zIndex')
-        .onClick(() => {
-          this.zIndexValue = (this.zIndexValue + 1) % 3;
-        })
-      Stack() {
-        // Set the zIndex value of Text1 to 1.
-        Text('1, zIndex(1)')
-          .size({ width: '70%', height: '50%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
-          .zIndex(1)
-        // Set the zIndex value of Text2 to the default value 0.
-        Text('2, default zIndex(0), now zIndex:' + this.zIndexValue)
-          .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
-          .zIndex(this.zIndexValue)
-      }.width('100%').height(200)
-    }.width('100%').height(200)
-  }
-}
-```
-
-### Example 3: Setting zIndex for Components in Different Containers
-
-This example sets the zIndex attribute for components in different containers. Text1 and Text2 are in the same Stack container, while Text3 is in another Stack container. Although Text3 has the smallest zIndex value, Text1 and Text2 still cannot be displayed above Text3 based on their zIndex values.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ZIndexExample {
-  build() {
-    Stack() {
-      Stack() {
-        // Set the zIndex value of Text1 to 2.
-        Text('1, zIndex(2)')
-          .size({ width: '40%', height: '30%' }).backgroundColor(0xbbb2cb)
-          .zIndex(2)
-        // Set the zIndex value of Text2 to 1.
-        Text('2, zIndex(1)')
-          .size({ width: '70%', height: '50%' }).backgroundColor(0xd2cab3).align(Alignment.TopStart)
-          .zIndex(1)
-      }.width('100%').height(200)
-
-      Stack() {
-        // zIndex cannot take effect across different container components. Text3 will be displayed on the top.
-        // Set the zIndex value of Text3 to 0.
-        Text('3, zIndex(0)')
-          .size({ width: '90%', height: '80%' }).backgroundColor(0xc1cbac).align(Alignment.TopStart)
-          .zIndex(0)
-      }.width('100%').height(200)
-    }.width('100%').height(200)
-  }
-}
-```
-
-### Example 1: Using onVisibleAreaChange to Listen for Visible Area Changes
-
-This example demonstrates how to set an [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) event for a component, which triggers the callback when the component is fully displayed or completely hidden.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ScrollExample {
-  scroller: Scroller = new Scroller();
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  @State testTextStr: string = 'test';
-  @State testRowStr: string = 'test';
-
-  build() {
-    Column() {
-      Column() {
-        Text(this.testTextStr)
-          .fontSize(20)
-
-        Text(this.testRowStr)
-          .fontSize(20)
-      }
-      .height(100)
-      .backgroundColor(Color.Gray)
-      .opacity(0.3)
-
-      Scroll(this.scroller) {
-        Column() {
-          Text('Test Text Visible Change')
-            .fontSize(20)
-            .height(200)
-            .margin({ top: 50, bottom: 20 })
-            .backgroundColor(Color.Green)
-            // Set ratios to [0.0, 1.0] to invoke the callback when the component is fully visible or invisible on screen.
-            .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-              console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
-              if (isExpanding && currentRatio >= 1.0) {
-                console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`);
-                this.testTextStr = 'Test Text is fully visible';
-              }
-
-              if (!isExpanding && currentRatio <= 0.0) {
-                console.info('Test Text is completely invisible.');
-                this.testTextStr = 'Test Text is completely invisible';
-              }
-            })
-
-          Row() {
-            Text('Test Row Visible Change')
-              .fontSize(20)
-              .margin({ bottom: 20 })
-
-          }
-          .height(200)
-          .backgroundColor(Color.Yellow)
-          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
-            if (isExpanding && currentRatio >= 1.0) {
-              console.info('Test Row is fully visible.');
-              this.testRowStr = 'Test Row is fully visible';
-            }
-
-            if (!isExpanding && currentRatio <= 0.0) {
-              console.info('Test Row is completely invisible.');
-              this.testRowStr = 'Test Row is completely invisible';
-            }
-          })
-
-          ForEach(this.arr, (item: number) => {
-            Text(item.toString())
-              .width('90%')
-              .height(150)
-              .backgroundColor(0xFFFFFF)
-              .borderRadius(15)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .margin({ top: 10 })
-          }, (item: number) => (item.toString()))
-
-        }.width('100%')
-      }
-      .backgroundColor(0x317aff)
-      .scrollable(ScrollDirection.Vertical)
-      .scrollBar(BarState.On)
-      .scrollBarColor(Color.Gray)
-      .scrollBarWidth(10)
-      .onWillScroll((xOffset: number, yOffset: number) => {
-        console.info(`${xOffset} ${yOffset}`);
-      })
-      .onScrollEdge(() => {
-        console.info('To the edge');
-      })
-      .onScrollStop(() => {
-        console.info('Scroll Stop');
-      })
-
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
-  }
-}
-```
-
-### Example 2: Using onVisibleAreaApproximateChange to Listen for Visible Area Changes
-
-This example demonstrates how to set an [onVisibleAreaApproximateChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareaapproximatechange) event for a component, which triggers the callback when the component is fully displayed or completely hidden. This feature is supported from API version 17.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ScrollExample {
-  scroller: Scroller = new Scroller();
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  @State testTextStr: string = 'test';
-  @State testRowStr: string = 'test';
-
-  build() {
-    Column() {
-      Column() {
-        Text(this.testTextStr)
-          .fontSize(20)
-
-        Text(this.testRowStr)
-          .fontSize(20)
-      }
-      .height(100)
-      .backgroundColor(Color.Gray)
-      .opacity(0.3)
-
-      Scroll(this.scroller) {
-        Column() {
-          Text('Test Text Visible Change')
-            .fontSize(20)
-            .height(200)
-            .margin({ top: 50, bottom: 20 })
-            .backgroundColor(Color.Green)
-            // Set ratios to [0.0, 1.0] to invoke the callback when the component is fully visible or invisible on screen.
-            .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 },
-              (isExpanding: boolean, currentRatio: number) => {
-                console.info(`Test Text isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
-                if (isExpanding && currentRatio >= 1.0) {
-                  console.info(`Test Text is fully visible. currentRatio: ${currentRatio}`);
-                  this.testTextStr = 'Test Text is fully visible';
-                }
-
-                if (!isExpanding && currentRatio <= 0.0) {
-                  console.info('Test Text is completely invisible.');
-                  this.testTextStr = 'Test Text is completely invisible';
-                }
-              })
-
-          Row() {
-            Text('Test Row Visible Change')
-              .fontSize(20)
-              .margin({ bottom: 20 })
-
-          }
-          .height(200)
-          .backgroundColor(Color.Yellow)
-          .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 1000 }, (isExpanding: boolean, currentRatio: number) => {
-            console.info(`Test Row isExpanding: ${isExpanding}, currentRatio: ${currentRatio}`);
-            if (isExpanding && currentRatio >= 1.0) {
-              console.info('Test Row is fully visible.');
-              this.testRowStr = 'Test Row is fully visible';
-            }
-
-            if (!isExpanding && currentRatio <= 0.0) {
-              console.info('Test Row is completely invisible.');
-              this.testRowStr = 'Test Row is completely invisible';
-            }
-          })
-
-          ForEach(this.arr, (item: number) => {
-            Text(item.toString())
-              .width('90%')
-              .height(150)
-              .backgroundColor(0xFFFFFF)
-              .borderRadius(15)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .margin({ top: 10 })
-          }, (item: number) => (item.toString()))
-
-        }.width('100%')
-      }
-      .backgroundColor(0x317aff)
-      .scrollable(ScrollDirection.Vertical)
-      .scrollBar(BarState.On)
-      .scrollBarColor(Color.Gray)
-      .scrollBarWidth(10)
-      .onWillScroll((xOffset: number, yOffset: number) => {
-        console.info(`${xOffset} ${yOffset}`);
-      })
-      .onScrollEdge(() => {
-        console.info('To the edge');
-      })
-      .onScrollStop(() => {
-        console.info('Scroll Stop');
-      })
-
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
-  }
-}
-```
-
-### Example 3: Setting measureFromViewport to Calculate the Visible Area When a Child Component Extends Beyond Its Parent
-
-Starting from API version 22, this example demonstrates the effect comparison after setting the measureFromViewport parameter for the onVisibleAreaChange event. The main difference is reflected in the component visibility ratio (currentRatio) returned by the callback. When measureFromViewport is set to true, the returned component visibility ratio (currentRatio) better matches the actual effect. Because different devices have different screen pixel densities, the calculation of the visible area change event involves decimal rounding, and currentRatio may have slight differences.
-
-```TypeScript
-@Entry
-@Component
-struct OnVisibleAreaChangeSample {
-  @State ratio1: number = 0.0;
-  @State ratio2: number = 0.0;
-  @State ratio3: number = 0.0;
-
-  build() {
-    Column() {
-      Text(`onVisibleChange1 with measureFromViewport \nratio: ${this.ratio1}`)
-      Column() {
-        Row() {
-          Row() {
-
-          }
-          .backgroundColor(Color.Blue)
-          .height(120)
-          .width(120)
-          .offset({ x: 0, y: 60 })
-          // If measureFromViewport is set to true and clip(true) is not set for the parent component, any area of the child component that extends beyond its parent component's bounds is regarded as a visible area.
-          .onVisibleAreaApproximateChange({
-            ratios: [0.0, 1.0],
-            expectedUpdateInterval: 500,
-            measureFromViewport: true
-          }, (isExpanding: boolean, currentRatio: number) => {
-            console.info(`onVisibleAreaApproximateChange1 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
-          })
-          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio1 = currentRatio;
-          }, true)
-        }
-        .backgroundColor(Color.Pink)
-        .height(120)
-        .width(120)
-      }
-      .padding(5)
-      .borderWidth(1)
-      .height(200)
-      .width(200)
-
-      Text(`onVisibleChange2 without measureFromViewport \nratio: ${this.ratio2}`)
-      Column() {
-        Row() {
-          Row() {
-
-          }
-          .backgroundColor(Color.Blue)
-          .height(120)
-          .width(120)
-          .offset({ x: 0, y: 60 })
-          // If measureFromViewport is not set (which will be treated as false) and clip(true) is not set for the parent component, any area of the child component that extends beyond its parent component's bounds is regarded as an invisible area.
-          .onVisibleAreaApproximateChange({ ratios: [0.0, 1.0], expectedUpdateInterval: 500 },
-            (isExpanding: boolean, currentRatio: number) => {
-              console.info(`onVisibleAreaApproximateChange2 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
-            })
-          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio2 = currentRatio;
-          })
-        }
-        .backgroundColor(Color.Pink)
-        .height(120)
-        .width(120)
-      }
-      .padding(5)
-      .borderWidth(1)
-      .height(200)
-      .width(200)
-
-      Text(`parent set clip(true) onVisibleChange3 with measureFromViewport \nratio: ${this.ratio3}`)
-      Column() {
-        Row() {
-          Row() {
-
-          }
-          .backgroundColor(Color.Blue)
-          .height(120)
-          .width(120)
-          .offset({ x: 0, y: 60 })
-          // If measureFromViewport is set to true and clip(true) is set for the parent component, any area of the child component that extends beyond its parent component regarded as an invisible area.
-          .onVisibleAreaApproximateChange({
-            ratios: [0.0, 1.0],
-            expectedUpdateInterval: 500,
-            measureFromViewport: true
-          }, (isExpanding: boolean, currentRatio: number) => {
-            console.info(`onVisibleAreaApproximateChange3 isExpanding: ${isExpanding} currentRatio: ${currentRatio}`);
-          })
-          .onVisibleAreaChange([0.0, 1.0], (isExpanding: boolean, currentRatio: number) => {
-            this.ratio3 = currentRatio;
-          }, true)
-        }
-        .clip(true)
-        .backgroundColor(Color.Pink)
-        .height(120)
-        .width(120)
-      }
-      .padding(5)
-      .borderWidth(1)
-      .height(200)
-      .width(200)
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
 ```TypeScript
 // xxx.ets
 @Entry
@@ -14012,2304 +17461,6 @@ struct Index {
         this.isShow = !this.isShow;
       })
     })
-  }
-}
-```
-
-This example sets the mouse cursor style using setCursor.
-
-```TypeScript
-// xxx.ets
-import { pointer } from '@kit.InputKit';
-
-@Entry
-@Component
-struct CursorControlExample {
-  build() {
-    Column() {
-      Row()
-        .height(200)
-        .width(200)
-        .backgroundColor(Color.Green)
-        .position({ x: 60, y: 70 })
-        .onHover((flag) => {
-          if (flag) {
-            // You are advised to use this.getUIContext().getCursorController().setCursor().
-            cursorControl.setCursor(pointer.PointerStyle.EAST);
-          } else {
-            // You are advised to use this.getUIContext().getCursorController().restoreDefault().
-            cursorControl.restoreDefault();
-          }
-        })
-      Row()
-        .height(200)
-        .width(200)
-        .backgroundColor(Color.Blue)
-        .position({ x: 130, y: 120 })
-        .onHover((flag) => {
-          if (flag) {
-            // You are advised to use this.getUIContext().getCursorController().setCursor().
-            cursorControl.setCursor(pointer.PointerStyle.WEST);
-          } else {
-            // You are advised to use this.getUIContext().getCursorController().restoreDefault().
-            cursorControl.restoreDefault();
-          }
-        })
-    }.width('100%')
-  }
-}
-```
-
-### Example 1: Using onAreaChange to Listen for Area Changes
-
-This example demonstrates how to set an area change event for a Text component. When the layout of the Text component changes, the onAreaChange event is triggered, allowing you to obtain relevant parameters.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct AreaExample {
-  @State value: string = 'Text';
-  @State sizeValue: string = '';
-
-  build() {
-    Column() {
-      Text(this.value)
-        .backgroundColor(Color.Green)
-        .margin(30)
-        .fontSize(20)
-        .onClick(() => {
-          this.value = this.value + 'Text';
-        })
-        .onAreaChange((oldValue: Area, newValue: Area) => {
-          console.info(`Ace: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
-          this.sizeValue = JSON.stringify(newValue);
-        })
-      Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
-    }
-    .width('100%').height('100%').margin({ top: 30 })
-  }
-}
-```
-
-### Example 2: Using onAreaChange to Listen for Area Changes at a Custom Interval
-
-In this example, by setting [expectedUpdateInterval](arkts-arkui-common-comp-areachangeoptions-i.md), the [onAreaChange](#onareachange-1) event can be triggered when the Text layout changes, achieving the effect of interval callbacks.
-
-Since API version 26.0.0, [onAreaChange](#onareachange-1), [AreaChangeCallback](arkts-arkui-common-comp-areachangecallback-t.md), and [AreaChangeOptions](arkts-arkui-common-comp-areachangeoptions-i.md) are added.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct AreaExample {
-  @State value: string = 'Text';
-  @State sizeValue: string = '';
-
-  build() {
-    Column() {
-      Text(this.value)
-        .backgroundColor(Color.Green)
-        .margin(30)
-        .fontSize(20)
-        .onClick(() => {
-          this.value = this.value + 'Text';
-        })
-        // When expectedUpdateInterval is set, the area change callback is triggered at the set interval.
-        .onAreaChange((oldValue: Area, newValue: Area) => {
-          console.info(`ACE: on area change, oldValue is ${JSON.stringify(oldValue)} newValue is ${JSON.stringify(newValue)}`);
-          this.sizeValue = JSON.stringify(newValue);
-        }, {expectedUpdateInterval: 1000})
-      Text('new area is: \n' + this.sizeValue).margin({ right: 30, left: 30 })
-    }
-    .width('100%').height('100%').margin({ top: 30 })
-  }
-}
-```
-
-This example demonstrates how to use restoreId to set the ID of the List component for device matching during hopping.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct RestoreIdExample {
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  build() {
-    Column() {
-      List({ space: 20 }) {
-        ForEach(this.arr, (item:number) => {
-          ListItem() {
-            Text('' + item)
-              .width('100%')
-              .height(100)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .borderRadius(10)
-              .backgroundColor(Color.Pink)
-          }
-        }, (item:number) => (item.toString()))
-      }
-      .restoreId(1);
-    }
-  }
-}
-```
-
-### Example 1: Setting Polymorphic Styles for the Text Component
-
-This example shows the style changes of the Text component when the state is set to hovered, pressed, and disabled using [stateStyles](#statestyles).
-
-The hovered attribute is added to [stateStyles](#statestyles) as of API version 26.0.0.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct StyleExample {
-  @State isEnable: boolean = true
-
-  @Styles
-  hoveredStyles(): void {
-    .backgroundColor('#12db70')
-    .borderRadius(10)
-    .borderStyle(BorderStyle.Dashed)
-    .borderWidth(2)
-    .borderColor('#33000000')
-    .width(120)
-    .height(30)
-    .opacity(1)
-  }
-
-  @Styles
-  pressedStyles(): void {
-    .backgroundColor('#ED6F21')
-    .borderRadius(10)
-    .borderStyle(BorderStyle.Dashed)
-    .borderWidth(2)
-    .borderColor('#33000000')
-    .width(120)
-    .height(30)
-    .opacity(1)
-  }
-
-  @Styles
-  disabledStyles(): void {
-    .backgroundColor('#E5E5E5')
-    .borderRadius(10)
-    .borderStyle(BorderStyle.Solid)
-    .borderWidth(2)
-    .borderColor('#2a4c1919')
-    .width(90)
-    .height(25)
-    .opacity(1)
-  }
-
-  @Styles
-  normalStyles(): void {
-    .backgroundColor('#0A59F7')
-    .borderRadius(10)
-    .borderStyle(BorderStyle.Solid)
-    .borderWidth(2)
-    .borderColor('#33000000')
-    .width(100)
-    .height(25)
-    .opacity(1)
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Center }) {
-      Text('normal')
-        .fontSize(14)
-        .fontColor(Color.White)
-        .opacity(0.5)
-        // stateStyles sets the style of the component in its normal state.
-        .stateStyles({
-          normal: this.normalStyles,
-        })
-        .margin({ bottom: 20 })
-        .textAlign(TextAlign.Center)
-      Text('hovered')
-        .backgroundColor('#0A59F7')
-        .borderRadius(20)
-        .borderStyle(BorderStyle.Dotted)
-        .borderWidth(2)
-        .borderColor(Color.Red)
-        .width(100)
-        .height(25)
-        .opacity(1)
-        .fontSize(14)
-        .fontColor(Color.White)
-        // stateStyles: sets the style of the component when the mouse pointer is hovered over the component.
-        .stateStyles({
-          hovered: this.hoveredStyles,
-        })
-        .margin({ bottom: 20 })
-        .textAlign(TextAlign.Center)
-      Text('pressed')
-        .backgroundColor('#0A59F7')
-        .borderRadius(20)
-        .borderStyle(BorderStyle.Dotted)
-        .borderWidth(2)
-        .borderColor(Color.Red)
-        .width(100)
-        .height(25)
-        .opacity(1)
-        .fontSize(14)
-        .fontColor(Color.White)
-        // stateStyles sets the style of the component in its pressed state.
-        .stateStyles({
-          pressed: this.pressedStyles,
-        })
-        .margin({ bottom: 20 })
-        .textAlign(TextAlign.Center)
-      Text(this.isEnable ? 'effective' : 'disabled')
-        .backgroundColor('#0A59F7')
-        .borderRadius(20)
-        .borderStyle(BorderStyle.Solid)
-        .borderWidth(2)
-        .borderColor(Color.Gray)
-        .width(100)
-        .height(25)
-        .opacity(1)
-        .fontSize(14)
-        .fontColor(Color.White)
-        .enabled(this.isEnable)
-        // stateStyles sets the style of the component in its disabled state.
-        .stateStyles({
-          disabled: this.disabledStyles,
-        })
-        .textAlign(TextAlign.Center)
-      Text('control disabled')
-        .onClick(() => {
-          this.isEnable = !this.isEnable;
-          console.info(`${this.isEnable}`);
-        })
-    }
-    .width(350).height(300)
-  }
-}
-```
-
-### Example 2: Setting Polymorphic Styles for the Radio Component
-
-This example demonstrates the style changes of the Radio component when its state is selected.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State isRadio1Selected: boolean = false
-  @State isRadio2Selected: boolean = false
-
-  @Styles
-  normalStyles(): void {
-    .backgroundColor('#E5E5E1')
-  }
-
-  @Styles
-  selectStyles(): void {
-    .backgroundColor('#ED6F21')
-    .borderWidth(2)
-  }
-
-  build() {
-    Flex({ direction: FlexDirection.Row, justifyContent: FlexAlign.Center, alignItems: ItemAlign.Center }) {
-      Column() {
-        Text('Radio1')
-          .fontSize(25)
-        Radio({ value: 'Radio1', group: 'radioGroup1' })
-          .checked(this.isRadio1Selected)
-          .height(50)
-          .width(50)
-          .borderWidth(0)
-          .borderRadius(30)
-          .onClick(() => {
-            this.isRadio1Selected = !this.isRadio1Selected;
-          })
-          .stateStyles({
-            normal: this.normalStyles,
-            selected: this.selectStyles,
-          })
-      }
-      .margin(30)
-
-      Column() {
-        Text('Radio2')
-          .fontSize(25)
-        Radio({ value: 'Radio2', group: 'radioGroup2' })
-          .checked($$this.isRadio2Selected)
-          .height(50)
-          .width(50)
-          .borderWidth(0)
-          .borderRadius(30)
-          .stateStyles({
-            normal: this.normalStyles,
-            selected: this.selectStyles,
-          })
-      }
-      .margin(30)
-    }.padding({ top: 30 })
-  }
-}
-```
-
-### Example 3: Setting Polymorphic Styles for the Builder Component
-
-This example shows the style change of the custom component in @Builder when the state is pressed.
-
-```TypeScript
-import { ComponentContent } from '@kit.ArkUI';
-import { BusinessError } from '@kit.BasicServicesKit';
-
-@Component
-struct Child {
-  build() {
-    Row()
-      .zIndex(10)
-      .width(200)
-      .height(200)
-      .stateStyles({
-        normal: {
-          .backgroundColor(Color.Blue)
-        },
-        pressed: {
-          .backgroundColor(Color.Black)
-        }
-      })
-  }
-}
-
-@Builder
-function buildText() {
-  Child()
-}
-
-@Entry
-@Component
-struct Index {
-  private contentNode: ComponentContent<Object> =
-    new ComponentContent(this.getUIContext(), wrapBuilder(buildText));
-
-  build() {
-    Column() {
-      Button().margin({ top: 200 }).onClick(() => {
-        this.getUIContext()
-          .getPromptAction()
-          .openCustomDialog(this.contentNode)
-          .then(() => {
-            console.info('OpenCustomDialog complete.');
-          })
-          .catch((error: BusinessError) => {
-            let message = error.message;
-            let code = error.code;
-            console.error(`OpenCustomDialog args error code is ${code}, message is ${message}`);
-          });
-      })
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 1: Setting Different Image Attributes
-
-Sets image effects, including shadow, grayscale, highlight, saturation, contrast, image inversion, color blending, hue rotation, and so on.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct ImageEffectsExample {
-  build() {
-    Column({ space: 5 }) {
-      // Apply the shadow effect.
-      Text('shadow').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image'))
-        .width('90%')
-        .height(30)
-        .shadow({
-          radius: 10,
-          color: Color.Green,
-          offsetX: 20,
-          offsetY: 20
-        })
-
-      // Add the internal shadow effect.
-      Text('shadow').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image'))
-        .width('90%')
-        .height(30)
-        .shadow({
-          radius: 5,
-          color: Color.Green,
-          offsetX: 20,
-          offsetY: 20,
-          fill: true
-        }).opacity(0.5)
-
-      // Apply the grayscale effect. The grayscale value ranges from 0 to 1. The closer the grayscale value is to 1, the more obvious the grayscale effect is.
-      Text('grayscale').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).grayscale(0.3)
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).grayscale(0.8)
-
-      // Apply the brightness effect. The value 1 indicates no effects. If the value is less than 1, the brightness decreases. If the value is greater than 1, the brightness increases.
-      Text('brightness').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).brightness(1.2)
-
-      // Apply the saturation effect. If the value is 1, the source image is displayed.
-      Text('saturate').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).saturate(2.0)
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).saturate(0.7)
-
-      // Apply the contrast effect. If the value is 1, the source image is displayed. If the value is greater than 1, a larger value indicates a higher contrast and a clearer image. If the value is less than 1, a smaller value indicates a lower contrast.
-      Text('contrast').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).contrast(2.0)
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).contrast(0.8)
-
-      // Invert the image.
-      Text('invert').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).invert(0.2)
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).invert(0.8)
-
-      // Apply the color blend effect.
-      Text('colorBlend').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).colorBlend(Color.Green)
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).colorBlend(Color.Blue)
-
-      // Convert the image color to sepia.
-      Text('sepia').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).sepia(0.8)
-
-      // Apply the hue rotation effect.
-      Text('hueRotate').fontSize(15).fontColor(0xCCCCCC).width('90%')
-      // Replace $r("app.media.image") with the image resource file you use.
-      Image($r('app.media.image')).width('90%').height(30).hueRotate(90)
-    }.width('100%').margin({ top: 5 })
-  }
-}
-```
-
-### Example 2: Applying a Linear Gradient Blur Effect
-
-This example demonstrates how to apply a linear gradient blur effect on a component using [linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur).
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct LinearGradientBlurExample {
-  // Replace $r('app.media.testlinearGradientBlurOrigin') with the resource file you use.
-  privateResource1: Resource = $r('app.media.testlinearGradientBlurOrigin')
-  @State imageSrc: Resource = this.privateResource1
-
-  build() {
-    Column() {
-      Flex({ direction: FlexDirection.Column, alignItems: ItemAlign.Start }) {
-        Row({ space: 5 }) {
-          Image(this.imageSrc)
-            .blur(0) // Set the blur effect of the image to none (no blur applied).
-            .linearGradientBlur(60,
-              { fractionStops: [[0, 0], [0, 0.33], [1, 0.66], [1, 1]], direction: GradientDirection.Bottom })
-        }
-      }
-    }
-  }
-}
-```
-
-### Example 3: Setting Offscreen Rendering Effect
-
-This example demonstrates how to use [renderGroup](arkts-arkui-common-comp-commonmethod-c.md#rendergroup) to set whether the component is rendered entirely offscreen and then composited with its parent component.
-
-
-
-```TypeScript
-// xxx.ets
-@Component
-struct RenderGroupChildComponent {
-  @Prop renderGroupValue: boolean;
-
-  build() {
-    Row() {
-      Row() {
-        Row()
-          .backgroundColor(Color.Black)
-          .width(100)
-          .height(100)
-          .opacity(1)
-      }
-      .backgroundColor(Color.White)
-      .width(150)
-      .height(150)
-      .justifyContent(FlexAlign.Center)
-      .opacity(0.6)
-      .renderGroup(this.renderGroupValue)
-    }
-    .backgroundColor(Color.Black)
-    .width(200)
-    .height(200)
-    .justifyContent(FlexAlign.Center)
-    .opacity(1)
-  }
-}
-
-@Entry
-@Component
-struct RenderGroupExample {
-  build() {
-    Column() {
-      RenderGroupChildComponent({ renderGroupValue: true })
-        .margin(20)
-      RenderGroupChildComponent({ renderGroupValue: false })
-        .margin(20)
-    }
-    .width("100%")
-    .height("100%")
-    .alignItems(HorizontalAlign.Center)
-  }
-}
-```
-
-### Example 4: Blending the Current Component Content with Canvas Content
-
-This example demonstrates how to blend the current component content with the canvas content below using [blendMode](#blendmode11).
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Text("blendMode")
-        .fontSize(20)
-        .fontWeight(FontWeight.Bold)
-        .fontColor('#ffff0101')
-      Row() {
-        Circle()
-          .width(200)
-          .height(200)
-          .fill(Color.Green)
-          .position({ x: 50, y: 50 })
-        Circle()
-          .width(200)
-          .height(200)
-          .fill(Color.Blue)
-          .position({ x: 150, y: 50 })
-      }
-      .blendMode(BlendMode.OVERLAY, BlendApplyType.OFFSCREEN)
-      .alignItems(VerticalAlign.Center)
-      .height(300)
-      .width('100%')
-    }
-    .height('100%')
-    .width('100%')
-    // Replace $r("app.media.image") with the image resource file you use.
-    .backgroundImage($r('app.media.image'))
-    .backgroundImageSize(ImageSize.Cover)
-  }
-}
-```
-
-### Example 5: Inverting the Foreground Color
-
-This example demonstrates how to achieve intelligent foreground color inversion using [InvertOptions](arkts-arkui-common-comp-invertoptions-i.md).
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Stack() {
-      Column()
-      Stack() {
-        // Replace $r("app.media.r") with the image resource file you use.
-        // In this example, the images are arranged from left to right, and the color is from light to dark.
-        Image($r('app.media.r')).width('100%')
-        Column() {
-          Column().width("100%").height(30).invert({
-            low: 0,
-            high: 1,
-            threshold: 0.5,
-            thresholdRange: 0.2
-          })
-          Column().width("100%").height(30).invert({
-            low: 0.2,
-            high: 0.5,
-            threshold: 0.3,
-            thresholdRange: 0.2
-          })
-        }
-      }
-      .width('100%')
-      .height('100%')
-    }
-  }
-}
-```
-
-### Example 6: Setting Non-Overlapping Same-Layer Shadows
-
-This example demonstrates how to implement non-overlapping shadow effect within the same layer using [useShadowBatching](arkts-arkui-common-comp-commonmethod-c.md#useshadowbatching) in combination with [shadow](#shadow).
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct UseShadowBatchingExample {
-  build() {
-    Column() {
-      Column({ space: 10 }) {
-        Stack() {
-
-        }
-        .width('90%')
-        .height(50)
-        .margin({ top: 5 })
-        .backgroundColor(0xFFE4C4)
-        .shadow({
-          radius: 120,
-          color: Color.Green,
-          offsetX: 0,
-          offsetY: 0
-        })
-        .align(Alignment.TopStart)
-        .shadow({
-          radius: 120,
-          color: Color.Green,
-          offsetX: 0,
-          offsetY: 0
-        })
-
-        Stack() {
-
-        }
-        .width('90%')
-        .height(50)
-        .margin({ top: 5 })
-        .backgroundColor(0xFFE4C4)
-        .align(Alignment.TopStart)
-        .shadow({
-          radius: 120,
-          color: Color.Red,
-          offsetX: 0,
-          offsetY: 0
-        })
-        .width('90%')
-        .backgroundColor(Color.White)
-
-        Column() {
-          Text()
-            .fontWeight(FontWeight.Bold)
-            .fontSize(20)
-            .fontColor(Color.White)
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(150)
-        .height(150)
-        .borderRadius(10)
-        .backgroundColor(0xf56c6c)
-        .shadow({
-          radius: 300,
-          color: Color.Yellow,
-          offsetX: 0,
-          offsetY: 0
-        })
-
-        Column() {
-          Text()
-            .fontWeight(FontWeight.Bold)
-            .fontSize(20)
-            .fontColor(Color.White)
-        }
-        .justifyContent(FlexAlign.Center)
-        .width(150)
-        .height(150)
-        .backgroundColor(0x67C23A)
-        .borderRadius(10)
-        .translate({ y: -50 })
-        .shadow({
-          radius: 220,
-          color: Color.Blue,
-          offsetX: 0,
-          offsetY: 0
-        })
-      }
-      .useShadowBatching(true)
-    }
-    .width('100%').margin({ top: 5 })
-  }
-}
-```
-
-### Example 7: Applying a Spherical Effect to a Component
-
-This example demonstrates how to apply a spherical effect to a component using [sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect).
-
-Below is how the component looks with the spherical effect applied.
-
-
-
-Below is how the component looks without the spherical effect applied.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SphericalEffectExample {
-  build() {
-    Stack() {
-      TextInput({ placeholder: "Enter a percentage ([0%, 100%])." })
-        .width('50%')
-        .height(35)
-        .type(InputType.Number)
-        .enterKeyType(EnterKeyType.Done)
-        .caretColor(Color.Red)
-        .placeholderColor(Color.Blue)
-        .placeholderFont({
-          size: 20,
-          style: FontStyle.Italic,
-          weight: FontWeight.Bold
-        })
-        .sphericalEffect(0.5)
-    }.alignContent(Alignment.Center).width("100%").height("100%")
-  }
-}
-```
-
-### Example 8: Applying a Light Up Effect to a Component
-
-This example demonstrates how to apply a light up effect to a component using [lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect).
-
-Below is how the component looks with the light up effect applied.
-
-
-
-Below is how the component looks with lightUpEffect set to 0.2:
-
-
-
-Below is how the component looks without the light up effect applied.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct LightUpExample {
-  build() {
-    Stack() {
-      Text('This is the text content with letterSpacing 0.')
-        .letterSpacing(0)
-        .fontSize(12)
-        .border({ width: 1 })
-        .padding(10)
-        .width('50%')
-        .lightUpEffect(0.6)
-    }.alignContent(Alignment.Center).width("100%").height("100%")
-  }
-}
-```
-
-### Example 9: Applying a Pixel Stretch Effect to a Component
-
-This example demonstrates how to apply a pixel stretch effect to a component using [pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect).
-
-Below is how the component looks with the pixel stretch effect applied.
-
-
-
-Below is how the component looks without the pixel stretch effect applied.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct PixelStretchExample {
-  build() {
-    Stack() {
-      Text('This is the text content with letterSpacing 0.')
-        .letterSpacing(0)
-        .fontSize(12)
-        .border({ width: 1 })
-        .padding(10)
-        .clip(false)
-        .width('50%')
-        .pixelStretchEffect({
-          top: 10,
-          left: 10,
-          right: 10,
-          bottom: 10
-        })
-    }.alignContent(Alignment.Center).width("100%").height("100%")
-  }
-}
-```
-
-### Example 10: Applying a System Bar Effect to a Component
-
-This example demonstrates how to apply a system bar effect to a component using [systemBarEffect](arkts-arkui-common-comp-commonmethod-c.md#systembareffect).
-
-Below is how the component looks with the system bar effect applied.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Column() {
-      Stack() {
-        // Replace $r("app.media.testImage") with the image resource file you use.
-        Image($r('app.media.testImage')).width('100%').height('100%')
-        Column()
-          .width(150)
-          .height(10)
-          .systemBarEffect()
-          .border({ radius: 5 })
-          .margin({ bottom: 80 })
-      }.alignContent(Alignment.Center)
-    }
-  }
-}
-```
-
-### Example 11: Setting Whether the Component Is Double-Sided
-
-This example demonstrates how to use [doubleSided](arkts-arkui-common-comp-commonmethod-c.md#doublesided) to set whether the component is double-sided.
-
-The doubleSided method is added since API version 26.0.0.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct DoubleSided {
-  @State angleY: number = 0;
-  @State isAnimating: boolean = false;
-  @State isDoubleSided: boolean = true;
-  build() {
-    Column({space: 30}) {
-      Text('DoubleSided back-face culling verification')
-        .fontSize(24)
-        .fontWeight(FontWeight.Bold)
-        .fontColor(Color.White)
-      Stack() {
-        Stack() {
-          Text('FRONT')
-            .fontSize(32)
-            .fontColor(Color.White)
-        }
-        .width(300)
-        .height(300)
-        .backgroundColor(Color.Blue)
-        .border({ width: 2, color: Color.Gray })
-        .doubleSided(this.isDoubleSided)
-        .rotate({ x: 0, y: 1, z: 0, angle: this.angleY})
-      }
-      .width(300)
-      .height(300)
-      Text(`Y-axis rotation: ${Math.round(this.angleY)}°`)
-        .fontSize(16)
-        .fontColor(Color.White)
-      Button(this.isAnimating ? 'Restore' : 'Flip')
-        .onClick(() => {
-          if (this.isAnimating) {
-            this.angleY = 0
-            this.isAnimating = false
-          } else {
-            this.isAnimating = true
-            this.angleY = 180
-          }
-        })
-      Button(`doubleSided: ${this.isDoubleSided ? 'true (double-sided)' : 'false (single-sided)'}`)
-        .backgroundColor(this.isDoubleSided ? '#4CAF50' : '#F44336')
-        .onClick(() => {
-          this.isDoubleSided = !this.isDoubleSided
-        })
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-    .backgroundColor('#1a1a1a')
-  }
-}
-```
-
-### Example 1: Implementing Gesture-based Scrolling
-
-This example sets the [enableScrollInteraction](#enablescrollinteraction11) attribute to scroll a vertical list with gestures and call back the index when the currently displayed interface changes.
-
-For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
-
-
-
-```TypeScript
-// xxx.ets
-import { ListDataSource } from './ListDataSource';
-
-@Entry
-@Component
-struct ListExample {
-  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-
-  build() {
-    Column() {
-      List({ space: 20, initialIndex: 0 }) {
-        LazyForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text('' + item)
-              .width('100%')
-              .height(100)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .borderRadius(10)
-              .backgroundColor(0xFFFFFF)
-          }
-        }, (item: number) => item.toString())
-      }
-      .enableScrollInteraction(true)
-      .listDirection(Axis.Vertical) // Arrangement direction
-      .scrollBar(BarState.Off)
-      .friction(0.6)
-      .divider({
-        strokeWidth: 2,
-        color: 0xFFFFFF,
-        startMargin: 20,
-        endMargin: 20
-      }) // Divider between rows
-      .edgeEffect(EdgeEffect.Spring) // Set the edge scrolling effect to Spring.
-      .onScrollIndex((firstIndex: number, lastIndex: number, centerIndex: number) => {
-        console.info('first' + firstIndex);
-        console.info('last' + lastIndex);
-        console.info('center' + centerIndex);
-      })
-      .onScrollVisibleContentChange((start: VisibleListContentInfo, end: VisibleListContentInfo) => {
-        console.info(' start index: ' + start.index +
-          ' start item group area: ' + start.itemGroupArea +
-          ' start index in group: ' + start.itemIndexInGroup);
-        console.info(' end index: ' + end.index +
-          ' end item group area: ' + end.itemGroupArea +
-          ' end index in group: ' + end.itemIndexInGroup);
-      })
-      .onDidScroll((scrollOffset: number, scrollState: ScrollState) => {
-        console.info(`onDidScroll scrollState = ` + scrollState + `, scrollOffset = ` + scrollOffset);
-      })
-      .width('90%')
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xDCDCDC)
-    .padding({ top: 5 })
-  }
-}
-```
-
-### Example 2: Setting Edge Fading
-
-This example sets the [fadingEdge](#fadingedge14) attribute to enable the edge fading effect for the [List](ts-container-list.md) component and set the edge fading length.
-
-For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-import { ListDataSource } from './ListDataSource';
-
-@Entry
-@Component
-struct ListExample {
-  private arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]);
-  scrollerForList: Scroller = new Scroller();
-
-  build() {
-    Column() {
-
-      List({ space: 20, initialIndex: 0, scroller: this.scrollerForList }) {
-        LazyForEach(this.arr, (item: number) => {
-          ListItem() {
-            Text('' + item)
-              .width('100%')
-              .height(100)
-              .fontSize(16)
-              .textAlign(TextAlign.Center)
-              .borderRadius(10)
-              .backgroundColor(0xFFFFFF)
-          }
-        }, (item: number) => item.toString())
-      }
-      .fadingEdge(true, { fadingEdgeLength: LengthMetrics.vp(80) })
-    }
-    .width('100%')
-    .height('100%')
-    .backgroundColor(0xDCDCDC)
-    .padding({ top: 5 })
-  }
-}
-```
-
-### Example 3: Setting the Clipping Region
-
-This example sets the [clipContent](arkts-arkui-common-comp-scrollablecommonmethod-c.md#clipcontent) attribute to change the clipping area of the component's content layer.
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ScrollExample {
-  scroller: Scroller = new Scroller();
-  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-  @State clipContent: ContentClipMode | RectShape | undefined = undefined;
-
-  build() {
-    Column() {
-      Scroll(this.scroller) {
-        Column() {
-          ForEach(this.arr, (item: number) => {
-            Text(item.toString())
-              .width(300)
-              .height(80)
-              .fontSize(20)
-              .textAlign(TextAlign.Center)
-              .backgroundColor(Color.Grey)
-          }, (item: number) => item.toString())
-        }
-      }
-      .backgroundColor(Color.Blue)
-      .clipContent(this.clipContent)
-      .scrollBar(BarState.Off)
-      .friction(0.6)
-      .width(300)
-      .height('50%')
-      .padding(10)
-      .safeAreaPadding(LengthMetrics.vp(10))
-      .initialOffset({ yOffset: 80 })
-      .margin({ top: 20 })
-
-      Button('clipContent SAFE_AREA')
-        .onClick(() => {
-          this.clipContent = ContentClipMode.SAFE_AREA;
-        }).margin({ top: 30 })
-
-      Button('clipContent BOUNDARY')
-        .onClick(() => {
-          this.clipContent = ContentClipMode.BOUNDARY;
-        }).margin({ top: 35 })
-
-      Button('clipContent CONTENT_ONLY')
-        .onClick(() => {
-          this.clipContent = ContentClipMode.CONTENT_ONLY;
-        }).margin({ top: 40 })
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC)
-  }
-}
-```
-
-### Example 4: Setting the Scrollbar Margin
-
-This example demonstrates how to use the [scrollBarMargin](#scrollbarmargin20) attribute to adjust the scrollbar margins of a scrollable component, available since API version 20.
-
-For details about ListDataSource and the complete code, see [Example 1: Adding a Scroll Event](./ts-container-list.md#example-1-adding-a-scroll-event).
-
-```TypeScript
-// xxx.ets
-import { ListDataSource } from './ListDataSource';
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ListExample {
-  arr: ListDataSource = new ListDataSource([0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
-  @State scrollBarMargin: ScrollBarMargin = { start: LengthMetrics.vp(0), end: LengthMetrics.vp(0) };
-
-  build() {
-    Stack({ alignContent: Alignment.TopStart }) {
-      Column() {
-        List({ space: 20, initialIndex: 0 }) {
-          LazyForEach(this.arr, (item: number) => {
-            ListItem() {
-              Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center }) {
-                Text('' + item)
-                  .width('100%')
-                  .height(80)
-                  .fontSize(20)
-                  .textAlign(TextAlign.Center)
-                  .borderRadius(10)
-                  .backgroundColor(Color.White)
-                  .flexShrink(1)
-              }
-            }
-          }, (item: number) => item.toString())
-        }.width('90%')
-        .friction(0.6)
-        .scrollBar(BarState.On)
-        .scrollBarMargin(this.scrollBarMargin)
-      }.width('100%')
-
-      Button('scrollBarMargin')
-        .onClick(() => {
-          this.scrollBarMargin = { start: LengthMetrics.vp(45), end: LengthMetrics.vp(70) };
-        }).margin({ top: 5, left: 20 })
-
-      Button('scrollBarMargin2')
-        .onClick(() => {
-          this.scrollBarMargin = { start: LengthMetrics.vp(15), end: LengthMetrics.vp(100) };
-        }).margin({ top: 200, left: 20 })
-    }.width('100%').height('100%').backgroundColor(0xDCDCDC).padding({ top: 5 })
-  }
-}
-```
-
-### Example 1: Using the onAccessibilityHover Event
-
-This example demonstrates how to use the onAccessibilityHover event to configure a button in accessibility mode.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OnAccessibilityHoverEventExample {
-  @State hoverText: string = 'no hover';
-  @State color: Color = Color.Blue;
-
-  build() {
-    Column({ space: 20 }) {
-      Button(this.hoverText)
-        .width(180).height(80)
-        .backgroundColor(this.color)
-        .onAccessibilityHover((isHover: boolean) => {
-          // Dynamically modify the text content and background color of the button when the accessibility hover event (finger touch enter/exit) occurs through the onAccessibilityHover event.
-          if (isHover) {
-            this.hoverText = 'hover';
-            this.color = Color.Pink;
-          } else {
-            this.hoverText = 'no hover';
-            this.color = Color.Blue;
-          }
-        })
-    }.padding({ top: 30 }).width('100%')
-  }
-}
-```
-
-### Example 2: Capturing a Touch Event on a Non-Focusable Component
-
-This example shows how to capture touch events from a component that cannot receive focus in accessibility mode using the onAccessibilityHoverTransparent API and display event details in the text area below.
-
-Starting from API version 20, the [onAccessibilityHoverTransparent](arkts-arkui-common-comp-commonmethod-c.md#onaccessibilityhovertransparent) API with the input parameter type AccessibilityTransparentCallback has been added.
-
-```TypeScript
-@Entry
-@Component
-struct OnAccessibilityHoverTransparentExample {
-  @State text: string = '';
-  @State eventType: string = '';
-
-  build() {
-    Column({ space: 50 }) {
-      Column() {
-        Button('Test Button')
-          .accessibilityLevel('no')
-      }.margin({ top: 20 })
-
-      Text(this.text)
-    }
-    .width('100%')
-    .height('100%')
-    .onAccessibilityHoverTransparent((event: TouchEvent) => {
-      if (event) {
-        // Triggered on finger press.
-        if (event.type === TouchType.HOVER_ENTER) {
-          this.eventType = 'HOVER_ENTER';
-        }
-        // Triggered on touch move.
-        if (event.type === TouchType.HOVER_MOVE) {
-          this.eventType = 'HOVER_MOVE';
-        }
-        // Triggered on hand raise.
-        if (event.type === TouchType.HOVER_EXIT) {
-          this.eventType = 'HOVER_EXIT';
-        }
-        // Cancel the current event.
-        if (event.type === TouchType.HOVER_CANCEL) {
-          this.eventType = 'HOVER_CANCEL';
-        }
-        this.text = 'TouchType:' + this.eventType + '\nDistance between touch point and touch element:\nx: '
-          + event.touches[0].x + '\n' + 'y: ' + event.touches[0].y + '\nComponent globalPos:('
-          + event.target.area.globalPosition.x + ',' + event.target.area.globalPosition.y + ')\nwidth:'
-          + event.target.area.width + '\nheight:' + event.target.area.height;
-      }
-    })
-  }
-}
-```
-
-### Example 1 (Setting Component Drag and Drop)
-
-Example 1 shows how to set the drag and drop area for some components (such as Image and Text).
-
-
-
-```TypeScript
-// xxx.ets
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-
-@Entry
-@Component
-struct Index {
-  @State targetImage: string = '';
-  @State targetText: string = 'Drag Text';
-  @State imageWidth: number = 100;
-  @State imageHeight: number = 100;
-  @State imgState: Visibility = Visibility.Visible;
-  @State abstractContent: string = 'abstract';
-  @State textContent: string = '';
-  @State backGroundColor: Color = Color.Transparent;
-
-  // Obtain the Udmf data.
-  getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
-    try {
-      let data: UnifiedData = event.getData();
-      if (!data) {
-        return false;
-      }
-      let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-      if (!records || records.length <= 0) {
-        return false;
-      }
-      callback(event);
-      return true;
-    } catch (error) {
-      console.error(`Failed to get data. Code: ${error.code}, message: ${error.message}`);
-      return false;
-    }
-  }
-
-  // Automatically retry after the first attempt to obtain the Udmf data fails.
-  getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
-    if (this.getDataFromUdmfRetry(event, callback)) {
-      return;
-    }
-    setTimeout(() => {
-      this.getDataFromUdmfRetry(event, callback);
-    }, 1500);
-  }
-
-  // Change the background color based on the different stages before the drag starts.
-  private preDragChange(preDragStatus: PreDragStatus): void {
-    if (preDragStatus == PreDragStatus.READY_TO_TRIGGER_DRAG_ACTION) {
-      this.backGroundColor = Color.Red;
-    } else if (preDragStatus == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG
-      || preDragStatus == PreDragStatus.PREVIEW_LANDING_FINISHED) {
-      this.backGroundColor = Color.Blue;
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        // $r('app.media.icon') needs to be replaced with the image resource file required by the developer.
-        Image($r('app.media.icon'))
-          .width(100)
-          .height(100)
-          .draggable(true)
-          .margin({ left: 15 })
-          .visibility(this.imgState)
-          .onDragEnd((event) => {
-            // The result value obtained in onDragEnd is set in the receiver's onDrop.
-            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-            } else if (event.getResult() === DragResult.DRAG_FAILED) {
-              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-            }
-          })
-        Text('test drag event')
-          .width('100%')
-          .height(100)
-          .draggable(true)
-          .margin({ left: 15 })
-          .copyOption(CopyOptions.InApp)
-        TextArea({ placeholder: 'please input words' })
-          .copyOption(CopyOptions.InApp)
-          .width('100%')
-          .height(50)
-          .draggable(true)
-        Search({ placeholder: 'please input your word' })
-          .searchButton('Search')
-          .width('100%')
-          .height(80)
-          .textFont({ size: 20 })
-
-        Column() {
-          Text('this is abstract')
-            .fontSize(20)
-            .width('100%')
-        }
-        .margin({ left: 40, top: 20 })
-        .width('100%')
-        .height(100)
-        .onDragStart((event) => {
-          this.backGroundColor = Color.Transparent;
-          let data: unifiedDataChannel.PlainText = new unifiedDataChannel.PlainText();
-          data.abstract = 'this is abstract';
-          data.textContent = 'this is content this is content';
-          (event as DragEvent).setData(new unifiedDataChannel.UnifiedData(data));
-        })
-        .onPreDrag((status: PreDragStatus) => {
-          this.preDragChange(status);
-        })
-        .backgroundColor(this.backGroundColor)
-      }.width('45%')
-      .height('100%')
-
-      Column() {
-        Text('Drag Target Area')
-          .fontSize(20)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Image(this.targetImage)
-          .width(this.imageWidth)
-          .height(this.imageHeight)
-          .draggable(true)
-          .margin({ left: 15 })
-          .border({ color: Color.Black, width: 1 })
-          .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-          .onDrop((dragEvent?: DragEvent) => {
-            this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-              let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
-              let rect: Rectangle = event.getPreviewRect();
-              this.imageWidth = Number(rect.width);
-              this.imageHeight = Number(rect.height);
-              this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-              event.useCustomDropAnimation = false;
-              this.imgState = Visibility.None;
-              // Explicitly set result to successful to pass the value to the drag initiator's onDragEnd.
-              event.setResult(DragResult.DRAG_SUCCESSFUL);
-            });
-          })
-
-        Text(this.targetText)
-          .width('100%')
-          .height(100)
-          .border({ color: Color.Black, width: 1 })
-          .margin(15)
-          .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-          .onDrop((dragEvent?: DragEvent) => {
-            this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-              let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
-              let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
-              this.targetText = plainText.textContent;
-            });
-          })
-
-        Column() {
-          Text(this.abstractContent).fontSize(20).width('100%')
-          Text(this.textContent).fontSize(15).width('100%')
-        }
-        .width('100%')
-        .height(100)
-        .margin(20)
-        .border({ color: Color.Black, width: 1 })
-        .allowDrop([uniformTypeDescriptor.UniformDataType.PLAIN_TEXT])
-        .onDrop((dragEvent?: DragEvent) => {
-          this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-            let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
-            let plainText: unifiedDataChannel.PlainText = records[0] as unifiedDataChannel.PlainText;
-            this.abstractContent = plainText.abstract as string;
-            this.textContent = plainText.textContent;
-          });
-        })
-      }.width('45%')
-      .height('100%')
-      .margin({ left: '5%' });
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 2 (Custom Drop Animation)
-
-Since API version 18, Example 2 demonstrates how to implement a custom drop animation through the [executeDropAnimation](arkts-arkui-common-comp-dragevent-i.md#executedropanimation) API.
-
-
-
-```TypeScript
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-
-@Entry
-@Component
-struct DropAnimationExample {
-  @State targetImage: string = '';
-  @State imageWidth: number = 100;
-  @State imageHeight: number = 100;
-  @State imgState: Visibility = Visibility.Visible;
-  customDropAnimation =
-    () => {
-      this.getUIContext().animateTo({ duration: 1000, curve: Curve.EaseOut, playMode: PlayMode.Normal }, () => {
-        this.imageWidth = 200;
-        this.imageHeight = 200;
-        this.imgState = Visibility.None;
-      })
-    }
-
-  build() {
-    Row() {
-      Column() {
-        // Replace $r('app.media.app_icon') with the image resource file required by the developer.
-        Image($r('app.media.app_icon'))
-          .width(100)
-          .height(100)
-          .draggable(true)
-          .margin({ left: 15, top: 40 })
-          .visibility(this.imgState)
-          .onDragStart((event) => {
-          })
-          .onDragEnd((event) => {
-            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-              console.info('Drag Success');
-            } else if (event.getResult() === DragResult.DRAG_FAILED) {
-              console.error('Drag failed');
-            }
-          })
-      }.width('45%')
-      .height('100%')
-
-      Column() {
-        Text('Drag Target Area')
-          .fontSize(20)
-          .width(180)
-          .height(40)
-          .textAlign(TextAlign.Center)
-          .margin(10)
-          .backgroundColor('rgb(240,250,255)')
-        Column() {
-          Image(this.targetImage)
-            .width(this.imageWidth)
-            .height(this.imageHeight)
-        }
-        .draggable(true)
-        .margin({ left: 15 })
-        .border({ color: Color.Black, width: 1 })
-        .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-        // In the onDrop callback, obtain the information and size of the dragged image, update the display, and enable and execute the custom drop animation.
-        .onDrop((dragEvent: DragEvent) => {
-          let records: Array<unifiedDataChannel.UnifiedRecord> = dragEvent.getData().getRecords();
-          let rect: Rectangle = dragEvent.getPreviewRect();
-          this.imageWidth = Number(rect.width);
-          this.imageHeight = Number(rect.height);
-          this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-          dragEvent.useCustomDropAnimation = true;
-          dragEvent.executeDropAnimation(this.customDropAnimation);
-        })
-        .width(this.imageWidth)
-        .height(this.imageHeight)
-      }.width('45%')
-      .height('100%')
-      .margin({ left: '5%' })
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 3 (Asynchronously Obtaining Data During Drag)
-
-Since API version 15, Example 3 demonstrates asynchronously obtaining data during drag through [startDataLoading](arkts-arkui-common-comp-dragevent-i.md#startdataloading).
-
-```TypeScript
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-import { fileUri, fileIo } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct ImageExample {
-  @State uri: string = '';
-  @State blockArr: string[] = [];
-  uiContext = this.getUIContext();
-  udKey: string = '';
-
-  build() {
-    Column() {
-      Text('Image drag')
-        .fontSize('30dp')
-      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
-        // Replace $r('app.media.startIcon') with the image resource file required by the developer.
-        Image($r('app.media.startIcon'))
-          .width(100)
-          .height(100)
-          .border({ width: 1 })
-          .draggable(true)
-          .onDragStart((event: DragEvent) => {
-            const context: Context | undefined = this.uiContext.getHostContext();
-            if (context) {
-              let data = context.resourceManager.getMediaContentSync($r('app.media.startIcon').id, 120);
-              const arrayBuffer: ArrayBuffer = data.buffer.slice(data.byteOffset, data.byteLength + data.byteOffset);
-              let filePath = context.filesDir + '/test.png';
-              let file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-              try {
-                fileIo.writeSync(file.fd, arrayBuffer);
-              } finally {
-                fileIo.closeSync(file.fd);
-              }
-              // Obtain the URI of the image.
-              let uri = fileUri.getUriFromPath(filePath);
-              let image: unifiedDataChannel.Image = new unifiedDataChannel.Image();
-              image.imageUri = uri;
-              let dragData: unifiedDataChannel.UnifiedData = new unifiedDataChannel.UnifiedData(image);
-              (event as DragEvent).setData(dragData);
-            }
-          })
-      }
-      .margin({ bottom: 20 })
-
-      Row() {
-        Column() {
-          Text('Droppable area')
-            .fontSize('15dp')
-            .height('10%')
-          List() {
-            ForEach(this.blockArr, (item: string, index) => {
-              ListItem() {
-                Image(item)
-                  .width(100)
-                  .height(100)
-                  .border({ width: 1 })
-              }
-              .margin({ left: 30, top: 30 })
-            }, (item: string) => item)
-          }
-          .border({ width: 1 })
-          .height('90%')
-          .width('100%')
-          .onDrop((event?: DragEvent, extraParams?: string) => {
-            console.info('enter onDrop');
-            let context = this.uiContext.getHostContext() as common.UIAbilityContext;
-            let pathDir: string = context.distributedFilesDir;
-            let destUri = fileUri.getUriFromPath(pathDir);
-            // Create a DataProgressListener to listen for data transfer progress.
-            let progressListener: unifiedDataChannel.DataProgressListener =
-              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
-                if (dragData != null) {
-                  // Obtain the data record array.
-                  let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
-                  if (arr.length > 0) {
-                    // Check whether the type of the first record is IMAGE.
-                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.IMAGE) {
-                      // The type matches. Record the data URI.
-                      let image = arr[0] as unifiedDataChannel.Image;
-                      this.uri = image.imageUri;
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
-                    }
-                  } else {
-                    console.info('dragData arr is null');
-                  }
-                } else {
-                  console.info('dragData is undefined');
-                }
-                console.info(`percentage: ${progress.progress}`);
-              };
-            // Set the asynchronous data loading parameter item.
-            let options: DataSyncOptions = {
-              destUri: destUri,
-              fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
-              progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
-              dataProgressListener: progressListener,
-            }
-            try {
-              // Start data transfer.
-              this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info(`udKey: ${this.udKey}`);
-            } catch (e) {
-              console.error(`Failed to start data loading. Code: ${e.code}, message: ${e.message}`);
-            }
-          }, { disableDataPrefetch: true })
-        }
-        .height('50%')
-        .width('90%')
-        .border({ width: 1 })
-      }
-
-      Button('Cancel data transfer')
-        .onClick(() => {
-          try {
-            this.getUIContext().getDragController().cancelDataLoading(this.udKey);
-          } catch (e) {
-            console.error(`Failed to cancel data loading. Code: ${e.code}, message: ${e.message}`);
-          }
-        })
-        .margin({ top: 10 })
-    }.width('100%')
-  }
-}
-```
-
-### Example 4 (Get the screen ID of the current drag)
-
-Since API version 20, Example 4 shows how to obtain the drag event through the onDragXXX (onDragEnd not supported) API and call the [getDisplayId](#getdisplayid20) API of the drag event to obtain the screen ID.
-
-
-
-```TypeScript
-import { unifiedDataChannel, uniformTypeDescriptor } from '@kit.ArkData';
-
-@Entry
-@Component
-struct Index {
-  @State targetImage: string = '';
-  @State imageWidth: number = 100;
-  @State imageHeight: number = 100;
-  @State imgState: Visibility = Visibility.Visible;
-  @State backGroundColor: Color = Color.Transparent;
-  @State startDisplayId: number = -1;
-  @State enterDisplayId: number = -1;
-  @State moveDisplayId: number = -1;
-  @State leaveDisplayId: number = -1;
-  @State dropDisplayId: number = -1;
-
-  getDataFromUdmfRetry(event: DragEvent, callback: (data: DragEvent) => void) {
-    try {
-      let data: UnifiedData = event.getData();
-      if (!data) {
-        return false;
-      }
-      let records: Array<unifiedDataChannel.UnifiedRecord> = data.getRecords();
-      if (!records || records.length <= 0) {
-        return false;
-      }
-      callback(event);
-      return true;
-    } catch (error) {
-      console.error(`Failed to get data. Code: ${error.code}, message: ${error.message}`);
-      return false;
-    }
-  }
-
-  getDataFromUdmf(event: DragEvent, callback: (data: DragEvent) => void) {
-    if (this.getDataFromUdmfRetry(event, callback)) {
-      return;
-    }
-    setTimeout(() => {
-      this.getDataFromUdmfRetry(event, callback);
-    }, 1500);
-  }
-
-  private preDragChange(preDragStatus: PreDragStatus): void {
-    if (preDragStatus == PreDragStatus.READY_TO_TRIGGER_DRAG_ACTION) {
-      this.backGroundColor = Color.Red;
-    } else if (preDragStatus == PreDragStatus.ACTION_CANCELED_BEFORE_DRAG
-      || preDragStatus == PreDragStatus.PREVIEW_LANDING_FINISHED) {
-      this.backGroundColor = Color.Blue;
-    }
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        // Replace $r('app.media.startIcon') with the image resource file required by the developer.
-        Image($r('app.media.startIcon'))
-          .width(100)
-          .height(100)
-          .draggable(true)
-          .margin({ left: 15 })
-          .visibility(this.imgState)
-          .onDragStart((event) => {
-            let id = event.getDisplayId();
-            this.startDisplayId = id;
-          })
-
-          .onDragEnd((event) => {
-            if (event.getResult() === DragResult.DRAG_SUCCESSFUL) {
-              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag Success' });
-            } else if (event.getResult() === DragResult.DRAG_FAILED) {
-              this.getUIContext().getPromptAction().showToast({ duration: 100, message: 'Drag failed' });
-            }
-          })
-
-        Text('displayID in onDragStart: ' + this.startDisplayId.toString())
-          .width('100%')
-          .height(50)
-          .draggable(true)
-          .margin({ left: 15 })
-        Text('displayID in onDragEnter: ' + this.enterDisplayId.toString())
-          .width('100%')
-          .height(50)
-          .draggable(true)
-          .margin({ left: 15 })
-        Text('displayID in onDragMove: ' + this.moveDisplayId.toString())
-          .width('100%')
-          .height(50)
-          .draggable(true)
-          .margin({ left: 15 })
-        Text('displayID in onDragLeave: ' + this.leaveDisplayId.toString())
-          .width('100%')
-          .height(50)
-          .draggable(true)
-          .margin({ left: 15 })
-        Text('displayID in onDrop: ' + this.dropDisplayId.toString())
-          .width('100%')
-          .height(50)
-          .draggable(true)
-          .margin({ left: 15 })
-          .onPreDrag((status: PreDragStatus) => {
-            this.preDragChange(status);
-          })
-      }.width('45%')
-      .height('100%')
-
-      Column() {
-        Text('Drag Target Area')
-          .fontSize(20)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        Image(this.targetImage)
-          .width(this.imageWidth)
-          .height(this.imageHeight)
-          .draggable(true)
-          .margin({ left: 15 })
-          .border({ color: Color.Black, width: 1 })
-          .allowDrop([uniformTypeDescriptor.UniformDataType.IMAGE])
-          .onDragEnter((event) => {
-            let id = event.getDisplayId();
-            this.enterDisplayId = id;
-          })
-          .onDragMove((event) => {
-            let id = event.getDisplayId();
-            this.moveDisplayId = id;
-          })
-          .onDragLeave((event) => {
-            let id = event.getDisplayId();
-            this.leaveDisplayId = id;
-          })
-          .onDrop((dragEvent: DragEvent) => {
-            let id = dragEvent.getDisplayId();
-            this.dropDisplayId = id;
-            this.getDataFromUdmf((dragEvent as DragEvent), (event: DragEvent) => {
-              let records: Array<unifiedDataChannel.UnifiedRecord> = event.getData().getRecords();
-              let rect: Rectangle = event.getPreviewRect();
-              this.imageWidth = Number(rect.width);
-              this.imageHeight = Number(rect.height);
-              this.targetImage = (records[0] as unifiedDataChannel.Image).imageUri;
-              event.useCustomDropAnimation = false;
-              this.imgState = Visibility.None;
-              event.setResult(DragResult.DRAG_SUCCESSFUL);
-            });
-          })
-      }.width('45%')
-      .height('100%')
-      .margin({ left: '5%' })
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 5 (Obtaining the Package Name and Checking Whether It Is a Cross-Device Drag)
-
-Starting from API version 20, Example 5 shows how to obtain a drag event through the onDragXXX API, call the [getDragSource](arkts-arkui-common-comp-dragevent-i.md#getdragsource) API of the drag event to obtain the package name, and call the isRemote API to determine whether it is a cross-device drag.
-
-
-
-```TypeScript
-@Entry
-@Component
-struct Index {
-  @State targetImage: string = '';
-  @State startDragSource: string = '';
-  @State startIsRemote: boolean = true;
-  @State enterDragSource: string = '';
-  @State enterIsRemote: boolean = true;
-
-  build() {
-    Column() {
-      Row() {
-        Column() {
-          Text('start Drag Area')
-            .fontSize(18)
-            .width('100%')
-            .height(40)
-            .margin(10)
-            .backgroundColor('#008888')
-          // Replace $r('app.media.startIcon') with the image resource file required by the developer.
-          Image($r('app.media.startIcon'))
-            .onDragStart((event) => {
-              this.startDragSource = (event as DragEvent).getDragSource();
-              this.startIsRemote = (event as DragEvent).isRemote();
-            })
-            .width(100)
-            .height(100)
-            .draggable(true)
-            .margin({ left: 15 })
-        }
-        .border({ color: Color.Black, width: 1 })
-        .width('45%')
-        .height('50%')
-
-        Column() {
-          Text('Drag Target Area')
-            .fontSize(20)
-            .width('100%')
-            .height(40)
-            .margin(10)
-            .backgroundColor('#008888')
-          Image(this.targetImage)
-            .width(100)
-            .height(100)
-            .draggable(true)
-            .margin({ left: 15 })
-            .border({ color: Color.Black, width: 1 })
-            .onDragEnter((event) => {
-              this.enterDragSource = (event as DragEvent).getDragSource();
-              this.enterIsRemote = (event as DragEvent).isRemote();
-            })
-            .onDrop(() => {
-            })
-        }
-        .border({ color: Color.Black, width: 1 })
-        .width('45%')
-        .height('50%')
-        .margin({ left: '5%' })
-      }
-      .height('70%')
-
-      Text('onDragStart dragSource: ' + this.startDragSource.toString() + '\n' + 'onDragStart isRemote: ' +
-      this.startIsRemote.toString())
-        .width('100%')
-        .height(50)
-        .margin({ left: 15 })
-      Text('onDragEnter dragSource: ' + this.enterDragSource.toString() + '\n' + 'onDragEnter isRemote: ' +
-      this.enterIsRemote.toString())
-        .width('100%')
-        .height(50)
-        .margin({ left: 15 })
-    }
-  }
-}
-```
-
-### Example 6 (Drag Supporting Hover Detection)
-
-Since API version 20, Example 6 demonstrates registering a callback through the [onDragSpringLoading](arkts-arkui-common-comp-commonmethod-c.md#ondragspringloading) API and obtaining context information (current state and notification sequence) through [SpringLoadingContext](#springloadingcontext20) in the callback.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State state: number = 0;
-  @State currentNotifySequence: number = 0;
-  @State config: DragSpringLoadingConfiguration = {
-    stillTimeLimit: 200,
-    updateInterval: 300,
-    updateNotifyCount: 4,
-    updateToFinishInterval: 300
-  };
-
-  build() {
-    Row() {
-      Column() {
-        Text('start Drag')
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-        // Replace $r('app.media.startIcon') with the image resource file required by the developer.
-        Image($r('app.media.startIcon'))
-          .id('ori_image')
-          .width(100)
-          .height(100)
-          .draggable(true)
-          .margin({ left: 15 })
-        Text('Current state is: ' + this.state)
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-        Text('Current notification sequence is: ' + this.currentNotifySequence)
-          .fontSize(18)
-          .width('100%')
-          .height(40)
-          .margin(10)
-      }
-      .width('45%')
-      .height('100%')
-
-      Column() {
-        Text('Drag Target Area')
-          .fontSize(20)
-          .width('100%')
-          .height(40)
-          .margin(10)
-          .backgroundColor('#008888')
-          .id('text')
-        Image('')
-          .width(100)
-          .height(100)
-          .draggable(true)
-          .margin({ left: 15 })
-          .border({ color: Color.Black, width: 2 })
-          .onDragSpringLoading((context: SpringLoadingContext) => {
-            this.state = context.state;
-            this.currentNotifySequence = context.currentNotifySequence;
-          }, this.config)
-      }
-      .width('45%')
-      .height('100%')
-      .margin({ left: '5%' })
-      .onDragSpringLoading((context: SpringLoadingContext) => {
-        this.state = context.state;
-        this.currentNotifySequence = context.currentNotifySequence;
-      }, this.config)
-      .id('column')
-      .backgroundColor(Color.Grey)
-    }
-    .height('100%')
-  }
-}
-```
-
-### Example 7 (Delayed Data Provision by the Drag Initiator)
-
-Starting from API version 20, Example 7 demonstrates calling [setDataLoadParams](arkts-arkui-common-comp-dragevent-i.md#setdataloadparams) in [onDragStart](#ondragstart) to delay data provision, and calling [startDataLoading](arkts-arkui-common-comp-dragevent-i.md#startdataloading) in [onDrop](#ondrop) to obtain data asynchronously.
-
-
-
-```TypeScript
-import { unifiedDataChannel, uniformDataStruct, uniformTypeDescriptor } from '@kit.ArkData';
-import { fileUri, fileIo } from '@kit.CoreFileKit';
-import { common } from '@kit.AbilityKit';
-
-@Entry
-@Component
-struct VideoExample {
-  @State uri: string = '';
-  @State blockArr: string[] = [];
-  uiContext = this.getUIContext();
-  udKey: string = '';
-
-  build() {
-    Column() {
-      Text('video drag')
-        .fontSize('30dp')
-      Flex({ direction: FlexDirection.Row, alignItems: ItemAlign.Center, justifyContent: FlexAlign.SpaceAround }) {
-        // $rawfile('test1.mp4') needs to be replaced with the resource file required by the developer.
-        Video({ src: $rawfile('test1.mp4'), controller: new VideoController() })
-          .width(200)
-          .height(200)
-          .border({ width: 1 })
-          .draggable(true)
-          .onDragStart((event: DragEvent) => {
-            const context: Context | undefined = this.uiContext.getHostContext();
-            if (context) {
-              // Define the delayed data loading callback, which reads the video resource and encapsulates it into UnifiedData when the target requests data.
-              let loadHandler: unifiedDataChannel.DataLoadHandler = (acceptableInfo) => {
-                console.info(`acceptableInfo recordCount ${acceptableInfo?.recordCount}`);
-                if (acceptableInfo?.types) {
-                  console.info(`acceptableInfo types ${Array.from(acceptableInfo.types)}`);
-                } else {
-                  console.error('acceptableInfo types is undefined');
-                }
-                let data = context.resourceManager.getRawFdSync('test1.mp4');
-                let filePath = context.filesDir + '/test1.mp4';
-                let file: fileIo.File = null!;
-                try {
-                  file = fileIo.openSync(filePath, fileIo.OpenMode.CREATE | fileIo.OpenMode.READ_WRITE);
-                  let bufferSize = data.length as number;
-                  let buf = new ArrayBuffer(bufferSize);
-                  fileIo.readSync(data.fd, buf, { offset: data.offset, length: bufferSize });
-                  fileIo.writeSync(file.fd, buf, { offset: 0, length: bufferSize });
-                } catch (error) {
-                  console.error(`Failed to open file. Code: ${error.code}, message: ${error.message}`);
-                } finally {
-                  if (file !== null) {
-                    fileIo.closeSync(file.fd);
-                  }
-                }
-                context.resourceManager.closeRawFdSync('test1.mp4');
-                this.uri = fileUri.getUriFromPath(filePath);
-                let videoMp: uniformDataStruct.FileUri = {
-                  uniformDataType: 'general.file-uri',
-                  oriUri: this.uri,
-                  fileType: 'general.video',
-                };
-                let unifiedRecord = new unifiedDataChannel.UnifiedRecord();
-                let unifiedData = new unifiedDataChannel.UnifiedData();
-                unifiedRecord.addEntry(uniformTypeDescriptor.UniformDataType.FILE_URI, videoMp);
-                unifiedData.addRecord(unifiedRecord);
-                return unifiedData;
-              }
-              (event as DragEvent).setDataLoadParams({
-                loadHandler: loadHandler,
-                dataLoadInfo: { types: new Set([uniformTypeDescriptor.UniformDataType.FILE_URI]), recordCount: 1 }
-              });
-            }
-          })
-      }
-      .margin({ bottom: 20 })
-
-      Row() {
-        Column() {
-          Text('Droppable area')
-            .fontSize('15dp')
-            .height('10%')
-          List() {
-            ForEach(this.blockArr, (item: string, index) => {
-              ListItem() {
-                Video({ src: item, controller: new VideoController() })
-                  .width(100)
-                  .height(100)
-                  .border({ width: 1 })
-              }
-              .margin({ left: 30, top: 30 })
-            }, (item: string) => item)
-          }
-          .border({ width: 1 })
-          .height('90%')
-          .width('100%')
-          .onDrop((event: DragEvent, extraParams?: string) => {
-            let context = this.uiContext.getHostContext() as common.UIAbilityContext;
-            let pathDir: string = context.distributedFilesDir;
-            let destUri = fileUri.getUriFromPath(pathDir);
-            let progressListener: unifiedDataChannel.DataProgressListener =
-              (progress: unifiedDataChannel.ProgressInfo, dragData: UnifiedData | null) => {
-                if (dragData != null) {
-                  let arr: Array<unifiedDataChannel.UnifiedRecord> = dragData.getRecords();
-                  if (arr.length > 0) {
-                    if (arr[0].getType() === uniformTypeDescriptor.UniformDataType.VIDEO) {
-                      this.blockArr.splice(JSON.parse(extraParams as string).insertIndex, 0, this.uri);
-                    }
-                  } else {
-                    console.info('dragData arr is null');
-                  }
-                } else {
-                  console.info('dragData is undefined');
-                }
-                console.info(`percentage: ${progress.progress}`);
-              };
-            let info: unifiedDataChannel.DataLoadInfo =
-              { types: new Set([uniformTypeDescriptor.UniformDataType.VIDEO]), recordCount: 100 };
-            let options: DataSyncOptions = {
-              destUri: destUri,
-              fileConflictOptions: unifiedDataChannel.FileConflictOptions.OVERWRITE,
-              progressIndicator: unifiedDataChannel.ProgressIndicator.DEFAULT,
-              dataProgressListener: progressListener,
-              acceptableInfo: info,
-            }
-            try {
-              // Start asynchronous data loading and save the data loading identifier for subsequent cancellation of the transfer.
-              this.udKey = (event as DragEvent).startDataLoading(options);
-              console.info(`udKey: ${this.udKey}`);
-            } catch (error) {
-              console.error(`startDataLoading errorCode: ${error.code}, errorMessage: ${error.message}`);
-            }
-          }, { disableDataPrefetch: true })
-        }
-        .height('50%')
-        .width('90%')
-        .border({ width: 1 })
-      }
-
-      Button('Cancel data transfer')
-        .onClick(() => {
-          try {
-            this.getUIContext().getDragController().cancelDataLoading(this.udKey);
-          } catch (error) {
-            console.error(`cancelDataLoading errorCode: ${error.code}, errorMessage: ${error.message}`);
-          }
-        })
-        .margin({ top: 10 })
-    }.width('100%')
-  }
-}
-```
-
-### Example 8: Automatically Hiding a Specified Component During Drag
-
-This example uses the [autoHideComponentUniqueIds](#attributes) attribute of DragEvent to automatically hide a specified component after a drag is successfully initiated.
-
-Since API version 26.0.0, DragEvent adds the autoHideComponentUniqueIds attribute.
-
-```TypeScript
-import { unifiedDataChannel } from '@kit.ArkData';
-
-@Entry
-@Component
-struct DragEventAutoHideSample {
-  @State sourceVisibility: Visibility = Visibility.Visible;
-  @State badgeVisibility: Visibility = Visibility.Visible;
-  @State statusText: string = 'Status: Waiting for drag';
-
-  private buildData(textValue: string): unifiedDataChannel.UnifiedData {
-    let plainText = new unifiedDataChannel.PlainText();
-    plainText.textContent = textValue;
-    plainText.abstract = textValue;
-    return new unifiedDataChannel.UnifiedData(plainText);
-  }
-
-  private collectHideIds(): number[] {
-    let hideIds: number[] = [];
-    let sourceNode = this.getUIContext().getFrameNodeById('drag_source');
-    let badgeNode = this.getUIContext().getFrameNodeById('drag_badge');
-    if (sourceNode?.getUniqueId() !== undefined) {
-      hideIds.push(sourceNode.getUniqueId());
-    }
-    if (badgeNode?.getUniqueId() !== undefined) {
-      hideIds.push(badgeNode.getUniqueId());
-    }
-    return hideIds;
-  }
-
-  private hideTargets(): void {
-    this.sourceVisibility = Visibility.Hidden;
-    this.badgeVisibility = Visibility.Hidden;
-    this.statusText = 'Status: Dragging, target component hidden';
-  }
-
-  private restoreTargets(): void {
-    this.sourceVisibility = Visibility.Visible;
-    this.badgeVisibility = Visibility.Visible;
-    this.statusText = 'Status: Drag ended, component restored';
-  }
-
-  build() {
-    Column({ space: 12 }) {
-      Text(this.statusText)
-        .width('100%')
-        .fontSize(14)
-        .fontColor('#BF360C')
-
-      Row({ space: 12 }) {
-        Column() {
-          Text('Drag source')
-            .fontColor(Color.White)
-            .fontWeight(FontWeight.Medium)
-          Text('id: drag_source')
-            .fontSize(10)
-            .fontColor('#E8F5E9')
-        }
-          .id('drag_source')
-          .width(140)
-          .height(90)
-          .backgroundColor('#2E7D32')
-          .borderRadius(12)
-          .justifyContent(FlexAlign.Center)
-          .visibility(this.sourceVisibility)
-          .draggable(true)
-          .onDragStart((event: DragEvent) => {
-            let hideIds = this.collectHideIds();
-            event.autoHideComponentUniqueIds = hideIds;
-            event.setData(this.buildData('drag event auto hide test data'));
-            this.hideTargets();
-            return () => {
-              Text('Drag preview')
-            };
-          })
-          .onDragEnd(() => {
-            this.restoreTargets();
-          })
-
-        Column() {
-          Text('Follow hidden component')
-            .fontColor(Color.White)
-            .fontWeight(FontWeight.Medium)
-          Text('id: drag_badge')
-            .fontSize(10)
-            .fontColor('#E3F2FD')
-        }
-          .id('drag_badge')
-          .width(140)
-          .height(90)
-          .backgroundColor('#1565C0')
-          .borderRadius(12)
-          .justifyContent(FlexAlign.Center)
-          .visibility(this.badgeVisibility)
-      }
-
-      Column() {
-        Text('Drop target')
-          .fontWeight(FontWeight.Medium)
-        Text('Restore the component display after release')
-          .fontSize(10)
-          .fontColor('#6D4C41')
-      }
-        .width('100%')
-        .height(120)
-        .backgroundColor('#FFE082')
-        .borderRadius(12)
-        .justifyContent(FlexAlign.Center)
-        .onDrop(() => {
-          this.restoreTargets();
-        })
-    }
-    .width('100%')
-    .padding(16)
   }
 }
 ```
@@ -16483,58 +17634,6 @@ struct OutlineExample {
 }
 ```
 
-This example demonstrates how to apply blur effects using foregroundFilter, backgroundFilter, and compositingFilter.
-
-```TypeScript
-// xxx.ets
-import { uiEffect } from '@kit.ArkGraphics2D';
-
-@Entry
-@Component
-struct FilterEffectExample {
-  @State foregroundBlurFilter: uiEffect.Filter = uiEffect.createFilter().blur(10);
-  @State backgroundBlurFilter: uiEffect.Filter = uiEffect.createFilter().blur(10);
-  @State compositingBlurFilter: uiEffect.Filter = uiEffect.createFilter().blur(10);
-
-  build() {
-    Column({ space: 15 }) {
-
-      Text('foregroundFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
-      Text('Foreground filter')
-        .width(100)
-        .height(100)
-        .backgroundColor('#ADD8E6')
-        // $r("app.media.app_icon") requires an image resource file named app_icon to be prepared in the "resources/base/media" directory of the project.
-        .backgroundImage($r('app.media.app_icon'))
-        .backgroundImageSize({ width: 80, height: 80 })
-        .foregroundFilter(this.foregroundBlurFilter) // Set the blur effect through foregroundFilter.
-
-      Text('backgroundFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
-      Text('Background filter')
-        .width(100)
-        .height(100)
-        .backgroundColor('#ADD8E6')
-        // Replace $r("app.media.app_icon") with the resource file you use.
-        .backgroundImage($r('app.media.app_icon'))
-        .backgroundImageSize({ width: 80, height: 80 })
-        .backgroundFilter(this.backgroundBlurFilter) // Set the blur effect through backgroundFilter.
-
-      Text('compositingFilter').fontSize(20).width('75%').fontColor('#DCDCDC')
-      Text('Compositing filter')
-        .width(100)
-        .height(100)
-        .backgroundColor('#ADD8E6')
-        // Replace $r("app.media.app_icon") with the resource file you use.
-        .backgroundImage($r('app.media.app_icon'))
-        .backgroundImageSize({ width: 80, height: 80 })
-        .compositingFilter(this.compositingBlurFilter) // Set the blur effect through compositingFilter.
-    }
-    .height('100%')
-    .width('100%')
-  }
-}
-```
-
 ### Example 1: Parent Component Prioritizes Gesture Recognition and Parent and Child Components Trigger Gestures Simultaneously
 
 This example uses priorityGesture and parallelGesture to implement parent component priority gesture recognition and simultaneous gesture triggering by parent and child components, respectively.
@@ -16591,82 +17690,6 @@ struct GestureSettingsExample {
             this.parallelTestValue += '\nColumn';
           }), GestureMask.Normal)
     }
-  }
-}
-```
-
-This example demonstrates how to set whether a component monopolizes events by configuring monopolizeEvents.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State message: string = 'set monopolizeEvents false';
-  @State messageOut: string = ' ';
-  @State messageInner: string = ' ';
-  @State monopolize: boolean = false;
-
-  build() {
-    Column() {
-      Text(this.message)
-        .fontSize(22)
-        .margin(10)
-      Text(this.messageOut)
-        .fontSize(22)
-        .margin(10)
-      Text(this.messageInner)
-        .fontSize(22)
-        .margin(10)
-      Button('clean')
-        .fontSize(22)
-        .margin(10)
-        // Clear the touch event prompt information of the inner and outer columns through the button click event.
-        .onClick(() => {
-          this.messageOut = ' ';
-          this.messageInner = ' ';
-        })
-      Button('change monopolizeEvents')
-        .fontSize(22)
-        .margin(10)
-        // Toggle the monopolization control attribute of the inner column through the button click event.
-        .onClick(() => {
-          this.monopolize = !this.monopolize;
-          if (!this.monopolize) {
-            this.message = 'set monopolizeEvents false';
-          } else {
-            this.message = 'set monopolizeEvents true';
-          }
-        })
-      Column() {
-        Column() {
-        }
-        // When this.monopolize is true, tapping the inner column triggers only its own touch event, not the touch event of the outer column.
-        // When this.monopolize is false, tapping the inner column triggers both its own touch event and the touch event of the outer column.
-        .monopolizeEvents(this.monopolize)
-        .width('100%')
-        .height('40%')
-        .backgroundColor(Color.Blue)
-        // Bind the touch event to the inner column.
-        .onTouch((event: TouchEvent) => {
-          if (event.type == TouchType.Down) {
-            console.info('inner column touch down');
-            this.messageInner = 'inner column touch down';
-          }
-        })
-      }
-      .backgroundColor(Color.Gray)
-      .height('100%')
-      .width('100%')
-      // Bind the touch event to the outer column.
-      .onTouch((event) => {
-        if (event.type == TouchType.Down) {
-          console.info('outside column touch down');
-          this.messageOut = 'outside column touch down';
-        }
-      })
-    }
-    .height('100%')
   }
 }
 ```
@@ -16751,227 +17774,6 @@ struct Index {
       .width('100%')
     }
     .height('100%')
-  }
-}
-```
-
-### Example 1: Understanding the Hit Test Effect When the Hit Test Mode Is Block and Transparent
-
-This example demonstrates the hit test effects of Block and Transparent hit test modes by setting different [HitTestMode](./ts-appendix-enums.md#hittestmode9) values.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct HitTestBehaviorExample {
-  build() {
-    // outer stack
-    Stack() {
-      Button('outer button')
-        .onTouch((event) => {
-          console.info(`outer button touched type: ${(event as TouchEvent).type}`);
-        })
-      // inner stack
-      Stack() {
-        Button('inner button')
-          .onTouch((event) => {
-            console.info(`inner button touched type: ${(event as TouchEvent).type}`);
-          })
-      }
-      .width('100%').height('100%')
-      // Set the hit test type to Block. The node responds to the hit test but prevents sibling nodes from participating in the hit test.
-      .hitTestBehavior(HitTestMode.Block)
-      .onTouch((event) => {
-        console.info(`stack touched type: ${(event as TouchEvent).type}`);
-      })
-
-      Text('Transparent')
-        // Set the hit test type to Transparent. The node does not intercept the hit test and allows lower-layer nodes to respond to the hit test.
-        .hitTestBehavior(HitTestMode.Transparent)
-        .width('100%').height('100%')
-        .onTouch((event) => {
-          console.info(`text touched type: ${(event as TouchEvent).type}`);
-        })
-    }.width(300).height(300)
-  }
-}
-```
-
-### Example 2: Understanding the Hit Test Effect When the Hit Test Type is BLOCK_HIERARCHY
-
-Starting from API version 20, this example demonstrates the hit test effect when the hit test mode is set to BLOCK_HIERARCHY.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BlockHierarchy {
-  build() {
-    // outer stack
-    Stack() {
-      Stack() {
-        Button('outer button')
-          .onTouch((event) => {
-            console.info(`HitTestMode outer button touched type: ${(event as TouchEvent).type}`);
-          })
-          .width(200)
-          .height(200)
-          .backgroundColor('#D5D5D5')
-        // inner stack
-        Stack() {
-          Button()
-            .id('button150')
-            .backgroundColor('#F7F7F7')
-            .width(150)
-            .height(150)
-            .onTouch((event) => {
-              console.info(`HitTestMode button150 touched type: ${(event as TouchEvent).type}`);
-            })
-            .hitTestBehavior(HitTestMode.Transparent)
-          Button()
-            .id('button100')
-            .backgroundColor('#707070')
-            .width(100)
-            .height(100)
-            .onTouch((event) => {
-              console.info(`HitTestMode button100 touched type: ${(event as TouchEvent).type}`);
-            })
-            .hitTestBehavior(HitTestMode.Transparent)
-          Button()
-            .id('button050')
-            .backgroundColor('#D5D5D5')
-            .width(50)
-            .height(50)
-            .onTouch((event) => {
-              console.info(`HitTestMode button050 touched type: ${(event as TouchEvent).type}`);
-            })
-            .hitTestBehavior(HitTestMode.Transparent)
-        }
-        .width('100%').height('100%')
-        // Set the hit test mode: The node itself and its child nodes respond to the hit test, preventing all sibling nodes and parent nodes with lower priority from participating in the hit test.
-        .hitTestBehavior(HitTestMode.BLOCK_HIERARCHY)
-        .onTouch((event) => {
-          console.info(`HitTestMode stack touched type: ${(event as TouchEvent).type}`);
-        })
-
-        Text('Transparent')
-          .hitTestBehavior(HitTestMode.Transparent)
-          .width('100%').height('100%')
-          .onTouch((event) => {
-            console.info(`HitTestMode text touched type: ${(event as TouchEvent).type}`);
-          })
-      }.width(300).height(300)
-      .borderWidth(2)
-      .onTouch((event) => {
-        console.info(`HitTestMode father stack touched type: ${(event as TouchEvent).type}`);
-      })
-    }.width(500).height(500)
-    .borderWidth(2)
-    .onTouch((event) => {
-      console.info(`HitTestMode grandfather stack touched type: ${(event as TouchEvent).type}`);
-    })
-  }
-}
-```
-
-### Example 3: Understanding the Hit Test Effect When the Hit Test Type is BLOCK_DESCENDANTS
-
-Starting from API version 20, this example demonstrates the hit test effect when the hit test mode is set to BLOCK_DESCENDANTS.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct BlockDescendants {
-  build() {
-    // outer stack
-    Stack() {
-      Stack() {
-        Button('outer button')
-          .onTouch((event) => {
-            console.info(`HitTestMode outer button touched type: ${(event as TouchEvent).type}`);
-          })
-          .width(200)
-          .height(200)
-          .backgroundColor('#D5D5D5')
-        // inner stack
-        Stack() {
-          Button('inner button')
-            .width(100)
-            .height(100)
-            .onTouch((event) => {
-              console.info(`HitTestMode inner button touched type: ${(event as TouchEvent).type}`);
-            })
-        }
-        .width('100%').height('100%')
-        // Set the hit test mode so that the node itself does not respond to the hit test, and all its descendants (children, grandchildren, and so on) do not respond to the hit test either, without affecting the hit test of ancestor nodes.
-        .hitTestBehavior(HitTestMode.BLOCK_DESCENDANTS)
-        .onTouch((event) => {
-          console.info(`HitTestMode stack touched type: ${(event as TouchEvent).type}`);
-        })
-
-        Text('Transparent')
-          .hitTestBehavior(HitTestMode.Transparent)
-          .width('100%').height('100%')
-          .onTouch((event) => {
-            console.info(`HitTestMode text touched type: ${(event as TouchEvent).type}`);
-          })
-      }.width(300).height(300)
-      .borderWidth(2)
-      .onTouch((event) => {
-        console.info(`HitTestMode father stack touched type: ${(event as TouchEvent).type}`);
-      })
-    }.width(500).height(500)
-    .borderWidth(2)
-    .onTouch((event) => {
-      console.info(`HitTestMode grandfather stack touched type: ${(event as TouchEvent).type}`);
-    })
-  }
-}
-```
-
-### Example 4: Understanding the Hit Test Effect When Multiple Nodes Overlap in the Stack Component
-
-This example demonstrates the hit testing effect when multiple nodes have overlapping touch areas within a Stack component. If [HitTestMode](./ts-appendix-enums.md#hittestmode9) is set to None, the overlapping background area cannot respond to hit testing. The background area responds to hit testing only when the attribute is set to Transparent.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  @State @Watch('onModeChange') mode: number = HitTestMode.None;
-  @State modeStr: string = 'None';
-
-  onModeChange() {
-    this.modeStr = this.mode === HitTestMode.None ? 'None' : 'Transparent';
-  }
-
-  build() {
-    Stack() {
-      Column()
-        .height('100%')
-        .width('100%')
-        .onTouch(() => {
-          console.info('background hit test!');
-        })
-      Stack() {
-        // Click the button to perform hit testing.
-        Button('HitTest')
-        // Click the button to switch between different hit test modes.
-        Button('HitTestMode: ' + this.modeStr)
-          .margin({ top: 100 })
-          .onClick(() => {
-            this.mode = this.mode === HitTestMode.None ?
-              HitTestMode.Transparent : HitTestMode.None;
-          })
-      }
-      .height('100%')
-      .width('100%')
-      //The lower node can respond to hit testing only when HitTestMode of the upper node is set to Transparent.
-      .hitTestBehavior(this.mode)
-    }
-    .height('100%')
-    .width('100%')
   }
 }
 ```
@@ -17304,58 +18106,6 @@ struct Demo {
 }
 ```
 
-This example demonstrates how components gain and lose focus. The colors of the buttons change when they gain or lose focus.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct FocusEventExample {
-  @State oneButtonColor: string = '#0066FF'
-  @State twoButtonColor: string = '#87CEFA'
-  @State threeButtonColor: string = '#90EE90'
-
-  build() {
-    Column({ space: 20 }) {
-      // When the focus moves among the three buttons, the button changes color when it gains focus and restores its original background color when it loses focus.
-      Button('First Button')
-        .backgroundColor(this.oneButtonColor)
-        .width(260)
-        .height(70)
-        .fontColor(Color.Black)
-        .onFocus(() => {
-          this.oneButtonColor = '#FFFFFF';
-        })
-        .onBlur(() => {
-          this.oneButtonColor = '#0066FF';
-        })
-      Button('Second Button')
-        .backgroundColor(this.twoButtonColor)
-        .width(260)
-        .height(70)
-        .fontColor(Color.Black)
-        .onFocus(() => {
-          this.twoButtonColor = '#FFFFFF';
-        })
-        .onBlur(() => {
-          this.twoButtonColor = '#87CEFA';
-        })
-      Button('Third Button')
-        .backgroundColor(this.threeButtonColor)
-        .width(260)
-        .height(70)
-        .fontColor(Color.Black)
-        .onFocus(() => {
-          this.threeButtonColor = '#FFFFFF';
-        })
-        .onBlur(() => {
-          this.threeButtonColor = '#90EE90';
-        })
-    }.width('100%').margin({ top: 20 })
-  }
-}
-```
-
 ### Example 1: Obtaining Axis Event Parameters
 
 This example shows how to set up an axis event on a button. When the user scrolls the mouse wheel, the axis event parameters are captured. Starting from API version 21, this example uses the  attribute of [BaseEvent](./ts-universal-events-click.md#baseevent8) and [getPinchAxisScaleValue](arkts-arkui-common-comp-axisevent-i.md#getpinchaxisscalevalue) to obtain the pinch scale value. Starting from API version 22, this example uses [hasAxis](arkts-arkui-common-comp-axisevent-i.md#hasaxis) to check whether the axis event contains the specified axis type.
@@ -17424,121 +18174,6 @@ struct GetCurrentLocalPositionExample {
 
       Text(this.positionText)
     }.width('100%')
-  }
-}
-```
-
-### Example 1: Using Different Clipping Attributes
-
-This example demonstrates how to clip and mask an image using [clipShape](arkts-arkui-common-comp-commonmethod-c.md#clipshape), [clip](#clip12), and [maskShape](arkts-arkui-common-comp-commonmethod-c.md#maskshape).
-
-
-
-```TypeScript
-// xxx.ets
-import { CircleShape, RectShape } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct ClipAndMaskExample {
-  build() {
-    Column({ space: 15 }) {
-      Text('clip').fontSize(12).width('75%').fontColor('#DCDCDC')
-      Row() {
-        // Replace $r("app.media.testImg") with the image resource file you use.
-        Image($r('app.media.testImg')).width('500px').height('280px')
-      }
-      .clip(true) // If clip is not set to true, the image is not confined by the rounded corners of the <Row> component and may extend beyond the <Row> component.
-      .borderRadius(20)
-
-      // Clip the image based on a circle with a diameter of 280 px.
-      // Replace $r("app.media.testImg") with the image resource file you use.
-      Image($r('app.media.testImg'))
-        .clipShape(new CircleShape({ width: '280px', height: '280px' }))
-        .width('500px').height('280px')
-
-      Text('mask').fontSize(12).width('75%').fontColor('#DCDCDC')
-      // Add a 500 × 280 px square mask to the image.
-      // Replace $r("app.media.testImg") with the image resource file you use.
-      Image($r('app.media.testImg'))
-        .maskShape(new RectShape({ width: '500px', height: '280px' }).fill(Color.Gray))
-        .width('500px').height('280px')
-
-      // Add a 280 × 280 px circular mask to the image.
-      // Replace $r("app.media.testImg") with the image resource file you use.
-      Image($r('app.media.testImg'))
-        .maskShape(new CircleShape({ width: '280px', height: '280px' }).fill(Color.Gray))
-        .width('500px').height('280px')
-    }
-    .width('100%')
-    .margin({ top: 15 })
-  }
-}
-```
-
-### Example 2: Implementing Component Masking
-
-This example demonstrates how to mask an image using [mask](#mask12).
-
-```TypeScript
-@Entry
-@Component
-struct ProgressMaskExample {
-  @State isRedColor: boolean = true;
-  @State value: number = 10.0;
-  @State enableBreathingAnimation: boolean = false;
-  @State progress: ProgressMask = new ProgressMask(10.0, 100.0, Color.Gray);
-
-  build() {
-    Column({ space: 15 }) {
-      Text('progress mask').fontSize(12).width('75%').fontColor('#DCDCDC')
-      // Add a progress mask to the image.
-      // Replace $r("app.media.testImg") with the image resource file you use.
-      Image($r('app.media.testImg'))
-        .width('500px').height('280px')
-        .mask(this.progress)
-        .animation({
-          duration: 2000, // Animation duration.
-          curve: Curve.Linear, // Animation curve.
-          delay: 0, // Animation delay.
-          iterations: 1, // Number of playback times.
-          playMode: PlayMode.Normal // Animation playback mode.
-        }) // Configure the animation for the mask progress change of the Image component.
-
-      // Update the progress value of the progress mask.
-      Button('updateProgress')
-        .onClick((event?: ClickEvent) => {
-          this.value += 10;
-          this.progress.updateProgress(this.value);
-        }).width(200).height(50).margin(20)
-
-      // Update the color of the progress mask.
-      Button('updateColor')
-        .onClick((event?: ClickEvent) => {
-          if (this.isRedColor) {
-            this.progress.updateColor(0x9fff0000);
-          } else {
-            this.progress.updateColor(0x9f0000ff);
-          }
-          this.isRedColor = !this.isRedColor;
-        }).width(200).height(50).margin(20)
-
-      // Enable or disable the breathing animation.
-      Button('enableBreathingAnimation:' + this.enableBreathingAnimation)
-        .onClick((event?: ClickEvent) => {
-          this.enableBreathingAnimation = !this.enableBreathingAnimation;
-          this.progress.enableBreathingAnimation(this.enableBreathingAnimation);
-        }).width(200).height(50).margin(20)
-
-      // Restore the progress mask.
-      Button('click reset')
-        .onClick((event?: ClickEvent) => {
-          this.value = 0;
-          this.progress.updateProgress(this.value);
-        }).width(200).height(50).margin(20)
-    }
-    .width('100%')
-    .margin({ top: 15 })
   }
 }
 ```
@@ -18097,509 +18732,6 @@ struct DisplayPriorityExample {
 }
 ```
 
-This example demonstrates how to set the foreground attributes through the foregroundEffect API.
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct Index {
-  build() {
-    Row() {
-      // Replace $r('app.media.icon') with the image resource file required by the developer.
-      Image($r('app.media.icon'))
-          .width(100)
-          .height(100)
-          // Set the foreground blur effect with a blur radius of 20.
-          .foregroundEffect({ radius: 20 })
-    }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
-  }
-}
-```
-
-### Example 1: Implementing an Immersive Effect
-
-This example demonstrates how to use the expandSafeArea attribute to expand the safe area to the top and bottom to achieve an immersive effect.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SafeAreaExample1 {
-  build() {
-    Row() {
-      Column()
-        .width('100%')
-        .height('100%')
-        // Replace $r('app.media.bg') with the image resource file you use.
-        .backgroundImage($r('app.media.bg'))
-        .backgroundImageSize(ImageSize.Cover)
-        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-    }.height('100%')
-  }
-}
-```
-
-### Example 2: Setting a Fixed Width or Height with expandSafeArea
-
-This example demonstrates the effect of setting both a fixed width or height and the expandSafeArea attribute.
-
-As shown in the figure below, the Column component expands to the top status bar ([SafeAreaEdge.TOP]) but does not expand to the bottom navigation bar ([SafeAreaEdge.BOTTOM]). The height of the component after expansion remains consistent with the set value.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SafeAreaExample2 {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
-
-  build() {
-    Column() {
-      TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
-        .placeholderFont({ size: 14, weight: 400 })
-        .width(320).height(40).offset({y: 120})
-        .fontSize(14).fontColor(Color.Black)
-        .backgroundColor(Color.White)
-    }
-    .height('780')
-    .width('100%')
-    .backgroundColor('rgb(179,217,235)')
-    .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-  }
-}
-```
-
-### Example 3: Fixing the Background Image Position During Keyboard Avoidance
-
-This example shows how to set the expandSafeArea attribute for the background image to keep it fixed when the keyboard is displayed and the layout is adjusted.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct SafeAreaExample3 {
-  @State text: string = ''
-  controller: TextInputController = new TextInputController()
-
-  build() {
-    Row() {
-      Stack() {
-        Column()
-          .width('100%')
-          .height('100%')
-          // Replace $r('app.media.bg') with the image resource file you use.
-          .backgroundImage($r('app.media.bg'))
-          .backgroundImageSize(ImageSize.Cover)
-          .expandSafeArea([SafeAreaType.KEYBOARD, SafeAreaType.SYSTEM])
-        Column() {
-          Button('Set caretPosition 1')
-            .onClick(() => {
-              this.controller.caretPosition(1)
-            })
-          TextInput({ text: this.text, placeholder: 'input your word...', controller: this.controller })
-            .placeholderFont({ size: 14, weight: 400 })
-            .width(320)
-            .height(40)
-            .offset({ y: 120 })
-            .fontSize(14)
-            .fontColor(Color.Black)
-            .backgroundColor(Color.White)
-        }.width('100%').alignItems(HorizontalAlign.Center)
-      }
-    }.height('100%')
-  }
-}
-```
-
-### Example 4: Setting the Keyboard Avoidance Mode to Resize
-
-This example demonstrates how to use setKeyboardAvoidMode to set the keyboard avoidance mode to RESIZE, which resizes the page when the keyboard is displayed.
-
-```TypeScript
-// EntryAbility.ets
-import { KeyboardAvoidMode } from '@kit.ArkUI';
-export default class EntryAbility extends UIAbility{
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/Index', (err, data) => {
-      // When the virtual keyboard is displayed, the page is resized to its original height minus the keyboard height.
-      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
-}
-```
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct KeyboardAvoidExample1 {
-  build() {
-    Column() {
-      Row()
-        .width('100%')
-        .height('30%')
-        .backgroundColor(Color.Gray)
-      TextArea()
-        .width('100%')
-        .borderWidth(1)
-      Text('I can see the bottom of the page')
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor('rgb(179,217,235)')
-        .layoutWeight(1)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 5: Setting Keyboard Avoidance Mode to Offset
-
-This example demonstrates how to use setKeyboardAvoidMode to set the keyboard avoidance mode to OFFSET, which lifts the page when the keyboard is displayed. However, if the input cursor is positioned more than the keyboard's height from the bottom of the screen, the page will not be lifted, as demonstrated in this example.
-
-```TypeScript
-// EntryAbility.ets
-import { KeyboardAvoidMode } from '@kit.ArkUI';
-export default class EntryAbility extends UIAbility{
-  onWindowStageCreate(windowStage: window.WindowStage) {
-    // Main window is created, set main page for this ability
-    hilog.info(0x0000, 'testTag', '%{public}s', 'Ability onWindowStageCreate');
-
-    windowStage.loadContent('pages/Index', (err, data) => {
-      // When the virtual keyboard is displayed, the page is moved up until the caret is displayed.
-      windowStage.getMainWindowSync().getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
-      if (err.code) {
-        hilog.error(0x0000, 'testTag', 'Failed to load the content. Cause: %{public}s', JSON.stringify(err) ?? '');
-        return;
-      }
-      hilog.info(0x0000, 'testTag', 'Succeeded in loading the content. Data: %{public}s', JSON.stringify(data) ?? '');
-    });
-  }
-}
-```
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct KeyboardAvoidExample2 {
-  build() {
-    Column() {
-      Row()
-        .width('100%')
-        .height('30%')
-        .backgroundColor(Color.Gray)
-      TextArea()
-        .width('100%')
-        .borderWidth(1)
-      Text('I can see the bottom of the page')
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor('rgb(179,217,235)')
-        .layoutWeight(1)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 6: Switching Avoidance Modes
-
-This example demonstrates how to switch between OFFSET, RESIZE, and NONE modes using setKeyboardAvoidMode to achieve three different keyboard avoidance effects.
-
-
-
-```TypeScript
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { KeyboardAvoidMode } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct KeyboardAvoidExample3 {
-  build() {
-    Column() {
-      Row({space:15}) {
-        Button('OFFSET')
-          .onClick(() => {
-            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET);
-            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
-          })
-          .layoutWeight(1)
-        Button('RESIZE')
-          .onClick(() => {
-            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.RESIZE);
-            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
-          })
-          .layoutWeight(1)
-        Button('NONE')
-          .onClick(() => {
-            this.getUIContext().setKeyboardAvoidMode(KeyboardAvoidMode.NONE);
-            hilog.info(0x0000, 'keyboardAvoidMode: %{public}s', JSON.stringify(this.getUIContext().getKeyboardAvoidMode()));
-          })
-          .layoutWeight(1)
-      }
-      .height('30%')
-      .width('100%')
-      .backgroundColor(Color.Gray)
-
-      TextArea()
-        .width('100%')
-        .borderWidth(1)
-      
-      Text('I can see the bottom of the page')
-        .width('100%')
-        .textAlign(TextAlign.Center)
-        .backgroundColor('rgb(179,217,235)')
-        .layoutWeight(1)
-      
-      TextArea()
-        .width('100%')
-        .borderWidth(1)
-    }
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
-### Example 7: Expanding the Safe Area in Scrollable Containers
-
-This example demonstrates how to use the expandSafeArea attribute in a scrollable container to implement an immersive effect. The Swiper component in the Scroll container can extend into the status bar.
-
-
-
-```TypeScript
-class SwiperDataSource implements IDataSource {
-  private list: Array<Color> = []
-  constructor(list: Array<Color>) {
-    this.list = list
-  }
-  totalCount(): number {
-    return this.list.length
-  }
-  getData(index: number): Color {
-    return this.list[index]
-  }
-  registerDataChangeListener(listener: DataChangeListener): void {
-  }
-  unregisterDataChangeListener(listener: DataChangeListener): void {
-  }
-}
-@Entry
-@Component
-struct ExpandSafeAreaTest {
-  private swiperController: SwiperController = new SwiperController()
-  private swiperData: SwiperDataSource = new SwiperDataSource([])
-  private list: Array<Color> = [
-    Color.Pink,
-    Color.Blue,
-    Color.Green
-  ]
-  aboutToAppear(): void {
-    this.swiperData = new SwiperDataSource(this.list)
-  }
-  build() {
-    Scroll() {
-      Column() {
-        Swiper(this.swiperController) {
-          LazyForEach(this.swiperData, (item: Color, index: number) => {
-            Column() {
-              Text('banner' + index).fontSize(50).fontColor(Color.White)
-            }
-            .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-            .width('100%')
-            .height(400)
-            .backgroundColor(item)
-          })
-        }
-        .loop(true)
-        .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-        .clip(false)
-        Column(){
-          Text('Tab content').fontSize(50)
-        }.width('100%').height(1000)
-        .backgroundColor(Color.Grey)
-      }.expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])
-    }
-    .clip(false)
-    .edgeEffect(EdgeEffect.None)
-    .width('100%').height('100%')
-  }
-}
-```
-
-### Example 8: Extending the Component Layout Area with ignoreLayoutSafeArea
-
-This example shows how to use [ignoreLayoutSafeArea](#ignorelayoutsafearea20) to adjust the component position. The comparison with the default behavior (without this attribute) is as follows: After ignoreLayoutSafeArea is applied, the Row component is positioned in the upper left corner of the combined range consisting of the Stack content area, the Stack component-level safe area, and the system status bar. The component occupies the upper left portion of this expanded layout boundary.
-
-```TypeScript
-import { LengthMetrics } from '@kit.ArkUI'
-
-@Entry
-@Component
-struct IgnoreLayoutSafeAreaTest1 {
-  build() {
-    Column() {
-      Stack() {
-        Row()
-          .backgroundColor('rgb(39, 135, 217)')
-          .width(75)  // Fixed width
-          .height(75) // Fixed height
-          .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.START, LayoutSafeAreaEdge.TOP])  // Extend the layout area to the left and top edges, covering the system non-safe area (SYSTEM).
-        
-        Row()
-          .backgroundColor('rgb(0, 74, 175)')
-          .width(75)
-          .height(75)
-
-      }
-      .width(200)
-      .height(200)
-      .backgroundColor(Color.Gray)
-      .align(Alignment.TopStart) // Align child components with the upper left corner of the Stack container.
-      .padding({
-        left: 10  // Set a 10 vp normal left padding.
-      })
-      .safeAreaPadding(LengthMetrics.vp(10))  // Set a 10 vp safe area padding (that is, component-level safe area).
-    }
-    .width('100%')
-  }
-}
-```
-
-### Example 9: Extending the Component Layout Area with ignoreLayoutSafeArea and LayoutPolicy.matchParent
-
-This example demonstrates how to use both [ignoreLayoutSafeArea](#ignorelayoutsafearea20) and [LayoutPolicy.matchParent](ts-universal-attributes-size.md#layoutpolicy15) to adjust the component's size and position simultaneously. After ignoreLayoutSafeArea is applied, the Row component takes the lower right portion of the combined range consisting of the Stack content area and the Stack component-level safe area, and expands to fill the available space.
-
-
-
-```TypeScript
-import { LengthMetrics } from '@kit.ArkUI'
-
-@Entry
-@Component
-struct IgnoreLayoutSafeAreaTest2 {
-  build() {
-    Column() {
-      Stack() {
-        Row()
-          .backgroundColor('rgb(39, 135, 217)')
-          .width(LayoutPolicy.matchParent)  // Adaptive width
-          .height(LayoutPolicy.matchParent) // Adaptive height
-          .ignoreLayoutSafeArea([LayoutSafeAreaType.SYSTEM], [LayoutSafeAreaEdge.END, LayoutSafeAreaEdge.BOTTOM])  // Extend the layout area to the right and bottom edges, covering the system non-safe area (SYSTEM).
-
-        Row()
-          .backgroundColor('rgb(0, 74, 175)')
-          .width(LayoutPolicy.matchParent)
-          .height(LayoutPolicy.matchParent)
-
-      }
-      .width(200)
-      .height(200)
-      .backgroundColor(Color.Gray)
-      .align(Alignment.TopStart) // Align child components with the upper left corner of the Stack container.
-      .padding(10) // Set a 10 vp normal padding.
-      .safeAreaPadding(LengthMetrics.vp(10))  // Set a 10 vp safe area padding (that is, component-level safe area).
-    }
-    .width('100%')
-  }
-}
-```
-
-### Example 10: Understanding the Difference Between expandSafeArea and ignoreLayoutSafeArea
-
-This example demonstrates the layout effects of a container with expandSafeArea and ignoreLayoutSafeArea set, respectively, and their impact on the layout of child components. In both cases, the container visibly extends. However, the child components of the container with expandSafeArea are not affected by the container's extension, while the child components of the container with ignoreLayoutSafeArea have their positions adjusted due to the container's extension.
-
-```TypeScript
-@Entry
-@Component
-struct IgnoreLayoutSafeAreaTest3 {
-  build() {
-    Row(){
-      Column(){
-        Stack(){
-          Stack(){
-
-          }
-          .width(30)
-          .height(30)
-          .backgroundColor('rgb(0, 74, 175)')
-        }
-        .width(100)
-        .height(100)
-        .backgroundColor('rgb(39, 135, 217)')
-        .align(Alignment.TopStart)
-
-        Text('Baseline effect').fontColor(Color.White)
-      }
-
-      Column(){
-        Stack(){
-          Stack(){
-
-          }
-          .width(30)
-          .height(30)
-          .backgroundColor('rgb(0, 74, 175)')
-        }
-        .width(100)
-        .height(100)
-        .backgroundColor('rgb(39, 135, 217)')
-        .align(Alignment.TopStart)
-        .expandSafeArea()  // Extend the rendering area: the container's rendering area shifts upward, but the child component's position relative to the screen remains unchanged.
-
-        Text('expandSafeArea').fontColor(Color.White)
-      }
-
-      Column(){
-        Stack(){
-          Stack(){
-
-          }
-          .width(30)
-          .height(30)
-          .backgroundColor('rgb(0, 74, 175)')
-        }
-        .width(100)
-        .height(100)
-        .backgroundColor('rgb(39, 135, 217)')
-        .align(Alignment.TopStart)
-        .ignoreLayoutSafeArea()  // Extend the layout area: The container's layout area shifts upward, and the child component's position relative to the container remains unchanged.
-
-        Text('ignoreLayoutSafeArea').fontColor(Color.White)
-      }
-    }
-    .width('100%')
-    .backgroundColor(Color.Gray)
-    .justifyContent(FlexAlign.SpaceEvenly)
-  }
-}
-```
-
 This example demonstrates how to control the mounting and unmounting of a component using a button, triggering onAttach and onDetach events.
 
 ```TypeScript
@@ -18635,130 +18767,6 @@ struct AppearExample {
           })
       }
     }.padding(30).width('100%')
-  }
-}
-```
-
-### Example 1: Setting an Overlay Using a String
-
-This example demonstrates how to set an overlay using a string.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OverlayExample {
-  build() {
-    Column() {
-      Column() {
-        Text('floating layer')
-          .fontSize(12).fontColor(0xCCCCCC).maxLines(1)
-        Column() {
-          // Replace $r('app.media.img') with the image resource file you use.
-          Image($r('app.media.img'))
-            .width(240).height(240)
-            .overlay('Winter is a beautiful season, especially when it snows.', {
-              align: Alignment.Bottom,
-              offset: { x: 0, y: -15 }
-            })
-        }.border({ color: Color.Black, width: 2 })
-      }.width('100%')
-    }.padding({ top: 20 })
-  }
-}
-```
-
-### Example 2: Setting an Overlay Using a Custom Builder
-
-This example demonstrates how to set an overlay using a custom builder.
-
-
-
-```TypeScript
-// xxx.ets
-@Entry
-@Component
-struct OverlayExample {
-  @Builder
-  overlayNode() {
-    Column() {
-      // Replace $r('app.media.img1') with the image resource file you use.
-      Image($r('app.media.img1'))
-      Text('This is overlayNode').fontSize(20).fontColor(Color.White)
-    }
-    .width(180)
-    .height(180)
-    .alignItems(HorizontalAlign.Center)
-    .hitTestBehavior(HitTestMode.Transparent) // Configure the overlay not to block interaction.
-  }
-
-  build() {
-    Column() {
-      // Replace $r('app.media.img2') with the image resource file you use.
-      Image($r('app.media.img2'))
-        .overlay(this.overlayNode(), { align: Alignment.Center })
-        .objectFit(ImageFit.Contain)
-    }.width('100%')
-    .border({ color: Color.Black, width: 2 }).padding(20)
-  }
-}
-```
-
-### Example 3: Setting an Overlay Using ComponentContent
-
-This example uses overlay to pass in ComponentContent, and updates the ComponentContent parameters through the update method, so that backgroundColor keeps changing.
-
-```TypeScript
-// xxx.ets
-import { ComponentContent } from '@kit.ArkUI';
-
-class Params {
-  backgroundColor: string | Resource = '';
-
-  constructor(backgroundColor: string | Resource) {
-    this.backgroundColor = backgroundColor;
-  }
-}
-
-@Builder
-function overlayBuilder(params: Params) {
-  Row() {
-  }.width('100%').height('100%').backgroundColor(params.backgroundColor)
-}
-
-@Entry
-@Component
-struct OverlayContentPage {
-  @State overlayColor: string = 'rgba(0, 0, 0, 0.6)';
-  private uiContext: UIContext = this.getUIContext();
-  private overlayNode: ComponentContent<Params> =
-    new ComponentContent(this.uiContext, wrapBuilder(overlayBuilder), new Params(this.overlayColor));
-
-  aboutToAppear(): void {
-    setInterval(() => {
-      if (this.overlayColor.includes('0.6')) {
-        this.overlayColor = 'rgba(0, 0, 0, 0.1)';
-        this.overlayNode.update(new Params(this.overlayColor));
-      } else {
-        this.overlayColor = 'rgba(0, 0, 0, 0.6)';
-        this.overlayNode.update(new Params(this.overlayColor));
-      }
-    }, 1000);
-  }
-
-  build() {
-    Row() {
-      Column() {
-        Text(this.overlayColor)
-          .fontSize(40)
-          .fontWeight(FontWeight.Bold)
-      }
-      .width('100%')
-    }
-    .height('100%')
-    .overlay(this.overlayNode)
   }
 }
 ```

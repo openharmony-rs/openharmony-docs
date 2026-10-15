@@ -12,19 +12,19 @@ enum AdvertisingState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## STARTED
+## DISABLED
 
 ```TypeScript
-STARTED = 1
+DISABLED = 3
 ```
 
-调用[startAdvertising](arkts-connectivity-ble-startadvertising-f.md)方法后，广播首次启动成功，且会分配相关资源。
+调用[disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)方法后，广播停止成功。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AdvertisingState-STARTED = 1--><!--Device-AdvertisingState-STARTED = 1-End-->
+<!--Device-AdvertisingState-DISABLED = 3--><!--Device-AdvertisingState-DISABLED = 3-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -44,19 +44,19 @@ ENABLED = 2
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## DISABLED
+## STARTED
 
 ```TypeScript
-DISABLED = 3
+STARTED = 1
 ```
 
-调用[disableAdvertising](arkts-connectivity-ble-disableadvertising-f.md)方法后，广播停止成功。
+调用[startAdvertising](arkts-connectivity-ble-startadvertising-f.md)方法后，广播首次启动成功，且会分配相关资源。
 
 **起始版本：** 11
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AdvertisingState-DISABLED = 3--><!--Device-AdvertisingState-DISABLED = 3-End-->
+<!--Device-AdvertisingState-STARTED = 1--><!--Device-AdvertisingState-STARTED = 1-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 

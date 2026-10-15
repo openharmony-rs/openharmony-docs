@@ -6,7 +6,7 @@ interface SearchPlayKaraokeItem
 
 The definition of SearchPlayKaraokeItem.
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 <!--Device-avMusicTemplate-interface SearchPlayKaraokeItem--><!--Device-avMusicTemplate-interface SearchPlayKaraokeItem-End-->
 
@@ -28,7 +28,7 @@ The unique identifier of the media resource.
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
@@ -46,7 +46,7 @@ The name of the audio. When this parameter is left blank, the application search
 
 **Type:** string
 
-**Since:** 26.2.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 

@@ -42,7 +42,7 @@ Component3D(sceneOptions?: SceneOptions)
 
 | 名称 | 说明 |
 | --- | --- |
-| [ModelType](arkts-arkui-component3d-comp-modeltype-e.md) | 模型类型枚举@enum { number } |
+| [ModelType](arkts-arkui-component3d-comp-modeltype-e.md) | 模型类型枚举 |
 
 ## 示例
 
@@ -83,7 +83,7 @@ class EngineTime {
 let engineTime = new EngineTime();
 let frameCount: number = 0;
 
-function TickFrame() {
+function tickFrame() {
   if (frameCount == 10) {
     engineTime.totalTimeUs += 1.0;
     engineTime.deltaTimeUs += 1.0;
@@ -114,7 +114,7 @@ struct Index {
       console.info('backAnimator onfinish');
     }
     this.backAnimator.onFrame = (value: number) => {
-      TickFrame();
+      tickFrame();
       this.timeDelta[0] = engineTime.deltaTimeUs;
     }
 

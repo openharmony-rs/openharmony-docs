@@ -58,12 +58,12 @@ Swiper(controller?: SwiperController)
 | [AutoPlayOptions](arkts-arkui-swiper-comp-autoplayoptions-i.md) | 自动播放属性。 |
 | [CachedCountOptions](arkts-arkui-swiper-comp-cachedcountoptions-i.md) | 预加载子组件的配置选项。 |
 | [IndicatorIconInfo](arkts-arkui-swiper-comp-indicatoriconinfo-i.md) | 为指定的导航点索引设置的图标。 |
-| [IndicatorStyle](arkts-arkui-swiper-comp-indicatorstyle-i.md) | 导航点样式。 |
 | [SwiperAnimationEvent](arkts-arkui-swiper-comp-swiperanimationevent-i.md) | Swiper组件动画相关信息集合。 |
 | [SwiperAutoFill](arkts-arkui-swiper-comp-swiperautofill-i.md) | 自适应属性。 |
 | [SwiperContentAnimatedTransition](arkts-arkui-swiper-comp-swipercontentanimatedtransition-i.md) | Swiper自定义切换动画相关信息。 |
 | [SwiperContentTransitionProxy](arkts-arkui-swiper-comp-swipercontenttransitionproxy-i.md) | Swiper自定义切换动画执行过程中，返回给开发者的proxy对象。开发者可通过该对象获取自定义动画视窗内的页面信息，同时，也可以通过调用该对象的finishTransition接口通知Swiper组件页面自定义动画已结束。 |
 | [SwiperContentWillScrollResult](arkts-arkui-swiper-comp-swipercontentwillscrollresult-i.md) | 滑动的相关信息，主要包括：当前页面对应的index、滑动方向上即将显示的页面index和此次滑动的位移。 |
+| [IndicatorStyle](arkts-arkui-swiper-comp-indicatorstyle-i.md) | 导航点样式。 |
 
 ### 类型
 
@@ -87,7 +87,7 @@ Swiper(controller?: SwiperController)
 
 ### 示例1（设置导航点交互及翻页动效）
 
-该示例通过[changeIndex](arkts-arkui-swiper-comp-attribute.md#index)接口设置SwiperAnimationMode动效以跳转指定页面，并使用[onScrollStateChanged](arkts-arkui-swiper-comp-attribute.md#onscrollstatechanged)回调监听滑动状态的变化。
+该示例通过[changeIndex](#changeindex15)接口设置[SwiperAnimationMode](#swiperanimationmode15枚举说明)动效以跳转指定页面，并使用[onScrollStateChanged](arkts-arkui-swiper-comp-attribute.md#onscrollstatechanged)回调监听滑动状态的变化。
 
 从API version 20开始，新增onScrollStateChanged事件。
 
@@ -316,7 +316,7 @@ struct SwiperExample {
 
 该示例通过[displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount)属性实现了按组翻页效果。
 
-从API version 24开始，新增[CachedCountOptions](arkts-arkui-swiper-comp-attribute.md#cachedcount)参数，通过该参数实现缓存的节点个数和displayCount的按组显示数量解耦。
+从API version 24开始，新增[CachedCountOptions](#cachedcountoptions24对象说明)参数，通过该参数实现缓存的节点个数和displayCount的按组显示数量解耦。
 
 
 
@@ -404,7 +404,7 @@ struct SwiperExample {
 
 ### 示例4（设置自定义页面切换动画）
 
-该示例通过[customContentTransition](arkts-arkui-swiper-comp-attribute.md#customcontenttransition)接口，实现了自定义Swiper页面按组翻页动画效果。
+该示例通过[customContentTransition](#customcontenttransition12)接口，实现了自定义Swiper页面按组翻页动画效果。
 
 ```TypeScript
 // EntryAbility.ets
@@ -636,7 +636,7 @@ struct Index {
 
 ### 示例6（预加载子节点）
 
-该示例通过preloadItems接口实现了预加载指定子节点。
+该示例通过[preloadItems](#preloaditems18)接口实现了预加载指定子节点。
 
 ```TypeScript
 // xxx.ets
@@ -708,7 +708,7 @@ struct MyComponent {
 
 ### 示例7（实现Tabs与Swiper联动）
 
-该示例通过[onSelected](arkts-arkui-swiper-comp-attribute.md#onselected)接口，实现了Tabs与Swiper联动切换。
+该示例通过[onSelected](#onselected18)接口，实现了[Tabs](ts-container-tabs.md)与Swiper联动切换。
 
 
 
@@ -907,7 +907,7 @@ struct SwiperExample {
 
 ### 示例9（演示导航点space与bottom）
 
-该示例通过bottom和space接口，实现了圆点导航点与底部间距为0的间距控制以及导航点之间的间距控制。
+该示例通过[bottom](#bottom19)和[space](#space19)接口，实现了圆点导航点与底部间距为0的间距控制以及导航点之间的间距控制。
 
 
 

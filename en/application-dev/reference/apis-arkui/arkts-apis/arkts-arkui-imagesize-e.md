@@ -30,24 +30,6 @@ The original image aspect ratio is retained.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Cover
-
-```TypeScript
-Cover
-```
-
-The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-ImageSize-Cover--><!--Device-ImageSize-Cover-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Contain
 
 ```TypeScript
@@ -63,6 +45,24 @@ The image is scaled with its aspect ratio retained for the content to be complet
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-ImageSize-Contain--><!--Device-ImageSize-Contain-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Cover
+
+```TypeScript
+Cover
+```
+
+The image is scaled with its aspect ratio retained for both sides to be greater than or equal to the display boundaries.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-ImageSize-Cover--><!--Device-ImageSize-Cover-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

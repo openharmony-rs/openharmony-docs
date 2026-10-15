@@ -44,22 +44,6 @@ PC, which is a string.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## MOBILE
-
-```TypeScript
-MOBILE = 'Mobile'
-```
-
-Mobile phone, which is a string.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UserAgentFormFactor-MOBILE = 'Mobile'--><!--Device-UserAgentFormFactor-MOBILE = 'Mobile'-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## EINK
 
 ```TypeScript
@@ -73,6 +57,22 @@ E-ink screen, which is a string.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-UserAgentFormFactor-EINK = 'EInk'--><!--Device-UserAgentFormFactor-EINK = 'EInk'-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## MOBILE
+
+```TypeScript
+MOBILE = 'Mobile'
+```
+
+Mobile phone, which is a string.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UserAgentFormFactor-MOBILE = 'Mobile'--><!--Device-UserAgentFormFactor-MOBILE = 'Mobile'-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

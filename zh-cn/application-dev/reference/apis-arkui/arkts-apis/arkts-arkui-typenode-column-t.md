@@ -6,6 +6,8 @@ type Column = TypedFrameNode<ColumnInterface, ColumnAttribute>
 
 Column类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ColumnInterface, [ColumnAttribute](../arkts-components/arkts-arkui-column-comp-attribute.md)&gt;
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Column类型的FrameNode节点类型。
 <!--Device-typeNode-type Column = TypedFrameNode<ColumnInterface, ColumnAttribute>--><!--Device-typeNode-type Column = TypedFrameNode<ColumnInterface, ColumnAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;ColumnInterface, [ColumnAttribute](../arkts-components/arkts-arkui-column-comp-attribute.md)&gt;

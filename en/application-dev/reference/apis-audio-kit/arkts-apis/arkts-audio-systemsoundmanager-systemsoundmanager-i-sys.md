@@ -20,6 +20,8 @@ System sound manager object.
 import { systemSoundManager } from '@kit.AudioKit';
 ```
 
+<a id="addcustomizedtone1"></a>
+
 ## addCustomizedTone
 
 ```TypeScript
@@ -60,11 +62,12 @@ Add customized tone into ringtone library.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation is not allowed, e.g. ringtone to add is not customized. |
-| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. System sound manager service error. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. Possible causes:         1. The target file size exceeds 2 GB;         2. Failed to find the specified file;         3. System sound manager service error. |
 | [20700004](../errorcode-audio-ringtone-sys.md#20700004-data-size-exceeds-the-upper-limit) | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>**Applicable version:** 20 and later |
 | [20700005](../errorcode-audio-ringtone-sys.md#20700005-file-count-exceeds-the-upper-limit) | The number of files exceeds the limit.<br>**Applicable version:** 20 and later |
 | [20700006](../errorcode-audio-ringtone-sys.md#20700006-insufficient-rom-space) | Insufficient ROM space.<br>**Applicable version:** 20 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -92,7 +95,9 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, path).then((val
 });
 ```
 
-<a id="addcustomizedtone-1"></a>
+<!--DelEnd-->
+
+<a id="addcustomizedtone2"></a>
 
 ## addCustomizedTone
 
@@ -137,11 +142,12 @@ Add customized tone into ringtone library.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation is not allowed, e.g. ringtone to add is not customized. |
-| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. Possible causes: 1. The target file size exceeds 2 GB; 2. Failed to find the specified file; 3. Ringtone library error. 4. System sound manager service error. |
+| [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. Possible causes:         1. The target file size exceeds 2 GB;         2. Failed to find the specified file;         3. Ringtone library error.         4. System sound manager service error. |
 | [20700004](../errorcode-audio-ringtone-sys.md#20700004-data-size-exceeds-the-upper-limit) | Data size exceeds the limit. Note: This error is returned when the file size is between 200MB and 2GB.<br>**Applicable version:** 20 and later |
 | [20700005](../errorcode-audio-ringtone-sys.md#20700005-file-count-exceeds-the-upper-limit) | The number of files exceeds the limit.<br>**Applicable version:** 20 and later |
 | [20700006](../errorcode-audio-ringtone-sys.md#20700006-insufficient-rom-space) | Insufficient ROM space.<br>**Applicable version:** 20 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -170,6 +176,8 @@ systemSoundManagerInstance.addCustomizedTone(context, toneAttrs, fd, offset, len
   console.error(`Failed to addCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## close
 
@@ -207,6 +215,7 @@ Close fd.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -224,6 +233,8 @@ systemSoundManagerInstance.close(fd).then(() => {
   console.error(`Failed to close. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getAlarmToneAttrList
 
@@ -261,6 +272,7 @@ Gets attribute list of alarm tones.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -277,6 +289,8 @@ systemSoundManagerInstance.getAlarmToneAttrList(context).then((value: systemSoun
   console.error(`Failed to getAlarmToneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getAlarmToneUri
 
@@ -314,6 +328,7 @@ Gets uri of the current alarm tone.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -330,6 +345,8 @@ systemSoundManagerInstance.getAlarmToneUri(context).then((value: string) => {
   console.error(`Failed to getAlarmToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getCurrentRingtoneAttribute
 
@@ -366,6 +383,7 @@ Gets the ringtone attribute which is in use.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -380,6 +398,8 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((value: system
   console.error(`Failed to getCurrentRingtoneAttribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getDefaultAlarmToneAttrs
 
@@ -417,6 +437,7 @@ Gets attributes of the default alarm tone.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -433,6 +454,8 @@ systemSoundManagerInstance.getDefaultAlarmToneAttrs(context).then((value: system
   console.error(`Failed to getDefaultAlarmToneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getDefaultRingtoneAttrs
 
@@ -471,6 +494,7 @@ Gets attributes of the default ringtone.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -488,6 +512,8 @@ systemSoundManagerInstance.getDefaultRingtoneAttrs(context, type).then((value: s
   console.error(`Failed to getDefaultRingtoneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getDefaultSystemToneAttrs
 
@@ -526,6 +552,7 @@ Gets attributes of the default system tone.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -543,6 +570,8 @@ systemSoundManagerInstance.getDefaultSystemToneAttrs(context, type).then((value:
   console.error(`Failed to getDefaultSystemToneAttrs. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getHapticsAttrsSyncedWithTone
 
@@ -583,6 +612,7 @@ Get attributes of haptics which is synchronized with one tone. If no haptics is 
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-operation-not-supported) | Unsupported operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -601,13 +631,17 @@ systemSoundManagerInstance.getHapticsAttrsSyncedWithTone(context, toneUri).then(
 });
 ```
 
+<!--DelEnd-->
+
+<a id="getmockhapticringtoneplayer1"></a>
+
 ## getMockHapticRingtonePlayer
 
 ```TypeScript
 getMockHapticRingtonePlayer(context: BaseContext, hapticUri: string): Promise<RingtonePlayer | null>
 ```
 
-Obtains a mock haptic ringtone player for playing vibration files and their corresponding mock haptic sound files. This API uses a promise to return the result. Before calling this interface, ensure that the incoming hapticUri actually exists in the system. Otherwise, exceptions and errors will occur, such as failure to play the matched haptic sound file. After obtaining the instance through this interface, actively call [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release) method of the ringtone player to release player resources when the service is terminated.
+Obtains a mock haptic ringtone player for playing vibration files and their corresponding mock haptic sound files. This API uses a promise to return the result. Before calling this interface, ensure that the incoming hapticUri actually exists in the system. Otherwise, exceptions and errors will occur, such as failure to play the matched haptic sound file. After obtaining the instance through this interface, actively call [release](arkts-audio-ringtoneplayer-i-sys.md#release) method of the ringtone player to release player resources when the service is terminated.
 
 **Since:** 26.0.0
 
@@ -640,7 +674,7 @@ Obtains a mock haptic ringtone player for playing vibration files and their corr
 | [20700002](../errorcode-audio-ringtone-sys.md#20700002-parameter-check-failed) | Parameter verification failed. The hapticUri does not exist or is incorrectly formatted. Ensure it is a JSON file and that it exists in the system's file system. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. The ringtone database access timed out or encountered an error. It is recommended to restart your phone. |
 
-<a id="getmockhapticringtoneplayer-1"></a>
+<a id="getmockhapticringtoneplayer2"></a>
 
 ## getMockHapticRingtonePlayer
 
@@ -648,7 +682,7 @@ Obtains a mock haptic ringtone player for playing vibration files and their corr
 getMockHapticRingtonePlayer(context: BaseContext, type: RingtoneType, ringtoneUri: string): Promise<RingtonePlayer | null>
 ```
 
-Obtains a mock haptic ringtone player for playing vibration files and their corresponding mock haptic sound files. This API uses a promise to return the result. Before calling this interface, ensure that the incoming ringtoneUri actually exists in the system. Otherwise, exceptions and errors will occur, such as failure to play the matched haptic sound file. After obtaining the instance through this interface, actively call [release](arkts-audio-ringtoneplayer-ringtoneplayer-i-sys.md#release) method of the ringtone player to release player resources when the service is terminated.
+Obtains a mock haptic ringtone player for playing vibration files and their corresponding mock haptic sound files. This API uses a promise to return the result. Before calling this interface, ensure that the incoming ringtoneUri actually exists in the system. Otherwise, exceptions and errors will occur, such as failure to play the matched haptic sound file. After obtaining the instance through this interface, actively call [release](arkts-audio-ringtoneplayer-i-sys.md#release) method of the ringtone player to release player resources when the service is terminated.
 
 **Since:** 26.0.0
 
@@ -719,6 +753,7 @@ Gets attribute list of ringtones.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -736,6 +771,8 @@ systemSoundManagerInstance.getRingtoneAttrList(context, type).then((value: syste
   console.error(`Failed to getRingtoneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getRingtonePlayer
 
@@ -773,6 +810,7 @@ Gets the ringtone player.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -792,6 +830,8 @@ systemSoundManagerInstance.getRingtonePlayer(context, type).then((value: systemS
   console.error(`Failed to getRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getRingtoneUri
 
@@ -830,6 +870,7 @@ Gets the ringtone uri.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -847,6 +888,8 @@ systemSoundManagerInstance.getRingtoneUri(context, type).then((value: string) =>
   console.error(`Failed to getRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getSystemToneAttrList
 
@@ -885,6 +928,7 @@ Gets attribute list of alarm tones.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -902,6 +946,8 @@ systemSoundManagerInstance.getSystemToneAttrList(context, type).then((value: sys
   console.error(`Failed to getSystemToneAttrList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getSystemTonePlayer
 
@@ -939,6 +985,7 @@ Gets the system tone player.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -958,6 +1005,8 @@ systemSoundManagerInstance.getSystemTonePlayer(context, type).then((value: syste
   console.error(`Failed to getSystemTonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getSystemToneUri
 
@@ -996,6 +1045,7 @@ Gets the system tone uri.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1013,6 +1063,8 @@ systemSoundManagerInstance.getSystemToneUri(context, type).then((value: string) 
   console.error(`Failed to getSystemToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getToneHapticsList
 
@@ -1052,6 +1104,7 @@ Get haptics list.
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-operation-not-supported) | Unsupported operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1068,6 +1121,8 @@ systemSoundManagerInstance.getToneHapticsList(context, false).then((value: syste
   console.error(`Failed to getToneHapticsList. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getToneHapticsSettings
 
@@ -1107,6 +1162,7 @@ Get haptics settings.
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-operation-not-supported) | Unsupported operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1124,6 +1180,8 @@ systemSoundManagerInstance.getToneHapticsSettings(context, type).then((value: sy
   console.error(`Failed to getToneHapticsSettings. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## openAlarmTone
 
@@ -1163,6 +1221,7 @@ Open alarm tone file.
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 | 20700001 | Tone type mismatch, e.g. tone of uri is notification instead of alarm. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1180,6 +1239,8 @@ systemSoundManagerInstance.openAlarmTone(context, uri).then((value: number) => {
   console.error(`Failed to openAlarmTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## openToneHaptics
 
@@ -1220,6 +1281,7 @@ Open haptics.
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-operation-not-supported) | Unsupported operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1237,6 +1299,8 @@ systemSoundManagerInstance.openToneHaptics(context, hapticsUri).then((value: num
   console.error(`Failed to openToneHaptics. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## openToneList
 
@@ -1273,6 +1337,7 @@ Open tone list in batch.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Calleris not a system application. |
 | [20700007](../errorcode-audio-ringtone-sys.md#20700007-invalid-parameter) | Parameter is invalid, e.g. the length of uriList is too long. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1292,6 +1357,8 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) =>
   console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## removeCustomizedTone
 
@@ -1334,6 +1401,7 @@ Remove customized tone in ringtone library.
 | [5400102](../../apis-media-kit/errorcode-media.md#5400102-unsupported-operation) | Operation is not allowed, e.g. ringtone of this uri is not customized. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1351,6 +1419,8 @@ systemSoundManagerInstance.removeCustomizedTone(context, uri).then(() => {
   console.error(`Failed to removeCustomizedTone. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## removeCustomizedToneList
 
@@ -1390,6 +1460,7 @@ Remove customized tone list in batch.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [20700007](../errorcode-audio-ringtone-sys.md#20700007-invalid-parameter) | Parameter is invalid, e.g. the length of uriList is too long. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1409,6 +1480,8 @@ systemSoundManagerInstance.getCurrentRingtoneAttribute(type).then((toneAttrs) =>
   console.error(`Failed to get current ringtone attribute. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAlarmToneUri
 
@@ -1448,6 +1521,7 @@ Sets uri of the current alarm tone.
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 | 20700001 | Tone type mismatch, e.g. tone of input uri is not an alarm tone. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1465,6 +1539,8 @@ systemSoundManagerInstance.setAlarmToneUri(context, uri).then(() => {
   console.error(`Failed to setAlarmToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setRingtoneUri
 
@@ -1504,6 +1580,7 @@ Sets the ringtone uri to system.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1522,6 +1599,8 @@ systemSoundManagerInstance.setRingtoneUri(context, uri, type).then(() => {
   console.error(`Failed to setRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setSystemToneUri
 
@@ -1561,6 +1640,7 @@ Sets the system tone uri to system.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1579,6 +1659,8 @@ systemSoundManagerInstance.setSystemToneUri(context, uri, type).then(() => {
   console.error(`Failed to setSystemToneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setToneHapticsSettings
 
@@ -1620,6 +1702,7 @@ Set haptics settings.
 | [5400103](../../apis-media-kit/errorcode-media.md#5400103-io-error) | I/O error. |
 | [20700003](../errorcode-audio-ringtone-sys.md#20700003-operation-not-supported) | Unsupported operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1641,6 +1724,10 @@ systemSoundManagerInstance.setToneHapticsSettings(context, type, toneHapticsSett
   console.error(`Failed to setToneHapticsSettings. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="getsystemringtoneplayer1"></a>
 
 ## getSystemRingtonePlayer
 
@@ -1670,6 +1757,7 @@ Gets the ringtone player.
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | Yes | Ringtone type to get. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md)&gt; | Yes | Callback used to return a ringtone player instance. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1692,7 +1780,9 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type, (err: Business
 });
 ```
 
-<a id="getsystemringtoneplayer-1"></a>
+<!--DelEnd-->
+
+<a id="getsystemringtoneplayer2"></a>
 
 ## getSystemRingtonePlayer
 
@@ -1727,6 +1817,7 @@ Gets the ringtone player.
 | --- | --- |
 | Promise&lt;[RingtonePlayer](arkts-audio-systemsoundmanager-ringtoneplayer-t-sys.md)&gt; | Promise used to return a ringtone player instance. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1746,6 +1837,10 @@ systemSoundManagerInstance.getSystemRingtonePlayer(context, type).then((value: s
   console.error(`Failed to getSystemRingtonePlayer. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="getsystemringtoneuri1"></a>
 
 ## getSystemRingtoneUri
 
@@ -1775,6 +1870,7 @@ Gets the ringtone uri.
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | Yes | Ringtone type to get. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;string&gt; | Yes | Callback used to return the ringtone uri maintained in system. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1795,7 +1891,9 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type, (err: BusinessErr
 });
 ```
 
-<a id="getsystemringtoneuri-1"></a>
+<!--DelEnd-->
+
+<a id="getsystemringtoneuri2"></a>
 
 ## getSystemRingtoneUri
 
@@ -1830,6 +1928,7 @@ Gets the ringtone uri.
 | --- | --- |
 | Promise&lt;string&gt; | Promise used to return the ringtone uri maintained in system. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1847,6 +1946,10 @@ systemSoundManagerInstance.getSystemRingtoneUri(context, type).then((value: stri
   console.error(`Failed to getSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setsystemringtoneuri1"></a>
 
 ## setSystemRingtoneUri
 
@@ -1877,6 +1980,7 @@ Sets the ringtone uri to system.
 | type | [RingtoneType](arkts-audio-systemsoundmanager-ringtonetype-e-sys.md) | Yes | Ringtone type to set. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the set uri result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1898,7 +2002,9 @@ systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type, (err: Busine
 });
 ```
 
-<a id="setsystemringtoneuri-1"></a>
+<!--DelEnd-->
+
+<a id="setsystemringtoneuri2"></a>
 
 ## setSystemRingtoneUri
 
@@ -1934,6 +2040,7 @@ Sets the ringtone uri to system.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the set uri result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1952,3 +2059,5 @@ systemSoundManagerInstance.setSystemRingtoneUri(context, uri, type).then(() => {
   console.error(`Failed to setSystemRingtoneUri. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

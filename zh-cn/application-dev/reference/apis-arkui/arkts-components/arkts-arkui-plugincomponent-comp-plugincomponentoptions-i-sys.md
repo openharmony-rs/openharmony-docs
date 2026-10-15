@@ -45,7 +45,7 @@ template: PluginComponentTemplate
 
 插件组件模板。
 
-**类型：** PluginComponentTemplate
+**类型：** [PluginComponentTemplate](arkts-arkui-plugincomponent-comp-plugincomponenttemplate-i-sys.md)
 
 **起始版本：** 9
 

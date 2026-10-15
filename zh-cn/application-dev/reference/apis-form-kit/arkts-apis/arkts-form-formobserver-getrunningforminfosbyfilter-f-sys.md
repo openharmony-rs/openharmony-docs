@@ -6,6 +6,8 @@
 import { formObserver } from '@kit.FormKit';
 ```
 
+<a id="getrunningforminfosbyfilter1"></a>
+
 ## getRunningFormInfosByFilter
 
 ```TypeScript
@@ -51,6 +53,7 @@ function getRunningFormInfosByFilter(
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -79,8 +82,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getrunningforminfosbyfilter-1"></a>
+
+<a id="getrunningforminfosbyfilter2"></a>
 
 ## getRunningFormInfosByFilter
 
@@ -123,6 +128,9 @@ function getRunningFormInfosByFilter(
 | [16500100](../errorcode-form.md#16500100-获取卡片配置信息失败) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
+<!--Del-->
 **示例**
 
 参见 [getRunningFormInfosByFilter](#getrunningforminfosbyfilter)
+
+<!--DelEnd-->

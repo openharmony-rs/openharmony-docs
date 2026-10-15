@@ -30,22 +30,6 @@ Third-party and system applications. This value can be called only as an input p
 
 **System API:** This is a system API.
 
-## THIRD_PARTY
-
-```TypeScript
-THIRD_PARTY = 1
-```
-
-Third-party application.
-
-**Since:** 14
-
-<!--Device-KeepAliveAppType-THIRD_PARTY = 1--><!--Device-KeepAliveAppType-THIRD_PARTY = 1-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**System API:** This is a system API.
-
 ## SYSTEM
 
 ```TypeScript
@@ -57,6 +41,22 @@ System application.
 **Since:** 14
 
 <!--Device-KeepAliveAppType-SYSTEM = 2--><!--Device-KeepAliveAppType-SYSTEM = 2-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
+
+**System API:** This is a system API.
+
+## THIRD_PARTY
+
+```TypeScript
+THIRD_PARTY = 1
+```
+
+Third-party application.
+
+**Since:** 14
+
+<!--Device-KeepAliveAppType-THIRD_PARTY = 1--><!--Device-KeepAliveAppType-THIRD_PARTY = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

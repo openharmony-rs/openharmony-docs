@@ -28,7 +28,7 @@ close(): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-close(): void--><!--Device-FetchResult-close(): void-End-->
 
@@ -38,12 +38,12 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid argument. Possible causes: 1. Parameter count exceeds the limit; 2. The current object is invalid. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid argument. Possible causes:         1. Parameter count exceeds the limit; 2. The current object is invalid. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -77,7 +77,7 @@ contains(object: T): Promise<boolean>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-contains(object: T): Promise<boolean>--><!--Device-FetchResult-contains(object: T): Promise<boolean>-End-->
 
@@ -97,7 +97,7 @@ contains(object: T): Promise<boolean>
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -120,6 +120,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getallobjects1"></a>
+
 ## getAllObjects
 
 ```TypeScript
@@ -130,7 +132,7 @@ getAllObjects(callback: AsyncCallback<Array<T>>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getAllObjects(callback: AsyncCallback<Array<T>>): void--><!--Device-FetchResult-getAllObjects(callback: AsyncCallback<Array<T>>): void-End-->
 
@@ -147,11 +149,11 @@ getAllObjects(callback: AsyncCallback<Array<T>>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -174,7 +176,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getallobjects-1"></a>
+<a id="getallobjects2"></a>
 
 ## getAllObjects
 
@@ -186,7 +188,7 @@ getAllObjects(): Promise<Array<T>>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getAllObjects(): Promise<Array<T>>--><!--Device-FetchResult-getAllObjects(): Promise<Array<T>>-End-->
 
@@ -203,11 +205,11 @@ getAllObjects(): Promise<Array<T>>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -235,7 +237,7 @@ getCount(): number
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getCount(): int--><!--Device-FetchResult-getCount(): int-End-->
 
@@ -251,12 +253,12 @@ getCount(): number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
+| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -274,6 +276,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getfirstobject1"></a>
+
 ## getFirstObject
 
 ```TypeScript
@@ -284,7 +288,7 @@ getFirstObject(callback: AsyncCallback<T>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getFirstObject(callback: AsyncCallback<T>): void--><!--Device-FetchResult-getFirstObject(callback: AsyncCallback<T>): void-End-->
 
@@ -301,11 +305,11 @@ getFirstObject(callback: AsyncCallback<T>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -328,7 +332,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getfirstobject-1"></a>
+<a id="getfirstobject2"></a>
 
 ## getFirstObject
 
@@ -340,7 +344,7 @@ getFirstObject(): Promise<T>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getFirstObject(): Promise<T>--><!--Device-FetchResult-getFirstObject(): Promise<T>-End-->
 
@@ -357,11 +361,11 @@ getFirstObject(): Promise<T>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -391,7 +395,7 @@ getIndex(object: T): Promise<number>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getIndex(object: T): Promise<int>--><!--Device-FetchResult-getIndex(object: T): Promise<int>-End-->
 
@@ -411,7 +415,7 @@ getIndex(object: T): Promise<number>
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -434,6 +438,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getlastobject1"></a>
+
 ## getLastObject
 
 ```TypeScript
@@ -444,7 +450,7 @@ getLastObject(callback: AsyncCallback<T>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getLastObject(callback: AsyncCallback<T>): void--><!--Device-FetchResult-getLastObject(callback: AsyncCallback<T>): void-End-->
 
@@ -461,11 +467,11 @@ getLastObject(callback: AsyncCallback<T>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | 1.Parameter count exceeds the limit;<br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -488,7 +494,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getlastobject-1"></a>
+<a id="getlastobject2"></a>
 
 ## getLastObject
 
@@ -500,7 +506,7 @@ getLastObject(): Promise<T>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getLastObject(): Promise<T>--><!--Device-FetchResult-getLastObject(): Promise<T>-End-->
 
@@ -517,11 +523,11 @@ getLastObject(): Promise<T>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -539,6 +545,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getnextobject1"></a>
+
 ## getNextObject
 
 ```TypeScript
@@ -551,7 +559,7 @@ getNextObject(callback: AsyncCallback<T>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getNextObject(callback: AsyncCallback<T>): void--><!--Device-FetchResult-getNextObject(callback: AsyncCallback<T>): void-End-->
 
@@ -568,11 +576,11 @@ getNextObject(callback: AsyncCallback<T>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -598,7 +606,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getnextobject-1"></a>
+<a id="getnextobject2"></a>
 
 ## getNextObject
 
@@ -612,7 +620,7 @@ getNextObject(): Promise<T>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getNextObject(): Promise<T>--><!--Device-FetchResult-getNextObject(): Promise<T>-End-->
 
@@ -629,11 +637,11 @@ getNextObject(): Promise<T>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -654,6 +662,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getobjectbyposition1"></a>
+
 ## getObjectByPosition
 
 ```TypeScript
@@ -664,7 +674,7 @@ getObjectByPosition(index: number, callback: AsyncCallback<T>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getObjectByPosition(index: int, callback: AsyncCallback<T>): void--><!--Device-FetchResult-getObjectByPosition(index: int, callback: AsyncCallback<T>): void-End-->
 
@@ -682,11 +692,11 @@ getObjectByPosition(index: number, callback: AsyncCallback<T>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -709,7 +719,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getobjectbyposition-1"></a>
+<a id="getobjectbyposition2"></a>
 
 ## getObjectByPosition
 
@@ -721,7 +731,7 @@ getObjectByPosition(index: number): Promise<T>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getObjectByPosition(index: int): Promise<T>--><!--Device-FetchResult-getObjectByPosition(index: int): Promise<T>-End-->
 
@@ -744,11 +754,11 @@ getObjectByPosition(index: number): Promise<T>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -782,7 +792,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise<T[]>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-getObjectsByIndexSet(indexSet: int[]): Promise<T[]>--><!--Device-FetchResult-getObjectsByIndexSet(indexSet: int[]): Promise<T[]>-End-->
 
@@ -808,7 +818,7 @@ getObjectsByIndexSet(indexSet: number[]): Promise<T[]>
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -868,7 +878,7 @@ getRangeObjects(index: number, offset: number): Promise<T[]>
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';
@@ -910,7 +920,7 @@ isAfterLast(): boolean
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FetchResult-isAfterLast(): boolean--><!--Device-FetchResult-isAfterLast(): boolean-End-->
 
@@ -926,12 +936,12 @@ isAfterLast(): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
+| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **示例**
 
-phAccessHelper的创建请参考photoAccessHelper.getPhotoAccessHelper的示例使用。
+phAccessHelper的创建请参考[photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper)的示例使用。
 
 ```TypeScript
 import { dataSharePredicates } from '@kit.ArkData';

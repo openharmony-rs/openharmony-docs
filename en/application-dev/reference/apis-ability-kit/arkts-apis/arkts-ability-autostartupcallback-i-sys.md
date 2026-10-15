@@ -38,6 +38,7 @@ Called when the auto-startup setting of an application component is canceled.
 | --- | --- | --- | --- |
 | info | [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md) | Yes | Information about the target application component. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,6 +64,8 @@ try {
   console.error(`autoStartupManager.on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
+
+<!--DelEnd-->
 
 ## onAutoStartupOn
 
@@ -88,6 +91,7 @@ Called when auto-startup is set for an application component.
 | --- | --- | --- | --- |
 | info | [AutoStartupInfo](arkts-ability-autostartupinfo-i-sys.md) | Yes | Information about the target application component. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,3 +117,5 @@ try {
   console.error(`autoStartupManager.on failed, err code: ${code}, err msg: ${msg}.`);
 }
 ```
+
+<!--DelEnd-->

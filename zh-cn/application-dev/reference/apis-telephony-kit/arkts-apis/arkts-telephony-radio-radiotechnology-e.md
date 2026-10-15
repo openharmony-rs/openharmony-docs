@@ -12,34 +12,6 @@ export enum RadioTechnology
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## RADIO_TECHNOLOGY_UNKNOWN
-
-```TypeScript
-RADIO_TECHNOLOGY_UNKNOWN = 0
-```
-
-未知无线接入技术(RAT)。
-
-**起始版本：** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## RADIO_TECHNOLOGY_GSM
-
-```TypeScript
-RADIO_TECHNOLOGY_GSM = 1
-```
-
-无线接入技术GSM(Global System For Mobile Communication)。
-
-**起始版本：** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
 ## RADIO_TECHNOLOGY_1XRTT
 
 ```TypeScript
@@ -54,17 +26,45 @@ RADIO_TECHNOLOGY_1XRTT = 2
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## RADIO_TECHNOLOGY_WCDMA
+## RADIO_TECHNOLOGY_EHRPD
 
 ```TypeScript
-RADIO_TECHNOLOGY_WCDMA = 3
+RADIO_TECHNOLOGY_EHRPD = 8
 ```
 
-无线接入技术WCDMA(Wideband Code Division Multiple Access)。
+无线接入技术EHRPD(Evolved High Rate Package Data)。
 
 **起始版本：** 6
 
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3-End-->
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_EVDO
+
+```TypeScript
+RADIO_TECHNOLOGY_EVDO = 7
+```
+
+无线接入技术EVDO(Evolution Data Only)。
+
+**起始版本：** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_GSM
+
+```TypeScript
+RADIO_TECHNOLOGY_GSM = 1
+```
+
+无线接入技术GSM(Global System For Mobile Communication)。
+
+**起始版本：** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_GSM = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -96,45 +96,17 @@ RADIO_TECHNOLOGY_HSPAP = 5
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## RADIO_TECHNOLOGY_TD_SCDMA
+## RADIO_TECHNOLOGY_IWLAN
 
 ```TypeScript
-RADIO_TECHNOLOGY_TD_SCDMA = 6
+RADIO_TECHNOLOGY_IWLAN = 11
 ```
 
-无线接入技术TD_SCDMA(TimeDivision-Synchronous Code Division Multiple Access)。
+无线接入技术IWLAN(Industrial Wireless LAN)。
 
 **起始版本：** 6
 
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## RADIO_TECHNOLOGY_EVDO
-
-```TypeScript
-RADIO_TECHNOLOGY_EVDO = 7
-```
-
-无线接入技术EVDO(Evolution Data Only)。
-
-**起始版本：** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EVDO = 7-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-## RADIO_TECHNOLOGY_EHRPD
-
-```TypeScript
-RADIO_TECHNOLOGY_EHRPD = 8
-```
-
-无线接入技术EHRPD(Evolved High Rate Package Data)。
-
-**起始版本：** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_EHRPD = 8-End-->
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
@@ -166,20 +138,6 @@ RADIO_TECHNOLOGY_LTE_CA = 10
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## RADIO_TECHNOLOGY_IWLAN
-
-```TypeScript
-RADIO_TECHNOLOGY_IWLAN = 11
-```
-
-无线接入技术IWLAN(Industrial Wireless LAN)。
-
-**起始版本：** 6
-
-<!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_IWLAN = 11-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
 ## RADIO_TECHNOLOGY_NR
 
 ```TypeScript
@@ -191,5 +149,47 @@ RADIO_TECHNOLOGY_NR = 12
 **起始版本：** 6
 
 <!--Device-RadioTechnology-RADIO_TECHNOLOGY_NR = 12--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_NR = 12-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_TD_SCDMA
+
+```TypeScript
+RADIO_TECHNOLOGY_TD_SCDMA = 6
+```
+
+无线接入技术TD_SCDMA(TimeDivision-Synchronous Code Division Multiple Access)。
+
+**起始版本：** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_TD_SCDMA = 6-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_UNKNOWN
+
+```TypeScript
+RADIO_TECHNOLOGY_UNKNOWN = 0
+```
+
+未知无线接入技术(RAT)。
+
+**起始版本：** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_UNKNOWN = 0-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## RADIO_TECHNOLOGY_WCDMA
+
+```TypeScript
+RADIO_TECHNOLOGY_WCDMA = 3
+```
+
+无线接入技术WCDMA(Wideband Code Division Multiple Access)。
+
+**起始版本：** 6
+
+<!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3--><!--Device-RadioTechnology-RADIO_TECHNOLOGY_WCDMA = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService

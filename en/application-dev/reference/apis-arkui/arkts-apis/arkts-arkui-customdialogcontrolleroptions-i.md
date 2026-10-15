@@ -333,7 +333,7 @@ You can set separate radii for the four corners.
 
 Default value: **{ topLeft: '32vp', topRight: '32vp', bottomLeft: '32vp', bottomRight: '32vp' }**
 
-Note: The default corner radius of the background is 32 vp. This attribute must be used together with the [borderRadius](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderradius) attribute.
+Note: The default corner radius of the background is 32 vp. This attribute must be used together with the [borderRadius](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderradius1) attribute.
 
 **Type:** [Dimension](arkts-arkui-dimension-t.md) &#124; [BorderRadiuses](arkts-arkui-borderradiuses-t.md)
 
@@ -1015,7 +1015,7 @@ System material of the dialog box.
 
 - Default value: ImmersiveMaterial object whose **style** in [ImmersiveOptions](arkts-arkui-uimaterial-immersiveoptions-i.md) is  
 **ImmersiveStyle.ULTRA_THICK** If this parameter is set to **undefined**, the default value is used.  
-- Different materials produce distinct effects. This API impacts the following attributes:[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle), [backgroundEffect](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow). When the system material is set, the aforementioned attributes do not take effect.
+- Different materials produce distinct effects. This API impacts the following attributes:[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [backgroundBlurStyle](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1), [backgroundEffect](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect1), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1). When the system material is set, the aforementioned attributes do not take effect.
 
 **Type:** [SystemUiMaterial](../arkts-components/arkts-arkui-common-comp-systemuimaterial-t.md)
 

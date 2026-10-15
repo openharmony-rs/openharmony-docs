@@ -26,7 +26,7 @@ function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObse
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-errorManager-function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver--><!--Device-errorManager-function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObserver-End-->
 
@@ -55,16 +55,17 @@ function setDefaultFreezeObserver(defaultObserver?: FreezeObserver) : FreezeObse
 ```TypeScript
 import { errorManager } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+import { hilog } from '@kit.PerformanceAnalysisKit';
 
 // 用于保存上一次注册的处理器。如果是第一次注册，无前置处理器。
 let oldHandler: errorManager.FreezeObserver = () => {};
 const freezeHandler: errorManager.FreezeObserver = () => {
   // 自定义的FreezeHandler实现逻辑
-  console.info('[freezeHandler] freeze handler invoked.');
+  hilog.info(0x0000, 'testTag', '[freezeHandler] freeze handler invoked.');
   if (oldHandler) {
     oldHandler();
   } else {
-    console.info('[freezeHandler] freeze handler end.');
+    hilog.info(0x0000, 'testTag', '[freezeHandler] freeze handler end.');
   }
 };
 
@@ -74,8 +75,8 @@ export function setFreezeHandler() {
   } catch (paramError) {
     let code = (paramError as BusinessError).code;
     let message = (paramError as BusinessError).message;
-    console.error(`Failed to set freeze handler. Code: ${code}, message: ${message}`);
+    hilog.error(0x0000, 'testTag', `Failed to set freeze handler. Code: ${code}, message: ${message}`);
   }
-  console.info('Registered freeze Handler.');
+  hilog.info(0x0000, 'testTag', 'Registered freeze Handler.');
 }
 ```

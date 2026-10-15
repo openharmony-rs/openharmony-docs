@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getwantagent1"></a>
+
 ## getWantAgent
 
 ```TypeScript
@@ -29,7 +31,7 @@ function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [WantAgentInfo](arkts-ability-wantagentinfo-wantagentinfo-i.md) | 是 | WantAgent信息。 |
+| info | [WantAgentInfo](arkts-ability-wantagentinfo-i.md) | 是 | WantAgent信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WantAgent](arkts-ability-wantagent-depr-t.md)&gt; | 是 | 创建WantAgent的回调方法。 |
 
 **示例**
@@ -76,7 +78,7 @@ wantAgent.getWantAgent({
 ```
 
 
-<a id="getwantagent-1"></a>
+<a id="getwantagent2"></a>
 
 ## getWantAgent
 
@@ -102,7 +104,7 @@ function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| info | [WantAgentInfo](arkts-ability-wantagentinfo-wantagentinfo-i.md) | 是 | WantAgent信息。 |
+| info | [WantAgentInfo](arkts-ability-wantagentinfo-i.md) | 是 | WantAgent信息。 |
 
 **返回值：**
 

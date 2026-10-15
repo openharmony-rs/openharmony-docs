@@ -12,35 +12,19 @@ The enum of ranging stopped causes.
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
-## NO_ERROR
+## BACKGROUND_PAUSED
 
 ```TypeScript
-NO_ERROR = 0
+BACKGROUND_PAUSED = 3
 ```
 
-No error.
+Ranging is stopped when the app goes to background.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-RangingStoppedCause-NO_ERROR = 0--><!--Device-RangingStoppedCause-NO_ERROR = 0-End-->
-
-**System capability:** SystemCapability.Communication.FusionConnectivity.Core
-
-## INTERNAL_ERROR
-
-```TypeScript
-INTERNAL_ERROR = 1
-```
-
-An internal error occurred.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-RangingStoppedCause-INTERNAL_ERROR = 1--><!--Device-RangingStoppedCause-INTERNAL_ERROR = 1-End-->
+<!--Device-RangingStoppedCause-BACKGROUND_PAUSED = 3--><!--Device-RangingStoppedCause-BACKGROUND_PAUSED = 3-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
@@ -60,18 +44,34 @@ A service conflict occurs.
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
-## BACKGROUND_PAUSED
+## INTERNAL_ERROR
 
 ```TypeScript
-BACKGROUND_PAUSED = 3
+INTERNAL_ERROR = 1
 ```
 
-Ranging is stopped when the app goes to background.
+An internal error occurred.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-RangingStoppedCause-BACKGROUND_PAUSED = 3--><!--Device-RangingStoppedCause-BACKGROUND_PAUSED = 3-End-->
+<!--Device-RangingStoppedCause-INTERNAL_ERROR = 1--><!--Device-RangingStoppedCause-INTERNAL_ERROR = 1-End-->
+
+**System capability:** SystemCapability.Communication.FusionConnectivity.Core
+
+## NO_ERROR
+
+```TypeScript
+NO_ERROR = 0
+```
+
+No error.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RangingStoppedCause-NO_ERROR = 0--><!--Device-RangingStoppedCause-NO_ERROR = 0-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core

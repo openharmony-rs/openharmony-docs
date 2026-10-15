@@ -47,3 +47,25 @@ Requests to deactivate a widget. This API takes effect only for [scene-based wid
 | [16501001](../errorcode-form.md#16501001-widget-id-not-exist) | The ID of the form to be operated does not exist. |
 | [16501003](../errorcode-form.md#16501003-widget-not-operatable) | The form cannot be operated by the current application. |
 | [16501011](../errorcode-form.md#16501011-api-not-supported) | The form cannot support this operation. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formProvider } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+
+try {
+  formProvider.deactivateSceneAnimation(formId).then(() => {
+    console.info('deactivateSceneAnimation succeed.');
+  }).catch((error: BusinessError) => {
+    console.error(`promise error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

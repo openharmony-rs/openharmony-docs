@@ -45,6 +45,7 @@ function getAVScreenCaptureConfigurableParameters(sessionId: number): Promise<st
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Called from Non-System applications. Return by promise. |
 | [5400109](../errorcode-media.md#5400109-会话id不存在) | Sessions not exist. Return by promise. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,3 +60,5 @@ try {
   console.error(`getAVScreenCaptureConfigurableParameters error, error message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -10,7 +10,7 @@ interface ChangeNotification
 
 **废弃版本：** 9
 
-**替代接口：** ChangeNotification
+**替代接口：** [ChangeNotification](arkts-arkdata-distributedkvstore-changenotification-i.md)
 
 <!--Device-distributedData-interface ChangeNotification--><!--Device-distributedData-interface ChangeNotification-End-->
 
@@ -35,7 +35,7 @@ deleteEntries: Entry[]
 
 **废弃版本：** 9
 
-**替代接口：** deleteEntries
+**替代接口：** [deleteEntries](arkts-arkdata-distributedkvstore-changenotification-i.md#deleteentries)
 
 <!--Device-ChangeNotification-deleteEntries: Entry[]--><!--Device-ChangeNotification-deleteEntries: Entry[]-End-->
 
@@ -55,7 +55,7 @@ deviceId: string
 
 **废弃版本：** 9
 
-**替代接口：** deviceId
+**替代接口：** [deviceId](arkts-arkdata-distributedkvstore-changenotification-i.md#deviceid)
 
 <!--Device-ChangeNotification-deviceId: string--><!--Device-ChangeNotification-deviceId: string-End-->
 
@@ -75,7 +75,7 @@ insertEntries: Entry[]
 
 **废弃版本：** 9
 
-**替代接口：** insertEntries
+**替代接口：** [insertEntries](arkts-arkdata-distributedkvstore-changenotification-i.md#insertentries)
 
 <!--Device-ChangeNotification-insertEntries: Entry[]--><!--Device-ChangeNotification-insertEntries: Entry[]-End-->
 
@@ -95,7 +95,7 @@ updateEntries: Entry[]
 
 **废弃版本：** 9
 
-**替代接口：** updateEntries
+**替代接口：** [updateEntries](arkts-arkdata-distributedkvstore-changenotification-i.md#updateentries)
 
 <!--Device-ChangeNotification-updateEntries: Entry[]--><!--Device-ChangeNotification-updateEntries: Entry[]-End-->
 

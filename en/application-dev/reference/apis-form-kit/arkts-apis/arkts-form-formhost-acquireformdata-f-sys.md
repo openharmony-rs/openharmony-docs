@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="acquireformdata1"></a>
+
 ## acquireFormData
 
 ```TypeScript
@@ -45,8 +47,30 @@ Requests data from the widget provider. This API uses an asynchronous callback t
 | [16500100](../errorcode-form.md#16500100-failed-to-obtain-widget-configuration-information) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. invalid input parameter during form operation |
 
+<!--Del-->
+**Examples**
 
-<a id="acquireformdata-1"></a>
+```TypeScript
+import { formHost } from '@kit.FormKit';
+
+let formId: string = '12400633174999288';
+try {
+  formHost.acquireFormData(formId, (error: BusinessError, data: Record<string, Object>) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    } else {
+      console.info('formHost acquireFormData success.');
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="acquireformdata2"></a>
 
 ## acquireFormData
 
@@ -92,3 +116,24 @@ Requests data from the widget provider. This API uses a promise to return the re
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16500100](../errorcode-form.md#16500100-failed-to-obtain-widget-configuration-information) | Failed to obtain the configuration information. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. invalid input parameter during form operation |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formId: string = '12400633174999288';
+try {
+  formHost.acquireFormData(formId).then((data) => {
+    console.info('formHost acquireFormData success' + data);
+  }).catch((error: BusinessError) => {
+    console.error(`error, code: ${error.code}, message: ${error.message}`);
+  });
+} catch (e) {
+  console.error(`catch error, code: ${(e as BusinessError).code}, message: ${(e as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->

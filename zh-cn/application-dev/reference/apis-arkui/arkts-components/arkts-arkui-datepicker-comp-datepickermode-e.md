@@ -30,24 +30,6 @@ DATE = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## YEAR_AND_MONTH
-
-```TypeScript
-YEAR_AND_MONTH = 1
-```
-
-显示年、月二列。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-DatePickerMode-YEAR_AND_MONTH = 1--><!--Device-DatePickerMode-YEAR_AND_MONTH = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## MONTH_AND_DAY
 
 ```TypeScript
@@ -65,5 +47,23 @@ MONTH_AND_DAY = 2
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-DatePickerMode-MONTH_AND_DAY = 2--><!--Device-DatePickerMode-MONTH_AND_DAY = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## YEAR_AND_MONTH
+
+```TypeScript
+YEAR_AND_MONTH = 1
+```
+
+显示年、月二列。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-DatePickerMode-YEAR_AND_MONTH = 1--><!--Device-DatePickerMode-YEAR_AND_MONTH = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

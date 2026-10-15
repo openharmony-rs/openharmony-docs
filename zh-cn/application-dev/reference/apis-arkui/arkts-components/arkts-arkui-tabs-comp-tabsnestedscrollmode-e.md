@@ -12,24 +12,6 @@ Tabs组件和父组件的嵌套滚动模式枚举。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SELF_ONLY
-
-```TypeScript
-SELF_ONLY = 0
-```
-
-Tabs自身滚动，不与父组件联动。适用于Tabs组件内部有完整滚动功能、需要独立控制滚动行为的场景。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
-
-<!--Device-TabsNestedScrollMode-SELF_ONLY = 0--><!--Device-TabsNestedScrollMode-SELF_ONLY = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## SELF_FIRST
 
 ```TypeScript
@@ -45,5 +27,23 @@ Tabs自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚�
 **原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-TabsNestedScrollMode-SELF_FIRST = 1--><!--Device-TabsNestedScrollMode-SELF_FIRST = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SELF_ONLY
+
+```TypeScript
+SELF_ONLY = 0
+```
+
+Tabs自身滚动，不与父组件联动。适用于Tabs组件内部有完整滚动功能、需要独立控制滚动行为的场景。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-TabsNestedScrollMode-SELF_ONLY = 0--><!--Device-TabsNestedScrollMode-SELF_ONLY = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -14,10 +14,6 @@ export declare struct EditableTitleBarV2
 > 
 > - 如果EditableTitleBarV2设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到EditableTitleBarV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议EditableTitleBarV2设置通用属性和通用事件。
 
-## 子组件
-
-无
-
 **起始版本：** 26.0.0
 
 **装饰器类型：** @ComponentV2
@@ -25,6 +21,10 @@ export declare struct EditableTitleBarV2
 <!--Device-unnamed-export declare struct EditableTitleBarV2--><!--Device-unnamed-export declare struct EditableTitleBarV2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 子组件
+
+无
 
 ## 导入模块
 

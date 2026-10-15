@@ -12,31 +12,31 @@ export enum CMErrorCode
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_NO_PERMISSION
+## CM_ERROR_ACCESS_UKEY_SERVICE_FAILED
 
 ```TypeScript
-CM_ERROR_NO_PERMISSION = 201
+CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010
 ```
 
-表示应用程序无权限调用接口。
+表示访问USB Key服务失败。
 
-**起始版本：** 11
+**起始版本：** 22
 
-<!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201--><!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201-End-->
+<!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010--><!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_INVALID_PARAMS
+## CM_ERROR_DEVICE_ENTER_ADVSECMODE
 
 ```TypeScript
-CM_ERROR_INVALID_PARAMS = 401
+CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007
 ```
 
-表示输入参数无效。
+表示设备进入坚盾守护模式。该模式下CA证书安装操作受限。
 
-**起始版本：** 11
+**起始版本：** 18
 
-<!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401--><!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401-End-->
+<!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007--><!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -54,20 +54,6 @@ CM_ERROR_GENERIC = 17500001
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_NO_FOUND
-
-```TypeScript
-CM_ERROR_NO_FOUND = 17500002
-```
-
-表示证书或凭据不存在。
-
-**起始版本：** 11
-
-<!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002--><!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManager
-
 ## CM_ERROR_INCORRECT_FORMAT
 
 ```TypeScript
@@ -79,6 +65,20 @@ CM_ERROR_INCORRECT_FORMAT = 17500003
 **起始版本：** 11
 
 <!--Device-CMErrorCode-CM_ERROR_INCORRECT_FORMAT = 17500003--><!--Device-CMErrorCode-CM_ERROR_INCORRECT_FORMAT = 17500003-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+## CM_ERROR_INVALID_PARAMS
+
+```TypeScript
+CM_ERROR_INVALID_PARAMS = 401
+```
+
+表示输入参数无效。
+
+**起始版本：** 11
+
+<!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401--><!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -110,45 +110,31 @@ CM_ERROR_NO_AUTHORIZATION = 17500005
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_DEVICE_ENTER_ADVSECMODE
+## CM_ERROR_NO_FOUND
 
 ```TypeScript
-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007
+CM_ERROR_NO_FOUND = 17500002
 ```
 
-表示设备进入坚盾守护模式。该模式下CA证书安装操作受限。
+表示证书或凭据不存在。
 
-**起始版本：** 18
+**起始版本：** 11
 
-<!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007--><!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007-End-->
+<!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002--><!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_STORE_PATH_NOT_SUPPORTED
+## CM_ERROR_NO_PERMISSION
 
 ```TypeScript
-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009
+CM_ERROR_NO_PERMISSION = 201
 ```
 
-表示不支持指定的证书存储路径。
+表示应用程序无权限调用接口。
 
-**起始版本：** 20
+**起始版本：** 11
 
-<!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009--><!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManager
-
-## CM_ERROR_ACCESS_UKEY_SERVICE_FAILED
-
-```TypeScript
-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010
-```
-
-表示访问USB Key服务失败。
-
-**起始版本：** 22
-
-<!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010--><!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010-End-->
+<!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201--><!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -165,5 +151,19 @@ CM_ERROR_PARAMETER_VALIDATION_FAILED = 17500011
 **起始版本：** 22
 
 <!--Device-CMErrorCode-CM_ERROR_PARAMETER_VALIDATION_FAILED = 17500011--><!--Device-CMErrorCode-CM_ERROR_PARAMETER_VALIDATION_FAILED = 17500011-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+## CM_ERROR_STORE_PATH_NOT_SUPPORTED
+
+```TypeScript
+CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009
+```
+
+表示不支持指定的证书存储路径。
+
+**起始版本：** 20
+
+<!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009--><!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager

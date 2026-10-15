@@ -35,6 +35,7 @@ function updateNtpTime(): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [13000001](../errorcode-time.md#13000001-网络或操作系统异常) | Network connection error or OS error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -51,3 +52,5 @@ try {
   console.error(`Failed to update ntp time. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

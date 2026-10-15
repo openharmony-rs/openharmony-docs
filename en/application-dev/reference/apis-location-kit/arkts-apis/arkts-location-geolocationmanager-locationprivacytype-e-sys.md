@@ -14,6 +14,22 @@ Enum for location privacy type.
 
 **System API:** This is a system API.
 
+## CORE_LOCATION
+
+```TypeScript
+CORE_LOCATION = 2
+```
+
+Privacy agreement pop-up when network location is enabled.
+
+**Since:** 9
+
+<!--Device-LocationPrivacyType-CORE_LOCATION = 2--><!--Device-LocationPrivacyType-CORE_LOCATION = 2-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+**System API:** This is a system API.
+
 ## OTHERS
 
 ```TypeScript
@@ -41,22 +57,6 @@ Privacy agreement for the startup wizard scenario.
 **Since:** 9
 
 <!--Device-LocationPrivacyType-STARTUP = 1--><!--Device-LocationPrivacyType-STARTUP = 1-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
-**System API:** This is a system API.
-
-## CORE_LOCATION
-
-```TypeScript
-CORE_LOCATION = 2
-```
-
-Privacy agreement pop-up when network location is enabled.
-
-**Since:** 9
-
-<!--Device-LocationPrivacyType-CORE_LOCATION = 2--><!--Device-LocationPrivacyType-CORE_LOCATION = 2-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 

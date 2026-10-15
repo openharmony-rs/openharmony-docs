@@ -14,22 +14,6 @@ Obtains IMS registration status.
 
 **System API:** This is a system API.
 
-## IMS_UNREGISTERED
-
-```TypeScript
-IMS_UNREGISTERED = 0
-```
-
-Indicates that the ims service is not registered.
-
-**Since:** 9
-
-<!--Device-ImsRegState-IMS_UNREGISTERED = 0--><!--Device-ImsRegState-IMS_UNREGISTERED = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-**System API:** This is a system API.
-
 ## IMS_REGISTERED
 
 ```TypeScript
@@ -41,6 +25,22 @@ Indicates that the ims service has been registered.
 **Since:** 9
 
 <!--Device-ImsRegState-IMS_REGISTERED = 1--><!--Device-ImsRegState-IMS_REGISTERED = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+**System API:** This is a system API.
+
+## IMS_UNREGISTERED
+
+```TypeScript
+IMS_UNREGISTERED = 0
+```
+
+Indicates that the ims service is not registered.
+
+**Since:** 9
+
+<!--Device-ImsRegState-IMS_UNREGISTERED = 0--><!--Device-ImsRegState-IMS_UNREGISTERED = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

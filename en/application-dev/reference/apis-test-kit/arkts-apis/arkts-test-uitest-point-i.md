@@ -33,7 +33,7 @@ ID of the display to which the coordinate point belongs. The default value is th
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-Point-displayId?: int--><!--Device-Point-displayId?: int-End-->
 
@@ -55,7 +55,7 @@ Horizontal coordinate of a coordinate point, in pixels. The value is an integer 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Point-x: int--><!--Device-Point-x: int-End-->
 
@@ -77,7 +77,7 @@ Vertical coordinate of a coordinate point, in pixels. The value is an integer gr
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Point-y: int--><!--Device-Point-y: int-End-->
 

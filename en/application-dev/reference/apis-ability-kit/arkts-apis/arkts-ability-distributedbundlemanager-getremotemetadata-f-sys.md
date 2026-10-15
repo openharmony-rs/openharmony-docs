@@ -30,7 +30,7 @@ Obtains the metadata of an app with a specified bundle name on a specified remot
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| deviceId | string | Yes | ID of the remote device, which is actually the networkId (distributed network identifier). You can call getAvailableDeviceList to obtain all trusted device lists; the value is the networkId field in the trusted device information. |
+| deviceId | string | Yes | ID of the remote device. You can call getAvailableDeviceList to obtain all trusted device lists. The value is the networkId field in the trusted device information. |
 | bundleName | string | Yes | Bundle name of the app. |
 
 **Return value:**

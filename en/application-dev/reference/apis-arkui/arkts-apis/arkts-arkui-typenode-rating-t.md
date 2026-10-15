@@ -6,6 +6,8 @@ type Rating = TypedFrameNode<RatingInterface, RatingAttribute>
 
 Represents a FrameNode of the **Rating** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;RatingInterface, [RatingAttribute](../arkts-components/arkts-arkui-rating-comp-attribute.md)&gt;
+
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Rating** type.
 <!--Device-typeNode-type Rating = TypedFrameNode<RatingInterface, RatingAttribute>--><!--Device-typeNode-type Rating = TypedFrameNode<RatingInterface, RatingAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;RatingInterface, [RatingAttribute](../arkts-components/arkts-arkui-rating-comp-attribute.md)&gt;

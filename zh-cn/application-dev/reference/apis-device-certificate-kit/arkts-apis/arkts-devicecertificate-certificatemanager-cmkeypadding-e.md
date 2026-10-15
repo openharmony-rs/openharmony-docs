@@ -26,20 +26,6 @@ CM_PADDING_NONE = 0
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## CM_PADDING_PSS
-
-```TypeScript
-CM_PADDING_PSS = 1
-```
-
-PSS方式填充。
-
-**起始版本：** 11
-
-<!--Device-CmKeyPadding-CM_PADDING_PSS = 1--><!--Device-CmKeyPadding-CM_PADDING_PSS = 1-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManager
-
 ## CM_PADDING_PKCS1_V1_5
 
 ```TypeScript
@@ -51,5 +37,19 @@ PKCS1_V1_5方式填充。
 **起始版本：** 11
 
 <!--Device-CmKeyPadding-CM_PADDING_PKCS1_V1_5 = 2--><!--Device-CmKeyPadding-CM_PADDING_PKCS1_V1_5 = 2-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+## CM_PADDING_PSS
+
+```TypeScript
+CM_PADDING_PSS = 1
+```
+
+PSS方式填充。
+
+**起始版本：** 11
+
+<!--Device-CmKeyPadding-CM_PADDING_PSS = 1--><!--Device-CmKeyPadding-CM_PADDING_PSS = 1-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager

@@ -6,6 +6,8 @@
 import { hiAppEvent } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="write1"></a>
+
 ## write
 
 ```TypeScript
@@ -16,7 +18,7 @@ Writes events of the **AppEventInfo** type. This API uses a promise to return th
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-hiAppEvent-function write(info: AppEventInfo): Promise<void>--><!--Device-hiAppEvent-function write(info: AppEventInfo): Promise<void>-End-->
 
@@ -72,7 +74,7 @@ hiAppEvent.write({
 ```
 
 
-<a id="write-1"></a>
+<a id="write2"></a>
 
 ## write
 
@@ -84,7 +86,7 @@ Writes events of the **AppEventInfo** type. This API uses an asynchronous callba
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-hiAppEvent-function write(info: AppEventInfo, callback: AsyncCallback<void>): void--><!--Device-hiAppEvent-function write(info: AppEventInfo, callback: AsyncCallback<void>): void-End-->
 

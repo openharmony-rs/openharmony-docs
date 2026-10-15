@@ -30,6 +30,22 @@ CS通话。
 
 **系统接口：** 此接口为系统接口。
 
+## TYPE_ERR_CALL
+
+```TypeScript
+TYPE_ERR_CALL = 3
+```
+
+其他类型通话。
+
+**起始版本：** 7
+
+<!--Device-CallType-TYPE_ERR_CALL = 3--><!--Device-CallType-TYPE_ERR_CALL = 3-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
 ## TYPE_IMS
 
 ```TypeScript
@@ -57,22 +73,6 @@ OTT通话。
 **起始版本：** 7
 
 <!--Device-CallType-TYPE_OTT = 2--><!--Device-CallType-TYPE_OTT = 2-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
-## TYPE_ERR_CALL
-
-```TypeScript
-TYPE_ERR_CALL = 3
-```
-
-其他类型通话。
-
-**起始版本：** 7
-
-<!--Device-CallType-TYPE_ERR_CALL = 3--><!--Device-CallType-TYPE_ERR_CALL = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

@@ -8,7 +8,7 @@ The universal attributes are supported.
 
 The universal events are not supported.
 
-**Inheritance/Implementation:** FormLinkAttribute extends CommonMethod<FormLinkAttribute>
+**Inheritance/Implementation:** FormLinkAttribute extends CommonMethod&lt;FormLinkAttribute&gt;
 
 **Since:** 10
 

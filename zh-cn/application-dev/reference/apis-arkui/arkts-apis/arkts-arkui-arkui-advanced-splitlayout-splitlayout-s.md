@@ -10,13 +10,6 @@ SplitLayout组件提供了常用的页面布局样式，主要用于展示图片
 > 
 > - 如果SplitLayout设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SplitLayout本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SplitLayout设置通用属性和通用事件。
 
-## 导入模块
-
-```ts
-import { SplitLayout } from '@kit.ArkUI';
-```
-
-  
 ## 子组件
 
 无

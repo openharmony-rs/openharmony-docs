@@ -32,7 +32,7 @@ additionalInfo?: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-additionalInfo?: string--><!--Device-Poi-additionalInfo?: string-End-->
 
@@ -50,7 +50,7 @@ address: string
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-address: string--><!--Device-Poi-address: string-End-->
 
@@ -68,7 +68,7 @@ administrativeArea: string
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-administrativeArea: string--><!--Device-Poi-administrativeArea: string-End-->
 
@@ -86,7 +86,7 @@ confidence: number
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-confidence: double--><!--Device-Poi-confidence: double-End-->
 
@@ -104,7 +104,7 @@ id: string
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-id: string--><!--Device-Poi-id: string-End-->
 
@@ -122,7 +122,7 @@ latitude: number
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-latitude: double--><!--Device-Poi-latitude: double-End-->
 
@@ -140,7 +140,7 @@ locality: string
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-locality: string--><!--Device-Poi-locality: string-End-->
 
@@ -158,7 +158,7 @@ longitude: number
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-longitude: double--><!--Device-Poi-longitude: double-End-->
 
@@ -176,7 +176,7 @@ name: string
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-name: string--><!--Device-Poi-name: string-End-->
 
@@ -194,7 +194,7 @@ subAdministrativeArea: string
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-subAdministrativeArea: string--><!--Device-Poi-subAdministrativeArea: string-End-->
 
@@ -212,7 +212,7 @@ subLocality: string
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-Poi-subLocality: string--><!--Device-Poi-subLocality: string-End-->
 

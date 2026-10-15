@@ -14,37 +14,19 @@ Enum for the role of device.
 
 **System API:** This is a system API.
 
-## DEVICE_ROLE_PERIPHERAL_ONLY
+## DEVICE_ROLE_BOTH_PREFER_CENTRAL
 
 ```TypeScript
-DEVICE_ROLE_PERIPHERAL_ONLY = 0
+DEVICE_ROLE_BOTH_PREFER_CENTRAL = 3
 ```
 
-Only peripheral supported.
+Central & peripheral supported, central preferred.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DeviceRole-DEVICE_ROLE_PERIPHERAL_ONLY = 0--><!--Device-DeviceRole-DEVICE_ROLE_PERIPHERAL_ONLY = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
-## DEVICE_ROLE_CENTRAL_ONLY
-
-```TypeScript
-DEVICE_ROLE_CENTRAL_ONLY = 1
-```
-
-Only central supported.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeviceRole-DEVICE_ROLE_CENTRAL_ONLY = 1--><!--Device-DeviceRole-DEVICE_ROLE_CENTRAL_ONLY = 1-End-->
+<!--Device-DeviceRole-DEVICE_ROLE_BOTH_PREFER_CENTRAL = 3--><!--Device-DeviceRole-DEVICE_ROLE_BOTH_PREFER_CENTRAL = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -68,19 +50,37 @@ Central & peripheral supported, peripheral preferred.
 
 **System API:** This is a system API.
 
-## DEVICE_ROLE_BOTH_PREFER_CENTRAL
+## DEVICE_ROLE_CENTRAL_ONLY
 
 ```TypeScript
-DEVICE_ROLE_BOTH_PREFER_CENTRAL = 3
+DEVICE_ROLE_CENTRAL_ONLY = 1
 ```
 
-Central & peripheral supported, central preferred.
+Only central supported.
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DeviceRole-DEVICE_ROLE_BOTH_PREFER_CENTRAL = 3--><!--Device-DeviceRole-DEVICE_ROLE_BOTH_PREFER_CENTRAL = 3-End-->
+<!--Device-DeviceRole-DEVICE_ROLE_CENTRAL_ONLY = 1--><!--Device-DeviceRole-DEVICE_ROLE_CENTRAL_ONLY = 1-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## DEVICE_ROLE_PERIPHERAL_ONLY
+
+```TypeScript
+DEVICE_ROLE_PERIPHERAL_ONLY = 0
+```
+
+Only peripheral supported.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeviceRole-DEVICE_ROLE_PERIPHERAL_ONLY = 0--><!--Device-DeviceRole-DEVICE_ROLE_PERIPHERAL_ONLY = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

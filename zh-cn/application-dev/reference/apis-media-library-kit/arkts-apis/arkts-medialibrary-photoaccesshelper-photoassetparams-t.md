@@ -6,10 +6,10 @@ type PhotoAssetParams = Record<string, MemberType>[]
 
 文件属性名称及其值的Record类型数组。
 
+**类型：** Record&lt;string, [MemberType](arkts-medialibrary-photoaccesshelper-membertype-t.md)&gt;[]
+
 **起始版本：** 21
 
 <!--Device-photoAccessHelper-type PhotoAssetParams = Record<string, MemberType>[]--><!--Device-photoAccessHelper-type PhotoAssetParams = Record<string, MemberType>[]-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**类型：** Record&lt;string, [MemberType](arkts-medialibrary-photoaccesshelper-membertype-t.md)&gt;[]

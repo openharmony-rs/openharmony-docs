@@ -44,6 +44,7 @@ start ManualNetworkScan , Real-time report.
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,3 +56,5 @@ radio.startManualNetworkScan(0, (err: BusinessError, data: radio.NetworkSearchRe
     console.info(`startManualNetworkScan success, callback: data->${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->

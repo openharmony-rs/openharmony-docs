@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="unsubscribe1"></a>
+
 ## unsubscribe
 
 ```TypeScript
@@ -31,11 +33,11 @@ function unsubscribe(subscriber: NotificationSubscriber, callback: AsyncCallback
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 取消订阅动作回调函数。 |
 
 
-<a id="unsubscribe-1"></a>
+<a id="unsubscribe2"></a>
 
 ## unsubscribe
 
@@ -63,7 +65,7 @@ function unsubscribe(subscriber: NotificationSubscriber): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
+| subscriber | [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | 是 | 通知订阅对象。 |
 
 **返回值：**
 

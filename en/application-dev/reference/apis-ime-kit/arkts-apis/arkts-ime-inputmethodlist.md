@@ -28,49 +28,49 @@ The **inputMethodList** module is oriented to system applications and input meth
  <br>// Configure the component.
  <br>@Component
  <br>struct SettingsItem {
- <br>  @State defaultPattern: number = 1;
- <br>  private oneHandAction: PatternOptions = {
- <br>    defaultSelected: this.defaultPattern,
- <br>    patterns: [ // Icons in patterns can be used only after the corresponding icon resources have been added to
+ <br> @State defaultPattern: number = 1;
+ <br> private oneHandAction: PatternOptions = {
+ <br> defaultSelected: this.defaultPattern,
+ <br> patterns: [ // Icons in patterns can be used only after the corresponding icon resources have been added to
  the resource directory of the project.
- <br>      {
- <br>        icon: $r('app.media.hand_icon'), // Icon resource for the input method mode option, for example,
+ <br> {
+ <br> icon: $r('app.media.hand_icon'), // Icon resource for the input method mode option, for example,
  the icon for the one-handed mode.
- <br>        selectedIcon: $r('app.media.hand_icon_selected') // Icon resource for the input method mode option in
+ <br> selectedIcon: $r('app.media.hand_icon_selected') // Icon resource for the input method mode option in
  the selected state, for example, the icon for the one-handed mode in the selected state.
- <br>      },
- <br>      {
- <br>        icon: $r('app.media.hand_icon1'),
- <br>        selectedIcon: $r('app.media.hand_icon_selected1')
- <br>      },
- <br>      {
- <br>        icon: $r('app.media.hand_icon2'),
- <br>        selectedIcon: $r('app.media.hand_icon_selected2'),
- <br>      }],
- <br>    action:(index: number)=&gt;{
- <br>      console.info(`pattern is changed, current is ${index}`);
- <br>      this.defaultPattern = index;
- <br>    }
- <br>  };
- <br>  private listController: CustomDialogController = new CustomDialogController({
- <br>    builder: InputMethodListDialog({ patternOptions: this.oneHandAction }),
- <br>    customStyle: true,
- <br>    maskColor: '#00000000'
- <br>  });
+ <br> },
+ <br> {
+ <br> icon: $r('app.media.hand_icon1'),
+ <br> selectedIcon: $r('app.media.hand_icon_selected1')
+ <br> },
+ <br> {
+ <br> icon: $r('app.media.hand_icon2'),
+ <br> selectedIcon: $r('app.media.hand_icon_selected2'),
+ <br> }],
+ <br> action:(index: number)=&gt;{
+ <br> console.info(`pattern is changed, current is ${index}`);
+ <br> this.defaultPattern = index;
+ <br> }
+ <br> };
+ <br> private listController: CustomDialogController = new CustomDialogController({
+ <br> builder: InputMethodListDialog({ patternOptions: this.oneHandAction }),
+ <br> customStyle: true,
+ <br> maskColor: '#00000000'
+ <br> });
  <br>
- <br>  build() {
- <br>    Column() {
- <br>      Flex({ direction: FlexDirection.Column,
- <br>        alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
- <br>        Text("Input Method List").fontSize(20)
- <br>      }
- <br>    }
- <br>    .width("13%")
- <br>    .id('bindInputMethod')
- <br>    .onClick((event?: ClickEvent) =&gt; {
- <br>      this.listController.open();
- <br>    })
- <br>  }
+ <br> build() {
+ <br> Column() {
+ <br> Flex({ direction: FlexDirection.Column,
+ <br> alignItems: ItemAlign.Center, justifyContent: FlexAlign.Center }) {
+ <br> Text("Input Method List").fontSize(20)
+ <br> }
+ <br> }
+ <br> .width("13%")
+ <br> .id('bindInputMethod')
+ <br> .onClick((event?: ClickEvent) =&gt; {
+ <br> this.listController.open();
+ <br> })
+ <br> }
  <br>}
  <br>```
 

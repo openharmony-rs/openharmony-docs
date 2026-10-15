@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="setslotbybundle1"></a>
+
 ## setSlotByBundle
 
 ```TypeScript
@@ -14,7 +16,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 
 设置指定应用的通知渠道。使用callback异步回调。
 
-设置前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md)创建通知渠道。
+设置前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot1)创建通知渠道。
 
 **起始版本：** 9
 
@@ -40,13 +42,14 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,8 +71,10 @@ let notificationSlot: notificationManager.NotificationSlot = {
 notificationManager.setSlotByBundle(bundle, notificationSlot, setSlotByBundleCallback);
 ```
 
+<!--DelEnd-->
 
-<a id="setslotbybundle-1"></a>
+
+<a id="setslotbybundle2"></a>
 
 ## setSlotByBundle
 
@@ -79,7 +84,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<
 
 设置指定应用的通知渠道。使用Promise异步回调。
 
-设置前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md)创建通知渠道。
+设置前需要先通过[addSlot](arkts-notification-notificationmanager-addslot-f-sys.md#addslot1)创建通知渠道。
 
 **起始版本：** 9
 
@@ -110,13 +115,14 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported.<br>**适用版本：** 18+ |
 | [1600001](../errorcode-notification.md#1600001-内部错误) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-序列化或反序列化错误) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [17700001](../../apis-ability-kit/errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle name was not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -136,3 +142,5 @@ notificationManager.setSlotByBundle(bundle, notificationSlot).then(() => {
     console.error(`setSlotByBundle failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

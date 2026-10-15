@@ -6,13 +6,17 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getabilityicon1"></a>
+
 ## getAbilityIcon
 
 ```TypeScript
 function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string, callback: AsyncCallback<image.PixelMap>): void
 ```
 
-Obtains the PixelMap of an icon based on the bundle name, module name, and ability name. This API uses a promise to return the result.
+Obtains the [PixelMap](../../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) of an icon based on the bundle name, module name, and ability name. This API uses an asynchronous callback to return the result.
+
+No permission is required for obtaining the caller information.
 
 **Since:** 9
 
@@ -50,6 +54,7 @@ Obtains the PixelMap of an icon based on the bundle name, module name, and abili
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 | [17700029](../errorcode-bundle.md#17700029-disabled-ability) | The specified ability is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -74,8 +79,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getabilityicon-1"></a>
+
+<a id="getabilityicon2"></a>
 
 ## getAbilityIcon
 
@@ -83,7 +90,9 @@ try {
 function getAbilityIcon(bundleName: string, moduleName: string, abilityName: string): Promise<image.PixelMap>
 ```
 
-Obtains the PixelMap of an icon based on the bundle name, module name, and ability name. This API uses a promise to return the result.
+Obtains the [PixelMap](../../../reference/apis-image-kit/arkts-apis-image-PixelMap.md) of an icon based on the bundle name, module name, and ability name. This API uses a promise to return the result.
+
+No permission is required for obtaining the caller information.
 
 **Since:** 9
 
@@ -126,6 +135,7 @@ Obtains the PixelMap of an icon based on the bundle name, module name, and abili
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 | [17700029](../errorcode-bundle.md#17700029-disabled-ability) | The specified ability is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -149,3 +159,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAbilityIcon failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

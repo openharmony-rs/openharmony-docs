@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getdonotdisturbprofile1"></a>
+
 ## getDoNotDisturbProfile
 
 ```TypeScript
@@ -42,13 +44,14 @@ Queries the Do Not Disturb profile. This API uses a promise to return the result
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application to call the interface. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.<br>**Applicable version:** 18 and later |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600019](../errorcode-notification.md#1600019-no-configuration-information-for-a-do-not-disturb-profile) | The do-not-disturb profile does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -61,8 +64,10 @@ notificationManager.getDoNotDisturbProfile(1).then((data: notificationManager.Do
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getdonotdisturbprofile-1"></a>
+
+<a id="getdonotdisturbprofile2"></a>
 
 ## getDoNotDisturbProfile
 
@@ -110,6 +115,7 @@ Queries the Do Not Disturb profile of a specified user. This API uses a promise 
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 | [1600019](../errorcode-notification.md#1600019-no-configuration-information-for-a-do-not-disturb-profile) | The do-not-disturb profile does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -124,3 +130,5 @@ notificationManager.getDoNotDisturbProfile(id, userId).then((data: notificationM
   console.error(`getDoNotDisturbProfile failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

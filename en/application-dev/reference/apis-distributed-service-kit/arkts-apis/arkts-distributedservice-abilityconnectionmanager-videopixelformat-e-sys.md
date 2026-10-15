@@ -14,24 +14,6 @@ Video pixelFormat Configuration Options.
 
 **System API:** This is a system API.
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = -1
-```
-
-Unknown.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-VideoPixelFormat-UNKNOWN = -1--><!--Device-VideoPixelFormat-UNKNOWN = -1-End-->
-
-**System capability:** SystemCapability.DistributedSched.AppCollaboration
-
-**System API:** This is a system API.
-
 ## NV12
 
 ```TypeScript
@@ -63,6 +45,24 @@ NV21. yvu 420 semiplanar.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-VideoPixelFormat-NV21 = 1--><!--Device-VideoPixelFormat-NV21 = 1-End-->
+
+**System capability:** SystemCapability.DistributedSched.AppCollaboration
+
+**System API:** This is a system API.
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = -1
+```
+
+Unknown.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-VideoPixelFormat-UNKNOWN = -1--><!--Device-VideoPixelFormat-UNKNOWN = -1-End-->
 
 **System capability:** SystemCapability.DistributedSched.AppCollaboration
 

@@ -12,24 +12,6 @@ declare enum TextOverflow
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## None
-
-```TypeScript
-None = 0
-```
-
-文本超长时按最大行截断显示。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-TextOverflow-None = 0--><!--Device-TextOverflow-None = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Clip
 
 ```TypeScript
@@ -81,5 +63,23 @@ MARQUEE = 3
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextOverflow-MARQUEE = 3--><!--Device-TextOverflow-MARQUEE = 3-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None = 0
+```
+
+文本超长时按最大行截断显示。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-TextOverflow-None = 0--><!--Device-TextOverflow-None = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

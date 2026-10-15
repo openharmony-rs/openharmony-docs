@@ -14,6 +14,22 @@ Enumerate system event types.
 
 **System API:** This is a system API.
 
+## BEHAVIOR
+
+```TypeScript
+BEHAVIOR = 4
+```
+
+User behavior event.
+
+**Since:** 9
+
+<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+
+**System capability:** SystemCapability.HiviewDFX.HiSysEvent
+
+**System API:** This is a system API.
+
 ## FAULT
 
 ```TypeScript
@@ -25,22 +41,6 @@ Error event.
 **Since:** 9
 
 <!--Device-EventType-FAULT = 1--><!--Device-EventType-FAULT = 1-End-->
-
-**System capability:** SystemCapability.HiviewDFX.HiSysEvent
-
-**System API:** This is a system API.
-
-## STATISTIC
-
-```TypeScript
-STATISTIC = 2
-```
-
-Statistic event.
-
-**Since:** 9
-
-<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 
@@ -62,17 +62,17 @@ Security event.
 
 **System API:** This is a system API.
 
-## BEHAVIOR
+## STATISTIC
 
 ```TypeScript
-BEHAVIOR = 4
+STATISTIC = 2
 ```
 
-User behavior event.
+Statistic event.
 
 **Since:** 9
 
-<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiSysEvent
 

@@ -20,16 +20,16 @@ import { hiTraceChain } from '@kit.PerformanceAnalysisKit';
 
 | Name | Description |
 | --- | --- |
-| [begin](arkts-performanceanalysis-hitracechain-begin-f.md) | Starts call chain trace. This API returns the result synchronously. |
-| [clearId](arkts-performanceanalysis-hitracechain-clearid-f.md) | Clears the trace ID. This API returns the result synchronously. |
-| [createSpan](arkts-performanceanalysis-hitracechain-createspan-f.md) | Creates a trace span. This API works in synchronous manner. |
-| [enableFlag](arkts-performanceanalysis-hitracechain-enableflag-f.md) | Enables the trace flag specified in HiTraceId. This API returns the result synchronously. |
-| [end](arkts-performanceanalysis-hitracechain-end-f.md) | Stops call chain trace. This API works in synchronous manner. |
-| [getId](arkts-performanceanalysis-hitracechain-getid-f.md) | Obtains the trace ID. This API returns the result synchronously. |
-| [isFlagEnabled](arkts-performanceanalysis-hitracechain-isflagenabled-f.md) | Checks whether the trace flag is enabled for **HiTraceId**. This API returns the result synchronously. |
-| [isValid](arkts-performanceanalysis-hitracechain-isvalid-f.md) | Checks whether a **HiTraceId** instance is valid. This API returns the result synchronously. |
-| [setId](arkts-performanceanalysis-hitracechain-setid-f.md) | Sets a trace ID. This API returns the result synchronously. |
-| [tracepoint](arkts-performanceanalysis-hitracechain-tracepoint-f.md) | Adds a trace point for the [@ohos.hiTraceMeter (Performance Tracing)](arkts-performanceanalysis-hitracemeter.md) logging, which is synchronous. |
+| [begin](arkts-performanceanalysis-hitracechain-begin-f.md#begin) | Starts call chain trace. This API returns the result synchronously. |
+| [clearId](arkts-performanceanalysis-hitracechain-clearid-f.md#clearid) | Clears the trace ID. This API returns the result synchronously. |
+| [createSpan](arkts-performanceanalysis-hitracechain-createspan-f.md#createspan) | Creates a trace span. This API works in synchronous manner. |
+| [enableFlag](arkts-performanceanalysis-hitracechain-enableflag-f.md#enableflag) | Enables the trace flag specified in HiTraceId. This API returns the result synchronously. |
+| [end](arkts-performanceanalysis-hitracechain-end-f.md#end) | Stops call chain trace. This API works in synchronous manner. |
+| [getId](arkts-performanceanalysis-hitracechain-getid-f.md#getid) | Obtains the trace ID. This API returns the result synchronously. |
+| [isFlagEnabled](arkts-performanceanalysis-hitracechain-isflagenabled-f.md#isflagenabled) | Checks whether the trace flag is enabled for **HiTraceId**. This API returns the result synchronously. |
+| [isValid](arkts-performanceanalysis-hitracechain-isvalid-f.md#isvalid) | Checks whether a **HiTraceId** instance is valid. This API returns the result synchronously. |
+| [setId](arkts-performanceanalysis-hitracechain-setid-f.md#setid) | Sets a trace ID. This API returns the result synchronously. |
+| [tracepoint](arkts-performanceanalysis-hitracechain-tracepoint-f.md#tracepoint) | Adds a trace point for the [@ohos.hiTraceMeter (Performance Tracing)](arkts-performanceanalysis-hitracemeter.md) logging, which is synchronous. |
 
 ### Interfaces
 

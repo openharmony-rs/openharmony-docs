@@ -12,38 +12,12 @@ Shape组件的两种使用方式：
 
 > **说明：** 
 > 
-> 该组件从API version 7开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
-> 
 > 该组件从API version 20开始支持使用[AttributeUpdater](../arkts-apis/arkts-arkui-attributeupdater-c.md)类的
-> updateConstructorParams接口更新构造参数。
+> [updateConstructorParams](../../../reference/apis-arkui/js-apis-arkui-AttributeUpdater.md#属性)接口更新构造参数。
 
 ## 子组件
 
-包含Rect、Path、Circle、[Ellipse](arkts-arkui-canvas-comp-canvaspath-c.md#ellipse)、Polyline、Polygon、Image、Text、Column、Row和Shape子组件。
-
-## Shape
-
-```TypeScript
-Shape(value?: PixelMap)
-```
-
-Use the new function to create Shape.
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ShapeInterface-new (value?: PixelMap): ShapeAttribute--><!--Device-ShapeInterface-new (value?: PixelMap): ShapeAttribute-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**参数:**
-
-| 参数名 | 类型 | 必填 | 说明 |
-| --- | --- | --- | --- |
-| value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | 否 |  |
+包含Rect、Path、Circle、[Ellipse](arkts-arkui-canvas-comp-canvaspath-c.md#ellipse)、Polyline、[Polygon](../../apis-location-kit/arkts-apis/arkts-location-geolocationmanager-gnssfence-i-sys.md#polygon)、Image、Text、[Column](arkts-arkui-mediacachedimage-comp-astcresource-i-sys.md#column)、Row和Shape子组件。
 
 ## Shape
 
@@ -77,7 +51,7 @@ Shape(value: PixelMap)
 Shape()
 ```
 
-Called when a component is drawn.
+用于绘制Shape组件的无参构造函数。调用后创建一个Shape对象，使用默认视口和属性。
 
 **起始版本：** 7
 
@@ -90,6 +64,30 @@ Called when a component is drawn.
 <!--Device-ShapeInterface-(): ShapeAttribute--><!--Device-ShapeInterface-(): ShapeAttribute-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Shape
+
+```TypeScript
+Shape(value?: PixelMap)
+```
+
+用于绘制Shape组件的构造函数。调用后创建一个Shape对象，可设置视口、填充、边框等属性。
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ShapeInterface-new (value?: PixelMap): ShapeAttribute--><!--Device-ShapeInterface-new (value?: PixelMap): ShapeAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数:**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [PixelMap](arkts-arkui-common-comp-pixelmap-t.md) | 否 | 绘制目标，可将图形绘制在指定的PixelMap对象中，若未设置，则默认在当前绘制目标中进行绘制。<br>异常值undefined和null按照无效值处理，本次设置不生效。 |
 
 ## 汇总
 

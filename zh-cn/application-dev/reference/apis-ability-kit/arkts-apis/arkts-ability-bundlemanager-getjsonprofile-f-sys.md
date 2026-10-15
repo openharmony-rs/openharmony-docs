@@ -54,6 +54,7 @@ function getJsonProfile(profileType: ProfileType, bundleName: string, moduleName
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle is disabled. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -73,3 +74,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getJsonProfile failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

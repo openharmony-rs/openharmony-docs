@@ -8,6 +8,14 @@ The **AccessibilityExtensionContext** module, inherited from **ExtensionContext*
 
 The Accessibility Extension Context module provides capabilities related to the accessibility extension, including configuring concerned information types, querying node information, and gesture injection.
 
+**Inheritance/Implementation:** AccessibilityExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
+
+**Since:** 9
+
+<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
 ## Usage
 
 Before using AccessibilityExtensionContext, obtain an AccessibilityExtensionContext instance through an AccessibilityExtensionAbility subclass instance.
@@ -21,13 +29,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 }
 ```
 
-**Inheritance/Implementation:** AccessibilityExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
-
-**Since:** 9
-
-<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+<a id="getfocuselement1"></a>
 
 ## getFocusElement
 
@@ -56,7 +58,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -79,7 +81,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
 });
 ```
 
-<a id="getfocuselement-1"></a>
+<a id="getfocuselement2"></a>
 
 ## getFocusElement
 
@@ -113,7 +115,7 @@ Obtains the focus element. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -133,7 +135,7 @@ axContext.getFocusElement().then((data: AccessibilityElement) => {
 });
 ```
 
-<a id="getfocuselement-2"></a>
+<a id="getfocuselement3"></a>
 
 ## getFocusElement
 
@@ -161,7 +163,7 @@ Obtains the focus element. This API uses an asynchronous callback to return the 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -182,6 +184,8 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
   console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
+
+<a id="getwindowrootelement1"></a>
 
 ## getWindowRootElement
 
@@ -210,7 +214,7 @@ Obtains the root element of the specified window. This API uses an asynchronous 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -233,7 +237,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
 });
 ```
 
-<a id="getwindowrootelement-1"></a>
+<a id="getwindowrootelement2"></a>
 
 ## getWindowRootElement
 
@@ -267,7 +271,7 @@ Obtains the root element of the specified window. This API uses a promise to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -287,7 +291,7 @@ axContext.getWindowRootElement().then((data: AccessibilityElement) => {
 });
 ```
 
-<a id="getwindowrootelement-2"></a>
+<a id="getwindowrootelement3"></a>
 
 ## getWindowRootElement
 
@@ -315,7 +319,7 @@ Obtains the root element of the currently active window. This API uses an asynch
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -336,6 +340,8 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
   console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
+
+<a id="getwindows1"></a>
 
 ## getWindows
 
@@ -364,7 +370,7 @@ Obtains all windows on the specified display. This API uses an asynchronous call
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -384,7 +390,7 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
 });
 ```
 
-<a id="getwindows-1"></a>
+<a id="getwindows2"></a>
 
 ## getWindows
 
@@ -418,7 +424,7 @@ Obtains all windows on the specified display. This API uses a promise to return 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -435,7 +441,7 @@ axContext.getWindows().then((data: AccessibilityElement[]) => {
 });
 ```
 
-<a id="getwindows-2"></a>
+<a id="getwindows3"></a>
 
 ## getWindows
 
@@ -463,7 +469,7 @@ Obtains all windows on the default main display. This API uses an asynchronous c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -481,6 +487,8 @@ axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
   console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
+
+<a id="injectgesture1"></a>
 
 ## injectGesture
 
@@ -511,7 +519,7 @@ Injects a gesture, applicable to scenarios where an accessibility app performs t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -535,7 +543,7 @@ axContext.injectGesture(gesturePath, (err: BusinessError) => {
 });
 ```
 
-<a id="injectgesture-1"></a>
+<a id="injectgesture2"></a>
 
 ## injectGesture
 
@@ -571,7 +579,7 @@ Injects a gesture, applicable to scenarios where an accessibility app performs t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -620,7 +628,7 @@ Injects a gesture, applicable to scenarios where an accessibility app performs t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
 **Examples**
@@ -636,6 +644,8 @@ for (let i = 0; i < 10; i++) {
 // axContext is an AccessibilityExtensionContext instance, obtained through this.context of an AccessibilityExtensionAbility subclass. For details, see the usage instructions.
 axContext.injectGestureSync(gesturePath);
 ```
+
+<a id="settargetbundlename1"></a>
 
 ## setTargetBundleName
 
@@ -664,7 +674,7 @@ Sets the bundle name of the concerned app. This API uses an asynchronous callbac
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **Examples**
 
@@ -686,7 +696,7 @@ try {
 }
 ```
 
-<a id="settargetbundlename-1"></a>
+<a id="settargetbundlename2"></a>
 
 ## setTargetBundleName
 
@@ -720,7 +730,7 @@ Sets the bundle name of the concerned app. This API uses a promise to return the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **Examples**
 

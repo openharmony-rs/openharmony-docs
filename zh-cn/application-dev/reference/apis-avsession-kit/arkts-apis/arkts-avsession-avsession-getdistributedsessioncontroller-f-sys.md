@@ -45,6 +45,7 @@ function getDistributedSessionController(distributedSessionType: DistributedSess
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,3 +55,5 @@ avSession.getDistributedSessionController(avSession.DistributedSessionType.TYPE_
   console.info(`Succeeded in getting distributed session controller, length: ${sessionControllers.length}`);
 });
 ```
+
+<!--DelEnd-->

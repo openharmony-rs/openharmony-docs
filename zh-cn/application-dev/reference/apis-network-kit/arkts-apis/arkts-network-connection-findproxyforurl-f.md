@@ -20,7 +20,7 @@ function findProxyForUrl(url: string): string
 
 > 2、如果调用本接口前未设置PAC脚本，则返回空字符串。
 
-> 3、由于[setPacFileUrl](arkts-network-connection-setpacfileurl-f.md)接口支持PC/2in1&lt;sup&gt;20+&lt;/sup&gt;、Phone&lt;sup&gt;23+&lt;/sup&gt;、Tablet&lt;sup&gt;23+&lt;/ &gt; sup&gt;、TV&lt;sup&gt;23+&lt;/sup&gt;设备解析脚本并启用PAC代理能力，因此本接口支持以上设备获取PAC代理信息。 Wearable设备调用本接口功能不生效，返回空字串。
+> 3、由于[setPacFileUrl](arkts-network-connection-setpacfileurl-f.md)接口支持PC/2in1<sup>20+</sup>、Phone<sup>23+</sup>、Tablet<sup>23+</ > sup&gt;、TV<sup>23+</sup>设备解析脚本并启用PAC代理能力，因此本接口支持以上设备获取PAC代理信息。 Wearable设备调用本接口功能不生效，返回空字串。
 
 **起始版本：** 20
 

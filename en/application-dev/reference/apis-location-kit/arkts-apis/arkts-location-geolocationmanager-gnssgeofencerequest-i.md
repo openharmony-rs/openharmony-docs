@@ -106,7 +106,7 @@ notifications?: Array<NotificationRequest>
 
 Indicates the geofence notifications to publish.
 
-**Type:** Array&lt;[NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md)&gt;
+**Type:** Array&lt;[NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-i.md)&gt;
 
 **Since:** 12
 

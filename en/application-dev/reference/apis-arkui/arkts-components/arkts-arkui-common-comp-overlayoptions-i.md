@@ -23,7 +23,7 @@ declare interface OverlayOptions
 align?: Alignment
 ```
 
-Alignment of the overlay relative to the component.
+Alignment of the overlay relative to the component. When set together with offset, the overlay is positioned relative to the component, and then offset based on the top-left corner of the current position.
 
 Default value: **TopStart**
 
@@ -45,7 +45,7 @@ Default value: **TopStart**
 offset?: OverlayOffset
 ```
 
-Offset of the overlay from the upper left corner. By default, the overlay is in the upper left corner of the component.
+Offset of the overlay based on its own top-left corner. When set together with align, the overlay is positioned relative to the component, and then offset based on the top-left corner of the current position. By default, the overlay is in the upper left corner of the component.
 
 **Type:** [OverlayOffset](arkts-arkui-common-comp-overlayoffset-i.md)
 

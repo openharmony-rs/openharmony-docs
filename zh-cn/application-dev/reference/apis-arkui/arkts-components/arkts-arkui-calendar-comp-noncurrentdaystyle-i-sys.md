@@ -4,7 +4,7 @@
 interface NonCurrentDayStyle
 ```
 
-Non current day style.
+非当月日期样式。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ Non current day style.
 nonCurrentMonthDayColor?: ResourceColor
 ```
 
-Non-current month day color.
+非当月日期颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -46,7 +46,7 @@ Non-current month day color.
 nonCurrentMonthLunarColor?: ResourceColor
 ```
 
-Lunar style of non-current month.
+非当月农历颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -70,7 +70,7 @@ Lunar style of non-current month.
 nonCurrentMonthOffDayMarkColor?: ResourceColor
 ```
 
-Non-Current Month Off Day Marker Color.
+非当月休息日标记颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -94,7 +94,7 @@ Non-Current Month Off Day Marker Color.
 nonCurrentMonthWorkDayMarkColor?: ResourceColor
 ```
 
-Non-Current Month Workday Marker Color.
+非当月工作日标记颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 

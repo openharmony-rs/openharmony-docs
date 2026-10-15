@@ -4,7 +4,7 @@
 declare class RotationRecognizer extends GestureRecognizer
 ```
 
-Implements a rotation gesture recognizer. Inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md).
+Defines the rotation gesture recognizer object, which inherits from [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md) and supports querying the minimum angle threshold for triggering the rotation gesture. It is applicable to querying the gesture recognition configuration of rotation interactions.
 
 **Inheritance/Implementation:** RotationRecognizer extends [GestureRecognizer](arkts-arkui-tapgesture-comp-gesturerecognizer-c.md)
 

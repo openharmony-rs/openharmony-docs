@@ -27,10 +27,10 @@ import { rpc } from '@kit.IPCKit';
 | [IPCSkeleton](arkts-ipc-rpc-ipcskeleton-c.md) | 用于获取IPC上下文信息，包括获取UID和PID、获取本端和对端设备ID、检查接口调用是否在同一设备上。 |
 | [IRemoteObject](arkts-ipc-rpc-iremoteobject-c.md) | 该接口可用于查询或获取接口描述符、添加或删除死亡通知、转储对象状态到特定文件、发送消息。 |
 | [MessageOption](arkts-ipc-rpc-messageoption-c.md) | 公共消息选项，使用指定的标志类型，构造指定的MessageOption对象。 |
-| [MessageParcel](arkts-ipc-rpc-messageparcel-c.md) | 在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。 |
 | [MessageSequence](arkts-ipc-rpc-messagesequence-c.md) | 在RPC或IPC过程中，发送方可以使用MessageSequence提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageSequence提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。读取顺序必须与写入顺序一致，否则会导致数据解析错误。 |
 | [RemoteObject](arkts-ipc-rpc-remoteobject-c.md) | 实现远程对象。服务提供者必须继承此类。 |
 | [RemoteProxy](arkts-ipc-rpc-remoteproxy-c.md) | 实现IRemoteObject代理对象。 |
+| [MessageParcel](arkts-ipc-rpc-messageparcel-c.md) | 在RPC过程中，发送方可以使用MessageParcel提供的写方法，将待发送的数据以特定格式写入该对象。接收方可以使用MessageParcel提供的读方法从该对象中读取特定格式的数据。数据格式包括：基础类型及数组、IPC对象、接口描述符和自定义序列化对象。 |
 
 ### 接口
 

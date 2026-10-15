@@ -32,7 +32,7 @@ onLayout(self: FrameNode, position: Position): void
 > **说明：** 
 > 
 > 在此函数中，开发者可以调用[FrameNode](arkts-arkui-framenode-c.md)的
-> [getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件FrameNode，调用
+> [getChild()](arkts-arkui-framenode-c.md#getchild1)方法获取子组件FrameNode，调用
 > [FrameNode](arkts-arkui-framenode-c.md)的[layout()](arkts-arkui-framenode-c.md#layout)方法设置子组件位置，参考DynamicLayout组件
 > [示例1（自定义布局算法实现瀑布流布局）](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md)。
 
@@ -57,7 +57,7 @@ onLayout(self: FrameNode, position: Position): void
 
 **示例**
 
-请参考DynamicLayout组件示例1（自定义布局算法实现瀑布流布局）。
+请参考DynamicLayout组件[示例1（自定义布局算法实现瀑布流布局）](../arkui-ts/ts-container-dynamiclayout.md#示例1自定义布局算法实现瀑布流布局)。
 
 ## onMeasure
 
@@ -70,7 +70,7 @@ onMeasure(self: FrameNode, constraint: LayoutConstraint): void
 > **说明：** 
 > 
 > 在此函数中，开发者可以调用[FrameNode](arkts-arkui-framenode-c.md)的
-> [getChild()](arkts-arkui-framenode-c.md#getchild)方法获取子组件FrameNode，调用
+> [getChild()](arkts-arkui-framenode-c.md#getchild1)方法获取子组件FrameNode，调用
 > [FrameNode](arkts-arkui-framenode-c.md)的[measure()](arkts-arkui-framenode-c.md#measure)方法测量子组件大小，参考DynamicLayout组
 > 件
 > [示例1（自定义布局算法实现瀑布流布局）](../arkts-components/arkts-arkui-dynamiclayout-comp-attribute.md)。

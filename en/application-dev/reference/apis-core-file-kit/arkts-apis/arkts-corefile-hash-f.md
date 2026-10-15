@@ -6,6 +6,8 @@
 import { hash } from '@kit.CoreFileKit';
 ```
 
+<a id="hash1"></a>
+
 ## hash
 
 ```TypeScript
@@ -16,7 +18,7 @@ Calculates a hash value for a file. This API uses a promise to return the result
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-hash-function hash(path: string, algorithm: string): Promise<string>--><!--Device-hash-function hash(path: string, algorithm: string): Promise<string>-End-->
 
@@ -55,7 +57,7 @@ hash.hash(filePath, "sha256").then((str: string) => {
 ```
 
 
-<a id="hash-1"></a>
+<a id="hash2"></a>
 
 ## hash
 
@@ -67,7 +69,7 @@ Calculates a hash value for a file. This API uses an asynchronous callback to re
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-hash-function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void--><!--Device-hash-function hash(path: string, algorithm: string, callback: AsyncCallback<string>): void-End-->
 

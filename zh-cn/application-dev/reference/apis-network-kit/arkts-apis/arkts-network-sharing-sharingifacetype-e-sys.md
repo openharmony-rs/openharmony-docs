@@ -14,17 +14,17 @@ export enum SharingIfaceType
 
 **系统接口：** 此接口为系统接口。
 
-## SHARING_WIFI
+## SHARING_BLUETOOTH
 
 ```TypeScript
-SHARING_WIFI = 0
+SHARING_BLUETOOTH = 2
 ```
 
-网络共享类型 Wi-Fi。
+网络共享类型蓝牙。
 
 **起始版本：** 9
 
-<!--Device-SharingIfaceType-SHARING_WIFI = 0--><!--Device-SharingIfaceType-SHARING_WIFI = 0-End-->
+<!--Device-SharingIfaceType-SHARING_BLUETOOTH = 2--><!--Device-SharingIfaceType-SHARING_BLUETOOTH = 2-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetSharing
 
@@ -46,17 +46,17 @@ SHARING_USB = 1
 
 **系统接口：** 此接口为系统接口。
 
-## SHARING_BLUETOOTH
+## SHARING_WIFI
 
 ```TypeScript
-SHARING_BLUETOOTH = 2
+SHARING_WIFI = 0
 ```
 
-网络共享类型蓝牙。
+网络共享类型 Wi-Fi。
 
 **起始版本：** 9
 
-<!--Device-SharingIfaceType-SHARING_BLUETOOTH = 2--><!--Device-SharingIfaceType-SHARING_BLUETOOTH = 2-End-->
+<!--Device-SharingIfaceType-SHARING_WIFI = 0--><!--Device-SharingIfaceType-SHARING_WIFI = 0-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetSharing
 

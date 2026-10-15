@@ -12,6 +12,78 @@ Enumerates the input method function keys.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## DPAD_DOWN
+
+```TypeScript
+DPAD_DOWN
+```
+
+Down arrow key on the keyboard.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FunctionKey-DPAD_DOWN--><!--Device-FunctionKey-DPAD_DOWN-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## DPAD_LEFT
+
+```TypeScript
+DPAD_LEFT
+```
+
+Left arrow key on the keyboard.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FunctionKey-DPAD_LEFT--><!--Device-FunctionKey-DPAD_LEFT-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## DPAD_RIGHT
+
+```TypeScript
+DPAD_RIGHT
+```
+
+Right arrow key on the keyboard.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FunctionKey-DPAD_RIGHT--><!--Device-FunctionKey-DPAD_RIGHT-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## DPAD_UP
+
+```TypeScript
+DPAD_UP
+```
+
+Up arrow key on the keyboard.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FunctionKey-DPAD_UP--><!--Device-FunctionKey-DPAD_UP-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## ESC
 
 ```TypeScript
@@ -45,6 +117,60 @@ F1 key on the keyboard.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FunctionKey-F1--><!--Device-FunctionKey-F1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## F10
+
+```TypeScript
+F10
+```
+
+F10 key on the keyboard.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FunctionKey-F10--><!--Device-FunctionKey-F10-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## F11
+
+```TypeScript
+F11
+```
+
+F11 key on the keyboard.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FunctionKey-F11--><!--Device-FunctionKey-F11-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## F12
+
+```TypeScript
+F12
+```
+
+F12 key on the keyboard.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-FunctionKey-F12--><!--Device-FunctionKey-F12-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,60 +318,6 @@ F9 key on the keyboard.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## F10
-
-```TypeScript
-F10
-```
-
-F10 key on the keyboard.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-FunctionKey-F10--><!--Device-FunctionKey-F10-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## F11
-
-```TypeScript
-F11
-```
-
-F11 key on the keyboard.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-FunctionKey-F11--><!--Device-FunctionKey-F11-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## F12
-
-```TypeScript
-F12
-```
-
-F12 key on the keyboard.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-FunctionKey-F12--><!--Device-FunctionKey-F12-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## TAB
 
 ```TypeScript
@@ -261,77 +333,5 @@ Tab key on the keyboard.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-FunctionKey-TAB--><!--Device-FunctionKey-TAB-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## DPAD_UP
-
-```TypeScript
-DPAD_UP
-```
-
-Up arrow key on the keyboard.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-FunctionKey-DPAD_UP--><!--Device-FunctionKey-DPAD_UP-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## DPAD_DOWN
-
-```TypeScript
-DPAD_DOWN
-```
-
-Down arrow key on the keyboard.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-FunctionKey-DPAD_DOWN--><!--Device-FunctionKey-DPAD_DOWN-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## DPAD_LEFT
-
-```TypeScript
-DPAD_LEFT
-```
-
-Left arrow key on the keyboard.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-FunctionKey-DPAD_LEFT--><!--Device-FunctionKey-DPAD_LEFT-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## DPAD_RIGHT
-
-```TypeScript
-DPAD_RIGHT
-```
-
-Right arrow key on the keyboard.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-FunctionKey-DPAD_RIGHT--><!--Device-FunctionKey-DPAD_RIGHT-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

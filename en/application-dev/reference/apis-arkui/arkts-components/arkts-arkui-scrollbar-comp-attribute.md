@@ -6,7 +6,7 @@ declare class ScrollBarAttribute extends CommonMethod<ScrollBarAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** ScrollBarAttribute extends CommonMethod<ScrollBarAttribute>
+**Inheritance/Implementation:** ScrollBarAttribute extends CommonMethod&lt;ScrollBarAttribute&gt;
 
 **Since:** 8
 

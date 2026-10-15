@@ -6,6 +6,8 @@ declare type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor
 
 作为Image组件的入参对象。
 
+**类型：** import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor
+
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor
 <!--Device-unnamed-declare type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor--><!--Device-unnamed-declare type DrawableDescriptor = import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import ('../api/@ohos.arkui.drawableDescriptor').DrawableDescriptor

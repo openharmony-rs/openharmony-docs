@@ -28,22 +28,6 @@ The same-layer tag is created.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## UPDATE
-
-```TypeScript
-UPDATE = 1
-```
-
-The same-layer tag is updated.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-NativeEmbedStatus-UPDATE = 1--><!--Device-NativeEmbedStatus-UPDATE = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## DESTROY
 
 ```TypeScript
@@ -89,5 +73,21 @@ The same-layer tag leaves BFCache.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NativeEmbedStatus-LEAVE_BFCACHE = 4--><!--Device-NativeEmbedStatus-LEAVE_BFCACHE = 4-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## UPDATE
+
+```TypeScript
+UPDATE = 1
+```
+
+The same-layer tag is updated.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-NativeEmbedStatus-UPDATE = 1--><!--Device-NativeEmbedStatus-UPDATE = 1-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

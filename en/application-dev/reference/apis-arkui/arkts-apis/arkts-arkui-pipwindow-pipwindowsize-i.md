@@ -30,7 +30,7 @@ Window height, in px. The value must be a positive integer and cannot be greater
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-PiPWindowSize-height: int--><!--Device-PiPWindowSize-height: int-End-->
 
@@ -48,7 +48,7 @@ Scale factor of the window, representing the display size relative to the width 
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-PiPWindowSize-scale: double--><!--Device-PiPWindowSize-scale: double-End-->
 
@@ -66,7 +66,7 @@ Window width, in px. The value must be a positive integer and cannot be greater 
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-PiPWindowSize-width: int--><!--Device-PiPWindowSize-width: int-End-->
 

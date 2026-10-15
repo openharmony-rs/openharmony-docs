@@ -18,21 +18,21 @@ enum BondState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## BOND_STATE_INVALID
+## BOND_STATE_BONDED
 
 ```TypeScript
-BOND_STATE_INVALID = 0
+BOND_STATE_BONDED = 2
 ```
 
-无效的配对。
+已配对。
 
 **起始版本：** 9
 
 **废弃版本：** 10
 
-**替代接口：** [BOND_STATE_INVALID](arkts-connectivity-connection-bondstate-e.md#bond_state_invalid)
+**替代接口：** [BOND_STATE_BONDED](arkts-connectivity-connection-bondstate-e.md#bond_state_bonded)
 
-<!--Device-BondState-BOND_STATE_INVALID = 0--><!--Device-BondState-BOND_STATE_INVALID = 0-End-->
+<!--Device-BondState-BOND_STATE_BONDED = 2--><!--Device-BondState-BOND_STATE_BONDED = 2-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -54,20 +54,20 @@ BOND_STATE_BONDING = 1
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## BOND_STATE_BONDED
+## BOND_STATE_INVALID
 
 ```TypeScript
-BOND_STATE_BONDED = 2
+BOND_STATE_INVALID = 0
 ```
 
-已配对。
+无效的配对。
 
 **起始版本：** 9
 
 **废弃版本：** 10
 
-**替代接口：** [BOND_STATE_BONDED](arkts-connectivity-connection-bondstate-e.md#bond_state_bonded)
+**替代接口：** [BOND_STATE_INVALID](arkts-connectivity-connection-bondstate-e.md#bond_state_invalid)
 
-<!--Device-BondState-BOND_STATE_BONDED = 2--><!--Device-BondState-BOND_STATE_BONDED = 2-End-->
+<!--Device-BondState-BOND_STATE_INVALID = 0--><!--Device-BondState-BOND_STATE_INVALID = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

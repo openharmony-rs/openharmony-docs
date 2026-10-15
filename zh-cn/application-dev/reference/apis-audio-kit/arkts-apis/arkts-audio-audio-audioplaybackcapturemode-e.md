@@ -28,22 +28,6 @@ MODE_DEFAULT = 0x0
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
 
-## MODE_MEDIA
-
-```TypeScript
-MODE_MEDIA = 0x1
-```
-
-媒体模式。录制媒体、语音消息和未知类型的音频流。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioPlaybackCaptureMode-MODE_MEDIA = 0x1--><!--Device-AudioPlaybackCaptureMode-MODE_MEDIA = 0x1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
-
 ## MODE_EXCLUDING_SELF
 
 ```TypeScript
@@ -57,5 +41,21 @@ MODE_EXCLUDING_SELF = 0x8000
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AudioPlaybackCaptureMode-MODE_EXCLUDING_SELF = 0x8000--><!--Device-AudioPlaybackCaptureMode-MODE_EXCLUDING_SELF = 0x8000-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+## MODE_MEDIA
+
+```TypeScript
+MODE_MEDIA = 0x1
+```
+
+媒体模式。录制媒体、语音消息和未知类型的音频流。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioPlaybackCaptureMode-MODE_MEDIA = 0x1--><!--Device-AudioPlaybackCaptureMode-MODE_MEDIA = 0x1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.PlaybackCapture

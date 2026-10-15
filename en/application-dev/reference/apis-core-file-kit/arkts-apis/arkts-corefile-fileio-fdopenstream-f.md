@@ -37,7 +37,7 @@ Opens a stream based on the file descriptor. This API uses a promise to return t
 | Promise&lt;[Stream](arkts-corefile-fileio-stream-depr-i.md)&gt; | Promise that returns the file stream. |
 
 
-<a id="fdopenstream-1"></a>
+<a id="fdopenstream2"></a>
 
 ## fdopenStream
 

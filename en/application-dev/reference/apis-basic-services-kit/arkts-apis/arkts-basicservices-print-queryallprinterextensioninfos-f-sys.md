@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryallprinterextensioninfos1"></a>
+
 ## queryAllPrinterExtensionInfos
 
 ```TypeScript
@@ -37,6 +39,7 @@ Obtains the information of all installed printer extensions. This API uses an as
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,8 +55,10 @@ print.queryAllPrinterExtensionInfos((error: BusinessError, extensionInfos: print
 });
 ```
 
+<!--DelEnd-->
 
-<a id="queryallprinterextensioninfos-1"></a>
+
+<a id="queryallprinterextensioninfos2"></a>
 
 ## queryAllPrinterExtensionInfos
 
@@ -86,6 +91,7 @@ Obtains the information of all installed printer extensions. This API uses a pro
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -99,3 +105,5 @@ print.queryAllPrinterExtensionInfos().then((extensionInfos: print.PrinterExtensi
     console.error(`Failed to query all printer extension infos. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

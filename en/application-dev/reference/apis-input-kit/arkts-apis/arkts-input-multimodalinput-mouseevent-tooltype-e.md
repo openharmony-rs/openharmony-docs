@@ -12,17 +12,17 @@ Enumerates tool types.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## UNKNOWN
+## JOYSTICK
 
 ```TypeScript
-UNKNOWN = 0
+JOYSTICK = 2
 ```
 
-Unknown type.
+Joystick.
 
 **Since:** 11
 
-<!--Device-ToolType-UNKNOWN = 0--><!--Device-ToolType-UNKNOWN = 0-End-->
+<!--Device-ToolType-JOYSTICK = 2--><!--Device-ToolType-JOYSTICK = 2-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -40,20 +40,6 @@ Mouse.
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
-## JOYSTICK
-
-```TypeScript
-JOYSTICK = 2
-```
-
-Joystick.
-
-**Since:** 11
-
-<!--Device-ToolType-JOYSTICK = 2--><!--Device-ToolType-JOYSTICK = 2-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
 ## TOUCHPAD
 
 ```TypeScript
@@ -65,5 +51,19 @@ Touchpad.
 **Since:** 11
 
 <!--Device-ToolType-TOUCHPAD = 3--><!--Device-ToolType-TOUCHPAD = 3-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+Unknown type.
+
+**Since:** 11
+
+<!--Device-ToolType-UNKNOWN = 0--><!--Device-ToolType-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

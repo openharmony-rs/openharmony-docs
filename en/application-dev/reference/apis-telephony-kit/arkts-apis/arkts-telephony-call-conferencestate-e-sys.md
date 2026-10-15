@@ -14,22 +14,6 @@ Enumerates conference states.
 
 **System API:** This is a system API.
 
-## TEL_CONFERENCE_IDLE
-
-```TypeScript
-TEL_CONFERENCE_IDLE = 0
-```
-
-Idle state.
-
-**Since:** 7
-
-<!--Device-ConferenceState-TEL_CONFERENCE_IDLE = 0--><!--Device-ConferenceState-TEL_CONFERENCE_IDLE = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
 ## TEL_CONFERENCE_ACTIVE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Active state.
 **Since:** 7
 
 <!--Device-ConferenceState-TEL_CONFERENCE_ACTIVE = 1--><!--Device-ConferenceState-TEL_CONFERENCE_ACTIVE = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## TEL_CONFERENCE_DISCONNECTED
+
+```TypeScript
+TEL_CONFERENCE_DISCONNECTED = 3
+```
+
+Disconnected state.
+
+**Since:** 7
+
+<!--Device-ConferenceState-TEL_CONFERENCE_DISCONNECTED = 3--><!--Device-ConferenceState-TEL_CONFERENCE_DISCONNECTED = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -62,17 +62,17 @@ Disconnecting state.
 
 **System API:** This is a system API.
 
-## TEL_CONFERENCE_DISCONNECTED
+## TEL_CONFERENCE_IDLE
 
 ```TypeScript
-TEL_CONFERENCE_DISCONNECTED = 3
+TEL_CONFERENCE_IDLE = 0
 ```
 
-Disconnected state.
+Idle state.
 
 **Since:** 7
 
-<!--Device-ConferenceState-TEL_CONFERENCE_DISCONNECTED = 3--><!--Device-ConferenceState-TEL_CONFERENCE_DISCONNECTED = 3-End-->
+<!--Device-ConferenceState-TEL_CONFERENCE_IDLE = 0--><!--Device-ConferenceState-TEL_CONFERENCE_IDLE = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

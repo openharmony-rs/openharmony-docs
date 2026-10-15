@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="setformnextrefreshtime1"></a>
+
 ## setFormNextRefreshTime
 
 ```TypeScript
@@ -46,7 +48,7 @@ formProvider.setFormNextRefreshTime(formId, 5, (error: BusinessError) => {
 ```
 
 
-<a id="setformnextrefreshtime-1"></a>
+<a id="setformnextrefreshtime2"></a>
 
 ## setFormNextRefreshTime
 

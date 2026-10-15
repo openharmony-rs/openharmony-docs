@@ -12,6 +12,138 @@ Codec MIME类型枚举。
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+## AUDIO_AAC
+
+```TypeScript
+AUDIO_AAC = 'audio/mp4a-latm'
+```
+
+表示音频/mp4a-latm类型。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CodecMimeType-AUDIO_AAC = 'audio/mp4a-latm'--><!--Device-CodecMimeType-AUDIO_AAC = 'audio/mp4a-latm'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## AUDIO_AMR_NB
+
+```TypeScript
+AUDIO_AMR_NB = 'audio/3gpp'
+```
+
+表示音频/amr-nb类型。
+
+**起始版本：** 18
+
+<!--Device-CodecMimeType-AUDIO_AMR_NB = 'audio/3gpp'--><!--Device-CodecMimeType-AUDIO_AMR_NB = 'audio/3gpp'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## AUDIO_AMR_WB
+
+```TypeScript
+AUDIO_AMR_WB = 'audio/amr-wb'
+```
+
+表示音频/amr-wb类型。
+
+**起始版本：** 18
+
+<!--Device-CodecMimeType-AUDIO_AMR_WB = 'audio/amr-wb'--><!--Device-CodecMimeType-AUDIO_AMR_WB = 'audio/amr-wb'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## AUDIO_FLAC
+
+```TypeScript
+AUDIO_FLAC = 'audio/flac'
+```
+
+表示音频/flac类型。
+
+**起始版本：** 8
+
+<!--Device-CodecMimeType-AUDIO_FLAC = 'audio/flac'--><!--Device-CodecMimeType-AUDIO_FLAC = 'audio/flac'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## AUDIO_G711MU
+
+```TypeScript
+AUDIO_G711MU = 'audio/g711mu'
+```
+
+表示音频/G711-mulaw类型。
+
+**起始版本：** 12
+
+<!--Device-CodecMimeType-AUDIO_G711MU = 'audio/g711mu'--><!--Device-CodecMimeType-AUDIO_G711MU = 'audio/g711mu'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## AUDIO_MP3
+
+```TypeScript
+AUDIO_MP3 = 'audio/mpeg'
+```
+
+表示音频/mpeg类型。
+
+**起始版本：** 12
+
+<!--Device-CodecMimeType-AUDIO_MP3 = 'audio/mpeg'--><!--Device-CodecMimeType-AUDIO_MP3 = 'audio/mpeg'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## AUDIO_RAW
+
+```TypeScript
+AUDIO_RAW = 'audio/raw'
+```
+
+表示音频/RAW类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CodecMimeType-AUDIO_RAW = 'audio/raw'--><!--Device-CodecMimeType-AUDIO_RAW = 'audio/raw'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## AUDIO_VORBIS
+
+```TypeScript
+AUDIO_VORBIS = 'audio/vorbis'
+```
+
+表示音频/vorbis类型。
+
+**起始版本：** 8
+
+<!--Device-CodecMimeType-AUDIO_VORBIS = 'audio/vorbis'--><!--Device-CodecMimeType-AUDIO_VORBIS = 'audio/vorbis'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## VIDEO_AVC
+
+```TypeScript
+VIDEO_AVC = 'video/avc'
+```
+
+表示视频/avc类型。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-CodecMimeType-VIDEO_AVC = 'video/avc'--><!--Device-CodecMimeType-VIDEO_AVC = 'video/avc'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 ## VIDEO_H263
 
 ```TypeScript
@@ -26,19 +158,19 @@ VIDEO_H263 = 'video/h263'
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-## VIDEO_AVC
+## VIDEO_HEVC
 
 ```TypeScript
-VIDEO_AVC = 'video/avc'
+VIDEO_HEVC = 'video/hevc'
 ```
 
-表示视频/avc类型。
+表示视频/H265类型。
 
-**起始版本：** 8
+**起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-CodecMimeType-VIDEO_AVC = 'video/avc'--><!--Device-CodecMimeType-VIDEO_AVC = 'video/avc'-End-->
+<!--Device-CodecMimeType-VIDEO_HEVC = 'video/hevc'--><!--Device-CodecMimeType-VIDEO_HEVC = 'video/hevc'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -81,137 +213,5 @@ VIDEO_VP8 = 'video/x-vnd.on2.vp8'
 **起始版本：** 8
 
 <!--Device-CodecMimeType-VIDEO_VP8 = 'video/x-vnd.on2.vp8'--><!--Device-CodecMimeType-VIDEO_VP8 = 'video/x-vnd.on2.vp8'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## AUDIO_AAC
-
-```TypeScript
-AUDIO_AAC = 'audio/mp4a-latm'
-```
-
-表示音频/mp4a-latm类型。
-
-**起始版本：** 8
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-CodecMimeType-AUDIO_AAC = 'audio/mp4a-latm'--><!--Device-CodecMimeType-AUDIO_AAC = 'audio/mp4a-latm'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## AUDIO_VORBIS
-
-```TypeScript
-AUDIO_VORBIS = 'audio/vorbis'
-```
-
-表示音频/vorbis类型。
-
-**起始版本：** 8
-
-<!--Device-CodecMimeType-AUDIO_VORBIS = 'audio/vorbis'--><!--Device-CodecMimeType-AUDIO_VORBIS = 'audio/vorbis'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## AUDIO_FLAC
-
-```TypeScript
-AUDIO_FLAC = 'audio/flac'
-```
-
-表示音频/flac类型。
-
-**起始版本：** 8
-
-<!--Device-CodecMimeType-AUDIO_FLAC = 'audio/flac'--><!--Device-CodecMimeType-AUDIO_FLAC = 'audio/flac'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## VIDEO_HEVC
-
-```TypeScript
-VIDEO_HEVC = 'video/hevc'
-```
-
-表示视频/H265类型。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
-
-<!--Device-CodecMimeType-VIDEO_HEVC = 'video/hevc'--><!--Device-CodecMimeType-VIDEO_HEVC = 'video/hevc'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## AUDIO_MP3
-
-```TypeScript
-AUDIO_MP3 = 'audio/mpeg'
-```
-
-表示音频/mpeg类型。
-
-**起始版本：** 12
-
-<!--Device-CodecMimeType-AUDIO_MP3 = 'audio/mpeg'--><!--Device-CodecMimeType-AUDIO_MP3 = 'audio/mpeg'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## AUDIO_G711MU
-
-```TypeScript
-AUDIO_G711MU = 'audio/g711mu'
-```
-
-表示音频/G711-mulaw类型。
-
-**起始版本：** 12
-
-<!--Device-CodecMimeType-AUDIO_G711MU = 'audio/g711mu'--><!--Device-CodecMimeType-AUDIO_G711MU = 'audio/g711mu'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## AUDIO_AMR_NB
-
-```TypeScript
-AUDIO_AMR_NB = 'audio/3gpp'
-```
-
-表示音频/amr-nb类型。
-
-**起始版本：** 18
-
-<!--Device-CodecMimeType-AUDIO_AMR_NB = 'audio/3gpp'--><!--Device-CodecMimeType-AUDIO_AMR_NB = 'audio/3gpp'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## AUDIO_AMR_WB
-
-```TypeScript
-AUDIO_AMR_WB = 'audio/amr-wb'
-```
-
-表示音频/amr-wb类型。
-
-**起始版本：** 18
-
-<!--Device-CodecMimeType-AUDIO_AMR_WB = 'audio/amr-wb'--><!--Device-CodecMimeType-AUDIO_AMR_WB = 'audio/amr-wb'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## AUDIO_RAW
-
-```TypeScript
-AUDIO_RAW = 'audio/raw'
-```
-
-表示音频/RAW类型。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CodecMimeType-AUDIO_RAW = 'audio/raw'--><!--Device-CodecMimeType-AUDIO_RAW = 'audio/raw'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core

@@ -6,8 +6,6 @@ export enum BusinessType
 
 This enumeration value is used to identify various types of business ability info
 
-@enum { number }
-
 **Since:** 10
 
 <!--Device-businessAbilityRouter-export enum BusinessType--><!--Device-businessAbilityRouter-export enum BusinessType-End-->

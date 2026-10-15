@@ -167,6 +167,8 @@ Draws a closed path.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="createimagedata1"></a>
+
 ## createImageData
 
 ```TypeScript
@@ -196,7 +198,7 @@ Creates an ImageData object.
 | --- | --- |
 | ImageData | Returns the newly created FunctionCallable object. |
 
-<a id="createimagedata-1"></a>
+<a id="createimagedata2"></a>
 
 ## createImageData
 
@@ -257,6 +259,8 @@ Creates a linear gradient color.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) | LinearGradient object. |
 
+<a id="createpath2d1"></a>
+
 ## createPath2D
 
 ```TypeScript
@@ -285,7 +289,7 @@ Creates a path that is later used by the CanvasRenderingContext2D object.
 | --- | --- |
 | [Path2D](arkts-arkui-viewmodel-path2d-i.md) | the object of Path2D. |
 
-<a id="createpath2d-1"></a>
+<a id="createpath2d2"></a>
 
 ## createPath2D
 
@@ -377,6 +381,8 @@ Creates a radial gradient color.
 | --- | --- |
 | [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) | RadialGradient object. |
 
+<a id="drawimage1"></a>
+
 ## drawImage
 
 ```TypeScript
@@ -403,7 +409,7 @@ Draws an image.
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
 
-<a id="drawimage-1"></a>
+<a id="drawimage2"></a>
 
 ## drawImage
 
@@ -445,7 +451,7 @@ Draws an image.
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
 
-<a id="drawimage-2"></a>
+<a id="drawimage3"></a>
 
 ## drawImage
 
@@ -473,7 +479,7 @@ Draws an image.
 | dWidth | number | Yes | Width of the drawing area. |
 | dHeight | number | Yes | Height of the drawing area. |
 
-<a id="drawimage-3"></a>
+<a id="drawimage4"></a>
 
 ## drawImage
 
@@ -776,6 +782,8 @@ Moves a drawing path to a target position on the canvas.
 | x | number | Yes | X-coordinate of the target position. |
 | y | number | Yes | Y-coordinate of the target position. |
 
+<a id="putimagedata1"></a>
+
 ## putImageData
 
 ```TypeScript
@@ -800,7 +808,7 @@ Puts the ImageData onto a rectangular area on the canvas.
 | dx | number | Yes | X-axis offset of the rectangle area on the canvas. |
 | dy | number | Yes | Y-axis offset of the rectangle area on the canvas. |
 
-<a id="putimagedata-1"></a>
+<a id="putimagedata2"></a>
 
 ## putImageData
 
@@ -1021,6 +1029,8 @@ Uses same parameters as the transform() function to reset the existing transform
 | translateX | number | Yes | X-axis translation. |
 | translateY | number | Yes | Y-axis translation. |
 
+<a id="stroke1"></a>
+
 ## stroke
 
 ```TypeScript
@@ -1037,7 +1047,7 @@ Draws a border stroke.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="stroke-1"></a>
+<a id="stroke2"></a>
 
 ## stroke
 
@@ -1190,7 +1200,7 @@ fillStyle?: string | CanvasGradient | CanvasPattern
 
 Sets the style of a paint to fill an area. Paint color used to fill the area. Canvas gradient object used by the paint. You can call createLinearGradient() to create a CanvasGradient object. Canvas pattern. You can call createPattern() to create a CanvasPattern object.
 
-**Type:** string &#124; [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) &#124; [CanvasPattern](arkts-arkui-canvaspattern-canvaspattern-i.md)
+**Type:** string &#124; [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) &#124; [CanvasPattern](arkts-arkui-canvaspattern-i.md)
 
 **Since:** 4
 
@@ -1442,7 +1452,7 @@ strokeStyle?: string | CanvasGradient | CanvasPattern
 
 Sets the stroke paint style. Color of the stroke paint. Canvas gradient object used by the paint. You can call createLinearGradient() to create a CanvasGradient object. Canvas pattern. You can call createPattern() to create a CanvasPattern object.
 
-**Type:** string &#124; [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) &#124; [CanvasPattern](arkts-arkui-canvaspattern-canvaspattern-i.md)
+**Type:** string &#124; [CanvasGradient](arkts-arkui-viewmodel-canvasgradient-i.md) &#124; [CanvasPattern](arkts-arkui-canvaspattern-i.md)
 
 **Since:** 4
 

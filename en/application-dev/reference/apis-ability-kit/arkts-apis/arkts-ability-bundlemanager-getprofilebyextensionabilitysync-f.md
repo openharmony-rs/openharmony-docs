@@ -14,9 +14,13 @@ function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityNa
 
 Obtains the JSON string array of the current application's configuration file based on the given module name, ExtensionAbility name, and metadata name (name configured in [metadata](../../../quick-start/module-configuration-file.md#metadata) of the **module.json5** file). This API returns the result synchronously. The result value is a string array.
 
+> If the profile uses the resource reference format, the return value retains this format (for example,
+> **$string:res_id**). You can obtain the referenced resources through related APIs of the
+> [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager.md).
+
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-bundleManager-function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: string, metadataName?: string): Array<string>--><!--Device-bundleManager-function getProfileByExtensionAbilitySync(moduleName: string, extensionAbilityName: string, metadataName?: string): Array<string>-End-->
 

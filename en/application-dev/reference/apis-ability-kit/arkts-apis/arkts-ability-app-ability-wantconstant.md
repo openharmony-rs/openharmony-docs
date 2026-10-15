@@ -1,6 +1,6 @@
 # @ohos.app.ability.wantConstant(Want Constants)
 
-The wantConstant module provides the actions, entities, and flags used in Want objects.
+The wantConstant module provides APIs for operating Want constants and describes the meaning of the Flags.
 
 **Since:** 9
 

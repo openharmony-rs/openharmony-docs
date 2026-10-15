@@ -30,7 +30,7 @@ Vertical alignment of the placeholder relative to the surrounding text.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-PlaceholderSpan-align: PlaceholderAlignment--><!--Device-PlaceholderSpan-align: PlaceholderAlignment-End-->
 
@@ -48,7 +48,7 @@ Type of the text baseline.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-PlaceholderSpan-baseline: TextBaseline--><!--Device-PlaceholderSpan-baseline: TextBaseline-End-->
 
@@ -66,7 +66,7 @@ Offset to the text baseline, in units of px. The value is a floating point numbe
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-PlaceholderSpan-baselineOffset: double--><!--Device-PlaceholderSpan-baselineOffset: double-End-->
 
@@ -84,7 +84,7 @@ Height of the placeholder, in units of px. The value is a floating point number.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-PlaceholderSpan-height: double--><!--Device-PlaceholderSpan-height: double-End-->
 
@@ -102,7 +102,7 @@ Width of the placeholder, in units of px. The value is a floating point number.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-PlaceholderSpan-width: double--><!--Device-PlaceholderSpan-width: double-End-->
 

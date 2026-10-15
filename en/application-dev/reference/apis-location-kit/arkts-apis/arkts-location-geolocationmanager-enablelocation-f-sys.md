@@ -6,6 +6,8 @@
 import { geoLocationManager } from '@kit.LocationKit';
 ```
 
+<a id="enablelocation1"></a>
+
 ## enableLocation
 
 ```TypeScript
@@ -42,6 +44,7 @@ Enable location switch.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.enableLocation} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,8 +61,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="enablelocation-1"></a>
+
+<a id="enablelocation2"></a>
 
 ## enableLocation
 
@@ -96,6 +101,7 @@ Enable location switch.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call ${geoLocationManager.enableLocation} due to limited device capabilities. |
 | [3301000](../errorcode-geoLocationManager.md#3301000-location-service-unavailable) | The location service is unavailable. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,3 +119,5 @@ try {
   console.error("errCode:" + err.code + ", message:" + err.message);
 }
 ```
+
+<!--DelEnd-->

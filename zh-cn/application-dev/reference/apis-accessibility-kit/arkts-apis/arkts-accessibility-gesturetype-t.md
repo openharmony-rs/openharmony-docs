@@ -32,27 +32,27 @@ type GestureType = 'left' | 'leftThenRight' | 'leftThenUp' | 'leftThenDown''righ
 | 'downThenLeft' | 表示先向下再向左的手势。 |
 | 'downThenRight' | 表示先向下再向右的手势。 |
 | 'downThenUp' | 表示先向下再向上的手势。 |
-| 'twoFingerSingleTap' | 表示双指单击的手势。 [since 11] |
-| 'twoFingerDoubleTap' | 表示双指双击的手势。 [since 11] |
-| 'twoFingerDoubleTapAndHold' | 表示双指双击长按的手势。 [since 11] |
-| 'twoFingerTripleTap' | 表示双指三击的手势。 [since 11] |
-| 'twoFingerTripleTapAndHold' | 表示双指三击长按的手势。 [since 11] |
-| 'threeFingerSingleTap' | 表示三指单击的手势。 [since 11] |
-| 'threeFingerDoubleTap' | 表示三指双击的手势。 [since 11] |
-| 'threeFingerDoubleTapAndHold' | 表示三指双击长按的手势。 [since 11] |
-| 'threeFingerTripleTap' | 表示三指三击的手势。 [since 11] |
-| 'threeFingerTripleTapAndHold' | 表示三指三击长按的手势。 [since 11] |
-| 'fourFingerSingleTap' | 表示四指单击的手势。 [since 11] |
-| 'fourFingerDoubleTap' | 表示四指双击的手势。 [since 11] |
-| 'fourFingerDoubleTapAndHold' | 表示四指双击长按的手势。 [since 11] |
-| 'fourFingerTripleTap' | 表示四指三击的手势。 [since 11] |
-| 'fourFingerTripleTapAndHold' | 表示四指三击长按的手势。 [since 11] |
-| 'threeFingerSwipeUp' | 表示三指向上滑动的手势。 [since 11] |
-| 'threeFingerSwipeDown' | 表示三指向下滑动的手势。 [since 11] |
-| 'threeFingerSwipeLeft' | 表示三指向左滑动的手势。 [since 11] |
-| 'threeFingerSwipeRight' | 表示三指向右滑动的手势。 [since 11] |
-| 'fourFingerSwipeUp' | 表示四指向上滑动的手势。 [since 11] |
-| 'fourFingerSwipeDown' | 表示四指向下滑动的手势。 [since 11] |
-| 'fourFingerSwipeLeft' | 表示四指向左滑动的手势。 [since 11] |
-| 'fourFingerSwipeRight' | 表示四指向右滑动的手势。 [since 11] |
-| 'oneFingerDoubleTap' | 表示单指双击的手势。 [since 26.0.0] |
+| 'twoFingerSingleTap' | 表示双指单击的手势。<br>**起始版本：** 11 |
+| 'twoFingerDoubleTap' | 表示双指双击的手势。<br>**起始版本：** 11 |
+| 'twoFingerDoubleTapAndHold' | 表示双指双击长按的手势。<br>**起始版本：** 11 |
+| 'twoFingerTripleTap' | 表示双指三击的手势。<br>**起始版本：** 11 |
+| 'twoFingerTripleTapAndHold' | 表示双指三击长按的手势。<br>**起始版本：** 11 |
+| 'threeFingerSingleTap' | 表示三指单击的手势。<br>**起始版本：** 11 |
+| 'threeFingerDoubleTap' | 表示三指双击的手势。<br>**起始版本：** 11 |
+| 'threeFingerDoubleTapAndHold' | 表示三指双击长按的手势。<br>**起始版本：** 11 |
+| 'threeFingerTripleTap' | 表示三指三击的手势。<br>**起始版本：** 11 |
+| 'threeFingerTripleTapAndHold' | 表示三指三击长按的手势。<br>**起始版本：** 11 |
+| 'fourFingerSingleTap' | 表示四指单击的手势。<br>**起始版本：** 11 |
+| 'fourFingerDoubleTap' | 表示四指双击的手势。<br>**起始版本：** 11 |
+| 'fourFingerDoubleTapAndHold' | 表示四指双击长按的手势。<br>**起始版本：** 11 |
+| 'fourFingerTripleTap' | 表示四指三击的手势。<br>**起始版本：** 11 |
+| 'fourFingerTripleTapAndHold' | 表示四指三击长按的手势。<br>**起始版本：** 11 |
+| 'threeFingerSwipeUp' | 表示三指向上滑动的手势。<br>**起始版本：** 11 |
+| 'threeFingerSwipeDown' | 表示三指向下滑动的手势。<br>**起始版本：** 11 |
+| 'threeFingerSwipeLeft' | 表示三指向左滑动的手势。<br>**起始版本：** 11 |
+| 'threeFingerSwipeRight' | 表示三指向右滑动的手势。<br>**起始版本：** 11 |
+| 'fourFingerSwipeUp' | 表示四指向上滑动的手势。<br>**起始版本：** 11 |
+| 'fourFingerSwipeDown' | 表示四指向下滑动的手势。<br>**起始版本：** 11 |
+| 'fourFingerSwipeLeft' | 表示四指向左滑动的手势。<br>**起始版本：** 11 |
+| 'fourFingerSwipeRight' | 表示四指向右滑动的手势。<br>**起始版本：** 11 |
+| 'oneFingerDoubleTap' | 表示单指双击的手势。<br>**起始版本：** 26.0.0 |

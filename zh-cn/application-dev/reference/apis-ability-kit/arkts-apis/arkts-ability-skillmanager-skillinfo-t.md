@@ -6,7 +6,7 @@ export type SkillInfo = _SkillInfo
 
 技能配置信息，用于定义AI代理的技能能力。
 
-@typedef { _SkillInfo }
+**类型：** _SkillInfo
 
 **起始版本：** 26.0.0
 
@@ -17,5 +17,3 @@ export type SkillInfo = _SkillInfo
 <!--Device-skillManager-export type SkillInfo = _SkillInfo--><!--Device-skillManager-export type SkillInfo = _SkillInfo-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-**类型：** _SkillInfo

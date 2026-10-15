@@ -6,6 +6,8 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="gettotalsizeofvolume1"></a>
+
 ## getTotalSizeOfVolume
 
 ```TypeScript
@@ -42,6 +44,7 @@ function getTotalSizeOfVolume(volumeUuid: string, callback: AsyncCallback<number
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,8 +70,10 @@ volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="gettotalsizeofvolume-1"></a>
+
+<a id="gettotalsizeofvolume2"></a>
 
 ## getTotalSizeOfVolume
 
@@ -111,6 +116,7 @@ function getTotalSizeOfVolume(volumeUuid: string): Promise<number>
 | 13600008 | No such object. |
 | 13900042 | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -132,3 +138,5 @@ volumeManager.getAllVolumes().then((volumes: Array<volumeManager.Volume>) => {
   console.error(`getAllVolumes failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -9,7 +9,7 @@ Defines the prefix and suffix icon options.
 > **NOTE:** 
 > 
 > The animation type cannot be modified via
-> [SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect) and
+> [SymbolEffect](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1) and
 > animations cannot be set via **effectStrategy**.
 
 **Since:** 12

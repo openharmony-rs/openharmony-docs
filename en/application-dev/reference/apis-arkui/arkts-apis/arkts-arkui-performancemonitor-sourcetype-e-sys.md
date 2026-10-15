@@ -14,60 +14,6 @@ Enumerates the trigger source types of user scenes.
 
 **System API:** This is a system API.
 
-## PERF_TOUCH_EVENT
-
-```TypeScript
-PERF_TOUCH_EVENT = 0
-```
-
-Touchscreen event.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SourceType-PERF_TOUCH_EVENT = 0--><!--Device-SourceType-PERF_TOUCH_EVENT = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## PERF_MOUSE_EVENT
-
-```TypeScript
-PERF_MOUSE_EVENT = 1
-```
-
-Mouse event.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SourceType-PERF_MOUSE_EVENT = 1--><!--Device-SourceType-PERF_MOUSE_EVENT = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## PERF_TOUCHPAD_EVENT
-
-```TypeScript
-PERF_TOUCHPAD_EVENT = 2
-```
-
-Touchpad event.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SourceType-PERF_TOUCHPAD_EVENT = 2--><!--Device-SourceType-PERF_TOUCHPAD_EVENT = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
 ## PERF_JOYSTICK_EVENT
 
 ```TypeScript
@@ -99,6 +45,60 @@ Keyboard event.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-SourceType-PERF_KEY_EVENT = 4--><!--Device-SourceType-PERF_KEY_EVENT = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## PERF_MOUSE_EVENT
+
+```TypeScript
+PERF_MOUSE_EVENT = 1
+```
+
+Mouse event.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SourceType-PERF_MOUSE_EVENT = 1--><!--Device-SourceType-PERF_MOUSE_EVENT = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## PERF_TOUCH_EVENT
+
+```TypeScript
+PERF_TOUCH_EVENT = 0
+```
+
+Touchscreen event.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SourceType-PERF_TOUCH_EVENT = 0--><!--Device-SourceType-PERF_TOUCH_EVENT = 0-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## PERF_TOUCHPAD_EVENT
+
+```TypeScript
+PERF_TOUCHPAD_EVENT = 2
+```
+
+Touchpad event.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SourceType-PERF_TOUCHPAD_EVENT = 2--><!--Device-SourceType-PERF_TOUCHPAD_EVENT = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

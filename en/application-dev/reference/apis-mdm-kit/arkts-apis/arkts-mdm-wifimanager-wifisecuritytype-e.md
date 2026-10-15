@@ -12,6 +12,38 @@ Enumerates the Wi-Fi security types.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## WIFI_SEC_TYPE_EAP
+
+```TypeScript
+WIFI_SEC_TYPE_EAP = 5
+```
+
+EAP. For example, large enterprise authentication and university campus networks.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## WIFI_SEC_TYPE_EAP_SUITE_B
+
+```TypeScript
+WIFI_SEC_TYPE_EAP_SUITE_B = 6
+```
+
+Suite B 192-bit encryption. After the setting, Wi-Fi will use Suite-B 192-bit high-strength encryption, providing a high level of security authentication. It is suitable for government and high-security institutions.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## WIFI_SEC_TYPE_INVALID
 
 ```TypeScript
@@ -44,19 +76,19 @@ Open security type.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## WIFI_SEC_TYPE_WEP
+## WIFI_SEC_TYPE_OWE
 
 ```TypeScript
-WIFI_SEC_TYPE_WEP = 2
+WIFI_SEC_TYPE_OWE = 7
 ```
 
-Wired Equivalent Privacy (WEP).
+Opportunistic Wireless Encryption (OWE). For example, public Wi-Fi in a coffee shop, which does not require a password to provide encryption for connections.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -92,54 +124,6 @@ Simultaneous Authentication of Equals (SAE). For example, smart home and small- 
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## WIFI_SEC_TYPE_EAP
-
-```TypeScript
-WIFI_SEC_TYPE_EAP = 5
-```
-
-EAP. For example, large enterprise authentication and university campus networks.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP = 5-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## WIFI_SEC_TYPE_EAP_SUITE_B
-
-```TypeScript
-WIFI_SEC_TYPE_EAP_SUITE_B = 6
-```
-
-Suite B 192-bit encryption. After the setting, Wi-Fi will use Suite-B 192-bit high-strength encryption, providing a high level of security authentication. It is suitable for government and high-security institutions.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_EAP_SUITE_B = 6-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## WIFI_SEC_TYPE_OWE
-
-```TypeScript
-WIFI_SEC_TYPE_OWE = 7
-```
-
-Opportunistic Wireless Encryption (OWE). For example, public Wi-Fi in a coffee shop, which does not require a password to provide encryption for connections.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_OWE = 7-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## WIFI_SEC_TYPE_WAPI_CERT
 
 ```TypeScript
@@ -169,5 +153,21 @@ WAPI-PSK.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_PSK = 9--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WAPI_PSK = 9-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## WIFI_SEC_TYPE_WEP
+
+```TypeScript
+WIFI_SEC_TYPE_WEP = 2
+```
+
+Wired Equivalent Privacy (WEP).
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2--><!--Device-WifiSecurityType-WIFI_SEC_TYPE_WEP = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

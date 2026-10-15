@@ -4,7 +4,7 @@
 interface GetAuthInfoOptions
 ```
 
-表示查询认证凭据信息[getAuthInfo](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo-3)的可选参数集合。
+表示查询认证凭据信息[getAuthInfo](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo4)的可选参数集合。
 
 **起始版本：** 12
 

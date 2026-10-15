@@ -51,7 +51,7 @@ declare function listFile(
 | 13900042 | Unknown error |
 
 
-<a id="listfile-1"></a>
+<a id="listfile2"></a>
 
 ## listFile
 
@@ -87,7 +87,7 @@ declare function listFile(path: string, callback: AsyncCallback<string[]>): void
 | 13900042 | Unknown error |
 
 
-<a id="listfile-2"></a>
+<a id="listfile3"></a>
 
 ## listFile
 

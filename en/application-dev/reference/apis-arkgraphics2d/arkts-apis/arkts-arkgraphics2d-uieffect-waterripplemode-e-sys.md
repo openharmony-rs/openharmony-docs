@@ -14,6 +14,22 @@ Water ripple scene mode enumeration.
 
 **System API:** This is a system API.
 
+## MINI_RECV
+
+```TypeScript
+MINI_RECV = 3
+```
+
+2in1 device sharing with other devices (keyboard and mouse sharing scenario).
+
+**Since:** 17
+
+<!--Device-WaterRippleMode-MINI_RECV = 3--><!--Device-WaterRippleMode-MINI_RECV = 3-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+**System API:** This is a system API.
+
 ## SMALL2MEDIUM_RECV
 
 ```TypeScript
@@ -57,22 +73,6 @@ Phone tapping phone.
 **Since:** 12
 
 <!--Device-WaterRippleMode-SMALL2SMALL = 2--><!--Device-WaterRippleMode-SMALL2SMALL = 2-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-**System API:** This is a system API.
-
-## MINI_RECV
-
-```TypeScript
-MINI_RECV = 3
-```
-
-2in1 device sharing with other devices (keyboard and mouse sharing scenario).
-
-**Since:** 17
-
-<!--Device-WaterRippleMode-MINI_RECV = 3--><!--Device-WaterRippleMode-MINI_RECV = 3-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

@@ -36,7 +36,7 @@ params: ECCCommonParamsSpec
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCKeyPairSpec-params: ECCCommonParamsSpec--><!--Device-ECCKeyPairSpec-params: ECCCommonParamsSpec-End-->
 
@@ -56,7 +56,7 @@ pk: Point
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCKeyPairSpec-pk: Point--><!--Device-ECCKeyPairSpec-pk: Point-End-->
 
@@ -76,7 +76,7 @@ ECC算法中的私钥sk。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ECCKeyPairSpec-sk: bigint--><!--Device-ECCKeyPairSpec-sk: bigint-End-->
 

@@ -12,19 +12,19 @@ The visibility of a form.
 
 **System capability:** SystemCapability.Ability.Form
 
-## UNKNOWN
+## FORM_INVISIBLE
 
 ```TypeScript
-UNKNOWN = 0
+FORM_INVISIBLE = 2
 ```
 
-Indicates the type of the form type is unknown. Often used as a condition variable in function OnVisibilityChange to specify actions only on forms that are changing to unknown.
+Indicates the type of the form is invisible. Often used as a condition variable in function OnVisibilityChange to specify actions only on forms that are changing to invisible.
 
-**Since:** 10
+**Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-VisibilityType-UNKNOWN = 0--><!--Device-VisibilityType-UNKNOWN = 0-End-->
+<!--Device-VisibilityType-FORM_INVISIBLE = 2--><!--Device-VisibilityType-FORM_INVISIBLE = 2-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
@@ -38,24 +38,24 @@ Indicates the type of the form is visible. Often used as a condition variable in
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-VisibilityType-FORM_VISIBLE = 1--><!--Device-VisibilityType-FORM_VISIBLE = 1-End-->
 
 **System capability:** SystemCapability.Ability.Form
 
-## FORM_INVISIBLE
+## UNKNOWN
 
 ```TypeScript
-FORM_INVISIBLE = 2
+UNKNOWN = 0
 ```
 
-Indicates the type of the form is invisible. Often used as a condition variable in function OnVisibilityChange to specify actions only on forms that are changing to invisible.
+Indicates the type of the form type is unknown. Often used as a condition variable in function OnVisibilityChange to specify actions only on forms that are changing to unknown.
 
-**Since:** 9
+**Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-VisibilityType-FORM_INVISIBLE = 2--><!--Device-VisibilityType-FORM_INVISIBLE = 2-End-->
+<!--Device-VisibilityType-UNKNOWN = 0--><!--Device-VisibilityType-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Ability.Form

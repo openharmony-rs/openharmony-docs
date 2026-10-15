@@ -40,3 +40,35 @@ function setWeakPinEnable(isEnable: boolean, fd?: number): void
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [9200012](../errorcode-enterpriseDeviceManager.md#9200012-参数校验失败) | Parameter verification failed. |
 | [9200016](../errorcode-enterpriseDeviceManager.md#9200016-服务超时) | Service timeout. |
+
+**示例**
+
+弱密码库文件示例（weak_pin.txt），每行对应一个弱密码：
+
+```TypeScript
+123456
+000000
+111111
+888888
+666666
+```
+
+代码示例：
+
+```TypeScript
+import { securityManager } from '@kit.MDMKit';
+import { fileIo } from '@kit.CoreFileKit';
+ 
+// 需根据实际情况进行替换，弱密码文件需要放置在应用沙箱目录下
+// 弱密码文件格式：每行对应一个弱密码，如123456、000000等
+const filePath = '/data/storage/el1/base/weak_pin.txt';
+let fd: number = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
+try {
+  securityManager.setWeakPinEnable(true, fd);
+  console.info(`Succeeded in setting weak pin enable.`);
+} catch (err) {
+  console.error(`Failed to set weak pin enable. Code: ${err.code}, message: ${err.message}`);
+} finally {
+  fileIo.closeSync(fd);
+}
+```

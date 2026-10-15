@@ -18,21 +18,21 @@ enum ProfileConnectionState
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## STATE_DISCONNECTED
+## STATE_CONNECTED
 
 ```TypeScript
-STATE_DISCONNECTED = 0
+STATE_CONNECTED = 2
 ```
 
-表示profile已断连。
+表示profile已连接。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [STATE_DISCONNECTED](arkts-connectivity-bluetoothmanager-profileconnectionstate-e.md#state_disconnected)
+**替代接口：** [STATE_CONNECTED](arkts-connectivity-bluetoothmanager-profileconnectionstate-e.md#state_connected)
 
-<!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0--><!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0-End-->
+<!--Device-ProfileConnectionState-STATE_CONNECTED = 2--><!--Device-ProfileConnectionState-STATE_CONNECTED = 2-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -54,21 +54,21 @@ STATE_CONNECTING = 1
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## STATE_CONNECTED
+## STATE_DISCONNECTED
 
 ```TypeScript
-STATE_CONNECTED = 2
+STATE_DISCONNECTED = 0
 ```
 
-表示profile已连接。
+表示profile已断连。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [STATE_CONNECTED](arkts-connectivity-bluetoothmanager-profileconnectionstate-e.md#state_connected)
+**替代接口：** [STATE_DISCONNECTED](arkts-connectivity-bluetoothmanager-profileconnectionstate-e.md#state_disconnected)
 
-<!--Device-ProfileConnectionState-STATE_CONNECTED = 2--><!--Device-ProfileConnectionState-STATE_CONNECTED = 2-End-->
+<!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0--><!--Device-ProfileConnectionState-STATE_DISCONNECTED = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 

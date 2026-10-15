@@ -12,13 +12,13 @@ Radio button style.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TICK
+## CUSTOM
 
 ```TypeScript
-TICK = 0
+CUSTOM = 2
 ```
 
-Default tick icon.
+Custom component.
 
 **Since:** 12
 
@@ -28,7 +28,7 @@ Default tick icon.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
-<!--Device-RadioIndicatorType-TICK = 0--><!--Device-RadioIndicatorType-TICK = 0-End-->
+<!--Device-RadioIndicatorType-CUSTOM = 2--><!--Device-RadioIndicatorType-CUSTOM = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -52,13 +52,13 @@ Default dot icon.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## CUSTOM
+## TICK
 
 ```TypeScript
-CUSTOM = 2
+TICK = 0
 ```
 
-Custom component.
+Default tick icon.
 
 **Since:** 12
 
@@ -68,6 +68,6 @@ Custom component.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
-<!--Device-RadioIndicatorType-CUSTOM = 2--><!--Device-RadioIndicatorType-CUSTOM = 2-End-->
+<!--Device-RadioIndicatorType-TICK = 0--><!--Device-RadioIndicatorType-TICK = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

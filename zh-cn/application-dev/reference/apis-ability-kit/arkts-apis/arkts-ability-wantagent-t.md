@@ -1,4 +1,4 @@
-# type WantAgent
+# WantAgent
 
 ```TypeScript
 export type WantAgent = object
@@ -6,10 +6,10 @@ export type WantAgent = object
 
 WantAgent对象。
 
+**类型：** object
+
 **起始版本：** 9
 
 <!--Device-unnamed-export type WantAgent = object--><!--Device-unnamed-export type WantAgent = object-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** object

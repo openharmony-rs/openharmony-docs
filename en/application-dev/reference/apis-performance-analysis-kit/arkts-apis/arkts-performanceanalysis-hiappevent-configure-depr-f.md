@@ -46,7 +46,7 @@ hiAppEvent.configure(config1);
 
 // Configure the maximum size of the directory that stores the event logging files.
 let config2: hiAppEvent.ConfigOption = {
-  maxStorage: '100M',
+  maxStorage: '100MB',
 };
 hiAppEvent.configure(config2);
 ```

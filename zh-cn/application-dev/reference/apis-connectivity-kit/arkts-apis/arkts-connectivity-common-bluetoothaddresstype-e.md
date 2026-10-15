@@ -12,20 +12,6 @@ export enum BluetoothAddressType
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## VIRTUAL
-
-```TypeScript
-VIRTUAL = 1
-```
-
-虚拟MAC地址类型。
-
-**起始版本：** 21
-
-<!--Device-BluetoothAddressType-VIRTUAL = 1--><!--Device-BluetoothAddressType-VIRTUAL = 1-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
 ## REAL
 
 ```TypeScript
@@ -37,5 +23,19 @@ REAL = 2
 **起始版本：** 21
 
 <!--Device-BluetoothAddressType-REAL = 2--><!--Device-BluetoothAddressType-REAL = 2-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## VIRTUAL
+
+```TypeScript
+VIRTUAL = 1
+```
+
+虚拟MAC地址类型。
+
+**起始版本：** 21
+
+<!--Device-BluetoothAddressType-VIRTUAL = 1--><!--Device-BluetoothAddressType-VIRTUAL = 1-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

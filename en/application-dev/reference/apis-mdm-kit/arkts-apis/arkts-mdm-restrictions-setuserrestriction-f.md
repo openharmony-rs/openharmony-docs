@@ -6,6 +6,8 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="setuserrestriction1"></a>
+
 ## setUserRestriction
 
 ```TypeScript
@@ -18,7 +20,7 @@ Sets restrictions on user behaviors.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setUserRestriction](#setuserrestriction-1)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
+**Substitutes:** [setUserRestriction](#setuserrestriction2)(admin: Want, settingsItem: SettingsForDevice, restricted: boolean)
 
 **Required permissions:** ohos.permission.ENTERPRISE_SET_USER_RESTRICTION
 
@@ -66,7 +68,7 @@ try {
 ```
 
 
-<a id="setuserrestriction-1"></a>
+<a id="setuserrestriction2"></a>
 
 ## setUserRestriction
 

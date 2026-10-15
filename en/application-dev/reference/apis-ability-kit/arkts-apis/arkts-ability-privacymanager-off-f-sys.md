@@ -54,6 +54,7 @@ When unsubscribing, if no callback function is passed in, all callback functions
 | [12100007](../errorcode-access-token.md#12100007-system-service-not-working-properly) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-out-of-memory) | Out of memory. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,3 +70,5 @@ try {
     console.error(`Catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

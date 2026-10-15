@@ -6,13 +6,13 @@ export interface IsoDepTag extends TagSession
 
 IsoDepTag 提供对ISO-DEP(ISO 14443-4)技术的属性和I/O操作的访问，继承自TagSession。
 
-TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-tagsession-i.md)。
+TagSession是所有NFC Tag技术类型的基类， 提供建立连接和发送数据等共同接口。具体请参见[TagSession](arkts-connectivity-tagsession-i.md)。
 
 IsoDepTag获取方式请参考[nfc-tag开发指南](../../../connectivity/nfc/nfc-tag-access-guide.md)。
 
 以下是IsoDepTag的独有接口。
 
-**继承/实现关系：** IsoDepTag extends [TagSession](arkts-connectivity-tagsession-tagsession-i.md)
+**继承/实现关系：** IsoDepTag extends [TagSession](arkts-connectivity-tagsession-i.md)
 
 **起始版本：** 9
 
@@ -30,7 +30,7 @@ getHiLayerResponse(): number[]
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-IsoDepTag-getHiLayerResponse(): int[]--><!--Device-IsoDepTag-getHiLayerResponse(): int[]-End-->
 
@@ -62,7 +62,7 @@ getHistoricalBytes(): number[]
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-IsoDepTag-getHistoricalBytes(): int[]--><!--Device-IsoDepTag-getHistoricalBytes(): int[]-End-->
 
@@ -84,6 +84,8 @@ let historicalBytes : number[] = isoDep.getHistoricalBytes();
 console.info("isoDep historicalBytes: " + historicalBytes);
 ```
 
+<a id="isextendedapdusupported1"></a>
+
 ## isExtendedApduSupported
 
 ```TypeScript
@@ -96,7 +98,7 @@ isExtendedApduSupported(): Promise<boolean>
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-IsoDepTag-isExtendedApduSupported(): Promise<boolean>--><!--Device-IsoDepTag-isExtendedApduSupported(): Promise<boolean>-End-->
 
@@ -145,7 +147,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="isextendedapdusupported-1"></a>
+<a id="isextendedapdusupported2"></a>
 
 ## isExtendedApduSupported
 
@@ -159,7 +161,7 @@ isExtendedApduSupported(callback: AsyncCallback<boolean>): void
 
 **需要权限：** ohos.permission.NFC_TAG
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-IsoDepTag-isExtendedApduSupported(callback: AsyncCallback<boolean>): void--><!--Device-IsoDepTag-isExtendedApduSupported(callback: AsyncCallback<boolean>): void-End-->
 

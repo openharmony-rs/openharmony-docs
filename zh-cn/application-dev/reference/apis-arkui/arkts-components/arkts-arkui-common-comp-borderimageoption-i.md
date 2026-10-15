@@ -66,7 +66,7 @@ outset?: Length | EdgeWidths | LocalizedEdgeWidths
 
 - Right：设置边框图片右边框向外延伸的距离。
 
-参数类型为[LocalizedEdgeWidths](../arkts-apis/arkts-arkui-localizededgewidths-i.md)&lt;sup&gt;12+&lt;/sup&gt;时：
+参数类型为[LocalizedEdgeWidths](../arkts-apis/arkts-arkui-localizededgewidths-i.md)<sup>12+</sup>时：
 
 - Top：设置边框图片上边框向外延伸的距离。
 
@@ -148,7 +148,7 @@ slice?: Length | EdgeWidths | LocalizedEdgeWidths
 
 - Right：设置图片右侧被切割的宽。
 
-参数类型为[LocalizedEdgeWidths](../arkts-apis/arkts-arkui-localizededgewidths-i.md)&lt;sup&gt;12+&lt;/sup&gt;时：
+参数类型为[LocalizedEdgeWidths](../arkts-apis/arkts-arkui-localizededgewidths-i.md)<sup>12+</sup>时：
 
 - Top：设置图片上侧被切割的高。
 
@@ -232,7 +232,7 @@ width?: Length | EdgeWidths | LocalizedEdgeWidths
 
 - Right：设置图片边框右边框的宽。
 
-参数类型为[LocalizedEdgeWidths](../arkts-apis/arkts-arkui-localizededgewidths-i.md)&lt;sup&gt;12+&lt;/sup&gt;时：
+参数类型为[LocalizedEdgeWidths](../arkts-apis/arkts-arkui-localizededgewidths-i.md)<sup>12+</sup>时：
 
 - Top：设置图片边框上边框的宽。
 

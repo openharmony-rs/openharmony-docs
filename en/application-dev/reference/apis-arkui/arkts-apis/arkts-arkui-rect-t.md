@@ -6,6 +6,8 @@ export type Rect = common2D.Rect
 
 Describes a rectangle.
 
+**Type:** [common2D.Rect](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-common2d-rect-i.md)
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Describes a rectangle.
 <!--Device-unnamed-export type Rect = common2D.Rect--><!--Device-unnamed-export type Rect = common2D.Rect-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [common2D.Rect](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-common2d-rect-i.md)

@@ -16,17 +16,17 @@ and color mode.
 - Since API version 9, in the stage model, the stage model allows you to obtain the **resourceManager** object  
 through context without importing any module. For details about the context, see [application context](../../../application-models/application-context-stage.md).
 
- ```ts
- import { UIAbility } from '@kit.AbilityKit';
- import { window } from '@kit.ArkUI';
+  ```ts
+  import { UIAbility } from '@kit.AbilityKit';
+  import { window } from '@kit.ArkUI';
 
- export default class EntryAbility extends UIAbility {
- onWindowStageCreate(windowStage: window.WindowStage) {
- let context = this.context;
- let resourceManager = context.resourceManager;
- }
- }
- ```
+  export default class EntryAbility extends UIAbility {
+    onWindowStageCreate(windowStage: window.WindowStage) {
+      let context = this.context;
+      let resourceManager = context.resourceManager;
+    }
+  }
+  ```
 
 **Since:** 6
 
@@ -46,12 +46,12 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 | Name | Description |
 | --- | --- |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager) | Obtains the **ResourceManager** object of the current application. This API uses an asynchronous callback to return the result. |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-1) | Obtains the **ResourceManager** object of the specified application. This API uses an asynchronous callback to return the result. |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-2) | Obtains the **ResourceManager** object of the current application. This API uses a promise to return the result. |
-| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager-3) | Obtains the **ResourceManager** object of the specified application. This API uses a promise to return the result. |
-| [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md) | Obtains a system resource management object for accessing preset system resources. |
-| [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md) | Obtains a system resource management object for accessing preset system resources. |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager1) | Obtains the **ResourceManager** object of the current application. This API uses an asynchronous callback to return the result. |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager2) | Obtains the **ResourceManager** object of the specified application. This API uses an asynchronous callback to return the result. |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager3) | Obtains the **ResourceManager** object of the current application. This API uses a promise to return the result. |
+| [getResourceManager](arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager4) | Obtains the **ResourceManager** object of the specified application. This API uses a promise to return the result. |
+| [getSysResourceManager](arkts-localization-resourcemanager-getsysresourcemanager-f.md#getsysresourcemanager) | Obtains a system resource management object for accessing preset system resources. |
+| [getSystemResourceManager](arkts-localization-resourcemanager-getsystemresourcemanager-f.md#getsystemresourcemanager) | Obtains a system resource management object for accessing preset system resources. |
 
 ### Classes
 
@@ -64,8 +64,8 @@ import { resourceManager } from '@kit.LocalizationKit';
 
 | Name | Description |
 | --- | --- |
-| [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md) | Asynchronous callback interface. |
 | [ResourceManager](arkts-localization-resourcemanager-resourcemanager-i.md) | Provides the capability of accessing application resources and system resources. The accessible resources include the resources in the HAP/HSP module corresponding to the current context and all system resources. |
+| [AsyncCallback](arkts-localization-resourcemanager-asynccallback-i.md) | Asynchronous callback interface. |
 
 ### Types
 

@@ -12,20 +12,6 @@ Enumerates the audio sampling rates. The sampling rates supported vary according
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## SAMPLE_RATE_8000
-
-```TypeScript
-SAMPLE_RATE_8000 = 8000
-```
-
-The sampling rate is 8000.
-
-**Since:** 8
-
-<!--Device-AudioSamplingRate-SAMPLE_RATE_8000 = 8000--><!--Device-AudioSamplingRate-SAMPLE_RATE_8000 = 8000-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
 ## SAMPLE_RATE_11025
 
 ```TypeScript
@@ -65,6 +51,34 @@ The sampling rate is 16000.
 **Since:** 8
 
 <!--Device-AudioSamplingRate-SAMPLE_RATE_16000 = 16000--><!--Device-AudioSamplingRate-SAMPLE_RATE_16000 = 16000-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## SAMPLE_RATE_176400
+
+```TypeScript
+SAMPLE_RATE_176400 = 176400
+```
+
+The sampling rate is 176400.
+
+**Since:** 12
+
+<!--Device-AudioSamplingRate-SAMPLE_RATE_176400 = 176400--><!--Device-AudioSamplingRate-SAMPLE_RATE_176400 = 176400-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## SAMPLE_RATE_192000
+
+```TypeScript
+SAMPLE_RATE_192000 = 192000
+```
+
+The sampling rate is 192000.
+
+**Since:** 12
+
+<!--Device-AudioSamplingRate-SAMPLE_RATE_192000 = 192000--><!--Device-AudioSamplingRate-SAMPLE_RATE_192000 = 192000-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -110,6 +124,22 @@ The sampling rate is 32000.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
+## SAMPLE_RATE_384000
+
+```TypeScript
+SAMPLE_RATE_384000 = 384000
+```
+
+The sampling rate is 384000.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioSamplingRate-SAMPLE_RATE_384000 = 384000--><!--Device-AudioSamplingRate-SAMPLE_RATE_384000 = 384000-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
 ## SAMPLE_RATE_44100
 
 ```TypeScript
@@ -152,6 +182,20 @@ The sampling rate is 64000.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
+## SAMPLE_RATE_8000
+
+```TypeScript
+SAMPLE_RATE_8000 = 8000
+```
+
+The sampling rate is 8000.
+
+**Since:** 8
+
+<!--Device-AudioSamplingRate-SAMPLE_RATE_8000 = 8000--><!--Device-AudioSamplingRate-SAMPLE_RATE_8000 = 8000-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
 ## SAMPLE_RATE_88200
 
 ```TypeScript
@@ -177,49 +221,5 @@ The sampling rate is 96000.
 **Since:** 8
 
 <!--Device-AudioSamplingRate-SAMPLE_RATE_96000 = 96000--><!--Device-AudioSamplingRate-SAMPLE_RATE_96000 = 96000-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## SAMPLE_RATE_176400
-
-```TypeScript
-SAMPLE_RATE_176400 = 176400
-```
-
-The sampling rate is 176400.
-
-**Since:** 12
-
-<!--Device-AudioSamplingRate-SAMPLE_RATE_176400 = 176400--><!--Device-AudioSamplingRate-SAMPLE_RATE_176400 = 176400-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## SAMPLE_RATE_192000
-
-```TypeScript
-SAMPLE_RATE_192000 = 192000
-```
-
-The sampling rate is 192000.
-
-**Since:** 12
-
-<!--Device-AudioSamplingRate-SAMPLE_RATE_192000 = 192000--><!--Device-AudioSamplingRate-SAMPLE_RATE_192000 = 192000-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## SAMPLE_RATE_384000
-
-```TypeScript
-SAMPLE_RATE_384000 = 384000
-```
-
-The sampling rate is 384000.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AudioSamplingRate-SAMPLE_RATE_384000 = 384000--><!--Device-AudioSamplingRate-SAMPLE_RATE_384000 = 384000-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

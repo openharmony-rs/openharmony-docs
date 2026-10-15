@@ -32,6 +32,8 @@ Manufacturer data.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-ManufacturerData-manufacturerData: ArrayBuffer--><!--Device-ManufacturerData-manufacturerData: ArrayBuffer-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ Manufacturer ID. The value range is [1, 65535].
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ManufacturerData-manufacturerId: int--><!--Device-ManufacturerData-manufacturerId: int-End-->
 

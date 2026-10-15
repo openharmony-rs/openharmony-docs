@@ -95,7 +95,7 @@ flipBitByIndex(index: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| index | number | 是 | 指定索引。如果 **index** 小于 **0** 或者大于等于 **length**，则会抛出错误。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| index | number | 是 | 指定索引。如果 **index** 小于 **0** 或者大于等于 **length**，则会抛出错误。 |
 
 **错误码：**
 
@@ -126,7 +126,7 @@ flipBitsByRange(fromIndex: number, toIndex: number): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | fromIndex | number | 是 | 范围起始索引，包含本索引值。如果 **fromIndex** 小于 **0** 或者大于等于 **toIndex**，则会抛出错误。 |
-| toIndex | number | 是 | 范围终止索引，不包含本索引值。如果 **toIndex** 小于 **0** 或者大于等于 **length**，则会抛出错误。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| toIndex | number | 是 | 范围终止索引，不包含本索引值。如果 **toIndex** 小于 **0** 或者大于等于 **length**，则会抛出错误。 |
 
 **错误码：**
 
@@ -164,7 +164,7 @@ getBitCountByRange(element: number, fromIndex: number, toIndex: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 统计指定范围内获取指定 bit 值的数量。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| number | 统计指定范围内获取指定 bit 值的数量。 |
 
 **错误码：**
 
@@ -201,7 +201,7 @@ getBitsByRange(fromIndex: number, toIndex: number): BitVector
 
 | 类型 | 说明 |
 | --- | --- |
-| [BitVector](arkts-arkts-collections-bitvector-c.md) | 包含所获取 bit 值的 BitVector。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| [BitVector](arkts-arkts-collections-bitvector-c.md) | 包含所获取 bit 值的 BitVector。 |
 
 **错误码：**
 
@@ -239,7 +239,7 @@ getIndexOf(element: number, fromIndex: number, toIndex: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回指定 bit 值首次出现时的索引值，查找失败返回 **-1**。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| number | 返回指定 bit 值首次出现时的索引值，查找失败返回 **-1**。 |
 
 **错误码：**
 
@@ -277,7 +277,7 @@ getLastIndexOf(element: number, fromIndex: number, toIndex: number): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 返回指定 bit 值最后一次出现时的索引值，查找失败返回 **-1**。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| number | 返回指定 bit 值最后一次出现时的索引值，查找失败返回 **-1**。 |
 
 **错误码：**
 
@@ -380,7 +380,7 @@ push(element: number): boolean
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 操作结果。插入成功返回 **true**，失败返回 **false**。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| boolean | 操作结果。插入成功返回 **true**，失败返回 **false**。 |
 
 **错误码：**
 
@@ -409,7 +409,7 @@ resize(size: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| size | number | 是 | 需要改变的长度。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| size | number | 是 | 需要改变的长度。 |
 
 **错误码：**
 
@@ -438,7 +438,7 @@ setAllBits(element: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| element | number | 是 | 待设置的 bit 值。**0** 表示 bit 值 0，其余值表示 bit 值 1。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| element | number | 是 | 待设置的 bit 值。**0** 表示 bit 值 0，其余值表示 bit 值 1。 |
 
 **错误码：**
 
@@ -469,7 +469,7 @@ setBitsByRange(element: number, fromIndex: number, toIndex: number): void
 | --- | --- | --- | --- |
 | element | number | 是 | 待设置的 bit 值。**0** 表示 bit 值 0，其余值表示 bit 值 1。 |
 | fromIndex | number | 是 | 范围起始索引，包含本索引值。如果 **fromIndex** 小于 **0** 或者大于等于 **toIndex**，则会抛出错误。 |
-| toIndex | number | 是 | 范围终止索引，不包含本索引值。如果 **toIndex** 小于 **0** 或者大于等于 **length**，则会抛出错误。可能的原因：1.必填参数未指定。2.参数类型不正确。 |
+| toIndex | number | 是 | 范围终止索引，不包含本索引值。如果 **toIndex** 小于 **0** 或者大于等于 **length**，则会抛出错误。 |
 
 **错误码：**
 

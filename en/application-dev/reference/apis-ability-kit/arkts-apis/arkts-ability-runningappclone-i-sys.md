@@ -68,6 +68,7 @@ UID of the application.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -86,3 +87,5 @@ try {
   hilog.error(0x0000, 'testTag', `getRunningMultiAppInfo error, code: ${err.code}, msg:${err.message}`);
 }
 ```
+
+<!--DelEnd-->

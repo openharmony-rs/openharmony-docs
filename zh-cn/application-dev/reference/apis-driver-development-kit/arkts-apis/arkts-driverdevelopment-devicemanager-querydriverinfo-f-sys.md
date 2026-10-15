@@ -45,6 +45,7 @@ function queryDriverInfo(driverUid?: string): Array<Readonly<DriverInfo>>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Incorrect parameter types. |
 | [26300001](../errorcode-deviceManager.md#26300001-扩展外设驱动服务异常) | ExternalDeviceManager service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ try {
   console.error(`Failed to query driver info. Code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

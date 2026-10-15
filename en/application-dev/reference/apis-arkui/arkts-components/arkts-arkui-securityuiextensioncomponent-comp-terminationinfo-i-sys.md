@@ -20,7 +20,7 @@ Defines the result returned when the started **UIExtensionAbility** exits normal
 code: number
 ```
 
-Result code returned when the **UIExtensionAbility** exits. The value **0** indicates that the **UIExtensionAbility** exits normally, and a non-zero value indicates that the **UIExtensionAbility** exits abnormally. The meaning of the result code is defined by the **UIExtensionAbility** that is started. The value should be an integer.
+Result code returned when the launched **UIExtensionAbility** exits. The value **0** indicates normal exit, and a non-zero value indicates abnormal exit. The specific meaning of the result code is defined by the launched **UIExtensionAbility**.
 
 **Type:** number
 
@@ -40,7 +40,7 @@ Result code returned when the **UIExtensionAbility** exits. The value **0** indi
 want?: import('../api/@ohos.app.ability.Want').default
 ```
 
-Data returned when the **UIExtensionAbility** exits.
+Data returned when the launched **UIExtensionAbility** exits. This field is empty if no data is returned.
 
 **Type:** import('../api/@ohos.app.ability.Want').default
 

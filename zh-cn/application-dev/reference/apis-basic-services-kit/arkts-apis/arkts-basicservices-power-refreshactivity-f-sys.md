@@ -40,6 +40,7 @@ function refreshActivity(reason: string): void
 | [4900201](../errorcode-power.md#4900201-设备活跃状态刷新间隔过短) | The device activity is being refreshed too frequently; the minimum time interval is 100 ms. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. This API cannot work in car devices.<br>**适用版本：** 26.0.1+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ try {
     console.error(`Failed to refresh activity. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

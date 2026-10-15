@@ -4,7 +4,7 @@
 declare interface DragItemInfo
 ```
 
-Defines the information about the dragged item during drag.
+Defines the information about the drag item during a drag process, including the preview image, custom builder, and additional information about the dragged item.
 
 **Since:** 8
 
@@ -18,7 +18,7 @@ Defines the information about the dragged item during drag.
 builder?: CustomBuilder
 ```
 
-Custom component to display during dragging. If **pixelMap** is set, this parameter is ignored.
+Custom component to display during dragging. When not set, no custom component is used as the drag preview. If **pixelMap** is set, this parameter is ignored.
 
 **NOTE:** 
 
@@ -42,7 +42,7 @@ When passing the builder as a parameter, the format builder: ()=&gt;{this.custom
 extraInfo?: string
 ```
 
-Additional information about the dragged item, used to describe the item being dragged.
+Additional information about the dragged item, used to describe the item being dragged. When not set, there is no additional information.
 
 **Type:** string
 
@@ -60,7 +60,7 @@ Additional information about the dragged item, used to describe the item being d
 pixelMap?: PixelMap
 ```
 
-Image to be displayed during dragging.
+Image to be displayed during dragging. When not set, no image is used as the drag preview.
 
 **Type:** [PixelMap](arkts-arkui-common-comp-pixelmap-t.md)
 

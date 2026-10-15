@@ -19,7 +19,7 @@ The **NotificationSubscriber** module serves as the input parameter of subscribe
 | [EnabledPriorityNotificationCallbackData](arkts-notification-notificationsubscriber-enabledprioritynotificationcallbackdata-i-sys.md) | Returns the notification priority master switch state. |
 | [EnabledSilentReminderCallbackData](arkts-notification-notificationsubscriber-enabledsilentremindercallbackdata-i-sys.md) | Returns the application notification silent reminder switch state. |
 | [NotificationClassification](arkts-notification-notificationsubscriber-notificationclassification-i-sys.md) | Returns the notification classification information. |
-| [NotificationSubscriber](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md) | Provides callback methods for subscribers to receive and cancel notifications. |
+| [NotificationSubscriber](arkts-notification-notificationsubscriber-i-sys.md) | Provides callback methods for subscribers to receive and cancel notifications. |
 | [NotificationSwitchChangedCallbackData](arkts-notification-notificationsubscriber-notificationswitchchangedcallbackdata-i-sys.md) | Returns the changes of the notification switch state. |
 | [SubscribeCallbackData](arkts-notification-notificationsubscriber-subscribecallbackdata-i-sys.md) | Returns notification information carrying system property values. |
 | [VoiceContent](arkts-notification-notificationsubscriber-voicecontent-i-sys.md) | Returns the notification voice broadcast content. |

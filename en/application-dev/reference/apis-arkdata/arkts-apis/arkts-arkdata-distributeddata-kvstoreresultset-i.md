@@ -33,7 +33,7 @@ Obtains the total number of rows in the result set.
 
 **Deprecated since:** 9
 
-**Substitutes:** getCount
+**Substitutes:** [getCount](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#getcount)
 
 <!--Device-KvStoreResultSet-getCount(): number--><!--Device-KvStoreResultSet-getCount(): number-End-->
 
@@ -76,7 +76,7 @@ Obtains the KV pair from the current position.
 
 **Deprecated since:** 9
 
-**Substitutes:** getEntry
+**Substitutes:** [getEntry](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#getentry)
 
 <!--Device-KvStoreResultSet-getEntry(): Entry--><!--Device-KvStoreResultSet-getEntry(): Entry-End-->
 
@@ -119,7 +119,7 @@ Obtains the current data read position (position from which data is read) in the
 
 **Deprecated since:** 9
 
-**Substitutes:** getPosition
+**Substitutes:** [getPosition](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#getposition)
 
 <!--Device-KvStoreResultSet-getPosition(): number--><!--Device-KvStoreResultSet-getPosition(): number-End-->
 
@@ -162,7 +162,7 @@ Checks whether the data read position is after the last row.
 
 **Deprecated since:** 9
 
-**Substitutes:** isAfterLast
+**Substitutes:** [isAfterLast](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#isafterlast)
 
 <!--Device-KvStoreResultSet-isAfterLast(): boolean--><!--Device-KvStoreResultSet-isAfterLast(): boolean-End-->
 
@@ -205,7 +205,7 @@ Checks whether the data read position is before the first row.
 
 **Deprecated since:** 9
 
-**Substitutes:** isBeforeFirst
+**Substitutes:** [isBeforeFirst](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#isbeforefirst)
 
 <!--Device-KvStoreResultSet-isBeforeFirst(): boolean--><!--Device-KvStoreResultSet-isBeforeFirst(): boolean-End-->
 
@@ -248,7 +248,7 @@ Checks whether the data read position is the first row.
 
 **Deprecated since:** 9
 
-**Substitutes:** isFirst
+**Substitutes:** [isFirst](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#isfirst)
 
 <!--Device-KvStoreResultSet-isFirst(): boolean--><!--Device-KvStoreResultSet-isFirst(): boolean-End-->
 
@@ -291,7 +291,7 @@ Checks whether the data read position is the last row.
 
 **Deprecated since:** 9
 
-**Substitutes:** isLast
+**Substitutes:** [isLast](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#islast)
 
 <!--Device-KvStoreResultSet-isLast(): boolean--><!--Device-KvStoreResultSet-isLast(): boolean-End-->
 
@@ -334,7 +334,7 @@ Moves the data read position with the specified offset from the current position
 
 **Deprecated since:** 9
 
-**Substitutes:** move
+**Substitutes:** [move](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#move)
 
 <!--Device-KvStoreResultSet-move(offset: number): boolean--><!--Device-KvStoreResultSet-move(offset: number): boolean-End-->
 
@@ -383,7 +383,7 @@ Moves the data read position to the first row. If the result set is empty, **fal
 
 **Deprecated since:** 9
 
-**Substitutes:** moveToFirst
+**Substitutes:** [moveToFirst](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetofirst)
 
 <!--Device-KvStoreResultSet-moveToFirst(): boolean--><!--Device-KvStoreResultSet-moveToFirst(): boolean-End-->
 
@@ -426,7 +426,7 @@ Moves the data read position to the last row. If the result set is empty, **fals
 
 **Deprecated since:** 9
 
-**Substitutes:** moveToLast
+**Substitutes:** [moveToLast](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetolast)
 
 <!--Device-KvStoreResultSet-moveToLast(): boolean--><!--Device-KvStoreResultSet-moveToLast(): boolean-End-->
 
@@ -469,7 +469,7 @@ Moves the data read position to the next row. If the result set is empty, **fals
 
 **Deprecated since:** 9
 
-**Substitutes:** moveToNext
+**Substitutes:** [moveToNext](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetonext)
 
 <!--Device-KvStoreResultSet-moveToNext(): boolean--><!--Device-KvStoreResultSet-moveToNext(): boolean-End-->
 
@@ -512,7 +512,7 @@ Moves the data read position from 0 to an absolute position.
 
 **Deprecated since:** 9
 
-**Substitutes:** moveToPosition
+**Substitutes:** [moveToPosition](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetoposition)
 
 <!--Device-KvStoreResultSet-moveToPosition(position: number): boolean--><!--Device-KvStoreResultSet-moveToPosition(position: number): boolean-End-->
 
@@ -561,7 +561,7 @@ Moves the data read position to the previous row. If the result set is empty, **
 
 **Deprecated since:** 9
 
-**Substitutes:** moveToPrevious
+**Substitutes:** [moveToPrevious](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetoprevious)
 
 <!--Device-KvStoreResultSet-moveToPrevious(): boolean--><!--Device-KvStoreResultSet-moveToPrevious(): boolean-End-->
 

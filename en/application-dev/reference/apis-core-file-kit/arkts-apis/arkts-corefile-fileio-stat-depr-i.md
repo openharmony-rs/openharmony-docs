@@ -348,7 +348,7 @@ File identifier, which varies with files on the same device.
 
 **Deprecated since:** 9
 
-**Substitutes:** ino
+**Substitutes:** [ino](arkts-corefile-file-fs-stat-i.md#ino)
 
 <!--Device-Stat-readonly ino: number--><!--Device-Stat-readonly ino: number-End-->
 

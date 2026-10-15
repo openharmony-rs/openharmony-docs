@@ -24,21 +24,21 @@ declare enum TextResponseType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## RIGHT_CLICK
+## DEFAULT
 
 ```TypeScript
-RIGHT_CLICK = 0
+DEFAULT = 3
 ```
 
-通过鼠标右键触发菜单弹出。
+注册此类型的菜单，但未注册RIGHT_CLICK、LONG_PRESS、SELECT时，右键、长按、鼠标、[selection](arkts-arkui-text-comp-attribute.md#selection)选中均会触发并显示此类型对应的菜单。
 
-**起始版本：** 11
+**起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextResponseType-RIGHT_CLICK = 0--><!--Device-TextResponseType-RIGHT_CLICK = 0-End-->
+<!--Device-TextResponseType-DEFAULT = 3--><!--Device-TextResponseType-DEFAULT = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +60,24 @@ LONG_PRESS = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## RIGHT_CLICK
+
+```TypeScript
+RIGHT_CLICK = 0
+```
+
+通过鼠标右键触发菜单弹出。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextResponseType-RIGHT_CLICK = 0--><!--Device-TextResponseType-RIGHT_CLICK = 0-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## SELECT
 
 ```TypeScript
@@ -75,23 +93,5 @@ SELECT = 2
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextResponseType-SELECT = 2--><!--Device-TextResponseType-SELECT = 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DEFAULT
-
-```TypeScript
-DEFAULT = 3
-```
-
-注册此类型的菜单，但未注册RIGHT_CLICK、LONG_PRESS、SELECT时，右键、长按、鼠标、[selection](arkts-arkui-text-comp-attribute.md#selection)选中均会触发并显示此类型对应的菜单。
-
-**起始版本：** 15
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
-
-<!--Device-TextResponseType-DEFAULT = 3--><!--Device-TextResponseType-DEFAULT = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

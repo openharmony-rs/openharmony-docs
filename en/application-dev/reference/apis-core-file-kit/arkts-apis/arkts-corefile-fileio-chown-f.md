@@ -36,7 +36,7 @@ Changes the file owner based on the file path. This API uses a promise to return
 | Promise&lt;void&gt; | Promise that returns no value. |
 
 
-<a id="chown-1"></a>
+<a id="chown2"></a>
 
 ## chown
 

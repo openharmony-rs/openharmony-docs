@@ -45,7 +45,7 @@ Synchronizes the data of a file. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="fdatasync-1"></a>
+<a id="fdatasync2"></a>
 
 ## fdatasync
 

@@ -10,7 +10,7 @@ ImageSource类，用于获取图片相关信息。
 
 ImageSource的所有方法均不支持并发调用。
 
-由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-image-imagesource-i.md#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](arkts-image-image-imagesource-i.md#release1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **起始版本：** 6
 
@@ -63,6 +63,7 @@ createWideGamutSdrPixelMap(): Promise<PixelMap>
 | [7700103](../errorcode-image.md#7700103-图片太大) | Image too large. |
 | [7700301](../errorcode-image.md#7700301-解码失败) | Decoding failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -98,6 +99,8 @@ async function CreateWideGamutSdrPixelMap(context: Context) {
 }
 ```
 
+<!--DelEnd-->
+
 ## isJpegProgressive
 
 ```TypeScript
@@ -129,6 +132,7 @@ isJpegProgressive(): Promise<boolean>
 | [7700101](../errorcode-image.md#7700101-图片源存在问题) | Bad source. |
 | [7700102](../errorcode-image.md#7700102-不支持的mime类型) | Unsupported MIME type. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -143,6 +147,8 @@ async function IsJpegProgressive(imageSource : image.ImageSource) {
     })
 }
 ```
+
+<!--DelEnd-->
 
 ## modifyImageAllProperties
 
@@ -191,6 +197,7 @@ Exif属性中除"JPEGInterchangeFormat"/"JPEGInterchangeFormatLength"/"GIFLoopCo
 | [7700202](../errorcode-image.md#7700202-不支持的元数据) | Unsupported metadata. For example, the property key is not supported, or the property value is invalid. |
 | [7700304](../errorcode-image.md#7700304-图片信息写入文件失败) | Failed to write image properties to the file. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -205,3 +212,5 @@ async function ModifyImageAllProperties(imageSource: image.ImageSource) {
   }
 }
 ```
+
+<!--DelEnd-->

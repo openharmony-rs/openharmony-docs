@@ -58,8 +58,6 @@ When the value is **undefined**, the default value is used.
 
 When the value is invalid, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -88,8 +86,6 @@ When the value is **undefined**, the default value is used.
 
 When the value is invalid, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -115,8 +111,6 @@ Font family.
 Default value: **"HarmonyOS Sans"**
 
 When the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** string
 
@@ -150,8 +144,6 @@ Unit: fp
 
 When the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
 **Since:** 26.0.0
@@ -181,8 +173,6 @@ When **size** is **ChipV2Size.SMALL**, the default value is **{ left: 4, right: 
 When **size** is **ChipV2Size.NORMAL**, the default value is **{ left: 6, right: 6 }**.
 
 When the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** [ChipV2LabelMarginConfig](arkts-arkui-arkui-advanced-chipv2-chipv2labelmarginconfig-i.md)
 
@@ -216,8 +206,6 @@ When **size** is **ChipV2Size.NORMAL**, default value:
 
 When the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [ChipV2LocalizedLabelMarginConfig](arkts-arkui-arkui-advanced-chipv2-chipv2localizedlabelmarginconfig-i.md)
 
 **Since:** 26.0.0
@@ -242,8 +230,6 @@ Text modifier, which is used to set common text attributes. Pass this parameter 
 
 Default value: **undefined**, meaning that the modifier is not applied.
 
-**Decorator:** @Trace
-
 **Type:** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
 **Since:** 26.0.0
@@ -265,8 +251,6 @@ public text: string
 ```
 
 Text content.
-
-**Decorator:** @Trace
 
 **Type:** string
 

@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="setdeviceidletrustlist1"></a>
+
 ## setDeviceIdleTrustlist
 
 ```TypeScript
@@ -43,6 +45,7 @@ Adds applications specified by given UIDs to the device idle allowlist. This API
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,8 +56,10 @@ policy.setDeviceIdleTrustlist([11111, 22222], true, (error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setdeviceidletrustlist-1"></a>
+
+<a id="setdeviceidletrustlist2"></a>
 
 ## setDeviceIdleTrustlist
 
@@ -98,17 +103,18 @@ Sets whether multiple UIDs are in the whitelist of the sleep firewall. This API 
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
-policy
-  .setDeviceIdleTrustlist([11111, 22222], true)
-  .then(() => {
+policy.setDeviceIdleTrustlist([11111, 22222], true).then(() => {
     console.info('setDeviceIdleTrustlist success');
   })
   .catch((error: BusinessError) => {
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

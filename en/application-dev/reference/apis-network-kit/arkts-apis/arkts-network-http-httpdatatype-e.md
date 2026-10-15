@@ -18,19 +18,19 @@ Enumerates HTTP data types.
 
 **System capability:** SystemCapability.Communication.NetStack
 
-## STRING
+## ARRAY_BUFFER
 
 ```TypeScript
-STRING = 0
+ARRAY_BUFFER = 2
 ```
 
-The returned type is string.
+The returned type is ArrayBuffer.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-HttpDataType-STRING = 0--><!--Device-HttpDataType-STRING = 0-End-->
+<!--Device-HttpDataType-ARRAY_BUFFER = 2--><!--Device-HttpDataType-ARRAY_BUFFER = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
@@ -44,24 +44,24 @@ The returned type is Object.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpDataType-OBJECT = 1--><!--Device-HttpDataType-OBJECT = 1-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
 
-## ARRAY_BUFFER
+## STRING
 
 ```TypeScript
-ARRAY_BUFFER = 2
+STRING = 0
 ```
 
-The returned type is ArrayBuffer.
+The returned type is string.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-HttpDataType-ARRAY_BUFFER = 2--><!--Device-HttpDataType-ARRAY_BUFFER = 2-End-->
+<!--Device-HttpDataType-STRING = 0--><!--Device-HttpDataType-STRING = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetStack

@@ -6,6 +6,8 @@ type ProfileId = constant.ProfileId
 
 Indicate the profile id.
 
+**Type:** [constant.ProfileId](arkts-connectivity-constant-profileid-e.md)
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -13,5 +15,3 @@ Indicate the profile id.
 <!--Device-connection-type ProfileId = constant.ProfileId--><!--Device-connection-type ProfileId = constant.ProfileId-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**Type:** [constant.ProfileId](arkts-connectivity-constant-profileid-e.md)

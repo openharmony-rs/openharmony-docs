@@ -12,13 +12,13 @@ declare enum ThemeColorMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SYSTEM
+## DARK
 
 ```TypeScript
-SYSTEM = 0
+DARK = 2
 ```
 
-跟随系统深浅色模式。
+固定使用深色模式。
 
 **起始版本：** 10
 
@@ -26,7 +26,7 @@ SYSTEM = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ThemeColorMode-SYSTEM = 0--><!--Device-ThemeColorMode-SYSTEM = 0-End-->
+<!--Device-ThemeColorMode-DARK = 2--><!--Device-ThemeColorMode-DARK = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ LIGHT = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DARK
+## SYSTEM
 
 ```TypeScript
-DARK = 2
+SYSTEM = 0
 ```
 
-固定使用深色模式。
+跟随系统深浅色模式。
 
 **起始版本：** 10
 
@@ -62,6 +62,6 @@ DARK = 2
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ThemeColorMode-DARK = 2--><!--Device-ThemeColorMode-DARK = 2-End-->
+<!--Device-ThemeColorMode-SYSTEM = 0--><!--Device-ThemeColorMode-SYSTEM = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

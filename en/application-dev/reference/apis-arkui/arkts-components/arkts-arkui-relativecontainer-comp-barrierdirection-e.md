@@ -14,6 +14,24 @@ Defines the direction of a barrier.
 
 **Test API:** This API is used only in automated test scripts.
 
+## BOTTOM
+
+```TypeScript
+BOTTOM
+```
+
+The barrier is at the bottommost position of all its [referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md).
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-BarrierDirection-BOTTOM--><!--Device-BarrierDirection-BOTTOM-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## LEFT
 
 ```TypeScript
@@ -65,23 +83,5 @@ The barrier is at the topmost position of all its [referencedId](arkts-arkui-rel
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-BarrierDirection-TOP--><!--Device-BarrierDirection-TOP-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## BOTTOM
-
-```TypeScript
-BOTTOM
-```
-
-The barrier is at the bottommost position of all its [referencedId](arkts-arkui-relativecontainer-comp-barrierstyle-i.md).
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-BarrierDirection-BOTTOM--><!--Device-BarrierDirection-BOTTOM-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

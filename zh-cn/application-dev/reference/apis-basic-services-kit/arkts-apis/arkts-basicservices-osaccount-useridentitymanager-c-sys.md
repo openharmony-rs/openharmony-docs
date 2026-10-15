@@ -55,9 +55,9 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid credentialInfo, i.e. authType or authSubType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
-| 12300090 | Cross-device capability not supported.<br>**适用版本：** 23+ |
-| 12300091 | Cross-device communication failed.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300090](../errorcode-account.md#12300090-不支持跨设备认证能力) | Cross-device capability not supported.<br>**适用版本：** 23+ |
+| [12300091](../errorcode-account.md#12300091-跨设备通信失败) | Cross-device communication failed.<br>**适用版本：** 23+ |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
 | [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
 | [12300109](../errorcode-account.md#12300109-认证凭据录入更新等操作被取消) | The authentication, enrollment, or update operation is canceled. |
@@ -65,6 +65,7 @@ addCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | [12300115](../errorcode-account.md#12300115-用户认证密码个数达到上限) | The number of credentials reaches the upper limit. |
 | [12300116](../errorcode-account.md#12300116-凭证复杂度验证失败) | Credential complexity verification failed.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -98,6 +99,8 @@ userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
   }
 });
 ```
+
+<!--DelEnd-->
 
 ## cancel
 
@@ -133,6 +136,7 @@ cancel(challenge: Uint8Array): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid challenge. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -147,6 +151,8 @@ try {
   console.error(`cancel code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## closeSession
 
@@ -183,6 +189,7 @@ closeSession(accountId?: number): void
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -190,6 +197,8 @@ let userIDM = new osAccount.UserIdentityManager();
 let accountId = 100;
 userIDM.closeSession(accountId);
 ```
+
+<!--DelEnd-->
 
 ## constructor
 
@@ -213,11 +222,14 @@ constructor()
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let userIDM = new osAccount.UserIdentityManager();
 ```
+
+<!--DelEnd-->
 
 ## delCred
 
@@ -257,6 +269,7 @@ delCred(credentialId: Uint8Array, token: Uint8Array, callback: IIdmCallback): vo
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
 | [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -277,6 +290,8 @@ try {
   console.error(`delCred exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## delUser
 
@@ -313,6 +328,7 @@ delUser(token: Uint8Array, callback: IIdmCallback): void
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300101](../errorcode-account.md#12300101-凭据不正确) | The token is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -332,6 +348,10 @@ try {
   console.error(`delUser exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getauthinfo1"></a>
 
 ## getAuthInfo
 
@@ -364,8 +384,9 @@ getAuthInfo(callback: AsyncCallback<Array<EnrolledCredInfo>>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -386,7 +407,9 @@ try {
 }
 ```
 
-<a id="getauthinfo-1"></a>
+<!--DelEnd-->
+
+<a id="getauthinfo2"></a>
 
 ## getAuthInfo
 
@@ -421,8 +444,9 @@ getAuthInfo(authType: AuthType, callback: AsyncCallback<Array<EnrolledCredInfo>>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -444,7 +468,9 @@ try {
 }
 ```
 
-<a id="getauthinfo-2"></a>
+<!--DelEnd-->
+
+<a id="getauthinfo3"></a>
 
 ## getAuthInfo
 
@@ -484,8 +510,9 @@ getAuthInfo(authType: AuthType): Promise<Array<EnrolledCredInfo>>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -504,7 +531,9 @@ try {
 }
 ```
 
-<a id="getauthinfo-3"></a>
+<!--DelEnd-->
+
+<a id="getauthinfo4"></a>
 
 ## getAuthInfo
 
@@ -545,8 +574,9 @@ getAuthInfo(options?: GetAuthInfoOptions): Promise<Array<EnrolledCredInfo>>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid options. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -568,6 +598,8 @@ try {
   console.error(`getAuthInfo exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getEnrolledId
 
@@ -609,10 +641,11 @@ getEnrolledId(authType: AuthType, accountId?: number): Promise<Uint8Array>
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found. |
-| 12300020 | Device hardware abnormal.<br>**适用版本：** 23+ |
+| [12300020](../errorcode-account.md#12300020-设备硬件异常) | Device hardware abnormal.<br>**适用版本：** 23+ |
 | [12300102](../errorcode-account.md#12300102-凭据不存在) | The credential does not exist. |
 | [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -632,6 +665,8 @@ try {
   console.error(`getEnrolledId exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## offCredentialChanged
 
@@ -665,6 +700,7 @@ offCredentialChanged(callback?: Callback<CredentialChangeInfo>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -698,6 +734,8 @@ try {
   console.error(`Failed to unsubscribe from the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
+
+<!--DelEnd-->
 
 ## onCredentialChanged
 
@@ -734,6 +772,7 @@ onCredentialChanged(credentialTypes: AuthType[], callback: Callback<CredentialCh
 | [12300002](../errorcode-account.md#12300002-无效参数) | One or more credential types are invalid. |
 | [12300106](../errorcode-account.md#12300106-认证类型不支持) | One or more credential types are not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -759,6 +798,10 @@ try {
   console.error(`Failed to subscribe to the credential changes, code is ${err.code}, message is ${err.message}`)
 }
 ```
+
+<!--DelEnd-->
+
+<a id="opensession1"></a>
 
 ## openSession
 
@@ -793,6 +836,7 @@ openSession(callback: AsyncCallback<Uint8Array>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-系统服务异常) | The system service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -813,7 +857,9 @@ try {
 }
 ```
 
-<a id="opensession-1"></a>
+<!--DelEnd-->
+
+<a id="opensession2"></a>
 
 ## openSession
 
@@ -855,6 +901,7 @@ openSession(accountId?: number): Promise<Uint8Array>
 | [12300003](../errorcode-account.md#12300003-账号不存在) | Account not found.<br>**适用版本：** 12+ |
 | [12300008](../errorcode-account.md#12300008-受限的账号) | Restricted account.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -873,6 +920,8 @@ try {
   console.error(`openSession exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## updateCredential
 
@@ -915,6 +964,7 @@ updateCredential(credentialInfo: CredentialInfo, callback: IIdmCallback): void
 | [12300111](../errorcode-account.md#12300111-认证超时) | The operation time out. |
 | [12300116](../errorcode-account.md#12300116-凭证复杂度验证失败) | Credential complexity verification failed.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -958,3 +1008,5 @@ userIDM.openSession((err: BusinessError, challenge: Uint8Array) => {
   });
 });
 ```
+
+<!--DelEnd-->

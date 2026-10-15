@@ -6,6 +6,8 @@
 import { appRecovery } from '@kit.AbilityKit';
 ```
 
+<a id="saveappstate1"></a>
+
 ## saveAppState
 
 ```TypeScript
@@ -51,7 +53,7 @@ try {
 ```
 
 
-<a id="saveappstate-1"></a>
+<a id="saveappstate2"></a>
 
 ## saveAppState
 
@@ -65,7 +67,7 @@ Saves the ability state, which will be used for recovery. This API can be used t
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-appRecovery-function saveAppState(context?: UIAbilityContext): boolean--><!--Device-appRecovery-function saveAppState(context?: UIAbilityContext): boolean-End-->
 

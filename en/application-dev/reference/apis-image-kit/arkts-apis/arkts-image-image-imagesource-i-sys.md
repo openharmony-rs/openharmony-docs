@@ -6,11 +6,11 @@ interface ImageSource
 
 The **ImageSource** class provides APIs to obtain image information.
 
-Before calling any API in ImageSource, you must use [image.createImageSource](arkts-image-image-createimagesource-f.md) to create an ImageSource instance.
+Before calling any API in ImageSource, you must use [image.createImageSource](arkts-image-image-createimagesource-f.md#createimagesource1) to create an ImageSource instance.
 
 All APIs in ImageSource cannot be called concurrently.
 
-Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](arkts-image-image-imagesource-i.md#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Images occupy a large amount of memory. When you finish using an ImageSource instance, call [release](arkts-image-image-imagesource-i.md#release1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
 **Since:** 6
 
@@ -55,6 +55,7 @@ Decodes to a SDR PixelMap, using a as wide gamut as possible. For a SDR ImageSou
 | [7700103](../errorcode-image.md#7700103-image-oversized) | Image too large. |
 | [7700301](../errorcode-image.md#7700301-decoding-failure) | Decoding failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -90,6 +91,8 @@ async function CreateWideGamutSdrPixelMap(context: Context) {
 }
 ```
 
+<!--DelEnd-->
+
 ## isJpegProgressive
 
 ```TypeScript
@@ -121,6 +124,7 @@ Checks whether a JPEG image is progressive. This API uses a promise to return th
 | [7700101](../errorcode-image.md#7700101-abnormal-image-source) | Bad source. |
 | [7700102](../errorcode-image.md#7700102-unsupported-mime-type) | Unsupported MIME type. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -135,6 +139,8 @@ async function IsJpegProgressive(imageSource : image.ImageSource) {
     })
 }
 ```
+
+<!--DelEnd-->
 
 ## modifyImageAllProperties
 
@@ -175,6 +181,7 @@ Modify the value of properties in an image with the specified keys.The HwMnote r
 | [7700202](../errorcode-image.md#7700202-unsupported-metadata) | Unsupported metadata. For example, the property key is not supported, or the property value is invalid. |
 | [7700304](../errorcode-image.md#7700304-failed-to-write-image-information-to-the-file) | Failed to write image properties to the file. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -189,3 +196,5 @@ async function ModifyImageAllProperties(imageSource: image.ImageSource) {
   }
 }
 ```
+
+<!--DelEnd-->

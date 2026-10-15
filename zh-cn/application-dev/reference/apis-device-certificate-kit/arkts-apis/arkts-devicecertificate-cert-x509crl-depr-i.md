@@ -1,4 +1,4 @@
-# deprecated X509Crl
+# X509Crl
 
 ```TypeScript
 interface X509Crl
@@ -26,6 +26,8 @@ interface X509Crl
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="getencoded1"></a>
+
 ## getEncoded
 
 ```TypeScript
@@ -37,13 +39,13 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRL.getEncoded()](arkts-devicecertificate-cert-x509crl-i.md#getencoded)替代。
+> [X509CRL.getEncoded()](arkts-devicecertificate-cert-x509crl-i.md#getencoded1)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** getEncoded
+**替代接口：** [getEncoded](arkts-devicecertificate-cert-x509crl-i.md#getencoded)
 
 <!--Device-X509Crl-getEncoded(callback: AsyncCallback<EncodingBlob>): void--><!--Device-X509Crl-getEncoded(callback: AsyncCallback<EncodingBlob>): void-End-->
 
@@ -59,7 +61,7 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
@@ -110,7 +112,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
-<a id="getencoded-1"></a>
+<a id="getencoded2"></a>
 
 ## getEncoded
 
@@ -128,7 +130,7 @@ getEncoded(): Promise<EncodingBlob>
 
 **废弃版本：** 11
 
-**替代接口：** getEncoded
+**替代接口：** [getEncoded](arkts-devicecertificate-cert-x509crl-i.md#getencoded)
 
 <!--Device-X509Crl-getEncoded(): Promise<EncodingBlob>--><!--Device-X509Crl-getEncoded(): Promise<EncodingBlob>-End-->
 
@@ -144,7 +146,7 @@ getEncoded(): Promise<EncodingBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
@@ -208,7 +210,7 @@ getIssuerName(): DataBlob
 
 **废弃版本：** 11
 
-**替代接口：** getIssuerName
+**替代接口：** [getIssuerName](arkts-devicecertificate-cert-x509crl-i.md#getissuername)
 
 <!--Device-X509Crl-getIssuerName(): DataBlob--><!--Device-X509Crl-getIssuerName(): DataBlob-End-->
 
@@ -291,7 +293,7 @@ getLastUpdate(): string
 
 **废弃版本：** 11
 
-**替代接口：** getLastUpdate
+**替代接口：** [getLastUpdate](arkts-devicecertificate-cert-x509crl-i.md#getlastupdate)
 
 <!--Device-X509Crl-getLastUpdate(): string--><!--Device-X509Crl-getLastUpdate(): string-End-->
 
@@ -374,7 +376,7 @@ getNextUpdate(): string
 
 **废弃版本：** 11
 
-**替代接口：** getNextUpdate
+**替代接口：** [getNextUpdate](arkts-devicecertificate-cert-x509crl-i.md#getnextupdate)
 
 <!--Device-X509Crl-getNextUpdate(): string--><!--Device-X509Crl-getNextUpdate(): string-End-->
 
@@ -457,7 +459,7 @@ getRevokedCert(serialNumber: number): X509CrlEntry
 
 **废弃版本：** 11
 
-**替代接口：** getRevokedCert
+**替代接口：** [getRevokedCert](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcert)
 
 <!--Device-X509Crl-getRevokedCert(serialNumber: number): X509CrlEntry--><!--Device-X509Crl-getRevokedCert(serialNumber: number): X509CrlEntry-End-->
 
@@ -479,7 +481,7 @@ getRevokedCert(serialNumber: number): X509CrlEntry
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
@@ -530,6 +532,8 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
+<a id="getrevokedcerts1"></a>
+
 ## getRevokedCerts
 
 ```TypeScript
@@ -541,13 +545,13 @@ getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRL.getRevokedCerts()](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts)替代。
+> [X509CRL.getRevokedCerts()](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts1)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** getRevokedCerts
+**替代接口：** [getRevokedCerts](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts)
 
 <!--Device-X509Crl-getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void--><!--Device-X509Crl-getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void-End-->
 
@@ -563,7 +567,7 @@ getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
@@ -613,7 +617,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
-<a id="getrevokedcerts-1"></a>
+<a id="getrevokedcerts2"></a>
 
 ## getRevokedCerts
 
@@ -631,7 +635,7 @@ getRevokedCerts(): Promise<Array<X509CrlEntry>>
 
 **废弃版本：** 11
 
-**替代接口：** getRevokedCerts
+**替代接口：** [getRevokedCerts](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts)
 
 <!--Device-X509Crl-getRevokedCerts(): Promise<Array<X509CrlEntry>>--><!--Device-X509Crl-getRevokedCerts(): Promise<Array<X509CrlEntry>>-End-->
 
@@ -647,7 +651,7 @@ getRevokedCerts(): Promise<Array<X509CrlEntry>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
@@ -711,7 +715,7 @@ getRevokedCertWithCert(cert: X509Cert): X509CrlEntry
 
 **废弃版本：** 11
 
-**替代接口：** getRevokedCertWithCert
+**替代接口：** [getRevokedCertWithCert](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcertwithcert)
 
 <!--Device-X509Crl-getRevokedCertWithCert(cert: X509Cert): X509CrlEntry--><!--Device-X509Crl-getRevokedCertWithCert(cert: X509Cert): X509CrlEntry-End-->
 
@@ -733,7 +737,7 @@ getRevokedCertWithCert(cert: X509Cert): X509CrlEntry
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
@@ -837,7 +841,7 @@ getSignature(): DataBlob
 
 **废弃版本：** 11
 
-**替代接口：** getSignature
+**替代接口：** [getSignature](arkts-devicecertificate-cert-x509crl-i.md#getsignature)
 
 <!--Device-X509Crl-getSignature(): DataBlob--><!--Device-X509Crl-getSignature(): DataBlob-End-->
 
@@ -921,7 +925,7 @@ getSignatureAlgName(): string
 
 **废弃版本：** 11
 
-**替代接口：** getSignatureAlgName
+**替代接口：** [getSignatureAlgName](arkts-devicecertificate-cert-x509crl-i.md#getsignaturealgname)
 
 <!--Device-X509Crl-getSignatureAlgName(): string--><!--Device-X509Crl-getSignatureAlgName(): string-End-->
 
@@ -1005,7 +1009,7 @@ getSignatureAlgOid(): string
 
 **废弃版本：** 11
 
-**替代接口：** getSignatureAlgOid
+**替代接口：** [getSignatureAlgOid](arkts-devicecertificate-cert-x509crl-i.md#getsignaturealgoid)
 
 <!--Device-X509Crl-getSignatureAlgOid(): string--><!--Device-X509Crl-getSignatureAlgOid(): string-End-->
 
@@ -1089,7 +1093,7 @@ getSignatureAlgParams(): DataBlob
 
 **废弃版本：** 11
 
-**替代接口：** getSignatureAlgParams
+**替代接口：** [getSignatureAlgParams](arkts-devicecertificate-cert-x509crl-i.md#getsignaturealgparams)
 
 <!--Device-X509Crl-getSignatureAlgParams(): DataBlob--><!--Device-X509Crl-getSignatureAlgParams(): DataBlob-End-->
 
@@ -1256,7 +1260,7 @@ getType(): string
 
 **废弃版本：** 11
 
-**替代接口：** getType
+**替代接口：** [getType](arkts-devicecertificate-cert-x509crl-i.md#gettype)
 
 <!--Device-X509Crl-getType(): string--><!--Device-X509Crl-getType(): string-End-->
 
@@ -1325,7 +1329,7 @@ getVersion(): number
 
 **废弃版本：** 11
 
-**替代接口：** getVersion
+**替代接口：** [getVersion](arkts-devicecertificate-cert-x509crl-i.md#getversion)
 
 <!--Device-X509Crl-getVersion(): number--><!--Device-X509Crl-getVersion(): number-End-->
 
@@ -1394,7 +1398,7 @@ isRevoked(cert: X509Cert): boolean
 
 **废弃版本：** 11
 
-**替代接口：** isRevoked
+**替代接口：** [isRevoked](arkts-devicecertificate-cert-x509crl-i.md#isrevoked)
 
 <!--Device-X509Crl-isRevoked(cert: X509Cert): boolean--><!--Device-X509Crl-isRevoked(cert: X509Cert): boolean-End-->
 
@@ -1416,7 +1420,7 @@ isRevoked(cert: X509Cert): boolean
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **示例**
 
@@ -1488,6 +1492,8 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
+<a id="verify1"></a>
+
 ## verify
 
 ```TypeScript
@@ -1499,13 +1505,13 @@ verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify)替代。
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify1)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** verify
+**替代接口：** [verify](arkts-devicecertificate-cert-x509crl-i.md#verify)
 
 <!--Device-X509Crl-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void--><!--Device-X509Crl-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void-End-->
 
@@ -1522,7 +1528,7 @@ verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**
@@ -1650,7 +1656,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
-<a id="verify-1"></a>
+<a id="verify2"></a>
 
 ## verify
 
@@ -1663,13 +1669,13 @@ verify(key: cryptoFramework.PubKey): Promise<void>
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify-1)替代。
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify2)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** verify
+**替代接口：** [verify](arkts-devicecertificate-cert-x509crl-i.md#verify)
 
 <!--Device-X509Crl-verify(key: cryptoFramework.PubKey): Promise<void>--><!--Device-X509Crl-verify(key: cryptoFramework.PubKey): Promise<void>-End-->
 
@@ -1691,7 +1697,7 @@ verify(key: cryptoFramework.PubKey): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
 
 **示例**

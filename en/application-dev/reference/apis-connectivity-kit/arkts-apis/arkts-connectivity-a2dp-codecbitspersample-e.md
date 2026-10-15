@@ -12,20 +12,6 @@ Describes the codec bits per sample.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_BITS_PER_SAMPLE_NONE
-
-```TypeScript
-CODEC_BITS_PER_SAMPLE_NONE = 0
-```
-
-Codec bits per sample none.
-
-**Since:** 11
-
-<!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_NONE = 0--><!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_NONE = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
 ## CODEC_BITS_PER_SAMPLE_16
 
 ```TypeScript
@@ -65,5 +51,19 @@ Codec 32 bits per sample.
 **Since:** 11
 
 <!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_32 = 3--><!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_32 = 3-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## CODEC_BITS_PER_SAMPLE_NONE
+
+```TypeScript
+CODEC_BITS_PER_SAMPLE_NONE = 0
+```
+
+Codec bits per sample none.
+
+**Since:** 11
+
+<!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_NONE = 0--><!--Device-CodecBitsPerSample-CODEC_BITS_PER_SAMPLE_NONE = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

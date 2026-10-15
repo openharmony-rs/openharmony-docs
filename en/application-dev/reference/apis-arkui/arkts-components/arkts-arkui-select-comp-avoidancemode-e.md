@@ -12,24 +12,6 @@ Enumerates the drop-down menu avoidance modes.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## COVER_TARGET
-
-```TypeScript
-COVER_TARGET
-```
-
-If there is not enough space below the target component, cover the target component.
-
-**Since:** 19
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 19.
-
-<!--Device-AvoidanceMode-COVER_TARGET--><!--Device-AvoidanceMode-COVER_TARGET-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## AVOID_AROUND_TARGET
 
 ```TypeScript
@@ -45,5 +27,23 @@ If there is not enough space around the target component, compress and display i
 **Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AvoidanceMode-AVOID_AROUND_TARGET--><!--Device-AvoidanceMode-AVOID_AROUND_TARGET-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## COVER_TARGET
+
+```TypeScript
+COVER_TARGET
+```
+
+If there is not enough space below the target component, cover the target component.
+
+**Since:** 19
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 19.
+
+<!--Device-AvoidanceMode-COVER_TARGET--><!--Device-AvoidanceMode-COVER_TARGET-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

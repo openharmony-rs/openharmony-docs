@@ -20,7 +20,7 @@ Inherits from [BaseEvent](arkts-arkui-common-comp-baseevent-i.md).
 getCurrentLocalPosition?(): Coordinate2D
 ```
 
-Gets the coordinates of the top-left corner of the current component based on its real-time position.
+Obtains the coordinates of the upper left corner of the mouse pointer relative to the real-time position of the current component. This API is applicable to scenarios where the coordinates of the mouse pointer relative to the current component are obtained in real time when the component position changes dynamically.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ Gets the coordinates of the top-left corner of the current component based on it
 
 | Type | Description |
 | --- | --- |
-| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | return the coordinates of the top-left corner of the current component based on its real-time position. |
+| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | Coordinates of the upper left corner of the mouse pointer relative to the real-time position of the current component. |
 
 ## getHistoricalPoints
 
@@ -44,7 +44,7 @@ Gets the coordinates of the top-left corner of the current component based on it
 getHistoricalPoints?(): Array<MouseHistoricalPoint>
 ```
 
-Obtains all historical point information of the current frame. Historical points can be used to achieve smoother drawing effects.
+Obtains information about all historical points in the current frame. Historical points can be used to implement smoother drawing, hand gesture recognition, performance optimization, track analysis, or data analysis. For the time being, a mouse event can be triggered only by an external mouse device.
 
 This API can only be called from [MouseEvent](arkts-arkui-common-comp-mouseevent-i.md) to obtain information about historical points of the current frame when [onMouse](arkts-arkui-common-comp-commonmethod-c.md#onmouse) is triggered. The mouse event reporting frequency per frame varies across different devices. Typically, only one mouse event is reported per frame. If the number of [MouseEvent](arkts-arkui-common-comp-mouseevent-i.md) instances received in the current frame is greater than 1, the last point of that frame is returned via [onMouse](arkts-arkui-common-comp-commonmethod-c.md#onmouse), and the remaining points are treated as historical points.
 

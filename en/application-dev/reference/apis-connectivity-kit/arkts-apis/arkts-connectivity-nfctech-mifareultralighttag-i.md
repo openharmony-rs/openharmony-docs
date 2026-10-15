@@ -6,13 +6,13 @@ export interface MifareUltralightTag extends TagSession
 
 Provides APIs to access MIFARE Ultralight properties and perform I/O operations on a tag. This class inherits from **TagSession**.
 
-**TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
+**TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-i.md).
 
 For details about how to obtain a **MifareUltralightTag** object, see [NFC Tag Read/Write Development](../../../connectivity/nfc/nfc-tag-access-guide.md).
 
 The following describes the unique APIs of **MifareUltralightTag**.
 
-**Inheritance/Implementation:** MifareUltralightTag extends [TagSession](arkts-connectivity-tagsession-tagsession-i.md)
+**Inheritance/Implementation:** MifareUltralightTag extends [TagSession](arkts-connectivity-tagsession-i.md)
 
 **Since:** 9
 
@@ -30,7 +30,7 @@ Obtains the type of this MIFARE Ultralight tag.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareUltralightTag-getType(): tag.MifareUltralightType--><!--Device-MifareUltralightTag-getType(): tag.MifareUltralightType-End-->
 
@@ -52,6 +52,8 @@ let getType : tag.MifareUltralightType = mifareUltralight.getType();
 console.info("mifareUltralight getType: " + getType);
 ```
 
+<a id="readmultiplepages1"></a>
+
 ## readMultiplePages
 
 ```TypeScript
@@ -64,7 +66,7 @@ Reads four pages of data (16 bytes in total) from the tag. This API uses a promi
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareUltralightTag-readMultiplePages(pageIndex: int): Promise<int[]>--><!--Device-MifareUltralightTag-readMultiplePages(pageIndex: int): Promise<int[]>-End-->
 
@@ -121,7 +123,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="readmultiplepages-1"></a>
+<a id="readmultiplepages2"></a>
 
 ## readMultiplePages
 
@@ -135,7 +137,7 @@ Reads four pages of data (16 bytes in total) from the tag. This API uses an asyn
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareUltralightTag-readMultiplePages(pageIndex: int, callback: AsyncCallback<int[]>): void--><!--Device-MifareUltralightTag-readMultiplePages(pageIndex: int, callback: AsyncCallback<int[]>): void-End-->
 
@@ -189,6 +191,8 @@ function nfcTechDemo() {
 }
 ```
 
+<a id="writesinglepage1"></a>
+
 ## writeSinglePage
 
 ```TypeScript
@@ -201,7 +205,7 @@ Writes one page (4 bytes) of data to this tag. This API uses a promise to return
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareUltralightTag-writeSinglePage(pageIndex: int, data: int[]): Promise<void>--><!--Device-MifareUltralightTag-writeSinglePage(pageIndex: int, data: int[]): Promise<void>-End-->
 
@@ -260,7 +264,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="writesinglepage-1"></a>
+<a id="writesinglepage2"></a>
 
 ## writeSinglePage
 
@@ -274,7 +278,7 @@ Writes one page (4 bytes) of data to this tag. This API uses an asynchronous cal
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareUltralightTag-writeSinglePage(pageIndex: int, data: int[], callback: AsyncCallback<void>): void--><!--Device-MifareUltralightTag-writeSinglePage(pageIndex: int, data: int[], callback: AsyncCallback<void>): void-End-->
 

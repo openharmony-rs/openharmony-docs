@@ -60,22 +60,6 @@ UPnP service discovery protocol.
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
-## SERVICE_TYPE_WS_DISCOVERY
-
-```TypeScript
-SERVICE_TYPE_WS_DISCOVERY = 3
-```
-
-WS-Discovery service discovery protocol.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-P2pServiceProtocolType-SERVICE_TYPE_WS_DISCOVERY = 3--><!--Device-P2pServiceProtocolType-SERVICE_TYPE_WS_DISCOVERY = 3-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.P2P
-
 ## SERVICE_TYPE_VENDOR_SPECIFIC
 
 ```TypeScript
@@ -89,5 +73,21 @@ Vendor-specific protocol.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-P2pServiceProtocolType-SERVICE_TYPE_VENDOR_SPECIFIC = 255--><!--Device-P2pServiceProtocolType-SERVICE_TYPE_VENDOR_SPECIFIC = 255-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.P2P
+
+## SERVICE_TYPE_WS_DISCOVERY
+
+```TypeScript
+SERVICE_TYPE_WS_DISCOVERY = 3
+```
+
+WS-Discovery service discovery protocol.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-P2pServiceProtocolType-SERVICE_TYPE_WS_DISCOVERY = 3--><!--Device-P2pServiceProtocolType-SERVICE_TYPE_WS_DISCOVERY = 3-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P

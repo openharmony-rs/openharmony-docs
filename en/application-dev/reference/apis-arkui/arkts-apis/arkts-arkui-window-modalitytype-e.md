@@ -12,22 +12,6 @@ Enumerates the modality types of the child window.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## WINDOW_MODALITY
-
-```TypeScript
-WINDOW_MODALITY = 0
-```
-
-Select this value when only the parent window should not respond to user operations.
-
-**Since:** 14
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
-
-<!--Device-ModalityType-WINDOW_MODALITY = 0--><!--Device-ModalityType-WINDOW_MODALITY = 0-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
 ## APPLICATION_MODALITY
 
 ```TypeScript
@@ -40,8 +24,24 @@ This enumeration can be called properly on a device that supports [freeform wind
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-ModalityType-APPLICATION_MODALITY = 1--><!--Device-ModalityType-APPLICATION_MODALITY = 1-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+## WINDOW_MODALITY
+
+```TypeScript
+WINDOW_MODALITY = 0
+```
+
+Select this value when only the parent window should not respond to user operations.
+
+**Since:** 14
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-ModalityType-WINDOW_MODALITY = 0--><!--Device-ModalityType-WINDOW_MODALITY = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

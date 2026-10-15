@@ -8,6 +8,14 @@ AccessibilityExtensionContext是AccessibilityExtensionAbility上下文环境，�
 
 辅助功能扩展上下文模块提供辅助功能扩展的相关能力，包括配置关注信息类型、查询节点信息、手势注入等。
 
+**继承/实现关系：** AccessibilityExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
+
+**起始版本：** 9
+
+<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
+
+**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+
 ## 使用说明
 
 使用AccessibilityExtensionContext功能前，通过AccessibilityExtensionAbility子类实例获取AccessibilityExtensionContext实例。
@@ -21,13 +29,7 @@ class EntryAbility extends AccessibilityExtensionAbility {
 }
 ```
 
-**继承/实现关系：** AccessibilityExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
-
-**起始版本：** 9
-
-<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
-
-**系统能力：** SystemCapability.BarrierFree.Accessibility.Core
+<a id="getfocuselement1"></a>
 
 ## getFocusElement
 
@@ -56,7 +58,7 @@ getFocusElement(isAccessibilityFocus: boolean, callback: AsyncCallback<Accessibi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -79,7 +81,7 @@ axContext.getFocusElement(isAccessibilityFocus, (err: BusinessError, data: Acces
 });
 ```
 
-<a id="getfocuselement-1"></a>
+<a id="getfocuselement2"></a>
 
 ## getFocusElement
 
@@ -113,7 +115,7 @@ getFocusElement(isAccessibilityFocus?: boolean): Promise<AccessibilityElement>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -133,7 +135,7 @@ axContext.getFocusElement().then((data: AccessibilityElement) => {
 });
 ```
 
-<a id="getfocuselement-2"></a>
+<a id="getfocuselement3"></a>
 
 ## getFocusElement
 
@@ -161,7 +163,7 @@ getFocusElement(callback: AsyncCallback<AccessibilityElement>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -182,6 +184,8 @@ axContext.getFocusElement((err: BusinessError, data: AccessibilityElement) => {
   console.info(`succeeded in getting focus element, ${JSON.stringify(data)}`);
 });
 ```
+
+<a id="getwindowrootelement1"></a>
 
 ## getWindowRootElement
 
@@ -210,7 +214,7 @@ getWindowRootElement(windowId: number, callback: AsyncCallback<AccessibilityElem
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -233,7 +237,7 @@ axContext.getWindowRootElement(windowId, (err: BusinessError, data: Accessibilit
 });
 ```
 
-<a id="getwindowrootelement-1"></a>
+<a id="getwindowrootelement2"></a>
 
 ## getWindowRootElement
 
@@ -267,7 +271,7 @@ getWindowRootElement(windowId?: number): Promise<AccessibilityElement>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -287,7 +291,7 @@ axContext.getWindowRootElement().then((data: AccessibilityElement) => {
 });
 ```
 
-<a id="getwindowrootelement-2"></a>
+<a id="getwindowrootelement3"></a>
 
 ## getWindowRootElement
 
@@ -315,7 +319,7 @@ getWindowRootElement(callback: AsyncCallback<AccessibilityElement>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -336,6 +340,8 @@ axContext.getWindowRootElement((err: BusinessError, data: AccessibilityElement) 
   console.info(`succeeded in getting root element of the window, ${JSON.stringify(data)}`);
 });
 ```
+
+<a id="getwindows1"></a>
 
 ## getWindows
 
@@ -364,7 +370,7 @@ getWindows(displayId: number, callback: AsyncCallback<Array<AccessibilityElement
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -384,7 +390,7 @@ axContext.getWindows(displayId, (err: BusinessError, data: AccessibilityElement[
 });
 ```
 
-<a id="getwindows-1"></a>
+<a id="getwindows2"></a>
 
 ## getWindows
 
@@ -418,7 +424,7 @@ getWindows(displayId?: number): Promise<Array<AccessibilityElement>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -435,7 +441,7 @@ axContext.getWindows().then((data: AccessibilityElement[]) => {
 });
 ```
 
-<a id="getwindows-2"></a>
+<a id="getwindows3"></a>
 
 ## getWindows
 
@@ -463,7 +469,7 @@ getWindows(callback: AsyncCallback<Array<AccessibilityElement>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -481,6 +487,8 @@ axContext.getWindows((err: BusinessError, data: AccessibilityElement[]) => {
   console.info(`succeeded in getting windows, ${JSON.stringify(data)}`);
 });
 ```
+
+<a id="injectgesture1"></a>
 
 ## injectGesture
 
@@ -511,7 +519,7 @@ injectGesture(gesturePath: GesturePath, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -535,7 +543,7 @@ axContext.injectGesture(gesturePath, (err: BusinessError) => {
 });
 ```
 
-<a id="injectgesture-1"></a>
+<a id="injectgesture2"></a>
 
 ## injectGesture
 
@@ -571,7 +579,7 @@ injectGesture(gesturePath: GesturePath): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -620,7 +628,7 @@ injectGestureSync(gesturePath: GesturePath): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-不具备执行该操作的无障碍权限) | No accessibility permission to perform the operation. |
 
 **示例**
@@ -636,6 +644,8 @@ for (let i = 0; i < 10; i++) {
 // axContext为AccessibilityExtensionContext实例，通过AccessibilityExtensionAbility子类的this.context获取，详见使用说明
 axContext.injectGestureSync(gesturePath);
 ```
+
+<a id="settargetbundlename1"></a>
 
 ## setTargetBundleName
 
@@ -664,7 +674,7 @@ setTargetBundleName(targetNames: Array<string>, callback: AsyncCallback<void>): 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 
@@ -686,7 +696,7 @@ try {
 }
 ```
 
-<a id="settargetbundlename-1"></a>
+<a id="settargetbundlename2"></a>
 
 ## setTargetBundleName
 
@@ -720,7 +730,7 @@ setTargetBundleName(targetNames: Array<string>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **示例**
 

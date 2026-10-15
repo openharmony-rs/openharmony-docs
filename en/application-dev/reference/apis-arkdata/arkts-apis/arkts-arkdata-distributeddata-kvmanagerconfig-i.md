@@ -10,7 +10,7 @@ Represents the configuration of a **KVManager** instance, including the bundle n
 
 **Deprecated since:** 9
 
-**Substitutes:** KVManagerConfig
+**Substitutes:** [KVManagerConfig](arkts-arkdata-distributedkvstore-kvmanagerconfig-i.md)
 
 <!--Device-distributedData-interface KVManagerConfig--><!--Device-distributedData-interface KVManagerConfig-End-->
 
@@ -35,7 +35,7 @@ Bundle name of the caller.
 
 **Deprecated since:** 9
 
-**Substitutes:** bundleName
+**Substitutes:** [bundleName](arkts-arkdata-distributedkvstore-kvmanagerconfig-i.md#bundlename)
 
 <!--Device-KVManagerConfig-bundleName: string--><!--Device-KVManagerConfig-bundleName: string-End-->
 

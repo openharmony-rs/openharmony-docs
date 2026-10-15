@@ -12,19 +12,19 @@ enum SwitchStatus
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## ON
+## FORCE_ON
 
 ```TypeScript
-ON = 0
+FORCE_ON = 2
 ```
 
-开启状态。
+强制开启状态。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SwitchStatus-ON = 0--><!--Device-SwitchStatus-ON = 0-End-->
+<!--Device-SwitchStatus-FORCE_ON = 2--><!--Device-SwitchStatus-FORCE_ON = 2-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,18 +44,18 @@ OFF = 1
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
-## FORCE_ON
+## ON
 
 ```TypeScript
-FORCE_ON = 2
+ON = 0
 ```
 
-强制开启状态。
+开启状态。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SwitchStatus-FORCE_ON = 2--><!--Device-SwitchStatus-FORCE_ON = 2-End-->
+<!--Device-SwitchStatus-ON = 0--><!--Device-SwitchStatus-ON = 0-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

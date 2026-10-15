@@ -8,6 +8,8 @@ declare type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Can
 
 @typedef { import('../api/@ohos.graphics.drawing').default.Canvas } DrawingCanvas
 
+**类型：** import('../api/@ohos.graphics.drawing').default.Canvas
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Can
 <!--Device-unnamed-declare type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas--><!--Device-unnamed-declare type DrawingCanvas = import('../api/@ohos.graphics.drawing').default.Canvas-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.graphics.drawing').default.Canvas

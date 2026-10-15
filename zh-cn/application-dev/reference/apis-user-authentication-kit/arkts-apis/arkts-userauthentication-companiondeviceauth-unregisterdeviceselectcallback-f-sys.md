@@ -33,16 +33,3 @@ function unregisterDeviceSelectCallback(): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  companionDeviceAuth.unregisterDeviceSelectCallback();
-} catch (error) {
-  const err = error as BusinessError;
-  console.error(`error has been captured. Code: ${err.code}, message: ${err.message}`);
-}
-```

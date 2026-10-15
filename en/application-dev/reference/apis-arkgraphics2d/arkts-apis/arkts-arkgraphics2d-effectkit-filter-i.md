@@ -18,6 +18,8 @@ An image effect class used to add a specified effect to the effect chain through
 import { effectKit } from '@kit.ArkGraphics2D';
 ```
 
+<a id="blur1"></a>
+
 ## blur
 
 ```TypeScript
@@ -32,9 +34,9 @@ Adds the blur effect to the effect chain and returns the instance of the chain. 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Filter-blur(radius: double): Filter--><!--Device-Filter-blur(radius: double): Filter-End-->
 
@@ -118,7 +120,7 @@ struct Index {
 }
 ```
 
-<a id="blur-1"></a>
+<a id="blur2"></a>
 
 ## blur
 
@@ -227,9 +229,9 @@ Adds the brightness effect to the effect chain and returns the instance of the c
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Filter-brightness(bright: double): Filter--><!--Device-Filter-brightness(bright: double): Filter-End-->
 
@@ -313,6 +315,8 @@ struct Index {
 }
 ```
 
+<a id="geteffectpixelmap1"></a>
+
 ## getEffectPixelMap
 
 ```TypeScript
@@ -327,9 +331,9 @@ Obtains image.PixelMap of the source image to which the effect chain has been ad
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Filter-getEffectPixelMap(): Promise<image.PixelMap>--><!--Device-Filter-getEffectPixelMap(): Promise<image.PixelMap>-End-->
 
@@ -371,7 +375,7 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-<a id="geteffectpixelmap-1"></a>
+<a id="geteffectpixelmap2"></a>
 
 ## getEffectPixelMap
 
@@ -383,9 +387,9 @@ Obtains image.PixelMap of the source image with the linked list effect. The rend
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 20.
+**Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
 <!--Device-Filter-getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>--><!--Device-Filter-getEffectPixelMap(useCpuRender : boolean): Promise<image.PixelMap>-End-->
 
@@ -439,9 +443,9 @@ Adds the grayscale effect to the effect chain and returns the instance of the ch
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 12.
+**Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-Filter-grayscale(): Filter--><!--Device-Filter-grayscale(): Filter-End-->
 

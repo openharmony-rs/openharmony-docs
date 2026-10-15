@@ -20,13 +20,15 @@ Provides the parameters of the pinch gesture handler. Inherits from [BaseHandler
 distance?: number
 ```
 
-Minimum recognition distance, in vp.
+Minimum recognition distance, in vp. To recognize a pinch gesture more sensitively, set a smaller positive threshold. To reduce the chance of triggering a pinch due to slight movement or accidental touch, set a larger threshold. You are advised to use the default value first and then adjust it based on the component size and interaction sensitivity.
 
 Default value: **5**
 
+Value range: (0, +∞)
+
 **NOTE:** 
 
-If the value is less than or equal to 0, it will be converted to the default value.
+If the recognition distance is less than or equal to 0, the default value is used.
 
 **Type:** number
 
@@ -46,13 +48,13 @@ If the value is less than or equal to 0, it will be converted to the default val
 fingers?: number
 ```
 
-Minimum number of fingers required to trigger the pinch gesture. The value ranges from 2 to 5.
+Minimum number of fingers that trigger a pinch. The value ranges from 2 to 5.
 
 Default value: **2**
 
 Value range: [2, 5]
 
-While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation.
+If the value is less than 2 or greater than 5, the default value **2** is used. If **isFingerCountLimited** is not enabled, the number of fingers that trigger the gesture can be greater than **fingers**, but only the first **fingers** fingers that touch the screen participate in gesture calculation. If **isFingerCountLimited** is enabled, the number of fingers touching the screen must be equal to **fingers**; otherwise, the gesture will not be recognized.
 
 **Type:** number
 

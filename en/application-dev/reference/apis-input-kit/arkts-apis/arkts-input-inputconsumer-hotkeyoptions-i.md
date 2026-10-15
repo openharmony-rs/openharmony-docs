@@ -4,7 +4,7 @@
 interface HotkeyOptions
 ```
 
-Defines shortcut key options.
+Defines hotkey options.
 
 **Since:** 14
 
@@ -26,7 +26,7 @@ finalKey: number
 
 Modified key, which can be any key except the modifier keys and Meta key. For details about the keys, see [@ohos.multimodalInput.keyCode (Keycode)](arkts-input-multimodalinput-keycode-keycode-e.md).
 
-For example, in **Ctrl+Shift+Esc**, **Esc** is the modifier key.
+For example, in **Ctrl+Shift+Esc**, **Esc** is the modified key.
 
 **Type:** number
 

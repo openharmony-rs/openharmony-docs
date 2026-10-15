@@ -12,12 +12,6 @@ RichEditor组件的控制器，继承自[RichEditorBaseController](arkts-arkui-r
 > [addImageSpan](#addimagespan)、[addBuilderSpan](#addbuilderspan)
 > 、[addSymbolSpan](#addsymbolspan)），组件会自动滚动内容使得插入内容末尾可见。
 
-## 导入对象
-
-```ts
-controller: RichEditorController = new RichEditorController();
-```
-
 **继承/实现关系：** RichEditorController extends [RichEditorBaseController](arkts-arkui-richeditor-comp-richeditorbasecontroller-c.md)
 
 **起始版本：** 10
@@ -25,6 +19,12 @@ controller: RichEditorController = new RichEditorController();
 <!--Device-unnamed-declare class RichEditorController extends RichEditorBaseController--><!--Device-unnamed-declare class RichEditorController extends RichEditorBaseController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+```ts
+controller: RichEditorController = new RichEditorController();
+```
 
 ## addBuilderSpan
 
@@ -56,7 +56,7 @@ addBuilderSpan(value: CustomBuilder, options?: RichEditorBuilderSpanOptions): nu
 > 
 > - 如果组件光标闪烁，插入后光标位置更新为新插入builder的后面。
 > 
-> - 对[addBuilderSpan](#addbuilderspan)的节点文本，[enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector)、[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig)、[enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector)功能不会生效。通用属性仅支持[size](arkts-arkui-common-comp-commonmethod-c.md#size)、[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)、[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)、[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[borderStyle](arkts-arkui-common-comp-commonmethod-c.md#borderstyle)、[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius)、[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle)、[opacity](arkts-arkui-common-comp-commonmethod-c.md#opacity)、[blur](arkts-arkui-common-comp-commonmethod-c.md#blur)、[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur)、[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)、[grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale)、[brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness)、[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate)、[contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast)、[invert](arkts-arkui-common-comp-commonmethod-c.md#invert)、[sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia)、[hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate)、[colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend)、[linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur)、[clip](arkts-arkui-common-comp-commonmethod-c.md#clip)、[mask](arkts-arkui-common-comp-commonmethod-c.md#mask)、[foregroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle)、[accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup)、[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)、[accessibilityDescription](arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription)、[accessibilityLevel](arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel)、[sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect)、[lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect)、[pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect)。
+> - 对[addBuilderSpan](#addbuilderspan)的节点文本，[enableDataDetector](arkts-arkui-richeditor-comp-attribute.md#enabledatadetector)、[dataDetectorConfig](arkts-arkui-richeditor-comp-attribute.md#datadetectorconfig)、[enableSelectedDataDetector](arkts-arkui-richeditor-comp-attribute.md#enableselecteddatadetector)功能不会生效。通用属性仅支持[size](arkts-arkui-common-comp-commonmethod-c.md#size)、[padding](arkts-arkui-common-comp-commonmethod-c.md#padding)、[margin](arkts-arkui-common-comp-commonmethod-c.md#margin)、[aspectRatio](arkts-arkui-common-comp-commonmethod-c.md#aspectratio)、[borderStyle](arkts-arkui-common-comp-commonmethod-c.md#borderstyle)、[borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、[borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、[borderRadius](arkts-arkui-common-comp-commonmethod-c.md#borderradius1)、[backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、[backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1)、[opacity](arkts-arkui-common-comp-commonmethod-c.md#opacity1)、[blur](arkts-arkui-common-comp-commonmethod-c.md#blur1)、[backdropBlur](arkts-arkui-common-comp-commonmethod-c.md#backdropblur1)、[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1)、[grayscale](arkts-arkui-common-comp-commonmethod-c.md#grayscale1)、[brightness](arkts-arkui-common-comp-commonmethod-c.md#brightness1)、[saturate](arkts-arkui-common-comp-commonmethod-c.md#saturate1)、[contrast](arkts-arkui-common-comp-commonmethod-c.md#contrast1)、[invert](arkts-arkui-common-comp-commonmethod-c.md#invert1)、[sepia](arkts-arkui-common-comp-commonmethod-c.md#sepia1)、[hueRotate](arkts-arkui-common-comp-commonmethod-c.md#huerotate1)、[colorBlend](arkts-arkui-common-comp-commonmethod-c.md#colorblend1)、[linearGradientBlur](arkts-arkui-common-comp-commonmethod-c.md#lineargradientblur1)、[clip](arkts-arkui-common-comp-commonmethod-c.md#clip1)、[mask](arkts-arkui-common-comp-commonmethod-c.md#mask1)、[foregroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#foregroundblurstyle1)、[accessibilityGroup](arkts-arkui-common-comp-commonmethod-c.md#accessibilitygroup1)、[accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1)、[accessibilityDescription](arkts-arkui-common-comp-commonmethod-c.md#accessibilitydescription1)、[accessibilityLevel](arkts-arkui-common-comp-commonmethod-c.md#accessibilitylevel)、[sphericalEffect](arkts-arkui-common-comp-commonmethod-c.md#sphericaleffect1)、[lightUpEffect](arkts-arkui-common-comp-commonmethod-c.md#lightupeffect1)、[pixelStretchEffect](arkts-arkui-common-comp-commonmethod-c.md#pixelstretcheffect1)。
 
 **起始版本：** 11
 

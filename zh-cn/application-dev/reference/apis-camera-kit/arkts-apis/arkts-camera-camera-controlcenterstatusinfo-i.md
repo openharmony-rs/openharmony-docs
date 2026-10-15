@@ -30,7 +30,7 @@ readonly effectType: ControlCenterEffectType
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-ControlCenterStatusInfo-readonly effectType: ControlCenterEffectType--><!--Device-ControlCenterStatusInfo-readonly effectType: ControlCenterEffectType-End-->
 
@@ -48,7 +48,7 @@ readonly isActive: boolean
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-ControlCenterStatusInfo-readonly isActive: boolean--><!--Device-ControlCenterStatusInfo-readonly isActive: boolean-End-->
 

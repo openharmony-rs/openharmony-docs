@@ -6,6 +6,8 @@ type WaterFlow = TypedFrameNode<WaterFlowInterface, WaterFlowAttribute>
 
 Represents a FrameNode of the **WaterFlow** type. Only [FlowItem](../arkts-components/arkts-arkui-flowitem-comp-attribute.md#flowitemattribute) child components can be added.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;WaterFlowInterface, [WaterFlowAttribute](../arkts-components/arkts-arkui-waterflow-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **WaterFlow** type. Only [FlowItem](../arkts-compo
 <!--Device-typeNode-type WaterFlow = TypedFrameNode<WaterFlowInterface, WaterFlowAttribute>--><!--Device-typeNode-type WaterFlow = TypedFrameNode<WaterFlowInterface, WaterFlowAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;WaterFlowInterface, [WaterFlowAttribute](../arkts-components/arkts-arkui-waterflow-comp-attribute.md)&gt;

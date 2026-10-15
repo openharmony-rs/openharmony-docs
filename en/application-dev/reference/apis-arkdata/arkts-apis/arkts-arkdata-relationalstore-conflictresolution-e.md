@@ -12,34 +12,6 @@ Enumerates the resolutions used when a conflict occurs during data insertion or 
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## ON_CONFLICT_NONE
-
-```TypeScript
-ON_CONFLICT_NONE = 0
-```
-
-No operation is performed.
-
-**Since:** 10
-
-<!--Device-ConflictResolution-ON_CONFLICT_NONE = 0--><!--Device-ConflictResolution-ON_CONFLICT_NONE = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## ON_CONFLICT_ROLLBACK
-
-```TypeScript
-ON_CONFLICT_ROLLBACK = 1
-```
-
-Abort the SQL statement and roll back the current transaction.
-
-**Since:** 10
-
-<!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1--><!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## ON_CONFLICT_ABORT
 
 ```TypeScript
@@ -82,6 +54,20 @@ Skip the rows that contain constraint violations and continue to process the sub
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
+## ON_CONFLICT_NONE
+
+```TypeScript
+ON_CONFLICT_NONE = 0
+```
+
+No operation is performed.
+
+**Since:** 10
+
+<!--Device-ConflictResolution-ON_CONFLICT_NONE = 0--><!--Device-ConflictResolution-ON_CONFLICT_NONE = 0-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 ## ON_CONFLICT_REPLACE
 
 ```TypeScript
@@ -93,5 +79,19 @@ Delete pre-existing rows that cause the constraint violation before inserting or
 **Since:** 10
 
 <!--Device-ConflictResolution-ON_CONFLICT_REPLACE = 5--><!--Device-ConflictResolution-ON_CONFLICT_REPLACE = 5-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## ON_CONFLICT_ROLLBACK
+
+```TypeScript
+ON_CONFLICT_ROLLBACK = 1
+```
+
+Abort the SQL statement and roll back the current transaction.
+
+**Since:** 10
+
+<!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1--><!--Device-ConflictResolution-ON_CONFLICT_ROLLBACK = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

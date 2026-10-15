@@ -29,6 +29,8 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
+<a id="createfrombuilder1"></a>
+
 ## createFromBuilder
 
 ```TypeScript
@@ -130,7 +132,7 @@ struct ComponentSnapshotExample {
 }
 ```
 
-<a id="createfrombuilder-1"></a>
+<a id="createfrombuilder2"></a>
 
 ## createFromBuilder
 
@@ -362,6 +364,8 @@ struct Index {
 }
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -443,7 +447,7 @@ struct SnapshotExample {
 }
 ```
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -775,10 +779,13 @@ struct SnapshotExample {
         .onClick(() => {
           try {
             // 通过节点唯一ID同步生成组件快照，缩放比例为2倍，等待渲染完成后生成
-            this.pixmap = this.getUIContext()
-              .getComponentSnapshot()
-              .getSyncWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
-                { scale: 2, waitUntilRenderFinished: true });
+            const imageNode = this.myNodeController.imageNode;
+            if (imageNode !== null) {
+              this.pixmap = this.getUIContext()
+                .getComponentSnapshot()
+                .getSyncWithUniqueId(imageNode.getUniqueId(),
+                  { scale: 2, waitUntilRenderFinished: true });
+            }
           } catch (error) {
             console.error(`UniqueId getSync snapshot Error. Code: ${error.code}, message: ${error.message}`);
           }
@@ -837,9 +844,8 @@ getWithUniqueId(uniqueId: number, options?: componentSnapshot.SnapshotOptions): 
 **示例**
 
 ```TypeScript
-import { NodeController, FrameNode, typeNode } from '@kit.ArkUI';
+import { NodeController, FrameNode, typeNode, UIContext} from '@kit.ArkUI';
 import { image } from '@kit.ImageKit';
-import { UIContext } from '@kit.ArkUI';
 
 class MyNodeController extends NodeController {
   public node: FrameNode | null = null;
@@ -875,16 +881,19 @@ struct SnapshotExample {
       Button('UniqueId get snapshot')
         .onClick(() => {
           try {
-            this.getUIContext()
-              .getComponentSnapshot()
-              .getWithUniqueId(this.myNodeController.imageNode?.getUniqueId(),
-                { scale: 2, waitUntilRenderFinished: true })
-              .then((pixmap: image.PixelMap) => {
-                this.pixmap = pixmap;
-              })
-              .catch((err: Error) => {
-                console.error(`UniqueId get snapshot Error: ${err}`);
-              });
+            const imageNode = this.myNodeController.imageNode;
+            if (imageNode !== null) {
+              this.getUIContext()
+                .getComponentSnapshot()
+                .getWithUniqueId(imageNode.getUniqueId(),
+                  { scale: 2, waitUntilRenderFinished: true })
+                .then((pixmap: image.PixelMap) => {
+                  this.pixmap = pixmap;
+                })
+                .catch((err: Error) => {
+                  console.error(`UniqueId get snapshot Error: ${err}`);
+                });
+            }
           } catch (error) {
             console.error(`UniqueId get snapshot Error. Code: ${error.code}, message: ${error.message}`);
           }

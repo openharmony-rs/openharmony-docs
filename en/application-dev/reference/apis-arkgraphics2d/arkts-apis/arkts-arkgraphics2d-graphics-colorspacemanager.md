@@ -20,8 +20,8 @@ import { colorSpaceManager } from '@kit.ArkGraphics2D';
 
 | Name | Description |
 | --- | --- |
-| [create](arkts-arkgraphics2d-colorspacemanager-create-f.md#create) | Creates a standard color space object. |
-| [create](arkts-arkgraphics2d-colorspacemanager-create-f.md#create-1) | Creates a custom color space object. |
+| [create](arkts-arkgraphics2d-colorspacemanager-create-f.md#create1) | Creates a standard color space object. |
+| [create](arkts-arkgraphics2d-colorspacemanager-create-f.md#create2) | Creates a custom color space object. |
 
 ### Interfaces
 

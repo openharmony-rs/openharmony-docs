@@ -14,24 +14,6 @@ export enum UserStatus
 
 **系统接口：** 此接口为系统接口。
 
-## ASSERT_TERMINATE
-
-```TypeScript
-ASSERT_TERMINATE = 0
-```
-
-表示用户点击终止的操作的断言调试结果。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserStatus-ASSERT_TERMINATE = 0--><!--Device-UserStatus-ASSERT_TERMINATE = 0-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## ASSERT_CONTINUE
 
 ```TypeScript
@@ -63,6 +45,24 @@ ASSERT_RETRY = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserStatus-ASSERT_RETRY = 2--><!--Device-UserStatus-ASSERT_RETRY = 2-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+## ASSERT_TERMINATE
+
+```TypeScript
+ASSERT_TERMINATE = 0
+```
+
+表示用户点击终止的操作的断言调试结果。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserStatus-ASSERT_TERMINATE = 0--><!--Device-UserStatus-ASSERT_TERMINATE = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

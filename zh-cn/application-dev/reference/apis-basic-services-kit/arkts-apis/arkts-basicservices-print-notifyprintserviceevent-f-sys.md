@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="notifyprintserviceevent1"></a>
+
 ## notifyPrintServiceEvent
 
 ```TypeScript
@@ -44,6 +46,7 @@ function notifyPrintServiceEvent(event: ApplicationEvent): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,8 +61,10 @@ print.notifyPrintServiceEvent(event).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="notifyprintserviceevent-1"></a>
+
+<a id="notifyprintserviceevent2"></a>
 
 ## notifyPrintServiceEvent
 
@@ -100,6 +105,7 @@ function notifyPrintServiceEvent(event: ApplicationEvent, jobId: string): Promis
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -114,3 +120,5 @@ print.notifyPrintServiceEvent(event, jobId).then(() => {
     console.error(`Failed to notify print service event. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

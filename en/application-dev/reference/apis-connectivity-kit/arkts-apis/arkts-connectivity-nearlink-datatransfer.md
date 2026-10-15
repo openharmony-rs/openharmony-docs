@@ -4,8 +4,6 @@ This module provides the NearLink data transfer capability, including port chann
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace dataTransfer--><!--Device-unnamed-declare namespace dataTransfer-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -22,16 +20,16 @@ import { dataTransfer } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [connect](arkts-connectivity-datatransfer-connect-f.md) | Connects to a remote device. This API uses a promise to return the result. |
-| [createPort](arkts-connectivity-datatransfer-createport-f.md) | Registers a port channel. A port channel can be used to connect to a remote device only after being registered. If the port channel is no longer needed after use, call [dataTransfer.destroyPort](arkts-connectivity-datatransfer-destroyport-f.md) to destroy it. |
-| [destroyPort](arkts-connectivity-datatransfer-destroyport-f.md) | Destroys the port channel. |
-| [disconnect](arkts-connectivity-datatransfer-disconnect-f.md) | Disconnects from the remote device. This method is called to disconnect from the remote device after it is successfully connected using [dataTransfer.connect](arkts-connectivity-datatransfer-connect-f.md). This API uses a promise to return the result. |
-| [getConnectionState](arkts-connectivity-datatransfer-getconnectionstate-f.md) | Obtains the port channel connection state with a remote device. |
-| [offConnectionStateChanged](arkts-connectivity-datatransfer-offconnectionstatechanged-f.md) | Unsubscribes from the connection state change event of the port channel. This API uses an asynchronous callback to return the result. |
-| [offReadData](arkts-connectivity-datatransfer-offreaddata-f.md) | Unsubscribes from the port channel data receiving event. This API uses an asynchronous callback to return the result. |
-| [onConnectionStateChanged](arkts-connectivity-datatransfer-onconnectionstatechanged-f.md) | Subscribes to the connection state change event of the port channel. This API uses an asynchronous callback to return the result. |
-| [onReadData](arkts-connectivity-datatransfer-onreaddata-f.md) | Subscribes to the port channel data receiving event. This API uses an asynchronous callback to return the result. |
-| [writeData](arkts-connectivity-datatransfer-writedata-f.md) | Sends data to a remote device using the device address and UUID. This API uses a promise to return the result. |
+| [connect](arkts-connectivity-datatransfer-connect-f.md#connect) | Connects to a remote device. This API uses a promise to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [createPort](arkts-connectivity-datatransfer-createport-f.md#createport) | Registers a port channel. A port channel can be used to connect to a remote device only after being registered. If the port channel is no longer needed after use, call [dataTransfer.destroyPort](arkts-connectivity-datatransfer-destroyport-f.md) to destroy it. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [destroyPort](arkts-connectivity-datatransfer-destroyport-f.md#destroyport) | Destroys the port channel. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [disconnect](arkts-connectivity-datatransfer-disconnect-f.md#disconnect) | Disconnects from the remote device. This method is called to disconnect from the remote device after it is successfully connected using [dataTransfer.connect](arkts-connectivity-datatransfer-connect-f.md). This API uses a promise to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [getConnectionState](arkts-connectivity-datatransfer-getconnectionstate-f.md#getconnectionstate) | Obtains the port channel connection state with a remote device. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [offConnectionStateChanged](arkts-connectivity-datatransfer-offconnectionstatechanged-f.md#offconnectionstatechanged) | Unsubscribes from the connection state change event of the port channel. This API uses an asynchronous callback to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [offReadData](arkts-connectivity-datatransfer-offreaddata-f.md#offreaddata) | Unsubscribes from the port channel data receiving event. This API uses an asynchronous callback to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
+| [onConnectionStateChanged](arkts-connectivity-datatransfer-onconnectionstatechanged-f.md#onconnectionstatechanged) | Subscribes to the connection state change event of the port channel. This API uses an asynchronous callback to return the result. |
+| [onReadData](arkts-connectivity-datatransfer-onreaddata-f.md#onreaddata) | Subscribes to the port channel data receiving event. This API uses an asynchronous callback to return the result. |
+| [writeData](arkts-connectivity-datatransfer-writedata-f.md#writedata) | Sends data to a remote device using the device address and UUID. This API uses a promise to return the result. Before calling this API, you may call [isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md) to check whether the device supports NearLink. |
 
 ### Interfaces
 

@@ -47,6 +47,7 @@ Query printer capabilityies by printer uri.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application. |
 | [13100005](../errorcode-print.md#13100005-invalid-printer) | Can not find the printer in system. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ print.queryPrinterCapabilityByUri(printerUri, printerId).then((capabilities: pri
     console.error(`Failed to query printer capability by uri. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

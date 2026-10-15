@@ -14,49 +14,17 @@ export enum UpgradeStatus
 
 **系统接口：** 此接口为系统接口。
 
-## WAITING_DOWNLOAD
+## APPLYING
 
 ```TypeScript
-WAITING_DOWNLOAD = 20
+APPLYING = 41
 ```
 
-待下载。
+生效中。
 
 **起始版本：** 9
 
-<!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20--><!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20-End-->
-
-**系统能力：** SystemCapability.Update.UpdateService
-
-**系统接口：** 此接口为系统接口。
-
-## DOWNLOADING
-
-```TypeScript
-DOWNLOADING = 21
-```
-
-下载中。
-
-**起始版本：** 9
-
-<!--Device-UpgradeStatus-DOWNLOADING = 21--><!--Device-UpgradeStatus-DOWNLOADING = 21-End-->
-
-**系统能力：** SystemCapability.Update.UpdateService
-
-**系统接口：** 此接口为系统接口。
-
-## DOWNLOAD_PAUSED
-
-```TypeScript
-DOWNLOAD_PAUSED = 22
-```
-
-下载暂停。
-
-**起始版本：** 9
-
-<!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22--><!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22-End-->
+<!--Device-UpgradeStatus-APPLYING = 41--><!--Device-UpgradeStatus-APPLYING = 41-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -78,17 +46,33 @@ DOWNLOAD_FAIL = 23
 
 **系统接口：** 此接口为系统接口。
 
-## WAITING_INSTALL
+## DOWNLOAD_PAUSED
 
 ```TypeScript
-WAITING_INSTALL = 30
+DOWNLOAD_PAUSED = 22
 ```
 
-待安装。
+下载暂停。
 
 **起始版本：** 9
 
-<!--Device-UpgradeStatus-WAITING_INSTALL = 30--><!--Device-UpgradeStatus-WAITING_INSTALL = 30-End-->
+<!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22--><!--Device-UpgradeStatus-DOWNLOAD_PAUSED = 22-End-->
+
+**系统能力：** SystemCapability.Update.UpdateService
+
+**系统接口：** 此接口为系统接口。
+
+## DOWNLOADING
+
+```TypeScript
+DOWNLOADING = 21
+```
+
+下载中。
+
+**起始版本：** 9
+
+<!--Device-UpgradeStatus-DOWNLOADING = 21--><!--Device-UpgradeStatus-DOWNLOADING = 21-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -110,33 +94,17 @@ UPDATING = 31
 
 **系统接口：** 此接口为系统接口。
 
-## WAITING_APPLY
+## UPGRADE_FAIL
 
 ```TypeScript
-WAITING_APPLY = 40
+UPGRADE_FAIL = 51
 ```
 
-待生效。
+升级失败。
 
 **起始版本：** 9
 
-<!--Device-UpgradeStatus-WAITING_APPLY = 40--><!--Device-UpgradeStatus-WAITING_APPLY = 40-End-->
-
-**系统能力：** SystemCapability.Update.UpdateService
-
-**系统接口：** 此接口为系统接口。
-
-## APPLYING
-
-```TypeScript
-APPLYING = 41
-```
-
-生效中。
-
-**起始版本：** 9
-
-<!--Device-UpgradeStatus-APPLYING = 41--><!--Device-UpgradeStatus-APPLYING = 41-End-->
+<!--Device-UpgradeStatus-UPGRADE_FAIL = 51--><!--Device-UpgradeStatus-UPGRADE_FAIL = 51-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 
@@ -158,17 +126,49 @@ UPGRADE_SUCCESS = 50
 
 **系统接口：** 此接口为系统接口。
 
-## UPGRADE_FAIL
+## WAITING_APPLY
 
 ```TypeScript
-UPGRADE_FAIL = 51
+WAITING_APPLY = 40
 ```
 
-升级失败。
+待生效。
 
 **起始版本：** 9
 
-<!--Device-UpgradeStatus-UPGRADE_FAIL = 51--><!--Device-UpgradeStatus-UPGRADE_FAIL = 51-End-->
+<!--Device-UpgradeStatus-WAITING_APPLY = 40--><!--Device-UpgradeStatus-WAITING_APPLY = 40-End-->
+
+**系统能力：** SystemCapability.Update.UpdateService
+
+**系统接口：** 此接口为系统接口。
+
+## WAITING_DOWNLOAD
+
+```TypeScript
+WAITING_DOWNLOAD = 20
+```
+
+待下载。
+
+**起始版本：** 9
+
+<!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20--><!--Device-UpgradeStatus-WAITING_DOWNLOAD = 20-End-->
+
+**系统能力：** SystemCapability.Update.UpdateService
+
+**系统接口：** 此接口为系统接口。
+
+## WAITING_INSTALL
+
+```TypeScript
+WAITING_INSTALL = 30
+```
+
+待安装。
+
+**起始版本：** 9
+
+<!--Device-UpgradeStatus-WAITING_INSTALL = 30--><!--Device-UpgradeStatus-WAITING_INSTALL = 30-End-->
 
 **系统能力：** SystemCapability.Update.UpdateService
 

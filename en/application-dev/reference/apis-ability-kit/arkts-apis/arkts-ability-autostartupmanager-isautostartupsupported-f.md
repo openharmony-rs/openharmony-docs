@@ -26,7 +26,7 @@ Check whether the current device supports auto startup on this device.
 
 | Type | Description |
 | --- | --- |
-| boolean | `true`: Device supports auto startup.   - `false`: Device do not support auto startup. |
+| boolean | `true`: Device supports auto startup.           - `false`: Device do not support auto startup. |
 
 **Examples**
 

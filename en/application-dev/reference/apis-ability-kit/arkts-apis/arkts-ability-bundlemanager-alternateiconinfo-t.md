@@ -4,7 +4,9 @@
 export type AlternateIconInfo = _BundleInfo.AlternateIconInfo
 ```
 
-Describes the alternate icon information of an application.
+Alternate icon information of the app.
+
+**Type:** [_BundleInfo.AlternateIconInfo](arkts-ability-bundleinfo-alternateiconinfo-i.md)
 
 **Since:** 26.0.0
 
@@ -13,5 +15,3 @@ Describes the alternate icon information of an application.
 <!--Device-bundleManager-export type AlternateIconInfo = _BundleInfo.AlternateIconInfo--><!--Device-bundleManager-export type AlternateIconInfo = _BundleInfo.AlternateIconInfo-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Type:** [_BundleInfo.AlternateIconInfo](arkts-ability-bundleinfo-alternateiconinfo-i.md)

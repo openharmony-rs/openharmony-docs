@@ -14,24 +14,6 @@ Enumerates the actions that can be performed to apply the power policy.
 
 **System API:** This is a system API.
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-No action is performed.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-PowerPolicyAction-NONE = 0--><!--Device-PowerPolicyAction-NONE = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-**System API:** This is a system API.
-
 ## AUTO_SUSPEND
 
 ```TypeScript
@@ -81,6 +63,24 @@ Enter the sleep mode. This policy does not take effect currently.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-PowerPolicyAction-HIBERNATE = 3--><!--Device-PowerPolicyAction-HIBERNATE = 3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+**System API:** This is a system API.
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+No action is performed.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-PowerPolicyAction-NONE = 0--><!--Device-PowerPolicyAction-NONE = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

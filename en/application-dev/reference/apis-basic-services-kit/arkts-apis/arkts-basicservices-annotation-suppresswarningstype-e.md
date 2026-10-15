@@ -32,26 +32,6 @@ Compatibility warning. This warning is generated when the start version of the A
 
 **System capability:** SystemCapability.Base
 
-## SYSCAP
-
-```TypeScript
-SYSCAP = 'syscap'
-```
-
-Multi-device warning. This warning is generated when the system capability obtained by calling the API is not supported on the target device.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 23.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 23.
-
-<!--Device-SuppressWarningsType-SYSCAP = 'syscap'--><!--Device-SuppressWarningsType-SYSCAP = 'syscap'-End-->
-
-**System capability:** SystemCapability.Base
-
 ## PERMISSION
 
 ```TypeScript
@@ -69,5 +49,25 @@ Permission warning. This warning is generated when an API that requires permissi
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
 <!--Device-SuppressWarningsType-PERMISSION = 'permission'--><!--Device-SuppressWarningsType-PERMISSION = 'permission'-End-->
+
+**System capability:** SystemCapability.Base
+
+## SYSCAP
+
+```TypeScript
+SYSCAP = 'syscap'
+```
+
+Multi-device warning. This warning is generated when the system capability obtained by calling the API is not supported on the target device.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 23.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 23.
+
+<!--Device-SuppressWarningsType-SYSCAP = 'syscap'--><!--Device-SuppressWarningsType-SYSCAP = 'syscap'-End-->
 
 **System capability:** SystemCapability.Base

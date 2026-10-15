@@ -12,22 +12,6 @@ enum AuthType
 
 **系统能力：** SystemCapability.Security.Asset
 
-## NONE
-
-```TypeScript
-NONE = 0x00
-```
-
-访问关键资产前无需用户认证。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
-
-<!--Device-AuthType-NONE = 0x00--><!--Device-AuthType-NONE = 0x00-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
 ## ANY
 
 ```TypeScript
@@ -41,5 +25,21 @@ ANY = 0xFF
 **原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-AuthType-ANY = 0xFF--><!--Device-AuthType-ANY = 0xFF-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## NONE
+
+```TypeScript
+NONE = 0x00
+```
+
+访问关键资产前无需用户认证。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
+
+<!--Device-AuthType-NONE = 0x00--><!--Device-AuthType-NONE = 0x00-End-->
 
 **系统能力：** SystemCapability.Security.Asset

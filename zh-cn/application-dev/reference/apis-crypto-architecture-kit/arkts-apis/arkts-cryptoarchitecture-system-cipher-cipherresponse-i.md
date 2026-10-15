@@ -10,7 +10,7 @@ export interface CipherResponse
 
 **废弃版本：** 11
 
-**替代接口：** Cipher
+**替代接口：** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-unnamed-export interface CipherResponse--><!--Device-unnamed-export interface CipherResponse-End-->
 
@@ -36,7 +36,7 @@ text: string
 
 **废弃版本：** 11
 
-**替代接口：** Cipher
+**替代接口：** [Cipher](arkts-cryptoarchitecture-cryptoframework-cipher-i.md)
 
 <!--Device-CipherResponse-text: string--><!--Device-CipherResponse-text: string-End-->
 

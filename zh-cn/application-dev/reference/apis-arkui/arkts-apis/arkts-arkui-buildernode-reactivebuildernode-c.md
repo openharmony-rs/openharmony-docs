@@ -131,7 +131,7 @@ constructor(uiContext: UIContext, options?: RenderOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | UI上下文，获取方式可参考UIContext获取方法。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
+| uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | 是 | UI上下文，获取方式可参考[UIContext获取方法](../../../reference/apis-arkui/js-apis-arkui-node.md#uicontext获取方法)。uiContext需要为一个有效的值，即UI上下文正确，如果传入非法值或者未设置，会导致创建失败。 |
 | options | [RenderOptions](arkts-arkui-buildernode-renderoptions-i.md) | 否 | ReactiveBuilderNode的构造可选参数，参数用于构造节点的理想大小和节点的渲染类型。<br>默认值：undefined |
 
 ## dispose
@@ -911,14 +911,14 @@ offsetA为builderNode相对于父组件的偏移，offsetB为命中位置相对�
 > [onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch)。
 > 
 > 注入事件为轴事件[（AxisEvent）](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发
-> RotationGesture。
+> [RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md)。
 > 
 > 转发的事件会在被分发到的目标组件所在的子树里做触摸测试（TouchTest），并触发对应手势，原始事件也会触发当前组件所在组件树中的手势。不保证两类手势的竞争结果。
 > 
 > 如果是开发者构造的事件，必填字段必须赋值，比如触摸事件的touches字段、轴事件的scrollStep字段，同时要保证事件的完整，比如触摸事件的[TouchType](arkts-arkui-touchtype-e.md)中DOWN和UP字段都要
 > 有，防止出现未定义行为。
 > 
-> webview已经处理过坐标系变换，可以将事件直接下发。
+> [webview](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md)已经处理过坐标系变换，可以将事件直接下发。
 > 
 > postTouchEvent接口需要提供手势坐标相对于接收事件的目标节点内的局部坐标，postInputEvent接口需要提供手势坐标相对于接收事件的目标节点内的窗口坐标。
 > 
@@ -968,13 +968,13 @@ postInputEventWithStrategy(event: InputEventType, competitionStrategy?: Competit
 > 
 > - 系统在处理鼠标左键点击事件时将转换为触摸事件，转发时应注意不在外层同时绑定触摸事件与鼠标事件，否则可能导致坐标偏移。这是由于在事件转换过程中，SourceType不会发生变化，规格可查看[onTouch](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#ontouch)。
 > 
-> - 注入事件为轴事件[AxisEvent](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势RotationGesture。
+> - 注入事件为轴事件[AxisEvent](../arkts-components/arkts-arkui-common-comp-axisevent-i.md)时，由于轴事件中缺少旋转轴信息，因此注入的事件无法触发旋转手势[RotationGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md)。
 > 
 > - 转发的事件会在被分发到的目标组件及其子组件里做事件处理，并触发对应手势。可以通过入参控制当前组件和目标组件手势是否为竞争关系。
 > 
 > - 如果event转化为对应的事件后，该事件为开发者构造的事件，必填字段必须赋值，比如触摸事件的touches字段，轴事件的scrollStep字段。要保证事件的完整，比如触摸事件的[TouchType](arkts-arkui-touchtype-e.md)中必须同时包含DOWN和UP两个字段，防止出现程序异常或意外崩溃。
 > 
-> - webview已经处理过坐标系变换，可以将事件直接下发。
+> - [webview](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md)已经处理过坐标系变换，可以将事件直接下发。
 > 
 > - postTouchEvent接口需要提供手势坐标相对于接收事件的目标节点内的局部坐标，postInputEventWithStrategy接口需要提供手势坐标相对于接收事件的目标节点内的窗口坐标。
 > 
@@ -1021,7 +1021,7 @@ offsetA为builderNode相对于父组件的偏移量，可以通过FrameNode中�
 > 
 > 传入的坐标值需要转换为px，如果builderNode有仿射变换，则需要再叠加仿射变换。
 > 
-> 在webview中，内部已经处理过坐标系变换，可以将TouchEvent事件直接下发。
+> 在[webview](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webview.md)中，内部已经处理过坐标系变换，可以将TouchEvent事件直接下发。
 > 
 > 同一时间戳，postTouchEvent只能调用一次。
 

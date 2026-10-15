@@ -42,6 +42,7 @@ function setScreenOffTime(timeout: number): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API.<br>**适用版本：** 19+ |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. This API cannot work in car devices.<br>**适用版本：** 26.0.1+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -51,3 +52,5 @@ try {
     console.error(`Failed to set screen off time. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

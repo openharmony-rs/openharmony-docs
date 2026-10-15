@@ -12,7 +12,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 function getAllCapabilityList(): Promise<Capability[]>
 ```
 
-Returns the list of all capabilities.
+Obtains the list of all car awareness capabilities supported by the current device.
 
 **Since:** 26.0.1
 
@@ -26,11 +26,11 @@ Returns the list of all capabilities.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[Capability](arkts-multimodalawareness-carawareness-capability-e.md)[]&gt; | Promise used to return the list of all capabilities. |
+| Promise&lt;[Capability](arkts-multimodalawareness-carawareness-capability-e.md)[]&gt; | Promise used to return the list of awareness capability enums supported by the device. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |

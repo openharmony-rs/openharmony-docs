@@ -42,7 +42,7 @@ NOTIFY_ADD = 0
 NOTIFY_DELETE = 1
 ```
 
-表示删除文件（详见unregisterObserver(uri: string, callback: Callback&lt;NotifyMessage&gt;)接口的示例1、示例2）。
+表示删除文件（详见unregisterObserver(uri: string, callback: Callback<NotifyMessage>)接口的示例1、示例2）。
 
 **起始版本：** 10
 
@@ -56,61 +56,21 @@ NOTIFY_DELETE = 1
 
 **系统接口：** 此接口为系统接口。
 
-## NOTIFY_MOVED_TO
+## NOTIFY_DEVICE_OFFLINE
 
 ```TypeScript
-NOTIFY_MOVED_TO = 2
+NOTIFY_DEVICE_OFFLINE = 6
 ```
 
-表示移动至该文件（对目录下子文件或目录执行rename操作，或外部文件或目录执行move操作到本文件。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口的示例1）。
+表示设备下线。
 
-**起始版本：** 10
+**起始版本：** 11
 
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-NotifyType-NOTIFY_MOVED_TO = 2--><!--Device-NotifyType-NOTIFY_MOVED_TO = 2-End-->
-
-**系统能力：** SystemCapability.FileManagement.UserFileService
-
-**系统接口：** 此接口为系统接口。
-
-## NOTIFY_MOVED_FROM
-
-```TypeScript
-NOTIFY_MOVED_FROM = 3
-```
-
-表示自该文件移出（对目录下子文件或目录执行rename操作，或子文件（夹）执行move操作从该文件夹内移出。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口的示例1）。
-
-**起始版本：** 10
-
-**废弃版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-NotifyType-NOTIFY_MOVED_FROM = 3--><!--Device-NotifyType-NOTIFY_MOVED_FROM = 3-End-->
-
-**系统能力：** SystemCapability.FileManagement.UserFileService
-
-**系统接口：** 此接口为系统接口。
-
-## NOTIFY_MOVE_SELF
-
-```TypeScript
-NOTIFY_MOVE_SELF = 4
-```
-
-表示本文件被移动（如对文件或文件夹执行rename或move操作时，监听该文件（夹）的callback收到该事件，详见registerObserver接口的示例1）。
-
-**起始版本：** 10
-
-**废弃版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-NotifyType-NOTIFY_MOVE_SELF = 4--><!--Device-NotifyType-NOTIFY_MOVE_SELF = 4-End-->
+<!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6--><!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
@@ -136,21 +96,61 @@ NOTIFY_DEVICE_ONLINE = 5
 
 **系统接口：** 此接口为系统接口。
 
-## NOTIFY_DEVICE_OFFLINE
+## NOTIFY_MOVE_SELF
 
 ```TypeScript
-NOTIFY_DEVICE_OFFLINE = 6
+NOTIFY_MOVE_SELF = 4
 ```
 
-表示设备下线。
+表示本文件被移动（如对文件或文件夹执行rename或move操作时，监听该文件（夹）的callback收到该事件，详见registerObserver接口的示例1）。
 
-**起始版本：** 11
+**起始版本：** 10
 
 **废弃版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6--><!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6-End-->
+<!--Device-NotifyType-NOTIFY_MOVE_SELF = 4--><!--Device-NotifyType-NOTIFY_MOVE_SELF = 4-End-->
+
+**系统能力：** SystemCapability.FileManagement.UserFileService
+
+**系统接口：** 此接口为系统接口。
+
+## NOTIFY_MOVED_FROM
+
+```TypeScript
+NOTIFY_MOVED_FROM = 3
+```
+
+表示自该文件移出（对目录下子文件或目录执行rename操作，或子文件（夹）执行move操作从该文件夹内移出。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口的示例1）。
+
+**起始版本：** 10
+
+**废弃版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotifyType-NOTIFY_MOVED_FROM = 3--><!--Device-NotifyType-NOTIFY_MOVED_FROM = 3-End-->
+
+**系统能力：** SystemCapability.FileManagement.UserFileService
+
+**系统接口：** 此接口为系统接口。
+
+## NOTIFY_MOVED_TO
+
+```TypeScript
+NOTIFY_MOVED_TO = 2
+```
+
+表示移动至该文件（对目录下子文件或目录执行rename操作，或外部文件或目录执行move操作到本文件。详见registerObserver接口的示例1，及unregisterObserver(uri: string)接口的示例1）。
+
+**起始版本：** 10
+
+**废弃版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-NotifyType-NOTIFY_MOVED_TO = 2--><!--Device-NotifyType-NOTIFY_MOVED_TO = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 

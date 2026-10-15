@@ -6,6 +6,8 @@ type Marquee = TypedFrameNode<MarqueeInterface, MarqueeAttribute>
 
 Marquee类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;MarqueeInterface, [MarqueeAttribute](../arkts-components/arkts-arkui-marquee-comp-attribute.md)&gt;
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Marquee类型的FrameNode节点类型。
 <!--Device-typeNode-type Marquee = TypedFrameNode<MarqueeInterface, MarqueeAttribute>--><!--Device-typeNode-type Marquee = TypedFrameNode<MarqueeInterface, MarqueeAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;MarqueeInterface, [MarqueeAttribute](../arkts-components/arkts-arkui-marquee-comp-attribute.md)&gt;

@@ -14,38 +14,6 @@ Enum for system tone type.
 
 **System API:** This is a system API.
 
-## SYSTEM_TONE_TYPE_SIM_CARD_0
-
-```TypeScript
-SYSTEM_TONE_TYPE_SIM_CARD_0 = 0
-```
-
-System tone type for sim card 0.
-
-**Since:** 11
-
-<!--Device-SystemToneType-SYSTEM_TONE_TYPE_SIM_CARD_0 = 0--><!--Device-SystemToneType-SYSTEM_TONE_TYPE_SIM_CARD_0 = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.SystemSound.Core
-
-**System API:** This is a system API.
-
-## SYSTEM_TONE_TYPE_SIM_CARD_1
-
-```TypeScript
-SYSTEM_TONE_TYPE_SIM_CARD_1 = 1
-```
-
-System tone type for sim card 1.
-
-**Since:** 11
-
-<!--Device-SystemToneType-SYSTEM_TONE_TYPE_SIM_CARD_1 = 1--><!--Device-SystemToneType-SYSTEM_TONE_TYPE_SIM_CARD_1 = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.SystemSound.Core
-
-**System API:** This is a system API.
-
 ## SYSTEM_TONE_TYPE_ESIM_CARD_0
 
 ```TypeScript
@@ -93,6 +61,38 @@ System tone type notification.
 **Since:** 11
 
 <!--Device-SystemToneType-SYSTEM_TONE_TYPE_NOTIFICATION = 32--><!--Device-SystemToneType-SYSTEM_TONE_TYPE_NOTIFICATION = 32-End-->
+
+**System capability:** SystemCapability.Multimedia.SystemSound.Core
+
+**System API:** This is a system API.
+
+## SYSTEM_TONE_TYPE_SIM_CARD_0
+
+```TypeScript
+SYSTEM_TONE_TYPE_SIM_CARD_0 = 0
+```
+
+System tone type for sim card 0.
+
+**Since:** 11
+
+<!--Device-SystemToneType-SYSTEM_TONE_TYPE_SIM_CARD_0 = 0--><!--Device-SystemToneType-SYSTEM_TONE_TYPE_SIM_CARD_0 = 0-End-->
+
+**System capability:** SystemCapability.Multimedia.SystemSound.Core
+
+**System API:** This is a system API.
+
+## SYSTEM_TONE_TYPE_SIM_CARD_1
+
+```TypeScript
+SYSTEM_TONE_TYPE_SIM_CARD_1 = 1
+```
+
+System tone type for sim card 1.
+
+**Since:** 11
+
+<!--Device-SystemToneType-SYSTEM_TONE_TYPE_SIM_CARD_1 = 1--><!--Device-SystemToneType-SYSTEM_TONE_TYPE_SIM_CARD_1 = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 

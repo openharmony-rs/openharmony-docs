@@ -38,6 +38,8 @@ getCdsmInfo(): CdsmInfo
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-CdsmClient-getCdsmInfo(): CdsmInfo--><!--Device-CdsmClient-getCdsmInfo(): CdsmInfo-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -52,7 +54,7 @@ getCdsmInfo(): CdsmInfo
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -68,9 +70,13 @@ offCdsmInfoChange(callback?: Callback<CdsmInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-CdsmClient-offCdsmInfoChange(callback?: Callback<CdsmInfo>): void--><!--Device-CdsmClient-offCdsmInfoChange(callback?: Callback<CdsmInfo>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [onCdsmInfoChange](#oncdsminfochange) 订阅合作设备集合信息变化事件。
 
 **参数：**
 
@@ -92,9 +98,13 @@ onCdsmInfoChange(callback: Callback<CdsmInfo>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-CdsmClient-onCdsmInfoChange(callback: Callback<CdsmInfo>): void--><!--Device-CdsmClient-onCdsmInfoChange(callback: Callback<CdsmInfo>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [offCdsmInfoChange](#offcdsminfochange) 取消订阅合作设备集合信息变化事件。
 
 **参数：**
 

@@ -30,24 +30,6 @@ Drag event.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## FLING
-
-```TypeScript
-FLING
-```
-
-Inertia scrolling after the drag ends.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ScrollSource-FLING--><!--Device-ScrollSource-FLING-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## EDGE_EFFECT
 
 ```TypeScript
@@ -63,6 +45,24 @@ Edge scrolling effect with **EdgeEffect.Spring**.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-ScrollSource-EDGE_EFFECT--><!--Device-ScrollSource-EDGE_EFFECT-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## FLING
+
+```TypeScript
+FLING
+```
+
+Inertia scrolling after the drag ends.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ScrollSource-FLING--><!--Device-ScrollSource-FLING-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

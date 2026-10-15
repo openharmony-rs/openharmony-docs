@@ -43,6 +43,7 @@ Sets the proxy mode. This API uses a promise to return the result.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Non-system applications use system APIs. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,3 +56,5 @@ connection.setProxyMode(connection.ProxyMode.PROXY_MODE_AUTO).then(() => {
     console.error("Error setting proxy mode:", error);
 });
 ```
+
+<!--DelEnd-->

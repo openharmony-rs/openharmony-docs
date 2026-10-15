@@ -20,5 +20,5 @@ Defines the callback type for listening for the rendering state of a specific no
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| state | [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | Yes | Information about the gesture event that triggers the callback. |
-| node | [FrameNode](arkts-arkui-framenode-c.md) | No | Component bound to the gesture event that triggers the listener; returns **null** if the component has been released. |
+| state | [NodeRenderState](arkts-arkui-arkui-uicontext-noderenderstate-e.md) | Yes | Current render state of the node, which indicates whether the monitored node is in a renderable state. |
+| node | [FrameNode](arkts-arkui-framenode-c.md) | No | Component that triggers the render state change listener. When you need to obtain the node information of the component whose render state has changed, you can obtain it through this parameter. If the component is released, **null** is returned. If this parameter is not passed, the default value is **undefined**. |

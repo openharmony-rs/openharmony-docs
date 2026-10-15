@@ -11,7 +11,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 > The component should be set to a reasonable width and height. When the width and height of the component are set
 > too large, the loading progress animation may not meet the expected effect.
 
-**Inheritance/Implementation:** LoadingProgressAttribute extends CommonMethod<LoadingProgressAttribute>
+**Inheritance/Implementation:** LoadingProgressAttribute extends CommonMethod&lt;LoadingProgressAttribute&gt;
 
 **Since:** 8
 

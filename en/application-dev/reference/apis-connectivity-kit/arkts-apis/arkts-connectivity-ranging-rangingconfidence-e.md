@@ -28,22 +28,6 @@ High confidence measurement.
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core
 
-## MEDIUM
-
-```TypeScript
-MEDIUM = 1
-```
-
-Medium confidence measurement.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-RangingConfidence-MEDIUM = 1--><!--Device-RangingConfidence-MEDIUM = 1-End-->
-
-**System capability:** SystemCapability.Communication.FusionConnectivity.Core
-
 ## LOW
 
 ```TypeScript
@@ -57,5 +41,21 @@ low confidence measurement.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-RangingConfidence-LOW = 2--><!--Device-RangingConfidence-LOW = 2-End-->
+
+**System capability:** SystemCapability.Communication.FusionConnectivity.Core
+
+## MEDIUM
+
+```TypeScript
+MEDIUM = 1
+```
+
+Medium confidence measurement.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RangingConfidence-MEDIUM = 1--><!--Device-RangingConfidence-MEDIUM = 1-End-->
 
 **System capability:** SystemCapability.Communication.FusionConnectivity.Core

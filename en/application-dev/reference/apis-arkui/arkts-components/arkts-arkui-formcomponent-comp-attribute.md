@@ -4,7 +4,7 @@
 declare class FormComponentAttribute extends CommonMethod<FormComponentAttribute>
 ```
 
-**Inheritance/Implementation:** FormComponentAttribute extends CommonMethod<FormComponentAttribute>
+**Inheritance/Implementation:** FormComponentAttribute extends CommonMethod&lt;FormComponentAttribute&gt;
 
 **Since:** 7
 

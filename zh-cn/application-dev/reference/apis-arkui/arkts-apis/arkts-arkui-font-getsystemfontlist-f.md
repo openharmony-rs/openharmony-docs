@@ -26,7 +26,7 @@ function getSystemFontList(): Array<string>
 
 **废弃版本：** 18
 
-**替代接口：** getSystemFontList
+**替代接口：** [getSystemFontList](arkts-arkui-arkui-uicontext-font-c.md#getsystemfontlist)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

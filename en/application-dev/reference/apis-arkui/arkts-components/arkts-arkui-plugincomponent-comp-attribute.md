@@ -4,13 +4,13 @@
 declare class PluginComponentAttribute extends CommonMethod<PluginComponentAttribute>
 ```
 
-The width and height of the component must be explicitly set to non-zero valid values.
+The component width and height must be explicitly set to valid non-zero values; otherwise, the component cannot be displayed properly.
 
 [Gesture events](arkts-arkui-common-comp.md) can be distributed to and processed inside the provider page.
 
 In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
-**Inheritance/Implementation:** PluginComponentAttribute extends CommonMethod<PluginComponentAttribute>
+**Inheritance/Implementation:** PluginComponentAttribute extends CommonMethod&lt;PluginComponentAttribute&gt;
 
 **Since:** 9
 

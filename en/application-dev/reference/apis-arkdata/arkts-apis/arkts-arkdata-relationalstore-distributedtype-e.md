@@ -12,22 +12,6 @@ Enumerates the distributed database table types. Use the enum name rather than t
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## DISTRIBUTED_DEVICE
-
-```TypeScript
-DISTRIBUTED_DEVICE = 0
-```
-
-Distributed database table synced between devices.
-
-SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Since:** 10
-
-<!--Device-DistributedType-DISTRIBUTED_DEVICE = 0--><!--Device-DistributedType-DISTRIBUTED_DEVICE = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## DISTRIBUTED_CLOUD
 
 ```TypeScript
@@ -47,3 +31,19 @@ SystemCapability.DistributedDataManager.CloudSync.Client
 <!--Device-DistributedType-DISTRIBUTED_CLOUD = 1--><!--Device-DistributedType-DISTRIBUTED_CLOUD = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+## DISTRIBUTED_DEVICE
+
+```TypeScript
+DISTRIBUTED_DEVICE = 0
+```
+
+Distributed database table synced between devices.
+
+SystemCapability.DistributedDataManager.RelationalStore.Core
+
+**Since:** 10
+
+<!--Device-DistributedType-DISTRIBUTED_DEVICE = 0--><!--Device-DistributedType-DISTRIBUTED_DEVICE = 0-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

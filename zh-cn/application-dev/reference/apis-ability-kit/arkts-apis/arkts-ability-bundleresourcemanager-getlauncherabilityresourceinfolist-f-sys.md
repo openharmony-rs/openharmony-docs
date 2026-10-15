@@ -47,10 +47,11 @@ function getLauncherAbilityResourceInfoList(optionsList: Array<BundleOptions>, r
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. A non-system application is not allowed to call a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundle is not found. |
-| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module is not existed. |
-| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not existed. |
+| [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified module is not found. |
+| [17700003](../errorcode-bundle.md#17700003-指定的abilityname不存在) | The specified ability is not found. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -81,3 +82,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getLauncherAbilityResourceInfoList failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

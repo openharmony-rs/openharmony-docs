@@ -44,6 +44,7 @@ Releases and invalidates the **FetchFileResult** instance. After this instance i
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -67,6 +68,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getallobject1"></a>
 
 ## getAllObject
 
@@ -94,6 +99,7 @@ Obtains all the file assets in the result set. This API uses an asynchronous cal
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;T&gt;&gt; | Yes | Callback used to return an array of all file assets in the result set. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -119,7 +125,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getallobject-1"></a>
+<!--DelEnd-->
+
+<a id="getallobject2"></a>
 
 ## getAllObject
 
@@ -147,6 +155,7 @@ Obtains all the file assets in the result set. This API uses a promise to return
 | --- | --- |
 | Promise&lt;Array&lt;T&gt;&gt; | Promise that returns an array of all file assets in the result set. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -166,6 +175,8 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('fileAssetList length: ', fileAssetList.length);
 }
 ```
+
+<!--DelEnd-->
 
 ## getCount
 
@@ -193,6 +204,7 @@ Obtains the total number of files in the result set.
 | --- | --- |
 | number | Returns the total number of files obtained. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -212,6 +224,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('fetchCount = ', fetchCount);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getfirstobject1"></a>
 
 ## getFirstObject
 
@@ -239,6 +255,7 @@ Obtains the first file asset in the result set. This API uses an asynchronous ca
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;T&gt; | Yes | Callback used to return the first file asset obtained. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -264,7 +281,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getfirstobject-1"></a>
+<!--DelEnd-->
+
+<a id="getfirstobject2"></a>
 
 ## getFirstObject
 
@@ -292,6 +311,7 @@ Obtains the first file asset in the result set. This API uses a promise to retur
 | --- | --- |
 | Promise&lt;T&gt; | Promise that returns the first object in the result set. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -311,6 +331,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('fileAsset displayName: ', fileAsset.displayName);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getlastobject1"></a>
 
 ## getLastObject
 
@@ -338,6 +362,7 @@ Obtains the last file asset in the result set. This API uses an asynchronous cal
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;T&gt; | Yes | Callback used to return the last file asset obtained. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -363,7 +388,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getlastobject-1"></a>
+<!--DelEnd-->
+
+<a id="getlastobject2"></a>
 
 ## getLastObject
 
@@ -391,6 +418,7 @@ Obtains the last file asset in the result set. This API uses a promise to return
 | --- | --- |
 | Promise&lt;T&gt; | Promise that returns the last object in the result set. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -410,6 +438,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   console.info('fileAsset displayName: ', fileAsset.displayName);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getnextobject1"></a>
 
 ## getNextObject
 
@@ -439,6 +471,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;T&gt; | Yes | Callback used to return the next file asset. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -467,7 +500,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getnextobject-1"></a>
+<!--DelEnd-->
+
+<a id="getnextobject2"></a>
 
 ## getNextObject
 
@@ -497,6 +532,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 | --- | --- |
 | Promise&lt;T&gt; | Promise that returns the next object in the result set. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -519,6 +555,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getpositionobject1"></a>
 
 ## getPositionObject
 
@@ -553,6 +593,7 @@ Obtains a file asset with the specified index in the result set. This API uses a
 | --- | --- |
 | 13900020 | if type index is not number |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -578,7 +619,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getpositionobject-1"></a>
+<!--DelEnd-->
+
+<a id="getpositionobject2"></a>
 
 ## getPositionObject
 
@@ -618,6 +661,7 @@ Obtains a file asset with the specified index in the result set. This API uses a
 | --- | --- |
 | 13900020 | if type index is not number |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -641,6 +685,8 @@ async function example(mgr: userFileManager.UserFileManager) {
   } 
 }
 ```
+
+<!--DelEnd-->
 
 ## isAfterLast
 
@@ -668,6 +714,7 @@ Checks whether the cursor is in the last row of the result set.
 | --- | --- |
 | boolean | Returns **true** if the cursor is in the last row of the result set; returns **false** otherwise. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in userFileManager.getUserFileMgr.
@@ -692,3 +739,5 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->

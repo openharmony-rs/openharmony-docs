@@ -12,19 +12,39 @@ declare enum SourceType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Unknown
+## JOYSTICK
 
 ```TypeScript
-Unknown
+JOYSTICK = 5
 ```
 
-未知输入源。
+手柄。
 
-**起始版本：** 8
+**起始版本：** 22
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SourceType-Unknown--><!--Device-SourceType-Unknown-End-->
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-SourceType-JOYSTICK = 5--><!--Device-SourceType-JOYSTICK = 5-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## KEY
+
+```TypeScript
+KEY = 4
+```
+
+按键。
+
+**起始版本：** 22
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-SourceType-KEY = 4--><!--Device-SourceType-KEY = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,38 +80,18 @@ TouchScreen
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## KEY
+## Unknown
 
 ```TypeScript
-KEY = 4
+Unknown
 ```
 
-按键。
+未知输入源。
 
-**起始版本：** 22
+**起始版本：** 8
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
-
-<!--Device-SourceType-KEY = 4--><!--Device-SourceType-KEY = 4-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## JOYSTICK
-
-```TypeScript
-JOYSTICK = 5
-```
-
-手柄。
-
-**起始版本：** 22
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
-
-<!--Device-SourceType-JOYSTICK = 5--><!--Device-SourceType-JOYSTICK = 5-End-->
+<!--Device-SourceType-Unknown--><!--Device-SourceType-Unknown-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

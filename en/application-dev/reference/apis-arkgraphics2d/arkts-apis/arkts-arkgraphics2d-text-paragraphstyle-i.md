@@ -30,7 +30,7 @@ Text alignment mode. The default value is **START**. This parameter is invalid w
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-align?: TextAlign--><!--Device-ParagraphStyle-align?: TextAlign-End-->
 
@@ -48,7 +48,7 @@ Sets whether to enable automatic spacing during text typography. **true** indica
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-autoSpace?: boolean--><!--Device-ParagraphStyle-autoSpace?: boolean-End-->
 
@@ -66,7 +66,7 @@ Text break strategy. The default value is **GREEDY**.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-breakStrategy?: BreakStrategy--><!--Device-ParagraphStyle-breakStrategy?: BreakStrategy-End-->
 
@@ -108,7 +108,7 @@ Punctuation range at the beginning of a line.
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-ParagraphStyle-compressHeadPunctuation?: boolean--><!--Device-ParagraphStyle-compressHeadPunctuation?: boolean-End-->
 
@@ -126,7 +126,7 @@ Sets whether to enable line height rollback during text layout. If the set line 
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-ParagraphStyle-fallbackLineSpacing?: boolean--><!--Device-ParagraphStyle-fallbackLineSpacing?: boolean-End-->
 
@@ -146,7 +146,7 @@ First line indent of the paragraph. The indent value must be greater than or equ
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ParagraphStyle-firstLineHeadIndent?: double--><!--Device-ParagraphStyle-firstLineHeadIndent?: double-End-->
 
@@ -166,7 +166,7 @@ Array of head indents. Each element in the array represents the indent value of 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ParagraphStyle-headIndents?: Array<double>--><!--Device-ParagraphStyle-headIndents?: Array<double>-End-->
 
@@ -184,7 +184,7 @@ Sets whether to use padding at the beginning and end of a line in text layout. *
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-ParagraphStyle-includeFontPadding?: boolean--><!--Device-ParagraphStyle-includeFontPadding?: boolean-End-->
 
@@ -202,7 +202,7 @@ Line spacing, in physical pixels (px). The default value is **0**. lineSpacing i
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-lineSpacing?: double--><!--Device-ParagraphStyle-lineSpacing?: double-End-->
 
@@ -220,7 +220,7 @@ Maximum number of lines. The value is an integer. The default value is **1e9**.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-maxLines?: int--><!--Device-ParagraphStyle-maxLines?: int-End-->
 
@@ -240,7 +240,7 @@ Whether to enable orphan character optimization during text typesetting. Orphan 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ParagraphStyle-orphanCharOptimization?: boolean--><!--Device-ParagraphStyle-orphanCharOptimization?: boolean-End-->
 
@@ -260,7 +260,7 @@ Whether to enable end-of-line punctuation hanging during text typesetting. The v
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ParagraphStyle-punctuationOverflow?: boolean--><!--Device-ParagraphStyle-punctuationOverflow?: boolean-End-->
 
@@ -278,7 +278,7 @@ Strut style. The default value is the initial **StrutStyle** object.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-strutStyle?: StrutStyle--><!--Device-ParagraphStyle-strutStyle?: StrutStyle-End-->
 
@@ -296,7 +296,7 @@ Alignment mode and position of the text after the tab character in a paragraph. 
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-tab?: TextTab--><!--Device-ParagraphStyle-tab?: TextTab-End-->
 
@@ -316,7 +316,7 @@ Array of tail indents. Each element in the array represents the indent value of 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ParagraphStyle-tailIndents?: Array<double>--><!--Device-ParagraphStyle-tailIndents?: Array<double>-End-->
 
@@ -334,7 +334,7 @@ Text direction. The default value is **LTR**.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-textDirection?: TextDirection--><!--Device-ParagraphStyle-textDirection?: TextDirection-End-->
 
@@ -352,7 +352,7 @@ Text height modifier pattern. The default value is **ALL**.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-textHeightBehavior?: TextHeightBehavior--><!--Device-ParagraphStyle-textHeightBehavior?: TextHeightBehavior-End-->
 
@@ -370,7 +370,7 @@ Text style applied to the paragraph. The default value is the initial text style
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-textStyle?: TextStyle--><!--Device-ParagraphStyle-textStyle?: TextStyle-End-->
 
@@ -388,7 +388,7 @@ Whether to consider the alignment impact of trailing spaces during text layout. 
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-trailingSpaceOptimized?: boolean--><!--Device-ParagraphStyle-trailingSpaceOptimized?: boolean-End-->
 
@@ -406,7 +406,7 @@ Text vertical alignment mode. The default value is BASELINE, which means text ba
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-verticalAlign?: TextVerticalAlign--><!--Device-ParagraphStyle-verticalAlign?: TextVerticalAlign-End-->
 
@@ -424,7 +424,7 @@ Word break type. The default value is **BREAK_WORD**.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ParagraphStyle-wordBreak?: WordBreak--><!--Device-ParagraphStyle-wordBreak?: WordBreak-End-->
 

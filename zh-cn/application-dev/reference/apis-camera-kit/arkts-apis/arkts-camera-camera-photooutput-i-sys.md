@@ -57,6 +57,7 @@ Starts the burst mode, in which users can capture a series of photos in quick su
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -82,6 +83,8 @@ function burstCapture(photoOutput: camera.PhotoOutput): void {
 }
 ```
 
+<!--DelEnd-->
+
 ## confirmCapture
 
 ```TypeScript
@@ -106,6 +109,7 @@ Confirms photo capture. This API is generally used in night photo mode when user
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -120,6 +124,8 @@ function confirmCapture(photoOutput: camera.PhotoOutput): void {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## deferImageDelivery
 
@@ -152,6 +158,7 @@ Enables deferred delivery of a certain type.
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -159,6 +166,8 @@ function deferImageDelivery(photoOutput: camera.PhotoOutput, type: camera.Deferr
   photoOutput.deferImageDelivery(type);
 }
 ```
+
+<!--DelEnd-->
 
 ## enableAutoCloudImageEnhancement
 
@@ -221,6 +230,7 @@ Enables automatic high quality for photos. Before using this API, call [isAutoHi
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -230,6 +240,8 @@ function enableAutoHighQualityPhoto(photoOutput: camera.PhotoOutput): void {
   return photoOutput.enableAutoHighQualityPhoto(true);
 }
 ```
+
+<!--DelEnd-->
 
 ## enableDepthDataDelivery
 
@@ -348,6 +360,7 @@ Enables or disables the quick thumbnail feature. This API takes effect after [ad
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect.<br>**适用版本：** 12+ |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -382,6 +395,8 @@ async function enableQuickThumbnail(context: common.BaseContext, mode: camera.Sc
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## enableRawDelivery
 
@@ -473,6 +488,7 @@ Checks whether automatic high quality is supported for photos.
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -482,6 +498,8 @@ function isAutoHighQualityPhotoSupported(photoOutput: camera.PhotoOutput): boole
   return photoOutput.isAutoHighQualityPhotoSupported();
 }
 ```
+
+<!--DelEnd-->
 
 ## isDeferredImageDeliveryEnabled
 
@@ -520,6 +538,7 @@ Checks whether deferred delivery of a certain type is enabled.
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -529,6 +548,8 @@ function isDeferredImageDeliveryEnabled(photoOutput: camera.PhotoOutput, type: c
   return res;
 }
 ```
+
+<!--DelEnd-->
 
 ## isDeferredImageDeliverySupported
 
@@ -567,6 +588,7 @@ Checks whether deferred delivery of a certain type is supported.
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | Session not running. |
 | [7400201](../errorcode-camera.md#7400201-相机服务异常) | Camera service fatal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -576,6 +598,8 @@ function isDeferredImageDeliverySupported(photoOutput: camera.PhotoOutput, type:
   return res;
 }
 ```
+
+<!--DelEnd-->
 
 ## isDepthDataDeliverySupported
 
@@ -696,6 +720,7 @@ Checks whether the quick thumbnail feature is supported. This API takes effect a
 | [7400104](../errorcode-camera.md#7400104-会话未运行) | session is not running. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -730,6 +755,8 @@ async function isQuickThumbnailSupported(context: common.BaseContext, mode: came
   return isSupported;
 }
 ```
+
+<!--DelEnd-->
 
 ## isRawDeliverySupported
 
@@ -790,6 +817,7 @@ Unsubscribes from events indicating available thumbnail proxies.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -810,6 +838,8 @@ function unRegisterPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.Ph
   photoOutput.off('deferredPhotoProxyAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('quickThumbnail')
 
@@ -834,6 +864,7 @@ Unsubscribes from quick thumbnail output events.
 | type | 'quickThumbnail' | 是 | Event type. The value is fixed at **'quickThumbnail'**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 否 | Callback used to return the result. This parameter is optional. If this parameter is specified, the subscription to the specified event **on('quickThumbnail')** with the specified callback is canceled. (The callback object cannot be an anonymous function.) |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -841,6 +872,8 @@ function unregisterQuickThumbnail(photoOutput: camera.PhotoOutput): void {
   photoOutput.off('quickThumbnail');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('offlineDeliveryFinished')
 
@@ -900,6 +933,7 @@ Subscribes to events indicating available thumbnail proxies. This API uses an as
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -920,6 +954,8 @@ function registerPhotoOutputDeferredPhotoProxyAvailable(photoOutput: camera.Phot
   photoOutput.on('deferredPhotoProxyAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('quickThumbnail')
 
@@ -944,6 +980,7 @@ Subscribes to quick thumbnail output events. This API uses an asynchronous callb
 | type | 'quickThumbnail' | 是 | Event type. The value is fixed at **'quickThumbnail'**. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)&gt; | 是 | Callback that returns a PixelMap instance. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -990,6 +1027,8 @@ async function registerQuickThumbnail(context: common.BaseContext, mode: camera.
   photoOutput.on('quickThumbnail', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('offlineDeliveryFinished')
 

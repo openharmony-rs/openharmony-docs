@@ -61,7 +61,7 @@ Decodes the input content into a Uint8Array object. This API uses a promise to r
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | src | Uint8Array &#124; string | Yes | Uint8Array object or string to decode. |
-| options | [Type](arkts-arkts-util-type-e.md) | No | Decoding format.<br>The following values are available:<br>- **util.Type.BASIC** (default): Base64 decoding.<br>- **util.Type.MIME**: Base64 decoding. The input parameter **src** contains carriage return characters and newline characters.<br>- **util.Type.BASIC_URL_SAFE**: Base64URL decoding.<br>   - **util.Type.MIME_URL_SAFE**: Base64 URL decoding. The input parameter **src** contains carriage return   characters and newline characters.<br>**Since:** 10 |
+| options | [Type](arkts-arkts-util-type-e.md) | No | Decoding format.<br>The following values are available:<br>- **util.Type.BASIC** (default): Base64 decoding.<br>- **util.Type.MIME**: Base64 decoding. The input parameter **src** contains carriage return characters and newline characters.<br>- **util.Type.BASIC_URL_SAFE**: Base64URL decoding.<br>           - **util.Type.MIME_URL_SAFE**: Base64 URL decoding. The input parameter **src** contains carriage return   characters and newline characters.<br>**Since:** 10 |
 
 **Return value:**
 
@@ -103,7 +103,7 @@ Decodes a string into a Uint8Array object. This API returns the result synchrono
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | src | Uint8Array &#124; string | Yes | Uint8Array object or string to decode. |
-| options | [Type](arkts-arkts-util-type-e.md) | No | Decoding format.<br>The following values are available:<br>- **util.Type.BASIC** (default): Base64 decoding.<br>- **util.Type.MIME**: Base64 decoding. The input parameter **src** contains carriage return characters and newline characters.<br>- **util.Type.BASIC_URL_SAFE**: Base64URL decoding.<br>   - **util.Type.MIME_URL_SAFE**: Base64 URL decoding. The input parameter **src** contains carriage return   characters and newline characters.<br>**Since:** 10 |
+| options | [Type](arkts-arkts-util-type-e.md) | No | Decoding format.<br>The following values are available:<br>- **util.Type.BASIC** (default): Base64 decoding.<br>- **util.Type.MIME**: Base64 decoding. The input parameter **src** contains carriage return characters and newline characters.<br>- **util.Type.BASIC_URL_SAFE**: Base64URL decoding.<br>           - **util.Type.MIME_URL_SAFE**: Base64 URL decoding. The input parameter **src** contains carriage return   characters and newline characters.<br>**Since:** 10 |
 
 **Return value:**
 

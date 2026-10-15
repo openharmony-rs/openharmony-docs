@@ -33,6 +33,7 @@ Enable Wi-Fi hotspot function. This method is asynchronous. After the Wi-Fi hots
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2601000](../errorcode-wifi.md#2601000-hotspot-module-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -44,3 +45,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

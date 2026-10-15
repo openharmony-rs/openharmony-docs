@@ -14,26 +14,6 @@ Enumerates the algorithm suites for securely importing a key.
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 9 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
-
-```TypeScript
-HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1
-```
-
-Use X25519 for key agreement and then use AES-256 GCM to decrypt the key.
-
-**Since:** 9
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksUnwrapSuite-HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1--><!--Device-HuksUnwrapSuite-HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 9 to 11: SystemCapability.Security.Huks.Extension
-
 ## HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING
 
 ```TypeScript
@@ -71,3 +51,23 @@ Use the temporary SM4 key to encrypt the imported key and use the SM2 key that h
 <!--Device-HuksUnwrapSuite-HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5--><!--Device-HuksUnwrapSuite-HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING = 5-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING
+
+```TypeScript
+HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1
+```
+
+Use X25519 for key agreement and then use AES-256 GCM to decrypt the key.
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksUnwrapSuite-HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1--><!--Device-HuksUnwrapSuite-HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING = 1-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 9 to 11: SystemCapability.Security.Huks.Extension

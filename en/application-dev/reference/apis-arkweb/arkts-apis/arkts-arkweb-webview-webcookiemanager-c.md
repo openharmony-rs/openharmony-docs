@@ -24,6 +24,8 @@ When browsing web pages in Privacy Mode, data such as cookies and caches are not
 import { webview } from '@kit.ArkWeb';
 ```
 
+<a id="clearallcookies1"></a>
+
 ## clearAllCookies
 
 ```TypeScript
@@ -82,7 +84,7 @@ struct WebComponent {
 }
 ```
 
-<a id="clearallcookies-1"></a>
+<a id="clearallcookies2"></a>
 
 ## clearAllCookies
 
@@ -90,7 +92,7 @@ struct WebComponent {
 static clearAllCookies(callback: AsyncCallback<void>): void
 ```
 
-Clears all cookies, including session cookies and persistent cookies. This API uses an asynchronous callback to return the result. To clear only session cookies, use [clearSessionCookie](#clearsessioncookie-1).
+Clears all cookies, including session cookies and persistent cookies. This API uses an asynchronous callback to return the result. To clear only session cookies, use [clearSessionCookie](#clearsessioncookie2).
 
 **Since:** 11
 
@@ -189,6 +191,8 @@ struct WebComponent {
 }
 ```
 
+<a id="clearsessioncookie1"></a>
+
 ## clearSessionCookie
 
 ```TypeScript
@@ -251,7 +255,7 @@ struct WebComponent {
 }
 ```
 
-<a id="clearsessioncookie-1"></a>
+<a id="clearsessioncookie2"></a>
 
 ## clearSessionCookie
 
@@ -352,6 +356,8 @@ struct WebComponent {
 }
 ```
 
+<a id="configcookie1"></a>
+
 ## configCookie
 
 ```TypeScript
@@ -364,7 +370,7 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-1) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -439,7 +445,7 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookie-1"></a>
+<a id="configcookie2"></a>
 
 ## configCookie
 
@@ -453,7 +459,7 @@ Sets a single cookie value for a specified URL. This API uses a promise to retur
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-1) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -526,7 +532,7 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookie-2"></a>
+<a id="configcookie3"></a>
 
 ## configCookie
 
@@ -540,7 +546,7 @@ Sets a single cookie value for a specified URL. This API uses an asynchronous ca
 > 
 > - In configCookie, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-1) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -608,6 +614,8 @@ struct WebComponent {
 }
 ```
 
+<a id="configcookiesync1"></a>
+
 ## configCookieSync
 
 ```TypeScript
@@ -620,7 +628,7 @@ Sets a cookie for the specified URL.
 > 
 > - In configCookieSync, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-1) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -685,7 +693,7 @@ struct WebComponent {
 }
 ```
 
-<a id="configcookiesync-1"></a>
+<a id="configcookiesync2"></a>
 
 ## configCookieSync
 
@@ -699,7 +707,7 @@ Sets a single cookie value for a specified URL.
 > 
 > - In configCookieSync, you can specify a domain name in the URL so that in-page requests also carry the cookie.
 > 
-> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync-1) for force storage.
+> - Cookies are periodically saved to the disk every 30 seconds. You can also use [saveCookieAsync](#savecookieasync2) for force storage.
 > 
 > - The value parameter must follow the format of the Set-Cookie HTTP response header. It is a key-value pair in the form of "key=value", optionally followed by a cookie property list separated by "; " (for example, "key=value; Max-Age=100").
 > 
@@ -880,6 +888,8 @@ struct WebComponent {
 }
 ```
 
+<a id="fetchcookie1"></a>
+
 ## fetchCookie
 
 ```TypeScript
@@ -949,7 +959,7 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie-1"></a>
+<a id="fetchcookie2"></a>
 
 ## fetchCookie
 
@@ -1019,7 +1029,7 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie-2"></a>
+<a id="fetchcookie3"></a>
 
 ## fetchCookie
 
@@ -1091,7 +1101,7 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookie-3"></a>
+<a id="fetchcookie4"></a>
 
 ## fetchCookie
 
@@ -1158,6 +1168,8 @@ struct WebComponent {
   }
 }
 ```
+
+<a id="fetchcookiesync1"></a>
 
 ## fetchCookieSync
 
@@ -1232,7 +1244,7 @@ struct WebComponent {
 }
 ```
 
-<a id="fetchcookiesync-1"></a>
+<a id="fetchcookiesync2"></a>
 
 ## fetchCookieSync
 
@@ -1511,6 +1523,8 @@ struct WebComponent {
 }
 ```
 
+<a id="savecookieasync1"></a>
+
 ## saveCookieAsync
 
 ```TypeScript
@@ -1577,7 +1591,7 @@ struct WebComponent {
 }
 ```
 
-<a id="savecookieasync-1"></a>
+<a id="savecookieasync2"></a>
 
 ## saveCookieAsync
 

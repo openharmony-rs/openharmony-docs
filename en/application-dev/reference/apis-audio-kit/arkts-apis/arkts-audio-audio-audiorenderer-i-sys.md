@@ -6,7 +6,7 @@ interface AudioRenderer
 
 This interface provides APIs for audio rendering.
 
-Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) to create an AudioRenderer instance.
+Before calling any API in AudioRenderer, you must use [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer1) to create an AudioRenderer instance.
 
 > **NOTE:** 
 > 
@@ -52,6 +52,7 @@ Gets the currently render target of this audio renderer. If the render target ha
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,6 +66,10 @@ async function getTarget(){
   console.info(`Succeeded in getting target, RenderTarget: ${renderTarget}.`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="settarget1"></a>
 
 ## setTarget
 
@@ -115,6 +120,7 @@ return error code 6800301.
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Current renderer is not supported to set target. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -127,7 +133,9 @@ audioRenderer.setTarget(audio.RenderTarget.INJECT_TO_VOICE_COMMUNICATION_CAPTURE
 });
 ```
 
-<a id="settarget-1"></a>
+<!--DelEnd-->
+
+<a id="settarget2"></a>
 
 ## setTarget
 
@@ -184,6 +192,9 @@ This API uses a promise to return the result.
 | [6800104](../errorcode-audio.md#6800104-unsupported-parameter-value) | Current renderer is not supported to set target. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio server process died. |
 
+<!--Del-->
 **Examples**
 
 See [setTarget](#settarget)
+
+<!--DelEnd-->

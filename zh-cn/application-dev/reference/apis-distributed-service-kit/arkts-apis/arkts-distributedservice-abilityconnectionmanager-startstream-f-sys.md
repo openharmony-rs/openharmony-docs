@@ -38,6 +38,7 @@ function startStream(streamId: number): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 | [32300002](../errorcode-device-manager.md#32300002-流接收端未启动) | The stream at the receive end is not started. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -48,3 +49,5 @@ let streamId = 100;
 hilog.info(0x0000, 'testTag', 'startStream called');
 abilityConnectionManager.startStream(streamId);
 ```
+
+<!--DelEnd-->

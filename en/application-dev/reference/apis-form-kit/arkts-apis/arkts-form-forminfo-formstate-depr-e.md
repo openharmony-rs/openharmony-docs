@@ -16,24 +16,6 @@ Enumerates the widget states.
 
 **System capability:** SystemCapability.Ability.Form
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = -1
-```
-
-Unknown state.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [UNKNOWN](arkts-form-forminfo-formstate-e.md#unknown)
-
-<!--Device-FormState-UNKNOWN = -1--><!--Device-FormState-UNKNOWN = -1-End-->
-
-**System capability:** SystemCapability.Ability.Form
-
 ## DEFAULT
 
 ```TypeScript
@@ -67,5 +49,23 @@ Ready state.
 **Substitutes:** [READY](arkts-form-forminfo-formstate-e.md#ready)
 
 <!--Device-FormState-READY = 1--><!--Device-FormState-READY = 1-End-->
+
+**System capability:** SystemCapability.Ability.Form
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = -1
+```
+
+Unknown state.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [UNKNOWN](arkts-form-forminfo-formstate-e.md#unknown)
+
+<!--Device-FormState-UNKNOWN = -1--><!--Device-FormState-UNKNOWN = -1-End-->
 
 **System capability:** SystemCapability.Ability.Form

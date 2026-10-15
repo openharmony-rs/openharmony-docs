@@ -1,12 +1,12 @@
-# @ohos.bundle.innerBundleManager
+# @ohos.bundle.innerBundleManager(innerBundleManager Module)
 
 The module provides APIs for the Home Screen application.
 
 > **NOTE**
  >
- > This module is deprecated since API version 9. You are advised to use
+ > This module is deprecated since API version 9. You are recommended to use
  > [launcherBundleManager](arkts-ability-bundle-launcherbundlemanager.md) and
- > [bundleMonitor](arkts-ability-bundle-bundlemonitor.md) instead.
+ > [bundleMonitor](arkts-ability-bundle-bundlemonitor.md) as the replacement.
  >
  > The APIs provided by this module are system APIs.
 

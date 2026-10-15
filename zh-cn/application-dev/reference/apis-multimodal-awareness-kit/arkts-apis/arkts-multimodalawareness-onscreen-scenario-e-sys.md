@@ -12,22 +12,6 @@ export enum Scenario
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-表示屏上内容所处场景未知。
-
-**起始版本：** 20
-
-<!--Device-Scenario-UNKNOWN = 0--><!--Device-Scenario-UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
-
-**系统接口：** 此接口为系统接口。
-
 ## ARTICLE
 
 ```TypeScript
@@ -39,6 +23,22 @@ ARTICLE = 1
 **起始版本：** 20
 
 <!--Device-Scenario-ARTICLE = 1--><!--Device-Scenario-ARTICLE = 1-End-->
+
+**系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
+
+**系统接口：** 此接口为系统接口。
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+表示屏上内容所处场景未知。
+
+**起始版本：** 20
+
+<!--Device-Scenario-UNKNOWN = 0--><!--Device-Scenario-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalAwareness.OnScreenAwareness
 

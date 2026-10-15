@@ -33,3 +33,14 @@ create the instance of HF(Hands-Free Unit) for HFP(Hands-Free Profile).
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+
+**Examples**
+
+```TypeScript
+try {
+    let hfProfile = hfp.createHfpHfProfile();
+    console.info('hf success');
+} catch (err) {
+    console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
+}
+```

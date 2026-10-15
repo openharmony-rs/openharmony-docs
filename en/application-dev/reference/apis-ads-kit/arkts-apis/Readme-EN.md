@@ -28,4 +28,4 @@
   - [resetOAID(system api)](arkts-ads-identifier-resetoaid-f-sys.md)<!--DelEnd-->
 - advertising<!--arkts-adskit-advertising-->
   - [advertisement(Defines the advertisement data model)](arkts-ads-advertisement.md)
-    - [Advertisement](arkts-ads-advertisement-advertisement-i.md)
+    - [Advertisement](arkts-ads-advertisement-i.md)

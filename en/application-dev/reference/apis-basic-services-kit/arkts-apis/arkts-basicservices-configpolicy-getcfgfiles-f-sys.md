@@ -6,6 +6,8 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
+<a id="getcfgfiles1"></a>
+
 ## getCfgFiles
 
 ```TypeScript
@@ -36,7 +38,7 @@ Obtains a list of all files with the specified names, in ascending order of prio
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getcfgfiles-1"></a>
+<a id="getcfgfiles2"></a>
 
 ## getCfgFiles
 
@@ -69,7 +71,7 @@ Obtains a list of all files of a specified file name based on the provided follo
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getcfgfiles-2"></a>
+<a id="getcfgfiles3"></a>
 
 ## getCfgFiles
 
@@ -103,7 +105,7 @@ Obtains a list of all files of a specified file name based on the provided follo
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getcfgfiles-3"></a>
+<a id="getcfgfiles4"></a>
 
 ## getCfgFiles
 
@@ -140,7 +142,7 @@ Obtains a list of all files with the specified names, in ascending order of prio
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getcfgfiles-4"></a>
+<a id="getcfgfiles5"></a>
 
 ## getCfgFiles
 

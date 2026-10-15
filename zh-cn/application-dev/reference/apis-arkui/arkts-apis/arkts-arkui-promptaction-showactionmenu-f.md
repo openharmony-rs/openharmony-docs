@@ -6,6 +6,8 @@
 import { promptAction, LevelMode, ImmersiveMode, LevelOrder } from '@kit.ArkUI';
 ```
 
+<a id="showactionmenu1"></a>
+
 ## showActionMenu
 
 ```TypeScript
@@ -24,7 +26,7 @@ function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<Acti
 
 **废弃版本：** 18
 
-**替代接口：** showActionMenu
+**替代接口：** [showActionMenu](arkts-arkui-arkui-uicontext-promptaction-c.md#showactionmenu)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
@@ -50,15 +52,15 @@ function showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<Acti
 
 **示例**
 
-showActionMenu(options: ActionMenuOptions, callback: AsyncCallback&lt;ActionMenuSuccessResponse&gt;):void
+showActionMenu(options: ActionMenuOptions, callback: AsyncCallback<ActionMenuSuccessResponse>):void
 
 创建并显示操作菜单，菜单响应结果使用callback异步回调返回。
 
 > 说明：
 > 
-> 从API version 9开始支持，从API version 18开始废弃，建议使用showActionMenu替代。showActionMenu需先通过UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取PromptAction对象，然后通过该对象进行调用。且直接使用showActionMenu可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用showActionMenu替代。showActionMenu需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用showActionMenu可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 > 
-> 从API version 11开始，可以通过使用UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取当前UI上下文关联的PromptAction对象。
+> 从API version 11开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。
 
 原子化服务API： 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -91,7 +93,7 @@ try {
     ]
   }, (err, data) => {
     if (err) {
-      console.info('showActionMenu err: ' + err);
+      console.error('showActionMenu err: ' + err);
       return;
     }
     console.info('showActionMenu success callback, click button: ' + data.index);
@@ -169,7 +171,7 @@ struct Index {
               console.info('showActionMenu success, click button: ' + data.index);
             })
             .catch((err: Error) => {
-              console.info('showActionMenu error: ' + err);
+              console.error('showActionMenu error: ' + err);
             })
         })
     }
@@ -179,7 +181,7 @@ struct Index {
 ```
 
 
-<a id="showactionmenu-1"></a>
+<a id="showactionmenu2"></a>
 
 ## showActionMenu
 
@@ -199,7 +201,7 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 
 **废弃版本：** 18
 
-**替代接口：** showActionMenu
+**替代接口：** [showActionMenu](arkts-arkui-arkui-uicontext-promptaction-c.md#showactionmenu)
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
@@ -230,15 +232,15 @@ function showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessRe
 
 **示例**
 
-showActionMenu(options: ActionMenuOptions): Promise&lt;ActionMenuSuccessResponse&gt;
+showActionMenu(options: ActionMenuOptions): Promise<ActionMenuSuccessResponse>
 
 创建并显示操作菜单，菜单响应后通过Promise返回结果。
 
 > 说明：
 > 
-> 从API version 9开始支持，从API version 18开始废弃，建议使用showActionMenu替代。showActionMenu需先通过UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取PromptAction对象，然后通过该对象进行调用。且直接使用showActionMenu可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
+> 从API version 9开始支持，从API version 18开始废弃，建议使用showActionMenu替代。showActionMenu需先通过[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取[PromptAction](arkts-apis-uicontext-promptaction.md)对象，然后通过该对象进行调用。且直接使用showActionMenu可能导致[UI上下文不明确](../../../ui/arkts-global-interface.md#ui上下文不明确)的问题。
 > 
-> 从API version 10开始，可以通过使用UIContext中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取当前UI上下文关联的PromptAction对象。
+> 从API version 10开始，可以通过使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getPromptAction](arkts-arkui-arkui-uicontext-uicontext-c.md#getpromptaction)方法获取当前UI上下文关联的[PromptAction](arkts-apis-uicontext-promptaction.md)对象。
 
 原子化服务API： 从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -272,6 +274,6 @@ promptAction.showActionMenu({
     console.info('showActionMenu success, click button: ' + data.index);
   })
   .catch((err: Error) => {
-    console.info('showActionMenu error: ' + err);
+    console.error('showActionMenu error: ' + err);
   })
 ```

@@ -12,6 +12,22 @@ enum TorchMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
+## AUTO
+
+```TypeScript
+AUTO = 2
+```
+
+自动模式，系统根据环境自动调节手电筒亮度。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-TorchMode-AUTO = 2--><!--Device-TorchMode-AUTO = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 ## OFF
 
 ```TypeScript
@@ -22,7 +38,7 @@ OFF = 0
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-TorchMode-OFF = 0--><!--Device-TorchMode-OFF = 0-End-->
 
@@ -38,24 +54,8 @@ ON = 1
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-TorchMode-ON = 1--><!--Device-TorchMode-ON = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## AUTO
-
-```TypeScript
-AUTO = 2
-```
-
-自动模式，系统根据环境自动调节手电筒亮度。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-TorchMode-AUTO = 2--><!--Device-TorchMode-AUTO = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

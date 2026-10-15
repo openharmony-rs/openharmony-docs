@@ -1,9 +1,9 @@
 # ArcAlphabetIndexer
 
-The **ArcAlphabetIndexer** component is an arc-shaped component designed for quick navigation through alphabetically sorted items. It can be integrated with container components to quickly locate items within the visible area.
+The **ArcAlphabetIndexer** is a component arranged in an arc that allows quick location by alphabetical order. It can be bound with container components to quickly locate the container display area based on logical structure, making it suitable for circular screen devices such as watches.
 
 > **NOTE:** 
-
+> 
 > - This component can be used on phones, PCs, 2-in-1 devices, tablets, TVs, and wearables. In API version 22 and earlier versions, a compilation warning will be reported when this component is used on phones, PCs, 2-in-1devices, tablets, and TVs, but the component can still run properly.
 
 ## Child Components
@@ -16,7 +16,7 @@ Not supported
 ArcAlphabetIndexer(info: ArcAlphabetIndexerInitInfo)
 ```
 
-Creates an instance of the **ArcAlphabetIndexer** component with initialization parameters.
+Creates and initializes an **ArcAlphabetIndexer** component.
 
 **Since:** 18
 
@@ -30,7 +30,7 @@ Creates an instance of the **ArcAlphabetIndexer** component with initialization 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| info | [ArcAlphabetIndexerInitInfo](arkts-arkui-arcalphabetindexer-comp-arcalphabetindexerinitinfo-i.md) | Yes | Initialization parameters for the **ArcAlphabetIndexer** component. |
+| info | [ArcAlphabetIndexerInitInfo](arkts-arkui-arcalphabetindexer-comp-arcalphabetindexerinitinfo-i.md) | Yes | Initialization parameters of the arc alphabet index bar, including the alphabet index string array and the initial selected item index value. |
 
 ## Summary
 

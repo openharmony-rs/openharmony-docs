@@ -6,10 +6,10 @@ type AudioCapturerChangeInfoArray = Array<Readonly<AudioCapturerChangeInfo>>
 
 数组类型，[AudioCapturerChangeInfo](arkts-audio-audio-audiocapturerchangeinfo-i.md)数组，只读。
 
+**类型：** Array&lt;Readonly&lt;[AudioCapturerChangeInfo](arkts-audio-audio-audiocapturerchangeinfo-i.md)&gt;&gt;
+
 **起始版本：** 9
 
 <!--Device-audio-type AudioCapturerChangeInfoArray = Array<Readonly<AudioCapturerChangeInfo>>--><!--Device-audio-type AudioCapturerChangeInfoArray = Array<Readonly<AudioCapturerChangeInfo>>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
-
-**类型：** Array&lt;Readonly&lt;[AudioCapturerChangeInfo](arkts-audio-audio-audiocapturerchangeinfo-i.md)&gt;&gt;

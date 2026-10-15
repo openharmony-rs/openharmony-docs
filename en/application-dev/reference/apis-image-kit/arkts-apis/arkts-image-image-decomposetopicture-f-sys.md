@@ -47,6 +47,7 @@ Decomposes an HDR Pixelmap object to a Picture object which contains an SDR Pixe
 | [7600208](../errorcode-image.md#7600208-failed-to-decompose-an-hdr-image) | HDR image decomposition failed. Possible causes: 1. Decomposition processing is not supported. 2. Processing error occurs. |
 | [7600301](../errorcode-image.md#7600301-memory-allocation-failure) | Alloc memory failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -74,3 +75,5 @@ async function DecomposeToPictureTest(context: Context) {
   }
 }
 ```
+
+<!--DelEnd-->

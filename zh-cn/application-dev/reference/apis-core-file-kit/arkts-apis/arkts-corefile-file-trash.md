@@ -13,8 +13,6 @@
 
 **废弃版本：** 23
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace trash--><!--Device-unnamed-declare namespace trash-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
@@ -34,9 +32,9 @@ import { trash } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [completelyDelete](arkts-corefile-trash-completelydelete-f-sys.md) | 将uri对应文件/目录从最近删除（回收站）列表中彻底删除。 |
-| [listFile](arkts-corefile-trash-listfile-f-sys.md) | 查询最近删除（回收站）列表中文件/目录信息。 |
-| [recover](arkts-corefile-trash-recover-f-sys.md) | 将uri对应文件/目录恢复到原路径。 |
+| [completelyDelete](arkts-corefile-trash-completelydelete-f-sys.md#completelydelete) | 将uri对应文件/目录从最近删除（回收站）列表中彻底删除。 |
+| [listFile](arkts-corefile-trash-listfile-f-sys.md#listfile) | 查询最近删除（回收站）列表中文件/目录信息。 |
+| [recover](arkts-corefile-trash-recover-f-sys.md#recover) | 将uri对应文件/目录恢复到原路径。 |
 <!--DelEnd-->
 
 <!--Del-->

@@ -4,7 +4,7 @@
 declare interface LocalizedVerticalAlignParam
 ```
 
-Defines the localized vertical align param of relative container.
+定义相对容器的纵向对齐规则。
 
 @interface LocalizedVerticalAlignParam
 
@@ -20,7 +20,7 @@ Defines the localized vertical align param of relative container.
 align: VerticalAlign
 ```
 
-The align of localized align param.
+设置相对于锚点组件的纵向对齐方式。
 
 **类型：** [VerticalAlign](../arkts-apis/arkts-arkui-verticalalign-e.md)
 
@@ -40,7 +40,7 @@ The align of localized align param.
 anchor: string
 ```
 
-The anchor of localized align param.
+设置作为锚点的组件的id值。
 
 **类型：** string
 

@@ -4,25 +4,11 @@
 export declare enum SourceType
 ```
 
-Enumerates touch sources. Currently, only the touchscreen and touchpad are supported.
+Device type of the touch input source. Currently the touchscreen, stylus, and touchpad are supported.
 
 **Since:** 9
 
 <!--Device-unnamed-export declare enum SourceType--><!--Device-unnamed-export declare enum SourceType-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-## TOUCH_SCREEN
-
-```TypeScript
-TOUCH_SCREEN = 0
-```
-
-Touchscreen.
-
-**Since:** 9
-
-<!--Device-SourceType-TOUCH_SCREEN = 0--><!--Device-SourceType-TOUCH_SCREEN = 0-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -51,5 +37,19 @@ Touchpad.
 **Since:** 9
 
 <!--Device-SourceType-TOUCH_PAD = 2--><!--Device-SourceType-TOUCH_PAD = 2-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+## TOUCH_SCREEN
+
+```TypeScript
+TOUCH_SCREEN = 0
+```
+
+Touchscreen.
+
+**Since:** 9
+
+<!--Device-SourceType-TOUCH_SCREEN = 0--><!--Device-SourceType-TOUCH_SCREEN = 0-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core

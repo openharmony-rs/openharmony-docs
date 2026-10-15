@@ -12,6 +12,12 @@ export enum PermissionStatus
 - 在权限未授予时，拉起运行时权限弹窗或权限设置页面，请求用户授权。  
 - 订阅当前应用的权限状态变化事件，在权限状态变化后及时调整业务流程。
 
+**起始版本：** 20
+
+<!--Device-abilityAccessCtrl-export enum PermissionStatus--><!--Device-abilityAccessCtrl-export enum PermissionStatus-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
 ## 核心枚举类型
 
 - **[GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md)：** 权限授权状态枚举，用于表示当前权限的授权状态。  
@@ -32,12 +38,6 @@ export enum PermissionStatus
 
 ![image_abilityAccessCtrl](../../../reference/apis-ability-kit/figures/abilityAccessCtrl.png)
 
-**起始版本：** 20
-
-<!--Device-abilityAccessCtrl-export enum PermissionStatus--><!--Device-abilityAccessCtrl-export enum PermissionStatus-End-->
-
-**系统能力：** SystemCapability.Security.AccessToken
-
 ## DENIED
 
 ```TypeScript
@@ -50,7 +50,7 @@ DENIED = -1
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionStatus-DENIED = -1--><!--Device-PermissionStatus-DENIED = -1-End-->
 
@@ -68,27 +68,9 @@ GRANTED = 0
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionStatus-GRANTED = 0--><!--Device-PermissionStatus-GRANTED = 0-End-->
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-## NOT_DETERMINED
-
-```TypeScript
-NOT_DETERMINED = 1
-```
-
-表示未操作。应用声明用户授权权限但暂未调用[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)接口请求授权，或用户在设置中将权限状态修改为每次询问时，查询权限状态返回此值。
-
-**起始版本：** 20
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-PermissionStatus-NOT_DETERMINED = 1--><!--Device-PermissionStatus-NOT_DETERMINED = 1-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -104,9 +86,27 @@ INVALID = 2
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionStatus-INVALID = 2--><!--Device-PermissionStatus-INVALID = 2-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+## NOT_DETERMINED
+
+```TypeScript
+NOT_DETERMINED = 1
+```
+
+表示未操作。应用声明用户授权权限但暂未调用[requestPermissionsFromUser](arkts-ability-abilityaccessctrl-atmanager-i.md#requestpermissionsfromuser)接口请求授权，或用户在设置中将权限状态修改为每次询问时，查询权限状态返回此值。
+
+**起始版本：** 20
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-PermissionStatus-NOT_DETERMINED = 1--><!--Device-PermissionStatus-NOT_DETERMINED = 1-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -122,7 +122,7 @@ RESTRICTED = 3
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionStatus-RESTRICTED = 3--><!--Device-PermissionStatus-RESTRICTED = 3-End-->
 

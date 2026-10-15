@@ -14,6 +14,8 @@ function setCustomCursorSync(windowId: number, pixelMap: image.PixelMap, focusX?
 
 Sets a custom pointer style for a specified window synchronously. This API can set only the custom pointer style of windows within the current application process. For details about how to set the custom pointer style of the host window through the **UIExtensionAbility** process, see [setCustomCursor](../../apis-arkui/arkts-apis/arkts-arkui-arkui-uicontext-cursorcontroller-c.md#setcustomcursor).
 
+Changes to the app window layout, hot zone switching, page navigation, the cursor moving out of and back into the window, and the cursor moving across different areas of the window may cause the cursor to switch back to the system style. In these scenarios, you need to set the cursor style again.
+
 **Since:** 11
 
 <!--Device-pointer-function setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): void--><!--Device-pointer-function setCustomCursorSync(windowId: int, pixelMap: image.PixelMap, focusX?: int, focusY?: int): void-End-->
@@ -33,7 +35,7 @@ Sets a custom pointer style for a specified window synchronously. This API can s
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **Examples**
 

@@ -65,6 +65,7 @@ Exclude output devices. After calling this function successfully, audio will not
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -97,6 +98,8 @@ async function excludeOutputDevices(){
 }
 ```
 
+<!--DelEnd-->
+
 ## getActiveOutputDeviceDescriptors
 
 ```TypeScript
@@ -127,6 +130,7 @@ Gets the active output device descriptors for the current audio device. The acti
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -137,6 +141,8 @@ audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescript
   console.error(`Failed to get active output device descriptors. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getExcludedDevices
 
@@ -173,6 +179,7 @@ Get excluded devices by filter.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -185,6 +192,8 @@ async function getExcludedDevices(){
   console.info(`device descriptor: ${desc}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getPreferredInputDeviceByFilter
 
@@ -221,6 +230,7 @@ Get the preferred input device for the target audio capturer filter.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -242,6 +252,8 @@ async function getPreferredInputDeviceByFilter(){
     console.info(`device descriptor: ${desc}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getPreferredOutputDeviceByFilter
 
@@ -278,6 +290,7 @@ Get the preferred output devices by the target audio renderer filter.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -300,6 +313,8 @@ async function selectOutputDeviceByFilter(){
     console.info(`device descriptor: ${desc}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('preferredOutputDeviceChangeByFilter')
 
@@ -331,6 +346,7 @@ UnSubscribes to prefer output device change events.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -354,6 +370,8 @@ audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendere
 
 audioRoutingManager.off('preferredOutputDeviceChangeByFilter', preferredOutputDeviceChangeByFilterCallback);
 ```
+
+<!--DelEnd-->
 
 ## offPreferredInputDeviceChangeByFilter
 
@@ -386,6 +404,7 @@ Unsubscribes to preferred input device change events.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -408,6 +427,8 @@ audioRoutingManager.onPreferredInputDeviceChangeByFilter(inputAudioCapturerFilte
 
 audioRoutingManager.offPreferredInputDeviceChangeByFilter(preferredInputDeviceChangeByFilterCallback);
 ```
+
+<!--DelEnd-->
 
 ## on('preferredOutputDeviceChangeByFilter')
 
@@ -441,6 +462,7 @@ Subscribes to prefer output device change events. When preferred device for targ
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -456,6 +478,8 @@ audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendere
   console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## onPreferredInputDeviceChangeByFilter
 
@@ -490,6 +514,7 @@ Subscribes to preferred input device change events. When the preferred device fo
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -504,6 +529,8 @@ audioRoutingManager.onPreferredInputDeviceChangeByFilter(inputAudioCapturerFilte
   console.info(`Succeeded in using onPreferredInputDeviceChangeByFilter function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## restoreOutputDeviceByFilter
 
@@ -542,6 +569,7 @@ Restores the output device for the specified audio renderer filter to the defaul
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -563,6 +591,10 @@ audioRoutingManager.restoreOutputDeviceByFilter(outputAudioRendererFilter).then(
   console.error(`Failed to restore output device by filter. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="selectinputdevice1"></a>
 
 ## selectInputDevice
 
@@ -587,6 +619,7 @@ Select the input device. This method uses an asynchronous callback to return the
 | inputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | Yes | Audio device description |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -619,7 +652,9 @@ async function selectInputDevice(){
 }
 ```
 
-<a id="selectinputdevice-1"></a>
+<!--DelEnd-->
+
+<a id="selectinputdevice2"></a>
 
 ## selectInputDevice
 
@@ -649,6 +684,7 @@ Select the input device. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -678,6 +714,8 @@ async function getRoutingManager(){
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## selectInputDeviceByFilter
 
@@ -715,6 +753,7 @@ Select the input device with desired AudioCapturer. This method uses a promise t
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -755,6 +794,10 @@ async function selectInputDeviceByFilter(){
 }
 ```
 
+<!--DelEnd-->
+
+<a id="selectoutputdevice1"></a>
+
 ## selectOutputDevice
 
 ```TypeScript
@@ -778,6 +821,7 @@ Select the output device. This method uses an asynchronous callback to return th
 | outputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | Yes | Audio device description |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -809,7 +853,9 @@ async function selectOutputDevice(){
 }
 ```
 
-<a id="selectoutputdevice-1"></a>
+<!--DelEnd-->
+
+<a id="selectoutputdevice2"></a>
 
 ## selectOutputDevice
 
@@ -839,6 +885,7 @@ Select the output device. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -869,6 +916,10 @@ async function selectOutputDevice(){
 }
 ```
 
+<!--DelEnd-->
+
+<a id="selectoutputdevicebyfilter1"></a>
+
 ## selectOutputDeviceByFilter
 
 ```TypeScript
@@ -893,6 +944,7 @@ Select the output device with desired AudioRenderer. This method uses an asynchr
 | outputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | Yes | Audio device description. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -933,7 +985,9 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
-<a id="selectoutputdevicebyfilter-1"></a>
+<!--DelEnd-->
+
+<a id="selectoutputdevicebyfilter2"></a>
 
 ## selectOutputDeviceByFilter
 
@@ -964,6 +1018,7 @@ Select the output device with desired AudioRenderer. This method uses a promise 
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1003,7 +1058,9 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
-<a id="selectoutputdevicebyfilter-2"></a>
+<!--DelEnd-->
+
+<a id="selectoutputdevicebyfilter3"></a>
 
 ## selectOutputDeviceByFilter
 
@@ -1043,6 +1100,7 @@ Select the output device with desired AudioRenderer. This method uses a promise 
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1078,6 +1136,10 @@ audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, output
   console.error(`Failed to select output device by filter. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="unexcludeoutputdevices1"></a>
 
 ## unexcludeOutputDevices
 
@@ -1120,6 +1182,7 @@ Unexclude output devices. This function will unexclude target output devices bel
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1152,7 +1215,9 @@ async function unexcludeOutputDevices(){
 }
 ```
 
-<a id="unexcludeoutputdevices-1"></a>
+<!--DelEnd-->
+
+<a id="unexcludeoutputdevices2"></a>
 
 ## unexcludeOutputDevices
 
@@ -1194,6 +1259,7 @@ Unexclude output devices. This function will unexclude all output devices belong
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1210,3 +1276,5 @@ async function unexcludeOutputDevices(){
   });
 }
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { defaultAppManager } from '@kit.AbilityKit';
 ```
 
+<a id="setdefaultapplication1"></a>
+
 ## setDefaultApplication
 
 ```TypeScript
@@ -31,7 +33,7 @@ Sets the default application for a user based on a system-defined application ty
 | type | string | Yes | Type of the target application. It must be set to a value defined by [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md), a file type that complies with the media type format, or a value defined by [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md). |
 | elementName | [ElementName](arkts-ability-elementname-i.md) | Yes | Information about the element to be set as the default application. |
 | userId | number | Yes | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **undefined**. otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -46,6 +48,7 @@ Sets the default application for a user based on a system-defined application ty
 | [17700028](../errorcode-bundle.md#17700028-mismatch-between-ability-and-type) | The specified ability does not match the type. |
 | 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**Applicable version:** 26.0.1 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -91,8 +94,10 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setdefaultapplication-1"></a>
+
+<a id="setdefaultapplication2"></a>
 
 ## setDefaultApplication
 
@@ -118,7 +123,7 @@ Sets the default application based on a system-defined application type, a file 
 | --- | --- | --- | --- |
 | type | string | Yes | Type of the target application. It must be set to a value defined by [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md), a file type that complies with the media type format, or a value defined by [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-data-uniformtypedescriptor.md). |
 | elementName | [ElementName](arkts-ability-elementname-i.md) | Yes | Information about the element to be set as the default application. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **undefined**. otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -132,6 +137,7 @@ Sets the default application based on a system-defined application type, a file 
 | [17700028](../errorcode-bundle.md#17700028-mismatch-between-ability-and-type) | The specified ability does not match the type. |
 | 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**Applicable version:** 26.0.1 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -176,8 +182,10 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setdefaultapplication-2"></a>
+
+<a id="setdefaultapplication3"></a>
 
 ## setDefaultApplication
 
@@ -224,6 +232,7 @@ Sets the default application based on a system-defined application type, a file 
 | [17700028](../errorcode-bundle.md#17700028-mismatch-between-ability-and-type) | The specified ability does not match the type. |
 | 18000001 | The specified type is Web Browser and the specified application does not have the ohos.permission.DEFAULT_WEB_BROWSER permission.<br>**Applicable version:** 26.0.1 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -272,3 +281,5 @@ defaultAppManager.setDefaultApplication(uniformTypeDescriptor.UniformDataType.AV
   console.error('Operation failed. Cause: ' + JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

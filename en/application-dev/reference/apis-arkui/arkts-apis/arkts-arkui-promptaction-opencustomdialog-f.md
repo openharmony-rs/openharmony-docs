@@ -28,7 +28,7 @@ By default, the width of the dialog box in portrait mode is the width of the win
 
 **Deprecated since:** 18
 
-**Substitutes:** openCustomDialog
+**Substitutes:** [openCustomDialog](arkts-arkui-arkui-uicontext-promptaction-c.md#opencustomdialog)
 
 **Model restriction:** This API can be used only in the stage model.
 

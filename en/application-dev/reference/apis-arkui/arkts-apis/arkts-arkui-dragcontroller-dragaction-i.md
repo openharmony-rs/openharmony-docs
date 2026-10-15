@@ -24,7 +24,7 @@ import { dragController } from '@kit.ArkUI';
 off(type: 'statusChange', callback?: Callback<DragAndDropInfo>): void
 ```
 
-Unsubscribes from drag state changes.
+Unsubscribes from drag state changes. This API is suitable for scenarios where the listener needs to be released when the drag ends, the page is destroyed, or the drag status change no longer needs to be responded to.
 
 **Since:** 11
 
@@ -40,8 +40,8 @@ Unsubscribes from drag state changes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'statusChange' | Yes | for status changing |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DragAndDropInfo](arkts-arkui-dragcontroller-draganddropinfo-i.md)&gt; | No | with drag event and status information |
+| type | 'statusChange' | Yes | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DragAndDropInfo](arkts-arkui-dragcontroller-draganddropinfo-i.md)&gt; | No | Callback used to return the drag state in [DragAndDropInfo](arkts-arkui-dragcontroller-draganddropinfo-i.md). |
 
 ## on('statusChange')
 
@@ -49,7 +49,7 @@ Unsubscribes from drag state changes.
 on(type: 'statusChange', callback: Callback<DragAndDropInfo>): void
 ```
 
-Subscribes to drag state changes.
+Subscribes to drag state changes. This API is used to obtain the drag status when proactive drag starts or ends, and to perform operations such as updating the UI, recording the status, or cleaning up resources.
 
 **Since:** 11
 
@@ -65,8 +65,8 @@ Subscribes to drag state changes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | 'statusChange' | Yes | for status changing |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DragAndDropInfo](arkts-arkui-dragcontroller-draganddropinfo-i.md)&gt; | Yes | with drag event and status information |
+| type | 'statusChange' | Yes | Event type. The value is fixed at **'statusChange'**, which indicates the drag state change event. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[DragAndDropInfo](arkts-arkui-dragcontroller-draganddropinfo-i.md)&gt; | Yes | Callback used to return the drag state in [DragAndDropInfo](arkts-arkui-dragcontroller-draganddropinfo-i.md). |
 
 ## startDrag
 
@@ -74,7 +74,7 @@ Subscribes to drag state changes.
 startDrag(): Promise<void>
 ```
 
-Starts the drag service. This API uses a promise to return the result.
+Starts the drag service. This API is suitable for scenarios where a **DragAction** object is created through **createDragAction** to proactively initiate multi-object drag or customize the drag backdrop. This API uses a promise to return the result.
 
 **Since:** 11
 

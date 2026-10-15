@@ -6,6 +6,8 @@
 import { systemDateTime } from '@kit.BasicServicesKit';
 ```
 
+<a id="settimezone1"></a>
+
 ## setTimezone
 
 ```TypeScript
@@ -38,8 +40,9 @@ function setTimezone(timezone: string, callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 26.0.0+ |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,8 +62,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="settimezone-1"></a>
+
+<a id="settimezone2"></a>
 
 ## setTimezone
 
@@ -99,8 +104,9 @@ function setTimezone(timezone: string): Promise<void>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:<br> 1. Mandatory parameters are left unspecified. <br> 2. Incorrect parameter types. |
-| 204 | Access denied due to user access control policy. Possible causes: 1. The operation is restricted by the OS-account constraint. 2. The required privilege for the operation has not been granted.<br>**适用版本：** 26.0.0+ |
+| [204](../../errorcode-universal.md#204-用户访问控制策略拦截访问被拒绝) | Access denied due to user access control policy. Possible causes:         1. The operation is restricted by the OS-account constraint.         2. The required privilege for the operation has not been granted.<br>**适用版本：** 26.0.0+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -117,3 +123,5 @@ try {
   console.error(`Failed to set timezone. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

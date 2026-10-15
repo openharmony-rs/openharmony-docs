@@ -6,8 +6,6 @@ declare interface DismissSheetAction
 
 Component sheet dismiss
 
-@interface DismissSheetAction
-
 **Since:** 12
 
 <!--Device-unnamed-declare interface DismissSheetAction--><!--Device-unnamed-declare interface DismissSheetAction-End-->
@@ -20,7 +18,7 @@ Component sheet dismiss
 dismiss: Callback<void>
 ```
 
-Defines sheet dismiss function
+Callback for dismissing the sheet. Call this API when you need to exit the page.
 
 **Type:** [Callback](arkts-arkui-common-comp-callback-i.md)&lt;void&gt;
 
@@ -40,7 +38,15 @@ Defines sheet dismiss function
 reason: DismissReason
 ```
 
-Dismiss reason type.
+Returns the operation type for exiting the current semi-modal page.
+
+**Note:** 
+
+DismissReason.SLIDE takes effect only for the side popup style of the semi-modal page, indicating exit by swiping right. In a mirrored scenario, it indicates exit by swiping left.
+
+DismissReason.SLIDE_DOWN takes effect for the bottom popup style and center popup style of the semi-modal page, indicating exit by swiping down.
+
+The bubble popup style of the semi-modal page does not support swipe-to-exit.
 
 **Type:** [DismissReason](arkts-arkui-common-comp-dismissreason-e.md)
 

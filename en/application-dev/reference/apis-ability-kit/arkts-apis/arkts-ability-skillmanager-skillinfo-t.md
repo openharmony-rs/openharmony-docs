@@ -8,6 +8,8 @@ Provides information about a skill, including skill name, type, and associated m
 
 @typedef { _SkillInfo }
 
+**Type:** _SkillInfo
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Provides information about a skill, including skill name, type, and associated m
 <!--Device-skillManager-export type SkillInfo = _SkillInfo--><!--Device-skillManager-export type SkillInfo = _SkillInfo-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Type:** _SkillInfo

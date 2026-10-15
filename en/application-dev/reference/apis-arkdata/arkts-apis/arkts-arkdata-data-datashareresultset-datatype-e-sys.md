@@ -14,37 +14,19 @@ Enumerates the data types.
 
 **System API:** This is a system API.
 
-## TYPE_NULL
+## TYPE_BLOB
 
 ```TypeScript
-TYPE_NULL = 0
+TYPE_BLOB = 4
 ```
 
-Null.
+Byte array.
 
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-DataType-TYPE_NULL = 0--><!--Device-DataType-TYPE_NULL = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
-
-**System API:** This is a system API.
-
-## TYPE_LONG
-
-```TypeScript
-TYPE_LONG = 1
-```
-
-Long integer.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DataType-TYPE_LONG = 1--><!--Device-DataType-TYPE_LONG = 1-End-->
+<!--Device-DataType-TYPE_BLOB = 4--><!--Device-DataType-TYPE_BLOB = 4-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 
@@ -68,6 +50,42 @@ Double-precision floating-point number.
 
 **System API:** This is a system API.
 
+## TYPE_LONG
+
+```TypeScript
+TYPE_LONG = 1
+```
+
+Long integer.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-TYPE_LONG = 1--><!--Device-DataType-TYPE_LONG = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
+
+**System API:** This is a system API.
+
+## TYPE_NULL
+
+```TypeScript
+TYPE_NULL = 0
+```
+
+Null.
+
+**Since:** 9
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DataType-TYPE_NULL = 0--><!--Device-DataType-TYPE_NULL = 0-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
+
+**System API:** This is a system API.
+
 ## TYPE_STRING
 
 ```TypeScript
@@ -81,24 +99,6 @@ String.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DataType-TYPE_STRING = 3--><!--Device-DataType-TYPE_STRING = 3-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.DataShare.Core
-
-**System API:** This is a system API.
-
-## TYPE_BLOB
-
-```TypeScript
-TYPE_BLOB = 4
-```
-
-Byte array.
-
-**Since:** 9
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DataType-TYPE_BLOB = 4--><!--Device-DataType-TYPE_BLOB = 4-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.DataShare.Core
 

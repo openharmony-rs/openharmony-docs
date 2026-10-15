@@ -6,10 +6,6 @@ export interface RemoteAbilityInfo
 
 The module provides information about a remote ability, which can be obtained through [distributedBundle.getRemoteAbilityInfo](arkts-ability-distributedbundlemanager-getremoteabilityinfo-f-sys.md).
 
-> **NOTE:** 
-> 
-> The APIs provided by this module are system APIs.
-
 **Since:** 9
 
 <!--Device-unnamed-export interface RemoteAbilityInfo--><!--Device-unnamed-export interface RemoteAbilityInfo-End-->
@@ -42,7 +38,7 @@ Element name information of the remote ability.
 readonly icon: string
 ```
 
-Icon of the remote ability.
+Icon information of the remote ability.
 
 **Type:** string
 

@@ -132,7 +132,7 @@ Port number of the client in the request process. The value ranges from 1 to 655
 networkProtocolName: string
 ```
 
-HTTP version used in the [request](arkts-network-http-httprequest-i.md#request), for example, 'HTTP /1.0', 'HTTP/1.1', 'HTTP/2', 'HTTP/2 over TLS', 'HTTP/3', or 'Unknown/Non-HTTP'.
+HTTP version used in the [request](arkts-network-http-httprequest-i.md#request1), for example, 'HTTP /1.0', 'HTTP/1.1', 'HTTP/2', 'HTTP/2 over TLS', 'HTTP/3', or 'Unknown/Non-HTTP'.
 
 **Type:** string
 

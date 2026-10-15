@@ -6,6 +6,8 @@
 import { motion } from '@kit.MultimodalAwarenessKit';
 ```
 
+<a id="onhoverhandchange1"></a>
+
 ## onHoverHandChange
 
 ```TypeScript
@@ -36,12 +38,12 @@ Subscribes to hover hand events and immediately starts detection for five second
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited<br> device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:<br> 1. The hardware does not support the capability; <br> 2. The chip does not support the capability; <br> 3. A dependent service feature is not supported. |
 | [31500001](../errorcode-motion.md#31500001-service-exception) | Service exception. Possible causes: 1. A system error, such as null pointer,<br> container-related exception; 2. N-API invocation exception, invalid N-API status. |
 | [31500002](../errorcode-motion.md#31500002-subscription-failed) | Subscription failed. Possible causes: 1. Callback registration failure;<br> 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC <br> request exception. |
 
 
-<a id="onhoverhandchange-1"></a>
+<a id="onhoverhandchange2"></a>
 
 ## onHoverHandChange
 
@@ -75,6 +77,6 @@ Subscribes to hover hand events and immediately starts detection.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited<br> device capabilities. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:<br> 1. The hardware does not support the capability; <br> 2. The chip does not support the capability; <br> 3. A dependent service feature is not supported. |
 | [31500001](../errorcode-motion.md#31500001-service-exception) | Service exception. Possible causes: 1. A system error, such as null pointer,<br> container-related exception; 2. N-API invocation exception, invalid N-API status. |
 | [31500002](../errorcode-motion.md#31500002-subscription-failed) | Subscription failed. Possible causes: 1. Callback registration failure;<br> 2. Failed to bind native object to js wrapper; 3. N-API invocation exception, invalid N-API status; 4. IPC <br> request exception. |

@@ -12,6 +12,38 @@ enum DeviceTypes
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
+## TYPE_2IN1
+
+```TypeScript
+TYPE_2IN1 = '2in1'
+```
+
+PC/2in1。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-DeviceTypes-TYPE_2IN1 = '2in1'--><!--Device-DeviceTypes-TYPE_2IN1 = '2in1'-End-->
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+## TYPE_CAR
+
+```TypeScript
+TYPE_CAR = 'car'
+```
+
+车机。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-DeviceTypes-TYPE_CAR = 'car'--><!--Device-DeviceTypes-TYPE_CAR = 'car'-End-->
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 ## TYPE_DEFAULT
 
 ```TypeScript
@@ -60,22 +92,6 @@ TYPE_TABLET = 'tablet'
 
 **系统能力：** SystemCapability.Startup.SystemInfo
 
-## TYPE_2IN1
-
-```TypeScript
-TYPE_2IN1 = '2in1'
-```
-
-PC/2in1。
-
-**起始版本：** 20
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-DeviceTypes-TYPE_2IN1 = '2in1'--><!--Device-DeviceTypes-TYPE_2IN1 = '2in1'-End-->
-
-**系统能力：** SystemCapability.Startup.SystemInfo
-
 ## TYPE_TV
 
 ```TypeScript
@@ -105,21 +121,5 @@ TYPE_WEARABLE = 'wearable'
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-DeviceTypes-TYPE_WEARABLE = 'wearable'--><!--Device-DeviceTypes-TYPE_WEARABLE = 'wearable'-End-->
-
-**系统能力：** SystemCapability.Startup.SystemInfo
-
-## TYPE_CAR
-
-```TypeScript
-TYPE_CAR = 'car'
-```
-
-车机。
-
-**起始版本：** 20
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-DeviceTypes-TYPE_CAR = 'car'--><!--Device-DeviceTypes-TYPE_CAR = 'car'-End-->
 
 **系统能力：** SystemCapability.Startup.SystemInfo

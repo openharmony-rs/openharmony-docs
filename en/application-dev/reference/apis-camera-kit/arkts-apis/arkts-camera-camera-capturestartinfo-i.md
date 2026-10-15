@@ -30,7 +30,7 @@ ID of this capture action.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CaptureStartInfo-captureId: int--><!--Device-CaptureStartInfo-captureId: int-End-->
 
@@ -48,7 +48,7 @@ Estimated duration when the sensor captures frames at the bottom layer in a sing
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CaptureStartInfo-time: long--><!--Device-CaptureStartInfo-time: long-End-->
 

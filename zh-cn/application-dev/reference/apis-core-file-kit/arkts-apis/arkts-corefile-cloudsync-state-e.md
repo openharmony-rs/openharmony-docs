@@ -12,20 +12,6 @@ enum State
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## RUNNING
-
-```TypeScript
-RUNNING = 0
-```
-
-云文件正在下载中。
-
-**起始版本：** 11
-
-<!--Device-State-RUNNING = 0--><!--Device-State-RUNNING = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## COMPLETED
 
 ```TypeScript
@@ -51,6 +37,20 @@ FAILED = 2
 **起始版本：** 11
 
 <!--Device-State-FAILED = 2--><!--Device-State-FAILED = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+云文件正在下载中。
+
+**起始版本：** 11
+
+<!--Device-State-RUNNING = 0--><!--Device-State-RUNNING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

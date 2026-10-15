@@ -6,8 +6,6 @@ enum AVMusicTemplateType
 
 表示音频模板类型的枚举。
 
-@enum { string }
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-enum AVMusicTemplateType--><!--Device-avMusicTemplate-enum AVMusicTemplateType-End-->

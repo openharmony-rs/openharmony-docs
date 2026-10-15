@@ -5,9 +5,9 @@ declare class SyncedPropertyTwoWay<T> extends SubscribedAbstractProperty<T>
   implements ISinglePropertyChangeSubscriber<T>
 ```
 
-Inherits from [SubscribedAbstractProperty&lt;T&gt;](arkts-arkui-subscribedabstractproperty-c.md) to implement two-way state data synchronization between parent and child components.
+Inherits from [SubscribedAbstractProperty<T>](arkts-arkui-subscribedabstractproperty-c.md) to implement two-way state data synchronization between parent and child components.
 
-**Inheritance/Implementation:** SyncedPropertyTwoWay extends SubscribedAbstractProperty<T> and implements ISinglePropertyChangeSubscriber<T>
+**Inheritance/Implementation:** SyncedPropertyTwoWay extends SubscribedAbstractProperty&lt;T&gt; and implements ISinglePropertyChangeSubscriber&lt;T&gt;
 
 **Since:** 7
 

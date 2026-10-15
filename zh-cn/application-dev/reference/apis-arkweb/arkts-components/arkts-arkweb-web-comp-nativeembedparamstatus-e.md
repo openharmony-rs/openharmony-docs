@@ -26,20 +26,6 @@ ADD = 0
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## UPDATE
-
-```TypeScript
-UPDATE = 1
-```
-
-更改param元素属性。
-
-**起始版本：** 21
-
-<!--Device-NativeEmbedParamStatus-UPDATE = 1--><!--Device-NativeEmbedParamStatus-UPDATE = 1-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## DELETE
 
 ```TypeScript
@@ -51,5 +37,19 @@ DELETE = 2
 **起始版本：** 21
 
 <!--Device-NativeEmbedParamStatus-DELETE = 2--><!--Device-NativeEmbedParamStatus-DELETE = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## UPDATE
+
+```TypeScript
+UPDATE = 1
+```
+
+更改param元素属性。
+
+**起始版本：** 21
+
+<!--Device-NativeEmbedParamStatus-UPDATE = 1--><!--Device-NativeEmbedParamStatus-UPDATE = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

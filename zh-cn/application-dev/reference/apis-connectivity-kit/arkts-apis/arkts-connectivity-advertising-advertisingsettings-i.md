@@ -18,6 +18,26 @@ interface AdvertisingSettings
 import { advertising } from '@kit.ConnectivityKit';
 ```
 
+## frameType
+
+```TypeScript
+frameType?: nearlinkConstant.FrameType
+```
+
+表示星闪帧类型。默认值为**FRAME_TYPE_1**。
+
+**类型：** [nearlinkConstant.FrameType](arkts-connectivity-nearlinkconstant-frametype-e.md)
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-AdvertisingSettings-frameType?: nearlinkConstant.FrameType--><!--Device-AdvertisingSettings-frameType?: nearlinkConstant.FrameType-End-->
+
+**系统能力：** SystemCapability.Communication.NearLink.Base
+
 ## interval
 
 ```TypeScript
@@ -31,6 +51,8 @@ interval?: number
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertisingSettings-interval?: int--><!--Device-AdvertisingSettings-interval?: int-End-->
 
@@ -50,6 +72,8 @@ isConnectable?: boolean
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-AdvertisingSettings-isConnectable?: boolean--><!--Device-AdvertisingSettings-isConnectable?: boolean-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -67,6 +91,8 @@ power?: TxPowerMode
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AdvertisingSettings-power?: TxPowerMode--><!--Device-AdvertisingSettings-power?: TxPowerMode-End-->
 

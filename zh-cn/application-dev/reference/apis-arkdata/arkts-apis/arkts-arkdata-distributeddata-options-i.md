@@ -10,7 +10,7 @@ interface Options
 
 **废弃版本：** 9
 
-**替代接口：** Options
+**替代接口：** [Options](arkts-arkdata-distributedkvstore-options-i.md)
 
 <!--Device-distributedData-interface Options--><!--Device-distributedData-interface Options-End-->
 
@@ -37,7 +37,7 @@ ohos.permission.DISTRIBUTED_DATASYNC
 
 **废弃版本：** 9
 
-**替代接口：** autoSync
+**替代接口：** [autoSync](arkts-arkdata-distributedkvstore-options-i.md#autosync)
 
 **需要权限：** ohos.permission.DISTRIBUTED_DATASYNC
 
@@ -59,7 +59,7 @@ backup?: boolean
 
 **废弃版本：** 9
 
-**替代接口：** backup
+**替代接口：** [backup](arkts-arkdata-distributedkvstore-options-i.md#backup)
 
 <!--Device-Options-backup?: boolean--><!--Device-Options-backup?: boolean-End-->
 
@@ -79,7 +79,7 @@ createIfMissing?: boolean
 
 **废弃版本：** 9
 
-**替代接口：** createIfMissing
+**替代接口：** [createIfMissing](arkts-arkdata-distributedkvstore-options-i.md#createifmissing)
 
 <!--Device-Options-createIfMissing?: boolean--><!--Device-Options-createIfMissing?: boolean-End-->
 
@@ -99,7 +99,7 @@ encrypt?: boolean
 
 **废弃版本：** 9
 
-**替代接口：** encrypt
+**替代接口：** [encrypt](arkts-arkdata-distributedkvstore-options-i.md#encrypt)
 
 <!--Device-Options-encrypt?: boolean--><!--Device-Options-encrypt?: boolean-End-->
 
@@ -119,7 +119,7 @@ kvStoreType?: KVStoreType
 
 **废弃版本：** 9
 
-**替代接口：** kvStoreType
+**替代接口：** [kvStoreType](arkts-arkdata-distributedkvstore-options-i.md#kvstoretype)
 
 <!--Device-Options-kvStoreType?: KVStoreType--><!--Device-Options-kvStoreType?: KVStoreType-End-->
 
@@ -139,7 +139,7 @@ schema?: Schema
 
 **废弃版本：** 9
 
-**替代接口：** schema
+**替代接口：** [schema](arkts-arkdata-distributedkvstore-options-i.md#schema)
 
 <!--Device-Options-schema?: Schema--><!--Device-Options-schema?: Schema-End-->
 
@@ -159,7 +159,7 @@ securityLevel?: SecurityLevel
 
 **废弃版本：** 9
 
-**替代接口：** securityLevel
+**替代接口：** [securityLevel](arkts-arkdata-distributedkvstore-options-i.md#securitylevel)
 
 <!--Device-Options-securityLevel?: SecurityLevel--><!--Device-Options-securityLevel?: SecurityLevel-End-->
 

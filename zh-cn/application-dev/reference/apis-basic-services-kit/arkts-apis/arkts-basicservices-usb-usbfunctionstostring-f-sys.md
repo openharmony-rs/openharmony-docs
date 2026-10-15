@@ -38,9 +38,12 @@ function usbFunctionsToString(funcs: FunctionType): string
 | --- | --- |
 | string | 转化后的字符串形式的功能列表。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let funcs = usb.FunctionType.ACM | usb.FunctionType.ECM;
 let ret = usb.usbFunctionsToString(funcs);
 ```
+
+<!--DelEnd-->

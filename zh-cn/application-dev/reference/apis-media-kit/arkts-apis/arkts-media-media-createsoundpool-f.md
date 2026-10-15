@@ -6,6 +6,8 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createsoundpool1"></a>
+
 ## createSoundPool
 
 ```TypeScript
@@ -67,7 +69,7 @@ media.createSoundPool(5, audioRendererInfo, (error, soundPool_: media.SoundPool)
 ```
 
 
-<a id="createsoundpool-2"></a>
+<a id="createsoundpool3"></a>
 
 ## createSoundPool
 

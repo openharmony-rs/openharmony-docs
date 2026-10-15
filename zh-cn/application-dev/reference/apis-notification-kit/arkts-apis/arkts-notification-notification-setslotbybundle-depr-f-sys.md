@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="setslotbybundle1"></a>
+
 ## setSlotByBundle
 
 ```TypeScript
@@ -32,11 +34,11 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot, callback:
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
-| slot | [NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md) | 是 | 通知通道。 |
+| slot | [NotificationSlot](arkts-notification-notificationslot-i.md) | 是 | 通知通道。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 设定通知通道回调函数。 |
 
 
-<a id="setslotbybundle-1"></a>
+<a id="setslotbybundle2"></a>
 
 ## setSlotByBundle
 
@@ -65,7 +67,7 @@ function setSlotByBundle(bundle: BundleOption, slot: NotificationSlot): Promise<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundle | BundleOption | 是 | 指定应用的包信息。 |
-| slot | [NotificationSlot](arkts-notification-notificationslot-notificationslot-i.md) | 是 | 通知通道。 |
+| slot | [NotificationSlot](arkts-notification-notificationslot-i.md) | 是 | 通知通道。 |
 
 **返回值：**
 

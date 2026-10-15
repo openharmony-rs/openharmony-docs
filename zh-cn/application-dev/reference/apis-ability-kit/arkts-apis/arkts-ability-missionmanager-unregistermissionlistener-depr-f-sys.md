@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="unregistermissionlistener1"></a>
+
 ## unregisterMissionListener
 
 ```TypeScript
@@ -34,6 +36,7 @@ function unregisterMissionListener(listenerId: number, callback: AsyncCallback<v
 | listenerId | number | 是 | 系统任务状态监听器的index值，和监听器一一对应，由registerMissionListener方法返回。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 执行结果回调函数。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,8 +75,10 @@ missionManager.unregisterMissionListener(listenerId, (error) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="unregistermissionlistener-1"></a>
+
+<a id="unregistermissionlistener2"></a>
 
 ## unregisterMissionListener
 
@@ -109,6 +114,7 @@ function unregisterMissionListener(listenerId: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -149,3 +155,5 @@ missionManager.unregisterMissionListener(listenerId)
     console.error(`unregisterMissionListener failed. Code: ${error.code}, message: ${error.message}.`);
   });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { vibrator } from '@kit.SensorServiceKit';
 ```
 
+<a id="stopvibration1"></a>
+
 ## stopVibration
 
 ```TypeScript
@@ -26,7 +28,7 @@ Stops vibration in the specified mode. This API uses a promise to return the res
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| stopMode | [VibratorStopMode](arkts-sensorservice-vibrator-vibratorstopmode-e.md) | Yes | Vibration stop mode:<br>- **VIBRATOR_STOP_MODE_TIME**: used to stop vibration of the specified duration.<br>- **VIBRATOR_STOP_MODE_PRESET**: used to stop vibration of the preset effect.<br>To stop custom vibration, use [vibrator.stopVibration&lt;sup&gt;10+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md). |
+| stopMode | [VibratorStopMode](arkts-sensorservice-vibrator-vibratorstopmode-e.md) | Yes | Vibration stop mode:<br>- **VIBRATOR_STOP_MODE_TIME**: used to stop vibration of the specified duration.<br>- **VIBRATOR_STOP_MODE_PRESET**: used to stop vibration of the preset effect.<br>To stop custom vibration, use [vibrator.stopVibration<sup>10+</sup>](arkts-sensorservice-vibrator-stopvibration-f.md). |
 
 **Return value:**
 
@@ -120,7 +122,7 @@ try {
 ```
 
 
-<a id="stopvibration-1"></a>
+<a id="stopvibration2"></a>
 
 ## stopVibration
 
@@ -142,7 +144,7 @@ Stops vibration in the specified mode. This API uses an asynchronous callback to
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| stopMode | [VibratorStopMode](arkts-sensorservice-vibrator-vibratorstopmode-e.md) | Yes | Mode to stop the vibration. The options are as follows:<br>- **VIBRATOR_STOP_MODE_TIME**: used to stop vibration of the specified duration.<br>- **VIBRATOR_STOP_MODE_PRESET**: used to stop vibration of the preset effect.<br>To stop custom vibration, use [vibrator.stopVibration&lt;sup&gt;10+&lt;/sup&gt;](#stopvibration-2). |
+| stopMode | [VibratorStopMode](arkts-sensorservice-vibrator-vibratorstopmode-e.md) | Yes | Mode to stop the vibration. The options are as follows:<br>- **VIBRATOR_STOP_MODE_TIME**: used to stop vibration of the specified duration.<br>- **VIBRATOR_STOP_MODE_PRESET**: used to stop vibration of the preset effect.<br>To stop custom vibration, use [vibrator.stopVibration<sup>10+</sup>](#stopvibration3). |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the vibration stops, **err** is **undefined**; otherwise, **err** is an error object. |
 
 **Error codes:**
@@ -239,7 +241,7 @@ try {
 ```
 
 
-<a id="stopvibration-2"></a>
+<a id="stopvibration3"></a>
 
 ## stopVibration
 
@@ -255,7 +257,7 @@ Stops vibration in all modes. This API uses an asynchronous callback to return t
 
 **Required permissions:** ohos.permission.VIBRATE
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-vibrator-function stopVibration(callback: AsyncCallback<void>): void--><!--Device-vibrator-function stopVibration(callback: AsyncCallback<void>): void-End-->
 
@@ -296,7 +298,7 @@ try {
 ```
 
 
-<a id="stopvibration-3"></a>
+<a id="stopvibration4"></a>
 
 ## stopVibration
 
@@ -312,7 +314,7 @@ Stops vibration in all modes. This API uses a promise to return the result.
 
 **Required permissions:** ohos.permission.VIBRATE
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-vibrator-function stopVibration(): Promise<void>--><!--Device-vibrator-function stopVibration(): Promise<void>-End-->
 
@@ -351,7 +353,7 @@ try {
 ```
 
 
-<a id="stopvibration-4"></a>
+<a id="stopvibration5"></a>
 
 ## stopVibration
 

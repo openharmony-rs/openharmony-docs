@@ -51,6 +51,7 @@ Called when the connection to a [UIServiceExtensionAbility](arkts-ability-app-ab
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | [Want](arkts-ability-app-ability-want-want-c.md) information about the [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md), including the ability name and bundle name. |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | Yes | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) object, used for communication between the client and server. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,6 +63,8 @@ class UIServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onCreate
 
@@ -87,6 +90,7 @@ Called to initialize the service logic.
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | [Want](arkts-ability-app-ability-want-want-c.md) information about the [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md), including the ability name and bundle name. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -99,6 +103,8 @@ class UIServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onData
 
@@ -125,6 +131,7 @@ Callback invoked when data is received.
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | Yes | Proxy that sends data to the client. |
 | data | Record&lt;string, Object&gt; | Yes | Data received. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,6 +143,8 @@ class ServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDestroy
 
@@ -155,6 +164,7 @@ Called to clear resources when this [UIServiceExtensionAbility](arkts-ability-ap
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -166,6 +176,8 @@ class ServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDisconnect
 
@@ -192,6 +204,7 @@ Called when the connection to a [UIServiceExtensionAbility](arkts-ability-app-ab
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | [Want](arkts-ability-app-ability-want-want-c.md) information about the [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md), including the ability name and bundle name. |
 | proxy | [UIServiceHostProxy](arkts-ability-uiservicehostproxy-i-sys.md) | Yes | Proxy that sends data to the sender. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -204,13 +217,15 @@ class UIServiceExt extends UIServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## onRequest
 
 ```TypeScript
 onRequest(want: Want, startId: number): void
 ```
 
-Called to request to start a [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md). If the UIServiceExtensionAbility is started by calling [startAbility](arkts-ability-uiabilitycontext-c.md#startability) or [startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability), this callback will be invoked after [onCreate](#oncreate). The value of **startId** is incremented for each UIServiceExtensionAbility that is started.
+Called to request to start a [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md). If the UIServiceExtensionAbility is started by calling [startAbility](arkts-ability-uiabilitycontext-c.md#startability1) or [startUIServiceExtensionAbility](arkts-ability-uiabilitycontext-c.md#startuiserviceextensionability), this callback will be invoked after [onCreate](#oncreate). The value of **startId** is incremented for each UIServiceExtensionAbility that is started.
 
 **Since:** 14
 
@@ -229,6 +244,7 @@ Called to request to start a [UIServiceExtensionAbility](arkts-ability-app-abili
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | Yes | [Want](arkts-ability-app-ability-want-want-c.md) information about the [UIServiceExtensionAbility](arkts-ability-app-ability-uiserviceextensionability-uiserviceextensionability-c-sys.md), including the ability name and bundle name. |
 | startId | number | Yes | Number of times the instance has been started. The initial value is **1** for the first start, and it increments automatically for subsequent starts. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -240,6 +256,8 @@ class UIServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onWindowDidCreate
 
@@ -265,6 +283,7 @@ Called when a window is created for the [UIServiceExtensionAbility](arkts-abilit
 | --- | --- | --- | --- |
 | window | [window.Window](../../apis-arkui/arkts-apis/arkts-arkui-window-window-i.md) | Yes | Window object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -277,6 +296,8 @@ class ServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onWindowWillCreate
 
@@ -302,6 +323,7 @@ Called when a window will be created for the [UIServiceExtensionAbility](arkts-a
 | --- | --- | --- | --- |
 | config | [window.ExtensionWindowConfig](../../apis-arkui/arkts-apis/arkts-arkui-window-extensionwindowconfig-i-sys.md) | Yes | Window configuration information. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -314,6 +336,8 @@ class UIServiceExt extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## context
 

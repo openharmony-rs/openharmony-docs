@@ -12,20 +12,6 @@ Defines the status of the operating hand.
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion
 
-## UNKNOWN_STATUS
-
-```TypeScript
-UNKNOWN_STATUS = 0
-```
-
-Unknown status.
-
-**Since:** 15
-
-<!--Device-OperatingHandStatus-UNKNOWN_STATUS = 0--><!--Device-OperatingHandStatus-UNKNOWN_STATUS = 0-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.Motion
-
 ## LEFT_HAND_OPERATED
 
 ```TypeScript
@@ -51,5 +37,19 @@ Right hand in use.
 **Since:** 15
 
 <!--Device-OperatingHandStatus-RIGHT_HAND_OPERATED = 2--><!--Device-OperatingHandStatus-RIGHT_HAND_OPERATED = 2-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.Motion
+
+## UNKNOWN_STATUS
+
+```TypeScript
+UNKNOWN_STATUS = 0
+```
+
+Unknown status.
+
+**Since:** 15
+
+<!--Device-OperatingHandStatus-UNKNOWN_STATUS = 0--><!--Device-OperatingHandStatus-UNKNOWN_STATUS = 0-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.Motion

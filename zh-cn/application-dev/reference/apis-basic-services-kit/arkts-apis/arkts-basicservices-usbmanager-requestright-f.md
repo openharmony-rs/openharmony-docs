@@ -53,8 +53,6 @@ function requestRight() {
   let device: usbManager.USBDevice = devicesList?.[0];
   usbManager.requestRight(device.name).then(ret => {
     console.info(`requestRight = ${ret}`);
-  }).catch((error: BusinessError) => {
-    console.error(`Failed to request right. Code: ${error.code}, message: ${error.message}`);
   });
 }
 ```

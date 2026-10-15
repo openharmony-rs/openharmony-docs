@@ -6,6 +6,8 @@ type ActiveStreamsVolumeInfoArray = Array<Readonly<ActiveStreamVolumeInfo>>
 
 ActiveStreamVolumeInfo array.
 
+**Type:** Array&lt;Readonly&lt;[ActiveStreamVolumeInfo](arkts-audio-audio-activestreamvolumeinfo-i-sys.md)&gt;&gt;
+
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ ActiveStreamVolumeInfo array.
 **System capability:** SystemCapability.Multimedia.Audio.Volume
 
 **System API:** This is a system API.
-
-**Type:** Array&lt;Readonly&lt;[ActiveStreamVolumeInfo](arkts-audio-audio-activestreamvolumeinfo-i-sys.md)&gt;&gt;

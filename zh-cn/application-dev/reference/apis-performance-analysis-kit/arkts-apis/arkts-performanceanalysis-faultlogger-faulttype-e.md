@@ -16,19 +16,19 @@ enum FaultType
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-## NO_SPECIFIC
+## APP_FREEZE
 
 ```TypeScript
-NO_SPECIFIC = 0
+APP_FREEZE = 4
 ```
 
-不区分故障类型。
+应用程序冻屏故障类型。
 
 **起始版本：** 8
 
 **废弃版本：** 18
 
-<!--Device-FaultType-NO_SPECIFIC = 0--><!--Device-FaultType-NO_SPECIFIC = 0-End-->
+<!--Device-FaultType-APP_FREEZE = 4--><!--Device-FaultType-APP_FREEZE = 4-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
@@ -64,18 +64,18 @@ JS程序故障类型。
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger
 
-## APP_FREEZE
+## NO_SPECIFIC
 
 ```TypeScript
-APP_FREEZE = 4
+NO_SPECIFIC = 0
 ```
 
-应用程序冻屏故障类型。
+不区分故障类型。
 
 **起始版本：** 8
 
 **废弃版本：** 18
 
-<!--Device-FaultType-APP_FREEZE = 4--><!--Device-FaultType-APP_FREEZE = 4-End-->
+<!--Device-FaultType-NO_SPECIFIC = 0--><!--Device-FaultType-NO_SPECIFIC = 0-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.Hiview.FaultLogger

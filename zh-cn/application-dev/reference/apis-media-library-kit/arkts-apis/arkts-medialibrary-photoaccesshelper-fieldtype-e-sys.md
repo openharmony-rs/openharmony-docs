@@ -14,37 +14,19 @@ Smartlabel类型字段名
 
 **系统接口：** 此接口为系统接口。
 
-## NONE
+## ANALYSIS_CITY
 
 ```TypeScript
-NONE = 0
+ANALYSIS_CITY = 3
 ```
 
-默认类型
+地点类型
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FieldType-NONE = 0--><!--Device-FieldType-NONE = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## ANALYSIS_PEOPLE
-
-```TypeScript
-ANALYSIS_PEOPLE = 1
-```
-
-人员类型
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FieldType-ANALYSIS_PEOPLE = 1--><!--Device-FieldType-ANALYSIS_PEOPLE = 1-End-->
+<!--Device-FieldType-ANALYSIS_CITY = 3--><!--Device-FieldType-ANALYSIS_CITY = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -68,55 +50,19 @@ ANALYSIS_LABEL = 2
 
 **系统接口：** 此接口为系统接口。
 
-## ANALYSIS_CITY
+## ANALYSIS_PEOPLE
 
 ```TypeScript
-ANALYSIS_CITY = 3
+ANALYSIS_PEOPLE = 1
 ```
 
-地点类型
+人员类型
 
 **起始版本：** 23
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-FieldType-ANALYSIS_CITY = 3--><!--Device-FieldType-ANALYSIS_CITY = 3-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## YEAR
-
-```TypeScript
-YEAR = 4
-```
-
-年类型
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FieldType-YEAR = 4--><!--Device-FieldType-YEAR = 4-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## MONTH
-
-```TypeScript
-MONTH = 5
-```
-
-年月类型
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FieldType-MONTH = 5--><!--Device-FieldType-MONTH = 5-End-->
+<!--Device-FieldType-ANALYSIS_PEOPLE = 1--><!--Device-FieldType-ANALYSIS_PEOPLE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -171,6 +117,60 @@ MEDIA_TYPE = 8
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FieldType-MEDIA_TYPE = 8--><!--Device-FieldType-MEDIA_TYPE = 8-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## MONTH
+
+```TypeScript
+MONTH = 5
+```
+
+年月类型
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FieldType-MONTH = 5--><!--Device-FieldType-MONTH = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+默认类型
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FieldType-NONE = 0--><!--Device-FieldType-NONE = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## YEAR
+
+```TypeScript
+YEAR = 4
+```
+
+年类型
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FieldType-YEAR = 4--><!--Device-FieldType-YEAR = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

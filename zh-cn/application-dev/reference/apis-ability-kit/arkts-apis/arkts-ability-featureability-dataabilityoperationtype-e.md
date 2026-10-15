@@ -12,6 +12,38 @@ export enum DataAbilityOperationType
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
 
+## TYPE_ASSERT
+
+```TypeScript
+TYPE_ASSERT = 4
+```
+
+声明类型。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+<!--Device-DataAbilityOperationType-TYPE_ASSERT = 4--><!--Device-DataAbilityOperationType-TYPE_ASSERT = 4-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
+
+## TYPE_DELETE
+
+```TypeScript
+TYPE_DELETE = 3
+```
+
+删除类型。
+
+**起始版本：** 7
+
+**模型约束：** 此接口仅可在FA模型下使用。
+
+<!--Device-DataAbilityOperationType-TYPE_DELETE = 3--><!--Device-DataAbilityOperationType-TYPE_DELETE = 3-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
+
 ## TYPE_INSERT
 
 ```TypeScript
@@ -41,37 +73,5 @@ TYPE_UPDATE = 2
 **模型约束：** 此接口仅可在FA模型下使用。
 
 <!--Device-DataAbilityOperationType-TYPE_UPDATE = 2--><!--Device-DataAbilityOperationType-TYPE_UPDATE = 2-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-## TYPE_DELETE
-
-```TypeScript
-TYPE_DELETE = 3
-```
-
-删除类型。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-DataAbilityOperationType-TYPE_DELETE = 3--><!--Device-DataAbilityOperationType-TYPE_DELETE = 3-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel
-
-## TYPE_ASSERT
-
-```TypeScript
-TYPE_ASSERT = 4
-```
-
-声明类型。
-
-**起始版本：** 7
-
-**模型约束：** 此接口仅可在FA模型下使用。
-
-<!--Device-DataAbilityOperationType-TYPE_ASSERT = 4--><!--Device-DataAbilityOperationType-TYPE_ASSERT = 4-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.FAModel

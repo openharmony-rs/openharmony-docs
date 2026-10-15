@@ -12,13 +12,31 @@ enum GestureType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TAP_GESTURE
+## BOX_SELECT_GESTURE
 
 ```TypeScript
-TAP_GESTURE = 0
+BOX_SELECT_GESTURE = 8
 ```
 
-点击手势。
+滚动类容器鼠标框选手势，是一种特殊的滑动手势，用于在滚动容器中通过鼠标拖拽创建选择区域，批量选择多个元素。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-BOX_SELECT_GESTURE = 8--><!--Device-GestureType-BOX_SELECT_GESTURE = 8-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CLICK
+
+```TypeScript
+CLICK = 7
+```
+
+点击。
 
 **起始版本：** 11
 
@@ -26,7 +44,43 @@ TAP_GESTURE = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-GestureType-TAP_GESTURE = 0--><!--Device-GestureType-TAP_GESTURE = 0-End-->
+<!--Device-GestureType-CLICK = 7--><!--Device-GestureType-CLICK = 7-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## CONTEXT_MENU_HOVER_GESTURE
+
+```TypeScript
+CONTEXT_MENU_HOVER_GESTURE = 11
+```
+
+上下文菜单悬停手势是一种特殊的长按手势，用于在长按过程中触发菜单的hoverScale动画效果（需启用[ContextMenuAnimationOptions](arkts-arkui-common-comp-contextmenuanimationoptions-i.md)的hoverScaleInterruption属性以支持该行为）。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11--><!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## DRAG
+
+```TypeScript
+DRAG = 6
+```
+
+拖拽。
+
+**起始版本：** 11
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-GestureType-DRAG = 6--><!--Device-GestureType-DRAG = 6-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -84,24 +138,6 @@ PINCH_GESTURE = 3
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SWIPE_GESTURE
-
-```TypeScript
-SWIPE_GESTURE = 4
-```
-
-快滑手势。
-
-**起始版本：** 11
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-GestureType-SWIPE_GESTURE = 4--><!--Device-GestureType-SWIPE_GESTURE = 4-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## ROTATION_GESTURE
 
 ```TypeScript
@@ -120,13 +156,13 @@ ROTATION_GESTURE = 5
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DRAG
+## SWIPE_GESTURE
 
 ```TypeScript
-DRAG = 6
+SWIPE_GESTURE = 4
 ```
 
-拖拽。
+快滑手势。
 
 **起始版本：** 11
 
@@ -134,17 +170,17 @@ DRAG = 6
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-GestureType-DRAG = 6--><!--Device-GestureType-DRAG = 6-End-->
+<!--Device-GestureType-SWIPE_GESTURE = 4--><!--Device-GestureType-SWIPE_GESTURE = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## CLICK
+## TAP_GESTURE
 
 ```TypeScript
-CLICK = 7
+TAP_GESTURE = 0
 ```
 
-点击。
+点击手势。
 
 **起始版本：** 11
 
@@ -152,43 +188,7 @@ CLICK = 7
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-GestureType-CLICK = 7--><!--Device-GestureType-CLICK = 7-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## BOX_SELECT_GESTURE
-
-```TypeScript
-BOX_SELECT_GESTURE = 8
-```
-
-滚动类容器鼠标框选手势，是一种特殊的滑动手势，用于在滚动容器中通过鼠标拖拽创建选择区域，批量选择多个元素。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
-
-<!--Device-GestureType-BOX_SELECT_GESTURE = 8--><!--Device-GestureType-BOX_SELECT_GESTURE = 8-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## WEB_SCROLL_GESTURE
-
-```TypeScript
-WEB_SCROLL_GESTURE = 9
-```
-
-Web组件滚动手势，是一种特殊的滑动手势，用于控制Web组件内的滚动行为。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
-
-<!--Device-GestureType-WEB_SCROLL_GESTURE = 9--><!--Device-GestureType-WEB_SCROLL_GESTURE = 9-End-->
+<!--Device-GestureType-TAP_GESTURE = 0--><!--Device-GestureType-TAP_GESTURE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,13 +210,13 @@ TEXT_FIELD_SELECT_GESTURE = 10
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## CONTEXT_MENU_HOVER_GESTURE
+## WEB_SCROLL_GESTURE
 
 ```TypeScript
-CONTEXT_MENU_HOVER_GESTURE = 11
+WEB_SCROLL_GESTURE = 9
 ```
 
-上下文菜单悬停手势是一种特殊的长按手势，用于在长按过程中触发菜单的hoverScale动画效果（需启用[ContextMenuAnimationOptions](arkts-arkui-common-comp-contextmenuanimationoptions-i.md)的hoverScaleInterruption属性以支持该行为）。
+Web组件滚动手势，是一种特殊的滑动手势，用于控制Web组件内的滚动行为。
 
 **起始版本：** 23
 
@@ -224,6 +224,6 @@ CONTEXT_MENU_HOVER_GESTURE = 11
 
 **原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
 
-<!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11--><!--Device-GestureType-CONTEXT_MENU_HOVER_GESTURE = 11-End-->
+<!--Device-GestureType-WEB_SCROLL_GESTURE = 9--><!--Device-GestureType-WEB_SCROLL_GESTURE = 9-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

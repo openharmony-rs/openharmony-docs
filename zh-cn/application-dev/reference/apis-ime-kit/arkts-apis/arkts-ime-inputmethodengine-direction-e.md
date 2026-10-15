@@ -12,20 +12,6 @@ export enum Direction
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## CURSOR_UP
-
-```TypeScript
-CURSOR_UP = 1
-```
-
-向上。
-
-**起始版本：** 10
-
-<!--Device-Direction-CURSOR_UP = 1--><!--Device-Direction-CURSOR_UP = 1-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
 ## CURSOR_DOWN
 
 ```TypeScript
@@ -65,5 +51,19 @@ CURSOR_RIGHT
 **起始版本：** 10
 
 <!--Device-Direction-CURSOR_RIGHT--><!--Device-Direction-CURSOR_RIGHT-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## CURSOR_UP
+
+```TypeScript
+CURSOR_UP = 1
+```
+
+向上。
+
+**起始版本：** 10
+
+<!--Device-Direction-CURSOR_UP = 1--><!--Device-Direction-CURSOR_UP = 1-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

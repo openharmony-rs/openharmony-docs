@@ -44,6 +44,7 @@ Gets the Boids simulation world instance associated with the specified scene.
 | --- | --- |
 | [BoidsSimWorld](arkts-arkgraphics3d-sceneboidssim-boidssimworld-c-sys.md) &#124; null | Returns the Boids simulation world instance, or null if it does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,3 +69,5 @@ async function initBoidsSim(): Promise<BoidsSimWorld | null> {
   return world;
 }
 ```
+
+<!--DelEnd-->

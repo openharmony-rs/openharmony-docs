@@ -46,6 +46,7 @@ Pauses the distributed hardware service on the controlled device. This API uses 
 | 24200101 | The specified distributed hardware is not started. |
 | 24200102 | The specified source device is not connected. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,3 +68,5 @@ try {
   console.error('pause distributed hardware failed:' + error);
 }
 ```
+
+<!--DelEnd-->

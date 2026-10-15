@@ -36,26 +36,6 @@ Image.
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
-## VIDEO_TYPE
-
-```TypeScript
-VIDEO_TYPE = 'video/*'
-```
-
-Video.
-
-**Since:** 9
-
-**Deprecated since:** 18
-
-**Substitutes:** [VIDEO_TYPE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md#video_type)
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'--><!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileService
-
 ## IMAGE_VIDEO_TYPE
 
 ```TypeScript
@@ -73,5 +53,25 @@ Image and video.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PhotoViewMIMETypes-IMAGE_VIDEO_TYPE = '*/*'--><!--Device-PhotoViewMIMETypes-IMAGE_VIDEO_TYPE = '*/*'-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileService
+
+## VIDEO_TYPE
+
+```TypeScript
+VIDEO_TYPE = 'video/*'
+```
+
+Video.
+
+**Since:** 9
+
+**Deprecated since:** 18
+
+**Substitutes:** [VIDEO_TYPE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md#video_type)
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'--><!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService

@@ -60,7 +60,7 @@ Index of the added data. The value range is [0, data source length]. Rendering i
 key?: string | Array<string>
 ```
 
-Assigns a key to the added data. The original key is used by default. The key supports the string or Array\&lt;string\&gt; type. If the key is an array whose length is greater than **count**, an invalid parameter error is reported.
+Assigns a key to the added data. The original key is used by default. The key supports the string or Array\<string\> type. If the key is an array whose length is greater than **count**, an invalid parameter error is reported.
 
 **Type:** string &#124; Array&lt;string&gt;
 

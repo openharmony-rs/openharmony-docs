@@ -14,23 +14,25 @@ A key can be used only for a single purpose. You cannot use the same key for bot
 
 **System capability:** SystemCapability.Security.Huks.Core
 
-## HUKS_KEY_PURPOSE_ENCRYPT
+## HUKS_KEY_PURPOSE_AGREE
 
 ```TypeScript
-HUKS_KEY_PURPOSE_ENCRYPT = 1
+HUKS_KEY_PURPOSE_AGREE = 256
 ```
 
-Used to encrypt the plaintext.
+Used for key agreement.
 
 **Since:** 8
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_ENCRYPT = 1--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_ENCRYPT = 1-End-->
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_AGREE = 256--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_AGREE = 256-End-->
 
-**System capability:** SystemCapability.Security.Huks.Core
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
 ## HUKS_KEY_PURPOSE_DECRYPT
 
@@ -49,46 +51,6 @@ Used to decrypt the cipher text.
 <!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_DECRYPT = 2--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_DECRYPT = 2-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_KEY_PURPOSE_SIGN
-
-```TypeScript
-HUKS_KEY_PURPOSE_SIGN = 4
-```
-
-Used for signing.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_SIGN = 4--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_SIGN = 4-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_KEY_PURPOSE_VERIFY
-
-```TypeScript
-HUKS_KEY_PURPOSE_VERIFY = 8
-```
-
-Used to verify the signature.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_VERIFY = 8--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_VERIFY = 8-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
 ## HUKS_KEY_PURPOSE_DERIVE
 
@@ -110,13 +72,31 @@ Used to derive a key.
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_PURPOSE_WRAP
+## HUKS_KEY_PURPOSE_ENCRYPT
 
 ```TypeScript
-HUKS_KEY_PURPOSE_WRAP = 32
+HUKS_KEY_PURPOSE_ENCRYPT = 1
 ```
 
-Used for an encrypted export.
+Used to encrypt the plaintext.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_ENCRYPT = 1--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_ENCRYPT = 1-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_KEY_PURPOSE_MAC
+
+```TypeScript
+HUKS_KEY_PURPOSE_MAC = 128
+```
+
+Used to generate a message authentication code.
 
 **Since:** 8
 
@@ -124,7 +104,27 @@ Used for an encrypted export.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_WRAP = 32--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_WRAP = 32-End-->
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_MAC = 128--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_MAC = 128-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension
+
+## HUKS_KEY_PURPOSE_SIGN
+
+```TypeScript
+HUKS_KEY_PURPOSE_SIGN = 4
+```
+
+Used for signing.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_SIGN = 4--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_SIGN = 4-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
@@ -150,13 +150,13 @@ Used for a secure import.
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_PURPOSE_MAC
+## HUKS_KEY_PURPOSE_VERIFY
 
 ```TypeScript
-HUKS_KEY_PURPOSE_MAC = 128
+HUKS_KEY_PURPOSE_VERIFY = 8
 ```
 
-Used to generate a message authentication code.
+Used to verify the signature.
 
 **Since:** 8
 
@@ -164,19 +164,19 @@ Used to generate a message authentication code.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_MAC = 128--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_MAC = 128-End-->
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_VERIFY = 8--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_VERIFY = 8-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
-## HUKS_KEY_PURPOSE_AGREE
+## HUKS_KEY_PURPOSE_WRAP
 
 ```TypeScript
-HUKS_KEY_PURPOSE_AGREE = 256
+HUKS_KEY_PURPOSE_WRAP = 32
 ```
 
-Used for key agreement.
+Used for an encrypted export.
 
 **Since:** 8
 
@@ -184,7 +184,7 @@ Used for key agreement.
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_AGREE = 256--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_AGREE = 256-End-->
+<!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_WRAP = 32--><!--Device-HuksKeyPurpose-HUKS_KEY_PURPOSE_WRAP = 32-End-->
 
 **System capability:** 
 - API version 12 and later: SystemCapability.Security.Huks.Core

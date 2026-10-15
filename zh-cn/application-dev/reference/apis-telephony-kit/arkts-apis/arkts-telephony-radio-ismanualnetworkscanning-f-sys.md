@@ -49,6 +49,7 @@ function isManualNetworkScanning(slotId: number): Promise<boolean>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,3 +59,5 @@ radio.isManualNetworkScanning(0).then((state: boolean) => {
     console.error(`isManualNetworkScanning failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

@@ -6,4 +6,4 @@
 
 | 名称 | 说明 |
 | --- | --- |
-| [Advertisement](arkts-ads-advertisement-advertisement-i.md) | 本模块为请求的广告内容。 |
+| [Advertisement](arkts-ads-advertisement-i.md) | 本模块为请求的广告内容。 |

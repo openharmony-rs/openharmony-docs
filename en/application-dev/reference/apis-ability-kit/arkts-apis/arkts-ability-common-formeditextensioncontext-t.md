@@ -8,6 +8,8 @@ The context of form edit extension. It allows access to formEditExtension-specif
 
 @typedef { _FormEditExtensionContext.default }
 
+**Type:** _FormEditExtensionContext.default
+
 **Since:** 22
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ The context of form edit extension. It allows access to formEditExtension-specif
 <!--Device-common-export type FormEditExtensionContext = _FormEditExtensionContext.default--><!--Device-common-export type FormEditExtensionContext = _FormEditExtensionContext.default-End-->
 
 **System capability:** SystemCapability.Ability.Form
-
-**Type:** _FormEditExtensionContext.default

@@ -97,6 +97,7 @@ listFile(filter?: Filter): FileIterator
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -128,6 +129,8 @@ try {
   console.error("listFile failed, errCode:" + error.code + ", errMessage:" + error.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## scanFile
 
@@ -202,6 +205,7 @@ scanFile(filter?: Filter): FileIterator
 | 14300003 | Fail to get fileextension info |
 | 14300004 | Get wrong result |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -233,6 +237,8 @@ try {
   console.error("scanFile failed, errCode:" + error.code + ", errMessage:" + error.message);
 }
 ```
+
+<!--DelEnd-->
 
 ## fileName
 

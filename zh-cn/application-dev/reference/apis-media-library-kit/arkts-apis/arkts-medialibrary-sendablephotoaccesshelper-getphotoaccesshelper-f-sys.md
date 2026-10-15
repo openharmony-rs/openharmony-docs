@@ -6,7 +6,7 @@
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
-<a id="getphotoaccesshelper-1"></a>
+<a id="getphotoaccesshelper2"></a>
 
 ## getPhotoAccessHelper
 
@@ -49,6 +49,7 @@ function getPhotoAccessHelper(context: Context, userId: number): PhotoAccessHelp
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,3 +72,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

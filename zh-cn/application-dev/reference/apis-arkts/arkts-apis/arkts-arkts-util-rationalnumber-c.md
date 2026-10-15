@@ -4,7 +4,7 @@
 class RationalNumber
 ```
 
-提供比较有理数、获取分子和分母的 API。例如，可以使用 **toString()** API 将有理数转换为字符串。
+提供比较有理数、获取分子和分母的 API。创建有理数时会自动约分。例如，可以使用 **toString()** API 将有理数转换为字符串。
 
 **起始版本：** 8
 
@@ -44,7 +44,7 @@ compare(another: RationalNumber): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 根据比较结果返回 0、1 或 -1。 |
+| number | 相等时返回0；给定对象小于当前对象时返回1；给定对象大于当前对象时返回-1。 |
 
 **示例**
 
@@ -56,7 +56,7 @@ console.info("result = " + result);
 // 输出结果：result = -1
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -80,13 +80,15 @@ constructor()
 let rationalNumber = new util.RationalNumber();
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
 constructor(numerator: number, denominator: number)
 ```
 
-用于创建 **RationalNumber** 对象的构造函数。
+用于创建 **RationalNumber** 对象的构造函数。无参构造时分子为0、分母为1。
 
 **起始版本：** 8
 
@@ -572,7 +574,7 @@ compareTo(another: RationalNumber): number
 
 **废弃版本：** 9
 
-**替代接口：** compare
+**替代接口：** [compare](#compare)
 
 <!--Device-RationalNumber-compareTo(another: RationalNumber): number--><!--Device-RationalNumber-compareTo(another: RationalNumber): number-End-->
 
@@ -588,7 +590,7 @@ compareTo(another: RationalNumber): number
 
 | 类型 | 说明 |
 | --- | --- |
-| number | 根据比较结果返回 0、1 或 -1。 |
+| number | 相等时返回0；给定对象小于当前对象时返回1；给定对象大于当前对象时返回-1。 |
 
 **示例**
 

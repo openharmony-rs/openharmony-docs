@@ -4,7 +4,7 @@
 declare type SubHeaderV2OperationItemType = ResourceStr | SymbolGlyphModifier
 ```
 
-SubHeaderV2OperationItemType
+Defines the union type for the content of elements in the operation area.
 
 **Since:** 18
 
@@ -18,5 +18,5 @@ SubHeaderV2OperationItemType
 
 | Type | Description |
 | --- | --- |
-| [ResourceStr](arkts-arkui-resourcestr-t.md) |  |
-| [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md) |  |
+| [ResourceStr](arkts-arkui-resourcestr-t.md) | String type for defining text display or common icons; resource type for defining common icons. |
+| [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md) | Symbol type for defining symbol icons. |

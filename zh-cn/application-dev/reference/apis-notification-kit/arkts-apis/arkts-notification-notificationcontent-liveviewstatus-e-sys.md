@@ -30,22 +30,6 @@ LIVE_VIEW_CREATE = 0
 
 **系统接口：** 此接口为系统接口。
 
-## LIVE_VIEW_INCREMENTAL_UPDATE
-
-```TypeScript
-LIVE_VIEW_INCREMENTAL_UPDATE = 1
-```
-
-增量更新
-
-**起始版本：** 11
-
-<!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1--><!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1-End-->
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-**系统接口：** 此接口为系统接口。
-
 ## LIVE_VIEW_END
 
 ```TypeScript
@@ -73,6 +57,22 @@ LIVE_VIEW_FULL_UPDATE = 3
 **起始版本：** 11
 
 <!--Device-LiveViewStatus-LIVE_VIEW_FULL_UPDATE = 3--><!--Device-LiveViewStatus-LIVE_VIEW_FULL_UPDATE = 3-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
+**系统接口：** 此接口为系统接口。
+
+## LIVE_VIEW_INCREMENTAL_UPDATE
+
+```TypeScript
+LIVE_VIEW_INCREMENTAL_UPDATE = 1
+```
+
+增量更新
+
+**起始版本：** 11
+
+<!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1--><!--Device-LiveViewStatus-LIVE_VIEW_INCREMENTAL_UPDATE = 1-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 

@@ -47,6 +47,7 @@ Obtains the supported ISO range.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,6 +65,8 @@ function getIsoRange(professionalPhotoSession: camera.ProfessionalPhotoSession):
   return isoRange;
 }
 ```
+
+<!--DelEnd-->
 
 ## isManualIsoSupported
 
@@ -94,6 +97,7 @@ Checks whether manual ISO setting is supported.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -111,3 +115,5 @@ function isManualIsoSupported(professionalPhotoSession: camera.ProfessionalPhoto
   return status;
 }
 ```
+
+<!--DelEnd-->

@@ -26,7 +26,7 @@ import { bundleMonitor } from '@kit.AbilityKit';
 readonly appIndex: number
 ```
 
-应用状态发生变化的应用分身索引。
+应用发生变更的应用分身索引。
 
 **类型：** number
 
@@ -44,7 +44,7 @@ readonly appIndex: number
 readonly bundleName: string
 ```
 
-应用状态发生变化的应用Bundle名称。
+应用发生变更的应用Bundle名称。
 
 **类型：** string
 
@@ -62,7 +62,7 @@ readonly bundleName: string
 readonly userId: number
 ```
 
-应用状态发生变化的用户ID，可以通过getOsAccountLocalId接口获取。
+应用发生变更的用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。
 
 **类型：** number
 

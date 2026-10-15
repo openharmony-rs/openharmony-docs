@@ -12,77 +12,13 @@ enum XMPTagType
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-未知类型。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-XMPTagType-UNKNOWN = 0--><!--Device-XMPTagType-UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## STRING
-
-```TypeScript
-STRING = 1
-```
-
-字符串类型。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-XMPTagType-STRING = 1--><!--Device-XMPTagType-STRING = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## UNORDERED_ARRAY
-
-```TypeScript
-UNORDERED_ARRAY = 2
-```
-
-无序数组类型。序列化时，此类型在XMP元数据中的格式为&lt;rdf:Bag&gt;。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-XMPTagType-UNORDERED_ARRAY = 2--><!--Device-XMPTagType-UNORDERED_ARRAY = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## ORDERED_ARRAY
-
-```TypeScript
-ORDERED_ARRAY = 3
-```
-
-有序数组类型。序列化时，此类型在XMP元数据中的格式为&lt;rdf:Seq&gt;。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-XMPTagType-ORDERED_ARRAY = 3--><!--Device-XMPTagType-ORDERED_ARRAY = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## ALTERNATE_ARRAY
 
 ```TypeScript
 ALTERNATE_ARRAY = 4
 ```
 
-备选数组类型。序列化时，此类型在XMP元数据中的格式为&lt;rdf:Alt&gt;。
+备选数组类型。序列化时，此类型在XMP元数据中的格式为<rdf:Alt>。
 
 **起始版本：** 26.0.0
 
@@ -108,6 +44,38 @@ ALTERNATE_TEXT = 5
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## ORDERED_ARRAY
+
+```TypeScript
+ORDERED_ARRAY = 3
+```
+
+有序数组类型。序列化时，此类型在XMP元数据中的格式为<rdf:Seq>。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-XMPTagType-ORDERED_ARRAY = 3--><!--Device-XMPTagType-ORDERED_ARRAY = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## STRING
+
+```TypeScript
+STRING = 1
+```
+
+字符串类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-XMPTagType-STRING = 1--><!--Device-XMPTagType-STRING = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## STRUCTURE
 
 ```TypeScript
@@ -121,5 +89,37 @@ STRUCTURE = 6
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-XMPTagType-STRUCTURE = 6--><!--Device-XMPTagType-STRUCTURE = 6-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+未知类型。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-XMPTagType-UNKNOWN = 0--><!--Device-XMPTagType-UNKNOWN = 0-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## UNORDERED_ARRAY
+
+```TypeScript
+UNORDERED_ARRAY = 2
+```
+
+无序数组类型。序列化时，此类型在XMP元数据中的格式为<rdf:Bag>。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-XMPTagType-UNORDERED_ARRAY = 2--><!--Device-XMPTagType-UNORDERED_ARRAY = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

@@ -6,6 +6,8 @@
 import { deviceInfo } from '@kit.MDMKit';
 ```
 
+<a id="getdeviceserial1"></a>
+
 ## getDeviceSerial
 
 ```TypeScript
@@ -45,8 +47,9 @@ function getDeviceSerial(admin: Want, callback: AsyncCallback<string>): void
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,8 +71,10 @@ deviceInfo.getDeviceSerial(wantTemp, (err, result) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getdeviceserial-1"></a>
+
+<a id="getdeviceserial2"></a>
 
 ## getDeviceSerial
 
@@ -115,8 +120,9 @@ function getDeviceSerial(admin: Want): Promise<string>
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-设备管理器权限不够) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -136,3 +142,5 @@ deviceInfo.getDeviceSerial(wantTemp).then((result) => {
   console.error(`Failed to get device serial. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

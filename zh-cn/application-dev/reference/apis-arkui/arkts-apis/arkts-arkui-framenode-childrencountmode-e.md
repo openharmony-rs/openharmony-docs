@@ -34,28 +34,6 @@ ALL_EXPAND = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## ONLY_EXPANDED
-
-```TypeScript
-ONLY_EXPANDED = 1
-```
-
-计数已展开模式。不展开懒加载节点，只返回当前已展开的子节点数量。未展开的懒加载节点不包含在计数中。
-
-是否展开懒加载节点：否
-
-使用场景：仅查询已展开子节点数量的场景。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-ChildrenCountMode-ONLY_EXPANDED = 1--><!--Device-ChildrenCountMode-ONLY_EXPANDED = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## ALL_NOT_EXPAND
 
 ```TypeScript
@@ -75,5 +53,27 @@ ALL_NOT_EXPAND = 2
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ChildrenCountMode-ALL_NOT_EXPAND = 2--><!--Device-ChildrenCountMode-ALL_NOT_EXPAND = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## ONLY_EXPANDED
+
+```TypeScript
+ONLY_EXPANDED = 1
+```
+
+计数已展开模式。不展开懒加载节点，只返回当前已展开的子节点数量。未展开的懒加载节点不包含在计数中。
+
+是否展开懒加载节点：否
+
+使用场景：仅查询已展开子节点数量的场景。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-ChildrenCountMode-ONLY_EXPANDED = 1--><!--Device-ChildrenCountMode-ONLY_EXPANDED = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

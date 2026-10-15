@@ -20,7 +20,7 @@ constructor(value: string | ImageAttachment | CustomSpan, styles?: Array<StyleOp
 
 A constructor used to create a styled string.
 
-It is not supported to create it before [loadContent()](arkts-arkui-window-window-i.md#loadcontent).
+It is not supported to create it before [loadContent()](arkts-arkui-window-window-i.md#loadcontent1).
 
 **Since:** 12
 
@@ -75,9 +75,9 @@ Checks whether this styled string is the same as another styled string.
 static fromHtml(html: string): Promise<StyledString>
 ```
 
-Converts an HTML-formatted string into a styled string. HTML tags are mapped to the corresponding styled string styles (for example, bold tags are mapped to **TextStyle**, and decoration tags are mapped to **DecorationStyle**). The HTML tags currently supported for conversion are: \<p>, \&lt;span&gt;, \&lt;img&gt;, \
+Converts an HTML-formatted string into a styled string. HTML tags are mapped to the corresponding styled string styles (for example, bold tags are mapped to **TextStyle**, and decoration tags are mapped to **DecorationStyle**). The HTML tags currently supported for conversion are: \<p>, \<span>, \<img>, \
 
-, \&lt;strong&gt;, \&lt;b&gt;, \&lt;a&gt;, \&lt;i&gt;, \&lt;em&gt;, \&lt;s&gt;, \&lt;u&gt;, \&lt;del&gt;, \&lt;sup&gt;, \&lt;sub&gt;, \&lt;cite&gt;, \&lt;dfn&gt;, \&lt;small&gt;, \&lt;h1&gt;, \&lt;h2&gt;, \&lt;h3&gt;, \&lt;h4&gt;, \&lt;h5&gt;, \
+, \<strong>, \<b>, \<a>, \<i>, \<em>, \<s>, \<u>, \<del>, \<sup>, \<sub>, \<cite>, \<dfn>, \<small>, \<h1>, \<h2>, \<h3>, \<h4>, \<h5>, \
 
 **Since:** 12
 

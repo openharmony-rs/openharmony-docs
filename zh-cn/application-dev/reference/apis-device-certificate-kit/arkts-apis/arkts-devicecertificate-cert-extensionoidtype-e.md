@@ -22,7 +22,7 @@ EXTENSION_OID_TYPE_ALL = 0
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExtensionOidType-EXTENSION_OID_TYPE_ALL = 0--><!--Device-ExtensionOidType-EXTENSION_OID_TYPE_ALL = 0-End-->
 
@@ -38,7 +38,7 @@ critical为true的OID。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExtensionOidType-EXTENSION_OID_TYPE_CRITICAL = 1--><!--Device-ExtensionOidType-EXTENSION_OID_TYPE_CRITICAL = 1-End-->
 
@@ -54,7 +54,7 @@ critical为false的OID。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ExtensionOidType-EXTENSION_OID_TYPE_UNCRITICAL = 2--><!--Device-ExtensionOidType-EXTENSION_OID_TYPE_UNCRITICAL = 2-End-->
 

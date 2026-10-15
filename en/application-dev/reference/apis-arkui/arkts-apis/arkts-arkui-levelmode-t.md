@@ -8,6 +8,8 @@ Import the LevelMode type from promptAction.
 
 @typedef { import('../api/@ohos.promptAction').LevelMode } LevelMode
 
+**Type:** import('../api/@ohos.promptAction').LevelMode
+
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Import the LevelMode type from promptAction.
 <!--Device-unnamed-declare type LevelMode = import('../api/@ohos.promptAction').LevelMode--><!--Device-unnamed-declare type LevelMode = import('../api/@ohos.promptAction').LevelMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.promptAction').LevelMode

@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getabilityinfo1"></a>
+
 ## getAbilityInfo
 
 ```TypeScript
@@ -32,7 +34,7 @@ function getAbilityInfo(bundleName: string, abilityName: string, callback: Async
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 应用Bundle名称。 |
 | abilityName | string | 是 | Ability名称。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;AbilityInfo&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[AbilityInfo](arkts-ability-abilityinfo-depr-i.md)&gt; | 是 | 程序启动作为入参的回调函数，返回Ability信息。 |
 
 **示例**
 
@@ -52,7 +54,7 @@ bundle.getAbilityInfo(bundleName, abilityName, (err, data) => {
 ```
 
 
-<a id="getabilityinfo-1"></a>
+<a id="getabilityinfo2"></a>
 
 ## getAbilityInfo
 
@@ -85,7 +87,7 @@ function getAbilityInfo(bundleName: string, abilityName: string): Promise<Abilit
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;AbilityInfo&gt; | Promise形式返回Ability信息。 |
+| Promise&lt;[AbilityInfo](arkts-ability-abilityinfo-depr-i.md)&gt; | Promise形式返回Ability信息。 |
 
 **示例**
 

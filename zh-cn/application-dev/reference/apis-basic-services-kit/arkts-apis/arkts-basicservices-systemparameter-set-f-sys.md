@@ -6,6 +6,8 @@
 import { systemParameter } from '@kit.BasicServicesKit';
 ```
 
+<a id="set1"></a>
+
 ## set
 
 ```TypeScript
@@ -18,7 +20,7 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** set
+**替代接口：** [set](arkts-basicservices-systemparameterenhance-set-f-sys.md)
 
 <!--Device-systemParameter-function set(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-systemParameter-function set(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -34,6 +36,7 @@ function set(key: string, value: string, callback: AsyncCallback<void>): void
 | value | string | 是 | 待设置的系统参数值。长度限制请参考[系统参数](../../../../device-dev/subsystems/subsys-boot-init-sysparam.md)。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，用于异步返回设置结果。当设置成功时，err为undefined；当设置失败时，err为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,8 +55,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="set-1"></a>
+
+<a id="set2"></a>
 
 ## set
 
@@ -67,7 +72,7 @@ function set(key: string, value: string): Promise<void>
 
 **废弃版本：** 9
 
-**替代接口：** set
+**替代接口：** [set](arkts-basicservices-systemparameterenhance-set-f-sys.md)
 
 <!--Device-systemParameter-function set(key: string, value: string): Promise<void>--><!--Device-systemParameter-function set(key: string, value: string): Promise<void>-End-->
 
@@ -88,6 +93,7 @@ function set(key: string, value: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise实例，用于异步获取结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -104,3 +110,5 @@ try {
   console.error('set unexpected error: ' + e);
 }
 ```
+
+<!--DelEnd-->

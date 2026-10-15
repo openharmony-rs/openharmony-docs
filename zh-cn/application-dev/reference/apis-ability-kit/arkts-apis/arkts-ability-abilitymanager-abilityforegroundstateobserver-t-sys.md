@@ -6,6 +6,8 @@ export type AbilityForegroundStateObserver = _AbilityForegroundStateObserver.def
 
 AbilityForegroundStateObserver二级模块。
 
+**类型：** _AbilityForegroundStateObserver.default
+
 **起始版本：** 11
 
 <!--Device-abilityManager-export type AbilityForegroundStateObserver = _AbilityForegroundStateObserver.default--><!--Device-abilityManager-export type AbilityForegroundStateObserver = _AbilityForegroundStateObserver.default-End-->
@@ -13,5 +15,3 @@ AbilityForegroundStateObserver二级模块。
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _AbilityForegroundStateObserver.default

@@ -12,17 +12,17 @@ Enumerates CallerType including caller source type.
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
-## TYPE_CAST
+## TYPE_APP
 
 ```TypeScript
-TYPE_CAST = 'cast'
+TYPE_APP = 'app'
 ```
 
-The control command comes from cast service.
+The control command comes from an application.
 
 **Since:** 22
 
-<!--Device-CallerType-TYPE_CAST = 'cast'--><!--Device-CallerType-TYPE_CAST = 'cast'-End-->
+<!--Device-CallerType-TYPE_APP = 'app'--><!--Device-CallerType-TYPE_APP = 'app'-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
@@ -40,6 +40,20 @@ The control command comes from bluetooth.
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core
 
+## TYPE_CAST
+
+```TypeScript
+TYPE_CAST = 'cast'
+```
+
+The control command comes from cast service.
+
+**Since:** 22
+
+<!--Device-CallerType-TYPE_CAST = 'cast'--><!--Device-CallerType-TYPE_CAST = 'cast'-End-->
+
+**System capability:** SystemCapability.Multimedia.AVSession.Core
+
 ## TYPE_NEARLINK
 
 ```TypeScript
@@ -53,19 +67,5 @@ The control command comes from nearlink device.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-CallerType-TYPE_NEARLINK = 'nearlink'--><!--Device-CallerType-TYPE_NEARLINK = 'nearlink'-End-->
-
-**System capability:** SystemCapability.Multimedia.AVSession.Core
-
-## TYPE_APP
-
-```TypeScript
-TYPE_APP = 'app'
-```
-
-The control command comes from an application.
-
-**Since:** 22
-
-<!--Device-CallerType-TYPE_APP = 'app'--><!--Device-CallerType-TYPE_APP = 'app'-End-->
 
 **System capability:** SystemCapability.Multimedia.AVSession.Core

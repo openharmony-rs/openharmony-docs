@@ -670,6 +670,8 @@ try {
 }
 ```
 
+<a id="readbooleanarray1"></a>
+
 ## readBooleanArray
 
 ```TypeScript
@@ -717,7 +719,7 @@ try {
 }
 ```
 
-<a id="readbooleanarray-1"></a>
+<a id="readbooleanarray2"></a>
 
 ## readBooleanArray
 
@@ -815,6 +817,8 @@ try {
 }
 ```
 
+<a id="readbytearray1"></a>
+
 ## readByteArray
 
 ```TypeScript
@@ -864,7 +868,7 @@ try {
 }
 ```
 
-<a id="readbytearray-1"></a>
+<a id="readbytearray2"></a>
 
 ## readByteArray
 
@@ -958,6 +962,8 @@ try {
 }
 ```
 
+<a id="readchararray1"></a>
+
 ## readCharArray
 
 ```TypeScript
@@ -1005,7 +1011,7 @@ try {
 }
 ```
 
-<a id="readchararray-1"></a>
+<a id="readchararray2"></a>
 
 ## readCharArray
 
@@ -1063,9 +1069,6 @@ readDouble(): number
 
 从MessageSequence实例中读取双精度浮点值。
 
-- 返回新创建的数组，无需预先创建。  
-- 数组元素为双精度浮点数。
-
 **起始版本：** 9
 
 <!--Device-MessageSequence-readDouble(): double--><!--Device-MessageSequence-readDouble(): double-End-->
@@ -1102,6 +1105,8 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
+
+<a id="readdoublearray1"></a>
 
 ## readDoubleArray
 
@@ -1150,7 +1155,7 @@ try {
 }
 ```
 
-<a id="readdoublearray-1"></a>
+<a id="readdoublearray2"></a>
 
 ## readDoubleArray
 
@@ -1403,6 +1408,8 @@ try {
 }
 ```
 
+<a id="readfloatarray1"></a>
+
 ## readFloatArray
 
 ```TypeScript
@@ -1450,7 +1457,7 @@ try {
 }
 ```
 
-<a id="readfloatarray-1"></a>
+<a id="readfloatarray2"></a>
 
 ## readFloatArray
 
@@ -1510,7 +1517,7 @@ readInt(): number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-MessageSequence-readInt(): int--><!--Device-MessageSequence-readInt(): int-End-->
 
@@ -1547,6 +1554,8 @@ try {
   hilog.error(0x0000, 'testTag', 'errorMessage ' + e.message);
 }
 ```
+
+<a id="readintarray1"></a>
 
 ## readIntArray
 
@@ -1598,7 +1607,7 @@ try {
 }
 ```
 
-<a id="readintarray-1"></a>
+<a id="readintarray2"></a>
 
 ## readIntArray
 
@@ -1742,6 +1751,8 @@ try {
 }
 ```
 
+<a id="readlongarray1"></a>
+
 ## readLongArray
 
 ```TypeScript
@@ -1789,7 +1800,7 @@ try {
 }
 ```
 
-<a id="readlongarray-1"></a>
+<a id="readlongarray2"></a>
 
 ## readLongArray
 
@@ -2104,6 +2115,8 @@ try {
 }
 ```
 
+<a id="readremoteobjectarray1"></a>
+
 ## readRemoteObjectArray
 
 ```TypeScript
@@ -2166,7 +2179,7 @@ try {
 }
 ```
 
-<a id="readremoteobjectarray-1"></a>
+<a id="readremoteobjectarray2"></a>
 
 ## readRemoteObjectArray
 
@@ -2272,6 +2285,8 @@ try {
 }
 ```
 
+<a id="readshortarray1"></a>
+
 ## readShortArray
 
 ```TypeScript
@@ -2319,7 +2334,7 @@ try {
 }
 ```
 
-<a id="readshortarray-1"></a>
+<a id="readshortarray2"></a>
 
 ## readShortArray
 
@@ -2374,11 +2389,9 @@ readString(): string
 
 从MessageSequence实例中读取字符串值。
 
-- 先读取长度，再读取内容。
-
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-MessageSequence-readString(): string--><!--Device-MessageSequence-readString(): string-End-->
 
@@ -2416,6 +2429,8 @@ try {
 }
 ```
 
+<a id="readstringarray1"></a>
+
 ## readStringArray
 
 ```TypeScript
@@ -2425,8 +2440,7 @@ readStringArray(dataIn: string[]): void
 从MessageSequence实例中读取字符串数组，并将其写入到创建的空数组中。
 
 - 需预先创建空数组且长度应与写入时的数组长度一致。  
-- 读取后dataIn数组会被填充读取的字节数据。  
-- 读指针向后移动相应字节数。
+- 读取后，dataIn数组会被填充读取的字符串数据。
 
 **起始版本：** 9
 
@@ -2467,7 +2481,7 @@ try {
 }
 ```
 
-<a id="readstringarray-1"></a>
+<a id="readstringarray2"></a>
 
 ## readStringArray
 
@@ -2477,8 +2491,7 @@ readStringArray(): string[]
 
 从MessageSequence实例中读取字符串数组。
 
-- 返回新创建的数组，无需预先创建。  
-- 数组单个元素的长度范围[0, 40960)。
+- 返回新创建的数组，无需预先创建。
 
 **起始版本：** 9
 
@@ -2920,7 +2933,7 @@ writeBooleanArray(booleanArray: boolean[]): void
 
 将布尔数组写入MessageSequence实例。
 
-- 必须与[readBooleanArray](#readbooleanarray)配对使用。  
+- 必须与[readBooleanArray](#readbooleanarray1)配对使用。  
 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 9
@@ -3410,7 +3423,7 @@ writeInt(val: number): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-MessageSequence-writeInt(val: int): void--><!--Device-MessageSequence-writeInt(val: int): void-End-->
 
@@ -3963,7 +3976,7 @@ writeRemoteObjectArray(objectArray: IRemoteObject[]): void
 
 将IRemoteObject对象数组写入MessageSequence。适用于需要传递多个远程对象的场景，如批量注册多个服务代理、传递多个回调接口、多服务端点管理等。
 
-- 必须与[readRemoteObjectArray](#readremoteobjectarray)配对使用。  
+- 必须与[readRemoteObjectArray](#readremoteobjectarray1)配对使用。  
 - 读取数组长度必须与写入数组长度一致。
 
 **起始版本：** 9
@@ -4115,10 +4128,9 @@ try {
 writeString(val: string): void
 ```
 
-将字符串值写入MessageSequence实例。调用此方法后，字符串会被序列化存入缓冲区。写入时会先存储字符串长度，再存储字节数据。
+将字符串值写入MessageSequence实例。
 
 - 此方法与[readString](#readstring)方法配对使用。  
-- 先写入长度，再写入内容。  
 - 支持多语言字符集。  
 - 长度信息便于[readString](#readstring)确定读取边界。  
 - 注意区分字符数和字节数，中文字符占用更多字节。  
@@ -4127,7 +4139,7 @@ writeString(val: string): void
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-MessageSequence-writeString(val: string): void--><!--Device-MessageSequence-writeString(val: string): void-End-->
 
@@ -4172,8 +4184,9 @@ writeStringArray(stringArray: string[]): void
 
 将字符串数组写入MessageSequence实例。
 
-- 必须与[readStringArray](#readstringarray)配对使用。  
-- 读取数组长度必须与写入数组长度一致。
+- 必须与[readStringArray](#readstringarray1)配对使用。  
+- 读取数组长度必须与写入数组长度一致。  
+- 数组单个元素的长度范围[0, 40960)。
 
 **起始版本：** 9
 

@@ -42,9 +42,9 @@ batchInsert(table: string, values: Array<ValuesBucket>): Promise<number>
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -141,9 +141,9 @@ batchInsertSync(table: string, values: Array<ValuesBucket>): number
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -244,9 +244,9 @@ batchInsertWithConflictResolution(
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -357,9 +357,9 @@ batchInsertWithConflictResolutionSync(table: string, values: Array<ValuesBucket>
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -469,9 +469,9 @@ batchInsertWithReturning(table: string, values: Array<ValuesBucket>, config: Ret
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -555,9 +555,9 @@ batchInsertWithReturningSync(table: string, values: Array<ValuesBucket>, config:
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -1002,7 +1002,7 @@ execute(sql: string, args?: Array<ValueType>): Promise<ValueType>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The sql(attach,begin,commit,rollback etc.). |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.). |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
@@ -1082,7 +1082,7 @@ executeSync(sql: string, args?: Array<ValueType>): ValueType
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. 4. The sql(attach,begin,commit,rollback etc.). |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.         4. The sql(attach,begin,commit,rollback etc.). |
 | [14800000](../errorcode-data-rdb.md#14800000-内部错误) | Inner error. |
 | [14800011](../errorcode-data-rdb.md#14800011-数据库文件异常) | The current operation failed because the database is corrupted. |
 | [14800014](../errorcode-data-rdb.md#14800014-目标实例已关闭) | The target instance is already closed. |
@@ -1132,9 +1132,9 @@ insert(table: string, values: ValuesBucket, conflict?: ConflictResolution): Prom
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -1218,9 +1218,9 @@ insertSync(table: string, values: ValuesBucket | sendableRelationalStore.ValuesB
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -1968,9 +1968,9 @@ update(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictResol
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -2055,9 +2055,9 @@ updateSync(values: ValuesBucket, predicates: RdbPredicates, conflict?: ConflictR
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -2143,9 +2143,9 @@ updateWithReturning(values: ValuesBucket, predicates: RdbPredicates, config: Ret
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 
@@ -2227,9 +2227,9 @@ updateWithReturningSync(values: ValuesBucket, predicates: RdbPredicates, config:
 
 由于共享内存的大小限制为2MB，因此单条数据的大小也必须严格小于2MB。
 
-如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query-1)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql-1)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
+如果单条数据超过此限制，在后续通过RdbStore的[query](arkts-arkdata-relationalstore-rdbstore-i.md#query2)或[querySql](arkts-arkdata-relationalstore-rdbstore-i.md#querysql2)接口获取ResultSet后，调用[getValue](arkts-arkdata-relationalstore-resultset-i.md#getvalue)、[getString](arkts-arkdata-relationalstore-resultset-i.md#getstring)等get方法时将无法成功获取数据，并可能导致操作失败或抛出异常。
 
-如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep)接口。
+如需读取超过2MB的数据，请使用[queryByStep](arkts-arkdata-relationalstore-rdbstore-i.md#querybystep1)接口。
 
 单条字符串类型字段最大支持写入8MB，超出部分将被截断，仅保留前8MB数据，若需存储超过8MB的内容，建议使用blob类型。
 

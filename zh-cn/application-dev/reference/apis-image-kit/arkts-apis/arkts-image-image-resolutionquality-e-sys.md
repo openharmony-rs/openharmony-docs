@@ -14,6 +14,22 @@ enum ResolutionQuality
 
 **系统接口：** 此接口为系统接口。
 
+## HIGH
+
+```TypeScript
+HIGH = 3
+```
+
+最高等级画质效果，解码耗时长。&lt;br/
+
+**起始版本：** 12
+
+<!--Device-ResolutionQuality-HIGH = 3--><!--Device-ResolutionQuality-HIGH = 3-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## LOW
 
 ```TypeScript
@@ -41,22 +57,6 @@ MEDIUM = 2
 **起始版本：** 12
 
 <!--Device-ResolutionQuality-MEDIUM = 2--><!--Device-ResolutionQuality-MEDIUM = 2-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-**系统接口：** 此接口为系统接口。
-
-## HIGH
-
-```TypeScript
-HIGH = 3
-```
-
-最高等级画质效果，解码耗时长。&lt;br/
-
-**起始版本：** 12
-
-<!--Device-ResolutionQuality-HIGH = 3--><!--Device-ResolutionQuality-HIGH = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 

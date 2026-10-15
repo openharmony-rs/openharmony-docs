@@ -47,6 +47,7 @@ Get Wi-Fi capability
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2501000](../errorcode-wifi.md#2501000-sta-internal-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,3 +56,5 @@ import { wifiManager } from '@kit.ConnectivityKit';
 let result = wifiManager.getWifiCapability(wifiManager.WifiCapability.WIFI_AUTO_ENABLE);
 console.info("result:" + result);
 ```
+
+<!--DelEnd-->

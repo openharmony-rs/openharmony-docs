@@ -4,7 +4,7 @@
 export declare class TreeController
 ```
 
-Implements a **TreeController** object, which can be bound to a tree view component to control the node information of the component. One **TreeController** object can be bound to only one tree view component.
+A controller for the tree view component, used to control node information of the tree. The same controller instance cannot control multiple tree view components simultaneously.
 
 **Since:** 10
 
@@ -24,7 +24,7 @@ import { CallbackParam, NodeParam, TreeController, TreeListenType, TreeListener,
 addNode(nodeParam?: NodeParam): TreeController
 ```
 
-Adds a child node to the selected node.
+After a node is selected, call this method to add a child node.
 
 **Since:** 10
 
@@ -40,13 +40,13 @@ Adds a child node to the selected node.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| nodeParam | [NodeParam](arkts-arkui-arkui-advanced-treeview-nodeparam-i.md) | No | Node information. |
+| nodeParam | [NodeParam](arkts-arkui-arkui-advanced-treeview-nodeparam-i.md) | No | Node information. If this parameter is not passed, a node titled **New Folder** will be added under the currently selected node. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [TreeController](arkts-arkui-arkui-advanced-treeview-treecontroller-c.md) | Controller of the **TreeView** component. |
+| [TreeController](arkts-arkui-arkui-advanced-treeview-treecontroller-c.md) | Returns the controller instance of the tree view component, supporting chain calls. |
 
 ## buildDone
 
@@ -54,7 +54,7 @@ Adds a child node to the selected node.
 buildDone(): void
 ```
 
-Builds a tree view. After a node is added, this API must be called to save the tree information.
+Saves the tree information after all nodes are added.
 
 **Since:** 10
 
@@ -90,7 +90,7 @@ Modifies the selected node.
 refreshNode(parentId: number, parentSubTitle: ResourceStr, currentSubtitle: ResourceStr): void
 ```
 
-Refreshes the tree view. You can call this API to update the information about the current node.
+Updates the display information of the current node by specifying the parent node ID, parent node subtitle, and current node subtitle.
 
 **Since:** 10
 
@@ -106,9 +106,9 @@ Refreshes the tree view. You can call this API to update the information about t
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parentId | number | Yes | ID of the parent node.<br>The value must be greater than or equal to -1. |
-| parentSubTitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | Yes | Secondary text of the parent node. |
-| currentSubtitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | Yes | Secondary text of the current node. |
+| parentId | number | Yes | Parent node ID.<br>The value range is greater than or equal to -1. The root node ID is -1. If the value is set to less than -1, it does not take effect. |
+| parentSubTitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | Yes | Subtitle of the parent node. After setting, the subtitle display content of the parent node is updated. |
+| currentSubtitle | [ResourceStr](arkts-arkui-resourcestr-t.md) | Yes | Subtitle of the current node. After setting, the subtitle display content of the current node is updated. |
 
 ## removeNode
 
@@ -116,7 +116,7 @@ Refreshes the tree view. You can call this API to update the information about t
 removeNode(): void
 ```
 
-Removes the selected node.
+Deletes the selected node.
 
 **Since:** 10
 

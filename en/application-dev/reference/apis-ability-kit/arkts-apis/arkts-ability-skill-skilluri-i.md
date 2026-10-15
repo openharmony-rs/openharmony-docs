@@ -4,7 +4,7 @@
 export interface SkillUri
 ```
 
-Indicates the uris of the skill
+URI matched by Want.
 
 **Since:** 12
 
@@ -18,13 +18,13 @@ Indicates the uris of the skill
 readonly host: string
 ```
 
-Indicates the host of the skillUri
+Host address of the URI. This parameter takes effect only when **scheme** is specified.
 
 **Type:** string
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly host: string--><!--Device-SkillUri-readonly host: string-End-->
 
@@ -36,13 +36,13 @@ Indicates the host of the skillUri
 readonly linkFeature: string
 ```
 
-Indicates the linkFeature of the skillUri
+[Feature type](../../../application-models/app-uri-config.md#description-of-linkfeature) provided by the URI. It is used to implement redirection between applications and exists only in **AbilityInfo**.
 
 **Type:** string
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly linkFeature: string--><!--Device-SkillUri-readonly linkFeature: string-End-->
 
@@ -54,13 +54,13 @@ Indicates the linkFeature of the skillUri
 readonly maxFileSupported: number
 ```
 
-Indicates the maxFileSupported of the skillUri
+Maximum number of files of a specified type that can be received or opened at a time. The value must be an integer greater than or equal to 0.
 
 **Type:** number
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly maxFileSupported: int--><!--Device-SkillUri-readonly maxFileSupported: int-End-->
 
@@ -72,13 +72,13 @@ Indicates the maxFileSupported of the skillUri
 readonly path: string
 ```
 
-Indicates the path of the skillUri
+Path of the URI. This parameter takes effect only when both **scheme** and **host** are specified.
 
 **Type:** string
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly path: string--><!--Device-SkillUri-readonly path: string-End-->
 
@@ -90,13 +90,13 @@ Indicates the path of the skillUri
 readonly pathRegex: string
 ```
 
-Indicates the pathRegex of the skillUri
+Regular expression of the path of the URI. This parameter takes effect only when both **scheme** and **host** are specified.
 
 **Type:** string
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly pathRegex: string--><!--Device-SkillUri-readonly pathRegex: string-End-->
 
@@ -108,13 +108,13 @@ Indicates the pathRegex of the skillUri
 readonly pathStartWith: string
 ```
 
-Indicates the pathStartWith of the skillUri
+Prefix of the path of the URI. This parameter takes effect only when both **scheme** and **host** are specified.
 
 **Type:** string
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly pathStartWith: string--><!--Device-SkillUri-readonly pathStartWith: string-End-->
 
@@ -126,7 +126,7 @@ Indicates the pathStartWith of the skillUri
 readonly port: number
 ```
 
-Indicates the port of the skillUri
+Port number of the URI. This parameter takes effect only when both **scheme** and **host** are specified.
 
 **Type:** number
 
@@ -144,13 +144,13 @@ Indicates the port of the skillUri
 readonly scheme: string
 ```
 
-Indicates the scheme of the skillUri
+Scheme of the URI, such as HTTP, HTTPS, file, and FTP.
 
 **Type:** string
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly scheme: string--><!--Device-SkillUri-readonly scheme: string-End-->
 
@@ -162,13 +162,13 @@ Indicates the scheme of the skillUri
 readonly type: string
 ```
 
-Indicates the type of the skillUri
+Data type that matches the Want, using the MIME (Multipurpose Internet Mail Extensions) type specification and the [UniformDataType](../../apis-arkdata/arkts-apis/arkts-arkdata-uniformtypedescriptor-uniformdatatype-e.md) type specification.
 
 **Type:** string
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly type: string--><!--Device-SkillUri-readonly type: string-End-->
 
@@ -180,13 +180,13 @@ Indicates the type of the skillUri
 readonly utd: string
 ```
 
-Indicates the utd of the skillUri
+Standard data type of the URI that matches Want. This parameter applies to sharing scenarios.
 
 **Type:** string
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SkillUri-readonly utd: string--><!--Device-SkillUri-readonly utd: string-End-->
 

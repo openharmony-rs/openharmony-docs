@@ -1,5 +1,9 @@
 # @ohos.arkui.advanced.ProgressButton
 
+The **ProgressButton** component is a text-based download button with a progress indicator that shows the download
+ progress.
+
+
 ## Modules to Import
 
 ```TypeScript
@@ -12,7 +16,7 @@ import { ProgressButton } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbutton-s.md) | The **ProgressButton** component is a text-based download button with a progress indicator that shows the download progress. |
+| [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbutton-s.md) | Creates a **ProgressButton** component. |
 
 ### Interfaces
 

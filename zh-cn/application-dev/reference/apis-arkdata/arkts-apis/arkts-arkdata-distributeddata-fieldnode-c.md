@@ -10,7 +10,7 @@ class FieldNode
 
 **废弃版本：** 9
 
-**替代接口：** FieldNode
+**替代接口：** [FieldNode](arkts-arkdata-distributedkvstore-fieldnode-c.md)
 
 <!--Device-distributedData-class FieldNode--><!--Device-distributedData-class FieldNode-End-->
 
@@ -33,7 +33,7 @@ appendChild(child: FieldNode): boolean
 
 **废弃版本：** 9
 
-**替代接口：** appendChild
+**替代接口：** [appendChild](arkts-arkdata-distributedkvstore-fieldnode-c.md#appendchild)
 
 <!--Device-FieldNode-appendChild(child: FieldNode): boolean--><!--Device-FieldNode-appendChild(child: FieldNode): boolean-End-->
 
@@ -85,7 +85,7 @@ constructor(name: string)
 
 **废弃版本：** 9
 
-**替代接口：** constructor
+**替代接口：** [constructor](arkts-arkdata-distributedkvstore-fieldnode-c.md#constructor)
 
 <!--Device-FieldNode-constructor(name: string)--><!--Device-FieldNode-constructor(name: string)-End-->
 
@@ -111,7 +111,7 @@ default: string
 
 **废弃版本：** 9
 
-**替代接口：** default
+**替代接口：** [default](arkts-arkdata-distributedkvstore-fieldnode-c.md#default)
 
 <!--Device-FieldNode-default: string--><!--Device-FieldNode-default: string-End-->
 
@@ -131,7 +131,7 @@ nullable: boolean
 
 **废弃版本：** 9
 
-**替代接口：** nullable
+**替代接口：** [nullable](arkts-arkdata-distributedkvstore-fieldnode-c.md#nullable)
 
 <!--Device-FieldNode-nullable: boolean--><!--Device-FieldNode-nullable: boolean-End-->
 
@@ -151,7 +151,7 @@ type: number
 
 **废弃版本：** 9
 
-**替代接口：** type
+**替代接口：** [type](arkts-arkdata-distributedkvstore-fieldnode-c.md#type)
 
 <!--Device-FieldNode-type: number--><!--Device-FieldNode-type: number-End-->
 

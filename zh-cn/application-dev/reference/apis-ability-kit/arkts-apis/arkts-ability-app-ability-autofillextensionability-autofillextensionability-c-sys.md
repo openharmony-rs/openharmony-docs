@@ -40,6 +40,7 @@ onBackground(): void
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,6 +53,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onCreate
 
@@ -71,6 +74,7 @@ AutoFillExtensionAbility创建时触发回调函数。在此方法中可进行�
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -83,6 +87,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDestroy
 
@@ -102,6 +108,7 @@ onDestroy(): void | Promise<void>
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -114,6 +121,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onFillRequest
 
@@ -138,9 +147,10 @@ onFillRequest(session: UIExtensionContentSession, request: FillRequest, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | session | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | 是 | AutoFillExtensionAbility界面内容相关信息。 |
-| request | FillRequest | 是 | 自动填充数据。 |
+| request | [FillRequest](arkts-ability-autofillrequest-fillrequest-i.md) | 是 | 自动填充数据。 |
 | callback | [FillRequestCallback](arkts-ability-autofillrequest-fillrequestcallback-i-sys.md) | 是 | 自动填充请求回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -179,6 +189,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## onForeground
 
 ```TypeScript
@@ -197,6 +209,7 @@ onForeground(): void
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -209,6 +222,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onSaveRequest
 
@@ -233,9 +248,10 @@ onSaveRequest(session: UIExtensionContentSession, request: SaveRequest, callback
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | session | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | 是 | AutoFillExtensionAbility界面内容相关信息。 |
-| request | SaveRequest | 是 | 保存请求数据。 |
+| request | [SaveRequest](arkts-ability-autofillrequest-saverequest-i.md) | 是 | 保存请求数据。 |
 | callback | [SaveRequestCallback](arkts-ability-autofillrequest-saverequestcallback-i-sys.md) | 是 | 保存请求回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -272,6 +288,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## onSessionDestroy
 
 ```TypeScript
@@ -296,6 +314,7 @@ onSessionDestroy(session: UIExtensionContentSession): void
 | --- | --- | --- | --- |
 | session | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | 是 | AutoFillExtensionAbility界面内容相关信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -308,6 +327,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onUpdateRequest
 
@@ -333,6 +354,7 @@ onUpdateRequest(request: UpdateRequest): void
 | --- | --- | --- | --- |
 | request | [UpdateRequest](arkts-ability-autofillrequest-updaterequest-i-sys.md) | 是 | 更新请求。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -346,6 +368,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## context
 

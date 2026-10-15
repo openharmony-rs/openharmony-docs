@@ -8,13 +8,15 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
-**Inheritance/Implementation:** RefreshAttribute extends CommonMethod<RefreshAttribute>
+**Inheritance/Implementation:** RefreshAttribute extends CommonMethod&lt;RefreshAttribute&gt;
 
 **Since:** 8
 
 <!--Device-unnamed-declare class RefreshAttribute extends CommonMethod<RefreshAttribute>--><!--Device-unnamed-declare class RefreshAttribute extends CommonMethod<RefreshAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+<a id="maxpulldowndistance1"></a>
 
 ## maxPullDownDistance
 
@@ -40,7 +42,7 @@ Sets the maximum pull-down distance.
 | --- | --- | --- | --- |
 | distance | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;number&gt; | Yes | Maximum pull-down distance.<br>Value range: [0, +∞). A value less than 0 is treated as 0. When this value is less than the pull-down offset **refreshOffset** for refresh, releasing the pull-down gesture on **Refresh** does not trigger refresh.<br>**undefined** and **null** are treated as if this attribute is not set.<br>Default value: **undefined**<br>Unit: vp |
 
-<a id="maxpulldowndistance-1"></a>
+<a id="maxpulldowndistance2"></a>
 
 ## maxPullDownDistance
 
@@ -66,7 +68,7 @@ If this API is not set, the maximum pull-down distance is **undefined**.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| distance | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; undefined | Yes | Maximum pull-down distance. <br>Default value: **undefined**. <br>Unit: vp <br>Value range: [0, +∞). If the value is less than 0, **0** is used. If this value is less than the [refreshOffset](#refreshoffset), the refresh action will not be triggered when the pull-down gesture is released. <br>If this parameter is set to **undefined** or **null**, it is considered that this attribute is not set, meaning there is no limit on the maximum pull-down distance. |
+| distance | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; undefined | Yes | Maximum pull-down distance. <br>Default value: **undefined**. <br>Unit: vp <br>Value range: [0, +∞). If the value is less than 0, **0** is used. If this value is less than the [refreshOffset](#refreshoffset1), the refresh action will not be triggered when the pull-down gesture is released. <br>If this parameter is set to **undefined** or **null**, it is considered that this attribute is not set, meaning there is no limit on the maximum pull-down distance. |
 
 ## onOffsetChange
 
@@ -174,7 +176,7 @@ Sets the pull-down ratio.
 pullToRefresh(value: boolean)
 ```
 
-Sets whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset).
+Sets whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset1).
 
 **Since:** 12
 
@@ -190,7 +192,7 @@ Sets whether to initiate a refresh when the pull-down distance exceeds the value
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | boolean | Yes | Whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset). The value **true** means to initiate a refresh, and **false** means the opposite. <br>Default value: **true** |
+| value | boolean | Yes | Whether to initiate a refresh when the pull-down distance exceeds the value of [refreshOffset](#refreshoffset1). The value **true** means to initiate a refresh, and **false** means the opposite. <br>Default value: **true** |
 
 ## pullUpToCancelRefresh
 
@@ -216,6 +218,8 @@ Sets whether to enable the pull-up-to-cancel gesture for refreshing operations.
 | --- | --- | --- | --- |
 | enabled | boolean &#124; undefined | Yes | Whether to enable the pull-up-to-cancel gesture for refreshing operations.<br>**true**: Enable the pull-up-to-cancel gesture. **false**: Disable the pull-up-to-cancel gesture.<br> **undefined**: Enable the pull-up-to-cancel gesture. |
 
+<a id="refreshoffset1"></a>
+
 ## refreshOffset
 
 ```TypeScript
@@ -240,7 +244,7 @@ Sets the minimum pull-down offset required to trigger a refresh. If the distance
 | --- | --- | --- | --- |
 | value | number | Yes | Pull-down offset, in vp.<br>Value range: (0, +∞).<br>Default value: 64 vp when the [promptText](arkts-arkui-refresh-comp-refreshoptions-i.md) parameter is not set, and 96 vp when the [promptText](arkts-arkui-refresh-comp-refreshoptions-i.md) parameter is set. <br>If the value is **0** or a negative number, the default value is used. |
 
-<a id="refreshoffset-1"></a>
+<a id="refreshoffset2"></a>
 
 ## refreshOffset
 

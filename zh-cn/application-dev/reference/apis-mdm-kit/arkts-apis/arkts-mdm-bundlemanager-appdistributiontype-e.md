@@ -28,6 +28,22 @@ APP_GALLERY = 1
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## CROWDTESTING
+
+```TypeScript
+CROWDTESTING = 6
+```
+
+众包测试应用。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## ENTERPRISE
 
 ```TypeScript
@@ -41,22 +57,6 @@ ENTERPRISE = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AppDistributionType-ENTERPRISE = 2--><!--Device-AppDistributionType-ENTERPRISE = 2-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## ENTERPRISE_NORMAL
-
-```TypeScript
-ENTERPRISE_NORMAL = 3
-```
-
-普通企业应用。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3--><!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -76,6 +76,22 @@ ENTERPRISE_MDM = 4
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
 
+## ENTERPRISE_NORMAL
+
+```TypeScript
+ENTERPRISE_NORMAL = 3
+```
+
+普通企业应用。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3--><!--Device-AppDistributionType-ENTERPRISE_NORMAL = 3-End-->
+
+**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## INTERNALTESTING
 
 ```TypeScript
@@ -89,21 +105,5 @@ INTERNALTESTING = 5
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AppDistributionType-INTERNALTESTING = 5--><!--Device-AppDistributionType-INTERNALTESTING = 5-End-->
-
-**系统能力：** SystemCapability.Customization.EnterpriseDeviceManager
-
-## CROWDTESTING
-
-```TypeScript
-CROWDTESTING = 6
-```
-
-众包测试应用。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AppDistributionType-CROWDTESTING = 6--><!--Device-AppDistributionType-CROWDTESTING = 6-End-->
 
 **系统能力：** SystemCapability.Customization.EnterpriseDeviceManager

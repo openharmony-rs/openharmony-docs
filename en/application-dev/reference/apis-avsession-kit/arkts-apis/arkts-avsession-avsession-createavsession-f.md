@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="createavsession1"></a>
+
 ## createAVSession
 
 ```TypeScript
@@ -74,7 +76,7 @@ struct Index {
 ```
 
 
-<a id="createavsession-1"></a>
+<a id="createavsession2"></a>
 
 ## createAVSession
 
@@ -86,7 +88,7 @@ Create an AVSession instance. An ability can only create one AVSession
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-avSession-function createAVSession(context: Context, tag: string, type: AVSessionType): Promise<AVSession>--><!--Device-avSession-function createAVSession(context: Context, tag: string, type: AVSessionType): Promise<AVSession>-End-->
 

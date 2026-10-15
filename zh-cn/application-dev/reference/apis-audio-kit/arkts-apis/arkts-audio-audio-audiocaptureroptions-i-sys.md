@@ -18,6 +18,26 @@ interface AudioCapturerOptions
 import { audio } from '@kit.AudioKit';
 ```
 
+## actualUsingAppTokenId
+
+```TypeScript
+actualUsingAppTokenId?: number
+```
+
+实际使用该录音流的应用TokenId，用于在点亮麦克风隐私指示器时，显示正确的应用信息。如果未指定该字段，默认使用调用方应用的TokenId。设置该字段时，调用方必须具有ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR权限，否则[createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md)失败。
+
+**类型：** number
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioCapturerOptions-actualUsingAppTokenId?: int--><!--Device-AudioCapturerOptions-actualUsingAppTokenId?: int-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Capturer
+
+**系统接口：** 此接口为系统接口。
+
 ## playbackCaptureUid
 
 ```TypeScript

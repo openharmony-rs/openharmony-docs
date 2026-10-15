@@ -6,6 +6,8 @@ declare type CommonModifier = import('../api/arkui/CommonModifier').CommonModifi
 
 CommonModifier类型用于设置Tabs组件参数。
 
+**类型：** import('../api/arkui/CommonModifier').CommonModifier
+
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ CommonModifier类型用于设置Tabs组件参数。
 <!--Device-unnamed-declare type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier--><!--Device-unnamed-declare type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/arkui/CommonModifier').CommonModifier

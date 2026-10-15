@@ -51,6 +51,7 @@ Starts pairing with a remote Bluetooth device using the Out Of Band mechanism. T
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -81,3 +82,5 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

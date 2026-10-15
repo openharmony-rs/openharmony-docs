@@ -39,3 +39,17 @@ function offBatteryLevelChange(mechId: number, callback?: Callback<BatteryLevelI
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-功能不支持) | Feature not supported. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+console.info('Unregister Battery Change listener');
+let mechId: number = 0;  
+mechanicManager.offBatteryLevelChange(mechId, (result: mechanicManager.BatteryLevelInfo) => {
+  console.info(`'result:' ${result}`);
+});
+console.info('Unregister successfully');
+```
+
+<!--DelEnd-->

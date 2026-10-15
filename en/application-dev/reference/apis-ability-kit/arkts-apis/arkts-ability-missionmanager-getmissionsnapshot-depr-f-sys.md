@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getmissionsnapshot1"></a>
+
 ## getMissionSnapShot
 
 ```TypeScript
@@ -35,6 +37,7 @@ Obtains the snapshot of a given mission. This API uses an asynchronous callback 
 | missionId | number | Yes | Mission ID. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[MissionSnapshot](arkts-ability-missionsnapshot-i-sys.md)&gt; | Yes | Callback used to return the snapshot information obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,8 +60,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getmissionsnapshot-1"></a>
+
+<a id="getmissionsnapshot2"></a>
 
 ## getMissionSnapShot
 
@@ -95,6 +100,7 @@ Obtains the snapshot of a given mission. This API uses a promise to return the r
 | --- | --- |
 | Promise&lt;[MissionSnapshot](arkts-ability-missionsnapshot-i-sys.md)&gt; | Promise used to return the snapshot information obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -113,3 +119,5 @@ try {
   console.error(`getMissionSnapShot failed. Cause: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

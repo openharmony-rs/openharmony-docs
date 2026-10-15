@@ -26,17 +26,17 @@ DEFAULT_LINK = 0
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-## WIFI7_SINGLE_LINK
+## WIFI7_EMLSR
 
 ```TypeScript
-WIFI7_SINGLE_LINK = 1
+WIFI7_EMLSR = 3
 ```
 
-Wi-Fi7单链连接。
+Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。
 
 **起始版本：** 18
 
-<!--Device-WifiLinkType-WIFI7_SINGLE_LINK = 1--><!--Device-WifiLinkType-WIFI7_SINGLE_LINK = 1-End-->
+<!--Device-WifiLinkType-WIFI7_EMLSR = 3--><!--Device-WifiLinkType-WIFI7_EMLSR = 3-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -54,17 +54,17 @@ Wi-Fi7 MLSR（multi-link single-radio，多链路单射频）连接。
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-## WIFI7_EMLSR
+## WIFI7_SINGLE_LINK
 
 ```TypeScript
-WIFI7_EMLSR = 3
+WIFI7_SINGLE_LINK = 1
 ```
 
-Wi-Fi7 EMLSR（enhanced multi-link single-radio，增强型多链路单天线）连接。
+Wi-Fi7单链连接。
 
 **起始版本：** 18
 
-<!--Device-WifiLinkType-WIFI7_EMLSR = 3--><!--Device-WifiLinkType-WIFI7_EMLSR = 3-End-->
+<!--Device-WifiLinkType-WIFI7_SINGLE_LINK = 1--><!--Device-WifiLinkType-WIFI7_SINGLE_LINK = 1-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

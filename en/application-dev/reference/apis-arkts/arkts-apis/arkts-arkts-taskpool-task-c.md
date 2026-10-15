@@ -81,6 +81,8 @@ taskpool.execute(task3).then(() => {
 })
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -122,7 +124,7 @@ function printArgs(args: number): number {
 let task: taskpool.Task = new taskpool.Task(printArgs, "this is my first Task");
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

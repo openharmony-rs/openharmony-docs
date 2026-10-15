@@ -20,16 +20,16 @@ import { osAccount } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAccountManager](arkts-basicservices-osaccount-getaccountmanager-f.md) | 获取系统账号管理对象。 |
-| [isDomainAccountSupported](arkts-basicservices-osaccount-isdomainaccountsupported-f.md) | 检查是否支持域账号。使用Promise异步回调。 |
+| [getAccountManager](arkts-basicservices-osaccount-getaccountmanager-f.md#getaccountmanager) | 获取系统账号管理对象。 |
+| [isDomainAccountSupported](arkts-basicservices-osaccount-isdomainaccountsupported-f.md#isdomainaccountsupported) | 检查是否支持域账号。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getAuthorizationManager](arkts-basicservices-osaccount-getauthorizationmanager-f-sys.md) | 获取系统账号授权管理器。 |
-| [getOsAccountSubProfileManager](arkts-basicservices-osaccount-getosaccountsubprofilemanager-f-sys.md) | 获取系统账号子身份资料管理器。 |
+| [getAuthorizationManager](arkts-basicservices-osaccount-getauthorizationmanager-f-sys.md#getauthorizationmanager) | 获取系统账号授权管理器。 |
+| [getOsAccountSubProfileManager](arkts-basicservices-osaccount-getosaccountsubprofilemanager-f-sys.md#getosaccountsubprofilemanager) | 获取系统账号子身份资料管理器。 |
 <!--DelEnd-->
 
 ### 类
@@ -68,7 +68,7 @@ import { osAccount } from '@kit.BasicServicesKit';
 | [AccountManager](arkts-basicservices-osaccount-accountmanager-i-sys.md) | 系统账号管理类。 |
 | [AcquireAuthorizationOptions](arkts-basicservices-osaccount-acquireauthorizationoptions-i-sys.md) | 表示获取授权的选项。 |
 | [AcquireAuthorizationResult](arkts-basicservices-osaccount-acquireauthorizationresult-i-sys.md) | 表示获取授权的结果。 |
-| [AuthOptions](arkts-basicservices-osaccount-authoptions-i-sys.md) | 表示认证用户[auth](arkts-basicservices-osaccount-userauth-c-sys.md#auth-1)的可选参数集合。 |
+| [AuthOptions](arkts-basicservices-osaccount-authoptions-i-sys.md) | 表示认证用户[auth](arkts-basicservices-osaccount-userauth-c-sys.md#auth2)的可选参数集合。 |
 | [AuthorizationManager](arkts-basicservices-osaccount-authorizationmanager-i-sys.md) | 系统账号授权管理类，用于管理系统账号授权。 |
 | [AuthResult](arkts-basicservices-osaccount-authresult-i-sys.md) | 表示认证结果的信息。 |
 | [AuthStatusInfo](arkts-basicservices-osaccount-authstatusinfo-i-sys.md) | 表示认证状态信息。 |
@@ -83,7 +83,7 @@ import { osAccount } from '@kit.BasicServicesKit';
 | [DomainPlugin](arkts-basicservices-osaccount-domainplugin-i-sys.md) | 域插件，提供域账号认证功能。 |
 | [EnrolledCredInfo](arkts-basicservices-osaccount-enrolledcredinfo-i-sys.md) | 表示已注册凭据的信息。 |
 | [ExecutorProperty](arkts-basicservices-osaccount-executorproperty-i-sys.md) | 提供执行器的属性。 |
-| [GetAuthInfoOptions](arkts-basicservices-osaccount-getauthinfooptions-i-sys.md) | 表示查询认证凭据信息[getAuthInfo](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo-3)的可选参数集合。 |
+| [GetAuthInfoOptions](arkts-basicservices-osaccount-getauthinfooptions-i-sys.md) | 表示查询认证凭据信息[getAuthInfo](arkts-basicservices-osaccount-useridentitymanager-c-sys.md#getauthinfo4)的可选参数集合。 |
 | [GetDomainAccessTokenOptions](arkts-basicservices-osaccount-getdomainaccesstokenoptions-i-sys.md) | 表示获取域访问令牌的选项。 |
 | [GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md) | 表示查询域账号信息的选项。 |
 | [GetDomainAccountInfoPluginOptions](arkts-basicservices-osaccount-getdomainaccountinfopluginoptions-i-sys.md) | 表示插件查询域账号信息的选项。GetDomainAccountInfoPluginOptions类继承[GetDomainAccountInfoOptions](arkts-basicservices-osaccount-getdomainaccountinfooptions-i-sys.md) |

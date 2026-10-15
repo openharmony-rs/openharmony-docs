@@ -49,6 +49,7 @@ disableSafeMediaVolume(): Promise<void>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -60,6 +61,8 @@ audioManager.disableSafeMediaVolume().then(() => {
   console.error(`disableSafeMediaVolume fail: ${err.code},${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getCollaborativeManager
 
@@ -117,6 +120,7 @@ getEffectManager(): AudioEffectManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -124,6 +128,8 @@ import { audio } from '@kit.AudioKit';
 
 let audioEffectManager: audio.AudioEffectManager = audioManager.getEffectManager();
 ```
+
+<!--DelEnd-->
 
 ## getExtraParameters
 
@@ -162,6 +168,7 @@ getExtraParameters(mainKey: string, subKeys?: Array<string>): Promise<Record<str
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -174,6 +181,40 @@ audioManager.getExtraParameters('key_example', subKeys).then((value: Record<stri
   console.error(`Failed to get the audio extra parameters ${err}`);
 });
 ```
+
+<!--DelEnd-->
+
+## getSuiteDownloadManager
+
+```TypeScript
+getSuiteDownloadManager(): AudioSuiteDownloadManager
+```
+
+获取AudioSuiteDownloadManager实例，用于下载音频编辑算法。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioManager-getSuiteDownloadManager(): AudioSuiteDownloadManager--><!--Device-AudioManager-getSuiteDownloadManager(): AudioSuiteDownloadManager-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
+
+**系统接口：** 此接口为系统接口。
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | 返回音频套件下载管理器的实例。 |
+
+**错误码：**
+
+| 错误码ID | 错误信息 |
+| --- | --- |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+
+<a id="setaudioscene1"></a>
 
 ## setAudioScene
 
@@ -198,6 +239,7 @@ setAudioScene(scene: AudioScene, callback: AsyncCallback<void> ): void
 | scene | [AudioScene](arkts-audio-audio-audioscene-e.md) | 是 | 音频场景模式。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当设置音频场景模式成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -212,7 +254,9 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL, (err: Busine
 });
 ```
 
-<a id="setaudioscene-1"></a>
+<!--DelEnd-->
+
+<a id="setaudioscene2"></a>
 
 ## setAudioScene
 
@@ -242,6 +286,7 @@ setAudioScene(scene: AudioScene): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -253,6 +298,8 @@ audioManager.setAudioScene(audio.AudioScene.AUDIO_SCENE_PHONE_CALL).then(() => {
   console.error(`Failed to set the audio scene mode ${err}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setExtraParameters
 
@@ -294,6 +341,7 @@ setExtraParameters(mainKey: string, kvpairs: Record<string, string>): Promise<vo
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -311,6 +359,8 @@ audioManager.setExtraParameters('key_example', kvpairs).then(() => {
 });
 ```
 
+<!--DelEnd-->
+
 ## on('volumeChange')
 
 ```TypeScript
@@ -321,7 +371,7 @@ on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
 > **说明：** 
 > 
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用AudioVolumeManager中的
-> [on('volumeChange')](arkts-audio-audio-audiovolumemanager-i.md#onvolumechange)替代。
+> on('volumeChange')替代。
 > 监听系统音量变化事件（当系统音量发生变化时触发）。使用callback异步回调。
 > 目前此订阅接口在单进程多AudioManager实例的使用场景下，仅最后一个实例的订阅生效，其他实例的订阅会被覆盖（即使最后一个实例没有进行订阅），因此推荐使用单一AudioManager实例进行开发。
 
@@ -344,6 +394,7 @@ on(type: 'volumeChange', callback: Callback<VolumeEvent>): void
 | type | 'volumeChange' | 是 | 事件回调类型，支持的事件为'volumeChange'，当系统音量发生变化时，触发该事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[VolumeEvent](arkts-audio-audio-volumeevent-i.md)&gt; | 是 | 回调函数，返回变化后的音量信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -353,6 +404,8 @@ audioManager.on('volumeChange', (volumeEvent: audio.VolumeEvent) => {
   console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('ringerModeChange')
 
@@ -365,7 +418,7 @@ on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
 > **说明：** 
 > 
 > 从 API version 8 开始支持，从 API version 9 开始废弃，建议使用AudioVolumeGroupManager中的
-> [on('ringerModeChange')](arkts-audio-audio-audiovolumegroupmanager-i.md#onringermodechange)替代。
+> on('ringerModeChange')替代。
 
 **起始版本：** 8
 
@@ -386,6 +439,7 @@ on(type: 'ringerModeChange', callback: Callback<AudioRingMode>): void
 | type | 'ringerModeChange' | 是 | 事件回调类型，支持的事件为'ringerModeChange'，当铃声模式发生改变时，触发该事件。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRingMode](arkts-audio-audio-audioringmode-e.md)&gt; | 是 | 回调函数，返回变化后的铃音模式。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -393,3 +447,5 @@ audioManager.on('ringerModeChange', (ringerMode: audio.AudioRingMode) => {
   console.info(`Updated ringermode: ${ringerMode}`);
 });
 ```
+
+<!--DelEnd-->

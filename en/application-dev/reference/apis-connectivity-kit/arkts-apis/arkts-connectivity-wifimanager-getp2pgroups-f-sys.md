@@ -6,6 +6,8 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
+<a id="getp2pgroups1"></a>
+
 ## getP2pGroups
 
 ```TypeScript
@@ -39,6 +41,7 @@ Obtain information about the groups.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | Operation failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,8 +61,10 @@ wifiManager.getP2pGroups().then(data => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getp2pgroups-1"></a>
+
+<a id="getp2pgroups2"></a>
 
 ## getP2pGroups
 
@@ -95,6 +100,9 @@ Obtain information about the groups.
 | [2801000](../errorcode-wifi.md#2801000-p2p-module-error) | Operation failed. |
 | [2801001](../errorcode-wifi.md#2801001-p2p-module-error) | Wi-Fi STA disabled. |
 
+<!--Del-->
 **Examples**
 
 See [getP2pGroups](#getp2pgroups)
+
+<!--DelEnd-->

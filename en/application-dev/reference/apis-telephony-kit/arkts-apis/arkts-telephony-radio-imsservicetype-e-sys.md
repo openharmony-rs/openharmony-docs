@@ -14,33 +14,17 @@ Indicates the type of IMS service.
 
 **System API:** This is a system API.
 
-## TYPE_VOICE
+## TYPE_SMS
 
 ```TypeScript
-TYPE_VOICE = 0
+TYPE_SMS = 3
 ```
 
-Indicates voice service.
+Indicates SMS service.
 
 **Since:** 9
 
-<!--Device-ImsServiceType-TYPE_VOICE = 0--><!--Device-ImsServiceType-TYPE_VOICE = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
-**System API:** This is a system API.
-
-## TYPE_VIDEO
-
-```TypeScript
-TYPE_VIDEO = 1
-```
-
-Indicates video service.
-
-**Since:** 9
-
-<!--Device-ImsServiceType-TYPE_VIDEO = 1--><!--Device-ImsServiceType-TYPE_VIDEO = 1-End-->
+<!--Device-ImsServiceType-TYPE_SMS = 3--><!--Device-ImsServiceType-TYPE_SMS = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 
@@ -62,17 +46,33 @@ Indicates UT service.
 
 **System API:** This is a system API.
 
-## TYPE_SMS
+## TYPE_VIDEO
 
 ```TypeScript
-TYPE_SMS = 3
+TYPE_VIDEO = 1
 ```
 
-Indicates SMS service.
+Indicates video service.
 
 **Since:** 9
 
-<!--Device-ImsServiceType-TYPE_SMS = 3--><!--Device-ImsServiceType-TYPE_SMS = 3-End-->
+<!--Device-ImsServiceType-TYPE_VIDEO = 1--><!--Device-ImsServiceType-TYPE_VIDEO = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+**System API:** This is a system API.
+
+## TYPE_VOICE
+
+```TypeScript
+TYPE_VOICE = 0
+```
+
+Indicates voice service.
+
+**Since:** 9
+
+<!--Device-ImsServiceType-TYPE_VOICE = 0--><!--Device-ImsServiceType-TYPE_VOICE = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService
 

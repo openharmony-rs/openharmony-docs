@@ -4,7 +4,7 @@
 interface ExecuteResult
 ```
 
-Enumerates the return results of intent execution.
+Return result of intent execution.
 
 **Since:** 11
 
@@ -24,7 +24,7 @@ import { insightIntent } from '@kit.AbilityKit';
 interactionInfo?: InteractionInfo
 ```
 
-Interaction information returned after the intent execution completes.
+Interactive information returned after intent execution.
 
 **Type:** [InteractionInfo](arkts-ability-insightintent-interactioninfo-i-sys.md)
 

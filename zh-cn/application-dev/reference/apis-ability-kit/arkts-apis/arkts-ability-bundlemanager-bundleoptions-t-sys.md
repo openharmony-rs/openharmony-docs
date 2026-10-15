@@ -6,6 +6,8 @@ export type BundleOptions = _BundleInfo.BundleOptions
 
 应用包选项，用于设置或查询应用相关信息。
 
+**类型：** [_BundleInfo.BundleOptions](arkts-ability-bundleinfo-bundleoptions-i-sys.md)
+
 **起始版本：** 20
 
 <!--Device-bundleManager-export type BundleOptions = _BundleInfo.BundleOptions--><!--Device-bundleManager-export type BundleOptions = _BundleInfo.BundleOptions-End-->
@@ -13,5 +15,3 @@ export type BundleOptions = _BundleInfo.BundleOptions
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [_BundleInfo.BundleOptions](arkts-ability-bundleinfo-bundleoptions-i-sys.md)

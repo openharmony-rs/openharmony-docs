@@ -42,7 +42,7 @@ layout(childLayoutInfo: LayoutInfo)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| childLayoutInfo | [LayoutInfo](arkts-arkui-common-comp-layoutinfo-i.md) | 是 |  |
+| childLayoutInfo | [LayoutInfo](arkts-arkui-common-comp-layoutinfo-i.md) | 是 | 子组件的布局信息。 |
 
 ## measure
 
@@ -68,7 +68,7 @@ measure(childConstraint: ConstraintSizeOptions)
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| childConstraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 |  |
+| childConstraint | [ConstraintSizeOptions](../arkts-apis/arkts-arkui-constraintsizeoptions-i.md) | 是 | 子组件的尺寸约束。 |
 
 ## borderInfo
 

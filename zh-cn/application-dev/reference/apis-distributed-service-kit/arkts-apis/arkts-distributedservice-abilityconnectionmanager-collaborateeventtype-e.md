@@ -12,22 +12,6 @@ enum CollaborateEventType
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
-## SEND_FAILURE
-
-```TypeScript
-SEND_FAILURE = 0
-```
-
-表示任务发送失败。在跨设备协同过程中，当发送协作任务（如协作事件）失败时产生此事件，常见原因包括网络异常、对端设备不可达等。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CollaborateEventType-SEND_FAILURE = 0--><!--Device-CollaborateEventType-SEND_FAILURE = 0-End-->
-
-**系统能力：** SystemCapability.DistributedSched.AppCollaboration
-
 ## COLOR_SPACE_CONVERSION_FAILURE
 
 ```TypeScript
@@ -41,5 +25,21 @@ COLOR_SPACE_CONVERSION_FAILURE = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CollaborateEventType-COLOR_SPACE_CONVERSION_FAILURE = 1--><!--Device-CollaborateEventType-COLOR_SPACE_CONVERSION_FAILURE = 1-End-->
+
+**系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
+## SEND_FAILURE
+
+```TypeScript
+SEND_FAILURE = 0
+```
+
+表示任务发送失败。在跨设备协同过程中，当发送协作任务（如协作事件）失败时产生此事件，常见原因包括网络异常、对端设备不可达等。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CollaborateEventType-SEND_FAILURE = 0--><!--Device-CollaborateEventType-SEND_FAILURE = 0-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration

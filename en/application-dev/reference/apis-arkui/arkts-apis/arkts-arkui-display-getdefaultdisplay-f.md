@@ -6,6 +6,8 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getdefaultdisplay1"></a>
+
 ## getDefaultDisplay
 
 ```TypeScript
@@ -48,7 +50,7 @@ display.getDefaultDisplay((err: BusinessError, data: display.Display) => {
 ```
 
 
-<a id="getdefaultdisplay-1"></a>
+<a id="getdefaultdisplay2"></a>
 
 ## getDefaultDisplay
 

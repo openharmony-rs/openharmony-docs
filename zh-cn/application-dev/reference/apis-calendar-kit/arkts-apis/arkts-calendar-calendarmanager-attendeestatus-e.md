@@ -12,38 +12,6 @@ export enum AttendeeStatus
 
 **系统能力：** SystemCapability.Applications.CalendarData
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-参与者状态未知。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-AttendeeStatus-UNKNOWN = 0--><!--Device-AttendeeStatus-UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
-## TENTATIVE
-
-```TypeScript
-TENTATIVE = 1
-```
-
-参与者状态暂定。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-AttendeeStatus-TENTATIVE = 1--><!--Device-AttendeeStatus-TENTATIVE = 1-End-->
-
-**系统能力：** SystemCapability.Applications.CalendarData
-
 ## ACCEPTED
 
 ```TypeScript
@@ -73,6 +41,38 @@ DECLINED = 3
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-AttendeeStatus-DECLINED = 3--><!--Device-AttendeeStatus-DECLINED = 3-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## TENTATIVE
+
+```TypeScript
+TENTATIVE = 1
+```
+
+参与者状态暂定。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-AttendeeStatus-TENTATIVE = 1--><!--Device-AttendeeStatus-TENTATIVE = 1-End-->
+
+**系统能力：** SystemCapability.Applications.CalendarData
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+参与者状态未知。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-AttendeeStatus-UNKNOWN = 0--><!--Device-AttendeeStatus-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Applications.CalendarData
 

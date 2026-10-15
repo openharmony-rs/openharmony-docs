@@ -6,8 +6,6 @@ export declare class ChipV2SuffixSymbolIcon extends ChipV2SymbolIcon
 
 Defines the suffix symbol icon class.
 
-This API inherits from [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md).
-
 **Inheritance/Implementation:** ChipV2SuffixSymbolIcon extends [ChipV2SymbolIcon](arkts-arkui-arkui-advanced-chipv2-chipv2symbolicon-c.md)
 
 **Since:** 26.0.0
@@ -35,8 +33,6 @@ Callback for the suffix icon tap event, which is triggered when the suffix icon 
 Default value: no suffix icon event is set.
 
 When the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Since:** 26.0.0
 
@@ -84,8 +80,6 @@ Accessibility attribute in the active state.
 
 Default value: **undefined**, meaning no content is read aloud.
 
-**Decorator:** @Trace
-
 **Type:** [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md)
 
 **Since:** 26.0.0
@@ -109,8 +103,6 @@ public normalAccessibility?: ChipV2Accessibility
 Accessibility attribute in the inactive state.
 
 Default value: **undefined**, meaning no content is read aloud.
-
-**Decorator:** @Trace
 
 **Type:** [ChipV2Accessibility](arkts-arkui-arkui-advanced-chipv2-chipv2accessibility-c.md)
 

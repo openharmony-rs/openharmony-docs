@@ -20,7 +20,7 @@ Defines the parameters to be passed during **DynamicComponent** construction.
 allowCrossProcessNesting?: boolean
 ```
 
-Whether to allow cross-process [UIExtensionComponent](arkts-arkui-uiextensioncomponent-comp-sys.md) nesting. **true**: yes; **false**: no. The default value is **false**.
+Whether to allow cross-process [UIExtensionComponent](arkts-arkui-uiextensioncomponent-comp-sys.md) nesting.<br>**true**: allow cross-process nesting; **false**: disallow cross-process nesting.<br>Default value: **false**
 
 **Type:** boolean
 
@@ -40,7 +40,7 @@ Whether to allow cross-process [UIExtensionComponent](arkts-arkui-uiextensioncom
 allowOccupied?: boolean
 ```
 
-Indicates allow keyboard avoidance inside the DynamicComponent.
+Whether to allow the **DynamicComponent** to avoid the keyboard internally.<br>**true**: allow avoiding the keyboard; **false**: do not allow avoiding the keyboard.<br>Default value: **false**
 
 **Type:** boolean
 
@@ -60,7 +60,7 @@ Indicates allow keyboard avoidance inside the DynamicComponent.
 backgroundTransparent?: boolean
 ```
 
-Whether to enable the transparent background for the component. **true**: yes; **false**: no. The default value is **false**.
+Whether to enable background transparency for the component.<br>**true**: enable background transparency; **false**: disable background transparency.<br>Default value: **false**
 
 **Type:** boolean
 
@@ -80,7 +80,7 @@ Whether to enable the transparent background for the component. **true**: yes; *
 entryPoint: string
 ```
 
-Entry of the .abc page to be loaded.
+The .abc page entry to load. The value format is 'bundleName/moduleName/pagePath', for example,'com.example.myapplication/entry/ets/pages/DynamicPage'.
 
 **Type:** string
 
@@ -100,7 +100,7 @@ Entry of the .abc page to be loaded.
 worker: Worker
 ```
 
-Worker for running the .abc file.
+Worker thread object used to run the .abc, which must be created through **worker.ThreadWorker**. The Worker executes the UI logic of the .abc in an independent thread and communicates with the main thread.
 
 **Type:** [Worker](arkts-arkui-dynamiccomponent-comp-worker-t-sys.md)
 

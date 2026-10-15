@@ -2,7 +2,7 @@
 
 The TextClock component displays the current system time on the device in text form. It supports time display in different time zones and custom time formats, with a precision of up to seconds. It is suitable for scenarios where the system time needs to be displayed in real time on the application UI and multiple time zones need to be supported. It helps developers quickly implement time text display without manually calculating and updating the time.
 
-When the component is invisible, the time change stops. The visible status of a component is processed based on [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange). If the visible threshold **ratios** is greater than 0, the component is visible.
+When the component is invisible, the time change stops. The visible status of a component is processed based on [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1). If the visible threshold **ratios** is greater than 0, the component is visible.
 
 > **NOTE:** 
 > 
@@ -98,7 +98,7 @@ struct Second {
 
 ### Example 2: Setting the Text Shadow Style
 
-This example sets the shadow style of the clock text through [textShadow](#textshadow11).
+This example shows how to set the text shadow style of the clock text using the [textShadow](#textshadow11) attribute.
 
 
 
@@ -169,8 +169,8 @@ function buildTextClock(config: TextClockConfiguration) {
         .fontSize(20)
         .margin(20)
       TimePicker({
-        // Calculate the local time based on the UTC seconds and time zone offset: config.timeValue is the UTC seconds, which needs to be multiplied by 1000 to convert to milliseconds;
-        // currentTimeZoneOffset is the current system time zone offset, and timeZoneOffset is the target time zone offset,
+        // Calculate the local time based on the UTC seconds and time zone offset. config.timeValue indicates the UTC seconds, which needs to be multiplied by 1000 to convert to milliseconds.
+        // currentTimeZoneOffset indicates the time zone offset of the current system, and timeZoneOffset indicates the target time zone offset.
         // The difference between the two, multiplied by 3600000, gives the time zone adjustment in milliseconds.
         selected: (new Date(config.timeValue * 1000 +
           ((config.contentModifier as MyTextClockStyle).currentTimeZoneOffset - config.timeZoneOffset) * 60 * 60 *

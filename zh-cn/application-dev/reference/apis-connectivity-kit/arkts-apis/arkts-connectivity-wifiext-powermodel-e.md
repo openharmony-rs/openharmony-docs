@@ -16,24 +16,6 @@ export enum PowerModel
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 
-## SLEEPING
-
-```TypeScript
-SLEEPING = 0
-```
-
-睡眠模式。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
-
-<!--Device-PowerModel-SLEEPING = 0--><!--Device-PowerModel-SLEEPING = 0-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.AP.Extension
-
 ## GENERAL
 
 ```TypeScript
@@ -49,6 +31,24 @@ GENERAL = 1
 **替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
 
 <!--Device-PowerModel-GENERAL = 1--><!--Device-PowerModel-GENERAL = 1-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.AP.Extension
+
+## SLEEPING
+
+```TypeScript
+SLEEPING = 0
+```
+
+睡眠模式。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [PowerMode](arkts-connectivity-wifimanagerext-powermode-e.md)
+
+<!--Device-PowerModel-SLEEPING = 0--><!--Device-PowerModel-SLEEPING = 0-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.AP.Extension
 

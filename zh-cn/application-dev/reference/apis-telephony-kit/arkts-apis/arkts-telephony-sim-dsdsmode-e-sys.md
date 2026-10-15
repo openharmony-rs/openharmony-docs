@@ -46,22 +46,6 @@ Indicates the DSDS 3.0 Mode.
 
 **系统接口：** 此接口为系统接口。
 
-## DSDS_MODE_V5_TDM
-
-```TypeScript
-DSDS_MODE_V5_TDM = 2
-```
-
-Indicates the DSDS 5.0 TDM Mode.
-
-**起始版本：** 11
-
-<!--Device-DsdsMode-DSDS_MODE_V5_TDM = 2--><!--Device-DsdsMode-DSDS_MODE_V5_TDM = 2-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
-**系统接口：** 此接口为系统接口。
-
 ## DSDS_MODE_V5_DSDA
 
 ```TypeScript
@@ -73,6 +57,22 @@ Indicates the DSDS 5.0 DSDA Mode.
 **起始版本：** 11
 
 <!--Device-DsdsMode-DSDS_MODE_V5_DSDA = 3--><!--Device-DsdsMode-DSDS_MODE_V5_DSDA = 3-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+**系统接口：** 此接口为系统接口。
+
+## DSDS_MODE_V5_TDM
+
+```TypeScript
+DSDS_MODE_V5_TDM = 2
+```
+
+Indicates the DSDS 5.0 TDM Mode.
+
+**起始版本：** 11
+
+<!--Device-DsdsMode-DSDS_MODE_V5_TDM = 2--><!--Device-DsdsMode-DSDS_MODE_V5_TDM = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService
 

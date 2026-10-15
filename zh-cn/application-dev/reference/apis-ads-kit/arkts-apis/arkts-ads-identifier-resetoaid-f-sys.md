@@ -30,6 +30,7 @@ function resetOAID(): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API.<br>**适用版本：** 12+ |
 | 17300002 | Not in the trust list.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -37,3 +38,5 @@ import { identifier } from '@kit.AdsKit';
 
 identifier.resetOAID();
 ```
+
+<!--DelEnd-->

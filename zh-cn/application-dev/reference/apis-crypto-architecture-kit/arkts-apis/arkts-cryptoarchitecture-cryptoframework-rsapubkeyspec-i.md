@@ -36,7 +36,7 @@ params: RSACommonParamsSpec
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RSAPubKeySpec-params: RSACommonParamsSpec--><!--Device-RSAPubKeySpec-params: RSACommonParamsSpec-End-->
 
@@ -56,7 +56,7 @@ pk: bigint
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-RSAPubKeySpec-pk: bigint--><!--Device-RSAPubKeySpec-pk: bigint-End-->
 

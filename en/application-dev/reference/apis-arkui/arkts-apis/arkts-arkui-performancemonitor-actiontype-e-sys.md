@@ -14,6 +14,24 @@ Enumerates the trigger modes for user scenes (typically scenes involving animati
 
 **System API:** This is a system API.
 
+## FIRST_MOVE
+
+```TypeScript
+FIRST_MOVE = 2
+```
+
+First swiping on the screen.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ActionType-FIRST_MOVE = 2--><!--Device-ActionType-FIRST_MOVE = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
 ## LAST_DOWN
 
 ```TypeScript
@@ -45,24 +63,6 @@ Lifting a finger off the screen.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ActionType-LAST_UP = 1--><!--Device-ActionType-LAST_UP = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## FIRST_MOVE
-
-```TypeScript
-FIRST_MOVE = 2
-```
-
-First swiping on the screen.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ActionType-FIRST_MOVE = 2--><!--Device-ActionType-FIRST_MOVE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

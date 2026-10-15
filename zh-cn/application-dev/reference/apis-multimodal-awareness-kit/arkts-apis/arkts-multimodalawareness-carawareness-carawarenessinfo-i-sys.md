@@ -4,7 +4,7 @@
 export interface CarAwarenessInfo
 ```
 
-汽车感知响应信息接口。
+车辆感知通用结果信息接口。
 
 **起始版本：** 26.0.1
 
@@ -26,7 +26,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 awarenessEvent?:Record<string, Object>
 ```
 
-汽车感知数据项列表信息接口。
+感知结果数据键值对，不同能力返回不同字段。
 
 **类型：** Record&lt;string, Object&gt;
 
@@ -46,7 +46,7 @@ awarenessEvent?:Record<string, Object>
 capability: Capability
 ```
 
-表示特定能力。
+指定的感知能力类型。
 
 **类型：** [Capability](arkts-multimodalawareness-carawareness-capability-e.md)
 
@@ -66,7 +66,7 @@ capability: Capability
 timestamp: number
 ```
 
-时间戳。单位为：毫秒。
+识别结果的时间戳。单位为：ms。
 
 **类型：** number
 

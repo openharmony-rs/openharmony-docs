@@ -46,6 +46,7 @@ function getColorsSync(wallpaperType: WallpaperType): Array<RgbaColor>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,3 +60,5 @@ try {
     console.error(`Failed to getColorsSync. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

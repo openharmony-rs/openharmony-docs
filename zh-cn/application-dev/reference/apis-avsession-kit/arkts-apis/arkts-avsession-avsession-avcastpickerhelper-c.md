@@ -10,7 +10,7 @@ class AVCastPickerHelper
 > 
 > - 本Class首批接口从API version 14开始支持。
 > 
-> - AVCastPickerHelper样式显示为半模态，实际会绑定[全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover)。
+> - AVCastPickerHelper样式显示为半模态，实际会绑定[全模态页面（bindContentCover）](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontentcover1)。
 
 **起始版本：** 14
 
@@ -34,7 +34,7 @@ constructor(context: Context)
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastPickerHelper-constructor(context: Context)--><!--Device-AVCastPickerHelper-constructor(context: Context)-End-->
 
@@ -180,7 +180,7 @@ resetCommunicationDevice(): Promise<void>
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastPickerHelper-resetCommunicationDevice(): Promise<void>--><!--Device-AVCastPickerHelper-resetCommunicationDevice(): Promise<void>-End-->
 
@@ -216,7 +216,7 @@ select(options?: AVCastPickerOptions): Promise<void>
 
 **起始版本：** 14
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本14开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本14开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVCastPickerHelper-select(options?: AVCastPickerOptions): Promise<void>--><!--Device-AVCastPickerHelper-select(options?: AVCastPickerOptions): Promise<void>-End-->
 

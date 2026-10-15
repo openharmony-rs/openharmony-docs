@@ -32,13 +32,13 @@ The default configuration of the flex container is used.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Start
+## Baseline
 
 ```TypeScript
-Start
+Baseline
 ```
 
-The element in the flex container is aligned with the cross-start edge.
+The element aligns with the text baseline along the cross axis direction in a Flex container.
 
 **Since:** 7
 
@@ -48,7 +48,7 @@ The element in the flex container is aligned with the cross-start edge.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-ItemAlign-Start--><!--Device-ItemAlign-Start-End-->
+<!--Device-ItemAlign-Baseline--><!--Device-ItemAlign-Baseline-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -92,13 +92,13 @@ The element in the flex container is aligned with the cross-end edge.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Baseline
+## Start
 
 ```TypeScript
-Baseline
+Start
 ```
 
-The element aligns with the text baseline along the cross axis direction in a Flex container.
+The element in the flex container is aligned with the cross-start edge.
 
 **Since:** 7
 
@@ -108,7 +108,7 @@ The element aligns with the text baseline along the cross axis direction in a Fl
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
-<!--Device-ItemAlign-Baseline--><!--Device-ItemAlign-Baseline-End-->
+<!--Device-ItemAlign-Start--><!--Device-ItemAlign-Start-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

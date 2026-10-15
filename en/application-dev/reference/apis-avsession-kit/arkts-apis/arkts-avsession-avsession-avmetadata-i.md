@@ -30,7 +30,7 @@ The album of this media
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-album?: string--><!--Device-AVMetadata-album?: string-End-->
 
@@ -48,7 +48,7 @@ The artist of this media
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-artist?: string--><!--Device-AVMetadata-artist?: string-End-->
 
@@ -66,7 +66,7 @@ Unique ID used to represent this media.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-assetId: string--><!--Device-AVMetadata-assetId: string-End-->
 
@@ -84,7 +84,7 @@ The author of this media
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-author?: string--><!--Device-AVMetadata-author?: string-End-->
 
@@ -182,7 +182,7 @@ The description of the media, used for display
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-description?: string--><!--Device-AVMetadata-description?: string-End-->
 
@@ -232,7 +232,7 @@ The duration of this media, used to automatically calculate playback position, d
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-duration?: long--><!--Device-AVMetadata-duration?: long-End-->
 
@@ -268,7 +268,7 @@ The protocols supported by this session, if not set, the default is [TYPE_CAST_P
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-filter?: int--><!--Device-AVMetadata-filter?: int-End-->
 
@@ -302,7 +302,7 @@ The image of the media as a PixelMap or an uri formatted String, used to display
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-mediaImage?: image.PixelMap | string--><!--Device-AVMetadata-mediaImage?: image.PixelMap | string-End-->
 
@@ -320,7 +320,7 @@ The next playable media id. Used to tell the controller if there is a next playa
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-nextAssetId?: string--><!--Device-AVMetadata-nextAssetId?: string-End-->
 
@@ -338,7 +338,7 @@ The previous playable media id. Used to tell the controller if there is a previo
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-previousAssetId?: string--><!--Device-AVMetadata-previousAssetId?: string-End-->
 
@@ -390,7 +390,7 @@ The single lyric text of the media, not including time prefix
 
 **Since:** 17
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 17.
+**Atomic service API:** This API can be used in atomic services since API version 17.
 
 <!--Device-AVMetadata-singleLyricText?: string--><!--Device-AVMetadata-singleLyricText?: string-End-->
 
@@ -424,7 +424,7 @@ The subtitle of the media, used for display
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-subtitle?: string--><!--Device-AVMetadata-subtitle?: string-End-->
 
@@ -442,7 +442,7 @@ The title of this media, for display in media center.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-title?: string--><!--Device-AVMetadata-title?: string-End-->
 
@@ -460,7 +460,7 @@ The writer of this media
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVMetadata-writer?: string--><!--Device-AVMetadata-writer?: string-End-->
 

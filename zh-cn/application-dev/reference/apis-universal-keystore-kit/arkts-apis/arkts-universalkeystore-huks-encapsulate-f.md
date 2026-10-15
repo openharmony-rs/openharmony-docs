@@ -44,7 +44,7 @@ function encapsulate(keyAlias: string, params: HuksParam[],
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000001](../errorcode-huks.md#12000001-该子功能不支持特性) | Algorithm mode is not supported |
 | [12000002](../errorcode-huks.md#12000002-缺少密钥算法参数) | Algorithm parameters are missing, please check the algorithm parameters. |
 | [12000003](../errorcode-huks.md#12000003-无效的密钥算法参数) | The algorithm parameters are invalid, please check the algorithm parameters. |

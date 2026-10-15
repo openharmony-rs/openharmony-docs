@@ -34,10 +34,13 @@ Obtains the current OS account authorization manager.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
 ```
+
+<!--DelEnd-->

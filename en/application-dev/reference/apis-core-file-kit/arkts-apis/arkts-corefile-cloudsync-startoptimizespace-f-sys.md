@@ -50,6 +50,7 @@ startOptimizeSpace is used together with **stopOptimizeSpace**. If **startOptimi
 | 22400005 | Inner error. |
 | 22400006 | The same task is already in progress. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,3 +72,5 @@ cloudSync.startOptimizeSpace(para, callback).then(() => {
   console.error("start optimize space failed with error message: " + err.message + ", error code: " + err.code);
 });
 ```
+
+<!--DelEnd-->

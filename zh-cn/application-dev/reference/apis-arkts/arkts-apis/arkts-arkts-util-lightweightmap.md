@@ -8,7 +8,8 @@ LightWeightMap可用于存储具有关联关系的key-value键值对，其中key
  文档中使用了泛型，包含以下泛型标记符：
 
 - K：Key，键
- - V：Value，值
+
+- V：Value，值
 
 > **说明**
  >

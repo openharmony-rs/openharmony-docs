@@ -4,7 +4,7 @@
 declare interface InvertOptions
 ```
 
-前景智能取反色。基于灰度阈值区间决定反色取值，参见[invert](arkts-arkui-common-comp-commonmethod-c.md#invert)中的详细机制说明。
+前景智能取反色。基于灰度阈值区间决定反色取值，参见[invert](arkts-arkui-common-comp-commonmethod-c.md#invert1)中的详细机制说明。
 
 **起始版本：** 11
 

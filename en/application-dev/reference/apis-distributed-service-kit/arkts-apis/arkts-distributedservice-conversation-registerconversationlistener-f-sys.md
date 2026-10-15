@@ -50,6 +50,7 @@ Registers a listener to receive data from trusted devices under the same account
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [2000001](../errorcode-conversation.md#2000001-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,3 +70,5 @@ try {
   console.error(`registerConversationListener errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
+
+<!--DelEnd-->

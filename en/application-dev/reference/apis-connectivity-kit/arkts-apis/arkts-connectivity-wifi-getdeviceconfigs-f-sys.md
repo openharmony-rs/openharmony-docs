@@ -36,6 +36,7 @@ Obtains the list of all existing Wi-Fi configurations.
 | --- | --- |
 | Array&lt;[WifiDeviceConfig](arkts-connectivity-wifi-wifideviceconfig-i.md)&gt; | sReturns the list of all existing Wi-Fi configurations you created on your application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -48,3 +49,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

@@ -18,7 +18,7 @@ Defines the finger information type.
 getCurrentLocalPosition?(): Coordinate2D
 ```
 
-Gets the coordinates of the top-left corner of the current component based on its real-time position.
+Obtains the coordinates of the finger position relative to the upper left corner of the current component's real-time position.
 
 **Since:** 26.0.0
 
@@ -34,7 +34,7 @@ Gets the coordinates of the top-left corner of the current component based on it
 
 | Type | Description |
 | --- | --- |
-| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | return the coordinates of the top-left corner of the current component based on its real-time position. |
+| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | coordinates of the finger position relative to the upper left corner of the current component's real-time position. |
 
 ## displayX
 
@@ -86,7 +86,7 @@ Value range: [0, +∞)
 globalDisplayX?: number
 ```
 
-X-coordinate relative to the upper left corner of the global display, in vp.
+X coordinate relative to the upper left corner of the global screen, in vp. If this parameter is not returned, there is no global screen X coordinate information.
 
 Value range: [0, +∞)
 
@@ -108,7 +108,7 @@ Value range: [0, +∞)
 globalDisplayY?: number
 ```
 
-Y-coordinate relative to the upper left corner of the global display, in vp.
+Y coordinate relative to the upper left corner of the global screen, in vp. If this parameter is not returned, there is no global screen Y coordinate information.
 
 Value range: [0, +∞)
 
@@ -170,7 +170,7 @@ Value range: [0, +∞)
 hand?: InteractionHand
 ```
 
-Whether the event is triggered by a left-hand or right-hand tap.
+Whether the event is triggered by a left-hand or right-hand tap. If this parameter is not returned, the current event has no left-hand or right-hand tap information.
 
 **Type:** [InteractionHand](../arkts-apis/arkts-arkui-interactionhand-e.md)
 
@@ -196,7 +196,7 @@ Index of the finger, determined by the number of fingers pressed. The first pres
 
 Indexes for other input sources (mouse: 1001, stylus: 102, mouse wheel: 0, two-finger trackpad slide: 0) are also converted to finger indexes.
 
-Value range: [0, 9)
+Value range: [0, 10), 102, 1001
 
 **Type:** number
 

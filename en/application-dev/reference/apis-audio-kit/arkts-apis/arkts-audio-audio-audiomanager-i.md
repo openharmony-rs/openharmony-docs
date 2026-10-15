@@ -20,6 +20,8 @@ Before calling any API in AudioManager, you must use [getAudioManager](arkts-aud
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="getaudioscene1"></a>
+
 ## getAudioScene
 
 ```TypeScript
@@ -54,7 +56,7 @@ audioManager.getAudioScene((err: BusinessError, value: audio.AudioScene) => {
 });
 ```
 
-<a id="getaudioscene-1"></a>
+<a id="getaudioscene2"></a>
 
 ## getAudioScene
 
@@ -128,7 +130,7 @@ try {
 getDebuggingManager(): AudioDebuggingManager
 ```
 
-Obtains an AudioDebuggingManager instance. <p>&lt;strong&gt;NOTE&lt;/strong&gt;: The [AudioDebuggingManager](arkts-audio-audio-audiodebuggingmanager-i.md) instance is a singleton. </p>
+Obtains an AudioDebuggingManager instance. <p><strong>NOTE</strong>: The [AudioDebuggingManager](arkts-audio-audio-audiodebuggingmanager-i.md) instance is a singleton. </p>
 
 **Since:** 26.0.0
 
@@ -249,7 +251,7 @@ Obtains an AudioSessionManager instance.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AudioManager-getSessionManager(): AudioSessionManager--><!--Device-AudioManager-getSessionManager(): AudioSessionManager-End-->
 
@@ -334,7 +336,7 @@ Obtains an AudioVolumeManager instance.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AudioManager-getVolumeManager(): AudioVolumeManager--><!--Device-AudioManager-getVolumeManager(): AudioVolumeManager-End-->
 
@@ -608,6 +610,8 @@ audioManager.on('interrupt', interAudioInterrupt, (interruptAction: audio.Interr
 });
 ```
 
+<a id="getaudioparameter1"></a>
+
 ## getAudioParameter
 
 ```TypeScript
@@ -645,7 +649,7 @@ audioManager.getAudioParameter('key_example', (err: BusinessError, value: string
 });
 ```
 
-<a id="getaudioparameter-1"></a>
+<a id="getaudioparameter2"></a>
 
 ## getAudioParameter
 
@@ -683,6 +687,8 @@ audioManager.getAudioParameter('key_example').then((value: string) => {
 });
 ```
 
+<a id="getdevices1"></a>
+
 ## getDevices
 
 ```TypeScript
@@ -695,7 +701,7 @@ Obtains the audio devices with a specific flag. This API uses an asynchronous ca
 
 **Deprecated since:** 9
 
-**Substitutes:** getDevices
+**Substitutes:** [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices)
 
 <!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void--><!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag, callback: AsyncCallback<AudioDeviceDescriptors>): void-End-->
 
@@ -722,7 +728,7 @@ audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG, (err: BusinessErro
 });
 ```
 
-<a id="getdevices-1"></a>
+<a id="getdevices2"></a>
 
 ## getDevices
 
@@ -736,7 +742,7 @@ Obtains the audio devices with a specific flag. This API uses a promise to retur
 
 **Deprecated since:** 9
 
-**Substitutes:** getDevices
+**Substitutes:** [getDevices](arkts-audio-audio-audioroutingmanager-i.md#getdevices)
 
 <!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>--><!--Device-AudioManager-getDevices(deviceFlag: DeviceFlag): Promise<AudioDeviceDescriptors>-End-->
 
@@ -762,6 +768,8 @@ audioManager.getDevices(audio.DeviceFlag.OUTPUT_DEVICES_FLAG).then((data: audio.
 });
 ```
 
+<a id="getmaxvolume1"></a>
+
 ## getMaxVolume
 
 ```TypeScript
@@ -774,7 +782,7 @@ Obtains the maximum volume allowed for a stream. This API uses an asynchronous c
 
 **Deprecated since:** 9
 
-**Substitutes:** getMaxVolume
+**Substitutes:** [getMaxVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxvolume)
 
 <!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
 
@@ -801,7 +809,7 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 });
 ```
 
-<a id="getmaxvolume-1"></a>
+<a id="getmaxvolume2"></a>
 
 ## getMaxVolume
 
@@ -815,7 +823,7 @@ Obtains the maximum volume allowed for a stream. This API uses a promise to retu
 
 **Deprecated since:** 9
 
-**Substitutes:** getMaxVolume
+**Substitutes:** [getMaxVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getmaxvolume)
 
 <!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getMaxVolume(volumeType: AudioVolumeType): Promise<number>-End-->
 
@@ -841,6 +849,8 @@ audioManager.getMaxVolume(audio.AudioVolumeType.MEDIA).then((data: number) => {
 });
 ```
 
+<a id="getminvolume1"></a>
+
 ## getMinVolume
 
 ```TypeScript
@@ -853,7 +863,7 @@ Obtains the minimum volume allowed for a stream. This API uses an asynchronous c
 
 **Deprecated since:** 9
 
-**Substitutes:** getMinVolume
+**Substitutes:** [getMinVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getminvolume)
 
 <!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
 
@@ -880,7 +890,7 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, valu
 });
 ```
 
-<a id="getminvolume-1"></a>
+<a id="getminvolume2"></a>
 
 ## getMinVolume
 
@@ -894,7 +904,7 @@ Obtains the minimum volume allowed for a stream. This API uses a promise to retu
 
 **Deprecated since:** 9
 
-**Substitutes:** getMinVolume
+**Substitutes:** [getMinVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getminvolume)
 
 <!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getMinVolume(volumeType: AudioVolumeType): Promise<number>-End-->
 
@@ -920,6 +930,8 @@ audioManager.getMinVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
 });
 ```
 
+<a id="getringermode1"></a>
+
 ## getRingerMode
 
 ```TypeScript
@@ -932,7 +944,7 @@ Obtains the ringer mode. This API uses an asynchronous callback to return the re
 
 **Deprecated since:** 9
 
-**Substitutes:** getRingerMode
+**Substitutes:** [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode)
 
 <!--Device-AudioManager-getRingerMode(callback: AsyncCallback<AudioRingMode>): void--><!--Device-AudioManager-getRingerMode(callback: AsyncCallback<AudioRingMode>): void-End-->
 
@@ -958,7 +970,7 @@ audioManager.getRingerMode((err: BusinessError, value: audio.AudioRingMode) => {
 });
 ```
 
-<a id="getringermode-1"></a>
+<a id="getringermode2"></a>
 
 ## getRingerMode
 
@@ -972,7 +984,7 @@ Obtains the ringer mode. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** getRingerMode
+**Substitutes:** [getRingerMode](arkts-audio-audio-audiovolumegroupmanager-i.md#getringermode)
 
 <!--Device-AudioManager-getRingerMode(): Promise<AudioRingMode>--><!--Device-AudioManager-getRingerMode(): Promise<AudioRingMode>-End-->
 
@@ -992,6 +1004,8 @@ audioManager.getRingerMode().then((value: audio.AudioRingMode) => {
 });
 ```
 
+<a id="getvolume1"></a>
+
 ## getVolume
 
 ```TypeScript
@@ -1004,7 +1018,7 @@ Obtains the volume of a stream. This API uses an asynchronous callback to return
 
 **Deprecated since:** 9
 
-**Substitutes:** getVolume
+**Substitutes:** [getVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getvolume)
 
 <!--Device-AudioManager-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void--><!--Device-AudioManager-getVolume(volumeType: AudioVolumeType, callback: AsyncCallback<number>): void-End-->
 
@@ -1015,7 +1029,7 @@ Obtains the volume of a stream. This API uses an asynchronous callback to return
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | volumeType | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Yes | Audio volume type. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume) and [getMaxVolume](#getmaxvolume). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;number&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined** and **data** is the stream volume obtained; otherwise, **err** is an error object. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume1) and [getMaxVolume](#getmaxvolume1). |
 
 **Examples**
 
@@ -1031,7 +1045,7 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: 
 });
 ```
 
-<a id="getvolume-1"></a>
+<a id="getvolume2"></a>
 
 ## getVolume
 
@@ -1045,7 +1059,7 @@ Obtains the volume of a stream. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** getVolume
+**Substitutes:** [getVolume](arkts-audio-audio-audiovolumegroupmanager-i.md#getvolume)
 
 <!--Device-AudioManager-getVolume(volumeType: AudioVolumeType): Promise<number>--><!--Device-AudioManager-getVolume(volumeType: AudioVolumeType): Promise<number>-End-->
 
@@ -1061,7 +1075,7 @@ Obtains the volume of a stream. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;number&gt; | Promise used to return the volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume) and [getMaxVolume](#getmaxvolume). |
+| Promise&lt;number&gt; | Promise used to return the volume of the stream. The volume range of a specified stream can be obtained by calling [getMinVolume](#getminvolume1) and [getMaxVolume](#getmaxvolume1). |
 
 **Examples**
 
@@ -1070,6 +1084,8 @@ audioManager.getVolume(audio.AudioVolumeType.MEDIA).then((value: number) => {
   console.info(`Promise returned to indicate that the volume is obtained ${value} .`);
 });
 ```
+
+<a id="isactive1"></a>
 
 ## isActive
 
@@ -1083,7 +1099,7 @@ Checks whether a stream is active. This API uses an asynchronous callback to ret
 
 **Deprecated since:** 9
 
-**Substitutes:** isActive
+**Substitutes:** [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive)
 
 <!--Device-AudioManager-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isActive(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void-End-->
 
@@ -1110,7 +1126,7 @@ audioManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: b
 });
 ```
 
-<a id="isactive-1"></a>
+<a id="isactive2"></a>
 
 ## isActive
 
@@ -1124,7 +1140,7 @@ Checks whether a stream is active. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** isActive
+**Substitutes:** [isActive](arkts-audio-audio-audiostreammanager-i.md#isactive)
 
 <!--Device-AudioManager-isActive(volumeType: AudioVolumeType): Promise<boolean>--><!--Device-AudioManager-isActive(volumeType: AudioVolumeType): Promise<boolean>-End-->
 
@@ -1149,6 +1165,8 @@ audioManager.isActive(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
   console.info(`Promise returned to indicate that the active status of the stream is obtained ${value}.`);
 });
 ```
+
+<a id="isdeviceactive1"></a>
 
 ## isDeviceActive
 
@@ -1189,7 +1207,7 @@ audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER, (err: BusinessError,
 });
 ```
 
-<a id="isdeviceactive-1"></a>
+<a id="isdeviceactive2"></a>
 
 ## isDeviceActive
 
@@ -1229,6 +1247,8 @@ audioManager.isDeviceActive(audio.ActiveDeviceType.SPEAKER).then((value: boolean
 });
 ```
 
+<a id="ismicrophonemute1"></a>
+
 ## isMicrophoneMute
 
 ```TypeScript
@@ -1241,7 +1261,7 @@ Checks whether the microphone is muted. This API uses an asynchronous callback t
 
 **Deprecated since:** 9
 
-**Substitutes:** isMicrophoneMute
+**Substitutes:** [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute)
 
 **Required permissions:** ohos.permission.MICROPHONE
 
@@ -1269,7 +1289,7 @@ audioManager.isMicrophoneMute((err: BusinessError, value: boolean) => {
 });
 ```
 
-<a id="ismicrophonemute-1"></a>
+<a id="ismicrophonemute2"></a>
 
 ## isMicrophoneMute
 
@@ -1283,7 +1303,7 @@ Checks whether the microphone is muted. This API uses a promise to return the re
 
 **Deprecated since:** 9
 
-**Substitutes:** isMicrophoneMute
+**Substitutes:** [isMicrophoneMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismicrophonemute)
 
 **Required permissions:** ohos.permission.MICROPHONE
 
@@ -1305,6 +1325,8 @@ audioManager.isMicrophoneMute().then((value: boolean) => {
 });
 ```
 
+<a id="ismute1"></a>
+
 ## isMute
 
 ```TypeScript
@@ -1317,7 +1339,7 @@ Checks whether a stream is muted. This API uses an asynchronous callback to retu
 
 **Deprecated since:** 9
 
-**Substitutes:** isMute
+**Substitutes:** [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute)
 
 <!--Device-AudioManager-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void--><!--Device-AudioManager-isMute(volumeType: AudioVolumeType, callback: AsyncCallback<boolean>): void-End-->
 
@@ -1344,7 +1366,7 @@ audioManager.isMute(audio.AudioVolumeType.MEDIA, (err: BusinessError, value: boo
 });
 ```
 
-<a id="ismute-1"></a>
+<a id="ismute2"></a>
 
 ## isMute
 
@@ -1358,7 +1380,7 @@ Checks whether a stream is muted. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** isMute
+**Substitutes:** [isMute](arkts-audio-audio-audiovolumegroupmanager-i.md#ismute)
 
 <!--Device-AudioManager-isMute(volumeType: AudioVolumeType): Promise<boolean>--><!--Device-AudioManager-isMute(volumeType: AudioVolumeType): Promise<boolean>-End-->
 
@@ -1383,6 +1405,8 @@ audioManager.isMute(audio.AudioVolumeType.MEDIA).then((value: boolean) => {
   console.info(`Promise returned to indicate that the mute status of the stream is obtained ${value}.`);
 });
 ```
+
+<a id="mute1"></a>
 
 ## mute
 
@@ -1424,7 +1448,7 @@ audioManager.mute(audio.AudioVolumeType.MEDIA, true, (err: BusinessError) => {
 });
 ```
 
-<a id="mute-1"></a>
+<a id="mute2"></a>
 
 ## mute
 
@@ -1464,6 +1488,8 @@ audioManager.mute(audio.AudioVolumeType.MEDIA, true).then(() => {
   console.info('Promise returned to indicate that the stream is muted.');
 });
 ```
+
+<a id="setaudioparameter1"></a>
 
 ## setAudioParameter
 
@@ -1505,7 +1531,7 @@ audioManager.setAudioParameter('key_example', 'value_example', (err: BusinessErr
 });
 ```
 
-<a id="setaudioparameter-1"></a>
+<a id="setaudioparameter2"></a>
 
 ## setAudioParameter
 
@@ -1545,6 +1571,8 @@ audioManager.setAudioParameter('key_example', 'value_example').then(() => {
   console.info('Promise returned to indicate a successful setting of the audio parameter.');
 });
 ```
+
+<a id="setdeviceactive1"></a>
 
 ## setDeviceActive
 
@@ -1586,7 +1614,7 @@ audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true, (err: Busines
 });
 ```
 
-<a id="setdeviceactive-1"></a>
+<a id="setdeviceactive2"></a>
 
 ## setDeviceActive
 
@@ -1627,6 +1655,8 @@ audioManager.setDeviceActive(audio.ActiveDeviceType.SPEAKER, true).then(() => {
 });
 ```
 
+<a id="setmicrophonemute1"></a>
+
 ## setMicrophoneMute
 
 ```TypeScript
@@ -1666,7 +1696,7 @@ audioManager.setMicrophoneMute(true, (err: BusinessError) => {
 });
 ```
 
-<a id="setmicrophonemute-1"></a>
+<a id="setmicrophonemute2"></a>
 
 ## setMicrophoneMute
 
@@ -1705,6 +1735,8 @@ audioManager.setMicrophoneMute(true).then(() => {
   console.info('Promise returned to indicate that the microphone is muted.');
 });
 ```
+
+<a id="setringermode1"></a>
 
 ## setRingerMode
 
@@ -1745,7 +1777,7 @@ audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL, (err: Busines
 });
 ```
 
-<a id="setringermode-1"></a>
+<a id="setringermode2"></a>
 
 ## setRingerMode
 
@@ -1784,6 +1816,8 @@ audioManager.setRingerMode(audio.AudioRingMode.RINGER_MODE_NORMAL).then(() => {
   console.info('Promise returned to indicate a successful setting of the ringer mode.');
 });
 ```
+
+<a id="setvolume1"></a>
 
 ## setVolume
 
@@ -1827,7 +1861,7 @@ audioManager.setVolume(audio.AudioVolumeType.MEDIA, 10, (err: BusinessError) => 
 });
 ```
 
-<a id="setvolume-1"></a>
+<a id="setvolume2"></a>
 
 ## setVolume
 

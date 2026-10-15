@@ -6,6 +6,8 @@ declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.Rect
 
 矩形区域高度规格枚举。
 
+**类型：** import('../api/@ohos.graphics.text').default.RectHeightStyle
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.Rect
 <!--Device-unnamed-declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle--><!--Device-unnamed-declare type RectHeightStyle = import('../api/@ohos.graphics.text').default.RectHeightStyle-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.graphics.text').default.RectHeightStyle

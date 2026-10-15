@@ -6,6 +6,8 @@
 import { formProvider } from '@kit.FormKit';
 ```
 
+<a id="getformsinfo1"></a>
+
 ## getFormsInfo
 
 ```TypeScript
@@ -16,7 +18,7 @@ Obtains the application's widget information that meets a filter criterion on th
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-formProvider-function getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback<Array<formInfo.FormInfo>>): void--><!--Device-formProvider-function getFormsInfo(filter: formInfo.FormInfoFilter, callback: AsyncCallback<Array<formInfo.FormInfo>>): void-End-->
 
@@ -45,7 +47,7 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // Obtain the widget information of the specified module.
+  // Obtain widget information of the specified module.
   moduleName: 'entry'
 };
 try {
@@ -62,7 +64,7 @@ try {
 ```
 
 
-<a id="getformsinfo-1"></a>
+<a id="getformsinfo2"></a>
 
 ## getFormsInfo
 
@@ -74,7 +76,7 @@ Obtains the application's widget information on the device. This API uses an asy
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-formProvider-function getFormsInfo(callback: AsyncCallback<Array<formInfo.FormInfo>>): void--><!--Device-formProvider-function getFormsInfo(callback: AsyncCallback<Array<formInfo.FormInfo>>): void-End-->
 
@@ -115,7 +117,7 @@ try {
 ```
 
 
-<a id="getformsinfo-2"></a>
+<a id="getformsinfo3"></a>
 
 ## getFormsInfo
 
@@ -127,7 +129,7 @@ Obtains information about widgets that meet the criteria of the current applicat
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-formProvider-function getFormsInfo(filter?: formInfo.FormInfoFilter): Promise<Array<formInfo.FormInfo>>--><!--Device-formProvider-function getFormsInfo(filter?: formInfo.FormInfoFilter): Promise<Array<formInfo.FormInfo>>-End-->
 
@@ -161,7 +163,7 @@ import { formInfo, formProvider } from '@kit.FormKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 const filter: formInfo.FormInfoFilter = {
-  // Obtain the widget information of the specified module.
+  // Obtain widget information of the specified module.
   moduleName: 'entry'
 };
 try {

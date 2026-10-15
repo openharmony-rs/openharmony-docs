@@ -4,8 +4,6 @@
 
 **起始版本：** 9
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace common--><!--Device-unnamed-declare namespace common-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -24,7 +22,7 @@ import { common } from '@kit.AbilityKit';
 | --- | --- |
 | [AbilityResult](arkts-ability-common-abilityresult-t.md) | 定义Ability被拉起并退出后返回的结果码和数据。 |
 | [AbilityStageContext](arkts-ability-common-abilitystagecontext-t.md) | [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md)组件上下文，继承自Context。 |
-| [AbilityStartCallback](arkts-ability-common-abilitystartcallback-t.md) | 定义了拉起UIExtensionAbility的回调结果，通常作为[UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype) / [UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype)的入参传入。 |
+| [AbilityStartCallback](arkts-ability-common-abilitystartcallback-t.md) | 定义了拉起UIExtensionAbility的回调结果，通常作为[UIAbilityContext.startAbilityByType](arkts-ability-uiabilitycontext-c.md#startabilitybytype1) / [UIExtensionContext.startAbilityByType](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md#startabilitybytype1)的入参传入。 |
 | [AgentAppInfo](arkts-ability-common-agentappinfo-t.md) | agent的应用程序相关信息。 |
 | [AgentCapabilities](arkts-ability-common-agentcapabilities-t.md) | AgentCard中的功能表示特定的skills、服务和功能agent可以在系统内执行或提供。 |
 | [AgentCard](arkts-ability-common-agentcard-t.md) | AgentCard在系统中显示agent的配置文件和联系信息。 |
@@ -33,7 +31,7 @@ import { common } from '@kit.AbilityKit';
 | [AgentProvider](arkts-ability-common-agentprovider-t.md) | AgentCard中的Provider是指发行和的组织或平台。管理代理的凭据。 |
 | [AgentSkill](arkts-ability-common-agentskill-t.md) | AgentCard中的技能表示特定的 skills、专业知识和熟练程度用于执行任务或解决问题的代理。 |
 | [ApplicationContext](arkts-ability-common-applicationcontext-t.md) | 应用上下文，继承自Context。 |
-| [AppServiceExtensionContext](arkts-ability-common-appserviceextensioncontext-t.md) | AppServiceExtensionAbility组件上下文，继承自Context。 |
+| [AppServiceExtensionContext](arkts-ability-common-appserviceextensioncontext-t.md) | [AppServiceExtensionAbility](../../../reference/apis-ability-kit/js-apis-app-ability-appServiceExtensionAbility.md)组件上下文，继承自Context。 |
 | [BaseContext](arkts-ability-common-basecontext-t.md) | 所有Context类型的父类。 |
 | [ConnectOptions](arkts-ability-common-connectoptions-t.md) | 在连接指定的后台服务时作为入参，用于接收与后台服务的连接状态。 |
 | [Context](arkts-ability-common-context-t.md) | [Stage模型](../../../application-models/ability-terminology.md#stage模型)的上下文基类。 |
@@ -61,7 +59,12 @@ import { common } from '@kit.AbilityKit';
 | [AutoFillExtensionContext](arkts-ability-common-autofillextensioncontext-t-sys.md) | AutoFillExtensionContext二级模块。 |
 | [AutoStartupCallback](arkts-ability-common-autostartupcallback-t-sys.md) | AutoStartupCallback二级模块。 |
 | [AutoStartupInfo](arkts-ability-common-autostartupinfo-t-sys.md) | AutoStartupInfo二级模块。 |
+| [CliToolEvent](arkts-ability-common-clitoolevent-t-sys.md) | 用于描述CLI工具进程运行期间产生的会话事件信息。 |
+| [FunctionInfo](arkts-ability-common-functioninfo-t-sys.md) | 用于描述Function的基本信息。 |
 | [ServiceExtensionContext](arkts-ability-common-serviceextensioncontext-t-sys.md) | ServiceExtensionContext二级模块。 |
+| [ToolEventCallback](arkts-ability-common-tooleventcallback-t-sys.md) | 用于接收CLI工具进程运行期间产生的会话事件。 |
+| [ToolInfo](arkts-ability-common-toolinfo-t-sys.md) | 用于描述系统命令行工具（CLI）的基本信息。 |
+| [ToolSummary](arkts-ability-common-toolsummary-t-sys.md) | 用于描述系统命令行工具（CLI）的摘要信息。 |
 | [UIServiceExtensionContext](arkts-ability-common-uiserviceextensioncontext-t-sys.md) | UIServiceExtensionContext二级模块。 |
 | [UIServiceHostProxy](arkts-ability-common-uiservicehostproxy-t-sys.md) | UIServiceHostProxy二级模块。 |
 <!--DelEnd-->

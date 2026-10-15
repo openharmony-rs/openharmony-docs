@@ -6,6 +6,8 @@ type GridItem = TypedFrameNode<GridItemInterface, GridItemAttribute>
 
 GridItem类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;GridItemInterface, [GridItemAttribute](../arkts-components/arkts-arkui-griditem-comp-attribute.md)&gt;
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ GridItem类型的FrameNode节点类型。
 <!--Device-typeNode-type GridItem = TypedFrameNode<GridItemInterface, GridItemAttribute>--><!--Device-typeNode-type GridItem = TypedFrameNode<GridItemInterface, GridItemAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;GridItemInterface, [GridItemAttribute](../arkts-components/arkts-arkui-griditem-comp-attribute.md)&gt;

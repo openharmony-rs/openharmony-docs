@@ -55,6 +55,7 @@ Checks whether a scene feature is supported.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application, only throw in session usage. |
 | [7400101](../errorcode-camera.md#7400101-无效入参) | Parameter missing or parameter type incorrect. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ function isSceneFeatureSupported(photoSessionForSys: camera.PhotoSessionForSys, 
   return isSupported;
 }
 ```
+
+<!--DelEnd-->

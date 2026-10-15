@@ -6,6 +6,8 @@ declare type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.
 
 Base class for system material objects.
 
+**Type:** import('../api/@ohos.arkui.uiMaterial').default.Material
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Base class for system material objects.
 <!--Device-unnamed-declare type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material--><!--Device-unnamed-declare type SystemUiMaterial = import('../api/@ohos.arkui.uiMaterial').default.Material-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.uiMaterial').default.Material

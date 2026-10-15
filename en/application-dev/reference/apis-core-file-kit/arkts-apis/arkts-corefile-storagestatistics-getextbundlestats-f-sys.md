@@ -49,6 +49,7 @@ Obtains the space usage of a specified user, system application bundle name, or 
 | 13600010 | The input parameter is invalid. |
 | 13600012 | Failed to query the specified business space usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: sto
   console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

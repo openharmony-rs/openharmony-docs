@@ -38,6 +38,7 @@ function updateSurfaceParam(streamId: number, param: SurfaceParam): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,3 +57,5 @@ abilityConnectionManager.createStream(sessionId, {name: 'receive', role: 0}).the
   abilityConnectionManager.updateSurfaceParam(streamId, surfaceParam);
 })
 ```
+
+<!--DelEnd-->

@@ -6,27 +6,9 @@ enum IpType
 
 Wi-Fi IP type enumeration.
 
-@enum { int }
-
 **Since:** 9
 
 <!--Device-wifiManager-enum IpType--><!--Device-wifiManager-enum IpType-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.STA
-
-**System API:** This is a system API.
-
-## STATIC
-
-```TypeScript
-STATIC
-```
-
-Use statically configured IP settings
-
-**Since:** 9
-
-<!--Device-IpType-STATIC--><!--Device-IpType-STATIC-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -43,6 +25,22 @@ Use dynamically configured IP settings
 **Since:** 9
 
 <!--Device-IpType-DHCP--><!--Device-IpType-DHCP-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.STA
+
+**System API:** This is a system API.
+
+## STATIC
+
+```TypeScript
+STATIC
+```
+
+Use statically configured IP settings
+
+**Since:** 9
+
+<!--Device-IpType-STATIC--><!--Device-IpType-STATIC-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

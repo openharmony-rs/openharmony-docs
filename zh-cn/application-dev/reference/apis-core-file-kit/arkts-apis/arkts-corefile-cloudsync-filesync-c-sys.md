@@ -18,7 +18,7 @@ class FileSync
 import { cloudSync } from '@kit.CoreFileKit';
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -49,11 +49,14 @@ constructor(bundleName: string)
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let fileSync = new cloudSync.FileSync("com.ohos.demo")
 ```
+
+<!--DelEnd-->
 
 ## getUploadList
 
@@ -96,6 +99,7 @@ getUploadList(uris: Array<string>): Promise<Array<UploadProgress>>
 | 13900010 | Try again. |
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameters are left unspecified. 2.The length of the input parameter exceeds the upper limit. <br>3.The input parameter contains an invalid uri. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,6 +117,8 @@ fileSync.getUploadList(uris).then((progressList: cloudSync.UploadProgress[]) => 
   console.error("get upload list failed with error message: " + error.message + ", error code: " + error.code);
 });
 ```
+
+<!--DelEnd-->
 
 ## pauseUpload
 
@@ -150,6 +156,7 @@ pauseUpload(uri: string): void
 | 13900010 | Try again. |
 | 14000002 | Invalid uri. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -168,6 +175,8 @@ try {
   console.error("pause upload failed with error message: " + error.message + ", error code: " + error.code);
 }
 ```
+
+<!--DelEnd-->
 
 ## registerUploadProgress
 
@@ -204,6 +213,7 @@ registerUploadProgress(callback: Callback<UploadProgress>): void
 | 13900010 | Try again. |
 | 13900020 | Invalid argument. Possible causes:<br>1.Mandatory parameter are left unspecified. <br>2.The number of instances registered at the same time exceeds the upper limit. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -223,6 +233,8 @@ try {
   console.error(`register upload progress failed with error message: ${error.message}, error code: ${error.code}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## resumeUpload
 
@@ -260,6 +272,7 @@ resumeUpload(uri: string): void
 | 13900010 | Try again. |
 | 14000002 | Invalid uri. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -278,6 +291,8 @@ try {
   console.error("resume upload failed with error message: " + error.message + ", error code: " + error.code);
 }
 ```
+
+<!--DelEnd-->
 
 ## unregisterUploadProgress
 
@@ -307,6 +322,7 @@ unregisterUploadProgress(): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | 13900010 | Try again. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -322,3 +338,5 @@ try {
   console.error("unregister upload progress failed with error message: " + error.message + ", error code: " + error.code);
 }
 ```
+
+<!--DelEnd-->

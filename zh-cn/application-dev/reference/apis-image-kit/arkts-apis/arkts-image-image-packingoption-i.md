@@ -54,7 +54,7 @@ bufferSize?: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PackingOption-bufferSize?: int--><!--Device-PackingOption-bufferSize?: int-End-->
 
@@ -82,10 +82,10 @@ desiredDynamicRange?: PackingDynamicRange
 format: string
 ```
 
-目标格式。&lt;/br&gt;- 当[输入为ImageSource或PixelMap](../../../media/image/image-encoding.md)时，支持"image/jpeg"、"image/webp"、"image/png"和"image/heic（或者image/heif）"&lt;sup&gt;12+&lt;/sup&gt;、"image/sdr_astc_4x4"&lt;sup&gt;18+&lt;/sup&gt;、"image/sdr_sut_superfast_4 x4"&lt;sup&gt;18+&lt;/sup&gt;（不同硬件设备支持情况不同）、"image/hdr_astc_4x4"&lt;sup&gt;20+&lt;/sup&gt;。
+目标格式。</br>- 当[输入为ImageSource或PixelMap](../../../media/image/image-encoding.md)时，支持"image/jpeg"、"image/webp"、"image/png"和"image/heic（或者image/heif）"<sup>12+</sup>、"image/sdr_astc_4x4"<sup>18+</sup>、"image/sdr_sut_superfast_4 x4"<sup>18+</sup>（不同硬件设备支持情况不同）、"image/hdr_astc_4x4"<sup>20+</sup>。
 
-- 当[输入为Picture](../../../media/image/image-picture-encoding.md)时，仅支持"image/jpeg"和"image/heic（或者image/heif）"&lt;sup&gt;  
-12+&lt;/sup&gt;。  
+- 当[输入为Picture](../../../media/image/image-picture-encoding.md)时，仅支持"image/jpeg"和"image/heic（或者image/heif）"<sup>  
+12+</sup>。  
 - gif图片编码需要输入多个PixelMap，并指定format为"image/gif"，使用[packToDataFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packtodatafrompixelmapsequence)或[packToFileFromPixelmapSequence](arkts-image-image-imagepacker-i.md#packtofilefrompixelmapsequence)接口进行编码。
 
 **说明：** 因为jpeg不支持透明通道，若使用带透明通道的数据编码jpeg格式，透明色将变为黑色。
@@ -94,7 +94,7 @@ format: string
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PackingOption-format: string--><!--Device-PackingOption-format: string-End-->
 
@@ -177,7 +177,7 @@ quality: number
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PackingOption-quality: int--><!--Device-PackingOption-quality: int-End-->
 

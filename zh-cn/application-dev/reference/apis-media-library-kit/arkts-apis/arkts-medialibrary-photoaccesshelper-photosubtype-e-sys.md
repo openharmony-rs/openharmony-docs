@@ -12,22 +12,6 @@ PhotoSubtype是不同[PhotoAsset](arkts-medialibrary-photoaccesshelper-photoasse
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SCREENSHOT
-
-```TypeScript
-SCREENSHOT = 1
-```
-
-截屏录屏文件类型。
-
-**起始版本：** 10
-
-<!--Device-PhotoSubtype-SCREENSHOT = 1--><!--Device-PhotoSubtype-SCREENSHOT = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## CINEMATIC_VIDEO
 
 ```TypeScript
@@ -39,6 +23,38 @@ CINEMATIC_VIDEO = 5
 **起始版本：** 26.0.1
 
 <!--Device-PhotoSubtype-CINEMATIC_VIDEO = 5--><!--Device-PhotoSubtype-CINEMATIC_VIDEO = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## CINEMATIC_VIDEO_V2
+
+```TypeScript
+CINEMATIC_VIDEO_V2 = 8
+```
+
+电影版本2视频文件。与CINEMATIC_VIDEO相比，它增加了更多效果，如希区柯克风格。
+
+**起始版本：** 26.0.1
+
+<!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8--><!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## SCREENSHOT
+
+```TypeScript
+SCREENSHOT = 1
+```
+
+截屏录屏文件类型。
+
+**起始版本：** 10
+
+<!--Device-PhotoSubtype-SCREENSHOT = 1--><!--Device-PhotoSubtype-SCREENSHOT = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -71,22 +87,6 @@ SPATIAL_3DGS = 7
 **起始版本：** 22
 
 <!--Device-PhotoSubtype-SPATIAL_3DGS = 7--><!--Device-PhotoSubtype-SPATIAL_3DGS = 7-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## CINEMATIC_VIDEO_V2
-
-```TypeScript
-CINEMATIC_VIDEO_V2 = 8
-```
-
-电影版本2视频文件。与CINEMATIC_VIDEO相比，它增加了更多效果，如希区柯克风格。
-
-**起始版本：** 26.0.1
-
-<!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8--><!--Device-PhotoSubtype-CINEMATIC_VIDEO_V2 = 8-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

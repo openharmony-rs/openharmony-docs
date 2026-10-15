@@ -36,26 +36,6 @@ IMAGE_TYPE = 'image/*'
 
 **系统能力：** SystemCapability.FileManagement.UserFileService
 
-## VIDEO_TYPE
-
-```TypeScript
-VIDEO_TYPE = 'video/*'
-```
-
-视频类型。
-
-**起始版本：** 9
-
-**废弃版本：** 18
-
-**替代接口：** [VIDEO_TYPE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md#video_type)
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'--><!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'-End-->
-
-**系统能力：** SystemCapability.FileManagement.UserFileService
-
 ## IMAGE_VIDEO_TYPE
 
 ```TypeScript
@@ -73,5 +53,25 @@ IMAGE_VIDEO_TYPE = '*/*'
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PhotoViewMIMETypes-IMAGE_VIDEO_TYPE = '*/*'--><!--Device-PhotoViewMIMETypes-IMAGE_VIDEO_TYPE = '*/*'-End-->
+
+**系统能力：** SystemCapability.FileManagement.UserFileService
+
+## VIDEO_TYPE
+
+```TypeScript
+VIDEO_TYPE = 'video/*'
+```
+
+视频类型。
+
+**起始版本：** 9
+
+**废弃版本：** 18
+
+**替代接口：** [VIDEO_TYPE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoviewmimetypes-e.md#video_type)
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'--><!--Device-PhotoViewMIMETypes-VIDEO_TYPE = 'video/*'-End-->
 
 **系统能力：** SystemCapability.FileManagement.UserFileService

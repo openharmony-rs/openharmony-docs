@@ -22,21 +22,19 @@ export enum DisplayOrientation
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
-## UNSPECIFIED
+## FOLLOW_RECENT
 
 ```TypeScript
-UNSPECIFIED = 0
+FOLLOW_RECENT = 3
 ```
-
-屏幕方向--不指定。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [UNSPECIFIED](arkts-ability-bundlemanager-displayorientation-e.md#unspecified)
+**替代接口：** [FOLLOW_RECENT](arkts-ability-bundlemanager-displayorientation-e.md#follow_recent)
 
-<!--Device-DisplayOrientation-UNSPECIFIED = 0--><!--Device-DisplayOrientation-UNSPECIFIED = 0-End-->
+<!--Device-DisplayOrientation-FOLLOW_RECENT = 3--><!--Device-DisplayOrientation-FOLLOW_RECENT = 3-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
@@ -72,18 +70,20 @@ PORTRAIT = 2
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework
 
-## FOLLOW_RECENT
+## UNSPECIFIED
 
 ```TypeScript
-FOLLOW_RECENT = 3
+UNSPECIFIED = 0
 ```
+
+屏幕方向--不指定。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [FOLLOW_RECENT](arkts-ability-bundlemanager-displayorientation-e.md#follow_recent)
+**替代接口：** [UNSPECIFIED](arkts-ability-bundlemanager-displayorientation-e.md#unspecified)
 
-<!--Device-DisplayOrientation-FOLLOW_RECENT = 3--><!--Device-DisplayOrientation-FOLLOW_RECENT = 3-End-->
+<!--Device-DisplayOrientation-UNSPECIFIED = 0--><!--Device-DisplayOrientation-UNSPECIFIED = 0-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework

@@ -52,6 +52,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,6 +60,8 @@ function unregisterSessionError(professionalPhotoSession: camera.ProfessionalPho
   professionalPhotoSession.off('error');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('focusStateChange')
 
@@ -89,6 +92,7 @@ Unsubscribes from focus state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,6 +100,8 @@ function unregisterFocusStateChange(professionalPhotoSession: camera.Professiona
   professionalPhotoSession.off('focusStateChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('smoothZoomInfoAvailable')
 
@@ -126,6 +132,7 @@ Unsubscribes from smooth zoom state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -133,6 +140,8 @@ function unregisterSmoothZoomInfo(professionalPhotoSession: camera.ProfessionalP
   professionalPhotoSession.off('smoothZoomInfoAvailable');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('isoInfoChange')
 
@@ -163,6 +172,7 @@ Unsubscribes from automatic ISO change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -170,6 +180,8 @@ function unregisterIsoInfoEvent(professionalPhotoSession: camera.ProfessionalPho
   professionalPhotoSession.off('isoInfoChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('exposureInfoChange')
 
@@ -200,6 +212,7 @@ Unsubscribes from exposure information change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -207,6 +220,8 @@ function unregisterExposureInfoEvent(professionalPhotoSession: camera.Profession
   professionalPhotoSession.off('exposureInfoChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('apertureInfoChange')
 
@@ -237,6 +252,7 @@ Unsubscribes from aperture change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -244,6 +260,8 @@ function unregisterApertureInfoEvent(professionalPhotoSession: camera.Profession
   professionalPhotoSession.off('apertureInfoChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('luminationInfoChange')
 
@@ -274,6 +292,7 @@ Unsubscribes from illumination change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -281,6 +300,8 @@ function unregisterLuminationInfoEvent(professionalPhotoSession: camera.Professi
   professionalPhotoSession.off('luminationInfoChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('error')
 
@@ -311,6 +332,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -324,6 +346,8 @@ function registerSessionError(professionalPhotoSession: camera.ProfessionalPhoto
   professionalPhotoSession.on('error', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('focusStateChange')
 
@@ -354,6 +378,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -371,6 +396,8 @@ function registerFocusStateChange(professionalPhotoSession: camera.ProfessionalP
   professionalPhotoSession.on('focusStateChange', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('smoothZoomInfoAvailable')
 
@@ -401,6 +428,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -418,6 +446,8 @@ function registerSmoothZoomInfo(professionalPhotoSession: camera.ProfessionalPho
   professionalPhotoSession.on('smoothZoomInfoAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('isoInfoChange')
 
@@ -448,6 +478,7 @@ Subscribes to automatic ISO change events to obtain real-time ISO information. T
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -465,6 +496,8 @@ function registerIsoInfoEvent(professionalPhotoSession: camera.ProfessionalPhoto
   professionalPhotoSession.on('isoInfoChange', isoInfoCallback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('exposureInfoChange')
 
@@ -495,6 +528,7 @@ Subscribes to exposure information change events to obtain the exposure informat
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -512,6 +546,8 @@ function registerExposureInfoEvent(professionalPhotoSession: camera.Professional
   professionalPhotoSession.on('exposureInfoChange', exposureInfoCallback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('apertureInfoChange')
 
@@ -542,6 +578,7 @@ Subscribes to aperture change events to obtain the real-time aperture informatio
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -559,6 +596,8 @@ function registerApertureInfoEvent(professionalPhotoSession: camera.Professional
   professionalPhotoSession.on('apertureInfoChange', apertureInfoCallback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('luminationInfoChange')
 
@@ -589,6 +628,7 @@ Subscribes to illumination change events to obtain real-time illumination inform
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -606,3 +646,5 @@ function registerLuminationInfoEvent(professionalPhotoSession: camera.Profession
   professionalPhotoSession.on('luminationInfoChange', luminationInfoCallback);
 }
 ```
+
+<!--DelEnd-->

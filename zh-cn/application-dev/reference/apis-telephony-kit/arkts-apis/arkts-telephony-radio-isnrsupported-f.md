@@ -6,6 +6,8 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
+<a id="isnrsupported1"></a>
+
 ## isNRSupported
 
 ```TypeScript
@@ -34,7 +36,7 @@ console.info("Result: " + result);
 ```
 
 
-<a id="isnrsupported-1"></a>
+<a id="isnrsupported2"></a>
 
 ## isNRSupported
 

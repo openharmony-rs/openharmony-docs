@@ -52,7 +52,7 @@ Reads the text content of a file line by line. This API uses a promise to return
 | 13900044 | Network is unreachable<br>**Applicable version:** 12 and later |
 
 
-<a id="readlines-1"></a>
+<a id="readlines2"></a>
 
 ## readLines
 
@@ -93,7 +93,7 @@ Reads a file text line by line. This API uses an asynchronous callback to return
 | 13900042 | Unknown error |
 
 
-<a id="readlines-2"></a>
+<a id="readlines3"></a>
 
 ## readLines
 

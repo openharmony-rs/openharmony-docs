@@ -18,6 +18,8 @@ interface DataObject
 import { distributedDataObject } from '@kit.ArkData';
 ```
 
+<a id="bindassetstore1"></a>
+
 ## bindAssetStore
 
 ```TypeScript
@@ -44,7 +46,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo, callback: AsyncCallback<voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例**
@@ -103,7 +105,7 @@ class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="bindassetstore-1"></a>
+<a id="bindassetstore2"></a>
 
 ## bindAssetStore
 
@@ -136,7 +138,7 @@ bindAssetStore(assetKey: string, bindInfo: BindInfo): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例**
@@ -218,7 +220,7 @@ off(type: 'change', callback?: (sessionId: string, fields: Array<string>) => voi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 
@@ -264,7 +266,7 @@ off(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 
@@ -459,7 +461,7 @@ on(type: 'change', callback: (sessionId: string, fields: Array<string>) => void 
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 
@@ -502,7 +504,7 @@ on(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 
 **示例**
 
@@ -629,6 +631,8 @@ try {
 }
 ```
 
+<a id="revokesave1"></a>
+
 ## revokeSave
 
 ```TypeScript
@@ -682,7 +686,7 @@ g_object.revokeSave((err: BusinessError, result: distributedDataObject.RevokeSav
 });
 ```
 
-<a id="revokesave-1"></a>
+<a id="revokesave2"></a>
 
 ## revokeSave
 
@@ -732,6 +736,8 @@ g_object.revokeSave().then((result: distributedDataObject.RevokeSaveSuccessRespo
 });
 ```
 
+<a id="save1"></a>
+
 ## save
 
 ```TypeScript
@@ -760,7 +766,7 @@ save(deviceId: string, callback: AsyncCallback<SaveSuccessResponse>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例**
@@ -779,7 +785,7 @@ g_object.save('local', (err: BusinessError, result:distributedDataObject.SaveSuc
 });
 ```
 
-<a id="save-1"></a>
+<a id="save2"></a>
 
 ## save
 
@@ -814,7 +820,7 @@ save(deviceId: string): Promise<SaveSuccessResponse>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **示例**
@@ -837,7 +843,7 @@ g_object.save('local').then((callbackInfo: distributedDataObject.SaveSuccessResp
 setAsset(assetKey: string, uri: string): Promise<void>
 ```
 
-设置分布式数据对象中的单个资产的属性信息，该接口必须在[setSessionId](#setsessionid-2)接口调用前使用。使用Promise异步回调。<br>  
+设置分布式数据对象中的单个资产的属性信息，该接口必须在[setSessionId](#setsessionid3)接口调用前使用。使用Promise异步回调。<br>  
 > **注意：**
 > 
 > 在设置资产时必须保证assetKey存在且对应文件为资产类型文件，否则无法保证对端能接收到此次设置的资产。
@@ -847,7 +853,7 @@ setAsset(assetKey: string, uri: string): Promise<void>
 
 | 触发条件 | 操作结果 |  
 | -------- | -------- |  
-| 调用[setSessionId](#setsessionid-2)接口设置sessionId后再调用[setAsset](#setasset)接口设置资产。 | 设置资产失败，抛出15400003异常。 |
+| 调用[setSessionId](#setsessionid3)接口设置sessionId后再调用[setAsset](#setasset)接口设置资产。 | 设置资产失败，抛出15400003异常。 |
 | assetKey为无效值，例如：null（不存在）、undefined（未定义）或''（空字符串）。 | 设置资产失败，抛出15400002异常。 |
 | assetKey存在、对应文件为非资产类型。 | 系统会强制修改该字段对应的文件类型为资产类型且设置资产字段，可能出现真实资产无法同步至对端设备。 |
 | uri为无效值，例如：null（不存在）、undefined（未定义）或''（空字符串）。 | 设置资产失败，抛出15400002异常。 |
@@ -875,7 +881,7 @@ setAsset(assetKey: string, uri: string): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [15400002](../errorcode-distributed-dataObject.md#15400002-参数错误) | Parameter error. Possible causes: 1. The assetKey is invalid, such as ""; 2. The uri is invalid, such as "". |
+| [15400002](../errorcode-distributed-dataObject.md#15400002-参数错误) | Parameter error. Possible causes:         1. The assetKey is invalid, such as "";         2. The uri is invalid, such as "". |
 | [15400003](../errorcode-distributed-dataObject.md#15400003-已设置分布式对象的sessionid) | The sessionId of the distributed object has been set. |
 
 **示例**
@@ -928,7 +934,7 @@ class EntryAbility extends UIAbility {
 setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 ```
 
-设置分布式数据对象中的多个资产的属性信息，该接口必须在[setSessionId](#setsessionid-2)接口调用前使用。使用Promise异步回调。<br>  
+设置分布式数据对象中的多个资产的属性信息，该接口必须在[setSessionId](#setsessionid3)接口调用前使用。使用Promise异步回调。<br>  
 > **注意：**
 > 
 > 在设置资产时必须保证assetsKey存在且对应文件为资产类型文件，否则无法保证对端能接收到此次设置的资产。
@@ -938,7 +944,7 @@ setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 
 | 触发条件 | 操作结果 |  
 | -------- | -------- |  
-| 调用[setSessionId](#setsessionid-2)接口设置sessionId后再调用[setAssets](#setassets)接口设置资产。 | 设置资产失败，抛出15400003异常。 |
+| 调用[setSessionId](#setsessionid3)接口设置sessionId后再调用[setAssets](#setassets)接口设置资产。 | 设置资产失败，抛出15400003异常。 |
 | assetsKey为无效值，例如：null（不存在）、undefined（未定义）或''（空字符串）。 | 设置资产失败，抛出15400002异常。 |
 | assetsKey存在、对应文件为非资产类型。 | 系统会强制修改该字段对应的文件类型为资产类型且设置资产字段，可能出现真实资产无法同步至对端设备。 |
 | assetsKey存在、且对应文件为资产类型。 | 设置资产成功、更新uri信息。 |
@@ -968,7 +974,7 @@ setAssets(assetsKey: string, uris: Array<string>): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [15400002](../errorcode-distributed-dataObject.md#15400002-参数错误) | Parameter error. Possible causes: 1. The assetsKey is invalid, such as ""; 2. The uris is invalid, such as the length of uris is more than 50. |
+| [15400002](../errorcode-distributed-dataObject.md#15400002-参数错误) | Parameter error. Possible causes:         1. The assetsKey is invalid, such as "";         2. The uris is invalid, such as the length of uris is more than 50. |
 | [15400003](../errorcode-distributed-dataObject.md#15400003-已设置分布式对象的sessionid) | The sessionId of the distributed object has been set. |
 
 **示例**
@@ -1015,6 +1021,8 @@ class EntryAbility extends UIAbility {
 }
 ```
 
+<a id="setsessionid1"></a>
+
 ## setSessionId
 
 ```TypeScript
@@ -1043,7 +1051,7 @@ setSessionId(sessionId: string, callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. The sessionId allows only letters, digits, and underscores(_), and cannot exceed 128 in length. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types;         2. The sessionId allows only letters, digits, and underscores(_), and cannot exceed 128 in length. |
 | [15400001](../errorcode-distributed-dataObject.md#15400001-创建内存数据库失败) | Failed to create the in-memory database. |
 
 **示例**
@@ -1059,7 +1067,7 @@ g_object.setSessionId('', () => {
 });
 ```
 
-<a id="setsessionid-1"></a>
+<a id="setsessionid2"></a>
 
 ## setSessionId
 
@@ -1106,7 +1114,7 @@ g_object.setSessionId(() => {
 });
 ```
 
-<a id="setsessionid-2"></a>
+<a id="setsessionid3"></a>
 
 ## setSessionId
 
@@ -1141,7 +1149,7 @@ setSessionId(sessionId?: string): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types; 2. The sessionId allows only letters, digits, and underscores(_), and cannot exceed 128 in length. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Incorrect parameter types;         2. The sessionId allows only letters, digits, and underscores(_), and cannot exceed 128 in length. |
 | [15400001](../errorcode-distributed-dataObject.md#15400001-创建内存数据库失败) | Failed to create the in-memory database. |
 
 **示例**

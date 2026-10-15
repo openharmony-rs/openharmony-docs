@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="getdefaultsmsslotid1"></a>
+
 ## getDefaultSmsSlotId
 
 ```TypeScript
@@ -34,15 +36,15 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 sms.getDefaultSmsSlotId((err: BusinessError, data: number) => {
     if (err) {
-        console.error('callback: err->${JSON.stringify(err)}');
+        console.error(`callback: err->${JSON.stringify(err)}`);
         return;
     }
-    console.info('callback: data->${JSON.stringify(data)}');
+    console.info(`callback: data->${JSON.stringify(data)}`);
 });
 ```
 
 
-<a id="getdefaultsmsslotid-1"></a>
+<a id="getdefaultsmsslotid2"></a>
 
 ## getDefaultSmsSlotId
 

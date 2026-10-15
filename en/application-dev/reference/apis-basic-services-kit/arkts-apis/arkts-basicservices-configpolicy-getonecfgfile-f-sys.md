@@ -6,6 +6,8 @@
 import { configPolicy } from '@kit.BasicServicesKit';
 ```
 
+<a id="getonecfgfile1"></a>
+
 ## getOneCfgFile
 
 ```TypeScript
@@ -36,7 +38,7 @@ Obtains the path of the configuration file with the highest priority. This API u
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getonecfgfile-1"></a>
+<a id="getonecfgfile2"></a>
 
 ## getOneCfgFile
 
@@ -73,7 +75,7 @@ Obtains the path of the configuration file with the highest priority. This API u
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getonecfgfile-2"></a>
+<a id="getonecfgfile3"></a>
 
 ## getOneCfgFile
 
@@ -106,7 +108,7 @@ Obtains the path of the configuration file with the highest priority based on th
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getonecfgfile-3"></a>
+<a id="getonecfgfile4"></a>
 
 ## getOneCfgFile
 
@@ -140,7 +142,7 @@ Obtains the path of the configuration file with the highest priority based on th
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1.Mandatory parameters are left unspecified; <br>2.Incorrect parameter types. |
 
 
-<a id="getonecfgfile-4"></a>
+<a id="getonecfgfile5"></a>
 
 ## getOneCfgFile
 

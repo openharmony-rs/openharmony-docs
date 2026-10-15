@@ -24,7 +24,7 @@ import { socket } from '@kit.NetworkKit';
 ca?: string | Array<string>
 ```
 
-服务端的ca证书，用于认证校验服务端的数字证书。默认为系统预置CA证书&lt;sup&gt;12+&lt;/sup&gt;。最多支持设置1000本证书。
+服务端的ca证书，用于认证校验服务端的数字证书。默认为系统预置CA证书<sup>12+</sup>。最多支持设置1000本证书。
 
 **类型：** string &#124; Array&lt;string&gt;
 

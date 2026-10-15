@@ -20,6 +20,8 @@ Defines the key-value object type used to construct URL query parameters.
 > (4) To strictly control the parameter sequence or repeat the key sequence, you are advised to use the **string**
 > of **queryParams**.
 
+**Type:** Record&lt;string, [QueryParamValue](arkts-network-http-queryparamvalue-t.md)[]&gt;
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -27,5 +29,3 @@ Defines the key-value object type used to construct URL query parameters.
 <!--Device-http-export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[]>--><!--Device-http-export type QueryParamObject = Record<string, QueryParamValue | QueryParamValue[]>-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
-
-**Type:** Record&lt;string, [QueryParamValue](arkts-network-http-queryparamvalue-t.md)[]&gt;

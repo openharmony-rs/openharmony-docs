@@ -4,7 +4,7 @@
 export interface UsedScene
 ```
 
-描述权限使用的场景和时机。
+描述权限的使用场景和时机，帮助开发者合理申请和使用权限。
 
 **起始版本：** 9
 
@@ -24,7 +24,7 @@ abilities: Array<string>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-UsedScene-abilities: Array<string>--><!--Device-UsedScene-abilities: Array<string>-End-->
 
@@ -42,7 +42,7 @@ when: string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-UsedScene-when: string--><!--Device-UsedScene-when: string-End-->
 

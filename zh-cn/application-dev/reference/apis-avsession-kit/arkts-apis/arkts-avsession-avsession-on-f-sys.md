@@ -37,6 +37,7 @@ function on(type: 'sessionCreate', callback: (session: AVSessionDescriptor) => v
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,6 +64,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('sessionDestroy')
@@ -96,6 +99,7 @@ function on(type: 'sessionDestroy', callback: (session: AVSessionDescriptor) => 
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -120,6 +124,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('topSessionChange')
@@ -153,6 +159,7 @@ function on(type: 'topSessionChange', callback: (session: AVSessionDescriptor) =
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -179,6 +186,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('sessionServiceDie')
@@ -212,6 +221,7 @@ function on(type: 'sessionServiceDie', callback: () => void): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -219,6 +229,8 @@ avSession.on('sessionServiceDie', () => {
   console.info('on sessionServiceDie : session is dead ');
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('distributedSessionChange')
@@ -252,6 +264,7 @@ function on(type: 'distributedSessionChange', distributedSessionType: Distribute
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -259,6 +272,8 @@ avSession.on('distributedSessionChange', avSession.DistributedSessionType.TYPE_S
   console.info(`on distributedSessionChange size: ${sessionControllers.length}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('deviceAvailable')
@@ -291,6 +306,7 @@ function on(type: 'deviceAvailable', callback: (device: OutputDeviceInfo) => voi
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -300,6 +316,8 @@ avSession.on('deviceAvailable', (device: avSession.OutputDeviceInfo) => {
   console.info(`on deviceAvailable  : ${device} `);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('deviceOffline')
@@ -332,6 +350,7 @@ function on(type: 'deviceOffline', callback: (deviceId: string) => void): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -341,6 +360,8 @@ avSession.on('deviceOffline', (deviceId: string) => {
   console.info(`on deviceOffline  : ${deviceId} `);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('deviceLogEvent')
@@ -375,6 +396,7 @@ function on(type: 'deviceLogEvent', callback: Callback<DeviceLogEventCode>): voi
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 | [6600102](../errorcode-avsession.md#6600102-会话不存在) | The session does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -382,6 +404,8 @@ avSession.on('deviceLogEvent', (eventCode: avSession.DeviceLogEventCode) => {
   console.info(`on deviceLogEvent code : ${eventCode}`);
 });
 ```
+
+<!--DelEnd-->
 
 
 ## on('deviceStateChanged')
@@ -416,6 +440,7 @@ function on(type: 'deviceStateChanged', callback: Callback<DeviceState>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -424,3 +449,5 @@ avSession.on('deviceStateChanged', (state: avSession.DeviceState) => {
     reasonCode=${state.reasonCode}, radarErrorCode=${state.radarErrorCode}`)
 })
 ```
+
+<!--DelEnd-->

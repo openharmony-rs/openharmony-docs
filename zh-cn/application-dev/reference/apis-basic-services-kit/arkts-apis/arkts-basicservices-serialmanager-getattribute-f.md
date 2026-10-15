@@ -54,12 +54,11 @@ function getAttribute(portId: number): Readonly<SerialAttribute>
 
 ```TypeScript
 import { JSON } from '@kit.ArkTS';
-import { serialManager } from '@kit.BasicServicesKit';
-import { BusinessError } from '@kit.BasicServicesKit';
+import { serialManager, BusinessError } from '@kit.BasicServicesKit';
 
 // 获取串口列表
 async function getAttributeExample() {
-  let portList: serialManager.SerialPort[] = serialManager.getPortList();
+  let portList: Readonly<serialManager.SerialPort>[] = serialManager.getPortList();
   console.info('usbSerial portList: ' + JSON.stringify(portList));
   if (!portList || portList.length === 0) {
     console.error('usbSerial portList is empty');
@@ -86,6 +85,7 @@ async function getAttributeExample() {
   } catch (error) {
     const err: BusinessError = error as BusinessError;
     console.error(`Failed to open usbSerial. Code: ${err.code}, message: ${err.message}`);
+    return;
   }
 
   // 获取串口配置

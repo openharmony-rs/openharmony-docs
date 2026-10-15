@@ -6,6 +6,8 @@ type Socks5Proxy = connection.Socks5Proxy
 
 Socks5 Proxy Configuration Information.
 
+**Type:** [connection.Socks5Proxy](arkts-network-connection-socks5proxy-i.md)
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -13,5 +15,3 @@ Socks5 Proxy Configuration Information.
 <!--Device-http-type Socks5Proxy = connection.Socks5Proxy--><!--Device-http-type Socks5Proxy = connection.Socks5Proxy-End-->
 
 **System capability:** SystemCapability.Communication.NetStack
-
-**Type:** [connection.Socks5Proxy](arkts-network-connection-socks5proxy-i.md)

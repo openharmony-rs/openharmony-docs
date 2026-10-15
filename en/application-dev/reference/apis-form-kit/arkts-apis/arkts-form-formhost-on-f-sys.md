@@ -71,6 +71,7 @@ Subscribes to the interactive widget animation request event. This API uses an a
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -85,6 +86,8 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('changeSceneAnimationState')
@@ -117,6 +120,7 @@ Subscribes to the event of switching the interactive widget state. An interactiv
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -131,6 +135,8 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('getFormRect')
@@ -162,6 +168,7 @@ Subscribes to the event of requesting widget position and dimension. This API us
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The application is not a system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -186,6 +193,8 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## on('getLiveFormStatus')

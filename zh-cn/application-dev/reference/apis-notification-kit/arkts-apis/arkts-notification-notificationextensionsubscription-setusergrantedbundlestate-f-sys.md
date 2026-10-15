@@ -49,6 +49,7 @@ function setUserGrantedBundleState(targetBundle: BundleOption,
 | [1600003](../errorcode-notification.md#1600003-连接通知服务失败) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-无效的包信息) | The specified bundle is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -69,3 +70,5 @@ notificationExtensionSubscription.setUserGrantedBundleState(targetBundle, enable
   console.error(`setUserGrantedBundleState fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

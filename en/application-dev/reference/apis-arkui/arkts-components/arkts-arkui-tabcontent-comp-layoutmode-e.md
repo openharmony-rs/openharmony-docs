@@ -30,24 +30,6 @@ When the tab width is greater than 104 vp, the tab content is arranged from left
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## VERTICAL
-
-```TypeScript
-VERTICAL = 1
-```
-
-The tab content is arranged from top to bottom.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-LayoutMode-VERTICAL = 1--><!--Device-LayoutMode-VERTICAL = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## HORIZONTAL
 
 ```TypeScript
@@ -63,5 +45,23 @@ The tab content is arranged from left to right.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-LayoutMode-HORIZONTAL = 2--><!--Device-LayoutMode-HORIZONTAL = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## VERTICAL
+
+```TypeScript
+VERTICAL = 1
+```
+
+The tab content is arranged from top to bottom.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-LayoutMode-VERTICAL = 1--><!--Device-LayoutMode-VERTICAL = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

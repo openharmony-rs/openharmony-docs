@@ -18,22 +18,6 @@ Enumerates the result codes.
 
 **System capability:** SystemCapability.Account.AppAccount
 
-## SUCCESS
-
-```TypeScript
-SUCCESS = 0
-```
-
-The operation is successful.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.Account.AppAccount
-
 ## ERROR_ACCOUNT_NOT_EXIST
 
 ```TypeScript
@@ -319,5 +303,21 @@ The required permission is missing.
 **Deprecated since:** 9
 
 <!--Device-ResultCode-ERROR_PERMISSION_DENIED = 10018--><!--Device-ResultCode-ERROR_PERMISSION_DENIED = 10018-End-->
+
+**System capability:** SystemCapability.Account.AppAccount
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+The operation is successful.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Account.AppAccount

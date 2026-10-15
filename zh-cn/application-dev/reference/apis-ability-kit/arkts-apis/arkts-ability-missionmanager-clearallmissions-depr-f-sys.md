@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="clearallmissions1"></a>
+
 ## clearAllMissions
 
 ```TypeScript
@@ -33,6 +35,7 @@ function clearAllMissions(callback: AsyncCallback<void>): void
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当清理所有未锁定的任务成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,8 +57,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="clearallmissions-1"></a>
+
+<a id="clearallmissions2"></a>
 
 ## clearAllMissions
 
@@ -85,6 +90,7 @@ function clearAllMissions(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -103,3 +109,5 @@ try {
   console.error(`clearAllMissions sync failed. Code: ${error.code}, message: ${error.message}.`);
 }
 ```
+
+<!--DelEnd-->

@@ -6,7 +6,7 @@ interface Screen
 
 [物理屏](../../../displaymanager/display-terminology.md#物理屏)屏幕实例。
 
-下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md)、[createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
+下列API示例中都需先使用[getAllScreens()](arkts-arkui-screen-getallscreens-f-sys.md#getallscreens1)、[createVirtualScreen()](arkts-arkui-screen-createvirtualscreen-f-sys.md#createvirtualscreen1)中的任一方法获取到Screen实例，再通过此实例调用对应方法。
 
 **起始版本：** 9
 
@@ -21,6 +21,8 @@ interface Screen
 ```TypeScript
 import { screen } from '@kit.ArkUI';
 ```
+
+<a id="setdensitydpi1"></a>
 
 ## setDensityDpi
 
@@ -53,6 +55,7 @@ setDensityDpi(densityDpi: number, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -95,7 +98,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-<a id="setdensitydpi-1"></a>
+<!--DelEnd-->
+
+<a id="setdensitydpi2"></a>
 
 ## setDensityDpi
 
@@ -133,6 +138,7 @@ setDensityDpi(densityDpi: number): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -172,6 +178,10 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
+<!--DelEnd-->
+
+<a id="setorientation1"></a>
+
 ## setOrientation
 
 ```TypeScript
@@ -203,6 +213,7 @@ setOrientation(orientation: Orientation, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -244,7 +255,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-<a id="setorientation-1"></a>
+<!--DelEnd-->
+
+<a id="setorientation2"></a>
 
 ## setOrientation
 
@@ -282,6 +295,7 @@ setOrientation(orientation: Orientation): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -321,7 +335,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-<a id="setorientation-2"></a>
+<!--DelEnd-->
+
+<a id="setorientation3"></a>
 
 ## setOrientation
 
@@ -362,6 +378,7 @@ setOrientation(orientation: Orientation, orientationOptions?: OrientationOptions
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. Possible cause: The screen is not a wired external display in extended mode. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -390,6 +407,10 @@ screensPromise.then((data: Array<screen.Screen>) => {
   console.error(`Failed to get all screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setscreenactivemode1"></a>
 
 ## setScreenActiveMode
 
@@ -422,6 +443,7 @@ setScreenActiveMode(modeIndex: number, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -464,7 +486,9 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
 });
 ```
 
-<a id="setscreenactivemode-1"></a>
+<!--DelEnd-->
+
+<a id="setscreenactivemode2"></a>
 
 ## setScreenActiveMode
 
@@ -502,6 +526,7 @@ setScreenActiveMode(modeIndex: number): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. |
 | [1400003](../errorcode-display.md#1400003-系统服务工作异常) | This display manager service works abnormally. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -541,6 +566,8 @@ screen.createVirtualScreen(option).then((data: screen.Screen) => {
   console.error(`Failed to create the virtual screen. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## activeModeIndex
 

@@ -6,6 +6,8 @@ declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
 
 用于自定义WithTheme作用域内组件的配色方案，具体配色项通过CustomColors接口配置。
 
+**类型：** import('../api/@ohos.arkui.theme').CustomTheme
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme
 <!--Device-unnamed-declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme--><!--Device-unnamed-declare type CustomTheme = import('../api/@ohos.arkui.theme').CustomTheme-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.theme').CustomTheme

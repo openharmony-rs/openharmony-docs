@@ -40,13 +40,14 @@ Unsubscribes from system events that are used to obtain the encoded metadata. Th
 **Examples**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 
-let bundleName: string = '';
+let bundleName: string = 'com.example.app';
 try {
-  metadataBinding.off('operationSubmitMetadata', bundleName, (event: number) => {
-  });
+  metadataBinding.off('operationSubmitMetadata', bundleName);
 } catch (error) {
-  console.error("unsubscript screenshot event" + error);
+ const err = error as BusinessError;
+ console.error(`Failed to unsubscribe operationSubmitMetadata event. Code: ${err.code}, message: ${err.message}`);
 }
 ```

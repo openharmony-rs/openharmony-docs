@@ -49,8 +49,8 @@ addWatermark(watermark: image.PixelMap, config: WatermarkConfiguration): Promise
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| watermark | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | : 水印图像，取值原则：PixelMap对象不能为空。支持透明度设置。图像格式和尺寸要求请参考 |
-| config | [WatermarkConfiguration](arkts-media-media-watermarkconfiguration-i.md) | 是 | : 配置视频录制水印的相关参数。各字段取值范围请参考WatermarkConfiguration定义。需在调用startRecording接口前设置。 |
+| watermark | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | 是 | 水印图像，取值原则：PixelMap对象不能为空。支持透明度设置。图像格式和尺寸要求请参考 |
+| config | [WatermarkConfiguration](arkts-media-media-watermarkconfiguration-i.md) | 是 | 配置视频录制水印的相关参数。各字段取值范围请参考WatermarkConfiguration定义。需在调用startRecording接口前设置。 |
 
 **返回值：**
 
@@ -279,7 +279,7 @@ off(type: 'error', callback?: ErrorCallback): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | 'error' | 是 | 状态切换事件回调类型，支持的事件：'error'。 |
+| type | 'error' | 是 | 错误事件回调类型，支持的事件：'error'。 |
 | callback | [ErrorCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-errorcallback-i.md) | 否 | 录屏错误事件回调方法，不填此参数则会取消最后一次订阅事件。 |
 
 **示例**

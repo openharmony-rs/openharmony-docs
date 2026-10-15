@@ -6,6 +6,8 @@ export type NotificationLiveViewContent = _NotificationLiveViewContent
 
 Describes the common live view.
 
+**Type:** _NotificationLiveViewContent
+
 **Since:** 11
 
 <!--Device-notificationManager-export type NotificationLiveViewContent = _NotificationLiveViewContent--><!--Device-notificationManager-export type NotificationLiveViewContent = _NotificationLiveViewContent-End-->
@@ -13,5 +15,3 @@ Describes the common live view.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationLiveViewContent

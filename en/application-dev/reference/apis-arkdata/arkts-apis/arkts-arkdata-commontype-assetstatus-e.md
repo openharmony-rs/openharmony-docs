@@ -12,45 +12,17 @@ Enumerates the asset statuses.
 
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
-## ASSET_NORMAL
+## ASSET_ABNORMAL
 
 ```TypeScript
-ASSET_NORMAL
+ASSET_ABNORMAL
 ```
 
-The asset is in normal status.
+The asset is in abnormal status.
 
 **Since:** 11
 
-<!--Device-AssetStatus-ASSET_NORMAL--><!--Device-AssetStatus-ASSET_NORMAL-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CommonType
-
-## ASSET_INSERT
-
-```TypeScript
-ASSET_INSERT
-```
-
-The asset is to be inserted to the cloud.
-
-**Since:** 11
-
-<!--Device-AssetStatus-ASSET_INSERT--><!--Device-AssetStatus-ASSET_INSERT-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CommonType
-
-## ASSET_UPDATE
-
-```TypeScript
-ASSET_UPDATE
-```
-
-The asset is to be updated to the cloud.
-
-**Since:** 11
-
-<!--Device-AssetStatus-ASSET_UPDATE--><!--Device-AssetStatus-ASSET_UPDATE-End-->
+<!--Device-AssetStatus-ASSET_ABNORMAL--><!--Device-AssetStatus-ASSET_ABNORMAL-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
@@ -68,20 +40,6 @@ The asset is to be deleted from the cloud.
 
 **System capability:** SystemCapability.DistributedDataManager.CommonType
 
-## ASSET_ABNORMAL
-
-```TypeScript
-ASSET_ABNORMAL
-```
-
-The asset is in abnormal status.
-
-**Since:** 11
-
-<!--Device-AssetStatus-ASSET_ABNORMAL--><!--Device-AssetStatus-ASSET_ABNORMAL-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CommonType
-
 ## ASSET_DOWNLOADING
 
 ```TypeScript
@@ -93,5 +51,47 @@ The asset is being downloaded to a local device.
 **Since:** 11
 
 <!--Device-AssetStatus-ASSET_DOWNLOADING--><!--Device-AssetStatus-ASSET_DOWNLOADING-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CommonType
+
+## ASSET_INSERT
+
+```TypeScript
+ASSET_INSERT
+```
+
+The asset is to be inserted to the cloud.
+
+**Since:** 11
+
+<!--Device-AssetStatus-ASSET_INSERT--><!--Device-AssetStatus-ASSET_INSERT-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CommonType
+
+## ASSET_NORMAL
+
+```TypeScript
+ASSET_NORMAL
+```
+
+The asset is in normal status.
+
+**Since:** 11
+
+<!--Device-AssetStatus-ASSET_NORMAL--><!--Device-AssetStatus-ASSET_NORMAL-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CommonType
+
+## ASSET_UPDATE
+
+```TypeScript
+ASSET_UPDATE
+```
+
+The asset is to be updated to the cloud.
+
+**Since:** 11
+
+<!--Device-AssetStatus-ASSET_UPDATE--><!--Device-AssetStatus-ASSET_UPDATE-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CommonType

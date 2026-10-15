@@ -14,33 +14,17 @@ Enumerates the types of light painting shutter modes.
 
 **System API:** This is a system API.
 
-## TRAFFIC_TRAILS
+## LIGHT_GRAFFITI
 
 ```TypeScript
-TRAFFIC_TRAILS = 0
+LIGHT_GRAFFITI = 3
 ```
 
-Traffic trails.
+Light graffiti.
 
 **Since:** 12
 
-<!--Device-LightPaintingType-TRAFFIC_TRAILS = 0--><!--Device-LightPaintingType-TRAFFIC_TRAILS = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
-## STAR_TRAILS
-
-```TypeScript
-STAR_TRAILS = 1
-```
-
-Star trails.
-
-**Since:** 12
-
-<!--Device-LightPaintingType-STAR_TRAILS = 1--><!--Device-LightPaintingType-STAR_TRAILS = 1-End-->
+<!--Device-LightPaintingType-LIGHT_GRAFFITI = 3--><!--Device-LightPaintingType-LIGHT_GRAFFITI = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -62,17 +46,33 @@ Silky water.
 
 **System API:** This is a system API.
 
-## LIGHT_GRAFFITI
+## STAR_TRAILS
 
 ```TypeScript
-LIGHT_GRAFFITI = 3
+STAR_TRAILS = 1
 ```
 
-Light graffiti.
+Star trails.
 
 **Since:** 12
 
-<!--Device-LightPaintingType-LIGHT_GRAFFITI = 3--><!--Device-LightPaintingType-LIGHT_GRAFFITI = 3-End-->
+<!--Device-LightPaintingType-STAR_TRAILS = 1--><!--Device-LightPaintingType-STAR_TRAILS = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## TRAFFIC_TRAILS
+
+```TypeScript
+TRAFFIC_TRAILS = 0
+```
+
+Traffic trails.
+
+**Since:** 12
+
+<!--Device-LightPaintingType-TRAFFIC_TRAILS = 0--><!--Device-LightPaintingType-TRAFFIC_TRAILS = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

@@ -14,22 +14,6 @@ Defines the reset options.
 
 **System API:** This is a system API.
 
-## DELETE_OPERATIONAL_PROFILES
-
-```TypeScript
-DELETE_OPERATIONAL_PROFILES = 1
-```
-
-Deletion of all operational profiles.
-
-**Since:** 18
-
-<!--Device-ResetOption-DELETE_OPERATIONAL_PROFILES = 1--><!--Device-ResetOption-DELETE_OPERATIONAL_PROFILES = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
 ## DELETE_FIELD_LOADED_TEST_PROFILES
 
 ```TypeScript
@@ -47,6 +31,22 @@ Deletion of the downloaded test profiles.
 **System API:** This is a system API.
 
 **Test API:** This API is used only in automated test scripts.
+
+## DELETE_OPERATIONAL_PROFILES
+
+```TypeScript
+DELETE_OPERATIONAL_PROFILES = 1
+```
+
+Deletion of all operational profiles.
+
+**Since:** 18
+
+<!--Device-ResetOption-DELETE_OPERATIONAL_PROFILES = 1--><!--Device-ResetOption-DELETE_OPERATIONAL_PROFILES = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
 
 ## RESET_DEFAULT_SMDP_ADDRESS
 

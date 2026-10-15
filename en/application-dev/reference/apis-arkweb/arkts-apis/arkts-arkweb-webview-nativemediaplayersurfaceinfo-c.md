@@ -28,6 +28,10 @@ ID of the surface, which is the surfaceId of the NativeImage used for same-layer
 
 For details, see [NativeEmbedDataInfo](../arkts-components/arkts-arkweb-web-comp-nativeembeddatainfo-i.md).
 
+Read-only: No
+
+Optional: No
+
 **Type:** string
 
 **Since:** 12
@@ -45,6 +49,10 @@ rect: RectEvent
 ```
 
 Position information of the surface, used to specify the display position and size of the surface during same- layer rendering.
+
+Read-only: No
+
+Optional: No
 
 **Type:** [RectEvent](arkts-arkweb-webview-rectevent-i.md)
 

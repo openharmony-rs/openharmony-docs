@@ -18,46 +18,6 @@ Defines the key album information.
 
 **System API:** This is a system API.
 
-## URI
-
-```TypeScript
-URI = 0
-```
-
-URI of the album.
-
-**Since:** 9
-
-**Deprecated since:** 26.0.0
-
-**Substitutes:** [URI](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumkeys-e.md#uri)
-
-<!--Device-AlbumKey-URI = 0--><!--Device-AlbumKey-URI = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileManager.Core
-
-**System API:** This is a system API.
-
-## FILE_TYPE
-
-```TypeScript
-FILE_TYPE = 1
-```
-
-Type of the file.
-
-**Since:** 9
-
-**Deprecated since:** 26.0.0
-
-**Substitutes:** [AlbumType](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumtype-e.md)
-
-<!--Device-AlbumKey-FILE_TYPE = 1--><!--Device-AlbumKey-FILE_TYPE = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileManager.Core
-
-**System API:** This is a system API.
-
 ## ALBUM_NAME
 
 ```TypeScript
@@ -113,6 +73,46 @@ Date when the file content (not the file name) was last modified. The value is t
 **Substitutes:** [DATE_MODIFIED](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumkeys-e-sys.md#date_modified)
 
 <!--Device-AlbumKey-DATE_MODIFIED = 4--><!--Device-AlbumKey-DATE_MODIFIED = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileManager.Core
+
+**System API:** This is a system API.
+
+## FILE_TYPE
+
+```TypeScript
+FILE_TYPE = 1
+```
+
+Type of the file.
+
+**Since:** 9
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [AlbumType](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumtype-e.md)
+
+<!--Device-AlbumKey-FILE_TYPE = 1--><!--Device-AlbumKey-FILE_TYPE = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileManager.Core
+
+**System API:** This is a system API.
+
+## URI
+
+```TypeScript
+URI = 0
+```
+
+URI of the album.
+
+**Since:** 9
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [URI](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-albumkeys-e.md#uri)
+
+<!--Device-AlbumKey-URI = 0--><!--Device-AlbumKey-URI = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

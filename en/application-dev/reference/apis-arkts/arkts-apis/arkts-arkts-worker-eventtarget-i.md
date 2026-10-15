@@ -34,7 +34,7 @@ Adds an event listener to the worker.
 
 **Deprecated since:** 9
 
-**Substitutes:** addEventListener
+**Substitutes:** [addEventListener](arkts-arkts-worker-workereventtarget-i.md#addeventlistener)
 
 <!--Device-EventTarget-addEventListener(type: string, listener: EventListener): void--><!--Device-EventTarget-addEventListener(type: string, listener: EventListener): void-End-->
 
@@ -72,7 +72,7 @@ Dispatches the event defined for the worker.
 
 **Deprecated since:** 9
 
-**Substitutes:** dispatchEvent
+**Substitutes:** [dispatchEvent](arkts-arkts-worker-workereventtarget-i.md#dispatchevent)
 
 <!--Device-EventTarget-dispatchEvent(event: Event): boolean--><!--Device-EventTarget-dispatchEvent(event: Event): boolean-End-->
 
@@ -145,7 +145,7 @@ Removes all event listeners for the worker.
 
 **Deprecated since:** 9
 
-**Substitutes:** removeAllListener
+**Substitutes:** [removeAllListener](arkts-arkts-worker-workereventtarget-i.md#removealllistener)
 
 <!--Device-EventTarget-removeAllListener(): void--><!--Device-EventTarget-removeAllListener(): void-End-->
 
@@ -178,7 +178,7 @@ Removes an event defined for the worker.
 
 **Deprecated since:** 9
 
-**Substitutes:** removeEventListener
+**Substitutes:** [removeEventListener](arkts-arkts-worker-workereventtarget-i.md#removeeventlistener)
 
 <!--Device-EventTarget-removeEventListener(type: string, callback?: EventListener): void--><!--Device-EventTarget-removeEventListener(type: string, callback?: EventListener): void-End-->
 

@@ -31,17 +31,17 @@ Replicates the edge color if the shader effect draws outside of its original bou
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## REPEAT
+## DECAL
 
 ```TypeScript
-REPEAT = 1
+DECAL = 3
 ```
 
-Repeats the shader effect in both horizontal and vertical directions.
+Renders the shader effect only within the original boundary.
 
 **Since:** 14
 
-<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
+<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -59,16 +59,16 @@ Repeats the shader effect in both horizontal and vertical directions, alternatin
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## DECAL
+## REPEAT
 
 ```TypeScript
-DECAL = 3
+REPEAT = 1
 ```
 
-Renders the shader effect only within the original boundary.
+Repeats the shader effect in both horizontal and vertical directions.
 
 **Since:** 14
 
-<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
+<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

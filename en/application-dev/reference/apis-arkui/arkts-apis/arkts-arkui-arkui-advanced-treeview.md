@@ -12,22 +12,22 @@ import { CallbackParam, NodeParam, TreeController, TreeListenType, TreeListener,
 
 | Name | Description |
 | --- | --- |
-| [TreeController](arkts-arkui-arkui-advanced-treeview-treecontroller-c.md) | Implements a **TreeController** object, which can be bound to a tree view component to control the node information of the component. One **TreeController** object can be bound to only one tree view component. |
-| [TreeListener](arkts-arkui-arkui-advanced-treeview-treelistener-c.md) | Listener of the tree view component. You can bind it to the **TreeView** component and use it to listen for changes of tree nodes. One listener can be bound to only one **TreeView** component. |
-| [TreeListenerManager](arkts-arkui-arkui-advanced-treeview-treelistenermanager-c.md) | Implements a **TreeListenerManager** object, which can be bound to a **TreeView** component to listen for changes of tree nodes. One **TreeListenerManager** object can be bound to only one tree view component. |
+| [TreeController](arkts-arkui-arkui-advanced-treeview-treecontroller-c.md) | A controller for the tree view component, used to control node information of the tree. The same controller instance cannot control multiple tree view components simultaneously. |
+| [TreeListener](arkts-arkui-arkui-advanced-treeview-treelistener-c.md) | Defines a listener for the tree view component, which can be bound to the tree view component to listen for node changes of the tree. The same listener cannot control multiple tree view components. The listener internally maintains the mapping between event types and callback functions. When a user performs a node operation on the TreeView, the TreeView notifies the listener to trigger the corresponding callback function, and the developer can obtain node information in the callback and perform service processing. |
+| [TreeListenerManager](arkts-arkui-arkui-advanced-treeview-treelistenermanager-c.md) | Defines a listener manager for the tree view component, which can obtain a listener instance and bind it to the tree view component for managing node listening of the tree. The same listener cannot control multiple tree view components. |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md) | The **TreeView** component represents a tree view used to display a hierarchical list of items. Each item can contain subitems, which may be expanded or collapsed. |
+| [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md) | A tree view is a hierarchical list suitable for displaying nested structures. It consists of parent nodes and child nodes, and supports expanding or collapsing. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [CallbackParam](arkts-arkui-arkui-advanced-treeview-callbackparam-i.md) | Declare CallbackParam |
-| [NodeParam](arkts-arkui-arkui-advanced-treeview-nodeparam-i.md) | Declare NodeParam |
+| [CallbackParam](arkts-arkui-arkui-advanced-treeview-callbackparam-i.md) | Declare CallbackParam. |
+| [NodeParam](arkts-arkui-arkui-advanced-treeview-nodeparam-i.md) | Declare NodeParam. |
 
 ### Enums
 

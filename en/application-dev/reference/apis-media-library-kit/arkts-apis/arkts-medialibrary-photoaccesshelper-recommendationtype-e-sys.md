@@ -12,17 +12,19 @@ Enumerates the types of recommended images.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## COLOR_STYLE_PHOTO
+## ARCHITECTURE
 
 ```TypeScript
-COLOR_STYLE_PHOTO = 12
+ARCHITECTURE = 15
 ```
 
-Recommended style.
+Architecture images will be recommended.
 
-**Since:** 18
+**Since:** 23
 
-<!--Device-RecommendationType-COLOR_STYLE_PHOTO = 12--><!--Device-RecommendationType-COLOR_STYLE_PHOTO = 12-End-->
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-RecommendationType-ARCHITECTURE = 15--><!--Device-RecommendationType-ARCHITECTURE = 15-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -46,6 +48,22 @@ Cat images will be recommended.
 
 **System API:** This is a system API.
 
+## COLOR_STYLE_PHOTO
+
+```TypeScript
+COLOR_STYLE_PHOTO = 12
+```
+
+Recommended style.
+
+**Since:** 18
+
+<!--Device-RecommendationType-COLOR_STYLE_PHOTO = 12--><!--Device-RecommendationType-COLOR_STYLE_PHOTO = 12-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
 ## DOG
 
 ```TypeScript
@@ -64,37 +82,19 @@ Dog images will be recommended.
 
 **System API:** This is a system API.
 
-## ARCHITECTURE
+## FEATURED_SINGLE_PET
 
 ```TypeScript
-ARCHITECTURE = 15
+FEATURED_SINGLE_PET = 18
 ```
 
-Architecture images will be recommended.
+Recommended pet.
 
-**Since:** 23
+**Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-RecommendationType-ARCHITECTURE = 15--><!--Device-RecommendationType-ARCHITECTURE = 15-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
-## LANDSCAPE
-
-```TypeScript
-LANDSCAPE = 16
-```
-
-Landscape images will be recommended.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-RecommendationType-LANDSCAPE = 16--><!--Device-RecommendationType-LANDSCAPE = 16-End-->
+<!--Device-RecommendationType-FEATURED_SINGLE_PET = 18--><!--Device-RecommendationType-FEATURED_SINGLE_PET = 18-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -118,19 +118,19 @@ Images generated using the 3D Gaussian technology will be recommended.
 
 **System API:** This is a system API.
 
-## FEATURED_SINGLE_PET
+## LANDSCAPE
 
 ```TypeScript
-FEATURED_SINGLE_PET = 18
+LANDSCAPE = 16
 ```
 
-Recommended pet
+Landscape images will be recommended.
 
-**Since:** 26.2.0
+**Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-RecommendationType-FEATURED_SINGLE_PET = 18--><!--Device-RecommendationType-FEATURED_SINGLE_PET = 18-End-->
+<!--Device-RecommendationType-LANDSCAPE = 16--><!--Device-RecommendationType-LANDSCAPE = 16-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

@@ -6,6 +6,8 @@
 import { freeInstall } from '@kit.AbilityKit';
 ```
 
+<a id="getdispatchinfo1"></a>
+
 ## getDispatchInfo
 
 ```TypeScript
@@ -28,7 +30,7 @@ Obtains the dispatch information. This API uses an asynchronous callback to retu
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DispatchInfo](arkts-ability-freeinstall-dispatchinfo-t-sys.md)&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**, and **data** is the [DispatchInfo](arkts-ability-dispatchinfo-i-sys.md) object obtained. otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[DispatchInfo](arkts-ability-freeinstall-dispatchinfo-t-sys.md)&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **undefined**, and **data** is the [DispatchInfo](arkts-ability-dispatchinfo-i-sys.md) object obtained. otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -39,7 +41,7 @@ Obtains the dispatch information. This API uses an asynchronous callback to retu
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 
 
-<a id="getdispatchinfo-1"></a>
+<a id="getdispatchinfo2"></a>
 
 ## getDispatchInfo
 

@@ -12,20 +12,6 @@ Enumerates charger types.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## NONE
-
-```TypeScript
-NONE
-```
-
-Unknown charger type.
-
-**Since:** 6
-
-<!--Device-BatteryPluggedType-NONE--><!--Device-BatteryPluggedType-NONE-End-->
-
-**System capability:** SystemCapability.PowerManager.BatteryManager.Core
-
 ## AC
 
 ```TypeScript
@@ -37,6 +23,20 @@ AC charger.
 **Since:** 6
 
 <!--Device-BatteryPluggedType-AC--><!--Device-BatteryPluggedType-AC-End-->
+
+**System capability:** SystemCapability.PowerManager.BatteryManager.Core
+
+## NONE
+
+```TypeScript
+NONE
+```
+
+Unknown charger type.
+
+**Since:** 6
+
+<!--Device-BatteryPluggedType-NONE--><!--Device-BatteryPluggedType-NONE-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 

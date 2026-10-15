@@ -26,7 +26,7 @@ import { worker, DedicatedWorkerGlobalScope, ErrorEvent, Event, EventListener, E
 readonly data: T
 ```
 
-异常发生时传递的数据。
+线程间传递的数据。
 
 **类型：** T
 

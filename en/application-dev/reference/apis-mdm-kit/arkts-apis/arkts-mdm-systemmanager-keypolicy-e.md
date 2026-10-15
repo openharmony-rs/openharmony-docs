@@ -12,22 +12,6 @@ Enumerates key policies. This refers to the system behavior triggered after the 
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## INTERCEPTION
-
-```TypeScript
-INTERCEPTION = 0
-```
-
-Intercepts messages. After this parameter is set, only the current key event is intercepted. The system does not process the event, and the key callback API does not respond to the key event. For example, after the power key interception policy is delivered, pressing the power key does not respond, the device cannot be powered off or locked, and only the power key event in the power-on state is affected. When the device is powered off, the power key can be used to power on the device.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-KeyPolicy-INTERCEPTION = 0--><!--Device-KeyPolicy-INTERCEPTION = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## CUSTOM
 
 ```TypeScript
@@ -41,5 +25,21 @@ Intercepts and forwards messages. When this policy is configured, the system int
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-KeyPolicy-CUSTOM = 1--><!--Device-KeyPolicy-CUSTOM = 1-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## INTERCEPTION
+
+```TypeScript
+INTERCEPTION = 0
+```
+
+Intercepts messages. After this parameter is set, only the current key event is intercepted. The system does not process the event, and the key callback API does not respond to the key event. For example, after the power key interception policy is delivered, pressing the power key does not respond, the device cannot be powered off or locked, and only the power key event in the power-on state is affected. When the device is powered off, the power key can be used to power on the device.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-KeyPolicy-INTERCEPTION = 0--><!--Device-KeyPolicy-INTERCEPTION = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

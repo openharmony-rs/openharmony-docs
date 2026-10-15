@@ -6,7 +6,7 @@ declare interface CheckBoxConfiguration extends CommonConfiguration<CheckBoxConf
 
 You need a custom class to implement the **ContentModifier** API. It inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** CheckBoxConfiguration extends CommonConfiguration<CheckBoxConfiguration>
+**Inheritance/Implementation:** CheckBoxConfiguration extends CommonConfiguration&lt;CheckBoxConfiguration&gt;
 
 **Since:** 12
 

@@ -12,24 +12,6 @@ Enumerates the axis types for axis events.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## VERTICAL_AXIS
-
-```TypeScript
-VERTICAL_AXIS = 0
-```
-
-Vertical scroll axis.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-AxisType-VERTICAL_AXIS = 0--><!--Device-AxisType-VERTICAL_AXIS = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## HORIZONTAL_AXIS
 
 ```TypeScript
@@ -63,5 +45,23 @@ Pinch axis.
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-AxisType-PINCH_AXIS = 2--><!--Device-AxisType-PINCH_AXIS = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## VERTICAL_AXIS
+
+```TypeScript
+VERTICAL_AXIS = 0
+```
+
+Vertical scroll axis.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-AxisType-VERTICAL_AXIS = 0--><!--Device-AxisType-VERTICAL_AXIS = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

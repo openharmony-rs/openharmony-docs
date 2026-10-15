@@ -6,6 +6,8 @@ export type SaveRequestCallback = _AutoFillRequest.SaveRequestCallback
 
 Defines the callback for an automatic or a manual saving request.
 
+**Type:** [_AutoFillRequest.SaveRequestCallback](arkts-ability-autofillrequest-saverequestcallback-i-sys.md)
+
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the callback for an automatic or a manual saving request.
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
-
-**Type:** [_AutoFillRequest.SaveRequestCallback](arkts-ability-autofillrequest-saverequestcallback-i-sys.md)

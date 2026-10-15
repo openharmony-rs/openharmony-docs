@@ -6,6 +6,8 @@
 import { storageStatistics } from '@kit.CoreFileKit';
 ```
 
+<a id="getfreesize1"></a>
+
 ## getFreeSize
 
 ```TypeScript
@@ -55,7 +57,7 @@ storageStatistics.getFreeSize((error: BusinessError, number: number) => {
 ```
 
 
-<a id="getfreesize-1"></a>
+<a id="getfreesize2"></a>
 
 ## getFreeSize
 

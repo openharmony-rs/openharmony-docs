@@ -4,9 +4,9 @@
 declare class GestureGroupHandler extends GestureHandler<GestureGroupHandler>
 ```
 
-Defines a gesture group handler object.
+Defines the gesture group handler object type, which is used to combine multiple gestures and bind them to a component as a whole. It is suitable for scenarios where the recognition order or concurrency relationship of multiple gestures such as single tap, double tap, and long press needs to be coordinated.
 
-**Inheritance/Implementation:** GestureGroupHandler extends GestureHandler<GestureGroupHandler>
+**Inheritance/Implementation:** GestureGroupHandler extends GestureHandler&lt;GestureGroupHandler&gt;
 
 **Since:** 12
 
@@ -36,7 +36,7 @@ Constructor used to create a gesture group handler instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [GestureGroupGestureHandlerOptions](arkts-arkui-tapgesture-comp-gesturegroupgesturehandleroptions-i.md) | No | Parameters of the gesture group handler. |
+| options | [GestureGroupGestureHandlerOptions](arkts-arkui-tapgesture-comp-gesturegroupgesturehandleroptions-i.md) | No | Configuration options of the gesture group handler. Passed when the combined gesture recognition mode and gesture set need to be set; if not passed, the default configuration of the gesture group handler is used, with the combined gesture recognition mode defaulting to **GestureMode.Sequence** and no gesture set configured. |
 
 ## onCancel
 
@@ -60,7 +60,7 @@ Sets the cancellation callback for the gesture group handler. The callback is tr
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| event | Callback&lt;void&gt; | Yes | Callback invoked when the gesture group is cancelled. |
+| event | Callback&lt;void&gt; | Yes | Callback for the gesture group handler cancellation, which takes no input parameter and is used to receive a notification after the sequential combined gesture is canceled. |
 
 **Return value:**
 

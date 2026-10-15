@@ -4,7 +4,7 @@
 export interface MissionListener
 ```
 
-The module defines the listeners used to observe the mission status. The listeners can be registered by using [on](arkts-ability-missionmanager-on-f-sys.md).
+The module defines the listeners used to observe the mission status. The listeners can be registered by using on.
 
 **Since:** 8
 
@@ -36,6 +36,7 @@ Called when the system closes a mission.
 | --- | --- | --- | --- |
 | mission | number | Yes | Mission ID. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -83,6 +84,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## onMissionCreated
 
 ```TypeScript
@@ -105,9 +108,12 @@ Called when the system creates a mission.
 | --- | --- | --- | --- |
 | mission | number | Yes | Mission ID. |
 
+<!--Del-->
 **Examples**
 
 For details, see [onMissionClosed](#onmissionclosed).
+
+<!--DelEnd-->
 
 ## onMissionDestroyed
 
@@ -131,9 +137,12 @@ Called when the system destroys a mission.
 | --- | --- | --- | --- |
 | mission | number | Yes | Mission ID. |
 
+<!--Del-->
 **Examples**
 
 For details, see [onMissionClosed](#onmissionclosed).
+
+<!--DelEnd-->
 
 ## onMissionIconUpdated
 
@@ -158,9 +167,12 @@ Called when the system updates the icon of a mission.
 | mission | number | Yes | Mission ID. |
 | icon | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | New mission icon. |
 
+<!--Del-->
 **Examples**
 
 For details, see [onMissionClosed](#onmissionclosed).
+
+<!--DelEnd-->
 
 ## onMissionLabelUpdated
 
@@ -184,9 +196,12 @@ Called when the system updates the label of a mission.
 | --- | --- | --- | --- |
 | mission | number | Yes | Mission ID. |
 
+<!--Del-->
 **Examples**
 
 For details, see [onMissionClosed](#onmissionclosed).
+
+<!--DelEnd-->
 
 ## onMissionMovedToFront
 
@@ -210,9 +225,12 @@ Called when the system moves a mission to the foreground.
 | --- | --- | --- | --- |
 | mission | number | Yes | Mission ID. |
 
+<!--Del-->
 **Examples**
 
 For details, see [onMissionClosed](#onmissionclosed).
+
+<!--DelEnd-->
 
 ## onMissionSnapshotChanged
 
@@ -236,6 +254,9 @@ This callback is triggered when the system updates the task thumbnail of a missi
 | --- | --- | --- | --- |
 | mission | number | Yes | Indicates the mission ID. |
 
+<!--Del-->
 **Examples**
 
 For details, see [onMissionClosed](#onmissionclosed).
+
+<!--DelEnd-->

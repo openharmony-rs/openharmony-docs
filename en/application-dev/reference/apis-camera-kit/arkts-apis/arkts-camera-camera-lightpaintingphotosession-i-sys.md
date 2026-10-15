@@ -51,6 +51,7 @@ Obtains the type of light painting shutter mode in use.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,6 +60,8 @@ function getLightPaintingType(lightPaintingPhotoSession: camera.LightPaintingPho
   return type;
 }
 ```
+
+<!--DelEnd-->
 
 ## getSupportedLightPaintingTypes
 
@@ -89,6 +92,7 @@ Obtains the supported types of light painting shutter mode.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -97,6 +101,8 @@ function getSupportedLightPaintingTypes(lightPaintingPhotoSession: camera.LightP
   return types
 }
 ```
+
+<!--DelEnd-->
 
 ## off('error')
 
@@ -127,6 +133,7 @@ Unsubscribes from HighResolutionPhotoSession error events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -134,6 +141,8 @@ function unregisterSessionError(lightPaintingPhotoSession: camera.LightPaintingP
   lightPaintingPhotoSession.off('error');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('focusStateChange')
 
@@ -164,6 +173,7 @@ Unsubscribes from focus state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -171,6 +181,8 @@ function unregisterFocusStateChange(lightPaintingPhotoSession: camera.LightPaint
   lightPaintingPhotoSession.off('focusStateChange');
 }
 ```
+
+<!--DelEnd-->
 
 ## off('smoothZoomInfoAvailable')
 
@@ -201,6 +213,7 @@ Unsubscribes from smooth zoom state change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -208,6 +221,8 @@ function unregisterSmoothZoomInfo(lightPaintingPhotoSession: camera.LightPaintin
   lightPaintingPhotoSession.off('smoothZoomInfoAvailable');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('error')
 
@@ -238,6 +253,7 @@ Subscribes to HighResolutionPhotoSession error events. This API uses an asynchro
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -251,6 +267,8 @@ function registerSessionError(lightPaintingPhotoSession: camera.LightPaintingPho
   lightPaintingPhotoSession.on('error', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('focusStateChange')
 
@@ -281,6 +299,7 @@ Subscribes to focus state change events. This API uses an asynchronous callback 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -298,6 +317,8 @@ function registerFocusStateChange(lightPaintingPhotoSession: camera.LightPaintin
   lightPaintingPhotoSession.on('focusStateChange', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('smoothZoomInfoAvailable')
 
@@ -328,6 +349,7 @@ Subscribes to smooth zoom state change events. This API uses an asynchronous cal
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -345,6 +367,8 @@ function registerSmoothZoomInfo(lightPaintingPhotoSession: camera.LightPaintingP
   lightPaintingPhotoSession.on('smoothZoomInfoAvailable', callback);
 }
 ```
+
+<!--DelEnd-->
 
 ## setLightPaintingType
 
@@ -376,6 +400,7 @@ Sets the type of light painting shutter mode.
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -392,3 +417,5 @@ function setLightPaintingType(lightPaintingPhotoSession: camera.LightPaintingPho
   }
 }
 ```
+
+<!--DelEnd-->

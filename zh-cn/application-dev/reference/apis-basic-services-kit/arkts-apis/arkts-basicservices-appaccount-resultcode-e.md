@@ -19,22 +19,6 @@ enum ResultCode
 
 **系统能力：** SystemCapability.Account.AppAccount
 
-## SUCCESS
-
-```TypeScript
-SUCCESS = 0
-```
-
-表示操作成功。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
-
-**系统能力：** SystemCapability.Account.AppAccount
-
 ## ERROR_ACCOUNT_NOT_EXIST
 
 ```TypeScript
@@ -320,5 +304,21 @@ ERROR_PERMISSION_DENIED = 10018
 **废弃版本：** 9
 
 <!--Device-ResultCode-ERROR_PERMISSION_DENIED = 10018--><!--Device-ResultCode-ERROR_PERMISSION_DENIED = 10018-End-->
+
+**系统能力：** SystemCapability.Account.AppAccount
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+表示操作成功。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Account.AppAccount

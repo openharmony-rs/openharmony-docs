@@ -96,7 +96,7 @@ Default value: **1**
 
 **NOTE:** 
 
-Avoid capturing images that are excessively large, ideally not larger than the screen size. If the size of the image to capture exceeds device-specific underlying limits, the capture will fail.
+Avoid capturing images that are excessively large, ideally not larger than the screen size. If the size of the image to capture exceeds device-specific underlying limits, the capture will fail. The underlying limit varies by device. You can obtain the specific limit through the [getSizeLimitation](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#getsizelimitation) API.
 
 **Type:** number
 

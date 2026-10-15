@@ -12,6 +12,28 @@ declare enum SwipeActionState
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## ACTIONING
+
+```TypeScript
+ACTIONING
+```
+
+长距离状态，当ListItem进入长距删除区后删除ListItem的状态。
+
+**说明：** 
+
+actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸时，滑动后松手的位置超过或等于该取值才能进入该状态。
+
+**起始版本：** 11
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-SwipeActionState-ACTIONING--><!--Device-SwipeActionState-ACTIONING-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## COLLAPSED
 
 ```TypeScript
@@ -49,27 +71,5 @@ EXPANDED
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-SwipeActionState-EXPANDED--><!--Device-SwipeActionState-EXPANDED-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## ACTIONING
-
-```TypeScript
-ACTIONING
-```
-
-长距离状态，当ListItem进入长距删除区后删除ListItem的状态。
-
-**说明：** 
-
-actionAreaDistance的最终取值大于0，且小于ListItem在划动方向上的尺寸减去划出组件在划动方向上的尺寸时，滑动后松手的位置超过或等于该取值才能进入该状态。
-
-**起始版本：** 11
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-SwipeActionState-ACTIONING--><!--Device-SwipeActionState-ACTIONING-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

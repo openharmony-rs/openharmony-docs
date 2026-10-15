@@ -20,6 +20,8 @@ interface Config<T>
 import { config } from '@kit.AccessibilityKit';
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -49,6 +51,7 @@ get(): Promise<T>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,7 +65,9 @@ config.highContrastText.get().then((data: boolean) => {
 });
 ```
 
-<a id="get-1"></a>
+<!--DelEnd-->
+
+<a id="get2"></a>
 
 ## get
 
@@ -92,6 +97,7 @@ get(callback: AsyncCallback<T>): void
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -106,6 +112,8 @@ config.highContrastText.get((err: BusinessError, data: boolean) => {
   console.info(`succeeded in getting highContrastText, data is ${data}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## off
 
@@ -138,6 +146,7 @@ off(callback?: Callback<T>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -149,6 +158,8 @@ let callback = (data: boolean) => {
 config.highContrastText.on(callback);
 config.highContrastText.off(callback);
 ```
+
+<!--DelEnd-->
 
 ## on
 
@@ -182,8 +193,9 @@ on(callback: Callback<T>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -193,6 +205,10 @@ config.highContrastText.on((data: boolean) => {
   console.info(`subscribe highContrastText success, result: ${JSON.stringify(data)}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="set1"></a>
 
 ## set
 
@@ -230,8 +246,9 @@ set(value: T): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -247,7 +264,9 @@ config.highContrastText.set(value).then(() => {
 });
 ```
 
-<a id="set-1"></a>
+<!--DelEnd-->
+
+<a id="set2"></a>
 
 ## set
 
@@ -280,8 +299,9 @@ set(value: T, callback: AsyncCallback<void>): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -298,3 +318,5 @@ config.highContrastText.set(value, (err: BusinessError) => {
   console.info(`succeeded in setting highContrastText, value is ${value}`);
 });
 ```
+
+<!--DelEnd-->

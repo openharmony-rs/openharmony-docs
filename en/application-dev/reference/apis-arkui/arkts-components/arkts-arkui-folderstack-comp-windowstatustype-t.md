@@ -6,6 +6,8 @@ declare type WindowStatusType = import('../api/@ohos.window').default.WindowStat
 
 Enumerates the window modes.
 
+**Type:** import('../api/@ohos.window').default.WindowStatusType
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Enumerates the window modes.
 <!--Device-unnamed-declare type WindowStatusType = import('../api/@ohos.window').default.WindowStatusType--><!--Device-unnamed-declare type WindowStatusType = import('../api/@ohos.window').default.WindowStatusType-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.window').default.WindowStatusType

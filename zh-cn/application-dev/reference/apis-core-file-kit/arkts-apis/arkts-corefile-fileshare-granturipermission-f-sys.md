@@ -6,6 +6,8 @@
 import { fileShare } from '@kit.CoreFileKit';
 ```
 
+<a id="granturipermission1"></a>
+
 ## grantUriPermission
 
 ```TypeScript
@@ -47,6 +49,7 @@ function grantUriPermission(
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 14300001 | IPC error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,8 +75,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="granturipermission-1"></a>
+
+<a id="granturipermission2"></a>
 
 ## grantUriPermission
 
@@ -116,6 +121,7 @@ function grantUriPermission(uri: string, bundleName: string, flag: wantConstant.
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 14300001 | IPC error |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -139,8 +145,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="granturipermission-2"></a>
+
+<a id="granturipermission3"></a>
 
 ## grantUriPermission
 
@@ -184,6 +192,7 @@ function grantUriPermission(policies: Array<PolicyInfo>, targetBundleName: strin
 | 13900001 | Operation not permitted. |
 | 13900011 | Out of memory. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -208,3 +217,5 @@ async function grantUriPermissionExample() {
   }
 }
 ```
+
+<!--DelEnd-->

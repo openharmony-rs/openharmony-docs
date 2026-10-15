@@ -6,6 +6,8 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="create1"></a>
+
 ## create
 
 ```TypeScript
@@ -19,13 +21,13 @@ function create(id: string, type: WindowType, callback: AsyncCallback<Window>): 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，参数id传入null或undefined时，可能会导致callback无法得到执行，建议使用
-> [createWindow()](arkts-arkui-window-createwindow-f.md)替代。
+> [createWindow()](arkts-arkui-window-createwindow-f.md#createwindow1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
+**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow1)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -59,7 +61,7 @@ window.create('test', window.WindowType.TYPE_APP, (err: BusinessError, data) => 
 ```
 
 
-<a id="create-1"></a>
+<a id="create2"></a>
 
 ## create
 
@@ -73,13 +75,13 @@ function create(id: string, type: WindowType): Promise<Window>
 
 > **说明：** 
 > 
-> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow-1)替代。
+> 从API version 7开始支持，从API version 9开始废弃，建议使用[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow2)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1)(config: Configuration)
+**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow2)(config: Configuration)
 
 **模型约束：** 此接口仅可在FA模型下使用。
 
@@ -116,7 +118,7 @@ promise.then((data) => {
 ```
 
 
-<a id="create-2"></a>
+<a id="create3"></a>
 
 ## create
 
@@ -128,13 +130,13 @@ function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow-1)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[createWindow()](arkts-arkui-window-createwindow-f.md#createwindow2)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow-1)(config: Configuration)
+**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow2)(config: Configuration)
 
 <!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>--><!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType): Promise<Window>-End-->
 
@@ -170,7 +172,7 @@ promise.then((data) => {
 ```
 
 
-<a id="create-3"></a>
+<a id="create4"></a>
 
 ## create
 
@@ -183,13 +185,13 @@ function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncC
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [createWindow()](arkts-arkui-window-createwindow-f.md)替代。
+> [createWindow()](arkts-arkui-window-createwindow-f.md#createwindow1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
+**替代接口：** [createWindow](arkts-arkui-window-createwindow-f.md#createwindow1)(config: Configuration, callback: AsyncCallback&lt;Window&gt;)
 
 <!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback<Window>): void--><!--Device-window-function create(ctx: BaseContext, id: string, type: WindowType, callback: AsyncCallback<Window>): void-End-->
 

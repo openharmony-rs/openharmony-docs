@@ -18,7 +18,7 @@ Disables listening for screen hopping status change events.
 
 **Deprecated since:** 11
 
-**Substitutes:** [off](arkts-distributedservice-cooperate-off-f-sys.md)(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;)
+**Substitutes:** [off](#offcooperatemessage)(type: 'cooperateMessage', callback?: Callback&lt;CooperateMessage&gt;)
 
 <!--Device-cooperate-function off(type: 'cooperate', callback?: Callback<void>): void--><!--Device-cooperate-function off(type: 'cooperate', callback?: Callback<void>): void-End-->
 

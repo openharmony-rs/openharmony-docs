@@ -14,13 +14,15 @@ interface RotationGestureInterface extends GestureInterface<RotationGestureInter
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="call1"></a>
+
 ## [[Call]]
 
 ```TypeScript
 (value?: { fingers?: number; angle?: number }): RotationGestureInterface
 ```
 
-继承自[GestureInterface&lt;T&gt;](arkts-arkui-tapgesture-comp-gestureinterface-i.md)，设置旋转手势事件。
+继承自[GestureInterface<T>](arkts-arkui-tapgesture-comp-gestureinterface-i.md)，设置旋转手势事件。
 
 **起始版本：** 7
 
@@ -42,7 +44,7 @@ interface RotationGestureInterface extends GestureInterface<RotationGestureInter
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-tapgesture-comp-rotationgestureinterface-i.md) |  |
 
-<a id="call-1"></a>
+<a id="call2"></a>
 
 ## [[Call]]
 
@@ -74,6 +76,8 @@ interface RotationGestureInterface extends GestureInterface<RotationGestureInter
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-tapgesture-comp-rotationgestureinterface-i.md) |  |
 
+<a id="onactioncancel1"></a>
+
 ## onActionCancel
 
 ```TypeScript
@@ -102,7 +106,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 | --- | --- |
 | [RotationGestureInterface](arkts-arkui-tapgesture-comp-rotationgestureinterface-i.md) |  |
 
-<a id="onactioncancel-1"></a>
+<a id="onactioncancel2"></a>
 
 ## onActionCancel
 
@@ -110,7 +114,7 @@ Rotation手势识别成功，接收到触摸取消事件触发的回调。该回
 onActionCancel(event: Callback<GestureEvent>): RotationGestureInterface
 ```
 
-Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](#onactioncancel)相比，该回调返回手势事件信息。
+Rotation手势识别成功，接收到触摸取消事件触发的回调。与[onActionCancel](#onactioncancel1)相比，该回调返回手势事件信息。
 
 **起始版本：** 18
 

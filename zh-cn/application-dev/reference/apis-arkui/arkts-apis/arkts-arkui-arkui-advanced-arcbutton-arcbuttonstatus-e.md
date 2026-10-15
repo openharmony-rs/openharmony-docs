@@ -12,6 +12,22 @@ export declare enum ArcButtonStatus
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
+## DISABLED
+
+```TypeScript
+DISABLED = 2
+```
+
+禁用状态。
+
+**起始版本：** 18
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-ArcButtonStatus-DISABLED = 2--><!--Device-ArcButtonStatus-DISABLED = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
+
 ## NORMAL
 
 ```TypeScript
@@ -41,21 +57,5 @@ PRESSED = 1
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-ArcButtonStatus-PRESSED = 1--><!--Device-ArcButtonStatus-PRESSED = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Circle
-
-## DISABLED
-
-```TypeScript
-DISABLED = 2
-```
-
-禁用状态。
-
-**起始版本：** 18
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-ArcButtonStatus-DISABLED = 2--><!--Device-ArcButtonStatus-DISABLED = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

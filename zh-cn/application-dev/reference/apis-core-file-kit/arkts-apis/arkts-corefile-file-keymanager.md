@@ -25,5 +25,5 @@ import { keyManager } from '@kit.CoreFileKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [deactivateUserKey](arkts-corefile-keymanager-deactivateuserkey-f-sys.md) | 用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）** |
+| [deactivateUserKey](arkts-corefile-keymanager-deactivateuserkey-f-sys.md#deactivateuserkey) | 用户锁屏时，同步卸载指定用户对应密钥。**（该接口目前仅开放给锁屏应用）** |
 <!--DelEnd-->

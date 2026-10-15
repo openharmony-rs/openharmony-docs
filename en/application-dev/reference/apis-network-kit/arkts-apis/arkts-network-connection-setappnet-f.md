@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="setappnet1"></a>
+
 ## setAppNet
 
 ```TypeScript
@@ -43,7 +45,7 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
 
-The following example binds the application to a Wi-Fi network. It uses the [on('netAvailable')](arkts-network-connection-netconnection-i.md#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on('netLost')](arkts-network-connection-netconnection-i.md#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+The following example binds the application to a Wi-Fi network. It uses the on('netAvailable') API to bind the application when the Wi-Fi network is available, and the on('netLost') API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
 
 ```TypeScript
 import { connection } from '@kit.NetworkKit';
@@ -91,7 +93,7 @@ netCon.register((error: BusinessError) => {
 ```
 
 
-<a id="setappnet-1"></a>
+<a id="setappnet2"></a>
 
 ## setAppNet
 
@@ -135,7 +137,7 @@ Binds an application to the network specified by **netHandle**, so that the appl
 
 If an application is bound to a Wi-Fi network and the Wi-Fi signal is weak or the network is disconnected, the application cannot access the Internet if it is not unbound.
 
-The following example binds the application to a Wi-Fi network. It uses the [on('netAvailable')](arkts-network-connection-netconnection-i.md#onnetavailable) API to bind the application when the Wi-Fi network is available, and the [on('netLost')](arkts-network-connection-netconnection-i.md#onnetlost) API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
+The following example binds the application to a Wi-Fi network. It uses the on('netAvailable') API to bind the application when the Wi-Fi network is available, and the on('netLost') API to unbind the application and switch to the default network when the Wi-Fi network is unavailable.
 
 ```TypeScript
 import { connection } from '@kit.NetworkKit';

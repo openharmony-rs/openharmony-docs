@@ -66,9 +66,11 @@ create(config: VpnConfig): Promise<number>
 > **说明：** 
 > 
 > 建议在不需要VPN网络的时候配对调用[destroy()](#destroy)或
-> [destroy(vpnId: string)](#destroy-1)接口销毁启动的VPN网络，并执行资源清理等操作。
+> [destroy(vpnId: string)](#destroy2)接口销毁启动的VPN网络，并执行资源清理等操作。
 
 **起始版本：** 11
+
+**需要权限：** ohos.permission.INTERNET
 
 <!--Device-VpnConnection-create(config: VpnConfig): Promise<int>--><!--Device-VpnConnection-create(config: VpnConfig): Promise<int>-End-->
 
@@ -90,6 +92,7 @@ create(config: VpnConfig): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 | [2200001](../errorcode-net-ethernet.md#2200001-非法参数值) | Invalid parameter value. |
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |
@@ -213,6 +216,8 @@ delRoute(routes: RouteInfo[], vpnId?: string): Promise<void>
 | [2200002](../errorcode-net-ethernet.md#2200002-连接服务失败) | Operation failed. Cannot connect to service. |
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 
+<a id="destroy1"></a>
+
 ## destroy
 
 ```TypeScript
@@ -262,7 +267,7 @@ export default class MyVpnExtAbility extends VpnExtensionAbility {
 }
 ```
 
-<a id="destroy-1"></a>
+<a id="destroy2"></a>
 
 ## destroy
 

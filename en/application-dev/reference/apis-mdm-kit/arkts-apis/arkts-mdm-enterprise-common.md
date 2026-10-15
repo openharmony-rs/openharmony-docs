@@ -8,8 +8,6 @@ The module provides pure type definitions for common capabilities within MDM Kit
 
 **Since:** 22
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace common--><!--Device-unnamed-declare namespace common-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
@@ -26,13 +24,14 @@ import { common } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
-| [isFeatureSupported](arkts-mdm-common-isfeaturesupported-f.md) | Checks whether a specified feature is supported. |
+| [isFeatureSupported](arkts-mdm-common-isfeaturesupported-f.md#isfeaturesupported) | Checks whether a specified feature is supported. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
 | [ApplicationInstance](arkts-mdm-common-applicationinstance-i.md) | Defines application instance data. |
+| [ExternalStorageDeviceInfo](arkts-mdm-common-externalstoragedeviceinfo-i.md) | External storage device information. |
 | [InstallationResult](arkts-mdm-common-installationresult-i.md) | An object that holds the application installation result. |
 | [PolicyChangedEvent](arkts-mdm-common-policychangedevent-i.md) | Defines the policy change event. |
 
@@ -46,6 +45,7 @@ import { common } from '@kit.MDMKit';
 
 | Name | Description |
 | --- | --- |
+| [DiskType](arkts-mdm-common-disktype-e.md) | Disk type. |
 | [ManagedFeature](arkts-mdm-common-managedfeature-e.md) | The managed feature. |
 | [ManagedPolicy](arkts-mdm-common-managedpolicy-e.md) | Enumerates enterprise device management policies. |
 | [QueryPolicy](arkts-mdm-common-querypolicy-e.md) | The policy of query enterprise device management policy. |

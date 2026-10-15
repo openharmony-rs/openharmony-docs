@@ -6,10 +6,10 @@ type ISendable = lang.ISendable
 
 ISendable是所有Sendable类型（除null和undefined）的父类型。自身没有任何必须的方法和属性。
 
+**类型：** [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
+
 **起始版本：** 12
 
 <!--Device-sendableImage-type ISendable = lang.ISendable--><!--Device-sendableImage-type ISendable = lang.ISendable-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
-
-**类型：** [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)

@@ -70,7 +70,7 @@ Initial configuration options of the component.
 
 ### Example 1: Selecting Text Across Nodes and Copying the Text
 
-This example demonstrates how to select text across multiple Text components, concatenate the selected text, and handle copy callbacks by using [SelectionContainer](#interfaces), [copyOption](#copyoption), [textJoinStyle](arkts-arkui-selectioncontainer-comp-attribute.md#textjoinstyle), [onTextSelectionChange](#ontextselectionchange), [onWillCopy](#onwillcopy), and [onCopy](#oncopy).
+This example demonstrates how to select text across multiple Text components, concatenate the selected text, and handle copy callbacks by using [SelectionContainer](#apis), [copyOption](#copyoption), [textJoinStyle](arkts-arkui-selectioncontainer-comp-attribute.md#textjoinstyle), [onTextSelectionChange](#ontextselectionchange), [onWillCopy](#onwillcopy), and [onCopy](#oncopy).
 
 Since API version 26.0.0, the SelectionContainer component and APIs such as copyOption are added.
 
@@ -96,10 +96,10 @@ struct SelectionContainerExample1 {
 
       SelectionContainer() {
         Column({ space: 8 }) {
-          Text('First paragraph: SelectionContainer supports selection across multiple Text components.')
+          Text('First paragraph: SelectionContainer supports selecting text across multiple Text components.')
             .fontSize(18)
             .copyOption(CopyOptions.InApp)
-          Text('Second paragraph: The selection result is concatenated in the visual order of the Text components.')
+          Text('Second paragraph: The selected result is concatenated in the visual order of the Text components.')
             .fontSize(18)
             .copyOption(CopyOptions.InApp)
           Text('Third paragraph: You can listen for selection changes, pre-copy validation, and copy completion events.')
@@ -116,13 +116,13 @@ struct SelectionContainerExample1 {
         console.info(`Selected text changed: ${JSON.stringify(value)}`);
       })
       .onWillCopy((value: string) => {
-        this.copiedText = `Preparing to copy: ${value}`;
-        console.info(`Preparing to copy text: ${value}`);
+        this.copiedText = `Ready to copy: ${value}`;
+        console.info(`Text ready to copy: ${value}`);
         return true;
       })
       .onCopy((value: string) => {
         this.copiedText = `Copy succeeded: ${value}`;
-        console.info(`Text copied successfully: ${value}`);
+        console.info(`Copied text: ${value}`);
       })
       .border({ width: 1, color: '#DCDCDC' })
       .padding(12)
@@ -219,15 +219,15 @@ struct SelectionContainerExample2 {
     Column() {
       Menu() {
         MenuItemGroup() {
-          MenuItem({ content: 'Custom copy', labelInfo: '' })
+          MenuItem({ content: 'Custom Copy', labelInfo: '' })
             .onClick(() => {
               console.info('Custom copy clicked');
             })
-          MenuItem({ content: 'Custom share', labelInfo: '' })
+          MenuItem({ content: 'Custom Sharing', labelInfo: '' })
             .onClick(() => {
-              console.info('Custom share clicked');
+              console.info('Custom sharing clicked');
             })
-          MenuItem({ content: 'Custom translation', labelInfo: '' })
+          MenuItem({ content: 'Custom Translation', labelInfo: '' })
             .onClick(() => {
               console.info('Custom translation clicked');
             })
@@ -273,11 +273,11 @@ struct SelectionContainerExample3 {
       menuItems.splice(targetIndex, 1);
     }
     let customItem1: TextMenuItem = {
-      content: 'Annotate',
+      content: 'Highlight',
       id: TextMenuItemId.of('highlight'),
     };
     let customItem2: TextMenuItem = {
-      content: 'Favorite',
+      content: 'Bookmark',
       id: TextMenuItemId.of('bookmark'),
     };
     let customItem3: TextMenuItem = {
@@ -288,7 +288,7 @@ struct SelectionContainerExample3 {
       content: 'Export',
       id: TextMenuItemId.of('export'),
     };
-    // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+    // Replace $r('app.media.startIcon') with the image resource file you use.
     let customItem5: TextMenuItem = {
       content: 'Push',
       icon: $r('app.media.startIcon'),
@@ -306,27 +306,27 @@ struct SelectionContainerExample3 {
     console.info(`Menu item clicked: ${menuItem.content}, text: ${text}`);
     if (menuItem.id.equals(TextMenuItemId.COPY)) {
       this.selectedText = `Copied: ${text}`;
-      console.info(`System copy operation intercepted, return true: ${text}`);
+      console.info(`Intercept the system copy operation, return true: ${text}`);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.SELECT_ALL)) {
-      this.selectedText = `Select all operation: ${text}`;
-      console.info(`Select all operation not intercepted, return false: execute the system default behavior`);
+      this.selectedText = `Select-all operation: ${text}`;
+      console.info(`Do not intercept the select-all operation, return false: Execute the system default behavior`);
       return false;
     }
     if (menuItem.id.equals(TextMenuItemId.of('highlight'))) {
-      this.selectedText = `Annotated: ${text}`;
-      console.info(`Custom menu item clicked: Annotate, text: ${text}`);
+      this.selectedText = `Highlighted: ${text}`;
+      console.info(`Custom menu item clicked: Highlight, text: ${text}`);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.of('bookmark'))) {
-      this.selectedText = `Favorited: ${text}`;
-      console.info(`Custom menu item clicked: Favorite, text: ${text}`);
+      this.selectedText = `Bookmarked: ${text}`;
+      console.info(`Custom menu item clicked: Bookmark, text: ${text}`);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.of('comment'))) {
       this.selectedText = `Commented: ${text}`;
-      console.info(`Custom menu item clicked: Annotate, text: ${text}`);
+      console.info(`Custom menu item clicked: Comment, text: ${text}`);
       return true;
     }
     if (menuItem.id.equals(TextMenuItemId.of('export'))) {
@@ -353,7 +353,7 @@ struct SelectionContainerExample3 {
 
       SelectionContainer() {
         Column({ space: 8 }) {
-          Text('First paragraph: SelectionContainer supports extended menu options.')
+          Text('First paragraph: SelectionContainer supports extension menu options.')
             .fontSize(18)
           Text('Second paragraph: You can remove system menu items and add custom menu items.')
             .fontSize(18)
@@ -386,7 +386,7 @@ struct SelectionContainerExample3 {
 
 ### Example 4: Closing the Selection Menu and Clearing Text Selection Through the Controllers
 
-This example demonstrates how to close the selection menu and clear the text selection by passing [SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md) through [SelectionContainer](#interfaces) and calling [closeSelectionMenu](#closeselectionmenu) and [clearTextSelection](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#cleartextselection).
+This example demonstrates how to close the selection menu and clear the text selection by passing [SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md) through [SelectionContainer](#apis) and calling [closeSelectionMenu](#closeselectionmenu) and [clearTextSelection](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md#cleartextselection).
 
 Since API version 26.0.0, the [SelectionContainerController](arkts-arkui-selectioncontainer-comp-selectioncontainercontroller-c.md) and [SelectionContainerOptions](arkts-arkui-selectioncontainer-comp-selectioncontaineroptions-i.md) APIs are added.
 
@@ -404,7 +404,7 @@ struct SelectionContainerControllerExample {
 
   build() {
     Column({ space: 12 }) {
-      Text('Long press the area below to select text across nodes, and then tap the button to close the selection menu or clear the selected text.')
+      Text('Long press the area below to select text across nodes, and then click the button to close the selection menu or clear the text selection.')
         .fontSize(16)
 
       SelectionContainer({ controller: this.controller }) {
@@ -412,7 +412,7 @@ struct SelectionContainerControllerExample {
           Text('First paragraph: SelectionContainer supports selecting text across multiple Text components.')
             .fontSize(18)
             .copyOption(CopyOptions.InApp)
-          Text('Second paragraph: After selection, you can close the selection menu or clear the selected text through the controller.')
+          Text('Second paragraph: After selection, you can close the selection menu or clear the text selection through the controller.')
             .fontSize(18)
             .copyOption(CopyOptions.InApp)
         }
@@ -423,11 +423,11 @@ struct SelectionContainerControllerExample {
       .width('100%')
 
       Row({ space: 12 }) {
-        Button('Close selection menu')
+        Button('Close Selection Menu')
           .onClick(() => {
             this.controller.closeSelectionMenu();
           })
-        Button('Clear text selection')
+        Button('Clear Text Selection')
           .onClick(() => {
             this.controller.clearTextSelection();
           })

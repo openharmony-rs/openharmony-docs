@@ -12,34 +12,6 @@ Enumerates the parity check modes.
 
 **System capability:** SystemCapability.USB.USBManager.Serial
 
-## PARITY_NONE
-
-```TypeScript
-PARITY_NONE = 0
-```
-
-No parity.
-
-**Since:** 19
-
-<!--Device-Parity-PARITY_NONE = 0--><!--Device-Parity-PARITY_NONE = 0-End-->
-
-**System capability:** SystemCapability.USB.USBManager.Serial
-
-## PARITY_ODD
-
-```TypeScript
-PARITY_ODD = 1
-```
-
-Odd parity.
-
-**Since:** 19
-
-<!--Device-Parity-PARITY_ODD = 1--><!--Device-Parity-PARITY_ODD = 1-End-->
-
-**System capability:** SystemCapability.USB.USBManager.Serial
-
 ## PARITY_EVEN
 
 ```TypeScript
@@ -65,6 +37,34 @@ Mark parity, whose parity bit is fixed at **1**.
 **Since:** 19
 
 <!--Device-Parity-PARITY_MARK = 3--><!--Device-Parity-PARITY_MARK = 3-End-->
+
+**System capability:** SystemCapability.USB.USBManager.Serial
+
+## PARITY_NONE
+
+```TypeScript
+PARITY_NONE = 0
+```
+
+No parity.
+
+**Since:** 19
+
+<!--Device-Parity-PARITY_NONE = 0--><!--Device-Parity-PARITY_NONE = 0-End-->
+
+**System capability:** SystemCapability.USB.USBManager.Serial
+
+## PARITY_ODD
+
+```TypeScript
+PARITY_ODD = 1
+```
+
+Odd parity.
+
+**Since:** 19
+
+<!--Device-Parity-PARITY_ODD = 1--><!--Device-Parity-PARITY_ODD = 1-End-->
 
 **System capability:** SystemCapability.USB.USBManager.Serial
 

@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getsharedbundleinfo1"></a>
+
 ## getSharedBundleInfo
 
 ```TypeScript
@@ -44,6 +46,7 @@ function getSharedBundleInfo(bundleName: string,  moduleName: string, callback: 
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,8 +71,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getsharedbundleinfo-1"></a>
+
+<a id="getsharedbundleinfo2"></a>
 
 ## getSharedBundleInfo
 
@@ -114,6 +119,7 @@ function getSharedBundleInfo(bundleName: string, moduleName: string): Promise<Ar
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700002](../errorcode-bundle.md#17700002-指定的modulename不存在) | The specified moduleName is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -135,3 +141,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getSharedBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

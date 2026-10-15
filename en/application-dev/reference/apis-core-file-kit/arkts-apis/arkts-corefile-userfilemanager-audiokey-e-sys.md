@@ -18,13 +18,13 @@ Defines the key information about an audio file.
 
 **System API:** This is a system API.
 
-## URI
+## ARTIST
 
 ```TypeScript
-URI = 0
+ARTIST = 5
 ```
 
-URI of the file.
+Author of the file.
 
 **Since:** 9
 
@@ -32,19 +32,19 @@ URI of the file.
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
-<!--Device-AudioKey-URI = 0--><!--Device-AudioKey-URI = 0-End-->
+<!--Device-AudioKey-ARTIST = 5--><!--Device-AudioKey-ARTIST = 5-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
 **System API:** This is a system API.
 
-## DISPLAY_NAME
+## AUDIOALBUM
 
 ```TypeScript
-DISPLAY_NAME = 1
+AUDIOALBUM = 6
 ```
 
-File name displayed.
+Audio album.
 
 **Since:** 9
 
@@ -52,7 +52,7 @@ File name displayed.
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
-<!--Device-AudioKey-DISPLAY_NAME = 1--><!--Device-AudioKey-DISPLAY_NAME = 1-End-->
+<!--Device-AudioKey-AUDIOALBUM = 6--><!--Device-AudioKey-AUDIOALBUM = 6-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -98,13 +98,13 @@ Date when the file content (not the file name) was last modified. The value is t
 
 **System API:** This is a system API.
 
-## TITLE
+## DISPLAY_NAME
 
 ```TypeScript
-TITLE = 4
+DISPLAY_NAME = 1
 ```
 
-Title of the file.
+File name displayed.
 
 **Since:** 9
 
@@ -112,47 +112,7 @@ Title of the file.
 
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
-<!--Device-AudioKey-TITLE = 4--><!--Device-AudioKey-TITLE = 4-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileManager.Core
-
-**System API:** This is a system API.
-
-## ARTIST
-
-```TypeScript
-ARTIST = 5
-```
-
-Author of the file.
-
-**Since:** 9
-
-**Deprecated since:** 26.0.0
-
-**Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
-
-<!--Device-AudioKey-ARTIST = 5--><!--Device-AudioKey-ARTIST = 5-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileManager.Core
-
-**System API:** This is a system API.
-
-## AUDIOALBUM
-
-```TypeScript
-AUDIOALBUM = 6
-```
-
-Audio album.
-
-**Since:** 9
-
-**Deprecated since:** 26.0.0
-
-**Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
-
-<!--Device-AudioKey-AUDIOALBUM = 6--><!--Device-AudioKey-AUDIOALBUM = 6-End-->
+<!--Device-AudioKey-DISPLAY_NAME = 1--><!--Device-AudioKey-DISPLAY_NAME = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 
@@ -193,6 +153,46 @@ Whether the file is added to favorites.
 **Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
 
 <!--Device-AudioKey-FAVORITE = 8--><!--Device-AudioKey-FAVORITE = 8-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileManager.Core
+
+**System API:** This is a system API.
+
+## TITLE
+
+```TypeScript
+TITLE = 4
+```
+
+Title of the file.
+
+**Since:** 9
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+
+<!--Device-AudioKey-TITLE = 4--><!--Device-AudioKey-TITLE = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileManager.Core
+
+**System API:** This is a system API.
+
+## URI
+
+```TypeScript
+URI = 0
+```
+
+URI of the file.
+
+**Since:** 9
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [AudioViewPicker](arkts-corefile-picker-audioviewpicker-c.md)
+
+<!--Device-AudioKey-URI = 0--><!--Device-AudioKey-URI = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

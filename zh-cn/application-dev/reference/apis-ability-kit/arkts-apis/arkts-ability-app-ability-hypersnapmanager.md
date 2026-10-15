@@ -4,8 +4,6 @@
 
 **起始版本：** 24
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace hyperSnapManager--><!--Device-unnamed-declare namespace hyperSnapManager-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
@@ -22,9 +20,9 @@ import { hyperSnapManager } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getLastError](arkts-ability-hypersnapmanager-getlasterror-f.md) | 获取指定场景下当前应用的最后一次Hyper Snap错误信息。每个场景的错误信息独立存储，并在请求成功后清除。设备重启后，所有错误信息都会被清除。 |
-| [requestRebuildHyperSnap](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md) | 请求重新初始化应用快启。 |
-| [setHyperSnapEnabled](arkts-ability-hypersnapmanager-sethypersnapenabled-f.md) | 启用或禁用应用的快启功能。 |
+| [getLastError](arkts-ability-hypersnapmanager-getlasterror-f.md#getlasterror) | 获取指定场景下当前应用的最后一次Hyper Snap错误信息。每个场景的错误信息独立存储，并在请求成功后清除。设备重启后，所有错误信息都会被清除。 |
+| [requestRebuildHyperSnap](arkts-ability-hypersnapmanager-requestrebuildhypersnap-f.md#requestrebuildhypersnap) | 请求重新初始化应用快启。 |
+| [setHyperSnapEnabled](arkts-ability-hypersnapmanager-sethypersnapenabled-f.md#sethypersnapenabled) | 启用或禁用应用的快启功能。 |
 
 ### 接口
 

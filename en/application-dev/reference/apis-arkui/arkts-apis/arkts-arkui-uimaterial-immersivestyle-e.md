@@ -12,42 +12,6 @@ Enumerates the material styles. The enum values suffixed with EC are set on [Eff
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ULTRA_THIN
-
-```TypeScript
-ULTRA_THIN = 0
-```
-
-Ultra-thin style, which provides a very strong transparent effect.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-ImmersiveStyle-ULTRA_THIN = 0--><!--Device-ImmersiveStyle-ULTRA_THIN = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## THIN
-
-```TypeScript
-THIN = 1
-```
-
-Thin style, which provides a strong transparent effect.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-ImmersiveStyle-THIN = 1--><!--Device-ImmersiveStyle-THIN = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## REGULAR
 
 ```TypeScript
@@ -84,6 +48,24 @@ Thick style, which provides a strong blur effect.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## THIN
+
+```TypeScript
+THIN = 1
+```
+
+Thin style, which provides a strong transparent effect.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ImmersiveStyle-THIN = 1--><!--Device-ImmersiveStyle-THIN = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## ULTRA_THICK
 
 ```TypeScript
@@ -99,5 +81,23 @@ Ultra-thick style, which provides a very strong blur effect.
 **Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-ImmersiveStyle-ULTRA_THICK = 4--><!--Device-ImmersiveStyle-ULTRA_THICK = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ULTRA_THIN
+
+```TypeScript
+ULTRA_THIN = 0
+```
+
+Ultra-thin style, which provides a very strong transparent effect.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-ImmersiveStyle-ULTRA_THIN = 0--><!--Device-ImmersiveStyle-ULTRA_THIN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

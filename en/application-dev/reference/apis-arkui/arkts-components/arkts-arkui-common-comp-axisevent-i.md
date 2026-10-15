@@ -20,7 +20,7 @@ Describes the axis event object. Inherits from [BaseEvent](arkts-arkui-common-co
 getCurrentLocalPosition?(): Coordinate2D
 ```
 
-Gets the coordinates of the top-left corner of the current component based on its real-time position.
+Obtains the coordinates of the mouse cursor relative to the upper left corner of the current component's real-time position.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ Gets the coordinates of the top-left corner of the current component based on it
 
 | Type | Description |
 | --- | --- |
-| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | return the coordinates of the top-left corner of the current component based on its real-time position. |
+| [Coordinate2D](../arkts-apis/arkts-arkui-coordinate2d-i.md) | Coordinates of the mouse cursor relative to the upper left corner of the current component's real-time position. |
 
 ## getHorizontalAxisValue
 
@@ -84,7 +84,7 @@ Obtains the two-finger pinch zoom ratio from the axis event.
 
 | Type | Description |
 | --- | --- |
-| number | Two-finger pinch zoom ratio.<br> Note: This ratio is calculated as the current distance between two fingers during a touchpad pinch event divided by the initial distance when the fingers first made contact. <br>Default value: **0**. <br>Value range: [0, +∞). <br> |
+| number | Two-finger pinch zoom ratio.<br> Note: This ratio is calculated as the current distance between two fingers during a touchpad pinch event divided by the initial distance when the fingers first made contact. If the current axis event does not contain the pinch axis, the default value **0** is used. <br>Default value: **0**. <br>Value range: [0, +∞). <br> |
 
 ## getVerticalAxisValue
 
@@ -372,7 +372,7 @@ Unit: vp
 x: number
 ```
 
-X coordinate of the cursor in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element.
+X coordinate of the mouse cursor in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) with the target component as the reference.
 
 Unit: vp
 
@@ -394,7 +394,7 @@ Unit: vp
 y: number
 ```
 
-Y coordinate of the cursor in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) based on the clicked element.
+Y coordinate of the mouse cursor in the [component coordinate system](../../../ui/arkui-glossary.md#component-coordinate-system) with the target component as the reference.
 
 Unit: vp
 

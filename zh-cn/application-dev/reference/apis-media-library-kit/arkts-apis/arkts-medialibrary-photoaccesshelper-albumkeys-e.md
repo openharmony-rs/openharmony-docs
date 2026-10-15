@@ -12,34 +12,6 @@ enum AlbumKeys
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## URI
-
-```TypeScript
-URI = 'uri'
-```
-
-相册uri。
-
-**起始版本：** 10
-
-<!--Device-AlbumKeys-URI = 'uri'--><!--Device-AlbumKeys-URI = 'uri'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-## ALBUM_NAME
-
-```TypeScript
-ALBUM_NAME = 'album_name'
-```
-
-相册名字。
-
-**起始版本：** 10
-
-<!--Device-AlbumKeys-ALBUM_NAME = 'album_name'--><!--Device-AlbumKeys-ALBUM_NAME = 'album_name'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## ALBUM_LPATH
 
 ```TypeScript
@@ -61,6 +33,20 @@ ALBUM_LPATH = 'lpath'
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
+## ALBUM_NAME
+
+```TypeScript
+ALBUM_NAME = 'album_name'
+```
+
+相册名字。
+
+**起始版本：** 10
+
+<!--Device-AlbumKeys-ALBUM_NAME = 'album_name'--><!--Device-AlbumKeys-ALBUM_NAME = 'album_name'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 ## CHANGE_TIME
 
 ```TypeScript
@@ -72,5 +58,19 @@ CHANGE_TIME = 'change_time'
 **起始版本：** 23
 
 <!--Device-AlbumKeys-CHANGE_TIME = 'change_time'--><!--Device-AlbumKeys-CHANGE_TIME = 'change_time'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## URI
+
+```TypeScript
+URI = 'uri'
+```
+
+相册uri。
+
+**起始版本：** 10
+
+<!--Device-AlbumKeys-URI = 'uri'--><!--Device-AlbumKeys-URI = 'uri'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

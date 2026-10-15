@@ -12,24 +12,6 @@ enum ProtocolType
 
 **系统能力：** SystemCapability.Security.Asset
 
-## PSI_PROTOCOL
-
-```TypeScript
-PSI_PROTOCOL = 0
-```
-
-私有集交集（PSI）协议。判断目标元素是否存在在数据集中，而不显示元素或数据集内容。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
-
-<!--Device-ProtocolType-PSI_PROTOCOL = 0--><!--Device-ProtocolType-PSI_PROTOCOL = 0-End-->
-
-**系统能力：** SystemCapability.Security.Asset
-
 ## PIR_PROTOCOL
 
 ```TypeScript
@@ -45,5 +27,23 @@ PIR_PROTOCOL = 1
 **原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
 
 <!--Device-ProtocolType-PIR_PROTOCOL = 1--><!--Device-ProtocolType-PIR_PROTOCOL = 1-End-->
+
+**系统能力：** SystemCapability.Security.Asset
+
+## PSI_PROTOCOL
+
+```TypeScript
+PSI_PROTOCOL = 0
+```
+
+私有集交集（PSI）协议。判断目标元素是否存在在数据集中，而不显示元素或数据集内容。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+
+<!--Device-ProtocolType-PSI_PROTOCOL = 0--><!--Device-ProtocolType-PSI_PROTOCOL = 0-End-->
 
 **系统能力：** SystemCapability.Security.Asset

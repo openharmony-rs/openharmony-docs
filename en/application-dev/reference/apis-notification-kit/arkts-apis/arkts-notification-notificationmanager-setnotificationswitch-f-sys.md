@@ -52,6 +52,7 @@ Sets the notification switch state. This API uses a promise to return the result
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 | [1600012](../errorcode-notification.md#1600012-insufficient-memory-space) | No memory space. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,3 +68,5 @@ notificationManager.setNotificationSwitch(switchName, switchState, userId).then(
     console.error(`setNotificationSwitch failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

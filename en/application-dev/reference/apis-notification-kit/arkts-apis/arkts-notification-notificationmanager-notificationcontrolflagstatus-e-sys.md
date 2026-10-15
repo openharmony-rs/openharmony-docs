@@ -14,38 +14,6 @@ Each bit can control the notification mode. When the bitwise OR operation is per
 
 **System API:** This is a system API.
 
-## NOTIFICATION_STATUS_CLOSE_SOUND
-
-```TypeScript
-NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0
-```
-
-Disables the sound notification function.
-
-**Since:** 12
-
-<!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
-## NOTIFICATION_STATUS_CLOSE_LOCKSCREEN
-
-```TypeScript
-NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1
-```
-
-Disables the screen lock notification function.
-
-**Since:** 12
-
-<!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
 ## NOTIFICATION_STATUS_CLOSE_BANNER
 
 ```TypeScript
@@ -78,17 +46,33 @@ Disables the screen-on notification function.
 
 **System API:** This is a system API.
 
-## NOTIFICATION_STATUS_CLOSE_VIBRATION
+## NOTIFICATION_STATUS_CLOSE_LOCKSCREEN
 
 ```TypeScript
-NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4
+NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1
 ```
 
-Disables the vibration notification function.
+Disables the screen lock notification function.
 
 **Since:** 12
 
-<!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4-End-->
+<!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_LOCKSCREEN = 1 << 1-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## NOTIFICATION_STATUS_CLOSE_SOUND
+
+```TypeScript
+NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0
+```
+
+Disables the sound notification function.
+
+**Since:** 12
+
+<!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_SOUND = 1 << 0-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 
@@ -105,6 +89,22 @@ Disables the icon notification function in the status bar.
 **Since:** 12
 
 <!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_STATUSBAR_ICON = 1 << 5--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_STATUSBAR_ICON = 1 << 5-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## NOTIFICATION_STATUS_CLOSE_VIBRATION
+
+```TypeScript
+NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4
+```
+
+Disables the vibration notification function.
+
+**Since:** 12
+
+<!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4--><!--Device-NotificationControlFlagStatus-NOTIFICATION_STATUS_CLOSE_VIBRATION = 1 << 4-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

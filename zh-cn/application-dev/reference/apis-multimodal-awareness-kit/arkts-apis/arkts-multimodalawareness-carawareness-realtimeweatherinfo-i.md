@@ -4,7 +4,7 @@
 export interface RealTimeWeatherInfo
 ```
 
-实时天气响应信息接口。
+实时天气感知的结果信息接口。
 
 **起始版本：** 26.0.1
 
@@ -24,7 +24,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 timestamp: number
 ```
 
-时间戳。单位为：毫秒。
+识别结果的时间戳。单位为：ms。
 
 **类型：** number
 
@@ -42,7 +42,7 @@ timestamp: number
 weather: number
 ```
 
-指示当前天气。单位为：毫秒。取值限定为整数。
+天气状态。-1：无效0：其他1：雾2：浓雾3：雪4：大雪5：雨6：大雨。
 
 **类型：** number
 

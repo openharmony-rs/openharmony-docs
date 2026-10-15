@@ -18,7 +18,7 @@ Add a persistent random device address. Once the randomized address is successfu
 
 **Required permissions:** ohos.permission.ACCESS_BLUETOOTH and ohos.permission.PERSISTENT_BLUETOOTH_PEERS_MAC
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 16.
+**Atomic service API:** This API can be used in atomic services since API version 16.
 
 <!--Device-access-function addPersistentDeviceId(deviceId: string): Promise<void>--><!--Device-access-function addPersistentDeviceId(deviceId: string): Promise<void>-End-->
 
@@ -41,7 +41,7 @@ Add a persistent random device address. Once the randomized address is successfu
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 2900003 | Bluetooth disabled. |
 | 2900010 | The number of supported device addresses has reached the upper limit. |

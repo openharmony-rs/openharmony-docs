@@ -12,6 +12,22 @@ enum FetchResult
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
+## FETCH_CANCELED
+
+```TypeScript
+FETCH_CANCELED = 2
+```
+
+从视频中获取该缩略图操作被取消。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-FetchResult-FETCH_CANCELED = 2--><!--Device-FetchResult-FETCH_CANCELED = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 ## FETCH_FAILED
 
 ```TypeScript
@@ -41,21 +57,5 @@ FETCH_SUCCEEDED = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FetchResult-FETCH_SUCCEEDED = 1--><!--Device-FetchResult-FETCH_SUCCEEDED = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
-
-## FETCH_CANCELED
-
-```TypeScript
-FETCH_CANCELED = 2
-```
-
-从视频中获取该缩略图操作被取消。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-FetchResult-FETCH_CANCELED = 2--><!--Device-FetchResult-FETCH_CANCELED = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor

@@ -14,20 +14,6 @@ The device enters the stand mode when it is stationary and the angle between the
 
 **System capability:** SystemCapability.MultimodalAwareness.DeviceStatus
 
-## STATUS_EXIT
-
-```TypeScript
-STATUS_EXIT = 0
-```
-
-Exit of the stand mode.
-
-**Since:** 18
-
-<!--Device-SteadyStandingStatus-STATUS_EXIT = 0--><!--Device-SteadyStandingStatus-STATUS_EXIT = 0-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.DeviceStatus
-
 ## STATUS_ENTER
 
 ```TypeScript
@@ -39,5 +25,19 @@ Entry to the stand mode.
 **Since:** 18
 
 <!--Device-SteadyStandingStatus-STATUS_ENTER = 1--><!--Device-SteadyStandingStatus-STATUS_ENTER = 1-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.DeviceStatus
+
+## STATUS_EXIT
+
+```TypeScript
+STATUS_EXIT = 0
+```
+
+Exit of the stand mode.
+
+**Since:** 18
+
+<!--Device-SteadyStandingStatus-STATUS_EXIT = 0--><!--Device-SteadyStandingStatus-STATUS_EXIT = 0-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DeviceStatus

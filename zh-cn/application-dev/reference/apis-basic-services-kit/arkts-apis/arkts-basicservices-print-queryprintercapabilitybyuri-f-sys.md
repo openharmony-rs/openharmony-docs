@@ -47,6 +47,7 @@ function queryPrinterCapabilityByUri(printerUri: string, printerId: string): Pro
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application. |
 | [13100005](../errorcode-print.md#13100005-无效的打印机) | Can not find the printer in system. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ print.queryPrinterCapabilityByUri(printerUri, printerId).then((capabilities: pri
     console.error(`Failed to query printer capability by uri. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

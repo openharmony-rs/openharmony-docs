@@ -12,20 +12,6 @@ enum WifiStandard
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-## WIFI_STANDARD_UNDEFINED
-
-```TypeScript
-WIFI_STANDARD_UNDEFINED
-```
-
-无效WIFI标准类型。
-
-**起始版本：** 10
-
-<!--Device-WifiStandard-WIFI_STANDARD_UNDEFINED--><!--Device-WifiStandard-WIFI_STANDARD_UNDEFINED-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
 ## WIFI_STANDARD_11A
 
 ```TypeScript
@@ -37,6 +23,48 @@ WIFI_STANDARD_11A
 **起始版本：** 10
 
 <!--Device-WifiStandard-WIFI_STANDARD_11A--><!--Device-WifiStandard-WIFI_STANDARD_11A-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+## WIFI_STANDARD_11AC
+
+```TypeScript
+WIFI_STANDARD_11AC
+```
+
+802.11ac WiFi标准类型。
+
+**起始版本：** 10
+
+<!--Device-WifiStandard-WIFI_STANDARD_11AC--><!--Device-WifiStandard-WIFI_STANDARD_11AC-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+## WIFI_STANDARD_11AD
+
+```TypeScript
+WIFI_STANDARD_11AD
+```
+
+802.11ad WiFi标准类型。
+
+**起始版本：** 10
+
+<!--Device-WifiStandard-WIFI_STANDARD_11AD--><!--Device-WifiStandard-WIFI_STANDARD_11AD-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+## WIFI_STANDARD_11AX
+
+```TypeScript
+WIFI_STANDARD_11AX
+```
+
+802.11ax WiFi标准类型。
+
+**起始版本：** 10
+
+<!--Device-WifiStandard-WIFI_STANDARD_11AX--><!--Device-WifiStandard-WIFI_STANDARD_11AX-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -82,44 +110,16 @@ WIFI_STANDARD_11N
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
-## WIFI_STANDARD_11AC
+## WIFI_STANDARD_UNDEFINED
 
 ```TypeScript
-WIFI_STANDARD_11AC
+WIFI_STANDARD_UNDEFINED
 ```
 
-802.11ac WiFi标准类型。
+无效WIFI标准类型。
 
 **起始版本：** 10
 
-<!--Device-WifiStandard-WIFI_STANDARD_11AC--><!--Device-WifiStandard-WIFI_STANDARD_11AC-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-## WIFI_STANDARD_11AX
-
-```TypeScript
-WIFI_STANDARD_11AX
-```
-
-802.11ax WiFi标准类型。
-
-**起始版本：** 10
-
-<!--Device-WifiStandard-WIFI_STANDARD_11AX--><!--Device-WifiStandard-WIFI_STANDARD_11AX-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-## WIFI_STANDARD_11AD
-
-```TypeScript
-WIFI_STANDARD_11AD
-```
-
-802.11ad WiFi标准类型。
-
-**起始版本：** 10
-
-<!--Device-WifiStandard-WIFI_STANDARD_11AD--><!--Device-WifiStandard-WIFI_STANDARD_11AD-End-->
+<!--Device-WifiStandard-WIFI_STANDARD_UNDEFINED--><!--Device-WifiStandard-WIFI_STANDARD_UNDEFINED-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA

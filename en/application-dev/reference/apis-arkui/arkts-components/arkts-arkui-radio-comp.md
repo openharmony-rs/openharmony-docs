@@ -63,7 +63,7 @@ Creates a radio button.
 
 ### Example 1: Setting the Background Color
 
-This example customizes the background color of the radio button by configuring checkedBackgroundColor.
+This example shows how to customize the background color of the radio button by configuring checkedBackgroundColor.
 
 
 
@@ -117,7 +117,7 @@ struct RadioExample {
 
 ### Example 2: Setting the Indicator Type
 
-This example customizes the selected style by configuring indicatorType and indicatorBuilder.
+This example shows how to customize the checked style by configuring indicatorType and indicatorBuilder.
 
 
 
@@ -203,9 +203,9 @@ function buildRadio(config: RadioConfiguration) {
       .backgroundColor('#2787D9')
       .onClick(() => {
         if (config.checked) {
-          config.triggerChange(false); // Trigger the radio button selected state change and set it to unselected.
+          config.triggerChange(false); // Trigger the radio button checked state change and set it to unchecked.
         } else {
-          config.triggerChange(true); // Trigger the radio button selected state change and set it to selected.
+          config.triggerChange(true); // Trigger the radio button checked state change and set it to checked.
         }
       })
   }

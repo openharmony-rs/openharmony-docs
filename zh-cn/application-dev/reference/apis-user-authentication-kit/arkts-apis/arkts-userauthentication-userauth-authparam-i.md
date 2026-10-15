@@ -37,7 +37,7 @@ authTrustLevel: AuthTrustLevel
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AuthParam-authTrustLevel: AuthTrustLevel--><!--Device-AuthParam-authTrustLevel: AuthTrustLevel-End-->
 
@@ -55,7 +55,7 @@ authType: UserAuthType[]
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AuthParam-authType: UserAuthType[]--><!--Device-AuthParam-authType: UserAuthType[]-End-->
 
@@ -73,7 +73,7 @@ challenge: Uint8Array
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AuthParam-challenge: Uint8Array--><!--Device-AuthParam-challenge: Uint8Array-End-->
 
@@ -91,7 +91,7 @@ reuseUnlockResult?: ReuseUnlockResult
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AuthParam-reuseUnlockResult?: ReuseUnlockResult--><!--Device-AuthParam-reuseUnlockResult?: ReuseUnlockResult-End-->
 
@@ -112,7 +112,7 @@ skipLockedBiometricAuth?: boolean
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AuthParam-skipLockedBiometricAuth?: boolean--><!--Device-AuthParam-skipLockedBiometricAuth?: boolean-End-->
 

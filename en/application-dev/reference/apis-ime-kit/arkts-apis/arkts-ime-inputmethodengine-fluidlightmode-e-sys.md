@@ -19,22 +19,6 @@ Enumerates the fluid light modes of the input method.<br> <br>
 
 **System API:** This is a system API.
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-Disable fluid light mode.
-
-**Since:** 20
-
-<!--Device-FluidLightMode-NONE = 0--><!--Device-FluidLightMode-NONE = 0-End-->
-
-**System capability:** SystemCapability.MiscServices.InputMethodFramework
-
-**System API:** This is a system API.
-
 ## BACKGROUND_FLUID_LIGHT
 
 ```TypeScript
@@ -46,6 +30,22 @@ When the background fluid light mode is enabled, the system panel turns transpar
 **Since:** 20
 
 <!--Device-FluidLightMode-BACKGROUND_FLUID_LIGHT = 1--><!--Device-FluidLightMode-BACKGROUND_FLUID_LIGHT = 1-End-->
+
+**System capability:** SystemCapability.MiscServices.InputMethodFramework
+
+**System API:** This is a system API.
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+Disable fluid light mode.
+
+**Since:** 20
+
+<!--Device-FluidLightMode-NONE = 0--><!--Device-FluidLightMode-NONE = 0-End-->
 
 **System capability:** SystemCapability.MiscServices.InputMethodFramework
 

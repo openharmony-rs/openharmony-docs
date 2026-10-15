@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getinclination1"></a>
+
 ## getInclination
 
 ```TypeScript
@@ -62,7 +64,7 @@ try {
 ```
 
 
-<a id="getinclination-1"></a>
+<a id="getinclination2"></a>
 
 ## getInclination
 

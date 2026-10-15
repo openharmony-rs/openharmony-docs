@@ -24,7 +24,9 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 event: number
 ```
 
-Indicates hand movements on the screen.
+Gesture event type.  
+- 1: invalid  
+0: ready 1: move 2: tap.
 
 **Type:** number
 
@@ -42,7 +44,7 @@ Indicates hand movements on the screen.
 pointX: number
 ```
 
-Indicates X-coordinate of the hand on the screen.
+X-axis coordinate of the hand on the screen.
 
 **Type:** number
 
@@ -60,7 +62,7 @@ Indicates X-coordinate of the hand on the screen.
 pointY: number
 ```
 
-Indicates Y-coordinate of the hand on the screen.
+Y-axis coordinate of the hand on the screen.
 
 **Type:** number
 
@@ -78,7 +80,7 @@ Indicates Y-coordinate of the hand on the screen.
 timestamp: number
 ```
 
-Indicates timestamp . Unit: milliseconds.
+Timestamp of the recognition result. Unit: ms.
 
 **Type:** number
 

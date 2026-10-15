@@ -12,6 +12,20 @@ Enumerates the audio ring modes.
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication
 
+## RINGER_MODE_NORMAL
+
+```TypeScript
+RINGER_MODE_NORMAL = 2
+```
+
+Normal mode.
+
+**Since:** 7
+
+<!--Device-AudioRingMode-RINGER_MODE_NORMAL = 2--><!--Device-AudioRingMode-RINGER_MODE_NORMAL = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Communication
+
 ## RINGER_MODE_SILENT
 
 ```TypeScript
@@ -37,19 +51,5 @@ Vibration mode.
 **Since:** 7
 
 <!--Device-AudioRingMode-RINGER_MODE_VIBRATE = 1--><!--Device-AudioRingMode-RINGER_MODE_VIBRATE = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Communication
-
-## RINGER_MODE_NORMAL
-
-```TypeScript
-RINGER_MODE_NORMAL = 2
-```
-
-Normal mode.
-
-**Since:** 7
-
-<!--Device-AudioRingMode-RINGER_MODE_NORMAL = 2--><!--Device-AudioRingMode-RINGER_MODE_NORMAL = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Communication

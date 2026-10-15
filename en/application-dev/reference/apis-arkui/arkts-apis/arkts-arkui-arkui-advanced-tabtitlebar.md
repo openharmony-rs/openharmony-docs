@@ -19,7 +19,7 @@ import { TabTitleBar, TabTitleBarMenuItem, TabTitleBarTabItem } from '@kit.ArkUI
 
 | Name | Description |
 | --- | --- |
-| [TabTitleBar](arkts-arkui-arkui-advanced-tabtitlebar-tabtitlebar-s.md) | The **TabTitleBar** component is a tab title bar used to switch between tabs pages. It is applicable only to level-1 pages. |
+| [TabTitleBar](arkts-arkui-arkui-advanced-tabtitlebar-tabtitlebar-s.md) | **TabTitleBar** is a tab title bar component that supports linked switching between a tab list and associated content, and allows configuration of right menu items. It is suitable for scenarios where page content needs to be switched through tabs, such as top navigation bars. With flexible configuration of tabs and menu items, this component can meet various interaction requirements. It supports tab switching only on level-1 pages. |
 
 ## Examples
 

@@ -6,6 +6,8 @@
 import { formProvider } from '@kit.FormKit';
 ```
 
+<a id="requestpublishform1"></a>
+
 ## requestPublishForm
 
 ```TypeScript
@@ -48,6 +50,7 @@ function requestPublishForm(
 | [16501017](../errorcode-form.md#16501017-无空间发布卡片) | There is no space to publish the form.<br>**适用版本：** 26.0.1+ |
 | [16501018](../errorcode-form.md#16501018-卡片不支持发布) | This form does not support publishing.<br>**适用版本：** 26.0.1+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -81,8 +84,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="requestpublishform-1"></a>
+
+<a id="requestpublishform2"></a>
 
 ## requestPublishForm
 
@@ -121,6 +126,7 @@ function requestPublishForm(want: Want, callback: AsyncCallback<string>): void
 | [16501017](../errorcode-form.md#16501017-无空间发布卡片) | There is no space to publish the form.<br>**适用版本：** 26.0.1+ |
 | [16501018](../errorcode-form.md#16501018-卡片不支持发布) | This form does not support publishing.<br>**适用版本：** 26.0.1+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -149,8 +155,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="requestpublishform-2"></a>
+
+<a id="requestpublishform3"></a>
 
 ## requestPublishForm
 
@@ -195,6 +203,7 @@ function requestPublishForm(want: Want, formBindingData?: formBindingData.FormBi
 | [16501017](../errorcode-form.md#16501017-无空间发布卡片) | There is no space to publish form.<br>**适用版本：** 26.0.1+ |
 | [16501018](../errorcode-form.md#16501018-卡片不支持发布) | This form does not support publishing.<br>**适用版本：** 26.0.1+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -220,3 +229,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

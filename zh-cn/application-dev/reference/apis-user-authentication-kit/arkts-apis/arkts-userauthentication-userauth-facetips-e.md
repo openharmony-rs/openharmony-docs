@@ -14,6 +14,38 @@ enum FaceTips
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
+## FACE_AUTH_TIP_NOT_DETECTED
+
+```TypeScript
+FACE_AUTH_TIP_NOT_DETECTED = 11
+```
+
+没有检测到人脸信息。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+<!--Device-FaceTips-FACE_AUTH_TIP_NOT_DETECTED = 11--><!--Device-FaceTips-FACE_AUTH_TIP_NOT_DETECTED = 11-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## FACE_AUTH_TIP_POOR_GAZE
+
+```TypeScript
+FACE_AUTH_TIP_POOR_GAZE = 10
+```
+
+没有正视摄像头。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+<!--Device-FaceTips-FACE_AUTH_TIP_POOR_GAZE = 10--><!--Device-FaceTips-FACE_AUTH_TIP_POOR_GAZE = 10-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
 ## FACE_AUTH_TIP_TOO_BRIGHT
 
 ```TypeScript
@@ -30,22 +62,6 @@ FACE_AUTH_TIP_TOO_BRIGHT = 1
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## FACE_AUTH_TIP_TOO_DARK
-
-```TypeScript
-FACE_AUTH_TIP_TOO_DARK = 2
-```
-
-光线太暗，获取的图像太暗。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_DARK = 2--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_DARK = 2-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
 ## FACE_AUTH_TIP_TOO_CLOSE
 
 ```TypeScript
@@ -59,6 +75,22 @@ FACE_AUTH_TIP_TOO_CLOSE = 3
 **废弃版本：** 11
 
 <!--Device-FaceTips-FACE_AUTH_TIP_TOO_CLOSE = 3--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_CLOSE = 3-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## FACE_AUTH_TIP_TOO_DARK
+
+```TypeScript
+FACE_AUTH_TIP_TOO_DARK = 2
+```
+
+光线太暗，获取的图像太暗。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+<!--Device-FaceTips-FACE_AUTH_TIP_TOO_DARK = 2--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_DARK = 2-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -94,38 +126,6 @@ FACE_AUTH_TIP_TOO_HIGH = 5
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## FACE_AUTH_TIP_TOO_LOW
-
-```TypeScript
-FACE_AUTH_TIP_TOO_LOW = 6
-```
-
-设备太低，仅获取到人脸下部。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_LOW = 6--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_LOW = 6-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## FACE_AUTH_TIP_TOO_RIGHT
-
-```TypeScript
-FACE_AUTH_TIP_TOO_RIGHT = 7
-```
-
-设备太靠右，仅获取到人脸右部。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_TOO_RIGHT = 7--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_RIGHT = 7-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
 ## FACE_AUTH_TIP_TOO_LEFT
 
 ```TypeScript
@@ -139,6 +139,22 @@ FACE_AUTH_TIP_TOO_LEFT = 8
 **废弃版本：** 11
 
 <!--Device-FaceTips-FACE_AUTH_TIP_TOO_LEFT = 8--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_LEFT = 8-End-->
+
+**系统能力：** SystemCapability.UserIAM.UserAuth.Core
+
+## FACE_AUTH_TIP_TOO_LOW
+
+```TypeScript
+FACE_AUTH_TIP_TOO_LOW = 6
+```
+
+设备太低，仅获取到人脸下部。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+<!--Device-FaceTips-FACE_AUTH_TIP_TOO_LOW = 6--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_LOW = 6-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
@@ -158,34 +174,18 @@ FACE_AUTH_TIP_TOO_MUCH_MOTION = 9
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core
 
-## FACE_AUTH_TIP_POOR_GAZE
+## FACE_AUTH_TIP_TOO_RIGHT
 
 ```TypeScript
-FACE_AUTH_TIP_POOR_GAZE = 10
+FACE_AUTH_TIP_TOO_RIGHT = 7
 ```
 
-没有正视摄像头。
+设备太靠右，仅获取到人脸右部。
 
 **起始版本：** 8
 
 **废弃版本：** 11
 
-<!--Device-FaceTips-FACE_AUTH_TIP_POOR_GAZE = 10--><!--Device-FaceTips-FACE_AUTH_TIP_POOR_GAZE = 10-End-->
-
-**系统能力：** SystemCapability.UserIAM.UserAuth.Core
-
-## FACE_AUTH_TIP_NOT_DETECTED
-
-```TypeScript
-FACE_AUTH_TIP_NOT_DETECTED = 11
-```
-
-没有检测到人脸信息。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-<!--Device-FaceTips-FACE_AUTH_TIP_NOT_DETECTED = 11--><!--Device-FaceTips-FACE_AUTH_TIP_NOT_DETECTED = 11-End-->
+<!--Device-FaceTips-FACE_AUTH_TIP_TOO_RIGHT = 7--><!--Device-FaceTips-FACE_AUTH_TIP_TOO_RIGHT = 7-End-->
 
 **系统能力：** SystemCapability.UserIAM.UserAuth.Core

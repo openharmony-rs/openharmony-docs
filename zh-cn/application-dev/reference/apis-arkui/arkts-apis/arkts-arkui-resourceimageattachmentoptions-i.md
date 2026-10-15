@@ -84,11 +84,11 @@ resizable?: ResizableOptions
 
 **类型：** [ResizableOptions](../arkts-components/arkts-arkui-image-comp-resizableoptions-i.md)
 
-**起始版本：** 26.0.1
+**起始版本：** 26.2.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本26.0.1开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-ResourceImageAttachmentOptions-resizable?: ResizableOptions--><!--Device-ResourceImageAttachmentOptions-resizable?: ResizableOptions-End-->
 
@@ -142,7 +142,7 @@ size的默认值与objectFit的值有关，不同的objectFit的值对应size的
 supportSvg2?: boolean
 ```
 
-获取属性字符串是否开启SVG标签解析能力增强功能。
+获取属性字符串是否开启[SVG标签解析能力增强功能](../../../reference/apis-arkui/arkui-ts/ts-image-svg2-capabilities.md)。
 
 true：支持SVG解析新能力；false：保持原有SVG解析能力。
 

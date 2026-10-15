@@ -12,17 +12,55 @@ enum AudioSessionStateChangeHint
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## AUDIO_SESSION_STATE_CHANGE_HINT_RESUME
+## AUDIO_SESSION_STATE_CHANGE_HINT_DUCK
 
 ```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0
+AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4
 ```
 
-提示音频会话恢复，应用可主动触发开始渲染等操作。
+提示音频会话躲避开始，降低音量播放。
+
+如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers)，此时可以选择执行静音操作。
 
 **起始版本：** 20
 
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0-End-->
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## AUDIO_SESSION_STATE_CHANGE_HINT_MUTE
+
+```TypeScript
+AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8
+```
+
+提示音频会话静音。
+
+该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior)设置参数[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene)，且音频会话已激活。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION
+
+```TypeScript
+AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6
+```
+
+静音播放建议。
+
+当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -37,6 +75,20 @@ AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1
 **起始版本：** 20
 
 <!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_PAUSE = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## AUDIO_SESSION_STATE_CHANGE_HINT_RESUME
+
+```TypeScript
+AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0
+```
+
+提示音频会话恢复，应用可主动触发开始渲染等操作。
+
+**起始版本：** 20
+
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_RESUME = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -68,22 +120,6 @@ AUDIO_SESSION_STATE_CHANGE_HINT_TIME_OUT_STOP = 3
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## AUDIO_SESSION_STATE_CHANGE_HINT_DUCK
-
-```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4
-```
-
-提示音频会话躲避开始，降低音量播放。
-
-如果已启用enableMuteSuggestionWhenMixWithOthers，此时可以选择执行静音操作。
-
-**起始版本：** 20
-
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_DUCK = 4-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
 ## AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK
 
 ```TypeScript
@@ -92,7 +128,7 @@ AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5
 
 提示音频会话躲避结束，恢复音量播放。
 
-如果已启用enableMuteSuggestionWhenMixWithOthers，此时可取消静音。
+如果已启用[enableMuteSuggestionWhenMixWithOthers](./arkts-apis-audio-AudioSessionManager.md#enablemutesuggestionwhenmixwithothers)，此时可取消静音。
 
 **起始版本：** 20
 
@@ -100,21 +136,21 @@ AUDIO_SESSION_STATE_CHANGE_HINT_UNDUCK = 5
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION
+## AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE
 
 ```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6
+AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9
 ```
 
-静音播放建议。
+提示音频会话解除静音，恢复播放。
 
-当其他应用程序开始播放不可混音的音频时，应用程序可以自行决定是否静音。
+该提示仅在以下条件满足后才会收到：通过接口[setAudioSessionBehavior](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionbehavior)设置参数[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md).MUTE_WHEN_INTERRUPTED，并已调用[setAudioSessionScene](./arkts-apis-audio-AudioSessionManager.md#setaudiosessionscene)，且音频会话已激活。
 
-**起始版本：** 23
+**起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE_SUGGESTION = 6-End-->
+<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -133,41 +169,5 @@ AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE_SUGGESTION = 7-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## AUDIO_SESSION_STATE_CHANGE_HINT_MUTE
-
-```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8
-```
-
-提示音频会话静音。
-
-该提示仅在以下条件满足后才会收到：通过接口setAudioSessionBehavior设置参数[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md).MUTE_WHEN_INTERRUPTED，并已调用setAudioSessionScene，且音频会话已激活。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_MUTE = 8-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE
-
-```TypeScript
-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9
-```
-
-提示音频会话解除静音，恢复播放。
-
-该提示仅在以下条件满足后才会收到：通过接口setAudioSessionBehavior设置参数[AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e.md).MUTE_WHEN_INTERRUPTED，并已调用setAudioSessionScene，且音频会话已激活。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9--><!--Device-AudioSessionStateChangeHint-AUDIO_SESSION_STATE_CHANGE_HINT_UNMUTE = 9-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core

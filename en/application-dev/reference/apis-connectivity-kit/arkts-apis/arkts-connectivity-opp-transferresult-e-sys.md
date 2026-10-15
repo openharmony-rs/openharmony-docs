@@ -14,42 +14,6 @@ Enum for the file transfer result.
 
 **System API:** This is a system API.
 
-## SUCCESS
-
-```TypeScript
-SUCCESS = 0
-```
-
-Success
-
-**Since:** 16
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TransferResult-SUCCESS = 0--><!--Device-TransferResult-SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
-## ERROR_UNSUPPORTED_TYPE
-
-```TypeScript
-ERROR_UNSUPPORTED_TYPE = 1
-```
-
-The transfer file type is not supported.
-
-**Since:** 16
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TransferResult-ERROR_UNSUPPORTED_TYPE = 1--><!--Device-TransferResult-ERROR_UNSUPPORTED_TYPE = 1-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
 ## ERROR_BAD_REQUEST
 
 ```TypeScript
@@ -63,24 +27,6 @@ The peer device cannot process the request.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TransferResult-ERROR_BAD_REQUEST = 2--><!--Device-TransferResult-ERROR_BAD_REQUEST = 2-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
-## ERROR_NOT_ACCEPTABLE
-
-```TypeScript
-ERROR_NOT_ACCEPTABLE = 3
-```
-
-The peer device refuses to receive the file.
-
-**Since:** 16
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TransferResult-ERROR_NOT_ACCEPTABLE = 3--><!--Device-TransferResult-ERROR_NOT_ACCEPTABLE = 3-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -122,6 +68,24 @@ Failed to connect to the peer device.
 
 **System API:** This is a system API.
 
+## ERROR_NOT_ACCEPTABLE
+
+```TypeScript
+ERROR_NOT_ACCEPTABLE = 3
+```
+
+The peer device refuses to receive the file.
+
+**Since:** 16
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TransferResult-ERROR_NOT_ACCEPTABLE = 3--><!--Device-TransferResult-ERROR_NOT_ACCEPTABLE = 3-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
 ## ERROR_TRANSFER_FAILED
 
 ```TypeScript
@@ -153,6 +117,42 @@ Unknown error
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TransferResult-ERROR_UNKNOWN = 7--><!--Device-TransferResult-ERROR_UNKNOWN = 7-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## ERROR_UNSUPPORTED_TYPE
+
+```TypeScript
+ERROR_UNSUPPORTED_TYPE = 1
+```
+
+The transfer file type is not supported.
+
+**Since:** 16
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TransferResult-ERROR_UNSUPPORTED_TYPE = 1--><!--Device-TransferResult-ERROR_UNSUPPORTED_TYPE = 1-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+Success
+
+**Since:** 16
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TransferResult-SUCCESS = 0--><!--Device-TransferResult-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

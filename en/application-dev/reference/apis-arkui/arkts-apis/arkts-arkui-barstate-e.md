@@ -12,26 +12,6 @@ Sets the scroll bar status.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Off
-
-```TypeScript
-Off
-```
-
-Not displayed.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-BarState-Off--><!--Device-BarState-Off-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Auto
 
 ```TypeScript
@@ -49,6 +29,26 @@ Displayed when the screen is touched and hidden after 2s.
 **Widget capability:** This API can be used in ArkTS widgets since API version 9.
 
 <!--Device-BarState-Auto--><!--Device-BarState-Auto-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Off
+
+```TypeScript
+Off
+```
+
+Not displayed.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-BarState-Off--><!--Device-BarState-Off-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

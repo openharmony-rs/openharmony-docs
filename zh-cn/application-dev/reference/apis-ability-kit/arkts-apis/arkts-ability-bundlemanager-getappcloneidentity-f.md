@@ -32,7 +32,7 @@ function getAppCloneIdentity(uid: number): Promise<AppCloneIdentity>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;[AppCloneIdentity](arkts-ability-bundlemanager-appcloneidentity-t.md)&gt; | Promise对象，返回&lt;AppCloneIdentity&gt;。 |
+| Promise&lt;[AppCloneIdentity](arkts-ability-bundlemanager-appcloneidentity-t.md)&gt; | Promise对象，返回AppCloneIdentity信息。 |
 
 **错误码：**
 

@@ -12,13 +12,15 @@ import { insightIntentProvider } from '@kit.AbilityKit';
 function sendExecuteResult(instanceId: number, result: insightIntent.ExecuteResult): Promise<void>
 ```
 
-Send execute result.
+If an intent provider needs to proactively send the execution result of an intent at a specific point in the service process, it can first set the [return mode](arkts-ability-insightintent-returnmode-e.md) of the intent execution result to FUNCTION through [setReturnModeForUIAbilityForeground](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md#setreturnmodeforuiabilityforeground) or [setReturnModeForUIExtensionAbility](arkts-ability-app-ability-insightintentcontext-insightintentcontext-c.md#setreturnmodeforuiextensionability), and then call this API to send the intent execution result. This API applies to [configuration-type intents](../../../application-models/insight-intent-config-development.md). This API uses a promise to return the result asynchronously.
+
+After the [return mode](arkts-ability-insightintent-returnmode-e.md) of the intent execution result is set to FUNCTION, the application no longer needs to return the intent execution result through the return value of the [onExecuteInUIAbilityForegroundMode API](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#onexecuteinuiabilityforegroundmode) or [onExecuteInUIExtensionAbility](arkts-ability-app-ability-insightintentexecutor-insightintentexecutor-c.md#onexecuteinuiextensionability).
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-insightIntentProvider-function sendExecuteResult(instanceId: int, result: insightIntent.ExecuteResult): Promise<void>--><!--Device-insightIntentProvider-function sendExecuteResult(instanceId: int, result: insightIntent.ExecuteResult): Promise<void>-End-->
 
@@ -28,14 +30,14 @@ Send execute result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| instanceId | number | Yes | The insight intent instance ID. It is from InsightIntentExecutor.context.instanceId. |
-| result | [insightIntent.ExecuteResult](arkts-ability-insightintent-executeresult-i.md) | Yes | The result of insight intent execution. |
+| instanceId | number | Yes | Unique ID of an intent instance. |
+| result | [insightIntent.ExecuteResult](arkts-ability-insightintent-executeresult-i.md) | Yes | Intent execution result, representing the data returned to the system entry for this intent execution. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;void&gt; | The promise returned by the function. |
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes:**
 

@@ -58,7 +58,7 @@ declare function readText(
 | 13900044 | Network is unreachable<br>**适用版本：** 12+ |
 
 
-<a id="readtext-1"></a>
+<a id="readtext2"></a>
 
 ## readText
 
@@ -102,7 +102,7 @@ declare function readText(filePath: string, callback: AsyncCallback<string>): vo
 | 13900042 | Unknown error |
 
 
-<a id="readtext-2"></a>
+<a id="readtext3"></a>
 
 ## readText
 

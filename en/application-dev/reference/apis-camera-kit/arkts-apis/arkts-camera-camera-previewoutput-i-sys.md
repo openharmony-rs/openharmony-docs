@@ -51,6 +51,7 @@ Attaches a surface for PiP preview.
 | [7400101](../errorcode-camera.md#7400101-invalid-parameter) | Parameter missing or parameter type incorrect.<br>**Applicable version:** 12 and later |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,6 +72,8 @@ function attachSketchSurface(previewOutput: camera.PreviewOutput, session: camer
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## enableSketch
 
@@ -103,6 +106,7 @@ Enables or disables PiP preview.
 | [7400102](../errorcode-camera.md#7400102-invalid-operation) | Operation not allowed.<br>**Applicable version:** 12 and later |
 | [7400201](../errorcode-camera.md#7400201-camera-service-error) | Camera service fatal error.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -122,6 +126,8 @@ function enableSketch(previewOutput: camera.PreviewOutput, session: camera.Sessi
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getSketchRatio
 
@@ -152,6 +158,7 @@ Obtains the zoom ratio when PiP preview is enabled.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -160,6 +167,8 @@ function getSketchRatio(previewOutput: camera.PreviewOutput): number {
   return sketchRatio;
 }
 ```
+
+<!--DelEnd-->
 
 ## isSketchSupported
 
@@ -189,6 +198,7 @@ Checks whether Picture-in-Picture (PiP) preview is supported.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -206,6 +216,8 @@ function isSketchSupported(previewOutput: camera.PreviewOutput): boolean {
   return false;
 }
 ```
+
+<!--DelEnd-->
 
 ## off('sketchStatusChanged')
 
@@ -236,6 +248,7 @@ Unsubscribes from PiP status change events.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -243,6 +256,8 @@ function unregisterSketchStatusChanged(previewOutput: camera.PreviewOutput): voi
   previewOutput.off('sketchStatusChanged');
 }
 ```
+
+<!--DelEnd-->
 
 ## on('sketchStatusChanged')
 
@@ -273,6 +288,7 @@ Subscribes to PiP status change events. This API uses an asynchronous callback t
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -290,3 +306,5 @@ function registerSketchStatusChanged(previewOutput: camera.PreviewOutput): void 
   previewOutput.on('sketchStatusChanged', callback);
 }
 ```
+
+<!--DelEnd-->

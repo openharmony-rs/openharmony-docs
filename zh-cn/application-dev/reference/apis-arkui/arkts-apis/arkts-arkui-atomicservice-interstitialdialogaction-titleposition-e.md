@@ -17,22 +17,6 @@ export declare enum TitlePosition
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
-
-```TypeScript
-TOP = 0
-```
-
-设置主标题位于副标题之上。默认值。
-
-**起始版本：** 12
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-TitlePosition-TOP = 0--><!--Device-TitlePosition-TOP = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## BOTTOM
 
 ```TypeScript
@@ -46,5 +30,21 @@ BOTTOM = 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-TitlePosition-BOTTOM = 1--><!--Device-TitlePosition-BOTTOM = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TOP
+
+```TypeScript
+TOP = 0
+```
+
+设置主标题位于副标题之上。默认值。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TitlePosition-TOP = 0--><!--Device-TitlePosition-TOP = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

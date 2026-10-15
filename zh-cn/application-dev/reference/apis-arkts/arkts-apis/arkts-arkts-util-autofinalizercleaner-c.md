@@ -24,7 +24,7 @@ import { util } from '@kit.ArkTS';
 static register<T>(obj: AutoFinalizer<T>, heldValue: T): void
 ```
 
-注册释放由开发者管理的资源的对象。
+注册释放由开发者管理的资源的对象；当obj被回收时自动触发其onFinalization并传入heldValue。
 
 **起始版本：** 22
 

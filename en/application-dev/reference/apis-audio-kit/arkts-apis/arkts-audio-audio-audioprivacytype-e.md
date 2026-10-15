@@ -12,20 +12,6 @@ Enumerates whether an audio stream can be recorded by other applications.
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 
-## PRIVACY_TYPE_PUBLIC
-
-```TypeScript
-PRIVACY_TYPE_PUBLIC = 0
-```
-
-The audio stream can be recorded or screen-projected by other applications and is not privacy-related.
-
-**Since:** 10
-
-<!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0--><!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
-
 ## PRIVACY_TYPE_PRIVATE
 
 ```TypeScript
@@ -37,6 +23,20 @@ The audio stream cannot be recorded or screen-projected by other applications.
 **Since:** 10
 
 <!--Device-AudioPrivacyType-PRIVACY_TYPE_PRIVATE = 1--><!--Device-AudioPrivacyType-PRIVACY_TYPE_PRIVATE = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
+
+## PRIVACY_TYPE_PUBLIC
+
+```TypeScript
+PRIVACY_TYPE_PUBLIC = 0
+```
+
+The audio stream can be recorded or screen-projected by other applications and is not privacy-related.
+
+**Since:** 10
+
+<!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0--><!--Device-AudioPrivacyType-PRIVACY_TYPE_PUBLIC = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.PlaybackCapture
 

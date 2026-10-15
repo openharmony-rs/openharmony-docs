@@ -6,6 +6,8 @@
 import { screen } from '@kit.ArkUI';
 ```
 
+<a id="stopexpand1"></a>
+
 ## stopExpand
 
 ```TypeScript
@@ -39,6 +41,7 @@ function stopExpand(expandScreen:Array<number>, callback: AsyncCallback<void>): 
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ screen.stopExpand(expandScreenIds, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="stopexpand-1"></a>
+
+<a id="stopexpand2"></a>
 
 ## stopExpand
 
@@ -98,6 +103,7 @@ function stopExpand(expandScreen:Array<number>): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1400001](../errorcode-display.md#1400001-无效的显示设备) | Invalid display or screen. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -111,3 +117,5 @@ screen.stopExpand(expandScreenIds).then(() => {
   console.error(`Failed to stop expand screens. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

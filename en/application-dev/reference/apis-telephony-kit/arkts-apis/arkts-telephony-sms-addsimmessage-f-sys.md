@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="addsimmessage1"></a>
+
 ## addSimMessage
 
 ```TypeScript
@@ -43,6 +45,7 @@ Adds a message to the SIM card. If the SIM card is full, an error is reported. T
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,8 +63,10 @@ sms.addSimMessage(simMessageOptions, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="addsimmessage-1"></a>
+
+<a id="addsimmessage2"></a>
 
 ## addSimMessage
 
@@ -105,6 +110,7 @@ Adds a message to the SIM card. If the SIM card is full, an error is reported. T
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-internal-error) | Unknown error code. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -123,3 +129,5 @@ sms.addSimMessage(simMessageOptions).then(() => {
     console.error(`addSimMessage failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

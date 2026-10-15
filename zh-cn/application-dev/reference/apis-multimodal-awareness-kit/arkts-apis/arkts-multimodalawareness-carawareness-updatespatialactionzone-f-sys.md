@@ -12,7 +12,7 @@ import { carAwareness } from '@kit.MultimodalAwarenessKit';
 function updateSpatialActionZone(zone: number): void
 ```
 
-语音更新声音区域，当语音订阅空间点引擎能力时
+更新空间动作感知的音区信息。
 
 **起始版本：** 26.0.1
 
@@ -30,14 +30,14 @@ function updateSpatialActionZone(zone: number): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| zone | number | 是 | 音区。3表示后排左边，4表示后边右边。 |
+| zone | number | 是 | 音区编号。3：左后4：右后取值应为整数。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission check failed. A non-system application uses the system capability. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Car awareness not supported. Function can not work correctly due to limited device capabilities. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-指定能力不支持) | Specific capability not supported. |

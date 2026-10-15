@@ -28,22 +28,6 @@ BASIC = 0
 
 **系统能力：** SystemCapability.Utils.Lang
 
-## MIME
-
-```TypeScript
-MIME = 1
-```
-
-MIME 格式。从 API version 11 开始，该接口支持在原子化服务中使用。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-Type-MIME = 1--><!--Device-Type-MIME = 1-End-->
-
-**系统能力：** SystemCapability.Utils.Lang
-
 ## BASIC_URL_SAFE
 
 ```TypeScript
@@ -59,6 +43,22 @@ BASIC_URL_SAFE 格式。
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Type-BASIC_URL_SAFE = 2--><!--Device-Type-BASIC_URL_SAFE = 2-End-->
+
+**系统能力：** SystemCapability.Utils.Lang
+
+## MIME
+
+```TypeScript
+MIME = 1
+```
+
+MIME 格式。从 API version 11 开始，该接口支持在原子化服务中使用。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Type-MIME = 1--><!--Device-Type-MIME = 1-End-->
 
 **系统能力：** SystemCapability.Utils.Lang
 

@@ -6,8 +6,6 @@ enum DisplayIntentType
 
 Enumerates the screenshot display intent type.
 
-@enum { int }
-
 **Since:** 26.0.0
 
 <!--Device-screenshot-enum DisplayIntentType--><!--Device-screenshot-enum DisplayIntentType-End-->

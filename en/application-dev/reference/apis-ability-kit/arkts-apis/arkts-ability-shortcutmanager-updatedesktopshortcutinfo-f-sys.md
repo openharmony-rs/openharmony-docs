@@ -12,7 +12,7 @@ import { shortcutManager } from '@kit.AbilityKit';
 function updateDesktopShortcutInfo(shortcutInfo: ShortcutInfo, userId: number): Promise<void>
 ```
 
-Updates a shortcut for the given user. This API uses a promise to return the result.
+Updates the shortcut information of the specified user. This API uses a promise to return the result.
 
 **Since:** 26.0.1
 
@@ -51,6 +51,7 @@ Updates a shortcut for the given user. This API uses a promise to return the res
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The specified app index is invalid. |
 | 18100002 | The specified shortcut to be updated is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -85,3 +86,5 @@ try {
   hilog.error(0x0000, 'testTag', 'updateDesktopShortcutInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

@@ -12,20 +12,6 @@ Enumerates the print directions.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## ORIENTATION_MODE_PORTRAIT
-
-```TypeScript
-ORIENTATION_MODE_PORTRAIT = 0
-```
-
-Portrait mode.
-
-**Since:** 14
-
-<!--Device-PrintOrientationMode-ORIENTATION_MODE_PORTRAIT = 0--><!--Device-PrintOrientationMode-ORIENTATION_MODE_PORTRAIT = 0-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## ORIENTATION_MODE_LANDSCAPE
 
 ```TypeScript
@@ -37,6 +23,34 @@ Landscape mode.
 **Since:** 14
 
 <!--Device-PrintOrientationMode-ORIENTATION_MODE_LANDSCAPE= 1--><!--Device-PrintOrientationMode-ORIENTATION_MODE_LANDSCAPE= 1-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## ORIENTATION_MODE_NONE
+
+```TypeScript
+ORIENTATION_MODE_NONE = 4
+```
+
+Adaptive mode.
+
+**Since:** 14
+
+<!--Device-PrintOrientationMode-ORIENTATION_MODE_NONE = 4--><!--Device-PrintOrientationMode-ORIENTATION_MODE_NONE = 4-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## ORIENTATION_MODE_PORTRAIT
+
+```TypeScript
+ORIENTATION_MODE_PORTRAIT = 0
+```
+
+Portrait mode.
+
+**Since:** 14
+
+<!--Device-PrintOrientationMode-ORIENTATION_MODE_PORTRAIT = 0--><!--Device-PrintOrientationMode-ORIENTATION_MODE_PORTRAIT = 0-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 
@@ -65,19 +79,5 @@ Reverse portrait mode.
 **Since:** 14
 
 <!--Device-PrintOrientationMode-ORIENTATION_MODE_REVERSE_PORTRAIT = 3--><!--Device-PrintOrientationMode-ORIENTATION_MODE_REVERSE_PORTRAIT = 3-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
-## ORIENTATION_MODE_NONE
-
-```TypeScript
-ORIENTATION_MODE_NONE = 4
-```
-
-Adaptive mode.
-
-**Since:** 14
-
-<!--Device-PrintOrientationMode-ORIENTATION_MODE_NONE = 4--><!--Device-PrintOrientationMode-ORIENTATION_MODE_NONE = 4-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

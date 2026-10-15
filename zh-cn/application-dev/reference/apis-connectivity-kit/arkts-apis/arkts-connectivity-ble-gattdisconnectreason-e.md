@@ -12,21 +12,21 @@ enum GattDisconnectReason
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## CONN_TIMEOUT
+## CONN_TERMINATE_LOCAL_HOST
 
 ```TypeScript
-CONN_TIMEOUT = 1
+CONN_TERMINATE_LOCAL_HOST = 3
 ```
 
-连接超时。
+本端设备主动断开连接。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-GattDisconnectReason-CONN_TIMEOUT = 1--><!--Device-GattDisconnectReason-CONN_TIMEOUT = 1-End-->
+<!--Device-GattDisconnectReason-CONN_TERMINATE_LOCAL_HOST = 3--><!--Device-GattDisconnectReason-CONN_TERMINATE_LOCAL_HOST = 3-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -42,27 +42,27 @@ CONN_TERMINATE_PEER_USER = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-GattDisconnectReason-CONN_TERMINATE_PEER_USER = 2--><!--Device-GattDisconnectReason-CONN_TERMINATE_PEER_USER = 2-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## CONN_TERMINATE_LOCAL_HOST
+## CONN_TIMEOUT
 
 ```TypeScript
-CONN_TERMINATE_LOCAL_HOST = 3
+CONN_TIMEOUT = 1
 ```
 
-本端设备主动断开连接。
+连接超时。
 
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-GattDisconnectReason-CONN_TERMINATE_LOCAL_HOST = 3--><!--Device-GattDisconnectReason-CONN_TERMINATE_LOCAL_HOST = 3-End-->
+<!--Device-GattDisconnectReason-CONN_TIMEOUT = 1--><!--Device-GattDisconnectReason-CONN_TIMEOUT = 1-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -78,7 +78,7 @@ CONN_UNKNOWN = 4
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-GattDisconnectReason-CONN_UNKNOWN = 4--><!--Device-GattDisconnectReason-CONN_UNKNOWN = 4-End-->
 

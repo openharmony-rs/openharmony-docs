@@ -16,6 +16,8 @@ declare class CalendarPickerAttribute extends CommonMethod<CalendarPickerAttribu
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="edgealign1"></a>
+
 ## edgeAlign
 
 ```TypeScript
@@ -41,7 +43,7 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 | alignType | [CalendarAlign](arkts-arkui-calendarpicker-comp-calendaralign-e.md) | 是 | 对齐方式的类型。<br>默认值：CalendarAlign.END |
 | offset | Offset | 否 | 按照对齐方式对齐后，选择器相对入口组件的偏移量。<br>默认值：{dx: 0, dy: 0} <br>单位：vp |
 
-<a id="edgealign-1"></a>
+<a id="edgealign2"></a>
 
 ## edgeAlign
 
@@ -49,7 +51,7 @@ edgeAlign(alignType: CalendarAlign, offset?: Offset)
 edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset)
 ```
 
-设置选择器与入口组件的对齐方式。与[edgeAlign](#edgealign)相比，alignType参数新增了对undefined类型的支持。
+设置选择器与入口组件的对齐方式。与[edgeAlign](#edgealign1)相比，alignType参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 
@@ -67,6 +69,30 @@ edgeAlign(alignType: Optional<CalendarAlign>, offset?: Offset)
 | --- | --- | --- | --- |
 | alignType | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[CalendarAlign](arkts-arkui-calendarpicker-comp-calendaralign-e.md)&gt; | 是 | 对齐方式的类型。<br>默认值：CalendarAlign.END <br>当alignType的值为undefined时，使用默认值。 |
 | offset | Offset | 否 | 按照对齐方式对齐后，选择器相对入口组件的偏移量。<br>默认值：{dx: 0, dy: 0} <br>单位：vp |
+
+## firstDayOfWeek
+
+```TypeScript
+firstDayOfWeek(value: CalendarFirstDayOfWeek)
+```
+
+设置日历选择器每周的起始日。
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-CalendarPickerAttribute-firstDayOfWeek(value: CalendarFirstDayOfWeek): CalendarPickerAttribute--><!--Device-CalendarPickerAttribute-firstDayOfWeek(value: CalendarFirstDayOfWeek): CalendarPickerAttribute-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**参数：**
+
+| 参数名 | 类型 | 必填 | 说明 |
+| --- | --- | --- | --- |
+| value | [CalendarFirstDayOfWeek](arkts-arkui-calendarpicker-comp-calendarfirstdayofweek-e.md) | 是 | 设置日历选择器每周的起始日。<br>默认值：CalendarFirstDayOfWeek.LOCAL（跟随系统区域变化） |
 
 ## markToday
 
@@ -92,6 +118,8 @@ markToday(enabled: boolean)
 | --- | --- | --- | --- |
 | enabled | boolean | 是 | 设置日历选择器中系统当前日期是否保持高亮显示。<br>- true：系统当前日期在日历选择器内保持高亮显示。<br>- false：系统当前日期在日历选择器内不保持高亮显示。<br>默认值：false |
 
+<a id="onchange1"></a>
+
 ## onChange
 
 ```TypeScript
@@ -116,7 +144,7 @@ onChange(callback: Callback<Date>)
 | --- | --- | --- | --- |
 | callback | Callback&lt;Date&gt; | 是 | 日期选择时触发的回调函数。回调参数为Date类型的选中日期值，开发者可在回调函数中获取用户选中的日期并进行相应处理。<br>**适用版本：** 18 |
 
-<a id="onchange-1"></a>
+<a id="onchange2"></a>
 
 ## onChange
 
@@ -124,7 +152,7 @@ onChange(callback: Callback<Date>)
 onChange(callback: Optional<Callback<Date>>)
 ```
 
-选择日期时触发该事件。不能通过双向绑定的状态变量触发。与[onChange](#onchange)相比，callback参数新增了对undefined类型的支持。
+选择日期时触发该事件。不能通过双向绑定的状态变量触发。与[onChange](#onchange1)相比，callback参数新增了对undefined类型的支持。
 
 > **说明：** 
 > 
@@ -145,6 +173,8 @@ onChange(callback: Optional<Callback<Date>>)
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | callback | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;Callback&lt;Date&gt;&gt; | 是 | 日期选择时触发的回调函数，回调参数为选中的日期值。<br>当callback的值为undefined时，不使用回调函数。 |
+
+<a id="textstyle1"></a>
 
 ## textStyle
 
@@ -170,7 +200,7 @@ textStyle(value: PickerTextStyle)
 | --- | --- | --- | --- |
 | value | [PickerTextStyle](arkts-arkui-common-comp-pickertextstyle-i.md) | 是 | 设置入口区的文本颜色、字号、字体粗细。<br>默认值：<br>{<br>color: '#ff182431', <br>font: {<br>size: '16fp', <br>weight: FontWeight.Regular <br>} <br>} |
 
-<a id="textstyle-1"></a>
+<a id="textstyle2"></a>
 
 ## textStyle
 
@@ -178,7 +208,7 @@ textStyle(value: PickerTextStyle)
 textStyle(style: Optional<PickerTextStyle>)
 ```
 
-设置入口区的文本颜色、字号、字体粗细。与[textStyle](#textstyle)相比，style参数新增了对undefined类型的支持。
+设置入口区的文本颜色、字号、字体粗细。与[textStyle](#textstyle1)相比，style参数新增了对undefined类型的支持。
 
 **起始版本：** 18
 

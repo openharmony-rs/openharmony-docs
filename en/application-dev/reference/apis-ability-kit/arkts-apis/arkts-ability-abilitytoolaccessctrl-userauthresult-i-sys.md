@@ -27,7 +27,7 @@ permissionInfo: PermissionInfo[]
 
 Permission information list.
 
-**Type:** [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i-sys.md)[]
+**Type:** [PermissionInfo](arkts-ability-abilitytoolaccessctrl-permissioninfo-i.md)[]
 
 **Since:** 26.0.0
 

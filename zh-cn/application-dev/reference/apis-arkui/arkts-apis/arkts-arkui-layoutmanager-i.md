@@ -10,20 +10,22 @@ declare interface LayoutManager
 > 
 > 文本内容变更后，需等待布局完成才可获取到最新的布局信息。
 
+**起始版本：** 12
+
+<!--Device-unnamed-declare interface LayoutManager--><!--Device-unnamed-declare interface LayoutManager-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## 导入对象
 
-以Text组件为例，完整示例请参考Text组件的示例10（获取文本信息）。
+以Text组件为例，完整示例请参考Text组件的[示例10（获取文本信息）](../../../reference/apis-arkui/arkui-ts/ts-basic-components-text.md#示例10获取文本信息)。
 
 ```ts
 controller: TextController = new TextController();
 let layoutManager: LayoutManager = this.controller.getLayoutManager();
 ```
 
-**起始版本：** 12
-
-<!--Device-unnamed-declare interface LayoutManager--><!--Device-unnamed-declare interface LayoutManager-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+<a id="getcharacterpositionatcoordinate1"></a>
 
 ## getCharacterPositionAtCoordinate
 
@@ -53,8 +55,8 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位：px |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位：px |
+| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
@@ -62,7 +64,7 @@ getCharacterPositionAtCoordinate(x: number, y: number): PositionWithAffinity | u
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | 字符的位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
 
-<a id="getcharacterpositionatcoordinate-1"></a>
+<a id="getcharacterpositionatcoordinate2"></a>
 
 ## getCharacterPositionAtCoordinate
 
@@ -73,7 +75,7 @@ getCharacterPositionAtCoordinate(
 
 根据指定编码类型，获取距离指定坐标最近的字符位置信息。
 
-相比[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate)，本接口支持通过encoding参数指定字符位置使用的编码类型（UTF-8或UTF-16）。
+相比[getCharacterPositionAtCoordinate](#getcharacterpositionatcoordinate1)，本接口支持通过encoding参数指定字符位置使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 
@@ -93,8 +95,8 @@ getCharacterPositionAtCoordinate(
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：px。 |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：px。 |
+| x | number | 是 | 相对于组件的横坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位为：[px]（../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位）。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位)。 |
 | encoding | [TextEncoding](arkts-arkui-textencoding-e.md) | 否 | 字符位置使用的编码类型。UTF-8编码时，字符位置以字节为单位；UTF-16编码时，字符位置以UTF-16码元为单位。<br>默认值：TextEncoding.TEXT_ENCODING_UTF8。 |
 
 **返回值：**
@@ -102,6 +104,8 @@ getCharacterPositionAtCoordinate(
 | 类型 | 说明 |
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) &#124; undefined | 字符的位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
+
+<a id="getcharacterrangeforglyphrange1"></a>
 
 ## getCharacterRangeForGlyphRange
 
@@ -145,7 +149,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange): Array<TextRange> | undefi
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | 数组中含有两个元素，第一个元素是字符范围，第二个元素是实际的字形范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
 
-<a id="getcharacterrangeforglyphrange-1"></a>
+<a id="getcharacterrangeforglyphrange2"></a>
 
 ## getCharacterRangeForGlyphRange
 
@@ -155,7 +159,7 @@ getCharacterRangeForGlyphRange(glyphRange: TextRange, encoding?: TextEncoding): 
 
 根据指定编码类型和文本字形范围，获取字符范围以及实际的字形范围。
 
-相比[getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+相比[getCharacterRangeForGlyphRange](#getcharacterrangeforglyphrange1)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 
@@ -223,14 +227,16 @@ getGlyphPositionAtCoordinate(x: number, y: number): PositionWithAffinity
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| x | number | 是 | 相对于组件的横坐标。<br>单位：px |
-| y | number | 是 | 相对于组件的纵坐标。<br>单位：px |
+| x | number | 是 | 相对于组件的横坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
+| y | number | 是 | 相对于组件的纵坐标。<br>单位：[px](../../../reference/apis-arkui/arkui-ts/ts-pixel-units.md#基本像素单位) |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
 | [PositionWithAffinity](arkts-arkui-positionwithaffinity-i.md) | 字符位置信息。当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，返回无效值。 |
+
+<a id="getglyphrangeforcharacterrange1"></a>
 
 ## getGlyphRangeForCharacterRange
 
@@ -274,7 +280,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange): Array<TextRange> | undefin
 | --- | --- |
 | Array&lt;[TextRange](arkts-arkui-textrange-i.md)&gt; &#124; undefined | 数组中含有两个元素，第一个元素是字形范围，第二个元素是实际的字符范围。<br>当返回的范围是异常值时，范围内元素为-1。<br>当[LayoutManager](arkts-arkui-layoutmanager-i.md)没有和组件绑定时，该接口会返回undefined。 |
 
-<a id="getglyphrangeforcharacterrange-1"></a>
+<a id="getglyphrangeforcharacterrange2"></a>
 
 ## getGlyphRangeForCharacterRange
 
@@ -284,7 +290,7 @@ getGlyphRangeForCharacterRange(charRange: TextRange, encoding?: TextEncoding): A
 
 根据指定编码类型和文本字符范围，获取字形范围以及实际的字符范围。
 
-相比[getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
+相比[getGlyphRangeForCharacterRange](#getglyphrangeforcharacterrange1)，本接口支持通过encoding参数指定字符范围使用的编码类型（UTF-8或UTF-16）。
 
 > **说明：** 
 > 

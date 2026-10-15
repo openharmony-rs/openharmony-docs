@@ -12,20 +12,6 @@ enum PlaybackInfoKey
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-## SERVER_IP_ADDRESS
-
-```TypeScript
-SERVER_IP_ADDRESS = 'server_ip_address'
-```
-
-表示服务器IP地址，其对应键值类型为string。
-
-**起始版本：** 12
-
-<!--Device-PlaybackInfoKey-SERVER_IP_ADDRESS = 'server_ip_address'--><!--Device-PlaybackInfoKey-SERVER_IP_ADDRESS = 'server_ip_address'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
 ## AVG_DOWNLOAD_RATE
 
 ```TypeScript
@@ -37,6 +23,20 @@ AVG_DOWNLOAD_RATE = 'average_download_rate'
 **起始版本：** 12
 
 <!--Device-PlaybackInfoKey-AVG_DOWNLOAD_RATE = 'average_download_rate'--><!--Device-PlaybackInfoKey-AVG_DOWNLOAD_RATE = 'average_download_rate'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## BUFFER_DURATION
+
+```TypeScript
+BUFFER_DURATION = 'buffer_duration'
+```
+
+表示缓存数据的可播放时长，其对应键值类型为number，单位为秒（s）。
+
+**起始版本：** 12
+
+<!--Device-PlaybackInfoKey-BUFFER_DURATION = 'buffer_duration'--><!--Device-PlaybackInfoKey-BUFFER_DURATION = 'buffer_duration'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -68,16 +68,16 @@ IS_DOWNLOADING = 'is_downloading'
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-## BUFFER_DURATION
+## SERVER_IP_ADDRESS
 
 ```TypeScript
-BUFFER_DURATION = 'buffer_duration'
+SERVER_IP_ADDRESS = 'server_ip_address'
 ```
 
-表示缓存数据的可播放时长，其对应键值类型为number，单位为秒（s）。
+表示服务器IP地址，其对应键值类型为string。
 
 **起始版本：** 12
 
-<!--Device-PlaybackInfoKey-BUFFER_DURATION = 'buffer_duration'--><!--Device-PlaybackInfoKey-BUFFER_DURATION = 'buffer_duration'-End-->
+<!--Device-PlaybackInfoKey-SERVER_IP_ADDRESS = 'server_ip_address'--><!--Device-PlaybackInfoKey-SERVER_IP_ADDRESS = 'server_ip_address'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core

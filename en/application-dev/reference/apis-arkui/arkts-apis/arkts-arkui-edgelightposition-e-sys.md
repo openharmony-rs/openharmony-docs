@@ -14,37 +14,19 @@ Defines the edge light position.
 
 **System API:** This is a system API.
 
-## TOP_LEFT
+## BOTTOM
 
 ```TypeScript
-TOP_LEFT = 0
+BOTTOM = 5
 ```
 
-Edge light effect in the upper left corner.
+Edge light effect is on the bottom edge.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-EdgeLightPosition-TOP_LEFT = 0--><!--Device-EdgeLightPosition-TOP_LEFT = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## TOP_RIGHT
-
-```TypeScript
-TOP_RIGHT = 1
-```
-
-Edge light effect is in the upper right corner.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-EdgeLightPosition-TOP_RIGHT = 1--><!--Device-EdgeLightPosition-TOP_RIGHT = 1-End-->
+<!--Device-EdgeLightPosition-BOTTOM = 5--><!--Device-EdgeLightPosition-BOTTOM = 5-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -86,42 +68,6 @@ Edge light effect is in the lower right corner.
 
 **System API:** This is a system API.
 
-## TOP
-
-```TypeScript
-TOP = 4
-```
-
-Edge light effect is on the top edge.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-EdgeLightPosition-TOP = 4--><!--Device-EdgeLightPosition-TOP = 4-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## BOTTOM
-
-```TypeScript
-BOTTOM = 5
-```
-
-Edge light effect is on the bottom edge.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-EdgeLightPosition-BOTTOM = 5--><!--Device-EdgeLightPosition-BOTTOM = 5-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
 ## LEFT
 
 ```TypeScript
@@ -153,6 +99,60 @@ Edge light effect is on the right edge.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-EdgeLightPosition-RIGHT = 7--><!--Device-EdgeLightPosition-RIGHT = 7-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## TOP
+
+```TypeScript
+TOP = 4
+```
+
+Edge light effect is on the top edge.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EdgeLightPosition-TOP = 4--><!--Device-EdgeLightPosition-TOP = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## TOP_LEFT
+
+```TypeScript
+TOP_LEFT = 0
+```
+
+Edge light effect in the upper left corner.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EdgeLightPosition-TOP_LEFT = 0--><!--Device-EdgeLightPosition-TOP_LEFT = 0-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## TOP_RIGHT
+
+```TypeScript
+TOP_RIGHT = 1
+```
+
+Edge light effect is in the upper right corner.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EdgeLightPosition-TOP_RIGHT = 1--><!--Device-EdgeLightPosition-TOP_RIGHT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

@@ -18,18 +18,6 @@ declare type TransitionEffects = {
 
 定义所有转场效果。
 
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-unnamed-declare type TransitionEffects = {  identity: undefined;  opacity: number;  slideSwitch: undefined;  move: TransitionEdge;  translate: TranslateOptions;  rotate: RotateOptions;  scale: ScaleOptions;  asymmetric: {    appear: TransitionEffect;    disappear: TransitionEffect;  };}--><!--Device-unnamed-declare type TransitionEffects = {  identity: undefined;  opacity: number;  slideSwitch: undefined;  move: TransitionEdge;  translate: TranslateOptions;  rotate: RotateOptions;  scale: ScaleOptions;  asymmetric: {    appear: TransitionEffect;    disappear: TransitionEffect;  };}-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 **类型：** {
   identity: undefined;
   opacity: number;
@@ -43,3 +31,15 @@ declare type TransitionEffects = {
     disappear: TransitionEffect;
   };
 }
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-unnamed-declare type TransitionEffects = {  identity: undefined;  opacity: number;  slideSwitch: undefined;  move: TransitionEdge;  translate: TranslateOptions;  rotate: RotateOptions;  scale: ScaleOptions;  asymmetric: {    appear: TransitionEffect;    disappear: TransitionEffect;  };}--><!--Device-unnamed-declare type TransitionEffects = {  identity: undefined;  opacity: number;  slideSwitch: undefined;  move: TransitionEdge;  translate: TranslateOptions;  rotate: RotateOptions;  scale: ScaleOptions;  asymmetric: {    appear: TransitionEffect;    disappear: TransitionEffect;  };}-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -4,8 +4,6 @@
 
 **起始版本：** 26.0.0
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace scan--><!--Device-unnamed-declare namespace scan-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -22,10 +20,10 @@ import { scan } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md) | 取消订阅星闪扫描结果。使用callback异步回调。 |
-| [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md) | 订阅星闪扫描结果。使用callback异步回调。 |
-| [startScan](arkts-connectivity-scan-startscan-f.md) | 发起星闪扫描。使用Promise异步回调。需先调用[scan.onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md)订阅扫描结果回调，本接口发起扫描后，扫描到的设备信息通过[scan.onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md)回调上报。扫描完成后可调用[scan.stopScan](arkts-connectivity-scan-stopscan-f.md)停止扫描。 |
-| [stopScan](arkts-connectivity-scan-stopscan-f.md) | 停止星闪扫描。使用Promise异步回调。 |
+| [offDeviceFound](arkts-connectivity-scan-offdevicefound-f.md#offdevicefound) | 取消订阅星闪扫描结果。使用callback异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md#ondevicefound) | 订阅星闪扫描结果。使用callback异步回调。 |
+| [startScan](arkts-connectivity-scan-startscan-f.md#startscan) | 发起星闪扫描。使用Promise异步回调。需先调用[scan.onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md)订阅扫描结果回调，本接口发起扫描后，扫描到的设备信息通过[scan.onDeviceFound](arkts-connectivity-scan-ondevicefound-f.md)回调上报。扫描完成后可调用[scan.stopScan](arkts-connectivity-scan-stopscan-f.md)停止扫描。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
+| [stopScan](arkts-connectivity-scan-stopscan-f.md#stopscan) | 停止星闪扫描。使用Promise异步回调。调用此接口前，您可以调用[isNearLinkSupported](arkts-connectivity-manager-isnearlinksupported-f.md)查询设备是否支持星闪。 |
 
 ### 接口
 

@@ -46,6 +46,7 @@ Sets a value for the specified key.
 | [14700103](../errorcode-device-info.md#14700103-operation-denied-due-to-permission) | The operation on the system permission is denied. |
 | [14700104](../errorcode-system-parameterV9.md#14700104-internal-system-error-including-out-of-memory-and-deadlock) | System internal error such as out memory or deadlock. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,3 +59,5 @@ try {
   console.error(`Failed to set system parameter. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

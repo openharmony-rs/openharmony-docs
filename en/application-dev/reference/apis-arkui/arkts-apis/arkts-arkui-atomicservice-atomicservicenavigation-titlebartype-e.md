@@ -12,19 +12,19 @@ Enumerates the title bar types. The default type is **ROUND_ICON**.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SQUARED_ICON
+## DRAWER
 
 ```TypeScript
-SQUARED_ICON = 1
+DRAWER = 3
 ```
 
-Square icon style.
+Drawer style.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-TitleBarType-SQUARED_ICON = 1--><!--Device-TitleBarType-SQUARED_ICON = 1-End-->
+<!--Device-TitleBarType-DRAWER = 3--><!--Device-TitleBarType-DRAWER = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -44,18 +44,18 @@ Round icon style.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## DRAWER
+## SQUARED_ICON
 
 ```TypeScript
-DRAWER = 3
+SQUARED_ICON = 1
 ```
 
-Drawer style.
+Square icon style.
 
 **Since:** 18
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-TitleBarType-DRAWER = 3--><!--Device-TitleBarType-DRAWER = 3-End-->
+<!--Device-TitleBarType-SQUARED_ICON = 1--><!--Device-TitleBarType-SQUARED_ICON = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

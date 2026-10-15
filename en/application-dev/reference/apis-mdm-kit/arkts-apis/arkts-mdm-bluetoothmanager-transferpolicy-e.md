@@ -12,22 +12,6 @@ Transfer policy.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SEND_ONLY
-
-```TypeScript
-SEND_ONLY = 0
-```
-
-Disable sending.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TransferPolicy-SEND_ONLY = 0--><!--Device-TransferPolicy-SEND_ONLY = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## RECEIVE_ONLY
 
 ```TypeScript
@@ -57,5 +41,21 @@ Disable sending and receiving.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TransferPolicy-RECEIVE_SEND = 2--><!--Device-TransferPolicy-RECEIVE_SEND = 2-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SEND_ONLY
+
+```TypeScript
+SEND_ONLY = 0
+```
+
+Disable sending.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TransferPolicy-SEND_ONLY = 0--><!--Device-TransferPolicy-SEND_ONLY = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

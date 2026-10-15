@@ -51,6 +51,7 @@ Obtains the portrait effect in use.
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 11+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,6 +60,8 @@ function getPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession): c
   return portraitEffect;
 }
 ```
+
+<!--DelEnd-->
 
 ## setPortraitEffect
 
@@ -89,6 +92,7 @@ Sets a portrait effect. Before the setting, use [getSupportedPortraitEffects](ar
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application.<br>**适用版本：** 11+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -106,3 +110,5 @@ function setPortraitEffect(portraitPhotoSession: camera.PortraitPhotoSession, po
   }
 }
 ```
+
+<!--DelEnd-->

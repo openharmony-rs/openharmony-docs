@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="write1"></a>
+
 ## write
 
 ```TypeScript
@@ -57,7 +59,7 @@ hiAppEvent.write("test_event", hiAppEvent.EventType.FAULT, eventParams).then(() 
 ```
 
 
-<a id="write-1"></a>
+<a id="write2"></a>
 
 ## write
 

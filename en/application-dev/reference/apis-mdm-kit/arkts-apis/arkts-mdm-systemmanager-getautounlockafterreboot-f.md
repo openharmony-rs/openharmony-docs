@@ -6,6 +6,8 @@
 import { systemManager } from '@kit.MDMKit';
 ```
 
+<a id="getautounlockafterreboot1"></a>
+
 ## getAutoUnlockAfterReboot
 
 ```TypeScript
@@ -65,7 +67,7 @@ try {
 ```
 
 
-<a id="getautounlockafterreboot-1"></a>
+<a id="getautounlockafterreboot2"></a>
 
 ## getAutoUnlockAfterReboot
 

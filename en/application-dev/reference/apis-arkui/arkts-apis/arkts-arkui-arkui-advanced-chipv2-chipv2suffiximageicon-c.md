@@ -6,8 +6,6 @@ export declare class ChipV2SuffixImageIcon extends ChipV2ImageIcon
 
 Defines the suffix icon class.
 
-This API inherits from [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md).
-
 **Inheritance/Implementation:** ChipV2SuffixImageIcon extends [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md)
 
 **Since:** 26.0.0
@@ -35,8 +33,6 @@ Callback for the suffix icon tap event. This callback is invoked when the suffix
 Default value: no suffix icon event is set.
 
 When the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Since:** 26.0.0
 
@@ -86,8 +82,6 @@ Default value: empty string.
 
 When the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **Since:** 26.0.0
@@ -124,8 +118,6 @@ Default value: **"auto"**
 
 When the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** string
 
 **Default:** auto
@@ -153,8 +145,6 @@ Accessibility text. When a component has no text attribute, the screen reader do
 Default value: empty string.
 
 When the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

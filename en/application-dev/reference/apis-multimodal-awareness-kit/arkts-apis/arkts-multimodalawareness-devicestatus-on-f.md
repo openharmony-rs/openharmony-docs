@@ -39,10 +39,10 @@ Subscribes to the device steady standing state (stand mode) event. It is recomme
 
 ```TypeScript
 try {
-   deviceStatus.on('steadyStandingDetect', (data:deviceStatus.SteadyStandingStatus) => {
-      console.info('succeed to get status, now status = ' + data);
+   deviceStatus.on('steadyStandingDetect', (data: deviceStatus.SteadyStandingStatus) => {
+      console.info(`succeeded to get status, now status = ${JSON.stringify(data)}`);
    });
 } catch (err) {
-   console.error('on failed, err = ' + err);
+   console.error(`on failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```

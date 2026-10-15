@@ -65,7 +65,7 @@ Starts an ability. This API uses a promise to return the result. To obtain the r
 | [16000012](../../apis-ability-kit/errorcode-ability.md#16000012-application-under-control) | The application is controlled. |
 | [16000013](../../apis-ability-kit/errorcode-ability.md#16000013-application-controlled-by-edm) | The application is controlled by EDM. |
 | [16000019](../../apis-ability-kit/errorcode-ability.md#16000019-no-matching-ability-found-for-implicit-start) | No matching ability is found. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service;         2. The system service failed to communicate with dependency module. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-installation-free-timeout) | Installation-free timed out. |
 | [16000071](../../apis-ability-kit/errorcode-ability.md#16000071-application-clone-is-not-supported) | App clone is not supported. |
 | [16000072](../../apis-ability-kit/errorcode-ability.md#16000072-multi-app-mode-is-not-supported) | App clone or multi-instance is not supported. |
@@ -115,7 +115,7 @@ Starts a UIAbility. This API uses a promise to return the result when the starte
 
 After the UIAbility is started, the following situations may occur:
 
-- Under normal circumstances,[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult) can be called to terminate the UIAbility and return the result to the caller.  
+- Under normal circumstances,[terminateSelfWithResult](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateselfwithresult1) can be called to terminate the UIAbility and return the result to the caller.  
 - In abnormal cases, such as when the UIAbility is destroyed, exception information is returned to the caller, with  
 resultCode set to -1.  
 - Only UIAbilities of the current app can be started.
@@ -139,7 +139,7 @@ resultCode set to -1.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-abilityresult-i.md)&gt; | Promise used to return the result code and data when the started ability exits. |
+| Promise&lt;[AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-i.md)&gt; | Promise used to return the result code and data when the started ability exits. |
 
 **Error codes:**
 
@@ -157,7 +157,7 @@ resultCode set to -1.
 | [16000012](../../apis-ability-kit/errorcode-ability.md#16000012-application-under-control) | The application is controlled by the AppGallery and cannot be started. |
 | [16000013](../../apis-ability-kit/errorcode-ability.md#16000013-application-controlled-by-edm) | The application is controlled by Enterprise Device Manager and cannot be started. |
 | [16000019](../../apis-ability-kit/errorcode-ability.md#16000019-no-matching-ability-found-for-implicit-start) | No matching ability is found. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service;         2. The system service failed to communicate with dependency module. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-installation-free-timeout) | Installation-free timed out. |
 | [16000071](../../apis-ability-kit/errorcode-ability.md#16000071-application-clone-is-not-supported) | The application does not support appClone mode in multiAppMode. |
 | [16000072](../../apis-ability-kit/errorcode-ability.md#16000072-multi-app-mode-is-not-supported) | The application does not support appClone and multi-instance mode in multiAppMode. |
@@ -234,7 +234,7 @@ Stops the specified native connection. This API uses a promise to return the res
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have permission to call the interface. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service;         2. The system service failed to communicate with dependency module. |
 
 **Examples**
 
@@ -289,7 +289,7 @@ Destroys the current native web message extension. This method returns a promise
 | --- | --- |
 | [16000009](../../apis-ability-kit/errorcode-ability.md#16000009-ability-start-or-stop-failure-in-wukong-mode) | An ability cannot be started or stopped in Wukong mode. |
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-context-does-not-exist) | The context does not exist. |
-| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service; 2. The system service failed to communicate with dependency module. |
+| [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-internal-error) | Internal error. Possible causes: 1. Failed to connect to the system service;         2. The system service failed to communicate with dependency module. |
 
 **Examples**
 

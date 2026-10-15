@@ -18,6 +18,8 @@ CameraOutput implements output information used in [Session](arkts-camera-camera
 import { camera } from '@kit.CameraKit';
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -28,7 +30,7 @@ Releases output resources. This API uses an asynchronous callback to return the 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraOutput-release(callback: AsyncCallback<void>): void--><!--Device-CameraOutput-release(callback: AsyncCallback<void>): void-End-->
 
@@ -72,7 +74,7 @@ function releaseVideoOutput(videoOutput: camera.VideoOutput): void {
 }
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -84,7 +86,7 @@ Releases output resources. This API uses a promise to return the result.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CameraOutput-release(): Promise<void>--><!--Device-CameraOutput-release(): Promise<void>-End-->
 

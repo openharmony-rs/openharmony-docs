@@ -6,6 +6,8 @@
 import { distributedBundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getremoteabilityinfo1"></a>
+
 ## getRemoteAbilityInfo
 
 ```TypeScript
@@ -29,7 +31,7 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | elementName | [ElementName](arkts-ability-elementname-i.md) | 是 | ElementName信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -44,6 +46,7 @@ function getRemoteAbilityInfo(elementName: ElementName, callback: AsyncCallback<
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,8 +73,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getremoteabilityinfo-1"></a>
+
+<a id="getremoteabilityinfo2"></a>
 
 ## getRemoteAbilityInfo
 
@@ -116,6 +121,7 @@ function getRemoteAbilityInfo(elementName: ElementName): Promise<RemoteAbilityIn
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -140,8 +146,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getremoteabilityinfo-2"></a>
+
+<a id="getremoteabilityinfo3"></a>
 
 ## getRemoteAbilityInfo
 
@@ -149,7 +157,7 @@ try {
 function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncCallback<Array<RemoteAbilityInfo>>): void
 ```
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -165,8 +173,8 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncC
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;[ElementName](arkts-ability-elementname-i.md)&gt; | 是 | ElementName信息,最大数组长度为10。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt;&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
+| elementNames | Array&lt;[ElementName](arkts-ability-elementname-i.md)&gt; | 是 | ElementName信息，最大数组长度为10。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -181,6 +189,7 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, callback: AsyncC
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -214,8 +223,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getremoteabilityinfo-3"></a>
+
+<a id="getremoteabilityinfo4"></a>
 
 ## getRemoteAbilityInfo
 
@@ -223,7 +234,7 @@ try {
 function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<RemoteAbilityInfo>>
 ```
 
-获取由elementName指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -245,7 +256,7 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<R
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt;&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt;&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象列表；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -260,6 +271,7 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>): Promise<Array<R
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -291,8 +303,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getremoteabilityinfo-4"></a>
+
+<a id="getremoteabilityinfo5"></a>
 
 ## getRemoteAbilityInfo
 
@@ -318,7 +332,7 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback
 | --- | --- | --- | --- |
 | elementName | [ElementName](arkts-ability-elementname-i.md) | 是 | ElementName信息。 |
 | locale | string | 是 | 语言地区。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象, data为undefined。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -333,6 +347,7 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string, callback
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -359,8 +374,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getremoteabilityinfo-5"></a>
+
+<a id="getremoteabilityinfo6"></a>
 
 ## getRemoteAbilityInfo
 
@@ -406,6 +423,7 @@ function getRemoteAbilityInfo(elementName: ElementName, locale: string): Promise
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -430,8 +448,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getremoteabilityinfo-6"></a>
+
+<a id="getremoteabilityinfo7"></a>
 
 ## getRemoteAbilityInfo
 
@@ -439,7 +459,7 @@ try {
 function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, callback: AsyncCallback<Array<RemoteAbilityInfo>>): void
 ```
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用callback异步回调。
 
 **起始版本：** 9
 
@@ -455,9 +475,9 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, 
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;[ElementName](arkts-ability-elementname-i.md)&gt; | 是 | ElementName信息,最大数组长度为10。 |
+| elementNames | Array&lt;[ElementName](arkts-ability-elementname-i.md)&gt; | 是 | ElementName信息，最大数组长度为10。 |
 | locale | string | 是 | 语言地区。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt;&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象, data为undefined。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt;&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，调用成功返回err为null，data为RemoteAbilityInfo数组对象；调用失败err为错误对象，data为undefined。 |
 
 **错误码：**
 
@@ -472,6 +492,7 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string, 
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -505,8 +526,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getremoteabilityinfo-7"></a>
+
+<a id="getremoteabilityinfo8"></a>
 
 ## getRemoteAbilityInfo
 
@@ -514,7 +537,7 @@ try {
 function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string): Promise<Array<RemoteAbilityInfo>>
 ```
 
-获取由elementName和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
+获取由elementNames和locale指定的远程设备上的应用的AbilityInfo数组信息。使用Promise异步回调。
 
 **起始版本：** 9
 
@@ -530,14 +553,14 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string):
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;[ElementName](arkts-ability-elementname-i.md)&gt; | 是 | ElementName信息,最大数组长度为10。 |
+| elementNames | Array&lt;[ElementName](arkts-ability-elementname-i.md)&gt; | 是 | ElementName信息，最大数组长度为10。 |
 | locale | string | 是 | 语言地区。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt;&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象；调用失败返回错误对象。 |
+| Promise&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-distributedbundlemanager-remoteabilityinfo-t-sys.md)&gt;&gt; | Promise对象，调用成功返回RemoteAbilityInfo对象列表；调用失败返回错误对象。 |
 
 **错误码：**
 
@@ -552,6 +575,7 @@ function getRemoteAbilityInfo(elementNames: Array<ElementName>, locale: string):
 | [17700007](../errorcode-bundle.md#17700007-输入的设备id有误) | The specified device ID is not found. |
 | [17700027](../errorcode-bundle.md#17700027-分布式服务未启动) | The distributed service is not running. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -582,3 +606,5 @@ try {
     console.error(`Operation failed: error code is ${code}  and error message is ${message}`);
 }
 ```
+
+<!--DelEnd-->

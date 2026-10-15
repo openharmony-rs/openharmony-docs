@@ -14,33 +14,17 @@ export enum ProfileClass
 
 **系统接口：** 此接口为系统接口。
 
-## PROFILE_CLASS_UNSPECIFIED
+## PROFILE_CLASS_OPERATIONAL
 
 ```TypeScript
-PROFILE_CLASS_UNSPECIFIED = -1
+PROFILE_CLASS_OPERATIONAL = 2
 ```
 
-未设置配置文件类。
+可预加载或下载的操作配置文件。
 
 **起始版本：** 18
 
-<!--Device-ProfileClass-PROFILE_CLASS_UNSPECIFIED = -1--><!--Device-ProfileClass-PROFILE_CLASS_UNSPECIFIED = -1-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService.Esim
-
-**系统接口：** 此接口为系统接口。
-
-## PROFILE_CLASS_TEST
-
-```TypeScript
-PROFILE_CLASS_TEST = 0
-```
-
-测试配置文件。
-
-**起始版本：** 18
-
-<!--Device-ProfileClass-PROFILE_CLASS_TEST = 0--><!--Device-ProfileClass-PROFILE_CLASS_TEST = 0-End-->
+<!--Device-ProfileClass-PROFILE_CLASS_OPERATIONAL = 2--><!--Device-ProfileClass-PROFILE_CLASS_OPERATIONAL = 2-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 
@@ -62,17 +46,33 @@ PROFILE_CLASS_PROVISIONING = 1
 
 **系统接口：** 此接口为系统接口。
 
-## PROFILE_CLASS_OPERATIONAL
+## PROFILE_CLASS_TEST
 
 ```TypeScript
-PROFILE_CLASS_OPERATIONAL = 2
+PROFILE_CLASS_TEST = 0
 ```
 
-可预加载或下载的操作配置文件。
+测试配置文件。
 
 **起始版本：** 18
 
-<!--Device-ProfileClass-PROFILE_CLASS_OPERATIONAL = 2--><!--Device-ProfileClass-PROFILE_CLASS_OPERATIONAL = 2-End-->
+<!--Device-ProfileClass-PROFILE_CLASS_TEST = 0--><!--Device-ProfileClass-PROFILE_CLASS_TEST = 0-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService.Esim
+
+**系统接口：** 此接口为系统接口。
+
+## PROFILE_CLASS_UNSPECIFIED
+
+```TypeScript
+PROFILE_CLASS_UNSPECIFIED = -1
+```
+
+未设置配置文件类。
+
+**起始版本：** 18
+
+<!--Device-ProfileClass-PROFILE_CLASS_UNSPECIFIED = -1--><!--Device-ProfileClass-PROFILE_CLASS_UNSPECIFIED = -1-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService.Esim
 

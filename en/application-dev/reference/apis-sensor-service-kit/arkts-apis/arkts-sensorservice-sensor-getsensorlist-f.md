@@ -6,6 +6,8 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
+<a id="getsensorlist1"></a>
+
 ## getSensorList
 
 ```TypeScript
@@ -57,7 +59,7 @@ try {
 ```
 
 
-<a id="getsensorlist-1"></a>
+<a id="getsensorlist2"></a>
 
 ## getSensorList
 

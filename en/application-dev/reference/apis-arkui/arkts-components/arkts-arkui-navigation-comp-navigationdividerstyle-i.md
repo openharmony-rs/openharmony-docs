@@ -44,9 +44,9 @@ Distance between the divider and the bottom of the sidebar.
 
 Default value: **0**
 
-Unit: vp
+For details about the unit, see the description of the [Length](../arkts-apis/arkts-arkui-length-t.md) type.
 
-Value range: [0, +��)
+Value range: [0, +∞)
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
@@ -70,9 +70,9 @@ Distance between the divider and the top of the sidebar.
 
 Default value: **0**
 
-Unit: vp
+For details about the unit, see the description of the [Length](../arkts-apis/arkts-arkui-length-t.md) type.
 
-Value range: [0, +��)
+Value range: [0, +∞)
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 

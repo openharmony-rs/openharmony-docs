@@ -6,6 +6,8 @@ declare type RouterPageInfo = import('../api/@ohos.arkui.observer').default.Rout
 
 RouterPageInfo实例对象。
 
+**类型：** import('../api/@ohos.arkui.observer').default.RouterPageInfo
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ RouterPageInfo实例对象。
 <!--Device-unnamed-declare type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo--><!--Device-unnamed-declare type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.observer').default.RouterPageInfo

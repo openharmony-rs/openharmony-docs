@@ -46,7 +46,7 @@ NOTIFY_DELETE = 1
 
 File deleted.
 
-See examples 1 and 2 of **unregisterObserver(uri: string, callback: Callback&lt;NotifyMessage&gt;)**.
+See examples 1 and 2 of **unregisterObserver(uri: string, callback: Callback<NotifyMessage>)**.
 
 **Since:** 10
 
@@ -60,45 +60,41 @@ See examples 1 and 2 of **unregisterObserver(uri: string, callback: Callback&lt;
 
 **System API:** This is a system API.
 
-## NOTIFY_MOVED_TO
+## NOTIFY_DEVICE_OFFLINE
 
 ```TypeScript
-NOTIFY_MOVED_TO = 2
+NOTIFY_DEVICE_OFFLINE = 6
 ```
 
-File or directory moved in (for example, **rename()** is performed on a file or directory in this directory or a file or directory is moved to this directory).
+Device goes offline.
 
-See example 1 of **registerObserver** and example 1 of **unregisterObserver(uri: string)**.
-
-**Since:** 10
+**Since:** 11
 
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-NotifyType-NOTIFY_MOVED_TO = 2--><!--Device-NotifyType-NOTIFY_MOVED_TO = 2-End-->
+<!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6--><!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
 
-## NOTIFY_MOVED_FROM
+## NOTIFY_DEVICE_ONLINE
 
 ```TypeScript
-NOTIFY_MOVED_FROM = 3
+NOTIFY_DEVICE_ONLINE = 5
 ```
 
-File or directory moved out (for example, **rename()** is performed on a file or directory in this directory or a file or directory is moved out from this directory).
+Device goes online.
 
-See example 1 of **registerObserver** and example 1 of **unregisterObserver(uri: string)**.
-
-**Since:** 10
+**Since:** 11
 
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-NotifyType-NOTIFY_MOVED_FROM = 3--><!--Device-NotifyType-NOTIFY_MOVED_FROM = 3-End-->
+<!--Device-NotifyType-NOTIFY_DEVICE_ONLINE = 5--><!--Device-NotifyType-NOTIFY_DEVICE_ONLINE = 5-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
@@ -126,41 +122,45 @@ See example 1 of **registerObserver**.
 
 **System API:** This is a system API.
 
-## NOTIFY_DEVICE_ONLINE
+## NOTIFY_MOVED_FROM
 
 ```TypeScript
-NOTIFY_DEVICE_ONLINE = 5
+NOTIFY_MOVED_FROM = 3
 ```
 
-Device goes online.
+File or directory moved out (for example, **rename()** is performed on a file or directory in this directory or a file or directory is moved out from this directory).
 
-**Since:** 11
+See example 1 of **registerObserver** and example 1 of **unregisterObserver(uri: string)**.
+
+**Since:** 10
 
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-NotifyType-NOTIFY_DEVICE_ONLINE = 5--><!--Device-NotifyType-NOTIFY_DEVICE_ONLINE = 5-End-->
+<!--Device-NotifyType-NOTIFY_MOVED_FROM = 3--><!--Device-NotifyType-NOTIFY_MOVED_FROM = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 
 **System API:** This is a system API.
 
-## NOTIFY_DEVICE_OFFLINE
+## NOTIFY_MOVED_TO
 
 ```TypeScript
-NOTIFY_DEVICE_OFFLINE = 6
+NOTIFY_MOVED_TO = 2
 ```
 
-Device goes offline.
+File or directory moved in (for example, **rename()** is performed on a file or directory in this directory or a file or directory is moved to this directory).
 
-**Since:** 11
+See example 1 of **registerObserver** and example 1 of **unregisterObserver(uri: string)**.
+
+**Since:** 10
 
 **Deprecated since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6--><!--Device-NotifyType-NOTIFY_DEVICE_OFFLINE = 6-End-->
+<!--Device-NotifyType-NOTIFY_MOVED_TO = 2--><!--Device-NotifyType-NOTIFY_MOVED_TO = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
 

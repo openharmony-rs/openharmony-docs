@@ -43,7 +43,7 @@ function removeAsUser(userId: number, query: AssetMap): Promise<void>
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-关键资产服务不可用) | The ASSET service is unavailable. |
 | [24000002](../errorcode-asset.md#24000002-未找到关键资产) | The asset is not found. |
 | [24000006](../errorcode-asset.md#24000006-系统内存不足) | Insufficient memory. |
@@ -55,6 +55,7 @@ function removeAsUser(userId: number, query: AssetMap): Promise<void>
 | [24000013](../errorcode-asset.md#24000013-访问控制服务异常) | Calling the Access Token service failed. |
 | [24000015](../errorcode-asset.md#24000015-获取系统时间失败) | Getting the system time failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -73,3 +74,5 @@ asset.removeAsUser(userId, query).then(() => {
   console.info(`Succeeded in removing Asset from user space.`);
 });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,10 @@ export type UidNetStatsInfo = {
   }
 ```
 
+**Type:** {
+    [uid: number]: NetStatsInfo;
+  }
+
 **Since:** 12
 
 <!--Device-statistics-export type UidNetStatsInfo = {    [uid: int]: NetStatsInfo;  }--><!--Device-statistics-export type UidNetStatsInfo = {    [uid: int]: NetStatsInfo;  }-End-->
@@ -13,7 +17,3 @@ export type UidNetStatsInfo = {
 **System capability:** SystemCapability.Communication.NetManager.Core
 
 **System API:** This is a system API.
-
-**Type:** {
-    [uid: number]: NetStatsInfo;
-  }

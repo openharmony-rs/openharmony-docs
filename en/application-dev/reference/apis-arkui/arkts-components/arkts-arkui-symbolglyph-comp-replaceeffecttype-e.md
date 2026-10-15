@@ -12,26 +12,6 @@ Enumerates symbol replacement effect types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SEQUENTIAL
-
-```TypeScript
-SEQUENTIAL = 0
-```
-
-Sequential replacement: The current symbol disappears before a new symbol appears. This is the default symbol replacement effect type.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 20.
-
-<!--Device-ReplaceEffectType-SEQUENTIAL = 0--><!--Device-ReplaceEffectType-SEQUENTIAL = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## CROSS_FADE
 
 ```TypeScript
@@ -49,6 +29,26 @@ Cross-fade transition effect: The current symbol fades out while a new symbol fa
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
 <!--Device-ReplaceEffectType-CROSS_FADE = 1--><!--Device-ReplaceEffectType-CROSS_FADE = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SEQUENTIAL
+
+```TypeScript
+SEQUENTIAL = 0
+```
+
+Sequential replacement: The current symbol disappears before a new symbol appears. This is the default symbol replacement effect type.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-ReplaceEffectType-SEQUENTIAL = 0--><!--Device-ReplaceEffectType-SEQUENTIAL = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

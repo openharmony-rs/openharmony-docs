@@ -6,10 +6,6 @@ export interface BundleResourceInfo
 
 应用配置的图标和名称信息，可以通过[getBundleResourceInfo](arkts-ability-bundleresourcemanager-getbundleresourceinfo-f-sys.md)获取。
 
-> **说明：** 
-> 
-> 本模块为系统接口。
-
 **起始版本：** 11
 
 <!--Device-unnamed-export interface BundleResourceInfo--><!--Device-unnamed-export interface BundleResourceInfo-End-->

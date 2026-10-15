@@ -30,22 +30,6 @@ NONE = 0
 
 **系统接口：** 此接口为系统接口。
 
-## SOURCE
-
-```TypeScript
-SOURCE = 1
-```
-
-对外提供电源。
-
-**起始版本：** 9
-
-<!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
-
-**系统能力：** SystemCapability.USB.USBManager
-
-**系统接口：** 此接口为系统接口。
-
 ## SINK
 
 ```TypeScript
@@ -57,6 +41,22 @@ SINK = 2
 **起始版本：** 9
 
 <!--Device-PowerRoleType-SINK = 2--><!--Device-PowerRoleType-SINK = 2-End-->
+
+**系统能力：** SystemCapability.USB.USBManager
+
+**系统接口：** 此接口为系统接口。
+
+## SOURCE
+
+```TypeScript
+SOURCE = 1
+```
+
+对外提供电源。
+
+**起始版本：** 9
+
+<!--Device-PowerRoleType-SOURCE = 1--><!--Device-PowerRoleType-SOURCE = 1-End-->
 
 **系统能力：** SystemCapability.USB.USBManager
 

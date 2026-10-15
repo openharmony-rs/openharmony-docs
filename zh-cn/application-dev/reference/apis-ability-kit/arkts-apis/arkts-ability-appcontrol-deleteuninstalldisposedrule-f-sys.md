@@ -42,6 +42,7 @@ function deleteUninstallDisposedRule(appIdentifier: string, appIndex?: number): 
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex is not in the valid range. |
 | [17700074](../errorcode-bundle.md#17700074-传入的appidentifier无效) | The specified appIdentifier is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,3 +58,5 @@ try {
   console.error('deleteUninstallDisposedRule failed ' + message);
 }
 ```
+
+<!--DelEnd-->

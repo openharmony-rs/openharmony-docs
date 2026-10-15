@@ -187,15 +187,22 @@ static getGlobalHandleCount(): number
 | --- | --- |
 | number | 返回当前虚拟机正在使用的全局 handle 数量，该值大于等于 0。 |
 
+**示例**
+
+```TypeScript
+import { util } from '@kit.ArkTS';
+
+let count: number = util.ArkTSVM.getGlobalHandleCount();
+console.info(`current global handle count: ${count}`);
+```
+
 ## offVMHeapMemoryPressure
 
 ```TypeScript
 static offVMHeapMemoryPressure(): void
 ```
 
-取消注册在 GC 后堆内存超过临界预警阈值时触发的回调。
-
-@static
+取消注册在 GC 后堆内存超过临界预警阈值时触发的回调。必须在主线程上调用。
 
 **起始版本：** 24
 
@@ -219,9 +226,7 @@ util.ArkTSVM.offVMHeapMemoryPressure();
 static onVMHeapMemoryPressure(callback: Callback<string>, heapMemoryThreshold: HeapMemoryThreshold): boolean
 ```
 
-注册一个回调函数，在 GC（垃圾回收）后堆内存超过临界预警阈值时触发。必须在主线程上调用，且仅能注册一个回调。
-
-NOTE:无法保证在 OOM（内存溢出）前一定会触发该回调。
+注册一个回调函数，在虚拟机主线程完成GC（垃圾回收）后，按存活对象大小判断堆内存是否超过临界预警阈值时触发。堆碎片和浮动垃圾可能影响判断，无法保证在OOM（内存溢出）前一定触发。必须在主线程上调用，且仅能注册一个回调。
 
 **起始版本：** 24
 
@@ -242,7 +247,7 @@ NOTE:无法保证在 OOM（内存溢出）前一定会触发该回调。
 
 | 类型 | 说明 |
 | --- | --- |
-| boolean | 注册成功返回 `true`；若不在主线程调用或回调已注册，则返回 `false`。@static |
+| boolean | 注册成功返回 `true`；若不在主线程调用或回调已注册，则返回 `false`。 |
 
 **示例**
 
@@ -315,7 +320,7 @@ util.ArkTSVM.setMultithreadingDetectionEnabled(true, {
 static setTrackGlobalRef(enable: boolean): void
 ```
 
-开启或关闭 napi_ref 与全局 handle 之间关联关系的追踪。开启后，堆快照将包含 native 引用地址信息。关闭后（enable 为false），将停止追踪，堆快照中不再显示 native 引用与全局 handle 之间的关联关系。
+开启或关闭进程级的 napi_ref 与全局 handle 之间关联关系追踪，所有线程共享该状态。开启后，堆快照将包含 native 引用地址信息。追踪会增加内存和性能开销，建议无需调试时关闭。关闭后（enable 为false），将停止追踪，堆快照中不再显示 native 引用与全局 handle 之间的关联关系。
 
 **起始版本：** 26.0.0
 

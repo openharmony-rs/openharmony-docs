@@ -20,9 +20,9 @@ The following pixel formats are not supported for PixelMap creation: RGBA_101010
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 26.0.0.
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
 <!--Device-image-function createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions): PixelMap--><!--Device-image-function createPixelMapFromPixelsSync(pixels: ArrayBuffer, param: InitializationOptions): PixelMap-End-->
 
@@ -48,7 +48,7 @@ The following pixel formats are not supported for PixelMap creation: RGBA_101010
 | [7600206](../errorcode-image.md#7600206-invalid-parameter) | Invalid parameter. Possible cause: Size of the pixel data buffer does not match InitializationOptions.size. |
 | [7600207](../errorcode-image.md#7600207-unsupported-data-format) | Unsupported pixel format. |
 | [7600301](../errorcode-image.md#7600301-memory-allocation-failure) | Failed to allocate memory. Possible causes: 1. The resulting PixelMap size is too large. 2. The system is out of memory. |
-| [7600305](../errorcode-image.md#7600305-failed-to-create-the-pixelmap) | Failed to create the PixelMap. Possible causes: 1. Failed to perform pixel format conversion. 2. Internal data is corrupted. Please check the logs for detailed information. |
+| [7600305](../errorcode-image.md#7600305-failed-to-create-the-pixelmap) | Failed to create the PixelMap. Possible causes:         1. Failed to perform pixel format conversion.         2. Internal data is corrupted. Please check the logs for detailed information. |
 
 **Examples**
 

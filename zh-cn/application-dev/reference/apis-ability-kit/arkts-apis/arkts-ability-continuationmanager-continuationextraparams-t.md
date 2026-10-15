@@ -6,6 +6,8 @@ export type ContinuationExtraParams = _ContinuationExtraParams
 
 流转管理入口中设备选择模块所需的过滤参数。
 
+**类型：** _ContinuationExtraParams
+
 **起始版本：** 10
 
 **废弃版本：** 22
@@ -19,5 +21,3 @@ export type ContinuationExtraParams = _ContinuationExtraParams
 <!--Device-continuationManager-export type ContinuationExtraParams = _ContinuationExtraParams--><!--Device-continuationManager-export type ContinuationExtraParams = _ContinuationExtraParams-End-->
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
-
-**类型：** _ContinuationExtraParams

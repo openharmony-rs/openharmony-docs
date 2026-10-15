@@ -6,6 +6,8 @@
 import { systemParameter } from '@kit.BasicServicesKit';
 ```
 
+<a id="set1"></a>
+
 ## set
 
 ```TypeScript
@@ -18,7 +20,7 @@ Sets a value of the specified key. This API uses an asynchronous callback to ret
 
 **Deprecated since:** 9
 
-**Substitutes:** set
+**Substitutes:** [set](arkts-basicservices-systemparameterenhance-set-f-sys.md)
 
 <!--Device-systemParameter-function set(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-systemParameter-function set(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -34,6 +36,7 @@ Sets a value of the specified key. This API uses an asynchronous callback to ret
 | value | string | Yes | Value to set. For details about length limit, see [Parameter Management](../../../../device-dev/subsystems/subsys-boot-init-sysparam.md). |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the setting result asynchronously. If the setting is successful, **err** is **undefined**. If the setting fails, **err** is an error object. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,8 +55,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="set-1"></a>
+
+<a id="set2"></a>
 
 ## set
 
@@ -67,7 +72,7 @@ Sets a value of the specified key. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** set
+**Substitutes:** [set](arkts-basicservices-systemparameterenhance-set-f-sys.md)
 
 <!--Device-systemParameter-function set(key: string, value: string): Promise<void>--><!--Device-systemParameter-function set(key: string, value: string): Promise<void>-End-->
 
@@ -88,6 +93,7 @@ Sets a value of the specified key. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -104,3 +110,5 @@ try {
   console.error('set unexpected error: ' + e);
 }
 ```
+
+<!--DelEnd-->

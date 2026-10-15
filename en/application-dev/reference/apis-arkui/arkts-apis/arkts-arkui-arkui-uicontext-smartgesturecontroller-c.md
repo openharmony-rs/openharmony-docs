@@ -4,11 +4,11 @@
 export class SmartGestureController
 ```
 
-Provides the capability to enable smart gestures, monitor them, control the selection state, and dynamically determine smart gesture behavior.
+Provides the capabilities of smart gestures enabling, listening, selected state control, and dynamic smart gesture behaviors decision. It is suitable for scenarios where an app integrates smart gestures, listens for the system's default gesture handling intent, and customizes gesture response behaviors, helping the app flexibly control the smart gesture interaction process.
 
 > **NOTE:** 
 > 
-> The following APIs must be called using a **SmartGestureController** instance obtained via
+> To use the following APIs, you need to obtain a **SmartGestureController** instance using
 > [getSmartGestureController()](arkts-arkui-arkui-uicontext-uicontext-c.md#getsmartgesturecontroller) in **UIContext**.
 
 **Since:** 26.0.0
@@ -32,7 +32,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 clearMonitors(): void
 ```
 
-Clears all monitoring callbacks registered for the current **UIContext**.
+Clears all callbacks for listening to smart gestures, which are registered in the current UI context.
 
 **Since:** 26.0.0
 
@@ -102,7 +102,7 @@ struct SmartGestureControllerExample {
 clearSelected(): void
 ```
 
-Clears the currently selected node of smart gestures.
+Clears the node selected by the current smart gesture.
 
 **Since:** 26.0.0
 
@@ -170,13 +170,13 @@ struct SmartGestureControllerExample {
 enableSmartTapAndSlideGestures(enabled: boolean): void
 ```
 
-Sets whether to enable the tap and slide operations of smart gestures.
+Sets whether to enable tap and slide gestures in smart gestures.
 
 > **NOTE:** 
 > 
-> - This API affects only the tap and slide smart gestures, not the wrist-turn gesture.
+> - This API affects only tap and slide gestures in smart gestures, but does not affect a wrist rotation gesture.
 > 
-> - When disabled, the [smartGestureShortcut](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#smartgestureshortcut)attribute on the component side is retained, but the tap and slide smart gestures will not be responded to.
+> - After disabled, the [smartGestureShortcut](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#smartgestureshortcut) configuration on the component side will be retained, but tap and slide gestures in smart gestures will not be responded.
 
 **Since:** 26.0.0
 
@@ -192,7 +192,7 @@ Sets whether to enable the tap and slide operations of smart gestures.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enabled | boolean | Yes | Whether to enable the tap and slide smart gesture handling. The value **true** means to enable it, and **false** means to disable it. |
+| enabled | boolean | Yes | Whether to enable tap and slide gestures in smart gestures. The value **true** indicates yes, and **false** indicates no. |
 
 **Examples**
 
@@ -241,19 +241,19 @@ struct SmartGestureControllerExample {
 registerMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void
 ```
 
-Registers a smart gesture monitoring callback. Before the system processes the current smart gesture, the application can receive the default action handling of the current gesture and apply custom intervention. The callback is used for asynchronous callbacks.
+Registers a callback for listening to smart gestures. Before the system handles the current smart gesture, an application can receive the default action handling of the current gesture and perform custom intervention. This API uses an asynchronous callback to return the result.
 
 > **NOTE:** 
 > 
-> - This API enables the application to receive the system's handling intent for the current smart gesture event before it is processed by the system and apply custom intervention.
+> - This API allows an app to receive the processing intent of the current smart gesture event before the system handles it, and perform custom intervention.
 > 
-> - Users can customize the behavior of the current smart gesture through this callback.
+> - An app can use this callback to customize the behavior decision for the current smart gesture.
 > 
-> - Multiple monitoring callbacks can be registered. They are triggered in the reverse order of registration (the last registered one is executed first). When a monitoring callback consumes the smart gesture event, that is,when the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md).isConsumed is **true**,subsequent monitoring callbacks will not be executed.
+> - An app can register multiple listener callbacks, which are triggered in last-registered-first-executed order.When a listener callback consumes the smart gesture event, that is, when the return value [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md).isConsumed is **true**, subsequent listener callbacks will not be executed.
 > 
-> - If the same callback is registered repeatedly, only the first registration takes effect; duplicate registrations are ignored.
+> - When an app registers the same callback repeatedly, only the first registered callback is retained, and duplicate registrations do not take effect.
 > 
-> - The return value of the callback must be a valid [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)instance; otherwise, the modification will not take effect.
+> - The callback return value must be a valid [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)instance; otherwise, the current override does not take effect.
 
 **Since:** 26.0.0
 
@@ -269,7 +269,7 @@ Registers a smart gesture monitoring callback. Before the system processes the c
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| monitorCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md), [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)&gt; | Yes | Smart gesture monitoring callback. The callback parameter is the default action handling provided by the system, and the return value is used to declare whether to consume the current smart gesture and whether to replace the default action handling. |
+| monitorCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md), [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)&gt; | Yes | Smart gesture listener callback. The callback parameter is the default action handling provided by the system, and the return value declares whether to consume the current smart gesture and whether to replace the default action handling. |
 
 **Examples**
 
@@ -330,11 +330,11 @@ struct SmartGestureControllerExample {
 requestSelected(id: string): void
 ```
 
-Requests to set the specified component as the current smart gesture selected node. After successful selection, a selection prompt box is displayed. The style of the selection box varies by device.
+Requests to set a specified component as the node selected by the current smart gesture. After the selection is successful, a selection dialog box is displayed. The style of the selection dialog box varies depending on the device.
 
 > **NOTE:** 
 > 
-> - The request takes effect only when all the following conditions are met: the target component can respond to smart gestures, the component is visible on the screen, and the component has an [onClick](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onclick-1) event bound or a [TapGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md#tapgesture) gesture bound.
+> - The request takes effect only when the target component meets all of the following conditions: the component can respond to smart gestures, the component is visible on the screen, and the component is bound with [onClick](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onclick) or a tap gesture [TapGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md#tapgesture).
 > 
 > - Whether a component can respond to smart gestures is determined by **enabled** in [smartGestureShortcut](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#smartgestureshortcut).
 
@@ -352,7 +352,7 @@ Requests to set the specified component as the current smart gesture selected no
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| id | string | Yes | Component [id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id). |
+| id | string | Yes | Component [id](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#id). The target component corresponding to this ID must meet the following requirements: it can respond to smart gestures, is visible on the screen, and is bound with [onClick](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#onclick) or [TapGesture](../arkts-components/arkts-arkui-gesturecontrol-n.md#tapgesture). |
 
 **Examples**
 
@@ -410,7 +410,7 @@ struct SmartGestureControllerExample {
 unregisterMonitor(monitorCallback: Callback<BaseGestureHandlingProposal, GestureHandlingResolution>): void
 ```
 
-Unregisters a smart gesture monitoring callback.
+Unregisters a callback for listening to smart gestures.
 
 **Since:** 26.0.0
 
@@ -426,7 +426,7 @@ Unregisters a smart gesture monitoring callback.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| monitorCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md), [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)&gt; | Yes | The smart gesture monitoring callback to unregister. |
+| monitorCallback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[BaseGestureHandlingProposal](arkts-arkui-arkui-uicontext-basegesturehandlingproposal-c.md), [GestureHandlingResolution](arkts-arkui-arkui-uicontext-gesturehandlingresolution-c.md)&gt; | Yes | Smart gesture listener callback to unregister. |
 
 **Examples**
 

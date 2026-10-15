@@ -45,6 +45,7 @@ function onIndoorOrOutdoorIdentify(configParams: DistanceMeasurementConfigParams
 | [35100002](../errorcode-spatialAwareness.md#35100002-订阅失败) | Subscription failed. |
 | [35100004](../errorcode-spatialAwareness.md#35100004-无效参数) | Parameter invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,3 +66,5 @@ import { spatialAwareness } from '@kit.MultimodalAwarenessKit';
       console.error(`call onIndoorOrOutdoorIdentify failed, Code: ${err.code}, message: ${err.message}`);
    }
 ```
+
+<!--DelEnd-->

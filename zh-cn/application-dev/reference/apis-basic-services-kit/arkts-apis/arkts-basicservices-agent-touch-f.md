@@ -6,6 +6,8 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="touch1"></a>
+
 ## touch
 
 ```TypeScript
@@ -37,7 +39,7 @@ function touch(id: string, token: string, callback: AsyncCallback<TaskInfo>): vo
 | [21900006](../errorcode-request.md#21900006-操作不存在的任务错误) | Task removed or not found. |
 
 
-<a id="touch-1"></a>
+<a id="touch2"></a>
 
 ## touch
 

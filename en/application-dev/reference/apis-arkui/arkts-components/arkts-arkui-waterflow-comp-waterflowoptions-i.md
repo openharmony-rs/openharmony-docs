@@ -18,7 +18,7 @@ Provides parameters of the **WaterFlow** component.
 footer?: CustomBuilder
 ```
 
-Footer component of the **WaterFlow** component, which is used to display custom content (such as loading prompts and bottom icons) at the end of the waterfall. If this parameter is not set, no footer component is displayed.
+Footer component of the **WaterFlow** component, which is used to display custom content (such as loading prompts and bottom icons) at the end of the waterfall. If this parameter is not set, no footer component is displayed. <br>**NOTE:** <br>1. For details about the usage, see [Example 1](#example-1-using-a-basic-waterflow-component). <br>2. When both **footer** and **footerContent** are set, the component set by **footerContent** takes precedence. <br>3. When group mixing layout is used, footer cannot be set separately. You can use the last group as the footer component.
 
 **Type:** [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md)
 
@@ -38,7 +38,7 @@ Footer component of the **WaterFlow** component, which is used to display custom
 footerContent?: ComponentContent
 ```
 
-Footer of the **WaterFlow** component. This parameter has a higher priority than **footer**. If both **footer** and **footerContent** are set, the component set by **footerContent** will be used.
+Footer component content of **WaterFlow**. <br>This parameter has a higher priority than **footer**. That is, when both **footer** and **footerContent** are set, the component set by **footerContent** takes precedence. When **footerContent** is not set, footer can still be used to set the footer component. When group mixing layout is used, the footer component cannot be set separately. You can use the last group as the footer component.
 
 **Type:** ComponentContent
 
@@ -58,7 +58,7 @@ Footer of the **WaterFlow** component. This parameter has a higher priority than
 layoutMode?: WaterFlowLayoutMode
 ```
 
-Layout mode of the &lt;em&gt;WaterFlow&lt;/em&gt; component.
+Layout mode of **WaterFlow**. Select a more suitable mode based on the usage scenario. **ALWAYS_TOP_DOWN** is suitable for scenarios with a fixed number of columns; **SLIDING_WINDOW** is suitable for scenarios such as dynamic number of columns, large data volume, and screen rotation. <br>**NOTE:** <br>Default value: [ALWAYS_TOP_DOWN](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md).
 
 **Type:** [WaterFlowLayoutMode](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md)
 
@@ -80,9 +80,7 @@ Layout mode of the &lt;em&gt;WaterFlow&lt;/em&gt; component.
 scroller?: Scroller
 ```
 
-Controller of the scrollable component, bound to the scrollable component.
-
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>The scroller cannot be bound to other scrollable components, such as ArcList, List, Grid, Scroll, or WaterFlow. </p>
+Controller of the scrollable component, bound to the scrollable component. When not set, no external controller is bound, and the component manages scrolling by itself. <br>**NOTE:** <br>1. It is not allowed to bind the same scroll controller to other scrollable components such as [ArcList](ts-container-arclist.md), [List](ts-container-list.md), [Grid](ts-container-grid.md), [Scroll](ts-container-scroll.md), and [WaterFlow](ts-container-waterflow.md). <br>2. When the [SLIDING_WINDOW](arkts-arkui-waterflow-comp-waterflowlayoutmode-e.md) layout mode is used, the total offset returned by [currentOffset](ts-container-scroll.md#currentoffset) or [offset](ts-container-scroll.md#offset23) of scroller is inaccurate after a jump or data update is triggered, and is recalibrated when scrolling back to the top.
 
 **Type:** [Scroller](arkts-arkui-scroll-comp-scroller-c.md)
 
@@ -102,9 +100,7 @@ Controller of the scrollable component, bound to the scrollable component.
 sections?: WaterFlowSections
 ```
 
-Water flow item sections, used to implement mixed layouts with different column counts for each section within the same **WaterFlow** component. This is applicable to scenarios where different numbers of columns are required in different areas. If this parameter is not set, the layout with the same number of columns is used.
-
-<p>&lt;strong&gt;NOTE&lt;/strong&gt; <br>1. When &lt;em&gt;sections&lt;/em&gt; is used, the &lt;em&gt;columnsTemplate&lt;/em&gt; and &lt;em&gt;rowsTemplate&lt;/em&gt; attributes are ignored. <br>2. When &lt;em&gt;sections&lt;/em&gt; is used, the footer cannot be set separately. The last section can function as the footer. </p>
+**FlowItem** groups to implement mixed layout with different numbers of columns for different groups within the same **WaterFlow** component. Suitable for scenarios where different numbers of columns are required in different areas. When not set, a unified number of columns is used for layout. <br>**NOTE:** <br>1. When group mixing layout is used, the [columnsTemplate](#columnstemplate) and [rowsTemplate](#rowstemplate) attributes are ignored. <br>2. When group mixing layout is used, **footer** cannot be set separately. You can use the last group as the footer component.
 
 **Type:** [WaterFlowSections](arkts-arkui-waterflow-comp-waterflowsections-c.md)
 

@@ -14,6 +14,22 @@ Enum for haptics mode in tone scenario.
 
 **System API:** This is a system API.
 
+## NON_SYNC
+
+```TypeScript
+NON_SYNC = 2
+```
+
+Haptics is out of synchronize with tone.
+
+**Since:** 14
+
+<!--Device-ToneHapticsMode-NON_SYNC = 2--><!--Device-ToneHapticsMode-NON_SYNC = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.SystemSound.Core
+
+**System API:** This is a system API.
+
 ## NONE
 
 ```TypeScript
@@ -41,22 +57,6 @@ Haptics is synchronized with tone.
 **Since:** 14
 
 <!--Device-ToneHapticsMode-SYNC = 1--><!--Device-ToneHapticsMode-SYNC = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.SystemSound.Core
-
-**System API:** This is a system API.
-
-## NON_SYNC
-
-```TypeScript
-NON_SYNC = 2
-```
-
-Haptics is out of synchronize with tone.
-
-**Since:** 14
-
-<!--Device-ToneHapticsMode-NON_SYNC = 2--><!--Device-ToneHapticsMode-NON_SYNC = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.SystemSound.Core
 

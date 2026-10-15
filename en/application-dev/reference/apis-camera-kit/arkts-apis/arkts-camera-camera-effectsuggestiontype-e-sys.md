@@ -14,6 +14,22 @@ Enum for effect suggestion.
 
 **System API:** This is a system API.
 
+## EFFECT_SUGGESTION_FOOD
+
+```TypeScript
+EFFECT_SUGGESTION_FOOD = 2
+```
+
+Food.
+
+**Since:** 12
+
+<!--Device-EffectSuggestionType-EFFECT_SUGGESTION_FOOD = 2--><!--Device-EffectSuggestionType-EFFECT_SUGGESTION_FOOD = 2-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
 ## EFFECT_SUGGESTION_NONE
 
 ```TypeScript
@@ -46,22 +62,6 @@ Portrait.
 
 **System API:** This is a system API.
 
-## EFFECT_SUGGESTION_FOOD
-
-```TypeScript
-EFFECT_SUGGESTION_FOOD = 2
-```
-
-Food.
-
-**Since:** 12
-
-<!--Device-EffectSuggestionType-EFFECT_SUGGESTION_FOOD = 2--><!--Device-EffectSuggestionType-EFFECT_SUGGESTION_FOOD = 2-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
 ## EFFECT_SUGGESTION_SKY
 
 ```TypeScript
@@ -78,22 +78,6 @@ Sky.
 
 **System API:** This is a system API.
 
-## EFFECT_SUGGESTION_SUNRISE_SUNSET
-
-```TypeScript
-EFFECT_SUGGESTION_SUNRISE_SUNSET = 4
-```
-
-Sunrise and sunset.
-
-**Since:** 12
-
-<!--Device-EffectSuggestionType-EFFECT_SUGGESTION_SUNRISE_SUNSET = 4--><!--Device-EffectSuggestionType-EFFECT_SUGGESTION_SUNRISE_SUNSET = 4-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
 ## EFFECT_SUGGESTION_STAGE
 
 ```TypeScript
@@ -105,6 +89,22 @@ Stage.
 **Since:** 18
 
 <!--Device-EffectSuggestionType-EFFECT_SUGGESTION_STAGE = 5--><!--Device-EffectSuggestionType-EFFECT_SUGGESTION_STAGE = 5-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## EFFECT_SUGGESTION_SUNRISE_SUNSET
+
+```TypeScript
+EFFECT_SUGGESTION_SUNRISE_SUNSET = 4
+```
+
+Sunrise and sunset.
+
+**Since:** 12
+
+<!--Device-EffectSuggestionType-EFFECT_SUGGESTION_SUNRISE_SUNSET = 4--><!--Device-EffectSuggestionType-EFFECT_SUGGESTION_SUNRISE_SUNSET = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

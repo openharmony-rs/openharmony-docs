@@ -6,19 +6,19 @@
 import { wantAgent, WantAgent } from '@kit.AbilityKit';
 ```
 
+<a id="getwantagent1"></a>
+
 ## getWantAgent
 
 ```TypeScript
 function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void
 ```
 
-Obtains a WantAgent object. This API uses an asynchronous callback to return the result. If the creation fails, a null WantAgent object is returned.
-
-<p>**NOTE:**  <br>Third-party applications can set only their own abilities. </p>
+Obtains a WantAgent object. This API uses an asynchronous callback to return the result. If the creation fails, a null value is returned.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-wantAgent-function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void--><!--Device-wantAgent-function getWantAgent(info: WantAgentInfo, callback: AsyncCallback<WantAgent>): void-End-->
 
@@ -28,14 +28,14 @@ Obtains a WantAgent object. This API uses an asynchronous callback to return the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| info | [WantAgentInfo](arkts-ability-wantagent-wantagentinfo-t.md) | Yes | Information about the WantAgent object to obtain. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WantAgent](arkts-ability-wantagent-t.md)&gt; | Yes | Callback used to return the WantAgent object. |
+| info | [WantAgentInfo](arkts-ability-wantagent-wantagentinfo-t.md) | Yes | Configuration information required for creating the WantAgent object, including the target UIAbility, operation type, and request code. In **WantAgentInfo**, a third-party application is only allowed to specify its own UIAbility. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WantAgent](arkts-ability-wantagent-t.md)&gt; | Yes | Callback function. When the WantAgent is created successfully, err is undefined and data is the created WantAgent; otherwise, err is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-service-unresponsive) | Service busy. There are concurrent tasks. Try again later. |
 | [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
 
@@ -94,7 +94,7 @@ wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 ```
 
 
-<a id="getwantagent-1"></a>
+<a id="getwantagent2"></a>
 
 ## getWantAgent
 
@@ -102,13 +102,11 @@ wantAgent.getWantAgent(wantAgentInfo, getWantAgentCallback);
 function getWantAgent(info: WantAgentInfo): Promise<WantAgent>
 ```
 
-Obtains a WantAgent object. This API uses a promise to return the result. If the creation fails, a null WantAgent object is returned.
-
-<p>**NOTE:**  <br>Third-party applications can set only their own abilities. </p>
+Creates a WantAgent instance for triggering a specified operation later. This API uses a promise to return the result. If the creation succeeds, the WantAgent object is returned; otherwise, null is returned.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-wantAgent-function getWantAgent(info: WantAgentInfo): Promise<WantAgent>--><!--Device-wantAgent-function getWantAgent(info: WantAgentInfo): Promise<WantAgent>-End-->
 
@@ -118,7 +116,7 @@ Obtains a WantAgent object. This API uses a promise to return the result. If the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| info | [WantAgentInfo](arkts-ability-wantagent-wantagentinfo-t.md) | Yes | Information about the WantAgent object to obtain. |
+| info | [WantAgentInfo](arkts-ability-wantagent-wantagentinfo-t.md) | Yes | Configuration information required for creating the WantAgent object, including the target UIAbility, operation type, and request code. In **WantAgentInfo**, a third-party application is only allowed to specify its own UIAbility. |
 
 **Return value:**
 
@@ -130,7 +128,7 @@ Obtains a WantAgent object. This API uses a promise to return the result. If the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [16000007](../errorcode-ability.md#16000007-service-unresponsive) | Service busy. There are concurrent tasks. Try again later. |
 | [16000151](../errorcode-ability.md#16000151-invalid-wantagent-object) | Invalid wantAgent object. |
 

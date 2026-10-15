@@ -12,17 +12,17 @@ Enumerates keys for querying the additional information about the **COMMON_EVENT
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## EXTRA_SOC
+## EXTRA_CAPACITY_LEVEL
 
 ```TypeScript
-EXTRA_SOC = 'soc'
+EXTRA_CAPACITY_LEVEL = 'capacityLevel'
 ```
 
-Remaining battery level in percentage.
+Battery level of the device.
 
 **Since:** 9
 
-<!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'--><!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'-End-->
+<!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'--><!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -68,17 +68,31 @@ Type of the charger connected to the device.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## EXTRA_VOLTAGE
+## EXTRA_PRESENT
 
 ```TypeScript
-EXTRA_VOLTAGE = 'voltage'
+EXTRA_PRESENT = 'present'
 ```
 
-Battery voltage of the device.
+Whether the battery is supported by the device or installed.
 
 **Since:** 9
 
-<!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'--><!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'-End-->
+<!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'--><!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'-End-->
+
+**System capability:** SystemCapability.PowerManager.BatteryManager.Core
+
+## EXTRA_SOC
+
+```TypeScript
+EXTRA_SOC = 'soc'
+```
+
+Remaining battery level in percentage.
+
+**Since:** 9
+
+<!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'--><!--Device-CommonEventBatteryChangedKey-EXTRA_SOC = 'soc'-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -110,30 +124,16 @@ Battery temperature of the device.
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core
 
-## EXTRA_PRESENT
+## EXTRA_VOLTAGE
 
 ```TypeScript
-EXTRA_PRESENT = 'present'
+EXTRA_VOLTAGE = 'voltage'
 ```
 
-Whether the battery is supported by the device or installed.
+Battery voltage of the device.
 
 **Since:** 9
 
-<!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'--><!--Device-CommonEventBatteryChangedKey-EXTRA_PRESENT = 'present'-End-->
-
-**System capability:** SystemCapability.PowerManager.BatteryManager.Core
-
-## EXTRA_CAPACITY_LEVEL
-
-```TypeScript
-EXTRA_CAPACITY_LEVEL = 'capacityLevel'
-```
-
-Battery level of the device.
-
-**Since:** 9
-
-<!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'--><!--Device-CommonEventBatteryChangedKey-EXTRA_CAPACITY_LEVEL = 'capacityLevel'-End-->
+<!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'--><!--Device-CommonEventBatteryChangedKey-EXTRA_VOLTAGE = 'voltage'-End-->
 
 **System capability:** SystemCapability.PowerManager.BatteryManager.Core

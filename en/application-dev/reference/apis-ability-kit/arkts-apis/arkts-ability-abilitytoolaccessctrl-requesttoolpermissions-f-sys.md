@@ -49,6 +49,7 @@ Queries tool permissions based on the specified operations. This function checks
 | [24010003](../errorcode-abilityToolAccessCtrl-sys.md#24010003-environment-error) | The account is not logged in, network is unavailable, timeout, etc. |
 | [24010006](../errorcode-abilityToolAccessCtrl-sys.md#24010006-operation-not-allowed-while-the-device-is-locked) | The requested operation is not allowed to be executed while the device is locked. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,3 +73,5 @@ abilityToolAccessCtrl.requestToolPermissions(permissionQuery).then((data: abilit
   console.error(`requestToolPermissions fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

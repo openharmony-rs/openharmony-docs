@@ -40,7 +40,7 @@ iconsResource?: Array<Resource>
 
 List of button icon resources, corresponding one-to-one with **names** via Resource references. A maximum of 3 resources is supported. The value defaults to empty. This parameter is mutually exclusive with **icons**; only one of them can be used.
 
-**Type:** Array&lt;[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)&gt;
+**Type:** Array&lt;[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)&gt;
 
 **Since:** 12
 

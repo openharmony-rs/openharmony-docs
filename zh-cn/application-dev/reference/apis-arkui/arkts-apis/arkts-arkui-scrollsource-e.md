@@ -30,24 +30,6 @@ DRAG = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## FLING
-
-```TypeScript
-FLING
-```
-
-拖拽结束之后的惯性滑动。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-ScrollSource-FLING--><!--Device-ScrollSource-FLING-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## EDGE_EFFECT
 
 ```TypeScript
@@ -63,6 +45,24 @@ EdgeEffect.Spring的边缘滚动效果。
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ScrollSource-EDGE_EFFECT--><!--Device-ScrollSource-EDGE_EFFECT-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## FLING
+
+```TypeScript
+FLING
+```
+
+拖拽结束之后的惯性滑动。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-ScrollSource-FLING--><!--Device-ScrollSource-FLING-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

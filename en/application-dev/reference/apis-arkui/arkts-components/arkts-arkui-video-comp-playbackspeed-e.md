@@ -12,6 +12,60 @@ Enumerates video playback speed options.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## SPEED_FORWARD_0_125_X
+
+```TypeScript
+SPEED_FORWARD_0_125_X = 9
+```
+
+0.125x playback speed.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PlaybackSpeed-SPEED_FORWARD_0_125_X = 9--><!--Device-PlaybackSpeed-SPEED_FORWARD_0_125_X = 9-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SPEED_FORWARD_0_25_X
+
+```TypeScript
+SPEED_FORWARD_0_25_X = 8
+```
+
+0.25x playback speed.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PlaybackSpeed-SPEED_FORWARD_0_25_X = 8--><!--Device-PlaybackSpeed-SPEED_FORWARD_0_25_X = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SPEED_FORWARD_0_50_X
+
+```TypeScript
+SPEED_FORWARD_0_50_X = 5
+```
+
+0.5x playback speed.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PlaybackSpeed-SPEED_FORWARD_0_50_X = 5--><!--Device-PlaybackSpeed-SPEED_FORWARD_0_50_X = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Speed_Forward_0_75_X
 
 ```TypeScript
@@ -66,6 +120,24 @@ Speed_Forward_1_25_X
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## SPEED_FORWARD_1_50_X
+
+```TypeScript
+SPEED_FORWARD_1_50_X = 6
+```
+
+1.5x playback speed.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-PlaybackSpeed-SPEED_FORWARD_1_50_X = 6--><!--Device-PlaybackSpeed-SPEED_FORWARD_1_50_X = 6-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Speed_Forward_1_75_X
 
 ```TypeScript
@@ -102,42 +174,6 @@ Speed_Forward_2_00_X
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SPEED_FORWARD_0_50_X
-
-```TypeScript
-SPEED_FORWARD_0_50_X = 5
-```
-
-0.5x playback speed.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-PlaybackSpeed-SPEED_FORWARD_0_50_X = 5--><!--Device-PlaybackSpeed-SPEED_FORWARD_0_50_X = 5-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## SPEED_FORWARD_1_50_X
-
-```TypeScript
-SPEED_FORWARD_1_50_X = 6
-```
-
-1.5x playback speed.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-PlaybackSpeed-SPEED_FORWARD_1_50_X = 6--><!--Device-PlaybackSpeed-SPEED_FORWARD_1_50_X = 6-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## SPEED_FORWARD_3_00_X
 
 ```TypeScript
@@ -153,41 +189,5 @@ SPEED_FORWARD_3_00_X = 7
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-PlaybackSpeed-SPEED_FORWARD_3_00_X = 7--><!--Device-PlaybackSpeed-SPEED_FORWARD_3_00_X = 7-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## SPEED_FORWARD_0_25_X
-
-```TypeScript
-SPEED_FORWARD_0_25_X = 8
-```
-
-0.25x playback speed.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-PlaybackSpeed-SPEED_FORWARD_0_25_X = 8--><!--Device-PlaybackSpeed-SPEED_FORWARD_0_25_X = 8-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## SPEED_FORWARD_0_125_X
-
-```TypeScript
-SPEED_FORWARD_0_125_X = 9
-```
-
-0.125x playback speed.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-PlaybackSpeed-SPEED_FORWARD_0_125_X = 9--><!--Device-PlaybackSpeed-SPEED_FORWARD_0_125_X = 9-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

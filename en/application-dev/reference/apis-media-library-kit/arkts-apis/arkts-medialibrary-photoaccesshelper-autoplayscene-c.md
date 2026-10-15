@@ -32,7 +32,7 @@ Whether to support automatic playback of the moving photo.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AutoPlayScene-playMode: PlayMode--><!--Device-AutoPlayScene-playMode: PlayMode-End-->
 
@@ -52,7 +52,7 @@ Scene of the moving photo playback.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-AutoPlayScene-sceneType: SceneType--><!--Device-AutoPlayScene-sceneType: SceneType-End-->
 

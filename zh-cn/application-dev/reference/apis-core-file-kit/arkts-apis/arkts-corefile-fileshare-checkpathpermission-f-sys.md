@@ -48,6 +48,7 @@ function checkPathPermission(tokenID: number, policies: Array<PathPolicyInfo>, p
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | 13900042 | Out of memory. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -79,3 +80,5 @@ async function checkPersistentPermissionExample() {
   }
 }
 ```
+
+<!--DelEnd-->

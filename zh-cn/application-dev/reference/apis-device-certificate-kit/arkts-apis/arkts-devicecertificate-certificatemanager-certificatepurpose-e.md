@@ -12,20 +12,6 @@ export enum CertificatePurpose
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## PURPOSE_DEFAULT
-
-```TypeScript
-PURPOSE_DEFAULT = 0
-```
-
-默认用途，用于凭据签名。
-
-**起始版本：** 22
-
-<!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0--><!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManager
-
 ## PURPOSE_ALL
 
 ```TypeScript
@@ -40,17 +26,17 @@ PURPOSE_ALL = 1
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
-## PURPOSE_SIGN
+## PURPOSE_DEFAULT
 
 ```TypeScript
-PURPOSE_SIGN = 2
+PURPOSE_DEFAULT = 0
 ```
 
-用于凭据签名。
+默认用途，用于凭据签名。
 
 **起始版本：** 22
 
-<!--Device-CertificatePurpose-PURPOSE_SIGN = 2--><!--Device-CertificatePurpose-PURPOSE_SIGN = 2-End-->
+<!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0--><!--Device-CertificatePurpose-PURPOSE_DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager
 
@@ -65,5 +51,19 @@ PURPOSE_ENCRYPT = 3
 **起始版本：** 22
 
 <!--Device-CertificatePurpose-PURPOSE_ENCRYPT = 3--><!--Device-CertificatePurpose-PURPOSE_ENCRYPT = 3-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManager
+
+## PURPOSE_SIGN
+
+```TypeScript
+PURPOSE_SIGN = 2
+```
+
+用于凭据签名。
+
+**起始版本：** 22
+
+<!--Device-CertificatePurpose-PURPOSE_SIGN = 2--><!--Device-CertificatePurpose-PURPOSE_SIGN = 2-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManager

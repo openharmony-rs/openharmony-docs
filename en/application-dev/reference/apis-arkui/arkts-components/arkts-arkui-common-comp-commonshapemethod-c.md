@@ -6,7 +6,7 @@ declare class CommonShapeMethod<T> extends CommonMethod<T>
 
 CommonShapeMethod
 
-**Inheritance/Implementation:** CommonShapeMethod extends CommonMethod<T>
+**Inheritance/Implementation:** CommonShapeMethod extends CommonMethod&lt;T&gt;
 
 **Since:** 7
 
@@ -166,7 +166,7 @@ Sets the dashed line segment length and gap length of the stroke. This attribute
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | Array&lt;any&gt; | Yes | Array that defines the dashed pattern of the Rect stroke. The array elements alternately represent the segment length and gap length.<br> Default value: [] (empty array) <br> Default unit: vp <br> The abnormal values undefined and null are processed as the default value. <br> **NOTE:** Empty array: solid line <br> Even-numbered multi-element array: the array elements are cycled in order. For example, [a, b, c, d] represents segment length a -&gt; gap length b -&gt; segment length c -&gt; gap length d -&gt; segment length a -&gt; ... Odd-numbered multi-element array: the array elements are repeated once and then cycled following the rule of an even-numbered multi-element array. For example, [a, b, c] is equivalent to [a, b, c, a, b, c], which represents segment length a -&gt; gap length b -&gt; segment length c -&gt; gap length a -&gt; segment length b -&gt; gap length c -&gt; segment length a -&gt; ... |
+| value | Array&lt;any&gt; | Yes | Array that defines the dashed pattern of the Rect stroke. The array elements alternately represent the segment length and gap length.<br> Default value: [] (empty array) <br> Default unit: vp <br> The abnormal values undefined and null are processed as the default value. <br> **NOTE:** Empty array: solid line <br> Even-numbered multi-element array: the array elements are cycled in order. For example, [a, b, c, d] represents segment length a -> gap length b -> segment length c -> gap length d -> segment length a -> ... Odd-numbered multi-element array: the array elements are repeated once and then cycled following the rule of an even-numbered multi-element array. For example, [a, b, c] is equivalent to [a, b, c, a, b, c], which represents segment length a -> gap length b -> segment length c -> gap length a -> segment length b -> gap length c -> segment length a -> ... |
 
 **Return value:**
 

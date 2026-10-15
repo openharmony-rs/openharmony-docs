@@ -4,7 +4,9 @@
 type KVObject = { [key: string]: number | string | boolean | [] | KVObject }
 ```
 
-Defines a key-value pair data structure that conforms to JSON format.
+Stores information in the form of key-value pairs, conforming to the JSON format.
+
+**Type:** { [key: string]: number | string | boolean | [] | KVObject }
 
 **Since:** 8
 
@@ -13,5 +15,3 @@ Defines a key-value pair data structure that conforms to JSON format.
 <!--Device-pluginComponentManager-type KVObject = { [key: string]: number | string | boolean | [] | KVObject }--><!--Device-pluginComponentManager-type KVObject = { [key: string]: number | string | boolean | [] | KVObject }-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** { [key: string]: number | string | boolean | [] | KVObject }

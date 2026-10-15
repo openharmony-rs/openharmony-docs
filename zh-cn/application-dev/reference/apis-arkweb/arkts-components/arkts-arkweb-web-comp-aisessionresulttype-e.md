@@ -12,22 +12,6 @@ AI会话操作的结果状态。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## SUCCESS
-
-```TypeScript
-SUCCESS = 0
-```
-
-操作执行成功。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AISessionResultType-SUCCESS = 0--><!--Device-AISessionResultType-SUCCESS = 0-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## FAILURE
 
 ```TypeScript
@@ -57,5 +41,21 @@ RUNNING = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AISessionResultType-RUNNING = 2--><!--Device-AISessionResultType-RUNNING = 2-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+操作执行成功。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AISessionResultType-SUCCESS = 0--><!--Device-AISessionResultType-SUCCESS = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

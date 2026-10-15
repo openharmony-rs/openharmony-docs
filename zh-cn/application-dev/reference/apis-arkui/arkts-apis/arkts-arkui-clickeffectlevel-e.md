@@ -12,6 +12,24 @@ declare enum ClickEffectLevel
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## HEAVY
+
+```TypeScript
+HEAVY = 2
+```
+
+大面积（厚重），弹簧动效，刚性：240，阻尼：28，初始速度：0，默认缩放比95%。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ClickEffectLevel-HEAVY = 2--><!--Device-ClickEffectLevel-HEAVY = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## LIGHT
 
 ```TypeScript
@@ -45,23 +63,5 @@ MIDDLE = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-ClickEffectLevel-MIDDLE = 1--><!--Device-ClickEffectLevel-MIDDLE = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## HEAVY
-
-```TypeScript
-HEAVY = 2
-```
-
-大面积（厚重），弹簧动效，刚性：240，阻尼：28，初始速度：0，默认缩放比95%。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ClickEffectLevel-HEAVY = 2--><!--Device-ClickEffectLevel-HEAVY = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

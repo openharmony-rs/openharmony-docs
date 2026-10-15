@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="updatesimmessage1"></a>
+
 ## updateSimMessage
 
 ```TypeScript
@@ -43,6 +45,7 @@ function updateSimMessage(options: UpdateSimMessageOptions, callback: AsyncCallb
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,8 +64,10 @@ sms.updateSimMessage(updateSimMessageOptions, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="updatesimmessage-1"></a>
+
+<a id="updatesimmessage2"></a>
 
 ## updateSimMessage
 
@@ -106,6 +111,7 @@ function updateSimMessage(options: UpdateSimMessageOptions): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,3 +132,5 @@ promise.then(() => {
     console.error(`updateSimMessage failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

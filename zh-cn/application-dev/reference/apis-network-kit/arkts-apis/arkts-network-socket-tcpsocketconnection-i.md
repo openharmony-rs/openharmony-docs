@@ -22,6 +22,8 @@ TCPSocketConnection连接，即TCPSocket客户端与服务端的连接。在调�
 import { socket } from '@kit.NetworkKit';
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -71,7 +73,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -185,6 +187,8 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 })
 ```
 
+<a id="getremoteaddress1"></a>
+
 ## getRemoteAddress
 
 ```TypeScript
@@ -238,7 +242,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-<a id="getremoteaddress-1"></a>
+<a id="getremoteaddress2"></a>
 
 ## getRemoteAddress
 
@@ -304,7 +308,7 @@ getSocketFd(): Promise<number>
 > 
 > - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](#close1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -625,6 +629,8 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
+<a id="send1"></a>
+
 ## send
 
 ```TypeScript
@@ -677,7 +683,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-<a id="send-1"></a>
+<a id="send2"></a>
 
 ## send
 

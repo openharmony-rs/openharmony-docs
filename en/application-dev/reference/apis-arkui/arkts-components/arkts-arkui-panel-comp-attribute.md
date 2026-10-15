@@ -6,7 +6,7 @@ declare class PanelAttribute extends CommonMethod<PanelAttribute>
 
 Pane Attribute.
 
-**Inheritance/Implementation:** PanelAttribute extends CommonMethod<PanelAttribute>
+**Inheritance/Implementation:** PanelAttribute extends CommonMethod&lt;PanelAttribute&gt;
 
 **Since:** 7
 

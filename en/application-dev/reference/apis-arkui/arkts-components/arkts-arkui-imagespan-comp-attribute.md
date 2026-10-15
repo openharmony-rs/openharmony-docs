@@ -6,9 +6,9 @@ declare class ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
 
 The attributes inherit from [BaseSpan](arkts-arkui-span-comp-basespan-c.md). Among the universal attributes, [size](arkts-arkui-common-comp.md), [background](arkts-arkui-common-comp.md), and [border](arkts-arkui-common-comp.md) are supported.
 
-@extends CommonMethod&lt;ImageSpanAttribute&gt; [since 10 - 10] @extends BaseSpan&lt;ImageSpanAttribute&gt; [since 11]
+@extends CommonMethod<ImageSpanAttribute> [since 10 - 10] @extends BaseSpan<ImageSpanAttribute> [since 11]
 
-**Inheritance/Implementation:** ImageSpanAttribute extends BaseSpan<ImageSpanAttribute>
+**Inheritance/Implementation:** ImageSpanAttribute extends BaseSpan&lt;ImageSpanAttribute&gt;
 
 **Since:** 10
 
@@ -148,11 +148,11 @@ When `top + bottom` is greater than the height of the original image or `left + 
 
 When the parameter type of the component is an animated image, [AnimatedDrawableDescriptor](../arkts-apis/arkts-arkui-arkui-drawabledescriptor-animateddrawabledescriptor-c.md), or SVG, this attribute does not take effect.
 
-**Since:** 26.0.1
+**Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-ImageSpanAttribute-resizable(value: ResizableOptions): ImageSpanAttribute--><!--Device-ImageSpanAttribute-resizable(value: ResizableOptions): ImageSpanAttribute-End-->
 

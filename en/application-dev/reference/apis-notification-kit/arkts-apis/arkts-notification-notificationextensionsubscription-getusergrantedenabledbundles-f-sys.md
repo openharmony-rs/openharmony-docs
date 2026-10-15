@@ -6,6 +6,8 @@
 import { notificationExtensionSubscription } from '@kit.NotificationKit';
 ```
 
+<a id="getusergrantedenabledbundles1"></a>
+
 ## getUserGrantedEnabledBundles
 
 ```TypeScript
@@ -46,6 +48,7 @@ Obtains the applications that are allowed to access device notifications. This A
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600022](../errorcode-notification.md#1600022-invalid-bundle-information) | The specified bundle is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,3 +63,5 @@ notificationExtensionSubscription.getUserGrantedEnabledBundles(targetBundle).the
   console.error(`getUserGrantedEnabledBundles fail, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

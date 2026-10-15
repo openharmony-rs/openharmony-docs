@@ -6,6 +6,8 @@
 import { application } from '@kit.AbilityKit';
 ```
 
+<a id="createmodulecontext1"></a>
+
 ## createModuleContext
 
 ```TypeScript
@@ -24,7 +26,7 @@ Creates the context for a module. The [resourceManager.Configuration](../../apis
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-application-export function createModuleContext(context: Context, moduleName: string): Promise<Context>--><!--Device-application-export function createModuleContext(context: Context, moduleName: string): Promise<Context>-End-->
 

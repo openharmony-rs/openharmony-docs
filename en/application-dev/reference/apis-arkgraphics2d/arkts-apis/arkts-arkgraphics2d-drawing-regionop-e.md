@@ -45,6 +45,34 @@ Intersect operation.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+## REPLACE
+
+```TypeScript
+REPLACE = 5
+```
+
+Replace operation.
+
+**Since:** 12
+
+<!--Device-RegionOp-REPLACE = 5--><!--Device-RegionOp-REPLACE = 5-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## REVERSE_DIFFERENCE
+
+```TypeScript
+REVERSE_DIFFERENCE = 4
+```
+
+Reverse difference operation.
+
+**Since:** 12
+
+<!--Device-RegionOp-REVERSE_DIFFERENCE = 4--><!--Device-RegionOp-REVERSE_DIFFERENCE = 4-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
 ## UNION
 
 ```TypeScript
@@ -70,33 +98,5 @@ XOR operation.
 **Since:** 12
 
 <!--Device-RegionOp-XOR = 3--><!--Device-RegionOp-XOR = 3-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## REVERSE_DIFFERENCE
-
-```TypeScript
-REVERSE_DIFFERENCE = 4
-```
-
-Reverse difference operation.
-
-**Since:** 12
-
-<!--Device-RegionOp-REVERSE_DIFFERENCE = 4--><!--Device-RegionOp-REVERSE_DIFFERENCE = 4-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## REPLACE
-
-```TypeScript
-REPLACE = 5
-```
-
-Replace operation.
-
-**Since:** 12
-
-<!--Device-RegionOp-REPLACE = 5--><!--Device-RegionOp-REPLACE = 5-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

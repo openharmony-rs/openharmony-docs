@@ -7,19 +7,20 @@ interface DividerStyle
 Sets the divider style.
 
 > **NOTE:** 
-
-> The settings of the universal size attributes **width** and **height** do not take effect for the
-> sidebar child component.
 > 
-> The settings do not take effect for the sidebar content area either. By default, the sidebar content area takes
-> up the remaining space of the sidebar container.
-
-> If the [showSideBar](arkts-arkui-sidebarcontainer-comp-attribute.md#showsidebar) attribute is not set, the sidebar's visibility is
-> subject to its size.
-
-> - If the size is less than the sum of [minSideBarWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#minsidebarwidth) and [minContentWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#mincontentwidth), the sidebar is not displayed by default.
+> When [width](arkts-arkui-common-comp-commonmethod-c.md#width1) and [height](arkts-arkui-common-comp-commonmethod-c.md#height1) are
+> set for the sidebar child component, neither takes effect.
 > 
-> - If the size is greater than or equal to the sum of **minSideBarWidth** and **minContentWidth**, the sidebar is displayed by default.
+> When [width](arkts-arkui-common-comp-commonmethod-c.md#width1) and [height](arkts-arkui-common-comp-commonmethod-c.md#height1) are
+> set for the sidebar content area, neither takes effect. By default, the content area occupies the remaining space
+> of the **SideBarContainer**.
+> 
+> When the [showSideBar](arkts-arkui-sidebarcontainer-comp-attribute.md#showsidebar) attribute is not set, the sidebar is displayed
+> automatically based on the component size:
+> 
+> - Smaller than [minSideBarWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#minsidebarwidth1) +[minContentWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#mincontentwidth): the sidebar is not displayed by default.
+> 
+> - Greater than or equal to [minSideBarWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#minsidebarwidth1) +[minContentWidth](arkts-arkui-sidebarcontainer-comp-attribute.md#mincontentwidth): the sidebar is displayed by default.
 
 **Since:** 10
 
@@ -35,7 +36,7 @@ color?: ResourceColor
 
 Color of the divider.
 
-Default value: **#000000, 3%**
+Default value: **#000000**, 3%, black.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -63,6 +64,8 @@ Unit: vp
 
 Value range: [0, +∞).
 
+If the value is abnormal, the default value is used.
+
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **Since:** 10
@@ -89,6 +92,8 @@ Unit: vp
 
 Value range: [0, +∞).
 
+If the value is abnormal, the default value is used.
+
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **Since:** 10
@@ -107,17 +112,19 @@ Value range: [0, +∞).
 strokeWidth: Length
 ```
 
-Stroke width of the divider.
+Width of the divider.
 
 Default value: **1vp**
 
 Unit: vp
 
-Value range: [0, +∞).
+Value range: [0, +∞)
+
+The default value is used when an abnormal value is set.
 
 **NOTE:** 
 
-Percentage values are not supported. The priority of this attribute is lower than that of the universal attribute [height](arkts-arkui-common-comp-commonmethod-c.md#height). If the value of this attribute is greater than that of **height**, cropping is performed based on the **height** settings. Due to hardware limitations on some devices where 1 px dividers may not display properly after rounding, you are advised to use the **2px** value.
+The width of the divider does not support percentage settings. It has a lower priority than the [common attribute height](arkts-arkui-common-comp-commonmethod-c.md#height1). If the width exceeds the size set by the common attribute, it is clipped according to the common attribute. On some devices, the divider may not be displayed due to 1-pixel rounding in hardware. 2 px is recommended.
 
 **Type:** [Length](../arkts-apis/arkts-arkui-length-t.md)
 

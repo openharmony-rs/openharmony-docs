@@ -32,7 +32,7 @@ The displayed picture that represents a particular user.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CallMetadata-avatar?: image.PixelMap--><!--Device-CallMetadata-avatar?: image.PixelMap-End-->
 
@@ -50,7 +50,7 @@ The displayed user name of current call.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CallMetadata-name?: string--><!--Device-CallMetadata-name?: string-End-->
 
@@ -68,7 +68,7 @@ The phone number of current call.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CallMetadata-phoneNumber?: string--><!--Device-CallMetadata-phoneNumber?: string-End-->
 

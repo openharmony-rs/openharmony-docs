@@ -10,7 +10,7 @@ Defines the page routing parameters.
 
 **Deprecated since:** 8
 
-**Substitutes:** RouterOptions
+**Substitutes:** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-unnamed-export interface RouterOptions--><!--Device-unnamed-export interface RouterOptions-End-->
 
@@ -36,7 +36,7 @@ Data that needs to be passed to the target page during redirection. The target p
 
 **Deprecated since:** 8
 
-**Substitutes:** params
+**Substitutes:** [params](arkts-arkui-router-routeroptions-i.md#params)
 
 <!--Device-RouterOptions-params?: Object--><!--Device-RouterOptions-params?: Object-End-->
 
@@ -63,7 +63,7 @@ URI of the target page, in either of the following formats:
 
 **Deprecated since:** 8
 
-**Substitutes:** url
+**Substitutes:** [url](arkts-arkui-router-routeroptions-i.md#url)
 
 <!--Device-RouterOptions-uri: string--><!--Device-RouterOptions-uri: string-End-->
 

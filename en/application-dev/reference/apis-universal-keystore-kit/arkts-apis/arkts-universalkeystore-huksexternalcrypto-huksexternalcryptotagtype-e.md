@@ -12,6 +12,20 @@ Enumerates the external encrypted data types.
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
+## HUKS_EXT_CRYPTO_TAG_TYPE_BYTES
+
+```TypeScript
+HUKS_EXT_CRYPTO_TAG_TYPE_BYTES = 5 << 28
+```
+
+The tag value is a byte array.
+
+**Since:** 22
+
+<!--Device-HuksExternalCryptoTagType-HUKS_EXT_CRYPTO_TAG_TYPE_BYTES = 5 << 28--><!--Device-HuksExternalCryptoTagType-HUKS_EXT_CRYPTO_TAG_TYPE_BYTES = 5 << 28-End-->
+
+**System capability:** SystemCapability.Security.Huks.CryptoExtension
+
 ## HUKS_EXT_CRYPTO_TAG_TYPE_INT
 
 ```TypeScript
@@ -26,16 +40,18 @@ The tag value is an integer.
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension
 
-## HUKS_EXT_CRYPTO_TAG_TYPE_BYTES
+## HUKS_EXT_CRYPTO_TAG_TYPE_UINT
 
 ```TypeScript
-HUKS_EXT_CRYPTO_TAG_TYPE_BYTES = 5 << 28
+HUKS_EXT_CRYPTO_TAG_TYPE_UINT = 2 << 28
 ```
 
-The tag value is a byte array.
+The tag value is an unsigned integer.
 
-**Since:** 22
+**Since:** 26.2.0
 
-<!--Device-HuksExternalCryptoTagType-HUKS_EXT_CRYPTO_TAG_TYPE_BYTES = 5 << 28--><!--Device-HuksExternalCryptoTagType-HUKS_EXT_CRYPTO_TAG_TYPE_BYTES = 5 << 28-End-->
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+<!--Device-HuksExternalCryptoTagType-HUKS_EXT_CRYPTO_TAG_TYPE_UINT = 2 << 28--><!--Device-HuksExternalCryptoTagType-HUKS_EXT_CRYPTO_TAG_TYPE_UINT = 2 << 28-End-->
 
 **System capability:** SystemCapability.Security.Huks.CryptoExtension

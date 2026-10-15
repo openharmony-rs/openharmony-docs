@@ -41,6 +41,7 @@ Revokes permission for application-shared directories
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | 13900001 | Operation not permitted. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,3 +60,5 @@ async function revokeSharedDirectoryPermission() {
   }
 }
 ```
+
+<!--DelEnd-->

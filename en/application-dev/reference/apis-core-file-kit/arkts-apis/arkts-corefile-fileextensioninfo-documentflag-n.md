@@ -10,8 +10,6 @@ Defines the values of **mode** used in **FileInfo**.
 
 **Deprecated since:** 23
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-fileExtensionInfo-namespace DocumentFlag--><!--Device-fileExtensionInfo-namespace DocumentFlag-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
@@ -31,8 +29,8 @@ import { fileExtensionInfo } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [REPRESENTS_FILE](arkts-corefile-documentflag-con-sys.md#represents_file) | File. |
 | [REPRESENTS_DIR](arkts-corefile-documentflag-con-sys.md#represents_dir) | Directory. |
+| [REPRESENTS_FILE](arkts-corefile-documentflag-con-sys.md#represents_file) | File. |
 | [SUPPORTS_READ](arkts-corefile-documentflag-con-sys.md#supports_read) | The device supports read. |
 | [SUPPORTS_WRITE](arkts-corefile-documentflag-con-sys.md#supports_write) | The device supports write. |
 <!--DelEnd-->

@@ -14,13 +14,13 @@ Device connection state.
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
-## IDLE
+## CONNECTED
 
 ```TypeScript
-IDLE = 0
+CONNECTED = 2
 ```
 
-The device is in the initial state.
+The device is connected.
 
 **Since:** 8
 
@@ -30,7 +30,7 @@ The device is in the initial state.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-DeviceConnectState-IDLE = 0--><!--Device-DeviceConnectState-IDLE = 0-End-->
+<!--Device-DeviceConnectState-CONNECTED = 2--><!--Device-DeviceConnectState-CONNECTED = 2-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
@@ -54,26 +54,6 @@ The device is being connected.
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager
 
-## CONNECTED
-
-```TypeScript
-CONNECTED = 2
-```
-
-The device is connected.
-
-**Since:** 8
-
-**Deprecated since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-DeviceConnectState-CONNECTED = 2--><!--Device-DeviceConnectState-CONNECTED = 2-End-->
-
-**System capability:** SystemCapability.Ability.DistributedAbilityManager
-
 ## DISCONNECTING
 
 ```TypeScript
@@ -91,5 +71,25 @@ The device is being disconnected.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-DeviceConnectState-DISCONNECTING = 3--><!--Device-DeviceConnectState-DISCONNECTING = 3-End-->
+
+**System capability:** SystemCapability.Ability.DistributedAbilityManager
+
+## IDLE
+
+```TypeScript
+IDLE = 0
+```
+
+The device is in the initial state.
+
+**Since:** 8
+
+**Deprecated since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-DeviceConnectState-IDLE = 0--><!--Device-DeviceConnectState-IDLE = 0-End-->
 
 **System capability:** SystemCapability.Ability.DistributedAbilityManager

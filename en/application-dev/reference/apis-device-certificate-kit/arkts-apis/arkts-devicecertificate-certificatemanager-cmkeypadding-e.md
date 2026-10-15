@@ -26,20 +26,6 @@ No padding.
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## CM_PADDING_PSS
-
-```TypeScript
-CM_PADDING_PSS = 1
-```
-
-PSS.
-
-**Since:** 11
-
-<!--Device-CmKeyPadding-CM_PADDING_PSS = 1--><!--Device-CmKeyPadding-CM_PADDING_PSS = 1-End-->
-
-**System capability:** SystemCapability.Security.CertificateManager
-
 ## CM_PADDING_PKCS1_V1_5
 
 ```TypeScript
@@ -51,5 +37,19 @@ PKCS1-V1_5.
 **Since:** 11
 
 <!--Device-CmKeyPadding-CM_PADDING_PKCS1_V1_5 = 2--><!--Device-CmKeyPadding-CM_PADDING_PKCS1_V1_5 = 2-End-->
+
+**System capability:** SystemCapability.Security.CertificateManager
+
+## CM_PADDING_PSS
+
+```TypeScript
+CM_PADDING_PSS = 1
+```
+
+PSS.
+
+**Since:** 11
+
+<!--Device-CmKeyPadding-CM_PADDING_PSS = 1--><!--Device-CmKeyPadding-CM_PADDING_PSS = 1-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

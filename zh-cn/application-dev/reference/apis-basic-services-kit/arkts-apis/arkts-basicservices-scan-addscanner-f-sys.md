@@ -44,6 +44,7 @@ function addScanner(uniqueId: string, discoveryMode: ScannerDiscoveryMode): Prom
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,3 +60,5 @@ scan.addScanner(uniqueId, discoveryMode).then(() => {
     console.error(`Failed to add scanner. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

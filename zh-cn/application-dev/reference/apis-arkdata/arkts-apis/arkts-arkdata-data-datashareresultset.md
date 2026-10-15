@@ -4,7 +4,7 @@
 
 ## 使用说明
 
-需要通过调用[query](arkts-arkdata-datashare-datasharehelper-i-sys.md#query)接口获取DataShareResultSet对象。
+需要通过调用[query](arkts-arkdata-datashare-datasharehelper-i-sys.md#query1)接口获取DataShareResultSet对象。
 
 ```ts
  import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';

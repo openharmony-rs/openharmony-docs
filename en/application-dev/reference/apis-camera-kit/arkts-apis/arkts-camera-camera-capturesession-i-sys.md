@@ -60,6 +60,7 @@ Obtains the level of the beauty type in use.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -78,6 +79,8 @@ function getBeauty(captureSession: camera.CaptureSession): number {
   return beautyLevel;
 }
 ```
+
+<!--DelEnd-->
 
 ## getSupportedBeautyRange
 
@@ -124,6 +127,7 @@ Obtains the levels that can be set a beauty type. The beauty levels vary accordi
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,6 +140,8 @@ function getSupportedBeautyRange(captureSession: camera.CaptureSession): Array<n
   return beautyLevels;
 }
 ```
+
+<!--DelEnd-->
 
 ## getSupportedBeautyTypes
 
@@ -169,6 +175,7 @@ Obtains the supported beauty types.
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -177,6 +184,8 @@ function getSupportedBeautyTypes(captureSession: camera.CaptureSession): Array<c
   return beautyTypes;
 }
 ```
+
+<!--DelEnd-->
 
 ## setBeauty
 
@@ -211,6 +220,7 @@ Sets a beauty type and its level. Beauty mode is turned off only when all the [b
 | --- | --- |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -226,3 +236,5 @@ function setBeauty(captureSession: camera.CaptureSession): void {
   captureSession.setBeauty(beautyTypes[0], beautyLevels[0]);
 }
 ```
+
+<!--DelEnd-->

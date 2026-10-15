@@ -41,6 +41,7 @@ Notifies the print service of the spooler shutdown information. This API uses an
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,6 +57,8 @@ print.notifyPrintService(jobId, 'spooler_closed_for_started', (error: BusinessEr
     }
 });
 ```
+
+<!--DelEnd-->
 
 
 ## notifyPrintService('spooler_closed_for_cancelled' | 'spooler_closed_for_started')
@@ -98,6 +101,7 @@ Notifies the print service of the spooler shutdown information. This API uses a 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -111,3 +115,5 @@ print.notifyPrintService(jobId, 'spooler_closed_for_started').then(() => {
     console.error(`Failed to notify print service. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

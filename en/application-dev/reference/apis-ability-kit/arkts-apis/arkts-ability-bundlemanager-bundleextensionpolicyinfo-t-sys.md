@@ -6,6 +6,8 @@ export type BundleExtensionPolicyInfo = _BundleInfo.BundleExtensionPolicyInfo
 
 Describes the bundle extension policy information.
 
+**Type:** [_BundleInfo.BundleExtensionPolicyInfo](arkts-ability-bundleinfo-bundleextensionpolicyinfo-i-sys.md)
+
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Describes the bundle extension policy information.
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
-
-**Type:** [_BundleInfo.BundleExtensionPolicyInfo](arkts-ability-bundleinfo-bundleextensionpolicyinfo-i-sys.md)

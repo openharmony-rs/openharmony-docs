@@ -6,6 +6,8 @@
 import { settings } from '@kit.BasicServicesKit';
 ```
 
+<a id="canshowfloating1"></a>
+
 ## canShowFloating
 
 ```TypeScript
@@ -41,7 +43,7 @@ settings.canShowFloating((err:Error, status: boolean) => {
 ```
 
 
-<a id="canshowfloating-1"></a>
+<a id="canshowfloating2"></a>
 
 ## canShowFloating
 

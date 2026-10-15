@@ -6,6 +6,8 @@ export type ApiVersion = _PackInfo.ApiVersion
 
 module的api版本。
 
+**类型：** [_PackInfo.ApiVersion](arkts-ability-bundlepackinfo-apiversion-i-sys.md)
+
 **起始版本：** 9
 
 <!--Device-freeInstall-export type ApiVersion = _PackInfo.ApiVersion--><!--Device-freeInstall-export type ApiVersion = _PackInfo.ApiVersion-End-->
@@ -13,5 +15,3 @@ module的api版本。
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [_PackInfo.ApiVersion](arkts-ability-bundlepackinfo-apiversion-i-sys.md)

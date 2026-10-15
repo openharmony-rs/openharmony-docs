@@ -24,6 +24,8 @@ Defines the UserFileManager class and provides functions to access the data in u
 import { userFileManager } from '@kit.CoreFileKit';
 ```
 
+<a id="createalbum1"></a>
+
 ## createAlbum
 
 ```TypeScript
@@ -63,6 +65,7 @@ The album name must meet the following requirements:
 | name | string | Yes | Name of the album to create. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[Album](arkts-corefile-userfilemanager-album-i-sys.md)&gt; | Yes | Callback used to return the created album instance. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -81,7 +84,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="createalbum-1"></a>
+<!--DelEnd-->
+
+<a id="createalbum2"></a>
 
 ## createAlbum
 
@@ -127,6 +132,7 @@ The album name must meet the following requirements:
 | --- | --- |
 | Promise&lt;[Album](arkts-corefile-userfilemanager-album-i-sys.md)&gt; | Promise that returns the created album instance. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -144,6 +150,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="createaudioasset1"></a>
 
 ## createAudioAsset
 
@@ -179,6 +189,7 @@ Creates an audio asset. This API uses an asynchronous callback to return the res
 | 13900020 | if type displayName is not string |
 | 14000001 | if type displayName invalid |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -198,7 +209,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="createaudioasset-1"></a>
+<!--DelEnd-->
+
+<a id="createaudioasset2"></a>
 
 ## createAudioAsset
 
@@ -238,6 +251,7 @@ Creates an audio asset. This API uses a promise to return the result.
 | --- | --- |
 | 13900020 | if type displayName is not string |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -255,6 +269,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="createphotoasset1"></a>
 
 ## createPhotoAsset
 
@@ -293,6 +311,7 @@ Creates an image or video asset with the specified file name and URI. This API u
 | 13900020 | if type displayName or albumUri is not string |
 | 14000001 | if type displayName invalid |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -320,7 +339,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="createphotoasset-1"></a>
+<!--DelEnd-->
+
+<a id="createphotoasset2"></a>
 
 ## createPhotoAsset
 
@@ -358,6 +379,7 @@ Creates an image or video asset with the specified file name. This API uses an a
 | 13900020 | if type displayName is not string |
 | 14000001 | if type displayName invalid |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -377,7 +399,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="createphotoasset-2"></a>
+<!--DelEnd-->
+
+<a id="createphotoasset3"></a>
 
 ## createPhotoAsset
 
@@ -420,6 +444,7 @@ Creates an image or video asset with the specified file name and album URI. This
 | --- | --- |
 | 13900020 | if type displayName or albumUri is not string |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -438,7 +463,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="createphotoasset-3"></a>
+<!--DelEnd-->
+
+<a id="createphotoasset4"></a>
 
 ## createPhotoAsset
 
@@ -481,6 +508,7 @@ Creates an image or video asset with the specified file name and options. This A
 | --- | --- |
 | 13900020 | if type displayName is not string |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -502,7 +530,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="createphotoasset-4"></a>
+<!--DelEnd-->
+
+<a id="createphotoasset5"></a>
 
 ## createPhotoAsset
 
@@ -541,6 +571,7 @@ Creates an image or video asset with the specified file name and options. This A
 | 13900020 | if type displayName is not string |
 | 14000001 | if type displayName invalid |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -562,6 +593,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   });
 }
 ```
+
+<!--DelEnd-->
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -598,6 +633,7 @@ Deletes a media file. This API uses an asynchronous callback to return the resul
 | --- | --- |
 | 13900020 | if type uri is not string |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -634,7 +670,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="delete-1"></a>
+<!--DelEnd-->
+
+<a id="delete2"></a>
 
 ## delete
 
@@ -676,6 +714,7 @@ Deletes media assets. The deleted assets are moved to the trash. This API uses a
 | --- | --- |
 | 13900020 | if type uri is not string |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -704,6 +743,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="deletealbums1"></a>
 
 ## deleteAlbums
 
@@ -734,6 +777,7 @@ Deletes user albums. This API uses an asynchronous callback to return the result
 | albums | Array&lt;[Album](arkts-corefile-userfilemanager-album-i-sys.md)&gt; | Yes | Albums to delete. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -763,7 +807,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="deletealbums-1"></a>
+<!--DelEnd-->
+
+<a id="deletealbums2"></a>
 
 ## deleteAlbums
 
@@ -799,6 +845,7 @@ Deletes user albums. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -828,6 +875,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getactivepeers1"></a>
+
 ## getActivePeers
 
 ```TypeScript
@@ -852,6 +903,7 @@ Obtains information about online peer devices. This API uses an asynchronous cal
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[PeerInfo](arkts-corefile-userfilemanager-peerinfo-i-sys.md)&gt;&gt; | Yes | Callback used to return a list of online peer devices. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -872,7 +924,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getactivepeers-1"></a>
+<!--DelEnd-->
+
+<a id="getactivepeers2"></a>
 
 ## getActivePeers
 
@@ -898,6 +952,7 @@ Obtains the information about online peer devices. This API uses a promise to re
 | --- | --- |
 | Promise&lt;Array&lt;[PeerInfo](arkts-corefile-userfilemanager-peerinfo-i-sys.md)&gt;&gt; | Promise that returns a list of online peer devices. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -921,6 +976,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getalbums1"></a>
+
 ## getAlbums
 
 ```TypeScript
@@ -934,7 +993,7 @@ getAlbums(
 
 Obtains albums based on the specified options and album type. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -967,6 +1026,7 @@ Before the operation, ensure that the albums to obtain exist.
 | --- | --- |
 | 13900020 | if type options is not FetchOption |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -999,7 +1059,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getalbums-1"></a>
+<!--DelEnd-->
+
+<a id="getalbums2"></a>
 
 ## getAlbums
 
@@ -1009,7 +1071,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, callback: AsyncCallback<FetchR
 
 Obtains albums by type. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -1041,6 +1103,7 @@ Before the operation, ensure that the albums to obtain exist.
 | --- | --- |
 | 13900020 | if type options is not FetchOption |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1065,7 +1128,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getalbums-2"></a>
+<!--DelEnd-->
+
+<a id="getalbums3"></a>
 
 ## getAlbums
 
@@ -1075,7 +1140,7 @@ getAlbums(type: AlbumType, subType: AlbumSubType, options?: FetchOptions): Promi
 
 Obtains albums based on the specified options and album type. This API uses a promise to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
 
 Before the operation, ensure that the albums to obtain exist.
 
@@ -1113,6 +1178,7 @@ Before the operation, ensure that the albums to obtain exist.
 | --- | --- |
 | 13900020 | if type options is not FetchOption |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1144,6 +1210,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getallpeers1"></a>
+
 ## getAllPeers
 
 ```TypeScript
@@ -1168,6 +1238,7 @@ Obtains information about all peer devices. This API uses an asynchronous callba
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[PeerInfo](arkts-corefile-userfilemanager-peerinfo-i-sys.md)&gt;&gt; | Yes | Callback used to return a list of online peer devices. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1188,7 +1259,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getallpeers-1"></a>
+<!--DelEnd-->
+
+<a id="getallpeers2"></a>
 
 ## getAllPeers
 
@@ -1214,6 +1287,7 @@ Obtains the information about all peer devices. This API uses a promise to retur
 | --- | --- |
 | Promise&lt;Array&lt;[PeerInfo](arkts-corefile-userfilemanager-peerinfo-i-sys.md)&gt;&gt; | Promise that returns the information obtained. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1237,6 +1311,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getaudioassets1"></a>
 
 ## getAudioAssets
 
@@ -1271,6 +1349,7 @@ Obtains audio assets. This API uses an asynchronous callback to return the resul
 | --- | --- |
 | 13900020 | if type options is not FetchOptions |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1300,7 +1379,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getaudioassets-1"></a>
+<!--DelEnd-->
+
+<a id="getaudioassets2"></a>
 
 ## getAudioAssets
 
@@ -1340,6 +1421,7 @@ Obtains an audio asset. This API uses a promise to return the result.
 | --- | --- |
 | 13900020 | if type options is not FetchOptions |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1369,6 +1451,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getphotoalbums1"></a>
+
 ## getPhotoAlbums
 
 ```TypeScript
@@ -1377,9 +1463,9 @@ getPhotoAlbums(options: AlbumFetchOptions, callback: AsyncCallback<FetchResult<A
 
 Obtains image and video albums. This API uses an asynchronous callback to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
 
-This API will be deprecated. Use [getAlbums](#getalbums) instead.
+This API will be deprecated. Use [getAlbums](#getalbums1) instead.
 
 **Since:** 9
 
@@ -1408,6 +1494,7 @@ This API will be deprecated. Use [getAlbums](#getalbums) instead.
 | --- | --- |
 | 13900020 | if type options is not AlbumFetchOptions |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1439,7 +1526,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getphotoalbums-1"></a>
+<!--DelEnd-->
+
+<a id="getphotoalbums2"></a>
 
 ## getPhotoAlbums
 
@@ -1449,9 +1538,9 @@ getPhotoAlbums(options: AlbumFetchOptions): Promise<FetchResult<Album>>
 
 Obtains albums. This API uses a promise to return the result.
 
-This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums) to obtain hidden albums.
+This API cannot be used to obtain hidden albums. Use [getHiddenAlbums](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i-sys.md#gethiddenalbums1) to obtain hidden albums.
 
-This API will be deprecated. Use [getAlbums](#getalbums) instead.
+This API will be deprecated. Use [getAlbums](#getalbums1) instead.
 
 **Since:** 9
 
@@ -1485,6 +1574,7 @@ This API will be deprecated. Use [getAlbums](#getalbums) instead.
 | --- | --- |
 | 13900020 | if type options is not AlbumFetchOptions |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1508,6 +1598,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getphotoassets1"></a>
 
 ## getPhotoAssets
 
@@ -1544,6 +1638,7 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 | --- | --- |
 | 13900020 | if type options is not FetchOptions |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1573,7 +1668,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getphotoassets-1"></a>
+<!--DelEnd-->
+
+<a id="getphotoassets2"></a>
 
 ## getPhotoAssets
 
@@ -1615,6 +1712,7 @@ Obtains image and video assets. This API uses a promise to return the result.
 | --- | --- |
 | 13900020 | if type options is not FetchOptions |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1643,6 +1741,10 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getphotoindex1"></a>
 
 ## getPhotoIndex
 
@@ -1681,6 +1783,7 @@ Obtains the index of an image or video in an album. This API uses an asynchronou
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1722,7 +1825,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getphotoindex-1"></a>
+<!--DelEnd-->
+
+<a id="getphotoindex2"></a>
 
 ## getPhotoIndex
 
@@ -1766,6 +1871,7 @@ Obtains the index of an image or video in an album. This API uses a promise to r
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1810,6 +1916,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getprivatealbum1"></a>
+
 ## getPrivateAlbum
 
 ```TypeScript
@@ -1818,7 +1928,7 @@ getPrivateAlbum(type: PrivateAlbumType, callback: AsyncCallback<FetchResult<Priv
 
 Obtains the system album. This API uses an asynchronous callback to return the result.
 
-This API will be deprecated. Use [getAlbums](#getalbums) instead.
+This API will be deprecated. Use [getAlbums](#getalbums1) instead.
 
 **Since:** 9
 
@@ -1847,6 +1957,7 @@ This API will be deprecated. Use [getAlbums](#getalbums) instead.
 | --- | --- |
 | 13900020 | if type type is not PrivateAlbumType |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1865,7 +1976,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="getprivatealbum-1"></a>
+<!--DelEnd-->
+
+<a id="getprivatealbum2"></a>
 
 ## getPrivateAlbum
 
@@ -1875,7 +1988,7 @@ getPrivateAlbum(type: PrivateAlbumType): Promise<FetchResult<PrivateAlbum>>
 
 Obtains the private album. This API uses a promise to return the result.
 
-This API will be deprecated. Use [getAlbums](#getalbums) instead.
+This API will be deprecated. Use [getAlbums](#getalbums1) instead.
 
 **Since:** 9
 
@@ -1909,6 +2022,7 @@ This API will be deprecated. Use [getAlbums](#getalbums) instead.
 | --- | --- |
 | 13900020 | if type type is not PrivateAlbumType |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1926,6 +2040,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
@@ -1934,7 +2052,7 @@ off(type: ChangeEvent, callback?: Callback<void>): void
 
 Unsubscribes from changes of the file management library. This API uses a callback to return the result.
 
-This API will be deprecated. Use [off](#off-1) instead.
+This API will be deprecated. Use [off](#off2) instead.
 
 **Since:** 9
 
@@ -1955,6 +2073,7 @@ This API will be deprecated. Use [off](#off-1) instead.
 | type | [ChangeEvent](arkts-corefile-userfilemanager-changeevent-t-sys.md) | Yes | Type of event to subscribe to.<br>**'deviceChange'**: device change. <br>**'albumChange'**: album change. <br>**'imageChange'**: image change. <br>**'audioChange'**: audio file change. <br>**'videoChange'**: video file change. <br>**'remoteFileChange'**: change of the file on a registered device. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | No | Callback that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -1989,7 +2108,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="off-1"></a>
+<!--DelEnd-->
+
+<a id="off2"></a>
 
 ## off
 
@@ -2016,7 +2137,7 @@ Unregisters the listener for the specified URI. Multiple callbacks can be regist
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the file asset or album, or [DefaultChangeUri](arkts-corefile-userfilemanager-defaultchangeuri-e-sys.md). |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeData](arkts-corefile-cloudsync-changedata-i.md)&gt; | No | Callback registered by [on](#on-1). If this parameter is not specified, all listener callbacks registered for the URI will be unregistered. <br>Note that the specified callback will not be invoked. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeData](arkts-corefile-cloudsync-changedata-i.md)&gt; | No | Callback registered by [on](#on2). If this parameter is not specified, all listener callbacks registered for the URI will be unregistered. <br>Note that the specified callback will not be invoked. |
 
 **Error codes:**
 
@@ -2024,6 +2145,7 @@ Unregisters the listener for the specified URI. Multiple callbacks can be regist
 | --- | --- |
 | 13900020 | if parameter is invalid |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -2067,6 +2189,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
@@ -2075,7 +2201,7 @@ on(type: ChangeEvent, callback: Callback<void>): void
 
 Subscribes to changes of the file management library. This API uses a callback to return the result.
 
-This API will be deprecated. Use [on](#on-1) instead.
+This API will be deprecated. Use [on](#on2) instead.
 
 **Since:** 9
 
@@ -2096,6 +2222,7 @@ This API will be deprecated. Use [on](#on-1) instead.
 | type | [ChangeEvent](arkts-corefile-userfilemanager-changeevent-t-sys.md) | Yes | Type of event to subscribe to.<br>**'deviceChange'**: device change. <br>**'albumChange'**: album change. <br>**'imageChange'**: image change. <br>**'audioChange'**: audio file change. <br>**'videoChange'**: video file change. <br>**'remoteFileChange'**: change of the file on a registered device. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -2128,7 +2255,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="on-1"></a>
+<!--DelEnd-->
+
+<a id="on2"></a>
 
 ## on
 
@@ -2156,7 +2285,7 @@ Registers a listener for the specified URI. This API uses an asynchronous callba
 | --- | --- | --- | --- |
 | uri | string | Yes | URI of the file asset or album, or [DefaultChangeUri](arkts-corefile-userfilemanager-defaultchangeuri-e-sys.md). |
 | forSubUri | boolean | Yes | Whether to perform fuzzy listening.<br>If **uri** is the URI of the album, the value **true** means to listen for the file change in the album; the value **false** means to listen for the album change only. If **uri** is the URI of the file asset, there is no difference whether **forSubUri** is **true** or **false**. If **uri** is **DefaultChangeUri**, the value must be **true**, otherwise, the URI cannot be found and no message can be received. |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeData](arkts-corefile-cloudsync-changedata-i.md)&gt; | Yes | Callback used to return [ChangeData](arkts-corefile-userfilemanager-changedata-i-sys.md). <br>Note that different callbacks can be registered for a URI. You can use [off](#off-1) to disable the specified callback or all callbacks for the URI. |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChangeData](arkts-corefile-cloudsync-changedata-i.md)&gt; | Yes | Callback used to return [ChangeData](arkts-corefile-userfilemanager-changedata-i-sys.md). <br>Note that different callbacks can be registered for a URI. You can use [off](#off2) to disable the specified callback or all callbacks for the URI. |
 
 **Error codes:**
 
@@ -2164,6 +2293,7 @@ Registers a listener for the specified URI. This API uses an asynchronous callba
 | --- | --- |
 | 13900020 | if parameter is invalid |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -2206,6 +2336,10 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -2234,6 +2368,7 @@ Call this API when the APIs in the **UserFileManager** instance are no longer us
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -2251,7 +2386,9 @@ async function example(mgr: userFileManager.UserFileManager) {
 }
 ```
 
-<a id="release-1"></a>
+<!--DelEnd-->
+
+<a id="release2"></a>
 
 ## release
 
@@ -2281,6 +2418,7 @@ Call this API when the APIs in the **UserFileManager** instance are no longer us
 | --- | --- |
 | Promise&lt;void&gt; | Promise that returns no value. |
 
+<!--Del-->
 **Examples**
 
 For details about how to create a userFileManager instance, see the example in [userFileManager.getUserFileMgr](arkts-corefile-userfilemanager-getuserfilemgr-f-sys.md).
@@ -2296,3 +2434,5 @@ async function example(mgr: userFileManager.UserFileManager) {
   }
 }
 ```
+
+<!--DelEnd-->

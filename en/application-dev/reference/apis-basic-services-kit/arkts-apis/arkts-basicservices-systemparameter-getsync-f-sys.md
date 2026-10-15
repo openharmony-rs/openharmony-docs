@@ -26,7 +26,7 @@ Obtains a value of the specified key.
 
 **Deprecated since:** 9
 
-**Substitutes:** getSync
+**Substitutes:** [getSync](arkts-basicservices-systemparameterenhance-getsync-f-sys.md)
 
 <!--Device-systemParameter-function getSync(key: string, def?: string): string--><!--Device-systemParameter-function getSync(key: string, def?: string): string-End-->
 
@@ -47,6 +47,7 @@ Obtains a value of the specified key.
 | --- | --- |
 | string | Value of the system parameter.<br> If the specified key exists, the set value is returned. <br> If the specified key does not exist and **def** is set to a valid value, the set value is returned. If the specified key does not exist and **def** is set to an invalid value (such as **undefined**) or is not set, an empty string is returned. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -57,3 +58,5 @@ try {
   console.error('getSync unexpected error: ' + e);
 }
 ```
+
+<!--DelEnd-->

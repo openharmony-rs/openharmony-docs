@@ -60,6 +60,7 @@ function postConversationData(
 | [2004003](../errorcode-conversation.md#2004003-发送数据失败) | Failed to send data. |
 | [2004004](../errorcode-conversation.md#2004004-等待对端确认超时) | Timeout while waiting for acknowledgement from the remote side. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -84,3 +85,5 @@ try {
   console.error(`postConversationData errCode: ${e.code}, errMessage: ${e.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -22,7 +22,7 @@ PKCS #1 v1.5填充方式。
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsRsaSignaturePadding-PKCS1_PADDING = 0--><!--Device-CmsRsaSignaturePadding-PKCS1_PADDING = 0-End-->
 
@@ -38,7 +38,7 @@ PKCS #1 PSS填充方式。
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-CmsRsaSignaturePadding-PKCS1_PSS_PADDING = 1--><!--Device-CmsRsaSignaturePadding-PKCS1_PSS_PADDING = 1-End-->
 

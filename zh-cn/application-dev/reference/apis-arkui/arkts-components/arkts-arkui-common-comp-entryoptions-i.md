@@ -62,7 +62,7 @@ storage? : LocalStorage
 useSharedStorage? : boolean
 ```
 
-是否使用[loadContent](../arkts-apis/arkts-arkui-window-windowstage-i.md#loadcontent)传入的LocalStorage实例。默认值false。true：使用共享的LocalStorage实例（前提条件：需确保loadContent接口已传入LocalStorage实例；若未传入，则创建新的LocalStorage实例）。false：不使用共享的LocalStorage实例。当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
+是否使用[loadContent](../arkts-apis/arkts-arkui-window-windowstage-i.md#loadcontent1)传入的LocalStorage实例。默认值false。true：使用共享的LocalStorage实例（前提条件：需确保loadContent接口已传入LocalStorage实例；若未传入，则创建新的LocalStorage实例）。false：不使用共享的LocalStorage实例。当useSharedStorage设置为true且storage已赋值时，useSharedStorage的值优先级更高。
 
 **类型：** boolean
 

@@ -6,7 +6,7 @@ declare class NavPathStack
 
 Navigation导航控制器，以栈的数据结构管理Navigation中所有的子页面，并提供栈操作的方法用于控制Navigation中子页面的切换。
 
-从API version 12开始，NavPathStack允许被继承，派生类对象可以替代基类NavPathStack对象使用。使用示例参见示例10。
+从API version 12开始，NavPathStack允许被继承，派生类对象可以替代基类NavPathStack对象使用。使用示例参见[示例10](../../../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例10定义导航控制器派生类)。
 
 > **说明：** 
 > 
@@ -311,6 +311,8 @@ moveToTop(name: string, animated?: boolean): number
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的当前索引，否则返回-1。 |
 
+<a id="pop1"></a>
+
 ## pop
 
 ```TypeScript
@@ -361,7 +363,7 @@ pop(animated?: boolean): NavPathInfo | undefined
 | --- | --- |
 | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | **NavPathInfo**: information about the navigation destination page at the top of the stack.<br>**undefined**: the routing stack is empty. |
 
-<a id="pop-1"></a>
+<a id="pop2"></a>
 
 ## pop
 
@@ -414,6 +416,8 @@ pop(result: Object, animated?: boolean): NavPathInfo | undefined
 | --- | --- |
 | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) &#124; undefined | **NavPathInfo**: information about the navigation destination page at the top of the stack.<br>**undefined**: the routing stack is empty. |
 
+<a id="poptoindex1"></a>
+
 ## popToIndex
 
 ```TypeScript
@@ -439,7 +443,7 @@ popToIndex(index: number, animated?: boolean): void
 | index | number | 是 | NavDestination页面的位置索引。索引值从0开始。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true<br>**适用版本：** 11 |
 
-<a id="poptoindex-1"></a>
+<a id="poptoindex2"></a>
 
 ## popToIndex
 
@@ -466,6 +470,8 @@ popToIndex(index: number, result: Object, animated?: boolean): void
 | index | number | 是 | NavDestination页面的位置索引。索引值从0开始。 |
 | result | Object | 是 | 页面自定义处理结果。不支持boolean类型。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
+
+<a id="poptoname1"></a>
 
 ## popToName
 
@@ -498,7 +504,7 @@ popToName(name: string, animated?: boolean): number
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
 
-<a id="poptoname-1"></a>
+<a id="poptoname2"></a>
 
 ## popToName
 
@@ -531,6 +537,8 @@ popToName(name: string, result: Object, animated?: boolean): number
 | 类型 | 说明 |
 | --- | --- |
 | number | 如果栈中存在名为name的NavDestination页面，则返回由栈底开始第一个名为name的NavDestination页面的索引，否则返回-1。 |
+
+<a id="pushdestination1"></a>
 
 ## pushDestination
 
@@ -567,12 +575,12 @@ pushDestination(info: NavPathInfo, animated?: boolean): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 
-<a id="pushdestination-1"></a>
+<a id="pushdestination2"></a>
 
 ## pushDestination
 
@@ -609,10 +617,12 @@ pushDestination(info: NavPathInfo, options?: NavigationOptions): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
+
+<a id="pushdestinationbyname1"></a>
 
 ## pushDestinationByName
 
@@ -650,12 +660,12 @@ pushDestinationByName(name: string, param: Object, animated?: boolean): Promise<
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
 
-<a id="pushdestinationbyname-1"></a>
+<a id="pushdestinationbyname2"></a>
 
 ## pushDestinationByName
 
@@ -681,7 +691,7 @@ pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.b
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。 |
 | param | Object | 是 | 开发者设置的NavDestination页面详细参数。 |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。仅[pop](#pop-1)、[popToName](#poptoname-1)、[popToIndex](#poptoindex-1)中设置result参数后触发。 |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时处理返回结果。仅[pop](#pop2)、[popToName](#poptoname2)、[popToIndex](#poptoindex2)中设置result参数后触发。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
 
 **返回值：**
@@ -694,10 +704,12 @@ pushDestinationByName(name: string, param: Object, onPop: import('../api/@ohos.b
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
+
+<a id="pushpath1"></a>
 
 ## pushPath
 
@@ -724,7 +736,7 @@ pushPath(info: NavPathInfo, animated?: boolean): void
 | info | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>传入参数非法时，按true处理。<br>**适用版本：** 11 |
 
-<a id="pushpath-1"></a>
+<a id="pushpath2"></a>
 
 ## pushPath
 
@@ -750,6 +762,8 @@ pushPath(info: NavPathInfo, options?: NavigationOptions): void
 | --- | --- | --- | --- |
 | info | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | NavDestination页面的信息。 |
 | options | [NavigationOptions](arkts-arkui-navigation-comp-navigationoptions-i.md) | 否 | 路由栈操作选项。 |
+
+<a id="pushpathbyname1"></a>
 
 ## pushPathByName
 
@@ -777,7 +791,7 @@ pushPathByName(name: string, param: unknown, animated?: boolean): void
 | param | unknown | 是 | 开发者设置的NavDestination页面详细参数，unknown可以是用户自定义的类型。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true<br>**适用版本：** 11 |
 
-<a id="pushpathbyname-1"></a>
+<a id="pushpathbyname2"></a>
 
 ## pushPathByName
 
@@ -803,7 +817,7 @@ pushPathByName(name: string, param: Object, onPop: import('../api/@ohos.base').C
 | --- | --- | --- | --- |
 | name | string | 是 | NavDestination页面名称。 |
 | param | Object | 是 | 开发者设置的NavDestination页面详细参数。 |
-| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时触发该回调处理返回结果。仅[pop](#pop-1)、[popToName](#poptoname-1)、[popToIndex](#poptoindex-1)中设置result参数后触发。 |
+| onPop | import('../api/@ohos.base').Callback&lt;[PopInfo](arkts-arkui-navigation-comp-popinfo-i.md)&gt; | 是 | Callback回调，用于页面出栈时触发该回调处理返回结果。仅[pop](#pop2)、[popToName](#poptoname2)、[popToIndex](#poptoindex2)中设置result参数后触发。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
 
 ## removeByIndexes
@@ -931,10 +945,12 @@ replaceDestination(info: NavPathInfo, options?: NavigationOptions): Promise<void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameters types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameters types.         3. Parameter verification failed. |
 | [100001](../errorcode-internal.md#100001-接口调用异常错误码) | Internal error. |
 | [100005](../errorcode-router.md#100005-navigation跳转时未注册builder函数) | Builder function not registered. |
 | [100006](../errorcode-router.md#100006-navigation跳转时目标页面不存在navdestination组件) | NavDestination not found. |
+
+<a id="replacepath1"></a>
 
 ## replacePath
 
@@ -961,7 +977,7 @@ replacePath(info: NavPathInfo, animated?: boolean): void
 | info | [NavPathInfo](arkts-arkui-navigation-comp-navpathinfo-c.md) | 是 | 新栈顶页面参数信息。 |
 | animated | boolean | 否 | 是否支持转场动画。<br>true：支持转场动画；false：不支持转场动画。<br>默认值：true |
 
-<a id="replacepath-1"></a>
+<a id="replacepath2"></a>
 
 ## replacePath
 

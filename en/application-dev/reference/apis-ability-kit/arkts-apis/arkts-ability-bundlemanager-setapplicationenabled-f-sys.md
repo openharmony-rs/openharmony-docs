@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="setapplicationenabled1"></a>
+
 ## setApplicationEnabled
 
 ```TypeScript
@@ -48,6 +50,7 @@ Enables or disables an application or an application clone. This API uses a prom
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex not in valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,8 +72,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setapplicationenabled-1"></a>
+
+<a id="setapplicationenabled2"></a>
 
 ## setApplicationEnabled
 
@@ -97,9 +102,9 @@ Sets the enabled or disabled state of a specified application or application clo
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application. |
-| appIndex | number | Yes | Application index. The value is an integer ranging from 0 to 5. The value 0 indicates the main application, and the values 1 to 5 indicate the application clone indexes. |
-| isEnabled | boolean | Yes | Whether to enable the application. The value true indicates that the application is enabled, and false indicates that the application is disabled. |
-| killProcess | boolean | Yes | Whether to exit the application process when the application is disabled. The value true indicates that the application process exits when the application is disabled, and false indicates that the application process does not exit when the application is disabled. |
+| appIndex | number | Yes | Application index. The value is an integer ranging from 0 to 5. The value **0** indicates the main application, and the values 1 to 5 indicate the application clone indexes. |
+| isEnabled | boolean | Yes | Whether to enable the application. The value **true** indicates that the application is enabled, and **false** indicates that the application is disabled. |
+| killProcess | boolean | Yes | Whether to exit the application process when the application is disabled. The value **true** indicates that the application process exits when the application is disabled, and **false** indicates that the application process does not exit when the application is disabled. |
 
 **Return value:**
 
@@ -116,6 +121,7 @@ Sets the enabled or disabled state of a specified application or application clo
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle is not found. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The specified app index is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -143,8 +149,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setapplicationenabled-2"></a>
+
+<a id="setapplicationenabled3"></a>
 
 ## setApplicationEnabled
 
@@ -170,7 +178,7 @@ Enables or disables an application. This API uses an asynchronous callback to re
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
 | isEnabled | boolean | Yes | Whether to enable the application. **true** to enable, **false** otherwise. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If setting the enabled or disabled state of the application is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -181,6 +189,7 @@ Enables or disables an application. This API uses an asynchronous callback to re
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -204,8 +213,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setapplicationenabled-3"></a>
+
+<a id="setapplicationenabled4"></a>
 
 ## setApplicationEnabled
 
@@ -247,6 +258,7 @@ Enables or disables an application. This API uses a promise to return the result
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -267,3 +279,5 @@ try {
   hilog.error(0x0000, 'testTag', 'setApplicationEnabled failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

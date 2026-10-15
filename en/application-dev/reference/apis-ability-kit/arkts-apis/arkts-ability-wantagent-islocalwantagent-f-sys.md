@@ -42,6 +42,7 @@ Checks whether the specified WantAgent is local.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System app. Interface caller is not a system app. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -86,3 +87,5 @@ try {
   console.error('call isLocalWantAgent failed');
 }
 ```
+
+<!--DelEnd-->

@@ -8,7 +8,7 @@
 
 ```TypeScript
 import { accessibility } from '@kit.AccessibilityKit';
-import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType } from '@kit.AccessibilityKit';
+import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, InjectActionType, AccessibilityFocusScene, FocusRuleType, OperateVirtualNodeResult, AccessibilitySourceType, UIRect, UIAccessibilityElement } from '@kit.AccessibilityKit';
 ```
 
 ## 汇总
@@ -18,6 +18,13 @@ import { AccessibilityEventType, AccessibilityAction, FocusMoveResultCode, Injec
 | 名称 | 说明 |
 | --- | --- |
 | [accessibility](arkts-accessibility-accessibility-n.md) | 本模块提供辅助功能相关能力，包括获取辅助应用列表、获取辅助应用启用状态、获取无障碍字幕配置、发送无障碍事件、监听辅助应用状态变化等。 |
+
+### 接口
+
+| 名称 | 说明 |
+| --- | --- |
+| [UIAccessibilityElement](arkts-accessibility-accessibility-uiaccessibilityelement-i.md) | 无障碍节点元素。 |
+| [UIRect](arkts-accessibility-accessibility-uirect-i.md) | 表示矩形区域。 |
 
 <!--Del-->
 ### 枚举（系统接口）

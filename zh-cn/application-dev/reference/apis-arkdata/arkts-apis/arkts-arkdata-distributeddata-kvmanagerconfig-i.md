@@ -10,7 +10,7 @@ interface KVManagerConfig
 
 **废弃版本：** 9
 
-**替代接口：** KVManagerConfig
+**替代接口：** [KVManagerConfig](arkts-arkdata-distributedkvstore-kvmanagerconfig-i.md)
 
 <!--Device-distributedData-interface KVManagerConfig--><!--Device-distributedData-interface KVManagerConfig-End-->
 
@@ -35,7 +35,7 @@ bundleName: string
 
 **废弃版本：** 9
 
-**替代接口：** bundleName
+**替代接口：** [bundleName](arkts-arkdata-distributedkvstore-kvmanagerconfig-i.md#bundlename)
 
 <!--Device-KVManagerConfig-bundleName: string--><!--Device-KVManagerConfig-bundleName: string-End-->
 

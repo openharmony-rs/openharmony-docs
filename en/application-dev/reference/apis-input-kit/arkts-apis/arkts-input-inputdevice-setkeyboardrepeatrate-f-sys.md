@@ -6,6 +6,8 @@
 import { inputDevice } from '@kit.InputKit';
 ```
 
+<a id="setkeyboardrepeatrate1"></a>
+
 ## setKeyboardRepeatRate
 
 ```TypeScript
@@ -26,16 +28,17 @@ Sets the keyboard repeat rate. This API uses an asynchronous callback to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rate | number | Yes | Keyboard repeat rate, in ms/time. The value range is [36, 100] and the default value is 50. |
+| rate | number | Yes | Keyboard key repeat rate. Default value: 50 ms/event. Unit: ms/event. Value range: [36, 100]. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. If the operation is successful, **err** is **undefined**. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,8 +70,10 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setkeyboardrepeatrate-1"></a>
+
+<a id="setkeyboardrepeatrate2"></a>
 
 ## setKeyboardRepeatRate
 
@@ -90,7 +95,7 @@ Sets the keyboard repeat rate. This API uses a promise to return the result.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| rate | number | Yes | Keyboard repeat rate, in ms/time. The value range is [36, 100] and the default value is 50. |
+| rate | number | Yes | Keyboard key repeat rate. Default value: 50 ms/event. Adjustment range: [36 ms/event, 100 ms/event]. |
 
 **Return value:**
 
@@ -102,9 +107,10 @@ Sets the keyboard repeat rate. This API uses a promise to return the result.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | SystemAPI permission error. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -133,3 +139,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

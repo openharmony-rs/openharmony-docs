@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="getmissioninfo1"></a>
+
 ## getMissionInfo
 
 ```TypeScript
@@ -35,6 +37,7 @@ function getMissionInfo(deviceId: string, missionId: number, callback: AsyncCall
 | missionId | number | 是 | 任务ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt; | 是 | 回调函数，返回任务信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,8 +61,10 @@ missionManager.getMissionInfo('', missionId, (error, mission) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getmissioninfo-1"></a>
+
+<a id="getmissioninfo2"></a>
 
 ## getMissionInfo
 
@@ -96,6 +101,7 @@ function getMissionInfo(deviceId: string, missionId: number): Promise<MissionInf
 | --- | --- |
 | Promise&lt;[MissionInfo](arkts-ability-missioninfo-i-sys.md)&gt; | Promise对象，返回任务信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -114,3 +120,5 @@ try {
   console.error(`getMissionInfo failed. Cause: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -44,6 +44,7 @@ onLoadAd(adParam: advertising.AdRequestParams, adOptions: advertising.AdOptions,
 | adOptions | [advertising.AdOptions](arkts-ads-advertising-adoptions-i.md) | 是 | 广告配置参数。 |
 | respCallback | [RespCallback](arkts-ads-advertising-adsserviceextensionability-respcallback-i.md) | 是 | 广告请求回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,6 +59,8 @@ export default class AdsExtensionAbility extends AdsServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onLoadAdWithMultiSlots
 
@@ -84,6 +87,7 @@ onLoadAdWithMultiSlots(adParams: advertising.AdRequestParams[], adOptions: adver
 | adOptions | [advertising.AdOptions](arkts-ads-advertising-adoptions-i.md) | 是 | 广告配置参数。 |
 | respCallback | [RespCallback](arkts-ads-advertising-adsserviceextensionability-respcallback-i.md) | 是 | 广告请求回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -99,3 +103,5 @@ export default class AdsExtensionAbility extends AdsServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->

@@ -8,6 +8,8 @@ declare type Margin = Padding
 
 引入该对象时，至少传入一个参数。
 
+**类型：** Padding
+
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -17,5 +19,3 @@ declare type Margin = Padding
 <!--Device-unnamed-declare type Margin = Padding--><!--Device-unnamed-declare type Margin = Padding-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** Padding

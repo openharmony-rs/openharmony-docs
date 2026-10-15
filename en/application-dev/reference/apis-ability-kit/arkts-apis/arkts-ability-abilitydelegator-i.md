@@ -18,6 +18,8 @@ The **AbilityDelegator** module can listen for and manage the lifecycle changes 
 
 **Test API:** This API is used only in automated test scripts.
 
+<a id="addabilitymonitor1"></a>
+
 ## addAbilityMonitor
 
 ```TypeScript
@@ -28,7 +30,7 @@ Adds an **AbilityMonitor** instance. This API uses an asynchronous callback to r
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-addAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): void-End-->
 
@@ -77,7 +79,7 @@ abilityDelegator.addAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-<a id="addabilitymonitor-1"></a>
+<a id="addabilitymonitor2"></a>
 
 ## addAbilityMonitor
 
@@ -89,7 +91,7 @@ Adds an **AbilityMonitor** instance. This API uses a promise to return the resul
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-addAbilityMonitor(monitor: AbilityMonitor): Promise<void>--><!--Device-AbilityDelegator-addAbilityMonitor(monitor: AbilityMonitor): Promise<void>-End-->
 
@@ -145,7 +147,7 @@ Adds an **AbilityMonitor** instance. This API returns the result synchronously. 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-addAbilityMonitorSync(monitor: AbilityMonitor): void--><!--Device-AbilityDelegator-addAbilityMonitorSync(monitor: AbilityMonitor): void-End-->
 
@@ -185,6 +187,8 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.addAbilityMonitorSync(monitor);
 ```
 
+<a id="addabilitystagemonitor1"></a>
+
 ## addAbilityStageMonitor
 
 ```TypeScript
@@ -195,7 +199,7 @@ Adds an **AbilityStageMonitor** instance to monitor the lifecycle state changes 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-addAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<void>): void-End-->
 
@@ -236,7 +240,7 @@ abilityDelegator.addAbilityStageMonitor({
 });
 ```
 
-<a id="addabilitystagemonitor-1"></a>
+<a id="addabilitystagemonitor2"></a>
 
 ## addAbilityStageMonitor
 
@@ -248,7 +252,7 @@ Adds an **AbilityStageMonitor** instance to monitor the lifecycle state changes 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>--><!--Device-AbilityDelegator-addAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>-End-->
 
@@ -299,7 +303,7 @@ Adds an **AbilityStageMonitor** instance to monitor the lifecycle state changes 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void--><!--Device-AbilityDelegator-addAbilityStageMonitorSync(monitor: AbilityStageMonitor): void-End-->
 
@@ -344,7 +348,7 @@ Add an InteropAbilityMonitor object for monitoring the lifecycle state changes o
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AbilityDelegator-addInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void--><!--Device-AbilityDelegator-addInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void-End-->
 
@@ -362,6 +366,8 @@ Add an InteropAbilityMonitor object for monitoring the lifecycle state changes o
 | --- | --- |
 | [16000100](../errorcode-ability.md#16000100-failed-to-call-abilitymonitor-apis-to-listen-for-ability-lifecycle-changes) | Calling AddInteropAbilityMonitorSync failed. |
 
+<a id="doabilitybackground1"></a>
+
 ## doAbilityBackground
 
 ```TypeScript
@@ -372,7 +378,7 @@ Schedules the lifecycle state of an ability to **Background**. This API uses an 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-doAbilityBackground(ability: UIAbility, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-doAbilityBackground(ability: UIAbility, callback: AsyncCallback<void>): void-End-->
 
@@ -420,7 +426,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-<a id="doabilitybackground-1"></a>
+<a id="doabilitybackground2"></a>
 
 ## doAbilityBackground
 
@@ -432,7 +438,7 @@ Schedules the lifecycle state of an ability to **Background**. This API uses a p
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-doAbilityBackground(ability: UIAbility): Promise<void>--><!--Device-AbilityDelegator-doAbilityBackground(ability: UIAbility): Promise<void>-End-->
 
@@ -481,6 +487,8 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
+<a id="doabilityforeground1"></a>
+
 ## doAbilityForeground
 
 ```TypeScript
@@ -491,7 +499,7 @@ Schedules the lifecycle state of an ability to **Foreground**. This API uses an 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-doAbilityForeground(ability: UIAbility, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-doAbilityForeground(ability: UIAbility, callback: AsyncCallback<void>): void-End-->
 
@@ -539,7 +547,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-<a id="doabilityforeground-1"></a>
+<a id="doabilityforeground2"></a>
 
 ## doAbilityForeground
 
@@ -551,7 +559,7 @@ Schedules the lifecycle state of an ability to **Foreground**. This API uses a p
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-doAbilityForeground(ability: UIAbility): Promise<void>--><!--Device-AbilityDelegator-doAbilityForeground(ability: UIAbility): Promise<void>-End-->
 
@@ -600,6 +608,8 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
+<a id="executeshellcommand1"></a>
+
 ## executeShellCommand
 
 ```TypeScript
@@ -610,7 +620,7 @@ Executes a shell command. This API uses an asynchronous callback to return the r
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-executeShellCommand(cmd: string, callback: AsyncCallback<ShellCmdResult>): void--><!--Device-AbilityDelegator-executeShellCommand(cmd: string, callback: AsyncCallback<ShellCmdResult>): void-End-->
 
@@ -621,7 +631,7 @@ Executes a shell command. This API uses an asynchronous callback to return the r
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | cmd | string | Yes | Shell command string. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)&gt; | Yes | Callback used to return the result. If the shell command is executed, **err** is **undefined** and **data** is the execution result obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShellCmdResult](arkts-ability-shellcmdresult-i.md)&gt; | Yes | Callback used to return the result. If the shell command is executed, **err** is **undefined** and **data** is the execution result obtained. Otherwise, **err** is an error object. |
 
 **Examples**
 
@@ -645,7 +655,7 @@ abilityDelegator.executeShellCommand(shellCommand, (err: BusinessError, data: ab
 });
 ```
 
-<a id="executeshellcommand-1"></a>
+<a id="executeshellcommand2"></a>
 
 ## executeShellCommand
 
@@ -657,7 +667,7 @@ Executes a shell command with the timeout period specified. This API uses an asy
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-executeShellCommand(cmd: string, timeoutSecs: long, callback: AsyncCallback<ShellCmdResult>): void--><!--Device-AbilityDelegator-executeShellCommand(cmd: string, timeoutSecs: long, callback: AsyncCallback<ShellCmdResult>): void-End-->
 
@@ -669,7 +679,7 @@ Executes a shell command with the timeout period specified. This API uses an asy
 | --- | --- | --- | --- |
 | cmd | string | Yes | Shell command string. |
 | timeoutSecs | number | Yes | Command timeout period, in seconds. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)&gt; | Yes | Callback used to return the result. If the shell command is executed, **err** is **undefined** and **data** is the execution result obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[ShellCmdResult](arkts-ability-shellcmdresult-i.md)&gt; | Yes | Callback used to return the result. If the shell command is executed, **err** is **undefined** and **data** is the execution result obtained. Otherwise, **err** is an error object. |
 
 **Examples**
 
@@ -691,7 +701,7 @@ abilityDelegator.executeShellCommand(shellCommand, timeout, (err: BusinessError,
 });
 ```
 
-<a id="executeshellcommand-2"></a>
+<a id="executeshellcommand3"></a>
 
 ## executeShellCommand
 
@@ -703,7 +713,7 @@ Executes a shell command with the timeout period specified. This API uses a prom
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-executeShellCommand(cmd: string, timeoutSecs?: long): Promise<ShellCmdResult>--><!--Device-AbilityDelegator-executeShellCommand(cmd: string, timeoutSecs?: long): Promise<ShellCmdResult>-End-->
 
@@ -720,7 +730,7 @@ Executes a shell command with the timeout period specified. This API uses a prom
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;[ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md)&gt; | Promise used to return a [ShellCmdResult](arkts-ability-shellcmdresult-shellcmdresult-i.md) object. |
+| Promise&lt;[ShellCmdResult](arkts-ability-shellcmdresult-i.md)&gt; | Promise used to return a [ShellCmdResult](arkts-ability-shellcmdresult-i.md) object. |
 
 **Examples**
 
@@ -737,6 +747,8 @@ abilityDelegator.executeShellCommand(shellCommand, timeout).then((data) => {
 });
 ```
 
+<a id="finishtest1"></a>
+
 ## finishTest
 
 ```TypeScript
@@ -747,7 +759,7 @@ Finishes the test and prints log information to the unit test console. This API 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-finishTest(msg: string, code: long, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-finishTest(msg: string, code: long, callback: AsyncCallback<void>): void-End-->
 
@@ -789,7 +801,7 @@ abilityDelegator.finishTest(msg, 0, (err: BusinessError) => {
 });
 ```
 
-<a id="finishtest-1"></a>
+<a id="finishtest2"></a>
 
 ## finishTest
 
@@ -801,7 +813,7 @@ Finishes the test and prints log information to the unit test console. This API 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-finishTest(msg: string, code: long): Promise<void>--><!--Device-AbilityDelegator-finishTest(msg: string, code: long): Promise<void>-End-->
 
@@ -853,7 +865,7 @@ Obtains the lifecycle state of an ability.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-getAbilityState(ability: UIAbility): int--><!--Device-AbilityDelegator-getAbilityState(ability: UIAbility): int-End-->
 
@@ -910,7 +922,7 @@ Obtains the application context.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-getAppContext(): Context--><!--Device-AbilityDelegator-getAppContext(): Context-End-->
 
@@ -934,6 +946,8 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 let context = abilityDelegator.getAppContext();
 ```
 
+<a id="getcurrenttopability1"></a>
+
 ## getCurrentTopAbility
 
 ```TypeScript
@@ -944,7 +958,7 @@ Obtains the top ability of this application. This API uses an asynchronous callb
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-getCurrentTopAbility(callback: AsyncCallback<UIAbility>): void--><!--Device-AbilityDelegator-getCurrentTopAbility(callback: AsyncCallback<UIAbility>): void-End-->
 
@@ -984,7 +998,7 @@ abilityDelegator.getCurrentTopAbility((err: BusinessError, data: UIAbility) => {
 });
 ```
 
-<a id="getcurrenttopability-1"></a>
+<a id="getcurrenttopability2"></a>
 
 ## getCurrentTopAbility
 
@@ -996,7 +1010,7 @@ Obtains the top ability of this application. This API uses a promise to return t
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-getCurrentTopAbility(): Promise<UIAbility>--><!--Device-AbilityDelegator-getCurrentTopAbility(): Promise<UIAbility>-End-->
 
@@ -1030,6 +1044,8 @@ abilityDelegator.getCurrentTopAbility().then((data: UIAbility) => {
 });
 ```
 
+<a id="print1"></a>
+
 ## print
 
 ```TypeScript
@@ -1040,7 +1056,7 @@ Prints log information to the unit test console. This API uses an asynchronous c
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-print(msg: string, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-print(msg: string, callback: AsyncCallback<void>): void-End-->
 
@@ -1074,7 +1090,7 @@ abilityDelegator.print(msg, (err: BusinessError) => {
 });
 ```
 
-<a id="print-1"></a>
+<a id="print2"></a>
 
 ## print
 
@@ -1086,7 +1102,7 @@ Prints log information to the unit test console. This API uses a promise to retu
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-print(msg: string): Promise<void>--><!--Device-AbilityDelegator-print(msg: string): Promise<void>-End-->
 
@@ -1130,7 +1146,7 @@ Prints log information to the unit test console.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-printSync(msg: string): void--><!--Device-AbilityDelegator-printSync(msg: string): void-End-->
 
@@ -1162,6 +1178,8 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.printSync(msg);
 ```
 
+<a id="removeabilitymonitor1"></a>
+
 ## removeAbilityMonitor
 
 ```TypeScript
@@ -1172,7 +1190,7 @@ Removes an **AbilityMonitor** instance. This API uses an asynchronous callback t
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-removeAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<void>): void-End-->
 
@@ -1218,7 +1236,7 @@ abilityDelegator.removeAbilityMonitor(monitor, (error: BusinessError) => {
 });
 ```
 
-<a id="removeabilitymonitor-1"></a>
+<a id="removeabilitymonitor2"></a>
 
 ## removeAbilityMonitor
 
@@ -1230,7 +1248,7 @@ Removes an **AbilityMonitor** instance. This API uses a promise to return the re
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-removeAbilityMonitor(monitor: AbilityMonitor): Promise<void>--><!--Device-AbilityDelegator-removeAbilityMonitor(monitor: AbilityMonitor): Promise<void>-End-->
 
@@ -1288,7 +1306,7 @@ Removes an **AbilityMonitor** instance. This API returns the result synchronousl
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-removeAbilityMonitorSync(monitor: AbilityMonitor): void--><!--Device-AbilityDelegator-removeAbilityMonitorSync(monitor: AbilityMonitor): void-End-->
 
@@ -1328,6 +1346,8 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.removeAbilityMonitorSync(monitor);
 ```
 
+<a id="removeabilitystagemonitor1"></a>
+
 ## removeAbilityStageMonitor
 
 ```TypeScript
@@ -1338,7 +1358,7 @@ Removes an **AbilityStageMonitor** instance from the application memory. This AP
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-removeAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<void>): void-End-->
 
@@ -1379,7 +1399,7 @@ abilityDelegator.removeAbilityStageMonitor({
 });
 ```
 
-<a id="removeabilitystagemonitor-1"></a>
+<a id="removeabilitystagemonitor2"></a>
 
 ## removeAbilityStageMonitor
 
@@ -1391,7 +1411,7 @@ Removes an **AbilityStageMonitor** instance from the application memory. This AP
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>--><!--Device-AbilityDelegator-removeAbilityStageMonitor(monitor: AbilityStageMonitor): Promise<void>-End-->
 
@@ -1442,7 +1462,7 @@ Removes an **AbilityStageMonitor** instance from the application memory. This AP
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void--><!--Device-AbilityDelegator-removeAbilityStageMonitorSync(monitor: AbilityStageMonitor): void-End-->
 
@@ -1487,7 +1507,7 @@ Remove a specified InteropAbilityMonitor object from the application memory.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AbilityDelegator-removeInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void--><!--Device-AbilityDelegator-removeInteropAbilityMonitorSync(monitor: InteropAbilityMonitor): void-End-->
 
@@ -1552,6 +1572,8 @@ abilityDelegator = abilityDelegatorRegistry.getAbilityDelegator();
 abilityDelegator.setMockList(mockList);
 ```
 
+<a id="startability1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -1562,7 +1584,7 @@ Starts an ability. This API uses an asynchronous callback to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-startAbility(want: Want, callback: AsyncCallback<void>): void--><!--Device-AbilityDelegator-startAbility(want: Want, callback: AsyncCallback<void>): void-End-->
 
@@ -1623,7 +1645,7 @@ abilityDelegator.startAbility(want, (err: BusinessError, data: void) => {
 });
 ```
 
-<a id="startability-1"></a>
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -1635,7 +1657,7 @@ Starts an ability. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-startAbility(want: Want): Promise<void>--><!--Device-AbilityDelegator-startAbility(want: Want): Promise<void>-End-->
 
@@ -1692,6 +1714,8 @@ abilityDelegator.startAbility(want).then((data: void) => {
 });
 ```
 
+<a id="waitabilitymonitor1"></a>
+
 ## waitAbilityMonitor
 
 ```TypeScript
@@ -1702,7 +1726,7 @@ Waits for the **Ability** instance that matches the **AbilityMonitor** instance 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<UIAbility>): void--><!--Device-AbilityDelegator-waitAbilityMonitor(monitor: AbilityMonitor, callback: AsyncCallback<UIAbility>): void-End-->
 
@@ -1750,7 +1774,7 @@ abilityDelegator.waitAbilityMonitor(monitor, (error: BusinessError, data: UIAbil
 });
 ```
 
-<a id="waitabilitymonitor-1"></a>
+<a id="waitabilitymonitor2"></a>
 
 ## waitAbilityMonitor
 
@@ -1762,7 +1786,7 @@ Waits a period of time for the **Ability** instance that matches the **AbilityMo
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-waitAbilityMonitor(monitor: AbilityMonitor, timeout: long, callback: AsyncCallback<UIAbility>): void--><!--Device-AbilityDelegator-waitAbilityMonitor(monitor: AbilityMonitor, timeout: long, callback: AsyncCallback<UIAbility>): void-End-->
 
@@ -1816,7 +1840,7 @@ abilityDelegator.waitAbilityMonitor(monitor, timeout, (error: BusinessError, dat
 });
 ```
 
-<a id="waitabilitymonitor-2"></a>
+<a id="waitabilitymonitor3"></a>
 
 ## waitAbilityMonitor
 
@@ -1828,7 +1852,7 @@ Waits a period of time for the **Ability** instance that matches the **AbilityMo
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-waitAbilityMonitor(monitor: AbilityMonitor, timeout?: long): Promise<UIAbility>--><!--Device-AbilityDelegator-waitAbilityMonitor(monitor: AbilityMonitor, timeout?: long): Promise<UIAbility>-End-->
 
@@ -1877,6 +1901,8 @@ abilityDelegator.waitAbilityMonitor(monitor).then((data: UIAbility) => {
 });
 ```
 
+<a id="waitabilitystagemonitor1"></a>
+
 ## waitAbilityStageMonitor
 
 ```TypeScript
@@ -1887,7 +1913,7 @@ Returns an **AbilityStage** instance that matches the conditions set in an **Abi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<AbilityStage>): void--><!--Device-AbilityDelegator-waitAbilityStageMonitor(monitor: AbilityStageMonitor, callback: AsyncCallback<AbilityStage>): void-End-->
 
@@ -1929,7 +1955,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-<a id="waitabilitystagemonitor-1"></a>
+<a id="waitabilitystagemonitor2"></a>
 
 ## waitAbilityStageMonitor
 
@@ -1941,7 +1967,7 @@ Returns an **AbilityStage** instance that matches the conditions set in an **Abi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: long, callback: AsyncCallback<AbilityStage>): void--><!--Device-AbilityDelegator-waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout: long, callback: AsyncCallback<AbilityStage>): void-End-->
 
@@ -1985,7 +2011,7 @@ abilityDelegator.waitAbilityStageMonitor({
 });
 ```
 
-<a id="waitabilitystagemonitor-2"></a>
+<a id="waitabilitystagemonitor3"></a>
 
 ## waitAbilityStageMonitor
 
@@ -1997,7 +2023,7 @@ Returns an **AbilityStage** instance that matches the conditions set in an **Abi
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AbilityDelegator-waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: long): Promise<AbilityStage>--><!--Device-AbilityDelegator-waitAbilityStageMonitor(monitor: AbilityStageMonitor, timeout?: long): Promise<AbilityStage>-End-->
 

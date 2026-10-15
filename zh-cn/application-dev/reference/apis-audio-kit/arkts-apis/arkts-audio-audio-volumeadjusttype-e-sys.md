@@ -14,22 +14,6 @@ enum VolumeAdjustType
 
 **系统接口：** 此接口为系统接口。
 
-## VOLUME_UP
-
-```TypeScript
-VOLUME_UP = 0
-```
-
-向上调节音量。
-
-**起始版本：** 10
-
-<!--Device-VolumeAdjustType-VOLUME_UP = 0--><!--Device-VolumeAdjustType-VOLUME_UP = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Volume
-
-**系统接口：** 此接口为系统接口。
-
 ## VOLUME_DOWN
 
 ```TypeScript
@@ -41,6 +25,22 @@ VOLUME_DOWN = 1
 **起始版本：** 10
 
 <!--Device-VolumeAdjustType-VOLUME_DOWN = 1--><!--Device-VolumeAdjustType-VOLUME_DOWN = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Volume
+
+**系统接口：** 此接口为系统接口。
+
+## VOLUME_UP
+
+```TypeScript
+VOLUME_UP = 0
+```
+
+向上调节音量。
+
+**起始版本：** 10
+
+<!--Device-VolumeAdjustType-VOLUME_UP = 0--><!--Device-VolumeAdjustType-VOLUME_UP = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Volume
 

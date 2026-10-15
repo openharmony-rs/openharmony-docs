@@ -6,6 +6,8 @@ export type BaseContext = _BaseContext.default
 
 所有Context类型的父类。
 
+**类型：** _BaseContext.default
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export type BaseContext = _BaseContext.default
 <!--Device-common-export type BaseContext = _BaseContext.default--><!--Device-common-export type BaseContext = _BaseContext.default-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _BaseContext.default

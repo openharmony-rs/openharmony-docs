@@ -4,7 +4,11 @@
 declare interface ScrollEffectOptions
 ```
 
-Defines the scroll effect options for the title bar.
+Provides the scroll blur effect options of the title bar.
+
+> **NOTE:** 
+> 
+> - If **backgroundColor** in [NavigationTitleOptions](arkts-arkui-navigation-comp-navigationtitleoptions-i.md) is also set, the scroll blur effect will be overridden by the background color of the title bar.
 
 **Since:** 26.0.0
 
@@ -18,7 +22,11 @@ Defines the scroll effect options for the title bar.
 blurEffectiveEndOffset?: LengthMetrics
 ```
 
-The maximum sliding distance of the content area to enable the final blur style of the title bar. Default value: 8vp.
+Maximum sliding distance for the title bar to reach the final blur style. When the sliding distance reaches this value, the blur effect reaches the final state.
+
+The maximum sliding distance cannot be set using [LengthMetrics.percent](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md#percent).
+
+Default value: **8vp**
 
 **Type:** LengthMetrics
 
@@ -38,7 +46,11 @@ The maximum sliding distance of the content area to enable the final blur style 
 blurEffectiveStartOffset?: LengthMetrics
 ```
 
-The minimum sliding distance of the content area to enable the title bar sliding blur effect. Default value: 0vp.
+Minimum sliding distance for enabling the scroll blur effect of the title bar. When the sliding distance exceeds this value, the blur effect starts to be applied.
+
+The minimum sliding distance cannot be set using [LengthMetrics.percent](../arkts-apis/arkts-arkui-graphics-lengthmetrics-c.md#percent).
+
+Default value: **0vp**
 
 **Type:** LengthMetrics
 
@@ -58,7 +70,9 @@ The minimum sliding distance of the content area to enable the title bar sliding
 scrollEffectType?: ScrollEffectType
 ```
 
-Title bar scroll blur style. Default value: ScrollEffectType.COMMON_BLUR.
+Scroll blur effect type of the title bar.
+
+Default value: **ScrollEffectType.COMMON_BLUR**.
 
 **Type:** [ScrollEffectType](arkts-arkui-navigation-comp-scrolleffecttype-e.md)
 

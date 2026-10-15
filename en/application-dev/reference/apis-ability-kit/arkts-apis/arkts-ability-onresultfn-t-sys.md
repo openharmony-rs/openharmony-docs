@@ -22,8 +22,9 @@ Defines a onResult function.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](arkts-ability-abilityresult-abilityresult-i.md) | Yes | The Parameter returned if the UIExtensionAbility call terminateSelfWithResult. |
+| parameter | [AbilityResult](arkts-ability-abilityresult-i.md) | Yes | The Parameter returned if the UIExtensionAbility call terminateSelfWithResult. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -36,3 +37,5 @@ let callback: verticalPanelManager.PanelStartCallback = {
   },
 }
 ```
+
+<!--DelEnd-->

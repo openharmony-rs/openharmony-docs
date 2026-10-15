@@ -448,6 +448,24 @@ Example: 6.1.1.120
 
 **System capability:** SystemCapability.Startup.SystemInfo
 
+## kernelVersion
+
+```TypeScript
+const kernelVersion: string
+```
+
+Obtain the kernel version. The value is in the format of 'HongMeng Kernel X.Y.Z'. Example: 'HongMeng Kernel 1.0.0'.
+
+**Type:** string
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-deviceInfo-const kernelVersion: string--><!--Device-deviceInfo-const kernelVersion: string-End-->
+
+**System capability:** SystemCapability.Startup.SystemInfo
+
 ## majorVersion
 
 ```TypeScript

@@ -12,38 +12,6 @@ Enumerates the layout when the window is maximized.
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## FOLLOW_APP_IMMERSIVE_SETTING
-
-```TypeScript
-FOLLOW_APP_IMMERSIVE_SETTING = 0
-```
-
-The window, when maximized, follows the application's full-screen mode.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-MaximizePresentation-FOLLOW_APP_IMMERSIVE_SETTING = 0--><!--Device-MaximizePresentation-FOLLOW_APP_IMMERSIVE_SETTING = 0-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
-## EXIT_IMMERSIVE
-
-```TypeScript
-EXIT_IMMERSIVE = 1
-```
-
-The window, when maximized, exits full-screen mode if it is set to full-screen.
-
-**Since:** 12
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-MaximizePresentation-EXIT_IMMERSIVE = 1--><!--Device-MaximizePresentation-EXIT_IMMERSIVE = 1-End-->
-
-**System capability:** SystemCapability.Window.SessionManager
-
 ## ENTER_IMMERSIVE
 
 ```TypeScript
@@ -54,7 +22,7 @@ The window, when maximized, transitions into the full-screen mode, and the windo
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MaximizePresentation-ENTER_IMMERSIVE = 2--><!--Device-MaximizePresentation-ENTER_IMMERSIVE = 2-End-->
 
@@ -70,8 +38,40 @@ The window, when maximized, transitions into the full-screen mode, and the windo
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-MaximizePresentation-ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER = 3--><!--Device-MaximizePresentation-ENTER_IMMERSIVE_DISABLE_TITLE_AND_DOCK_HOVER = 3-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+## EXIT_IMMERSIVE
+
+```TypeScript
+EXIT_IMMERSIVE = 1
+```
+
+The window, when maximized, exits full-screen mode if it is set to full-screen.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MaximizePresentation-EXIT_IMMERSIVE = 1--><!--Device-MaximizePresentation-EXIT_IMMERSIVE = 1-End-->
+
+**System capability:** SystemCapability.Window.SessionManager
+
+## FOLLOW_APP_IMMERSIVE_SETTING
+
+```TypeScript
+FOLLOW_APP_IMMERSIVE_SETTING = 0
+```
+
+The window, when maximized, follows the application's full-screen mode.
+
+**Since:** 12
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-MaximizePresentation-FOLLOW_APP_IMMERSIVE_SETTING = 0--><!--Device-MaximizePresentation-FOLLOW_APP_IMMERSIVE_SETTING = 0-End-->
 
 **System capability:** SystemCapability.Window.SessionManager

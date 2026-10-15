@@ -6,6 +6,8 @@
 import { runningLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="createrunninglock1"></a>
+
 ## createRunningLock
 
 ```TypeScript
@@ -47,7 +49,7 @@ runningLock.createRunningLock('running_lock_test', runningLock.RunningLockType.B
 ```
 
 
-<a id="createrunninglock-1"></a>
+<a id="createrunninglock2"></a>
 
 ## createRunningLock
 

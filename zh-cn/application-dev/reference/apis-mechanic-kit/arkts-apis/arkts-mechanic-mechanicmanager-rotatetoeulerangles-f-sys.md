@@ -44,6 +44,7 @@ function rotateToEulerAngles(mechId: number, angles: EulerAngles, duration: numb
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 | [33300002](../errorcode-mechanic.md#33300002-设备未连接) | Device not connected. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -58,3 +59,5 @@ mechanicManager.rotateToEulerAngles(0, degree, 500)
   });
 console.info('End rotation');
 ```
+
+<!--DelEnd-->

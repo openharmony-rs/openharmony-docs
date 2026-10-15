@@ -26,20 +26,6 @@ Deferred transaction object. When a deferred transaction object is created, auto
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## IMMEDIATE
-
-```TypeScript
-IMMEDIATE = 1
-```
-
-Immediate transaction object. When an immediate transaction object is created, a write transaction starts. If there is any uncommitted write transaction, the transaction object cannot be created and error 14800024 is returned.
-
-**Since:** 14
-
-<!--Device-TransactionType-IMMEDIATE = 1--><!--Device-TransactionType-IMMEDIATE = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## EXCLUSIVE
 
 ```TypeScript
@@ -51,5 +37,19 @@ Exclusive transaction object. In WAL mode, the exclusive transaction object is t
 **Since:** 14
 
 <!--Device-TransactionType-EXCLUSIVE = 2--><!--Device-TransactionType-EXCLUSIVE = 2-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## IMMEDIATE
+
+```TypeScript
+IMMEDIATE = 1
+```
+
+Immediate transaction object. When an immediate transaction object is created, a write transaction starts. If there is any uncommitted write transaction, the transaction object cannot be created and error 14800024 is returned.
+
+**Since:** 14
+
+<!--Device-TransactionType-IMMEDIATE = 1--><!--Device-TransactionType-IMMEDIATE = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

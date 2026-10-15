@@ -30,17 +30,17 @@ DEFAULT = 0
 
 **系统接口：** 此接口为系统接口。
 
-## HDR_ISO_SINGLE
+## HDR_CUVA
 
 ```TypeScript
-HDR_ISO_SINGLE = 1
+HDR_CUVA = 3
 ```
 
-符合ISO标准的单层HDR图片。
+历史产品拍摄的HDR图片。
 
 **起始版本：** 22
 
-<!--Device-HdrMode-HDR_ISO_SINGLE = 1--><!--Device-HdrMode-HDR_ISO_SINGLE = 1-End-->
+<!--Device-HdrMode-HDR_CUVA = 3--><!--Device-HdrMode-HDR_CUVA = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,33 +62,17 @@ HDR_ISO_DUAL = 2
 
 **系统接口：** 此接口为系统接口。
 
-## HDR_CUVA
+## HDR_ISO_SINGLE
 
 ```TypeScript
-HDR_CUVA = 3
+HDR_ISO_SINGLE = 1
 ```
 
-历史产品拍摄的HDR图片。
+符合ISO标准的单层HDR图片。
 
 **起始版本：** 22
 
-<!--Device-HdrMode-HDR_CUVA = 3--><!--Device-HdrMode-HDR_CUVA = 3-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
-## HDR_VIVID_SINGLE
-
-```TypeScript
-HDR_VIVID_SINGLE = 4
-```
-
-符合HDR Vivid标准的单层图片。
-
-**起始版本：** 22
-
-<!--Device-HdrMode-HDR_VIVID_SINGLE = 4--><!--Device-HdrMode-HDR_VIVID_SINGLE = 4-End-->
+<!--Device-HdrMode-HDR_ISO_SINGLE = 1--><!--Device-HdrMode-HDR_ISO_SINGLE = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -105,6 +89,22 @@ HDR_VIVID_DUAL = 5
 **起始版本：** 22
 
 <!--Device-HdrMode-HDR_VIVID_DUAL = 5--><!--Device-HdrMode-HDR_VIVID_DUAL = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HDR_VIVID_SINGLE
+
+```TypeScript
+HDR_VIVID_SINGLE = 4
+```
+
+符合HDR Vivid标准的单层图片。
+
+**起始版本：** 22
+
+<!--Device-HdrMode-HDR_VIVID_SINGLE = 4--><!--Device-HdrMode-HDR_VIVID_SINGLE = 4-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

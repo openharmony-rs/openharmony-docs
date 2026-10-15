@@ -4,7 +4,7 @@
 declare type TabsCustomContentTransitionCallback = (from: number, to: number) => TabContentAnimatedTransition | undefined
 ```
 
-Defines the callback invoked when the custom tab transition animation starts.
+Callback invoked when the custom page switching animation of **Tabs** starts.
 
 **Since:** 18
 
@@ -20,11 +20,11 @@ Defines the callback invoked when the custom tab transition animation starts.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| from | number | Yes | Index of the currently displayed tab before the animation starts. The index is zero-based.<br>Value range: [0, Index value — 1]. If the value exceeds the index value or is less than 0, no transition animation is displayed. |
-| to | number | Yes | Index of the target tab before the animation starts. The index is zero-based.<br>Value range: [0, Index value — 1]. If the value exceeds the index value or is less than 0, no transition animation is displayed. |
+| from | number | Yes | Index of the currently displayed page when the animation starts. The index starts from 0.<br>Value range: [0, total number of tabs - 1]. If the value exceeds the maximum index or is less than 0, no transition animation is applied. |
+| to | number | Yes | Index of the target page when the animation starts. The index starts from 0.<br>Value range: [0, total number of tabs - 1]. If the value exceeds the maximum index or is less than 0, no transition animation is applied. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [TabContentAnimatedTransition](arkts-arkui-tabs-comp-tabcontentanimatedtransition-i.md) &#124; undefined | Information about the custom tab switching animation. |
+| [TabContentAnimatedTransition](arkts-arkui-tabs-comp-tabcontentanimatedtransition-i.md) &#124; undefined | Information about the custom switching animation. |

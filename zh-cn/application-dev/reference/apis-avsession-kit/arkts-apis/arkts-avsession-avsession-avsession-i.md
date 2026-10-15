@@ -22,6 +22,8 @@ interface AVSession
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="activate1"></a>
+
 ## activate
 
 ```TypeScript
@@ -63,7 +65,7 @@ currentAVSession.activate((err: BusinessError) => {
 });
 ```
 
-<a id="activate-1"></a>
+<a id="activate2"></a>
 
 ## activate
 
@@ -75,7 +77,7 @@ activate(): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-activate(): Promise<void>--><!--Device-AVSession-activate(): Promise<void>-End-->
 
@@ -101,6 +103,8 @@ currentAVSession.activate().then(() => {
   console.info('Succeeded in activating.');
 });
 ```
+
+<a id="deactivate1"></a>
 
 ## deactivate
 
@@ -145,7 +149,7 @@ currentAVSession.deactivate((err: BusinessError) => {
 });
 ```
 
-<a id="deactivate-1"></a>
+<a id="deactivate2"></a>
 
 ## deactivate
 
@@ -157,7 +161,7 @@ deactivate(): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-deactivate(): Promise<void>--><!--Device-AVSession-deactivate(): Promise<void>-End-->
 
@@ -183,6 +187,8 @@ currentAVSession.deactivate().then(() => {
   console.info('Succeeded in deactivating.');
 });
 ```
+
+<a id="destroy1"></a>
 
 ## destroy
 
@@ -225,7 +231,7 @@ currentAVSession.destroy((err: BusinessError) => {
 });
 ```
 
-<a id="destroy-1"></a>
+<a id="destroy2"></a>
 
 ## destroy
 
@@ -237,7 +243,7 @@ destroy(): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-destroy(): Promise<void>--><!--Device-AVSession-destroy(): Promise<void>-End-->
 
@@ -263,6 +269,8 @@ currentAVSession.destroy().then(() => {
   console.info('Succeeded in destroying.');
 });
 ```
+
+<a id="dispatchsessionevent1"></a>
 
 ## dispatchSessionEvent
 
@@ -311,7 +319,7 @@ currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err
 });
 ```
 
-<a id="dispatchsessionevent-2"></a>
+<a id="dispatchsessionevent3"></a>
 
 ## dispatchSessionEvent
 
@@ -417,7 +425,7 @@ getAllCastDisplays(): Promise<Array<CastDisplayInfo>>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-getAllCastDisplays(): Promise<Array<CastDisplayInfo>>--><!--Device-AVSession-getAllCastDisplays(): Promise<Array<CastDisplayInfo>>-End-->
 
@@ -446,6 +454,8 @@ currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayIn
      }
     });
 ```
+
+<a id="getavcastcontroller1"></a>
 
 ## getAVCastController
 
@@ -490,7 +500,7 @@ currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSessio
 });
 ```
 
-<a id="getavcastcontroller-2"></a>
+<a id="getavcastcontroller3"></a>
 
 ## getAVCastController
 
@@ -531,6 +541,8 @@ currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastContr
 });
 ```
 
+<a id="getcontroller1"></a>
+
 ## getController
 
 ```TypeScript
@@ -570,7 +582,7 @@ currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSe
 });
 ```
 
-<a id="getcontroller-1"></a>
+<a id="getcontroller2"></a>
 
 ## getController
 
@@ -582,7 +594,7 @@ getController(): Promise<AVSessionController>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-getController(): Promise<AVSessionController>--><!--Device-AVSession-getController(): Promise<AVSessionController>-End-->
 
@@ -651,6 +663,8 @@ if (currentAVSession !== undefined) {
 }
 ```
 
+<a id="getoutputdevice1"></a>
+
 ## getOutputDevice
 
 ```TypeScript
@@ -692,7 +706,7 @@ currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSessio
 });
 ```
 
-<a id="getoutputdevice-1"></a>
+<a id="getoutputdevice2"></a>
 
 ## getOutputDevice
 
@@ -704,7 +718,7 @@ getOutputDevice(): Promise<OutputDeviceInfo>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-getOutputDevice(): Promise<OutputDeviceInfo>--><!--Device-AVSession-getOutputDevice(): Promise<OutputDeviceInfo>-End-->
 
@@ -741,7 +755,7 @@ getOutputDeviceSync(): OutputDeviceInfo
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-getOutputDeviceSync(): OutputDeviceInfo--><!--Device-AVSession-getOutputDeviceSync(): OutputDeviceInfo-End-->
 
@@ -1638,7 +1652,7 @@ off(type: 'playFromAssetId', callback?: (assetId: number) => void): void
 
 **废弃版本：** 20
 
-**替代接口：** off
+**替代接口：** [off](#offplay)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -2842,7 +2856,7 @@ on(type: 'playFromAssetId', callback: (assetId: number) => void): void
 
 **废弃版本：** 20
 
-**替代接口：** on
+**替代接口：** [on](#onplay)
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
@@ -3074,7 +3088,7 @@ onPlayPrevious(callback: Callback<CommandInfo>): void
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-onPlayPrevious(callback: Callback<CommandInfo>): void--><!--Device-AVSession-onPlayPrevious(callback: Callback<CommandInfo>): void-End-->
 
@@ -3148,7 +3162,7 @@ sendCustomData(data: Record<string, Object>): Promise<void>
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-sendCustomData(data: Record<string, Object>): Promise<void>--><!--Device-AVSession-sendCustomData(data: Record<string, Object>): Promise<void>-End-->
 
@@ -3180,6 +3194,8 @@ currentAVSession.sendCustomData({customData : "This is custom data"}).then(() =>
   console.info('Succeeded in sending custom data.');
 });
 ```
+
+<a id="setavcallstate1"></a>
 
 ## setAVCallState
 
@@ -3228,7 +3244,7 @@ currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
 });
 ```
 
-<a id="setavcallstate-1"></a>
+<a id="setavcallstate2"></a>
 
 ## setAVCallState
 
@@ -3275,6 +3291,8 @@ currentAVSession.setAVCallState(calldata).then(() => {
   console.info('Succeeded in setting AVCallState.');
 });
 ```
+
+<a id="setavmetadata1"></a>
 
 ## setAVMetadata
 
@@ -3340,7 +3358,7 @@ currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
 });
 ```
 
-<a id="setavmetadata-1"></a>
+<a id="setavmetadata2"></a>
 
 ## setAVMetadata
 
@@ -3352,7 +3370,7 @@ setAVMetadata(data: AVMetadata): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-setAVMetadata(data: AVMetadata): Promise<void>--><!--Device-AVSession-setAVMetadata(data: AVMetadata): Promise<void>-End-->
 
@@ -3407,6 +3425,8 @@ currentAVSession.setAVMetadata(metadata).then(() => {
 });
 ```
 
+<a id="setavplaybackstate1"></a>
+
 ## setAVPlaybackState
 
 ```TypeScript
@@ -3458,7 +3478,7 @@ currentAVSession.setAVPlaybackState(playbackState, (err: BusinessError) => {
 });
 ```
 
-<a id="setavplaybackstate-1"></a>
+<a id="setavplaybackstate2"></a>
 
 ## setAVPlaybackState
 
@@ -3470,7 +3490,7 @@ setAVPlaybackState(state: AVPlaybackState): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-setAVPlaybackState(state: AVPlaybackState): Promise<void>--><!--Device-AVSession-setAVPlaybackState(state: AVPlaybackState): Promise<void>-End-->
 
@@ -3511,6 +3531,8 @@ currentAVSession.setAVPlaybackState(playbackState).then(() => {
   console.info('Succeeded in setting AVPlaybackState.');
 });
 ```
+
+<a id="setavqueueitems1"></a>
 
 ## setAVQueueItems
 
@@ -3586,7 +3608,7 @@ currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
 });
 ```
 
-<a id="setavqueueitems-1"></a>
+<a id="setavqueueitems2"></a>
 
 ## setAVQueueItems
 
@@ -3598,7 +3620,7 @@ setAVQueueItems(items: Array<AVQueueItem>): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-setAVQueueItems(items: Array<AVQueueItem>): Promise<void>--><!--Device-AVSession-setAVQueueItems(items: Array<AVQueueItem>): Promise<void>-End-->
 
@@ -3664,6 +3686,8 @@ currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
 });
 ```
 
+<a id="setavqueuetitle1"></a>
+
 ## setAVQueueTitle
 
 ```TypeScript
@@ -3708,7 +3732,7 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
 });
 ```
 
-<a id="setavqueuetitle-1"></a>
+<a id="setavqueuetitle2"></a>
 
 ## setAVQueueTitle
 
@@ -3720,7 +3744,7 @@ setAVQueueTitle(title: string): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-setAVQueueTitle(title: string): Promise<void>--><!--Device-AVSession-setAVQueueTitle(title: string): Promise<void>-End-->
 
@@ -3801,6 +3825,8 @@ try {
 }
 ```
 
+<a id="setcallmetadata1"></a>
+
 ## setCallMetadata
 
 ```TypeScript
@@ -3875,7 +3901,7 @@ class CallManager {
 }
 ```
 
-<a id="setcallmetadata-1"></a>
+<a id="setcallmetadata2"></a>
 
 ## setCallMetadata
 
@@ -4048,6 +4074,8 @@ currentAVSession.setDesktopLyricVisible(true).then(() => {
 });
 ```
 
+<a id="setextras1"></a>
+
 ## setExtras
 
 ```TypeScript
@@ -4093,7 +4121,7 @@ currentAVSession.setExtras({extras : "This is custom media packet"}, (err: Busin
 })
 ```
 
-<a id="setextras-2"></a>
+<a id="setextras3"></a>
 
 ## setExtras
 
@@ -4140,6 +4168,8 @@ currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => 
   console.info('Succeeded in setting extras.');
 });
 ```
+
+<a id="setlaunchability1"></a>
 
 ## setLaunchAbility
 
@@ -4217,7 +4247,7 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
 });
 ```
 
-<a id="setlaunchability-1"></a>
+<a id="setlaunchability2"></a>
 
 ## setLaunchAbility
 
@@ -4231,7 +4261,7 @@ setLaunchAbility(ability: WantAgent): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-setLaunchAbility(ability: WantAgent): Promise<void>--><!--Device-AVSession-setLaunchAbility(ability: WantAgent): Promise<void>-End-->
 
@@ -4363,7 +4393,7 @@ setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>--><!--Device-AVSession-setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>-End-->
 
@@ -4416,7 +4446,7 @@ setSupportedPlaySpeeds(speeds: Array<number>): Promise<void>
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-setSupportedPlaySpeeds(speeds: Array<double>): Promise<void>--><!--Device-AVSession-setSupportedPlaySpeeds(speeds: Array<double>): Promise<void>-End-->
 
@@ -4453,6 +4483,8 @@ try {
 }
 ```
 
+<a id="stopcasting1"></a>
+
 ## stopCasting
 
 ```TypeScript
@@ -4487,7 +4519,7 @@ currentAVSession.stopCasting(() => {
 });
 ```
 
-<a id="stopcasting-1"></a>
+<a id="stopcasting2"></a>
 
 ## stopCasting
 
@@ -4499,7 +4531,7 @@ stopCasting(): Promise<void>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-stopCasting(): Promise<void>--><!--Device-AVSession-stopCasting(): Promise<void>-End-->
 
@@ -4537,7 +4569,7 @@ AVSession对象唯一的会话标识。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-readonly sessionId: string--><!--Device-AVSession-readonly sessionId: string-End-->
 
@@ -4555,7 +4587,7 @@ AVSession会话的自定义标签信息。
 
 **起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-readonly sessionTag: string--><!--Device-AVSession-readonly sessionTag: string-End-->
 
@@ -4573,7 +4605,7 @@ AVSession会话类型。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AVSession-readonly sessionType: AVSessionType--><!--Device-AVSession-readonly sessionType: AVSessionType-End-->
 

@@ -12,20 +12,6 @@ Enumerates the image formats.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## YCBCR_422_SP
-
-```TypeScript
-YCBCR_422_SP = 1000
-```
-
-YCBCR422 semi-planar format.
-
-**Since:** 9
-
-<!--Device-ImageFormat-YCBCR_422_SP = 1000--><!--Device-ImageFormat-YCBCR_422_SP = 1000-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## JPEG
 
 ```TypeScript
@@ -37,5 +23,19 @@ JPEG encoding format.
 **Since:** 9
 
 <!--Device-ImageFormat-JPEG = 2000--><!--Device-ImageFormat-JPEG = 2000-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## YCBCR_422_SP
+
+```TypeScript
+YCBCR_422_SP = 1000
+```
+
+YCBCR422 semi-planar format.
+
+**Since:** 9
+
+<!--Device-ImageFormat-YCBCR_422_SP = 1000--><!--Device-ImageFormat-YCBCR_422_SP = 1000-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

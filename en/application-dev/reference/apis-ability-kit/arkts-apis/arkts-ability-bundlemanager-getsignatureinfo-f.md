@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getSignatureInfo(uid: number): SignatureInfo
 ```
 
-Obtains the [signature information](arkts-ability-bundleinfo-signatureinfo-i.md) of an application based on the given UID.
+Obtains the [signature information](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) of an application based on the given UID.
 
 **Since:** 18
 

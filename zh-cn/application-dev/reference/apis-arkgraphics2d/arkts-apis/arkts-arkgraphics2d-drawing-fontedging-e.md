@@ -26,7 +26,7 @@ ALIAS = 0
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontEdging-ALIAS = 0--><!--Device-FontEdging-ALIAS = 0-End-->
 
@@ -42,7 +42,7 @@ ANTI_ALIAS = 1
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontEdging-ANTI_ALIAS = 1--><!--Device-FontEdging-ANTI_ALIAS = 1-End-->
 
@@ -58,7 +58,7 @@ SUBPIXEL_ANTI_ALIAS = 2
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-FontEdging-SUBPIXEL_ANTI_ALIAS = 2--><!--Device-FontEdging-SUBPIXEL_ANTI_ALIAS = 2-End-->
 

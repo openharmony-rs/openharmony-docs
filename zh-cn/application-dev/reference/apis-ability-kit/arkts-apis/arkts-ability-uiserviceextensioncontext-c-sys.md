@@ -32,7 +32,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -49,7 +49,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | Want parameter. |
-| options | [ConnectOptions](arkts-ability-connectoptions-connectoptions-i.md) | 是 | Connection options. |
+| options | [ConnectOptions](arkts-ability-connectoptions-i.md) | 是 | Connection options. |
 
 **返回值：**
 
@@ -62,7 +62,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -76,6 +76,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | [16000053](../errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
 | [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -139,6 +140,8 @@ struct Page_UIServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -173,10 +176,11 @@ disconnectServiceExtensionAbility(connectionId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000011](../errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -221,6 +225,8 @@ struct Page_UIServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## startAbility
 
 ```TypeScript
@@ -231,7 +237,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -261,7 +267,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../errorcode-ability.md#16000001-指定的ability名称不存在) | The specified ability does not exist. |
 | [16000002](../errorcode-ability.md#16000002-接口调用ability类型错误) | Incorrect ability type. |
 | [16000004](../errorcode-ability.md#16000004-可见性校验失败) | Cannot start an invisible component. |
@@ -279,6 +285,7 @@ startAbility(want: Want, options?: StartOptions): Promise<void>
 | [16000055](../errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 | [16200001](../errorcode-ability.md#16200001-通用组件客户端caller已回收) | The caller has been released. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -315,6 +322,8 @@ class UIEntryAbility extends UIServiceExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## startAbilityByType
 
 ```TypeScript
@@ -326,7 +335,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 
 > **说明：** 
 > 
-> 组件启动规则详见：组件启动规则（Stage模型）。
+> 组件启动规则详见：[组件启动规则（Stage模型）](../../../application-models/component-startup-rules.md)。
 
 **起始版本：** 14
 
@@ -359,6 +368,7 @@ startAbilityByType(type: string, wantParam: Record<string, Object>,
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -422,6 +432,8 @@ struct SubIndex {
 }
 ```
 
+<!--DelEnd-->
+
 ## terminateSelf
 
 ```TypeScript
@@ -446,6 +458,7 @@ terminateSelf(): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -465,3 +478,5 @@ class UIEntryAbility extends UIServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->

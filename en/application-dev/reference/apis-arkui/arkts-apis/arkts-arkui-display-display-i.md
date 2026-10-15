@@ -6,7 +6,7 @@ interface Display
 
 Implements a Display instance, with attributes and APIs defined.
 
-Before calling any API in Display, you must use [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md) or [getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md) to obtain a Display instance.
+Before calling any API in Display, you must use [getAllDisplays()](arkts-arkui-display-getalldisplays-f.md#getalldisplays1) or [getDefaultDisplaySync()](arkts-arkui-display-getdefaultdisplaysync-f.md) to obtain a Display instance.
 
 **Since:** 7
 
@@ -34,7 +34,7 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-getAvailableArea(): Promise<Rect>--><!--Device-Display-getAvailableArea(): Promise<Rect>-End-->
 
@@ -51,7 +51,7 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 | Error Code ID | Error Message |
 | --- | --- |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
+| [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. Possible cause:         1. This display is abnormal.         2. Internal task error. |
 
 **Examples**
 
@@ -72,6 +72,8 @@ try {
 }
 ```
 
+<a id="getcutoutinfo1"></a>
+
 ## getCutoutInfo
 
 ```TypeScript
@@ -82,7 +84,7 @@ Obtains the cutout information of the display. This API uses an asynchronous cal
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-getCutoutInfo(callback: AsyncCallback<CutoutInfo>): void--><!--Device-Display-getCutoutInfo(callback: AsyncCallback<CutoutInfo>): void-End-->
 
@@ -98,7 +100,7 @@ Obtains the cutout information of the display. This API uses an asynchronous cal
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. Possible cause: 1. This display is abnormal. 2. Internal task error. |
+| [1400001](../errorcode-display.md#1400001-invalid-display-or-screen) | Invalid display or screen. Possible cause:         1. This display is abnormal.         2. Internal task error. |
 
 **Examples**
 
@@ -118,7 +120,7 @@ displayClass.getCutoutInfo((err: BusinessError, data: display.CutoutInfo) => {
 });
 ```
 
-<a id="getcutoutinfo-1"></a>
+<a id="getcutoutinfo2"></a>
 
 ## getCutoutInfo
 
@@ -130,7 +132,7 @@ Obtains the cutout information of the display. This API uses a promise to return
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-getCutoutInfo(): Promise<CutoutInfo>--><!--Device-Display-getCutoutInfo(): Promise<CutoutInfo>-End-->
 
@@ -173,7 +175,7 @@ Get current display capability, including foldstatus, displaymode, rotation, and
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Display-getDisplayCapability(): string--><!--Device-Display-getDisplayCapability(): string-End-->
 
@@ -245,7 +247,7 @@ Obtains the rounded corner information of the display. The rounded corner inform
 
 **Since:** 23
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-Display-getRoundedCorner(): Array<RoundedCorner>--><!--Device-Display-getRoundedCorner(): Array<RoundedCorner>-End-->
 
@@ -390,7 +392,7 @@ Whether the display is alive. The value **true** indicates that the display is a
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-alive: boolean--><!--Device-Display-alive: boolean-End-->
 
@@ -410,7 +412,7 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-availableHeight: long--><!--Device-Display-availableHeight: long-End-->
 
@@ -430,7 +432,7 @@ This API can be properly called on devices running OpenHarmony 7.0.0 or later. F
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-availableWidth: long--><!--Device-Display-availableWidth: long-End-->
 
@@ -448,7 +450,7 @@ All color spaces supported by the display.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-colorSpaces: Array<colorSpaceManager.ColorSpace>--><!--Device-Display-colorSpaces: Array<colorSpaceManager.ColorSpace>-End-->
 
@@ -466,7 +468,7 @@ Physical pixel density of the display, that is, the number of pixels per inch. T
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-densityDPI: double--><!--Device-Display-densityDPI: double-End-->
 
@@ -484,7 +486,7 @@ Logical pixel density of the display, which is the scaling coefficient between p
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Display-densityPixels: double--><!--Device-Display-densityPixels: double-End-->
 
@@ -502,7 +504,7 @@ All HDR formats supported by the display.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-hdrFormats: Array<hdrCapability.HDRFormat>--><!--Device-Display-hdrFormats: Array<hdrCapability.HDRFormat>-End-->
 
@@ -520,7 +522,7 @@ Height of the display, in px. The value is an integer.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Display-height: long--><!--Device-Display-height: long-End-->
 
@@ -538,7 +540,7 @@ Display ID, which is an integer greater than or equal to 0.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-id: long--><!--Device-Display-id: long-End-->
 
@@ -556,7 +558,7 @@ Name of the display.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-name: string--><!--Device-Display-name: string-End-->
 
@@ -574,7 +576,7 @@ Orientation of the display.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-orientation: Orientation--><!--Device-Display-orientation: Orientation-End-->
 
@@ -592,7 +594,7 @@ Refresh rate of the display, in Hz. The value is an integer.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-refreshRate: int--><!--Device-Display-refreshRate: int-End-->
 
@@ -610,7 +612,7 @@ Clockwise rotation angle of the display. The value **0** indicates that the disp
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Display-rotation: int--><!--Device-Display-rotation: int-End-->
 
@@ -628,7 +630,7 @@ Scaling factor for fonts displayed on the display. The value must be a floating 
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-scaledDensity: double--><!--Device-Display-scaledDensity: double-End-->
 
@@ -646,7 +648,7 @@ Screen shape of the display. The default value is **ScreenShape.RECTANGLE**.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-Display-screenShape?: ScreenShape--><!--Device-Display-screenShape?: ScreenShape-End-->
 
@@ -664,7 +666,7 @@ Display mode for screen content. The default value is **DisplaySourceMode.NONE**
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Display-sourceMode?: DisplaySourceMode--><!--Device-Display-sourceMode?: DisplaySourceMode-End-->
 
@@ -682,7 +684,7 @@ State of the display.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-state: DisplayState--><!--Device-Display-state: DisplayState-End-->
 
@@ -700,7 +702,7 @@ All refresh rates supported by the display, sorted in ascending order. The refre
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-Display-supportedRefreshRates?: Array<int>--><!--Device-Display-supportedRefreshRates?: Array<int>-End-->
 
@@ -718,7 +720,7 @@ Width of the display, in px. The value is an integer.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Display-width: long--><!--Device-Display-width: long-End-->
 
@@ -736,7 +738,7 @@ X coordinate of the top-left corner of the display relative to the origin, which
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Display-x?: long--><!--Device-Display-x?: long-End-->
 
@@ -754,7 +756,7 @@ Exact physical pixels per inch of the display in the X axis. The value must be a
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-xDPI: double--><!--Device-Display-xDPI: double-End-->
 
@@ -772,7 +774,7 @@ Y coordinate of the top-left corner of the display relative to the origin, which
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Display-y?: long--><!--Device-Display-y?: long-End-->
 
@@ -790,7 +792,7 @@ Exact physical pixels per inch of the display in the Y axis. The value must be a
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Display-yDPI: double--><!--Device-Display-yDPI: double-End-->
 

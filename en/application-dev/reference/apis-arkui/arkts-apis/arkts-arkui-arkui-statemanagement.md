@@ -7,10 +7,10 @@ This module provides capabilities for application data storage, data persistence
 
 T and S in this topic represent the types as described below.
 
-| Type  | Description                                    |
+| Type | Description |
  | ---- | -------------------------------------- |
-| T    | Class, number, boolean, string, and arrays of these types.|
-| S    | number, boolean, string.                |
+| T | Class, number, boolean, string, and arrays of these types.|
+| S | number, boolean, string. |
 
 
 
@@ -43,7 +43,7 @@ import { AppStorageV2, PersistenceV2, Type, UIUtils, ConnectOptions, Binding, Mu
 | [AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md) | AppStorageV2 provides the capability of globally sharing state variables within an application. You can bind the same key through **connect** to share data across abilities. For details about the UI usage, see [AppStorageV2: Storing Application-wide UI State](../../../ui/state-management/arkts-new-appstoragev2.md). |
 | [Binding](arkts-arkui-arkui-statemanagement-binding-c.md) | Represents the generic class for read-only data binding, which can bind data of any type. |
 | [ConnectOptions](arkts-arkui-arkui-statemanagement-connectoptions-c.md) | Defines the parameter type for **globalConnect**. |
-| [ConnectOptionsCollections](arkts-arkui-arkui-statemanagement-connectoptionscollections-c.md) | Defines the parameter type for the globalConnect API. **ConnectOptionsCollections** is inherited from [ConnectOptions\&lt;T\&gt;](arkts-arkui-arkui-statemanagement-connectoptions-c.md). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\&lt;S&gt;**). |
+| [ConnectOptionsCollections](arkts-arkui-arkui-statemanagement-connectoptionscollections-c.md) | Defines the parameter type for the globalConnect API. **ConnectOptionsCollections** is inherited from [ConnectOptions\<T\>](arkts-arkui-arkui-statemanagement-connectoptions-c.md). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**). |
 | [MutableBinding](arkts-arkui-arkui-statemanagement-mutablebinding-c.md) | Represents a generic class for mutable data binding, which allows the read and write operations on the bound value and provides complete **get** and **set** accessors. |
 | [PersistenceV2](arkts-arkui-arkui-statemanagement-persistencev2-c.md) | Provides persistent storage for UI states. This API is inherited from [AppStorageV2](arkts-arkui-arkui-statemanagement-appstoragev2-c.md). It supports persisting application state data to disks and restoring data after application restart, making it suitable for scenarios where UI state data needs to be retained. For details about the UI usage, see [PersistenceV2: Persisting UI States](../../../ui/state-management/arkts-new-persistencev2.md). |
 | [UIUtils](arkts-arkui-arkui-statemanagement-uiutils-c.md) | Provides APIs related to state management, including obtaining the original object from a proxy object, converting non-observable data into observable data, dynamically adding and removing state variable listeners, synchronously refreshing state variable modifications, and creating data bindings. It is suitable for scenarios where manual management of state observation, listening, and synchronous refresh is required. |

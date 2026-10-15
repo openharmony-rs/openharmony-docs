@@ -11,7 +11,8 @@ HashMap is implemented using an array, linked lists, and red-black trees as its 
  This topic uses the following to identify the use of generics:<br>
 
 - K: Key<br>
- - V: Value
+
+- V: Value
 
 > **NOTE**
  >

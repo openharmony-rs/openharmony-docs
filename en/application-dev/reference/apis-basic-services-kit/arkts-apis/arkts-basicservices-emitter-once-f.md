@@ -6,6 +6,8 @@
 import { emitter } from '@kit.BasicServicesKit';
 ```
 
+<a id="once1"></a>
+
 ## once
 
 ```TypeScript
@@ -16,7 +18,7 @@ Subscribes to an event in one-shot manner and unsubscribes from it after the eve
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-emitter-function once(event: InnerEvent, callback: Callback<EventData>): void--><!--Device-emitter-function once(event: InnerEvent, callback: Callback<EventData>): void-End-->
 
@@ -46,7 +48,7 @@ emitter.once(innerEvent, callback);
 ```
 
 
-<a id="once-1"></a>
+<a id="once2"></a>
 
 ## once
 
@@ -84,7 +86,7 @@ emitter.once('eventId', callback);
 ```
 
 
-<a id="once-2"></a>
+<a id="once3"></a>
 
 ## once
 

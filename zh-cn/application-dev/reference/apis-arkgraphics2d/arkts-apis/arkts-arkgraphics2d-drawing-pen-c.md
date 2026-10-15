@@ -24,6 +24,8 @@ class Pen
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -46,7 +48,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 const pen = new drawing.Pen();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -207,7 +209,7 @@ getColor4f(): common2D.Color4f
 **示例**
 
 ```TypeScript
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+import { common2D, drawing, colorSpaceManager } from '@kit.ArkGraphics2D';
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);
@@ -621,6 +623,8 @@ class DrawingRenderNode extends RenderNode {
 }
 ```
 
+<a id="setcolor1"></a>
+
 ## setColor
 
 ```TypeScript
@@ -657,7 +661,7 @@ const pen = new drawing.Pen();
 pen.setColor(color);
 ```
 
-<a id="setcolor-1"></a>
+<a id="setcolor2"></a>
 
 ## setColor
 
@@ -665,7 +669,7 @@ pen.setColor(color);
 setColor(alpha: number, red: number, green: number, blue: number): void
 ```
 
-设置画笔的颜色。性能优于[setColor](#setcolor)接口，推荐使用本接口。
+设置画笔的颜色。性能优于[setColor](#setcolor1)接口，推荐使用本接口。
 
 **起始版本：** 12
 
@@ -697,7 +701,7 @@ const pen = new drawing.Pen();
 pen.setColor(255, 255, 0, 0);
 ```
 
-<a id="setcolor-2"></a>
+<a id="setcolor3"></a>
 
 ## setColor
 
@@ -734,7 +738,7 @@ pen.setColor(0xffff0000);
 setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
 ```
 
-设置画笔的颜色以及标准色域，与[setColor](#setcolor)的区别在于可以单独设置色域。
+设置画笔的颜色以及标准色域，与[setColor](#setcolor1)的区别在于可以单独设置色域。
 
 **起始版本：** 20
 
@@ -752,7 +756,7 @@ setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceMa
 **示例**
 
 ```TypeScript
-import { common2D, drawing, colorSpaceManager } from "@kit.ArkGraphics2D";
+import { common2D, drawing, colorSpaceManager } from '@kit.ArkGraphics2D';
 
 const pen = new drawing.Pen();
 let colorSpace = colorSpaceManager.create(colorSpaceManager.ColorSpace.BT2020_HLG);

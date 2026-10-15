@@ -28,4 +28,4 @@ declare function mutableBuilder<Args extends Object[]>(builder: BuilderCallback)
 
 | 类型 | 说明 |
 | --- | --- |
-| [MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md)&lt;Args&gt; | `MutableBuilder&lt;Args&gt;`的实例，用于封装全局`@Builder`函数，并支持在运行时动态切换构建逻辑。该实例持有对全局`@Builder`函数的引用，可通过其`builder`属性调用被封装的构建函数，或通过重新赋值`mutableBuilder`函数返回的新实例动态切换构建逻辑。其`builder`属性方法只能在自定义组件内部使用。 |
+| [MutableBuilder](arkts-arkui-common-comp-mutablebuilder-c.md)&lt;Args&gt; | `MutableBuilder<Args>`的实例，用于封装全局`@Builder`函数，并支持在运行时动态切换构建逻辑。该实例持有对全局`@Builder`函数的引用，可通过其`builder`属性调用被封装的构建函数，或通过重新赋值`mutableBuilder`函数返回的新实例动态切换构建逻辑。其`builder`属性方法只能在自定义组件内部使用。 |

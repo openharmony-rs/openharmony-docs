@@ -44,6 +44,7 @@ Called to acquire identity authentication information.
 | acquire | number | Yes |  |
 | extraInfo | Uint8Array | Yes |  |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,6 +60,8 @@ let authCallback: osAccount.IUserAuthCallback = {
   }
 };
 ```
+
+<!--DelEnd-->
 
 ## onResult
 
@@ -83,6 +86,7 @@ Called to return the result code and authentication result.
 | result | number | Yes |  |
 | extraInfo | [AuthResult](arkts-basicservices-appaccount-authresult-i.md) | Yes |  |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -93,3 +97,5 @@ let authCallback: osAccount.IUserAuthCallback = {
   }
 };
 ```
+
+<!--DelEnd-->

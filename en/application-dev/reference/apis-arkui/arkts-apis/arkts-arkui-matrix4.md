@@ -4,7 +4,7 @@ Provides matrix transformation capabilities for components, including translatio
 
 **Matrix4** can be used in the following scenarios:
 
-In [Transformation](../arkts-components/arkts-arkui-common-comp.md), the [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform-1) API uses the **Matrix4** object to set the two -dimensional transformation matrix for a component, and the [transform3D](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform3d) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
+In [Transformation](../arkts-components/arkts-arkui-common-comp.md), the [transform](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform2) API uses the **Matrix4** object to set the two -dimensional transformation matrix for a component, and the [transform3D](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#transform3d) API uses the **Matrix4** object to set the three-dimensional transformation matrix for a component.
 
 **Since:** 7
 
@@ -24,15 +24,15 @@ import { matrix4 } from '@kit.ArkUI';
 
 | Name | Description |
 | --- | --- |
-| [combine](arkts-arkui-matrix4-combine-f.md) | Combines the effects of two matrices to generate a new matrix object. The matrix that calls this API will be changed. |
-| [copy](arkts-arkui-matrix4-copy-f.md) | Copies this matrix object. |
-| [identity](arkts-arkui-matrix4-identity-f.md) | Initializes a matrix and returns an identity matrix object, which can serve as the basis for subsequent matrix transformation operations. |
-| [init](arkts-arkui-matrix4-init-f.md) | Constructor of **Matrix4**. It is used to create a 4 x 4 matrix based on the input parameters. The matrix is column -major, that is, the 16 values in the input array are filled into the matrix column by column: array[0] to array[3] form the first column, array[4] to array[7] form the second column, array[8] to array[11] form the third column, and array[12] to array[15] form the fourth column. When only an identity matrix is required, you are advised to use **matrix4.identity()**. |
-| [invert](arkts-arkui-matrix4-invert-f.md) | Inverts this matrix object. The matrix that calls this API will be changed. |
-| [rotate](arkts-arkui-matrix4-rotate-f.md) | Rotates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed. |
-| [scale](arkts-arkui-matrix4-scale-f.md) | Scales this matrix object along the x, y, and z axes. The matrix that calls this API will be changed. |
-| [transformPoint](arkts-arkui-matrix4-transformpoint-f.md) | Applies the current transformation effect to a coordinate point. |
-| [translate](arkts-arkui-matrix4-translate-f.md) | Translates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed. |
+| [identity](arkts-arkui-matrix4-identity-f.md#identity) | Initializes a matrix and returns an identity matrix object, which can serve as the basis for subsequent matrix transformation operations. |
+| [init](arkts-arkui-matrix4-init-f.md#init) | Constructor of **Matrix4**. It is used to create a 4 x 4 matrix based on the input parameters. The matrix is column -major, that is, the 16 values in the input array are filled into the matrix column by column: array[0] to array[3] form the first column, array[4] to array[7] form the second column, array[8] to array[11] form the third column, and array[12] to array[15] form the fourth column. When only an identity matrix is required, you are advised to use **matrix4.identity()**. |
+| [combine](arkts-arkui-matrix4-combine-f.md#combine) | Combines the effects of two matrices to generate a new matrix object. The matrix that calls this API will be changed. |
+| [copy](arkts-arkui-matrix4-copy-f.md#copy) | Copies this matrix object. |
+| [invert](arkts-arkui-matrix4-invert-f.md#invert) | Inverts this matrix object. The matrix that calls this API will be changed. |
+| [rotate](arkts-arkui-matrix4-rotate-f.md#rotate) | Rotates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed. |
+| [scale](arkts-arkui-matrix4-scale-f.md#scale) | Scales this matrix object along the x, y, and z axes. The matrix that calls this API will be changed. |
+| [transformPoint](arkts-arkui-matrix4-transformpoint-f.md#transformpoint) | Applies the current transformation effect to a coordinate point. |
+| [translate](arkts-arkui-matrix4-translate-f.md#translate) | Translates this matrix object along the x, y, and z axes. The matrix that calls this API will be changed. |
 
 ### Interfaces
 

@@ -16,6 +16,24 @@ enum EventType
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
+## BEHAVIOR
+
+```TypeScript
+BEHAVIOR = 4
+```
+
+行为类型事件。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+**替代接口：** [BEHAVIOR](arkts-performanceanalysis-hiappevent-eventtype-e.md#behavior)
+
+<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
 ## FAULT
 
 ```TypeScript
@@ -31,24 +49,6 @@ FAULT = 1
 **替代接口：** [FAULT](arkts-performanceanalysis-hiappevent-eventtype-e.md#fault)
 
 <!--Device-EventType-FAULT = 1--><!--Device-EventType-FAULT = 1-End-->
-
-**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
-
-## STATISTIC
-
-```TypeScript
-STATISTIC = 2
-```
-
-统计类型事件。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-**替代接口：** [STATISTIC](arkts-performanceanalysis-hiappevent-eventtype-e.md#statistic)
-
-<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -70,20 +70,20 @@ SECURITY = 3
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
-## BEHAVIOR
+## STATISTIC
 
 ```TypeScript
-BEHAVIOR = 4
+STATISTIC = 2
 ```
 
-行为类型事件。
+统计类型事件。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [BEHAVIOR](arkts-performanceanalysis-hiappevent-eventtype-e.md#behavior)
+**替代接口：** [STATISTIC](arkts-performanceanalysis-hiappevent-eventtype-e.md#statistic)
 
-<!--Device-EventType-BEHAVIOR = 4--><!--Device-EventType-BEHAVIOR = 4-End-->
+<!--Device-EventType-STATISTIC = 2--><!--Device-EventType-STATISTIC = 2-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent

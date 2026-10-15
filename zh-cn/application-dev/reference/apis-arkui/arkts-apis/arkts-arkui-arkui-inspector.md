@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace inspector--><!--Device-unnamed-declare namespace inspector-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,7 +20,7 @@ import { inspector } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md) | 绑定指定组件，返回对应的监听句柄。 |
+| [createComponentObserver](arkts-arkui-inspector-createcomponentobserver-f.md#createcomponentobserver) | 绑定指定组件，返回对应的监听句柄。 |
 
 ### 接口
 

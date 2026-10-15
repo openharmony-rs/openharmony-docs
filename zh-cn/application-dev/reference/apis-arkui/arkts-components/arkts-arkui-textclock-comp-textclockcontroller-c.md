@@ -6,17 +6,17 @@ declare class TextClockController
 
 TextClock容器组件的控制器，可以将该控制器绑定到TextClock组件，通过它控制文本时钟的启动与停止。一个TextClock组件仅支持绑定一个控制器。
 
-## 导入对象
-
-```ts
-controller: TextClockController = new TextClockController();
-```
-
 **起始版本：** 8
 
 <!--Device-unnamed-declare class TextClockController--><!--Device-unnamed-declare class TextClockController-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## 导入对象
+
+```ts
+controller: TextClockController = new TextClockController();
+```
 
 ## constructor
 

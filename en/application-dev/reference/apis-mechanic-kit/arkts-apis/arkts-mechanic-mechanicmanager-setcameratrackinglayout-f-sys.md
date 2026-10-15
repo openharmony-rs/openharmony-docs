@@ -37,6 +37,7 @@ Sets the camera tracking layout for this mechanical device.
 | [33300002](../errorcode-mechanic.md#33300002-device-not-connected) | Device not connected. |
 | [33300003](../errorcode-mechanic.md#33300003-function-not-supported) | Feature not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -44,3 +45,5 @@ console.info('Set layout');
 mechanicManager.setCameraTrackingLayout(mechanicManager.CameraTrackingLayout.LEFT);
 console.info('Set layout successful');
 ```
+
+<!--DelEnd-->

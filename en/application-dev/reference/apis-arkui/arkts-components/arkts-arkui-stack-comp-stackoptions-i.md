@@ -30,7 +30,7 @@ Default value: **Alignment.Center**
 
 Invalid value: The default value is used.
 
-**Note:** When this parameter and [align](arkts-arkui-common-comp-commonmethod-c.md#align) are set at the same time, the attribute value set later overrides the one set earlier.
+**Note:** When this parameter and [align](arkts-arkui-common-comp-commonmethod-c.md#align1) are set at the same time, the attribute value set later overrides the one set earlier.
 
 **Type:** [Alignment](../arkts-apis/arkts-arkui-alignment-e.md)
 

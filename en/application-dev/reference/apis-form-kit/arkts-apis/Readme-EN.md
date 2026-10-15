@@ -161,7 +161,6 @@
   - [TemplateFormDetailInfoCallback(system api)](arkts-form-forminfo-templateformdetailinfocallback-t-sys.md)<!--DelEnd-->
   <!--Del-->
   - [UpdateFormsConfigCallback(system api)](arkts-form-forminfo-updateformsconfigcallback-t-sys.md)<!--DelEnd-->
-  - [ColorMode](arkts-form-forminfo-colormode-e.md)
   - [FormDimension](arkts-form-forminfo-formdimension-e.md)
   - [FormLocation](arkts-form-forminfo-formlocation-e.md)
   <!--Del-->
@@ -183,6 +182,7 @@
   <!--Del-->
   - [SceneAnimationTriggerType(system api)](arkts-form-forminfo-sceneanimationtriggertype-e-sys.md)<!--DelEnd-->
   - [VisibilityType](arkts-form-forminfo-visibilitytype-e.md)
+  - [ColorMode](arkts-form-forminfo-colormode-e.md)
 <!--Del-->
 - [@ohos.app.form.formObserver(formObserver)](arkts-form-app-form-formobserver.md)<!--DelEnd-->
   <!--Del-->
@@ -204,8 +204,6 @@
   - [deactivateSceneAnimation(system api)](arkts-form-formprovider-deactivatesceneanimation-f-sys.md)<!--DelEnd-->
   - [getFormRect](arkts-form-formprovider-getformrect-f.md)
   - [getFormsInfo](arkts-form-formprovider-getformsinfo-f.md)
-  - [getPublishedFormInfoById](arkts-form-formprovider-getpublishedforminfobyid-f.md)
-  - [getPublishedFormInfos](arkts-form-formprovider-getpublishedforminfos-f.md)
   - [getPublishedRunningFormInfoById](arkts-form-formprovider-getpublishedrunningforminfobyid-f.md)
   - [getPublishedRunningFormInfos](arkts-form-formprovider-getpublishedrunningforminfos-f.md)
   <!--Del-->
@@ -227,16 +225,18 @@
   - [updateForm](arkts-form-formprovider-updateform-f.md)
   <!--Del-->
   - [updateTemplateFormDetailInfo(system api)](arkts-form-formprovider-updatetemplateformdetailinfo-f-sys.md)<!--DelEnd-->
+  - [getPublishedFormInfoById](arkts-form-formprovider-getpublishedforminfobyid-f.md)
+  - [getPublishedFormInfos](arkts-form-formprovider-getpublishedforminfos-f.md)
 - [@ohos.app.form.LiveFormExtensionAbility(LiveFormExtensionAbility)](arkts-form-app-form-liveformextensionability.md)
   - [LiveFormExtensionAbility](arkts-form-app-form-liveformextensionability-liveformextensionability-c.md)
   - [LiveFormInfo](arkts-form-app-form-liveformextensionability-liveforminfo-i.md)
-- [@ohos.application.formBindingData](arkts-form-application-formbindingdata.md)
-  - [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-depr-f.md)
-  - [FormBindingData](arkts-form-formbindingdata-formbindingdata-depr-i.md)
 - [@ohos.application.formError(formError)](arkts-form-application-formerror.md)
   - [FormError](arkts-form-formerror-formerror-e.md)
   <!--Del-->
   - [FormError(system api)](arkts-form-formerror-formerror-e-sys.md)<!--DelEnd-->
+- [@ohos.application.formBindingData](arkts-form-application-formbindingdata.md)
+  - [createFormBindingData](arkts-form-formbindingdata-createformbindingdata-depr-f.md)
+  - [FormBindingData](arkts-form-formbindingdata-formbindingdata-depr-i.md)
 <!--Del-->
 - [@ohos.application.formHost](arkts-form-application-formhost.md)<!--DelEnd-->
   <!--Del-->

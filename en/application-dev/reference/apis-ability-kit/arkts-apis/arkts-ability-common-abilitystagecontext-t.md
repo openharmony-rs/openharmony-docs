@@ -6,6 +6,8 @@ export type AbilityStageContext = _AbilityStageContext.default
 
 Defines the context environment for the [AbilityStage](arkts-ability-app-ability-abilitystage-abilitystage-c.md). It inherits from Context.
 
+**Type:** _AbilityStageContext.default
+
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the context environment for the [AbilityStage](arkts-ability-app-ability
 <!--Device-common-export type AbilityStageContext = _AbilityStageContext.default--><!--Device-common-export type AbilityStageContext = _AbilityStageContext.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _AbilityStageContext.default

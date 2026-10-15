@@ -4,7 +4,7 @@
 declare class Context extends BaseContext
 ```
 
-Context is the context base class of the stage model. It is used to access application-specific resources and perform callbacks for application-level operations. ../../../
+Context is the context base class of the stage model. It is used to access application-specific resources and perform callbacks for application-level operations.
 
 **Inheritance/Implementation:** Context extends [BaseContext](arkts-ability-basecontext-c.md)
 
@@ -55,6 +55,7 @@ Creates a resource management object for a module.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,13 +76,15 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## createSystemHspModuleResourceManager
 
 ```TypeScript
 createSystemHspModuleResourceManager(bundleName: string, moduleName: string): resmgr.ResourceManager
 ```
 
-Creates a [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-getresourcemanager-f.md) for an OEM-preset [system-level HSP](../../../quick-start/application-package-glossary.md#system-level-hsp).
+Creates a [resource manager](../../apis-localization-kit/arkts-apis/arkts-localization-resourcemanager-getresourcemanager-f.md#getresourcemanager1) for an OEM-preset [system-level HSP](../../../quick-start/application-package-glossary.md#system-level-hsp).
 
 **Since:** 12
 
@@ -113,6 +116,7 @@ Creates a [resource manager](../../apis-localization-kit/arkts-apis/arkts-locali
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 | [16400001](../errorcode-ability.md#16400001-target-application-type-is-not-a-system-hsp) | The input bundleName is not a system HSP. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -126,6 +130,8 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## createBundleContext
 
 ```TypeScript
@@ -137,7 +143,7 @@ Creates the context based on the bundle name.
 > **NOTE:** 
 > 
 > If there are multiple modules in the stage model, resource ID conflicts may occur. You are advised to use
-> [application.createModuleContext](arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext-1)
+> [application.createModuleContext](arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext2)
 > instead.
 > 
 > This API has been supported since API version 9 and deprecated since API version 12. You are advised to use
@@ -180,6 +186,7 @@ Creates the context based on the bundle name.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -199,7 +206,9 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="createmodulecontext-1"></a>
+<!--DelEnd-->
+
+<a id="createmodulecontext2"></a>
 
 ## createModuleContext
 
@@ -212,7 +221,7 @@ Creates the context based on the bundle name and module name.
 > **NOTE:** 
 > 
 > This API has been supported since API version 9 and deprecated since API version 12. You are advised to use
-> [application.createModuleContext](arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext-1)
+> [application.createModuleContext](arkts-ability-application-createmodulecontext-f-sys.md#createmodulecontext2)
 > instead.
 
 **Since:** 9
@@ -248,6 +257,7 @@ Creates the context based on the bundle name and module name.
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -266,3 +276,5 @@ export default class EntryAbility extends UIAbility {
   }
 }
 ```
+
+<!--DelEnd-->

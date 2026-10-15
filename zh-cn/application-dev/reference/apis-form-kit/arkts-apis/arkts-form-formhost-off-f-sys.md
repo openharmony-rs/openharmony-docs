@@ -70,6 +70,7 @@ function off(type: 'formOverflow', callback?: Callback<formInfo.OverflowRequest>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -84,6 +85,8 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## off('changeSceneAnimationState')
@@ -116,6 +119,7 @@ function off(type: 'changeSceneAnimationState',
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -130,6 +134,8 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## off('getFormRect')
@@ -161,6 +167,7 @@ function off(type: 'getFormRect', callback?: formInfo.GetFormRectInfoCallback): 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -173,6 +180,8 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->
 
 
 ## off('getLiveFormStatus')

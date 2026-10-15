@@ -4,8 +4,6 @@
 
 **起始版本：** 10
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace componentUtils--><!--Device-unnamed-declare namespace componentUtils-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
@@ -22,14 +20,14 @@ import { componentUtils } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getRectangleById](arkts-arkui-componentutils-getrectanglebyid-f.md) | 根据组件ID获取组件实例对象，通过组件实例对象将获取的坐标位置和大小同步返回给开发者。 |
+| [getRectangleById](arkts-arkui-componentutils-getrectanglebyid-f.md#getrectanglebyid) | 根据组件ID获取组件实例对象，通过组件实例对象将获取的坐标位置和大小同步返回给开发者。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [getItemsInShapePath](arkts-arkui-componentutils-getitemsinshapepath-f-sys.md) | 获取位于选定区域内的图像对象。 |
+| [getItemsInShapePath](arkts-arkui-componentutils-getitemsinshapepath-f-sys.md#getitemsinshapepath) | 获取位于选定区域内的图像对象。 |
 <!--DelEnd-->
 
 ### 接口
@@ -63,7 +61,7 @@ import { componentUtils } from '@kit.ArkUI';
 
 ### 示例1（获取ComponentUtils对象）
 
-推荐使用UIContext中的getComponentUtils方法获取当前UI上下文关联的ComponentUtils对象。
+推荐使用[UIContext](arkts-apis-uicontext-uicontext.md)中的[getComponentUtils](./arkts-apis-uicontext-uicontext.md#getcomponentutils)方法获取当前UI上下文关联的ComponentUtils对象。
 
 ```TypeScript
 import { matrix4 } from '@kit.ArkUI';
@@ -94,7 +92,7 @@ struct Utils {
         })
         .width(300)
         .height(100)
-        .key('image_01')
+        .id('image_01')
       Button('getRectangleById')
         .onClick(() => {
           this.value = JSON.stringify(this.getUIContext()

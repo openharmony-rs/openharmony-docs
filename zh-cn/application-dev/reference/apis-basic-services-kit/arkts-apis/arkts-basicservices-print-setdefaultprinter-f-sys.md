@@ -45,6 +45,7 @@ function setDefaultPrinter(printerId: string, type: DefaultPrinterType): Promise
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,3 +60,5 @@ print.setDefaultPrinter(printerId, type).then(() => {
     console.error(`Failed to set default printer. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

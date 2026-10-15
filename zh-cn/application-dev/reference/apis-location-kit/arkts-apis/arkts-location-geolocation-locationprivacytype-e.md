@@ -10,11 +10,29 @@ export enum LocationPrivacyType
 
 **废弃版本：** 9
 
-**替代接口：** LocationPrivacyType
+**替代接口：** [LocationPrivacyType](arkts-location-geolocationmanager-locationprivacytype-e-sys.md)
 
-**需要权限：** ohos.permission.LOCATION @enum { number }
+**需要权限：** ohos.permission.LOCATION
 
 <!--Device-geolocation-export enum LocationPrivacyType--><!--Device-geolocation-export enum LocationPrivacyType-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+## CORE_LOCATION
+
+```TypeScript
+CORE_LOCATION
+```
+
+开启网络定位时弹出的隐私协议。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [CORE_LOCATION](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#core_location)
+
+<!--Device-LocationPrivacyType-CORE_LOCATION--><!--Device-LocationPrivacyType-CORE_LOCATION-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 
@@ -30,7 +48,7 @@ OTHERS = 0
 
 **废弃版本：** 9
 
-**替代接口：** OTHERS
+**替代接口：** [OTHERS](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#others)
 
 <!--Device-LocationPrivacyType-OTHERS = 0--><!--Device-LocationPrivacyType-OTHERS = 0-End-->
 
@@ -48,26 +66,8 @@ STARTUP
 
 **废弃版本：** 9
 
-**替代接口：** STARTUP
+**替代接口：** [STARTUP](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#startup)
 
 <!--Device-LocationPrivacyType-STARTUP--><!--Device-LocationPrivacyType-STARTUP-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-## CORE_LOCATION
-
-```TypeScript
-CORE_LOCATION
-```
-
-开启网络定位时弹出的隐私协议。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** CORE_LOCATION
-
-<!--Device-LocationPrivacyType-CORE_LOCATION--><!--Device-LocationPrivacyType-CORE_LOCATION-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core

@@ -22,26 +22,6 @@ Enumerates the display styles of the slider thumb relative to the track. For det
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## OutSet
-
-```TypeScript
-OutSet
-```
-
-The thumb is on the track.
-
-**Since:** 7
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-SliderStyle-OutSet--><!--Device-SliderStyle-OutSet-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## InSet
 
 ```TypeScript
@@ -79,5 +59,25 @@ There is no thumb.
 **Widget capability:** This API can be used in ArkTS widgets since API version 12.
 
 <!--Device-SliderStyle-NONE--><!--Device-SliderStyle-NONE-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## OutSet
+
+```TypeScript
+OutSet
+```
+
+The thumb is on the track.
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-SliderStyle-OutSet--><!--Device-SliderStyle-OutSet-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

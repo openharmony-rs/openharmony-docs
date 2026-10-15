@@ -27,6 +27,8 @@ Provides APIs for X.509 CRL operations.
 import { cert } from '@kit.DeviceCertificateKit';
 ```
 
+<a id="getencoded1"></a>
+
 ## getEncoded
 
 ```TypeScript
@@ -38,13 +40,13 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRL.getEncoded()](arkts-devicecertificate-cert-x509crl-i.md#getencoded) instead.
+> [X509CRL.getEncoded()](arkts-devicecertificate-cert-x509crl-i.md#getencoded1) instead.
 
 **Since:** 9
 
 **Deprecated since:** 11
 
-**Substitutes:** getEncoded
+**Substitutes:** [getEncoded](arkts-devicecertificate-cert-x509crl-i.md#getencoded)
 
 <!--Device-X509Crl-getEncoded(callback: AsyncCallback<EncodingBlob>): void--><!--Device-X509Crl-getEncoded(callback: AsyncCallback<EncodingBlob>): void-End-->
 
@@ -60,7 +62,7 @@ Obtains the serialized X.509 CRL data. This API uses an asynchronous callback to
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
@@ -111,7 +113,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
-<a id="getencoded-1"></a>
+<a id="getencoded2"></a>
 
 ## getEncoded
 
@@ -130,7 +132,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 **Deprecated since:** 11
 
-**Substitutes:** getEncoded
+**Substitutes:** [getEncoded](arkts-devicecertificate-cert-x509crl-i.md#getencoded)
 
 <!--Device-X509Crl-getEncoded(): Promise<EncodingBlob>--><!--Device-X509Crl-getEncoded(): Promise<EncodingBlob>-End-->
 
@@ -146,7 +148,7 @@ Obtains the serialized X.509 CRL data. This API uses a promise to return the res
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19020002](../errorcode-cert.md#19020002-runtime-error) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
@@ -211,7 +213,7 @@ Obtains the issuer of the X.509 CRL.
 
 **Deprecated since:** 11
 
-**Substitutes:** getIssuerName
+**Substitutes:** [getIssuerName](arkts-devicecertificate-cert-x509crl-i.md#getissuername)
 
 <!--Device-X509Crl-getIssuerName(): DataBlob--><!--Device-X509Crl-getIssuerName(): DataBlob-End-->
 
@@ -295,7 +297,7 @@ Obtains the last update date of this X.509 CRL.
 
 **Deprecated since:** 11
 
-**Substitutes:** getLastUpdate
+**Substitutes:** [getLastUpdate](arkts-devicecertificate-cert-x509crl-i.md#getlastupdate)
 
 <!--Device-X509Crl-getLastUpdate(): string--><!--Device-X509Crl-getLastUpdate(): string-End-->
 
@@ -379,7 +381,7 @@ Obtains the next update date of this CRL.
 
 **Deprecated since:** 11
 
-**Substitutes:** getNextUpdate
+**Substitutes:** [getNextUpdate](arkts-devicecertificate-cert-x509crl-i.md#getnextupdate)
 
 <!--Device-X509Crl-getNextUpdate(): string--><!--Device-X509Crl-getNextUpdate(): string-End-->
 
@@ -463,7 +465,7 @@ Obtains the revoked certificate entry from the X.509 CRL based on the specified 
 
 **Deprecated since:** 11
 
-**Substitutes:** getRevokedCert
+**Substitutes:** [getRevokedCert](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcert)
 
 <!--Device-X509Crl-getRevokedCert(serialNumber: number): X509CrlEntry--><!--Device-X509Crl-getRevokedCert(serialNumber: number): X509CrlEntry-End-->
 
@@ -485,7 +487,7 @@ Obtains the revoked certificate entry from the X.509 CRL based on the specified 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
@@ -536,6 +538,8 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
+<a id="getrevokedcerts1"></a>
+
 ## getRevokedCerts
 
 ```TypeScript
@@ -547,14 +551,14 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses an
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRL.getRevokedCerts()](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts)
+> [X509CRL.getRevokedCerts()](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts1)
 > instead.
 
 **Since:** 9
 
 **Deprecated since:** 11
 
-**Substitutes:** getRevokedCerts
+**Substitutes:** [getRevokedCerts](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts)
 
 <!--Device-X509Crl-getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void--><!--Device-X509Crl-getRevokedCerts(callback: AsyncCallback<Array<X509CrlEntry>>): void-End-->
 
@@ -570,7 +574,7 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses an
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
@@ -620,7 +624,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
-<a id="getrevokedcerts-1"></a>
+<a id="getrevokedcerts2"></a>
 
 ## getRevokedCerts
 
@@ -639,7 +643,7 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses a 
 
 **Deprecated since:** 11
 
-**Substitutes:** getRevokedCerts
+**Substitutes:** [getRevokedCerts](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcerts)
 
 <!--Device-X509Crl-getRevokedCerts(): Promise<Array<X509CrlEntry>>--><!--Device-X509Crl-getRevokedCerts(): Promise<Array<X509CrlEntry>>-End-->
 
@@ -655,7 +659,7 @@ Obtains all the revoked certificate entries from the X.509 CRL. This API uses a 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
@@ -719,7 +723,7 @@ Obtains the revoked certificate entry from the X.509 CRL based on the specified 
 
 **Deprecated since:** 11
 
-**Substitutes:** getRevokedCertWithCert
+**Substitutes:** [getRevokedCertWithCert](arkts-devicecertificate-cert-x509crl-i.md#getrevokedcertwithcert)
 
 <!--Device-X509Crl-getRevokedCertWithCert(cert: X509Cert): X509CrlEntry--><!--Device-X509Crl-getRevokedCertWithCert(cert: X509Cert): X509CrlEntry-End-->
 
@@ -741,7 +745,7 @@ Obtains the revoked certificate entry from the X.509 CRL based on the specified 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19020001](../errorcode-cert.md#19020001-memory-error) | Memory malloc failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
@@ -845,7 +849,7 @@ Obtains the signature data of the X.509 CRL.
 
 **Deprecated since:** 11
 
-**Substitutes:** getSignature
+**Substitutes:** [getSignature](arkts-devicecertificate-cert-x509crl-i.md#getsignature)
 
 <!--Device-X509Crl-getSignature(): DataBlob--><!--Device-X509Crl-getSignature(): DataBlob-End-->
 
@@ -929,7 +933,7 @@ Obtains the signing algorithm of the X.509 CRL.
 
 **Deprecated since:** 11
 
-**Substitutes:** getSignatureAlgName
+**Substitutes:** [getSignatureAlgName](arkts-devicecertificate-cert-x509crl-i.md#getsignaturealgname)
 
 <!--Device-X509Crl-getSignatureAlgName(): string--><!--Device-X509Crl-getSignatureAlgName(): string-End-->
 
@@ -1013,7 +1017,7 @@ Obtains the OID of the X.509 CRL signing algorithm. OIDs are allocated by the In
 
 **Deprecated since:** 11
 
-**Substitutes:** getSignatureAlgOid
+**Substitutes:** [getSignatureAlgOid](arkts-devicecertificate-cert-x509crl-i.md#getsignaturealgoid)
 
 <!--Device-X509Crl-getSignatureAlgOid(): string--><!--Device-X509Crl-getSignatureAlgOid(): string-End-->
 
@@ -1097,7 +1101,7 @@ Obtains the parameters of the X.509 CRL signing algorithm.
 
 **Deprecated since:** 11
 
-**Substitutes:** getSignatureAlgParams
+**Substitutes:** [getSignatureAlgParams](arkts-devicecertificate-cert-x509crl-i.md#getsignaturealgparams)
 
 <!--Device-X509Crl-getSignatureAlgParams(): DataBlob--><!--Device-X509Crl-getSignatureAlgParams(): DataBlob-End-->
 
@@ -1266,7 +1270,7 @@ Obtains the CRL type.
 
 **Deprecated since:** 11
 
-**Substitutes:** getType
+**Substitutes:** [getType](arkts-devicecertificate-cert-x509crl-i.md#gettype)
 
 <!--Device-X509Crl-getType(): string--><!--Device-X509Crl-getType(): string-End-->
 
@@ -1336,7 +1340,7 @@ Obtains the version of the X.509 CRL.
 
 **Deprecated since:** 11
 
-**Substitutes:** getVersion
+**Substitutes:** [getVersion](arkts-devicecertificate-cert-x509crl-i.md#getversion)
 
 <!--Device-X509Crl-getVersion(): number--><!--Device-X509Crl-getVersion(): number-End-->
 
@@ -1406,7 +1410,7 @@ Checks whether an X.509 certificate is revoked.
 
 **Deprecated since:** 11
 
-**Substitutes:** isRevoked
+**Substitutes:** [isRevoked](arkts-devicecertificate-cert-x509crl-i.md#isrevoked)
 
 <!--Device-X509Crl-isRevoked(cert: X509Cert): boolean--><!--Device-X509Crl-isRevoked(cert: X509Cert): boolean-End-->
 
@@ -1428,7 +1432,7 @@ Checks whether an X.509 certificate is revoked.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 
 **Examples**
 
@@ -1500,6 +1504,8 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
+<a id="verify1"></a>
+
 ## verify
 
 ```TypeScript
@@ -1511,14 +1517,14 @@ Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This AP
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify)
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify1)
 > instead.
 
 **Since:** 9
 
 **Deprecated since:** 11
 
-**Substitutes:** verify
+**Substitutes:** [verify](arkts-devicecertificate-cert-x509crl-i.md#verify)
 
 <!--Device-X509Crl-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void--><!--Device-X509Crl-verify(key: cryptoFramework.PubKey, callback: AsyncCallback<void>): void-End-->
 
@@ -1535,7 +1541,7 @@ Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This AP
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**
@@ -1663,7 +1669,7 @@ cert.createX509Crl(encodingBlob, (error, x509Crl) => {
 });
 ```
 
-<a id="verify-1"></a>
+<a id="verify2"></a>
 
 ## verify
 
@@ -1676,13 +1682,13 @@ Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This AP
 > **NOTE:** 
 > 
 > This API is supported since API version 9 and deprecated since API version 11. Use
-> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify-1) instead.
+> [X509CRL.verify()](arkts-devicecertificate-cert-x509crl-i.md#verify2) instead.
 
 **Since:** 9
 
 **Deprecated since:** 11
 
-**Substitutes:** verify
+**Substitutes:** [verify](arkts-devicecertificate-cert-x509crl-i.md#verify)
 
 <!--Device-X509Crl-verify(key: cryptoFramework.PubKey): Promise<void>--><!--Device-X509Crl-verify(key: cryptoFramework.PubKey): Promise<void>-End-->
 
@@ -1704,7 +1710,7 @@ Verifies the signature of the X.509 CRL. The RSA algorithm is supported. This AP
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; <br>3. Parameter verification failed. |
 | [19030001](../errorcode-cert.md#19030001-failed-to-invoke-the-third-party-cryptographic-api) | Crypto operation error. |
 
 **Examples**

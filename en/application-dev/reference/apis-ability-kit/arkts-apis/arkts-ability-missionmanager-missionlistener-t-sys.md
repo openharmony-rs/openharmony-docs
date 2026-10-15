@@ -6,6 +6,8 @@ export type MissionListener = _MissionListener
 
 MissionListener registered by app.
 
+**Type:** _MissionListener
+
 **Since:** 9
 
 <!--Device-missionManager-export type MissionListener = _MissionListener--><!--Device-missionManager-export type MissionListener = _MissionListener-End-->
@@ -13,5 +15,3 @@ MissionListener registered by app.
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
-
-**Type:** _MissionListener

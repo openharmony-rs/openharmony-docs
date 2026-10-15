@@ -12,115 +12,19 @@ enum FormParam
 
 **系统能力：** SystemCapability.Ability.Form
 
-## IDENTITY_KEY
+## ABILITY_NAME_KEY
 
 ```TypeScript
-IDENTITY_KEY = "ohos.extra.param.key.form_identity"
+ABILITY_NAME_KEY = "ohos.extra.param.key.ability_name"
 ```
 
-卡片标识。
+Ability名称。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-FormParam-IDENTITY_KEY = "ohos.extra.param.key.form_identity"--><!--Device-FormParam-IDENTITY_KEY = "ohos.extra.param.key.form_identity"-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-## DIMENSION_KEY
-
-```TypeScript
-DIMENSION_KEY = "ohos.extra.param.key.form_dimension"
-```
-
-卡片规格，规格尺寸参考[FormDimension](arkts-form-forminfo-formdimension-e.md)。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormParam-DIMENSION_KEY = "ohos.extra.param.key.form_dimension"--><!--Device-FormParam-DIMENSION_KEY = "ohos.extra.param.key.form_dimension"-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-## NAME_KEY
-
-```TypeScript
-NAME_KEY = "ohos.extra.param.key.form_name"
-```
-
-卡片名称。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormParam-NAME_KEY = "ohos.extra.param.key.form_name"--><!--Device-FormParam-NAME_KEY = "ohos.extra.param.key.form_name"-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-## MODULE_NAME_KEY
-
-```TypeScript
-MODULE_NAME_KEY = "ohos.extra.param.key.module_name"
-```
-
-卡片所属模块名称。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormParam-MODULE_NAME_KEY = "ohos.extra.param.key.module_name"--><!--Device-FormParam-MODULE_NAME_KEY = "ohos.extra.param.key.module_name"-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-## WIDTH_KEY
-
-```TypeScript
-WIDTH_KEY = "ohos.extra.param.key.form_width"
-```
-
-卡片宽度。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormParam-WIDTH_KEY = "ohos.extra.param.key.form_width"--><!--Device-FormParam-WIDTH_KEY = "ohos.extra.param.key.form_width"-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-## HEIGHT_KEY
-
-```TypeScript
-HEIGHT_KEY = "ohos.extra.param.key.form_height"
-```
-
-卡片高度。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormParam-HEIGHT_KEY = "ohos.extra.param.key.form_height"--><!--Device-FormParam-HEIGHT_KEY = "ohos.extra.param.key.form_height"-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-## TEMPORARY_KEY
-
-```TypeScript
-TEMPORARY_KEY = "ohos.extra.param.key.form_temporary"
-```
-
-临时卡片。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormParam-TEMPORARY_KEY = "ohos.extra.param.key.form_temporary"--><!--Device-FormParam-TEMPORARY_KEY = "ohos.extra.param.key.form_temporary"-End-->
+<!--Device-FormParam-ABILITY_NAME_KEY = "ohos.extra.param.key.ability_name"--><!--Device-FormParam-ABILITY_NAME_KEY = "ohos.extra.param.key.ability_name"-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -134,57 +38,41 @@ Bundle名称。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormParam-BUNDLE_NAME_KEY = "ohos.extra.param.key.bundle_name"--><!--Device-FormParam-BUNDLE_NAME_KEY = "ohos.extra.param.key.bundle_name"-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
-## ABILITY_NAME_KEY
+## DIMENSION_KEY
 
 ```TypeScript
-ABILITY_NAME_KEY = "ohos.extra.param.key.ability_name"
+DIMENSION_KEY = "ohos.extra.param.key.form_dimension"
 ```
 
-Ability名称。
+卡片规格，规格尺寸参考[FormDimension](arkts-form-forminfo-formdimension-e.md)。
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-FormParam-ABILITY_NAME_KEY = "ohos.extra.param.key.ability_name"--><!--Device-FormParam-ABILITY_NAME_KEY = "ohos.extra.param.key.ability_name"-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-## LAUNCH_REASON_KEY
-
-```TypeScript
-LAUNCH_REASON_KEY = "ohos.extra.param.key.form_launch_reason"
-```
-
-卡片创建原因。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormParam-LAUNCH_REASON_KEY = "ohos.extra.param.key.form_launch_reason"--><!--Device-FormParam-LAUNCH_REASON_KEY = "ohos.extra.param.key.form_launch_reason"-End-->
+<!--Device-FormParam-DIMENSION_KEY = "ohos.extra.param.key.form_dimension"--><!--Device-FormParam-DIMENSION_KEY = "ohos.extra.param.key.form_dimension"-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
-## PARAM_FORM_CUSTOMIZE_KEY
+## EDIT_FORM_KEY
 
 ```TypeScript
-PARAM_FORM_CUSTOMIZE_KEY = "ohos.extra.param.key.form_customize"
+EDIT_FORM_KEY = 'ohos.extra.param.key.edit_form_id'
 ```
 
-自定义数据。
+在半模态页面的卡片编辑中，通过onAddForm回调函数传递该key表示被编辑的卡片id，用来确保预览卡片与被编辑卡片信息同步。如果卡片onAddForm回调函数中携带了该key，则说明当前卡片为半模态页面中的预览卡片，需要基于被编辑卡片来筛选预览卡片内容。
 
-**起始版本：** 10
+**起始版本：** 22
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-FormParam-PARAM_FORM_CUSTOMIZE_KEY = "ohos.extra.param.key.form_customize"--><!--Device-FormParam-PARAM_FORM_CUSTOMIZE_KEY = "ohos.extra.param.key.form_customize"-End-->
+<!--Device-FormParam-EDIT_FORM_KEY = 'ohos.extra.param.key.edit_form_id'--><!--Device-FormParam-EDIT_FORM_KEY = 'ohos.extra.param.key.edit_form_id'-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -202,35 +90,19 @@ FORM_LOCATION_KEY = 'ohos.extra.param.key.form_location'
 
 **系统能力：** SystemCapability.Ability.Form
 
-## FORM_RENDERING_MODE_KEY
+## FORM_PERMISSION_GRANTED_KEY
 
 ```TypeScript
-FORM_RENDERING_MODE_KEY = 'ohos.extra.param.key.form_rendering_mode'
+FORM_PERMISSION_GRANTED_KEY = 'ohos.extra.param.key.permission_granted'
 ```
 
-卡片渲染模式。
-
-**起始版本：** 11
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormParam-FORM_RENDERING_MODE_KEY = 'ohos.extra.param.key.form_rendering_mode'--><!--Device-FormParam-FORM_RENDERING_MODE_KEY = 'ohos.extra.param.key.form_rendering_mode'-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-## HOST_BG_INVERSE_COLOR_KEY
-
-```TypeScript
-HOST_BG_INVERSE_COLOR_KEY = 'ohos.extra.param.key.host_bg_inverse_color'
-```
-
-卡片使用方的背景反色颜色值。
+用户是否授权。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-FormParam-HOST_BG_INVERSE_COLOR_KEY = 'ohos.extra.param.key.host_bg_inverse_color'--><!--Device-FormParam-HOST_BG_INVERSE_COLOR_KEY = 'ohos.extra.param.key.host_bg_inverse_color'-End-->
+<!--Device-FormParam-FORM_PERMISSION_GRANTED_KEY = 'ohos.extra.param.key.permission_granted'--><!--Device-FormParam-FORM_PERMISSION_GRANTED_KEY = 'ohos.extra.param.key.permission_granted'-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -244,25 +116,121 @@ FORM_PERMISSION_NAME_KEY = 'ohos.extra.param.key.permission_name'
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormParam-FORM_PERMISSION_NAME_KEY = 'ohos.extra.param.key.permission_name'--><!--Device-FormParam-FORM_PERMISSION_NAME_KEY = 'ohos.extra.param.key.permission_name'-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
-## FORM_PERMISSION_GRANTED_KEY
+## FORM_RENDERING_MODE_KEY
 
 ```TypeScript
-FORM_PERMISSION_GRANTED_KEY = 'ohos.extra.param.key.permission_granted'
+FORM_RENDERING_MODE_KEY = 'ohos.extra.param.key.form_rendering_mode'
 ```
 
-用户是否授权。
+卡片渲染模式。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormParam-FORM_RENDERING_MODE_KEY = 'ohos.extra.param.key.form_rendering_mode'--><!--Device-FormParam-FORM_RENDERING_MODE_KEY = 'ohos.extra.param.key.form_rendering_mode'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## HEIGHT_KEY
+
+```TypeScript
+HEIGHT_KEY = "ohos.extra.param.key.form_height"
+```
+
+卡片高度。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormParam-HEIGHT_KEY = "ohos.extra.param.key.form_height"--><!--Device-FormParam-HEIGHT_KEY = "ohos.extra.param.key.form_height"-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## HOST_BG_INVERSE_COLOR_KEY
+
+```TypeScript
+HOST_BG_INVERSE_COLOR_KEY = 'ohos.extra.param.key.host_bg_inverse_color'
+```
+
+卡片使用方的背景反色颜色值。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-FormParam-FORM_PERMISSION_GRANTED_KEY = 'ohos.extra.param.key.permission_granted'--><!--Device-FormParam-FORM_PERMISSION_GRANTED_KEY = 'ohos.extra.param.key.permission_granted'-End-->
+<!--Device-FormParam-HOST_BG_INVERSE_COLOR_KEY = 'ohos.extra.param.key.host_bg_inverse_color'--><!--Device-FormParam-HOST_BG_INVERSE_COLOR_KEY = 'ohos.extra.param.key.host_bg_inverse_color'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## IDENTITY_KEY
+
+```TypeScript
+IDENTITY_KEY = "ohos.extra.param.key.form_identity"
+```
+
+卡片标识。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormParam-IDENTITY_KEY = "ohos.extra.param.key.form_identity"--><!--Device-FormParam-IDENTITY_KEY = "ohos.extra.param.key.form_identity"-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## LAUNCH_REASON_KEY
+
+```TypeScript
+LAUNCH_REASON_KEY = "ohos.extra.param.key.form_launch_reason"
+```
+
+卡片创建原因。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormParam-LAUNCH_REASON_KEY = "ohos.extra.param.key.form_launch_reason"--><!--Device-FormParam-LAUNCH_REASON_KEY = "ohos.extra.param.key.form_launch_reason"-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## MODULE_NAME_KEY
+
+```TypeScript
+MODULE_NAME_KEY = "ohos.extra.param.key.module_name"
+```
+
+卡片所属模块名称。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormParam-MODULE_NAME_KEY = "ohos.extra.param.key.module_name"--><!--Device-FormParam-MODULE_NAME_KEY = "ohos.extra.param.key.module_name"-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## NAME_KEY
+
+```TypeScript
+NAME_KEY = "ohos.extra.param.key.form_name"
+```
+
+卡片名称。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormParam-NAME_KEY = "ohos.extra.param.key.form_name"--><!--Device-FormParam-NAME_KEY = "ohos.extra.param.key.form_name"-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -276,25 +244,41 @@ ORIGINAL_FORM_KEY = 'ohos.extra.param.key.original_form_id'
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormParam-ORIGINAL_FORM_KEY = 'ohos.extra.param.key.original_form_id'--><!--Device-FormParam-ORIGINAL_FORM_KEY = 'ohos.extra.param.key.original_form_id'-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
-## EDIT_FORM_KEY
+## PARAM_FORM_CUSTOMIZE_KEY
 
 ```TypeScript
-EDIT_FORM_KEY = 'ohos.extra.param.key.edit_form_id'
+PARAM_FORM_CUSTOMIZE_KEY = "ohos.extra.param.key.form_customize"
 ```
 
-在半模态页面的卡片编辑中，通过onAddForm回调函数传递该key表示被编辑的卡片id，用来确保预览卡片与被编辑卡片信息同步。如果卡片onAddForm回调函数中携带了该key，则说明当前卡片为半模态页面中的预览卡片，需要基于被编辑卡片来筛选预览卡片内容。
+自定义数据。
 
-**起始版本：** 22
+**起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-FormParam-EDIT_FORM_KEY = 'ohos.extra.param.key.edit_form_id'--><!--Device-FormParam-EDIT_FORM_KEY = 'ohos.extra.param.key.edit_form_id'-End-->
+<!--Device-FormParam-PARAM_FORM_CUSTOMIZE_KEY = "ohos.extra.param.key.form_customize"--><!--Device-FormParam-PARAM_FORM_CUSTOMIZE_KEY = "ohos.extra.param.key.form_customize"-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## TEMPORARY_KEY
+
+```TypeScript
+TEMPORARY_KEY = "ohos.extra.param.key.form_temporary"
+```
+
+临时卡片。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormParam-TEMPORARY_KEY = "ohos.extra.param.key.form_temporary"--><!--Device-FormParam-TEMPORARY_KEY = "ohos.extra.param.key.form_temporary"-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -310,8 +294,24 @@ Indicates the key specifying the reason for the form update. which is represente
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormParam-UPDATE_FORM_REASON_KEY = 'ohos.extra.param.key.update_form_reason'--><!--Device-FormParam-UPDATE_FORM_REASON_KEY = 'ohos.extra.param.key.update_form_reason'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## WIDTH_KEY
+
+```TypeScript
+WIDTH_KEY = "ohos.extra.param.key.form_width"
+```
+
+卡片宽度。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormParam-WIDTH_KEY = "ohos.extra.param.key.form_width"--><!--Device-FormParam-WIDTH_KEY = "ohos.extra.param.key.form_width"-End-->
 
 **系统能力：** SystemCapability.Ability.Form

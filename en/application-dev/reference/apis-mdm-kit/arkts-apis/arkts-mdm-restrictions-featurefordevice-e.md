@@ -12,147 +12,54 @@ Enumerates device features.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## WIFI_P2P
+## AIRPLANE_MODE
 
 ```TypeScript
-WIFI_P2P = 0
+AIRPLANE_MODE = 29
 ```
 
-Wi-Fi P2P (peer-to-peer connection), which allows devices to directly connect to each other without an access point. Once this feature is disallowed, devices cannot be connected through Wi-Fi P2P, affecting application functions that require direct Wi-Fi connections, such as file transfer, online gaming, and screen sharing.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-WIFI_P2P = 0--><!--Device-FeatureForDevice-WIFI_P2P = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## X_KEY
-
-```TypeScript
-X_KEY = 1
-```
-
-X key.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-X_KEY = 1--><!--Device-FeatureForDevice-X_KEY = 1-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## LOCAL_INPUT
-
-```TypeScript
-LOCAL_INPUT = 2
-```
-
-After local input (including the keyboard, mouse, touchpad, and touchscreen) is disabled, operations cannot be performed through local input. You can restart the device to cancel the disabling. If local input is disabled when the screen is off, the screen cannot be woken up. If the screen automatically turns off after this feature is disabled, the screen also cannot be woken up.
+Airplane mode capability, which is supported only on smartphones and tablets.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-LOCAL_INPUT = 2--><!--Device-FeatureForDevice-LOCAL_INPUT = 2-End-->
+<!--Device-FeatureForDevice-AIRPLANE_MODE = 29--><!--Device-FeatureForDevice-AIRPLANE_MODE = 29-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## PACKET_FILTERING
+## APP_CLONE
 
 ```TypeScript
-PACKET_FILTERING = 3
+APP_CLONE = 35
 ```
 
-Network packet filtering.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-PACKET_FILTERING = 3--><!--Device-FeatureForDevice-PACKET_FILTERING = 3-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SUDO
-
-```TypeScript
-SUDO = 4
-```
-
-Super user do.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-SUDO = 4--><!--Device-FeatureForDevice-SUDO = 4-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## TRAFFIC_REDIRECTION
-
-```TypeScript
-TRAFFIC_REDIRECTION = 5
-```
-
-Policy for controlling network traffic redirection. After this capability is disabled, TCP traffic cannot be redirected to other ports. You can cancel the disabling to restore the feature. Currently, this capability is supported only on PCs/2-in-1 devices.
+[Application clone capability](../../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created. This feature is invalid for the application clone that has been created.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-TRAFFIC_REDIRECTION = 5--><!--Device-FeatureForDevice-TRAFFIC_REDIRECTION = 5-End-->
+<!--Device-FeatureForDevice-APP_CLONE = 35--><!--Device-FeatureForDevice-APP_CLONE = 35-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## CORE_DUMP
+## BACKUP_AND_RESTORE
 
 ```TypeScript
-CORE_DUMP = 6
+BACKUP_AND_RESTORE = 24
 ```
 
-Create a file dump. After this capability is disabled, file dumps cannot be created through the task manager. Currently, this capability is supported only on PCs/2-in-1 devices.
+Backup and restore capability. If this feature is disabled, the **Settings**  
+> **System**
+> **Backup & Restore** and **Settings**
+> **Cloud** options will be dimmed. Currently, this feature is supported only on phones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-CORE_DUMP = 6--><!--Device-FeatureForDevice-CORE_DUMP = 6-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## RS232
-
-```TypeScript
-RS232 = 7
-```
-
-RS-232 serial port control policy. If this capability is disabled, data cannot be transmitted via the RS-232 serial port. Currently, this capability is supported only on PCs/2-in-1 devices. (some devices do not support the RS-232 serial port).
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-RS232 = 7--><!--Device-FeatureForDevice-RS232 = 7-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## DISK_ERASURE
-
-```TypeScript
-DISK_ERASURE = 8
-```
-
-Disk erasure capability. Once disabled, the "Disk Erasure" entry will be grayed out. Currently, this capability is supported only on PCs/2-in-1 devices.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-DISK_ERASURE = 8--><!--Device-FeatureForDevice-DISK_ERASURE = 8-End-->
+<!--Device-FeatureForDevice-BACKUP_AND_RESTORE = 24--><!--Device-FeatureForDevice-BACKUP_AND_RESTORE = 24-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -172,67 +79,101 @@ Device Bluetooth capability. If a Bluetooth device blocklist or trustlist is con
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MODIFY_DATE_TIME
+## CAMERA
 
 ```TypeScript
-MODIFY_DATE_TIME = 10
+CAMERA = 19
 ```
 
-Device capability to modify system time.
+Device camera capability.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-MODIFY_DATE_TIME = 10--><!--Device-FeatureForDevice-MODIFY_DATE_TIME = 10-End-->
+<!--Device-FeatureForDevice-CAMERA = 19--><!--Device-FeatureForDevice-CAMERA = 19-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## PRINTER
+## CORE_DUMP
 
 ```TypeScript
-PRINTER = 11
+CORE_DUMP = 6
 ```
 
-Device printing capability. When the device printing capability has been disabled, enabling printing for a specific user via the [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md) API will not take effect. The printing capability remains disabled for that user.
+Create a file dump. After this capability is disabled, file dumps cannot be created through the task manager. Currently, this capability is supported only on PCs/2-in-1 devices.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-PRINTER = 11--><!--Device-FeatureForDevice-PRINTER = 11-End-->
+<!--Device-FeatureForDevice-CORE_DUMP = 6--><!--Device-FeatureForDevice-CORE_DUMP = 6-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## HDC
+## DEVELOPER_MODE
 
 ```TypeScript
-HDC = 12
+DEVELOPER_MODE = 46
 ```
 
-Capability for other devices to connect to and debug this device via HDC. Disabling this capability prevents external devices from connecting or debugging via HDC.
+Developer mode. Disabling this feature takes effect after the device is restarted.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-HDC = 12--><!--Device-FeatureForDevice-HDC = 12-End-->
+<!--Device-FeatureForDevice-DEVELOPER_MODE = 46--><!--Device-FeatureForDevice-DEVELOPER_MODE = 46-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MICROPHONE
+## DISK_ERASURE
 
 ```TypeScript
-MICROPHONE = 13
+DISK_ERASURE = 8
 ```
 
-Device microphone capability.
+Disk erasure capability. Once disabled, the "Disk Erasure" entry will be grayed out. Currently, this capability is supported only on PCs/2-in-1 devices.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-MICROPHONE = 13--><!--Device-FeatureForDevice-MICROPHONE = 13-End-->
+<!--Device-FeatureForDevice-DISK_ERASURE = 8--><!--Device-FeatureForDevice-DISK_ERASURE = 8-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## DISK_RECOVERY_KEY
+
+```TypeScript
+DISK_RECOVERY_KEY = 44
+```
+
+[Key export](../../../security/UniversalKeystoreKit/huks-export-key-arkts.md) recovery capability. Currently, it is supported only on PCs/2-in-1 devices.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-DISK_RECOVERY_KEY = 44--><!--Device-FeatureForDevice-DISK_RECOVERY_KEY = 44-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## EXTERNAL_STORAGE_CARD
+
+```TypeScript
+EXTERNAL_STORAGE_CARD = 36
+```
+
+External storage capability. Disabling this feature prohibits the use of external storage and unmounts currently connected external storage. If files are in use during unmounting, unmounting may fail with error code 9200013.
+
+After external storage is disabled and then enabled again, you need to manually reconnect the external storage.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-EXTERNAL_STORAGE_CARD = 36--><!--Device-FeatureForDevice-EXTERNAL_STORAGE_CARD = 36-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -252,62 +193,35 @@ Device fingerprint authentication capability. Enable device fingerprint authenti
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## USB
+## HDC
 
 ```TypeScript
-USB = 15
+HDC = 12
 ```
 
-Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).
-
-If the device USB capability is disabled in any of the following scenarios, a policy conflict will be reported:
-
-1. A list of allowed USB devices has been configured via the
-[addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md) API.
-2. USB storage device access policy has been set to read-only or disabled via the
-[setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md) API.
-3. Specific USB device types have been blocked via the
-[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md) API.
-4. USB storage write has been disabled for specific users via the [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md) API.
-5. USB-to-serial conversion ([USB_SERIAL](arkts-mdm-restrictions-featurefordevice-e.md)) is disabled.
+Capability for other devices to connect to and debug this device via HDC. Disabling this capability prevents external devices from connecting or debugging via HDC.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-USB = 15--><!--Device-FeatureForDevice-USB = 15-End-->
+<!--Device-FeatureForDevice-HDC = 12--><!--Device-FeatureForDevice-HDC = 12-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## WIFI
+## HDC_REMOTE
 
 ```TypeScript
-WIFI = 16
+HDC_REMOTE = 39
 ```
 
-Device Wi-Fi capability.
+Capability of the device to debug other devices through HDC. Currently, this feature can be set only for PCs/2-in -1 devices. Disabling this capability prevents debugging smartphones, tablets, PCs, smart watches, and other devices via HDC.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-WIFI = 16--><!--Device-FeatureForDevice-WIFI = 16-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## TETHERING
-
-```TypeScript
-TETHERING = 17
-```
-
-Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-TETHERING = 17--><!--Device-FeatureForDevice-TETHERING = 17-End-->
+<!--Device-FeatureForDevice-HDC_REMOTE = 39--><!--Device-FeatureForDevice-HDC_REMOTE = 39-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -327,19 +241,99 @@ Capability of freezing inactive users. When this capability is disabled, non-**U
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## CAMERA
+## LOCAL_INPUT
 
 ```TypeScript
-CAMERA = 19
+LOCAL_INPUT = 2
 ```
 
-Device camera capability.
+After local input (including the keyboard, mouse, touchpad, and touchscreen) is disabled, operations cannot be performed through local input. You can restart the device to cancel the disabling. If local input is disabled when the screen is off, the screen cannot be woken up. If the screen automatically turns off after this feature is disabled, the screen also cannot be woken up.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-CAMERA = 19--><!--Device-FeatureForDevice-CAMERA = 19-End-->
+<!--Device-FeatureForDevice-LOCAL_INPUT = 2--><!--Device-FeatureForDevice-LOCAL_INPUT = 2-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MAINTENANCE_MODE
+
+```TypeScript
+MAINTENANCE_MODE = 25
+```
+
+Device maintenance mode capability.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-MAINTENANCE_MODE = 25--><!--Device-FeatureForDevice-MAINTENANCE_MODE = 25-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MICROPHONE
+
+```TypeScript
+MICROPHONE = 13
+```
+
+Device microphone capability.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-MICROPHONE = 13--><!--Device-FeatureForDevice-MICROPHONE = 13-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MMS
+
+```TypeScript
+MMS = 26
+```
+
+Multimedia Messaging Service (MMS) capability to receive and send multimedia messages. Currently, this feature is supported only on smartphones and tablets.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-MMS = 26--><!--Device-FeatureForDevice-MMS = 26-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MOBILE_DATA
+
+```TypeScript
+MOBILE_DATA = 28
+```
+
+Cellular data capability, which is supported only on smartphones and tablets.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-MOBILE_DATA = 28--><!--Device-FeatureForDevice-MOBILE_DATA = 28-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MODIFY_DATE_TIME
+
+```TypeScript
+MODIFY_DATE_TIME = 10
+```
+
+Device capability to modify system time.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-MODIFY_DATE_TIME = 10--><!--Device-FeatureForDevice-MODIFY_DATE_TIME = 10-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -372,6 +366,198 @@ MTP server capability, currently supported only on phone and tablets.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-FeatureForDevice-MTP_SERVER = 21--><!--Device-FeatureForDevice-MTP_SERVER = 21-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## NEAR_LINK
+
+```TypeScript
+NEAR_LINK = 45
+```
+
+NearLink capability.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-NEAR_LINK = 45--><!--Device-FeatureForDevice-NEAR_LINK = 45-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## NFC
+
+```TypeScript
+NFC = 32
+```
+
+Near Field Communication (NFC) capability, which is supported only on phones and tablets.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-NFC = 32--><!--Device-FeatureForDevice-NFC = 32-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## NOTIFICATION
+
+```TypeScript
+NOTIFICATION = 31
+```
+
+Device notification capability. After this capability is disabled, notifications sent by system applications and third-party applications will not be displayed. However, notification capabilities for system services are not affected. If you disable the device-level notification capability after an allowed notification bundle has already been set via [addAllowedNotificationBundles](arkts-mdm-applicationmanager-addallowednotificationbundles-f.md), error code 9200010 will be reported.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-NOTIFICATION = 31--><!--Device-FeatureForDevice-NOTIFICATION = 31-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## OTA_UPDATE
+
+```TypeScript
+OTA_UPDATE = 50
+```
+
+Public network system upgrade capability.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-OTA_UPDATE = 50--><!--Device-FeatureForDevice-OTA_UPDATE = 50-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## PACKET_FILTERING
+
+```TypeScript
+PACKET_FILTERING = 3
+```
+
+Network packet filtering.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-PACKET_FILTERING = 3--><!--Device-FeatureForDevice-PACKET_FILTERING = 3-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## PRINTER
+
+```TypeScript
+PRINTER = 11
+```
+
+Device printing capability. When the device printing capability has been disabled, enabling printing for a specific user via the [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md) API will not take effect. The printing capability remains disabled for that user.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-PRINTER = 11--><!--Device-FeatureForDevice-PRINTER = 11-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## PRIVATE_SPACE
+
+```TypeScript
+PRIVATE_SPACE = 33
+```
+
+Privacy space creation capability, which is supported only on smartphones and tablets. This setting does not affect existing private spaces.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-PRIVATE_SPACE = 33--><!--Device-FeatureForDevice-PRIVATE_SPACE = 33-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## RANDOM_MAC
+
+```TypeScript
+RANDOM_MAC = 37
+```
+
+Random MAC address capability for Wi-Fi connections. When this feature is disabled, only the device's physical MAC address can be used for Wi-Fi connections.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-RANDOM_MAC = 37--><!--Device-FeatureForDevice-RANDOM_MAC = 37-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## REMOTE_DESK
+
+```TypeScript
+REMOTE_DESK = 48
+```
+
+Remote desktop capability.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-REMOTE_DESK = 48--><!--Device-FeatureForDevice-REMOTE_DESK = 48-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## REMOTE_DIAGNOSIS
+
+```TypeScript
+REMOTE_DIAGNOSIS = 49
+```
+
+Remote diagnosis capability.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-REMOTE_DIAGNOSIS = 49--><!--Device-FeatureForDevice-REMOTE_DIAGNOSIS = 49-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## RESET_FACTORY
+
+```TypeScript
+RESET_FACTORY = 47
+```
+
+Factory reset capability.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-RESET_FACTORY = 47--><!--Device-FeatureForDevice-RESET_FACTORY = 47-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## RS232
+
+```TypeScript
+RS232 = 7
+```
+
+RS-232 serial port control policy. If this capability is disabled, data cannot be transmitted via the RS-232 serial port. Currently, this capability is supported only on PCs/2-in-1 devices. (some devices do not support the RS-232 serial port).
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FeatureForDevice-RS232 = 7--><!--Device-FeatureForDevice-RS232 = 7-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -409,54 +595,51 @@ Samba server capability, currently supported only on PC/2-in-1 devices.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## BACKUP_AND_RESTORE
+## SATA_ODD_BURN
 
 ```TypeScript
-BACKUP_AND_RESTORE = 24
+SATA_ODD_BURN = 52
 ```
 
-Backup and restore capability. If this feature is disabled, the **Settings**  
-> **System**
-> **Backup & Restore** and **Settings**
-> **Cloud** options will be dimmed. Currently, this feature is supported only on phones and tablets. To completely disable the backup and restore capability, you are advised to call [applicationManager.addDisallowedRunningBundlesSync](arkts-mdm-applicationmanager-adddisallowedrunningbundlessync-f.md) to disable applications with this feature, such as Backup & Restore, HiSuite, and Cloud.
+Built-in optical drive burning capability.
 
-**Since:** 26.0.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-BACKUP_AND_RESTORE = 24--><!--Device-FeatureForDevice-BACKUP_AND_RESTORE = 24-End-->
+<!--Device-FeatureForDevice-SATA_ODD_BURN = 52--><!--Device-FeatureForDevice-SATA_ODD_BURN = 52-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MAINTENANCE_MODE
+## SCREEN_RECORD
 
 ```TypeScript
-MAINTENANCE_MODE = 25
+SCREEN_RECORD = 43
 ```
 
-Device maintenance mode capability.
+Screen recording capability. After this capability is disabled, screen recording cannot be performed.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-MAINTENANCE_MODE = 25--><!--Device-FeatureForDevice-MAINTENANCE_MODE = 25-End-->
+<!--Device-FeatureForDevice-SCREEN_RECORD = 43--><!--Device-FeatureForDevice-SCREEN_RECORD = 43-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MMS
+## SCREEN_SHOT
 
 ```TypeScript
-MMS = 26
+SCREEN_SHOT = 42
 ```
 
-Multimedia Messaging Service (MMS) capability to receive and send multimedia messages. Currently, this feature is supported only on smartphones and tablets.
+Screenshot capability. After this capability is disabled, screenshots cannot be taken.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-MMS = 26--><!--Device-FeatureForDevice-MMS = 26-End-->
+<!--Device-FeatureForDevice-SCREEN_SHOT = 42--><!--Device-FeatureForDevice-SCREEN_SHOT = 42-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -476,99 +659,35 @@ Short Messaging Service (SMS) capability to receive and send SMS messages. Curre
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MOBILE_DATA
+## SUDO
 
 ```TypeScript
-MOBILE_DATA = 28
+SUDO = 4
 ```
 
-Cellular data capability, which is supported only on smartphones and tablets.
+Super user do.
 
-**Since:** 26.0.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-MOBILE_DATA = 28--><!--Device-FeatureForDevice-MOBILE_DATA = 28-End-->
+<!--Device-FeatureForDevice-SUDO = 4--><!--Device-FeatureForDevice-SUDO = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## AIRPLANE_MODE
+## SYSTEM_ROLLBACK
 
 ```TypeScript
-AIRPLANE_MODE = 29
+SYSTEM_ROLLBACK = 51
 ```
 
-Airplane mode capability, which is supported only on smartphones and tablets.
+System rollback capability.
 
-**Since:** 26.0.0
+**Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-AIRPLANE_MODE = 29--><!--Device-FeatureForDevice-AIRPLANE_MODE = 29-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## VPN
-
-```TypeScript
-VPN = 30
-```
-
-Virtual Private Network (VPN) capability.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-VPN = 30--><!--Device-FeatureForDevice-VPN = 30-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## NOTIFICATION
-
-```TypeScript
-NOTIFICATION = 31
-```
-
-Device notification capability. After this capability is disabled, notifications sent by system applications and third-party applications will not be displayed. However, notification capabilities for system services are not affected. If you disable the device-level notification capability after an allowed notification bundle has already been set via [addAllowedNotificationBundles](arkts-mdm-applicationmanager-addallowednotificationbundles-f.md), error code 9200010 will be reported.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-NOTIFICATION = 31--><!--Device-FeatureForDevice-NOTIFICATION = 31-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## NFC
-
-```TypeScript
-NFC = 32
-```
-
-Near Field Communication (NFC) capability, which is supported only on phones and tablets.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-NFC = 32--><!--Device-FeatureForDevice-NFC = 32-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## PRIVATE_SPACE
-
-```TypeScript
-PRIVATE_SPACE = 33
-```
-
-Privacy space creation capability, which is supported only on smartphones and tablets. This setting does not affect existing private spaces.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-PRIVATE_SPACE = 33--><!--Device-FeatureForDevice-PRIVATE_SPACE = 33-End-->
+<!--Device-FeatureForDevice-SYSTEM_ROLLBACK = 51--><!--Device-FeatureForDevice-SYSTEM_ROLLBACK = 51-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -588,53 +707,35 @@ Call capability. Disabling this feature blocks incoming or outgoing calls. Curre
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## APP_CLONE
+## TETHERING
 
 ```TypeScript
-APP_CLONE = 35
+TETHERING = 17
 ```
 
-[Application clone capability](../../../quick-start/app-clone.md). When this feature is disabled, new application clones cannot be created. This feature is invalid for the application clone that has been created.
+Network tethering capability (the ability to share the device's internet connection with other devices, that is, hotspot sharing).
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-APP_CLONE = 35--><!--Device-FeatureForDevice-APP_CLONE = 35-End-->
+<!--Device-FeatureForDevice-TETHERING = 17--><!--Device-FeatureForDevice-TETHERING = 17-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## EXTERNAL_STORAGE_CARD
+## TRAFFIC_REDIRECTION
 
 ```TypeScript
-EXTERNAL_STORAGE_CARD = 36
+TRAFFIC_REDIRECTION = 5
 ```
 
-External storage capability. Disabling this feature prohibits the use of external storage and unmounts currently connected external storage. If files are in use during unmounting, unmounting may fail with error code 9200013.
-
-After external storage is disabled and then enabled again, you need to manually reconnect the external storage.
+Policy for controlling network traffic redirection. After this capability is disabled, TCP traffic cannot be redirected to other ports. You can cancel the disabling to restore the feature. Currently, this capability is supported only on PCs/2-in-1 devices.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-EXTERNAL_STORAGE_CARD = 36--><!--Device-FeatureForDevice-EXTERNAL_STORAGE_CARD = 36-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## RANDOM_MAC
-
-```TypeScript
-RANDOM_MAC = 37
-```
-
-Random MAC address capability for Wi-Fi connections. When this feature is disabled, only the device's physical MAC address can be used for Wi-Fi connections.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-RANDOM_MAC = 37--><!--Device-FeatureForDevice-RANDOM_MAC = 37-End-->
+<!--Device-FeatureForDevice-TRAFFIC_REDIRECTION = 5--><!--Device-FeatureForDevice-TRAFFIC_REDIRECTION = 5-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -654,35 +755,30 @@ Device audio playback capability. When this feature is disabled, media playback 
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## HDC_REMOTE
+## USB
 
 ```TypeScript
-HDC_REMOTE = 39
+USB = 15
 ```
 
-Capability of the device to debug other devices through HDC. Currently, this feature can be set only for PCs/2-in -1 devices. Disabling this capability prevents debugging smartphones, tablets, PCs, smart watches, and other devices via HDC.
+Device USB capability. Disabling this capability prohibits the use of external USB devices (the device cannot act as a USB host to connect external devices).
+
+If the device USB capability is disabled in any of the following scenarios, a policy conflict will be reported:
+
+1. A list of allowed USB devices has been configured via the
+[addAllowedUsbDevices](arkts-mdm-usbmanager-addallowedusbdevices-f.md) API.
+2. USB storage device access policy has been set to read-only or disabled via the
+[setUsbStorageDeviceAccessPolicy](arkts-mdm-usbmanager-setusbstoragedeviceaccesspolicy-f.md) API.
+3. Specific USB device types have been blocked via the
+[addDisallowedUsbDevices](arkts-mdm-usbmanager-adddisallowedusbdevices-f.md) API.
+4. USB storage write has been disabled for specific users via the [setDisallowedPolicyForAccount](arkts-mdm-restrictions-setdisallowedpolicyforaccount-f.md) API.
+5. USB-to-serial conversion ([USB_SERIAL](arkts-mdm-restrictions-featurefordevice-e.md)) is disabled.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-HDC_REMOTE = 39--><!--Device-FeatureForDevice-HDC_REMOTE = 39-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## VIRTUAL_SERVICE
-
-```TypeScript
-VIRTUAL_SERVICE = 40
-```
-
-Device virtualization service capability, which refers to the system capability of running other operating system platforms (such as Linux and Windows) through virtualization technology by leveraging the redundancy of the device's hardware resources. If this capability is disabled, it is advised to uninstall all applications related to the virtualization service and prohibit their reinstallation.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-VIRTUAL_SERVICE = 40--><!--Device-FeatureForDevice-VIRTUAL_SERVICE = 40-End-->
+<!--Device-FeatureForDevice-USB = 15--><!--Device-FeatureForDevice-USB = 15-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -706,162 +802,82 @@ Device USB-to-serial port capability. After the capability is disabled, external
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SCREEN_SHOT
+## VIRTUAL_SERVICE
 
 ```TypeScript
-SCREEN_SHOT = 42
+VIRTUAL_SERVICE = 40
 ```
 
-Screenshot capability. After this capability is disabled, screenshots cannot be taken.
+Device virtualization service capability, which refers to the system capability of running other operating system platforms (such as Linux and Windows) through virtualization technology by leveraging the redundancy of the device's hardware resources. If this capability is disabled, it is advised to uninstall all applications related to the virtualization service and prohibit their reinstallation.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-SCREEN_SHOT = 42--><!--Device-FeatureForDevice-SCREEN_SHOT = 42-End-->
+<!--Device-FeatureForDevice-VIRTUAL_SERVICE = 40--><!--Device-FeatureForDevice-VIRTUAL_SERVICE = 40-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SCREEN_RECORD
+## VPN
 
 ```TypeScript
-SCREEN_RECORD = 43
+VPN = 30
 ```
 
-Screen recording capability. After this capability is disabled, screen recording cannot be performed.
+Virtual Private Network (VPN) capability.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-SCREEN_RECORD = 43--><!--Device-FeatureForDevice-SCREEN_RECORD = 43-End-->
+<!--Device-FeatureForDevice-VPN = 30--><!--Device-FeatureForDevice-VPN = 30-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DISK_RECOVERY_KEY
+## WIFI
 
 ```TypeScript
-DISK_RECOVERY_KEY = 44
+WIFI = 16
 ```
 
-[Key export](../../../security/UniversalKeystoreKit/huks-export-key-arkts.md) recovery capability. Currently, it is supported only on PCs/2-in-1 devices.
+Device Wi-Fi capability.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-DISK_RECOVERY_KEY = 44--><!--Device-FeatureForDevice-DISK_RECOVERY_KEY = 44-End-->
+<!--Device-FeatureForDevice-WIFI = 16--><!--Device-FeatureForDevice-WIFI = 16-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## NEAR_LINK
+## WIFI_P2P
 
 ```TypeScript
-NEAR_LINK = 45
+WIFI_P2P = 0
 ```
 
-NearLink capability.
+Wi-Fi P2P (peer-to-peer connection), which allows devices to directly connect to each other without an access point. Once this feature is disallowed, devices cannot be connected through Wi-Fi P2P, affecting application functions that require direct Wi-Fi connections, such as file transfer, online gaming, and screen sharing.
 
-**Since:** 26.0.0
+**Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-NEAR_LINK = 45--><!--Device-FeatureForDevice-NEAR_LINK = 45-End-->
+<!--Device-FeatureForDevice-WIFI_P2P = 0--><!--Device-FeatureForDevice-WIFI_P2P = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DEVELOPER_MODE
+## X_KEY
 
 ```TypeScript
-DEVELOPER_MODE = 46
+X_KEY = 1
 ```
 
-Developer mode. Disabling this feature takes effect after the device is restarted.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-DEVELOPER_MODE = 46--><!--Device-FeatureForDevice-DEVELOPER_MODE = 46-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## RESET_FACTORY
-
-```TypeScript
-RESET_FACTORY = 47
-```
-
-Factory reset capability.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-RESET_FACTORY = 47--><!--Device-FeatureForDevice-RESET_FACTORY = 47-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## REMOTE_DESK
-
-```TypeScript
-REMOTE_DESK = 48
-```
-
-Remote desktop capability.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-REMOTE_DESK = 48--><!--Device-FeatureForDevice-REMOTE_DESK = 48-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## REMOTE_DIAGNOSIS
-
-```TypeScript
-REMOTE_DIAGNOSIS = 49
-```
-
-Remote diagnosis capability.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-REMOTE_DIAGNOSIS = 49--><!--Device-FeatureForDevice-REMOTE_DIAGNOSIS = 49-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## OTA_UPDATE
-
-```TypeScript
-OTA_UPDATE = 50
-```
-
-Public network system upgrade capability.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FeatureForDevice-OTA_UPDATE = 50--><!--Device-FeatureForDevice-OTA_UPDATE = 50-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SYSTEM_ROLLBACK
-
-```TypeScript
-SYSTEM_ROLLBACK = 51
-```
-
-System rollback capability.
+X key.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FeatureForDevice-SYSTEM_ROLLBACK = 51--><!--Device-FeatureForDevice-SYSTEM_ROLLBACK = 51-End-->
+<!--Device-FeatureForDevice-X_KEY = 1--><!--Device-FeatureForDevice-X_KEY = 1-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

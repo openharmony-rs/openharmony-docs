@@ -8,6 +8,8 @@ Defines the margins in different directions of a component.
 
 To reference this object, at least one parameter must be passed.
 
+**Type:** Padding
+
 **Since:** 7
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
@@ -17,5 +19,3 @@ To reference this object, at least one parameter must be passed.
 <!--Device-unnamed-declare type Margin = Padding--><!--Device-unnamed-declare type Margin = Padding-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** Padding

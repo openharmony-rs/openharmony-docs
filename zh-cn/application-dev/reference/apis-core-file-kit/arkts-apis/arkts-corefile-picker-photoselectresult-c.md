@@ -50,7 +50,7 @@ isOriginalPhoto: boolean
 photoUris: Array<string>
 ```
 
-返回图库选择后的媒体文件的URI数组。此URI数组只能通过临时授权的方式调用接口[photoAccessHelper.getAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets)去使用，具体使用方式参见用户文件URI介绍中的[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
+返回图库选择后的媒体文件的URI数组。此URI数组只能通过临时授权的方式调用接口[photoAccessHelper.getAssets](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-photoaccesshelper-i.md#getassets1)去使用，具体使用方式参见用户文件URI介绍中的[媒体文件URI的使用方式](../../../file-management/user-file-uri-intro.md#媒体文件uri的使用方式)。
 
 **类型：** Array&lt;string&gt;
 

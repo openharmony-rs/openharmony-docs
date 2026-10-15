@@ -6,6 +6,8 @@
 import { bundle } from '@kit.AbilityKit';
 ```
 
+<a id="getnameforuid1"></a>
+
 ## getNameForUid
 
 ```TypeScript
@@ -48,7 +50,7 @@ bundle.getNameForUid(uid, (err, data) => {
 ```
 
 
-<a id="getnameforuid-1"></a>
+<a id="getnameforuid2"></a>
 
 ## getNameForUid
 

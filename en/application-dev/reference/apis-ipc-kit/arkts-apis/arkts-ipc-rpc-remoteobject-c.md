@@ -313,6 +313,8 @@ class TestRemoteObject extends rpc.RemoteObject {
 let testRemoteObject = new TestRemoteObject("testObject");
 ```
 
+<a id="onremotemessagerequest1"></a>
+
 ## onRemoteMessageRequest
 
 ```TypeScript
@@ -336,7 +338,7 @@ Called to return a response to **sendMessageRequest()**. The server processes th
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-RemoteObject-onRemoteMessageRequest(      code: int,      data: MessageSequence,      reply: MessageSequence,      options: MessageOption    ): boolean | Promise<boolean>--><!--Device-RemoteObject-onRemoteMessageRequest(      code: int,      data: MessageSequence,      reply: MessageSequence,      options: MessageOption    ): boolean | Promise<boolean>-End-->
 
@@ -441,7 +443,7 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
-<a id="onremotemessagerequest-1"></a>
+<a id="onremotemessagerequest2"></a>
 
 ## onRemoteMessageRequest
 
@@ -576,6 +578,8 @@ class TestRemoteObject extends rpc.RemoteObject {
 }
 ```
 
+<a id="sendmessagerequest1"></a>
+
 ## sendMessageRequest
 
 ```TypeScript
@@ -662,7 +666,7 @@ try {
 }
 ```
 
-<a id="sendmessagerequest-1"></a>
+<a id="sendmessagerequest2"></a>
 
 ## sendMessageRequest
 
@@ -958,6 +962,8 @@ try {
 }
 ```
 
+<a id="sendrequest1"></a>
+
 ## sendRequest
 
 ```TypeScript
@@ -1027,7 +1033,7 @@ try {
 }
 ```
 
-<a id="sendrequest-1"></a>
+<a id="sendrequest2"></a>
 
 ## sendRequest
 
@@ -1113,7 +1119,7 @@ try {
 }
 ```
 
-<a id="sendrequest-2"></a>
+<a id="sendrequest3"></a>
 
 ## sendRequest
 

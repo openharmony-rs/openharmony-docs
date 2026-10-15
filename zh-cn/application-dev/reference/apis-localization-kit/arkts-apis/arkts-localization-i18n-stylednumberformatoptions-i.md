@@ -30,7 +30,7 @@ decimal?: TextStyle
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledNumberFormatOptions-decimal?: TextStyle--><!--Device-StyledNumberFormatOptions-decimal?: TextStyle-End-->
 
@@ -48,7 +48,7 @@ fraction?: TextStyle
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledNumberFormatOptions-fraction?: TextStyle--><!--Device-StyledNumberFormatOptions-fraction?: TextStyle-End-->
 
@@ -66,7 +66,7 @@ integer?: TextStyle
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledNumberFormatOptions-integer?: TextStyle--><!--Device-StyledNumberFormatOptions-integer?: TextStyle-End-->
 
@@ -84,7 +84,7 @@ unit?: TextStyle
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-StyledNumberFormatOptions-unit?: TextStyle--><!--Device-StyledNumberFormatOptions-unit?: TextStyle-End-->
 

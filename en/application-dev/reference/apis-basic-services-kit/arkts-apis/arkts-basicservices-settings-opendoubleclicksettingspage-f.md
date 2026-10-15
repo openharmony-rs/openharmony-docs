@@ -27,14 +27,14 @@ function openDoubleClickSettingsPage(context: Context): void
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | 1. Application context. 2. Specify this parameter to set the application started by double-pressing the Down key. |
+| context | [Context](../../apis-ability-kit/arkts-apis/arkts-ability-context-c.md) | Yes | 1. Application context.         2. Specify this parameter to set the application started by double-pressing the Down key. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [16900010](../errorcode-settings.md#16900010-parameter-check-failed) | 1. The parameter is incorrect. 2. The parameter is not transferred or the transferred parameter is invalid. |
-| [16900020](../errorcode-settings.md#16900020-failed-to-open-the-settings-page) | 1. The setting page cannot be opened through redirection. 2. Internal error |
+| [16900010](../errorcode-settings.md#16900010-parameter-check-failed) | 1. The parameter is incorrect.         2. The parameter is not transferred or the transferred parameter is invalid. |
+| [16900020](../errorcode-settings.md#16900020-failed-to-open-the-settings-page) | 1. The setting page cannot be opened through redirection.         2. Internal error |
 
 **Examples**
 

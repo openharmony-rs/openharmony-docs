@@ -4,7 +4,7 @@
 interface PushParameterForStage
 ```
 
-Plugin component push parameters which is used in push function.
+Sets the parameters to be passed in the **pluginComponentManager.push** API in the stage model.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 data: KVObject
 ```
 
-Defines data.
+Component data, stored in key-value pairs. It is used to transfer service data to the component user, such as the page path (if **key** is **'js'**, **value** is the template path string) and custom data fields.
 
 **Type:** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 
@@ -44,7 +44,7 @@ Defines data.
 extraData: KVObject
 ```
 
-Defines extraData.
+Extra data used to transfer additional custom data when sending a component. It is distinguished from component data (**data**) and can be set based on service requirements.
 
 **Type:** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 
@@ -62,7 +62,7 @@ Defines extraData.
 jsonPath?: string
 ```
 
-Defines jsonPath.
+Path of the [external.json](../../../reference/apis-arkui/js-apis-plugincomponent.md#about-the-externaljson-file) file that stores the template path. When **jsonPath** is not empty, Push communication is not triggered, and the component template path is read from the **external.json** file. When **jsonPath** is empty (default), the component template is sent to the component user through Push communication.
 
 **Type:** string
 
@@ -80,7 +80,7 @@ Defines jsonPath.
 name: string
 ```
 
-Defines name.
+Component name. When **jsonPath** is not empty, the component name must be consistent with the key name in the [external.json](../../../reference/apis-arkui/js-apis-plugincomponent.md#about-the-externaljson-file) file.
 
 **Type:** string
 
@@ -98,7 +98,7 @@ Defines name.
 owner: Want
 ```
 
-Defines owner.
+Ability information of the component provider.
 
 **Type:** [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)
 
@@ -116,7 +116,7 @@ Defines owner.
 target: Want
 ```
 
-Defines target.
+Ability information of the component user.
 
 **Type:** [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)
 

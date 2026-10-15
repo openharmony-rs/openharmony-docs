@@ -46,7 +46,7 @@ ascent: number
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TypographicBounds-ascent: double--><!--Device-TypographicBounds-ascent: double-End-->
 
@@ -64,7 +64,7 @@ descent: number
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TypographicBounds-descent: double--><!--Device-TypographicBounds-descent: double-End-->
 
@@ -82,7 +82,7 @@ leading: number
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TypographicBounds-leading: double--><!--Device-TypographicBounds-leading: double-End-->
 
@@ -100,7 +100,7 @@ width: number
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TypographicBounds-width: double--><!--Device-TypographicBounds-width: double-End-->
 

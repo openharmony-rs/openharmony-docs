@@ -12,13 +12,13 @@ declare enum TextDecorationStyle
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SOLID
+## DASHED
 
 ```TypeScript
-SOLID = 0
+DASHED = 3
 ```
 
-单实线（默认值）。
+虚线。
 
 **起始版本：** 12
 
@@ -26,25 +26,7 @@ SOLID = 0
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## DOUBLE
-
-```TypeScript
-DOUBLE = 1
-```
-
-双实线。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
+<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +48,13 @@ DOTTED = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DASHED
+## DOUBLE
 
 ```TypeScript
-DASHED = 3
+DOUBLE = 1
 ```
 
-虚线。
+双实线。
 
 **起始版本：** 12
 
@@ -80,7 +62,25 @@ DASHED = 3
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-TextDecorationStyle-DASHED = 3--><!--Device-TextDecorationStyle-DASHED = 3-End-->
+<!--Device-TextDecorationStyle-DOUBLE = 1--><!--Device-TextDecorationStyle-DOUBLE = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SOLID
+
+```TypeScript
+SOLID = 0
+```
+
+单实线（默认值）。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-TextDecorationStyle-SOLID = 0--><!--Device-TextDecorationStyle-SOLID = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

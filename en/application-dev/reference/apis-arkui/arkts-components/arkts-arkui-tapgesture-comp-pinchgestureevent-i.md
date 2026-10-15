@@ -22,6 +22,8 @@ pinchCenterX: number
 
 X-coordinate of the center of the pinch gesture, in vp, relative to the original area of the current component.
 
+Value range: [0, +∞)
+
 **Type:** number
 
 **Since:** 11
@@ -42,6 +44,8 @@ pinchCenterY: number
 
 Y-coordinate of the center of the pinch gesture, in vp, relative to the original area of the current component.
 
+Value range: [0, +∞)
+
 **Type:** number
 
 **Since:** 11
@@ -61,6 +65,8 @@ scale: number
 ```
 
 Scale factor.
+
+Value range: [0, +∞)
 
 **Type:** number
 

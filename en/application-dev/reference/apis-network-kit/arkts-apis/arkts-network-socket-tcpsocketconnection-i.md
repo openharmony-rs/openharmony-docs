@@ -23,6 +23,8 @@ Defines a **TCPSocketConnection** object, that is, the connection between the TC
 import { socket } from '@kit.NetworkKit';
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -72,7 +74,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -186,6 +188,8 @@ tcpServer.listen(listenAddr, (err: BusinessError) => {
 })
 ```
 
+<a id="getremoteaddress1"></a>
+
 ## getRemoteAddress
 
 ```TypeScript
@@ -239,7 +243,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-<a id="getremoteaddress-1"></a>
+<a id="getremoteaddress2"></a>
 
 ## getRemoteAddress
 
@@ -305,7 +309,7 @@ Obtains the file descriptor of a TCPSocketConnection connection. This API uses a
 > 
 > - This API returns **-1** in abnormal cases such as disconnection and socket closed (for example, after the close API is called).
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection, instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close1) method to close the socket connection, instead of directly operating the file descriptor.
 
 **Since:** 23
 
@@ -626,6 +630,8 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
+<a id="send1"></a>
+
 ## send
 
 ```TypeScript
@@ -678,7 +684,7 @@ tcpServer.on('connect', (client: socket.TCPSocketConnection) => {
 });
 ```
 
-<a id="send-1"></a>
+<a id="send2"></a>
 
 ## send
 

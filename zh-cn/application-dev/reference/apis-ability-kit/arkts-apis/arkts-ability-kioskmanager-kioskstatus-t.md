@@ -6,6 +6,8 @@ export type KioskStatus = _KioskStatus
 
 Kiosk状态信息，包括系统是否处于Kiosk模式以及该模式下的应用信息。
 
+**类型：** _KioskStatus
+
 **起始版本：** 20
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -13,5 +15,3 @@ Kiosk状态信息，包括系统是否处于Kiosk模式以及该模式下的应�
 <!--Device-kioskManager-export type KioskStatus = _KioskStatus--><!--Device-kioskManager-export type KioskStatus = _KioskStatus-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _KioskStatus

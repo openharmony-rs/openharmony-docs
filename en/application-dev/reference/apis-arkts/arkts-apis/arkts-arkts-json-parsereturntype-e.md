@@ -6,11 +6,29 @@ const enum ParseReturnType
 
 Enumerates the return types for parsing.
 
-When parseReturnType is MAP, the parsed result is a Sendable Map (JSSharedMap) instead of a Sendable Object (JSSharedObject). Only effective for [parseSendable](arkts-arkts-json-parsesendable-f.md); ignored by [parse](arkts-arkts-json-parse-f.md).
+When parseReturnType is MAP, the parsed result is a collections.Map instead of a Sendable Object. Only effective for [parseSendable](arkts-arkts-json-parsesendable-f.md); ignored by [parse](arkts-arkts-json-parse-f.md).
 
 **Since:** 26.0.1
 
 <!--Device-json-const enum ParseReturnType--><!--Device-json-const enum ParseReturnType-End-->
+
+**System capability:** SystemCapability.Utils.Lang
+
+## MAP
+
+```TypeScript
+MAP = 1
+```
+
+The parsing result is a collections.Map, which supports adding and deleting entries.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
+
+<!--Device-ParseReturnType-MAP = 1--><!--Device-ParseReturnType-MAP = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -29,23 +47,5 @@ The parsing result is a non-extensible Sendable object, whose existing propertie
 **Atomic service API:** This API can be used in atomic services since API version 26.0.1.
 
 <!--Device-ParseReturnType-OBJECT = 0--><!--Device-ParseReturnType-OBJECT = 0-End-->
-
-**System capability:** SystemCapability.Utils.Lang
-
-## MAP
-
-```TypeScript
-MAP = 1
-```
-
-The parsing result is a sendable Map, which supports adding and deleting entries.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.1.
-
-<!--Device-ParseReturnType-MAP = 1--><!--Device-ParseReturnType-MAP = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang

@@ -44,3 +44,22 @@ Notifies the system of the extensible authentication result.
 | [33200005](../errorcode-net-eap.md#33200005-invalid-data-length) | Invalid size of eap data |
 | [33200009](../errorcode-net-eap.md#33200009-netmanager-not-exist) | netmanager stop |
 | [33200099](../errorcode-net-eap.md#33200099-internal-program-error) | internal error |
+
+**Examples**
+
+```TypeScript
+import {eap} from '@kit.NetworkKit';
+let eapData:eap.EapData= {
+  msgId: 1,
+  eapBuffer: new Uint8Array([1, 2, 3, 4, 5]),
+  bufferLen: 5,
+};
+let result = 1;
+
+try {
+  eap.replyCustomEapData(result, eapData);
+  console.info('replyCustomEapData success');
+} catch (err) {
+  console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+}
+```

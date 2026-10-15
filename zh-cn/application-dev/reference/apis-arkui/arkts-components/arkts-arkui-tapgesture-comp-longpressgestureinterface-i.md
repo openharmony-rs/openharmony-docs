@@ -18,13 +18,15 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="call1"></a>
+
 ## [[Call]]
 
 ```TypeScript
 (value?: { fingers?: number; repeat?: boolean; duration?: number }): LongPressGestureInterface
 ```
 
-创建长按手势对象。继承自[GestureInterface&lt;T&gt;](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
+创建长按手势对象。继承自[GestureInterface<T>](arkts-arkui-tapgesture-comp-gestureinterface-i.md)。
 
 当组件默认支持可拖拽时，如Text、TextInput、TextArea、HyperLink、Image和RichEditor等组件。长按手势与拖拽会出现冲突，事件优先级如下：
 
@@ -52,7 +54,7 @@ interface LongPressGestureInterface extends GestureInterface<LongPressGestureInt
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
 
-<a id="call-1"></a>
+<a id="call2"></a>
 
 ## [[Call]]
 
@@ -118,6 +120,8 @@ onAction(event: (event: GestureEvent) => void): LongPressGestureInterface
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
 
+<a id="onactioncancel1"></a>
+
 ## onActionCancel
 
 ```TypeScript
@@ -146,7 +150,7 @@ onActionCancel(event: () => void): LongPressGestureInterface
 | --- | --- |
 | [LongPressGestureInterface](arkts-arkui-tapgesture-comp-longpressgestureinterface-i.md) |  |
 
-<a id="onactioncancel-1"></a>
+<a id="onactioncancel2"></a>
 
 ## onActionCancel
 

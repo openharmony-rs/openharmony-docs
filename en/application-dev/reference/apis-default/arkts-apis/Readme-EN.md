@@ -1,5 +1,6 @@
 # ArkTS API
 
+- [index](arkts-index.md)
 - [lib.es2015](arkts-lib-es2015.md)
 - [lib.es2015.collection](arkts-lib-es2015-collection.md)
   - [Map](arkts-lib-es2015-collection-map-i.md)
@@ -308,12 +309,12 @@
   - [decodeURIComponent](arkts-lib-es5-decodeuricomponent-f.md)
   - [encodeURI](arkts-lib-es5-encodeuri-f.md)
   - [encodeURIComponent](arkts-lib-es5-encodeuricomponent-f.md)
-  - [escape](arkts-lib-es5-escape-f.md)
   - [eval](arkts-lib-es5-eval-f.md)
   - [isFinite](arkts-lib-es5-isfinite-f.md)
   - [isNaN](arkts-lib-es5-isnan-f.md)
   - [parseFloat](arkts-lib-es5-parsefloat-f.md)
   - [parseInt](arkts-lib-es5-parseint-f.md)
+  - [escape](arkts-lib-es5-escape-f.md)
   - [unescape](arkts-lib-es5-unescape-f.md)
   - [Array](arkts-lib-es5-array-i.md)
   - [ArrayBuffer](arkts-lib-es5-arraybuffer-i.md)
@@ -419,4 +420,3 @@
   - [Uncapitalize](arkts-uncapitalize-t.md)
   - [Uppercase](arkts-uppercase-t.md)
   - [Properties](arkts-lib-es5-p.md)
-- [index](arkts-index.md)

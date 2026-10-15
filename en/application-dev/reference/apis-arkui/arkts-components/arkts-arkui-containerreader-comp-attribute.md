@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 [Universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** ContainerReaderAttribute extends CommonMethod<ContainerReaderAttribute>
+**Inheritance/Implementation:** ContainerReaderAttribute extends CommonMethod&lt;ContainerReaderAttribute&gt;
 
 **Since:** 26.0.0
 

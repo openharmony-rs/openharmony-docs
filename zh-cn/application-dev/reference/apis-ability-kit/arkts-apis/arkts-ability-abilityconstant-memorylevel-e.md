@@ -23,93 +23,21 @@ export enum MemoryLevel
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## MEMORY_LEVEL_MODERATE
+## MEMORY_LEVEL_BACKGROUND_CRITICAL
 
 ```TypeScript
-MEMORY_LEVEL_MODERATE = 0
+MEMORY_LEVEL_BACKGROUND_CRITICAL = 6
 ```
 
-表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0--><!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## MEMORY_LEVEL_LOW
-
-```TypeScript
-MEMORY_LEVEL_LOW = 1
-```
-
-表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1--><!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## MEMORY_LEVEL_CRITICAL
-
-```TypeScript
-MEMORY_LEVEL_CRITICAL = 2
-```
-
-表示整机可用内存极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2--><!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## MEMORY_LEVEL_UI_HIDDEN
-
-```TypeScript
-MEMORY_LEVEL_UI_HIDDEN = 3
-```
-
-表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。
+表示应用长期未被使用，即处于应用使用排序链表（LRU）的尾部，会被系统优先清理。该枚举仅对后台应用生效。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
-<!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3--><!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## MEMORY_LEVEL_BACKGROUND_MODERATE
-
-```TypeScript
-MEMORY_LEVEL_BACKGROUND_MODERATE = 4
-```
-
-表示应用刚被使用过，即处于应用使用排序链表（LRU）的头部，暂时不会被系统清理。该枚举仅对后台应用生效。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
-
-<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4-End-->
+<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -125,26 +53,98 @@ MEMORY_LEVEL_BACKGROUND_LOW = 5
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_LOW = 5--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_LOW = 5-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## MEMORY_LEVEL_BACKGROUND_CRITICAL
+## MEMORY_LEVEL_BACKGROUND_MODERATE
 
 ```TypeScript
-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6
+MEMORY_LEVEL_BACKGROUND_MODERATE = 4
 ```
 
-表示应用长期未被使用，即处于应用使用排序链表（LRU）的尾部，会被系统优先清理。该枚举仅对后台应用生效。
+表示应用刚被使用过，即处于应用使用排序链表（LRU）的头部，暂时不会被系统清理。该枚举仅对后台应用生效。
 
 **起始版本：** 24
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
-<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_CRITICAL = 6-End-->
+<!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4--><!--Device-MemoryLevel-MEMORY_LEVEL_BACKGROUND_MODERATE = 4-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## MEMORY_LEVEL_CRITICAL
+
+```TypeScript
+MEMORY_LEVEL_CRITICAL = 2
+```
+
+表示整机可用内存极低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2--><!--Device-MemoryLevel-MEMORY_LEVEL_CRITICAL = 2-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## MEMORY_LEVEL_LOW
+
+```TypeScript
+MEMORY_LEVEL_LOW = 1
+```
+
+表示整机可用内存低。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1--><!--Device-MemoryLevel-MEMORY_LEVEL_LOW = 1-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## MEMORY_LEVEL_MODERATE
+
+```TypeScript
+MEMORY_LEVEL_MODERATE = 0
+```
+
+表示整机可用内存适中。由于整机内存水线的不同，在不同产品上的表现可能存在差异，参见下方说明。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0--><!--Device-MemoryLevel-MEMORY_LEVEL_MODERATE = 0-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## MEMORY_LEVEL_UI_HIDDEN
+
+```TypeScript
+MEMORY_LEVEL_UI_HIDDEN = 3
+```
+
+表示应用程序的所有UI界面已不可见，此时应该释放一些资源。该枚举仅对从前台切换到后台的应用生效。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
+
+<!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3--><!--Device-MemoryLevel-MEMORY_LEVEL_UI_HIDDEN = 3-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="startavplayback1"></a>
+
 ## startAVPlayback
 
 ```TypeScript
@@ -46,6 +48,7 @@ function startAVPlayback(bundleName: string, assetId: string): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types. 3.Parameter verification failed. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,8 +59,10 @@ avSession.startAVPlayback("com.example.myapplication", "121278").then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="startavplayback-1"></a>
+
+<a id="startavplayback2"></a>
 
 ## startAVPlayback
 
@@ -99,6 +104,9 @@ function startAVPlayback(bundleName: string, assetId: string, info: CommandInfo)
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [6600101](../errorcode-avsession.md#6600101-会话服务端异常) | Session service exception. |
 
+<!--Del-->
 **示例**
 
 参见 [startAVPlayback](#startavplayback)
+
+<!--DelEnd-->

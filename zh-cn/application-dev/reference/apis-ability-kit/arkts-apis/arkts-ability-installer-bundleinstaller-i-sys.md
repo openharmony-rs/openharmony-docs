@@ -42,7 +42,7 @@ addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 要添加扩展资源的应用名称。 |
+| bundleName | string | 是 | 要添加扩展资源的应用包名。 |
 | filePaths | Array&lt;string&gt; | 是 | 要添加扩展资源的资源路径。 |
 
 **返回值：**
@@ -61,6 +61,7 @@ addExtResource(bundleName: string, filePaths: Array<string>): Promise<void>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700301](../errorcode-bundle.md#17700301-扩展资源添加失败) | AddExtResource failed due to parse file failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -84,6 +85,8 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->
 
 ## createAppClone
 
@@ -128,6 +131,7 @@ createAppClone(bundleName: string, createAppCloneParam?: CreateAppCloneParam): P
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The appIndex is not in valid range or already exists. |
 | [17700069](../errorcode-bundle.md#17700069-应用不支持创建分身) | The app does not support the creation of an appClone instance. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -157,13 +161,17 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="destroyappclone1"></a>
+
 ## destroyAppClone
 
 ```TypeScript
 destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<void>
 ```
 
-删除应用分身。使用Promise异步回调。
+删除应用分身或CLI沙箱应用。使用Promise异步回调。
 
 **起始版本：** 12
 
@@ -179,9 +187,9 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 待删除应用分身的包名。 |
-| appIndex | number | 是 | 待删除应用分身的索引。 |
-| userId | number | 否 | 待删除应用分身所属用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。 |
+| bundleName | string | 是 | 待删除应用分身或CLI沙箱应用的包名。 |
+| appIndex | number | 是 | 待删除应用分身或CLI沙箱应用的索引。取值范围：[1, 5]，[2000, 3000]。1-5表示应用分身，2000-3000表示CLI沙箱应用。从API版本26.0.0开始，支持取值范围[2000, 3000]。 |
+| userId | number | 否 | 待删除应用分身或CLI沙箱应用所属用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户。 |
 
 **返回值：**
 
@@ -200,6 +208,7 @@ destroyAppClone(bundleName: string, appIndex: number, userId?: number): Promise<
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The userId is invalid. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -227,7 +236,9 @@ try {
 }
 ```
 
-<a id="destroyappclone-1"></a>
+<!--DelEnd-->
+
+<a id="destroyappclone2"></a>
 
 ## destroyAppClone
 
@@ -235,7 +246,7 @@ try {
 destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: DestroyAppCloneParam): Promise<void>
 ```
 
-删除应用分身。使用Promise异步回调。
+删除应用分身或CLI沙箱应用。使用Promise异步回调。
 
 **起始版本：** 15
 
@@ -251,9 +262,9 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 待删除应用分身的包名。 |
-| appIndex | number | 是 | 待删除应用分身的索引。 |
-| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | 否 | 指定删除应用分身所需的其他参数，默认值：参照[DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md)的默认值。 |
+| bundleName | string | 是 | 待删除应用分身或CLI沙箱应用的包名。 |
+| appIndex | number | 是 | 待删除应用分身或CLI沙箱应用的索引。取值范围：[1, 5]，[2000, 3000]。1-5表示应用分身，2000-3000表示CLI沙箱应用。从API版本26.0.0开始，支持取值范围[2000, 3000]。 |
+| destroyAppCloneParam | [DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md) | 否 | 指定删除应用分身或CLI沙箱应用所需的其他参数，默认值：参照[DestroyAppCloneParam](arkts-ability-installer-destroyappcloneparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
@@ -273,6 +284,7 @@ destroyAppClone(bundleName: string, appIndex: number, destroyAppCloneParam?: Des
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 | [17700062](../errorcode-bundle.md#17700062-应用设置了卸载处置规则不允许直接卸载) | Failed to uninstall the app because the app is locked. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -308,13 +320,17 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="install1"></a>
+
 ## install
 
 ```TypeScript
 install(hapFilePaths: Array<string>, installParam: InstallParam, callback: AsyncCallback<void>): void
 ```
 
-安装指定应用。使用callback异步回调。
+安装指定应用。使用callback异步回调。从API版本26.0.0开始，支持安装APP包。
 
 > **说明：** 
 > 
@@ -340,9 +356,9 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP或APP的数据目录。当传入的路径是一个目录时，该目录下只能放同一个应用的HAP或一个APP。同一个应用的HAP的签名需要保持一致。 |
 | installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定安装所需的其他参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -377,6 +393,7 @@ install(hapFilePaths: Array<string>, installParam: InstallParam, callback: Async
 | [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
 | [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -408,7 +425,9 @@ try {
 }
 ```
 
-<a id="install-1"></a>
+<!--DelEnd-->
+
+<a id="install2"></a>
 
 ## install
 
@@ -416,7 +435,7 @@ try {
 install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 ```
 
-安装指定应用。使用callback异步回调。
+安装指定应用。使用callback异步回调。从API版本26.0.0开始，支持安装APP包。
 
 > **说明：** 
 > 
@@ -442,8 +461,8 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP或APP的数据目录。当传入的路径是一个目录时，该目录下只能放同一个应用的HAP或一个APP。同一个应用的HAP的签名需要保持一致。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -477,6 +496,7 @@ install(hapFilePaths: Array<string>, callback: AsyncCallback<void>): void
 | [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
 | [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -503,7 +523,9 @@ try {
 }
 ```
 
-<a id="install-2"></a>
+<!--DelEnd-->
+
+<a id="install3"></a>
 
 ## install
 
@@ -511,7 +533,7 @@ try {
 install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 ```
 
-安装指定应用。使用Promise异步回调。
+安装指定应用。使用Promise异步回调。从API版本26.0.0开始，支持安装APP包。
 
 > **说明：** 
 > 
@@ -537,7 +559,7 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
+| hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP或APP的数据目录。当传入的路径是一个目录时，该目录下只能放同一个应用的HAP或一个APP。同一个应用的HAP的签名需要保持一致。 |
 | installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。<br>**适用版本：** 12 |
 
 **返回值：**
@@ -579,6 +601,7 @@ install(hapFilePaths: Array<string>, installParam?: InstallParam): Promise<void>
 | [17700077](../errorcode-bundle.md#17700077-安装应用失败但安装对应的预置应用成功) | Failed to install the HAP and restore to preinstalled bundle.<br>**适用版本：** 17+ |
 | [17700076](../errorcode-bundle.md#17700076-签名证书profile文件中的类型被限制不允许安装到当前设备中导致安装失败) | Failed to install the HAP or HSP because the app distribution type is not allowed.<br>**适用版本：** 18+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -608,6 +631,8 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->
 
 ## installPlugin
 
@@ -664,6 +689,7 @@ installPlugin(hostBundleName: string, pluginFilePaths: Array<string>, pluginPara
 | [17700090](../errorcode-bundle.md#17700090-插件与应用之间-plugindistributionids-校验失败) | Failed to install the plugin because the plugin id fails to be verified. |
 | [17700091](../errorcode-bundle.md#17700091-插件与主体同包名) | Failed to install the plugin because the plugin name is same as host bundle name. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -693,6 +719,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## installPreexistingApp
 
 ```TypeScript
@@ -703,7 +731,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 
 > **说明：** 
 > 
-> 该接口不支持安装[签名证书的分发类型](arkts-ability-applicationinfo-i.md)为enterprise，enterprise_mdm和
+> 该接口不支持安装appDistributionType为enterprise，enterprise_mdm和
 > enterprise_normal的应用。
 
 **起始版本：** 12
@@ -721,7 +749,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 需要安装应用的包名。 |
-| userId | number | 否 | 需要安装应用的用户ID，可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，userId需要大于0。默认值：调用方所在用户。 |
+| userId | number | 否 | 需要安装应用的用户ID，可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取，userId需要大于0。默认值：调用方所在用户。 |
 
 **返回值：**
 
@@ -741,6 +769,7 @@ installPreexistingApp(bundleName: string, userId?: number): Promise<void>
 | [17700071](../errorcode-bundle.md#17700071-不允许企业应用安装) | It is not allowed to install the enterprise bundle. |
 | [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -767,6 +796,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="recover1"></a>
+
 ## recover
 
 ```TypeScript
@@ -790,8 +823,8 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待恢复应用的包名。 |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定安装所需的其他参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，回滚应用成功，err为undefined，否则为错误对象。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定恢复所需的其他参数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，回滚应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -805,6 +838,7 @@ recover(bundleName: string, installParam: InstallParam, callback: AsyncCallback<
 | [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 | [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -836,7 +870,9 @@ try {
 }
 ```
 
-<a id="recover-1"></a>
+<!--DelEnd-->
+
+<a id="recover2"></a>
 
 ## recover
 
@@ -861,7 +897,7 @@ recover(bundleName: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待恢复应用的包名。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，回滚应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，回滚应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -874,6 +910,7 @@ recover(bundleName: string, callback: AsyncCallback<void>): void
 | [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 | [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -900,7 +937,9 @@ try {
 }
 ```
 
-<a id="recover-2"></a>
+<!--DelEnd-->
+
+<a id="recover3"></a>
 
 ## recover
 
@@ -924,8 +963,8 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 待卸载应用的包名。 |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
+| bundleName | string | 是 | 待恢复应用的包名。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定恢复所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
@@ -945,6 +984,7 @@ recover(bundleName: string, installParam?: InstallParam): Promise<void>
 | [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 | [17700058](../errorcode-bundle.md#17700058-指定的应用禁止在本设备或指定用户下安装) | Failed to install the HAP because this application is prohibited<br>from being installed on this device or by specified users.<br>**适用版本：** 14+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -975,6 +1015,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## removeExtResource
 
 ```TypeScript
@@ -997,7 +1039,7 @@ removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| bundleName | string | 是 | 要删除扩展资源的应用名称。 |
+| bundleName | string | 是 | 要删除扩展资源的应用包名。 |
 | moduleNames | Array&lt;string&gt; | 是 | 要删除扩展资源的moduleNames。 |
 
 **返回值：**
@@ -1016,6 +1058,7 @@ removeExtResource(bundleName: string, moduleNames: Array<string>): Promise<void>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700302](../errorcode-bundle.md#17700302-扩展资源删除失败) | RemoveExtResource failed due to module does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1040,6 +1083,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="uninstall1"></a>
+
 ## uninstall
 
 ```TypeScript
@@ -1063,8 +1110,8 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定安装所需的其他参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定卸载所需的其他参数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1082,6 +1129,7 @@ uninstall(bundleName: string, installParam: InstallParam, callback: AsyncCallbac
 | [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled.<br>**适用版本：** 13+ |
 | [17700062](../errorcode-bundle.md#17700062-应用设置了卸载处置规则不允许直接卸载) | Failed to uninstall the app because the app is locked.<br>**适用版本：** 15+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1113,7 +1161,9 @@ try {
 }
 ```
 
-<a id="uninstall-1"></a>
+<!--DelEnd-->
+
+<a id="uninstall2"></a>
 
 ## uninstall
 
@@ -1138,7 +1188,7 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1154,6 +1204,7 @@ uninstall(bundleName: string, callback: AsyncCallback<void>): void
 | [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 12+ |
 | [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled.<br>**适用版本：** 13+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1180,7 +1231,9 @@ try {
 }
 ```
 
-<a id="uninstall-2"></a>
+<!--DelEnd-->
+
+<a id="uninstall3"></a>
 
 ## uninstall
 
@@ -1205,7 +1258,7 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 待卸载应用的包名。 |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。<br>**适用版本：** 15 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定卸载所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。<br>**适用版本：** 15 |
 
 **返回值：**
 
@@ -1229,6 +1282,7 @@ uninstall(bundleName: string, installParam?: InstallParam): Promise<void>
 | [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled.<br>**适用版本：** 13+ |
 | [17700062](../errorcode-bundle.md#17700062-应用设置了卸载处置规则不允许直接卸载) | Failed to uninstall the app because the app is locked.<br>**适用版本：** 15+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1259,7 +1313,9 @@ try {
 }
 ```
 
-<a id="uninstall-3"></a>
+<!--DelEnd-->
+
+<a id="uninstall4"></a>
 
 ## uninstall
 
@@ -1284,7 +1340,7 @@ uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uninstallParam | [UninstallParam](arkts-ability-installer-uninstallparam-i-sys.md) | 是 | 共享包卸载需指定的参数信息。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，卸载应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1297,6 +1353,7 @@ uninstall(uninstallParam: UninstallParam, callback: AsyncCallback<void>): void
 | [17700037](../errorcode-bundle.md#17700037-被卸载的shared-library版本被其他应用依赖) | The version of shared bundle is dependent on other applications. |
 | [17700038](../errorcode-bundle.md#17700038-被卸载的shared-library不存在) | The specified shared bundle does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1325,7 +1382,9 @@ try {
 }
 ```
 
-<a id="uninstall-4"></a>
+<!--DelEnd-->
+
+<a id="uninstall5"></a>
 
 ## uninstall
 
@@ -1368,6 +1427,7 @@ uninstall(uninstallParam: UninstallParam): Promise<void>
 | [17700037](../errorcode-bundle.md#17700037-被卸载的shared-library版本被其他应用依赖) | The version of shared bundle is dependent on other applications. |
 | [17700038](../errorcode-bundle.md#17700038-被卸载的shared-library不存在) | The specified shared bundle does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1395,6 +1455,8 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->
 
 ## uninstallNewPreinstalledApps
 
@@ -1435,6 +1497,7 @@ uninstallNewPreinstalledApps(bundleNames: Array<string>): Promise<void>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1459,6 +1522,8 @@ try {
     console.error('uninstallNewPreinstalledApps failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->
 
 ## uninstallPlugin
 
@@ -1502,6 +1567,7 @@ uninstallPlugin(hostBundleName: string, pluginBundleName: string, pluginParam?: 
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The user id is invalid. |
 | [17700092](../errorcode-bundle.md#17700092-插件包名不存在) | Failed to uninstall the plugin because the specified plugin is not found. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1530,6 +1596,8 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->
 
 ## uninstallUpdates
 
@@ -1576,6 +1644,7 @@ uninstallUpdates(bundleName: string, installParam?: InstallParam): Promise<void>
 | [17700067](../errorcode-bundle.md#17700067-卸载应用失败native软件包卸载失败) | Failed to uninstall the HAP because uninstalling the native package failed.<br>**适用版本：** 13+ |
 | [17700073](../errorcode-bundle.md#17700073-由于设备上存在具有相同包名称但不同签名信息的应用程序导致安装失败) | Failed to install the HAP because an application with the same<br>bundle name but different signature information exists on the device.<br>**适用版本：** 13+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1605,6 +1674,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="updatebundleforself1"></a>
+
 ## updateBundleForSelf
 
 ```TypeScript
@@ -1628,8 +1701,8 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定安装所需的其他参数。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 是 | 指定更新所需的其他参数。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，更新应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1637,7 +1710,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature;         4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
@@ -1657,6 +1730,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam: InstallParam, cal
 | [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | [17700051](../errorcode-bundle.md#17700051-应用自升级时调用方的签名证书profile文件中的类型不是企业mdm) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1688,7 +1762,9 @@ try {
 }
 ```
 
-<a id="updatebundleforself-1"></a>
+<!--DelEnd-->
+
+<a id="updatebundleforself2"></a>
 
 ## updateBundleForSelf
 
@@ -1713,7 +1789,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [回调函数](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，安装应用成功，err为undefined，否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)，更新应用成功，err为undefined，否则为错误对象。 |
 
 **错误码：**
 
@@ -1740,6 +1816,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, callback: AsyncCallback<void>):
 | [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | [17700051](../errorcode-bundle.md#17700051-应用自升级时调用方的签名证书profile文件中的类型不是企业mdm) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1766,7 +1843,9 @@ try {
 }
 ```
 
-<a id="updatebundleforself-2"></a>
+<!--DelEnd-->
+
+<a id="updatebundleforself3"></a>
 
 ## updateBundleForSelf
 
@@ -1791,7 +1870,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | hapFilePaths | Array&lt;string&gt; | 是 | 存储应用程序包的路径。路径应该是当前应用程序中存放HAP的数据目录。当传入的路径是一个目录时， 该目录下只能放同一个应用的HAP，且这些HAP的签名需要保持一致。 |
-| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定安装所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
+| installParam | [InstallParam](arkts-ability-installer-installparam-i-sys.md) | 否 | 指定更新所需的其他参数，默认值：参照[InstallParam](arkts-ability-installer-installparam-i-sys.md)的默认值。 |
 
 **返回值：**
 
@@ -1805,7 +1884,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Calling interface without permission 'ohos.permission.INSTALL_SELF_BUNDLE'. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature; 4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter hapFiles is needed for code signature;         4. The size of specifiedDistributionType is greater than 128; 5. The size of additionalInfo is greater than 3 000. |
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700010](../errorcode-bundle.md#17700010-文件解析失败导致应用安装失败) | Failed to install the HAP because the HAP fails to be parsed. |
 | [17700011](../errorcode-bundle.md#17700011-签名校验失败导致应用安装失败) | Failed to install the HAP because the HAP signature fails to be verified. |
@@ -1825,6 +1904,7 @@ updateBundleForSelf(hapFilePaths: Array<string>, installParam?: InstallParam): P
 | [17700050](../errorcode-bundle.md#17700050-企业mdm应用普通企业应用不允许安装) | Failed to install the HAP because enterprise normal/MDM bundle cannot be installed on non-enterprise device. |
 | [17700051](../errorcode-bundle.md#17700051-应用自升级时调用方的签名证书profile文件中的类型不是企业mdm) | Failed to install the HAP because the distribution type of caller application is not enterprise_mdm. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1854,3 +1934,5 @@ try {
     console.error('getBundleInstaller failed. Cause: ' + message);
 }
 ```
+
+<!--DelEnd-->

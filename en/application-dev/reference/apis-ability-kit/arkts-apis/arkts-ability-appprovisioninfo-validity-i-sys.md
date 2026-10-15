@@ -20,7 +20,7 @@ Validity period in the configuration file.
 readonly notAfter: number
 ```
 
-End time of the validity period of the configuration file.
+Indicates the end time of the validity period of the configuration file, in seconds.
 
 **Type:** number
 
@@ -38,7 +38,7 @@ End time of the validity period of the configuration file.
 readonly notBefore: number
 ```
 
-Start time of the validity period of the configuration file.
+Indicates the start time of the validity period of the configuration file, in seconds.
 
 **Type:** number
 

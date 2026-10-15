@@ -31,7 +31,7 @@ import { Package, CheckPackageHasInstalledOptions, CheckPackageHasInstalledRespo
 static hasInstalled(options: CheckPackageHasInstalledOptions): void
 ```
 
-查询指定应用是否存在，或者原生应用是否安装。
+查询指定应用是否存在，或者应用是否安装。
 
 **起始版本：** 3
 

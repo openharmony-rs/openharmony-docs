@@ -6,6 +6,8 @@ export type WantAgent = object
 
 Defines the WantAgent object.
 
+**Type:** object
+
 **Since:** 7
 
 **Deprecated since:** 23
@@ -17,5 +19,3 @@ Defines the WantAgent object.
 <!--Device-unnamed-export type WantAgent = object--><!--Device-unnamed-export type WantAgent = object-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** object

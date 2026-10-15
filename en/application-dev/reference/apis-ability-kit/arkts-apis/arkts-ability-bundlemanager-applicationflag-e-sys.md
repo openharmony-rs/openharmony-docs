@@ -30,17 +30,17 @@ Used to obtain the default application information. The obtained information doe
 
 **System API:** This is a system API.
 
-## GET_APPLICATION_INFO_WITH_PERMISSION
+## GET_APPLICATION_INFO_WITH_DISABLE
 
 ```TypeScript
-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001
+GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004
 ```
 
-Used to obtain the application information with permission information.
+Used to obtain the application information of disabled bundles.
 
 **Since:** 9
 
-<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001-End-->
+<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -62,17 +62,17 @@ Used to obtain the application information with metadata.
 
 **System API:** This is a system API.
 
-## GET_APPLICATION_INFO_WITH_DISABLE
+## GET_APPLICATION_INFO_WITH_PERMISSION
 
 ```TypeScript
-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004
+GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001
 ```
 
-Used to obtain the application information of disabled bundles.
+Used to obtain the application information with permission information.
 
 **Since:** 9
 
-<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_DISABLE = 0x00000004-End-->
+<!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ApplicationFlag-GET_APPLICATION_INFO_WITH_PERMISSION = 0x00000001-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

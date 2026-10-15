@@ -6,6 +6,8 @@ export type UIAbilityContext = _UIAbilityContext.default
 
 [UIAbility](arkts-ability-app-ability-uiability-uiability-c.md)组件上下文，继承自Context。
 
+**类型：** _UIAbilityContext.default
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ export type UIAbilityContext = _UIAbilityContext.default
 <!--Device-common-export type UIAbilityContext = _UIAbilityContext.default--><!--Device-common-export type UIAbilityContext = _UIAbilityContext.default-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _UIAbilityContext.default

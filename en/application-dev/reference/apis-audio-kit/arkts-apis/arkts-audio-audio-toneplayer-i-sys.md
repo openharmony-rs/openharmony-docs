@@ -20,6 +20,8 @@ Provides APIs for tone playing.
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="load1"></a>
+
 ## load
 
 ```TypeScript
@@ -43,6 +45,7 @@ Loads tone. This method uses an asynchronous callback to return the result.
 | type | [ToneType](arkts-audio-audio-tonetype-e-sys.md) | Yes | Tone type to play. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,7 +61,9 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_5, (err: BusinessError) => {
 });
 ```
 
-<a id="load-1"></a>
+<!--DelEnd-->
+
+<a id="load2"></a>
 
 ## load
 
@@ -88,6 +93,7 @@ Loads tone. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -97,6 +103,10 @@ tonePlayer.load(audio.ToneType.TONE_TYPE_DIAL_1).then(() => {
   console.error('promise call load fail');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="release1"></a>
 
 ## release
 
@@ -120,6 +130,7 @@ Releases the player. This method uses an asynchronous callback to return the res
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -135,7 +146,9 @@ tonePlayer.release((err: BusinessError) => {
 });
 ```
 
-<a id="release-1"></a>
+<!--DelEnd-->
+
+<a id="release2"></a>
 
 ## release
 
@@ -159,6 +172,7 @@ Releases the player. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -168,6 +182,10 @@ tonePlayer.release().then(() => {
   console.error('promise call release fail');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="start1"></a>
 
 ## start
 
@@ -191,6 +209,7 @@ Starts player. This method uses an asynchronous callback to return the result.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -206,7 +225,9 @@ tonePlayer.start((err: BusinessError) => {
 });
 ```
 
-<a id="start-1"></a>
+<!--DelEnd-->
+
+<a id="start2"></a>
 
 ## start
 
@@ -230,6 +251,7 @@ Starts player. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -239,6 +261,10 @@ tonePlayer.start().then(() => {
   console.error('promise call start fail');
 });
 ```
+
+<!--DelEnd-->
+
+<a id="stop1"></a>
 
 ## stop
 
@@ -262,6 +288,7 @@ Stops player. This method uses an asynchronous callback to return the result.
 | --- | --- | --- | --- |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -277,7 +304,9 @@ tonePlayer.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop-1"></a>
+<!--DelEnd-->
+
+<a id="stop2"></a>
 
 ## stop
 
@@ -301,6 +330,7 @@ Stops player. This method uses a promise to return the result.
 | --- | --- |
 | Promise&lt;void&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -310,3 +340,5 @@ tonePlayer.stop().then(() => {
   console.error('promise call stop fail');
 });
 ```
+
+<!--DelEnd-->

@@ -12,6 +12,24 @@ Particle change type.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## CURVE
+
+```TypeScript
+CURVE = 'curve'
+```
+
+Animation curve change.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ParticleUpdater-CURVE = 'curve'--><!--Device-ParticleUpdater-CURVE = 'curve'-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## NONE
 
 ```TypeScript
@@ -45,23 +63,5 @@ Random uniform change.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ParticleUpdater-RANDOM = 'random'--><!--Device-ParticleUpdater-RANDOM = 'random'-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## CURVE
-
-```TypeScript
-CURVE = 'curve'
-```
-
-Animation curve change.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ParticleUpdater-CURVE = 'curve'--><!--Device-ParticleUpdater-CURVE = 'curve'-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

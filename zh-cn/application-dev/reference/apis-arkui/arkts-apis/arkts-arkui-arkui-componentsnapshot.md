@@ -8,15 +8,13 @@
 
 > **说明：** 
 > 
-> - 对于使用XComponent的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用[createPixelMapFromSurface](../../apis-image-kit/arkts-apis/arkts-image-image-createpixelmapfromsurface-f.md)直接获取图片。
+> - 对于使用XComponent的场景，例如：Video或者相机流媒体展示类组件，不建议使用组件截图相关接口，建议使用[createPixelMapFromSurface](../../apis-image-kit/arkts-apis/arkts-image-image-createpixelmapfromsurface-f.md#createpixelmapfromsurface1)直接获取图片。
 > 
-> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了图像效果类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用窗口截图接口[snapshot](arkts-arkui-window-window-i.md#snapshot)替代。
+> - 如果组件自身内容不能填满组件大小区域，那么剩余位置截图返回的内容为透明像素。如果组件使用了图像效果类属性或其他的效果类属性，则可能产生非用户预期的截图结果。请排查是否需要填充组件透明内容区域，或使用窗口截图接口[snapshot](arkts-arkui-window-window-i.md#snapshot1)替代。
 > 
 > - 示例效果请以真机运行为准，当前 DevEco Studio预览器不支持。
 
 **起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-unnamed-declare namespace componentSnapshot--><!--Device-unnamed-declare namespace componentSnapshot-End-->
 
@@ -34,11 +32,11 @@ import { componentSnapshot } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md) | 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过回调返回结果并支持在回调中获取离屏组件绘制区域坐标和大小。 |
-| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder-1) | 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过Promise返回结果，支持获取离屏组件绘制区域的坐标和大小。 |
-| [get](arkts-arkui-componentsnapshot-get-f.md) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过回调返回结果。 |
-| [get](arkts-arkui-componentsnapshot-get-f.md#get-1) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过Promise返回结果。 |
-| [getSync](arkts-arkui-componentsnapshot-getsync-f.md) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。 |
+| [getSync](arkts-arkui-componentsnapshot-getsync-f.md#getsync) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。同步等待截图完成返回[PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md)。 |
+| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder1) | 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过回调返回结果并支持在回调中获取离屏组件绘制区域坐标和大小。 |
+| [createFromBuilder](arkts-arkui-componentsnapshot-createfrombuilder-f.md#createfrombuilder2) | 在应用后台渲染CustomBuilder自定义组件，并输出其截图。通过Promise返回结果，支持获取离屏组件绘制区域的坐标和大小。 |
+| [get](arkts-arkui-componentsnapshot-get-f.md#get1) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过回调返回结果。 |
+| [get](arkts-arkui-componentsnapshot-get-f.md#get2) | 获取已加载的组件的截图，传入组件的组件标识，找到对应组件进行截图。通过Promise返回结果。 |
 
 ### 接口
 

@@ -14,22 +14,6 @@ Defines the configuration mode of the Ethernet connection.
 
 **System API:** This is a system API.
 
-## STATIC
-
-```TypeScript
-STATIC = 0
-```
-
-Static network configuration for an Ethernet connection.
-
-**Since:** 9
-
-<!--Device-IPSetMode-STATIC = 0--><!--Device-IPSetMode-STATIC = 0-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Ethernet
-
-**System API:** This is a system API.
-
 ## DHCP
 
 ```TypeScript
@@ -41,6 +25,22 @@ Dynamic network configuration for an Ethernet connection.
 **Since:** 9
 
 <!--Device-IPSetMode-DHCP = 1--><!--Device-IPSetMode-DHCP = 1-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Ethernet
+
+**System API:** This is a system API.
+
+## LAN_DHCP
+
+```TypeScript
+LAN_DHCP = 3
+```
+
+Dynamic network configuration for a LAN connection.
+
+**Since:** 11
+
+<!--Device-IPSetMode-LAN_DHCP = 3--><!--Device-IPSetMode-LAN_DHCP = 3-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 
@@ -62,17 +62,17 @@ Static network configuration for a LAN connection.
 
 **System API:** This is a system API.
 
-## LAN_DHCP
+## STATIC
 
 ```TypeScript
-LAN_DHCP = 3
+STATIC = 0
 ```
 
-Dynamic network configuration for a LAN connection.
+Static network configuration for an Ethernet connection.
 
-**Since:** 11
+**Since:** 9
 
-<!--Device-IPSetMode-LAN_DHCP = 3--><!--Device-IPSetMode-LAN_DHCP = 3-End-->
+<!--Device-IPSetMode-STATIC = 0--><!--Device-IPSetMode-STATIC = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Ethernet
 

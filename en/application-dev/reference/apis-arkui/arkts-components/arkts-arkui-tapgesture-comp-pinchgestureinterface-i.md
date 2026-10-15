@@ -11,7 +11,7 @@ interface PinchGestureInterface extends GestureInterface<PinchGestureInterface>
 > To trigger the pinch gesture again after successful recognition, all fingers must be lifted and then make
 > contact again to satisfy the recognition criteria.
 
-**Inheritance/Implementation:** PinchGestureInterface extends GestureInterface<PinchGestureInterface>
+**Inheritance/Implementation:** PinchGestureInterface extends GestureInterface&lt;PinchGestureInterface&gt;
 
 **Since:** 7
 
@@ -19,13 +19,15 @@ interface PinchGestureInterface extends GestureInterface<PinchGestureInterface>
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="call1"></a>
+
 ## [[Call]]
 
 ```TypeScript
 (value?: { fingers?: number; distance?: number }): PinchGestureInterface
 ```
 
-Sets the parameters for the pinch gesture. Inherits from [GestureInterface&lt;T&gt;](arkts-arkui-tapgesture-comp-gestureinterface-i.md).
+Sets the parameters for the pinch gesture. Inherits from [GestureInterface<T>](arkts-arkui-tapgesture-comp-gestureinterface-i.md).
 
 **Since:** 7
 
@@ -39,7 +41,7 @@ Sets the parameters for the pinch gesture. Inherits from [GestureInterface&lt;T&
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | { fingers?: number; distance?: number } | No | Parameters for the pinch gesture.<br> - **fingers**: minimum number of fingers to trigger a pinch. The value ranges from 2 to 5.<br>Default value: **2** <br>Value range: [2, 5]. Values outside this range are automatically adjusted to the default value.<br>While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation. <br> - **distance**: minimum recognition distance, in vp. This distance refers to the difference between the current average distance from the multiple finger positions to their center point and the average distance when the fingers first made contact. If this difference meets or exceeds the minimum recognition distance, the pinch gesture is recognized.<br>Default value: **5**<br>**NOTE:** <br>Value range: (0, +∞). If the value is less than or equal to 0, it will be converted to the default value. |
+| value | { fingers?: number; distance?: number } | No | Parameters for the pinch gesture.<br> - **fingers**: minimum number of fingers to trigger a pinch. The value ranges from 2 to 5.<br>Default value: **2** <br>Value range: [2, 5]. Values outside this range are automatically adjusted to the default value.<br>While more fingers than the minimum number can be pressed to trigger the gesture, only the first fingers of the minimum number participate in gesture calculation. <br> - **distance**: minimum recognition distance, in vp. This distance refers to the difference between the current average distance from the multiple finger positions to their center point and the average distance when the fingers first made contact. If this difference meets or exceeds the minimum recognition distance, the pinch gesture is recognized.<br>Default value: **5**<br>**NOTE:** <br>Value range: [0, +∞). If the value is less than or equal to 0, it will be converted to the default value. |
 
 **Return value:**
 
@@ -47,7 +49,7 @@ Sets the parameters for the pinch gesture. Inherits from [GestureInterface&lt;T&
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-tapgesture-comp-pinchgestureinterface-i.md) |  |
 
-<a id="call-1"></a>
+<a id="call2"></a>
 
 ## [[Call]]
 
@@ -79,6 +81,8 @@ Sets the parameters for the pinch gesture. Compared with PinchGesture)}, this AP
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-tapgesture-comp-pinchgestureinterface-i.md) |  |
 
+<a id="onactioncancel1"></a>
+
 ## onActionCancel
 
 ```TypeScript
@@ -107,7 +111,7 @@ Triggered when a touch cancellation event occurs after successful pinch gesture 
 | --- | --- |
 | [PinchGestureInterface](arkts-arkui-tapgesture-comp-pinchgestureinterface-i.md) |  |
 
-<a id="onactioncancel-1"></a>
+<a id="onactioncancel2"></a>
 
 ## onActionCancel
 
@@ -115,7 +119,7 @@ Triggered when a touch cancellation event occurs after successful pinch gesture 
 onActionCancel(event: Callback<GestureEvent>): PinchGestureInterface
 ```
 
-Triggered when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel), this callback returns gesture event information.
+Triggered when a touch cancellation event occurs after successful pinch gesture recognition. Compared with [onActionCancel](#onactioncancel1), this callback returns gesture event information.
 
 **Since:** 18
 

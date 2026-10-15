@@ -22,7 +22,7 @@ Sets the media query criteria and returns the corresponding listening handle.
 
 **Deprecated since:** 18
 
-**Substitutes:** matchMediaSync
+**Substitutes:** [matchMediaSync](arkts-arkui-arkui-uicontext-mediaquery-c.md#matchmediasync)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

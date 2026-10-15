@@ -6,6 +6,8 @@ type Blank = TypedFrameNode<BlankInterface, BlankAttribute>
 
 Represents a FrameNode of the **Blank** type. This type of node does not allow child components to be added.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;BlankInterface, [BlankAttribute](../arkts-components/arkts-arkui-blank-comp-attribute.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Blank** type. This type of node does not allow c
 <!--Device-typeNode-type Blank = TypedFrameNode<BlankInterface, BlankAttribute>--><!--Device-typeNode-type Blank = TypedFrameNode<BlankInterface, BlankAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;BlankInterface, [BlankAttribute](../arkts-components/arkts-arkui-blank-comp-attribute.md)&gt;

@@ -42,6 +42,7 @@ Deletes a Wi-Fi network with a specified ID.
 | --- | --- |
 | boolean | Returns `true` if the Wi-Fi network is deleted successfully, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,3 +55,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

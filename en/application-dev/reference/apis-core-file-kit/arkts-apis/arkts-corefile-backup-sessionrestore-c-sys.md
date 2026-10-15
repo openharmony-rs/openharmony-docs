@@ -20,6 +20,8 @@ Control class for restore procedure.
 import { backup } from '@kit.CoreFileKit';
 ```
 
+<a id="appendbundles1"></a>
+
 ## appendBundles
 
 ```TypeScript
@@ -64,6 +66,7 @@ Append new bundles and restoreInfos to be restore up during the restore.
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -157,7 +160,9 @@ async function appendBundles() {
 }
 ```
 
-<a id="appendbundles-1"></a>
+<!--DelEnd-->
+
+<a id="appendbundles2"></a>
 
 ## appendBundles
 
@@ -197,6 +202,7 @@ Append new bundles to be restore up during the restore.
 | 13900025 | No space left on device |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -270,6 +276,8 @@ async function appendBundles() {
 }
 ```
 
+<!--DelEnd-->
+
 ## cancel
 
 ```TypeScript
@@ -308,6 +316,7 @@ cancel the application being restore.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br>2. Incorrect parameter types. 3.Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -368,6 +377,8 @@ async function cancelTest() {
 }
 ```
 
+<!--DelEnd-->
+
 ## cleanBundleTempDir
 
 ```TypeScript
@@ -405,6 +416,7 @@ Provides an interface for the tool to clear temporary directories
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -471,6 +483,8 @@ let generalCallbacks: backup.GeneralCallbacks = { // Define general callbacks to
 let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
 ```
 
+<!--DelEnd-->
+
 ## constructor
 
 ```TypeScript
@@ -495,6 +509,7 @@ Constructor for obtaining the instance of the SessionBackup class.
 | --- | --- | --- | --- |
 | callbacks | [GeneralCallbacks](arkts-corefile-backup-generalcallbacks-i-sys.md) | Yes | Callbacks to be registered for the restore. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -543,6 +558,8 @@ let generalCallbacks: backup.GeneralCallbacks = {
 };
 let sessionRestore = new backup.SessionRestore(generalCallbacks); // Create a restore process.
 ```
+
+<!--DelEnd-->
 
 ## getApkFileHandle
 
@@ -625,6 +642,7 @@ Provides an interface for the tool to get compatibility info.
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed, usually the result returned by VerifyAccessToken. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -690,6 +708,10 @@ async function getRestoreCompatibilityInfo() {
 }
 ```
 
+<!--DelEnd-->
+
+<a id="getfilehandle1"></a>
+
 ## getFileHandle
 
 ```TypeScript
@@ -729,6 +751,7 @@ Request to get a shared file from the service. This interface is part of the zer
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -791,7 +814,9 @@ async function getFileHandle() {
 }
 ```
 
-<a id="getfilehandle-1"></a>
+<!--DelEnd-->
+
+<a id="getfilehandle2"></a>
 
 ## getFileHandle
 
@@ -827,6 +852,7 @@ Request to get a shared file from the service. This interface is part of the zer
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -885,6 +911,8 @@ sessionRestore.getFileHandle(fileMeta, (err: BusinessError) => {
   console.info('getFileHandle success');
 });
 ```
+
+<!--DelEnd-->
 
 ## getFileHandles
 
@@ -963,6 +991,7 @@ Obtain a Json file that describes local capabilities.
 | 13900020 | Invalid argument |
 | 13900042 | Internal error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1090,6 +1119,8 @@ The capability file can be obtained by using fileIo.stat of the [@ohos.file.fs](
 }
 ```
 
+<!--DelEnd-->
+
 ## migrateFile
 
 ```TypeScript
@@ -1133,6 +1164,8 @@ Migrate file from source path to destination path.
 | 13900001 | Operation not permitted |
 | 13900020 | Invalid argument |
 
+<a id="publishfile1"></a>
+
 ## publishFile
 
 ```TypeScript
@@ -1172,6 +1205,7 @@ Publish the file handle to the backup service to make the service aware that the
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1246,7 +1280,9 @@ function createSessionRestore() {
 g_session = createSessionRestore();
 ```
 
-<a id="publishfile-1"></a>
+<!--DelEnd-->
+
+<a id="publishfile2"></a>
 
 ## publishFile
 
@@ -1282,6 +1318,7 @@ Publish the file handle to the backup service to make the service aware that the
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1358,6 +1395,8 @@ function createSessionRestore() {
 g_session = createSessionRestore();
 ```
 
+<!--DelEnd-->
+
 ## release
 
 ```TypeScript
@@ -1394,6 +1433,7 @@ End restore process
 | 13900005 | I/O error |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1471,3 +1511,5 @@ g_session = createSessionRestore();
 g_session.release();
 console.info('release success');
 ```
+
+<!--DelEnd-->

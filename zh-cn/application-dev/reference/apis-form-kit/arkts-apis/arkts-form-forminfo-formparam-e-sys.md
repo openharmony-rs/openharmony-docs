@@ -12,24 +12,6 @@ enum FormParam
 
 **系统能力：** SystemCapability.Ability.Form
 
-## THEME_KEY
-
-```TypeScript
-THEME_KEY = 'ohos.extra.param.key.form_is_theme'
-```
-
-主题标识。
-
-**系统接口：** 此接口为系统接口。
-
-**起始版本：** 12
-
-<!--Device-FormParam-THEME_KEY = 'ohos.extra.param.key.form_is_theme'--><!--Device-FormParam-THEME_KEY = 'ohos.extra.param.key.form_is_theme'-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-**系统接口：** 此接口为系统接口。
-
 ## DEVICE_ID_KEY
 
 ```TypeScript
@@ -48,95 +30,19 @@ DEVICE_ID_KEY = "ohos.extra.param.key.device_id"
 
 **系统接口：** 此接口为系统接口。
 
-## FORM_MANAGER_SHOW_SINGLE_FORM
+## FORM_EDIT_COLOR_MODE_KEY
 
 ```TypeScript
-FORM_MANAGER_SHOW_SINGLE_FORM = 'ohos.extra.param.key.form_manager_show_single_form'
+FORM_EDIT_COLOR_MODE_KEY = 'ohos.extra.param.key.form_edit_color_mode'
 ```
 
-打开卡片管理页是否只显示特定单张卡片
+指定卡片编辑能力的深浅模式，-1是自动，0是深色模式，1是浅色模式
 
-- true：表示只显示特定单张卡片。
+**起始版本：** 26.2.0
 
-- false：表示显示所有卡片。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统接口：** 此接口为系统接口。
-
-**起始版本：** 23
-
-<!--Device-FormParam-FORM_MANAGER_SHOW_SINGLE_FORM = 'ohos.extra.param.key.form_manager_show_single_form'--><!--Device-FormParam-FORM_MANAGER_SHOW_SINGLE_FORM = 'ohos.extra.param.key.form_manager_show_single_form'-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-**系统接口：** 此接口为系统接口。
-
-## TEMPLATE_FORM_DETAIL_ID
-
-```TypeScript
-TEMPLATE_FORM_DETAIL_ID = 'ohos.extra.param.key.template_form_detail_id'
-```
-
-模板卡片id。
-
-**系统接口：** 此接口为系统接口。
-
-**起始版本：** 23
-
-<!--Device-FormParam-TEMPLATE_FORM_DETAIL_ID = 'ohos.extra.param.key.template_form_detail_id'--><!--Device-FormParam-TEMPLATE_FORM_DETAIL_ID = 'ohos.extra.param.key.template_form_detail_id'-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-**系统接口：** 此接口为系统接口。
-
-## TEMPLATE_FORM_DATA
-
-```TypeScript
-TEMPLATE_FORM_DATA = 'ohos.extra.param.key.template_form_data'
-```
-
-模板卡片数据。
-
-**系统接口：** 此接口为系统接口。
-
-**起始版本：** 23
-
-<!--Device-FormParam-TEMPLATE_FORM_DATA = 'ohos.extra.param.key.template_form_data'--><!--Device-FormParam-TEMPLATE_FORM_DATA = 'ohos.extra.param.key.template_form_data'-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-**系统接口：** 此接口为系统接口。
-
-## TEMPLATE_FORM_DISPLAY_NAME
-
-```TypeScript
-TEMPLATE_FORM_DISPLAY_NAME = 'ohos.extra.param.key.template_form_display_name'
-```
-
-模板卡片显示名称。
-
-**系统接口：** 此接口为系统接口。
-
-**起始版本：** 23
-
-<!--Device-FormParam-TEMPLATE_FORM_DISPLAY_NAME = 'ohos.extra.param.key.template_form_display_name'--><!--Device-FormParam-TEMPLATE_FORM_DISPLAY_NAME = 'ohos.extra.param.key.template_form_display_name'-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
-**系统接口：** 此接口为系统接口。
-
-## TEMPLATE_FORM_DESCRIPTION
-
-```TypeScript
-TEMPLATE_FORM_DESCRIPTION = 'ohos.extra.param.key.template_form_description'
-```
-
-模板卡片描述。
-
-**系统接口：** 此接口为系统接口。
-
-**起始版本：** 23
-
-<!--Device-FormParam-TEMPLATE_FORM_DESCRIPTION = 'ohos.extra.param.key.template_form_description'--><!--Device-FormParam-TEMPLATE_FORM_DESCRIPTION = 'ohos.extra.param.key.template_form_description'-End-->
+<!--Device-FormParam-FORM_EDIT_COLOR_MODE_KEY = 'ohos.extra.param.key.form_edit_color_mode'--><!--Device-FormParam-FORM_EDIT_COLOR_MODE_KEY = 'ohos.extra.param.key.form_edit_color_mode'-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -177,6 +83,118 @@ FORM_FONT_WEIGHT_SCALE_KEY = 'ohos.extra.param.key.form_font_weight_scale'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-FormParam-FORM_FONT_WEIGHT_SCALE_KEY = 'ohos.extra.param.key.form_font_weight_scale'--><!--Device-FormParam-FORM_FONT_WEIGHT_SCALE_KEY = 'ohos.extra.param.key.form_font_weight_scale'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+## FORM_MANAGER_SHOW_SINGLE_FORM
+
+```TypeScript
+FORM_MANAGER_SHOW_SINGLE_FORM = 'ohos.extra.param.key.form_manager_show_single_form'
+```
+
+打开卡片管理页是否只显示特定单张卡片
+
+- true：表示只显示特定单张卡片。
+
+- false：表示显示所有卡片。
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 23
+
+<!--Device-FormParam-FORM_MANAGER_SHOW_SINGLE_FORM = 'ohos.extra.param.key.form_manager_show_single_form'--><!--Device-FormParam-FORM_MANAGER_SHOW_SINGLE_FORM = 'ohos.extra.param.key.form_manager_show_single_form'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+## TEMPLATE_FORM_DATA
+
+```TypeScript
+TEMPLATE_FORM_DATA = 'ohos.extra.param.key.template_form_data'
+```
+
+模板卡片数据。
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 23
+
+<!--Device-FormParam-TEMPLATE_FORM_DATA = 'ohos.extra.param.key.template_form_data'--><!--Device-FormParam-TEMPLATE_FORM_DATA = 'ohos.extra.param.key.template_form_data'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+## TEMPLATE_FORM_DESCRIPTION
+
+```TypeScript
+TEMPLATE_FORM_DESCRIPTION = 'ohos.extra.param.key.template_form_description'
+```
+
+模板卡片描述。
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 23
+
+<!--Device-FormParam-TEMPLATE_FORM_DESCRIPTION = 'ohos.extra.param.key.template_form_description'--><!--Device-FormParam-TEMPLATE_FORM_DESCRIPTION = 'ohos.extra.param.key.template_form_description'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+## TEMPLATE_FORM_DETAIL_ID
+
+```TypeScript
+TEMPLATE_FORM_DETAIL_ID = 'ohos.extra.param.key.template_form_detail_id'
+```
+
+模板卡片id。
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 23
+
+<!--Device-FormParam-TEMPLATE_FORM_DETAIL_ID = 'ohos.extra.param.key.template_form_detail_id'--><!--Device-FormParam-TEMPLATE_FORM_DETAIL_ID = 'ohos.extra.param.key.template_form_detail_id'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+## TEMPLATE_FORM_DISPLAY_NAME
+
+```TypeScript
+TEMPLATE_FORM_DISPLAY_NAME = 'ohos.extra.param.key.template_form_display_name'
+```
+
+模板卡片显示名称。
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 23
+
+<!--Device-FormParam-TEMPLATE_FORM_DISPLAY_NAME = 'ohos.extra.param.key.template_form_display_name'--><!--Device-FormParam-TEMPLATE_FORM_DISPLAY_NAME = 'ohos.extra.param.key.template_form_display_name'-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+**系统接口：** 此接口为系统接口。
+
+## THEME_KEY
+
+```TypeScript
+THEME_KEY = 'ohos.extra.param.key.form_is_theme'
+```
+
+主题标识。
+
+**系统接口：** 此接口为系统接口。
+
+**起始版本：** 12
+
+<!--Device-FormParam-THEME_KEY = 'ohos.extra.param.key.form_is_theme'--><!--Device-FormParam-THEME_KEY = 'ohos.extra.param.key.form_is_theme'-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 

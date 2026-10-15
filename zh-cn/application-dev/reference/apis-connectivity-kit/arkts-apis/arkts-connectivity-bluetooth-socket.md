@@ -26,21 +26,21 @@ import { socket } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getDeviceId](arkts-connectivity-socket-getdeviceid-f.md) | 客户端和服务端均可使用，获取套接字连接中的对端设备蓝牙地址。若客户端使用，需在调用[socket.sppConnect](arkts-connectivity-socket-sppconnect-f.md)后，且连接成功后使用。若服务端使用，需在调用[socket.sppAccept](arkts-connectivity-socket-sppaccept-f.md)后，且连接成功后使用。 |
-| [getL2capPsm](arkts-connectivity-socket-getl2cappsm-f.md) | 获取服务端L2CAP链路类型套接字的协议/服务多路复用器值（Protocol/Service Multiplexer, PSM），该值用于标识特定的服务数据传输通道。 |
-| [getMaxReceiveDataSize](arkts-connectivity-socket-getmaxreceivedatasize-f.md) | 客户端和服务端均可使用，获取当前套接字链路类型下最大接收数据的大小。通过[socket.sppReadAsync](arkts-connectivity-socket-sppreadasync-f.md)或[socket.on('sppRead')](arkts-connectivity-socket-on-f.md#onsppread)接收数据时，单次接收的数据大小受此返回值约束（SPP_RFCOMM链路类型无此限制）。例如在文件传输、数据同步等需要接收大量数据的场景中，可调用此接口获取单次接收的最大数据量，以便对接收数据进行分片处理。 |
-| [getMaxTransmitDataSize](arkts-connectivity-socket-getmaxtransmitdatasize-f.md) | 客户端和服务端均可使用，获取套接字当前链路类型下最大发送数据的大小。调用[socket.sppWrite](arkts-connectivity-socket-sppwrite-f.md)或[socket.sppWriteAsync](arkts-connectivity-socket-sppwriteasync-f.md)发送数据时，单次发送的数据大小不应超过此返回值（SPP_RFCOMM链路类型无此限制）。例如在文件传输、音视频数据传输等需要发送大量数据的场景中，可调用此接口获取单次发送的最大数据量，以便对发送数据进行分片处理。 |
-| [isConnected](arkts-connectivity-socket-isconnected-f.md) | 客户端和服务端均可使用，检查当前链路是否已连接。 |
-| [off](arkts-connectivity-socket-off-f.md#offsppread) | 取消订阅套接字读请求事件。 |
-| [on](arkts-connectivity-socket-on-f.md#onsppread) | 客户端和服务端均可使用，订阅套接字读请求事件。调用该接口后，当收到对端发送的数据会执行订阅的回调函数。 |
-| [sppAccept](arkts-connectivity-socket-sppaccept-f.md) | 服务端使用，接受客户端的套接字连接请求。使用Callback异步回调。 |
-| [sppCloseClientSocket](arkts-connectivity-socket-sppcloseclientsocket-f.md) | 客户端和服务端均可使用，关闭指定的客户端套接字，并断开客户端和服务端之间的连接。 |
-| [sppCloseServerSocket](arkts-connectivity-socket-sppcloseserversocket-f.md) | 服务端使用，删除指定的服务端套接字。 |
-| [sppConnect](arkts-connectivity-socket-sppconnect-f.md) | 客户端使用，创建一个客户端套接字，并向服务端的特定服务发起连接请求。 |
-| [sppListen](arkts-connectivity-socket-spplisten-f.md) | 服务端使用，创建一个服务端监听套接字。使用Callback异步回调。 |
-| [sppReadAsync](arkts-connectivity-socket-sppreadasync-f.md) | 客户端和服务端均可使用，读取对端发送数据的异步接口。使用Promise异步回调。当连接断开时，该接口会抛出错误码并返回。 |
-| [sppWrite](arkts-connectivity-socket-sppwrite-f.md) | 客户端和服务端均可使用，向对端设备发送数据。 |
-| [sppWriteAsync](arkts-connectivity-socket-sppwriteasync-f.md) | 客户端和服务端均可使用，向对端设备发送数据。使用Promise异步回调。当连接断开时，该接口会抛出错误码并返回。 |
+| [getDeviceId](arkts-connectivity-socket-getdeviceid-f.md#getdeviceid) | 客户端和服务端均可使用，获取套接字连接中的对端设备蓝牙地址。若客户端使用，需在调用[socket.sppConnect](arkts-connectivity-socket-sppconnect-f.md)后，且连接成功后使用。若服务端使用，需在调用[socket.sppAccept](arkts-connectivity-socket-sppaccept-f.md)后，且连接成功后使用。 |
+| [getL2capPsm](arkts-connectivity-socket-getl2cappsm-f.md#getl2cappsm) | 获取服务端L2CAP链路类型套接字的协议/服务多路复用器值（Protocol/Service Multiplexer, PSM），该值用于标识特定的服务数据传输通道。 |
+| [getMaxReceiveDataSize](arkts-connectivity-socket-getmaxreceivedatasize-f.md#getmaxreceivedatasize) | 客户端和服务端均可使用，获取当前套接字链路类型下最大接收数据的大小。通过[socket.sppReadAsync](arkts-connectivity-socket-sppreadasync-f.md)或[socket.on('sppRead')](arkts-connectivity-socket-on-f.md#onsppread)接收数据时，单次接收的数据大小受此返回值约束（SPP_RFCOMM链路类型无此限制）。例如在文件传输、数据同步等需要接收大量数据的场景中，可调用此接口获取单次接收的最大数据量，以便对接收数据进行分片处理。 |
+| [getMaxTransmitDataSize](arkts-connectivity-socket-getmaxtransmitdatasize-f.md#getmaxtransmitdatasize) | 客户端和服务端均可使用，获取套接字当前链路类型下最大发送数据的大小。调用[socket.sppWrite](arkts-connectivity-socket-sppwrite-f.md)或[socket.sppWriteAsync](arkts-connectivity-socket-sppwriteasync-f.md)发送数据时，单次发送的数据大小不应超过此返回值（SPP_RFCOMM链路类型无此限制）。例如在文件传输、音视频数据传输等需要发送大量数据的场景中，可调用此接口获取单次发送的最大数据量，以便对发送数据进行分片处理。 |
+| [isConnected](arkts-connectivity-socket-isconnected-f.md#isconnected) | 客户端和服务端均可使用，检查当前链路是否已连接。 |
+| [off('sppRead')](arkts-connectivity-socket-off-f.md#offsppread) | 取消订阅套接字读请求事件。 |
+| [on('sppRead')](arkts-connectivity-socket-on-f.md#onsppread) | 客户端和服务端均可使用，订阅套接字读请求事件。调用该接口后，当收到对端发送的数据会执行订阅的回调函数。 |
+| [sppAccept](arkts-connectivity-socket-sppaccept-f.md#sppaccept) | 服务端使用，接受客户端的套接字连接请求。使用Callback异步回调。 |
+| [sppCloseClientSocket](arkts-connectivity-socket-sppcloseclientsocket-f.md#sppcloseclientsocket) | 客户端和服务端均可使用，关闭指定的客户端套接字，并断开客户端和服务端之间的连接。 |
+| [sppCloseServerSocket](arkts-connectivity-socket-sppcloseserversocket-f.md#sppcloseserversocket) | 服务端使用，删除指定的服务端套接字。 |
+| [sppConnect](arkts-connectivity-socket-sppconnect-f.md#sppconnect) | 客户端使用，创建一个客户端套接字，并向服务端的特定服务发起连接请求。 |
+| [sppListen](arkts-connectivity-socket-spplisten-f.md#spplisten) | 服务端使用，创建一个服务端监听套接字。使用Callback异步回调。 |
+| [sppReadAsync](arkts-connectivity-socket-sppreadasync-f.md#sppreadasync) | 客户端和服务端均可使用，读取对端发送数据的异步接口。使用Promise异步回调。当连接断开时，该接口会抛出错误码并返回。 |
+| [sppWrite](arkts-connectivity-socket-sppwrite-f.md#sppwrite) | 客户端和服务端均可使用，向对端设备发送数据。 |
+| [sppWriteAsync](arkts-connectivity-socket-sppwriteasync-f.md#sppwriteasync) | 客户端和服务端均可使用，向对端设备发送数据。使用Promise异步回调。当连接断开时，该接口会抛出错误码并返回。 |
 
 ### 接口
 

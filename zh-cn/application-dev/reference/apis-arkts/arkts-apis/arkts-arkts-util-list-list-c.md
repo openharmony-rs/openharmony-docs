@@ -88,7 +88,7 @@ add(element: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-add(element: T): boolean--><!--Device-List-add(element: T): boolean-End-->
 
@@ -145,7 +145,7 @@ clear(): void
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-clear(): void--><!--Device-List-clear(): void-End-->
 
@@ -180,7 +180,7 @@ List的构造函数。
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-constructor()--><!--Device-List-constructor()-End-->
 
@@ -208,7 +208,7 @@ convertToArray(): Array<T>
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-convertToArray(): Array<T>--><!--Device-List-convertToArray(): Array<T>-End-->
 
@@ -344,7 +344,7 @@ get(index: number): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-get(index: int): T--><!--Device-List-get(index: int): T-End-->
 
@@ -394,7 +394,7 @@ getFirst(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-getFirst(): T--><!--Device-List-getFirst(): T-End-->
 
@@ -435,7 +435,7 @@ getIndexOf(element: T): number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-getIndexOf(element: T): int--><!--Device-List-getIndexOf(element: T): int-End-->
 
@@ -484,7 +484,7 @@ getLast(): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-getLast(): T--><!--Device-List-getLast(): T-End-->
 
@@ -525,7 +525,7 @@ getLastIndexOf(element: T): number
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-getLastIndexOf(element: T): int--><!--Device-List-getLastIndexOf(element: T): int-End-->
 
@@ -574,7 +574,7 @@ getSubList(fromIndex: number, toIndex: number): List<T>
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-getSubList(fromIndex: int, toIndex: int): List<T>--><!--Device-List-getSubList(fromIndex: int, toIndex: int): List<T>-End-->
 
@@ -622,7 +622,7 @@ has(element: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-has(element: T): boolean--><!--Device-List-has(element: T): boolean-End-->
 
@@ -665,7 +665,7 @@ insert(element: T, index: number): void
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-insert(element: T, index: int): void--><!--Device-List-insert(element: T, index: int): void-End-->
 
@@ -705,7 +705,7 @@ isEmpty(): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-isEmpty(): boolean--><!--Device-List-isEmpty(): boolean-End-->
 
@@ -745,7 +745,7 @@ remove(element: T): boolean
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-remove(element: T): boolean--><!--Device-List-remove(element: T): boolean-End-->
 
@@ -887,7 +887,7 @@ set(index: number, element: T): T
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-set(index: int, element: T): T--><!--Device-List-set(index: int, element: T): T-End-->
 
@@ -935,7 +935,7 @@ sort(comparator: ListComparatorFn<T>): void
 
 **起始版本：** 8
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-List-sort(comparator: ListComparatorFn<T>): void--><!--Device-List-sort(comparator: ListComparatorFn<T>): void-End-->
 

@@ -6,10 +6,10 @@
 import { connectedTag } from '@kit.ConnectivityKit';
 ```
 
-## on("notify")
+## on('notify')
 
 ```TypeScript
-function on(type: "notify", callback: Callback<number>): void
+function on(type: 'notify', callback: Callback<number>): void
 ```
 
 注册NFC场强状态事件。
@@ -18,7 +18,7 @@ function on(type: "notify", callback: Callback<number>): void
 
 **需要权限：** ohos.permission.NFC_TAG
 
-<!--Device-connectedTag-function on(type: "notify", callback: Callback<number>): void--><!--Device-connectedTag-function on(type: "notify", callback: Callback<number>): void-End-->
+<!--Device-connectedTag-function on(type: 'notify', callback: Callback<number>): void--><!--Device-connectedTag-function on(type: 'notify', callback: Callback<number>): void-End-->
 
 **系统能力：** SystemCapability.Communication.ConnectedTag
 
@@ -26,5 +26,5 @@ function on(type: "notify", callback: Callback<number>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| type | "notify" | 是 | 固定填"notify"字符串。 |
+| type | 'notify' | 是 | 固定填"notify"字符串。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;number&gt; | 是 | 回调函数。注册成功的返回值参见[NfcRfType](arkts-connectivity-connectedtag-nfcrftype-e.md)。 |

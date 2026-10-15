@@ -12,34 +12,6 @@ Enumerates keyboard types.
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-Keyboard without keys.
-
-**Since:** 9
-
-<!--Device-KeyboardType-NONE = 0--><!--Device-KeyboardType-NONE = 0-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.InputDevice
-
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 1
-```
-
-Keyboard with unknown keys.
-
-**Since:** 9
-
-<!--Device-KeyboardType-UNKNOWN = 1--><!--Device-KeyboardType-UNKNOWN = 1-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.InputDevice
-
 ## ALPHABETIC_KEYBOARD
 
 ```TypeScript
@@ -82,6 +54,20 @@ Stylus.
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice
 
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+Keyboard without keys.
+
+**Since:** 9
+
+<!--Device-KeyboardType-NONE = 0--><!--Device-KeyboardType-NONE = 0-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.InputDevice
+
 ## REMOTE_CONTROL
 
 ```TypeScript
@@ -93,5 +79,19 @@ Remote control.
 **Since:** 9
 
 <!--Device-KeyboardType-REMOTE_CONTROL = 5--><!--Device-KeyboardType-REMOTE_CONTROL = 5-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.InputDevice
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 1
+```
+
+Keyboard with unknown keys.
+
+**Since:** 9
+
+<!--Device-KeyboardType-UNKNOWN = 1--><!--Device-KeyboardType-UNKNOWN = 1-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.InputDevice

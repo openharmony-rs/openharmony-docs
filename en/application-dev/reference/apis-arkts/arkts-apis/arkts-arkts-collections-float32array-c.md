@@ -88,6 +88,8 @@ Returns the element at the given index. If no element is found, **undefined** is
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The at method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -110,7 +112,7 @@ A constructor used to create an empty ArkTS Float32Array.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -140,7 +142,7 @@ A constructor used to create an ArkTS Float32Array of a given length.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-2"></a>
+<a id="constructor3"></a>
 
 ## constructor
 
@@ -170,7 +172,7 @@ A constructor that creates an ArkTS Float32Array from an iterable object.
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-3"></a>
+<a id="constructor4"></a>
 
 ## constructor
 
@@ -200,7 +202,7 @@ A constructor that creates an ArkTS Float32Array from an array-like object or Ar
 | --- | --- |
 | [10200012](../errorcode-utils.md#10200012-constructor-calling-failure) | The Float32Array's constructor cannot be directly invoked. |
 
-<a id="constructor-4"></a>
+<a id="constructor5"></a>
 
 ## constructor
 
@@ -512,6 +514,8 @@ Calls a callback function for each element in this ArkTS Float32Array.
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The forEach method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
+<a id="from1"></a>
+
 ## from
 
 ```TypeScript
@@ -540,7 +544,7 @@ Creates an ArkTS Float32Array from an array-like or iterator object.
 | --- | --- |
 | Float32Array | New ArkTS Float32Array generated. |
 
-<a id="from-1"></a>
+<a id="from2"></a>
 
 ## from
 
@@ -571,7 +575,7 @@ Creates an ArkTS Float32Array from an array-like object.
 | --- | --- |
 | Float32Array | New ArkTS Float32Array generated. |
 
-<a id="from-2"></a>
+<a id="from3"></a>
 
 ## from
 
@@ -837,6 +841,8 @@ Creates an ArkTS Float32Array with a variable number of parameters.
 | --- | --- |
 | Float32Array | New ArkTS Float32Array instance. Possible causes: 1. Mandatory parameters are left unspecified;<br>2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<a id="reduce1"></a>
+
 ## reduce
 
 ```TypeScript
@@ -872,7 +878,7 @@ Applies a reduce function on each element in this ArkTS Float32Array and returns
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="reduce-1"></a>
+<a id="reduce2"></a>
 
 ## reduce
 
@@ -910,6 +916,8 @@ Applies a reduce function for each element in this ArkTS Float32Array, receives 
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduce method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
+<a id="reduceright1"></a>
+
 ## reduceRight
 
 ```TypeScript
@@ -946,7 +954,7 @@ Reversely traverses this ArkTS Float32Array, applies a reduce function for each 
 | [10200011](../errorcode-utils.md#10200011-passed-thisobject-is-not-an-instance-of-the-containers-class) | The reduceRight method cannot be bound. |
 | [10200201](../errorcode-utils.md#10200201-concurrent-modification-error) | Concurrent modification error. |
 
-<a id="reduceright-1"></a>
+<a id="reduceright2"></a>
 
 ## reduceRight
 

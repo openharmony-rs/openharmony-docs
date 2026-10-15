@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="setapplicationenabledsync1"></a>
+
 ## setApplicationEnabledSync
 
 ```TypeScript
@@ -40,6 +42,7 @@ Enables or disables an application. This API returns the result synchronously.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,8 +61,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setapplicationenabledsync-1"></a>
+
+<a id="setapplicationenabledsync2"></a>
 
 ## setApplicationEnabledSync
 
@@ -67,7 +72,7 @@ try {
 function setApplicationEnabledSync(bundleName: string, appIndex: number, isEnabled: boolean, killProcess: boolean): void
 ```
 
-Set whether an application is enabled or disabled, with control over whether the process is killed when disabled.
+Sets the enabled or disabled state of a specified application or application clone in synchronous mode, and controls whether to exit the application process when the application is disabled.
 
 **Since:** 26.0.0
 
@@ -85,10 +90,10 @@ Set whether an application is enabled or disabled, with control over whether the
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| bundleName | string | Yes | Indicates the bundle name. |
-| appIndex | number | Yes | Indicates the index of clone app. |
-| isEnabled | boolean | Yes | The value true means to enable the application, and the value false means to disable the application. |
-| killProcess | boolean | Yes | The value true indicates that the application process will be killed when disabled, while the value false indicates that the application process will not be killed when disabled. |
+| bundleName | string | Yes | Bundle name of the application. |
+| appIndex | number | Yes | Application index. The value is an integer ranging from 0 to 5. The value **0** indicates the main application, and the values 1 to 5 indicate the application clone indexes. |
+| isEnabled | boolean | Yes | Whether to enable the application. The value **true** indicates that the application is enabled, and **false** indicates that the application is disabled. |
+| killProcess | boolean | Yes | Whether to exit the application process when the application is disabled. The value **true** indicates that the application process exits when the application is disabled, and **false** indicates that the application process does not exit when the application is disabled. |
 
 **Error codes:**
 
@@ -99,6 +104,7 @@ Set whether an application is enabled or disabled, with control over whether the
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundle is not found. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The specified app index is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -120,3 +126,5 @@ try {
   hilog.error(0x0000, 'testTag', 'setApplicationEnabledSync failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

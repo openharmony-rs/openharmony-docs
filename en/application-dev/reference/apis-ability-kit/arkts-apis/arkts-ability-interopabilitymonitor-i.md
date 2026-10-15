@@ -24,7 +24,7 @@ Called back when the state of the ability changes to background.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-onAbilityBackground?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityBackground?: AbilityCallbackFn-End-->
 
@@ -42,7 +42,7 @@ Called back when the ability is created.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-onAbilityCreate?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityCreate?: AbilityCallbackFn-End-->
 
@@ -60,7 +60,7 @@ Called back before the ability is destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-onAbilityDestroy?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityDestroy?: AbilityCallbackFn-End-->
 
@@ -78,7 +78,7 @@ Called back when the state of the ability changes to foreground.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-onAbilityForeground?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onAbilityForeground?: AbilityCallbackFn-End-->
 
@@ -96,7 +96,7 @@ Called back when an ability window stage is created.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-onWindowStageCreate?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageCreate?: AbilityCallbackFn-End-->
 
@@ -114,7 +114,7 @@ Called back when an ability window stage is destroyed.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-onWindowStageDestroy?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageDestroy?: AbilityCallbackFn-End-->
 
@@ -132,7 +132,7 @@ Called back when an ability window stage is restored.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-onWindowStageRestore?: AbilityCallbackFn--><!--Device-InteropAbilityMonitor-onWindowStageRestore?: AbilityCallbackFn-End-->
 
@@ -152,7 +152,7 @@ The name of the ability to monitor.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-abilityName: string--><!--Device-InteropAbilityMonitor-abilityName: string-End-->
 
@@ -172,7 +172,7 @@ The name of the module to monitor.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-InteropAbilityMonitor-moduleName?: string--><!--Device-InteropAbilityMonitor-moduleName?: string-End-->
 

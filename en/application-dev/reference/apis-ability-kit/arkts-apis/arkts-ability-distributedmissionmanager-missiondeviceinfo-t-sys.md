@@ -4,7 +4,9 @@
 export type MissionDeviceInfo = _MissionDeviceInfo
 ```
 
-Defines the parameters required for registering a listener. It is used as an input parameter in [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener-1).
+Defines the parameters required for registering a listener. It is used as an input parameter in [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener2).
+
+**Type:** _MissionDeviceInfo
 
 **Since:** 10
 
@@ -15,5 +17,3 @@ Defines the parameters required for registering a listener. It is used as an inp
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
-
-**Type:** _MissionDeviceInfo

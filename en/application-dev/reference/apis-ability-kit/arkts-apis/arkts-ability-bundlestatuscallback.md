@@ -1,4 +1,4 @@
-# bundleStatusCallback
+# bundleStatusCallback(BundleStatusCallback)
 
 ## Summary
 
@@ -7,5 +7,5 @@
 
 | Name | Description |
 | --- | --- |
-| [BundleStatusCallback](arkts-ability-bundlestatuscallback-bundlestatuscallback-depr-i-sys.md) |  |
+| [BundleStatusCallback](arkts-ability-bundlestatuscallback-depr-i-sys.md) | The module provides callbacks for bundle status changes. The changes can be obtained through on. |
 <!--DelEnd-->

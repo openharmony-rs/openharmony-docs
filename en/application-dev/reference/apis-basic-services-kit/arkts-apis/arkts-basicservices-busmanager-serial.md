@@ -4,8 +4,6 @@ This module provides APIs for serial port management, which are applicable to sc
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace serial--><!--Device-unnamed-declare namespace serial-End-->
 
 **System capability:** SystemCapability.BusManager.Serial
@@ -22,14 +20,14 @@ import { serial } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md) | Obtains the serial port list. This API uses a promise to return the result, which is a list of [SerialPort](arkts-basicservices-serial-serialport-i.md) objects. This API is used to identify available serial port devices in scenarios such as industrial device connection, IoT device management, and embedded system debugging. |
+| [getSerialPortList](arkts-basicservices-serial-getserialportlist-f.md#getserialportlist) | Obtains the serial port list. This API uses a promise to return the result, which is a list of [SerialPort](arkts-basicservices-serial-serialport-i.md) objects. This API is used to identify available serial port devices in scenarios such as industrial device connection, IoT device management, and embedded system debugging. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md) | Adds the authorization for the app to access the serial port. This function associates the token ID of an app with the ID of a serial port device to enable the app to access the serial port. This function can be used by a system management app to grant serial port access permission to a third-party app. For example, a device management tool can use this function to grant serial port access permission to an industrial data collection app. This function is available only to system apps that display a dialog box for serial port authorization. After the user grants the permission, the permission information is persistently stored. This API uses a promise to return the result. |
+| [addPortAuthorization](arkts-basicservices-serial-addportauthorization-f-sys.md#addportauthorization) | Adds the authorization for the app to access the serial port. This function associates the token ID of an app with the ID of a serial port device to enable the app to access the serial port. This function can be used by a system management app to grant serial port access permission to a third-party app. For example, a device management tool can use this function to grant serial port access permission to an industrial data collection app. This function is available only to system apps that display a dialog box for serial port authorization. After the user grants the permission, the permission information is persistently stored. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

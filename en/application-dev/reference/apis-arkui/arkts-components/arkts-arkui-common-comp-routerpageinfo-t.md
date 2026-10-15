@@ -6,6 +6,8 @@ declare type RouterPageInfo = import('../api/@ohos.arkui.observer').default.Rout
 
 The router page information.
 
+**Type:** import('../api/@ohos.arkui.observer').default.RouterPageInfo
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ The router page information.
 <!--Device-unnamed-declare type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo--><!--Device-unnamed-declare type RouterPageInfo = import('../api/@ohos.arkui.observer').default.RouterPageInfo-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.observer').default.RouterPageInfo

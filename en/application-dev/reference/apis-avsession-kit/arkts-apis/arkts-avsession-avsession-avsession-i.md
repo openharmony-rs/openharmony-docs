@@ -18,6 +18,8 @@ AVSession object.
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="activate1"></a>
+
 ## activate
 
 ```TypeScript
@@ -59,7 +61,7 @@ currentAVSession.activate((err: BusinessError) => {
 });
 ```
 
-<a id="activate-1"></a>
+<a id="activate2"></a>
 
 ## activate
 
@@ -71,7 +73,7 @@ Activate the session, indicating that the session can accept control commands
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-activate(): Promise<void>--><!--Device-AVSession-activate(): Promise<void>-End-->
 
@@ -97,6 +99,8 @@ currentAVSession.activate().then(() => {
   console.info('Succeeded in activating.');
 });
 ```
+
+<a id="deactivate1"></a>
 
 ## deactivate
 
@@ -139,7 +143,7 @@ currentAVSession.deactivate((err: BusinessError) => {
 });
 ```
 
-<a id="deactivate-1"></a>
+<a id="deactivate2"></a>
 
 ## deactivate
 
@@ -151,7 +155,7 @@ Deactivate the session, indicating that the session not ready to accept control 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-deactivate(): Promise<void>--><!--Device-AVSession-deactivate(): Promise<void>-End-->
 
@@ -177,6 +181,8 @@ currentAVSession.deactivate().then(() => {
   console.info('Succeeded in deactivating.');
 });
 ```
+
+<a id="destroy1"></a>
 
 ## destroy
 
@@ -219,7 +225,7 @@ currentAVSession.destroy((err: BusinessError) => {
 });
 ```
 
-<a id="destroy-1"></a>
+<a id="destroy2"></a>
 
 ## destroy
 
@@ -231,7 +237,7 @@ Destroy this session, the server will clean up the session resources
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-destroy(): Promise<void>--><!--Device-AVSession-destroy(): Promise<void>-End-->
 
@@ -257,6 +263,8 @@ currentAVSession.destroy().then(() => {
   console.info('Succeeded in destroying.');
 });
 ```
+
+<a id="dispatchsessionevent1"></a>
 
 ## dispatchSessionEvent
 
@@ -305,7 +313,7 @@ currentAVSession.dispatchSessionEvent(eventName, {lyric : "This is lyric"}, (err
 });
 ```
 
-<a id="dispatchsessionevent-2"></a>
+<a id="dispatchsessionevent3"></a>
 
 ## dispatchSessionEvent
 
@@ -411,7 +419,7 @@ Get all the current virtual display information for extended display.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-getAllCastDisplays(): Promise<Array<CastDisplayInfo>>--><!--Device-AVSession-getAllCastDisplays(): Promise<Array<CastDisplayInfo>>-End-->
 
@@ -440,6 +448,8 @@ currentAVSession.getAllCastDisplays().then((data: Array< avSession.CastDisplayIn
      }
     });
 ```
+
+<a id="getavcastcontroller1"></a>
 
 ## getAVCastController
 
@@ -484,7 +494,7 @@ currentAVSession.getAVCastController((err: BusinessError, avcontroller: avSessio
 });
 ```
 
-<a id="getavcastcontroller-2"></a>
+<a id="getavcastcontroller3"></a>
 
 ## getAVCastController
 
@@ -525,6 +535,8 @@ currentAVSession.getAVCastController().then((avcontroller: avSession.AVCastContr
 });
 ```
 
+<a id="getcontroller1"></a>
+
 ## getController
 
 ```TypeScript
@@ -564,7 +576,7 @@ currentAVSession.getController((err: BusinessError, avcontroller: avSession.AVSe
 });
 ```
 
-<a id="getcontroller-1"></a>
+<a id="getcontroller2"></a>
 
 ## getController
 
@@ -576,7 +588,7 @@ Get the current session's own controller
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-getController(): Promise<AVSessionController>--><!--Device-AVSession-getController(): Promise<AVSessionController>-End-->
 
@@ -645,6 +657,8 @@ if (currentAVSession !== undefined) {
 }
 ```
 
+<a id="getoutputdevice1"></a>
+
 ## getOutputDevice
 
 ```TypeScript
@@ -686,7 +700,7 @@ currentAVSession.getOutputDevice((err: BusinessError, outputDeviceInfo: avSessio
 });
 ```
 
-<a id="getoutputdevice-1"></a>
+<a id="getoutputdevice2"></a>
 
 ## getOutputDevice
 
@@ -698,7 +712,7 @@ Get output device information
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-getOutputDevice(): Promise<OutputDeviceInfo>--><!--Device-AVSession-getOutputDevice(): Promise<OutputDeviceInfo>-End-->
 
@@ -735,7 +749,7 @@ Get output device information
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-getOutputDeviceSync(): OutputDeviceInfo--><!--Device-AVSession-getOutputDeviceSync(): OutputDeviceInfo-End-->
 
@@ -1626,7 +1640,7 @@ Unregister playFromAssetId command callback.
 
 **Deprecated since:** 20
 
-**Substitutes:** off
+**Substitutes:** [off](#offplay)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -2772,7 +2786,7 @@ Register playFromAssetId command callback. As long as it is registered, it means
 
 **Deprecated since:** 20
 
-**Substitutes:** on
+**Substitutes:** [on](#onplay)
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
@@ -2996,7 +3010,7 @@ Register playPrevious command callback. The application will receive [CommandInf
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-AVSession-onPlayPrevious(callback: Callback<CommandInfo>): void--><!--Device-AVSession-onPlayPrevious(callback: Callback<CommandInfo>): void-End-->
 
@@ -3068,7 +3082,7 @@ Sends custom data to a remote device.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-AVSession-sendCustomData(data: Record<string, Object>): Promise<void>--><!--Device-AVSession-sendCustomData(data: Record<string, Object>): Promise<void>-End-->
 
@@ -3100,6 +3114,8 @@ currentAVSession.sendCustomData({customData : "This is custom data"}).then(() =>
   console.info('Succeeded in sending custom data.');
 });
 ```
+
+<a id="setavcallstate1"></a>
 
 ## setAVCallState
 
@@ -3148,7 +3164,7 @@ currentAVSession.setAVCallState(avcalldata, (err: BusinessError) => {
 });
 ```
 
-<a id="setavcallstate-1"></a>
+<a id="setavcallstate2"></a>
 
 ## setAVCallState
 
@@ -3195,6 +3211,8 @@ currentAVSession.setAVCallState(calldata).then(() => {
   console.info('Succeeded in setting AVCallState.');
 });
 ```
+
+<a id="setavmetadata1"></a>
 
 ## setAVMetadata
 
@@ -3260,7 +3278,7 @@ currentAVSession.setAVMetadata(metadata, (err: BusinessError) => {
 });
 ```
 
-<a id="setavmetadata-1"></a>
+<a id="setavmetadata2"></a>
 
 ## setAVMetadata
 
@@ -3272,7 +3290,7 @@ Set the metadata of this session. In addition to the required properties, users 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-setAVMetadata(data: AVMetadata): Promise<void>--><!--Device-AVSession-setAVMetadata(data: AVMetadata): Promise<void>-End-->
 
@@ -3327,6 +3345,8 @@ currentAVSession.setAVMetadata(metadata).then(() => {
 });
 ```
 
+<a id="setavplaybackstate1"></a>
+
 ## setAVPlaybackState
 
 ```TypeScript
@@ -3378,7 +3398,7 @@ currentAVSession.setAVPlaybackState(playbackState, (err: BusinessError) => {
 });
 ```
 
-<a id="setavplaybackstate-1"></a>
+<a id="setavplaybackstate2"></a>
 
 ## setAVPlaybackState
 
@@ -3390,7 +3410,7 @@ Set the playback state of this session.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-setAVPlaybackState(state: AVPlaybackState): Promise<void>--><!--Device-AVSession-setAVPlaybackState(state: AVPlaybackState): Promise<void>-End-->
 
@@ -3431,6 +3451,8 @@ currentAVSession.setAVPlaybackState(playbackState).then(() => {
   console.info('Succeeded in setting AVPlaybackState.');
 });
 ```
+
+<a id="setavqueueitems1"></a>
 
 ## setAVQueueItems
 
@@ -3506,7 +3528,7 @@ currentAVSession.setAVQueueItems(queueItemsArray, (err: BusinessError) => {
 });
 ```
 
-<a id="setavqueueitems-1"></a>
+<a id="setavqueueitems2"></a>
 
 ## setAVQueueItems
 
@@ -3518,7 +3540,7 @@ Set the playlist of queueItem. Identifies the content of the playlist presented 
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-setAVQueueItems(items: Array<AVQueueItem>): Promise<void>--><!--Device-AVSession-setAVQueueItems(items: Array<AVQueueItem>): Promise<void>-End-->
 
@@ -3584,6 +3606,8 @@ currentAVSession.setAVQueueItems(queueItemsArray).then(() => {
 });
 ```
 
+<a id="setavqueuetitle1"></a>
+
 ## setAVQueueTitle
 
 ```TypeScript
@@ -3628,7 +3652,7 @@ currentAVSession.setAVQueueTitle(queueTitle, (err: BusinessError) => {
 });
 ```
 
-<a id="setavqueuetitle-1"></a>
+<a id="setavqueuetitle2"></a>
 
 ## setAVQueueTitle
 
@@ -3640,7 +3664,7 @@ Set the name of the playlist presented by this session.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-setAVQueueTitle(title: string): Promise<void>--><!--Device-AVSession-setAVQueueTitle(title: string): Promise<void>-End-->
 
@@ -3720,6 +3744,8 @@ try {
 }
 ```
 
+<a id="setcallmetadata1"></a>
+
 ## setCallMetadata
 
 ```TypeScript
@@ -3794,7 +3820,7 @@ class CallManager {
 }
 ```
 
-<a id="setcallmetadata-1"></a>
+<a id="setcallmetadata2"></a>
 
 ## setCallMetadata
 
@@ -3967,6 +3993,8 @@ currentAVSession.setDesktopLyricVisible(true).then(() => {
 });
 ```
 
+<a id="setextras1"></a>
+
 ## setExtras
 
 ```TypeScript
@@ -4012,7 +4040,7 @@ currentAVSession.setExtras({extras : "This is custom media packet"}, (err: Busin
 })
 ```
 
-<a id="setextras-2"></a>
+<a id="setextras3"></a>
 
 ## setExtras
 
@@ -4059,6 +4087,8 @@ currentAVSession.setExtras({extras : "This is custom media packet"}).then(() => 
   console.info('Succeeded in setting extras.');
 });
 ```
+
+<a id="setlaunchability1"></a>
 
 ## setLaunchAbility
 
@@ -4134,7 +4164,7 @@ wantAgent.getWantAgent(wantAgentInfo).then((agent) => {
 });
 ```
 
-<a id="setlaunchability-1"></a>
+<a id="setlaunchability2"></a>
 
 ## setLaunchAbility
 
@@ -4146,7 +4176,7 @@ Set the ability to start the session corresponding to
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-setLaunchAbility(ability: WantAgent): Promise<void>--><!--Device-AVSession-setLaunchAbility(ability: WantAgent): Promise<void>-End-->
 
@@ -4276,7 +4306,7 @@ Set supported loop modes supplied by application.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AVSession-setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>--><!--Device-AVSession-setSupportedLoopModes(loopModes: Array<LoopMode>): Promise<void>-End-->
 
@@ -4329,7 +4359,7 @@ Set supported speeds supplied by application.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-AVSession-setSupportedPlaySpeeds(speeds: Array<double>): Promise<void>--><!--Device-AVSession-setSupportedPlaySpeeds(speeds: Array<double>): Promise<void>-End-->
 
@@ -4366,6 +4396,8 @@ try {
 }
 ```
 
+<a id="stopcasting1"></a>
+
 ## stopCasting
 
 ```TypeScript
@@ -4400,7 +4432,7 @@ currentAVSession.stopCasting(() => {
 });
 ```
 
-<a id="stopcasting-1"></a>
+<a id="stopcasting2"></a>
 
 ## stopCasting
 
@@ -4412,7 +4444,7 @@ Stop current cast and disconnect device connection.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-stopCasting(): Promise<void>--><!--Device-AVSession-stopCasting(): Promise<void>-End-->
 
@@ -4450,7 +4482,7 @@ unique session Id
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-readonly sessionId: string--><!--Device-AVSession-readonly sessionId: string-End-->
 
@@ -4468,7 +4500,7 @@ Current session tag.
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-AVSession-readonly sessionTag: string--><!--Device-AVSession-readonly sessionTag: string-End-->
 
@@ -4486,7 +4518,7 @@ Get current session type
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVSession-readonly sessionType: AVSessionType--><!--Device-AVSession-readonly sessionType: AVSessionType-End-->
 

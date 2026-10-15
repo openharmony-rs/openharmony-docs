@@ -10,6 +10,8 @@ Tuple type that stores button information.
 > 
 > A **SegmentButton** component supports two to five buttons.
 
+**Type:** [T, T, T?, T?, T?]
+
 **Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
@@ -19,5 +21,3 @@ Tuple type that stores button information.
 <!--Device-unnamed-declare type ItemRestriction<T> = [T, T, T?, T?, T?]--><!--Device-unnamed-declare type ItemRestriction<T> = [T, T, T?, T?, T?]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [T, T, T?, T?, T?]

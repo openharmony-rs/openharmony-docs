@@ -12,39 +12,21 @@ Sets the style for a range styled string.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## FONT
+## BACKGROUND_COLOR
 
 ```TypeScript
-FONT = 0
+BACKGROUND_COLOR = 6
 ```
 
-Font style key. Key of [TextStyle](arkts-arkui-textstyle-c.md).
+Text background color style key. Key of [BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md).
 
-**Since:** 12
+**Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-StyledStringKey-FONT = 0--><!--Device-StyledStringKey-FONT = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## DECORATION
-
-```TypeScript
-DECORATION = 1
-```
-
-Text decoration line style key. Key of [DecorationStyle](arkts-arkui-decorationstyle-c.md).
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-StyledStringKey-DECORATION = 1--><!--Device-StyledStringKey-DECORATION = 1-End-->
+<!--Device-StyledStringKey-BACKGROUND_COLOR = 6--><!--Device-StyledStringKey-BACKGROUND_COLOR = 6-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +48,13 @@ Text baseline offset style key. Key of [BaselineOffsetStyle](arkts-arkui-baselin
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## LETTER_SPACING
+## CUSTOM_SPAN
 
 ```TypeScript
-LETTER_SPACING = 3
+CUSTOM_SPAN = 400
 ```
 
-Text letter spacing style key. Key of [LetterSpacingStyle](arkts-arkui-letterspacingstyle-c.md).
+Custom drawing span key. Key of [CustomSpan](arkts-arkui-customspan-c.md).
 
 **Since:** 12
 
@@ -80,17 +62,17 @@ Text letter spacing style key. Key of [LetterSpacingStyle](arkts-arkui-letterspa
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-StyledStringKey-LETTER_SPACING = 3--><!--Device-StyledStringKey-LETTER_SPACING = 3-End-->
+<!--Device-StyledStringKey-CUSTOM_SPAN = 400--><!--Device-StyledStringKey-CUSTOM_SPAN = 400-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TEXT_SHADOW
+## DECORATION
 
 ```TypeScript
-TEXT_SHADOW = 4
+DECORATION = 1
 ```
 
-Text shadow style key. Key of [TextShadowStyle](arkts-arkui-textshadowstyle-c.md).
+Text decoration line style key. Key of [DecorationStyle](arkts-arkui-decorationstyle-c.md).
 
 **Since:** 12
 
@@ -98,17 +80,17 @@ Text shadow style key. Key of [TextShadowStyle](arkts-arkui-textshadowstyle-c.md
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-StyledStringKey-TEXT_SHADOW = 4--><!--Device-StyledStringKey-TEXT_SHADOW = 4-End-->
+<!--Device-StyledStringKey-DECORATION = 1--><!--Device-StyledStringKey-DECORATION = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## LINE_HEIGHT
+## FONT
 
 ```TypeScript
-LINE_HEIGHT = 5
+FONT = 0
 ```
 
-Text line height style key. Key of [LineHeightStyle](arkts-arkui-lineheightstyle-c.md).
+Font style key. Key of [TextStyle](arkts-arkui-textstyle-c.md).
 
 **Since:** 12
 
@@ -116,61 +98,7 @@ Text line height style key. Key of [LineHeightStyle](arkts-arkui-lineheightstyle
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-StyledStringKey-LINE_HEIGHT = 5--><!--Device-StyledStringKey-LINE_HEIGHT = 5-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## BACKGROUND_COLOR
-
-```TypeScript
-BACKGROUND_COLOR = 6
-```
-
-Text background color style key. Key of [BackgroundColorStyle](arkts-arkui-backgroundcolorstyle-c.md).
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-StyledStringKey-BACKGROUND_COLOR = 6--><!--Device-StyledStringKey-BACKGROUND_COLOR = 6-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## URL
-
-```TypeScript
-URL = 7
-```
-
-Hyperlink style key. Key of [UrlStyle](arkts-arkui-urlstyle-c.md).
-
-**Since:** 14
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-StyledStringKey-URL = 7--><!--Device-StyledStringKey-URL = 7-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## LINE_SPACING
-
-```TypeScript
-LINE_SPACING = 8
-```
-
-Text line spacing style key. Key of [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md).
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
-
-<!--Device-StyledStringKey-LINE_SPACING = 8--><!--Device-StyledStringKey-LINE_SPACING = 8-End-->
+<!--Device-StyledStringKey-FONT = 0--><!--Device-StyledStringKey-FONT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -192,24 +120,6 @@ Event gesture key. Key of [GestureStyle](arkts-arkui-gesturestyle-c.md).
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PARAGRAPH_STYLE
-
-```TypeScript
-PARAGRAPH_STYLE = 200
-```
-
-Paragraph style key. Key of [ParagraphStyle](arkts-arkui-paragraphstyle-c.md).
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-StyledStringKey-PARAGRAPH_STYLE = 200--><!--Device-StyledStringKey-PARAGRAPH_STYLE = 200-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## IMAGE
 
 ```TypeScript
@@ -228,13 +138,13 @@ Image key. Key of [ImageAttachment](arkts-arkui-imageattachment-c.md).
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## CUSTOM_SPAN
+## LETTER_SPACING
 
 ```TypeScript
-CUSTOM_SPAN = 400
+LETTER_SPACING = 3
 ```
 
-Custom drawing span key. Key of [CustomSpan](arkts-arkui-customspan-c.md).
+Text letter spacing style key. Key of [LetterSpacingStyle](arkts-arkui-letterspacingstyle-c.md).
 
 **Since:** 12
 
@@ -242,7 +152,97 @@ Custom drawing span key. Key of [CustomSpan](arkts-arkui-customspan-c.md).
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-StyledStringKey-CUSTOM_SPAN = 400--><!--Device-StyledStringKey-CUSTOM_SPAN = 400-End-->
+<!--Device-StyledStringKey-LETTER_SPACING = 3--><!--Device-StyledStringKey-LETTER_SPACING = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## LINE_HEIGHT
+
+```TypeScript
+LINE_HEIGHT = 5
+```
+
+Text line height style key. Key of [LineHeightStyle](arkts-arkui-lineheightstyle-c.md).
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StyledStringKey-LINE_HEIGHT = 5--><!--Device-StyledStringKey-LINE_HEIGHT = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## LINE_SPACING
+
+```TypeScript
+LINE_SPACING = 8
+```
+
+Text line spacing style key. Key of [LineSpacingStyle](arkts-arkui-linespacingstyle-c.md).
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-StyledStringKey-LINE_SPACING = 8--><!--Device-StyledStringKey-LINE_SPACING = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PARAGRAPH_STYLE
+
+```TypeScript
+PARAGRAPH_STYLE = 200
+```
+
+Paragraph style key. Key of [ParagraphStyle](arkts-arkui-paragraphstyle-c.md).
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StyledStringKey-PARAGRAPH_STYLE = 200--><!--Device-StyledStringKey-PARAGRAPH_STYLE = 200-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## TEXT_SHADOW
+
+```TypeScript
+TEXT_SHADOW = 4
+```
+
+Text shadow style key. Key of [TextShadowStyle](arkts-arkui-textshadowstyle-c.md).
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-StyledStringKey-TEXT_SHADOW = 4--><!--Device-StyledStringKey-TEXT_SHADOW = 4-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## URL
+
+```TypeScript
+URL = 7
+```
+
+Hyperlink style key. Key of [UrlStyle](arkts-arkui-urlstyle-c.md).
+
+**Since:** 14
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-StyledStringKey-URL = 7--><!--Device-StyledStringKey-URL = 7-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

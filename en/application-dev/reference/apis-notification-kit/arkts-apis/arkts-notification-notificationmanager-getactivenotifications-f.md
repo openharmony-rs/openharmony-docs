@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getactivenotifications1"></a>
+
 ## getActiveNotifications
 
 ```TypeScript
@@ -22,7 +24,7 @@ This API is used to query the detailed information list of all stored notificati
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber1) sets the notification badge number.
 
 **Parameters:**
 
@@ -34,7 +36,7 @@ This API is used to query the detailed information list of all stored notificati
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. 3. Parameter verification failed. |
 | [1600001](../errorcode-notification.md#1600001-internal-error) | Internal error. |
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
@@ -55,7 +57,7 @@ notificationManager.getActiveNotifications(getActiveNotificationsCallback);
 ```
 
 
-<a id="getactivenotifications-1"></a>
+<a id="getactivenotifications2"></a>
 
 ## getActiveNotifications
 
@@ -73,7 +75,7 @@ This API is used to query the detailed information list of all stored notificati
 
 **System capability:** SystemCapability.Notification.Notification
 
-**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber-1) sets the notification badge number.
+**See also:** [setBadgeNumber](arkts-notification-notificationmanager-setbadgenumber-f.md#setbadgenumber2) sets the notification badge number.
 
 **Return value:**
 

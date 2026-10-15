@@ -12,6 +12,22 @@ export enum HuksAuthAccessType
 
 **系统能力：** SystemCapability.Security.Huks.Extension
 
+## HUKS_AUTH_ACCESS_ALWAYS_VALID
+
+```TypeScript
+HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2
+```
+
+表示安全访问控制类型为该密钥总是有效。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2-End-->
+
+**系统能力：** SystemCapability.Security.Huks.Extension
+
 ## HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD
 
 ```TypeScript
@@ -41,21 +57,5 @@ HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1-End-->
-
-**系统能力：** SystemCapability.Security.Huks.Extension
-
-## HUKS_AUTH_ACCESS_ALWAYS_VALID
-
-```TypeScript
-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2
-```
-
-表示安全访问控制类型为该密钥总是有效。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2-End-->
 
 **系统能力：** SystemCapability.Security.Huks.Extension

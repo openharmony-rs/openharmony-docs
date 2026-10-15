@@ -6,6 +6,8 @@
 import { connectedTag } from '@kit.ConnectivityKit';
 ```
 
+<a id="write1"></a>
+
 ## write
 
 ```TypeScript
@@ -39,7 +41,7 @@ function write(data: number[]): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3200101](../errorcode-nfc.md#3200101-有源nfc标签状态异常) | Connected NFC tag running state is abnormal in service. |
 
@@ -58,7 +60,7 @@ connectedTag.write(rawData).then(() => {
 ```
 
 
-<a id="write-1"></a>
+<a id="write2"></a>
 
 ## write
 
@@ -88,7 +90,7 @@ function write(data: number[], callback: AsyncCallback<void>): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [3200101](../errorcode-nfc.md#3200101-有源nfc标签状态异常) | Connected NFC tag running state is abnormal in service. |
 

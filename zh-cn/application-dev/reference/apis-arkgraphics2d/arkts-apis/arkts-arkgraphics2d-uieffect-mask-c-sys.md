@@ -50,6 +50,101 @@ static createAtlasFrameMask(atlasInfo: drawing.AtlasImage): Mask
 | --- | --- |
 | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 返回携带图集帧参数的Mask实例。 |
 
+<!--Del-->
+**示例**
+
+```TypeScript
+import { image } from '@kit.ImageKit';
+import { uiEffect, drawing } from '@kit.ArkGraphics2D';
+
+@Entry
+@Component
+struct AtlasFrameMaskDemo {
+  @State contentFrameState: drawing.AtlasImage | null = null;
+
+  private contentAtlasMap: image.PixelMap | null = null;
+  private reflectionMap: image.PixelMap | null = null;
+
+  private async loadPixelMapFromRawfile(fileName: string): Promise<image.PixelMap | null> {
+    try {
+      const ctx = getContext(this);
+      const buf: Uint8Array = await ctx.resourceManager.getRawFileContent(fileName);
+      const src = image.createImageSource(buf.buffer);
+      const pm = await src.createPixelMap();
+      src.release();
+      return pm;
+    } catch (e) {
+      console.error(`AtlasFrameMaskDemo load failed: ${e}`);
+      return null;
+    }
+  }
+
+  private makeContentFrameParam(frame: number): drawing.AtlasImage {
+    return {
+      mode: drawing.AtlasInterpolationMode.NONE, rows: 17, cols: 18,
+      frameWidth: 80, frameHeight: 80, padding: 0,
+      frameIndex: frame, totalFrame: 300, atlasImage: this.contentAtlasMap!
+    };
+  }
+
+  private getEffect(): uiEffect.VisualEffect | undefined {
+    if (this.contentFrameState === null) return undefined;
+    const contentMask = uiEffect.Mask.createAtlasFrameMask(this.contentFrameState);
+    const material: uiEffect.GlassMarbleMaterialParam = {
+      averageBgColor: { red: 0.675, green: 0.718, blue: 0.808, alpha: 1.0 },
+      opacity: 1.0, shapeScale: 1.0, shadowOffset: 0.5,
+      shadowRadius: 1.0, shadowEdgeSoftness: 0.0, shadowOpacity: 0.15,
+      causticOffset: 0.5, causticRadius: 0.5, causticEdgeSoftness: 0.0, causticOpacity: 0.43,
+      reflectionMap: this.reflectionMap!
+    };
+    const sphereParam: uiEffect.GlassMarbleSphereParam = {
+      center: [0.5, 0.5],
+      radius: 0.5,
+    };
+    const contentParam: uiEffect.GlassMarbleContentParam = {
+      contentMask: contentMask,
+      contentTintColor: { red: 1.0, green: 0.75, blue: 0.5, alpha: 0.25 },
+      contentScale: 0.5, contentSaturation: 0.81, contentDispersion: 0.0
+    };
+    const effect = uiEffect.createEffect();
+    effect.glassMarbleEffect(material, sphereParam, contentParam);
+    return effect;
+  }
+
+  async aboutToAppear(): Promise<void> {
+    this.contentAtlasMap = await this.loadPixelMapFromRawfile('content_atlas.webp');
+    this.reflectionMap = await this.loadPixelMapFromRawfile('reflection.webp');
+    this.contentFrameState = this.makeContentFrameParam(0);
+
+    // 单次播放：0 → 299
+    animateTo({ duration: 4000, curve: Curve.Linear }, () => {
+      this.contentFrameState = this.makeContentFrameParam(299);
+    });
+  }
+
+  build(): void {
+    Column() {
+      Stack() {
+        Column()
+          .width(300)
+          .height(300)
+          .backgroundColor('#ACB7CE')
+        Column()
+          .width(300)
+          .height(300)
+          .visualEffect(this.getEffect())
+      }
+      .width('100%')
+      .aspectRatio(1.0)
+    }
+    .width('100%')
+    .height('100%')
+  }
+}
+```
+
+<!--DelEnd-->
+
 ## createBinocularMask
 
 ```TypeScript
@@ -83,6 +178,7 @@ static createBinocularMask(radiusX: number, radiusY: number, gap: number, softne
 | --- | --- |
 | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 带有双目蒙版效果的 Mask 实例。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -109,6 +205,8 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## createFractalGlassMask
 
@@ -145,6 +243,7 @@ static createFractalGlassMask(glassNum: number, glassStrength: number, glassSoft
 | --- | --- |
 | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 带有分形玻璃蒙版效果的 Mask 实例。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -174,6 +273,10 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->
+
+<a id="createpixelmapmask1"></a>
 
 ## createPixelMapMask
 
@@ -211,8 +314,9 @@ static createPixelMapMask(pixelMap: image.PixelMap, srcRect: common2D.Rect, dstR
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -254,7 +358,9 @@ image.createPixelMap(colorBuffer, opts).then((pixelMap) => {
 });
 ```
 
-<a id="createpixelmapmask-1"></a>
+<!--DelEnd-->
+
+<a id="createpixelmapmask2"></a>
 
 ## createPixelMapMask
 
@@ -288,8 +394,9 @@ static createPixelMapMask(pixelMap: image.PixelMap): Mask
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -326,11 +433,10 @@ struct Index {
         return undefined;
       }
       const pixelMap: image.PixelMap | null = imageSource.createPixelMapSync();
+      imageSource.release();
       if (!pixelMap) {
-        imageSource.release();
         return undefined;
       }
-      imageSource.release();
       return pixelMap;
     } catch (err) {
       return undefined;
@@ -381,6 +487,8 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
 ## createRadialGradientMask
 
 ```TypeScript
@@ -417,8 +525,9 @@ static createRadialGradientMask(center: common2D.Point, radiusX: number, radiusY
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -440,6 +549,8 @@ struct RadialGradientMaskExample {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## createRippleMask
 
@@ -476,19 +587,21 @@ static createRippleMask(center: common2D.Point, radius: number, width: number, o
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let mask = uiEffect.Mask.createRippleMask({x: 0.5, y: 1.0}, 0.5, 0.3, 0.0);
 ```
 
+<!--DelEnd-->
+
 ## createSweepRefractionMask
 
 ```TypeScript
-static createSweepRefractionMask(param: SweepRefractionParam,
-      options?: SweepRefractionMaskOptions): Mask
+static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRefractionMaskOptions): Mask
 ```
 
 创建一个模拟棱镜色散效果的扫光折射遮罩 Mask 实例。该遮罩会在组件上生成一条带有颜色分离效果的扫光光带。
@@ -497,7 +610,7 @@ static createSweepRefractionMask(param: SweepRefractionParam,
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-Mask-static createSweepRefractionMask(param: SweepRefractionParam,      options?: SweepRefractionMaskOptions): Mask--><!--Device-Mask-static createSweepRefractionMask(param: SweepRefractionParam,      options?: SweepRefractionMaskOptions): Mask-End-->
+<!--Device-Mask-static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRefractionMaskOptions): Mask--><!--Device-Mask-static createSweepRefractionMask(param: SweepRefractionParam, options?: SweepRefractionMaskOptions): Mask-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -516,6 +629,7 @@ static createSweepRefractionMask(param: SweepRefractionParam,
 | --- | --- |
 | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 返回带有扫光折射效果的 Mask。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -583,6 +697,8 @@ struct SweepRefractionExample {
 }
 ```
 
+<!--DelEnd-->
+
 ## createUseEffectMask
 
 ```TypeScript
@@ -615,8 +731,9 @@ static createUseEffectMask(useEffect: boolean): Mask
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -675,6 +792,8 @@ struct Index {
 }
 ```
 
+<!--DelEnd-->
+
 ## createWarpedRingMask
 
 ```TypeScript
@@ -705,6 +824,7 @@ static createWarpedRingMask(ringParam: WarpedRingParam): Mask
 | --- | --- |
 | [Mask](arkts-arkgraphics2d-uieffect-mask-c-sys.md) | 返回带有扭曲光环蒙版效果的 Mask。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -746,6 +866,8 @@ struct example {
 }
 ```
 
+<!--DelEnd-->
+
 ## createWaveGradientMask
 
 ```TypeScript
@@ -783,8 +905,9 @@ static createWaveGradientMask(center: common2D.Point, width: number, propagation
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | 权限校验失败，非系统应用调用系统接口。 |
+| [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -806,3 +929,5 @@ struct WaveGradientMaskExample {
   }
 }
 ```
+
+<!--DelEnd-->

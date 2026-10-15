@@ -12,19 +12,19 @@ Enumerates the video call component groups. They are used only when [PiPTemplate
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## MICROPHONE_SWITCH
+## CAMERA_SWITCH
 
 ```TypeScript
-MICROPHONE_SWITCH = 201
+CAMERA_SWITCH = 203
 ```
 
-Microphone on/off component group.
+Camera on/off component group.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201--><!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201-End-->
+<!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203--><!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -38,25 +38,25 @@ Hang-up component group.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202--><!--Device-VideoCallControlGroup-HANG_UP_BUTTON = 202-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
-## CAMERA_SWITCH
+## MICROPHONE_SWITCH
 
 ```TypeScript
-CAMERA_SWITCH = 203
+MICROPHONE_SWITCH = 201
 ```
 
-Camera on/off component group.
+Microphone on/off component group.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203--><!--Device-VideoCallControlGroup-CAMERA_SWITCH = 203-End-->
+<!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201--><!--Device-VideoCallControlGroup-MICROPHONE_SWITCH = 201-End-->
 
 **System capability:** SystemCapability.Window.SessionManager
 
@@ -70,7 +70,7 @@ Mute/Unmute component group.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-VideoCallControlGroup-MUTE_SWITCH = 204--><!--Device-VideoCallControlGroup-MUTE_SWITCH = 204-End-->
 

@@ -50,6 +50,7 @@ snapshot: image.PixelMap
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -84,3 +85,5 @@ try {
   console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

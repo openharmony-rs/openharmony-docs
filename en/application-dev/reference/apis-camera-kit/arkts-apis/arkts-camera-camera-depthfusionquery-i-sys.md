@@ -49,6 +49,7 @@ Obtains the depth fusion threshold.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,6 +65,8 @@ function getDepthFusionThreshold(DepthFusionQuery: camera.DepthFusionQuery): voi
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## isDepthFusionSupported
 
@@ -94,6 +97,7 @@ Checks whether depth fusion is supported.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,3 +113,5 @@ function isDepthFusionSupported(DepthFusionQuery: camera.DepthFusionQuery): void
   }
 }
 ```
+
+<!--DelEnd-->

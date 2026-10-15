@@ -36,8 +36,11 @@ function getAuthorizationManager(): AuthorizationManager
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let authorizationManager: osAccount.AuthorizationManager = osAccount.getAuthorizationManager();
 ```
+
+<!--DelEnd-->

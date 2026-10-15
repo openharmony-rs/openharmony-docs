@@ -29,7 +29,7 @@ function getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Pro
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | uid | number | 是 | 指定查询的应用 UID。 |
-| networkInfo | NetworkInfo | 是 | 指定查询的网络信息，参见NetworkInfo。 |
+| networkInfo | [NetworkInfo](arkts-network-statistics-networkinfo-i.md) | 是 | 指定查询的网络信息，参见[NetworkInfo](arkts-network-statistics-networkinfo-i.md)。 |
 
 **返回值：**
 
@@ -49,6 +49,7 @@ function getTrafficStatsByUidNetwork(uid: number, networkInfo: NetworkInfo): Pro
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 | [2103017](../errorcode-net-statistics.md#2103017-读取数据库失败) | Failed to read the database. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,3 +69,5 @@ statistics.getTrafficStatsByUidNetwork(uid, networkInfo).then((statsInfoSequence
   }
 })
 ```
+
+<!--DelEnd-->

@@ -67,9 +67,9 @@ Defines the constructor of TextInput.
 
 ## Examples
 
-### Example 1 (Setting and Obtaining the Cursor Position)
+### Example 1: Setting and Obtaining the Caret Position
 
-Since API version 8, this example implements the setting and obtaining of the cursor position through [controller](arkts-arkui-textinput-comp-textinputcontroller-c.md). In addition, the two-way data binding of the text parameter can be implemented using !! (since API version 18).
+This example demonstrates how to set and obtain the caret position using [controller](arkts-arkui-textinput-comp-textinputcontroller-c.md), available since API version 8. You can use !! to implement two-way data binding for the text parameter, available since API version 18.
 
 
 
@@ -79,9 +79,9 @@ Since API version 8, this example implements the setting and obtaining of the cu
 @Component
 struct TextInputExample {
   @State text: string = '';
-  // index: index of the cursor position
-  // x: x-coordinate of the cursor relative to the input box, in px
-  // y: y-coordinate of the cursor relative to the input box, in px
+  // index: Index of the caret position.
+  // x: X coordinate of the caret relative to the text box, in px.
+  // y: Y coordinate of the caret relative to the text box, in px.
   @State positionInfo: CaretOffset = { index: 0, x: 0, y: 0 }; 
   @State passwordState: boolean = false;
   controller: TextInputController = new TextInputController();
@@ -104,16 +104,16 @@ struct TextInputExample {
       Button('Set caretPosition 1')
         .margin(15)
         .onClick(() => {
-          // Move the cursor to the position after the first character.
+          // Move the caret to after the first entered character.
           this.controller.caretPosition(1);
         })
       Button('Get CaretOffset')
         .margin(15)
         .onClick(() => {
-          // Obtain the position of the cursor relative to the input box.
+          // Obtain the position of the caret relative to the text box.
           this.positionInfo = this.controller.getCaretOffset();
         })
-      // Password input box
+      // Password text box.
       TextInput({ placeholder: 'input your password...' })
         .width('95%')
         .height(40)
@@ -123,18 +123,18 @@ struct TextInputExample {
         .showPasswordIcon(true)
         .showPassword(this.passwordState)
         .onSecurityStateChange(((isShowPassword: boolean) => {
-          // Update the password display state.
+          // Update the password visibility.
           console.info('isShowPassword', isShowPassword);
           this.passwordState = isShowPassword;
         }))
-      // Email address auto-fill type
+      // Email address autofill.
       TextInput({ placeholder: 'input your email...' })
         .width('95%')
         .height(40)
         .margin(20)
         .contentType(ContentType.EMAIL_ADDRESS)
         .maxLength(9)
-      // Inline style input box
+      // Inline-style text box.
       TextInput({ text: 'inline style' })
         .width('95%')
         .height(50)
@@ -146,9 +146,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 2 (Set Underline)
+### Example 2: Setting Underlines
 
-Supported since API version 10, this example uses the [showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline), [showError](#showerror10), [showUnit](arkts-arkui-textinput-comp-attribute.md#showunit), and [passwordIcon](#passwordicon10) attributes to demonstrate the effect of the underline in different scenarios. In addition, the underline color can be configured through [underlineColor](#underlinecolor12) (supported since API version 12).
+This example demonstrates the display effects of underlines in different scenarios through [showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline), [showError](#showerror10), [showUnit](arkts-arkui-textinput-comp-attribute.md#showunit), and [passwordIcon](#passwordicon10) attributes, available since API version 10. The [underlineColor](#underlinecolor12) attribute (available since API version 12) can be used to configure the underline color.
 
 
 
@@ -157,9 +157,9 @@ Supported since API version 10, this example uses the [showUnderline](arkts-arku
 @Entry
 @Component
 struct TextInputExample {
-  // $r('app.media.ImageOne') needs to be replaced with the image resource file required by the developer.
+  // Replace $r('app.media.ImageOne') with the image resource file you use.
   @State passWordSrc1: Resource = $r('app.media.ImageOne'); 
-  // $r('app.media.ImageTwo') needs to be replaced with the image resource file required by the developer.
+  // Replace $r('app.media.ImageTwo') with the image resource file you use.
   @State passWordSrc2: Resource = $r('app.media.ImageTwo'); 
   @State textError: string = '';
   @State text: string = '';
@@ -194,13 +194,13 @@ struct TextInputExample {
 
   build() {
     Column({ space: 20 }) {
-      // Custom password display icon
+      // Customize the password icon.
       TextInput({ placeholder: 'user define password icon' })
         .type(InputType.Password)
         .width(350)
         .height(60)
         .passwordIcon({ onIconSrc: this.passWordSrc1, offIconSrc: this.passWordSrc2 })
-      // Underline mode
+      // Show an underline.
       TextInput({ placeholder: 'underline style' })
         .showUnderline(true)
         .width(350)
@@ -208,9 +208,9 @@ struct TextInputExample {
         .showError('Error')
         .showUnit(this.itemEnd)
 
-      Text(`Username: ${this.text}`)
+      Text(`User name: ${this.text}`)
         .width(350)
-      TextInput({ placeholder: 'Please enter the username', text: this.text })
+      TextInput({ placeholder: 'Enter user name', text: this.text })
         .showUnderline(true)
         .width(350)
         .showError(this.textError)
@@ -218,18 +218,18 @@ struct TextInputExample {
           this.text = value;
         })
         .onSubmit((enterKey: EnterKeyType, event: SubmitEvent) => {
-          // If the username is incorrect, the input box and username are cleared and an error message is displayed
+          // If the entered user name is incorrect, clear the text box and display an error message.
           if (this.text == this.nameText) {
             this.textError = '';
           } else {
-            this.textError = 'Incorrect username';
+            this.textError = 'Incorrect user name.';
             this.text = '';
-            // Call the keepEditableState method to keep the input box in the editing state.
+            // Call keepEditableState to maintain the editable state of the text box.
             event.keepEditableState();
           }
         })
-      // Set the underline color.
-      TextInput({ placeholder: 'Hint text content.' })
+      // Set the color of the underline.
+      TextInput({ placeholder: 'Placeholder text' })
         .width(350)
         .showUnderline(true)
         .underlineColor({
@@ -238,7 +238,7 @@ struct TextInputExample {
           error: Color.Red,
           disable: Color.Gray
         })
-      TextInput({ placeholder: 'Hint text content.' })
+      TextInput({ placeholder: 'Placeholder text' })
         .width(350)
         .showUnderline(true)
         .underlineColor(Color.Gray);
@@ -248,11 +248,11 @@ struct TextInputExample {
 }
 ```
 
-### Example 3 (Setting a Custom Keyboard)
+### Example 3: Implementing a Custom Keyboard
 
-This example uses the [customKeyboard](#customkeyboard10) attribute (available since API version 10) to set the input parameter type in value to [CustomBuilder](ts-types.md#custombuilder8) and ComponentContent, respectively, implementing a custom keyboard.
+This example implements a custom keyboard using the [customKeyboard](#customkeyboard10) attribute (available since API version 10) to set the input parameter type in value to [CustomBuilder](ts-types.md#custombuilder8) and ComponentContent.
 
-Since API version 22, the [customKeyboard](#customkeyboard10) attribute adds the input parameter type ComponentContent.
+Since API version 22, ComponentContent is added to the input parameter type of [customKeyboard](#customkeyboard10).
 
 
 
@@ -273,7 +273,7 @@ function CustomKeyboardBuilder(builderParams: BuilderParams) {
   Column() {
     Row() {
       Button('x').onClick(() => {
-        // Close the custom keyboard.
+        // Disable the custom keyboard.
         builderParams.controller.stopEditing();
       }).margin(10)
     }
@@ -300,7 +300,7 @@ struct TextInputExample {
   @State supportAvoidance: boolean = true;
 
   aboutToAppear(): void {
-    // Create the ComponentContent.
+    // Create a ComponentContent instance.
     this.componentContent = new ComponentContent(this.getUIContext(), wrapBuilder(CustomKeyboardBuilder), this.builderParam);
   }
   build(){
@@ -319,9 +319,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 4: Setting the Style of the Clear Button on the Right
+### Example 4: Customizing the Cancel Button Style on the Right
 
-This example uses the [cancelButton](#cancelbutton11) attribute to demonstrate the effect of customizing the style of the clear button on the right.
+This example demonstrates how to use the [cancelButton](#cancelbutton11) attribute to customize the style of the cancel button on the right side of the text box.
 
 
 
@@ -342,7 +342,7 @@ struct TextInputExample {
           style: CancelButtonStyle.CONSTANT,
           icon: {
             size: 45,
-            // Replace $r('app.media.startIcon') with the image resource file required by the developer.
+            // Replace $r('app.media.startIcon') with the image resource file you use.
             src: $r('app.media.startIcon'),
             color: Color.Blue
           }
@@ -355,9 +355,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 5 (Setting the Counter)
+### Example 5: Setting a Character Counter
 
-This example implements the counter function through the [maxLength](#maxlength), [showCounter](#showcounter11) (available since API version 11), and [showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline) (available since API version 10) attributes.
+This example demonstrates how to implement a character counter using the [maxLength](#maxlength), [showCounter](#showcounter11) (available since API version 11), and [showUnderline](arkts-arkui-textinput-comp-attribute.md#showunderline) (available since API version 10) attributes.
 
 
 
@@ -379,9 +379,9 @@ struct TextInputExample {
         .showUnderline(true)
         .showCounter(true,
           { thresholdPercentage: 50, highlightBorder: true })
-          // The counter displays the current number of input characters / the maximum character limit. The maximum character limit is set through the maxLength() API.
-          // If the current number of input characters reaches 50% of the maximum character limit (thresholdPercentage), the character counter is displayed.
-          // When the user sets highlightBorder to false, the red border is removed. When this parameter is not set, the default value is true.
+          // The character counter is in this format: Number of characters that have been entered/Maximum number of characters allowed, which is specified by maxLength().
+          // The character counter is displayed when the number of characters that have been entered is greater than or equal to the maximum number of characters multiplied by 50% (threshold percentage).
+          // When highlightBorder is set to false, the text box border does not turn red when the input exceeds the maximum character limit. The default value is true.
         .onChange((value: string) => {
           this.text = value;
         })
@@ -390,9 +390,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 6 (Phone Number Formatting)
+### Example 6: Formatting a Phone Number
 
-This example uses the [onChange](#onchange) callback to format a phone number as XXX XXXX XXXX.
+This example demonstrates how to format a phone number as "XXX XXXX XXXX" through the [onChange](#onchange) callback.
 
 
 
@@ -404,8 +404,8 @@ struct TextInputExample {
   @State text: string = '';
   public readonly NUM_TEXT_MAXSIZE_LENGTH = 13;
   @State telNumberNoSpace: string = '';
-  @State nextCaret: number = -1; // Record the position for the next caret setting.
-  @State actualCh: number = -1; // Record the caret position for insertion after the i-th digit or deletion before the i-th digit.
+  @State nextCaret: number = -1; // Used to record the position for the next caret setting.
+  @State actualCh: number = -1; // Used to record the insertion or deletion position relative to the i-th digit of the caret.
   @State lastCaretPosition: number = 0;
   @State lastCaretPositionEnd: number = 0;
   controller: TextInputController = new TextInputController();
@@ -419,7 +419,7 @@ struct TextInputExample {
     let isRule: RegExp = new RegExp('^\\+.*');
 
     if (isSpace.test(numText)) {
-      // If the phone number contains special characters, do not add spaces.
+      // If the phone number contains special characters, no space is added.
       if (isRule.test(numText)) {
         return true;
       } else {
@@ -447,7 +447,7 @@ struct TextInputExample {
   calcCaretPosition(nextText: string) {
     let befNumberNoSpace: string = this.removeSpace(this.text);
     this.actualCh = 0;
-    if (befNumberNoSpace.length < this.telNumberNoSpace.length) { // Insertion scenario.
+    if (befNumberNoSpace.length < this.telNumberNoSpace.length) { // Insertion scenario
       for (let i = 0; i < this.lastCaretPosition; i++) {
         if (this.text[i] != ' ') {
           this.actualCh += 1;
@@ -464,11 +464,11 @@ struct TextInputExample {
           }
         }
       }
-    } else if (befNumberNoSpace.length > this.telNumberNoSpace.length) { // Deletion scenario.
+    } else if (befNumberNoSpace.length > this.telNumberNoSpace.length) { // Deletion scenario
       if (this.lastCaretPosition === this.text.length) {
         console.info('Caret at last, no need to change');
       } else if (this.lastCaretPosition === this.lastCaretPositionEnd) {
-        // Scenario of deleting characters one by one using the backspace key.
+        // Scenario where the backspace key on the keyboard is used to delete characters one by one
         for (let i = this.lastCaretPosition; i < this.text.length; i++) {
           if (this.text[i] != ' ') {
             this.actualCh += 1;
@@ -484,8 +484,8 @@ struct TextInputExample {
           }
         }
       } else {
-        // Scenario of deleting multiple characters at once by cutting or handle selection.
-        this.nextCaret = this.lastCaretPosition; // Keep the caret position.
+        // When cutting or selecting text with a handle to delete multiple characters at once
+        this.nextCaret = this.lastCaretPosition; // Maintain the caret position.
       }
     }
   }
@@ -497,7 +497,7 @@ struct TextInputExample {
           .onChange((value: string) => {
             this.telNumberNoSpace = this.removeSpace(value);
             let nextText: string = '';
-            // Determine the formatting method based on the phone number length: if the length exceeds the limit, do not format; otherwise, insert spaces in the 'XXX XXXX XXXX' format.
+            // Determine the formatting method based on the length of the phone number. If the length exceeds the limit, do not format the number. Otherwise, insert spaces in the format of 'XXX XXXX XXXX'.
             if (this.telNumberNoSpace.length > this.NUM_TEXT_MAXSIZE_LENGTH - 2) {
               nextText = this.telNumberNoSpace;
             } else if (this.checkNeedNumberSpace(value)) {
@@ -518,7 +518,7 @@ struct TextInputExample {
             }
             console.info('onChange Triggered:' + this.text + '|' + nextText + '|' + value);
             if (this.text === nextText && nextText === value) {
-              // This indicates that the number has been formatted. At this point, changing the cursor position will not be reset.
+              // The number has been formatted. Changing the caret position at this time will not reset the number.
               this.setCaret();
             } else {
               this.calcCaretPosition(nextText);
@@ -526,11 +526,11 @@ struct TextInputExample {
             this.text = nextText;
           })
           .onTextSelectionChange((selectionStart, selectionEnd) => {
-            // Record the cursor position.
+            // Record the caret position.
             console.info('selection change: ', selectionStart, selectionEnd);
             this.lastCaretPosition = selectionStart;
             this.lastCaretPositionEnd = selectionEnd;
-          })// Supported since API version 10.
+          }) // Supported since API version 10.
       }
     }
     .width('100%')
@@ -539,9 +539,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 7 (Setting Text Line Break Rules)
+### Example 7: Setting Text Wrapping Rules
 
-Starting from API version 12, this example uses the [wordBreak](#wordbreak12) attribute to demonstrate the effects of different line break rules for TextInput.
+This example demonstrates the effects of different text wrapping rules using the [wordBreak](#wordbreak12) attribute, available since API version 12.
 
 
 
@@ -553,21 +553,21 @@ struct TextInputExample {
   @State textStrEn: string =
     'This is set wordBreak to WordBreak text Taumatawhakatangihangakoauauotamateaturipukakapikimaungahoronukupokaiwhenuakitanatahu.';
   @State textStrZn: string =
-    'Multiline text input component. When the entered text content exceeds the component width, it automatically wraps to a new line. \n When the height is not set, the component has no default height and adapts to the content height. When the width is not set, it fills the maximum width by default.';
+    '多行文本输入框组件，当输入的文本内容超过组件宽度时会自动换行显示。\n高度未设置时，组件无默认高度，自适应内容高度。宽度未设置时，默认撑满最大宽度。';
 
   build() {
     Row() {
       Column() {
-        Text('Style of TextInput in inline mode with the wordBreak attribute set to NORMAL:').fontSize(16).fontColor(0xCCCCCC)
+        Text('wordBreak as NORMAL in the inline style: ').fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrEn
         })
           .margin(10)
           .fontSize(16)
-          .style(TextInputStyle.Inline)// Inline mode
-          .wordBreak(WordBreak.NORMAL) // This attribute is invalid in non-inline mode
+          .style(TextInputStyle.Inline) // Inline style
+          .wordBreak(WordBreak.NORMAL) // This attribute does not take effect for the non-inline style.
 
-        Text('Style of TextInput in inline mode with English text and the wordBreak attribute set to BREAK_ALL:').fontSize(16).fontColor(0xCCCCCC)
+        Text('wordBreak as BREAK_ALL in the inline style, English text: ').fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrEn
         })
@@ -576,7 +576,7 @@ struct TextInputExample {
           .style(TextInputStyle.Inline)
           .wordBreak(WordBreak.BREAK_ALL)
 
-        Text('Style of TextInput in inline mode with Chinese text and the wordBreak attribute set to BREAK_ALL:').fontSize(16).fontColor(0xCCCCCC)
+        Text('wordBreak as BREAK_ALL in the inline style, Chinese text: ').fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrZn
         })
@@ -585,7 +585,7 @@ struct TextInputExample {
           .style(TextInputStyle.Inline)
           .wordBreak(WordBreak.BREAK_ALL)
 
-        Text('Style of TextInput in inline mode with the wordBreak attribute set to BREAK_WORD:').fontSize(16).fontColor(0xCCCCCC)
+        Text('wordBreak as BREAK_WORD in the inline style: ').fontSize(16).fontColor(0xCCCCCC)
         TextInput({
           text: this.textStrEn
         })
@@ -599,9 +599,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 8 (Set Text Style)
+### Example 8: Setting the Text Style
 
-Since API version 12, this example demonstrates text effects in different styles through the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes.
+This example demonstrates various text styles using the [lineHeight](#lineheight12), [letterSpacing](#letterspacing12), and [decoration](#decoration12) attributes, available since API version 12.
 
 
 
@@ -647,9 +647,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 9 (Setting the Text Feature Effect)
+### Example 9: Setting Font Features
 
-Since API version 12, this example uses the [fontFeature](#fontfeature12) attribute to implement the display effect of text under different text features.
+This example demonstrates how to display text with various typographic features using the [fontFeature](#fontfeature12) attribute, available since API version 12.
 
 
 
@@ -678,9 +678,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 10 (Custom Keyboard Avoidance)
+### Example 10: Setting Custom Keyboard Avoidance
 
-This example uses the [customKeyboard](#customkeyboard10) (available since API version 10) attribute to configure the [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12) (available since API version 12) interface to implement custom keyboard avoidance.
+This example implements the custom keyboard avoidance effect by configuring the [KeyboardOptions](ts-basic-components-richeditor.md#keyboardoptions12) API (available since API version 12) through the [customKeyboard](#customkeyboard10) attribute (available since API version 10).
 
 
 
@@ -694,13 +694,13 @@ struct TextInputExample {
   @State height1: string | number = '80%';
   @State supportAvoidance: boolean = true;
 
-  // Custom keyboard component
+  // Create a custom keyboard component.
   @Builder
   CustomKeyboardBuilder() {
     Column() {
       Row() {
         Button('x').onClick(() => {
-          // Close the custom keyboard
+          // Disable the custom keyboard.
           this.controller.stopEditing();
         }).margin(10)
       }
@@ -739,7 +739,7 @@ struct TextInputExample {
       .width('100%')
       .padding({ bottom: 50 })
 
-      TextInput({ controller: this.controller, text: this.inputValue })// Bind the custom keyboard
+      TextInput({ controller: this.controller, text: this.inputValue }) // Bind to the custom keyboard.
         .customKeyboard(this.CustomKeyboardBuilder(), { supportAvoidance: this.supportAvoidance })
         .margin(10)
         .border({ width: 1 })
@@ -749,9 +749,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 11 (Setting Text Auto-fit)
+### Example 11: Setting Text Auto-Adaptation
 
-Since API version 12, this example implements the text adaptive font size feature through the [minFontSize](#minfontsize12), [maxFontSize](#maxfontsize12), and [heightAdaptivePolicy](#heightadaptivepolicy12) attributes.
+This example implements text auto-adaptation using the [minFontSize](#minfontsize12), [maxFontSize](#maxfontsize12), and [heightAdaptivePolicy](#heightadaptivepolicy12) attributes, all available since API version 12.
 
 
 
@@ -801,9 +801,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 12 (Setting the Line Break Rule)
+### Example 12: Setting Line Break Rules
 
-Since API version 12, this example implements the effects of TextInput under different line break rules through the [lineBreakStrategy](#linebreakstrategy12) attribute.
+This example demonstrates the effects of different line break rules using the [lineBreakStrategy](#linebreakstrategy12) attribute, available since API version 12.
 
 
 
@@ -833,7 +833,7 @@ struct TextInputExample {
         .style(TextInputStyle.Inline)
         .lineBreakStrategy(this.lineBreakStrategy[this.lineBreakStrategyIndex])
       Row() {
-        Button('Current lineBreakStrategy mode:' + this.lineBreakStrategyStr[this.lineBreakStrategyIndex]).onClick(() => {
+        Button('Toggle lineBreakStrategy Value: ' + this.lineBreakStrategyStr[this.lineBreakStrategyIndex]).onClick(() => {
           this.lineBreakStrategyIndex++;
           if (this.lineBreakStrategyIndex > (this.lineBreakStrategyStr.length - 1)) {
             this.lineBreakStrategyIndex = 0;
@@ -845,9 +845,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 13 (Supporting Insert and Delete Callbacks)
+### Example 13: Setting Insert and Delete Callbacks
 
-Since API version 12, this example implements the insert and delete effects through the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12), and [onDidDelete](#ondiddelete12) interfaces.
+This example implements the text insertion and deletion effects using the [onWillInsert](#onwillinsert12), [onDidInsert](#ondidinsert12), [onWillDelete](#onwilldelete12), and [onDidDelete](#ondiddelete12) APIs, available since API version 12.
 
 
 
@@ -867,7 +867,7 @@ struct TextInputExample {
   build() {
     Row() {
       Column() {
-        TextInput({ text: 'TextInput supports insert callback text' })
+        TextInput({ text: 'Insert callbacks' })
           .height(60)
           .onWillInsert((info: InsertValue) => {
             this.insertValue = info.insertValue;
@@ -884,7 +884,7 @@ struct TextInputExample {
         Text('insertValue:' + this.insertValue + '  insertOffset:' + this.insertOffset).height(30)
         Text('currentValue_1:' + this.currentValue_1).height(30)
 
-        TextInput({ text: 'TextInput supports delete callback text b' })
+        TextInput({ text: 'Delete callbacks' })
           .height(60)
           .onWillDelete((info: DeleteValue) => {
             this.deleteValue = info.deleteValue;
@@ -911,9 +911,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 14 (Text Extension Custom Menu)
+### Example 14: Setting Custom Menu Extensions
 
-Since API version 12, this example uses the [editMenuOptions](#editmenuoptions12) interface to set the text content, icon, and callback of custom menu extension items. In addition, menu data can be set in the [onPrepareMenu](ts-text-common.md#properties-1) callback (since API version 20).
+This example implements custom menu extension items for text using the [editMenuOptions](#editmenuoptions12) API (available since API version 12), allowing configuration of text content, icons, and callbacks. Menu data can be configured through the [onPrepareMenu](ts-text-common.md#properties-1) callback (available since API version 20).
 
 
 
@@ -925,7 +925,7 @@ struct TextInputExample {
   @State text: string = 'TextInput editMenuOptions';
   @State endIndex: number = 0;
   onCreateMenu = (menuItems: Array<TextMenuItem>) => {
-    // $r('app.media.startIcon') needs to be replaced with the image resource file required by the developer.
+    // Replace $r('app.media.startIcon') with the image resource file you use.
     // TextMenuItemId.autoFill is supported since API version 23.
     const idsToFilter: TextMenuItemId[] = [
       TextMenuItemId.autoFill
@@ -964,7 +964,7 @@ struct TextInputExample {
     }
     return false;
   }
-  // $r('app.media.startIcon') needs to be replaced with the image resource file required by the developer.
+  // Replace $r('app.media.startIcon') with the image resource file you use.
   onPrepareMenu = (menuItems: Array<TextMenuItem>) => {
     let item1: TextMenuItem = {
       content: 'prepare1_' + this.endIndex,
@@ -997,9 +997,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 15: Setting a Symbol-Type Clear Button
+### Example 15: Setting a Symbol-Type Cancel Button
 
-Starting from API version 18, this example uses the [cancelButton](#cancelbutton18) attribute to demonstrate the effect of customizing the style of the symbol-type clear button on the right.
+This example demonstrates how to set the style of the symbol-type cancel button on the right side within the text box using the [cancelButton](#cancelbutton18) attribute, available from API version 18.
 
 
 
@@ -1026,17 +1026,17 @@ struct TextInputExample {
 }
 ```
 
-### Example 16 (Setting the Text Ellipsis Mode)
+### Example 16: Setting Text Overflow
 
-This example uses the [textOverflow](#textoverflow12), [ellipsisMode](#ellipsismode18), and [style](#style9) attributes to demonstrate the effect of truncating overlong text and adjusting the ellipsis position. Through the MULTILINE_START and MULTILINE_CENTER types, it implements the effect of placing the ellipsis at the beginning and in the middle of the line in single-line and multi-line text scenarios.
+This example demonstrates text ellipsis for overflow content and ellipsis position adjustment using the [textOverflow](#textoverflow12), [ellipsisMode](#ellipsismode18), and [style](#style9) attributes. The MULTILINE_START and MULTILINE_CENTER types are used to implement ellipsis at the start and middle positions for both single-line and multi-line text scenarios.
 
-Since API version 9, the style of the input box can be set through [style](#style9).
+The [style](#style9) attribute can be used to set the text box style, available since API version 9.
 
-Since API version 12, the display mode of overlong text can be set through [textOverflow](#textoverflow12).
+The [textOverflow](#textoverflow12) attribute can be used to set the display mode for overflow text, available since API version 12.
 
-Since API version 18, the ellipsis position can be set through [ellipsisMode](#ellipsismode18).
+The [ellipsisMode](#ellipsismode18) attribute can be used to set the ellipsis position, available since API version 18.
 
-Since API version 24, the MULTILINE_START and MULTILINE_CENTER enums are added to [EllipsisMode](ts-appendix-enums.md#ellipsismode11).
+The MULTILINE_START and MULTILINE_CENTER enums are added to the [EllipsisMode](ts-appendix-enums.md#ellipsismode11) attribute since API version 24.
 
 
 
@@ -1052,7 +1052,7 @@ struct EllipsisModeExample {
   @State ellipsisModeIndex: number = 0;
   @State ellipsisMode: (EllipsisMode | undefined | null)[] =
     [EllipsisMode.END, EllipsisMode.START, EllipsisMode.CENTER, EllipsisMode.MULTILINE_START,
-      EllipsisMode.MULTILINE_CENTER]; // Since API version 24, MULTILINE_START and MULTILINE_CENTER are added.
+      EllipsisMode.MULTILINE_CENTER]; // MULTILINE_START and MULTILINE_CENTER are added since API version 24.
   @State ellipsisModeStr: string[] = ['END ', 'START', 'CENTER', 'MULTILINE_START', 'MULTILINE_CENTER'];
   @State textOverflowIndex: number = 0;
   @State textOverflow: TextOverflow[] = [TextOverflow.Ellipsis, TextOverflow.Clip];
@@ -1070,19 +1070,19 @@ struct EllipsisModeExample {
           .style(this.styleInput[this.styleInputIndex])
           .fontSize(30)
           .margin(30)
-        Button('Change ellipsisMode mode:' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick(() => {
+        Button('ellipsisMode Value: ' + this.ellipsisModeStr[this.ellipsisModeIndex]).onClick(() => {
           this.ellipsisModeIndex++;
           if (this.ellipsisModeIndex > (this.ellipsisModeStr.length - 1)) {
             this.ellipsisModeIndex = 0;
           }
         }).fontSize(20)
-        Button('Change textOverflow mode:' + this.textOverflowStr[this.textOverflowIndex]).onClick(() => {
+        Button('textOverflow Value: ' + this.textOverflowStr[this.textOverflowIndex]).onClick(() => {
           this.textOverflowIndex++;
           if (this.textOverflowIndex > (this.textOverflowStr.length - 1)) {
             this.textOverflowIndex = 0;
           }
         }).fontSize(20)
-        Button('Change Style Size:' + this.styleInputStr[this.styleInputIndex]).onClick(() => {
+        Button('Style Value: ' + this.styleInputStr[this.styleInputIndex]).onClick(() => {
           this.styleInputIndex++;
           if (this.styleInputIndex > (this.styleInputStr.length - 1)) {
             this.styleInputIndex = 0;
@@ -1094,11 +1094,11 @@ struct EllipsisModeExample {
 }
 ```
 
-### Example 17 (Input Box Supporting Callbacks Such as Input State Change)
+### Example 17: Implementing Callbacks for Input Status Changes and More
 
-Since API version 8, this example uses the [onEditChange](#oneditchange8), [onCopy](#oncopy8), [onCut](#oncut8), [onPaste](#onpaste8), [onContentScroll](#oncontentscroll10) (since API version 10), [onWillCopy](#onwillcopy), and [onWillCut](#onwillcut) APIs to implement the effects of monitoring input state changes, copy, cut, paste, and text content scroll callbacks in the input box, how to block the system copy function, and how to block the system cut function. In addition, you can set the [selectAll](#selectall11) (since API version 11) attribute to determine whether all text is selected in the initial state of the input box.
+This example uses the [onEditChange](#oneditchange8), [onCopy](#oncopy8), [onCut](#oncut8), [onPaste](#onpaste8) (available since API version 8), [onContentScroll](#oncontentscroll10) (available from API version 10), [onWillCopy](#onwillcopy), and [onWillCut](#onwillcut) callbacks to monitor the input status change, implement copy, cut, paste, and content scrolling effects, and disable system copy/cut features. In addition, you can set the [selectAll](#selectall11) (available from API version 11) attribute to select all text in the text box in the initial state.
 
-Since API version 26.0.0, the [onWillCopy](#onwillcopy) and [onWillCut](#onwillcut) APIs are added.
+The [onWillCopy](#onwillcopy) and [onWillCut](#onwillcut) APIs are added since API version 26.0.0.
 
 
 
@@ -1117,7 +1117,7 @@ struct TextInputExample {
   build() {
     Row() {
       Column() {
-        TextInput({ text: 'TextInput supports callbacks when the input state changes' })
+        TextInput({ text: 'TextInput supports the callback on input status changes' })
           .height(60)
           .fontStyle(FontStyle.Italic)
           .fontWeight(FontWeight.Bold)
@@ -1131,13 +1131,13 @@ struct TextInputExample {
           .onEditChange((status: boolean) => {
             this.editStatus = status;
           })
-          .defaultFocus(true)// Set the default focus for TextInput.
+          .defaultFocus(true) // Set the TextInput component to obtain focus by default.
           .enableKeyboardOnFocus(false)
           .selectAll(false)
 
         Text('editStatus:' + this.editStatus).height(30)
 
-        TextInput({ text: 'TextInput supports callbacks for copy operations' })
+        TextInput({ text: 'TextInput supports the callback on copy operations' })
           .height(60)
           .fontStyle(FontStyle.Italic)
           .fontWeight(FontWeight.Bold)
@@ -1157,7 +1157,7 @@ struct TextInputExample {
 
         Text('copyValue:' + this.copyValue).height(30)
 
-        TextInput({ text: 'TextInput supports callbacks for cut operations' })
+        TextInput({ text: 'TextInput supports the callback on cut operations' })
           .height(60)
           .fontStyle(FontStyle.Italic)
           .fontWeight(FontWeight.Bold)
@@ -1177,7 +1177,7 @@ struct TextInputExample {
 
         Text('cutValue:' + this.cutValue).height(30)
 
-        TextInput({ text: 'TextInput supports callbacks for paste operations' })
+        TextInput({ text: 'TextInput supports the callback on paste operations' })
           .height(60)
           .fontStyle(FontStyle.Italic)
           .fontWeight(FontWeight.Bold)
@@ -1192,7 +1192,7 @@ struct TextInputExample {
 
         Text('pasteValue:' + this.pasteValue).height(30)
 
-        TextInput({ text: 'Callback invoked when the text content of TextInput scrolls: the text content width exceeds the input box width, and the text is scrolled to view the offset change.' })
+        TextInput({ text: 'TextInput supports the callback on content scrolling: Scroll the text to see offset changes when the text width exceeds the text box width' })
           .height(60)
           .fontStyle(FontStyle.Italic)
           .fontWeight(FontWeight.Bold)
@@ -1217,13 +1217,13 @@ struct TextInputExample {
 
 ### Example 18: Setting the Minimum and Maximum Font Scale Factors
 
-Since API version 18, this example uses [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18) to set the minimum and maximum font display range (this example uses system APIs, so the application type must be adjusted to a system application; see [Available APIs](../../../reference/development-intro-api.md#available-apis) in HarmonyAppProvision).
+This example demonstrates how to set the minimum and maximum font scale factors using [minFontScale](#minfontscale18) and [maxFontScale](#maxfontscale18), available since API version 18. (This example uses system APIs. The application type needs to be adjusted to a system application. For details, see [Available APIs](../../../reference/development-intro-api.md#available-apis).)
 
 ```TypeScript
-// Enable the application scaling to follow the system.
-// In AppScope/resources/base, create the profile folder.
-// In AppScope/resources/base/profile, create the configuration.json file.
-// In AppScope/resources/base/profile/configuration.json, add the following code.
+// Enable application font scaling to follow system settings.
+// Create a new directory named profile in the following path: AppScope/resources/base.
+// Inside the newly created profile directory, create a file named configuration.json.
+// Add the following code to the configuration.json file:
 {
   "configuration": {
     "fontSizeScale": "followSystem",
@@ -1233,7 +1233,7 @@ Since API version 18, this example uses [minFontScale](#minfontscale18) and [max
 ```
 
 ```TypeScript
-// In AppScope/app.json5, modify the following code.
+// Modify the app.json5 file in AppScope as follows:
 {
   "app": {
     "bundleName": "com.example.myapplication",
@@ -1264,8 +1264,8 @@ struct TextInputExample {
     let configInit: Configuration = {
       fontSizeScale: scale
     };
-    // Update the configuration - font size, and call the system API to update the font configuration.
-    // Configure the ohos.permission.UPDATE_CONFIGURATION permission in the requestPermissions field of the module.json5 file of the project.
+    // Update system font scaling.
+    // Add the ohos.permission.UPDATE_CONFIGURATION permission to the requestPermissions field in the module.json5 file of the project.
     abilityManager.updateConfiguration(configInit, (err: BusinessError) => {
       if (err) {
         console.error(`Failed to update configuration. Code: ${err.code}, message: ${err.message}`);
@@ -1279,15 +1279,15 @@ struct TextInputExample {
   build() {
     Column() {
       Column({ space: 30 }) {
-        Text('Adjust the maximum and minimum font scale factors for text display through minFontScale and maxFontScale.')
+        Text('Use minFontScale and maxFontScale to adjust the maximum and minimum font scale factors of the text display.')
         TextInput({
           placeholder: 'The text area can hold an unlimited amount of text. input your word...',
-          text: 'Adjust the maximum and minimum font scale factors for text display through minFontScale and maxFontScale.'
+          text: 'Use minFontScale and maxFontScale to adjust the maximum and minimum font scale factors of the text display.'
         })
-          .minFontScale(this.minFontScale)// Set the minimum font scale factor. If the parameter is undefined, the system default scale factor is used.
-          .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is undefined, the system default scale factor is used.
+          .minFontScale(this.minFontScale) // Set the minimum font scale factor. If the parameter is set to undefined, the default scale factor is used.
+          .maxFontScale(this.maxFontScale) // Set the maximum font scale factor. If the parameter is set to undefined, the default scale factor is used.
       }.width('100%')
-      // The following buttons are used only to adjust the font scale factor and are not shown in the sample figure.
+      // The following buttons are used only to adjust the font size and are not displayed in the example.
       Column() {
         Row() {
           Button('1x').onClick(() => {
@@ -1312,9 +1312,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 19 (Setting the Text Content of a Selected Area)
+### Example 19: Setting Text Selection for a Specified Region
 
-Since API version 10, this example uses the [setTextSelection](#settextselection10) method to demonstrate how to set the text content of a selected area and the show/hide policy of the menu.
+This example demonstrates how to set text selection for a specified region and the display/hide strategy of the menu using the [setTextSelection](#settextselection10) API, available since API version 10.
 
 
 
@@ -1352,11 +1352,11 @@ struct TextInputExample {
 }
 ```
 
-### Example 20 (Setting Text Stroke)
+### Example 20: Setting Text Stroke
 
-Since API version 20, this example sets the stroke width and color of text through the [strokeWidth](#strokewidth20) and [strokeColor](#strokecolor20) attributes.
+This example demonstrates how to set the stroke width and color for text using the [strokeWidth](#strokewidth20) and [strokeColor](#strokecolor20) attributes, available since API version 20.
 
-Since API version 26.0.0, the [strokeJoinStyle](#strokejoinstyle) interface is added to support setting the corner style of text stroke.
+The [strokeJoinStyle](#strokejoinstyle) API is added since API version 26.0.0 to set the stroke join style for text.
 
 
 
@@ -1400,9 +1400,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 21 (Setting Auto Spacing Between Chinese and Western Text)
+### Example 21: Configuring Automatic Spacing Between Chinese and Western Text
 
-Since API version 20, this example sets auto spacing between Chinese and Western text through the [enableAutoSpacing](#enableautospacing20) attribute.
+This example demonstrates how to configure automatic spacing between Chinese and Western characters using the [enableAutoSpacing](#enableautospacing20) attribute, available since API version 20.
 
 
 
@@ -1414,11 +1414,11 @@ struct TextInputExample {
   build() {
     Row() {
       Column() {
-        Text('Enable auto spacing between Chinese and Western text').margin(5)
-        TextInput({text: 'Chinese and Western Auto Spacing'})
+        Text('Automatic spacing: Enabled').margin(5)
+        TextInput({text: '中文Text'})
           .enableAutoSpacing(true)
-        Text('Disable auto spacing between Chinese and Western text').margin(5)
-        TextInput({text: 'Chinese and Western Auto Spacing'})
+        Text('Automatic spacing: Disabled').margin(5)
+        TextInput({text: '中文Text'})
           .enableAutoSpacing(false)
       }.height('100%')
     }
@@ -1427,9 +1427,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 22 (Setting Character Count Color and Overflow Character Color)
+### Example 22: Setting the Normal and Overflow Colors of the Character Counter
 
-Since API version 22, this example uses the counterTextColor and counterTextOverflowColor of the [showCounter](#showcounter11) attribute to set the character count color and the overflow character color.
+This example demonstrates how to set the normal and overflow colors of the character counter using the counterTextColor and counterTextOverflowColor parameters (available since API version 22) of the [showCounter](#showcounter11) attribute.
 
 
 
@@ -1464,9 +1464,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 23 (Setting the Placeholder Rich Text Style)
+### Example 23: Setting the Placeholder Rich Text Style
 
-Since API version 22, this example sets the placeholder rich text style through the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API.
+This example demonstrates how to set the placeholder rich text style using the [setStyledPlaceholder](ts-universal-attributes-text-style.md#setstyledplaceholder22) API, available since API version 22.
 
 
 
@@ -1477,7 +1477,7 @@ import { LengthMetrics } from '@kit.ArkUI';
 @Component
 struct TextInputExample  {
   styledString: MutableStyledString =
-    new MutableStyledString('Input box rich text: text',
+    new MutableStyledString('Text box rich text: Text',
       [
         {
           start: 0,
@@ -1531,9 +1531,9 @@ struct TextInputExample  {
 }
 ```
 
-### Example 24 (Setting Input Method Extension Information)
+### Example 24: Setting Input Method Extension Information
 
-Since API version 22, this example uses [IMEClient](ts-text-common.md#imeclient20)'s setExtraConfig to set the input method extension information.
+This example demonstrates how to set input method extension information using the setExtraConfig method of [IMEClient](ts-text-common.md#imeclient20), available since API version 22.
 
 ```TypeScript
 // xxx.ets
@@ -1542,13 +1542,13 @@ Since API version 22, this example uses [IMEClient](ts-text-common.md#imeclient2
 struct TextInputExample {
   build() {
     Column() {
-      TextInput({ text: 'Execute the onWillAttachIME callback before the input method is invoked.' })
+      TextInput({ text: 'Execute the onWillAttachIME callback before starting the input method.'})
         .onWillAttachIME((client: IMEClient) => {
-          // Set the input method extension information, including custom attributes and node ID.
+          // Set the extended information of the input method, including the custom attributes and node ID.
           client.setExtraConfig({
             customSettings: {
-              name: 'TextInput', // Custom attribute.
-              id: client.nodeId // Custom attribute.
+              name: 'TextInput', // Custom property
+              id: client.nodeId // Custom Property
             }
           })
         })
@@ -1557,9 +1557,9 @@ struct TextInputExample {
 }
 ```
 
-### Example 25 (Setting the Display Mode of the Scrollbar in the Editing State of Inline Input Style)
+### Example 25: Setting the Scrollbar Display Mode for the Inline Style in the Editing State
 
-Since API version 10, this example uses [barState](#barstate10) to set whether the scrollbar is displayed or hidden in the editing state of inline input style.
+This example demonstrates how to set the scrollbar display or hidden state for the inline style in the editing state using the [barState](#barstate10) API, available since API version 10.
 
 
 
@@ -1567,15 +1567,15 @@ Since API version 10, this example uses [barState](#barstate10) to set whether t
 @Entry
 @Component
 struct TextInputBarStateDemo {
-  @State message: string = 'This is a long text.'.repeat(10)
+  @State message: string = 'This is a long text. '.repeat(10)
 
   build() {
     Column({ space: 20 }) {
-      TextInput({ text: 'Inline mode, set BarState.On,' + this.message })
+      TextInput({ text: 'Inline style, set to BarState.On. ' + this.message })
         .style(TextInputStyle.Inline)
         .barState(BarState.On)
 
-      TextInput({ text: 'Inline mode, set BarState.Off,' + this.message })
+      TextInput({ text: 'Inline style, set to BarState.Off. ' + this.message })
         .style(TextInputStyle.Inline)
         .barState(BarState.Off)
     }
@@ -1587,13 +1587,13 @@ struct TextInputBarStateDemo {
 }
 ```
 
-### Example 26 (Setting Leading Punctuation Compression and Trailing Punctuation Hanging)
+### Example 26: Setting Leading Punctuation Compression and Trailing Punctuation Hanging
 
-This example uses the [compressLeadingPunctuation](#compressleadingpunctuation23) API to set leading punctuation compression, and the [punctuationOverflow](#punctuationoverflow) API to set trailing punctuation hanging.
+This example shows how to use [compressLeadingPunctuation](#compressleadingpunctuation23) to set the punctuation compression at the beginning of a line, and use [punctuationOverflow](#punctuationoverflow) to set the punctuation hanging at the end of a line.
 
-When a punctuation mark with spacing on the left is at the beginning of a line, the punctuation is directly compressed to the left boundary.
+If the punctuation with spacing on the left is at the beginning of the line, the punctuation directly compresses the spacing to the left boundary.
 
-After the text is automatically wrapped, the remaining content (including punctuation marks) must fit into the previous line for punctuation hanging to take effect.
+After the text is automatically wrapped, the punctuation hanging takes effect only when the remaining content (including punctuation) can be placed in the previous line.
 
 Since API version 23, the compressLeadingPunctuation API is added.
 
@@ -1620,16 +1620,16 @@ struct PunctuationDemo {
         .width('45%')
 
       Column() {
-        Button('Enable leading punctuation compression').onClick(() => {
+        Button('Enable Leading Punctuation Compression').onClick(() => {
           this.compressLeadingPunctuation = true;
         }).margin(5)
-        Button('Disable leading punctuation compression').onClick(() => {
+        Button('Disable Leading Punctuation Compression').onClick(() => {
           this.compressLeadingPunctuation = false;
         }).margin(5)
-        Button('Enable trailing punctuation hanging').onClick(() => {
+        Button('Enable Trailing Punctuation Hanging').onClick(() => {
           this.punctuationOverflow = true;
         }).margin(5)
-        Button('Disable trailing punctuation hanging').onClick(() => {
+        Button('Disable Trailing Punctuation Hanging').onClick(() => {
           this.punctuationOverflow = false;
         }).margin(5)
       }
@@ -1638,11 +1638,11 @@ struct PunctuationDemo {
 }
 ```
 
-### Example 27 (Setting Adaptive Spacing)
+### Example 27: Setting Adaptive Spacing
 
-This example uses the [includeFontPadding](#includefontpadding23) API to increase the spacing of the first and last lines, and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
+This example uses the [includeFontPadding](#includefontpadding23) API to add the spacing of the first and last lines and the [fallbackLineSpacing](#fallbacklinespacing23) API to set adaptive line spacing.
 
-Since API version 23, the [includeFontPadding](#includefontpadding23) and [fallbackLineSpacing](#fallbacklinespacing23) APIs are added.
+The [includeFontPadding](#includefontpadding23) and [fallbackLineSpacing](#fallbacklinespacing23) APIs are supported since API version 23.
 
 
 
@@ -1661,7 +1661,7 @@ struct Index {
     Column() {
       TextInput({
         text: this.displayText,
-        placeholder: 'Please enter content...'
+        placeholder: 'Enter'
       })
         .includeFontPadding(this.include)
         .fallbackLineSpacing(this.fallback)
@@ -1681,7 +1681,7 @@ struct Index {
             })
             .margin({ bottom: 10 })
 
-          // --- Buttons related to FallbackLineSpacing ---
+          // --- Button related to FallbackLineSpacing ---
           Button('Set fallbackLineSpacing: ' + this.fallback)
             .onClick(() => {
               this.fallback = this.fallback === false ? true : false;
@@ -1705,11 +1705,11 @@ struct Index {
 }
 ```
 
-### Example 28 (Setting the Backplate Style During Text Dragging)
+### Example 28: Setting the Drag Preview Style for Text Being Dragged
 
-This example uses the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) interface to set the backplate style during text dragging.
+This example demonstrates how to set the drag preview style for text being dragged using the [selectedDragPreviewStyle](#selecteddragpreviewstyle23) API.
 
-Since API version 23, the selectedDragPreviewStyle interface is added.
+The selectedDragPreviewStyle API is supported since API version 23.
 
 
 
@@ -1732,11 +1732,11 @@ struct TextInputTest {
 }
 ```
 
-### Example 29 (Deleting the Last Character in the Text Box)
+### Example 29: Deleting the Last Character in a Text Box
 
-This example calls the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API to delete the last character in the text box.
+This example demonstrates how to delete the last character in a text box using the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API.
 
-Since API version 23, the [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API is added.
+The [deleteBackward](ts-universal-attributes-text-style.md#deletebackward23) API is added since API version 23.
 
 
 
@@ -1748,10 +1748,10 @@ struct Page {
 
   build() {
     Column() {
-      TextInput({ text: 'TextInput input box Deletebackward example', controller: this.controller })
+      TextInput({ text: 'Deletebackward example', controller: this.controller })
       Button('Delete backward')
         .onClick(() => {
-          // Delete the last character in the text box
+          // Delete the last character in the text box.
           this.controller.deleteBackward();
         })
     }
@@ -1759,11 +1759,11 @@ struct Page {
 }
 ```
 
-### Example 30 (Setting the Text Layout Direction)
+### Example 30: Setting the Text Layout Direction
 
-This example sets the text layout direction through the [textDirection](#textdirection23) API.
+This example demonstrates how to set the text layout direction using the [textDirection](#textdirection23) API.
 
-Since API version 23, the textDirection API is added.
+The textDirection API is supported since API version 23.
 
 
 
@@ -1772,11 +1772,11 @@ Since API version 23, the textDirection API is added.
 @Entry
 @Component
 struct TextInputExample {
-  @State text: string = 'TextInput text layout direction example';
+  @State text: string = 'TextInput text direction example';
 
   build() {
     Column() {
-      Text('TextInput text layout direction RTL, layout direction default')
+      Text('TextInput text direction: RTL, component layout direction: default')
         .fontSize(12).width('90%').margin(5)
       TextInput({ text: this.text })
         .width(336)
@@ -1784,7 +1784,7 @@ struct TextInputExample {
         .textDirection(TextDirection.RTL)
         .showCounter(true)
         .maxLength(50)
-      Text('TextInput text layout direction RTL, layout direction default, text horizontal alignment LEFT')
+      Text('TextInput text direction: RTL, component layout direction: default, horizontal alignment: LEFT')
         .fontSize(12).width('90%').margin(5)
       TextInput({ text: this.text })
         .width(336)
@@ -1793,7 +1793,7 @@ struct TextInputExample {
         .showCounter(true)
         .maxLength(50)
         .textAlign(TextAlign.LEFT)
-      Text('TextInput text layout direction LTR, layout direction Rtl')
+      Text('TextInput text direction: LTR, component layout direction: Rtl')
         .fontSize(12).width('90%').margin(5)
       TextInput({ text: this.text })
         .width(336)
@@ -1807,11 +1807,11 @@ struct TextInputExample {
 }
 ```
 
-### Example 31 (Scrolling Text in a Specified Range into the Visible Area)
+### Example 31: Scrolling the Text in a Specified Range to the Visible Area
 
-This example uses [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) to scroll text outside the visible area into the visible area.
+This example demonstrates how to scroll the text in a specified range to the visible area using the [scrollToVisible](./ts-universal-attributes-text-style.md#scrolltovisible23) API.
 
-Since API version 23, the scrollToVisible API is added.
+The scrollToVisible API is supported since API version 23.
 
 
 
@@ -1828,8 +1828,8 @@ struct TextInputExample {
       TextInput({ text: this.text, controller: this.controller })
         .width(336)
         .height(56)
-      Button('Scroll text into the visible area').onClick(()=> {
-        // Scroll characters 22 to 30 into the visible area
+      Button('Scroll Text to Visible Area').onClick(()=> {
+        // Scroll the 22nd to 30th characters to the visible area.
         this.controller.scrollToVisible({ start: 22, end: 30})
       })
     }.width('100%').height('100%').backgroundColor('#F1F3F5')
@@ -1837,19 +1837,19 @@ struct TextInputExample {
 }
 ```
 
-### Example 32 (Whether to Enable Orphan Character Optimization When Setting Text Layout)
+### Example 32: Enabling/Disabling Orphan Character Optimization During Text Typesetting
 
-This example uses the [orphanCharOptimization](#orphancharoptimization) API to enable orphan character optimization, ensuring that no orphan character appears on the last line of a paragraph.
+This example demonstrates how to use the [orphanCharOptimization](#orphancharoptimization) API to enable/disable orphan word optimization, ensuring no orphan character appears in the last line of a paragraph.
 
-Since API version 26.0.0, the orphanCharOptimization API is added.
+The orphanCharOptimization API is supported since API version 26.0.0.
 
-The effect shown in the figure may vary depending on the device size and is for reference only.
+The display effect may vary depending on the device sizes and is for reference only.
 
-Orphan character optimization disabled:
+Disabling orphan character optimization:
 
 
 
-Orphan character optimization enabled:
+Enabling orphan character optimization:
 
 
 
@@ -1858,18 +1858,18 @@ Orphan character optimization enabled:
 @Entry
 @Component
 struct TextExample {
-  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa text aaaaaaaaaaaaa';
+  @State text: string = 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa文本aaaaaaaaaaaaa';
 
   build() {
     Column({ space: 3 }) {
-      Text('TextInput orphan character optimization disabled')
+      Text('TextInput disables orphan character optimization.')
         .fontSize(12).width('90%').margin(5)
       TextInput({ text: this.text })
         .fontSize(20)
         .width('384')
         .borderWidth(1)
         .style(TextInputStyle.Inline)
-      Text('TextInput orphan character optimization enabled')
+      Text('TextInput enables orphan character optimization.')
         .fontSize(12).width('90%').margin(5)
       TextInput({ text: this.text })
         .fontSize(20)
@@ -1884,11 +1884,11 @@ struct TextExample {
 }
 ```
 
-### Example 33 (Setting the Text Shader Effect)
+### Example 33: Setting the Text Shader Effect
 
-This example uses the [shaderStyle](#shaderstyle) API to apply a shader effect to the text in the TextInput component.
+This example demonstrates how to use [shaderStyle](#shaderstyle) to set the text shader effect in the TextInput component.
 
-The shaderStyle API is added since API version 26.0.0.
+Since API version 26.0.0, the shaderStyle API is added.
 
 
 
@@ -1921,14 +1921,14 @@ struct ShaderColorStyle {
     };
   build() {
     Column({ space: 5 }) {
-      Text('Linear gradient with an angle of 45°').fontSize(18).width('90%')
+      Text('Linear gradient with angle setting to 45°').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       TextInput({ text: this.message })
         .fontSize(20)
         .width('80%')
         .height(50)
         .shaderStyle(this.linearGradientOptions1)
-      Text('Linear gradient with direction LeftTop').fontSize(18).width('90%')
+      Text('Linear gradient with direction setting to LeftTop').fontSize(18).width('90%')
         .margin({ top: 40, left: 40 })
       TextInput({ text: this.message })
         .fontSize(20)
@@ -1954,17 +1954,17 @@ struct ShaderColorStyle {
 }
 ```
 
-### Example 34 (Setting the AI Menu for Text Selection)
+### Example 34: Setting an AI Menu for Text Selection
 
-This example configures the AI menu for text selection through [enableSelectedDataDetector](#enableselecteddatadetector22).
+This example demonstrates how to configure the AI menu for text selection using the [enableSelectedDataDetector](#enableselecteddatadetector22) API.
 
-Since API version 22, enableSelectedDataDetector is added.
+The enableSelectedDataDetector API is added in API version 22.
 
 ```TypeScript
 @Entry
 @Component
 struct Demo34 {
-  exampleText: string = 'Example URL: www.example.com';
+  exampleText: string ='Example website: www.example.com';
 
   build() {
     Column() {

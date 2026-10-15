@@ -12,20 +12,6 @@ Enumerates secure communication protocols.
 
 **System capability:** SystemCapability.Request.FileTransferAgent
 
-## TLS
-
-```TypeScript
-TLS = 'TLS'
-```
-
-TLS.
-
-**Since:** 21
-
-<!--Device-SslType-TLS = 'TLS'--><!--Device-SslType-TLS = 'TLS'-End-->
-
-**System capability:** SystemCapability.Request.FileTransferAgent
-
 ## TLCP
 
 ```TypeScript
@@ -37,5 +23,19 @@ TLCP.
 **Since:** 21
 
 <!--Device-SslType-TLCP = 'TLCP'--><!--Device-SslType-TLCP = 'TLCP'-End-->
+
+**System capability:** SystemCapability.Request.FileTransferAgent
+
+## TLS
+
+```TypeScript
+TLS = 'TLS'
+```
+
+TLS.
+
+**Since:** 21
+
+<!--Device-SslType-TLS = 'TLS'--><!--Device-SslType-TLS = 'TLS'-End-->
 
 **System capability:** SystemCapability.Request.FileTransferAgent

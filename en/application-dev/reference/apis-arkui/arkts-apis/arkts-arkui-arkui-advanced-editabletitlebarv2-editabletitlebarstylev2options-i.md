@@ -4,7 +4,7 @@
 export declare interface EditableTitleBarStyleV2Options
 ```
 
-Indicates the style options of the title bar.
+Defines the title bar style configuration options.
 
 **Since:** 26.0.0
 
@@ -24,7 +24,9 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 backgroundBlurStyle?: BlurStyle
 ```
 
-Background blur style
+Background blur style of the title bar. Pass this parameter when a background blur effect is needed for the title bar. If it is not passed, no blur effect is applied.
+
+Default value: **BlurStyle.NONE**, indicating no blur effect.
 
 **Type:** [BlurStyle](../arkts-components/arkts-arkui-common-comp-blurstyle-e.md)
 
@@ -44,7 +46,9 @@ Background blur style
 backgroundColor?: ResourceColor
 ```
 
-Background color
+Background color of the title bar.
+
+Default value: **'#00000000'**, indicating a transparent background.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -64,7 +68,17 @@ Background color
 contentMargin?: LocalizedMargin
 ```
 
-Content margin, supports RTL layout.
+Outer margin of the title bar. Negative values are not supported (they do not take effect).
+
+Default value:
+
+**{
+
+start: LengthMetrics.resource($r('sys.float.margin_left')),
+
+end: LengthMetrics.resource($r('sys.float.margin_right'))
+
+}**.
 
 **Type:** [LocalizedMargin](arkts-arkui-localizedmargin-t.md)
 
@@ -84,7 +98,9 @@ Content margin, supports RTL layout.
 safeAreaEdges?: Array<SafeAreaEdge>
 ```
 
-Indicates the edges of the safe area.
+Edges of the expanded safe area. Pass this parameter when the safe area expansion direction needs to be customized. If it is not passed, the safe area is expanded upward by default.
+
+Default value: **[SafeAreaEdge.TOP]**
 
 **Type:** Array&lt;[SafeAreaEdge](../arkts-components/arkts-arkui-common-comp-safeareaedge-e.md)&gt;
 
@@ -104,7 +120,9 @@ Indicates the edges of the safe area.
 safeAreaTypes?: Array<SafeAreaType>
 ```
 
-Indicates the types of the safe area.
+Types of the expanded safe area. Pass this parameter when the title bar needs to be extended to a specific safe area. If it is not passed, the title bar is extended only to the system safe area.
+
+Default value: **[SafeAreaType.SYSTEM]**
 
 **Type:** Array&lt;[SafeAreaType](../arkts-components/arkts-arkui-common-comp-safeareatype-e.md)&gt;
 

@@ -6,6 +6,8 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
+<a id="getprimaryslotid1"></a>
+
 ## getPrimarySlotId
 
 ```TypeScript
@@ -30,7 +32,7 @@ function getPrimarySlotId(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-输入参数不在处理范围内) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-服务连接失败) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
@@ -51,7 +53,7 @@ radio.getPrimarySlotId((err: BusinessError, data: number) => {
 ```
 
 
-<a id="getprimaryslotid-1"></a>
+<a id="getprimaryslotid2"></a>
 
 ## getPrimarySlotId
 

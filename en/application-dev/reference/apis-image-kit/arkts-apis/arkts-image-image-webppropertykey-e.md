@@ -12,22 +12,6 @@ Enumerates the properties available for the metadata of a WebP image.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## CANVAS_WIDTH
-
-```TypeScript
-CANVAS_WIDTH = 'WebPCanvasWidth'
-```
-
-Canvas Width.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-WebPPropertyKey-CANVAS_WIDTH = 'WebPCanvasWidth'--><!--Device-WebPPropertyKey-CANVAS_WIDTH = 'WebPCanvasWidth'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## CANVAS_HEIGHT
 
 ```TypeScript
@@ -41,6 +25,22 @@ Canvas Height.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-WebPPropertyKey-CANVAS_HEIGHT = 'WebPCanvasHeight'--><!--Device-WebPPropertyKey-CANVAS_HEIGHT = 'WebPCanvasHeight'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## CANVAS_WIDTH
+
+```TypeScript
+CANVAS_WIDTH = 'WebPCanvasWidth'
+```
+
+Canvas Width.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebPPropertyKey-CANVAS_WIDTH = 'WebPCanvasWidth'--><!--Device-WebPPropertyKey-CANVAS_WIDTH = 'WebPCanvasWidth'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -60,22 +60,6 @@ Delay of each frame in milliseconds.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## UNCLAMPED_DELAY_TIME
-
-```TypeScript
-UNCLAMPED_DELAY_TIME = 'WebPUnclampedDelayTime'
-```
-
-Unclamped delay of each frame in milliseconds.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-WebPPropertyKey-UNCLAMPED_DELAY_TIME = 'WebPUnclampedDelayTime'--><!--Device-WebPPropertyKey-UNCLAMPED_DELAY_TIME = 'WebPUnclampedDelayTime'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## LOOP_COUNT
 
 ```TypeScript
@@ -89,5 +73,21 @@ Loop count.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-WebPPropertyKey-LOOP_COUNT = 'WebPLoopCount'--><!--Device-WebPPropertyKey-LOOP_COUNT = 'WebPLoopCount'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## UNCLAMPED_DELAY_TIME
+
+```TypeScript
+UNCLAMPED_DELAY_TIME = 'WebPUnclampedDelayTime'
+```
+
+Unclamped delay of each frame in milliseconds.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-WebPPropertyKey-UNCLAMPED_DELAY_TIME = 'WebPUnclampedDelayTime'--><!--Device-WebPPropertyKey-UNCLAMPED_DELAY_TIME = 'WebPUnclampedDelayTime'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

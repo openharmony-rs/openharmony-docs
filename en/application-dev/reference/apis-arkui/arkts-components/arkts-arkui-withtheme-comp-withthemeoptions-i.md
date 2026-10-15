@@ -4,7 +4,7 @@
 declare interface WithThemeOptions
 ```
 
-Defines the default theme and color mode for components within the **WithTheme** scope.
+Sets the theme colors and dark/light mode for components within the **WithTheme** scope.
 
 **Since:** 12
 
@@ -18,7 +18,7 @@ Defines the default theme and color mode for components within the **WithTheme**
 colorMode?: ThemeColorMode
 ```
 
-Color mode for components in the **WithTheme** scope.
+Used to specify the dark/light mode of the component colors within the scope of WithTheme. Value rules: **ThemeColorMode.SYSTEM** follows the system dark/light mode settings, **ThemeColorMode.DARK** forces the dark mode, and **ThemeColorMode.LIGHT** forces the light mode. When setting the dark/light mode, a dark.json resource file must be added for the setting to take effect.
 
 Default value: **ThemeColorMode.SYSTEM**
 
@@ -40,9 +40,9 @@ Default value: **ThemeColorMode.SYSTEM**
 theme?: CustomTheme
 ```
 
-Default theme for components in the **WithTheme** scope.
+Used to set the custom theme colors of components within the scope of WithTheme.
 
-Default value: **undefined**. The default style follows the [default token style](../../../ui/theme_skinning.md#system-default-token-color-values).
+Default value: **undefined**, which means the default colors follow the system [token default styles](../../../ui/theme_skinning.md#system-default-token-color-values).
 
 **Type:** [CustomTheme](arkts-arkui-withtheme-comp-customtheme-t.md)
 

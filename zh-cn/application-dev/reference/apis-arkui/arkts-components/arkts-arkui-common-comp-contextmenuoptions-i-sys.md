@@ -29,11 +29,11 @@ declare interface ContextMenuOptions
 
 | 接口 | 菜单默认位置 |  
 |------|-------------|  
-| [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindMenu&lt;sup&gt;11+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindmenu-1) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindContextMenu&lt;sup&gt;8+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) | Placement.Top |
-| [bindContextMenu&lt;sup&gt;12+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu-1) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
-| [bindContextMenuWithResponse&lt;sup&gt;23+&lt;/sup&gt;](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse) | Placement.Top |
+| [bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu1) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
+| [bindMenu<sup>11+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindmenu2) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
+| [bindContextMenu<sup>8+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1) | Placement.Top |
+| [bindContextMenu<sup>12+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu2) | [Placement.BottomLeft](../arkts-apis/arkts-arkui-placement-e.md) |
+| [bindContextMenuWithResponse<sup>23+</sup>](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenuwithresponse1) | Placement.Top |
 
 **起始版本：** 10
 
@@ -49,7 +49,7 @@ distortionMode?: DistortionMode
 
 设置菜单的非线性形变动画模式。
 
-**类型：** DistortionMode
+**类型：** [DistortionMode](arkts-arkui-common-comp-distortionmode-e-sys.md)
 
 **默认值：** DistortionMode.DISTORTION_AUTO
 
@@ -71,7 +71,7 @@ edgeLightMode?: EdgeLightMode
 
 设置菜单的流光动画模式。
 
-**类型：** EdgeLightMode
+**类型：** [EdgeLightMode](arkts-arkui-common-comp-edgelightmode-e-sys.md)
 
 **默认值：** EdgeLightMode.EDGELIGHT_DISABLED
 

@@ -23,7 +23,7 @@ Checks whether the device supports NFC.
 
 **Deprecated since:** 9
 
-**Substitutes:** canIUse("SystemCapability.Communication.NFC.Core")
+**Substitutes:** [canIUse](../../apis-arkui/arkts-apis/arkts-arkui-global-caniuse-f.md)("SystemCapability.Communication.NFC.Core")
 
 <!--Device-nfcController-function isNfcAvailable(): boolean--><!--Device-nfcController-function isNfcAvailable(): boolean-End-->
 

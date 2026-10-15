@@ -40,20 +40,6 @@ PRINTER_EVENT_DELETED = 1
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## PRINTER_EVENT_STATE_CHANGED
-
-```TypeScript
-PRINTER_EVENT_STATE_CHANGED = 2
-```
-
-表示打印机状态变化事件。
-
-**起始版本：** 18
-
-<!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2--><!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## PRINTER_EVENT_INFO_CHANGED
 
 ```TypeScript
@@ -65,6 +51,20 @@ PRINTER_EVENT_INFO_CHANGED = 3
 **起始版本：** 18
 
 <!--Device-PrinterEvent-PRINTER_EVENT_INFO_CHANGED = 3--><!--Device-PrinterEvent-PRINTER_EVENT_INFO_CHANGED = 3-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## PRINTER_EVENT_LAST_USED_PRINTER_CHANGED
+
+```TypeScript
+PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5
+```
+
+表示上次使用的打印机的变化事件。
+
+**起始版本：** 18
+
+<!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5--><!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
@@ -82,16 +82,16 @@ PRINTER_EVENT_PREFERENCE_CHANGED = 4
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## PRINTER_EVENT_LAST_USED_PRINTER_CHANGED
+## PRINTER_EVENT_STATE_CHANGED
 
 ```TypeScript
-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5
+PRINTER_EVENT_STATE_CHANGED = 2
 ```
 
-表示上次使用的打印机的变化事件。
+表示打印机状态变化事件。
 
 **起始版本：** 18
 
-<!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5--><!--Device-PrinterEvent-PRINTER_EVENT_LAST_USED_PRINTER_CHANGED = 5-End-->
+<!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2--><!--Device-PrinterEvent-PRINTER_EVENT_STATE_CHANGED = 2-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

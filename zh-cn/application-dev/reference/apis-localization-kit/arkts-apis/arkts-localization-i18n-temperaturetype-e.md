@@ -22,7 +22,7 @@ CELSIUS = 1
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-TemperatureType-CELSIUS = 1--><!--Device-TemperatureType-CELSIUS = 1-End-->
 
@@ -38,7 +38,7 @@ FAHRENHEIT = 2
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-TemperatureType-FAHRENHEIT = 2--><!--Device-TemperatureType-FAHRENHEIT = 2-End-->
 
@@ -54,7 +54,7 @@ KELVIN = 3
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-TemperatureType-KELVIN = 3--><!--Device-TemperatureType-KELVIN = 3-End-->
 

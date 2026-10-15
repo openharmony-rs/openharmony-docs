@@ -38,7 +38,7 @@ Called when API call is complete.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-DownloadRequestOptions-complete?: () => void--><!--Device-DownloadRequestOptions-complete?: () => void-End-->
 
@@ -56,7 +56,7 @@ Called when downloading fails.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-DownloadRequestOptions-fail?: (data: any, code: number) => void--><!--Device-DownloadRequestOptions-fail?: (data: any, code: number) => void-End-->
 
@@ -81,7 +81,7 @@ Called when the files are successfully downloaded.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-basicservices-agent-task-i.md#on)
 
 <!--Device-DownloadRequestOptions-success?: (data: DownloadResponse) => void--><!--Device-DownloadRequestOptions-success?: (data: DownloadResponse) => void-End-->
 
@@ -107,7 +107,7 @@ Download description. The default value is the file name.
 
 **Deprecated since:** 9
 
-**Substitutes:** description
+**Substitutes:** [description](arkts-basicservices-agent-config-i.md#description)
 
 <!--Device-DownloadRequestOptions-description?: string--><!--Device-DownloadRequestOptions-description?: string-End-->
 
@@ -127,7 +127,7 @@ Name of the file to downloaded. The value is obtained from the current request o
 
 **Deprecated since:** 9
 
-**Substitutes:** saveas
+**Substitutes:** [saveas](arkts-basicservices-agent-config-i.md#saveas)
 
 <!--Device-DownloadRequestOptions-filename?: string--><!--Device-DownloadRequestOptions-filename?: string-End-->
 
@@ -147,7 +147,7 @@ Request header.
 
 **Deprecated since:** 9
 
-**Substitutes:** headers
+**Substitutes:** [headers](arkts-basicservices-agent-config-i.md#headers)
 
 <!--Device-DownloadRequestOptions-header?: string--><!--Device-DownloadRequestOptions-header?: string-End-->
 
@@ -167,7 +167,7 @@ Resource URL.
 
 **Deprecated since:** 9
 
-**Substitutes:** url
+**Substitutes:** [url](arkts-basicservices-agent-config-i.md#url)
 
 <!--Device-DownloadRequestOptions-url: string--><!--Device-DownloadRequestOptions-url: string-End-->
 

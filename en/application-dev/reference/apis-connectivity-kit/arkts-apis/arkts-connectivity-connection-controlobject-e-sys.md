@@ -32,24 +32,6 @@ Control object of left ear.
 
 **System API:** This is a system API.
 
-## RIGHT_EAR
-
-```TypeScript
-RIGHT_EAR = 1
-```
-
-Control object of right ear.
-
-**Since:** 15
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ControlObject-RIGHT_EAR = 1--><!--Device-ControlObject-RIGHT_EAR = 1-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
 ## LEFT_RIGHT_EAR
 
 ```TypeScript
@@ -63,6 +45,24 @@ Control object of left and right ear.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ControlObject-LEFT_RIGHT_EAR = 2--><!--Device-ControlObject-LEFT_RIGHT_EAR = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## RIGHT_EAR
+
+```TypeScript
+RIGHT_EAR = 1
+```
+
+Control object of right ear.
+
+**Since:** 15
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ControlObject-RIGHT_EAR = 1--><!--Device-ControlObject-RIGHT_EAR = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

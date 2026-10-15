@@ -4,7 +4,7 @@
 export declare interface Colors
 ```
 
-Defines the struct of Colors.
+Defines the color resources of a theme.
 
 **Since:** 12
 
@@ -24,7 +24,9 @@ import { Colors, CustomColors, Theme, ThemeControl, CustomTheme, CustomDarkColor
 alert: ResourceColor
 ```
 
-System alert Color.
+Alert color.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -44,7 +46,11 @@ System alert Color.
 backgroundEmphasize: ResourceColor
 ```
 
-System emphasize level background color.
+Emphasis background color (solid, opaque).
+
+Note: When this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **brand** is set, the default value of **backgroundEmphasize** in both light mode and dark color mode is the color value of **brand** with 100% transparency.
+
+**Affected components**: [Progress](../arkts-components/arkts-arkui-progress-comp.md), [Button](../arkts-components/arkts-arkui-button-comp.md), and [Slider](../arkts-components/arkts-arkui-slider-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -64,7 +70,9 @@ System emphasize level background color.
 backgroundFourth: ResourceColor
 ```
 
-System fourth level background color.
+Fourth-level background color (solid, opaque).
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -84,7 +92,9 @@ System fourth level background color.
 backgroundPrimary: ResourceColor
 ```
 
-System Primary level background color.
+Primary background color (solid, opaque).
+
+**Affected components**: [TextInput](../arkts-components/arkts-arkui-textinput-comp.md) and
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -104,7 +114,9 @@ System Primary level background color.
 backgroundSecondary: ResourceColor
 ```
 
-System Secondary level background color.
+Secondary background color (solid, opaque).
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -124,7 +136,9 @@ System Secondary level background color.
 backgroundTertiary: ResourceColor
 ```
 
-System tertiary level background color.
+Tertiary background color (solid, opaque).
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -164,7 +178,11 @@ System brand Color.
 compBackgroundEmphasize: ResourceColor
 ```
 
-100% bright brand background color.
+Emphasis background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **brand** is set, the default value of **compBackgroundEmphasize** in light color mode and dark color mode is the color value of **brand** with 100% transparency.
+
+**Affected components**: [Swiper](../arkts-components/arkts-arkui-swiper-comp.md), [Toggle](../arkts-components/arkts-arkui-toggle-comp.md), [Chip](arkts-arkui-arkui-advanced-chip.md), [Checkbox](../arkts-components/arkts-arkui-checkbox-comp.md), [CheckboxGroup](../arkts-components/arkts-arkui-checkboxgroup-comp.md), and [Radio](../arkts-components/arkts-arkui-radio-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -184,7 +202,9 @@ compBackgroundEmphasize: ResourceColor
 compBackgroundFocus: ResourceColor
 ```
 
-CompBackgroundFocus Color
+Background color in the focused state.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -204,7 +224,9 @@ CompBackgroundFocus Color
 compBackgroundGray: ResourceColor
 ```
 
-CompBackgroundGray color.
+Gray background.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -224,7 +246,9 @@ CompBackgroundGray color.
 compBackgroundNeutral: ResourceColor
 ```
 
-Black neutral high gloss color.
+Black, neutral, emphasis background.
+
+**Affected components**: [PatternLock](../arkts-components/arkts-arkui-patternlock-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -244,7 +268,9 @@ Black neutral high gloss color.
 compBackgroundPrimary: ResourceColor
 ```
 
-CompBackgroundPrimary color.
+White background.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -264,7 +290,9 @@ CompBackgroundPrimary color.
 compBackgroundPrimaryContrary: ResourceColor
 ```
 
-CompBackgroundPrimaryContrary color.
+Always-on background.
+
+**Affected components**: [Toggle](../arkts-components/arkts-arkui-toggle-comp.md) and [Slider](../arkts-components/arkts-arkui-slider-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -284,7 +312,9 @@ CompBackgroundPrimaryContrary color.
 compBackgroundPrimaryTran: ResourceColor
 ```
 
-CompBackgroundPrimaryTran color.
+White transparent background.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -304,7 +334,11 @@ CompBackgroundPrimaryTran color.
 compBackgroundSecondary: ResourceColor
 ```
 
-10% black universal control background.
+Secondary background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **container** is set, the default value of **compBackgroundSecondary** in light color mode and dark color mode is the color value of **container** with 10% transparency.
+
+**Affected components**: [Swiper](../arkts-components/arkts-arkui-swiper-comp.md) and [Slider](../arkts-components/arkts-arkui-slider-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -324,7 +358,11 @@ compBackgroundSecondary: ResourceColor
 compBackgroundTertiary: ResourceColor
 ```
 
-5% black universal control background.
+Tertiary background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **container** is set, the default value of **compBackgroundTertiary** in light color mode is the color value of **container** with 5% transparency, and the default value in dark color mode is the color value of **container** with 10% transparency.
+
+**Affected components**: [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md), [Progress](../arkts-components/arkts-arkui-progress-comp.md), [AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer-comp.md), [Button](../arkts-components/arkts-arkui-button-comp.md), [Select](../arkts-components/arkts-arkui-select-comp.md), [Toggle](../arkts-components/arkts-arkui-toggle-comp.md), [Chip](arkts-arkui-arkui-advanced-chip.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md), and [Search](../arkts-components/arkts-arkui-search-comp.md). Since API version 26.0.0, [UIPickerComponent](../arkts-components/arkts-arkui-uipickercomponent-comp.md) and [TextPicker](../arkts-components/arkts-arkui-textpicker-comp.md) are added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -344,7 +382,9 @@ compBackgroundTertiary: ResourceColor
 compCommonContrary: ResourceColor
 ```
 
-CompCommonContrary Color
+Common inverted color.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -364,7 +404,11 @@ CompCommonContrary Color
 compDivider: ResourceColor
 ```
 
-Universal Division Line Color
+Common divider color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **container** is set, the default value of **compDivider** in light color mode and dark color mode is the color value of **container** with 20% transparency.
+
+**Affected components**: [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md), [PatternLock](../arkts-components/arkts-arkui-patternlock-comp.md), and [Divider](../arkts-components/arkts-arkui-divider-comp-attribute.md#dividerattribute). Since API version 26.0.0, [UIPickerComponent](../arkts-components/arkts-arkui-uipickercomponent-comp.md), [TextPicker](../arkts-components/arkts-arkui-textpicker-comp.md), [MenuItem](../arkts-components/arkts-arkui-menuitem-comp.md), [MenuItemGroup](../arkts-components/arkts-arkui-menuitemgroup-comp.md), and [Select](../arkts-components/arkts-arkui-select-comp.md) are added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -384,7 +428,11 @@ Universal Division Line Color
 compEmphasizeSecondary: ResourceColor
 ```
 
-20% High gloss brand background color.
+20% emphasis background color.
+
+Note: When this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **brand** is set, the default value of **compEmphasizeSecondary** in both light mode and dark color mode is the color value of **brand** with 20% transparency.
+
+**Affected components**: [Progress](../arkts-components/arkts-arkui-progress-comp.md), [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbutton-s.md), [AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer-comp.md), [Select](../arkts-components/arkts-arkui-select-comp.md), and [Toggle](../arkts-components/arkts-arkui-toggle-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -404,7 +452,11 @@ compEmphasizeSecondary: ResourceColor
 compEmphasizeTertiary: ResourceColor
 ```
 
-10% High gloss brand background color.
+10% emphasis background color.
+
+Note: When this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **brand** is set, the default value of **compEmphasizeTertiary** in both light mode and dark color mode is the color value of **brand** with 10% transparency.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -424,7 +476,9 @@ compEmphasizeTertiary: ResourceColor
 compFocusedPrimary: ResourceColor
 ```
 
-CompFocusedPrimary Color
+Primary inverted color in the focused state.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -444,7 +498,9 @@ CompFocusedPrimary Color
 compFocusedSecondary: ResourceColor
 ```
 
-CompFocusedSecondary Color
+Secondary inverted color in the focused state.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -464,7 +520,9 @@ CompFocusedSecondary Color
 compFocusedTertiary: ResourceColor
 ```
 
-CompFocusedTertiary Color
+Tertiary inverted color in the focused state.
+
+**Affected components**: [Scroll](../arkts-components/arkts-arkui-scroll-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -484,7 +542,9 @@ CompFocusedTertiary Color
 compForegroundPrimary: ResourceColor
 ```
 
-CompForegroundPrimary color.
+Foreground.
+
+**Affected components**: [QRCode](../arkts-components/arkts-arkui-qrcode-comp-attribute.md#qrcodeattribute)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -504,7 +564,9 @@ CompForegroundPrimary color.
 confirm: ResourceColor
 ```
 
-System confirm Color.
+Confirmation color.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -544,7 +606,9 @@ System container Color.
 fontEmphasize: ResourceColor
 ```
 
-Emphasize text color.
+Emphasis font color.
+
+**Affected components**: [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md), [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md), [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md), [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md), [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md), [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md), [AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer-comp.md), [Popup](arkts-arkui-arkui-advanced-popup.md), [Button](../arkts-components/arkts-arkui-button-comp.md), [Select](../arkts-components/arkts-arkui-select-comp.md), [ToolBar](arkts-arkui-arkui-advanced-toolbar-toolbar-s.md), [Search](../arkts-components/arkts-arkui-search-comp.md), [TimePicker](../arkts-components/arkts-arkui-timepicker-comp.md), [DatePicker](../arkts-components/arkts-arkui-datepicker-comp.md), and [TextPicker](../arkts-components/arkts-arkui-textpicker-comp.md). Since API version 26.0.0, [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md) is added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -564,7 +628,11 @@ Emphasize text color.
 fontFourth: ResourceColor
 ```
 
-Fourth text color.
+Fourth-level font color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **primary** is set, the default value of **fontFourth** in light color mode and dark color mode is the color value of **primary** with 20% transparency.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -584,7 +652,11 @@ Fourth text color.
 fontOnFourth: ResourceColor
 ```
 
-Fourth level text inversion, used on colored backgrounds.
+Fourth-level inverted font color used on color background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **onPrimary** is set, the default value of **fontOnFourth** in light color mode and dark color mode is the color value of **onPrimary** with 20% transparency.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -604,7 +676,11 @@ Fourth level text inversion, used on colored backgrounds.
 fontOnPrimary: ResourceColor
 ```
 
-First level text inversion, used on colored backgrounds.
+Primary inverted font color used on color background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **onPrimary** is set, the default value of **fontOnPrimary** in light color mode and dark color mode is the color value of **onPrimary** with 100% transparency.
+
+**Affected components**: [Badge](../arkts-components/arkts-arkui-badge-comp.md), [Button](../arkts-components/arkts-arkui-button-comp.md), and [Chip](arkts-arkui-arkui-advanced-chip.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -624,7 +700,11 @@ First level text inversion, used on colored backgrounds.
 fontOnSecondary: ResourceColor
 ```
 
-Secondary level text inversion, used on colored backgrounds.
+Secondary inverted font color used on color background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **onPrimary** is set, the default value of **fontOnSecondary** in light color mode and dark color mode is the color value of **onPrimary** with 60% transparency.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -644,7 +724,11 @@ Secondary level text inversion, used on colored backgrounds.
 fontOnTertiary: ResourceColor
 ```
 
-Tertiary level text inversion, used on colored backgrounds.
+Tertiary inverted font color used on color background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **onPrimary** is set, the default value of **fontOnTertiary** in light color mode and dark color mode is the color value of **onPrimary** with 40% transparency.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -664,7 +748,11 @@ Tertiary level text inversion, used on colored backgrounds.
 fontPrimary: ResourceColor
 ```
 
-First level text color.
+Primary font color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **primary** is set, the default value of **fontPrimary** in light color mode and dark color mode is the color value of **primary** with 90% transparency.
+
+**Affected components**: [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md), [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md), [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md), [ConfirmDialog](arkts-arkui-arkui-advanced-dialog-confirmdialog-s.md), [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md), [SelectDialog](arkts-arkui-arkui-advanced-dialog-selectdialog-s.md), [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md), [Swiper](../arkts-components/arkts-arkui-swiper-comp.md), [Text](../arkts-components/arkts-arkui-text-comp.md), [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md), [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbutton-s.md), [AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer-comp.md), [Popup](arkts-arkui-arkui-advanced-popup.md), [Select](../arkts-components/arkts-arkui-select-comp.md), [Chip](arkts-arkui-arkui-advanced-chip.md), [ToolBar](arkts-arkui-arkui-advanced-toolbar-toolbar-s.md), [Menu](../arkts-components/arkts-arkui-menu-comp.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md), [Search](../arkts-components/arkts-arkui-search-comp.md), [TimePicker](../arkts-components/arkts-arkui-timepicker-comp.md), [DatePicker](../arkts-components/arkts-arkui-datepicker-comp.md), [TextPicker](../arkts-components/arkts-arkui-textpicker-comp.md), [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md), and [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md). Since API version 26.0.0, [CalendarPicker](../arkts-components/arkts-arkui-calendarpicker-comp.md), [UIPickerComponent](../arkts-components/arkts-arkui-uipickercomponent-comp.md), [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md), [MenuItem](../arkts-components/arkts-arkui-menuitem-comp.md), [MenuItemGroup](../arkts-components/arkts-arkui-menuitemgroup-comp.md), and [Counter](../arkts-components/arkts-arkui-counter-comp-attribute.md#counterattribute) are added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -684,7 +772,11 @@ First level text color.
 fontSecondary: ResourceColor
 ```
 
-Secondary text color.
+Secondary font color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **primary** is set, the default value of **fontSecondary** in light color mode and dark color mode is the color value of **primary** with 60% transparency.
+
+**Affected components**: [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md), [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md), [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md), [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md), [AlphabetIndexer](../arkts-components/arkts-arkui-alphabetindexer-comp.md), [Popup](arkts-arkui-arkui-advanced-popup.md), [TextInput](../arkts-components/arkts-arkui-textinput-comp.md), [Search](../arkts-components/arkts-arkui-search-comp.md), [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md), [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md), and [TextClock](../arkts-components/arkts-arkui-textclock-comp.md). Since API version 26.0.0, [MenuItem](../arkts-components/arkts-arkui-menuitem-comp.md) and [MenuItemGroup](../arkts-components/arkts-arkui-menuitemgroup-comp.md) are added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -704,7 +796,11 @@ Secondary text color.
 fontTertiary: ResourceColor
 ```
 
-Tertiary text color.
+Tertiary font color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **primary** is set, the default value of **fontTertiary** in light color mode and dark color mode is the color value of **primary** with 40% transparency.
+
+**Affected components**: [ComposeListItem](arkts-arkui-arkui-advanced-composelistitem-composelistitem-s.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -724,7 +820,9 @@ Tertiary text color.
 iconEmphasize: ResourceColor
 ```
 
-Emphasize level icon color.
+Emphasis icon color.
+
+**Affected components**: [ToolBar](arkts-arkui-arkui-advanced-toolbar-toolbar-s.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -744,7 +842,11 @@ Emphasize level icon color.
 iconFourth: ResourceColor
 ```
 
-Fourth level icon color.
+Fourth-level icon color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **primary** is set, the default value of **iconFourth** in light color mode and dark color mode is the color value of **primary** with 20% transparency.
+
+**Affected components**: [Checkbox](../arkts-components/arkts-arkui-checkbox-comp.md), [CheckboxGroup](../arkts-components/arkts-arkui-checkboxgroup-comp.md), and [Radio](../arkts-components/arkts-arkui-radio-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -764,7 +866,11 @@ Fourth level icon color.
 iconOnFourth: ResourceColor
 ```
 
-Fourth level icon reversed, used on a colored background.
+Fourth-level inverted icon color used on color background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **onPrimary** is set, the default value of **iconOnFourth** in light color mode and dark color mode is the color value of **onPrimary** with 20% transparency.
+
+**Affected components**: [ProgressButton](arkts-arkui-arkui-advanced-progressbutton-progressbutton-s.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -784,7 +890,11 @@ Fourth level icon reversed, used on a colored background.
 iconOnPrimary: ResourceColor
 ```
 
-First level icon reversed, used on a colored background.
+Primary inverted icon color used on color background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **onPrimary** is set, the default value of **iconOnPrimary** in light color mode and dark color mode is the color value of **onPrimary** with 100% transparency.
+
+**Affected components**: [Checkbox](../arkts-components/arkts-arkui-checkbox-comp.md), [CheckboxGroup](../arkts-components/arkts-arkui-checkboxgroup-comp.md), and [Radio](../arkts-components/arkts-arkui-radio-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -804,7 +914,11 @@ First level icon reversed, used on a colored background.
 iconOnSecondary: ResourceColor
 ```
 
-Secondary level icon reversed, used on a colored background.
+Secondary inverted icon color used on color background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **onPrimary** is set, the default value of **iconOnSecondary** in light color mode and dark color mode is the color value of **onPrimary** with 60% transparency.
+
+**Affected components**: [Chip](arkts-arkui-arkui-advanced-chip.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -824,7 +938,11 @@ Secondary level icon reversed, used on a colored background.
 iconOnTertiary: ResourceColor
 ```
 
-Tertiary level icon reversed, used on a colored background.
+Tertiary inverted icon color used on color background.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **onPrimary** is set, the default value of **iconOnTertiary** in light color mode and dark color mode is the color value of **onPrimary** with 40% transparency.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -844,7 +962,11 @@ Tertiary level icon reversed, used on a colored background.
 iconPrimary: ResourceColor
 ```
 
-First level icon color.
+Primary icon color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **primary** is set, the default value of **iconPrimary** in light color mode and dark color mode is the color value of **primary** with 90% transparency.
+
+**Affected components**: [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md), [Swiper](../arkts-components/arkts-arkui-swiper-comp.md), [ToolBar](arkts-arkui-arkui-advanced-toolbar-toolbar-s.md), and [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md). Since API version 26.0.0, [MenuItem](../arkts-components/arkts-arkui-menuitem-comp.md) is added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -864,7 +986,11 @@ First level icon color.
 iconSecondary: ResourceColor
 ```
 
-Secondary level icon color.
+Secondary icon color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **primary** is set, the default value of **iconSecondary** in light color mode and dark color mode is the color value of **primary** with 60% transparency.
+
+**Affected components**: [LoadingDialog](arkts-arkui-arkui-advanced-dialog-loadingdialog-s.md), [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md), [Popup](arkts-arkui-arkui-advanced-popup.md), [Chip](arkts-arkui-arkui-advanced-chip.md), [Search](../arkts-components/arkts-arkui-search-comp.md), and [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md). Since API version 26.0.0, [LoadingProgress](../arkts-components/arkts-arkui-loadingprogress-comp.md) is added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -884,7 +1010,9 @@ Secondary level icon color.
 iconSubEmphasize: ResourceColor
 ```
 
-Secondary emphasize level icon color.
+Color of the emphasis auxiliary icon.
+
+**Affected components**: N/A
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -904,7 +1032,11 @@ Secondary emphasize level icon color.
 iconTertiary: ResourceColor
 ```
 
-Tertiary level icon color.
+Tertiary icon color.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **primary** is set, the default value of **iconTertiary** in light color mode and dark color mode is the color value of **primary** with 40% transparency.
+
+**Affected components**: [SubHeader](arkts-arkui-arkui-advanced-subheader-subheader-s.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -924,7 +1056,9 @@ Tertiary level icon color.
 interactiveActive: ResourceColor
 ```
 
-Active interactive color.
+Common interactive color for the active state.
+
+**Affected components**: [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -944,7 +1078,11 @@ Active interactive color.
 interactiveClick: ResourceColor
 ```
 
-Click interactive color.
+Common interactive color for the clicked state.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **container** is set, the default value of **interactiveClick** in light color mode is the color value of **container** with 10% transparency, and the default value in dark color mode is the color value of **container** with 15% transparency.
+
+**Affected components**: [MenuItem](../arkts-components/arkts-arkui-menuitem-comp.md) and [Select](../arkts-components/arkts-arkui-select-comp.md) are added since API version 26.0.0.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -964,7 +1102,11 @@ Click interactive color.
 interactiveFocus: ResourceColor
 ```
 
-Focus interactive color.
+Common interactive color for the focused state.
+
+Note: When this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **brand** is set, the default value of **interactiveFocus** in both light mode and dark color mode is the color value of **brand** with 100% transparency.
+
+**Affected components**: [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md), [Chip](arkts-arkui-arkui-advanced-chip.md), and [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md).
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -984,7 +1126,11 @@ Focus interactive color.
 interactiveHover: ResourceColor
 ```
 
-Hover interactive color.
+Common interactive color for the hover state.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **container** is set, the default value of **interactiveHover** in light color mode is the color value of **container** with 5% transparency, and the default value in dark color mode is the color value of **container** with 10% transparency.
+
+**Affected components**: [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md), [Chip](arkts-arkui-arkui-advanced-chip.md), and [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md). Since API version 26.0.0, [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md), [MenuItem](../arkts-components/arkts-arkui-menuitem-comp.md), and [Select](../arkts-components/arkts-arkui-select-comp.md) are added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -1004,7 +1150,11 @@ Hover interactive color.
 interactivePressed: ResourceColor
 ```
 
-Pressed interactive color.
+Common interactive color for the pressed state.
+
+Note: Since API version 26.0.0, when this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **container** is set, the default value of **interactivePressed** in light color mode is the color value of **container** with 10% transparency, and the default value in dark color mode is the color value of **container** with 15% transparency.
+
+**Affected components**: [EditableTitleBar](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebar-s.md), [Chip](arkts-arkui-arkui-advanced-chip.md), and [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md). Since API version 26.0.0, [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md) is added.
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -1024,7 +1174,11 @@ Pressed interactive color.
 interactiveSelect: ResourceColor
 ```
 
-Select interactive color.
+Common interactive color for the selected state.
+
+Note: When this parameter is used as an attribute of [CustomColors](arkts-arkui-customcolors-t.md), if **brand** is set, the default value of **interactiveSelect** in both light mode and dark color mode is the color value of **brand** with 20% transparency.
+
+**Affected components**: [TreeView](arkts-arkui-arkui-advanced-treeview-treeview-s.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 
@@ -1084,7 +1238,9 @@ System primary Color.
 warning: ResourceColor
 ```
 
-System warning Color.
+Warning color.
+
+Affected components: [TipsDialog](arkts-arkui-arkui-advanced-dialog-tipsdialog-s.md), [AlertDialog](arkts-arkui-arkui-advanced-dialog-alertdialog-s.md), [CustomContentDialog](arkts-arkui-arkui-advanced-dialog-customcontentdialog-s.md), [Badge](../arkts-components/arkts-arkui-badge-comp.md), and [Button](../arkts-components/arkts-arkui-button-comp.md)
 
 **Type:** [ResourceColor](arkts-arkui-resourcecolor-t.md)
 

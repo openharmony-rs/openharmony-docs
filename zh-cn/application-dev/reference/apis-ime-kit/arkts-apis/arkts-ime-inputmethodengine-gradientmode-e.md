@@ -17,20 +17,6 @@ export enum GradientMode
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## NONE
-
-```TypeScript
-NONE = 0
-```
-
-不使用渐变模式。
-
-**起始版本：** 20
-
-<!--Device-GradientMode-NONE = 0--><!--Device-GradientMode-NONE = 0-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
 ## LINEAR_GRADIENT
 
 ```TypeScript
@@ -42,5 +28,19 @@ LINEAR_GRADIENT = 1
 **起始版本：** 20
 
 <!--Device-GradientMode-LINEAR_GRADIENT = 1--><!--Device-GradientMode-LINEAR_GRADIENT = 1-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## NONE
+
+```TypeScript
+NONE = 0
+```
+
+不使用渐变模式。
+
+**起始版本：** 20
+
+<!--Device-GradientMode-NONE = 0--><!--Device-GradientMode-NONE = 0-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

@@ -4,7 +4,13 @@
 export declare enum ToolBarV2ItemState
 ```
 
-Declare enum ToolBarV2ItemState
+Enumerates the states of the toolbar item.
+
+| Name | Value| Description |  
+| -------- | - | --------------- |  
+| ENABLE | 1 | The toolbar item is enabled. |
+| DISABLE | 2 | The toolbar item is disabled. |
+| ACTIVATE | 3 | The toolbar item is activated.|
 
 **Since:** 18
 
@@ -12,13 +18,13 @@ Declare enum ToolBarV2ItemState
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ENABLE
+## ACTIVATE
 
 ```TypeScript
-ENABLE = 1
+ACTIVATE = 3
 ```
 
-Enable type.
+Activate type.
 
 **Since:** 18
 
@@ -26,7 +32,7 @@ Enable type.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ToolBarV2ItemState-ENABLE = 1--><!--Device-ToolBarV2ItemState-ENABLE = 1-End-->
+<!--Device-ToolBarV2ItemState-ACTIVATE = 3--><!--Device-ToolBarV2ItemState-ACTIVATE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +54,13 @@ Disable type.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ACTIVATE
+## ENABLE
 
 ```TypeScript
-ACTIVATE = 3
+ENABLE = 1
 ```
 
-Activate type.
+Enable type.
 
 **Since:** 18
 
@@ -62,6 +68,6 @@ Activate type.
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ToolBarV2ItemState-ACTIVATE = 3--><!--Device-ToolBarV2ItemState-ACTIVATE = 3-End-->
+<!--Device-ToolBarV2ItemState-ENABLE = 1--><!--Device-ToolBarV2ItemState-ENABLE = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -10,7 +10,7 @@ enum SecurityLevel
 
 **废弃版本：** 9
 
-**替代接口：** SecurityLevel
+**替代接口：** [SecurityLevel](arkts-arkdata-distributedkvstore-securitylevel-e.md)
 
 <!--Device-distributedData-enum SecurityLevel--><!--Device-distributedData-enum SecurityLevel-End-->
 
@@ -60,7 +60,7 @@ S1 = 2
 
 **废弃版本：** 9
 
-**替代接口：** S1
+**替代接口：** [S1](arkts-arkdata-distributedkvstore-securitylevel-e.md#s1)
 
 <!--Device-SecurityLevel-S1 = 2--><!--Device-SecurityLevel-S1 = 2-End-->
 
@@ -78,7 +78,7 @@ S2 = 3
 
 **废弃版本：** 9
 
-**替代接口：** S2
+**替代接口：** [S2](arkts-arkdata-distributedkvstore-securitylevel-e.md#s2)
 
 <!--Device-SecurityLevel-S2 = 3--><!--Device-SecurityLevel-S2 = 3-End-->
 
@@ -96,7 +96,7 @@ S3 = 5
 
 **废弃版本：** 9
 
-**替代接口：** S3
+**替代接口：** [S3](arkts-arkdata-distributedkvstore-securitylevel-e.md#s3)
 
 <!--Device-SecurityLevel-S3 = 5--><!--Device-SecurityLevel-S3 = 5-End-->
 
@@ -114,7 +114,7 @@ S4 = 6
 
 **废弃版本：** 9
 
-**替代接口：** S4
+**替代接口：** [S4](arkts-arkdata-distributedkvstore-securitylevel-e.md#s4)
 
 <!--Device-SecurityLevel-S4 = 6--><!--Device-SecurityLevel-S4 = 6-End-->
 

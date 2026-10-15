@@ -6,6 +6,8 @@
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="createaudiocapturer1"></a>
+
 ## createAudioCapturer
 
 ```TypeScript
@@ -62,7 +64,7 @@ audio.createAudioCapturer(audioCapturerOptions, (err, data) => {
 ```
 
 
-<a id="createaudiocapturer-2"></a>
+<a id="createaudiocapturer3"></a>
 
 ## createAudioCapturer
 

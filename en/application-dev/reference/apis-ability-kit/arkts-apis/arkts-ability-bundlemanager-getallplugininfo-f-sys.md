@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAllPluginInfo(hostBundleName: string, userId?: number): Promise<Array<PluginBundleInfo>>
 ```
 
-Obtains all the plugin information in the system based on the given host bundle name and user ID. This API uses a promise to return the result.
+Obtains all PluginBundleInfo based on the given hostBundleName and userId. This API uses a promise to return the result. An empty array may be returned if the API call fails. Verify the return value before using it.
 
 **Since:** 19
 
@@ -35,7 +35,7 @@ Obtains all the plugin information in the system based on the given host bundle 
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;PluginBundleInfo&gt;&gt; | Promise used to return the array of plugin information obtained. |
+| Promise&lt;Array&lt;PluginBundleInfo&gt;&gt; | Promise used to return the result. If the call succeeds, it returns a list of PluginBundleInfo objects; if the call fails, it returns an error object. |
 
 **Error codes:**
 
@@ -46,6 +46,7 @@ Obtains all the plugin information in the system based on the given host bundle 
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -86,3 +87,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllPluginInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

@@ -18,15 +18,15 @@ declare enum PanelType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Minibar
+## CUSTOM
 
 ```TypeScript
-Minibar = 0
+CUSTOM = 3
 ```
 
-提供Minibar和类全屏展示切换效果。
+配置自适应内容高度，不支持尺寸切换效果。
 
-**起始版本：** 7
+**起始版本：** 10
 
 **废弃版本：** 12
 
@@ -34,7 +34,7 @@ Minibar = 0
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-PanelType-Minibar = 0--><!--Device-PanelType-Minibar = 0-End-->
+<!--Device-PanelType-CUSTOM = 3--><!--Device-PanelType-CUSTOM = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -58,6 +58,26 @@ Foldable = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## Minibar
+
+```TypeScript
+Minibar = 0
+```
+
+提供Minibar和类全屏展示切换效果。
+
+**起始版本：** 7
+
+**废弃版本：** 12
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanelType-Minibar = 0--><!--Device-PanelType-Minibar = 0-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## Temporary
 
 ```TypeScript
@@ -75,25 +95,5 @@ Temporary = 2
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PanelType-Temporary = 2--><!--Device-PanelType-Temporary = 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## CUSTOM
-
-```TypeScript
-CUSTOM = 3
-```
-
-配置自适应内容高度，不支持尺寸切换效果。
-
-**起始版本：** 10
-
-**废弃版本：** 12
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-PanelType-CUSTOM = 3--><!--Device-PanelType-CUSTOM = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

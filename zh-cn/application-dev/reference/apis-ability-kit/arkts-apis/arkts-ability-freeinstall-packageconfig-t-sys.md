@@ -6,6 +6,8 @@ export type PackageConfig = _PackInfo.PackageConfig
 
 pack.info的包信息。
 
+**类型：** [_PackInfo.PackageConfig](arkts-ability-bundlepackinfo-packageconfig-i-sys.md)
+
 **起始版本：** 9
 
 <!--Device-freeInstall-export type PackageConfig = _PackInfo.PackageConfig--><!--Device-freeInstall-export type PackageConfig = _PackInfo.PackageConfig-End-->
@@ -13,5 +15,3 @@ pack.info的包信息。
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [_PackInfo.PackageConfig](arkts-ability-bundlepackinfo-packageconfig-i-sys.md)

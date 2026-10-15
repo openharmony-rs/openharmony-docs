@@ -1,12 +1,6 @@
-# @ohos.bundle.freeInstall
+# @ohos.bundle.freeInstall(freeInstall模块)
 
-The module provides APIs for setting and obtaining installation-free information and APIs for obtaining
- BundlePackInfo and DispatchInfo.
-
-> **NOTE**
- >
- > The APIs provided by this module are system APIs.
-
+本模块提供免安装相关的设置和查询能力，支持BundlePackInfo、DispatchInfo等信息的查询。
 
 **起始版本：** 9
 
@@ -29,14 +23,14 @@ import { freeInstall } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo) | 基于bundleName和bundlePackFlag来获取bundlePackInfo。使用callback异步回调。 |
-| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo-1) | 基于bundleName和BundlePackFlag来获取bundlePackInfo。使用Promise异步回调。 |
-| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo) | 获取有关dispatch版本的信息。使用callback异步回调。 |
-| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo-1) | 获取有关dispatch版本的信息。使用Promise异步回调。 |
-| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable) | 查询指定模块是否可以被移除。使用callback异步回调。 |
-| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable-1) | 查询指定模块是否可以被移除。使用Promise异步回调。 |
-| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag) | 设置指定模块是否升级。使用callback异步回调。 |
-| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag-1) | 设置指定模块是否升级。使用Promise异步回调。 |
+| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo1) | 基于bundleName和bundlePackFlag来获取bundlePackInfo。使用callback异步回调。 |
+| [getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md#getbundlepackinfo2) | 基于bundleName和BundlePackFlag来获取bundlePackInfo。使用Promise异步回调。 |
+| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo1) | 获取有关dispatch版本的信息。使用callback异步回调。 |
+| [getDispatchInfo](arkts-ability-freeinstall-getdispatchinfo-f-sys.md#getdispatchinfo2) | 获取有关dispatch版本的信息。使用Promise异步回调。 |
+| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable1) | 查询指定模块是否可以被移除。使用callback异步回调。 |
+| [isHapModuleRemovable](arkts-ability-freeinstall-ishapmoduleremovable-f-sys.md#ishapmoduleremovable2) | 查询指定模块是否可以被移除。使用Promise异步回调。 |
+| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag1) | 设置指定模块是否升级。使用callback异步回调。 |
+| [setHapModuleUpgradeFlag](arkts-ability-freeinstall-sethapmoduleupgradeflag-f-sys.md#sethapmoduleupgradeflag2) | 设置指定模块是否升级。使用Promise异步回调。 |
 <!--DelEnd-->
 
 <!--Del-->
@@ -63,6 +57,6 @@ import { freeInstall } from '@kit.AbilityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | 要查询的应用包标志 |
-| [UpgradeFlag](arkts-ability-freeinstall-upgradeflag-e-sys.md) | 仅供内部系统使用标志位 |
+| [BundlePackFlag](arkts-ability-freeinstall-bundlepackflag-e-sys.md) | 应用包pack.info的信息标志。 |
+| [UpgradeFlag](arkts-ability-freeinstall-upgradeflag-e-sys.md) | 应用模块升级策略的标志。 |
 <!--DelEnd-->

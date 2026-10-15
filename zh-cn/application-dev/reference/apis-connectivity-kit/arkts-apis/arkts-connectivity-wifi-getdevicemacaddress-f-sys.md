@@ -34,6 +34,7 @@ function getDeviceMacAddress(): string[]
 | --- | --- |
 | string[] | MAC地址。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

@@ -84,12 +84,12 @@ ListItem(value?: string)
 
 | 名称 | 说明 |
 | --- | --- |
-| [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | ListItem元素编辑模式枚举。 |
 | [ListItemStyle](arkts-arkui-listitem-comp-listitemstyle-e.md) | ListItem组件卡片样式枚举。 |
 | [ListItemSwipeActionDirection](arkts-arkui-listitem-comp-listitemswipeactiondirection-e.md) | ListItem划出菜单的展开方向。 |
-| [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | ListItem吸顶效果枚举。 |
 | [SwipeActionState](arkts-arkui-listitem-comp-swipeactionstate-e.md) | 列表项滑动状态枚举。 |
 | [SwipeEdgeEffect](arkts-arkui-listitem-comp-swipeedgeeffect-e.md) | 滑动效果枚举。 |
+| [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | ListItem元素编辑模式枚举。 |
+| [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | ListItem吸顶效果枚举。 |
 
 ## 示例
 
@@ -275,13 +275,14 @@ struct ListItemExample3 {
 
 ### 示例4（通过ComponentContent设置划出组件）
 
-该示例通过ComponentContent设置ListItem中的划出组件操作时显示的操作项。
+该示例通过ComponentContent设置ListItem划出组件时显示的操作项。
 
 
 
 ```TypeScript
 // xxx.ets
 import { ComponentContent } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 class BuilderParams {
   text: string | Resource;
@@ -298,7 +299,12 @@ function itemBuilder(params: BuilderParams) {
   Row() {
     Button(params.text).margin(4)
     Button('Set').margin(4).onClick(() => {
-      params.scroller.closeAllSwipeActions();
+      try {
+        params.scroller.closeAllSwipeActions();
+      } catch (err) {
+        let error: BusinessError = err as BusinessError;
+        console.error(`closeAllSwipeActions failed, error code: ${error.code}, message: ${error.message}`);
+      }
     })
   }.padding(4).justifyContent(FlexAlign.SpaceEvenly)
 }
@@ -395,6 +401,7 @@ struct ListItemExample {
 ```TypeScript
 // xxx.ets
 import { BusinessError } from '@kit.BasicServicesKit';
+import { FrameNode } from '@kit.ArkUI';
 
 @Entry
 @Component

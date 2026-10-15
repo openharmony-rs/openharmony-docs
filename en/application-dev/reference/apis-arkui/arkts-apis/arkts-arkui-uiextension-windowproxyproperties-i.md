@@ -32,7 +32,7 @@ Position and size of the component (**EmbeddedComponent** or **UIExtensionCompon
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-WindowProxyProperties-uiExtensionHostWindowProxyRect: window.Rect--><!--Device-WindowProxyProperties-uiExtensionHostWindowProxyRect: window.Rect-End-->
 

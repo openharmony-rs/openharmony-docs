@@ -6,8 +6,6 @@ enum SearchPlayInfoType
 
 表示搜播信息类型的枚举。
 
-@enum { string }
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-enum SearchPlayInfoType--><!--Device-avMusicTemplate-enum SearchPlayInfoType-End-->

@@ -6,6 +6,8 @@ type TextClock = TypedFrameNode<TextClockInterface, TextClockAttribute>
 
 TextClock类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextClockInterface, [TextClockAttribute](../arkts-components/arkts-arkui-textclock-comp-attribute.md)&gt;
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ TextClock类型的FrameNode节点类型。
 <!--Device-typeNode-type TextClock = TypedFrameNode<TextClockInterface, TextClockAttribute>--><!--Device-typeNode-type TextClock = TypedFrameNode<TextClockInterface, TextClockAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;TextClockInterface, [TextClockAttribute](../arkts-components/arkts-arkui-textclock-comp-attribute.md)&gt;

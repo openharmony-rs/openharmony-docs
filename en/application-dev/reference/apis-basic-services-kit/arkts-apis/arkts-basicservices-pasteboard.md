@@ -20,18 +20,18 @@ import { pasteboard } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata) | Creates a **PasteData** object of the specified type. |
-| [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata-1) | Creates a **PasteData** object that contains multiple types of data. |
-| [createHtmlData](arkts-basicservices-pasteboard-createhtmldata-f.md) | Creates a **PasteData** object of the HTML type. |
-| [createHtmlTextRecord](arkts-basicservices-pasteboard-createhtmltextrecord-f.md) | Creates a **PasteDataRecord** object of the HTML text type. |
-| [createPlainTextData](arkts-basicservices-pasteboard-createplaintextdata-f.md) | Creates a **PasteData** object of the plain text type. |
-| [createPlainTextRecord](arkts-basicservices-pasteboard-createplaintextrecord-f.md) | Creates a **PasteDataRecord** object of the plain text type. |
-| [createRecord](arkts-basicservices-pasteboard-createrecord-f.md) | Creates a **PasteDataRecord** object of the specified type. |
-| [createUriData](arkts-basicservices-pasteboard-createuridata-f.md) | Creates a **PasteData** object of the URI type. |
-| [createUriRecord](arkts-basicservices-pasteboard-createurirecord-f.md) | Creates a **PasteDataRecord** object of the URI type. |
-| [createWantData](arkts-basicservices-pasteboard-createwantdata-f.md) | Creates a **PasteData** object of the Want type. |
-| [createWantRecord](arkts-basicservices-pasteboard-createwantrecord-f.md) | Creates a **PasteDataRecord** object of the Want type. |
-| [getSystemPasteboard](arkts-basicservices-pasteboard-getsystempasteboard-f.md) | Obtains **SystemPasteboard** object. |
+| [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata1) | Creates a **PasteData** object of the specified type. |
+| [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata2) | Creates a **PasteData** object that contains multiple types of data. |
+| [createRecord](arkts-basicservices-pasteboard-createrecord-f.md#createrecord) | Creates a **PasteDataRecord** object of the specified type. |
+| [getSystemPasteboard](arkts-basicservices-pasteboard-getsystempasteboard-f.md#getsystempasteboard) | Obtains **SystemPasteboard** object. |
+| [createHtmlData](arkts-basicservices-pasteboard-createhtmldata-f.md#createhtmldata) | Creates a **PasteData** object of the HTML type. |
+| [createHtmlTextRecord](arkts-basicservices-pasteboard-createhtmltextrecord-f.md#createhtmltextrecord) | Creates a **PasteDataRecord** object of the HTML text type. |
+| [createPlainTextData](arkts-basicservices-pasteboard-createplaintextdata-f.md#createplaintextdata) | Creates a **PasteData** object of the plain text type. |
+| [createPlainTextRecord](arkts-basicservices-pasteboard-createplaintextrecord-f.md#createplaintextrecord) | Creates a **PasteDataRecord** object of the plain text type. |
+| [createUriData](arkts-basicservices-pasteboard-createuridata-f.md#createuridata) | Creates a **PasteData** object of the URI type. |
+| [createUriRecord](arkts-basicservices-pasteboard-createurirecord-f.md#createurirecord) | Creates a **PasteDataRecord** object of the URI type. |
+| [createWantData](arkts-basicservices-pasteboard-createwantdata-f.md#createwantdata) | Creates a **PasteData** object of the Want type. |
+| [createWantRecord](arkts-basicservices-pasteboard-createwantrecord-f.md#createwantrecord) | Creates a **PasteDataRecord** object of the Want type. |
 
 ### Classes
 
@@ -44,7 +44,7 @@ import { pasteboard } from '@kit.BasicServicesKit';
 | Name | Description |
 | --- | --- |
 | [GetDataParams](arkts-basicservices-pasteboard-getdataparams-i.md) | Defines parameters when an application obtains the Data from the pasteboard, including the destination path, file conflict options, and progress indicator types. |
-| [PasteData](arkts-basicservices-pasteboard-pastedata-i.md) | Implements a **PasteData** object. PasteData contains one or more data records ([PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)) and property description objects ([PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)). Before calling any API in **PasteData**, you must use ** [createData()](arkts-basicservices-pasteboard-createdata-f.md)** or ** [getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata)** to create a **PasteData** object. |
+| [PasteData](arkts-basicservices-pasteboard-pastedata-i.md) | Implements a **PasteData** object. PasteData contains one or more data records ([PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md)) and property description objects ([PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md)). Before calling any API in **PasteData**, you must use ** [createData()](arkts-basicservices-pasteboard-createdata-f.md#createdata1)** or ** [getData()](arkts-basicservices-pasteboard-systempasteboard-i.md#getdata1)** to create a **PasteData** object. |
 | [PasteDataProperty](arkts-basicservices-pasteboard-pastedataproperty-i.md) | Defines the properties of PasteData in the pasteboard, including the timestamp, data types, pasteable range, and additional data. The defined properties can be applied to the pasteboard only with the [setProperty](arkts-basicservices-pasteboard-pastedata-i.md#setproperty) method. |
 | [PasteDataRecord](arkts-basicservices-pasteboard-pastedatarecord-i.md) | Provides **PasteDataRecord** APIs. A **PasteDataRecord** is an abstract definition of the content in the pasteboard. The pasteboard content consists of one or more plain text, HTML, URI, or Want records. After creating a PasteDataRecord, it is not supported to modify the value of the default data type of the PasteDataRecord. The correct value for the default data type should be specified when creating the PasteDataRecord. If you need to refresh the attribute value of the PasteDataRecord, please use [addEntry](arkts-basicservices-pasteboard-pastedatarecord-i.md#addentry). |
 | [ProgressInfo](arkts-basicservices-pasteboard-progressinfo-i.md) | Defines the progress information. This information is reported only when [ProgressIndicator](arkts-basicservices-pasteboard-progressindicator-e.md) is set to **NONE**. |

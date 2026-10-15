@@ -14,83 +14,19 @@ want操作的常数。用于表示要执行的通用操作。
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_HOME
+## ACTION_APP_ACCOUNT_OAUTH
 
 ```TypeScript
-ACTION_HOME = 'ohos.want.action.home'
+ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'
 ```
 
-指示返回原点的操作。
+指示提供oauth服务的操作。
 
-**起始版本：** 6
+**起始版本：** 8
 
 **废弃版本：** 9
 
-<!--Device-Action-ACTION_HOME = 'ohos.want.action.home'--><!--Device-Action-ACTION_HOME = 'ohos.want.action.home'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## ACTION_DIAL
-
-```TypeScript
-ACTION_DIAL = 'ohos.want.action.dial'
-```
-
-指示启动显示小键盘的页面功能的操作。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-<!--Device-Action-ACTION_DIAL = 'ohos.want.action.dial'--><!--Device-Action-ACTION_DIAL = 'ohos.want.action.dial'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## ACTION_SEARCH
-
-```TypeScript
-ACTION_SEARCH = 'ohos.want.action.search'
-```
-
-指示启动页面搜索功能的操作。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-<!--Device-Action-ACTION_SEARCH = 'ohos.want.action.search'--><!--Device-Action-ACTION_SEARCH = 'ohos.want.action.search'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## ACTION_WIRELESS_SETTINGS
-
-```TypeScript
-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'
-```
-
-指示启动提供无线网络设置的页面功能的操作，例如，Wi-Fi选项。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-<!--Device-Action-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'--><!--Device-Action-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## ACTION_MANAGE_APPLICATIONS_SETTINGS
-
-```TypeScript
-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'
-```
-
-指示启动管理已安装应用程序的页面功能的操作。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-<!--Device-Action-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'--><!--Device-Action-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'-End-->
+<!--Device-Action-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'--><!--Device-Action-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -110,51 +46,35 @@ ACTION_APPLICATION_DETAILS_SETTINGS = 'ohos.settings.application.details'
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_SET_ALARM
+## ACTION_CHOOSE
 
 ```TypeScript
-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'
+ACTION_CHOOSE = 'ohos.want.action.choose'
 ```
 
-指示启动页面功能以设置闹钟的操作。
+指示启动页面功能以打开联系人或图片的操作。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-<!--Device-Action-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'--><!--Device-Action-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'-End-->
+<!--Device-Action-ACTION_CHOOSE = 'ohos.want.action.choose'--><!--Device-Action-ACTION_CHOOSE = 'ohos.want.action.choose'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_SHOW_ALARMS
+## ACTION_DIAL
 
 ```TypeScript
-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'
+ACTION_DIAL = 'ohos.want.action.dial'
 ```
 
-指示启动显示所有警报的页面功能的操作。
+指示启动显示小键盘的页面功能的操作。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-<!--Device-Action-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'--><!--Device-Action-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## ACTION_SNOOZE_ALARM
-
-```TypeScript
-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'
-```
-
-指示启动用于使闹钟睡眠的页面功能的操作。
-
-**起始版本：** 6
-
-**废弃版本：** 9
-
-<!--Device-Action-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'--><!--Device-Action-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'-End-->
+<!--Device-Action-ACTION_DIAL = 'ohos.want.action.dial'--><!--Device-Action-ACTION_DIAL = 'ohos.want.action.dial'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -190,35 +110,51 @@ ACTION_DISMISS_TIMER = 'ohos.want.action.dismissTimer'
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_SEND_SMS
+## ACTION_EDIT_DATA
 
 ```TypeScript
-ACTION_SEND_SMS = 'ohos.want.action.sendSms'
+ACTION_EDIT_DATA = 'ohos.want.action.editData'
 ```
 
-指示启动发送sms的页面功能的操作。
+指示编辑数据的操作。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-<!--Device-Action-ACTION_SEND_SMS = 'ohos.want.action.sendSms'--><!--Device-Action-ACTION_SEND_SMS = 'ohos.want.action.sendSms'-End-->
+<!--Device-Action-ACTION_EDIT_DATA = 'ohos.want.action.editData'--><!--Device-Action-ACTION_EDIT_DATA = 'ohos.want.action.editData'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_CHOOSE
+## ACTION_FILE_SELECT
 
 ```TypeScript
-ACTION_CHOOSE = 'ohos.want.action.choose'
+ACTION_FILE_SELECT = 'ohos.action.fileSelect'
 ```
 
-指示启动页面功能以打开联系人或图片的操作。
+指示选择文件的操作。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+<!--Device-Action-ACTION_FILE_SELECT = 'ohos.action.fileSelect'--><!--Device-Action-ACTION_FILE_SELECT = 'ohos.action.fileSelect'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ACTION_HOME
+
+```TypeScript
+ACTION_HOME = 'ohos.want.action.home'
+```
+
+指示返回原点的操作。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-<!--Device-Action-ACTION_CHOOSE = 'ohos.want.action.choose'--><!--Device-Action-ACTION_CHOOSE = 'ohos.want.action.choose'-End-->
+<!--Device-Action-ACTION_HOME = 'ohos.want.action.home'--><!--Device-Action-ACTION_HOME = 'ohos.want.action.home'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -238,19 +174,51 @@ ACTION_IMAGE_CAPTURE = 'ohos.want.action.imageCapture'
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_VIDEO_CAPTURE
+## ACTION_MANAGE_APPLICATIONS_SETTINGS
 
 ```TypeScript
-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'
+ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'
 ```
 
-指示启动页面功能以拍摄视频的操作。
+指示启动管理已安装应用程序的页面功能的操作。
 
-**起始版本：** 8
+**起始版本：** 6
 
 **废弃版本：** 9
 
-<!--Device-Action-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'--><!--Device-Action-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'-End-->
+<!--Device-Action-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'--><!--Device-Action-ACTION_MANAGE_APPLICATIONS_SETTINGS = 'ohos.settings.manage.applications'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ACTION_SCAN_MEDIA_FILE
+
+```TypeScript
+ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'
+```
+
+指示请求媒体扫描仪扫描文件并将文件添加到媒体库的操作。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+<!--Device-Action-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'--><!--Device-Action-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ACTION_SEARCH
+
+```TypeScript
+ACTION_SEARCH = 'ohos.want.action.search'
+```
+
+指示启动页面搜索功能的操作。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+<!--Device-Action-ACTION_SEARCH = 'ohos.want.action.search'--><!--Device-Action-ACTION_SEARCH = 'ohos.want.action.search'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -302,19 +270,83 @@ ACTION_SEND_MULTIPLE_DATA = 'ohos.want.action.sendMultipleData'
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_SCAN_MEDIA_FILE
+## ACTION_SEND_SMS
 
 ```TypeScript
-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'
+ACTION_SEND_SMS = 'ohos.want.action.sendSms'
 ```
 
-指示请求媒体扫描仪扫描文件并将文件添加到媒体库的操作。
+指示启动发送sms的页面功能的操作。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-<!--Device-Action-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'--><!--Device-Action-ACTION_SCAN_MEDIA_FILE = 'ohos.want.action.scanMediaFile'-End-->
+<!--Device-Action-ACTION_SEND_SMS = 'ohos.want.action.sendSms'--><!--Device-Action-ACTION_SEND_SMS = 'ohos.want.action.sendSms'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ACTION_SET_ALARM
+
+```TypeScript
+ACTION_SET_ALARM = 'ohos.want.action.setAlarm'
+```
+
+指示启动页面功能以设置闹钟的操作。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+<!--Device-Action-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'--><!--Device-Action-ACTION_SET_ALARM = 'ohos.want.action.setAlarm'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ACTION_SHOW_ALARMS
+
+```TypeScript
+ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'
+```
+
+指示启动显示所有警报的页面功能的操作。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+<!--Device-Action-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'--><!--Device-Action-ACTION_SHOW_ALARMS = 'ohos.want.action.showAlarms'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ACTION_SNOOZE_ALARM
+
+```TypeScript
+ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'
+```
+
+指示启动用于使闹钟睡眠的页面功能的操作。
+
+**起始版本：** 6
+
+**废弃版本：** 9
+
+<!--Device-Action-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'--><!--Device-Action-ACTION_SNOOZE_ALARM = 'ohos.want.action.snoozeAlarm'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ACTION_VIDEO_CAPTURE
+
+```TypeScript
+ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'
+```
+
+指示启动页面功能以拍摄视频的操作。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+<!--Device-Action-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'--><!--Device-Action-ACTION_VIDEO_CAPTURE = 'ohos.want.action.videoCapture'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -334,19 +366,19 @@ ACTION_VIEW_DATA = 'ohos.want.action.viewData'
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_EDIT_DATA
+## ACTION_WIRELESS_SETTINGS
 
 ```TypeScript
-ACTION_EDIT_DATA = 'ohos.want.action.editData'
+ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'
 ```
 
-指示编辑数据的操作。
+指示启动提供无线网络设置的页面功能的操作，例如，Wi-Fi选项。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-<!--Device-Action-ACTION_EDIT_DATA = 'ohos.want.action.editData'--><!--Device-Action-ACTION_EDIT_DATA = 'ohos.want.action.editData'-End-->
+<!--Device-Action-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'--><!--Device-Action-ACTION_WIRELESS_SETTINGS = 'ohos.settings.wireless'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -382,22 +414,6 @@ INTENT_PARAMS_TITLE = 'ability.want.params.TITLE'
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ACTION_FILE_SELECT
-
-```TypeScript
-ACTION_FILE_SELECT = 'ohos.action.fileSelect'
-```
-
-指示选择文件的操作。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-<!--Device-Action-ACTION_FILE_SELECT = 'ohos.action.fileSelect'--><!--Device-Action-ACTION_FILE_SELECT = 'ohos.action.fileSelect'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
 ## PARAMS_STREAM
 
 ```TypeScript
@@ -411,21 +427,5 @@ PARAMS_STREAM = 'ability.params.stream'
 **废弃版本：** 9
 
 <!--Device-Action-PARAMS_STREAM = 'ability.params.stream'--><!--Device-Action-PARAMS_STREAM = 'ability.params.stream'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## ACTION_APP_ACCOUNT_OAUTH
-
-```TypeScript
-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'
-```
-
-指示提供oauth服务的操作。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-<!--Device-Action-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'--><!--Device-Action-ACTION_APP_ACCOUNT_OAUTH = 'ohos.account.appAccount.action.oauth'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase

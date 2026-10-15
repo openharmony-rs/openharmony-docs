@@ -43,7 +43,7 @@ Performs postprocessing for the asset query in the specified user space. This AP
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [24000001](../errorcode-asset.md#24000001-asset-store-service-unavailable) | The ASSET service is unavailable. |
 | [24000006](../errorcode-asset.md#24000006-insufficient-memory) | Insufficient memory. |
 | [24000010](../errorcode-asset.md#24000010-ipc-failed) | IPC failed. |
@@ -51,6 +51,7 @@ Performs postprocessing for the asset query in the specified user space. This AP
 | [24000012](../errorcode-asset.md#24000012-account-system-service-abnormal) | Calling the OS Account service failed. |
 | [24000013](../errorcode-asset.md#24000013-access-token-service-abnormal) | Calling the Access Token service failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -64,3 +65,5 @@ asset.postQueryAsUser(userId, handle).then(() => {
   console.info(`Succeeded in post-querying Asset from user space.`);
 });
 ```
+
+<!--DelEnd-->

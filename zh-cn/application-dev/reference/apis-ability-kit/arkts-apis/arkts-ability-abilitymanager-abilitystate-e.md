@@ -12,17 +12,31 @@ Ability的状态，该类型为枚举，可配合[AbilityRunningInfo](arkts-abil
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## INITIAL
+## BACKGROUND
 
 ```TypeScript
-INITIAL = 0
+BACKGROUND = 10
 ```
 
-表示ability为初始化状态。
+表示ability为后台状态。
 
 **起始版本：** 14
 
-<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
+<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## BACKGROUNDING
+
+```TypeScript
+BACKGROUNDING = 12
+```
+
+表示ability为后台调度中状态。
+
+**起始版本：** 14
+
+<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -54,20 +68,6 @@ FOREGROUND = 9
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## BACKGROUND
-
-```TypeScript
-BACKGROUND = 10
-```
-
-表示ability为后台状态。
-
-**起始版本：** 14
-
-<!--Device-AbilityState-BACKGROUND = 10--><!--Device-AbilityState-BACKGROUND = 10-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
 ## FOREGROUNDING
 
 ```TypeScript
@@ -82,16 +82,16 @@ FOREGROUNDING = 11
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
-## BACKGROUNDING
+## INITIAL
 
 ```TypeScript
-BACKGROUNDING = 12
+INITIAL = 0
 ```
 
-表示ability为后台调度中状态。
+表示ability为初始化状态。
 
 **起始版本：** 14
 
-<!--Device-AbilityState-BACKGROUNDING = 12--><!--Device-AbilityState-BACKGROUNDING = 12-End-->
+<!--Device-AbilityState-INITIAL = 0--><!--Device-AbilityState-INITIAL = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

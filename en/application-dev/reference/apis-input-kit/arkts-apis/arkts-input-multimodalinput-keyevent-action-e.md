@@ -22,7 +22,7 @@ Cancellation of a key action.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Action-CANCEL = 0--><!--Device-Action-CANCEL = 0-End-->
 
@@ -38,7 +38,7 @@ Key press.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Action-DOWN = 1--><!--Device-Action-DOWN = 1-End-->
 
@@ -54,7 +54,7 @@ Key release.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Action-UP = 2--><!--Device-Action-UP = 2-End-->
 

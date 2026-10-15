@@ -48,6 +48,7 @@ Add a printer to cups.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application. |
 | [13100003](../errorcode-print.md#13100003-print-service-exception) | Add a printer to cups failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,3 +66,5 @@ print.addPrinterToCups(printerUri, printerName, printerMake).then((result: boole
     console.error(`Failed to add printer to cups. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

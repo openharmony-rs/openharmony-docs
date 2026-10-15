@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 
 In addition to the [universal events](arkts-arkui-common-comp.md), the following events are supported.
 
-**Inheritance/Implementation:** ImageAnimatorAttribute extends CommonMethod<ImageAnimatorAttribute>
+**Inheritance/Implementation:** ImageAnimatorAttribute extends CommonMethod&lt;ImageAnimatorAttribute&gt;
 
 **Since:** 7
 
@@ -174,7 +174,7 @@ Sets the number of times that the animation is played.
 monitorInvisibleArea(monitorInvisibleArea: boolean) : ImageAnimatorAttribute
 ```
 
-Sets whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange) event.
+Sets whether the component should automatically pause or resume based on its visibility, using the system's [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1) event.
 
 **Since:** 17
 
@@ -190,7 +190,7 @@ Sets whether the component should automatically pause or resume based on its vis
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| monitorInvisibleArea | boolean | Yes | Whether the component should automatically pause or resume based on its visibility, using the system's **onVisibleAreaChange**. When this parameter is set to **true**, the component controls pause and playback based on the visibility determination of the system's [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange). When the component's running state is [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md).Running, playback is automatically paused if the component is determined to be invisible, and automatically resumed if it is determined to be visible. When this parameter is set to **false**, the pause and playback of the component are not affected by **onVisibleAreaChange**.<br>Default value: **false** <br> **NOTE:** <br>When the value of this parameter is dynamically changed from **true** to **false**, the component is processed based on the current [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md) state.<br> For example, if the current state is **Running** and playback is paused due to the invisible callback of [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange), after the value is changed from **true** to **false**, the component resumes playback from the position where it was last paused.<br>The pause and playback operations caused by this parameter do not change the [state](#state) value set by the user. |
+| monitorInvisibleArea | boolean | Yes | Whether the component should automatically pause or resume based on its visibility, using the system's **onVisibleAreaChange**. When this parameter is set to **true**, the component controls pause and playback based on the visibility determination of the system's [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1). When the component's running state is [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md).Running, playback is automatically paused if the component is determined to be invisible, and automatically resumed if it is determined to be visible. When this parameter is set to **false**, the pause and playback of the component are not affected by **onVisibleAreaChange**.<br>Default value: **false** <br> **NOTE:** <br>When the value of this parameter is dynamically changed from **true** to **false**, the component is processed based on the current [AnimationStatus](../arkts-apis/arkts-arkui-animationstatus-e.md) state.<br> For example, if the current state is **Running** and playback is paused due to the invisible callback of [onVisibleAreaChange] [onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1), after the value is changed from **true** to **false**, the component resumes playback from the position where it was last paused.<br>The pause and playback operations caused by this parameter do not change the [state](#state) value set by the user. |
 
 ## onCancel
 

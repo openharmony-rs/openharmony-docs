@@ -34,7 +34,7 @@ Whether the result excludes system windows. If true, the result list does not in
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-WindowInfoOptions-excludeSystemWindows?: boolean--><!--Device-WindowInfoOptions-excludeSystemWindows?: boolean-End-->
 
@@ -56,7 +56,7 @@ Only include windows with a higher z-order than the specified window ID. When th
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-WindowInfoOptions-foregroundAboveWindow?: int--><!--Device-WindowInfoOptions-foregroundAboveWindow?: int-End-->
 
@@ -78,7 +78,7 @@ Only include windows with a lower z-order than the specified window ID. When thi
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-WindowInfoOptions-foregroundBelowWindow?: int--><!--Device-WindowInfoOptions-foregroundBelowWindow?: int-End-->
 

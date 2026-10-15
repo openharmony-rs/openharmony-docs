@@ -12,17 +12,31 @@ export enum BatteryHealthState
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## UNKNOWN
+## COLD
 
 ```TypeScript
-UNKNOWN
+COLD
 ```
 
-表示电池健康状态未知。
+表示电池健康状态为低温。
 
 **起始版本：** 6
 
-<!--Device-BatteryHealthState-UNKNOWN--><!--Device-BatteryHealthState-UNKNOWN-End-->
+<!--Device-BatteryHealthState-COLD--><!--Device-BatteryHealthState-COLD-End-->
+
+**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
+
+## DEAD
+
+```TypeScript
+DEAD
+```
+
+表示电池健康状态为失效，即电池已无法正常使用。
+
+**起始版本：** 6
+
+<!--Device-BatteryHealthState-DEAD--><!--Device-BatteryHealthState-DEAD-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
@@ -68,30 +82,16 @@ OVERVOLTAGE
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core
 
-## COLD
+## UNKNOWN
 
 ```TypeScript
-COLD
+UNKNOWN
 ```
 
-表示电池健康状态为低温。
+表示电池健康状态未知。
 
 **起始版本：** 6
 
-<!--Device-BatteryHealthState-COLD--><!--Device-BatteryHealthState-COLD-End-->
-
-**系统能力：** SystemCapability.PowerManager.BatteryManager.Core
-
-## DEAD
-
-```TypeScript
-DEAD
-```
-
-表示电池健康状态为失效，即电池已无法正常使用。
-
-**起始版本：** 6
-
-<!--Device-BatteryHealthState-DEAD--><!--Device-BatteryHealthState-DEAD-End-->
+<!--Device-BatteryHealthState-UNKNOWN--><!--Device-BatteryHealthState-UNKNOWN-End-->
 
 **系统能力：** SystemCapability.PowerManager.BatteryManager.Core

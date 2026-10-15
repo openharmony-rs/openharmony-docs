@@ -12,17 +12,17 @@ export enum MultiAppModeType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## UNSPECIFIED
+## APP_CLONE
 
 ```TypeScript
-UNSPECIFIED = 0
+APP_CLONE = 2
 ```
 
-未指定类型，表示[multiAppMode配置](../../../quick-start/app-configuration-file.md#multiappmode标签)未配置时的默认状态。
+[分身模式](../../../quick-start/app-clone.md)。
 
 **起始版本：** 12
 
-<!--Device-MultiAppModeType-UNSPECIFIED = 0--><!--Device-MultiAppModeType-UNSPECIFIED = 0-End-->
+<!--Device-MultiAppModeType-APP_CLONE = 2--><!--Device-MultiAppModeType-APP_CLONE = 2-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -40,16 +40,16 @@ MULTI_INSTANCE = 1
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## APP_CLONE
+## UNSPECIFIED
 
 ```TypeScript
-APP_CLONE = 2
+UNSPECIFIED = 0
 ```
 
-[分身模式](../../../quick-start/app-clone.md)。
+未指定类型，表示[multiAppMode配置](../../../quick-start/app-configuration-file.md#multiappmode标签)未配置时的默认状态。
 
 **起始版本：** 12
 
-<!--Device-MultiAppModeType-APP_CLONE = 2--><!--Device-MultiAppModeType-APP_CLONE = 2-End-->
+<!--Device-MultiAppModeType-UNSPECIFIED = 0--><!--Device-MultiAppModeType-UNSPECIFIED = 0-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core

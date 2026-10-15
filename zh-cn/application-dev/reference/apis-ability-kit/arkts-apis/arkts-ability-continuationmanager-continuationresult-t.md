@@ -6,6 +6,8 @@ export type ContinuationResult = _ContinuationResult
 
 流转管理入口返回的设备信息。
 
+**类型：** _ContinuationResult
+
 **起始版本：** 10
 
 **废弃版本：** 22
@@ -19,5 +21,3 @@ export type ContinuationResult = _ContinuationResult
 <!--Device-continuationManager-export type ContinuationResult = _ContinuationResult--><!--Device-continuationManager-export type ContinuationResult = _ContinuationResult-End-->
 
 **系统能力：** SystemCapability.Ability.DistributedAbilityManager
-
-**类型：** _ContinuationResult

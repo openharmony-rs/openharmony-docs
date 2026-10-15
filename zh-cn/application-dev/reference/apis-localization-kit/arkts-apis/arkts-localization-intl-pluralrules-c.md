@@ -22,6 +22,8 @@ export class PluralRules
 import { intl } from '@kit.LocalizationKit';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -51,7 +53,7 @@ import { intl } from '@kit.LocalizationKit';
 let pluralRules = new intl.PluralRules();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

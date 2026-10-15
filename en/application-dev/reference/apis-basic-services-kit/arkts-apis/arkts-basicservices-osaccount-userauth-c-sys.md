@@ -20,6 +20,8 @@ Provides APIs for user authentication.
 import { osAccount } from '@kit.BasicServicesKit';
 ```
 
+<a id="auth1"></a>
+
 ## auth
 
 ```TypeScript
@@ -62,8 +64,8 @@ Performs authentication of the current user.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid challenge, authType or authTrustLevel. |
 | [12300013](../errorcode-account.md#12300013-network-exception) | Network exception.<br>**Applicable version:** 12 and later |
@@ -85,6 +87,7 @@ Performs authentication of the current user.
 | [12300120](../errorcode-account.md#12300120-credential-expired) | The credentials are no longer valid.<br>**Applicable version:** 23 and later |
 | 12300211 | Server unreachable.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -107,7 +110,9 @@ try {
 }
 ```
 
-<a id="auth-1"></a>
+<!--DelEnd-->
+
+<a id="auth2"></a>
 
 ## auth
 
@@ -153,8 +158,8 @@ Starts user authentication based on the specified challenge value, authenticatio
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid challenge, authType, authTrustLevel or options. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found. |
@@ -177,6 +182,7 @@ Starts user authentication based on the specified challenge value, authenticatio
 | [12300120](../errorcode-account.md#12300120-credential-expired) | The credentials are no longer valid.<br>**Applicable version:** 23 and later |
 | 12300211 | Server unreachable. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -201,6 +207,8 @@ try {
   console.error(`auth exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## authUser
 
@@ -246,8 +254,8 @@ Authenticates a specified user. This API uses an asynchronous callback to return
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid challenge, authType or authTrustLevel. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found.<br>**Applicable version:** 12 and later |
@@ -270,6 +278,7 @@ Authenticates a specified user. This API uses an asynchronous callback to return
 | [12300120](../errorcode-account.md#12300120-credential-expired) | The credentials are no longer valid.<br>**Applicable version:** 23 and later |
 | 12300211 | Server unreachable.<br>**Applicable version:** 12 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -292,6 +301,8 @@ try {
   console.error(`authUser exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## cancelAuth
 
@@ -321,12 +332,13 @@ Cancels an authentication.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid contextId. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -349,6 +361,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## constructor
 
 ```TypeScript
@@ -369,13 +383,16 @@ A constructor used to create an instance for user authentication.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let userAuth = new osAccount.UserAuth();
 ```
+
+<!--DelEnd-->
 
 ## getAvailableStatus
 
@@ -412,13 +429,14 @@ Obtains the available status of the authentication capability corresponding to t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid authType or authTrustLevel. |
 | [12300117](../errorcode-account.md#12300117-pin-expired) | PIN is expired. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -435,6 +453,10 @@ try {
   console.error(`getAvailableStatus exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getproperty1"></a>
 
 ## getProperty
 
@@ -465,13 +487,14 @@ Obtains the executor property based on the request. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid request. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found.<br>**Applicable version:** 12 and later |
 | 12300020 | Device hardware abnormal.<br>**Applicable version:** 23 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -501,7 +524,9 @@ try {
 }
 ```
 
-<a id="getproperty-1"></a>
+<!--DelEnd-->
+
+<a id="getproperty2"></a>
 
 ## getProperty
 
@@ -537,13 +562,14 @@ Obtains the executor property based on the request. This API uses a promise to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid request. |
 | [12300003](../errorcode-account.md#12300003-account-not-found) | Account not found.<br>**Applicable version:** 12 and later |
 | 12300020 | Device hardware abnormal.<br>**Applicable version:** 23 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -570,6 +596,8 @@ try {
   console.error(`getProperty exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getPropertyByCredentialId
 
@@ -606,13 +634,14 @@ Obtains the specified property information of the associated executor based on t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid keys. |
 | 12300020 | Device hardware abnormal.<br>**Applicable version:** 23 and later |
 | [12300102](../errorcode-account.md#12300102-credential-not-found) | The credential does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -652,6 +681,8 @@ async function getProperty() {
 }
 ```
 
+<!--DelEnd-->
+
 ## getVersion
 
 ```TypeScript
@@ -678,8 +709,9 @@ Obtains this version number.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -687,6 +719,8 @@ let userAuth = new osAccount.UserAuth();
 let version: number = userAuth.getVersion();
 console.info('getVersion version = ' + version);
 ```
+
+<!--DelEnd-->
 
 ## prepareRemoteAuth
 
@@ -722,14 +756,15 @@ Prepares for remote authentication. This API uses a promise to return the result
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | System service exception. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid remoteNetworkId. |
 | 12300090 | Cross-device capability not supported.<br>**Applicable version:** 20 and later |
 | 12300091 | Cross-device communication failed.<br>**Applicable version:** 20 and later |
 | [12300111](../errorcode-account.md#12300111-authentication-timed-out) | Operation timeout.<br>**Applicable version:** 20 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -754,6 +789,10 @@ distributedDeviceMgr.getAvailableDeviceList().then((data: Array<distributedDevic
   }
 )
 ```
+
+<!--DelEnd-->
+
+<a id="setproperty1"></a>
 
 ## setProperty
 
@@ -784,12 +823,13 @@ Sets the property for the initialization algorithm. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid request. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -815,7 +855,9 @@ try {
 }
 ```
 
-<a id="setproperty-1"></a>
+<!--DelEnd-->
+
+<a id="setproperty2"></a>
 
 ## setProperty
 
@@ -851,12 +893,13 @@ Sets the property for the initialization algorithm. This API uses a promise to r
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300001](../errorcode-account.md#12300001-system-service-abnormal) | The system service works abnormally. |
 | [12300002](../errorcode-account.md#12300002-invalid-parameter) | Invalid request. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -879,3 +922,5 @@ try {
   console.error(`setProperty exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

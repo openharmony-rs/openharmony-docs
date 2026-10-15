@@ -30,7 +30,7 @@ List of window IDs that are not displayed during screen capture. By default, thi
 
 **Since:** 21
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 21.
+**Atomic service API:** This API can be used in atomic services since API version 21.
 
 <!--Device-CaptureOption-blackWindowIds?: Array<int>--><!--Device-CaptureOption-blackWindowIds?: Array<int>-End-->
 
@@ -48,7 +48,7 @@ ID of the [display](arkts-arkui-display-displaystate-e.md) to capture. The defau
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-CaptureOption-displayId?: long--><!--Device-CaptureOption-displayId?: long-End-->
 

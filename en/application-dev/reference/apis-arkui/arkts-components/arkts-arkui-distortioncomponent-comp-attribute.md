@@ -6,7 +6,7 @@ declare class DistortionComponentAttribute extends CommonMethod<DistortionCompon
 
 Defines the DistortionComponent attribute functions
 
-**Inheritance/Implementation:** DistortionComponentAttribute extends CommonMethod<DistortionComponentAttribute>
+**Inheritance/Implementation:** DistortionComponentAttribute extends CommonMethod&lt;DistortionComponentAttribute&gt;
 
 **Since:** 26.0.0
 

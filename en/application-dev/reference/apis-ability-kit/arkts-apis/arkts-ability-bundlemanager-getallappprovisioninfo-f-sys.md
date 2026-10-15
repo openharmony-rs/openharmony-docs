@@ -28,7 +28,7 @@ Obtains the provision configuration file information of all applications based o
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid).<br>The default value is the user ID of the caller.<br>The value must be greater than or equal to 0. |
+| userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). <br>The default value is the user ID of the caller. <br>The value must be greater than or equal to 0. |
 
 **Return value:**
 
@@ -44,6 +44,7 @@ Obtains the provision configuration file information of all applications based o
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied. A non-system application is not allowed to call a system API. |
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user id is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,3 +76,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllAppProvisionInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

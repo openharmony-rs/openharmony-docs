@@ -32,6 +32,8 @@ Descriptors of the current property. By default, this field is not used if not s
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Property-descriptors?: PropertyDescriptor[]--><!--Device-Property-descriptors?: PropertyDescriptor[]-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -49,6 +51,8 @@ Operation modes supported by the property. The default value is **READABLE|WRITE
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-Property-operation?: int--><!--Device-Property-operation?: int-End-->
 
@@ -68,6 +72,8 @@ Property UUID, in the same format as **serviceUuid**.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Property-propertyUuid: string--><!--Device-Property-propertyUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -86,6 +92,8 @@ NearLink service UUID, which is a string of 36 characters. The value consists of
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-Property-serviceUuid: string--><!--Device-Property-serviceUuid: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -103,6 +111,8 @@ Data value of a property.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-Property-value: ArrayBuffer--><!--Device-Property-value: ArrayBuffer-End-->
 

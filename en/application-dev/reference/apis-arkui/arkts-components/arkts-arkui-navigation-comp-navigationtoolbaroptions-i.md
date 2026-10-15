@@ -18,7 +18,7 @@ Defines the toolbar options.
 backgroundBlurStyle?: BlurStyle
 ```
 
-Background blur style of the title bar. If this parameter is not set, the background blur effect is disabled.
+Background blur style of the toolbar. After this parameter is set, the toolbar will apply the specified blur style. If this parameter is not set, the background blur effect is disabled.
 
 **Type:** [BlurStyle](arkts-arkui-common-comp-blurstyle-e.md)
 
@@ -38,7 +38,7 @@ Background blur style of the title bar. If this parameter is not set, the backgr
 backgroundBlurStyleOptions?: BackgroundBlurStyleOptions
 ```
 
-Options for the title bar background blur style.
+Options for the toolbar background blur style.
 
 **NOTE:** 
 
@@ -64,7 +64,7 @@ Avoid using this API in conjunction with **backgroundEffect**.
 backgroundColor?: ResourceColor
 ```
 
-Background color of the title bar. If this parameter is not set, the default color is used.
+Background color of the toolbar. After this parameter is set, the toolbar background is displayed in the specified color. If this parameter is not set, the default color is used.
 
 **Type:** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -84,7 +84,7 @@ Background color of the title bar. If this parameter is not set, the default col
 backgroundEffect?: BackgroundEffectOptions
 ```
 
-Title bar background properties, including blur radius, brightness, saturation, and color.
+Toolbar background properties, including blur radius, brightness, saturation, and color.
 
 **NOTE:** 
 

@@ -26,20 +26,6 @@ SYNC_BEGIN: means the sync process begin.
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## SYNC_IN_PROGRESS
-
-```TypeScript
-SYNC_IN_PROGRESS = 1
-```
-
-SYNC_BEGIN: means the sync process is in progress
-
-**Since:** 10
-
-<!--Device-Progress-SYNC_IN_PROGRESS = 1--><!--Device-Progress-SYNC_IN_PROGRESS = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## SYNC_FINISH
 
 ```TypeScript
@@ -51,5 +37,19 @@ SYNC_BEGIN: means the sync process is finished
 **Since:** 10
 
 <!--Device-Progress-SYNC_FINISH = 2--><!--Device-Progress-SYNC_FINISH = 2-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## SYNC_IN_PROGRESS
+
+```TypeScript
+SYNC_IN_PROGRESS = 1
+```
+
+SYNC_BEGIN: means the sync process is in progress
+
+**Since:** 10
+
+<!--Device-Progress-SYNC_IN_PROGRESS = 1--><!--Device-Progress-SYNC_IN_PROGRESS = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

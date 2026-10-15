@@ -12,19 +12,19 @@ Enumerates the states of a download task.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## IN_PROGRESS
+## CANCELED
 
 ```TypeScript
-IN_PROGRESS = 0
+CANCELED
 ```
 
-The download task is in progress.
+The download task has been canceled.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-WebDownloadState-IN_PROGRESS = 0--><!--Device-WebDownloadState-IN_PROGRESS = 0-End-->
+<!--Device-WebDownloadState-CANCELED--><!--Device-WebDownloadState-CANCELED-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -44,19 +44,19 @@ The download task is completed.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## CANCELED
+## IN_PROGRESS
 
 ```TypeScript
-CANCELED
+IN_PROGRESS = 0
 ```
 
-The download task has been canceled.
+The download task is in progress.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-WebDownloadState-CANCELED--><!--Device-WebDownloadState-CANCELED-End-->
+<!--Device-WebDownloadState-IN_PROGRESS = 0--><!--Device-WebDownloadState-IN_PROGRESS = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -76,22 +76,6 @@ The download task is interrupted.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## PENDING
-
-```TypeScript
-PENDING
-```
-
-The download task is pending.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-WebDownloadState-PENDING--><!--Device-WebDownloadState-PENDING-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## PAUSED
 
 ```TypeScript
@@ -105,6 +89,22 @@ The download task is paused.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-WebDownloadState-PAUSED--><!--Device-WebDownloadState-PAUSED-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## PENDING
+
+```TypeScript
+PENDING
+```
+
+The download task is pending.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-WebDownloadState-PENDING--><!--Device-WebDownloadState-PENDING-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

@@ -30,17 +30,17 @@ CLAMP = 0
 
 **系统接口：** 此接口为系统接口。
 
-## REPEAT
+## DECAL
 
 ```TypeScript
-REPEAT = 1
+DECAL = 3
 ```
 
-重复。
+透明。
 
 **起始版本：** 12
 
-<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
+<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -62,17 +62,17 @@ MIRROR = 2
 
 **系统接口：** 此接口为系统接口。
 
-## DECAL
+## REPEAT
 
 ```TypeScript
-DECAL = 3
+REPEAT = 1
 ```
 
-透明。
+重复。
 
 **起始版本：** 12
 
-<!--Device-TileMode-DECAL = 3--><!--Device-TileMode-DECAL = 3-End-->
+<!--Device-TileMode-REPEAT = 1--><!--Device-TileMode-REPEAT = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

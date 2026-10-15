@@ -6,8 +6,6 @@ export declare class ChipV2PrefixImageIcon extends ChipV2ImageIcon
 
 Defines the prefix icon class.
 
-This API inherits from [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md).
-
 **Inheritance/Implementation:** ChipV2PrefixImageIcon extends [ChipV2ImageIcon](arkts-arkui-arkui-advanced-chipv2-chipv2imageicon-c.md)
 
 **Since:** 26.0.0

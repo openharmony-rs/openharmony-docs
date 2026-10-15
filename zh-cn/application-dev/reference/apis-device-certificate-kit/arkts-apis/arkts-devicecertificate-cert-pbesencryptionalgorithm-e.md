@@ -22,7 +22,7 @@ AES-128-CBC加密算法。
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-PbesEncryptionAlgorithm-AES_128_CBC = 0--><!--Device-PbesEncryptionAlgorithm-AES_128_CBC = 0-End-->
 
@@ -38,7 +38,7 @@ AES-192-CBC加密算法。
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-PbesEncryptionAlgorithm-AES_192_CBC = 1--><!--Device-PbesEncryptionAlgorithm-AES_192_CBC = 1-End-->
 
@@ -54,7 +54,7 @@ AES-256-CBC加密算法。
 
 **起始版本：** 21
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本21开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本21开始，该接口支持在原子化服务中使用。
 
 <!--Device-PbesEncryptionAlgorithm-AES_256_CBC = 2--><!--Device-PbesEncryptionAlgorithm-AES_256_CBC = 2-End-->
 

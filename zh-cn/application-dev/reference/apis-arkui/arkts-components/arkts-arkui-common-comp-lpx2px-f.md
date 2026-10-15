@@ -12,7 +12,7 @@ Converts a number in units of lpx to a number in units of px.
 
 **废弃版本：** 18
 
-**替代接口：** lpx2px
+**替代接口：** [lpx2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#lpx2px)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 

@@ -24,20 +24,20 @@ import { cacheDownload } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [cancel](arkts-basicservices-cachedownload-cancel-f.md) | 根据url移除一个正在执行的缓存下载任务，已保存的内存缓存和文件缓存不会受到影响。 |
-| [clearFileCache](arkts-basicservices-cachedownload-clearfilecache-f.md) | 清除保存下载内容的文件缓存。 |
-| [clearMemoryCache](arkts-basicservices-cachedownload-clearmemorycache-f.md) | 清除缓存下载内容的内存缓存。 |
-| [download](arkts-basicservices-cachedownload-download-f.md) | 启动一个缓存下载任务，若传输成功，则将数据下载到内存缓存和文件缓存中。 |
-| [getDownloadInfo](arkts-basicservices-cachedownload-getdownloadinfo-f.md) | 基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。 |
-| [offDownloadError](arkts-basicservices-cachedownload-offdownloaderror-f.md) | 取消订阅预下载的错误事件。使用callback异步回调。 |
-| [offDownloadSuccess](arkts-basicservices-cachedownload-offdownloadsuccess-f.md) | 取消订阅预下载的完成事件。使用callback异步回调。 |
-| [onDownloadError](arkts-basicservices-cachedownload-ondownloaderror-f.md) | 订阅预下载的错误事件。使用callback异步回调。 |
-| [onDownloadSuccess](arkts-basicservices-cachedownload-ondownloadsuccess-f.md) | 订阅预下载的完成事件。使用callback异步回调。 |
-| [setDownloadInfoListSize](arkts-basicservices-cachedownload-setdownloadinfolistsize-f.md) | 设置下载信息列表的大小。 |
-| [setFileCacheSize](arkts-basicservices-cachedownload-setfilecachesize-f.md) | 设置缓存下载组件能够保存的文件缓存的上限。 |
-| [setGlobalRetryOptions](arkts-basicservices-cachedownload-setglobalretryoptions-f.md) | Sets retry options for all tasks. Used when task-specific retry configuration is not configured. |
-| [setGlobalTimeoutOptions](arkts-basicservices-cachedownload-setglobaltimeoutoptions-f.md) | Sets timeout configuration for all tasks. Used when task-specific timeout configuration is not configured. |
-| [setMemoryCacheSize](arkts-basicservices-cachedownload-setmemorycachesize-f.md) | 设置缓存下载组件能够保存的内存缓存上限。 |
+| [cancel](arkts-basicservices-cachedownload-cancel-f.md#cancel) | 根据url移除一个正在执行的缓存下载任务，已保存的内存缓存和文件缓存不会受到影响。 |
+| [clearFileCache](arkts-basicservices-cachedownload-clearfilecache-f.md#clearfilecache) | 清除保存下载内容的文件缓存。 |
+| [clearMemoryCache](arkts-basicservices-cachedownload-clearmemorycache-f.md#clearmemorycache) | 清除缓存下载内容的内存缓存。 |
+| [download](arkts-basicservices-cachedownload-download-f.md#download) | 启动一个缓存下载任务，若传输成功，则将数据下载到内存缓存和文件缓存中。 |
+| [getDownloadInfo](arkts-basicservices-cachedownload-getdownloadinfo-f.md#getdownloadinfo) | 基于url获取预下载的下载信息。信息存储在内存中的下载信息列表，当应用程序退出时清除。 |
+| [offDownloadError](arkts-basicservices-cachedownload-offdownloaderror-f.md#offdownloaderror) | 取消订阅预下载的错误事件。使用callback异步回调。 |
+| [offDownloadSuccess](arkts-basicservices-cachedownload-offdownloadsuccess-f.md#offdownloadsuccess) | 取消订阅预下载的完成事件。使用callback异步回调。 |
+| [onDownloadError](arkts-basicservices-cachedownload-ondownloaderror-f.md#ondownloaderror) | 订阅预下载的错误事件。使用callback异步回调。 |
+| [onDownloadSuccess](arkts-basicservices-cachedownload-ondownloadsuccess-f.md#ondownloadsuccess) | 订阅预下载的完成事件。使用callback异步回调。 |
+| [setDownloadInfoListSize](arkts-basicservices-cachedownload-setdownloadinfolistsize-f.md#setdownloadinfolistsize) | 设置下载信息列表的大小。 |
+| [setFileCacheSize](arkts-basicservices-cachedownload-setfilecachesize-f.md#setfilecachesize) | 设置缓存下载组件能够保存的文件缓存的上限。 |
+| [setGlobalRetryOptions](arkts-basicservices-cachedownload-setglobalretryoptions-f.md#setglobalretryoptions) | Sets retry options for all tasks. Used when task-specific retry configuration is not configured. |
+| [setGlobalTimeoutOptions](arkts-basicservices-cachedownload-setglobaltimeoutoptions-f.md#setglobaltimeoutoptions) | Sets timeout configuration for all tasks. Used when task-specific timeout configuration is not configured. |
+| [setMemoryCacheSize](arkts-basicservices-cachedownload-setmemorycachesize-f.md#setmemorycachesize) | 设置缓存下载组件能够保存的内存缓存上限。 |
 
 ### 接口
 

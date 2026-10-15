@@ -6,7 +6,7 @@
 import { sendablePhotoAccessHelper } from '@kit.MediaLibraryKit';
 ```
 
-<a id="getphotoaccesshelper-1"></a>
+<a id="getphotoaccesshelper2"></a>
 
 ## getPhotoAccessHelper
 
@@ -49,6 +49,7 @@ Obtains a PhotoAccessHelper instance for the specified user, letting you access 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | 13900020 | Invalid argument |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,3 +72,5 @@ struct Index {
   }
 }
 ```
+
+<!--DelEnd-->

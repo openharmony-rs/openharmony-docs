@@ -6,6 +6,8 @@ export type WindowExtensionContext = _WindowExtensionContext
 
 The context of window extension. It allows access to windowExtension-specific resources.
 
+**Type:** _WindowExtensionContext
+
 **Since:** 9
 
 **Deprecated since:** 21
@@ -17,5 +19,3 @@ The context of window extension. It allows access to windowExtension-specific re
 **System capability:** SystemCapability.WindowManager.WindowManager.Core
 
 **System API:** This is a system API.
-
-**Type:** _WindowExtensionContext

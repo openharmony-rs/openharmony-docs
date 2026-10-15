@@ -6,12 +6,6 @@ declare class TextInputController extends TextContentControllerBase
 
 The controller of the TextInput component inherits from [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md). The involved APIs include [getTextContentRect](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentrect), [getTextContentLineCount](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#gettextcontentlinecount), [getCaretOffset](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getcaretoffset), [addText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#addtext), [deleteText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletetext), [getSelection](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#getselection), [clearPreviewText](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#clearpreviewtext), [setStyledPlaceholder](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#setstyledplaceholder), [deleteBackward](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#deletebackward), [scrollToVisible](arkts-arkui-common-comp-textcontentcontrollerbase-c.md#scrolltovisible)<!--Del-->, and the system API [getText](arkts-arkui-common-comp-textcontentcontrollerbase-c-sys.md#gettext)<!--DelEnd-->.
 
-## Imported Object
-
-```ts
-controller: TextInputController = new TextInputController();
-```
-
 **Inheritance/Implementation:** TextInputController extends [TextContentControllerBase](arkts-arkui-common-comp-textcontentcontrollerbase-c.md)
 
 **Since:** 8
@@ -20,6 +14,12 @@ controller: TextInputController = new TextInputController();
 
 **System capability:** 
 - API version 10 and later: SystemCapability.ArkUI.ArkUI.Full
+
+## Imported Object
+
+```ts
+controller: TextInputController = new TextInputController();
+```
 
 ## caretPosition
 

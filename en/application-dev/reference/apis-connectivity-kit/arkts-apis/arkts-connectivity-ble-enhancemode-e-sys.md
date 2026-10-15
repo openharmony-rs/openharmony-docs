@@ -32,24 +32,6 @@ Balanced scan performance and other bluetooth service performance.
 
 **System API:** This is a system API.
 
-## BLE_SCAN_ENHANCE_MODE_MEDIUM
-
-```TypeScript
-BLE_SCAN_ENHANCE_MODE_MEDIUM = 1
-```
-
-The scan performance is improved, and the performance of other bluetooth services is mildly affected.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_MEDIUM = 1--><!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_MEDIUM = 1-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-**System API:** This is a system API.
-
 ## BLE_SCAN_ENHANCE_MODE_FAST
 
 ```TypeScript
@@ -63,6 +45,24 @@ The scan performance is ensured as much as possible, and the performance of othe
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_FAST = 2--><!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_FAST = 2-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+**System API:** This is a system API.
+
+## BLE_SCAN_ENHANCE_MODE_MEDIUM
+
+```TypeScript
+BLE_SCAN_ENHANCE_MODE_MEDIUM = 1
+```
+
+The scan performance is improved, and the performance of other bluetooth services is mildly affected.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_MEDIUM = 1--><!--Device-EnhanceMode-BLE_SCAN_ENHANCE_MODE_MEDIUM = 1-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 

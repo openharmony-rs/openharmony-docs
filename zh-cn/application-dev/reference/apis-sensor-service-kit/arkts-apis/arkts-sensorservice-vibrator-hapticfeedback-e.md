@@ -4,31 +4,17 @@
 enum HapticFeedback
 ```
 
-简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-startvibration-f.md)或[vibrator.stopVibration&lt;sup&gt;9+&lt;/sup&gt;](arkts-sensorservice-vibrator-stopvibration-f.md)接口下发[VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md)形式振动的示例代码。
+简单而通用的振动效果。根据各设备的马达器件不同，同一振动效果的频率会有差异，但效果的频率趋向是统一的。这几种振动效果是EffectId参数的具体值，使用方法参考[vibrator.startVibration<sup>9+</sup>](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)或[vibrator.stopVibration<sup>9+</sup>](arkts-sensorservice-vibrator-stopvibration-f.md#stopvibration1)接口下发[VibratePreset](arkts-sensorservice-vibrator-vibratepreset-i.md)形式振动的示例代码。
 
 > **说明：** 
 > 
 > 由于设备存在多样性，建议使用预置效果前先使用
-> [vibrator.isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md)&lt;
-> sup&gt;10+&lt;/sup&gt;或[vibrator.isSupportEffectSync](arkts-sensorservice-vibrator-issupporteffectsync-f.md)接口查询当前设备是否支持该预置效果。
+> [vibrator.isSupportEffect](arkts-sensorservice-vibrator-issupporteffect-f.md#issupporteffect1)&lt;
+> sup&gt;10+</sup>或[vibrator.isSupportEffectSync](arkts-sensorservice-vibrator-issupporteffectsync-f.md)接口查询当前设备是否支持该预置效果。
 
 **起始版本：** 12
 
 <!--Device-vibrator-enum HapticFeedback--><!--Device-vibrator-enum HapticFeedback-End-->
-
-**系统能力：** SystemCapability.Sensors.MiscDevice
-
-## EFFECT_SOFT
-
-```TypeScript
-EFFECT_SOFT = 'haptic.effect.soft'
-```
-
-较松散的振动效果，频率偏低。适用于轻柔触觉反馈场景。
-
-**起始版本：** 12
-
-<!--Device-HapticFeedback-EFFECT_SOFT = 'haptic.effect.soft'--><!--Device-HapticFeedback-EFFECT_SOFT = 'haptic.effect.soft'-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
@@ -46,17 +32,17 @@ EFFECT_HARD = 'haptic.effect.hard'
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
-## EFFECT_SHARP
+## EFFECT_NOTICE_FAILURE
 
 ```TypeScript
-EFFECT_SHARP = 'haptic.effect.sharp'
+EFFECT_NOTICE_FAILURE = 'haptic.notice.fail'
 ```
 
-较尖锐的振动效果，频率偏高。适用于警示触觉反馈场景。
+表达失败通知的振动效果。适用于操作失败提醒场景。
 
-**起始版本：** 12
+**起始版本：** 18
 
-<!--Device-HapticFeedback-EFFECT_SHARP = 'haptic.effect.sharp'--><!--Device-HapticFeedback-EFFECT_SHARP = 'haptic.effect.sharp'-End-->
+<!--Device-HapticFeedback-EFFECT_NOTICE_FAILURE = 'haptic.notice.fail'--><!--Device-HapticFeedback-EFFECT_NOTICE_FAILURE = 'haptic.notice.fail'-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
@@ -74,20 +60,6 @@ EFFECT_NOTICE_SUCCESS = 'haptic.notice.success'
 
 **系统能力：** SystemCapability.Sensors.MiscDevice
 
-## EFFECT_NOTICE_FAILURE
-
-```TypeScript
-EFFECT_NOTICE_FAILURE = 'haptic.notice.fail'
-```
-
-表达失败通知的振动效果。适用于操作失败提醒场景。
-
-**起始版本：** 18
-
-<!--Device-HapticFeedback-EFFECT_NOTICE_FAILURE = 'haptic.notice.fail'--><!--Device-HapticFeedback-EFFECT_NOTICE_FAILURE = 'haptic.notice.fail'-End-->
-
-**系统能力：** SystemCapability.Sensors.MiscDevice
-
 ## EFFECT_NOTICE_WARNING
 
 ```TypeScript
@@ -99,5 +71,33 @@ EFFECT_NOTICE_WARNING = 'haptic.notice.warning'
 **起始版本：** 18
 
 <!--Device-HapticFeedback-EFFECT_NOTICE_WARNING = 'haptic.notice.warning'--><!--Device-HapticFeedback-EFFECT_NOTICE_WARNING = 'haptic.notice.warning'-End-->
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
+## EFFECT_SHARP
+
+```TypeScript
+EFFECT_SHARP = 'haptic.effect.sharp'
+```
+
+较尖锐的振动效果，频率偏高。适用于警示触觉反馈场景。
+
+**起始版本：** 12
+
+<!--Device-HapticFeedback-EFFECT_SHARP = 'haptic.effect.sharp'--><!--Device-HapticFeedback-EFFECT_SHARP = 'haptic.effect.sharp'-End-->
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
+## EFFECT_SOFT
+
+```TypeScript
+EFFECT_SOFT = 'haptic.effect.soft'
+```
+
+较松散的振动效果，频率偏低。适用于轻柔触觉反馈场景。
+
+**起始版本：** 12
+
+<!--Device-HapticFeedback-EFFECT_SOFT = 'haptic.effect.soft'--><!--Device-HapticFeedback-EFFECT_SOFT = 'haptic.effect.soft'-End-->
 
 **系统能力：** SystemCapability.Sensors.MiscDevice

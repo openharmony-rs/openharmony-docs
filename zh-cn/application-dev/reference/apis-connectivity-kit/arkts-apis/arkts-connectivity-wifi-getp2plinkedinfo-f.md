@@ -6,6 +6,8 @@
 import { wifi } from '@kit.ConnectivityKit';
 ```
 
+<a id="getp2plinkedinfo1"></a>
+
 ## getP2pLinkedInfo
 
 ```TypeScript
@@ -55,7 +57,7 @@ wifi.getP2pLinkedInfo().then(data => {
 ```
 
 
-<a id="getp2plinkedinfo-1"></a>
+<a id="getp2plinkedinfo2"></a>
 
 ## getP2pLinkedInfo
 
@@ -89,4 +91,4 @@ function getP2pLinkedInfo(callback: AsyncCallback<WifiP2pLinkedInfo>): void
 
 **示例**
 
-参见 getP2pLinkedInfo
+参见 [getP2pLinkedInfo](#getp2plinkedinfo)

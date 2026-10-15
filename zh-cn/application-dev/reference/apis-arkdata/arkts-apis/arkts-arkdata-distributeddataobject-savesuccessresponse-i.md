@@ -4,7 +4,7 @@
 interface SaveSuccessResponse
 ```
 
-[save](arkts-arkdata-distributeddataobject-dataobject-i.md#save)接口回调信息。
+[save](arkts-arkdata-distributeddataobject-dataobject-i.md#save1)接口回调信息。
 
 **起始版本：** 9
 

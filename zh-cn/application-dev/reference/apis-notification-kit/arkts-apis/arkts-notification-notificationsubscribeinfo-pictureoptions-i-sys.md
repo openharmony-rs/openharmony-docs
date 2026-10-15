@@ -20,7 +20,7 @@ export interface PictureOptions
 preparseLiveViewPicList?: string[]
 ```
 
-订阅普通实况类型通知中[NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md)的extraInfo中的图片信息。入参为extraInfo中需要解析为pixelMap格式的图片文件名的Key。<br>当应用发布普通实况类型通知时，通过[onConsume](arkts-notification-notificationsubscriber-notificationsubscriber-i-sys.md#onconsume)将解析后的图片信息回调给订阅者，解析后的图片信息存放于NotificationLiveViewContent的pictureInfo内。
+订阅普通实况类型通知中[NotificationLiveViewContent](arkts-notification-notificationcontent-notificationliveviewcontent-i-sys.md)的extraInfo中的图片信息。入参为extraInfo中需要解析为pixelMap格式的图片文件名的Key。<br>当应用发布普通实况类型通知时，通过[onConsume](arkts-notification-notificationsubscriber-i-sys.md#onconsume)将解析后的图片信息回调给订阅者，解析后的图片信息存放于NotificationLiveViewContent的pictureInfo内。
 
 **类型：** string[]
 

@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="clearupapplicationdata1"></a>
+
 ## clearUpApplicationData
 
 ```TypeScript
@@ -39,6 +41,7 @@ function clearUpApplicationData(bundleName: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ appManager.clearUpApplicationData(bundleName)
   });
 ```
 
+<!--DelEnd-->
 
-<a id="clearupapplicationdata-1"></a>
+
+<a id="clearupapplicationdata2"></a>
 
 ## clearUpApplicationData
 
@@ -87,6 +92,7 @@ function clearUpApplicationData(bundleName: string, callback: AsyncCallback<void
 | bundleName | string | 是 | 表示Bundle名称。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当通过Bundle名称清除应用数据成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -105,3 +111,5 @@ function clearUpApplicationDataCallback(err: BusinessError, data: void) {
 
 appManager.clearUpApplicationData(bundleName, clearUpApplicationDataCallback);
 ```
+
+<!--DelEnd-->

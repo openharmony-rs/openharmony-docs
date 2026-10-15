@@ -6,7 +6,7 @@ declare class BadgeAttribute extends CommonMethod<BadgeAttribute>
 
 The [universal attributes](arkts-arkui-common-comp.md) are supported.
 
-**Inheritance/Implementation:** BadgeAttribute extends CommonMethod<BadgeAttribute>
+**Inheritance/Implementation:** BadgeAttribute extends CommonMethod&lt;BadgeAttribute&gt;
 
 **Since:** 7
 

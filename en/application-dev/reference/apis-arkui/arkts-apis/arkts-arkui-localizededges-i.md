@@ -4,7 +4,7 @@
 declare interface LocalizedEdges
 ```
 
-Defines the offset relative to the four edges. If both **top** and** bottom **are set, only **top** takes effect. If both **start** and **end** are set, only **start** takes effect.
+Defines the offset relative to the four edges. If both **top** and **bottom** are set, only **top** takes effect. If both **start** and **end** are set, only **start** takes effect.
 
 **Since:** 12
 

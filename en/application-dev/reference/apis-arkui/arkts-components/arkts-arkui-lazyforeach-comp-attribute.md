@@ -6,7 +6,7 @@ declare class LazyForEachAttribute extends DynamicNode<LazyForEachAttribute>
 
 The [drag-and-drop sorting](arkts-arkui-common-comp.md) attribute is supported.
 
-**Inheritance/Implementation:** LazyForEachAttribute extends DynamicNode<LazyForEachAttribute>
+**Inheritance/Implementation:** LazyForEachAttribute extends DynamicNode&lt;LazyForEachAttribute&gt;
 
 **Since:** 12
 

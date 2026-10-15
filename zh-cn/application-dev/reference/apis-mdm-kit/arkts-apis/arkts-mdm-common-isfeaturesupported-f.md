@@ -33,3 +33,30 @@ function isFeatureSupported(feature: ManagedFeature): boolean
 | 类型 | 说明 |
 | --- | --- |
 | boolean | true表示支持该特性，fasle表示不支持该特性。 |
+
+**示例**
+
+```TypeScript
+import { common, systemManager } from '@kit.MDMKit';
+import { Want } from '@kit.AbilityKit';
+
+let wantTemp: Want = {
+  // 需根据实际情况进行替换
+  bundleName: 'com.example.myapplication',
+  abilityName: 'EnterpriseAdminAbility'
+};
+// 需根据实际情况进行替换
+let domain: string = "https://www.hotaExample.com";
+// 调用接口前，先使用本接口查询设备是否支持本机HOTA域名特性
+let isSupported: boolean = common.isFeatureSupported(common.ManagedFeature.LOCAL_HOTA_DOMAIN);
+if (isSupported) {
+  try {
+    systemManager.setLocalHotaDomain(wantTemp, domain);
+    console.info('Succeeded in setting local HOTA domain.');
+  } catch (err) {
+    console.error(`Failed to set local HOTA domain. Code is ${err.code}, message is ${err.message}`);
+  }
+} else {
+  console.info('The local HOTA domain feature is not supported.');
+}
+```

@@ -40,7 +40,7 @@ Horizontal coordinate of the custom pointer focus, in px. This coordinate is lim
 focusY?: number
 ```
 
-Vertical coordinate of the custom pointer focus, in px. This coordinate is limited by the custom pointer size. The minimum value is 0, and the maximum value is the maximum width of the resource image. The default value is **0** when this parameter is omitted.
+Vertical coordinate of the custom pointer focus, in px. This coordinate is limited by the custom pointer size. The minimum value is 0, and the maximum value is the maximum height of the resource image. The default value is **0** when this parameter is omitted.
 
 **Type:** number
 

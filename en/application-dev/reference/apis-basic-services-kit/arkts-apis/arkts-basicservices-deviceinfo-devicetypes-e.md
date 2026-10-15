@@ -12,6 +12,38 @@ Enumerates device types, which can be used to verify the return value of **devic
 
 **System capability:** SystemCapability.Startup.SystemInfo
 
+## TYPE_2IN1
+
+```TypeScript
+TYPE_2IN1 = '2in1'
+```
+
+PC/2-in-1 device
+
+**Since:** 20
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-DeviceTypes-TYPE_2IN1 = '2in1'--><!--Device-DeviceTypes-TYPE_2IN1 = '2in1'-End-->
+
+**System capability:** SystemCapability.Startup.SystemInfo
+
+## TYPE_CAR
+
+```TypeScript
+TYPE_CAR = 'car'
+```
+
+Head unit
+
+**Since:** 20
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-DeviceTypes-TYPE_CAR = 'car'--><!--Device-DeviceTypes-TYPE_CAR = 'car'-End-->
+
+**System capability:** SystemCapability.Startup.SystemInfo
+
 ## TYPE_DEFAULT
 
 ```TypeScript
@@ -60,22 +92,6 @@ Tablet
 
 **System capability:** SystemCapability.Startup.SystemInfo
 
-## TYPE_2IN1
-
-```TypeScript
-TYPE_2IN1 = '2in1'
-```
-
-PC/2-in-1 device
-
-**Since:** 20
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-DeviceTypes-TYPE_2IN1 = '2in1'--><!--Device-DeviceTypes-TYPE_2IN1 = '2in1'-End-->
-
-**System capability:** SystemCapability.Startup.SystemInfo
-
 ## TYPE_TV
 
 ```TypeScript
@@ -105,21 +121,5 @@ Wearable
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-DeviceTypes-TYPE_WEARABLE = 'wearable'--><!--Device-DeviceTypes-TYPE_WEARABLE = 'wearable'-End-->
-
-**System capability:** SystemCapability.Startup.SystemInfo
-
-## TYPE_CAR
-
-```TypeScript
-TYPE_CAR = 'car'
-```
-
-Head unit
-
-**Since:** 20
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-DeviceTypes-TYPE_CAR = 'car'--><!--Device-DeviceTypes-TYPE_CAR = 'car'-End-->
 
 **System capability:** SystemCapability.Startup.SystemInfo

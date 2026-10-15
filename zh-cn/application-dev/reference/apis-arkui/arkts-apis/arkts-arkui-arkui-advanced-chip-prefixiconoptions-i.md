@@ -6,8 +6,6 @@ export interface PrefixIconOptions extends IconCommonOptions
 
 PrefixIconOptions定义前缀图标的属性。
 
-继承于[IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md)。
-
 **继承/实现关系：** PrefixIconOptions extends [IconCommonOptions](arkts-arkui-arkui-advanced-chip-iconcommonoptions-i.md)
 
 **起始版本：** 11

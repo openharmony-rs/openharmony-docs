@@ -28,6 +28,22 @@ Indicates account login trigger method.
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
+## CLOUD_DATA_CHANGE
+
+```TypeScript
+CLOUD_DATA_CHANGE = 3
+```
+
+Indicates the cloud-side data change trigger mode.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AutoSyncTriggerMode-CLOUD_DATA_CHANGE = 3--><!--Device-AutoSyncTriggerMode-CLOUD_DATA_CHANGE = 3-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
 ## CLOUD_SWITCH_ON
 
 ```TypeScript
@@ -57,22 +73,6 @@ Indicates the trigger mode for network reconnection after recovery.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-AutoSyncTriggerMode-NETWORK_RECOVER = 2--><!--Device-AutoSyncTriggerMode-NETWORK_RECOVER = 2-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
-
-## CLOUD_DATA_CHANGE
-
-```TypeScript
-CLOUD_DATA_CHANGE = 3
-```
-
-Indicates the cloud-side data change trigger mode.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AutoSyncTriggerMode-CLOUD_DATA_CHANGE = 3--><!--Device-AutoSyncTriggerMode-CLOUD_DATA_CHANGE = 3-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

@@ -24,7 +24,7 @@ import { webview } from '@kit.ArkWeb';
 attributes: Record<string, string>
 ```
 
-`&lt;video&gt;` 或 `&lt;audio&gt;` 标签中的属性。
+`<video>` 或 `<audio>` 标签中的属性。
 
 **类型：** Record&lt;string, string&gt;
 
@@ -40,7 +40,7 @@ attributes: Record<string, string>
 controlList: string[]
 ```
 
-`&lt;video&gt;` 或 `&lt;audio&gt;` 中的 `controlslist` 属性的值。
+`<video>` 或 `<audio>` 中的 `controlslist` 属性的值。
 
 **类型：** string[]
 
@@ -58,7 +58,7 @@ controlList: string[]
 controlsShown: boolean
 ```
 
-`&lt;video&gt;` 或 `&lt;audio&gt;` 中是否有 `controls` 属性。
+`<video>` 或 `<audio>` 中是否有 `controls` 属性。
 
 true 表示有，false 表示没有。
 
@@ -78,7 +78,7 @@ true 表示有，false 表示没有。
 embedID: string
 ```
 
-网页中的 `&lt;video&gt;` 或 `&lt;audio&gt;` 的 ID。
+网页中的 `<video>` 或 `<audio>` 的 ID。
 
 **类型：** string
 

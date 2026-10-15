@@ -52,6 +52,7 @@ function getPermissionUsedTypeInfos(
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The input permissionName does not exist. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. A database error occurs. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -85,3 +86,5 @@ privacyManager.getPermissionUsedTypeInfos(tokenId, permissionName).then((data: A
   console.error(`getPermissionUsedTypeInfos fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

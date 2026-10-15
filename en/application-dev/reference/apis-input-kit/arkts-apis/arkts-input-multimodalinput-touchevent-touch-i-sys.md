@@ -24,7 +24,7 @@ import { Action as KeyAction, SourceType, ToolType, Touch, TouchEvent, FixedMode
 blobId?: number
 ```
 
-Touch point attribute ID. Currently, only single-finger touch is supported. The value **1** indicates left-hand touch, and the value **2** indicates right-hand touch.
+Attribute identifier of the touch point. Currently, only single-finger touch is supported: the value is 1 for a left-hand touch and 2 for a right-hand touch. By default, the system automatically identifies the value. By default, this attribute is not set.
 
 **Type:** number
 
@@ -44,7 +44,7 @@ Touch point attribute ID. Currently, only single-finger touch is supported. The 
 fixedDisplayX?: number
 ```
 
-Corrected value of the screenX coordinate in one-hand mode, in px.
+Correction value of the screenX coordinate in one-handed mode, in pixels. The default value is 0.
 
 **Type:** number
 
@@ -62,7 +62,7 @@ Corrected value of the screenX coordinate in one-hand mode, in px.
 fixedDisplayY?: number
 ```
 
-Corrected value of the screenY coordinate in one-hand mode, in px.
+Correction value of the screenY coordinate in one-handed mode, in pixels. The default value is 0.
 
 **Type:** number
 

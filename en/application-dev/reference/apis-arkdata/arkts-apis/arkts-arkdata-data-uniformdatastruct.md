@@ -4,8 +4,6 @@ As a part of the Unified Data Management Framework (UDMF), the **uniformDataStru
 
 **Since:** 12
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace uniformDataStruct--><!--Device-unnamed-declare namespace uniformDataStruct-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.UDMF.Core

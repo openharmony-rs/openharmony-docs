@@ -46,22 +46,6 @@ Enabling of call transfer.
 
 **System API:** This is a system API.
 
-## CALL_TRANSFER_REGISTRATION
-
-```TypeScript
-CALL_TRANSFER_REGISTRATION = 3
-```
-
-Registration of call transfer.
-
-**Since:** 8
-
-<!--Device-CallTransferSettingType-CALL_TRANSFER_REGISTRATION = 3--><!--Device-CallTransferSettingType-CALL_TRANSFER_REGISTRATION = 3-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
 ## CALL_TRANSFER_ERASURE
 
 ```TypeScript
@@ -73,6 +57,22 @@ Erasing of call transfer.
 **Since:** 8
 
 <!--Device-CallTransferSettingType-CALL_TRANSFER_ERASURE = 4--><!--Device-CallTransferSettingType-CALL_TRANSFER_ERASURE = 4-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## CALL_TRANSFER_REGISTRATION
+
+```TypeScript
+CALL_TRANSFER_REGISTRATION = 3
+```
+
+Registration of call transfer.
+
+**Since:** 8
+
+<!--Device-CallTransferSettingType-CALL_TRANSFER_REGISTRATION = 3--><!--Device-CallTransferSettingType-CALL_TRANSFER_REGISTRATION = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

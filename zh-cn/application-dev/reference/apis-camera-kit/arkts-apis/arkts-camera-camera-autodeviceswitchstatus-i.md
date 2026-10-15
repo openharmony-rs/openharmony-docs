@@ -30,7 +30,7 @@ readonly isDeviceCapabilityChanged: boolean
 
 **起始版本：** 13
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-AutoDeviceSwitchStatus-readonly isDeviceCapabilityChanged: boolean--><!--Device-AutoDeviceSwitchStatus-readonly isDeviceCapabilityChanged: boolean-End-->
 
@@ -48,7 +48,7 @@ readonly isDeviceSwitched: boolean
 
 **起始版本：** 13
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-AutoDeviceSwitchStatus-readonly isDeviceSwitched: boolean--><!--Device-AutoDeviceSwitchStatus-readonly isDeviceSwitched: boolean-End-->
 

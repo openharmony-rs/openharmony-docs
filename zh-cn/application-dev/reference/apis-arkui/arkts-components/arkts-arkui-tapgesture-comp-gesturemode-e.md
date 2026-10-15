@@ -12,21 +12,19 @@ declare enum GestureMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Sequence
+## Exclusive
 
 ```TypeScript
-Sequence
+Exclusive
 ```
 
-顺序识别，根据注册顺序依次进行手势识别，直到所有手势识别成功。如果任一手势识别失败，则后续手势识别均无法完成。
-
-在顺序识别手势组中，仅最后一个手势能响应onActionEnd事件。
+Mutually exclusive recognition. Only one gesture is successfully recognized.
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-GestureMode-Sequence--><!--Device-GestureMode-Sequence-End-->
+<!--Device-GestureMode-Exclusive--><!--Device-GestureMode-Exclusive-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -46,18 +44,20 @@ Simultaneous recognition. Registration gestures participate in recognition. Ever
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Exclusive
+## Sequence
 
 ```TypeScript
-Exclusive
+Sequence
 ```
 
-Mutually exclusive recognition. Only one gesture is successfully recognized.
+顺序识别，根据注册顺序依次进行手势识别，直到所有手势识别成功。如果任一手势识别失败，则后续手势识别均无法完成。
+
+在顺序识别手势组中，仅最后一个手势能响应onActionEnd事件。
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-GestureMode-Exclusive--><!--Device-GestureMode-Exclusive-End-->
+<!--Device-GestureMode-Sequence--><!--Device-GestureMode-Sequence-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

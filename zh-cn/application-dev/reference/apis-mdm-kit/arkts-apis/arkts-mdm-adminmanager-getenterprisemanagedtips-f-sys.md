@@ -35,3 +35,19 @@ function getEnterpriseManagedTips(): Promise<string>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { adminManager } from '@kit.MDMKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+adminManager.getEnterpriseManagedTips().then((result) => {
+  console.info(`Succeeded in getting enterprise managed tips: ${result}`);
+}).catch((err: BusinessError) => {
+  console.error(`Failed to get enterprise managed tips. Code: ${err.code}, message: ${err.message}`);
+})
+```
+
+<!--DelEnd-->

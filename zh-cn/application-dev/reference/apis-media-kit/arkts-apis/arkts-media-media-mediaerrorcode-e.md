@@ -20,57 +20,21 @@ enum MediaErrorCode
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
-## MSERR_OK
+## MSERR_INVALID_STATE
 
 ```TypeScript
-MSERR_OK = 0
+MSERR_INVALID_STATE = 8
 ```
 
-表示操作成功。
+表示在当前状态下，不允许执行此操作。
 
 **起始版本：** 8
 
 **废弃版本：** 11
 
-**替代接口：** [AVERR_OK](arkts-media-media-averrorcode-e.md#averr_ok)
+**替代接口：** [AVERR_INVALID_PARAMETER](arkts-media-media-averrorcode-e.md#averr_invalid_parameter)
 
-<!--Device-MediaErrorCode-MSERR_OK = 0--><!--Device-MediaErrorCode-MSERR_OK = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MSERR_NO_MEMORY
-
-```TypeScript
-MSERR_NO_MEMORY = 1
-```
-
-表示申请内存失败，系统可能无可用内存。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** [AVERR_NO_MEMORY](arkts-media-media-averrorcode-e.md#averr_no_memory)
-
-<!--Device-MediaErrorCode-MSERR_NO_MEMORY = 1--><!--Device-MediaErrorCode-MSERR_NO_MEMORY = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MSERR_OPERATION_NOT_PERMIT
-
-```TypeScript
-MSERR_OPERATION_NOT_PERMIT = 2
-```
-
-表示无权限执行此操作。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** [AVERR_OPERATE_NOT_PERMIT](arkts-media-media-averrorcode-e.md#averr_operate_not_permit)
-
-<!--Device-MediaErrorCode-MSERR_OPERATION_NOT_PERMIT = 2--><!--Device-MediaErrorCode-MSERR_OPERATION_NOT_PERMIT = 2-End-->
+<!--Device-MediaErrorCode-MSERR_INVALID_STATE = 8--><!--Device-MediaErrorCode-MSERR_INVALID_STATE = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -110,6 +74,78 @@ MSERR_IO = 4
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
+## MSERR_NO_MEMORY
+
+```TypeScript
+MSERR_NO_MEMORY = 1
+```
+
+表示申请内存失败，系统可能无可用内存。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** [AVERR_NO_MEMORY](arkts-media-media-averrorcode-e.md#averr_no_memory)
+
+<!--Device-MediaErrorCode-MSERR_NO_MEMORY = 1--><!--Device-MediaErrorCode-MSERR_NO_MEMORY = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## MSERR_OK
+
+```TypeScript
+MSERR_OK = 0
+```
+
+表示操作成功。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** [AVERR_OK](arkts-media-media-averrorcode-e.md#averr_ok)
+
+<!--Device-MediaErrorCode-MSERR_OK = 0--><!--Device-MediaErrorCode-MSERR_OK = 0-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## MSERR_OPERATION_NOT_PERMIT
+
+```TypeScript
+MSERR_OPERATION_NOT_PERMIT = 2
+```
+
+表示无权限执行此操作。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** [AVERR_OPERATE_NOT_PERMIT](arkts-media-media-averrorcode-e.md#averr_operate_not_permit)
+
+<!--Device-MediaErrorCode-MSERR_OPERATION_NOT_PERMIT = 2--><!--Device-MediaErrorCode-MSERR_OPERATION_NOT_PERMIT = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## MSERR_SERVICE_DIED
+
+```TypeScript
+MSERR_SERVICE_DIED = 7
+```
+
+表示服务端失效。
+
+**起始版本：** 8
+
+**废弃版本：** 11
+
+**替代接口：** [AVERR_SERVICE_DIED](arkts-media-media-averrorcode-e.md#averr_service_died)
+
+<!--Device-MediaErrorCode-MSERR_SERVICE_DIED = 7--><!--Device-MediaErrorCode-MSERR_SERVICE_DIED = 7-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 ## MSERR_TIMEOUT
 
 ```TypeScript
@@ -143,42 +179,6 @@ MSERR_UNKNOWN = 6
 **替代接口：** [AVERR_INVALID_PARAMETER](arkts-media-media-averrorcode-e.md#averr_invalid_parameter)
 
 <!--Device-MediaErrorCode-MSERR_UNKNOWN = 6--><!--Device-MediaErrorCode-MSERR_UNKNOWN = 6-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MSERR_SERVICE_DIED
-
-```TypeScript
-MSERR_SERVICE_DIED = 7
-```
-
-表示服务端失效。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** [AVERR_SERVICE_DIED](arkts-media-media-averrorcode-e.md#averr_service_died)
-
-<!--Device-MediaErrorCode-MSERR_SERVICE_DIED = 7--><!--Device-MediaErrorCode-MSERR_SERVICE_DIED = 7-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## MSERR_INVALID_STATE
-
-```TypeScript
-MSERR_INVALID_STATE = 8
-```
-
-表示在当前状态下，不允许执行此操作。
-
-**起始版本：** 8
-
-**废弃版本：** 11
-
-**替代接口：** [AVERR_INVALID_PARAMETER](arkts-media-media-averrorcode-e.md#averr_invalid_parameter)
-
-<!--Device-MediaErrorCode-MSERR_INVALID_STATE = 8--><!--Device-MediaErrorCode-MSERR_INVALID_STATE = 8-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 

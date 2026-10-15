@@ -18,6 +18,46 @@ export enum DoNotDisturbType
 
 **系统接口：** 此接口为系统接口。
 
+## TYPE_CLEARLY
+
+```TypeScript
+TYPE_CLEARLY = 3
+```
+
+以设置时间段(明确年月日时分)执行勿扰。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [TYPE_CLEARLY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#type_clearly)
+
+<!--Device-DoNotDisturbType-TYPE_CLEARLY = 3--><!--Device-DoNotDisturbType-TYPE_CLEARLY = 3-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
+## TYPE_DAILY
+
+```TypeScript
+TYPE_DAILY = 2
+```
+
+以设置时间段(只看小时和分钟)每天执行勿扰。
+
+**起始版本：** 8
+
+**废弃版本：** 9
+
+**替代接口：** [TYPE_DAILY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#type_daily)
+
+<!--Device-DoNotDisturbType-TYPE_DAILY = 2--><!--Device-DoNotDisturbType-TYPE_DAILY = 2-End-->
+
+**系统能力：** SystemCapability.Notification.Notification
+
+**系统接口：** 此接口为系统接口。
+
 ## TYPE_NONE
 
 ```TypeScript
@@ -53,46 +93,6 @@ TYPE_ONCE = 1
 **替代接口：** [TYPE_ONCE](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#type_once)
 
 <!--Device-DoNotDisturbType-TYPE_ONCE = 1--><!--Device-DoNotDisturbType-TYPE_ONCE = 1-End-->
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
-## TYPE_DAILY
-
-```TypeScript
-TYPE_DAILY = 2
-```
-
-以设置时间段(只看小时和分钟)每天执行勿扰。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [TYPE_DAILY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#type_daily)
-
-<!--Device-DoNotDisturbType-TYPE_DAILY = 2--><!--Device-DoNotDisturbType-TYPE_DAILY = 2-End-->
-
-**系统能力：** SystemCapability.Notification.Notification
-
-**系统接口：** 此接口为系统接口。
-
-## TYPE_CLEARLY
-
-```TypeScript
-TYPE_CLEARLY = 3
-```
-
-以设置时间段(明确年月日时分)执行勿扰。
-
-**起始版本：** 8
-
-**废弃版本：** 9
-
-**替代接口：** [TYPE_CLEARLY](arkts-notification-notificationmanager-donotdisturbtype-e-sys.md#type_clearly)
-
-<!--Device-DoNotDisturbType-TYPE_CLEARLY = 3--><!--Device-DoNotDisturbType-TYPE_CLEARLY = 3-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
 

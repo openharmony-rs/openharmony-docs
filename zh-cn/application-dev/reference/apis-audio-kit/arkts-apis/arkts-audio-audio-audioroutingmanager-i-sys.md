@@ -63,6 +63,7 @@ excludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Promi
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -95,6 +96,8 @@ async function excludeOutputDevices(){
 }
 ```
 
+<!--DelEnd-->
+
 ## getActiveOutputDeviceDescriptors
 
 ```TypeScript
@@ -125,6 +128,7 @@ getActiveOutputDeviceDescriptors(): Promise<AudioDeviceDescriptors>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not a system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -135,6 +139,8 @@ audioRoutingManager.getActiveOutputDeviceDescriptors().then((audioDeviceDescript
   console.error(`Failed to get active output device descriptors. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getExcludedDevices
 
@@ -171,6 +177,7 @@ getExcludedDevices(usage: DeviceUsage): AudioDeviceDescriptors
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -183,6 +190,8 @@ async function getExcludedDevices(){
   console.info(`device descriptor: ${desc}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getPreferredInputDeviceByFilter
 
@@ -219,6 +228,7 @@ getPreferredInputDeviceByFilter(filter: AudioCapturerFilter): AudioDeviceDescrip
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -240,6 +250,8 @@ async function getPreferredInputDeviceByFilter(){
     console.info(`device descriptor: ${desc}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getPreferredOutputDeviceByFilter
 
@@ -276,6 +288,7 @@ getPreferredOutputDeviceByFilter(filter: AudioRendererFilter): AudioDeviceDescri
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -298,6 +311,8 @@ async function selectOutputDeviceByFilter(){
     console.info(`device descriptor: ${desc}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## off('preferredOutputDeviceChangeByFilter')
 
@@ -329,6 +344,7 @@ off(type: 'preferredOutputDeviceChangeByFilter', callback?: Callback<AudioDevice
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -352,6 +368,8 @@ audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendere
 
 audioRoutingManager.off('preferredOutputDeviceChangeByFilter', preferredOutputDeviceChangeByFilterCallback);
 ```
+
+<!--DelEnd-->
 
 ## offPreferredInputDeviceChangeByFilter
 
@@ -384,6 +402,7 @@ offPreferredInputDeviceChangeByFilter(callback?: Callback<AudioDeviceDescriptors
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -406,6 +425,8 @@ audioRoutingManager.onPreferredInputDeviceChangeByFilter(inputAudioCapturerFilte
 
 audioRoutingManager.offPreferredInputDeviceChangeByFilter(preferredInputDeviceChangeByFilterCallback);
 ```
+
+<!--DelEnd-->
 
 ## on('preferredOutputDeviceChangeByFilter')
 
@@ -439,6 +460,7 @@ on(type: 'preferredOutputDeviceChangeByFilter', filter: AudioRendererFilter, cal
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -454,6 +476,8 @@ audioRoutingManager.on('preferredOutputDeviceChangeByFilter', outputAudioRendere
   console.info(`Succeeded in using on function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## onPreferredInputDeviceChangeByFilter
 
@@ -488,6 +512,7 @@ onPreferredInputDeviceChangeByFilter(filter: AudioCapturerFilter, callback: Call
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -502,6 +527,8 @@ audioRoutingManager.onPreferredInputDeviceChangeByFilter(inputAudioCapturerFilte
   console.info(`Succeeded in using onPreferredInputDeviceChangeByFilter function, AudioDeviceDescriptors: ${JSON.stringify(audioDeviceDescriptors)}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## restoreOutputDeviceByFilter
 
@@ -540,6 +567,7 @@ restoreOutputDeviceByFilter(filter: AudioRendererFilter): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Caller is not a system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -561,6 +589,10 @@ audioRoutingManager.restoreOutputDeviceByFilter(outputAudioRendererFilter).then(
   console.error(`Failed to restore output device by filter. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="selectinputdevice1"></a>
 
 ## selectInputDevice
 
@@ -585,6 +617,7 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors, callback: AsyncCall
 | inputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 是 | 输入设备类。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当选择音频输入设备成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -617,7 +650,9 @@ async function selectInputDevice(){
 }
 ```
 
-<a id="selectinputdevice-1"></a>
+<!--DelEnd-->
+
+<a id="selectinputdevice2"></a>
 
 ## selectInputDevice
 
@@ -647,6 +682,7 @@ selectInputDevice(inputAudioDevices: AudioDeviceDescriptors): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -676,6 +712,8 @@ async function getRoutingManager(){
   });
 }
 ```
+
+<!--DelEnd-->
 
 ## selectInputDeviceByFilter
 
@@ -713,6 +751,7 @@ selectInputDeviceByFilter(filter: AudioCapturerFilter, inputAudioDevices: AudioD
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -753,6 +792,10 @@ async function selectInputDeviceByFilter(){
 }
 ```
 
+<!--DelEnd-->
+
+<a id="selectoutputdevice1"></a>
+
 ## selectOutputDevice
 
 ```TypeScript
@@ -776,6 +819,7 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors, callback: AsyncCa
 | outputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 是 | 输出设备类。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -807,7 +851,9 @@ async function selectOutputDevice(){
 }
 ```
 
-<a id="selectoutputdevice-1"></a>
+<!--DelEnd-->
+
+<a id="selectoutputdevice2"></a>
 
 ## selectOutputDevice
 
@@ -837,6 +883,7 @@ selectOutputDevice(outputAudioDevices: AudioDeviceDescriptors): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -867,6 +914,10 @@ async function selectOutputDevice(){
 }
 ```
 
+<!--DelEnd-->
+
+<a id="selectoutputdevicebyfilter1"></a>
+
 ## selectOutputDeviceByFilter
 
 ```TypeScript
@@ -891,6 +942,7 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 | outputAudioDevices | [AudioDeviceDescriptors](arkts-audio-audio-audiodevicedescriptors-t.md) | 是 | 输出设备信息。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当选择音频输出设备成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -931,7 +983,9 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
-<a id="selectoutputdevicebyfilter-1"></a>
+<!--DelEnd-->
+
+<a id="selectoutputdevicebyfilter2"></a>
 
 ## selectOutputDeviceByFilter
 
@@ -962,6 +1016,7 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1001,7 +1056,9 @@ async function selectOutputDeviceByFilter(){
 }
 ```
 
-<a id="selectoutputdevicebyfilter-2"></a>
+<!--DelEnd-->
+
+<a id="selectoutputdevicebyfilter3"></a>
 
 ## selectOutputDeviceByFilter
 
@@ -1041,6 +1098,7 @@ selectOutputDeviceByFilter(filter: AudioRendererFilter, outputAudioDevices: Audi
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Audio client call audio service error, System error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1076,6 +1134,10 @@ audioRoutingManager.selectOutputDeviceByFilter(outputAudioRendererFilter, output
   console.error(`Failed to select output device by filter. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="unexcludeoutputdevices1"></a>
 
 ## unexcludeOutputDevices
 
@@ -1118,6 +1180,7 @@ unexcludeOutputDevices(usage: DeviceUsage, devices: AudioDeviceDescriptors): Pro
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1150,7 +1213,9 @@ async function unexcludeOutputDevices(){
 }
 ```
 
-<a id="unexcludeoutputdevices-1"></a>
+<!--DelEnd-->
+
+<a id="unexcludeoutputdevices2"></a>
 
 ## unexcludeOutputDevices
 
@@ -1192,6 +1257,7 @@ unexcludeOutputDevices(usage: DeviceUsage): Promise<void>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1208,3 +1274,5 @@ async function unexcludeOutputDevices(){
   });
 }
 ```
+
+<!--DelEnd-->

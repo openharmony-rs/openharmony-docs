@@ -38,19 +38,23 @@ Transfers metadata to the application or service that calls the encoding API. Th
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission check failed. A non-system application uses the system API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [32100001](../errorcode-metadataBinding.md#32100001-file-creation-failed) | Internal handling failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 import { metadataBinding } from '@kit.MultimodalAwarenessKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
+// bundleName must be the bundle name of an installed application.
 let bundleName: string = '';
-metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string)=>{
-  console.info("notify metadata:" + appLink);
+metadataBinding.notifyMetadataBindingEvent(bundleName).then((appLink:string) => {
+  console.info('notify metadata:' + appLink);
 }).catch((error: BusinessError) => {
-  console.error("notify metadata error" + error);
+  console.error(`Failed to notify metadata. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -8,10 +8,11 @@ export declare struct FullScreenLaunchComponent
 
 > **说明：** 
 > 
-> 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
+> - 该组件从API version 12开始支持。后续版本的新增接口，采用上角标单独标记接口的起始版本。
 > 
-> 当需要在该组件中实现可嵌入式运行的原子化服务，必须继承自[EmbeddableUIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)。
-> 否则，系统无法保证原子化服务功能正常。
+> - 当需要在该组件中实现可嵌入式运行的原子化服务，必须继承自[EmbeddableUIAbility](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)。否则，系统无法保证原子化服务功能正常。
+> 
+> - 如果FullScreenLaunchComponent设置[通用属性](../arkts-components/arkts-arkui-common-comp.md)和[通用事件](../arkts-components/arkts-arkui-common-comp.md)，编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到FullScreenLaunchComponent本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议FullScreenLaunchComponent设置通用属性和通用事件。
 
 **起始版本：** 12
 
@@ -107,7 +108,7 @@ onReceive?: Callback<Record<string, Object>>
 onTerminated?: Callback<TerminationInfo>
 ```
 
-被拉起的嵌入式运行原子化服务通过点击原子化服务退出按钮、手势侧滑、调用terminateSelfWithResult或者[terminateSelf](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateself)正常退出时，触发本回调函数。
+被拉起的嵌入式运行原子化服务通过点击原子化服务退出按钮、手势侧滑、调用terminateSelfWithResult或者[terminateSelf](../../apis-ability-kit/arkts-apis/arkts-ability-uiabilitycontext-c.md#terminateself1)正常退出时，触发本回调函数。
 
 **类型：** [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[TerminationInfo](../arkts-components/arkts-arkui-embeddedcomponent-comp-terminationinfo-i.md)&gt;
 

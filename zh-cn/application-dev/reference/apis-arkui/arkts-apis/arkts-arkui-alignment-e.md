@@ -12,13 +12,13 @@ declare enum Alignment
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TopStart
+## Bottom
 
 ```TypeScript
-TopStart
+Bottom
 ```
 
-顶部起始端。
+底部横向居中。
 
 **起始版本：** 7
 
@@ -28,17 +28,17 @@ TopStart
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-TopStart--><!--Device-Alignment-TopStart-End-->
+<!--Device-Alignment-Bottom--><!--Device-Alignment-Bottom-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Top
+## BottomEnd
 
 ```TypeScript
-Top
+BottomEnd
 ```
 
-顶部横向居中。
+底部尾端。
 
 **起始版本：** 7
 
@@ -48,17 +48,17 @@ Top
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-Top--><!--Device-Alignment-Top-End-->
+<!--Device-Alignment-BottomEnd--><!--Device-Alignment-BottomEnd-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TopEnd
+## BottomStart
 
 ```TypeScript
-TopEnd
+BottomStart
 ```
 
-顶部尾端。
+底部起始端。
 
 **起始版本：** 7
 
@@ -68,27 +68,7 @@ TopEnd
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-TopEnd--><!--Device-Alignment-TopEnd-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Start
-
-```TypeScript
-Start
-```
-
-起始端纵向居中。
-
-**起始版本：** 7
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-Alignment-Start--><!--Device-Alignment-Start-End-->
+<!--Device-Alignment-BottomStart--><!--Device-Alignment-BottomStart-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,13 +112,13 @@ End
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BottomStart
+## Start
 
 ```TypeScript
-BottomStart
+Start
 ```
 
-底部起始端。
+起始端纵向居中。
 
 **起始版本：** 7
 
@@ -148,17 +128,17 @@ BottomStart
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-BottomStart--><!--Device-Alignment-BottomStart-End-->
+<!--Device-Alignment-Start--><!--Device-Alignment-Start-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Bottom
+## Top
 
 ```TypeScript
-Bottom
+Top
 ```
 
-底部横向居中。
+顶部横向居中。
 
 **起始版本：** 7
 
@@ -168,17 +148,17 @@ Bottom
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-Bottom--><!--Device-Alignment-Bottom-End-->
+<!--Device-Alignment-Top--><!--Device-Alignment-Top-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BottomEnd
+## TopEnd
 
 ```TypeScript
-BottomEnd
+TopEnd
 ```
 
-底部尾端。
+顶部尾端。
 
 **起始版本：** 7
 
@@ -188,6 +168,26 @@ BottomEnd
 
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-Alignment-BottomEnd--><!--Device-Alignment-BottomEnd-End-->
+<!--Device-Alignment-TopEnd--><!--Device-Alignment-TopEnd-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TopStart
+
+```TypeScript
+TopStart
+```
+
+顶部起始端。
+
+**起始版本：** 7
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-Alignment-TopStart--><!--Device-Alignment-TopStart-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

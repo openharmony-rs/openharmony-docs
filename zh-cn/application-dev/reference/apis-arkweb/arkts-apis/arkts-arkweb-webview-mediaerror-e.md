@@ -12,19 +12,19 @@ enum MediaError
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## NETWORK_ERROR
+## DECODE_ERROR
 
 ```TypeScript
-NETWORK_ERROR = 1
+DECODE_ERROR = 3
 ```
 
-网络错误。
+解码错误。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-MediaError-NETWORK_ERROR = 1--><!--Device-MediaError-NETWORK_ERROR = 1-End-->
+<!--Device-MediaError-DECODE_ERROR = 3--><!--Device-MediaError-DECODE_ERROR = 3-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,18 +44,18 @@ FORMAT_ERROR = 2
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## DECODE_ERROR
+## NETWORK_ERROR
 
 ```TypeScript
-DECODE_ERROR = 3
+NETWORK_ERROR = 1
 ```
 
-解码错误。
+网络错误。
 
 **起始版本：** 12
 
 **原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-MediaError-DECODE_ERROR = 3--><!--Device-MediaError-DECODE_ERROR = 3-End-->
+<!--Device-MediaError-NETWORK_ERROR = 1--><!--Device-MediaError-NETWORK_ERROR = 1-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

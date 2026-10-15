@@ -4,7 +4,7 @@
 interface InputMethodAbility
 ```
 
-InputMethodAbility是输入法应用的核心能力对象，提供输入法生命周期管理、面板创建与销毁、事件订阅等功能。输入法应用通过[getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md)获取该实例。<br> <br>核心功能概述：<br> <br>- 生命周期事件订阅：通过on('inputStart')订阅输入法绑定事件获取[KeyboardController](arkts-ime-inputmethodengine-keyboardcontroller-i.md)和[InputClient](arkts-ime-inputmethodengine-inputclient-i.md)实例，通过on('inputStop')订阅输入法解绑事件，通过on('keyboardShow'|'keyboardHide')订阅软键盘显示/隐藏事件。<br>- 面板管理：通过[createPanel](#createpanel)创建输入法面板，通过[destroyPanel](#destroypanel)销毁面板。createPanel与destroyPanel需配对调用，防止资源泄漏。<br>- 子类型与安全模式：通过on('setSubtype')订阅输入法子类型变化事件，通过on('securityModeChange')订阅安全模式变化事件，通过[getSecurityMode](#getsecuritymode)获取当前安全模式。<br>- 私有通信：通过on('privateCommand')订阅应用私有数据事件，用于输入法应用与绑定应用之间的私有数据交互。<br>- 屏幕与窗口信息：通过on('setCallingWindow')订阅调用方窗口变化事件，通过on('callingDisplayDidChange')订阅屏幕ID变化事件，通过on('discardTypingText')订阅丢弃文本事件。<br> <br>典型调用顺序：<br> <br>1. 输入法应用在[InputMethodExtensionAbility](arkts-ime-inputmethodextensionability-c.md)的onCreate生命周期中调用getInputMethodAbility()获取实例。<br>2. 订阅on('inputStart')事件，在回调中获取KeyboardController和InputClient实例。<br>3. 在on('inputStart')回调中调用createPanel()创建面板，并调用panel.setUiContent()加载键盘页面。<br>4. 订阅on('keyboardShow'|'keyboardHide')事件，在回调中调用panel.show()/panel.hide()显示/隐藏面板。<br>5. 在InputMethodExtensionAbility的onDestroy生命周期中调用destroyPanel()销毁面板，取消所有事件订阅。
+InputMethodAbility是输入法应用的核心能力对象，提供输入法生命周期管理、面板创建与销毁、事件订阅等功能。输入法应用通过[getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md)获取该实例。<br> <br>核心功能概述：<br> <br>- 生命周期事件订阅：通过on('inputStart')订阅输入法绑定事件获取[KeyboardController](arkts-ime-inputmethodengine-keyboardcontroller-i.md)和[InputClient](arkts-ime-inputmethodengine-inputclient-i.md)实例，通过on('inputStop')订阅输入法解绑事件，通过on('keyboardShow'|'keyboardHide')订阅软键盘显示/隐藏事件。<br>- 面板管理：通过[createPanel](#createpanel1)创建输入法面板，通过[destroyPanel](#destroypanel1)销毁面板。createPanel与destroyPanel需配对调用，防止资源泄漏。<br>- 子类型与安全模式：通过on('setSubtype')订阅输入法子类型变化事件，通过on('securityModeChange')订阅安全模式变化事件，通过[getSecurityMode](#getsecuritymode)获取当前安全模式。<br>- 私有通信：通过on('privateCommand')订阅应用私有数据事件，用于输入法应用与绑定应用之间的私有数据交互。<br>- 屏幕与窗口信息：通过on('setCallingWindow')订阅调用方窗口变化事件，通过on('callingDisplayDidChange')订阅屏幕ID变化事件，通过on('discardTypingText')订阅丢弃文本事件。<br> <br>典型调用顺序：<br> <br>1. 输入法应用在[InputMethodExtensionAbility](arkts-ime-inputmethodextensionability-c.md)的onCreate生命周期中调用getInputMethodAbility()获取实例。<br>2. 订阅on('inputStart')事件，在回调中获取KeyboardController和InputClient实例。<br>3. 在on('inputStart')回调中调用createPanel()创建面板，并调用panel.setUiContent()加载键盘页面。<br>4. 订阅on('keyboardShow'|'keyboardHide')事件，在回调中调用panel.show()/panel.hide()显示/隐藏面板。<br>5. 在InputMethodExtensionAbility的onDestroy生命周期中调用destroyPanel()销毁面板，取消所有事件订阅。
 
 下列API均需使用[getInputMethodAbility](arkts-ime-inputmethodengine-getinputmethodability-f.md)获取到InputMethodAbility实例后，通过实例调用。
 
@@ -20,22 +20,24 @@ InputMethodAbility是输入法应用的核心能力对象，提供输入法生�
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
+<a id="createpanel1"></a>
+
 ## createPanel
 
 ```TypeScript
 createPanel(ctx: BaseContext, info: PanelInfo, callback: AsyncCallback<Panel>): void
 ```
 
-创建输入法面板，仅支持输入法应用在[InputMethodExtensionAbility](arkts-ime-inputmethodextensionability-c.md)（输入法扩展能力）类中调用。使用callback异步回调。<br> <br>配对调用：<br> <br>- 调用createPanel()创建面板后，必须在使用完毕后调用[destroyPanel](#destroypanel)销毁面板以释放资源。<br>- 未调用destroyPanel()会导致面板资源泄漏，影响系统资源使用。<br>- 单个输入法应用仅允许创建一个软键盘类型和一个状态栏类型的面板。<br> <br>  
+创建输入法面板，仅支持输入法应用在[InputMethodExtensionAbility](arkts-ime-inputmethodextensionability-c.md)（输入法扩展能力）类中调用。使用callback异步回调。<br> <br>配对调用：<br> <br>- 调用createPanel()创建面板后，必须在使用完毕后调用[destroyPanel](#destroypanel1)销毁面板以释放资源。<br>- 未调用destroyPanel()会导致面板资源泄漏，影响系统资源使用。<br>- 单个输入法应用仅允许创建一个软键盘类型和一个状态栏类型的面板。<br> <br>  
 > **说明：** <br>
 > <br>
 > 单个输入法应用仅允许创建一个[软键盘类型](arkts-ime-inputmethodengine-paneltype-e.md)和一个[状态栏类型](arkts-ime-inputmethodengine-paneltype-e.md)的面板。<br>
 > <br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../../windowmanager/application-window-fa.md#设置应用子窗口)、<br>
-> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) <br>
-> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
+> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1) <br>
+> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
 > [弹出框](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md)、<br>
-> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu)或设置<br>
+> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu1)或设置<br>
 > showInSubwindow为false。
 
 **起始版本：** 10
@@ -91,7 +93,7 @@ class InputMethodExt extends InputMethodExtensionAbility {
 }
 ```
 
-<a id="createpanel-1"></a>
+<a id="createpanel2"></a>
 
 ## createPanel
 
@@ -105,10 +107,10 @@ createPanel(ctx: BaseContext, info: PanelInfo): Promise<Panel>
 > 单个输入法应用仅允许创建一个[软键盘类型](arkts-ime-inputmethodengine-paneltype-e.md)和一个[状态栏类型](arkts-ime-inputmethodengine-paneltype-e.md)的面板。<br>
 > <br>
 > 输入法面板不支持创建子窗口。例如：不支持使用window.createWindow[设置应用子窗口](../../../windowmanager/application-window-fa.md#设置应用子窗口)、<br>
-> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu) <br>
-> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
+> [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1) <br>
+> 、[CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog)等接口创建子窗口弹窗。建议开发者采用非子窗的替代方案，如<br>
 > [弹出框](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md)、<br>
-> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu)或设置<br>
+> [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu1)或设置<br>
 > showInSubwindow为false。
 
 **起始版本：** 10
@@ -165,13 +167,15 @@ class InputMethodExt extends InputMethodExtensionAbility {
 }
 ```
 
+<a id="destroypanel1"></a>
+
 ## destroyPanel
 
 ```TypeScript
 destroyPanel(panel: Panel, callback: AsyncCallback<void>): void
 ```
 
-销毁输入法面板。需先通过[createPanel](#createpanel)创建面板后调用。使用callback异步回调。<br> <br>配对调用：<br> <br>- 必须与[createPanel](#createpanel)方法配合使用，用于销毁由createPanel()创建的输入法面板。<br>- 销毁的面板必须是已成功创建的面板对象。<br>- 未正确销毁面板会导致资源泄漏，建议在面板使用完毕后及时调用destroyPanel()释放资源。
+销毁输入法面板。需先通过[createPanel](#createpanel1)创建面板后调用。使用callback异步回调。<br> <br>配对调用：<br> <br>- 必须与[createPanel](#createpanel1)方法配合使用，用于销毁由createPanel()创建的输入法面板。<br>- 销毁的面板必须是已成功创建的面板对象。<br>- 未正确销毁面板会导致资源泄漏，建议在面板使用完毕后及时调用destroyPanel()释放资源。
 
 **起始版本：** 10
 
@@ -225,7 +229,7 @@ inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo, (
 });
 ```
 
-<a id="destroypanel-1"></a>
+<a id="destroypanel2"></a>
 
 ## destroyPanel
 
@@ -233,7 +237,7 @@ inputMethodEngine.getInputMethodAbility().createPanel(this.context, panelInfo, (
 destroyPanel(panel: Panel): Promise<void>
 ```
 
-销毁输入法面板。使用promise异步回调。<br> <br>配对调用：<br> <br>- 必须与[createPanel](#createpanel)方法配合使用，用于销毁由createPanel()创建的输入法面板。<br>- 销毁的面板必须是已成功创建的面板对象。<br>- 未正确销毁面板会导致资源泄漏，建议在面板使用完毕后及时调用destroyPanel()释放资源。
+销毁输入法面板。使用promise异步回调。<br> <br>配对调用：<br> <br>- 必须与[createPanel](#createpanel1)方法配合使用，用于销毁由createPanel()创建的输入法面板。<br>- 销毁的面板必须是已成功创建的面板对象。<br>- 未正确销毁面板会导致资源泄漏，建议在面板使用完毕后及时调用destroyPanel()释放资源。
 
 **起始版本：** 10
 

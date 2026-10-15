@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="adddisalloweduninstallbundles1"></a>
+
 ## addDisallowedUninstallBundles
 
 ```TypeScript
@@ -46,8 +48,9 @@ Adds the applications that cannot be uninstalled by the current user. This API u
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,8 +74,10 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="adddisalloweduninstallbundles-1"></a>
+
+<a id="adddisalloweduninstallbundles2"></a>
 
 ## addDisallowedUninstallBundles
 
@@ -115,8 +120,9 @@ Adds the applications that cannot be uninstalled by the user specified by **user
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -140,8 +146,10 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, 100, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="adddisalloweduninstallbundles-2"></a>
+
+<a id="adddisalloweduninstallbundles3"></a>
 
 ## addDisallowedUninstallBundles
 
@@ -189,8 +197,9 @@ Adds the applications that cannot be uninstalled by the current or specified use
 | [9200002](../errorcode-enterpriseDeviceManager.md#9200002-permission-denied) | The administrator application does not have permission to manage the device. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -212,3 +221,5 @@ bundleManager.addDisallowedUninstallBundles(wantTemp, appIds, 100).then(() => {
   console.error(`Failed to add disallowed uninstall bundles. Code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -41,6 +41,7 @@ When the screen is locked, the specified user key is uninstalled synchronously. 
 | 13600008 | No such object. Possible causes: Cannot find userkey for the specified user. |
 | 13600009 | User ID out of range. Possible causes: input parameter userId &lt; 100 or userId &gt; 10736. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,3 +56,5 @@ try {
   console.error("deactivateUserKey failed with error:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

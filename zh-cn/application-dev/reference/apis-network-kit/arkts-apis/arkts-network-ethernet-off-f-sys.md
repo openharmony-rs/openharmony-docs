@@ -39,6 +39,7 @@ function off(type: 'interfaceStateChange', callback?: Callback<InterfaceStateInf
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -46,3 +47,5 @@ import { ethernet } from '@kit.NetworkKit';
 
 ethernet.off('interfaceStateChange');
 ```
+
+<!--DelEnd-->

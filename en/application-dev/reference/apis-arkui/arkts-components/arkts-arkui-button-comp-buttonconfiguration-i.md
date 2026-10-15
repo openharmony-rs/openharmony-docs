@@ -6,7 +6,7 @@ declare interface ButtonConfiguration extends CommonConfiguration<ButtonConfigur
 
 You need a custom class to implement the **ContentModifier** API. Inherits from [CommonConfiguration](arkts-arkui-common-comp-commonconfiguration-i.md).
 
-**Inheritance/Implementation:** ButtonConfiguration extends CommonConfiguration<ButtonConfiguration>
+**Inheritance/Implementation:** ButtonConfiguration extends CommonConfiguration&lt;ButtonConfiguration&gt;
 
 **Since:** 12
 

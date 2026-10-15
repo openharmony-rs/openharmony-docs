@@ -1,10 +1,10 @@
 # NavDestination
 
-**NavDestination** is the root container of a destination page and represents the content area of the Navigation component.
+**NavDestination** is the root container of a destination page and represents the content area of the [Navigation](arkts-arkui-navigation-comp.md) component.
 
 > **NOTE:** 
-
-> - Since API version 11, this component supports the safe area attribute by default, with the default attribute value being **expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])**. You can override this attribute to change the default behavior. In earlier versions, you need to use the expandSafeArea attribute to implement the safe area feature.
+> 
+> - Since API version 11, this component supports the safe area attribute by default, with the default attribute value being **expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM])**. You can override this attribute to change the default behavior. In earlier versions, you need to use the [expandSafeArea](arkts-arkui-common-comp.md) attribute to implement the safe area feature.
 > 
 > - The **NavDestination** component must be used in conjunction with the **Navigation** component to act as the root node for the navigation destination page. When used alone, it can only function as a standard container component and does not possess any routing-related attributes or capabilities.
 > 
@@ -31,7 +31,7 @@
 NavDestination()
 ```
 
-Creates the root container for a subpage in Navigation.
+Creates the root container for a subpage in [Navigation](arkts-arkui-navigation-comp.md).
 
 **Since:** 9
 

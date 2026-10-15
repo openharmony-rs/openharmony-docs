@@ -271,7 +271,7 @@ Inputs text to a component. This API takes effect only for editable text compone
 
 **Deprecated since:** 9
 
-**Substitutes:** [inputText](arkts-test-uitest-component-c.md#inputtext)(text: string)
+**Substitutes:** [inputText](arkts-test-uitest-component-c.md#inputtext1)(text: string)
 
 <!--Device-UiComponent-inputText(text: string): Promise<void>--><!--Device-UiComponent-inputText(text: string): Promise<void>-End-->
 
@@ -570,7 +570,7 @@ Scrolls on this component to search for the target component (applicable to comp
 
 **Deprecated since:** 9
 
-**Substitutes:** [scrollSearch](arkts-test-uitest-component-c.md#scrollsearch)(on: On)
+**Substitutes:** [scrollSearch](arkts-test-uitest-component-c.md#scrollsearch1)(on: On)
 
 <!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>--><!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>-End-->
 

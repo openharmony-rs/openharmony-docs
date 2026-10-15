@@ -34,7 +34,7 @@ code: number
 
 **废弃版本：** 9
 
-**替代接口：** statusCode
+**替代接口：** [statusCode](arkts-basicservices-agent-httpresponse-i.md#statuscode)
 
 <!--Device-UploadResponse-code: number--><!--Device-UploadResponse-code: number-End-->
 
@@ -54,7 +54,7 @@ data: string
 
 **废弃版本：** 9
 
-**替代接口：** extras
+**替代接口：** [extras](arkts-basicservices-agent-progress-i.md#extras)
 
 <!--Device-UploadResponse-data: string--><!--Device-UploadResponse-data: string-End-->
 
@@ -74,7 +74,7 @@ headers: Object
 
 **废弃版本：** 9
 
-**替代接口：** headers
+**替代接口：** [headers](arkts-basicservices-agent-httpresponse-i.md#headers)
 
 <!--Device-UploadResponse-headers: Object--><!--Device-UploadResponse-headers: Object-End-->
 

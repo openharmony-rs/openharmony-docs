@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="publishasuser1"></a>
+
 ## publishAsUser
 
 ```TypeScript
@@ -33,6 +35,7 @@ Publishes a common event to a specific user. This API uses an asynchronous callb
 | userId | number | Yes | ID of the user to whom the common event is published. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the common event publication result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,8 +57,10 @@ const userId = 100;
 commonEvent.publishAsUser('event', userId, publishCallBack);
 ```
 
+<!--DelEnd-->
 
-<a id="publishasuser-1"></a>
+
+<a id="publishasuser2"></a>
 
 ## publishAsUser
 
@@ -88,9 +93,10 @@ Publishes a common event with given properties to a specific user. This API uses
 | --- | --- | --- | --- |
 | event | string | Yes | Name of the common event to publish. |
 | userId | number | Yes | ID of the user to whom the common event is published. |
-| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-commoneventpublishdata-i.md) | Yes | Properties of the common event to publish. |
+| options | [CommonEventPublishData](arkts-basicservices-commoneventpublishdata-i.md) | Yes | Properties of the common event to publish. |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the common event publication result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -118,3 +124,5 @@ let userId = 100;
 // Publish a common event.
 commonEvent.publishAsUser('event', userId, options, publishCallBack);
 ```
+
+<!--DelEnd-->

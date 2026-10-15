@@ -6,6 +6,8 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="gettopwindow1"></a>
+
 ## getTopWindow
 
 ```TypeScript
@@ -18,7 +20,7 @@ Obtains the top window of the current application. This API uses an asynchronous
 
 **Deprecated since:** 9
 
-**Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+**Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow1)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -50,7 +52,7 @@ window.getTopWindow((err: BusinessError, data) => {
 ```
 
 
-<a id="gettopwindow-1"></a>
+<a id="gettopwindow2"></a>
 
 ## getTopWindow
 
@@ -64,7 +66,7 @@ Obtains the top window of the current application. This API uses a promise to re
 
 **Deprecated since:** 9
 
-**Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)(ctx: BaseContext)
+**Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow2)(ctx: BaseContext)
 
 **Model restriction:** This API can be used only in the FA model.
 
@@ -94,7 +96,7 @@ promise.then((data)=> {
 ```
 
 
-<a id="gettopwindow-2"></a>
+<a id="gettopwindow3"></a>
 
 ## getTopWindow
 
@@ -108,7 +110,7 @@ Obtains the top window of the current application. This API uses a promise to re
 
 **Deprecated since:** 9
 
-**Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow-1)(ctx: BaseContext)
+**Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow2)(ctx: BaseContext)
 
 <!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>--><!--Device-window-function getTopWindow(ctx: BaseContext): Promise<Window>-End-->
 
@@ -149,7 +151,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="gettopwindow-3"></a>
+<a id="gettopwindow4"></a>
 
 ## getTopWindow
 
@@ -163,7 +165,7 @@ Obtains the top window of the current application. This API uses an asynchronous
 
 **Deprecated since:** 9
 
-**Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
+**Substitutes:** [getLastWindow](arkts-arkui-window-getlastwindow-f.md#getlastwindow1)(ctx: BaseContext, callback: AsyncCallback&lt;Window&gt;)
 
 <!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void--><!--Device-window-function getTopWindow(ctx: BaseContext, callback: AsyncCallback<Window>): void-End-->
 

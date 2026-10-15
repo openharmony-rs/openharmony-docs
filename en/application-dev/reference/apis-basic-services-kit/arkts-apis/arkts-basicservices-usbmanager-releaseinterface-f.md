@@ -36,7 +36,7 @@ Releases the claimed communication interface.
 
 | Type | Description |
 | --- | --- |
-| number | Returns **0** if the **release** interface is released successfully; returns an error code otherwise. The error codes are as follows: <br>- 88080389: The service is not started. Possible causes: 1. No device is inserted; 2. The service exits abnormally. <br>- 88080486: The service is being initialized. Try again later. <br>- 88080488: No permission to access the device. Call [requestRight](arkts-basicservices-usbmanager-requestright-f.md) to request authorization first. <br>- -1: The driver is abnormal. Possible causes: 1. The device connection is unstable or the device is disconnected. 2. The USB driver fails to be loaded. 3. The kernel USB module is abnormal. |
+| number | Returns **0** if the **release** interface is released successfully; returns an error code otherwise. The error codes are as follows: <br>- 88080389: The service is not started. Possible causes: 1. No device is inserted;         2. The service exits abnormally. <br>- 88080486: The service is being initialized. Try again later. <br>- 88080488: No permission to access the device. Call [requestRight](arkts-basicservices-usbmanager-requestright-f.md) to request authorization first. <br>- -1: The driver is abnormal. Possible causes: 1. The device connection is unstable or the device is disconnected. 2. The USB driver fails to be loaded. 3. The kernel USB module is abnormal. |
 
 **Error codes:**
 

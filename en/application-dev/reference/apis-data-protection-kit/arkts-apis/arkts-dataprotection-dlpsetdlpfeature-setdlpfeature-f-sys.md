@@ -49,6 +49,7 @@ This API is used to enable or disable the DLP function in enterprise policies.
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100011](../errorcode-dlp.md#19100011-system-service-abnormal) | The system ability works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,3 +63,5 @@ async function exampleFunction() {
 
 exampleFunction();
 ```
+
+<!--DelEnd-->

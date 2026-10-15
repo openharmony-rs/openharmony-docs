@@ -12,22 +12,6 @@ Enumerates the privileges that can be authorized. Before requesting authorizatio
 
 **System capability:** SystemCapability.Account.OsAccount
 
-## PRIVILEGE_OPERATE_RAW_NET_PACKETS
-
-```TypeScript
-PRIVILEGE_OPERATE_RAW_NET_PACKETS = 'ohos.privilege.operate_raw_net_packets'
-```
-
-Privilege for operating the raw network packets.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Privilege-PRIVILEGE_OPERATE_RAW_NET_PACKETS = 'ohos.privilege.operate_raw_net_packets'--><!--Device-Privilege-PRIVILEGE_OPERATE_RAW_NET_PACKETS = 'ohos.privilege.operate_raw_net_packets'-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
 ## PRIVILEGE_MONITOR_RAW_USB_PACKETS
 
 ```TypeScript
@@ -49,5 +33,21 @@ These capabilities are intended for USB packet sniffing, low-level protocol anal
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-Privilege-PRIVILEGE_MONITOR_RAW_USB_PACKETS = 'ohos.privilege.monitor_raw_usb_packets'--><!--Device-Privilege-PRIVILEGE_MONITOR_RAW_USB_PACKETS = 'ohos.privilege.monitor_raw_usb_packets'-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+## PRIVILEGE_OPERATE_RAW_NET_PACKETS
+
+```TypeScript
+PRIVILEGE_OPERATE_RAW_NET_PACKETS = 'ohos.privilege.operate_raw_net_packets'
+```
+
+Privilege for operating the raw network packets.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Privilege-PRIVILEGE_OPERATE_RAW_NET_PACKETS = 'ohos.privilege.operate_raw_net_packets'--><!--Device-Privilege-PRIVILEGE_OPERATE_RAW_NET_PACKETS = 'ohos.privilege.operate_raw_net_packets'-End-->
 
 **System capability:** SystemCapability.Account.OsAccount

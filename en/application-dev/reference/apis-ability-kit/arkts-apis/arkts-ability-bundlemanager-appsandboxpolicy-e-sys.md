@@ -14,24 +14,6 @@ App sandbox policy for dual-mode (2in1/tablet) scenarios.
 
 **System API:** This is a system API.
 
-## SHARED_SANDBOX
-
-```TypeScript
-SHARED_SANDBOX = 0
-```
-
-Application sharing sandbox in the two modes.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AppSandboxPolicy-SHARED_SANDBOX = 0--><!--Device-AppSandboxPolicy-SHARED_SANDBOX = 0-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**System API:** This is a system API.
-
 ## ISOLATED_SANDBOX
 
 ```TypeScript
@@ -45,6 +27,24 @@ The application isolation sandbox for the two modes, with each application havin
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-AppSandboxPolicy-ISOLATED_SANDBOX = 1--><!--Device-AppSandboxPolicy-ISOLATED_SANDBOX = 1-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**System API:** This is a system API.
+
+## SHARED_SANDBOX
+
+```TypeScript
+SHARED_SANDBOX = 0
+```
+
+Application sharing sandbox in the two modes.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AppSandboxPolicy-SHARED_SANDBOX = 0--><!--Device-AppSandboxPolicy-SHARED_SANDBOX = 0-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

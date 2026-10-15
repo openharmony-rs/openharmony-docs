@@ -30,6 +30,8 @@ Unit: vp
 
 Value range: [0, +∞).
 
+If the value is abnormal, the default value is used.
+
 **Type:** number
 
 **Since:** 8
@@ -66,13 +68,15 @@ If the resource fails to be obtained or this attribute is not set, the default i
 left?: number
 ```
 
-Spacing between the sidebar control button and the left of the container.
+Distance between the sidebar control button and the left edge of the container.
 
 Default value: **16vp**
 
 Unit: vp
 
-Value range: [0, +∞).
+Value range: [0, +∞)
+
+The default value is used when an invalid value is set.
 
 **Type:** number
 
@@ -97,6 +101,8 @@ Default value: **48vp**
 Unit: vp
 
 Value range: [0, +∞).
+
+If the value is abnormal, the default value is used.
 
 **Type:** number
 
@@ -125,6 +131,8 @@ API version 10 and later versions: **24vp**
 Unit: vp
 
 Value range: [0, +∞).
+
+If the value is abnormal, the default value is used.
 
 **Type:** number
 

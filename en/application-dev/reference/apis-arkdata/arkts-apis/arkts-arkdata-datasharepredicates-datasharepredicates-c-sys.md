@@ -51,12 +51,15 @@ Currently, only RDB store supports this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.beginsWith("NAME", "os");
 ```
+
+<!--DelEnd-->
 
 ## contains
 
@@ -91,12 +94,15 @@ Currently, only RDB store supports this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.contains("NAME", "os");
 ```
+
+<!--DelEnd-->
 
 ## distinct
 
@@ -124,12 +130,15 @@ Currently, only RDB store supports this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.equalTo("NAME", "Rose").distinct();
 ```
+
+<!--DelEnd-->
 
 ## endsWith
 
@@ -164,12 +173,15 @@ Currently, only RDB store supports this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.endsWith("NAME", "os");
 ```
+
+<!--DelEnd-->
 
 ## glob
 
@@ -204,12 +216,15 @@ Currently, only RDB store supports this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.glob("NAME", "?h*g");
 ```
+
+<!--DelEnd-->
 
 ## groupBy
 
@@ -243,12 +258,15 @@ Currently, only RDB store supports this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.groupBy(["AGE", "NAME"]);
 ```
+
+<!--DelEnd-->
 
 ## indexedBy
 
@@ -282,12 +300,15 @@ Currently, only RDB store supports this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.indexedBy("SALARY_INDEX");
 ```
+
+<!--DelEnd-->
 
 ## inKeys
 
@@ -321,12 +342,15 @@ Currently, only the KVDB supports this **DataSharePredicates** object.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.inKeys(["Lisa", "Rose"]);
 ```
+
+<!--DelEnd-->
 
 ## isNotNull
 
@@ -360,12 +384,15 @@ Currently, both the RDB store and KV store support this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.isNotNull("NAME");
 ```
+
+<!--DelEnd-->
 
 ## isNull
 
@@ -399,12 +426,15 @@ Currently, both the RDB store and KV store support this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.isNull("NAME");
 ```
+
+<!--DelEnd-->
 
 ## prefixKey
 
@@ -438,12 +468,15 @@ Currently, only the KVDB supports this **DataSharePredicates** object.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.prefixKey("NAME");
 ```
+
+<!--DelEnd-->
 
 ## unlike
 
@@ -478,9 +511,12 @@ Currently, both the RDB store and KV store support this predicate.
 | --- | --- |
 | [DataSharePredicates](arkts-arkdata-datasharepredicates-datasharepredicates-c.md) | **DataSharePredicates** object created. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let predicates = new dataSharePredicates.DataSharePredicates();
 predicates.unlike("NAME", "%os%");
 ```
+
+<!--DelEnd-->

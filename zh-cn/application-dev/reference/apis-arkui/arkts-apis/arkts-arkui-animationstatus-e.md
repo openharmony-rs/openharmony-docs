@@ -30,24 +30,6 @@ Initial = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Running
-
-```TypeScript
-Running = 1
-```
-
-动画处于播放状态。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-AnimationStatus-Running = 1--><!--Device-AnimationStatus-Running = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Paused
 
 ```TypeScript
@@ -63,6 +45,24 @@ Paused = 2
 **卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-AnimationStatus-Paused = 2--><!--Device-AnimationStatus-Paused = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Running
+
+```TypeScript
+Running = 1
+```
+
+动画处于播放状态。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本10开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-AnimationStatus-Running = 1--><!--Device-AnimationStatus-Running = 1-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

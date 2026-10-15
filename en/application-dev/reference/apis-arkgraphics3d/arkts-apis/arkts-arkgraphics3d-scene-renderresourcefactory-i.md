@@ -250,6 +250,8 @@ function createSamplerResource(): Promise<Sampler> {
 }
 ```
 
+<a id="createscene1"></a>
+
 ## createScene
 
 ```TypeScript

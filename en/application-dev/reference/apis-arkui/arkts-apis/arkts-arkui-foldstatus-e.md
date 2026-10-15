@@ -12,24 +12,6 @@ Sets the folding status of the device.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## FOLD_STATUS_UNKNOWN
-
-```TypeScript
-FOLD_STATUS_UNKNOWN = 0
-```
-
-The folding status of the device is unknown.
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-FoldStatus-FOLD_STATUS_UNKNOWN = 0--><!--Device-FoldStatus-FOLD_STATUS_UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## FOLD_STATUS_EXPANDED
 
 ```TypeScript
@@ -81,5 +63,23 @@ The device is half-folded, somewhere between fully open and completely folded.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED = 3--><!--Device-FoldStatus-FOLD_STATUS_HALF_FOLDED = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## FOLD_STATUS_UNKNOWN
+
+```TypeScript
+FOLD_STATUS_UNKNOWN = 0
+```
+
+The folding status of the device is unknown.
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-FoldStatus-FOLD_STATUS_UNKNOWN = 0--><!--Device-FoldStatus-FOLD_STATUS_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

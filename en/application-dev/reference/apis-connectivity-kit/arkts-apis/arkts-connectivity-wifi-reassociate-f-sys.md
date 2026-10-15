@@ -34,6 +34,7 @@ Re-associate to current network.
 | --- | --- |
 | boolean | `true` if the Wi-Fi network is re-associate successfully. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

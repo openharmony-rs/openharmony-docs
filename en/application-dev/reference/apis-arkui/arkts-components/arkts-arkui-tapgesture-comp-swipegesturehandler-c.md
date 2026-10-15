@@ -4,9 +4,9 @@
 declare class SwipeGestureHandler extends GestureHandler<SwipeGestureHandler>
 ```
 
-Defines a swipe gesture handler object.
+Defines the swipe gesture handler object type, which is used to recognize quick swipe interactions on a component. It is suitable for scenarios where an operation is triggered based on the swipe direction or speed, and supports configuring the number of triggering fingers, the swipe direction, and the minimum speed.
 
-**Inheritance/Implementation:** SwipeGestureHandler extends GestureHandler<SwipeGestureHandler>
+**Inheritance/Implementation:** SwipeGestureHandler extends GestureHandler&lt;SwipeGestureHandler&gt;
 
 **Since:** 12
 
@@ -36,7 +36,7 @@ Constructor used to create a swipe gesture handler instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [SwipeGestureHandlerOptions](arkts-arkui-tapgesture-comp-swipegesturehandleroptions-i.md) | No | Parameters of the swipe gesture handler. |
+| options | [SwipeGestureHandlerOptions](arkts-arkui-tapgesture-comp-swipegesturehandleroptions-i.md) | No | Configuration options of the swipe gesture handler. Pass this parameter when you need to customize the minimum finger count, swipe direction, minimum recognition speed, or finger count check for triggering a swipe; if not passed, the default configuration of the swipe gesture handler is used, that is, the trigger finger count is 1, the direction is **SwipeDirection.All**, the minimum speed is 100 vp/s, and the number of fingers touching the screen is not checked by default. |
 
 ## onAction
 

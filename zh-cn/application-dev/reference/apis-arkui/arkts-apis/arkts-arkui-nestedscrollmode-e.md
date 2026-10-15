@@ -12,13 +12,13 @@ declare enum NestedScrollMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## SELF_ONLY
+## PARALLEL
 
 ```TypeScript
-SELF_ONLY
+PARALLEL
 ```
 
-只自身滚动，不与父组件联动。
+自身和父组件同时滚动，自身和父组件都到达边缘以后，如果自身有边缘效果，则自身触发边缘效果，否则父组件触发边缘效果。
 
 **起始版本：** 10
 
@@ -26,25 +26,7 @@ SELF_ONLY
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-NestedScrollMode-SELF_ONLY--><!--Device-NestedScrollMode-SELF_ONLY-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## SELF_FIRST
-
-```TypeScript
-SELF_FIRST
-```
-
-自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则子组件触发边缘效果。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-NestedScrollMode-SELF_FIRST--><!--Device-NestedScrollMode-SELF_FIRST-End-->
+<!--Device-NestedScrollMode-PARALLEL--><!--Device-NestedScrollMode-PARALLEL-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +48,13 @@ PARENT_FIRST
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## PARALLEL
+## SELF_FIRST
 
 ```TypeScript
-PARALLEL
+SELF_FIRST
 ```
 
-自身和父组件同时滚动，自身和父组件都到达边缘以后，如果自身有边缘效果，则自身触发边缘效果，否则父组件触发边缘效果。
+自身先滚动，自身滚动到边缘以后父组件滚动。父组件滚动到边缘以后，如果父组件有边缘效果，则父组件触发边缘效果，否则子组件触发边缘效果。
 
 **起始版本：** 10
 
@@ -80,6 +62,24 @@ PARALLEL
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-NestedScrollMode-PARALLEL--><!--Device-NestedScrollMode-PARALLEL-End-->
+<!--Device-NestedScrollMode-SELF_FIRST--><!--Device-NestedScrollMode-SELF_FIRST-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## SELF_ONLY
+
+```TypeScript
+SELF_ONLY
+```
+
+只自身滚动，不与父组件联动。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-NestedScrollMode-SELF_ONLY--><!--Device-NestedScrollMode-SELF_ONLY-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

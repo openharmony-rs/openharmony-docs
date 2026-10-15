@@ -61,12 +61,12 @@ for (let value of pro) {
 afterRemoval(isEvict: boolean, key: K, value: V, newValue: V): void
 ```
 
-Performs subsequent operations after a value is removed. The subsequent operations must be implemented by developers. This API is called during deletion operations, such as [get&lt;sup&gt;9+&lt;/sup&gt;](#get), [put&lt;sup&gt;9+&lt;/sup&gt;](#put), [remove&lt;sup&gt;9+&lt;/sup&gt;](#remove), [clear&lt;sup&gt;9+&lt;/sup&gt;](#clear), and [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updatecapacity).
+Performs subsequent operations after a value is removed. The subsequent operations must be implemented by developers. This API is called during deletion operations, such as [get<sup>9+</sup>](#get), [put<sup>9+</sup>](#put), [remove<sup>9+</sup>](#remove), [clear<sup>9+</sup>](#clear), and [updateCapacity<sup>9+</sup>](#updatecapacity).
 
 > **NOTE:** 
 > 
-> If the callback method is executed after [clear&lt;sup&gt;9+&lt;/sup&gt;](#clear) and
-> [updateCapacity&lt;sup&gt;9+&lt;/sup&gt;](#updatecapacity) are called and the input **key** and
+> If the callback method is executed after [clear<sup>9+</sup>](#clear) and
+> [updateCapacity<sup>9+</sup>](#updatecapacity) are called and the input **key** and
 > **value** parameters are of the MapIterator type, perform subsequent operations by referring to example 2.
 
 **Since:** 9
@@ -262,7 +262,7 @@ for (let value of pair) {
 get(key: K): V | undefined
 ```
 
-Obtains the value of a key. If the key is not in the cache, [createDefault&lt;sup&gt;9+&lt;/sup&gt;](#createdefault) is called to create the key. If the value specified in **createDefault** is not **undefined**, [afterRemoval&lt;sup&gt;9+&lt;/sup&gt;](#afterremoval) is called to return the value specified in **createDefault**.
+Obtains the value of a key. If the key is not in the cache, [createDefault<sup>9+</sup>](#createdefault) is called to create the key. If the value specified in **createDefault** is not **undefined**, [afterRemoval<sup>9+</sup>](#afterremoval) is called to return the value specified in **createDefault**.
 
 **Since:** 9
 

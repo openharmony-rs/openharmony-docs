@@ -30,7 +30,7 @@ function deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 要删除的动态快捷方式所属的包名。 |
 | appIndex | number | 是 | 要删除的动态快捷方式所属的分身索引。支持取值为：1、2、3、4、5。 |
-| userId | number | 是 | 要删除的动态快捷方式所属的用户id。可以通过[getOsAccountLocalId接口](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)获取。默认值：调用方所在用户，取值范围：大于等于0。 |
+| userId | number | 是 | 要删除的动态快捷方式所属的用户ID。可以通过[getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid)接口获取。默认值：调用方所在用户，取值范围：大于等于0。 |
 | ids | Array&lt;string&gt; | 否 | 要删除的动态快捷方式id列表。缺省或传入列表为空时，表示删除所有符合条件的动态快捷方式。 |
 
 **返回值：**
@@ -52,6 +52,7 @@ function deleteDynamicShortcutInfos(bundleName: string, appIndex: number, userId
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | The specified app index is invalid. |
 | [17700070](../errorcode-bundle.md#17700070-指定的快捷方式id不合法) | The specified shortcut id is illegal. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,3 +73,5 @@ try {
   console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

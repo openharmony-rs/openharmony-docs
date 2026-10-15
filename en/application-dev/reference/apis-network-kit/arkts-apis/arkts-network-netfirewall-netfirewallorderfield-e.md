@@ -16,20 +16,6 @@ Enumerates the sorting methods of firewall rules.
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall
 
-## ORDER_BY_RULE_NAME
-
-```TypeScript
-ORDER_BY_RULE_NAME = 1
-```
-
-Sorting of firewall rules by name.
-
-**Since:** 15
-
-<!--Device-NetFirewallOrderField-ORDER_BY_RULE_NAME = 1--><!--Device-NetFirewallOrderField-ORDER_BY_RULE_NAME = 1-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.NetFirewall
-
 ## ORDER_BY_RECORD_TIME
 
 ```TypeScript
@@ -41,5 +27,19 @@ Sorting of firewall rules by time.
 **Since:** 15
 
 <!--Device-NetFirewallOrderField-ORDER_BY_RECORD_TIME = 100--><!--Device-NetFirewallOrderField-ORDER_BY_RECORD_TIME = 100-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.NetFirewall
+
+## ORDER_BY_RULE_NAME
+
+```TypeScript
+ORDER_BY_RULE_NAME = 1
+```
+
+Sorting of firewall rules by name.
+
+**Since:** 15
+
+<!--Device-NetFirewallOrderField-ORDER_BY_RULE_NAME = 1--><!--Device-NetFirewallOrderField-ORDER_BY_RULE_NAME = 1-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.NetFirewall

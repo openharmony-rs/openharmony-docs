@@ -216,7 +216,7 @@ const END_BUTTON_ACTION: string
 
 Specifies what happens after the user presses the call end button if the user is not in a call.
 
-&lt;ul&gt; &lt;li&gt;`0` - Nothing happens. &lt;li&gt;`1` - The home screen is displayed. &lt;li&gt;`2` - The device enters the sleep state and the screen is locked. &lt;li&gt;`3` - The home screen is displayed. If the user is already on the home screen, the device enters the sleep state. &lt;/ul&gt;
+<ul> <li>`0` - Nothing happens. <li>`1` - The home screen is displayed. <li>`2` - The device enters the sleep state and the screen is locked. <li>`3` - The home screen is displayed. If the user is already on the home screen, the device enters the sleep state. </ul>
 
 **Type:** string
 

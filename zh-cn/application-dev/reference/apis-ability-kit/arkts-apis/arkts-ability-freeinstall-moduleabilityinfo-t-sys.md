@@ -6,6 +6,8 @@ export type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo
 
 module包含的ability组件信息。
 
+**类型：** [_PackInfo.ModuleAbilityInfo](arkts-ability-bundlepackinfo-moduleabilityinfo-i-sys.md)
+
 **起始版本：** 9
 
 <!--Device-freeInstall-export type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo--><!--Device-freeInstall-export type ModuleAbilityInfo = _PackInfo.ModuleAbilityInfo-End-->
@@ -13,5 +15,3 @@ module包含的ability组件信息。
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [_PackInfo.ModuleAbilityInfo](arkts-ability-bundlepackinfo-moduleabilityinfo-i-sys.md)

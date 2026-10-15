@@ -13,7 +13,7 @@ This module defines the data structure of a notification request, which is used 
 | --- | --- |
 | [DistributedOptions](arkts-notification-notificationrequest-distributedoptions-i.md) | Describes options for cross-device notifications. Not supported currently. |
 | [NotificationParameters](arkts-notification-notificationrequest-notificationparameters-i.md) | Describes part of the **wantAgent** information in NotificationRequest. |
-| [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) | Defines the data structure of a notification request, which is used to describe all information about a notification, including the notification content, identifier, display style, and interaction behavior. |
+| [NotificationRequest](arkts-notification-notificationrequest-i.md) | Defines the data structure of a notification request, which is used to describe all information about a notification, including the notification content, identifier, display style, and interaction behavior. |
 
 <!--Del-->
 ### Interfaces(System API)
@@ -25,7 +25,7 @@ This module defines the data structure of a notification request, which is used 
 | [GroupInfo](arkts-notification-notificationrequest-groupinfo-i-sys.md) | Defines the group notification information. |
 | [NotificationCheckRequest](arkts-notification-notificationrequest-notificationcheckrequest-i-sys.md) | Describes the notification authentication information. |
 | [NotificationFilter](arkts-notification-notificationrequest-notificationfilter-i-sys.md) | Describes the filter criteria for querying the live view. |
-| [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i-sys.md) | Defines the data structure of a notification request, which is used to describe all information about a notification, including the notification content, identifier, display style, and interaction behavior. |
+| [NotificationRequest](arkts-notification-notificationrequest-i-sys.md) | Defines the data structure of a notification request, which is used to describe all information about a notification, including the notification content, identifier, display style, and interaction behavior. |
 | [Trigger](arkts-notification-notificationrequest-trigger-i-sys.md) | Defines the details for triggering a geofence. |
 | [UnifiedGroupInfo](arkts-notification-notificationrequest-unifiedgroupinfo-i-sys.md) | Describes the fields of notification intelligent unification information. |
 <!--DelEnd-->

@@ -33,7 +33,7 @@ getCount(): number
 
 **废弃版本：** 9
 
-**替代接口：** getCount
+**替代接口：** [getCount](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#getcount)
 
 <!--Device-KvStoreResultSet-getCount(): number--><!--Device-KvStoreResultSet-getCount(): number-End-->
 
@@ -76,7 +76,7 @@ getEntry(): Entry
 
 **废弃版本：** 9
 
-**替代接口：** getEntry
+**替代接口：** [getEntry](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#getentry)
 
 <!--Device-KvStoreResultSet-getEntry(): Entry--><!--Device-KvStoreResultSet-getEntry(): Entry-End-->
 
@@ -119,7 +119,7 @@ getPosition(): number
 
 **废弃版本：** 9
 
-**替代接口：** getPosition
+**替代接口：** [getPosition](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#getposition)
 
 <!--Device-KvStoreResultSet-getPosition(): number--><!--Device-KvStoreResultSet-getPosition(): number-End-->
 
@@ -162,7 +162,7 @@ isAfterLast(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** isAfterLast
+**替代接口：** [isAfterLast](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#isafterlast)
 
 <!--Device-KvStoreResultSet-isAfterLast(): boolean--><!--Device-KvStoreResultSet-isAfterLast(): boolean-End-->
 
@@ -205,7 +205,7 @@ isBeforeFirst(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** isBeforeFirst
+**替代接口：** [isBeforeFirst](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#isbeforefirst)
 
 <!--Device-KvStoreResultSet-isBeforeFirst(): boolean--><!--Device-KvStoreResultSet-isBeforeFirst(): boolean-End-->
 
@@ -248,7 +248,7 @@ isFirst(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** isFirst
+**替代接口：** [isFirst](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#isfirst)
 
 <!--Device-KvStoreResultSet-isFirst(): boolean--><!--Device-KvStoreResultSet-isFirst(): boolean-End-->
 
@@ -291,7 +291,7 @@ isLast(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** isLast
+**替代接口：** [isLast](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#islast)
 
 <!--Device-KvStoreResultSet-isLast(): boolean--><!--Device-KvStoreResultSet-isLast(): boolean-End-->
 
@@ -334,7 +334,7 @@ move(offset: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** move
+**替代接口：** [move](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#move)
 
 <!--Device-KvStoreResultSet-move(offset: number): boolean--><!--Device-KvStoreResultSet-move(offset: number): boolean-End-->
 
@@ -383,7 +383,7 @@ moveToFirst(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** moveToFirst
+**替代接口：** [moveToFirst](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetofirst)
 
 <!--Device-KvStoreResultSet-moveToFirst(): boolean--><!--Device-KvStoreResultSet-moveToFirst(): boolean-End-->
 
@@ -426,7 +426,7 @@ moveToLast(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** moveToLast
+**替代接口：** [moveToLast](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetolast)
 
 <!--Device-KvStoreResultSet-moveToLast(): boolean--><!--Device-KvStoreResultSet-moveToLast(): boolean-End-->
 
@@ -469,7 +469,7 @@ moveToNext(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** moveToNext
+**替代接口：** [moveToNext](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetonext)
 
 <!--Device-KvStoreResultSet-moveToNext(): boolean--><!--Device-KvStoreResultSet-moveToNext(): boolean-End-->
 
@@ -512,7 +512,7 @@ moveToPosition(position: number): boolean
 
 **废弃版本：** 9
 
-**替代接口：** moveToPosition
+**替代接口：** [moveToPosition](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetoposition)
 
 <!--Device-KvStoreResultSet-moveToPosition(position: number): boolean--><!--Device-KvStoreResultSet-moveToPosition(position: number): boolean-End-->
 
@@ -561,7 +561,7 @@ moveToPrevious(): boolean
 
 **废弃版本：** 9
 
-**替代接口：** moveToPrevious
+**替代接口：** [moveToPrevious](arkts-arkdata-distributedkvstore-kvstoreresultset-i.md#movetoprevious)
 
 <!--Device-KvStoreResultSet-moveToPrevious(): boolean--><!--Device-KvStoreResultSet-moveToPrevious(): boolean-End-->
 

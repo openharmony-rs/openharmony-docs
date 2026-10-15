@@ -12,6 +12,22 @@ Enumerated type of the file memory mapping mode, which can be used by the mmap A
 
 **System capability:** SystemCapability.FileManagement.File.FileIO
 
+## PRIVATE
+
+```TypeScript
+PRIVATE = 2
+```
+
+Private mode. It is a copy-on-write mapping mechanism. Modifications to the mapping area are visible only to the current process and do not affect the raw file.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MappingMode-PRIVATE = 2--><!--Device-MappingMode-PRIVATE = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.File.FileIO
+
 ## READ_ONLY
 
 ```TypeScript
@@ -41,21 +57,5 @@ Read/Write mode. The modification is written to the file mapping area and then s
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-MappingMode-READ_WRITE = 1--><!--Device-MappingMode-READ_WRITE = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.File.FileIO
-
-## PRIVATE
-
-```TypeScript
-PRIVATE = 2
-```
-
-Private mode. It is a copy-on-write mapping mechanism. Modifications to the mapping area are visible only to the current process and do not affect the raw file.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-MappingMode-PRIVATE = 2--><!--Device-MappingMode-PRIVATE = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.File.FileIO

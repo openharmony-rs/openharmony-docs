@@ -12,24 +12,6 @@ declare enum FlexDirection
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Row
-
-```TypeScript
-Row
-```
-
-主轴与行方向一致作为布局模式。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-FlexDirection-Row--><!--Device-FlexDirection-Row-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## Column
 
 ```TypeScript
@@ -48,24 +30,6 @@ Column
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## RowReverse
-
-```TypeScript
-RowReverse
-```
-
-与Row方向相反方向进行布局。
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-FlexDirection-RowReverse--><!--Device-FlexDirection-RowReverse-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## ColumnReverse
 
 ```TypeScript
@@ -81,5 +45,41 @@ ColumnReverse
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-FlexDirection-ColumnReverse--><!--Device-FlexDirection-ColumnReverse-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Row
+
+```TypeScript
+Row
+```
+
+主轴与行方向一致作为布局模式。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexDirection-Row--><!--Device-FlexDirection-Row-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## RowReverse
+
+```TypeScript
+RowReverse
+```
+
+与Row方向相反方向进行布局。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-FlexDirection-RowReverse--><!--Device-FlexDirection-RowReverse-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

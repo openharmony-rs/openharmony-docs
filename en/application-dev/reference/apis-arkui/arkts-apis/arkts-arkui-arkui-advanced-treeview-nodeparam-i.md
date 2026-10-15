@@ -4,7 +4,7 @@
 export interface NodeParam
 ```
 
-Declare NodeParam
+Declare NodeParam.
 
 **Since:** 10
 
@@ -24,9 +24,9 @@ import { CallbackParam, NodeParam, TreeController, TreeListenType, TreeListener,
 container?: () => void
 ```
 
-Right-click child component bound to the node. The child component is decorated with @Builder.
+Context menu component bound to the node, displayed when the user right-clicks the node. It must be defined through the **@Builder** function.
 
-Default value: **() =&gt; void**.
+Default value: () =&gt; void
 
 **Since:** 10
 
@@ -46,9 +46,9 @@ currentNodeId?: number
 
 Current child node ID.
 
-The value must be greater than or equal to -1.
+Value range: greater than or equal to -1.
 
-The value cannot be the root node ID or null. Otherwise, an exception is thrown. In addition, duplicate **currentNodeId** values are not allowed.
+Cannot be the root node ID (i.e., cannot be -1) or **null**; otherwise, an exception is thrown. Two identical **currentNodeId** values cannot be set.
 
 Default value: **-1**
 
@@ -70,9 +70,9 @@ Default value: **-1**
 editIcon?: ResourceStr
 ```
 
-Edit icon.
+Edit icon. If **symbolEditIconStyle** is also set, **symbolEditIconStyle** takes precedence.
 
-The default value is an empty string.
+Default value: empty string
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -92,9 +92,9 @@ The default value is an empty string.
 icon?: ResourceStr
 ```
 
-Icon.
+Icon. If **symbolIconStyle** is also set, **symbolIconStyle** takes precedence.
 
-The default value is an empty string.
+Default value: empty string
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -114,11 +114,11 @@ The default value is an empty string.
 isFolder?: boolean
 ```
 
-Whether the node is a directory.
+Whether the node is a folder.
 
-Default value: **false**.
+Default value: **false**
 
-**true**: The node is a directory. **false**: The node is not a directory.
+**true**: a folder that can contain child nodes and supports expand/collapse operations; **false**: not a folder, i.e., a leaf node.
 
 **Type:** boolean
 
@@ -206,9 +206,9 @@ The default value is an empty string.
 selectedIcon?: ResourceStr
 ```
 
-Icon of the selected node.
+Selected icon. If **symbolSelectedIconStyle** is also set, **symbolSelectedIconStyle** takes precedence.
 
-The default value is an empty string.
+Default value: empty string
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -272,7 +272,7 @@ Default value: **undefined**
 symbolSelectedIconStyle?: SymbolGlyphModifier
 ```
 
-Symbol icon of the selected node., which has higher priority than **selectedIcon**.
+Symbol icon of the selected node, which has higher priority than **selectedIcon**.
 
 Default value: **undefined**
 

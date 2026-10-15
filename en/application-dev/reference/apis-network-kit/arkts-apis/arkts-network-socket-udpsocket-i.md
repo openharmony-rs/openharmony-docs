@@ -18,6 +18,8 @@ Defines a UDP socket connection. Before calling UDPSocket APIs, you need to call
 import { socket } from '@kit.NetworkKit';
 ```
 
+<a id="bind1"></a>
+
 ## bind
 
 ```TypeScript
@@ -68,7 +70,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 });
 ```
 
-<a id="bind-1"></a>
+<a id="bind2"></a>
 
 ## bind
 
@@ -123,6 +125,8 @@ udp.bind(bindAddr).then(() => {
 });
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -167,7 +171,7 @@ udp.close((err: BusinessError) => {
 })
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -277,11 +281,11 @@ Obtains the UDPSocket file descriptor. This API uses a promise to return the res
 
 > **NOTE:** 
 > 
-> - This API can be called only after [bind](#bind) is successfully called.
+> - This API can be called only after [bind](#bind1) is successfully called.
 > 
 > - This API returns **-1** in abnormal cases such as bind exceptions or socket closed (for example, after close is called).
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](#close1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 23
 
@@ -326,6 +330,8 @@ udp.bind(bindAddr)
   console.error('bind fail');
 });
 ```
+
+<a id="getstate1"></a>
 
 ## getState
 
@@ -375,7 +381,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
     console.error('bind fail');
     return;
   }
-  console.error('bind success');
+  console.info('bind success');
   udp.getState((err: BusinessError, data: socket.SocketStateBase) => {
     if (err) {
       console.error('getState fail');
@@ -386,7 +392,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 })
 ```
 
-<a id="getstate-1"></a>
+<a id="getstate2"></a>
 
 ## getState
 
@@ -682,6 +688,8 @@ udp.on('error', (err: BusinessError) => {
 });
 ```
 
+<a id="send1"></a>
+
 ## send
 
 ```TypeScript
@@ -690,7 +698,7 @@ send(options: UDPSendOptions, callback: AsyncCallback<void>): void
 
 Sends data over a UDP socket connection. This API uses an asynchronous callback to return the result.
 
-Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
+Before sending data, call [UDPSocket.bind()](#bind1) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
 
 **Since:** 7
 
@@ -803,7 +811,7 @@ udp.send(sendOptions, (err: BusinessError) => {
 });
 ```
 
-<a id="send-1"></a>
+<a id="send2"></a>
 
 ## send
 
@@ -813,7 +821,7 @@ send(options: UDPSendOptions): Promise<void>
 
 Sends data over a UDP socket connection. This API uses a promise to return the result.
 
-Before sending data, call [UDPSocket.bind()](#bind) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
+Before sending data, call [UDPSocket.bind()](#bind1) to bind the IP address and port. Call the API in the worker thread or taskpool thread as this operation is time-consuming.
 
 **Since:** 7
 
@@ -925,6 +933,8 @@ udp.send(sendOptions).then(() => {
 });
 ```
 
+<a id="setextraoptions1"></a>
+
 ## setExtraOptions
 
 ```TypeScript
@@ -994,7 +1004,7 @@ udp.bind(bindAddr, (err: BusinessError) => {
 })
 ```
 
-<a id="setextraoptions-1"></a>
+<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

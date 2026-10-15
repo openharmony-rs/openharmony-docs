@@ -28,7 +28,7 @@ function setDisposedStatusSync(appId: string, disposedWant: Want): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| appId | string | 是 | 需要设置处置的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
+| appId | string | 是 | 需要设置处置状态的应用的appId。<br> appId是应用的唯一标识，由应用Bundle名称和签名信息决定，获取方法参见[获取应用的appId](../../../quick-start/common-problem-of-application.md#如何获取应用信息中的appid)。 |
 | disposedWant | [Want](arkts-ability-app-ability-want-want-c.md) | 是 | 对应用的处置意图。 |
 
 **错误码：**
@@ -41,12 +41,12 @@ function setDisposedStatusSync(appId: string, disposedWant: Want): void
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-指定的appid为空字符串) | The specified app ID is empty string. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
-import { appControl } from '@kit.AbilityKit';
+import { Want, appControl } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { Want } from '@kit.AbilityKit';
 
 let appId: string = "com.example.myapplication_xxxxx";
 let want: Want = { bundleName: 'com.example.myapplication' };
@@ -58,3 +58,5 @@ try {
   console.error('setDisposedStatusSync failed ' + message);
 }
 ```
+
+<!--DelEnd-->

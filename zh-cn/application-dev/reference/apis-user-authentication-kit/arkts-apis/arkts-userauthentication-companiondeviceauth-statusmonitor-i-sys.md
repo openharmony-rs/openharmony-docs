@@ -56,22 +56,6 @@ getTemplateStatus(): Promise<TemplateStatus[]>
 | --- | --- |
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-const localUserId = 100;
-const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
-statusMonitor.getTemplateStatus()
-  .then((templateStatus) => {
-    console.info(`templateStatus: ${JSON.stringify(templateStatus)}`);
-  })
-  .catch((error: BusinessError) => {
-    console.error(`error has been captured. Code: ${error.code}, message: ${error.message}`);
-  })
-```
-
 ## offAvailableDeviceChange
 
 ```TypeScript
@@ -103,25 +87,6 @@ offAvailableDeviceChange(callback?: AvailableDeviceStatusCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  const localUserId = 100;
-  const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
-  const handler = (deviceStatusList: companionDeviceAuth.DeviceStatus[]): void => {
-    console.info('available device changed');
-  };
-  statusMonitor.onAvailableDeviceChange(handler);
-  statusMonitor.offAvailableDeviceChange(handler);
-} catch (error) {
-  const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
-}
-```
 
 ## offContinuousAuthChange
 
@@ -155,34 +120,6 @@ offContinuousAuthChange(callback?: ContinuousAuthStatusCallback): void
 | --- | --- |
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
-
-const localUserId = 100;
-try {
-  const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
-  const continuousAuthParam: companionDeviceAuth.ContinuousAuthParam = {
-    templateId: new Uint8Array([])
-  };
-  const handler = (isAuthPassed: boolean, authTrustLevel?: userAuth.AuthTrustLevel): void => {
-    console.info('continuous auth changed');
-    console.info(`isAuthPassed: ${isAuthPassed}`);
-    if (authTrustLevel !== undefined) {
-      console.info(`authTrustLevel: ${authTrustLevel}`);
-    }
-  };
-
-  statusMonitor.onContinuousAuthChange(continuousAuthParam, handler);
-  statusMonitor.offContinuousAuthChange(handler);
-} catch (error) {
-  const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
-}
-```
-
 ## offTemplateChange
 
 ```TypeScript
@@ -214,25 +151,6 @@ offTemplateChange(callback?: TemplateStatusCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  const localUserId = 100;
-  const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
-  const handler = (templates: companionDeviceAuth.TemplateStatus[]): void => {
-    console.info('template status updated');
-  };
-  statusMonitor.onTemplateChange(handler);
-  statusMonitor.offTemplateChange(handler);
-} catch (error) {
-  const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
-}
-```
 
 ## onAvailableDeviceChange
 
@@ -267,24 +185,6 @@ onAvailableDeviceChange(callback: AvailableDeviceStatusCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  const localUserId = 100;
-  const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
-  const handler = (deviceStatusList: companionDeviceAuth.DeviceStatus[]): void => {
-    console.info('available device changed');
-  };
-  statusMonitor.onAvailableDeviceChange(handler);
-} catch (error) {
-  const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
-}
-```
 
 ## onContinuousAuthChange
 
@@ -322,33 +222,6 @@ onContinuousAuthChange(param: ContinuousAuthParam, callback: ContinuousAuthStatu
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
 | [32600002](../errorcode-useriam.md#32600002-模板未找到) | The template is not found. |
 
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-import { userAuth } from '@kit.UserAuthenticationKit';
-
-const localUserId = 100;
-try {
-  const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
-  const continuousAuthParam: companionDeviceAuth.ContinuousAuthParam = {
-    templateId: new Uint8Array([])
-  };
-  const handler = (isAuthPassed: boolean, authTrustLevel?: userAuth.AuthTrustLevel): void => {
-    console.info('continuous auth changed');
-    console.info(`isAuthPassed: ${isAuthPassed}`);
-    if (authTrustLevel !== undefined) {
-      console.info(`authTrustLevel: ${authTrustLevel}`);
-    }
-  };
-
-  statusMonitor.onContinuousAuthChange(continuousAuthParam, handler);
-} catch (error) {
-  const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
-}
-```
-
 ## onTemplateChange
 
 ```TypeScript
@@ -382,21 +255,3 @@ onTemplateChange(callback: TemplateStatusCallback): void
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [32600001](../errorcode-useriam.md#32600001-系统服务工作异常) | The system service is not working properly. Please try again later. |
-
-**示例**
-
-```TypeScript
-import { BusinessError } from '@kit.BasicServicesKit';
-
-try {
-  const localUserId = 100;
-  const statusMonitor = companionDeviceAuth.getStatusMonitor(localUserId);
-  const handler = (templates: companionDeviceAuth.TemplateStatus[]): void => {
-    console.info('template status updated');
-  };
-  statusMonitor.onTemplateChange(handler);
-} catch (error) {
-  const message = (error as BusinessError).message;
-  console.error(`error has been captured. Code: ${(error as BusinessError).code}, message: ${message}`);
-}
-```

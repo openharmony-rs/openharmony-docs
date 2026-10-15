@@ -6,6 +6,8 @@ export type StartAbilityParameter = _StartAbilityParameter
 
 Defines the level-2 module StartAbilityParameter.
 
+**Type:** _StartAbilityParameter
+
 **Since:** 9
 
 **Model restriction:** This API can be used only in the FA model.
@@ -13,5 +15,3 @@ Defines the level-2 module StartAbilityParameter.
 <!--Device-ability-export type StartAbilityParameter = _StartAbilityParameter--><!--Device-ability-export type StartAbilityParameter = _StartAbilityParameter-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**Type:** _StartAbilityParameter

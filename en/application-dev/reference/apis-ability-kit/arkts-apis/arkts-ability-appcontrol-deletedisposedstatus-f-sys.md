@@ -6,6 +6,8 @@
 import { appControl } from '@kit.AbilityKit';
 ```
 
+<a id="deletedisposedstatus1"></a>
+
 ## deleteDisposedStatus
 
 ```TypeScript
@@ -28,8 +30,8 @@ Deletes the disposed status for an application. This API uses an asynchronous ca
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE:** <br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](arkts-ability-bundleinfo-signatureinfo-i.md) is also the unique identifier of an app. For details, see [What is appIdentifier](../../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information). |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null**. otherwise, **err** is an error object. |
+| appId | string | Yes | appId or appIdentifier of the application whose disposition status is to be deleted. A disposition status set using appId can only be deleted using appId, and the same applies to one set using appIdentifier.<br>**Note:** <br> appId is the unique identifier of the application, determined by the application bundle name and signature information. For details about how to obtain it, see [obtain the appId of the application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). <br> [appIdentifier](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the unique identifier of the application. For detailed information, see [what is appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier). For details about how to obtain it, see [obtain the appIdentifier of the application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback function. If the disposition status is deleted successfully, err returns null; otherwise, the callback function returns a specific error object. |
 
 **Error codes:**
 
@@ -41,6 +43,7 @@ Deletes the disposed status for an application. This API uses an asynchronous ca
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-appid-is-an-empty-string) | The specified app ID is empty string. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,8 +65,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="deletedisposedstatus-1"></a>
+
+<a id="deletedisposedstatus2"></a>
 
 ## deleteDisposedStatus
 
@@ -71,7 +76,7 @@ try {
 function deleteDisposedStatus(appId: string): Promise<void>
 ```
 
-Deletes the disposed status for an application. This API uses a promise to return the result. If the operation is successful, **null** is returned. If the operation fails, an error message is returned.
+Deletes the disposition status of an application. This API uses a promise to return the result. null is returned on success, and the corresponding error message is returned on failure.
 
 **Since:** 9
 
@@ -87,7 +92,7 @@ Deletes the disposed status for an application. This API uses a promise to retur
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| appId | string | Yes | appId or appIdentifier of the target application. If a rule is set using appId, it must be deleted using appId; the same principle applies to appIdentifier.<br>**NOTE:** <br> **appId** is the unique identifier of an application and is determined by the bundle name and signature information of the application. For details about how to obtain **appId**, see [How do I obtain appId from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appid-from-application-information).<br> [appIdentifier](arkts-ability-bundleinfo-signatureinfo-i.md) is also the unique identifier of an app. For details, see [What is appIdentifier](../../../quick-start/common_problem_of_application.md#what-is-appidentifier). For details about how to obtain **appIdentifier**, see [How do I obtain appIdentifier from application information](../../../quick-start/common_problem_of_application.md#how-do-i-obtain-appidentifier-from-application-information). |
+| appId | string | Yes | appId or appIdentifier of the application whose disposition status is to be deleted. The disposition status set using appId can only be deleted using appId, and the same applies to the disposition status set using appIdentifier.<br>**NOTE:** <br> appId is the application's unique identifier, determined by the application Bundle name and signature information. For how to obtain it, see [obtain the appId of the application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appid-from-application-information). <br> [appIdentifier](../../../reference/apis-ability-kit/js-apis-bundleManager-bundleInfo.md#signatureinfo) is also the application's unique identifier. For detailed information, refer to [what is appIdentifier](../../../quick-start/common-problem-of-application.md#what-is-appidentifier). For how to obtain it, see [obtain the appIdentifier of the application](../../../quick-start/common-problem-of-application.md#how-do-i-obtain-appidentifier-from-application-information). |
 
 **Return value:**
 
@@ -105,6 +110,7 @@ Deletes the disposed status for an application. This API uses a promise to retur
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
 | [17700005](../errorcode-bundle.md#17700005-appid-is-an-empty-string) | The specified app ID is empty string. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -126,3 +132,5 @@ try {
   console.error('deleteDisposedStatus failed ' + message);
 }
 ```
+
+<!--DelEnd-->

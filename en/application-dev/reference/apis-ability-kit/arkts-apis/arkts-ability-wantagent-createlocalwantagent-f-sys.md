@@ -42,6 +42,7 @@ Create a local WantAgent object. The WantAgent created by this interface stores 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System App. Interface caller is not a system app. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -83,3 +84,5 @@ try {
   console.error('createLocalWantAgent failed');
 }
 ```
+
+<!--DelEnd-->

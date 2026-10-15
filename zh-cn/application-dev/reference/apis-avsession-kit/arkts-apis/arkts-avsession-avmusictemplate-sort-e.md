@@ -6,8 +6,6 @@ enum Sort
 
 表示查询到的列表数据排序类型的枚举。
 
-@enum { int }
-
 **起始版本：** 23
 
 <!--Device-avMusicTemplate-enum Sort--><!--Device-avMusicTemplate-enum Sort-End-->

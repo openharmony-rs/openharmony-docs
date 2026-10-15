@@ -6,10 +6,10 @@ type AudioRendererChangeInfoArray = Array<Readonly<AudioRendererChangeInfo>>
 
 数组类型，[AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md)数组，只读。
 
+**类型：** Array&lt;Readonly&lt;[AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md)&gt;&gt;
+
 **起始版本：** 9
 
 <!--Device-audio-type AudioRendererChangeInfoArray = Array<Readonly<AudioRendererChangeInfo>>--><!--Device-audio-type AudioRendererChangeInfoArray = Array<Readonly<AudioRendererChangeInfo>>-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Renderer
-
-**类型：** Array&lt;Readonly&lt;[AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md)&gt;&gt;

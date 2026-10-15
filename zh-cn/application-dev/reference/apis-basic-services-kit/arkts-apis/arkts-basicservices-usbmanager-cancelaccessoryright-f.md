@@ -41,6 +41,7 @@ function cancelAccessoryRight(accessory: USBAccessory): void
 **示例**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 async function cancelAccessoryRight() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
@@ -49,9 +50,10 @@ async function cancelAccessoryRight() {
       return;
     }
     usbManager.cancelAccessoryRight(accList?.[0]);
-    console.info(`cancelAccessoryRight success`);
+    console.info(`Succeeded in cancelAccessoryRight`);
   } catch (error) {
-    console.error(`cancelAccessoryRight error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`cancelAccessoryRight error ${err.code}, message is ${err.message}`);
   }
 }
 ```

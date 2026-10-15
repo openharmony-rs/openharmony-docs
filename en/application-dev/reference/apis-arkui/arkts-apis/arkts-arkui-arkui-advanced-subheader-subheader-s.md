@@ -4,13 +4,13 @@
 export declare struct SubHeader
 ```
 
-The **SubHeader** component is positioned at the top of list items or content sections, organizing lists or content into distinct groups. The subheader text summarizes the content within each respective section.
+The **SubHeader** component is used at the top of list items or content items to divide the list or content into sections, with the subtitle name summarizing the content of each section. It supports various style configurations, including icons, primary and secondary titles, dropdown selectors, and operation buttons, meeting content partitioning and navigation needs in different scenarios and enhancing the visual hierarchy and user experience of the UI. It is suitable for list grouping, categorized content display, form partitioning, and other scenarios.
 
 > **NOTE:** 
 > 
 > - This component can be used only in the stage model.
 > 
-> - If the **SubHeader** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional **__Common__** node and mounts the universal attributes and universal events on this node rather than the **SubHeader** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeader** component.
+> - If the **SubHeader** component has [universal attributes](../arkts-components/arkts-arkui-common-comp.md) and [universal events](../arkts-components/arkts-arkui-common-comp.md) configured, the compiler toolchain automatically generates an additional \_\_Common\_\_ node and mounts the universal attributes and universal events on this node rather than the **SubHeader** component itself. As a result, the configured universal attributes and universal events may fail to take effect or behave as intended. For this reason, avoid using universal attributes and events with the **SubHeader** component.
 
 **Since:** 10
 
@@ -32,7 +32,7 @@ import { OperationOption, OperationType, SelectOptions, SubHeader, SymbolOptions
 titleBuilder?: () => void
 ```
 
-Content of the custom title area.
+Custom title area content. When **titleBuilder** is used, title parameters such as **primaryTitle**, **secondaryTitle**, and icon do not take effect.
 
 Default value: **undefined**, indicating that no custom title is used.
 
@@ -54,7 +54,7 @@ Default value: **undefined**, indicating that no custom title is used.
 contentMargin?: LocalizedMargin
 ```
 
-Margin of the content. Negative numbers are not supported.
+Margin of the subtitle. Negative values are not supported.
 
 Default value:
 
@@ -88,13 +88,13 @@ Default value:
 contentPadding?: LocalizedPadding
 ```
 
-Padding of the content.
+Padding of the subtitle. Negative values are not supported.
 
 Default value:
 
-If a secondary title, with or without an icon, is displayed on the left:
+When the left side contains a secondary title or a secondary title with an icon:
 
-{start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}
+`{start: LengthMetrics.vp(12), end: LengthMetrics.vp(12)}`.
 
 **Type:** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
 
@@ -140,9 +140,7 @@ End icon of the title. The **endIcon** attribute takes effect only when the **pr
 endIconSymbolOptions?: SymbolOptions
 ```
 
-End icon symbol options. This parameter is available when **endIcon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
-
-Default value: **undefined**, indicating that no end icon symbol style is set.
+End icon symbol options. This parameter is available when **endIcon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md). Default value: **undefined**, indicating that no end icon symbol style is set.
 
 **Type:** [SymbolOptions](arkts-arkui-arkui-advanced-subheader-symboloptions-c.md)
 
@@ -162,11 +160,11 @@ Default value: **undefined**, indicating that no end icon symbol style is set.
 icon?: ResourceStr
 ```
 
-Icon.
+Icon resource.
 
 Default value: **undefined**, indicating that no icon is displayed.
 
-The **icon** attribute takes effect only when the **secondaryTitle** attribute is used.
+The icon attribute takes effect only when the **secondaryTitle** attribute is used. When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used together, the **primaryTitle** attribute does not take effect.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -188,7 +186,7 @@ The **icon** attribute takes effect only when the **secondaryTitle** attribute i
 iconSymbolOptions?: SymbolOptions
 ```
 
-Icon symbol options. This parameter is available when **icon** is set to a [symbol glyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
+Settings when icon is [SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 Default value: **undefined**, indicating that no icon is displayed.
 
@@ -210,9 +208,9 @@ Default value: **undefined**, indicating that no icon is displayed.
 operationItem?: Array<OperationOption>
 ```
 
-Items in the operation area (right).
+Settings for the operation area (right side). When **operationType** is **OperationType.ICON_GROUP**, a maximum of three icon items can be configured.
 
-Default value: **undefined**, indicating that the operation area is not displayed.
+Default value: **undefined**, indicating that no operation area is displayed.
 
 **Type:** Array&lt;[OperationOption](arkts-arkui-arkui-advanced-subheader-operationoption-c.md)&gt;
 
@@ -232,9 +230,7 @@ Default value: **undefined**, indicating that the operation area is not displaye
 operationSymbolOptions?: Array<SymbolOptions>
 ```
 
-Icon symbol options.
-
-This parameter is available when **operationType** is set to **OperationType.ICON_GROUP** and **operationItem** is set to an array of [symbol glyphs](../arkts-components/arkts-arkui-symbolglyph-comp.md).
+Settings when **operationType** is **OperationType.ICON_GROUP**, **operationItem** is set with multiple icons, and the icons are [SymbolGlyph](../arkts-components/arkts-arkui-symbolglyph-comp.md).
 
 Default value: **undefined**, indicating that no symbol icon is set.
 
@@ -256,7 +252,7 @@ Default value: **undefined**, indicating that no symbol icon is set.
 operationType?: OperationType
 ```
 
-Style of elements in the operation area (right).
+Element style of the operation area (right side).
 
 Default value: **OperationType.BUTTON**
 
@@ -280,11 +276,11 @@ Default value: **OperationType.BUTTON**
 primaryTitle?: ResourceStr
 ```
 
-Primary title.
+Primary title content.
 
-Default value: **undefined**, indicating that no primary title is displayed.
+Default value: **undefined**, indicating that no title is displayed.
 
-When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used simultaneously, the **primaryTitle** attribute will not take effect.
+When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used together, the **primaryTitle** attribute does not take effect.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -306,9 +302,11 @@ When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used 
 primaryTitleModifier?: TextModifier
 ```
 
-Text attributes of the primary title, such as the font color, font size, and font weight.
+Title text attributes, such as title color, font size, font weight, etc.
 
-Default value: **undefined**, indicating that the default style is used.
+Default value: **undefined**, indicating that the system default style is used.
+
+**Note:** This parameter takes effect only when **primaryTitle** is effective.
 
 **Type:** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -328,9 +326,9 @@ Default value: **undefined**, indicating that the default style is used.
 secondaryTitle?: ResourceStr
 ```
 
-Secondary title.
+Secondary title content.
 
-Default value: **undefined**, indicating that no secondary title is displayed.
+Default value: **undefined**, indicating that no secondary title is displayed. When the **primaryTitle**, **secondaryTitle**, and **icon** attributes are used together, the **primaryTitle** attribute does not take effect.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -352,9 +350,9 @@ Default value: **undefined**, indicating that no secondary title is displayed.
 secondaryTitleModifier?: TextModifier
 ```
 
-Text attributes of the secondary title, such as the font color, font size, and font weight.
+Secondary title text attributes, such as title color, font size, font weight, etc.
 
-Default value: **undefined**, indicating that the default style is used.
+Default value: **undefined**, indicating that the system default style is used.
 
 **Type:** [TextModifier](../../apis-default/arkts-apis/arkts-default-arkui-modifier.md)
 
@@ -374,9 +372,9 @@ Default value: **undefined**, indicating that the default style is used.
 select?: SelectOptions
 ```
 
-Content and events for selection.
+Dropdown box content and events.
 
-Default value: **undefined**, indicating that no drop-down list is displayed.
+Default value: **undefined**, indicating that no dropdown box is displayed.
 
 **Type:** [SelectOptions](arkts-arkui-arkui-advanced-subheader-selectoptions-c.md)
 
@@ -396,11 +394,9 @@ Default value: **undefined**, indicating that no drop-down list is displayed.
 titleAccessibilityText?: ResourceStr
 ```
 
-Customized content to be read in the title.
+Custom accessibility reading content for the title.
 
-Default value: **undefined**.
-
-If the value is **undefined**, the title content displayed by the component is read by default.
+Default value: **undefined**, indicating that no custom reading content is set, and the title content displayed on the component is read by default.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -422,7 +418,7 @@ If the value is **undefined**, the title content displayed by the component is r
 titleId?: string
 ```
 
-Set the titleId for title.
+Title identifier. Use this parameter when an ID needs to be set for the title. indicating that no title identifier is set. Default value: **undefined**.
 
 **Type:** string
 

@@ -26,20 +26,6 @@ SYNC_BEGIN = 0
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## SYNC_IN_PROGRESS
-
-```TypeScript
-SYNC_IN_PROGRESS = 1
-```
-
-表示正在端云同步过程中。
-
-**起始版本：** 10
-
-<!--Device-Progress-SYNC_IN_PROGRESS = 1--><!--Device-Progress-SYNC_IN_PROGRESS = 1-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
 ## SYNC_FINISH
 
 ```TypeScript
@@ -51,5 +37,19 @@ SYNC_FINISH = 2
 **起始版本：** 10
 
 <!--Device-Progress-SYNC_FINISH = 2--><!--Device-Progress-SYNC_FINISH = 2-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## SYNC_IN_PROGRESS
+
+```TypeScript
+SYNC_IN_PROGRESS = 1
+```
+
+表示正在端云同步过程中。
+
+**起始版本：** 10
+
+<!--Device-Progress-SYNC_IN_PROGRESS = 1--><!--Device-Progress-SYNC_IN_PROGRESS = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

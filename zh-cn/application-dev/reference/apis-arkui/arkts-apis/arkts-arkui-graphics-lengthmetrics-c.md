@@ -228,7 +228,7 @@ static resource(value: Resource): LengthMetrics
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| value | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md) | 是 | 长度属性的值。 |
+| value | [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md) | 是 | 长度属性的值。 |
 
 **返回值：**
 

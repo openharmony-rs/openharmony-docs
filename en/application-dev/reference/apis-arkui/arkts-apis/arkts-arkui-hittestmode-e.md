@@ -21,28 +21,6 @@ Sets the response logic and node blocking rules for the hit test.
 
 **Test API:** This API is used only in automated test scripts.
 
-## Default
-
-```TypeScript
-Default
-```
-
-Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes.
-
-**Since:** 9
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
-
-<!--Device-HitTestMode-Default--><!--Device-HitTestMode-Default-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Test API:** This API is used only in automated test scripts.
-
 ## Block
 
 ```TypeScript
@@ -65,45 +43,23 @@ The node itself responds to the hit test and blocks the hit test of child nodes,
 
 **Test API:** This API is used only in automated test scripts.
 
-## Transparent
+## BLOCK_DESCENDANTS
 
 ```TypeScript
-Transparent
+BLOCK_DESCENDANTS
 ```
 
-Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes.
+The node itself does not respond to the hit test, and all descendants (children, grandchildren, etc.) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.
 
-**Since:** 9
+**Since:** 20
 
-**Model restriction:** This API can be used in both the stage model and FA model.
+**Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
-<!--Device-HitTestMode-Transparent--><!--Device-HitTestMode-Transparent-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Test API:** This API is used only in automated test scripts.
-
-## None
-
-```TypeScript
-None
-```
-
-The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.
-
-**Since:** 9
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
-
-<!--Device-HitTestMode-None--><!--Device-HitTestMode-None-End-->
+<!--Device-HitTestMode-BLOCK_DESCENDANTS--><!--Device-HitTestMode-BLOCK_DESCENDANTS-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -131,23 +87,67 @@ The node itself and its child nodes respond to the hit test, preventing all sibl
 
 **Test API:** This API is used only in automated test scripts.
 
-## BLOCK_DESCENDANTS
+## Default
 
 ```TypeScript
-BLOCK_DESCENDANTS
+Default
 ```
 
-The node itself does not respond to the hit test, and all descendants (children, grandchildren, etc.) also do not respond to the hit test. It does not affect the hit test of ancestor nodes.
+Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes.
 
-**Since:** 20
+**Since:** 9
 
-**Model restriction:** This API can be used only in the stage model.
+**Model restriction:** This API can be used in both the stage model and FA model.
 
-**Atomic service API:** This API can be used in atomic services since API version 20.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
 
-<!--Device-HitTestMode-BLOCK_DESCENDANTS--><!--Device-HitTestMode-BLOCK_DESCENDANTS-End-->
+<!--Device-HitTestMode-Default--><!--Device-HitTestMode-Default-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Test API:** This API is used only in automated test scripts.
+
+## None
+
+```TypeScript
+None
+```
+
+The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes.
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-HitTestMode-None--><!--Device-HitTestMode-None-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Test API:** This API is used only in automated test scripts.
+
+## Transparent
+
+```TypeScript
+Transparent
+```
+
+Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes.
+
+**Since:** 9
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 26.0.0.
+
+<!--Device-HitTestMode-Transparent--><!--Device-HitTestMode-Transparent-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

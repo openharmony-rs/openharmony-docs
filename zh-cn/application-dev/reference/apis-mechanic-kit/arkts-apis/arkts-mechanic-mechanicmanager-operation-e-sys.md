@@ -6,8 +6,6 @@ export enum Operation
 
 用户操作
 
-@enum { int }
-
 **起始版本：** 20
 
 <!--Device-mechanicManager-export enum Operation--><!--Device-mechanicManager-export enum Operation-End-->

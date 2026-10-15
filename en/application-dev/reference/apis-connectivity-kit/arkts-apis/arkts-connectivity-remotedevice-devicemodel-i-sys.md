@@ -34,6 +34,8 @@ Icon ID of the remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-DeviceModel-iconId: string--><!--Device-DeviceModel-iconId: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -54,6 +56,8 @@ Model ID of the remote device.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-DeviceModel-modelId: string--><!--Device-DeviceModel-modelId: string-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
@@ -73,6 +77,8 @@ Sub-model ID of the remote device.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-DeviceModel-subModelId: string--><!--Device-DeviceModel-subModelId: string-End-->
 

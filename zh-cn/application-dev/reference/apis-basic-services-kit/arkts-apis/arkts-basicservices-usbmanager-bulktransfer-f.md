@@ -57,7 +57,7 @@ function bulkTransfer(
 
 > 说明：
 > 
-> 以下示例代码只是调用bulkTransfer接口的必要流程，实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用，具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
+> 以下示例代码只是调用接口的必要流程。实际调用时，设备开发者需要遵循目标USB设备的协议规范进行调用。具体协议要求请参考设备的技术文档，确保数据的正确传输和设备的兼容性。
 
 ```TypeScript
 import {BusinessError} from '@kit.BasicServicesKit';
@@ -82,27 +82,22 @@ async function bulkTransfer() {
     console.error(`connect device failed`);
     return;
   }
-  for (let i = 0; i < device.configs?.[0]?.interfaces.length; i++) {
+  for (let i = 0; i < device.configs?.[0]?.interfaces?.length; i++) {
+    // 筛选传输类型为批量传输的端点（attributes为2表示bulk端点）
     if (device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0]?.attributes == 2) {
       let endpoint: usbManager.USBEndpoint = device.configs?.[0]?.interfaces?.[i]?.endpoints?.[0];
       let interfaces: usbManager.USBInterface = device.configs?.[0]?.interfaces?.[i];
       let ret: number = usbManager.claimInterface(devicePipe, interfaces);
-      if (ret !== 0) {
-        console.error(`claim interface failed`);
-        continue;
-      }
+      if (ret !== 0) { console.error(`claimInterface failed, code: ${ret}`); continue; }
       let buffer = new Uint8Array(128);
-      usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((ret: number) => {
-        console.info(`bulkTransfer = ${ret}`);
-        ret = usbManager.releaseInterface(devicePipe, interfaces);
-        console.info(`releaseInterface = ${ret}`);
-        if (i === device.configs?.[0]?.interfaces.length - 1) {
-          usbManager.closePipe(devicePipe);
-        }
+      await usbManager.bulkTransfer(devicePipe, endpoint, buffer).then((size: number) => {
+        console.info(`bulkTransfer = ${size}`);
       }).catch((error: BusinessError) => {
         console.error(`Failed to transfer. Code: ${error.code}, message: ${error.message}`);
       });
+      usbManager.releaseInterface(devicePipe, interfaces);
     }
   }
+  usbManager.closePipe(devicePipe);
 }
 ```

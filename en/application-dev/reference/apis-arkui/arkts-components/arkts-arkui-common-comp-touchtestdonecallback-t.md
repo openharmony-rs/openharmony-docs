@@ -4,7 +4,7 @@
 declare type TouchTestDoneCallback = (event: BaseGestureEvent, recognizers: Array<GestureRecognizer>) => void
 ```
 
-Represents the callback type for dynamically specifying gesture recognizer participation in gesture processing.
+Defines the callback event type for dynamically specifying whether a gesture recognizer participates in gesture processing. The lifecycle of the parameters in the callback follows the callback itself, and the methods in the parameters can be used only synchronously within the callback.
 
 **Since:** 20
 

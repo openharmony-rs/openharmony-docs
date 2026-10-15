@@ -91,6 +91,7 @@ Interface for forcibly setting the volume type by pressing the volume key.
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,6 +110,8 @@ let volumeTypeDefault = audio.AudioVolumeType.MEDIA;
 let durationToCancel = -1;
 audioVolumeManager.forceVolumeKeyControlType(volumeTypeDefault, durationToCancel);
 ```
+
+<!--DelEnd-->
 
 ## getActiveStreamsVolumeInfo
 
@@ -179,6 +182,7 @@ Get the volume for specified app with range from 0 to 100. Applications with sam
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -188,6 +192,8 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
   console.info(`app volume is ${value}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getAudioVolumeTypeByStreamUsage
 
@@ -329,6 +335,7 @@ Gets the minimum system volume percentage application can set for specified volu
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -340,6 +347,8 @@ try {
   console.error(`Failed to obtain the volume percentage, error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getStreamUsagesByVolumeType
 
@@ -511,6 +520,7 @@ Gets the current system volume percentage for specified volume type.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -522,6 +532,10 @@ try {
   console.error(`Failed to obtain the volume percentage, error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getvolumegroupinfos1"></a>
 
 ## getVolumeGroupInfos
 
@@ -546,6 +560,7 @@ Get the volume group list for a networkId. This method uses an asynchronous call
 | networkId | string | Yes | Distributed deice net work id |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md)&gt; | Yes | Callback used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -560,7 +575,9 @@ audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessErr
 });
 ```
 
-<a id="getvolumegroupinfos-1"></a>
+<!--DelEnd-->
+
+<a id="getvolumegroupinfos2"></a>
 
 ## getVolumeGroupInfos
 
@@ -590,6 +607,7 @@ Get the volume group list for a networkId. This method uses a promise to return 
 | --- | --- |
 | Promise&lt;[VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md)&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -598,6 +616,8 @@ async function getVolumeGroupInfos(){
   console.info('Promise returned to indicate that the volumeGroup list is obtained.'+JSON.stringify(volumegroupinfos))
 }
 ```
+
+<!--DelEnd-->
 
 ## getVolumeGroupInfosSync
 
@@ -634,6 +654,7 @@ Get the volume group list for a networkId.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -647,6 +668,8 @@ try {
   console.error(`Failed to obtain the volumeGroup list ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getVolumeInUnitOfDb
 
@@ -724,6 +747,7 @@ Checks whether the app volume is muted. If there are multiple callers setting mu
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -733,6 +757,8 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
   console.info(`app muted state is ${value}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## isSystemMuted
 
@@ -802,6 +828,7 @@ Unsubscribes to the app volume change events..
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -819,6 +846,8 @@ audioVolumeManager.on('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 
 audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 ```
+
+<!--DelEnd-->
 
 ## off('activeVolumeTypeChange')
 
@@ -850,6 +879,7 @@ Unsubscribes from active volume type changes.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -865,6 +895,8 @@ audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## off('systemVolumeChange')
 
@@ -896,6 +928,7 @@ Unsubscribes to the system volume change events.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -911,6 +944,8 @@ audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
 
 audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## offSystemVolumeChangeByFilter
 
@@ -1003,6 +1038,7 @@ Unsubscribes from system volume percentage change events.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1021,6 +1057,8 @@ audioVolumeManager.onVolumePercentageChange(volumePercentageChangeCallback);
 
 audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## on('appVolumeChangeForUid')
 
@@ -1056,6 +1094,7 @@ Listens for specified app volume change events. The app volume may changed by [s
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1067,6 +1106,8 @@ audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEv
   console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('activeVolumeTypeChange')
 
@@ -1098,6 +1139,7 @@ Subscribes to active volume type changes.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1105,6 +1147,8 @@ audioVolumeManager.on('activeVolumeTypeChange', (volumeType: audio.AudioVolumeTy
   console.info(`VolumeType of stream: ${volumeType} `);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('systemVolumeChange')
 
@@ -1136,6 +1180,7 @@ Listens for system volume change events. This method uses a callback to get volu
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1143,6 +1188,8 @@ audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => 
   console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## onSystemVolumeChangeByFilter
 
@@ -1236,6 +1283,7 @@ Subscribes to system volume percentage change events.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1246,6 +1294,8 @@ onVolumePercentageChange((volumeEvent: audio.VolumeEvent) => {
   console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAppVolumeMutedForUid
 
@@ -1287,6 +1337,7 @@ Change mute state of specified application volume. If there are multiple callers
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1296,6 +1347,8 @@ audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
   console.info(`set app mute state success.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAppVolumePercentageForUid
 
@@ -1337,6 +1390,7 @@ Sets the volume for specified app with range from 0 to 100. Applications with sa
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1347,6 +1401,8 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
   console.info(`set app volume success.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setSystemVolumeByUid
 
@@ -1429,6 +1485,7 @@ Sets the system volume percentage, using an integer ranging from minimum system 
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed, including volumeType or percentage param begin out of range. |
 | [6800301](../errorcode-audio.md#6800301-system-error) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1436,6 +1493,8 @@ audioVolumeManager.setSystemVolumePercentage(audio.AudioVolumeType.MEDIA, 10).th
   console.info('Promise returned to indicate a successful volume setting.');
 });
 ```
+
+<!--DelEnd-->
 
 ## setVoipCapturerMuteForUid
 

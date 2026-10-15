@@ -26,6 +26,8 @@ Converts a JavaScript Object Notation (JSON) string into an object.
 | text | string | Yes |  |
 | reviver | (this: any, key: string, value: any) =&gt; any | No |  |
 
+<a id="stringify1"></a>
+
 ## stringify
 
 ```TypeScript
@@ -44,7 +46,7 @@ Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
 | replacer | (this: any, key: string, value: any) =&gt; any | No |  |
 | space | string &#124; number | No |  |
 
-<a id="stringify-1"></a>
+<a id="stringify2"></a>
 
 ## stringify
 

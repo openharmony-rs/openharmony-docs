@@ -30,6 +30,7 @@ function setController(controller: WindowAnimationController): void
 | --- | --- | --- | --- |
 | controller | [WindowAnimationController](arkts-arkui-windowanimationmanager-windowanimationcontroller-i-sys.md) | 是 | 窗口动画的控制器。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,3 +72,5 @@ let controller: windowAnimationManager.WindowAnimationController = {
 
 windowAnimationManager.setController(controller);
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="changeprivilege1"></a>
+
 ## changePrivilege
 
 ```TypeScript
@@ -39,9 +41,10 @@ Changes the privilege on the shared data. This API uses an asynchronous callback
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,8 +74,10 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants, (err: B
 });
 ```
 
+<!--DelEnd-->
 
-<a id="changeprivilege-1"></a>
+
+<a id="changeprivilege2"></a>
 
 ## changePrivilege
 
@@ -111,9 +116,10 @@ Changes the privilege on the shared data. This API uses a promise to return the 
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -140,3 +146,5 @@ cloudData.sharing.changePrivilege('sharing_resource_test', participants).then((r
   console.error(`change privilege failed, code is ${err.code},message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryprintjobbyid1"></a>
+
 ## queryPrintJobById
 
 ```TypeScript
@@ -39,6 +41,7 @@ function queryPrintJobById(jobId: string, callback: AsyncCallback<PrintJob>): vo
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ print.queryPrintJobById(jobId, (error: BusinessError, printJob : print.PrintJob)
 });
 ```
 
+<!--DelEnd-->
 
-<a id="queryprintjobbyid-1"></a>
+
+<a id="queryprintjobbyid2"></a>
 
 ## queryPrintJobById
 
@@ -96,6 +101,7 @@ function queryPrintJobById(jobId: string): Promise<PrintJob>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -109,3 +115,5 @@ print.queryPrintJobById(jobId).then((printJob : print.PrintJob) => {
     console.error(`Failed to query print job by id. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

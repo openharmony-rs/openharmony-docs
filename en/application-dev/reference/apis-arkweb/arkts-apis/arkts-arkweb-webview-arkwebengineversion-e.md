@@ -12,17 +12,17 @@ For ArkWeb kernel versions, see [Adaptation Guide for the M114 Kernel on OpenHar
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## SYSTEM_DEFAULT
+## ARKWEB_EVERGREEN
 
 ```TypeScript
-SYSTEM_DEFAULT = 0
+ARKWEB_EVERGREEN = 99999
 ```
 
-System default kernel (see [Constraints](../../../web/web-component-overview.md#constraints)). The default kernel is M132 for OpenHarmony 6.0 and M144 for OpenHarmony 7.0.
+The latest kernel (evergreen kernel) of the system. Developers can select this kernel to always use the latest kernel on each system version.
 
-**Since:** 20
+**Since:** 23
 
-<!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0--><!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0-End-->
+<!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999--><!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -70,16 +70,16 @@ Evergreen kernel of OpenHarmony 7.0. M144 is the default kernel of OpenHarmony 7
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## ARKWEB_EVERGREEN
+## SYSTEM_DEFAULT
 
 ```TypeScript
-ARKWEB_EVERGREEN = 99999
+SYSTEM_DEFAULT = 0
 ```
 
-The latest kernel (evergreen kernel) of the system. Developers can select this kernel to always use the latest kernel on each system version.
+System default kernel (see [Constraints](../../../web/web-component-overview.md#constraints)). The default kernel is M132 for OpenHarmony 6.0 and M144 for OpenHarmony 7.0.
 
-**Since:** 23
+**Since:** 20
 
-<!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999--><!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999-End-->
+<!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0--><!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

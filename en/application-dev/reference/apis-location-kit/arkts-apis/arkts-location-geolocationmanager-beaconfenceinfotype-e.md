@@ -22,7 +22,7 @@ Identifies a beacon device using beacon device manufacture data.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-BeaconFenceInfoType-BEACON_MANUFACTURE_DATA = 1--><!--Device-BeaconFenceInfoType-BEACON_MANUFACTURE_DATA = 1-End-->
 

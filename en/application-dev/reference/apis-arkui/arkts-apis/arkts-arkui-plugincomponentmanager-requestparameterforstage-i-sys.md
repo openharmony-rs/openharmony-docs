@@ -4,7 +4,7 @@
 interface RequestParameterForStage
 ```
 
-Plugin component request parameters which is used in request function.
+Sets the parameters to be passed in the **pluginComponentManager.request** API in the stage model.
 
 **Since:** 9
 
@@ -26,7 +26,7 @@ import { pluginComponentManager, PluginComponentTemplate } from '@kit.ArkUI';
 data: KVObject
 ```
 
-Defines data.
+Extra data stored in key-value pairs, used to transfer custom service parameters to the component provider during a request, so that the provider can return an appropriate component template based on the data.
 
 **Type:** [KVObject](arkts-arkui-plugincomponentmanager-kvobject-t.md)
 
@@ -44,7 +44,7 @@ Defines data.
 jsonPath?: string
 ```
 
-Defines jsonPath.
+Path of the [external.json](../../../reference/apis-arkui/js-apis-plugincomponent.md#about-the-externaljson-file) file that stores the template path. This parameter is passed when the template path needs to be loaded from the **external.json** file instead of being obtained through Request communication. When **jsonPath** is not empty, Request communication is not triggered. When **jsonPath** is empty (default), the component template is requested from the component provider through Request communication.
 
 **Type:** string
 
@@ -62,7 +62,7 @@ Defines jsonPath.
 name: string
 ```
 
-Defines name.
+Name of the requested component. When **jsonPath** is not empty, it must be consistent with the key name in the [external.json](../../../reference/apis-arkui/js-apis-plugincomponent.md#about-the-externaljson-file) file.
 
 **Type:** string
 
@@ -80,7 +80,7 @@ Defines name.
 owner: Want
 ```
 
-Defines owner.
+Ability information of the component user.
 
 **Type:** [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)
 
@@ -98,7 +98,7 @@ Defines owner.
 target: Want
 ```
 
-Defines target.
+Ability information of the component provider.
 
 **Type:** [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md)
 

@@ -6,6 +6,8 @@ export type CornerRadius = Corners<Vector2>
 
 Sets the semi-axis lengths for the x-axis and y-axis of the rounded corners.
 
+**Type:** [Corners](arkts-arkui-graphics-corners-i.md)&lt;[Vector2](arkts-arkui-graphics-vector2-i.md)&gt;
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Sets the semi-axis lengths for the x-axis and y-axis of the rounded corners.
 <!--Device-unnamed-export type CornerRadius = Corners<Vector2>--><!--Device-unnamed-export type CornerRadius = Corners<Vector2>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [Corners](arkts-arkui-graphics-corners-i.md)&lt;[Vector2](arkts-arkui-graphics-vector2-i.md)&gt;

@@ -31,23 +31,23 @@ import { deviceManager } from '@kit.DriverDevelopmentKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [bindDevice](arkts-driverdevelopment-devicemanager-binddevice-f.md) | 根据queryDevices()返回的设备信息绑定设备。必须和unbindDevice接口成对使用。 |
-| [bindDevice](arkts-driverdevelopment-devicemanager-binddevice-f.md#binddevice-1) | 根据queryDevices()返回的设备信息绑定设备。必须和unbindDevice接口成对使用。使用Promise异步回调。 |
-| [bindDeviceDriver](arkts-driverdevelopment-devicemanager-binddevicedriver-f.md) | 根据queryDevices()返回的设备信息绑定设备。必须与unbindDevice接口成对使用。 |
-| [bindDeviceDriver](arkts-driverdevelopment-devicemanager-binddevicedriver-f.md#binddevicedriver-1) | 根据queryDevices()返回的设备信息绑定设备。必须与unbindDevice接口成对使用。使用Promise异步回调。 |
-| [bindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-binddriverwithdeviceid-f.md) | 根据queryDevices()返回的设备信息绑定设备，必须与unbindDriverWithDeviceId接口成对使用。使用Promise异步回调。 |
-| [queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md) | 获取接入主设备的外部设备列表。如果没有设备接入，那么将会返回一个空的列表。 |
-| [unbindDevice](arkts-driverdevelopment-devicemanager-unbinddevice-f.md) | 解除设备绑定。必须先通过bindDevice接口绑定设备。 |
-| [unbindDevice](arkts-driverdevelopment-devicemanager-unbinddevice-f.md#unbinddevice-1) | 解除设备绑定。必须先通过bindDevice接口绑定设备。使用Promise异步回调。 |
-| [unbindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md) | 解除设备绑定，调用前需要先通过bindDriverWithDeviceId绑定设备。使用Promise异步回调。 |
+| [bindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-binddriverwithdeviceid-f.md#binddriverwithdeviceid) | 根据queryDevices()返回的设备信息绑定设备，必须与unbindDriverWithDeviceId接口成对使用。使用Promise异步回调。 |
+| [queryDevices](arkts-driverdevelopment-devicemanager-querydevices-f.md#querydevices) | 获取接入主设备的外部设备列表。如果没有设备接入，那么将会返回一个空的列表。 |
+| [unbindDriverWithDeviceId](arkts-driverdevelopment-devicemanager-unbinddriverwithdeviceid-f.md#unbinddriverwithdeviceid) | 解除设备绑定，调用前需要先通过bindDriverWithDeviceId绑定设备。使用Promise异步回调。 |
+| [bindDevice](arkts-driverdevelopment-devicemanager-binddevice-f.md#binddevice1) | 根据queryDevices()返回的设备信息绑定设备。必须和unbindDevice接口成对使用。 |
+| [bindDevice](arkts-driverdevelopment-devicemanager-binddevice-f.md#binddevice2) | 根据queryDevices()返回的设备信息绑定设备。必须和unbindDevice接口成对使用。使用Promise异步回调。 |
+| [bindDeviceDriver](arkts-driverdevelopment-devicemanager-binddevicedriver-f.md#binddevicedriver1) | 根据queryDevices()返回的设备信息绑定设备。必须与unbindDevice接口成对使用。 |
+| [bindDeviceDriver](arkts-driverdevelopment-devicemanager-binddevicedriver-f.md#binddevicedriver2) | 根据queryDevices()返回的设备信息绑定设备。必须与unbindDevice接口成对使用。使用Promise异步回调。 |
+| [unbindDevice](arkts-driverdevelopment-devicemanager-unbinddevice-f.md#unbinddevice1) | 解除设备绑定。必须先通过bindDevice接口绑定设备。 |
+| [unbindDevice](arkts-driverdevelopment-devicemanager-unbinddevice-f.md#unbinddevice2) | 解除设备绑定。必须先通过bindDevice接口绑定设备。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [queryDeviceInfo](arkts-driverdevelopment-devicemanager-querydeviceinfo-f-sys.md) | 查询扩展外设详细信息列表。如果没有设备接入，那么将会返回一个空的列表。 |
-| [queryDriverInfo](arkts-driverdevelopment-devicemanager-querydriverinfo-f-sys.md) | 查询扩展外设驱动详细信息列表。如果没有设备接入，那么将会返回一个空的列表。 |
+| [queryDeviceInfo](arkts-driverdevelopment-devicemanager-querydeviceinfo-f-sys.md#querydeviceinfo) | 查询扩展外设详细信息列表。如果没有设备接入，那么将会返回一个空的列表。 |
+| [queryDriverInfo](arkts-driverdevelopment-devicemanager-querydriverinfo-f-sys.md#querydriverinfo) | 查询扩展外设驱动详细信息列表。如果没有设备接入，那么将会返回一个空的列表。 |
 <!--DelEnd-->
 
 ### 接口

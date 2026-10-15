@@ -12,13 +12,13 @@ Enumerates the toolbar item states.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NORMAL
+## ACTIVE
 
 ```TypeScript
-NORMAL = 0
+ACTIVE = 2
 ```
 
-Normal state. In this state, the toolbar item takes on the default style and can switch to another state-specific style by responding to the hover, press, and focus events.
+Active state. In this state, the toolbar item can update its icon to the one specified by **activeIcon** by responding to a click event.
 
 **Since:** 10
 
@@ -26,7 +26,7 @@ Normal state. In this state, the toolbar item takes on the default style and can
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ToolbarItemStatus-NORMAL = 0--><!--Device-ToolbarItemStatus-NORMAL = 0-End-->
+<!--Device-ToolbarItemStatus-ACTIVE = 2--><!--Device-ToolbarItemStatus-ACTIVE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ Disabled state. In this state, the toolbar item is disabled and does not allow f
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ACTIVE
+## NORMAL
 
 ```TypeScript
-ACTIVE = 2
+NORMAL = 0
 ```
 
-Active state. In this state, the toolbar item can update its icon to the one specified by **activeIcon** by responding to a click event.
+Normal state. In this state, the toolbar item takes on the default style and can switch to another state-specific style by responding to the hover, press, and focus events.
 
 **Since:** 10
 
@@ -62,6 +62,6 @@ Active state. In this state, the toolbar item can update its icon to the one spe
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-ToolbarItemStatus-ACTIVE = 2--><!--Device-ToolbarItemStatus-ACTIVE = 2-End-->
+<!--Device-ToolbarItemStatus-NORMAL = 0--><!--Device-ToolbarItemStatus-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

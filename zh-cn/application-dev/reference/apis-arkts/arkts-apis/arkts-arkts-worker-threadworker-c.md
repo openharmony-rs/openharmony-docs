@@ -472,6 +472,8 @@ onmessageerror?: (event: MessageEvents) => void
 | [10200004](../errorcode-utils.md#10200004-worker处于非运行状态) | The Worker instance is not running. |
 | [10200005](../errorcode-utils.md#10200005-worker不支持某api) | The called API is not supported in the worker thread. |
 
+<a id="postmessage1"></a>
+
 ## postMessage
 
 ```TypeScript
@@ -577,7 +579,7 @@ struct Index {
 }
 ```
 
-<a id="postmessage-1"></a>
+<a id="postmessage2"></a>
 
 ## postMessage
 
@@ -829,7 +831,7 @@ removeEventListener(type: string, callback?: WorkerEventListener): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | string | 是 | 需要移除的事件类型。 |
-| callback | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 移除监听事件后执行的回调函数。 |
+| callback | [WorkerEventListener](arkts-arkts-worker-workereventlistener-i.md) | 否 | 要移除的特定事件监听回调函数；省略时移除该类型的全部监听器。 |
 
 **错误码：**
 

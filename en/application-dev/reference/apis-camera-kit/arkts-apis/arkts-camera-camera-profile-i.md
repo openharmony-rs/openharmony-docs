@@ -30,7 +30,7 @@ Output format.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Profile-readonly format: CameraFormat--><!--Device-Profile-readonly format: CameraFormat-End-->
 
@@ -50,7 +50,7 @@ The size setting corresponds to the camera's resolution width and height, rather
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Profile-readonly size: Size--><!--Device-Profile-readonly size: Size-End-->
 

@@ -12,22 +12,6 @@ Enumerates the logical link connection states with a remote device.
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-## DISCONNECTED
-
-```TypeScript
-DISCONNECTED = 0
-```
-
-Disconnected.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AcbState-DISCONNECTED = 0--><!--Device-AcbState-DISCONNECTED = 0-End-->
-
-**System capability:** SystemCapability.Communication.NearLink.Base
-
 ## CONNECTED
 
 ```TypeScript
@@ -40,7 +24,27 @@ Connected.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-AcbState-CONNECTED = 1--><!--Device-AcbState-CONNECTED = 1-End-->
+
+**System capability:** SystemCapability.Communication.NearLink.Base
+
+## DISCONNECTED
+
+```TypeScript
+DISCONNECTED = 0
+```
+
+Disconnected.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-AcbState-DISCONNECTED = 0--><!--Device-AcbState-DISCONNECTED = 0-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -55,6 +59,8 @@ Connected, with link encrypted.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-AcbState-ENCRYPTED = 2--><!--Device-AcbState-ENCRYPTED = 2-End-->
 

@@ -12,102 +12,6 @@ Enumerates the Hyper Snap error codes.
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
 
-## ERR_OK
-
-```TypeScript
-ERR_OK = 0
-```
-
-No error.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-HyperSnapErrorCode-ERR_OK = 0--><!--Device-HyperSnapErrorCode-ERR_OK = 0-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## ERR_SYSTEM_INNER
-
-```TypeScript
-ERR_SYSTEM_INNER = 1
-```
-
-Internal system error.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-HyperSnapErrorCode-ERR_SYSTEM_INNER = 1--><!--Device-HyperSnapErrorCode-ERR_SYSTEM_INNER = 1-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## ERR_SNAPSHOT_EXIST
-
-```TypeScript
-ERR_SNAPSHOT_EXIST = 2
-```
-
-The snapshot already exists.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_EXIST = 2--><!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_EXIST = 2-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## ERR_PROCESS_IS_RUNNING
-
-```TypeScript
-ERR_PROCESS_IS_RUNNING = 3
-```
-
-A process is already running when preparing to create the snapshot.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-HyperSnapErrorCode-ERR_PROCESS_IS_RUNNING = 3--><!--Device-HyperSnapErrorCode-ERR_PROCESS_IS_RUNNING = 3-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## ERR_SNAPSHOT_PROCESS_IS_DIED
-
-```TypeScript
-ERR_SNAPSHOT_PROCESS_IS_DIED = 4
-```
-
-The process used for snapshot creation was killed during the operation.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_PROCESS_IS_DIED = 4--><!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_PROCESS_IS_DIED = 4-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-## ERR_SNAPSHOT_IS_INTERRUPTED
-
-```TypeScript
-ERR_SNAPSHOT_IS_INTERRUPTED = 5
-```
-
-Snapshot creation was interrupted because the user launched the application.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_IS_INTERRUPTED = 5--><!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_IS_INTERRUPTED = 5-End-->
-
-**System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
 ## ERR_EXISTS_ILLEGAL_BINDER
 
 ```TypeScript
@@ -137,5 +41,101 @@ The previous process did not exit completely.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-HyperSnapErrorCode-ERR_LAST_PROCESS_NOT_FULLY_EXITED = 7--><!--Device-HyperSnapErrorCode-ERR_LAST_PROCESS_NOT_FULLY_EXITED = 7-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## ERR_OK
+
+```TypeScript
+ERR_OK = 0
+```
+
+No error.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HyperSnapErrorCode-ERR_OK = 0--><!--Device-HyperSnapErrorCode-ERR_OK = 0-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## ERR_PROCESS_IS_RUNNING
+
+```TypeScript
+ERR_PROCESS_IS_RUNNING = 3
+```
+
+A process is already running when preparing to create the snapshot.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HyperSnapErrorCode-ERR_PROCESS_IS_RUNNING = 3--><!--Device-HyperSnapErrorCode-ERR_PROCESS_IS_RUNNING = 3-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## ERR_SNAPSHOT_EXIST
+
+```TypeScript
+ERR_SNAPSHOT_EXIST = 2
+```
+
+The snapshot already exists.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_EXIST = 2--><!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_EXIST = 2-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## ERR_SNAPSHOT_IS_INTERRUPTED
+
+```TypeScript
+ERR_SNAPSHOT_IS_INTERRUPTED = 5
+```
+
+Snapshot creation was interrupted because the user launched the application.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_IS_INTERRUPTED = 5--><!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_IS_INTERRUPTED = 5-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## ERR_SNAPSHOT_PROCESS_IS_DIED
+
+```TypeScript
+ERR_SNAPSHOT_PROCESS_IS_DIED = 4
+```
+
+The process used for snapshot creation was killed during the operation.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_PROCESS_IS_DIED = 4--><!--Device-HyperSnapErrorCode-ERR_SNAPSHOT_PROCESS_IS_DIED = 4-End-->
+
+**System capability:** SystemCapability.Ability.AbilityRuntime.Core
+
+## ERR_SYSTEM_INNER
+
+```TypeScript
+ERR_SYSTEM_INNER = 1
+```
+
+Internal system error.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-HyperSnapErrorCode-ERR_SYSTEM_INNER = 1--><!--Device-HyperSnapErrorCode-ERR_SYSTEM_INNER = 1-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core

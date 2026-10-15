@@ -12,20 +12,6 @@ enum CompatibleMode
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## ORIGINAL_FORMAT_MODE
-
-```TypeScript
-ORIGINAL_FORMAT_MODE = 0
-```
-
-原视频资源内容模式。
-
-**起始版本：** 15
-
-<!--Device-CompatibleMode-ORIGINAL_FORMAT_MODE = 0--><!--Device-CompatibleMode-ORIGINAL_FORMAT_MODE = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## COMPATIBLE_FORMAT_MODE
 
 ```TypeScript
@@ -37,5 +23,19 @@ COMPATIBLE_FORMAT_MODE = 1
 **起始版本：** 15
 
 <!--Device-CompatibleMode-COMPATIBLE_FORMAT_MODE = 1--><!--Device-CompatibleMode-COMPATIBLE_FORMAT_MODE = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## ORIGINAL_FORMAT_MODE
+
+```TypeScript
+ORIGINAL_FORMAT_MODE = 0
+```
+
+原视频资源内容模式。
+
+**起始版本：** 15
+
+<!--Device-CompatibleMode-ORIGINAL_FORMAT_MODE = 0--><!--Device-CompatibleMode-ORIGINAL_FORMAT_MODE = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

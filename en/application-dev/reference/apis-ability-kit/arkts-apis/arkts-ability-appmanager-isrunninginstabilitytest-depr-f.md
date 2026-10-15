@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="isrunninginstabilitytest1"></a>
+
 ## isRunningInStabilityTest
 
 ```TypeScript
@@ -51,7 +53,7 @@ appManager.isRunningInStabilityTest((error, flag) => {
 ```
 
 
-<a id="isrunninginstabilitytest-1"></a>
+<a id="isrunninginstabilitytest2"></a>
 
 ## isRunningInStabilityTest
 

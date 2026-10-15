@@ -40,19 +40,19 @@ import { vpnExtension } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createVpnConnection](arkts-network-vpnextension-createvpnconnection-f.md) | 创建一个三方VPN连接对象。 |
-| [createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md) | 创建一个VPN观察者对象。用于监听VPN相关事件。 |
-| [startVpnExtensionAbility](arkts-network-vpnextension-startvpnextensionability-f.md) | 启动新的三方VPN功能。使用Promise异步回调。 |
-| [stopVpnExtensionAbility](arkts-network-vpnextension-stopvpnextensionability-f.md) | 停止同一应用程序中的服务。使用Promise异步回调。 |
+| [createVpnConnection](arkts-network-vpnextension-createvpnconnection-f.md#createvpnconnection) | 创建一个三方VPN连接对象。 |
+| [createVpnObserver](arkts-network-vpnextension-createvpnobserver-f.md#createvpnobserver) | 创建一个VPN观察者对象。用于监听VPN相关事件。 |
+| [startVpnExtensionAbility](arkts-network-vpnextension-startvpnextensionability-f.md#startvpnextensionability) | 启动新的三方VPN功能。使用Promise异步回调。 |
+| [stopVpnExtensionAbility](arkts-network-vpnextension-stopvpnextensionability-f.md#stopvpnextensionability) | 停止同一应用程序中的服务。使用Promise异步回调。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [isAlwaysOnVpnEnabled](arkts-network-vpnextension-isalwaysonvpnenabled-f-sys.md) | 获取always on VPN开关状态。使用Promise异步回调。 |
-| [setAlwaysOnVpnEnabled](arkts-network-vpnextension-setalwaysonvpnenabled-f-sys.md) | 设置设备的启用/禁用always on VPN模式。使用Promise异步回调。 |
-| [updateVpnAuthorizedState](arkts-network-vpnextension-updatevpnauthorizedstate-f-sys.md) | 更新VPN对话框授权信息。 |
+| [isAlwaysOnVpnEnabled](arkts-network-vpnextension-isalwaysonvpnenabled-f-sys.md#isalwaysonvpnenabled) | 获取always on VPN开关状态。使用Promise异步回调。 |
+| [setAlwaysOnVpnEnabled](arkts-network-vpnextension-setalwaysonvpnenabled-f-sys.md#setalwaysonvpnenabled) | 设置设备的启用/禁用always on VPN模式。使用Promise异步回调。 |
+| [updateVpnAuthorizedState](arkts-network-vpnextension-updatevpnauthorizedstate-f-sys.md#updatevpnauthorizedstate) | 更新VPN对话框授权信息。 |
 <!--DelEnd-->
 
 ### 接口

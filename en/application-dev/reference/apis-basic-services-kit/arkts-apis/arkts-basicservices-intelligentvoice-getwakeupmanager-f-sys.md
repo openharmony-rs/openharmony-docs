@@ -39,6 +39,7 @@ Obtains an [WakeupManager](arkts-basicservices-intelligentvoice-wakeupmanager-i-
 | [22700101](../errorcode-intelligentVoice.md#22700101-insufficient-memory) | No memory. |
 | [22700107](../errorcode-intelligentVoice.md#22700107-system-error) | System error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
   console.error(`Get WakeupManager failed. Code:${error.code}, message:${error.message}`);
 }
 ```
+
+<!--DelEnd-->

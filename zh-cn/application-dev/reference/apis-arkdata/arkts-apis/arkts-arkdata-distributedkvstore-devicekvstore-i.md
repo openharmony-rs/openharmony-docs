@@ -26,6 +26,8 @@ interface DeviceKVStore extends SingleKVStore
 import { distributedKVStore } from '@kit.ArkData';
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -164,7 +166,7 @@ try {
 }
 ```
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -309,7 +311,7 @@ try {
 }
 ```
 
-<a id="get-2"></a>
+<a id="get3"></a>
 
 ## get
 
@@ -459,7 +461,7 @@ try {
 }
 ```
 
-<a id="get-3"></a>
+<a id="get4"></a>
 
 ## get
 
@@ -614,6 +616,8 @@ try {
 }
 ```
 
+<a id="getentries1"></a>
+
 ## getEntries
 
 ```TypeScript
@@ -688,7 +692,7 @@ try {
 }
 ```
 
-<a id="getentries-1"></a>
+<a id="getentries2"></a>
 
 ## getEntries
 
@@ -764,7 +768,7 @@ try {
 }
 ```
 
-<a id="getentries-2"></a>
+<a id="getentries3"></a>
 
 ## getEntries
 
@@ -850,7 +854,7 @@ try {
 }
 ```
 
-<a id="getentries-3"></a>
+<a id="getentries4"></a>
 
 ## getEntries
 
@@ -939,7 +943,7 @@ try {
 }
 ```
 
-<a id="getentries-4"></a>
+<a id="getentries5"></a>
 
 ## getEntries
 
@@ -1018,7 +1022,7 @@ try {
 }
 ```
 
-<a id="getentries-5"></a>
+<a id="getentries6"></a>
 
 ## getEntries
 
@@ -1097,7 +1101,7 @@ try {
 }
 ```
 
-<a id="getentries-6"></a>
+<a id="getentries7"></a>
 
 ## getEntries
 
@@ -1188,7 +1192,7 @@ try {
 }
 ```
 
-<a id="getentries-7"></a>
+<a id="getentries8"></a>
 
 ## getEntries
 
@@ -1278,13 +1282,15 @@ try {
 }
 ```
 
+<a id="getresultset1"></a>
+
 ## getResultSet
 
 ```TypeScript
 getResultSet(keyPrefix: string, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)关闭结果集释放资源。
+从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1361,7 +1367,7 @@ try {
 }
 ```
 
-<a id="getresultset-1"></a>
+<a id="getresultset2"></a>
 
 ## getResultSet
 
@@ -1369,7 +1375,7 @@ try {
 getResultSet(keyPrefix: string): Promise<KVStoreResultSet>
 ```
 
-从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)关闭结果集释放资源。
+从DeviceKVStore数据库中获取本设备具有指定前缀的结果集，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset1)关闭结果集释放资源。
 
 **起始版本：** 9
 
@@ -1443,7 +1449,7 @@ try {
 }
 ```
 
-<a id="getresultset-2"></a>
+<a id="getresultset3"></a>
 
 ## getResultSet
 
@@ -1517,7 +1523,7 @@ try {
 }
 ```
 
-<a id="getresultset-3"></a>
+<a id="getresultset4"></a>
 
 ## getResultSet
 
@@ -1592,7 +1598,7 @@ try {
 }
 ```
 
-<a id="getresultset-4"></a>
+<a id="getresultset5"></a>
 
 ## getResultSet
 
@@ -1679,7 +1685,7 @@ try {
 }
 ```
 
-<a id="getresultset-5"></a>
+<a id="getresultset6"></a>
 
 ## getResultSet
 
@@ -1756,7 +1762,7 @@ try {
 }
 ```
 
-<a id="getresultset-6"></a>
+<a id="getresultset7"></a>
 
 ## getResultSet
 
@@ -1764,7 +1770,7 @@ try {
 getResultSet(deviceId: string, query: Query, callback: AsyncCallback<KVStoreResultSet>): void
 ```
 
-获取与指定设备ID和Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)关闭结果集释放资源。
+获取与指定设备ID和Query对象匹配的KVStoreResultSet对象，使用callback异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset1)关闭结果集释放资源。
 
 > **说明：** 
 > 
@@ -1853,7 +1859,7 @@ try {
 }
 ```
 
-<a id="getresultset-7"></a>
+<a id="getresultset8"></a>
 
 ## getResultSet
 
@@ -1861,7 +1867,7 @@ try {
 getResultSet(deviceId: string, query: Query): Promise<KVStoreResultSet>
 ```
 
-获取与指定设备ID和Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset)关闭结果集释放资源。
+获取与指定设备ID和Query对象匹配的KVStoreResultSet对象，使用Promise异步回调。获取结果集后，在使用完毕时需调用[closeResultSet](arkts-arkdata-distributedkvstore-singlekvstore-i.md#closeresultset1)关闭结果集释放资源。
 
 > **说明：** 
 > 
@@ -1952,6 +1958,8 @@ try {
 }
 ```
 
+<a id="getresultsize1"></a>
+
 ## getResultSize
 
 ```TypeScript
@@ -2026,7 +2034,7 @@ try {
 }
 ```
 
-<a id="getresultsize-1"></a>
+<a id="getresultsize2"></a>
 
 ## getResultSize
 
@@ -2101,7 +2109,7 @@ try {
 }
 ```
 
-<a id="getresultsize-2"></a>
+<a id="getresultsize3"></a>
 
 ## getResultSize
 
@@ -2187,7 +2195,7 @@ try {
 }
 ```
 
-<a id="getresultsize-3"></a>
+<a id="getresultsize4"></a>
 
 ## getResultSize
 

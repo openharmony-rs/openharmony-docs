@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="getglobalhttpproxy1"></a>
+
 ## getGlobalHttpProxy
 
 ```TypeScript
@@ -37,6 +39,7 @@ Obtains the global network proxy configuration information. This API uses an asy
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,8 +52,10 @@ connection.getGlobalHttpProxy((error: BusinessError, data: connection.HttpProxy)
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getglobalhttpproxy-1"></a>
+
+<a id="getglobalhttpproxy2"></a>
 
 ## getGlobalHttpProxy
 
@@ -82,6 +87,7 @@ Obtains the global network proxy configuration information. This API uses a prom
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -94,3 +100,5 @@ connection.getGlobalHttpProxy().then((data: connection.HttpProxy) => {
   console.error(JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

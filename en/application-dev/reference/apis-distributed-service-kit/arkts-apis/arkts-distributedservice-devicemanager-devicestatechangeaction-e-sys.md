@@ -18,6 +18,44 @@ Enumerates the device states.
 
 **System API:** This is a system API.
 
+## CHANGE
+
+```TypeScript
+CHANGE = 3
+```
+
+The device information is changed.
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+<!--Device-DeviceStateChangeAction-CHANGE = 3--><!--Device-DeviceStateChangeAction-CHANGE = 3-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+**System API:** This is a system API.
+
+## OFFLINE
+
+```TypeScript
+OFFLINE = 2
+```
+
+The device is physically offline.
+
+**Since:** 7
+
+**Deprecated since:** 11
+
+**Substitutes:** [UNAVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#unavailable)
+
+<!--Device-DeviceStateChangeAction-OFFLINE = 2--><!--Device-DeviceStateChangeAction-OFFLINE = 2-End-->
+
+**System capability:** SystemCapability.DistributedHardware.DeviceManager
+
+**System API:** This is a system API.
+
 ## ONLINE
 
 ```TypeScript
@@ -53,44 +91,6 @@ The information between devices has been synchronized in the Distributed Data Se
 **Substitutes:** [AVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#available)
 
 <!--Device-DeviceStateChangeAction-READY = 1--><!--Device-DeviceStateChangeAction-READY = 1-End-->
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
-**System API:** This is a system API.
-
-## OFFLINE
-
-```TypeScript
-OFFLINE = 2
-```
-
-The device is physically offline.
-
-**Since:** 7
-
-**Deprecated since:** 11
-
-**Substitutes:** [UNAVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#unavailable)
-
-<!--Device-DeviceStateChangeAction-OFFLINE = 2--><!--Device-DeviceStateChangeAction-OFFLINE = 2-End-->
-
-**System capability:** SystemCapability.DistributedHardware.DeviceManager
-
-**System API:** This is a system API.
-
-## CHANGE
-
-```TypeScript
-CHANGE = 3
-```
-
-The device information is changed.
-
-**Since:** 7
-
-**Deprecated since:** 11
-
-<!--Device-DeviceStateChangeAction-CHANGE = 3--><!--Device-DeviceStateChangeAction-CHANGE = 3-End-->
 
 **System capability:** SystemCapability.DistributedHardware.DeviceManager
 

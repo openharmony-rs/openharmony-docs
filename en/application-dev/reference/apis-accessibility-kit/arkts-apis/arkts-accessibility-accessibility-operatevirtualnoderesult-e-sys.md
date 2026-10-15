@@ -14,24 +14,6 @@ Enumerates the result types of operating virtual nodes for accessibility.
 
 **System API:** This is a system API.
 
-## SUCCESS
-
-```TypeScript
-SUCCESS = 0
-```
-
-The operation is successful.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-OperateVirtualNodeResult-SUCCESS = 0--><!--Device-OperateVirtualNodeResult-SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
 ## ACCESSIBILITY_ELEMENT_NOT_EXIST
 
 ```TypeScript
@@ -45,24 +27,6 @@ The node to be operated does not exist.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-OperateVirtualNodeResult-ACCESSIBILITY_ELEMENT_NOT_EXIST = 1--><!--Device-OperateVirtualNodeResult-ACCESSIBILITY_ELEMENT_NOT_EXIST = 1-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## CANNOT_MODIFY_ROOT_NODE
-
-```TypeScript
-CANNOT_MODIFY_ROOT_NODE = 2
-```
-
-The current root node cannot be modified.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-OperateVirtualNodeResult-CANNOT_MODIFY_ROOT_NODE = 2--><!--Device-OperateVirtualNodeResult-CANNOT_MODIFY_ROOT_NODE = 2-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -104,19 +68,19 @@ Failed to allocate a virtual node ID.
 
 **System API:** This is a system API.
 
-## VIRTUAL_NODE_PARAMETER_IS_EMPTY
+## CANNOT_MODIFY_ROOT_NODE
 
 ```TypeScript
-VIRTUAL_NODE_PARAMETER_IS_EMPTY = 5
+CANNOT_MODIFY_ROOT_NODE = 2
 ```
 
-The array of newly added virtual nodes is empty.
+The current root node cannot be modified.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-OperateVirtualNodeResult-VIRTUAL_NODE_PARAMETER_IS_EMPTY = 5--><!--Device-OperateVirtualNodeResult-VIRTUAL_NODE_PARAMETER_IS_EMPTY = 5-End-->
+<!--Device-OperateVirtualNodeResult-CANNOT_MODIFY_ROOT_NODE = 2--><!--Device-OperateVirtualNodeResult-CANNOT_MODIFY_ROOT_NODE = 2-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -140,6 +104,24 @@ System exception.
 
 **System API:** This is a system API.
 
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+The operation is successful.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OperateVirtualNodeResult-SUCCESS = 0--><!--Device-OperateVirtualNodeResult-SUCCESS = 0-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
 ## VIRTUAL_NODE_NOT_SUPPORTED
 
 ```TypeScript
@@ -153,6 +135,24 @@ Virtual node operations are not supported.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-OperateVirtualNodeResult-VIRTUAL_NODE_NOT_SUPPORTED = 7--><!--Device-OperateVirtualNodeResult-VIRTUAL_NODE_NOT_SUPPORTED = 7-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## VIRTUAL_NODE_PARAMETER_IS_EMPTY
+
+```TypeScript
+VIRTUAL_NODE_PARAMETER_IS_EMPTY = 5
+```
+
+The array of newly added virtual nodes is empty.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-OperateVirtualNodeResult-VIRTUAL_NODE_PARAMETER_IS_EMPTY = 5--><!--Device-OperateVirtualNodeResult-VIRTUAL_NODE_PARAMETER_IS_EMPTY = 5-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

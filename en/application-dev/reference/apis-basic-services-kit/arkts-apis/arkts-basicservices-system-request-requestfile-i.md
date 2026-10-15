@@ -34,7 +34,7 @@ File name in the header when **multipart** is used.
 
 **Deprecated since:** 9
 
-**Substitutes:** filename
+**Substitutes:** [filename](arkts-basicservices-agent-filespec-i.md#filename)
 
 <!--Device-RequestFile-filename?: string--><!--Device-RequestFile-filename?: string-End-->
 
@@ -54,7 +54,7 @@ Name of a form item when **multipart** is used. The default value is **file**.
 
 **Deprecated since:** 9
 
-**Substitutes:** name
+**Substitutes:** [name](arkts-basicservices-agent-formitem-i.md#name)
 
 <!--Device-RequestFile-name?: string--><!--Device-RequestFile-name?: string-End-->
 
@@ -74,7 +74,7 @@ Type of the file content. By default, the type is obtained based on the extensio
 
 **Deprecated since:** 9
 
-**Substitutes:** contentType
+**Substitutes:** [contentType](arkts-basicservices-agent-filespec-i.md#contenttype)
 
 <!--Device-RequestFile-type?: string--><!--Device-RequestFile-type?: string-End-->
 
@@ -94,7 +94,7 @@ Local path for storing files.
 
 **Deprecated since:** 9
 
-**Substitutes:** path
+**Substitutes:** [path](arkts-basicservices-agent-filespec-i.md#path)
 
 <!--Device-RequestFile-uri: string--><!--Device-RequestFile-uri: string-End-->
 

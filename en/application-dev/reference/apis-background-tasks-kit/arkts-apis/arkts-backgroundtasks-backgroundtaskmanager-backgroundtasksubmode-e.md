@@ -12,50 +12,6 @@ Defines the subtype of a continuous task. It is usually used together with the m
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SUBMODE_CAR_KEY_NORMAL_NOTIFICATION
-
-```TypeScript
-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1
-```
-
-**CAR_KEY** type. It is of the normal text notification type.
-
-**Since:** 21
-
-<!--Device-BackgroundTaskSubmode-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1--><!--Device-BackgroundTaskSubmode-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SUBMODE_NORMAL_NOTIFICATION
-
-```TypeScript
-SUBMODE_NORMAL_NOTIFICATION = 2
-```
-
-Normal text notification.
-
-**Since:** 21
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
-
-<!--Device-BackgroundTaskSubmode-SUBMODE_NORMAL_NOTIFICATION = 2--><!--Device-BackgroundTaskSubmode-SUBMODE_NORMAL_NOTIFICATION = 2-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SUBMODE_LIVE_VIEW_NOTIFICATION
-
-```TypeScript
-SUBMODE_LIVE_VIEW_NOTIFICATION = 3
-```
-
-Live view notification.
-
-**Since:** 21
-
-<!--Device-BackgroundTaskSubmode-SUBMODE_LIVE_VIEW_NOTIFICATION = 3--><!--Device-BackgroundTaskSubmode-SUBMODE_LIVE_VIEW_NOTIFICATION = 3-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
 ## SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION
 
 ```TypeScript
@@ -66,25 +22,9 @@ Audio and video playback. It is of the normal text notification type. You can ac
 
 **Since:** 22
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-BackgroundTaskSubmode-SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION = 4--><!--Device-BackgroundTaskSubmode-SUBMODE_AUDIO_PLAYBACK_NORMAL_NOTIFICATION = 4-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
-
-## SUBMODE_AVSESSION_AUDIO_PLAYBACK
-
-```TypeScript
-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5
-```
-
-Audio and video playback scenario where [AVSession](../../../media/avsession/avsession-overview.md) is accessed. It is of the normal text notification type.
-
-**Since:** 22
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
-
-<!--Device-BackgroundTaskSubmode-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5--><!--Device-BackgroundTaskSubmode-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -102,31 +42,47 @@ Recording. It is of the normal text notification type.
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION
+## SUBMODE_AVSESSION_AUDIO_PLAYBACK
 
 ```TypeScript
-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7
+SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5
 ```
 
-Recording. It is of the normal text notification type.
+Audio and video playback scenario where [AVSession](../../../media/avsession/avsession-overview.md) is accessed. It is of the normal text notification type.
 
 **Since:** 22
 
-<!--Device-BackgroundTaskSubmode-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7--><!--Device-BackgroundTaskSubmode-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7-End-->
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5--><!--Device-BackgroundTaskSubmode-SUBMODE_AVSESSION_AUDIO_PLAYBACK = 5-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
-## SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION
+## SUBMODE_CAR_KEY_NORMAL_NOTIFICATION
 
 ```TypeScript
-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8
+SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1
 ```
 
-Call. It is of the normal text notification type.
+**CAR_KEY** type. It is of the normal text notification type.
 
-**Since:** 22
+**Since:** 21
 
-<!--Device-BackgroundTaskSubmode-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8--><!--Device-BackgroundTaskSubmode-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8-End-->
+<!--Device-BackgroundTaskSubmode-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1--><!--Device-BackgroundTaskSubmode-SUBMODE_CAR_KEY_NORMAL_NOTIFICATION = 1-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SUBMODE_LIVE_VIEW_NOTIFICATION
+
+```TypeScript
+SUBMODE_LIVE_VIEW_NOTIFICATION = 3
+```
+
+Live view notification.
+
+**Since:** 21
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_LIVE_VIEW_NOTIFICATION = 3--><!--Device-BackgroundTaskSubmode-SUBMODE_LIVE_VIEW_NOTIFICATION = 3-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
@@ -144,6 +100,36 @@ Media processing. For example, an application exports media files in the backgro
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 
+## SUBMODE_NORMAL_NOTIFICATION
+
+```TypeScript
+SUBMODE_NORMAL_NOTIFICATION = 2
+```
+
+Normal text notification.
+
+**Since:** 21
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_NORMAL_NOTIFICATION = 2--><!--Device-BackgroundTaskSubmode-SUBMODE_NORMAL_NOTIFICATION = 2-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION
+
+```TypeScript
+SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7
+```
+
+Recording. It is of the normal text notification type.
+
+**Since:** 22
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7--><!--Device-BackgroundTaskSubmode-SUBMODE_SCREEN_RECORD_NORMAL_NOTIFICATION = 7-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
 ## SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION
 
 ```TypeScript
@@ -155,6 +141,20 @@ Video casting. For example, an application uses a third-party casting component 
 **Since:** 22
 
 <!--Device-BackgroundTaskSubmode-SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION = 10--><!--Device-BackgroundTaskSubmode-SUBMODE_VIDEO_BROADCAST_NORMAL_NOTIFICATION = 10-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
+
+## SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION
+
+```TypeScript
+SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8
+```
+
+Call. It is of the normal text notification type.
+
+**Since:** 22
+
+<!--Device-BackgroundTaskSubmode-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8--><!--Device-BackgroundTaskSubmode-SUBMODE_VOICE_CHAT_NORMAL_NOTIFICATION = 8-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.BackgroundTaskManager.ContinuousTask
 

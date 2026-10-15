@@ -14,6 +14,22 @@ Enumerates fingerprint gesture event types.
 
 **System API:** This is a system API.
 
+## CLICK
+
+```TypeScript
+CLICK = 4
+```
+
+Double-click
+
+**Since:** 12
+
+<!--Device-FingerprintAction-CLICK = 4--><!--Device-FingerprintAction-CLICK = 4-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+**System API:** This is a system API.
+
 ## DOWN
 
 ```TypeScript
@@ -25,38 +41,6 @@ Pressing down
 **Since:** 12
 
 <!--Device-FingerprintAction-DOWN = 0--><!--Device-FingerprintAction-DOWN = 0-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-**System API:** This is a system API.
-
-## UP
-
-```TypeScript
-UP = 1
-```
-
-Lifting up
-
-**Since:** 12
-
-<!--Device-FingerprintAction-UP = 1--><!--Device-FingerprintAction-UP = 1-End-->
-
-**System capability:** SystemCapability.MultimodalInput.Input.Core
-
-**System API:** This is a system API.
-
-## SLIDE
-
-```TypeScript
-SLIDE = 2
-```
-
-Sliding
-
-**Since:** 12
-
-<!--Device-FingerprintAction-SLIDE = 2--><!--Device-FingerprintAction-SLIDE = 2-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 
@@ -78,17 +62,33 @@ Second pressing down
 
 **System API:** This is a system API.
 
-## CLICK
+## SLIDE
 
 ```TypeScript
-CLICK = 4
+SLIDE = 2
 ```
 
-Double-click
+Sliding
 
 **Since:** 12
 
-<!--Device-FingerprintAction-CLICK = 4--><!--Device-FingerprintAction-CLICK = 4-End-->
+<!--Device-FingerprintAction-SLIDE = 2--><!--Device-FingerprintAction-SLIDE = 2-End-->
+
+**System capability:** SystemCapability.MultimodalInput.Input.Core
+
+**System API:** This is a system API.
+
+## UP
+
+```TypeScript
+UP = 1
+```
+
+Lifting up
+
+**Since:** 12
+
+<!--Device-FingerprintAction-UP = 1--><!--Device-FingerprintAction-UP = 1-End-->
 
 **System capability:** SystemCapability.MultimodalInput.Input.Core
 

@@ -24,7 +24,7 @@ Marks the start of a timeslice trace task.
 
 **Deprecated since:** 8
 
-**Substitutes:** startTrace
+**Substitutes:** [startTrace](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-starttrace-f.md)
 
 <!--Device-bytrace-function startTrace(name: string, taskId: number, expectedTime?: number): void--><!--Device-bytrace-function startTrace(name: string, taskId: number, expectedTime?: number): void-End-->
 

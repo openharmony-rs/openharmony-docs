@@ -6,6 +6,8 @@
 import { geolocation } from '@kit.LocationKit';
 ```
 
+<a id="islocationenabled1"></a>
+
 ## isLocationEnabled
 
 ```TypeScript
@@ -47,7 +49,7 @@ geolocation.isLocationEnabled((err, data) => {
 ```
 
 
-<a id="islocationenabled-1"></a>
+<a id="islocationenabled2"></a>
 
 ## isLocationEnabled
 

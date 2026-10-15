@@ -12,7 +12,7 @@ Converts a number in fp units to a number in px.
 
 **Deprecated since:** 18
 
-**Substitutes:** fp2px
+**Substitutes:** [fp2px](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#fp2px)
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 

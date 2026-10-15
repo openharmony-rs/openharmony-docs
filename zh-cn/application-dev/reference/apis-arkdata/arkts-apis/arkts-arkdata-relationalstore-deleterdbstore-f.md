@@ -6,6 +6,8 @@
 import { relationalStore } from '@kit.ArkData';
 ```
 
+<a id="deleterdbstore1"></a>
+
 ## deleteRdbStore
 
 ```TypeScript
@@ -84,7 +86,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deleterdbstore-1"></a>
+<a id="deleterdbstore2"></a>
 
 ## deleteRdbStore
 
@@ -175,7 +177,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deleterdbstore-2"></a>
+<a id="deleterdbstore3"></a>
 
 ## deleteRdbStore
 
@@ -256,7 +258,7 @@ class EntryAbility extends UIAbility {
 ```
 
 
-<a id="deleterdbstore-3"></a>
+<a id="deleterdbstore4"></a>
 
 ## deleteRdbStore
 
@@ -298,7 +300,7 @@ function deleteRdbStore(context: Context, config: StoreConfig): Promise<void>
 | [14800010](../errorcode-data-rdb.md#14800010-数据库路径不合法) | Failed to open or delete the database by an invalid database path. |
 | [14801001](../errorcode-data-rdb.md#14801001-上下文环境非stage模型) | The operation is supported in the stage model only. |
 | [14801002](../errorcode-data-rdb.md#14801002-storeconfig中传入的datagroupid参数非法) | Invalid data group ID. |
-| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported.<br>**适用版本：** 12+ |
+| [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Possible causes:         1. The hardware does not support the capability; 2. The chip does not support the capability;         3. A dependent service feature is not supported.<br>**适用版本：** 12+ |
 
 **示例**
 

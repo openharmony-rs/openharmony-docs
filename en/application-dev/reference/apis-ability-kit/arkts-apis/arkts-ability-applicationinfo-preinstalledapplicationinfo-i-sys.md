@@ -20,7 +20,7 @@ Indicates the information of preinstalled application.
 readonly bundleName: string
 ```
 
-Bundle name of the application.
+Name of the application package.
 
 **Type:** string
 
@@ -58,7 +58,7 @@ App description ID.
 readonly iconId: number
 ```
 
-Icon ID of the application.
+Application icon ID.
 
 **Type:** number
 
@@ -76,7 +76,7 @@ Icon ID of the application.
 readonly labelId: number
 ```
 
-Label ID of the application.
+Application label ID.
 
 **Type:** number
 
@@ -94,7 +94,7 @@ Label ID of the application.
 readonly moduleName: string
 ```
 
-Module name of the application. The value is **moduleName** configured for the entry module. If the entry module does not exist, the value is **moduleName** configured for the feature module.
+Module name of the application package. Returns the moduleName of the entry module. If no entry module exists, returns the moduleName of the feature module.
 
 **Type:** string
 

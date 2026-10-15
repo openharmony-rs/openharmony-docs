@@ -291,7 +291,7 @@ static ref<T>(propName: string): AbstractProperty<T> | undefined
 
 Returns a reference to the property corresponding to **propName** in [AppStorage](../../../ui/state-management/arkts-appstorage.md). If the given **propName** does not exist, this API returns **undefined**.
 
-This API is basically the same as [link](#link), except that it does not require manual release of the returned variable of the [AbstractProperty&lt;T&gt;](arkts-arkui-abstractproperty-i.md) type.
+This API is basically the same as [link](#link), except that it does not require manual release of the returned variable of the [AbstractProperty<T>](arkts-arkui-abstractproperty-i.md) type.
 
 **Since:** 12
 
@@ -386,7 +386,7 @@ Similar to the [link](#link) API, establishes a two-way data binding with the pr
 
 | Type | Description |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in AppStorage. |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of SubscribedAbstractProperty<T>, which is the two-way bound data of the property corresponding to **propName** in AppStorage. |
 
 **Examples**
 
@@ -423,7 +423,7 @@ Similar to the [prop](#prop) API, establishes a one-way data binding with the pr
 
 | Type | Description |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the one-way bound data of the property corresponding to **propName** in AppStorage. |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of SubscribedAbstractProperty<T>, which is the one-way bound data of the property corresponding to **propName** in AppStorage. |
 
 **Examples**
 
@@ -461,7 +461,7 @@ This API is basically the same as [setAndLink](#setandlink), except that it does
 
 | Type | Description |
 | --- | --- |
-| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | Instance of **AbstractProperty&lt;T&gt;**, which is a reference to the property corresponding to **propName** in AppStorage. |
+| [AbstractProperty](arkts-arkui-abstractproperty-i.md)&lt;T&gt; | Instance of **AbstractProperty<T>**, which is a reference to the property corresponding to **propName** in AppStorage. |
 
 **Examples**
 
@@ -922,7 +922,7 @@ Similar to the [Link](#link) API, establishes a two-way data binding with the pr
 
 | Type | Description |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of SubscribedAbstractProperty&lt;T&gt;, which is the two-way bound data of the property corresponding to **propName** in AppStorage. |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;T&gt; | Instance of SubscribedAbstractProperty<T>, which is the two-way bound data of the property corresponding to **propName** in AppStorage. |
 
 **Examples**
 
@@ -963,7 +963,7 @@ Similar to the [Prop](#prop) API, establishes a one-way data binding with the pr
 
 | Type | Description |
 | --- | --- |
-| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | Instance of SubscribedAbstractProperty&lt;S&gt;, which is the one-way bound data of the property corresponding to **propName** in AppStorage. |
+| [SubscribedAbstractProperty](arkts-arkui-subscribedabstractproperty-c.md)&lt;S&gt; | Instance of SubscribedAbstractProperty<S>, which is the one-way bound data of the property corresponding to **propName** in AppStorage. |
 
 **Examples**
 

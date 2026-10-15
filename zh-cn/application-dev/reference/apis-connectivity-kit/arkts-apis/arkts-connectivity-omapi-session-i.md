@@ -237,6 +237,8 @@ try {
 }
 ```
 
+<a id="openbasicchannel1"></a>
+
 ## openBasicChannel
 
 ```TypeScript
@@ -303,7 +305,7 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openbasicchannel-1"></a>
+<a id="openbasicchannel2"></a>
 
 ## openBasicChannel
 
@@ -368,7 +370,7 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openbasicchannel-2"></a>
+<a id="openbasicchannel3"></a>
 
 ## openBasicChannel
 
@@ -438,7 +440,7 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openbasicchannel-3"></a>
+<a id="openbasicchannel4"></a>
 
 ## openBasicChannel
 
@@ -504,6 +506,8 @@ function secureElementDemo() {
     }
 }
 ```
+
+<a id="openlogicalchannel1"></a>
 
 ## openLogicalChannel
 
@@ -571,7 +575,7 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openlogicalchannel-1"></a>
+<a id="openlogicalchannel2"></a>
 
 ## openLogicalChannel
 
@@ -636,7 +640,7 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openlogicalchannel-2"></a>
+<a id="openlogicalchannel3"></a>
 
 ## openLogicalChannel
 
@@ -706,7 +710,7 @@ function secureElementDemo() {
 }
 ```
 
-<a id="openlogicalchannel-3"></a>
+<a id="openlogicalchannel4"></a>
 
 ## openLogicalChannel
 

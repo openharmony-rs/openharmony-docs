@@ -30,7 +30,7 @@ align: PlaceholderAlignment
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaceholderSpan-align: PlaceholderAlignment--><!--Device-PlaceholderSpan-align: PlaceholderAlignment-End-->
 
@@ -48,7 +48,7 @@ baseline: TextBaseline
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaceholderSpan-baseline: TextBaseline--><!--Device-PlaceholderSpan-baseline: TextBaseline-End-->
 
@@ -66,7 +66,7 @@ baselineOffset: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaceholderSpan-baselineOffset: double--><!--Device-PlaceholderSpan-baselineOffset: double-End-->
 
@@ -84,7 +84,7 @@ height: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaceholderSpan-height: double--><!--Device-PlaceholderSpan-height: double-End-->
 
@@ -102,7 +102,7 @@ width: number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaceholderSpan-width: double--><!--Device-PlaceholderSpan-width: double-End-->
 

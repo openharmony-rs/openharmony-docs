@@ -46,7 +46,7 @@ declare function close(file: number | File): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 

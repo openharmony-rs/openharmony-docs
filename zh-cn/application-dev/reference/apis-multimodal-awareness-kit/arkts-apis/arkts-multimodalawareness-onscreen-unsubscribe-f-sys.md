@@ -45,6 +45,7 @@ function unsubscribe(capability: OnscreenAwarenessCap, callback?: Callback<Onscr
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Function can not work correctly due to limited<br> device capabilities. |
 | [34000001](../errorcode-carAwareness.md#34000001-服务异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,3 +62,5 @@ try {
   console.error(`unsubscribe failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

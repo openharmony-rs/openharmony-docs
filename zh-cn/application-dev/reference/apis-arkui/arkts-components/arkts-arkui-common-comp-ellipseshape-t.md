@@ -6,6 +6,8 @@ declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 
 导入EllipseShape类型对象。
 
+**类型：** import('../api/@ohos.arkui.shape').EllipseShape
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -17,5 +19,3 @@ declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape
 <!--Device-unnamed-declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape--><!--Device-unnamed-declare type EllipseShape = import('../api/@ohos.arkui.shape').EllipseShape-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.arkui.shape').EllipseShape

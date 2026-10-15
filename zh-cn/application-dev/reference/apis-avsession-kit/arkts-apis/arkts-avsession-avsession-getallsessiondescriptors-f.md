@@ -6,7 +6,7 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
-<a id="getallsessiondescriptors-1"></a>
+<a id="getallsessiondescriptors2"></a>
 
 ## getAllSessionDescriptors
 

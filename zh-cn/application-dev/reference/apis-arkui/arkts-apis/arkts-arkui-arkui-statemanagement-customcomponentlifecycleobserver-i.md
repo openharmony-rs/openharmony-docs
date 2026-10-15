@@ -173,7 +173,7 @@ aboutToReuse?(params?: Record<string, Object | undefined | null>): void
 
 > **说明：** 
 > 
-> - 在状态管理V1的组件里，aboutToReuse函数允许有一个入参或者无参。入参params建议为Record\&lt;string, Object \| undefined \| null\&gt;类型。
+> - 在状态管理V1的组件里，aboutToReuse函数允许有一个入参或者无参。入参params建议为Record\<string, Object \| undefined \| null\>类型。
 > 
 > - 在状态管理V2的组件里，aboutToReuse函数没有入参。
 

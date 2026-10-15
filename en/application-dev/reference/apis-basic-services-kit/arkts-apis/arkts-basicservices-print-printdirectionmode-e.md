@@ -26,20 +26,6 @@ Automatic.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## DIRECTION_MODE_PORTRAIT
-
-```TypeScript
-DIRECTION_MODE_PORTRAIT = 1
-```
-
-Portrait mode.
-
-**Since:** 11
-
-<!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1--><!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## DIRECTION_MODE_LANDSCAPE
 
 ```TypeScript
@@ -51,5 +37,19 @@ Landscape mode.
 **Since:** 11
 
 <!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2--><!--Device-PrintDirectionMode-DIRECTION_MODE_LANDSCAPE = 2-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## DIRECTION_MODE_PORTRAIT
+
+```TypeScript
+DIRECTION_MODE_PORTRAIT = 1
+```
+
+Portrait mode.
+
+**Since:** 11
+
+<!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1--><!--Device-PrintDirectionMode-DIRECTION_MODE_PORTRAIT = 1-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

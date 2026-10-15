@@ -36,7 +36,7 @@ Subscribes to data receive events. This API uses an asynchronous callback to ret
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390004](../errorcode-proxyChannelManager.md#32390004-invalid-or-unavailable-channel-id) | ChannelId is invalid or unavailable. |
 | [32390006](../errorcode-proxyChannelManager.md#32390006-parameter-verification-error) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-internal-error) | Internal error. |
@@ -95,14 +95,14 @@ Subscribes to channel state events. This API uses an asynchronous callback to re
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | type | 'channelStateChange' | Yes | Event type. The value **channelStateChange** indicates the channel state change event. |
-| channelId | number | Yes | Channel ID obtained when opening the proxy channel. The value range is 1 to 214748364 7. Using an invalid or closed channelId returns error code 32390004, and exceeding the value range returns error code 32390006. The channelId takes effect only when the proxy channel is available, and becomes unavailable after the channel is closed or disconnected. |
+| channelId | number | Yes | Channel ID obtained when opening the proxy channel. The value range is 1 to 214748364         7. Using an invalid or closed channelId returns error code 32390004, and exceeding the value range returns error code 32390006. The channelId takes effect only when the proxy channel is available, and becomes unavailable after the channel is closed or disconnected. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md)&gt; | Yes | Callback invoked to return the proxy channel state change information. The callback parameter is a [ChannelStateInfo](arkts-distributedservice-proxychannelmanager-channelstateinfo-i.md) object, which contains channelId (channel ID) and state (channel connection state). The proxy channel must be opened through openProxyChannel before receiving the channel state. If registered multiple times, only the last registered callback takes effect. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [32390004](../errorcode-proxyChannelManager.md#32390004-invalid-or-unavailable-channel-id) | ChannelId is invalid or unavailable. |
 | [32390006](../errorcode-proxyChannelManager.md#32390006-parameter-verification-error) | Parameter error. |
 | [32390100](../errorcode-proxyChannelManager.md#32390100-internal-error) | Internal error. |

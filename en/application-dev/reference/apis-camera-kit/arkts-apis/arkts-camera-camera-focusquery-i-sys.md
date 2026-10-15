@@ -51,6 +51,7 @@ Checks whether the focus assist is supported.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -68,6 +69,8 @@ function isFocusAssistSupported(professionalPhotoSession: camera.ProfessionalPho
   return status;
 }
 ```
+
+<!--DelEnd-->
 
 ## isFocusDrivenTypeSupported
 
@@ -102,9 +105,10 @@ Checks whether a focus drive type is supported.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -122,6 +126,8 @@ function isFocusDrivenTypeSupported(session: camera.VideoSessionForSys, type: ca
   return status;
 }
 ```
+
+<!--DelEnd-->
 
 ## isFocusRangeTypeSupported
 
@@ -156,9 +162,10 @@ Checks whether a focus range type is supported.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not System Application. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified; 2. Incorrect parameter types;         3. Parameter verification failed. |
 | [7400103](../errorcode-camera.md#7400103-session-not-configured) | Session not config, only throw in session usage. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -176,3 +183,5 @@ function isFocusRangeTypeSupported(session: camera.VideoSessionForSys, type: cam
   return status;
 }
 ```
+
+<!--DelEnd-->

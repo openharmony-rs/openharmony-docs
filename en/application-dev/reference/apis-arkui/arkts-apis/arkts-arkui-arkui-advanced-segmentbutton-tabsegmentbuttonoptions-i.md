@@ -4,7 +4,7 @@
 interface TabSegmentButtonOptions extends TabSegmentButtonConstructionOptions
 ```
 
-Provides configuration options for tab-style segment buttons. Inherits from [TabSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonconstructionoptions-i.md).
+Provides configuration options for tab-style segment buttons.
 
 **Inheritance/Implementation:** TabSegmentButtonOptions extends [TabSegmentButtonConstructionOptions](arkts-arkui-arkui-advanced-segmentbutton-tabsegmentbuttonconstructionoptions-i.md)
 

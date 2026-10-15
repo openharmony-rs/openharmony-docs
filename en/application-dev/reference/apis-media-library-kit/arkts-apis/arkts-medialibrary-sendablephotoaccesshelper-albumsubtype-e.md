@@ -12,17 +12,17 @@ Enumerate the album subtypes.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## USER_GENERIC
+## ANY
 
 ```TypeScript
-USER_GENERIC = 1
+ANY = 2147483647
 ```
 
-User album.
+Any album.
 
 **Since:** 12
 
-<!--Device-AlbumSubtype-USER_GENERIC = 1--><!--Device-AlbumSubtype-USER_GENERIC = 1-End-->
+<!--Device-AlbumSubtype-ANY = 2147483647--><!--Device-AlbumSubtype-ANY = 2147483647-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,20 +40,6 @@ Favorites.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## VIDEO
-
-```TypeScript
-VIDEO = 1026
-```
-
-Video album.
-
-**Since:** 12
-
-<!--Device-AlbumSubtype-VIDEO = 1026--><!--Device-AlbumSubtype-VIDEO = 1026-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## IMAGE
 
 ```TypeScript
@@ -68,16 +54,30 @@ Photo album.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## ANY
+## USER_GENERIC
 
 ```TypeScript
-ANY = 2147483647
+USER_GENERIC = 1
 ```
 
-Any album.
+User album.
 
 **Since:** 12
 
-<!--Device-AlbumSubtype-ANY = 2147483647--><!--Device-AlbumSubtype-ANY = 2147483647-End-->
+<!--Device-AlbumSubtype-USER_GENERIC = 1--><!--Device-AlbumSubtype-USER_GENERIC = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## VIDEO
+
+```TypeScript
+VIDEO = 1026
+```
+
+Video album.
+
+**Since:** 12
+
+<!--Device-AlbumSubtype-VIDEO = 1026--><!--Device-AlbumSubtype-VIDEO = 1026-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

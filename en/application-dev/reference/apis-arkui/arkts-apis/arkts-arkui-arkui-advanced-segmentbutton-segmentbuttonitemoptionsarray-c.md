@@ -10,7 +10,7 @@ Represents an array for storing button information.
 > 
 > The SegmentButtonItemOptionsArray can save only two to five button information elements.
 
-**Inheritance/Implementation:** SegmentButtonItemOptionsArray extends Array<SegmentButtonItemOptions>
+**Inheritance/Implementation:** SegmentButtonItemOptionsArray extends Array&lt;SegmentButtonItemOptions&gt;
 
 **Since:** 11
 

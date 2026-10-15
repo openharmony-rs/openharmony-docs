@@ -12,6 +12,8 @@ Define DynamicNode.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="onmove1"></a>
+
 ## onMove
 
 ```TypeScript
@@ -42,7 +44,7 @@ onMove(handler: Optional<OnMoveHandler>): T
 | --- | --- |
 | T | 返回当前组件。 |
 
-<a id="onmove-1"></a>
+<a id="onmove2"></a>
 
 ## onMove
 

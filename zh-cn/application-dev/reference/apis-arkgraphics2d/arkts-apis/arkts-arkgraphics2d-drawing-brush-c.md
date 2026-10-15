@@ -26,6 +26,8 @@ class Brush
 import { drawing } from '@kit.ArkGraphics2D';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -48,7 +50,7 @@ import { drawing } from '@kit.ArkGraphics2D';
 const brush = new drawing.Brush();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -399,6 +401,8 @@ const brush = new drawing.Brush();
 brush.setBlendMode(drawing.BlendMode.SRC);
 ```
 
+<a id="setcolor1"></a>
+
 ## setColor
 
 ```TypeScript
@@ -435,7 +439,7 @@ const brush = new drawing.Brush();
 brush.setColor(color);
 ```
 
-<a id="setcolor-1"></a>
+<a id="setcolor2"></a>
 
 ## setColor
 
@@ -443,7 +447,7 @@ brush.setColor(color);
 setColor(alpha: number, red: number, green: number, blue: number): void
 ```
 
-设置画刷的颜色。性能优于[setColor](#setcolor)接口，推荐使用本接口。
+设置画刷的颜色。性能优于[setColor](#setcolor1)接口，推荐使用本接口。
 
 **起始版本：** 12
 
@@ -475,7 +479,7 @@ const brush = new drawing.Brush();
 brush.setColor(255, 255, 0, 0);
 ```
 
-<a id="setcolor-2"></a>
+<a id="setcolor3"></a>
 
 ## setColor
 
@@ -483,7 +487,7 @@ brush.setColor(255, 255, 0, 0);
 setColor(color: number): void
 ```
 
-设置画刷的颜色。与[setColor](#setcolor)的区别是支持通过16进制ARGB数值直接设置颜色。
+设置画刷的颜色。与[setColor](#setcolor1)的区别是支持通过16进制ARGB数值直接设置颜色。
 
 **起始版本：** 18
 
@@ -518,7 +522,7 @@ brush.setColor(0xffff0000);
 setColor4f(color4f: common2D.Color4f, colorSpace: colorSpaceManager.ColorSpaceManager | null): void
 ```
 
-设置画刷的颜色以及标准色域。与[setColor](#setcolor)的区别是可以单独设置色域，适用于需要单独设置色域的场景。
+设置画刷的颜色以及标准色域。与[setColor](#setcolor1)的区别是可以单独设置色域，适用于需要单独设置色域的场景。
 
 **起始版本：** 20
 

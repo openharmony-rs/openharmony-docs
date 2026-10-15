@@ -30,7 +30,7 @@ Name of the metric.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-StatisticKeyValue-name: string--><!--Device-StatisticKeyValue-name: string-End-->
 
@@ -48,7 +48,7 @@ Value of the metric.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-StatisticKeyValue-value: string--><!--Device-StatisticKeyValue-value: string-End-->
 

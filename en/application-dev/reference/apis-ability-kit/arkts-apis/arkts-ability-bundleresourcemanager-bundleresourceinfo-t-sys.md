@@ -6,6 +6,8 @@ export type BundleResourceInfo = _BundleResourceInfo
 
 Defines the icon and name of an application.
 
+**Type:** _BundleResourceInfo
+
 **Since:** 11
 
 <!--Device-bundleResourceManager-export type BundleResourceInfo = _BundleResourceInfo--><!--Device-bundleResourceManager-export type BundleResourceInfo = _BundleResourceInfo-End-->
@@ -13,5 +15,3 @@ Defines the icon and name of an application.
 **System capability:** SystemCapability.BundleManager.BundleFramework.Resource
 
 **System API:** This is a system API.
-
-**Type:** _BundleResourceInfo

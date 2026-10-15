@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** RowAttribute extends CommonMethod<RowAttribute>
+**Inheritance/Implementation:** RowAttribute extends CommonMethod&lt;RowAttribute&gt;
 
 **Since:** 7
 

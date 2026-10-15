@@ -32,7 +32,7 @@ Obtains the class name of the ability to which this form belongs.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-abilityName: string--><!--Device-FormInfo-abilityName: string-End-->
 
@@ -50,7 +50,7 @@ Obtains the bundle name of the application to which this form belongs.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-bundleName: string--><!--Device-FormInfo-bundleName: string-End-->
 
@@ -68,7 +68,7 @@ Obtains the custom data defined in this form.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-customizeData: Record<string, string>--><!--Device-FormInfo-customizeData: Record<string, string>-End-->
 
@@ -86,7 +86,7 @@ Obtains the default grid style of this form. The value must be a positive intege
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-defaultDimension: int--><!--Device-FormInfo-defaultDimension: int-End-->
 
@@ -104,7 +104,7 @@ Obtains the description of this form.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-description: string--><!--Device-FormInfo-description: string-End-->
 
@@ -122,7 +122,7 @@ Obtains the description id of this form. The value must be a positive integer.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-descriptionId: int--><!--Device-FormInfo-descriptionId: int-End-->
 
@@ -140,7 +140,7 @@ Obtains the display name of this form.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-displayName: string--><!--Device-FormInfo-displayName: string-End-->
 
@@ -158,7 +158,7 @@ Obtains the displayName resource id of this form. The value must be a positive i
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-displayNameId: int--><!--Device-FormInfo-displayNameId: int-End-->
 
@@ -176,7 +176,7 @@ Obtains the form config ability about this form.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-formConfigAbility: string--><!--Device-FormInfo-formConfigAbility: string-End-->
 
@@ -194,7 +194,7 @@ Obtains whether notify visible of this form.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-formVisibleNotify: boolean--><!--Device-FormInfo-formVisibleNotify: boolean-End-->
 
@@ -212,7 +212,7 @@ Checks whether this form is a default form.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-isDefault: boolean--><!--Device-FormInfo-isDefault: boolean-End-->
 
@@ -230,7 +230,7 @@ Obtains whether this form is a dynamic form.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-isDynamic: boolean--><!--Device-FormInfo-isDynamic: boolean-End-->
 
@@ -248,7 +248,7 @@ Obtains the JS component name of this JS form.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-jsComponentName: string--><!--Device-FormInfo-jsComponentName: string-End-->
 
@@ -266,7 +266,7 @@ Obtains the name of the application module to which this form belongs.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-moduleName: string--><!--Device-FormInfo-moduleName: string-End-->
 
@@ -284,7 +284,7 @@ Obtains the name of this form.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-name: string--><!--Device-FormInfo-name: string-End-->
 
@@ -302,7 +302,7 @@ Obtains the scheduledUpdateTime.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-scheduledUpdateTime: string--><!--Device-FormInfo-scheduledUpdateTime: string-End-->
 
@@ -320,7 +320,7 @@ Obtains the grid styles supported by this form. The minimum length is 1, refer t
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-supportDimensions: Array<int>--><!--Device-FormInfo-supportDimensions: Array<int>-End-->
 
@@ -338,7 +338,7 @@ Obtains the shape supported by this form. The minimum length is 1, refer to [For
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-FormInfo-supportedShapes: Array<int>--><!--Device-FormInfo-supportedShapes: Array<int>-End-->
 
@@ -358,7 +358,7 @@ Indicates whether the form can be set as a transparent background
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-transparencyEnabled: boolean--><!--Device-FormInfo-transparencyEnabled: boolean-End-->
 
@@ -376,7 +376,7 @@ Obtains the type of this form. Currently, JS forms are supported.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-type: FormType--><!--Device-FormInfo-type: FormType-End-->
 
@@ -394,7 +394,7 @@ Obtains the updateDuration. The value must be an integer within [0,336].
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-updateDuration: int--><!--Device-FormInfo-updateDuration: int-End-->
 
@@ -412,7 +412,7 @@ Obtains the updateEnabled.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-FormInfo-updateEnabled: boolean--><!--Device-FormInfo-updateEnabled: boolean-End-->
 

@@ -4,7 +4,7 @@
 export class CursorController
 ```
 
-Provides the capability to set cursor styles.
+Provides the capability to set mouse cursor styles, including restoring the default cursor style, setting a system cursor style, and setting a custom cursor style. It is suitable for scenarios where the mouse cursor display effect needs to be dynamically adjusted based on interface interaction states, helping improve the clarity of interface interaction cues.
 
 > **NOTE:** 
 > 
@@ -35,6 +35,11 @@ restoreDefault(): void
 ```
 
 Restores the default cursor style.
+
+> **NOTE:** 
+> 
+> This API does not take effect immediately after being called. Instead, the mouse cursor style is updated in the
+> next frame.
 
 **Since:** 12
 
@@ -101,7 +106,7 @@ Sets the cursor style.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [PointerStyle](arkts-arkui-pointerstyle-t.md) | Yes | Pointer style. |
+| value | [PointerStyle](arkts-arkui-pointerstyle-t.md) | Yes | Mouse cursor style. It specifies the system-defined cursor type to set, such as arrow, hand pointer, and crosshair. For details about the meaning of each style, see the **PointerStyle** enum description. |
 
 **Examples**
 
@@ -141,7 +146,9 @@ Sets the custom cursor style.
 
 > **NOTE:** 
 > 
-> This API does not take effect immediately. The cursor style will be updated in the next rendering frame.
+> - This API does not take effect immediately after being called. Instead, the mouse cursor style is updated in the next frame.
+> 
+> - Only static images are supported. Dynamic images are not supported.
 
 **Since:** 26.0.0
 
@@ -157,9 +164,9 @@ Sets the custom cursor style.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | Pixel map of the custom mouse cursor style. |
-| focusX | number | No | X coordinate of the custom cursor's hotspot. The hotspot refers to the actual location where the click occurs.<br>Default value: **0**<br>Unit: px<br>Value range: [0, +∞) |
-| focusY | number | No | Y coordinate of the custom cursor's hotspot.<br>Default value: **0**<br>Unit: px<br>Value range: [0, +∞) |
+| value | [image.PixelMap](../../apis-image-kit/arkts-apis/arkts-image-image-pixelmap-i.md) | Yes | PixelMap of the custom cursor style. Only static images are supported; dynamic images are not supported. The maximum size is 256 × 256 px. If the image exceeds this size, the setting will not take effect, and the mouse cursor will remain unchanged. |
+| focusX | number | No | X coordinate of the custom cursor focus point. The origin is the upper left corner of the cursor image, and the positive direction is to the right. When displayed, this focus point is aligned with the screen coordinates of the system mouse pointer, and all mouse operations such as clicking and dragging are based on this point.<br>Default value: **0**<br>Unit: px<br>Value range: [0, image width]. If the value is out of range, the default value is used. |
+| focusY | number | No | Y coordinate of the custom cursor focus point. The origin is the upper left corner of the cursor image, and the positive direction is downward. This parameter and **focusX** together determine the point within the image that represents the actual interaction position.<br>Default value: **0**<br>Unit: px<br>Value range: [0, image height]. If the value is out of range, the default value is used. |
 
 **Examples**
 

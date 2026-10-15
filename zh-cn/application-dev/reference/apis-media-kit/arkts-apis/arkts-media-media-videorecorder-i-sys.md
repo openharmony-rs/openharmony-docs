@@ -6,7 +6,7 @@ interface VideoRecorder
 
 
 > **说明：** 
-> AVRecorder&lt;sup&gt;9+&lt;/sup&gt;发布后，VideoRecorder停止维护，建议使用[AVRecorder](arkts-media-media-avrecorder-i.md)替代。
+> AVRecorder<sup>9+</sup>发布后，VideoRecorder停止维护，建议使用[AVRecorder](arkts-media-media-avrecorder-i.md)替代。
 
 视频录制管理类，用于录制视频媒体。在调用VideoRecorder的方法前，需要先通过[createVideoRecorder()](arkts-media-media-createvideorecorder-f-sys.md)构建一个[VideoRecorder](arkts-media-media-videorecorder-i-sys.md)实例。
 
@@ -24,13 +24,15 @@ interface VideoRecorder
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="getinputsurface1"></a>
+
 ## getInputSurface
 
 ```TypeScript
 getInputSurface(callback: AsyncCallback<string>): void
 ```
 
-获得录制需要的surface。使用callback异步回调。开发者从此surface中获取surfaceBuffer，填入相应的数据。应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。只能在[prepare()](#prepare)接口调用后调用。
+获得录制需要的surface。使用callback异步回调。开发者从此surface中获取surfaceBuffer，填入相应的数据。应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。只能在[prepare()](#prepare1)接口调用后调用。
 
 **起始版本：** 9
 
@@ -55,6 +57,7 @@ getInputSurface(callback: AsyncCallback<string>): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,7 +75,9 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 });
 ```
 
-<a id="getinputsurface-2"></a>
+<!--DelEnd-->
+
+<a id="getinputsurface3"></a>
 
 ## getInputSurface
 
@@ -80,7 +85,7 @@ videoRecorder.getInputSurface((err: BusinessError, surfaceId: string) => {
 getInputSurface(): Promise<string>
 ```
 
-获得录制需要的surface。使用Promise异步回调。开发者从此surface中获取surfaceBuffer，填入相应的数据。应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。只能在[prepare()](#prepare-1)接口调用后调用。
+获得录制需要的surface。使用Promise异步回调。开发者从此surface中获取surfaceBuffer，填入相应的数据。应当注意，填入的视频数据需要携带时间戳（单位ns），buffersize。时间戳的起始时间请以系统启动时间为基准。只能在[prepare()](#prepare2)接口调用后调用。
 
 **起始版本：** 9
 
@@ -105,6 +110,7 @@ getInputSurface(): Promise<string>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -119,6 +125,8 @@ videoRecorder.getInputSurface().then((surfaceId: string) => {
   console.error('getInputSurface failed and catch error is ' + err.message);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('error')
 
@@ -152,6 +160,7 @@ on(type: 'error', callback: ErrorCallback): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied.<br>**适用版本：** 12+ |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -163,6 +172,10 @@ videoRecorder.on('error', (error: BusinessError) => { // 设置'error'事件回�
 })
 ```
 
+<!--DelEnd-->
+
+<a id="pause1"></a>
+
 ## pause
 
 ```TypeScript
@@ -171,7 +184,7 @@ pause(callback: AsyncCallback<void>): void
 
 暂停视频录制。使用callback异步回调。
 
-在[start()](#start)后调用。可以通过调用[resume()](#resume)接口来恢复录制。
+在[start()](#start1)后调用。可以通过调用[resume()](#resume1)接口来恢复录制。
 
 **起始版本：** 9
 
@@ -196,6 +209,7 @@ pause(callback: AsyncCallback<void>): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -211,7 +225,9 @@ videoRecorder.pause((err: BusinessError) => {
 });
 ```
 
-<a id="pause-1"></a>
+<!--DelEnd-->
+
+<a id="pause2"></a>
 
 ## pause
 
@@ -246,6 +262,7 @@ pause(): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -258,6 +275,10 @@ videoRecorder.pause().then(() => {
   console.error('pause videorecorder failed and catch error is ' + err.message);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="prepare1"></a>
 
 ## prepare
 
@@ -294,6 +315,7 @@ prepare(config: VideoRecorderConfig, callback: AsyncCallback<void>): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -332,7 +354,9 @@ videoRecorder.prepare(videoConfig, (err: BusinessError) => {
 })
 ```
 
-<a id="prepare-1"></a>
+<!--DelEnd-->
+
+<a id="prepare2"></a>
 
 ## prepare
 
@@ -374,6 +398,7 @@ prepare(config: VideoRecorderConfig): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -410,6 +435,10 @@ videoRecorder.prepare(videoConfig).then(() => {
 });
 ```
 
+<!--DelEnd-->
+
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -439,6 +468,7 @@ release(callback: AsyncCallback<void>): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -454,7 +484,9 @@ videoRecorder.release((err: BusinessError) => {
 });
 ```
 
-<a id="release-1"></a>
+<!--DelEnd-->
+
+<a id="release2"></a>
 
 ## release
 
@@ -485,6 +517,7 @@ release(): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -498,6 +531,10 @@ videoRecorder.release().then(() => {
 });
 ```
 
+<!--DelEnd-->
+
+<a id="reset1"></a>
+
 ## reset
 
 ```TypeScript
@@ -506,7 +543,7 @@ reset(callback: AsyncCallback<void>): void
 
 重置视频录制。使用callback异步回调。
 
-需要重新调用[prepare()](#prepare)和[getInputSurface()](#getinputsurface)接口才能重新录制。
+需要重新调用[prepare()](#prepare1)和[getInputSurface()](#getinputsurface)接口才能重新录制。
 
 **起始版本：** 9
 
@@ -530,6 +567,7 @@ reset(callback: AsyncCallback<void>): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -545,7 +583,9 @@ videoRecorder.reset((err: BusinessError) => {
 });
 ```
 
-<a id="reset-1"></a>
+<!--DelEnd-->
+
+<a id="reset2"></a>
 
 ## reset
 
@@ -555,7 +595,7 @@ reset(): Promise<void>
 
 重置视频录制。使用Promise异步回调。
 
-需要重新调用[prepare()](#prepare-1)和[getInputSurface()](#getinputsurface)接口才能重新录制。
+需要重新调用[prepare()](#prepare2)和[getInputSurface()](#getinputsurface)接口才能重新录制。
 
 **起始版本：** 9
 
@@ -579,6 +619,7 @@ reset(): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -591,6 +632,10 @@ videoRecorder.reset().then(() => {
   console.error('reset videorecorder failed and catch error is ' + err.message);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="resume1"></a>
 
 ## resume
 
@@ -623,6 +668,7 @@ resume(callback: AsyncCallback<void>): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -638,7 +684,9 @@ videoRecorder.resume((err: BusinessError) => {
 });
 ```
 
-<a id="resume-1"></a>
+<!--DelEnd-->
+
+<a id="resume2"></a>
 
 ## resume
 
@@ -671,6 +719,7 @@ resume(): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -684,6 +733,10 @@ videoRecorder.resume().then(() => {
 });
 ```
 
+<!--DelEnd-->
+
+<a id="start1"></a>
+
 ## start
 
 ```TypeScript
@@ -692,7 +745,7 @@ start(callback: AsyncCallback<void>): void
 
 开始视频录制。使用callback异步回调。
 
-在[prepare()](#prepare)和[getInputSurface()](#getinputsurface)后调用，需要依赖数据源先给surface传递数据。
+在[prepare()](#prepare1)和[getInputSurface()](#getinputsurface1)后调用，需要依赖数据源先给surface传递数据。
 
 **起始版本：** 9
 
@@ -717,6 +770,7 @@ start(callback: AsyncCallback<void>): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -732,7 +786,9 @@ videoRecorder.start((err: BusinessError) => {
 });
 ```
 
-<a id="start-1"></a>
+<!--DelEnd-->
+
+<a id="start2"></a>
 
 ## start
 
@@ -742,7 +798,7 @@ start(): Promise<void>
 
 开始视频录制。使用Promise异步回调。
 
-在[prepare()](#prepare-1)和[getInputSurface()](#getinputsurface)后调用，需要依赖数据源先给surface传递数据。
+在[prepare()](#prepare2)和[getInputSurface()](#getinputsurface)后调用，需要依赖数据源先给surface传递数据。
 
 **起始版本：** 9
 
@@ -767,6 +823,7 @@ start(): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -780,6 +837,10 @@ videoRecorder.start().then(() => {
 });
 ```
 
+<!--DelEnd-->
+
+<a id="stop1"></a>
+
 ## stop
 
 ```TypeScript
@@ -788,7 +849,7 @@ stop(callback: AsyncCallback<void>): void
 
 停止视频录制。使用callback异步回调。
 
-需要重新调用[prepare()](#prepare)和[getInputSurface()](#getinputsurface)接口才能重新录制。
+需要重新调用[prepare()](#prepare1)和[getInputSurface()](#getinputsurface)接口才能重新录制。
 
 **起始版本：** 9
 
@@ -813,6 +874,7 @@ stop(callback: AsyncCallback<void>): void
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by callback. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -828,7 +890,9 @@ videoRecorder.stop((err: BusinessError) => {
 });
 ```
 
-<a id="stop-1"></a>
+<!--DelEnd-->
+
+<a id="stop2"></a>
 
 ## stop
 
@@ -838,7 +902,7 @@ stop(): Promise<void>
 
 停止视频录制。使用callback异步回调。
 
-需要重新调用[prepare()](#prepare-1)和[getInputSurface()](#getinputsurface)接口才能重新录制。
+需要重新调用[prepare()](#prepare2)和[getInputSurface()](#getinputsurface)接口才能重新录制。
 
 **起始版本：** 9
 
@@ -863,6 +927,7 @@ stop(): Promise<void>
 | [5400105](../errorcode-media.md#5400105-播放服务死亡) | Service died. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -875,6 +940,8 @@ videoRecorder.stop().then(() => {
   console.error('stop videorecorder failed and catch error is ' + err.message);
 });
 ```
+
+<!--DelEnd-->
 
 ## state
 

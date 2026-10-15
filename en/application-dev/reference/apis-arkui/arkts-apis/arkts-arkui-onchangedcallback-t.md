@@ -4,7 +4,7 @@
 declare type OnChangedCallback = (callbackParam: CallbackParamV2) => void
 ```
 
-Callback method of event registration and processing.
+Defines the node event callback function.
 
 **Since:** 26.0.0
 

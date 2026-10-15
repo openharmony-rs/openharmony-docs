@@ -18,13 +18,7 @@ Provides optional parameters for **ToolBarItem** configuration.
 placement?: ToolBarItemPlacement
 ```
 
-Placement position of the toolbar item.
-
-Default value: **ToolBarItemPlacement.TOP_BAR_LEADING**.
-
-**ToolBarItemPlacement.TOP_BAR_LEADING**: places the item at the start of the top bar.
-
-**ToolBarItemPlacement.TOP_BAR_TRAILING**: places the item at the end of the top bar.
+Placement of the toolbar item.<br>Default value: **ToolBarItemPlacement.TOP_BAR_LEADING**<br>When set to **ToolBarItemPlacement.TOP_BAR_LEADING**, the toolbar item is placed at the beginning of the corresponding top bar.<br>When set to **ToolBarItemPlacement.TOP_BAR_TRAILING**, the toolbar item is placed at the end of the corresponding top bar.
 
 **Type:** [ToolBarItemPlacement](arkts-arkui-toolbaritem-comp-toolbaritemplacement-e.md)
 

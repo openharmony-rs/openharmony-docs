@@ -6,6 +6,8 @@ export type PacMap = _PacMap
 
 Defines the level-2 module PacMap.
 
+**Type:** _PacMap
+
 **Since:** 9
 
 **Model restriction:** 
@@ -14,5 +16,3 @@ Defines the level-2 module PacMap.
 <!--Device-ability-export type PacMap = _PacMap--><!--Device-ability-export type PacMap = _PacMap-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
-
-**Type:** _PacMap

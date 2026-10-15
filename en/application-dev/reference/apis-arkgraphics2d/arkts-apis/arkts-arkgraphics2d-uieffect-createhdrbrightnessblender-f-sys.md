@@ -40,6 +40,7 @@ Creates an HdrBrightnessBlender instance for adding an HDR-enabled brightness ef
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ struct Example {
   }
 }
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { distributedMissionManager } from '@kit.AbilityKit';
 ```
 
+<a id="continuemission1"></a>
+
 ## continueMission
 
 ```TypeScript
@@ -48,6 +50,7 @@ Continues a mission on a remote device, with the mission ID specified. This API 
 | [16300505](../errorcode-DistributedSchedule.md#16300505-the-operation-device-must-be-the-device-where-the-application-to-be-continued-is-currently-located-or-the-target-device) | The operation device must be the device where the application to be continued is located or the target device to be continued. |
 | [16300506](../errorcode-DistributedSchedule.md#16300506-the-local-continuation-task-is-already-in-progress) | The local continuation task is already in progress. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -81,8 +84,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="continuemission-1"></a>
+
+<a id="continuemission2"></a>
 
 ## continueMission
 
@@ -131,6 +136,7 @@ Continues a mission on a remote device, with the mission ID specified. This API 
 | [16300505](../errorcode-DistributedSchedule.md#16300505-the-operation-device-must-be-the-device-where-the-application-to-be-continued-is-currently-located-or-the-target-device) | The operation device must be the device where the application to be continued is located or the target device to be continued. |
 | [16300506](../errorcode-DistributedSchedule.md#16300506-the-local-continuation-task-is-already-in-progress) | The local continuation task is already in progress. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -161,8 +167,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="continuemission-2"></a>
+
+<a id="continuemission3"></a>
 
 ## continueMission
 
@@ -205,6 +213,7 @@ Continues a mission on a remote device, with the bundle name specified. This API
 | [16300506](../errorcode-DistributedSchedule.md#16300506-the-local-continuation-task-is-already-in-progress) | The local continuation task is already in progress. |
 | [16300507](../errorcode-DistributedSchedule.md#16300507-failed-to-get-the-missioninfo-of-the-specified-bundlename) | Failed to get the missionInfo of the specified bundle name. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -231,8 +240,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="continuemission-3"></a>
+
+<a id="continuemission4"></a>
 
 ## continueMission
 
@@ -280,6 +291,7 @@ Continues a mission on a remote device, with the bundle name specified. This API
 | [16300506](../errorcode-DistributedSchedule.md#16300506-the-local-continuation-task-is-already-in-progress) | The local continuation task is already in progress. |
 | [16300507](../errorcode-DistributedSchedule.md#16300507-failed-to-get-the-missioninfo-of-the-specified-bundlename) | Failed to get the missionInfo of the specified bundle name. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -303,3 +315,5 @@ try {
     console.error(`Failed to continue mission. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

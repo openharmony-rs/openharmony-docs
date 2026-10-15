@@ -62,7 +62,7 @@ terminateSelfWithResult(parameter: AbilityResult): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-abilityresult-i.md) | 是 | 返回给UkeyAuthExtensionAbility调用方的信息。 |
+| parameter | [AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-i.md) | 是 | 返回给UkeyAuthExtensionAbility调用方的信息。 |
 
 **返回值：**
 

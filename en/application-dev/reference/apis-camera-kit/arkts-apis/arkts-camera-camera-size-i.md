@@ -30,7 +30,7 @@ Image height, in pixels.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Size-height: int--><!--Device-Size-height: int-End-->
 
@@ -48,7 +48,7 @@ Image width, in pixels.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-Size-width: int--><!--Device-Size-width: int-End-->
 

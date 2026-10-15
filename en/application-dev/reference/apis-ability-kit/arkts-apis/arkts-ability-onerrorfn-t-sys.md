@@ -26,6 +26,7 @@ Defines a OnError function.
 | name | string | Yes | The name returned if the UIAbility or UIExtensionAbility failed to start. |
 | message | string | Yes | The message returned if the UIAbility or UIExtensionAbility failed to start. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -38,3 +39,5 @@ let callback: verticalPanelManager.PanelStartCallback = {
   },
 }
 ```
+
+<!--DelEnd-->

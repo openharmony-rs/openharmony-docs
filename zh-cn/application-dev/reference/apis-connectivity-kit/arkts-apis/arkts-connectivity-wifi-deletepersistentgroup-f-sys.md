@@ -40,6 +40,7 @@ function deletePersistentGroup(netId: number): boolean
 | --- | --- |
 | boolean | 删除永久组操作是否执行成功。true:操作执行成功，false:操作执行失败。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

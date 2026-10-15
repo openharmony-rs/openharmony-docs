@@ -15,8 +15,6 @@ Provides OS local account authorization management capabilities. You can use the
 
 **Since:** 26.0.1
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace authorization--><!--Device-unnamed-declare namespace authorization-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
@@ -33,7 +31,7 @@ import { authorization } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getAuthorizationManager](arkts-basicservices-authorization-getauthorizationmanager-f.md) | Obtains an [AuthorizationManager](arkts-basicservices-authorization-authorizationmanager-i.md) instance. |
+| [getAuthorizationManager](arkts-basicservices-authorization-getauthorizationmanager-f.md#getauthorizationmanager) | Obtains an [AuthorizationManager](arkts-basicservices-authorization-authorizationmanager-i.md) instance. |
 
 ### Interfaces
 

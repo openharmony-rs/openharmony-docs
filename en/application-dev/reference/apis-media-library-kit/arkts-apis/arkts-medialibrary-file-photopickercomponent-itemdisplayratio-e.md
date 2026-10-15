@@ -12,22 +12,6 @@ Enumerates the aspect ratios for grid display in single-line display mode.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## SQUARE_RATIO
-
-```TypeScript
-SQUARE_RATIO = 0
-```
-
-1:1 ratio.
-
-**Since:** 20
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-ItemDisplayRatio-SQUARE_RATIO = 0--><!--Device-ItemDisplayRatio-SQUARE_RATIO = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## ORIGINAL_SIZE_RATIO
 
 ```TypeScript
@@ -41,5 +25,21 @@ Original image aspect ratio.
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-ItemDisplayRatio-ORIGINAL_SIZE_RATIO = 1--><!--Device-ItemDisplayRatio-ORIGINAL_SIZE_RATIO = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## SQUARE_RATIO
+
+```TypeScript
+SQUARE_RATIO = 0
+```
+
+1:1 ratio.
+
+**Since:** 20
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-ItemDisplayRatio-SQUARE_RATIO = 0--><!--Device-ItemDisplayRatio-SQUARE_RATIO = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

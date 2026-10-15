@@ -38,6 +38,7 @@ Creates an HdrDarkenBlender instance for HDR layer darken blending effect.
 | --- | --- |
 | [HdrDarkenBlender](arkts-arkgraphics2d-uieffect-hdrdarkenblender-i-sys.md) | Returns the HDR darken blender, used to add a darken effect to a specified component. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -63,3 +64,5 @@ struct Example {
   } 
 }
 ```
+
+<!--DelEnd-->

@@ -46,6 +46,7 @@ Sets the system font weight scale.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [500001](../errorcode-uiappearance.md#500001-internal-error) | Internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,3 +66,5 @@ try {
   console.error(`Set fontWeightScale failed. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

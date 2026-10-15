@@ -8,11 +8,11 @@ As a child component of [Text](arkts-arkui-text-comp.md) and [ContainerSpan](ark
 > 
 > - Since API version 10, this component supports inheriting the attributes of the parent **Text** component. That is, if a child component does not set an attribute but the parent component does, the child component inherits the attribute set by the parent component. The attributes that can be inherited include only: fontColor, fontSize,fontStyle, fontWeight, decoration, letterSpacing, textCase, fontFamily, and textShadow.
 > 
-> - It supports the [accessibility attribute](arkts-arkui-common-comp.md) ([accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext)), [component identifier](arkts-arkui-common-comp.md) ([id](arkts-arkui-common-comp-commonmethod-c.md#id) and [key](arkts-arkui-common-comp-commonmethod-c.md#key)), and [color inversion disabling](arkts-arkui-common-comp.md) ([allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)) among the [universal attributes](arkts-arkui-common-comp.md), but does not support other universal attributes. To set other universal attributes, use [Text](arkts-arkui-text-comp.md), or use [CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md) in [styled strings](../arkts-apis/arkts-arkui-styledstring.md#styled_string) to draw them by yourself.
+> - It supports the [accessibility attribute](arkts-arkui-common-comp.md) ([accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1)), [component identifier](arkts-arkui-common-comp.md) ([id](arkts-arkui-common-comp-commonmethod-c.md#id) and [key](arkts-arkui-common-comp-commonmethod-c.md#key)), and [color inversion disabling](arkts-arkui-common-comp.md) ([allowForceDark](arkts-arkui-common-comp-commonmethod-c.md#allowforcedark)) among the [universal attributes](arkts-arkui-common-comp.md), but does not support other universal attributes. To set other universal attributes, use [Text](arkts-arkui-text-comp.md), or use [CustomSpan](../arkts-apis/arkts-arkui-customspan-c.md) in [styled strings](../arkts-apis/arkts-arkui-styledstring.md#styled_string) to draw them by yourself.
 > 
-> - [accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext) takes effect only when the [onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick) event is set for **Span**. The configured text is reflected only in the inline link pop-up recognized by the accessibility service. During direct announcement, the content of **Span** is still announced, and it is not replaced by the text configured in accessibilityText.
+> - [accessibilityText](arkts-arkui-common-comp-commonmethod-c.md#accessibilitytext1) takes effect only when the [onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick1) event is set for **Span**. The configured text is reflected only in the inline link pop-up recognized by the accessibility service. During direct announcement, the content of **Span** is still announced, and it is not replaced by the text configured in accessibilityText.
 > 
-> - Among the [universal events](arkts-arkui-common-comp.md), only the click event [onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick) and the hover event [onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover) are supported.
+> - Among the [universal events](arkts-arkui-common-comp.md), only the click event [onClick](arkts-arkui-common-comp-commonmethod-c.md#onclick1) and the hover event [onHover](arkts-arkui-common-comp-commonmethod-c.md#onhover) are supported.
 
 ## Child Components
 
@@ -54,7 +54,7 @@ Defines the constructor of Span.
 
 ### Example 1: Setting the Text Style
 
-This example demonstrates how to apply different text styles and configure click events for the Span.
+This example demonstrates how to apply different text styles and configure click events for the Span component.
 
 
 
@@ -178,7 +178,7 @@ struct SpanExample {
           })
       }
 
-      // Text font configuration settings. Starting from API version 24, the fontConfigs attribute is supported.
+      // Sets text font configurations. The fontConfigs attribute is supported since API version 24.
       Text('Font with FontConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
       Text() {
         Span('span font with configs')
@@ -194,7 +194,7 @@ struct SpanExample {
           })
       }
 
-      // Text font weight configuration settings. Starting from API version 24, the fontWeightConfigs attribute is supported.
+      // Sets text font weight configurations. The fontWeightConfigs attribute is supported since API version 24.
       Text('FontWeight with FontWeightConfigs').fontSize(9).fontColor(0xCCCCCC).margin({ top: 12 })
       Text() {
         Span('span fontWeight 850 with configs')
@@ -340,11 +340,11 @@ struct SpanExample {
 }
 ```
 
-### Example 5 (Set the Variable Font Attribute)
+### Example 5: Setting Text Font Variations
 
-This example sets the variable font attribute through the [fontVariations](#fontvariations) attribute.
+This example demonstrates how to set text font variations using [fontVariations](#fontvariations).
 
-Since API version 26.0.0, the [fontVariations](#fontvariations) API is added.
+The [fontVariations](#fontvariations) API is added since API version 26.0.0.
 
 ```TypeScript
 // xxx.ets
@@ -357,11 +357,11 @@ struct SpanExample {
     Column() {
       Text() {
         Span('Hello World !')
-          // wght represents the font weight attribute of a variable font.
+          // wght indicates the weight of the variable font.
           .fontVariations([{ axis: 'wght', value: this.weightValue }])
       }
 
-      Button('Font weight: ' + this.weightValue)
+      Button('Weight: ' + this.weightValue)
         .margin(10)
         .onClick(() => {
           this.weightValue += 100;

@@ -6,6 +6,8 @@ export type EditableTitleBarItem = EditableTitleBarMenuItem
 
 Declaration of the image item .
 
+**类型：** [EditableTitleBarMenuItem](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebarmenuitem-c.md)
+
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Declaration of the image item .
 <!--Device-unnamed-export type EditableTitleBarItem = EditableTitleBarMenuItem--><!--Device-unnamed-export type EditableTitleBarItem = EditableTitleBarMenuItem-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [EditableTitleBarMenuItem](arkts-arkui-arkui-advanced-editabletitlebar-editabletitlebarmenuitem-c.md)

@@ -34,7 +34,7 @@ declare const BY: By
 
 **废弃版本：** 9
 
-**替代接口：** ON
+**替代接口：** [ON](#on)
 
 <!--Device-unnamed-declare const BY: By--><!--Device-unnamed-declare const BY: By-End-->
 

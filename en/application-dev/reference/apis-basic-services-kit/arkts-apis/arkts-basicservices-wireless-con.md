@@ -8,7 +8,7 @@ const AIRPLANE_MODE_RADIOS: string
 
 Indicates the list of radio signals to be disabled when airplane mode is enabled. Multiple radio signals are separated by commas (,).
 
-&lt;ul&gt; &lt;li&gt;`BLUETOOTH_RADIO` - Bluetooth is disabled in airplane mode. &lt;li&gt;`CELL_RADIO` - Cellular radio is disabled in airplane mode. &lt;li&gt;`NFC_RADIO` - NFC is disabled in airplane mode. &lt;li&gt;`WIFI_RADIO` - Wi-Fi is disabled in airplane mode. &lt;/ul&gt;
+<ul> <li>`BLUETOOTH_RADIO` - Bluetooth is disabled in airplane mode. <li>`CELL_RADIO` - Cellular radio is disabled in airplane mode. <li>`NFC_RADIO` - NFC is disabled in airplane mode. <li>`WIFI_RADIO` - Wi-Fi is disabled in airplane mode. </ul>
 
 **Type:** string
 

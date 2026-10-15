@@ -40,6 +40,7 @@ function createColorfulBrightnessBlender(brightnessBlenderParam: BrightnessBlend
 | --- | --- |
 | [ColorfulBrightnessBlender](arkts-arkgraphics2d-uieffect-colorfulbrightnessblender-i-sys.md) | 返回基于保持色相的提亮压暗混合器。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -80,3 +81,5 @@ struct example {
   }
 }
 ```
+
+<!--DelEnd-->

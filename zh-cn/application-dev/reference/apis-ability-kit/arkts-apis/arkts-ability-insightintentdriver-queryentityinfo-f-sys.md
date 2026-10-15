@@ -12,7 +12,7 @@ import { insightIntentDriver } from '@kit.AbilityKit';
 function queryEntityInfo(param: QueryParam): Promise<Array<Record<string, Object>>>
 ```
 
-查询意图实体信息。
+根据[QueryParam](arkts-ability-insightintentdriver-queryparam-i-sys.md)查询应用的动态意图实体信息。使用Promise异步回调。如果调用方应用的用户ID与目标用户ID不同，则需要申请权限ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS。
 
 **起始版本：** 26.0.0
 
@@ -30,13 +30,13 @@ function queryEntityInfo(param: QueryParam): Promise<Array<Record<string, Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| param | [QueryParam](arkts-ability-insightintentdriver-queryparam-i-sys.md) | 是 | 查询参数。 |
+| param | [QueryParam](arkts-ability-insightintentdriver-queryparam-i-sys.md) | 是 | 意图实体参数，描述意图实体的查询条件，用于查询应用中符合条件的意图实体。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;Array&lt;Record&lt;string, Object&gt;&gt;&gt; | Returns the insight intent entity information. |
+| Promise&lt;Array&lt;Record&lt;string, Object&gt;&gt;&gt; | Promise对象，返回应用返回的意图实体数组。 |
 
 **错误码：**
 
@@ -47,6 +47,7 @@ function queryEntityInfo(param: QueryParam): Promise<Array<Record<string, Object
 | [16000006](../errorcode-ability.md#16000006-不允许跨用户操作) | Cross-user operations are not allowed. |
 | [16000050](../errorcode-ability.md#16000050-内部错误) | Internal error. Possible causes: 1. Connect to system service failed; 2.Send restart message to system service failed; 3.System service failed to communicate with dependency module. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -87,3 +88,5 @@ function queryEntityInfoByPromise() {
   }
 }
 ```
+
+<!--DelEnd-->

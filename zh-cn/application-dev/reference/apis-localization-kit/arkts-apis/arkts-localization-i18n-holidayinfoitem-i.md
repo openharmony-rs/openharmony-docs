@@ -30,7 +30,7 @@ baseName: string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HolidayInfoItem-baseName: string--><!--Device-HolidayInfoItem-baseName: string-End-->
 
@@ -48,7 +48,7 @@ day: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HolidayInfoItem-day: int--><!--Device-HolidayInfoItem-day: int-End-->
 
@@ -66,7 +66,7 @@ localNames?: Array<HolidayLocalName>
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HolidayInfoItem-localNames?: Array<HolidayLocalName>--><!--Device-HolidayInfoItem-localNames?: Array<HolidayLocalName>-End-->
 
@@ -84,7 +84,7 @@ month: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HolidayInfoItem-month: int--><!--Device-HolidayInfoItem-month: int-End-->
 
@@ -102,7 +102,7 @@ year: number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-HolidayInfoItem-year: int--><!--Device-HolidayInfoItem-year: int-End-->
 

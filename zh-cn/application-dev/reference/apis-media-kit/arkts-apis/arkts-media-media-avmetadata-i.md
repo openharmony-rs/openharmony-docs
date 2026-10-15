@@ -168,7 +168,7 @@ description?: string
 duration?: string
 ```
 
-媒体资源的时长。不支持AVRecorder设置该属性。
+媒体资源的时长，单位为毫秒（ms）。不支持AVRecorder设置该属性。
 
 **类型：** string
 

@@ -6,6 +6,8 @@ export type AgentExtensionConnectCallback = _AgentExtensionConnectCallback
 
 Represents the AgentExtensionConnectCallback type.
 
+**Type:** _AgentExtensionConnectCallback
+
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents the AgentExtensionConnectCallback type.
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
 **System API:** This is a system API.
-
-**Type:** _AgentExtensionConnectCallback

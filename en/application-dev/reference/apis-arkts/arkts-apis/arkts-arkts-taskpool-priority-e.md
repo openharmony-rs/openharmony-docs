@@ -30,21 +30,21 @@ This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Utils.Lang
 
-## MEDIUM
+## IDLE
 
 ```TypeScript
-MEDIUM = 1
+IDLE = 3
 ```
 
-The task has a medium priority.
+The task is a background task.
 
-This API can be used in atomic services since API version 11.
+This API can be used in atomic services since API version 12.
 
-**Since:** 9
+**Since:** 12
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-Priority-MEDIUM = 1--><!--Device-Priority-MEDIUM = 1-End-->
+<!--Device-Priority-IDLE = 3--><!--Device-Priority-IDLE = 3-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -66,20 +66,20 @@ This API can be used in atomic services since API version 11.
 
 **System capability:** SystemCapability.Utils.Lang
 
-## IDLE
+## MEDIUM
 
 ```TypeScript
-IDLE = 3
+MEDIUM = 1
 ```
 
-The task is a background task.
+The task has a medium priority.
 
-This API can be used in atomic services since API version 12.
+This API can be used in atomic services since API version 11.
 
-**Since:** 12
+**Since:** 9
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-Priority-IDLE = 3--><!--Device-Priority-IDLE = 3-End-->
+<!--Device-Priority-MEDIUM = 1--><!--Device-Priority-MEDIUM = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang

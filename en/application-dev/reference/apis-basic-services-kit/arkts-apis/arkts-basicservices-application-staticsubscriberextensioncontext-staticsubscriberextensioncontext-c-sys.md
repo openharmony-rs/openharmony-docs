@@ -24,6 +24,8 @@ You can use the APIs of this module to start **StaticSubscriberExtensionAbility*
 import { StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
 ```
 
+<a id="startability1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -57,7 +59,7 @@ Starts an ability that belongs to the same application as this **StaticSubscribe
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -72,6 +74,7 @@ Starts an ability that belongs to the same application as this **StaticSubscribe
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-caller-released) | The caller has been released. |
 | [16300003](../../apis-ability-kit/errorcode-ability.md#16300003-target-application-is-not-the-invoker-application) | The target application is not the current application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -107,7 +110,9 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
 }
 ```
 
-<a id="startability-1"></a>
+<!--DelEnd-->
+
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -147,7 +152,7 @@ Starts an ability that belongs to the same application as this **StaticSubscribe
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [16000001](../../apis-ability-kit/errorcode-ability.md#16000001-ability-name-does-not-exist) | The specified ability does not exist. |
 | [16000002](../../apis-ability-kit/errorcode-ability.md#16000002-incorrect-ability-type) | Incorrect ability type. |
 | [16000004](../../apis-ability-kit/errorcode-ability.md#16000004-visibility-verification-failure) | Cannot start an invisible component. |
@@ -162,6 +167,7 @@ Starts an ability that belongs to the same application as this **StaticSubscribe
 | [16200001](../../apis-ability-kit/errorcode-ability.md#16200001-caller-released) | The caller has been released. |
 | [16300003](../../apis-ability-kit/errorcode-ability.md#16300003-target-application-is-not-the-invoker-application) | The target application is not the current application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -195,3 +201,5 @@ class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbilit
   }
 }
 ```
+
+<!--DelEnd-->

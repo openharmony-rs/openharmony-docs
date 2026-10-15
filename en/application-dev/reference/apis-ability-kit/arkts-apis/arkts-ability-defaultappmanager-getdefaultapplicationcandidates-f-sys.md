@@ -9,7 +9,8 @@ import { defaultAppManager } from '@kit.AbilityKit';
 ## getDefaultApplicationCandidates
 
 ```TypeScript
-function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: number, userId?: number): Promise<Array<AbilityInfo>>
+function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: number,
+  userId?: number): Promise<Array<AbilityInfo>>
 ```
 
 Obtains the list of applications that can be set as the default application of the specified type. Currently, only the **BROWSER** type is supported. Applications that have not been granted the ohos.permission.DEFAULT_WEB_BROWSER permission are excluded from the result.
@@ -20,7 +21,7 @@ Obtains the list of applications that can be set as the default application of t
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-defaultAppManager-function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: int, userId?: int): Promise<Array<AbilityInfo>>--><!--Device-defaultAppManager-function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: int, userId?: int): Promise<Array<AbilityInfo>>-End-->
+<!--Device-defaultAppManager-function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: int,  userId?: int): Promise<Array<AbilityInfo>>--><!--Device-defaultAppManager-function getDefaultApplicationCandidates(type: ApplicationType, abilityFlags: int,  userId?: int): Promise<Array<AbilityInfo>>-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.DefaultApp
 
@@ -32,7 +33,7 @@ Obtains the list of applications that can be set as the default application of t
 | --- | --- | --- | --- |
 | type | [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md) | Yes | Type of the target application. For details, see [ApplicationType](arkts-ability-defaultappmanager-applicationtype-e.md). Currently, only **BROWSER** is supported. Any other value results in error 17700025. |
 | abilityFlags | number | Yes | [Ability flag](arkts-ability-bundlemanager-abilityflag-e.md), indicating the ability information to be obtained. Multiple flags can be combined using the bitwise OR operator, for example, bundleManager.AbilityFlag.GET_ABILITY_INFO_DEFAULT &#124; bundleManager.AbilityFlag.GET_ABILITY_INFO_WITH_PERMISSION to obtain the default ability information and permission information at the same time. |
-| userId | number | No | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid).<br>The default value is the user ID of the caller. Querying another user requires ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS. |
+| userId | number | No | User ID, which can be obtained by calling  [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). <br>The default value is the user ID of the caller. Querying another user requires ohos.permission.INTERACT_ACROSS_LOCAL_ACCOUNTS. |
 
 **Return value:**
 

@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="getdeviceidletrustlist1"></a>
+
 ## getDeviceIdleTrustlist
 
 ```TypeScript
@@ -41,6 +43,7 @@ function getDeviceIdleTrustlist(callback: AsyncCallback<Array<number>>): void
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,8 +55,10 @@ policy.getDeviceIdleTrustlist((error: BusinessError, data: number[]) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getdeviceidletrustlist-1"></a>
+
+<a id="getdeviceidletrustlist2"></a>
 
 ## getDeviceIdleTrustlist
 
@@ -89,6 +94,7 @@ function getDeviceIdleTrustlist(): Promise<Array<number>>
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -100,3 +106,5 @@ policy.getDeviceIdleTrustlist().then((data: number[]) => {
   console.error(JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

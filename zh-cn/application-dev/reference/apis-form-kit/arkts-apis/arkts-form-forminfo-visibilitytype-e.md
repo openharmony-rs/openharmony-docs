@@ -12,19 +12,19 @@ enum VisibilityType
 
 **系统能力：** SystemCapability.Ability.Form
 
-## UNKNOWN
+## FORM_INVISIBLE
 
 ```TypeScript
-UNKNOWN = 0
+FORM_INVISIBLE = 2
 ```
 
-表示卡片为未知。
+表示卡片为不可见。卡片不在前台显示，系统可能暂停更新以节省资源。
 
-**起始版本：** 10
+**起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-VisibilityType-UNKNOWN = 0--><!--Device-VisibilityType-UNKNOWN = 0-End-->
+<!--Device-VisibilityType-FORM_INVISIBLE = 2--><!--Device-VisibilityType-FORM_INVISIBLE = 2-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
@@ -38,24 +38,24 @@ FORM_VISIBLE = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-VisibilityType-FORM_VISIBLE = 1--><!--Device-VisibilityType-FORM_VISIBLE = 1-End-->
 
 **系统能力：** SystemCapability.Ability.Form
 
-## FORM_INVISIBLE
+## UNKNOWN
 
 ```TypeScript
-FORM_INVISIBLE = 2
+UNKNOWN = 0
 ```
 
-表示卡片为不可见。卡片不在前台显示，系统可能暂停更新以节省资源。
+表示卡片为未知。
 
-**起始版本：** 9
+**起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-VisibilityType-FORM_INVISIBLE = 2--><!--Device-VisibilityType-FORM_INVISIBLE = 2-End-->
+<!--Device-VisibilityType-UNKNOWN = 0--><!--Device-VisibilityType-UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.Ability.Form

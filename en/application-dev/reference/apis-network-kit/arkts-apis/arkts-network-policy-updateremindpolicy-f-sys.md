@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="updateremindpolicy1"></a>
+
 ## updateRemindPolicy
 
 ```TypeScript
@@ -44,6 +46,7 @@ Updates a reminder policy. This API uses an asynchronous callback to return the 
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,8 +63,10 @@ policy.updateRemindPolicy(
 );
 ```
 
+<!--DelEnd-->
 
-<a id="updateremindpolicy-1"></a>
+
+<a id="updateremindpolicy2"></a>
 
 ## updateRemindPolicy
 
@@ -106,6 +111,7 @@ Updates a reminder policy. This API uses a promise to return the result.
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -125,3 +131,5 @@ policy
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

@@ -14,17 +14,17 @@ declare class VideoControllerAsync
 > return immediately after the request without blocking the current thread, and the execution results can be
 > processed through the **then** and **catch** methods of the promise.
 
-## Objects to Import
-
-```ts
-let controllerAsync: VideoControllerAsync = new VideoControllerAsync();
-```
-
 **Since:** 26.0.0
 
 <!--Device-unnamed-declare class VideoControllerAsync--><!--Device-unnamed-declare class VideoControllerAsync-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Objects to Import
+
+```ts
+let controllerAsync: VideoControllerAsync = new VideoControllerAsync();
+```
 
 ## constructor
 

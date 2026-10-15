@@ -14,6 +14,22 @@ export enum LocationIconStatus
 
 **系统接口：** 此接口为系统接口。
 
+## HD_LOCATING_STARTED
+
+```TypeScript
+HD_LOCATING_STARTED = 2
+```
+
+表示当前正在进行高精度定位业务，需要显示高精度定位图标。
+
+**起始版本：** 12
+
+<!--Device-LocationIconStatus-HD_LOCATING_STARTED = 2--><!--Device-LocationIconStatus-HD_LOCATING_STARTED = 2-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## LOCATING_NOT_STARTED
 
 ```TypeScript
@@ -41,22 +57,6 @@ LOCATING_STARTED = 1
 **起始版本：** 12
 
 <!--Device-LocationIconStatus-LOCATING_STARTED = 1--><!--Device-LocationIconStatus-LOCATING_STARTED = 1-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-**系统接口：** 此接口为系统接口。
-
-## HD_LOCATING_STARTED
-
-```TypeScript
-HD_LOCATING_STARTED = 2
-```
-
-表示当前正在进行高精度定位业务，需要显示高精度定位图标。
-
-**起始版本：** 12
-
-<!--Device-LocationIconStatus-HD_LOCATING_STARTED = 2--><!--Device-LocationIconStatus-HD_LOCATING_STARTED = 2-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 

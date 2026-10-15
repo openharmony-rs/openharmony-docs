@@ -4,7 +4,7 @@
 interface VibrateAttribute
 ```
 
-马达振动属性。用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md)接口的attribute参数，指定马达ID、设备ID和振动使用场景。
+马达振动属性。用于[startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)接口的attribute参数，指定马达ID、设备ID和振动使用场景。
 
 **原子化服务API**：从API version 11开始，该接口支持在原子化服务中使用。
 
@@ -26,13 +26,13 @@ import { vibrator } from '@kit.SensorServiceKit';
 deviceId?: number
 ```
 
-设备ID。默认值：-1，表示本地设备。使用场景：在多设备场景下需指定远程设备时设置此参数；不填写时默认控制本地设备。从API version 19开始，设备ID可以使用[getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md)或[on](arkts-sensorservice-vibrator-on-f.md#onvibratorstatechange)查询。<br>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
+设备ID。默认值：-1，表示本地设备。使用场景：在多设备场景下需指定远程设备时设置此参数；不填写时默认控制本地设备。从API version 19开始，设备ID可以使用[getVibratorInfoSync](arkts-sensorservice-vibrator-getvibratorinfosync-f.md)或on查询。<br>**原子化服务API**：从API version 19开始，该接口支持在原子化服务中使用。
 
 **类型：** number
 
 **起始版本：** 19
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VibrateAttribute-deviceId?: int--><!--Device-VibrateAttribute-deviceId?: int-End-->
 
@@ -50,7 +50,7 @@ id?: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-VibrateAttribute-id?: int--><!--Device-VibrateAttribute-id?: int-End-->
 
@@ -68,7 +68,7 @@ usage: Usage
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-VibrateAttribute-usage: Usage--><!--Device-VibrateAttribute-usage: Usage-End-->
 

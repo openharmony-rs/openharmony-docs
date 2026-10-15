@@ -6,6 +6,8 @@
 import { componentSnapshot } from '@kit.ArkUI';
 ```
 
+<a id="get1"></a>
+
 ## get
 
 ```TypeScript
@@ -24,7 +26,7 @@ function get(id: string, callback: AsyncCallback<image.PixelMap>, options?: Snap
 
 **废弃版本：** 18
 
-**替代接口：** get
+**替代接口：** [get](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#get)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -93,7 +95,7 @@ struct SnapshotExample {
 ```
 
 
-<a id="get-1"></a>
+<a id="get2"></a>
 
 ## get
 
@@ -113,7 +115,7 @@ function get(id: string, options?: SnapshotOptions): Promise<image.PixelMap>
 
 **废弃版本：** 18
 
-**替代接口：** get
+**替代接口：** [get](arkts-arkui-arkui-uicontext-componentsnapshot-c.md#get)
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 

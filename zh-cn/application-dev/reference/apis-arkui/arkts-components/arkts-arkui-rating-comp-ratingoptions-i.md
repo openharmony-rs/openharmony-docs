@@ -58,7 +58,7 @@ rating: number
 
 取值范围： [0, stars]
 
-小于0取0，大于[stars](arkts-arkui-rating-comp-attribute.md#stars)取最大值stars。
+小于0取0，大于[stars](arkts-arkui-rating-comp-attribute.md#stars1)取最大值stars。
 
 该参数支持[$$](../../../ui/state-management/arkts-two-way-sync.md)双向绑定变量。
 

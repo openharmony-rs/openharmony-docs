@@ -12,13 +12,13 @@ declare enum LocalizedAlignment
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP_START
+## BOTTOM
 
 ```TypeScript
-TOP_START = "top_start"
+BOTTOM = "bottom"
 ```
 
-顶部起始端。
+底部横向居中。
 
 **起始版本：** 20
 
@@ -28,17 +28,17 @@ TOP_START = "top_start"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalizedAlignment-TOP_START = "top_start"--><!--Device-LocalizedAlignment-TOP_START = "top_start"-End-->
+<!--Device-LocalizedAlignment-BOTTOM = "bottom"--><!--Device-LocalizedAlignment-BOTTOM = "bottom"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
+## BOTTOM_END
 
 ```TypeScript
-TOP = "top"
+BOTTOM_END = "bottom_end"
 ```
 
-顶部横向居中。
+底部尾端。
 
 **起始版本：** 20
 
@@ -48,17 +48,17 @@ TOP = "top"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalizedAlignment-TOP = "top"--><!--Device-LocalizedAlignment-TOP = "top"-End-->
+<!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"--><!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP_END
+## BOTTOM_START
 
 ```TypeScript
-TOP_END = "top_end"
+BOTTOM_START = "bottom_start"
 ```
 
-顶部尾端。
+底部起始端。
 
 **起始版本：** 20
 
@@ -68,27 +68,7 @@ TOP_END = "top_end"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalizedAlignment-TOP_END = "top_end"--><!--Device-LocalizedAlignment-TOP_END = "top_end"-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## START
-
-```TypeScript
-START = "start"
-```
-
-起始端纵向居中。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-LocalizedAlignment-START = "start"--><!--Device-LocalizedAlignment-START = "start"-End-->
+<!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"--><!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,13 +112,13 @@ END = "end"
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BOTTOM_START
+## START
 
 ```TypeScript
-BOTTOM_START = "bottom_start"
+START = "start"
 ```
 
-底部起始端。
+起始端纵向居中。
 
 **起始版本：** 20
 
@@ -148,17 +128,17 @@ BOTTOM_START = "bottom_start"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"--><!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"-End-->
+<!--Device-LocalizedAlignment-START = "start"--><!--Device-LocalizedAlignment-START = "start"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BOTTOM
+## TOP
 
 ```TypeScript
-BOTTOM = "bottom"
+TOP = "top"
 ```
 
-底部横向居中。
+顶部横向居中。
 
 **起始版本：** 20
 
@@ -168,17 +148,17 @@ BOTTOM = "bottom"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalizedAlignment-BOTTOM = "bottom"--><!--Device-LocalizedAlignment-BOTTOM = "bottom"-End-->
+<!--Device-LocalizedAlignment-TOP = "top"--><!--Device-LocalizedAlignment-TOP = "top"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BOTTOM_END
+## TOP_END
 
 ```TypeScript
-BOTTOM_END = "bottom_end"
+TOP_END = "top_end"
 ```
 
-底部尾端。
+顶部尾端。
 
 **起始版本：** 20
 
@@ -188,6 +168,26 @@ BOTTOM_END = "bottom_end"
 
 **卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
 
-<!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"--><!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"-End-->
+<!--Device-LocalizedAlignment-TOP_END = "top_end"--><!--Device-LocalizedAlignment-TOP_END = "top_end"-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TOP_START
+
+```TypeScript
+TOP_START = "top_start"
+```
+
+顶部起始端。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本20开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-LocalizedAlignment-TOP_START = "top_start"--><!--Device-LocalizedAlignment-TOP_START = "top_start"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

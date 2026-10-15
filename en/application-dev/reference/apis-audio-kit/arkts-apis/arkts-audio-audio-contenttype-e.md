@@ -16,39 +16,21 @@ Enumerates the audio content types.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## CONTENT_TYPE_UNKNOWN
+## CONTENT_TYPE_MOVIE
 
 ```TypeScript
-CONTENT_TYPE_UNKNOWN = 0
+CONTENT_TYPE_MOVIE = 3
 ```
 
-Unknown content.
+Movie.
 
 **Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [STREAM_USAGE_UNKNOWN](arkts-audio-audio-streamusage-e.md#stream_usage_unknown)
+**Substitutes:** [STREAM_USAGE_MOVIE](arkts-audio-audio-streamusage-e.md#stream_usage_movie)
 
-<!--Device-ContentType-CONTENT_TYPE_UNKNOWN = 0--><!--Device-ContentType-CONTENT_TYPE_UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## CONTENT_TYPE_SPEECH
-
-```TypeScript
-CONTENT_TYPE_SPEECH = 1
-```
-
-Speech.
-
-**Since:** 7
-
-**Deprecated since:** 10
-
-**Substitutes:** [STREAM_USAGE_VOICE_COMMUNICATION](arkts-audio-audio-streamusage-e.md#stream_usage_voice_communication)
-
-<!--Device-ContentType-CONTENT_TYPE_SPEECH = 1--><!--Device-ContentType-CONTENT_TYPE_SPEECH = 1-End-->
+<!--Device-ContentType-CONTENT_TYPE_MOVIE = 3--><!--Device-ContentType-CONTENT_TYPE_MOVIE = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -70,21 +52,21 @@ Music.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## CONTENT_TYPE_MOVIE
+## CONTENT_TYPE_RINGTONE
 
 ```TypeScript
-CONTENT_TYPE_MOVIE = 3
+CONTENT_TYPE_RINGTONE = 5
 ```
 
-Movie.
+Ringtone.
 
-**Since:** 7
+**Since:** 8
 
 **Deprecated since:** 10
 
-**Substitutes:** [STREAM_USAGE_MOVIE](arkts-audio-audio-streamusage-e.md#stream_usage_movie)
+**Substitutes:** [STREAM_USAGE_RINGTONE](arkts-audio-audio-streamusage-e.md#stream_usage_ringtone)
 
-<!--Device-ContentType-CONTENT_TYPE_MOVIE = 3--><!--Device-ContentType-CONTENT_TYPE_MOVIE = 3-End-->
+<!--Device-ContentType-CONTENT_TYPE_RINGTONE = 5--><!--Device-ContentType-CONTENT_TYPE_RINGTONE = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -106,20 +88,38 @@ Notification tone.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## CONTENT_TYPE_RINGTONE
+## CONTENT_TYPE_SPEECH
 
 ```TypeScript
-CONTENT_TYPE_RINGTONE = 5
+CONTENT_TYPE_SPEECH = 1
 ```
 
-Ringtone.
+Speech.
 
-**Since:** 8
+**Since:** 7
 
 **Deprecated since:** 10
 
-**Substitutes:** [STREAM_USAGE_RINGTONE](arkts-audio-audio-streamusage-e.md#stream_usage_ringtone)
+**Substitutes:** [STREAM_USAGE_VOICE_COMMUNICATION](arkts-audio-audio-streamusage-e.md#stream_usage_voice_communication)
 
-<!--Device-ContentType-CONTENT_TYPE_RINGTONE = 5--><!--Device-ContentType-CONTENT_TYPE_RINGTONE = 5-End-->
+<!--Device-ContentType-CONTENT_TYPE_SPEECH = 1--><!--Device-ContentType-CONTENT_TYPE_SPEECH = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## CONTENT_TYPE_UNKNOWN
+
+```TypeScript
+CONTENT_TYPE_UNKNOWN = 0
+```
+
+Unknown content.
+
+**Since:** 7
+
+**Deprecated since:** 10
+
+**Substitutes:** [STREAM_USAGE_UNKNOWN](arkts-audio-audio-streamusage-e.md#stream_usage_unknown)
+
+<!--Device-ContentType-CONTENT_TYPE_UNKNOWN = 0--><!--Device-ContentType-CONTENT_TYPE_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

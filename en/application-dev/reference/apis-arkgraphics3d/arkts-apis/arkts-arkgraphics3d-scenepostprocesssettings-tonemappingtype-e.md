@@ -6,8 +6,6 @@ export enum ToneMappingType
 
 Enumerates the tone mapping types.
 
-@enum { int }
-
 **Since:** 12
 
 <!--Device-unnamed-export enum ToneMappingType--><!--Device-unnamed-export enum ToneMappingType-End-->

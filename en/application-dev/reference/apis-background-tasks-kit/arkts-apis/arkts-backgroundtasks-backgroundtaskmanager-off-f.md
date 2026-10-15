@@ -41,19 +41,19 @@ Unsubscribes from continuous task cancellation events. This API uses an asynchro
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 
-function callback(info: backgroundTaskManager.ContinuousTaskCancelInfo) {
+const callback = (info: backgroundTaskManager.ContinuousTaskCancelInfo) => {
   console.info('continuousTaskCancel callback id ' + info.id);
   console.info('continuousTaskCancel callback reason ' + info.reason);
 }
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     try {
-      backgroundTaskManager.off("continuousTaskCancel", callback);
+      backgroundTaskManager.off('continuousTaskCancel', callback);
     } catch (error) {
-      console.error(`Operation onContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
+      console.error(`Operation offContinuousTaskCancel failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
   }
 };
@@ -95,18 +95,18 @@ Unregisters from the listener for continuous task suspension. This API uses an a
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 
-function callback(info: backgroundTaskManager.ContinuousTaskSuspendInfo) {
+const callback = (info: backgroundTaskManager.ContinuousTaskSuspendInfo) => {
   console.info('continuousTaskSuspend callback continuousTaskId: ' + info.continuousTaskId);
   console.info('continuousTaskSuspend callback suspendState: ' + info.suspendState);
   console.info('continuousTaskSuspend callback suspendReason: ' + info.suspendReason);
 }
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     try {
-      backgroundTaskManager.off("continuousTaskSuspend", callback);
+      backgroundTaskManager.off('continuousTaskSuspend', callback);
     } catch (error) {
       console.error(`Operation offContinuousTaskSuspend failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }
@@ -150,16 +150,16 @@ Unregisters from the listener for continuous task activation. This API uses an a
 ```TypeScript
 import { backgroundTaskManager } from '@kit.BackgroundTasksKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { AbilityConstant, UIAbility, Want } from '@kit.AbilityKit';
+import { UIAbility } from '@kit.AbilityKit';
 
-function callback(info: backgroundTaskManager.ContinuousTaskActiveInfo) {
+const callback = (info: backgroundTaskManager.ContinuousTaskActiveInfo) => {
   console.info('continuousTaskActive callback id: ' + info.id);
 }
 
 export default class EntryAbility extends UIAbility {
-  onCreate(want: Want, launchParam: AbilityConstant.LaunchParam) {
+  onCreate() {
     try {
-      backgroundTaskManager.off("continuousTaskActive", callback);
+      backgroundTaskManager.off('continuousTaskActive', callback);
     } catch (error) {
       console.error(`Operation offContinuousTaskActive failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
     }

@@ -12,24 +12,6 @@ Sets how menu display is triggered.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## RightClick
-
-```TypeScript
-RightClick
-```
-
-The menu is displayed when the component is right-clicked.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ResponseType-RightClick--><!--Device-ResponseType-RightClick-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## LongPress
 
 ```TypeScript
@@ -45,5 +27,23 @@ The menu is displayed when the component is long-pressed.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ResponseType-LongPress--><!--Device-ResponseType-LongPress-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## RightClick
+
+```TypeScript
+RightClick
+```
+
+The menu is displayed when the component is right-clicked.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ResponseType-RightClick--><!--Device-ResponseType-RightClick-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

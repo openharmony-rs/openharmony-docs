@@ -12,19 +12,19 @@ onSslErrorEventReceive接口返回的SSL错误的具体原因。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## Invalid
+## DateInvalid
 
 ```TypeScript
-Invalid = 0
+DateInvalid = 2
 ```
 
-一般错误。
+证书日期无效。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-SslError-Invalid = 0--><!--Device-SslError-Invalid = 0-End-->
+<!--Device-SslError-DateInvalid = 2--><!--Device-SslError-DateInvalid = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,19 +44,19 @@ HostMismatch = 1
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## DateInvalid
+## Invalid
 
 ```TypeScript
-DateInvalid = 2
+Invalid = 0
 ```
 
-证书日期无效。
+一般错误。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-SslError-DateInvalid = 2--><!--Device-SslError-DateInvalid = 2-End-->
+<!--Device-SslError-Invalid = 0--><!--Device-SslError-Invalid = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

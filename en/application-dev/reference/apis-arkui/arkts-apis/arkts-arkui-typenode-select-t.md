@@ -6,6 +6,8 @@ type Select = TypedFrameNode<SelectInterface, SelectAttribute>
 
 Represents a FrameNode of the **Select** type.
 
+**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SelectInterface, [SelectAttribute](../arkts-components/arkts-arkui-select-comp-attribute.md)&gt;
+
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Represents a FrameNode of the **Select** type.
 <!--Device-typeNode-type Select = TypedFrameNode<SelectInterface, SelectAttribute>--><!--Device-typeNode-type Select = TypedFrameNode<SelectInterface, SelectAttribute>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;SelectInterface, [SelectAttribute](../arkts-components/arkts-arkui-select-comp-attribute.md)&gt;

@@ -4,7 +4,7 @@
 declare interface GeometryInfo extends SizeResult
 ```
 
-父组件（自定义组件）布局信息，继承自[SizeResult](arkts-arkui-common-comp-sizeresult-i.md)。
+父组件（自定义组件）布局信息。在onMeasureSize和onPlaceChildren方法中，可通过selfLayoutInfo参数获取GeometryInfo对象，其中包含父组件的边框宽度、外边距和内边距信息，开发者在计算子组件布局时需要考虑这些信息。
 
 **继承/实现关系：** GeometryInfo extends [SizeResult](arkts-arkui-common-comp-sizeresult-i.md)
 

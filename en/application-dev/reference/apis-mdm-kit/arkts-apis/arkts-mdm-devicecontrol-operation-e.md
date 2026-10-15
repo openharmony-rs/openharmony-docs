@@ -28,51 +28,19 @@ Disk erasure. After this API is called, the device immediately performs a disk e
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## RESET_FACTORY
+## LOCK_DEVICE
 
 ```TypeScript
-RESET_FACTORY = 1
+LOCK_DEVICE = 5
 ```
 
-Restore device factory settings..
+Lock devices.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-Operation-RESET_FACTORY = 1--><!--Device-Operation-RESET_FACTORY = 1-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## REBOOT
-
-```TypeScript
-REBOOT = 2
-```
-
-Restart devices.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Operation-REBOOT = 2--><!--Device-Operation-REBOOT = 2-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## SHUT_DOWN
-
-```TypeScript
-SHUT_DOWN = 3
-```
-
-Shut down devices.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-Operation-SHUT_DOWN = 3--><!--Device-Operation-SHUT_DOWN = 3-End-->
+<!--Device-Operation-LOCK_DEVICE = 5--><!--Device-Operation-LOCK_DEVICE = 5-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -92,19 +60,51 @@ Lock device screens.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## LOCK_DEVICE
+## REBOOT
 
 ```TypeScript
-LOCK_DEVICE = 5
+REBOOT = 2
 ```
 
-Lock devices.
+Restart devices.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-Operation-LOCK_DEVICE = 5--><!--Device-Operation-LOCK_DEVICE = 5-End-->
+<!--Device-Operation-REBOOT = 2--><!--Device-Operation-REBOOT = 2-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## RESET_FACTORY
+
+```TypeScript
+RESET_FACTORY = 1
+```
+
+Restore device factory settings..
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Operation-RESET_FACTORY = 1--><!--Device-Operation-RESET_FACTORY = 1-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SHUT_DOWN
+
+```TypeScript
+SHUT_DOWN = 3
+```
+
+Shut down devices.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-Operation-SHUT_DOWN = 3--><!--Device-Operation-SHUT_DOWN = 3-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 

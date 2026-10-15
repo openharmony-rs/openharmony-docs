@@ -45,7 +45,7 @@ Compares two strings based on the specified collation rules.
 
 | Type | Description |
 | --- | --- |
-| number | Comparison result.   - If the value is a negative number, the first string comes before the second string.   - If the value is **0**, the first and second strings are in the same sequence.   - If the value is a positive number, the first string is comes after the second string. |
+| number | Comparison result.           - If the value is a negative number, the first string comes before the second string.           - If the value is **0**, the first and second strings are in the same sequence.           - If the value is a positive number, the first string is comes after the second string. |
 
 **Examples**
 
@@ -57,6 +57,8 @@ let collator = new intl.Collator('en-GB');
 // Compare the sequence of the first and second strings.
 let compareResult = collator.compare('first', 'second'); // compareResult = -1
 ```
+
+<a id="constructor1"></a>
 
 ## constructor
 
@@ -83,7 +85,7 @@ import { intl } from '@kit.LocalizationKit';
 let collator = new intl.Collator();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

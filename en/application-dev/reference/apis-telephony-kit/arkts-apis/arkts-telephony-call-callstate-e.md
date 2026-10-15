@@ -12,17 +12,17 @@ Enumerates call states.
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## CALL_STATE_UNKNOWN
+## CALL_STATE_ANSWERED
 
 ```TypeScript
-CALL_STATE_UNKNOWN = -1
+CALL_STATE_ANSWERED = 3
 ```
 
-The call status fails to be obtained and is unknown.
+The incoming call is answered.
 
-**Since:** 6
+**Since:** 11
 
-<!--Device-CallState-CALL_STATE_UNKNOWN = -1--><!--Device-CallState-CALL_STATE_UNKNOWN = -1-End-->
+<!--Device-CallState-CALL_STATE_ANSWERED = 3--><!--Device-CallState-CALL_STATE_ANSWERED = 3-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -40,20 +40,6 @@ No call is in progress.
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## CALL_STATE_RINGING
-
-```TypeScript
-CALL_STATE_RINGING = 1
-```
-
-The call is in the ringing or waiting state.
-
-**Since:** 6
-
-<!--Device-CallState-CALL_STATE_RINGING = 1--><!--Device-CallState-CALL_STATE_RINGING = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
 ## CALL_STATE_OFFHOOK
 
 ```TypeScript
@@ -68,16 +54,30 @@ At least one call is in dialing, active, or on hold, and no new incoming call is
 
 **System capability:** SystemCapability.Telephony.CallManager
 
-## CALL_STATE_ANSWERED
+## CALL_STATE_RINGING
 
 ```TypeScript
-CALL_STATE_ANSWERED = 3
+CALL_STATE_RINGING = 1
 ```
 
-The incoming call is answered.
+The call is in the ringing or waiting state.
 
-**Since:** 11
+**Since:** 6
 
-<!--Device-CallState-CALL_STATE_ANSWERED = 3--><!--Device-CallState-CALL_STATE_ANSWERED = 3-End-->
+<!--Device-CallState-CALL_STATE_RINGING = 1--><!--Device-CallState-CALL_STATE_RINGING = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+## CALL_STATE_UNKNOWN
+
+```TypeScript
+CALL_STATE_UNKNOWN = -1
+```
+
+The call status fails to be obtained and is unknown.
+
+**Since:** 6
+
+<!--Device-CallState-CALL_STATE_UNKNOWN = -1--><!--Device-CallState-CALL_STATE_UNKNOWN = -1-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager

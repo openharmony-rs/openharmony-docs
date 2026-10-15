@@ -9,7 +9,7 @@ The function decorated by **\@ComponentReuse** is called when a reusable custom 
 > **NOTE:** 
 > 
 > - In a state management V1 component, the function decorated by **\@ComponentReuse** can have one input parameter or no parameter. The input parameter **params** is recommended to be of the
-> **Record\&lt;string, Object \| undefined \| null\&gt;** type.
+> **Record\<string, Object \| undefined \| null\>** type.
 > 
 > - In a state management V2 component, the function decorated by **\@ComponentReuse** has no input parameter.
 

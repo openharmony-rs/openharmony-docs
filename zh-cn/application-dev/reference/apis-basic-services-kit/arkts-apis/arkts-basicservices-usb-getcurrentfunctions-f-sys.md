@@ -32,8 +32,11 @@ function getCurrentFunctions(): FunctionType
 | --- | --- |
 | [FunctionType](arkts-basicservices-usb-functiontype-e-sys.md) | 当前的USB功能列表的数字组合掩码。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let ret = usb.getCurrentFunctions();
 ```
+
+<!--DelEnd-->

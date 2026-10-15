@@ -6,6 +6,8 @@
 import { sharing } from '@kit.NetworkKit';
 ```
 
+<a id="issharingsupported1"></a>
+
 ## isSharingSupported
 
 ```TypeScript
@@ -40,6 +42,7 @@ function isSharingSupported(callback: AsyncCallback<boolean>): void
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2202011](../errorcode-net-sharing.md#2202011-无法获取网络共享配置) | Cannot get network sharing configuration. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,8 +55,10 @@ sharing.isSharingSupported((error: BusinessError, data: boolean) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="issharingsupported-1"></a>
+
+<a id="issharingsupported2"></a>
 
 ## isSharingSupported
 
@@ -89,6 +94,7 @@ function isSharingSupported(): Promise<boolean>
 | [2200003](../errorcode-net-ethernet.md#2200003-系统内部错误) | System internal error. |
 | [2202011](../errorcode-net-sharing.md#2202011-无法获取网络共享配置) | Cannot get network sharing configuration. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -104,3 +110,5 @@ sharing
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

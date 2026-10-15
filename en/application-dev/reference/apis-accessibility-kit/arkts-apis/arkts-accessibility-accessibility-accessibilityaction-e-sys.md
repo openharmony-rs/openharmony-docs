@@ -32,6 +32,22 @@ Gains accessibility focus. The [Parameter](arkts-accessibility-accessibilityexte
 
 **System API:** This is a system API.
 
+## BACK
+
+```TypeScript
+BACK = 16
+```
+
+Return to the previous screen.
+
+**Since:** 20
+
+<!--Device-AccessibilityAction-BACK = 16--><!--Device-AccessibilityAction-BACK = 16-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
 ## CLEAR_ACCESSIBILITY_FOCUS
 
 ```TypeScript
@@ -43,22 +59,6 @@ Clear an accessibility focus.
 **Since:** 20
 
 <!--Device-AccessibilityAction-CLEAR_ACCESSIBILITY_FOCUS = 1--><!--Device-AccessibilityAction-CLEAR_ACCESSIBILITY_FOCUS = 1-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## FOCUS
-
-```TypeScript
-FOCUS = 2
-```
-
-Gain a focus for a component.
-
-**Since:** 20
-
-<!--Device-AccessibilityAction-FOCUS = 2--><!--Device-AccessibilityAction-FOCUS = 2-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -96,33 +96,17 @@ Click a component.
 
 **System API:** This is a system API.
 
-## LONG_CLICK
+## CONTROL_CENTER
 
 ```TypeScript
-LONG_CLICK = 5
+CONTROL_CENTER = 19
 ```
 
-Long-presses a component.
+Displays the control center.
 
 **Since:** 20
 
-<!--Device-AccessibilityAction-LONG_CLICK = 5--><!--Device-AccessibilityAction-LONG_CLICK = 5-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## CUT
-
-```TypeScript
-CUT = 6
-```
-
-Cut the content of a component.
-
-**Since:** 20
-
-<!--Device-AccessibilityAction-CUT = 6--><!--Device-AccessibilityAction-CUT = 6-End-->
+<!--Device-AccessibilityAction-CONTROL_CENTER = 19--><!--Device-AccessibilityAction-CONTROL_CENTER = 19-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -144,113 +128,51 @@ Copy the content of a component.
 
 **System API:** This is a system API.
 
-## PASTE
+## CUT
 
 ```TypeScript
-PASTE = 8
+CUT = 6
 ```
 
-Paste the content into a component.
+Cut the content of a component.
 
 **Since:** 20
 
-<!--Device-AccessibilityAction-PASTE = 8--><!--Device-AccessibilityAction-PASTE = 8-End-->
+<!--Device-AccessibilityAction-CUT = 6--><!--Device-AccessibilityAction-CUT = 6-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
 
-## SELECT
+## EXECUTE_CUSTOM_ACTION
 
 ```TypeScript
-SELECT = 9
+EXECUTE_CUSTOM_ACTION = 22
 ```
 
-Select a component.
+Executes a custom action. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).customAction parameter must be configured, with the parameter value being the name of the custom action.
 
-**Since:** 20
+**Since:** 26.0.0
 
-<!--Device-AccessibilityAction-SELECT = 9--><!--Device-AccessibilityAction-SELECT = 9-End-->
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityAction-EXECUTE_CUSTOM_ACTION = 22--><!--Device-AccessibilityAction-EXECUTE_CUSTOM_ACTION = 22-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
 
-## SET_TEXT
+## FOCUS
 
 ```TypeScript
-SET_TEXT = 10
+FOCUS = 2
 ```
 
-Sets the text of a component. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).setText parameter must be configured, with the parameter value being the text content to set.
+Gain a focus for a component.
 
 **Since:** 20
 
-<!--Device-AccessibilityAction-SET_TEXT = 10--><!--Device-AccessibilityAction-SET_TEXT = 10-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## SCROLL_FORWARD
-
-```TypeScript
-SCROLL_FORWARD = 11
-```
-
-Scrolls a component forward (toward the end of the content). The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).scrollType parameter must be configured, with the parameter value being 'fullScreen' or 'halfScreen'.
-
-**Since:** 20
-
-<!--Device-AccessibilityAction-SCROLL_FORWARD = 11--><!--Device-AccessibilityAction-SCROLL_FORWARD = 11-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## SCROLL_BACKWARD
-
-```TypeScript
-SCROLL_BACKWARD = 12
-```
-
-Scrolls a component backward (toward the beginning of the content). The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).scrollType parameter must be configured, with the parameter value being 'fullScreen' or 'halfScreen'.
-
-**Since:** 20
-
-<!--Device-AccessibilityAction-SCROLL_BACKWARD = 12--><!--Device-AccessibilityAction-SCROLL_BACKWARD = 12-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## SET_SELECTION
-
-```TypeScript
-SET_SELECTION = 13
-```
-
-Selects a text range within a component. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextBegin, [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextEnd, and [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextInForWard parameters must be configured, with the parameter values being the start coordinate, end coordinate of the selected text, and whether to select forward.
-
-**Since:** 20
-
-<!--Device-AccessibilityAction-SET_SELECTION = 13--><!--Device-AccessibilityAction-SET_SELECTION = 13-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## SET_CURSOR_POSITION
-
-```TypeScript
-SET_CURSOR_POSITION = 14
-```
-
-Sets the cursor position within a component. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).offset parameter must be configured, with the parameter value being the character offset of the cursor.
-
-**Since:** 20
-
-<!--Device-AccessibilityAction-SET_CURSOR_POSITION = 14--><!--Device-AccessibilityAction-SET_CURSOR_POSITION = 14-End-->
+<!--Device-AccessibilityAction-FOCUS = 2--><!--Device-AccessibilityAction-FOCUS = 2-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -274,33 +196,35 @@ Performs the operation of returning to the home screen.
 
 **System API:** This is a system API.
 
-## BACK
+## INJECT_ACTION
 
 ```TypeScript
-BACK = 16
+INJECT_ACTION = 21
 ```
 
-Return to the previous screen.
+Injects an action that simulates a user operation. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).injectActionType parameter must be configured, with the parameter value being the injection action type.
 
-**Since:** 20
+**Since:** 26.0.0
 
-<!--Device-AccessibilityAction-BACK = 16--><!--Device-AccessibilityAction-BACK = 16-End-->
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityAction-INJECT_ACTION = 21--><!--Device-AccessibilityAction-INJECT_ACTION = 21-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
 
-## RECENT_TASK
+## LONG_CLICK
 
 ```TypeScript
-RECENT_TASK = 17
+LONG_CLICK = 5
 ```
 
-Displays recent tasks.
+Long-presses a component.
 
 **Since:** 20
 
-<!--Device-AccessibilityAction-RECENT_TASK = 17--><!--Device-AccessibilityAction-RECENT_TASK = 17-End-->
+<!--Device-AccessibilityAction-LONG_CLICK = 5--><!--Device-AccessibilityAction-LONG_CLICK = 5-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -322,17 +246,129 @@ Displays the notification center.
 
 **System API:** This is a system API.
 
-## CONTROL_CENTER
+## PASTE
 
 ```TypeScript
-CONTROL_CENTER = 19
+PASTE = 8
 ```
 
-Displays the control center.
+Paste the content into a component.
 
 **Since:** 20
 
-<!--Device-AccessibilityAction-CONTROL_CENTER = 19--><!--Device-AccessibilityAction-CONTROL_CENTER = 19-End-->
+<!--Device-AccessibilityAction-PASTE = 8--><!--Device-AccessibilityAction-PASTE = 8-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## RECENT_TASK
+
+```TypeScript
+RECENT_TASK = 17
+```
+
+Displays recent tasks.
+
+**Since:** 20
+
+<!--Device-AccessibilityAction-RECENT_TASK = 17--><!--Device-AccessibilityAction-RECENT_TASK = 17-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## SCROLL_BACKWARD
+
+```TypeScript
+SCROLL_BACKWARD = 12
+```
+
+Scrolls a component backward (toward the beginning of the content). The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).scrollType parameter must be configured, with the parameter value being 'fullScreen' or 'halfScreen'.
+
+**Since:** 20
+
+<!--Device-AccessibilityAction-SCROLL_BACKWARD = 12--><!--Device-AccessibilityAction-SCROLL_BACKWARD = 12-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## SCROLL_FORWARD
+
+```TypeScript
+SCROLL_FORWARD = 11
+```
+
+Scrolls a component forward (toward the end of the content). The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).scrollType parameter must be configured, with the parameter value being 'fullScreen' or 'halfScreen'.
+
+**Since:** 20
+
+<!--Device-AccessibilityAction-SCROLL_FORWARD = 11--><!--Device-AccessibilityAction-SCROLL_FORWARD = 11-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## SELECT
+
+```TypeScript
+SELECT = 9
+```
+
+Select a component.
+
+**Since:** 20
+
+<!--Device-AccessibilityAction-SELECT = 9--><!--Device-AccessibilityAction-SELECT = 9-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## SET_CURSOR_POSITION
+
+```TypeScript
+SET_CURSOR_POSITION = 14
+```
+
+Sets the cursor position within a component. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).offset parameter must be configured, with the parameter value being the character offset of the cursor.
+
+**Since:** 20
+
+<!--Device-AccessibilityAction-SET_CURSOR_POSITION = 14--><!--Device-AccessibilityAction-SET_CURSOR_POSITION = 14-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## SET_SELECTION
+
+```TypeScript
+SET_SELECTION = 13
+```
+
+Selects a text range within a component. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextBegin, [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextEnd, and [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).selectTextInForWard parameters must be configured, with the parameter values being the start coordinate, end coordinate of the selected text, and whether to select forward.
+
+**Since:** 20
+
+<!--Device-AccessibilityAction-SET_SELECTION = 13--><!--Device-AccessibilityAction-SET_SELECTION = 13-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## SET_TEXT
+
+```TypeScript
+SET_TEXT = 10
+```
+
+Sets the text of a component. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).setText parameter must be configured, with the parameter value being the text content to set.
+
+**Since:** 20
+
+<!--Device-AccessibilityAction-SET_TEXT = 10--><!--Device-AccessibilityAction-SET_TEXT = 10-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -349,42 +385,6 @@ Performs a click operation on partial text. The [Parameter](arkts-accessibility-
 **Since:** 20
 
 <!--Device-AccessibilityAction-SPAN_CLICK = 20--><!--Device-AccessibilityAction-SPAN_CLICK = 20-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## INJECT_ACTION
-
-```TypeScript
-INJECT_ACTION = 21
-```
-
-Injects an action that simulates a user operation. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).injectActionType parameter must be configured, with the parameter value being the injection action type.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AccessibilityAction-INJECT_ACTION = 21--><!--Device-AccessibilityAction-INJECT_ACTION = 21-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## EXECUTE_CUSTOM_ACTION
-
-```TypeScript
-EXECUTE_CUSTOM_ACTION = 22
-```
-
-Executes a custom action. The [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).customAction parameter must be configured, with the parameter value being the name of the custom action.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AccessibilityAction-EXECUTE_CUSTOM_ACTION = 22--><!--Device-AccessibilityAction-EXECUTE_CUSTOM_ACTION = 22-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

@@ -49,6 +49,7 @@ onAcquireFormData?(formId: string): Record<string, Object>
 | object | 卡片的自定义数据，由开发者自行决定传入的键值对。<br>**适用版本：** 10 |
 | Record&lt;string, Object&gt; | 卡片的自定义数据，由开发者自行决定传入的键值对。<br>**适用版本：** 11 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,6 +66,8 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onShareForm
 
@@ -97,6 +100,7 @@ onShareForm?(formId: string): Record<string, Object>
 | object | 卡片要分享的数据，由开发者自行决定传入的键值对。<br>**适用版本：** 9 - 10 |
 | Record&lt;string, Object&gt; | 卡片要分享的数据，由开发者自行决定传入的键值对。<br>**适用版本：** 11 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,3 +117,5 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->

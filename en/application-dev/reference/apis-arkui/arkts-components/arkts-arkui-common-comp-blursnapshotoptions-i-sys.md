@@ -20,7 +20,11 @@ Defines the options for blur snapshot optimization. Setting this object enables 
 enableFreeze?: boolean
 ```
 
-Whether to enable freeze optimization for the blur snapshot. When enabled, freeze optimization is applied to reduce rendering overhead during blur snapshot.
+Sets whether to enable freeze optimization for the blur snapshot. When enabled, freeze optimization is applied during blur snapshot to reduce rendering overhead. When not set or set to false, freeze optimization is disabled and the conventional rendering method is used.
+
+After the sheet is pulled up, this parameter value can be switched dynamically.
+
+Default value: false
 
 **Type:** boolean
 

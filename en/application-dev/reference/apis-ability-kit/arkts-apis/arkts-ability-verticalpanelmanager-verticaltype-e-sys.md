@@ -6,8 +6,6 @@ export enum VerticalType
 
 Provides vertical type definition.
 
-@enum { string } VerticalType
-
 **Since:** 20
 
 <!--Device-verticalPanelManager-export enum VerticalType--><!--Device-verticalPanelManager-export enum VerticalType-End-->

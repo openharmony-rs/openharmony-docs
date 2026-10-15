@@ -12,6 +12,12 @@ export enum PermissionStateChangeType
 - 在权限未授予时，拉起运行时权限弹窗或权限设置页面，请求用户授权。  
 - 订阅当前应用的权限状态变化事件，在权限状态变化后及时调整业务流程。
 
+**起始版本：** 18
+
+<!--Device-abilityAccessCtrl-export enum PermissionStateChangeType--><!--Device-abilityAccessCtrl-export enum PermissionStateChangeType-End-->
+
+**系统能力：** SystemCapability.Security.AccessToken
+
 ## 核心枚举类型
 
 - **[GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md)：** 权限授权状态枚举，用于表示当前权限的授权状态。  
@@ -32,9 +38,21 @@ export enum PermissionStateChangeType
 
 ![image_abilityAccessCtrl](../../../reference/apis-ability-kit/figures/abilityAccessCtrl.png)
 
+## PERMISSION_GRANTED_OPER
+
+```TypeScript
+PERMISSION_GRANTED_OPER = 1
+```
+
+表示权限授予操作。
+
 **起始版本：** 18
 
-<!--Device-abilityAccessCtrl-export enum PermissionStateChangeType--><!--Device-abilityAccessCtrl-export enum PermissionStateChangeType-End-->
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-PermissionStateChangeType-PERMISSION_GRANTED_OPER = 1--><!--Device-PermissionStateChangeType-PERMISSION_GRANTED_OPER = 1-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken
 
@@ -50,26 +68,8 @@ PERMISSION_REVOKED_OPER = 0
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-PermissionStateChangeType-PERMISSION_REVOKED_OPER = 0--><!--Device-PermissionStateChangeType-PERMISSION_REVOKED_OPER = 0-End-->
-
-**系统能力：** SystemCapability.Security.AccessToken
-
-## PERMISSION_GRANTED_OPER
-
-```TypeScript
-PERMISSION_GRANTED_OPER = 1
-```
-
-表示权限授予操作。
-
-**起始版本：** 18
-
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-PermissionStateChangeType-PERMISSION_GRANTED_OPER = 1--><!--Device-PermissionStateChangeType-PERMISSION_GRANTED_OPER = 1-End-->
 
 **系统能力：** SystemCapability.Security.AccessToken

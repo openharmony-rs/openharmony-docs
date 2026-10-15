@@ -26,7 +26,7 @@ colorSpace?: colorSpaceManager.ColorSpace
 
 Color space used for the snapshot.
 
-If the target component's color space is known, specify it through **colorSpace** and set **isAuto** to **false** to achieve optimal snapshot quality.
+If the color space used by the component to be captured is known, you can specify it through **colorSpace** and set **isAuto** to **false** to achieve the expected snapshot effect.
 
 The value can be **DISPLAY_P3**, **SRGB**, or **DISPLAY_BT2020_SRGB** in [colorSpaceManager.ColorSpace](../../apis-arkgraphics2d/arkts-apis/arkts-arkgraphics2d-colorspacemanager-colorspace-e.md).
 

@@ -40,6 +40,7 @@ Called when this AutoFillExtensionAbility is switched from the foreground to the
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -52,6 +53,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onCreate
 
@@ -71,6 +74,7 @@ Called when an AutoFillExtensionAbility is created. In this method, you can perf
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -83,6 +87,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDestroy
 
@@ -102,6 +108,7 @@ Called to clear resources when this AutoFillExtensionAbility is destroyed. This 
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -114,6 +121,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onFillRequest
 
@@ -141,6 +150,7 @@ Called when an auto-fill request is initiated or a password is generated.
 | request | [FillRequest](arkts-ability-autofillrequest-fillrequest-i.md) | Yes | Data to be automatically filled in. |
 | callback | [FillRequestCallback](arkts-ability-autofillrequest-fillrequestcallback-i-sys.md) | Yes | Callback used for the auto-fill request. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -179,6 +189,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## onForeground
 
 ```TypeScript
@@ -197,6 +209,7 @@ Called when this AutoFillExtensionAbility is switched from the background to the
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -209,6 +222,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onSaveRequest
 
@@ -236,6 +251,7 @@ This callback is triggered when automatic or manual saving is initiated.
 | request | [SaveRequest](arkts-ability-autofillrequest-saverequest-i.md) | Yes | Data to be saved. |
 | callback | [SaveRequestCallback](arkts-ability-autofillrequest-saverequestcallback-i-sys.md) | Yes | Callback used for the saving request. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -272,6 +288,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
 }
 ```
 
+<!--DelEnd-->
+
 ## onSessionDestroy
 
 ```TypeScript
@@ -296,6 +314,7 @@ Called when the session of this AutoFillExtensionAbility is destroyed. The sessi
 | --- | --- | --- | --- |
 | session | [UIExtensionContentSession](arkts-ability-app-ability-uiextensioncontentsession-uiextensioncontentsession-c.md) | Yes | UI content information related to the AutoFillExtensionAbility. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -308,6 +327,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onUpdateRequest
 
@@ -333,6 +354,7 @@ Called when the application UI data changes and the filled content needs to be u
 | --- | --- | --- | --- |
 | request | [UpdateRequest](arkts-ability-autofillrequest-updaterequest-i-sys.md) | Yes | Update request. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -346,6 +368,8 @@ class MyAutoFillExtensionAbility extends AutoFillExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## context
 

@@ -14,6 +14,54 @@ enum Orientation
 
 **系统接口：** 此接口为系统接口。
 
+## HORIZONTAL
+
+```TypeScript
+HORIZONTAL = 2
+```
+
+表示指定屏幕为水平方向。
+
+**起始版本：** 9
+
+<!--Device-Orientation-HORIZONTAL = 2--><!--Device-Orientation-HORIZONTAL = 2-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+## REVERSE_HORIZONTAL
+
+```TypeScript
+REVERSE_HORIZONTAL = 4
+```
+
+表示指定屏幕为反向水平方向。
+
+**起始版本：** 9
+
+<!--Device-Orientation-REVERSE_HORIZONTAL = 4--><!--Device-Orientation-REVERSE_HORIZONTAL = 4-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
+## REVERSE_VERTICAL
+
+```TypeScript
+REVERSE_VERTICAL = 3
+```
+
+表示指定屏幕为反向垂直方向。
+
+**起始版本：** 9
+
+<!--Device-Orientation-REVERSE_VERTICAL = 3--><!--Device-Orientation-REVERSE_VERTICAL = 3-End-->
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## UNSPECIFIED
 
 ```TypeScript
@@ -41,54 +89,6 @@ VERTICAL = 1
 **起始版本：** 9
 
 <!--Device-Orientation-VERTICAL = 1--><!--Device-Orientation-VERTICAL = 1-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-## HORIZONTAL
-
-```TypeScript
-HORIZONTAL = 2
-```
-
-表示指定屏幕为水平方向。
-
-**起始版本：** 9
-
-<!--Device-Orientation-HORIZONTAL = 2--><!--Device-Orientation-HORIZONTAL = 2-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-## REVERSE_VERTICAL
-
-```TypeScript
-REVERSE_VERTICAL = 3
-```
-
-表示指定屏幕为反向垂直方向。
-
-**起始版本：** 9
-
-<!--Device-Orientation-REVERSE_VERTICAL = 3--><!--Device-Orientation-REVERSE_VERTICAL = 3-End-->
-
-**系统能力：** SystemCapability.WindowManager.WindowManager.Core
-
-**系统接口：** 此接口为系统接口。
-
-## REVERSE_HORIZONTAL
-
-```TypeScript
-REVERSE_HORIZONTAL = 4
-```
-
-表示指定屏幕为反向水平方向。
-
-**起始版本：** 9
-
-<!--Device-Orientation-REVERSE_HORIZONTAL = 4--><!--Device-Orientation-REVERSE_HORIZONTAL = 4-End-->
 
 **系统能力：** SystemCapability.WindowManager.WindowManager.Core
 

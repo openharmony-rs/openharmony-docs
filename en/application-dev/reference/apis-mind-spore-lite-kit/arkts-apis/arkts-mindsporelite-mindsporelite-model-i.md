@@ -225,6 +225,8 @@ globalContext.getApplicationContext()
   });
 ```
 
+<a id="predict1"></a>
+
 ## predict
 
 ```TypeScript
@@ -295,7 +297,7 @@ globalContext.getApplicationContext()
   });
 ```
 
-<a id="predict-1"></a>
+<a id="predict2"></a>
 
 ## predict
 

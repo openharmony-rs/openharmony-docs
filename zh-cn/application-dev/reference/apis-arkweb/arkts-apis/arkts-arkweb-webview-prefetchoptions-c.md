@@ -4,7 +4,7 @@
 class PrefetchOptions
 ```
 
-PrefetchOptions是ArkWeb框架中用于自定义网页预取行为的配置类，通过[prefetchPage](arkts-arkweb-webview-webviewcontroller-c.md#prefetchpage-1)的预取相关接口设置，自定义内容包括是否忽略响应头中的Cache-Control: no-store和设置两次预取间的最小时间间隔。
+PrefetchOptions是ArkWeb框架中用于自定义网页预取行为的配置类，通过[prefetchPage](arkts-arkweb-webview-webviewcontroller-c.md#prefetchpage2)的预取相关接口设置，自定义内容包括是否忽略响应头中的Cache-Control: no-store和设置两次预取间的最小时间间隔。
 
 **起始版本：** 21
 

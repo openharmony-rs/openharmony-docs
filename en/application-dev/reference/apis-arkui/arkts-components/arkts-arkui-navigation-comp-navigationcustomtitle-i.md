@@ -38,6 +38,10 @@ height: TitleHeight | Length
 
 Height of the title bar.
 
+Value range: [0, +∞)
+
+For details about the unit, see the description of the [Length](../arkts-apis/arkts-arkui-length-t.md) type.
+
 **Type:** [TitleHeight](../arkts-apis/arkts-arkui-titleheight-e.md) &#124; [Length](../arkts-apis/arkts-arkui-length-t.md)
 
 **Since:** 9

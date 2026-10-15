@@ -88,7 +88,7 @@ Account of the contact. The value contains 1 to 255 bytes. If the value is out o
 countdown?: number
 ```
 
-Validity period for file viewing, in seconds. The default value is 0. After the validity period expires, the file is automatically closed. The value range is [-2&lt;sup&gt;31&lt;/sup&gt;, 2&lt;sup&gt;31&lt;/sup&gt;-1].
+Validity period for file viewing, in seconds. The default value is 0. After the validity period expires, the file is automatically closed. The value range is [-2<sup>31</sup>, 2<sup>31</sup>-1].
 
 **Type:** number
 

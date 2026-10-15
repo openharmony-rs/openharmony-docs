@@ -4,7 +4,7 @@
 declare class DrawModifier
 ```
 
-DrawModifier可设置遮罩层（drawOverlay&lt;sup&gt;23+&lt;/sup&gt;）、前景（drawForeground&lt;sup&gt;20+&lt;/sup&gt;）、内容前景（drawFront）、内容（drawContent）和内容背景（drawBehind）的绘制方法，还提供主动触发重绘的方法[invalidate](#invalidate)。每个DrawModifier实例只能设置到一个组件上，禁止重复设置。  
+DrawModifier可设置遮罩层（drawOverlay<sup>23+</sup>）、前景（drawForeground<sup>20+</sup>）、内容前景（drawFront）、内容（drawContent）和内容背景（drawBehind）的绘制方法，还提供主动触发重绘的方法[invalidate](#invalidate)。每个DrawModifier实例只能设置到一个组件上，禁止重复设置。  
 > **说明：** 
 > 
 > 绘制顺序从下到上依次为：内容背景（drawBehind）→ 内容（drawContent）→ 内容前景（drawFront）→ 前景（drawForeground）→ 遮罩层（drawOverlay）。
@@ -42,7 +42,7 @@ drawBehind?(drawContext: DrawContext): void
 
 **示例**
 
-请参考示例1（通过DrawModifier进行自定义绘制）。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawContent
 
@@ -70,7 +70,7 @@ drawContent?(drawContext: DrawContext): void
 
 **示例**
 
-请参考示例1（通过DrawModifier进行自定义绘制）。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawForeground
 
@@ -98,7 +98,7 @@ drawForeground(drawContext: DrawContext): void
 
 **示例**
 
-请参考示例2（通过DrawModifier对容器的前景进行自定义绘制）。
+请参考[示例2（通过DrawModifier对容器的前景进行自定义绘制）](#示例2通过drawmodifier对容器的前景进行自定义绘制)。
 
 ## drawFront
 
@@ -126,7 +126,7 @@ drawFront?(drawContext: DrawContext): void
 
 **示例**
 
-请参考示例1（通过DrawModifier进行自定义绘制）。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。
 
 ## drawOverlay
 
@@ -237,4 +237,4 @@ invalidate(): void
 
 **示例**
 
-请参考示例1（通过DrawModifier进行自定义绘制）。
+请参考[示例1（通过DrawModifier进行自定义绘制）](#示例1通过drawmodifier进行自定义绘制)。

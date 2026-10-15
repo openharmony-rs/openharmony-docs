@@ -34,7 +34,7 @@ Indicates the uri of folder
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Folder-get folderUri(): string--><!--Device-Folder-get folderUri(): string-End-->
 
@@ -52,7 +52,7 @@ Indicates the uri of folder
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Folder-set folderUri(value: string)--><!--Device-Folder-set folderUri(value: string)-End-->
 

@@ -14,22 +14,6 @@ Enumerates the tip codes used during the fingerprint authentication process.
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 
-## FINGERPRINT_AUTH_TIP_GOOD
-
-```TypeScript
-FINGERPRINT_AUTH_TIP_GOOD = 0
-```
-
-The obtained fingerprint image is in good condition.
-
-**Since:** 8
-
-**Deprecated since:** 11
-
-<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0-End-->
-
-**System capability:** SystemCapability.UserIAM.UserAuth.Core
-
 ## FINGERPRINT_AUTH_TIP_DIRTY
 
 ```TypeScript
@@ -43,6 +27,22 @@ Large fingerprint image noise is detected due to suspicious or detected dirt on 
 **Deprecated since:** 11
 
 <!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_DIRTY = 1--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_DIRTY = 1-End-->
+
+**System capability:** SystemCapability.UserIAM.UserAuth.Core
+
+## FINGERPRINT_AUTH_TIP_GOOD
+
+```TypeScript
+FINGERPRINT_AUTH_TIP_GOOD = 0
+```
+
+The obtained fingerprint image is in good condition.
+
+**Since:** 8
+
+**Deprecated since:** 11
+
+<!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0--><!--Device-FingerprintTips-FINGERPRINT_AUTH_TIP_GOOD = 0-End-->
 
 **System capability:** SystemCapability.UserIAM.UserAuth.Core
 

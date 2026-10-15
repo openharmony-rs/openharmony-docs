@@ -6,17 +6,17 @@ declare class PatternLockController
 
 Controller of the **PatternLock** component, used to reset the component state and set the pattern password state.
 
-## Objects to Import
-
-```typescript
-let patternLockController: PatternLockController = new PatternLockController();
-```
-
 **Since:** 9
 
 <!--Device-unnamed-declare class PatternLockController--><!--Device-unnamed-declare class PatternLockController-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Objects to Import
+
+```typescript
+let patternLockController: PatternLockController = new PatternLockController();
+```
 
 ## constructor
 

@@ -49,6 +49,7 @@ export function requestToolPermissions(permissionQuery: PermissionQuery): Promis
 | [24010003](../errorcode-abilityToolAccessCtrl-sys.md#24010003-环境错误) | The account is not logged in, network is unavailable, timeout, etc. |
 | [24010006](../errorcode-abilityToolAccessCtrl-sys.md#24010006-设备处于锁屏状态时不允许执行操作) | The requested operation is not allowed to be executed while the device is locked. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -72,3 +73,5 @@ abilityToolAccessCtrl.requestToolPermissions(permissionQuery).then((data: abilit
   console.error(`requestToolPermissions fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

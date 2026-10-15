@@ -12,22 +12,6 @@ enum CameraPosition
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-## CAMERA_POSITION_UNSPECIFIED
-
-```TypeScript
-CAMERA_POSITION_UNSPECIFIED = 0
-```
-
-相对于设备屏幕没有固定的朝向的相机。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-CameraPosition-CAMERA_POSITION_UNSPECIFIED = 0--><!--Device-CameraPosition-CAMERA_POSITION_UNSPECIFIED = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
 ## CAMERA_POSITION_BACK
 
 ```TypeScript
@@ -38,7 +22,7 @@ CAMERA_POSITION_BACK = 1
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraPosition-CAMERA_POSITION_BACK = 1--><!--Device-CameraPosition-CAMERA_POSITION_BACK = 1-End-->
 
@@ -54,9 +38,25 @@ CAMERA_POSITION_FRONT = 2
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-CameraPosition-CAMERA_POSITION_FRONT = 2--><!--Device-CameraPosition-CAMERA_POSITION_FRONT = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## CAMERA_POSITION_UNSPECIFIED
+
+```TypeScript
+CAMERA_POSITION_UNSPECIFIED = 0
+```
+
+相对于设备屏幕没有固定的朝向的相机。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-CameraPosition-CAMERA_POSITION_UNSPECIFIED = 0--><!--Device-CameraPosition-CAMERA_POSITION_UNSPECIFIED = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

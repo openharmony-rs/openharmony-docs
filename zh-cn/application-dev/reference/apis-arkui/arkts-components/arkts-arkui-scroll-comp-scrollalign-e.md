@@ -12,13 +12,15 @@ declare enum ScrollAlign
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## START
+## AUTO
 
 ```TypeScript
-START
+AUTO
 ```
 
-首部对齐。指定item首部与滚动容器组件首部对齐。
+自动对齐。
+
+若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于滚动容器组件，使指定item完全处于显示区。
 
 **起始版本：** 10
 
@@ -26,7 +28,7 @@ START
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ScrollAlign-START--><!--Device-ScrollAlign-START-End-->
+<!--Device-ScrollAlign-AUTO--><!--Device-ScrollAlign-AUTO-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,15 +68,13 @@ END
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## AUTO
+## START
 
 ```TypeScript
-AUTO
+START
 ```
 
-自动对齐。
-
-若指定item完全处于显示区，不做调整。否则依照滑动距离最短的原则，将指定item首部对齐或尾部对齐于滚动容器组件，使指定item完全处于显示区。
+首部对齐。指定item首部与滚动容器组件首部对齐。
 
 **起始版本：** 10
 
@@ -82,6 +82,6 @@ AUTO
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ScrollAlign-AUTO--><!--Device-ScrollAlign-AUTO-End-->
+<!--Device-ScrollAlign-START--><!--Device-ScrollAlign-START-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

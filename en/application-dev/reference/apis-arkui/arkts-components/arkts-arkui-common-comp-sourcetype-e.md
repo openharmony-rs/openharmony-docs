@@ -4,7 +4,7 @@
 declare enum SourceType
 ```
 
-Enumerates the input source device types.
+Defines the device types corresponding to the input sources.
 
 **Since:** 8
 
@@ -12,19 +12,39 @@ Enumerates the input source device types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Unknown
+## JOYSTICK
 
 ```TypeScript
-Unknown
+JOYSTICK = 5
 ```
 
-Unknown input source.
+Joystick.
 
-**Since:** 8
+**Since:** 22
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
+**Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SourceType-Unknown--><!--Device-SourceType-Unknown-End-->
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-SourceType-JOYSTICK = 5--><!--Device-SourceType-JOYSTICK = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## KEY
+
+```TypeScript
+KEY = 4
+```
+
+Key.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-SourceType-KEY = 4--><!--Device-SourceType-KEY = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,38 +80,18 @@ Touchscreen.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## KEY
+## Unknown
 
 ```TypeScript
-KEY = 4
+Unknown
 ```
 
-Key.
+Unknown input source.
 
-**Since:** 22
+**Since:** 8
 
-**Model restriction:** This API can be used only in the stage model.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-SourceType-KEY = 4--><!--Device-SourceType-KEY = 4-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## JOYSTICK
-
-```TypeScript
-JOYSTICK = 5
-```
-
-Joystick.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-SourceType-JOYSTICK = 5--><!--Device-SourceType-JOYSTICK = 5-End-->
+<!--Device-SourceType-Unknown--><!--Device-SourceType-Unknown-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

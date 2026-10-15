@@ -12,22 +12,6 @@ export enum CertificateScope
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog
 
-## NOT_SPECIFIED
-
-```TypeScript
-NOT_SPECIFIED = 0
-```
-
-不指定使用范围，用户可在证书安装界面选择。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-CertificateScope-NOT_SPECIFIED = 0--><!--Device-CertificateScope-NOT_SPECIFIED = 0-End-->
-
-**系统能力：** SystemCapability.Security.CertificateManagerDialog
-
 ## CURRENT_USER
 
 ```TypeScript
@@ -57,5 +41,21 @@ GLOBAL_USER = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-CertificateScope-GLOBAL_USER = 2--><!--Device-CertificateScope-GLOBAL_USER = 2-End-->
+
+**系统能力：** SystemCapability.Security.CertificateManagerDialog
+
+## NOT_SPECIFIED
+
+```TypeScript
+NOT_SPECIFIED = 0
+```
+
+不指定使用范围，用户可在证书安装界面选择。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-CertificateScope-NOT_SPECIFIED = 0--><!--Device-CertificateScope-NOT_SPECIFIED = 0-End-->
 
 **系统能力：** SystemCapability.Security.CertificateManagerDialog

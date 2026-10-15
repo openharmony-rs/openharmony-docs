@@ -42,6 +42,7 @@ function getEsimFreeStorage(): Promise<number>
 | [3120001](../errorcode-telephony.md#3120001-服务连接失败) | Service connection failed. |
 | [3120002](../errorcode-telephony.md#3120002-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,3 +55,5 @@ eSIM.getEsimFreeStorage().then((data) => {
     console.error(`getEsimFreeStorage , promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

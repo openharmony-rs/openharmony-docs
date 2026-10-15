@@ -52,7 +52,7 @@ Whether to automatically clear the dirty data (data that has been deleted from t
 
 Default value: **true**.
 
-For a database with device-cloud synergy, this parameter can be used to set whether to automatically clear the data deleted from the cloud on the device. You can manually clear the data by calling cleanDirtyData&lt;sup&gt;11+&lt;/sup&gt;.
+For a database with device-cloud synergy, this parameter can be used to set whether to automatically clear the data deleted from the cloud on the device. You can manually clear the data by calling cleanDirtyData<sup>11+</sup>.
 
 This parameter is supported since API version 11.
 

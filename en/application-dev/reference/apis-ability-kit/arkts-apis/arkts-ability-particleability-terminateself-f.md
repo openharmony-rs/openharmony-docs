@@ -6,6 +6,8 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
+<a id="terminateself1"></a>
+
 ## terminateSelf
 
 ```TypeScript
@@ -43,7 +45,7 @@ particleAbility.terminateSelf(
 ```
 
 
-<a id="terminateself-1"></a>
+<a id="terminateself2"></a>
 
 ## terminateSelf
 

@@ -12,19 +12,35 @@ enum VideoStabilizationMode
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-## OFF
+## AUTO
 
 ```TypeScript
-OFF = 0
+AUTO = 4
 ```
 
-关闭视频防抖功能。
+自动进行选择防抖算法。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
-<!--Device-VideoStabilizationMode-OFF = 0--><!--Device-VideoStabilizationMode-OFF = 0-End-->
+<!--Device-VideoStabilizationMode-AUTO = 4--><!--Device-VideoStabilizationMode-AUTO = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+## HIGH
+
+```TypeScript
+HIGH = 3
+```
+
+使用防抖效果最好的防抖算法，防抖效果优于MIDDLE类型。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
+
+<!--Device-VideoStabilizationMode-HIGH = 3--><!--Device-VideoStabilizationMode-HIGH = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -38,7 +54,7 @@ LOW = 1
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoStabilizationMode-LOW = 1--><!--Device-VideoStabilizationMode-LOW = 1-End-->
 
@@ -54,40 +70,24 @@ MIDDLE = 2
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
 <!--Device-VideoStabilizationMode-MIDDLE = 2--><!--Device-VideoStabilizationMode-MIDDLE = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
-## HIGH
+## OFF
 
 ```TypeScript
-HIGH = 3
+OFF = 0
 ```
 
-使用防抖效果最好的防抖算法，防抖效果优于MIDDLE类型。
+关闭视频防抖功能。
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本19开始，该接口支持在原子化服务中使用。
 
-<!--Device-VideoStabilizationMode-HIGH = 3--><!--Device-VideoStabilizationMode-HIGH = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-## AUTO
-
-```TypeScript
-AUTO = 4
-```
-
-自动进行选择防抖算法。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本19开始，该接口支持在原子化服务中使用。
-
-<!--Device-VideoStabilizationMode-AUTO = 4--><!--Device-VideoStabilizationMode-AUTO = 4-End-->
+<!--Device-VideoStabilizationMode-OFF = 0--><!--Device-VideoStabilizationMode-OFF = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core

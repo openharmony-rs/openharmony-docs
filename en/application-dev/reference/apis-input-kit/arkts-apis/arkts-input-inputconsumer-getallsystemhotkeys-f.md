@@ -12,7 +12,7 @@ import { inputConsumer } from '@kit.InputKit';
 function getAllSystemHotkeys(): Promise<Array<HotkeyOptions>>
 ```
 
-Obtains all system shortcut keys. This API uses a promise to return the result.
+Obtains all system hotkeys. This API uses a promise to return the result.
 
 **Since:** 14
 
@@ -24,13 +24,13 @@ Obtains all system shortcut keys. This API uses a promise to return the result.
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md)&gt;&gt; | Promise used to return the list of all system shortcut keys. |
+| Promise&lt;Array&lt;[HotkeyOptions](arkts-input-inputconsumer-hotkeyoptions-i.md)&gt;&gt; | Promise used to return the list of all system hotkeys. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Examples**
 

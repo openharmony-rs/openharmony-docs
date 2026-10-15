@@ -43,6 +43,7 @@ Restarts a print job that has been finished before. This API uses a promise to r
 | [201](../../errorcode-universal.md#201-permission-denied) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,3 +57,5 @@ print.restartPrintJob(jobId).then(() => {
     console.error(`Failed to restart print job. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

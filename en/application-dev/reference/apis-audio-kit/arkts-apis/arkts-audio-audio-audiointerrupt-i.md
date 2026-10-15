@@ -36,7 +36,7 @@ Audio content type.
 
 **Deprecated since:** 9
 
-**Substitutes:** rendererInfo
+**Substitutes:** [rendererInfo](arkts-audio-audio-audiorendereroptions-i.md#rendererinfo)
 
 <!--Device-AudioInterrupt-contentType: ContentType--><!--Device-AudioInterrupt-contentType: ContentType-End-->
 
@@ -76,7 +76,7 @@ Audio stream usage.
 
 **Deprecated since:** 9
 
-**Substitutes:** rendererInfo
+**Substitutes:** [rendererInfo](arkts-audio-audio-audiorendereroptions-i.md#rendererinfo)
 
 <!--Device-AudioInterrupt-streamUsage: StreamUsage--><!--Device-AudioInterrupt-streamUsage: StreamUsage-End-->
 

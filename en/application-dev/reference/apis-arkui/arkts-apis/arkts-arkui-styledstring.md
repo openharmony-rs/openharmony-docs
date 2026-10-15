@@ -77,225 +77,6 @@
 
 ## Examples
 
-### Example 1: Marshalling and Unmarshalling Styled Strings
-
-This example implements the serialization and deserialization of a styled string through the marshalling and unmarshalling methods.
-
-
-
-```TypeScript
-// xxx.ets
-import { LengthMetrics } from '@kit.ArkUI';
-
-@Entry
-@Component
-struct Index {
-  @State textTitle: string = 'Marshalling and unmarshalling APIs';
-  @State textResult: string = 'Hello world';
-  @State serializeStr: string = 'Marshalling';
-  @State flag: boolean = false;
-  private textAreaController: TextAreaController = new TextAreaController();
-  private buff: Uint8Array = new Uint8Array();
-  fontStyle: TextStyle = new TextStyle({
-    fontWeight: FontWeight.Lighter,
-    fontFamily: 'HarmonyOS Sans',
-    fontColor: Color.Green,
-    fontSize: LengthMetrics.vp(30),
-    fontStyle: FontStyle.Normal
-  });
-  // Create a styled string object.
-  styledString: StyledString = new StyledString('Hello world',
-    [{
-      start: 0,
-      length: 11,
-      styledKey: StyledStringKey.FONT,
-      styledValue: this.fontStyle
-    }]);
-
-  @Builder
-  controllableBuild() {
-    Column() {
-      TextArea({
-        text: this.textResult,
-        controller: this.textAreaController
-      }).width('95%').height('40%').enableKeyboardOnFocus(false)
-
-      Button(this.serializeStr)
-        .margin(5)
-        .onClick(async () => {
-          this.flag = !this.flag;
-          if (!this.flag) {
-            console.info('Debug: Unmarshalling');
-            // Deserialize the ArrayBuffer to restore the styled string object.
-            let styles: StyledString = await StyledString.unmarshalling(this.buff.buffer);
-            this.textTitle = 'After decodeTlv is called, the result of unmarshalling is: ';
-            if (styles == undefined) {
-              console.error('Debug: Failed to obtain the styled string.');
-              return;
-            }
-            this.textResult = styles.getString();
-            console.info('Debug: this.textResult = ' + this.textResult);
-            let stylesArr = styles.getStyles(0, this.textResult.length, StyledStringKey.FONT);
-            console.info('Debug: stylesArr.length = ' + stylesArr.length);
-            for (let i = 0; i < stylesArr.length; ++i) {
-              console.info('Debug: style.start = ' + stylesArr[i].start);
-              console.info('Debug: style.length = ' + stylesArr[i].length);
-              console.info('Debug: style.styledKey = ' + stylesArr[i].styledKey);
-              let font = stylesArr[i].styledValue as TextStyle;
-              console.info('Debug: style.fontColor = ' + font.fontColor);
-              console.info('Debug: style.fontSize = ' + font.fontSize);
-              console.info('Debug: style.fontFamily = ' + font.fontFamily);
-              console.info('Debug: style.fontStyle = ' + font.fontStyle);
-            }
-            let subStr = styles.subStyledString(0, 2);
-            console.info('Debug: subStr = ' + subStr.getString());
-            this.serializeStr = 'Marshalling';
-          } else {
-            console.info('Debug: Marshalling');
-            // Serialize the styled string to return an ArrayBuffer for storage or transfer.
-            let resultBuffer = StyledString.marshalling(this.styledString);
-            this.buff = new Uint8Array(resultBuffer);
-            this.textTitle = 'After encodeTlv is called, the result of marshalling is: ';
-            this.textResult = this.buff.toString();
-            console.info('Debug: buff = ' + this.buff.toString());
-            this.serializeStr = 'Unmarshalling';
-          }
-        })
-    }.margin(10)
-  }
-
-  build() {
-    Column() {
-      Blank().margin(30)
-      Text(this.textTitle)
-      this.controllableBuild()
-    }
-  }
-}
-```
-
-### Example 2: Marshalling and Unmarshalling Styled Strings with UserDataSpan
-
-This example demonstrates the marshalling and unmarshalling of styled strings that include custom user data spans using the marshalling and unmarshalling APIs.
-
-```TypeScript
-enum MyUserDataType {
-  TYPE1 = 0,
-  TYPE2
-}
-
-class MyUserData extends UserDataSpan {
-  constructor() {
-    super();
-  }
-
-  marshalling() {
-    console.info('MyUserData marshalling...');
-    const text = 'MyUserData1';
-    const buffer = new ArrayBuffer(text.length + 1);
-    const uint8View = new Uint8Array(buffer);
-    // Write the type.
-    uint8View[0] = MyUserDataType.TYPE1;
-    for (let i = 0; i < text.length; i++) {
-      uint8View[i + 1] = text.charCodeAt(i);
-    }
-    return uint8View.buffer;
-  }
-
-  unmarshalling() {
-    console.info('MyUserData unmarshalling...');
-    return new MyUserData();
-  }
-}
-
-class MyUserData2 extends UserDataSpan {
-  marshalling() {
-    console.info('MyUserData2 marshalling...');
-    const text = 'MyUserData2';
-    const buffer = new ArrayBuffer(text.length + 1);
-    const uint8View = new Uint8Array(buffer);
-    uint8View[0] = MyUserDataType.TYPE2;
-    for (let i = 0; i < text.length; i++) {
-      uint8View[i + 1] = text.charCodeAt(i);
-    }
-    return uint8View.buffer;
-  }
-
-  unmarshalling() {
-    console.info('MyUserData2 unmarshalling...');
-    return new MyUserData2();
-  }
-}
-
-@Entry
-@Component
-struct MarshallExample1 {
-  controller: TextController = new TextController();
-
-  build() {
-    Column() {
-      Text(undefined, { controller: this.controller })
-      Button('Marshall&UnMarshall')
-        .onClick(async () => {
-          let myData = new MyUserData();
-          let myData2 = new MyUserData2();
-          let myStyledString = new MutableStyledString('12345', [{
-            start: 0,
-            length: 3,
-            styledKey: StyledStringKey.USER_DATA,
-            styledValue: myData
-          }, {
-            start: 3,
-            length: 1,
-            styledKey: StyledStringKey.USER_DATA,
-            styledValue: myData2
-          }]);
-
-          let buffer = StyledString.marshalling(myStyledString, (marshallingValue: StyledStringMarshallingValue) => {
-            // Call the corresponding serialization method based on the specific type of UserDataSpan.
-            if (marshallingValue instanceof MyUserData) {
-              console.info('StyledString.marshalling MyUserData');
-              return marshallingValue.marshalling();
-            } else if (marshallingValue instanceof MyUserData2) {
-              console.info('StyledString.marshalling MyUserData2');
-              return marshallingValue.marshalling();
-            }
-            console.info('StyledString.marshalling default');
-            return new ArrayBuffer(10);
-          });
-
-          let newStyledString = await StyledString.unmarshalling(buffer, (value: ArrayBuffer) => {
-            // Read the type identifier from the buffer, and call the corresponding deserialization method based on the type.
-            const uint8View = new Uint8Array(value);
-            let type = uint8View[0];
-            console.info('unmarshalling length:' + uint8View.length);
-            if (type == MyUserDataType.TYPE1) {
-              console.info('unmarshalling type1:' + type);
-              let myUserData = new MyUserData();
-              return myUserData.unmarshalling();
-            } else if (type == MyUserDataType.TYPE2) {
-              console.info('unmarshalling type2:' + type);
-              let myUserData = new MyUserData2();
-              return myUserData.unmarshalling();
-            }
-            return new MyUserData();
-          });
-          if (newStyledString == undefined) {
-            console.error('Failed to obtain newStyledString.');
-            return;
-          }
-          this.controller.setStyledString(newStyledString);
-        })
-        .fontSize(20)
-        .margin(10)
-    }
-    .justifyContent(FlexAlign.Center)
-    .width('100%')
-    .height('100%')
-  }
-}
-```
-
 ### Example 1: Processing Styled Strings
 
 This example shows how to perform insertion, deletion, replacement, and viewing of styled strings using the [insertString](arkts-arkui-mutablestyledstring-c.md#insertstring), [removeStyles](arkts-arkui-mutablestyledstring-c.md#removestyles), [replaceStyle](arkts-arkui-mutablestyledstring-c.md#replacestyle), and [getStyles](arkts-arkui-styledstring-c.md#getstyles) APIs, available since API version 12.
@@ -2355,6 +2136,225 @@ struct TailIndentsExample {
     }
     .height('100%')
     .width('100%')
+  }
+}
+```
+
+### Example 1: Marshalling and Unmarshalling Styled Strings
+
+This example implements the serialization and deserialization of a styled string through the marshalling and unmarshalling methods.
+
+
+
+```TypeScript
+// xxx.ets
+import { LengthMetrics } from '@kit.ArkUI';
+
+@Entry
+@Component
+struct Index {
+  @State textTitle: string = 'Marshalling and unmarshalling APIs';
+  @State textResult: string = 'Hello world';
+  @State serializeStr: string = 'Marshalling';
+  @State flag: boolean = false;
+  private textAreaController: TextAreaController = new TextAreaController();
+  private buff: Uint8Array = new Uint8Array();
+  fontStyle: TextStyle = new TextStyle({
+    fontWeight: FontWeight.Lighter,
+    fontFamily: 'HarmonyOS Sans',
+    fontColor: Color.Green,
+    fontSize: LengthMetrics.vp(30),
+    fontStyle: FontStyle.Normal
+  });
+  // Create a styled string object.
+  styledString: StyledString = new StyledString('Hello world',
+    [{
+      start: 0,
+      length: 11,
+      styledKey: StyledStringKey.FONT,
+      styledValue: this.fontStyle
+    }]);
+
+  @Builder
+  controllableBuild() {
+    Column() {
+      TextArea({
+        text: this.textResult,
+        controller: this.textAreaController
+      }).width('95%').height('40%').enableKeyboardOnFocus(false)
+
+      Button(this.serializeStr)
+        .margin(5)
+        .onClick(async () => {
+          this.flag = !this.flag;
+          if (!this.flag) {
+            console.info('Debug: Unmarshalling');
+            // Deserialize the ArrayBuffer to restore the styled string object.
+            let styles: StyledString = await StyledString.unmarshalling(this.buff.buffer);
+            this.textTitle = 'After decodeTlv is called, the result of unmarshalling is: ';
+            if (styles == undefined) {
+              console.error('Debug: Failed to obtain the styled string.');
+              return;
+            }
+            this.textResult = styles.getString();
+            console.info('Debug: this.textResult = ' + this.textResult);
+            let stylesArr = styles.getStyles(0, this.textResult.length, StyledStringKey.FONT);
+            console.info('Debug: stylesArr.length = ' + stylesArr.length);
+            for (let i = 0; i < stylesArr.length; ++i) {
+              console.info('Debug: style.start = ' + stylesArr[i].start);
+              console.info('Debug: style.length = ' + stylesArr[i].length);
+              console.info('Debug: style.styledKey = ' + stylesArr[i].styledKey);
+              let font = stylesArr[i].styledValue as TextStyle;
+              console.info('Debug: style.fontColor = ' + font.fontColor);
+              console.info('Debug: style.fontSize = ' + font.fontSize);
+              console.info('Debug: style.fontFamily = ' + font.fontFamily);
+              console.info('Debug: style.fontStyle = ' + font.fontStyle);
+            }
+            let subStr = styles.subStyledString(0, 2);
+            console.info('Debug: subStr = ' + subStr.getString());
+            this.serializeStr = 'Marshalling';
+          } else {
+            console.info('Debug: Marshalling');
+            // Serialize the styled string to return an ArrayBuffer for storage or transfer.
+            let resultBuffer = StyledString.marshalling(this.styledString);
+            this.buff = new Uint8Array(resultBuffer);
+            this.textTitle = 'After encodeTlv is called, the result of marshalling is: ';
+            this.textResult = this.buff.toString();
+            console.info('Debug: buff = ' + this.buff.toString());
+            this.serializeStr = 'Unmarshalling';
+          }
+        })
+    }.margin(10)
+  }
+
+  build() {
+    Column() {
+      Blank().margin(30)
+      Text(this.textTitle)
+      this.controllableBuild()
+    }
+  }
+}
+```
+
+### Example 2: Marshalling and Unmarshalling Styled Strings with UserDataSpan
+
+This example demonstrates the marshalling and unmarshalling of styled strings that include custom user data spans using the marshalling and unmarshalling APIs.
+
+```TypeScript
+enum MyUserDataType {
+  TYPE1 = 0,
+  TYPE2
+}
+
+class MyUserData extends UserDataSpan {
+  constructor() {
+    super();
+  }
+
+  marshalling() {
+    console.info('MyUserData marshalling...');
+    const text = 'MyUserData1';
+    const buffer = new ArrayBuffer(text.length + 1);
+    const uint8View = new Uint8Array(buffer);
+    // Write the type.
+    uint8View[0] = MyUserDataType.TYPE1;
+    for (let i = 0; i < text.length; i++) {
+      uint8View[i + 1] = text.charCodeAt(i);
+    }
+    return uint8View.buffer;
+  }
+
+  unmarshalling() {
+    console.info('MyUserData unmarshalling...');
+    return new MyUserData();
+  }
+}
+
+class MyUserData2 extends UserDataSpan {
+  marshalling() {
+    console.info('MyUserData2 marshalling...');
+    const text = 'MyUserData2';
+    const buffer = new ArrayBuffer(text.length + 1);
+    const uint8View = new Uint8Array(buffer);
+    uint8View[0] = MyUserDataType.TYPE2;
+    for (let i = 0; i < text.length; i++) {
+      uint8View[i + 1] = text.charCodeAt(i);
+    }
+    return uint8View.buffer;
+  }
+
+  unmarshalling() {
+    console.info('MyUserData2 unmarshalling...');
+    return new MyUserData2();
+  }
+}
+
+@Entry
+@Component
+struct MarshallExample1 {
+  controller: TextController = new TextController();
+
+  build() {
+    Column() {
+      Text(undefined, { controller: this.controller })
+      Button('Marshall&UnMarshall')
+        .onClick(async () => {
+          let myData = new MyUserData();
+          let myData2 = new MyUserData2();
+          let myStyledString = new MutableStyledString('12345', [{
+            start: 0,
+            length: 3,
+            styledKey: StyledStringKey.USER_DATA,
+            styledValue: myData
+          }, {
+            start: 3,
+            length: 1,
+            styledKey: StyledStringKey.USER_DATA,
+            styledValue: myData2
+          }]);
+
+          let buffer = StyledString.marshalling(myStyledString, (marshallingValue: StyledStringMarshallingValue) => {
+            // Call the corresponding serialization method based on the specific type of UserDataSpan.
+            if (marshallingValue instanceof MyUserData) {
+              console.info('StyledString.marshalling MyUserData');
+              return marshallingValue.marshalling();
+            } else if (marshallingValue instanceof MyUserData2) {
+              console.info('StyledString.marshalling MyUserData2');
+              return marshallingValue.marshalling();
+            }
+            console.info('StyledString.marshalling default');
+            return new ArrayBuffer(10);
+          });
+
+          let newStyledString = await StyledString.unmarshalling(buffer, (value: ArrayBuffer) => {
+            // Read the type identifier from the buffer, and call the corresponding deserialization method based on the type.
+            const uint8View = new Uint8Array(value);
+            let type = uint8View[0];
+            console.info('unmarshalling length:' + uint8View.length);
+            if (type == MyUserDataType.TYPE1) {
+              console.info('unmarshalling type1:' + type);
+              let myUserData = new MyUserData();
+              return myUserData.unmarshalling();
+            } else if (type == MyUserDataType.TYPE2) {
+              console.info('unmarshalling type2:' + type);
+              let myUserData = new MyUserData2();
+              return myUserData.unmarshalling();
+            }
+            return new MyUserData();
+          });
+          if (newStyledString == undefined) {
+            console.error('Failed to obtain newStyledString.');
+            return;
+          }
+          this.controller.setStyledString(newStyledString);
+        })
+        .fontSize(20)
+        .margin(10)
+    }
+    .justifyContent(FlexAlign.Center)
+    .width('100%')
+    .height('100%')
   }
 }
 ```

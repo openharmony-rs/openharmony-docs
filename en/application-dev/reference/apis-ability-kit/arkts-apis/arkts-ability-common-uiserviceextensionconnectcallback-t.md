@@ -6,6 +6,8 @@ export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallba
 
 Defines the connection callback. It is used as an input parameter for connection to a UIServiceExtensionAbility, to provide the callback for the connection.
 
+**Type:** _UIServiceExtensionConnectCallback.default
+
 **Since:** 14
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the connection callback. It is used as an input parameter for connection
 <!--Device-common-export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.default--><!--Device-common-export type UIServiceExtensionConnectCallback = _UIServiceExtensionConnectCallback.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _UIServiceExtensionConnectCallback.default

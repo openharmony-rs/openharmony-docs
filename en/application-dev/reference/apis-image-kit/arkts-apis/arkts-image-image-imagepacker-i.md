@@ -8,9 +8,9 @@ The **ImagePacker** class provides APIs to compress and encode images.
 
 Before calling any API in ImagePacker, you must use [image.createImagePacker](arkts-image-image-createimagepacker-f.md) to create an ImagePacker instance. During encoding, do not modify or release the ImageSource, PixelMap, or Picture object that is being used as the input. Otherwise, a crash or other undefined behavior may occur.
 
-Images occupy a large amount of memory. When you finish using an ImagePacker instance, call [release](#release) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
+Images occupy a large amount of memory. When you finish using an ImagePacker instance, call [release](#release1) to free the memory promptly. Before releasing the instance, ensure that all asynchronous operations associated with the instance have finished and the instance is no longer needed.
 
-Currently, the following formats are supported: jpeg, webp, png, heic&lt;sup&gt;12+&lt;/sup&gt;, and gif&lt;sup&gt;18+&lt;/sup&gt;. (The supported formats may vary depending on the hardware. You can refer to the **supportedFormats** property of ImagePacker to see which ones are supported.)
+Currently, the following formats are supported: jpeg, webp, png, heic<sup>12+</sup>, and gif<sup>18+</sup>. (The supported formats may vary depending on the hardware. You can refer to the **supportedFormats** property of ImagePacker to see which ones are supported.)
 
 **Since:** 6
 
@@ -176,7 +176,7 @@ async function PackBinaryImageToTiffFile(context: Context) {
 }
 ```
 
-<a id="packing-4"></a>
+<a id="packing5"></a>
 
 ## packing
 
@@ -243,6 +243,8 @@ async function Packing(context: Context) {
 }
 ```
 
+<a id="packing1"></a>
+
 ## packing
 
 ```TypeScript
@@ -292,7 +294,7 @@ async function Packing(context : Context) {
 }
 ```
 
-<a id="packing-1"></a>
+<a id="packing2"></a>
 
 ## packing
 
@@ -347,7 +349,7 @@ async function Packing(context : Context) {
 }
 ```
 
-<a id="packing-2"></a>
+<a id="packing3"></a>
 
 ## packing
 
@@ -407,7 +409,7 @@ async function Packing() {
 }
 ```
 
-<a id="packing-3"></a>
+<a id="packing4"></a>
 
 ## packing
 
@@ -471,6 +473,8 @@ async function Packing() {
 }
 ```
 
+<a id="packtodata1"></a>
+
 ## packToData
 
 ```TypeScript
@@ -481,7 +485,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 13.
+**Atomic service API:** This API can be used in atomic services since API version 13.
 
 <!--Device-ImagePacker-packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>--><!--Device-ImagePacker-packToData(source: ImageSource, options: PackingOption): Promise<ArrayBuffer>-End-->
 
@@ -505,7 +509,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | If the parameter is invalid. |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-too-large-image-data) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -534,7 +538,7 @@ async function PackToData(context : Context) {
 }
 ```
 
-<a id="packtodata-1"></a>
+<a id="packtodata2"></a>
 
 ## packToData
 
@@ -552,7 +556,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 
 **Since:** 13
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 13.
+**Atomic service API:** This API can be used in atomic services since API version 13.
 
 <!--Device-ImagePacker-packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>--><!--Device-ImagePacker-packToData(source: PixelMap, options: PackingOption): Promise<ArrayBuffer>-End-->
 
@@ -576,7 +580,7 @@ Compresses or re-encodes an image. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | If the parameter is invalid. |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-too-large-image-data) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -670,6 +674,8 @@ async function PackToDataFromPixelmapSequence(context : Context) {
 }
 ```
 
+<a id="packtofile1"></a>
+
 ## packToFile
 
 ```TypeScript
@@ -697,7 +703,7 @@ Encodes the image source into a file based on the specified encoding parameters.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-too-large-image-data) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -731,7 +737,7 @@ async function PackToFile(context : Context) {
 }
 ```
 
-<a id="packtofile-1"></a>
+<a id="packtofile2"></a>
 
 ## packToFile
 
@@ -765,7 +771,7 @@ Encodes the image source into a file based on the specified encoding parameters.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-too-large-image-data) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -797,7 +803,7 @@ async function PackToFile(context : Context) {
 }
 ```
 
-<a id="packtofile-2"></a>
+<a id="packtofile3"></a>
 
 ## packToFile
 
@@ -832,7 +838,7 @@ Encodes the PixelMap into a file based on the specified encoding parameters. Thi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-too-large-image-data) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -867,7 +873,7 @@ async function PackToFile(context : Context) {
 }
 ```
 
-<a id="packtofile-3"></a>
+<a id="packtofile4"></a>
 
 ## packToFile
 
@@ -907,7 +913,7 @@ Encodes the PixelMap into a file based on the specified encoding parameters. Thi
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-operation-failed) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-incorrect-input-image-data) | The image data is abnormal. |
 | [62980106](../errorcode-image.md#62980106-too-large-image-data) | The image data is too large. This status code is thrown when an error occurs during the process of checking size. |
 | [62980113](../errorcode-image.md#62980113-unknown-image-format) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -941,7 +947,7 @@ async function PackToFile(context : Context) {
 }
 ```
 
-<a id="packtofile-4"></a>
+<a id="packtofile5"></a>
 
 ## packToFile
 
@@ -1079,6 +1085,8 @@ async function PackToFile(context : Context) {
 }
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -1120,7 +1128,7 @@ async function Release() {
 }
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -1167,7 +1175,7 @@ async function Release() {
 readonly supportedFormats: Array<string>
 ```
 
-Supported formats for image encoding, including jpeg, webp, png, heic&lt;sup&gt;12+&lt;/sup&gt;, and gif&lt;sup&gt;18+&lt;/sup&gt;. (The supported formats may vary depending on the hardware.)
+Supported formats for image encoding, including jpeg, webp, png, heic<sup>12+</sup>, and gif<sup>18+</sup>. (The supported formats may vary depending on the hardware.)
 
 **Type:** Array&lt;string&gt;
 

@@ -22,6 +22,8 @@ AudioStreamManager是音频系统中的音频流管理模块。本模块提供�
 import { audio } from '@kit.AudioKit';
 ```
 
+<a id="getaudioeffectinfoarray1"></a>
+
 ## getAudioEffectInfoArray
 
 ```TypeScript
@@ -64,7 +66,7 @@ audioStreamManager.getAudioEffectInfoArray(audio.StreamUsage.STREAM_USAGE_MUSIC,
 });
 ```
 
-<a id="getaudioeffectinfoarray-1"></a>
+<a id="getaudioeffectinfoarray2"></a>
 
 ## getAudioEffectInfoArray
 
@@ -158,6 +160,8 @@ try {
 }
 ```
 
+<a id="getcurrentaudiocapturerinfoarray1"></a>
+
 ## getCurrentAudioCapturerInfoArray
 
 ```TypeScript
@@ -196,7 +200,7 @@ audioStreamManager.getCurrentAudioCapturerInfoArray((err: BusinessError, audioCa
 });
 ```
 
-<a id="getcurrentaudiocapturerinfoarray-1"></a>
+<a id="getcurrentaudiocapturerinfoarray2"></a>
 
 ## getCurrentAudioCapturerInfoArray
 
@@ -272,6 +276,8 @@ try {
 }
 ```
 
+<a id="getcurrentaudiorendererinfoarray1"></a>
+
 ## getCurrentAudioRendererInfoArray
 
 ```TypeScript
@@ -310,7 +316,7 @@ audioStreamManager.getCurrentAudioRendererInfoArray((err: BusinessError, audioRe
 });
 ```
 
-<a id="getcurrentaudiorendererinfoarray-1"></a>
+<a id="getcurrentaudiorendererinfoarray2"></a>
 
 ## getCurrentAudioRendererInfoArray
 
@@ -918,7 +924,7 @@ off(type: 'audioRendererChange', callback?: Callback<AudioRendererChangeInfoArra
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioRendererChange' | 是 | 事件回调类型，支持的事件为'audioRendererChange'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRendererChangeInfoArray](arkts-audio-audio-audiorendererchangeinfoarray-t.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('audioRendererChange')](#onaudiorendererchange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioRendererChangeInfoArray](arkts-audio-audio-audiorendererchangeinfoarray-t.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与on('audioRendererChange')绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -963,7 +969,7 @@ off(type: 'audioCapturerChange', callback?: Callback<AudioCapturerChangeInfoArra
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'audioCapturerChange' | 是 | 事件回调类型，支持的事件为'audioCapturerChange'。 |
-| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与[on('audioCapturerChange')](#onaudiocapturerchange)绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[AudioCapturerChangeInfoArray](arkts-audio-audio-audiocapturerchangeinfoarray-t.md)&gt; | 否 | 回调函数。传入回调函数时，仅取消该回调对应的监听事件，需与on('audioCapturerChange')绑定同一回调函数；不传参数时，取消此事件类型下所有已订阅的监听事件。 |
 
 **错误码：**
 
@@ -1065,6 +1071,8 @@ audioStreamManager.on('audioCapturerChange', (audioCapturerChangeInfoArray: audi
 });
 ```
 
+<a id="isactive1"></a>
+
 ## isActive
 
 ```TypeScript
@@ -1113,7 +1121,7 @@ audioStreamManager.isActive(audio.AudioVolumeType.MEDIA, (err: BusinessError, va
 });
 ```
 
-<a id="isactive-1"></a>
+<a id="isactive2"></a>
 
 ## isActive
 

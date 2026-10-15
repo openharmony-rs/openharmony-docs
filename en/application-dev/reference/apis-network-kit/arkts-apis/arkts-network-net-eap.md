@@ -20,18 +20,18 @@ import { eap } from '@kit.NetworkKit';
 
 | Name | Description |
 | --- | --- |
-| [connect](arkts-network-eap-connect-f.md) | Manually triggers or disconnects the 802.1X EAP authentication of Ethernet. |
-| [deleteEthEapConfig](arkts-network-eap-deleteetheapconfig-f.md) | Deletes the persisted 802.1X EAP configuration and stops any ongoing auto-authentication. Idempotent: resolves successfully even if no configuration has been stored. |
-| [getEthEapConfig](arkts-network-eap-getetheapconfig-f.md) | Gets the 802.1X EAP configuration for Ethernet. Sensitive fields (password, certPassword, certEntry) are always returned empty. |
-| [getEthEapStateInfo](arkts-network-eap-getetheapstateinfo-f.md) | Queries the current 802.1X EAP authentication state information. |
-| [logOffEthEap](arkts-network-eap-logoffetheap-f.md) | Revokes the EAP-authenticated state of an Ethernet NIC. |
-| [offStateChange](arkts-network-eap-offstatechange-f.md) | Unsubscribes from 802.1X EAP authentication state changes. |
-| [onStateChange](arkts-network-eap-onstatechange-f.md) | Subscribes to 802.1X EAP authentication state changes. |
-| [regCustomEapHandler](arkts-network-eap-regcustomeaphandler-f.md) | Registers a custom handler of Extensible Authentication Protocol (EAP) packets for extensible authentication. This API returns the result asynchronously through a callback. |
-| [replyCustomEapData](arkts-network-eap-replycustomeapdata-f.md) | Notifies the system of the extensible authentication result. |
-| [setEthEapConfig](arkts-network-eap-setetheapconfig-f.md) | Sets the 802.1X EAP configuration for Ethernet. The configuration is persisted and encrypted. |
-| [startEthEap](arkts-network-eap-startetheap-f.md) | Starts EAP authentication on an Ethernet NIC. |
-| [unregCustomEapHandler](arkts-network-eap-unregcustomeaphandler-f.md) | Unregisters the custom handler of EAP packets for extensible authentication. This API returns the result asynchronously through a callback. |
+| [connect](arkts-network-eap-connect-f.md#connect) | Manually triggers or disconnects the 802.1X EAP authentication of Ethernet. |
+| [deleteEthEapConfig](arkts-network-eap-deleteetheapconfig-f.md#deleteetheapconfig) | Deletes the persisted 802.1X EAP configuration and stops any ongoing auto-authentication. Idempotent: resolves successfully even if no configuration has been stored. |
+| [getEthEapConfig](arkts-network-eap-getetheapconfig-f.md#getetheapconfig) | Gets the 802.1X EAP configuration for Ethernet. Sensitive fields (password, certPassword, certEntry) are always returned empty. |
+| [getEthEapStateInfo](arkts-network-eap-getetheapstateinfo-f.md#getetheapstateinfo) | Queries the current 802.1X EAP authentication state information. |
+| [logOffEthEap](arkts-network-eap-logoffetheap-f.md#logoffetheap) | Revokes the EAP-authenticated state of an Ethernet NIC. |
+| [offStateChange](arkts-network-eap-offstatechange-f.md#offstatechange) | Unsubscribes from 802.1X EAP authentication state changes. |
+| [onStateChange](arkts-network-eap-onstatechange-f.md#onstatechange) | Subscribes to 802.1X EAP authentication state changes. |
+| [regCustomEapHandler](arkts-network-eap-regcustomeaphandler-f.md#regcustomeaphandler) | Registers a custom handler of Extensible Authentication Protocol (EAP) packets for extensible authentication. This API returns the result asynchronously through a callback. |
+| [replyCustomEapData](arkts-network-eap-replycustomeapdata-f.md#replycustomeapdata) | Notifies the system of the extensible authentication result. |
+| [setEthEapConfig](arkts-network-eap-setetheapconfig-f.md#setetheapconfig) | Sets the 802.1X EAP configuration for Ethernet. The configuration is persisted and encrypted. |
+| [startEthEap](arkts-network-eap-startetheap-f.md#startetheap) | Starts EAP authentication on an Ethernet NIC. |
+| [unregCustomEapHandler](arkts-network-eap-unregcustomeaphandler-f.md#unregcustomeaphandler) | Unregisters the custom handler of EAP packets for extensible authentication. This API returns the result asynchronously through a callback. |
 
 ### Interfaces
 

@@ -13,8 +13,6 @@ The **file.recent** module provides APIs for managing the list of recently acces
 
 **Deprecated since:** 23
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace recent--><!--Device-unnamed-declare namespace recent-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileService
@@ -34,9 +32,9 @@ import { recent } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [add](arkts-corefile-recent-add-f-sys.md) | Adds the file of the specified URI to the recent file list. |
-| [listFile](arkts-corefile-recent-listfile-f-sys.md) | Lists the files that are accessed recently. |
-| [remove](arkts-corefile-recent-remove-f-sys.md) | Removes the file of the specified URI from the recent file list. |
+| [add](arkts-corefile-recent-add-f-sys.md#add) | Adds the file of the specified URI to the recent file list. |
+| [listFile](arkts-corefile-recent-listfile-f-sys.md#listfile) | Lists the files that are accessed recently. |
+| [remove](arkts-corefile-recent-remove-f-sys.md#remove) | Removes the file of the specified URI from the recent file list. |
 <!--DelEnd-->
 
 <!--Del-->

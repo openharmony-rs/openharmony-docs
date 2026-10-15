@@ -44,7 +44,7 @@ Badge style of the tab. If this parameter is not set, no badge is displayed.
 icon?: string | Resource
 ```
 
-Image for the tab. If this parameter is not set, no image is displayed.
+Image for the tab. If this parameter is not set, no image is displayed. If the icon uses an SVG image, you need to delete the built-in width and height attributes of the image. Otherwise, the width and height attribute values built in the SVG image source are used.
 
 **Type:** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 

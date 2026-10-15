@@ -1,4 +1,4 @@
-# lang(定义ArkTS的语言特性)
+# lang（定义ArkTS的语言特性）
 
 ```TypeScript
 declare namespace lang

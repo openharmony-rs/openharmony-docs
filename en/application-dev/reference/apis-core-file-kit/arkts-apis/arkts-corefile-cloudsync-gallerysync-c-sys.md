@@ -36,11 +36,16 @@ A constructor used to create a **GallerySync** instance.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let gallerySync = new cloudSync.GallerySync()
 ```
+
+<!--DelEnd-->
+
+<a id="off1"></a>
 
 ## off
 
@@ -76,6 +81,7 @@ Removes the specified callback from the device-cloud sync progress.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -90,7 +96,9 @@ gallerySync.on('progress', callback);
 gallerySync.off('progress', callback);
 ```
 
-<a id="off-1"></a>
+<!--DelEnd-->
+
+<a id="off2"></a>
 
 ## off
 
@@ -125,6 +133,7 @@ Removes all callbacks from the device-cloud sync progress.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -136,6 +145,8 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
 
 gallerySync.off('progress');
 ```
+
+<!--DelEnd-->
 
 ## on
 
@@ -171,6 +182,7 @@ Registers a listener for the device-cloud sync progress.
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 | 13600001 | IPC error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -180,6 +192,10 @@ gallerySync.on('progress', (pg: cloudSync.SyncProgress) => {
   console.info("syncState: " + pg.state);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="start1"></a>
 
 ## start
 
@@ -216,6 +232,7 @@ Starts device-cloud sync. This API uses a promise to return the result.
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -234,7 +251,9 @@ gallerySync.start().then(() => {
 });
 ```
 
-<a id="start-1"></a>
+<!--DelEnd-->
+
+<a id="start2"></a>
 
 ## start
 
@@ -271,6 +290,7 @@ Starts device-cloud sync. This API uses an asynchronous callback to return the r
 | 22400002 | Network unavailable. |
 | 22400003 | Low battery level. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -286,6 +306,93 @@ gallerySync.start((err: BusinessError) => {
   }
 });
 ```
+
+<!--DelEnd-->
+
+<a id="startwithtype1"></a>
+
+## startWithType
+
+```TypeScript
+startWithType(type: SyncType): Promise<void>
+```
+
+Starts device-cloud sync. This API uses a promise to return the result.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GallerySync-startWithType(type: SyncType): Promise<void>--><!--Device-GallerySync-startWithType(type: SyncType): Promise<void>-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| type | [SyncType](arkts-corefile-cloudsync-synctype-e-sys.md) | Yes | Sync type of cloud sync. |
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| Promise&lt;void&gt; | Promise that returns no value. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
+
+<a id="startwithtype2"></a>
+
+## startWithType
+
+```TypeScript
+startWithType(callback: Callback<void>, type: SyncType): void
+```
+
+Starts device-cloud sync. This API uses a callback to return the result.
+
+**Since:** 26.0.1
+
+**Required permissions:** ohos.permission.CLOUDFILE_SYNC
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GallerySync-startWithType(callback: Callback<void>, type: SyncType): void--><!--Device-GallerySync-startWithType(callback: Callback<void>, type: SyncType): void-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**System API:** This is a system API.
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
+| type | [SyncType](arkts-corefile-cloudsync-synctype-e-sys.md) | Yes | Sync type of cloud sync. |
+
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
+| 22400001 | Cloud status not ready. |
+| 22400002 | Network unavailable. |
+| 22400003 | Low battery level. |
+
+<a id="stop1"></a>
 
 ## stop
 
@@ -324,6 +431,7 @@ Stops device-cloud sync. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -338,7 +446,9 @@ gallerySync.stop().then(() => {
 });
 ```
 
-<a id="stop-1"></a>
+<!--DelEnd-->
+
+<a id="stop2"></a>
 
 ## stop
 
@@ -377,6 +487,7 @@ Stops device-cloud sync. This API uses an asynchronous callback to return the re
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -392,3 +503,5 @@ gallerySync.stop((err: BusinessError) => {
   }
 });
 ```
+
+<!--DelEnd-->

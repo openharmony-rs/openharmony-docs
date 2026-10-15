@@ -14,6 +14,8 @@ declare type Resource = import('../api/global/resource').Resource
 > 
 > - $rawfile不支持通过[预览器](https://developer.huawei.com/consumer/cn/doc/harmonyos-guides/ide-previewer-arkts-js)预览。
 
+**类型：** import('../api/global/resource').Resource
+
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
@@ -23,5 +25,3 @@ declare type Resource = import('../api/global/resource').Resource
 <!--Device-unnamed-declare type Resource = import('../api/global/resource').Resource--><!--Device-unnamed-declare type Resource = import('../api/global/resource').Resource-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/global/resource').Resource

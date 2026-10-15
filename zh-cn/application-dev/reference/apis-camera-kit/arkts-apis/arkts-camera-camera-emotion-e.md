@@ -22,7 +22,7 @@ NEUTRAL = 0
 
 **起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Emotion-NEUTRAL = 0--><!--Device-Emotion-NEUTRAL = 0-End-->
 
@@ -38,7 +38,7 @@ SADNESS = 1
 
 **起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Emotion-SADNESS = 1--><!--Device-Emotion-SADNESS = 1-End-->
 
@@ -54,7 +54,7 @@ SMILE = 2
 
 **起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Emotion-SMILE = 2--><!--Device-Emotion-SMILE = 2-End-->
 
@@ -70,7 +70,7 @@ SURPRISE = 3
 
 **起始版本：** 26.0.0
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Emotion-SURPRISE = 3--><!--Device-Emotion-SURPRISE = 3-End-->
 

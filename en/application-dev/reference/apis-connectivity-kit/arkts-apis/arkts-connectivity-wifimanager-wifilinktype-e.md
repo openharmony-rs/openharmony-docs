@@ -4,7 +4,7 @@
 enum WifiLinkType
 ```
 
-Wi-Fi link type. @enum { int }
+Wi-Fi link type.
 
 **Since:** 18
 
@@ -26,17 +26,17 @@ Default link.
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
-## WIFI7_SINGLE_LINK
+## WIFI7_EMLSR
 
 ```TypeScript
-WIFI7_SINGLE_LINK = 1
+WIFI7_EMLSR = 3
 ```
 
-Wi-Fi7 single link.
+Wi-Fi7 EMLSR.
 
 **Since:** 18
 
-<!--Device-WifiLinkType-WIFI7_SINGLE_LINK = 1--><!--Device-WifiLinkType-WIFI7_SINGLE_LINK = 1-End-->
+<!--Device-WifiLinkType-WIFI7_EMLSR = 3--><!--Device-WifiLinkType-WIFI7_EMLSR = 3-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
@@ -54,17 +54,17 @@ Wi-Fi7 MLSR.
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 
-## WIFI7_EMLSR
+## WIFI7_SINGLE_LINK
 
 ```TypeScript
-WIFI7_EMLSR = 3
+WIFI7_SINGLE_LINK = 1
 ```
 
-Wi-Fi7 EMLSR.
+Wi-Fi7 single link.
 
 **Since:** 18
 
-<!--Device-WifiLinkType-WIFI7_EMLSR = 3--><!--Device-WifiLinkType-WIFI7_EMLSR = 3-End-->
+<!--Device-WifiLinkType-WIFI7_SINGLE_LINK = 1--><!--Device-WifiLinkType-WIFI7_SINGLE_LINK = 1-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.STA
 

@@ -44,6 +44,7 @@ Called to acquire IDM information.
 | acquire | number | Yes |  |
 | extraInfo | Uint8Array | Yes |  |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,6 +60,8 @@ let idmCallback: osAccount.IIdmCallback = {
   }
 };
 ```
+
+<!--DelEnd-->
 
 ## onResult
 
@@ -83,6 +86,7 @@ Called to return the result code and request result information.
 | result | number | Yes |  |
 | extraInfo | [RequestResult](arkts-basicservices-osaccount-requestresult-i-sys.md) | Yes |  |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -93,3 +97,5 @@ let idmCallback: osAccount.IIdmCallback = {
   }
 };
 ```
+
+<!--DelEnd-->

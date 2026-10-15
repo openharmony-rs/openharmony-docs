@@ -36,6 +36,12 @@ icon?: string | Resource
 
 Icon path of the menu item.
 
+**NOTE:** 
+
+If the icon is in SVG format, the system sets the fill color by default, which overrides the **fill** attribute defined in the SVG file. As a result, the icon may be displayed abnormally. You are advised to set the **fill** attribute in the SVG file using the **style** attribute to override the default value. The following is an example:
+
+Original code (the **fill** attribute will be overwritten by the default value): `<rect fill="rgb(255,0,0)" .../>`. You are advised to change it to `<rect style="fill: rgb(255,0,0)" .../>`.
+
 **Type:** string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md)
 
 **Since:** 8
@@ -52,7 +58,9 @@ Icon path of the menu item.
 isEnabled?: boolean
 ```
 
-Enabled status. **true** (default): enabled. **false**: disabled.
+Whether to enable a menu item.
+
+**true** to enable the menu item, **false** otherwise. Default value: **true**
 
 **Type:** boolean
 
@@ -73,6 +81,10 @@ symbolIcon?: SymbolGlyphModifier
 ```
 
 Symbol icon for a single option on the menu bar. It has higher priority than **icon**.
+
+**NOTE:** 
+
+The SymbolGlyphModifier object's [fontSize](arkts-arkui-symbolglyph-comp-attribute.md#fontsize) attribute cannot be used to change the icon size, [effectStrategy](arkts-arkui-symbolglyph-comp-attribute.md#effectstrategy) attribute cannot be used to change the animation effect, and [symbolEffect](arkts-arkui-symbolglyph-comp-attribute.md#symboleffect1) attribute cannot be used to change the animation effect type.
 
 **Type:** [SymbolGlyphModifier](arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 

@@ -10,7 +10,7 @@ ImageSource类，用于获取图片相关信息。
 
 ImageSource的所有方法均不支持并发调用。
 
-由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
+由于图片占用内存较大，所以当ImageSource实例使用完成后，应主动调用[release](#release1)方法及时释放内存。释放时应确保该实例的所有异步方法均执行完成，且后续不再使用该实例。
 
 **起始版本：** 6
 
@@ -140,7 +140,7 @@ createPictureAtIndex(index: number): Promise<Picture>
 
 > **说明：** 
 > 
-> - 支持GIF和HEIF&lt;sup&gt;23+&lt;/sup&gt;图像序列格式。从API版本26.0.0开始，增加支持AVIS格式。
+> - 支持GIF和HEIF<sup>23+</sup>图像序列格式。从API版本26.0.0开始，增加支持AVIS格式。
 > 
 > - 由于图片占用内存较大，所以当Picture对象使用完成后，应主动调用[release](arkts-image-image-picture-i.md#release)方法，及时释放内存。
 > 
@@ -189,6 +189,8 @@ async function CreatePictures(imageSourceObj : image.ImageSource) {
   }
 }
 ```
+
+<a id="createpixelmap1"></a>
 
 ## createPixelMap
 
@@ -244,7 +246,7 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmap-2"></a>
+<a id="createpixelmap3"></a>
 
 ## createPixelMap
 
@@ -296,7 +298,7 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmap-4"></a>
+<a id="createpixelmap5"></a>
 
 ## createPixelMap
 
@@ -360,6 +362,8 @@ async function CreatePixelMap(imageSourceObj : image.ImageSource) {
 }
 ```
 
+<a id="createpixelmaplist1"></a>
+
 ## createPixelMapList
 
 ```TypeScript
@@ -402,7 +406,7 @@ createPixelMapList(options?: DecodingOptions): Promise<Array<PixelMap>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980099](../errorcode-image.md#62980099-共享内存数据异常) | The shared memory data is abnormal. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | The image data is abnormal. |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
@@ -438,7 +442,7 @@ async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmaplist-1"></a>
+<a id="createpixelmaplist2"></a>
 
 ## createPixelMapList
 
@@ -476,7 +480,7 @@ createPixelMapList(callback: AsyncCallback<Array<PixelMap>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980099](../errorcode-image.md#62980099-共享内存数据异常) | The shared memory data is abnormal. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | The image data is abnormal. |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
@@ -506,7 +510,7 @@ async function CreatePixelMapList(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="createpixelmaplist-2"></a>
+<a id="createpixelmaplist3"></a>
 
 ## createPixelMapList
 
@@ -545,7 +549,7 @@ createPixelMapList(options: DecodingOptions, callback: AsyncCallback<Array<Pixel
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980099](../errorcode-image.md#62980099-共享内存数据异常) | The shared memory data is abnormal. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | The image data is abnormal. |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
@@ -687,7 +691,7 @@ createPixelMapUsingAllocator(options?: DecodingOptions, allocatorType?: Allocato
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [7700101](../errorcode-image.md#7700101-图片源存在问题) | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed. |
+| [7700101](../errorcode-image.md#7700101-图片源存在问题) | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete.         3. Read image data failed. 4. Codec create failed. |
 | [7700102](../errorcode-image.md#7700102-不支持的mime类型) | Unsupported mimetype. |
 | [7700103](../errorcode-image.md#7700103-图片太大) | Image too large. This status code is thrown when an error occurs during the process of checking size. |
 | [7700201](../errorcode-image.md#7700201-不支持的内存分配类型) | Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata. |
@@ -762,7 +766,7 @@ createPixelMapUsingAllocatorSync(options?: DecodingOptions, allocatorType?: Allo
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified. 2.Incorrect parameter types; 3.Parameter verification failed. |
-| [7700101](../errorcode-image.md#7700101-图片源存在问题) | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete. 3. Read image data failed. 4. Codec create failed. |
+| [7700101](../errorcode-image.md#7700101-图片源存在问题) | Bad source. e.g.,1. Image has invalid width or height. 2. Image source incomplete.         3. Read image data failed. 4. Codec create failed. |
 | [7700102](../errorcode-image.md#7700102-不支持的mime类型) | Unsupported mimetype. |
 | [7700103](../errorcode-image.md#7700103-图片太大) | Image too large. This status code is thrown when an error occurs during the process of checking size. |
 | [7700201](../errorcode-image.md#7700201-不支持的内存分配类型) | Unsupported allocator type, e.g., use share memory to decode a HDR image as only DMA supported hdr metadata. |
@@ -971,6 +975,8 @@ async function CreateThumbnailSync(imageSource: image.ImageSource): Promise<imag
 }
 ```
 
+<a id="getdelaytimelist1"></a>
+
 ## getDelayTimeList
 
 ```TypeScript
@@ -995,7 +1001,7 @@ getDelayTimeList(): Promise<Array<number>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980110](../errorcode-image.md#62980110-图片源数据错误) | The image source data is incorrect. |
 | [62980111](../errorcode-image.md#62980111-图片源数据不完整) | The image source data is incomplete. |
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
@@ -1018,7 +1024,7 @@ async function GetDelayTimeList(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getdelaytimelist-1"></a>
+<a id="getdelaytimelist2"></a>
 
 ## getDelayTimeList
 
@@ -1044,7 +1050,7 @@ getDelayTimeList(callback: AsyncCallback<Array<number>>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980110](../errorcode-image.md#62980110-图片源数据错误) | The image source data is incorrect. |
 | [62980111](../errorcode-image.md#62980111-图片源数据不完整) | The image source data is incomplete. |
 | [62980115](../errorcode-image.md#62980115-图片无效参数) | Invalid image parameter. |
@@ -1093,7 +1099,7 @@ getDisposalTypeList(): Promise<Array<number>>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980101](../errorcode-image.md#62980101-图片输入数据错误) | The image data is abnormal. |
 | [62980137](../errorcode-image.md#62980137-图片操作无效) | Invalid media operation. |
 | [62980149](../errorcode-image.md#62980149-图片参数无效) | Invalid MIME type for the image source. |
@@ -1111,6 +1117,8 @@ async function GetDisposalTypeList(imageSourceObj : image.ImageSource) {
   })
 }
 ```
+
+<a id="getframecount1"></a>
 
 ## getFrameCount
 
@@ -1136,7 +1144,7 @@ getFrameCount(): Promise<number>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980111](../errorcode-image.md#62980111-图片源数据不完整) | The image source data is incomplete. |
 | [62980112](../errorcode-image.md#62980112-图片格式不匹配) | The image format does not match. |
 | [62980113](../errorcode-image.md#62980113-图片未知格式) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -1160,7 +1168,7 @@ async function GetFrameCount(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getframecount-1"></a>
+<a id="getframecount2"></a>
 
 ## getFrameCount
 
@@ -1186,7 +1194,7 @@ getFrameCount(callback: AsyncCallback<number>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980111](../errorcode-image.md#62980111-图片源数据不完整) | The image source data is incomplete. |
 | [62980112](../errorcode-image.md#62980112-图片格式不匹配) | The image format does not match. |
 | [62980113](../errorcode-image.md#62980113-图片未知格式) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
@@ -1211,6 +1219,8 @@ async function GetFrameCount(imageSourceObj : image.ImageSource) {
   })
 }
 ```
+
+<a id="getimageinfo1"></a>
 
 ## getImageInfo
 
@@ -1253,7 +1263,7 @@ async function GetImageInfo(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageinfo-2"></a>
+<a id="getimageinfo3"></a>
 
 ## getImageInfo
 
@@ -1295,7 +1305,7 @@ async function GetImageInfo(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageinfo-4"></a>
+<a id="getimageinfo5"></a>
 
 ## getImageInfo
 
@@ -1399,7 +1409,7 @@ getImageProperties(key: Array<PropertyKey>): Promise<Record<PropertyKey, string|
 
 批量获取图片中的指定属性键的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF、WEBP&lt;sup&gt;23+&lt;/sup&gt;和DNG&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF、WEBP<sup>23+</sup>和DNG<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 **起始版本：** 12
 
@@ -1424,7 +1434,7 @@ getImageProperties(key: Array<PropertyKey>): Promise<Record<PropertyKey, string|
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types; 3.Parameter verification failed; |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980110](../errorcode-image.md#62980110-图片源数据错误) | The image source data is incorrect. |
 | [62980113](../errorcode-image.md#62980113-图片未知格式) | Unknown image format. The image data provided is not in a recognized or supported format, or it may be corrupted. |
 | [62980116](../errorcode-image.md#62980116-解码失败) | Failed to decode the image. |
@@ -1450,6 +1460,8 @@ async function GetImageProperties(imageSourceObj : image.ImageSource) {
 }
 ```
 
+<a id="getimageproperty1"></a>
+
 ## getImageProperty
 
 ```TypeScript
@@ -1458,7 +1470,7 @@ getImageProperty(key: PropertyKey, options?: ImagePropertyOptions): Promise<stri
 
 获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF&lt;sup&gt;12+&lt;/sup&gt;、WEBP&lt;sup&gt;23+&lt;/sup&gt;和DNG&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>、WEBP<sup>23+</sup>和DNG<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 **起始版本：** 11
 
@@ -1484,7 +1496,7 @@ getImageProperty(key: PropertyKey, options?: ImagePropertyOptions): Promise<stri
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error.Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types;3.Parameter verification failed; |
-| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception. 2. Decoding process exception. 3. Insufficient memory. |
+| [62980096](../errorcode-image.md#62980096-操作失败) | The operation failed. Possible cause: 1.Image upload exception.         2. Decoding process exception. 3. Insufficient memory. |
 | [62980103](../errorcode-image.md#62980103-图片类型不支持) | The image data is not supported. |
 | [62980110](../errorcode-image.md#62980110-图片源数据错误) | The image source data is incorrect. |
 | [62980111](../errorcode-image.md#62980111-图片源数据不完整) | The image source data is incomplete. |
@@ -1512,7 +1524,7 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty-1"></a>
+<a id="getimageproperty2"></a>
 
 ## getImageProperty
 
@@ -1522,19 +1534,19 @@ getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string
 
 获取图片中给定索引处图像的指定属性键的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF&lt;sup&gt;12+&lt;/sup&gt;和WEBP&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty)代
+> [getImageProperty](#getimageproperty1)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>--><!--Device-ImageSource-getImageProperty(key: string, options?: GetImagePropertyOptions): Promise<string>-End-->
 
@@ -1568,7 +1580,7 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty-2"></a>
+<a id="getimageproperty3"></a>
 
 ## getImageProperty
 
@@ -1578,19 +1590,19 @@ getImageProperty(key: string, callback: AsyncCallback<string>): void
 
 获取图片中给定索引处图像的指定属性键的值。使用callback异步回调。
 
-该接口仅支持JPEG、PNG、HEIF&lt;sup&gt;12+&lt;/sup&gt;和WEBP&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty)代
+> [getImageProperty](#getimageproperty1)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, callback: AsyncCallback<string>): void-End-->
 
@@ -1619,7 +1631,7 @@ async function GetImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="getimageproperty-3"></a>
+<a id="getimageproperty4"></a>
 
 ## getImageProperty
 
@@ -1629,19 +1641,19 @@ getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncC
 
 获取图片指定属性键的值。使用callback异步回调。
 
-该接口仅支持JPEG、PNG、HEIF&lt;sup&gt;12+&lt;/sup&gt;和WEBP&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 11废弃，建议使用
-> [getImageProperty](#getimageproperty)代
+> [getImageProperty](#getimageproperty1)代
 > 替。
 
 **起始版本：** 7
 
 **废弃版本：** 11
 
-**替代接口：** [getImageProperty](#getimageproperty)(key: PropertyKey, options?: ImagePropertyOptions)
+**替代接口：** [getImageProperty](#getimageproperty1)(key: PropertyKey, options?: ImagePropertyOptions)
 
 <!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void--><!--Device-ImageSource-getImageProperty(key: string, options: GetImagePropertyOptions, callback: AsyncCallback<string>): void-End-->
 
@@ -1682,7 +1694,7 @@ getImagePropertySync(key: PropertyKey): string
 
 > **说明：** 
 > 
-> - 该方法仅支持JPEG、PNG、HEIF、WEBP&lt;sup&gt;23+&lt;/sup&gt;和DNG&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+> - 该方法仅支持JPEG、PNG、HEIF、WEBP<sup>23+</sup>和DNG<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 > 
 > - Exif信息是图片的元数据，包含拍摄时间、相机型号、光圈、焦距、ISO等。
 > 
@@ -1739,7 +1751,7 @@ modifyImageProperties(records: Record<PropertyKey, string|null>): Promise<void>
 
 批量通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF和WEBP&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：** 
 > 
@@ -1865,6 +1877,8 @@ async function ModifyImagePropertiesEnhanced(imageSourceObj : image.ImageSource)
 }
 ```
 
+<a id="modifyimageproperty1"></a>
+
 ## modifyImageProperty
 
 ```TypeScript
@@ -1873,7 +1887,7 @@ modifyImageProperty(key: PropertyKey, value: string): Promise<void>
 
 通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF&lt;sup&gt;12+&lt;/sup&gt;和WEBP&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：** 
 > 
@@ -1928,7 +1942,7 @@ async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="modifyimageproperty-1"></a>
+<a id="modifyimageproperty2"></a>
 
 ## modifyImageProperty
 
@@ -1938,13 +1952,13 @@ modifyImageProperty(key: string, value: string): Promise<void>
 
 通过指定的键修改图片属性的值。使用Promise异步回调。
 
-该接口仅支持JPEG、PNG、HEIF&lt;sup&gt;12+&lt;/sup&gt;和WEBP&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+该接口仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：** 
 > 
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 > 
-> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty1)代替。
 > 
 > - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -1952,7 +1966,7 @@ modifyImageProperty(key: string, value: string): Promise<void>
 
 **废弃版本：** 11
 
-**替代接口：** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+**替代接口：** [modifyImageProperty](#modifyimageproperty1)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>--><!--Device-ImageSource-modifyImageProperty(key: string, value: string): Promise<void>-End-->
 
@@ -1989,7 +2003,7 @@ async function ModifyImageProperty(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="modifyimageproperty-2"></a>
+<a id="modifyimageproperty3"></a>
 
 ## modifyImageProperty
 
@@ -1999,13 +2013,13 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 
 通过指定的键修改图片属性的值。使用callback异步回调。
 
-仅支持JPEG、PNG、HEIF&lt;sup&gt;12+&lt;/sup&gt;和WEBP&lt;sup&gt;23+&lt;/sup&gt;（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
+仅支持JPEG、PNG、HEIF<sup>12+</sup>和WEBP<sup>23+</sup>（不同硬件设备支持情况不同）文件，且需要包含Exif信息。
 
 > **说明：** 
 > 
 > - 调用modifyImageProperty修改属性会改变属性字节长度，使用buffer创建的ImageSource调用modifyImageProperty会导致buffer内容覆盖，目前buffer创建的ImageSource不支持调用此接口，请改用fd或path创建的ImageSource。
 > 
-> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty)代替。
+> - 从API version 9开始支持，从API version 11废弃，建议使用[modifyImageProperty](#modifyimageproperty1)代替。
 > 
 > - 调用modifyImageProperty接口修改Exif字段时，必须确保对应的图片文件有写权限，否则会导致字段修改不成功。
 
@@ -2013,7 +2027,7 @@ modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): 
 
 **废弃版本：** 11
 
-**替代接口：** [modifyImageProperty](#modifyimageproperty)(key: PropertyKey, value: string)
+**替代接口：** [modifyImageProperty](#modifyimageproperty1)(key: PropertyKey, value: string)
 
 <!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void--><!--Device-ImageSource-modifyImageProperty(key: string, value: string, callback: AsyncCallback<void>): void-End-->
 
@@ -2116,7 +2130,7 @@ readImageMetadata(propertyKeys?: string[], index?: number): Promise<ImageMetadat
 | --- | --- |
 | [7700102](../errorcode-image.md#7700102-不支持的mime类型) | Unsupported MIME type. |
 | [7700202](../errorcode-image.md#7700202-不支持的元数据) | Unsupported metadata. |
-| [7700204](../errorcode-image.md#7700204-无效参数) | Invalid parameter. Possible causes: 1. The index is negative. 2. The index is greater than or equal to the number of frames in the image. |
+| [7700204](../errorcode-image.md#7700204-无效参数) | Invalid parameter. Possible causes: 1. The index is negative.         2. The index is greater than or equal to the number of frames in the image. |
 
 **示例**
 
@@ -2198,7 +2212,7 @@ readImageMetadataByType(metadataTypes?: MetadataType[], index?: number): Promise
 | --- | --- |
 | [7700102](../errorcode-image.md#7700102-不支持的mime类型) | Unsupported MIME type. |
 | [7700202](../errorcode-image.md#7700202-不支持的元数据) | Unsupported metadata. |
-| [7700204](../errorcode-image.md#7700204-无效参数) | Invalid parameter. Possible causes: 1.The index is negative. 2. The index is greater than or equal to the number of frames in the image. |
+| [7700204](../errorcode-image.md#7700204-无效参数) | Invalid parameter. Possible causes: 1.The index is negative.         2. The index is greater than or equal to the number of frames in the image. |
 
 **示例**
 
@@ -2217,6 +2231,8 @@ async function ReadImageMetadataByType(imageSource : image.ImageSource, type: im
   })
 }
 ```
+
+<a id="release1"></a>
 
 ## release
 
@@ -2258,7 +2274,7 @@ async function Release(imageSourceObj : image.ImageSource) {
 }
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -2298,6 +2314,8 @@ async function Release(imageSourceObj : image.ImageSource) {
 }
 ```
 
+<a id="updatedata1"></a>
+
 ## updateData
 
 ```TypeScript
@@ -2334,15 +2352,18 @@ import { BusinessError } from '@kit.BasicServicesKit';
 
 async function UpdateDatay(imageSourceObj : image.ImageSource) {
   const array: ArrayBuffer = new ArrayBuffer(100);
-  imageSourceObj.updateData(array, false, 0, 10).then(() => {
+  try {
+    // 该接口为异步接口，调用时需保证执行时序。
+    await imageSourceObj.updateData(array, false, 0, 10);
     console.info('Succeeded in updating data.');
-  }).catch((err: BusinessError) => {
-    console.error(`Failed to update data.code is ${err.code},message is ${err.message}`);
-  })
+  } catch (err) {
+    const e: BusinessError = err as BusinessError;
+    console.error(`Failed to update data.code is ${e.code},message is ${e.message}`);
+  }
 }
 ```
 
-<a id="updatedata-1"></a>
+<a id="updatedata2"></a>
 
 ## updateData
 
@@ -2466,7 +2487,7 @@ readonly supportedFormats: Array<string>
 
 支持的图片格式。
 
-包括：PNG、JPEG、BMP、GIF、WebP、DNG、HEIC&lt;sup&gt;12+&lt;/sup&gt;、WBMP&lt;sup&gt;23+&lt;/sup&gt;、HEIFS&lt;sup&gt;23+&lt;/sup&gt;、TIFF&lt;sup&gt;23+&lt;/sup&gt;。从API版本26.0.0开始，增加支持AVIF、AVIS格式。
+包括：PNG、JPEG、BMP、GIF、WebP、DNG、HEIC<sup>12+</sup>、WBMP<sup>23+</sup>、HEIFS<sup>23+</sup>、TIFF<sup>23+</sup>。从API版本26.0.0开始，增加支持AVIF、AVIS格式。
 
 部分格式的解码能力依赖于具体的设备硬件，建议在调用前使用[image.getImageSourceSupportedFormats](arkts-image-image-getimagesourcesupportedformats-f.md)接口，动态查询当前设备上的解码能力。
 

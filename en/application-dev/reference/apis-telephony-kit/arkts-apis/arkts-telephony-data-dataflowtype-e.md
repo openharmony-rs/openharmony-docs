@@ -12,17 +12,17 @@ Defines the cellular data flow type.
 
 **System capability:** SystemCapability.Telephony.CellularData
 
-## DATA_FLOW_TYPE_NONE
+## DATA_FLOW_TYPE_DORMANT
 
 ```TypeScript
-DATA_FLOW_TYPE_NONE = 0
+DATA_FLOW_TYPE_DORMANT = 4
 ```
 
-No uplink or downlink data is available.
+No uplink or downlink data is available because the lower-layer link is in the dormant state.
 
 **Since:** 7
 
-<!--Device-DataFlowType-DATA_FLOW_TYPE_NONE = 0--><!--Device-DataFlowType-DATA_FLOW_TYPE_NONE = 0-End-->
+<!--Device-DataFlowType-DATA_FLOW_TYPE_DORMANT = 4--><!--Device-DataFlowType-DATA_FLOW_TYPE_DORMANT = 4-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 
@@ -37,6 +37,20 @@ Only the downlink data is available.
 **Since:** 7
 
 <!--Device-DataFlowType-DATA_FLOW_TYPE_DOWN = 1--><!--Device-DataFlowType-DATA_FLOW_TYPE_DOWN = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CellularData
+
+## DATA_FLOW_TYPE_NONE
+
+```TypeScript
+DATA_FLOW_TYPE_NONE = 0
+```
+
+No uplink or downlink data is available.
+
+**Since:** 7
+
+<!--Device-DataFlowType-DATA_FLOW_TYPE_NONE = 0--><!--Device-DataFlowType-DATA_FLOW_TYPE_NONE = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData
 
@@ -65,19 +79,5 @@ Both the uplink data and downlink data are available.
 **Since:** 7
 
 <!--Device-DataFlowType-DATA_FLOW_TYPE_UP_DOWN = 3--><!--Device-DataFlowType-DATA_FLOW_TYPE_UP_DOWN = 3-End-->
-
-**System capability:** SystemCapability.Telephony.CellularData
-
-## DATA_FLOW_TYPE_DORMANT
-
-```TypeScript
-DATA_FLOW_TYPE_DORMANT = 4
-```
-
-No uplink or downlink data is available because the lower-layer link is in the dormant state.
-
-**Since:** 7
-
-<!--Device-DataFlowType-DATA_FLOW_TYPE_DORMANT = 4--><!--Device-DataFlowType-DATA_FLOW_TYPE_DORMANT = 4-End-->
 
 **System capability:** SystemCapability.Telephony.CellularData

@@ -6,6 +6,8 @@ export type PluginBundleInfo = _PluginBundleInfo
 
 Defines the plugin information.
 
+**Type:** _PluginBundleInfo
+
 **Since:** 19
 
 <!--Device-bundleManager-export type PluginBundleInfo = _PluginBundleInfo--><!--Device-bundleManager-export type PluginBundleInfo = _PluginBundleInfo-End-->
@@ -13,5 +15,3 @@ Defines the plugin information.
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 
 **System API:** This is a system API.
-
-**Type:** _PluginBundleInfo

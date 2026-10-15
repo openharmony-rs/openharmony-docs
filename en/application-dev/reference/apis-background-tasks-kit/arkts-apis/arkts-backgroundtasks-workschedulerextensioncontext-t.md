@@ -6,6 +6,8 @@ export type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext
 
 WorkSchedulerExtensionContext represents the context of WorkSchedulerExtensionAbility and is inherited from [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md).
 
+**Type:** _WorkSchedulerExtensionContext
+
 **Since:** 10
 
 **Model restriction:** This API can be used only in the stage model.
@@ -13,5 +15,3 @@ WorkSchedulerExtensionContext represents the context of WorkSchedulerExtensionAb
 <!--Device-unnamed-export type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext--><!--Device-unnamed-export type WorkSchedulerExtensionContext = _WorkSchedulerExtensionContext-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
-
-**Type:** _WorkSchedulerExtensionContext

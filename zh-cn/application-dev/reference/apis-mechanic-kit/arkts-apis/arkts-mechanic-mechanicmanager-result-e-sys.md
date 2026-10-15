@@ -6,8 +6,6 @@ export enum Result
 
 Rotation execution results.
 
-@enum { int }
-
 **起始版本：** 20
 
 <!--Device-mechanicManager-export enum Result--><!--Device-mechanicManager-export enum Result-End-->
@@ -64,33 +62,17 @@ Device reached limitation.
 
 **系统接口：** 此接口为系统接口。
 
-## TIMEOUT
+## SYSTEM_ERROR
 
 ```TypeScript
-TIMEOUT = 3
+SYSTEM_ERROR = 100
 ```
 
-Rotation time out.
+Rotation failed due to system error.
 
 **起始版本：** 20
 
-<!--Device-Result-TIMEOUT = 3--><!--Device-Result-TIMEOUT = 3-End-->
-
-**系统能力：** SystemCapability.Mechanic.Core
-
-**系统接口：** 此接口为系统接口。
-
-## TERMINATE_OBSTACLE
-
-```TypeScript
-TERMINATE_OBSTACLE  = 4
-```
-
-障碍物导致终止
-
-**起始版本：** 26.0.0
-
-<!--Device-Result-TERMINATE_OBSTACLE  = 4--><!--Device-Result-TERMINATE_OBSTACLE  = 4-End-->
+<!--Device-Result-SYSTEM_ERROR = 100--><!--Device-Result-SYSTEM_ERROR = 100-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 
@@ -112,17 +94,33 @@ TERMINATE_CLIFF = 5
 
 **系统接口：** 此接口为系统接口。
 
-## SYSTEM_ERROR
+## TERMINATE_OBSTACLE
 
 ```TypeScript
-SYSTEM_ERROR = 100
+TERMINATE_OBSTACLE  = 4
 ```
 
-Rotation failed due to system error.
+障碍物导致终止
+
+**起始版本：** 26.0.0
+
+<!--Device-Result-TERMINATE_OBSTACLE  = 4--><!--Device-Result-TERMINATE_OBSTACLE  = 4-End-->
+
+**系统能力：** SystemCapability.Mechanic.Core
+
+**系统接口：** 此接口为系统接口。
+
+## TIMEOUT
+
+```TypeScript
+TIMEOUT = 3
+```
+
+Rotation time out.
 
 **起始版本：** 20
 
-<!--Device-Result-SYSTEM_ERROR = 100--><!--Device-Result-SYSTEM_ERROR = 100-End-->
+<!--Device-Result-TIMEOUT = 3--><!--Device-Result-TIMEOUT = 3-End-->
 
 **系统能力：** SystemCapability.Mechanic.Core
 

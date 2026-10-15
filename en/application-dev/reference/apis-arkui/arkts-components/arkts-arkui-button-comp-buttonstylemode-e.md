@@ -12,26 +12,6 @@ Enumerates the button importance levels.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-Normal button (used to direct the user to a common task).
-
-**Since:** 11
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 11.
-
-<!--Device-ButtonStyleMode-NORMAL = 0--><!--Device-ButtonStyleMode-NORMAL = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## EMPHASIZED
 
 ```TypeScript
@@ -49,6 +29,26 @@ Emphasized button (used to direct the user to the most important task).
 **Widget capability:** This API can be used in ArkTS widgets since API version 11.
 
 <!--Device-ButtonStyleMode-EMPHASIZED = 1--><!--Device-ButtonStyleMode-EMPHASIZED = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+Normal button (used to direct the user to a common task).
+
+**Since:** 11
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 11.
+
+<!--Device-ButtonStyleMode-NORMAL = 0--><!--Device-ButtonStyleMode-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

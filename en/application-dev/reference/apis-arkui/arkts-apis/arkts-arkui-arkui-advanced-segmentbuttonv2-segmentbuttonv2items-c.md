@@ -6,9 +6,7 @@ export declare class SegmentButtonV2Items extends Array<SegmentButtonV2Item>
 
 Represents items of the **SegmentButtonV2** component.
 
-This parameter is inherited from Array\&lt;[SegmentButtonV2Item](arkts-arkui-arkui-advanced-segmentbuttonv2-segmentbuttonv2item-c.md)&gt;.
-
-**Inheritance/Implementation:** SegmentButtonV2Items extends Array<SegmentButtonV2Item>
+**Inheritance/Implementation:** SegmentButtonV2Items extends Array&lt;SegmentButtonV2Item&gt;
 
 **Since:** 18
 

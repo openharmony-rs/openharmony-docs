@@ -17,45 +17,17 @@ Enumerates the device-cloud sync states.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## UPLOADING
+## COMPLETED
 
 ```TypeScript
-UPLOADING = 0
+COMPLETED = 4
 ```
 
-The file is being uploaded.
+Sync completed.
 
 **Since:** 12
 
-<!--Device-SyncState-UPLOADING = 0--><!--Device-SyncState-UPLOADING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## UPLOAD_FAILED
-
-```TypeScript
-UPLOAD_FAILED = 1
-```
-
-Upload failed.
-
-**Since:** 12
-
-<!--Device-SyncState-UPLOAD_FAILED = 1--><!--Device-SyncState-UPLOAD_FAILED = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## DOWNLOADING
-
-```TypeScript
-DOWNLOADING = 2
-```
-
-The file is being downloaded.
-
-**Since:** 12
-
-<!--Device-SyncState-DOWNLOADING = 2--><!--Device-SyncState-DOWNLOADING = 2-End-->
+<!--Device-SyncState-COMPLETED = 4--><!--Device-SyncState-COMPLETED = 4-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -73,17 +45,17 @@ Download failed.
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## COMPLETED
+## DOWNLOADING
 
 ```TypeScript
-COMPLETED = 4
+DOWNLOADING = 2
 ```
 
-Sync completed.
+The file is being downloaded.
 
 **Since:** 12
 
-<!--Device-SyncState-COMPLETED = 4--><!--Device-SyncState-COMPLETED = 4-End-->
+<!--Device-SyncState-DOWNLOADING = 2--><!--Device-SyncState-DOWNLOADING = 2-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
@@ -98,5 +70,33 @@ Sync stopped.
 **Since:** 12
 
 <!--Device-SyncState-STOPPED = 5--><!--Device-SyncState-STOPPED = 5-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## UPLOAD_FAILED
+
+```TypeScript
+UPLOAD_FAILED = 1
+```
+
+Upload failed.
+
+**Since:** 12
+
+<!--Device-SyncState-UPLOAD_FAILED = 1--><!--Device-SyncState-UPLOAD_FAILED = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## UPLOADING
+
+```TypeScript
+UPLOADING = 0
+```
+
+The file is being uploaded.
+
+**Since:** 12
+
+<!--Device-SyncState-UPLOADING = 0--><!--Device-SyncState-UPLOADING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

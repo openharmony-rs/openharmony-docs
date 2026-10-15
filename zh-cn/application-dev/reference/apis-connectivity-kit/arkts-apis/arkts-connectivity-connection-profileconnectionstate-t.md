@@ -6,6 +6,8 @@ type ProfileConnectionState = constant.ProfileConnectionState
 
 蓝牙设备的Profile协议连接状态。Profile协议包括A2DP（Advanced Audio Distribution Profile）、HFP（Hands-Free Profile）和HID（Human Interface Device）等。
 
+**类型：** [constant.ProfileConnectionState](arkts-connectivity-constant-profileconnectionstate-e.md)
+
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -13,5 +15,3 @@ type ProfileConnectionState = constant.ProfileConnectionState
 <!--Device-connection-type ProfileConnectionState = constant.ProfileConnectionState--><!--Device-connection-type ProfileConnectionState = constant.ProfileConnectionState-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**类型：** [constant.ProfileConnectionState](arkts-connectivity-constant-profileconnectionstate-e.md)

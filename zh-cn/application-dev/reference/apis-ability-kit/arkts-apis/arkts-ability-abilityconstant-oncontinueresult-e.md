@@ -24,27 +24,9 @@ AGREE = 0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-OnContinueResult-AGREE = 0--><!--Device-OnContinueResult-AGREE = 0-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-## REJECT
-
-```TypeScript
-REJECT = 1
-```
-
-表示拒绝：如应用在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)中异常会导致迁移以后数据恢复时显示异常，则可以返回REJECT。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-OnContinueResult-REJECT = 1--><!--Device-OnContinueResult-REJECT = 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -60,8 +42,26 @@ MISMATCH = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-OnContinueResult-MISMATCH = 2--><!--Device-OnContinueResult-MISMATCH = 2-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+## REJECT
+
+```TypeScript
+REJECT = 1
+```
+
+表示拒绝：如应用在[onContinue](arkts-ability-app-ability-uiability-uiability-c.md#oncontinue)中异常会导致迁移以后数据恢复时显示异常，则可以返回REJECT。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-OnContinueResult-REJECT = 1--><!--Device-OnContinueResult-REJECT = 1-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core

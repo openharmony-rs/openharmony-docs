@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="restore1"></a>
+
 ## restore
 
 ```TypeScript
@@ -39,6 +41,7 @@ Removes a wallpaper of the specified type and restores the default one.
 | [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,8 +56,10 @@ wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErro
 });
 ```
 
+<!--DelEnd-->
 
-<a id="restore-1"></a>
+
+<a id="restore2"></a>
 
 ## restore
 
@@ -94,6 +99,7 @@ Removes a wallpaper of the specified type and restores the default one.
 | [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -105,3 +111,5 @@ wallpaper.restore(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then(() => {
     console.error(`failed to restore. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

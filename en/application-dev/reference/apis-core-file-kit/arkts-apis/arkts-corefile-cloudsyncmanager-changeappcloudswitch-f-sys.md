@@ -6,6 +6,8 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="changeappcloudswitch1"></a>
+
 ## changeAppCloudSwitch
 
 ```TypeScript
@@ -44,6 +46,7 @@ Changes the device-cloud file sync switch for an application. This API uses a pr
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,8 +61,10 @@ cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="changeappcloudswitch-1"></a>
+
+<a id="changeappcloudswitch2"></a>
 
 ## changeAppCloudSwitch
 
@@ -94,6 +99,7 @@ Changes the device-cloud file sync switch for an application. This API uses an a
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,3 +115,5 @@ cloudSyncManager.changeAppCloudSwitch(accountId, bundleName, true, (err: Busines
   }
 });
 ```
+
+<!--DelEnd-->

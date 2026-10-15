@@ -6,6 +6,8 @@
 import { zlib } from '@kit.BasicServicesKit';
 ```
 
+<a id="decompressfile1"></a>
+
 ## decompressFile
 
 ```TypeScript
@@ -24,7 +26,7 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-zlib-function decompressFile(inFile: string, outFile: string, options: Options, callback: AsyncCallback<void>): void--><!--Device-zlib-function decompressFile(inFile: string, outFile: string, options: Options, callback: AsyncCallback<void>): void-End-->
 
@@ -77,7 +79,7 @@ try {
 ```
 
 
-<a id="decompressfile-1"></a>
+<a id="decompressfile2"></a>
 
 ## decompressFile
 
@@ -97,7 +99,7 @@ Decompresses a file. This API uses an asynchronous callback to return the result
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-zlib-function decompressFile(inFile: string, outFile: string, callback: AsyncCallback<void>): void--><!--Device-zlib-function decompressFile(inFile: string, outFile: string, callback: AsyncCallback<void>): void-End-->
 
@@ -145,7 +147,7 @@ try {
 ```
 
 
-<a id="decompressfile-2"></a>
+<a id="decompressfile3"></a>
 
 ## decompressFile
 
@@ -165,7 +167,7 @@ Decompresses a file. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-zlib-function decompressFile(inFile: string, outFile: string, options?: Options): Promise<void>--><!--Device-zlib-function decompressFile(inFile: string, outFile: string, options?: Options): Promise<void>-End-->
 

@@ -16,7 +16,7 @@ function getChannelId(): string
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本13开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
 <!--Device-customConfig-function getChannelId(): string--><!--Device-customConfig-function getChannelId(): string-End-->
 

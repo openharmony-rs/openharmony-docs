@@ -8,7 +8,7 @@ UiTest中，UiComponent类代表了UI界面上的一个控件，提供控件属�
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[Component&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[Component<sup>9+</sup>](arkts-test-uitest-component-c.md)替代。
 
 **起始版本：** 8
 
@@ -39,7 +39,7 @@ click(): Promise<void>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[click&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#click)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[click<sup>9+</sup>](arkts-test-uitest-component-c.md#click)替代。
 
 **起始版本：** 8
 
@@ -82,7 +82,7 @@ doubleClick(): Promise<void>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#doubleclick)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[doubleClick<sup>9+</sup>](arkts-test-uitest-component-c.md#doubleclick)替代。
 
 **起始版本：** 8
 
@@ -125,7 +125,7 @@ getId(): Promise<number>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#getid)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](arkts-test-uitest-component-c.md#getid)替代。
 
 **起始版本：** 8
 
@@ -168,7 +168,7 @@ getKey(): Promise<string>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#getid)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getId<sup>9+</sup>](arkts-test-uitest-component-c.md#getid)替代。
 
 **起始版本：** 8
 
@@ -211,7 +211,7 @@ getText(): Promise<string>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getText&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#gettext)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getText<sup>9+</sup>](arkts-test-uitest-component-c.md#gettext)替代。
 
 **起始版本：** 8
 
@@ -254,7 +254,7 @@ getType(): Promise<string>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[getType&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#gettype)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[getType<sup>9+</sup>](arkts-test-uitest-component-c.md#gettype)替代。
 
 **起始版本：** 8
 
@@ -297,13 +297,13 @@ inputText(text: string): Promise<void>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#inputtext)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[inputText<sup>9+</sup>](arkts-test-uitest-component-c.md#inputtext1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [inputText](arkts-test-uitest-component-c.md#inputtext)(text: string)
+**替代接口：** [inputText](arkts-test-uitest-component-c.md#inputtext1)(text: string)
 
 <!--Device-UiComponent-inputText(text: string): Promise<void>--><!--Device-UiComponent-inputText(text: string): Promise<void>-End-->
 
@@ -346,7 +346,7 @@ isClickable(): Promise<boolean>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[isClickable&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isclickable)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isClickable<sup>9+</sup>](arkts-test-uitest-component-c.md#isclickable)替代。
 
 **起始版本：** 8
 
@@ -393,7 +393,7 @@ isEnabled(): Promise<boolean>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[isEnabled&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isenabled)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isEnabled<sup>9+</sup>](arkts-test-uitest-component-c.md#isenabled)替代。
 
 **起始版本：** 8
 
@@ -440,7 +440,7 @@ isFocused(): Promise<boolean>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[isFocused&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isfocused)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isFocused<sup>9+</sup>](arkts-test-uitest-component-c.md#isfocused)替代。
 
 **起始版本：** 8
 
@@ -487,7 +487,7 @@ isScrollable(): Promise<boolean>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[isScrollable&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isscrollable)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isScrollable<sup>9+</sup>](arkts-test-uitest-component-c.md#isscrollable)替代。
 
 **起始版本：** 8
 
@@ -534,7 +534,7 @@ isSelected(): Promise<boolean>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[isSelected&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#isselected)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[isSelected<sup>9+</sup>](arkts-test-uitest-component-c.md#isselected)替代。
 
 **起始版本：** 8
 
@@ -581,7 +581,7 @@ longClick(): Promise<void>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#longclick)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[longClick<sup>9+</sup>](arkts-test-uitest-component-c.md#longclick)替代。
 
 **起始版本：** 8
 
@@ -624,13 +624,13 @@ scrollSearch(by: By): Promise<UiComponent>
 
 > **说明：** 
 > 
-> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch&lt;sup&gt;9+&lt;/sup&gt;](arkts-test-uitest-component-c.md#scrollsearch)替代。
+> 从API version 8开始支持，从API version 9开始废弃，建议使用[scrollSearch<sup>9+</sup>](arkts-test-uitest-component-c.md#scrollsearch1)替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [scrollSearch](arkts-test-uitest-component-c.md#scrollsearch)(on: On)
+**替代接口：** [scrollSearch](arkts-test-uitest-component-c.md#scrollsearch1)(on: On)
 
 <!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>--><!--Device-UiComponent-scrollSearch(by: By): Promise<UiComponent>-End-->
 

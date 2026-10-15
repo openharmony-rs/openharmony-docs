@@ -22,7 +22,14 @@ Custom Component
 aboutToReuse?(params: Record<string, Object | undefined | null>): void
 ```
 
-aboutToReuse Method
+When a reusable custom component is re-added to the node tree from the reuse cache, the **aboutToReuse** lifecycle callback is triggered, and the construction parameters of the component are passed to this callback.
+
+> **NOTE:** 
+> 
+> * Avoid repeatedly assigning values to state variables that are automatically updated, such as **@Link**\/
+> **@ObjectLink**\/**@Prop**, in **aboutToReuse()**.
+> 
+> * In sliding scenarios, component reuse usually requires this callback function to update the state variables of the component. Therefore, avoid time-consuming operations in this callback function, otherwise frame loss and lag may occur. For best practices, see [Optimizing Time-Consuming Operations in the Main Thread - Component Reuse Callback](https://developer.huawei.com/consumer/en/doc/best-practices/bpta-time-optimization-of-the-main-thread#section20815336174316).
 
 **Since:** 10
 
@@ -38,7 +45,7 @@ aboutToReuse Method
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| params | Record&lt;string, Object &#124; undefined &#124; null&gt; | Yes | Custom component init params.<br>**Since:** 20 |
+| params | Record&lt;string, Object &#124; undefined &#124; null&gt; | Yes | Construction parameters of the custom component. The key is the name of the component member variable passed in from outside during reuse, and the value is the corresponding parameter value passed in from outside during reuse.<br>**Since:** 20 |
 
 ## onLayout
 

@@ -49,6 +49,7 @@ function getExtBundleStats(userId: number, businessName: string): Promise<ExtBun
 | 13600010 | The input parameter is invalid. |
 | 13600012 | Failed to query the specified business space usage. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ storageStatistics.getExtBundleStats(userId, businessName).then((bundleStats: sto
   console.error(`getExtBundleStats failed with err, code is: ${err.code}, message is: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

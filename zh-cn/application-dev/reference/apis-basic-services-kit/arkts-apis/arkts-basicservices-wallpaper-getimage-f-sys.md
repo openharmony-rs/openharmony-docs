@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="getimage1"></a>
+
 ## getImage
 
 ```TypeScript
@@ -39,6 +41,7 @@ function getImage(wallpaperType: WallpaperType, callback: AsyncCallback<image.Pi
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -54,8 +57,10 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM, (error: BusinessErr
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getimage-1"></a>
+
+<a id="getimage2"></a>
 
 ## getImage
 
@@ -95,6 +100,7 @@ function getImage(wallpaperType: WallpaperType): Promise<image.PixelMap>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -107,3 +113,5 @@ wallpaper.getImage(wallpaper.WallpaperType.WALLPAPER_SYSTEM).then((data: image.P
   console.error(`Failed to getImage. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

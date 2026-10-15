@@ -34,6 +34,7 @@ Obtains the Wi-Fi hotspot configuration.
 | --- | --- |
 | [HotspotConfig](arkts-connectivity-wifi-hotspotconfig-i-sys.md) | Returns the configuration of an existing or enabled Wi-Fi hotspot. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

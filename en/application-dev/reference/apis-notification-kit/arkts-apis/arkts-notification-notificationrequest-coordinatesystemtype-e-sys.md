@@ -14,22 +14,6 @@ Enumerates the coordinate systems of a geofence.
 
 **System API:** This is a system API.
 
-## COORDINATE_TYPE_WGS84
-
-```TypeScript
-COORDINATE_TYPE_WGS84 = 1
-```
-
-WGS84.
-
-**Since:** 23
-
-<!--Device-CoordinateSystemType-COORDINATE_TYPE_WGS84 = 1--><!--Device-CoordinateSystemType-COORDINATE_TYPE_WGS84 = 1-End-->
-
-**System capability:** SystemCapability.Notification.Notification
-
-**System API:** This is a system API.
-
 ## COORDINATE_TYPE_GCJ02
 
 ```TypeScript
@@ -41,6 +25,22 @@ GCJ02.
 **Since:** 23
 
 <!--Device-CoordinateSystemType-COORDINATE_TYPE_GCJ02 = 2--><!--Device-CoordinateSystemType-COORDINATE_TYPE_GCJ02 = 2-End-->
+
+**System capability:** SystemCapability.Notification.Notification
+
+**System API:** This is a system API.
+
+## COORDINATE_TYPE_WGS84
+
+```TypeScript
+COORDINATE_TYPE_WGS84 = 1
+```
+
+WGS84.
+
+**Since:** 23
+
+<!--Device-CoordinateSystemType-COORDINATE_TYPE_WGS84 = 1--><!--Device-CoordinateSystemType-COORDINATE_TYPE_WGS84 = 1-End-->
 
 **System capability:** SystemCapability.Notification.Notification
 

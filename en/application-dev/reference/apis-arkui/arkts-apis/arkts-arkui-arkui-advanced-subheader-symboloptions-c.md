@@ -4,7 +4,7 @@
 export declare class SymbolOptions
 ```
 
-Declare type SymbolOptions
+Declare type SymbolOptions.
 
 **Since:** 12
 

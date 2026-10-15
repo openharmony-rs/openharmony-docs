@@ -12,24 +12,6 @@ Enumerates drop-down menu alignment modes.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## START
-
-```TypeScript
-START
-```
-
-Aligned with the start edge in the same direction as the language in use.
-
-**Since:** 10
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-MenuAlignType-START--><!--Device-MenuAlignType-START-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## CENTER
 
 ```TypeScript
@@ -63,5 +45,23 @@ Aligned with the end edge in the same direction as the language in use.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-MenuAlignType-END--><!--Device-MenuAlignType-END-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## START
+
+```TypeScript
+START
+```
+
+Aligned with the start edge in the same direction as the language in use.
+
+**Since:** 10
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-MenuAlignType-START--><!--Device-MenuAlignType-START-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

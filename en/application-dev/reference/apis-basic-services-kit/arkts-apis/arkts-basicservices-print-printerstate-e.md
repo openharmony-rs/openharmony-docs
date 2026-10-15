@@ -26,20 +26,6 @@ A new printer is added.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## PRINTER_REMOVED
-
-```TypeScript
-PRINTER_REMOVED = 1
-```
-
-The printer is removed.
-
-**Since:** 14
-
-<!--Device-PrinterState-PRINTER_REMOVED = 1--><!--Device-PrinterState-PRINTER_REMOVED = 1-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## PRINTER_CAPABILITY_UPDATED
 
 ```TypeScript
@@ -79,6 +65,20 @@ The printer is disconnected.
 **Since:** 14
 
 <!--Device-PrinterState-PRINTER_DISCONNECTED = 4--><!--Device-PrinterState-PRINTER_DISCONNECTED = 4-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## PRINTER_REMOVED
+
+```TypeScript
+PRINTER_REMOVED = 1
+```
+
+The printer is removed.
+
+**Since:** 14
+
+<!--Device-PrinterState-PRINTER_REMOVED = 1--><!--Device-PrinterState-PRINTER_REMOVED = 1-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework
 

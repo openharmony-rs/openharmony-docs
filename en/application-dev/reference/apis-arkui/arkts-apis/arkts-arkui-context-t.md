@@ -4,9 +4,11 @@
 export type Context = common.Context
 ```
 
-The base context of an ability or an application. It allows access to application-specific resources.
+Context of the Ability (app component) where the current component resides.
 
 @typedef { common.Context } Context
+
+**Type:** [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md)
 
 **Since:** 12
 
@@ -17,5 +19,3 @@ The base context of an ability or an application. It allows access to applicatio
 <!--Device-unnamed-export type Context = common.Context--><!--Device-unnamed-export type Context = common.Context-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** [common.Context](../../apis-ability-kit/arkts-apis/arkts-ability-common-context-t.md)

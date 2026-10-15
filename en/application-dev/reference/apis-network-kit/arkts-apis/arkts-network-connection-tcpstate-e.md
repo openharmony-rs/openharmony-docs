@@ -12,6 +12,54 @@ Enumerates TCP states.
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
+## TCP_CLOSE
+
+```TypeScript
+TCP_CLOSE = 7
+```
+
+Initial/closed state, with no connection.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_CLOSE = 7--><!--Device-TcpState-TCP_CLOSE = 7-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+## TCP_CLOSE_WAIT
+
+```TypeScript
+TCP_CLOSE_WAIT = 8
+```
+
+The passive end receives FIN and sends ACK, and waits for FIN from the peer end.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_CLOSE_WAIT = 8--><!--Device-TcpState-TCP_CLOSE_WAIT = 8-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+## TCP_CLOSING
+
+```TypeScript
+TCP_CLOSING = 11
+```
+
+Both ends send FIN and wait for ACK from each other.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_CLOSING = 11--><!--Device-TcpState-TCP_CLOSING = 11-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
 ## TCP_ESTABLISHED
 
 ```TypeScript
@@ -25,38 +73,6 @@ The connection is established, and data can be sent and received properly.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TcpState-TCP_ESTABLISHED = 1--><!--Device-TcpState-TCP_ESTABLISHED = 1-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-## TCP_SYN_SENT
-
-```TypeScript
-TCP_SYN_SENT = 2
-```
-
-The client sends SYN and waits for ACK+SYN from the server (the first step of the three-way handshake).
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TcpState-TCP_SYN_SENT = 2--><!--Device-TcpState-TCP_SYN_SENT = 2-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-## TCP_SYN_RECV
-
-```TypeScript
-TCP_SYN_RECV = 3
-```
-
-The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TcpState-TCP_SYN_RECV = 3--><!--Device-TcpState-TCP_SYN_RECV = 3-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
@@ -92,54 +108,6 @@ The active end receives ACK of FIN and waits for ACK from the peer end.
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
-## TCP_TIME_WAIT
-
-```TypeScript
-TCP_TIME_WAIT = 6
-```
-
-The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TcpState-TCP_TIME_WAIT = 6--><!--Device-TcpState-TCP_TIME_WAIT = 6-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-## TCP_CLOSE
-
-```TypeScript
-TCP_CLOSE = 7
-```
-
-Initial/closed state, with no connection.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TcpState-TCP_CLOSE = 7--><!--Device-TcpState-TCP_CLOSE = 7-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
-## TCP_CLOSE_WAIT
-
-```TypeScript
-TCP_CLOSE_WAIT = 8
-```
-
-The passive end receives FIN and sends ACK, and waits for FIN from the peer end.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TcpState-TCP_CLOSE_WAIT = 8--><!--Device-TcpState-TCP_CLOSE_WAIT = 8-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Core
-
 ## TCP_LAST_ACK
 
 ```TypeScript
@@ -172,18 +140,50 @@ The server listens and waits for the client to connect.
 
 **System capability:** SystemCapability.Communication.NetManager.Core
 
-## TCP_CLOSING
+## TCP_SYN_RECV
 
 ```TypeScript
-TCP_CLOSING = 11
+TCP_SYN_RECV = 3
 ```
 
-Both ends send FIN and wait for ACK from each other.
+The server receives SYN and sends ACK+SYN, and waits for ACK from the client (the second step of the three-way handshake).
 
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TcpState-TCP_CLOSING = 11--><!--Device-TcpState-TCP_CLOSING = 11-End-->
+<!--Device-TcpState-TCP_SYN_RECV = 3--><!--Device-TcpState-TCP_SYN_RECV = 3-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+## TCP_SYN_SENT
+
+```TypeScript
+TCP_SYN_SENT = 2
+```
+
+The client sends SYN and waits for ACK+SYN from the server (the first step of the three-way handshake).
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_SYN_SENT = 2--><!--Device-TcpState-TCP_SYN_SENT = 2-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Core
+
+## TCP_TIME_WAIT
+
+```TypeScript
+TCP_TIME_WAIT = 6
+```
+
+The active end receives FIN from the peer end and replies with ACK. After two times of the maximum segment lifetime, the connection is completely released.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TcpState-TCP_TIME_WAIT = 6--><!--Device-TcpState-TCP_TIME_WAIT = 6-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Core

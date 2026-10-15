@@ -32,24 +32,6 @@ The current focus scenario is tap focus.
 
 **System API:** This is a system API.
 
-## SWIPE_FOCUS
-
-```TypeScript
-SWIPE_FOCUS = 2
-```
-
-The current focus scenario is swipe focus.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AccessibilityFocusScene-SWIPE_FOCUS = 2--><!--Device-AccessibilityFocusScene-SWIPE_FOCUS = 2-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
 ## SCROLL_FOCUS
 
 ```TypeScript
@@ -63,6 +45,24 @@ The current focus scenario is scroll focus.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-AccessibilityFocusScene-SCROLL_FOCUS = 3--><!--Device-AccessibilityFocusScene-SCROLL_FOCUS = 3-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## SWIPE_FOCUS
+
+```TypeScript
+SWIPE_FOCUS = 2
+```
+
+The current focus scenario is swipe focus.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AccessibilityFocusScene-SWIPE_FOCUS = 2--><!--Device-AccessibilityFocusScene-SWIPE_FOCUS = 2-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

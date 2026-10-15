@@ -24,7 +24,7 @@ import { ArkTSUtils } from '@kit.ArkTS';
 contextId: number
 ```
 
-AsyncLockMode调用者的执行上下文标识符。
+AsyncLock调用者的执行上下文标识符。
 
 **类型：** number
 

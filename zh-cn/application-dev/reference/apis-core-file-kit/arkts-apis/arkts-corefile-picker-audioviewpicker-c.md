@@ -18,6 +18,8 @@ class AudioViewPicker
 import { picker } from '@kit.CoreFileKit';
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -28,7 +30,7 @@ constructor()
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AudioViewPicker-constructor()--><!--Device-AudioViewPicker-constructor()-End-->
 
@@ -40,7 +42,7 @@ constructor()
 let audioPicker = new picker.AudioViewPicker(); // 不推荐使用无参构造，会出现概率性拉起失败问题
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -52,7 +54,7 @@ constructor(context: Context)
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AudioViewPicker-constructor(context: Context)--><!--Device-AudioViewPicker-constructor(context: Context)-End-->
 
@@ -92,6 +94,8 @@ struct Index {
 }
 ```
 
+<a id="save1"></a>
+
 ## save
 
 ```TypeScript
@@ -102,7 +106,7 @@ save(option?: AudioSaveOptions): Promise<Array<string>>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AudioViewPicker-save(option?: AudioSaveOptions): Promise<Array<string>>--><!--Device-AudioViewPicker-save(option?: AudioSaveOptions): Promise<Array<string>>-End-->
 
@@ -143,7 +147,7 @@ async function example16(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="save-1"></a>
+<a id="save2"></a>
 
 ## save
 
@@ -191,7 +195,7 @@ async function example17(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="save-2"></a>
+<a id="save3"></a>
 
 ## save
 
@@ -236,6 +240,8 @@ async function example18(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
+<a id="select1"></a>
+
 ## select
 
 ```TypeScript
@@ -246,7 +252,7 @@ select(option?: AudioSelectOptions): Promise<Array<string>>
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-AudioViewPicker-select(option?: AudioSelectOptions): Promise<Array<string>>--><!--Device-AudioViewPicker-select(option?: AudioSelectOptions): Promise<Array<string>>-End-->
 
@@ -286,7 +292,7 @@ async function example13(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="select-1"></a>
+<a id="select2"></a>
 
 ## select
 
@@ -333,7 +339,7 @@ async function example14(context: common.UIAbilityContext) { // 需确保 contex
 }
 ```
 
-<a id="select-2"></a>
+<a id="select3"></a>
 
 ## select
 

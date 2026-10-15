@@ -44,10 +44,11 @@ Uninstalls the public credential of the user. This API is called only by the cer
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.<br> The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed.<br> Possible causes: the URI is null or the URI format is wrong. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error.<br> Possible causes: The URI is null or the URI format is wrong. |
 | [17500001](../errorcode-certManager.md#17500001-internal-error) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500002](../errorcode-certManager.md#17500002-certificate-not-exist) | Indicates that the certificate does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -66,3 +67,5 @@ try {
   console.error(`Failed to uninstall public certificate. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

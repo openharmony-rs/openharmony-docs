@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="delsimmessage1"></a>
+
 ## delSimMessage
 
 ```TypeScript
@@ -44,6 +46,7 @@ function delSimMessage(slotId: number, msgIndex: number, callback: AsyncCallback
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ sms.delSimMessage(slotId, msgIndex, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="delsimmessage-1"></a>
+
+<a id="delsimmessage2"></a>
 
 ## delSimMessage
 
@@ -103,6 +108,7 @@ function delSimMessage(slotId: number, msgIndex: number): Promise<void>
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -118,3 +124,5 @@ promise.then(() => {
     console.error(`delSimMessage failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

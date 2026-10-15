@@ -6,7 +6,7 @@ export declare class LazyColumnLayoutAttribute extends CommonMethod<LazyColumnLa
 
 定义懒加载列布局属性。
 
-@extends CommonMethod&lt;LazyColumnLayoutAttribute&gt;
+@extends CommonMethod<LazyColumnLayoutAttribute>
 
 **继承/实现关系：** LazyColumnLayoutAttribute extends CommonMethod&lt;LazyColumnLayoutAttribute&gt;
 

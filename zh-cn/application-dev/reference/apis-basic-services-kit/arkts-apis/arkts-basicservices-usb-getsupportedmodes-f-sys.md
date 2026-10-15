@@ -38,8 +38,11 @@ function getSupportedModes(portId: number): PortModeType
 | --- | --- |
 | [PortModeType](arkts-basicservices-usb-portmodetype-e-sys.md) | 支持的模式列表的组合掩码。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let ret = usb.getSupportedModes(0);
 ```
+
+<!--DelEnd-->

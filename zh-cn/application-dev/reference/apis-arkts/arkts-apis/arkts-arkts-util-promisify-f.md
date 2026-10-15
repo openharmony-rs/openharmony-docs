@@ -47,7 +47,7 @@ const addCall = util.promisify(util.callbackWrapper(fn));
     console.info(res);
     // 输出结果：hello world
   } catch (err) {
-    console.info(err);
+    console.error(`Failed to call promisify. Code: ${err.code}, message: ${err.message}`);
   }
 })();
 ```

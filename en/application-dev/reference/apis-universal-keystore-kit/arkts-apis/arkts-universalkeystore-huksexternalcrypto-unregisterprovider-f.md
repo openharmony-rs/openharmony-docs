@@ -40,7 +40,7 @@ Unregisters a specified external Provider. This API uses a promise to return the
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed: call the unregisterProvider API, missing Permission: ohos.permission.CRYPTO_EXTENSION_REGISTER. |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability. 2. The chip does not support the capability. 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes:         1. The hardware does not support the capability.         2. The chip does not support the capability.         3. A dependent service feature is not supported. |
 | [12000005](../errorcode-huks.md#12000005-ipc-error) | IPC communication failed. |
 | [12000011](../errorcode-huks.md#12000011-the-entity-does-not-exist) | the provider is not found. |
 | [12000012](../errorcode-huks.md#12000012-external-error) | Device environment or input parameter is abnormal. This may happen for several reasons, such as the model already being unloaded. |

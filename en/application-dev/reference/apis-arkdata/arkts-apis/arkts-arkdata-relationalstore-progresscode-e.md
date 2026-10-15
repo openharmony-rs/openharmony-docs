@@ -12,45 +12,17 @@ Describes the status of `Progress`.
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## SUCCESS
+## BLOCKED_BY_NETWORK_STRATEGY
 
 ```TypeScript
-SUCCESS = 0
+BLOCKED_BY_NETWORK_STRATEGY = 7
 ```
 
-The device-cloud sync is successful.
+The device-cloud sync is blocked due to the network strategy.
 
-**Since:** 10
+**Since:** 12
 
-<!--Device-ProgressCode-SUCCESS = 0--><!--Device-ProgressCode-SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## UNKNOWN_ERROR
-
-```TypeScript
-UNKNOWN_ERROR = 1
-```
-
-An unknown error occurs during the device-cloud sync.
-
-**Since:** 10
-
-<!--Device-ProgressCode-UNKNOWN_ERROR = 1--><!--Device-ProgressCode-UNKNOWN_ERROR = 1-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## NETWORK_ERROR
-
-```TypeScript
-NETWORK_ERROR = 2
-```
-
-A network error occurs during the device-cloud sync.
-
-**Since:** 10
-
-<!--Device-ProgressCode-NETWORK_ERROR = 2--><!--Device-ProgressCode-NETWORK_ERROR = 2-End-->
+<!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7--><!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -84,17 +56,17 @@ The sync of the local device can be performed only when the cloud resources are 
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## RECORD_LIMIT_EXCEEDED
+## NETWORK_ERROR
 
 ```TypeScript
-RECORD_LIMIT_EXCEEDED = 5
+NETWORK_ERROR = 2
 ```
 
-The number of records or size of the data to be synced exceeds the maximum. The maximum value is configured on the cloud.
+A network error occurs during the device-cloud sync.
 
 **Since:** 10
 
-<!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5--><!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5-End-->
+<!--Device-ProgressCode-NETWORK_ERROR = 2--><!--Device-ProgressCode-NETWORK_ERROR = 2-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -112,17 +84,17 @@ The remaining cloud space is less than the size of the data to be synced.
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## BLOCKED_BY_NETWORK_STRATEGY
+## RECORD_LIMIT_EXCEEDED
 
 ```TypeScript
-BLOCKED_BY_NETWORK_STRATEGY = 7
+RECORD_LIMIT_EXCEEDED = 5
 ```
 
-The device-cloud sync is blocked due to the network strategy.
+The number of records or size of the data to be synced exceeds the maximum. The maximum value is configured on the cloud.
 
-**Since:** 12
+**Since:** 10
 
-<!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7--><!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7-End-->
+<!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5--><!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -139,5 +111,33 @@ STOP_CLOUD_SYNC: means cloud synchronization has been stopped.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ProgressCode-STOP_CLOUD_SYNC = 8--><!--Device-ProgressCode-STOP_CLOUD_SYNC = 8-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+The device-cloud sync is successful.
+
+**Since:** 10
+
+<!--Device-ProgressCode-SUCCESS = 0--><!--Device-ProgressCode-SUCCESS = 0-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## UNKNOWN_ERROR
+
+```TypeScript
+UNKNOWN_ERROR = 1
+```
+
+An unknown error occurs during the device-cloud sync.
+
+**Since:** 10
+
+<!--Device-ProgressCode-UNKNOWN_ERROR = 1--><!--Device-ProgressCode-UNKNOWN_ERROR = 1-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core

@@ -6,7 +6,7 @@
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
 
-<a id="acquireaccess-1"></a>
+<a id="acquireaccess2"></a>
 
 ## acquireAccess
 
@@ -53,6 +53,7 @@ Before calling this API, ensure that the app has enabled the sensitive data prot
 | [29300003](../errorcode-screenLockFileManager.md#29300003-sensitive-data-access-management-under-lock-screen-is-not-enabled) | The application is not enabled the data protection under lock screen. |
 | [29300004](../errorcode-screenLockFileManager.md#29300004-permission-to-access-sensitive-data-on-the-lock-screen-has-been-revoked) | File access is denied. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,3 +73,5 @@ try {
     hilog.error(0x0000, 'testTag', 'acquireAccess failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

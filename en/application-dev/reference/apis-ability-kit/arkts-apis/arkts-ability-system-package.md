@@ -1,4 +1,4 @@
-# @system.package
+# @system.package(Bundle Management)
 
 > **NOTE**
  >

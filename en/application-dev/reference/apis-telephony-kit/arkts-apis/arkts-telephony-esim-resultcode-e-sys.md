@@ -14,70 +14,6 @@ Enumerates the result codes.
 
 **System API:** This is a system API.
 
-## RESULT_SOLVABLE_ERRORS
-
-```TypeScript
-RESULT_SOLVABLE_ERRORS = -2
-```
-
-Solving of the solvable errors required.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_SOLVABLE_ERRORS = -2--><!--Device-ResultCode-RESULT_SOLVABLE_ERRORS = -2-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_MUST_DISABLE_PROFILE
-
-```TypeScript
-RESULT_MUST_DISABLE_PROFILE = -1
-```
-
-Disabling of the active profile required.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_MUST_DISABLE_PROFILE = -1--><!--Device-ResultCode-RESULT_MUST_DISABLE_PROFILE = -1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_OK
-
-```TypeScript
-RESULT_OK = 0
-```
-
-Operation success.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_OK = 0--><!--Device-ResultCode-RESULT_OK = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_GET_EID_FAILED
-
-```TypeScript
-RESULT_GET_EID_FAILED = 201
-```
-
-Failed to obtain the EID.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_GET_EID_FAILED = 201--><!--Device-ResultCode-RESULT_GET_EID_FAILED = 201-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
 ## RESULT_ACTIVATION_CODE_CHANGED
 
 ```TypeScript
@@ -110,49 +46,113 @@ Invalid activation code.
 
 **System API:** This is a system API.
 
-## RESULT_SMDP_ADDRESS_INVALID
+## RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED
 
 ```TypeScript
-RESULT_SMDP_ADDRESS_INVALID = 205
+RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231
 ```
 
-Invalid SM-DP+ server address.
+Failed to parse the client authentication response because the matching ID was rejected.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_SMDP_ADDRESS_INVALID = 205--><!--Device-ResultCode-RESULT_SMDP_ADDRESS_INVALID = 205-End-->
+<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
 
-## RESULT_EUICC_INFO_INVALID
+## RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED
 
 ```TypeScript
-RESULT_EUICC_INFO_INVALID = 206
+RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229
 ```
 
-Invalid eUICC information.
+Failed to parse the client authentication response.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_EUICC_INFO_INVALID = 206--><!--Device-ResultCode-RESULT_EUICC_INFO_INVALID = 206-End-->
+<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
 
-## RESULT_TLS_HANDSHAKE_FAILED
+## RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED
 
 ```TypeScript
-RESULT_TLS_HANDSHAKE_FAILED = 207
+RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228
 ```
 
-TLS handshake failed.
+Failed to parse the server authentication response.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_TLS_HANDSHAKE_FAILED = 207--><!--Device-ResultCode-RESULT_TLS_HANDSHAKE_FAILED = 207-End-->
+<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_AUTHENTICATION_FAILED
+
+```TypeScript
+RESULT_AUTHENTICATION_FAILED = 210
+```
+
+Authentication failed.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_AUTHENTICATION_FAILED = 210--><!--Device-ResultCode-RESULT_AUTHENTICATION_FAILED = 210-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_CARRIER_SERVER_REFUSED_ERRORS
+
+```TypeScript
+RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249
+```
+
+Rejection cause code of the carrier server, which is 3.8.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249--><!--Device-ResultCode-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_CAT_BUSY
+
+```TypeScript
+RESULT_CAT_BUSY = 283
+```
+
+Session in progress.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_CAT_BUSY = 283--><!--Device-ResultCode-RESULT_CAT_BUSY = 283-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_CERTIFICATE_INVALID
+
+```TypeScript
+RESULT_CERTIFICATE_INVALID = 251
+```
+
+Invalid certificate.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_CERTIFICATE_INVALID = 251--><!--Device-ResultCode-RESULT_CERTIFICATE_INVALID = 251-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -190,38 +190,6 @@ Invalid certificate address or response timeout.
 
 **System API:** This is a system API.
 
-## RESULT_AUTHENTICATION_FAILED
-
-```TypeScript
-RESULT_AUTHENTICATION_FAILED = 210
-```
-
-Authentication failed.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_AUTHENTICATION_FAILED = 210--><!--Device-ResultCode-RESULT_AUTHENTICATION_FAILED = 210-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_RESPONSE_HTTP_FAILED
-
-```TypeScript
-RESULT_RESPONSE_HTTP_FAILED = 211
-```
-
-HTTP response failed.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_RESPONSE_HTTP_FAILED = 211--><!--Device-ResultCode-RESULT_RESPONSE_HTTP_FAILED = 211-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
 ## RESULT_CONFIRMATION_CODE_INCORRECT
 
 ```TypeScript
@@ -233,6 +201,38 @@ Incorrect confirmation code.
 **Since:** 18
 
 <!--Device-ResultCode-RESULT_CONFIRMATION_CODE_INCORRECT = 212--><!--Device-ResultCode-RESULT_CONFIRMATION_CODE_INCORRECT = 212-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_DOWNLOAD_TIMEOUT
+
+```TypeScript
+RESULT_DOWNLOAD_TIMEOUT = 287
+```
+
+Download timeout.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_DOWNLOAD_TIMEOUT = 287--><!--Device-ResultCode-RESULT_DOWNLOAD_TIMEOUT = 287-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_EUICC_INFO_INVALID
+
+```TypeScript
+RESULT_EUICC_INFO_INVALID = 206
+```
+
+Invalid eUICC information.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_EUICC_INFO_INVALID = 206--><!--Device-ResultCode-RESULT_EUICC_INFO_INVALID = 206-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -254,54 +254,6 @@ Maximum confirmation code retries reached.
 
 **System API:** This is a system API.
 
-## RESULT_NO_PROFILE_ON_SERVER
-
-```TypeScript
-RESULT_NO_PROFILE_ON_SERVER = 214
-```
-
-No downloadable profile available on the server.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_NO_PROFILE_ON_SERVER = 214--><!--Device-ResultCode-RESULT_NO_PROFILE_ON_SERVER = 214-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_TRANSACTION_ID_INVALID
-
-```TypeScript
-RESULT_TRANSACTION_ID_INVALID = 215
-```
-
-Invalid transaction ID.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_TRANSACTION_ID_INVALID = 215--><!--Device-ResultCode-RESULT_TRANSACTION_ID_INVALID = 215-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_SERVER_ADDRESS_INVALID
-
-```TypeScript
-RESULT_SERVER_ADDRESS_INVALID = 216
-```
-
-Invalid server address.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_SERVER_ADDRESS_INVALID = 216--><!--Device-ResultCode-RESULT_SERVER_ADDRESS_INVALID = 216-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
 ## RESULT_GET_BOUND_PROFILE_PACKAGE_FAILED
 
 ```TypeScript
@@ -318,161 +270,81 @@ Failed to obtain the BPP.
 
 **System API:** This is a system API.
 
-## RESULT_USER_CANCEL_DOWNLOAD
+## RESULT_GET_EID_FAILED
 
 ```TypeScript
-RESULT_USER_CANCEL_DOWNLOAD = 218
+RESULT_GET_EID_FAILED = 201
 ```
 
-Download cancelled by the user.
+Failed to obtain the EID.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_USER_CANCEL_DOWNLOAD = 218--><!--Device-ResultCode-RESULT_USER_CANCEL_DOWNLOAD = 218-End-->
+<!--Device-ResultCode-RESULT_GET_EID_FAILED = 201--><!--Device-ResultCode-RESULT_GET_EID_FAILED = 201-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
 
-## RESULT_SERVER_UNAVAILABLE
+## RESULT_MUST_DISABLE_PROFILE
 
 ```TypeScript
-RESULT_SERVER_UNAVAILABLE = 220
+RESULT_MUST_DISABLE_PROFILE = -1
 ```
 
-Carrier server unavailable.
+Disabling of the active profile required.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_SERVER_UNAVAILABLE = 220--><!--Device-ResultCode-RESULT_SERVER_UNAVAILABLE = 220-End-->
+<!--Device-ResultCode-RESULT_MUST_DISABLE_PROFILE = -1--><!--Device-ResultCode-RESULT_MUST_DISABLE_PROFILE = -1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
 
-## RESULT_PROFILE_NON_DELETE
+## RESULT_NO_PROFILE_ON_SERVER
 
 ```TypeScript
-RESULT_PROFILE_NON_DELETE = 223
+RESULT_NO_PROFILE_ON_SERVER = 214
 ```
 
-File deletion not allowed by the PPR rule.
+No downloadable profile available on the server.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_PROFILE_NON_DELETE = 223--><!--Device-ResultCode-RESULT_PROFILE_NON_DELETE = 223-End-->
+<!--Device-ResultCode-RESULT_NO_PROFILE_ON_SERVER = 214--><!--Device-ResultCode-RESULT_NO_PROFILE_ON_SERVER = 214-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
 
-## RESULT_SMDP_ADDRESS_INCORRECT
+## RESULT_NOTHING_TO_DELETE
 
 ```TypeScript
-RESULT_SMDP_ADDRESS_INCORRECT = 226
+RESULT_NOTHING_TO_DELETE = 270
 ```
 
-Incorrect SMDP server address.
+No configuration file for deletion.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_SMDP_ADDRESS_INCORRECT = 226--><!--Device-ResultCode-RESULT_SMDP_ADDRESS_INCORRECT = 226-End-->
+<!--Device-ResultCode-RESULT_NOTHING_TO_DELETE = 270--><!--Device-ResultCode-RESULT_NOTHING_TO_DELETE = 270-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
 **System API:** This is a system API.
 
-## RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED
+## RESULT_OK
 
 ```TypeScript
-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228
+RESULT_OK = 0
 ```
 
-Failed to parse the server authentication response.
+Operation success.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_SERVER_RESPONSE_FAILED = 228-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED
-
-```TypeScript
-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229
-```
-
-Failed to parse the client authentication response.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_RESPONSE_FAILED = 229-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED
-
-```TypeScript
-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231
-```
-
-Failed to parse the client authentication response because the matching ID was rejected.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231--><!--Device-ResultCode-RESULT_ANALYZE_AUTHENTICATION_CLIENT_MATCHING_ID_REFUSED = 231-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED
-
-```TypeScript
-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233
-```
-
-Authentication stopped due to incorrect profile type.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233--><!--Device-ResultCode-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_CARRIER_SERVER_REFUSED_ERRORS
-
-```TypeScript
-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249
-```
-
-Rejection cause code of the carrier server, which is 3.8.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249--><!--Device-ResultCode-RESULT_CARRIER_SERVER_REFUSED_ERRORS = 249-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_CERTIFICATE_INVALID
-
-```TypeScript
-RESULT_CERTIFICATE_INVALID = 251
-```
-
-Invalid certificate.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_CERTIFICATE_INVALID = 251--><!--Device-ResultCode-RESULT_CERTIFICATE_INVALID = 251-End-->
+<!--Device-ResultCode-RESULT_OK = 0--><!--Device-ResultCode-RESULT_OK = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -510,22 +382,6 @@ Operation not allowed by the PPR rule.
 
 **System API:** This is a system API.
 
-## RESULT_NOTHING_TO_DELETE
-
-```TypeScript
-RESULT_NOTHING_TO_DELETE = 270
-```
-
-No configuration file for deletion.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_NOTHING_TO_DELETE = 270--><!--Device-ResultCode-RESULT_NOTHING_TO_DELETE = 270-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
 ## RESULT_PPR_NOT_MATCH
 
 ```TypeScript
@@ -537,22 +393,6 @@ PPR rule mismatch.
 **Since:** 18
 
 <!--Device-ResultCode-RESULT_PPR_NOT_MATCH = 276--><!--Device-ResultCode-RESULT_PPR_NOT_MATCH = 276-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
-## RESULT_CAT_BUSY
-
-```TypeScript
-RESULT_CAT_BUSY = 283
-```
-
-Session in progress.
-
-**Since:** 18
-
-<!--Device-ResultCode-RESULT_CAT_BUSY = 283--><!--Device-ResultCode-RESULT_CAT_BUSY = 283-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -574,17 +414,81 @@ eSIM profile in use or invalid.
 
 **System API:** This is a system API.
 
-## RESULT_DOWNLOAD_TIMEOUT
+## RESULT_PROFILE_NON_DELETE
 
 ```TypeScript
-RESULT_DOWNLOAD_TIMEOUT = 287
+RESULT_PROFILE_NON_DELETE = 223
 ```
 
-Download timeout.
+File deletion not allowed by the PPR rule.
 
 **Since:** 18
 
-<!--Device-ResultCode-RESULT_DOWNLOAD_TIMEOUT = 287--><!--Device-ResultCode-RESULT_DOWNLOAD_TIMEOUT = 287-End-->
+<!--Device-ResultCode-RESULT_PROFILE_NON_DELETE = 223--><!--Device-ResultCode-RESULT_PROFILE_NON_DELETE = 223-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED
+
+```TypeScript
+RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233
+```
+
+Authentication stopped due to incorrect profile type.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233--><!--Device-ResultCode-RESULT_PROFILE_TYPE_ERROR_AUTHENTICATION_STOPPED = 233-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_RESPONSE_HTTP_FAILED
+
+```TypeScript
+RESULT_RESPONSE_HTTP_FAILED = 211
+```
+
+HTTP response failed.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_RESPONSE_HTTP_FAILED = 211--><!--Device-ResultCode-RESULT_RESPONSE_HTTP_FAILED = 211-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_SERVER_ADDRESS_INVALID
+
+```TypeScript
+RESULT_SERVER_ADDRESS_INVALID = 216
+```
+
+Invalid server address.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_SERVER_ADDRESS_INVALID = 216--><!--Device-ResultCode-RESULT_SERVER_ADDRESS_INVALID = 216-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_SERVER_UNAVAILABLE
+
+```TypeScript
+RESULT_SERVER_UNAVAILABLE = 220
+```
+
+Carrier server unavailable.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_SERVER_UNAVAILABLE = 220--><!--Device-ResultCode-RESULT_SERVER_UNAVAILABLE = 220-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 
@@ -601,6 +505,102 @@ Other errors defined in SGP.22.
 **Since:** 18
 
 <!--Device-ResultCode-RESULT_SGP_22_OTHER = 400--><!--Device-ResultCode-RESULT_SGP_22_OTHER = 400-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_SMDP_ADDRESS_INCORRECT
+
+```TypeScript
+RESULT_SMDP_ADDRESS_INCORRECT = 226
+```
+
+Incorrect SMDP server address.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_SMDP_ADDRESS_INCORRECT = 226--><!--Device-ResultCode-RESULT_SMDP_ADDRESS_INCORRECT = 226-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_SMDP_ADDRESS_INVALID
+
+```TypeScript
+RESULT_SMDP_ADDRESS_INVALID = 205
+```
+
+Invalid SM-DP+ server address.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_SMDP_ADDRESS_INVALID = 205--><!--Device-ResultCode-RESULT_SMDP_ADDRESS_INVALID = 205-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_SOLVABLE_ERRORS
+
+```TypeScript
+RESULT_SOLVABLE_ERRORS = -2
+```
+
+Solving of the solvable errors required.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_SOLVABLE_ERRORS = -2--><!--Device-ResultCode-RESULT_SOLVABLE_ERRORS = -2-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_TLS_HANDSHAKE_FAILED
+
+```TypeScript
+RESULT_TLS_HANDSHAKE_FAILED = 207
+```
+
+TLS handshake failed.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_TLS_HANDSHAKE_FAILED = 207--><!--Device-ResultCode-RESULT_TLS_HANDSHAKE_FAILED = 207-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_TRANSACTION_ID_INVALID
+
+```TypeScript
+RESULT_TRANSACTION_ID_INVALID = 215
+```
+
+Invalid transaction ID.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_TRANSACTION_ID_INVALID = 215--><!--Device-ResultCode-RESULT_TRANSACTION_ID_INVALID = 215-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## RESULT_USER_CANCEL_DOWNLOAD
+
+```TypeScript
+RESULT_USER_CANCEL_DOWNLOAD = 218
+```
+
+Download cancelled by the user.
+
+**Since:** 18
+
+<!--Device-ResultCode-RESULT_USER_CANCEL_DOWNLOAD = 218--><!--Device-ResultCode-RESULT_USER_CANCEL_DOWNLOAD = 218-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

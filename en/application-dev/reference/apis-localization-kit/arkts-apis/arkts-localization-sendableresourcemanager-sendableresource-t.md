@@ -6,6 +6,8 @@ export type SendableResource = _SendableResource
 
 Represents Sendable resource-related information for cross-thread transmission, including the application bundle name, application module name, resource ID, resource type, and other resource parameters.
 
+**Type:** _SendableResource
+
 **Since:** 12
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
@@ -13,5 +15,3 @@ Represents Sendable resource-related information for cross-thread transmission, 
 <!--Device-sendableResourceManager-export type SendableResource = _SendableResource--><!--Device-sendableResourceManager-export type SendableResource = _SendableResource-End-->
 
 **System capability:** SystemCapability.Global.ResourceManager
-
-**Type:** _SendableResource

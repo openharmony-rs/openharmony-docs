@@ -12,7 +12,7 @@ import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
 
 | 名称 | 说明 |
 | --- | --- |
-| [PopupV2](arkts-arkui-arkui-advanced-popupv2-popupv2-f.md) | PopupV2用于显示特定样式的气泡，适用于提示信息、操作确认或信息通知等需要用户关注或响应的场景。 |
+| [PopupV2](arkts-arkui-arkui-advanced-popupv2-popupv2-f.md#popupv2) | PopupV2用于显示特定样式的气泡，适用于提示信息、操作确认或信息通知等需要用户关注或响应的场景。 |
 
 ### 接口
 
@@ -33,8 +33,7 @@ import { PopupV2, PopupV2InitInfo, PopupV2Button } from '@kit.ArkUI';
 
 ```TypeScript
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -89,8 +88,7 @@ struct PopupExample {
 
 ```TypeScript
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2
@@ -143,8 +141,7 @@ struct PopupExample {
 
 ```TypeScript
 // xxx.ets
-import { PopupV2, PopupV2Button } from '@kit.ArkUI';
-import { ImageModifier, TextModifier } from '@kit.ArkUI';
+import { PopupV2, PopupV2Button, ImageModifier, TextModifier } from '@kit.ArkUI';
 
 @Entry
 @ComponentV2

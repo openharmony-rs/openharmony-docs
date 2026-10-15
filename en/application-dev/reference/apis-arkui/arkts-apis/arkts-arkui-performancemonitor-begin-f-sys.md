@@ -32,6 +32,7 @@ Marks the start of a user scene. Call this API when the scene begins.
 | startInputType | [ActionType](arkts-arkui-performancemonitor-actiontype-e-sys.md) | Yes | Trigger mode of the user scene. |
 | note | string | No | Remarks for the user scene. The string length is unlimited, but it is recommended that you keep it within 255 characters. This field is optional. If provided, the performance metrics report will include the remark information; if not provided, there is no impact. |
 
+<!--Del-->
 **Examples**
 
 Start point of the user scene where the user taps an icon to launch an application, triggered by a release event (LAST_UP).
@@ -39,3 +40,5 @@ Start point of the user scene where the user taps an icon to launch an applicati
 ```TypeScript
 performanceMonitor.begin("LAUNCHER_APP_LAUNCH_FROM_ICON", performanceMonitor.ActionType.LAST_UP, "APP_START_BEGIN");
 ```
+
+<!--DelEnd-->

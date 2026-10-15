@@ -6,6 +6,8 @@
 import { print } from '@kit.BasicServicesKit';
 ```
 
+<a id="queryallprintjobs1"></a>
+
 ## queryAllPrintJobs
 
 ```TypeScript
@@ -41,6 +43,7 @@ function queryAllPrintJobs(callback: AsyncCallback<void>): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,8 +70,10 @@ print.queryAllPrintJobs().then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="queryallprintjobs-1"></a>
+
+<a id="queryallprintjobs2"></a>
 
 ## queryAllPrintJobs
 
@@ -105,6 +110,9 @@ function queryAllPrintJobs(): Promise<void>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
+<!--Del-->
 **示例**
 
 参见 [queryAllPrintJobs](#queryallprintjobs)
+
+<!--DelEnd-->

@@ -12,19 +12,19 @@ Enumerates the 802.1X EAP authentication states.
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
-## STATE_IDLE
+## STATE_AUTHENTICATED
 
 ```TypeScript
-STATE_IDLE = 0
+STATE_AUTHENTICATED = 2
 ```
 
-Idle: no authentication has been initiated.
+Authenticated: authentication succeeded.
 
 **Since:** 26.2.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-EthEapState-STATE_IDLE = 0--><!--Device-EthEapState-STATE_IDLE = 0-End-->
+<!--Device-EthEapState-STATE_AUTHENTICATED = 2--><!--Device-EthEapState-STATE_AUTHENTICATED = 2-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
@@ -44,22 +44,6 @@ Authenticating: 802.1X authentication is in progress.
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 
-## STATE_AUTHENTICATED
-
-```TypeScript
-STATE_AUTHENTICATED = 2
-```
-
-Authenticated: authentication succeeded.
-
-**Since:** 26.2.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-EthEapState-STATE_AUTHENTICATED = 2--><!--Device-EthEapState-STATE_AUTHENTICATED = 2-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Eap
-
 ## STATE_FAILED
 
 ```TypeScript
@@ -73,6 +57,22 @@ Failed: maximum retry count reached.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-EthEapState-STATE_FAILED = 3--><!--Device-EthEapState-STATE_FAILED = 3-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Eap
+
+## STATE_IDLE
+
+```TypeScript
+STATE_IDLE = 0
+```
+
+Idle: no authentication has been initiated.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EthEapState-STATE_IDLE = 0--><!--Device-EthEapState-STATE_IDLE = 0-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Eap
 

@@ -34,24 +34,6 @@ Turned off on low-performance devices and turned on on medium/high-performance d
 
 **System API:** This is a system API.
 
-## EDGELIGHT_ENABLED
-
-```TypeScript
-EDGELIGHT_ENABLED = 1
-```
-
-Enable edge light animation.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-EdgeLightMode-EDGELIGHT_ENABLED = 1--><!--Device-EdgeLightMode-EDGELIGHT_ENABLED = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
 ## EDGELIGHT_DISABLED
 
 ```TypeScript
@@ -65,6 +47,24 @@ Disable edge light animation.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-EdgeLightMode-EDGELIGHT_DISABLED = 2--><!--Device-EdgeLightMode-EDGELIGHT_DISABLED = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## EDGELIGHT_ENABLED
+
+```TypeScript
+EDGELIGHT_ENABLED = 1
+```
+
+Enable edge light animation.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-EdgeLightMode-EDGELIGHT_ENABLED = 1--><!--Device-EdgeLightMode-EDGELIGHT_ENABLED = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

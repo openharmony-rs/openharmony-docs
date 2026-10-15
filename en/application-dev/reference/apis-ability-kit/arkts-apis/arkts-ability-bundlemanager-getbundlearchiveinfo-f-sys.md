@@ -6,13 +6,15 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getbundlearchiveinfo1"></a>
+
 ## getBundleArchiveInfo
 
 ```TypeScript
 function getBundleArchiveInfo(hapFilePath: string, bundleFlags: number, callback: AsyncCallback<BundleInfo>): void
 ```
 
-Obtains the bundle information based on the given HAP file path and bundle flags. This API uses an asynchronous callback to return the result.
+Obtains the bundle information based on the given HAP file path and bundle flags. This API uses an asynchronous callback to return the result. Since API version 26.0.0, this API can process APP packages.
 
 **Since:** 9
 
@@ -28,9 +30,9 @@ Obtains the bundle information based on the given HAP file path and bundle flags
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hapFilePath | string | Yes | Path where the HAP file is stored. The path must be the relative path of the current bundle's data directory. |
+| hapFilePath | string | Yes | Path for storing HAP or APP. The path must be the relative path of the current application data directory. |
 | bundleFlags | number | Yes | Type of the bundle information to obtain. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. If the operation is successful, **err** is **null** and **data** is the bundle information obtained. Otherwise, **err** is an error object. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[BundleInfo](arkts-ability-bundlemanager-bundleinfo-t.md)&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). If the operation is successful, **err** is **undefined**, and data is the BundleInfo obtained. Otherwise, **err** is an error object. |
 
 **Error codes:**
 
@@ -41,6 +43,7 @@ Obtains the bundle information based on the given HAP file path and bundle flags
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700022](../errorcode-bundle.md#17700022-invalid-source-file) | The hapFilePath is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,8 +68,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getbundlearchiveinfo-1"></a>
+
+<a id="getbundlearchiveinfo2"></a>
 
 ## getBundleArchiveInfo
 
@@ -74,7 +79,7 @@ try {
 function getBundleArchiveInfo(hapFilePath: string,  bundleFlags: number): Promise<BundleInfo>
 ```
 
-Obtains the bundle information based on the given HAP file path and bundle flags. This API uses a promise to return the result.
+Obtains the bundle information based on the given HAP file path and bundle flags. This API uses a promise to return the result. Since API version 26.0.0, this API can process APP packages.
 
 **Since:** 9
 
@@ -90,7 +95,7 @@ Obtains the bundle information based on the given HAP file path and bundle flags
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| hapFilePath | string | Yes | Path where the HAP file is stored. The path must be the relative path of the current bundle's data directory. |
+| hapFilePath | string | Yes | Path for storing HAP or APP. The path must be the relative path of the current application data directory. |
 | bundleFlags | number | Yes | Type of the bundle information to obtain. |
 
 **Return value:**
@@ -108,6 +113,7 @@ Obtains the bundle information based on the given HAP file path and bundle flags
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | [17700022](../errorcode-bundle.md#17700022-invalid-source-file) | The hapFilePath is invalid. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -129,3 +135,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getBundleArchiveInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

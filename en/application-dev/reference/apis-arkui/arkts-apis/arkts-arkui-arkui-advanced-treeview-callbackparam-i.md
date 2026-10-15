@@ -4,7 +4,7 @@
 export interface CallbackParam
 ```
 
-Declare CallbackParam
+Declare CallbackParam.
 
 **Since:** 10
 
@@ -24,9 +24,9 @@ import { CallbackParam, NodeParam, TreeController, TreeListenType, TreeListener,
 childIndex?: number
 ```
 
-Child index.
+Index of the child node under the parent node, used to identify the position of the child node in the parent node's child list.
 
-The value must be greater than or equal to -1.
+Value range: greater than or equal to -1, where -1 indicates an invalid index or no child node.
 
 Default value: **-1**
 

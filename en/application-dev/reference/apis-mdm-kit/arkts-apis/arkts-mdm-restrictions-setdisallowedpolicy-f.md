@@ -6,6 +6,8 @@
 import { restrictions } from '@kit.MDMKit';
 ```
 
+<a id="setdisallowedpolicy1"></a>
+
 ## setDisallowedPolicy
 
 ```TypeScript
@@ -24,7 +26,7 @@ Disallows a feature.
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [setDisallowedPolicy](#setdisallowedpolicy-1)(admin: Want, feature: FeatureForDevice, disallow: boolean)
+**Substitutes:** [setDisallowedPolicy](#setdisallowedpolicy2)(admin: Want, feature: FeatureForDevice, disallow: boolean)
 
 **Required permissions:** 
 - API version 20 and later: ohos.permission.ENTERPRISE_MANAGE_RESTRICTIONS or ohos.permission.PERSONAL_MANAGE_RESTRICTIONS or ohos.permission.ENTERPRISE_MANAGE_NETWORK
@@ -76,7 +78,7 @@ try {
 ```
 
 
-<a id="setdisallowedpolicy-1"></a>
+<a id="setdisallowedpolicy2"></a>
 
 ## setDisallowedPolicy
 

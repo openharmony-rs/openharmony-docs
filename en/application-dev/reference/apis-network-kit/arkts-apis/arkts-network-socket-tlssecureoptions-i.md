@@ -24,7 +24,7 @@ import { socket } from '@kit.NetworkKit';
 ca?: string | Array<string>
 ```
 
-CA certificate of the server, which is used to authenticate the digital certificate of the server. The default value is the preset CA certificate&lt;sup&gt;12+&lt;/sup&gt;. A maximum of 1000 certificates can be set.
+CA certificate of the server, which is used to authenticate the digital certificate of the server. The default value is the preset CA certificate<sup>12+</sup>. A maximum of 1000 certificates can be set.
 
 **Type:** string &#124; Array&lt;string&gt;
 

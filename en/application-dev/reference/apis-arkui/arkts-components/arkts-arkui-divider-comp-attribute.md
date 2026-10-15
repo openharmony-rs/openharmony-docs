@@ -8,7 +8,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** DividerAttribute extends CommonMethod<DividerAttribute>
+**Inheritance/Implementation:** DividerAttribute extends CommonMethod&lt;DividerAttribute&gt;
 
 **Since:** 7
 
@@ -76,9 +76,9 @@ Sets the stroke width of the divider. This attribute can be dynamically set usin
 > 
 > - The width of the divider cannot be in percentage.
 > 
-> - When a horizontal divider is used, **strokeWidth** controls the height, and its priority is lower than that of the universal attribute [height](arkts-arkui-common-comp-commonmethod-c.md#height). When a vertical divider is used,
+> - When a horizontal divider is used, **strokeWidth** controls the height, and its priority is lower than that of the universal attribute [height](arkts-arkui-common-comp-commonmethod-c.md#height1). When a vertical divider is used,
 > **strokeWidth** controls the width, and its priority is lower than that of the universal attribute
-> [width](arkts-arkui-common-comp-commonmethod-c.md#width).
+> [width](arkts-arkui-common-comp-commonmethod-c.md#width1).
 > 
 > - If the size exceeds the value set by the universal attribute, the divider is clipped based on the universal attribute.
 > 

@@ -12,20 +12,6 @@ Enumerates the modes for drawing multiple points in an array.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## POINTS
-
-```TypeScript
-POINTS = 0
-```
-
-Draws each point separately.
-
-**Since:** 12
-
-<!--Device-PointMode-POINTS = 0--><!--Device-PointMode-POINTS = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## LINES
 
 ```TypeScript
@@ -37,6 +23,20 @@ Draws every two points as a line segment.
 **Since:** 12
 
 <!--Device-PointMode-LINES = 1--><!--Device-PointMode-LINES = 1-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## POINTS
+
+```TypeScript
+POINTS = 0
+```
+
+Draws each point separately.
+
+**Since:** 12
+
+<!--Device-PointMode-POINTS = 0--><!--Device-PointMode-POINTS = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing
 

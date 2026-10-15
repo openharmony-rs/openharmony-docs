@@ -12,17 +12,17 @@ export enum CallState
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-## CALL_STATE_UNKNOWN
+## CALL_STATE_ANSWERED
 
 ```TypeScript
-CALL_STATE_UNKNOWN = -1
+CALL_STATE_ANSWERED = 3
 ```
 
-无效状态，当获取呼叫状态失败时返回。
+表示来电已经接听。
 
-**起始版本：** 6
+**起始版本：** 11
 
-<!--Device-CallState-CALL_STATE_UNKNOWN = -1--><!--Device-CallState-CALL_STATE_UNKNOWN = -1-End-->
+<!--Device-CallState-CALL_STATE_ANSWERED = 3--><!--Device-CallState-CALL_STATE_ANSWERED = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
@@ -40,20 +40,6 @@ CALL_STATE_IDLE = 0
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-## CALL_STATE_RINGING
-
-```TypeScript
-CALL_STATE_RINGING = 1
-```
-
-表示来电正在振铃或等待。
-
-**起始版本：** 6
-
-<!--Device-CallState-CALL_STATE_RINGING = 1--><!--Device-CallState-CALL_STATE_RINGING = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
 ## CALL_STATE_OFFHOOK
 
 ```TypeScript
@@ -68,16 +54,30 @@ CALL_STATE_OFFHOOK = 2
 
 **系统能力：** SystemCapability.Telephony.CallManager
 
-## CALL_STATE_ANSWERED
+## CALL_STATE_RINGING
 
 ```TypeScript
-CALL_STATE_ANSWERED = 3
+CALL_STATE_RINGING = 1
 ```
 
-表示来电已经接听。
+表示来电正在振铃或等待。
 
-**起始版本：** 11
+**起始版本：** 6
 
-<!--Device-CallState-CALL_STATE_ANSWERED = 3--><!--Device-CallState-CALL_STATE_ANSWERED = 3-End-->
+<!--Device-CallState-CALL_STATE_RINGING = 1--><!--Device-CallState-CALL_STATE_RINGING = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+## CALL_STATE_UNKNOWN
+
+```TypeScript
+CALL_STATE_UNKNOWN = -1
+```
+
+无效状态，当获取呼叫状态失败时返回。
+
+**起始版本：** 6
+
+<!--Device-CallState-CALL_STATE_UNKNOWN = -1--><!--Device-CallState-CALL_STATE_UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager

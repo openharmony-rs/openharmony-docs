@@ -12,24 +12,6 @@ Enumerates the cipher modes.
 
 **System capability:** SystemCapability.Security.Huks.Core
 
-## HUKS_MODE_ECB
-
-```TypeScript
-HUKS_MODE_ECB = 1
-```
-
-Electronic Code Block (ECB) mode.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksCipherMode-HUKS_MODE_ECB = 1--><!--Device-HuksCipherMode-HUKS_MODE_ECB = 1-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
 ## HUKS_MODE_CBC
 
 ```TypeScript
@@ -45,62 +27,6 @@ Cipher Block Chaining (CBC) mode.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HuksCipherMode-HUKS_MODE_CBC = 2--><!--Device-HuksCipherMode-HUKS_MODE_CBC = 2-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_MODE_CTR
-
-```TypeScript
-HUKS_MODE_CTR = 3
-```
-
-Counter (CTR) mode.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksCipherMode-HUKS_MODE_CTR = 3--><!--Device-HuksCipherMode-HUKS_MODE_CTR = 3-End-->
-
-**System capability:** SystemCapability.Security.Huks.Core
-
-## HUKS_MODE_OFB
-
-```TypeScript
-HUKS_MODE_OFB = 4
-```
-
-Output Feedback (OFB) mode.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksCipherMode-HUKS_MODE_OFB = 4--><!--Device-HuksCipherMode-HUKS_MODE_OFB = 4-End-->
-
-**System capability:** 
-- API version 12 and later: SystemCapability.Security.Huks.Core
-- API versions 8 to 11: SystemCapability.Security.Huks.Extension
-
-## HUKS_MODE_CFB
-
-```TypeScript
-HUKS_MODE_CFB = 5
-```
-
-Ciphertext Feedback (CFB) mode.
-
-**Since:** 12
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksCipherMode-HUKS_MODE_CFB = 5--><!--Device-HuksCipherMode-HUKS_MODE_CFB = 5-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
 
@@ -124,6 +50,60 @@ Counter with CBC-MAC (CCM) mode.
 - API version 12 and later: SystemCapability.Security.Huks.Core
 - API versions 8 to 11: SystemCapability.Security.Huks.Extension
 
+## HUKS_MODE_CFB
+
+```TypeScript
+HUKS_MODE_CFB = 5
+```
+
+Ciphertext Feedback (CFB) mode.
+
+**Since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksCipherMode-HUKS_MODE_CFB = 5--><!--Device-HuksCipherMode-HUKS_MODE_CFB = 5-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_MODE_CTR
+
+```TypeScript
+HUKS_MODE_CTR = 3
+```
+
+Counter (CTR) mode.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksCipherMode-HUKS_MODE_CTR = 3--><!--Device-HuksCipherMode-HUKS_MODE_CTR = 3-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_MODE_ECB
+
+```TypeScript
+HUKS_MODE_ECB = 1
+```
+
+Electronic Code Block (ECB) mode.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksCipherMode-HUKS_MODE_ECB = 1--><!--Device-HuksCipherMode-HUKS_MODE_ECB = 1-End-->
+
+**System capability:** SystemCapability.Security.Huks.Core
+
 ## HUKS_MODE_GCM
 
 ```TypeScript
@@ -141,3 +121,23 @@ Galois/Counter (GCM) mode.
 <!--Device-HuksCipherMode-HUKS_MODE_GCM = 32--><!--Device-HuksCipherMode-HUKS_MODE_GCM = 32-End-->
 
 **System capability:** SystemCapability.Security.Huks.Core
+
+## HUKS_MODE_OFB
+
+```TypeScript
+HUKS_MODE_OFB = 4
+```
+
+Output Feedback (OFB) mode.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksCipherMode-HUKS_MODE_OFB = 4--><!--Device-HuksCipherMode-HUKS_MODE_OFB = 4-End-->
+
+**System capability:** 
+- API version 12 and later: SystemCapability.Security.Huks.Core
+- API versions 8 to 11: SystemCapability.Security.Huks.Extension

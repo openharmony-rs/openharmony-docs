@@ -12,19 +12,19 @@ export declare enum ArcButtonStyleMode
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-## EMPHASIZED_LIGHT
+## CUSTOM
 
 ```TypeScript
-EMPHASIZED_LIGHT = 0
+CUSTOM = 4
 ```
 
-强调样式，亮色，表现为蓝色背景、白色文字。
+自定义按钮颜色和字体颜色。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
-<!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0--><!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0-End-->
+<!--Device-ArcButtonStyleMode-CUSTOM = 4--><!--Device-ArcButtonStyleMode-CUSTOM = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -44,19 +44,19 @@ EMPHASIZED_DARK = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-## NORMAL_LIGHT
+## EMPHASIZED_LIGHT
 
 ```TypeScript
-NORMAL_LIGHT = 2
+EMPHASIZED_LIGHT = 0
 ```
 
-常规样式，亮色，表现为深蓝色背景、蓝色文字。
+强调样式，亮色，表现为蓝色背景、白色文字。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
-<!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2--><!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2-End-->
+<!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0--><!--Device-ArcButtonStyleMode-EMPHASIZED_LIGHT = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
@@ -76,18 +76,18 @@ NORMAL_DARK = 3
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle
 
-## CUSTOM
+## NORMAL_LIGHT
 
 ```TypeScript
-CUSTOM = 4
+NORMAL_LIGHT = 2
 ```
 
-自定义按钮颜色和字体颜色。
+常规样式，亮色，表现为深蓝色背景、蓝色文字。
 
 **起始版本：** 18
 
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
-<!--Device-ArcButtonStyleMode-CUSTOM = 4--><!--Device-ArcButtonStyleMode-CUSTOM = 4-End-->
+<!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2--><!--Device-ArcButtonStyleMode-NORMAL_LIGHT = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Circle

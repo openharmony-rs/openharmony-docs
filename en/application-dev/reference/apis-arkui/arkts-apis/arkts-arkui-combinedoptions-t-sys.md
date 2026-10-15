@@ -8,7 +8,9 @@ type CombinedOptions<T extends ViewModel, Data> = object &
 
 Used for ide.
 
-@typedef { object & Options&lt;T, Data&gt; & ThisType&lt;T & ViewModel & Data&gt; } CombinedOptions&lt;T extends ViewModel, Data&gt;
+@typedef { object & Options<T, Data> & ThisType<T & ViewModel & Data> } CombinedOptions<T extends ViewModel, Data>
+
+**Type:** object & [Options](arkts-arkui-viewmodel-options-i.md)&lt;T, Data&gt; & ThisType&lt;T & [ViewModel](arkts-arkui-viewmodel-i.md) & Data&gt;
 
 **Since:** 4
 
@@ -19,5 +21,3 @@ Used for ide.
 **System capability:** SystemCapability.ArkUI.ArkUI.Lite
 
 **System API:** This is a system API.
-
-**Type:** object & [Options](arkts-arkui-viewmodel-options-i.md)&lt;T, Data&gt; & ThisType&lt;T & [ViewModel](arkts-arkui-viewmodel-viewmodel-i.md) & Data&gt;

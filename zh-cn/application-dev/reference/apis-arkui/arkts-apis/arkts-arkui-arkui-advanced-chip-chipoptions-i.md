@@ -38,7 +38,7 @@ import { Chip, ChipOptions, ChipSize, IconCommonOptions, LabelMarginOptions, Lab
 onClose?: () => void
 ```
 
-默认关闭图标点击事件。
+默认关闭图标点击事件回调，无参数和返回值。当用户点击默认关闭图标时触发该回调。
 
 值为undefined时，不触发关闭图标点击事件。
 
@@ -196,7 +196,7 @@ Chip激活态的背景颜色。
 activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)等视觉属性。
+设置组件激活状态下的系统材质样式。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。适用于需要激活状态下保持或切换材质效果的交互场景，如标签选中、状态切换等。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)等视觉属性。
 
 默认值：undefined
 
@@ -274,7 +274,7 @@ Chip背景颜色。
 backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)等视觉属性。
+设置组件系统材质样式。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同材质具有不同的效果，能够影响组件的[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、[border](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#border)、[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)等视觉属性。
 
 默认值：undefined
 
@@ -515,7 +515,7 @@ Chip组件文本与图标的最小的字体缩放倍数。
 onClicked?: Callback<void>
 ```
 
-Chip组件点击事件。
+Chip组件点击事件回调，无参数和返回值。当用户点击Chip组件时触发该回调。
 
 值为undefined时，Chip不能被点击。
 

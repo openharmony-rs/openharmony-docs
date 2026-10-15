@@ -6,6 +6,8 @@ export type CustomData = _CustomData.default
 
 Defines the custom data.
 
+**Type:** _CustomData.default
+
 **Since:** 13
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the custom data.
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
 **System API:** This is a system API.
-
-**Type:** _CustomData.default

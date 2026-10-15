@@ -14,22 +14,6 @@ Enumerates the profile policy rules.
 
 **System API:** This is a system API.
 
-## POLICY_RULE_DISABLE_NOT_ALLOWED
-
-```TypeScript
-POLICY_RULE_DISABLE_NOT_ALLOWED = 1
-```
-
-A profile cannot be disabled after being enabled.
-
-**Since:** 18
-
-<!--Device-PolicyRules-POLICY_RULE_DISABLE_NOT_ALLOWED = 1--><!--Device-PolicyRules-POLICY_RULE_DISABLE_NOT_ALLOWED = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService.Esim
-
-**System API:** This is a system API.
-
 ## POLICY_RULE_DELETE_NOT_ALLOWED
 
 ```TypeScript
@@ -57,6 +41,22 @@ A profile must be deleted immediately after being enabled.
 **Since:** 18
 
 <!--Device-PolicyRules-POLICY_RULE_DISABLE_AND_DELETE = 1 << 2--><!--Device-PolicyRules-POLICY_RULE_DISABLE_AND_DELETE = 1 << 2-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService.Esim
+
+**System API:** This is a system API.
+
+## POLICY_RULE_DISABLE_NOT_ALLOWED
+
+```TypeScript
+POLICY_RULE_DISABLE_NOT_ALLOWED = 1
+```
+
+A profile cannot be disabled after being enabled.
+
+**Since:** 18
+
+<!--Device-PolicyRules-POLICY_RULE_DISABLE_NOT_ALLOWED = 1--><!--Device-PolicyRules-POLICY_RULE_DISABLE_NOT_ALLOWED = 1-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService.Esim
 

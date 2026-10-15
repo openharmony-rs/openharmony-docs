@@ -12,6 +12,22 @@ enum AudioSampleFormat
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+## SAMPLE_FORMAT_F32LE
+
+```TypeScript
+SAMPLE_FORMAT_F32LE = 4
+```
+
+带符号的32位浮点数，小尾数。
+
+由于系统限制，该采样格式仅部分设备支持，请根据实际情况使用。
+
+**起始版本：** 9
+
+<!--Device-AudioSampleFormat-SAMPLE_FORMAT_F32LE = 4--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_F32LE = 4-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 ## SAMPLE_FORMAT_INVALID
 
 ```TypeScript
@@ -23,20 +39,6 @@ SAMPLE_FORMAT_INVALID = -1
 **起始版本：** 8
 
 <!--Device-AudioSampleFormat-SAMPLE_FORMAT_INVALID = -1--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_INVALID = -1-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## SAMPLE_FORMAT_U8
-
-```TypeScript
-SAMPLE_FORMAT_U8 = 0
-```
-
-无符号8位整数。
-
-**起始版本：** 8
-
-<!--Device-AudioSampleFormat-SAMPLE_FORMAT_U8 = 0--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_U8 = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -86,18 +88,16 @@ SAMPLE_FORMAT_S32LE = 3
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
-## SAMPLE_FORMAT_F32LE
+## SAMPLE_FORMAT_U8
 
 ```TypeScript
-SAMPLE_FORMAT_F32LE = 4
+SAMPLE_FORMAT_U8 = 0
 ```
 
-带符号的32位浮点数，小尾数。
+无符号8位整数。
 
-由于系统限制，该采样格式仅部分设备支持，请根据实际情况使用。
+**起始版本：** 8
 
-**起始版本：** 9
-
-<!--Device-AudioSampleFormat-SAMPLE_FORMAT_F32LE = 4--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_F32LE = 4-End-->
+<!--Device-AudioSampleFormat-SAMPLE_FORMAT_U8 = 0--><!--Device-AudioSampleFormat-SAMPLE_FORMAT_U8 = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core

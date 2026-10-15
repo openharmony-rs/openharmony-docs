@@ -8,6 +8,14 @@ The **AccessibilityExtensionContext** module, inherited from **ExtensionContext*
 
 The Accessibility Extension Context module provides capabilities related to the accessibility extension, including configuring concerned information types, querying node information, and gesture injection.
 
+**Inheritance/Implementation:** AccessibilityExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
+
+**Since:** 9
+
+<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
 ## Usage
 
 Before using AccessibilityExtensionContext, obtain an AccessibilityExtensionContext instance through an AccessibilityExtensionAbility subclass instance.
@@ -20,14 +28,6 @@ class EntryAbility extends AccessibilityExtensionAbility {
   } 
 }
 ```
-
-**Inheritance/Implementation:** AccessibilityExtensionContext extends [ExtensionContext](../../apis-ability-kit/arkts-apis/arkts-ability-extensioncontext-c.md)
-
-**Since:** 9
-
-<!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext--><!--Device-unnamed-declare class AccessibilityExtensionContext extends ExtensionContext-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 ## addAccessibilityVirtualNodes
 
@@ -71,6 +71,7 @@ Adds a virtual accessibility node tree. This API uses a promise to return the re
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality.Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -122,6 +123,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getAccessibilityFocusedElement
 
 ```TypeScript
@@ -157,6 +160,7 @@ The accessibility focus refers to the node currently focused by the accessibilit
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 | [9300006](../errorcode-accessibility.md#9300006-failed-to-connect-the-target-app-and-accessibility-service) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -201,6 +205,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getAccessibilityWindowsSync
 
 ```TypeScript
@@ -239,6 +245,7 @@ Obtains the list of all accessibility-accessible windows on the current display 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -287,6 +294,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getDefaultFocusedElementIds
 
 ```TypeScript
@@ -322,9 +331,10 @@ Default focus refers to the element that the accessibility service prioritizes f
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -370,6 +380,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getElements
 
 ```TypeScript
@@ -404,9 +416,10 @@ Queries all descendant accessibility nodes in a specified window or under a spec
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -454,6 +467,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## getRootInActiveWindow
 
 ```TypeScript
@@ -495,6 +510,7 @@ The active window refers to the foreground app window that currently gains focus
 | [9300003](../errorcode-accessibility.md#9300003-no-accessibility-permission-to-perform-the-operation) | No accessibility permission to perform the operation. |
 | [9300006](../errorcode-accessibility.md#9300006-failed-to-connect-the-target-app-and-accessibility-service) | The target application failed to connect to accessibility service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -541,6 +557,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## holdRunningLockSync
 
 ```TypeScript
@@ -566,6 +584,7 @@ Holds the RunningLock. After the lock is held, the screen will not automatically
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -608,6 +627,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## notifyDisconnect
 
 ```TypeScript
@@ -635,6 +656,7 @@ This function must be used together with the pre-disconnection registration API 
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -677,6 +699,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## off('preDisconnect')
 
 ```TypeScript
@@ -709,6 +733,7 @@ Unregisters the pre-disconnect callback registered with the accessibility servic
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -751,6 +776,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## on('preDisconnect')
 
 ```TypeScript
@@ -785,6 +812,7 @@ This registration function must be used together with [notifyDisconnect](#notify
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -829,6 +857,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## removeAccessibilityVirtualNodes
 
 ```TypeScript
@@ -870,6 +900,7 @@ Deletes the added accessibility virtual node tree. This API uses a promise to re
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality.Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -916,6 +947,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## startAbility
 
 ```TypeScript
@@ -949,8 +982,9 @@ Starts a foreground page. This API uses a promise to return the result.
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1000,6 +1034,8 @@ export default class AccessibilityManager {
 }
 ```
 
+<!--DelEnd-->
+
 ## unholdRunningLockSync
 
 ```TypeScript
@@ -1025,6 +1061,7 @@ Releases the RunningLock and restores automatic screen-off. Used in pair with [h
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1066,6 +1103,8 @@ export default class AccessibilityManager {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## updateAccessibilityElementProperty
 
@@ -1109,6 +1148,7 @@ Modifies the accessibility node property. This API uses a promise to return the 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 | [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality.Possible causes:<br>1.Internal operation failed. <br>2.Failed to obtain the required service or client object (null pointer). <br>3.IPC communication failed. <br>4.Failed to obtain the accessibility service proxy. <br>5.Timed out while waiting for the result of an asynchronous operation. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -1159,3 +1199,5 @@ export default class AccessibilityManager {
   }
 }
 ```
+
+<!--DelEnd-->

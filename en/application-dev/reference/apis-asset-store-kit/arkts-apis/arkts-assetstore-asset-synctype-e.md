@@ -46,22 +46,6 @@ Asset sync is allowed only on the local device, for example, in data restore on 
 
 **System capability:** SystemCapability.Security.Asset
 
-## TRUSTED_DEVICE
-
-```TypeScript
-TRUSTED_DEVICE = 1 << 1
-```
-
-Asset sync is allowed only between trusted devices, for example, in the case of cloning.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-SyncType-TRUSTED_DEVICE = 1 << 1--><!--Device-SyncType-TRUSTED_DEVICE = 1 << 1-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
 ## TRUSTED_ACCOUNT
 
 ```TypeScript
@@ -77,5 +61,21 @@ Asset sync is allowed only between the devices that are logged in with trusted a
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-SyncType-TRUSTED_ACCOUNT = 1 << 2--><!--Device-SyncType-TRUSTED_ACCOUNT = 1 << 2-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## TRUSTED_DEVICE
+
+```TypeScript
+TRUSTED_DEVICE = 1 << 1
+```
+
+Asset sync is allowed only between trusted devices, for example, in the case of cloning.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-SyncType-TRUSTED_DEVICE = 1 << 1--><!--Device-SyncType-TRUSTED_DEVICE = 1 << 1-End-->
 
 **System capability:** SystemCapability.Security.Asset

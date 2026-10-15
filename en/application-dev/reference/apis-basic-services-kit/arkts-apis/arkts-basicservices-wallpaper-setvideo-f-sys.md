@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="setvideo1"></a>
+
 ## setVideo
 
 ```TypeScript
@@ -40,6 +42,7 @@ Sets live wallpaper of the specified type based on the uri path of the MP4 file.
 | [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,8 +62,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="setvideo-1"></a>
+
+<a id="setvideo2"></a>
 
 ## setVideo
 
@@ -101,6 +106,7 @@ Sets live wallpaper of the specified type based on the uri path of the MP4 file.
 | [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -117,3 +123,5 @@ try {
     console.error(`failed to setVideo. Code: ${error.code}, Message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

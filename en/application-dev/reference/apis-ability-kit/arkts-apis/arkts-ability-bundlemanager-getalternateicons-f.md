@@ -12,7 +12,7 @@ import { bundleManager } from '@kit.AbilityKit';
 function getAlternateIcons(): Promise<Array<AlternateIconInfo>>
 ```
 
-Queries the alternate icon information configured in the alternateIcons in the app.json5 of the current application. This API uses a promise to return the result.
+Queries the alternate icon information configured in the [alternateIcons tag](../../../quick-start/app-configuration-file.md#alternateicons) in app.json5 of the current app. This API uses a promise to return the result.
 
 **Since:** 26.0.0
 
@@ -26,7 +26,7 @@ Queries the alternate icon information configured in the alternateIcons in the a
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[AlternateIconInfo](arkts-ability-bundlemanager-alternateiconinfo-t.md)&gt;&gt; | Promise used to return the list of alternate icons of the current application. |
+| Promise&lt;Array&lt;[AlternateIconInfo](arkts-ability-bundlemanager-alternateiconinfo-t.md)&gt;&gt; | Promise used to return the list of alternate icon information of the current application. |
 
 **Error codes:**
 

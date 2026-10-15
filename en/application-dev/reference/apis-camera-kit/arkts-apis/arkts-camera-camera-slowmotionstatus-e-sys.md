@@ -30,6 +30,22 @@ Disabled.
 
 **System API:** This is a system API.
 
+## FINISHED
+
+```TypeScript
+FINISHED = 4
+```
+
+Finished.
+
+**Since:** 12
+
+<!--Device-SlowMotionStatus-FINISHED = 4--><!--Device-SlowMotionStatus-FINISHED = 4-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
 ## READY
 
 ```TypeScript
@@ -41,22 +57,6 @@ Ready.
 **Since:** 12
 
 <!--Device-SlowMotionStatus-READY = 1--><!--Device-SlowMotionStatus-READY = 1-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
-## VIDEO_START
-
-```TypeScript
-VIDEO_START = 2
-```
-
-Video start.
-
-**Since:** 12
-
-<!--Device-SlowMotionStatus-VIDEO_START = 2--><!--Device-SlowMotionStatus-VIDEO_START = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 
@@ -78,17 +78,17 @@ Video complete.
 
 **System API:** This is a system API.
 
-## FINISHED
+## VIDEO_START
 
 ```TypeScript
-FINISHED = 4
+VIDEO_START = 2
 ```
 
-Finished.
+Video start.
 
 **Since:** 12
 
-<!--Device-SlowMotionStatus-FINISHED = 4--><!--Device-SlowMotionStatus-FINISHED = 4-End-->
+<!--Device-SlowMotionStatus-VIDEO_START = 2--><!--Device-SlowMotionStatus-VIDEO_START = 2-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

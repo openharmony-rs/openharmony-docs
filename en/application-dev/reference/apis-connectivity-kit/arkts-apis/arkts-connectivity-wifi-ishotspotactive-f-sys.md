@@ -34,6 +34,7 @@ Checks whether Wi-Fi hotspot is active on a device.
 | --- | --- |
 | boolean | Returns `true` if Wi-Fi hotspot is enabled, returns `false` otherwise. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -46,3 +47,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

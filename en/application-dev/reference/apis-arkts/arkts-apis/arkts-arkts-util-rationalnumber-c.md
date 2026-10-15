@@ -56,7 +56,7 @@ console.info("result = " + result);
 // Output: result = -1
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -79,6 +79,8 @@ A constructor used to create a **RationalNumber** object.
 ```TypeScript
 let rationalNumber = new util.RationalNumber();
 ```
+
+<a id="constructor1"></a>
 
 ## constructor
 
@@ -574,7 +576,7 @@ Compares the current RationalNumber object to the given object.
 
 **Deprecated since:** 9
 
-**Substitutes:** compare
+**Substitutes:** [compare](#compare)
 
 <!--Device-RationalNumber-compareTo(another: RationalNumber): number--><!--Device-RationalNumber-compareTo(another: RationalNumber): number-End-->
 

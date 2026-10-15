@@ -14,6 +14,22 @@ export enum Flag
 
 **系统接口：** 此接口为系统接口。
 
+## DELETE
+
+```TypeScript
+DELETE = 2
+```
+
+删除操作。
+
+**起始版本：** 11
+
+<!--Device-Flag-DELETE = 2--><!--Device-Flag-DELETE = 2-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**系统接口：** 此接口为系统接口。
+
 ## INSERT
 
 ```TypeScript
@@ -41,22 +57,6 @@ UPDATE = 1
 **起始版本：** 11
 
 <!--Device-Flag-UPDATE = 1--><!--Device-Flag-UPDATE = 1-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
-
-**系统接口：** 此接口为系统接口。
-
-## DELETE
-
-```TypeScript
-DELETE = 2
-```
-
-删除操作。
-
-**起始版本：** 11
-
-<!--Device-Flag-DELETE = 2--><!--Device-Flag-DELETE = 2-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Server
 

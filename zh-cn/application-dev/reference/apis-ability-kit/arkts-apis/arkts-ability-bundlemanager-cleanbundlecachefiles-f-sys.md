@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="cleanbundlecachefiles1"></a>
+
 ## cleanBundleCacheFiles
 
 ```TypeScript
@@ -43,6 +45,7 @@ function cleanBundleCacheFiles(bundleName: string, callback: AsyncCallback<void>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700030](../errorcode-bundle.md#17700030-指定的应用不支持清除缓存文件) | The specified bundle does not support clearing of cache files. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -66,8 +69,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="cleanbundlecachefiles-1"></a>
+
+<a id="cleanbundlecachefiles2"></a>
 
 ## cleanBundleCacheFiles
 
@@ -111,6 +116,7 @@ function cleanBundleCacheFiles(bundleName: string): Promise<void>
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700030](../errorcode-bundle.md#17700030-指定的应用不支持清除缓存文件) | The specified bundle does not support clearing of cache files. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -132,8 +138,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="cleanbundlecachefiles-2"></a>
+
+<a id="cleanbundlecachefiles3"></a>
 
 ## cleanBundleCacheFiles
 
@@ -179,6 +187,7 @@ function cleanBundleCacheFiles(bundleName: string, appIndex: number): Promise<vo
 | [17700030](../errorcode-bundle.md#17700030-指定的应用不支持清除缓存文件) | The specified bundle does not support clearing of cache files. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -200,3 +209,5 @@ try {
   hilog.error(0x0000, 'testTag', 'cleanBundleCacheFiles failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

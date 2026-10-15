@@ -12,6 +12,20 @@ Enumerates the suspension types of the player.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## AUTO_CLEANUP
+
+```TypeScript
+AUTO_CLEANUP
+```
+
+The page is automatically cleaned up by the system.
+
+**Since:** 12
+
+<!--Device-SuspendType-AUTO_CLEANUP--><!--Device-SuspendType-AUTO_CLEANUP-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## ENTER_BACK_FORWARD_CACHE
 
 ```TypeScript
@@ -37,19 +51,5 @@ The page enters the background.
 **Since:** 12
 
 <!--Device-SuspendType-ENTER_BACKGROUND--><!--Device-SuspendType-ENTER_BACKGROUND-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## AUTO_CLEANUP
-
-```TypeScript
-AUTO_CLEANUP
-```
-
-The page is automatically cleaned up by the system.
-
-**Since:** 12
-
-<!--Device-SuspendType-AUTO_CLEANUP--><!--Device-SuspendType-AUTO_CLEANUP-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

@@ -49,7 +49,7 @@ Obtains the key event.
 
 | Type | Description |
 | --- | --- |
-| [KeyEvent](arkts-arkui-common-comp-keyevent-i.md) &#124; null | Key event object if it is a key event, or **null** otherwise. |
+| [KeyEvent](arkts-arkui-common-comp-keyevent-i.md) &#124; null | Key event to obtain. If it is a key event, the event object is returned; otherwise, **null** is returned. Since the listener is executed before the event is dispatched to a specific component, the **metaKey** attribute and **getModifierKeyState** method in the returned **KeyEvent** cannot provide valid values. |
 
 ## asMouseEvent
 
@@ -73,7 +73,7 @@ Obtains the mouse event.
 
 | Type | Description |
 | --- | --- |
-| [MouseEvent](arkts-arkui-common-comp-mouseevent-i.md) &#124; null | Mouse event object if it is a mouse event, or **null** otherwise. |
+| [MouseEvent](arkts-arkui-common-comp-mouseevent-i.md) &#124; null | Mouse event to obtain. If it is a mouse event, the event object is returned; otherwise, **null** is returned. Since the listener is executed before the event is dispatched to a specific component, fields such as the target object and the coordinates **x** and **y** relative to the component in the returned **MouseEvent** cannot provide valid values. |
 
 ## asTouchEvent
 
@@ -97,7 +97,7 @@ Obtains the touch event.
 
 | Type | Description |
 | --- | --- |
-| [TouchEvent](arkts-arkui-common-comp-touchevent-i.md) &#124; null | Touch event object if it is a touch event, or **null** otherwise. |
+| [TouchEvent](arkts-arkui-common-comp-touchevent-i.md) &#124; null | Touch event to obtain. If it is a touch event, the event object is returned; otherwise, **null** is returned. Since the listener is executed before the event is dispatched to a specific component, methods such as **getCurrentLocalPosition**, **stopPropagation**, **preventDefault**, and **getHistoricalPoints** in the returned **TouchEvent** cannot provide valid values. |
 
 ## isKeyEvent
 

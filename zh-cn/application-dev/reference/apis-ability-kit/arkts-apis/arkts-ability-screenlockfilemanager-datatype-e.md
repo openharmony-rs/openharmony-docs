@@ -12,20 +12,6 @@ export enum DataType
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager
 
-## MEDIA_DATA
-
-```TypeScript
-MEDIA_DATA = 0x00000001
-```
-
-媒体数据类型。
-
-**起始版本：** 12
-
-<!--Device-DataType-MEDIA_DATA = 0x00000001--><!--Device-DataType-MEDIA_DATA = 0x00000001-End-->
-
-**系统能力：** SystemCapability.Security.ScreenLockFileManager
-
 ## ALL_DATA
 
 ```TypeScript
@@ -37,5 +23,19 @@ ALL_DATA = 0xffffffff
 **起始版本：** 12
 
 <!--Device-DataType-ALL_DATA = 0xffffffff--><!--Device-DataType-ALL_DATA = 0xffffffff-End-->
+
+**系统能力：** SystemCapability.Security.ScreenLockFileManager
+
+## MEDIA_DATA
+
+```TypeScript
+MEDIA_DATA = 0x00000001
+```
+
+媒体数据类型。
+
+**起始版本：** 12
+
+<!--Device-DataType-MEDIA_DATA = 0x00000001--><!--Device-DataType-MEDIA_DATA = 0x00000001-End-->
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager

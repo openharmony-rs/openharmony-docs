@@ -55,7 +55,7 @@ declare function mkdir(path: string): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="mkdir-1"></a>
+<a id="mkdir2"></a>
 
 ## mkdir
 
@@ -107,7 +107,7 @@ declare function mkdir(path: string, recursion: boolean): Promise<void>
 | 13900042 | Unknown error |
 
 
-<a id="mkdir-2"></a>
+<a id="mkdir3"></a>
 
 ## mkdir
 
@@ -153,7 +153,7 @@ declare function mkdir(path: string, callback: AsyncCallback<void>): void
 | 13900042 | Unknown error |
 
 
-<a id="mkdir-3"></a>
+<a id="mkdir4"></a>
 
 ## mkdir
 

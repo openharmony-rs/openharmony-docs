@@ -36,13 +36,13 @@ Obtains the status information about a page by its URL.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| url | string | Yes | URL of the target page. |
+| url | string | Yes | URL of the page whose information is to be obtained. The URL is an absolute page path provided in the **pages** list of the configuration file, for example, **pages/index/index**. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;[RouterState](arkts-arkui-router-routerstate-i.md)&gt; | Page routing state. |
+| Array&lt;[RouterState](arkts-arkui-router-routerstate-i.md)&gt; | Array of page state information matching the specified URL. Each element contains the page index, name, path, and parameters. |
 
 **Examples**
 

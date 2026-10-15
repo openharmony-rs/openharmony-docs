@@ -6,6 +6,8 @@
 import { dlpPermission } from '@kit.DataProtectionKit';
 ```
 
+<a id="setretentionstate1"></a>
+
 ## setRetentionState
 
 ```TypeScript
@@ -36,7 +38,7 @@ Sets the retention state for sandbox applications. By default, when a DLP file i
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100006](../errorcode-dlp.md#19100006-access-denied-for-a-non-dlp-sandbox-application) | No permission to call this API, which is available only for DLP sandbox applications. |
@@ -58,7 +60,7 @@ dlpPermission.isInSandbox().then(async (inSandbox) => {
 ```
 
 
-<a id="setretentionstate-1"></a>
+<a id="setretentionstate2"></a>
 
 ## setRetentionState
 
@@ -85,7 +87,7 @@ Sets the retention state for sandbox applications. By default, when a DLP file i
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported because car not support DLP feature.<br>**Applicable version:** 26.0.1 and later |
 | [19100001](../errorcode-dlp.md#19100001-invalid-parameter) | Invalid parameter value. |
 | [19100006](../errorcode-dlp.md#19100006-access-denied-for-a-non-dlp-sandbox-application) | No permission to call this API, which is available only for DLP sandbox applications. |

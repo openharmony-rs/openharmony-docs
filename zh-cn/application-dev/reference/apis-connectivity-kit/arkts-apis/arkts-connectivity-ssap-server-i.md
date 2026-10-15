@@ -36,9 +36,13 @@ addService(service: Service): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-addService(service: Service): void--><!--Device-Server-addService(service: Service): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [removeService](#removeservice) 服务端删除服务。
 
 **参数：**
 
@@ -50,7 +54,7 @@ addService(service: Service): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID. |
 | [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
@@ -70,6 +74,8 @@ close(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-close(): void--><!--Device-Server-close(): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -78,7 +84,7 @@ close(): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |
 
@@ -95,6 +101,8 @@ notifyPropertyChanged(address: string, property: Property): Promise<void>
 **需要权限：** ohos.permission.ACCESS_NEARLINK
 
 **模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Server-notifyPropertyChanged(address: string, property: Property): Promise<void>--><!--Device-Server-notifyPropertyChanged(address: string, property: Property): Promise<void>-End-->
 
@@ -117,7 +125,7 @@ notifyPropertyChanged(address: string, property: Property): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100041](../errorcode-nearlink-service.md#36100041-无效地址) | Invalid address. |
 | [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID in property. |
@@ -136,9 +144,13 @@ offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void--><!--Device-Server-offConnectionStateChange(callback?: Callback<ConnectionChangeState>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [onConnectionStateChange](#onconnectionstatechange) Subscribes to the connection status change event.
 
 **参数：**
 
@@ -158,9 +170,13 @@ offMtuChange(callback?: Callback<number>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-offMtuChange(callback?: Callback<int>): void--><!--Device-Server-offMtuChange(callback?: Callback<int>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [onMtuChange](#onmtuchange) 订阅MTU变化事件。
 
 **参数：**
 
@@ -180,9 +196,13 @@ offPropertyRead(callback?: Callback<PropertyReadRequest>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-offPropertyRead(callback?: Callback<PropertyReadRequest>): void--><!--Device-Server-offPropertyRead(callback?: Callback<PropertyReadRequest>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [onPropertyRead](#onpropertyread) 订阅客户端的读属性请求事件。
 
 **参数：**
 
@@ -202,9 +222,13 @@ offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void--><!--Device-Server-offPropertyWrite(callback?: Callback<PropertyWriteRequest>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [onPropertyWrite](#onpropertywrite) 订阅客户端的写属性请求事件。
 
 **参数：**
 
@@ -226,9 +250,13 @@ onConnectionStateChange(callback: Callback<ConnectionChangeState>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void--><!--Device-Server-onConnectionStateChange(callback: Callback<ConnectionChangeState>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [offConnectionStateChange](#offconnectionstatechange) Unsubscribes from the connection status change event.
 
 **参数：**
 
@@ -250,9 +278,13 @@ onMtuChange(callback: Callback<number>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-onMtuChange(callback: Callback<int>): void--><!--Device-Server-onMtuChange(callback: Callback<int>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [offMtuChange](#offmtuchange) 取消订阅MTU变化事件。
 
 **参数：**
 
@@ -274,9 +306,13 @@ onPropertyRead(callback: Callback<PropertyReadRequest>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-onPropertyRead(callback: Callback<PropertyReadRequest>): void--><!--Device-Server-onPropertyRead(callback: Callback<PropertyReadRequest>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [offPropertyRead](#offpropertyread) 取消订阅客户端的读属性请求事件。
 
 **参数：**
 
@@ -298,9 +334,13 @@ onPropertyWrite(callback: Callback<PropertyWriteRequest>): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-onPropertyWrite(callback: Callback<PropertyWriteRequest>): void--><!--Device-Server-onPropertyWrite(callback: Callback<PropertyWriteRequest>): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [offPropertyWrite](#offpropertywrite) 取消订阅客户端的写属性请求事件。
 
 **参数：**
 
@@ -322,9 +362,13 @@ removeService(serviceUuid: string): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-removeService(serviceUuid: string): void--><!--Device-Server-removeService(serviceUuid: string): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
+
+**参见：** [addService](#addservice) 服务端添加服务。
 
 **参数：**
 
@@ -336,7 +380,7 @@ removeService(serviceUuid: string): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100043](../errorcode-nearlink-service.md#36100043-无效uuid) | Invalid UUID. |
 | [36100044](../errorcode-nearlink-service.md#36100044-禁止使用星闪标准服务uuid) | NearLink standard UUID not allowed. |
@@ -356,6 +400,8 @@ sendResponse(response: ServerResponse): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
 <!--Device-Server-sendResponse(response: ServerResponse): void--><!--Device-Server-sendResponse(response: ServerResponse): void-End-->
 
 **系统能力：** SystemCapability.Communication.NearLink.Base
@@ -370,7 +416,7 @@ sendResponse(response: ServerResponse): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
+| [201](../../errorcode-universal.md#201-api权限校验失败) | Permission verification failed. The application does not have the permission required to call the API. |
 | [36100003](../errorcode-nearlink-service.md#36100003-星闪关闭) | NearLink disabled. |
 | [36100041](../errorcode-nearlink-service.md#36100041-无效地址) | Invalid address. |
 | [36100099](../errorcode-nearlink-service.md#36100099-操作失败) | Operation failed. |

@@ -40,6 +40,7 @@ Specify the construction options for the UnionEffectContainer to create the Unio
 | --- | --- |
 | [UnionMode](arkts-arkui-unioneffectcontainer-comp-unionmode-e-sys.md) | Enumerates the union effect modes. |
 
+<!--Del-->
 ## Examples
 
 ### Example 1: Setting the Union Deformation Effect
@@ -268,3 +269,5 @@ struct UnionEffectContainerPage {
   }
 }
 ```
+
+<!--DelEnd-->

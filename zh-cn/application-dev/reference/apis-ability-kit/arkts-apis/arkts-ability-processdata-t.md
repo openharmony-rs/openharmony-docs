@@ -6,13 +6,13 @@ export type ProcessData = _ProcessData.default
 
 进程数据信息。
 
+**类型：** _ProcessData.default
+
 **起始版本：** 14
 
 <!--Device-unnamed-export type ProcessData = _ProcessData.default--><!--Device-unnamed-export type ProcessData = _ProcessData.default-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**类型：** _ProcessData.default
 
 **示例**
 

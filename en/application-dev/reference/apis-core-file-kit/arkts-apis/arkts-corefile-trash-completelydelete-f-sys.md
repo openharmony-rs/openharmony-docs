@@ -42,6 +42,7 @@ Permanently deletes a file or directory from the **Recently deleted** list.
 | 13900020 | Invalid argument |
 | 13900042 | Unknown error |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -49,3 +50,5 @@ let fileinfos = trash.listFile();
 let uri = fileinfos[0].uri;
 trash.completelyDelete(uri);
 ```
+
+<!--DelEnd-->

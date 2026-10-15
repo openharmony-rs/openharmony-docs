@@ -14,6 +14,70 @@ Enumerates the types of the fields in a database table. Use the enum name rather
 
 **System API:** This is a system API.
 
+## ASSET
+
+```TypeScript
+ASSET = 6
+```
+
+Asset. For details, see [Asset](arkts-arkdata-relationalstore-asset-i.md).
+
+**Since:** 11
+
+<!--Device-FieldType-ASSET = 6--><!--Device-FieldType-ASSET = 6-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**System API:** This is a system API.
+
+## ASSETS
+
+```TypeScript
+ASSETS = 7
+```
+
+Assets. For details, see [Assets](arkts-arkdata-relationalstore-assets-t.md).
+
+**Since:** 11
+
+<!--Device-FieldType-ASSETS = 7--><!--Device-FieldType-ASSETS = 7-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**System API:** This is a system API.
+
+## BLOB
+
+```TypeScript
+BLOB = 5
+```
+
+BLOB, which can hold a binary file.
+
+**Since:** 11
+
+<!--Device-FieldType-BLOB = 5--><!--Device-FieldType-BLOB = 5-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**System API:** This is a system API.
+
+## BOOL
+
+```TypeScript
+BOOL = 4
+```
+
+Boolean.
+
+**Since:** 11
+
+<!--Device-FieldType-BOOL = 4--><!--Device-FieldType-BOOL = 4-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
+
+**System API:** This is a system API.
+
 ## NULL
 
 ```TypeScript
@@ -73,70 +137,6 @@ Text.
 **Since:** 11
 
 <!--Device-FieldType-TEXT = 3--><!--Device-FieldType-TEXT = 3-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
-
-**System API:** This is a system API.
-
-## BOOL
-
-```TypeScript
-BOOL = 4
-```
-
-Boolean.
-
-**Since:** 11
-
-<!--Device-FieldType-BOOL = 4--><!--Device-FieldType-BOOL = 4-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
-
-**System API:** This is a system API.
-
-## BLOB
-
-```TypeScript
-BLOB = 5
-```
-
-BLOB, which can hold a binary file.
-
-**Since:** 11
-
-<!--Device-FieldType-BLOB = 5--><!--Device-FieldType-BLOB = 5-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
-
-**System API:** This is a system API.
-
-## ASSET
-
-```TypeScript
-ASSET = 6
-```
-
-Asset. For details, see [Asset](arkts-arkdata-relationalstore-asset-i.md).
-
-**Since:** 11
-
-<!--Device-FieldType-ASSET = 6--><!--Device-FieldType-ASSET = 6-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
-
-**System API:** This is a system API.
-
-## ASSETS
-
-```TypeScript
-ASSETS = 7
-```
-
-Assets. For details, see [Assets](arkts-arkdata-relationalstore-assets-t.md).
-
-**Since:** 11
-
-<!--Device-FieldType-ASSETS = 7--><!--Device-FieldType-ASSETS = 7-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Server
 

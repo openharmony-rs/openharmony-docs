@@ -6,6 +6,8 @@ export type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver.def
 
 UIAbility首帧绘制完成事件监听对象。
 
+**类型：** _AbilityFirstFrameStateObserver.default
+
 **起始版本：** 12
 
 <!--Device-appManager-export type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver.default--><!--Device-appManager-export type AbilityFirstFrameStateObserver = _AbilityFirstFrameStateObserver.default-End-->
@@ -13,5 +15,3 @@ UIAbility首帧绘制完成事件监听对象。
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _AbilityFirstFrameStateObserver.default

@@ -44,22 +44,6 @@ PC，字符串类型。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## MOBILE
-
-```TypeScript
-MOBILE = 'Mobile'
-```
-
-手机，字符串类型。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-UserAgentFormFactor-MOBILE = 'Mobile'--><!--Device-UserAgentFormFactor-MOBILE = 'Mobile'-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## EINK
 
 ```TypeScript
@@ -73,6 +57,22 @@ EINK = 'EInk'
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-UserAgentFormFactor-EINK = 'EInk'--><!--Device-UserAgentFormFactor-EINK = 'EInk'-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## MOBILE
+
+```TypeScript
+MOBILE = 'Mobile'
+```
+
+手机，字符串类型。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-UserAgentFormFactor-MOBILE = 'Mobile'--><!--Device-UserAgentFormFactor-MOBILE = 'Mobile'-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

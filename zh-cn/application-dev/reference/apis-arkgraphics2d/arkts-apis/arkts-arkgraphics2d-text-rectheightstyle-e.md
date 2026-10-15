@@ -12,35 +12,19 @@ enum RectHeightStyle
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## TIGHT
+## INCLUDE_LINE_SPACE_BOTTOM
 
 ```TypeScript
-TIGHT = 0
+INCLUDE_LINE_SPACE_BOTTOM = 4
 ```
 
-与字形紧贴。
+行间距将被添加到矩形的底部。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-RectHeightStyle-TIGHT = 0--><!--Device-RectHeightStyle-TIGHT = 0-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## MAX
-
-```TypeScript
-MAX = 1
-```
-
-扩展高度，以匹配所有行上最高矩形的位置。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
-
-<!--Device-RectHeightStyle-MAX = 1--><!--Device-RectHeightStyle-MAX = 1-End-->
+<!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_BOTTOM = 4--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_BOTTOM = 4-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -54,7 +38,7 @@ INCLUDE_LINE_SPACE_MIDDLE = 2
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_MIDDLE = 2--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_MIDDLE = 2-End-->
 
@@ -70,25 +54,25 @@ INCLUDE_LINE_SPACE_TOP = 3
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_TOP = 3--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_TOP = 3-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## INCLUDE_LINE_SPACE_BOTTOM
+## MAX
 
 ```TypeScript
-INCLUDE_LINE_SPACE_BOTTOM = 4
+MAX = 1
 ```
 
-行间距将被添加到矩形的底部。
+扩展高度，以匹配所有行上最高矩形的位置。
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
-<!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_BOTTOM = 4--><!--Device-RectHeightStyle-INCLUDE_LINE_SPACE_BOTTOM = 4-End-->
+<!--Device-RectHeightStyle-MAX = 1--><!--Device-RectHeightStyle-MAX = 1-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -102,8 +86,24 @@ STRUT = 5
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-RectHeightStyle-STRUT = 5--><!--Device-RectHeightStyle-STRUT = 5-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## TIGHT
+
+```TypeScript
+TIGHT = 0
+```
+
+与字形紧贴。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
+
+<!--Device-RectHeightStyle-TIGHT = 0--><!--Device-RectHeightStyle-TIGHT = 0-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

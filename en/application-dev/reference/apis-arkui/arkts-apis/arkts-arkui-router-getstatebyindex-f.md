@@ -36,13 +36,13 @@ Obtains the status information about a page by its index.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | Index of the target page. The index starts from 1 from the bottom to the top of the stack. |
+| index | number | Yes | Index of the page to obtain. The value range is [1, Page stack size], and the maximum page stack size is 32. The index starts from 1 from the bottom to the top of the stack. If the index does not exist, **undefined** is returned. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [RouterState](arkts-arkui-router-routerstate-i.md) &#124; undefined | State information about the target page; **undefined** if the specified index does not exist. |
+| [RouterState](arkts-arkui-router-routerstate-i.md) &#124; undefined | State of the page at the corresponding index, including the page index, name, path, and parameters. **undefined** is returned if the index does not exist. |
 
 **Examples**
 

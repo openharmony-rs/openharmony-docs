@@ -4,7 +4,9 @@
 declare const LocalBuilder: MethodDecorator
 ```
 
-Defining LocalBuilder MethodDecorator
+\@LocalBuilder provides the same functionality as the local \@Builder, and can better determine the parent-child relationships of components and state management than the local \@Builder. It is applicable to scenarios where the parent-child relationships of components need to be maintained in custom build functions and state management synchronization needs to be kept.
+
+For details about the development guide, see [\@LocalBuilder Decorator: Maintaining Component Relationships](../../../ui/state-management/arkts-localBuilder.md).
 
 **Since:** 12
 

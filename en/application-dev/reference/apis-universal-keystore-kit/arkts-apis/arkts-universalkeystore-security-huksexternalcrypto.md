@@ -20,23 +20,23 @@ import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
 | Name | Description |
 | --- | --- |
-| [clearUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md) | Clear the PIN auth state of the specified resource ID. |
-| [closeResource](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md) | Close the resource with a specific resource ID. |
-| [getErrorInfo](arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md) | Get the detailed error information. |
-| [getProperty](arkts-universalkeystore-huksexternalcrypto-getproperty-f.md) | Obtains a property value. This API uses a promise to return the result. |
-| [getResourceId](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md) | Obtain the resource ID of the provider. |
-| [getUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-getukeypinauthstate-f.md) | Obtains the PIN authentication state. This API uses a promise to return the result. |
-| [openResource](arkts-universalkeystore-huksexternalcrypto-openresource-f.md) | Open resource by specific resource ID. NOTE: The opened resource must be closed using closeResource. |
-| [registerProvider](arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md) | Registers a specified external Provider. This API uses a promise to return the result. |
-| [setProperty](arkts-universalkeystore-huksexternalcrypto-setproperty-f.md) | The set-type operations of the external crypto extension support calling custom interfaces. However, the custom interface must be registered with the provider. |
-| [unregisterProvider](arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md) | Unregisters a specified external Provider. This API uses a promise to return the result. |
+| [clearUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-clearukeypinauthstate-f.md#clearukeypinauthstate) | Clear the PIN auth state of the specified resource ID. |
+| [closeResource](arkts-universalkeystore-huksexternalcrypto-closeresource-f.md#closeresource) | Close the resource with a specific resource ID. |
+| [getErrorInfo](arkts-universalkeystore-huksexternalcrypto-geterrorinfo-f.md#geterrorinfo) | Get the detailed error information. |
+| [getProperty](arkts-universalkeystore-huksexternalcrypto-getproperty-f.md#getproperty) | Obtains a property value. This API uses a promise to return the result. |
+| [getResourceId](arkts-universalkeystore-huksexternalcrypto-getresourceid-f.md#getresourceid) | Obtain the resource ID of the provider. |
+| [getUkeyPinAuthState](arkts-universalkeystore-huksexternalcrypto-getukeypinauthstate-f.md#getukeypinauthstate) | Obtains the PIN authentication state. This API uses a promise to return the result. |
+| [openResource](arkts-universalkeystore-huksexternalcrypto-openresource-f.md#openresource) | Open resource by specific resource ID. NOTE: The opened resource must be closed using closeResource. |
+| [registerProvider](arkts-universalkeystore-huksexternalcrypto-registerprovider-f.md#registerprovider) | Registers a specified external Provider. This API uses a promise to return the result. |
+| [setProperty](arkts-universalkeystore-huksexternalcrypto-setproperty-f.md#setproperty) | The set-type operations of the external crypto extension support calling custom interfaces. However, the custom interface must be registered with the provider. |
+| [unregisterProvider](arkts-universalkeystore-huksexternalcrypto-unregisterprovider-f.md#unregisterprovider) | Unregisters a specified external Provider. This API uses a promise to return the result. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [authUkeyPin](arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md) | Authenticates a UKey PIN. This API uses a promise to return the result. |
+| [authUkeyPin](arkts-universalkeystore-huksexternalcrypto-authukeypin-f-sys.md#authukeypin) | Authenticates a UKey PIN. This API uses a promise to return the result. |
 <!--DelEnd-->
 
 ### Interfaces

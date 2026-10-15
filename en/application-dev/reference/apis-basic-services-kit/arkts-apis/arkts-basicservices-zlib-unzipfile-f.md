@@ -23,7 +23,7 @@ Unzips a file. The execution result is returned after the decompression is compl
 
 **Deprecated since:** 9
 
-**Substitutes:** [decompressFile](arkts-basicservices-zlib-decompressfile-f.md)(inFile: string, outFile: string, options: Options, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [decompressFile](arkts-basicservices-zlib-decompressfile-f.md#decompressfile1)(inFile: string, outFile: string, options: Options, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-zlib-function unzipFile(inFile: string, outFile: string, options: Options): Promise<void>--><!--Device-zlib-function unzipFile(inFile: string, outFile: string, options: Options): Promise<void>-End-->
 

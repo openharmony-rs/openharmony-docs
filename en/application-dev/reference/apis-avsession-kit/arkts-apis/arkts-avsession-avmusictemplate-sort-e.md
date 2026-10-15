@@ -6,8 +6,6 @@ enum Sort
 
 Enumeration of Sort type.
 
-@enum { int }
-
 **Since:** 23
 
 <!--Device-avMusicTemplate-enum Sort--><!--Device-avMusicTemplate-enum Sort-End-->

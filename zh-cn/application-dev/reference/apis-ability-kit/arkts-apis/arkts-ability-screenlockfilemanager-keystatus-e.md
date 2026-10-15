@@ -12,6 +12,20 @@ export enum KeyStatus
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager
 
+## KEY_EXIST
+
+```TypeScript
+KEY_EXIST = 0
+```
+
+密钥存在。此状态表示锁屏下敏感数据可以被正常操作。
+
+**起始版本：** 18
+
+<!--Device-KeyStatus-KEY_EXIST = 0--><!--Device-KeyStatus-KEY_EXIST = 0-End-->
+
+**系统能力：** SystemCapability.Security.ScreenLockFileManager
+
 ## KEY_NOT_EXIST
 
 ```TypeScript
@@ -37,19 +51,5 @@ KEY_RELEASED = -1
 **起始版本：** 18
 
 <!--Device-KeyStatus-KEY_RELEASED = -1--><!--Device-KeyStatus-KEY_RELEASED = -1-End-->
-
-**系统能力：** SystemCapability.Security.ScreenLockFileManager
-
-## KEY_EXIST
-
-```TypeScript
-KEY_EXIST = 0
-```
-
-密钥存在。此状态表示锁屏下敏感数据可以被正常操作。
-
-**起始版本：** 18
-
-<!--Device-KeyStatus-KEY_EXIST = 0--><!--Device-KeyStatus-KEY_EXIST = 0-End-->
 
 **系统能力：** SystemCapability.Security.ScreenLockFileManager

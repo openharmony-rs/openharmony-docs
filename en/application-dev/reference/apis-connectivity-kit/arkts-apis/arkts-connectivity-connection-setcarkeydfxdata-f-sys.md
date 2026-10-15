@@ -39,3 +39,16 @@ Set the dfx data of car key.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API when the short-range chip is not inserted on 2in1 device. |
 | 2900003 | Bluetooth disabled. |
 | 2900099 | Operation failed. |
+
+<!--Del-->
+**Examples**
+
+```TypeScript
+try {
+    connection.setCarKeyDfxData('11:22:33:44:55:66', connection.CarKeyActionType.CAR_KEY_ACTION_ADD);
+} catch (err) {
+    console.error(`Failed to set car key dfx data. Code: ${err.code}, message: ${err.message}`);
+}
+```
+
+<!--DelEnd-->

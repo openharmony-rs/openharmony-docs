@@ -14,19 +14,19 @@ export enum MultiAppMode
 
 **系统接口：** 此接口为系统接口。
 
-## NOT_SUPPORTED
+## APP_CLONE
 
 ```TypeScript
-NOT_SUPPORTED = 0
+APP_CLONE = 2
 ```
 
-应用不支持多开模式。
+应用支持分身模式。分身模式允许为应用创建独立的副本实例，每个实例拥有独立的数据空间，适用于需要隔离用户数据的场景。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MultiAppMode-NOT_SUPPORTED = 0--><!--Device-MultiAppMode-NOT_SUPPORTED = 0-End-->
+<!--Device-MultiAppMode-APP_CLONE = 2--><!--Device-MultiAppMode-APP_CLONE = 2-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 
@@ -52,19 +52,19 @@ MULTI_INSTANCE = 1
 
 **系统接口：** 此接口为系统接口。
 
-## APP_CLONE
+## NOT_SUPPORTED
 
 ```TypeScript
-APP_CLONE = 2
+NOT_SUPPORTED = 0
 ```
 
-应用支持分身模式。分身模式允许为应用创建独立的副本实例，每个实例拥有独立的数据空间，适用于需要隔离用户数据的场景。
+应用不支持多开模式。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-MultiAppMode-APP_CLONE = 2--><!--Device-MultiAppMode-APP_CLONE = 2-End-->
+<!--Device-MultiAppMode-NOT_SUPPORTED = 0--><!--Device-MultiAppMode-NOT_SUPPORTED = 0-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
 

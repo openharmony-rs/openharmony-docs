@@ -24,9 +24,27 @@ PLAYLIST_LOOP_MODE_ALL = 1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_ALL = 1--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_ALL = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
+## PLAYLIST_LOOP_MODE_NONE
+
+```TypeScript
+PLAYLIST_LOOP_MODE_NONE = 4
+```
+
+关闭循环模式。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_NONE = 4--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_NONE = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core
 
@@ -42,7 +60,7 @@ PLAYLIST_LOOP_MODE_ONE = 2
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_ONE = 2--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_ONE = 2-End-->
 
@@ -60,26 +78,8 @@ PLAYLIST_LOOP_MODE_SHUFFLE = 3
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_SHUFFLE = 3--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_SHUFFLE = 3-End-->
-
-**系统能力：** SystemCapability.Multimedia.Media.Core
-
-## PLAYLIST_LOOP_MODE_NONE
-
-```TypeScript
-PLAYLIST_LOOP_MODE_NONE = 4
-```
-
-关闭循环模式。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
-
-<!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_NONE = 4--><!--Device-PlaylistLoopMode-PLAYLIST_LOOP_MODE_NONE = 4-End-->
 
 **系统能力：** SystemCapability.Multimedia.Media.Core

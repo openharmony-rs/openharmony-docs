@@ -12,20 +12,6 @@ Enumerates the preferred device categories available for recording with Bluetoot
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## PREFERRED_NONE
-
-```TypeScript
-PREFERRED_NONE = 0
-```
-
-No specific device preference.
-
-**Since:** 21
-
-<!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_NONE = 0--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_NONE = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
 ## PREFERRED_DEFAULT
 
 ```TypeScript
@@ -37,6 +23,20 @@ Prefers using Bluetooth or NearLink devices for recording; whether to use low-la
 **Since:** 21
 
 <!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_DEFAULT = 1--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_DEFAULT = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## PREFERRED_HIGH_QUALITY
+
+```TypeScript
+PREFERRED_HIGH_QUALITY = 3
+```
+
+Prefers using Bluetooth or NearLink devices in high-quality mode for recording.
+
+**Since:** 21
+
+<!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_HIGH_QUALITY = 3--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_HIGH_QUALITY = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -54,16 +54,16 @@ Prefers using Bluetooth or NearLink devices in low-latency mode for recording.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
-## PREFERRED_HIGH_QUALITY
+## PREFERRED_NONE
 
 ```TypeScript
-PREFERRED_HIGH_QUALITY = 3
+PREFERRED_NONE = 0
 ```
 
-Prefers using Bluetooth or NearLink devices in high-quality mode for recording.
+No specific device preference.
 
 **Since:** 21
 
-<!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_HIGH_QUALITY = 3--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_HIGH_QUALITY = 3-End-->
+<!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_NONE = 0--><!--Device-BluetoothAndNearlinkPreferredRecordCategory-PREFERRED_NONE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

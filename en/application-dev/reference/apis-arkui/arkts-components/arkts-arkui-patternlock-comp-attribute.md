@@ -6,7 +6,7 @@ declare class PatternLockAttribute extends CommonMethod<PatternLockAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** PatternLockAttribute extends CommonMethod<PatternLockAttribute>
+**Inheritance/Implementation:** PatternLockAttribute extends CommonMethod&lt;PatternLockAttribute&gt;
 
 **Since:** 9
 

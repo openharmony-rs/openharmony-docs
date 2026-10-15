@@ -4,7 +4,7 @@
 interface ImageInfo
 ```
 
-表示图片信息。
+表示图像的基本信息。
 
 **起始版本：** 6
 
@@ -24,15 +24,15 @@ import { image } from '@kit.ImageKit';
 alphaType: AlphaType
 ```
 
-透明度。
+透明度类型。
 
 **类型：** [AlphaType](arkts-image-image-alphatype-e.md)
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageInfo-alphaType: AlphaType--><!--Device-ImageInfo-alphaType: AlphaType-End-->
 
@@ -50,9 +50,9 @@ density: number
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageInfo-density: int--><!--Device-ImageInfo-density: int-End-->
 
@@ -64,7 +64,7 @@ density: number
 isHdr: boolean
 ```
 
-true表示图片为高动态范围（HDR），false表示图片非高动态范围（SDR）。对于[ImageSource](arkts-image-image-imagesource-i.md)，代表源图片是否为HDR；对于[PixelMap](arkts-image-image-pixelmap-i.md)，代表解码后的PixelMap是否为HDR。
+true表示图像为高动态范围（HDR），false表示图像非高动态范围（SDR）。对于[ImageSource](arkts-image-image-imagesource-i.md)，代表源图片是否为HDR；对于[PixelMap](arkts-image-image-pixelmap-i.md)，代表解码后的PixelMap是否为HDR。
 
 **类型：** boolean
 
@@ -100,15 +100,15 @@ mimeType: string
 pixelFormat: PixelMapFormat
 ```
 
-像素格式。
+像素格式，表示像素数据的颜色通道排列和位深信息。
 
 **类型：** [PixelMapFormat](arkts-image-image-pixelmapformat-e.md)
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageInfo-pixelFormat: PixelMapFormat--><!--Device-ImageInfo-pixelFormat: PixelMapFormat-End-->
 
@@ -120,15 +120,15 @@ pixelFormat: PixelMapFormat
 size: Size
 ```
 
-图片大小。
+图像尺寸。
 
 **类型：** Size
 
 **起始版本：** 6
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageInfo-size: Size--><!--Device-ImageInfo-size: Size-End-->
 
@@ -140,15 +140,15 @@ size: Size
 stride: number
 ```
 
-跨距，内存中每行像素所占的空间。单位：字节（Byte）。stride &gt;= size.width * 4，不满足时数据读取异常。
+跨距（行跨距），表示内存中每行像素所占的空间。单位：字节（Byte）。跨距 &gt;= 图像宽度 * 每像素字节数。
 
 **类型：** number
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本12开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-ImageInfo-stride: int--><!--Device-ImageInfo-stride: int-End-->
 

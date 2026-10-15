@@ -6,6 +6,8 @@ declare type CommonModifier = import('../api/arkui/CommonModifier').CommonModifi
 
 Defines a parameter object for the **Tabs** component.
 
+**Type:** import('../api/arkui/CommonModifier').CommonModifier
+
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines a parameter object for the **Tabs** component.
 <!--Device-unnamed-declare type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier--><!--Device-unnamed-declare type CommonModifier = import('../api/arkui/CommonModifier').CommonModifier-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/arkui/CommonModifier').CommonModifier

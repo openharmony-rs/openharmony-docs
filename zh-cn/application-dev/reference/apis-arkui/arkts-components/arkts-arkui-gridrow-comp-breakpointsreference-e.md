@@ -12,24 +12,6 @@ declare enum BreakpointsReference
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## WindowSize
-
-```TypeScript
-WindowSize = 0
-```
-
-以窗口为参照。断点计算基于应用窗口尺寸，适用于需要根据窗口整体大小变化进行响应式布局的场景。
-
-**起始版本：** 9
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
-
-<!--Device-BreakpointsReference-WindowSize = 0--><!--Device-BreakpointsReference-WindowSize = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## ComponentSize
 
 ```TypeScript
@@ -45,5 +27,23 @@ ComponentSize = 1
 **卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-BreakpointsReference-ComponentSize = 1--><!--Device-BreakpointsReference-ComponentSize = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## WindowSize
+
+```TypeScript
+WindowSize = 0
+```
+
+以窗口为参照。断点计算基于应用窗口尺寸，适用于需要根据窗口整体大小变化进行响应式布局的场景。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
+
+<!--Device-BreakpointsReference-WindowSize = 0--><!--Device-BreakpointsReference-WindowSize = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

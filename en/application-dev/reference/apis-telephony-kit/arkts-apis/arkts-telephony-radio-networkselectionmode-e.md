@@ -12,20 +12,6 @@ Enumerates network selection modes.
 
 **System capability:** SystemCapability.Telephony.CoreService
 
-## NETWORK_SELECTION_UNKNOWN
-
-```TypeScript
-NETWORK_SELECTION_UNKNOWN = 0
-```
-
-Unknown network selection mode.
-
-**Since:** 6
-
-<!--Device-NetworkSelectionMode-NETWORK_SELECTION_UNKNOWN = 0--><!--Device-NetworkSelectionMode-NETWORK_SELECTION_UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Telephony.CoreService
-
 ## NETWORK_SELECTION_AUTOMATIC
 
 ```TypeScript
@@ -51,5 +37,19 @@ Manual network selection mode.
 **Since:** 6
 
 <!--Device-NetworkSelectionMode-NETWORK_SELECTION_MANUAL = 2--><!--Device-NetworkSelectionMode-NETWORK_SELECTION_MANUAL = 2-End-->
+
+**System capability:** SystemCapability.Telephony.CoreService
+
+## NETWORK_SELECTION_UNKNOWN
+
+```TypeScript
+NETWORK_SELECTION_UNKNOWN = 0
+```
+
+Unknown network selection mode.
+
+**Since:** 6
+
+<!--Device-NetworkSelectionMode-NETWORK_SELECTION_UNKNOWN = 0--><!--Device-NetworkSelectionMode-NETWORK_SELECTION_UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Telephony.CoreService

@@ -6,6 +6,8 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createpicturebyhdrandsdrpixelmap1"></a>
+
 ## createPictureByHdrAndSdrPixelMap
 
 ```TypeScript
@@ -41,6 +43,7 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 | --- | --- |
 | [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -79,8 +82,10 @@ async function CreatePictureTest(context: Context) {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="createpicturebyhdrandsdrpixelmap-1"></a>
+
+<a id="createpicturebyhdrandsdrpixelmap2"></a>
 
 ## createPictureByHdrAndSdrPixelMap
 
@@ -122,6 +127,7 @@ function createPictureByHdrAndSdrPixelMap(hdrPixelMap: PixelMap, sdrPixelMap: Pi
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications are not allowed to use system APIs. |
 | [7600201](../errorcode-image.md#7600201-不支持的操作) | Unsupported operation. HdrPixelMap's PixelMapFormat is not RGBA_F16\RGBA_1010102\YCBCR_P010, or its color space is not BT2020_HLG. Or sdrPixelMap's PixelMapFormat is not RGBA_8888\NV21\NV12, or its color space is not P3. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -163,3 +169,5 @@ async function CreatePictureTest(context: Context) {
   })
 }
 ```
+
+<!--DelEnd-->

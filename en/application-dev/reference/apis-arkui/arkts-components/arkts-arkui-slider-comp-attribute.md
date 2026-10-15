@@ -6,7 +6,7 @@ declare class SliderAttribute extends CommonMethod<SliderAttribute>
 
 All the [universal attributes](arkts-arkui-common-comp.md) except **responseRegion** are supported.
 
-**Inheritance/Implementation:** SliderAttribute extends CommonMethod<SliderAttribute>
+**Inheritance/Implementation:** SliderAttribute extends CommonMethod&lt;SliderAttribute&gt;
 
 **Since:** 7
 
@@ -74,6 +74,8 @@ When **SliderBlockType.SHAPE** is used, **blockBorderWidth** sets the border wid
 | --- | --- | --- | --- |
 | value | [Length](../arkts-apis/arkts-arkui-length-t.md) | Yes | Border width of the slider.<br>**Note:** <br>For the string type, percentage values are not supported. |
 
+<a id="blockcolor1"></a>
+
 ## blockColor
 
 ```TypeScript
@@ -106,7 +108,7 @@ When **SliderBlockType.SHAPE** is used, **blockColor** sets the color of the thu
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the thumb.<br>Default value: **$r('sys.color.ohos_id_color_foreground_contrary')** |
 
-<a id="blockcolor-1"></a>
+<a id="blockcolor2"></a>
 
 ## blockColor
 
@@ -294,7 +296,7 @@ Sets the minimum response distance for the slider to start sliding.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Minimum response distance for the slider to start sliding.<br>Default value: **0**&lt;br/ &gt;**Note:** <br>The unit is the same as that of the **min** and **max** attributes in [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).<br>If the value is less than 0, greater than **max** – **min**, **NaN**, or of a non-numeric type, the default value is used. |
+| value | number | Yes | Minimum response distance for the slider to start sliding.<br>Default value: **0**<br/ >**Note:** <br>The unit is the same as that of the **min** and **max** attributes in [SliderOptions](arkts-arkui-slider-comp-slideroptions-i.md).<br>If the value is less than 0, greater than **max** – **min**, **NaN**, or of a non-numeric type, the default value is used. |
 
 ## onChange
 
@@ -375,6 +377,8 @@ Set the corner radius of the selected (highlighted) part of the slider.
 | --- | --- | --- | --- |
 | value | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | Yes | Corner radius of the selected part of the slider.<br>Default value: When **style** is set to **SliderStyle.InSet** or **SliderStyle.OutSet**, the default value follows the corner radius of the track; when **style** is set to **SliderStyle.NONE**, the default value is **0**.<br>**Note:** <br> Percentage values are not supported. If the value is less than 0, the default value is used. |
 
+<a id="selectedcolor1"></a>
+
 ## selectedColor
 
 ```TypeScript
@@ -401,7 +405,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 | --- | --- | --- | --- |
 | value | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')** |
 
-<a id="selectedcolor-1"></a>
+<a id="selectedcolor2"></a>
 
 ## selectedColor
 
@@ -409,7 +413,7 @@ Sets the color of the portion of the track between the minimum value and the thu
 selectedColor(selectedColor: ResourceColor | LinearGradient)
 ```
 
-Sets the color of the portion of the track between the minimum value and the thumb, representing the selected portion. Compared to [selectedColor](#selectedcolor), this API supports the **LinearGradient** type.
+Sets the color of the portion of the track between the minimum value and the thumb, representing the selected portion. Compared to [selectedColor](#selectedcolor1), this API supports the **LinearGradient** type.
 
 **Since:** 18
 
@@ -428,6 +432,8 @@ Sets the color of the portion of the track between the minimum value and the thu
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | selectedColor | [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md) &#124; LinearGradient | Yes | Color of the portion of the track between the minimum value and the thumb.<br>Default value: **$r('sys.color.ohos_id_color_emphasize')** <br>**NOTE:** <br>With gradient color settings, if the color stop values are invalid or if the color stops are empty, the gradient effect will not be applied. |
+
+<a id="showsteps1"></a>
 
 ## showSteps
 
@@ -455,7 +461,7 @@ Sets whether to display the step markers.
 | --- | --- | --- | --- |
 | value | boolean | Yes | Whether to display the step markers.<br>**true**: display the step markers; **false**: do not display the step markers.<br>Default Value: **false** |
 
-<a id="showsteps-1"></a>
+<a id="showsteps2"></a>
 
 ## showSteps
 

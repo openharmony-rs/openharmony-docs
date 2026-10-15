@@ -26,7 +26,7 @@ function getSync(key: string, def?: string): string
 
 **废弃版本：** 9
 
-**替代接口：** getSync
+**替代接口：** [getSync](arkts-basicservices-systemparameterenhance-getsync-f-sys.md)
 
 <!--Device-systemParameter-function getSync(key: string, def?: string): string--><!--Device-systemParameter-function getSync(key: string, def?: string): string-End-->
 
@@ -47,6 +47,7 @@ function getSync(key: string, def?: string): string
 | --- | --- |
 | string | 系统参数值。<br> 若key存在,返回设定的值。<br> 若key不存在且def有效，返回def；若未指定def或def无效(如undefined)，返回空字符串。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,3 +58,5 @@ try {
   console.error('getSync unexpected error: ' + e);
 }
 ```
+
+<!--DelEnd-->

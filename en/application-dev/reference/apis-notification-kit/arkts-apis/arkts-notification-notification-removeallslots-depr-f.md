@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="removeallslots1"></a>
+
 ## removeAllSlots
 
 ```TypeScript
@@ -30,7 +32,7 @@ Removes all notification slots. This API uses an asynchronous callback to return
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
-<a id="removeallslots-1"></a>
+<a id="removeallslots2"></a>
 
 ## removeAllSlots
 

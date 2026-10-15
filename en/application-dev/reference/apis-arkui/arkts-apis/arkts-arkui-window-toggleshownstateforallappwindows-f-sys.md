@@ -6,6 +6,8 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="toggleshownstateforallappwindows1"></a>
+
 ## toggleShownStateForAllAppWindows
 
 ```TypeScript
@@ -36,6 +38,7 @@ Hides or restores the application's windows during quick multi-window switching.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**Applicable version:** 12 and later |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -51,8 +54,10 @@ window.toggleShownStateForAllAppWindows((err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="toggleshownstateforallappwindows-1"></a>
+
+<a id="toggleshownstateforallappwindows2"></a>
 
 ## toggleShownStateForAllAppWindows
 
@@ -84,6 +89,7 @@ Hides or restores the application's windows during quick multi-window switching.
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Failed to call the API due to limited device capabilities.<br>**Applicable version:** 12 and later |
 | [1300003](../errorcode-window.md#1300003-abnormal-window-manager-service) | This window manager service works abnormally. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -96,3 +102,5 @@ promise.then(() => {
   console.error(`Failed to toggle shown state for all app windows. Cause code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

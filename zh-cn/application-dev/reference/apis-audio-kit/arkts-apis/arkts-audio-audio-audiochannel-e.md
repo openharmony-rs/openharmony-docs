@@ -26,6 +26,62 @@ CHANNEL_1 = 1
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
+## CHANNEL_10
+
+```TypeScript
+CHANNEL_10 = 10
+```
+
+十声道。
+
+**起始版本：** 11
+
+<!--Device-AudioChannel-CHANNEL_10 = 10--><!--Device-AudioChannel-CHANNEL_10 = 10-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## CHANNEL_12
+
+```TypeScript
+CHANNEL_12 = 12
+```
+
+十二声道。
+
+**起始版本：** 11
+
+<!--Device-AudioChannel-CHANNEL_12 = 12--><!--Device-AudioChannel-CHANNEL_12 = 12-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## CHANNEL_14
+
+```TypeScript
+CHANNEL_14 = 14
+```
+
+十四声道。
+
+**起始版本：** 11
+
+<!--Device-AudioChannel-CHANNEL_14 = 14--><!--Device-AudioChannel-CHANNEL_14 = 14-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
+## CHANNEL_16
+
+```TypeScript
+CHANNEL_16 = 16
+```
+
+十六声道。
+
+**起始版本：** 11
+
+<!--Device-AudioChannel-CHANNEL_16 = 16--><!--Device-AudioChannel-CHANNEL_16 = 16-End-->
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 ## CHANNEL_2
 
 ```TypeScript
@@ -135,61 +191,5 @@ CHANNEL_9 = 9
 **起始版本：** 11
 
 <!--Device-AudioChannel-CHANNEL_9 = 9--><!--Device-AudioChannel-CHANNEL_9 = 9-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## CHANNEL_10
-
-```TypeScript
-CHANNEL_10 = 10
-```
-
-十声道。
-
-**起始版本：** 11
-
-<!--Device-AudioChannel-CHANNEL_10 = 10--><!--Device-AudioChannel-CHANNEL_10 = 10-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## CHANNEL_12
-
-```TypeScript
-CHANNEL_12 = 12
-```
-
-十二声道。
-
-**起始版本：** 11
-
-<!--Device-AudioChannel-CHANNEL_12 = 12--><!--Device-AudioChannel-CHANNEL_12 = 12-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## CHANNEL_14
-
-```TypeScript
-CHANNEL_14 = 14
-```
-
-十四声道。
-
-**起始版本：** 11
-
-<!--Device-AudioChannel-CHANNEL_14 = 14--><!--Device-AudioChannel-CHANNEL_14 = 14-End-->
-
-**系统能力：** SystemCapability.Multimedia.Audio.Core
-
-## CHANNEL_16
-
-```TypeScript
-CHANNEL_16 = 16
-```
-
-十六声道。
-
-**起始版本：** 11
-
-<!--Device-AudioChannel-CHANNEL_16 = 16--><!--Device-AudioChannel-CHANNEL_16 = 16-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core

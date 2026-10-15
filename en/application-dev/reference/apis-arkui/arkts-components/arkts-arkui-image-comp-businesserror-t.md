@@ -8,6 +8,8 @@ Represents the error information returned when an error occurs during image load
 
 The table below describes the **ImageError** error codes. The **error** property of **ImageError** contains error details with **code** and **message** fields, representing the error code and error message, respectively.
 
+**Type:** import('../api/@ohos.base').BusinessError&lt;T&gt;
+
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
@@ -19,5 +21,3 @@ The table below describes the **ImageError** error codes. The **error** property
 <!--Device-unnamed-declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError<T>--><!--Device-unnamed-declare type BusinessError<T = void> = import('../api/@ohos.base').BusinessError<T>-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.base').BusinessError&lt;T&gt;

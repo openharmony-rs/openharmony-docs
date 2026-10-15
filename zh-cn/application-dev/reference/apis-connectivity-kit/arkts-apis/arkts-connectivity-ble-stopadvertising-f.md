@@ -6,6 +6,8 @@
 import { ble } from '@kit.ConnectivityKit';
 ```
 
+<a id="stopadvertising1"></a>
+
 ## stopAdvertising
 
 ```TypeScript
@@ -22,7 +24,7 @@ function stopAdvertising(): void
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-ble-function stopAdvertising(): void--><!--Device-ble-function stopAdvertising(): void-End-->
 
@@ -49,7 +51,7 @@ try {
 ```
 
 
-<a id="stopadvertising-1"></a>
+<a id="stopadvertising2"></a>
 
 ## stopAdvertising
 
@@ -59,7 +61,7 @@ function stopAdvertising(advertisingId: number, callback: AsyncCallback<void>): 
 
 完全停止发送BLE广播。使用Callback异步回调。
 
-与API version 11开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)搭配使用，会释放已经申请的广播资源。[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配的广播标识也将失效。不可以和API version 10开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)接口搭配使用。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md)回调获取完全停止广播结果。
+与API version 11开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)搭配使用，会释放已经申请的广播资源。[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配的广播标识也将失效。不可以和API version 10开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)接口搭配使用。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange)回调获取完全停止广播结果。
 
 **起始版本：** 11
 
@@ -83,7 +85,7 @@ function stopAdvertising(advertisingId: number, callback: AsyncCallback<void>): 
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |
@@ -158,7 +160,7 @@ try {
 ```
 
 
-<a id="stopadvertising-2"></a>
+<a id="stopadvertising3"></a>
 
 ## stopAdvertising
 
@@ -168,7 +170,7 @@ function stopAdvertising(advertisingId: number): Promise<void>
 
 完全停止发送BLE广播。使用Promise异步回调。
 
-与API version 11开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)搭配使用，会释放已经申请的广播资源。[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配的广播标识也将失效。不可以和API version 10开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)接口搭配使用。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md)回调获取完全停止广播结果。
+与API version 11开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)搭配使用，会释放已经申请的广播资源。[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)首次启动广播时分配的广播标识也将失效。不可以和API version 10开始支持的[ble.startAdvertising](arkts-connectivity-ble-startadvertising-f.md)接口搭配使用。通过[ble.on('advertisingStateChange')](arkts-connectivity-ble-on-f.md#onadvertisingstatechange)回调获取完全停止广播结果。
 
 **起始版本：** 11
 
@@ -197,7 +199,7 @@ function stopAdvertising(advertisingId: number): Promise<void>
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameter. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 | [2900001](../errorcode-bluetoothManager.md#2900001-蓝牙服务停止) | Service stopped. |
 | [2900003](../errorcode-bluetoothManager.md#2900003-蓝牙开关关闭) | Bluetooth disabled. |

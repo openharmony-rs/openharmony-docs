@@ -1,5 +1,27 @@
 # Constants
 
+## Builder
+
+```TypeScript
+declare const Builder: MethodDecorator & BuilderMethodDecorator
+```
+
+Defining Builder MethodDecorator
+
+**Type:** [MethodDecorator](../../apis-default/arkts-apis/arkts-methoddecorator-t.md) & [BuilderMethodDecorator](arkts-arkui-common-comp-buildermethoddecorator-t.md)
+
+**Since:** 7
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-unnamed-declare const Builder: MethodDecorator & BuilderMethodDecorator--><!--Device-unnamed-declare const Builder: MethodDecorator & BuilderMethodDecorator-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Styles
 
 ```TypeScript

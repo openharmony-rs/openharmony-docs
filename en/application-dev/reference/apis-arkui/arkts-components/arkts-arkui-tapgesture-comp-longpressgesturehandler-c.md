@@ -4,9 +4,9 @@
 declare class LongPressGestureHandler extends GestureHandler<LongPressGestureHandler>
 ```
 
-Defines a long press gesture handler object.
+Defines the long press gesture handler object type, which is used to recognize long press interactions on a component. It is suitable for scenarios where an operation is triggered after pressing and holding, and supports configuring recognition conditions such as the number of triggering fingers, the long press duration, whether to trigger continuously, and the movement threshold.
 
-**Inheritance/Implementation:** LongPressGestureHandler extends GestureHandler<LongPressGestureHandler>
+**Inheritance/Implementation:** LongPressGestureHandler extends GestureHandler&lt;LongPressGestureHandler&gt;
 
 **Since:** 12
 
@@ -36,7 +36,7 @@ Constructor used to create a long press gesture handler instance.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| options | [LongPressGestureHandlerOptions](arkts-arkui-tapgesture-comp-longpressgesturehandleroptions-i.md) | No | Parameters of the long press gesture handler. |
+| options | [LongPressGestureHandlerOptions](arkts-arkui-tapgesture-comp-longpressgesturehandleroptions-i.md) | No | Configuration parameters of the long press gesture handler. Pass this parameter when you need to customize the minimum finger count for triggering a long press, whether to trigger continuously, the minimum trigger time, finger count verification, or the maximum movement distance. If this parameter is not passed, the default configuration of the long press gesture handler is used, for example, the trigger finger count is 1, **repeat** is **false**, the minimum time for triggering a long press is 500 ms, and the maximum movement distance is 15 px. |
 
 ## onAction
 
@@ -68,6 +68,8 @@ Sets the callback for successful long press gesture recognition.
 | --- | --- |
 | [LongPressGestureHandler](arkts-arkui-tapgesture-comp-longpressgesturehandler-c.md) | Long press gesture handler object. |
 
+<a id="onactioncancel1"></a>
+
 ## onActionCancel
 
 ```TypeScript
@@ -98,7 +100,7 @@ Sets the callback for long press gesture cancellation. This callback is triggere
 | --- | --- |
 | [LongPressGestureHandler](arkts-arkui-tapgesture-comp-longpressgesturehandler-c.md) | Long press gesture handler object. |
 
-<a id="onactioncancel-1"></a>
+<a id="onactioncancel2"></a>
 
 ## onActionCancel
 
@@ -106,7 +108,7 @@ Sets the callback for long press gesture cancellation. This callback is triggere
 onActionCancel(event: Callback<GestureEvent>): LongPressGestureHandler
 ```
 
-Sets the callback for long press gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel), this API returns gesture event information.
+Sets the callback for long press gesture cancellation. This callback is triggered when a touch cancellation event occurs after successful recognition. Compared with [onActionCancel](#onactioncancel1), this API returns gesture event information.
 
 **Since:** 18
 

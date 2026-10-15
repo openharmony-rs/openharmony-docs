@@ -10,7 +10,7 @@ UpdatedCallback是监听系统环境变化的回调函数，开发者可通过[A
 
 <!--Device-systemConfiguration-interface UpdatedCallback--><!--Device-systemConfiguration-interface UpdatedCallback-End-->
 
-**系统能力：** SystemCapability.Ability.AbilityRuntime.AbilityCore
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 ## 导入模块
 
@@ -30,7 +30,7 @@ onColorModeUpdated?: OnColorModeUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onColorModeUpdated?: OnColorModeUpdatedFn--><!--Device-UpdatedCallback-onColorModeUpdated?: OnColorModeUpdatedFn-End-->
 
@@ -48,7 +48,7 @@ onFontIdUpdated?: OnFontIdUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onFontIdUpdated?: OnFontIdUpdatedFn--><!--Device-UpdatedCallback-onFontIdUpdated?: OnFontIdUpdatedFn-End-->
 
@@ -66,7 +66,7 @@ onFontSizeScaleUpdated?: OnFontSizeScaleUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onFontSizeScaleUpdated?: OnFontSizeScaleUpdatedFn--><!--Device-UpdatedCallback-onFontSizeScaleUpdated?: OnFontSizeScaleUpdatedFn-End-->
 
@@ -84,7 +84,7 @@ onFontWeightScaleUpdated?: OnFontWeightScaleUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onFontWeightScaleUpdated?: OnFontWeightScaleUpdatedFn--><!--Device-UpdatedCallback-onFontWeightScaleUpdated?: OnFontWeightScaleUpdatedFn-End-->
 
@@ -102,7 +102,7 @@ onHasPointerDeviceUpdated?: OnHasPointerDeviceUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onHasPointerDeviceUpdated?: OnHasPointerDeviceUpdatedFn--><!--Device-UpdatedCallback-onHasPointerDeviceUpdated?: OnHasPointerDeviceUpdatedFn-End-->
 
@@ -120,7 +120,7 @@ onLanguageUpdated?: OnLanguageUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onLanguageUpdated?: OnLanguageUpdatedFn--><!--Device-UpdatedCallback-onLanguageUpdated?: OnLanguageUpdatedFn-End-->
 
@@ -138,7 +138,7 @@ onLocaleUpdated?: OnLocaleUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onLocaleUpdated?: OnLocaleUpdatedFn--><!--Device-UpdatedCallback-onLocaleUpdated?: OnLocaleUpdatedFn-End-->
 
@@ -156,7 +156,7 @@ onMCCUpdated?: OnMCCUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onMCCUpdated?: OnMCCUpdatedFn--><!--Device-UpdatedCallback-onMCCUpdated?: OnMCCUpdatedFn-End-->
 
@@ -174,7 +174,7 @@ onMNCUpdated?: OnMNCUpdatedFn
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-UpdatedCallback-onMNCUpdated?: OnMNCUpdatedFn--><!--Device-UpdatedCallback-onMNCUpdated?: OnMNCUpdatedFn-End-->
 

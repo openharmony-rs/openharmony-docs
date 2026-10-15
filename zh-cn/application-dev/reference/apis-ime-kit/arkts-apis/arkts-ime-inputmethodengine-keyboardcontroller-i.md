@@ -18,13 +18,15 @@ interface KeyboardController
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
+<a id="exitcurrentinputtype1"></a>
+
 ## exitCurrentInputType
 
 ```TypeScript
 exitCurrentInputType(callback: AsyncCallback<void>): void
 ```
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用callback异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.0.1开始，支持提供系统级输入能力的输入法应用调用。使用callback异步回调。
 
 **起始版本：** 11
 
@@ -59,7 +61,7 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 });
 ```
 
-<a id="exitcurrentinputtype-1"></a>
+<a id="exitcurrentinputtype2"></a>
 
 ## exitCurrentInputType
 
@@ -67,7 +69,7 @@ keyboardController.exitCurrentInputType((err: BusinessError) => {
 exitCurrentInputType(): Promise<void>
 ```
 
-退出当前输入类型，仅支持系统配置的默认输入法应用调用。使用promise异步回调。
+退出当前输入类型，仅支持系统配置的默认输入法应用调用。从API版本26.0.1开始，支持提供系统级输入能力的输入法应用调用。使用promise异步回调。
 
 **起始版本：** 11
 
@@ -99,6 +101,8 @@ keyboardController.exitCurrentInputType().then(() => {
   console.error(`Failed to exit current input type. Code:${err.code}, message:${err.message}`);
 });
 ```
+
+<a id="hide1"></a>
 
 ## hide
 
@@ -140,7 +144,7 @@ keyboardController.hide((err: BusinessError) => {
 });
 ```
 
-<a id="hide-1"></a>
+<a id="hide2"></a>
 
 ## hide
 
@@ -180,6 +184,8 @@ keyboardController.hide().then(() => {
 });
 ```
 
+<a id="hidekeyboard1"></a>
+
 ## hideKeyboard
 
 ```TypeScript
@@ -195,7 +201,7 @@ hideKeyboard(callback: AsyncCallback<void>): void
 
 **废弃版本：** 9
 
-**替代接口：** [hide](#hide)(callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [hide](#hide1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void--><!--Device-KeyboardController-hideKeyboard(callback: AsyncCallback<void>): void-End-->
 
@@ -221,7 +227,7 @@ keyboardController.hideKeyboard((err: BusinessError) => {
 });
 ```
 
-<a id="hidekeyboard-1"></a>
+<a id="hidekeyboard2"></a>
 
 ## hideKeyboard
 

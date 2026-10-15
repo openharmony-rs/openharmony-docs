@@ -26,7 +26,7 @@ applyShadow?: boolean
 
 是否添加材质的阴影效果。
 
-当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。
+当该参数为true时，材质中的阴影效果固定生效，优先于[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)通用属性。当该参数为false时，shadow通用属性生效，材质的阴影效果不生效。
 
 **说明：** 该参数对支持沉浸式材质的所有档位的算力设备的显示效果生效。
 
@@ -64,9 +64,9 @@ Text组件的[fontColor](../arkts-components/arkts-arkui-text-comp-attribute.md#
 
 Button组件的[fontColor](../arkts-components/arkts-arkui-button-comp-attribute.md#fontcolor)，
 
-SymbolGlyph组件的[fontColor](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor)，
+SymbolGlyph组件的[fontColor](../arkts-components/arkts-arkui-symbolglyph-comp-attribute.md#fontcolor1)，
 
-Image组件的[fillColor](../arkts-components/arkts-arkui-image-comp-attribute.md#fillcolor)，
+Image组件的[fillColor](../arkts-components/arkts-arkui-image-comp-attribute.md#fillcolor1)，
 
 Search组件的[placeholderColor](../arkts-components/arkts-arkui-search-comp-attribute.md#placeholdercolor)、[fontColor](../arkts-components/arkts-arkui-search-comp-attribute.md#fontcolor)，[searchIcon](../arkts-components/arkts-arkui-search-comp-attribute.md#searchicon)中的图标颜色、[cancelButton](../arkts-components/arkts-arkui-search-comp-attribute.md#cancelbutton)中的图标颜色、[caretStyle](../arkts-components/arkts-arkui-search-comp-attribute.md#caretstyle)中的光标颜色，[searchButton](../arkts-components/arkts-arkui-search-comp-attribute.md#searchbutton) 中的按钮颜色，
 
@@ -160,7 +160,7 @@ lightEffect?: LightEffectOptions | null
 materialColor?: ResourceColor
 ```
 
-材质层赋色。对于支持沉浸式材质的高算力和中算力设备，若不设置该参数或该参数为undefined，不额外混合纯色效果；若设置该参数为有效颜色值，该参数会为材质层滤镜再混合一层纯色效果，若该颜色为纯不透明的颜色，会遮挡材质层滤镜效果。对于支持沉浸式材质的低算力设备，若不设置该参数或该参数为undefined，生效低算力设备材质自带的背景色效果；若设置该参数为有效颜色值，该参数作为背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)属性值。
+材质层赋色。对于支持沉浸式材质的高算力和中算力设备，若不设置该参数或该参数为undefined，不额外混合纯色效果；若设置该参数为有效颜色值，该参数会为材质层滤镜再混合一层纯色效果，若该颜色为纯不透明的颜色，会遮挡材质层滤镜效果。对于支持沉浸式材质的低算力设备，若不设置该参数或该参数为undefined，生效低算力设备材质自带的背景色效果；若设置该参数为有效颜色值，该参数作为背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)属性值。
 
 **说明：** 该参数对支持沉浸式材质的所有档位的算力设备的显示效果生效。
 

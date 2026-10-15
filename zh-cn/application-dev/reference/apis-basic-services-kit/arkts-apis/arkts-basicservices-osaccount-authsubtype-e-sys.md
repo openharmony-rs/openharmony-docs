@@ -14,97 +14,17 @@ enum AuthSubType
 
 **系统接口：** 此接口为系统接口。
 
-## PIN_SIX
+## DOMAIN_MIXED
 
 ```TypeScript
-PIN_SIX = 10000
+DOMAIN_MIXED = 10240001
 ```
 
-表示6位凭证。
+表示域认证混合凭证。
 
-**起始版本：** 8
+**起始版本：** 9
 
-<!--Device-AuthSubType-PIN_SIX = 10000--><!--Device-AuthSubType-PIN_SIX = 10000-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## PIN_NUMBER
-
-```TypeScript
-PIN_NUMBER = 10001
-```
-
-表示自定义数字凭证。
-
-**起始版本：** 8
-
-<!--Device-AuthSubType-PIN_NUMBER = 10001--><!--Device-AuthSubType-PIN_NUMBER = 10001-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## PIN_MIXED
-
-```TypeScript
-PIN_MIXED = 10002
-```
-
-表示自定义混合凭据。
-
-**起始版本：** 8
-
-<!--Device-AuthSubType-PIN_MIXED = 10002--><!--Device-AuthSubType-PIN_MIXED = 10002-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## PIN_FOUR
-
-```TypeScript
-PIN_FOUR = 10003
-```
-
-表示4位凭证。
-
-**起始版本：** 12
-
-<!--Device-AuthSubType-PIN_FOUR = 10003--><!--Device-AuthSubType-PIN_FOUR = 10003-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## PIN_PATTERN
-
-```TypeScript
-PIN_PATTERN = 10004
-```
-
-表示图案凭据。
-
-**起始版本：** 12
-
-<!--Device-AuthSubType-PIN_PATTERN = 10004--><!--Device-AuthSubType-PIN_PATTERN = 10004-End-->
-
-**系统能力：** SystemCapability.Account.OsAccount
-
-**系统接口：** 此接口为系统接口。
-
-## PIN_QUESTION
-
-```TypeScript
-PIN_QUESTION = 10005
-```
-
-表示密保问题凭据。
-
-**起始版本：** 14
-
-<!--Device-AuthSubType-PIN_QUESTION = 10005--><!--Device-AuthSubType-PIN_QUESTION = 10005-End-->
+<!--Device-AuthSubType-DOMAIN_MIXED = 10240001--><!--Device-AuthSubType-DOMAIN_MIXED = 10240001-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 
@@ -190,17 +110,97 @@ FINGERPRINT_ULTRASONIC = 30002
 
 **系统接口：** 此接口为系统接口。
 
-## DOMAIN_MIXED
+## PIN_FOUR
 
 ```TypeScript
-DOMAIN_MIXED = 10240001
+PIN_FOUR = 10003
 ```
 
-表示域认证混合凭证。
+表示4位凭证。
 
-**起始版本：** 9
+**起始版本：** 12
 
-<!--Device-AuthSubType-DOMAIN_MIXED = 10240001--><!--Device-AuthSubType-DOMAIN_MIXED = 10240001-End-->
+<!--Device-AuthSubType-PIN_FOUR = 10003--><!--Device-AuthSubType-PIN_FOUR = 10003-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## PIN_MIXED
+
+```TypeScript
+PIN_MIXED = 10002
+```
+
+表示自定义混合凭据。
+
+**起始版本：** 8
+
+<!--Device-AuthSubType-PIN_MIXED = 10002--><!--Device-AuthSubType-PIN_MIXED = 10002-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## PIN_NUMBER
+
+```TypeScript
+PIN_NUMBER = 10001
+```
+
+表示自定义数字凭证。
+
+**起始版本：** 8
+
+<!--Device-AuthSubType-PIN_NUMBER = 10001--><!--Device-AuthSubType-PIN_NUMBER = 10001-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## PIN_PATTERN
+
+```TypeScript
+PIN_PATTERN = 10004
+```
+
+表示图案凭据。
+
+**起始版本：** 12
+
+<!--Device-AuthSubType-PIN_PATTERN = 10004--><!--Device-AuthSubType-PIN_PATTERN = 10004-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## PIN_QUESTION
+
+```TypeScript
+PIN_QUESTION = 10005
+```
+
+表示密保问题凭据。
+
+**起始版本：** 14
+
+<!--Device-AuthSubType-PIN_QUESTION = 10005--><!--Device-AuthSubType-PIN_QUESTION = 10005-End-->
+
+**系统能力：** SystemCapability.Account.OsAccount
+
+**系统接口：** 此接口为系统接口。
+
+## PIN_SIX
+
+```TypeScript
+PIN_SIX = 10000
+```
+
+表示6位凭证。
+
+**起始版本：** 8
+
+<!--Device-AuthSubType-PIN_SIX = 10000--><!--Device-AuthSubType-PIN_SIX = 10000-End-->
 
 **系统能力：** SystemCapability.Account.OsAccount
 

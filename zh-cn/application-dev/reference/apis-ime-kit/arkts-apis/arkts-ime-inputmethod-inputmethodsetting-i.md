@@ -4,7 +4,7 @@
 interface InputMethodSetting
 ```
 
-InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能：<br> <br>- 输入法变化订阅：通过[on('imeChange')](#onimechange)订阅输入法及子类型变化事件，当用户切换输入法时收到通知。<br>- 输入法列表查询：通过[getInputMethods](#getinputmethods)查询已激活/未激活输入法列表，通过[getAllInputMethods](#getallinputmethods)查询所有已安装输入法列表，通过[listInputMethodSubtype](#listinputmethodsubtype)查询指定输入法的子类型列表。<br>- 面板可见性查询：通过isPanelShown查询输入法面板是否显示。<br>- 输入法选择对话框：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。<br> <br>需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取InputMethodSetting实例后使用。<br> <br>下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取到InputMethodSetting实例后，通过实例调用。
+InputMethodSetting提供输入法配置与查询能力，面向前台应用提供以下功能：<br> <br>- 输入法变化订阅：通过[on('imeChange')](#onimechange)订阅输入法及子类型变化事件，当用户切换输入法时收到通知。<br>- 输入法列表查询：通过[getInputMethods](#getinputmethods1)查询已激活/未激活输入法列表，通过[getAllInputMethods](#getallinputmethods1)查询所有已安装输入法列表，通过[listInputMethodSubtype](#listinputmethodsubtype1)查询指定输入法的子类型列表。<br>- 面板可见性查询：通过isPanelShown查询输入法面板是否显示。<br>- 输入法选择对话框：通过showOptionalInputMethods显示输入法选择对话框（已废弃，建议使用InputMethodListDialog）。<br> <br>需通过[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取InputMethodSetting实例后使用。<br> <br>下列API均需使用[getSetting](arkts-ime-inputmethod-getsetting-f.md)获取到InputMethodSetting实例后，通过实例调用。
 
 **起始版本：** 8
 
@@ -17,6 +17,8 @@ InputMethodSetting提供输入法配置与查询能力，面向前台应用提�
 ```TypeScript
 import { inputMethod } from '@kit.IMEKit';
 ```
+
+<a id="getallinputmethods1"></a>
 
 ## getAllInputMethods
 
@@ -59,7 +61,7 @@ inputMethod.getSetting().getAllInputMethods((err: BusinessError, data: Array<inp
 });
 ```
 
-<a id="getallinputmethods-1"></a>
+<a id="getallinputmethods2"></a>
 
 ## getAllInputMethods
 
@@ -100,6 +102,8 @@ inputMethod.getSetting().getAllInputMethods().then((data: Array<inputMethod.Inpu
 })
 ```
 
+<a id="getallinputmethodssync1"></a>
+
 ## getAllInputMethodsSync
 
 ```TypeScript
@@ -135,6 +139,8 @@ getAllInputMethodsSync(): Array<InputMethodProperty>
 ```TypeScript
 let imeProperty: Array<inputMethod.InputMethodProperty> = inputMethod.getSetting().getAllInputMethodsSync();
 ```
+
+<a id="getinputmethods1"></a>
 
 ## getInputMethods
 
@@ -184,7 +190,7 @@ inputMethod.getSetting().getInputMethods(true, (err: BusinessError, data: Array<
 });
 ```
 
-<a id="getinputmethods-1"></a>
+<a id="getinputmethods2"></a>
 
 ## getInputMethods
 
@@ -236,6 +242,8 @@ inputMethod.getSetting().getInputMethods(true).then((data: Array<inputMethod.Inp
   console.error(`Failed to getInputMethods, code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+<a id="getinputmethodssync1"></a>
 
 ## getInputMethodsSync
 
@@ -323,6 +331,8 @@ inputMethod.getSetting().getInputMethodState().then((status: inputMethod.Enabled
 });
 ```
 
+<a id="listcurrentinputmethodsubtype1"></a>
+
 ## listCurrentInputMethodSubtype
 
 ```TypeScript
@@ -366,7 +376,7 @@ inputMethodSetting.listCurrentInputMethodSubtype((err: BusinessError, data: Arra
 });
 ```
 
-<a id="listcurrentinputmethodsubtype-1"></a>
+<a id="listcurrentinputmethodsubtype2"></a>
 
 ## listCurrentInputMethodSubtype
 
@@ -409,6 +419,8 @@ inputMethodSetting.listCurrentInputMethodSubtype().then((data: Array<InputMethod
   console.error(`Failed to listCurrentInputMethodSubtype, code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+<a id="listinputmethodsubtype1"></a>
 
 ## listInputMethodSubtype
 
@@ -466,7 +478,7 @@ inputMethodSetting.listInputMethodSubtype(inputMethodProperty,
   });
 ```
 
-<a id="listinputmethodsubtype-1"></a>
+<a id="listinputmethodsubtype2"></a>
 
 ## listInputMethodSubtype
 
@@ -589,6 +601,8 @@ inputMethod.getSetting()
   });
 ```
 
+<a id="displayoptionalinputmethod1"></a>
+
 ## displayOptionalInputMethod
 
 ```TypeScript
@@ -627,7 +641,7 @@ inputMethod.getSetting().displayOptionalInputMethod((err: BusinessError) => {
 });
 ```
 
-<a id="displayoptionalinputmethod-1"></a>
+<a id="displayoptionalinputmethod2"></a>
 
 ## displayOptionalInputMethod
 
@@ -664,6 +678,8 @@ inputMethod.getSetting().displayOptionalInputMethod().then(() => {
   console.error(`Failed to displayOptionalInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+<a id="listinputmethod1"></a>
 
 ## listInputMethod
 
@@ -703,7 +719,7 @@ inputMethod.getSetting().listInputMethod((err: BusinessError, data: Array<inputM
 });
 ```
 
-<a id="listinputmethod-1"></a>
+<a id="listinputmethod2"></a>
 
 ## listInputMethod
 
@@ -740,6 +756,8 @@ inputMethod.getSetting().listInputMethod().then((data: Array<inputMethod.InputMe
   console.error(`Failed to listInputMethod, code: ${err.code}, message: ${err.message}`);
 })
 ```
+
+<a id="showoptionalinputmethods1"></a>
 
 ## showOptionalInputMethods
 
@@ -789,7 +807,7 @@ inputMethod.getSetting().showOptionalInputMethods((err: BusinessError, result: b
 });
 ```
 
-<a id="showoptionalinputmethods-1"></a>
+<a id="showoptionalinputmethods2"></a>
 
 ## showOptionalInputMethods
 

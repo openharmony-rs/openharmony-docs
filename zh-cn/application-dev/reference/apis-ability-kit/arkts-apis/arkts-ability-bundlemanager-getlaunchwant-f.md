@@ -12,11 +12,11 @@ import { bundleManager } from '@kit.AbilityKit';
 function getLaunchWant(): Want
 ```
 
-获取本应用[入口UIAbility](../../../application-models/ability-terminology.md#uiability)的Want参数。
+获取本应用[入口UIAbility](../../../quick-start/application-package-glossary.md#entry-uiability入口uiability)的Want参数。
 
 **起始版本：** 13
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本13开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
 
 <!--Device-bundleManager-function getLaunchWant(): Want--><!--Device-bundleManager-function getLaunchWant(): Want-End-->
 

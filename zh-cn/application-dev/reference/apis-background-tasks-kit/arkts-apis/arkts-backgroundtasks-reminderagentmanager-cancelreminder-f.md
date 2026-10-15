@@ -6,6 +6,8 @@
 import { reminderAgentManager } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="cancelreminder1"></a>
+
 ## cancelReminder
 
 ```TypeScript
@@ -31,7 +33,7 @@ function cancelReminder(reminderId: number, callback: AsyncCallback<void>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700003](../errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
 | [1700004](../errorcode-reminderAgentManager.md#1700004-包名不存在) | The bundle name does not exist. |
 
@@ -52,7 +54,7 @@ reminderAgentManager.cancelReminder(reminderId, (err: BusinessError) => {
 ```
 
 
-<a id="cancelreminder-1"></a>
+<a id="cancelreminder2"></a>
 
 ## cancelReminder
 
@@ -84,7 +86,7 @@ function cancelReminder(reminderId: number): Promise<void>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [1700003](../errorcode-reminderAgentManager.md#1700003-提醒不存在) | The reminder does not exist. |
 | [1700004](../errorcode-reminderAgentManager.md#1700004-包名不存在) | The bundle name does not exist. |
 

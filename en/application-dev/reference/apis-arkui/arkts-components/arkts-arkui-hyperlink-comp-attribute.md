@@ -6,7 +6,7 @@ declare class HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>
 
 In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
 
-**Inheritance/Implementation:** HyperlinkAttribute extends CommonMethod<HyperlinkAttribute>
+**Inheritance/Implementation:** HyperlinkAttribute extends CommonMethod&lt;HyperlinkAttribute&gt;
 
 **Since:** 7
 

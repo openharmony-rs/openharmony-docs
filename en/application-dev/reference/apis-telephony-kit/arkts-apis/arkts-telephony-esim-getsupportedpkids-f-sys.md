@@ -46,6 +46,7 @@ Obtains the public key ID information supported by the phone.
 | [3120001](../errorcode-telephony.md#3120001-service-connection-error) | Service connection failed. |
 | [3120002](../errorcode-telephony.md#3120002-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,3 +59,5 @@ try {
     console.error(`getSupportedPkids, promise: err->${JSON.stringify(err)}`)
 }
 ```
+
+<!--DelEnd-->

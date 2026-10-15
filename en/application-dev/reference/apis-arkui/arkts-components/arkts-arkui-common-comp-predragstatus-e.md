@@ -12,6 +12,24 @@ Defines the states before the drag gesture is triggered.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## ACTION_CANCELED_BEFORE_DRAG
+
+```TypeScript
+ACTION_CANCELED_BEFORE_DRAG = 6
+```
+
+The drag preview lift and landing animation is interrupted. (Triggered when the finger is lifted after the **READY_TO_TRIGGER_DRAG_ACTION** state is reached but before the animation stage is reached.)
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PreDragStatus-ACTION_CANCELED_BEFORE_DRAG = 6--><!--Device-PreDragStatus-ACTION_CANCELED_BEFORE_DRAG = 6-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## ACTION_DETECTING_STATUS
 
 ```TypeScript
@@ -30,75 +48,21 @@ A drag gesture is being detected. (Triggered when the component is long pressed 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## READY_TO_TRIGGER_DRAG_ACTION
+## PREPARING_FOR_DRAG_DETECTION
 
 ```TypeScript
-READY_TO_TRIGGER_DRAG_ACTION = 1
+PREPARING_FOR_DRAG_DETECTION = 7
 ```
 
-The component is ready to be dragged. (Triggered when the component is long pressed for 500 ms.)
+The component is ready to be dragged. (Triggered when the component is long pressed for 350 ms.)
 
-**Since:** 12
+**Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-PreDragStatus-READY_TO_TRIGGER_DRAG_ACTION = 1--><!--Device-PreDragStatus-READY_TO_TRIGGER_DRAG_ACTION = 1-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## PREVIEW_LIFT_STARTED
-
-```TypeScript
-PREVIEW_LIFT_STARTED = 2
-```
-
-A lift animation is started. (Triggered when the component is long pressed for 800 ms.)
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-PreDragStatus-PREVIEW_LIFT_STARTED = 2--><!--Device-PreDragStatus-PREVIEW_LIFT_STARTED = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## PREVIEW_LIFT_FINISHED
-
-```TypeScript
-PREVIEW_LIFT_FINISHED = 3
-```
-
-A lift animation is finished. (Triggered at the completion of the lift animation.)
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-PreDragStatus-PREVIEW_LIFT_FINISHED = 3--><!--Device-PreDragStatus-PREVIEW_LIFT_FINISHED = 3-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## PREVIEW_LANDING_STARTED
-
-```TypeScript
-PREVIEW_LANDING_STARTED = 4
-```
-
-A drop animation is started. (Triggered when the drop animation starts.)
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-PreDragStatus-PREVIEW_LANDING_STARTED = 4--><!--Device-PreDragStatus-PREVIEW_LANDING_STARTED = 4-End-->
+<!--Device-PreDragStatus-PREPARING_FOR_DRAG_DETECTION = 7--><!--Device-PreDragStatus-PREPARING_FOR_DRAG_DETECTION = 7-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -120,13 +84,13 @@ A drop animation is finished. (Triggered when the drop animation ends.)
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ACTION_CANCELED_BEFORE_DRAG
+## PREVIEW_LANDING_STARTED
 
 ```TypeScript
-ACTION_CANCELED_BEFORE_DRAG = 6
+PREVIEW_LANDING_STARTED = 4
 ```
 
-A drop animation is terminated. (Triggered when the finger is lifted off the screen after the component enters the **READY_TO_TRIGGER_DRAG_ACTION** state.)
+A drop animation is started. (Triggered when the drop animation starts.)
 
 **Since:** 12
 
@@ -134,24 +98,60 @@ A drop animation is terminated. (Triggered when the finger is lifted off the scr
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-PreDragStatus-ACTION_CANCELED_BEFORE_DRAG = 6--><!--Device-PreDragStatus-ACTION_CANCELED_BEFORE_DRAG = 6-End-->
+<!--Device-PreDragStatus-PREVIEW_LANDING_STARTED = 4--><!--Device-PreDragStatus-PREVIEW_LANDING_STARTED = 4-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PREPARING_FOR_DRAG_DETECTION
+## PREVIEW_LIFT_FINISHED
 
 ```TypeScript
-PREPARING_FOR_DRAG_DETECTION = 7
+PREVIEW_LIFT_FINISHED = 3
 ```
 
-The component is ready to be dragged. (Triggered when the component is long pressed for 350 ms.)
+A lift animation is finished. (Triggered at the completion of the lift animation.)
 
-**Since:** 18
+**Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-PreDragStatus-PREPARING_FOR_DRAG_DETECTION = 7--><!--Device-PreDragStatus-PREPARING_FOR_DRAG_DETECTION = 7-End-->
+<!--Device-PreDragStatus-PREVIEW_LIFT_FINISHED = 3--><!--Device-PreDragStatus-PREVIEW_LIFT_FINISHED = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PREVIEW_LIFT_STARTED
+
+```TypeScript
+PREVIEW_LIFT_STARTED = 2
+```
+
+A lift animation is started. (Triggered when the component is long pressed for 800 ms.)
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PreDragStatus-PREVIEW_LIFT_STARTED = 2--><!--Device-PreDragStatus-PREVIEW_LIFT_STARTED = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## READY_TO_TRIGGER_DRAG_ACTION
+
+```TypeScript
+READY_TO_TRIGGER_DRAG_ACTION = 1
+```
+
+The component is ready to be dragged. (Triggered when the component is long pressed for 500 ms.)
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-PreDragStatus-READY_TO_TRIGGER_DRAG_ACTION = 1--><!--Device-PreDragStatus-READY_TO_TRIGGER_DRAG_ACTION = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

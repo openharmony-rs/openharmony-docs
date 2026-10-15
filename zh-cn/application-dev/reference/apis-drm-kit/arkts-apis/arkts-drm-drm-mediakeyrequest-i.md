@@ -30,7 +30,7 @@ data: Uint8Array
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-MediaKeyRequest-data: Uint8Array--><!--Device-MediaKeyRequest-data: Uint8Array-End-->
 
@@ -48,7 +48,7 @@ defaultURL: string
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-MediaKeyRequest-defaultURL: string--><!--Device-MediaKeyRequest-defaultURL: string-End-->
 
@@ -66,7 +66,7 @@ mediaKeyRequestType: MediaKeyRequestType
 
 **起始版本：** 11
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-MediaKeyRequest-mediaKeyRequestType: MediaKeyRequestType--><!--Device-MediaKeyRequest-mediaKeyRequestType: MediaKeyRequestType-End-->
 

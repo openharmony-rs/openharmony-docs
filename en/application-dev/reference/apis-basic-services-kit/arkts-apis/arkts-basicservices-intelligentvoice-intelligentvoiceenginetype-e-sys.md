@@ -4,7 +4,7 @@
 enum IntelligentVoiceEngineType
 ```
 
-Enumerates intelligent voice engine type. @enum {number}
+Enumerates intelligent voice engine type.
 
 **Since:** 10
 
@@ -30,22 +30,6 @@ Enroll engine.
 
 **System API:** This is a system API.
 
-## WAKEUP_ENGINE_TYPE
-
-```TypeScript
-WAKEUP_ENGINE_TYPE = 1
-```
-
-Wakeup engine.
-
-**Since:** 10
-
-<!--Device-IntelligentVoiceEngineType-WAKEUP_ENGINE_TYPE = 1--><!--Device-IntelligentVoiceEngineType-WAKEUP_ENGINE_TYPE = 1-End-->
-
-**System capability:** SystemCapability.AI.IntelligentVoice.Core
-
-**System API:** This is a system API.
-
 ## UPDATE_ENGINE_TYPE
 
 ```TypeScript
@@ -57,6 +41,22 @@ Update engine.
 **Since:** 10
 
 <!--Device-IntelligentVoiceEngineType-UPDATE_ENGINE_TYPE = 2--><!--Device-IntelligentVoiceEngineType-UPDATE_ENGINE_TYPE = 2-End-->
+
+**System capability:** SystemCapability.AI.IntelligentVoice.Core
+
+**System API:** This is a system API.
+
+## WAKEUP_ENGINE_TYPE
+
+```TypeScript
+WAKEUP_ENGINE_TYPE = 1
+```
+
+Wakeup engine.
+
+**Since:** 10
+
+<!--Device-IntelligentVoiceEngineType-WAKEUP_ENGINE_TYPE = 1--><!--Device-IntelligentVoiceEngineType-WAKEUP_ENGINE_TYPE = 1-End-->
 
 **System capability:** SystemCapability.AI.IntelligentVoice.Core
 

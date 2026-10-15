@@ -92,6 +92,26 @@ elementList: Array<ElementName>
 
 **系统接口：** 此接口为系统接口。
 
+## pageJump
+
+```TypeScript
+pageJump?: PageJumpMode
+```
+
+指定目标应用被拦截时是否跳转到页面。默认值为PageJumpMode.PAGE_JUMP_WINDOW_SHOW。
+
+**类型：** [PageJumpMode](arkts-ability-appcontrol-pagejumpmode-e-sys.md)
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DisposedRule-pageJump?: PageJumpMode--><!--Device-DisposedRule-pageJump?: PageJumpMode-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.AppControl
+
+**系统接口：** 此接口为系统接口。
+
 ## priority
 
 ```TypeScript

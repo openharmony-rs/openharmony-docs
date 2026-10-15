@@ -6,8 +6,6 @@ declare enum SystemProperties
 
 定义系统环境变量枚举值
 
-@enum { string }
-
 **起始版本：** 22
 
 <!--Device-unnamed-declare enum SystemProperties--><!--Device-unnamed-declare enum SystemProperties-End-->

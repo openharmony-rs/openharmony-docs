@@ -12,45 +12,17 @@ enum ProgressCode
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## SUCCESS
+## BLOCKED_BY_NETWORK_STRATEGY
 
 ```TypeScript
-SUCCESS = 0
+BLOCKED_BY_NETWORK_STRATEGY = 7
 ```
 
-表示端云同步过程成功。
+表示端云同步被网络策略限制。
 
-**起始版本：** 10
+**起始版本：** 12
 
-<!--Device-ProgressCode-SUCCESS = 0--><!--Device-ProgressCode-SUCCESS = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## UNKNOWN_ERROR
-
-```TypeScript
-UNKNOWN_ERROR = 1
-```
-
-表示端云同步过程遇到未知错误。
-
-**起始版本：** 10
-
-<!--Device-ProgressCode-UNKNOWN_ERROR = 1--><!--Device-ProgressCode-UNKNOWN_ERROR = 1-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-## NETWORK_ERROR
-
-```TypeScript
-NETWORK_ERROR = 2
-```
-
-表示端云同步过程遇到网络错误。
-
-**起始版本：** 10
-
-<!--Device-ProgressCode-NETWORK_ERROR = 2--><!--Device-ProgressCode-NETWORK_ERROR = 2-End-->
+<!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7--><!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -84,17 +56,17 @@ LOCKED_BY_OTHERS = 4
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## RECORD_LIMIT_EXCEEDED
+## NETWORK_ERROR
 
 ```TypeScript
-RECORD_LIMIT_EXCEEDED = 5
+NETWORK_ERROR = 2
 ```
 
-表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。
+表示端云同步过程遇到网络错误。
 
 **起始版本：** 10
 
-<!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5--><!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5-End-->
+<!--Device-ProgressCode-NETWORK_ERROR = 2--><!--Device-ProgressCode-NETWORK_ERROR = 2-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -112,17 +84,17 @@ NO_SPACE_FOR_ASSET = 6
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
-## BLOCKED_BY_NETWORK_STRATEGY
+## RECORD_LIMIT_EXCEEDED
 
 ```TypeScript
-BLOCKED_BY_NETWORK_STRATEGY = 7
+RECORD_LIMIT_EXCEEDED = 5
 ```
 
-表示端云同步被网络策略限制。
+表示本次端云同步需要同步的条目或大小超出最大值。由云端配置最大值。
 
-**起始版本：** 12
+**起始版本：** 10
 
-<!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7--><!--Device-ProgressCode-BLOCKED_BY_NETWORK_STRATEGY = 7-End-->
+<!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5--><!--Device-ProgressCode-RECORD_LIMIT_EXCEEDED = 5-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
@@ -139,5 +111,33 @@ STOP_CLOUD_SYNC = 8
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ProgressCode-STOP_CLOUD_SYNC = 8--><!--Device-ProgressCode-STOP_CLOUD_SYNC = 8-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+表示端云同步过程成功。
+
+**起始版本：** 10
+
+<!--Device-ProgressCode-SUCCESS = 0--><!--Device-ProgressCode-SUCCESS = 0-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
+## UNKNOWN_ERROR
+
+```TypeScript
+UNKNOWN_ERROR = 1
+```
+
+表示端云同步过程遇到未知错误。
+
+**起始版本：** 10
+
+<!--Device-ProgressCode-UNKNOWN_ERROR = 1--><!--Device-ProgressCode-UNKNOWN_ERROR = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core

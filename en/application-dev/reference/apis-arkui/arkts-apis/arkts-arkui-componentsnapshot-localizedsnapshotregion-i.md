@@ -32,11 +32,13 @@ import { componentSnapshot } from '@kit.ArkUI';
 bottom: number
 ```
 
-Y-coordinate of the lower right corner of the rectangular region.
+For LTR layouts: Y-coordinate of the lower right corner of the rectangular region.
+
+For RTL layouts: Y-coordinate of the lower left corner of the rectangular region.
 
 Unit: px.
 
-Value range: [0, Component height].
+Value range: [0, Component height]. If the value is out of range, the snapshot fails and error code 401 is returned.
 
 **Type:** number
 
@@ -62,7 +64,7 @@ For RTL layouts: X-coordinate of the lower left corner of the rectangular region
 
 Unit: px.
 
-Value range: [0, Component width].
+Value range: [0, Component width]. If the value is out of range, the snapshot fails and error code 401 is returned.
 
 **Type:** number
 
@@ -88,7 +90,7 @@ For RTL layouts: X-coordinate of the upper right corner of the rectangular regio
 
 Unit: px.
 
-Value range: [0, Component width].
+Value range: [0, Component width]. If the value is out of range, the snapshot fails and error code 401 is returned.
 
 **Type:** number
 
@@ -114,7 +116,7 @@ For RTL layouts: Y-coordinate of the upper right corner of the rectangular regio
 
 Unit: px.
 
-Value range: [0, Component height].
+Value range: [0, Component height]. If the value is out of range, the snapshot fails and error code 401 is returned.
 
 **Type:** number
 

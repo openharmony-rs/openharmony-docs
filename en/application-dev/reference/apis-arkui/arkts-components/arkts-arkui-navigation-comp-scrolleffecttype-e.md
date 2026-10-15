@@ -4,7 +4,7 @@
 declare enum ScrollEffectType
 ```
 
-Enumerates the scroll effect types.
+Provides the scroll blur effect type of the title bar.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Enumerates the scroll effect types.
 COMMON_BLUR = 0
 ```
 
-Common blur style. It applies uniform blur to the background. The blurred background appear/disappear with transparent gradient.
+Common blur style, which evenly blurs the background. The blurred background is displayed or hidden with the transparency gradient.
 
 **Since:** 26.0.0
 
@@ -36,7 +36,7 @@ Common blur style. It applies uniform blur to the background. The blurred backgr
 GRADUAL_BLUR = 1
 ```
 
-Gradual blur style. It applies uniform blur to the title background with clear boundaries. The title bar content changes color/state before and after scrolling. During scrolling, it changes linearly following the gesture.
+Gradual blur style, which evenly blurs the title background with clear boundaries. The color or status of the title bar content is switched before and after scrolling, and changes linearly with the gesture during scrolling.
 
 **Since:** 26.0.0
 

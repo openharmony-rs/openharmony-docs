@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="removestoragefromcache1"></a>
+
 ## removeStorageFromCache
 
 ```TypeScript
@@ -29,7 +31,7 @@ function removeStorageFromCache(path: string, callback: AsyncCallback<void>): vo
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。 |
 
 
-<a id="removestoragefromcache-1"></a>
+<a id="removestoragefromcache2"></a>
 
 ## removeStorageFromCache
 

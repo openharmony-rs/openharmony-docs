@@ -12,20 +12,6 @@ export declare enum ActionType
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## CANCEL
-
-```TypeScript
-CANCEL = 0
-```
-
-手势取消。
-
-**起始版本：** 10
-
-<!--Device-ActionType-CANCEL = 0--><!--Device-ActionType-CANCEL = 0-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
 ## BEGIN
 
 ```TypeScript
@@ -40,17 +26,17 @@ BEGIN = 1
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
-## UPDATE
+## CANCEL
 
 ```TypeScript
-UPDATE = 2
+CANCEL = 0
 ```
 
-手势更新。
+手势取消。
 
 **起始版本：** 10
 
-<!--Device-ActionType-UPDATE = 2--><!--Device-ActionType-UPDATE = 2-End-->
+<!--Device-ActionType-CANCEL = 0--><!--Device-ActionType-CANCEL = 0-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
@@ -65,5 +51,19 @@ END = 3
 **起始版本：** 10
 
 <!--Device-ActionType-END = 3--><!--Device-ActionType-END = 3-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## UPDATE
+
+```TypeScript
+UPDATE = 2
+```
+
+手势更新。
+
+**起始版本：** 10
+
+<!--Device-ActionType-UPDATE = 2--><!--Device-ActionType-UPDATE = 2-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core

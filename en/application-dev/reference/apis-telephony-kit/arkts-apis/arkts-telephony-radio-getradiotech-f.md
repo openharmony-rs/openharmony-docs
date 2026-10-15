@@ -6,6 +6,8 @@
 import { radio } from '@kit.TelephonyKit';
 ```
 
+<a id="getradiotech1"></a>
+
 ## getRadioTech
 
 ```TypeScript
@@ -36,7 +38,7 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |
@@ -69,7 +71,7 @@ radio.getRadioTech(slotId).then((data: radio.NetworkRadioTech) => {
 ```
 
 
-<a id="getradiotech-1"></a>
+<a id="getradiotech2"></a>
 
 ## getRadioTech
 
@@ -100,14 +102,14 @@ Obtains the RAT used in the CS and PS domains for the SIM card in the specified 
 | Type | Description |
 | --- | --- |
 | Promise&lt;{psRadioTech: RadioTechnology, csRadioTech: RadioTechnology}&gt; | Promise used to return the result. The CS domain refers to the Circuit Switched domain, and the PS domain refers to the Packet Switched domain.<br>**Since:** 6 - 10 |
-| Promise&lt;[NetworkRadioTech](arkts-telephony-radio-networkradiotech-i.md)&gt; | Returns the RAT of PS domain and CS domain of registered network. The values of RAT are as follows: &lt;ul&gt; &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_UNKNOWN` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_GSM` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_1XRTT` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_WCDMA` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_HSPA` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_HSPAP` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_TD_SCDMA` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_EVDO` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_EHRPD` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_LTE` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_LTE_CA` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_IWLAN` &lt;li&gt;`RadioTechnology#RADIO_TECHNOLOGY_NR` &lt;/ul&gt;<br>**Since:** 11 |
+| Promise&lt;[NetworkRadioTech](arkts-telephony-radio-networkradiotech-i.md)&gt; | Returns the RAT of PS domain and CS domain of registered network. The values of RAT are as follows: <ul> <li>`RadioTechnology#RADIO_TECHNOLOGY_UNKNOWN` <li>`RadioTechnology#RADIO_TECHNOLOGY_GSM` <li>`RadioTechnology#RADIO_TECHNOLOGY_1XRTT` <li>`RadioTechnology#RADIO_TECHNOLOGY_WCDMA` <li>`RadioTechnology#RADIO_TECHNOLOGY_HSPA` <li>`RadioTechnology#RADIO_TECHNOLOGY_HSPAP` <li>`RadioTechnology#RADIO_TECHNOLOGY_TD_SCDMA` <li>`RadioTechnology#RADIO_TECHNOLOGY_EVDO` <li>`RadioTechnology#RADIO_TECHNOLOGY_EHRPD` <li>`RadioTechnology#RADIO_TECHNOLOGY_LTE` <li>`RadioTechnology#RADIO_TECHNOLOGY_LTE_CA` <li>`RadioTechnology#RADIO_TECHNOLOGY_IWLAN` <li>`RadioTechnology#RADIO_TECHNOLOGY_NR` </ul><br>**Since:** 11 |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission denied. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [8300001](../errorcode-telephony.md#8300001-input-parameter-value-out-of-range) | Invalid parameter value. |
 | [8300002](../errorcode-telephony.md#8300002-service-connection-error) | Service connection failed. |
 | [8300003](../errorcode-telephony.md#8300003-system-internal-error) | System internal error. |

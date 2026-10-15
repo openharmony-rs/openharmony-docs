@@ -39,7 +39,7 @@ Constructor of ReactiveComponentContent.
 | uiContext | [UIContext](arkts-arkui-arkui-uicontext-uicontext-c.md) | Yes | UI context required for creating a node. |
 | builder | WrappedBuilder&lt;T&gt; | Yes | **WrappedBuilder** object that encapsulates a builder function with parameters. |
 | config | [BuildOptions](arkts-arkui-buildernode-buildoptions-i.md) | Yes | Build options, used to configure the build behavior of **@Builder**. All attributes in **BuildOptions** are optional. |
-| args | T | Yes | Arguments of the builder function encapsulated by the **WrappedBuilder** object, used to transfer external data to the builder function of **WrappedBuilder&lt;T&gt;** specified in the constructor. The type **T** must be consistent with the parameter type specified in **WrappedBuilder&lt;T&gt;**. Multiple input parameters are supported. The default value is an empty array **[]** when no parameter is passed. |
+| args | T | Yes | Arguments of the builder function encapsulated by the **WrappedBuilder** object, used to transfer external data to the builder function of **WrappedBuilder<T>** specified in the constructor. The type **T** must be consistent with the parameter type specified in **WrappedBuilder<T>**. Multiple input parameters are supported. The default value is an empty array **[]** when no parameter is passed. |
 
 **Examples**
 

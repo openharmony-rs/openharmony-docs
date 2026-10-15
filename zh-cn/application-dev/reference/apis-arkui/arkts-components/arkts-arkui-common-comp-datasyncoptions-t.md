@@ -6,6 +6,8 @@ declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').de
 
 作为startDataLoading的入参对象。
 
+**类型：** import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams
+
 **起始版本：** 15
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').de
 <!--Device-unnamed-declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams--><!--Device-unnamed-declare type DataSyncOptions = import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.data.unifiedDataChannel').default.GetDataParams

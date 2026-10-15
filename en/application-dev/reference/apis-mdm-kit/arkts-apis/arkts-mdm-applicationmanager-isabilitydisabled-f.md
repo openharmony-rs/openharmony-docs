@@ -6,6 +6,8 @@
 import { applicationManager } from '@kit.MDMKit';
 ```
 
+<a id="isabilitydisabled1"></a>
+
 ## isAbilityDisabled
 
 ```TypeScript
@@ -73,7 +75,7 @@ try {
 ```
 
 
-<a id="isabilitydisabled-1"></a>
+<a id="isabilitydisabled2"></a>
 
 ## isAbilityDisabled
 

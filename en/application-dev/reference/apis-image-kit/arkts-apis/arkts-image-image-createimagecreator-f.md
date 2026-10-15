@@ -6,6 +6,8 @@
 import { image } from '@kit.ImageKit';
 ```
 
+<a id="createimagecreator1"></a>
+
 ## createImageCreator
 
 ```TypeScript
@@ -46,7 +48,7 @@ let creator: image.ImageCreator = image.createImageCreator(8192, 8192, image.Ima
 ```
 
 
-<a id="createimagecreator-1"></a>
+<a id="createimagecreator2"></a>
 
 ## createImageCreator
 

@@ -12,19 +12,19 @@ enum WebDownloadState
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## IN_PROGRESS
+## CANCELED
 
 ```TypeScript
-IN_PROGRESS = 0
+CANCELED = 2
 ```
 
-下载任务正在进行中。
+下载任务已经被取消。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-WebDownloadState-IN_PROGRESS = 0--><!--Device-WebDownloadState-IN_PROGRESS = 0-End-->
+<!--Device-WebDownloadState-CANCELED = 2--><!--Device-WebDownloadState-CANCELED = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,19 +44,19 @@ COMPLETED = 1
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## CANCELED
+## IN_PROGRESS
 
 ```TypeScript
-CANCELED = 2
+IN_PROGRESS = 0
 ```
 
-下载任务已经被取消。
+下载任务正在进行中。
 
 **起始版本：** 11
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-WebDownloadState-CANCELED = 2--><!--Device-WebDownloadState-CANCELED = 2-End-->
+<!--Device-WebDownloadState-IN_PROGRESS = 0--><!--Device-WebDownloadState-IN_PROGRESS = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -76,22 +76,6 @@ INTERRUPTED = 3
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## PENDING
-
-```TypeScript
-PENDING = 4
-```
-
-下载任务等待开始。
-
-**起始版本：** 11
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-WebDownloadState-PENDING = 4--><!--Device-WebDownloadState-PENDING = 4-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## PAUSED
 
 ```TypeScript
@@ -105,6 +89,22 @@ PAUSED = 5
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-WebDownloadState-PAUSED = 5--><!--Device-WebDownloadState-PAUSED = 5-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## PENDING
+
+```TypeScript
+PENDING = 4
+```
+
+下载任务等待开始。
+
+**起始版本：** 11
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-WebDownloadState-PENDING = 4--><!--Device-WebDownloadState-PENDING = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

@@ -42,6 +42,7 @@ function getAppPowerPercent(uid: number): number
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
     console.error(`Failed to get battery statistics percent of app. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

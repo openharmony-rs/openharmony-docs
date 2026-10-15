@@ -4,7 +4,7 @@
 export enum ApplicationReservedFlag
 ```
 
-该ApplicationReservedFlag值的每一位标识相关信息。
+应用分身偏好设置的模式。
 
 **起始版本：** 26.0.1
 

@@ -14,55 +14,91 @@ Enumerates the reasons for component content changes.
 
 **System API:** This is a system API.
 
-## UNKNOWN
+## ACCESSIBILITY
 
 ```TypeScript
-UNKNOWN = 0
+ACCESSIBILITY = 10
 ```
 
-Unknown reason.
+Accessibility API.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TextChangeReason-UNKNOWN = 0--><!--Device-TextChangeReason-UNKNOWN = 0-End-->
+<!--Device-TextChangeReason-ACCESSIBILITY = 10--><!--Device-TextChangeReason-ACCESSIBILITY = 10-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
 
-## INPUT
+## AI_WRITE
 
 ```TypeScript
-INPUT = 1
+AI_WRITE = 6
 ```
 
-User input.
+AI-assisted writing.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TextChangeReason-INPUT = 1--><!--Device-TextChangeReason-INPUT = 1-End-->
+<!--Device-TextChangeReason-AI_WRITE = 6--><!--Device-TextChangeReason-AI_WRITE = 6-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
 
-## PASTE
+## AUTO_FILL
 
 ```TypeScript
-PASTE = 2
+AUTO_FILL = 5
 ```
 
-Paste operation.
+Auto-fill operation.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TextChangeReason-PASTE = 2--><!--Device-TextChangeReason-PASTE = 2-End-->
+<!--Device-TextChangeReason-AUTO_FILL = 5--><!--Device-TextChangeReason-AUTO_FILL = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## COLLABORATION
+
+```TypeScript
+COLLABORATION = 11
+```
+
+Cross-device photographing.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-COLLABORATION = 11--><!--Device-TextChangeReason-COLLABORATION = 11-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
+## CONTROLLER
+
+```TypeScript
+CONTROLLER = 9
+```
+
+Component API call.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-CONTROLLER = 9--><!--Device-TextChangeReason-CONTROLLER = 9-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -104,37 +140,37 @@ Drag and drop operation.
 
 **System API:** This is a system API.
 
-## AUTO_FILL
+## INPUT
 
 ```TypeScript
-AUTO_FILL = 5
+INPUT = 1
 ```
 
-Auto-fill operation.
+User input.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TextChangeReason-AUTO_FILL = 5--><!--Device-TextChangeReason-AUTO_FILL = 5-End-->
+<!--Device-TextChangeReason-INPUT = 1--><!--Device-TextChangeReason-INPUT = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
 **System API:** This is a system API.
 
-## AI_WRITE
+## PASTE
 
 ```TypeScript
-AI_WRITE = 6
+PASTE = 2
 ```
 
-AI-assisted writing.
+Paste operation.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TextChangeReason-AI_WRITE = 6--><!--Device-TextChangeReason-AI_WRITE = 6-End-->
+<!--Device-TextChangeReason-PASTE = 2--><!--Device-TextChangeReason-PASTE = 2-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -158,6 +194,24 @@ Redo operation.
 
 **System API:** This is a system API.
 
+## STYLUS
+
+```TypeScript
+STYLUS = 12
+```
+
+Stylus input.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TextChangeReason-STYLUS = 12--><!--Device-TextChangeReason-STYLUS = 12-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**System API:** This is a system API.
+
 ## UNDO
 
 ```TypeScript
@@ -176,73 +230,19 @@ Undo operation.
 
 **System API:** This is a system API.
 
-## CONTROLLER
+## UNKNOWN
 
 ```TypeScript
-CONTROLLER = 9
+UNKNOWN = 0
 ```
 
-Component API call.
+Unknown reason.
 
 **Since:** 20
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TextChangeReason-CONTROLLER = 9--><!--Device-TextChangeReason-CONTROLLER = 9-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## ACCESSIBILITY
-
-```TypeScript
-ACCESSIBILITY = 10
-```
-
-Accessibility API.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TextChangeReason-ACCESSIBILITY = 10--><!--Device-TextChangeReason-ACCESSIBILITY = 10-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## COLLABORATION
-
-```TypeScript
-COLLABORATION = 11
-```
-
-Cross-device photographing.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TextChangeReason-COLLABORATION = 11--><!--Device-TextChangeReason-COLLABORATION = 11-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**System API:** This is a system API.
-
-## STYLUS
-
-```TypeScript
-STYLUS = 12
-```
-
-Stylus input.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TextChangeReason-STYLUS = 12--><!--Device-TextChangeReason-STYLUS = 12-End-->
+<!--Device-TextChangeReason-UNKNOWN = 0--><!--Device-TextChangeReason-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 

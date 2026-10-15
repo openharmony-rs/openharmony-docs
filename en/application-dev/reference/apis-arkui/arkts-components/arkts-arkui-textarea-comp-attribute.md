@@ -26,7 +26,7 @@ In addition to the [universal attributes](arkts-arkui-common-comp.md), the follo
 > the text width. When adapting, the component width is limited by the constraintSize attribute and the maximum and
 > minimum widths passed by the parent container. For other usage, see [Sizing](arkts-arkui-common-comp.md).
 
-**Inheritance/Implementation:** TextAreaAttribute extends CommonMethod<TextAreaAttribute>
+**Inheritance/Implementation:** TextAreaAttribute extends CommonMethod&lt;TextAreaAttribute&gt;
 
 **Since:** 7
 
@@ -317,9 +317,9 @@ When [disableMenuItems](../arkts-apis/arkts-arkui-arkui-uicontext-textmenucontro
 ellipsisMode(mode: Optional<EllipsisMode>)
 ```
 
-Sets the ellipsis position. The ellipsisMode attribute must be used together with [textOverflow](#textoverflow) set to TextOverflow.Ellipsis and [maxLines](#maxlines). Setting the ellipsisMode attribute alone does not take effect. If this API is not called, the default ellipsis position is EllipsisMode.END.
+Sets the ellipsis position. The ellipsisMode attribute must be used together with [textOverflow](#textoverflow) set to TextOverflow.Ellipsis and [maxLines](#maxlines1). Setting the ellipsisMode attribute alone does not take effect. If this API is not called, the default ellipsis position is EllipsisMode.END.
 
-EllipsisMode.START and EllipsisMode.CENTER take effect only when [maxLines](#maxlines) is set to 1.
+EllipsisMode.START and EllipsisMode.CENTER take effect only when [maxLines](#maxlines1) is set to 1.
 
 **Since:** 18
 
@@ -335,7 +335,7 @@ EllipsisMode.START and EllipsisMode.CENTER take effect only when [maxLines](#max
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | Yes | Ellipsis position. It must be used together with [textOverflow](#textoverflow) set to TextOverflow.Ellipsis and [maxLines](#maxlines). Setting it alone does not take effect. <br>EllipsisMode.START and EllipsisMode.CENTER take effect only when maxLines is set to 1. |
+| mode | [Optional](arkts-arkui-common-comp-optional-t.md)&lt;[EllipsisMode](../arkts-apis/arkts-arkui-ellipsismode-e.md)&gt; | Yes | Ellipsis position. It must be used together with [textOverflow](#textoverflow) set to TextOverflow.Ellipsis and [maxLines](#maxlines1). Setting it alone does not take effect. <br>EllipsisMode.START and EllipsisMode.CENTER take effect only when maxLines is set to 1. |
 
 ## enableAutoFill
 
@@ -607,11 +607,11 @@ fontFeature(value: string)
 
 Sets the font feature, such as monospaced digits.
 
-The format is: normal \| \&lt;feature-tag-value\&gt;
+The format is: normal \| \<feature-tag-value\>
 
-The format of \&lt;feature-tag-value\&gt; is: \&lt;string\&gt; \[ \&lt;integer\&gt; \| on \| off ]
+The format of \<feature-tag-value\> is: \<string\> \[ \<integer\> \| on \| off ]
 
-There can be multiple \&lt;feature-tag-value\&gt;, separated by commas (,).
+There can be multiple \<feature-tag-value\>, separated by commas (,).
 
 For example, the input format for monospaced digits is: "ss01" on.
 
@@ -629,7 +629,7 @@ For example, the input format for monospaced digits is: "ss01" on.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | Yes | Font feature, used to set the special display effect of text, such as monospaced digits. The format is: normal &#124; &lt;feature-tag-value&gt;. |
+| value | string | Yes | Font feature, used to set the special display effect of text, such as monospaced digits. The format is: normal &#124;<feature-tag-value>. |
 
 ## fontSize
 
@@ -729,7 +729,7 @@ heightAdaptivePolicy(value: TextHeightAdaptivePolicy)
 
 Sets how the text height is adapted. If this API is not called, the text height is adapted by default in the manner of TextHeightAdaptivePolicy.MAX_LINES_FIRST.
 
-When this parameter is set to TextHeightAdaptivePolicy.MAX_LINES_FIRST, the [maxLines](#maxlines) attribute is preferentially used to adjust the text height. If the layout size obtained by using the maxLines attribute exceeds the layout constraint, the font size is reduced within the range of [minFontSize](#minfontsize) and [maxFontSize](#maxfontsize) to display more text.
+When this parameter is set to TextHeightAdaptivePolicy.MAX_LINES_FIRST, the [maxLines](#maxlines1) attribute is preferentially used to adjust the text height. If the layout size obtained by using the maxLines attribute exceeds the layout constraint, the font size is reduced within the range of [minFontSize](#minfontsize) and [maxFontSize](#maxfontsize) to display more text.
 
 When the component is set to the inline input style, the font size in the editing state may differ from that in the non-editing state.
 
@@ -934,6 +934,8 @@ Sets the line height of the text. If the value is not greater than 0, the line h
 | --- | --- | --- | --- |
 | value | number &#124; string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Line height of the text. A [pixel unit](arkts-arkui-common-comp.md) must be explicitly specified, for example, '10px'. A percentage string can also be set, for example, '100%'. <br>**Note:** If no pixel unit is specified, the default unit fp is used. For example, '10' is equivalent to 10. |
 
+<a id="linespacing1"></a>
+
 ## lineSpacing
 
 ```TypeScript
@@ -958,7 +960,7 @@ Sets the line spacing of the text. If the value is not greater than 0, the defau
 | --- | --- | --- | --- |
 | value | LengthMetrics | Yes | Line spacing of the text. |
 
-<a id="linespacing-1"></a>
+<a id="linespacing2"></a>
 
 ## lineSpacing
 
@@ -1017,7 +1019,7 @@ maxFontSize(value: number | string | Resource)
 
 Sets the maximum font size for text display. The string type supports the string form of the value that the number type accepts, and can carry a unit, for example, "10" or "10fp".
 
-It must be used together with [minFontSize](#minfontsize) and [maxLines](#maxlines) or a layout size limit. Setting it alone does not take effect.
+It must be used together with [minFontSize](#minfontsize) and [maxLines](#maxlines1) or a layout size limit. Setting it alone does not take effect.
 
 When adaptive font size takes effect, the fontSize setting does not take effect.
 
@@ -1063,6 +1065,8 @@ Sets the maximum number of characters that can be entered. When the maximum numb
 | --- | --- | --- | --- |
 | value | number | Yes | Maximum number of characters that can be entered.<br>Value range: [0, UINT32_MAX]. If value is less than 0, no limit is set. |
 
+<a id="maxlines1"></a>
+
 ## maxLines
 
 ```TypeScript
@@ -1101,7 +1105,7 @@ Sets the maximum number of lines that can be displayed for the text. You can opt
 | --- | --- | --- | --- |
 | value | number | Yes | Maximum number of lines that can be displayed for the text in the inline input style editing state.<br>When textOverflow is configured, the excess part is truncated. When textOverflow is not configured, the text can be scrolled for display in the focused state in inline mode, and this parameter does not take effect in the unfocused state. In non-inline mode, the text is truncated by line. <br>Value range: (0, UINT32_MAX]. If 0 or a negative number is passed in, the default value is used. |
 
-<a id="maxlines-1"></a>
+<a id="maxlines2"></a>
 
 ## maxLines
 
@@ -1174,7 +1178,7 @@ minFontSize(value: number | string | Resource)
 
 Sets the minimum font size for the text. The string type supports the string form of the value of the number type, and can carry a unit, for example, "10" or "10fp".
 
-This attribute must be used together with [maxFontSize](#maxfontsize) and [maxLines](#maxlines) or a layout size limit. Setting it alone does not take effect.
+This attribute must be used together with [maxFontSize](#maxfontsize) and [maxLines](#maxlines1) or a layout size limit. Setting it alone does not take effect.
 
 When the adaptive font size takes effect, the fontSize setting does not take effect.
 
@@ -1458,6 +1462,8 @@ Triggered when a paste operation is performed.
 | --- | --- | --- | --- |
 | callback | (value: string, event: PasteEvent) =&gt; void | Yes | Called when using the Clipboard menu. |
 
+<a id="onsubmit1"></a>
+
 ## onSubmit
 
 ```TypeScript
@@ -1482,7 +1488,7 @@ Triggered when the Enter key on the soft keyboard is pressed.
 | --- | --- | --- | --- |
 | callback | (enterKey: EnterKeyType) =&gt; void | Yes | callback of the listened event. |
 
-<a id="onsubmit-1"></a>
+<a id="onsubmit2"></a>
 
 ## onSubmit
 
@@ -2124,7 +2130,7 @@ Sets the horizontal alignment of the text in the input box. If this API is not c
 
 TextAlign.Start, TextAlign.Center, and TextAlign.End are supported. Since API version 11, TextAlign.JUSTIFY is also supported.
 
-The [align](arkts-arkui-common-comp-commonmethod-c.md#align) attribute can be used to control the vertical position of the text paragraph. In this component, the align attribute cannot be used to control the horizontal position of the text paragraph.
+The [align](arkts-arkui-common-comp-commonmethod-c.md#align1) attribute can be used to control the vertical position of the text paragraph. In this component, the align attribute cannot be used to control the horizontal position of the text paragraph.
 
 - Alignment.TopStart, Alignment.Top, and Alignment.TopEnd: the content is aligned to the top.  
 - Alignment.Start, Alignment.Center, and Alignment.End: the content is vertically centered.  
@@ -2202,11 +2208,11 @@ textOverflow(value: TextOverflow)
 
 Sets how the text is displayed when it is too long. If this API is not called, the default display mode for overlong text is TextOverflow.Clip.
 
-In inline mode, the truncation effect of [maxLines](#maxlines) takes effect only when textOverflow is actively configured. If it is not configured, the text is not truncated by default.
+In inline mode, the truncation effect of [maxLines](#maxlines1) takes effect only when textOverflow is actively configured. If it is not configured, the text is not truncated by default.
 
 Text is truncated by character. For example, English text is truncated by word as the minimum unit. To truncate by letter, set wordBreak to WordBreak.BREAK_ALL.
 
-When textOverflow is set to TextOverflow.None, TextOverflow.Clip, or TextOverflow.Ellipsis, it must be used together with [maxLines](#maxlines); setting it alone does not take effect. Setting TextOverflow.None has the same effect as TextOverflow.Clip.
+When textOverflow is set to TextOverflow.None, TextOverflow.Clip, or TextOverflow.Ellipsis, it must be used together with [maxLines](#maxlines1); setting it alone does not take effect. Setting TextOverflow.None has the same effect as TextOverflow.Clip.
 
 > **NOTE:** 
 > 

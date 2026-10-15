@@ -72,6 +72,8 @@ onWillShow(event: VoidCallback)
 | --- | --- | --- | --- |
 | event | [VoidCallback](../arkts-apis/arkts-arkui-voidcallback-t.md) | 是 | TabContent将要显示的回调函数。 |
 
+<a id="tabbar1"></a>
+
 ## tabBar
 
 ```TypeScript
@@ -96,7 +98,7 @@ tabBar(options: string | Resource | CustomBuilder | TabBarOptions)
 | --- | --- | --- | --- |
 | options | string &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) &#124; [CustomBuilder](arkts-arkui-common-comp-custombuilder-t.md) &#124; [TabBarOptions](arkts-arkui-tabcontent-comp-tabbaroptions-i.md) | 是 | TabBar上显示内容。<br>CustomBuilder：?构造器，内部可以传入组件（API version 8版本以上适用）。<br>**适用版本：** 18 |
 
-<a id="tabbar-1"></a>
+<a id="tabbar2"></a>
 
 ## tabBar
 
@@ -130,7 +132,7 @@ tabBar(value: SubTabBarStyle | BottomTabBarStyle)
 | --- | --- | --- | --- |
 | value | [SubTabBarStyle](arkts-arkui-tabcontent-comp-subtabbarstyle-c.md) &#124; [BottomTabBarStyle](arkts-arkui-tabcontent-comp-bottomtabbarstyle-c.md) | 是 | TabBar上显示的内容，支持子页签样式或底部页签样式。<br>SubTabBarStyle：?子页签样式。<br> BottomTabBarStyle：?底部页签和侧边页签样式，底部样式没有下划线效果。 |
 
-<a id="tabbar-2"></a>
+<a id="tabbar3"></a>
 
 ## tabBar
 

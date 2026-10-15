@@ -30,22 +30,6 @@ CALL_MODE_AUDIO_ONLY = 0
 
 **系统接口：** 此接口为系统接口。
 
-## CALL_MODE_SEND_ONLY
-
-```TypeScript
-CALL_MODE_SEND_ONLY = 1
-```
-
-仅发送呼叫。
-
-**起始版本：** 8
-
-<!--Device-ImsCallMode-CALL_MODE_SEND_ONLY = 1--><!--Device-ImsCallMode-CALL_MODE_SEND_ONLY = 1-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
 ## CALL_MODE_RECEIVE_ONLY
 
 ```TypeScript
@@ -57,6 +41,22 @@ CALL_MODE_RECEIVE_ONLY = 2
 **起始版本：** 8
 
 <!--Device-ImsCallMode-CALL_MODE_RECEIVE_ONLY = 2--><!--Device-ImsCallMode-CALL_MODE_RECEIVE_ONLY = 2-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## CALL_MODE_SEND_ONLY
+
+```TypeScript
+CALL_MODE_SEND_ONLY = 1
+```
+
+仅发送呼叫。
+
+**起始版本：** 8
+
+<!--Device-ImsCallMode-CALL_MODE_SEND_ONLY = 1--><!--Device-ImsCallMode-CALL_MODE_SEND_ONLY = 1-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

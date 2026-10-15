@@ -42,11 +42,14 @@ constructor()
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
 ```
+
+<!--DelEnd-->
 
 ## registerInputer
 
@@ -83,6 +86,7 @@ registerInputer(inputer: IInputer): void
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid inputer. |
 | [12300103](../errorcode-account.md#12300103-凭据输入器已注册) | The credential inputer already exists. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -102,6 +106,8 @@ try {
   console.error(`registerInputer exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## unregisterInputer
 
@@ -128,9 +134,12 @@ unregisterInputer(): void
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let pinAuth: osAccount.PINAuth = new osAccount.PINAuth();
 pinAuth.unregisterInputer();
 ```
+
+<!--DelEnd-->

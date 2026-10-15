@@ -6,6 +6,8 @@
 import { screenLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="lock1"></a>
+
 ## lock
 
 ```TypeScript
@@ -39,6 +41,7 @@ Lock the screen.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 | [13200002](../errorcode-screenlock.md#13200002-screen-lock-management-service-is-abnormal) | the screenlock management service is abnormal. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,8 +56,10 @@ screenLock.lock((err: BusinessError, data: Boolean) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="lock-1"></a>
+
+<a id="lock2"></a>
 
 ## lock
 
@@ -88,6 +93,7 @@ Lock the screen.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 | [13200002](../errorcode-screenlock.md#13200002-screen-lock-management-service-is-abnormal) | the screenlock management service is abnormal. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -99,3 +105,5 @@ screenLock.lock().then((data: Boolean) => {
   console.error(`Failed to lock the screen, Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

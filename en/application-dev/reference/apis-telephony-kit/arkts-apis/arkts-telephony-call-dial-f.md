@@ -6,6 +6,8 @@
 import { call } from '@kit.TelephonyKit';
 ```
 
+<a id="dial1"></a>
+
 ## dial
 
 ```TypeScript
@@ -51,7 +53,7 @@ call.dial("138xxxxxxxx", dialOptions, (err: BusinessError, data: boolean) => {
 ```
 
 
-<a id="dial-1"></a>
+<a id="dial2"></a>
 
 ## dial
 
@@ -105,7 +107,7 @@ call.dial("138xxxxxxxx", dialOptions).then((data: boolean) => {
 ```
 
 
-<a id="dial-2"></a>
+<a id="dial3"></a>
 
 ## dial
 

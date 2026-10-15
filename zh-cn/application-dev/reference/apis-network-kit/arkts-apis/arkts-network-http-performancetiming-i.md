@@ -24,7 +24,7 @@ import { http } from '@kit.NetworkKit';
 dnsTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到DNS解析完成耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到DNS解析完成耗时。
 
 **类型：** number
 
@@ -40,7 +40,7 @@ dnsTiming: number
 firstReceiveTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到接收第一个字节的耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到接收第一个字节的耗时。
 
 **类型：** number
 
@@ -56,7 +56,7 @@ firstReceiveTiming: number
 firstSendTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到开始发送第一个字节的耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到开始发送第一个字节的耗时。
 
 **类型：** number
 
@@ -72,7 +72,7 @@ firstSendTiming: number
 redirectTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到完成所有重定向步骤的耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到完成所有重定向步骤的耗时。
 
 **类型：** number
 
@@ -88,7 +88,7 @@ redirectTiming: number
 responseBodyTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到body解析完成的耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到body解析完成的耗时。
 
 **类型：** number
 
@@ -104,7 +104,7 @@ responseBodyTiming: number
 responseHeaderTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到header解析完成的耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到header解析完成的耗时。
 
 **类型：** number
 
@@ -120,7 +120,7 @@ responseHeaderTiming: number
 tcpTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到TCP连接完成耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到TCP连接完成耗时。
 
 **类型：** number
 
@@ -136,7 +136,7 @@ tcpTiming: number
 tlsTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到TLS连接完成耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到TLS连接完成耗时。
 
 **类型：** number
 
@@ -152,7 +152,7 @@ tlsTiming: number
 totalFinishTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求到完成请求的耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求到完成请求的耗时。
 
 **类型：** number
 
@@ -168,7 +168,7 @@ totalFinishTiming: number
 totalTiming: number
 ```
 
-从[request](arkts-network-http-httprequest-i.md#request)请求回调到应用程序的耗时。
+从[request](arkts-network-http-httprequest-i.md#request1)请求回调到应用程序的耗时。
 
 **类型：** number
 

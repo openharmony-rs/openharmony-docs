@@ -48,7 +48,7 @@ Index of the file that is being processed in the task.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Progress-readonly index: int--><!--Device-Progress-readonly index: int-End-->
 
@@ -66,7 +66,7 @@ Size of processed data in the current file in the task, in bytes.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Progress-readonly processed: long--><!--Device-Progress-readonly processed: long-End-->
 
@@ -84,7 +84,7 @@ Size of a file in a task, in bytes. If the server uses the chunk mode for data t
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Progress-readonly sizes: Array<long>--><!--Device-Progress-readonly sizes: Array<long>-End-->
 
@@ -102,7 +102,7 @@ Current task status.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Progress-readonly state: State--><!--Device-Progress-readonly state: State-End-->
 

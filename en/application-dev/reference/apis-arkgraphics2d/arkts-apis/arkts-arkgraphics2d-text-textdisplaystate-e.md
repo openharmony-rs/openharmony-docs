@@ -12,24 +12,6 @@ Enumerates text display states. Native result after text typesetting, which is i
 
 **System capability:** SystemCapability.Graphics.Drawing
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = 0
-```
-
-Unknown display state, which is the default state.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
-
-<!--Device-TextDisplayState-UNKNOWN = 0--><!--Device-TextDisplayState-UNKNOWN = 0-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
 ## ALL
 
 ```TypeScript
@@ -42,7 +24,7 @@ Complete display state, in which the text is not truncated or omitted and all co
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-TextDisplayState-ALL = 1--><!--Device-TextDisplayState-ALL = 1-End-->
 
@@ -60,7 +42,7 @@ Cropping display state, in which the part of the text that exceeds the typesetti
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-TextDisplayState-CLIP = 2--><!--Device-TextDisplayState-CLIP = 2-End-->
 
@@ -78,8 +60,26 @@ Ellipsized display state, in which part of the content is replaced by specified 
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-TextDisplayState-OMITTED = 3--><!--Device-TextDisplayState-OMITTED = 3-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = 0
+```
+
+Unknown display state, which is the default state.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
+
+<!--Device-TextDisplayState-UNKNOWN = 0--><!--Device-TextDisplayState-UNKNOWN = 0-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

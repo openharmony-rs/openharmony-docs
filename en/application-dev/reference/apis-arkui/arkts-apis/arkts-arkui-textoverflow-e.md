@@ -12,24 +12,6 @@ Sets the display mode when the text is too long.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## None
-
-```TypeScript
-None
-```
-
-Overflowing content is clipped at the limit of the maximum line width.
-
-**Since:** 7
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 9.
-
-<!--Device-TextOverflow-None--><!--Device-TextOverflow-None-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Clip
 
 ```TypeScript
@@ -81,5 +63,23 @@ Text continuously scrolls when text overflow occurs.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-TextOverflow-MARQUEE--><!--Device-TextOverflow-MARQUEE-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## None
+
+```TypeScript
+None
+```
+
+Overflowing content is clipped at the limit of the maximum line width.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 9.
+
+<!--Device-TextOverflow-None--><!--Device-TextOverflow-None-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

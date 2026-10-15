@@ -6,10 +6,10 @@ export type NotificationContent = _NotificationContent
 
 通知内容。
 
+**类型：** _NotificationContent
+
 **起始版本：** 9
 
 <!--Device-notificationManager-export type NotificationContent = _NotificationContent--><!--Device-notificationManager-export type NotificationContent = _NotificationContent-End-->
 
 **系统能力：** SystemCapability.Notification.Notification
-
-**类型：** _NotificationContent

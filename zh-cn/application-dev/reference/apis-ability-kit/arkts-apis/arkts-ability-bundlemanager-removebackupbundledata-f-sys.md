@@ -48,6 +48,7 @@ function removeBackupBundleData(bundleName: string, userId: number, appIndex: nu
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -71,3 +72,5 @@ try {
   hilog.error(0x0000, 'testTag', 'removeBackupBundleData failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

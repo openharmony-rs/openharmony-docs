@@ -48,6 +48,7 @@ Queries the senior mode state of an app. This API uses a promise to return the r
 | [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality. |
 | [9300008](../errorcode-accessibility.md#9300008-app-clone-index-invalid) | The appIndex is invalid. Possible causes:<br>1.The appIndex is out of the valid range. <br>2.The application corresponding to the appIndex does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,3 +61,5 @@ config.getSeniorModeStateForApp('com.example.myapplication', 0).then((data: bool
   console.error(`Failed to get seniorModeState for app. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

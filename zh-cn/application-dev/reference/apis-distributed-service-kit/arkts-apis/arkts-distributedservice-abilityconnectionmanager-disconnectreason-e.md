@@ -12,6 +12,22 @@ enum DisconnectReason
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration
 
+## NETWORK_DISCONNECTED
+
+```TypeScript
+NETWORK_DISCONNECTED = 2
+```
+
+表示网络断开。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DisconnectReason-NETWORK_DISCONNECTED = 2--><!--Device-DisconnectReason-NETWORK_DISCONNECTED = 2-End-->
+
+**系统能力：** SystemCapability.DistributedSched.AppCollaboration
+
 ## PEER_APP_CLOSE_COLLABORATION
 
 ```TypeScript
@@ -41,21 +57,5 @@ PEER_APP_EXIT = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-DisconnectReason-PEER_APP_EXIT = 1--><!--Device-DisconnectReason-PEER_APP_EXIT = 1-End-->
-
-**系统能力：** SystemCapability.DistributedSched.AppCollaboration
-
-## NETWORK_DISCONNECTED
-
-```TypeScript
-NETWORK_DISCONNECTED = 2
-```
-
-表示网络断开。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DisconnectReason-NETWORK_DISCONNECTED = 2--><!--Device-DisconnectReason-NETWORK_DISCONNECTED = 2-End-->
 
 **系统能力：** SystemCapability.DistributedSched.AppCollaboration

@@ -52,6 +52,7 @@ forceVolumeKeyControlType(volumeType: AudioVolumeType, duration: number): void
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -70,6 +71,8 @@ let volumeTypeDefault = audio.AudioVolumeType.MEDIA;
 let durationToCancel = -1;
 audioVolumeManager.forceVolumeKeyControlType(volumeTypeDefault, durationToCancel);
 ```
+
+<!--DelEnd-->
 
 ## getActiveStreamsVolumeInfo
 
@@ -140,6 +143,7 @@ getAppVolumePercentageForUid(uid: number): Promise<number>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -149,6 +153,8 @@ audioVolumeManager.getAppVolumePercentageForUid(20010041).then((value: number) =
   console.info(`app volume is ${value}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getAudioVolumeTypeByStreamUsage
 
@@ -290,6 +296,7 @@ getMinSystemVolumePercentage(volumeType: AudioVolumeType): number
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -301,6 +308,8 @@ try {
   console.error(`Failed to obtain the volume percentage, error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getStreamUsagesByVolumeType
 
@@ -472,6 +481,7 @@ getSystemVolumePercentage(volumeType: AudioVolumeType): number
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -483,6 +493,10 @@ try {
   console.error(`Failed to obtain the volume percentage, error: ${error}`);
 }
 ```
+
+<!--DelEnd-->
+
+<a id="getvolumegroupinfos1"></a>
 
 ## getVolumeGroupInfos
 
@@ -507,6 +521,7 @@ getVolumeGroupInfos(networkId: string, callback: AsyncCallback<VolumeGroupInfos>
 | networkId | string | 是 | 设备的网络id。本地设备audio.LOCAL_NETWORK_ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md)&gt; | 是 | 回调函数。当获取音量组信息列表成功，err为undefined，data为获取到的音量组信息列表；否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -521,7 +536,9 @@ audioVolumeManager.getVolumeGroupInfos(audio.LOCAL_NETWORK_ID, (err: BusinessErr
 });
 ```
 
-<a id="getvolumegroupinfos-1"></a>
+<!--DelEnd-->
+
+<a id="getvolumegroupinfos2"></a>
 
 ## getVolumeGroupInfos
 
@@ -551,6 +568,7 @@ getVolumeGroupInfos(networkId: string): Promise<VolumeGroupInfos>
 | --- | --- |
 | Promise&lt;[VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md)&gt; | Promise对象，返回音量组信息列表。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -559,6 +577,8 @@ async function getVolumeGroupInfos(){
   console.info('Promise returned to indicate that the volumeGroup list is obtained.'+JSON.stringify(volumegroupinfos))
 }
 ```
+
+<!--DelEnd-->
 
 ## getVolumeGroupInfosSync
 
@@ -595,6 +615,7 @@ getVolumeGroupInfosSync(networkId: string): VolumeGroupInfos
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -608,6 +629,8 @@ try {
   console.error(`Failed to obtain the volumeGroup list ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## getVolumeInUnitOfDb
 
@@ -689,6 +712,7 @@ isAppVolumeMutedForUid(uid: number, owned: boolean): Promise<boolean>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -698,6 +722,8 @@ audioVolumeManager.isAppVolumeMutedForUid(uid, true).then((value: boolean) => {
   console.info(`app muted state is ${value}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## isSystemMuted
 
@@ -767,6 +793,7 @@ off(type: 'appVolumeChangeForUid', callback?: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -784,6 +811,8 @@ audioVolumeManager.on('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 
 audioVolumeManager.off('appVolumeChangeForUid', appVolumeChangeForUidCallback);
 ```
+
+<!--DelEnd-->
 
 ## off('activeVolumeTypeChange')
 
@@ -815,6 +844,7 @@ off(type: 'activeVolumeTypeChange', callback?: Callback<AudioVolumeType>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -830,6 +860,8 @@ audioVolumeManager.on('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 
 audioVolumeManager.off('activeVolumeTypeChange', activeVolumeTypeChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## off('systemVolumeChange')
 
@@ -861,6 +893,7 @@ off(type: 'systemVolumeChange', callback?: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -876,6 +909,8 @@ audioVolumeManager.on('systemVolumeChange', systemVolumeChangeCallback);
 
 audioVolumeManager.off('systemVolumeChange', systemVolumeChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## offSystemVolumeChangeByFilter
 
@@ -937,6 +972,7 @@ offVolumePercentageChange(callback?: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -955,6 +991,8 @@ audioVolumeManager.onVolumePercentageChange(volumePercentageChangeCallback);
 
 audioVolumeManager.offVolumePercentageChange(volumePercentageChangeCallback);
 ```
+
+<!--DelEnd-->
 
 ## on('appVolumeChangeForUid')
 
@@ -990,6 +1028,7 @@ on(type: 'appVolumeChangeForUid', uid: number, callback: Callback<VolumeEvent>):
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1001,6 +1040,8 @@ audioVolumeManager.on('appVolumeChangeForUid', uid, (volumeEvent: audio.VolumeEv
   console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('activeVolumeTypeChange')
 
@@ -1032,6 +1073,7 @@ on(type: 'activeVolumeTypeChange', callback: Callback<AudioVolumeType>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1039,6 +1081,8 @@ audioVolumeManager.on('activeVolumeTypeChange', (volumeType: audio.AudioVolumeTy
   console.info(`VolumeType of stream: ${volumeType} `);
 });
 ```
+
+<!--DelEnd-->
 
 ## on('systemVolumeChange')
 
@@ -1070,6 +1114,7 @@ on(type: 'systemVolumeChange', callback: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1077,6 +1122,8 @@ audioVolumeManager.on('systemVolumeChange', (volumeEvent: audio.VolumeEvent) => 
   console.info(`Succeeded in using on function, VolumeEvent: ${volumeEvent}.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## onSystemVolumeChangeByFilter
 
@@ -1139,6 +1186,7 @@ onVolumePercentageChange(callback: Callback<VolumeEvent>): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system App. |
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1149,6 +1197,8 @@ onVolumePercentageChange((volumeEvent: audio.VolumeEvent) => {
   console.info(`Whether to updateUI: ${volumeEvent.updateUi} `);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAppVolumeMutedForUid
 
@@ -1190,6 +1240,7 @@ setAppVolumeMutedForUid(uid: number, muted: boolean): Promise<void>
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1199,6 +1250,8 @@ audioVolumeManager.setAppVolumeMutedForUid(uid, true).then(() => {
   console.info(`set app mute state success.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setAppVolumePercentageForUid
 
@@ -1240,6 +1293,7 @@ setAppVolumePercentageForUid(uid: number, volume: number): Promise<void>
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1250,6 +1304,8 @@ audioVolumeManager.setAppVolumePercentageForUid(uid, volume).then(() => {
   console.info(`set app volume success.`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setSystemVolumeByUid
 
@@ -1344,6 +1400,7 @@ setSystemVolumePercentage(volumeType: AudioVolumeType, percentage: number): Prom
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed, including volumeType or percentage param being out of range. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1351,6 +1408,8 @@ audioVolumeManager.setSystemVolumePercentage(audio.AudioVolumeType.MEDIA, 10).th
   console.info('Promise returned to indicate a successful volume setting.');
 });
 ```
+
+<!--DelEnd-->
 
 ## setVoipCapturerMuteForUid
 
@@ -1401,6 +1460,7 @@ setVoipCapturerMuteForUid(uid: number, streamId: number, muted: boolean): Promis
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1415,6 +1475,8 @@ audioVolumeManager.setVoipCapturerMuteForUid(uid, streamId, true).then(() => {
   console.error(`Failed to set voip capturer mute state. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## setVoipRendererMuteForUid
 
@@ -1465,6 +1527,7 @@ setVoipRendererMuteForUid(uid: number, streamId: number, muted: boolean): Promis
 | [6800101](../errorcode-audio.md#6800101-无效入参) | Parameter verification failed. |
 | [6800301](../errorcode-audio.md#6800301-系统处理异常) | Crash or blocking occurs in system process. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1479,3 +1542,5 @@ audioVolumeManager.setVoipRendererMuteForUid(uid, streamId, true).then(() => {
   console.error(`Failed to set voip renderer mute state. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

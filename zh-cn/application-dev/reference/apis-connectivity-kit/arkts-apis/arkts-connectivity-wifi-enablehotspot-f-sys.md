@@ -34,6 +34,7 @@ function enableHotspot(): boolean
 | --- | --- |
 | boolean | 开启热点是否成功。true:操作成功， false:操作失败。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
     console.error("failed:" + JSON.stringify(error));
 }
 ```
+
+<!--DelEnd-->

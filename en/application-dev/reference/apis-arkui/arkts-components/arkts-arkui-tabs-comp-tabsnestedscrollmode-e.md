@@ -12,24 +12,6 @@ Enumerates the nested scrolling modes of the **Tabs** component and its parent c
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## SELF_ONLY
-
-```TypeScript
-SELF_ONLY = 0
-```
-
-The scrolling is contained within the **Tabs** component, and no scroll chaining occurs, that is, the parent component does not scroll when the component scrolling reaches the boundary.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 24.
-
-<!--Device-TabsNestedScrollMode-SELF_ONLY = 0--><!--Device-TabsNestedScrollMode-SELF_ONLY = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## SELF_FIRST
 
 ```TypeScript
@@ -45,5 +27,23 @@ The **Tabs** component scrolls first, and when it hits the boundary, the parent 
 **Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-TabsNestedScrollMode-SELF_FIRST = 1--><!--Device-TabsNestedScrollMode-SELF_FIRST = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## SELF_ONLY
+
+```TypeScript
+SELF_ONLY = 0
+```
+
+The scrolling is contained within the **Tabs** component, and no scroll chaining occurs, that is, the parent component does not scroll when the component scrolling reaches the boundary.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 24.
+
+<!--Device-TabsNestedScrollMode-SELF_ONLY = 0--><!--Device-TabsNestedScrollMode-SELF_ONLY = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

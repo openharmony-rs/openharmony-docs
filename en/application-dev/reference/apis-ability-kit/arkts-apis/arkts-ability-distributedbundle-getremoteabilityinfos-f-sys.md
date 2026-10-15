@@ -6,6 +6,8 @@
 import { distributedBundle } from '@kit.AbilityKit';
 ```
 
+<a id="getremoteabilityinfos1"></a>
+
 ## getRemoteAbilityInfos
 
 ```TypeScript
@@ -33,11 +35,11 @@ Obtains the information about remote abilities that match the given element name
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;[ElementName](arkts-ability-elementname-elementname-depr-i.md)&gt; | Yes | **ElementName** array, whose maximum length is 10. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | Yes | Callback used to return an array of the remote ability information. |
+| elementNames | Array&lt;[ElementName](arkts-ability-elementname-depr-i.md)&gt; | Yes | **ElementName** array, whose maximum length is 10. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | Yes | Callback used to return an array of the remote ability information. |
 
 
-<a id="getremoteabilityinfos-1"></a>
+<a id="getremoteabilityinfos2"></a>
 
 ## getRemoteAbilityInfos
 
@@ -65,10 +67,10 @@ Obtains the information about remote abilities that match the given element name
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| elementNames | Array&lt;[ElementName](arkts-ability-elementname-elementname-depr-i.md)&gt; | Yes | **ElementName** array, whose maximum length is 10. |
+| elementNames | Array&lt;[ElementName](arkts-ability-elementname-depr-i.md)&gt; | Yes | **ElementName** array, whose maximum length is 10. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Promise&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | Promise used to return an array of the remote ability information. |
+| Promise&lt;Array&lt;[RemoteAbilityInfo](arkts-ability-remoteabilityinfo-depr-i-sys.md)&gt;&gt; | Promise used to return an array of the remote ability information. |

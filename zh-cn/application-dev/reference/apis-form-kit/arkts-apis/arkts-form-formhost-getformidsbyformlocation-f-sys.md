@@ -47,6 +47,7 @@ function getFormIdsByFormLocation(location: formInfo.FormLocation): Promise<Arra
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 | [16501016](../errorcode-form.md#16501016-卡片位置信息无效) | The location of the widget is invalid. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,3 +64,5 @@ try {
   console.error(`catch error, code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

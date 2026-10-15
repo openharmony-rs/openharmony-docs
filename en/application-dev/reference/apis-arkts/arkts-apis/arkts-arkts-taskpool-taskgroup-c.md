@@ -4,7 +4,7 @@
 class TaskGroup
 ```
 
-Implements a task group, in which tasks are associated with each other and all tasks are executed at a time. If all the tasks are executed normally, an array of task results is returned asynchronously, and the sequence of elements in the array is the same as the sequence of tasks added by calling [addTask](#addtask-1). If any task fails, the corresponding exception is thrown. If multiple tasks in the task group fail, the exception of the first failed task is thrown. A task group can be executed for multiple times, but no task can be added after the task group is executed.
+Implements a task group, in which tasks are associated with each other and all tasks are executed at a time. If all the tasks are executed normally, an array of task results is returned asynchronously, and the sequence of elements in the array is the same as the sequence of tasks added by calling [addTask](#addtask2). If any task fails, the corresponding exception is thrown. If multiple tasks in the task group fail, the exception of the first failed task is thrown. A task group can be executed for multiple times, but no task can be added after the task group is executed.
 
 **Since:** 10
 
@@ -17,6 +17,8 @@ Implements a task group, in which tasks are associated with each other and all t
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';
 ```
+
+<a id="addtask1"></a>
 
 ## addTask
 
@@ -60,7 +62,7 @@ let taskGroup: taskpool.TaskGroup = new taskpool.TaskGroup();
 taskGroup.addTask(printArgs, 100); // 100: test number
 ```
 
-<a id="addtask-1"></a>
+<a id="addtask2"></a>
 
 ## addTask
 
@@ -106,6 +108,8 @@ let task: taskpool.Task = new taskpool.Task(printArgs, 200); // 200: test number
 taskGroup.addTask(task);
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -128,7 +132,7 @@ Constructor used to create a **TaskGroup** instance.
 let taskGroup = new taskpool.TaskGroup();
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

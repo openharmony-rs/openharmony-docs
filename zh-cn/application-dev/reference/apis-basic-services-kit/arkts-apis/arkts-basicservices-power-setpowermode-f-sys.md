@@ -6,6 +6,8 @@
 import { power } from '@kit.BasicServicesKit';
 ```
 
+<a id="setpowermode1"></a>
+
 ## setPowerMode
 
 ```TypeScript
@@ -40,6 +42,7 @@ function setPowerMode(mode: DevicePowerMode, callback: AsyncCallback<void>): voi
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Parameter verification failed. |
 | [4900301](../errorcode-power.md#4900301-电源模式设置失败) | Setting the power mode failed.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,8 +55,10 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE, (err: BusinessError) 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setpowermode-1"></a>
+
+<a id="setpowermode2"></a>
 
 ## setPowerMode
 
@@ -94,6 +99,7 @@ function setPowerMode(mode: DevicePowerMode): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Parameter verification failed. |
 | [4900301](../errorcode-power.md#4900301-电源模式设置失败) | Setting the power mode failed.<br>**适用版本：** 23+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -105,3 +111,5 @@ power.setPowerMode(power.DevicePowerMode.MODE_PERFORMANCE)
     console.error(`Failed to set power mode. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

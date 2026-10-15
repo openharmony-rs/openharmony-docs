@@ -45,6 +45,7 @@ Searching for a specified target.
 | [33300003](../errorcode-mechanic.md#33300003-function-not-supported) | Feature not supported. |
 | 33300004 | Camera not opened. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,3 +60,5 @@ mechanicManager.searchTarget(targetInfo,
     console.info(`'result:' ${searchResult}`);
 });
 ```
+
+<!--DelEnd-->

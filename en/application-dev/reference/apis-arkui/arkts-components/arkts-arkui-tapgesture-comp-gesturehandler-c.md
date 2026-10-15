@@ -4,9 +4,9 @@
 declare class GestureHandler<T> implements GestureInterface<T>
 ```
 
-Represents the base type for gesture handlers.
+Defines the base type of a gesture handler, which carries the common configuration capabilities of specific gesture handlers, such as setting the gesture tag and limiting the supported event input sources.
 
-**Inheritance/Implementation:** GestureHandler implements GestureInterface<T>
+**Inheritance/Implementation:** GestureHandler implements GestureInterface&lt;T&gt;
 
 **Since:** 12
 
@@ -20,7 +20,7 @@ Represents the base type for gesture handlers.
 allowedTypes(types: Array<SourceTool>): T
 ```
 
-Sets the event input sources supported by the gesture handler.
+Sets the event input sources supported by the gesture handler. This is suitable for scenarios where the gesture needs to be limited to responding only to specific input sources such as touch, mouse, or stylus.
 
 **Since:** 14
 
@@ -50,7 +50,7 @@ Sets the event input sources supported by the gesture handler.
 tag(tag: string): T
 ```
 
-Sets the tag for the gesture handler.
+Sets the tag of the gesture handler. This is suitable for scenarios where multiple gesture handlers need to be distinguished or managed.
 
 **Since:** 12
 
@@ -72,4 +72,4 @@ Sets the tag for the gesture handler.
 
 | Type | Description |
 | --- | --- |
-| T | Current component. |
+| T | Current gesture handler object. |

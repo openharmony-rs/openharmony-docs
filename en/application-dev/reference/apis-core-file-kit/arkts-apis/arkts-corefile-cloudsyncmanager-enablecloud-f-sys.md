@@ -6,6 +6,8 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="enablecloud1"></a>
+
 ## enableCloud
 
 ```TypeScript
@@ -45,6 +47,7 @@ Enables device-cloud sync. This API uses a promise to return the result.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -62,8 +65,10 @@ cloudSyncManager.enableCloud(accountId, switches).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="enablecloud-1"></a>
+
+<a id="enablecloud2"></a>
 
 ## enableCloud
 
@@ -103,6 +108,7 @@ Enables device-cloud sync. This API uses an asynchronous callback to return the 
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -121,3 +127,5 @@ cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
   }
 });
 ```
+
+<!--DelEnd-->

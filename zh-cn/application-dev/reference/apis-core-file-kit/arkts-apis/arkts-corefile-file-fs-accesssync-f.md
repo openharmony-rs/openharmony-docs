@@ -55,7 +55,7 @@ declare function accessSync(path: string, mode?: AccessModeType): boolean
 | 13900042 | Unknown error |
 
 
-<a id="accesssync-1"></a>
+<a id="accesssync2"></a>
 
 ## accessSync
 

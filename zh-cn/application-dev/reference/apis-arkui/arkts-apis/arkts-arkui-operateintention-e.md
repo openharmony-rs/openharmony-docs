@@ -12,13 +12,13 @@ declare enum OperateIntention
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TAP
+## BACK_PRESS
 
 ```TypeScript
-TAP = 0
+BACK_PRESS = 2
 ```
 
-敲一敲。
+翻腕。
 
 **起始版本：** 26.0.0
 
@@ -26,7 +26,7 @@ TAP = 0
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-<!--Device-OperateIntention-TAP = 0--><!--Device-OperateIntention-TAP = 0-End-->
+<!--Device-OperateIntention-BACK_PRESS = 2--><!--Device-OperateIntention-BACK_PRESS = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,13 +48,13 @@ SLIDE_FORWARD = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## BACK_PRESS
+## TAP
 
 ```TypeScript
-BACK_PRESS = 2
+TAP = 0
 ```
 
-翻腕。
+敲一敲。
 
 **起始版本：** 26.0.0
 
@@ -62,6 +62,6 @@ BACK_PRESS = 2
 
 **原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
-<!--Device-OperateIntention-BACK_PRESS = 2--><!--Device-OperateIntention-BACK_PRESS = 2-End-->
+<!--Device-OperateIntention-TAP = 0--><!--Device-OperateIntention-TAP = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

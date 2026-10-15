@@ -27,7 +27,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [apiAvailable](arkts-basicservices-deviceinfo-apiavailable-f.md) | 检查指定的API版本在当前设备上是否可用。此方法提供OpenHarmony及其各发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。 |
+| [apiAvailable](arkts-basicservices-deviceinfo-apiavailable-f.md#apiavailable) | 检查指定的API版本在当前设备上是否可用。此方法提供OpenHarmony及其各发行版系统版本的兼容性检查。该方法会根据输入格式和API版本范围自动选择合适的版本检查方法。 |
 
 ### 枚举
 
@@ -52,7 +52,7 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [buildVersion](arkts-basicservices-deviceinfo-con.md#buildversion) | Build版本号，标识编译构建的版本号，值为osFullName中的第四位数值，建议直接使用deviceInfo.buildVersion获取，可提升效率，不建议开发者自主解析osFullName获取。 |
 | [chipType](arkts-basicservices-deviceinfo-con.md#chiptype) | 当前设备CPU芯片型号。 |
 | [deviceColor](arkts-basicservices-deviceinfo-con.md#devicecolor) | 当前设备颜色。如果无法获取，则返回空字符串 |
-| [deviceType](arkts-basicservices-deviceinfo-con.md#devicetype) | 设备类型。详细请参考deviceTypes标签。 |
+| [deviceType](arkts-basicservices-deviceinfo-con.md#devicetype) | 设备类型。详细请参考[deviceTypes标签](../../../quick-start/module-configuration-file.md#devicetypes标签)。 |
 | [diskSN](arkts-basicservices-deviceinfo-con.md#disksn) | 硬盘序列号，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。 |
 | [displayVersion](arkts-basicservices-deviceinfo-con.md#displayversion) | 产品版本。 |
 | [distributionOSApiName](arkts-basicservices-deviceinfo-con.md#distributionosapiname) | 发行版系统API版本名称<!--Del-->，由发行方定义<!--DelEnd-->。 |
@@ -63,8 +63,8 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [featureVersion](arkts-basicservices-deviceinfo-con.md#featureversion) | Feature版本号，标识规划的新特性版本，值为osFullName中的第三位数值，建议直接使用deviceInfo.featureVersion获取，可提升效率，不建议开发者自主解析osFullName获取。 |
 | [firstApiVersion](arkts-basicservices-deviceinfo-con.md#firstapiversion) | 首个版本系统软件API版本。 |
 | [hardwareModel](arkts-basicservices-deviceinfo-con.md#hardwaremodel) | 硬件版本号。 |
-| [hardwareProfile](arkts-basicservices-deviceinfo-con.md#hardwareprofile) | 硬件Profile。 |
 | [incrementalVersion](arkts-basicservices-deviceinfo-con.md#incrementalversion) | 差异版本号，是编译时生成的ohos的版本号。 |
+| [kernelVersion](arkts-basicservices-deviceinfo-con.md#kernelversion) | 获取内核版本。示例: '产品内核1.0.0'。 |
 | [majorVersion](arkts-basicservices-deviceinfo-con.md#majorversion) | Major版本号，随主版本更新增加，值为osFullName中的第一位数值，建议直接使用deviceInfo.majorVersion获取，可提升效率，不建议开发者自主解析osFullName获取。 |
 | [manufacture](arkts-basicservices-deviceinfo-con.md#manufacture) | 设备厂家名称。 |
 | [marketName](arkts-basicservices-deviceinfo-con.md#marketname) | 外部产品系列。 |
@@ -84,3 +84,4 @@ import { deviceInfo } from '@kit.BasicServicesKit';
 | [softwareModel](arkts-basicservices-deviceinfo-con.md#softwaremodel) | 内部软件子型号。 |
 | [udid](arkts-basicservices-deviceinfo-con.md#udid) | 设备UDID，该接口在执行期间会拉起临时进程，当系统负载较高时，可能引发阻塞风险。为确保应用主线程的响应性能，建议避免在主线程中调用。设备信息因设备而异且固定不变，可在首次获取后缓存在本地，避免每次使用时重复获取，以提升性能。 |
 | [versionId](arkts-basicservices-deviceinfo-con.md#versionid) | 版本ID。由deviceType、manufacture、brand、productSeries、osFullName、productModel、softwareModel、sdkApiVersion、incrementalVersion、buildType拼接组成。如果需要获取其中的某个字段值，建议直接使用对应的字段（如deviceType、manufacture等），可提升效率，不建议解析versionId获取。 |
+| [hardwareProfile](arkts-basicservices-deviceinfo-con.md#hardwareprofile) | 硬件Profile。 |

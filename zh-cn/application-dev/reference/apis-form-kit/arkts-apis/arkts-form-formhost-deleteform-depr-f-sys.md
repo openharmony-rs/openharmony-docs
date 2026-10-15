@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="deleteform1"></a>
+
 ## deleteForm
 
 ```TypeScript
@@ -34,6 +36,7 @@ function deleteForm(formId: string, callback: AsyncCallback<void>): void
 | formId | string | 是 | 卡片标识。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当删除指定的卡片成功，error为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,8 +50,10 @@ formHost.deleteForm(formId, (error: Base.BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="deleteform-1"></a>
+
+<a id="deleteform2"></a>
 
 ## deleteForm
 
@@ -84,6 +89,7 @@ function deleteForm(formId: string): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | 无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,3 +102,5 @@ formHost.deleteForm(formId).then(() => {
   console.error(`formHost deleteForm, error: ${JSON.stringify(error)}`);
 });
 ```
+
+<!--DelEnd-->

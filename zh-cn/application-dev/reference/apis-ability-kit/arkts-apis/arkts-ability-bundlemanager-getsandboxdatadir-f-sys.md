@@ -29,7 +29,7 @@ function getSandboxDataDir(bundleName: string, appIndex: number): string
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | bundleName | string | 是 | 表示要查询的应用包名。当前用户下有此应用或者分身才可查询，否则返回错误码17700001。 |
-| appIndex | number | 是 | 表示应用索引。取值范围0~5，取值为0表示主应用，取值1~5表示分身应用的索引。 |
+| appIndex | number | 是 | 应用索引，用于标识不同的应用实例。取值为整数。<br>取值范围：<br>- 0：主应用<br> - [1, 5]：分身应用<br>- [2000, 3000]：沙箱应用（API版本26.0.0支持） |
 
 **返回值：**
 
@@ -46,6 +46,7 @@ function getSandboxDataDir(bundleName: string, appIndex: number): string
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700061](../errorcode-bundle.md#17700061-指定的应用分身索引无效) | AppIndex not in valid range. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,3 +65,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getSandboxDataDir failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

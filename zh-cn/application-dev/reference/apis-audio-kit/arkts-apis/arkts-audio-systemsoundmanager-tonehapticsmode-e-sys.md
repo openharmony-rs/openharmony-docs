@@ -14,6 +14,22 @@ enum ToneHapticsMode
 
 **系统接口：** 此接口为系统接口。
 
+## NON_SYNC
+
+```TypeScript
+NON_SYNC = 2
+```
+
+非同步模式。
+
+**起始版本：** 14
+
+<!--Device-ToneHapticsMode-NON_SYNC = 2--><!--Device-ToneHapticsMode-NON_SYNC = 2-End-->
+
+**系统能力：** SystemCapability.Multimedia.SystemSound.Core
+
+**系统接口：** 此接口为系统接口。
+
 ## NONE
 
 ```TypeScript
@@ -41,22 +57,6 @@ SYNC = 1
 **起始版本：** 14
 
 <!--Device-ToneHapticsMode-SYNC = 1--><!--Device-ToneHapticsMode-SYNC = 1-End-->
-
-**系统能力：** SystemCapability.Multimedia.SystemSound.Core
-
-**系统接口：** 此接口为系统接口。
-
-## NON_SYNC
-
-```TypeScript
-NON_SYNC = 2
-```
-
-非同步模式。
-
-**起始版本：** 14
-
-<!--Device-ToneHapticsMode-NON_SYNC = 2--><!--Device-ToneHapticsMode-NON_SYNC = 2-End-->
 
 **系统能力：** SystemCapability.Multimedia.SystemSound.Core
 

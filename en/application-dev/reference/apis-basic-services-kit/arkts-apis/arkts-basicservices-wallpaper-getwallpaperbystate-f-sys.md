@@ -46,6 +46,7 @@ Obtains the default pixel map of a wallpaper of the specified device type. Retur
 | [201](../../errorcode-universal.md#201-permission-denied) | permission denied. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -59,3 +60,5 @@ wallpaper.getWallpaperByState(wallpaper.WallpaperType.WALLPAPER_SYSTEM,wallpaper
   console.error(`failed to getWallpaperByState. Code: ${error.code}, Message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

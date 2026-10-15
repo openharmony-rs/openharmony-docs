@@ -14,19 +14,19 @@ Enum for fusion fence type.
 
 **System API:** This is a system API.
 
-## GNSS
+## BLUETOOTH
 
 ```TypeScript
-GNSS = 1
+BLUETOOTH = 8
 ```
 
-Indicates the GNSS fence.
+Indicates the Bluetooth fence.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-FusionFenceType-GNSS = 1--><!--Device-FusionFenceType-GNSS = 1-End-->
+<!--Device-FusionFenceType-BLUETOOTH = 8--><!--Device-FusionFenceType-BLUETOOTH = 8-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 
@@ -50,6 +50,24 @@ Indicates the cellular fence.
 
 **System API:** This is a system API.
 
+## GNSS
+
+```TypeScript
+GNSS = 1
+```
+
+Indicates the GNSS fence.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-FusionFenceType-GNSS = 1--><!--Device-FusionFenceType-GNSS = 1-End-->
+
+**System capability:** SystemCapability.Location.Location.Geofence
+
+**System API:** This is a system API.
+
 ## WIFI
 
 ```TypeScript
@@ -63,24 +81,6 @@ Indicates the Wi-Fi fence.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-FusionFenceType-WIFI = 4--><!--Device-FusionFenceType-WIFI = 4-End-->
-
-**System capability:** SystemCapability.Location.Location.Geofence
-
-**System API:** This is a system API.
-
-## BLUETOOTH
-
-```TypeScript
-BLUETOOTH = 8
-```
-
-Indicates the Bluetooth fence.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-FusionFenceType-BLUETOOTH = 8--><!--Device-FusionFenceType-BLUETOOTH = 8-End-->
 
 **System capability:** SystemCapability.Location.Location.Geofence
 

@@ -64,7 +64,7 @@ filename?: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FileSpec-filename?: string--><!--Device-FileSpec-filename?: string-End-->
 
@@ -102,7 +102,7 @@ path: string
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FileSpec-path: string--><!--Device-FileSpec-path: string-End-->
 

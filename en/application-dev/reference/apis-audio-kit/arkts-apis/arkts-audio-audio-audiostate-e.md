@@ -40,6 +40,20 @@ Creating instance state.
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
+## STATE_PAUSED
+
+```TypeScript
+STATE_PAUSED = 5
+```
+
+Paused.
+
+**Since:** 8
+
+<!--Device-AudioState-STATE_PAUSED = 5--><!--Device-AudioState-STATE_PAUSED = 5-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
 ## STATE_PREPARED
 
 ```TypeScript
@@ -51,6 +65,20 @@ Prepared.
 **Since:** 8
 
 <!--Device-AudioState-STATE_PREPARED = 1--><!--Device-AudioState-STATE_PREPARED = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Core
+
+## STATE_RELEASED
+
+```TypeScript
+STATE_RELEASED = 4
+```
+
+Released.
+
+**Since:** 8
+
+<!--Device-AudioState-STATE_RELEASED = 4--><!--Device-AudioState-STATE_RELEASED = 4-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core
 
@@ -79,33 +107,5 @@ Stopped.
 **Since:** 8
 
 <!--Device-AudioState-STATE_STOPPED = 3--><!--Device-AudioState-STATE_STOPPED = 3-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## STATE_RELEASED
-
-```TypeScript
-STATE_RELEASED = 4
-```
-
-Released.
-
-**Since:** 8
-
-<!--Device-AudioState-STATE_RELEASED = 4--><!--Device-AudioState-STATE_RELEASED = 4-End-->
-
-**System capability:** SystemCapability.Multimedia.Audio.Core
-
-## STATE_PAUSED
-
-```TypeScript
-STATE_PAUSED = 5
-```
-
-Paused.
-
-**Since:** 8
-
-<!--Device-AudioState-STATE_PAUSED = 5--><!--Device-AudioState-STATE_PAUSED = 5-End-->
 
 **System capability:** SystemCapability.Multimedia.Audio.Core

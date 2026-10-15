@@ -6,6 +6,8 @@
 import { bundleState } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querybundlestateinfobyinterval1"></a>
+
 ## queryBundleStateInfoByInterval
 
 ```TypeScript
@@ -40,6 +42,7 @@ Queries usage information about each bundle within a specified period at a speci
 | end | number | 是 | Indicates the end time of the query period, in milliseconds.<br> Unit:ms |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;Array&lt;[BundleStateInfo](arkts-backgroundtasks-bundlestate-bundlestateinfo-i.md)&gt;&gt; | 是 | the callback of usage information about each bundle. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,8 +62,10 @@ bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED
 });
 ```
 
+<!--DelEnd-->
 
-<a id="querybundlestateinfobyinterval-1"></a>
+
+<a id="querybundlestateinfobyinterval2"></a>
 
 ## queryBundleStateInfoByInterval
 
@@ -100,6 +105,7 @@ Queries usage information about each bundle within a specified period at a speci
 | --- | --- |
 | Promise&lt;Array&lt;[BundleStateInfo](arkts-backgroundtasks-bundlestate-bundlestateinfo-i.md)&gt;&gt; | the usage information about each bundle. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -116,3 +122,5 @@ bundleState.queryBundleStateInfoByInterval(bundleState.IntervalType.BY_OPTIMIZED
   console.error('BUNDLE_ACTIVE queryBundleStateInfoByInterval promise failed, because: ' + err.code);
 });
 ```
+
+<!--DelEnd-->

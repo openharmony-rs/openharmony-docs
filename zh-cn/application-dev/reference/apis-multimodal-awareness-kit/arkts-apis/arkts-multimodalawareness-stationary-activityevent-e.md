@@ -26,20 +26,6 @@ ENTER = 1
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
 
-## EXIT
-
-```TypeScript
-EXIT = 2
-```
-
-退出事件，表示设备退出静止状态时触发。
-
-**起始版本：** 9
-
-<!--Device-ActivityEvent-EXIT = 2--><!--Device-ActivityEvent-EXIT = 2-End-->
-
-**系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
-
 ## ENTER_EXIT
 
 ```TypeScript
@@ -51,5 +37,19 @@ ENTER_EXIT = 3
 **起始版本：** 9
 
 <!--Device-ActivityEvent-ENTER_EXIT = 3--><!--Device-ActivityEvent-ENTER_EXIT = 3-End-->
+
+**系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary
+
+## EXIT
+
+```TypeScript
+EXIT = 2
+```
+
+退出事件，表示设备退出静止状态时触发。
+
+**起始版本：** 9
+
+<!--Device-ActivityEvent-EXIT = 2--><!--Device-ActivityEvent-EXIT = 2-End-->
 
 **系统能力：** SystemCapability.Msdp.DeviceStatus.Stationary

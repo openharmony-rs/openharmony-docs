@@ -12,22 +12,6 @@ enum ChangeType
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 
-## INSERT
-
-```TypeScript
-INSERT = 0
-```
-
-表示数据添加。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ChangeType-INSERT = 0--><!--Device-ChangeType-INSERT = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
-
 ## DELETE
 
 ```TypeScript
@@ -41,6 +25,22 @@ DELETE = 1
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ChangeType-DELETE = 1--><!--Device-ChangeType-DELETE = 1-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
+
+## INSERT
+
+```TypeScript
+INSERT = 0
+```
+
+表示数据添加。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ChangeType-INSERT = 0--><!--Device-ChangeType-INSERT = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.DataShare.Consumer
 

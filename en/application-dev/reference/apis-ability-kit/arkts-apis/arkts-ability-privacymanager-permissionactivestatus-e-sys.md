@@ -14,19 +14,19 @@ Enumerates the types of permission usage status changes. It is used to describe 
 
 **System API:** This is a system API.
 
-## PERM_INACTIVE
+## PERM_ACTIVE_IN_BACKGROUND
 
 ```TypeScript
-PERM_INACTIVE = 0
+PERM_ACTIVE_IN_BACKGROUND = 2
 ```
 
-The permission is not used.
+The permission is being used by an application running in the background.
 
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-<!--Device-PermissionActiveStatus-PERM_INACTIVE = 0--><!--Device-PermissionActiveStatus-PERM_INACTIVE = 0-End-->
+<!--Device-PermissionActiveStatus-PERM_ACTIVE_IN_BACKGROUND = 2--><!--Device-PermissionActiveStatus-PERM_ACTIVE_IN_BACKGROUND = 2-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 
@@ -50,19 +50,19 @@ The permission is being used by an application running in the foreground.
 
 **System API:** This is a system API.
 
-## PERM_ACTIVE_IN_BACKGROUND
+## PERM_INACTIVE
 
 ```TypeScript
-PERM_ACTIVE_IN_BACKGROUND = 2
+PERM_INACTIVE = 0
 ```
 
-The permission is being used by an application running in the background.
+The permission is not used.
 
 **Since:** 9
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 
-<!--Device-PermissionActiveStatus-PERM_ACTIVE_IN_BACKGROUND = 2--><!--Device-PermissionActiveStatus-PERM_ACTIVE_IN_BACKGROUND = 2-End-->
+<!--Device-PermissionActiveStatus-PERM_INACTIVE = 0--><!--Device-PermissionActiveStatus-PERM_INACTIVE = 0-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
 

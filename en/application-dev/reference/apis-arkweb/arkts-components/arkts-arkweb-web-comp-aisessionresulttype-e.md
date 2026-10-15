@@ -12,22 +12,6 @@ Defines the result status of AI session operations.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## SUCCESS
-
-```TypeScript
-SUCCESS = 0
-```
-
-The operation is successful.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-AISessionResultType-SUCCESS = 0--><!--Device-AISessionResultType-SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## FAILURE
 
 ```TypeScript
@@ -57,5 +41,21 @@ The operation is in progress.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-AISessionResultType-RUNNING = 2--><!--Device-AISessionResultType-RUNNING = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+The operation is successful.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AISessionResultType-SUCCESS = 0--><!--Device-AISessionResultType-SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

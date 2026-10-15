@@ -18,6 +18,8 @@ Provides the ImageProcessor type, including the processing function. @typedef Im
 import { videoProcessingEngine } from '@kit.ImageKit';
 ```
 
+<a id="enhancedetail1"></a>
+
 ## enhanceDetail
 
 ```TypeScript
@@ -28,7 +30,7 @@ The function generate the destinationImage from sourceImage with necessary scali
 
 **Since:** 18
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+**Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
 <!--Device-ImageProcessor-enhanceDetail(sourceImage: image.PixelMap, width: int, height: int, level?: QualityLevel): Promise<image.PixelMap>--><!--Device-ImageProcessor-enhanceDetail(sourceImage: image.PixelMap, width: int, height: int, level?: QualityLevel): Promise<image.PixelMap>-End-->
 
@@ -71,7 +73,7 @@ async function enhanceDetail(sourceImage: image.PixelMap, width: number, height:
 }
 ```
 
-<a id="enhancedetail-1"></a>
+<a id="enhancedetail2"></a>
 
 ## enhanceDetail
 
@@ -83,7 +85,7 @@ The function generate the destinationImage from sourceImage with necessary scali
 
 **Since:** 18
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+**Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
 <!--Device-ImageProcessor-enhanceDetail(sourceImage: image.PixelMap, scale: double, level?: QualityLevel): Promise<image.PixelMap>--><!--Device-ImageProcessor-enhanceDetail(sourceImage: image.PixelMap, scale: double, level?: QualityLevel): Promise<image.PixelMap>-End-->
 
@@ -125,6 +127,8 @@ async function enhanceDetail(sourceImage: image.PixelMap, scale: number) {
 }
 ```
 
+<a id="enhancedetailsync1"></a>
+
 ## enhanceDetailSync
 
 ```TypeScript
@@ -135,7 +139,7 @@ The function generate the destinationImage from sourceImage with necessary scali
 
 **Since:** 18
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+**Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
 <!--Device-ImageProcessor-enhanceDetailSync(sourceImage: image.PixelMap, width: int, height: int, level?: QualityLevel): image.PixelMap--><!--Device-ImageProcessor-enhanceDetailSync(sourceImage: image.PixelMap, width: int, height: int, level?: QualityLevel): image.PixelMap-End-->
 
@@ -179,7 +183,7 @@ async function enhanceDetailSync(sourceImage: image.PixelMap, width: number, hei
 }
 ```
 
-<a id="enhancedetailsync-1"></a>
+<a id="enhancedetailsync2"></a>
 
 ## enhanceDetailSync
 
@@ -191,7 +195,7 @@ The function generate the destinationImage from sourceImage with necessary scali
 
 **Since:** 18
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 18.
+**Widget capability:** This API can be used in ArkTS widgets since API version 18.
 
 <!--Device-ImageProcessor-enhanceDetailSync(sourceImage: image.PixelMap, scale: double, level?: QualityLevel): image.PixelMap--><!--Device-ImageProcessor-enhanceDetailSync(sourceImage: image.PixelMap, scale: double, level?: QualityLevel): image.PixelMap-End-->
 

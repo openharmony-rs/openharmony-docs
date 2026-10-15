@@ -38,9 +38,12 @@ function usbFunctionsFromString(funcs: string): number
 | --- | --- |
 | number | 转化后的功能列表对应的数字掩码。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 let funcs = "acm";
 let ret = usb.usbFunctionsFromString(funcs);
 ```
+
+<!--DelEnd-->

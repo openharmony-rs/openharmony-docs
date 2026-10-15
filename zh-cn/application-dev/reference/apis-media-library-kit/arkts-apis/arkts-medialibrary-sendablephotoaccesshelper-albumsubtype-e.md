@@ -12,17 +12,17 @@ const enum AlbumSubtype
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## USER_GENERIC
+## ANY
 
 ```TypeScript
-USER_GENERIC = 1
+ANY = 2147483647
 ```
 
-用户相册。
+任意相册。
 
 **起始版本：** 12
 
-<!--Device-AlbumSubtype-USER_GENERIC = 1--><!--Device-AlbumSubtype-USER_GENERIC = 1-End-->
+<!--Device-AlbumSubtype-ANY = 2147483647--><!--Device-AlbumSubtype-ANY = 2147483647-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -40,20 +40,6 @@ FAVORITE = 1025
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## VIDEO
-
-```TypeScript
-VIDEO = 1026
-```
-
-视频相册。
-
-**起始版本：** 12
-
-<!--Device-AlbumSubtype-VIDEO = 1026--><!--Device-AlbumSubtype-VIDEO = 1026-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## IMAGE
 
 ```TypeScript
@@ -68,16 +54,30 @@ IMAGE = 1031
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## ANY
+## USER_GENERIC
 
 ```TypeScript
-ANY = 2147483647
+USER_GENERIC = 1
 ```
 
-任意相册。
+用户相册。
 
 **起始版本：** 12
 
-<!--Device-AlbumSubtype-ANY = 2147483647--><!--Device-AlbumSubtype-ANY = 2147483647-End-->
+<!--Device-AlbumSubtype-USER_GENERIC = 1--><!--Device-AlbumSubtype-USER_GENERIC = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## VIDEO
+
+```TypeScript
+VIDEO = 1026
+```
+
+视频相册。
+
+**起始版本：** 12
+
+<!--Device-AlbumSubtype-VIDEO = 1026--><!--Device-AlbumSubtype-VIDEO = 1026-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

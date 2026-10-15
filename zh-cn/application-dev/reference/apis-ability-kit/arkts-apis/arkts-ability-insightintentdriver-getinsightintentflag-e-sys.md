@@ -31,12 +31,30 @@ enum GetInsightIntentFlag
 > | subIntentInfo | 是 | 是 |
 > | parameters | 是 | 是 |
 > | entities | 否 | 否 |
-> | developType&lt;sup&gt;23+&lt;/sup&gt; | 是 | 是 |
-> | subIntentInfoForConfiguration&lt;sup&gt;23+&lt;/sup&gt; | 否 | 否 |
+> | developType<sup>23+</sup> | 是 | 是 |
+> | subIntentInfoForConfiguration<sup>23+</sup> | 否 | 否 |
 
 **起始版本：** 20
 
 <!--Device-insightIntentDriver-enum GetInsightIntentFlag--><!--Device-insightIntentDriver-enum GetInsightIntentFlag-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
+**系统接口：** 此接口为系统接口。
+
+## GET_ENTITY_INFO
+
+```TypeScript
+GET_ENTITY_INFO = 0x00000004
+```
+
+查询[EntityInfo](arkts-ability-insightintentdriver-entityinfo-i-sys.md)的信息，不可单独使用，必选结合GET_FULL_INSIGHT_INTENT或者GET_SUMMARY_INSIGHT_INTENT使用。例如`GET_FULL_INSIGHT_INTENT | GET_ENTITY_INFO`。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004--><!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
@@ -73,24 +91,6 @@ GET_SUMMARY_INSIGHT_INTENT = 0x00000002
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-GetInsightIntentFlag-GET_SUMMARY_INSIGHT_INTENT = 0x00000002--><!--Device-GetInsightIntentFlag-GET_SUMMARY_INSIGHT_INTENT = 0x00000002-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
-
-**系统接口：** 此接口为系统接口。
-
-## GET_ENTITY_INFO
-
-```TypeScript
-GET_ENTITY_INFO = 0x00000004
-```
-
-查询[EntityInfo](arkts-ability-insightintentdriver-entityinfo-i-sys.md)的信息，不可单独使用，必选结合GET_FULL_INSIGHT_INTENT或者GET_SUMMARY_INSIGHT_INTENT使用。例如`GET_FULL_INSIGHT_INTENT | GET_ENTITY_INFO`。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004--><!--Device-GetInsightIntentFlag-GET_ENTITY_INFO = 0x00000004-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 

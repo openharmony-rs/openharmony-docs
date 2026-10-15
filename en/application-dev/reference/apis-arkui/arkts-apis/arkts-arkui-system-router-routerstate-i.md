@@ -10,7 +10,7 @@ Defines the routing state.
 
 **Deprecated since:** 8
 
-**Substitutes:** RouterState
+**Substitutes:** [RouterState](arkts-arkui-router-routerstate-i.md)
 
 <!--Device-unnamed-export interface RouterState--><!--Device-unnamed-export interface RouterState-End-->
 
@@ -36,7 +36,7 @@ Index of the current page in the stack. The index starts from 1 from the bottom 
 
 **Deprecated since:** 8
 
-**Substitutes:** index
+**Substitutes:** [index](arkts-arkui-router-routerstate-i.md#index)
 
 <!--Device-RouterState-index: number--><!--Device-RouterState-index: number-End-->
 
@@ -56,7 +56,7 @@ Name of the current page, that is, the file name.
 
 **Deprecated since:** 8
 
-**Substitutes:** name
+**Substitutes:** [name](arkts-arkui-router-routerstate-i.md#name)
 
 <!--Device-RouterState-name: string--><!--Device-RouterState-name: string-End-->
 
@@ -76,7 +76,7 @@ Path of the current page.
 
 **Deprecated since:** 8
 
-**Substitutes:** path
+**Substitutes:** [path](arkts-arkui-router-routerstate-i.md#path)
 
 <!--Device-RouterState-path: string--><!--Device-RouterState-path: string-End-->
 

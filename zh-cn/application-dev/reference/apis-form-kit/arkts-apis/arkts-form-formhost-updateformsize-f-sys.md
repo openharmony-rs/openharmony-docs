@@ -42,6 +42,7 @@ function updateFormSize(formId: string, newDimension: formInfo.FormDimension, ne
 | [16501001](../errorcode-form.md#16501001-卡片id不存在) | The ID of the form to be operated does not exist. |
 | [16501012](../errorcode-form.md#16501012-卡片尺寸错误) | The dimension parameter is incorrect |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,3 +63,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

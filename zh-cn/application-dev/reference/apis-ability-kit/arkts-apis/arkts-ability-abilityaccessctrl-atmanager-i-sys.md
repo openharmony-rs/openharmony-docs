@@ -55,7 +55,7 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise<number
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, or the permissionName exceeds 256 characters. |
@@ -64,6 +64,7 @@ getPermissionFlags(tokenID: number, permissionName: Permissions): Promise<number
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | The operation is not allowed. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -78,6 +79,10 @@ atManager.getPermissionFlags(tokenID, 'ohos.permission.GRANT_SENSITIVE_PERMISSIO
   console.error(`getPermissionFlags fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="getpermissionrequesttogglestatus1"></a>
 
 ## getPermissionRequestToggleStatus
 
@@ -115,14 +120,15 @@ getPermissionRequestToggleStatus(permissionName: Permissions): Promise<Permissio
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, or the specified permission is not a user_grant permission. |
 | [12100003](../errorcode-access-token.md#12100003-权限名不存在) | The specified permission does not exist. |
-| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus).<br>**适用版本：** 26.0.1+ |
+| [12100004](../errorcode-access-token.md#12100004-接口未配套使用) | This API must be used together with [setPermissionRequestToggleStatus](#setpermissionrequesttogglestatus1).<br>**适用版本：** 26.0.1+ |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -143,7 +149,9 @@ atManager.getPermissionRequestToggleStatus(permission).then((res: abilityAccessC
 });
 ```
 
-<a id="getpermissionrequesttogglestatus-1"></a>
+<!--DelEnd-->
+
+<a id="getpermissionrequesttogglestatus2"></a>
 
 ## getPermissionRequestToggleStatus
 
@@ -192,6 +200,7 @@ getPermissionRequestToggleStatus(
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. A database error occurs. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -207,6 +216,8 @@ atManager.getPermissionRequestToggleStatus(permission, subProfileId).then((statu
   console.error(`getPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getPermissionsStatus
 
@@ -245,13 +256,14 @@ getPermissionsStatus(tokenID: number, permissionList: Array<Permissions>): Promi
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0 or the permissionList is empty or exceeds the size limit. |
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -266,6 +278,8 @@ atManager.getPermissionsStatus(tokenID, ['ohos.permission.CAMERA']).then((data: 
   console.error(`getPermissionsStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## getVersion
 
@@ -297,6 +311,7 @@ getVersion(): Promise<number>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -311,6 +326,8 @@ promise.then((data: number) => {
   console.error(`getVersion fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## grantPermission
 
@@ -359,6 +376,7 @@ grantPermission(tokenID: number, permissionName: Permissions, permissionFlags: n
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100014](../errorcode-access-token.md#12100014-非预期的权限) | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -374,6 +392,10 @@ atManager.grantPermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlags
   console.error(`grantPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="grantusergrantedpermission1"></a>
 
 ## grantUserGrantedPermission
 
@@ -415,7 +437,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
@@ -424,6 +446,7 @@ grantUserGrantedPermission(tokenID: number, permissionName: Permissions, permiss
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -440,7 +463,9 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 });
 ```
 
-<a id="grantusergrantedpermission-1"></a>
+<!--DelEnd-->
+
+<a id="grantusergrantedpermission2"></a>
 
 ## grantUserGrantedPermission
 
@@ -480,7 +505,7 @@ grantUserGrantedPermission(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GRANT_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
@@ -489,6 +514,7 @@ grantUserGrantedPermission(
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | The application specified by the tokenID is not allowed to be granted with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -507,6 +533,8 @@ atManager.grantUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', perm
 });
 ```
 
+<!--DelEnd-->
+
 ## off('permissionStateChange')
 
 ```TypeScript
@@ -523,7 +551,7 @@ off(
 取消订阅时，若不传入callback，则批量取消与tokenIDList和permissionList完全匹配的所有监听回调。
 
 > **说明：** 
-> 该接口通常与on配套使用，用于取消通过on创建的监听关系。
+> 该接口通常与[on](arkts-ability-abilityaccessctrl-atmanager-i.md#on)配套使用，用于取消通过on创建的监听关系。
 
 **起始版本：** 9
 
@@ -550,12 +578,13 @@ off(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenIDList or permissionList is not in the listening list. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -573,6 +602,8 @@ try {
   console.error(`catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## on('permissionStateChange')
 
@@ -611,14 +642,14 @@ on(
 | --- | --- | --- | --- |
 | type | 'permissionStateChange' | 是 | 订阅事件类型，固定为'permissionStateChange'，权限状态变更事件。 |
 | tokenIDList | Array&lt;number&gt; | 是 | 订阅的tokenID列表，为空时表示订阅所有的应用的权限状态变化。应用的身份标识可通过应用BundleInfo中的ApplicationInfo中的[accessTokenId]{@link./bundleManager/ApplicationInfo:ApplicationInfo.accessTokenId}字段获取。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的tokenID必须为大于0的整数。<br>BundleInfo获取可参考：[bundleManager.getBundleInfoSync](arkts-ability-bundlemanager-getbundleinfosync-f.md)。 |
-| permissionList | Array&lt;Permissions&gt; | 是 | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。传入无效值时返回错误码12100001。<br>最大长度为1024且不能为空。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
+| permissionList | Array&lt;Permissions&gt; | 是 | 订阅的权限名列表，为空时表示订阅所有的权限状态变化。传入无效值时返回错误码12100001。<br>最大长度为1024。取值约束：列表中的权限名需为有效权限名，权限名长度不能超过256个字符。 |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[PermissionStateChangeInfo](arkts-ability-abilityaccessctrl-permissionstatechangeinfo-i.md)&gt; | 是 | 回调函数。订阅指定tokenID与指定权限名状态变更事件的回调。 |
 
 **错误码：**
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.GET_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. Possible causes: 1. The tokenIDList or permissionList exceeds the size limit; 2. The tokenIDs or permissionNames in the list are all invalid. |
@@ -626,6 +657,7 @@ on(
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100008](../errorcode-access-token.md#12100008-内存申请失败) | Out of memory. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -647,6 +679,8 @@ try {
   console.error(`catch errcode: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## queryStatusByPermission
 
@@ -692,6 +726,7 @@ queryStatusByPermission(
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100015](../errorcode-access-token.md#12100015-查询的数据超过上限) | The queried data exceeds the upper limit. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -706,6 +741,8 @@ atManager.queryStatusByPermission(permissionList).then((data: Array<abilityAcces
   console.error(`queryStatusByPermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## queryStatusByTokenID
 
@@ -750,6 +787,7 @@ queryStatusByTokenID(tokenIDList: Array<number>): Promise<Array<PermissionStatus
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100015](../errorcode-access-token.md#12100015-查询的数据超过上限) | The queried data exceeds the upper limit. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -765,6 +803,8 @@ atManager.queryStatusByTokenID(tokenIDList).then((data: Array<abilityAccessCtrl.
   console.error(`queryStatusByTokenID fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## requestPermissionOnApplicationSetting
 
@@ -805,6 +845,7 @@ requestPermissionOnApplicationSetting(tokenID: number): Promise<void>
 | [12100002](../errorcode-access-token.md#12100002-tokenid不存在) | The specified tokenID does not exist. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -819,6 +860,8 @@ atManager.requestPermissionOnApplicationSetting(tokenID).then(() => {
   console.error(`requestPermissionOnApplicationSetting fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## requestPermissionsFromUserWithWindowId
 
@@ -866,6 +909,7 @@ requestPermissionsFromUserWithWindowId(
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. windowId is invalid. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. An error occurs when creating the popup window or obtaining the user operation result. |
 
+<!--Del-->
 **示例**
 
 下述示例中context的获取方式请参见[获取UIAbility的上下文信息](../../../application-models/uiability-usage.md#获取uiability的上下文信息)。
@@ -892,6 +936,8 @@ atManager.requestPermissionsFromUserWithWindowId(context, windowId, ['ohos.permi
   console.error(`requestPermissionsFromUserWithWindowId fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
 
 ## revokePermission
 
@@ -947,6 +993,7 @@ revokePermission(
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100014](../errorcode-access-token.md#12100014-非预期的权限) | Unexpected permission. The specified permission is not a user_grant or manual_settings permission. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -969,6 +1016,10 @@ atManager.revokePermission(tokenID, 'ohos.permission.READ_AUDIO', permissionFlag
   console.error(`revokePermission fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->
+
+<a id="revokeusergrantedpermission1"></a>
 
 ## revokeUserGrantedPermission
 
@@ -1012,7 +1063,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
@@ -1021,6 +1072,7 @@ revokeUserGrantedPermission(tokenID: number, permissionName: Permissions, permis
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1037,7 +1089,9 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
 });
 ```
 
-<a id="revokeusergrantedpermission-1"></a>
+<!--DelEnd-->
+
+<a id="revokeusergrantedpermission2"></a>
 
 ## revokeUserGrantedPermission
 
@@ -1077,7 +1131,7 @@ revokeUserGrantedPermission(
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission"ohos.permission.REVOKE_SENSITIVE_PERMISSIONS". |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The tokenID is 0, the permissionName exceeds 256 characters or is not declared in the module.json file, or the flags value is invalid. |
@@ -1086,6 +1140,7 @@ revokeUserGrantedPermission(
 | [12100006](../errorcode-access-token.md#12100006-指定操作不允许) | The application specified by the tokenID is not allowed to be revoked with the specified permission. Either the application is a sandbox or the tokenID is from a remote device. |
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1103,6 +1158,10 @@ atManager.revokeUserGrantedPermission(tokenID, 'ohos.permission.READ_AUDIO', per
   }
 });
 ```
+
+<!--DelEnd-->
+
+<a id="setpermissionrequesttogglestatus1"></a>
 
 ## setPermissionRequestToggleStatus
 
@@ -1141,7 +1200,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. Interface caller does not have permission specified below. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. Interface caller is not a system app. |
 | [12100001](../errorcode-access-token.md#12100001-入参错误) | Invalid parameter. The permissionName exceeds 256 characters, the specified permission is not a user_grant permission, or the status value is invalid. |
@@ -1150,6 +1209,7 @@ setPermissionRequestToggleStatus(permissionName: Permissions, status: Permission
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. A database error occurs. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1166,7 +1226,9 @@ atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.Permiss
 });
 ```
 
-<a id="setpermissionrequesttogglestatus-1"></a>
+<!--DelEnd-->
+
+<a id="setpermissionrequesttogglestatus2"></a>
 
 ## setPermissionRequestToggleStatus
 
@@ -1218,6 +1280,7 @@ setPermissionRequestToggleStatus(
 | [12100007](../errorcode-access-token.md#12100007-系统服务工作异常) | Service exception. |
 | [12100009](../errorcode-access-token.md#12100009-服务内部错误) | Common inner error. A database error occurs. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -1233,3 +1296,5 @@ atManager.setPermissionRequestToggleStatus(permission, abilityAccessCtrl.Permiss
   console.error(`setPermissionRequestToggleStatus fail, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

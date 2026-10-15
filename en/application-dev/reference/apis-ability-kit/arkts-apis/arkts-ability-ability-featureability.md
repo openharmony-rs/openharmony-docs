@@ -4,8 +4,6 @@ The FeatureAbility module provides APIs that enable user interaction. You can us
 
 **Since:** 6
 
-**Model restriction:** This API can be used only in the FA model.
-
 <!--Device-unnamed-declare namespace featureAbility--><!--Device-unnamed-declare namespace featureAbility-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.FAModel
@@ -22,25 +20,25 @@ import { featureAbility } from '@kit.AbilityKit';
 
 | Name | Description |
 | --- | --- |
-| [acquireDataAbilityHelper](arkts-ability-featureability-acquiredataabilityhelper-f.md) | Obtains a dataAbilityHelper object. |
-| [connectAbility](arkts-ability-featureability-connectability-f.md) | Connects this ability to a ServiceAbility. |
-| [disconnectAbility](arkts-ability-featureability-disconnectability-f.md#disconnectability) | Disconnects this ability from a specific ServiceAbility. This API uses an asynchronous callback to return the result. |
-| [disconnectAbility](arkts-ability-featureability-disconnectability-f.md#disconnectability-1) | Disconnects this ability from a specific ServiceAbility. This API uses a promise to return the result. |
-| [getContext](arkts-ability-featureability-getcontext-f.md) | Obtains the application context. |
-| [getWant](arkts-ability-featureability-getwant-f.md#getwant) | Obtains the Want corresponding to the ability to start. This API uses an asynchronous callback to return the result. |
-| [getWant](arkts-ability-featureability-getwant-f.md#getwant-1) | Obtains the Want corresponding to the ability to start. This API uses a promise to return the result. |
-| [getWindow](arkts-ability-featureability-getwindow-f.md#getwindow) | Obtains the window corresponding to this ability. This API uses an asynchronous callback to return the result. |
-| [getWindow](arkts-ability-featureability-getwindow-f.md#getwindow-1) | Obtains the window corresponding to this ability. This API uses a promise to return the result. |
-| [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md#haswindowfocus) | Checks whether the main window of this ability has the focus. This API uses an asynchronous callback to return the result. |
-| [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md#haswindowfocus-1) | Checks whether the main window of this ability has the focus. This API uses a promise to return the result. |
-| [startAbility](arkts-ability-featureability-startability-f.md#startability) | Starts an ability. This API uses an asynchronous callback to return the result. |
-| [startAbility](arkts-ability-featureability-startability-f.md#startability-1) | Starts an ability. This API uses a promise to return the result. |
-| [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult) | Starts an ability. This API uses an asynchronous callback to return the result. The following situations may be possible for a started ability: |
-| [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult-1) | Starts an ability. This API uses a promise to return the result. The following situations may be possible for a started ability: |
-| [terminateSelf](arkts-ability-featureability-terminateself-f.md#terminateself) | Terminates this ability. This API uses an asynchronous callback to return the result. |
-| [terminateSelf](arkts-ability-featureability-terminateself-f.md#terminateself-1) | Terminates this ability. This API uses a promise to return the result. |
-| [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult) | Terminates this ability. This API uses an asynchronous callback to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called. |
-| [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult-1) | Terminates this ability. This API uses a promise to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called. |
+| [acquireDataAbilityHelper](arkts-ability-featureability-acquiredataabilityhelper-f.md#acquiredataabilityhelper) | Obtains a dataAbilityHelper object. |
+| [connectAbility](arkts-ability-featureability-connectability-f.md#connectability) | Connects this ability to a ServiceAbility. |
+| [disconnectAbility](arkts-ability-featureability-disconnectability-f.md#disconnectability1) | Disconnects this ability from a specific ServiceAbility. This API uses an asynchronous callback to return the result. |
+| [disconnectAbility](arkts-ability-featureability-disconnectability-f.md#disconnectability2) | Disconnects this ability from a specific ServiceAbility. This API uses a promise to return the result. |
+| [getContext](arkts-ability-featureability-getcontext-f.md#getcontext) | Obtains the application context. |
+| [getWant](arkts-ability-featureability-getwant-f.md#getwant1) | Obtains the Want corresponding to the ability to start. This API uses an asynchronous callback to return the result. |
+| [getWant](arkts-ability-featureability-getwant-f.md#getwant2) | Obtains the Want corresponding to the ability to start. This API uses a promise to return the result. |
+| [getWindow](arkts-ability-featureability-getwindow-f.md#getwindow1) | Obtains the window corresponding to this ability. This API uses an asynchronous callback to return the result. |
+| [getWindow](arkts-ability-featureability-getwindow-f.md#getwindow2) | Obtains the window corresponding to this ability. This API uses a promise to return the result. |
+| [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md#haswindowfocus1) | Checks whether the main window of this ability has the focus. This API uses an asynchronous callback to return the result. |
+| [hasWindowFocus](arkts-ability-featureability-haswindowfocus-f.md#haswindowfocus2) | Checks whether the main window of this ability has the focus. This API uses a promise to return the result. |
+| [startAbility](arkts-ability-featureability-startability-f.md#startability1) | Starts an ability. This API uses an asynchronous callback to return the result. |
+| [startAbility](arkts-ability-featureability-startability-f.md#startability2) | Starts an ability. This API uses a promise to return the result. |
+| [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult1) | Starts an ability. This API uses an asynchronous callback to return the result. The following situations may be possible for a started ability: |
+| [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult2) | Starts an ability. This API uses a promise to return the result. The following situations may be possible for a started ability: |
+| [terminateSelf](arkts-ability-featureability-terminateself-f.md#terminateself1) | Terminates this ability. This API uses an asynchronous callback to return the result. |
+| [terminateSelf](arkts-ability-featureability-terminateself-f.md#terminateself2) | Terminates this ability. This API uses a promise to return the result. |
+| [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult1) | Terminates this ability. This API uses an asynchronous callback to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult1), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called. |
+| [terminateSelfWithResult](arkts-ability-featureability-terminateselfwithresult-f.md#terminateselfwithresult2) | Terminates this ability. This API uses a promise to return the result. If the ability is started by calling [startAbilityForResult](arkts-ability-featureability-startabilityforresult-f.md#startabilityforresult1), the result is returned to the caller when **terminateSelfWithResult** is called. Otherwise, no result is returned to the caller when **terminateSelfWithResult** is called. |
 
 ### Types
 

@@ -18,6 +18,8 @@ In the following API examples, you must first use [getInputMethodAbility](arkts-
 import { inputMethodEngine } from '@kit.IMEKit';
 ```
 
+<a id="createpanel1"></a>
+
 ## createPanel
 
 ```TypeScript
@@ -28,7 +30,7 @@ Creates an input method panel. This API can be called only by the input method a
 > **NOTE:** <br>
 > <br>
 > Only one [SOFT_KEYBOARD](arkts-ime-inputmethodengine-paneltype-e.md) panel and one [STATUS_BAR](arkts-ime-inputmethodengine-paneltype-e.md) panel can be created for a single input method. <br> <br>
-> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or set **showInSubwindow** to **false**.
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu1), or set **showInSubwindow** to **false**.
 
 **Since:** 10
 
@@ -80,7 +82,7 @@ class InputMethodExt extends InputMethodExtensionAbility {
 }
 ```
 
-<a id="createpanel-1"></a>
+<a id="createpanel2"></a>
 
 ## createPanel
 
@@ -93,7 +95,7 @@ Creates an input method panel. This API can be called only by the input method a
 > <br>
 > Only one [SOFT_KEYBOARD](arkts-ime-inputmethodengine-paneltype-e.md) panel and one [STATUS_BAR](arkts-ime-inputmethodengine-paneltype-e.md) panel can be created for a single input method. <br>
 > <br>
-> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu), or set **showInSubwindow** to **false**.
+> The input method panel does not support subwindows. For example, subwindows cannot be created using APIs such as [window.createWindow](../../../windowmanager/application-window-fa.md#setting-the-child-window-of-an-application), [bindContextMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1), and [CustomDialog](../../apis-arkui/arkts-apis/arkts-arkui-customdialogcontroller.md#custom_dialog_controllercustomdialog). You are advised to adopt alternative solutions to sub-windows, such as using a [dialog box](../../apis-arkui/arkts-apis/arkts-arkui-arkui-advanced-dialog.md) or [bindMenu](../../apis-arkui/arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bindmenu1), or set **showInSubwindow** to **false**.
 
 **Since:** 10
 
@@ -147,6 +149,8 @@ class InputMethodExt extends InputMethodExtensionAbility {
     }
 }
 ```
+
+<a id="destroypanel1"></a>
 
 ## destroyPanel
 
@@ -209,7 +213,7 @@ if (inputPanel) {
 }
 ```
 
-<a id="destroypanel-1"></a>
+<a id="destroypanel2"></a>
 
 ## destroyPanel
 
@@ -832,7 +836,7 @@ Enables listening for changes of the screen ID of the window associated with the
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
+| [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability;         2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
 **Examples**
 

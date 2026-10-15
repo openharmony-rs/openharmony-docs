@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="verifyabc1"></a>
+
 ## verifyAbc
 
 ```TypeScript
@@ -41,6 +43,7 @@ function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean, callba
 | [17700201](../errorcode-bundle.md#17700201-abc文件校验失败) | Failed to verify the abc file. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,8 +67,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="verifyabc-1"></a>
+
+<a id="verifyabc2"></a>
 
 ## verifyAbc
 
@@ -107,6 +112,7 @@ function verifyAbc(abcPaths: Array<string>, deleteOriginalFiles: boolean): Promi
 | [17700201](../errorcode-bundle.md#17700201-abc文件校验失败) | Failed to verify the abc file. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied, non-system app called system api.<br>**适用版本：** 12+ |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -127,3 +133,5 @@ try {
   hilog.error(0x0000, 'testTag', 'verifyAbc failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

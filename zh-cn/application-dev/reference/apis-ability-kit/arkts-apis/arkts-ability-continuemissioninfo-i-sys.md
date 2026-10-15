@@ -4,7 +4,7 @@
 export interface ContinueMissionInfo
 ```
 
-表示发起按照包名迁移时所需参数的接口对象，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission-2)
+表示发起按照包名迁移时所需参数的接口对象，迁移Mission详见：[continueMission接口](arkts-ability-distributedmissionmanager-continuemission-f-sys.md#continuemission3)
 
 **起始版本：** 10
 

@@ -14,33 +14,17 @@ Enumerates the types of light painting shutter modes.
 
 **系统接口：** 此接口为系统接口。
 
-## TRAFFIC_TRAILS
+## LIGHT_GRAFFITI
 
 ```TypeScript
-TRAFFIC_TRAILS = 0
+LIGHT_GRAFFITI = 3
 ```
 
-Traffic trails.
+Light graffiti.
 
 **起始版本：** 12
 
-<!--Device-LightPaintingType-TRAFFIC_TRAILS = 0--><!--Device-LightPaintingType-TRAFFIC_TRAILS = 0-End-->
-
-**系统能力：** SystemCapability.Multimedia.Camera.Core
-
-**系统接口：** 此接口为系统接口。
-
-## STAR_TRAILS
-
-```TypeScript
-STAR_TRAILS = 1
-```
-
-Star trails.
-
-**起始版本：** 12
-
-<!--Device-LightPaintingType-STAR_TRAILS = 1--><!--Device-LightPaintingType-STAR_TRAILS = 1-End-->
+<!--Device-LightPaintingType-LIGHT_GRAFFITI = 3--><!--Device-LightPaintingType-LIGHT_GRAFFITI = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 
@@ -62,17 +46,33 @@ Silky water.
 
 **系统接口：** 此接口为系统接口。
 
-## LIGHT_GRAFFITI
+## STAR_TRAILS
 
 ```TypeScript
-LIGHT_GRAFFITI = 3
+STAR_TRAILS = 1
 ```
 
-Light graffiti.
+Star trails.
 
 **起始版本：** 12
 
-<!--Device-LightPaintingType-LIGHT_GRAFFITI = 3--><!--Device-LightPaintingType-LIGHT_GRAFFITI = 3-End-->
+<!--Device-LightPaintingType-STAR_TRAILS = 1--><!--Device-LightPaintingType-STAR_TRAILS = 1-End-->
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
+**系统接口：** 此接口为系统接口。
+
+## TRAFFIC_TRAILS
+
+```TypeScript
+TRAFFIC_TRAILS = 0
+```
+
+Traffic trails.
+
+**起始版本：** 12
+
+<!--Device-LightPaintingType-TRAFFIC_TRAILS = 0--><!--Device-LightPaintingType-TRAFFIC_TRAILS = 0-End-->
 
 **系统能力：** SystemCapability.Multimedia.Camera.Core
 

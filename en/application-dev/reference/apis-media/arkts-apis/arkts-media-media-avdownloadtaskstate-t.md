@@ -1,0 +1,25 @@
+# AVDownloadTaskState
+
+```TypeScript
+type AVDownloadTaskState = 'init' | 'queued' | 'running' | 'completed' | 'paused' | 'removing' | 'error'
+```
+
+Enumerates the states of the download task.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-media-type AVDownloadTaskState = 'init' | 'queued' | 'running' | 'completed' | 'paused' | 'removing' | 'error'--><!--Device-media-type AVDownloadTaskState = 'init' | 'queued' | 'running' | 'completed' | 'paused' | 'removing' | 'error'-End-->
+
+**System capability:** SystemCapability.Multimedia.Media.Core
+
+| Type | Description |
+| --- | --- |
+| 'init' | The download task is being initialized. |
+| 'queued' | The download task is waiting in the queue. |
+| 'running' | The download task is running. |
+| 'completed' | The download task is complete. |
+| 'paused' | The download task is paused. |
+| 'removing' | The download task is being removed. |
+| 'error' | An error occurred in the download task. |

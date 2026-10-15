@@ -4,7 +4,7 @@
 export interface BundleInfo
 ```
 
-The module defines the bundle information.
+The module defines the bundle information. An application can obtain its own bundle information through [bundleManager.getBundleInfoForSelf](arkts-ability-bundlemanager-getbundleinfoforself-f.md), with [bundleFlags](arkts-ability-bundlemanager-bundleflag-e.md) set to the information to be contained in the returned [BundleInfo](arkts-ability-bundleinfo-i.md).
 
 **Since:** 9
 
@@ -58,7 +58,7 @@ Define the enumeration of device mode distribution policies, which is used to sp
 readonly sandboxCreatorBundleName?: string
 ```
 
-Bundle name of the sandbox application creator.
+Bundle name of the creator of the sandbox clone.
 
 **Type:** string
 

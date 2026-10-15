@@ -4,11 +4,7 @@
 export interface ShortcutWant
 ```
 
-
-> **NOTE:** 
-> 
-> This API has been supported since API version 7 and deprecated since API version 9. You are advised to use
-> [bundleManager-ShortcutWant](arkts-ability-shortcutinfo-shortcutwant-depr-i-sys.md) instead.
+Want for the shortcut.
 
 **Since:** 7
 

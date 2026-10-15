@@ -4,21 +4,23 @@
 export interface MifareClassicTag extends TagSession
 ```
 
-Provides APIs to access MIFARE Classic properties and perform I/O operations on a tag. This class inherits from [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
+Provides APIs to access MIFARE Classic properties and perform I/O operations on a tag. This class inherits from [TagSession](arkts-connectivity-tagsession-i.md).
 
-**TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-tagsession-i.md).
+**TagSession** is the base class of all NFC tag technologies. It provides common interfaces for establishing connections and transferring data. For more details, see [TagSession](arkts-connectivity-tagsession-i.md).
 
 For details about how to obtain a **MifareClassicTag** object, see [NFC Tag Read/Write Development](../../../connectivity/nfc/nfc-tag-access-guide.md).
 
 The following describes the unique APIs of **MifareClassicTag**.
 
-**Inheritance/Implementation:** MifareClassicTag extends [TagSession](arkts-connectivity-tagsession-tagsession-i.md)
+**Inheritance/Implementation:** MifareClassicTag extends [TagSession](arkts-connectivity-tagsession-i.md)
 
 **Since:** 9
 
 <!--Device-unnamed-export interface MifareClassicTag extends TagSession--><!--Device-unnamed-export interface MifareClassicTag extends TagSession-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Tag
+
+<a id="authenticatesector1"></a>
 
 ## authenticateSector
 
@@ -32,7 +34,7 @@ Authenticates a sector using a key. The sector can be accessed only after the au
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-authenticateSector(sectorIndex: int, key: int[], isKeyA: boolean): Promise<void>--><!--Device-MifareClassicTag-authenticateSector(sectorIndex: int, key: int[], isKeyA: boolean): Promise<void>-End-->
 
@@ -92,7 +94,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="authenticatesector-1"></a>
+<a id="authenticatesector2"></a>
 
 ## authenticateSector
 
@@ -106,7 +108,7 @@ Authenticates a sector using a key. The sector can be accessed only after the au
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-authenticateSector(sectorIndex: int, key: int[], isKeyA: boolean, callback: AsyncCallback<void>): void--><!--Device-MifareClassicTag-authenticateSector(sectorIndex: int, key: int[], isKeyA: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -163,6 +165,8 @@ function nfcTechDemo() {
 }
 ```
 
+<a id="decrementblock1"></a>
+
 ## decrementBlock
 
 ```TypeScript
@@ -175,7 +179,7 @@ Decrements a block with the specified value and saves the result in a buffer for
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-decrementBlock(blockIndex: int, value: int): Promise<void>--><!--Device-MifareClassicTag-decrementBlock(blockIndex: int, value: int): Promise<void>-End-->
 
@@ -234,7 +238,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="decrementblock-1"></a>
+<a id="decrementblock2"></a>
 
 ## decrementBlock
 
@@ -248,7 +252,7 @@ Decrements a block with the specified value. This API uses an asynchronous callb
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-decrementBlock(blockIndex: int, value: int, callback: AsyncCallback<void>): void--><!--Device-MifareClassicTag-decrementBlock(blockIndex: int, value: int, callback: AsyncCallback<void>): void-End-->
 
@@ -315,7 +319,7 @@ Obtains the number of blocks in a sector.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-getBlockCountInSector(sectorIndex: int): int--><!--Device-MifareClassicTag-getBlockCountInSector(sectorIndex: int): int-End-->
 
@@ -366,7 +370,7 @@ Obtains the index of the first block in a sector.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-getBlockIndex(sectorIndex: int): int--><!--Device-MifareClassicTag-getBlockIndex(sectorIndex: int): int-End-->
 
@@ -417,7 +421,7 @@ Obtains the number of sectors in this MIFARE Classic tag.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-getSectorCount(): int--><!--Device-MifareClassicTag-getSectorCount(): int-End-->
 
@@ -450,7 +454,7 @@ Obtains the index of the sector that holds the specified block.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-getSectorIndex(blockIndex: int): int--><!--Device-MifareClassicTag-getSectorIndex(blockIndex: int): int-End-->
 
@@ -501,7 +505,7 @@ Obtains the size of this tag. For details, see [MifareClassicSize](arkts-connect
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-getTagSize(): int--><!--Device-MifareClassicTag-getTagSize(): int-End-->
 
@@ -534,7 +538,7 @@ Obtains the type of this MIFARE Classic tag.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-getType(): tag.MifareClassicType--><!--Device-MifareClassicTag-getType(): tag.MifareClassicType-End-->
 
@@ -556,6 +560,8 @@ let getType : tag.MifareClassicType = mifareClassic.getType();
 console.info("mifareClassic getType: " + getType);
 ```
 
+<a id="incrementblock1"></a>
+
 ## incrementBlock
 
 ```TypeScript
@@ -568,7 +574,7 @@ Increments a block with the specified value and saves the result in a buffer for
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-incrementBlock(blockIndex: int, value: int): Promise<void>--><!--Device-MifareClassicTag-incrementBlock(blockIndex: int, value: int): Promise<void>-End-->
 
@@ -627,7 +633,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="incrementblock-1"></a>
+<a id="incrementblock2"></a>
 
 ## incrementBlock
 
@@ -641,7 +647,7 @@ Increments a block with the specified value and saves the result in a buffer for
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-incrementBlock(blockIndex: int, value: int, callback: AsyncCallback<void>): void--><!--Device-MifareClassicTag-incrementBlock(blockIndex: int, value: int, callback: AsyncCallback<void>): void-End-->
 
@@ -707,7 +713,7 @@ Checks whether it is an emulated tag.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-isEmulatedTag(): boolean--><!--Device-MifareClassicTag-isEmulatedTag(): boolean-End-->
 
@@ -730,6 +736,8 @@ let isEmulatedTag : boolean = mifareClassic.isEmulatedTag();
 console.info("mifareClassic isEmulatedTag: " + isEmulatedTag);
 ```
 
+<a id="readsingleblock1"></a>
+
 ## readSingleBlock
 
 ```TypeScript
@@ -742,7 +750,7 @@ Reads a block (16 bytes) on this tag. This API uses a promise to return the resu
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-readSingleBlock(blockIndex: int): Promise<int[]>--><!--Device-MifareClassicTag-readSingleBlock(blockIndex: int): Promise<int[]>-End-->
 
@@ -799,7 +807,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="readsingleblock-1"></a>
+<a id="readsingleblock2"></a>
 
 ## readSingleBlock
 
@@ -813,7 +821,7 @@ Reads a block (16 bytes) on this tag. This API uses an asynchronous callback to 
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-readSingleBlock(blockIndex: int, callback: AsyncCallback<int[]>): void--><!--Device-MifareClassicTag-readSingleBlock(blockIndex: int, callback: AsyncCallback<int[]>): void-End-->
 
@@ -867,6 +875,8 @@ function nfcTechDemo() {
 }
 ```
 
+<a id="restorefromblock1"></a>
+
 ## restoreFromBlock
 
 ```TypeScript
@@ -879,7 +889,7 @@ Restores data in the temporary register from a block. This API uses a promise to
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-restoreFromBlock(blockIndex: int): Promise<void>--><!--Device-MifareClassicTag-restoreFromBlock(blockIndex: int): Promise<void>-End-->
 
@@ -936,7 +946,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="restorefromblock-1"></a>
+<a id="restorefromblock2"></a>
 
 ## restoreFromBlock
 
@@ -950,7 +960,7 @@ Restores data in the temporary register from a block. This API uses an asynchron
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-restoreFromBlock(blockIndex: int, callback: AsyncCallback<void>): void--><!--Device-MifareClassicTag-restoreFromBlock(blockIndex: int, callback: AsyncCallback<void>): void-End-->
 
@@ -1004,6 +1014,8 @@ function nfcTechDemo() {
 }
 ```
 
+<a id="transfertoblock1"></a>
+
 ## transferToBlock
 
 ```TypeScript
@@ -1016,7 +1028,7 @@ Transfers data from the temporary register to a block. This API uses a promise t
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-transferToBlock(blockIndex: int): Promise<void>--><!--Device-MifareClassicTag-transferToBlock(blockIndex: int): Promise<void>-End-->
 
@@ -1073,7 +1085,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="transfertoblock-1"></a>
+<a id="transfertoblock2"></a>
 
 ## transferToBlock
 
@@ -1087,7 +1099,7 @@ Transfers data from the temporary register to a block. This API uses an asynchro
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-transferToBlock(blockIndex: int, callback: AsyncCallback<void>): void--><!--Device-MifareClassicTag-transferToBlock(blockIndex: int, callback: AsyncCallback<void>): void-End-->
 
@@ -1141,6 +1153,8 @@ function nfcTechDemo() {
 }
 ```
 
+<a id="writesingleblock1"></a>
+
 ## writeSingleBlock
 
 ```TypeScript
@@ -1153,7 +1167,7 @@ Writes data to a block on this tag. This API uses a promise to return the result
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-writeSingleBlock(blockIndex: int, data: int[]): Promise<void>--><!--Device-MifareClassicTag-writeSingleBlock(blockIndex: int, data: int[]): Promise<void>-End-->
 
@@ -1213,7 +1227,7 @@ function nfcTechDemo() {
 }
 ```
 
-<a id="writesingleblock-1"></a>
+<a id="writesingleblock2"></a>
 
 ## writeSingleBlock
 
@@ -1227,7 +1241,7 @@ Writes data to a block on this tag. This API uses an asynchronous callback to re
 
 **Required permissions:** ohos.permission.NFC_TAG
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-MifareClassicTag-writeSingleBlock(blockIndex: int, data: int[], callback: AsyncCallback<void>): void--><!--Device-MifareClassicTag-writeSingleBlock(blockIndex: int, data: int[], callback: AsyncCallback<void>): void-End-->
 

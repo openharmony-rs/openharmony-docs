@@ -12,7 +12,7 @@ import { EditorEventInfo, EditorMenuOptions, ExpandedMenuOptions, SelectionMenu,
 
 | Name | Description |
 | --- | --- |
-| [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md) | When the input parameter is empty, both the content area and the component size of the **SelectionMenu** component are zero. For example, if the [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md) component uses the [bindSelectionMenu](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu) API to bind a right-click menu of **SelectionMenu**, no menu will pop up when right-clicking the rich text component area. |
+| [SelectionMenu](arkts-arkui-arkui-advanced-selectionmenu-selectionmenu-f.md#selectionmenu) | When the input parameter is empty, both the content area and the component size of the **SelectionMenu** component are zero. For example, if the [RichEditor](../arkts-components/arkts-arkui-richeditor-comp.md) component uses the [bindSelectionMenu](../arkts-components/arkts-arkui-richeditor-comp-attribute.md#bindselectionmenu) API to bind a right-click menu of **SelectionMenu**, no menu will pop up when right-clicking the rich text component area. |
 
 ### Interfaces
 

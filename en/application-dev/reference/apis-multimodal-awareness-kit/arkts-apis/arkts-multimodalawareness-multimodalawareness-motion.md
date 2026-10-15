@@ -20,26 +20,26 @@ import { motion } from '@kit.MultimodalAwarenessKit';
 
 | Name | Description |
 | --- | --- |
-| [getRecentOperatingHandStatus](arkts-multimodalawareness-motion-getrecentoperatinghandstatus-f.md) | Obtains the latest operating hand status. |
-| [off](arkts-multimodalawareness-motion-off-f.md#offoperatinghandchanged) | Unsubscribes from operating hand change events. |
-| [off](arkts-multimodalawareness-motion-off-f.md#offholdinghandchanged) | Disables listening for holding hand status changes. |
-| [on](arkts-multimodalawareness-motion-on-f.md#onoperatinghandchanged) | Subscribes to operating hand awareness events. The system collects user touch data through touchscreen sensors and combines gesture recognition algorithms to determine whether the current operating hand is the left hand or the right hand. This is suitable for scenarios such as gesture interaction and single-hand or dual-hand operation adaptation, optimizing the UI layout and interaction mode by identifying the user's operating hand state. It is recommended that you call off() to unsubscribe and release resources after use, to avoid unnecessary performance and power consumption overhead. Related method: off('operatingHandChanged'): unsubscribes from operating hand awareness events. |
-| [on](arkts-multimodalawareness-motion-on-f.md#onholdinghandchanged) | Subscribes to the holding hand status change awareness event. The system uses sensor data combined with recognition algorithms to determine whether the current holding hand is the left hand or the right hand. This is suitable for scenarios where reading applications, video playback, and other applications need to adjust the UI layout or functions based on the user's holding hand status. It is recommended that you call off() to unsubscribe and release resources after use to avoid unnecessary performance and power consumption overhead. Related method: off('holdingHandChanged'): unsubscribes from the holding hand status change awareness event. |
+| [getRecentOperatingHandStatus](arkts-multimodalawareness-motion-getrecentoperatinghandstatus-f.md#getrecentoperatinghandstatus) | Obtains the latest operating hand status. |
+| [off('operatingHandChanged')](arkts-multimodalawareness-motion-off-f.md#offoperatinghandchanged) | Unsubscribes from operating hand change events. |
+| [off('holdingHandChanged')](arkts-multimodalawareness-motion-off-f.md#offholdinghandchanged) | Disables listening for holding hand status changes. |
+| [on('operatingHandChanged')](arkts-multimodalawareness-motion-on-f.md#onoperatinghandchanged) | Subscribes to operating hand awareness events. The system collects user touch data through touchscreen sensors and combines gesture recognition algorithms to determine whether the current operating hand is the left hand or the right hand. This is suitable for scenarios such as gesture interaction and single-hand or dual-hand operation adaptation, optimizing the UI layout and interaction mode by identifying the user's operating hand state. It is recommended that you call off() to unsubscribe and release resources after use, to avoid unnecessary performance and power consumption overhead. Related method: off('operatingHandChanged'): unsubscribes from operating hand awareness events. |
+| [on('holdingHandChanged')](arkts-multimodalawareness-motion-on-f.md#onholdinghandchanged) | Subscribes to the holding hand status change awareness event. The system uses sensor data combined with recognition algorithms to determine whether the current holding hand is the left hand or the right hand. This is suitable for scenarios where reading applications, video playback, and other applications need to adjust the UI layout or functions based on the user's holding hand status. It is recommended that you call off() to unsubscribe and release resources after use to avoid unnecessary performance and power consumption overhead. Related method: off('holdingHandChanged'): unsubscribes from the holding hand status change awareness event. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [offHoverHandChange](arkts-multimodalawareness-motion-offhoverhandchange-f-sys.md) | Unsubscribe to hover hand event. |
-| [offPickupChange](arkts-multimodalawareness-motion-offpickupchange-f-sys.md) | Unsubscribe to pick up sensor event. |
-| [offRotateChange](arkts-multimodalawareness-motion-offrotatechange-f-sys.md) | Unsubscribe to rotate sensor event. |
-| [offSmartRotateChange](arkts-multimodalawareness-motion-offsmartrotatechange-f-sys.md) | Unsubscribe to smart rotate sensor event. |
-| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange) | Subscribes to hover hand events and immediately starts detection for five seconds. |
-| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange-1) | Subscribes to hover hand events and immediately starts detection. |
-| [onPickupChange](arkts-multimodalawareness-motion-onpickupchange-f-sys.md) | Subscribe to pick up sensor event. |
-| [onRotateChange](arkts-multimodalawareness-motion-onrotatechange-f-sys.md) | Subscribe to rotate sensor event. |
-| [onSmartRotateChange](arkts-multimodalawareness-motion-onsmartrotatechange-f-sys.md) | Subscribe to smart rotate sensor event. |
+| [offHoverHandChange](arkts-multimodalawareness-motion-offhoverhandchange-f-sys.md#offhoverhandchange) | Unsubscribe to hover hand event. |
+| [offPickupChange](arkts-multimodalawareness-motion-offpickupchange-f-sys.md#offpickupchange) | Unsubscribe to pick up sensor event. |
+| [offRotateChange](arkts-multimodalawareness-motion-offrotatechange-f-sys.md#offrotatechange) | Unsubscribe to rotate sensor event. |
+| [offSmartRotateChange](arkts-multimodalawareness-motion-offsmartrotatechange-f-sys.md#offsmartrotatechange) | Unsubscribe to smart rotate sensor event. |
+| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange1) | Subscribes to hover hand events and immediately starts detection for five seconds. |
+| [onHoverHandChange](arkts-multimodalawareness-motion-onhoverhandchange-f-sys.md#onhoverhandchange2) | Subscribes to hover hand events and immediately starts detection. |
+| [onPickupChange](arkts-multimodalawareness-motion-onpickupchange-f-sys.md#onpickupchange) | Subscribe to pick up sensor event. |
+| [onRotateChange](arkts-multimodalawareness-motion-onrotatechange-f-sys.md#onrotatechange) | Subscribe to rotate sensor event. |
+| [onSmartRotateChange](arkts-multimodalawareness-motion-onsmartrotatechange-f-sys.md#onsmartrotatechange) | Subscribe to smart rotate sensor event. |
 <!--DelEnd-->
 
 <!--Del-->

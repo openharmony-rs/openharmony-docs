@@ -6,6 +6,8 @@ declare type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptio
 
 Defines the options for a **DateTimeOptions** object.
 
+**Type:** import('../api/@ohos.intl').default.DateTimeOptions
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the options for a **DateTimeOptions** object.
 <!--Device-unnamed-declare type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptions--><!--Device-unnamed-declare type DateTimeOptions = import('../api/@ohos.intl').default.DateTimeOptions-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.intl').default.DateTimeOptions

@@ -6,6 +6,8 @@ export type Geofence = _Geofence
 
 Defines the configuration of a geofence.
 
+**Type:** _Geofence
+
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the configuration of a geofence.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _Geofence

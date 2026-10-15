@@ -49,6 +49,7 @@ Connects to an asset loader by obtaining a RemoteObject instance of AssetLoader,
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise used to return the RemoteObject instance of AssetLoader. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -67,6 +68,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## connectDB
 
@@ -97,6 +100,7 @@ Connects to a cloud database by obtaining a RemoteObject instance of CloudDB, wh
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise used to return the RemoteObject instance of CloudDB. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -115,6 +119,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## connectShareCenter
 
@@ -145,6 +151,7 @@ Connects to ShareCenter by obtaining a RemoteObject instance of ShareCenter, whi
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise used to return the RemoteObject instance of ShareCenter. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -163,6 +170,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getAppBriefInfo
 
@@ -186,6 +195,7 @@ Obtains brief application information. This API uses a promise to return the res
 | --- | --- |
 | Promise&lt;Record&lt;string, [AppBriefInfo](arkts-arkdata-cloudextension-appbriefinfo-i-sys.md)&gt;&gt; | Promise used to return bundleName and AppBriefInfo, in KV pairs. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -207,6 +217,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getAppSchema
 
@@ -236,6 +248,7 @@ Obtains the application database schema information. This API uses a promise to 
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[AppSchema](arkts-arkdata-cloudextension-appschema-i-sys.md)&gt;&gt; | Promise used to return the schema information obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -259,6 +272,8 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+<!--DelEnd-->
+
 ## getServiceInfo
 
 ```TypeScript
@@ -281,6 +296,7 @@ Obtains the server information. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;[ServiceInfo](arkts-arkdata-cloudextension-serviceinfo-i-sys.md)&gt; | Promise used to return the server information obtained. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -305,6 +321,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## subscribe
 
@@ -338,6 +356,7 @@ Subscribes to data. This API uses a promise to return the result.
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[SubscribeInfo](arkts-arkdata-cloudextension-subscribeinfo-i-sys.md)&gt;&gt; | Promise used to return the result, including the subscription expiration time and subscription information. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -360,6 +379,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## unsubscribe
 
@@ -389,6 +410,7 @@ Unsubscribes from data changes in the cloud. This API uses a promise to return t
 | --- | --- |
 | Promise&lt;number&gt; | Promise used to return the result. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -403,3 +425,5 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->

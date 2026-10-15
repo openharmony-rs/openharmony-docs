@@ -12,24 +12,6 @@ Enumerates the scrolling directions.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Vertical
-
-```TypeScript
-Vertical
-```
-
-Vertical scrollbar.
-
-**Since:** 8
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ScrollBarDirection-Vertical--><!--Device-ScrollBarDirection-Vertical-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## Horizontal
 
 ```TypeScript
@@ -45,5 +27,23 @@ Horizontal scrollbar.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ScrollBarDirection-Horizontal--><!--Device-ScrollBarDirection-Horizontal-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Vertical
+
+```TypeScript
+Vertical
+```
+
+Vertical scrollbar.
+
+**Since:** 8
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ScrollBarDirection-Vertical--><!--Device-ScrollBarDirection-Vertical-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -7,9 +7,9 @@ Before using the **InputMethodExtensionContext** module, you must define a child
  <br>import { InputMethodExtensionAbility, InputMethodExtensionContext } from '@kit.IMEKit';
  <br>import { Want } from '@kit.AbilityKit';
  <br>class InputMethodExtAbility extends InputMethodExtensionAbility {
- <br>  onCreate(want: Want): void {
- <br>    console.info('onCreate, want:' + want.abilityName);
- <br>  }
+ <br> onCreate(want: Want): void {
+ <br> console.info('onCreate, want:' + want.abilityName);
+ <br> }
  <br>}
  <br>```
 

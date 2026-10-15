@@ -38,6 +38,7 @@ function getAllDisposedRules(): Array<DisposedRuleConfiguration>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission denied. A non-system application is not allowed to call a system API. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ try {
   console.error('getAllDisposedRules failed ' + message);
 }
 ```
+
+<!--DelEnd-->

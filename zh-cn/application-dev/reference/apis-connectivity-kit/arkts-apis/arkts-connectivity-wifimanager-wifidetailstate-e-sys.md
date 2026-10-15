@@ -14,38 +14,6 @@ enum WifiDetailState
 
 **系统接口：** 此接口为系统接口。
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = -1
-```
-
-未指定。
-
-**起始版本：** 12
-
-<!--Device-WifiDetailState-UNKNOWN = -1--><!--Device-WifiDetailState-UNKNOWN = -1-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
-## INACTIVE
-
-```TypeScript
-INACTIVE = 0
-```
-
-已关闭。
-
-**起始版本：** 12
-
-<!--Device-WifiDetailState-INACTIVE = 0--><!--Device-WifiDetailState-INACTIVE = 0-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
 ## ACTIVATED
 
 ```TypeScript
@@ -94,6 +62,22 @@ DEACTIVATING = 3
 
 **系统接口：** 此接口为系统接口。
 
+## INACTIVE
+
+```TypeScript
+INACTIVE = 0
+```
+
+已关闭。
+
+**起始版本：** 12
+
+<!--Device-WifiDetailState-INACTIVE = 0--><!--Device-WifiDetailState-INACTIVE = 0-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
 ## SEMI_ACTIVATING
 
 ```TypeScript
@@ -121,6 +105,22 @@ SEMI_ACTIVE = 5
 **起始版本：** 12
 
 <!--Device-WifiDetailState-SEMI_ACTIVE = 5--><!--Device-WifiDetailState-SEMI_ACTIVE = 5-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = -1
+```
+
+未指定。
+
+**起始版本：** 12
+
+<!--Device-WifiDetailState-UNKNOWN = -1--><!--Device-WifiDetailState-UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

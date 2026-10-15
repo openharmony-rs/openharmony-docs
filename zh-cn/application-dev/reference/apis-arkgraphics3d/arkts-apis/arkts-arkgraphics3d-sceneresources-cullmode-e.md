@@ -6,25 +6,23 @@ export enum CullMode
 
 用于设置基于物理渲染（PBR）材质的剔除模式枚举。通过控制剔除物体的正面或背面几何面片，提升渲染性能和视觉效果。
 
-@enum { int }
-
 **起始版本：** 20
 
 <!--Device-unnamed-export enum CullMode--><!--Device-unnamed-export enum CullMode-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## NONE
+## BACK
 
 ```TypeScript
-NONE = 0
+BACK = 2
 ```
 
-禁用剔除。
+剔除背面几何面片。
 
 **起始版本：** 20
 
-<!--Device-CullMode-NONE = 0--><!--Device-CullMode-NONE = 0-End-->
+<!--Device-CullMode-BACK = 2--><!--Device-CullMode-BACK = 2-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
@@ -42,16 +40,16 @@ FRONT = 1
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D
 
-## BACK
+## NONE
 
 ```TypeScript
-BACK = 2
+NONE = 0
 ```
 
-剔除背面几何面片。
+禁用剔除。
 
 **起始版本：** 20
 
-<!--Device-CullMode-BACK = 2--><!--Device-CullMode-BACK = 2-End-->
+<!--Device-CullMode-NONE = 0--><!--Device-CullMode-NONE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUi.Graphics3D

@@ -26,7 +26,7 @@ import { installer } from '@kit.AbilityKit';
 additionalInfo?: string
 ```
 
-Additional information during application installation (usually an enterprise application). By default, no value is passed. The maximum length is 3,000 bytes. This field is usually specified by the application market of the operating system operator.
+Additional information during app installation. Default value: empty. The maximum length is 3000 bytes. This field is usually specified by the app market of the OS operator when installing an enterprise app, and is used to store additional information about the app.
 
 **Type:** string
 
@@ -44,7 +44,7 @@ Additional information during application installation (usually an enterprise ap
 crowdtestDeadline?: number
 ```
 
-End date of crowdtesting. The default value is **-1**, indicating that no end date is specified for crowdtesting.
+Deadline of the crowdtesting activity. Default value: -1, which indicates no deadline constraint. Unit: second.
 
 **Type:** number
 
@@ -62,7 +62,7 @@ End date of crowdtesting. The default value is **-1**, indicating that no end da
 hashParams?: Array<HashParam>
 ```
 
-Hash parameters. By default, no value is passed.
+Hash parameters. Default value: empty. The maximum length of the list is 1000.
 
 **Type:** Array&lt;[HashParam](arkts-ability-installer-hashparam-i-sys.md)&gt;
 
@@ -80,7 +80,7 @@ Hash parameters. By default, no value is passed.
 installFlag?: number
 ```
 
-Installation flag. The value **0x00** means initial installation, **0x01** means overwrite installation, and **0x10** means installation-free. The default value is **0x00**.
+Installation flag. Enumerated values: 0x00: initial installation of the app, 0x01: overwrite installation of the app, 0x10: free installation of the app. Default value: initial installation of the app.
 
 **Type:** number
 
@@ -98,7 +98,7 @@ Installation flag. The value **0x00** means initial installation, **0x01** means
 isKeepData?: boolean
 ```
 
-Whether to retain the data directory during bundle uninstall. The default value is **false**. **true** to retain, **false** otherwise.
+Whether to retain the data directory during uninstall. Default value: false. The value **true** indicates that the data directory is retained during uninstall, and **false** indicates that the data directory is not retained during uninstall.
 
 **Type:** boolean
 
@@ -154,7 +154,7 @@ possesses a notarized credential when calling the installation interface. If the
 pgoParams?: Array<PGOParam>
 ```
 
-Parameters of the Profile-guided Optimization (PGO) configuration file. The default value is null.
+PGO profile parameters. Default value: empty. The maximum length of the list is 500.
 
 **Type:** Array&lt;[PGOParam](arkts-ability-installer-pgoparam-i-sys.md)&gt;
 
@@ -172,7 +172,7 @@ Parameters of the Profile-guided Optimization (PGO) configuration file. The defa
 sharedBundleDirPaths?: Array<string>
 ```
 
-Paths of the shared bundle files. By default, no value is passed.
+Path of the shared bundle file. Default value: empty. The maximum length of the list is 500. Since API version 24, when a directory is specified, multiple HSPs with the same bundle name but different module names can exist in the directory. In API version 23 and earlier, only one HSP can exist in the directory.
 
 **Type:** Array&lt;string&gt;
 
@@ -190,7 +190,7 @@ Paths of the shared bundle files. By default, no value is passed.
 specifiedDistributionType?: string
 ```
 
-[Distribution type](../../../security/app-provision-structure.md) specified during application installation. By default, no value is passed. The maximum length is 128 bytes. This field is usually specified by the application market of the operating system operator.
+[Distribution type](../../../security/app-provision-structure.md) specified during app installation. Default value: empty. The maximum length is 128 bytes. This field is usually specified by the app market of the OS operator.
 
 **Type:** string
 
@@ -208,7 +208,7 @@ specifiedDistributionType?: string
 userId?: number
 ```
 
-User ID. The default value is the user ID of the caller. The value must be greater than or equal to 0. You can call [queryOsAccountLocalIdFromProcess](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) to obtain the user ID of the current process. When a driver application is installed, uninstalled, or restored, this parameter is ignored and the operation is executed for all users.
+User ID. Default value: the user where the caller is located. Value range: greater than or equal to 0. You can use [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) to obtain the user where the current process is located. When installing, uninstalling, or recovering a driver application, this parameter is ignored and the operation is executed for all users.
 
 **Type:** number
 
@@ -226,11 +226,11 @@ User ID. The default value is the user ID of the caller. The value must be great
 verifyCodeParams?: Array<VerifyCodeParam>
 ```
 
-Information about the code signature file. The default value is null.
+Code signing file parameters. Default value: empty. The maximum length of the list is 500.
 
 **NOTE:** 
 
-Starting from API version 10, the code signature file of an application is integrated into the installation package, rather than being specified by using this field. This field is deprecated since API version 11.
+Supported since API version 10 and deprecated since API version 11. The code signing file of an app will be integrated into the installation package, and it is no longer necessary to specify the code signing file of the installation package through this API.
 
 **Type:** Array&lt;[VerifyCodeParam](arkts-ability-installer-verifycodeparam-i-sys.md)&gt;
 

@@ -12,6 +12,22 @@ Enumerates the website threat types.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## THREAT_FRAUD
+
+```TypeScript
+THREAT_FRAUD = 1
+```
+
+Fraudulent website.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-ThreatType-THREAT_FRAUD = 1--><!--Device-ThreatType-THREAT_FRAUD = 1-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## THREAT_ILLEGAL
 
 ```TypeScript
@@ -28,19 +44,17 @@ Illegal website.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## THREAT_FRAUD
+## THREAT_NONE
 
 ```TypeScript
-THREAT_FRAUD = 1
+THREAT_NONE = 4
 ```
 
-Fraudulent website.
+Website that passes the security check and no risk is found.
 
-**Since:** 11
+**Since:** 21
 
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-ThreatType-THREAT_FRAUD = 1--><!--Device-ThreatType-THREAT_FRAUD = 1-End-->
+<!--Device-ThreatType-THREAT_NONE = 4--><!--Device-ThreatType-THREAT_NONE = 4-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -60,6 +74,20 @@ Website that poses security risks.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## THREAT_UNPROCESSED
+
+```TypeScript
+THREAT_UNPROCESSED = 5
+```
+
+Website that does not perform security check.
+
+**Since:** 21
+
+<!--Device-ThreatType-THREAT_UNPROCESSED = 5--><!--Device-ThreatType-THREAT_UNPROCESSED = 5-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## THREAT_WARNING
 
 ```TypeScript
@@ -73,33 +101,5 @@ Website suspected to contain unsafe content.
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-ThreatType-THREAT_WARNING = 3--><!--Device-ThreatType-THREAT_WARNING = 3-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## THREAT_NONE
-
-```TypeScript
-THREAT_NONE = 4
-```
-
-Website that passes the security check and no risk is found.
-
-**Since:** 21
-
-<!--Device-ThreatType-THREAT_NONE = 4--><!--Device-ThreatType-THREAT_NONE = 4-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## THREAT_UNPROCESSED
-
-```TypeScript
-THREAT_UNPROCESSED = 5
-```
-
-Website that does not perform security check.
-
-**Since:** 21
-
-<!--Device-ThreatType-THREAT_UNPROCESSED = 5--><!--Device-ThreatType-THREAT_UNPROCESSED = 5-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

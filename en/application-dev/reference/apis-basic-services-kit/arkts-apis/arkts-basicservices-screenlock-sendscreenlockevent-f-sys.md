@@ -6,6 +6,8 @@
 import { screenLock } from '@kit.BasicServicesKit';
 ```
 
+<a id="sendscreenlockevent1"></a>
+
 ## sendScreenLockEvent
 
 ```TypeScript
@@ -41,6 +43,7 @@ The screen lock app sends the event to the screen lock service.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 | [13200002](../errorcode-screenlock.md#13200002-screen-lock-management-service-is-abnormal) | the screenlock management service is abnormal. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,8 +58,10 @@ screenLock.sendScreenLockEvent('unlockScreenResult', 0, (err: BusinessError, res
 });
 ```
 
+<!--DelEnd-->
 
-<a id="sendscreenlockevent-1"></a>
+
+<a id="sendscreenlockevent2"></a>
 
 ## sendScreenLockEvent
 
@@ -98,6 +103,7 @@ The screen lock app sends the event to the screen lock service.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | permission verification failed, application which is not a system application uses system API. |
 | [13200002](../errorcode-screenlock.md#13200002-screen-lock-management-service-is-abnormal) | the screenlock management service is abnormal. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,3 +115,5 @@ screenLock.sendScreenLockEvent('unlockScreenResult', 0).then((result: Boolean) =
   console.error(`Failed to send screenlock event, Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

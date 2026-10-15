@@ -12,19 +12,19 @@ Enumerates the types of the event recurrence rule.
 
 **System capability:** SystemCapability.Applications.CalendarData
 
-## YEARLY
+## DAILY
 
 ```TypeScript
-YEARLY = 0
+DAILY = 3
 ```
 
-Yearly.
+Daily.
 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-RecurrenceFrequency-YEARLY = 0--><!--Device-RecurrenceFrequency-YEARLY = 0-End-->
+<!--Device-RecurrenceFrequency-DAILY = 3--><!--Device-RecurrenceFrequency-DAILY = 3-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData
 
@@ -60,18 +60,18 @@ Weekly.
 
 **System capability:** SystemCapability.Applications.CalendarData
 
-## DAILY
+## YEARLY
 
 ```TypeScript
-DAILY = 3
+YEARLY = 0
 ```
 
-Daily.
+Yearly.
 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-RecurrenceFrequency-DAILY = 3--><!--Device-RecurrenceFrequency-DAILY = 3-End-->
+<!--Device-RecurrenceFrequency-YEARLY = 0--><!--Device-RecurrenceFrequency-YEARLY = 0-End-->
 
 **System capability:** SystemCapability.Applications.CalendarData

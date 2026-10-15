@@ -4,7 +4,9 @@
 export type MissionCallback = _MissionCallback
 ```
 
-Defines the callback invoked after synchronization starts. It is used as an input parameter in [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener-1).
+Defines the callback invoked after synchronization starts. It is used as an input parameter in [registerMissionListener](arkts-ability-distributedmissionmanager-registermissionlistener-f-sys.md#registermissionlistener2).
+
+**Type:** _MissionCallback
 
 **Since:** 10
 
@@ -15,5 +17,3 @@ Defines the callback invoked after synchronization starts. It is used as an inpu
 **System capability:** SystemCapability.Ability.AbilityRuntime.Mission
 
 **System API:** This is a system API.
-
-**Type:** _MissionCallback

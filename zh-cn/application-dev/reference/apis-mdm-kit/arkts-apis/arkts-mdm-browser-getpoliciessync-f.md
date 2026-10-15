@@ -6,6 +6,8 @@
 import { browser } from '@kit.MDMKit';
 ```
 
+<a id="getpoliciessync1"></a>
+
 ## getPoliciesSync
 
 ```TypeScript
@@ -40,7 +42,7 @@ function getPoliciesSync(admin: Want, appId: string): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 
@@ -66,7 +68,7 @@ try {
 ```
 
 
-<a id="getpoliciessync-1"></a>
+<a id="getpoliciessync2"></a>
 
 ## getPoliciesSync
 
@@ -102,7 +104,7 @@ function getPoliciesSync(admin: Want | null, appId: string): string
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [9200001](../errorcode-enterpriseDeviceManager.md#9200001-应用没有激活成设备管理器) | The application is not an administrator application of the device. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
 **示例**
 

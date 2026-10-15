@@ -12,31 +12,31 @@ Enumerates the error codes used in the certificate management APIs.
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_NO_PERMISSION
+## CM_ERROR_ACCESS_UKEY_SERVICE_FAILED
 
 ```TypeScript
-CM_ERROR_NO_PERMISSION = 201
+CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010
 ```
 
-The application does not have the permission to call the API.
+The USB Key service fails to be accessed.
 
-**Since:** 11
+**Since:** 22
 
-<!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201--><!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201-End-->
+<!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010--><!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_INVALID_PARAMS
+## CM_ERROR_DEVICE_ENTER_ADVSECMODE
 
 ```TypeScript
-CM_ERROR_INVALID_PARAMS = 401
+CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007
 ```
 
-Invalid input parameter is found.
+The device enters the advanced security mode. In this mode, CA certificate installation is restricted.
 
-**Since:** 11
+**Since:** 18
 
-<!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401--><!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401-End-->
+<!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007--><!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -54,20 +54,6 @@ An internal error occurs when the interface is called.
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_NO_FOUND
-
-```TypeScript
-CM_ERROR_NO_FOUND = 17500002
-```
-
-The certificate or credential does not exist.
-
-**Since:** 11
-
-<!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002--><!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002-End-->
-
-**System capability:** SystemCapability.Security.CertificateManager
-
 ## CM_ERROR_INCORRECT_FORMAT
 
 ```TypeScript
@@ -79,6 +65,20 @@ The certificate or credential is in invalid format.
 **Since:** 11
 
 <!--Device-CMErrorCode-CM_ERROR_INCORRECT_FORMAT = 17500003--><!--Device-CMErrorCode-CM_ERROR_INCORRECT_FORMAT = 17500003-End-->
+
+**System capability:** SystemCapability.Security.CertificateManager
+
+## CM_ERROR_INVALID_PARAMS
+
+```TypeScript
+CM_ERROR_INVALID_PARAMS = 401
+```
+
+Invalid input parameter is found.
+
+**Since:** 11
+
+<!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401--><!--Device-CMErrorCode-CM_ERROR_INVALID_PARAMS = 401-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -110,45 +110,31 @@ The application has not obtained user authorization.
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_DEVICE_ENTER_ADVSECMODE
+## CM_ERROR_NO_FOUND
 
 ```TypeScript
-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007
+CM_ERROR_NO_FOUND = 17500002
 ```
 
-The device enters the advanced security mode. In this mode, CA certificate installation is restricted.
+The certificate or credential does not exist.
 
-**Since:** 18
+**Since:** 11
 
-<!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007--><!--Device-CMErrorCode-CM_ERROR_DEVICE_ENTER_ADVSECMODE = 17500007-End-->
+<!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002--><!--Device-CMErrorCode-CM_ERROR_NO_FOUND = 17500002-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
-## CM_ERROR_STORE_PATH_NOT_SUPPORTED
+## CM_ERROR_NO_PERMISSION
 
 ```TypeScript
-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009
+CM_ERROR_NO_PERMISSION = 201
 ```
 
-The device does not support the specified certificate storage path.
+Permission verification failed. The application does not have the permission required to call the API.
 
-**Since:** 20
+**Since:** 11
 
-<!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009--><!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009-End-->
-
-**System capability:** SystemCapability.Security.CertificateManager
-
-## CM_ERROR_ACCESS_UKEY_SERVICE_FAILED
-
-```TypeScript
-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010
-```
-
-The USB Key service fails to be accessed.
-
-**Since:** 22
-
-<!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010--><!--Device-CMErrorCode-CM_ERROR_ACCESS_UKEY_SERVICE_FAILED = 17500010-End-->
+<!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201--><!--Device-CMErrorCode-CM_ERROR_NO_PERMISSION = 201-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager
 
@@ -165,5 +151,19 @@ For example, the parameter format is incorrect or the parameter range is invalid
 **Since:** 22
 
 <!--Device-CMErrorCode-CM_ERROR_PARAMETER_VALIDATION_FAILED = 17500011--><!--Device-CMErrorCode-CM_ERROR_PARAMETER_VALIDATION_FAILED = 17500011-End-->
+
+**System capability:** SystemCapability.Security.CertificateManager
+
+## CM_ERROR_STORE_PATH_NOT_SUPPORTED
+
+```TypeScript
+CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009
+```
+
+The device does not support the specified certificate storage path.
+
+**Since:** 20
+
+<!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009--><!--Device-CMErrorCode-CM_ERROR_STORE_PATH_NOT_SUPPORTED = 17500009-End-->
 
 **System capability:** SystemCapability.Security.CertificateManager

@@ -6,6 +6,8 @@ export type NotificationParameters = _NotificationParameters
 
 Describes partial information about the **wantAgent** in the notification request.
 
+**Type:** _NotificationParameters
+
 **Since:** 24
 
 **Model restriction:** This API can be used only in the stage model.
@@ -13,5 +15,3 @@ Describes partial information about the **wantAgent** in the notification reques
 <!--Device-notificationManager-export type NotificationParameters = _NotificationParameters--><!--Device-notificationManager-export type NotificationParameters = _NotificationParameters-End-->
 
 **System capability:** SystemCapability.Notification.Notification
-
-**Type:** _NotificationParameters

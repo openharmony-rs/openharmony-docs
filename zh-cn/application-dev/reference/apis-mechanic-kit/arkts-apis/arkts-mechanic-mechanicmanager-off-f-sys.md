@@ -36,6 +36,7 @@ Unregister a listener for axis state changes.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not system application. |
 | [33300001](../errorcode-mechanic.md#33300001-系统错误) | Service exception. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -45,3 +46,5 @@ mechanicManager.off("rotationAxesStatusChange", (result: mechanicManager.Rotatio
 });
 console.info('Unregister successfully');
 ```
+
+<!--DelEnd-->

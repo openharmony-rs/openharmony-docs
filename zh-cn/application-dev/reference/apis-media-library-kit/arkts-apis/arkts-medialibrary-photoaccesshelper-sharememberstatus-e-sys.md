@@ -14,24 +14,6 @@ enum ShareMemberStatus
 
 **系统接口：** 此接口为系统接口。
 
-## INVITING
-
-```TypeScript
-INVITING = 0
-```
-
-正在邀请成员。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ShareMemberStatus-INVITING = 0--><!--Device-ShareMemberStatus-INVITING = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## ACCEPTED
 
 ```TypeScript
@@ -63,6 +45,24 @@ DECLINED = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ShareMemberStatus-DECLINED = 2--><!--Device-ShareMemberStatus-DECLINED = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## INVITING
+
+```TypeScript
+INVITING = 0
+```
+
+正在邀请成员。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ShareMemberStatus-INVITING = 0--><!--Device-ShareMemberStatus-INVITING = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

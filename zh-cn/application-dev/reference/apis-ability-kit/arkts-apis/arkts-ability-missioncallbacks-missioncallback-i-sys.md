@@ -36,6 +36,7 @@ notifyMissionsChanged是任务监听的callback函数，用于通知任务变化
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -64,6 +65,8 @@ distributedMissionManager.registerMissionListener(
   }
 );
 ```
+
+<!--DelEnd-->
 
 ## notifyNetDisconnect
 
@@ -85,6 +88,7 @@ notifyNetDisconnect是任务监听的callback函数，用于通知断开连接�
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,6 +117,8 @@ distributedMissionManager.registerMissionListener(
   }
 );
 ```
+
+<!--DelEnd-->
 
 ## notifySnapshot
 
@@ -134,6 +140,7 @@ notifySnapshot是任务监听的callback函数，用于通知任务快照变化�
 
 **系统接口：** 此接口为系统接口。
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -162,3 +169,5 @@ distributedMissionManager.registerMissionListener(
   }
 );
 ```
+
+<!--DelEnd-->

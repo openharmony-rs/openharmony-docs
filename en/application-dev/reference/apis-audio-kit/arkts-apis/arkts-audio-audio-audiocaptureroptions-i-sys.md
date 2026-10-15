@@ -18,6 +18,26 @@ Describes audio capturer configurations.
 import { audio } from '@kit.AudioKit';
 ```
 
+## actualUsingAppTokenId
+
+```TypeScript
+actualUsingAppTokenId?: number
+```
+
+The token ID of the application that actually uses the audio capturer stream, used to display the correct application information when the microphone privacy indicator is turned on. If this field is not specified, the caller application's token ID is used by default. When this field is set, the caller must have the ohos.permission.AUDIO_USER_MICROPHONE_INDICATOR permission; otherwise [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md) fails.
+
+**Type:** number
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-AudioCapturerOptions-actualUsingAppTokenId?: int--><!--Device-AudioCapturerOptions-actualUsingAppTokenId?: int-End-->
+
+**System capability:** SystemCapability.Multimedia.Audio.Capturer
+
+**System API:** This is a system API.
+
 ## playbackCaptureUid
 
 ```TypeScript

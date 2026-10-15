@@ -53,7 +53,6 @@
   - [GainmapChannel](arkts-image-image-gainmapchannel-i.md)
   <!--Del-->
   - [GainmapParams(system api)](arkts-image-image-gainmapparams-i-sys.md)<!--DelEnd-->
-  - [GetImagePropertyOptions](arkts-image-image-getimagepropertyoptions-i.md)
   - [HdrComposeOptions](arkts-image-image-hdrcomposeoptions-i.md)
   <!--Del-->
   - [HdrDecomposeOptions(system api)](arkts-image-image-hdrdecomposeoptions-i-sys.md)<!--DelEnd-->
@@ -91,6 +90,7 @@
   - [XMPEnumerateOptions](arkts-image-image-xmpenumerateoptions-i.md)
   - [XMPNamespace](arkts-image-image-xmpnamespace-i.md)
   - [XMPTag](arkts-image-image-xmptag-i.md)
+  - [GetImagePropertyOptions](arkts-image-image-getimagepropertyoptions-i.md)
   - [HdrMetadataValue](arkts-image-image-hdrmetadatavalue-t.md)
   - [AllocatorType](arkts-image-image-allocatortype-e.md)
   - [AlphaType](arkts-image-image-alphatype-e.md)

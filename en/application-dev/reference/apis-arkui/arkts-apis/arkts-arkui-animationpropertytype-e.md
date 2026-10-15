@@ -12,6 +12,24 @@ Enumerates animatable property types for component animations.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## OPACITY
+
+```TypeScript
+OPACITY = 3
+```
+
+Opacity value. Parameters: 1. Value range: [0, 1].
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-AnimationPropertyType-OPACITY = 3--><!--Device-AnimationPropertyType-OPACITY = 3-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## ROTATION
 
 ```TypeScript
@@ -27,24 +45,6 @@ Rotation angles for the x, y, and z axes. Parameters: 3. Unit: degrees (°).
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-AnimationPropertyType-ROTATION = 0--><!--Device-AnimationPropertyType-ROTATION = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## TRANSLATION
-
-```TypeScript
-TRANSLATION = 1
-```
-
-Translation offsets for the x and y axes. Parameters: 2. Unit: px.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-AnimationPropertyType-TRANSLATION = 1--><!--Device-AnimationPropertyType-TRANSLATION = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +66,13 @@ Scale factors for the x and y axes. Parameters: 2. Value range: (-∞, +∞).
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## OPACITY
+## TRANSLATION
 
 ```TypeScript
-OPACITY = 3
+TRANSLATION = 1
 ```
 
-Opacity value. Parameters: 1. Value range: [0, 1].
+Translation offsets for the x and y axes. Parameters: 2. Unit: px.
 
 **Since:** 20
 
@@ -80,6 +80,6 @@ Opacity value. Parameters: 1. Value range: [0, 1].
 
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
-<!--Device-AnimationPropertyType-OPACITY = 3--><!--Device-AnimationPropertyType-OPACITY = 3-End-->
+<!--Device-AnimationPropertyType-TRANSLATION = 1--><!--Device-AnimationPropertyType-TRANSLATION = 1-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

@@ -6,6 +6,8 @@ export type ResultSet = _ResultSet
 
 Configure RdbPredicates to match the specified field whose data type is ValueType array and values are out of a given range.
 
+**Type:** _ResultSet
+
 **Since:** 7
 
 **Deprecated since:** 9
@@ -13,5 +15,3 @@ Configure RdbPredicates to match the specified field whose data type is ValueTyp
 <!--Device-rdb-export type ResultSet = _ResultSet--><!--Device-rdb-export type ResultSet = _ResultSet-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.RelationalStore.Core
-
-**Type:** _ResultSet

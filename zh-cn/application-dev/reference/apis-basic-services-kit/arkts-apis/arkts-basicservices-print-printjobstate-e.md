@@ -12,6 +12,34 @@ enum PrintJobState
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
+## PRINT_JOB_BLOCKED
+
+```TypeScript
+PRINT_JOB_BLOCKED = 3
+```
+
+表示打印任务已被阻止。
+
+**起始版本：** 14
+
+<!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3--><!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## PRINT_JOB_COMPLETED
+
+```TypeScript
+PRINT_JOB_COMPLETED = 4
+```
+
+表示打印任务完成。
+
+**起始版本：** 14
+
+<!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4--><!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
 ## PRINT_JOB_PREPARE
 
 ```TypeScript
@@ -51,33 +79,5 @@ PRINT_JOB_RUNNING = 2
 **起始版本：** 14
 
 <!--Device-PrintJobState-PRINT_JOB_RUNNING = 2--><!--Device-PrintJobState-PRINT_JOB_RUNNING = 2-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## PRINT_JOB_BLOCKED
-
-```TypeScript
-PRINT_JOB_BLOCKED = 3
-```
-
-表示打印任务已被阻止。
-
-**起始版本：** 14
-
-<!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3--><!--Device-PrintJobState-PRINT_JOB_BLOCKED = 3-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
-## PRINT_JOB_COMPLETED
-
-```TypeScript
-PRINT_JOB_COMPLETED = 4
-```
-
-表示打印任务完成。
-
-**起始版本：** 14
-
-<!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4--><!--Device-PrintJobState-PRINT_JOB_COMPLETED = 4-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

@@ -1,4 +1,4 @@
-# locks(Defines the utils for ArkTS)
+# locks（Defines the utils for ArkTS）
 
 ```TypeScript
 namespace locks
@@ -28,11 +28,11 @@ import { ArkTSUtils } from '@kit.ArkTS';
 
 | 名称 | 说明 |
 | --- | --- |
+| [AbortSignal](arkts-arkts-locks-abortsignal-c.md) | 用于终止异步操作的对象。该类的实例必须在其创建的同一线程中访问。从其他线程访问此类的字段会导致未定义的行为。 |
 | [AsyncLock](arkts-arkts-locks-asynclock-c.md) | 实现异步锁功能的类，允许在锁下执行异步操作。该类使用@Sendable装饰器装饰。 |
+| [AsyncLockInfo](arkts-arkts-locks-asynclockinfo-c.md) | 关于锁的信息。 |
 | [AsyncLockOptions](arkts-arkts-locks-asynclockoptions-c.md) | 表示锁操作选项的类。 |
 | [AsyncLockState](arkts-arkts-locks-asynclockstate-c.md) | 用于存储异步锁实例上当前执行的所有锁操作的信息的类。 |
-| [AsyncLockInfo](arkts-arkts-locks-asynclockinfo-c.md) | 关于锁的信息。 |
-| [AbortSignal](arkts-arkts-locks-abortsignal-c.md) | 用于终止异步操作的对象。该类的实例必须在其创建的同一线程中访问。从其他线程访问此类的字段会导致未定义的行为。 |
 | [ConditionVariable](arkts-arkts-locks-conditionvariable-c.md) | 实现异步等待功能的类，支持异步等待通知操作。该类使用@Sendable装饰器装饰。 |
 
 ### 类型

@@ -14,22 +14,6 @@ Enumerates the camera light statuses, which are obtained by calling VideoSession
 
 **System API:** This is a system API.
 
-## NORMAL
-
-```TypeScript
-NORMAL = 0
-```
-
-Normal lighting conditions.
-
-**Since:** 18
-
-<!--Device-LightStatus-NORMAL = 0--><!--Device-LightStatus-NORMAL = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
 ## INSUFFICIENT
 
 ```TypeScript
@@ -41,6 +25,22 @@ Insufficient lighting (too dark).
 **Since:** 18
 
 <!--Device-LightStatus-INSUFFICIENT = 1--><!--Device-LightStatus-INSUFFICIENT = 1-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## NORMAL
+
+```TypeScript
+NORMAL = 0
+```
+
+Normal lighting conditions.
+
+**Since:** 18
+
+<!--Device-LightStatus-NORMAL = 0--><!--Device-LightStatus-NORMAL = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

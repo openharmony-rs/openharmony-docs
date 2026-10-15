@@ -6,8 +6,6 @@ export enum LightType
 
 Enumerates the light types.
 
-@enum { int }
-
 **Since:** 12
 
 <!--Device-unnamed-export enum LightType--><!--Device-unnamed-export enum LightType-End-->

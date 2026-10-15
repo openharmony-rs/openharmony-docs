@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="setdefaultsmsslotid1"></a>
+
 ## setDefaultSmsSlotId
 
 ```TypeScript
@@ -44,6 +46,7 @@ function setDefaultSmsSlotId(slotId: number, callback: AsyncCallback<void>): voi
 | [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,8 +58,10 @@ sms.setDefaultSmsSlotId(0, (err: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="setdefaultsmsslotid-1"></a>
+
+<a id="setdefaultsmsslotid2"></a>
 
 ## setDefaultSmsSlotId
 
@@ -101,6 +106,7 @@ function setDefaultSmsSlotId(slotId: number): Promise<void>
 | [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -113,3 +119,5 @@ sms.setDefaultSmsSlotId(0).then(() => {
     console.error(`setDefaultSmsSlotId failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

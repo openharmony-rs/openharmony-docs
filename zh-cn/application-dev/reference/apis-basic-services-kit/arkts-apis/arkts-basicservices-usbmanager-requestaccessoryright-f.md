@@ -47,13 +47,15 @@ function requestAccessoryRight(accessory: USBAccessory): Promise<boolean>
 **示例**
 
 ```TypeScript
+import { BusinessError } from '@kit.BasicServicesKit';
 async function requestAccessoryRight() {
   try {
     let accList: usbManager.USBAccessory[] = usbManager.getAccessoryList();
     let flag = await usbManager.requestAccessoryRight(accList?.[0]);
-    console.info(`requestAccessoryRight success, ret:${flag}`);
+    console.info(`Succeeded in requestAccessoryRight, ret:${flag}`);
   } catch (error) {
-    console.error(`requestAccessoryRight error ${error.code}, message is ${error.message}`);
+    const err: BusinessError = error as BusinessError;
+    console.error(`requestAccessoryRight error ${err.code}, message is ${err.message}`);
   }
 }
 ```

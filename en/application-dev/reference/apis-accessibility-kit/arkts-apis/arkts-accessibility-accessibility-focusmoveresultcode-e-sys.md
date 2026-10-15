@@ -14,6 +14,38 @@ Enumerates the result codes returned by the focusable node query.
 
 **System API:** This is a system API.
 
+## DOUBLE_CHECK_CHILD_PROPERTY
+
+```TypeScript
+DOUBLE_CHECK_CHILD_PROPERTY = 6
+```
+
+The returned node is not focusable. Continue to query from all descendants of the returned node.
+
+**Since:** 23
+
+<!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY = 6--><!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY = 6-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
+## DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST
+
+```TypeScript
+DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7
+```
+
+The returned node is not focusable. Continue to query from the last child node of the returned node.
+
+**Since:** 23
+
+<!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7--><!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
 ## NOT_SUPPORTED
 
 ```TypeScript
@@ -25,38 +57,6 @@ Query is not supported.
 **Since:** 23
 
 <!--Device-FocusMoveResultCode-NOT_SUPPORTED = -1--><!--Device-FocusMoveResultCode-NOT_SUPPORTED = -1-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## SEARCH_SUCCESS
-
-```TypeScript
-SEARCH_SUCCESS = 0
-```
-
-The node is queried successfully.
-
-**Since:** 23
-
-<!--Device-FocusMoveResultCode-SEARCH_SUCCESS = 0--><!--Device-FocusMoveResultCode-SEARCH_SUCCESS = 0-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS
-
-```TypeScript
-SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1
-```
-
-The node query is successful. It is recommended to use the parameter bypassSelfDescendants in the next query to improve query efficiency.
-
-**Since:** 23
-
-<!--Device-FocusMoveResultCode-SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1--><!--Device-FocusMoveResultCode-SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
@@ -94,6 +94,22 @@ Failed to query the node. The current container has no focusable node.
 
 **System API:** This is a system API.
 
+## SEARCH_FAILURE_IN_SCROLL
+
+```TypeScript
+SEARCH_FAILURE_IN_SCROLL = 8
+```
+
+Failed to query the node in the scrollable component.
+
+**Since:** 23
+
+<!--Device-FocusMoveResultCode-SEARCH_FAILURE_IN_SCROLL = 8--><!--Device-FocusMoveResultCode-SEARCH_FAILURE_IN_SCROLL = 8-End-->
+
+**System capability:** SystemCapability.BarrierFree.Accessibility.Core
+
+**System API:** This is a system API.
+
 ## SEARCH_FAILURE_LOST_NODE
 
 ```TypeScript
@@ -126,49 +142,33 @@ The returned node is not focusable. Continue to query from the returned node.
 
 **System API:** This is a system API.
 
-## DOUBLE_CHECK_CHILD_PROPERTY
+## SEARCH_SUCCESS
 
 ```TypeScript
-DOUBLE_CHECK_CHILD_PROPERTY = 6
+SEARCH_SUCCESS = 0
 ```
 
-The returned node is not focusable. Continue to query from all descendants of the returned node.
+The node is queried successfully.
 
 **Since:** 23
 
-<!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY = 6--><!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY = 6-End-->
+<!--Device-FocusMoveResultCode-SEARCH_SUCCESS = 0--><!--Device-FocusMoveResultCode-SEARCH_SUCCESS = 0-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
 
-## DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST
+## SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS
 
 ```TypeScript
-DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7
+SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1
 ```
 
-The returned node is not focusable. Continue to query from the last child node of the returned node.
+The node query is successful. It is recommended to use the parameter bypassSelfDescendants in the next query to improve query efficiency.
 
 **Since:** 23
 
-<!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7--><!--Device-FocusMoveResultCode-DOUBLE_CHECK_CHILD_PROPERTY_AND_GET_LAST = 7-End-->
-
-**System capability:** SystemCapability.BarrierFree.Accessibility.Core
-
-**System API:** This is a system API.
-
-## SEARCH_FAILURE_IN_SCROLL
-
-```TypeScript
-SEARCH_FAILURE_IN_SCROLL = 8
-```
-
-Failed to query the node in the scrollable component.
-
-**Since:** 23
-
-<!--Device-FocusMoveResultCode-SEARCH_FAILURE_IN_SCROLL = 8--><!--Device-FocusMoveResultCode-SEARCH_FAILURE_IN_SCROLL = 8-End-->
+<!--Device-FocusMoveResultCode-SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1--><!--Device-FocusMoveResultCode-SEARCH_SUCCESS_NEXT_BYPASS_DESCENDANTS = 1-End-->
 
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 

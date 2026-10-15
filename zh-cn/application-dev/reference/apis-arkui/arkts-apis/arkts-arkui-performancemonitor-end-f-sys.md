@@ -30,6 +30,7 @@ function end(scene: string): void
 | --- | --- | --- | --- |
 | scene | string | 是 | 用户场景id，与begin配对严格保持一致，否则本次场景监测无效。 |
 
+<!--Del-->
 **示例**
 
 用户点击图标启动应用场景动效结束点。
@@ -37,3 +38,5 @@ function end(scene: string): void
 ```TypeScript
 performanceMonitor.end("LAUNCHER_APP_LAUNCH_FROM_ICON");
 ```
+
+<!--DelEnd-->

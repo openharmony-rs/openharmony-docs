@@ -6,10 +6,10 @@ type ISendable = lang.ISendable
 
 The ISendable type alias is defined to align with the API specifications of the current module.
 
+**Type:** [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)
+
 **Since:** 12
 
 <!--Device-sendableColorSpaceManager-type ISendable = lang.ISendable--><!--Device-sendableColorSpaceManager-type ISendable = lang.ISendable-End-->
 
 **System capability:** SystemCapability.Graphic.Graphic2D.ColorManager.Core
-
-**Type:** [lang.ISendable](../../apis-arkts/arkts-apis/arkts-arkts-lang-isendable-i.md)

@@ -26,7 +26,7 @@ import { AlertDialog, ButtonOptions, ConfirmDialog, LoadingDialog, SelectDialog,
 checkAction?: (isChecked: boolean) => void
 ```
 
-checkbox的选中状态改变事件。isChecked为true时，表示checkbox已选中，isChecked为false时，表示checkbox未选中。现推荐使用onCheckedChange&lt;sup&gt;12+&lt;/sup&gt;。
+checkbox的选中状态改变事件。isChecked为true时，表示checkbox已选中，isChecked为false时，表示checkbox未选中。现推荐使用onCheckedChange<sup>12+</sup>。
 
 **起始版本：** 12
 

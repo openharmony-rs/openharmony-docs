@@ -4,6 +4,8 @@
 export default class Vibrator
 ```
 
+提供触发设备振动的静态方法。
+
 **起始版本：** 3
 
 **废弃版本：** 8
@@ -30,17 +32,19 @@ static vibrate(options?: VibrateOptions): void
 
 触发设备振动，根据指定的振动模式执行短振动或长振动效果。该接口通过callback方式返回调用结果。
 
+当开发者需要在Lite Wearable设备上实现闹钟振动、来电振动、开关机振动、按键触觉反馈等场景时，使用此接口触发设备振动。调用后，设备将按照指定的振动模式（短振动或长振动）执行振动效果。若未指定mode参数，设备将执行长振动（mode默认值为'long'）。
+
 > **说明：** 
 > 
 > 除Lite Wearable外，从API version 8开始，建议使用
-> [vibrator.startVibration()](arkts-sensorservice-vibrator-startvibration-f.md)
+> [vibrator.startVibration()](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)
 > 替代。
 
 **起始版本：** 3
 
 **废弃版本：** 8
 
-**替代接口：** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md)(effect: VibrateEffect, attribute: VibrateAttribute, callback: AsyncCallback&lt;void&gt;)
+**替代接口：** [startVibration](arkts-sensorservice-vibrator-startvibration-f.md#startvibration1)(effect: VibrateEffect, attribute: VibrateAttribute, callback: AsyncCallback&lt;void&gt;)
 
 **需要权限：** ohos.permission.VIBRATE
 

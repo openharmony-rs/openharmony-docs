@@ -67,7 +67,7 @@ getFont(): drawing.Font
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getFont(): drawing.Font--><!--Device-Run-getFont(): drawing.Font-End-->
 
@@ -95,7 +95,7 @@ getGlyphCount(): number
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getGlyphCount(): int--><!--Device-Run-getGlyphCount(): int-End-->
 
@@ -113,6 +113,8 @@ getGlyphCount(): number
 let glyphs = runs[0].getGlyphCount();
 ```
 
+<a id="getglyphs1"></a>
+
 ## getGlyphs
 
 ```TypeScript
@@ -123,7 +125,7 @@ getGlyphs(): Array<number>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getGlyphs(): Array<int>--><!--Device-Run-getGlyphs(): Array<int>-End-->
 
@@ -141,7 +143,7 @@ getGlyphs(): Array<number>
 let glyph = runs[0].getGlyphs();
 ```
 
-<a id="getglyphs-1"></a>
+<a id="getglyphs2"></a>
 
 ## getGlyphs
 
@@ -219,7 +221,7 @@ getImageBounds(): common2D.Rect
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getImageBounds(): common2D.Rect--><!--Device-Run-getImageBounds(): common2D.Rect-End-->
 
@@ -247,7 +249,7 @@ getOffsets(): Array<common2D.Point>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getOffsets(): Array<common2D.Point>--><!--Device-Run-getOffsets(): Array<common2D.Point>-End-->
 
@@ -265,6 +267,8 @@ getOffsets(): Array<common2D.Point>
 let offsets = runs[0].getOffsets();
 ```
 
+<a id="getpositions1"></a>
+
 ## getPositions
 
 ```TypeScript
@@ -275,7 +279,7 @@ getPositions(): Array<common2D.Point>
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getPositions(): Array<common2D.Point>--><!--Device-Run-getPositions(): Array<common2D.Point>-End-->
 
@@ -293,7 +297,7 @@ getPositions(): Array<common2D.Point>
 let positions = runs[0].getPositions();
 ```
 
-<a id="getpositions-1"></a>
+<a id="getpositions2"></a>
 
 ## getPositions
 
@@ -417,7 +421,7 @@ getStringRange(): Range
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getStringRange(): Range--><!--Device-Run-getStringRange(): Range-End-->
 
@@ -447,7 +451,7 @@ getTextDirection(): TextDirection
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getTextDirection(): TextDirection--><!--Device-Run-getTextDirection(): TextDirection-End-->
 
@@ -477,7 +481,7 @@ getTextStyle(): TextStyle
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getTextStyle(): TextStyle--><!--Device-Run-getTextStyle(): TextStyle-End-->
 
@@ -569,7 +573,7 @@ getTypographicBounds(): TypographicBounds
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-getTypographicBounds(): TypographicBounds--><!--Device-Run-getTypographicBounds(): TypographicBounds-End-->
 
@@ -597,7 +601,7 @@ paint(canvas: drawing.Canvas, x: number, y: number): void
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-Run-paint(canvas: drawing.Canvas, x: double, y: double): void--><!--Device-Run-paint(canvas: drawing.Canvas, x: double, y: double): void-End-->
 

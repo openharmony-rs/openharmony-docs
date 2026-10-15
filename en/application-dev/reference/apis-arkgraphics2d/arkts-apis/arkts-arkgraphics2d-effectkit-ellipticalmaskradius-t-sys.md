@@ -9,6 +9,11 @@ type EllipticalMaskRadius = [
 
 Defines the radius of the elliptical mask.
 
+**Type:** [
+  number,
+  number
+]
+
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
@@ -18,8 +23,3 @@ Defines the radius of the elliptical mask.
 **System capability:** SystemCapability.Multimedia.Image.Core
 
 **System API:** This is a system API.
-
-**Type:** [
-  number,
-  number
-]

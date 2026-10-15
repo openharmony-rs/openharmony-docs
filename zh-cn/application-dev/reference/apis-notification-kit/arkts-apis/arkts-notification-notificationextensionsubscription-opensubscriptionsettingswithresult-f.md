@@ -56,7 +56,7 @@ try {
   notificationExtensionSubscription.openSubscriptionSettingsWithResult(context).then((data) => {
     console.info(`openSubscriptionSettingsWithResult success, data: ${JSON.stringify(data)}`);
   }).catch((e: Error) => {
-    let error = e as BusinessError
+    let error = e as BusinessError;
     console.error(`failed to call openSubscriptionSettingsWithResult, code is ${error.code}, message is ${error.message}`)
   });
 } catch (error) {

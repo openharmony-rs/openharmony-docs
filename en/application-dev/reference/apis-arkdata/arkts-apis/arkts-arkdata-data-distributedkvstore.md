@@ -14,8 +14,6 @@ synchronizing data across devices. This class inherits from [SingleKVStore](arkt
 
 **Since:** 9
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace distributedKVStore--><!--Device-unnamed-declare namespace distributedKVStore-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
@@ -32,7 +30,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | Name | Description |
 | --- | --- |
-| [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md) | Creates a **KVManager** instance for KV store management. |
+| [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager) | Creates a **KVManager** instance for KV store management. |
 
 ### Classes
 

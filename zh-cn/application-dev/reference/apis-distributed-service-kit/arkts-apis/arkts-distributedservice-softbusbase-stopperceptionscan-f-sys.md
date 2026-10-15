@@ -47,3 +47,26 @@ function stopPerceptionScan(type: PerceptionType): Promise<void>
 | [2000001](../errorcode-conversation.md#2000001-内部错误) | Internal error. An unexpected system error occurred. |
 | [2000003](../errorcode-softbusBase.md#2000003-临时错误) | Temporary error. The request failed due to a temporary error and can be retried. |
 | [2006001](../errorcode-softbusBase.md#2006001-底层模块错误) | Underlying module error. The request failed due to an error in another underlying module and can be retried after a period of time. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import softbusBase from '@ohos.distributed.softbusBase';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+try {
+  softbusBase.stopPerceptionScan(softbusBase.PerceptionType.PERCEPTION_TYPE_COLLABORATIVE_WAKE)
+    .then(() => {
+      console.info('stopPerceptionScan success');
+    })
+    .catch((err: BusinessError) => {
+      console.error(`Failed to stopPerceptionScan. Code: ${err.code}, message: ${err.message}`);
+    });
+} catch (err) {
+  const error: BusinessError = err as BusinessError;
+  console.error(`Failed to stopPerceptionScan. Code: ${error.code}, message: ${error.message}`);
+}
+```
+
+<!--DelEnd-->

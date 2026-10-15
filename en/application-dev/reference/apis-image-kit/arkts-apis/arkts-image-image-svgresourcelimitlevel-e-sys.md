@@ -16,21 +16,21 @@ Higher level allows using less resources during parsing and rendering an SVG ima
 
 **System API:** This is a system API.
 
-## NONE
+## HIGH
 
 ```TypeScript
-NONE = 0
+HIGH = 3
 ```
 
-Uses the system-defined default SVG resource limits.
+Uses high-level restrictions which means allowing using less SVG resource budget.
 
-This level does not disable SVG resource protection.
+This level is suitable for simple SVG images, such as icons and basic UI resources.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SVGResourceLimitLevel-NONE = 0--><!--Device-SVGResourceLimitLevel-NONE = 0-End-->
+<!--Device-SVGResourceLimitLevel-HIGH = 3--><!--Device-SVGResourceLimitLevel-HIGH = 3-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -76,21 +76,21 @@ This level balances SVG compatibility and resource consumption and is suitable f
 
 **System API:** This is a system API.
 
-## HIGH
+## NONE
 
 ```TypeScript
-HIGH = 3
+NONE = 0
 ```
 
-Uses high-level restrictions which means allowing using less SVG resource budget.
+Uses the system-defined default SVG resource limits.
 
-This level is suitable for simple SVG images, such as icons and basic UI resources.
+This level does not disable SVG resource protection.
 
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-SVGResourceLimitLevel-HIGH = 3--><!--Device-SVGResourceLimitLevel-HIGH = 3-End-->
+<!--Device-SVGResourceLimitLevel-NONE = 0--><!--Device-SVGResourceLimitLevel-NONE = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

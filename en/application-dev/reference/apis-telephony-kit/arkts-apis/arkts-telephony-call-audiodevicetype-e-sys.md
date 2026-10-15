@@ -14,6 +14,38 @@ Enumerates audio device types.
 
 **System API:** This is a system API.
 
+## DEVICE_BLUETOOTH_SCO
+
+```TypeScript
+DEVICE_BLUETOOTH_SCO = 3
+```
+
+Bluetooth SCO device.
+
+**Since:** 10
+
+<!--Device-AudioDeviceType-DEVICE_BLUETOOTH_SCO = 3--><!--Device-AudioDeviceType-DEVICE_BLUETOOTH_SCO = 3-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## DEVICE_DISTRIBUTED_AUTOMOTIVE
+
+```TypeScript
+DEVICE_DISTRIBUTED_AUTOMOTIVE = 4
+```
+
+Distributed head unit.
+
+**Since:** 11
+
+<!--Device-AudioDeviceType-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4--><!--Device-AudioDeviceType-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
 ## DEVICE_EARPIECE
 
 ```TypeScript
@@ -57,38 +89,6 @@ Wired headset device.
 **Since:** 10
 
 <!--Device-AudioDeviceType-DEVICE_WIRED_HEADSET = 2--><!--Device-AudioDeviceType-DEVICE_WIRED_HEADSET = 2-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## DEVICE_BLUETOOTH_SCO
-
-```TypeScript
-DEVICE_BLUETOOTH_SCO = 3
-```
-
-Bluetooth SCO device.
-
-**Since:** 10
-
-<!--Device-AudioDeviceType-DEVICE_BLUETOOTH_SCO = 3--><!--Device-AudioDeviceType-DEVICE_BLUETOOTH_SCO = 3-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## DEVICE_DISTRIBUTED_AUTOMOTIVE
-
-```TypeScript
-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4
-```
-
-Distributed head unit.
-
-**Since:** 11
-
-<!--Device-AudioDeviceType-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4--><!--Device-AudioDeviceType-DEVICE_DISTRIBUTED_AUTOMOTIVE = 4-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

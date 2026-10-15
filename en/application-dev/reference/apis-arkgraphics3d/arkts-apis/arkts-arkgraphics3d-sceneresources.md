@@ -40,7 +40,7 @@
 | Name | Description |
 | --- | --- |
 | [CullMode](arkts-arkgraphics3d-sceneresources-cullmode-e.md) | Enumerates the culling modes of PBR materials. You can improve rendering performance and visual quality by determining whether the front or back faces of objects are culled. |
-| [EnvironmentBackgroundType](arkts-arkgraphics3d-sceneresources-environmentbackgroundtype-e.md) | Enumerates the environment background types, which are used to define how the background of a scene is presented. @enum { int } |
+| [EnvironmentBackgroundType](arkts-arkgraphics3d-sceneresources-environmentbackgroundtype-e.md) | Enumerates the environment background types, which are used to define how the background of a scene is presented. |
 | [MaterialType](arkts-arkgraphics3d-sceneresources-materialtype-e.md) | Enumerates the material types in a scene. The material type defines how materials in a scene are rendered. |
 | [PolygonMode](arkts-arkgraphics3d-sceneresources-polygonmode-e.md) | Enumerates the polygon drawing mode. |
 | [SamplerAddressMode](arkts-arkgraphics3d-sceneresources-sampleraddressmode-e.md) | Enumerates the sampler addressing modes, which are used to control how texture coordinates are handled when they go beyond the [0, 1] range. |

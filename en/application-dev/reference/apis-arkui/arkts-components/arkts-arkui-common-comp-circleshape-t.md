@@ -6,6 +6,8 @@ declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape
 
 Defines the CircleShape type.
 
+**Type:** import('../api/@ohos.arkui.shape').CircleShape
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Defines the CircleShape type.
 <!--Device-unnamed-declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape--><!--Device-unnamed-declare type CircleShape = import('../api/@ohos.arkui.shape').CircleShape-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.shape').CircleShape

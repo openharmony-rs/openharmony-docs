@@ -8,7 +8,7 @@ Represents an ellipse shape used in the **clipShape** and **maskShape** APIs.
 
 This API inherits from [BaseShape](arkts-arkui-arkui-shape-baseshape-c.md).
 
-**Inheritance/Implementation:** EllipseShape extends BaseShape<EllipseShape>
+**Inheritance/Implementation:** EllipseShape extends BaseShape&lt;EllipseShape&gt;
 
 **Since:** 12
 

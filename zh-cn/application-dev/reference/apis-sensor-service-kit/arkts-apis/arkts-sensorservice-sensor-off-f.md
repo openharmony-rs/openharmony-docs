@@ -6,7 +6,7 @@
 import { sensor } from '@kit.SensorServiceKit';
 ```
 
-<a id="off-4"></a>
+<a id="off5"></a>
 
 ## off
 
@@ -71,7 +71,7 @@ try {
 ```
 
 
-<a id="off-5"></a>
+<a id="off6"></a>
 
 ## off
 
@@ -169,7 +169,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-6"></a>
+<a id="off7"></a>
 
 ## off
 
@@ -230,7 +230,7 @@ try {
 ```
 
 
-<a id="off-7"></a>
+<a id="off8"></a>
 
 ## off
 
@@ -324,7 +324,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-8"></a>
+<a id="off9"></a>
 
 ## off
 
@@ -382,7 +382,7 @@ try {
 ```
 
 
-<a id="off-9"></a>
+<a id="off10"></a>
 
 ## off
 
@@ -473,7 +473,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-10"></a>
+<a id="off11"></a>
 
 ## off
 
@@ -531,7 +531,7 @@ try {
 ```
 
 
-<a id="off-11"></a>
+<a id="off12"></a>
 
 ## off
 
@@ -622,7 +622,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-12"></a>
+<a id="off13"></a>
 
 ## off
 
@@ -680,7 +680,7 @@ try {
 ```
 
 
-<a id="off-13"></a>
+<a id="off14"></a>
 
 ## off
 
@@ -771,7 +771,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-14"></a>
+<a id="off15"></a>
 
 ## off
 
@@ -829,7 +829,7 @@ try {
 ```
 
 
-<a id="off-15"></a>
+<a id="off16"></a>
 
 ## off
 
@@ -920,7 +920,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-16"></a>
+<a id="off17"></a>
 
 ## off
 
@@ -985,7 +985,7 @@ try {
 ```
 
 
-<a id="off-17"></a>
+<a id="off18"></a>
 
 ## off
 
@@ -1083,7 +1083,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-18"></a>
+<a id="off19"></a>
 
 ## off
 
@@ -1144,7 +1144,7 @@ try {
 ```
 
 
-<a id="off-19"></a>
+<a id="off20"></a>
 
 ## off
 
@@ -1238,7 +1238,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-20"></a>
+<a id="off21"></a>
 
 ## off
 
@@ -1296,7 +1296,7 @@ try {
 ```
 
 
-<a id="off-21"></a>
+<a id="off22"></a>
 
 ## off
 
@@ -1387,7 +1387,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-22"></a>
+<a id="off23"></a>
 
 ## off
 
@@ -1448,7 +1448,7 @@ try {
 ```
 
 
-<a id="off-23"></a>
+<a id="off24"></a>
 
 ## off
 
@@ -1542,7 +1542,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-24"></a>
+<a id="off25"></a>
 
 ## off
 
@@ -1600,7 +1600,7 @@ try {
 ```
 
 
-<a id="off-25"></a>
+<a id="off26"></a>
 
 ## off
 
@@ -1691,7 +1691,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-26"></a>
+<a id="off27"></a>
 
 ## off
 
@@ -1752,7 +1752,7 @@ try {
 ```
 
 
-<a id="off-27"></a>
+<a id="off28"></a>
 
 ## off
 
@@ -1846,7 +1846,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-28"></a>
+<a id="off29"></a>
 
 ## off
 
@@ -1904,7 +1904,7 @@ try {
 ```
 
 
-<a id="off-29"></a>
+<a id="off30"></a>
 
 ## off
 
@@ -1995,7 +1995,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-30"></a>
+<a id="off31"></a>
 
 ## off
 
@@ -2053,7 +2053,7 @@ try {
 ```
 
 
-<a id="off-31"></a>
+<a id="off32"></a>
 
 ## off
 
@@ -2144,7 +2144,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-32"></a>
+<a id="off33"></a>
 
 ## off
 
@@ -2206,7 +2206,7 @@ try {
 ```
 
 
-<a id="off-33"></a>
+<a id="off34"></a>
 
 ## off
 
@@ -2301,7 +2301,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-34"></a>
+<a id="off35"></a>
 
 ## off
 
@@ -2362,7 +2362,7 @@ try {
 ```
 
 
-<a id="off-35"></a>
+<a id="off36"></a>
 
 ## off
 
@@ -2456,7 +2456,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-36"></a>
+<a id="off37"></a>
 
 ## off
 
@@ -2517,7 +2517,7 @@ try {
 ```
 
 
-<a id="off-37"></a>
+<a id="off38"></a>
 
 ## off
 
@@ -2611,7 +2611,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-38"></a>
+<a id="off39"></a>
 
 ## off
 
@@ -2669,7 +2669,7 @@ try {
 ```
 
 
-<a id="off-39"></a>
+<a id="off40"></a>
 
 ## off
 
@@ -2760,7 +2760,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-40"></a>
+<a id="off41"></a>
 
 ## off
 
@@ -2818,7 +2818,7 @@ try {
 ```
 
 
-<a id="off-41"></a>
+<a id="off42"></a>
 
 ## off
 
@@ -2909,7 +2909,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-42"></a>
+<a id="off43"></a>
 
 ## off
 
@@ -2967,7 +2967,7 @@ try {
 ```
 
 
-<a id="off-43"></a>
+<a id="off44"></a>
 
 ## off
 
@@ -3058,7 +3058,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-44"></a>
+<a id="off45"></a>
 
 ## off
 
@@ -3116,7 +3116,7 @@ try {
 ```
 
 
-<a id="off-45"></a>
+<a id="off46"></a>
 
 ## off
 
@@ -3208,7 +3208,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-46"></a>
+<a id="off47"></a>
 
 ## off
 
@@ -3299,7 +3299,7 @@ function sensorUnsubscribe(): Ret {
 ```
 
 
-<a id="off-47"></a>
+<a id="off48"></a>
 
 ## off
 
@@ -3312,14 +3312,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback?: Callback<
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER]
-> [off_SensorId.ACCELEROMETER](#off-4)
+> [off](#off5)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-4)(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;)
+**替代接口：** [off](#off5)(type: SensorId.ACCELEROMETER, callback?: Callback&lt;AccelerometerResponse&gt;)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -3349,7 +3349,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER, callback);
 ```
 
 
-<a id="off-48"></a>
+<a id="off49"></a>
 
 ## off
 
@@ -3363,14 +3363,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED,
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ACCELEROMETER_UNCALIBRATED]
-> [off_SensorId.ACCELEROMETER_UNCALIBRATED](#off-6)
+> [off](#off7)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-6)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;)
+**替代接口：** [off](#off7)(type: SensorId.ACCELEROMETER_UNCALIBRATED, callback?: Callback&lt;AccelerometerUncalibratedResponse&gt;)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -3403,7 +3403,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ACCELEROMETER_UNCALIBRATED, callback
 ```
 
 
-<a id="off-49"></a>
+<a id="off50"></a>
 
 ## off
 
@@ -3416,14 +3416,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback<
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.AMBIENT_LIGHT]
-> [off_SensorId.AMBIENT_LIGHT](#off-8)
+> [off](#off9)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-8)(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;)
+**替代接口：** [off](#off9)(type: SensorId.AMBIENT_LIGHT, callback?: Callback&lt;LightResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback<LightResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback?: Callback<LightResponse>): void-End-->
 
@@ -3449,7 +3449,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_LIGHT, callback);
 ```
 
 
-<a id="off-50"></a>
+<a id="off51"></a>
 
 ## off
 
@@ -3462,14 +3462,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Cal
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.AMBIENT_TEMPERATURE]
-> [off_SensorId.AMBIENT_TEMPERATURE](#off-10)
+> [off](#off11)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-10)(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;)
+**替代接口：** [off](#off11)(type: SensorId.AMBIENT_TEMPERATURE, callback?: Callback&lt;AmbientTemperatureResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback<AmbientTemperatureResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback?: Callback<AmbientTemperatureResponse>): void-End-->
 
@@ -3495,7 +3495,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_AMBIENT_TEMPERATURE, callback);
 ```
 
 
-<a id="off-51"></a>
+<a id="off52"></a>
 
 ## off
 
@@ -3508,14 +3508,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback<Baro
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.BAROMETER]
-> [off_SensorId.BAROMETER](#off-12)
+> [off](#off13)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-12)(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;)
+**替代接口：** [off](#off13)(type: SensorId.BAROMETER, callback?: Callback&lt;BarometerResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback<BarometerResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_BAROMETER, callback?: Callback<BarometerResponse>): void-End-->
 
@@ -3541,7 +3541,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_BAROMETER, callback);
 ```
 
 
-<a id="off-52"></a>
+<a id="off53"></a>
 
 ## off
 
@@ -3554,14 +3554,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback<Gravit
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GRAVITY]
-> [off_SensorId.GRAVITY](#off-14)
+> [off](#off15)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-14)(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;)
+**替代接口：** [off](#off15)(type: SensorId.GRAVITY, callback?: Callback&lt;GravityResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback<GravityResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_GRAVITY, callback?: Callback<GravityResponse>): void-End-->
 
@@ -3589,7 +3589,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GRAVITY, callback);
 ```
 
 
-<a id="off-53"></a>
+<a id="off54"></a>
 
 ## off
 
@@ -3602,14 +3602,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback?: Callback<Gyro
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GYROSCOPE]
-> [off_SensorId.GYROSCOPE](#off-16)
+> [off](#off17)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-16)(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;)
+**替代接口：** [off](#off17)(type: SensorId.GYROSCOPE, callback?: Callback&lt;GyroscopeResponse&gt;)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -3639,7 +3639,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE, callback);
 ```
 
 
-<a id="off-54"></a>
+<a id="off55"></a>
 
 ## off
 
@@ -3652,14 +3652,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback?: 
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.GYROSCOPE_UNCALIBRATED]
-> [off_SensorId.GYROSCOPE_UNCALIBRATED](#off-18)
+> [off](#off19)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-18)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;)
+**替代接口：** [off](#off19)(type: SensorId.GYROSCOPE_UNCALIBRATED, callback?: Callback&lt;GyroscopeUncalibratedResponse&gt;)
 
 **需要权限：** ohos.permission.GYROSCOPE
 
@@ -3689,7 +3689,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_GYROSCOPE_UNCALIBRATED, callback);
 ```
 
 
-<a id="off-55"></a>
+<a id="off56"></a>
 
 ## off
 
@@ -3702,14 +3702,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback<HallRespo
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HALL]
-> [off_SensorId.HALL](#off-20)
+> [off](#off21)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-20)(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;)
+**替代接口：** [off](#off21)(type: SensorId.HALL, callback?: Callback&lt;HallResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback<HallResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_HALL, callback?: Callback<HallResponse>): void-End-->
 
@@ -3735,7 +3735,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HALL, callback);
 ```
 
 
-<a id="off-56"></a>
+<a id="off57"></a>
 
 ## off
 
@@ -3748,14 +3748,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_HEART_RATE, callback?: Callback<Hea
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HEART_RATE]
-> [off_SensorId.HEART_RATE](#off-22)
+> [off](#off23)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-22)(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;)
+**替代接口：** [off](#off23)(type: SensorId.HEART_RATE, callback?: Callback&lt;HeartRateResponse&gt;)
 
 **需要权限：** ohos.permission.HEALTH_DATA
 
@@ -3783,7 +3783,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HEART_RATE, callback);
 ```
 
 
-<a id="off-57"></a>
+<a id="off58"></a>
 
 ## off
 
@@ -3796,14 +3796,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback<Humid
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.HUMIDITY]
-> [off_SensorId.HUMIDITY](#off-24)
+> [off](#off25)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-24)(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;)
+**替代接口：** [off](#off25)(type: SensorId.HUMIDITY, callback?: Callback&lt;HumidityResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback<HumidityResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_HUMIDITY, callback?: Callback<HumidityResponse>): void-End-->
 
@@ -3829,7 +3829,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_HUMIDITY, callback);
 ```
 
 
-<a id="off-58"></a>
+<a id="off59"></a>
 
 ## off
 
@@ -3842,14 +3842,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback?: Cal
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.LINEAR_ACCELEROMETER]
-> [off_SensorId.LINEAR_ACCELEROMETER](#off-26)
+> [off](#off27)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-26)(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerometerResponse&gt;)
+**替代接口：** [off](#off27)(type: SensorId.LINEAR_ACCELEROMETER, callback?: Callback&lt;LinearAccelerometerResponse&gt;)
 
 **需要权限：** ohos.permission.ACCELEROMETER
 
@@ -3879,7 +3879,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_LINEAR_ACCELERATION, callback);
 ```
 
 
-<a id="off-59"></a>
+<a id="off60"></a>
 
 ## off
 
@@ -3892,14 +3892,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback?: Callback
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.MAGNETIC_FIELD]
-> [off_SensorId.MAGNETIC_FIELD](#off-28)
+> [off](#off29)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-28)(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;)
+**替代接口：** [off](#off29)(type: SensorId.MAGNETIC_FIELD, callback?: Callback&lt;MagneticFieldResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback?: Callback<MagneticFieldResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback?: Callback<MagneticFieldResponse>): void-End-->
 
@@ -3927,7 +3927,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD, callback);
 ```
 
 
-<a id="off-60"></a>
+<a id="off61"></a>
 
 ## off
 
@@ -3940,14 +3940,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callba
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.MAGNETIC_FIELD_UNCALIBRATED]
-> [off_SensorId.MAGNETIC_FIELD_UNCALIBRATED](#off-30)
+> [off](#off31)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-30)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;)
+**替代接口：** [off](#off31)(type: SensorId.MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback&lt;MagneticFieldUncalibratedResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback<MagneticFieldUncalibratedResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callback?: Callback<MagneticFieldUncalibratedResponse>): void-End-->
 
@@ -3978,7 +3978,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_MAGNETIC_FIELD_UNCALIBRATED, callbac
 ```
 
 
-<a id="off-61"></a>
+<a id="off62"></a>
 
 ## off
 
@@ -3991,14 +3991,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback<Or
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ORIENTATION]
-> [off_SensorId.ORIENTATION](#off-32)
+> [off](#off33)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-32)(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
+**替代接口：** [off](#off33)(type: SensorId.ORIENTATION, callback?: Callback&lt;OrientationResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback<OrientationResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_ORIENTATION, callback?: Callback<OrientationResponse>): void-End-->
 
@@ -4026,7 +4026,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ORIENTATION, callback);
 ```
 
 
-<a id="off-62"></a>
+<a id="off63"></a>
 
 ## off
 
@@ -4039,14 +4039,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER, callback?: Callback<Pedo
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PEDOMETER]
-> [off_SensorId.PEDOMETER](#off-34)
+> [off](#off35)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-34)(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;)
+**替代接口：** [off](#off35)(type: SensorId.PEDOMETER, callback?: Callback&lt;PedometerResponse&gt;)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
@@ -4074,7 +4074,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER, callback);
 ```
 
 
-<a id="off-63"></a>
+<a id="off64"></a>
 
 ## off
 
@@ -4087,14 +4087,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback?: Cal
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PEDOMETER_DETECTION]
-> [off_SensorId.PEDOMETER_DETECTION](#off-36)
+> [off](#off37)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-36)(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;)
+**替代接口：** [off](#off37)(type: SensorId.PEDOMETER_DETECTION, callback?: Callback&lt;PedometerDetectionResponse&gt;)
 
 **需要权限：** ohos.permission.ACTIVITY_MOTION
 
@@ -4122,7 +4122,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PEDOMETER_DETECTION, callback);
 ```
 
 
-<a id="off-64"></a>
+<a id="off65"></a>
 
 ## off
 
@@ -4135,14 +4135,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback<Prox
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.PROXIMITY]
-> [off_SensorId.PROXIMITY](#off-38)
+> [off](#off39)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-38)(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;)
+**替代接口：** [off](#off39)(type: SensorId.PROXIMITY, callback?: Callback&lt;ProximityResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback<ProximityResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_PROXIMITY, callback?: Callback<ProximityResponse>): void-End-->
 
@@ -4168,7 +4168,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_PROXIMITY, callback);
 ```
 
 
-<a id="off-65"></a>
+<a id="off66"></a>
 
 ## off
 
@@ -4181,14 +4181,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callbac
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.ROTATION_VECTOR]
-> [off_SensorId.ROTATION_VECTOR](#off-40)
+> [off](#off41)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-40)(type: SensorId.ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;)
+**替代接口：** [off](#off41)(type: SensorId.ROTATION_VECTOR, callback?: Callback&lt;RotationVectorResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback<RotationVectorResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback?: Callback<RotationVectorResponse>): void-End-->
 
@@ -4217,7 +4217,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_ROTATION_VECTOR, callback);
 ```
 
 
-<a id="off-66"></a>
+<a id="off67"></a>
 
 ## off
 
@@ -4230,14 +4230,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Call
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.SIGNIFICANT_MOTION]
-> [off_SensorId.SIGNIFICANT_MOTION](#off-42)
+> [off](#off43)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-42)(type: SensorId.SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;)
+**替代接口：** [off](#off43)(type: SensorId.SIGNIFICANT_MOTION, callback?: Callback&lt;SignificantMotionResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback<SignificantMotionResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback?: Callback<SignificantMotionResponse>): void-End-->
 
@@ -4263,7 +4263,7 @@ sensor.off(sensor.SensorType.SENSOR_TYPE_ID_SIGNIFICANT_MOTION, callback);
 ```
 
 
-<a id="off-67"></a>
+<a id="off68"></a>
 
 ## off
 
@@ -4276,14 +4276,14 @@ function off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback
 > **说明：** 
 > 
 > 从API version 8 开始支持，从API version 9 开始废弃，建议使用[sensor.on.WEAR_DETECTION]
-> [off_SensorId.WEAR_DETECTION](#off-44)
+> [off](#off45)
 > 替代。
 
 **起始版本：** 8
 
 **废弃版本：** 9
 
-**替代接口：** [off](#off-44)(type: SensorId.WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;)
+**替代接口：** [off](#off45)(type: SensorId.WEAR_DETECTION, callback?: Callback&lt;WearDetectionResponse&gt;)
 
 <!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback<WearDetectionResponse>): void--><!--Device-sensor-function off(type: SensorType.SENSOR_TYPE_ID_WEAR_DETECTION, callback?: Callback<WearDetectionResponse>): void-End-->
 

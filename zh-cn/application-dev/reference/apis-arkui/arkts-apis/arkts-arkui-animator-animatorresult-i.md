@@ -200,6 +200,8 @@ play(): void
 animator.play();
 ```
 
+<a id="reset1"></a>
+
 ## reset
 
 ```TypeScript
@@ -268,7 +270,7 @@ struct AnimatorTest {
 }
 ```
 
-<a id="reset-1"></a>
+<a id="reset2"></a>
 
 ## reset
 
@@ -276,7 +278,7 @@ struct AnimatorTest {
 reset(options: AnimatorOptions | SimpleAnimatorOptions): void
 ```
 
-重置当前animator动画参数。与[reset](#reset)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。建议在动画未开始播放或播放结束后（[onFinish](#onfinish)或[onCancel](#oncancel)回调触发后）调用此方法，重新设置动画参数后调用[play](#play)启动新动画。
+重置当前animator动画参数。与[reset](#reset1)相比，新增对[SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md)类型入参的支持。建议在动画未开始播放或播放结束后（[onFinish](#onfinish)或[onCancel](#oncancel)回调触发后）调用此方法，重新设置动画参数后调用[play](#play)启动新动画。
 
 **起始版本：** 18
 
@@ -425,7 +427,7 @@ oncancel: () => void
 
 **废弃版本：** 12
 
-**替代接口：** onCancel
+**替代接口：** [onCancel](#oncancel)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -447,7 +449,7 @@ onfinish: () => void
 
 **废弃版本：** 12
 
-**替代接口：** onFinish
+**替代接口：** [onFinish](#onfinish)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -469,7 +471,7 @@ onframe: (progress: number) => void
 
 **废弃版本：** 12
 
-**替代接口：** onFrame
+**替代接口：** [onFrame](#onframe)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -497,7 +499,7 @@ onrepeat: () => void
 
 **废弃版本：** 12
 
-**替代接口：** onRepeat
+**替代接口：** [onRepeat](#onrepeat)
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
@@ -521,7 +523,7 @@ update(options: AnimatorOptions): void
 
 **废弃版本：** 9
 
-**替代接口：** reset
+**替代接口：** [reset](#reset)
 
 <!--Device-AnimatorResult-update(options: AnimatorOptions): void--><!--Device-AnimatorResult-update(options: AnimatorOptions): void-End-->
 

@@ -23,7 +23,7 @@ The **FormProvider** module provides APIs related to the widget provider. You ca
 
 | Name | Description |
 | --- | --- |
-| [setFormNextRefreshTime](arkts-form-formprovider-setformnextrefreshtime-depr-f.md#setformnextrefreshtime) | Sets the next refresh time for a widget. This API uses an asynchronous callback to return the result. |
-| [setFormNextRefreshTime](arkts-form-formprovider-setformnextrefreshtime-depr-f.md#setformnextrefreshtime-1) | Sets the next refresh time for a widget. This API uses a promise to return the result. |
-| [updateForm](arkts-form-formprovider-updateform-depr-f.md#updateform) | Updates a widget. This API uses an asynchronous callback to return the result. |
-| [updateForm](arkts-form-formprovider-updateform-depr-f.md#updateform-1) | Updates a widget. This API uses a promise to return the result. |
+| [setFormNextRefreshTime](arkts-form-formprovider-setformnextrefreshtime-depr-f.md#setformnextrefreshtime1) | Sets the next refresh time for a widget. This API uses an asynchronous callback to return the result. |
+| [setFormNextRefreshTime](arkts-form-formprovider-setformnextrefreshtime-depr-f.md#setformnextrefreshtime2) | Sets the next refresh time for a widget. This API uses a promise to return the result. |
+| [updateForm](arkts-form-formprovider-updateform-depr-f.md#updateform1) | Updates a widget. This API uses an asynchronous callback to return the result. |
+| [updateForm](arkts-form-formprovider-updateform-depr-f.md#updateform2) | Updates a widget. This API uses a promise to return the result. |

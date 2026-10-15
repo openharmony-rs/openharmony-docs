@@ -24,7 +24,7 @@ Background task.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Mode-BACKGROUND--><!--Device-Mode-BACKGROUND-End-->
 
@@ -40,7 +40,7 @@ Foreground task.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Mode-FOREGROUND--><!--Device-Mode-FOREGROUND-End-->
 

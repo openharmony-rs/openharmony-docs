@@ -44,6 +44,7 @@ onContinuousTaskStart(info: ContinuousTaskInfo): void
 | --- | --- | --- | --- |
 | info | [ContinuousTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskinfo-i.md) | 是 | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -61,6 +62,8 @@ let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = 
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## onContinuousTaskStop
 
@@ -86,6 +89,7 @@ onContinuousTaskStop(info: ContinuousTaskInfo): void
 | --- | --- | --- | --- |
 | info | [ContinuousTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskinfo-i.md) | 是 | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -103,6 +107,8 @@ let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = 
     }
 }
 ```
+
+<!--DelEnd-->
 
 ## onContinuousTaskUpdate
 
@@ -128,6 +134,7 @@ onContinuousTaskUpdate(info: ContinuousTaskInfo): void
 | --- | --- | --- | --- |
 | info | [ContinuousTaskInfo](arkts-backgroundtasks-backgroundtaskmanager-continuoustaskinfo-i.md) | 是 | 长时任务回调信息，长时任务ID、长时任务类型等。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -145,3 +152,5 @@ let backgroundTaskSubscriber : backgroundTaskManager.BackgroundTaskSubscriber = 
     }
 }
 ```
+
+<!--DelEnd-->

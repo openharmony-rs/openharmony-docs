@@ -6,6 +6,8 @@
 import { wallpaper } from '@kit.BasicServicesKit';
 ```
 
+<a id="isoperationallowed1"></a>
+
 ## isOperationAllowed
 
 ```TypeScript
@@ -46,7 +48,7 @@ wallpaper.isOperationAllowed((error: BusinessError, data: boolean) => {
 ```
 
 
-<a id="isoperationallowed-1"></a>
+<a id="isoperationallowed2"></a>
 
 ## isOperationAllowed
 

@@ -4,7 +4,7 @@
 export interface PluginBundleInfo
 ```
 
-Defines the plugin information.
+Provides the plugin information, which is obtained by calling [pluginBundleManager.getAllLocalPluginInfoForSelf](arkts-ability-pluginbundlemanager-getalllocalplugininfoforself-f.md) to obtain all plugin information installed by the current app through self-distribution. The information includes the plugin name, icon, version number, and module information, and is used to manage installed plugins and perform compatibility checks and updates based on the version number and module information.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,7 @@ Defines the plugin information.
 readonly icon: string
 ```
 
-Plugin icon.
+Icon of the plugin. Corresponds to the **icon** field configured in [app.json5](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file).
 
 **Type:** string
 
@@ -34,7 +34,7 @@ Plugin icon.
 readonly iconId: number
 ```
 
-Resource ID of the plugin icon.
+Resource ID of the plugin icon. It is automatically generated during compilation and building based on the icon configured for the plugin.
 
 **Type:** number
 
@@ -50,7 +50,7 @@ Resource ID of the plugin icon.
 readonly label: string
 ```
 
-Plugin name.
+Name of the plugin. Corresponds to the **label** field configured in [app.json5](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file).
 
 **Type:** string
 
@@ -66,7 +66,7 @@ Plugin name.
 readonly labelId: number
 ```
 
-Resource ID of the plugin name.
+Resource ID of the plugin name. It is automatically generated during compilation and building based on the label configured for the plugin.
 
 **Type:** number
 
@@ -82,7 +82,7 @@ Resource ID of the plugin name.
 readonly pluginBundleName: string
 ```
 
-Bundle name of the application for which the plugin is installed.
+Bundle name of the application that installs the plugin. Corresponds to the **bundleName** field configured in [app.json5](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file).
 
 **Type:** string
 
@@ -114,7 +114,7 @@ Module information of the plugin.
 readonly versionCode: number
 ```
 
-Version number of the plugin.
+Version code of the plugin. Corresponds to the **versionCode** field configured in [app.json5](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file).
 
 **Type:** number
 
@@ -130,7 +130,7 @@ Version number of the plugin.
 readonly versionName: string
 ```
 
-Version name of the plugin.
+Version name of the plugin. Corresponds to the **versionName** field configured in [app.json5](../../../quick-start/app-configuration-file.md#tags-in-the-configuration-file).
 
 **Type:** string
 

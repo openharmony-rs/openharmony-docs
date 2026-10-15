@@ -4,15 +4,15 @@
 declare class ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
 ```
 
-In addition to the [universal attributes](arkts-arkui-common-comp.md), the following attributes are supported.
+In addition to the [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) the following attributes are supported.
 
 > **NOTE:** 
 > 
-> The default value of [shape clipping](arkts-arkui-common-comp-commonmethod-c.md#clip) of the **ColumnSplit** component is **true**.
+> The default value of [shape clipping](arkts-arkui-common-comp-commonmethod-c.md#clip1) of the **ColumnSplit** component is **true**.
 
-The [universal events](arkts-arkui-common-comp.md) are supported.
+The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** ColumnSplitAttribute extends CommonMethod<ColumnSplitAttribute>
+**Inheritance/Implementation:** ColumnSplitAttribute extends CommonMethod&lt;ColumnSplitAttribute&gt;
 
 **Since:** 7
 

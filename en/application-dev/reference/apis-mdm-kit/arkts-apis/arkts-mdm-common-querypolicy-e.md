@@ -12,22 +12,6 @@ The policy of query enterprise device management policy.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## SELF
-
-```TypeScript
-SELF = 0
-```
-
-Query the policy set by self.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-QueryPolicy-SELF = 0--><!--Device-QueryPolicy-SELF = 0-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## ALL
 
 ```TypeScript
@@ -41,5 +25,21 @@ Query the policy set by all administrators.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-QueryPolicy-ALL = 1--><!--Device-QueryPolicy-ALL = 1-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## SELF
+
+```TypeScript
+SELF = 0
+```
+
+Query the policy set by self.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-QueryPolicy-SELF = 0--><!--Device-QueryPolicy-SELF = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

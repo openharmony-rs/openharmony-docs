@@ -12,6 +12,38 @@ Enumerates image metadata types.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
+## AVIS_METADATA
+
+```TypeScript
+AVIS_METADATA = 23
+```
+
+Metadata of a Avis image.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MetadataType-AVIS_METADATA = 23--><!--Device-MetadataType-AVIS_METADATA = 23-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## DNG_METADATA
+
+```TypeScript
+DNG_METADATA = 16
+```
+
+Metadata of a DNG image.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MetadataType-DNG_METADATA = 16--><!--Device-MetadataType-DNG_METADATA = 16-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
 ## EXIF_METADATA
 
 ```TypeScript
@@ -70,35 +102,19 @@ Metadata of a HEIFS image.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## DNG_METADATA
+## JFIF_METADATA
 
 ```TypeScript
-DNG_METADATA = 16
+JFIF_METADATA = 20
 ```
 
-Metadata of a DNG image.
+Metadata of a JFIF image.
 
-**Since:** 24
+**Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-MetadataType-DNG_METADATA = 16--><!--Device-MetadataType-DNG_METADATA = 16-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## WEBP_METADATA
-
-```TypeScript
-WEBP_METADATA = 17
-```
-
-Metadata of a WebP image.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-MetadataType-WEBP_METADATA = 17--><!--Device-MetadataType-WEBP_METADATA = 17-End-->
+<!--Device-MetadataType-JFIF_METADATA = 20--><!--Device-MetadataType-JFIF_METADATA = 20-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
@@ -118,22 +134,6 @@ Metadata of a PNG image.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
-## JFIF_METADATA
-
-```TypeScript
-JFIF_METADATA = 20
-```
-
-Metadata of a JFIF image.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-MetadataType-JFIF_METADATA = 20--><!--Device-MetadataType-JFIF_METADATA = 20-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
 ## TIFF_METADATA
 
 ```TypeScript
@@ -150,6 +150,22 @@ Metadata of a TIFF image.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
+## WEBP_METADATA
+
+```TypeScript
+WEBP_METADATA = 17
+```
+
+Metadata of a WebP image.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MetadataType-WEBP_METADATA = 17--><!--Device-MetadataType-WEBP_METADATA = 17-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
 ## XMP_METADATA
 
 ```TypeScript
@@ -163,21 +179,5 @@ XMP metadata.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-MetadataType-XMP_METADATA = 22--><!--Device-MetadataType-XMP_METADATA = 22-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## AVIS_METADATA
-
-```TypeScript
-AVIS_METADATA = 23
-```
-
-Metadata of a Avis image.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-MetadataType-AVIS_METADATA = 23--><!--Device-MetadataType-AVIS_METADATA = 23-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core

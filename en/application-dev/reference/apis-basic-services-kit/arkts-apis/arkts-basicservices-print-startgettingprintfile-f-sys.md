@@ -42,6 +42,7 @@ Starts to obtain the print file. This API uses an asynchronous callback to retur
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | not system application |
 | [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -78,3 +79,5 @@ print.startGettingPrintFile(jobId, printAttributes, fd, (state: print.PrintFileC
     console.info('onFileStateChanged success, data : ' + JSON.stringify(state));
 });
 ```
+
+<!--DelEnd-->

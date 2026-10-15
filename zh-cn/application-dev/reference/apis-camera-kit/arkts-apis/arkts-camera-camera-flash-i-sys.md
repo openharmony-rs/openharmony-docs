@@ -53,6 +53,7 @@ Before the setting, call [isLcdFlashSupported](arkts-camera-camera-flashquery-i-
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -68,3 +69,5 @@ function enableLcdFlash(session: camera.PhotoSessionForSys | camera.VideoSession
   }
 }
 ```
+
+<!--DelEnd-->

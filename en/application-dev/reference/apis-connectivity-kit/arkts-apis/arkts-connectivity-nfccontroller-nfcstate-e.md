@@ -22,25 +22,9 @@ NFC is closed (OFF).
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NfcState-STATE_OFF = 1--><!--Device-NfcState-STATE_OFF = 1-End-->
-
-**System capability:** SystemCapability.Communication.NFC.Core
-
-## STATE_TURNING_ON
-
-```TypeScript
-STATE_TURNING_ON = 2
-```
-
-NFC is turning on.
-
-**Since:** 7
-
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
-
-<!--Device-NfcState-STATE_TURNING_ON = 2--><!--Device-NfcState-STATE_TURNING_ON = 2-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Core
 
@@ -54,7 +38,7 @@ NFC is open (ON).
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NfcState-STATE_ON = 3--><!--Device-NfcState-STATE_ON = 3-End-->
 
@@ -70,8 +54,24 @@ NFC is turning off.
 
 **Since:** 7
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-NfcState-STATE_TURNING_OFF = 4--><!--Device-NfcState-STATE_TURNING_OFF = 4-End-->
+
+**System capability:** SystemCapability.Communication.NFC.Core
+
+## STATE_TURNING_ON
+
+```TypeScript
+STATE_TURNING_ON = 2
+```
+
+NFC is turning on.
+
+**Since:** 7
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-NfcState-STATE_TURNING_ON = 2--><!--Device-NfcState-STATE_TURNING_ON = 2-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Core

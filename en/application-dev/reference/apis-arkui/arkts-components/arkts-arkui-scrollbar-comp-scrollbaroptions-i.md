@@ -14,7 +14,7 @@ Parameters of the **ScrollBar** component.
 > 
 > - Since API version 12, the ScrollBar component supports displaying a scrollbar in the default style when it has no child nodes.
 > 
-> - The visibility of the ScrollBar component is set through BarState. The component automatically adjusts opacity based on the BarState setting to control visibility. Therefore, the [opacity](arkts-arkui-common-comp-commonmethod-c.md#opacity-1) attribute set for the ScrollBar component does not take effect.
+> - The visibility of the ScrollBar component is set through BarState. The component automatically adjusts opacity based on the BarState setting to control visibility. Therefore, the [opacity](arkts-arkui-common-comp-commonmethod-c.md#opacity2) attribute set for the ScrollBar component does not take effect.
 
 **Since:** 8
 

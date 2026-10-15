@@ -6,6 +6,8 @@
 import { formHost } from '@kit.FormKit';
 ```
 
+<a id="notifyformsprivacyprotected1"></a>
+
 ## notifyFormsPrivacyProtected
 
 ```TypeScript
@@ -47,8 +49,29 @@ Notifies that the privacy protection status of the specified widgets changes. Th
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
 
+<!--Del-->
+**Examples**
 
-<a id="notifyformsprivacyprotected-1"></a>
+```TypeScript
+import { formHost } from '@kit.FormKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let formIds: string[] = new Array('12400633174999288', '12400633174999289');
+try {
+  formHost.notifyFormsPrivacyProtected(formIds, true, (error: BusinessError) => {
+    if (error) {
+      console.error(`error, code: ${error.code}, message: ${error.message}`);
+    }
+  });
+} catch (error) {
+  console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+}
+```
+
+<!--DelEnd-->
+
+
+<a id="notifyformsprivacyprotected2"></a>
 
 ## notifyFormsPrivacyProtected
 
@@ -91,3 +114,10 @@ Notifies that the privacy protection status of the specified widgets changes. Th
 | [16500050](../errorcode-form.md#16500050-ipc-failure) | IPC connection error. |
 | [16500060](../errorcode-form.md#16500060-service-connection-failure) | Service connection error. |
 | [16501000](../errorcode-form.md#16501000-internal-function-error) | An internal functional error occurred. |
+
+<!--Del-->
+**Examples**
+
+See [notifyFormsPrivacyProtected](#notifyformsprivacyprotected)
+
+<!--DelEnd-->

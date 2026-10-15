@@ -62,33 +62,17 @@ The type for the IKEv2/IPsec RSA VPN network.
 
 **System API:** This is a system API.
 
-## L2TP_IPSEC_PSK
+## IPSEC_HYBRID_RSA
 
 ```TypeScript
-L2TP_IPSEC_PSK = 4
+IPSEC_HYBRID_RSA = 8
 ```
 
-The type for the L2TP/IPsec PSK VPN network.
+The type for the IPsec HYBRID RSA VPN network.
 
 **Since:** 12
 
-<!--Device-SysVpnType-L2TP_IPSEC_PSK = 4--><!--Device-SysVpnType-L2TP_IPSEC_PSK = 4-End-->
-
-**System capability:** SystemCapability.Communication.NetManager.Vpn
-
-**System API:** This is a system API.
-
-## L2TP_IPSEC_RSA
-
-```TypeScript
-L2TP_IPSEC_RSA = 5
-```
-
-The type for the L2TP/IPsec RSA VPN network.
-
-**Since:** 12
-
-<!--Device-SysVpnType-L2TP_IPSEC_RSA = 5--><!--Device-SysVpnType-L2TP_IPSEC_RSA = 5-End-->
+<!--Device-SysVpnType-IPSEC_HYBRID_RSA = 8--><!--Device-SysVpnType-IPSEC_HYBRID_RSA = 8-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 
@@ -126,17 +110,33 @@ The type for the IPsec XAUTH RSA VPN network.
 
 **System API:** This is a system API.
 
-## IPSEC_HYBRID_RSA
+## L2TP_IPSEC_PSK
 
 ```TypeScript
-IPSEC_HYBRID_RSA = 8
+L2TP_IPSEC_PSK = 4
 ```
 
-The type for the IPsec HYBRID RSA VPN network.
+The type for the L2TP/IPsec PSK VPN network.
 
 **Since:** 12
 
-<!--Device-SysVpnType-IPSEC_HYBRID_RSA = 8--><!--Device-SysVpnType-IPSEC_HYBRID_RSA = 8-End-->
+<!--Device-SysVpnType-L2TP_IPSEC_PSK = 4--><!--Device-SysVpnType-L2TP_IPSEC_PSK = 4-End-->
+
+**System capability:** SystemCapability.Communication.NetManager.Vpn
+
+**System API:** This is a system API.
+
+## L2TP_IPSEC_RSA
+
+```TypeScript
+L2TP_IPSEC_RSA = 5
+```
+
+The type for the L2TP/IPsec RSA VPN network.
+
+**Since:** 12
+
+<!--Device-SysVpnType-L2TP_IPSEC_RSA = 5--><!--Device-SysVpnType-L2TP_IPSEC_RSA = 5-End-->
 
 **System capability:** SystemCapability.Communication.NetManager.Vpn
 

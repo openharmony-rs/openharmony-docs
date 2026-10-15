@@ -12,24 +12,6 @@ Enumerates triggering phases of gesture callbacks, corresponding to the action c
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## WILL_START
-
-```TypeScript
-WILL_START = 0
-```
-
-The gesture has been successfully recognized by the system, and the action-start/action callback will be executed immediately.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-<!--Device-GestureActionPhase-WILL_START = 0--><!--Device-GestureActionPhase-WILL_START = 0-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## WILL_END
 
 ```TypeScript
@@ -45,5 +27,23 @@ This indicates the gesture has been determined to be an end, which usually happe
 **Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-GestureActionPhase-WILL_END = 1--><!--Device-GestureActionPhase-WILL_END = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## WILL_START
+
+```TypeScript
+WILL_START = 0
+```
+
+The gesture has been successfully recognized by the system, and the action-start/action callback will be executed immediately.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+<!--Device-GestureActionPhase-WILL_START = 0--><!--Device-GestureActionPhase-WILL_START = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

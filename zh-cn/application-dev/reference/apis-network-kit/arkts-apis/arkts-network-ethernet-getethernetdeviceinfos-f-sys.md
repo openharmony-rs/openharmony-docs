@@ -38,6 +38,7 @@ function getEthernetDeviceInfos(): Promise<Array<EthernetDeviceInfos>>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Non-system applications use system APIs. |
 | [2201005](../errorcode-net-ethernet.md#2201005-设备信息不存在) | Device information does not exist. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -53,3 +54,5 @@ ethernet.getEthernetDeviceInfos().then((data: Array<ethernet.EthernetDeviceInfos
   console.error("getEthernetDeviceInfos err = " + err.code);
 });
 ```
+
+<!--DelEnd-->

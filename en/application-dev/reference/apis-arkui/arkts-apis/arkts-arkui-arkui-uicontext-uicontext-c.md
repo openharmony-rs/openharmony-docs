@@ -40,18 +40,14 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 addLocalInputEventMonitor(eventMask: number, listener: InputEventListener): InputEventMonitor
 ```
 
-Registers a local input event monitor.
+Registers a local input event listener.
 
-The "Local" in the interface name indicates that the monitor is only valid within the current UIContext, and does not affect other UIContext instances. Each UIContext maintains its own independent list of monitors.
-
-Performance Warning: Do not perform time-consuming operations in the callback!
-
-Monitor Object Notes:
-
-- The returned Monitor object is a unique identifier created by the system.  
-- Developers cannot actively construct or forge this object.  
-- Must save the returned monitor object reference for subsequent cancellation.  
-- It is recommended to use a variable to save it to avoid losing the reference.
+> **NOTE:** 
+> 
+> - Do not perform time-consuming operations (such as complex calculations or network requests) in the callback. Otherwise, stuttering may occur.
+> - This listener is valid only in the current UIContext (that is, the current window) and does not respond to other UIContext instances.
+> - The returned **InputEventMonitor** object is a unique identifier created by the system. You cannot construct or forge this object. You must retain its reference for subsequent unregistration.
+> - If an invalid parameter is passed, **undefined** is returned, indicating that the listener fails to be registered.
 
 Usage Examples:
 
@@ -59,19 +55,21 @@ Usage Examples:
 // Monitor a single event type
 const monitor1 = uiContext.addLocalInputEventMonitor(
 InputEventSubTypeMask.LEFT_MOUSE_DOWN,
-(wrapper: RawInputEventWrapper) =&gt; {
+(wrapper: RawInputEventWrapper) =
+> {
 if (wrapper.isMouseEvent()) {
 const mouseEvent = wrapper.asMouseEvent();
 console.log(`Mouse: (${mouseEvent.windowX}, ${mouseEvent.windowY})`);
-return { action: InputEventInterceptAction.CONTINUE }; // Allow event to continue
+return { action: InputEventInterceptAction.CONTINUE };  // Allow event to continue
 }
-return { action: InputEventInterceptAction.BLOCK }; // Block event
+return { action: InputEventInterceptAction.BLOCK };  // Block event
 }
 );
 // Monitor multiple event types (using bitwise operations)
 const monitor2 = uiContext.addLocalInputEventMonitor(
 InputEventSubTypeMask.LEFT_MOUSE_DOWN | InputEventSubTypeMask.RIGHT_MOUSE_DOWN,
-(wrapper: RawInputEventWrapper) =&gt; {
+(wrapper: RawInputEventWrapper) =
+> {
 if (wrapper.isMouseEvent()) {
 const mouseEvent = wrapper.asMouseEvent()!;
 console.log(`Mouse button: ${mouseEvent.button}`);
@@ -99,14 +97,14 @@ uiContext.removeLocalInputEventMonitor(monitor2);
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| eventMask | number | Yes | Event type mask, specifying the types of events to monitor through bitwise operations. |
-| listener | [InputEventListener](../arkts-components/arkts-arkui-common-comp-inputeventlistener-t.md) | Yes | Event listener callback function. |
+| eventMask | number | Yes | Event type mask, which specifies event types to listen for via bitwise operations. For details about the values and their meanings, see [InputEventSubTypeMask](arkts-arkui-inputeventsubtypemask-e.md). |
+| listener | [InputEventListener](../arkts-components/arkts-arkui-common-comp-inputeventlistener-t.md) | Yes | Callback function of the event listener. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| [InputEventMonitor](../arkts-components/arkts-arkui-common-comp-inputeventmonitor-i.md) | Unique identifier object for the monitor, used for subsequent cancellation of registration. |
+| [InputEventMonitor](../arkts-components/arkts-arkui-common-comp-inputeventmonitor-i.md) | Unique identifier object of the listener, which is used for subsequent unregistration. |
 
 **Examples**
 
@@ -160,21 +158,50 @@ Adds transition animations for state changes in closure code.
 > 
 > - Avoid using **animateTo** in **aboutToAppear** or **aboutToDisappear**.
 > 
-> - When **animateTo** is called in [aboutToAppear](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear), the component's build method is not executed yet, and internal components are not created. This means the animation has no initial values to work with and will not function as expected.
+> - When **animateTo** is called in
 > 
-> - During execution of [aboutToDisappear](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear),the component is being destroyed, so animations should not be used.
+> [aboutToAppear](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttoappear), the
 > 
-> - When a component appears or disappears, animation effects can be added through [component transition](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md).
+> component's build method is not executed yet, and internal components are not created. This means the animation
 > 
-> - For properties that component transitions do not support, refer to [Example 2: Enabling Component Disappearance After Animation Completion](../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#example-2-enabling-component-disappearance-after-animation-completion),which uses **animateTo** to achieve the effect of the component disappearing after the animation finishes.
+> has no initial values to work with and will not function as expected.
 > 
-> - In certain scenarios, using animateTo with [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may produce unexpected results. For details, see [Using animateTo Failed in State Management V2](../../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
+> - During execution of
+> 
+> [aboutToDisappear](../../../reference/apis-arkui/arkui-ts/ts-custom-component-lifecycle.md#abouttodisappear),
+> 
+> the component is being destroyed, so animations should not be used.
+> 
+> - When a component appears or disappears, animation effects can be added through
+> 
+> [component transition](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md).
+> 
+> - For properties that component transitions do not support, refer to
 > 
 > 
-> - When a UIAbility switches from the foreground to the background, any limited iteration animations that are currently running will end immediately, thereby triggering the [onFinish animation completion callback](../arkts-components/arkts-arkui-common-comp-animateparam-i.md).
+> [Example 2: Enabling Component Disappearance After Animation Completion](../../../reference/apis-arkui/arkui-ts/ts-explicit-animation.md#example-2-enabling-component-disappearance-after-animation-completion),
+> 
+> which uses **animateTo** to achieve the effect of the component disappearing after the animation finishes.
+> 
+> - In certain scenarios, using animateTo with
+> 
+> [state management V2](../../../ui/state-management/arkts-state-management-overview.md#state-management-v2) may
+> 
+> produce unexpected results. For details, see
+> 
+> 
+> [Using animateTo Failed in State Management V2](../../../ui/state-management/arkts-new-local.md#using-animateto-failed-in-state-management-v2).
+> 
+> - When a UIAbility switches from the foreground to the background, any limited iteration animations that are
+> 
+> currently running will end immediately, thereby triggering the
+> 
+> [onFinish animation completion callback](../arkts-components/arkts-arkui-common-comp-animateparam-i.md).
 > 
 > - If transition animations are turned off in Developer options, animations end on the current frame, and the
+> 
 > **onFinish** callback is executed immediately. Avoid placing timing-dependent functional logic inside this
+> 
 > callback.
 
 **Since:** 10
@@ -280,7 +307,7 @@ struct AnimateToExample {
 animateToImmediately(param: AnimateParam, processor: Callback<void>): void
 ```
 
-Specifies a clear animation host instance context via the UIContext object and triggers the explicit animation to be dispatched immediately. This avoids issues where animations are not executed or animation end callbacks are not triggered due to inability to locate the instance or using an incorrect instance. This API uses an asynchronous callback to return the result.
+Specifies a clear animation host instance context via the UIContext object and triggers the explicit animation to be dispatched immediately. This avoids issues where animations are not executed or animation end callbacks are not triggered due to inability to locate the instance or using an incorrect instance.
 
 **Since:** 23
 
@@ -764,6 +791,8 @@ struct Index {
 }
 ```
 
+<a id="createanimator1"></a>
+
 ## createAnimator
 
 ```TypeScript
@@ -835,7 +864,7 @@ export default class EntryAbility extends UIAbility {
 }
 ```
 
-<a id="createanimator-1"></a>
+<a id="createanimator2"></a>
 
 ## createAnimator
 
@@ -843,7 +872,7 @@ export default class EntryAbility extends UIAbility {
 createAnimator(options: AnimatorOptions | SimpleAnimatorOptions): AnimatorResult
 ```
 
-Creates an **AnimatorResult** object for animations. Compared to the previous [createAnimator](#createanimator) API, this API adds support for the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
+Creates an **AnimatorResult** object for animations. Compared to the previous [createAnimator](#createanimator1) API, this API adds support for the [SimpleAnimatorOptions](arkts-arkui-animator-simpleanimatoroptions-c.md) type.
 
 **Since:** 18
 
@@ -2673,6 +2702,30 @@ export default class EntryAbility extends UIAbility{
 }
 ```
 
+## getPlaceholderRegister
+
+```TypeScript
+getPlaceholderRegister(): PlaceholderRegister
+```
+
+Obtains the **PlaceholderRegister** object of this UI instance.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-UIContext-getPlaceholderRegister(): PlaceholderRegister--><!--Device-UIContext-getPlaceholderRegister(): PlaceholderRegister-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Return value:**
+
+| Type | Description |
+| --- | --- |
+| [PlaceholderRegister](arkts-arkui-arkui-placeholderregister-placeholderregister-c.md) | The scroll placeholder registry of this UI instance. |
+
 ## getPromptAction
 
 ```TypeScript
@@ -3364,7 +3417,7 @@ struct Index {
 keyframeAnimateTo(param: KeyframeAnimateParam, keyframes: Array<KeyframeState>): void
 ```
 
-Generates a key frame animation. For details about how to use this API, see [keyframeAnimateTo](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-common.md).
+Generates a key frame animation.
 
 **Since:** 11
 
@@ -3510,9 +3563,12 @@ Creates a sheet whose content is as defined in **bindSheetContent** and displays
 > **NOTE:** 
 > 
 > 1. When calling this API, if no valid value is provided for **targetId**, you won't be able to set
+> 
 > **SheetOptions.preferType** to **POPUP** or **SheetOptions.mode** to **EMBEDDED**.
 > 
-> 2. Since [updateBindSheet](#updatebindsheet) and [closeBindSheet](#closebindsheet)depend on **bindSheetContent**, you need to maintain the passed **bindSheetContent** yourself.
+> 2. Since [updateBindSheet](#updatebindsheet) and [closeBindSheet](#closebindsheet)
+> 
+> depend on **bindSheetContent**, you need to maintain the passed **bindSheetContent** yourself.
 > 
 > 3. Setting **SheetOptions.UIContext** is not supported.
 
@@ -3531,7 +3587,7 @@ Creates a sheet whose content is as defined in **bindSheetContent** and displays
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bindSheetContent | [ComponentContent](arkts-arkui-componentcontent-c.md)&lt;T&gt; | Yes | Content to display on the sheet. |
-| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md) | No | Style of the sheet.<br>**NOTE:** <br>1. **SheetOptions.uiContext** cannot be set. Its value is fixed to the **UIContext** object of the current instance.<br>2. If **targetId** is not passed in, **SheetOptions.preferType** cannot be set to **POPUP**; if **POPUP** is set, it will be replaced with **CENTER**.<br>3. If **targetId** is not passed in, **SheetOptions.mode** cannot be set to **EMBEDDED**; the default mode is **OVERLAY**.<br>4. For the default values of other attributes, see [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md). |
+| sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md) | No | Style of the sheet. <br>**NOTE:** <br>1. **SheetOptions.uiContext** cannot be set. Its value is fixed to the **UIContext** object of the current instance. <br>2. If **targetId** is not passed in, **SheetOptions.preferType** cannot be set to **POPUP**; if **POPUP** is set, it will be replaced with **CENTER**. <br>3. If **targetId** is not passed in, **SheetOptions.mode** cannot be set to **EMBEDDED**; the default mode is **OVERLAY**. <br>4. For the default values of other attributes, see [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md). |
 | targetId | number | No | ID of the component to be bound. If this parameter is not set, no component is bound. If the ID does not exist, the error code 120004 is returned. Returns error code 401 if **undefined** is passed in. |
 
 **Return value:**
@@ -3927,13 +3983,13 @@ struct MatrixExample {
 removeLocalInputEventMonitor(monitor: InputEventMonitor): void
 ```
 
-Removes a local input event monitor.
+Removes the local input event listener.
 
-**Important Notes**:
-
-- Only Monitor objects returned by addLocalInputEventMonitor can be removed.  
-- Cannot unregister a monitor by manually constructing an object.  
-- If an invalid object is passed, the system silently ignores it.
+> **NOTE:** 
+> 
+> - Only the **InputEventMonitor** object returned by addLocalInputEventMonitor can be removed.
+> - You cannot manually construct an object to unregister the listener.
+> - If an invalid object is passed, the system ignores it silently.
 
 **Since:** 26.0.0
 
@@ -3949,7 +4005,7 @@ Removes a local input event monitor.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| monitor | [InputEventMonitor](../arkts-components/arkts-arkui-common-comp-inputeventmonitor-i.md) | Yes | Monitor identifier object (returned by addLocalInputEventMonitor). |
+| monitor | [InputEventMonitor](../arkts-components/arkts-arkui-common-comp-inputeventmonitor-i.md) | Yes | Listener identifier object, which is returned by addLocalInputEventMonitor. |
 
 **Examples**
 
@@ -4846,6 +4902,8 @@ struct DatePickerDialogExample {
 }
 ```
 
+<a id="showtextpickerdialog1"></a>
+
 ## showTextPickerDialog
 
 ```TypeScript
@@ -4925,7 +4983,7 @@ struct TextPickerDialogExample {
 }
 ```
 
-<a id="showtextpickerdialog-1"></a>
+<a id="showtextpickerdialog2"></a>
 
 ## showTextPickerDialog
 
@@ -5111,7 +5169,7 @@ Updates the style of the sheet corresponding to the provided **bindSheetContent*
 | --- | --- | --- | --- |
 | bindSheetContent | [ComponentContent](arkts-arkui-componentcontent-c.md)&lt;T&gt; | Yes | Content to display on the sheet. |
 | sheetOptions | [SheetOptions](../arkts-components/arkts-arkui-common-comp-sheetoptions-i.md) | Yes | Style of the sheet.<br>**NOTE:** <br>**SheetOptions.UIContext** and **SheetOptions.mode** cannot be updated. |
-| partialUpdate | boolean | No | Whether to update the sheet in incremental mode.<br>Default value: **false**<br> **NOTE:** <br>1. **true**: incremental update, where the specified properties in **SheetOptions** are updated, and other properties stay at their current value.<br>2. **false**: full update, where all properties except those specified in **SheetOptions** are restored to default values. |
+| partialUpdate | boolean | No | Whether to update the sheet in incremental mode.<br>Default value: **false** <br> **NOTE:** <br>1. **true**: incremental update, where the specified properties in **SheetOptions** are updated, and other properties stay at their current value. <br>2. **false**: full update, where all properties except those specified in **SheetOptions** are restored to default values. |
 
 **Return value:**
 

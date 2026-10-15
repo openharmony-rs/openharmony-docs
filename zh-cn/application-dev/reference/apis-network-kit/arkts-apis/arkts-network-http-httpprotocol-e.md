@@ -22,7 +22,7 @@ HTTP1_1 = 0
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpProtocol-HTTP1_1 = 0--><!--Device-HttpProtocol-HTTP1_1 = 0-End-->
 
@@ -38,7 +38,7 @@ HTTP2 = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-HttpProtocol-HTTP2 = 1--><!--Device-HttpProtocol-HTTP2 = 1-End-->
 

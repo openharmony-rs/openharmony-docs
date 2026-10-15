@@ -6,6 +6,8 @@
 import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
+<a id="getp2plinkedinfo1"></a>
+
 ## getP2pLinkedInfo
 
 ```TypeScript
@@ -55,7 +57,7 @@ import { wifiManager } from '@kit.ConnectivityKit';
 ```
 
 
-<a id="getp2plinkedinfo-1"></a>
+<a id="getp2plinkedinfo2"></a>
 
 ## getP2pLinkedInfo
 

@@ -12,6 +12,24 @@ declare enum CrownSensitivity
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## HIGH
+
+```TypeScript
+HIGH = 2
+```
+
+高灵敏度。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-CrownSensitivity-HIGH = 2--><!--Device-CrownSensitivity-HIGH = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## LOW
 
 ```TypeScript
@@ -45,23 +63,5 @@ MEDIUM = 1
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-CrownSensitivity-MEDIUM = 1--><!--Device-CrownSensitivity-MEDIUM = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## HIGH
-
-```TypeScript
-HIGH = 2
-```
-
-高灵敏度。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-CrownSensitivity-HIGH = 2--><!--Device-CrownSensitivity-HIGH = 2-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

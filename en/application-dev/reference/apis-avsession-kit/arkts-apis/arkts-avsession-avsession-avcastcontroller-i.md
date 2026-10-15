@@ -18,6 +18,8 @@ AVCastController definition used to implement a remote control when a cast is co
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="getavplaybackstate1"></a>
+
 ## getAVPlaybackState
 
 ```TypeScript
@@ -56,7 +58,7 @@ avCastController.getAVPlaybackState((err: BusinessError, state: avSession.AVPlay
 });
 ```
 
-<a id="getavplaybackstate-1"></a>
+<a id="getavplaybackstate2"></a>
 
 ## getAVPlaybackState
 
@@ -68,7 +70,7 @@ Get the playback status of the current player
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastController-getAVPlaybackState(): Promise<AVPlaybackState>--><!--Device-AVCastController-getAVPlaybackState(): Promise<AVPlaybackState>-End-->
 
@@ -95,6 +97,8 @@ avCastController.getAVPlaybackState().then((state: avSession.AVPlaybackState) =>
   console.error(`Failed to get AV playback state, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="getcurrentitem1"></a>
 
 ## getCurrentItem
 
@@ -134,7 +138,7 @@ avCastController.getCurrentItem((err: BusinessError, value: avSession.AVQueueIte
 });
 ```
 
-<a id="getcurrentitem-1"></a>
+<a id="getcurrentitem2"></a>
 
 ## getCurrentItem
 
@@ -146,7 +150,7 @@ Get the current playing item
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastController-getCurrentItem(): Promise<AVQueueItem>--><!--Device-AVCastController-getCurrentItem(): Promise<AVQueueItem>-End-->
 
@@ -184,7 +188,7 @@ Get recommended resolution of remote player based on each decoder.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AVCastController-getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel>--><!--Device-AVCastController-getRecommendedResolutionLevel(decoderType: DecoderType): Promise<ResolutionLevel>-End-->
 
@@ -229,7 +233,7 @@ Get supported decoders of remote player.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AVCastController-getSupportedDecoders(): Promise<Array<DecoderType>>--><!--Device-AVCastController-getSupportedDecoders(): Promise<Array<DecoderType>>-End-->
 
@@ -270,7 +274,7 @@ Get supported hdr capabilities of remote player.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AVCastController-getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>--><!--Device-AVCastController-getSupportedHdrCapabilities(): Promise<Array<hdrCapability.HDRFormat>>-End-->
 
@@ -313,7 +317,7 @@ Get supported speed of remote player.
 
 **Since:** 19
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-AVCastController-getSupportedPlaySpeeds(): Promise<Array<double>>--><!--Device-AVCastController-getSupportedPlaySpeeds(): Promise<Array<double>>-End-->
 
@@ -343,6 +347,8 @@ avCastController.getSupportedPlaySpeeds().then((nums: number[]) => {
   console.error(`Failed to get supported play speeds, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="getvalidcommands1"></a>
 
 ## getValidCommands
 
@@ -382,7 +388,7 @@ avCastController.getValidCommands((err: BusinessError, state: avSession.AVCastCo
 });
 ```
 
-<a id="getvalidcommands-1"></a>
+<a id="getvalidcommands2"></a>
 
 ## getValidCommands
 
@@ -802,7 +808,7 @@ Unregister listeners for cast control generic error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **Examples**
 
@@ -837,7 +843,7 @@ Unregister listeners for cast control input/output error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **Examples**
 
@@ -872,7 +878,7 @@ Unregister listeners for cast control parsing error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **Examples**
 
@@ -907,7 +913,7 @@ Unregister listeners for cast control decoding error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **Examples**
 
@@ -942,7 +948,7 @@ Unregister listeners for cast control audio renderer error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **Examples**
 
@@ -977,7 +983,7 @@ Unregister listeners for cast control drm error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 
 **Examples**
 
@@ -1483,7 +1489,7 @@ Register listeners for cast control generic error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6611000](../errorcode-avsession.md#6611000-unknown-error-in-the-cast-controller) | The error code for cast control is unspecified. |
 | [6611001](../errorcode-avsession.md#6611001-unknown-error-in-the-remote-device) | An unspecified error occurs in the remote player. |
 | [6611002](../errorcode-avsession.md#6611002-loading-position-exceeds-the-total-video-progress) | The playback position falls behind the live window. |
@@ -1536,7 +1542,7 @@ Register listeners for cast control input/output error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6612000](../errorcode-avsession.md#6612000-unknown-io-error) | An unspecified input/output error occurs. |
 | [6612001](../errorcode-avsession.md#6612001-network-connection-failure) | Network connection failure. |
 | [6612002](../errorcode-avsession.md#6612002-network-timeout) | Network timeout. |
@@ -1592,7 +1598,7 @@ Register listeners for cast control parsing error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6613000](../errorcode-avsession.md#6613000-unknown-parsing-error) | Unspecified error related to content parsing. |
 | [6613001](../errorcode-avsession.md#6613001-invalid-type) | Parsing error associated with media container format bit streams. |
 | [6613002](../errorcode-avsession.md#6613002-error-in-parsing-media-manifest) | Parsing error associated with the media manifest. |
@@ -1636,7 +1642,7 @@ Register listeners for cast control decoding error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6614000](../errorcode-avsession.md#6614000-unknown-decoding-error) | Unspecified decoding error. |
 | [6614001](../errorcode-avsession.md#6614001-decoder-initialization-failure) | Decoder initialization failed. |
 | [6614002](../errorcode-avsession.md#6614002-decoder-query-failure) | Decoder query failed. |
@@ -1681,7 +1687,7 @@ Register listeners for cast control audio renderer error error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6615000](../errorcode-avsession.md#6615000-unknown-error-related-to-the-audio-renderer) | Unspecified errors related to the audio renderer. |
 | [6615001](../errorcode-avsession.md#6615001-audio-renderer-initialization-failure) | Initializing the audio renderer failed. |
 | [6615002](../errorcode-avsession.md#6615002-audio-renderer-failure-in-writing-data) | The audio renderer fails to write data. |
@@ -1723,7 +1729,7 @@ Register listeners for cast control drm error events.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter check failed. 1. Mandatory parameters are left unspecified.         2. Incorrect parameter types. |
 | [6616000](../errorcode-avsession.md#6616000-unknown-drm-error) | Unspecified error related to DRM. |
 | [6616001](../errorcode-avsession.md#6616001-device-does-not-support-the-selected-drm-solution) | The chosen DRM protection scheme is not supported by the device. |
 | [6616002](../errorcode-avsession.md#6616002-device-provisioning-failure) | Device provisioning failed. |
@@ -1821,6 +1827,8 @@ avCastController.on('customDataChange', (data: Record<string, Object>) => {
 });
 ```
 
+<a id="prepare1"></a>
+
 ## prepare
 
 ```TypeScript
@@ -1880,7 +1888,7 @@ avCastController.prepare(playItem, (err: BusinessError) => {
 });
 ```
 
-<a id="prepare-1"></a>
+<a id="prepare2"></a>
 
 ## prepare
 
@@ -1892,7 +1900,7 @@ Load the current item and mediaUri can be null, this is needed for sink media in
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastController-prepare(item: AVQueueItem): Promise<void>--><!--Device-AVCastController-prepare(item: AVQueueItem): Promise<void>-End-->
 
@@ -1956,7 +1964,7 @@ Process the response corresponding to the media key request obtained by the appl
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastController-processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>--><!--Device-AVCastController-processMediaKeyResponse(assetId: string, response: Uint8Array): Promise<void>-End-->
 
@@ -1999,6 +2007,8 @@ let keyRequestCallback: avSession.KeyRequestCallback = async(assetId: string, re
 }
 ```
 
+<a id="release1"></a>
+
 ## release
 
 ```TypeScript
@@ -2037,7 +2047,7 @@ avCastController.release((err: BusinessError) => {
 });
 ```
 
-<a id="release-1"></a>
+<a id="release2"></a>
 
 ## release
 
@@ -2049,7 +2059,7 @@ Destroy the controller
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastController-release(): Promise<void>--><!--Device-AVCastController-release(): Promise<void>-End-->
 
@@ -2076,6 +2086,8 @@ avCastController.release().then(() => {
   console.error(`Failed to release, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="sendcontrolcommand1"></a>
 
 ## sendControlCommand
 
@@ -2120,7 +2132,7 @@ avCastController.sendControlCommand(avCommand, (err: BusinessError) => {
 });
 ```
 
-<a id="sendcontrolcommand-1"></a>
+<a id="sendcontrolcommand2"></a>
 
 ## sendControlCommand
 
@@ -2132,7 +2144,7 @@ Send control commands to remote player
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastController-sendControlCommand(command: AVCastControlCommand): Promise<void>--><!--Device-AVCastController-sendControlCommand(command: AVCastControlCommand): Promise<void>-End-->
 
@@ -2180,7 +2192,7 @@ Sends custom data to a remote device.
 
 **Since:** 20
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-AVCastController-sendCustomData(data: Record<string, Object>): Promise<void>--><!--Device-AVCastController-sendCustomData(data: Record<string, Object>): Promise<void>-End-->
 
@@ -2213,6 +2225,8 @@ avCastController.sendCustomData({customData: 'This is custom data'}).then(() => 
   console.error(`Failed to send custom data, code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<a id="start1"></a>
 
 ## start
 
@@ -2274,7 +2288,7 @@ avCastController.start(playItem, (err: BusinessError) => {
 });
 ```
 
-<a id="start-1"></a>
+<a id="start2"></a>
 
 ## start
 
@@ -2286,7 +2300,7 @@ Play the current item, should contain mediaUri otherwise the playback will fail.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-AVCastController-start(item: AVQueueItem): Promise<void>--><!--Device-AVCastController-start(item: AVQueueItem): Promise<void>-End-->
 

@@ -4,7 +4,7 @@
 declare interface LocalizedHorizontalAlignParam
 ```
 
-Defines the localized horizontal align param of relative container.
+定义相对容器的水平对齐规则。
 
 @interface LocalizedHorizontalAlignParam
 
@@ -20,7 +20,7 @@ Defines the localized horizontal align param of relative container.
 align: HorizontalAlign
 ```
 
-The align of localized align param.
+设置相对于锚点组件的水平对齐方式。
 
 **类型：** [HorizontalAlign](../arkts-apis/arkts-arkui-horizontalalign-e.md)
 
@@ -40,7 +40,7 @@ The align of localized align param.
 anchor: string
 ```
 
-The anchor of localized align param.
+设置作为锚点的组件的id值。
 
 **类型：** string
 

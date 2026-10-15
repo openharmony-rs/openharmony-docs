@@ -12,7 +12,11 @@ import { sendableImage } from '@kit.ImageKit';
 function createPixelMapFromParcel(sequence: rpc.MessageSequence): PixelMap
 ```
 
-Creates a PixelMap object based on MessageSequence parameter.
+从MessageSequence中反序列化并获取PixelMap。
+
+> **说明：** 
+> 
+> 由于图片占用内存较大，所以当PixelMap对象使用完成后，应主动调用[release](arkts-image-sendableimage-pixelmap-i.md#release)方法及时释放内存。 释放时应确保该对象的所有异步方法均执行完成，且后续不再使用该对象。
 
 **起始版本：** 12
 
@@ -24,13 +28,13 @@ Creates a PixelMap object based on MessageSequence parameter.
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| sequence | [rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md) | 是 | [rpc.MessageSequence parameter.](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc.md) |
+| sequence | [rpc.MessageSequence](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-messagesequence-c.md) | 是 | 保存了PixelMap序列化数据的MessageSequence。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | --- | --- |
-| [PixelMap](arkts-image-sendableimage-pixelmap-i.md) | Returns the instance if the operation is successful. Otherwise, an exception will be thrown. |
+| [PixelMap](arkts-image-sendableimage-pixelmap-i.md) | 返回创建的PixelMap对象，接口调用失败时会抛出异常。 |
 
 **错误码：**
 

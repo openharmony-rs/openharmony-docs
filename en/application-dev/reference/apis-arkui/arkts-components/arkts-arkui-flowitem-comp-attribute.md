@@ -6,7 +6,7 @@ declare class FlowItemAttribute extends CommonMethod<FlowItemAttribute>
 
 Defines the water flow item attribute.
 
-**Inheritance/Implementation:** FlowItemAttribute extends CommonMethod<FlowItemAttribute>
+**Inheritance/Implementation:** FlowItemAttribute extends CommonMethod&lt;FlowItemAttribute&gt;
 
 **Since:** 9
 

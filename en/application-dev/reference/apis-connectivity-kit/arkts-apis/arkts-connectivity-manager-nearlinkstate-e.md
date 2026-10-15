@@ -4,7 +4,7 @@
 enum NearlinkState
 ```
 
-Enumerated the NearLink statuses.
+Enumerates the NearLink statuses.
 
 **Since:** 26.0.0
 
@@ -12,19 +12,21 @@ Enumerated the NearLink statuses.
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-## STATE_TURNING_ON
+## STATE_OFF
 
 ```TypeScript
-STATE_TURNING_ON = 0
+STATE_OFF = 3
 ```
 
-NearLink is being turned on.
+NearLink is turned off.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-NearlinkState-STATE_TURNING_ON = 0--><!--Device-NearlinkState-STATE_TURNING_ON = 0-End-->
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-NearlinkState-STATE_OFF = 3--><!--Device-NearlinkState-STATE_OFF = 3-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
@@ -39,6 +41,8 @@ NearLink is turned on.
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
 
 <!--Device-NearlinkState-STATE_ON = 1--><!--Device-NearlinkState-STATE_ON = 1-End-->
 
@@ -56,22 +60,26 @@ NearLink is being turned off.
 
 **Model restriction:** This API can be used only in the stage model.
 
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
 <!--Device-NearlinkState-STATE_TURNING_OFF = 2--><!--Device-NearlinkState-STATE_TURNING_OFF = 2-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base
 
-## STATE_OFF
+## STATE_TURNING_ON
 
 ```TypeScript
-STATE_OFF = 3
+STATE_TURNING_ON = 0
 ```
 
-NearLink is turned off.
+NearLink is being turned on.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-NearlinkState-STATE_OFF = 3--><!--Device-NearlinkState-STATE_OFF = 3-End-->
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-NearlinkState-STATE_TURNING_ON = 0--><!--Device-NearlinkState-STATE_TURNING_ON = 0-End-->
 
 **System capability:** SystemCapability.Communication.NearLink.Base

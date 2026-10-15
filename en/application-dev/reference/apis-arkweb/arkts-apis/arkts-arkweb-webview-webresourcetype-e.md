@@ -12,171 +12,17 @@ Enumerates the types of requested resources.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## MAIN_FRAME
+## CSP_REPORT
 
 ```TypeScript
-MAIN_FRAME = 0
+CSP_REPORT = 16
 ```
 
-Top-level page.
+Report of Content Security Policy violation.
 
 **Since:** 12
 
-<!--Device-WebResourceType-MAIN_FRAME = 0--><!--Device-WebResourceType-MAIN_FRAME = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## SUB_FRAME
-
-```TypeScript
-SUB_FRAME = 1
-```
-
-Frame or Iframe.
-
-**Since:** 12
-
-<!--Device-WebResourceType-SUB_FRAME = 1--><!--Device-WebResourceType-SUB_FRAME = 1-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## STYLE_SHEET
-
-```TypeScript
-STYLE_SHEET = 2
-```
-
-CSS stylesheet.
-
-**Since:** 12
-
-<!--Device-WebResourceType-STYLE_SHEET = 2--><!--Device-WebResourceType-STYLE_SHEET = 2-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## SCRIPT
-
-```TypeScript
-SCRIPT = 3
-```
-
-External script.
-
-**Since:** 12
-
-<!--Device-WebResourceType-SCRIPT = 3--><!--Device-WebResourceType-SCRIPT = 3-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## IMAGE
-
-```TypeScript
-IMAGE = 4
-```
-
-Image (JPG, GIF, PNG, or other format).
-
-**Since:** 12
-
-<!--Device-WebResourceType-IMAGE = 4--><!--Device-WebResourceType-IMAGE = 4-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## FONT_RESOURCE
-
-```TypeScript
-FONT_RESOURCE = 5
-```
-
-Font.
-
-**Since:** 12
-
-<!--Device-WebResourceType-FONT_RESOURCE = 5--><!--Device-WebResourceType-FONT_RESOURCE = 5-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## SUB_RESOURCE
-
-```TypeScript
-SUB_RESOURCE = 6
-```
-
-Other sub-resource. If the type is unknown, it is used as the default type.
-
-**Since:** 12
-
-<!--Device-WebResourceType-SUB_RESOURCE = 6--><!--Device-WebResourceType-SUB_RESOURCE = 6-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## OBJECT
-
-```TypeScript
-OBJECT = 7
-```
-
-Object (or embed) tag of the plug-in, or the resource requested by the plug-in.
-
-**Since:** 12
-
-<!--Device-WebResourceType-OBJECT = 7--><!--Device-WebResourceType-OBJECT = 7-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## MEDIA
-
-```TypeScript
-MEDIA = 8
-```
-
-Media resource.
-
-**Since:** 12
-
-<!--Device-WebResourceType-MEDIA = 8--><!--Device-WebResourceType-MEDIA = 8-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## WORKER
-
-```TypeScript
-WORKER = 9
-```
-
-Main resource of a dedicated worker thread.
-
-**Since:** 12
-
-<!--Device-WebResourceType-WORKER = 9--><!--Device-WebResourceType-WORKER = 9-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## SHARED_WORKER
-
-```TypeScript
-SHARED_WORKER = 10
-```
-
-Main resource of a shared worker thread.
-
-**Since:** 12
-
-<!--Device-WebResourceType-SHARED_WORKER = 10--><!--Device-WebResourceType-SHARED_WORKER = 10-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## PREFETCH
-
-```TypeScript
-PREFETCH = 11
-```
-
-Explicit prefetch request.
-
-**Since:** 12
-
-<!--Device-WebResourceType-PREFETCH = 11--><!--Device-WebResourceType-PREFETCH = 11-End-->
+<!--Device-WebResourceType-CSP_REPORT = 16--><!--Device-WebResourceType-CSP_REPORT = 16-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -194,73 +40,59 @@ Website icon.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## XHR
+## FONT_RESOURCE
 
 ```TypeScript
-XHR = 13
+FONT_RESOURCE = 5
 ```
 
-XMLHttpRequest.
+Font.
 
 **Since:** 12
 
-<!--Device-WebResourceType-XHR = 13--><!--Device-WebResourceType-XHR = 13-End-->
+<!--Device-WebResourceType-FONT_RESOURCE = 5--><!--Device-WebResourceType-FONT_RESOURCE = 5-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## PING
+## IMAGE
 
 ```TypeScript
-PING = 14
+IMAGE = 4
 ```
 
-&lt;a ping&gt;/sendBeacon ping request.
+Image (JPG, GIF, PNG, or other format).
 
 **Since:** 12
 
-<!--Device-WebResourceType-PING = 14--><!--Device-WebResourceType-PING = 14-End-->
+<!--Device-WebResourceType-IMAGE = 4--><!--Device-WebResourceType-IMAGE = 4-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## SERVICE_WORKER
+## MAIN_FRAME
 
 ```TypeScript
-SERVICE_WORKER = 15
+MAIN_FRAME = 0
 ```
 
-Main resource of a service worker.
+Top-level page.
 
 **Since:** 12
 
-<!--Device-WebResourceType-SERVICE_WORKER = 15--><!--Device-WebResourceType-SERVICE_WORKER = 15-End-->
+<!--Device-WebResourceType-MAIN_FRAME = 0--><!--Device-WebResourceType-MAIN_FRAME = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## CSP_REPORT
+## MEDIA
 
 ```TypeScript
-CSP_REPORT = 16
+MEDIA = 8
 ```
 
-Report of Content Security Policy violation.
+Media resource.
 
 **Since:** 12
 
-<!--Device-WebResourceType-CSP_REPORT = 16--><!--Device-WebResourceType-CSP_REPORT = 16-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## PLUGIN_RESOURCE
-
-```TypeScript
-PLUGIN_RESOURCE = 17
-```
-
-Resource requested by the plug-in.
-
-**Since:** 12
-
-<!--Device-WebResourceType-PLUGIN_RESOURCE = 17--><!--Device-WebResourceType-PLUGIN_RESOURCE = 17-End-->
+<!--Device-WebResourceType-MEDIA = 8--><!--Device-WebResourceType-MEDIA = 8-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -289,5 +121,173 @@ Subframe redirection request that triggers service worker preloading.
 **Since:** 12
 
 <!--Device-WebResourceType-NAVIGATION_PRELOAD_SUB_FRAME = 20--><!--Device-WebResourceType-NAVIGATION_PRELOAD_SUB_FRAME = 20-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## OBJECT
+
+```TypeScript
+OBJECT = 7
+```
+
+Object (or embed) tag of the plug-in, or the resource requested by the plug-in.
+
+**Since:** 12
+
+<!--Device-WebResourceType-OBJECT = 7--><!--Device-WebResourceType-OBJECT = 7-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## PING
+
+```TypeScript
+PING = 14
+```
+
+<a ping>/sendBeacon ping request.
+
+**Since:** 12
+
+<!--Device-WebResourceType-PING = 14--><!--Device-WebResourceType-PING = 14-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## PLUGIN_RESOURCE
+
+```TypeScript
+PLUGIN_RESOURCE = 17
+```
+
+Resource requested by the plug-in.
+
+**Since:** 12
+
+<!--Device-WebResourceType-PLUGIN_RESOURCE = 17--><!--Device-WebResourceType-PLUGIN_RESOURCE = 17-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## PREFETCH
+
+```TypeScript
+PREFETCH = 11
+```
+
+Explicit prefetch request.
+
+**Since:** 12
+
+<!--Device-WebResourceType-PREFETCH = 11--><!--Device-WebResourceType-PREFETCH = 11-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## SCRIPT
+
+```TypeScript
+SCRIPT = 3
+```
+
+External script.
+
+**Since:** 12
+
+<!--Device-WebResourceType-SCRIPT = 3--><!--Device-WebResourceType-SCRIPT = 3-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## SERVICE_WORKER
+
+```TypeScript
+SERVICE_WORKER = 15
+```
+
+Main resource of a service worker.
+
+**Since:** 12
+
+<!--Device-WebResourceType-SERVICE_WORKER = 15--><!--Device-WebResourceType-SERVICE_WORKER = 15-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## SHARED_WORKER
+
+```TypeScript
+SHARED_WORKER = 10
+```
+
+Main resource of a shared worker thread.
+
+**Since:** 12
+
+<!--Device-WebResourceType-SHARED_WORKER = 10--><!--Device-WebResourceType-SHARED_WORKER = 10-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## STYLE_SHEET
+
+```TypeScript
+STYLE_SHEET = 2
+```
+
+CSS stylesheet.
+
+**Since:** 12
+
+<!--Device-WebResourceType-STYLE_SHEET = 2--><!--Device-WebResourceType-STYLE_SHEET = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## SUB_FRAME
+
+```TypeScript
+SUB_FRAME = 1
+```
+
+Frame or Iframe.
+
+**Since:** 12
+
+<!--Device-WebResourceType-SUB_FRAME = 1--><!--Device-WebResourceType-SUB_FRAME = 1-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## SUB_RESOURCE
+
+```TypeScript
+SUB_RESOURCE = 6
+```
+
+Other sub-resource. If the type is unknown, it is used as the default type.
+
+**Since:** 12
+
+<!--Device-WebResourceType-SUB_RESOURCE = 6--><!--Device-WebResourceType-SUB_RESOURCE = 6-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## WORKER
+
+```TypeScript
+WORKER = 9
+```
+
+Main resource of a dedicated worker thread.
+
+**Since:** 12
+
+<!--Device-WebResourceType-WORKER = 9--><!--Device-WebResourceType-WORKER = 9-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## XHR
+
+```TypeScript
+XHR = 13
+```
+
+XMLHttpRequest.
+
+**Since:** 12
+
+<!--Device-WebResourceType-XHR = 13--><!--Device-WebResourceType-XHR = 13-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

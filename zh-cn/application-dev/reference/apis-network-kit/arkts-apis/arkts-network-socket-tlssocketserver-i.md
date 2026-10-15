@@ -29,7 +29,7 @@ TLSSocketServer停止监听并释放通过[listen](arkts-network-socket-tcpsocke
 > **说明：** 
 > 
 > 该方法不会关闭已有连接。如需关闭，请调用[TLSSocketConnection](arkts-network-socket-tlssocketconnection-i.md)的
-> [close](arkts-network-socket-tcpsocketconnection-i.md#close)方法。
+> [close](arkts-network-socket-tcpsocketconnection-i.md#close1)方法。
 
 **起始版本：** 20
 
@@ -90,6 +90,8 @@ tlsServer.listen(tlsConnectOptions).then(() => {
   console.error("listen failed: " + err.code);
 });
 ```
+
+<a id="getcertificate1"></a>
 
 ## getCertificate
 
@@ -206,7 +208,7 @@ tlsServer.getCertificate().then((data: socket.X509CertRawData) => {
 });
 ```
 
-<a id="getcertificate-1"></a>
+<a id="getcertificate2"></a>
 
 ## getCertificate
 
@@ -368,6 +370,8 @@ tlsServer.getLocalAddress().then((localAddress: socket.NetAddress) => {
 })
 ```
 
+<a id="getprotocol1"></a>
+
 ## getProtocol
 
 ```TypeScript
@@ -441,7 +445,7 @@ tlsServer.getProtocol((err: BusinessError, data: string) => {
 });
 ```
 
-<a id="getprotocol-1"></a>
+<a id="getprotocol2"></a>
 
 ## getProtocol
 
@@ -587,6 +591,8 @@ tlsServer.listen(tlsConnectOptions).then(() => {
 });
 ```
 
+<a id="getstate1"></a>
+
 ## getState
 
 ```TypeScript
@@ -659,7 +665,7 @@ tlsServer.getState((err: BusinessError, data: socket.SocketStateBase) => {
 });
 ```
 
-<a id="getstate-1"></a>
+<a id="getstate2"></a>
 
 ## getState
 
@@ -729,6 +735,8 @@ tlsServer.getState().then(() => {
   console.error('getState fail');
 });
 ```
+
+<a id="listen1"></a>
 
 ## listen
 
@@ -806,7 +814,7 @@ tlsServer.listen(tlsConnectOptions, (err: BusinessError) => {
 });
 ```
 
-<a id="listen-1"></a>
+<a id="listen2"></a>
 
 ## listen
 
@@ -1169,6 +1177,8 @@ tlsServer.on('error', (err: BusinessError) => {
 });
 ```
 
+<a id="setextraoptions1"></a>
+
 ## setExtraOptions
 
 ```TypeScript
@@ -1258,7 +1268,7 @@ tlsServer.setExtraOptions(tcpExtraOptions, (err: BusinessError) => {
 });
 ```
 
-<a id="setextraoptions-1"></a>
+<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

@@ -6,6 +6,8 @@
 import { huks } from '@kit.UniversalKeystoreKit';
 ```
 
+<a id="update1"></a>
+
 ## update
 
 ```TypeScript
@@ -19,7 +21,7 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.updateSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-updatesession-f.md)
+> [huks.updateSession<sup>9+</sup>](arkts-universalkeystore-huks-updatesession-f.md)
 > 替代。
 
 **起始版本：** 8
@@ -42,7 +44,7 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HuksResult](arkts-universalkeystore-huks-huksresult-i.md)&gt; | 是 | 回调函数。当密钥操作update成功时，err为undefined，data为获取到的HuksResult；否则为错误对象。 |
 
 
-<a id="update-1"></a>
+<a id="update2"></a>
 
 ## update
 
@@ -57,7 +59,7 @@ huks.init、huks.update、huks.finish为三段式接口，需要一起使用。
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [huks.updateSession&lt;sup&gt;9+&lt;/sup&gt;](arkts-universalkeystore-huks-updatesession-f.md)
+> [huks.updateSession<sup>9+</sup>](arkts-universalkeystore-huks-updatesession-f.md)
 > 替代。
 
 **起始版本：** 8

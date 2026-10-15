@@ -6,6 +6,8 @@ declare type DrawContext = import('../api/arkui/Graphics').DrawContext
 
 DrawContext
 
+**Type:** import('../api/arkui/Graphics').DrawContext
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ DrawContext
 <!--Device-unnamed-declare type DrawContext = import('../api/arkui/Graphics').DrawContext--><!--Device-unnamed-declare type DrawContext = import('../api/arkui/Graphics').DrawContext-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/arkui/Graphics').DrawContext

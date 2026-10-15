@@ -14,22 +14,6 @@ Enumerates the cloud enhancement states.
 
 **System API:** This is a system API.
 
-## UNAVAILABLE
-
-```TypeScript
-UNAVAILABLE = 0
-```
-
-Cloud enhancement is unavailable.
-
-**Since:** 13
-
-<!--Device-CloudEnhancementState-UNAVAILABLE = 0--><!--Device-CloudEnhancementState-UNAVAILABLE = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## AVAILABLE
 
 ```TypeScript
@@ -41,6 +25,22 @@ Cloud enhancement is available.
 **Since:** 13
 
 <!--Device-CloudEnhancementState-AVAILABLE = 1--><!--Device-CloudEnhancementState-AVAILABLE = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## COMPLETED
+
+```TypeScript
+COMPLETED = 3
+```
+
+Cloud enhancement has been completed.
+
+**Since:** 13
+
+<!--Device-CloudEnhancementState-COMPLETED = 3--><!--Device-CloudEnhancementState-COMPLETED = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,17 +62,17 @@ Cloud enhancement is being executed.
 
 **System API:** This is a system API.
 
-## COMPLETED
+## UNAVAILABLE
 
 ```TypeScript
-COMPLETED = 3
+UNAVAILABLE = 0
 ```
 
-Cloud enhancement has been completed.
+Cloud enhancement is unavailable.
 
 **Since:** 13
 
-<!--Device-CloudEnhancementState-COMPLETED = 3--><!--Device-CloudEnhancementState-COMPLETED = 3-End-->
+<!--Device-CloudEnhancementState-UNAVAILABLE = 0--><!--Device-CloudEnhancementState-UNAVAILABLE = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

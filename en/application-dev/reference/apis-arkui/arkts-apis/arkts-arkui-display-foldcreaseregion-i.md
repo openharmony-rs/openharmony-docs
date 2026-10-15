@@ -30,7 +30,7 @@ Crease region.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-FoldCreaseRegion-readonly creaseRects: Array<Rect>--><!--Device-FoldCreaseRegion-readonly creaseRects: Array<Rect>-End-->
 
@@ -48,7 +48,7 @@ ID of the display where the crease is located.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-FoldCreaseRegion-readonly displayId: long--><!--Device-FoldCreaseRegion-readonly displayId: long-End-->
 

@@ -4,7 +4,7 @@
 declare interface AreaChangeOptions
 ```
 
-Defines the options for the AreaChangeEvent.
+Parameters related to area change.
 
 @typedef AreaChangeOptions
 
@@ -20,7 +20,11 @@ Defines the options for the AreaChangeEvent.
 expectedUpdateInterval?: number
 ```
 
-The value of expectedUpdateInterval indicates the desired update interval (ms).
+Expected update interval of the area change, in ms. If this field is greater than 2^31-1, the value is set to 2^31-1. If this field is less than 0 or not set, the default value 1000 is used.
+
+Default value: **1000**
+
+Value range: [0, 2^31-1]
 
 **Type:** number
 

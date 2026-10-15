@@ -32,24 +32,6 @@ DEFAULT = 0
 
 **系统接口：** 此接口为系统接口。
 
-## HAS_NO_LINK
-
-```TypeScript
-HAS_NO_LINK = 1
-```
-
-文件无记忆链接标记。
-
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AppLinkState-HAS_NO_LINK = 1--><!--Device-AppLinkState-HAS_NO_LINK = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## HAS_LINK
 
 ```TypeScript
@@ -63,6 +45,24 @@ HAS_LINK = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-AppLinkState-HAS_LINK = 2--><!--Device-AppLinkState-HAS_LINK = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## HAS_NO_LINK
+
+```TypeScript
+HAS_NO_LINK = 1
+```
+
+文件无记忆链接标记。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AppLinkState-HAS_NO_LINK = 1--><!--Device-AppLinkState-HAS_NO_LINK = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

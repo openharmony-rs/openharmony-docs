@@ -6,6 +6,8 @@ declare type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Su
 
 拖拽相关数据的简介。
 
+**类型：** import('../api/@ohos.data.unifiedDataChannel').default.Summary
+
 **起始版本：** 10
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ declare type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Su
 <!--Device-unnamed-declare type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Summary--><!--Device-unnamed-declare type Summary = import('../api/@ohos.data.unifiedDataChannel').default.Summary-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/@ohos.data.unifiedDataChannel').default.Summary

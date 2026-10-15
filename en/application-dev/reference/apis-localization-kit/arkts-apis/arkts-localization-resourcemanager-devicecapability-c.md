@@ -30,7 +30,7 @@ Device type.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-DeviceCapability-deviceType: DeviceType--><!--Device-DeviceCapability-deviceType: DeviceType-End-->
 
@@ -48,7 +48,7 @@ Screen density of the device.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-DeviceCapability-screenDensity: ScreenDensity--><!--Device-DeviceCapability-screenDensity: ScreenDensity-End-->
 

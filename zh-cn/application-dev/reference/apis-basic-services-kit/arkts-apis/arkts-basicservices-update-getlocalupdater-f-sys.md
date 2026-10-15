@@ -48,9 +48,12 @@ function getLocalUpdater(): LocalUpdater
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
 // 获取本地升级对象
   let localUpdater = update.getLocalUpdater();
 ```
+
+<!--DelEnd-->

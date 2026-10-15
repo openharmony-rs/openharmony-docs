@@ -49,9 +49,12 @@ Called on application transition.
 | toWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | Window target of the destination application. |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | Yes | Animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->
 
 ## onCloseWindow
 
@@ -78,9 +81,12 @@ Called on closing a window.
 | closingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | Window target of the closing window. |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | Yes | Animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->
 
 ## onMinimizeWindow
 
@@ -108,9 +114,12 @@ Called on minimizing a window.
 | minimizingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | Window target of the minimizing window. |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | Yes | Animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->
 
 ## onScreenUnlock
 
@@ -136,9 +145,12 @@ Called on unlocking the screen.
 | --- | --- | --- | --- |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | Yes | Animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->
 
 ## onStartAppFromLauncher
 
@@ -166,9 +178,12 @@ Called on starting an application form launcher.
 | startingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | indicates Window target of the starting application. |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | Yes | Animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->
 
 ## onStartAppFromOther
 
@@ -196,9 +211,12 @@ Called on starting an application form other.
 | startingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | Window target of the starting application. |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | Yes | Animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->
 
 ## onStartAppFromRecent
 
@@ -226,9 +244,12 @@ Called on starting an application form recent.
 | startingWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | Window target of the starting application. |
 | finishCallback | [WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md) | Yes | Animation finished callback. |
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->
 
 ## onWindowAnimationTargetsUpdate
 
@@ -256,6 +277,9 @@ Called on window animation targets update.
 | fullScreenWindowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | Yes | The fullscreen window target. |
 | floatingWindowTargets | Array&lt;[WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md)&gt; | Yes | All the floating window targets. |
 
+<!--Del-->
 **Examples**
 
 For details, see the sample code under windowAnimationManager.setController.
+
+<!--DelEnd-->

@@ -48,6 +48,24 @@ CENTER = 1
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## CONTENT_COVER
+
+```TypeScript
+CONTENT_COVER = 4
+```
+
+全屏弹窗。
+
+**起始版本：** 20
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetType-CONTENT_COVER = 4--><!--Device-SheetType-CONTENT_COVER = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## POPUP
 
 ```TypeScript
@@ -81,23 +99,5 @@ SIDE = 3
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-SheetType-SIDE = 3--><!--Device-SheetType-SIDE = 3-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## CONTENT_COVER
-
-```TypeScript
-CONTENT_COVER = 4
-```
-
-全屏弹窗。
-
-**起始版本：** 20
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-SheetType-CONTENT_COVER = 4--><!--Device-SheetType-CONTENT_COVER = 4-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

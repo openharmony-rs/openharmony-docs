@@ -6,6 +6,8 @@ declare type Context = import('../api/application/Context').default
 
 Get context.
 
+**类型：** import('../api/application/Context').default
+
 **起始版本：** 9
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ Get context.
 <!--Device-unnamed-declare type Context = import('../api/application/Context').default--><!--Device-unnamed-declare type Context = import('../api/application/Context').default-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** import('../api/application/Context').default

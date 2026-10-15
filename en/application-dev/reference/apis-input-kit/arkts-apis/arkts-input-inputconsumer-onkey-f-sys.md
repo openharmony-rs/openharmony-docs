@@ -6,7 +6,7 @@
 import { inputConsumer } from '@kit.InputKit';
 ```
 
-<a id="onkey-1"></a>
+<a id="onkey2"></a>
 
 ## onKey
 
@@ -14,7 +14,15 @@ import { inputConsumer } from '@kit.InputKit';
 function onKey(keyOptions: KeyOptions, callback:KeyCommandCallback): void
 ```
 
-Subscribe system keys.
+Subscribes to key combinations (key command mode). You can specify different trigger modes through triggerType. When a key combination input event that meets the conditions occurs, this API uses an asynchronous callback to return the result.
+
+Differences from the existing API [inputConsumer.on('key')](arkts-input-inputconsumer-on-f-sys.md#onkey):  
+- The keyOptions of this API supports the triggerType parameter, which allows selecting modes such as triggering  
+on key down, triggering on key repeat, or triggering on key repeat and key up.  
+- The callback parameter of this API is of the KeyCommandCallback type, which receives both the KeyOptions and  
+KeyEvent objects.  
+- This API uses an event consumption mechanism, which can prevent key events from being passed backward through  
+event consumption.
 
 **Since:** 26.0.0
 
@@ -30,15 +38,16 @@ Subscribe system keys.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| keyOptions | [KeyOptions](arkts-input-inputconsumer-keyoptions-i-sys.md) | Yes | the key events about input which is to be subscribed. |
-| callback | [KeyCommandCallback](arkts-input-inputconsumer-keycommandcallback-t-sys.md) | Yes | callback function, receive reported data. |
+| keyOptions | [KeyOptions](arkts-input-inputconsumer-keyoptions-i-sys.md) | Yes | Key combination options, which support the triggerType parameter. |
+| callback | [KeyCommandCallback](arkts-input-inputconsumer-keycommandcallback-t-sys.md) | Yes | Callback function, which returns the key combination options and key event data. |
 
 **Error codes:**
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission denied, non-system app called system api. |
+| [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -110,3 +119,5 @@ try {
   console.error(`Failed to subscribe. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

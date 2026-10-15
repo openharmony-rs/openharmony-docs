@@ -50,6 +50,7 @@ Snapshot of the mission.
 
 **System API:** This is a system API.
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -84,3 +85,5 @@ try {
   console.error(`error: ${(paramError as BusinessError).code}, ${(paramError as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

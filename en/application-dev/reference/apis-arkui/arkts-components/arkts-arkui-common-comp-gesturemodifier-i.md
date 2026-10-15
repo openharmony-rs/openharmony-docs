@@ -4,7 +4,7 @@
 declare interface GestureModifier
 ```
 
-You need a custom class to implement the **GestureModifier** API.
+**GestureModifier** is used to encapsulate the logic for dynamically setting component gestures. Developers need to customize a class to implement the **GestureModifier** interface and set or switch the gestures bound to a component in **applyGesture** as required.
 
 **Since:** 12
 
@@ -18,9 +18,7 @@ You need a custom class to implement the **GestureModifier** API.
 applyGesture(event: UIGestureEvent): void
 ```
 
-Applies a gesture.
-
-You can customize this API as required. Dynamic configuration using the **if/else** syntax is supported. If gesture switching is triggered during an active gesture operation, the change takes effect in the next gesture operation after the current one completes (when all fingers are lifted).
+Applies a gesture. It is applicable to scenarios where the gesture binding needs to be dynamically switched based on the component state or user operation. Developers can customize the implementation of this method as required. By calling the **addGesture()** method of **UIGestureEvent**, you can set the gestures to be bound to a component. The **if/else** syntax is supported for dynamic setting. If gesture switching is triggered on the component during an active gesture operation, the change takes effect in the next gesture operation after the current gesture ends (when all fingers are lifted).
 
 **Since:** 12
 

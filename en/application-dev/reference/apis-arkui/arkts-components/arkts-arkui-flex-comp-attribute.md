@@ -8,7 +8,7 @@ The [universal attributes](arkts-arkui-common-comp-commonmethod-c.md) are suppor
 
 The [universal events](arkts-arkui-common-comp-commonmethod-c.md) are supported.
 
-**Inheritance/Implementation:** FlexAttribute extends CommonMethod<FlexAttribute>
+**Inheritance/Implementation:** FlexAttribute extends CommonMethod&lt;FlexAttribute&gt;
 
 **Since:** 7
 

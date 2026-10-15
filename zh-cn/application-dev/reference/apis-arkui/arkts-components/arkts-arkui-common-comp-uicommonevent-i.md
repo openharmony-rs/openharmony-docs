@@ -66,7 +66,7 @@ setOnBlur(callback: Callback<void> | undefined): void
 setOnClick(callback: Callback<ClickEvent> | undefined): void
 ```
 
-设置[点击事件](arkts-arkui-common-comp-commonmethod-c.md#onclick)的回调。
+设置[点击事件](arkts-arkui-common-comp-commonmethod-c.md#onclick1)的回调。
 
 **起始版本：** 12
 
@@ -258,7 +258,7 @@ setOnTouch(callback: Callback<TouchEvent> | undefined): void
 setOnVisibleAreaApproximateChange(options: VisibleAreaEventOptions, event: VisibleAreaChangeCallback | undefined): void
 ```
 
-设置限制回调间隔的[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange)可见区域变化事件的回调。
+设置限制回调间隔的[onVisibleAreaChange](arkts-arkui-common-comp-commonmethod-c.md#onvisibleareachange1)可见区域变化事件的回调。
 
 **起始版本：** 12
 

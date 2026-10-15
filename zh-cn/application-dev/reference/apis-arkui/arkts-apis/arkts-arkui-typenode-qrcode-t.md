@@ -6,6 +6,8 @@ type QRCode = TypedFrameNode<QRCodeInterface, QRCodeAttribute>
 
 QRCode类型的FrameNode节点类型。
 
+**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;QRCodeInterface, [QRCodeAttribute](../arkts-components/arkts-arkui-qrcode-comp-attribute.md)&gt;
+
 **起始版本：** 14
 
 **模型约束：** 此接口仅可在Stage模型下使用。
@@ -15,5 +17,3 @@ QRCode类型的FrameNode节点类型。
 <!--Device-typeNode-type QRCode = TypedFrameNode<QRCodeInterface, QRCodeAttribute>--><!--Device-typeNode-type QRCode = TypedFrameNode<QRCodeInterface, QRCodeAttribute>-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-**类型：** [TypedFrameNode](arkts-arkui-framenode-typedframenode-i.md)&lt;QRCodeInterface, [QRCodeAttribute](../arkts-components/arkts-arkui-qrcode-comp-attribute.md)&gt;

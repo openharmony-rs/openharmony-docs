@@ -12,9 +12,25 @@ Enum for location privacy type
 
 **Substitutes:** [LocationPrivacyType](arkts-location-geolocationmanager-locationprivacytype-e-sys.md)
 
-**Required permissions:** ohos.permission.LOCATION @enum { number }
+**Required permissions:** ohos.permission.LOCATION
 
 <!--Device-geolocation-export enum LocationPrivacyType--><!--Device-geolocation-export enum LocationPrivacyType-End-->
+
+**System capability:** SystemCapability.Location.Location.Core
+
+## CORE_LOCATION
+
+```TypeScript
+CORE_LOCATION
+```
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [CORE_LOCATION](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#core_location)
+
+<!--Device-LocationPrivacyType-CORE_LOCATION--><!--Device-LocationPrivacyType-CORE_LOCATION-End-->
 
 **System capability:** SystemCapability.Location.Location.Core
 
@@ -47,21 +63,5 @@ STARTUP
 **Substitutes:** [STARTUP](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#startup)
 
 <!--Device-LocationPrivacyType-STARTUP--><!--Device-LocationPrivacyType-STARTUP-End-->
-
-**System capability:** SystemCapability.Location.Location.Core
-
-## CORE_LOCATION
-
-```TypeScript
-CORE_LOCATION
-```
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [CORE_LOCATION](arkts-location-geolocationmanager-locationprivacytype-e-sys.md#core_location)
-
-<!--Device-LocationPrivacyType-CORE_LOCATION--><!--Device-LocationPrivacyType-CORE_LOCATION-End-->
 
 **System capability:** SystemCapability.Location.Location.Core

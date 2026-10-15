@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="getapplicationinfosync1"></a>
+
 ## getApplicationInfoSync
 
 ```TypeScript
@@ -31,7 +33,7 @@ No permission is required for obtaining the caller's own information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| applicationFlags | number | Yes | Type of the application information to obtain. |
+| applicationFlags | number | Yes | Information contained in the ApplicationInfo object to be returned. For details about the values and meanings, see [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md). |
 | userId | number | Yes | User ID, which can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). |
 
 **Return value:**
@@ -51,6 +53,7 @@ No permission is required for obtaining the caller's own information.
 | [17700004](../errorcode-bundle.md#17700004-user-id-does-not-exist) | The specified user ID is not found. |
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -71,8 +74,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="getapplicationinfosync-1"></a>
+
+<a id="getapplicationinfosync2"></a>
 
 ## getApplicationInfoSync
 
@@ -99,7 +104,7 @@ No permission is required for obtaining the caller's own information.
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name. |
-| applicationFlags | number | Yes | Type of the application information to obtain. |
+| applicationFlags | number | Yes | Information contained in the ApplicationInfo object to be returned. For details about the values and meanings, see [ApplicationFlag](arkts-ability-bundlemanager-applicationflag-e-sys.md). |
 
 **Return value:**
 
@@ -117,6 +122,7 @@ No permission is required for obtaining the caller's own information.
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700026](../errorcode-bundle.md#17700026-bundle-disabled) | The specified bundle is disabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -135,3 +141,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getApplicationInfoSync failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

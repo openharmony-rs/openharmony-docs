@@ -12,19 +12,35 @@ enum DisconnectCause
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## USER_DISCONNECT
+## CONNECT_FAIL_INTERNAL
 
 ```TypeScript
-USER_DISCONNECT = 0
+CONNECT_FAIL_INTERNAL = 5
 ```
 
-用户主动断开连接。
+内部错误。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DisconnectCause-USER_DISCONNECT = 0--><!--Device-DisconnectCause-USER_DISCONNECT = 0-End-->
+<!--Device-DisconnectCause-CONNECT_FAIL_INTERNAL = 5--><!--Device-DisconnectCause-CONNECT_FAIL_INTERNAL = 5-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+## CONNECT_FROM_CAR
+
+```TypeScript
+CONNECT_FROM_CAR = 3
+```
+
+连接请求需从车机侧发起。
+
+**起始版本：** 12
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-DisconnectCause-CONNECT_FROM_CAR = 3--><!--Device-DisconnectCause-CONNECT_FROM_CAR = 3-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -60,22 +76,6 @@ CONNECT_FROM_MOUSE = 2
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## CONNECT_FROM_CAR
-
-```TypeScript
-CONNECT_FROM_CAR = 3
-```
-
-连接请求需从车机侧发起。
-
-**起始版本：** 12
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-DisconnectCause-CONNECT_FROM_CAR = 3--><!--Device-DisconnectCause-CONNECT_FROM_CAR = 3-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
 ## TOO_MANY_CONNECTED_DEVICES
 
 ```TypeScript
@@ -92,18 +92,18 @@ TOO_MANY_CONNECTED_DEVICES = 4
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
-## CONNECT_FAIL_INTERNAL
+## USER_DISCONNECT
 
 ```TypeScript
-CONNECT_FAIL_INTERNAL = 5
+USER_DISCONNECT = 0
 ```
 
-内部错误。
+用户主动断开连接。
 
 **起始版本：** 12
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-DisconnectCause-CONNECT_FAIL_INTERNAL = 5--><!--Device-DisconnectCause-CONNECT_FAIL_INTERNAL = 5-End-->
+<!--Device-DisconnectCause-USER_DISCONNECT = 0--><!--Device-DisconnectCause-USER_DISCONNECT = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core

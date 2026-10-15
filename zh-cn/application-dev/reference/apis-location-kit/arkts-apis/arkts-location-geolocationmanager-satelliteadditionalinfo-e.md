@@ -12,17 +12,31 @@ export enum SatelliteAdditionalInfo
 
 **系统能力：** SystemCapability.Location.Location.Gnss
 
-## SATELLITES_ADDITIONAL_INFO_NULL
+## SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST
 
 ```TypeScript
-SATELLITES_ADDITIONAL_INFO_NULL = 0
+SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2
 ```
 
-默认值。
+表示本卫星具有年历数据。
 
 **起始版本：** 12
 
-<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0-End-->
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2-End-->
+
+**系统能力：** SystemCapability.Location.Location.Gnss
+
+## SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST
+
+```TypeScript
+SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8
+```
+
+表示本卫星具有载波频率。
+
+**起始版本：** 12
+
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8-End-->
 
 **系统能力：** SystemCapability.Location.Location.Gnss
 
@@ -40,17 +54,17 @@ SATELLITES_ADDITIONAL_INFO_EPHEMERIS_DATA_EXIST = 1
 
 **系统能力：** SystemCapability.Location.Location.Gnss
 
-## SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST
+## SATELLITES_ADDITIONAL_INFO_NULL
 
 ```TypeScript
-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2
+SATELLITES_ADDITIONAL_INFO_NULL = 0
 ```
 
-表示本卫星具有年历数据。
+默认值。
 
 **起始版本：** 12
 
-<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2-End-->
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0-End-->
 
 **系统能力：** SystemCapability.Location.Location.Gnss
 
@@ -65,19 +79,5 @@ SATELLITES_ADDITIONAL_INFO_USED_IN_FIX = 4
 **起始版本：** 12
 
 <!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_USED_IN_FIX = 4--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_USED_IN_FIX = 4-End-->
-
-**系统能力：** SystemCapability.Location.Location.Gnss
-
-## SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST
-
-```TypeScript
-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8
-```
-
-表示本卫星具有载波频率。
-
-**起始版本：** 12
-
-<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8-End-->
 
 **系统能力：** SystemCapability.Location.Location.Gnss

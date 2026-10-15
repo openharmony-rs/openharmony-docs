@@ -43,83 +43,19 @@ enum PngPropertyKey
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## X_PIXELS_PER_METER
+## AUTHOR
 
 ```TypeScript
-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'
+AUTHOR = 'PngAuthor'
 ```
 
-PNG x pixels per meter.
+PNG author.
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-PngPropertyKey-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'--><!--Device-PngPropertyKey-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## Y_PIXELS_PER_METER
-
-```TypeScript
-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'
-```
-
-PNG y pixels per meter.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'--><!--Device-PngPropertyKey-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## GAMMA
-
-```TypeScript
-GAMMA = 'PngGamma'
-```
-
-PNG gamma.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-GAMMA = 'PngGamma'--><!--Device-PngPropertyKey-GAMMA = 'PngGamma'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## INTERLACE_TYPE
-
-```TypeScript
-INTERLACE_TYPE = 'PngInterlaceType'
-```
-
-PNG interlacing mode.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-INTERLACE_TYPE = 'PngInterlaceType'--><!--Device-PngPropertyKey-INTERLACE_TYPE = 'PngInterlaceType'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## SRGB_INTENT
-
-```TypeScript
-SRGB_INTENT = 'PngSRGBIntent'
-```
-
-PNG sRGB rendering intent.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-SRGB_INTENT = 'PngSRGBIntent'--><!--Device-PngPropertyKey-SRGB_INTENT = 'PngSRGBIntent'-End-->
+<!--Device-PngPropertyKey-AUTHOR = 'PngAuthor'--><!--Device-PngPropertyKey-AUTHOR = 'PngAuthor'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -139,38 +75,6 @@ PNG color primary/white-point coordinates.
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
-## TITLE
-
-```TypeScript
-TITLE = 'PngTitle'
-```
-
-PNG title.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-TITLE = 'PngTitle'--><!--Device-PngPropertyKey-TITLE = 'PngTitle'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## DESCRIPTION
-
-```TypeScript
-DESCRIPTION = 'PngDescription'
-```
-
-PNG description.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-DESCRIPTION = 'PngDescription'--><!--Device-PngPropertyKey-DESCRIPTION = 'PngDescription'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
 ## COMMENT
 
 ```TypeScript
@@ -184,54 +88,6 @@ PNG comment.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PngPropertyKey-COMMENT = 'PngComment'--><!--Device-PngPropertyKey-COMMENT = 'PngComment'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## DISCLAIMER
-
-```TypeScript
-DISCLAIMER = 'PngDisclaimer'
-```
-
-PNG disclaimer.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-DISCLAIMER = 'PngDisclaimer'--><!--Device-PngPropertyKey-DISCLAIMER = 'PngDisclaimer'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## WARNING
-
-```TypeScript
-WARNING = 'PngWarning'
-```
-
-PNG warning.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-WARNING = 'PngWarning'--><!--Device-PngPropertyKey-WARNING = 'PngWarning'-End-->
-
-**系统能力：** SystemCapability.Multimedia.Image.Core
-
-## AUTHOR
-
-```TypeScript
-AUTHOR = 'PngAuthor'
-```
-
-PNG author.
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PngPropertyKey-AUTHOR = 'PngAuthor'--><!--Device-PngPropertyKey-AUTHOR = 'PngAuthor'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
@@ -267,6 +123,70 @@ PNG creation time.
 
 **系统能力：** SystemCapability.Multimedia.Image.Core
 
+## DESCRIPTION
+
+```TypeScript
+DESCRIPTION = 'PngDescription'
+```
+
+PNG description.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-DESCRIPTION = 'PngDescription'--><!--Device-PngPropertyKey-DESCRIPTION = 'PngDescription'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## DISCLAIMER
+
+```TypeScript
+DISCLAIMER = 'PngDisclaimer'
+```
+
+PNG disclaimer.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-DISCLAIMER = 'PngDisclaimer'--><!--Device-PngPropertyKey-DISCLAIMER = 'PngDisclaimer'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## GAMMA
+
+```TypeScript
+GAMMA = 'PngGamma'
+```
+
+PNG gamma.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-GAMMA = 'PngGamma'--><!--Device-PngPropertyKey-GAMMA = 'PngGamma'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## INTERLACE_TYPE
+
+```TypeScript
+INTERLACE_TYPE = 'PngInterlaceType'
+```
+
+PNG interlacing mode.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-INTERLACE_TYPE = 'PngInterlaceType'--><!--Device-PngPropertyKey-INTERLACE_TYPE = 'PngInterlaceType'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 ## MODIFICATION_TIME
 
 ```TypeScript
@@ -296,5 +216,85 @@ PNG software.
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PngPropertyKey-SOFTWARE = 'PngSoftware'--><!--Device-PngPropertyKey-SOFTWARE = 'PngSoftware'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## SRGB_INTENT
+
+```TypeScript
+SRGB_INTENT = 'PngSRGBIntent'
+```
+
+PNG sRGB rendering intent.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-SRGB_INTENT = 'PngSRGBIntent'--><!--Device-PngPropertyKey-SRGB_INTENT = 'PngSRGBIntent'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## TITLE
+
+```TypeScript
+TITLE = 'PngTitle'
+```
+
+PNG title.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-TITLE = 'PngTitle'--><!--Device-PngPropertyKey-TITLE = 'PngTitle'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## WARNING
+
+```TypeScript
+WARNING = 'PngWarning'
+```
+
+PNG warning.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-WARNING = 'PngWarning'--><!--Device-PngPropertyKey-WARNING = 'PngWarning'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## X_PIXELS_PER_METER
+
+```TypeScript
+X_PIXELS_PER_METER = 'PngXPixelsPerMeter'
+```
+
+PNG x pixels per meter.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'--><!--Device-PngPropertyKey-X_PIXELS_PER_METER = 'PngXPixelsPerMeter'-End-->
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
+## Y_PIXELS_PER_METER
+
+```TypeScript
+Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'
+```
+
+PNG y pixels per meter.
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PngPropertyKey-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'--><!--Device-PngPropertyKey-Y_PIXELS_PER_METER = 'PngYPixelsPerMeter'-End-->
 
 **系统能力：** SystemCapability.Multimedia.Image.Core

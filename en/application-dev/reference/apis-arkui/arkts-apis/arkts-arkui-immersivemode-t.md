@@ -8,6 +8,8 @@ Import the ImmersiveMode type from promptAction.
 
 @typedef { import('../api/@ohos.promptAction').ImmersiveMode } ImmersiveMode
 
+**Type:** import('../api/@ohos.promptAction').ImmersiveMode
+
 **Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Import the ImmersiveMode type from promptAction.
 <!--Device-unnamed-declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode--><!--Device-unnamed-declare type ImmersiveMode = import('../api/@ohos.promptAction').ImmersiveMode-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.promptAction').ImmersiveMode

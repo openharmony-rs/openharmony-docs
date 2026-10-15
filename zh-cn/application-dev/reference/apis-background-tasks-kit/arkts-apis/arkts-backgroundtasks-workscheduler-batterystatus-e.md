@@ -28,22 +28,6 @@ BATTERY_STATUS_LOW = 0
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
 
-## BATTERY_STATUS_OKAY
-
-```TypeScript
-BATTERY_STATUS_OKAY = 1
-```
-
-表示这个触发条件是从低电恢复到正常电量。
-
-**起始版本：** 9
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-BatteryStatus-BATTERY_STATUS_OKAY = 1--><!--Device-BatteryStatus-BATTERY_STATUS_OKAY = 1-End-->
-
-**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
-
 ## BATTERY_STATUS_LOW_OR_OKAY
 
 ```TypeScript
@@ -57,5 +41,21 @@ BATTERY_STATUS_LOW_OR_OKAY = 2
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-BatteryStatus-BATTERY_STATUS_LOW_OR_OKAY = 2--><!--Device-BatteryStatus-BATTERY_STATUS_LOW_OR_OKAY = 2-End-->
+
+**系统能力：** SystemCapability.ResourceSchedule.WorkScheduler
+
+## BATTERY_STATUS_OKAY
+
+```TypeScript
+BATTERY_STATUS_OKAY = 1
+```
+
+表示这个触发条件是从低电恢复到正常电量。
+
+**起始版本：** 9
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-BatteryStatus-BATTERY_STATUS_OKAY = 1--><!--Device-BatteryStatus-BATTERY_STATUS_OKAY = 1-End-->
 
 **系统能力：** SystemCapability.ResourceSchedule.WorkScheduler

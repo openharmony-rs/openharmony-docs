@@ -24,7 +24,7 @@ icon: Resource
 
 Mandatory. Default icon.
 
-**Type:** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
+**Type:** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)
 
 **Since:** 11
 
@@ -40,7 +40,7 @@ selectedIcon: Resource
 
 Mandatory. Icon for the selected option.
 
-**Type:** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)
+**Type:** [Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)
 
 **Since:** 11
 

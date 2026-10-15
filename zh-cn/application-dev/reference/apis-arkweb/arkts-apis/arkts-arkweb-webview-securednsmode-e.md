@@ -12,22 +12,6 @@ Web组件使用HTTPDNS的模式。
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## OFF
-
-```TypeScript
-OFF = 0
-```
-
-不使用HTTPDNS，可以用于撤销之前使用的HTTPDNS配置。
-
-**起始版本：** 10
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-SecureDnsMode-OFF = 0--><!--Device-SecureDnsMode-OFF = 0-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
 ## AUTO
 
 ```TypeScript
@@ -41,6 +25,22 @@ AUTO = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-SecureDnsMode-AUTO = 1--><!--Device-SecureDnsMode-AUTO = 1-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
+## OFF
+
+```TypeScript
+OFF = 0
+```
+
+不使用HTTPDNS，可以用于撤销之前使用的HTTPDNS配置。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-SecureDnsMode-OFF = 0--><!--Device-SecureDnsMode-OFF = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

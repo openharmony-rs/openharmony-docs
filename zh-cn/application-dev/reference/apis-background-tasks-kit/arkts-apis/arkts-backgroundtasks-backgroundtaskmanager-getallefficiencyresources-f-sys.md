@@ -34,9 +34,10 @@ function getAllEfficiencyResources(): Promise<EfficiencyResourcesInfo[]>
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [18700001](../errorcode-backgroundTaskMgr.md#18700001-资源申请接口信息校验失败) | Caller information verification failed for an energy resource request. |
-| [18700002](../errorcode-backgroundTaskMgr.md#18700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters; 2. Failed to apply for memory. |
+| [18700002](../errorcode-backgroundTaskMgr.md#18700002-parcel读写操作失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;         2. Failed to apply for memory. |
 | [18700004](../errorcode-backgroundTaskMgr.md#18700004-系统服务失败) | System service operation failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -53,3 +54,5 @@ try {
     console.error(`Operation getAllEfficiencyResources failed. code is ${(error as BusinessError).code} message is ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

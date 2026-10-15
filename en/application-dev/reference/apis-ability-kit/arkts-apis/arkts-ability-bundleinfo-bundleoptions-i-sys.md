@@ -4,7 +4,7 @@
 export interface BundleOptions
 ```
 
-The bundle options of bundle manager
+Describes the bundle options used to set or query application information.
 
 **Since:** 20
 
@@ -20,7 +20,7 @@ The bundle options of bundle manager
 abilityName?: string
 ```
 
-Indicates ability name
+Ability name. Default Value: Empty String.
 
 **Type:** string
 
@@ -40,7 +40,7 @@ Indicates ability name
 appIndex?: number
 ```
 
-Indicates the app index.
+Index of an application clone. The default value is **0**, indicating the main application.
 
 **Type:** number
 
@@ -58,7 +58,7 @@ Indicates the app index.
 bundleName?: string
 ```
 
-Indicates bundle name
+Application bundle name. Default Value: Empty String.
 
 **Type:** string
 
@@ -78,7 +78,7 @@ Indicates bundle name
 moduleName?: string
 ```
 
-Indicates module name
+Name of the module to which the ability belongs. Default Value: Empty String.
 
 **Type:** string
 
@@ -98,7 +98,7 @@ Indicates module name
 userId?: number
 ```
 
-Indicates the user id.
+User ID. By default, the user is the current caller.
 
 **Type:** number
 

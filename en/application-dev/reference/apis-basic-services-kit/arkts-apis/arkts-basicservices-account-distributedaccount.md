@@ -20,7 +20,7 @@ import { distributedAccount } from '@kit.BasicServicesKit';
 
 | Name | Description |
 | --- | --- |
-| [getDistributedAccountAbility](arkts-basicservices-distributedaccount-getdistributedaccountability-f.md) | Obtains a **DistributedAccountAbility** instance. |
+| [getDistributedAccountAbility](arkts-basicservices-distributedaccount-getdistributedaccountability-f.md#getdistributedaccountability) | Obtains a **DistributedAccountAbility** instance. |
 
 ### Interfaces
 

@@ -12,17 +12,17 @@ Enumerates the offline resource types corresponding to the [OfflineResourceMap](
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## IMAGE
+## CLASSIC_JS
 
 ```TypeScript
-IMAGE
+CLASSIC_JS
 ```
 
-Resource of the image type.
+JavaScript resources loaded via the <script src="" /> tag.
 
 **Since:** 12
 
-<!--Device-OfflineResourceType-IMAGE--><!--Device-OfflineResourceType-IMAGE-End-->
+<!--Device-OfflineResourceType-CLASSIC_JS--><!--Device-OfflineResourceType-CLASSIC_JS-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -40,17 +40,17 @@ Resource of the CSS type.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## CLASSIC_JS
+## IMAGE
 
 ```TypeScript
-CLASSIC_JS
+IMAGE
 ```
 
-JavaScript resources loaded via the &lt;script src="" /&gt; tag.
+Resource of the image type.
 
 **Since:** 12
 
-<!--Device-OfflineResourceType-CLASSIC_JS--><!--Device-OfflineResourceType-CLASSIC_JS-End-->
+<!--Device-OfflineResourceType-IMAGE--><!--Device-OfflineResourceType-IMAGE-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -60,7 +60,7 @@ JavaScript resources loaded via the &lt;script src="" /&gt; tag.
 MODULE_JS
 ```
 
-JavaScript resources loaded via the &lt;script src="" type="module" /&gt; tag.
+JavaScript resources loaded via the <script src="" type="module" /> tag.
 
 **Since:** 12
 

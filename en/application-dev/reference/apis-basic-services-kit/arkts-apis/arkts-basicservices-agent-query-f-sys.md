@@ -6,6 +6,8 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="query1"></a>
+
 ## query
 
 ```TypeScript
@@ -42,7 +44,7 @@ Queries specified task details. Creates a group based on GroupConfig
 | [21900006](../errorcode-request.md#21900006-task-not-found) | Task removed or not found. |
 
 
-<a id="query-1"></a>
+<a id="query2"></a>
 
 ## query
 

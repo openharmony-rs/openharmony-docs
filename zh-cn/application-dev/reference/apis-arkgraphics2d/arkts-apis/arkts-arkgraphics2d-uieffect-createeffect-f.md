@@ -16,7 +16,7 @@ function createEffect(): VisualEffect
 
 **起始版本：** 12
 
-**卡片能力（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本24开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-uiEffect-function createEffect(): VisualEffect--><!--Device-uiEffect-function createEffect(): VisualEffect-End-->
 
@@ -26,7 +26,7 @@ function createEffect(): VisualEffect
 
 | 类型 | 说明 |
 | --- | --- |
-| VisualEffect | 返回VisualEffect实例，支持添加多种VisualEffect效果。 |
+| [VisualEffect](arkts-arkgraphics2d-uieffect-visualeffect-i-sys.md) | 返回VisualEffect实例，支持添加多种VisualEffect效果。 |
 
 **示例**
 

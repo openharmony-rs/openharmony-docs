@@ -47,6 +47,7 @@ Sets the senior mode state for an app. This API uses a promise to return the res
 | [9300000](../errorcode-accessibility.md#9300000-accessibility-system-service-abnormal) | System abnormality. |
 | [9300008](../errorcode-accessibility.md#9300008-app-clone-index-invalid) | The appIndex is invalid. Possible causes:<br>1.The appIndex is out of the valid range. <br>2.The application corresponding to the appIndex does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -65,3 +66,5 @@ config.setSeniorModeStateForApp(infos).then(() => {
   console.error(`Failed to set seniorModeState for app. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

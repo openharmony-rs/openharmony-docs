@@ -6,10 +6,6 @@ export interface LauncherAbilityResourceInfo
 
 应用配置的入口图标和名称信息，可以通过[getLauncherAbilityResourceInfo](arkts-ability-bundleresourcemanager-getlauncherabilityresourceinfo-f-sys.md)获取。
 
-> **说明：** 
-> 
-> 本模块为系统接口。
-
 **起始版本：** 11
 
 <!--Device-unnamed-export interface LauncherAbilityResourceInfo--><!--Device-unnamed-export interface LauncherAbilityResourceInfo-End-->
@@ -24,7 +20,7 @@ export interface LauncherAbilityResourceInfo
 readonly abilityName: string
 ```
 
-应用的组件名称。
+应用的Ability名称。
 
 **类型：** string
 

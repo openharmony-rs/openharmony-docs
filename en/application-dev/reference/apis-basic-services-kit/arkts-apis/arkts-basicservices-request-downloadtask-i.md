@@ -4,7 +4,7 @@
 interface DownloadTask
 ```
 
-Implements file downloads. Before using any APIs of this class, you must obtain a **DownloadTask** object, from a promise through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1) or from a callback through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md).
+Implements file downloads. Before using any APIs of this class, you must obtain a **DownloadTask** object, from a promise through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile2) or from a callback through [request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile1).
 
 **Since:** 6
 
@@ -17,6 +17,8 @@ Implements file downloads. Before using any APIs of this class, you must obtain 
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -78,7 +80,7 @@ try {
 }
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -136,6 +138,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="gettaskinfo1"></a>
 
 ## getTaskInfo
 
@@ -197,7 +201,7 @@ try {
 }
 ```
 
-<a id="gettaskinfo-1"></a>
+<a id="gettaskinfo2"></a>
 
 ## getTaskInfo
 
@@ -256,6 +260,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="gettaskmimetype1"></a>
 
 ## getTaskMimeType
 
@@ -317,7 +323,7 @@ try {
 }
 ```
 
-<a id="gettaskmimetype-1"></a>
+<a id="gettaskmimetype2"></a>
 
 ## getTaskMimeType
 
@@ -748,6 +754,8 @@ try {
 }
 ```
 
+<a id="restore1"></a>
+
 ## restore
 
 ```TypeScript
@@ -808,7 +816,7 @@ try {
 }
 ```
 
-<a id="restore-1"></a>
+<a id="restore2"></a>
 
 ## restore
 
@@ -867,6 +875,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="suspend1"></a>
 
 ## suspend
 
@@ -928,7 +938,7 @@ try {
 }
 ```
 
-<a id="suspend-1"></a>
+<a id="suspend2"></a>
 
 ## suspend
 
@@ -988,6 +998,8 @@ try {
 }
 ```
 
+<a id="pause1"></a>
+
 ## pause
 
 ```TypeScript
@@ -1000,7 +1012,7 @@ Pauses this download task. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [suspend](#suspend1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1032,7 +1044,7 @@ downloadTask.pause((err: BusinessError) => {
 });
 ```
 
-<a id="pause-1"></a>
+<a id="pause2"></a>
 
 ## pause
 
@@ -1076,6 +1088,8 @@ downloadTask.pause().then(() => {
 });
 ```
 
+<a id="query1"></a>
+
 ## query
 
 ```TypeScript
@@ -1088,7 +1102,7 @@ Queries this download task. This API uses an asynchronous callback to return the
 
 **Deprecated since:** 9
 
-**Substitutes:** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
+**Substitutes:** [getTaskInfo](#gettaskinfo1)(callback: AsyncCallback&lt;DownloadInfo&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1120,7 +1134,7 @@ downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo)=>{
 });
 ```
 
-<a id="query-1"></a>
+<a id="query2"></a>
 
 ## query
 
@@ -1164,6 +1178,8 @@ downloadTask.query().then((downloadInfo) => {
 });
 ```
 
+<a id="querymimetype1"></a>
+
 ## queryMimeType
 
 ```TypeScript
@@ -1176,7 +1192,7 @@ Queries the MIME type of this download task. This API uses an asynchronous callb
 
 **Deprecated since:** 9
 
-**Substitutes:** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
+**Substitutes:** [getTaskMimeType](#gettaskmimetype1)(callback: AsyncCallback&lt;string&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1208,7 +1224,7 @@ downloadTask.queryMimeType((err: BusinessError, data: string)=>{
 });
 ```
 
-<a id="querymimetype-1"></a>
+<a id="querymimetype2"></a>
 
 ## queryMimeType
 
@@ -1252,6 +1268,8 @@ downloadTask.queryMimeType().then((data: string) => {
 });
 ```
 
+<a id="remove1"></a>
+
 ## remove
 
 ```TypeScript
@@ -1264,7 +1282,7 @@ Deletes the download task. This API uses an asynchronous callback to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [delete](arkts-basicservices-request-uploadtask-i.md#delete1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1296,7 +1314,7 @@ downloadTask.remove((err, result)=>{
 });
 ```
 
-<a id="remove-1"></a>
+<a id="remove2"></a>
 
 ## remove
 
@@ -1340,6 +1358,8 @@ downloadTask.remove().then((result) => {
 });
 ```
 
+<a id="resume1"></a>
+
 ## resume
 
 ```TypeScript
@@ -1352,7 +1372,7 @@ Restores the download task. This API uses an asynchronous callback to return the
 
 **Deprecated since:** 9
 
-**Substitutes:** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [restore](#restore1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **Required permissions:** ohos.permission.INTERNET
 
@@ -1384,7 +1404,7 @@ downloadTask.resume((err: BusinessError) => {
 });
 ```
 
-<a id="resume-1"></a>
+<a id="resume2"></a>
 
 ## resume
 

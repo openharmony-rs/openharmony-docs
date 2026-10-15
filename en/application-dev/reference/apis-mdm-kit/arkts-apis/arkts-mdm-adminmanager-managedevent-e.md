@@ -12,31 +12,45 @@ Enumerates the system management events that can be subscribed to.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MANAGED_EVENT_BUNDLE_ADDED
+## MANAGED_EVENT_ACCOUNT_ADDED
 
 ```TypeScript
-MANAGED_EVENT_BUNDLE_ADDED = 0
+MANAGED_EVENT_ACCOUNT_ADDED = 5
 ```
 
-An application is installed.
+An account is created.
 
-**Since:** 12
+**Since:** 18
 
-<!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0-End-->
+<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MANAGED_EVENT_BUNDLE_REMOVED
+## MANAGED_EVENT_ACCOUNT_REMOVED
 
 ```TypeScript
-MANAGED_EVENT_BUNDLE_REMOVED = 1
+MANAGED_EVENT_ACCOUNT_REMOVED = 7
 ```
 
-An application is uninstalled.
+An account is removed.
 
-**Since:** 12
+**Since:** 18
 
-<!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1-End-->
+<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_ACCOUNT_SWITCHED
+
+```TypeScript
+MANAGED_EVENT_ACCOUNT_SWITCHED = 6
+```
+
+An account is switched.
+
+**Since:** 18
+
+<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -68,78 +82,6 @@ An application is stopped.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## MANAGED_EVENT_SYSTEM_UPDATE
-
-```TypeScript
-MANAGED_EVENT_SYSTEM_UPDATE = 4
-```
-
-The system is updated.
-
-**Since:** 12
-
-<!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4--><!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MANAGED_EVENT_ACCOUNT_ADDED
-
-```TypeScript
-MANAGED_EVENT_ACCOUNT_ADDED = 5
-```
-
-An account is created.
-
-**Since:** 18
-
-<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_ADDED = 5-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MANAGED_EVENT_ACCOUNT_SWITCHED
-
-```TypeScript
-MANAGED_EVENT_ACCOUNT_SWITCHED = 6
-```
-
-An account is switched.
-
-**Since:** 18
-
-<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_SWITCHED = 6-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MANAGED_EVENT_ACCOUNT_REMOVED
-
-```TypeScript
-MANAGED_EVENT_ACCOUNT_REMOVED = 7
-```
-
-An account is removed.
-
-**Since:** 18
-
-<!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7--><!--Device-ManagedEvent-MANAGED_EVENT_ACCOUNT_REMOVED = 7-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## MANAGED_EVENT_STARTUP_GUIDE_COMPLETED
-
-```TypeScript
-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8
-```
-
-The startup wizard is complete.
-
-**Since:** 24
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-ManagedEvent-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8--><!--Device-ManagedEvent-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
 ## MANAGED_EVENT_BOOT_COMPLETED
 
 ```TypeScript
@@ -153,6 +95,34 @@ Device startup is complete.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ManagedEvent-MANAGED_EVENT_BOOT_COMPLETED = 9--><!--Device-ManagedEvent-MANAGED_EVENT_BOOT_COMPLETED = 9-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_BUNDLE_ADDED
+
+```TypeScript
+MANAGED_EVENT_BUNDLE_ADDED = 0
+```
+
+An application is installed.
+
+**Since:** 12
+
+<!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_ADDED = 0-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_BUNDLE_REMOVED
+
+```TypeScript
+MANAGED_EVENT_BUNDLE_REMOVED = 1
+```
+
+An application is uninstalled.
+
+**Since:** 12
+
+<!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1--><!--Device-ManagedEvent-MANAGED_EVENT_BUNDLE_REMOVED = 1-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -185,5 +155,35 @@ Policy change event. Only super device administrator applications can subscribe 
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-ManagedEvent-MANAGED_EVENT_POLICIES_CHANGED = 11--><!--Device-ManagedEvent-MANAGED_EVENT_POLICIES_CHANGED = 11-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_STARTUP_GUIDE_COMPLETED
+
+```TypeScript
+MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8
+```
+
+The startup wizard is complete.
+
+**Since:** 24
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-ManagedEvent-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8--><!--Device-ManagedEvent-MANAGED_EVENT_STARTUP_GUIDE_COMPLETED = 8-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
+## MANAGED_EVENT_SYSTEM_UPDATE
+
+```TypeScript
+MANAGED_EVENT_SYSTEM_UPDATE = 4
+```
+
+The system is updated.
+
+**Since:** 12
+
+<!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4--><!--Device-ManagedEvent-MANAGED_EVENT_SYSTEM_UPDATE = 4-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

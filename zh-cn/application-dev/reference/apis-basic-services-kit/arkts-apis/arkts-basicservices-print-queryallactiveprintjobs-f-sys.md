@@ -37,6 +37,7 @@ function queryAllActivePrintJobs(): Promise<PrintJob[]>
 | [201](../../errorcode-universal.md#201-api权限校验失败) | the application does not have permission to call this function. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | not system application |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -49,3 +50,5 @@ print.queryAllActivePrintJobs().then((printJobs : print.PrintJob[]) => {
     console.error(`Failed to query all active print jobs. Code: ${error.code}, message: ${error.message}`);
 });
 ```
+
+<!--DelEnd-->

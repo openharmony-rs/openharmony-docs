@@ -4,7 +4,7 @@
 declare interface MeasureResult extends SizeResult
 ```
 
-Sub component MeasureResult info.
+测量后的组件布局信息。
 
 **继承/实现关系：** MeasureResult extends [SizeResult](arkts-arkui-common-comp-sizeresult-i.md)
 

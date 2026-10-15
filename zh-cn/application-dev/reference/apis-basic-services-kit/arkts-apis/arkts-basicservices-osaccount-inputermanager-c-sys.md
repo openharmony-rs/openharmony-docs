@@ -57,6 +57,7 @@ static registerInputer(authType: AuthType, inputer: IInputer): void
 | [12300103](../errorcode-account.md#12300103-凭据输入器已注册) | The credential inputer already exists. |
 | [12300106](../errorcode-account.md#12300106-认证类型不支持) | The authentication type is not supported. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -76,6 +77,8 @@ try {
   console.error(`registerInputer exception = code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## unregisterInputer
 
@@ -110,6 +113,7 @@ static unregisterInputer(authType: AuthType): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified.<br> 2. Incorrect parameter types. |
 | [12300002](../errorcode-account.md#12300002-无效参数) | Invalid authType. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -124,3 +128,5 @@ try {
   console.error(`unregisterInputer code is ${err.code}, message is ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

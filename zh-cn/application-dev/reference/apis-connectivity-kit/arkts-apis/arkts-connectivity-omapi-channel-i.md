@@ -4,7 +4,7 @@
 export interface Channel
 ```
 
-Channel的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。通过[Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel)或[Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel)获取Channel实例。
+Channel的实例表示在某个Session实例上创建通道，可能为基础通道或逻辑通道。通过[Session.openBasicChannel](arkts-connectivity-omapi-session-i.md#openbasicchannel1)或[Session.openLogicalChannel](arkts-connectivity-omapi-session-i.md#openlogicalchannel1)获取Channel实例。
 
 **起始版本：** 10
 
@@ -227,6 +227,8 @@ try {
 }
 ```
 
+<a id="transmit1"></a>
+
 ## transmit
 
 ```TypeScript
@@ -285,7 +287,7 @@ try {
 }
 ```
 
-<a id="transmit-1"></a>
+<a id="transmit2"></a>
 
 ## transmit
 

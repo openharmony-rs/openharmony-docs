@@ -4,7 +4,7 @@
 interface LazyCustomLayoutAlgorithmOptions
 ```
 
-LazyCustomLayoutAlgorithm constructor options.
+Input parameters for constructing the custom lazy loading layout algorithm, which are used to set the main axis direction of the layout algorithm.
 
 **Since:** 26.0.0
 
@@ -18,7 +18,9 @@ LazyCustomLayoutAlgorithm constructor options.
 axis?: Axis
 ```
 
-Defines the lazy layout axis.
+Main axis direction of the lazy loading layout. **Axis.Vertical** is used for the vertical layout of the main axis, and **Axis.Horizontal** is used for the horizontal layout of the main axis.
+
+Default value: **Axis.Vertical**
 
 **Type:** [Axis](arkts-arkui-axis-e.md)
 

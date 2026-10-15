@@ -39,6 +39,7 @@ function registerApplicationStateObserver(observer: ApplicationStateObserver): n
 | --- | --- |
 | number | 已注册观测器的数字代码。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -69,3 +70,5 @@ const observerCode = appManager.registerApplicationStateObserver({
 });
 console.info(`observerCode: ${observerCode}.`);
 ```
+
+<!--DelEnd-->

@@ -12,24 +12,6 @@ const enum DragStartRequestStatus
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## WAITING
-
-```TypeScript
-WAITING = 0
-```
-
-应用在准备数据阶段，无法发起拖拽。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-DragStartRequestStatus-WAITING = 0--><!--Device-DragStartRequestStatus-WAITING = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## READY
 
 ```TypeScript
@@ -45,5 +27,23 @@ READY = 1
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-DragStartRequestStatus-READY = 1--><!--Device-DragStartRequestStatus-READY = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## WAITING
+
+```TypeScript
+WAITING = 0
+```
+
+应用在准备数据阶段，无法发起拖拽。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-DragStartRequestStatus-WAITING = 0--><!--Device-DragStartRequestStatus-WAITING = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

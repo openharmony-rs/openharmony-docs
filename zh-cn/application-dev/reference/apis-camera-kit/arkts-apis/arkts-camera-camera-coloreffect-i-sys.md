@@ -51,6 +51,7 @@ Obtains the color effect in use.
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -59,6 +60,8 @@ function getColorEffect(session: camera.PhotoSessionForSys): camera.ColorEffectT
   return colorEffect;
 }
 ```
+
+<!--DelEnd-->
 
 ## setColorEffect
 
@@ -89,6 +92,7 @@ Sets a color effect. Before the setting, call [getSupportedColorEffects](arkts-c
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System Application. |
 | [7400103](../errorcode-camera.md#7400103-会话未配置) | Session not config. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,3 +100,5 @@ function setColorEffect(session: camera.PhotoSessionForSys, colorEffect: camera.
   session.setColorEffect(colorEffect);
 }
 ```
+
+<!--DelEnd-->

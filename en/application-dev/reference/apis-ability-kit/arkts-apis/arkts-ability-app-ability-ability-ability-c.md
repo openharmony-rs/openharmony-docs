@@ -40,7 +40,7 @@ Called when a system environment variable changes. You can override this callbac
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Ability-onConfigurationUpdate(newConfig: Configuration): void--><!--Device-Ability-onConfigurationUpdate(newConfig: Configuration): void-End-->
 
@@ -85,7 +85,7 @@ Called when the available memory of the entire device changes to a specified lev
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Ability-onMemoryLevel(level: AbilityConstant.MemoryLevel): void--><!--Device-Ability-onMemoryLevel(level: AbilityConstant.MemoryLevel): void-End-->
 

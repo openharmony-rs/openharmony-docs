@@ -6,6 +6,8 @@
 import { policy } from '@kit.NetworkKit';
 ```
 
+<a id="getpolicybyuid1"></a>
+
 ## getPolicyByUid
 
 ```TypeScript
@@ -42,6 +44,7 @@ Obtains the network access policy for the application specified by a given UID. 
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -53,8 +56,10 @@ policy.getPolicyByUid(11111, (error: BusinessError, data: policy.NetUidPolicy) =
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getpolicybyuid-1"></a>
+
+<a id="getpolicybyuid2"></a>
 
 ## getPolicyByUid
 
@@ -97,6 +102,7 @@ Obtains the network access policy by app UID. This API uses a promise to return 
 | [2100002](../errorcode-net-connection.md#2100002-service-connection-failure) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-system-internal-error) | System internal error. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -111,3 +117,5 @@ policy
     console.error(JSON.stringify(error));
   });
 ```
+
+<!--DelEnd-->

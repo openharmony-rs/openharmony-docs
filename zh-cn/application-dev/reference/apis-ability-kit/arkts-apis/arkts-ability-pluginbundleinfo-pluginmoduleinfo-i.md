@@ -4,7 +4,7 @@
 export interface PluginModuleInfo
 ```
 
-插件的模块信息。
+插件的模块信息。用于描述插件模块的名称和功能说明。
 
 **起始版本：** 26.0.0
 
@@ -18,7 +18,7 @@ export interface PluginModuleInfo
 readonly description: string
 ```
 
-插件模块的描述信息。
+插件模块的描述信息。对应[module.json5配置文件](../../../quick-start/module-configuration-file.md#配置文件标签)中配置的description字段。
 
 **类型：** string
 
@@ -34,7 +34,7 @@ readonly description: string
 readonly descriptionId: number
 ```
 
-插件模块描述的资源id值。
+插件模块描述的资源ID值。是编译构建时根据插件配置的description自动生成的资源ID。
 
 **类型：** number
 
@@ -50,7 +50,7 @@ readonly descriptionId: number
 readonly moduleName: string
 ```
 
-插件模块的名称。
+插件模块的名称。对应[module.json5配置文件](../../../quick-start/module-configuration-file.md#配置文件标签)中配置的name字段。
 
 **类型：** string
 

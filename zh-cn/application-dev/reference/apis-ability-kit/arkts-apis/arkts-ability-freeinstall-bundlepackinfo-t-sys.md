@@ -6,6 +6,8 @@ export type BundlePackInfo = _PackInfo.BundlePackInfo
 
 应用包信息。
 
+**类型：** [_PackInfo.BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md)
+
 **起始版本：** 9
 
 <!--Device-freeInstall-export type BundlePackInfo = _PackInfo.BundlePackInfo--><!--Device-freeInstall-export type BundlePackInfo = _PackInfo.BundlePackInfo-End-->
@@ -13,5 +15,3 @@ export type BundlePackInfo = _PackInfo.BundlePackInfo
 **系统能力：** SystemCapability.BundleManager.BundleFramework.FreeInstall
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** [_PackInfo.BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md)

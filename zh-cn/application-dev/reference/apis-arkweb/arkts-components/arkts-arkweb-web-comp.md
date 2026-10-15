@@ -2,9 +2,11 @@
 
 定义 Web 组件。
 
-<p>&lt;strong&gt;API Note&lt;/strong&gt;:
+访问在线网页时需添加网络权限：ohos.permission.INTERNET，具体申请方式请参考[声明权限](../../../security/AccessToken/declare-permissions.md)。
 
-&lt;strong&gt;Performance Note&lt;/strong&gt;: <p>For details about how to optimize the compilation, resource loading, and JSBridge performance, see Optimizing Web Page Loading <p>When the white screen duration is long due to complex web page parsing, you can enable [optimizeParserBudget](arkts-arkweb-web-comp-attribute.md#optimizeparserbudget) to reduce the first frame rendering content.</p> </p>
+<p><strong>接口说明</strong>:
+
+<strong>性能说明</strong>: <p>有关如何优化编译、资源加载和JSBridge性能的详细信息，请参见Web加载性能优化 <p>当由于复杂的网页解析导致白屏时间较长时，可以开启[optimizeParserBudget](arkts-arkweb-web-comp-attribute.md#optimizeparserbudget)以减少首帧渲染内容。</p> </p>
 
 ## Web
 
@@ -46,7 +48,6 @@ Sets Value.
 | [BlankScreenDetectionEventInfo](arkts-arkweb-web-comp-blankscreendetectioneventinfo-i.md) | 提供检测到白屏时的事件信息，包括URL、原因和细节。适用于需要监控页面白屏问题的场景，提升白屏诊断的准确性和用户体验。 |
 | [CameraCaptureStateChangeInfo](arkts-arkweb-web-comp-cameracapturestatechangeinfo-i.md) | 提供摄像头触发回调时的状态变化信息，包括改变前的状态和新状态。适用于需要监控摄像头状态变化的场景，提升摄像头管理的可见性和用户体验。 |
 | [EmbedOptions](arkts-arkweb-web-comp-embedoptions-i.md) | Web同层渲染的配置。用于配置Web同层渲染选项，包括支持固定大小和CSS显示属性。适用于需要优化同层元素渲染效果的场景，提升渲染的兼容性和灵活性。 |
-| [ExpandedMenuItemOptions](arkts-arkweb-web-comp-expandedmenuitemoptions-i.md) | 自定义菜单扩展项。 |
 | [FirstMeaningfulPaint](arkts-arkweb-web-comp-firstmeaningfulpaint-i.md) | 提供网页绘制页面主要内容的详细信息，包括导航时间和绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。 |
 | [FirstScreenPaint](arkts-arkweb-web-comp-firstscreenpaint-i.md) | 提供首屏渲染事件的信息，包括URL和绘制时间。适用于需要监控页面首屏渲染性能的场景，提升性能优化的准确性和用户体验。 |
 | [FullScreenEnterEvent](arkts-arkweb-web-comp-fullscreenenterevent-i.md) | 提供 Web 组件进入全屏的回调信息，包括视频尺寸和退出句柄。适用于需要处理全屏视频的场景，提升视频播放的沉浸式体验和可控性。 |
@@ -56,15 +57,15 @@ Sets Value.
 | [LargestContentfulPaint](arkts-arkweb-web-comp-largestcontentfulpaint-i.md) | 提供网页绘制页面最大内容的详细信息，包括导航时间和各类绘制时间。适用于需要监控页面渲染性能的场景，提升性能优化的准确性和用户体验。 |
 | [LoadCommittedDetails](arkts-arkweb-web-comp-loadcommitteddetails-i.md) | 提供已提交跳转的网页详细信息，包括是否主文档、导航类型等。适用于需要监控页面导航行为的场景，提升导航状态管理的准确性和用户体验。 |
 | [MicrophoneCaptureStateChangeInfo](arkts-arkweb-web-comp-microphonecapturestatechangeinfo-i.md) | 提供麦克风触发回调时的状态变化信息，包括改变前的状态和改变后的状态。适用于需要监控麦克风状态变化的场景，提升麦克风管理的可见性和用户体验。 |
-| NativeEmbedDataInfo | 提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。 |
+| [NativeEmbedDataInfo](arkts-arkweb-web-comp-nativeembeddatainfo-i.md) | 提供同层标签生命周期变化的详细信息，包括状态和标签信息。适用于需要监控同层元素生命周期的场景，提升渲染状态管理的准确性和用户体验。 |
 | [NativeEmbedInfo](arkts-arkweb-web-comp-nativeembedinfo-i.md) | 提供同层标签的详细信息，包括ID、类型、尺寸和位置等。适用于需要获取同层元素属性的场景，提升同层渲染的定制性和用户体验。 |
 | [NativeEmbedMouseInfo](arkts-arkweb-web-comp-nativeembedmouseinfo-i.md) | 提供鼠标/触摸板在同层标签上点击或长按的详细信息，包括标签ID和鼠标事件。适用于需要处理同层元素鼠标交互的场景，提升鼠标体验的定制性和灵活性。 |
 | [NativeEmbedParamDataInfo](arkts-arkweb-web-comp-nativeembedparamdatainfo-i.md) | 提供同层渲染object标签内嵌param元素变化时同层标签的详细信息，包括标签ID和参数项。适用于需要监控param元素变化的场景，提升同层元素管理的灵活性和准确性。 |
 | [NativeEmbedParamItem](arkts-arkweb-web-comp-nativeembedparamitem-i.md) | 提供同层渲染object标签内嵌param元素的详细信息，包括状态和参数。适用于需要监控param元素变化的场景，提升同层元素管理的灵活性和准确性。 |
 | [NativeEmbedTouchInfo](arkts-arkweb-web-comp-nativeembedtouchinfo-i.md) | 提供手指触摸同层标签的详细信息，包括标签ID和触摸事件。适用于需要处理同层元素触摸交互的场景，提升触摸体验的定制性和灵活性。 |
 | [NativeEmbedVisibilityInfo](arkts-arkweb-web-comp-nativeembedvisibilityinfo-i.md) | 提供同层标签的可见性信息，包括可见状态和标签ID。适用于需要监控同层元素可见性的场景，提升渲染状态管理的准确性和用户体验。 |
-| [NativeMediaPlayerConfig](arkts-arkweb-web-comp-nativemediaplayerconfig-i.md) | 用于配置应用接管网页媒体播放功能接口enableNativeMediaPlayer的功能，支持是否开启及是否覆盖网页内容。适用于需要自定义媒体播放行为的场景，提升媒体播放的集成度和用户体验。 |
-| NestedScrollOptionsExt | 用于设置Web组件嵌套滚动规则，支持上下左右四个方向的滚动选项。 |
+| [NativeMediaPlayerConfig](arkts-arkweb-web-comp-nativemediaplayerconfig-i.md) | 用于配置应用接管网页媒体播放功能接口[enableNativeMediaPlayer](arkts-arkweb-web-comp-attribute.md#enablenativemediaplayer)的功能，支持是否开启及是否覆盖网页内容。适用于需要自定义媒体播放行为的场景，提升媒体播放的集成度和用户体验。 |
+| [NestedScrollOptionsExt](arkts-arkweb-web-comp-nestedscrolloptionsext-i.md) | 用于设置Web组件嵌套滚动规则，支持上下左右四个方向的滚动选项。 |
 | [OnAlertEvent](arkts-arkweb-web-comp-onalertevent-i.md) | 定义网页触发 `alert()` 告警时的回调函数。 |
 | [OnAudioStateChangedEvent](arkts-arkweb-web-comp-onaudiostatechangedevent-i.md) | 定义网页音频播放状态改变时触发的回调信息，包括播放状态。适用于需要监控音频播放行为的场景，提升音频管理的可见性和用户体验。 |
 | [OnBeforeUnloadEvent](arkts-arkweb-web-comp-onbeforeunloadevent-i.md) | 定义刷新或关闭场景下，在即将离开当前页面时触发此回调。适用于表单编辑等场景，允许开发者拦截离开动作并弹窗确认，从而避免用户未提交的数据意外丢失。 |
@@ -115,11 +116,12 @@ Sets Value.
 | [SslErrorEvent](arkts-arkweb-web-comp-sslerrorevent-i.md) | 用户加载资源时发生SSL错误时触发的回调详情，包括URL、错误类型和证书链。适用于需要详细分析SSL错误的场景，提升安全问题的诊断和排查效率。 |
 | [UrlRegexRule](arkts-arkweb-web-comp-urlregexrule-i.md) | 定义Url正则表达式规则。 |
 | [VerifyPinEvent](arkts-arkweb-web-comp-verifypinevent-i.md) | 定义当需要用户进行PIN码认证时触发回调。 |
-| [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 拦截网页可编辑元素拉起软键盘的回调入参，包括WebKeyboardController和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。 |
+| [WebKeyboardCallbackInfo](arkts-arkweb-web-comp-webkeyboardcallbackinfo-i.md) | 拦截网页可编辑元素拉起软键盘的回调入参，包括[WebKeyboardController](arkts-arkweb-web-comp.md)和可编辑元素的属性。适用于需要自定义键盘交互的场景，提升输入体验的定制性和灵活性。 |
 | [WebKeyboardOptions](arkts-arkweb-web-comp-webkeyboardoptions-i.md) | 拦截网页可编辑元素拉起软键盘的回调返回值，包括键盘类型和自定义键盘。适用于需要控制软键盘行为的场景。 |
 | [WebMediaOptions](arkts-arkweb-web-comp-webmediaoptions-i.md) | 用于配置 Web 组件的媒体策略，包括音频续播有效期、音频独占模式等。适用于需要优化音频播放体验和多实例音频管理的场景，提升媒体播放的稳定性和用户体验。 |
 | [WebOptions](arkts-arkweb-web-comp-weboptions-i.md) | 通过[接口](../../../reference/apis-arkweb/arkts-basic-components-web.md#接口)定义Web选项，包括网页资源地址、控制器、渲染方式等。 |
 | [WindowFeatures](arkts-arkweb-web-comp-windowfeatures-i.md) | 提供网页请求创建的新窗口特征信息，包括大小和位置。适用于需要精确控制新窗口属性的场景，提升窗口布局的准确性和用户体验。 |
+| [ExpandedMenuItemOptions](arkts-arkweb-web-comp-expandedmenuitemoptions-i.md) | 自定义菜单扩展项。 |
 
 ### 类型
 
@@ -155,7 +157,7 @@ Sets Value.
 | [OnZoomChangeCallback](arkts-arkweb-web-comp-onzoomchangecallback-t.md) | 浏览器级缩放倍率变化时触发的回调类型。 |
 | [TextSelectionChangeCallback](arkts-arkweb-web-comp-textselectionchangecallback-t.md) | onTextSelectionChange的回调，选区内容改变时触发。 |
 | [WebKeyboardCallback](arkts-arkweb-web-comp-webkeyboardcallback-t.md) | 拦截网页可编辑元素拉起软键盘的回调，一般在点击网页input标签时触发。 |
-| [WebviewController](arkts-arkweb-web-comp-webviewcontroller-t.md) | 提供Web控制器的方法。 |
+| [WebviewController](arkts-arkweb-web-comp-webviewcontroller-t.md) | 提供Web控制器的方法。通过WebviewController可以控制Web组件各种行为。一个WebviewController对象只能控制一个Web组件，且必须在Web组件和WebviewController绑定后，才能调用WebviewController上的方法（静态方法除外）。 |
 
 ### 枚举
 
@@ -178,10 +180,9 @@ Sets Value.
 | [DetectedBlankScreenReason](arkts-arkweb-web-comp-detectedblankscreenreason-e.md) | 白屏的具体原因，用于标识页面白屏现象的底层原因，帮助开发者快速定位问题来源，提升页面加载问题的排查效率和用户体验。 |
 | [FileSelectorMode](arkts-arkweb-web-comp-fileselectormode-e.md) | 文件选择器的模式，用于控制文件选择器的打开方式和行为，帮助开发者实现文件上传等文件操作场景。 |
 | [GestureFocusMode](arkts-arkweb-web-comp-gesturefocusmode-e.md) | 手势获焦的模式。 |
-| [HitTestType](arkts-arkweb-web-comp-hittesttype-e.md) | 点击事件检测结果类型。 |
 | [MessageLevel](arkts-arkweb-web-comp-messagelevel-e.md) | ConsoleMessage的信息级别。 |
 | [MicrophoneCaptureState](arkts-arkweb-web-comp-microphonecapturestate-e.md) | 定义麦克风使用状态的值，用于标识麦克风的当前工作状态，帮助开发者实时监控麦克风资源使用情况，优化资源管理和用户隐私保护。 |
-| MixedMode | 混合内容模式。 |
+| [MixedMode](arkts-arkweb-web-comp-mixedmode-e.md) | 混合内容模式。 |
 | [NativeEmbedParamStatus](arkts-arkweb-web-comp-nativeembedparamstatus-e.md) | 定义同层渲染object标签内嵌param元素的状态变化类型，当添加param元素时触发ADD，修改param元素属性触发UPDATE，删除param元素触发DELETE。 |
 | [NativeEmbedStatus](arkts-arkweb-web-comp-nativeembedstatus-e.md) | 定义同层标签生命周期，当加载页面中有同层标签会触发CREATE，同层标签移动或者放大会触发UPDATE，退出页面会触发DESTROY。 |
 | [NavigationPolicy](arkts-arkweb-web-comp-navigationpolicy-e.md) | WebView中新窗口的打开方式，支持弹窗、新窗口、前台和后台标签页等多种方式。 |
@@ -199,7 +200,7 @@ Sets Value.
 | [ViewportFit](arkts-arkweb-web-comp-viewportfit-e.md) | 网页meta中viewport-fit配置的视口类型。 |
 | [WebBypassVsyncCondition](arkts-arkweb-web-comp-webbypassvsynccondition-e.md) | 跳过渲染vsync条件。 |
 | [WebCaptureMode](arkts-arkweb-web-comp-webcapturemode-e.md) | Web屏幕捕获模式。 |
-| WebDarkMode | Web深色模式的配置，用于控制网页内容的深色主题显示，帮助开发者根据用户偏好和系统主题提升视觉体验和可读性。 |
+| [WebDarkMode](arkts-arkweb-web-comp-webdarkmode-e.md) | Web深色模式的配置，用于控制网页内容的深色主题显示，帮助开发者根据用户偏好和系统主题提升视觉体验和可读性。 |
 | [WebElementType](arkts-arkweb-web-comp-webelementtype-e.md) | 网页元素信息。 |
 | [WebKeyboardAppearanceMode](arkts-arkweb-web-comp-webkeyboardappearancemode-e.md) | WebView中输入法沉浸模式，用于控制软键盘的显示风格，帮助开发者根据应用主题和用户偏好提供一致性的视觉体验，支持默认外观、系统跟随、浅色和深色沉浸式风格。 |
 | [WebKeyboardAvoidMode](arkts-arkweb-web-comp-webkeyboardavoidmode-e.md) | 软键盘避让的模式。 |
@@ -207,3 +208,4 @@ Sets Value.
 | [WebNavigationType](arkts-arkweb-web-comp-webnavigationtype-e.md) | 定义navigation类型。 |
 | [WebResponseType](arkts-arkweb-web-comp-webresponsetype-e.md) | 菜单的响应类型。 |
 | [WebRotateEffect](arkts-arkweb-web-comp-webrotateeffect-e.md) | 组件旋转时，宽高动画过程中组件内容如何填充以适应新尺寸的方式。 |
+| [HitTestType](arkts-arkweb-web-comp-hittesttype-e.md) | 点击事件检测结果类型。 |

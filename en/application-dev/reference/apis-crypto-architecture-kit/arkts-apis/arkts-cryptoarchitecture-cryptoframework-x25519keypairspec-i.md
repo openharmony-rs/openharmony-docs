@@ -36,7 +36,7 @@ Public key **pk** in the X25519 algorithm.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X25519KeyPairSpec-pk: bigint--><!--Device-X25519KeyPairSpec-pk: bigint-End-->
 
@@ -56,7 +56,7 @@ Private key **sk** in the X25519 algorithm.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-X25519KeyPairSpec-sk: bigint--><!--Device-X25519KeyPairSpec-sk: bigint-End-->
 

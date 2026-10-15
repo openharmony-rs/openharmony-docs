@@ -6,8 +6,6 @@ enum GroupOwnerBand
 
 P2P group owner band.
 
-@enum { number } GroupOwnerBand
-
 **Since:** 8
 
 **Deprecated since:** 9
@@ -15,24 +13,6 @@ P2P group owner band.
 **Substitutes:** [GroupOwnerBand](arkts-connectivity-wifimanager-groupownerband-e.md)
 
 <!--Device-wifi-enum GroupOwnerBand--><!--Device-wifi-enum GroupOwnerBand-End-->
-
-**System capability:** SystemCapability.Communication.WiFi.P2P
-
-## GO_BAND_AUTO
-
-```TypeScript
-GO_BAND_AUTO = 0
-```
-
-default band.
-
-**Since:** 8
-
-**Deprecated since:** 9
-
-**Substitutes:** [GO_BAND_AUTO](arkts-connectivity-wifimanager-groupownerband-e.md#go_band_auto)
-
-<!--Device-GroupOwnerBand-GO_BAND_AUTO = 0--><!--Device-GroupOwnerBand-GO_BAND_AUTO = 0-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P
 
@@ -69,5 +49,23 @@ GO_BAND_5GHZ = 2
 **Substitutes:** [GO_BAND_5GHZ](arkts-connectivity-wifimanager-groupownerband-e.md#go_band_5ghz)
 
 <!--Device-GroupOwnerBand-GO_BAND_5GHZ = 2--><!--Device-GroupOwnerBand-GO_BAND_5GHZ = 2-End-->
+
+**System capability:** SystemCapability.Communication.WiFi.P2P
+
+## GO_BAND_AUTO
+
+```TypeScript
+GO_BAND_AUTO = 0
+```
+
+default band.
+
+**Since:** 8
+
+**Deprecated since:** 9
+
+**Substitutes:** [GO_BAND_AUTO](arkts-connectivity-wifimanager-groupownerband-e.md#go_band_auto)
+
+<!--Device-GroupOwnerBand-GO_BAND_AUTO = 0--><!--Device-GroupOwnerBand-GO_BAND_AUTO = 0-End-->
 
 **System capability:** SystemCapability.Communication.WiFi.P2P

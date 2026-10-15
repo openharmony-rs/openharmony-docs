@@ -6,6 +6,8 @@
 import { display } from '@kit.ArkUI';
 ```
 
+<a id="getalldisplays1"></a>
+
 ## getAllDisplays
 
 ```TypeScript
@@ -16,7 +18,7 @@ Obtains all Display objects. This API uses an asynchronous callback to return th
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-display-function getAllDisplays(callback: AsyncCallback<Array<Display>>): void--><!--Device-display-function getAllDisplays(callback: AsyncCallback<Array<Display>>): void-End-->
 
@@ -52,7 +54,7 @@ display.getAllDisplays((err: BusinessError, data: Array<display.Display>) => {
 ```
 
 
-<a id="getalldisplays-1"></a>
+<a id="getalldisplays2"></a>
 
 ## getAllDisplays
 
@@ -64,7 +66,7 @@ Obtains all Display objects. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-display-function getAllDisplays(): Promise<Array<Display>>--><!--Device-display-function getAllDisplays(): Promise<Array<Display>>-End-->
 

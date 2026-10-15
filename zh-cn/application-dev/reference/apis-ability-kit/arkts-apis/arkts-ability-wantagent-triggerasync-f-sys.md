@@ -45,9 +45,10 @@ function triggerAsync(agent: WantAgent, triggerInfo: TriggerInfo, context: Conte
 | [201](../../errorcode-universal.md#201-api权限校验失败) | The application does not have permission to call the interface. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not system-app, can not use system-api. |
 | [16000020](../errorcode-ability.md#16000020-传入的context对象不是ability级别context) | The context is not ability context. |
-| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantagent object. |
-| [16000153](../errorcode-ability.md#16000153-wantagent对象已被取消) | The Wantagent has been canceled. |
+| [16000151](../errorcode-ability.md#16000151-无效wantagent对象) | Invalid wantAgent object. |
+| [16000153](../errorcode-ability.md#16000153-wantagent对象已被取消) | The WantAgent has been canceled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -98,7 +99,7 @@ class MyAbility extends UIAbility {
       // 创建wantAgent对象
       wantAgent.getWantAgent(wantAgentInfo, (err: BusinessError, data: WantAgent) => {
         if (err) {
-          console.info(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
+          console.error(`getWantAgent failed, code: ${err.code}, message: ${err.message}`);
         } else {
           wantAgentData = data;
         }
@@ -122,3 +123,5 @@ class MyAbility extends UIAbility {
    }
  }
 ```
+
+<!--DelEnd-->

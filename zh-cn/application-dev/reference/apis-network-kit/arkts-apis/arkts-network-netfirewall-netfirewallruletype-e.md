@@ -12,17 +12,17 @@ enum NetFirewallRuleType
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
-## RULE_IP
+## RULE_DNS
 
 ```TypeScript
-RULE_IP = 1
+RULE_DNS = 3
 ```
 
-IP类规则。
+DNS规则。
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRuleType-RULE_IP = 1--><!--Device-NetFirewallRuleType-RULE_IP = 1-End-->
+<!--Device-NetFirewallRuleType-RULE_DNS = 3--><!--Device-NetFirewallRuleType-RULE_DNS = 3-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
@@ -40,16 +40,16 @@ RULE_DOMAIN = 2
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall
 
-## RULE_DNS
+## RULE_IP
 
 ```TypeScript
-RULE_DNS = 3
+RULE_IP = 1
 ```
 
-DNS规则。
+IP类规则。
 
 **起始版本：** 15
 
-<!--Device-NetFirewallRuleType-RULE_DNS = 3--><!--Device-NetFirewallRuleType-RULE_DNS = 3-End-->
+<!--Device-NetFirewallRuleType-RULE_IP = 1--><!--Device-NetFirewallRuleType-RULE_IP = 1-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetFirewall

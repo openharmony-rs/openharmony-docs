@@ -17,48 +17,6 @@ enum ErrorType
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## NO_ERROR
-
-```TypeScript
-NO_ERROR = 0
-```
-
-没有错误。
-
-**起始版本：** 12
-
-<!--Device-ErrorType-NO_ERROR = 0--><!--Device-ErrorType-NO_ERROR = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## NETWORK_UNAVAILABLE
-
-```TypeScript
-NETWORK_UNAVAILABLE = 1
-```
-
-所有网络不可用。
-
-**起始版本：** 12
-
-<!--Device-ErrorType-NETWORK_UNAVAILABLE = 1--><!--Device-ErrorType-NETWORK_UNAVAILABLE = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-## WIFI_UNAVAILABLE
-
-```TypeScript
-WIFI_UNAVAILABLE = 2
-```
-
-WIFI不可用。
-
-**起始版本：** 12
-
-<!--Device-ErrorType-WIFI_UNAVAILABLE = 2--><!--Device-ErrorType-WIFI_UNAVAILABLE = 2-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## BATTERY_LEVEL_LOW
 
 ```TypeScript
@@ -101,20 +59,6 @@ CLOUD_STORAGE_FULL = 5
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
-## LOCAL_STORAGE_FULL
-
-```TypeScript
-LOCAL_STORAGE_FULL = 6
-```
-
-本地空间不足。
-
-**起始版本：** 12
-
-<!--Device-ErrorType-LOCAL_STORAGE_FULL = 6--><!--Device-ErrorType-LOCAL_STORAGE_FULL = 6-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
 ## DEVICE_TEMPERATURE_TOO_HIGH
 
 ```TypeScript
@@ -129,6 +73,48 @@ DEVICE_TEMPERATURE_TOO_HIGH = 7
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 
+## LOCAL_STORAGE_FULL
+
+```TypeScript
+LOCAL_STORAGE_FULL = 6
+```
+
+本地空间不足。
+
+**起始版本：** 12
+
+<!--Device-ErrorType-LOCAL_STORAGE_FULL = 6--><!--Device-ErrorType-LOCAL_STORAGE_FULL = 6-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## NETWORK_UNAVAILABLE
+
+```TypeScript
+NETWORK_UNAVAILABLE = 1
+```
+
+所有网络不可用。
+
+**起始版本：** 12
+
+<!--Device-ErrorType-NETWORK_UNAVAILABLE = 1--><!--Device-ErrorType-NETWORK_UNAVAILABLE = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## NO_ERROR
+
+```TypeScript
+NO_ERROR = 0
+```
+
+没有错误。
+
+**起始版本：** 12
+
+<!--Device-ErrorType-NO_ERROR = 0--><!--Device-ErrorType-NO_ERROR = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
 ## REMOTE_SERVER_ABNORMAL
 
 ```TypeScript
@@ -140,5 +126,19 @@ REMOTE_SERVER_ABNORMAL = 8
 **起始版本：** 20
 
 <!--Device-ErrorType-REMOTE_SERVER_ABNORMAL = 8--><!--Device-ErrorType-REMOTE_SERVER_ABNORMAL = 8-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+## WIFI_UNAVAILABLE
+
+```TypeScript
+WIFI_UNAVAILABLE = 2
+```
+
+WIFI不可用。
+
+**起始版本：** 12
+
+<!--Device-ErrorType-WIFI_UNAVAILABLE = 2--><!--Device-ErrorType-WIFI_UNAVAILABLE = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core

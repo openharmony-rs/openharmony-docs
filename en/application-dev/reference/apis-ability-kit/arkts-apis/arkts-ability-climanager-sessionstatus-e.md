@@ -12,22 +12,6 @@ Enumerates the status values of a CLI tool or commad execution session.
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core
 
-## RUNNING
-
-```TypeScript
-RUNNING = 'running'
-```
-
-The session is running. The tool process has been created and is currently executing.
-
-**Since:** 26.0.1
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-SessionStatus-RUNNING = 'running'--><!--Device-SessionStatus-RUNNING = 'running'-End-->
-
-**System capability:** SystemCapability.Ability.AgentRuntime.Core
-
 ## COMPLETED
 
 ```TypeScript
@@ -57,5 +41,21 @@ The session has failed. The tool process encountered an error or was forcibly te
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-SessionStatus-FAILED = 'failed'--><!--Device-SessionStatus-FAILED = 'failed'-End-->
+
+**System capability:** SystemCapability.Ability.AgentRuntime.Core
+
+## RUNNING
+
+```TypeScript
+RUNNING = 'running'
+```
+
+The session is running. The tool process has been created and is currently executing.
+
+**Since:** 26.0.1
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-SessionStatus-RUNNING = 'running'--><!--Device-SessionStatus-RUNNING = 'running'-End-->
 
 **System capability:** SystemCapability.Ability.AgentRuntime.Core

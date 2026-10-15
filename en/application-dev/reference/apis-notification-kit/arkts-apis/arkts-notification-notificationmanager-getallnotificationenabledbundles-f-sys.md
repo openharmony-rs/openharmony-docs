@@ -6,6 +6,8 @@
 import { notificationManager } from '@kit.NotificationKit';
 ```
 
+<a id="getallnotificationenabledbundles1"></a>
+
 ## getAllNotificationEnabledBundles
 
 ```TypeScript
@@ -40,6 +42,7 @@ Obtains a list of applications that allow notifications. This API uses a promise
 | [1600002](../errorcode-notification.md#1600002-marshalling-or-unmarshalling-error) | Marshalling or unmarshalling error. |
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -56,8 +59,10 @@ notificationManager.getAllNotificationEnabledBundles().then((data: Array<notific
 })
 ```
 
+<!--DelEnd-->
 
-<a id="getallnotificationenabledbundles-1"></a>
+
+<a id="getallnotificationenabledbundles2"></a>
 
 ## getAllNotificationEnabledBundles
 
@@ -100,6 +105,7 @@ Obtains the list of applications that are allowed to publish notifications by a 
 | [1600003](../errorcode-notification.md#1600003-failed-to-connect-to-the-notification-service) | Failed to connect to the service. |
 | [1600008](../errorcode-notification.md#1600008-user-not-found) | The user does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -117,3 +123,5 @@ notificationManager.getAllNotificationEnabledBundles(userId).then((data: Array<n
   console.error(`getAllNotificationEnabledBundles failed, code is ${err.code}, message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

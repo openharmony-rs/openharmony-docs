@@ -9,6 +9,8 @@ interface NewableFunction extends Function
 ```TypeScript
 ```
 
+<a id="apply1"></a>
+
 ## apply
 
 ```TypeScript
@@ -26,7 +28,7 @@ Calls the function with the specified object as the this value and the elements 
 | this | new () =&gt; T | Yes |  |
 | thisArg | T | Yes |  |
 
-<a id="apply-1"></a>
+<a id="apply2"></a>
 
 ## apply
 
@@ -41,6 +43,8 @@ apply<T, A extends any[]>(this: new (...args: A) => T, thisArg: T, args: A): voi
 | this | new (...args: A) =&gt; T | Yes |  |
 | thisArg | T | Yes |  |
 | args | A | Yes |  |
+
+<a id="bind1"></a>
 
 ## bind
 
@@ -59,7 +63,7 @@ For a given function, creates a bound function that has the same body as the ori
 | this | T | Yes |  |
 | thisArg | any | Yes |  |
 
-<a id="bind-1"></a>
+<a id="bind2"></a>
 
 ## bind
 
@@ -75,7 +79,7 @@ bind<A0, A extends any[], R>(this: new (arg0: A0, ...args: A) => R, thisArg: any
 | thisArg | any | Yes |  |
 | arg0 | A0 | Yes |  |
 
-<a id="bind-2"></a>
+<a id="bind3"></a>
 
 ## bind
 
@@ -92,7 +96,7 @@ bind<A0, A1, A extends any[], R>(this: new (arg0: A0, arg1: A1, ...args: A) => R
 | arg0 | A0 | Yes |  |
 | arg1 | A1 | Yes |  |
 
-<a id="bind-3"></a>
+<a id="bind4"></a>
 
 ## bind
 
@@ -110,7 +114,7 @@ bind<A0, A1, A2, A extends any[], R>(this: new (arg0: A0, arg1: A1, arg2: A2, ..
 | arg1 | A1 | Yes |  |
 | arg2 | A2 | Yes |  |
 
-<a id="bind-4"></a>
+<a id="bind5"></a>
 
 ## bind
 
@@ -129,7 +133,7 @@ bind<A0, A1, A2, A3, A extends any[], R>(this: new (arg0: A0, arg1: A1, arg2: A2
 | arg2 | A2 | Yes |  |
 | arg3 | A3 | Yes |  |
 
-<a id="bind-5"></a>
+<a id="bind6"></a>
 
 ## bind
 

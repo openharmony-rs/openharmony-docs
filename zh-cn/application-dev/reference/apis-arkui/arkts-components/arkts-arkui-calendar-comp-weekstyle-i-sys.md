@@ -4,7 +4,7 @@
 interface WeekStyle
 ```
 
-Week Style.
+周样式。
 
 **起始版本：** 7
 
@@ -22,7 +22,7 @@ Week Style.
 weekAndDayRowSpace?: number
 ```
 
-Style of week space.
+周间距。
 
 **类型：** number
 
@@ -46,7 +46,7 @@ Style of week space.
 weekColor?: ResourceColor
 ```
 
-Style of week color.
+周颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -70,7 +70,7 @@ Style of week color.
 weekendDayColor?: ResourceColor
 ```
 
-Style of week day color.
+周末日期颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -94,7 +94,7 @@ Style of week day color.
 weekendLunarColor?: ResourceColor
 ```
 
-Style of lunar color.
+周末农历颜色。
 
 **类型：** [ResourceColor](../arkts-apis/arkts-arkui-resourcecolor-t.md)
 
@@ -118,7 +118,7 @@ Style of lunar color.
 weekFontSize?: number
 ```
 
-Style of week font size.
+周字体大小。
 
 **类型：** number
 
@@ -142,7 +142,7 @@ Style of week font size.
 weekHeight?: number
 ```
 
-Style of week height.
+周高度。
 
 **类型：** number
 
@@ -166,7 +166,7 @@ Style of week height.
 weekWidth?: number
 ```
 
-Style of week width.
+周宽度。
 
 **类型：** number
 

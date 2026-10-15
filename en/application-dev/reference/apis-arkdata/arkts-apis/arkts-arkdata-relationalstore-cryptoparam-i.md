@@ -28,7 +28,7 @@ Page size used for database encryption and decryption. The value is an integer. 
 
 Default value: **1024**.
 
-The value must be an integer within the range of 1,024 to 65,536 and must be 2&lt;sup&gt;n&lt;/sup&gt;. If the specified value is not an integer, the value is rounded down.
+The value must be an integer within the range of 1,024 to 65,536 and must be 2<sup>n</sup>. If the specified value is not an integer, the value is rounded down.
 
 **Type:** number
 

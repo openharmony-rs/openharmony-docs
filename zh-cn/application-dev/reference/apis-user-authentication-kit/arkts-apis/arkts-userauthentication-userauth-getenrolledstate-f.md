@@ -18,7 +18,7 @@ function getEnrolledState(authType: UserAuthType): EnrolledState
 
 **需要权限：** ohos.permission.ACCESS_BIOMETRIC
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-userAuth-function getEnrolledState(authType: UserAuthType): EnrolledState--><!--Device-userAuth-function getEnrolledState(authType: UserAuthType): EnrolledState-End-->
 

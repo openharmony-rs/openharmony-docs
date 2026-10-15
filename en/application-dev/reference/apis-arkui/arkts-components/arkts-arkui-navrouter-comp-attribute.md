@@ -6,7 +6,7 @@ declare class NavRouterAttribute extends CommonMethod<NavRouterAttribute>
 
 In addition to the universal attributes, the following attributes are supported.
 
-**Inheritance/Implementation:** NavRouterAttribute extends CommonMethod<NavRouterAttribute>
+**Inheritance/Implementation:** NavRouterAttribute extends CommonMethod&lt;NavRouterAttribute&gt;
 
 **Since:** 9
 

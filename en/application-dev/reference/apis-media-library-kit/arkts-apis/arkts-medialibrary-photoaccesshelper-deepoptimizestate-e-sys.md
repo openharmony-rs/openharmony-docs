@@ -14,24 +14,6 @@ Describes the state type of deep optimize space.
 
 **System API:** This is a system API.
 
-## RUNNING
-
-```TypeScript
-RUNNING = 0
-```
-
-Indicates that the deep optimize space in process now.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeepOptimizeState-RUNNING = 0--><!--Device-DeepOptimizeState-RUNNING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## COMPLETED
 
 ```TypeScript
@@ -68,24 +50,6 @@ Indicates that the deep optimize space failed.
 
 **System API:** This is a system API.
 
-## STOPPED
-
-```TypeScript
-STOPPED = 3
-```
-
-Indicates that the deep optimize space stopped.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-DeepOptimizeState-STOPPED = 3--><!--Device-DeepOptimizeState-STOPPED = 3-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**System API:** This is a system API.
-
 ## INTERRUPTED
 
 ```TypeScript
@@ -99,6 +63,42 @@ Indicates that the deep optimize space interrupted.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-DeepOptimizeState-INTERRUPTED = 4--><!--Device-DeepOptimizeState-INTERRUPTED = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## RUNNING
+
+```TypeScript
+RUNNING = 0
+```
+
+Indicates that the deep optimize space in process now.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeepOptimizeState-RUNNING = 0--><!--Device-DeepOptimizeState-RUNNING = 0-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**System API:** This is a system API.
+
+## STOPPED
+
+```TypeScript
+STOPPED = 3
+```
+
+Indicates that the deep optimize space stopped.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-DeepOptimizeState-STOPPED = 3--><!--Device-DeepOptimizeState-STOPPED = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

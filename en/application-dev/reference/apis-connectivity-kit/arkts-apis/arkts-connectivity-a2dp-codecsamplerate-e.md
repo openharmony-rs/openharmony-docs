@@ -12,17 +12,31 @@ Describes the codec sample rate.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_SAMPLE_RATE_NONE
+## CODEC_SAMPLE_RATE_176400
 
 ```TypeScript
-CODEC_SAMPLE_RATE_NONE = 0
+CODEC_SAMPLE_RATE_176400 = 5
 ```
 
-Codec sample rate none.
+Codec sample rate 176.4k.
 
 **Since:** 11
 
-<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_NONE = 0--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_NONE = 0-End-->
+<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_176400 = 5--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_176400 = 5-End-->
+
+**System capability:** SystemCapability.Communication.Bluetooth.Core
+
+## CODEC_SAMPLE_RATE_192000
+
+```TypeScript
+CODEC_SAMPLE_RATE_192000 = 6
+```
+
+Codec sample rate 192k.
+
+**Since:** 11
+
+<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_192000 = 6--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_192000 = 6-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
@@ -82,30 +96,16 @@ Codec sample rate 96k.
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core
 
-## CODEC_SAMPLE_RATE_176400
+## CODEC_SAMPLE_RATE_NONE
 
 ```TypeScript
-CODEC_SAMPLE_RATE_176400 = 5
+CODEC_SAMPLE_RATE_NONE = 0
 ```
 
-Codec sample rate 176.4k.
+Codec sample rate none.
 
 **Since:** 11
 
-<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_176400 = 5--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_176400 = 5-End-->
-
-**System capability:** SystemCapability.Communication.Bluetooth.Core
-
-## CODEC_SAMPLE_RATE_192000
-
-```TypeScript
-CODEC_SAMPLE_RATE_192000 = 6
-```
-
-Codec sample rate 192k.
-
-**Since:** 11
-
-<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_192000 = 6--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_192000 = 6-End-->
+<!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_NONE = 0--><!--Device-CodecSampleRate-CODEC_SAMPLE_RATE_NONE = 0-End-->
 
 **System capability:** SystemCapability.Communication.Bluetooth.Core

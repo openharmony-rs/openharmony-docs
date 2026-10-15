@@ -100,7 +100,7 @@ Animation timeout time.
 
 Unit: ms
 
-Value range: [0, +��)
+Value range: [0, +∞)
 
 Default value: no default value for interactive animations; 1000 ms for non-interactive animations.
 

@@ -134,6 +134,8 @@ Invoked when data is moved, that is, when data is swapped between the **from** a
 | from | number | Yes | Original position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 | to | number | Yes | Target position of data. The value range is [0, data source length - 1].<br>If the value is less than 0, it is treated as **0**. If the value is greater than the data source length minus 1, it is treated as the data source length minus 1. |
 
+<a id="ondatareloaded1"></a>
+
 ## onDataReloaded
 
 ```TypeScript
@@ -156,7 +158,7 @@ Invoked when all data is reloaded. For data items whose key remains unchanged, t
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-<a id="ondatareloaded-1"></a>
+<a id="ondatareloaded2"></a>
 
 ## onDataReloaded
 

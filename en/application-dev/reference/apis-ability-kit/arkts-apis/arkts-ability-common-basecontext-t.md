@@ -6,6 +6,8 @@ export type BaseContext = _BaseContext.default
 
 Defines the parent class of all context types.
 
+**Type:** _BaseContext.default
+
 **Since:** 9
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the parent class of all context types.
 <!--Device-common-export type BaseContext = _BaseContext.default--><!--Device-common-export type BaseContext = _BaseContext.default-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.Core
-
-**Type:** _BaseContext.default

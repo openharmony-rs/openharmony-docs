@@ -6,8 +6,6 @@ export interface CloseOptions extends AccessibilityOptions
 
 Defines the default close icon behavior attributes for the chip, including accessibility attributes. The default value of **accessibilityText** is **"Delete"**.
 
-Inherits from [AccessibilityOptions](arkts-arkui-arkui-advanced-chip-accessibilityoptions-i.md).
-
 **Inheritance/Implementation:** CloseOptions extends [AccessibilityOptions](arkts-arkui-arkui-advanced-chip-accessibilityoptions-i.md)
 
 **Since:** 14

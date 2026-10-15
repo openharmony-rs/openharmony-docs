@@ -22,6 +22,8 @@ TLSSocketConnection连接，即TLSSocket客户端与服务端的连接。在调�
 import { socket } from '@kit.NetworkKit';
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -95,7 +97,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -165,6 +167,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
+
+<a id="getciphersuite1"></a>
 
 ## getCipherSuite
 
@@ -238,7 +242,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getciphersuite-1"></a>
+<a id="getciphersuite2"></a>
 
 ## getCipherSuite
 
@@ -382,6 +386,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
+<a id="getremoteaddress1"></a>
+
 ## getRemoteAddress
 
 ```TypeScript
@@ -452,7 +458,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getremoteaddress-1"></a>
+<a id="getremoteaddress2"></a>
 
 ## getRemoteAddress
 
@@ -520,6 +526,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
   });
 });
 ```
+
+<a id="getremotecertificate1"></a>
 
 ## getRemoteCertificate
 
@@ -635,7 +643,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getremotecertificate-1"></a>
+<a id="getremotecertificate2"></a>
 
 ## getRemoteCertificate
 
@@ -750,6 +758,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
+<a id="getsignaturealgorithms1"></a>
+
 ## getSignatureAlgorithms
 
 ```TypeScript
@@ -820,7 +830,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="getsignaturealgorithms-1"></a>
+<a id="getsignaturealgorithms2"></a>
 
 ## getSignatureAlgorithms
 
@@ -903,7 +913,7 @@ getSocketFd(): Promise<number>
 > 
 > - 连接断开、Socket已关闭（如调用close后）等异常情况下调用本接口会返回-1。
 > 
-> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-tcpsocketconnection-i.md#close)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
+> - 文件描述符的生命周期由系统管理，应用可以通过[close](arkts-network-socket-tcpsocketconnection-i.md#close1)方法关闭Socket连接，避免直接操作文件描述符进行关闭。
 
 **起始版本：** 23
 
@@ -1388,6 +1398,8 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
+<a id="send1"></a>
+
 ## send
 
 ```TypeScript
@@ -1463,7 +1475,7 @@ tlsServer.on('connect', (client: socket.TLSSocketConnection) => {
 });
 ```
 
-<a id="send-1"></a>
+<a id="send2"></a>
 
 ## send
 

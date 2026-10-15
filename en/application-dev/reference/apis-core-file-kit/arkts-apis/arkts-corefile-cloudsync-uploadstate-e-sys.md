@@ -14,42 +14,6 @@ Describes the State type of file upload.
 
 **System API:** This is a system API.
 
-## WAITING
-
-```TypeScript
-WAITING = 0
-```
-
-Indicates that the upload task is in waiting state.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UploadState-WAITING = 0--><!--Device-UploadState-WAITING = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-**System API:** This is a system API.
-
-## RUNNING
-
-```TypeScript
-RUNNING = 1
-```
-
-Indicates that the upload task is in process now.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-UploadState-RUNNING = 1--><!--Device-UploadState-RUNNING = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
-
-**System API:** This is a system API.
-
 ## COMPLETED
 
 ```TypeScript
@@ -86,6 +50,42 @@ Indicates that the upload task failed.
 
 **System API:** This is a system API.
 
+## PAUSED
+
+```TypeScript
+PAUSED = 5
+```
+
+Indicates that the upload task paused.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UploadState-PAUSED = 5--><!--Device-UploadState-PAUSED = 5-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**System API:** This is a system API.
+
+## RUNNING
+
+```TypeScript
+RUNNING = 1
+```
+
+Indicates that the upload task is in process now.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-UploadState-RUNNING = 1--><!--Device-UploadState-RUNNING = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
+
+**System API:** This is a system API.
+
 ## STOPPED
 
 ```TypeScript
@@ -104,19 +104,19 @@ Indicates that the upload task stopped.
 
 **System API:** This is a system API.
 
-## PAUSED
+## WAITING
 
 ```TypeScript
-PAUSED = 5
+WAITING = 0
 ```
 
-Indicates that the upload task paused.
+Indicates that the upload task is in waiting state.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-UploadState-PAUSED = 5--><!--Device-UploadState-PAUSED = 5-End-->
+<!--Device-UploadState-WAITING = 0--><!--Device-UploadState-WAITING = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.DistributedFileService.CloudSync.Core
 

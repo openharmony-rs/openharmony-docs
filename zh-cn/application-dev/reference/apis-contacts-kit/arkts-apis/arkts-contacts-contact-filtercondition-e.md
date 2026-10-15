@@ -12,6 +12,22 @@ enum FilterCondition
 
 **系统能力：** SystemCapability.Applications.ContactsData
 
+## CONTAINS
+
+```TypeScript
+CONTAINS = 5
+```
+
+对应字段值包含某值，值类型为string
+
+**起始版本：** 15
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FilterCondition-CONTAINS = 5--><!--Device-FilterCondition-CONTAINS = 5-End-->
+
+**系统能力：** SystemCapability.Applications.Contacts
+
 ## EQUAL_TO
 
 ```TypeScript
@@ -25,22 +41,6 @@ EQUAL_TO = 1
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-FilterCondition-EQUAL_TO = 1--><!--Device-FilterCondition-EQUAL_TO = 1-End-->
-
-**系统能力：** SystemCapability.Applications.Contacts
-
-## NOT_EQUAL_TO
-
-```TypeScript
-NOT_EQUAL_TO = 2
-```
-
-对应字段不等于某值。
-
-**起始版本：** 15
-
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
-
-<!--Device-FilterCondition-NOT_EQUAL_TO = 2--><!--Device-FilterCondition-NOT_EQUAL_TO = 2-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts
 
@@ -76,6 +76,22 @@ IS_NOT_NULL = 0
 
 **系统能力：** SystemCapability.Applications.Contacts
 
+## NOT_EQUAL_TO
+
+```TypeScript
+NOT_EQUAL_TO = 2
+```
+
+对应字段不等于某值。
+
+**起始版本：** 15
+
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+
+<!--Device-FilterCondition-NOT_EQUAL_TO = 2--><!--Device-FilterCondition-NOT_EQUAL_TO = 2-End-->
+
+**系统能力：** SystemCapability.Applications.Contacts
+
 ## NOT_IN
 
 ```TypeScript
@@ -89,21 +105,5 @@ NOT_IN = 4
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-FilterCondition-NOT_IN = 4--><!--Device-FilterCondition-NOT_IN = 4-End-->
-
-**系统能力：** SystemCapability.Applications.Contacts
-
-## CONTAINS
-
-```TypeScript
-CONTAINS = 5
-```
-
-对应字段值包含某值，值类型为string
-
-**起始版本：** 15
-
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
-
-<!--Device-FilterCondition-CONTAINS = 5--><!--Device-FilterCondition-CONTAINS = 5-End-->
 
 **系统能力：** SystemCapability.Applications.Contacts

@@ -58,7 +58,8 @@ async function setDomainAccountPolicy() {
     // 需根据实际情况进行替换
     authenticationValidityPeriod: 300,
     passwordValidityPeriod: 420,
-    passwordExpirationNotification: 60
+    passwordExpirationNotification: 60,
+    supportUKeyAuthentication: true
   };
   // 设置全局域账号策略
   let accountInfo: osAccount.DomainAccountInfo = {

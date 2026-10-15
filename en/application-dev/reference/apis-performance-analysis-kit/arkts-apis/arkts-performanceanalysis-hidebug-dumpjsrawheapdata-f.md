@@ -6,6 +6,8 @@
 import { hidebug } from '@kit.PerformanceAnalysisKit';
 ```
 
+<a id="dumpjsrawheapdata1"></a>
+
 ## dumpJsRawHeapData
 
 ```TypeScript
@@ -24,7 +26,7 @@ Dumps the original heap snapshot of the VM for the current thread and generates 
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-hidebug-function dumpJsRawHeapData(needGC?: boolean): Promise<string>--><!--Device-hidebug-function dumpJsRawHeapData(needGC?: boolean): Promise<string>-End-->
 
@@ -68,7 +70,7 @@ hidebug.dumpJsRawHeapData().then((filePath: string) => {
 ```
 
 
-<a id="dumpjsrawheapdata-1"></a>
+<a id="dumpjsrawheapdata2"></a>
 
 ## dumpJsRawHeapData
 
@@ -90,7 +92,7 @@ Dumps the original heap snapshot of the VM for the current thread and clears the
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-hidebug-function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>--><!--Device-hidebug-function dumpJsRawHeapData(needGC: boolean, needClean: boolean): Promise<string>-End-->
 
@@ -136,7 +138,7 @@ hidebug.dumpJsRawHeapData(true, true).then((filePath: string) => {
 ```
 
 
-<a id="dumpjsrawheapdata-2"></a>
+<a id="dumpjsrawheapdata3"></a>
 
 ## dumpJsRawHeapData
 
@@ -158,7 +160,7 @@ Dumps the original heap snapshot of the VM for the current thread or the process
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-hidebug-function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise<Array<string>>--><!--Device-hidebug-function dumpJsRawHeapData(needGC: boolean, needClean: boolean, processDump: boolean): Promise<Array<string>>-End-->
 

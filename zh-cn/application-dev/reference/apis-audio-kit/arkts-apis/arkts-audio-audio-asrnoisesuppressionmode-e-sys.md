@@ -30,17 +30,17 @@ BYPASS = 0
 
 **系统接口：** 此接口为系统接口。
 
-## STANDARD
+## FAR_FIELD
 
 ```TypeScript
-STANDARD = 1
+FAR_FIELD = 3
 ```
 
-标准噪音抑制。
+远场噪音抑制。
 
 **起始版本：** 12
 
-<!--Device-AsrNoiseSuppressionMode-STANDARD = 1--><!--Device-AsrNoiseSuppressionMode-STANDARD = 1-End-->
+<!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3--><!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 
@@ -62,17 +62,17 @@ NEAR_FIELD = 2
 
 **系统接口：** 此接口为系统接口。
 
-## FAR_FIELD
+## STANDARD
 
 ```TypeScript
-FAR_FIELD = 3
+STANDARD = 1
 ```
 
-远场噪音抑制。
+标准噪音抑制。
 
 **起始版本：** 12
 
-<!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3--><!--Device-AsrNoiseSuppressionMode-FAR_FIELD = 3-End-->
+<!--Device-AsrNoiseSuppressionMode-STANDARD = 1--><!--Device-AsrNoiseSuppressionMode-STANDARD = 1-End-->
 
 **系统能力：** SystemCapability.Multimedia.Audio.Capturer
 

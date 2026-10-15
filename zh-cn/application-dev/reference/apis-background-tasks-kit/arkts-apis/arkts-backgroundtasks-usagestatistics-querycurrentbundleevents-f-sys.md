@@ -6,6 +6,8 @@
 import { usageStatistics } from '@kit.BackgroundTasksKit';
 ```
 
+<a id="querycurrentbundleevents1"></a>
+
 ## queryCurrentBundleEvents
 
 ```TypeScript
@@ -35,7 +37,7 @@ function queryCurrentBundleEvents(begin: number, end: number, callback: AsyncCal
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
 | [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
@@ -44,6 +46,7 @@ function queryCurrentBundleEvents(begin: number, end: number, callback: AsyncCal
 | [10000006](../errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 | [10000007](../errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -63,8 +66,10 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000, (err: BusinessError,
 });
 ```
 
+<!--DelEnd-->
 
-<a id="querycurrentbundleevents-1"></a>
+
+<a id="querycurrentbundleevents2"></a>
 
 ## queryCurrentBundleEvents
 
@@ -100,7 +105,7 @@ function queryCurrentBundleEvents(begin: number, end: number): Promise<Array<Bun
 | 错误码ID | 错误信息 |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api功能在部分设备不支持) | Capability not supported. Failed to call the API due to limited device capabilities. |
 | [10000001](../errorcode-DeviceUsageStatistics.md#10000001-内存操作失败) | Memory operation failed. |
 | [10000002](../errorcode-DeviceUsageStatistics.md#10000002-ipc序列化失败) | Failed to write data into parcel. Possible reasons: 1. Invalid parameters;<br> 2. Failed to apply for memory. |
@@ -109,6 +114,7 @@ function queryCurrentBundleEvents(begin: number, end: number): Promise<Array<Bun
 | [10000006](../errorcode-DeviceUsageStatistics.md#10000006-获取应用信息失败) | Failed to get the application information. |
 | [10000007](../errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -126,8 +132,10 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000).then((res: Array<usa
 });
 ```
 
+<!--DelEnd-->
 
-<a id="querycurrentbundleevents-2"></a>
+
+<a id="querycurrentbundleevents3"></a>
 
 ## queryCurrentBundleEvents
 
@@ -174,6 +182,7 @@ function queryCurrentBundleEvents(begin: number, end: number, maxNum: number): P
 | [10000007](../errorcode-DeviceUsageStatistics.md#10000007-时间操作失败) | Failed to get the system time. |
 | [10000008](../errorcode-DeviceUsageStatistics.md#10000008-参数检查失败) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;<br> 2. Incorrect parameters types; 3. Parameter verification failed. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -190,3 +199,5 @@ usageStatistics.queryCurrentBundleEvents(0, 20000000000000, 100).then((res: Arra
   console.error('BUNDLE_ACTIVE queryCurrentBundleEvents promise failed. code is: ' + err.code + ',message is: ' + err.message);
 });
 ```
+
+<!--DelEnd-->

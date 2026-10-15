@@ -14,81 +14,17 @@ export enum SuppState
 
 **系统接口：** 此接口为系统接口。
 
-## DISCONNECTED
+## ASSOCIATED
 
 ```TypeScript
-DISCONNECTED
+ASSOCIATED
 ```
 
-已断开。
+已关联。
 
 **起始版本：** 9
 
-<!--Device-SuppState-DISCONNECTED--><!--Device-SuppState-DISCONNECTED-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
-## INTERFACE_DISABLED
-
-```TypeScript
-INTERFACE_DISABLED
-```
-
-接口禁用。
-
-**起始版本：** 9
-
-<!--Device-SuppState-INTERFACE_DISABLED--><!--Device-SuppState-INTERFACE_DISABLED-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
-## INACTIVE
-
-```TypeScript
-INACTIVE
-```
-
-未激活。
-
-**起始版本：** 9
-
-<!--Device-SuppState-INACTIVE--><!--Device-SuppState-INACTIVE-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
-## SCANNING
-
-```TypeScript
-SCANNING
-```
-
-扫描中。
-
-**起始版本：** 9
-
-<!--Device-SuppState-SCANNING--><!--Device-SuppState-SCANNING-End-->
-
-**系统能力：** SystemCapability.Communication.WiFi.STA
-
-**系统接口：** 此接口为系统接口。
-
-## AUTHENTICATING
-
-```TypeScript
-AUTHENTICATING
-```
-
-认证中。
-
-**起始版本：** 9
-
-<!--Device-SuppState-AUTHENTICATING--><!--Device-SuppState-AUTHENTICATING-End-->
+<!--Device-SuppState-ASSOCIATED--><!--Device-SuppState-ASSOCIATED-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -110,17 +46,49 @@ ASSOCIATING
 
 **系统接口：** 此接口为系统接口。
 
-## ASSOCIATED
+## AUTHENTICATING
 
 ```TypeScript
-ASSOCIATED
+AUTHENTICATING
 ```
 
-已关联。
+认证中。
 
 **起始版本：** 9
 
-<!--Device-SuppState-ASSOCIATED--><!--Device-SuppState-ASSOCIATED-End-->
+<!--Device-SuppState-AUTHENTICATING--><!--Device-SuppState-AUTHENTICATING-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## COMPLETED
+
+```TypeScript
+COMPLETED
+```
+
+所有认证已完成。
+
+**起始版本：** 9
+
+<!--Device-SuppState-COMPLETED--><!--Device-SuppState-COMPLETED-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## DISCONNECTED
+
+```TypeScript
+DISCONNECTED
+```
+
+已断开。
+
+**起始版本：** 9
+
+<!--Device-SuppState-DISCONNECTED--><!--Device-SuppState-DISCONNECTED-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -158,33 +126,33 @@ GROUP_HANDSHAKE
 
 **系统接口：** 此接口为系统接口。
 
-## COMPLETED
+## INACTIVE
 
 ```TypeScript
-COMPLETED
+INACTIVE
 ```
 
-所有认证已完成。
+未激活。
 
 **起始版本：** 9
 
-<!--Device-SuppState-COMPLETED--><!--Device-SuppState-COMPLETED-End-->
+<!--Device-SuppState-INACTIVE--><!--Device-SuppState-INACTIVE-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
 **系统接口：** 此接口为系统接口。
 
-## UNINITIALIZED
+## INTERFACE_DISABLED
 
 ```TypeScript
-UNINITIALIZED
+INTERFACE_DISABLED
 ```
 
-连接建立失败。
+接口禁用。
 
 **起始版本：** 9
 
-<!--Device-SuppState-UNINITIALIZED--><!--Device-SuppState-UNINITIALIZED-End-->
+<!--Device-SuppState-INTERFACE_DISABLED--><!--Device-SuppState-INTERFACE_DISABLED-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 
@@ -201,6 +169,38 @@ INVALID
 **起始版本：** 9
 
 <!--Device-SuppState-INVALID--><!--Device-SuppState-INVALID-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## SCANNING
+
+```TypeScript
+SCANNING
+```
+
+扫描中。
+
+**起始版本：** 9
+
+<!--Device-SuppState-SCANNING--><!--Device-SuppState-SCANNING-End-->
+
+**系统能力：** SystemCapability.Communication.WiFi.STA
+
+**系统接口：** 此接口为系统接口。
+
+## UNINITIALIZED
+
+```TypeScript
+UNINITIALIZED
+```
+
+连接建立失败。
+
+**起始版本：** 9
+
+<!--Device-SuppState-UNINITIALIZED--><!--Device-SuppState-UNINITIALIZED-End-->
 
 **系统能力：** SystemCapability.Communication.WiFi.STA
 

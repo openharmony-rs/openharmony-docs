@@ -14,19 +14,19 @@ enum AlbumAttribute
 
 **系统接口：** 此接口为系统接口。
 
-## NICK_NAME_ATTR
+## CONTACT_INFO_ATTR
 
 ```TypeScript
-NICK_NAME_ATTR = 'nickname'
+CONTACT_INFO_ATTR = 'contact_info'
 ```
 
-相册昵称。
+相册contact_info操作属性。
 
-**起始版本：** 26.0.0
+**起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'--><!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'-End-->
+<!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'--><!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -50,24 +50,6 @@ EXTRA_INFO_ATTR = 'extra_info'
 
 **系统接口：** 此接口为系统接口。
 
-## IS_REMOVED_ATTR
-
-```TypeScript
-IS_REMOVED_ATTR = 'is_removed'
-```
-
-相册是否已删除。
-
-**起始版本：** 26.0.0
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'--><!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## FRIEND_ID_ATTR
 
 ```TypeScript
@@ -86,19 +68,37 @@ FRIEND_ID_ATTR = 'friend_id'
 
 **系统接口：** 此接口为系统接口。
 
-## CONTACT_INFO_ATTR
+## IS_REMOVED_ATTR
 
 ```TypeScript
-CONTACT_INFO_ATTR = 'contact_info'
+IS_REMOVED_ATTR = 'is_removed'
 ```
 
-相册contact_info操作属性。
+相册是否已删除。
 
-**起始版本：** 26.0.1
+**起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'--><!--Device-AlbumAttribute-CONTACT_INFO_ATTR = 'contact_info'-End-->
+<!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'--><!--Device-AlbumAttribute-IS_REMOVED_ATTR = 'is_removed'-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## NICK_NAME_ATTR
+
+```TypeScript
+NICK_NAME_ATTR = 'nickname'
+```
+
+相册昵称。
+
+**起始版本：** 26.0.0
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'--><!--Device-AlbumAttribute-NICK_NAME_ATTR = 'nickname'-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

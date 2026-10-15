@@ -709,6 +709,7 @@ Writes data to a serial port device. The value range of the data length is (0, 4
 
 | Error Code ID | Error Message |
 | --- | --- |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes:<br>1. Mandatory parameters are left unspecified. <br>2. Incorrect parameter types. <br>3. undefined is passed as the optional parameter. |
 | [35700001](../errorcode-busmanager-serial.md#35700001-abnormal-service) | Service error. |
 | [35700002](../errorcode-busmanager-serial.md#35700002-parameter-error) | Invalid parameter. |
 | [35700003](../errorcode-busmanager-serial.md#35700003-virtual-serial-port-disconnected) | Virtual serial port disconnected. |

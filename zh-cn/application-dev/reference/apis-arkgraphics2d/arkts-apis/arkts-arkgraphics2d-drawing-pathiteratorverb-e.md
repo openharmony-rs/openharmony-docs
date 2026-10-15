@@ -12,45 +12,17 @@ enum PathIteratorVerb
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## MOVE
+## CLOSE
 
 ```TypeScript
-MOVE = 0
+CLOSE = 5
 ```
 
-设置起始点。
+路径闭合。
 
 **起始版本：** 18
 
-<!--Device-PathIteratorVerb-MOVE = 0--><!--Device-PathIteratorVerb-MOVE = 0-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## LINE
-
-```TypeScript
-LINE = 1
-```
-
-添加线段。
-
-**起始版本：** 18
-
-<!--Device-PathIteratorVerb-LINE = 1--><!--Device-PathIteratorVerb-LINE = 1-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
-## QUAD
-
-```TypeScript
-QUAD = 2
-```
-
-添加二阶贝塞尔圆滑曲线。
-
-**起始版本：** 18
-
-<!--Device-PathIteratorVerb-QUAD = 2--><!--Device-PathIteratorVerb-QUAD = 2-End-->
+<!--Device-PathIteratorVerb-CLOSE = 5--><!--Device-PathIteratorVerb-CLOSE = 5-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
@@ -82,20 +54,6 @@ CUBIC = 4
 
 **系统能力：** SystemCapability.Graphics.Drawing
 
-## CLOSE
-
-```TypeScript
-CLOSE = 5
-```
-
-路径闭合。
-
-**起始版本：** 18
-
-<!--Device-PathIteratorVerb-CLOSE = 5--><!--Device-PathIteratorVerb-CLOSE = 5-End-->
-
-**系统能力：** SystemCapability.Graphics.Drawing
-
 ## DONE
 
 ```TypeScript
@@ -107,5 +65,47 @@ DONE = CLOSE + 1
 **起始版本：** 18
 
 <!--Device-PathIteratorVerb-DONE = CLOSE + 1--><!--Device-PathIteratorVerb-DONE = CLOSE + 1-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## LINE
+
+```TypeScript
+LINE = 1
+```
+
+添加线段。
+
+**起始版本：** 18
+
+<!--Device-PathIteratorVerb-LINE = 1--><!--Device-PathIteratorVerb-LINE = 1-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## MOVE
+
+```TypeScript
+MOVE = 0
+```
+
+设置起始点。
+
+**起始版本：** 18
+
+<!--Device-PathIteratorVerb-MOVE = 0--><!--Device-PathIteratorVerb-MOVE = 0-End-->
+
+**系统能力：** SystemCapability.Graphics.Drawing
+
+## QUAD
+
+```TypeScript
+QUAD = 2
+```
+
+添加二阶贝塞尔圆滑曲线。
+
+**起始版本：** 18
+
+<!--Device-PathIteratorVerb-QUAD = 2--><!--Device-PathIteratorVerb-QUAD = 2-End-->
 
 **系统能力：** SystemCapability.Graphics.Drawing

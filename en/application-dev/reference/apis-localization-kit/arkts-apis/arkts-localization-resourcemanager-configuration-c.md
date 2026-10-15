@@ -30,7 +30,7 @@ Color mode.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-colorMode: ColorMode--><!--Device-Configuration-colorMode: ColorMode-End-->
 
@@ -48,7 +48,7 @@ Device type.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-deviceType: DeviceType--><!--Device-Configuration-deviceType: DeviceType-End-->
 
@@ -66,7 +66,7 @@ Screen orientation modes.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Configuration-direction: Direction--><!--Device-Configuration-direction: Direction-End-->
 
@@ -84,7 +84,7 @@ Language locale.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-Configuration-locale: string--><!--Device-Configuration-locale: string-End-->
 
@@ -102,7 +102,7 @@ Mobile country code (MCC).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-mcc : int--><!--Device-Configuration-mcc : int-End-->
 
@@ -120,7 +120,7 @@ Mobile network code (MNC).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-mnc : int--><!--Device-Configuration-mnc : int-End-->
 
@@ -138,7 +138,7 @@ Screen density
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-Configuration-screenDensity: ScreenDensity--><!--Device-Configuration-screenDensity: ScreenDensity-End-->
 

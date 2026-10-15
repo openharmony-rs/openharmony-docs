@@ -30,7 +30,7 @@ ID of this capture action.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CaptureEndInfo-captureId: int--><!--Device-CaptureEndInfo-captureId: int-End-->
 
@@ -48,7 +48,7 @@ Number of frames captured.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 19.
+**Atomic service API:** This API can be used in atomic services since API version 19.
 
 <!--Device-CaptureEndInfo-frameCount: int--><!--Device-CaptureEndInfo-frameCount: int-End-->
 

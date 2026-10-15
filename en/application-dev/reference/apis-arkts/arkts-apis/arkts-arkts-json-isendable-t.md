@@ -6,6 +6,8 @@ type ISendable = lang.ISendable
 
 Redefines ISendable for convenience.
 
+**Type:** [lang.ISendable](arkts-arkts-lang-isendable-i.md)
+
 **Since:** 26.0.1
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Redefines ISendable for convenience.
 <!--Device-json-type ISendable = lang.ISendable--><!--Device-json-type ISendable = lang.ISendable-End-->
 
 **System capability:** SystemCapability.Utils.Lang
-
-**Type:** [lang.ISendable](arkts-arkts-lang-isendable-i.md)

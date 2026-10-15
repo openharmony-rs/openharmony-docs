@@ -12,19 +12,35 @@ declare enum PanDirection
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## None
+## All
 
 ```TypeScript
-None
+All
 ```
 
-任何方向都不可触发滑动手势事件。
+Sliding in all directions.
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-PanDirection-None--><!--Device-PanDirection-None-End-->
+<!--Device-PanDirection-All--><!--Device-PanDirection-All-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## Down
+
+```TypeScript
+Down
+```
+
+Sliding Down.
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanDirection-Down--><!--Device-PanDirection-Down-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -60,6 +76,22 @@ Sliding left.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+## None
+
+```TypeScript
+None
+```
+
+任何方向都不可触发滑动手势事件。
+
+**起始版本：** 7
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-PanDirection-None--><!--Device-PanDirection-None-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 ## Right
 
 ```TypeScript
@@ -73,22 +105,6 @@ Sliding right.
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-PanDirection-Right--><!--Device-PanDirection-Right-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## Vertical
-
-```TypeScript
-Vertical
-```
-
-垂直滑动
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-PanDirection-Vertical--><!--Device-PanDirection-Vertical-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -108,34 +124,18 @@ Sliding up.
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Down
+## Vertical
 
 ```TypeScript
-Down
+Vertical
 ```
 
-Sliding Down.
+垂直滑动
 
 **起始版本：** 7
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-PanDirection-Down--><!--Device-PanDirection-Down-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## All
-
-```TypeScript
-All
-```
-
-Sliding in all directions.
-
-**起始版本：** 7
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-PanDirection-All--><!--Device-PanDirection-All-End-->
+<!--Device-PanDirection-Vertical--><!--Device-PanDirection-Vertical-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

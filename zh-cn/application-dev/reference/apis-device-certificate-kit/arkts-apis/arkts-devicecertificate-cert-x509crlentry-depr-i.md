@@ -1,4 +1,4 @@
-# deprecated X509CrlEntry
+# X509CrlEntry
 
 ```TypeScript
 interface X509CrlEntry
@@ -43,7 +43,7 @@ getCertIssuer(): DataBlob
 
 **废弃版本：** 11
 
-**替代接口：** getCertIssuer
+**替代接口：** [getCertIssuer](arkts-devicecertificate-cert-x509crlentry-i.md#getcertissuer)
 
 <!--Device-X509CrlEntry-getCertIssuer(): DataBlob--><!--Device-X509CrlEntry-getCertIssuer(): DataBlob-End-->
 
@@ -112,6 +112,8 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 });
 ```
 
+<a id="getencoded1"></a>
+
 ## getEncoded
 
 ```TypeScript
@@ -123,13 +125,13 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 11开始废弃，建议使用
-> [X509CRLEntry.getEncoded()](arkts-devicecertificate-cert-x509crlentry-i.md#getencoded)替代。
+> [X509CRLEntry.getEncoded()](arkts-devicecertificate-cert-x509crlentry-i.md#getencoded1)替代。
 
 **起始版本：** 9
 
 **废弃版本：** 11
 
-**替代接口：** getEncoded
+**替代接口：** [getEncoded](arkts-devicecertificate-cert-x509crlentry-i.md#getencoded)
 
 <!--Device-X509CrlEntry-getEncoded(callback: AsyncCallback<EncodingBlob>): void--><!--Device-X509CrlEntry-getEncoded(callback: AsyncCallback<EncodingBlob>): void-End-->
 
@@ -145,7 +147,7 @@ getEncoded(callback: AsyncCallback<EncodingBlob>): void
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
@@ -204,7 +206,7 @@ cert.createX509Crl(encodingBlob, (err, x509Crl) => {
 });
 ```
 
-<a id="getencoded-1"></a>
+<a id="getencoded2"></a>
 
 ## getEncoded
 
@@ -222,7 +224,7 @@ getEncoded(): Promise<EncodingBlob>
 
 **废弃版本：** 11
 
-**替代接口：** getEncoded
+**替代接口：** [getEncoded](arkts-devicecertificate-cert-x509crlentry-i.md#getencoded)
 
 <!--Device-X509CrlEntry-getEncoded(): Promise<EncodingBlob>--><!--Device-X509CrlEntry-getEncoded(): Promise<EncodingBlob>-End-->
 
@@ -238,7 +240,7 @@ getEncoded(): Promise<EncodingBlob>
 
 | 错误码ID | 错误信息 |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | [Sync/Async] Invalid parameters. Possible causes:<br>1. Mandatory parameters are left unspecified; <br>2. Incorrect parameter types; |
 | [19020001](../errorcode-cert.md#19020001-内存错误) | Memory malloc failed. |
 | [19020002](../errorcode-cert.md#19020002-运行时错误) | Runtime error. Possible causes:<br>1. Memory copy failed; <br>2. A null pointer occurs inside the system; <br>3. Failed to obtain the native object or convert parameters. |
 | [19030001](../errorcode-cert.md#19030001-调用三方算法库api出错) | Crypto operation error. |
@@ -312,7 +314,7 @@ getRevocationDate(): string
 
 **废弃版本：** 11
 
-**替代接口：** getRevocationDate
+**替代接口：** [getRevocationDate](arkts-devicecertificate-cert-x509crlentry-i.md#getrevocationdate)
 
 <!--Device-X509CrlEntry-getRevocationDate(): string--><!--Device-X509CrlEntry-getRevocationDate(): string-End-->
 
@@ -398,7 +400,7 @@ getSerialNumber(): number
 
 **废弃版本：** 11
 
-**替代接口：** getSerialNumber
+**替代接口：** [getSerialNumber](arkts-devicecertificate-cert-x509crlentry-i.md#getserialnumber)
 
 <!--Device-X509CrlEntry-getSerialNumber(): number--><!--Device-X509CrlEntry-getSerialNumber(): number-End-->
 

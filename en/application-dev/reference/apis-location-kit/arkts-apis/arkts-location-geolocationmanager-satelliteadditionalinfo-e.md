@@ -12,17 +12,31 @@ Enum for satellite additional information.
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
-## SATELLITES_ADDITIONAL_INFO_NULL
+## SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST
 
 ```TypeScript
-SATELLITES_ADDITIONAL_INFO_NULL = 0
+SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2
 ```
 
-Default value.
+Almanac data exist.
 
 **Since:** 12
 
-<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0-End-->
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2-End-->
+
+**System capability:** SystemCapability.Location.Location.Gnss
+
+## SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST
+
+```TypeScript
+SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8
+```
+
+Carrier frequency exist.
+
+**Since:** 12
+
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -40,17 +54,17 @@ Ephemeris data exist.
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
-## SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST
+## SATELLITES_ADDITIONAL_INFO_NULL
 
 ```TypeScript
-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2
+SATELLITES_ADDITIONAL_INFO_NULL = 0
 ```
 
-Almanac data exist.
+Default value.
 
 **Since:** 12
 
-<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_ALMANAC_DATA_EXIST = 2-End-->
+<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_NULL = 0-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss
 
@@ -65,19 +79,5 @@ This satellite is being used in location fix.
 **Since:** 12
 
 <!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_USED_IN_FIX = 4--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_USED_IN_FIX = 4-End-->
-
-**System capability:** SystemCapability.Location.Location.Gnss
-
-## SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST
-
-```TypeScript
-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8
-```
-
-Carrier frequency exist.
-
-**Since:** 12
-
-<!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8--><!--Device-SatelliteAdditionalInfo-SATELLITES_ADDITIONAL_INFO_CARRIER_FREQUENCY_EXIST = 8-End-->
 
 **System capability:** SystemCapability.Location.Location.Gnss

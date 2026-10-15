@@ -30,7 +30,7 @@ Start position of the entity in the input string.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EntityInfoItem-begin: int--><!--Device-EntityInfoItem-begin: int-End-->
 
@@ -48,7 +48,7 @@ End position of the entity the input string.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EntityInfoItem-end: int--><!--Device-EntityInfoItem-end: int-End-->
 
@@ -66,7 +66,7 @@ Entity type. The value can be **phone_number** or **date**. **phone_number** ind
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-EntityInfoItem-type: string--><!--Device-EntityInfoItem-type: string-End-->
 

@@ -35,7 +35,7 @@ Event domain, which can be the system event domain (**hiAppEvent.domain.OS**) or
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventFilter-domain: string--><!--Device-AppEventFilter-domain: string-End-->
 
@@ -53,7 +53,7 @@ Event types. If this parameter is not set, events are not filtered by default.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventFilter-eventTypes?: EventType[]--><!--Device-AppEventFilter-eventTypes?: EventType[]-End-->
 
@@ -71,7 +71,7 @@ Names of the events to be subscribed. If this parameter is not set, events are n
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-AppEventFilter-names?: string[]--><!--Device-AppEventFilter-names?: string[]-End-->
 

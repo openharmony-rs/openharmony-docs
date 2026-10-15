@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="enableairplanemode1"></a>
+
 ## enableAirplaneMode
 
 ```TypeScript
@@ -40,6 +42,7 @@ function enableAirplaneMode(callback: AsyncCallback<void>): void
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -51,8 +54,10 @@ connection.enableAirplaneMode((error: BusinessError) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="enableairplanemode-1"></a>
+
+<a id="enableairplanemode2"></a>
 
 ## enableAirplaneMode
 
@@ -87,6 +92,7 @@ function enableAirplaneMode(): Promise<void>
 | [2100002](../errorcode-net-connection.md#2100002-连接服务失败) | Failed to connect to the service. |
 | [2100003](../errorcode-net-connection.md#2100003-系统内部错误) | System internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -96,3 +102,5 @@ connection.enableAirplaneMode().then((error: void) => {
   console.error(JSON.stringify(error));
 });
 ```
+
+<!--DelEnd-->

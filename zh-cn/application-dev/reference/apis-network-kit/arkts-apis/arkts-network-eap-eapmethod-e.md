@@ -12,6 +12,34 @@ enum EapMethod
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 
+## EAP_AKA
+
+```TypeScript
+EAP_AKA = 6
+```
+
+Authentication and key agreement
+
+**起始版本：** 20
+
+<!--Device-EapMethod-EAP_AKA = 6--><!--Device-EapMethod-EAP_AKA = 6-End-->
+
+**系统能力：** SystemCapability.Communication.NetManager.Eap
+
+## EAP_AKA_PRIME
+
+```TypeScript
+EAP_AKA_PRIME = 7
+```
+
+AKA prime
+
+**起始版本：** 20
+
+<!--Device-EapMethod-EAP_AKA_PRIME = 7--><!--Device-EapMethod-EAP_AKA_PRIME = 7-End-->
+
+**系统能力：** SystemCapability.Communication.NetManager.Eap
+
 ## EAP_NONE
 
 ```TypeScript
@@ -37,34 +65,6 @@ Protected extensible authentication protocol
 **起始版本：** 20
 
 <!--Device-EapMethod-EAP_PEAP = 1--><!--Device-EapMethod-EAP_PEAP = 1-End-->
-
-**系统能力：** SystemCapability.Communication.NetManager.Eap
-
-## EAP_TLS
-
-```TypeScript
-EAP_TLS = 2
-```
-
-Transport layer security
-
-**起始版本：** 20
-
-<!--Device-EapMethod-EAP_TLS = 2--><!--Device-EapMethod-EAP_TLS = 2-End-->
-
-**系统能力：** SystemCapability.Communication.NetManager.Eap
-
-## EAP_TTLS
-
-```TypeScript
-EAP_TTLS = 3
-```
-
-Tunneled transport layer security
-
-**起始版本：** 20
-
-<!--Device-EapMethod-EAP_TTLS = 3--><!--Device-EapMethod-EAP_TTLS = 3-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 
@@ -96,31 +96,31 @@ Subscriber identity module
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 
-## EAP_AKA
+## EAP_TLS
 
 ```TypeScript
-EAP_AKA = 6
+EAP_TLS = 2
 ```
 
-Authentication and key agreement
+Transport layer security
 
 **起始版本：** 20
 
-<!--Device-EapMethod-EAP_AKA = 6--><!--Device-EapMethod-EAP_AKA = 6-End-->
+<!--Device-EapMethod-EAP_TLS = 2--><!--Device-EapMethod-EAP_TLS = 2-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 
-## EAP_AKA_PRIME
+## EAP_TTLS
 
 ```TypeScript
-EAP_AKA_PRIME = 7
+EAP_TTLS = 3
 ```
 
-AKA prime
+Tunneled transport layer security
 
 **起始版本：** 20
 
-<!--Device-EapMethod-EAP_AKA_PRIME = 7--><!--Device-EapMethod-EAP_AKA_PRIME = 7-End-->
+<!--Device-EapMethod-EAP_TTLS = 3--><!--Device-EapMethod-EAP_TTLS = 3-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.Eap
 

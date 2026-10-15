@@ -12,6 +12,22 @@ Enumerates filter criteria.
 
 **System capability:** SystemCapability.Applications.ContactsData
 
+## CONTAINS
+
+```TypeScript
+CONTAINS = 5
+```
+
+The value of the corresponding field contains a certain value.
+
+**Since:** 15
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FilterCondition-CONTAINS = 5--><!--Device-FilterCondition-CONTAINS = 5-End-->
+
+**System capability:** SystemCapability.Applications.Contacts
+
 ## EQUAL_TO
 
 ```TypeScript
@@ -25,22 +41,6 @@ The corresponding field is equal to a value.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-FilterCondition-EQUAL_TO = 1--><!--Device-FilterCondition-EQUAL_TO = 1-End-->
-
-**System capability:** SystemCapability.Applications.Contacts
-
-## NOT_EQUAL_TO
-
-```TypeScript
-NOT_EQUAL_TO = 2
-```
-
-The corresponding field is not equal to a value.
-
-**Since:** 15
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-FilterCondition-NOT_EQUAL_TO = 2--><!--Device-FilterCondition-NOT_EQUAL_TO = 2-End-->
 
 **System capability:** SystemCapability.Applications.Contacts
 
@@ -76,6 +76,22 @@ The corresponding field is not empty.
 
 **System capability:** SystemCapability.Applications.Contacts
 
+## NOT_EQUAL_TO
+
+```TypeScript
+NOT_EQUAL_TO = 2
+```
+
+The corresponding field is not equal to a value.
+
+**Since:** 15
+
+**Atomic service API:** This API can be used in atomic services since API version 15.
+
+<!--Device-FilterCondition-NOT_EQUAL_TO = 2--><!--Device-FilterCondition-NOT_EQUAL_TO = 2-End-->
+
+**System capability:** SystemCapability.Applications.Contacts
+
 ## NOT_IN
 
 ```TypeScript
@@ -89,21 +105,5 @@ The value of the corresponding field is not in an array.
 **Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-FilterCondition-NOT_IN = 4--><!--Device-FilterCondition-NOT_IN = 4-End-->
-
-**System capability:** SystemCapability.Applications.Contacts
-
-## CONTAINS
-
-```TypeScript
-CONTAINS = 5
-```
-
-The value of the corresponding field contains a certain value.
-
-**Since:** 15
-
-**Atomic service API:** This API can be used in atomic services since API version 15.
-
-<!--Device-FilterCondition-CONTAINS = 5--><!--Device-FilterCondition-CONTAINS = 5-End-->
 
 **System capability:** SystemCapability.Applications.Contacts

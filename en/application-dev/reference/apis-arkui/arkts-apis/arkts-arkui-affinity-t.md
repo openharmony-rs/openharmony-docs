@@ -6,6 +6,8 @@ declare type Affinity = import('../api/@ohos.graphics.text').default.Affinity
 
 Enumerates the affinity modes.
 
+**Type:** import('../api/@ohos.graphics.text').default.Affinity
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Enumerates the affinity modes.
 <!--Device-unnamed-declare type Affinity = import('../api/@ohos.graphics.text').default.Affinity--><!--Device-unnamed-declare type Affinity = import('../api/@ohos.graphics.text').default.Affinity-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.graphics.text').default.Affinity

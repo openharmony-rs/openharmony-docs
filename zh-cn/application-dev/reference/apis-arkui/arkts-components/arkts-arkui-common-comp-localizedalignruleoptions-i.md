@@ -4,7 +4,7 @@
 declare interface LocalizedAlignRuleOptions
 ```
 
-Defines the Localized align rule options of relative container.
+相对布局组件中子组件的对齐规则。
 
 @interface LocalizedAlignRuleOptions
 

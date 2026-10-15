@@ -28,23 +28,23 @@ import { audio } from '@kit.AudioKit';
 
 | Name | Description |
 | --- | --- |
-| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md) | Creates an AudioCapturer instance. This API uses an asynchronous callback to return the result. |
-| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer-2) | Creates an AudioCapturer instance. This API uses a promise to return the result. |
-| [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md) | Creates an &lt;b&gt;AudioLoopback&lt;/b&gt; instance, which provides low-latency in-ear monitoring using a fast capturer and renderer. |
-| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
-| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer-2) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
-| [getAudioManager](arkts-audio-audio-getaudiomanager-f.md) | Obtains an AudioManager instance. |
+| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer1) | Creates an AudioCapturer instance. This API uses an asynchronous callback to return the result. |
+| [createAudioCapturer](arkts-audio-audio-createaudiocapturer-f.md#createaudiocapturer3) | Creates an AudioCapturer instance. This API uses a promise to return the result. |
+| [createAudioLoopback](arkts-audio-audio-createaudioloopback-f.md#createaudioloopback) | Creates an<b>AudioLoopback</b> instance, which provides low-latency in-ear monitoring using a fast capturer and renderer. |
+| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer1) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
+| [createAudioRenderer](arkts-audio-audio-createaudiorenderer-f.md#createaudiorenderer3) | Obtains an [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) instance. This method uses a promise to return the renderer instance. |
+| [getAudioManager](arkts-audio-audio-getaudiomanager-f.md#getaudiomanager) | Obtains an AudioManager instance. |
 
 <!--Del-->
 ### Functions(System API)
 
 | Name | Description |
 | --- | --- |
-| [createAsrProcessingController](arkts-audio-audio-createasrprocessingcontroller-f-sys.md) | Create ASR processing controller on one audio capturer. |
-| [createGlobalAudioLoopback](arkts-audio-audio-createglobalaudioloopback-f-sys.md) | Creates a global audio loopback instance, which provides low-latency in-ear monitor function. Hardware audio loopback can only be created in supported platform, application can use [isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported) to check first. There should be only one main instance that own the global loopback in the system, the others are controllers. A controller can manage the global loopback by sending commands to the main instance, and listen status change from it. |
-| [createMicInAudioCapturer](arkts-audio-audio-createmicinaudiocapturer-f-sys.md) | Obtains a special [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) instance. This method uses a promise to return the capturer instance. This capture can be used to record both Mic-In audio data and echo reference signal, for application to process algorithm. Mic-In audio data and echo reference signal will be put in one buffer or multiple buffers according to configuration set by application. Capturer is also not allowed to be created when application is in background. |
-| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses an asynchronous callback to return the renderer instance. |
-| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer-2) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance. |
+| [createAsrProcessingController](arkts-audio-audio-createasrprocessingcontroller-f-sys.md#createasrprocessingcontroller) | Create ASR processing controller on one audio capturer. |
+| [createGlobalAudioLoopback](arkts-audio-audio-createglobalaudioloopback-f-sys.md#createglobalaudioloopback) | Creates a global audio loopback instance, which provides low-latency in-ear monitor function. Hardware audio loopback can only be created in supported platform, application can use [isAudioLoopbackSupported](arkts-audio-audio-audiostreammanager-i.md#isaudioloopbacksupported) to check first. There should be only one main instance that own the global loopback in the system, the others are controllers. A controller can manage the global loopback by sending commands to the main instance, and listen status change from it. |
+| [createMicInAudioCapturer](arkts-audio-audio-createmicinaudiocapturer-f-sys.md#createmicinaudiocapturer) | Obtains a special [AudioCapturer](arkts-audio-audio-audiocapturer-i.md) instance. This method uses a promise to return the capturer instance. This capture can be used to record both Mic-In audio data and echo reference signal, for application to process algorithm. Mic-In audio data and echo reference signal will be put in one buffer or multiple buffers according to configuration set by application. Capturer is also not allowed to be created when application is in background. |
+| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer1) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses an asynchronous callback to return the renderer instance. |
+| [createTonePlayer](arkts-audio-audio-createtoneplayer-f-sys.md#createtoneplayer3) | Obtains a [TonePlayer](arkts-audio-audio-toneplayer-i-sys.md) instance. This method uses a promise to return the renderer instance. |
 <!--DelEnd-->
 
 ### Interfaces
@@ -59,10 +59,8 @@ import { audio } from '@kit.AudioKit';
 | [AudioDeviceDescriptor](arkts-audio-audio-audiodevicedescriptor-i.md) | Describes an audio device. |
 | [AudioDeviceEnhanceManager](arkts-audio-audio-audiodeviceenhancemanager-i.md) | Provides enhanced audio device management capabilities. |
 | [AudioDevicePair](arkts-audio-audio-audiodevicepair-i.md) | Describes an audio device pair including both input and output devices. |
-| [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | Describes input parameters of audio interruption events. |
 | [AudioLoopback](arkts-audio-audio-audioloopback-i.md) | This interface provides APIs for audio monitoring. |
 | [AudioManager](arkts-audio-audio-audiomanager-i.md) | This interface implements audio volume and device management. |
-| [AudioPlaybackCaptureConfig](arkts-audio-audio-audioplaybackcaptureconfig-i.md) | Defines configuration for capturing played audio. |
 | [AudioRecordingManager](arkts-audio-audio-audiorecordingmanager-i.md) | Provides recording strategy management, including collaborative recording and recording control capabilities. |
 | [AudioRenderer](arkts-audio-audio-audiorenderer-i.md) | This interface provides APIs for audio rendering. |
 | [AudioRendererChangeInfo](arkts-audio-audio-audiorendererchangeinfo-i.md) | Describes the audio renderer change event. |
@@ -80,17 +78,19 @@ import { audio } from '@kit.AudioKit';
 | [AudioTimestampInfo](arkts-audio-audio-audiotimestampinfo-i.md) | Describes the information about the audio stream timestamp and the current data frame position. |
 | [AudioVolumeGroupManager](arkts-audio-audio-audiovolumegroupmanager-i.md) | This interface implements volume management for an audio group. |
 | [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i.md) | This interface implements audio volume management. |
-| [CaptureFilterOptions](arkts-audio-audio-capturefilteroptions-i.md) | Defines the options for filtering the played audio streams to be recorded. |
 | [CurrentInputDeviceChangedEvent](arkts-audio-audio-currentinputdevicechangedevent-i.md) | Describes the event indicating that the input device changes. |
 | [CurrentOutputDeviceChangedEvent](arkts-audio-audio-currentoutputdevicechangedevent-i.md) | Describes the event indicating that the output device changes. |
 | [DeviceBlockStatusInfo](arkts-audio-audio-deviceblockstatusinfo-i.md) | Describes the audio device blocked status and device information. |
 | [DeviceChangeAction](arkts-audio-audio-devicechangeaction-i.md) | Describes the device connection status and device information. |
-| [InterruptAction](arkts-audio-audio-interruptaction-i.md) | Describes the callback invoked for audio interruption or focus gain events.When the audio of an application is interrupted by another application, the callback is invoked to notify the former application. |
 | [InterruptEvent](arkts-audio-audio-interruptevent-i.md) | Describes the interruption event received by the application when the audio is interrupted. |
 | [MicStateChangeEvent](arkts-audio-audio-micstatechangeevent-i.md) | Describes the event received by the application when the microphone mute status is changed. |
 | [StreamVolumeEvent](arkts-audio-audio-streamvolumeevent-i.md) | Describes the event received by the application when the audio stream volume is changed. |
 | [SystemRecordControllerConfig](arkts-audio-audio-systemrecordcontrollerconfig-i.md) | Defines the configuration for the system recording controller panel. |
 | [VolumeEvent](arkts-audio-audio-volumeevent-i.md) | Describes the event received by the application when the volume is changed. |
+| [AudioInterrupt](arkts-audio-audio-audiointerrupt-i.md) | Describes input parameters of audio interruption events. |
+| [AudioPlaybackCaptureConfig](arkts-audio-audio-audioplaybackcaptureconfig-i.md) | Defines configuration for capturing played audio. |
+| [CaptureFilterOptions](arkts-audio-audio-capturefilteroptions-i.md) | Defines the options for filtering the played audio streams to be recorded. |
+| [InterruptAction](arkts-audio-audio-interruptaction-i.md) | Describes the callback invoked for audio interruption or focus gain events.When the audio of an application is interrupted by another application, the callback is invoked to notify the former application. |
 
 <!--Del-->
 ### Interfaces(System API)
@@ -124,6 +124,9 @@ import { audio } from '@kit.AudioKit';
 | [AudioSpatialDeviceState](arkts-audio-audio-audiospatialdevicestate-i-sys.md) | Describes spatial device state. |
 | [AudioSpatialEnabledStateForDevice](arkts-audio-audio-audiospatialenabledstatefordevice-i-sys.md) | This interface is used to notify the listener of any device Spatialization or Head Tracking enable or Adaptive Spatial Rendering state change. |
 | [AudioSpatializationManager](arkts-audio-audio-audiospatializationmanager-i-sys.md) | Implements audio spatialization management. @typedef AudioSpatializationManager This interface implements spatial audio management. |
+| [AudioSuiteDownloadManager](arkts-audio-audio-audiosuitedownloadmanager-i-sys.md) | Provides audio suite download management capabilities, including starting, pausing, canceling downloads, querying status, and uninstalling features. |
+| [AudioSuiteFeatureStatusInfo](arkts-audio-audio-audiosuitefeaturestatusinfo-i-sys.md) | Defines the audio suite feature status information. |
+| [AudioSuiteFeatureVersionInfo](arkts-audio-audio-audiosuitefeatureversioninfo-i-sys.md) | Defines the audio suite feature version information. |
 | [AudioVolumeGroupManager](arkts-audio-audio-audiovolumegroupmanager-i-sys.md) | This interface implements volume management for an audio group. |
 | [AudioVolumeManager](arkts-audio-audio-audiovolumemanager-i-sys.md) | This interface implements audio volume management. |
 | [InterruptResult](arkts-audio-audio-interruptresult-i-sys.md) | Describes audio interrupt operation results. |
@@ -153,6 +156,7 @@ import { audio } from '@kit.AudioKit';
 | Name | Description |
 | --- | --- |
 | [ActiveStreamsVolumeInfoArray](arkts-audio-audio-activestreamsvolumeinfoarray-t-sys.md) | ActiveStreamVolumeInfo array. |
+| [AudioSuiteFeatureStatusInfoArray](arkts-audio-audio-audiosuitefeaturestatusinfoarray-t-sys.md) | Defines the audio suite feature status information array. |
 | [StreamUsageArray](arkts-audio-audio-streamusagearray-t-sys.md) | Array of StreamUsages. |
 | [VolumeGroupInfos](arkts-audio-audio-volumegroupinfos-t-sys.md) | Array of VolumeGroupInfos, which is read-only. |
 <!--DelEnd-->
@@ -161,7 +165,6 @@ import { audio } from '@kit.AudioKit';
 
 | Name | Description |
 | --- | --- |
-| [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | Enumerates the active device types. |
 | [AudioChannel](arkts-audio-audio-audiochannel-e.md) | Enumerates the audio channels. |
 | [AudioChannelLayout](arkts-audio-audio-audiochannellayout-e.md) | Audio AudioChannel Layout. A 64-bit integer indicates that the appearance and order of the speakers for recording or playback. |
 | [AudioConcurrencyMode](arkts-audio-audio-audioconcurrencymode-e.md) | Enumerates the audio concurrency modes. |
@@ -191,15 +194,13 @@ import { audio } from '@kit.AudioKit';
 | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e.md) | Enumerates the audio volume types. |
 | [BluetoothAndNearlinkPreferredRecordCategory](arkts-audio-audio-bluetoothandnearlinkpreferredrecordcategory-e.md) | Enumerates the preferred device categories available for recording with Bluetooth or NearLink. |
 | [ChannelBlendMode](arkts-audio-audio-channelblendmode-e.md) | Enumerates the audio channel blending modes. |
-| [CommunicationDeviceType](arkts-audio-audio-communicationdevicetype-e.md) | Enumerates the available device types for communication. @enum { int } |
-| [ContentType](arkts-audio-audio-contenttype-e.md) | Enumerates the audio content types. |
+| [CommunicationDeviceType](arkts-audio-audio-communicationdevicetype-e.md) | Enumerates the available device types for communication. |
 | [DeviceBlockStatus](arkts-audio-audio-deviceblockstatus-e.md) | Enumerates the blocked statuses of audio devices. |
 | [DeviceChangeType](arkts-audio-audio-devicechangetype-e.md) | Enumerates the device connection statuses. |
 | [DeviceFlag](arkts-audio-audio-deviceflag-e.md) | Enumerates the audio device flags. |
 | [DeviceRole](arkts-audio-audio-devicerole-e.md) | Enumerates the device roles. |
 | [DeviceType](arkts-audio-audio-devicetype-e.md) | Enumerates the device types. |
 | [DeviceUsage](arkts-audio-audio-deviceusage-e.md) | Enumerates the audio device types by usage. |
-| [InterruptActionType](arkts-audio-audio-interruptactiontype-e.md) | Enumerates the returned event types for audio interruption events. |
 | [InterruptForceType](arkts-audio-audio-interruptforcetype-e.md) | Enumerates the types of force that causes audio interruption. |
 | [InterruptHint](arkts-audio-audio-interrupthint-e.md) | Enumerates the hints provided along with audio interruption. |
 | [InterruptMode](arkts-audio-audio-interruptmode-e.md) | Enumerates the audio interruption modes. |
@@ -209,6 +210,9 @@ import { audio } from '@kit.AudioKit';
 | [PlaybackCaptureStartState](arkts-audio-audio-playbackcapturestartstate-e.md) | Defines the playback capture start state, which is returned asynchronously after calling [requestPlaybackCaptureStart](arkts-audio-audio-audiocapturer-i.md#requestplaybackcapturestart) function. |
 | [SourceType](arkts-audio-audio-sourcetype-e.md) | Enumerates the types of audio streams captured. |
 | [StreamUsage](arkts-audio-audio-streamusage-e.md) | Enumerates the types of audio streams played. |
+| [ActiveDeviceType](arkts-audio-audio-activedevicetype-e.md) | Enumerates the active device types. |
+| [ContentType](arkts-audio-audio-contenttype-e.md) | Enumerates the audio content types. |
+| [InterruptActionType](arkts-audio-audio-interruptactiontype-e.md) | Enumerates the returned event types for audio interruption events. |
 
 <!--Del-->
 ### Enums(System API)
@@ -226,6 +230,8 @@ import { audio } from '@kit.AudioKit';
 | [AudioSessionBehaviorFlags](arkts-audio-audio-audiosessionbehaviorflags-e-sys.md) | Enumerates audio session behavior flags. |
 | [AudioSpatialDeviceType](arkts-audio-audio-audiospatialdevicetype-e-sys.md) | Describes a spatial device type group. |
 | [AudioSpatializationSceneType](arkts-audio-audio-audiospatializationscenetype-e-sys.md) | Describes a spatialization scene type group. |
+| [AudioSuiteFeatureStatus](arkts-audio-audio-audiosuitefeaturestatus-e-sys.md) | Enumerates the status for audio suite feature. |
+| [AudioSuiteFeatureType](arkts-audio-audio-audiosuitefeaturetype-e-sys.md) | Enumerates the feature type for audio suite. |
 | [AudioVolumeType](arkts-audio-audio-audiovolumetype-e-sys.md) | Enumerates the audio volume types. |
 | [ConnectType](arkts-audio-audio-connecttype-e-sys.md) | Connect type for device. |
 | [DeviceFlag](arkts-audio-audio-deviceflag-e-sys.md) | Enumerates the audio device flags. |
@@ -233,6 +239,7 @@ import { audio } from '@kit.AudioKit';
 | [EffectFlag](arkts-audio-audio-effectflag-e-sys.md) | Enumerates audio effect flags. |
 | [InterruptRequestResultType](arkts-audio-audio-interruptrequestresulttype-e-sys.md) | Enumerates audio interrupt request result type. |
 | [InterruptRequestType](arkts-audio-audio-interruptrequesttype-e-sys.md) | Enumerates the audio interrupt request type. |
+| [NetworkType](arkts-audio-audio-networktype-e-sys.md) | Enumerates the network types for audio suite download. |
 | [PolicyType](arkts-audio-audio-policytype-e-sys.md) | Enumerates type. |
 | [RenderTarget](arkts-audio-audio-rendertarget-e-sys.md) | Audio render target. |
 | [SourceType](arkts-audio-audio-sourcetype-e-sys.md) | Enumerates the types of audio streams captured. |

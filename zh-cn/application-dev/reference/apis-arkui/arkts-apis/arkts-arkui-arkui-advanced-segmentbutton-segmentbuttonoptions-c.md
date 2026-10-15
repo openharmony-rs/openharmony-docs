@@ -4,6 +4,7 @@
 declare class SegmentButtonOptions
 ```
 
+分段按钮选项类，用于提供初始数据和自定义属性。
 
 > **说明：** 
 > 

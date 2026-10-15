@@ -16,12 +16,6 @@ SwipeRefresherV2组件用于内容加载，内容加载指获取内容并加载�
 > 
 > - 如果SwipeRefresherV2设置[通用属性](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)或[通用事件](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md)编译工具链会额外生成节点__Common__，并将通用属性或通用事件挂载在__Common__上，而不是直接应用到SwipeRefresherV2本身。这可能导致开发者设置的通用属性或通用事件不生效或不符合预期，因此，不建议SwipeRefresherV2设置通用属性和通用事件。
 
-## 导入模块
-
-```ts
-import { SwipeRefresherV2 } from '@kit.ArkUI';
-```
-
 ## 子组件
 
 无

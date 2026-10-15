@@ -20,10 +20,10 @@ Represents the callback invoked when an index item is selected and [usingPopup](
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| index | number | Yes | selected index |
+| index | number | Yes | Index of the currently selected index item. |
 
 **Return value:**
 
 | Type | Description |
 | --- | --- |
-| Array&lt;string&gt; | string array corresponding to the index |
+| Array&lt;string&gt; | Array of secondary index items to be displayed in the pop-up window. Up to 5 items can be displayed vertically, with scrollable support for more items. |

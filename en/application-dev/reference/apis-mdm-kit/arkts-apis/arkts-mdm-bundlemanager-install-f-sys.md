@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="install1"></a>
+
 ## install
 
 ```TypeScript
@@ -18,7 +20,7 @@ Installs specified applications. This API uses an asynchronous callback to retur
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [install](arkts-mdm-bundlemanager-install-f.md#install-2)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**Substitutes:** [install](arkts-mdm-bundlemanager-install-f.md#install3)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -47,8 +49,9 @@ Installs specified applications. This API uses an asynchronous callback to retur
 | [9201002](../errorcode-enterpriseDeviceManager.md#9201002-failed-to-install-the-enterprise-application) | Failed to install the application. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,8 +75,10 @@ bundleManager.install(wantTemp, hapFilePaths, (err) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="install-1"></a>
+
+<a id="install2"></a>
 
 ## install
 
@@ -87,7 +92,7 @@ Installs applications with specified parameters. This API uses an asynchronous c
 
 **Deprecated since:** 26.0.0
 
-**Substitutes:** [install](arkts-mdm-bundlemanager-install-f.md#install-2)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
+**Substitutes:** [install](arkts-mdm-bundlemanager-install-f.md#install3)(admin: Want, hapFilePaths: Array&lt;string&gt;, installParam?: InstallParam)
 
 **Required permissions:** ohos.permission.ENTERPRISE_INSTALL_BUNDLE
 
@@ -117,8 +122,9 @@ Installs applications with specified parameters. This API uses an asynchronous c
 | [9201002](../errorcode-enterpriseDeviceManager.md#9201002-failed-to-install-the-enterprise-application) | Failed to install the application. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -145,3 +151,5 @@ bundleManager.install(wantTemp, hapFilePaths, installParam, (err) => {
   console.info('Succeeded in installing bundles');
 });
 ```
+
+<!--DelEnd-->

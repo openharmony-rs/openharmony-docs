@@ -218,7 +218,7 @@ ChipV2激活时的背景颜色。
 public activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件激活状态下的系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
+设置组件激活状态下的系统材质样式。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -300,7 +300,7 @@ ChipV2背景颜色。
 public backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-设置组件系统材质样式。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
+设置组件系统材质样式。需要将组件放置在Navigation或NavDestination的标题栏，或横向Tabs的底部TabBar中，沉浸光感效果才会生效。不同材质具有不同的效果，能够影响组件的背景色[backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1)、边框颜色[borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor)、边框宽度[borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth)、阴影[shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1)效果、材质层滤镜效果[materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter)。
 
 默认值：undefined，不应用材质样式。
 
@@ -473,11 +473,7 @@ public fontSize?: LengthMetrics
 public label: ChipV2Label
 ```
 
-ChipV2前缀图标。
-
-默认值：不显示前缀图标。
-
-值为undefined时，按默认值处理。
+ChipV2文本属性。
 
 **类型：** [ChipV2Label](arkts-arkui-arkui-advanced-chipv2-chipv2label-c.md)
 
@@ -623,11 +619,7 @@ ChipV2的内边距。
 public prefixIcon?: ChipV2Icon
 ```
 
-ChipV2前缀图标。
-
-默认值：不显示前缀图标。
-
-值为undefined时，按默认值处理。
+ChipV2前缀图标。<br>默认值：不显示前缀图标。<br>值为undefined时，按默认值处理。<br>图标为Symbol类型时，fontColor默认值为：normalFontColor：[$r('sys.color.chip_usually_icon_color')]、activatedFontColor：[$r('sys.color.chip_active_icon_color')]。fontSize默认值为16。<br>图标为Image类型时，fillColor默认值为：$r('sys.color.chip_usually_icon_color')，activatedFillColor默认值为：$r('sys.color.chip_active_icon_color')。fillColor和activatedFillColor对颜色的解析与Image组件保持一致，仅在图片格式为SVG时，fillColor与activatedFillColor属性才生效；非SVG图片不应用默认值。
 
 **类型：** [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 
@@ -653,7 +645,7 @@ ChipV2尺寸。
 
 默认值：ChipV2Size.NORMAL
 
-SizeT&lt;LengthMetrics&gt;类型参数不支持百分比设置，异常值按默认值处理。
+SizeT<LengthMetrics>类型参数不支持百分比设置，异常值按默认值处理。
 
 **说明：** [适老化](../../../ui/arkui-support-for-aging-adaptation.md)在size指定具体宽高时不生效，size设置为{ height: 0, width: 0 }除外。
 
@@ -677,13 +669,7 @@ SizeT&lt;LengthMetrics&gt;类型参数不支持百分比设置，异常值按默
 public suffixIcon?: ChipV2Icon
 ```
 
-ChipV2后缀图标。
-
-默认值：不显示后缀图标。
-
-值为undefined时，按默认值处理。
-
-说明：当suffixIcon有传入参数时，allowClose属性不生效。
+ChipV2后缀图标。<br>默认值：不显示后缀图标。<br>值为undefined时，按默认值处理。<br>说明：当suffixIcon有传入参数时，allowClose属性不生效。<br>图标为Symbol类型时，fontColor默认值为：normalFontColor：`[$r('sys.color.chip_usually_icon_color')]`、activatedFontColor：`[$r('sys.color.chip_active_icon_color')]`。fontSize默认值为16。<br>图标为Image类型时，fillColor默认值为：`$r('sys.color.chip_usually_icon_color')`，activatedFillColor默认值为：`$r('sys.color.chip_active_icon_color')`。fillColor和activatedFillColor对颜色的解析与Image组件保持一致，仅在图片格式为SVG时，fillColor与activatedFillColor属性才生效。
 
 **类型：** [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 

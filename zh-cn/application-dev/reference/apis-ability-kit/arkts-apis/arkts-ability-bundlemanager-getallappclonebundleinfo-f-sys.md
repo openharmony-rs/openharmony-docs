@@ -51,6 +51,7 @@ function getAllAppCloneBundleInfo(bundleName: string, bundleFlags: number, userI
 | [17700004](../errorcode-bundle.md#17700004-指定的用户不存在) | The specified user ID is not found. |
 | [17700026](../errorcode-bundle.md#17700026-指定应用被禁用) | The specified bundle and clone apps are all disabled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -77,3 +78,5 @@ try {
   hilog.error(0x0000, 'testTag', 'getAllAppCloneBundleInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

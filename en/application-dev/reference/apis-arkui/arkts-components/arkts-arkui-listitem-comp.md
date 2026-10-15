@@ -65,7 +65,7 @@ Creates a **ListItem** component.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | string | No | This parameter is deprecated and does not take effect in the current version. You are advised to use [ListItem&lt;sup&gt;10+&lt;/sup&gt;](#listitem) instead. |
+| value | string | No | This parameter is deprecated and does not take effect in the current version. You are advised to use [ListItem<sup>10+</sup>](#listitem) instead. |
 
 ## Summary
 
@@ -81,12 +81,12 @@ Creates a **ListItem** component.
 
 | Name | Description |
 | --- | --- |
-| [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | Enumerates the edit modes of list items. |
 | [ListItemStyle](arkts-arkui-listitem-comp-listitemstyle-e.md) | Enumerates the card styles of the **ListItem** component. |
 | [ListItemSwipeActionDirection](arkts-arkui-listitem-comp-listitemswipeactiondirection-e.md) | Enumerates the swipe action menu display directions for **ListItem** components. |
-| [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | Enumerates the sticky effects for list items. |
 | [SwipeActionState](arkts-arkui-listitem-comp-swipeactionstate-e.md) | Enumerates swipe states of list items. |
 | [SwipeEdgeEffect](arkts-arkui-listitem-comp-swipeedgeeffect-e.md) | Enumerates the edge effects. |
+| [EditMode](arkts-arkui-listitem-comp-editmode-e.md) | Enumerates the edit modes of list items. |
+| [Sticky](arkts-arkui-listitem-comp-sticky-e.md) | Enumerates the sticky effects for list items. |
 
 ## Examples
 

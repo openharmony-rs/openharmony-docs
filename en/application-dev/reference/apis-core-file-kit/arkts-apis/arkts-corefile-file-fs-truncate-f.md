@@ -57,7 +57,7 @@ Truncates a file. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="truncate-1"></a>
+<a id="truncate2"></a>
 
 ## truncate
 
@@ -104,7 +104,7 @@ Truncates a file. This API uses an asynchronous callback to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="truncate-2"></a>
+<a id="truncate3"></a>
 
 ## truncate
 

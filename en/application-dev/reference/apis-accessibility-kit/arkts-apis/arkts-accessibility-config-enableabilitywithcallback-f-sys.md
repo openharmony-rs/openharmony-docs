@@ -55,6 +55,7 @@ When the accessibility extension process is abnormally disconnected, the onDisco
 | [9300001](../errorcode-accessibility.md#9300001-invalid-bundle-name-or-ability-name) | Invalid bundle name or ability name. |
 | [9300002](../errorcode-accessibility.md#9300002-target-ability-already-enabled) | Target ability already enabled. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -75,3 +76,5 @@ config.enableAbilityWithCallback(name, capability, connectCallback).then(() => {
   console.error(`Failed to enable ability. Code: ${err.code}, message: ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

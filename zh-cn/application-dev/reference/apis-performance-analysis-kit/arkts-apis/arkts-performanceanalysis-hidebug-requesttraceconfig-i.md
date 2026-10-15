@@ -32,7 +32,7 @@ trace文件的缓存大小，以KB为单位。数值为32位无符号整型数�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-RequestTraceConfig-bufferSizeKb: int--><!--Device-RequestTraceConfig-bufferSizeKb: int-End-->
 
@@ -52,7 +52,7 @@ trace采集时长，以ms为单位。数值为32位无符号整型数字，超�
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-RequestTraceConfig-durationMs: int--><!--Device-RequestTraceConfig-durationMs: int-End-->
 
@@ -72,7 +72,7 @@ identifier: string
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-RequestTraceConfig-identifier: string--><!--Device-RequestTraceConfig-identifier: string-End-->
 
@@ -92,7 +92,7 @@ reserved: number
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-RequestTraceConfig-reserved: int--><!--Device-RequestTraceConfig-reserved: int-End-->
 

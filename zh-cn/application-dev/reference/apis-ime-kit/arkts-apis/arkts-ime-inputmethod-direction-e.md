@@ -12,20 +12,6 @@ export enum Direction
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
-## CURSOR_UP
-
-```TypeScript
-CURSOR_UP = 1
-```
-
-向上。<br> <br>使用场景：输入法请求光标向上移动时使用，如多行文本中上移光标。
-
-**起始版本：** 10
-
-<!--Device-Direction-CURSOR_UP = 1--><!--Device-Direction-CURSOR_UP = 1-End-->
-
-**系统能力：** SystemCapability.MiscServices.InputMethodFramework
-
 ## CURSOR_DOWN
 
 ```TypeScript
@@ -65,5 +51,19 @@ CURSOR_RIGHT
 **起始版本：** 10
 
 <!--Device-Direction-CURSOR_RIGHT--><!--Device-Direction-CURSOR_RIGHT-End-->
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
+## CURSOR_UP
+
+```TypeScript
+CURSOR_UP = 1
+```
+
+向上。<br> <br>使用场景：输入法请求光标向上移动时使用，如多行文本中上移光标。
+
+**起始版本：** 10
+
+<!--Device-Direction-CURSOR_UP = 1--><!--Device-Direction-CURSOR_UP = 1-End-->
 
 **系统能力：** SystemCapability.MiscServices.InputMethodFramework

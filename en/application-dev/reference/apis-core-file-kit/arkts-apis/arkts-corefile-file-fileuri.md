@@ -22,7 +22,7 @@ import { fileUri } from '@kit.CoreFileKit';
 
 | Name | Description |
 | --- | --- |
-| [getUriFromPath](arkts-corefile-fileuri-geturifrompath-f.md) | Get the uri from the path of file in app sandbox |
+| [getUriFromPath](arkts-corefile-fileuri-geturifrompath-f.md#geturifrompath) | Get the uri from the path of file in app sandbox |
 
 ### Classes
 

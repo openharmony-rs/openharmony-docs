@@ -14,15 +14,15 @@ Sets the type of sliding panel.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Minibar
+## CUSTOM
 
 ```TypeScript
-Minibar = 0
+CUSTOM = 3
 ```
 
-The switch between the minibar and full-screen display is provided.
+Custom content display area. The switchover effect is provided in three sizes: large (full-screen), medium (half-screen), and small.
 
-**Since:** 7
+**Since:** 10
 
 **Deprecated since:** 12
 
@@ -30,7 +30,7 @@ The switch between the minibar and full-screen display is provided.
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-PanelType-Minibar = 0--><!--Device-PanelType-Minibar = 0-End-->
+<!--Device-PanelType-CUSTOM = 3--><!--Device-PanelType-CUSTOM = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -54,6 +54,26 @@ Permanent content display class. The switchover effect is provided in three size
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## Minibar
+
+```TypeScript
+Minibar = 0
+```
+
+The switch between the minibar and full-screen display is provided.
+
+**Since:** 7
+
+**Deprecated since:** 12
+
+**Model restriction:** This API can be used in both the stage model and FA model.
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-PanelType-Minibar = 0--><!--Device-PanelType-Minibar = 0-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## Temporary
 
 ```TypeScript
@@ -71,25 +91,5 @@ Temporary content display area. The switchover effect is provided in three sizes
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PanelType-Temporary = 2--><!--Device-PanelType-Temporary = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## CUSTOM
-
-```TypeScript
-CUSTOM = 3
-```
-
-Custom content display area. The switchover effect is provided in three sizes: large (full-screen), medium (half-screen), and small.
-
-**Since:** 10
-
-**Deprecated since:** 12
-
-**Model restriction:** This API can be used in both the stage model and FA model.
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-PanelType-CUSTOM = 3--><!--Device-PanelType-CUSTOM = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

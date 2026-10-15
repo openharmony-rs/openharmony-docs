@@ -12,22 +12,6 @@ Enumerates whether to enable overscroll mode.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## NEVER
-
-```TypeScript
-NEVER = 0
-```
-
-Web overscroll mode disabled. Applicable to pages that do not require additional scrolling effects, such as scenarios where the content height matches the container height.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-OverScrollMode-NEVER = 0--><!--Device-OverScrollMode-NEVER = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## ALWAYS
 
 ```TypeScript
@@ -41,5 +25,21 @@ Web overscroll mode enabled. Applicable to pages that require enhanced scrolling
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-OverScrollMode-ALWAYS = 1--><!--Device-OverScrollMode-ALWAYS = 1-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## NEVER
+
+```TypeScript
+NEVER = 0
+```
+
+Web overscroll mode disabled. Applicable to pages that do not require additional scrolling effects, such as scenarios where the content height matches the container height.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-OverScrollMode-NEVER = 0--><!--Device-OverScrollMode-NEVER = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

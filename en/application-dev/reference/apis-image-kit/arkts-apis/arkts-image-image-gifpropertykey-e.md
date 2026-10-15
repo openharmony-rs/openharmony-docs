@@ -12,6 +12,38 @@ Enumerates the GIF image information.
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 
+## GIF_CANVAS_HEIGHT
+
+```TypeScript
+GIF_CANVAS_HEIGHT = 'GifCanvasHeight'
+```
+
+Canvas height.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'--><!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
+## GIF_CANVAS_WIDTH
+
+```TypeScript
+GIF_CANVAS_WIDTH = 'GifCanvasWidth'
+```
+
+Canvas width.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'--><!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'-End-->
+
+**System capability:** SystemCapability.Multimedia.Image.Core
+
 ## GIF_DELAY_TIME
 
 ```TypeScript
@@ -53,38 +85,6 @@ Whether the GIF image has a global color map.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-GifPropertyKey-GIF_HAS_GLOBAL_COLOR_MAP = 'GifHasGlobalColorMap'--><!--Device-GifPropertyKey-GIF_HAS_GLOBAL_COLOR_MAP = 'GifHasGlobalColorMap'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## GIF_CANVAS_WIDTH
-
-```TypeScript
-GIF_CANVAS_WIDTH = 'GifCanvasWidth'
-```
-
-Canvas width.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'--><!--Device-GifPropertyKey-GIF_CANVAS_WIDTH = 'GifCanvasWidth'-End-->
-
-**System capability:** SystemCapability.Multimedia.Image.Core
-
-## GIF_CANVAS_HEIGHT
-
-```TypeScript
-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'
-```
-
-Canvas height.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'--><!--Device-GifPropertyKey-GIF_CANVAS_HEIGHT = 'GifCanvasHeight'-End-->
 
 **System capability:** SystemCapability.Multimedia.Image.Core
 

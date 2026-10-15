@@ -6,6 +6,8 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="enablecloud1"></a>
+
 ## enableCloud
 
 ```TypeScript
@@ -45,6 +47,7 @@ function enableCloud(accountId: string, switches: Record<string, boolean>): Prom
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ cloudSyncManager.enableCloud(accountId, switches).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="enablecloud-1"></a>
+
+<a id="enablecloud2"></a>
 
 ## enableCloud
 
@@ -103,6 +108,7 @@ function enableCloud(
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -121,3 +127,5 @@ cloudSyncManager.enableCloud(accountId, switches, (err: BusinessError) => {
   }
 });
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { batteryStats } from '@kit.BasicServicesKit';
 ```
 
+<a id="getbatterystats1"></a>
+
 ## getBatteryStats
 
 ```TypeScript
@@ -35,6 +37,7 @@ function getBatteryStats(): Promise<Array<BatteryStatsInfo>>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -47,8 +50,10 @@ batteryStats.getBatteryStats()
 });
 ```
 
+<!--DelEnd-->
 
-<a id="getbatterystats-1"></a>
+
+<a id="getbatterystats2"></a>
 
 ## getBatteryStats
 
@@ -80,6 +85,7 @@ function getBatteryStats(callback: AsyncCallback<Array<BatteryStatsInfo>>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2.Incorrect parameter types. |
 | [4600101](../errorcode-batteryStatistics.md#4600101-连接服务失败) | Failed to connect to the service. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -91,3 +97,5 @@ batteryStats.getBatteryStats((err: BusinessError, data: batteryStats.BatteryStat
     }
 });
 ```
+
+<!--DelEnd-->

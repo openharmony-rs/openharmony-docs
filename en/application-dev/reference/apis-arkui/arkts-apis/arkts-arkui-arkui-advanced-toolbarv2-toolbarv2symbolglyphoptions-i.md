@@ -4,7 +4,7 @@
 export interface ToolBarV2SymbolGlyphOptions
 ```
 
-Declare the options of ToolBarV2SymbolGlyph
+Defines the attributes of the symbol icon.
 
 **Since:** 18
 

@@ -90,11 +90,11 @@ fontFeature?: string
 
 Sets the font feature, for example, monospaced digits. If this parameter is not specified, proportional digits are used by default. Invalid characters are disregarded, and the default is preserved.
 
-Format: normal | &lt;feature-tag-value&gt;
+Format: normal | <feature-tag-value>
 
-Format of **&lt;feature-tag-value&gt;**: &lt;string&gt; [ &lt;integer&gt; | on | off ]
+Format of **<feature-tag-value>**: <string> [ <integer> | on | off ]
 
-There can be multiple **&lt;feature-tag-value&gt;** values, which are separated by commas (,).
+There can be multiple **<feature-tag-value>** values, which are separated by commas (,).
 
 For example, the input format for monospaced clock fonts is "ss01" on.
 

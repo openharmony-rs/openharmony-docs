@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="killprocessesbybundlename1"></a>
+
 ## killProcessesByBundleName
 
 ```TypeScript
@@ -39,6 +41,7 @@ Kill processes by bundle name
 | --- | --- |
 | Promise&lt;void&gt; | The promise returned by the function. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -55,8 +58,10 @@ appManager.killProcessesByBundleName(bundleName)
   });
 ```
 
+<!--DelEnd-->
 
-<a id="killprocessesbybundlename-1"></a>
+
+<a id="killprocessesbybundlename2"></a>
 
 ## killProcessesByBundleName
 
@@ -87,6 +92,7 @@ Kill processes by bundle name
 | bundleName | string | Yes | bundle name. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | cut off the callback function of the account process. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -105,3 +111,5 @@ function killProcessesByBundleNameCallback(err: BusinessError, data: void) {
 
 appManager.killProcessesByBundleName(bundleName, killProcessesByBundleNameCallback);
 ```
+
+<!--DelEnd-->

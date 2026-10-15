@@ -14,22 +14,6 @@ enum State
 
 **系统接口：** 此接口为系统接口。
 
-## STATE_UNKNOWN
-
-```TypeScript
-STATE_UNKNOWN = 0
-```
-
-未知状态。请使用枚举名称而非枚举值。
-
-**起始版本：** 11
-
-<!--Device-State-STATE_UNKNOWN = 0--><!--Device-State-STATE_UNKNOWN = 0-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
-
-**系统接口：** 此接口为系统接口。
-
 ## STATE_ACCEPTED
 
 ```TypeScript
@@ -89,6 +73,22 @@ STATE_UNAVAILABLE = 4
 **起始版本：** 12
 
 <!--Device-State-STATE_UNAVAILABLE = 4--><!--Device-State-STATE_UNAVAILABLE = 4-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
+
+**系统接口：** 此接口为系统接口。
+
+## STATE_UNKNOWN
+
+```TypeScript
+STATE_UNKNOWN = 0
+```
+
+未知状态。请使用枚举名称而非枚举值。
+
+**起始版本：** 11
+
+<!--Device-State-STATE_UNKNOWN = 0--><!--Device-State-STATE_UNKNOWN = 0-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.CloudSync.Client
 

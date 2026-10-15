@@ -28,7 +28,7 @@ Stops an HTTP request task and releases system resources.
 
 **Since:** 6
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequest-destroy(): void--><!--Device-HttpRequest-destroy(): void-End-->
 
@@ -404,7 +404,7 @@ Unregisters the observer for HTTP Response Header events.
 
 **Deprecated since:** 8
 
-**Substitutes:** [off_headersReceive](#offheadersreceive)
+**Substitutes:** off_headersReceive
 
 <!--Device-HttpRequest-off(type: "headerReceive", callback?: AsyncCallback<Object>): void--><!--Device-HttpRequest-off(type: "headerReceive", callback?: AsyncCallback<Object>): void-End-->
 
@@ -687,7 +687,7 @@ Registers an observer for HTTP Response Header events.
 
 **Deprecated since:** 8
 
-**Substitutes:** [on_headersReceive](#onheadersreceive)
+**Substitutes:** on_headersReceive
 
 <!--Device-HttpRequest-on(type: "headerReceive", callback: AsyncCallback<Object>): void--><!--Device-HttpRequest-on(type: "headerReceive", callback: AsyncCallback<Object>): void-End-->
 
@@ -753,7 +753,7 @@ Registers a one-time observer for HTTP Response Header events. Once triggered, t
 
 once(type: "headersReceive", callback: Callback<Object>): void
 
-Registers a one-time observer for HTTP Response Header events. Once triggered, the observer will be removed. This API uses an asynchronous callback to return the result.
+Subscribes to the HTTP Response Header event, which triggers only once. After it is triggered, the subscriber is removed. This API uses an asynchronous callback to return the result.
 
 Atomic service API: This API can be used in atomic services since API version 15.
 
@@ -769,6 +769,8 @@ httpRequest.once("headersReceive", (header: Object) => {
   console.info("header: " + JSON.stringify(header));
 });
 ```
+
+<a id="request1"></a>
 
 ## request
 
@@ -796,7 +798,7 @@ Initiates an HTTP request to a given URL. This API uses an asynchronous callback
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequest-request(url: string, callback: AsyncCallback<HttpResponse>): void--><!--Device-HttpRequest-request(url: string, callback: AsyncCallback<HttpResponse>): void-End-->
 
@@ -854,7 +856,7 @@ Initiates an HTTP request to a given URL. This API uses an asynchronous callback
 
 request(url: string, callback: AsyncCallback<HttpResponse>): void
 
-Initiates an HTTP request to a given URL. This API uses an asynchronous callback to return the result.
+Initiates an HTTP network request to a given URL. This API uses an asynchronous callback to return the result.
 
 > NOTE
 > 
@@ -870,7 +872,7 @@ Parameters
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
@@ -889,7 +891,7 @@ httpRequest.request("EXAMPLE_URL", (err: Error, data: http.HttpResponse) => {
 });
 ```
 
-<a id="request-1"></a>
+<a id="request2"></a>
 
 ## request
 
@@ -917,7 +919,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequest-request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): void--><!--Device-HttpRequest-request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>): void-End-->
 
@@ -976,7 +978,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 request(url: string, options: HttpRequestOptions, callback: AsyncCallback<HttpResponse>):void
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result.
+Initiates an HTTP network request to a given URL with the specified options. This API uses an asynchronous callback to return the result.
 
 > NOTE
 > 
@@ -992,7 +994,7 @@ Parameters
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
@@ -1036,7 +1038,7 @@ httpRequest.request("EXAMPLE_URL", options, (err: Error, data: http.HttpResponse
 });
 ```
 
-<a id="request-2"></a>
+<a id="request3"></a>
 
 ## request
 
@@ -1064,7 +1066,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 **Required permissions:** ohos.permission.INTERNET
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-HttpRequest-request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>--><!--Device-HttpRequest-request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>-End-->
 
@@ -1126,9 +1128,9 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 ### request
 
-request(url: string, options? : HttpRequestOptions): Promise<HttpResponse>
+request(url: string, options?: HttpRequestOptions): Promise<HttpResponse>
 
-Initiates an HTTP request containing specified options to a given URL. This API uses a promise to return the result.
+Initiates an HTTP network request to a given URL. This API uses a promise to return the result.
 
 > NOTE
 > 
@@ -1146,7 +1148,7 @@ Return value
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
@@ -1178,6 +1180,8 @@ promise.then((data:http.HttpResponse) => {
   console.error('error:' + JSON.stringify(err));
 });
 ```
+
+<a id="requestinstream1"></a>
 
 ## requestInStream
 
@@ -1249,7 +1253,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 requestInStream(url: string, callback: AsyncCallback<number>): void
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL and returns a streaming response. This API uses an asynchronous callback to return the result.
 
 Required permissions: ohos.permission.INTERNET
 
@@ -1261,7 +1265,7 @@ Parameters
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
@@ -1277,7 +1281,7 @@ httpRequest.requestInStream("EXAMPLE_URL", (err: BusinessError, data: number) =>
 })
 ```
 
-<a id="requestinstream-1"></a>
+<a id="requestinstream2"></a>
 
 ## requestInStream
 
@@ -1350,7 +1354,7 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 requestInStream(url: string, options: HttpRequestOptions, callback: AsyncCallback<number>): void
 
-Initiates an HTTP request containing specified options to a given URL. This API uses an asynchronous callback to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL with the specified options and returns a streaming response. This API uses an asynchronous callback to return the result.
 
 Required permissions: ohos.permission.INTERNET
 
@@ -1362,7 +1366,7 @@ Parameters
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html)
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
@@ -1400,7 +1404,7 @@ httpRequest.requestInStream("EXAMPLE_URL", options, (err: BusinessError<void> , 
 })
 ```
 
-<a id="requestinstream-2"></a>
+<a id="requestinstream3"></a>
 
 ## requestInStream
 
@@ -1476,9 +1480,9 @@ Initiates an HTTP request containing specified options to a given URL. This API 
 
 ### requestInStream
 
-requestInStream(url: string, options? : HttpRequestOptions): Promise<number>
+requestInStream(url: string, options?: HttpRequestOptions): Promise<number>
 
-Initiates an HTTP request containing specified options to a given URL. This API uses a promise to return the result, which is a streaming response.
+Initiates an HTTP network request to a given URL and returns a streaming response. This API uses a promise to return the result.
 
 Required permissions: ohos.permission.INTERNET
 
@@ -1492,7 +1496,7 @@ Return value
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html)
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';
@@ -1628,7 +1632,7 @@ Return value
 
 Error codes
 
-For details about the error codes, see [Common Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).The HTTP error code mapping is in the format of 2300000 + Curl error code. For more common error codes, see [Curl Error Codes](https://curl.se/libcurl/c/libcurl-errors.html).
+For details about the following error codes, see [Universal Error Codes](../../errorcode-universal.md) and [HTTP Error Codes](../errorcode-net-http.md).HTTP error code mapping: 2300000 + curl error code. For more common error codes, see [libcurl error codes](https://curl.se/libcurl/c/libcurl-errors.html).
 
 ```TypeScript
 import { http } from '@kit.NetworkKit';

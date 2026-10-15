@@ -18,6 +18,8 @@ Provides **SystemPasteboard** APIs. Before calling any **SystemPasteboard** API,
 import { pasteboard } from '@kit.BasicServicesKit';
 ```
 
+<a id="cleardata1"></a>
+
 ## clearData
 
 ```TypeScript
@@ -28,7 +30,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-clearData(callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-clearData(callback: AsyncCallback<void>): void-End-->
 
@@ -44,7 +46,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -61,7 +63,7 @@ systemPasteboard.clearData((err, data) => {
 });
 ```
 
-<a id="cleardata-1"></a>
+<a id="cleardata2"></a>
 
 ## clearData
 
@@ -73,7 +75,7 @@ Clears the system pasteboard. This API uses a promise to return the result.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-clearData(): Promise<void>--><!--Device-SystemPasteboard-clearData(): Promise<void>-End-->
 
@@ -108,7 +110,7 @@ Clears the system pasteboard. This API returns the result synchronously.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-clearDataSync(): void--><!--Device-SystemPasteboard-clearDataSync(): void-End-->
 
@@ -162,7 +164,7 @@ Detects [patterns](arkts-basicservices-pasteboard-pattern-e.md) in the system pa
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 
 **Examples**
 
@@ -197,7 +199,7 @@ Obtains the number of pasteboard content changes. Returns the number of pasteboa
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-SystemPasteboard-getChangeCount(): long--><!--Device-SystemPasteboard-getChangeCount(): long-End-->
 
@@ -223,6 +225,8 @@ try {
 };
 ```
 
+<a id="getdata1"></a>
+
 ## getData
 
 ```TypeScript
@@ -239,7 +243,7 @@ While most applications must [request permissions to access the pasteboard](../.
 - API version 12 and later: ohos.permission.READ_PASTEBOARD
 - API versions 9 to 11: N/A
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-getData(callback: AsyncCallback<PasteData>): void--><!--Device-SystemPasteboard-getData(callback: AsyncCallback<PasteData>): void-End-->
 
@@ -255,7 +259,7 @@ While most applications must [request permissions to access the pasteboard](../.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [27787277](../errorcode-pasteboard.md#27787277-another-copy-or-paste-operation-in-progress) | Another copy or paste operation is in progress. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 12 and later |
 
@@ -277,7 +281,7 @@ systemPasteboard.getData((err: BusinessError, pasteData: pasteboard.PasteData) =
 });
 ```
 
-<a id="getdata-1"></a>
+<a id="getdata2"></a>
 
 ## getData
 
@@ -295,7 +299,7 @@ While most applications must [request permissions to access the pasteboard](../.
 - API version 12 and later: ohos.permission.READ_PASTEBOARD
 - API versions 9 to 11: N/A
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-getData(): Promise<PasteData>--><!--Device-SystemPasteboard-getData(): Promise<PasteData>-End-->
 
@@ -340,7 +344,7 @@ Obtains the name of the application that provides data.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-getDataSource(): string--><!--Device-SystemPasteboard-getDataSource(): string-End-->
 
@@ -378,7 +382,7 @@ getDataSync(): PasteData
 
 Obtains a **PasteData** object from the pasteboard. This API returns the result synchronously. This API is used to obtain pasteboard data synchronously in key service processes or process pasteboard data immediately.
 
-Do not call this API in the UI thread to prevent blocking the UI. Use the asynchronous API [getData](#getdata) to process a large amount of data or remote data.
+Do not call this API in the UI thread to prevent blocking the UI. Use the asynchronous API [getData](#getdata1) to process a large amount of data or remote data.
 
 While most applications must [request permissions to access the pasteboard](../../../basic-services/pasteboard/get-pastedata-permission-guidelines.md), those using [PasteButton](../../../security/AccessToken/pastebutton.md) can access the pasteboard content without permission requests.
 
@@ -388,7 +392,7 @@ While most applications must [request permissions to access the pasteboard](../.
 - API version 12 and later: ohos.permission.READ_PASTEBOARD
 - API version 11: N/A
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-getDataSync(): PasteData--><!--Device-SystemPasteboard-getDataSync(): PasteData-End-->
 
@@ -433,7 +437,7 @@ While most applications must [request permissions to access the pasteboard](../.
 
 **Required permissions:** ohos.permission.READ_PASTEBOARD
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-SystemPasteboard-getDataWithProgress(params: GetDataParams): Promise<PasteData>--><!--Device-SystemPasteboard-getDataWithProgress(params: GetDataParams): Promise<PasteData>-End-->
 
@@ -515,7 +519,7 @@ Obtains the types of PasteData in the system pasteboard. This API uses a promise
 
 **Since:** 14
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 14.
+**Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-SystemPasteboard-getMimeTypes(): Promise<Array<string>>--><!--Device-SystemPasteboard-getMimeTypes(): Promise<Array<string>>-End-->
 
@@ -554,7 +558,7 @@ While most applications must [request permissions to access the pasteboard](../.
 
 **Required permissions:** ohos.permission.READ_PASTEBOARD
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SystemPasteboard-getUnifiedData(): Promise<unifiedDataChannel.UnifiedData>--><!--Device-SystemPasteboard-getUnifiedData(): Promise<unifiedDataChannel.UnifiedData>-End-->
 
@@ -607,7 +611,7 @@ While most applications must [request permissions to access the pasteboard](../.
 
 **Required permissions:** ohos.permission.READ_PASTEBOARD
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SystemPasteboard-getUnifiedDataSync(): unifiedDataChannel.UnifiedData--><!--Device-SystemPasteboard-getUnifiedDataSync(): unifiedDataChannel.UnifiedData-End-->
 
@@ -640,6 +644,8 @@ try {
 };
 ```
 
+<a id="hasdata1"></a>
+
 ## hasData
 
 ```TypeScript
@@ -650,7 +656,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-hasData(callback: AsyncCallback<boolean>): void--><!--Device-SystemPasteboard-hasData(callback: AsyncCallback<boolean>): void-End-->
 
@@ -666,7 +672,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -683,7 +689,7 @@ systemPasteboard.hasData((err: BusinessError, data: boolean) => {
 });
 ```
 
-<a id="hasdata-1"></a>
+<a id="hasdata2"></a>
 
 ## hasData
 
@@ -695,7 +701,7 @@ Checks whether the system pasteboard contains data. This API uses a promise to r
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-hasData(): Promise<boolean>--><!--Device-SystemPasteboard-hasData(): Promise<boolean>-End-->
 
@@ -730,7 +736,7 @@ Checks whether the system pasteboard contains data. This API returns the result 
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-hasDataSync(): boolean--><!--Device-SystemPasteboard-hasDataSync(): boolean-End-->
 
@@ -770,7 +776,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-hasDataType(mimeType: string): boolean--><!--Device-SystemPasteboard-hasDataType(mimeType: string): boolean-End-->
 
@@ -792,7 +798,7 @@ Checks whether the pasteboard contains data of the specified type.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [12900005](../errorcode-pasteboard.md#12900005-request-timeout) | Excessive processing time for internal data. |
 
 **Examples**
@@ -817,7 +823,7 @@ Checks whether the PasteData is on a remote device. Transferring data across dev
 
 **Since:** 24
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-SystemPasteboard-hasRemoteData(): boolean--><!--Device-SystemPasteboard-hasRemoteData(): boolean-End-->
 
@@ -848,7 +854,7 @@ Checks whether the data in the pasteboard is from another device.
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-isRemoteData(): boolean--><!--Device-SystemPasteboard-isRemoteData(): boolean-End-->
 
@@ -903,7 +909,7 @@ Unsubscribes the content change event of the system pasteboard.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -973,7 +979,7 @@ Subscribes the content change event of the system pasteboard.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -1084,7 +1090,7 @@ Sets pasteable range of PasteData for application.
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API.<br>**Applicable version:** 12 - 13 |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types;         3. Parameter verification failed. |
 | [12900006](../errorcode-pasteboard.md#12900006-settings-already-exists) | Settings already exist. |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API.<br>**Applicable version:** 14 and later |
 
@@ -1100,6 +1106,8 @@ try {
 }
 ```
 
+<a id="setdata1"></a>
+
 ## setData
 
 ```TypeScript
@@ -1110,7 +1118,7 @@ Writes a **PasteData** object to the pasteboard. This API uses an asynchronous c
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-setData(data: PasteData, callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-setData(data: PasteData, callback: AsyncCallback<void>): void-End-->
 
@@ -1127,7 +1135,7 @@ Writes a **PasteData** object to the pasteboard. This API uses an asynchronous c
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [27787277](../errorcode-pasteboard.md#27787277-another-copy-or-paste-operation-in-progress) | Another copy or paste operation is in progress. |
 | [27787278](../errorcode-pasteboard.md#27787278-copy-prohibited) | Replication is prohibited. |
 
@@ -1148,7 +1156,7 @@ systemPasteboard.setData(pasteData, (err, data) => {
 });
 ```
 
-<a id="setdata-1"></a>
+<a id="setdata2"></a>
 
 ## setData
 
@@ -1160,7 +1168,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses a promise 
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-setData(data: PasteData): Promise<void>--><!--Device-SystemPasteboard-setData(data: PasteData): Promise<void>-End-->
 
@@ -1182,7 +1190,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses a promise 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [27787277](../errorcode-pasteboard.md#27787277-another-copy-or-paste-operation-in-progress) | Another copy or paste operation is in progress. |
 | [27787278](../errorcode-pasteboard.md#27787278-copy-prohibited) | Replication is prohibited. |
 
@@ -1213,7 +1221,7 @@ Writes data to the system system pasteboard. This API returns the result synchro
 
 **Since:** 11
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SystemPasteboard-setDataSync(data: PasteData): void--><!--Device-SystemPasteboard-setDataSync(data: PasteData): void-End-->
 
@@ -1229,7 +1237,7 @@ Writes data to the system system pasteboard. This API returns the result synchro
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [12900005](../errorcode-pasteboard.md#12900005-request-timeout) | Excessive processing time for internal data. |
 
 **Examples**
@@ -1255,7 +1263,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses a promise 
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SystemPasteboard-setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise<void>--><!--Device-SystemPasteboard-setUnifiedData(data: unifiedDataChannel.UnifiedData): Promise<void>-End-->
 
@@ -1277,7 +1285,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses a promise 
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [27787277](../errorcode-pasteboard.md#27787277-another-copy-or-paste-operation-in-progress) | Another copy or paste operation is in progress. |
 | [27787278](../errorcode-pasteboard.md#27787278-copy-prohibited) | Replication is prohibited. |
 
@@ -1318,7 +1326,7 @@ Writes data to the system pasteboard. This API returns the result synchronously.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-SystemPasteboard-setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void--><!--Device-SystemPasteboard-setUnifiedDataSync(data: unifiedDataChannel.UnifiedData): void-End-->
 
@@ -1334,7 +1342,7 @@ Writes data to the system pasteboard. This API returns the result synchronously.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 | [12900005](../errorcode-pasteboard.md#12900005-request-timeout) | Excessive processing time for internal data. |
 
 **Examples**
@@ -1367,6 +1375,8 @@ try {
 };
 ```
 
+<a id="clear1"></a>
+
 ## clear
 
 ```TypeScript
@@ -1379,7 +1389,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 **Deprecated since:** 9
 
-**Substitutes:** [clearData](#cleardata)(callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [clearData](#cleardata1)(callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-SystemPasteboard-clear(callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-clear(callback: AsyncCallback<void>): void-End-->
 
@@ -1395,7 +1405,7 @@ Clears the system pasteboard. This API uses an asynchronous callback to return t
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -1410,7 +1420,7 @@ systemPasteboard.clear((err, data) => {
 });
 ```
 
-<a id="clear-1"></a>
+<a id="clear2"></a>
 
 ## clear
 
@@ -1449,6 +1459,8 @@ systemPasteboard.clear().then((data) => {
 });
 ```
 
+<a id="getpastedata1"></a>
+
 ## getPasteData
 
 ```TypeScript
@@ -1461,7 +1473,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses an asynchronou
 
 **Deprecated since:** 9
 
-**Substitutes:** [getData](#getdata)(callback: AsyncCallback&lt;PasteData&gt;)
+**Substitutes:** [getData](#getdata1)(callback: AsyncCallback&lt;PasteData&gt;)
 
 <!--Device-SystemPasteboard-getPasteData(callback: AsyncCallback<PasteData>): void--><!--Device-SystemPasteboard-getPasteData(callback: AsyncCallback<PasteData>): void-End-->
 
@@ -1477,7 +1489,7 @@ Obtains a **PasteData** object from the pasteboard. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -1497,7 +1509,7 @@ systemPasteboard.getPasteData((err: BusinessError, pasteData: pasteboard.PasteDa
 });
 ```
 
-<a id="getpastedata-1"></a>
+<a id="getpastedata2"></a>
 
 ## getPasteData
 
@@ -1539,6 +1551,8 @@ systemPasteboard.getPasteData().then((pasteData: pasteboard.PasteData) => {
 });
 ```
 
+<a id="haspastedata1"></a>
+
 ## hasPasteData
 
 ```TypeScript
@@ -1551,7 +1565,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 **Deprecated since:** 9
 
-**Substitutes:** [hasData](#hasdata)(callback: AsyncCallback&lt;boolean&gt;)
+**Substitutes:** [hasData](#hasdata1)(callback: AsyncCallback&lt;boolean&gt;)
 
 <!--Device-SystemPasteboard-hasPasteData(callback: AsyncCallback<boolean>): void--><!--Device-SystemPasteboard-hasPasteData(callback: AsyncCallback<boolean>): void-End-->
 
@@ -1567,7 +1581,7 @@ Checks whether the system pasteboard contains data. This API uses an asynchronou
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -1584,7 +1598,7 @@ systemPasteboard.hasPasteData((err: BusinessError, data: boolean) => {
 });
 ```
 
-<a id="haspastedata-1"></a>
+<a id="haspastedata2"></a>
 
 ## hasPasteData
 
@@ -1623,6 +1637,8 @@ systemPasteboard.hasPasteData().then((data: boolean) => {
 });
 ```
 
+<a id="setpastedata1"></a>
+
 ## setPasteData
 
 ```TypeScript
@@ -1635,7 +1651,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses an asynchr
 
 **Deprecated since:** 9
 
-**Substitutes:** [setData](#setdata)(data: PasteData, callback: AsyncCallback&lt;void&gt;)
+**Substitutes:** [setData](#setdata1)(data: PasteData, callback: AsyncCallback&lt;void&gt;)
 
 <!--Device-SystemPasteboard-setPasteData(data: PasteData, callback: AsyncCallback<void>): void--><!--Device-SystemPasteboard-setPasteData(data: PasteData, callback: AsyncCallback<void>): void-End-->
 
@@ -1652,7 +1668,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses an asynchr
 
 | Error Code ID | Error Message |
 | --- | --- |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameters types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameters types. |
 
 **Examples**
 
@@ -1668,7 +1684,7 @@ systemPasteboard.setPasteData(pasteData, (err, data) => {
 });
 ```
 
-<a id="setpastedata-1"></a>
+<a id="setpastedata2"></a>
 
 ## setPasteData
 
@@ -1682,7 +1698,7 @@ Writes a **PasteData** object to the system pasteboard. This API uses a promise 
 
 **Deprecated since:** 9
 
-**Substitutes:** [setData](#setdata-1)(data: PasteData)
+**Substitutes:** [setData](#setdata2)(data: PasteData)
 
 <!--Device-SystemPasteboard-setPasteData(data: PasteData): Promise<void>--><!--Device-SystemPasteboard-setPasteData(data: PasteData): Promise<void>-End-->
 

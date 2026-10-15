@@ -5,7 +5,7 @@
 ```TypeScript
 ```
 
-<a id="publish-2"></a>
+<a id="publish3"></a>
 
 ## publish
 
@@ -33,12 +33,12 @@ Publishes a notification to a specified user. This API uses an asynchronous call
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| request | [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) | Yes | Content and related configuration of the notification to publish. |
+| request | [NotificationRequest](arkts-notification-notificationrequest-i.md) | Yes | Content and related configuration of the notification to publish. |
 | userId | number | Yes | User ID. |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | Yes | Callback used to return the result. |
 
 
-<a id="publish-3"></a>
+<a id="publish4"></a>
 
 ## publish
 
@@ -66,7 +66,7 @@ Publishes a notification to a specified user. This API uses a promise to return 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| request | [NotificationRequest](arkts-notification-notificationrequest-notificationrequest-i.md) | Yes | Content and related configuration of the notification to publish. |
+| request | [NotificationRequest](arkts-notification-notificationrequest-i.md) | Yes | Content and related configuration of the notification to publish. |
 | userId | number | Yes | User ID. |
 
 **Return value:**

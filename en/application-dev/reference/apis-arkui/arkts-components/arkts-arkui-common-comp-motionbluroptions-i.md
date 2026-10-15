@@ -18,7 +18,7 @@ Defines motion blur options.
 anchor: MotionBlurAnchor
 ```
 
-Coordinates of the motion blur anchor. They must be the same as those of the animation scaling anchor.
+Anchor point coordinates of the motion blur. They must be consistent with the anchor point (centerX/centerY) of the animation [scale](arkts-arkui-common-comp-commonmethod-c.md#scale1) attribute; otherwise, unexpected effects may occur.
 
 **Type:** [MotionBlurAnchor](arkts-arkui-common-comp-motionbluranchor-i.md)
 
@@ -38,7 +38,7 @@ Coordinates of the motion blur anchor. They must be the same as those of the ani
 radius: number
 ```
 
-Blur radius. The value range is [0.0, ∞). You are advised to set it to a value less than 1.0.
+Blur radius, in vp. The value range is [0.0, +∞). A value not greater than 1.0 is recommended for a better visual effect. A negative value is automatically corrected to 0.0, and a value greater than the recommended 1.0 may cause unexpected effects.
 
 **Type:** number
 

@@ -20,16 +20,16 @@ import { pbap } from '@kit.ConnectivityKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createPbapClientProfile](arkts-connectivity-pbap-createpbapclientprofile-f.md) | 创建PBAP客户端配置文件的实例。 |
-| [createPbapServerProfile](arkts-connectivity-pbap-createpbapserverprofile-f.md) | 创建蓝牙电话簿访问协议中的PSE实例。通过该实例可使用本端作为PSE设备的接口，如：获取本端和其他设备间的蓝牙电话簿服务连接状态。典型使用场景包括：车载蓝牙系统访问手机电话簿、跨设备联系人同步等需要本端作为电话簿服务端的场景。 |
+| [createPbapClientProfile](arkts-connectivity-pbap-createpbapclientprofile-f.md#createpbapclientprofile) | 创建PBAP客户端配置文件的实例。 |
+| [createPbapServerProfile](arkts-connectivity-pbap-createpbapserverprofile-f.md#createpbapserverprofile) | 创建蓝牙电话簿访问协议中的PSE实例。通过该实例可使用本端作为PSE设备的接口，如：获取本端和其他设备间的蓝牙电话簿服务连接状态。典型使用场景包括：车载蓝牙系统访问手机电话簿、跨设备联系人同步等需要本端作为电话簿服务端的场景。 |
 
 <!--Del-->
 ### 接口（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| PbapClientProfile | 管理PBAP客户端配置文件。 |
-| PbapServerProfile | 使用PbapServerProfile方法之前需要创建该类的实例进行操作，通过createPbapServerProfile()方法构造此实例。 |
+| [PbapClientProfile](arkts-connectivity-pbap-pbapclientprofile-i-sys.md) | 管理PBAP客户端配置文件。 |
+| [PbapServerProfile](arkts-connectivity-pbap-pbapserverprofile-i-sys.md) | 使用PbapServerProfile方法之前需要创建该类的实例进行操作，通过createPbapServerProfile()方法构造此实例。 |
 | [SyncStateChangeParam](arkts-connectivity-pbap-syncstatechangeparam-i-sys.md) | 电话本同步状态变化信息。 |
 <!--DelEnd-->
 

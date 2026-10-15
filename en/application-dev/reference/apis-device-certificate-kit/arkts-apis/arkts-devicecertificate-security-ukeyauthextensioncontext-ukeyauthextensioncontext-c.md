@@ -62,7 +62,7 @@ Destroys this UkeyAuthExtensionAbility, closes the corresponding window, and ret
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| parameter | [AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-abilityresult-i.md) | Yes | Information returned to the caller of the UkeyAuthExtensionAbility. |
+| parameter | [AbilityResult](../../apis-ability-kit/arkts-apis/arkts-ability-abilityresult-i.md) | Yes | Information returned to the caller of the UkeyAuthExtensionAbility. |
 
 **Return value:**
 

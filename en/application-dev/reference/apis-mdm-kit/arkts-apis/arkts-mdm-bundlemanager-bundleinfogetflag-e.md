@@ -28,6 +28,22 @@ Obtains the default bundle information, excluding **applicationInfo** and **sign
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
+## WITH_APPLICATION_ICON_INFO
+
+```TypeScript
+WITH_APPLICATION_ICON_INFO = 1 << 2
+```
+
+Obtains the default bundle information and **applicationInfo** (including **iconData**).
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2--><!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2-End-->
+
+**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
+
 ## WITH_APPLICATION_INFO
 
 ```TypeScript
@@ -57,21 +73,5 @@ Obtains the default bundle information and **signatureInfo**.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-BundleInfoGetFlag-WITH_SIGNATURE_INFO = 1 << 1--><!--Device-BundleInfoGetFlag-WITH_SIGNATURE_INFO = 1 << 1-End-->
-
-**System capability:** SystemCapability.Customization.EnterpriseDeviceManager
-
-## WITH_APPLICATION_ICON_INFO
-
-```TypeScript
-WITH_APPLICATION_ICON_INFO = 1 << 2
-```
-
-Obtains the default bundle information and **applicationInfo** (including **iconData**).
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2--><!--Device-BundleInfoGetFlag-WITH_APPLICATION_ICON_INFO = 1 << 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

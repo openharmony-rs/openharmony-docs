@@ -6,6 +6,8 @@
 import { volumeManager } from '@kit.CoreFileKit';
 ```
 
+<a id="getvolumebyuuid1"></a>
+
 ## getVolumeByUuid
 
 ```TypeScript
@@ -43,7 +45,7 @@ Obtains information about a volume based on the UUID. This API uses an asynchron
 | 13900042 | Unknown error. |
 
 
-<a id="getvolumebyuuid-1"></a>
+<a id="getvolumebyuuid2"></a>
 
 ## getVolumeByUuid
 

@@ -41,6 +41,7 @@ function switchUninstallState(bundleName: string, state: boolean): void
 | [17700001](../errorcode-bundle.md#17700001-指定的bundlename不存在) | The specified bundleName is not found. |
 | [17700060](../errorcode-bundle.md#17700060-指定的应用不允许被卸载) | The specified application cannot be uninstalled. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -55,3 +56,5 @@ try {
   hilog.error(0x0000, 'testTag', 'switchUninstallState failed: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

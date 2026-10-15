@@ -58,8 +58,6 @@ Unit: vp
 
 If the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** [Length](arkts-arkui-length-t.md)
 
 **Since:** 26.0.0
@@ -97,8 +95,6 @@ Unit: vp
 
 If the value is **undefined**, the default value is used.
 
-Decorator: **@Trace**
-
 **Type:** string &#124; number
 
 **Since:** 26.0.0
@@ -126,8 +122,6 @@ Default value: **16**
 Unit: vp
 
 If the value is **undefined**, the default value is used.
-
-Decorator: **@Trace**
 
 **Type:** [Length](arkts-arkui-length-t.md)
 

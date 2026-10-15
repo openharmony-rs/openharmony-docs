@@ -50,3 +50,23 @@ function getSmsShortCodeType(slotId: number, destAddr: string): Promise<SmsShort
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300004](../errorcode-telephony.md#8300004-未识别sim卡) | Do not have sim card. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
+
+<!--Del-->
+**示例**
+
+```TypeScript
+import { sms } from '@kit.TelephonyKit';
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let slotId: number = 0;
+let destAddr: string = '10086';
+
+sms.getSmsShortCodeType(slotId, destAddr)
+    .then((type: sms.SmsShortCodeType) => {
+        console.info('getSmsShortCodeType succeed, type: ${type}');
+    }).catch((err: BusinessError) => {
+        console.error('getSmsShortCodeType failed, code: ${err.code}, message: ${err.message}');
+    });
+```
+
+<!--DelEnd-->

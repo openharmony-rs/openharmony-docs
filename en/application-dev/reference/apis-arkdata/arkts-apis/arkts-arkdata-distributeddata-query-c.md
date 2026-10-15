@@ -10,7 +10,7 @@ Provides APIs to create a **Query** object, which defines different data query c
 
 **Deprecated since:** 9
 
-**Substitutes:** Query
+**Substitutes:** [Query](arkts-arkdata-distributedkvstore-query-c.md)
 
 <!--Device-distributedData-class Query--><!--Device-distributedData-class Query-End-->
 
@@ -33,7 +33,7 @@ Creates a **Query** object with the AND condition.
 
 **Deprecated since:** 9
 
-**Substitutes:** and
+**Substitutes:** [and](arkts-arkdata-distributedkvstore-query-c.md#and)
 
 <!--Device-Query-and(): Query--><!--Device-Query-and(): Query-End-->
 
@@ -72,7 +72,7 @@ Creates a **Query** object for a query condition group with a left parenthesis.
 
 **Deprecated since:** 9
 
-**Substitutes:** beginGroup
+**Substitutes:** [beginGroup](arkts-arkdata-distributedkvstore-query-c.md#begingroup)
 
 <!--Device-Query-beginGroup(): Query--><!--Device-Query-beginGroup(): Query-End-->
 
@@ -111,7 +111,7 @@ Defines a constructor used to create a **Query** instance.
 
 **Deprecated since:** 9
 
-**Substitutes:** constructor
+**Substitutes:** [constructor](arkts-arkdata-distributedkvstore-query-c.md#constructor)
 
 <!--Device-Query-constructor()--><!--Device-Query-constructor()-End-->
 
@@ -129,7 +129,7 @@ Creates a **Query** object with the device ID as the key prefix.
 
 **Deprecated since:** 9
 
-**Substitutes:** deviceId
+**Substitutes:** [deviceId](arkts-arkdata-distributedkvstore-query-c.md#deviceid)
 
 <!--Device-Query-deviceId(deviceId: string): Query--><!--Device-Query-deviceId(deviceId: string): Query-End-->
 
@@ -171,7 +171,7 @@ Creates a **Query** object for a query condition group with a right parenthesis.
 
 **Deprecated since:** 9
 
-**Substitutes:** endGroup
+**Substitutes:** [endGroup](arkts-arkdata-distributedkvstore-query-c.md#endgroup)
 
 <!--Device-Query-endGroup(): Query--><!--Device-Query-endGroup(): Query-End-->
 
@@ -210,7 +210,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** equalTo
+**Substitutes:** [equalTo](arkts-arkdata-distributedkvstore-query-c.md#equalto)
 
 <!--Device-Query-equalTo(field: string, value: number | string | boolean): Query--><!--Device-Query-equalTo(field: string, value: number | string | boolean): Query-End-->
 
@@ -254,7 +254,7 @@ Obtains the query statement of the **Query** object.
 
 **Deprecated since:** 9
 
-**Substitutes:** getSqlLike
+**Substitutes:** [getSqlLike](arkts-arkdata-distributedkvstore-query-c.md#getsqllike)
 
 <!--Device-Query-getSqlLike(): string--><!--Device-Query-getSqlLike(): string-End-->
 
@@ -290,7 +290,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** greaterThan
+**Substitutes:** [greaterThan](arkts-arkdata-distributedkvstore-query-c.md#greaterthan)
 
 <!--Device-Query-greaterThan(field: string, value: number | string | boolean): Query--><!--Device-Query-greaterThan(field: string, value: number | string | boolean): Query-End-->
 
@@ -334,7 +334,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** greaterThanOrEqualTo
+**Substitutes:** [greaterThanOrEqualTo](arkts-arkdata-distributedkvstore-query-c.md#greaterthanorequalto)
 
 <!--Device-Query-greaterThanOrEqualTo(field: string, value: number | string): Query--><!--Device-Query-greaterThanOrEqualTo(field: string, value: number | string): Query-End-->
 
@@ -378,7 +378,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** inNumber
+**Substitutes:** [inNumber](arkts-arkdata-distributedkvstore-query-c.md#innumber)
 
 <!--Device-Query-inNumber(field: string, valueList: number[]): Query--><!--Device-Query-inNumber(field: string, valueList: number[]): Query-End-->
 
@@ -422,7 +422,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** inString
+**Substitutes:** [inString](arkts-arkdata-distributedkvstore-query-c.md#instring)
 
 <!--Device-Query-inString(field: string, valueList: string[]): Query--><!--Device-Query-inString(field: string, valueList: string[]): Query-End-->
 
@@ -466,7 +466,7 @@ Creates a **Query** object to search for the records whose value is not **null**
 
 **Deprecated since:** 9
 
-**Substitutes:** isNotNull
+**Substitutes:** [isNotNull](arkts-arkdata-distributedkvstore-query-c.md#isnotnull)
 
 <!--Device-Query-isNotNull(field: string): Query--><!--Device-Query-isNotNull(field: string): Query-End-->
 
@@ -509,7 +509,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** isNull
+**Substitutes:** [isNull](arkts-arkdata-distributedkvstore-query-c.md#isnull)
 
 <!--Device-Query-isNull(field: string): Query--><!--Device-Query-isNull(field: string): Query-End-->
 
@@ -552,7 +552,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** lessThan
+**Substitutes:** [lessThan](arkts-arkdata-distributedkvstore-query-c.md#lessthan)
 
 <!--Device-Query-lessThan(field: string, value: number | string): Query--><!--Device-Query-lessThan(field: string, value: number | string): Query-End-->
 
@@ -596,7 +596,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** lessThanOrEqualTo
+**Substitutes:** [lessThanOrEqualTo](arkts-arkdata-distributedkvstore-query-c.md#lessthanorequalto)
 
 <!--Device-Query-lessThanOrEqualTo(field: string, value: number | string): Query--><!--Device-Query-lessThanOrEqualTo(field: string, value: number | string): Query-End-->
 
@@ -640,7 +640,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** like
+**Substitutes:** [like](arkts-arkdata-distributedkvstore-query-c.md#like)
 
 <!--Device-Query-like(field: string, value: string): Query--><!--Device-Query-like(field: string, value: string): Query-End-->
 
@@ -684,7 +684,7 @@ Creates a **Query** object to specify the number of records in the query result 
 
 **Deprecated since:** 9
 
-**Substitutes:** limit
+**Substitutes:** [limit](arkts-arkdata-distributedkvstore-query-c.md#limit)
 
 <!--Device-Query-limit(total: number, offset: number): Query--><!--Device-Query-limit(total: number, offset: number): Query-End-->
 
@@ -731,7 +731,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** notEqualTo
+**Substitutes:** [notEqualTo](arkts-arkdata-distributedkvstore-query-c.md#notequalto)
 
 <!--Device-Query-notEqualTo(field: string, value: number | string | boolean): Query--><!--Device-Query-notEqualTo(field: string, value: number | string | boolean): Query-End-->
 
@@ -775,7 +775,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** notInNumber
+**Substitutes:** [notInNumber](arkts-arkdata-distributedkvstore-query-c.md#notinnumber)
 
 <!--Device-Query-notInNumber(field: string, valueList: number[]): Query--><!--Device-Query-notInNumber(field: string, valueList: number[]): Query-End-->
 
@@ -819,7 +819,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** notInString
+**Substitutes:** [notInString](arkts-arkdata-distributedkvstore-query-c.md#notinstring)
 
 <!--Device-Query-notInString(field: string, valueList: string[]): Query--><!--Device-Query-notInString(field: string, valueList: string[]): Query-End-->
 
@@ -863,7 +863,7 @@ Creates a **Query** object with the OR condition.
 
 **Deprecated since:** 9
 
-**Substitutes:** or
+**Substitutes:** [or](arkts-arkdata-distributedkvstore-query-c.md#or)
 
 <!--Device-Query-or(): Query--><!--Device-Query-or(): Query-End-->
 
@@ -902,7 +902,7 @@ Creates a **Query** object to sort the query results in ascending order.
 
 **Deprecated since:** 9
 
-**Substitutes:** orderByAsc
+**Substitutes:** [orderByAsc](arkts-arkdata-distributedkvstore-query-c.md#orderbyasc)
 
 <!--Device-Query-orderByAsc(field: string): Query--><!--Device-Query-orderByAsc(field: string): Query-End-->
 
@@ -946,7 +946,7 @@ Creates a **Query** object to sort the query results in descending order.
 
 **Deprecated since:** 9
 
-**Substitutes:** orderByDesc
+**Substitutes:** [orderByDesc](arkts-arkdata-distributedkvstore-query-c.md#orderbydesc)
 
 <!--Device-Query-orderByDesc(field: string): Query--><!--Device-Query-orderByDesc(field: string): Query-End-->
 
@@ -990,7 +990,7 @@ Creates a **Query** object with a specified key prefix.
 
 **Deprecated since:** 9
 
-**Substitutes:** prefixKey
+**Substitutes:** [prefixKey](arkts-arkdata-distributedkvstore-query-c.md#prefixkey)
 
 <!--Device-Query-prefixKey(prefix: string): Query--><!--Device-Query-prefixKey(prefix: string): Query-End-->
 
@@ -1034,7 +1034,7 @@ Resets the **Query** object.
 
 **Deprecated since:** 9
 
-**Substitutes:** reset
+**Substitutes:** [reset](arkts-arkdata-distributedkvstore-query-c.md#reset)
 
 <!--Device-Query-reset(): Query--><!--Device-Query-reset(): Query-End-->
 
@@ -1073,7 +1073,7 @@ Creates a **Query** object with an index preferentially used for query.
 
 **Deprecated since:** 9
 
-**Substitutes:** setSuggestIndex
+**Substitutes:** [setSuggestIndex](arkts-arkdata-distributedkvstore-query-c.md#setsuggestindex)
 
 <!--Device-Query-setSuggestIndex(index: string): Query--><!--Device-Query-setSuggestIndex(index: string): Query-End-->
 
@@ -1117,7 +1117,7 @@ Creates a **Query** object to search for the records with the specified field th
 
 **Deprecated since:** 9
 
-**Substitutes:** unlike
+**Substitutes:** [unlike](arkts-arkdata-distributedkvstore-query-c.md#unlike)
 
 <!--Device-Query-unlike(field: string, value: string): Query--><!--Device-Query-unlike(field: string, value: string): Query-End-->
 

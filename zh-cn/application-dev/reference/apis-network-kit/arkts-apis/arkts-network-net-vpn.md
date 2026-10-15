@@ -25,17 +25,17 @@ import { vpn } from '@kit.NetworkKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addSysVpnConfig](arkts-network-vpn-addsysvpnconfig-f-sys.md) | 添加系统VPN网络配置。 |
-| [createVpnConnection](arkts-network-vpn-createvpnconnection-f-sys.md) | 创建一个 VPN 连接对象。 |
-| [deleteSysVpnConfig](arkts-network-vpn-deletesysvpnconfig-f-sys.md) | 删除指定vpnId的系统VPN网络配置。 |
-| [getConnectedSysVpnConfig](arkts-network-vpn-getconnectedsysvpnconfig-f-sys.md) | 获取已连接的VPN网络配置。 |
-| [getConnectedVpnAppInfo](arkts-network-vpn-getconnectedvpnappinfo-f-sys.md) | 获取已连接的VPN应用信息。 |
-| [getSysVpnConfig](arkts-network-vpn-getsysvpnconfig-f-sys.md) | 获取指定vpnId的系统VPN网络配置。 |
-| [getSysVpnConfigList](arkts-network-vpn-getsysvpnconfiglist-f-sys.md) | 获取所有系统VPN网络配置。 |
-| [off](arkts-network-vpn-off-f-sys.md#offconnect) | 取消订阅VPN连接状态变化事件。 |
-| [off](arkts-network-vpn-off-f-sys.md#offconnectmulti) | 取消订阅VPN连接状态变化事件。 |
-| [on](arkts-network-vpn-on-f-sys.md#onconnect) | 订阅VPN连接状态变化事件。 |
-| [on](arkts-network-vpn-on-f-sys.md#onconnectmulti) | 订阅VPN连接状态变化事件。 |
+| [addSysVpnConfig](arkts-network-vpn-addsysvpnconfig-f-sys.md#addsysvpnconfig) | 添加系统VPN网络配置。 |
+| [createVpnConnection](arkts-network-vpn-createvpnconnection-f-sys.md#createvpnconnection) | 创建一个 VPN 连接对象。 |
+| [deleteSysVpnConfig](arkts-network-vpn-deletesysvpnconfig-f-sys.md#deletesysvpnconfig) | 删除指定vpnId的系统VPN网络配置。 |
+| [getConnectedSysVpnConfig](arkts-network-vpn-getconnectedsysvpnconfig-f-sys.md#getconnectedsysvpnconfig) | 获取已连接的VPN网络配置。 |
+| [getConnectedVpnAppInfo](arkts-network-vpn-getconnectedvpnappinfo-f-sys.md#getconnectedvpnappinfo) | 获取已连接的VPN应用信息。 |
+| [getSysVpnConfig](arkts-network-vpn-getsysvpnconfig-f-sys.md#getsysvpnconfig) | 获取指定vpnId的系统VPN网络配置。 |
+| [getSysVpnConfigList](arkts-network-vpn-getsysvpnconfiglist-f-sys.md#getsysvpnconfiglist) | 获取所有系统VPN网络配置。 |
+| [off('connect')](arkts-network-vpn-off-f-sys.md#offconnect) | 取消订阅VPN连接状态变化事件。 |
+| [off('connectMulti')](arkts-network-vpn-off-f-sys.md#offconnectmulti) | 取消订阅VPN连接状态变化事件。 |
+| [on('connect')](arkts-network-vpn-on-f-sys.md#onconnect) | 订阅VPN连接状态变化事件。 |
+| [on('connectMulti')](arkts-network-vpn-on-f-sys.md#onconnectmulti) | 订阅VPN连接状态变化事件。 |
 <!--DelEnd-->
 
 <!--Del-->

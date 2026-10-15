@@ -40,6 +40,20 @@ Intersection operation.
 
 **System capability:** SystemCapability.Graphics.Drawing
 
+## REVERSE_DIFFERENCE
+
+```TypeScript
+REVERSE_DIFFERENCE = 4
+```
+
+Reverse difference operation.
+
+**Since:** 12
+
+<!--Device-PathOp-REVERSE_DIFFERENCE = 4--><!--Device-PathOp-REVERSE_DIFFERENCE = 4-End-->
+
+**System capability:** SystemCapability.Graphics.Drawing
+
 ## UNION
 
 ```TypeScript
@@ -65,19 +79,5 @@ XOR operation.
 **Since:** 12
 
 <!--Device-PathOp-XOR = 3--><!--Device-PathOp-XOR = 3-End-->
-
-**System capability:** SystemCapability.Graphics.Drawing
-
-## REVERSE_DIFFERENCE
-
-```TypeScript
-REVERSE_DIFFERENCE = 4
-```
-
-Reverse difference operation.
-
-**Since:** 12
-
-<!--Device-PathOp-REVERSE_DIFFERENCE = 4--><!--Device-PathOp-REVERSE_DIFFERENCE = 4-End-->
 
 **System capability:** SystemCapability.Graphics.Drawing

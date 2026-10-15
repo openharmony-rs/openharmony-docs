@@ -42,7 +42,7 @@ false：log_over_limit字段判断生成的与已存在的故障日志文件的�
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppCrashPolicy-collectMinidump?: boolean--><!--Device-AppCrashPolicy-collectMinidump?: boolean-End-->
 
@@ -72,7 +72,7 @@ false：64位系统打印pc和lr寄存器地址向前16字节、向后232字节�
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppCrashPolicy-extendPcLrPrinting?: boolean--><!--Device-AppCrashPolicy-extendPcLrPrinting?: boolean-End-->
 
@@ -96,7 +96,7 @@ logFileCutoffSzBytes?: number
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppCrashPolicy-logFileCutoffSzBytes?: int--><!--Device-AppCrashPolicy-logFileCutoffSzBytes?: int-End-->
 
@@ -124,9 +124,29 @@ false：不使能崩溃事件的页面切换日志。
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本24开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本24开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppCrashPolicy-pageSwitchLogEnable?: boolean--><!--Device-AppCrashPolicy-pageSwitchLogEnable?: boolean-End-->
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
+
+## publishOnNextLaunch
+
+```TypeScript
+publishOnNextLaunch?: boolean
+```
+
+该选项用于配置应用收到崩溃事件回调的时机，是否固定在应用重新启动之后收到事件回调。true：使能固定在应用重启之后收到事件回调。false：不使能固定在应用重启之后收到事件回调。默认值：false。说明：该选项只对onTrigger和onReceive回调生效，应用在同一生命周期内，以最后一次成功调用的使能状态为准。
+
+**类型：** boolean
+
+**起始版本：** 26.2.0
+
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+<!--Device-AppCrashPolicy-publishOnNextLaunch?: boolean--><!--Device-AppCrashPolicy-publishOnNextLaunch?: boolean-End-->
 
 **系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
@@ -154,7 +174,7 @@ false：打印所有VMA映射信息。
 
 **模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本26.0.0开始，该接口支持在原子化服务中使用。
 
 <!--Device-AppCrashPolicy-simplifyVmaPrinting?: boolean--><!--Device-AppCrashPolicy-simplifyVmaPrinting?: boolean-End-->
 

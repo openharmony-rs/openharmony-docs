@@ -12,8 +12,6 @@
 
 **起始版本：** 9
 
-**模型约束：** 此接口仅可在Stage模型下使用。
-
 <!--Device-unnamed-declare namespace distributedKVStore--><!--Device-unnamed-declare namespace distributedKVStore-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
@@ -30,7 +28,7 @@ import { distributedKVStore } from '@kit.ArkData';
 
 | 名称 | 说明 |
 | --- | --- |
-| [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md) | 创建一个KVManager对象实例，用于管理数据库对象。 |
+| [createKVManager](arkts-arkdata-distributedkvstore-createkvmanager-f.md#createkvmanager) | 创建一个KVManager对象实例，用于管理数据库对象。 |
 
 ### 类
 

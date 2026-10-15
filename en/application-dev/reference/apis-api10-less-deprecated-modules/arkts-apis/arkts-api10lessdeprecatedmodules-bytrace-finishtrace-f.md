@@ -22,7 +22,7 @@ Marks the end of a timeslice trace task.
 
 **Deprecated since:** 8
 
-**Substitutes:** finishTrace
+**Substitutes:** [finishTrace](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hitracemeter-finishtrace-f.md)
 
 <!--Device-bytrace-function finishTrace(name: string, taskId: number): void--><!--Device-bytrace-function finishTrace(name: string, taskId: number): void-End-->
 

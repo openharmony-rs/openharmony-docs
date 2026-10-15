@@ -12,19 +12,19 @@ Enumerates the error codes returned by **onSslErrorEventReceive** API.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## Invalid
+## DateInvalid
 
 ```TypeScript
-Invalid = 0
+DateInvalid = 2
 ```
 
-Minor error.
+The certificate has an invalid date.
 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-SslError-Invalid = 0--><!--Device-SslError-Invalid = 0-End-->
+<!--Device-SslError-DateInvalid = 2--><!--Device-SslError-DateInvalid = 2-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 
@@ -44,19 +44,19 @@ The host name does not match.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## DateInvalid
+## Invalid
 
 ```TypeScript
-DateInvalid = 2
+Invalid = 0
 ```
 
-The certificate has an invalid date.
+Minor error.
 
 **Since:** 9
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-SslError-DateInvalid = 2--><!--Device-SslError-DateInvalid = 2-End-->
+<!--Device-SslError-Invalid = 0--><!--Device-SslError-Invalid = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core
 

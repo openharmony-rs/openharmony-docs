@@ -6,6 +6,8 @@ export type SaveRequest = _AutoFillRequest.SaveRequest
 
 Defines the information about an auto-save request.
 
+**Type:** [_AutoFillRequest.SaveRequest](arkts-ability-autofillrequest-saverequest-i.md)
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the information about an auto-save request.
 <!--Device-autoFillManager-export type SaveRequest = _AutoFillRequest.SaveRequest--><!--Device-autoFillManager-export type SaveRequest = _AutoFillRequest.SaveRequest-End-->
 
 **System capability:** SystemCapability.Ability.AbilityRuntime.AbilityCore
-
-**Type:** [_AutoFillRequest.SaveRequest](arkts-ability-autofillrequest-saverequest-i.md)

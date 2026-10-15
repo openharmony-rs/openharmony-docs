@@ -34,64 +34,6 @@ NONE = 0
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## TRANSLATE_AND_RESIZE
-
-```TypeScript
-TRANSLATE_AND_RESIZE = 1
-```
-
-设置半模态先上抬面板避让软键盘；
-
-当上抬至最大高度仍不足以避让软键盘时，则通过压缩整体内容完成避让。
-
-**起始版本：** 13
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
-
-<!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_RESIZE = 1--><!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_RESIZE = 1-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## RESIZE_ONLY
-
-```TypeScript
-RESIZE_ONLY = 2
-```
-
-设置半模态通过压缩整体内容避让软键盘。
-
-**起始版本：** 13
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
-
-<!--Device-SheetKeyboardAvoidMode-RESIZE_ONLY = 2--><!--Device-SheetKeyboardAvoidMode-RESIZE_ONLY = 2-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## TRANSLATE_AND_SCROLL
-
-```TypeScript
-TRANSLATE_AND_SCROLL = 3
-```
-
-设置半模态先上抬面板避让软键盘；
-
-当上抬至最大高度仍不足以避让软键盘时，则通过滚动内容完成避让。
-
-**起始版本：** 13
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
-
-<!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_SCROLL = 3--><!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_SCROLL = 3-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## POPUP_SHEET
 
 ```TypeScript
@@ -117,5 +59,63 @@ POPUP_SHEET = 4
 **原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-SheetKeyboardAvoidMode-POPUP_SHEET = 4--><!--Device-SheetKeyboardAvoidMode-POPUP_SHEET = 4-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## RESIZE_ONLY
+
+```TypeScript
+RESIZE_ONLY = 2
+```
+
+设置半模态通过压缩整体内容避让软键盘。
+
+**起始版本：** 13
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetKeyboardAvoidMode-RESIZE_ONLY = 2--><!--Device-SheetKeyboardAvoidMode-RESIZE_ONLY = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TRANSLATE_AND_RESIZE
+
+```TypeScript
+TRANSLATE_AND_RESIZE = 1
+```
+
+设置半模态先上抬面板避让软键盘；
+
+当上抬至最大高度仍不足以避让软键盘时，则通过压缩整体内容完成避让。
+
+**起始版本：** 13
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_RESIZE = 1--><!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_RESIZE = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## TRANSLATE_AND_SCROLL
+
+```TypeScript
+TRANSLATE_AND_SCROLL = 3
+```
+
+设置半模态先上抬面板避让软键盘；
+
+当上抬至最大高度仍不足以避让软键盘时，则通过滚动内容完成避让。
+
+**起始版本：** 13
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本13开始，该接口支持在原子化服务中使用。
+
+<!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_SCROLL = 3--><!--Device-SheetKeyboardAvoidMode-TRANSLATE_AND_SCROLL = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

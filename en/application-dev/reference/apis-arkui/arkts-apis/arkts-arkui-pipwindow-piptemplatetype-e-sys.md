@@ -22,7 +22,7 @@ VIDEO_DRIVE = 4
 
 **Since:** 26.0.0
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 26.0.0.
+**Atomic service API:** This API can be used in atomic services since API version 26.0.0.
 
 <!--Device-PiPTemplateType-VIDEO_DRIVE = 4--><!--Device-PiPTemplateType-VIDEO_DRIVE = 4-End-->
 

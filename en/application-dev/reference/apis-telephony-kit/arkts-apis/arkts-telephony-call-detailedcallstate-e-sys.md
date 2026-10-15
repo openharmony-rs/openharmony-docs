@@ -30,38 +30,6 @@ Active state.
 
 **System API:** This is a system API.
 
-## CALL_STATUS_HOLDING
-
-```TypeScript
-CALL_STATUS_HOLDING = 1
-```
-
-Hold state.
-
-**Since:** 7
-
-<!--Device-DetailedCallState-CALL_STATUS_HOLDING = 1--><!--Device-DetailedCallState-CALL_STATUS_HOLDING = 1-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## CALL_STATUS_DIALING
-
-```TypeScript
-CALL_STATUS_DIALING = 2
-```
-
-Dialing state.
-
-**Since:** 7
-
-<!--Device-DetailedCallState-CALL_STATUS_DIALING = 2--><!--Device-DetailedCallState-CALL_STATUS_DIALING = 2-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
 ## CALL_STATUS_ALERTING
 
 ```TypeScript
@@ -78,33 +46,17 @@ Alerting state.
 
 **System API:** This is a system API.
 
-## CALL_STATUS_INCOMING
+## CALL_STATUS_DIALING
 
 ```TypeScript
-CALL_STATUS_INCOMING = 4
+CALL_STATUS_DIALING = 2
 ```
 
-Incoming state.
+Dialing state.
 
 **Since:** 7
 
-<!--Device-DetailedCallState-CALL_STATUS_INCOMING = 4--><!--Device-DetailedCallState-CALL_STATUS_INCOMING = 4-End-->
-
-**System capability:** SystemCapability.Telephony.CallManager
-
-**System API:** This is a system API.
-
-## CALL_STATUS_WAITING
-
-```TypeScript
-CALL_STATUS_WAITING = 5
-```
-
-Enumerates call waiting states.
-
-**Since:** 7
-
-<!--Device-DetailedCallState-CALL_STATUS_WAITING = 5--><!--Device-DetailedCallState-CALL_STATUS_WAITING = 5-End-->
+<!--Device-DetailedCallState-CALL_STATUS_DIALING = 2--><!--Device-DetailedCallState-CALL_STATUS_DIALING = 2-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 
@@ -142,6 +94,22 @@ Disconnecting state.
 
 **System API:** This is a system API.
 
+## CALL_STATUS_HOLDING
+
+```TypeScript
+CALL_STATUS_HOLDING = 1
+```
+
+Hold state.
+
+**Since:** 7
+
+<!--Device-DetailedCallState-CALL_STATUS_HOLDING = 1--><!--Device-DetailedCallState-CALL_STATUS_HOLDING = 1-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
 ## CALL_STATUS_IDLE
 
 ```TypeScript
@@ -153,6 +121,38 @@ Idle state.
 **Since:** 7
 
 <!--Device-DetailedCallState-CALL_STATUS_IDLE = 8--><!--Device-DetailedCallState-CALL_STATUS_IDLE = 8-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## CALL_STATUS_INCOMING
+
+```TypeScript
+CALL_STATUS_INCOMING = 4
+```
+
+Incoming state.
+
+**Since:** 7
+
+<!--Device-DetailedCallState-CALL_STATUS_INCOMING = 4--><!--Device-DetailedCallState-CALL_STATUS_INCOMING = 4-End-->
+
+**System capability:** SystemCapability.Telephony.CallManager
+
+**System API:** This is a system API.
+
+## CALL_STATUS_WAITING
+
+```TypeScript
+CALL_STATUS_WAITING = 5
+```
+
+Enumerates call waiting states.
+
+**Since:** 7
+
+<!--Device-DetailedCallState-CALL_STATUS_WAITING = 5--><!--Device-DetailedCallState-CALL_STATUS_WAITING = 5-End-->
 
 **System capability:** SystemCapability.Telephony.CallManager
 

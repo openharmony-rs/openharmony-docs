@@ -44,6 +44,7 @@ auth(domainAccountInfo: DomainAccountInfo, credential: Uint8Array, callback: IUs
 | credential | Uint8Array | 是 | 指示域账号的凭据。 |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -94,6 +95,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## authWithPopup
 
 ```TypeScript
@@ -117,6 +120,7 @@ authWithPopup(domainAccountInfo: DomainAccountInfo, callback: IUserAuthCallback)
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 指示域账号信息。 |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -151,6 +155,8 @@ let plugin: osAccount.DomainPlugin = {
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
+
+<!--DelEnd-->
 
 ## authWithToken
 
@@ -176,6 +182,7 @@ authWithToken(domainAccountInfo: DomainAccountInfo, token: Uint8Array, callback:
 | token | Uint8Array | 是 | 指示PIN码或生物识别认证成功时生成的授权令牌。 |
 | callback | [IUserAuthCallback](arkts-basicservices-osaccount-iuserauthcallback-i-sys.md) | 是 | 指示认证结果回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -211,6 +218,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## bindAccount
 
 ```TypeScript
@@ -235,6 +244,7 @@ bindAccount(domainAccountInfo: DomainAccountInfo, localId: number, callback: Asy
 | localId | number | 是 | 系统账号ID。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 指示绑定结果回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -270,6 +280,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## getAccessToken
 
 ```TypeScript
@@ -293,6 +305,7 @@ getAccessToken(options: GetDomainAccessTokenOptions, callback: AsyncCallback<Uin
 | options | [GetDomainAccessTokenOptions](arkts-basicservices-osaccount-getdomainaccesstokenoptions-i-sys.md) | 是 | 指示获取域访问令牌的选项。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;Uint8Array&gt; | 是 | 指示结果回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -329,6 +342,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## getAccountInfo
 
 ```TypeScript
@@ -352,6 +367,7 @@ getAccountInfo(options: GetDomainAccountInfoPluginOptions, callback: AsyncCallba
 | options | [GetDomainAccountInfoPluginOptions](arkts-basicservices-osaccount-getdomainaccountinfopluginoptions-i-sys.md) | 是 | 指示域账号信息。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md)&gt; | 是 | 指示查询结果回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -392,6 +408,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## getAuthStatusInfo
 
 ```TypeScript
@@ -415,6 +433,7 @@ getAuthStatusInfo(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 指示域账号信息。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;[AuthStatusInfo](arkts-basicservices-osaccount-authstatusinfo-i-sys.md)&gt; | 是 | 指示查询结果回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -452,6 +471,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## isAccountTokenValid
 
 ```TypeScript
@@ -480,6 +501,7 @@ isAccountTokenValid(
 | token | Uint8Array | 是 | 指示域账号令牌。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | 是 | 指示检查结果回调。true表示指定的域账号令牌是有效的；false表示指定的域账号令牌是无效的。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -515,6 +537,8 @@ let plugin: osAccount.DomainPlugin = {
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
 
+<!--DelEnd-->
+
 ## unbindAccount
 
 ```TypeScript
@@ -538,6 +562,7 @@ unbindAccount(domainAccountInfo: DomainAccountInfo, callback: AsyncCallback<void
 | domainAccountInfo | [DomainAccountInfo](arkts-basicservices-osaccount-domainaccountinfo-i.md) | 是 | 指示域账号信息。 |
 | callback | [AsyncCallback](arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 指示绑定结果回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -572,3 +597,5 @@ let plugin: osAccount.DomainPlugin = {
 }
 osAccount.DomainAccountManager.registerPlugin(plugin)
 ```
+
+<!--DelEnd-->

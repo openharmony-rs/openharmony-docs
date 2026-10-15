@@ -24,7 +24,7 @@ RANDOM_DEVICE_ADDRESS
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DeviceAddressType-RANDOM_DEVICE_ADDRESS--><!--Device-DeviceAddressType-RANDOM_DEVICE_ADDRESS-End-->
 
@@ -40,7 +40,7 @@ REAL_DEVICE_ADDRESS
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-DeviceAddressType-REAL_DEVICE_ADDRESS--><!--Device-DeviceAddressType-REAL_DEVICE_ADDRESS-End-->
 

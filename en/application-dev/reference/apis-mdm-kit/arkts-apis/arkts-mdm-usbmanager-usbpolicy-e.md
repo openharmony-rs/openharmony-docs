@@ -12,19 +12,19 @@ Enumerates the USB storage device access policies.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## READ_WRITE
+## DISABLED
 
 ```TypeScript
-READ_WRITE = 0
+DISABLED = 2
 ```
 
-Read and write.
+Disabled.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-UsbPolicy-READ_WRITE = 0--><!--Device-UsbPolicy-READ_WRITE = 0-End-->
+<!--Device-UsbPolicy-DISABLED = 2--><!--Device-UsbPolicy-DISABLED = 2-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
@@ -44,18 +44,18 @@ Read only.
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager
 
-## DISABLED
+## READ_WRITE
 
 ```TypeScript
-DISABLED = 2
+READ_WRITE = 0
 ```
 
-Disabled.
+Read and write.
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-UsbPolicy-DISABLED = 2--><!--Device-UsbPolicy-DISABLED = 2-End-->
+<!--Device-UsbPolicy-READ_WRITE = 0--><!--Device-UsbPolicy-READ_WRITE = 0-End-->
 
 **System capability:** SystemCapability.Customization.EnterpriseDeviceManager

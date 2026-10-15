@@ -12,22 +12,6 @@ enum FormState
 
 **系统能力：** SystemCapability.Ability.Form
 
-## UNKNOWN
-
-```TypeScript
-UNKNOWN = -1
-```
-
-表示未知状态。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-FormState-UNKNOWN = -1--><!--Device-FormState-UNKNOWN = -1-End-->
-
-**系统能力：** SystemCapability.Ability.Form
-
 ## DEFAULT
 
 ```TypeScript
@@ -38,7 +22,7 @@ DEFAULT = 0
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormState-DEFAULT = 0--><!--Device-FormState-DEFAULT = 0-End-->
 
@@ -54,8 +38,24 @@ READY = 1
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-FormState-READY = 1--><!--Device-FormState-READY = 1-End-->
+
+**系统能力：** SystemCapability.Ability.Form
+
+## UNKNOWN
+
+```TypeScript
+UNKNOWN = -1
+```
+
+表示未知状态。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-FormState-UNKNOWN = -1--><!--Device-FormState-UNKNOWN = -1-End-->
 
 **系统能力：** SystemCapability.Ability.Form

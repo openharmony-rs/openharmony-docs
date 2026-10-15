@@ -14,22 +14,6 @@ export enum SharingIfaceState
 
 **系统接口：** 此接口为系统接口。
 
-## SHARING_NIC_SERVING
-
-```TypeScript
-SHARING_NIC_SERVING = 1
-```
-
-正在网络共享。
-
-**起始版本：** 9
-
-<!--Device-SharingIfaceState-SHARING_NIC_SERVING = 1--><!--Device-SharingIfaceState-SHARING_NIC_SERVING = 1-End-->
-
-**系统能力：** SystemCapability.Communication.NetManager.NetSharing
-
-**系统接口：** 此接口为系统接口。
-
 ## SHARING_NIC_CAN_SERVER
 
 ```TypeScript
@@ -57,6 +41,22 @@ SHARING_NIC_ERROR = 3
 **起始版本：** 9
 
 <!--Device-SharingIfaceState-SHARING_NIC_ERROR = 3--><!--Device-SharingIfaceState-SHARING_NIC_ERROR = 3-End-->
+
+**系统能力：** SystemCapability.Communication.NetManager.NetSharing
+
+**系统接口：** 此接口为系统接口。
+
+## SHARING_NIC_SERVING
+
+```TypeScript
+SHARING_NIC_SERVING = 1
+```
+
+正在网络共享。
+
+**起始版本：** 9
+
+<!--Device-SharingIfaceState-SHARING_NIC_SERVING = 1--><!--Device-SharingIfaceState-SHARING_NIC_SERVING = 1-End-->
 
 **系统能力：** SystemCapability.Communication.NetManager.NetSharing
 

@@ -6,10 +6,10 @@
 import { nfcController } from '@kit.ConnectivityKit';
 ```
 
-## on("nfcStateChange")
+## on('nfcStateChange')
 
 ```TypeScript
-function on(type: "nfcStateChange", callback: Callback<NfcState>): void
+function on(type: 'nfcStateChange', callback: Callback<NfcState>): void
 ```
 
 Enables listening for NFC state changes. This API uses an asynchronous callback to return the result.
@@ -18,7 +18,7 @@ Enables listening for NFC state changes. This API uses an asynchronous callback 
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-nfcController-function on(type: "nfcStateChange", callback: Callback<NfcState>): void--><!--Device-nfcController-function on(type: "nfcStateChange", callback: Callback<NfcState>): void-End-->
+<!--Device-nfcController-function on(type: 'nfcStateChange', callback: Callback<NfcState>): void--><!--Device-nfcController-function on(type: 'nfcStateChange', callback: Callback<NfcState>): void-End-->
 
 **System capability:** SystemCapability.Communication.NFC.Core
 
@@ -26,5 +26,5 @@ Enables listening for NFC state changes. This API uses an asynchronous callback 
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| type | "nfcStateChange" | Yes | Event type. The value is **nfcStateChange**. |
+| type | 'nfcStateChange' | Yes | Event type. The value is **nfcStateChange**. |
 | callback | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-callback-i.md)&lt;[NfcState](arkts-connectivity-nfccontroller-nfcstate-e.md)&gt; | Yes | Callback used to return the NFC state. |

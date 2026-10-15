@@ -6,6 +6,8 @@ declare type RectShape = import('../api/@ohos.arkui.shape').RectShape
 
 Defines the RectShape type.
 
+**Type:** import('../api/@ohos.arkui.shape').RectShape
+
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Defines the RectShape type.
 <!--Device-unnamed-declare type RectShape = import('../api/@ohos.arkui.shape').RectShape--><!--Device-unnamed-declare type RectShape = import('../api/@ohos.arkui.shape').RectShape-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** import('../api/@ohos.arkui.shape').RectShape

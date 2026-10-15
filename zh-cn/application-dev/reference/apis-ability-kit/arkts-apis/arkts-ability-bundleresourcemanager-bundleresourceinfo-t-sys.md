@@ -6,6 +6,8 @@ export type BundleResourceInfo = _BundleResourceInfo
 
 应用配置的图标和名称信息。
 
+**类型：** _BundleResourceInfo
+
 **起始版本：** 11
 
 <!--Device-bundleResourceManager-export type BundleResourceInfo = _BundleResourceInfo--><!--Device-bundleResourceManager-export type BundleResourceInfo = _BundleResourceInfo-End-->
@@ -13,5 +15,3 @@ export type BundleResourceInfo = _BundleResourceInfo
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Resource
 
 **系统接口：** 此接口为系统接口。
-
-**类型：** _BundleResourceInfo

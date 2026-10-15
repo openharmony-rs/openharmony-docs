@@ -1,4 +1,4 @@
-# deprecated PermissionRequestResult
+# PermissionRequestResult
 
 ```TypeScript
 interface PermissionRequestResult

@@ -1,4 +1,4 @@
-# type Stat
+# Stat
 
 ```TypeScript
 declare interface Stat
@@ -348,7 +348,7 @@ readonly ino: number
 
 **废弃版本：** 9
 
-**替代接口：** ino
+**替代接口：** [ino](arkts-corefile-file-fs-stat-i.md#ino)
 
 <!--Device-Stat-readonly ino: number--><!--Device-Stat-readonly ino: number-End-->
 

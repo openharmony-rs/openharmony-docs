@@ -32,6 +32,22 @@ Debug = 1
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
+## Error
+
+```TypeScript
+Error = 4
+```
+
+错误级别。
+
+**起始版本：** 8
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-MessageLevel-Error = 4--><!--Device-MessageLevel-Error = 4-End-->
+
+**系统能力：** SystemCapability.Web.Webview.Core
+
 ## Info
 
 ```TypeScript
@@ -61,22 +77,6 @@ Warn = 3
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-MessageLevel-Warn = 3--><!--Device-MessageLevel-Warn = 3-End-->
-
-**系统能力：** SystemCapability.Web.Webview.Core
-
-## Error
-
-```TypeScript
-Error = 4
-```
-
-错误级别。
-
-**起始版本：** 8
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-MessageLevel-Error = 4--><!--Device-MessageLevel-Error = 4-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 

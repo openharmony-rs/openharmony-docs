@@ -16,6 +16,24 @@ enum ExchangeFreq
 
 **系统接口：** 此接口为系统接口。
 
+## HIGH
+
+```TypeScript
+HIGH = 2
+```
+
+高频率。
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+<!--Device-ExchangeFreq-HIGH = 2--><!--Device-ExchangeFreq-HIGH = 2-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+**系统接口：** 此接口为系统接口。
+
 ## LOW
 
 ```TypeScript
@@ -47,24 +65,6 @@ MID = 1
 **废弃版本：** 11
 
 <!--Device-ExchangeFreq-MID = 1--><!--Device-ExchangeFreq-MID = 1-End-->
-
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
-
-**系统接口：** 此接口为系统接口。
-
-## HIGH
-
-```TypeScript
-HIGH = 2
-```
-
-高频率。
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-<!--Device-ExchangeFreq-HIGH = 2--><!--Device-ExchangeFreq-HIGH = 2-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 

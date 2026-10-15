@@ -37,7 +37,7 @@ Symmetric cipher algorithm used for encoding the private key.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-KeyEncodingConfig-cipherName: string--><!--Device-KeyEncodingConfig-cipherName: string-End-->
 
@@ -55,7 +55,7 @@ Password used for encoding the private key.
 
 **Since:** 18
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-KeyEncodingConfig-password: string--><!--Device-KeyEncodingConfig-password: string-End-->
 

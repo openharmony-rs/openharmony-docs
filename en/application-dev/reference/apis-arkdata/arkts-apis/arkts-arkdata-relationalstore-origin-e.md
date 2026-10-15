@@ -12,20 +12,6 @@ Enumerates the data sources. Use the enum name rather than the enum value.
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 
-## LOCAL
-
-```TypeScript
-LOCAL = 0
-```
-
-Indicates the data source is local.
-
-**Since:** 11
-
-<!--Device-Origin-LOCAL = 0--><!--Device-Origin-LOCAL = 0-End-->
-
-**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
-
 ## CLOUD
 
 ```TypeScript
@@ -37,6 +23,20 @@ Indicates the data source is cloud.
 **Since:** 11
 
 <!--Device-Origin-CLOUD = 1--><!--Device-Origin-CLOUD = 1-End-->
+
+**System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
+
+## LOCAL
+
+```TypeScript
+LOCAL = 0
+```
+
+Indicates the data source is local.
+
+**Since:** 11
+
+<!--Device-Origin-LOCAL = 0--><!--Device-Origin-LOCAL = 0-End-->
 
 **System capability:** SystemCapability.DistributedDataManager.CloudSync.Client
 

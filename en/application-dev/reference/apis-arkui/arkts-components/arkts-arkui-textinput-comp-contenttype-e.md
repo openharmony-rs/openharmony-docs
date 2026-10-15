@@ -12,31 +12,31 @@ Enumerates autofill types.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## USER_NAME
+## ADDRESS_CITY_AND_STATE
 
 ```TypeScript
-USER_NAME = 0
+ADDRESS_CITY_AND_STATE = 31
 ```
 
-[User name] When the password vault is enabled, supports auto-save and auto-fill of the user name.
+[Region] When contextual auto-fill is enabled, supports auto-save and auto-fill of the region.
 
-**Since:** 12
+**Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ContentType-USER_NAME = 0--><!--Device-ContentType-USER_NAME = 0-End-->
+<!--Device-ContentType-ADDRESS_CITY_AND_STATE = 31--><!--Device-ContentType-ADDRESS_CITY_AND_STATE = 31-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PASSWORD
+## BANK_CARD_NUMBER
 
 ```TypeScript
-PASSWORD = 1
+BANK_CARD_NUMBER = 16
 ```
 
-[Password] When the password vault is enabled, supports auto-save and auto-fill of the password.
+[Bank card number] When contextual auto-fill is enabled, supports auto-save and auto-fill of the bank card number.
 
 **Since:** 12
 
@@ -44,17 +44,17 @@ PASSWORD = 1
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-ContentType-PASSWORD = 1--><!--Device-ContentType-PASSWORD = 1-End-->
+<!--Device-ContentType-BANK_CARD_NUMBER = 16--><!--Device-ContentType-BANK_CARD_NUMBER = 16-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## NEW_PASSWORD
+## CITY_ADDRESS
 
 ```TypeScript
-NEW_PASSWORD = 2
+CITY_ADDRESS = 6
 ```
 
-[New password] When the password vault is enabled, supports automatic generation of a new password.
+[City] When contextual auto-fill is enabled, supports auto-save and auto-fill of the city.
 
 **Since:** 12
 
@@ -62,7 +62,151 @@ NEW_PASSWORD = 2
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-ContentType-NEW_PASSWORD = 2--><!--Device-ContentType-NEW_PASSWORD = 2-End-->
+<!--Device-ContentType-CITY_ADDRESS = 6--><!--Device-ContentType-CITY_ADDRESS = 6-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## COUNTRY_ADDRESS
+
+```TypeScript
+COUNTRY_ADDRESS = 8
+```
+
+[Country] When contextual auto-fill is enabled, supports auto-save and auto-fill of the country.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-COUNTRY_ADDRESS = 8--><!--Device-ContentType-COUNTRY_ADDRESS = 8-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## DETAIL_INFO_WITHOUT_STREET
+
+```TypeScript
+DETAIL_INFO_WITHOUT_STREET = 24
+```
+
+[Address without street] When contextual auto-fill is enabled, supports auto-save and auto-fill of the address without street.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-DETAIL_INFO_WITHOUT_STREET = 24--><!--Device-ContentType-DETAIL_INFO_WITHOUT_STREET = 24-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## DISTRICT_ADDRESS
+
+```TypeScript
+DISTRICT_ADDRESS = 5
+```
+
+[District/county] When contextual auto-fill is enabled, supports auto-save and auto-fill of the district/county.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-DISTRICT_ADDRESS = 5--><!--Device-ContentType-DISTRICT_ADDRESS = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## EMAIL_ADDRESS
+
+```TypeScript
+EMAIL_ADDRESS = 15
+```
+
+[Email address] When contextual auto-fill is enabled, supports auto-save and auto-fill of the email address.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-EMAIL_ADDRESS = 15--><!--Device-ContentType-EMAIL_ADDRESS = 15-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ENGINE_NUMBER
+
+```TypeScript
+ENGINE_NUMBER = 36
+```
+
+[Engine number] Auto-save and auto-fill are not supported yet.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContentType-ENGINE_NUMBER = 36--><!--Device-ContentType-ENGINE_NUMBER = 36-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## FLIGHT_NUMBER
+
+```TypeScript
+FLIGHT_NUMBER = 32
+```
+
+[Flight number] Auto-save and auto-fill are not supported yet.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContentType-FLIGHT_NUMBER = 32--><!--Device-ContentType-FLIGHT_NUMBER = 32-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## FORMAT_ADDRESS
+
+```TypeScript
+FORMAT_ADDRESS = 25
+```
+
+[Standard address] When contextual auto-fill is enabled, supports auto-save and auto-fill of the standard address.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-FORMAT_ADDRESS = 25--><!--Device-ContentType-FORMAT_ADDRESS = 25-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## FULL_PHONE_NUMBER
+
+```TypeScript
+FULL_PHONE_NUMBER = 14
+```
+
+[Phone number with country code] When contextual auto-fill is enabled, supports auto-save and auto-fill of the phone number with country code.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-FULL_PHONE_NUMBER = 14--><!--Device-ContentType-FULL_PHONE_NUMBER = 14-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -102,13 +246,13 @@ HOUSE_NUMBER = 4
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## DISTRICT_ADDRESS
+## ID_CARD_NUMBER
 
 ```TypeScript
-DISTRICT_ADDRESS = 5
+ID_CARD_NUMBER = 17
 ```
 
-[District/county] When contextual auto-fill is enabled, supports auto-save and auto-fill of the district/county.
+[ID card number] When contextual auto-fill is enabled, supports auto-save and auto-fill of the ID card number.
 
 **Since:** 12
 
@@ -116,53 +260,107 @@ DISTRICT_ADDRESS = 5
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-ContentType-DISTRICT_ADDRESS = 5--><!--Device-ContentType-DISTRICT_ADDRESS = 5-End-->
+<!--Device-ContentType-ID_CARD_NUMBER = 17--><!--Device-ContentType-ID_CARD_NUMBER = 17-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## CITY_ADDRESS
+## ISSUE_AT
 
 ```TypeScript
-CITY_ADDRESS = 6
+ISSUE_AT = 28
 ```
 
-[City] When contextual auto-fill is enabled, supports auto-save and auto-fill of the city.
+[Passport issuing place] When contextual auto-fill is enabled, supports auto-save and auto-fill of the passport issuing place.
 
-**Since:** 12
+**Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ContentType-CITY_ADDRESS = 6--><!--Device-ContentType-CITY_ADDRESS = 6-End-->
+<!--Device-ContentType-ISSUE_AT = 28--><!--Device-ContentType-ISSUE_AT = 28-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PROVINCE_ADDRESS
+## LICENSE_CHASSIS_NUMBER
 
 ```TypeScript
-PROVINCE_ADDRESS = 7
+LICENSE_CHASSIS_NUMBER = 37
 ```
 
-[Province] When contextual auto-fill is enabled, supports auto-save and auto-fill of the province.
+[Chassis number] Auto-save and auto-fill are not supported yet.
 
-**Since:** 12
+**Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ContentType-PROVINCE_ADDRESS = 7--><!--Device-ContentType-PROVINCE_ADDRESS = 7-End-->
+<!--Device-ContentType-LICENSE_CHASSIS_NUMBER = 37--><!--Device-ContentType-LICENSE_CHASSIS_NUMBER = 37-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## COUNTRY_ADDRESS
+## LICENSE_FILE_NUMBER
 
 ```TypeScript
-COUNTRY_ADDRESS = 8
+LICENSE_FILE_NUMBER = 34
 ```
 
-[Country] When contextual auto-fill is enabled, supports auto-save and auto-fill of the country.
+[Driver's license file number] Auto-save and auto-fill are not supported yet.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContentType-LICENSE_FILE_NUMBER = 34--><!--Device-ContentType-LICENSE_FILE_NUMBER = 34-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## LICENSE_NUMBER
+
+```TypeScript
+LICENSE_NUMBER = 33
+```
+
+[Driver's license number] Auto-save and auto-fill are not supported yet.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContentType-LICENSE_NUMBER = 33--><!--Device-ContentType-LICENSE_NUMBER = 33-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## LICENSE_PLATE
+
+```TypeScript
+LICENSE_PLATE = 35
+```
+
+[License plate number] When contextual auto-fill is enabled, supports auto-save and auto-fill of the license plate number.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContentType-LICENSE_PLATE = 35--><!--Device-ContentType-LICENSE_PLATE = 35-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NEW_PASSWORD
+
+```TypeScript
+NEW_PASSWORD = 2
+```
+
+[New password] When the password vault is enabled, supports automatic generation of a new password.
 
 **Since:** 12
 
@@ -170,7 +368,97 @@ COUNTRY_ADDRESS = 8
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-ContentType-COUNTRY_ADDRESS = 8--><!--Device-ContentType-COUNTRY_ADDRESS = 8-End-->
+<!--Device-ContentType-NEW_PASSWORD = 2--><!--Device-ContentType-NEW_PASSWORD = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## NICKNAME
+
+```TypeScript
+NICKNAME = 23
+```
+
+[Nickname] When contextual auto-fill is enabled, supports auto-save and auto-fill of the nickname.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-NICKNAME = 23--><!--Device-ContentType-NICKNAME = 23-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## ORGANIZATION
+
+```TypeScript
+ORGANIZATION = 29
+```
+
+[Invoice title name] When contextual auto-fill is enabled, supports auto-save and auto-fill of the invoice title name.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContentType-ORGANIZATION = 29--><!--Device-ContentType-ORGANIZATION = 29-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PASSPORT_NUMBER
+
+```TypeScript
+PASSPORT_NUMBER = 26
+```
+
+[Passport number] When contextual auto-fill is enabled, supports auto-save and auto-fill of the passport number.
+
+**Since:** 18
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 18.
+
+<!--Device-ContentType-PASSPORT_NUMBER = 26--><!--Device-ContentType-PASSPORT_NUMBER = 26-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PASSWORD
+
+```TypeScript
+PASSWORD = 1
+```
+
+[Password] When the password vault is enabled, supports auto-save and auto-fill of the password.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-PASSWORD = 1--><!--Device-ContentType-PASSWORD = 1-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## PERSON_FIRST_NAME
+
+```TypeScript
+PERSON_FIRST_NAME = 11
+```
+
+[First name] When contextual auto-fill is enabled, supports auto-save and auto-fill of the first name.
+
+**Since:** 12
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-ContentType-PERSON_FIRST_NAME = 11--><!--Device-ContentType-PERSON_FIRST_NAME = 11-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -210,13 +498,13 @@ PERSON_LAST_NAME = 10
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PERSON_FIRST_NAME
+## PHONE_COUNTRY_CODE
 
 ```TypeScript
-PERSON_FIRST_NAME = 11
+PHONE_COUNTRY_CODE = 13
 ```
 
-[First name] When contextual auto-fill is enabled, supports auto-save and auto-fill of the first name.
+[Country code] When contextual auto-fill is enabled, supports auto-save and auto-fill of the country code.
 
 **Since:** 12
 
@@ -224,7 +512,7 @@ PERSON_FIRST_NAME = 11
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-ContentType-PERSON_FIRST_NAME = 11--><!--Device-ContentType-PERSON_FIRST_NAME = 11-End-->
+<!--Device-ContentType-PHONE_COUNTRY_CODE = 13--><!--Device-ContentType-PHONE_COUNTRY_CODE = 13-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -246,13 +534,13 @@ PHONE_NUMBER = 12
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## PHONE_COUNTRY_CODE
+## PROVINCE_ADDRESS
 
 ```TypeScript
-PHONE_COUNTRY_CODE = 13
+PROVINCE_ADDRESS = 7
 ```
 
-[Country code] When contextual auto-fill is enabled, supports auto-save and auto-fill of the country code.
+[Province] When contextual auto-fill is enabled, supports auto-save and auto-fill of the province.
 
 **Since:** 12
 
@@ -260,205 +548,7 @@ PHONE_COUNTRY_CODE = 13
 
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-ContentType-PHONE_COUNTRY_CODE = 13--><!--Device-ContentType-PHONE_COUNTRY_CODE = 13-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## FULL_PHONE_NUMBER
-
-```TypeScript
-FULL_PHONE_NUMBER = 14
-```
-
-[Phone number with country code] When contextual auto-fill is enabled, supports auto-save and auto-fill of the phone number with country code.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ContentType-FULL_PHONE_NUMBER = 14--><!--Device-ContentType-FULL_PHONE_NUMBER = 14-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## EMAIL_ADDRESS
-
-```TypeScript
-EMAIL_ADDRESS = 15
-```
-
-[Email address] When contextual auto-fill is enabled, supports auto-save and auto-fill of the email address.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ContentType-EMAIL_ADDRESS = 15--><!--Device-ContentType-EMAIL_ADDRESS = 15-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## BANK_CARD_NUMBER
-
-```TypeScript
-BANK_CARD_NUMBER = 16
-```
-
-[Bank card number] When contextual auto-fill is enabled, supports auto-save and auto-fill of the bank card number.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ContentType-BANK_CARD_NUMBER = 16--><!--Device-ContentType-BANK_CARD_NUMBER = 16-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ID_CARD_NUMBER
-
-```TypeScript
-ID_CARD_NUMBER = 17
-```
-
-[ID card number] When contextual auto-fill is enabled, supports auto-save and auto-fill of the ID card number.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ContentType-ID_CARD_NUMBER = 17--><!--Device-ContentType-ID_CARD_NUMBER = 17-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## NICKNAME
-
-```TypeScript
-NICKNAME = 23
-```
-
-[Nickname] When contextual auto-fill is enabled, supports auto-save and auto-fill of the nickname.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ContentType-NICKNAME = 23--><!--Device-ContentType-NICKNAME = 23-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## DETAIL_INFO_WITHOUT_STREET
-
-```TypeScript
-DETAIL_INFO_WITHOUT_STREET = 24
-```
-
-[Address without street] When contextual auto-fill is enabled, supports auto-save and auto-fill of the address without street.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ContentType-DETAIL_INFO_WITHOUT_STREET = 24--><!--Device-ContentType-DETAIL_INFO_WITHOUT_STREET = 24-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## FORMAT_ADDRESS
-
-```TypeScript
-FORMAT_ADDRESS = 25
-```
-
-[Standard address] When contextual auto-fill is enabled, supports auto-save and auto-fill of the standard address.
-
-**Since:** 12
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-ContentType-FORMAT_ADDRESS = 25--><!--Device-ContentType-FORMAT_ADDRESS = 25-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## PASSPORT_NUMBER
-
-```TypeScript
-PASSPORT_NUMBER = 26
-```
-
-[Passport number] When contextual auto-fill is enabled, supports auto-save and auto-fill of the passport number.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-PASSPORT_NUMBER = 26--><!--Device-ContentType-PASSPORT_NUMBER = 26-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## VALIDITY
-
-```TypeScript
-VALIDITY = 27
-```
-
-[Passport validity] When contextual auto-fill is enabled, supports auto-save and auto-fill of the passport validity.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-VALIDITY = 27--><!--Device-ContentType-VALIDITY = 27-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ISSUE_AT
-
-```TypeScript
-ISSUE_AT = 28
-```
-
-[Passport issuing place] When contextual auto-fill is enabled, supports auto-save and auto-fill of the passport issuing place.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-ISSUE_AT = 28--><!--Device-ContentType-ISSUE_AT = 28-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ORGANIZATION
-
-```TypeScript
-ORGANIZATION = 29
-```
-
-[Invoice title name] When contextual auto-fill is enabled, supports auto-save and auto-fill of the invoice title name.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-ORGANIZATION = 29--><!--Device-ContentType-ORGANIZATION = 29-End-->
+<!--Device-ContentType-PROVINCE_ADDRESS = 7--><!--Device-ContentType-PROVINCE_ADDRESS = 7-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -480,31 +570,31 @@ TAX_ID = 30
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## ADDRESS_CITY_AND_STATE
+## USER_NAME
 
 ```TypeScript
-ADDRESS_CITY_AND_STATE = 31
+USER_NAME = 0
 ```
 
-[Region] When contextual auto-fill is enabled, supports auto-save and auto-fill of the region.
+[User name] When the password vault is enabled, supports auto-save and auto-fill of the user name.
 
-**Since:** 18
+**Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 18.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-ContentType-ADDRESS_CITY_AND_STATE = 31--><!--Device-ContentType-ADDRESS_CITY_AND_STATE = 31-End-->
+<!--Device-ContentType-USER_NAME = 0--><!--Device-ContentType-USER_NAME = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## FLIGHT_NUMBER
+## VALIDITY
 
 ```TypeScript
-FLIGHT_NUMBER = 32
+VALIDITY = 27
 ```
 
-[Flight number] Auto-save and auto-fill are not supported yet.
+[Passport validity] When contextual auto-fill is enabled, supports auto-save and auto-fill of the passport validity.
 
 **Since:** 18
 
@@ -512,96 +602,6 @@ FLIGHT_NUMBER = 32
 
 **Atomic service API:** This API can be used in atomic services since API version 18.
 
-<!--Device-ContentType-FLIGHT_NUMBER = 32--><!--Device-ContentType-FLIGHT_NUMBER = 32-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## LICENSE_NUMBER
-
-```TypeScript
-LICENSE_NUMBER = 33
-```
-
-[Driver's license number] Auto-save and auto-fill are not supported yet.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-LICENSE_NUMBER = 33--><!--Device-ContentType-LICENSE_NUMBER = 33-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## LICENSE_FILE_NUMBER
-
-```TypeScript
-LICENSE_FILE_NUMBER = 34
-```
-
-[Driver's license file number] Auto-save and auto-fill are not supported yet.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-LICENSE_FILE_NUMBER = 34--><!--Device-ContentType-LICENSE_FILE_NUMBER = 34-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## LICENSE_PLATE
-
-```TypeScript
-LICENSE_PLATE = 35
-```
-
-[License plate number] When contextual auto-fill is enabled, supports auto-save and auto-fill of the license plate number.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-LICENSE_PLATE = 35--><!--Device-ContentType-LICENSE_PLATE = 35-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## ENGINE_NUMBER
-
-```TypeScript
-ENGINE_NUMBER = 36
-```
-
-[Engine number] Auto-save and auto-fill are not supported yet.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-ENGINE_NUMBER = 36--><!--Device-ContentType-ENGINE_NUMBER = 36-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## LICENSE_CHASSIS_NUMBER
-
-```TypeScript
-LICENSE_CHASSIS_NUMBER = 37
-```
-
-[Chassis number] Auto-save and auto-fill are not supported yet.
-
-**Since:** 18
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 18.
-
-<!--Device-ContentType-LICENSE_CHASSIS_NUMBER = 37--><!--Device-ContentType-LICENSE_CHASSIS_NUMBER = 37-End-->
+<!--Device-ContentType-VALIDITY = 27--><!--Device-ContentType-VALIDITY = 27-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

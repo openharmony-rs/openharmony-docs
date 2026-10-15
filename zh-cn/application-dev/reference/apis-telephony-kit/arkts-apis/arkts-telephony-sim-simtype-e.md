@@ -12,20 +12,6 @@ SIM卡类型的枚举。
 
 **系统能力：** SystemCapability.Telephony.CoreService
 
-## PSIM
-
-```TypeScript
-PSIM = 0
-```
-
-实体SIM卡。
-
-**起始版本：** 20
-
-<!--Device-SimType-PSIM = 0--><!--Device-SimType-PSIM = 0-End-->
-
-**系统能力：** SystemCapability.Telephony.CoreService
-
 ## ESIM
 
 ```TypeScript
@@ -37,5 +23,19 @@ ESIM = 1
 **起始版本：** 20
 
 <!--Device-SimType-ESIM = 1--><!--Device-SimType-ESIM = 1-End-->
+
+**系统能力：** SystemCapability.Telephony.CoreService
+
+## PSIM
+
+```TypeScript
+PSIM = 0
+```
+
+实体SIM卡。
+
+**起始版本：** 20
+
+<!--Device-SimType-PSIM = 0--><!--Device-SimType-PSIM = 0-End-->
 
 **系统能力：** SystemCapability.Telephony.CoreService

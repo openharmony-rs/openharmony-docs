@@ -6,6 +6,8 @@ declare type ParticleTuple<T1, T2> = [T1, T2]
 
 Defines the particle tuple, which defines the type of animation parameter configuration value pairs.
 
+**Type:** [T1, T2]
+
 **Since:** 18
 
 **Model restriction:** This API can be used only in the stage model.
@@ -15,5 +17,3 @@ Defines the particle tuple, which defines the type of animation parameter config
 <!--Device-unnamed-declare type ParticleTuple<T1, T2> = [T1, T2]--><!--Device-unnamed-declare type ParticleTuple<T1, T2> = [T1, T2]-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-**Type:** [T1, T2]

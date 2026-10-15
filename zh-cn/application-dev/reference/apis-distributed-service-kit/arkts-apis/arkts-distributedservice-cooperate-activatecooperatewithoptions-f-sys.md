@@ -48,6 +48,7 @@ function activateCooperateWithOptions(targetNetworkId: string, inputDeviceId: nu
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Permission verification failed. A non-system application calls a system API. |
 | [20900001](../errorcode-devicestatus.md#20900001-操作输入设备失败) | Service exception. Possible causes:<br>1. A system error, such as null pointer, container-related exception, or IPC exception. <br>2. N-API invocation exception or invalid N-API status. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -65,3 +66,5 @@ try {
   console.error(`activateCooperateWithOptions, error: ${JSON.stringify(error, [`code`, `message`])}`);
 }
 ```
+
+<!--DelEnd-->

@@ -6,6 +6,8 @@
 import { screenLockFileManager } from '@kit.AbilityKit';
 ```
 
+<a id="releaseaccess1"></a>
+
 ## releaseAccess
 
 ```TypeScript

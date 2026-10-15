@@ -18,6 +18,44 @@ enum DeviceStateChangeAction
 
 **系统接口：** 此接口为系统接口。
 
+## CHANGE
+
+```TypeScript
+CHANGE = 3
+```
+
+设备信息更改。
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+<!--Device-DeviceStateChangeAction-CHANGE = 3--><!--Device-DeviceStateChangeAction-CHANGE = 3-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+**系统接口：** 此接口为系统接口。
+
+## OFFLINE
+
+```TypeScript
+OFFLINE = 2
+```
+
+设备物理下线状态。
+
+**起始版本：** 7
+
+**废弃版本：** 11
+
+**替代接口：** [UNAVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#unavailable)
+
+<!--Device-DeviceStateChangeAction-OFFLINE = 2--><!--Device-DeviceStateChangeAction-OFFLINE = 2-End-->
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
+**系统接口：** 此接口为系统接口。
+
 ## ONLINE
 
 ```TypeScript
@@ -53,44 +91,6 @@ READY = 1
 **替代接口：** [AVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#available)
 
 <!--Device-DeviceStateChangeAction-READY = 1--><!--Device-DeviceStateChangeAction-READY = 1-End-->
-
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
-
-**系统接口：** 此接口为系统接口。
-
-## OFFLINE
-
-```TypeScript
-OFFLINE = 2
-```
-
-设备物理下线状态。
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-**替代接口：** [UNAVAILABLE](arkts-distributedservice-distributeddevicemanager-devicestatechange-e.md#unavailable)
-
-<!--Device-DeviceStateChangeAction-OFFLINE = 2--><!--Device-DeviceStateChangeAction-OFFLINE = 2-End-->
-
-**系统能力：** SystemCapability.DistributedHardware.DeviceManager
-
-**系统接口：** 此接口为系统接口。
-
-## CHANGE
-
-```TypeScript
-CHANGE = 3
-```
-
-设备信息更改。
-
-**起始版本：** 7
-
-**废弃版本：** 11
-
-<!--Device-DeviceStateChangeAction-CHANGE = 3--><!--Device-DeviceStateChangeAction-CHANGE = 3-End-->
 
 **系统能力：** SystemCapability.DistributedHardware.DeviceManager
 

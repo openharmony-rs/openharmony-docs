@@ -11,5 +11,5 @@ A DataAbilityHelper object is obtained through
 
 | Name | Description |
 | --- | --- |
-| [DataAbilityHelper](arkts-ability-dataabilityhelper-dataabilityhelper-i.md) | A DataAbilityHelper object is obtained through [acquireDataAbilityHelper](arkts-ability-featureability-acquiredataabilityhelper-f.md). |
+| [DataAbilityHelper](arkts-ability-dataabilityhelper-i.md) | A DataAbilityHelper object is obtained through [acquireDataAbilityHelper](arkts-ability-featureability-acquiredataabilityhelper-f.md). |
 | [PacMap](arkts-ability-dataabilityhelper-pacmap-i.md) | Defines the PacMap type used for data storage. |

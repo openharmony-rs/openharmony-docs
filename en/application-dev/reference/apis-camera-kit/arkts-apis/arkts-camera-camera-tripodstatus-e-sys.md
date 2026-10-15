@@ -14,22 +14,6 @@ Enumerates the tripod statuses.
 
 **System API:** This is a system API.
 
-## INVALID
-
-```TypeScript
-INVALID = 0
-```
-
-Error status, or no tripod detected. This is a system API.
-
-**Since:** 13
-
-<!--Device-TripodStatus-INVALID = 0--><!--Device-TripodStatus-INVALID = 0-End-->
-
-**System capability:** SystemCapability.Multimedia.Camera.Core
-
-**System API:** This is a system API.
-
 ## ACTIVE
 
 ```TypeScript
@@ -73,6 +57,22 @@ The system is leaving the stable tripod mode. This is a system API.
 **Since:** 13
 
 <!--Device-TripodStatus-EXITING = 3--><!--Device-TripodStatus-EXITING = 3-End-->
+
+**System capability:** SystemCapability.Multimedia.Camera.Core
+
+**System API:** This is a system API.
+
+## INVALID
+
+```TypeScript
+INVALID = 0
+```
+
+Error status, or no tripod detected. This is a system API.
+
+**Since:** 13
+
+<!--Device-TripodStatus-INVALID = 0--><!--Device-TripodStatus-INVALID = 0-End-->
 
 **System capability:** SystemCapability.Multimedia.Camera.Core
 

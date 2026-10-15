@@ -6,6 +6,8 @@
 import { statistics } from '@kit.NetworkKit';
 ```
 
+<a id="getallrxbytes1"></a>
+
 ## getAllRxBytes
 
 ```TypeScript
@@ -16,7 +18,7 @@ function getAllRxBytes(callback: AsyncCallback<number>): void
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-statistics-function getAllRxBytes(callback: AsyncCallback<long>): void--><!--Device-statistics-function getAllRxBytes(callback: AsyncCallback<long>): void-End-->
 
@@ -53,7 +55,7 @@ statistics.getAllRxBytes((error: BusinessError, stats: number) => {
 ```
 
 
-<a id="getallrxbytes-1"></a>
+<a id="getallrxbytes2"></a>
 
 ## getAllRxBytes
 
@@ -65,7 +67,7 @@ function getAllRxBytes(): Promise<number>
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
 <!--Device-statistics-function getAllRxBytes(): Promise<long>--><!--Device-statistics-function getAllRxBytes(): Promise<long>-End-->
 

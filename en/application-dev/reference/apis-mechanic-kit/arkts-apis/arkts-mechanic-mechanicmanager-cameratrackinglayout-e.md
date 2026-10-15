@@ -4,7 +4,7 @@
 export enum CameraTrackingLayout
 ```
 
-Enumerates the camera tracking layouts. @enum { int }
+Enumerates the camera tracking layouts.
 
 **Since:** 20
 

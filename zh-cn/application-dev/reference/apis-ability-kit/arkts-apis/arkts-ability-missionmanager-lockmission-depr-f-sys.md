@@ -5,6 +5,8 @@
 ```TypeScript
 ```
 
+<a id="lockmission1"></a>
+
 ## lockMission
 
 ```TypeScript
@@ -34,6 +36,7 @@ function lockMission(missionId: number, callback: AsyncCallback<void>): void
 | missionId | number | 是 | 任务ID。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数，当锁定指定任务id的任务成功，err为undefined，否则为错误对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -56,8 +59,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="lockmission-1"></a>
+
+<a id="lockmission2"></a>
 
 ## lockMission
 
@@ -93,6 +98,7 @@ function lockMission(missionId: number): Promise<void>
 | --- | --- |
 | Promise&lt;void&gt; | Promise对象。无返回结果的Promise对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -112,3 +118,5 @@ try {
   console.error(`lockMission sync failed. Code: ${err.code}, message: ${err.message}.`);
 }
 ```
+
+<!--DelEnd-->

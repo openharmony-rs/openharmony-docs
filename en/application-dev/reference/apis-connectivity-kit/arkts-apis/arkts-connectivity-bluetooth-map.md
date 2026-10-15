@@ -20,7 +20,7 @@ import { map } from '@kit.ConnectivityKit';
 
 | Name | Description |
 | --- | --- |
-| [createMapMseProfile](arkts-connectivity-map-createmapmseprofile-f.md) | create the instance of MAP MSE profile. |
+| [createMapMseProfile](arkts-connectivity-map-createmapmseprofile-f.md#createmapmseprofile) | create the instance of MAP MSE profile. |
 
 <!--Del-->
 ### Interfaces(System API)

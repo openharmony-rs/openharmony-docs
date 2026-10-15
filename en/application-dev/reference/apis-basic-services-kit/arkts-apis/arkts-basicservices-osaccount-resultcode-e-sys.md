@@ -14,17 +14,33 @@ Enumerates the authentication result codes.
 
 **System API:** This is a system API.
 
-## SUCCESS
+## BUSY
 
 ```TypeScript
-SUCCESS = 0
+BUSY = 7
 ```
 
-The authentication is successful or the authentication feature is supported.
+The authentication executor is busy. Try again after a few seconds.
 
 **Since:** 8
 
-<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
+<!--Device-ResultCode-BUSY = 7--><!--Device-ResultCode-BUSY = 7-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## CANCELED
+
+```TypeScript
+CANCELED = 3
+```
+
+The authentication is canceled.
+
+**Since:** 8
+
+<!--Device-ResultCode-CANCELED = 3--><!--Device-ResultCode-CANCELED = 3-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -57,86 +73,6 @@ Other errors.
 **Since:** 8
 
 <!--Device-ResultCode-GENERAL_ERROR = 2--><!--Device-ResultCode-GENERAL_ERROR = 2-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## CANCELED
-
-```TypeScript
-CANCELED = 3
-```
-
-The authentication is canceled.
-
-**Since:** 8
-
-<!--Device-ResultCode-CANCELED = 3--><!--Device-ResultCode-CANCELED = 3-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## TIMEOUT
-
-```TypeScript
-TIMEOUT = 4
-```
-
-The authentication timed out.
-
-**Since:** 8
-
-<!--Device-ResultCode-TIMEOUT = 4--><!--Device-ResultCode-TIMEOUT = 4-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## TYPE_NOT_SUPPORT
-
-```TypeScript
-TYPE_NOT_SUPPORT = 5
-```
-
-The authentication credential type is not supported.
-
-**Since:** 8
-
-<!--Device-ResultCode-TYPE_NOT_SUPPORT = 5--><!--Device-ResultCode-TYPE_NOT_SUPPORT = 5-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## TRUST_LEVEL_NOT_SUPPORT
-
-```TypeScript
-TRUST_LEVEL_NOT_SUPPORT = 6
-```
-
-The authentication trust level is not supported.
-
-**Since:** 8
-
-<!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6--><!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6-End-->
-
-**System capability:** SystemCapability.Account.OsAccount
-
-**System API:** This is a system API.
-
-## BUSY
-
-```TypeScript
-BUSY = 7
-```
-
-The authentication executor is busy. Try again after a few seconds.
-
-**Since:** 8
-
-<!--Device-ResultCode-BUSY = 7--><!--Device-ResultCode-BUSY = 7-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 
@@ -185,6 +121,70 @@ The authentication executor is not enrolled.
 **Since:** 8
 
 <!--Device-ResultCode-NOT_ENROLLED = 10--><!--Device-ResultCode-NOT_ENROLLED = 10-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## SUCCESS
+
+```TypeScript
+SUCCESS = 0
+```
+
+The authentication is successful or the authentication feature is supported.
+
+**Since:** 8
+
+<!--Device-ResultCode-SUCCESS = 0--><!--Device-ResultCode-SUCCESS = 0-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## TIMEOUT
+
+```TypeScript
+TIMEOUT = 4
+```
+
+The authentication timed out.
+
+**Since:** 8
+
+<!--Device-ResultCode-TIMEOUT = 4--><!--Device-ResultCode-TIMEOUT = 4-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## TRUST_LEVEL_NOT_SUPPORT
+
+```TypeScript
+TRUST_LEVEL_NOT_SUPPORT = 6
+```
+
+The authentication trust level is not supported.
+
+**Since:** 8
+
+<!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6--><!--Device-ResultCode-TRUST_LEVEL_NOT_SUPPORT = 6-End-->
+
+**System capability:** SystemCapability.Account.OsAccount
+
+**System API:** This is a system API.
+
+## TYPE_NOT_SUPPORT
+
+```TypeScript
+TYPE_NOT_SUPPORT = 5
+```
+
+The authentication credential type is not supported.
+
+**Since:** 8
+
+<!--Device-ResultCode-TYPE_NOT_SUPPORT = 5--><!--Device-ResultCode-TYPE_NOT_SUPPORT = 5-End-->
 
 **System capability:** SystemCapability.Account.OsAccount
 

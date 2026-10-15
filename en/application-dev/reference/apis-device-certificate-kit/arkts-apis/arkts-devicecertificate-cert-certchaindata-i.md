@@ -30,7 +30,7 @@ Number of certificates contained in the input data.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CertChainData-count: int--><!--Device-CertChainData-count: int-End-->
 
@@ -48,7 +48,7 @@ Certificate data.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CertChainData-data: Uint8Array--><!--Device-CertChainData-data: Uint8Array-End-->
 
@@ -66,7 +66,7 @@ Certificate encoding format.
 
 **Since:** 9
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-CertChainData-encodingFormat: EncodingFormat--><!--Device-CertChainData-encodingFormat: EncodingFormat-End-->
 

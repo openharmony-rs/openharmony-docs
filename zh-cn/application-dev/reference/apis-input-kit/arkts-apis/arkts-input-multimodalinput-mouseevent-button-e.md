@@ -12,6 +12,48 @@ export declare enum Button
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 
+## BACK
+
+```TypeScript
+BACK = 6
+```
+
+鼠标后退键。
+
+**起始版本：** 9
+
+<!--Device-Button-BACK = 6--><!--Device-Button-BACK = 6-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## EXTRA
+
+```TypeScript
+EXTRA = 4
+```
+
+鼠标扩展键。
+
+**起始版本：** 9
+
+<!--Device-Button-EXTRA = 4--><!--Device-Button-EXTRA = 4-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
+## FORWARD
+
+```TypeScript
+FORWARD = 5
+```
+
+鼠标前进键。
+
+**起始版本：** 9
+
+<!--Device-Button-FORWARD = 5--><!--Device-Button-FORWARD = 5-End-->
+
+**系统能力：** SystemCapability.MultimodalInput.Input.Core
+
 ## LEFT
 
 ```TypeScript
@@ -65,48 +107,6 @@ SIDE = 3
 **起始版本：** 9
 
 <!--Device-Button-SIDE = 3--><!--Device-Button-SIDE = 3-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
-## EXTRA
-
-```TypeScript
-EXTRA = 4
-```
-
-鼠标扩展键。
-
-**起始版本：** 9
-
-<!--Device-Button-EXTRA = 4--><!--Device-Button-EXTRA = 4-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
-## FORWARD
-
-```TypeScript
-FORWARD = 5
-```
-
-鼠标前进键。
-
-**起始版本：** 9
-
-<!--Device-Button-FORWARD = 5--><!--Device-Button-FORWARD = 5-End-->
-
-**系统能力：** SystemCapability.MultimodalInput.Input.Core
-
-## BACK
-
-```TypeScript
-BACK = 6
-```
-
-鼠标后退键。
-
-**起始版本：** 9
-
-<!--Device-Button-BACK = 6--><!--Device-Button-BACK = 6-End-->
 
 **系统能力：** SystemCapability.MultimodalInput.Input.Core
 

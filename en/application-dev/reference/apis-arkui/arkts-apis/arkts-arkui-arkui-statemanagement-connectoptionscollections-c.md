@@ -4,11 +4,11 @@
 export class ConnectOptionsCollections<T extends CollectionType<S>, S extends object> extends ConnectOptions<T>
 ```
 
-Defines the parameter type for the globalConnect API. **ConnectOptionsCollections** is inherited from [ConnectOptions\&lt;T\&gt;](arkts-arkui-arkui-statemanagement-connectoptions-c.md). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\&lt;S&gt;**).
+Defines the parameter type for the globalConnect API. **ConnectOptionsCollections** is inherited from [ConnectOptions\<T\>](arkts-arkui-arkui-statemanagement-connectoptions-c.md). You can use the **ConnectOptionsCollections** input parameter to persist container data (such as **Array\<S>**).
 
-The following shows the examples of **StorageDefaultCreator\&lt;T&gt;** and **StorageDefaultCreator\&lt;S&gt;**:
+The following shows the examples of **StorageDefaultCreator\<T>** and **StorageDefaultCreator\<S>**:
 
-**Inheritance/Implementation:** ConnectOptionsCollections extends ConnectOptions<T>
+**Inheritance/Implementation:** ConnectOptionsCollections extends ConnectOptions&lt;T&gt;
 
 **Since:** 23
 
@@ -46,7 +46,7 @@ Persists container data. **defaultSubCreator** should be provided together with 
 defaultSubCreator?: StorageDefaultCreator<S>
 ```
 
-Default constructor function of the collection item, which is used to persist container data. When this parameter is used, **defaultCreator** must also be provided; otherwise, persistence will fail. When container data is persisted, if this parameter is not passed in, or if **defaultSubCreator** returns **undefined** or **null**, the persistence operation will fail. When a collection of user-defined classes (such as **Array&lt;ClassA&gt;**) is persisted, the generic type **T** in **defaultCreator** is **Array&lt;ClassA&gt;**, and **S** in **defaultSubCreator** is **ClassA**.
+Default constructor function of the collection item, which is used to persist container data. When this parameter is used, **defaultCreator** must also be provided; otherwise, persistence will fail. When container data is persisted, if this parameter is not passed in, or if **defaultSubCreator** returns **undefined** or **null**, the persistence operation will fail. When a collection of user-defined classes (such as **Array<ClassA>**) is persisted, the generic type **T** in **defaultCreator** is **Array<ClassA>**, and **S** in **defaultSubCreator** is **ClassA**.
 
 **Since:** 23
 

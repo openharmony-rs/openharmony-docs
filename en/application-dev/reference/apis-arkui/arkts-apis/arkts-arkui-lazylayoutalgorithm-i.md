@@ -4,7 +4,7 @@
 export interface LazyLayoutAlgorithm
 ```
 
-Defines lazy layout algorithm.
+Provides the details about the lazy loading layout algorithms supported by the [LazyDynamicLayout](../../../reference/apis-arkui/arkui-ts/ts-container-lazydynamiclayout.md) component, helping you customize measurement and arrangement of child components, obtain visible area information, and control the active state of child components.
 
 **Since:** 26.0.0
 

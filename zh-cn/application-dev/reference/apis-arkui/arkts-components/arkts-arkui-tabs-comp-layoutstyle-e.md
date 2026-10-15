@@ -4,31 +4,11 @@
 declare enum LayoutStyle
 ```
 
-[Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode-2)模式下不滚动时的页签排布方式枚举。
+[Scrollable](arkts-arkui-tabs-comp-attribute.md#barmode3)模式下不滚动时的页签排布方式枚举。
 
 **起始版本：** 10
 
 <!--Device-unnamed-declare enum LayoutStyle--><!--Device-unnamed-declare enum LayoutStyle-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
-## ALWAYS_CENTER
-
-```TypeScript
-ALWAYS_CENTER = 0
-```
-
-当页签内容超过TabBar宽度时，TabBar可滚动。
-
-当页签内容不超过TabBar宽度时，TabBar不可滚动，页签紧凑居中。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-LayoutStyle-ALWAYS_CENTER = 0--><!--Device-LayoutStyle-ALWAYS_CENTER = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -49,6 +29,26 @@ ALWAYS_AVERAGE_SPLIT = 1
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-LayoutStyle-ALWAYS_AVERAGE_SPLIT = 1--><!--Device-LayoutStyle-ALWAYS_AVERAGE_SPLIT = 1-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## ALWAYS_CENTER
+
+```TypeScript
+ALWAYS_CENTER = 0
+```
+
+当页签内容超过TabBar宽度时，TabBar可滚动。
+
+当页签内容不超过TabBar宽度时，TabBar不可滚动，页签紧凑居中。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-LayoutStyle-ALWAYS_CENTER = 0--><!--Device-LayoutStyle-ALWAYS_CENTER = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

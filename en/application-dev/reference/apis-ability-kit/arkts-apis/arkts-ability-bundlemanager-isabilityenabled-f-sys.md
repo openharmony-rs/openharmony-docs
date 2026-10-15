@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.AbilityKit';
 ```
 
+<a id="isabilityenabled1"></a>
+
 ## isAbilityEnabled
 
 ```TypeScript
@@ -45,6 +47,7 @@ Checks whether an ability of an application or an application clone is enabled. 
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified abilityName is not found. |
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | AppIndex not in valid range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -79,8 +82,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="isabilityenabled-1"></a>
+
+<a id="isabilityenabled2"></a>
 
 ## isAbilityEnabled
 
@@ -103,7 +108,7 @@ Checks whether an ability is enabled. This API uses an asynchronous callback to 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | info | [AbilityInfo](arkts-ability-bundlemanager-abilityinfo-t.md) | Yes | Information about the target ability. |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | [Callback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md) used to return the result. **true** if enabled, **false** otherwise. |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;boolean&gt; | Yes | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md). The value **true** indicates that the application component is enabled, and **false** indicates that the application component is disabled. |
 
 **Error codes:**
 
@@ -114,6 +119,7 @@ Checks whether an ability is enabled. This API uses an asynchronous callback to 
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified abilityName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -150,8 +156,10 @@ try {
 }
 ```
 
+<!--DelEnd-->
 
-<a id="isabilityenabled-2"></a>
+
+<a id="isabilityenabled3"></a>
 
 ## isAbilityEnabled
 
@@ -190,6 +198,7 @@ Checks whether an ability is enabled. This API uses a promise to return the resu
 | [17700001](../errorcode-bundle.md#17700001-bundle-name-does-not-exist) | The specified bundleName is not found. |
 | [17700003](../errorcode-bundle.md#17700003-ability-name-does-not-exist) | The specified abilityName is not found. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -223,3 +232,5 @@ try {
   hilog.error(0x0000, 'testTag', 'queryAbilityInfo failed. Cause: %{public}s', message);
 }
 ```
+
+<!--DelEnd-->

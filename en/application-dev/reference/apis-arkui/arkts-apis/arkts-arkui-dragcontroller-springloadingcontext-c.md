@@ -24,7 +24,7 @@ import { dragController } from '@kit.ArkUI';
 abort(): void
 ```
 
-Terminates subsequent hover detection. This API does not trigger CANCEL state notifications, and the application needs to perform state cleanup when executing this API.
+Terminates subsequent hover detection. This API should be called through the **SpringLoadingContext** object in the hover detection callback. This API does not trigger the **CANCEL** state notification, and the application needs to perform state cleanup when executing this API.
 
 **Since:** 20
 
@@ -58,7 +58,7 @@ Updates the hover detection configuration. This API is effective only when the h
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| config | [DragSpringLoadingConfiguration](arkts-arkui-dragcontroller-dragspringloadingconfiguration-i.md) | Yes | New configuration for hover detection. |
+| config | [DragSpringLoadingConfiguration](arkts-arkui-dragcontroller-dragspringloadingconfiguration-i.md) | Yes | Hover detection configuration to be updated, which is used to dynamically set the stationary time for entering the **BEGIN** state, **UPDATE** notification interval, notification count, and end wait time. This takes effect only when the hover detection state is **BEGIN**. |
 
 ## currentConfig
 

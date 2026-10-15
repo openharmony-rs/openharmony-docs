@@ -28,7 +28,7 @@ static getAvailableIDs(): string[]
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Transliterator-static getAvailableIDs(): string[]--><!--Device-Transliterator-static getAvailableIDs(): string[]-End-->
 
@@ -60,7 +60,7 @@ static getInstance(id: string): Transliterator
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Transliterator-static getInstance(id: string): Transliterator--><!--Device-Transliterator-static getInstance(id: string): Transliterator-End-->
 
@@ -96,7 +96,7 @@ transform(text: string): string
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Transliterator-transform(text: string): string--><!--Device-Transliterator-transform(text: string): string-End-->
 
@@ -120,11 +120,10 @@ transform(text: string): string
 import { i18n } from '@kit.LocalizationKit';
 
 let transliterator: i18n.Transliterator = i18n.Transliterator.getInstance('Any-Latn');
-let wordArray: string[] = ['中国', '德国', '美国', '法国']
-for (let i = 0; i < wordArray.length; i++) {
-  let transliterateLatn: string =
-    transliterator.transform(wordArray[i]); // transliterateLatn依次为：'zhōng guó', 'dé guó', 'měi guó', 'fǎ guó'
-}
+let wordArray: string[] = ['中国', '德国', '美国', '法国'];
+wordArray.forEach((word: string): void => {
+  let transliterateLatn: string = transliterator.transform(word); // transliterateLatn依次为：'zhōng guó', 'dé guó', 'měi guó', 'fǎ guó'
+});
 
 // 汉语音译去声调
 transliterator = i18n.Transliterator.getInstance('Any-Latn;Latin-Ascii');

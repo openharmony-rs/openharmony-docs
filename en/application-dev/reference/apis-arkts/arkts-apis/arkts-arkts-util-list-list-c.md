@@ -88,7 +88,7 @@ Adds an element at the end of this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-add(element: T): boolean--><!--Device-List-add(element: T): boolean-End-->
 
@@ -140,7 +140,7 @@ Clears this List and sets its length to **0**.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-clear(): void--><!--Device-List-clear(): void-End-->
 
@@ -175,7 +175,7 @@ A constructor used to create a **List** instance.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-constructor()--><!--Device-List-constructor()-End-->
 
@@ -203,7 +203,7 @@ Converts this List into an array and returns the array.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-convertToArray(): Array<T>--><!--Device-List-convertToArray(): Array<T>-End-->
 
@@ -338,7 +338,7 @@ Obtains the element at the specified position in this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-get(index: int): T--><!--Device-List-get(index: int): T-End-->
 
@@ -388,7 +388,7 @@ Obtains the first element in this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-getFirst(): T--><!--Device-List-getFirst(): T-End-->
 
@@ -429,7 +429,7 @@ Obtains the index of the first occurrence of the specified element in this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-getIndexOf(element: T): int--><!--Device-List-getIndexOf(element: T): int-End-->
 
@@ -478,7 +478,7 @@ Obtains the last element in this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-getLast(): T--><!--Device-List-getLast(): T-End-->
 
@@ -519,7 +519,7 @@ Obtains the index of the last occurrence of the specified element in this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-getLastIndexOf(element: T): int--><!--Device-List-getLastIndexOf(element: T): int-End-->
 
@@ -568,7 +568,7 @@ Obtains elements within a range in this List, including the element at the start
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-getSubList(fromIndex: int, toIndex: int): List<T>--><!--Device-List-getSubList(fromIndex: int, toIndex: int): List<T>-End-->
 
@@ -616,7 +616,7 @@ Checks whether this List has the specified element.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-has(element: T): boolean--><!--Device-List-has(element: T): boolean-End-->
 
@@ -659,7 +659,7 @@ Inserts an element at the specified position in this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-insert(element: T, index: int): void--><!--Device-List-insert(element: T, index: int): void-End-->
 
@@ -699,7 +699,7 @@ Checks whether this List is empty (contains no element).
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-isEmpty(): boolean--><!--Device-List-isEmpty(): boolean-End-->
 
@@ -739,7 +739,7 @@ Removes the first occurrence of the specified element from this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-remove(element: T): boolean--><!--Device-List-remove(element: T): boolean-End-->
 
@@ -881,7 +881,7 @@ Replaces an element at the specified position in this List with a given element.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-set(index: int, element: T): T--><!--Device-List-set(index: int, element: T): T-End-->
 
@@ -929,7 +929,7 @@ Sorts elements in this List.
 
 **Since:** 8
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-List-sort(comparator: ListComparatorFn<T>): void--><!--Device-List-sort(comparator: ListComparatorFn<T>): void-End-->
 

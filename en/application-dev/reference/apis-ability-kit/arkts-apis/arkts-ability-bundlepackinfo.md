@@ -1,14 +1,4 @@
-# BundlePackInfo
-
-The module provides information in the **pack.info** file. The information can be obtained using
- [freeInstall.getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md)
- .
-
-> **NOTE**
- >
- > The APIs provided by this module are system APIs.
-
-
+# BundlePackInfo(BundlePackInfo)
 
 ## Summary
 
@@ -20,7 +10,7 @@ The module provides information in the **pack.info** file. The information can b
 | [AbilityFormInfo](arkts-ability-bundlepackinfo-abilityforminfo-i-sys.md) | AbilityFormInfo: the form info of an ability. |
 | [ApiVersion](arkts-ability-bundlepackinfo-apiversion-i-sys.md) | ApiVersion: the bundle Api version class. |
 | [BundleConfigInfo](arkts-ability-bundlepackinfo-bundleconfiginfo-i-sys.md) | BundleConfigInfo: the bundle summary class. |
-| [BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md) | The bundle pack info class. |
+| [BundlePackInfo](arkts-ability-bundlepackinfo-i-sys.md) | The module provides information in the **pack.info** file. The information can be obtained using [freeInstall.getBundlePackInfo](arkts-ability-freeinstall-getbundlepackinfo-f-sys.md). |
 | [ExtensionAbility](arkts-ability-bundlepackinfo-extensionability-i-sys.md) | ExtensionAbility: the extension ability forms class. |
 | [ModuleAbilityInfo](arkts-ability-bundlepackinfo-moduleabilityinfo-i-sys.md) | ModuleAbilityInfo: the ability info of a module. |
 | [ModuleConfigInfo](arkts-ability-bundlepackinfo-moduleconfiginfo-i-sys.md) | ModuleConfigInfo: the module summary of a bundle. |

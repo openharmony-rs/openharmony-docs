@@ -30,7 +30,7 @@ Deletes dynamic shortcuts.
 | --- | --- | --- | --- |
 | bundleName | string | Yes | Bundle name of the application to which the dynamic shortcuts belong. |
 | appIndex | number | Yes | Clone index of the application to which the dynamic shortcuts belong. The value can be 1, 2, 3, 4, or 5. |
-| userId | number | Yes | ID of the user to which the dynamic shortcuts belong. The user ID can be obtained by calling [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid). The default value is the user ID of the caller. The value must be greater than or equal to 0. |
+| userId | number | Yes | User ID of the user to which the dynamic shortcut to be deleted belongs. It can be obtained through the [getOsAccountLocalId](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-osaccount-accountmanager-i.md#getosaccountlocalid) API. Default value: the user where the caller is located. Value range: greater than or equal to 0. |
 | ids | Array&lt;string&gt; | No | Array of IDs of the dynamic shortcuts to be deleted. If the default value is used or an empty array is passed, all dynamic shortcuts that meet the conditions are deleted. |
 
 **Return value:**
@@ -52,6 +52,7 @@ Deletes dynamic shortcuts.
 | [17700061](../errorcode-bundle.md#17700061-appindex-for-a-clone-is-invalid) | The specified app index is invalid. |
 | [17700070](../errorcode-bundle.md#17700070-invalid-shortcut-id) | The specified shortcut id is illegal. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -72,3 +73,5 @@ try {
   console.error(`deleteDynamicShortcutInfos errData is errCode:${(err as BusinessError).code}  message:${(err as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

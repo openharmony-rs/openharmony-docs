@@ -14,37 +14,19 @@ enum SyncStateType
 
 **系统接口：** 此接口为系统接口。
 
-## PHONEBOOK_STATE_IDLE
+## PHONEBOOK_STATE_DOWNLOAD_ERROR
 
 ```TypeScript
-PHONEBOOK_STATE_IDLE = 0
+PHONEBOOK_STATE_DOWNLOAD_ERROR = 3
 ```
 
-电话簿同步处于空闲状态（未启动，例如已连接但未下载）。
+电话本下载错误。
 
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncStateType-PHONEBOOK_STATE_IDLE = 0--><!--Device-SyncStateType-PHONEBOOK_STATE_IDLE = 0-End-->
-
-**系统能力：** SystemCapability.Communication.Bluetooth.Core
-
-**系统接口：** 此接口为系统接口。
-
-## PHONEBOOK_STATE_DOWNLOADING
-
-```TypeScript
-PHONEBOOK_STATE_DOWNLOADING = 1
-```
-
-电话簿正在下载。
-
-**起始版本：** 26.0.1
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-SyncStateType-PHONEBOOK_STATE_DOWNLOADING = 1--><!--Device-SyncStateType-PHONEBOOK_STATE_DOWNLOADING = 1-End-->
+<!--Device-SyncStateType-PHONEBOOK_STATE_DOWNLOAD_ERROR = 3--><!--Device-SyncStateType-PHONEBOOK_STATE_DOWNLOAD_ERROR = 3-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 
@@ -68,19 +50,37 @@ PHONEBOOK_STATE_DOWNLOADED = 2
 
 **系统接口：** 此接口为系统接口。
 
-## PHONEBOOK_STATE_DOWNLOAD_ERROR
+## PHONEBOOK_STATE_DOWNLOADING
 
 ```TypeScript
-PHONEBOOK_STATE_DOWNLOAD_ERROR = 3
+PHONEBOOK_STATE_DOWNLOADING = 1
 ```
 
-电话本下载错误。
+电话簿正在下载。
 
 **起始版本：** 26.0.1
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
-<!--Device-SyncStateType-PHONEBOOK_STATE_DOWNLOAD_ERROR = 3--><!--Device-SyncStateType-PHONEBOOK_STATE_DOWNLOAD_ERROR = 3-End-->
+<!--Device-SyncStateType-PHONEBOOK_STATE_DOWNLOADING = 1--><!--Device-SyncStateType-PHONEBOOK_STATE_DOWNLOADING = 1-End-->
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**系统接口：** 此接口为系统接口。
+
+## PHONEBOOK_STATE_IDLE
+
+```TypeScript
+PHONEBOOK_STATE_IDLE = 0
+```
+
+电话簿同步处于空闲状态（未启动，例如已连接但未下载）。
+
+**起始版本：** 26.0.1
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-SyncStateType-PHONEBOOK_STATE_IDLE = 0--><!--Device-SyncStateType-PHONEBOOK_STATE_IDLE = 0-End-->
 
 **系统能力：** SystemCapability.Communication.Bluetooth.Core
 

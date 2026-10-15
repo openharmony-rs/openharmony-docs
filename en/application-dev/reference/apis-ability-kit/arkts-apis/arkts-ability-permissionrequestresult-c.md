@@ -32,7 +32,7 @@ the special request conditions for this permission are not met. Developers shoul
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PermissionRequestResult-authResults: Array<int>--><!--Device-PermissionRequestResult-authResults: Array<int>-End-->
 
@@ -58,7 +58,7 @@ When authResults is -1, combining it with this field can further distinguish bet
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-PermissionRequestResult-dialogShownResults?: Array<boolean>--><!--Device-PermissionRequestResult-dialogShownResults?: Array<boolean>-End-->
 
@@ -90,7 +90,7 @@ controlled by system policy. Please use the authorization method supported by th
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 18.
+**Atomic service API:** This API can be used in atomic services since API version 18.
 
 <!--Device-PermissionRequestResult-errorReasons?: Array<int>--><!--Device-PermissionRequestResult-errorReasons?: Array<int>-End-->
 
@@ -110,7 +110,7 @@ Array of permissions to be requested this time. **Atomic service API:** Starting
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 11.
+**Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-PermissionRequestResult-permissions: Array<string>--><!--Device-PermissionRequestResult-permissions: Array<string>-End-->
 

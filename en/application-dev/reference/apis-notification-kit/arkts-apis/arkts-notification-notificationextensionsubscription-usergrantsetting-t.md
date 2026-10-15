@@ -6,6 +6,8 @@ export type UserGrantSetting = _UserGrantSetting
 
 Describes the user authorization settings.
 
+**Type:** _UserGrantSetting
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -13,5 +15,3 @@ Describes the user authorization settings.
 <!--Device-notificationExtensionSubscription-export type UserGrantSetting = _UserGrantSetting--><!--Device-notificationExtensionSubscription-export type UserGrantSetting = _UserGrantSetting-End-->
 
 **System capability:** SystemCapability.Notification.Notification
-
-**Type:** _UserGrantSetting

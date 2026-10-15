@@ -6,6 +6,8 @@
 import { particleAbility } from '@kit.AbilityKit';
 ```
 
+<a id="startability1"></a>
+
 ## startAbility
 
 ```TypeScript
@@ -30,7 +32,7 @@ function startAbility(parameter: StartAbilityParameter, callback: AsyncCallback<
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示启动的ability。 |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | 是 | 表示启动的ability。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;void&gt; | 是 | 回调函数。当启动指定的particleAbility成功，err为undefined，否则为错误对象。 |
 
 **示例**
@@ -63,7 +65,7 @@ particleAbility.startAbility(
 ```
 
 
-<a id="startability-1"></a>
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -89,7 +91,7 @@ function startAbility(parameter: StartAbilityParameter): Promise<void>
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-startabilityparameter-i.md) | 是 | 表示启动的ability。 |
+| parameter | [StartAbilityParameter](arkts-ability-startabilityparameter-i.md) | 是 | 表示启动的ability。 |
 
 **返回值：**
 

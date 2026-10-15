@@ -4,7 +4,7 @@
 export interface CanvasElement extends Element
 ```
 
-&lt;canvas&gt; provides a rectangular canvas component for drawing graphics on the screen. You can control each pixel to draw on the canvas. &lt;canvas&gt; offers a variety of functions for drawing paths, rectangles, circles, text, and allows for adding images to it.
+<canvas> provides a rectangular canvas component for drawing graphics on the screen. You can control each pixel to draw on the canvas. <canvas> offers a variety of functions for drawing paths, rectangles, circles, text, and allows for adding images to it.
 
 @extends Element @interface CanvasElement
 

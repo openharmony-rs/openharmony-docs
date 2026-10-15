@@ -6,6 +6,8 @@
 import { connection } from '@kit.NetworkKit';
 ```
 
+<a id="getdefaulthttpproxy1"></a>
+
 ## getDefaultHttpProxy
 
 ```TypeScript
@@ -30,7 +32,7 @@ function getDefaultHttpProxy(callback: AsyncCallback<HttpProxy>): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;HttpProxy&gt; | 是 | 回调函数。当成功获取网络的默认代理配置信息时，error为undefined，data为网络的默认代理配置信息；否则为错误对象。 |
+| callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | 是 | 回调函数。当成功获取网络的默认代理配置信息时，error为undefined，data为网络的默认代理配置信息；否则为错误对象。 |
 
 **错误码：**
 
@@ -55,7 +57,7 @@ connection.getDefaultHttpProxy((error: BusinessError, data: connection.HttpProxy
 ```
 
 
-<a id="getdefaulthttpproxy-1"></a>
+<a id="getdefaulthttpproxy2"></a>
 
 ## getDefaultHttpProxy
 
@@ -81,7 +83,7 @@ function getDefaultHttpProxy(): Promise<HttpProxy>
 
 | 类型 | 说明 |
 | --- | --- |
-| Promise&lt;HttpProxy&gt; | 以Promise形式返回网络默认的代理配置信息。 |
+| Promise&lt;[HttpProxy](arkts-network-connection-httpproxy-i.md)&gt; | 以Promise形式返回网络默认的代理配置信息。 |
 
 **错误码：**
 

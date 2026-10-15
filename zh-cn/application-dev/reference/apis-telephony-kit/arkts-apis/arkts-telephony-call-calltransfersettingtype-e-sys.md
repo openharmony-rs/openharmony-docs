@@ -46,22 +46,6 @@ CALL_TRANSFER_ENABLE = 1
 
 **系统接口：** 此接口为系统接口。
 
-## CALL_TRANSFER_REGISTRATION
-
-```TypeScript
-CALL_TRANSFER_REGISTRATION = 3
-```
-
-登记呼叫转移。
-
-**起始版本：** 8
-
-<!--Device-CallTransferSettingType-CALL_TRANSFER_REGISTRATION = 3--><!--Device-CallTransferSettingType-CALL_TRANSFER_REGISTRATION = 3-End-->
-
-**系统能力：** SystemCapability.Telephony.CallManager
-
-**系统接口：** 此接口为系统接口。
-
 ## CALL_TRANSFER_ERASURE
 
 ```TypeScript
@@ -73,6 +57,22 @@ CALL_TRANSFER_ERASURE = 4
 **起始版本：** 8
 
 <!--Device-CallTransferSettingType-CALL_TRANSFER_ERASURE = 4--><!--Device-CallTransferSettingType-CALL_TRANSFER_ERASURE = 4-End-->
+
+**系统能力：** SystemCapability.Telephony.CallManager
+
+**系统接口：** 此接口为系统接口。
+
+## CALL_TRANSFER_REGISTRATION
+
+```TypeScript
+CALL_TRANSFER_REGISTRATION = 3
+```
+
+登记呼叫转移。
+
+**起始版本：** 8
+
+<!--Device-CallTransferSettingType-CALL_TRANSFER_REGISTRATION = 3--><!--Device-CallTransferSettingType-CALL_TRANSFER_REGISTRATION = 3-End-->
 
 **系统能力：** SystemCapability.Telephony.CallManager
 

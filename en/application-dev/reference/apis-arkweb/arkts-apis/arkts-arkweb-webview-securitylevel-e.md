@@ -12,6 +12,22 @@ Enumerates the security levels of the web page.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
+## DANGEROUS
+
+```TypeScript
+DANGEROUS = 3
+```
+
+The web page is dangerous. This means that the page may have attempted to load HTTPS scripts to no avail, have failed authentication, or contain insecure active content in HTTPS, malware, phishing, or any other sources of major threats.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 11.
+
+<!--Device-SecurityLevel-DANGEROUS = 3--><!--Device-SecurityLevel-DANGEROUS = 3-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
 ## NONE
 
 ```TypeScript
@@ -57,21 +73,5 @@ The web page is insecure. A typical example is a web page that uses the HTTP or 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
 <!--Device-SecurityLevel-WARNING = 2--><!--Device-SecurityLevel-WARNING = 2-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
-## DANGEROUS
-
-```TypeScript
-DANGEROUS = 3
-```
-
-The web page is dangerous. This means that the page may have attempted to load HTTPS scripts to no avail, have failed authentication, or contain insecure active content in HTTPS, malware, phishing, or any other sources of major threats.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 11.
-
-<!--Device-SecurityLevel-DANGEROUS = 3--><!--Device-SecurityLevel-DANGEROUS = 3-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

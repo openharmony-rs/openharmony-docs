@@ -38,46 +38,6 @@ A file asset or album is added.
 
 **System API:** This is a system API.
 
-## NOTIFY_UPDATE
-
-```TypeScript
-NOTIFY_UPDATE = 1
-```
-
-A file asset or album is updated.
-
-**Since:** 10
-
-**Deprecated since:** 26.0.0
-
-**Substitutes:** [NOTIFY_UPDATE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-notifytype-e.md#notify_update)
-
-<!--Device-NotifyType-NOTIFY_UPDATE = 1--><!--Device-NotifyType-NOTIFY_UPDATE = 1-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileManager.Core
-
-**System API:** This is a system API.
-
-## NOTIFY_REMOVE
-
-```TypeScript
-NOTIFY_REMOVE = 2
-```
-
-A file asset or album is removed.
-
-**Since:** 10
-
-**Deprecated since:** 26.0.0
-
-**Substitutes:** [NOTIFY_REMOVE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-notifytype-e.md#notify_remove)
-
-<!--Device-NotifyType-NOTIFY_REMOVE = 2--><!--Device-NotifyType-NOTIFY_REMOVE = 2-End-->
-
-**System capability:** SystemCapability.FileManagement.UserFileManager.Core
-
-**System API:** This is a system API.
-
 ## NOTIFY_ALBUM_ADD_ASSET
 
 ```TypeScript
@@ -113,6 +73,46 @@ A file asset is removed from the album.
 **Substitutes:** [NOTIFY_ALBUM_REMOVE_ASSET](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-notifytype-e.md#notify_album_remove_asset)
 
 <!--Device-NotifyType-NOTIFY_ALBUM_REMOVE_ASSET = 4--><!--Device-NotifyType-NOTIFY_ALBUM_REMOVE_ASSET = 4-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileManager.Core
+
+**System API:** This is a system API.
+
+## NOTIFY_REMOVE
+
+```TypeScript
+NOTIFY_REMOVE = 2
+```
+
+A file asset or album is removed.
+
+**Since:** 10
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [NOTIFY_REMOVE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-notifytype-e.md#notify_remove)
+
+<!--Device-NotifyType-NOTIFY_REMOVE = 2--><!--Device-NotifyType-NOTIFY_REMOVE = 2-End-->
+
+**System capability:** SystemCapability.FileManagement.UserFileManager.Core
+
+**System API:** This is a system API.
+
+## NOTIFY_UPDATE
+
+```TypeScript
+NOTIFY_UPDATE = 1
+```
+
+A file asset or album is updated.
+
+**Since:** 10
+
+**Deprecated since:** 26.0.0
+
+**Substitutes:** [NOTIFY_UPDATE](../../apis-media-library-kit/arkts-apis/arkts-medialibrary-photoaccesshelper-notifytype-e.md#notify_update)
+
+<!--Device-NotifyType-NOTIFY_UPDATE = 1--><!--Device-NotifyType-NOTIFY_UPDATE = 1-End-->
 
 **System capability:** SystemCapability.FileManagement.UserFileManager.Core
 

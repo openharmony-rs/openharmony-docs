@@ -6,6 +6,8 @@
 import { bundleManager } from '@kit.MDMKit';
 ```
 
+<a id="getinstallationallowedappdistributiontypes1"></a>
+
 ## getInstallationAllowedAppDistributionTypes
 
 ```TypeScript
@@ -64,7 +66,7 @@ try {
 ```
 
 
-<a id="getinstallationallowedappdistributiontypes-1"></a>
+<a id="getinstallationallowedappdistributiontypes2"></a>
 
 ## getInstallationAllowedAppDistributionTypes
 

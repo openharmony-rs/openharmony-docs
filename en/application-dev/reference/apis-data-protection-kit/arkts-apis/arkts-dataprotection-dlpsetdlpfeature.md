@@ -14,8 +14,6 @@ This module provides APIs for controlling the Data Loss Prevention (DLP) feature
 
 **Since:** 26.0.0
 
-**Model restriction:** This API can be used only in the stage model.
-
 <!--Device-unnamed-declare namespace dlpSetDlpFeature--><!--Device-unnamed-declare namespace dlpSetDlpFeature-End-->
 
 **System capability:** SystemCapability.Security.DataLossPrevention
@@ -35,7 +33,7 @@ import { dlpSetDlpFeature } from '@kit.DataProtectionKit';
 
 | Name | Description |
 | --- | --- |
-| [setDlpFeature](arkts-dataprotection-dlpsetdlpfeature-setdlpfeature-f-sys.md) | Sets the DLP status. This API uses a promise to return the result. The system enables or disables the DLP protection function based on the DLP status specified using this API. |
+| [setDlpFeature](arkts-dataprotection-dlpsetdlpfeature-setdlpfeature-f-sys.md#setdlpfeature) | Sets the DLP status. This API uses a promise to return the result. The system enables or disables the DLP protection function based on the DLP status specified using this API. |
 <!--DelEnd-->
 
 <!--Del-->

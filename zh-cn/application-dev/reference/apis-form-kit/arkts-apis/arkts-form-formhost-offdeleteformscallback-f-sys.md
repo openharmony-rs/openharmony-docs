@@ -40,6 +40,7 @@ function offDeleteFormsCallback(callback?: formInfo.DeleteFormsCallback): void
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The application is not a system application. |
 | [16500050](../errorcode-form.md#16500050-进程间通信失败) | IPC connection error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -53,3 +54,5 @@ try {
   console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

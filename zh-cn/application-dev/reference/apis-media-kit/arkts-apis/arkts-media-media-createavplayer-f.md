@@ -6,6 +6,8 @@
 import { media } from '@kit.MediaKit';
 ```
 
+<a id="createavplayer1"></a>
+
 ## createAVPlayer
 
 ```TypeScript
@@ -59,7 +61,7 @@ media.createAVPlayer((error: BusinessError, video: media.AVPlayer) => {
 ```
 
 
-<a id="createavplayer-2"></a>
+<a id="createavplayer3"></a>
 
 ## createAVPlayer
 

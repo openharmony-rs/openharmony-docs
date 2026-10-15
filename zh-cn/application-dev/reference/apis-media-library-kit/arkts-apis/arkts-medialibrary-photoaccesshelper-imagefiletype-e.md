@@ -12,20 +12,6 @@ enum ImageFileType
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## JPEG
-
-```TypeScript
-JPEG = 1
-```
-
-表示jpeg图片类型。
-
-**起始版本：** 13
-
-<!--Device-ImageFileType-JPEG = 1--><!--Device-ImageFileType-JPEG = 1-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## HEIF
 
 ```TypeScript
@@ -37,5 +23,19 @@ HEIF = 2
 **起始版本：** 13
 
 <!--Device-ImageFileType-HEIF = 2--><!--Device-ImageFileType-HEIF = 2-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## JPEG
+
+```TypeScript
+JPEG = 1
+```
+
+表示jpeg图片类型。
+
+**起始版本：** 13
+
+<!--Device-ImageFileType-JPEG = 1--><!--Device-ImageFileType-JPEG = 1-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core

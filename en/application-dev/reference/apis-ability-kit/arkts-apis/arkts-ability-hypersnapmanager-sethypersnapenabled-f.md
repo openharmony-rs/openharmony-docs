@@ -36,7 +36,7 @@ to standard cold start processes.
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| enableFlag | boolean | Yes | Indicates the desired optimization state:   - `true`: Indicates the application's compatibility with Hyper Snap optimization (system may   apply when appropriate)   - `false`: Disables Hyper Snap; uses standard cold-start process. |
+| enableFlag | boolean | Yes | Indicates the desired optimization state:           - `true`: Indicates the application's compatibility with Hyper Snap optimization (system may   apply when appropriate)           - `false`: Disables Hyper Snap; uses standard cold-start process. |
 
 **Error codes:**
 

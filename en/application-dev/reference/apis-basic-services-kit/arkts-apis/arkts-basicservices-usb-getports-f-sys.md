@@ -32,8 +32,11 @@ Obtains the list of all physical USB ports.
 | --- | --- |
 | Array&lt;[USBPort](arkts-basicservices-usb-usbport-i-sys.md)&gt; | List of physical USB ports. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
 let ret = usb.getPorts();
 ```
+
+<!--DelEnd-->

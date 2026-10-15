@@ -39,7 +39,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | 是 | Want类型参数，传入需要启动的ability的信息，如Ability名称，Bundle名称等。 |
-| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、断开或连接失败后的信息。 |
+| options | [ConnectOptions](../../apis-ability-kit/arkts-apis/arkts-ability-connectoptions-i.md) | 是 | ConnectOptions类型的回调函数，返回服务连接成功、断开或连接失败后的信息。 |
 
 **返回值：**
 
@@ -64,6 +64,7 @@ connectServiceExtensionAbility(want: Want, options: ConnectOptions): number
 | [16000053](../../apis-ability-kit/errorcode-ability.md#16000053-非顶层ability) | The ability is not on the top of the UI. |
 | [16000055](../../apis-ability-kit/errorcode-ability.md#16000055-免安装超时) | Installation-free timed out. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -110,6 +111,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
+<!--DelEnd-->
+
+<a id="disconnectserviceextensionability1"></a>
+
 ## disconnectServiceExtensionAbility
 
 ```TypeScript
@@ -143,6 +148,7 @@ disconnectServiceExtensionAbility(connection: number, callback: AsyncCallback<vo
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -178,7 +184,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
-<a id="disconnectserviceextensionability-1"></a>
+<!--DelEnd-->
+
+<a id="disconnectserviceextensionability2"></a>
 
 ## disconnectServiceExtensionAbility
 
@@ -218,6 +226,7 @@ disconnectServiceExtensionAbility(connection: number): Promise<void>
 | [16000011](../../apis-ability-kit/errorcode-ability.md#16000011-上下文对象不存在) | The context does not exist. |
 | [16000050](../../apis-ability-kit/errorcode-ability.md#16000050-内部错误) | Internal error. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -253,6 +262,10 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 };
 ```
+
+<!--DelEnd-->
+
+<a id="startability1"></a>
 
 ## startAbility
 
@@ -290,6 +303,7 @@ startAbility(want: Want, callback: AsyncCallback<void>): void
 | 16500101 | The application is not a system application.<br>**适用版本：** 9 - 11 |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -320,7 +334,9 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
 };
 ```
 
-<a id="startability-1"></a>
+<!--DelEnd-->
+
+<a id="startability2"></a>
 
 ## startAbility
 
@@ -363,6 +379,7 @@ startAbility(want: Want): Promise<void>
 | 16500101 | The application is not a system application.<br>**适用版本：** 9 - 11 |
 | [16501000](../errorcode-form.md#16501000-内部功能错误) | An internal functional error occurred. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -390,3 +407,5 @@ export default class MyFormExtensionAbility extends FormExtensionAbility {
   }
 };
 ```
+
+<!--DelEnd-->

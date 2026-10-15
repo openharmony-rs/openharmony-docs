@@ -34,6 +34,7 @@ function createShareServiceStub(instance: ShareCenter): Promise<rpc.RemoteObject
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise对象，返回[ShareCenter](arkts-arkdata-cloudextension-sharecenter-i-sys.md)的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -52,3 +53,5 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->

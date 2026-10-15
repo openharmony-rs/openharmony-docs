@@ -16,7 +16,7 @@ Obtains a screenshot. This API uses a promise to return the result. SDR stands f
 
 - If the screen contains HDR resources (even if they are partially obscured), this API returns an array with both  
 SDR and HDR PixelMaps, regardless of whether HDR is enabled.  
-- If there are no HDR resources, it returns an array with a single SDR PixelMap. Unlike the [save](arkts-arkui-screenshot-save-f-sys.md) API, which returns a single SDR PixelMap, this API always returns an array. Additionally, this API does not support cropping, stretching, or rotating features available in the [save](arkts-arkui-screenshot-save-f-sys.md) API.
+- If there are no HDR resources, it returns an array with a single SDR PixelMap. Unlike the [save](arkts-arkui-screenshot-save-f-sys.md#save1) API, which returns a single SDR PixelMap, this API always returns an array. Additionally, this API does not support cropping, stretching, or rotating features available in the [save](arkts-arkui-screenshot-save-f-sys.md#save1) API.
 
 **Since:** 20
 
@@ -53,6 +53,7 @@ SDR and HDR PixelMaps, regardless of whether HDR is enabled.
 | [1400003](../errorcode-display.md#1400003-abnormal-display-manager-service) | This display manager service works abnormally. |
 | [1400004](../errorcode-display.md#1400004-parameter-error) | Parameter error. Possible cause: 1.Invalid parameter range. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -80,3 +81,5 @@ try {
   console.error(`Failed to save SDR and HDR screenshot. Code: ${exception.code}, message: ${exception.message}`);
 }
 ```
+
+<!--DelEnd-->

@@ -38,12 +38,13 @@ function query(queryArg: QueryArg, rules: QueryRule[], querier: Querier): void
 | --- | --- |
 | [201](../../errorcode-universal.md#201-api权限校验失败) | Permission denied. An attempt was made to read system event forbidden by permission: ohos.permission.READ_DFX_SYSEVENT. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | System API is not allowed called by Non-system application. |
-| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | Parameter error. Possible causes:         1. Mandatory parameters are left unspecified.         2. Incorrect parameter types.         3. Parameter verification failed. |
 | [11200301](../errorcode-hisysevent-sys.md#11200301-查询规则的数量超过限制) | The number of query rules exceeds the limit. |
 | [11200302](../errorcode-hisysevent-sys.md#11200302-非法的查询规则) | Invalid query rule. |
 | [11200303](../errorcode-hisysevent-sys.md#11200303-并发查询的数量超过限制) | The number of concurrent queriers exceeds the limit. |
 | [11200304](../errorcode-hisysevent-sys.md#11200304-查询频率超过限制) | The query frequency exceeds the limit. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -92,3 +93,5 @@ try {
   console.error(`error code: ${(err as BusinessError).code}, error msg: ${(err as BusinessError).message}`);
 }
 ```
+
+<!--DelEnd-->

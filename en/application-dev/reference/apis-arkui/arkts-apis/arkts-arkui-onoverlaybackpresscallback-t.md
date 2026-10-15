@@ -4,7 +4,7 @@
 export declare type OnOverlayBackPressCallback = () => boolean
 ```
 
-Defines the callback type for intercepting a back-press event on an overlay.
+Defines the callback type for intercepting the overlay swipe-back event.
 
 **Since:** 26.0.0
 

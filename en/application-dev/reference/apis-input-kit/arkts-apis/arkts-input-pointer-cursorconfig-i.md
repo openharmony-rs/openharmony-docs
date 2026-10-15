@@ -24,7 +24,7 @@ import { pointer } from '@kit.InputKit';
 followSystem : boolean
 ```
 
-Whether to adjust the cursor size based on system settings. The value **true** means to adjust the cursor size based on system settings, and the value **false** means to use the custom cursor size. The adjustment range is [size of the cursor image, 256 x 256].
+Whether to adjust the cursor size based on system settings. The value **false** indicates using the custom cursor style size, and **true** indicates adjusting the cursor size based on system settings. The adjustable range is [cursor resource image size, 256×256].
 
 **Type:** boolean
 

@@ -18,6 +18,8 @@ Defines a TCP socket connection. Before calling TCPSocket APIs, you need to call
 import { socket } from '@kit.NetworkKit';
 ```
 
+<a id="bind1"></a>
+
 ## bind
 
 ```TypeScript
@@ -79,7 +81,7 @@ tcp.bind(bindAddr, (err: BusinessError) => {
 })
 ```
 
-<a id="bind-1"></a>
+<a id="bind2"></a>
 
 ## bind
 
@@ -145,6 +147,8 @@ tcp.bind(bindAddr).then(() => {
 });
 ```
 
+<a id="close1"></a>
+
 ## close
 
 ```TypeScript
@@ -190,7 +194,7 @@ tcp.close((err: BusinessError) => {
 })
 ```
 
-<a id="close-1"></a>
+<a id="close2"></a>
 
 ## close
 
@@ -234,6 +238,8 @@ tcp.close().then(() => {
   console.error('close fail');
 });
 ```
+
+<a id="connect1"></a>
 
 ## connect
 
@@ -336,7 +342,7 @@ tcp.connect(tcpconnectoptions, (err: BusinessError) => {
 })
 ```
 
-<a id="connect-1"></a>
+<a id="connect2"></a>
 
 ## connect
 
@@ -495,6 +501,8 @@ tcp.bind(bindAddr).then(() => {
 });
 ```
 
+<a id="getremoteaddress1"></a>
+
 ## getRemoteAddress
 
 ```TypeScript
@@ -554,7 +562,7 @@ tcp.connect(tcpconnectoptions, () => {
 });
 ```
 
-<a id="getremoteaddress-1"></a>
+<a id="getremoteaddress2"></a>
 
 ## getRemoteAddress
 
@@ -615,6 +623,8 @@ tcp.connect(tcpconnectoptions).then(() => {
 });
 ```
 
+<a id="getsocketfd1"></a>
+
 ## getSocketFd
 
 ```TypeScript
@@ -627,7 +637,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses an asynch
 > 
 > - This API can be called only after **bind** or **connect** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 10
 
@@ -668,7 +678,7 @@ tcp.getSocketFd((err: BusinessError, data: number) => {
 })
 ```
 
-<a id="getsocketfd-1"></a>
+<a id="getsocketfd2"></a>
 
 ## getSocketFd
 
@@ -682,7 +692,7 @@ Obtains the file descriptor of the **TCPSocket** object. This API uses a promise
 > 
 > - This API can be called only after **bind** or **connect** is successfully called.
 > 
-> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close) method to close the socket connection,instead of directly operating the file descriptor.
+> - The lifecycle of the file descriptor is managed by the system. The application can use the [close](arkts-network-socket-udpsocket-i.md#close1) method to close the socket connection,instead of directly operating the file descriptor.
 
 **Since:** 10
 
@@ -721,6 +731,8 @@ tcp.getSocketFd().then((data: number) => {
   console.info("socketFd: " + data);
 })
 ```
+
+<a id="getstate1"></a>
 
 ## getState
 
@@ -781,7 +793,7 @@ tcp.connect(tcpconnectoptions, () => {
 });
 ```
 
-<a id="getstate-1"></a>
+<a id="getstate2"></a>
 
 ## getState
 
@@ -1078,6 +1090,8 @@ tcp.on('error', (err: BusinessError) => {
 });
 ```
 
+<a id="send1"></a>
+
 ## send
 
 ```TypeScript
@@ -1143,7 +1157,7 @@ tcp.connect(tcpconnectoptions, () => {
 })
 ```
 
-<a id="send-1"></a>
+<a id="send2"></a>
 
 ## send
 
@@ -1212,6 +1226,8 @@ tcp.connect(tcpconnectoptions, () => {
   });
 })
 ```
+
+<a id="setextraoptions1"></a>
 
 ## setExtraOptions
 
@@ -1291,7 +1307,7 @@ tcp.connect(tcpconnectoptions, () => {
 });
 ```
 
-<a id="setextraoptions-1"></a>
+<a id="setextraoptions2"></a>
 
 ## setExtraOptions
 

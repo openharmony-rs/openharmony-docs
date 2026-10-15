@@ -48,42 +48,6 @@ Obtain the UIContext of the instance that most recently switched to the focused 
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## MAX_INSTANCE_ID
-
-```TypeScript
-MAX_INSTANCE_ID = 2
-```
-
-Obtain the UIContext of the instance with the largest instance ID.
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-ResolveStrategy-MAX_INSTANCE_ID = 2--><!--Device-ResolveStrategy-MAX_INSTANCE_ID = 2-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## UNIQUE
-
-```TypeScript
-UNIQUE = 3
-```
-
-Obtain the UIContext of the unique UI instance (when only one UI instance exists).
-
-**Since:** 22
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 22.
-
-<!--Device-ResolveStrategy-UNIQUE = 3--><!--Device-ResolveStrategy-UNIQUE = 3-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## LAST_FOREGROUND
 
 ```TypeScript
@@ -102,6 +66,24 @@ Obtain the UIContext of the instance that most recently switched to the foregrou
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## MAX_INSTANCE_ID
+
+```TypeScript
+MAX_INSTANCE_ID = 2
+```
+
+Obtain the UIContext of the instance with the largest instance ID.
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResolveStrategy-MAX_INSTANCE_ID = 2--><!--Device-ResolveStrategy-MAX_INSTANCE_ID = 2-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## UNDEFINED
 
 ```TypeScript
@@ -117,5 +99,23 @@ Obtain a UIContext with an ambiguous calling scope.
 **Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-ResolveStrategy-UNDEFINED = 5--><!--Device-ResolveStrategy-UNDEFINED = 5-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## UNIQUE
+
+```TypeScript
+UNIQUE = 3
+```
+
+Obtain the UIContext of the unique UI instance (when only one UI instance exists).
+
+**Since:** 22
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 22.
+
+<!--Device-ResolveStrategy-UNIQUE = 3--><!--Device-ResolveStrategy-UNIQUE = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

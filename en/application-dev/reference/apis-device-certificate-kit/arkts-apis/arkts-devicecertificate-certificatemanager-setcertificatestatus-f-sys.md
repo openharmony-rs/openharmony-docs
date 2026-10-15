@@ -46,10 +46,11 @@ Sets the status of a CA certificate. Currently, only the status of a user's CA c
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed.<br>The application does not have the permission required to call the API. |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter verification failed.<br>Possible causes: the URI is null or the URI format is wrong, <br> the certType's value is invalid or not supported. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | [Sync] Parameter error. Possible causes:<br>1. The URI is null or the URI format is wrong; <br>2. The certType's value is invalid or not supported. |
 | [17500001](../errorcode-certManager.md#17500001-internal-error) | Internal error. Possible causes: 1. IPC communication failed;<br>2. Memory operation error; 3. File operation error. Please try again. |
 | [17500002](../errorcode-certManager.md#17500002-certificate-not-exist) | The certificate does not exist. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -69,3 +70,5 @@ try {
   console.error(`Failed to set certificate status. Code: ${error.code}, message: ${error.message}`);
 }
 ```
+
+<!--DelEnd-->

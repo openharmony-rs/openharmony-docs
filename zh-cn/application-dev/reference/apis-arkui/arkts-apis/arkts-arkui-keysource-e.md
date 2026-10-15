@@ -12,21 +12,21 @@ declare enum KeySource
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## Unknown
+## JOYSTICK
 
 ```TypeScript
-Unknown
+JOYSTICK
 ```
 
-输入设备类型未知。
+输入设备类型为游戏手柄。
 
-**起始版本：** 7
+**起始版本：** 15
 
-**模型约束：** 此接口可在Stage模型和FA模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
-<!--Device-KeySource-Unknown--><!--Device-KeySource-Unknown-End-->
+<!--Device-KeySource-JOYSTICK--><!--Device-KeySource-JOYSTICK-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -48,20 +48,20 @@ Keyboard
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## JOYSTICK
+## Unknown
 
 ```TypeScript
-JOYSTICK
+Unknown
 ```
 
-输入设备类型为游戏手柄。
+输入设备类型未知。
 
-**起始版本：** 15
+**起始版本：** 7
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**模型约束：** 此接口可在Stage模型和FA模型下使用。
 
-**原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-KeySource-JOYSTICK--><!--Device-KeySource-JOYSTICK-End-->
+<!--Device-KeySource-Unknown--><!--Device-KeySource-Unknown-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

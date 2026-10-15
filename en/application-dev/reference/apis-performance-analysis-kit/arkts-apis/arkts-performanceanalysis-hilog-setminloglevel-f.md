@@ -23,7 +23,7 @@ Sets the minimum log level.
 
 **Since:** 15
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 15.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
 <!--Device-hilog-function setMinLogLevel(level: LogLevel): void--><!--Device-hilog-function setMinLogLevel(level: LogLevel): void-End-->
 
@@ -43,7 +43,7 @@ The following example prints five HiLog logs of different levels and calls the s
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 1);
 hilog.setMinLogLevel(hilog.LogLevel.WARN);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 2);
-hilog.error(0x0001, 'testTag', 'this is an error level log, id: %{public}d', 3);
+hilog.error(0x0001, "testTag", 'this is an error level log, id: %{public}d', 3);
 hilog.setMinLogLevel(hilog.LogLevel.DEBUG);
 hilog.debug(0x0001, "testTag", 'this is a debug level log, id: %{public}d', 4);
 hilog.info(0x0001, "testTag", 'this is an info level log, id: %{public}d', 5);

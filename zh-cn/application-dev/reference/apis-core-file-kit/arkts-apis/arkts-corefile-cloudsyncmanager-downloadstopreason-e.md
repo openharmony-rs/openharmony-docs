@@ -12,17 +12,31 @@ enum DownloadStopReason
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-## NO_STOP
+## APP_UNLOAD
 
 ```TypeScript
-NO_STOP = 0
+APP_UNLOAD = 5
 ```
 
-下载中未停止。
+下载过程中，云文件所属应用被卸载。
 
 **起始版本：** 20
 
-<!--Device-DownloadStopReason-NO_STOP = 0--><!--Device-DownloadStopReason-NO_STOP = 0-End-->
+<!--Device-DownloadStopReason-APP_UNLOAD = 5--><!--Device-DownloadStopReason-APP_UNLOAD = 5-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## LOCAL_STORAGE_FULL
+
+```TypeScript
+LOCAL_STORAGE_FULL = 2
+```
+
+下载过程中，当前设备空间不足。
+
+**起始版本：** 20
+
+<!--Device-DownloadStopReason-LOCAL_STORAGE_FULL = 2--><!--Device-DownloadStopReason-LOCAL_STORAGE_FULL = 2-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -40,17 +54,31 @@ NETWORK_UNAVAILABLE = 1
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
-## LOCAL_STORAGE_FULL
+## NO_STOP
 
 ```TypeScript
-LOCAL_STORAGE_FULL = 2
+NO_STOP = 0
 ```
 
-下载过程中，当前设备空间不足。
+下载中未停止。
 
 **起始版本：** 20
 
-<!--Device-DownloadStopReason-LOCAL_STORAGE_FULL = 2--><!--Device-DownloadStopReason-LOCAL_STORAGE_FULL = 2-End-->
+<!--Device-DownloadStopReason-NO_STOP = 0--><!--Device-DownloadStopReason-NO_STOP = 0-End-->
+
+**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
+
+## OTHER_REASON
+
+```TypeScript
+OTHER_REASON = 6
+```
+
+下载过程中，因其他原因停止下载，如：云服务器未响应等。
+
+**起始版本：** 20
+
+<!--Device-DownloadStopReason-OTHER_REASON = 6--><!--Device-DownloadStopReason-OTHER_REASON = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
 
@@ -79,33 +107,5 @@ USER_STOPPED = 4
 **起始版本：** 20
 
 <!--Device-DownloadStopReason-USER_STOPPED = 4--><!--Device-DownloadStopReason-USER_STOPPED = 4-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-## APP_UNLOAD
-
-```TypeScript
-APP_UNLOAD = 5
-```
-
-下载过程中，云文件所属应用被卸载。
-
-**起始版本：** 20
-
-<!--Device-DownloadStopReason-APP_UNLOAD = 5--><!--Device-DownloadStopReason-APP_UNLOAD = 5-End-->
-
-**系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager
-
-## OTHER_REASON
-
-```TypeScript
-OTHER_REASON = 6
-```
-
-下载过程中，因其他原因停止下载，如：云服务器未响应等。
-
-**起始版本：** 20
-
-<!--Device-DownloadStopReason-OTHER_REASON = 6--><!--Device-DownloadStopReason-OTHER_REASON = 6-End-->
 
 **系统能力：** SystemCapability.FileManagement.DistributedFileService.CloudSyncManager

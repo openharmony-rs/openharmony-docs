@@ -4,7 +4,7 @@
 export interface MarqueeElement extends Element
 ```
 
-The &lt;marquee&gt; component inserts scrolling text, which is displayed in a single line by default. When the text length exceeds the display area of the component, the marquee effect is displayed.
+The <marquee> component inserts scrolling text, which is displayed in a single line by default. When the text length exceeds the display area of the component, the marquee effect is displayed.
 
 @extends Element @interface MarqueeElement
 

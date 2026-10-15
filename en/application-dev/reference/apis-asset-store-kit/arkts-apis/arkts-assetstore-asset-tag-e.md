@@ -12,38 +12,6 @@ Enumerate the keys of asset attributes ([AssetMap](arkts-assetstore-asset-assetm
 
 **System capability:** SystemCapability.Security.Asset
 
-## SECRET
-
-```TypeScript
-SECRET = TagType.BYTES | 0x01
-```
-
-Asset plaintext.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-Tag-SECRET = TagType.BYTES | 0x01--><!--Device-Tag-SECRET = TagType.BYTES | 0x01-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## ALIAS
-
-```TypeScript
-ALIAS = TagType.BYTES | 0x02
-```
-
-Asset alias, which uniquely identifies an asset.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-Tag-ALIAS = TagType.BYTES | 0x02--><!--Device-Tag-ALIAS = TagType.BYTES | 0x02-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
 ## ACCESSIBILITY
 
 ```TypeScript
@@ -60,51 +28,19 @@ Access control based on the lock screen status.
 
 **System capability:** SystemCapability.Security.Asset
 
-## REQUIRE_PASSWORD_SET
+## ALIAS
 
 ```TypeScript
-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04
+ALIAS = TagType.BYTES | 0x02
 ```
 
-Whether the asset is accessible only when a lock screen password is set.
+Asset alias, which uniquely identifies an asset.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-Tag-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04--><!--Device-Tag-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## AUTH_TYPE
-
-```TypeScript
-AUTH_TYPE = TagType.NUMBER | 0x05
-```
-
-Type of user authentication required for accessing the asset.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-Tag-AUTH_TYPE = TagType.NUMBER | 0x05--><!--Device-Tag-AUTH_TYPE = TagType.NUMBER | 0x05-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## AUTH_VALIDITY_PERIOD
-
-```TypeScript
-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06
-```
-
-Validity period of the user authentication.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-Tag-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06--><!--Device-Tag-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06-End-->
+<!--Device-Tag-ALIAS = TagType.BYTES | 0x02--><!--Device-Tag-ALIAS = TagType.BYTES | 0x02-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -140,33 +76,51 @@ Authorization token obtained after the user authentication is successful.
 
 **System capability:** SystemCapability.Security.Asset
 
-## SYNC_TYPE
+## AUTH_TYPE
 
 ```TypeScript
-SYNC_TYPE = TagType.NUMBER | 0x10
+AUTH_TYPE = TagType.NUMBER | 0x05
 ```
 
-Asset sync type.
+Type of user authentication required for accessing the asset.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-Tag-SYNC_TYPE = TagType.NUMBER | 0x10--><!--Device-Tag-SYNC_TYPE = TagType.NUMBER | 0x10-End-->
+<!--Device-Tag-AUTH_TYPE = TagType.NUMBER | 0x05--><!--Device-Tag-AUTH_TYPE = TagType.NUMBER | 0x05-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
-## IS_PERSISTENT
+## AUTH_VALIDITY_PERIOD
 
 ```TypeScript
-IS_PERSISTENT = TagType.BOOL | 0x11
+AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06
 ```
 
-Whether to retain the asset when the application is uninstalled.
+Validity period of the user authentication.
 
 **Since:** 11
 
-<!--Device-Tag-IS_PERSISTENT = TagType.BOOL | 0x11--><!--Device-Tag-IS_PERSISTENT = TagType.BOOL | 0x11-End-->
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-Tag-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06--><!--Device-Tag-AUTH_VALIDITY_PERIOD = TagType.NUMBER | 0x06-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## CONFLICT_RESOLUTION
+
+```TypeScript
+CONFLICT_RESOLUTION = TagType.NUMBER | 0x44
+```
+
+Policy for resolving the conflict (for example, a duplicate alias).
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-Tag-CONFLICT_RESOLUTION = TagType.NUMBER | 0x44--><!--Device-Tag-CONFLICT_RESOLUTION = TagType.NUMBER | 0x44-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -362,19 +316,77 @@ Local information about the asset. The value is assigned by the service without 
 
 **System capability:** SystemCapability.Security.Asset
 
-## RETURN_TYPE
+## GROUP_ID
 
 ```TypeScript
-RETURN_TYPE = TagType.NUMBER | 0x40
+GROUP_ID = TagType.BYTES | 0x48
 ```
 
-Type of the asset query result to return.
+Group to which the asset belongs.
+
+**Since:** 18
+
+<!--Device-Tag-GROUP_ID = TagType.BYTES | 0x48--><!--Device-Tag-GROUP_ID = TagType.BYTES | 0x48-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## IS_PERSISTENT
+
+```TypeScript
+IS_PERSISTENT = TagType.BOOL | 0x11
+```
+
+Whether to retain the asset when the application is uninstalled.
+
+**Since:** 11
+
+<!--Device-Tag-IS_PERSISTENT = TagType.BOOL | 0x11--><!--Device-Tag-IS_PERSISTENT = TagType.BOOL | 0x11-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## OPERATION_TYPE
+
+```TypeScript
+OPERATION_TYPE = TagType.NUMBER | 0x46
+```
+
+Additional operation type.
+
+**Since:** 12
+
+<!--Device-Tag-OPERATION_TYPE = TagType.NUMBER | 0x46--><!--Device-Tag-OPERATION_TYPE = TagType.NUMBER | 0x46-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## REQUIRE_ATTR_ENCRYPTED
+
+```TypeScript
+REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47
+```
+
+Whether to encrypt the additional asset information customized by the service.
+
+**Since:** 14
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-Tag-REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47--><!--Device-Tag-REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## REQUIRE_PASSWORD_SET
+
+```TypeScript
+REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04
+```
+
+Whether the asset is accessible only when a lock screen password is set.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-Tag-RETURN_TYPE = TagType.NUMBER | 0x40--><!--Device-Tag-RETURN_TYPE = TagType.NUMBER | 0x40-End-->
+<!--Device-Tag-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04--><!--Device-Tag-REQUIRE_PASSWORD_SET = TagType.BOOL | 0x04-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -430,19 +442,51 @@ Sorting order of the query results. Currently, the results can be sorted only by
 
 **System capability:** SystemCapability.Security.Asset
 
-## CONFLICT_RESOLUTION
+## RETURN_TYPE
 
 ```TypeScript
-CONFLICT_RESOLUTION = TagType.NUMBER | 0x44
+RETURN_TYPE = TagType.NUMBER | 0x40
 ```
 
-Policy for resolving the conflict (for example, a duplicate alias).
+Type of the asset query result to return.
 
 **Since:** 11
 
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
-<!--Device-Tag-CONFLICT_RESOLUTION = TagType.NUMBER | 0x44--><!--Device-Tag-CONFLICT_RESOLUTION = TagType.NUMBER | 0x44-End-->
+<!--Device-Tag-RETURN_TYPE = TagType.NUMBER | 0x40--><!--Device-Tag-RETURN_TYPE = TagType.NUMBER | 0x40-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## SECRET
+
+```TypeScript
+SECRET = TagType.BYTES | 0x01
+```
+
+Asset plaintext.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-Tag-SECRET = TagType.BYTES | 0x01--><!--Device-Tag-SECRET = TagType.BYTES | 0x01-End-->
+
+**System capability:** SystemCapability.Security.Asset
+
+## SYNC_TYPE
+
+```TypeScript
+SYNC_TYPE = TagType.NUMBER | 0x10
+```
+
+Asset sync type.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 14.
+
+<!--Device-Tag-SYNC_TYPE = TagType.NUMBER | 0x10--><!--Device-Tag-SYNC_TYPE = TagType.NUMBER | 0x10-End-->
 
 **System capability:** SystemCapability.Security.Asset
 
@@ -459,50 +503,6 @@ Data update time, in timestamp.
 **Atomic service API:** This API can be used in atomic services since API version 14.
 
 <!--Device-Tag-UPDATE_TIME = TagType.BYTES | 0x45--><!--Device-Tag-UPDATE_TIME = TagType.BYTES | 0x45-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## OPERATION_TYPE
-
-```TypeScript
-OPERATION_TYPE = TagType.NUMBER | 0x46
-```
-
-Additional operation type.
-
-**Since:** 12
-
-<!--Device-Tag-OPERATION_TYPE = TagType.NUMBER | 0x46--><!--Device-Tag-OPERATION_TYPE = TagType.NUMBER | 0x46-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## REQUIRE_ATTR_ENCRYPTED
-
-```TypeScript
-REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47
-```
-
-Whether to encrypt the additional asset information customized by the service.
-
-**Since:** 14
-
-**Atomic service API:** This API can be used in atomic services since API version 14.
-
-<!--Device-Tag-REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47--><!--Device-Tag-REQUIRE_ATTR_ENCRYPTED = TagType.BOOL | 0x47-End-->
-
-**System capability:** SystemCapability.Security.Asset
-
-## GROUP_ID
-
-```TypeScript
-GROUP_ID = TagType.BYTES | 0x48
-```
-
-Group to which the asset belongs.
-
-**Since:** 18
-
-<!--Device-Tag-GROUP_ID = TagType.BYTES | 0x48--><!--Device-Tag-GROUP_ID = TagType.BYTES | 0x48-End-->
 
 **System capability:** SystemCapability.Security.Asset
 

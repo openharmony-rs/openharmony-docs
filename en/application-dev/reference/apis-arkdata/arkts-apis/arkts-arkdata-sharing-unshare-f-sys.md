@@ -6,6 +6,8 @@
 import { cloudData } from '@kit.ArkData';
 ```
 
+<a id="unshare1"></a>
+
 ## unshare
 
 ```TypeScript
@@ -39,9 +41,10 @@ Unshares data based on the specified shared resource ID and participants. This A
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -70,8 +73,10 @@ cloudData.sharing.unshare('sharing_resource_test', participants, (err: BusinessE
 });
 ```
 
+<!--DelEnd-->
 
-<a id="unshare-1"></a>
+
+<a id="unshare2"></a>
 
 ## unshare
 
@@ -110,9 +115,10 @@ Unshares data based on the specified shared resource ID and participants. This A
 | Error Code ID | Error Message |
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Permission verification failed. A non-system application calls a system API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types; 3. Parameter verification failed. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. Possible causes: 1. The hardware does not support the capability; 2. The chip does not support the capability; 3. A dependent service feature is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -138,3 +144,5 @@ cloudData.sharing.unshare('sharing_resource_test', participants).then((result) =
   console.error(`unshare failed, code is ${err.code},message is ${err.message}`);
 });
 ```
+
+<!--DelEnd-->

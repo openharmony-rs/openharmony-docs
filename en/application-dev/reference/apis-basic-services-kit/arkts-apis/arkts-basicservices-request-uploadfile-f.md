@@ -6,6 +6,8 @@
 import { request } from '@kit.BasicServicesKit';
 ```
 
+<a id="uploadfile1"></a>
+
 ## uploadFile
 
 ```TypeScript
@@ -74,7 +76,7 @@ try {
 ```
 
 
-<a id="uploadfile-1"></a>
+<a id="uploadfile2"></a>
 
 ## uploadFile
 

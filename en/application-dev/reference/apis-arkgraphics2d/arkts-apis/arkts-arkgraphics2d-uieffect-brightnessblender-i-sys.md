@@ -32,7 +32,7 @@ Third-order coefficient for grayscale adjustment. The value range is [-20, 20]. 
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-BrightnessBlender-cubicRate: double--><!--Device-BrightnessBlender-cubicRate: double-End-->
 
@@ -52,7 +52,7 @@ Grayscale adjustment ratio. The value range is [-20, 20]. Values outside the ran
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-BrightnessBlender-degree: double--><!--Device-BrightnessBlender-degree: double-End-->
 
@@ -72,7 +72,7 @@ Blending ratio for the brightness effect. The value range is [0, 1]. Values outs
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-BrightnessBlender-fraction: double--><!--Device-BrightnessBlender-fraction: double-End-->
 
@@ -92,7 +92,7 @@ Linear coefficient for grayscale adjustment. The value range is [-20, 20]. Value
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-BrightnessBlender-linearRate: double--><!--Device-BrightnessBlender-linearRate: double-End-->
 
@@ -112,7 +112,7 @@ Negative RGB adjustment coefficients based on the base saturation. The value ran
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-BrightnessBlender-negativeCoefficient: [double, double, double]--><!--Device-BrightnessBlender-negativeCoefficient: [double, double, double]-End-->
 
@@ -132,7 +132,7 @@ Positive RGB adjustment coefficients based on the base saturation. The value ran
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-BrightnessBlender-positiveCoefficient: [double, double, double]--><!--Device-BrightnessBlender-positiveCoefficient: [double, double, double]-End-->
 
@@ -152,7 +152,7 @@ Second-order coefficient for grayscale adjustment. The value range is [-20, 20].
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-BrightnessBlender-quadraticRate: double--><!--Device-BrightnessBlender-quadraticRate: double-End-->
 
@@ -172,7 +172,7 @@ Base saturation for brightness. The value range is [0, 20]. Values outside the r
 
 **Since:** 12
 
-**Widget capability (ArkTS-Dyn only) :** This API can be used in ArkTS widgets since version 22.
+**Widget capability:** This API can be used in ArkTS widgets since API version 22.
 
 <!--Device-BrightnessBlender-saturation: double--><!--Device-BrightnessBlender-saturation: double-End-->
 

@@ -12,7 +12,7 @@ Defines an OnFontWeightScaleUpdatedFn function.
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 24.
+**Atomic service API:** This API can be used in atomic services since API version 24.
 
 <!--Device-systemConfiguration-type OnFontWeightScaleUpdatedFn = (fontWeightScale: double) => void--><!--Device-systemConfiguration-type OnFontWeightScaleUpdatedFn = (fontWeightScale: double) => void-End-->
 

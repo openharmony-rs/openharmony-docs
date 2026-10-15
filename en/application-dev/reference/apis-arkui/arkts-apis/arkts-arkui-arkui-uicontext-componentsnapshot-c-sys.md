@@ -4,7 +4,7 @@
 export class ComponentSnapshot
 ```
 
-Provides APIs for obtaining component snapshots, including snapshots of components that have been loaded and snapshots of components that have not been loaded yet.
+Provides the capability of obtaining component screenshots, including screenshots of loaded and unloaded components. This is applicable to scenarios where the component rendering result needs to be obtained for display or subsequent processing.
 
 > **NOTE:** 
 > 
@@ -76,6 +76,7 @@ Captures a snapshot of the area between two specified components. This API uses 
 | [100001](../errorcode-internal.md#100001-internal-error) | Invalid ID detected. |
 | [160003](../errorcode-snapshot.md#160003-color-space-or-dynamic-range-mode-set-in-screenshot-options-is-not-supported) | Unsupported color space or dynamic range mode in snapshot options.<br>**Applicable version:** 23 and later |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -149,3 +150,5 @@ struct SnapshotExample {
   }
 }
 ```
+
+<!--DelEnd-->

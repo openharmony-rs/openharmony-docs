@@ -23,94 +23,94 @@ import { geoLocationManager } from '@kit.LocationKit';
 
 | 名称 | 说明 |
 | --- | --- |
-| [addBeaconFence](arkts-location-geolocationmanager-addbeaconfence-f.md) | 添加一个beacon围栏，并订阅地理围栏事件。使用Promise异步回调。beacon围栏是指通过蓝牙beacon设备和手机应用配合，实现“虚拟围栏”的功能。当用户靠近或离开某个特定的beacon设备时，手机应用会收到通知。应用可以在入参[BeaconFenceRequest](arkts-location-geolocationmanager-beaconfencerequest-i.md)中传入回调函数用于接收围栏事件；也可以传入[FenceExtensionAbility](arkts-location-app-ability-fenceextensionability-fenceextensionability-c.md)名称，在系统识别到围栏事件发生时通知应用。单应用添加beacon围栏上限为10，超过上限会导致添加beacon围栏失败，并抛出3501601错误码。 |
-| [addGnssGeofence](arkts-location-geolocationmanager-addgnssgeofence-f.md) | 添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。单应用添加地理围栏上限为100，超过上限将移除剩余地理围栏中存活时间最短的围栏。 |
-| [findMatchingWlan](arkts-location-geolocationmanager-findmatchingwlan-f.md) | 使用WLAN扫描结果与输入的WLAN BSSID列表进行匹配，匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组(数组长度为0)。使用Promise异步回调。 |
-| [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md) | 读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md#flushcachedgnsslocations-1) | 读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [getActiveGeoFences](arkts-location-geolocationmanager-getactivegeofences-f.md) | 查询当前有效的围栏信息。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。 |
-| [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md) | 调用逆地理编码服务，将坐标转换为地理描述，使用callback异步回调。 |
-| [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md#getaddressesfromlocation-1) | 调用逆地理编码服务，将坐标转换为地理描述，使用Promise异步回调。 |
-| [getAddressesFromLocationName](arkts-location-geolocationmanager-getaddressesfromlocationname-f.md) | 调用地理编码服务，将地理描述转换为具体坐标，使用callback异步回调。 |
-| [getAddressesFromLocationName](arkts-location-geolocationmanager-getaddressesfromlocationname-f.md#getaddressesfromlocationname-1) | 调用地理编码服务，将地理描述转换为具体坐标，使用Promise异步回调。 |
-| [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md) | 获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md#getcachedgnsslocationssize-1) | 获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [getCountryCode](arkts-location-geolocationmanager-getcountrycode-f.md) | 查询当前的国家码。使用callback异步回调。 |
-| [getCountryCode](arkts-location-geolocationmanager-getcountrycode-f.md#getcountrycode-1) | 查询当前的国家码。使用Promise异步回调。 |
-| [getCurrentDistrict](arkts-location-geolocationmanager-getcurrentdistrict-f.md) | 获取当前设备所在区域的信息。使用Promise异步回调。 |
-| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md) | 获取当前位置，使用callback异步回调。 |
-| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation-1) | 获取当前位置，使用callback异步回调。 |
-| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation-2) | 获取当前位置，使用Promise异步回调。 |
-| [getCurrentWifiBssidForLocating](arkts-location-geolocationmanager-getcurrentwifibssidforlocating-f.md) | 获取连接的Wi-Fi AP（Access Point）的Bssid（Basic Service Set Identifier）信息。如果当前设备未连接Wi-Fi，调用该接口将抛出错误码3301900。建议参考示例代码，通过try-catch结构捕获异常。 |
-| [getDistanceBetweenLocations](arkts-location-geolocationmanager-getdistancebetweenlocations-f.md) | 获取两个位置之间的直线距离。 |
-| [getGeofenceSupportedCoordTypes](arkts-location-geolocationmanager-getgeofencesupportedcoordtypes-f.md) | 获取地理围栏功能支持的坐标系列表。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。 |
-| [getLastLocation](arkts-location-geolocationmanager-getlastlocation-f.md) | 获取上一次位置。 |
-| [getPoiInfo](arkts-location-geolocationmanager-getpoiinfo-f.md) | 获取当前位置附近的POI信息。使用Promise异步回调。 |
-| [getPostProcessingTrack](arkts-location-geolocationmanager-getpostprocessingtrack-f.md) | 根据传入的[sportsType](arkts-location-geolocationmanager-sportstype-e.md)获取特定运动模式下的后处理轨迹。在调用此接口之前，需要先调用geoLocationManager.on('locationChange')，并在[ContinuousLocationRequest](arkts-location-geolocationmanager-continuouslocationrequest-i.md)入参中的[SportsType](arkts-location-geolocationmanager-sportstype-e.md)配置正确的运动模式。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。 |
-| [isBeaconFenceSupported](arkts-location-geolocationmanager-isbeaconfencesupported-f.md) | 判断当前设备是否支持beacon围栏。 |
-| [isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md) | 判断是否支持GNSS batching功能。 |
-| [isGeocoderAvailable](arkts-location-geolocationmanager-isgeocoderavailable-f.md) | 判断地理编码与逆地理编码服务状态。 |
-| [isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md) | 判断是否支持围栏功能。 |
-| [isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md) | 判断是否支持GNSS功能。 |
-| [isLocationEnabled](arkts-location-geolocationmanager-islocationenabled-f.md) | 判断位置服务是否已经开启。 |
-| [isPoiServiceSupported](arkts-location-geolocationmanager-ispoiservicesupported-f.md) | 查询系统（即软件）是否支持POI服务。 |
-| [isWlanBssidMatched](arkts-location-geolocationmanager-iswlanbssidmatched-f.md) | 判断指定的BSSID是否存在于最新的WLAN扫描结果里。使用Promise异步回调。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offlocationchange) | 关闭位置变化订阅，并删除对应的定位请求。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offlocationerror) | 取消订阅持续定位过程中的错误码。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offlocationenabledchange) | 取消订阅位置服务状态变化。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offcachedgnsslocationschange) | 取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offsatellitestatuschange) | 取消订阅GNSS卫星状态信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offnmeamessage) | 取消订阅GNSS NMEA信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offgnssfencestatuschange) | 删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offcountrycodechange) | 取消订阅国家码变化事件。 |
-| [off](arkts-location-geolocationmanager-off-f.md#offbluetoothscanresultchange) | 取消订阅蓝牙扫描信息上报事件并停止蓝牙扫描。 |
-| [offLocationChange](arkts-location-geolocationmanager-offlocationchange-f.md) | 关闭位置变化订阅，并删除对应的定位请求。 |
-| [on](arkts-location-geolocationmanager-on-f.md#onlocationchange) | 开启位置变化订阅，并发起定位请求。使用callback异步回调。 |
-| [on](arkts-location-geolocationmanager-on-f.md#onlocationerror) | 订阅持续定位过程中的错误码。使用callback异步回调。 |
-| [on](arkts-location-geolocationmanager-on-f.md#onlocationenabledchange) | 订阅位置服务状态变化。使用callback异步回调。 |
-| [on](arkts-location-geolocationmanager-on-f.md#oncachedgnsslocationschange) | 订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [on](arkts-location-geolocationmanager-on-f.md#onsatellitestatuschange) | 订阅GNSS卫星状态信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [on](arkts-location-geolocationmanager-on-f.md#onnmeamessage) | 订阅GNSS NMEA信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md)接口判断对应能力是否支持。 |
-| [on](arkts-location-geolocationmanager-on-f.md#ongnssfencestatuschange) | 添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。单应用添加地理围栏上限为100，超过上限将移除剩余地理围栏中存活时间最短的围栏。 |
-| [on](arkts-location-geolocationmanager-on-f.md#oncountrycodechange) | 订阅国家码信息变化事件。使用callback异步回调。 |
-| [on](arkts-location-geolocationmanager-on-f.md#onbluetoothscanresultchange) | 订阅蓝牙扫描信息上报事件，使用callback异步回调。 |
-| [onLocationChange](arkts-location-geolocationmanager-onlocationchange-f.md) | 开启位置变化订阅，并发起定位请求。使用callback异步回调。 |
-| [removeBeaconFence](arkts-location-geolocationmanager-removebeaconfence-f.md) | 删除beacon围栏，并取消订阅地理围栏事件。使用Promise异步回调。 |
-| [removeGnssGeofence](arkts-location-geolocationmanager-removegnssgeofence-f.md) | 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。 |
-| [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md) | 给位置服务子系统的各个部件发送扩展命令。使用callback异步回调。 |
-| [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md#sendcommand-1) | 给位置服务子系统的各个部件发送扩展命令。使用Promise异步回调。 |
-| [startBluetoothSearch](arkts-location-geolocationmanager-startbluetoothsearch-f.md) | 启动蓝牙扫描并查找指定的蓝牙设备，仅当扫描到的蓝牙设备满足入参BluetoothSearchRequestParams指定的条件时，才通过callback异步返回该蓝牙设备信息。 |
-| [stopBluetoothSearch](arkts-location-geolocationmanager-stopbluetoothsearch-f.md) | 停止蓝牙扫描，该回调函数需要与startBluetoothSearch接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
+| [addBeaconFence](arkts-location-geolocationmanager-addbeaconfence-f.md#addbeaconfence) | 添加一个beacon围栏，并订阅地理围栏事件。使用Promise异步回调。beacon围栏是指通过蓝牙beacon设备和手机应用配合，实现“虚拟围栏”的功能。当用户靠近或离开某个特定的beacon设备时，手机应用会收到通知。应用可以在入参[BeaconFenceRequest](arkts-location-geolocationmanager-beaconfencerequest-i.md)中传入回调函数用于接收围栏事件；也可以传入[FenceExtensionAbility](arkts-location-app-ability-fenceextensionability-fenceextensionability-c.md)名称，在系统识别到围栏事件发生时通知应用。单应用添加beacon围栏上限为10，超过上限会导致添加beacon围栏失败，并抛出3501601错误码。 |
+| [addGnssGeofence](arkts-location-geolocationmanager-addgnssgeofence-f.md#addgnssgeofence) | 添加一个GNSS地理围栏，并订阅地理围栏事件。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。单应用添加地理围栏上限为100，超过上限将移除剩余地理围栏中存活时间最短的围栏。 |
+| [findMatchingWlan](arkts-location-geolocationmanager-findmatchingwlan-f.md#findmatchingwlan) | 使用WLAN扫描结果与输入的WLAN BSSID列表进行匹配，匹配成功时返回对应的WLAN设备信息，匹配失败时返回空数组(数组长度为0)。使用Promise异步回调。 |
+| [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md#flushcachedgnsslocations1) | 读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [flushCachedGnssLocations](arkts-location-geolocationmanager-flushcachedgnsslocations-f.md#flushcachedgnsslocations2) | 读取并清空GNSS芯片所有缓存位置。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [getActiveGeoFences](arkts-location-geolocationmanager-getactivegeofences-f.md#getactivegeofences) | 查询当前有效的围栏信息。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。 |
+| [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md#getaddressesfromlocation1) | 调用逆地理编码服务，将坐标转换为地理描述，使用callback异步回调。 |
+| [getAddressesFromLocation](arkts-location-geolocationmanager-getaddressesfromlocation-f.md#getaddressesfromlocation2) | 调用逆地理编码服务，将坐标转换为地理描述，使用Promise异步回调。 |
+| [getAddressesFromLocationName](arkts-location-geolocationmanager-getaddressesfromlocationname-f.md#getaddressesfromlocationname1) | 调用地理编码服务，将地理描述转换为具体坐标，使用callback异步回调。 |
+| [getAddressesFromLocationName](arkts-location-geolocationmanager-getaddressesfromlocationname-f.md#getaddressesfromlocationname2) | 调用地理编码服务，将地理描述转换为具体坐标，使用Promise异步回调。 |
+| [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md#getcachedgnsslocationssize1) | 获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [getCachedGnssLocationsSize](arkts-location-geolocationmanager-getcachedgnsslocationssize-f.md#getcachedgnsslocationssize2) | 获取GNSS芯片缓存位置的个数。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用Promise异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [getCountryCode](arkts-location-geolocationmanager-getcountrycode-f.md#getcountrycode1) | 查询当前的国家码。使用callback异步回调。 |
+| [getCountryCode](arkts-location-geolocationmanager-getcountrycode-f.md#getcountrycode2) | 查询当前的国家码。使用Promise异步回调。 |
+| [getCurrentDistrict](arkts-location-geolocationmanager-getcurrentdistrict-f.md#getcurrentdistrict) | 获取当前设备所在区域的信息。使用Promise异步回调。 |
+| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation1) | 获取当前位置，使用callback异步回调。 |
+| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation2) | 获取当前位置，使用callback异步回调。 |
+| [getCurrentLocation](arkts-location-geolocationmanager-getcurrentlocation-f.md#getcurrentlocation3) | 获取当前位置，使用Promise异步回调。 |
+| [getCurrentWifiBssidForLocating](arkts-location-geolocationmanager-getcurrentwifibssidforlocating-f.md#getcurrentwifibssidforlocating) | 获取连接的Wi-Fi AP（Access Point）的Bssid（Basic Service Set Identifier）信息。如果当前设备未连接Wi-Fi，调用该接口将抛出错误码3301900。建议参考示例代码，通过try-catch结构捕获异常。 |
+| [getDistanceBetweenLocations](arkts-location-geolocationmanager-getdistancebetweenlocations-f.md#getdistancebetweenlocations) | 获取两个位置之间的直线距离。 |
+| [getGeofenceSupportedCoordTypes](arkts-location-geolocationmanager-getgeofencesupportedcoordtypes-f.md#getgeofencesupportedcoordtypes) | 获取地理围栏功能支持的坐标系列表。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。 |
+| [getLastLocation](arkts-location-geolocationmanager-getlastlocation-f.md#getlastlocation) | 获取上一次位置。 |
+| [getPoiInfo](arkts-location-geolocationmanager-getpoiinfo-f.md#getpoiinfo) | 获取当前位置附近的POI信息。使用Promise异步回调。 |
+| [getPostProcessingTrack](arkts-location-geolocationmanager-getpostprocessingtrack-f.md#getpostprocessingtrack) | 根据传入的[sportsType](arkts-location-geolocationmanager-sportstype-e.md)获取特定运动模式下的后处理轨迹。在调用此接口之前，需要先调用geoLocationManager.on('locationChange')，并在[ContinuousLocationRequest](arkts-location-geolocationmanager-continuouslocationrequest-i.md)入参中的[SportsType](arkts-location-geolocationmanager-sportstype-e.md)配置正确的运动模式。当前仅支持滑雪模式。记录的运动轨迹会在24小时之后清除。 |
+| [isBeaconFenceSupported](arkts-location-geolocationmanager-isbeaconfencesupported-f.md#isbeaconfencesupported) | 判断当前设备是否支持beacon围栏。 |
+| [isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md#iscachedgnssservicesupported) | 判断是否支持GNSS batching功能。 |
+| [isGeocoderAvailable](arkts-location-geolocationmanager-isgeocoderavailable-f.md#isgeocoderavailable) | 判断地理编码与逆地理编码服务状态。 |
+| [isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md#isgnssfenceservicesupported) | 判断是否支持围栏功能。 |
+| [isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md#isgnssservicesupported) | 判断是否支持GNSS功能。 |
+| [isLocationEnabled](arkts-location-geolocationmanager-islocationenabled-f.md#islocationenabled) | 判断位置服务是否已经开启。 |
+| [isPoiServiceSupported](arkts-location-geolocationmanager-ispoiservicesupported-f.md#ispoiservicesupported) | 查询系统（即软件）是否支持POI服务。 |
+| [isWlanBssidMatched](arkts-location-geolocationmanager-iswlanbssidmatched-f.md#iswlanbssidmatched) | 判断指定的BSSID是否存在于最新的WLAN扫描结果里。使用Promise异步回调。 |
+| [off('locationChange')](arkts-location-geolocationmanager-off-f.md#offlocationchange) | 关闭位置变化订阅，并删除对应的定位请求。 |
+| [off('locationError')](arkts-location-geolocationmanager-off-f.md#offlocationerror) | 取消订阅持续定位过程中的错误码。 |
+| [off('locationEnabledChange')](arkts-location-geolocationmanager-off-f.md#offlocationenabledchange) | 取消订阅位置服务状态变化。 |
+| [off('cachedGnssLocationsChange')](arkts-location-geolocationmanager-off-f.md#offcachedgnsslocationschange) | 取消订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [off('satelliteStatusChange')](arkts-location-geolocationmanager-off-f.md#offsatellitestatuschange) | 取消订阅GNSS卫星状态信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [off('nmeaMessage')](arkts-location-geolocationmanager-off-f.md#offnmeamessage) | 取消订阅GNSS NMEA信息上报事件。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [off('gnssFenceStatusChange')](arkts-location-geolocationmanager-off-f.md#offgnssfencestatuschange) | 删除一个围栏，并取消订阅该围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。 |
+| [off('countryCodeChange')](arkts-location-geolocationmanager-off-f.md#offcountrycodechange) | 取消订阅国家码变化事件。 |
+| [off('bluetoothScanResultChange')](arkts-location-geolocationmanager-off-f.md#offbluetoothscanresultchange) | 取消订阅蓝牙扫描信息上报事件并停止蓝牙扫描。 |
+| [offLocationChange](arkts-location-geolocationmanager-offlocationchange-f.md#offlocationchange) | 关闭位置变化订阅，并删除对应的定位请求。 |
+| [on('locationChange')](arkts-location-geolocationmanager-on-f.md#onlocationchange) | 开启位置变化订阅，并发起定位请求。使用callback异步回调。 |
+| [on('locationError')](arkts-location-geolocationmanager-on-f.md#onlocationerror) | 订阅持续定位过程中的错误码。使用callback异步回调。 |
+| [on('locationEnabledChange')](arkts-location-geolocationmanager-on-f.md#onlocationenabledchange) | 订阅位置服务状态变化。使用callback异步回调。 |
+| [on('cachedGnssLocationsChange')](arkts-location-geolocationmanager-on-f.md#oncachedgnsslocationschange) | 订阅缓存GNSS定位结果上报事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isCachedGnssServiceSupported](arkts-location-geolocationmanager-iscachedgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [on('satelliteStatusChange')](arkts-location-geolocationmanager-on-f.md#onsatellitestatuschange) | 订阅GNSS卫星状态信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [on('nmeaMessage')](arkts-location-geolocationmanager-on-f.md#onnmeamessage) | 订阅GNSS NMEA信息上报事件。使用callback异步回调。调用该接口前建议先通过[geoLocationManager.isGnssServiceSupported](arkts-location-geolocationmanager-isgnssservicesupported-f.md)接口判断对应能力是否支持。 |
+| [on('gnssFenceStatusChange')](arkts-location-geolocationmanager-on-f.md#ongnssfencestatuschange) | 添加一个围栏，并订阅地理围栏事件。该接口功能由GNSS定位芯片提供（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。单应用添加地理围栏上限为100，超过上限将移除剩余地理围栏中存活时间最短的围栏。 |
+| [on('countryCodeChange')](arkts-location-geolocationmanager-on-f.md#oncountrycodechange) | 订阅国家码信息变化事件。使用callback异步回调。 |
+| [on('bluetoothScanResultChange')](arkts-location-geolocationmanager-on-f.md#onbluetoothscanresultchange) | 订阅蓝牙扫描信息上报事件，使用callback异步回调。 |
+| [onLocationChange](arkts-location-geolocationmanager-onlocationchange-f.md#onlocationchange) | 开启位置变化订阅，并发起定位请求。使用callback异步回调。 |
+| [removeBeaconFence](arkts-location-geolocationmanager-removebeaconfence-f.md#removebeaconfence) | 删除beacon围栏，并取消订阅地理围栏事件。使用Promise异步回调。 |
+| [removeGnssGeofence](arkts-location-geolocationmanager-removegnssgeofence-f.md#removegnssgeofence) | 删除一个GNSS地理围栏，并取消订阅该地理围栏事件。使用Promise异步回调。GNSS地理围栏功能依赖GNSS定位芯片（仅部分型号支持），如果设备无此芯片或使用的芯片型号不支持该功能，则返回错误码801（Capability not supported）。调用该接口前建议先通过[geoLocationManager.isGnssFenceServiceSupported](arkts-location-geolocationmanager-isgnssfenceservicesupported-f.md)接口判断对应能力是否支持。 |
+| [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md#sendcommand1) | 给位置服务子系统的各个部件发送扩展命令。使用callback异步回调。 |
+| [sendCommand](arkts-location-geolocationmanager-sendcommand-f.md#sendcommand2) | 给位置服务子系统的各个部件发送扩展命令。使用Promise异步回调。 |
+| [startBluetoothSearch](arkts-location-geolocationmanager-startbluetoothsearch-f.md#startbluetoothsearch) | 启动蓝牙扫描并查找指定的蓝牙设备，仅当扫描到的蓝牙设备满足入参BluetoothSearchRequestParams指定的条件时，才通过callback异步返回该蓝牙设备信息。 |
+| [stopBluetoothSearch](arkts-location-geolocationmanager-stopbluetoothsearch-f.md#stopbluetoothsearch) | 停止蓝牙扫描，该回调函数需要与startBluetoothSearch接口传入的回调函数保持一致。若无此参数，则取消当前类型的所有订阅。 |
 
 <!--Del-->
 ### 函数（系统接口）
 
 | 名称 | 说明 |
 | --- | --- |
-| [addFusionFence](arkts-location-geolocationmanager-addfusionfence-f-sys.md) | 添加一个融合围栏，并订阅围栏事件。使用Promise异步回调。 |
-| [disableLocation](arkts-location-geolocationmanager-disablelocation-f-sys.md) | 关闭位置服务。 |
-| [disableLocationByUserId](arkts-location-geolocationmanager-disablelocationbyuserid-f-sys.md) | 关闭指定系统账号的定位开关。 |
-| [disableLocationMock](arkts-location-geolocationmanager-disablelocationmock-f-sys.md) | 去使能位置模拟功能。 |
-| [disableReverseGeocodingMock](arkts-location-geolocationmanager-disablereversegeocodingmock-f-sys.md) | 去使能逆地理编码模拟功能。 |
-| [enableLocation](arkts-location-geolocationmanager-enablelocation-f-sys.md#enablelocation) | 打开位置服务，使用callback异步回调。 |
-| [enableLocation](arkts-location-geolocationmanager-enablelocation-f-sys.md#enablelocation-1) | 打开位置服务，使用Promise异步回调。 |
-| [enableLocationByUserId](arkts-location-geolocationmanager-enablelocationbyuserid-f-sys.md) | 打开指定系统账号的定位开关，使用Promise异步回调。 |
-| [enableLocationMock](arkts-location-geolocationmanager-enablelocationmock-f-sys.md) | 使能位置模拟功能。 |
-| [enableReverseGeocodingMock](arkts-location-geolocationmanager-enablereversegeocodingmock-f-sys.md) | 使能逆地理编码模拟功能。 |
-| [getLocatingRequiredData](arkts-location-geolocationmanager-getlocatingrequireddata-f-sys.md) | 单次获取定位业务所需数据，包含WiFi蓝牙扫描信息，使用Promise方式异步返回结果。 |
-| [getLocationIconStatus](arkts-location-geolocationmanager-getlocationiconstatus-f-sys.md) | 获取当前的定位图标状态。 |
-| [isFusionFenceSupported](arkts-location-geolocationmanager-isfusionfencesupported-f-sys.md) | 判断系统是否支持融合围栏能力。 |
-| [isLocationEnabledByUserId](arkts-location-geolocationmanager-islocationenabledbyuserid-f-sys.md) | 判断指定系统账号的位置开关是否开启。 |
-| [isLocationPrivacyConfirmed](arkts-location-geolocationmanager-islocationprivacyconfirmed-f-sys.md) | 查询用户是否同意定位服务隐私申明，是否同意启用定位服务。只有系统应用才能调用。 |
-| [off](arkts-location-geolocationmanager-off-f-sys.md#offlocatingrequireddatachange) | 取消订阅定位业务所需数据的变化，并停止WiFi和蓝牙扫描。 |
-| [off](arkts-location-geolocationmanager-off-f-sys.md#offlocationiconstatuschange) | 订阅定位图标状态变化。使用callback异步回调。 |
-| [on](arkts-location-geolocationmanager-on-f-sys.md#onlocatingrequireddatachange) | 订阅定位业务所需数据的变化，主要包含WiFi和蓝牙扫描信息；根据入参决定是否启动WiFi和蓝牙扫描。使用callback异步回调。 |
-| [on](arkts-location-geolocationmanager-on-f-sys.md#onlocationiconstatuschange) | 订阅定位图标状态变化。使用callback异步回调。 |
-| [removeFusionFence](arkts-location-geolocationmanager-removefusionfence-f-sys.md) | 删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。 |
-| [setLocationPrivacyConfirmStatus](arkts-location-geolocationmanager-setlocationprivacyconfirmstatus-f-sys.md) | 设置用户勾选定位服务隐私申明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。 |
-| [setLocationSwitchIgnored](arkts-location-geolocationmanager-setlocationswitchignored-f-sys.md) | 设置应用获取位置信息是否受位置开关控制。设置为true后，允许应用在位置开关关闭的场景获取到位置信息，有效时间为从调用接口成功开始的两分钟。 |
-| [setMockedLocations](arkts-location-geolocationmanager-setmockedlocations-f-sys.md) | 设置模拟的位置信息，后面会以该接口中携带的时间间隔上报模拟位置。 |
-| [setReverseGeocodingMockInfo](arkts-location-geolocationmanager-setreversegeocodingmockinfo-f-sys.md) | 设置逆地理编码模拟功能的配置信息，包含了位置和地名的对应关系，后续进行逆地理编码查询时如果位置信息位于配置信息中，就返回对应的地名。该接口需要在调用geoLocationManager.enableReverseGeocodingMock之后才能调用。 |
+| [addFusionFence](arkts-location-geolocationmanager-addfusionfence-f-sys.md#addfusionfence) | 添加一个融合围栏，并订阅围栏事件。使用Promise异步回调。 |
+| [disableLocation](arkts-location-geolocationmanager-disablelocation-f-sys.md#disablelocation) | 关闭位置服务。 |
+| [disableLocationByUserId](arkts-location-geolocationmanager-disablelocationbyuserid-f-sys.md#disablelocationbyuserid) | 关闭指定系统账号的定位开关。 |
+| [disableLocationMock](arkts-location-geolocationmanager-disablelocationmock-f-sys.md#disablelocationmock) | 去使能位置模拟功能。 |
+| [disableReverseGeocodingMock](arkts-location-geolocationmanager-disablereversegeocodingmock-f-sys.md#disablereversegeocodingmock) | 去使能逆地理编码模拟功能。 |
+| [enableLocation](arkts-location-geolocationmanager-enablelocation-f-sys.md#enablelocation1) | 打开位置服务，使用callback异步回调。 |
+| [enableLocation](arkts-location-geolocationmanager-enablelocation-f-sys.md#enablelocation2) | 打开位置服务，使用Promise异步回调。 |
+| [enableLocationByUserId](arkts-location-geolocationmanager-enablelocationbyuserid-f-sys.md#enablelocationbyuserid) | 打开指定系统账号的定位开关，使用Promise异步回调。 |
+| [enableLocationMock](arkts-location-geolocationmanager-enablelocationmock-f-sys.md#enablelocationmock) | 使能位置模拟功能。 |
+| [enableReverseGeocodingMock](arkts-location-geolocationmanager-enablereversegeocodingmock-f-sys.md#enablereversegeocodingmock) | 使能逆地理编码模拟功能。 |
+| [getLocatingRequiredData](arkts-location-geolocationmanager-getlocatingrequireddata-f-sys.md#getlocatingrequireddata) | 单次获取定位业务所需数据，包含WiFi蓝牙扫描信息，使用Promise方式异步返回结果。 |
+| [getLocationIconStatus](arkts-location-geolocationmanager-getlocationiconstatus-f-sys.md#getlocationiconstatus) | 获取当前的定位图标状态。 |
+| [isFusionFenceSupported](arkts-location-geolocationmanager-isfusionfencesupported-f-sys.md#isfusionfencesupported) | 判断系统是否支持融合围栏能力。 |
+| [isLocationEnabledByUserId](arkts-location-geolocationmanager-islocationenabledbyuserid-f-sys.md#islocationenabledbyuserid) | 判断指定系统账号的位置开关是否开启。 |
+| [isLocationPrivacyConfirmed](arkts-location-geolocationmanager-islocationprivacyconfirmed-f-sys.md#islocationprivacyconfirmed) | 查询用户是否同意定位服务隐私申明，是否同意启用定位服务。只有系统应用才能调用。 |
+| [off('locatingRequiredDataChange')](arkts-location-geolocationmanager-off-f-sys.md#offlocatingrequireddatachange) | 取消订阅定位业务所需数据的变化，并停止WiFi和蓝牙扫描。 |
+| [off('locationIconStatusChange')](arkts-location-geolocationmanager-off-f-sys.md#offlocationiconstatuschange) | 订阅定位图标状态变化。使用callback异步回调。 |
+| [on('locatingRequiredDataChange')](arkts-location-geolocationmanager-on-f-sys.md#onlocatingrequireddatachange) | 订阅定位业务所需数据的变化，主要包含WiFi和蓝牙扫描信息；根据入参决定是否启动WiFi和蓝牙扫描。使用callback异步回调。 |
+| [on('locationIconStatusChange')](arkts-location-geolocationmanager-on-f-sys.md#onlocationiconstatuschange) | 订阅定位图标状态变化。使用callback异步回调。 |
+| [removeFusionFence](arkts-location-geolocationmanager-removefusionfence-f-sys.md#removefusionfence) | 删除一个融合围栏，并取消订阅该围栏事件。使用Promise异步回调。 |
+| [setLocationPrivacyConfirmStatus](arkts-location-geolocationmanager-setlocationprivacyconfirmstatus-f-sys.md#setlocationprivacyconfirmstatus) | 设置用户勾选定位服务隐私申明的状态，记录用户是否同意启用定位服务。只有系统应用才能调用。 |
+| [setLocationSwitchIgnored](arkts-location-geolocationmanager-setlocationswitchignored-f-sys.md#setlocationswitchignored) | 设置应用获取位置信息是否受位置开关控制。设置为true后，允许应用在位置开关关闭的场景获取到位置信息，有效时间为从调用接口成功开始的两分钟。 |
+| [setMockedLocations](arkts-location-geolocationmanager-setmockedlocations-f-sys.md#setmockedlocations) | 设置模拟的位置信息，后面会以该接口中携带的时间间隔上报模拟位置。 |
+| [setReverseGeocodingMockInfo](arkts-location-geolocationmanager-setreversegeocodingmockinfo-f-sys.md#setreversegeocodingmockinfo) | 设置逆地理编码模拟功能的配置信息，包含了位置和地名的对应关系，后续进行逆地理编码查询时如果位置信息位于配置信息中，就返回对应的地名。该接口需要在调用geoLocationManager.enableReverseGeocodingMock之后才能调用。 |
 <!--DelEnd-->
 
 ### 接口
@@ -196,6 +196,6 @@ import { geoLocationManager } from '@kit.LocationKit';
 | [GnssFenceType](arkts-location-geolocationmanager-gnssfencetype-e-sys.md) | GNSS围栏类型。 |
 | [LocatingRequiredDataType](arkts-location-geolocationmanager-locatingrequireddatatype-e-sys.md) | 定位业务所需数据的类型。 |
 | [LocationIconStatus](arkts-location-geolocationmanager-locationiconstatus-e-sys.md) | 定位图标状态。 |
-| LocationPrivacyType | 定位服务隐私协议类型。 |
+| [LocationPrivacyType](arkts-location-geolocationmanager-locationprivacytype-e-sys.md) | 定位服务隐私协议类型。 |
 | [WifiFingerprintType](arkts-location-geolocationmanager-wififingerprinttype-e-sys.md) | Wi-Fi指纹算法类型。 |
 <!--DelEnd-->

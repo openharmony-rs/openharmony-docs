@@ -15,13 +15,15 @@ interface DateConstructor
 (): string
 ```
 
+<a id="construct1"></a>
+
 ## [[Construct]]
 
 ```TypeScript
 new(): Date
 ```
 
-<a id="construct-1"></a>
+<a id="construct2"></a>
 
 ## [[Construct]]
 
@@ -35,7 +37,7 @@ new(value: number | string): Date
 | --- | --- | --- | --- |
 | value | number &#124; string | Yes |  |
 
-<a id="construct-2"></a>
+<a id="construct3"></a>
 
 ## [[Construct]]
 

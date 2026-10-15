@@ -12,9 +12,10 @@ Parameters of the shared element transition animation.
 > 
 > When **type** is set to **SharedTransitionEffectType.Exchange**, the effect focuses on smooth transition of the
 > position and size of matching shared elements, which can be visually observed through the component's border. The
-> transition, however, does not involve content properties, which will abruptly change to the target page's values at
-> the end of the animation. For example, if a **Text** component has different **fontSize** values on two pages, the
-> font size will snap to the target page's value once the shared transition animation completes.
+> transition, however, does not involve content properties, which will abruptly change to the
+> target page's values at the end of the animation. For example, if a **Text** component has different **fontSize**
+> values on two pages,
+> the font size will snap to the target page's value once the shared transition animation completes.
 
 **Since:** 7
 

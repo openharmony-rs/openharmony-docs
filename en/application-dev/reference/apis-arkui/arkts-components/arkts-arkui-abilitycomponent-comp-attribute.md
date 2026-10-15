@@ -6,9 +6,9 @@ declare class AbilityComponentAttribute extends CommonMethod<AbilityComponentAtt
 
 Define the attribute functions of ability component.
 
-@extends CommonMethod&lt;AbilityComponentAttribute&gt;
+@extends CommonMethod<AbilityComponentAttribute>
 
-**Inheritance/Implementation:** AbilityComponentAttribute extends CommonMethod<AbilityComponentAttribute>
+**Inheritance/Implementation:** AbilityComponentAttribute extends CommonMethod&lt;AbilityComponentAttribute&gt;
 
 **Since:** 9
 

@@ -12,22 +12,6 @@ Enumeration of permission level for an application to access asset.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## URI_FORMAT_ERROR
-
-```TypeScript
-URI_FORMAT_ERROR = 0
-```
-
-Not media asset uri.
-
-**Since:** 26.0.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-MediaAssetPermissionState-URI_FORMAT_ERROR = 0--><!--Device-MediaAssetPermissionState-URI_FORMAT_ERROR = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## FILE_NOT_EXIST
 
 ```TypeScript
@@ -41,6 +25,22 @@ Asset not exists.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-MediaAssetPermissionState-FILE_NOT_EXIST = 1--><!--Device-MediaAssetPermissionState-FILE_NOT_EXIST = 1-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## NO_READ_PERMISSION
+
+```TypeScript
+NO_READ_PERMISSION = 3
+```
+
+The application has no read permission when accessing the asset.
+
+**Since:** 26.0.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-MediaAssetPermissionState-NO_READ_PERMISSION = 3--><!--Device-MediaAssetPermissionState-NO_READ_PERMISSION = 3-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -60,18 +60,18 @@ The application has read permission when accessing the asset.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## NO_READ_PERMISSION
+## URI_FORMAT_ERROR
 
 ```TypeScript
-NO_READ_PERMISSION = 3
+URI_FORMAT_ERROR = 0
 ```
 
-The application has no read permission when accessing the asset.
+Not media asset uri.
 
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-MediaAssetPermissionState-NO_READ_PERMISSION = 3--><!--Device-MediaAssetPermissionState-NO_READ_PERMISSION = 3-End-->
+<!--Device-MediaAssetPermissionState-URI_FORMAT_ERROR = 0--><!--Device-MediaAssetPermissionState-URI_FORMAT_ERROR = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

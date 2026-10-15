@@ -6,6 +6,8 @@
 import { geolocation } from '@kit.LocationKit';
 ```
 
+<a id="getcurrentlocation1"></a>
+
 ## getCurrentLocation
 
 ```TypeScript
@@ -51,7 +53,7 @@ geolocation.getCurrentLocation(requestInfo, locationChange);
 ```
 
 
-<a id="getcurrentlocation-1"></a>
+<a id="getcurrentlocation2"></a>
 
 ## getCurrentLocation
 
@@ -96,7 +98,7 @@ geolocation.getCurrentLocation(locationChange);
 ```
 
 
-<a id="getcurrentlocation-2"></a>
+<a id="getcurrentlocation3"></a>
 
 ## getCurrentLocation
 

@@ -350,6 +350,30 @@ Default value: **false**
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
+## firstDayOfWeek
+
+```TypeScript
+firstDayOfWeek?: CalendarFirstDayOfWeek
+```
+
+Sets the first day of the week for the calendar picker dialog.
+
+Default value: **CalendarFirstDayOfWeek.LOCAL** (follows the system region).
+
+**Type:** [CalendarFirstDayOfWeek](arkts-arkui-calendarpicker-comp-calendarfirstdayofweek-e.md)
+
+**Default:** CalendarFirstDayOfWeek.LOCAL
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-CalendarDialogOptions-firstDayOfWeek?: CalendarFirstDayOfWeek--><!--Device-CalendarDialogOptions-firstDayOfWeek?: CalendarFirstDayOfWeek-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
 ## hoverModeArea
 
 ```TypeScript
@@ -480,7 +504,7 @@ System material of the dialog box.
 - Default value: the [ImmersiveMaterial](../arkts-apis/arkts-arkui-uimaterial-immersivematerial-c.md)  
 object whose [ImmersiveOptions](../arkts-apis/arkts-arkui-uimaterial-immersiveoptions-i.md) style is **ImmersiveStyle.ULTRA_THICK**. When set to **undefined**, it is consistent with the default value.  
 - Different materials have different visual effects, including differences in background transparency, blur degree,  
-and shadow style. This API affects the background color [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), background blur [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle), background effect [backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect), border color [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor), border width [borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and shadow [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow). When the system material is set, the preceding APIs do not take effect.
+and shadow style. This API affects the background color [backgroundColor](arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), background blur [backgroundBlurStyle](arkts-arkui-common-comp-commonmethod-c.md#backgroundblurstyle1), background effect [backgroundEffect](arkts-arkui-common-comp-commonmethod-c.md#backgroundeffect1), border color [borderColor](arkts-arkui-common-comp-commonmethod-c.md#bordercolor), border width [borderWidth](arkts-arkui-common-comp-commonmethod-c.md#borderwidth), and shadow [shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1). When the system material is set, the preceding APIs do not take effect.
 
 **Type:** [SystemUiMaterial](arkts-arkui-common-comp-systemuimaterial-t.md)
 

@@ -8,13 +8,7 @@ The **SplitLayout** component provides common page layout styles, mainly used to
 
 > **NOTE:** 
 > 
-> - This component can only be used in the stage model.
-> 
-> - **SplitLayout** does not support setting [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) and [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). If set, the build toolchain will generate an additional \_\_Common\_\_ node and attach the universal attributes or universal events to \_\_Common\_\_ instead of directly applying them to **SplitLayout** itself, causing the configured attributes or events to not take effect.
-
-The [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
-
-[Universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) are not supported.
+> - **SplitLayout** does not support setting [universal attributes](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md) or [universal events](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md). If set, the build toolchain will generate an additional \_\_Common\_\_ node and attach the universal attributes or universal events to \_\_Common\_\_ instead of directly applying them to **SplitLayout** itself, causing the configured attributes or events to not take effect.
 
 **Since:** 10
 

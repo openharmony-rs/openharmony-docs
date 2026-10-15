@@ -12,6 +12,38 @@ Enumerates the stop code, which is used to ON_STOP function.
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
+## EXECUTE_ERROR
+
+```TypeScript
+EXECUTE_ERROR = 4
+```
+
+Anomalies during task execution.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StopCode-EXECUTE_ERROR = 4--><!--Device-StopCode-EXECUTE_ERROR = 4-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
+
+## PERCEPTIBLE_ERROR
+
+```TypeScript
+PERCEPTIBLE_ERROR = 2
+```
+
+Perceptible anomalies during task execution.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-StopCode-PERCEPTIBLE_ERROR = 2--><!--Device-StopCode-PERCEPTIBLE_ERROR = 2-End-->
+
+**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
+
 ## SUCCESS
 
 ```TypeScript
@@ -44,22 +76,6 @@ System error during task execution.
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler
 
-## PERCEPTIBLE_ERROR
-
-```TypeScript
-PERCEPTIBLE_ERROR = 2
-```
-
-Perceptible anomalies during task execution.
-
-**Since:** 26.2.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-StopCode-PERCEPTIBLE_ERROR = 2--><!--Device-StopCode-PERCEPTIBLE_ERROR = 2-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
-
 ## TIMEOUT_ERROR
 
 ```TypeScript
@@ -73,21 +89,5 @@ Timeout during task execution.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-StopCode-TIMEOUT_ERROR = 3--><!--Device-StopCode-TIMEOUT_ERROR = 3-End-->
-
-**System capability:** SystemCapability.ResourceSchedule.WorkScheduler
-
-## EXECUTE_ERROR
-
-```TypeScript
-EXECUTE_ERROR = 4
-```
-
-Anomalies during task execution.
-
-**Since:** 26.2.0
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-StopCode-EXECUTE_ERROR = 4--><!--Device-StopCode-EXECUTE_ERROR = 4-End-->
 
 **System capability:** SystemCapability.ResourceSchedule.WorkScheduler

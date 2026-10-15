@@ -49,10 +49,11 @@ Enables proactive awareness on screen content and subscribes to a screen awarene
 | [34000001](../errorcode-carAwareness.md#34000001-service-exception) | Service exception. |
 | [34000002](../errorcode-carAwareness.md#34000002-specified-capability-not-supported) | The application or page is not supported. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
-import onScreen from "@ohos.multimodalAwareness.onScreen";
+import { onScreen } from '@kit.MultimodalAwarenessKit';
 let onscreenAwarenessCap: onScreen.OnscreenAwarenessCap = {
    groupId: 'SmartEdge',
 }
@@ -69,6 +70,8 @@ try {
       console.info(`subscribe resultCode: ${info[0].resultCode}`);
    }, onscreenAwarenessOptions);
 } catch (err) {
-   console.error('subscribe failed, errCode = ' + err.code);
+   console.error(`subscribe failed, Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

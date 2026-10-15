@@ -44,6 +44,7 @@ function createParallelSoundPool(maxStreams: number, audioRenderInfo: audio.Audi
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | System API error. Return by promise. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,3 +68,5 @@ media.createParallelSoundPool(5, audioRendererInfo).then((soundpool_: media.Soun
   console.error(`soundpool catchCallback, error message:${error.message}`);
 });
 ```
+
+<!--DelEnd-->

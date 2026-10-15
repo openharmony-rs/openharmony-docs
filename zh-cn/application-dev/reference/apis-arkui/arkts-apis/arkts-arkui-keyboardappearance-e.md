@@ -12,13 +12,13 @@ declare enum KeyboardAppearance
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NONE_IMMERSIVE
+## DARK_IMMERSIVE
 
 ```TypeScript
-NONE_IMMERSIVE = 0
+DARK_IMMERSIVE = 3
 ```
 
-默认外观模式，不采用沉浸式风格。
+深色沉浸式风格。
 
 **起始版本：** 15
 
@@ -26,7 +26,7 @@ NONE_IMMERSIVE = 0
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
-<!--Device-KeyboardAppearance-NONE_IMMERSIVE = 0--><!--Device-KeyboardAppearance-NONE_IMMERSIVE = 0-End-->
+<!--Device-KeyboardAppearance-DARK_IMMERSIVE = 3--><!--Device-KeyboardAppearance-DARK_IMMERSIVE = 3-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
@@ -66,13 +66,13 @@ LIGHT_IMMERSIVE = 2
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## DARK_IMMERSIVE
+## NONE_IMMERSIVE
 
 ```TypeScript
-DARK_IMMERSIVE = 3
+NONE_IMMERSIVE = 0
 ```
 
-深色沉浸式风格。
+默认外观模式，不采用沉浸式风格。
 
 **起始版本：** 15
 
@@ -80,6 +80,6 @@ DARK_IMMERSIVE = 3
 
 **原子化服务API：** 从API版本15开始，该接口支持在原子化服务中使用。
 
-<!--Device-KeyboardAppearance-DARK_IMMERSIVE = 3--><!--Device-KeyboardAppearance-DARK_IMMERSIVE = 3-End-->
+<!--Device-KeyboardAppearance-NONE_IMMERSIVE = 0--><!--Device-KeyboardAppearance-NONE_IMMERSIVE = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

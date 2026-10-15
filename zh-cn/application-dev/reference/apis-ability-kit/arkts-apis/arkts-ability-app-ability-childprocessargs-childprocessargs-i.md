@@ -44,7 +44,7 @@ fds?: Record<string, number>
 
 文件描述符句柄集合，用于主进程和子进程通信，不传入时子进程无法获取主进程传递的文件句柄。该参数通过key-value的形式传入到子进程中，其中key为自定义字符串，value为文件描述符句柄。可以在[ChildProcess.onStart](arkts-ability-app-ability-childprocess-childprocess-c.md#onstart)方法中通过args.fds获取fd句柄。
 
-&lt;b&gt;说明：&lt;/b&gt;
+<b>说明：</b>
 
 - fds最多支持16组，每组key的最大长度为20字符。  
 - 传递到子进程中的句柄数字可能会变，但是指向的文件是一致的。

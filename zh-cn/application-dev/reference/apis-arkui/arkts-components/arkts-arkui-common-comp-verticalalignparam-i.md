@@ -20,17 +20,17 @@ declare interface VerticalAlignParam
 align: VerticalAlign
 ```
 
-Sets the vertical alignment relative to the anchor component.
+设置相对于锚点组件的纵向对齐方式。
 
 Anonymous Object Rectification
 
 **类型：** [VerticalAlign](../arkts-apis/arkts-arkui-verticalalign-e.md)
 
-**起始版本：** 23
+**起始版本：** 9
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-VerticalAlignParam-align: VerticalAlign--><!--Device-VerticalAlignParam-align: VerticalAlign-End-->
 
@@ -42,17 +42,17 @@ Anonymous Object Rectification
 anchor: string
 ```
 
-Specifies the anchor component
+设置作为锚点的组件的id值。
 
 Anonymous Object Rectification
 
 **类型：** string
 
-**起始版本：** 23
+**起始版本：** 9
 
-**原子化服务API：** 从API版本23开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-**卡片能力：** 从API版本23开始，该接口支持在ArkTS卡片中使用。
+**卡片能力：** 从API版本9开始，该接口支持在ArkTS卡片中使用。
 
 <!--Device-VerticalAlignParam-anchor: string--><!--Device-VerticalAlignParam-anchor: string-End-->
 

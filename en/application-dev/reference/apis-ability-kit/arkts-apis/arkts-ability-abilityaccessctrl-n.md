@@ -6,8 +6,6 @@ declare namespace abilityAccessCtrl
 
 **Since:** 8
 
-**Model restriction:** This API can be used in both the stage model and FA model.
-
 <!--Device-unnamed-declare namespace abilityAccessCtrl--><!--Device-unnamed-declare namespace abilityAccessCtrl-End-->
 
 **System capability:** SystemCapability.Security.AccessToken
@@ -24,7 +22,7 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 
 | Name | Description |
 | --- | --- |
-| [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md) | Creates a program access control management instance for scenarios such as permission verification, runtime permission request, settings page authorization guidance, and permission status change monitoring. After the call is successful, an AtManager instance is returned, which can be used for subsequent permission management operations. |
+| [createAtManager](arkts-ability-abilityaccessctrl-createatmanager-f.md#createatmanager) | Creates a program access control management instance for scenarios such as permission verification, runtime permission request, settings page authorization guidance, and permission status change monitoring. After the call is successful, an AtManager instance is returned, which can be used for subsequent permission management operations. |
 
 ### Interfaces
 
@@ -47,9 +45,9 @@ import { abilityAccessCtrl, Context, PermissionRequestResult, Permissions } from
 | Name | Description |
 | --- | --- |
 | [GrantStatus](arkts-ability-abilityaccessctrl-grantstatus-e.md) | Enumerates the permission grant states. |
-| [SelectedResult](arkts-ability-abilityaccessctrl-selectedresult-e.md) | Enumerates the results of the dialog box for redirection to the settings page. |
 | [PermissionStateChangeType](arkts-ability-abilityaccessctrl-permissionstatechangetype-e.md) | Enumerates the operations that trigger permission state changes. |
 | [PermissionStatus](arkts-ability-abilityaccessctrl-permissionstatus-e.md) | Enumerates the permission states. |
+| [SelectedResult](arkts-ability-abilityaccessctrl-selectedresult-e.md) | Enumerates the results of the dialog box for redirection to the settings page. |
 | [SwitchType](arkts-ability-abilityaccessctrl-switchtype-e.md) | Enumerates the global switch types. |
 
 <!--Del-->

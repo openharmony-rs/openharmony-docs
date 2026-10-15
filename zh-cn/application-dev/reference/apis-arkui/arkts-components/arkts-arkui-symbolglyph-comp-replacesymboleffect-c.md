@@ -14,6 +14,8 @@ ReplaceSymbolEffect继承自父类SymbolEffect。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -40,7 +42,7 @@ ReplaceSymbolEffect的构造函数，替换动效。
 | --- | --- | --- | --- |
 | scope | [EffectScope](arkts-arkui-symbolglyph-comp-effectscope-e.md) | 否 | 动效范围。具体枚举值及说明请参考EffectScope枚举说明。<br>默认值：EffectScope.LAYER |
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 

@@ -12,50 +12,6 @@ Enumerates the modes in which elements are displayed along the main axis.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## Stretch
-
-```TypeScript
-Stretch
-```
-
-The width of each page in the **Swiper** component equals the component's own width.
-
-Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **STRETCH** instead.
-
-**Since:** 7
-
-**Deprecated since:** 10
-
-**Substitutes:** [STRETCH](#stretch)
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 7.
-
-<!--Device-SwiperDisplayMode-Stretch--><!--Device-SwiperDisplayMode-Stretch-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## AutoLinear
-
-```TypeScript
-AutoLinear
-```
-
-The width of each page in the **Swiper** component equals the maximum width of child components. This enumerated value behaves the same as setting [displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount) to **'auto'** (string type). For details, see [displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount).
-
-Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **AUTO_LINEAR** instead.
-
-**Since:** 7
-
-**Deprecated since:** 10
-
-**Substitutes:** [AUTO_LINEAR](#auto_linear)
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 7.
-
-<!--Device-SwiperDisplayMode-AutoLinear--><!--Device-SwiperDisplayMode-AutoLinear-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
 ## STRETCH
 
 ```TypeScript
@@ -82,7 +38,7 @@ The width of each page in the **Swiper** component equals the component's own wi
 AUTO_LINEAR
 ```
 
-The width of each page in the **Swiper** component equals the width of the leftmost child component in the viewport. This enumerated value behaves the same as setting [displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount) to **'auto'** (string type). For details, see [displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount).
+The width of each page in the **Swiper** component equals the width of the leftmost child component in the viewport. This enumerated value behaves the same as setting [displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount1) to **'auto'** (string type). For details, see [displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount1).
 
 Note: This API is supported since API version 10 and deprecated since API version 12. You are advised to use [Scroller.scrollTo](arkts-arkui-scroll-comp-scroller-c.md#scrollto) instead.
 
@@ -99,5 +55,49 @@ Note: This API is supported since API version 10 and deprecated since API versio
 **Widget capability:** This API can be used in ArkTS widgets since API version 10.
 
 <!--Device-SwiperDisplayMode-AUTO_LINEAR--><!--Device-SwiperDisplayMode-AUTO_LINEAR-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## AutoLinear
+
+```TypeScript
+AutoLinear
+```
+
+The width of each page in the **Swiper** component equals the maximum width of child components. This enumerated value behaves the same as setting [displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount1) to **'auto'** (string type). For details, see [displayCount](arkts-arkui-swiper-comp-attribute.md#displaycount1).
+
+Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **AUTO_LINEAR** instead.
+
+**Since:** 7
+
+**Deprecated since:** 10
+
+**Substitutes:** [AUTO_LINEAR](#auto_linear)
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 7.
+
+<!--Device-SwiperDisplayMode-AutoLinear--><!--Device-SwiperDisplayMode-AutoLinear-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## Stretch
+
+```TypeScript
+Stretch
+```
+
+The width of each page in the **Swiper** component equals the component's own width.
+
+Note: This API is supported since API version 7 and deprecated since API version 10. You are advised to use **STRETCH** instead.
+
+**Since:** 7
+
+**Deprecated since:** 10
+
+**Substitutes:** [STRETCH](#stretch)
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 7.
+
+<!--Device-SwiperDisplayMode-Stretch--><!--Device-SwiperDisplayMode-Stretch-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

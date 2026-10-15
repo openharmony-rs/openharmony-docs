@@ -6,6 +6,8 @@
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="sendsystemavkeyevent1"></a>
+
 ## sendSystemAVKeyEvent
 
 ```TypeScript
@@ -41,6 +43,7 @@ Send system media key event.The system automatically selects the recipient.
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600105](../errorcode-avsession.md#6600105-invalid-session-command) | Invalid session command. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -54,8 +57,10 @@ avSession.sendSystemAVKeyEvent(event, () => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="sendsystemavkeyevent-1"></a>
+
+<a id="sendsystemavkeyevent2"></a>
 
 ## sendSystemAVKeyEvent
 
@@ -97,6 +102,7 @@ Send system media key event.The system automatically selects the recipient.
 | [6600101](../errorcode-avsession.md#6600101-session-service-exception) | Session service exception. |
 | [6600105](../errorcode-avsession.md#6600105-invalid-session-command) | Invalid session command. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -109,3 +115,5 @@ avSession.sendSystemAVKeyEvent(event).then(() => {
   console.info('Succeeded in sending system AV key event.');
 });
 ```
+
+<!--DelEnd-->

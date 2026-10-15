@@ -36,7 +36,7 @@ Creates a temporary directory. This API uses a promise to return the result.
 | Promise&lt;string&gt; | Promise that returns the directory created. |
 
 
-<a id="mkdtemp-1"></a>
+<a id="mkdtemp2"></a>
 
 ## mkdtemp
 

@@ -160,7 +160,7 @@ struct ImageExample {
 offLayoutChildren(callback?: Callback<void>): void
 ```
 
-取消注册layoutChildren事件回调。要实现在子组件布局完成后停止触发特定回调，只需通过ComponentObserver句柄，取消注册该回调即可。如果组件树中存在多个layoutChildren事件回调，取消最顶层的回调后，其余layoutChildren事件回调也无法生效。以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过onLayoutChildren&lt;sup&gt;23+&lt;/sup&gt;接口监听子树中的节点完成布局时的回调事件。
+取消注册layoutChildren事件回调。要实现在子组件布局完成后停止触发特定回调，只需通过ComponentObserver句柄，取消注册该回调即可。如果组件树中存在多个layoutChildren事件回调，取消最顶层的回调后，其余layoutChildren事件回调也无法生效。以下示例展示了inspector注册组件布局和组件绘制送显完成回调通知能力的基本用法。同时，通过onLayoutChildren<sup>23+</sup>接口监听子树中的节点完成布局时的回调事件。
 
 **起始版本：** 23
 
@@ -328,7 +328,7 @@ on(type: 'drawChildren', callback: Callback<void>): void
 onDrawChildren(callback: Callback<number[]>): void
 ```
 
-通过ComponentObserver注册drawChildren事件回调。使用callback异步回调。与on('drawChildren')相比，本方法在回调中额外返回子组件的uniqueId信息（Callback&lt;number[]&gt;），便于开发者定位具体子组件。如需获取子组件标识，建议使用本方法；若不需要子组件信息，两者均可使用。以当前注册事件回调的节点为根节点，当组件的子组件位于UI组件主树中且绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。当前节点注册事件回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过onDrawChildren&lt;sup&gt;24+&lt;/sup&gt;接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
+通过ComponentObserver注册drawChildren事件回调。使用callback异步回调。与on('drawChildren')相比，本方法在回调中额外返回子组件的uniqueId信息（Callback<number[]>），便于开发者定位具体子组件。如需获取子组件标识，建议使用本方法；若不需要子组件信息，两者均可使用。以当前注册事件回调的节点为根节点，当组件的子组件位于UI组件主树中且绘制送显完成时，会触发该回调。如果组件树中存在多个drawChildren事件回调，只会触发最顶层的drawChildren事件回调。取消最顶层的回调后，其余drawChildren事件回调也无法生效。当前节点注册事件回调后，不支持修改其在UI组件主树中的层级位置。如需调整，请先取消事件回调，再重新注册事件回调。以下示例展示了inspector注册组件绘制送显完成回调通知能力的基本用法。通过onDrawChildren<sup>24+</sup>接口注册回调，当子树内节点完成渲染时，回调返回该节点的uniqueId信息。
 
 **起始版本：** 24
 

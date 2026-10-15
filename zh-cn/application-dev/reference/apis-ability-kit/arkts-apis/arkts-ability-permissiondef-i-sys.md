@@ -6,10 +6,6 @@ export interface PermissionDef
 
 [module.json5配置文件](../../../quick-start/module-configuration-file.md)中定义的权限详细信息，通过接口[bundleManager.getPermissionDef](arkts-ability-bundlemanager-getpermissiondef-f-sys.md)获取。
 
-> **说明：** 
-> 
-> 本模块为系统接口。
-
 **起始版本：** 9
 
 <!--Device-unnamed-export interface PermissionDef--><!--Device-unnamed-export interface PermissionDef-End-->
@@ -24,7 +20,7 @@ export interface PermissionDef
 readonly descriptionId: number
 ```
 
-描述权限的ID。
+权限描述信息的资源ID。
 
 **类型：** number
 
@@ -60,7 +56,7 @@ readonly grantMode: number
 readonly labelId: number
 ```
 
-权限的标签ID。
+权限标签的资源ID，用于显示权限名称。
 
 **类型：** number
 
@@ -78,7 +74,7 @@ readonly labelId: number
 readonly permissionName: string
 ```
 
-用户权限名称。
+权限名称。
 
 **类型：** string
 

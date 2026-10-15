@@ -30,7 +30,7 @@ direction: TextDirection
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextBox-direction: TextDirection--><!--Device-TextBox-direction: TextDirection-End-->
 
@@ -48,7 +48,7 @@ rect: common2D.Rect
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本22开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本22开始，该接口支持在原子化服务中使用。
 
 <!--Device-TextBox-rect: common2D.Rect--><!--Device-TextBox-rect: common2D.Rect-End-->
 

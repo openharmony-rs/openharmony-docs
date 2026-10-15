@@ -32,8 +32,8 @@ function generateDlpFileForEnterprise(plaintextFd: number, dlpFd: number, proper
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| plaintextFd | number | 是 | 明文文件的文件描述符。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当plaintextFd小于0时，打印错误日志，函数停止运行；当plaintextFd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，plaintextFd的值被截断。 |
-| dlpFd | number | 是 | 加密文件的文件描述符。取值范围为[0, 2&lt;sup&gt;31&lt;/sup&gt;-1]。当dlpFd小于0时，打印错误日志，函数停止运行；当dlpFd大于2&lt;sup&gt;31&lt;/sup&gt;-1时，dlpFd的值被截断。 |
+| plaintextFd | number | 是 | 明文文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当plaintextFd小于0时，打印错误日志，函数停止运行；当plaintextFd大于2<sup>31</sup>-1时，plaintextFd的值被截断。 |
+| dlpFd | number | 是 | 加密文件的文件描述符。取值范围为[0, 2<sup>31</sup>-1]。当dlpFd小于0时，打印错误日志，函数停止运行；当dlpFd大于2<sup>31</sup>-1时，dlpFd的值被截断。 |
 | property | [DLPProperty](arkts-dataprotection-dlppermission-dlpproperty-i.md) | 是 | DLP文件通用策略。 |
 | customProperty | [CustomProperty](arkts-dataprotection-dlppermission-customproperty-i.md) | 是 | 企业定制策略。 |
 

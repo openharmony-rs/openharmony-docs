@@ -12,6 +12,22 @@ Enumerates the access control types.
 
 **System capability:** SystemCapability.Security.Huks.Extension
 
+## HUKS_AUTH_ACCESS_ALWAYS_VALID
+
+```TypeScript
+HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2
+```
+
+The key is always valid.
+
+**Since:** 11
+
+**Atomic service API:** This API can be used in atomic services since API version 12.
+
+<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2-End-->
+
+**System capability:** SystemCapability.Security.Huks.Extension
+
 ## HUKS_AUTH_ACCESS_INVALID_CLEAR_PASSWORD
 
 ```TypeScript
@@ -41,21 +57,5 @@ The key becomes invalid after a new biometric feature is added.
 **Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_INVALID_NEW_BIO_ENROLL = 1 << 1-End-->
-
-**System capability:** SystemCapability.Security.Huks.Extension
-
-## HUKS_AUTH_ACCESS_ALWAYS_VALID
-
-```TypeScript
-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2
-```
-
-The key is always valid.
-
-**Since:** 11
-
-**Atomic service API:** This API can be used in atomic services since API version 12.
-
-<!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2--><!--Device-HuksAuthAccessType-HUKS_AUTH_ACCESS_ALWAYS_VALID = 1 << 2-End-->
 
 **System capability:** SystemCapability.Security.Huks.Extension

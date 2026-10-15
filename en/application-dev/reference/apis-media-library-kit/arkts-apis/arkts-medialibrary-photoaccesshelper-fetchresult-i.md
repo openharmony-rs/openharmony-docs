@@ -28,7 +28,7 @@ Closes this FetchResult instance to invalidate it. After this instance is releas
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-close(): void--><!--Device-FetchResult-close(): void-End-->
 
@@ -38,8 +38,8 @@ Closes this FetchResult instance to invalidate it. After this instance is releas
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13900020 | Invalid argument. Possible causes: 1. Parameter count exceeds the limit; 2. The current object is invalid. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 13900020 | Invalid argument. Possible causes:         1. Parameter count exceeds the limit; 2. The current object is invalid. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -77,7 +77,7 @@ Checks whether the specified file asset is contained in the result set. This API
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-FetchResult-contains(object: T): Promise<boolean>--><!--Device-FetchResult-contains(object: T): Promise<boolean>-End-->
 
@@ -120,6 +120,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getallobjects1"></a>
+
 ## getAllObjects
 
 ```TypeScript
@@ -130,7 +132,7 @@ Obtains all the file assets in the result set. This API uses an asynchronous cal
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getAllObjects(callback: AsyncCallback<Array<T>>): void--><!--Device-FetchResult-getAllObjects(callback: AsyncCallback<Array<T>>): void-End-->
 
@@ -147,7 +149,7 @@ Obtains all the file assets in the result set. This API uses an asynchronous cal
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -174,7 +176,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getallobjects-1"></a>
+<a id="getallobjects2"></a>
 
 ## getAllObjects
 
@@ -186,7 +188,7 @@ Obtains all the file assets in the result set. This API uses a promise to return
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getAllObjects(): Promise<Array<T>>--><!--Device-FetchResult-getAllObjects(): Promise<Array<T>>-End-->
 
@@ -203,7 +205,7 @@ Obtains all the file assets in the result set. This API uses a promise to return
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -235,7 +237,7 @@ Obtains the total number of files in the result set.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getCount(): int--><!--Device-FetchResult-getCount(): int-End-->
 
@@ -251,8 +253,8 @@ Obtains the total number of files in the result set.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
+| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **Examples**
 
@@ -274,6 +276,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getfirstobject1"></a>
+
 ## getFirstObject
 
 ```TypeScript
@@ -284,7 +288,7 @@ Obtains the first file asset in the result set. This API uses an asynchronous ca
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getFirstObject(callback: AsyncCallback<T>): void--><!--Device-FetchResult-getFirstObject(callback: AsyncCallback<T>): void-End-->
 
@@ -301,7 +305,7 @@ Obtains the first file asset in the result set. This API uses an asynchronous ca
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -328,7 +332,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getfirstobject-1"></a>
+<a id="getfirstobject2"></a>
 
 ## getFirstObject
 
@@ -340,7 +344,7 @@ Obtains the first file asset in the result set. This API uses a promise to retur
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getFirstObject(): Promise<T>--><!--Device-FetchResult-getFirstObject(): Promise<T>-End-->
 
@@ -357,7 +361,7 @@ Obtains the first file asset in the result set. This API uses a promise to retur
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -391,7 +395,7 @@ Obtains the index of a specified file asset in the result set. This API uses a p
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-FetchResult-getIndex(object: T): Promise<int>--><!--Device-FetchResult-getIndex(object: T): Promise<int>-End-->
 
@@ -434,6 +438,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getlastobject1"></a>
+
 ## getLastObject
 
 ```TypeScript
@@ -444,7 +450,7 @@ Obtains the last file asset in the result set. This API uses an asynchronous cal
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getLastObject(callback: AsyncCallback<T>): void--><!--Device-FetchResult-getLastObject(callback: AsyncCallback<T>): void-End-->
 
@@ -461,7 +467,7 @@ Obtains the last file asset in the result set. This API uses an asynchronous cal
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | 1.Parameter count exceeds the limit;<br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -488,7 +494,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getlastobject-1"></a>
+<a id="getlastobject2"></a>
 
 ## getLastObject
 
@@ -500,7 +506,7 @@ Obtains the last file asset in the result set. This API uses a promise to return
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getLastObject(): Promise<T>--><!--Device-FetchResult-getLastObject(): Promise<T>-End-->
 
@@ -517,7 +523,7 @@ Obtains the last file asset in the result set. This API uses a promise to return
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -539,6 +545,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getnextobject1"></a>
+
 ## getNextObject
 
 ```TypeScript
@@ -551,7 +559,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getNextObject(callback: AsyncCallback<T>): void--><!--Device-FetchResult-getNextObject(callback: AsyncCallback<T>): void-End-->
 
@@ -568,7 +576,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -598,7 +606,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getnextobject-1"></a>
+<a id="getnextobject2"></a>
 
 ## getNextObject
 
@@ -612,7 +620,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getNextObject(): Promise<T>--><!--Device-FetchResult-getNextObject(): Promise<T>-End-->
 
@@ -629,7 +637,7 @@ Before using this API, you must use [isAfterLast()](#isafterlast) to check wheth
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -654,6 +662,8 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
+<a id="getobjectbyposition1"></a>
+
 ## getObjectByPosition
 
 ```TypeScript
@@ -664,7 +674,7 @@ Obtains a file asset with the specified index in the result set. This API uses a
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getObjectByPosition(index: int, callback: AsyncCallback<T>): void--><!--Device-FetchResult-getObjectByPosition(index: int, callback: AsyncCallback<T>): void-End-->
 
@@ -682,7 +692,7 @@ Obtains a file asset with the specified index in the result set. This API uses a
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -709,7 +719,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
 }
 ```
 
-<a id="getobjectbyposition-1"></a>
+<a id="getobjectbyposition2"></a>
 
 ## getObjectByPosition
 
@@ -721,7 +731,7 @@ Obtains a file asset with the specified index in the result set. This API uses a
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-getObjectByPosition(index: int): Promise<T>--><!--Device-FetchResult-getObjectByPosition(index: int): Promise<T>-End-->
 
@@ -744,7 +754,7 @@ Obtains a file asset with the specified index in the result set. This API uses a
 | Error Code ID | Error Message |
 | --- | --- |
 | 13900020 | Invalid parameter. Possible causes:<br>1.Parameter count exceeds the limit; <br>2.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: 1. Database exception; 2. IPC timeout. Please retry and check logs. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>1. System internal error. Possible causes: (1)Database exception; (2)IPC timeout. Please retry and check logs. |
 
 **Examples**
 
@@ -782,7 +792,7 @@ Obtains the file asset array corresponding to the specified index set in the res
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 23.
+**Atomic service API:** This API can be used in atomic services since API version 23.
 
 <!--Device-FetchResult-getObjectsByIndexSet(indexSet: int[]): Promise<T[]>--><!--Device-FetchResult-getObjectsByIndexSet(indexSet: int[]): Promise<T[]>-End-->
 
@@ -908,7 +918,7 @@ Checks whether the cursor is in the last row of the result set.
 
 **Since:** 10
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 20.
+**Atomic service API:** This API can be used in atomic services since API version 20.
 
 <!--Device-FetchResult-isAfterLast(): boolean--><!--Device-FetchResult-isAfterLast(): boolean-End-->
 
@@ -924,8 +934,8 @@ Checks whether the cursor is in the last row of the result set.
 
 | Error Code ID | Error Message |
 | --- | --- |
-| 13900020 | Invalid parameter. Possible causes:<br>1.The object is not a valid instance. |
-| 14000011 | MediaLibrary inner fail. Possible causes:<br>1.The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
+| 13900020 | Invalid parameter. Possible causes:<br>The object is not a valid instance. |
+| 14000011 | MediaLibrary inner fail. Possible causes:<br>The query result set has been closed via close() or is in an invalid state, please re-execute the query. |
 
 **Examples**
 

@@ -12,20 +12,6 @@ Describes types of trace collection threads, including the main thread and all t
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
-## MAIN_THREAD
-
-```TypeScript
-MAIN_THREAD = 1
-```
-
-The main thread of the application.
-
-**Since:** 12
-
-<!--Device-TraceFlag-MAIN_THREAD = 1--><!--Device-TraceFlag-MAIN_THREAD = 1-End-->
-
-**System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
-
 ## ALL_THREADS
 
 ```TypeScript
@@ -37,5 +23,19 @@ All threads of the application.
 **Since:** 12
 
 <!--Device-TraceFlag-ALL_THREADS = 2--><!--Device-TraceFlag-ALL_THREADS = 2-End-->
+
+**System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
+## MAIN_THREAD
+
+```TypeScript
+MAIN_THREAD = 1
+```
+
+The main thread of the application.
+
+**Since:** 12
+
+<!--Device-TraceFlag-MAIN_THREAD = 1--><!--Device-TraceFlag-MAIN_THREAD = 1-End-->
 
 **System capability:** SystemCapability.HiviewDFX.HiProfiler.HiDebug

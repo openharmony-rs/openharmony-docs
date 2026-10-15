@@ -64,7 +64,7 @@ Renames a file or directory. This API uses a promise to return the result.
 | 13900042 | Unknown error |
 
 
-<a id="rename-1"></a>
+<a id="rename2"></a>
 
 ## rename
 

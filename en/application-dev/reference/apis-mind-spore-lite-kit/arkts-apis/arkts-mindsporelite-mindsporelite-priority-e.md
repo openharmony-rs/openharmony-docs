@@ -12,19 +12,19 @@ Enum for scheduling priority
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## PRIORITY_NONE
+## PRIORITY_HIGH
 
 ```TypeScript
-PRIORITY_NONE = 0
+PRIORITY_HIGH = 3
 ```
 
-No priority preference
+High priority
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-Priority-PRIORITY_NONE = 0--><!--Device-Priority-PRIORITY_NONE = 0-End-->
+<!--Device-Priority-PRIORITY_HIGH = 3--><!--Device-Priority-PRIORITY_HIGH = 3-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
@@ -60,18 +60,18 @@ Medium priority
 
 **System capability:** SystemCapability.AI.MindSporeLite
 
-## PRIORITY_HIGH
+## PRIORITY_NONE
 
 ```TypeScript
-PRIORITY_HIGH = 3
+PRIORITY_NONE = 0
 ```
 
-High priority
+No priority preference
 
 **Since:** 12
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-Priority-PRIORITY_HIGH = 3--><!--Device-Priority-PRIORITY_HIGH = 3-End-->
+<!--Device-Priority-PRIORITY_NONE = 0--><!--Device-Priority-PRIORITY_NONE = 0-End-->
 
 **System capability:** SystemCapability.AI.MindSporeLite

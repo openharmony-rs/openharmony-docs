@@ -6,6 +6,8 @@
 import { windowAnimationManager } from '@kit.ArkUI';
 ```
 
+<a id="minimizewindowwithanimation1"></a>
+
 ## minimizeWindowWithAnimation
 
 ```TypeScript
@@ -30,6 +32,7 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget,
 | windowTarget | [WindowAnimationTarget](arkts-arkui-windowanimationmanager-windowanimationtarget-i-sys.md) | 是 | 动画目标窗口。 |
 | callback | [AsyncCallback](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-base-asynccallback-i.md)&lt;[WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)&gt; | 是 | 回调函数。当最小化动画目标窗口成功，err为undefined，data为获取到的WindowAnimationFinishedCallback；否则返回err.code为-1，data为undefined。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -94,8 +97,10 @@ windowAnimationManager.minimizeWindowWithAnimation(target, (err: BusinessError, 
 });
 ```
 
+<!--DelEnd-->
 
-<a id="minimizewindowwithanimation-1"></a>
+
+<a id="minimizewindowwithanimation2"></a>
 
 ## minimizeWindowWithAnimation
 
@@ -125,6 +130,7 @@ function minimizeWindowWithAnimation(windowTarget: WindowAnimationTarget): Promi
 | --- | --- |
 | Promise&lt;[WindowAnimationFinishedCallback](arkts-arkui-windowanimationmanager-windowanimationfinishedcallback-i-sys.md)&gt; | Promise对象，返回动画完成的回调。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -177,3 +183,5 @@ promise.then((data: windowAnimationManager.WindowAnimationFinishedCallback) => {
     return;
 });
 ```
+
+<!--DelEnd-->

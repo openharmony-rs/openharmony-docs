@@ -8,9 +8,9 @@ Smart gesture click action handling. When dynamically customizing smart gesture 
 
 > **NOTE:** 
 > 
-> - This action handling follows the "select first, then click" processing semantics.
+> - This action handling follows the "select first, then click" semantics.
 > 
-> - If the target node is not yet selected, this handling first establishes the selected state without immediately triggering the click.
+> - When the target node has not been selected yet, this handling prioritizes establishing the selected state and does not immediately trigger the click.
 
 **Inheritance/Implementation:** ClickActionProposal extends [TargetedGestureProposal](arkts-arkui-arkui-uicontext-targetedgestureproposal-c.md)
 
@@ -35,7 +35,7 @@ import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionPropos
 constructor(node: FrameNode)
 ```
 
-Constructor for the smart gesture click action handling.
+Constructor for smart gesture click action handling.
 
 **Since:** 26.0.0
 

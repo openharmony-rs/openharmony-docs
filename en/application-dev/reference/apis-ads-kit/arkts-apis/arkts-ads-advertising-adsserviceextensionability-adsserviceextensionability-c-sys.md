@@ -44,6 +44,7 @@ Called when the media application starts to load an ad. The device vendor needs 
 | adOptions | [advertising.AdOptions](arkts-ads-advertising-adoptions-i.md) | Yes | Ad configuration options. |
 | respCallback | [RespCallback](arkts-ads-advertising-adsserviceextensionability-respcallback-i.md) | Yes | Ad request callback. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -58,6 +59,8 @@ export default class AdsExtensionAbility extends AdsServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onLoadAdWithMultiSlots
 
@@ -84,6 +87,7 @@ Called when the media application starts to load multiple ads. The device vendor
 | adOptions | [advertising.AdOptions](arkts-ads-advertising-adoptions-i.md) | Yes | Ad configuration options. |
 | respCallback | [RespCallback](arkts-ads-advertising-adsserviceextensionability-respcallback-i.md) | Yes | Ad request callback. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -99,3 +103,5 @@ export default class AdsExtensionAbility extends AdsServiceExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->

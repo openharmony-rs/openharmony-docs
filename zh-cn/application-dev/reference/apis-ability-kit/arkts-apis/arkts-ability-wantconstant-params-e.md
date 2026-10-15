@@ -24,7 +24,7 @@ ABILITY_BACK_TO_OTHER_MISSION_STACK = 'ability.params.backToOtherMissionStack'
 
 **起始版本：** 9
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Params-ABILITY_BACK_TO_OTHER_MISSION_STACK = 'ability.params.backToOtherMissionStack'--><!--Device-Params-ABILITY_BACK_TO_OTHER_MISSION_STACK = 'ability.params.backToOtherMissionStack'-End-->
 
@@ -40,127 +40,27 @@ ABILITY_RECOVERY_RESTART = 'ohos.ability.params.abilityRecoveryRestart'
 
 **起始版本：** 10
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-Params-ABILITY_RECOVERY_RESTART = 'ohos.ability.params.abilityRecoveryRestart'--><!--Device-Params-ABILITY_RECOVERY_RESTART = 'ohos.ability.params.abilityRecoveryRestart'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## CONTENT_TITLE_KEY
+## ABILITY_UNIFIED_DATA_KEY
 
 ```TypeScript
-CONTENT_TITLE_KEY = 'ohos.extra.param.key.contentTitle'
+ABILITY_UNIFIED_DATA_KEY = 'ohos.param.ability.udKey'
 ```
 
-表示原子化服务分享的标题。
+表示基于[UDMF](../../apis-arkdata/arkts-apis/arkts-arkdata-data-unifieddatachannel.md)进行文件分享时使用的唯一标识。该字段只允许系统应用设置，三方应用可以读取。
 
-在跨端分享的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调中，开发者可通过该字段设置分享的标题。
+当Want中存在URI授权Flag字段（即[FLAG_AUTH_READ_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md)或[FLAG_AUTH_WRITE_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md)），且同时存在PARAMS_STREAM字段时，该字段将不生效。
 
-**起始版本：** 10
+**起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
-<!--Device-Params-CONTENT_TITLE_KEY = 'ohos.extra.param.key.contentTitle'--><!--Device-Params-CONTENT_TITLE_KEY = 'ohos.extra.param.key.contentTitle'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## SHARE_ABSTRACT_KEY
-
-```TypeScript
-SHARE_ABSTRACT_KEY = 'ohos.extra.param.key.shareAbstract'
-```
-
-表示原子化服务分享的内容摘要。
-
-在跨端分享的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调中，开发者可通过该字段设置分享的摘要。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-SHARE_ABSTRACT_KEY = 'ohos.extra.param.key.shareAbstract'--><!--Device-Params-SHARE_ABSTRACT_KEY = 'ohos.extra.param.key.shareAbstract'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## SHARE_URL_KEY
-
-```TypeScript
-SHARE_URL_KEY = 'ohos.extra.param.key.shareUrl'
-```
-
-表示原子化服务分享的URL链接。
-
-在跨端分享的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调中，开发者可通过该字段设置分享的URL链接。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-SHARE_URL_KEY = 'ohos.extra.param.key.shareUrl'--><!--Device-Params-SHARE_URL_KEY = 'ohos.extra.param.key.shareUrl'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## SUPPORT_CONTINUE_PAGE_STACK_KEY
-
-```TypeScript
-SUPPORT_CONTINUE_PAGE_STACK_KEY = 'ohos.extra.param.key.supportContinuePageStack'
-```
-
-表示在跨端迁移过程中是否迁移页面栈信息。默认值为true，表示在跨端迁移过程中自动迁移页面栈信息。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-SUPPORT_CONTINUE_PAGE_STACK_KEY = 'ohos.extra.param.key.supportContinuePageStack'--><!--Device-Params-SUPPORT_CONTINUE_PAGE_STACK_KEY = 'ohos.extra.param.key.supportContinuePageStack'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## SUPPORT_CONTINUE_SOURCE_EXIT_KEY
-
-```TypeScript
-SUPPORT_CONTINUE_SOURCE_EXIT_KEY = 'ohos.extra.param.key.supportContinueSourceExit'
-```
-
-表示跨端迁移源端应用是否退出。默认值为true，表示在跨端迁移过程中源端应用自动退出。
-
-**起始版本：** 10
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-SUPPORT_CONTINUE_SOURCE_EXIT_KEY = 'ohos.extra.param.key.supportContinueSourceExit'--><!--Device-Params-SUPPORT_CONTINUE_SOURCE_EXIT_KEY = 'ohos.extra.param.key.supportContinueSourceExit'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## SHOW_MODE_KEY
-
-```TypeScript
-SHOW_MODE_KEY = 'ohos.extra.param.key.showMode'
-```
-
-表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)的显示模式，值为枚举类型[ShowMode](arkts-ability-wantconstant-showmode-e.md)
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-SHOW_MODE_KEY = 'ohos.extra.param.key.showMode'--><!--Device-Params-SHOW_MODE_KEY = 'ohos.extra.param.key.showMode'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## PARAMS_STREAM
-
-```TypeScript
-PARAMS_STREAM = 'ability.params.stream'
-```
-
-表示授权给目标方的文件URI列表。对应的value必须是string类型的文件URI数组。文件URI的获取参考[fileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)。该字段需要与文件URI读写[Flags](arkts-ability-wantconstant-flags-e.md)配合使用。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-PARAMS_STREAM = 'ability.params.stream'--><!--Device-Params-PARAMS_STREAM = 'ability.params.stream'-End-->
+<!--Device-Params-ABILITY_UNIFIED_DATA_KEY = 'ohos.param.ability.udKey'--><!--Device-Params-ABILITY_UNIFIED_DATA_KEY = 'ohos.param.ability.udKey'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -174,117 +74,9 @@ APP_CLONE_INDEX_KEY = 'ohos.extra.param.key.appCloneIndex'
 
 **起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
 <!--Device-Params-APP_CLONE_INDEX_KEY = 'ohos.extra.param.key.appCloneIndex'--><!--Device-Params-APP_CLONE_INDEX_KEY = 'ohos.extra.param.key.appCloneIndex'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## CALLER_REQUEST_CODE
-
-```TypeScript
-CALLER_REQUEST_CODE = 'ohos.extra.param.key.callerRequestCode'
-```
-
-表示应用拉起的请求码。
-
-当调用startAbilityForResult或[openLink](arkts-ability-uiabilitycontext-c.md#openlink)拉起目标方Ability时，需要目标方返回结果。为了确保目标方能够将结果准确返回到调用方，系统会自动生成唯一的requestCode，以标识本次调用。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-CALLER_REQUEST_CODE = 'ohos.extra.param.key.callerRequestCode'--><!--Device-Params-CALLER_REQUEST_CODE = 'ohos.extra.param.key.callerRequestCode'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## PAGE_PATH
-
-```TypeScript
-PAGE_PATH = 'ohos.param.atomicservice.pagePath'
-```
-
-表示原子化服务的页面路径。
-
-如果原子化服务的页面跳转是通过[router](../../../ui/arkts-routing.md)实现的，可以使用该参数指定跳转的页面，例如"library/ets/pages/menu"。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-PAGE_PATH = 'ohos.param.atomicservice.pagePath'--><!--Device-Params-PAGE_PATH = 'ohos.param.atomicservice.pagePath'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## ROUTER_NAME
-
-```TypeScript
-ROUTER_NAME = 'ohos.param.atomicservice.routerName'
-```
-
-表示原子化服务的页面路由名称，即进行页面跳转时指定的页面名称。
-
-如果原子化服务的页面跳转是通过[Navigation](../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-ROUTER_NAME = 'ohos.param.atomicservice.routerName'--><!--Device-Params-ROUTER_NAME = 'ohos.param.atomicservice.routerName'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## PAGE_SOURCE_FILE
-
-```TypeScript
-PAGE_SOURCE_FILE = 'ohos.param.atomicservice.pageSourceFile'
-```
-
-表示原子化服务的页面源文件。
-
-如果原子化服务的页面跳转是通过[Navigation](../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-PAGE_SOURCE_FILE = 'ohos.param.atomicservice.pageSourceFile'--><!--Device-Params-PAGE_SOURCE_FILE = 'ohos.param.atomicservice.pageSourceFile'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## BUILD_FUNCTION
-
-```TypeScript
-BUILD_FUNCTION = 'ohos.param.atomicservice.buildFunction'
-```
-
-表示原子化服务的生成函数。
-
-如果原子化服务的页面跳转是通过[Navigation](../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-BUILD_FUNCTION = 'ohos.param.atomicservice.buildFunction'--><!--Device-Params-BUILD_FUNCTION = 'ohos.param.atomicservice.buildFunction'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## SUB_PACKAGE_NAME
-
-```TypeScript
-SUB_PACKAGE_NAME = 'ohos.param.atomicservice.subpackageName'
-```
-
-表示原子化服务的分包名。应用程序包支持多模块开发，每个应用程序包可能包含多个HAP或HSP。原子化服务为了实现快速启动效果，对HAP和HSP文件大小做了限制，并同时优化了启动机制，原子化服务的这种多模块开发方式称为“分包”。
-
-打开原子化服务的时候，可以通过设置该参数拉起对应的分包。
-
-**起始版本：** 12
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本12开始，该接口支持在原子化服务中使用。
-
-<!--Device-Params-SUB_PACKAGE_NAME = 'ohos.param.atomicservice.subpackageName'--><!--Device-Params-SUB_PACKAGE_NAME = 'ohos.param.atomicservice.subpackageName'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -304,50 +96,6 @@ APP_INSTANCE_KEY = 'ohos.extra.param.key.appInstance'
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## CREATE_APP_INSTANCE_KEY
-
-```TypeScript
-CREATE_APP_INSTANCE_KEY = 'ohos.extra.param.key.createAppInstance'
-```
-
-表示是否创建新应用实例。默认为false，表示不创建新应用实例。
-
-开发者可以通过设置该参数为true拉起新的应用实例。需要注意的是，被拉起的应用需要支持多实例，参考[应用创建多实例](../../../quick-start/multiInstance.md)。
-
-**起始版本：** 14
-
-<!--Device-Params-CREATE_APP_INSTANCE_KEY = 'ohos.extra.param.key.createAppInstance'--><!--Device-Params-CREATE_APP_INSTANCE_KEY = 'ohos.extra.param.key.createAppInstance'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## CALLER_APP_CLONE_INDEX
-
-```TypeScript
-CALLER_APP_CLONE_INDEX = 'ohos.param.callerAppCloneIndex'
-```
-
-表示拉起方应用的分身索引。
-
-**起始版本：** 14
-
-<!--Device-Params-CALLER_APP_CLONE_INDEX = 'ohos.param.callerAppCloneIndex'--><!--Device-Params-CALLER_APP_CLONE_INDEX = 'ohos.param.callerAppCloneIndex'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
-## DESTINATION_PLUGIN_ABILITY
-
-```TypeScript
-DESTINATION_PLUGIN_ABILITY = 'ohos.params.pluginAbility'
-```
-
-指示目标Ability是插件Ability。
-
-**起始版本：** 19
-
-<!--Device-Params-DESTINATION_PLUGIN_ABILITY = 'ohos.params.pluginAbility'--><!--Device-Params-DESTINATION_PLUGIN_ABILITY = 'ohos.params.pluginAbility'-End-->
-
-**系统能力：** SystemCapability.Ability.AbilityBase
-
 ## APP_LAUNCH_TRUSTLIST
 
 ```TypeScript
@@ -360,7 +108,7 @@ APP_LAUNCH_TRUSTLIST = 'ohos.params.appLaunchTrustList'
 
 **起始版本：** 17
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本17开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本17开始，该接口支持在原子化服务中使用。
 
 <!--Device-Params-APP_LAUNCH_TRUSTLIST = 'ohos.params.appLaunchTrustList'--><!--Device-Params-APP_LAUNCH_TRUSTLIST = 'ohos.params.appLaunchTrustList'-End-->
 
@@ -378,9 +126,107 @@ ATOMIC_SERVICE_SHARE_ROUTER = 'ohos.params.atomicservice.shareRouter'
 
 **起始版本：** 20
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
 
 <!--Device-Params-ATOMIC_SERVICE_SHARE_ROUTER = 'ohos.params.atomicservice.shareRouter'--><!--Device-Params-ATOMIC_SERVICE_SHARE_ROUTER = 'ohos.params.atomicservice.shareRouter'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## BUILD_FUNCTION
+
+```TypeScript
+BUILD_FUNCTION = 'ohos.param.atomicservice.buildFunction'
+```
+
+表示原子化服务的生成函数。
+
+如果原子化服务的页面跳转是通过[Navigation](../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-BUILD_FUNCTION = 'ohos.param.atomicservice.buildFunction'--><!--Device-Params-BUILD_FUNCTION = 'ohos.param.atomicservice.buildFunction'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## CALLER_APP_CLONE_INDEX
+
+```TypeScript
+CALLER_APP_CLONE_INDEX = 'ohos.param.callerAppCloneIndex'
+```
+
+表示拉起方应用的分身索引。
+
+**起始版本：** 14
+
+<!--Device-Params-CALLER_APP_CLONE_INDEX = 'ohos.param.callerAppCloneIndex'--><!--Device-Params-CALLER_APP_CLONE_INDEX = 'ohos.param.callerAppCloneIndex'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## CALLER_REQUEST_CODE
+
+```TypeScript
+CALLER_REQUEST_CODE = 'ohos.extra.param.key.callerRequestCode'
+```
+
+表示应用拉起的请求码。
+
+当调用startAbilityForResult或[openLink](arkts-ability-uiabilitycontext-c.md#openlink)拉起目标方Ability时，需要目标方返回结果。为了确保目标方能够将结果准确返回到调用方，系统会自动生成唯一的requestCode，以标识本次调用。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-CALLER_REQUEST_CODE = 'ohos.extra.param.key.callerRequestCode'--><!--Device-Params-CALLER_REQUEST_CODE = 'ohos.extra.param.key.callerRequestCode'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## CONTENT_TITLE_KEY
+
+```TypeScript
+CONTENT_TITLE_KEY = 'ohos.extra.param.key.contentTitle'
+```
+
+表示原子化服务分享的标题。
+
+在跨端分享的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调中，开发者可通过该字段设置分享的标题。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-CONTENT_TITLE_KEY = 'ohos.extra.param.key.contentTitle'--><!--Device-Params-CONTENT_TITLE_KEY = 'ohos.extra.param.key.contentTitle'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## CREATE_APP_INSTANCE_KEY
+
+```TypeScript
+CREATE_APP_INSTANCE_KEY = 'ohos.extra.param.key.createAppInstance'
+```
+
+表示是否创建新应用实例。默认为false，表示不创建新应用实例。
+
+开发者可以通过设置该参数为true拉起新的应用实例。需要注意的是，被拉起的应用需要支持多实例，参考[应用创建多实例](../../../quick-start/multiInstance.md)。
+
+**起始版本：** 14
+
+<!--Device-Params-CREATE_APP_INSTANCE_KEY = 'ohos.extra.param.key.createAppInstance'--><!--Device-Params-CREATE_APP_INSTANCE_KEY = 'ohos.extra.param.key.createAppInstance'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## DESTINATION_PLUGIN_ABILITY
+
+```TypeScript
+DESTINATION_PLUGIN_ABILITY = 'ohos.params.pluginAbility'
+```
+
+指示目标Ability是插件Ability。
+
+**起始版本：** 19
+
+<!--Device-Params-DESTINATION_PLUGIN_ABILITY = 'ohos.params.pluginAbility'--><!--Device-Params-DESTINATION_PLUGIN_ABILITY = 'ohos.params.pluginAbility'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
@@ -402,26 +248,180 @@ LAUNCH_REASON_MESSAGE = 'ohos.params.launchReasonMessage'
 
 **起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本18开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-Params-LAUNCH_REASON_MESSAGE = 'ohos.params.launchReasonMessage'--><!--Device-Params-LAUNCH_REASON_MESSAGE = 'ohos.params.launchReasonMessage'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase
 
-## ABILITY_UNIFIED_DATA_KEY
+## PAGE_PATH
 
 ```TypeScript
-ABILITY_UNIFIED_DATA_KEY = 'ohos.param.ability.udKey'
+PAGE_PATH = 'ohos.param.atomicservice.pagePath'
 ```
 
-表示基于[UDMF](../../apis-arkdata/arkts-apis/arkts-arkdata-data-unifieddatachannel.md)进行文件分享时使用的唯一标识。该字段只允许系统应用设置，三方应用可以读取。
+表示原子化服务的页面路径。
 
-当Want中存在URI授权Flag字段（即[FLAG_AUTH_READ_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md)或[FLAG_AUTH_WRITE_URI_PERMISSION](arkts-ability-wantconstant-flags-e.md)），且同时存在PARAMS_STREAM字段时，该字段将不生效。
+如果原子化服务的页面跳转是通过[router](../../../ui/arkts-routing.md)实现的，可以使用该参数指定跳转的页面，例如"library/ets/pages/menu"。
 
-**起始版本：** 20
+**起始版本：** 12
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
 
-<!--Device-Params-ABILITY_UNIFIED_DATA_KEY = 'ohos.param.ability.udKey'--><!--Device-Params-ABILITY_UNIFIED_DATA_KEY = 'ohos.param.ability.udKey'-End-->
+<!--Device-Params-PAGE_PATH = 'ohos.param.atomicservice.pagePath'--><!--Device-Params-PAGE_PATH = 'ohos.param.atomicservice.pagePath'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## PAGE_SOURCE_FILE
+
+```TypeScript
+PAGE_SOURCE_FILE = 'ohos.param.atomicservice.pageSourceFile'
+```
+
+表示原子化服务的页面源文件。
+
+如果原子化服务的页面跳转是通过[Navigation](../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-PAGE_SOURCE_FILE = 'ohos.param.atomicservice.pageSourceFile'--><!--Device-Params-PAGE_SOURCE_FILE = 'ohos.param.atomicservice.pageSourceFile'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## PARAMS_STREAM
+
+```TypeScript
+PARAMS_STREAM = 'ability.params.stream'
+```
+
+表示授权给目标方的文件URI列表。对应的value必须是string类型的文件URI数组。文件URI的获取参考[fileUri](../../apis-core-file-kit/arkts-apis/arkts-corefile-fileuri-geturifrompath-f.md)。该字段需要与文件URI读写[Flags](arkts-ability-wantconstant-flags-e.md)配合使用。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-PARAMS_STREAM = 'ability.params.stream'--><!--Device-Params-PARAMS_STREAM = 'ability.params.stream'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## ROUTER_NAME
+
+```TypeScript
+ROUTER_NAME = 'ohos.param.atomicservice.routerName'
+```
+
+表示原子化服务的页面路由名称，即进行页面跳转时指定的页面名称。
+
+如果原子化服务的页面跳转是通过[Navigation](../../../ui/arkts-navigation-architecture.md)实现的，可以通过ROUTER_NAME、PAGE_SOURCE_FILE及BUILD_FUNCTION联合使用指定跳转的页面。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-ROUTER_NAME = 'ohos.param.atomicservice.routerName'--><!--Device-Params-ROUTER_NAME = 'ohos.param.atomicservice.routerName'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## SHARE_ABSTRACT_KEY
+
+```TypeScript
+SHARE_ABSTRACT_KEY = 'ohos.extra.param.key.shareAbstract'
+```
+
+表示原子化服务分享的内容摘要。
+
+在跨端分享的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调中，开发者可通过该字段设置分享的摘要。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-SHARE_ABSTRACT_KEY = 'ohos.extra.param.key.shareAbstract'--><!--Device-Params-SHARE_ABSTRACT_KEY = 'ohos.extra.param.key.shareAbstract'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## SHARE_URL_KEY
+
+```TypeScript
+SHARE_URL_KEY = 'ohos.extra.param.key.shareUrl'
+```
+
+表示原子化服务分享的URL链接。
+
+在跨端分享的[onShare](arkts-ability-app-ability-uiability-uiability-c.md#onshare)回调中，开发者可通过该字段设置分享的URL链接。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-SHARE_URL_KEY = 'ohos.extra.param.key.shareUrl'--><!--Device-Params-SHARE_URL_KEY = 'ohos.extra.param.key.shareUrl'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## SHOW_MODE_KEY
+
+```TypeScript
+SHOW_MODE_KEY = 'ohos.extra.param.key.showMode'
+```
+
+表示[EmbeddableUIAbility](arkts-ability-app-ability-embeddableuiability-embeddableuiability-c.md)的显示模式，值为枚举类型[ShowMode](arkts-ability-wantconstant-showmode-e.md)
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-SHOW_MODE_KEY = 'ohos.extra.param.key.showMode'--><!--Device-Params-SHOW_MODE_KEY = 'ohos.extra.param.key.showMode'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## SUB_PACKAGE_NAME
+
+```TypeScript
+SUB_PACKAGE_NAME = 'ohos.param.atomicservice.subpackageName'
+```
+
+表示原子化服务的分包名。应用程序包支持多模块开发，每个应用程序包可能包含多个HAP或HSP。原子化服务为了实现快速启动效果，对HAP和HSP文件大小做了限制，并同时优化了启动机制，原子化服务的这种多模块开发方式称为“分包”。
+
+打开原子化服务的时候，可以通过设置该参数拉起对应的分包。
+
+**起始版本：** 12
+
+**原子化服务API：** 从API版本12开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-SUB_PACKAGE_NAME = 'ohos.param.atomicservice.subpackageName'--><!--Device-Params-SUB_PACKAGE_NAME = 'ohos.param.atomicservice.subpackageName'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## SUPPORT_CONTINUE_PAGE_STACK_KEY
+
+```TypeScript
+SUPPORT_CONTINUE_PAGE_STACK_KEY = 'ohos.extra.param.key.supportContinuePageStack'
+```
+
+表示在跨端迁移过程中是否迁移页面栈信息。默认值为true，表示在跨端迁移过程中自动迁移页面栈信息。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-SUPPORT_CONTINUE_PAGE_STACK_KEY = 'ohos.extra.param.key.supportContinuePageStack'--><!--Device-Params-SUPPORT_CONTINUE_PAGE_STACK_KEY = 'ohos.extra.param.key.supportContinuePageStack'-End-->
+
+**系统能力：** SystemCapability.Ability.AbilityBase
+
+## SUPPORT_CONTINUE_SOURCE_EXIT_KEY
+
+```TypeScript
+SUPPORT_CONTINUE_SOURCE_EXIT_KEY = 'ohos.extra.param.key.supportContinueSourceExit'
+```
+
+表示跨端迁移源端应用是否退出。默认值为true，表示在跨端迁移过程中源端应用自动退出。
+
+**起始版本：** 10
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-Params-SUPPORT_CONTINUE_SOURCE_EXIT_KEY = 'ohos.extra.param.key.supportContinueSourceExit'--><!--Device-Params-SUPPORT_CONTINUE_SOURCE_EXIT_KEY = 'ohos.extra.param.key.supportContinueSourceExit'-End-->
 
 **系统能力：** SystemCapability.Ability.AbilityBase

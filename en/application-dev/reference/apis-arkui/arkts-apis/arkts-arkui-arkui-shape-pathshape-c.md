@@ -6,7 +6,7 @@ export declare class PathShape extends CommonShapeMethod<PathShape>
 
 Represents a path shape used for the **clipShape** and **maskShape** APIs. It inherits from [CommonShapeMethod](arkts-arkui-arkui-shape-commonshapemethod-c.md).
 
-**Inheritance/Implementation:** PathShape extends CommonShapeMethod<PathShape>
+**Inheritance/Implementation:** PathShape extends CommonShapeMethod&lt;PathShape&gt;
 
 **Since:** 12
 

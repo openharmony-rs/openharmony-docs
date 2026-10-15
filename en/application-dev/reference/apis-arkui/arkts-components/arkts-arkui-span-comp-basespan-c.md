@@ -6,7 +6,7 @@ declare class BaseSpan<T> extends CommonMethod<T>
 
 Defines the base class **BaseSpan**, including the universal attributes of the **Span** component.
 
-**Inheritance/Implementation:** BaseSpan extends CommonMethod<T>
+**Inheritance/Implementation:** BaseSpan extends CommonMethod&lt;T&gt;
 
 **Since:** 11
 

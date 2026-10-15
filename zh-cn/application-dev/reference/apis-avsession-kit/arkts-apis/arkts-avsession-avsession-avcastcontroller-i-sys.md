@@ -22,6 +22,8 @@ interface AVCastController
 import { avSession } from '@kit.AVSessionKit';
 ```
 
+<a id="setdisplaysurface1"></a>
+
 ## setDisplaySurface
 
 ```TypeScript
@@ -53,6 +55,7 @@ setDisplaySurface(surfaceId: string, callback: AsyncCallback<void>): void
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -73,7 +76,9 @@ media.createAVRecorder().then((avRecorder) => {
 })
 ```
 
-<a id="setdisplaysurface-1"></a>
+<!--DelEnd-->
+
+<a id="setdisplaysurface2"></a>
 
 ## setDisplaySurface
 
@@ -111,6 +116,7 @@ setDisplaySurface(surfaceId: string): Promise<void>
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | parameter check failed. 1.Mandatory parameters are left unspecified. 2.Parameter verification failed. |
 | [6600109](../errorcode-avsession.md#6600109-远端会话不存在) | The remote connection is not established |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -130,3 +136,5 @@ media.createAVRecorder().then((avRecorder) => {
   });
 })
 ```
+
+<!--DelEnd-->

@@ -15,8 +15,6 @@ declare enum EffectType
 | 2in1设备：浅色模式 | 80 | 1.9 | 1.0 | '#e5ffffff'，显示为半透明的深红色。 |
 | Tablet设备 | 0 | 0 | 0 | '#ffffffff'，显示为白色。 |
 
-@enum { number }
-
 **起始版本：** 14
 
 <!--Device-unnamed-declare enum EffectType--><!--Device-unnamed-declare enum EffectType-End-->

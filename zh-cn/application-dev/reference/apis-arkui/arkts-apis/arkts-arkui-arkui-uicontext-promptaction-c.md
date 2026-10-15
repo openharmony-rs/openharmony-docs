@@ -29,6 +29,8 @@ import { SwiperContentInfo, SwiperItemInfo } from '@kit.ArkUI';
 import { BackPressActionProposal, BaseGestureHandlingProposal, ClickActionProposal, GestureHandlingResolution, NoneActionProposal, PageSwitchActionProposal, ScrollActionProposal, SelectActionProposal, SmartGestureController, TargetedGestureProposal } from '@kit.ArkUI';
 ```
 
+<a id="closecustomdialog1"></a>
+
 ## closeCustomDialog
 
 ```TypeScript
@@ -132,7 +134,7 @@ struct Index {
 }
 ```
 
-<a id="closecustomdialog-1"></a>
+<a id="closecustomdialog2"></a>
 
 ## closeCustomDialog
 
@@ -569,6 +571,8 @@ struct Index {
 }
 ```
 
+<a id="opencustomdialog1"></a>
+
 ## openCustomDialog
 
 ```TypeScript
@@ -610,7 +614,7 @@ openCustomDialog<T extends Object>(dialogContent: ComponentContent<T>, options?:
 
 **示例**
 
-该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md)（系统语言、深浅色等）的变化，调用ComponentContent&lt;T&gt; 的[update](arkts-arkui-arkui-uicontext-dialogpresenter-c.md#update)和updateConfiguration实现自定义弹窗的数据更新及节点的全量刷新。
+该示例通过监听[@ohos.app.ability.Configuration (环境变量)](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-configuration-configuration-i.md)（系统语言、深浅色等）的变化，调用ComponentContent<T> 的[update](arkts-arkui-arkui-uicontext-dialogpresenter-c.md#update)和updateConfiguration实现自定义弹窗的数据更新及节点的全量刷新。
 
 ```TypeScript
 import { ComponentContent } from '@kit.ArkUI';
@@ -707,7 +711,7 @@ struct Index {
 }
 ```
 
-<a id="opencustomdialog-1"></a>
+<a id="opencustomdialog2"></a>
 
 ## openCustomDialog
 
@@ -1375,7 +1379,7 @@ struct Index {
 }
 ```
 
-<a id="showactionmenu-1"></a>
+<a id="showactionmenu2"></a>
 
 ## showActionMenu
 
@@ -1535,7 +1539,7 @@ struct Index {
 }
 ```
 
-<a id="showactionmenu-2"></a>
+<a id="showactionmenu3"></a>
 
 ## showActionMenu
 
@@ -1616,6 +1620,8 @@ struct Index {
 }
 ```
 
+<a id="showactionmenu1"></a>
+
 ## showActionMenu
 
 ```TypeScript
@@ -1651,6 +1657,8 @@ showActionMenu(options: promptAction.ActionMenuOptions, callback: promptAction.A
 **示例**
 
 参见 [showActionMenu](#showactionmenu)
+
+<a id="showdialog1"></a>
 
 ## showDialog
 
@@ -1733,7 +1741,7 @@ struct Index {
 }
 ```
 
-<a id="showdialog-1"></a>
+<a id="showdialog2"></a>
 
 ## showDialog
 
@@ -2028,8 +2036,8 @@ updateMenu<T extends Object>(content: ComponentContent<T>, options: MenuOptions,
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | content | [ComponentContent](arkts-arkui-componentcontent-c.md)&lt;T&gt; | 是 | menu弹窗中显示的组件内容。 |
-| options | [MenuOptions](../arkts-components/arkts-arkui-common-comp-menuoptions-i.md) | 是 | menu弹窗样式。<br> **说明：** <br> 1. 不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、 aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。<br> 2. 支持mask通过设置[MenuMaskType](../arkts-components/arkts-arkui-common-comp-menumasktype-i.md)实现更新蒙层样式， 不支持mask通过设置boolean实现蒙层从无到有或者从有到无的更新。 |
-| partialUpdate | boolean | 否 | menu弹窗更新方式，默认值为false。<br> **说明：** <br> 1. true为增量更新，保留当前值，更新options中的指定属性。 <br> 2. false为全量更新，除options中的指定属性，其他属性恢复默认值。 |
+| options | [MenuOptions](../arkts-components/arkts-arkui-common-comp-menuoptions-i.md) | 是 | menu弹窗样式。<br> **说明：** <br>       1. 不支持更新showInSubWindow、preview、previewAnimationOptions、transition、onAppear、aboutToAppear、onDisappear、 aboutToDisappear、onWillAppear、onDidAppear、onWillDisappear和onDidDisappear。<br>       2. 支持mask通过设置[MenuMaskType](../arkts-components/arkts-arkui-common-comp-menumasktype-i.md)实现更新蒙层样式， 不支持mask通过设置boolean实现蒙层从无到有或者从有到无的更新。 |
+| partialUpdate | boolean | 否 | menu弹窗更新方式，默认值为false。<br> **说明：** <br>           1. true为增量更新，保留当前值，更新options中的指定属性。 <br>           2. false为全量更新，除options中的指定属性，其他属性恢复默认值。 |
 
 **返回值：**
 

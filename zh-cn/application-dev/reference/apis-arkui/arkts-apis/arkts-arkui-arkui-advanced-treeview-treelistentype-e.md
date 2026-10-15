@@ -12,24 +12,6 @@ export declare enum TreeListenType
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## NODE_CLICK
-
-```TypeScript
-NODE_CLICK = "NodeClick"
-```
-
-监听节点点击事件。
-
-**起始版本：** 10
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-TreeListenType-NODE_CLICK = "NodeClick"--><!--Device-TreeListenType-NODE_CLICK = "NodeClick"-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## NODE_ADD
 
 ```TypeScript
@@ -45,6 +27,24 @@ NODE_ADD = "NodeAdd"
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
 <!--Device-TreeListenType-NODE_ADD = "NodeAdd"--><!--Device-TreeListenType-NODE_ADD = "NodeAdd"-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## NODE_CLICK
+
+```TypeScript
+NODE_CLICK = "NodeClick"
+```
+
+监听节点点击事件。
+
+**起始版本：** 10
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-TreeListenType-NODE_CLICK = "NodeClick"--><!--Device-TreeListenType-NODE_CLICK = "NodeClick"-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 

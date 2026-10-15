@@ -40,7 +40,7 @@ iconsResource?: Array<Resource>
 
 按钮图标资源列表，与names一一对应，使用Resource资源引用图标。最多支持3个。默认为空。与icons互斥，只使用其中一个即可。
 
-**类型：** Array&lt;[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-resource-i.md)&gt;
+**类型：** Array&lt;[Resource](../../apis-localization-kit/arkts-apis/arkts-localization-resource-i.md)&gt;
 
 **起始版本：** 12
 

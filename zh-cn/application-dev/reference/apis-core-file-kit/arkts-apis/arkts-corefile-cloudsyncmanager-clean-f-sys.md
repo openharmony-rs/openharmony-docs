@@ -6,6 +6,8 @@
 import { cloudSyncManager } from '@kit.CoreFileKit';
 ```
 
+<a id="clean1"></a>
+
 ## clean
 
 ```TypeScript
@@ -45,6 +47,7 @@ function clean(accountId: string, appActions: Record<string, Action>): Promise<v
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -62,8 +65,10 @@ cloudSyncManager.clean(accountId, appActions).then(() => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="clean-1"></a>
+
+<a id="clean2"></a>
 
 ## clean
 
@@ -99,6 +104,7 @@ function clean(accountId: string, appActions: Record<string, Action>, callback: 
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | The caller is not a system application. |
 | [401](../../errorcode-universal.md#401-函数参数数量或参数类型不匹配) | The input parameter is invalid.Possible causes:1.Mandatory parameters are left unspecified;<br>2.Incorrect parameter types. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -117,3 +123,5 @@ cloudSyncManager.clean(accountId, appActions, (err: BusinessError) => {
   }
 });
 ```
+
+<!--DelEnd-->

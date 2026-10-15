@@ -8,6 +8,8 @@ Enumerates the skill types.
 
 @typedef { _SkillType }
 
+**Type:** _SkillType
+
 **Since:** 26.0.0
 
 **Model restriction:** This API can be used only in the stage model.
@@ -17,5 +19,3 @@ Enumerates the skill types.
 <!--Device-skillManager-export type SkillType = _SkillType--><!--Device-skillManager-export type SkillType = _SkillType-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**Type:** _SkillType

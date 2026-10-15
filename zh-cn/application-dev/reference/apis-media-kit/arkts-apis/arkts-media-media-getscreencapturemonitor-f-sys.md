@@ -35,6 +35,7 @@ function getScreenCaptureMonitor(): Promise<ScreenCaptureMonitor>
 | [202](../../errorcode-universal.md#202-非系统应用调用系统-api) | Not System App. |
 | [5400101](../errorcode-media.md#5400101-内存分配失败) | No memory. Return by promise. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -45,3 +46,5 @@ try {
   console.error(`getScreenCaptureMonitor failed, error message:${err.message}`);
 }
 ```
+
+<!--DelEnd-->

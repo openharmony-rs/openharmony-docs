@@ -30,7 +30,7 @@ Text ascent height, which refers to the distance from the baseline to the top of
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-ascent: double--><!--Device-LineMetrics-ascent: double-End-->
 
@@ -48,7 +48,7 @@ Y coordinate of the baseline in the line relative to the top of the paragraph, i
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-baseline: double--><!--Device-LineMetrics-baseline: double-End-->
 
@@ -66,7 +66,7 @@ Text descent height, which refers to the distance from the baseline to the botto
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-descent: double--><!--Device-LineMetrics-descent: double-End-->
 
@@ -84,7 +84,7 @@ End index of the line in the text buffer.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-endIndex: int--><!--Device-LineMetrics-endIndex: int-End-->
 
@@ -102,7 +102,7 @@ Height of the current line, in physical pixels (px). The calculation method is `
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-height: double--><!--Device-LineMetrics-height: double-End-->
 
@@ -120,7 +120,7 @@ Left edge position of a line, in physical pixels (px). The right edge is the val
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-left: double--><!--Device-LineMetrics-left: double-End-->
 
@@ -138,7 +138,7 @@ Line number, starting from 0.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-lineNumber: int--><!--Device-LineMetrics-lineNumber: int-End-->
 
@@ -156,7 +156,7 @@ Mapping between the text index range and the associated font measurement informa
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-runMetrics: Map<int, RunMetrics>--><!--Device-LineMetrics-runMetrics: Map<int, RunMetrics>-End-->
 
@@ -174,7 +174,7 @@ Start index of the line in the text buffer.
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-startIndex: int--><!--Device-LineMetrics-startIndex: int-End-->
 
@@ -192,7 +192,7 @@ Height from the top to the current line, in physical pixels (px).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-topHeight: double--><!--Device-LineMetrics-topHeight: double-End-->
 
@@ -210,7 +210,7 @@ Width of a line, in physical pixels (px).
 
 **Since:** 12
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 <!--Device-LineMetrics-width: double--><!--Device-LineMetrics-width: double-End-->
 

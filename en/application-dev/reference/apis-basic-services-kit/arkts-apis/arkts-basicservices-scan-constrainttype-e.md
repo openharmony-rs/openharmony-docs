@@ -40,20 +40,6 @@ Range.
 
 **System capability:** SystemCapability.Print.PrintFramework
 
-## SCAN_CONSTRAINT_WORD_LIST
-
-```TypeScript
-SCAN_CONSTRAINT_WORD_LIST = 2
-```
-
-Number list.
-
-**Since:** 20
-
-<!--Device-ConstraintType-SCAN_CONSTRAINT_WORD_LIST = 2--><!--Device-ConstraintType-SCAN_CONSTRAINT_WORD_LIST = 2-End-->
-
-**System capability:** SystemCapability.Print.PrintFramework
-
 ## SCAN_CONSTRAINT_STRING_LIST
 
 ```TypeScript
@@ -65,5 +51,19 @@ String list.
 **Since:** 20
 
 <!--Device-ConstraintType-SCAN_CONSTRAINT_STRING_LIST = 3--><!--Device-ConstraintType-SCAN_CONSTRAINT_STRING_LIST = 3-End-->
+
+**System capability:** SystemCapability.Print.PrintFramework
+
+## SCAN_CONSTRAINT_WORD_LIST
+
+```TypeScript
+SCAN_CONSTRAINT_WORD_LIST = 2
+```
+
+Number list.
+
+**Since:** 20
+
+<!--Device-ConstraintType-SCAN_CONSTRAINT_WORD_LIST = 2--><!--Device-ConstraintType-SCAN_CONSTRAINT_WORD_LIST = 2-End-->
 
 **System capability:** SystemCapability.Print.PrintFramework

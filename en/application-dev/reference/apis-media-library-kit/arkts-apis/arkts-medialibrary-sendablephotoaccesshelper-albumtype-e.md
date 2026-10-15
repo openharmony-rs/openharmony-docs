@@ -12,20 +12,6 @@ Enumerates the album types.
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
-## USER
-
-```TypeScript
-USER = 0
-```
-
-User album.
-
-**Since:** 12
-
-<!--Device-AlbumType-USER = 0--><!--Device-AlbumType-USER = 0-End-->
-
-**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
 ## SYSTEM
 
 ```TypeScript
@@ -37,5 +23,19 @@ System album.
 **Since:** 12
 
 <!--Device-AlbumType-SYSTEM = 1024--><!--Device-AlbumType-SYSTEM = 1024-End-->
+
+**System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+## USER
+
+```TypeScript
+USER = 0
+```
+
+User album.
+
+**Since:** 12
+
+<!--Device-AlbumType-USER = 0--><!--Device-AlbumType-USER = 0-End-->
 
 **System capability:** SystemCapability.FileManagement.PhotoAccessHelper.Core

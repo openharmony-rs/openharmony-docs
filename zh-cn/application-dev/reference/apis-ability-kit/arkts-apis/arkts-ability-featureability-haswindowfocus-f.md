@@ -6,6 +6,8 @@
 import { featureAbility } from '@kit.AbilityKit';
 ```
 
+<a id="haswindowfocus1"></a>
+
 ## hasWindowFocus
 
 ```TypeScript
@@ -44,7 +46,7 @@ featureAbility.hasWindowFocus((error, data) => {
 ```
 
 
-<a id="haswindowfocus-1"></a>
+<a id="haswindowfocus2"></a>
 
 ## hasWindowFocus
 

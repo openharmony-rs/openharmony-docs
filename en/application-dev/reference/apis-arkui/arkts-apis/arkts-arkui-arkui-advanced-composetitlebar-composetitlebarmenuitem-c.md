@@ -24,7 +24,7 @@ import { ComposeTitleBar, ComposeTitleBarMenuItem } from '@kit.ArkUI';
 action?: () => void
 ```
 
-Action to perform. This parameter is not available for the **item** attribute.
+Callback invoked when a menu item is tapped. The **item** parameter does not support triggering the action event.
 
 **Since:** 10
 
@@ -42,9 +42,9 @@ Action to perform. This parameter is not available for the **item** attribute.
 accessibilityDescription?: ResourceStr
 ```
 
-Accessible description. You can provide comprehensive text explanations to help users understand the operation they are about to perform and its potential consequences, especially when these cannot be inferred from the component's attributes and accessibility text alone. If a component contains both text information and the accessible description, the text is announced first and then the accessible description, when the component is selected.
+Accessibility description of the custom button on the right of the title bar, used to explain the component function and operation consequences to users in detail. When the component is selected, the system announces the text attribute first, and then the accessibility description. The item attribute does not support setting this attribute.
 
-Default value: **"Double-tap to activate"**
+Default value: "Double-tap with one finger to execute".
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -64,19 +64,19 @@ Default value: **"Double-tap to activate"**
 accessibilityLevel?: string
 ```
 
-Accessibility level. It determines whether the component can be recognized by accessibility services.
+Accessibility level of the custom button on the right of the title bar, which controls whether the current item can be recognized by accessibility services. This applies only to **items** in **menuItems**, not to the item parameter.
 
-The options are as follows:
+Supported values:
 
-**"auto"**: It is treated as "yes" by the system.
+**"auto"**: equivalent to **"yes"**.
 
-**"yes"**: The component can be recognized by accessibility services.
+**"yes"**: can be recognized by accessibility services.
 
-**"no"**: The component cannot be recognized by accessibility services.
+**"no"**: cannot be recognized by accessibility services.
 
-**"no-hide-descendants"**: Neither the component nor its child components can be recognized by accessibility services.
+**"no-hide-descendants"**: neither the current item nor its child components can be recognized.
 
-Default value: **"auto"**
+Default value: **"auto"**. The item parameter does not support setting this attribute.
 
 **Type:** string
 
@@ -98,9 +98,9 @@ Default value: **"auto"**
 accessibilityText?: ResourceStr
 ```
 
-Accessibility text, that is, accessible label name. If a component does not contain text information, it will not be announced by the screen reader when selected. In this case, the screen reader user cannot know which component is selected. To solve this problem, you can set accessibility text for components without text information. When such a component is selected, the screen reader announces the specified accessibility text, informing the user which component is selected.
+Accessibility text of the custom button on the right of the title bar. When a component has no text attribute, the screen reader does not announce it. After this attribute is set, the screen reader can announce the content, helping users understand the selected component. The **item** attribute does not support setting this attribute.
 
-Default value: value of the **label** property if it is set and an empty string otherwise.
+Default value: when **label** is set, the default value is the content of the **label** attribute of the current item; when **label** is not set, the default value is an empty string.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -120,15 +120,11 @@ Default value: value of the **label** property if it is set and an empty string 
 isEnabled?: boolean
 ```
 
-Whether to enable the item.
+Whether to enable. Default value: **false**.
 
-Default value: **false**
+The value **true** indicates enabled, and **false** indicates disabled.
 
-**true**: The item is enabled.
-
-**false**: The item is disabled.
-
-This property cannot be triggered by the **item** property.
+The **item** parameter does not support triggering the **isEnabled** attribute.
 
 **Type:** boolean
 
@@ -148,7 +144,7 @@ This property cannot be triggered by the **item** property.
 label?: ResourceStr
 ```
 
-Icon label.
+Icon label description, used to set auxiliary text information for the icon. When **accessibilityText** is not set, **label** can serve as the default value for the accessibility text.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
@@ -168,7 +164,7 @@ Icon label.
 symbolStyle?: SymbolGlyphModifier
 ```
 
-Symbol icon resource, which has higher priority than **value**. This parameter is not available for the **item** attribute.
+Symbol icon resource, which takes precedence over **value**. This attribute is not supported for the avatar on the left of the item. If not set, the icon resource specified by the **value** attribute is used.
 
 **Type:** [SymbolGlyphModifier](../arkts-components/arkts-arkui-common-comp-symbolglyphmodifier-t.md)
 
@@ -188,7 +184,7 @@ Symbol icon resource, which has higher priority than **value**. This parameter i
 value: ResourceStr
 ```
 
-Icon resource.
+Icon resource. If the **symbolStyle** attribute is also set, **symbolStyle** takes precedence.
 
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 

@@ -34,4 +34,5 @@ import { url } from '@kit.ArkTS';
 | --- | --- |
 | [URL](arkts-arkts-url-url-c.md) | 用于解析和构造完整URL。 |
 | [URLParams](arkts-arkts-url-urlparams-c.md) | URLParams是一个用于解析、构造和操作URL参数的实用类。该类提供了统一的接口来处理URL查询参数。 |
+| [URLUtil](arkts-arkts-url-urlutil-c.md) | URL相关工具类，提供URL相关的工具方法。 |
 | [URLSearchParams](arkts-arkts-url-urlsearchparams-c.md) | URLSearchParams接口定义了一些处理URL查询字符串的实用方法，从API version 9开始废弃，建议使用[URLParams](arkts-arkts-url-urlparams-c.md)。 |

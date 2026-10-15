@@ -49,6 +49,7 @@ connectAssetLoader(bundleName: string, database: Database): Promise<rpc.RemoteOb
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise对象，返回[AssetLoader](arkts-arkdata-cloudextension-assetloader-i-sys.md)的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -67,6 +68,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## connectDB
 
@@ -97,6 +100,7 @@ connectDB(bundleName: string, database: Database): Promise<rpc.RemoteObject>
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise对象，返回[CloudDB](arkts-arkdata-cloudextension-clouddb-i-sys.md)的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -115,6 +119,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## connectShareCenter
 
@@ -145,6 +151,7 @@ connectShareCenter(userId: number, bundleName: string): Promise<rpc.RemoteObject
 | --- | --- |
 | Promise&lt;[rpc.RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)&gt; | Promise对象，返回[ShareCenter](arkts-arkdata-cloudextension-sharecenter-i-sys.md)的[RemoteObject](../../apis-ipc-kit/arkts-apis/arkts-ipc-rpc-remoteobject-c.md)对象。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -163,6 +170,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getAppBriefInfo
 
@@ -186,6 +195,7 @@ getAppBriefInfo(): Promise<Record<string, AppBriefInfo>>
 | --- | --- |
 | Promise&lt;Record&lt;string, [AppBriefInfo](arkts-arkdata-cloudextension-appbriefinfo-i-sys.md)&gt;&gt; | Promise对象，返回以bundleName为键、[AppBriefInfo](arkts-arkdata-cloudextension-appbriefinfo-i-sys.md)为值的键值对。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -207,6 +217,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## getAppSchema
 
@@ -236,6 +248,7 @@ getAppSchema(bundleName: string): Promise<Result<AppSchema>>
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[AppSchema](arkts-arkdata-cloudextension-appschema-i-sys.md)&gt;&gt; | Promise对象，返回数据库的schema信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -259,6 +272,8 @@ class MyCloudService implements cloudExtension.CloudService {
 }
 ```
 
+<!--DelEnd-->
+
 ## getServiceInfo
 
 ```TypeScript
@@ -281,6 +296,7 @@ getServiceInfo(): Promise<ServiceInfo>
 | --- | --- |
 | Promise&lt;[ServiceInfo](arkts-arkdata-cloudextension-serviceinfo-i-sys.md)&gt; | Promise对象，返回获取的服务器信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -305,6 +321,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## subscribe
 
@@ -338,6 +356,7 @@ subscribe(
 | --- | --- |
 | Promise&lt;[Result](arkts-arkdata-relationalstore-result-i.md)&lt;[SubscribeInfo](arkts-arkdata-cloudextension-subscribeinfo-i-sys.md)&gt;&gt; | Promise对象，返回订阅的结果，包含订阅的过期时间和订阅信息。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -360,6 +379,8 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## unsubscribe
 
@@ -389,6 +410,7 @@ unsubscribe(unsubscribeInfo: Record<string, Array<string>>): Promise<number>
 | --- | --- |
 | Promise&lt;number&gt; | Promise对象，返回取消订阅结果的错误码。 |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -403,3 +425,5 @@ class MyCloudService implements cloudExtension.CloudService {
   }
 }
 ```
+
+<!--DelEnd-->

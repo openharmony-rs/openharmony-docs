@@ -68,6 +68,7 @@ Writes the characteristic of a BLE peripheral device with context.
 | 2901006 | The connection is not authenticated. |
 | 2901007 | The connection is not authorized. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -95,3 +96,5 @@ try {
     console.error(`errCode: ${err.code}, errMessage: ${err.message}`);
 }
 ```
+
+<!--DelEnd-->

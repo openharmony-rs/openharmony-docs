@@ -10,7 +10,7 @@ KVStore数据库类型枚举。
 
 **废弃版本：** 9
 
-**替代接口：** KVStoreType
+**替代接口：** [KVStoreType](arkts-arkdata-distributedkvstore-kvstoretype-e.md)
 
 <!--Device-distributedData-enum KVStoreType--><!--Device-distributedData-enum KVStoreType-End-->
 
@@ -30,9 +30,25 @@ DEVICE_COLLABORATION = 0
 
 **废弃版本：** 9
 
-**替代接口：** DEVICE_COLLABORATION
+**替代接口：** [DEVICE_COLLABORATION](arkts-arkdata-distributedkvstore-kvstoretype-e.md#device_collaboration)
 
 <!--Device-KVStoreType-DEVICE_COLLABORATION = 0--><!--Device-KVStoreType-DEVICE_COLLABORATION = 0-End-->
+
+**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
+
+## MULTI_VERSION
+
+```TypeScript
+MULTI_VERSION = 2
+```
+
+表示多版本数据库。当前暂不支持使用此接口。
+
+**起始版本：** 7
+
+**废弃版本：** 9
+
+<!--Device-KVStoreType-MULTI_VERSION = 2--><!--Device-KVStoreType-MULTI_VERSION = 2-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore
 
@@ -50,24 +66,8 @@ SINGLE_VERSION = 1
 
 **废弃版本：** 9
 
-**替代接口：** SINGLE_VERSION
+**替代接口：** [SINGLE_VERSION](arkts-arkdata-distributedkvstore-kvstoretype-e.md#single_version)
 
 <!--Device-KVStoreType-SINGLE_VERSION = 1--><!--Device-KVStoreType-SINGLE_VERSION = 1-End-->
 
 **系统能力：** SystemCapability.DistributedDataManager.KVStore.Core
-
-## MULTI_VERSION
-
-```TypeScript
-MULTI_VERSION = 2
-```
-
-表示多版本数据库。当前暂不支持使用此接口。
-
-**起始版本：** 7
-
-**废弃版本：** 9
-
-<!--Device-KVStoreType-MULTI_VERSION = 2--><!--Device-KVStoreType-MULTI_VERSION = 2-End-->
-
-**系统能力：** SystemCapability.DistributedDataManager.KVStore.DistributedKVStore

@@ -6,6 +6,8 @@
 import { window } from '@kit.ArkUI';
 ```
 
+<a id="createwindow1"></a>
+
 ## createWindow
 
 ```TypeScript
@@ -24,7 +26,7 @@ In freeform window mode, the child window created uses an immersive layout when 
 - API version 12 and later: ohos.permission.SYSTEM_FLOAT_WINDOW
 - API versions 9 to 11: N/A
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-window-function createWindow(config: Configuration, callback: AsyncCallback<Window>): void--><!--Device-window-function createWindow(config: Configuration, callback: AsyncCallback<Window>): void-End-->
 
@@ -42,7 +44,7 @@ In freeform window mode, the child window created uses an immersive layout when 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.createWindow cannot work correctly due to limited device capabilities.<br>**Applicable version:** 12 and later |
 | [1300001](../errorcode-window.md#1300001-repeated-operation) | Repeated operation. Possible cause: The window has been created and cannot be created again. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>**Applicable version:** 12 and later |
@@ -85,7 +87,7 @@ export default class EntryAbility extends UIAbility {
 ```
 
 
-<a id="createwindow-1"></a>
+<a id="createwindow2"></a>
 
 ## createWindow
 
@@ -105,7 +107,7 @@ In freeform window mode, the child window created uses an immersive layout when 
 - API version 12 and later: ohos.permission.SYSTEM_FLOAT_WINDOW
 - API versions 9 to 11: N/A
 
-**Atomic service API (ArkTS-Dyn only) :** This API can be used in atomic services since version 12.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
 <!--Device-window-function createWindow(config: Configuration): Promise<Window>--><!--Device-window-function createWindow(config: Configuration): Promise<Window>-End-->
 
@@ -128,7 +130,7 @@ In freeform window mode, the child window created uses an immersive layout when 
 | Error Code ID | Error Message |
 | --- | --- |
 | [201](../../errorcode-universal.md#201-permission-denied) | Permission verification failed. The application does not have the permission required to call the API. |
-| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
+| [401](../../errorcode-universal.md#401-parameter-check-failed) | Parameter error. Possible cause: 1. Mandatory parameters are left unspecified;         2. Incorrect parameter types. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported.createWindow cannot work correctly due to limited device capabilities.<br>**Applicable version:** 12 and later |
 | [1300001](../errorcode-window.md#1300001-repeated-operation) | Repeated operation. Possible cause: The window has been created and cannot be created again. |
 | [1300002](../errorcode-window.md#1300002-abnormal-window-state) | This window state is abnormal. Possible cause: Invalid parent window type, parent window cannot be a subWindow.<br>**Applicable version:** 12 and later |

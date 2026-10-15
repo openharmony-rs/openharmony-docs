@@ -16,64 +16,6 @@ export enum ExtensionAbilityType
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## FORM
-
-```TypeScript
-FORM = 0
-```
-
-[FormExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md)：卡片扩展能力，提供卡片开发能力。
-
-**起始版本：** 9
-
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本11开始，该接口支持在原子化服务中使用。
-
-<!--Device-ExtensionAbilityType-FORM = 0--><!--Device-ExtensionAbilityType-FORM = 0-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## WORK_SCHEDULER
-
-```TypeScript
-WORK_SCHEDULER = 1
-```
-
-[WorkSchedulerExtensionAbility](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workschedulerextensionability-c.md)：延时任务扩展能力，允许应用在系统闲时执行实时性不高的任务。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-WORK_SCHEDULER = 1--><!--Device-ExtensionAbilityType-WORK_SCHEDULER = 1-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## INPUT_METHOD
-
-```TypeScript
-INPUT_METHOD = 2
-```
-
-[InputMethodExtensionAbility](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodextensionability-c.md)：输入法扩展能力，用于开发输入法应用。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-INPUT_METHOD = 2--><!--Device-ExtensionAbilityType-INPUT_METHOD = 2-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## SERVICE
-
-```TypeScript
-SERVICE = 3
-```
-
-ServiceExtensionAbility：后台服务扩展能力，提供后台运行并对外提供相应能力。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-SERVICE = 3--><!--Device-ExtensionAbilityType-SERVICE = 3-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
 ## ACCESSIBILITY
 
 ```TypeScript
@@ -85,188 +27,6 @@ AccessibilityExtensionAbility：无障碍服务扩展能力，支持访问与操
 **起始版本：** 9
 
 <!--Device-ExtensionAbilityType-ACCESSIBILITY = 4--><!--Device-ExtensionAbilityType-ACCESSIBILITY = 4-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## DATA_SHARE
-
-```TypeScript
-DATA_SHARE = 5
-```
-
-DataShareExtensionAbility：数据共享扩展能力，用于对外提供数据读写服务。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-DATA_SHARE = 5--><!--Device-ExtensionAbilityType-DATA_SHARE = 5-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## FILE_SHARE
-
-```TypeScript
-FILE_SHARE = 6
-```
-
-FileShareExtensionAbility：文件共享扩展能力，用于应用间的文件分享。预留能力，仅系统应用支持。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-FILE_SHARE = 6--><!--Device-ExtensionAbilityType-FILE_SHARE = 6-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## STATIC_SUBSCRIBER
-
-```TypeScript
-STATIC_SUBSCRIBER = 7
-```
-
-StaticSubscriberExtensionAbility：静态广播扩展能力，用于处理静态事件，比如开机事件。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-STATIC_SUBSCRIBER = 7--><!--Device-ExtensionAbilityType-STATIC_SUBSCRIBER = 7-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## WALLPAPER
-
-```TypeScript
-WALLPAPER = 8
-```
-
-WallpaperExtensionAbility：壁纸扩展能力，用于实现桌面壁纸。预留能力，仅系统应用支持。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-WALLPAPER = 8--><!--Device-ExtensionAbilityType-WALLPAPER = 8-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## BACKUP
-
-```TypeScript
-BACKUP = 9
-```
-
-[BackupExtensionAbility](../../apis-core-file-kit/arkts-apis/arkts-corefile-application-backupextensionability-backupextensionability-c.md)：数据备份扩展能力，提供应用数据的备份恢复能力。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-BACKUP = 9--><!--Device-ExtensionAbilityType-BACKUP = 9-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## WINDOW
-
-```TypeScript
-WINDOW = 10
-```
-
-WindowExtensionAbility：界面组合扩展能力，允许系统应用进行跨应用的界面拉起和嵌入。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-WINDOW = 10--><!--Device-ExtensionAbilityType-WINDOW = 10-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## ENTERPRISE_ADMIN
-
-```TypeScript
-ENTERPRISE_ADMIN = 11
-```
-
-[EnterpriseAdminExtensionAbility](../../apis-mdm-kit/arkts-apis/arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)：企业设备管理扩展能力，提供企业管理时处理管理事件的能力。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-ENTERPRISE_ADMIN = 11--><!--Device-ExtensionAbilityType-ENTERPRISE_ADMIN = 11-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## THUMBNAIL
-
-```TypeScript
-THUMBNAIL = 13
-```
-
-ThumbnailExtensionAbility：文件缩略图扩展能力，用于为文件提供图标缩略图的能力。预留能力，仅系统应用支持。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-THUMBNAIL = 13--><!--Device-ExtensionAbilityType-THUMBNAIL = 13-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## PREVIEW
-
-```TypeScript
-PREVIEW = 14
-```
-
-PreviewExtensionAbility：文件预览扩展能力，提供文件预览的能力，其他应用可以直接在应用中嵌入显示。预留能力，仅系统应用支持。
-
-**起始版本：** 9
-
-<!--Device-ExtensionAbilityType-PREVIEW = 14--><!--Device-ExtensionAbilityType-PREVIEW = 14-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## PRINT
-
-```TypeScript
-PRINT = 15
-```
-
-PrintExtensionAbility：文件打印扩展能力，提供应用打印照片、文档等办公场景。仅系统应用支持。
-
-**起始版本：** 10
-
-<!--Device-ExtensionAbilityType-PRINT = 15--><!--Device-ExtensionAbilityType-PRINT = 15-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## SHARE
-
-```TypeScript
-SHARE = 16
-```
-
-[ShareExtensionAbility](arkts-ability-app-ability-shareextensionability-shareextensionability-c.md)：提供分享业务能力，为开发者提供基于UIExtension的分享业务模板。
-
-**起始版本：** 10
-
-<!--Device-ExtensionAbilityType-SHARE = 16--><!--Device-ExtensionAbilityType-SHARE = 16-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## PUSH
-
-```TypeScript
-PUSH = 17
-```
-
-PushExtensionAbility：推送扩展能力，提供推送场景化消息能力。预留能力，仅系统应用支持。
-
-**起始版本：** 10
-
-<!--Device-ExtensionAbilityType-PUSH = 17--><!--Device-ExtensionAbilityType-PUSH = 17-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## DRIVER
-
-```TypeScript
-DRIVER = 18
-```
-
-[DriverExtensionAbility](../../apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-app-ability-driverextensionability-driverextensionability-c.md)：驱动扩展能力，提供外设驱动扩展能力。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。
-
-**起始版本：** 10
-
-<!--Device-ExtensionAbilityType-DRIVER = 18--><!--Device-ExtensionAbilityType-DRIVER = 18-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -298,101 +58,35 @@ AdsServiceExtensionAbility：广告服务扩展能力，对外提供后台自定
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## EMBEDDED_UI
+## AGENT
 
 ```TypeScript
-EMBEDDED_UI = 21
+AGENT = 37
 ```
 
-[EmbeddedUIExtensionAbility](arkts-ability-app-ability-embeddeduiextensionability-embeddeduiextensionability-c.md)：嵌入式UI扩展能力，提供跨进程界面嵌入的能力。
+[AgentExtensionAbility](arkts-ability-app-agent-agentextensionability-agentextensionability-c.md)：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
 
-**起始版本：** 12
+**起始版本：** 24
 
-<!--Device-ExtensionAbilityType-EMBEDDED_UI = 21--><!--Device-ExtensionAbilityType-EMBEDDED_UI = 21-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExtensionAbilityType-AGENT = 37--><!--Device-ExtensionAbilityType-AGENT = 37-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## INSIGHT_INTENT_UI
+## AGENT_UI
 
 ```TypeScript
-INSIGHT_INTENT_UI = 22
+AGENT_UI = 38
 ```
 
-InsightIntentUIExtensionAbility：为开发者提供能被小艺意图调用，以窗口形态呈现内容的扩展能力。
+[AgentUIExtensionAbility](../../../reference/apis-ability-kit/js-apis-agent-agentUIExtensionAbility.md)：为开发者提供接入端侧Agent UI界面显示能力。
 
-**起始版本：** 12
+**起始版本：** 24
 
-<!--Device-ExtensionAbilityType-INSIGHT_INTENT_UI = 22--><!--Device-ExtensionAbilityType-INSIGHT_INTENT_UI = 22-End-->
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## FENCE
-
-```TypeScript
-FENCE = 24
-```
-
-[FenceExtensionAbility](../../apis-location-kit/arkts-apis/arkts-location-app-ability-fenceextensionability-fenceextensionability-c.md)：为开发者提供地理围栏相关的能力，继承自ExtensionAbility。
-
-**起始版本：** 18
-
-<!--Device-ExtensionAbilityType-FENCE = 24--><!--Device-ExtensionAbilityType-FENCE = 24-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## CALLER_INFO_QUERY
-
-```TypeScript
-CALLER_INFO_QUERY = 25
-```
-
-CallerInfoQueryExtensionAbility：为开发者提供来去电信息查询能力
-
-**起始版本：** 19
-
-<!--Device-ExtensionAbilityType-CALLER_INFO_QUERY = 25--><!--Device-ExtensionAbilityType-CALLER_INFO_QUERY = 25-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## ASSET_ACCELERATION
-
-```TypeScript
-ASSET_ACCELERATION = 26
-```
-
-AssetAccelerationExtensionAbility：资源预下载扩展能力，提供在设备闲时状态，进行后台资源预下载的能力。
-
-**起始版本：** 18
-
-<!--Device-ExtensionAbilityType-ASSET_ACCELERATION = 26--><!--Device-ExtensionAbilityType-ASSET_ACCELERATION = 26-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## FORM_EDIT
-
-```TypeScript
-FORM_EDIT = 27
-```
-
-[FormEditExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app-form-formeditextensionability-formeditextensionability-c.md)：为开发者提供卡片编辑的能力，继承自UIExtensionAbility。
-
-**起始版本：** 18
-
-<!--Device-ExtensionAbilityType-FORM_EDIT = 27--><!--Device-ExtensionAbilityType-FORM_EDIT = 27-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## DISTRIBUTED
-
-```TypeScript
-DISTRIBUTED = 28
-```
-
-[DistributedExtensionAbility](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-application-distributedextensionability-distributedextensionability-c.md)：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。
-
-**起始版本：** 20
-
-<!--Device-ExtensionAbilityType-DISTRIBUTED = 28--><!--Device-ExtensionAbilityType-DISTRIBUTED = 28-End-->
+<!--Device-ExtensionAbilityType-AGENT_UI = 38--><!--Device-ExtensionAbilityType-AGENT_UI = 38-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -410,79 +104,45 @@ APP_SERVICE = 29
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## LIVE_FORM
+## ASSET_ACCELERATION
 
 ```TypeScript
-LIVE_FORM = 30
+ASSET_ACCELERATION = 26
 ```
 
-[LiveFormExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app-form-liveformextensionability-liveformextensionability-c.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。
+AssetAccelerationExtensionAbility：资源预下载扩展能力，提供在设备闲时状态，进行后台资源预下载的能力。
 
-**起始版本：** 20
+**起始版本：** 18
 
-**原子化服务API（仅ArkTS-Dyn）：** 从API版本20开始，该接口支持在原子化服务中使用。
-
-<!--Device-ExtensionAbilityType-LIVE_FORM = 30--><!--Device-ExtensionAbilityType-LIVE_FORM = 30-End-->
+<!--Device-ExtensionAbilityType-ASSET_ACCELERATION = 26--><!--Device-ExtensionAbilityType-ASSET_ACCELERATION = 26-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## SELECTION
+## BACKUP
 
 ```TypeScript
-SELECTION = 31
+BACKUP = 9
 ```
 
-SelectionExtensionAbility：为开发者提供划词弹窗能力的ExtensionAbility。
+[BackupExtensionAbility](../../apis-core-file-kit/arkts-apis/arkts-corefile-application-backupextensionability-backupextensionability-c.md)：数据备份扩展能力，提供应用数据的备份恢复能力。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**起始版本：** 9
 
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExtensionAbilityType-SELECTION = 31--><!--Device-ExtensionAbilityType-SELECTION = 31-End-->
+<!--Device-ExtensionAbilityType-BACKUP = 9--><!--Device-ExtensionAbilityType-BACKUP = 9-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## WEB_NATIVE_MESSAGING
+## CALLER_INFO_QUERY
 
 ```TypeScript
-WEB_NATIVE_MESSAGING = 32
+CALLER_INFO_QUERY = 25
 ```
 
-[WebNativeMessagingExtensionAbility](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)：为开发者提供Web原生消息通信能力的ExtensionAbility。
+CallerInfoQueryExtensionAbility：为开发者提供来去电信息查询能力
 
-**起始版本：** 21
+**起始版本：** 19
 
-<!--Device-ExtensionAbilityType-WEB_NATIVE_MESSAGING = 32--><!--Device-ExtensionAbilityType-WEB_NATIVE_MESSAGING = 32-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## FAULT_LOG
-
-```TypeScript
-FAULT_LOG = 33
-```
-
-[FaultLogExtensionAbility](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiviewdfx-faultlogextensionability-faultlogextensionability-c.md)：提供故障延迟通知的能力。
-
-**起始版本：** 21
-
-<!--Device-ExtensionAbilityType-FAULT_LOG = 33--><!--Device-ExtensionAbilityType-FAULT_LOG = 33-End-->
-
-**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
-
-## NOTIFICATION_SUBSCRIBER
-
-```TypeScript
-NOTIFICATION_SUBSCRIBER = 34
-```
-
-[NotificationSubscriberExtensionAbility](../../apis-notification-kit/arkts-apis/arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md)：提供通知订阅的相关功能。
-
-**起始版本：** 22
-
-<!--Device-ExtensionAbilityType-NOTIFICATION_SUBSCRIBER = 34--><!--Device-ExtensionAbilityType-NOTIFICATION_SUBSCRIBER = 34-End-->
+<!--Device-ExtensionAbilityType-CALLER_INFO_QUERY = 25--><!--Device-ExtensionAbilityType-CALLER_INFO_QUERY = 25-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -500,57 +160,189 @@ CRYPTO = 35
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## PARTNER_AGENT
+## DATA_SHARE
 
 ```TypeScript
-PARTNER_AGENT = 36
+DATA_SHARE = 5
 ```
 
-[PartnerAgentExtensionAbility](../../apis-connectivity-kit/arkts-apis/arkts-connectivity-fusionconnectivity-partneragentextensionability-partneragentextensionability-c.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。
+DataShareExtensionAbility：数据共享扩展能力，用于对外提供数据读写服务。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**起始版本：** 9
 
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExtensionAbilityType-PARTNER_AGENT = 36--><!--Device-ExtensionAbilityType-PARTNER_AGENT = 36-End-->
+<!--Device-ExtensionAbilityType-DATA_SHARE = 5--><!--Device-ExtensionAbilityType-DATA_SHARE = 5-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## AGENT
+## DISTRIBUTED
 
 ```TypeScript
-AGENT = 37
+DISTRIBUTED = 28
 ```
 
-AgentExtensionAbility：提供智能体扩展能力，包括智能体服务的创建、销毁、连接、断开的生命周期回调接口，以及接收客户端所发送数据和安全认证的回调接口。
+[DistributedExtensionAbility](../../apis-distributed-service-kit/arkts-apis/arkts-distributedservice-application-distributedextensionability-distributedextensionability-c.md)：提供分布式相关扩展能力，提供分布式创建、销毁、连接的生命周期回调。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**起始版本：** 20
 
-**起始版本：** 24
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-ExtensionAbilityType-AGENT = 37--><!--Device-ExtensionAbilityType-AGENT = 37-End-->
+<!--Device-ExtensionAbilityType-DISTRIBUTED = 28--><!--Device-ExtensionAbilityType-DISTRIBUTED = 28-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-## AGENT_UI
+## DRIVER
 
 ```TypeScript
-AGENT_UI = 38
+DRIVER = 18
 ```
 
-AgentUIExtensionAbility：为开发者提供接入端侧Agent UI界面显示能力。
+[DriverExtensionAbility](../../apis-driver-development-kit/arkts-apis/arkts-driverdevelopment-app-ability-driverextensionability-driverextensionability-c.md)：驱动扩展能力，提供外设驱动扩展能力。应用配置了driver类型的ExtensionAbility后会被视为驱动应用，驱动应用在安装、卸载和恢复时不会区分用户，且创建新用户时也会安装设备上已有的驱动应用。例如，创建子用户时会默认安装主用户已有的驱动应用，在子用户上卸载驱动应用时，主用户上对应的驱动应用也会同时被卸载。
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**起始版本：** 10
 
-**起始版本：** 24
+<!--Device-ExtensionAbilityType-DRIVER = 18--><!--Device-ExtensionAbilityType-DRIVER = 18-End-->
 
-**模型约束：** 此接口仅可在Stage模型下使用。
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
-<!--Device-ExtensionAbilityType-AGENT_UI = 38--><!--Device-ExtensionAbilityType-AGENT_UI = 38-End-->
+## EMBEDDED_UI
+
+```TypeScript
+EMBEDDED_UI = 21
+```
+
+[EmbeddedUIExtensionAbility](arkts-ability-app-ability-embeddeduiextensionability-embeddeduiextensionability-c.md)：嵌入式UI扩展能力，提供跨进程界面嵌入的能力。
+
+**起始版本：** 12
+
+<!--Device-ExtensionAbilityType-EMBEDDED_UI = 21--><!--Device-ExtensionAbilityType-EMBEDDED_UI = 21-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## ENTERPRISE_ADMIN
+
+```TypeScript
+ENTERPRISE_ADMIN = 11
+```
+
+[EnterpriseAdminExtensionAbility](../../apis-mdm-kit/arkts-apis/arkts-mdm-enterprise-enterpriseadminextensionability-enterpriseadminextensionability-c.md)：企业设备管理扩展能力，提供企业管理时处理管理事件的能力。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-ENTERPRISE_ADMIN = 11--><!--Device-ExtensionAbilityType-ENTERPRISE_ADMIN = 11-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## FAULT_LOG
+
+```TypeScript
+FAULT_LOG = 33
+```
+
+[FaultLogExtensionAbility](../../apis-performance-analysis-kit/arkts-apis/arkts-performanceanalysis-hiviewdfx-faultlogextensionability-faultlogextensionability-c.md)：提供故障延迟通知的能力。
+
+**起始版本：** 21
+
+<!--Device-ExtensionAbilityType-FAULT_LOG = 33--><!--Device-ExtensionAbilityType-FAULT_LOG = 33-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## FENCE
+
+```TypeScript
+FENCE = 24
+```
+
+[FenceExtensionAbility](../../apis-location-kit/arkts-apis/arkts-location-app-ability-fenceextensionability-fenceextensionability-c.md)：为开发者提供地理围栏相关的能力，继承自ExtensionAbility。
+
+**起始版本：** 18
+
+<!--Device-ExtensionAbilityType-FENCE = 24--><!--Device-ExtensionAbilityType-FENCE = 24-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## FILE_SHARE
+
+```TypeScript
+FILE_SHARE = 6
+```
+
+FileShareExtensionAbility：文件共享扩展能力，用于应用间的文件分享。预留能力，仅系统应用支持。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-FILE_SHARE = 6--><!--Device-ExtensionAbilityType-FILE_SHARE = 6-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## FORM
+
+```TypeScript
+FORM = 0
+```
+
+[FormExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app-form-formextensionability-formextensionability-c.md)：卡片扩展能力，提供卡片开发能力。
+
+**起始版本：** 9
+
+**原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
+
+<!--Device-ExtensionAbilityType-FORM = 0--><!--Device-ExtensionAbilityType-FORM = 0-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## FORM_EDIT
+
+```TypeScript
+FORM_EDIT = 27
+```
+
+[FormEditExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app-form-formeditextensionability-formeditextensionability-c.md)：为开发者提供卡片编辑的能力，继承自UIExtensionAbility。
+
+**起始版本：** 18
+
+<!--Device-ExtensionAbilityType-FORM_EDIT = 27--><!--Device-ExtensionAbilityType-FORM_EDIT = 27-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## INPUT_METHOD
+
+```TypeScript
+INPUT_METHOD = 2
+```
+
+[InputMethodExtensionAbility](../../apis-ime-kit/arkts-apis/arkts-ime-inputmethodextensionability-c.md)：输入法扩展能力，用于开发输入法应用。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-INPUT_METHOD = 2--><!--Device-ExtensionAbilityType-INPUT_METHOD = 2-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## INSIGHT_INTENT_UI
+
+```TypeScript
+INSIGHT_INTENT_UI = 22
+```
+
+InsightIntentUIExtensionAbility：为开发者提供能被系统入口调用，以窗口形态呈现内容的扩展能力。
+
+**起始版本：** 12
+
+<!--Device-ExtensionAbilityType-INSIGHT_INTENT_UI = 22--><!--Device-ExtensionAbilityType-INSIGHT_INTENT_UI = 22-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## LIVE_FORM
+
+```TypeScript
+LIVE_FORM = 30
+```
+
+[LiveFormExtensionAbility](../../apis-form-kit/arkts-apis/arkts-form-app-form-liveformextensionability-liveformextensionability-c.md)：互动卡片相关扩展能力，提供互动卡片创建、销毁的生命周期回调。
+
+**起始版本：** 20
+
+**原子化服务API：** 从API版本20开始，该接口支持在原子化服务中使用。
+
+<!--Device-ExtensionAbilityType-LIVE_FORM = 30--><!--Device-ExtensionAbilityType-LIVE_FORM = 30-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -560,13 +352,157 @@ AgentUIExtensionAbility：为开发者提供接入端侧Agent UI界面显示能�
 MODULAR_OBJECT = 39
 ```
 
-[ModularObjectExtensionAbility](../../../application-models/modular-object-extension-overview.md)：提供应用自身能力开放功能。
+[modular_object_extension_ability](../../../reference/apis-ability-kit/capi-modular-object-extension-ability-h.md)：提供[模块化对象](../../../application-models/modular-object-extension-overview.md)扩展能力，可以将应用自身功能封装为独立的功能模块，开放给其他应用使用。
 
 **起始版本：** 26.0.0
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-ExtensionAbilityType-MODULAR_OBJECT = 39--><!--Device-ExtensionAbilityType-MODULAR_OBJECT = 39-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## NOTIFICATION_SUBSCRIBER
+
+```TypeScript
+NOTIFICATION_SUBSCRIBER = 34
+```
+
+[NotificationSubscriberExtensionAbility](../../apis-notification-kit/arkts-apis/arkts-notification-application-notificationsubscriberextensionability-notificationsubscriberextensionability-c.md)：提供通知订阅的相关功能。
+
+**起始版本：** 22
+
+<!--Device-ExtensionAbilityType-NOTIFICATION_SUBSCRIBER = 34--><!--Device-ExtensionAbilityType-NOTIFICATION_SUBSCRIBER = 34-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## PARTNER_AGENT
+
+```TypeScript
+PARTNER_AGENT = 36
+```
+
+[PartnerAgentExtensionAbility](../../apis-connectivity-kit/arkts-apis/arkts-connectivity-fusionconnectivity-partneragentextensionability-partneragentextensionability-c.md)：基于蓝牙通信技术，提供设备发现与设备下线的通知功能。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExtensionAbilityType-PARTNER_AGENT = 36--><!--Device-ExtensionAbilityType-PARTNER_AGENT = 36-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## PREVIEW
+
+```TypeScript
+PREVIEW = 14
+```
+
+PreviewExtensionAbility：文件预览扩展能力，提供文件预览的能力，其他应用可以直接在应用中嵌入显示。预留能力，仅系统应用支持。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-PREVIEW = 14--><!--Device-ExtensionAbilityType-PREVIEW = 14-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## PRINT
+
+```TypeScript
+PRINT = 15
+```
+
+PrintExtensionAbility：文件打印扩展能力，提供应用打印照片、文档等办公场景。仅系统应用支持。
+
+**起始版本：** 10
+
+<!--Device-ExtensionAbilityType-PRINT = 15--><!--Device-ExtensionAbilityType-PRINT = 15-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## PUSH
+
+```TypeScript
+PUSH = 17
+```
+
+PushExtensionAbility：推送扩展能力，提供推送场景化消息能力。预留能力，仅系统应用支持。
+
+**起始版本：** 10
+
+<!--Device-ExtensionAbilityType-PUSH = 17--><!--Device-ExtensionAbilityType-PUSH = 17-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## SELECTION
+
+```TypeScript
+SELECTION = 31
+```
+
+[SelectionExtensionAbility](../../apis-basic-services-kit/arkts-apis/arkts-basicservices-selectioninput-selectionextensionability-selectionextensionability-c.md)：为开发者提供划词弹窗能力的ExtensionAbility。
+
+**起始版本：** 24
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-ExtensionAbilityType-SELECTION = 31--><!--Device-ExtensionAbilityType-SELECTION = 31-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## SERVICE
+
+```TypeScript
+SERVICE = 3
+```
+
+ServiceExtensionAbility：后台服务扩展能力，提供后台运行并对外提供相应能力。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-SERVICE = 3--><!--Device-ExtensionAbilityType-SERVICE = 3-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## SHARE
+
+```TypeScript
+SHARE = 16
+```
+
+[ShareExtensionAbility](arkts-ability-app-ability-shareextensionability-shareextensionability-c.md)：提供分享业务能力，为开发者提供基于UIExtension的分享业务模板。
+
+**起始版本：** 10
+
+<!--Device-ExtensionAbilityType-SHARE = 16--><!--Device-ExtensionAbilityType-SHARE = 16-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## STATIC_SUBSCRIBER
+
+```TypeScript
+STATIC_SUBSCRIBER = 7
+```
+
+StaticSubscriberExtensionAbility：静态广播扩展能力，用于处理静态事件，比如开机事件。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-STATIC_SUBSCRIBER = 7--><!--Device-ExtensionAbilityType-STATIC_SUBSCRIBER = 7-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## THUMBNAIL
+
+```TypeScript
+THUMBNAIL = 13
+```
+
+ThumbnailExtensionAbility：文件缩略图扩展能力，用于为文件提供图标缩略图的能力。预留能力，仅系统应用支持。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-THUMBNAIL = 13--><!--Device-ExtensionAbilityType-THUMBNAIL = 13-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core
 
@@ -581,5 +517,61 @@ UNSPECIFIED = 255
 **起始版本：** 9
 
 <!--Device-ExtensionAbilityType-UNSPECIFIED = 255--><!--Device-ExtensionAbilityType-UNSPECIFIED = 255-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## WALLPAPER
+
+```TypeScript
+WALLPAPER = 8
+```
+
+WallpaperExtensionAbility：壁纸扩展能力，用于实现桌面壁纸。预留能力，仅系统应用支持。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-WALLPAPER = 8--><!--Device-ExtensionAbilityType-WALLPAPER = 8-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## WEB_NATIVE_MESSAGING
+
+```TypeScript
+WEB_NATIVE_MESSAGING = 32
+```
+
+[WebNativeMessagingExtensionAbility](../../apis-arkweb/arkts-apis/arkts-arkweb-web-webnativemessagingextensionability-webnativemessagingextensionability-c.md)：为开发者提供Web消息通信能力的ExtensionAbility。
+
+**起始版本：** 21
+
+<!--Device-ExtensionAbilityType-WEB_NATIVE_MESSAGING = 32--><!--Device-ExtensionAbilityType-WEB_NATIVE_MESSAGING = 32-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## WINDOW
+
+```TypeScript
+WINDOW = 10
+```
+
+WindowExtensionAbility：界面组合扩展能力，允许系统应用进行跨应用的界面拉起和嵌入。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-WINDOW = 10--><!--Device-ExtensionAbilityType-WINDOW = 10-End-->
+
+**系统能力：** SystemCapability.BundleManager.BundleFramework.Core
+
+## WORK_SCHEDULER
+
+```TypeScript
+WORK_SCHEDULER = 1
+```
+
+[WorkSchedulerExtensionAbility](../../apis-background-tasks-kit/arkts-apis/arkts-backgroundtasks-workschedulerextensionability-c.md)：延时任务扩展能力，允许应用在系统闲时执行实时性不高的任务。
+
+**起始版本：** 9
+
+<!--Device-ExtensionAbilityType-WORK_SCHEDULER = 1--><!--Device-ExtensionAbilityType-WORK_SCHEDULER = 1-End-->
 
 **系统能力：** SystemCapability.BundleManager.BundleFramework.Core

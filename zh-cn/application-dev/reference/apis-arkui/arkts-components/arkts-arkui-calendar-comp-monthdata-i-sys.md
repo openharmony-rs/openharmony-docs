@@ -4,7 +4,7 @@
 interface MonthData
 ```
 
-Date object.
+日期数据对象。
 
 **起始版本：** 7
 
@@ -22,9 +22,9 @@ Date object.
 data: CalendarDay[]
 ```
 
-CalendarDay.
+CalendarDay数组。
 
-**类型：** CalendarDay[]
+**类型：** [CalendarDay](arkts-arkui-calendar-comp-calendarday-i-sys.md)[]
 
 **起始版本：** 7
 
@@ -46,7 +46,7 @@ CalendarDay.
 month: number
 ```
 
-Gregorian calendar month.
+公历月。
 
 **类型：** number
 
@@ -70,7 +70,7 @@ Gregorian calendar month.
 year: number
 ```
 
-Gregorian calendar year.
+公历年。
 
 **类型：** number
 

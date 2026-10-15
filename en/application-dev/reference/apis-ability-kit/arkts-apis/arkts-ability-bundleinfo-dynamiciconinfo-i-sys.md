@@ -4,7 +4,7 @@
 export interface DynamicIconInfo
 ```
 
-Obtains dynamic icon information about a bundle
+Describes the information about the dynamic icon of an application.
 
 **Since:** 20
 
@@ -20,7 +20,7 @@ Obtains dynamic icon information about a bundle
 readonly appIndex: number
 ```
 
-Indicates the index of the bundle.
+Index of the application clone associated with the dynamic icon.
 
 **Type:** number
 
@@ -38,7 +38,7 @@ Indicates the index of the bundle.
 readonly bundleName: string
 ```
 
-Indicates the name of the bundle.
+Bundle name of the application associated with the dynamic icon.
 
 **Type:** string
 
@@ -56,7 +56,7 @@ Indicates the name of the bundle.
 readonly moduleName: string
 ```
 
-Indicates the name of the dynamic icon.
+Module name of the application associated with the dynamic icon.
 
 **Type:** string
 
@@ -74,7 +74,7 @@ Indicates the name of the dynamic icon.
 readonly userId: number
 ```
 
-Indicates the user id of the bundle.
+User ID of the application associated with the dynamic icon.
 
 **Type:** number
 

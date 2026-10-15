@@ -6,8 +6,6 @@ export enum TechnologyType
 
 Enum for distance measurement technology types.
 
-@enum { int } TechnologyType
-
 **Since:** 23
 
 <!--Device-spatialAwareness-export enum TechnologyType--><!--Device-spatialAwareness-export enum TechnologyType-End-->
@@ -34,19 +32,19 @@ indicates Bluetooth Low Energy (BLE) technology
 
 **System API:** This is a system API.
 
-## WIFI_RSSI
+## NEAR_LINK
 
 ```TypeScript
-WIFI_RSSI = 1
+NEAR_LINK = 3
 ```
 
-indicates Wi-Fi technology
+indicates NearLink technology
 
 **Since:** 23
 
 **Model restriction:** This API can be used only in the stage model.
 
-<!--Device-TechnologyType-WIFI_RSSI = 1--><!--Device-TechnologyType-WIFI_RSSI = 1-End-->
+<!--Device-TechnologyType-NEAR_LINK = 3--><!--Device-TechnologyType-NEAR_LINK = 3-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 
@@ -70,24 +68,6 @@ indicates ultrasound technology
 
 **System API:** This is a system API.
 
-## NEAR_LINK
-
-```TypeScript
-NEAR_LINK = 3
-```
-
-indicates NearLink technology
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-TechnologyType-NEAR_LINK = 3--><!--Device-TechnologyType-NEAR_LINK = 3-End-->
-
-**System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
-
-**System API:** This is a system API.
-
 ## WIFI_BLE_RSSI
 
 ```TypeScript
@@ -101,6 +81,24 @@ indicates Wi-Fi and Bluetooth technology
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-TechnologyType-WIFI_BLE_RSSI = 4--><!--Device-TechnologyType-WIFI_BLE_RSSI = 4-End-->
+
+**System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
+
+**System API:** This is a system API.
+
+## WIFI_RSSI
+
+```TypeScript
+WIFI_RSSI = 1
+```
+
+indicates Wi-Fi technology
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-TechnologyType-WIFI_RSSI = 1--><!--Device-TechnologyType-WIFI_RSSI = 1-End-->
 
 **System capability:** SystemCapability.MultimodalAwareness.DistanceMeasurement
 

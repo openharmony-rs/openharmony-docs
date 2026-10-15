@@ -12,22 +12,6 @@ Frame interpolation status of blankless loading.
 
 **System capability:** SystemCapability.Web.Webview.Core
 
-## FRAME_INTERPOLATION_SUCCEEDED
-
-```TypeScript
-FRAME_INTERPOLATION_SUCCEEDED = 0
-```
-
-Frame interpolation succeeded.
-
-**Since:** 23
-
-**Model restriction:** This API can be used only in the stage model.
-
-<!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_SUCCEEDED = 0--><!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_SUCCEEDED = 0-End-->
-
-**System capability:** SystemCapability.Web.Webview.Core
-
 ## FRAME_INTERPOLATION_FAILED
 
 ```TypeScript
@@ -57,5 +41,21 @@ The frame interpolation is removed.
 **Model restriction:** This API can be used only in the stage model.
 
 <!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_REMOVED = 2--><!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_REMOVED = 2-End-->
+
+**System capability:** SystemCapability.Web.Webview.Core
+
+## FRAME_INTERPOLATION_SUCCEEDED
+
+```TypeScript
+FRAME_INTERPOLATION_SUCCEEDED = 0
+```
+
+Frame interpolation succeeded.
+
+**Since:** 23
+
+**Model restriction:** This API can be used only in the stage model.
+
+<!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_SUCCEEDED = 0--><!--Device-BlanklessFrameInterpolationState-FRAME_INTERPOLATION_SUCCEEDED = 0-End-->
 
 **System capability:** SystemCapability.Web.Webview.Core

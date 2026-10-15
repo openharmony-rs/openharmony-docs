@@ -36,7 +36,7 @@ close(): void
 
 **废弃版本：** 9
 
-**替代接口：** close
+**替代接口：** [close](arkts-arkts-worker-threadworkerglobalscope-i.md#close)
 
 <!--Device-DedicatedWorkerGlobalScope-close(): void--><!--Device-DedicatedWorkerGlobalScope-close(): void-End-->
 
@@ -74,7 +74,7 @@ onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 
 **废弃版本：** 9
 
-**替代接口：** onmessage
+**替代接口：** [onmessage](arkts-arkts-worker-threadworkerglobalscope-i.md#onmessage)
 
 <!--Device-DedicatedWorkerGlobalScope-onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void--><!--Device-DedicatedWorkerGlobalScope-onmessage?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void-End-->
 
@@ -99,7 +99,7 @@ onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 
 **废弃版本：** 9
 
-**替代接口：** onmessageerror
+**替代接口：** [onmessageerror](arkts-arkts-worker-threadworkerglobalscope-i.md#onmessageerror)
 
 <!--Device-DedicatedWorkerGlobalScope-onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void--><!--Device-DedicatedWorkerGlobalScope-onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void-End-->
 
@@ -111,6 +111,8 @@ onmessageerror?: (this: DedicatedWorkerGlobalScope, ev: MessageEvent) => void
 | --- | --- | --- | --- |
 | this | [DedicatedWorkerGlobalScope](arkts-arkts-worker-dedicatedworkerglobalscope-i.md) | 是 |  |
 | ev | [MessageEvent](arkts-arkts-worker-messageevent-i.md) | 是 |  |
+
+<a id="postmessage1"></a>
 
 ## postMessage
 
@@ -124,7 +126,7 @@ Worker线程向宿主线程发送消息。
 
 **废弃版本：** 9
 
-**替代接口：** postMessage
+**替代接口：** [postMessage](arkts-arkts-worker-threadworkerglobalscope-i.md#postmessage)
 
 <!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: Transferable[]): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: Transferable[]): void-End-->
 
@@ -185,7 +187,7 @@ parentPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-<a id="postmessage-1"></a>
+<a id="postmessage2"></a>
 
 ## postMessage
 
@@ -199,7 +201,7 @@ Worker线程向宿主线程发送消息。
 
 **废弃版本：** 9
 
-**替代接口：** postMessage
+**替代接口：** [postMessage](arkts-arkts-worker-threadworkerglobalscope-i.md#postmessage)
 
 <!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, options?: PostMessageOptions): void-End-->
 
@@ -235,7 +237,7 @@ parentPort.onmessage = (e: MessageEvents) => {
 }
 ```
 
-<a id="postmessage-2"></a>
+<a id="postmessage3"></a>
 
 ## postMessage
 
@@ -249,7 +251,7 @@ Worker线程向宿主线程发送消息。
 
 **废弃版本：** 9
 
-**替代接口：** postMessage
+**替代接口：** [postMessage](arkts-arkts-worker-threadworkerglobalscope-i.md#postmessage)
 
 <!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void--><!--Device-DedicatedWorkerGlobalScope-postMessage(messageObject: Object, transfer: ArrayBuffer[]): void-End-->
 

@@ -24,21 +24,21 @@ Provides the [span](arkts-arkui-span-comp.md) type information.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TEXT
+## DEFAULT
 
 ```TypeScript
-TEXT = 0
+DEFAULT = 3
 ```
 
-Text span.
+When this type is registered but **TEXT**, **IMAGE**, or **MIXED** types are not registered, this type will be triggered and displayed for those registered types.
 
-**Since:** 11
+**Since:** 15
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 12.
+**Atomic service API:** This API can be used in atomic services since API version 15.
 
-<!--Device-TextSpanType-TEXT = 0--><!--Device-TextSpanType-TEXT = 0-End-->
+<!--Device-TextSpanType-DEFAULT = 3--><!--Device-TextSpanType-DEFAULT = 3-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -78,20 +78,20 @@ Mixed span, which contains both text and imagery.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## DEFAULT
+## TEXT
 
 ```TypeScript
-DEFAULT = 3
+TEXT = 0
 ```
 
-When this type is registered but **TEXT**, **IMAGE**, or **MIXED** types are not registered, this type will be triggered and displayed for those registered types.
+Text span.
 
-**Since:** 15
+**Since:** 11
 
 **Model restriction:** This API can be used only in the stage model.
 
-**Atomic service API:** This API can be used in atomic services since API version 15.
+**Atomic service API:** This API can be used in atomic services since API version 12.
 
-<!--Device-TextSpanType-DEFAULT = 3--><!--Device-TextSpanType-DEFAULT = 3-End-->
+<!--Device-TextSpanType-TEXT = 0--><!--Device-TextSpanType-TEXT = 0-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

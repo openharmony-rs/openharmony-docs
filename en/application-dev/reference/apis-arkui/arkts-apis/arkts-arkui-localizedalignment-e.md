@@ -12,13 +12,13 @@ Enumerated type that supports the align and [layoutGravity](../arkts-components/
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP_START
+## BOTTOM
 
 ```TypeScript
-TOP_START = "top_start"
+BOTTOM = "bottom"
 ```
 
-Top start.
+Horizontally centered on the bottom.
 
 **Since:** 20
 
@@ -28,17 +28,17 @@ Top start.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
-<!--Device-LocalizedAlignment-TOP_START = "top_start"--><!--Device-LocalizedAlignment-TOP_START = "top_start"-End-->
+<!--Device-LocalizedAlignment-BOTTOM = "bottom"--><!--Device-LocalizedAlignment-BOTTOM = "bottom"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP
+## BOTTOM_END
 
 ```TypeScript
-TOP = "top"
+BOTTOM_END = "bottom_end"
 ```
 
-Horizontally centered on the top.
+Bottom end.
 
 **Since:** 20
 
@@ -48,17 +48,17 @@ Horizontally centered on the top.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
-<!--Device-LocalizedAlignment-TOP = "top"--><!--Device-LocalizedAlignment-TOP = "top"-End-->
+<!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"--><!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## TOP_END
+## BOTTOM_START
 
 ```TypeScript
-TOP_END = "top_end"
+BOTTOM_START = "bottom_start"
 ```
 
-Top end.
+Bottom start.
 
 **Since:** 20
 
@@ -68,27 +68,7 @@ Top end.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
-<!--Device-LocalizedAlignment-TOP_END = "top_end"--><!--Device-LocalizedAlignment-TOP_END = "top_end"-End-->
-
-**System capability:** SystemCapability.ArkUI.ArkUI.Full
-
-## START
-
-```TypeScript
-START = "start"
-```
-
-Vertically centered start.
-
-**Since:** 20
-
-**Model restriction:** This API can be used only in the stage model.
-
-**Atomic service API:** This API can be used in atomic services since API version 20.
-
-**Widget capability:** This API can be used in ArkTS widgets since API version 20.
-
-<!--Device-LocalizedAlignment-START = "start"--><!--Device-LocalizedAlignment-START = "start"-End-->
+<!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"--><!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
@@ -132,13 +112,13 @@ Vertically centered end.
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BOTTOM_START
+## START
 
 ```TypeScript
-BOTTOM_START = "bottom_start"
+START = "start"
 ```
 
-Bottom start.
+Vertically centered start.
 
 **Since:** 20
 
@@ -148,17 +128,17 @@ Bottom start.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
-<!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"--><!--Device-LocalizedAlignment-BOTTOM_START = "bottom_start"-End-->
+<!--Device-LocalizedAlignment-START = "start"--><!--Device-LocalizedAlignment-START = "start"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BOTTOM
+## TOP
 
 ```TypeScript
-BOTTOM = "bottom"
+TOP = "top"
 ```
 
-Horizontally centered on the bottom.
+Horizontally centered on the top.
 
 **Since:** 20
 
@@ -168,17 +148,17 @@ Horizontally centered on the bottom.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
-<!--Device-LocalizedAlignment-BOTTOM = "bottom"--><!--Device-LocalizedAlignment-BOTTOM = "bottom"-End-->
+<!--Device-LocalizedAlignment-TOP = "top"--><!--Device-LocalizedAlignment-TOP = "top"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full
 
-## BOTTOM_END
+## TOP_END
 
 ```TypeScript
-BOTTOM_END = "bottom_end"
+TOP_END = "top_end"
 ```
 
-Bottom end.
+Top end.
 
 **Since:** 20
 
@@ -188,6 +168,26 @@ Bottom end.
 
 **Widget capability:** This API can be used in ArkTS widgets since API version 20.
 
-<!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"--><!--Device-LocalizedAlignment-BOTTOM_END = "bottom_end"-End-->
+<!--Device-LocalizedAlignment-TOP_END = "top_end"--><!--Device-LocalizedAlignment-TOP_END = "top_end"-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+## TOP_START
+
+```TypeScript
+TOP_START = "top_start"
+```
+
+Top start.
+
+**Since:** 20
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 20.
+
+**Widget capability:** This API can be used in ArkTS widgets since API version 20.
+
+<!--Device-LocalizedAlignment-TOP_START = "top_start"--><!--Device-LocalizedAlignment-TOP_START = "top_start"-End-->
 
 **System capability:** SystemCapability.ArkUI.ArkUI.Full

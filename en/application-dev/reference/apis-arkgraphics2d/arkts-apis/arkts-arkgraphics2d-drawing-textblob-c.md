@@ -297,6 +297,12 @@ Creates a sequence of TextBlob objects from a string with font fallback support.
 | --- | --- |
 | Array&lt;[TextBlob](arkts-arkgraphics2d-drawing-textblob-c.md)&gt; | An array of TextBlob objects. |
 
+**Error codes:**
+
+| Error Code ID | Error Message |
+| --- | --- |
+| [25900001](../errorcode-drawing.md#25900001-abnormal-parameter-value) | Parameter error. Possible causes: Incorrect parameter range. |
+
 ## uniqueID
 
 ```TypeScript

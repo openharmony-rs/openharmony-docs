@@ -389,7 +389,7 @@ services?: Array<ServiceProfileInfo>
 setupType: number
 ```
 
-设备类型。
+设置类型。取值限定为整数。
 
 **类型：** number
 

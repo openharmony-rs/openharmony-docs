@@ -18,7 +18,7 @@ function createPlainTextData(text: string): PasteData
 
 **废弃版本：** 9
 
-**替代接口：** [createData](arkts-basicservices-pasteboard-createdata-f.md)(mimeType: string, value: ValueType)
+**替代接口：** [createData](arkts-basicservices-pasteboard-createdata-f.md#createdata1)(mimeType: string, value: ValueType)
 
 <!--Device-pasteboard-function createPlainTextData(text: string): PasteData--><!--Device-pasteboard-function createPlainTextData(text: string): PasteData-End-->
 

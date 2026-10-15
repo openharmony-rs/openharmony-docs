@@ -6,6 +6,8 @@ export type Parameter = _Parameter
 
 Provides parameter values for specific settings when an accessibility node element performs a specific action. For details, see [Parameter](arkts-accessibility-accessibilityextensioncontext-parameter-c-sys.md).
 
+**Type:** _Parameter
+
 **Since:** 20
 
 <!--Device-unnamed-export type Parameter = _Parameter--><!--Device-unnamed-export type Parameter = _Parameter-End-->
@@ -13,5 +15,3 @@ Provides parameter values for specific settings when an accessibility node eleme
 **System capability:** SystemCapability.BarrierFree.Accessibility.Core
 
 **System API:** This is a system API.
-
-**Type:** _Parameter

@@ -6,6 +6,8 @@
 import { sms } from '@kit.TelephonyKit';
 ```
 
+<a id="decodemms1"></a>
+
 ## decodeMms
 
 ```TypeScript
@@ -40,6 +42,7 @@ function decodeMms(mmsFilePathName: string | Array<number>, callback: AsyncCallb
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -57,8 +60,10 @@ sms.decodeMms(mmsPdu, (err: BusinessError, data: sms.MmsInformation) => {
 });
 ```
 
+<!--DelEnd-->
 
-<a id="decodemms-1"></a>
+
+<a id="decodemms2"></a>
 
 ## decodeMms
 
@@ -99,6 +104,7 @@ function decodeMms(mmsFilePathName: string | Array<number>): Promise<MmsInformat
 | [8300003](../errorcode-telephony.md#8300003-系统内部错误) | System internal error. |
 | [8300999](../errorcode-telephony.md#8300999-内部错误) | Unknown error code. |
 
+<!--Del-->
 **示例**
 
 ```TypeScript
@@ -121,3 +127,5 @@ promiseArr.then((data: sms.MmsInformation) => {
     console.error(`decodeMms failed, promise: err->${JSON.stringify(err)}`);
 });
 ```
+
+<!--DelEnd-->

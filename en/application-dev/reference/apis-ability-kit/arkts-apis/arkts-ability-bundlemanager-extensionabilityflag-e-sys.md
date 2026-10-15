@@ -30,22 +30,6 @@ Used to obtain the default ExtensionAbility information. The obtained informatio
 
 **System API:** This is a system API.
 
-## GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
-
-```TypeScript
-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001
-```
-
-Used to obtain the ExtensionAbility information with permission information.
-
-**Since:** 9
-
-<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001-End-->
-
-**System capability:** SystemCapability.BundleManager.BundleFramework.Core
-
-**System API:** This is a system API.
-
 ## GET_EXTENSION_ABILITY_INFO_WITH_APPLICATION
 
 ```TypeScript
@@ -73,6 +57,22 @@ Used to obtain the ExtensionAbility information with metadata.
 **Since:** 9
 
 <!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_METADATA = 0x00000004-End-->
+
+**System capability:** SystemCapability.BundleManager.BundleFramework.Core
+
+**System API:** This is a system API.
+
+## GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION
+
+```TypeScript
+GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001
+```
+
+Used to obtain the ExtensionAbility information with permission information.
+
+**Since:** 9
+
+<!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001--><!--Device-ExtensionAbilityFlag-GET_EXTENSION_ABILITY_INFO_WITH_PERMISSION = 0x00000001-End-->
 
 **System capability:** SystemCapability.BundleManager.BundleFramework.Core
 

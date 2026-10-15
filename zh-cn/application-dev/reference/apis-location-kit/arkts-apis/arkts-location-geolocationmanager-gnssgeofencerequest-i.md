@@ -108,7 +108,7 @@ notifications?: Array<NotificationRequest>
 
 monitorTransitionEvents与notifications中的顺序要一一对应，例如monitorTransitionEvents[0]为[GeofenceTransitionEvent](arkts-location-geolocationmanager-geofencetransitionevent-e.md).GEOFENCE_TRANSITION_EVENT_ENTER，那notifications[0]中就需要填入用户进入围栏时需要弹出的通知对象。默认值为空数组。
 
-**类型：** Array&lt;[NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-notificationrequest-i.md)&gt;
+**类型：** Array&lt;[NotificationRequest](../../apis-notification-kit/arkts-apis/arkts-notification-notificationrequest-i.md)&gt;
 
 **起始版本：** 12
 

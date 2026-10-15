@@ -76,22 +76,6 @@ DOCUMENT_FORMAT_POSTSCRIPT = 3
 
 **系统能力：** SystemCapability.Print.PrintFramework
 
-## DOCUMENT_FORMAT_TEXT
-
-```TypeScript
-DOCUMENT_FORMAT_TEXT = 4
-```
-
-表示文本格式。
-
-**起始版本：** 23
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4-End-->
-
-**系统能力：** SystemCapability.Print.PrintFramework
-
 ## DOCUMENT_FORMAT_RAW
 
 ```TypeScript
@@ -105,5 +89,21 @@ DOCUMENT_FORMAT_RAW = 5
 **模型约束：** 此接口仅可在Stage模型下使用。
 
 <!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_RAW = 5--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_RAW = 5-End-->
+
+**系统能力：** SystemCapability.Print.PrintFramework
+
+## DOCUMENT_FORMAT_TEXT
+
+```TypeScript
+DOCUMENT_FORMAT_TEXT = 4
+```
+
+表示文本格式。
+
+**起始版本：** 23
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+<!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4--><!--Device-PrintDocumentFormat-DOCUMENT_FORMAT_TEXT = 4-End-->
 
 **系统能力：** SystemCapability.Print.PrintFramework

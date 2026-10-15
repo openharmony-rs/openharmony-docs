@@ -14,22 +14,6 @@ export enum LocatingRequiredDataType
 
 **系统接口：** 此接口为系统接口。
 
-## WIFI
-
-```TypeScript
-WIFI = 1
-```
-
-表示WiFi扫描信息。
-
-**起始版本：** 10
-
-<!--Device-LocatingRequiredDataType-WIFI = 1--><!--Device-LocatingRequiredDataType-WIFI = 1-End-->
-
-**系统能力：** SystemCapability.Location.Location.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## BLUETOOTH
 
 ```TypeScript
@@ -57,6 +41,22 @@ CELLULAR = 3
 **起始版本：** 23
 
 <!--Device-LocatingRequiredDataType-CELLULAR = 3--><!--Device-LocatingRequiredDataType-CELLULAR = 3-End-->
+
+**系统能力：** SystemCapability.Location.Location.Core
+
+**系统接口：** 此接口为系统接口。
+
+## WIFI
+
+```TypeScript
+WIFI = 1
+```
+
+表示WiFi扫描信息。
+
+**起始版本：** 10
+
+<!--Device-LocatingRequiredDataType-WIFI = 1--><!--Device-LocatingRequiredDataType-WIFI = 1-End-->
 
 **系统能力：** SystemCapability.Location.Location.Core
 

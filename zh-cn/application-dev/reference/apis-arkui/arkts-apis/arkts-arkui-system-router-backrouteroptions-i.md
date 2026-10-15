@@ -10,7 +10,7 @@ export interface BackRouterOptions
 
 **废弃版本：** 8
 
-**替代接口：** RouterOptions
+**替代接口：** [RouterOptions](arkts-arkui-router-routeroptions-i.md)
 
 <!--Device-unnamed-export interface BackRouterOptions--><!--Device-unnamed-export interface BackRouterOptions-End-->
 
@@ -36,7 +36,7 @@ params?: Object
 
 **废弃版本：** 8
 
-**替代接口：** params
+**替代接口：** [params](arkts-arkui-router-routeroptions-i.md#params)
 
 <!--Device-BackRouterOptions-params?: Object--><!--Device-BackRouterOptions-params?: Object-End-->
 
@@ -56,7 +56,7 @@ uri?: string
 
 **废弃版本：** 8
 
-**替代接口：** url
+**替代接口：** [url](arkts-arkui-router-routeroptions-i.md#url)
 
 <!--Device-BackRouterOptions-uri?: string--><!--Device-BackRouterOptions-uri?: string-End-->
 

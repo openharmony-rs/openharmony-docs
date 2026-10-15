@@ -6,6 +6,8 @@ export type NotificationCheckRequest = _NotificationCheckRequest
 
 Describes the notification authentication information.
 
+**Type:** _NotificationCheckRequest
+
 **Since:** 11
 
 <!--Device-notificationManager-export type NotificationCheckRequest = _NotificationCheckRequest--><!--Device-notificationManager-export type NotificationCheckRequest = _NotificationCheckRequest-End-->
@@ -13,5 +15,3 @@ Describes the notification authentication information.
 **System capability:** SystemCapability.Notification.Notification
 
 **System API:** This is a system API.
-
-**Type:** _NotificationCheckRequest

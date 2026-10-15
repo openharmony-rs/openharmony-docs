@@ -14,22 +14,6 @@ enum CloudEnhancementState
 
 **系统接口：** 此接口为系统接口。
 
-## UNAVAILABLE
-
-```TypeScript
-UNAVAILABLE = 0
-```
-
-云增强不可用。
-
-**起始版本：** 13
-
-<!--Device-CloudEnhancementState-UNAVAILABLE = 0--><!--Device-CloudEnhancementState-UNAVAILABLE = 0-End-->
-
-**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
-
-**系统接口：** 此接口为系统接口。
-
 ## AVAILABLE
 
 ```TypeScript
@@ -41,6 +25,22 @@ AVAILABLE = 1
 **起始版本：** 13
 
 <!--Device-CloudEnhancementState-AVAILABLE = 1--><!--Device-CloudEnhancementState-AVAILABLE = 1-End-->
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
+**系统接口：** 此接口为系统接口。
+
+## COMPLETED
+
+```TypeScript
+COMPLETED = 3
+```
+
+云增强已完成。
+
+**起始版本：** 13
+
+<!--Device-CloudEnhancementState-COMPLETED = 3--><!--Device-CloudEnhancementState-COMPLETED = 3-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -62,17 +62,17 @@ EXECUTING = 2
 
 **系统接口：** 此接口为系统接口。
 
-## COMPLETED
+## UNAVAILABLE
 
 ```TypeScript
-COMPLETED = 3
+UNAVAILABLE = 0
 ```
 
-云增强已完成。
+云增强不可用。
 
 **起始版本：** 13
 
-<!--Device-CloudEnhancementState-COMPLETED = 3--><!--Device-CloudEnhancementState-COMPLETED = 3-End-->
+<!--Device-CloudEnhancementState-UNAVAILABLE = 0--><!--Device-CloudEnhancementState-UNAVAILABLE = 0-End-->
 
 **系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 

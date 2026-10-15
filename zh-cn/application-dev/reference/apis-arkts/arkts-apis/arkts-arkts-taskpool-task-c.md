@@ -81,6 +81,8 @@ taskpool.execute(task3).then(() => {
 })
 ```
 
+<a id="constructor1"></a>
+
 ## constructor
 
 ```TypeScript
@@ -101,8 +103,8 @@ Task的构造函数。
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
-| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
+| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行函数的入参，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -122,7 +124,7 @@ function printArgs(args: string): string {
 let task: taskpool.Task = new taskpool.Task(printArgs, "this is my first Task");
 ```
 
-<a id="constructor-1"></a>
+<a id="constructor2"></a>
 
 ## constructor
 
@@ -145,8 +147,8 @@ Task的构造函数用于创建任务，并可指定任务名称。
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | name | string | 是 | 任务名称。 |
-| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考序列化支持类型。 |
-| args | Object[] | 是 | 任务执行函数的入参。支持的类型请参考序列化支持类型。默认值为**undefined**。 |
+| func | Function | 是 | 待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰。支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。 |
+| args | Object[] | 是 | 任务执行函数的入参。支持的类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -385,7 +387,6 @@ onExecutionFailed(callback: CallbackFunctionWithError): void
 ```TypeScript
 import { taskpool } from '@kit.ArkTS';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { HashMap } from '@kit.ArkTS';
 
 @Concurrent
 function hashMapFunc(args: number) {
@@ -661,7 +662,7 @@ static sendData(...args: Object[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| args | Object[] | 是 | 作为已注册回调函数入参的数据，支持的参数类型请参考序列化支持类型。默认值为**undefined**。 |
+| args | Object[] | 是 | 作为已注册回调函数入参的数据，可传输对象默认转移；支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为**undefined**。 |
 
 **错误码：**
 
@@ -756,7 +757,7 @@ setCloneList(cloneList: Object[] | ArrayBuffer[]): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| cloneList | Object[] &#124; ArrayBuffer[] | 是 | 传入数组的类型必须为[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)或ArrayBuffer。<br>- 所有传入**cloneList**的[Sendable class](../../../arkts-utils/arkts-sendable.md#sendable-class)实例或ArrayBuffer类型对象，在线程间传输的行为都会变成拷贝传递，即修改传输后的对象不会对原有对象产生任何影响。 |
+| cloneList | Object[] &#124; ArrayBuffer[] | 是 | 传入数组的类型必须为[Sendable支持的数据类型](../../../arkts-utils/arkts-sendable.md#sendable支持的数据类型)或ArrayBuffer。<br>- 所有传入**cloneList**的对象所持有的[Sendable class](../../../arkts-utils/arkts-sendable.md#sendable-class)实例或ArrayBuffer类型对象，在线程间传输的行为都会变成拷贝传递，即修改传输后的对象不会对原有对象产生任何影响。 |
 
 **错误码：**
 
@@ -969,7 +970,7 @@ console.info("testTransfer view3 byteLength: " + view1.byteLength);
 arguments?: Object[]
 ```
 
-创建任务传入函数所需的参数，支持的参数类型请参考序列化支持类型。默认值为undefined。<br>从API version 11开始，该接口支持在原子化服务中使用。
+创建任务传入函数所需的参数，支持的参数类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。默认值为undefined。<br>从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** Object[]
 
@@ -1007,7 +1008,7 @@ cpuDuration: number
 function: Function
 ```
 
-待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考序列化支持类型。<br>从API version 11开始，该接口支持在原子化服务中使用。
+待执行的函数，必须使用[@Concurrent装饰器](../../../arkts-utils/taskpool-introduction.md#concurrent装饰器)装饰，支持的函数返回值类型请参考[序列化支持类型](../../../reference/apis-arkts/js-apis-taskpool.md#序列化支持类型)。<br>从API version 11开始，该接口支持在原子化服务中使用。
 
 **类型：** Function
 

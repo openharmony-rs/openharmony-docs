@@ -80,8 +80,6 @@ Default value: empty string.
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [ResourceStr](arkts-arkui-resourcestr-t.md)
 
 **Since:** 26.0.0
@@ -118,8 +116,6 @@ Default value: **"auto"**
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** string
 
 **Since:** 26.0.0
@@ -145,8 +141,6 @@ Selected state type of the **ChipV2** component.
 Default value: When the **activated** attribute is **true** but **accessibilitySelectedType** is not specified, the **CHECKED** type is used by default. When the **activated** attribute is **false** or not set, the **CLICKED** type is used by default.
 
 If the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** [ChipV2AccessibilitySelectedType](arkts-arkui-arkui-advanced-chipv2-chipv2accessibilityselectedtype-e.md)
 
@@ -176,8 +170,6 @@ Default value: **false**
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** boolean
 
 **Since:** 26.0.0
@@ -206,8 +198,6 @@ If the value is **undefined**, the default value is used.
 
 If the value is invalid, the background color is transparent.
 
-**Decorator:** @Trace
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -228,11 +218,9 @@ If the value is invalid, the background color is transparent.
 public activatedBackgroundSystemMaterial?: uiMaterial.Material
 ```
 
-System material style of the activated component. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
+System material style of the activated component. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
 
 Default value: **undefined**, meaning no material style is applied.
-
-**Decorator:** @Trace
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -264,8 +252,6 @@ Default value: **true**
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** boolean
 
 **Since:** 26.0.0
@@ -294,8 +280,6 @@ If the value is **undefined**, the default value is used.
 
 If the value is invalid, the background color is transparent.
 
-**Decorator:** @Trace
-
 **Type:** [ColorMetrics](arkts-arkui-graphics-colormetrics-c.md)
 
 **Since:** 26.0.0
@@ -316,11 +300,9 @@ If the value is invalid, the background color is transparent.
 public backgroundSystemMaterial?: uiMaterial.Material
 ```
 
-System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
+System material style of the component. Different materials have different effects, which can affect the component's [backgroundColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#backgroundcolor1), [borderColor](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#bordercolor), [borderWidth](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#borderwidth), [shadow](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#shadow1) effect, and [materialFilter](../arkts-components/arkts-arkui-common-comp-commonmethod-c.md#materialfilter) effect.
 
 Default value: **undefined**, meaning no material style is applied.
-
-**Decorator:** @Trace
 
 **Type:** [uiMaterial.Material](arkts-arkui-uimaterial-material-c.md)
 
@@ -354,8 +336,6 @@ Unit: vp
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
 **Since:** 26.0.0
@@ -388,8 +368,6 @@ In other cases, the default value is `$r('sys.float.chip_normal_font_size')`.
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [ChipV2CloseIcon](arkts-arkui-arkui-advanced-chipv2-chipv2closeicon-c.md)
 
 **Since:** 26.0.0
@@ -415,8 +393,6 @@ Layout direction.
 Default value: **Direction.Auto**
 
 If the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** [Direction](arkts-arkui-direction-e.md)
 
@@ -445,8 +421,6 @@ Default value: **true**
 **true**: **ChipV2** is available. **false**: **ChipV2** is unavailable.
 
 If the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** boolean
 
@@ -483,8 +457,6 @@ Unit: fp
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)
 
 **Since:** 26.0.0
@@ -506,8 +478,6 @@ public label: ChipV2Label
 ```
 
 Text of **ChipV2**.
-
-**Decorator:** @Trace
 
 **Type:** [ChipV2Label](arkts-arkui-arkui-advanced-chipv2-chipv2label-c.md)
 
@@ -539,8 +509,6 @@ Default value: **1**
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** number &#124; [Resource](arkts-arkui-resource-t.md)
 
 **Since:** 26.0.0
@@ -570,8 +538,6 @@ If the set value is less than 0, the value **0** is used. If the set value is gr
 Default value: **1**
 
 If the value is **undefined**, the default value is used.
-
-**Decorator:** @Trace
 
 **Type:** number &#124; [Resource](arkts-arkui-resource-t.md)
 
@@ -634,8 +600,6 @@ Default values:
 
 If the value is **undefined**, the default value is used.
 
-**Decorator:** @Trace
-
 **Type:** [LocalizedPadding](arkts-arkui-localizedpadding-i.md)
 
 **Since:** 26.0.0
@@ -666,8 +630,6 @@ For the symbol icon, the default **fontColor** values are as follows: **normalFo
 
 For the image icon, the default **fillColor** is `$r('sys.color.chip_usually_icon_color')`, and the default **activatedFillColor** is `$r('sys.color.chip_active_icon_color')`. The color parsing of **fillColor** and **activatedFillColor** is consistent with that of the **Image** component. The **fillColor** and **activatedFillColor** attributes take effect only when the image format is SVG; for non-SVG images, the default values are not applied.
 
-**Decorator:** @Trace
-
 **Type:** [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 
 **Since:** 26.0.0
@@ -692,13 +654,11 @@ Size of **ChipV2**.
 
 Default value: **ChipV2Size.NORMAL**
 
-The **SizeT&lt;LengthMetrics&gt;** type does not support percentage setting. If an invalid value is passed, the default value will be used.
+The **SizeT<LengthMetrics>** type does not support percentage setting. If an invalid value is passed, the default value will be used.
 
 **NOTE:** 
 
 [Aging-friendly design](../../../ui/arkui-support-for-aging-adaptation.md) does not take effect when **size** specifies a specific width and height, except when **size** is set to **{ height: 0, width: 0 }**.
-
-**Decorator:** @Trace
 
 **Type:** [ChipV2Size](arkts-arkui-arkui-advanced-chipv2-chipv2size-e.md) &#124; [SizeT](arkts-arkui-graphics-sizet-i.md)&lt;[LengthMetrics](arkts-arkui-graphics-lengthmetrics-c.md)&gt;
 
@@ -731,8 +691,6 @@ Note: When a value is passed in **suffixIcon**, the **allowClose** attribute doe
 For the symbol icon, the default **fontColor** values are as follows: **normalFontColor**: `[$r('sys.color.chip_usually_icon_color')]`, **activatedFontColor**: `[$r('sys.color.chip_active_icon_color')]`. The default **fontSize** is 16.
 
 For the image icon, the default **fillColor** is `$r('sys.color.chip_usually_icon_color')`, and the default **activatedFillColor** is `$r('sys.color.chip_active_icon_color')`. The color parsing of **fillColor** and **activatedFillColor** is consistent with that of the **Image** component. The **fillColor** and **activatedFillColor** attributes take effect only when the image format is SVG.
-
-**Decorator:** @Trace
 
 **Type:** [ChipV2Icon](arkts-arkui-arkui-advanced-chipv2-chipv2icon-c.md)
 

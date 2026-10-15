@@ -4,7 +4,7 @@
 class ConvertXML
 ```
 
-ConvertXML类提供将XML文本转换为JavaScript对象的能力。推荐使用[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](#fastconverttojsobject)进行常规XML文本解析，当单元素文本内容超过10M时推荐使用[largeConvertToJSObject&lt;sup&gt;23+&lt;/sup&gt;](#largeconverttojsobject)。已废弃的[convertToJSObject](#converttojsobject)和[convert](#convert)方法不再维护，建议使用[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](#fastconverttojsobject)替代。
+ConvertXML类提供将XML文本转换为JavaScript对象的能力。推荐使用[fastConvertToJSObject<sup>14+</sup>](#fastconverttojsobject)进行常规XML文本解析，当单元素文本内容超过10M时推荐使用[largeConvertToJSObject<sup>23+</sup>](#largeconverttojsobject)。已废弃的[convertToJSObject](#converttojsobject)和[convert](#convert)方法不再维护，建议使用[fastConvertToJSObject<sup>14+</sup>](#fastconverttojsobject)替代。
 
 **起始版本：** 8
 
@@ -24,12 +24,12 @@ import { convertxml } from '@kit.ArkTS';
 fastConvertToJSObject(xml: string, options?: ConvertOptions): Object
 ```
 
-将XML文本转换为Object类型对象，适用于XML配置文件解析、数据报文处理等场景。该方法将XML文本解析为层级嵌套结构，各XML组件按ConvertOptions中配置的键名映射为对象的属性。当单元素文本内容超过10M时，建议使用[largeConvertToJSObject&lt;sup&gt;23+&lt;/sup&gt;](#largeconverttojsobject)替代。
+将XML文本转换为Object类型对象，适用于XML配置文件解析、数据报文处理等场景。该方法将XML文本解析为层级嵌套结构，各XML组件按ConvertOptions中配置的键名映射为对象的属性。当单元素文本内容超过10M时，建议使用[largeConvertToJSObject<sup>23+</sup>](#largeconverttojsobject)替代。
 
 > **说明：** 
 > 
 > 该接口无法满足解析单元素文本内容超过10M的XML文件，当单元素文本内容超过10M时，会输出异常日志信息并返回一个仅包含XML声明的基础Object对象。
-> 如需解析单元素文本内容超过10M的XML文本，建议使用[largeConvertToJSObject&lt;sup&gt;23+&lt;/sup&gt;](#largeconverttojsobject)
+> 如需解析单元素文本内容超过10M的XML文本，建议使用[largeConvertToJSObject<sup>23+</sup>](#largeconverttojsobject)
 > 替代。
 > 
 > 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。fastConvertToJSObject接口转换后的对象以换行符（LF）表示换行。
@@ -46,7 +46,7 @@ fastConvertToJSObject(xml: string, options?: ConvertOptions): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xml | string | 是 | XML文本，需符合XML语法规范，若包含" & "字符，请使用实体引用"&amp;"替换。单元素文本内容超过10M时，输出异常日志并返回仅包含XML声明的基础Object，建议使用largeConvertToJSObject替代。 |
+| xml | string | 是 | XML文本，需符合XML语法规范，若包含"&"字符，请使用实体引用"`&amp;`"替换。单元素文本内容超过10M时，输出异常日志并返回仅包含XML声明的基础Object，建议使用largeConvertToJSObject替代。 |
 | options | [ConvertOptions](arkts-arkts-xml-convertoptions-i.md) | 否 | 转换选项，用于自定义XML转换行为。不传入时使用ConvertOptions各属性的默认值。 |
 
 **返回值：**
@@ -107,7 +107,7 @@ try {
 largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
 ```
 
-将XML文本转换为Object类型对象，适用于XML日志文件、数据报文等大型XML解析场景。此方法支持解析单元素大小超过10M的大型XML文本，针对大文本场景进行了优化，可有效避免单元素文本过大导致的解析异常。当[fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](#fastconverttojsobject)因单元素文本内容超过10M无法正常解析时，可使用本方法作为替代方案。
+将XML文本转换为Object类型对象，适用于XML日志文件、数据报文等大型XML解析场景。此方法支持解析单元素大小超过10M的大型XML文本，针对大文本场景进行了优化，可有效避免单元素文本过大导致的解析异常。当[fastConvertToJSObject<sup>14+</sup>](#fastconverttojsobject)因单元素文本内容超过10M无法正常解析时，可使用本方法作为替代方案。
 
 > **说明：** 
 > 
@@ -129,7 +129,7 @@ largeConvertToJSObject(xml: string, options?: ConvertOptions): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xml | string | 是 | XML文本，需符合XML语法规范，若包含" & "字符，请使用实体引用"&amp;"替换。 |
+| xml | string | 是 | XML文本，需符合XML语法规范，若包含"&"字符，请使用实体引用"`&amp;`"替换。 |
 | options | [ConvertOptions](arkts-arkts-xml-convertoptions-i.md) | 否 | 转换选项，用于自定义XML转换行为。不传入时使用ConvertOptions各属性的默认值。 |
 
 **返回值：**
@@ -203,7 +203,7 @@ convert(xml: string, options?: ConvertOptions): Object
 > **说明：** 
 > 
 > 从API version 8开始支持，从API version 9开始废弃，建议使用
-> [fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](#fastconverttojsobject)替代。
+> [fastConvertToJSObject<sup>14+</sup>](#fastconverttojsobject)替代。
 > 
 > 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。本接口转换后的对象以换行符（LF）表示换行。
 
@@ -221,7 +221,7 @@ convert(xml: string, options?: ConvertOptions): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xml | string | 是 | XML文本，需符合XML语法规范，若包含" & "字符，请使用实体引用"&amp;"替换。 |
+| xml | string | 是 | XML文本，需符合XML语法规范，若包含"&"字符，请使用实体引用"`&amp;`"替换。 |
 | options | [ConvertOptions](arkts-arkts-xml-convertoptions-i.md) | 否 | 转换选项，用于自定义XML转换行为。不传入时使用ConvertOptions各属性的默认值。 |
 
 **返回值：**
@@ -275,7 +275,7 @@ convertToJSObject(xml: string, options?: ConvertOptions): Object
 > **说明：** 
 > 
 > 从API version 9开始支持，从API version 14开始废弃，建议使用
-> [fastConvertToJSObject&lt;sup&gt;14+&lt;/sup&gt;](#fastconverttojsobject)替代。
+> [fastConvertToJSObject<sup>14+</sup>](#fastconverttojsobject)替代。
 > 
 > 在Windows环境中，通常以回车符（CR）和换行符（LF）一对字符来表示换行。本接口转换后的对象以换行符（LF）表示换行。
 
@@ -295,7 +295,7 @@ convertToJSObject(xml: string, options?: ConvertOptions): Object
 
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
-| xml | string | 是 | XML文本，需符合XML语法规范，若包含" & "字符，请使用实体引用"&amp;"替换。 |
+| xml | string | 是 | XML文本，需符合XML语法规范，若包含"&"字符，请使用实体引用"`&amp;`"替换。 |
 | options | [ConvertOptions](arkts-arkts-xml-convertoptions-i.md) | 否 | 转换选项，用于自定义XML转换行为。不传入时使用ConvertOptions各属性的默认值。 |
 
 **返回值：**

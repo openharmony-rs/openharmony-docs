@@ -12,17 +12,17 @@ ArkWeb内核版本，请参考[M114内核在OpenHarmony 6.0系统上的适配指
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## SYSTEM_DEFAULT
+## ARKWEB_EVERGREEN
 
 ```TypeScript
-SYSTEM_DEFAULT = 0
+ARKWEB_EVERGREEN = 99999
 ```
 
-系统默认内核（可参考[约束与限制](../../../web/web-component-overview.md#约束与限制)），OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M 144。
+系统的最新内核（常青内核）。开发者可选择在每个系统版本上都使用最新的内核。
 
-**起始版本：** 20
+**起始版本：** 23
 
-<!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0--><!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0-End-->
+<!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999--><!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -70,16 +70,16 @@ OpenHarmony 7.0版本的常青内核，M144为OpenHarmony 7.0版本的默认内�
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## ARKWEB_EVERGREEN
+## SYSTEM_DEFAULT
 
 ```TypeScript
-ARKWEB_EVERGREEN = 99999
+SYSTEM_DEFAULT = 0
 ```
 
-系统的最新内核（常青内核）。开发者可选择在每个系统版本上都使用最新的内核。
+系统默认内核（可参考[约束与限制](../../../web/web-component-overview.md#约束与限制)），OpenHarmony 6.0版本默认为M132，OpenHarmony 7.0版本默认为M 144。
 
-**起始版本：** 23
+**起始版本：** 20
 
-<!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999--><!--Device-ArkWebEngineVersion-ARKWEB_EVERGREEN = 99999-End-->
+<!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0--><!--Device-ArkWebEngineVersion-SYSTEM_DEFAULT = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core

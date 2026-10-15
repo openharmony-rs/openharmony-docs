@@ -48,6 +48,7 @@ Called back when a window extension is first connected to an ability.
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Indicates connection information about the Window ability. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -60,6 +61,8 @@ export default class MyWindowExtensionAbility extends WindowExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onDisconnect
 
@@ -87,6 +90,7 @@ Called back when all abilities connected to a window extension are disconnected.
 | --- | --- | --- | --- |
 | want | [Want](../../apis-ability-kit/arkts-apis/arkts-ability-app-ability-want-want-c.md) | Yes | Indicates disconnection information about the window extension. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -99,6 +103,8 @@ export default class MyWindowExtensionAbility extends WindowExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## onWindowReady
 
@@ -126,6 +132,7 @@ Called back when window is created.
 | --- | --- | --- | --- |
 | window | [window.Window](arkts-arkui-window-window-i.md) | Yes | Current Window instance. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -142,6 +149,8 @@ export default class MyWindowExtensionAbility extends WindowExtensionAbility {
   }
 }
 ```
+
+<!--DelEnd-->
 
 ## context
 

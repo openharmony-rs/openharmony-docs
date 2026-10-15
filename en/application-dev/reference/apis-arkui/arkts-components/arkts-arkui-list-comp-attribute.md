@@ -4,11 +4,11 @@
 declare class ListAttribute extends ScrollableCommonMethod<ListAttribute>
 ```
 
-In addition to [universal attributes](arkts-arkui-common-comp.md) and [scrollable component common attributes](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
+In addition to [universal attributes](arkts-arkui-common-comp.md) and [scrollable component common attributes](../../../reference/apis-arkui-ts/ts-container-scrollable-common.md#attributes), the following attributes are also supported.
 
 In addition to [universal events](arkts-arkui-common-comp.md) and [scrollable component common events](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#events), the following events are also supported.
 
-**Inheritance/Implementation:** ListAttribute extends ScrollableCommonMethod<ListAttribute>
+**Inheritance/Implementation:** ListAttribute extends ScrollableCommonMethod&lt;ListAttribute&gt;
 
 **Since:** 7
 
@@ -66,6 +66,8 @@ Sets the system back button behavior of the **List** component.
 | --- | --- | --- | --- |
 | behavior | [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) &#124; undefined | Yes | System back button behavior of the **List** component. Currently, you can use the [ListBackPressBehavior](arkts-arkui-list-comp-listbackpressbehavior-i.md) parameter to configure whether to collapse the expanded swipe-out component of a **ListItem** when the system back button takes effect. <br>If this parameter is set to **undefined**, the default behavior is restored. That is, when the system back button takes effect, the expanded swipe-out component of the **ListItem** is collapsed. |
 
+<a id="cachedcount1"></a>
+
 ## cachedCount
 
 ```TypeScript
@@ -96,7 +98,7 @@ When **LazyForEach** is nested under **List**, and **ListItemGroup** is nested u
 | --- | --- | --- | --- |
 | value | number | Yes | Number of list items or list item groups to be preloaded (cached).<br>Default value: number of nodes visible on the screen, with the maximum value of 16 <br>Value range: [0, +∞). <br>Values less than 0 are treated as **1**. |
 
-<a id="cachedcount-1"></a>
+<a id="cachedcount2"></a>
 
 ## cachedCount
 
@@ -106,7 +108,7 @@ cachedCount(count: number, show: boolean)
 
 Sets the number of rows to be preloaded for the list and specifies whether to display the preloaded nodes. In the lazy loading scenario, **cachedCount** rows are preloaded both above and below the display area of **List**. In the non-lazy loading scenario, all child components are loaded.
 
-After **cachedCount** is set for the list, **cachedCount** rows are preloaded and laid out both above and below the display area. When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
+After **cachedCount** is set for the list, **cachedCount** rows are preloaded and laid out both above and below the display area. When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
 
 > **NOTE:** 
 > 
@@ -133,7 +135,7 @@ After **cachedCount** is set for the list, **cachedCount** rows are preloaded an
 | count | number | Yes | Number of preloaded rows in the list.<br>Default value: determined by the number of nodes displayed on the screen, with a maximum of 16. <br>Value range: [0, +∞). If the value is less than 0, it is processed as 1. |
 | show | boolean | Yes | Whether the preloaded **ListItem** or **ListItemGroup** needs to be displayed. The value **true** means to display the preloaded **ListItem** or **ListItemGroup**, and **false** means not to display the preloaded **ListItem** or **ListItemGroup**.<br> Default value: **false** |
 
-<a id="cachedcount-2"></a>
+<a id="cachedcount3"></a>
 
 ## cachedCount
 
@@ -147,7 +149,7 @@ If the first parameter of the **cachedCount** attribute is of the **number** typ
 
 If the first parameter of the **cachedCount** attribute is of the **CacheCountInfo** type, preloading and layout occur during idle frames when the number of cached rows is less than **CacheCountInfo.minCount**. When the number of cached rows is greater than **CacheCountInfo.maxCount**, the nodes beyond the range are destroyed or recycled for reuse. When the UI is idle (no animation or user operation), **CacheCountInfo.maxCount** rows are preloaded both above and below the display area.
 
-When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
+When calculating the number of preloaded rows, the number of **ListItem** rows inside a **ListItemGroup** is counted. If a **ListItemGroup** contains no **ListItem**, the entire **ListItemGroup** is counted as one row. The preloaded nodes can be displayed together with the [clip](arkts-arkui-common-comp-commonmethod-c.md#clip1) or [clipContent](../../../reference/apis-arkui/arkui-ts/ts-container-scrollable-common.md#clipcontent14) attribute.
 
 Default behavior: The **count** parameter is of the **number** type by default, with its value set based on the number of nodes displayed on the screen, up to a maximum of 16. Preloaded **ListItem** components are not involved in drawing by default.
 
@@ -255,6 +257,8 @@ Sets the size information of the child components of a **List** component along 
 | --- | --- | --- | --- |
 | value | [ChildrenMainSize](arkts-arkui-common-comp-childrenmainsize-c.md) | Yes | Size information of child components in the main axis direction. |
 
+<a id="contentendoffset1"></a>
+
 ## contentEndOffset
 
 ```TypeScript
@@ -281,7 +285,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 | --- | --- | --- | --- |
 | value | number | Yes | Offset of the end of the content area.<br>Default value: **0**<br>Unit: vp<br>**NOTE:** <br>If this parameter is set to a negative value, the default value is used.<br>Value range: [0, +∞) |
 
-<a id="contentendoffset-1"></a>
+<a id="contentendoffset2"></a>
 
 ## contentEndOffset
 
@@ -289,7 +293,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 contentEndOffset(offset: number | Resource)
 ```
 
-Sets the offset from the end of the list content to the boundary of the list display area. Compared with [contentEndOffset&lt;sup&gt;11+&lt;/sup&gt;](#contentendoffset), the parameter name is changed to **offset** and the Resource type is supported.
+Sets the offset from the end of the list content to the boundary of the list display area. Compared with [contentEndOffset<sup>11+</sup>](#contentendoffset1), the parameter name is changed to **offset** and the Resource type is supported.
 
 If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
@@ -308,6 +312,8 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
 | offset | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Offset from the end of the content area.<br>Default value: **0**<br>When the parameter type is number, the unit is vp. <br>If an invalid value such as a negative number or a non- numeric Resource is set, the default value is used.<br>When the parameter type is number, the value range is [0, +∞) |
+
+<a id="contentstartoffset1"></a>
 
 ## contentStartOffset
 
@@ -333,9 +339,9 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 
 | Name | Type | Mandatory | Description |
 | --- | --- | --- | --- |
-| value | number | Yes | Start offset of the content area.<br>Default value: **0**<br>Unit: vp<br>**Note:** &lt;br/ &gt;If this parameter is set to a negative value, the default value is used.<br>Value range: [0, +∞) |
+| value | number | Yes | Start offset of the content area.<br>Default value: **0**<br>Unit: vp<br>**Note:** <br/ >If this parameter is set to a negative value, the default value is used.<br>Value range: [0, +∞) |
 
-<a id="contentstartoffset-1"></a>
+<a id="contentstartoffset2"></a>
 
 ## contentStartOffset
 
@@ -343,7 +349,7 @@ If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length
 contentStartOffset(offset: number | Resource)
 ```
 
-Sets the offset from the start of the list content to the boundary of the list display area. Compared with [contentStartOffset&lt;sup&gt;11+&lt;/sup&gt;](#contentstartoffset), the parameter name is changed to **offset** and the Resource type is supported.
+Sets the offset from the start of the list content to the boundary of the list display area. Compared with [contentStartOffset<sup>11+</sup>](#contentstartoffset1), the parameter name is changed to **offset** and the Resource type is supported.
 
 If the sum of **contentStartOffset** and **contentEndOffset** exceeds the length of the list content area, both offsets are reset to **0**.
 
@@ -550,6 +556,8 @@ Sets the friction coefficient. It applies only to gestures in the scrolling area
 | --- | --- | --- | --- |
 | value | number &#124; [Resource](../arkts-apis/arkts-arkui-resource-t.md) | Yes | Friction coefficient.<br>Default value: **0.6** for non-wearable devices and **0.9** for wearable devices.<br>Since API version 11, the default value is **0.7** for non-wearable devices.<br>Since API version 12, the default value is **0.75** for non-wearable devices.<br>Value range: (0, +∞) |
 
+<a id="lanes1"></a>
+
 ## lanes
 
 ```TypeScript
@@ -587,7 +595,7 @@ on the width of **ListItemGroup**. Therefore, when the width of **ListItemGroup*
 | value | number &#124; LengthConstrain | Yes | Number of columns or rows in the layout of the **List** component.<br> Default value: **1**<br>Value range: [1, +∞). If a value less than 1 is passed, the default value is used. |
 | gutter | [Dimension](../arkts-apis/arkts-arkui-dimension-t.md) | No | Column spacing or row spacing.<br>Default value: **0**<br>When the parameter type is number, the unit is vp.<br>Value range: [0, +∞).If a negative value is passed, the default value is used. <br>**NOTE:** <br>**gutter** specifies the column spacing or row spacing, which takes effect only when the number of columns or rows is greater than 1.<br> |
 
-<a id="lanes-1"></a>
+<a id="lanes2"></a>
 
 ## lanes
 
@@ -1135,6 +1143,40 @@ Sets the scrollbar state.
 | --- | --- | --- | --- |
 | value | [BarState](../arkts-apis/arkts-arkui-barstate-e.md) | Yes | Scrollbar state.<br>In API version 9 and earlier versions, the default value is **BarState.Off**. Since API version 10, the default value is **BarState.Auto**. |
 
+## scrollPlaceholder
+
+```TypeScript
+scrollPlaceholder(provider?: PlaceholderProvider)
+```
+
+Sets a scroll placeholder provider for the **List** component. When the framework predicts that creating the next item within the remaining frame budget would overrun the frame, it first displays a placeholder for that item and creates the real item across frames on the UI thread.
+
+The provider returns the placeholder description of an item: **id** refers to a template registered through [getPlaceholderRegister()](../arkts-apis/arkts-arkui-arkui-uicontext-uicontext-c.md#getplaceholderregister).register and **size** is a layout suggestion. If the provider returns **undefined**, or the returned **id** is missing or not registered, the system default placeholder is used and scrolling is not interrupted.
+
+<br>**NOTE:** <br>
+1. This attribute is opt-in: if it is not set, the **List** component keeps the current behavior,
+including the semantics of **syncLoad**.
+2. The placeholder template must be a global, parameterless  
+**@Builder({ isPlaceholder: true })** function that performs read-only static rendering.
+3. After the real item has been created, it is re-laid out under the normal layout constraints of
+ListItem and replaces the placeholder, keeping the scroll anchor.
+
+**Since:** 26.2.0
+
+**Model restriction:** This API can be used only in the stage model.
+
+**Atomic service API:** This API can be used in atomic services since API version 26.2.0.
+
+<!--Device-ListAttribute-scrollPlaceholder(provider?: PlaceholderProvider): ListAttribute--><!--Device-ListAttribute-scrollPlaceholder(provider?: PlaceholderProvider): ListAttribute-End-->
+
+**System capability:** SystemCapability.ArkUI.ArkUI.Full
+
+**Parameters:**
+
+| Name | Type | Mandatory | Description |
+| --- | --- | --- | --- |
+| provider | [PlaceholderProvider](arkts-arkui-list-comp-placeholderprovider-t.md) | No | Placeholder provider of the item at the given index. |
+
 ## scrollSnapAlign
 
 ```TypeScript
@@ -1357,7 +1399,7 @@ Triggered when the list scrolls.
 
 **Deprecated since:** 12
 
-**Substitutes:** onDidScroll
+**Substitutes:** [onDidScroll](arkts-arkui-common-comp-scrollablecommonmethod-c.md#ondidscroll)
 
 **Model restriction:** This API can be used in both the stage model and FA model.
 

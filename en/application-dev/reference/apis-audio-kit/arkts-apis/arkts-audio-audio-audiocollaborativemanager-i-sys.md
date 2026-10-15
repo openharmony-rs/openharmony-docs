@@ -55,6 +55,7 @@ Checks whether collaborative playback is enabled for the specified device.
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -85,6 +86,8 @@ try {
 }
 ```
 
+<!--DelEnd-->
+
 ## isCollaborativePlaybackSupported
 
 ```TypeScript
@@ -113,6 +116,7 @@ Checks whether the collaborative playback is supported by system.
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -127,6 +131,8 @@ try {
   console.error(`ERROR: ${error}`);
 }
 ```
+
+<!--DelEnd-->
 
 ## isCollaborativePlaybackSupportedForDevice
 
@@ -199,8 +205,9 @@ Enables or disables collaborative playback for the specified device. Currently, 
 | --- | --- |
 | [202](../../errorcode-universal.md#202-permission-verification-failed-for-calling-a-system-api) | Not system application. |
 | [801](../../errorcode-universal.md#801-api-not-supported) | Capability not supported. |
-| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. Possible causes: 1. The specified device is not an A2DP device. 2. The specified device is not connected. |
+| [6800101](../errorcode-audio.md#6800101-invalid-parameter) | Parameter verification failed. Possible causes:         1. The specified device is not an A2DP device.         2. The specified device is not connected. |
 
+<!--Del-->
 **Examples**
 
 ```TypeScript
@@ -229,3 +236,5 @@ audioCollaborativeManager.setCollaborativePlaybackEnabledForDevice(deviceDescrip
   console.error(`Result ERROR: ${err}`);
 });
 ```
+
+<!--DelEnd-->

@@ -4,7 +4,7 @@
 
 > **说明：** 
 
-> - Menu组件需和[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu)或[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu)方法配合使用，不支持作为普通组件单独使用。
+> - Menu组件需和[bindMenu](arkts-arkui-common-comp-commonmethod-c.md#bindmenu1)或[bindContextMenu](arkts-arkui-common-comp-commonmethod-c.md#bindcontextmenu1)方法配合使用，不支持作为普通组件单独使用。
 
 ## 子组件
 
@@ -38,7 +38,7 @@ Menu()
 > 
 > - Menu支持设置的最小宽度为64vp。
 > 
-> - Menu不支持的通用属性：外描边设置下的属性、[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow)。
+> - Menu不支持的通用属性：外描边设置下的属性、[shadow](arkts-arkui-common-comp-commonmethod-c.md#shadow1)。
 
 **起始版本：** 9
 
@@ -324,7 +324,7 @@ struct Index {
 
 该示例通过设置subMenuBuilder属性为自定义菜单项添加多级菜单。
 
-从API版本26.0.0开始，新增subMenuBuilder属性。
+从API版本26.0.0开始，新增[subMenuBuilder](ts-basic-components-menuitem.md#submenubuilder)属性。
 
 ```TypeScript
 import { LengthMetrics } from '@kit.ArkUI';

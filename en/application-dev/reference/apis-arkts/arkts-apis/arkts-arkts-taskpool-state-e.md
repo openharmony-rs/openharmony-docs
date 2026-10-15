@@ -12,19 +12,19 @@ Enumerates the task states. After a task is created and **execute()** is called,
 
 **System capability:** SystemCapability.Utils.Lang
 
-## WAITING
+## CANCELED
 
 ```TypeScript
-WAITING = 1
+CANCELED = 3
 ```
 
-The task is waiting.
+The task is canceled.
 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-State-WAITING = 1--><!--Device-State-WAITING = 1-End-->
+<!--Device-State-CANCELED = 3--><!--Device-State-CANCELED = 3-End-->
 
 **System capability:** SystemCapability.Utils.Lang
 
@@ -44,18 +44,18 @@ The task is running.
 
 **System capability:** SystemCapability.Utils.Lang
 
-## CANCELED
+## WAITING
 
 ```TypeScript
-CANCELED = 3
+WAITING = 1
 ```
 
-The task is canceled.
+The task is waiting.
 
 **Since:** 10
 
 **Atomic service API:** This API can be used in atomic services since API version 11.
 
-<!--Device-State-CANCELED = 3--><!--Device-State-CANCELED = 3-End-->
+<!--Device-State-WAITING = 1--><!--Device-State-WAITING = 1-End-->
 
 **System capability:** SystemCapability.Utils.Lang

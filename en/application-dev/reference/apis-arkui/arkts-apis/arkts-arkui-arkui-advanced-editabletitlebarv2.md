@@ -12,41 +12,41 @@ import { EditableLeftIconTypeV2, EditableTitleBarV2, EditableLeftIconV2, Editabl
 
 | Name | Description |
 | --- | --- |
-| [EditableLeftIconV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticonv2-c.md) | Declaration of the left icon configuration. |
-| [EditableSaveButtonV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablesavebuttonv2-c.md) | Declaration of the save button configuration. |
-| [EditableTitleBarMenuItemV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2-c.md) | Declaration of the menu item on the right side. |
-| [EditableTitleBarStyleV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2-c.md) | Declaration of the title bar style configuration. |
-| [EditableTitleV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2-c.md) | Declaration of the title configuration. |
+| [EditableLeftIconV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticonv2-c.md) | Defines the left icon configuration class, which is decorated with **@ObservedV2** and supports state observation. |
+| [EditableSaveButtonV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablesavebuttonv2-c.md) | Defines the save button configuration class, which is decorated by **@ObservedV2** and supports state observation. |
+| [EditableTitleBarMenuItemV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2-c.md) | Defines the menu item configuration class, which is decorated with **@ObservedV2** and supports state observation. |
+| [EditableTitleBarStyleV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2-c.md) | Defines the title bar style configuration class, which is decorated with **@ObservedV2** and supports state observation. |
+| [EditableTitleV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2-c.md) | Defines the title configuration class, which is decorated with **@ObservedV2** and supports state observation. |
 
 ### Structs
 
 | Name | Description |
 | --- | --- |
-| [EditableTitleBarV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarv2-s.md) | Declaration of the editable title bar. |
+| [EditableTitleBarV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarv2-s.md) | The editable title bar is suitable for multi-select or content editing screens. Generally, a cancel icon is placed on the left and a save button on the right. It supports left icon configuration, title configuration, avatar display, menu item customization, save button control, and style customization, helping developers quickly build a unified editable title bar. |
 
 ### Interfaces
 
 | Name | Description |
 | --- | --- |
-| [EditableLeftIconV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticonv2options-i.md) | Indicates the options of the left icon. |
-| [EditableSaveButtonV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablesavebuttonv2options-i.md) | Indicates the options of the save button. |
-| [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md) | Indicates the options of the menu item. |
-| [EditableTitleBarStyleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2options-i.md) | Indicates the style options of the title bar. |
-| [EditableTitleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2options-i.md) | Indicates the options of the title. |
+| [EditableLeftIconV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticonv2options-i.md) | Defines the left icon configuration options. |
+| [EditableSaveButtonV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editablesavebuttonv2options-i.md) | Defines the save button configuration options. |
+| [EditableTitleBarMenuItemV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarmenuitemv2options-i.md) | Defines the menu item configuration options. |
+| [EditableTitleBarStyleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlebarstylev2options-i.md) | Defines the title bar style configuration options. |
+| [EditableTitleV2Options](arkts-arkui-arkui-advanced-editabletitlebarv2-editabletitlev2options-i.md) | Defines the title configuration options. |
 
 ### Types
 
 | Name | Description |
 | --- | --- |
-| [EditableTitleBarItemV2](arkts-arkui-editabletitlebaritemv2-t.md) | Declaration of the image item. |
-| [EditableTitleBarItemV2Options](arkts-arkui-editabletitlebaritemv2options-t.md) | Indicates the options of the image item. |
-| [OnActionCallback](arkts-arkui-onactioncallback-t.md) | Callback function when click on this menu item. |
+| [EditableTitleBarItemV2](arkts-arkui-editabletitlebaritemv2-t.md) | Defines the type alias of the left avatar item. The left avatar does not support configuring accessibility attributes. |
+| [EditableTitleBarItemV2Options](arkts-arkui-editabletitlebaritemv2options-t.md) | Defines the type alias of the left avatar item configuration options. |
+| [OnActionCallback](arkts-arkui-onactioncallback-t.md) | Defines the callback for the tap event. |
 
 ### Enums
 
 | Name | Description |
 | --- | --- |
-| [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md) | Declaration of the left icon type. |
+| [EditableLeftIconTypeV2](arkts-arkui-arkui-advanced-editabletitlebarv2-editablelefticontypev2-e.md) | Enumerates the left icon types. |
 
 ## Examples
 

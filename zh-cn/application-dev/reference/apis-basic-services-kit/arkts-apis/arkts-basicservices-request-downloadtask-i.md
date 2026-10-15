@@ -4,7 +4,7 @@
 interface DownloadTask
 ```
 
-下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile-1)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md)获取。
+下载任务，使用下列方法前，需要先获取DownloadTask对象，promise形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile2)获取，callback形式通过[request.downloadFile](arkts-basicservices-request-downloadfile-f.md#downloadfile1)获取。
 
 **起始版本：** 6
 
@@ -17,6 +17,8 @@ interface DownloadTask
 ```TypeScript
 import { request } from '@kit.BasicServicesKit';
 ```
+
+<a id="delete1"></a>
 
 ## delete
 
@@ -77,7 +79,7 @@ try {
 }
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -134,6 +136,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="gettaskinfo1"></a>
 
 ## getTaskInfo
 
@@ -194,7 +198,7 @@ try {
 }
 ```
 
-<a id="gettaskinfo-1"></a>
+<a id="gettaskinfo2"></a>
 
 ## getTaskInfo
 
@@ -252,6 +256,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="gettaskmimetype1"></a>
 
 ## getTaskMimeType
 
@@ -312,7 +318,7 @@ try {
 }
 ```
 
-<a id="gettaskmimetype-1"></a>
+<a id="gettaskmimetype2"></a>
 
 ## getTaskMimeType
 
@@ -709,7 +715,7 @@ on(type: 'fail', callback: (err: number) => void): void
 | 参数名 | 类型 | 必填 | 说明 |
 | --- | --- | --- | --- |
 | type | 'fail' | 是 | 订阅的事件类型。<br>- 取值为'fail'，表示下载失败，任务失败时触发该事件。 |
-| callback | (err: number) =&gt; void | 是 | 下载失败的回调函数。错误原因见下载任务的错误码。 |
+| callback | (err: number) =&gt; void | 是 | 下载失败的回调函数。错误原因见[下载任务的错误码](../../../reference/apis-basic-services-kit/js-apis-request.md#constants)。 |
 
 **错误码：**
 
@@ -740,6 +746,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="restore1"></a>
 
 ## restore
 
@@ -800,7 +808,7 @@ try {
 }
 ```
 
-<a id="restore-1"></a>
+<a id="restore2"></a>
 
 ## restore
 
@@ -858,6 +866,8 @@ try {
   console.error(`Failed to request the download. Code: ${err.code}, message: ${err.message}`);
 }
 ```
+
+<a id="suspend1"></a>
 
 ## suspend
 
@@ -918,7 +928,7 @@ try {
 }
 ```
 
-<a id="suspend-1"></a>
+<a id="suspend2"></a>
 
 ## suspend
 
@@ -977,6 +987,8 @@ try {
 }
 ```
 
+<a id="pause1"></a>
+
 ## pause
 
 ```TypeScript
@@ -988,13 +1000,13 @@ pause(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [suspend](#suspend)替代。
+> [suspend](#suspend1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [suspend](#suspend)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [suspend](#suspend1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1026,7 +1038,7 @@ downloadTask.pause((err: BusinessError) => {
 });
 ```
 
-<a id="pause-1"></a>
+<a id="pause2"></a>
 
 ## pause
 
@@ -1074,6 +1086,8 @@ downloadTask.pause().then(() => {
 });
 ```
 
+<a id="query1"></a>
+
 ## query
 
 ```TypeScript
@@ -1085,13 +1099,13 @@ query(callback: AsyncCallback<DownloadInfo>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getTaskInfo](#gettaskinfo)替代。
+> [getTaskInfo](#gettaskinfo1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getTaskInfo](#gettaskinfo)(callback: AsyncCallback&lt;DownloadInfo&gt;)
+**替代接口：** [getTaskInfo](#gettaskinfo1)(callback: AsyncCallback&lt;DownloadInfo&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1123,7 +1137,7 @@ downloadTask.query((err: BusinessError, downloadInfo: request.DownloadInfo) => {
 });
 ```
 
-<a id="query-1"></a>
+<a id="query2"></a>
 
 ## query
 
@@ -1171,6 +1185,8 @@ downloadTask.query().then((downloadInfo) => {
 });
 ```
 
+<a id="querymimetype1"></a>
+
 ## queryMimeType
 
 ```TypeScript
@@ -1182,13 +1198,13 @@ queryMimeType(callback: AsyncCallback<string>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [getTaskMimeType](#gettaskmimetype)替代。
+> [getTaskMimeType](#gettaskmimetype1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [getTaskMimeType](#gettaskmimetype)(callback: AsyncCallback&lt;string&gt;)
+**替代接口：** [getTaskMimeType](#gettaskmimetype1)(callback: AsyncCallback&lt;string&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1220,7 +1236,7 @@ downloadTask.queryMimeType((err: BusinessError, data: string) => {
 });
 ```
 
-<a id="querymimetype-1"></a>
+<a id="querymimetype2"></a>
 
 ## queryMimeType
 
@@ -1268,6 +1284,8 @@ downloadTask.queryMimeType().then((data: string) => {
 });
 ```
 
+<a id="remove1"></a>
+
 ## remove
 
 ```TypeScript
@@ -1279,13 +1297,13 @@ remove(callback: AsyncCallback<boolean>): void
 > **说明：** 
 > 
 > 从API version 6开始支持，从API version 9开始废弃，建议使用
-> [delete](arkts-basicservices-request-uploadtask-i.md#delete)替代。
+> [delete](arkts-basicservices-request-uploadtask-i.md#delete1)替代。
 
 **起始版本：** 6
 
 **废弃版本：** 9
 
-**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [delete](arkts-basicservices-request-uploadtask-i.md#delete1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1317,7 +1335,7 @@ downloadTask.remove((err, result) => {
 });
 ```
 
-<a id="remove-1"></a>
+<a id="remove2"></a>
 
 ## remove
 
@@ -1365,6 +1383,8 @@ downloadTask.remove().then((result) => {
 });
 ```
 
+<a id="resume1"></a>
+
 ## resume
 
 ```TypeScript
@@ -1376,13 +1396,13 @@ resume(callback: AsyncCallback<void>): void
 > **说明：** 
 > 
 > 从API version 7开始支持，从API version 9开始废弃，建议使用
-> [restore](#restore)替代。
+> [restore](#restore1)替代。
 
 **起始版本：** 7
 
 **废弃版本：** 9
 
-**替代接口：** [restore](#restore)(callback: AsyncCallback&lt;boolean&gt;)
+**替代接口：** [restore](#restore1)(callback: AsyncCallback&lt;boolean&gt;)
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -1414,7 +1434,7 @@ downloadTask.resume((err: BusinessError) => {
 });
 ```
 
-<a id="resume-1"></a>
+<a id="resume2"></a>
 
 ## resume
 

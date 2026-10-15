@@ -10,7 +10,7 @@ Provides APIs to manage data in a KV store, for example, adding or deleting data
 
 **Deprecated since:** 9
 
-**Substitutes:** SingleKVStore
+**Substitutes:** [SingleKVStore](arkts-arkdata-distributedkvstore-singlekvstore-i.md)
 
 <!--Device-distributedData-interface KVStore--><!--Device-distributedData-interface KVStore-End-->
 
@@ -20,6 +20,8 @@ Provides APIs to manage data in a KV store, for example, adding or deleting data
 
 ```TypeScript
 ```
+
+<a id="commit1"></a>
 
 ## commit
 
@@ -33,7 +35,7 @@ Commits the transaction in this KV store. This API uses an asynchronous callback
 
 **Deprecated since:** 9
 
-**Substitutes:** commit
+**Substitutes:** [commit](arkts-arkdata-distributedkvstore-singlekvstore-i.md#commit)
 
 <!--Device-KVStore-commit(callback: AsyncCallback<void>): void--><!--Device-KVStore-commit(callback: AsyncCallback<void>): void-End-->
 
@@ -62,7 +64,7 @@ try {
 }
 ```
 
-<a id="commit-1"></a>
+<a id="commit2"></a>
 
 ## commit
 
@@ -76,7 +78,7 @@ Commits the transaction in this KV store. This API uses a promise to return the 
 
 **Deprecated since:** 9
 
-**Substitutes:** commit
+**Substitutes:** [commit](arkts-arkdata-distributedkvstore-singlekvstore-i.md#commit)
 
 <!--Device-KVStore-commit(): Promise<void>--><!--Device-KVStore-commit(): Promise<void>-End-->
 
@@ -103,6 +105,8 @@ try {
 }
 ```
 
+<a id="delete1"></a>
+
 ## delete
 
 ```TypeScript
@@ -115,7 +119,7 @@ Deletes a KV pair from this KV store. This API uses an asynchronous callback to 
 
 **Deprecated since:** 9
 
-**Substitutes:** delete
+**Substitutes:** [delete](arkts-arkdata-distributedkvstore-singlekvstore-i.md#delete)
 
 <!--Device-KVStore-delete(key: string, callback: AsyncCallback<void>): void--><!--Device-KVStore-delete(key: string, callback: AsyncCallback<void>): void-End-->
 
@@ -154,7 +158,7 @@ try {
 }
 ```
 
-<a id="delete-1"></a>
+<a id="delete2"></a>
 
 ## delete
 
@@ -168,7 +172,7 @@ Deletes a KV pair from this KV store. This API uses a promise to return the resu
 
 **Deprecated since:** 9
 
-**Substitutes:** delete
+**Substitutes:** [delete](arkts-arkdata-distributedkvstore-singlekvstore-i.md#delete)
 
 <!--Device-KVStore-delete(key: string): Promise<void>--><!--Device-KVStore-delete(key: string): Promise<void>-End-->
 
@@ -208,6 +212,8 @@ try {
 }
 ```
 
+<a id="deletebatch1"></a>
+
 ## deleteBatch
 
 ```TypeScript
@@ -220,7 +226,7 @@ Deletes KV pairs in batches from this KV store. This API uses an asynchronous ca
 
 **Deprecated since:** 9
 
-**Substitutes:** deleteBatch
+**Substitutes:** [deleteBatch](arkts-arkdata-distributedkvstore-singlekvstore-i.md#deletebatch)
 
 <!--Device-KVStore-deleteBatch(keys: string[], callback: AsyncCallback<void>): void--><!--Device-KVStore-deleteBatch(keys: string[], callback: AsyncCallback<void>): void-End-->
 
@@ -264,7 +270,7 @@ try {
 }
 ```
 
-<a id="deletebatch-1"></a>
+<a id="deletebatch2"></a>
 
 ## deleteBatch
 
@@ -278,7 +284,7 @@ Deletes KV pairs in batches from this KV store. This API uses a promise to retur
 
 **Deprecated since:** 9
 
-**Substitutes:** deleteBatch
+**Substitutes:** [deleteBatch](arkts-arkdata-distributedkvstore-singlekvstore-i.md#deletebatch)
 
 <!--Device-KVStore-deleteBatch(keys: string[]): Promise<void>--><!--Device-KVStore-deleteBatch(keys: string[]): Promise<void>-End-->
 
@@ -331,6 +337,8 @@ try {
 }
 ```
 
+<a id="enablesync1"></a>
+
 ## enableSync
 
 ```TypeScript
@@ -343,7 +351,7 @@ Sets data sync, which can be enabled or disabled. This API uses an asynchronous 
 
 **Deprecated since:** 9
 
-**Substitutes:** enableSync
+**Substitutes:** [enableSync](arkts-arkdata-distributedkvstore-singlekvstore-i.md#enablesync)
 
 <!--Device-KVStore-enableSync(enabled: boolean, callback: AsyncCallback<void>): void--><!--Device-KVStore-enableSync(enabled: boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -373,7 +381,7 @@ try {
 }
 ```
 
-<a id="enablesync-1"></a>
+<a id="enablesync2"></a>
 
 ## enableSync
 
@@ -387,7 +395,7 @@ Sets data sync, which can be enabled or disabled. This API uses a promise to ret
 
 **Deprecated since:** 9
 
-**Substitutes:** enableSync
+**Substitutes:** [enableSync](arkts-arkdata-distributedkvstore-singlekvstore-i.md#enablesync)
 
 <!--Device-KVStore-enableSync(enabled: boolean): Promise<void>--><!--Device-KVStore-enableSync(enabled: boolean): Promise<void>-End-->
 
@@ -420,6 +428,8 @@ try {
 }
 ```
 
+<a id="off1"></a>
+
 ## off
 
 ```TypeScript
@@ -432,7 +442,7 @@ Unsubscribes from data changes.
 
 **Deprecated since:** 9
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-arkdata-distributedkvstore-singlekvstore-i.md#off)
 
 <!--Device-KVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void--><!--Device-KVStore-off(event: 'dataChange', listener?: Callback<ChangeNotification>): void-End-->
 
@@ -466,7 +476,7 @@ class KvstoreModel {
 }
 ```
 
-<a id="off-1"></a>
+<a id="off2"></a>
 
 ## off
 
@@ -480,7 +490,7 @@ Unsubscribes from sync completion events.
 
 **Deprecated since:** 9
 
-**Substitutes:** off
+**Substitutes:** [off](arkts-arkdata-distributedkvstore-singlekvstore-i.md#off)
 
 <!--Device-KVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void--><!--Device-KVStore-off(event: 'syncComplete', syncCallback?: Callback<Array<[string, number]>>): void-End-->
 
@@ -514,6 +524,8 @@ class KvstoreModel {
 }
 ```
 
+<a id="on1"></a>
+
 ## on
 
 ```TypeScript
@@ -526,7 +538,7 @@ Subscribes to data changes of the specified type.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on)
 
 <!--Device-KVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void--><!--Device-KVStore-on(event: 'dataChange', type: SubscribeType, listener: Callback<ChangeNotification>): void-End-->
 
@@ -549,7 +561,7 @@ kvStore.on('dataChange', distributedData.SubscribeType.SUBSCRIBE_TYPE_LOCAL, fun
 });
 ```
 
-<a id="on-1"></a>
+<a id="on2"></a>
 
 ## on
 
@@ -563,7 +575,7 @@ Subscribes to sync completion events.
 
 **Deprecated since:** 9
 
-**Substitutes:** on
+**Substitutes:** [on](arkts-arkdata-distributedkvstore-singlekvstore-i.md#on)
 
 <!--Device-KVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void--><!--Device-KVStore-on(event: 'syncComplete', syncCallback: Callback<Array<[string, number]>>): void-End-->
 
@@ -585,6 +597,8 @@ kvStore.on('syncComplete', function (data) {
 });
 ```
 
+<a id="put1"></a>
+
 ## put
 
 ```TypeScript
@@ -597,7 +611,7 @@ Adds a KV pair of the specified type to this KV store. This API uses an asynchro
 
 **Deprecated since:** 9
 
-**Substitutes:** put
+**Substitutes:** [put](arkts-arkdata-distributedkvstore-singlekvstore-i.md#put)
 
 <!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback<void>): void--><!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean, callback: AsyncCallback<void>): void-End-->
 
@@ -630,7 +644,7 @@ try {
 }
 ```
 
-<a id="put-1"></a>
+<a id="put2"></a>
 
 ## put
 
@@ -644,7 +658,7 @@ Adds a KV pair of the specified type to this KV store. This API uses a promise t
 
 **Deprecated since:** 9
 
-**Substitutes:** put
+**Substitutes:** [put](arkts-arkdata-distributedkvstore-singlekvstore-i.md#put)
 
 <!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean): Promise<void>--><!--Device-KVStore-put(key: string, value: Uint8Array | string | number | boolean): Promise<void>-End-->
 
@@ -680,6 +694,8 @@ try {
 }
 ```
 
+<a id="putbatch1"></a>
+
 ## putBatch
 
 ```TypeScript
@@ -692,7 +708,7 @@ Inserts KV pairs in batches to this KV store. This API uses an asynchronous call
 
 **Deprecated since:** 9
 
-**Substitutes:** putBatch
+**Substitutes:** [putBatch](arkts-arkdata-distributedkvstore-singlekvstore-i.md#putbatch)
 
 <!--Device-KVStore-putBatch(entries: Entry[], callback: AsyncCallback<void>): void--><!--Device-KVStore-putBatch(entries: Entry[], callback: AsyncCallback<void>): void-End-->
 
@@ -736,7 +752,7 @@ try {
 }
 ```
 
-<a id="putbatch-1"></a>
+<a id="putbatch2"></a>
 
 ## putBatch
 
@@ -750,7 +766,7 @@ Inserts KV pairs in batches to this KV store. This API uses a promise to return 
 
 **Deprecated since:** 9
 
-**Substitutes:** putBatch
+**Substitutes:** [putBatch](arkts-arkdata-distributedkvstore-singlekvstore-i.md#putbatch)
 
 <!--Device-KVStore-putBatch(entries: Entry[]): Promise<void>--><!--Device-KVStore-putBatch(entries: Entry[]): Promise<void>-End-->
 
@@ -802,6 +818,8 @@ try {
 }
 ```
 
+<a id="rollback1"></a>
+
 ## rollback
 
 ```TypeScript
@@ -814,7 +832,7 @@ Rolls back the transaction in this KV store. This API uses an asynchronous callb
 
 **Deprecated since:** 9
 
-**Substitutes:** rollback
+**Substitutes:** [rollback](arkts-arkdata-distributedkvstore-singlekvstore-i.md#rollback)
 
 <!--Device-KVStore-rollback(callback: AsyncCallback<void>): void--><!--Device-KVStore-rollback(callback: AsyncCallback<void>): void-End-->
 
@@ -843,7 +861,7 @@ try {
 }
 ```
 
-<a id="rollback-1"></a>
+<a id="rollback2"></a>
 
 ## rollback
 
@@ -857,7 +875,7 @@ Rolls back the transaction in this KV store. This API uses a promise to return t
 
 **Deprecated since:** 9
 
-**Substitutes:** rollback
+**Substitutes:** [rollback](arkts-arkdata-distributedkvstore-singlekvstore-i.md#rollback)
 
 <!--Device-KVStore-rollback(): Promise<void>--><!--Device-KVStore-rollback(): Promise<void>-End-->
 
@@ -884,6 +902,8 @@ try {
 }
 ```
 
+<a id="setsyncrange1"></a>
+
 ## setSyncRange
 
 ```TypeScript
@@ -896,7 +916,7 @@ Sets the data sync range. This API uses an asynchronous callback to return the r
 
 **Deprecated since:** 9
 
-**Substitutes:** setSyncRange
+**Substitutes:** [setSyncRange](arkts-arkdata-distributedkvstore-singlekvstore-i.md#setsyncrange)
 
 <!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void--><!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[], callback: AsyncCallback<void>): void-End-->
 
@@ -925,7 +945,7 @@ try {
 }
 ```
 
-<a id="setsyncrange-1"></a>
+<a id="setsyncrange2"></a>
 
 ## setSyncRange
 
@@ -939,7 +959,7 @@ Sets the data sync range. This API uses a promise to return the result.
 
 **Deprecated since:** 9
 
-**Substitutes:** setSyncRange
+**Substitutes:** [setSyncRange](arkts-arkdata-distributedkvstore-singlekvstore-i.md#setsyncrange)
 
 <!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>--><!--Device-KVStore-setSyncRange(localLabels: string[], remoteSupportLabels: string[]): Promise<void>-End-->
 
@@ -975,6 +995,8 @@ try {
 }
 ```
 
+<a id="starttransaction1"></a>
+
 ## startTransaction
 
 ```TypeScript
@@ -987,7 +1009,7 @@ Starts the transaction in this KV store. This API uses an asynchronous callback 
 
 **Deprecated since:** 9
 
-**Substitutes:** startTransaction
+**Substitutes:** [startTransaction](arkts-arkdata-distributedkvstore-singlekvstore-i.md#starttransaction)
 
 <!--Device-KVStore-startTransaction(callback: AsyncCallback<void>): void--><!--Device-KVStore-startTransaction(callback: AsyncCallback<void>): void-End-->
 
@@ -1036,7 +1058,7 @@ try {
 }
 ```
 
-<a id="starttransaction-1"></a>
+<a id="starttransaction2"></a>
 
 ## startTransaction
 
@@ -1050,7 +1072,7 @@ Starts the transaction in this KV store. This API uses a promise to return the r
 
 **Deprecated since:** 9
 
-**Substitutes:** startTransaction
+**Substitutes:** [startTransaction](arkts-arkdata-distributedkvstore-singlekvstore-i.md#starttransaction)
 
 <!--Device-KVStore-startTransaction(): Promise<void>--><!--Device-KVStore-startTransaction(): Promise<void>-End-->
 

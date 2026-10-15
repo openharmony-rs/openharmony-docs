@@ -12,24 +12,6 @@ Marquee状态回调的返回值。
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-## START
-
-```TypeScript
-START = 0
-```
-
-跑马灯滚动开始。
-
-**起始版本：** 18
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
-
-<!--Device-MarqueeState-START = 0--><!--Device-MarqueeState-START = 0-End-->
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
-
 ## BOUNCE
 
 ```TypeScript
@@ -63,5 +45,23 @@ FINISH = 2
 **原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
 
 <!--Device-MarqueeState-FINISH = 2--><!--Device-MarqueeState-FINISH = 2-End-->
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+## START
+
+```TypeScript
+START = 0
+```
+
+跑马灯滚动开始。
+
+**起始版本：** 18
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API版本18开始，该接口支持在原子化服务中使用。
+
+<!--Device-MarqueeState-START = 0--><!--Device-MarqueeState-START = 0-End-->
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full

@@ -12,19 +12,19 @@ declare enum ContextMenuSourceType
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## None
+## LongPress
 
 ```TypeScript
-None = 0
+LongPress = 2
 ```
 
-其他事件来源。
+长按事件。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ContextMenuSourceType-None = 0--><!--Device-ContextMenuSourceType-None = 0-End-->
+<!--Device-ContextMenuSourceType-LongPress = 2--><!--Device-ContextMenuSourceType-LongPress = 2-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
@@ -44,18 +44,18 @@ Mouse = 1
 
 **系统能力：** SystemCapability.Web.Webview.Core
 
-## LongPress
+## None
 
 ```TypeScript
-LongPress = 2
+None = 0
 ```
 
-长按事件。
+其他事件来源。
 
 **起始版本：** 9
 
 **原子化服务API：** 从API版本11开始，该接口支持在原子化服务中使用。
 
-<!--Device-ContextMenuSourceType-LongPress = 2--><!--Device-ContextMenuSourceType-LongPress = 2-End-->
+<!--Device-ContextMenuSourceType-None = 0--><!--Device-ContextMenuSourceType-None = 0-End-->
 
 **系统能力：** SystemCapability.Web.Webview.Core
