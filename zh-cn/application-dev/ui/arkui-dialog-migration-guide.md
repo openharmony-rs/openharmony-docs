@@ -902,13 +902,13 @@ export struct ActionMenuAfterMigrate {
 
 <!-- @[present_custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogBeforeMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+export struct PresentCustomDialogBeforeMigrate {
   private dialogController: promptAction.DialogController = new promptAction.DialogController();
   @State result: string = '';
 
@@ -926,29 +926,33 @@ struct Index {
   }
 
   build() {
-    Column() {
-      Button('打开 presentCustomDialog')
-        .onClick(() => {
-          this.getUIContext().getPromptAction().presentCustomDialog(() => {
-            this.customDialogComponent()
-          }, this.dialogController, { autoCancel: true })
-            .then((dialogId: number) => {
-              this.result = 'present success, dialogId: ' + dialogId;
-            })
-            .catch((error: BusinessError) => {
-              this.result = `present error: ${error.code}`;
-            });
-        })
+    NavDestination() {
+      Column() {
+        Button('打开 presentCustomDialog')
+          .onClick(() => {
+            this.getUIContext()
+              .getPromptAction()
+              .presentCustomDialog(() => {
+                this.customDialogComponent()
+              }, this.dialogController, { autoCancel: true })
+              .then((dialogId: number) => {
+                this.result = 'present success, dialogId: ' + dialogId;
+              })
+              .catch((error: BusinessError) => {
+                this.result = `present error: ${error.code}`;
+              });
+          })
 
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
       }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
