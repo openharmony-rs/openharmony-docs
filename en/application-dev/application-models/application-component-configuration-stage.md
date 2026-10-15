@@ -1,11 +1,11 @@
-# Application- or Component-Level Configuration (Stage Model)
+# Application- or Component-Level Configuration
 <!--Kit: Ability Kit-->
 <!--Subsystem: BundleManager-->
 <!--Owner: @wanghang904-->
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=0ea90699c22c82153d76e42b42b6354680202a52 translatedAt=2026-10-13T07:12:59.376Z pushedAt=2026-10-13T08:52:14.469Z -->
+<!-- md-trans-meta sourceCommit=0ea90699c22c82153d76e42b42b6354680202a52 translatedAt=2026-10-13T07:12:59.376Z pushedAt=2026-10-15T13:16:22.273Z -->
 
 During application development, you must configure tags to identify an application, such as the bundle name and application icon. This topic describes some critical tags.
 
