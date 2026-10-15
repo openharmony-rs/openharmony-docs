@@ -68473,5 +68473,25 @@
 				]
 			}
 		]
+	},
+	{
+		"file_path":"zh-cn/application-dev/basic-services/print/printExtensionAbilityGuide.md",
+		"sample_files":[
+			{
+				"file_name":"openharmony/applications_app_samples/master/code/DocsSample/print/PrintExtensionAbilityGuide/entry/src/main/ets/PrintExtensionAbility/MyPrintExtension.ets",
+				"functions":[
+					{
+						"end_line":19,
+						"name":"print_extension_import",
+						"start_line":17
+					},
+					{
+						"end_line":54,
+						"name":"print_extension_impl",
+						"start_line":16
+					}
+				]
+			}
+		]
 	}
 ]
