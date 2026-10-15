@@ -731,7 +731,7 @@ turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise&lt;Result&g
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | mechId | number | 是 | 机械体设备ID。 |
-| angleSpeed | double | 是 | 角速度。|
+| angleSpeed | number | 是 | 角速度。|
 | duration | number | 是 | 转动时长，单位ms。 |
 
 **返回值：**
@@ -1375,7 +1375,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | distance | number | 否 | 否 | 移动距离（取值限定为整数）。|
-| angle | double | 否 | 否 | 转动角度。|
+| angle | number | 否 | 否 | 转动角度。|
 | speedGear | [SpeedGear](#speedgear) | 否 | 是 | 速度档位。|
 | mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
 
@@ -1392,7 +1392,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | speed | number | 否 | 否 | 转动或移动速度（取值限定为整数）。|
-| angle | double | 否 | 否 | 转动角度。|
+| angle | number | 否 | 否 | 转动角度。|
 | mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
 
 ## SpeedGear
