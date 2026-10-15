@@ -750,41 +750,47 @@ export struct ShowDialogAfterMigrate {
 
 <!-- @[action_menu_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuBeforeMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+export struct ActionMenuBeforeMigrate {
   @State result: string = '';
 
   build() {
-    Column() {
-      Button('打开 showActionMenu')
-        .onClick(() => {
-          this.getUIContext().getPromptAction().showActionMenu({
-            title: '选择操作',
-            buttons: [
-              { text: '保存', color: '#0000FF' },
-              { text: '分享', color: '#0000FF' },
-              { text: '删除', color: '#FF0000' }
-            ]
-          }).then((data) => {
-            this.result = 'click button index: ' + data.index;
-          }).catch((error: BusinessError) => {
-            this.result = `showActionMenu error: ${error.code}`;
-          });
-        })
+    NavDestination() {
+      Column() {
+        Button('打开 showActionMenu')
+          .onClick(() => {
+            this.getUIContext()
+              .getPromptAction()
+              .showActionMenu({
+                title: '选择操作',
+                buttons: [
+                  { text: '保存', color: '#0000FF' },
+                  { text: '分享', color: '#0000FF' },
+                  { text: '删除', color: '#FF0000' }
+                ]
+              })
+              .then((data) => {
+                this.result = 'click button index: ' + data.index;
+              })
+              .catch((error: BusinessError) => {
+                this.result = `showActionMenu error: ${error.code}`;
+              });
+          })
 
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
       }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
