@@ -5716,7 +5716,7 @@ onWindowFocusStateChange(callback: Callback&lt;WindowFocusState&gt;): void
 
 | 参数名   | 类型                           | 必填 | 说明                                                         |
 | -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是   | 回调函数。返回窗口的焦点状态变化信息，包括窗口是否获焦、变化原因，以及同进程内相邻获焦窗口的ID。|
+| callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是   | 回调函数。返回窗口的焦点状态变化信息。|
 
 **错误码：**
 
