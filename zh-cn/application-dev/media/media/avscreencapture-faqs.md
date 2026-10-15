@@ -1,12 +1,8 @@
 ---
-kit: Media Kit
-shortdes: 介绍录屏常见问题及解决方法
-keywords:
-  - AVScreenCapture
-  - 录屏FAQ
-  - 实例限制
-  - 通话打断
-doctype: guide
+kits: ["Media Kit / 媒体服务"]
+description: "汇总AVScreenCapture录屏过程中常见问题及处理建议，包括实例数量超限报错、通话中无法启动录屏等问题及解决方案。"
+keywords: [AVScreenCapture, 录屏常见问题, 实例数量限制, 通话中断录屏, OPERATE_NOT_PERMIT, 录屏策略]
+doctype: faq
 status: active
 ---
 
