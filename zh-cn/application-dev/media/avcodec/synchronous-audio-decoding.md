@@ -368,6 +368,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            CHECK_AND_CONTINUE_LOG(buffer != nullptr, "Get input buffer timeout, retry");
            CHECK_AND_BREAK_LOG(isStarted_ && audioWorkerRunning_, "Work done, thread out");
            bufferInfo.buffer = buffer;
+           // ...
            audioDecContext_->inputFrameCount++;
            lock.unlock();
            int32_t ret = demuxer_->ReadSample(demuxer_->GetAudioTrackId(), buffer, bufferInfo.attr);
