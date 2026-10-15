@@ -362,7 +362,7 @@
   <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
   
   ``` TypeScript
-  // entry4/src/main/cpp/types/libentry4/index.d.ts
+  // entry/src/main/cpp/types/libentry/index.d.ts
   export const nativeWebInit: (webName: string) => void;
   export const runJavaScript: (webName: string, jsCode: string) => void;
   ```
