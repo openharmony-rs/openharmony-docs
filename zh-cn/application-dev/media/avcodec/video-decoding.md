@@ -327,7 +327,7 @@ target_link_libraries(sample PUBLIC libnative_media_vdec.so)
 
    本例中的nativeWindow，有两种方式获取：
 
-   方式一: 如果解码后直接显示，则从XComponent组件获取。
+   方式一： 如果解码后直接显示，则从XComponent组件获取。
 
    添加头文件。
 
