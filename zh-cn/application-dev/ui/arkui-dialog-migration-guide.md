@@ -1147,48 +1147,50 @@ export struct OpenCustomDialogWithControllerBeforeMigrate {
 
 <!-- @[open_custom_dialog_with_controller_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerAfterMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct OpenCustomDialogWithControllerMigrationPage {
+export struct OpenCustomDialogWithControllerAfterMigrate {
   private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   private controller: DialogBaseController = new DialogBaseController();
   @State result: string = '';
 
   build() {
-    Row() {
-      Column() {
-        Text('openCustomDialogWithController 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
+    NavDestination() {
+      Row() {
+        Column() {
+          Text('openCustomDialogWithController 迁移示例')
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+            .margin({ bottom: 20 })
 
-        Button('老接口：promptAction.openCustomDialogWithController')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
-          })
+          Button('老接口：promptAction.openCustomDialogWithController')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.result = '老接口示例请参考 arkts-apis-uicontext-promptaction.md';
+            })
 
-        Button('新接口：DialogPresenter.present（自定义弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewCustomDialog();
-          })
+          Button('新接口：DialogPresenter.present（自定义弹窗）')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.showNewCustomDialog();
+            })
 
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
+          if (this.result) {
+            Text(this.result)
+              .fontSize(14)
+              .margin({ top: 10 })
+          }
         }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 
   @Builder
