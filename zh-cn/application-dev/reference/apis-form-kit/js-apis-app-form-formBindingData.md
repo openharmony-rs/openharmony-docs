@@ -129,6 +129,8 @@ struct Index {
 
 createFormBindingDataEx(obj?: Object | string): FormBindingData
 
+ArkTS-Sta: createFormBindingDataEx(obj?: RecordData): FormBindingData
+
 创建一个FormBindingData对象，并将isSupportMoreImages设为true。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
