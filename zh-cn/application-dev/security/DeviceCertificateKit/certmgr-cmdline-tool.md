@@ -1,4 +1,4 @@
-# 证书管理命令行工具（certmgr）
+# 证书管理命令行工具使用指导
 
 <!--Kit: Device Certificate Kit-->
 <!--Subsystem: Security-->
