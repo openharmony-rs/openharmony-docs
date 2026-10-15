@@ -367,12 +367,12 @@
 
 **系统能力：** SystemCapability.Window.SessionManager
 
-| 名称 | 类型 | 只读 | 可选 | 说明  |
-| ------ | ------ | ---- | ---- | ---------- |
-| isFocused | boolean | 否   | 否   | 窗口是否获焦，true表示获焦，false表示未获焦。|
-| focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | 否   | 否   | 焦点状态变化的原因。|
-| nextFocusedWindowId | number | 否   | 是   | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。|
-| prevFocusedWindowId | number | 否   | 是   | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。|
+| 名称 | 类型 | 只读 | 可选 | 说明 |
+| ---- | ---- | ---- | ---- | ---- |
+| isFocused | boolean | 否 | 否 | 窗口是否获焦，true表示获焦，false表示未获焦。 |
+| focusChangeReason | [FocusChangeReason](arkts-apis-window-e.md#focuschangereason) | 否 | 否 | 焦点状态变化的原因。 |
+| nextFocusedWindowId | number | 否 | 是 | 下一个获焦窗口的ID。仅当本窗口未获焦，且下一个获焦窗口与本窗口位于同一进程时，该字段才有效。 |
+| prevFocusedWindowId | number | 否 | 是 | 上一个获焦窗口的ID。仅当本窗口已获焦，且上一个获焦窗口与本窗口位于同一进程时，该字段才有效。 |
 
 ## WindowInfoOptions
 窗口布局信息过滤选项。
