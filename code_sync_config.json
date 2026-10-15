@@ -4370,7 +4370,7 @@
 						"start_line":1115
 					},
 					{
-						"end_line":1176,
+						"end_line":1174,
 						"name":"complex_text_c_independent_shaping_text_step4",
 						"start_line":1131
 					},
@@ -4414,9 +4414,9 @@
 						"start_line":36
 					},
 					{
-						"end_line":55,
+						"end_line":53,
 						"name":"arkts_use_and_change_system_font_step3",
-						"start_line":44
+						"start_line":42
 					},
 					{
 						"end_line":65,
@@ -4561,7 +4561,7 @@
 						"start_line":17
 					},
 					{
-						"end_line":189,
+						"end_line":194,
 						"name":"c_text_metrics_create_paragraph",
 						"start_line":171
 					},
@@ -4571,9 +4571,9 @@
 						"start_line":194
 					},
 					{
-						"end_line":237,
+						"end_line":251,
 						"name":"c_text_metrics_get_all_case",
-						"start_line":205
+						"start_line":217
 					},
 					{
 						"end_line":292,
@@ -4754,9 +4754,9 @@
 						"start_line":32
 					},
 					{
-						"end_line":57,
+						"end_line":56,
 						"name":"arkts_custom_font_step4",
-						"start_line":48
+						"start_line":47
 					},
 					{
 						"end_line":65,
@@ -4797,9 +4797,9 @@
 						"start_line":28
 					},
 					{
-						"end_line":46,
+						"end_line":45,
 						"name":"arkts_theme_font_text_style",
-						"start_line":32
+						"start_line":31
 					},
 					{
 						"end_line":54,
@@ -52177,7 +52177,7 @@
 						"start_line":171
 					},
 					{
-						"end_line":179,
+						"end_line":185,
 						"name":"custom_font_c_custom_font_text_step3",
 						"start_line":177
 					},
@@ -52187,14 +52187,14 @@
 						"start_line":183
 					},
 					{
-						"end_line":212,
+						"end_line":220,
 						"name":"custom_font_c_custom_font_text_step5",
-						"start_line":190
+						"start_line":195
 					},
 					{
-						"end_line":228,
+						"end_line":242,
 						"name":"custom_font_c_custom_font_text_step6",
-						"start_line":214
+						"start_line":222
 					}
 				]
 			}
