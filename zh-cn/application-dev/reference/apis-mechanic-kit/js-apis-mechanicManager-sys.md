@@ -654,7 +654,7 @@ let moveParams: mechanicManager.MoveParams = {
     mode: undefined
 };
 try {
-  mechanicManager.move(mechId, moveParams).then((result) => {
+  mechanicManager.move(mechId, moveParams).then((result: mechanicManager.Result) => {
     console.info(`'result:' ${result}`);
   });
 } catch (e) {
@@ -708,7 +708,7 @@ let speedParams: mechanicManager.SpeedParams = {
 };
 let duration: number = 1;
 try {
-  mechanicManager.moveBySpeed(mechId, speedParams, duration).then((result) => {
+  mechanicManager.moveBySpeed(mechId, speedParams, duration).then((result: mechanicManager.Result) => {
     console.info(`'result:' ${result}`);
   });
 } catch (e) {
@@ -758,7 +758,7 @@ let mechId: number = 0;
 let angleSpeed: number = 1.2;
 let duration: number = 1;
 try {
-  mechanicManager.turnBySpeed(mechId, angleSpeed, duration).then((result) => {
+  mechanicManager.turnBySpeed(mechId, angleSpeed, duration).then((result: mechanicManager.Result) => {
     console.info(`'result:' ${result}`);
   });
 } catch (e) {
@@ -852,7 +852,7 @@ doAction(mechId: int, actionType: ActionType): Promise&lt;Result&gt;
 let mechId: number = 0;
 let actionType = mechanicManager.ActionType.HEAD_UP;
 try {
-  mechanicManager.doAction(mechId, actionType).then((result) => {
+  mechanicManager.doAction(mechId, actionType).then((result: mechanicManager.Result) => {
     console.info(`'result:' ${result}`);
   });
 } catch (e) {
@@ -936,6 +936,85 @@ let eventsSet: Set<mechanicManager.MechEventType> = new Set();
 let events = Array.from(eventsSet);
 try {
   mechanicManager.unSubscribe(events);
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
+## mechanicManager.connectDevice
+
+connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise&lt;AttachStateChangeInfo&gt;
+
+基于地址连接设备。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| addrInfo | [AddressInfo](#addressinfo) | 是 | 地址信息。 |
+| params | [ConnectParam](#connectparam) | 是 | 操作参数。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[AttachStateChangeInfo](#attachstatechangeinfo)&gt;| Promise对象，返回设备吸附状态。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+
+
+## mechanicManager.disconnectDevice
+
+disconnectDevice(mechId: int): Promise&lt;Result&gt;
+
+基于机械体设备ID断开设备。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 201 | Permission denied. |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+try {
+  mechanicManager.disconnectDevice(mechId).then((result: mechanicManager.Result) => {
+    console.info(`'result:' ${result}`);
+  });
 } catch (e) {
   console.error(`Code is ${e.code}, message is ${e.message}`);
 }
@@ -1333,7 +1412,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | UNADSORBED   | int | 1 | 未吸附。 |
 
 
-## SpeedGear  
+## SpeedGear
 
 速度档位枚举。
   
@@ -1350,7 +1429,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | HIGH_SPEED   | int | -1 | 高速档定义。 |
 
 
-## MarchingMode  
+## MarchingMode
 
 行进模式枚举。
   
@@ -1365,7 +1444,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | TURN_THEN_MOVE  | int | 0 | 先转动再移动。 |
 | TURNING_MOVING  | int | 1 | 边移动边转动。 |
 
-## ActionType  
+## ActionType
 
 动作序列类型枚举。
   
@@ -1403,7 +1482,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | LOW_POWER  | int | 2005 | 低电量动作。 |
 | THINKING  | int | 2006 | 思考中动作。 |
 
-## MechEvent  
+## MechEvent
 
 机械体设备事件定义。
   
@@ -1418,7 +1497,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | mechId | number | 否 | 否 | 机械体设备ID。 |
 | event | [MechEventType](#mecheventtype) | 否 | 否 | 事件类型。 |
 
-## MechEventType  
+## MechEventType
 
 机械体设备事件定义。
   
@@ -1435,3 +1514,111 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | REACH_CLIFF  | int | 2 | 移动中遇到悬崖。 |
 | REACH_OBSTACLE  | int | 3 | 移动中遇到障碍。 |
 | LOW_POWER  | int | 4 | 设备低电量。 |
+
+## AddressInfo
+
+配件设备信息定义。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| address | string | 否 | 否 | 配件设备地址。 |
+| addressType | [AddressType](#addresstype) | 否 | 否 | 地址类型。 |
+
+## AddressType  
+
+机械体设备地址类型。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| BLE_ADDR  | int | 0 | 机械体设备蓝牙地址类型。 |
+
+## ConnectParam
+
+连接参数定义。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| deviceName | string | 否 | 是 | 机械体设备名称。 |
+| identifier | number | 否 | 是 | 当前设备标识（取值限定为整数）。 |
+| custdata | string | 否 | 否 | 发现设备时携带的数据。 |
+
+## AttachStateChangeInfo
+
+连接参数定义。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| state | [AttachState](#attachstate) | 否 | 否 | 吸附状态。 |
+| mechInfo | [MechInfo](#mechinfo) | 否 | 否 | 机械体设备信息。 |
+
+## AttachState
+
+机械体设备连接状态。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| ATTACHED  | int | 0 | 设备挂载。 |
+| DETACHED  | int | 1 | 设备卸载。 |
+
+## MechInfo
+
+机械体设备信息。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| mechId | number | 否 | 否 | 机械体设备ID。 |
+| mechInfo | [MechDeviceType](#mechdevicetype) | 否 | 否 | 机械设备类型。 |
+| mechName | string | 否 | 否 | 机械体设备名称。 |
+
+## MechDeviceType
+
+机械体设备类型枚举。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| GIMBAL_DEVICE  | int | 0 | 云台设备类型。 |
+| DESKTOP_GIMBAL_DEVICE  | int | 1 | 桌面云台。 |
+| WHEELED_BASE_DEVICE  | int | 2 | 轮式底座。 |
+| POCKET_GIMBAL_CAMERA_DEVICE  | int | 3 | 口袋云台相机。 |
