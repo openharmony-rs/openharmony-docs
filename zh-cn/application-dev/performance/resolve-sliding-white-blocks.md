@@ -78,9 +78,9 @@ LazyForEach懒加载可以通过使用Prefetcher来预取和预渲染数据，�
 
 3. 当列表不断滑动，屏幕可视区外实时更新列表项、更新预取数据和预渲染数据。
 
-   图1 动态预加载渲染过程示意图
+图1 动态预加载渲染过程示意图
 
-   ![](./figures/resolve_sliding_white_blocks_sketch_map.png)
+![](./figures/resolve_sliding_white_blocks_sketch_map.png)
 
 ## 优化后代码示例
 
