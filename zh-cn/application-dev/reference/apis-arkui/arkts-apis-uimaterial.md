@@ -6,7 +6,7 @@
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
 
-本模块提供系统材质的接口定义。不同的系统材质对应不同的UI效果，包括背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)、材质层滤镜[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)效果。当前提供的系统材质为沉浸式材质类型[ImmersiveMaterial](#immersivematerial)，沉浸式材质对象在不同设备上的表现存在差异，只有支持沉浸式材质的设备上设置才有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[uiMaterial.isImmersiveMaterialSupported](#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。在支持沉浸式材质的设备上，材质效果在不同算力的设备上有分档表现，可通过[uiMaterial.getGlobalMaterialLevel](#uimaterialgetglobalmateriallevel)获取设备的材质等级，分档效果具体参考[ImmersiveMaterial](#immersivematerial)的描述。
+本模块提供系统材质的接口定义。不同的系统材质对应不同的UI效果，包括背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)、材质层滤镜[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)效果。当前提供的系统材质为沉浸式材质类型[ImmersiveMaterial](#immersivematerial)，其设备兼容性和算力分档表现，请参考[ImmersiveMaterial](#immersivematerial)的描述。
 
 开发指导请参考[沉浸光感](../../ui/arkts-immersive-light-sense-overview.md)指南文档。
 
@@ -34,7 +34,7 @@ import { uiMaterial } from '@kit.ArkUI';
 
 constructor(options?: ImmersiveOptions)
 
-ImmersiveMaterial的构造函数。创建沉浸式材质对象，仅在支持沉浸式材质的设备上有效果，在不支持沉浸式材质的设备上可设置但无效果，可通过[uiMaterial.isImmersiveMaterialSupported](#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。在支持沉浸式材质的设备上，根据设备算力等级有分档表现，可通过[uiMaterial.getGlobalMaterialLevel](#uimaterialgetglobalmateriallevel)获取设备的材质等级。创建的ImmersiveMaterial对象需通过组件的[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)通用属性设置到组件上才能生效。
+ImmersiveMaterial的构造函数。创建的ImmersiveMaterial对象需通过组件的[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)通用属性设置到组件上才能生效，其设备兼容性和算力分档表现参考[ImmersiveMaterial](#immersivematerial)的描述。
 
 **起始版本：** 26.0.0
 
