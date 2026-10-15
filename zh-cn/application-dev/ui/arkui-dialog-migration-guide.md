@@ -435,37 +435,49 @@ export struct AlertDialogAfterMigrate {
 
 <!-- @[action_sheet_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetBeforeMigrate.ets) -->
 
-```typescript
+``` TypeScript
 @Entry
 @Component
-struct Index {
+export struct ActionSheetBeforeMigrate {
   @State result: string = '';
 
   build() {
-    Column() {
-      Button('打开 ActionSheet')
-        .onClick(() => {
-          this.getUIContext().showActionSheet({
-            title: '选择操作',
-            message: '请选择一个操作',
-            autoCancel: true,
-            sheets: [
-              { title: '复制', action: () => { this.result = '复制'; } },
-              { title: '删除', action: () => { this.result = '删除'; } }
-            ],
-            cancel: () => { this.result = '取消'; }
-          });
-        })
+    NavDestination() {
+      Column() {
+        Button('打开 ActionSheet')
+          .onClick(() => {
+            this.getUIContext().showActionSheet({
+              title: '选择操作',
+              message: '请选择一个操作',
+              autoCancel: true,
+              sheets: [
+                {
+                  title: '复制', action: () => {
+                  this.result = '复制';
+                }
+                },
+                {
+                  title: '删除', action: () => {
+                  this.result = '删除';
+                }
+                }
+              ],
+              cancel: () => {
+                this.result = '取消';
+              }
+            });
+          })
 
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
       }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
