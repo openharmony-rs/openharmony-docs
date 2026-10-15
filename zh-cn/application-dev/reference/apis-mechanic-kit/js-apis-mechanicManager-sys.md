@@ -1555,7 +1555,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
-| state | [AttachState](#attachstate) | 否 | 否 | 吸附状态。 |
+| state | [AttachState](#attachstate) | 否 | 否 | 附加状态。 |
 | mechInfo | [MechInfo](#mechinfo) | 否 | 否 | 机械体设备信息。 |
 
 ## AttachState
