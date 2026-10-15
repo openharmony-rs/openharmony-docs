@@ -5702,7 +5702,7 @@ try {
 
 ## onWindowFocusStateChange
 
-onWindowFocusStateChange(callback: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
+onWindowFocusStateChange(callback: Callback&lt;WindowFocusState&gt;): void
 
 开启窗口焦点状态变化事件的监听。当窗口焦点状态发生变化时，会触发回调，返回窗口的焦点状态变化信息。
 
@@ -5714,8 +5714,8 @@ onWindowFocusStateChange(callback: Callback&lt;[WindowFocusState](arkts-apis-win
 
 **参数：**
 
-| 参数名 | 类型                                                                                     | 必填 | 说明                                                                                                                                          |
-| -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------------------ |
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 是   | 回调函数。返回窗口的焦点状态变化信息，包括窗口是否获焦、变化原因，以及同进程内相邻获焦窗口的ID。|
 
 **错误码：**
@@ -5731,10 +5731,12 @@ onWindowFocusStateChange(callback: Callback&lt;[WindowFocusState](arkts-apis-win
 **示例：**
 
 ```ts
+const callback = (data: window.WindowFocusState) => {
+  console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
+}
 try {
-  windowClass.onWindowFocusStateChange((data: window.WindowFocusState) => {
-    console.info(`Window focus state changed. isFocused: ${data.isFocused}, focusChangeReason: ${data.focusChangeReason}`);
-  });
+  // 通过on接口开启监听
+  windowClass.onWindowFocusStateChange(callback);
 } catch (exception) {
   console.error(`Failed to register callback. Cause code: ${exception.code}, message: ${exception.message}`);
 }
@@ -5742,7 +5744,7 @@ try {
 
 ## offWindowFocusStateChange
 
-offWindowFocusStateChange(callback?: Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt;): void
+offWindowFocusStateChange(callback?: Callback&lt;WindowFocusState&gt;): void
 
 关闭窗口焦点状态变化事件的监听。
 
@@ -5754,8 +5756,8 @@ offWindowFocusStateChange(callback?: Callback&lt;[WindowFocusState](arkts-apis-w
 
 **参数：**
 
-| 参数名 | 类型                                                                                     | 必填 | 说明                                                                                                                          |
-| -------- | -------------------------------------------------------------------------------------- | ---- | ------------------------------------------------------------------------------------------------------------------------------ |
+| 参数名   | 类型                           | 必填 | 说明                                                         |
+| -------- | ------------------------------ | ---- | ------------------------------------------------------------ |
 | callback | Callback&lt;[WindowFocusState](arkts-apis-window-i.md#windowfocusstate)&gt; | 否   | 回调函数。返回窗口的焦点状态变化信息。若传入参数，则关闭该监听。若未传入参数，则关闭所有窗口焦点状态变化的监听。 |
 
 **错误码：**
