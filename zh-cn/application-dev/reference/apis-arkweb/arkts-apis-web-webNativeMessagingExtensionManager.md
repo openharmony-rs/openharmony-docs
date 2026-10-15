@@ -155,7 +155,7 @@ export default class EntryAbility extends UIAbility {
                 console.info('onDisconnect');
             },
             onFailed(code, errMsg) {
-                console.info(`onFailed, code:${code} errMsg:${errMsg}`);
+                console.error(`onFailed, code:${code} errMsg:${errMsg}`);
             }
         };
 
