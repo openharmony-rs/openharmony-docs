@@ -355,7 +355,7 @@ struct WebComponent {
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index7.html -->
   <!DOCTYPE html>
   <html>
   <body>
