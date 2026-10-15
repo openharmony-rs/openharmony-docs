@@ -1077,12 +1077,12 @@ export struct PresentCustomDialogAfterMigrate {
 
 <!-- @[open_custom_dialog_with_controller_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerBeforeMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { ComponentContent, promptAction } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 class Params {
-  text: string = '';
+  public text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -1095,45 +1095,48 @@ function buildText(params: Params) {
     Text(params.text)
       .fontSize(16)
       .margin({ bottom: 10 })
-    Button('关闭弹窗')
-      .onClick(() => {
-      })
   }
   .padding(20)
 }
 
 @Entry
 @Component
-struct Index {
+export struct OpenCustomDialogWithControllerBeforeMigrate {
   private dialogController: promptAction.DialogController = new promptAction.DialogController();
   @State result: string = '';
 
   build() {
-    Column() {
-      Button('打开 openCustomDialogWithController')
-        .onClick(() => {
-          let contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
-            new Params('自定义弹窗内容'));
-          this.getUIContext().getPromptAction().openCustomDialogWithController(contentNode,
-            this.dialogController, {
-              autoCancel: true,
-              alignment: DialogAlignment.Center
-            }).then(() => {
-              this.result = 'opened';
-            }).catch((error: BusinessError) => {
-              this.result = `open error: ${error.code}`;
-            });
-        })
+    NavDestination() {
+      Column() {
+        Button('打开 openCustomDialogWithController')
+          .onClick(() => {
+            let contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText),
+              new Params('自定义弹窗内容'));
+            this.getUIContext()
+              .getPromptAction()
+              .openCustomDialogWithController(contentNode,
+                this.dialogController, {
+                  autoCancel: true,
+                  alignment: DialogAlignment.Center
+                })
+              .then(() => {
+                this.result = 'opened';
+              })
+              .catch((error: BusinessError) => {
+                this.result = `open error: ${error.code}`;
+              });
+          })
 
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
       }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
