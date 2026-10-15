@@ -1740,6 +1740,10 @@ With this permission, the application can add sync root folders to the sidebar o
 
 Allows an application to disable screen privacy protection while recording the screen.
 
+With this permission, the application can record system UI elements (such as status notifications and input method editors) that are shielded by default under screen privacy protection during screen recording.
+
+**Prerequisites**: Before requesting this permission, the application must request the [ohos.permission.CUSTOM_SCREEN_RECORDING](#ohos.permission.CUSTOM_SCREEN_RECORDING) permission (privacy warnings will no longer be displayed after user authorization is obtained.)
+
 <!--RP113--><!--RP113End-->
 
 **Permission level**: system_basic
