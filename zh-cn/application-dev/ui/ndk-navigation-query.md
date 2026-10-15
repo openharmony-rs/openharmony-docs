@@ -94,7 +94,7 @@ int32_t nameLen = OH_ArkUI_GetNavDestinationName(handle, name, NUM_50, &nameLen)
     
 int32_t index = -1;
 OH_ArkUI_GetNavDestinationIndex(handle, &index);
-OH_LOG_Print(LOG_APP, LOG_ERROR, 0xFF00, "NAPI",
+OH_LOG_Print(LOG_APP, LOG_INFO, 0xFF00, "NAPI",
              "navigation id: %{public}s, name: %{public}s, index: %{public}d, error: %{public}s",
              navigationId, name, index, info.c_str());
 ```
