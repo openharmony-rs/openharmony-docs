@@ -693,6 +693,21 @@ moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&
 | 33300002 | Device not connected. |
 | 33300003 | Feature not supported. |
 
+**示例：**
+
+```ts
+let mechId: number = 0;
+let speedParams: mechanicManager.SpeedParams = {
+    speed: 0,
+    angle: 0,
+    mode: undefined
+};
+let duration: number = 1;
+mechanicManager.moveBySpeed(mechId, speedParams, duration).then((result) => {
+    console.info(`'result:' ${result}`);
+});
+```
+
 ## mechanicManager.onBatteryLevelChange
 
 onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;): void
