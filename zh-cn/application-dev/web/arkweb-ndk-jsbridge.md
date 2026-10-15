@@ -740,24 +740,25 @@
 
 * Native侧业务代码
   <!-- @[the_service_code_on_the_native_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/jsbridge_object.h) -->
-
-  ```c++
+  
+  ``` C
   // entry/src/main/cpp/jsbridge_object.h
   #include "web/arkweb_type.h"
   #include <string>
-
+  
   class JSBridgeObject : public std::enable_shared_from_this<JSBridgeObject> {
   public:
-      JSBridgeObject(const char* webTag);
+      explicit JSBridgeObject(const char* webTag);
       ~JSBridgeObject() = default;
       void Init();
       std::weak_ptr<JSBridgeObject>* GetWeakPtr();
-      static void StaticRunJavaScriptCallback(const char *webTag, const ArkWeb_JavaScriptBridgeData *data, void *userData);
+      static void StaticRunJavaScriptCallback(const char *webTag, const ArkWeb_JavaScriptBridgeData *data,
+          void *userData);
       void RunJavaScriptCallback(const char *result);
       void ProxyMethod1(const ArkWeb_JavaScriptBridgeData *dataArray, int32_t arraySize);
       void ProxyMethod2(const ArkWeb_JavaScriptBridgeData *dataArray, int32_t arraySize);
       void SaySomething(const char* say);
-
+  
   private:
       std::string webTag_;
       std::weak_ptr<JSBridgeObject> weak_ptr_;
