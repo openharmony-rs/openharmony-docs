@@ -202,7 +202,7 @@ Enumerates animation curves.
 | ARKUI_CURVE_FAST_OUT_SLOW_IN = 5 | The animation uses the standard curve.|
 | ARKUI_CURVE_LINEAR_OUT_SLOW_IN = 6 | The animation uses the deceleration curve.|
 | ARKUI_CURVE_FAST_OUT_LINEAR_IN = 7 | The animation uses the acceleration curve.|
-| ARKUI_CURVE_EXTREME_DECELERATION = 8 | The animation uses the extremely slow curve. |
+| ARKUI_CURVE_EXTREME_DECELERATION = 8 | The animation uses the extreme deceleration curve. |
 | ARKUI_CURVE_SHARP = 9 | The animation uses the sharp curve.|
 | ARKUI_CURVE_RHYTHM = 10 | The animation uses the rhythm curve.|
 | ARKUI_CURVE_SMOOTH = 11 | The animation uses the smooth curve.|

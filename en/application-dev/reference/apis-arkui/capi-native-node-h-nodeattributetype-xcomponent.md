@@ -27,7 +27,7 @@ Enumerates the **XComponent** attribute types that can be set by ArkUI on the na
 NODE_XCOMPONENT_ID = MAX_NODE_SCOPE_NUM * ARKUI_NODE_XCOMPONENT = 12000
 ```
 
-ID of the **XComponent** component. This attribute can be set and obtained through APIs.<br>
+ID of the **XComponent** component. This attribute can be set and obtained as required through APIs.<br>
 The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br>
 
 **Since**: 12
