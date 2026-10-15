@@ -3655,8 +3655,8 @@ encodeToStringSync(src: Uint8Array, options?: Type): string
   /*
   输出结果：result = TWFuaXNkaXN0aW5ndWlzaGVkbm90b25seWJ5aGlzcmVhc29uYnV0Ynl0aGlzc2luZ3VsYXJwYXNzaW9uZnJvbW90aGVyYW5pbWFsc3doaWNoaXNhbHVzdG9mdGhlbWluZGV4Y2VlZHN0aGVzaG9ydHZlaGVtZW5jZW9mYW55Y2FybmFscGxlYXN1cmU=
    */
-  
-  // MIME_URL_SAFE编码
+
+  // BASIC_URL_SAFE编码
   let base64Helper = new util.Base64Helper();
   let array =
     new Uint8Array([77, 97, 110, 105, 115, 100, 105, 115, 116, 105, 110, 103, 117, 105, 115, 104, 101, 100, 110, 111, 116,
