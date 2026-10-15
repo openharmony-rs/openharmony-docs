@@ -801,47 +801,49 @@ export struct ActionMenuBeforeMigrate {
 
 <!-- @[action_menu_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuAfterMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct ShowActionMenuMigrationPage {
+export struct ActionMenuAfterMigrate {
   private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
 
   build() {
-    Row() {
-      Column() {
-        Text('showActionMenu 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
+    NavDestination() {
+      Row() {
+        Column() {
+          Text('showActionMenu 迁移示例')
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+            .margin({ bottom: 20 })
 
-        Button('老接口：promptAction.showActionMenu')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 js-apis-promptAction.md';
-          })
+          Button('老接口：promptAction.showActionMenu')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.result = '老接口示例请参考 js-apis-promptAction.md';
+            })
 
-        Button('新接口：DialogPresenter.present（操作菜单）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewActionMenu();
-          })
+          Button('新接口：DialogPresenter.present（操作菜单）')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.showNewActionMenu();
+            })
 
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
+          if (this.result) {
+            Text(this.result)
+              .fontSize(14)
+              .margin({ top: 10 })
+          }
         }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 
   private showNewActionMenu(): void {
