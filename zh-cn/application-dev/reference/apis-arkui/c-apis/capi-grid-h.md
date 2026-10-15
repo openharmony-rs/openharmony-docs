@@ -6,6 +6,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -50,6 +52,8 @@ enum ArkUI_GridItemAlignment
 
 GridItem对齐方式枚举。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -66,6 +70,8 @@ enum ArkUI_GridItemStyle
 **描述：**
 
 GridItem样式枚举。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -87,6 +93,8 @@ ArkUI_GridLayoutOptions* OH_ArkUI_GridLayoutOptions_Create()
 
 创建Grid布局选项。使用完毕后调用OH_ArkUI_GridLayoutOptions_Dispose销毁。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **返回值：**
@@ -105,6 +113,8 @@ void OH_ArkUI_GridLayoutOptions_Dispose(ArkUI_GridLayoutOptions* option)
 
 销毁Grid布局选项并释放资源。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -122,6 +132,8 @@ int32_t OH_ArkUI_GridLayoutOptions_SetIrregularIndexes(ArkUI_GridLayoutOptions* 
 **描述：**
 
 设置Grid中不规则GridItem的索引数组。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -149,6 +161,8 @@ int32_t OH_ArkUI_GridLayoutOptions_GetIrregularIndexes(ArkUI_GridLayoutOptions* 
 
 获取Grid中不规则GridItem的索引数组。当不设置OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback时， irregularIndexes中GridItem的默认大小为垂直滚动Grid的一整行或水平滚动Grid的一整列。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -175,6 +189,8 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetIrregularSizeByIndexCallback(ArkUI_Gr
 
 Grid布局选项通过GridItem索引获取指定Item占用的行列数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -194,6 +210,8 @@ void OH_ArkUI_GridLayoutOptions_RegisterGetRectByIndexCallback(ArkUI_GridLayoutO
 **描述：**
 
 Grid布局选项通过GridItem索引获取指定Item的起始行列和占用的行列数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 

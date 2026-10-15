@@ -8,6 +8,8 @@
 
 **库：** libnative_media_codecbase.so
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 **相关模块：** [CodecBase](capi-codecbase.md)
@@ -262,6 +264,7 @@
 | const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_RIGHT | 视频编码前处理裁剪区域右边坐标（x）的键，值类型为int32_t。<br> 该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能， 默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。 降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br> 该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_BOTTOM | 视频编码前处理裁剪区域底部坐标（y）的键，值类型为int32_t。<br> 该键是可选的，裁剪功能默认关闭。OH_MD_KEY_VIDEO_ENCODER_PREPROC_CROP_LEFT/TOP/RIGHT/BOTTOM 4个参数必须同时配置，当全部设置为0时则关闭裁剪功能， 默认坐标原点为输入视频帧左上角(0, 0)，坐标取值不可超过输入视频帧宽高，且需满足(0, 0) <= (LEFT, TOP) < (RIGHT, BOTTOM) < (输入视频帧宽度，输入视频帧高度)。 降采样参数与裁剪参数互斥，降采样功能与裁剪功能不可同时启用。<br> 该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_ENCODER_PREPROC_DROP_TO_FRAME_RATE | 视频编码前处理丢帧目标帧率的键，值类型为double，数值精度保留2位小数。<br> 该键是可选的，丢帧功能默认关闭。当设置0.00时则关闭丢帧功能，配置值时自动四舍五入保留两位小数。可独立使用，也可与降采样或裁剪组合使用。<br> 该键仅用于支持前处理的视频编码器或一入二出编码场景，可在Configure阶段配置或通过SetParameter运行时动态调整。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
+| const char *OH_MD_KEY_VIDEO_SET_DMABUF_NAME_SUFFIX | 设置视频编解码器DMABUF名称后缀的键，值类型为字符串。<br> 该后缀使用':'作为分隔符，拼接在编解码器内部DMABUF名称之后。最终的DMABUF名称格式为：{系统自定义字符串}:{后缀}。 注意：前缀为当前系统自定义字符串，可能会随系统版本变化。<br> 后缀值的约束： 1. 仅允许ASCII可打印字符，若后缀包含任何非ASCII字符、空格、换行、制表符或其他不可见（控制）字符。将返回 [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)。 2. 后缀必须至少包含一个非数字字符，否则将返回 [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode)。<br> 该键是可选项，未设置时DMABUF名称保持不变。 可通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)或[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)进行配置。<br>**起始版本：** 26.0.1<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE | 设置视频解码帧保留模式的键。取值类型为int32_t。<br> 该值表示在[OH_FrameRetentionMode](capi-native-avcodec-base-h.md#oh_frameretentionmode)中定义的帧保留模式。 每种模式的详细说明及其行为请参考枚举定义OH_FrameRetentionMode。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_RATIO | 设置视频解码帧保留比例的键。取值类型为double。<br> 当[OH_MD_KEY_VIDEO_DECODER_FRAME_RETENTION_MODE](capi-native-avcodec-base-h.md#变量)设置为 [OH_FRAME_RETENTION_MODE_UNIFORM](capi-native-avcodec-base-h.md#oh_frameretentionmode)时， 或者未配置保留模式（隐式默认走到均匀逻辑）时，该参数生效。<br> 仅当保留模式显式设置为[OH_FRAME_RETENTION_MODE_ADAPTIVE](capi-native-avcodec-base-h.md#oh_frameretentionmode) 或[OH_FRAME_RETENTION_MODE_FULL](capi-native-avcodec-base-h.md#oh_frameretentionmode)时，此配置才会被忽略。<br> 有效范围是[0.01, 1.0]（其中1.0表示保留所有帧，0.01为最小限制）， 任何超出此范围的值都将被视为无效并被忽略。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
 | const char *OH_MD_KEY_VIDEO_DECODER_SPEED | 配置视频解码器播放倍速的键。取值类型为double。<br> 该键用于指定视频的目标播放倍速。主要推荐与 [OH_FRAME_RETENTION_MODE_ADAPTIVE](capi-native-avcodec-base-h.md#oh_frameretentionmode)模式结合使用， 以辅助感知自适应算法准确评估丢帧对视觉感知的影响。<br> 取值必须严格大于0.0，推荐的标准值包括0.5、0.75、1.0（正常速度）、1.25、1.5、2.0 和 3.0， 任何小于或等于0.0的值都会被视为无效。<br> 可以通过[OH_VideoDecoder_Configure](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_configure)和[OH_VideoDecoder_SetParameter](capi-native-avcodec-videodecoder-h.md#oh_videodecoder_setparameter)接口进行配置。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Media.CodecBase |
@@ -286,6 +289,8 @@ enum OH_MediaType
 
 媒体类型。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -306,6 +311,8 @@ enum OH_AACProfile
 
 AAC档次。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -324,6 +331,8 @@ enum OH_AVCProfile
 
 AVC档次。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -341,6 +350,8 @@ enum OH_HEVCProfile
 **描述：**
 
 HEVC档次。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 
@@ -361,6 +372,8 @@ enum OH_VVCProfile
 **描述：**
 
 VVC档次。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 15
 
@@ -392,6 +405,8 @@ enum OH_MPEG2Profile
 
 MPEG2档次。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 17
 
 | 枚举项 | 描述 |
@@ -412,6 +427,8 @@ enum OH_MPEG4Profile
 **描述：**
 
 MPEG4档次。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 17
 
@@ -443,6 +460,8 @@ enum OH_H263Profile
 
 H.263档次。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 17
 
 | 枚举项 | 描述 |
@@ -459,6 +478,8 @@ enum OH_VC1Profile
 **描述：**
 
 VC-1档次。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 22
 
@@ -478,6 +499,8 @@ enum OH_AV1Profile
 
 AV1档次。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -495,6 +518,8 @@ enum OH_VP9Profile
 **描述：**
 
 VP9档次。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 23
 
@@ -515,6 +540,8 @@ enum OH_WVC1Profile
 
 WVC1档次。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -530,6 +557,8 @@ enum OH_WMV3Profile
 **描述：**
 
 WMV3档次。<br> *
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 22
 
@@ -547,6 +576,8 @@ enum OH_AVOutputFormat
 **描述：**
 
 封装器支持的输出文件格式。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 
@@ -573,6 +604,8 @@ enum OH_AVSeekMode
 
 跳转模式。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -590,6 +623,8 @@ enum OH_ScalingMode
 **描述：**
 
 缩放模式，只在Surface模式下使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 
@@ -611,6 +646,8 @@ enum OH_BitsPerSample
 **描述：**
 
 每个编码样本的音频位数。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 
@@ -638,6 +675,8 @@ enum OH_ColorPrimary
 
 色域。编解码都支持。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -663,6 +702,8 @@ enum OH_TransferCharacteristic
 **描述：**
 
 转移特性。编解码都支持。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 
@@ -696,6 +737,8 @@ enum OH_MatrixCoefficient
 
 矩阵系数。编解码都支持。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -724,6 +767,8 @@ enum OH_AVCLevel
 **描述：**
 
 AVC级别。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 12
 
@@ -760,6 +805,8 @@ enum OH_HEVCLevel
 
 HEVC级别。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -787,6 +834,8 @@ enum OH_VVCLevel
 **描述：**
 
 VVC级别。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 15
 
@@ -818,6 +867,8 @@ enum OH_MPEG2Level
 
 MPEG2级别。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 17
 
 | 枚举项 | 描述 |
@@ -836,6 +887,8 @@ enum OH_MPEG4Level
 **描述：**
 
 MPEG4级别。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 17
 
@@ -862,6 +915,8 @@ enum OH_H263Level
 
 H.263级别。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 17
 
 | 枚举项 | 描述 |
@@ -885,6 +940,8 @@ enum OH_VC1Level
 
 VC-1级别。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -907,6 +964,8 @@ enum OH_AV1Level
 **描述：**
 
 AV1级别。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 23
 
@@ -947,6 +1006,8 @@ enum OH_VP9Level
 
 VP9级别。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -976,6 +1037,8 @@ enum OH_WVC1Level
 
 WVC1级别。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -996,6 +1059,8 @@ enum OH_WMV3Level
 
 WMV3级别。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -1014,6 +1079,8 @@ enum OH_TemporalGopReferenceMode
 
 时域图片组参考模式。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -1031,6 +1098,8 @@ enum OH_BitrateMode
 **描述：**
 
 编码器的比特率模式。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 10
 
@@ -1052,6 +1121,8 @@ enum OH_FrameRetentionMode
 
 视频解码帧保留模式。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -1069,6 +1140,8 @@ enum OH_AudioEncoderPTSMode
 **描述：**
 
 音频编码器PTS模式。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 26.0.0
 
@@ -1095,6 +1168,8 @@ typedef void (*OH_AVCodecOnError)(OH_AVCodec *codec, int32_t errorCode, void *us
 \| 视频编解码 \| AV_ERR_NO_MEMORY：系统资源不足。<br>AV_ERR_UNKNOWN：未知错误，请通过具体日志分析。<br>AV_ERR_SERVICE_DIED：服务状态已消亡。 \|
 \| 视频解码 \| AV_ERR_VIDEO_UNSUPPORTED_COLOR_SPACE_CONVERSION：当前输入不支持色彩空间转换功能。 \| <!--RP1--><!--RP1End-->
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 **参数：**
@@ -1115,6 +1190,8 @@ typedef void (*OH_AVCodecOnStreamChanged)(OH_AVCodec *codec, OH_AVFormat *format
 
 当视频解码输入码流分辨率或者视频编码输出码流的分辨率发生变化时，调用此函数指针报告新的流描述信息。<br> 从API 15开始，支持音频解码时，码流采样率、声道数或者音频采样格式发生变化时，将调用此函数指针报告新的流描述信息， 支持检测此变化的解码格式有：<!--RP3--><!--RP3End-->AAC，FLAC，MP3，VORBIS。<br> 需要注意的是，OH_AVFormat指针的生命周期只有在函数指针被调用时才有效，调用结束后禁止继续访问。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 9
 
 **参数：**
@@ -1134,6 +1211,8 @@ typedef void (*OH_AVCodecOnNeedInputData)(OH_AVCodec *codec, uint32_t index, OH_
 **描述：**
 
 当OH_AVCodec在运行过程中需要新的输入数据时，将调用此函数指针，并携带可用的缓冲区来填充新的输入数据。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 9
 
@@ -1159,6 +1238,8 @@ typedef void (*OH_AVCodecOnNewOutputData)(OH_AVCodec *codec, uint32_t index, OH_
 **描述：**
 
 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。 需要注意的是，OH_AVCodecBufferAttr指针的生命周期仅在调用函数指针时有效，这将禁止调用结束后继续访问。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 9
 
@@ -1186,6 +1267,8 @@ typedef void (*OH_AVCodecOnNeedInputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 当OH_AVCodec在运行过程中需要新的输入数据时，将调用此函数指针，并携带可用的缓冲区来填充新的输入数据。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 11
 
 **参数：**
@@ -1207,6 +1290,8 @@ typedef void (*OH_AVCodecOnNewOutputBuffer)(OH_AVCodec *codec, uint32_t index, O
 
 当OH_AVCodec运行过程中生成新的输出数据时，将调用此函数指针，并携带包含新输出数据的缓冲区。
 
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
+
 **起始版本：** 11
 
 **参数：**
@@ -1227,6 +1312,8 @@ typedef int32_t (*OH_AVDataSourceReadAt)(OH_AVBuffer *data, int32_t length, int6
 **描述：**
 
 函数指针定义，用于提供获取用户自定义媒体数据的能力。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 12
 
@@ -1253,6 +1340,8 @@ typedef int32_t (*OH_AVDataSourceReadAtExt)(OH_AVBuffer *data, int32_t length, i
 **描述：**
 
 函数指针定义，用于提供获取用户自定义媒体数据的能力。
+
+**系统能力：** SystemCapability.Multimedia.Media.CodecBase
 
 **起始版本：** 20
 

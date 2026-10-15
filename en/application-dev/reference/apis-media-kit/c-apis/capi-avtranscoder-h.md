@@ -80,7 +80,7 @@ Releases the resources of the transcoding configuration parameters. After a succ
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The release operation is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The release operation is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr. |
 
 ### OH_AVTranscoderConfig_SetSrcFD()
 
@@ -107,7 +107,7 @@ Sets the file descriptor of the source video for transcoding. This function must
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the parameters related to the source video file are incorrect. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the parameters related to the source video file are incorrect. |
 
 ### OH_AVTranscoderConfig_SetDstFD()
 
@@ -132,7 +132,7 @@ Sets the file descriptor of the output video for transcoding. This function must
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the output video file descriptor is invalid. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the output video file descriptor is invalid. |
 
 ### OH_AVTranscoderConfig_SetDstVideoType()
 
@@ -157,7 +157,7 @@ Sets the encoding format of the output video for transcoding. Currently, only AV
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **mimeType** is not allowed. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **mimeType** is not allowed. |
 
 ### OH_AVTranscoderConfig_SetDstAudioType()
 
@@ -182,7 +182,7 @@ Sets the encoding format of the output audio for transcoding. Currently, only AA
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **mimeType** is not allowed. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **mimeType** is not allowed. |
 
 ### OH_AVTranscoderConfig_SetDstFileType()
 
@@ -207,7 +207,7 @@ Sets the container format of the output video file for transcoding. Currently, o
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **mimeType** is invalid. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **mimeType** is invalid. |
 
 ### OH_AVTranscoderConfig_SetDstAudioBitrate()
 
@@ -232,7 +232,7 @@ Sets the bit rate of the output audio for transcoding. This function must be cal
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **bitrate** is invalid. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **bitrate** is invalid. |
 
 ### OH_AVTranscoderConfig_SetDstVideoBitrate()
 
@@ -257,7 +257,7 @@ Sets the bit rate of the output video for transcoding. This function must be cal
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **bitrate** is invalid. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **bitrate** is invalid. |
 
 ### OH_AVTranscoderConfig_SetDstVideoResolution()
 
@@ -283,7 +283,7 @@ Sets the resolution of the output video for transcoding, in px, where **width** 
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **width** or **height** is invalid. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr, or the value of **width** or **height** is invalid. |
 
 ### OH_AVTranscoder_Create()
 
@@ -326,7 +326,7 @@ Sets the parameters for video transcoding and prepares for transcoding. This fun
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The video transcoding parameters are set successfully, and the AVTranscoder enters the AVTRANSCODER_PREPARED state. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Prepare operation fails. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The Prepare operation is not allowed in the current state, or the format is not supported. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The video transcoding parameters are set successfully, and the AVTranscoder enters the AVTRANSCODER_PREPARED state. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Prepare operation fails. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The Prepare operation is not allowed in the current state, or the format is not supported. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
 
 ### OH_AVTranscoder_Start()
 
@@ -350,7 +350,7 @@ Starts transcoding. This function must be called after a successful call to [OH_
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): Transcoding starts successfully, and the AVTranscoder enters the AVTRANSCODER_STARTED state. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Start operation fails. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The Start operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Transcoding starts successfully, and the AVTranscoder enters the AVTRANSCODER_STARTED state. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Start operation fails. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The Start operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
 
 ### OH_AVTranscoder_Pause()
 
@@ -374,7 +374,7 @@ Pauses transcoding. This function must be called when the AVTranscoder is in the
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): Transcoding is paused successfully, and the AVTranscoder enters the AVTRANSCODER_PAUSED state. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Pause operation fails. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The Pause operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Transcoding is paused successfully, and the AVTranscoder enters the AVTRANSCODER_PAUSED state. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Pause operation fails. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The Pause operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
 
 ### OH_AVTranscoder_Resume()
 
@@ -398,7 +398,7 @@ Resumes transcoding. This function must be called when the AVTranscoder is in th
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): Transcoding is resumed successfully, and the AVTranscoder enters the AVTRANSCODER_STARTED state. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Resume operation fails. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The Resume operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Transcoding is resumed successfully, and the AVTranscoder enters the AVTRANSCODER_STARTED state. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Resume operation fails. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The Resume operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
 
 ### OH_AVTranscoder_Cancel()
 
@@ -422,7 +422,7 @@ Cancels transcoding. This function must be called when the AVTranscoder is in th
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): Transcoding is canceled successfully, and the AVTranscoder enters the AVTRANSCODER_CANCELLED state. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Cancel operation fails. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The Cancel operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): Transcoding is canceled successfully, and the AVTranscoder enters the AVTRANSCODER_CANCELLED state. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Cancel operation fails. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The Cancel operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
 
 ### OH_AVTranscoder_Release()
 
@@ -446,7 +446,7 @@ Releases an AVTranscoder instance.
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK: The AVTranscoder instance is successfully released. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Release operation fails. [AV_ERR_OPERATE_NOT_PERMIT](capi-native-averrors-h.md#oh_averrcode): The Release operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | AV_ERR_OK: The AVTranscoder instance is successfully released. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** is nullptr, or the Release operation fails. [AV_ERR_OPERATE_NOT_PERMIT](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The Release operation is not allowed in the current state. **AV_ERR_IO**: An I/O access error occurs. [AV_ERR_SERVICE_DIED](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The media service is stopped. |
 
 ### OH_AVTranscoder_SetStateCallback()
 
@@ -472,7 +472,7 @@ Registers a callback for transcoding state change events. This callback is invok
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The registration is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** or **callback** is nullptr. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The registration is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** or **callback** is nullptr. |
 
 ### OH_AVTranscoder_SetErrorCallback()
 
@@ -498,7 +498,7 @@ Registers a callback for transcoding error events. This callback is invoked when
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The registration is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** or **callback** is nullptr. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The registration is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** or **callback** is nullptr. |
 
 ### OH_AVTranscoder_SetProgressUpdateCallback()
 
@@ -524,7 +524,7 @@ Registers a callback for transcoding progress update events. This callback is in
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The registration is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** or **callback** is nullptr. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The registration is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **transcoder** or **callback** is nullptr. |
 
 ### OH_AVTranscoderConfig_EnableBFrame()
 
@@ -549,6 +549,6 @@ Enables B-frame encoding for the output video during transcoding. For details ab
 
 | Type | Description |
 | -- | -- |
-| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr. |
+| [OH_AVErrCode](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode) | [AV_ERR_OK](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The setting is successful. [AV_ERR_INVALID_VAL](../../apis-avcodec-kit/c-apis/capi-native-averrors-h.md#oh_averrcode): The input parameter **config** is nullptr. |
 
 

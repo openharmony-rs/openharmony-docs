@@ -6,6 +6,8 @@ Declares the modular object extension context.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -41,6 +43,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext
 
 Gets the base context from the modular object extension context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -65,6 +69,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **Description**
 
 Starts the self UIAbility.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -92,6 +98,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **Description**
 
 Starts the self UIAbility with start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -121,6 +129,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(
 
 Destroys the modular object extension.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -144,6 +154,8 @@ OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH
 **Description**
 
 Creates an <b>OHIPCRemoteStub</b> object with callbacks running on the extension's designated thread. The requestCallback and destroyCallback are invoked serially on the thread determined by the extension's [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode). After calling [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub), no new requestCallback invocations will occur, and any in-flight requestCallback will complete before destroyCallback is invoked.<br> The caller is responsible for destroying the returned object by calling [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub) to avoid memory leaks.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -172,6 +184,8 @@ void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRun
 **Description**
 
 Destroys an <b>OHIPCRemoteStub</b> object.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 

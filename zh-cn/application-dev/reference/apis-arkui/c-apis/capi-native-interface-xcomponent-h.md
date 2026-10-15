@@ -8,6 +8,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 8
 
 **相关模块：** [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
@@ -153,6 +155,8 @@ enum anonymous0
 
 枚举API执行结果状态。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
@@ -170,6 +174,8 @@ enum ArkUI_XComponent_ImageAnalyzerState
 **描述：**
 
 XComponent图像AI分析状态码。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -191,6 +197,8 @@ enum OH_NativeXComponent_TouchEventType
 
 触摸事件类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
@@ -210,6 +218,8 @@ enum OH_NativeXComponent_TouchPointToolType
 **描述：**
 
 触摸点工具类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 9
 
@@ -235,6 +245,8 @@ enum OH_NativeXComponent_EventSourceType
 
 事件源类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -256,6 +268,8 @@ enum OH_NativeXComponent_MouseEventAction
 
 鼠标事件动作。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -275,6 +289,8 @@ enum OH_NativeXComponent_MouseEventButton
 **描述：**
 
 鼠标事件按键。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 9
 
@@ -296,6 +312,8 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 **描述：**
 
 表示触摸事件的源工具类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 10
 
@@ -325,6 +343,8 @@ int32_t OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char
 
 获取ArkUI XComponent的id。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 8
 
 **参数：**
@@ -350,6 +370,8 @@ int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, co
 **描述：**
 
 获取ArkUI XComponent持有的Surface的大小。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 8
 
@@ -378,6 +400,8 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 
 获取ArkUI XComponent持有的Surface相对其父组件左顶点的偏移量。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 8
 
 **参数：**
@@ -386,8 +410,8 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 | -- | -- |
 | [OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)* component | 表示指向[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例的指针。 |
 | const void* window | 表示NativeWindow句柄。 |
-| double* x | 表示指向当前Surface相对于XComponent父组件左顶点x坐标的指针。单位：vp。 |
-| double* y | 表示指向当前Surface相对于XComponent父组件左顶点y坐标的指针。单位：vp。 |
+| double* x | 表示指向当前Surface相对于XComponent父组件左顶点x坐标的指针。单位：px。 |
+| double* y | 表示指向当前Surface相对于XComponent父组件左顶点y坐标的指针。单位：px。 |
 
 **返回值：**
 
@@ -404,6 +428,8 @@ int32_t OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, const 
 **描述：**
 
 获取ArkUI XComponent调度的触摸事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 8
 
@@ -431,6 +457,8 @@ int32_t OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component
 
 获取ArkUI XComponent触摸点工具类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 9
 
 **参数：**
@@ -456,6 +484,8 @@ int32_t OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, u
 **描述：**
 
 获取ArkUI XComponent触摸点倾斜与X轴角度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 9
 
@@ -483,6 +513,8 @@ int32_t OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, u
 
 获取ArkUI XComponent触摸点倾斜与Y轴角度。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 9
 
 **参数：**
@@ -508,6 +540,8 @@ int32_t OH_NativeXComponent_GetTouchPointWindowX(OH_NativeXComponent* component,
 **描述：**
 
 获取ArkUI XComponent触摸点相对于应用窗口左上角的X坐标。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -535,6 +569,8 @@ int32_t OH_NativeXComponent_GetTouchPointWindowY(OH_NativeXComponent* component,
 
 获取ArkUI XComponent触摸点相对于应用窗口左上角的Y坐标。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -560,6 +596,8 @@ int32_t OH_NativeXComponent_GetTouchPointDisplayX(OH_NativeXComponent* component
 **描述：**
 
 获取ArkUI XComponent触摸点相对于应用所在屏幕左上角的X坐标。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -587,6 +625,8 @@ int32_t OH_NativeXComponent_GetTouchPointDisplayY(OH_NativeXComponent* component
 
 获取ArkUI XComponent触摸点相对于应用所在屏幕左上角的Y坐标。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -612,6 +652,8 @@ int32_t OH_NativeXComponent_GetHistoricalPoints(OH_NativeXComponent* component, 
 **描述：**
 
 获取当前XComponent触摸事件的历史点信息。 由于部分输入设备上报触点的频率非常高（最高可达每1 ms上报一次），而对输入事件的响应通常是为了使UI界面发生变化以响应用户操作。如果按照触点上报的频率将触摸事件高频率上报给应用，大多会造成冗余。 因此，触摸事件在一帧内只会上报一次给应用。在当前帧内上报的触点均作为历史点保存，如果应用需要直接处理这些数据，可调用该接口获取历史点信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 10
 
@@ -640,6 +682,8 @@ int32_t OH_NativeXComponent_GetMouseEvent(OH_NativeXComponent* component, const 
 
 获取ArkUI XComponent调度的鼠标事件。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 9
 
 **参数：**
@@ -666,6 +710,8 @@ int32_t OH_NativeXComponent_RegisterCallback(OH_NativeXComponent* component, OH_
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册回调。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 8
 
 **参数：**
@@ -690,6 +736,8 @@ int32_t OH_NativeXComponent_RegisterMouseEventCallback(OH_NativeXComponent* comp
 **描述：**
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册鼠标事件回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 9
 
@@ -716,6 +764,8 @@ int32_t OH_NativeXComponent_GetExtraMouseEventInfo(OH_NativeXComponent* componen
 
 从此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例中获取扩展的鼠标事件信息。 此接口需在鼠标事件回调（通过OH_NativeXComponent_RegisterMouseEventCallback注册）执行期间调用。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -740,6 +790,8 @@ int32_t OH_NativeXComponent_GetMouseEventModifierKeyStates(OH_NativeXComponent_E
 **描述：**
 
 从[OH_NativeXComponent_ExtraMouseEventInfo](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent-extramouseeventinfo.md)实例中获取功能键按压状态信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -766,6 +818,8 @@ int32_t OH_NativeXComponent_RegisterFocusEventCallback(OH_NativeXComponent* comp
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册获焦事件回调。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 10
 
 **参数：**
@@ -790,6 +844,8 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallback(OH_NativeXComponent* compon
 **描述：**
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册按键事件回调。 该接口注册的回调无返回值，无法控制按键事件是否继续分发。如需拦截按键事件，请使用OH_NativeXComponent_RegisterKeyEventCallbackWithResult。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 10
 
@@ -816,6 +872,8 @@ int32_t OH_NativeXComponent_RegisterBlurEventCallback(OH_NativeXComponent* compo
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册失焦事件回调。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 10
 
 **参数：**
@@ -840,6 +898,8 @@ int32_t OH_NativeXComponent_GetKeyEvent(OH_NativeXComponent* component, OH_Nativ
 **描述：**
 
 获取ArkUI XComponent调度的按键事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 10
 
@@ -866,6 +926,8 @@ int32_t OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyE
 
 获取传入按键事件的动作。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 10
 
 **参数：**
@@ -890,6 +952,8 @@ int32_t OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEve
 **描述：**
 
 获取传入按键事件的按键码。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 10
 
@@ -916,6 +980,8 @@ int32_t OH_NativeXComponent_GetKeyEventSourceType(OH_NativeXComponent_KeyEvent* 
 
 获取传入按键事件的事件源类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 10
 
 **参数：**
@@ -940,6 +1006,8 @@ int32_t OH_NativeXComponent_GetKeyEventDeviceId(OH_NativeXComponent_KeyEvent* ke
 **描述：**
 
 获取传入按键事件的设备id。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 10
 
@@ -966,6 +1034,8 @@ int32_t OH_NativeXComponent_GetKeyEventTimestamp(OH_NativeXComponent_KeyEvent* k
 
 获取传入按键事件的时间戳。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 10
 
 **参数：**
@@ -990,6 +1060,8 @@ int32_t OH_NativeXComponent_GetKeyEventModifierKeyStates(OH_NativeXComponent_Key
 **描述：**
 
 从按键事件中获取功能键按压状态信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1016,6 +1088,8 @@ int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent
 
 从按键事件中获取NumLock（小键盘锁定）键的状态信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1040,6 +1114,8 @@ int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEven
 **描述：**
 
 从按键事件中获取CapsLock（大写锁定）键的状态信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1066,6 +1142,8 @@ int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEv
 
 从按键事件中获取ScrollLock（滚动锁定）键的状态信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1090,6 +1168,8 @@ int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* compo
 **描述：**
 
 设置期望帧率范围。 本接口适用于通过OH_NativeXComponent指针操作的场景。若使用NativeNode（ArkUI_NodeHandle）创建的XComponent， 请使用OH_ArkUI_XComponent_SetExpectedFrameRateRange接口。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 11
 
@@ -1116,6 +1196,8 @@ int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* compone
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册显示更新回调，并使能每帧回调此函数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 11
 
 **参数：**
@@ -1141,6 +1223,8 @@ int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* compo
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例取消注册回调函数，并关闭每帧回调此函数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 11
 
 **参数：**
@@ -1164,6 +1248,8 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 **描述：**
 
 将通过ArkUI的Native接口创建出来的UI组件挂载到当前XComponent上。 > <b>说明：</b> > > 挂载的组件在不再需要时，必须调用OH_NativeXComponent_DetachNativeRootNode进行卸载，避免内存泄漏。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1192,6 +1278,8 @@ int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component,
 
 将ArkUI的Native组件从当前XComponent上卸载。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **废弃版本：** 20
@@ -1219,6 +1307,8 @@ int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent *co
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册UI输入事件回调，并使能收到UI输入事件时回调此函数。 当前仅支持轴事件。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1245,6 +1335,8 @@ int32_t OH_NativeXComponent_RegisterOnTouchInterceptCallback(OH_NativeXComponent
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册自定义事件拦截回调，并使能在做触摸测试时回调此函数。 通过该回调获取到的事件对象不支持UIInput相关信息操作接口，建议切换为通过注册native node上的NODE_ON_TOUCH_INTERCEPT通用事件来支持。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1269,6 +1361,8 @@ int32_t OH_NativeXComponent_SetNeedSoftKeyboard(OH_NativeXComponent* component, 
 **描述：**
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例设置是否需要软键盘。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1295,6 +1389,8 @@ int32_t OH_NativeXComponent_RegisterSurfaceShowCallback(OH_NativeXComponent* com
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册Surface显示回调，该回调在应用窗口已经从后台回到前台时触发。 对于基于NativeNode（ArkUI_NodeHandle）创建的XComponent，建议使用OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1320,6 +1416,8 @@ int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* com
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册Surface隐藏回调，该回调在应用窗口已经从前台进入后台时触发。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1344,6 +1442,8 @@ int32_t OH_NativeXComponent_GetTouchEventSourceType(OH_NativeXComponent* compone
 **描述：**
 
 获取ArkUI XComponent触摸事件的输入设备类型。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1371,6 +1471,8 @@ OH_NativeXComponent* OH_NativeXComponent_GetNativeXComponent(ArkUI_NodeHandle no
 
 基于Native接口创建的组件实例获取[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)类型的指针。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1394,6 +1496,8 @@ int32_t OH_NativeXComponent_GetNativeAccessibilityProvider(OH_NativeXComponent* 
 **描述：**
 
 获取ArkUI XComponent无障碍接入句柄指针。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 13
 
@@ -1420,6 +1524,8 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXCompone
 
 为此[OH_NativeXComponent](capi-oh-nativexcomponent-native-xcomponent-oh-nativexcomponent.md)实例注册带有返回值的按键事件回调。 通过此接口注册的按键事件回调都必须返回一个结果，即true或false。当返回值为true时，该事件将不会继续分发；当返回值为false时，该事件将按照事件处理流程继续分发。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 14
 
 **参数：**
@@ -1444,6 +1550,8 @@ int32_t OH_ArkUI_XComponent_StartImageAnalyzer(ArkUI_NodeHandle node, void* user
 **描述：**
 
 为此XComponent组件实例开始图像AI分析，使用前需先使能图像AI分析能力（例如通过XComponent组件的enableAnalyzer属性开启）。 - <b>前置条件：</b> 调用此方法前，需先通过XComponent组件的enableAnalyzer属性使能图像AI分析能力（具体参见XComponent图像分析相关配置说明）。 - <b>配对调用：</b> 此方法与OH_ArkUI_XComponent_StopImageAnalyzer配对使用，开始分析后应在分析完成或不再需要时调用Stop停止分析。 - <b>状态说明：</b> 可通过回调函数返回的ArkUI_XComponent_ImageAnalyzerState获取分析状态（如ARKUI_XCOMPONENT_AI_ANALYSIS_FINISHED、 ARKUI_XCOMPONENT_AI_ANALYSIS_ONGOING等）。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -1471,6 +1579,8 @@ int32_t OH_ArkUI_XComponent_StopImageAnalyzer(ArkUI_NodeHandle node)
 
 为此XComponent组件实例停止图像AI分析。 使用前需先使能图像AI分析能力。 <b>方法关系（配对调用）：</b> 此方法为OH_ArkUI_XComponent_StartImageAnalyzer的配对方法，需在调用StartImageAnalyzer分析完成或不再需要分析时， 调用此方法停止分析并释放相关资源。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 18
 
 **参数：**
@@ -1494,6 +1604,8 @@ OH_ArkUI_SurfaceHolder* OH_ArkUI_SurfaceHolder_Create(ArkUI_NodeHandle node)
 **描述：**
 
 创建XComponent组件的[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1519,6 +1631,8 @@ void OH_ArkUI_SurfaceHolder_Dispose(OH_ArkUI_SurfaceHolder* surfaceHolder)
 
 销毁[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1536,6 +1650,8 @@ int32_t OH_ArkUI_SurfaceHolder_SetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder
 **描述：**
 
 向[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例存储自定义数据。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1562,6 +1678,8 @@ void* OH_ArkUI_SurfaceHolder_GetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder)
 
 获取[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例存储的自定义数据。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1586,6 +1704,8 @@ OH_ArkUI_SurfaceCallback* OH_ArkUI_SurfaceCallback_Create()
 
 创建[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **返回值：**
@@ -1604,6 +1724,8 @@ void OH_ArkUI_SurfaceCallback_Dispose(OH_ArkUI_SurfaceCallback* callback)
 
 销毁[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1621,6 +1743,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(OH_ArkUI_SurfaceCallback* c
 **描述：**
 
 设置Surface生命周期回调中的创建回调事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1641,6 +1765,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(OH_ArkUI_SurfaceCallback* c
 
 设置Surface生命周期回调中的大小改变回调事件。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1660,6 +1786,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(OH_ArkUI_SurfaceCallback*
 
 设置Surface生命周期回调中的销毁回调事件。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1678,6 +1806,8 @@ int32_t OH_ArkUI_SurfaceHolder_AddSurfaceCallback(OH_ArkUI_SurfaceHolder* surfac
 **描述：**
 
 添加Surface生命周期回调到[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1704,6 +1834,8 @@ int32_t OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback(OH_ArkUI_SurfaceHolder* sur
 
 删除[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例先前添加的Surface生命周期回调。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1729,6 +1861,8 @@ OHNativeWindow* OH_ArkUI_XComponent_GetNativeWindow(OH_ArkUI_SurfaceHolder* surf
 
 获取[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例关联的NativeWindow。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1752,6 +1886,8 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 **描述：**
 
 设置XComponent组件是否需要自动初始化Surface的标志位。 配置依赖： - 当autoInitialize为true（默认值）时，Surface会在组件挂树/下树时自动初始化和销毁，无需手动调用OH_ArkUI_XComponent_Initialize和OH_ArkUI_XComponent_Final ize。 - 当autoInitialize设置为false时，开发者必须手动调用OH_ArkUI_XComponent_Initialize初始化Surface， 并在不再使用时调用OH_ArkUI_XComponent_Finalize销毁Surface。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1778,6 +1914,8 @@ int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)
 
 初始化XComponent组件持有的Surface。 需在调用此接口前，先通过OH_ArkUI_XComponent_SetAutoInitialize()将autoInitialize设置为false，以避免Surface在组件挂树时被自动初始化。 配对调用： - 调用此接口初始化Surface后，必须在Surface不再使用时调用OH_ArkUI_XComponent_Finalize销毁Surface。 - 若Surface已经处于初始化状态，再次调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。 - 可通过OH_ArkUI_XComponent_IsInitialized查询当前初始化状态。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1802,6 +1940,8 @@ int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)
 
 销毁XComponent组件持有的Surface。 配对调用： - 此接口用于销毁由OH_ArkUI_XComponent_Initialize初始化的Surface，必须在Initialize之后调用。 - 若Surface尚未初始化或已被销毁，调用将返回ARKUI_ERROR_CODE_XCOMPONENT_STATE_INVALID。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 19
 
 **参数：**
@@ -1825,6 +1965,8 @@ int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitial
 **描述：**
 
 获取XComponent组件是否已经初始化的标志位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 19
 
@@ -1851,6 +1993,8 @@ int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_
 
 为此XComponent组件实例设置期望帧率范围。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1875,6 +2019,8 @@ int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node, void 
 **描述：**
 
 为此XComponent组件实例注册帧回调函数，并使能每帧回调此函数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1901,6 +2047,8 @@ int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)
 
 为此XComponent组件实例取消注册帧回调函数，并关闭每帧回调此函数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1924,6 +2072,8 @@ int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool need
 **描述：**
 
 为此XComponent组件实例设置是否需要软键盘。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -1950,6 +2100,8 @@ ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHan
 
 基于此XComponent实例创建[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)实例。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1974,6 +2126,8 @@ void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provide
 
 销毁由Native接口OH_ArkUI_AccessibilityProvider_Create创建的[ArkUI_AccessibilityProvider](capi-arkui-accessibility-arkui-accessibilityprovider.md)实例。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1991,6 +2145,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* call
 **描述：**
 
 为此[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例设置Surface显示回调，该回调在应用窗口已经从后台回到前台时触发。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2011,6 +2167,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* call
 
 为此[OH_ArkUI_SurfaceCallback](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfacecallback.md)实例设置Surface隐藏回调，该回调在应用窗口已经从前台进入后台时触发。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2030,6 +2188,8 @@ ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()
 
 创建XComponent组件的[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **返回值：**
@@ -2047,6 +2207,8 @@ void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* con
 **描述：**
 
 销毁[ArkUI_XComponentSurfaceConfig](capi-oh-nativexcomponent-native-xcomponent-arkui-xcomponentsurfaceconfig.md)对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -2066,6 +2228,8 @@ void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig*
 
 设置XComponent组件持有的Surface在渲染时是否被视为不透明，无论该Surface是否存在半透明像素。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -2084,6 +2248,8 @@ int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder *surfaceH
 **描述：**
 
 为[OH_ArkUI_SurfaceHolder](capi-oh-nativexcomponent-native-xcomponent-oh-arkui-surfaceholder.md)实例设置Surface选项。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 

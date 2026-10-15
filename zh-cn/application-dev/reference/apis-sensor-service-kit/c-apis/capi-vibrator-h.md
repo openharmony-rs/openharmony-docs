@@ -6,6 +6,8 @@
 
 **库：** libohvibrator.z.so
 
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 **起始版本：** 11
 
 **相关模块：** [Vibrator](capi-vibrator.md)
@@ -31,6 +33,8 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 **描述：**
 
 控制马达在指定时间内持续振动。调用成功后，马达立即开始振动，持续指定时间后自动停止。适用于需要固定时长振动的场景，如闹钟、计时提醒、游戏反馈、消息提醒等。
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
 
 **需要权限：** ohos.permission.VIBRATE
 
@@ -65,6 +69,8 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 播放自定义振动序列。调用成功后，系统按照自定义振动序列的配置播放振动效果。适用于通知提醒、游戏、触觉反馈等需要复杂振动模式的场景，帮助实现个性化振动体验，增强用户沉浸感。
 
+**系统能力：** SystemCapability.Sensors.MiscDevice
+
 **需要权限：** ohos.permission.VIBRATE
 
 **起始版本：** 11
@@ -96,6 +102,8 @@ int32_t OH_Vibrator_Cancel()
 **描述：**
 
 停止马达振动。调用成功后，立即停止当前正在进行的持续振动或自定义振动序列播放。适用于需要立即结束振动的场景，如用户取消操作、应用切换或系统通知消除，帮助优化用户体验和设备功耗。
+
+**系统能力：** SystemCapability.Sensors.MiscDevice
 
 **需要权限：** ohos.permission.VIBRATE
 

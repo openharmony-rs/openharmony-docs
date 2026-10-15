@@ -29,10 +29,10 @@ ArkWeb_ComponentAPI是ArkWeb在Native侧提供的用于监听Web组件生命周�
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#oncontrollerattached) | 注册Controller绑定事件的回调监听器。说明：该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。 |
-| [void (\*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#onpagebegin) | 网页开始加载时触发该回调，该回调只在主frame触发，不会为iframe或frameset内容加载触发。该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。 |
-| [void (\*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#onpageend) | 网页加载完成时触发该回调，该回调只在主frame触发，不会为iframe或frameset内容加载触发。该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。 |
-| [void (\*onDestroy)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#ondestroy) | 当前Web组件销毁时触发该回调。 |
+| [void (\*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#oncontrollerattached) | - | 注册Controller绑定事件的回调监听器。说明：该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。 |
+| [void (\*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#onpagebegin) | - | 网页开始加载时触发该回调，该回调只在主frame触发，不会为iframe或frameset内容加载触发。该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。 |
+| [void (\*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#onpageend) | - | 网页加载完成时触发该回调，该回调只在主frame触发，不会为iframe或frameset内容加载触发。该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。 |
+| [void (\*onDestroy)(const char* webTag, ArkWeb_OnComponentCallback callback, void* userData)](#ondestroy) | - | 当前Web组件销毁时触发该回调。 |
 
 ## 成员函数说明
 
@@ -46,6 +46,14 @@ void (*onControllerAttached)(const char* webTag, ArkWeb_OnComponentCallback call
 
 注册Controller绑定事件的回调监听器。说明：该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。
 
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* webTag |  Web组件名称。 |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | onControllerAttached的回调函数。 |
+|  void* userData | 用户自定义数据。 |
+
 ### onPageBegin()
 
 ```c
@@ -55,6 +63,14 @@ void (*onPageBegin)(const char* webTag, ArkWeb_OnComponentCallback callback, voi
 **描述：**
 
 网页开始加载时触发该回调，该回调只在主frame触发，不会为iframe或frameset内容加载触发。该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* webTag |  Web组件名称。 |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | 网页开始加载时触发的回调函数，用于处理页面加载开始时的业务逻辑。 |
+|  void* userData | 用户自定义数据指针，该数据会在回调触发时传递给回调函数，可用于保存上下文信息或状态数据。 |
 
 ### onPageEnd()
 
@@ -66,6 +82,14 @@ void (*onPageEnd)(const char* webTag, ArkWeb_OnComponentCallback callback, void*
 
 网页加载完成时触发该回调，该回调只在主frame触发，不会为iframe或frameset内容加载触发。该回调需在UI线程中调用，调用前建议通过ARKWEB_MEMBER_MISSING宏校验函数指针是否存在。
 
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* webTag |  Web组件名称。 |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | 网页加载完成时触发的回调函数，用于处理页面加载完成后的业务逻辑。 |
+|  void* userData | 用户自定义数据指针，该数据会在回调触发时传递给回调函数，可用于保存上下文信息或状态数据。 |
+
 ### onDestroy()
 
 ```c
@@ -75,5 +99,13 @@ void (*onDestroy)(const char* webTag, ArkWeb_OnComponentCallback callback, void*
 **描述：**
 
 当前Web组件销毁时触发该回调。
+
+**参数：**
+
+| 参数项 | 描述 |
+| -- | -- |
+| const char* webTag |  Web组件名称。 |
+|  [ArkWeb_OnComponentCallback](capi-arkweb-type-h.md#arkweb_oncomponentcallback) callback | onDestroy的回调函数。 |
+|  void* userData | 用户自定义数据指针。 |
 
 

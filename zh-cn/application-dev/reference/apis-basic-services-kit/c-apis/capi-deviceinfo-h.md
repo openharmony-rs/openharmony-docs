@@ -8,6 +8,8 @@
 
 **库：** libdeviceinfo_ndk.z.so
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **相关模块：** [DeviceInfo](capi-deviceinfo.md)
@@ -34,6 +36,8 @@
 | [const char *OH_GetOsReleaseType(void)](#oh_getosreleasetype) | 获取系统的发布类型。返回预定义的发布类型字符串。 |
 | [const char *OH_GetOSFullName(void)](#oh_getosfullname) | 获取完整的系统版本名。 |
 | [int OH_GetSdkApiVersion(void)](#oh_getsdkapiversion) | 获取系统软件API版本。 |
+| [int OH_GetSdkMinorApiVersion(void)](#oh_getsdkminorapiversion) | 获取系统次版本号。从API版本26.0.0起，为配合语义化版本号，新增次版本号的定义，即中间 字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。 |
+| [int OH_GetSdkPatchApiVersion(void)](#oh_getsdkpatchapiversion) | 获取系统修订版本号。从API版本26.0.0起，为配合语义化版本号，新增修订版本号的定义，即第三 个字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。 |
 | [int OH_GetFirstApiVersion(void)](#oh_getfirstapiversion) | 获取首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本。 |
 | [const char *OH_GetVersionId(void)](#oh_getversionid) | 获取版本ID。 |
 | [const char *OH_GetBuildType(void)](#oh_getbuildtype) | 获取系统的构建类型。 |
@@ -58,6 +62,8 @@ const char *OH_GetDeviceType(void)
 
 获取设备类型。返回预定义的设备类型字符串。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -75,6 +81,8 @@ const char *OH_GetManufacture(void)
 **描述：**
 
 获取设备制造商。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -94,6 +102,8 @@ const char *OH_GetBrand(void)
 
 获取设备品牌。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -111,6 +121,8 @@ const char *OH_GetMarketName(void)
 **描述：**
 
 获取外部产品系列，即外部产品名称。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -130,6 +142,8 @@ const char *OH_GetProductSeries(void)
 
 获取产品系列。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -147,6 +161,8 @@ const char *OH_GetProductModel(void)
 **描述：**
 
 获取认证型号。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -166,6 +182,8 @@ const char *OH_GetSoftwareModel(void)
 
 获取内部软件子型号，当多个硬件型号共用同一软件版本时，该字段用于区分不同的软件分支。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -183,6 +201,8 @@ const char *OH_GetHardwareModel(void)
 **描述：**
 
 获取硬件版本号。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -202,6 +222,8 @@ const char *OH_GetBootloaderVersion(void)
 
 获取Bootloader版本号。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -219,6 +241,8 @@ const char *OH_GetAbiList(void)
 **描述：**
 
 获取应用二进制接口（Abi）。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -238,6 +262,8 @@ const char *OH_GetSecurityPatchTag(void)
 
 获取安全补丁级别。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -255,6 +281,8 @@ const char *OH_GetDisplayVersion(void)
 **描述：**
 
 获取产品版本。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -274,6 +302,8 @@ const char *OH_GetIncrementalVersion(void)
 
 获取差异版本。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -291,6 +321,8 @@ const char *OH_GetOsReleaseType(void)
 **描述：**
 
 获取系统的发布类型。返回预定义的发布类型字符串。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -310,6 +342,8 @@ const char *OH_GetOSFullName(void)
 
 获取完整的系统版本名。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -328,6 +362,8 @@ int OH_GetSdkApiVersion(void)
 
 获取系统软件API版本。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -335,6 +371,46 @@ int OH_GetSdkApiVersion(void)
 | 类型 | 说明 |
 | -- | -- |
 | int | 系统软件API版本，取值范围为整数。常见的取值包括：12等。 |
+
+### OH_GetSdkMinorApiVersion()
+
+```c
+int OH_GetSdkMinorApiVersion(void)
+```
+
+**描述：**
+
+获取系统次版本号。从API版本26.0.0起，为配合语义化版本号，新增次版本号的定义，即中间 字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+**起始版本：** 26.0.1
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | <ul> <li>0 ~ 99 - 系统次版本号，取值范围为整数。</li> <li>-1 - 未查询到系统次版本号, 或调用内部接口失败。</li> </ul> |
+
+### OH_GetSdkPatchApiVersion()
+
+```c
+int OH_GetSdkPatchApiVersion(void)
+```
+
+**描述：**
+
+获取系统修订版本号。从API版本26.0.0起，为配合语义化版本号，新增修订版本号的定义，即第三 个字段的值，值为整型数。完整版本号由sdkApiVersion.sdkMinorApiVersion.sdkPatchApiVersion共同构成。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
+
+**起始版本：** 26.0.1
+
+**返回值：**
+
+| 类型 | 说明 |
+| -- | -- |
+| int | <ul> <li>0 ~ 99 - 系统修订版本号，取值范围为整数。</li> <li>-1 - 未查询到系统修订版本号, 或调用内部接口失败。</li> </ul> |
 
 ### OH_GetFirstApiVersion()
 
@@ -345,6 +421,8 @@ int OH_GetFirstApiVersion(void)
 **描述：**
 
 获取首个版本系统软件API版本。指设备首次发布时所支持的系统软件API版本。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -364,6 +442,8 @@ const char *OH_GetVersionId(void)
 
 获取版本ID。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -381,6 +461,8 @@ const char *OH_GetBuildType(void)
 **描述：**
 
 获取系统的构建类型。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -400,6 +482,8 @@ const char *OH_GetBuildUser(void)
 
 获取系统的构建用户。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -417,6 +501,8 @@ const char *OH_GetBuildHost(void)
 **描述：**
 
 获取系统的构建主机。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -436,6 +522,8 @@ const char *OH_GetBuildTime(void)
 
 获取系统的构建时间。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -453,6 +541,8 @@ const char *OH_GetBuildRootHash(void)
 **描述：**
 
 获取系统的构建版本Hash。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -472,6 +562,8 @@ const char *OH_GetDistributionOSName(void)
 
 获取ISV发行版系统名称。独立软件供应商（ISV）可以使用自定义的系统名称。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -489,6 +581,8 @@ const char *OH_GetDistributionOSVersion(void)
 **描述：**
 
 获取ISV发行版系统版本号。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 
@@ -508,6 +602,8 @@ int OH_GetDistributionOSApiVersion(void)
 
 获取ISV发行版系统API版本。
 
+**系统能力：** SystemCapability.Startup.SystemInfo
+
 **起始版本：** 10
 
 **返回值：**
@@ -525,6 +621,8 @@ const char *OH_GetDistributionOSReleaseType(void)
 **描述：**
 
 获取ISV发行版系统类型。
+
+**系统能力：** SystemCapability.Startup.SystemInfo
 
 **起始版本：** 10
 

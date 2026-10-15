@@ -29,11 +29,11 @@ Define the OH_VObject structure type.
 
 | Name | Description |
 | -- | -- |
-| [int (\*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)](#putint64) | Convert the int64 input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
-| [int (\*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)](#putdouble) | Convert the double input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
-| [int (\*putText)(OH_VObject *valueObject, const char *value)](#puttext) | Convert the char input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
-| [int (\*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)](#puttexts) | Convert the char * array input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
-| [int (\*destroy)(OH_VObject *valueObject)](#destroy) | Destroy the [OH_VObject](capi-rdb-oh-vobject.md) object and reclaim the memory occupied by the object. |
+| [int (\*putInt64)(OH_VObject *valueObject, int64_t *value, uint32_t count)](#putint64) | - | Convert the int64 input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
+| [int (\*putDouble)(OH_VObject *valueObject, double *value, uint32_t count)](#putdouble) | - | Convert the double input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
+| [int (\*putText)(OH_VObject *valueObject, const char *value)](#puttext) | - | Convert the char input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
+| [int (\*putTexts)(OH_VObject *valueObject, const char **value, uint32_t count)](#puttexts) | - | Convert the char * array input parameter to a value of type [OH_VObject](capi-rdb-oh-vobject.md). |
+| [int (\*destroy)(OH_VObject *valueObject)](#destroy) | - | Destroy the [OH_VObject](capi-rdb-oh-vobject.md) object and reclaim the memory occupied by the object. |
 
 ## Member function description
 

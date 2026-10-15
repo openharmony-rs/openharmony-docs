@@ -6,6 +6,8 @@ Type definitions for image processing.
 
 **Library**: libimage_processing.so
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 13
 
 **Related module**: [ImageProcessing](capi-imageprocessing.md)
@@ -51,6 +53,8 @@ enum ImageDetailEnhancer_QualityLevel
 
 The quality level is used for detail enhancement.<br> It is the value of the key parameter [IMAGE_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-image-processing-types-h.md#变量).
 
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
+
 **Since**: 13
 
 | Enum item | Description |
@@ -75,6 +79,8 @@ enum ImageProcessing_ErrorCode
 **Description**
 
 Image processing error code.
+
+**System capability**: SystemCapability.Multimedia.VideoProcessingEngine
 
 **Since**: 13
 

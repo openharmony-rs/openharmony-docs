@@ -6,6 +6,8 @@ Declares the exception error codes of ArkWeb NDK APIs, which are used to return 
 
 **Library**: libohweb.so
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Related module**: [Web](capi-web.md)
@@ -19,12 +21,6 @@ Declares the exception error codes of ArkWeb NDK APIs, which are used to return 
 | [ArkWeb_ErrorCode](#arkweb_errorcode) | ArkWeb_ErrorCode | Enumerates the error codes of ArkWeb NDK APIs. |
 | [ArkWeb_BlanklessErrorCode](#arkweb_blanklesserrorcode) | ArkWeb_BlanklessErrorCode | Enumerates the error codes for the blankless loading. |
 
-### Macro
-
-| Name | Description |
-| -- | -- |
-| ARKWEB_ERROR_CODE_H | Declares the exception error codes of ArkWeb NDK APIs, which are used to return specific error information when ArkWeb-related API calls fail, helping developers quickly locate and resolve issues. These error codes cover common exception scenarios such as initialization, parameter verification, URL processing, cookie management, and library loading.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
-
 ## Enum type description
 
 ### ArkWeb_ErrorCode
@@ -36,6 +32,8 @@ enum ArkWeb_ErrorCode
 **Description**
 
 Enumerates the error codes of ArkWeb NDK APIs.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -63,6 +61,8 @@ enum ArkWeb_BlanklessErrorCode
 **Description**
 
 Enumerates the error codes for the blankless loading.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 20
 

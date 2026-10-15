@@ -12,7 +12,7 @@ struct OH_AudioConverter_Format {...}
 
 **起始版本：** 26.0.0
 
-**相关模块：** [AudioConverter](capi-audioconverter.md)
+**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_converter.h](capi-native-audio-converter-h.md)
 

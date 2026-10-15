@@ -6,6 +6,8 @@ Declare avmetadata builder related interfaces.
 
 **Library**: libohavsession.so
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Related module**: [OHAVSession](capi-ohavsession.md)
@@ -55,6 +57,8 @@ AVMetadata_Result OH_AVMetadataBuilder_Create(OH_AVMetadataBuilder** builder)
 
 Creates an AVMetadataBuilder instance.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -79,6 +83,8 @@ AVMetadata_Result OH_AVMetadataBuilder_Destroy(OH_AVMetadataBuilder* builder)
 
 Destroy a builder.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -102,6 +108,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAssetId(OH_AVMetadataBuilder* builder,
 **Description**
 
 Set current asset id of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -128,6 +136,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetTitle(OH_AVMetadataBuilder* builder, c
 
 Set the title of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -152,6 +162,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetArtist(OH_AVMetadataBuilder* builder, 
 **Description**
 
 Set the artist of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -178,6 +190,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAuthor(OH_AVMetadataBuilder* builder, 
 
 Set the author of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -202,6 +216,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetAlbum(OH_AVMetadataBuilder* builder, c
 **Description**
 
 Set the album information
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -228,6 +244,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetWriter(OH_AVMetadataBuilder* builder, 
 
 Set the writer of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -252,6 +270,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetComposer(OH_AVMetadataBuilder* builder
 **Description**
 
 Set the composer of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -278,6 +298,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDuration(OH_AVMetadataBuilder* builder
 
 Set the duration of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -302,6 +324,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetMediaImageUri(OH_AVMetadataBuilder* bu
 **Description**
 
 Set the media image uri of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -328,6 +352,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSubtitle(OH_AVMetadataBuilder* builder
 
 Set the subtitle of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -352,6 +378,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDescription(OH_AVMetadataBuilder* buil
 **Description**
 
 Set the media description of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -378,6 +406,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetLyric(OH_AVMetadataBuilder* builder, c
 
 Set the media lyric content of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -402,6 +432,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetSkipIntervals(OH_AVMetadataBuilder* bu
 **Description**
 
 Set the skip intervals of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -428,6 +460,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetDisplayTags(OH_AVMetadataBuilder* buil
 
 Set the display tags of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -452,6 +486,8 @@ AVMetadata_Result OH_AVMetadataBuilder_SetFilter(OH_AVMetadataBuilder* builder, 
 **Description**
 
 Set the protocols supported
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -478,6 +514,8 @@ AVMetadata_Result OH_AVMetadataBuilder_GenerateAVMetadata(OH_AVMetadataBuilder* 
 
 Create the avmetadata.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -502,6 +540,8 @@ AVMetadata_Result OH_AVMetadata_Destroy(OH_AVMetadata* avMetadata)
 **Description**
 
 Request to release the avmetadata.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 

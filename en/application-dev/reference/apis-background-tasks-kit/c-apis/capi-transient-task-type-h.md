@@ -6,6 +6,8 @@ Defines the data structures for the C APIs of transient task.
 
 **Library**: libtransient_task.so
 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **Since**: 11
 
 **Related module**: [TransientTask](capi-transienttask.md)
@@ -55,6 +57,8 @@ enum TransientTask_ErrorCode
 
 Enumerates the error codes available for a transient task.
 
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **Since**: 13
 
 | Enum item | Description |
@@ -81,6 +85,8 @@ typedef void (*TransientTask_Callback)(void)
 **Description**
 
 Defines a callback for transient task timeout.
+
+**System capability**: SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **Since**: 13
 

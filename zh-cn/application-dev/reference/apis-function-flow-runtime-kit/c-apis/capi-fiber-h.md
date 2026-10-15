@@ -6,6 +6,8 @@
 
 **库：** libffrt.z.so
 
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
+
 **起始版本：** 20
 
 **相关模块：** [FFRT](capi-ffrt.md)
@@ -30,6 +32,8 @@ FFRT_C_API int ffrt_fiber_init(ffrt_fiber_t* fiber, void(*func)(void*), void* ar
 **描述：**
 
 初始化纤程。<br> 初始化纤程结构，使其准备好被执行。调用者需负责分配`stack`指向的栈内存，并保证该内存在纤程整个生命周期内有效。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 20
 
@@ -58,6 +62,8 @@ FFRT_C_API void ffrt_fiber_switch(ffrt_fiber_t* from, ffrt_fiber_t* to)
 **描述：**
 
 在两个纤程间切换执行上下文。<br> 将当前执行上下文保存到`from`指定的纤程中，并从`to`指定的纤程恢复执行上下文。<br> `from`和`to`都必须指向已通过[ffrt_fiber_init](capi-fiber-h.md#ffrt_fiber_init)初始化的纤程实例；否则行为未定义。
+
+**系统能力：** SystemCapability.Resourceschedule.Ffrt.Core
 
 **起始版本：** 20
 

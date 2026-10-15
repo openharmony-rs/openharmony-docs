@@ -6,6 +6,8 @@ Provides type definitions for <b>NativeNode</b> APIs.
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -153,7 +155,7 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)](#oh
 | [int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_adoptchild) | - | 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。 调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。 |
 | [int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_NodeHandle child)](#oh_arkui_nativemodule_removeadoptedchild) | - | 移除被接纳的目标附属节点。 |
 | [int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDark, ArkUI_NodeType nodeType, uint32_t (\*colorInvertFunc)(uint32_t color))](#oh_arkui_setforcedarkconfig) | - | 为组件和实例设置反色算法。详细介绍请参考：[利用反色能力快速适配深色模式](../../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。 |
-| [int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonevent) | - | 注册目标节点的基础事件回调。<br> 当前支持的事件类型如下: 参考ArkUI_NodeEventType中的NODE_ON_CLICK_EVENT、NODE_TOUCH_EVENT、NODE_EVENT_ON_APPEAR、 NODE_EVENT_ON_DISAPPEAR、NODE_ON_KEY_EVENT、NODE_ON_FOCUS、NODE_ON_BLUR、NODE_ON_HOVER、NODE_ON_MOUSE、NODE_ON_SIZE_CHANGE。 |
+| [int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonevent) | - | 注册目标节点的基础事件回调。<br> 当前支持的事件类型如下: 参考[ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype)中的NODE_ON_CLICK_EVENT、NODE_TOUCH_EVENT、NODE_EVENT_ON_APPEAR、 NODE_EVENT_ON_DISAPPEAR、NODE_ON_KEY_EVENT、NODE_ON_FOCUS、NODE_ON_BLUR、NODE_ON_HOVER、NODE_ON_MOUSE、NODE_ON_SIZE_CHANGE。 |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI_NodeEventType eventType)](#oh_arkui_nativemodule_unregistercommonevent) | - | 注销目标节点的基础事件回调。 当前支持的事件类型请参考[OH_ArkUI_NativeModule_RegisterCommonEvent](capi-native-node-h.md#oh_arkui_nativemodule_registercommonevent)。 |
 | [int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node, float* ratios, int32_t size, float expectedUpdateInterval, void* userData, void (\*callback)(ArkUI_NodeEvent* event))](#oh_arkui_nativemodule_registercommonvisibleareaapproximatechangeevent) | - | 注册限制回调间隔的可见区域变化的基础事件回调。 |
 | [int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(ArkUI_NodeHandle node)](#oh_arkui_nativemodule_unregistercommonvisibleareaapproximatechangeevent) | - | 注销限制回调间隔的可见区域变化的基础事件回调。 |
@@ -194,6 +196,8 @@ enum ArkUI_NodeType
 **描述：**
 
 Enumerates ArkUI component types that can be created on the native side.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -255,6 +259,8 @@ enum ArkUI_NodeDirtyFlag
 
 Defines the dirty area flag passed in the <b>::markDirty</b> API.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -272,6 +278,8 @@ enum ArkUI_NodeCustomEventType
 **描述：**
 
 Defines the custom component event type.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -295,6 +303,8 @@ enum ArkUI_NodeAdapterEventType
 
 Enumerates component adapter events.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -315,6 +325,8 @@ enum ArkUI_NodeContentEventType
 
 Defines the node content event type.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -331,6 +343,8 @@ enum ArkUI_InspectorErrorCode
 **描述：**
 
 Enumerates the inspector error codes.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -351,6 +365,8 @@ ArkUI_NodeEventType OH_ArkUI_NodeEvent_GetEventType(ArkUI_NodeEvent* event)
 **描述：**
 
 Obtains the type of a component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -376,6 +392,8 @@ int32_t OH_ArkUI_NodeEvent_GetTargetId(ArkUI_NodeEvent* event)
 
 Obtains the custom ID of a component event.<br> The event ID is passed in as a parameter when the [registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) function is called and can be applied to the dispatch logic of the same event entry function [registerNodeEventReceiver](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeeventreceiver).
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -399,6 +417,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeEvent_GetNodeHandle(ArkUI_NodeEvent* event)
 **描述：**
 
 Obtains the component object that triggers a component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -424,6 +444,8 @@ ArkUI_UIInputEvent* OH_ArkUI_NodeEvent_GetInputEvent(ArkUI_NodeEvent* event)
 
 获取组件事件中的输入事件（如触碰事件）数据。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -447,6 +469,8 @@ ArkUI_NodeComponentEvent* OH_ArkUI_NodeEvent_GetNodeComponentEvent(ArkUI_NodeEve
 **描述：**
 
 Obtains the numerical data in a component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -472,6 +496,8 @@ ArkUI_StringAsyncEvent* OH_ArkUI_NodeEvent_GetStringAsyncEvent(ArkUI_NodeEvent* 
 
 Obtains the string data in a component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -495,6 +521,8 @@ ArkUI_TextChangeEvent* OH_ArkUI_NodeEvent_GetTextChangeEvent(ArkUI_NodeEvent* ev
 **描述：**
 
 Obtains the ArkUI_TextChangeEvent data from a component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -520,6 +548,8 @@ void* OH_ArkUI_NodeEvent_GetUserData(ArkUI_NodeEvent* event)
 
 Obtains the custom data in a component event.<br> This parameter is passed in [registerNodeEvent](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#registernodeevent) and can be applied to the service logic when the event is triggered.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -543,6 +573,8 @@ int32_t OH_ArkUI_NodeEvent_GetNumberValue(ArkUI_NodeEvent* event, int32_t index,
 **描述：**
 
 获取组件回调事件的数字类型参数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -569,6 +601,8 @@ int32_t OH_ArkUI_NodeEvent_GetStringValue(ArkUI_NodeEvent* event, int32_t index,
 **描述：**
 
 获取组件回调事件的字符串类型参数，字符串数据仅在事件回调过程中有效，需要在事件回调外使用建议进行额外拷贝处理。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -597,6 +631,8 @@ int32_t OH_ArkUI_NodeEvent_SetReturnNumberValue(ArkUI_NodeEvent* event, ArkUI_Nu
 
 设置组件回调事件的返回值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -623,6 +659,8 @@ ArkUI_TouchTestInfo* OH_ArkUI_NodeEvent_GetTouchTestInfo(ArkUI_NodeEvent* nodeEv
 
 获取组件事件中的触摸测试信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -646,6 +684,8 @@ OH_ArkUI_TextEditorChangeEvent* OH_ArkUI_NodeEvent_GetTextEditorOnWillChangeEven
 **描述：**
 
 获取组件事件中的TextEditor组件文本内容变化数据。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -671,6 +711,8 @@ ArkUI_NodeAdapterHandle OH_ArkUI_NodeAdapter_Create()
 
 Creates a component adapter.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 ### OH_ArkUI_NodeAdapter_Dispose()
@@ -682,6 +724,8 @@ void OH_ArkUI_NodeAdapter_Dispose(ArkUI_NodeAdapterHandle handle)
 **描述：**
 
 Destroys a component adapter.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -700,6 +744,8 @@ int32_t OH_ArkUI_NodeAdapter_SetTotalNodeCount(ArkUI_NodeAdapterHandle handle, u
 **描述：**
 
 设置Adapter中的元素总数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -726,6 +772,8 @@ uint32_t OH_ArkUI_NodeAdapter_GetTotalNodeCount(ArkUI_NodeAdapterHandle handle)
 
 Obtains the total number of elements in the specified adapter.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -750,6 +798,8 @@ ArkUI_NodeAdapterHandle handle, void* userData, void (*receiver)(ArkUI_NodeAdapt
 **描述：**
 
 注册Adapter相关回调事件。在相关回调事件不需要之后，需要执行[OH_ArkUI_NodeAdapter_UnregisterEventReceiver](capi-native-node-h.md#oh_arkui_nodeadapter_unregistereventreceiver)接口注销相关回调事件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -777,6 +827,8 @@ void OH_ArkUI_NodeAdapter_UnregisterEventReceiver(ArkUI_NodeAdapterHandle handle
 
 Deregisters an event callback for the adapter.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -794,6 +846,8 @@ int32_t OH_ArkUI_NodeAdapter_ReloadAllItems(ArkUI_NodeAdapterHandle handle)
 **描述：**
 
 通知Adapter进行全量元素变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -819,6 +873,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 **描述：**
 
 通知Adapter进行局部元素变化。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -847,6 +903,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 通知Adapter进行局部元素删除。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -874,6 +932,8 @@ ArkUI_NodeAdapterHandle handle, uint32_t startPosition, uint32_t itemCount)
 
 通知Adapter进行局部元素插入。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -899,6 +959,8 @@ int32_t OH_ArkUI_NodeAdapter_MoveItem(ArkUI_NodeAdapterHandle handle, uint32_t f
 **描述：**
 
 通知Adapter进行局部元素移位。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -926,6 +988,8 @@ int32_t OH_ArkUI_NodeAdapter_GetAllItems(ArkUI_NodeAdapterHandle handle, ArkUI_N
 
 获取存储在Adapter中的所有元素。<br> 接口调用会返回元素的数组对象指针，该指针指向的内存数据需要开发者手动释放。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -952,6 +1016,8 @@ void* OH_ArkUI_NodeAdapterEvent_GetUserData(ArkUI_NodeAdapterEvent* event)
 
 Obtains the custom data passed in during registration of the specified event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -969,6 +1035,8 @@ ArkUI_NodeAdapterEventType OH_ArkUI_NodeAdapterEvent_GetType(ArkUI_NodeAdapterEv
 **描述：**
 
 Obtains the event type.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -994,6 +1062,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetRemovedNode(ArkUI_NodeAdapterEvent
 
 Obtains the element to be removed for the event to be destroyed.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1017,6 +1087,8 @@ uint32_t OH_ArkUI_NodeAdapterEvent_GetItemIndex(ArkUI_NodeAdapterEvent* event)
 **描述：**
 
 Obtains the index of the element to be operated for the specified adapter event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1042,6 +1114,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeAdapterEvent_GetHostNode(ArkUI_NodeAdapterEvent* e
 
 Obtains the scrollable container node that uses the specified adapter.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1065,6 +1139,8 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetItem(ArkUI_NodeAdapterEvent* event, ArkUI_N
 **描述：**
 
 设置需要新增到Adapter中的组件。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1091,6 +1167,8 @@ int32_t OH_ArkUI_NodeAdapterEvent_SetNodeId(ArkUI_NodeAdapterEvent* event, int32
 
 设置生成的组件标识。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1116,6 +1194,8 @@ ArkUI_LayoutConstraint* OH_ArkUI_NodeCustomEvent_GetLayoutConstraintInMeasure(Ar
 
 Obtains the size constraint for measurement through a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1139,6 +1219,8 @@ ArkUI_IntOffset OH_ArkUI_NodeCustomEvent_GetPositionInLayout(ArkUI_NodeCustomEve
 **描述：**
 
 Obtains the expected position of a component relative to its parent component in the layout phase through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1164,6 +1246,8 @@ ArkUI_DrawContext* OH_ArkUI_NodeCustomEvent_GetDrawContextInDraw(ArkUI_NodeCusto
 
 Obtains the drawing context through a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1187,6 +1271,8 @@ int32_t OH_ArkUI_NodeCustomEvent_GetEventTargetId(ArkUI_NodeCustomEvent* event)
 **描述：**
 
 Obtains the ID of a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1212,6 +1298,8 @@ void* OH_ArkUI_NodeCustomEvent_GetUserData(ArkUI_NodeCustomEvent* event)
 
 Obtains custom event parameters through a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1235,6 +1323,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeCustomEvent_GetNodeHandle(ArkUI_NodeCustomEvent* e
 **描述：**
 
 Obtains a component object through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1260,6 +1350,8 @@ ArkUI_NodeCustomEventType OH_ArkUI_NodeCustomEvent_GetEventType(ArkUI_NodeCustom
 
 Obtains the event type through a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1283,6 +1375,8 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanMeasureInfo(ArkUI_NodeCustomEvent*
 **描述：**
 
 Obtains the measurement information of a custom span through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1309,6 +1403,8 @@ int32_t OH_ArkUI_NodeCustomEvent_SetCustomSpanMetrics(ArkUI_NodeCustomEvent* eve
 
 Sets the measurement metrics of a custom span through a custom component event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1333,6 +1429,8 @@ int32_t OH_ArkUI_NodeCustomEvent_GetCustomSpanDrawInfo(ArkUI_NodeCustomEvent* ev
 **描述：**
 
 Obtains the drawing information of a custom span through a custom component event.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1359,6 +1457,8 @@ typedef void (*ArkUI_NodeContentCallback)(ArkUI_NodeContentEvent* event)
 
 Defines the callback function of a node content event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 ### OH_ArkUI_NodeContent_RegisterCallback()
@@ -1370,6 +1470,8 @@ int32_t OH_ArkUI_NodeContent_RegisterCallback(ArkUI_NodeContentHandle content, A
 **描述：**
 
 注册NodeContent事件函数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1396,6 +1498,8 @@ ArkUI_NodeContentEventType OH_ArkUI_NodeContentEvent_GetEventType(ArkUI_NodeCont
 
 Obtains the type of a node content event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1420,6 +1524,8 @@ ArkUI_NodeContentHandle OH_ArkUI_NodeContentEvent_GetNodeContentHandle(ArkUI_Nod
 
 Obtains the node content object that triggers a node content event.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1443,6 +1549,8 @@ int32_t OH_ArkUI_NodeContent_SetUserData(ArkUI_NodeContentHandle content, void* 
 **描述：**
 
 Saves custom data on the specified node content.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1469,6 +1577,8 @@ void* OH_ArkUI_NodeContent_GetUserData(ArkUI_NodeContentHandle content)
 
 Obtains the custom data saved on the specified node content.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1492,6 +1602,8 @@ int32_t OH_ArkUI_NodeContent_AddNode(ArkUI_NodeContentHandle content, ArkUI_Node
 **描述：**
 
 将一个ArkUI组件节点添加到对应的NodeContent对象下。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1518,6 +1630,8 @@ int32_t OH_ArkUI_NodeContent_RemoveNode(ArkUI_NodeContentHandle content, ArkUI_N
 
 删除NodeContent对象下的一个ArkUI组件节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1542,6 +1656,8 @@ int32_t OH_ArkUI_NodeContent_InsertNode(ArkUI_NodeContentHandle content, ArkUI_N
 **描述：**
 
 将一个ArkUI组件节点插入到对应的NodeContent对象的特定位置下。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1569,6 +1685,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutSize(ArkUI_NodeHandle node, ArkUI_IntSize* s
 
 获取组件布局区域的大小。 布局区域大小不包含图形变化属性，如缩放。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1593,6 +1711,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPosition(ArkUI_NodeHandle node, ArkUI_IntOff
 **描述：**
 
 获取组件布局区域相对父组件的位置。 布局区域相对位置不包含图形变化属性，如平移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1619,6 +1739,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInWindow(ArkUI_NodeHandle node, ArkU
 
 获取组件布局区域相对窗口的位置。 布局区域相对位置不包含图形变化属性，如平移。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1643,6 +1765,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInScreen(ArkUI_NodeHandle node, ArkU
 **描述：**
 
 获取组件布局区域相对屏幕的位置。 布局区域相对位置不包含图形变化属性，如平移。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1669,6 +1793,8 @@ int32_t OH_ArkUI_NodeUtils_GetLayoutPositionInGlobalDisplay(ArkUI_NodeHandle nod
 
 获取组件相对于全局屏幕的偏移。 布局区域相对位置不包含图形变化属性，如平移。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -1693,6 +1819,8 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInWindow(ArkUI_NodeHandle nod
 **描述：**
 
 Obtain the position of the component in the window, including the properties of graphic translation changes.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -1719,6 +1847,8 @@ int32_t OH_ArkUI_NodeUtils_GetPositionWithTranslateInScreen(ArkUI_NodeHandle nod
 
 Obtain the position of the component on the screen, including the attributes of graphic translation changes.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -1744,6 +1874,8 @@ void OH_ArkUI_NodeUtils_AddCustomProperty(ArkUI_NodeHandle node, const char* nam
 
 设置组件的自定义属性。该接口仅在主线程生效。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 13
 
 **参数：**
@@ -1764,6 +1896,8 @@ void OH_ArkUI_NodeUtils_RemoveCustomProperty(ArkUI_NodeHandle node, const char* 
 
 移除组件已设置的自定义属性。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 13
 
 **参数：**
@@ -1782,6 +1916,8 @@ int32_t OH_ArkUI_NodeUtils_GetCustomProperty(ArkUI_NodeHandle node, const char* 
 **描述：**
 
 获取组件的自定义属性的值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -1809,6 +1945,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetParentInPageTree(ArkUI_NodeHandle node)
 
 获取父节点，可获取由ArkTs创建的组件节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 14
 
 **参数：**
@@ -1832,6 +1970,8 @@ int32_t OH_ArkUI_NodeUtils_GetActiveChildrenInfo(ArkUI_NodeHandle head, ArkUI_Ac
 **描述：**
 
 获取某个节点所有活跃的子节点。Span将不会被计入子节点的统计中。 在LazyForEach场景中，推荐使用[OH_ArkUI_NodeUtils_GetChildWithExpandMode](capi-native-node-h.md#oh_arkui_nodeutils_getchildwithexpandmode)接口进行遍历。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -1858,6 +1998,8 @@ ArkUI_NodeHandle OH_ArkUI_NodeUtils_GetCurrentPageRootNode(ArkUI_NodeHandle node
 
 获取当前页面的根节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 14
 
 **参数：**
@@ -1881,6 +2023,8 @@ bool OH_ArkUI_NodeUtils_IsCreatedByNDK(ArkUI_NodeHandle node)
 **描述：**
 
 获取组件是否由C-API创建的标签。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 14
 
@@ -1906,6 +2050,8 @@ int32_t OH_ArkUI_NodeUtils_GetNodeType(ArkUI_NodeHandle node)
 
 获取节点的类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 14
 
 **参数：**
@@ -1929,6 +2075,8 @@ int32_t OH_ArkUI_NodeUtils_GetWindowInfo(ArkUI_NodeHandle node, ArkUI_HostWindow
 **描述：**
 
 获取节点所属的窗口信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -1955,6 +2103,8 @@ int32_t OH_ArkUI_NodeUtils_GetFirstChildIndexWithoutExpand(ArkUI_NodeHandle node
 
 获取目标节点在树上的第一个子节点的下标。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -1980,6 +2130,8 @@ int32_t OH_ArkUI_NodeUtils_GetLastChildIndexWithoutExpand(ArkUI_NodeHandle node,
 
 获取目标节点在树上的最后一个子节点的下标。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2004,6 +2156,8 @@ int32_t OH_ArkUI_NodeUtils_GetChildWithExpandMode(ArkUI_NodeHandle node, int32_t
 **描述：**
 
 用不同的展开模式获取对应下标的子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -2032,6 +2186,8 @@ int32_t OH_ArkUI_List_CloseAllSwipeActions(ArkUI_NodeHandle node, void* userData
 
 收起展开状态下的ListItem。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -2058,6 +2214,8 @@ ArkUI_ContextHandle OH_ArkUI_GetContextByNode(ArkUI_NodeHandle node)
 
 Obtain the UIContext pointer to the page where the node is located.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -2081,6 +2239,8 @@ int32_t OH_ArkUI_RegisterSystemColorModeChangeEvent(ArkUI_NodeHandle node, void*
 **描述：**
 
 The event called when the system color mode changes. Only one system color change callback can be registered for the same component.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2108,6 +2268,8 @@ void OH_ArkUI_UnregisterSystemColorModeChangeEvent(ArkUI_NodeHandle node)
 
 Unregister the event callback when the system color mode changes.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -2125,6 +2287,8 @@ int32_t OH_ArkUI_RegisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node, void*
 **描述：**
 
 The event called when the system font style changes. Only one system font change callback can be registered for the same component.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2152,6 +2316,8 @@ void OH_ArkUI_UnregisterSystemFontStyleChangeEvent(ArkUI_NodeHandle node)
 
 Unregister the event callback when the system font style changes.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -2169,6 +2335,8 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontSizeScale(const ArkUI_SystemFontStyle
 **描述：**
 
 Retrieve the font size value for system font change events.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -2194,6 +2362,8 @@ float OH_ArkUI_SystemFontStyleEvent_GetFontWeightScale(const ArkUI_SystemFontSty
 
 Retrieve the font thickness values for system font change events.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -2217,6 +2387,8 @@ int32_t OH_ArkUI_NodeUtils_GetAttachedNodeHandleById(const char* id, ArkUI_NodeH
 **描述：**
 
 根据用户id获取目标节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -2242,6 +2414,8 @@ int32_t OH_ArkUI_NodeUtils_MoveTo(ArkUI_NodeHandle node, ArkUI_NodeHandle target
 **描述：**
 
 将节点移动到目标父节点下，作为子节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -2269,6 +2443,8 @@ int32_t OH_ArkUI_NativeModule_InvalidateAttributes(ArkUI_NodeHandle node)
 
 在当前帧触发节点属性更新。 当前节点的属性在构建阶段后被修改，这些改动不会立即生效，而是延迟到下一帧统一处理。 此功能强制当前帧内即时节点更新，确保同步应用渲染效果。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
 **参数：**
@@ -2292,6 +2468,8 @@ int32_t OH_ArkUI_NodeUtils_SetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 **描述：**
 
 设置目标节点跨语言设置属性的能力。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -2318,6 +2496,8 @@ int32_t OH_ArkUI_NodeUtils_GetCrossLanguageOption(ArkUI_NodeHandle node, ArkUI_C
 
 获取目标节点跨语言设置属性的配置项。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2342,6 +2522,8 @@ int32_t OH_ArkUI_RegisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node, void*
 **描述：**
 
 Registers a callback for node when layout is completed.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -2369,6 +2551,8 @@ int32_t OH_ArkUI_RegisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node, void* u
 
 Registers a callback for node when draw is completed.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2395,6 +2579,8 @@ int32_t OH_ArkUI_UnregisterLayoutCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 Unregisters the layout completed callback for node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2419,6 +2605,8 @@ int32_t OH_ArkUI_UnregisterDrawCallbackOnNodeHandle(ArkUI_NodeHandle node)
 
 Unregisters the draw completed callback for node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2442,6 +2630,8 @@ int32_t OH_ArkUI_GetNodeSnapshot(ArkUI_NodeHandle node, ArkUI_SnapshotOptions* s
 **描述：**
 
 Obtains a snapshot of a given component. If the node is not in the component tree or has not been rendered, the snapshot operation will fail. When the <b>Pixelmap</b> object created is no longer in use, it should be released by calling OH_PixelmapNative_Release.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -2469,6 +2659,8 @@ int32_t OH_ArkUI_GetNodeSnapshotSizeLimitation(int32_t* maxWidth, int32_t* maxHe
 
 Query the size limitation of the component snapshot.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -2494,6 +2686,8 @@ int32_t OH_ArkUI_NodeUtils_GetPositionToParent(ArkUI_NodeHandle node, ArkUI_IntO
 
 获取目标节点相对于父节点的偏移值，单位：px。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -2518,6 +2712,8 @@ ArkUI_ErrorCode OH_ArkUI_AddSupportedUIStates(ArkUI_NodeHandle node, int32_t uiS
 **描述：**
 
 设置组件支持的多态样式状态。为了更高效地处理，需传入所关注的状态值及对应的状态处理函数，当关注的状态发生时，处理函数会被执行。 可在回调中根据当前状态调整UI样式。当在同一个节点上多次调用该方法时，将以最后一次传入的状态及处理函数为准。 有些类型的组件节点，系统内部已有对某些状态的默认处理。例如，Button组件默认具备对PRESSED状态的样式变化，当在此类组件上使用此方法自定义状态处理时， 会先应用系统默认样式变化，再执行自定义的样式处理，最终效果为两者叠加。 可以通过指定excludeInner为true来禁用系统内部的默认样式效果，但这通常取决于系统内部实现规范是否允许。当调用该函数时，传入的statesChangeHandler函数会立即执行一次， 且无需特意注册对NORMAL状态的监听，只要注册了非NORMAL状态，当状态从任意状态变化回NORMAL时，系统都会进行回调，以便应用进行样式复原。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2547,6 +2743,8 @@ ArkUI_ErrorCode OH_ArkUI_RemoveSupportedUIStates(ArkUI_NodeHandle node, int32_t 
 
 删除注册的状态处理。当通过OH_ArkUI_AddSupportedUIStates注册的状态都被删除时，所注册的stateChangeHandler也不会再被执行。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2571,6 +2769,8 @@ int32_t OH_ArkUI_RunTaskInScope(ArkUI_ContextHandle uiContext, void* userData, v
 **描述：**
 
 在目标UI上下文中执行传入的自定义回调函数。示例请参考：[在NDK中保证多实例场景功能正常](../../../ui/ndk-scope-task.md)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2598,6 +2798,8 @@ int32_t OH_ArkUI_NodeUtils_GetNodeHandleByUniqueId(const uint32_t uniqueId, ArkU
 
 Get the node handle by uniqueId.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -2622,6 +2824,8 @@ int32_t OH_ArkUI_NodeUtils_GetNodeUniqueId(ArkUI_NodeHandle node, int32_t* uniqu
 **描述：**
 
 获取目标节点的uniqueId。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2648,6 +2852,8 @@ int32_t OH_ArkUI_NativeModule_IsInRenderState(ArkUI_NodeHandle node, bool* isInR
 
 获取节点是否处于渲染状态，如果一个节点的对应RenderNode在渲染树上，则处于渲染状态。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -2672,6 +2878,8 @@ int32_t OH_ArkUI_NativeModule_AdoptChild(ArkUI_NodeHandle node, ArkUI_NodeHandle
 **描述：**
 
 当前节点接纳目标节点为附属节点。被接纳的节点不能已有父节点。 调用该接口实际上不会将其添加为子节点，而是仅允许其接收对应子节点的生命周期回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -2698,6 +2906,8 @@ int32_t OH_ArkUI_NativeModule_RemoveAdoptedChild(ArkUI_NodeHandle node, ArkUI_No
 
 移除被接纳的目标附属节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -2722,6 +2932,8 @@ int32_t OH_ArkUI_SetForceDarkConfig(ArkUI_ContextHandle uiContext, bool forceDar
 **描述：**
 
 为组件和实例设置反色算法。详细介绍请参考：[利用反色能力快速适配深色模式](../../../ui/ui-dark-light-color-adaptation.md#利用反色能力快速适配深色模式)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -2748,7 +2960,9 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonEvent(ArkUI_NodeHandle node, ArkUI_N
 
 **描述：**
 
-注册目标节点的基础事件回调。<br> 当前支持的事件类型如下: 参考ArkUI_NodeEventType中的NODE_ON_CLICK_EVENT、NODE_TOUCH_EVENT、NODE_EVENT_ON_APPEAR、 NODE_EVENT_ON_DISAPPEAR、NODE_ON_KEY_EVENT、NODE_ON_FOCUS、NODE_ON_BLUR、NODE_ON_HOVER、NODE_ON_MOUSE、NODE_ON_SIZE_CHANGE。
+注册目标节点的基础事件回调。<br> 当前支持的事件类型如下: 参考[ArkUI_NodeEventType](capi-native-node-h.md#arkui_nodeeventtype)中的NODE_ON_CLICK_EVENT、NODE_TOUCH_EVENT、NODE_EVENT_ON_APPEAR、 NODE_EVENT_ON_DISAPPEAR、NODE_ON_KEY_EVENT、NODE_ON_FOCUS、NODE_ON_BLUR、NODE_ON_HOVER、NODE_ON_MOUSE、NODE_ON_SIZE_CHANGE。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -2777,6 +2991,8 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonEvent(ArkUI_NodeHandle node, ArkUI
 
 注销目标节点的基础事件回调。 当前支持的事件类型请参考[OH_ArkUI_NativeModule_RegisterCommonEvent](capi-native-node-h.md#oh_arkui_nativemodule_registercommonevent)。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
 **参数：**
@@ -2801,6 +3017,8 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonVisibleAreaApproximateChangeEvent(Ar
 **描述：**
 
 注册限制回调间隔的可见区域变化的基础事件回调。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 21
 
@@ -2831,6 +3049,8 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonVisibleAreaApproximateChangeEvent(
 
 注销限制回调间隔的可见区域变化的基础事件回调。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 21
 
 **参数：**
@@ -2854,6 +3074,8 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionToWindow(ArkUI_NodeHandle currentNo
 **描述：**
 
 将点的坐标从指定节点的坐标系转换至当前窗口的坐标系。节点的坐标系考虑节点本身的变换，例如，节点A的变换效果为向左平移100，会使得其坐标系中的点的坐标也向左平移100。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -2881,6 +3103,8 @@ int32_t OH_ArkUI_NativeModule_ConvertPositionFromWindow(ArkUI_NodeHandle targetN
 
 将点的坐标从当前窗口的坐标系转换至目标节点的坐标系。节点的坐标系考虑节点本身的变换，例如，节点A的变换效果为向左平移100，会使得其坐标系中的点的坐标也向左平移100。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -2907,6 +3131,8 @@ int32_t OH_ArkUI_Swiper_FinishAnimation(ArkUI_NodeHandle node)
 
 停止指定的Swiper节点正在执行的翻页动画。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -2930,6 +3156,8 @@ int32_t OH_ArkUI_PostAsyncUITask(ArkUI_ContextHandle context, void* asyncUITaskD
 **描述：**
 
 将asyncUITask函数提交至ArkUI框架提供的非UI线程中执行，asyncUITask函数执行完毕后，在UI线程调用onFinish函数。 适用于多线程创建UI组件的场景，开发者可使用此接口在非UI线程创建UI组件，随后在UI线程将创建完成的组件挂载至主树上。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -2958,6 +3186,8 @@ int32_t OH_ArkUI_PostUITask(ArkUI_ContextHandle context, void* taskData, void (*
 
 将task函数提交至UI线程中执行。 适用于多线程创建UI组件的场景，当开发者在自建的线程中创建UI组件时，可以使用此接口将创建完成的组件挂载到UI线程的主树上。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -2984,6 +3214,8 @@ int32_t OH_ArkUI_NativeModule_AtomicServiceMenuBarSetVisible(ArkUI_ContextHandle
 
 设置菜单栏的可见性。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -3008,6 +3240,8 @@ int32_t OH_ArkUI_NativeModule_RegisterCommonAreaApproximateChangeEvent(ArkUI_Nod
 **描述：**
 
 Registers a callback for listening for component dimension and area changes.<br> This function can be called for a valid [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node at any time. The newly registered callback will replace the previously registered callback for this event and will take effect from the next frame. When the callback is no longer needed, call [OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent](capi-native-node-h.md#oh_arkui_nativemodule_unregistercommonareaapproximatechangeevent) to unregister it. Otherwise, the callback will be automatically unregistered when the node is released.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -3036,6 +3270,8 @@ int32_t OH_ArkUI_NativeModule_UnregisterCommonAreaApproximateChangeEvent(ArkUI_N
 
 Unregisters the callback bound to the dimensions and area changes of a component.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -3059,6 +3295,8 @@ int32_t OH_ArkUI_PostUITaskAndWait(ArkUI_ContextHandle context, void* taskData, 
 **描述：**
 
 将task函数提交至UI线程中执行，调用此接口的线程将阻塞，直至task函数执行完成。在UI线程调用此接口等同于同步调用task函数。 适用于多线程创建UI组件的场景，当开发者在多线程创建组件过程中需要调用仅支持UI线程的函数时，使用此接口返回UI线程调用函数，调用完成后继续多线程创建组件。 当UI线程负载较高时，调用此接口的非UI线程可能长时间阻塞，影响多线程创建UI组件的性能，不建议频繁使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 
@@ -3086,6 +3324,8 @@ int32_t OH_ArkUI_Swiper_StartFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 
 Start a fake drag of the Swiper node. Call OH_ArkUI_Swiper_FakeDragBy to simulate the drag motion. Call OH_ArkUI_Swiper_StopFakeDrag to complete the fake drag. A fake drag can be interrupted by a real drag. If you need to ignore touch events and other user input during a fake drag, use NODE_SWIPER_DISABLE_SWIPE.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -3110,6 +3350,8 @@ int32_t OH_ArkUI_Swiper_FakeDragBy(ArkUI_NodeHandle node, float offset, bool* is
 **描述：**
 
 Fake drag by an offset of the Swiper node. The OH_ArkUI_Swiper_StartFakeDrag must be called first.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -3137,6 +3379,8 @@ int32_t OH_ArkUI_Swiper_StopFakeDrag(ArkUI_NodeHandle node, bool* isSuccessful)
 
 Stop a fake drag of the Swiper node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -3161,6 +3405,8 @@ int32_t OH_ArkUI_Swiper_IsFakeDragging(ArkUI_NodeHandle node, bool* isFakeDraggi
 **描述：**
 
 Get the fake drag state of the Swiper node.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -3187,6 +3433,8 @@ int32_t OH_ArkUI_Swiper_ShowPrevious(ArkUI_NodeHandle node)
 
 Show the previous page of the Swiper node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -3211,6 +3459,8 @@ int32_t OH_ArkUI_Swiper_ShowNext(ArkUI_NodeHandle node)
 
 Show the next page of the Swiper node.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -3234,6 +3484,8 @@ int32_t OH_ArkUI_NativeModule_GetPageRootNodeHandleByContext(ArkUI_ContextHandle
 **描述：**
 
 获取指定实例的页面的根节点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -3260,6 +3512,8 @@ ArkUI_GestureCollectInterceptInfo* OH_ArkUI_NodeEvent_GetGestureCollectIntercept
 
 Obtains the <b>ArkUI_GestureCollectInterceptInfo</b> object from a specified <b>ArkUI_NodeEvent</b> object.
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -3283,6 +3537,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_SetChildMountPolicy(ArkUI_NodeHandle node,
 **描述：**
 
 Set the subnode mounting policy of the target node.
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 
@@ -3308,6 +3564,8 @@ ArkUI_ErrorCode OH_ArkUI_NodeUtils_SetUiDvsyncSwitch(ArkUI_ContextHandle context
 **描述：**
 
 设置UI Dvsync开关。开启后系统会更及时地响应Vsync请求，更频繁执行渲染任务。通常在自渲染框架中动效开始时使能，结束后关闭，以确保动画效果更加流畅，同时避免频繁的Vsync影响其他业务。在非UI线程上调用此函数将导致应用退出。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.1
 

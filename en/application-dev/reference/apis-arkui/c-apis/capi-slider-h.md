@@ -6,6 +6,8 @@ Provides Slider node type definitions for <b>NativeNode</b> APIs.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -32,6 +34,8 @@ enum ArkUI_SliderBlockStyle
 
 Enumerates the styles of the slider in the block direction.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -50,6 +54,8 @@ enum ArkUI_SliderDirection
 
 Enumerates the scroll directions of the slider.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -66,6 +72,8 @@ enum ArkUI_SliderStyle
 **Description**
 
 Enumerates the slider styles.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

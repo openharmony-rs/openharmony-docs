@@ -6,6 +6,8 @@ Defines the APIs for cross-device file access management, encrypted storage, and
 
 **Library**: libohdlp_permission.so
 
+**System capability**: SystemCapability.Security.DataLossPrevention
+
 **Since**: 14
 
 **Related module**: [DlpPermissionApi](capi-dlppermissionapi.md)
@@ -42,6 +44,8 @@ enum DLP_ErrCode
 
 Enumerates the DLP error codes.
 
+**System capability**: SystemCapability.Security.DataLossPrevention
+
 **Since**: 14
 
 | Enum item | Description |
@@ -65,6 +69,8 @@ enum DLP_FileAccess
 
 Enumerates the permissions on a DLP file.
 
+**System capability**: SystemCapability.Security.DataLossPrevention
+
 **Since**: 14
 
 | Enum item | Description |
@@ -87,6 +93,8 @@ DLP_ErrCode OH_DLP_GetDlpPermissionInfo(DLP_FileAccess *dlpFileAccess, uint32_t 
 
 Obtains the permission information of this DLP sandbox.
 
+**System capability**: SystemCapability.Security.DataLossPrevention
+
 **Since**: 14
 
 **Parameters**:
@@ -100,7 +108,7 @@ Obtains the permission information of this DLP sandbox.
 
 | Type | Description |
 | -- | -- |
-| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the device is car which not support DLP feature. On API 26.0.1 and above, this error is returned. [since 26.0.1]</li> <li> [ERR_OH_INVALID_PARAMETER](capi-dlp-permission-api-h.md#dlp_errcode) 19100001 - If the parameter value is invalid.</li> <li> [ERR_OH_API_ONLY_FOR_SANDBOX](capi-dlp-permission-api-h.md#dlp_errcode) 19100006 - If no permission to call this API, which is available only for DLP sandbox applications.</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_OUT_OF_MEMORY](capi-dlp-permission-api-h.md#dlp_errcode) 19100012 - If the memory error.</li></ul> |
+| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later. [since 26.0.1]</li> <li> [ERR_OH_INVALID_PARAMETER](capi-dlp-permission-api-h.md#dlp_errcode) 19100001 - If the parameter value is invalid.</li> <li> [ERR_OH_API_ONLY_FOR_SANDBOX](capi-dlp-permission-api-h.md#dlp_errcode) 19100006 - If no permission to call this API, which is available only for DLP sandbox applications.</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_OUT_OF_MEMORY](capi-dlp-permission-api-h.md#dlp_errcode) 19100012 - If the memory error.</li></ul> |
 
 ### OH_DLP_GetOriginalFileName()
 
@@ -112,20 +120,22 @@ DLP_ErrCode OH_DLP_GetOriginalFileName(const char *fileName, char **originalFile
 
 Obtains the original file name of a DLP file.
 
+**System capability**: SystemCapability.Security.DataLossPrevention
+
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| const char *fileName | [in] Pointer to the target file whose original file name is to be obtained. The length cannot exceed 256 characters. |
+| const char *fileName | [in] Pointer to the target file whose original file name is to be obtained. The length cannot exceed 256 bytes. |
 | char **originalFileName | [out] Double pointer to the original file name obtained. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the device is car which not support DLP feature. On API 26.0.1 and above, this error is returned. [since 26.0.1]</li> <li> [ERR_OH_INVALID_PARAMETER](capi-dlp-permission-api-h.md#dlp_errcode) 19100001 - If the parameter value is invalid.</li> <li> [ERR_OH_OUT_OF_MEMORY](capi-dlp-permission-api-h.md#dlp_errcode) 19100012 - If the memory error.</li></ul> |
+| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later. [since 26.0.1]</li> <li> [ERR_OH_INVALID_PARAMETER](capi-dlp-permission-api-h.md#dlp_errcode) 19100001 - If the parameter value is invalid.</li> <li> [ERR_OH_OUT_OF_MEMORY](capi-dlp-permission-api-h.md#dlp_errcode) 19100012 - If the memory error.</li></ul> |
 
 ### OH_DLP_IsInSandbox()
 
@@ -136,6 +146,8 @@ DLP_ErrCode OH_DLP_IsInSandbox(bool *isInSandbox)
 **Description**
 
 Checks whether this application is running in a DLP sandbox environment.
+
+**System capability**: SystemCapability.Security.DataLossPrevention
 
 **Since**: 14
 
@@ -149,7 +161,7 @@ Checks whether this application is running in a DLP sandbox environment.
 
 | Type | Description |
 | -- | -- |
-| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the device is car which not support DLP feature. On API 26.0.1 and above, this error is returned. [since 26.0.1]</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_OUT_OF_MEMORY](capi-dlp-permission-api-h.md#dlp_errcode) 19100012 - If the memory error.</li></ul> |
+| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later. [since 26.0.1]</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_OUT_OF_MEMORY](capi-dlp-permission-api-h.md#dlp_errcode) 19100012 - If the memory error.</li></ul> |
 
 ### OH_DLP_SetSandboxAppConfig()
 
@@ -160,6 +172,8 @@ DLP_ErrCode OH_DLP_SetSandboxAppConfig(const char *configInfo)
 **Description**
 
 Sets sandbox application configuration.
+
+**System capability**: SystemCapability.Security.DataLossPrevention
 
 **Since**: 14
 
@@ -173,7 +187,7 @@ Sets sandbox application configuration.
 
 | Type | Description |
 | -- | -- |
-| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the device is car which not support DLP feature. On API 26.0.1 and above, this error is returned. [since 26.0.1]</li> <li> [ERR_OH_INVALID_PARAMETER](capi-dlp-permission-api-h.md#dlp_errcode) 19100001 - If the parameter value is invalid.</li> <li> [ERR_OH_API_NOT_FOR_SANDBOX](capi-dlp-permission-api-h.md#dlp_errcode) 19100007 - If no permission to call this API, which is available only for non-DLP sandbox applications.</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_APPLICATION_NOT_AUTHORIZED](capi-dlp-permission-api-h.md#dlp_errcode) 19100018 - If the application is not authorized.</li></ul> |
+| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later. [since 26.0.1]</li> <li> [ERR_OH_INVALID_PARAMETER](capi-dlp-permission-api-h.md#dlp_errcode) 19100001 - If the parameter value is invalid.</li> <li> [ERR_OH_API_NOT_FOR_SANDBOX](capi-dlp-permission-api-h.md#dlp_errcode) 19100007 - If no permission to call this API, which is available only for non-DLP sandbox applications.</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_APPLICATION_NOT_AUTHORIZED](capi-dlp-permission-api-h.md#dlp_errcode) 19100018 - If the application is not authorized.</li></ul> |
 
 ### OH_DLP_GetSandboxAppConfig()
 
@@ -184,6 +198,8 @@ DLP_ErrCode OH_DLP_GetSandboxAppConfig(char **configInfo)
 **Description**
 
 Obtains the sandbox application configuration.
+
+**System capability**: SystemCapability.Security.DataLossPrevention
 
 **Since**: 14
 
@@ -197,7 +213,7 @@ Obtains the sandbox application configuration.
 
 | Type | Description |
 | -- | -- |
-| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the device is car which not support DLP feature. On API 26.0.1 and above, this error is returned. [since 26.0.1]</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_OUT_OF_MEMORY](capi-dlp-permission-api-h.md#dlp_errcode) 19100012 - If the memory error.</li> <li> [ERR_OH_APPLICATION_NOT_AUTHORIZED](capi-dlp-permission-api-h.md#dlp_errcode) 19100018 - If the application is not authorized.</li></ul> |
+| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later. [since 26.0.1]</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_OUT_OF_MEMORY](capi-dlp-permission-api-h.md#dlp_errcode) 19100012 - If the memory error.</li> <li> [ERR_OH_APPLICATION_NOT_AUTHORIZED](capi-dlp-permission-api-h.md#dlp_errcode) 19100018 - If the application is not authorized.</li></ul> |
 
 ### OH_DLP_CleanSandboxAppConfig()
 
@@ -209,12 +225,14 @@ DLP_ErrCode OH_DLP_CleanSandboxAppConfig()
 
 Cleans the sandbox application configuration.
 
+**System capability**: SystemCapability.Security.DataLossPrevention
+
 **Since**: 14
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the device is car which not support DLP feature. On API 26.0.1 and above, this error is returned. [since 26.0.1]</li> <li> [ERR_OH_API_NOT_FOR_SANDBOX](capi-dlp-permission-api-h.md#dlp_errcode) 19100007 - If no permission to call this API, which is available only for non-DLP sandbox applications.</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_APPLICATION_NOT_AUTHORIZED](capi-dlp-permission-api-h.md#dlp_errcode) 19100018 - If the application is not authorized.</li></ul> |
+| [DLP_ErrCode](capi-dlp-permission-api-h.md#dlp_errcode) | <ul><li>[ERR_OH_SUCCESS](capi-dlp-permission-api-h.md#dlp_errcode) 0 - If the operation is successful.</li> <li> [OH_DLP_NOT_SUPPORTED](capi-dlp-permission-api-h.md#dlp_errcode) 801 - If the function is not supported. Possible cause: The vehicle is not supported. This error code is returned in API version 26.0.1 or later. [since 26.0.1]</li> <li> [ERR_OH_API_NOT_FOR_SANDBOX](capi-dlp-permission-api-h.md#dlp_errcode) 19100007 - If no permission to call this API, which is available only for non-DLP sandbox applications.</li> <li> [ERR_OH_SYSTEM_SERVICE_EXCEPTION](capi-dlp-permission-api-h.md#dlp_errcode) 19100011 - If the system ability works abnormally.</li> <li> [ERR_OH_APPLICATION_NOT_AUTHORIZED](capi-dlp-permission-api-h.md#dlp_errcode) 19100018 - If the application is not authorized.</li></ul> |
 
 

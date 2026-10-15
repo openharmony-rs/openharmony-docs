@@ -6,6 +6,8 @@ Neural Network Runtime定义的结构体和枚举值。<br> include "neural_netw
 
 **库：** libneural_network_runtime.so
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 9
 
 **相关模块：** [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
@@ -35,7 +37,7 @@ Neural Network Runtime定义的结构体和枚举值。<br> include "neural_netw
 | [OH_NN_DeviceType](#oh_nn_devicetype) | OH_NN_DeviceType | Neural Network Runtime 支持的设备类型 |
 | [OH_NN_DataType](#oh_nn_datatype) | OH_NN_DataType | Neural Network Runtime 支持的数据类型。 |
 | [OH_NN_OperationType](#oh_nn_operationtype) | OH_NN_OperationType | Neural Network Runtime 支持算子的类型。 |
-| [OH_NN_TensorType](#oh_nn_tensortype) | OH_NN_TensorType | 张量的类型。 <br> 张量通常用于设置模型的输入、输出和算子参数。作为模型（或算子）的输入和输出时，需要将张量类型设置为[OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)； 当张量作为算子参数时，需要选择除[OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)以外合适的枚举值，作为张量的类型。 假设正在设置[OH_NN_OPS_CONV2D](capi-neural-network-runtime-type-h.md#oh_nn_operationtype)算子的pad参数，则需要将OH_NN_Tensor实例的type属性设置为 [OH_NN_PAD](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)。其他算子参数的设置以此类推，枚举值的命名遵守 OH_NN_{算子名词}_{属性名} 的格式。 |
+| [OH_NN_TensorType](#oh_nn_tensortype) | OH_NN_TensorType | 张量的类型。 <br> 张量通常用于设置模型的输入、输出和算子参数。作为模型（或算子）的输入和输出时，需要将张量类型设置为[OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)； 当张量作为算子参数时，需要选择除[OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)以外合适的枚举值，作为张量的类型。 假设正在设置[OH_NN_OPS_CONV2D](capi-neural-network-runtime-type-h.md#oh_nn_operationtype)算子的pad参数，则需要将OH_NN_Tensor实例的type属性设置为 OH_NN_PAD。其他算子参数的设置以此类推，枚举值的命名遵守 OH_NN_{算子名词}_{属性名} 的格式。 |
 
 ### 函数
 
@@ -63,6 +65,8 @@ enum OH_NN_PerformanceMode
 
 硬件的性能模式。
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -83,6 +87,8 @@ enum OH_NN_Priority
 
 模型推理任务优先级
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -101,6 +107,8 @@ enum OH_NN_ReturnCode
 **描述：**
 
 Neural Network Runtime 定义的错误码类型。
+
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
 **起始版本：** 9
 
@@ -132,6 +140,8 @@ enum OH_NN_FuseType
 
 Neural Network Runtime 融合算子中激活函数的类型。
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -149,6 +159,8 @@ enum OH_NN_Format
 **描述：**
 
 ；张量数据的排布类型。
+
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
 **起始版本：** 9
 
@@ -169,6 +181,8 @@ enum OH_NN_DeviceType
 
 Neural Network Runtime 支持的设备类型
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 9
 
 | 枚举项 | 描述 |
@@ -187,6 +201,8 @@ enum OH_NN_DataType
 **描述：**
 
 Neural Network Runtime 支持的数据类型。
+
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
 **起始版本：** 9
 
@@ -215,6 +231,8 @@ enum OH_NN_OperationType
 **描述：**
 
 Neural Network Runtime 支持算子的类型。
+
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
 **起始版本：** 9
 
@@ -337,7 +355,9 @@ enum OH_NN_TensorType
 
 **描述：**
 
-张量的类型。 <br> 张量通常用于设置模型的输入、输出和算子参数。作为模型（或算子）的输入和输出时，需要将张量类型设置为[OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)； 当张量作为算子参数时，需要选择除[OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)以外合适的枚举值，作为张量的类型。 假设正在设置[OH_NN_OPS_CONV2D](capi-neural-network-runtime-type-h.md#oh_nn_operationtype)算子的pad参数，则需要将OH_NN_Tensor实例的type属性设置为 [OH_NN_PAD](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)。其他算子参数的设置以此类推，枚举值的命名遵守 OH_NN_{算子名词}_{属性名} 的格式。
+张量的类型。 <br> 张量通常用于设置模型的输入、输出和算子参数。作为模型（或算子）的输入和输出时，需要将张量类型设置为[OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)； 当张量作为算子参数时，需要选择除[OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype)以外合适的枚举值，作为张量的类型。 假设正在设置[OH_NN_OPS_CONV2D](capi-neural-network-runtime-type-h.md#oh_nn_operationtype)算子的pad参数，则需要将OH_NN_Tensor实例的type属性设置为 OH_NN_PAD。其他算子参数的设置以此类推，枚举值的命名遵守 OH_NN_{算子名词}_{属性名} 的格式。
+
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
 **起始版本：** 9
 
@@ -520,6 +540,8 @@ typedef void (*NN_OnRunDone)(void *userData, OH_NN_ReturnCode errCode, void *out
 
 异步推理结束后的回调处理函数句柄。 使用参数userData来查询希望获取的那次异步推理执行。 userData与调用异步推理OH_NNExecutor_RunAsync接口时传入的参数userData是一致的。 <br> 使用参数errCode（[OH_NN_ReturnCode](capi-neural-network-runtime-type-h.md#oh_nn_returncode)类型）来获取该次异步推理的返回状态。
 
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
+
 **起始版本：** 11
 
 **参数：**
@@ -540,6 +562,8 @@ typedef void (*NN_OnServiceDied)(void *userData)
 **描述：**
 
 异步推理执行期间设备驱动服务异常终止时的回调处理函数句柄。<br> 如果该回调函数被调用，您需要重新编译模型。 <br> 使用参数userData来查询希望获取的那次异步推理执行。 userData与调用异步推理OH_NNExecutor_RunAsync接口时传入的参数userData是一致的。
+
+**系统能力：** SystemCapability.AI.NeuralNetworkRuntime
 
 **起始版本：** 11
 

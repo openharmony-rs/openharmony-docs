@@ -6,6 +6,8 @@ Declare playbackState interfaces.
 
 **Library**: libohavsession.so
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Related module**: [OHAVSession](capi-ohavsession.md)
@@ -40,6 +42,8 @@ AVSession_ErrCode OH_AVSession_GetPlaybackState(OH_AVSession_AVPlaybackState* pl
 
 Get State of PlayBackState.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -64,6 +68,8 @@ AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState*
 **Description**
 
 Get position of PlaybackState.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -90,6 +96,8 @@ AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* pl
 
 Get speed of PlaybackState.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -114,6 +122,8 @@ AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* p
 **Description**
 
 Get volume of PlaybackState.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 

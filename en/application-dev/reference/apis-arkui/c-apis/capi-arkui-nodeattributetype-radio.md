@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the ArkUI style attributes that can be set on the native side.
+Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
@@ -30,7 +30,7 @@ NODE_RADIO_STYLE
 
 **Description**
 
-Set the styles of the selected and deselected states of the option button. The attribute setting, attribute resetting, and attribute obtaining are supported. **Attribute setting method [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) Parameter format:** <ul> <li>.value[0]?. u32: color of the mother board in enabled state. The type is 0xARGB, and the default value is 0xFF007DFF.</li> <li>.value[1]?. u32: stroke color in the close state. The type is 0xARGB, and the default value is 0xFF182431.</li> <li>.value[2]?. u32: color of the internal round pie in the enabled state. The type is 0xARGB, and the default value is 0xFFFFFFFF.</li> </ul> **Attribute obtaining method return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) format:** <ul> <li>.value[0]. u32: color of the mother board in enabled state. The type is 0xARGB, and the default value is 0xFF007DFF.</li> <li>.value[1]. u32: stroke color in the close state. The type is 0xARGB, and the default value is 0xFF182431.</li> <li>.value[2]. u32: color of the internal round pie in the enabled state. The type is 0xARGB, and the default value is 0xFFFFFFF.</li> </ul>
+Style of the radio button in selected or deselected state. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.value[0]?.u32: Color of the background when the radio button is selected, in 0xARGB format. The default value is **0xFF007DFF**.</li> <li>.value[1]?.u32: Color of the border when the radio button is deselected, in 0xARGB format. The default value is **0xFF182431**.</li> <li>.value[2]?.u32: Color of the indicator when the radio button is selected, in 0xARGB format. The default value is **0xFFFFFFFF**.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.value[0].u32: Color of the background when the radio button is selected, in 0xARGB format. The default value is **0xFF007DFF**.</li> <li>.value[1].u32: Color of the border when the radio button is deselected, in 0xARGB format. The default value is **0xFF182431**.</li> <li>.value[2].u32: Color of the indicator when the radio button is selected, in 0xARGB format. The default value is **0xFFFFFFFF**.</li> </ul>
 
 **Since**: 12
 
@@ -42,7 +42,7 @@ NODE_RADIO_VALUE
 
 **Description**
 
-Sets the value of the current radio. This attribute can be set, reset, and obtained as required through APIs.<br> **Attribute setting method [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) Parameter format:** <ul> <li>.string: radio value.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: radio value.</li> </ul>
+Current value of the radio button. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: Current value of the radio button.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: Current value of the radio button.</li> </ul>
 
 **Since**: 12
 
@@ -54,7 +54,7 @@ NODE_RADIO_GROUP
 
 **Description**
 
-Set the group name of the current Radio group, only one radio of the same group can be selected. This attribute can be set, reset, and obtained as required through APIs.<br> **Attribute setting method [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) Parameter format:** <ul> <li>.string: name of the group to which the current option box belongs.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: name of the group to which the current option box belongs.</li> </ul>
+Name of the group to which the radio button belongs. Only one radio button in a given group can be selected at a time. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:** <ul> <li>.string: Name of the group to which the radio button belongs.</li> </ul> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):** <ul> <li>.string: Name of the group to which the radio button belongs.</li> </ul>
 
 **Since**: 12
 

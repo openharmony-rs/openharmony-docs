@@ -24,7 +24,7 @@ Defines the format string list supported by the image source. It is obtained by 
 | -- | -- |
 | struct OhosImageSourceSupportedFormat** supportedFormatList = nullptr |  |
 | size_t size = 0 |  |
-| [struct OhosImageSourceSupportedFormat*](capi-image-ohosimagesourcesupportedformat.md)* supportedFormatList |  |
+| struct OhosImageSourceSupportedFormat** supportedFormatList |  |
 | size_t size |  |
 
 

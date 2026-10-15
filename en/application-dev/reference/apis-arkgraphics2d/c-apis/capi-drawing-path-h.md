@@ -6,6 +6,8 @@ This file declares the functions related to the path in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -95,6 +97,8 @@ enum OH_Drawing_PathDirection
 
 Enumerates the directions of a closed contour.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 | Enum item | Description |
@@ -111,6 +115,8 @@ enum OH_Drawing_PathFillType
 **Description**
 
 Enumerates the fill types of a path.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -131,6 +137,8 @@ enum OH_Drawing_PathAddMode
 
 Enumerates the path adding modes.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 | Enum item | Description |
@@ -147,6 +155,8 @@ enum OH_Drawing_PathOpMode
 **Description**
 
 Enumerates the operation modes available for a path.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -167,6 +177,8 @@ enum OH_Drawing_PathMeasureMatrixFlags
 **Description**
 
 Enumerates the types of matrix information obtained during path measurement.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -189,6 +201,8 @@ OH_Drawing_Path* OH_Drawing_PathCreate(void)
 
 Creates an **OH_Drawing_Path** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Returns**:
@@ -206,6 +220,8 @@ OH_Drawing_Path* OH_Drawing_PathCopy(OH_Drawing_Path* path)
 **Description**
 
 Creates a copy of the [OH_Drawing_Path](capi-drawing-oh-drawing-path.md) object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -231,6 +247,8 @@ void OH_Drawing_PathDestroy(OH_Drawing_Path* path)
 
 Destroys an **OH_Drawing_Path** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -248,6 +266,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathSetPath(OH_Drawing_Path* path, OH_Drawing_Pa
 **Description**
 
 Sets a path object as the current path object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -274,6 +294,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsEmpty(OH_Drawing_Path* path, bool* isEmpty
 
 Checks whether a path object is empty.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -298,6 +320,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsRect(OH_Drawing_Path* path, OH_Drawing_Rec
 **Description**
 
 Checks whether a path object forms a rectangle.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -325,6 +349,8 @@ void OH_Drawing_PathMoveTo(OH_Drawing_Path* path, float x, float y)
 
 Sets the start point of this path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -345,6 +371,8 @@ void OH_Drawing_PathLineTo(OH_Drawing_Path* path, float x, float y)
 
 Draws a line segment from the last point of this path to the target point. If the path is empty, the start point (0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -364,6 +392,8 @@ void OH_Drawing_PathArcTo(OH_Drawing_Path* path, float x1, float y1, float x2, f
 **Description**
 
 Draws an arc to a path. This is done by using angle arc mode. In this mode, a rectangle is specified first, and then a start angle and scanning degree are specified. The inscribed ellipse of the rectangle will be used to intercept the arc. The arc is a portion of the ellipse defined by the start angle and the sweep angle. If the path is empty, a line segment from the last point of the path to the start point of the arc is also added. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -389,6 +419,8 @@ void OH_Drawing_PathQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, floa
 
 Draws a quadratic Bezier curve from the last point of a path to the target point. If the path is empty, the start point (0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -410,6 +442,8 @@ void OH_Drawing_PathConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, flo
 **Description**
 
 Draws a conic curve from the last point of a path to the target point. If the path is empty, the start point ( 0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -433,6 +467,8 @@ void OH_Drawing_PathCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, f
 **Description**
 
 Draws a cubic Bezier curve from the last point of this path to the target point. If the path is empty, the start point (0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -458,6 +494,8 @@ void OH_Drawing_PathRMoveTo(OH_Drawing_Path* path, float x, float y)
 
 Sets the start position relative to the last point of a path. If the path is empty, the start point (0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -478,6 +516,8 @@ void OH_Drawing_PathRLineTo(OH_Drawing_Path* path, float x, float y)
 
 Draws a line segment from the last point of this path to a point relative to the last point. If the path is empty, the start point (0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -497,6 +537,8 @@ void OH_Drawing_PathRQuadTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, flo
 **Description**
 
 Draws a quadratic Bezier curve from the last point of this path to a point relative to the last point. If the path is empty, the start point (0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -520,6 +562,8 @@ void OH_Drawing_PathRConicTo(OH_Drawing_Path* path, float ctrlX, float ctrlY, fl
 
 Draws a conic curve from the last point of a path to a point relative to the last point. If the path is empty, the start point (0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -542,6 +586,8 @@ void OH_Drawing_PathRCubicTo(OH_Drawing_Path* path, float ctrlX1, float ctrlY1, 
 **Description**
 
 Draws a cubic Bezier curve from the last point of a path to a point relative to the last point. If the path is empty, the start point (0, 0) is used. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -567,6 +613,8 @@ void OH_Drawing_PathAddRect(OH_Drawing_Path* path, float left, float top, float 
 
 Adds a rectangle to a path in the specified direction. The start point is the upper left corner of the rectangle. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -590,6 +638,8 @@ void OH_Drawing_PathAddRectWithInitialCorner(OH_Drawing_Path* path, const OH_Dra
 
 Adds a rectangle contour to a path in the specified direction. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -611,6 +661,8 @@ void OH_Drawing_PathAddRoundRect(OH_Drawing_Path* path, const OH_Drawing_RoundRe
 
 Adds a rounded rectangle to a path in the specified direction. When the path direction is clockwise, the start point is at the intersection of the rounded rectangle's left boundary and its lower left corner. When the path direction is counterclockwise, the start point is at the intersection point between the left boundary and the upper left corner. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **roundRect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -630,6 +682,8 @@ void OH_Drawing_PathAddOvalWithInitialPoint(OH_Drawing_Path* path, const OH_Draw
 **Description**
 
 Adds an oval to a path. **OH_Drawing_Rect** specifies the outer tangent rectangle of the oval, and **<br>OH_Drawing_PathDirection** specifies whether the drawing is clockwise or counterclockwise. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -652,6 +706,8 @@ void OH_Drawing_PathAddOval(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, 
 
 Adds an oval to a path in the specified direction. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -671,6 +727,8 @@ void OH_Drawing_PathAddArc(OH_Drawing_Path* path, const OH_Drawing_Rect* rect, f
 **Description**
 
 Adds an arc to a path as the start of a new contour. The arc added is part of the inscribed ellipse of the rectangle, from the start angle through the sweep angle. If the sweep angle is less than or equal to -360°, or if the sweep angle is greater than or equal to 360°, and start angle modulo 90 is nearly zero, an oval instead of an ellipse is added. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -693,6 +751,8 @@ void OH_Drawing_PathAddPath(OH_Drawing_Path* path, const OH_Drawing_Path* src, c
 
 Transforms the points in a **src** path by a matrix and adds the new one to the current path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **src** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -712,6 +772,8 @@ void OH_Drawing_PathAddPathWithMatrixAndMode(OH_Drawing_Path* path, const OH_Dra
 **Description**
 
 Transforms the points in a **src** path by a matrix and adds the new one to the current path with the specified adding mode. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **src** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathAddMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -734,6 +796,8 @@ void OH_Drawing_PathAddPathWithMode(OH_Drawing_Path* path, const OH_Drawing_Path
 
 Adds a **src** path to the current path with the specified adding mode. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **src** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathAddMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -753,6 +817,8 @@ void OH_Drawing_PathAddPathWithOffsetAndMode(OH_Drawing_Path* path, const OH_Dra
 **Description**
 
 Translates a **src** path by an offset and adds the new one to the current path with the specified adding mode. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **src** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathAddMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -776,6 +842,8 @@ void OH_Drawing_PathAddPolygon(OH_Drawing_Path* path, const OH_Drawing_Point2D* 
 
 Adds a polygon to a path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **points** is NULL or **count** is **0**, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -796,6 +864,8 @@ void OH_Drawing_PathAddCircle(OH_Drawing_Path* path, float x, float y, float rad
 **Description**
 
 Adds a circle to a path in the specified direction. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **radius** is less than or equal to 0, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned. If **pathDirection** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -818,6 +888,8 @@ bool OH_Drawing_PathBuildFromSvgString(OH_Drawing_Path* path, const char* str)
 **Description**
 
 Parses the path represented by an SVG string. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **str** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -843,6 +915,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathConvertToSvgString(const OH_Drawing_Path* pa
 **Description**
 
 Convert path to an SVG string.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.0
 
@@ -870,6 +944,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetPointData(const OH_Drawing_Path* path, OH
 
 Get path point data.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -895,6 +971,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetVerbData(const OH_Drawing_Path* path, OH_
 **Description**
 
 Get path verb data.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.0
 
@@ -922,6 +1000,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetConicWeightData(const OH_Drawing_Path* pa
 
 Get path conic weight data.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -947,6 +1027,8 @@ bool OH_Drawing_PathContains(OH_Drawing_Path* path, float x, float y)
 **Description**
 
 Checks whether a coordinate point is included in this path. For details, see [OH_Drawing_PathFillType](capi-drawing-path-h.md#oh_drawing_pathfilltype). This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -974,6 +1056,8 @@ void OH_Drawing_PathTransform(OH_Drawing_Path* path, const OH_Drawing_Matrix* ma
 
 Transforms the points in a path by matrix. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -992,6 +1076,8 @@ void OH_Drawing_PathTransformWithPerspectiveClip(OH_Drawing_Path* src, const OH_
 **Description**
 
 Transforms the points in a path by matrix, and uses the new one to replace the **dst** path. If **dst** is NULL, the **src** path is replaced. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **src** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -1014,6 +1100,8 @@ void OH_Drawing_PathSetFillType(OH_Drawing_Path* path, OH_Drawing_PathFillType p
 
 Sets the fill type of a path. The fill type determines how "inside" of the path is drawn. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **pathFillType** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1032,6 +1120,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetFillType(OH_Drawing_Path* path, OH_Drawin
 **Description**
 
 Obtains the fill type of a path.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -1058,6 +1148,8 @@ float OH_Drawing_PathGetLength(OH_Drawing_Path* path, bool forceClosed)
 
 Obtains the length of a path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1083,6 +1175,8 @@ void OH_Drawing_PathGetBounds(OH_Drawing_Path* path, OH_Drawing_Rect* rect)
 
 Obtains the minimum bounds that enclose a path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1102,6 +1196,8 @@ void OH_Drawing_PathClose(OH_Drawing_Path* path)
 
 Draws a line segment from the current point to the start point of this path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1119,6 +1215,8 @@ void OH_Drawing_PathOffset(OH_Drawing_Path* path, OH_Drawing_Path* dst, float dx
 **Description**
 
 Translates a path by an offset along the X axis and Y axis and adds the new one to the **dst** path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -1141,6 +1239,8 @@ void OH_Drawing_PathReset(OH_Drawing_Path* path)
 
 Resets the path data. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1158,6 +1258,8 @@ bool OH_Drawing_PathIsClosed(OH_Drawing_Path* path, bool forceClosed)
 **Description**
 
 Checks whether a path is closed. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -1183,6 +1285,8 @@ bool OH_Drawing_PathGetPositionTangent(OH_Drawing_Path* path, bool forceClosed, 
 **Description**
 
 Obtains the coordinates and tangent at a distance from the start point of this path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If any of **path**, **position**, or **tangent** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -1211,6 +1315,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetSegment(OH_Drawing_Path* path, bool force
 **Description**
 
 Extracts a segment of a path and appends it to a destination path.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -1242,6 +1348,8 @@ bool OH_Drawing_PathOp(OH_Drawing_Path* path, const OH_Drawing_Path* other, OH_D
 
 Combines two paths based on the specified operation mode. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **srcPath** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **op** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1267,6 +1375,8 @@ bool OH_Drawing_PathGetMatrix(OH_Drawing_Path* path, bool forceClosed, float dis
 **Description**
 
 Obtains a transformation matrix at a distance from the start point of this path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **path** or **matrix** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **flag** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -1296,6 +1406,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathApproximate(OH_Drawing_Path* path, float acc
 
 Converts the existing path into an approximate path consisting of consecutive line segments.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -1322,6 +1434,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathInterpolate(OH_Drawing_Path* path, OH_Drawin
 **Description**
 
 Interpolates between the existing path and another path based on the given weight and stores the result in the target path object. Interpolation is achievable if the two paths have the same number of points. The target path is created based on the structure of the existing path.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -1351,6 +1465,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsInterpolate(OH_Drawing_Path* path, OH_Draw
 
 Checks whether the existing path and another path (**other**) are compatible for interpolation in terms of structure and operation sequence. If the paths contain conic operations, the weight values of the operations must be the same.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -1377,6 +1493,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathGetLastPoint(OH_Drawing_Path* path, OH_Drawi
 
 Gets the last point of the path.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1401,6 +1519,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsInverseFillType(const OH_Drawing_Path* pat
 **Description**
 
 Checks whether the fill type of the path is the inverse type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -1427,6 +1547,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathToggleInverseFillType(OH_Drawing_Path* path)
 
 Toggles the fill type of the path to the inverse type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
@@ -1450,6 +1572,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIsEqual(OH_Drawing_Path* path, OH_Drawing_Pa
 **Description**
 
 Checks if two paths are equal.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.0
 

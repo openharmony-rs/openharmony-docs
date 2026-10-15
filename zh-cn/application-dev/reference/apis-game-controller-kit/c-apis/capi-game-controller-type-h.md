@@ -6,6 +6,8 @@
 
 **库：** libohgame_controller.z.so
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)
@@ -29,6 +31,8 @@ enum GameController_ErrorCode
 **描述：**
 
 此枚举定义游戏控制器的错误码。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 

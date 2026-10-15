@@ -6,7 +6,7 @@ typedef struct OH_UDMF_Summary OH_UDMF_Summary
 
 ## Overview
 
-Describes summary information of unified data.
+Summarizes the data information of the **unifiedData** object, including the data type and size.
 
 **System capability**: SystemCapability.DistributedDataManager.UDMF.Core
 

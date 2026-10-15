@@ -23,6 +23,6 @@ The struct describes the parameters passed to the child process.
 | Name | Description |
 | -- | -- |
 | char* entryParams |  |
-| [struct NativeChildProcess_FdList](capi-childprocess-nativechildprocess-fdlist.md) fdList |  |
+| struct NativeChildProcess_FdList fdList |  |
 
 

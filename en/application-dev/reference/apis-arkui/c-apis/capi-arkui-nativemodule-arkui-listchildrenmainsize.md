@@ -6,7 +6,7 @@ typedef struct ArkUI_ListChildrenMainSize ArkUI_ListChildrenMainSize
 
 ## Overview
 
-Defines the size of the main axis of a child component of the **List** component.
+Defines the main axis size information of the child component of the **List** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

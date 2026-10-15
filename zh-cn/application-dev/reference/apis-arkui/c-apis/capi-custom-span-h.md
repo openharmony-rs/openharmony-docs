@@ -6,6 +6,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -50,6 +52,8 @@ ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 
 创建自定义绘制Span测量信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **返回值：**
@@ -68,6 +72,8 @@ void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 
 销毁自定义绘制Span测量信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -85,6 +91,8 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 **描述：**
 
 获取自定义绘制Span的父节点Text的字体大小。在自定义绘制Span的测量回调中，可根据父节点Text的字体大小计算自定义组件的布局尺寸，用于实现图文混排、表情内嵌等场景的精确排版。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -110,6 +118,8 @@ ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 
 创建自定义绘制Span度量信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **返回值：**
@@ -128,6 +138,8 @@ void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 
 销毁自定义绘制Span度量信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -145,6 +157,8 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 **描述：**
 
 设置自定义绘制Span的宽度。在图文混排场景中，需要为嵌入的图片或表情设置合适的宽度以匹配文本行高；在文档应用中，可能需要为自定义标记元素设置固定宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -171,6 +185,8 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 
 设置自定义绘制Span的高度。在表情内嵌场景中，需要根据表情大小设置合适的高度以保持与文本对齐；在图文混排场景中，需要为嵌入元素设置与文本行高匹配的高度。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -196,6 +212,8 @@ ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 
 创建自定义绘制Span绘制信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **返回值：**
@@ -214,6 +232,8 @@ void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 
 销毁自定义绘制Span绘制信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -231,6 +251,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 **描述：**
 
 获取自定义绘制Span相对于挂载组件的x轴偏移值。在自定义绘制回调中，需要根据偏移值确定绘制起始位置，用于实现表情内嵌、图文混排等场景的精确绘制。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -256,6 +278,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 
 获取自定义绘制Span相对于挂载组件的上边距。在自定义绘制时，需要根据上边距确定绘制区域的垂直起始位置，用于富文本编辑器、文档应用等场景的精确排版。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -280,6 +304,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 
 获取自定义绘制Span相对于挂载组件的下边距。在自定义绘制时，需要结合上边距和下边距计算绘制区域的高度范围，用于图文混排、表情内嵌等场景的精确布局。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -303,6 +329,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 **描述：**
 
 获取自定义绘制Span相对于挂载组件的基线偏移量。在自定义绘制Span的绘制回调中，通过本接口获取基线偏移量用于文本对齐排版，实现富文本编辑器、图文混排等场景的精准绘制效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 

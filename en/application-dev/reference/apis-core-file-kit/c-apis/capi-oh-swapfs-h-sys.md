@@ -6,6 +6,8 @@ Defines the native APIs for swapfs.
 
 **Library**: libohswapfs.so
 
+**System capability**: SystemCapability.FileManagement.File.Swapfs
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -63,6 +65,8 @@ enum OH_SwapfsKeyStatus
 
 Defines the status of a swap key.
 
+**System capability**: SystemCapability.FileManagement.File.Swapfs
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -81,6 +85,8 @@ enum OH_SwapfsDisableReason
 **Description**
 
 Defines the reason why the swap-out feature is disabled.
+
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -103,6 +109,8 @@ OH_Swapfs_ErrCode OH_Swapfs_CreateManager(const OH_SwapfsConfig *config, OH_Swap
 **Description**
 
 Creates a swapfs manager.
+
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -133,6 +141,8 @@ OH_Swapfs_ErrCode OH_Swapfs_DestroyManager(OH_SwapfsManager *manager)
 
 Destroys a swapfs manager and releases all resources.<br> This function enters the shutting-down state and rejects new swap-out, swap-in, remove, and remove-all operations. It waits up to 5 seconds for active operations to complete. If all operations complete within the timeout, all swap data owned by the manager is automatically removed and the manager is destroyed. If the wait times out, this function cancels the shutting-down state and returns SWAPFS_E_BUSY; the caller can retry later.
 
+**System capability**: SystemCapability.FileManagement.File.Swapfs
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -158,6 +168,8 @@ OH_Swapfs_ErrCode OH_Swapfs_SwapOut(OH_SwapfsManager *manager, const OH_SwapfsSw
 **Description**
 
 Swaps out data from memory to disk.<br> When config.useDirectIo is false, buffered IO is used. When true, Direct IO is required and misaligned buffers cause an error. In DIO mode, the swap file size is padded to SWAPFS_DIO_ALIGNMENT (occupiedSize is greater than or equal to dataSize).
+
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -187,6 +199,8 @@ OH_Swapfs_ErrCode OH_Swapfs_SwapIn(OH_SwapfsManager *manager, const OH_SwapfsSwa
 
 Swaps in data from disk back to memory.<br> In DIO mode, the buffer address and size must be aligned to SWAPFS_DIO_ALIGNMENT, and bufferSize must be greater than or equal to occupiedSize. In buffered mode, bufferSize must be greater than or equal to dataSize. On success, readSize receives the original dataSize (not occupiedSize).
 
+**System capability**: SystemCapability.FileManagement.File.Swapfs
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -214,6 +228,8 @@ OH_Swapfs_ErrCode OH_Swapfs_QueryData(OH_SwapfsManager *manager, uint64_t keyId,
 **Description**
 
 Queries information about a specific swap key.
+
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 
@@ -243,6 +259,8 @@ OH_Swapfs_ErrCode OH_Swapfs_GetStats(OH_SwapfsManager *manager, OH_SwapfsStats *
 
 Obtains statistics of the current swapfs manager.
 
+**System capability**: SystemCapability.FileManagement.File.Swapfs
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -270,6 +288,8 @@ OH_Swapfs_ErrCode OH_Swapfs_RemoveData(OH_SwapfsManager *manager, uint64_t keyId
 
 Logically deletes a specific swap key.<br> The key is marked as REMOVING state immediately. Existing swap-in operations can still complete. New swap-in or query operations on this key will return SWAPFS_E_KEY_STATE_INVALID. This function does not return SWAPFS_E_BUSY for concurrent swap-in operations.
 
+**System capability**: SystemCapability.FileManagement.File.Swapfs
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -296,6 +316,8 @@ OH_Swapfs_ErrCode OH_Swapfs_RemoveAllData(OH_SwapfsManager *manager)
 **Description**
 
 Removes all swap keys in the manager.<br> If there are active operations in progress (swap-out or swap-in), or any key is in REMOVING state, this function returns SWAPFS_E_BUSY without starting any removal.
+
+**System capability**: SystemCapability.FileManagement.File.Swapfs
 
 **Since**: 26.0.0
 

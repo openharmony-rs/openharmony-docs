@@ -6,6 +6,8 @@ Defines the code of the HiDebug module.
 
 **Library**: libohhidebug.so
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 **Related module**: [HiDebug](capi-hidebug.md)
@@ -108,6 +110,8 @@ enum HiDebug_ErrorCode
 
 Enumerates the error codes used in the HiDebug module.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 | Enum item | Description |
@@ -156,6 +160,8 @@ enum HiDebug_TraceFlag
 
 Enumerates the thread types for trace collection.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 12
 
 | Enum item | Description |
@@ -173,6 +179,8 @@ enum HiDebug_StackFrameType
 
 Enumerates the stack frame types.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 20
 
 | Enum item | Description |
@@ -189,6 +197,8 @@ enum HiDebug_CrashObjType
 **Description**
 
 Enumerates the data types of debugging information.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 23
 
@@ -210,6 +220,8 @@ enum OH_HiDebug_ResourceType
 **Description**
 
 Enumerates the resource profiling types.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 24
 
@@ -234,6 +246,8 @@ enum OH_HiDebug_MemListenerType
 
 Enumerates the memory listener callback types. You can process the related logic based on the callback type.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -251,6 +265,8 @@ enum OH_HiDebug_ProfilerStackTraceMode
 **Description**
 
 Defines an enum for stack trace mode.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 26.0.1
 
@@ -272,6 +288,8 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 
 Triggered for the trace collection request.
 
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **Since**: 24
 
 **Parameters**:
@@ -290,6 +308,8 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 **Description**
 
 Triggered for the resource profiling.
+
+**System capability**: SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **Since**: 24
 

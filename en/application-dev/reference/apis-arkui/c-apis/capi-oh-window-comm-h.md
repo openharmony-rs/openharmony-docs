@@ -6,6 +6,8 @@ The file declares the common enums and definitions of the window manager.
 
 **Library**: libnative_window_manager.so
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 12
 
 **Related module**: [WindowManager](capi-windowmanager.md)
@@ -59,6 +61,8 @@ enum WindowManager_ErrorCode
 
 Enumerates the status codes returned by the window manager interface.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 12
 
 | Enum item | Description |
@@ -89,6 +93,8 @@ enum WindowManager_AvoidAreaType
 
 Enumerates the avoid area types.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 15
 
 | Enum item | Description |
@@ -108,6 +114,8 @@ enum WindowManager_WindowType
 **Description**
 
 Enumerates the window types.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 15
 
@@ -131,6 +139,8 @@ typedef void (*OH_WindowManager_FrameMetricsMeasuredCallback)(int32_t windowId, 
 
 Frame metrics callback type.
 
+**System capability**: SystemCapability.Window.SessionManager
+
 **Since**: 26.0.0
 
 ### OH_WindowManager_DensityInfoCallback()
@@ -142,6 +152,8 @@ typedef void (*OH_WindowManager_DensityInfoCallback)(int32_t windowId, const OH_
 **Description**
 
 Density info callback type.
+
+**System capability**: SystemCapability.Window.SessionManager
 
 **Since**: 24
 

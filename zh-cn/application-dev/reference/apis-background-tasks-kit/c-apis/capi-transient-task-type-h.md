@@ -6,6 +6,8 @@
 
 **库：** libtransient_task.so
 
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **起始版本：** 11
 
 **相关模块：** [TransientTask](capi-transienttask.md)
@@ -55,6 +57,8 @@ enum TransientTask_ErrorCode
 
 定义短时任务错误码。
 
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -81,6 +85,8 @@ typedef void (*TransientTask_Callback)(void)
 **描述：**
 
 定义短时任务超时回调类型。若申请的短时任务即将超时，系统会调用此回调函数通知应用。
+
+**系统能力：** SystemCapability.ResourceSchedule.BackgroundTaskManager.TransientTask
 
 **起始版本：** 13
 

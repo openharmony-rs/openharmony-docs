@@ -8,6 +8,8 @@
 
 **库：** libnative_media_core.so
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 9
 
 **相关模块：** [Core](capi-core.md)
@@ -31,6 +33,8 @@ enum OH_AVErrCode
 **描述：**
 
 媒体框架错误码。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 9
 

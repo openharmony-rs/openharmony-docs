@@ -30,7 +30,7 @@ NODE_IMAGE_ON_ERROR
 
 **Description**
 
-Defines the image loading failure event.<br> This event is triggered when an error occurs during image loading. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains one parameter:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].i32: error code.<br><b>401</b>: The image could not be obtained because the image path is invalid.<br><b>103101</b>: The image format is not supported.</li> </ul>
+Image loading failure event.<br> This event is triggered when an error occurs during image loading. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameter:**<br><ul> <li>**ArkUI_NodeComponentEvent.data[0].i32**: result code.<br><b>401</b>: The image could not be obtained because the image path is invalid.<br><b>103101</b>: The image format is not supported.</li> </ul>
 
 **Since**: 12
 
@@ -42,7 +42,7 @@ NODE_IMAGE_ON_SVG_PLAY_FINISH
 
 **Description**
 
-Defines the SVG animation playback completion event.<br> This event is triggered when the animation playback in the loaded SVG image is complete. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
+SVG animation playback completion event.<br> This event is triggered when the animation playback in the loaded SVG image is complete. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) does not contain parameters.
 
 **Since**: 12
 
@@ -54,7 +54,7 @@ NODE_IMAGE_ON_DOWNLOAD_PROGRESS
 
 **Description**
 
-Defines the image download progress event.<br> This event is triggered when downloading webpage images from page components. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains two parameters:**<br><ul> <li>ArkUI_NodeComponentEvent.data[0].u32: number of bytes downloaded.</li> <li>ArkUI_NodeComponentEvent.data[1].u32: total number of bytes to download.</li> </ul>
+Event triggered during image download.<br> This event is triggered when the page component downloads a web page image. When the event callback occurs, the union type in the [ArkUI_NodeEvent](capi-arkui-nativemodule-arkui-nodeevent.md) object is [ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md). **[ArkUI_NodeComponentEvent](capi-arkui-nativemodule-arkui-nodecomponentevent.md) contains the following parameters:**<br><ul> <li>**ArkUI_NodeComponentEvent.data[0].u32**: number of bytes that have been downloaded.</li> <li>**ArkUI_NodeComponentEvent.data[1].u32**: total number of bytes of the image to be downloaded.</li> </ul>
 
 **Since**: 12
 

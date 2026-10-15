@@ -8,6 +8,8 @@ Defines the logging functions of the HiLog module.<br> Before outputting logs, y
 
 **Library**: libhilog_ndk.z.so
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 8
 
 **Related module**: [HiLog](capi-hilog.md)
@@ -66,6 +68,8 @@ enum LogType
 
 Enumerates log types.<br> Currently, <b>LOG_APP</b> is available.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 8
 
 | Enum item | Description |
@@ -81,6 +85,8 @@ enum LogLevel
 **Description**
 
 Enumerates log levels.<br> You are advised to select log levels based on their respective usage scenarios: <ul><li><b>DEBUG</b>: used for debugging and disabled from commercial releases</li> <li><b>INFO</b>: used for logging important system running status and steps in key processes</li> <li><b>WARN</b>: used for logging unexpected exceptions that have little impact on user experience and can automatically recover. Logs at this level are generally output when such exceptions are detected and captured.</li> <li><b>ERROR</b>: used for logging malfunction that affects user experience and cannot automatically recover</li> <li><b>FATAL</b>: used for logging major exceptions that have severely affected user experience and should not occur.</li></ul>
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 8
 
@@ -102,6 +108,8 @@ enum PreferStrategy
 
 Enumerates preference strategy to be used in [OH_LOG_SetLogLevel](capi-log-h.md#oh_log_setloglevel).<br> You are advised to select preference strategy based on their respective usage scenarios.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 21
 
 | Enum item | Description |
@@ -122,6 +130,8 @@ int OH_LOG_Print(LogType type, LogLevel level, unsigned int domain, const char *
 **Description**
 
 Outputs logs.<br> You can use this function to output logs based on the specified log type, log level, service domain, log tag, and variable parameters determined by the format specifier and privacy identifier in the printf format.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 8
 
@@ -152,6 +162,8 @@ int OH_LOG_PrintMsg(LogType type, LogLevel level, unsigned int domain, const cha
 
 Outputs logs.<br> You can use this function to output logs based on the specified log type, log level, service domain, log tag, and message text.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 18
 
 **Parameters**:
@@ -179,6 +191,8 @@ int OH_LOG_PrintMsgByLen(LogType type, LogLevel level, unsigned int domain, cons
 **Description**
 
 Outputs logs.<br> You can use this function to output logs based on the specified log type, log level, service domain, log tag, message text and message length.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 18
 
@@ -210,6 +224,8 @@ int OH_LOG_VPrint(LogType type, LogLevel level, unsigned int domain, const char 
 
 Outputs logs.<br> You can use this function to output logs based on the specified log type, log level, service domain, log tag, and a va_list instead of variable parameters determined by the format specifier and privacy identifier in the printf format.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 18
 
 **Parameters**:
@@ -239,6 +255,8 @@ bool OH_LOG_IsLoggable(unsigned int domain, const char *tag, LogLevel level)
 
 Checks whether logs of the specified service domain, log tag, and log level can be output.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 8
 
 **Parameters**:
@@ -265,6 +283,8 @@ typedef void (*LogCallback)(const LogType type, const LogLevel level, const unsi
 
 Defines the function pointer type for the user-defined log processing function.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 11
 
 **Parameters**:
@@ -287,6 +307,8 @@ void OH_LOG_SetCallback(LogCallback callback)
 
 Set the user-defined log processing function.<br> After calling this function, the callback function implemented by the user can receive all hilogs of the current process. Note that it will not change the default behavior of hilog logs of the current process, no matter whether this interface is called or not.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 11
 
 **Parameters**:
@@ -305,6 +327,8 @@ void OH_LOG_SetMinLogLevel(LogLevel level)
 
 Sets the lowest log level of the current application process.
 
+**System capability**: SystemCapability.HiviewDFX.HiLog
+
 **Since**: 15
 
 **Parameters**:
@@ -322,6 +346,8 @@ void OH_LOG_SetLogLevel(LogLevel level, PreferStrategy prefer)
 **Description**
 
 Sets the lowest log level of the current application process. Different preference strategy can be set.
+
+**System capability**: SystemCapability.HiviewDFX.HiLog
 
 **Since**: 21
 

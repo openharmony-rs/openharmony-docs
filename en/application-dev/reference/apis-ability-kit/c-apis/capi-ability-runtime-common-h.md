@@ -6,6 +6,8 @@ The file declares the error codes of the AbilityRuntime module.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -29,6 +31,8 @@ enum AbilityRuntime_ErrorCode
 **Description**
 
 Enumerates the error codes of the AbilityRuntime module.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
 

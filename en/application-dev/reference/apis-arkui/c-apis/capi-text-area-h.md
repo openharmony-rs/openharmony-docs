@@ -6,6 +6,8 @@ Defines enumerations related to **TextArea**. The **TextArea** component is used
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -29,6 +31,8 @@ enum ArkUI_TextAreaType
 **Description**
 
 Enumerates the input types of multi-line text. Different enumerated values specify the input types of the **<br>TextArea** component and affect the validation rules for the input content.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

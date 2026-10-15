@@ -12,7 +12,7 @@ Defines the network address list of Ethernet NICs.
 
 **Since**: 26.0.0
 
-**Related module**: [netmanager_ext](capi-netmanager-ext.md)
+**Related module**: [NetEthernet](capi-netethernet.md)
 
 **Header file**: [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 
@@ -22,7 +22,7 @@ Defines the network address list of Ethernet NICs.
 
 | Name | Description |
 | -- | -- |
-| [Ethernet_NetAddrInfo](capi-netmanager-ext-ethernet-netaddrinfo.md) netAddrList[ETHERNET_MAX_NET_SIZE] |  |
+| [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md) netAddrList[ETHERNET_MAX_NET_SIZE] |  |
 | int32_t netAddrListSize |  |
 
 

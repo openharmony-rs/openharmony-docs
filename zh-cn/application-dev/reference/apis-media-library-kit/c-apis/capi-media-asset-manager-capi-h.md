@@ -6,6 +6,8 @@
 
 **库：** libmedia_asset_manager.so
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)
@@ -37,6 +39,8 @@ OH_MediaAssetManager* OH_MediaAssetManager_Create(void)
 
 创建一个媒体资产管理器。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **返回值：**
@@ -54,6 +58,8 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestImageForPath(OH_MediaAssetMan
 **描述：**
 
 请求具有目标路径的图像资源。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -85,6 +91,8 @@ MediaLibrary_RequestId OH_MediaAssetManager_RequestVideoForPath(OH_MediaAssetMan
 
 请求具有目标路径的视频资源。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -115,6 +123,8 @@ bool OH_MediaAssetManager_CancelRequest(OH_MediaAssetManager* manager, const Med
 
 通过请求Id取消请求。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -141,6 +151,8 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestMovingPhoto(OH_MediaAssetMana
 **描述：**
 
 根据不同的策略模式请求动态照片资源。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
@@ -172,6 +184,8 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_RequestImage(OH_MediaAssetManager* m
 
 根据不同的策略模式请求图像资源。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 12
@@ -202,6 +216,8 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_QuickRequestImage(OH_MediaAssetManag
 
 根据不同的策略模式请求图像资源。
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **需要权限：** ohos.permission.READ_IMAGEVIDEO
 
 **起始版本：** 23
@@ -231,6 +247,8 @@ MediaLibrary_ErrorCode OH_MediaAssetManager_Release(OH_MediaAssetManager* manage
 **描述：**
 
 释放[OH_MediaAssetManager](capi-mediaassetmanager-oh-mediaassetmanager.md)实例。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **起始版本：** 13
 

@@ -6,6 +6,8 @@
 
 **库：** libohweb.so
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)
@@ -43,6 +45,8 @@ enum ArkWeb_NativeAPIVariantKind
 
 定义Native API的类型枚举。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -67,6 +71,8 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 根据传入的API类型，获取对应的Native API结构体。用于在Native代码中获取Controller以控制Web组件行为、获取CookieManager以管理Cookie、 获取WebMessagePort以实现消息通信、获取JavaScriptValue以操作JavaScript对象等场景。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -90,6 +96,8 @@ bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallbac
 **描述：**
 
 注册组件滚动时的回调函数。用于监测用户滚动行为以实现懒加载、检测滚动位置以实现回到顶部功能、记录用户浏览行为用于数据分析、实现滚动时的视觉特效等场景。
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 18
 

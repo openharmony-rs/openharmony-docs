@@ -22,8 +22,8 @@ Registers the mouse event callbacks.
 
 | Name | Description |
 | -- | -- |
-| [void (\*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)](#dispatchmouseevent) | Called when a mouse event is triggered. |
-| [void (\*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)](#dispatchhoverevent) | Called when a hover event is triggered. |
+| [void (\*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)](#dispatchmouseevent) | - | Called when a mouse event is triggered. |
+| [void (\*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)](#dispatchhoverevent) | - | Called when a hover event is triggered. |
 
 ## Member function description
 

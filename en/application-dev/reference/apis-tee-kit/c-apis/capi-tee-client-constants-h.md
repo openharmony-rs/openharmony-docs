@@ -6,6 +6,8 @@ Defines public data and constants.
 
 **Library**: libteec.so
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeClient](capi-teeclient.md)
@@ -39,6 +41,8 @@ enum TEEC_ReturnCode
 **Description**
 
 Defines the error codes returned.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -89,6 +93,8 @@ enum TEEC_ReturnCodeOrigin
 
 Defines the sources of the error codes returned.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -108,6 +114,8 @@ enum TEEC_SharedMemCtl
 
 Defines the identifiers of the shared memory.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -125,6 +133,8 @@ enum TEEC_ParamType
 **Description**
 
 Defines the parameter types.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -153,6 +163,8 @@ enum TEEC_LoginMethod
 **Description**
 
 Defines the login methods.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

@@ -6,6 +6,8 @@ Declare avsession interface.
 
 **Library**: libohavsession.so
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Related module**: [OHAVSession](capi-ohavsession.md)
@@ -86,6 +88,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession*
 
 Declaring the callback struct for playback command
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -105,6 +109,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSess
 **Description**
 
 Declaring the callback struct for forward command
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -126,6 +132,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* 
 
 Declaring the callback struct for rewind command
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -145,6 +153,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* se
 **Description**
 
 Declaring the callback struct for seek command
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -166,6 +176,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSess
 
 Declaring the callback struct for set loop mode command
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -185,6 +197,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVS
 **Description**
 
 Declaring the callback struct for toggle favorite command
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -206,6 +220,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_A
 
 Declaring the callback struct for output device change
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -225,6 +241,8 @@ AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* se
 **Description**
 
 Request to create the avsession.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -254,6 +272,8 @@ AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 
 Request to destroy the avsession.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -277,6 +297,8 @@ AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 **Description**
 
 Activate the avsession.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -302,6 +324,8 @@ AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 
 Deactivate the avsession.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -325,6 +349,8 @@ AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession
 **Description**
 
 Get session type.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -351,6 +377,8 @@ AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char*
 
 Get session id.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -375,6 +403,8 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 **Description**
 
 Request to set av metadata.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -401,6 +431,8 @@ AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSessi
 
 Request to set av playbackstate.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -425,6 +457,8 @@ AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSe
 **Description**
 
 Request to set playback position.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -451,6 +485,8 @@ AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorit
 
 Request to set favorite state.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -475,6 +511,8 @@ AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_Lo
 **Description**
 
 Request to set loop mode.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -501,6 +539,8 @@ AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, boo
 
 Request to enable remote cast.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -525,6 +565,8 @@ AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, 
 **Description**
 
 Request to register command callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -553,6 +595,8 @@ AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession
 
 Request to unregister command callback.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -578,6 +622,8 @@ AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, 
 **Description**
 
 Request to register fastforward callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -605,6 +651,8 @@ AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession
 
 Request to unregister fastforward callback.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -629,6 +677,8 @@ AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, O
 **Description**
 
 Request to register rewind callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -656,6 +706,8 @@ AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,
 
 Request to unregister rewind callback.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -680,6 +732,8 @@ AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_
 **Description**
 
 Request to register seek callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -707,6 +761,8 @@ AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, O
 
 Request to unregister seek callback.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -731,6 +787,8 @@ AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsessi
 **Description**
 
 Request to register set loopmode callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -758,6 +816,8 @@ AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avses
 
 Request to unregister set loopmode callback.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -782,6 +842,8 @@ AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avse
 **Description**
 
 Request to register toggle favorite callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -809,6 +871,8 @@ AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* av
 
 Request to unregister toggle favorite callback.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -833,6 +897,8 @@ AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* 
 **Description**
 
 Request to register output device change callback.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -859,6 +925,8 @@ AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession
 
 Request to unregister output device change callback.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -883,6 +951,8 @@ AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char
 **Description**
 
 Request to acquire an AVSession instance if already created. Call [OH_AVSession_Destroy](capi-native-avsession-h.md#oh_avsession_destroy) to release the OH_AVSession when it is not used anymore.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -911,6 +981,8 @@ AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, O
 
 Create an AVCastController object. Call [OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy) to release the OH_AVCastController when it is not used anymore.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -936,6 +1008,8 @@ AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)
 
 Request to stop current cast and disconnect device connection.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -959,6 +1033,8 @@ AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSe
 **Description**
 
 Acquire current output device.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -984,6 +1060,8 @@ AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSe
 **Description**
 
 Release outputDeviceInfo object.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 

@@ -55,6 +55,7 @@
     - [OH_AudioNodeBuilder](capi-ohaudiosuite-oh-audionodebuilder.md)
     - [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md)
     - [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md)
+    - [OH_AudioSuite_FeatureVersionInfo(System API)](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md)
     - [OH_AudioSuite_DownloadManager(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md)
     - [OH_AudioConverter_Format](capi-ohaudiosuite-oh-audioconverter-format.md)
     - [OH_AudioConverter](capi-ohaudiosuite-oh-audioconverter.md)

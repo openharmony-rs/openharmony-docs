@@ -6,6 +6,8 @@
 
 **库：** libohclouddiskmanager.so
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **相关模块：** [CloudDisk](capi-clouddisk.md)
@@ -98,6 +100,8 @@ enum CloudDisk_SyncState
 
 文件同步状态的枚举值。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 | 枚举项 | 描述 |
@@ -118,6 +122,8 @@ enum CloudDisk_OperationType
 **描述：**
 
 文件变更类型枚举值。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
@@ -141,6 +147,8 @@ enum CloudDisk_ErrorReason
 
 文件同步失败原因的枚举值。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 | 枚举项 | 描述 |
@@ -161,6 +169,8 @@ enum CloudDisk_SyncFolderState
 
 同步根路径状态的枚举值。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 | 枚举项 | 描述 |
@@ -177,6 +187,8 @@ enum OH_CloudDisk_CallbackType
 **描述：**
 
 云盘回调类型枚举值。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
@@ -196,6 +208,8 @@ enum OH_CloudDisk_HydratePriority
 **描述：**
 
 水合优先级枚举值。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
@@ -217,6 +231,8 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderChanges(const CloudDisk_SyncF
 **描述：**
 
 应用注册一个回调函数，用于获取同步根路径下文件的变更。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
@@ -243,6 +259,8 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolderChanges(const CloudDisk_Syn
 
 应用取消注册同步根路径下文件变更的回调。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **参数：**
@@ -266,6 +284,8 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolderChanges(const CloudDisk_SyncFolder
 **描述：**
 
 获取同步根路径下的历史操作记录。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
@@ -293,6 +313,8 @@ CloudDisk_ErrorCode OH_CloudDisk_SetFileSyncStates(const CloudDisk_SyncFolderPat
 **描述：**
 
 应用设置同步根路径下文件的同步状态。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
@@ -322,6 +344,8 @@ CloudDisk_ErrorCode OH_CloudDisk_GetFileSyncStates(const CloudDisk_SyncFolderPat
 
 应用查询同步根路径下文件同步状态。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **参数：**
@@ -350,6 +374,8 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolder(const CloudDisk_SyncFolder *
 
 应用注册同步根。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **参数：**
@@ -373,6 +399,8 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterSyncFolder(const CloudDisk_SyncFolder
 **描述：**
 
 应用取消注册同步根。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
@@ -398,6 +426,8 @@ CloudDisk_ErrorCode OH_CloudDisk_ActiveSyncFolder(const CloudDisk_SyncFolderPath
 
 应用激活同步根。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **参数：**
@@ -421,6 +451,8 @@ CloudDisk_ErrorCode OH_CloudDisk_DeactiveSyncFolder(const CloudDisk_SyncFolderPa
 **描述：**
 
 应用取消激活同步根。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
@@ -446,6 +478,8 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFolders(CloudDisk_SyncFolder **syncFolde
 
 应用获取所有同步根。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 21
 
 **参数：**
@@ -470,6 +504,8 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdateCustomAlias(const CloudDisk_SyncFolderPat
 **描述：**
 
 应用更新同步根别名。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 21
 
@@ -497,6 +533,8 @@ CloudDisk_ErrorCode OH_CloudDisk_CreatePlaceholder(const CloudDisk_SyncFolderPat
 
 在已注册的同步文件夹中创建占位符。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -522,6 +560,8 @@ CloudDisk_ErrorCode OH_CloudDisk_IsPlaceholderFile(const CloudDisk_SyncFolderPat
 **描述：**
 
 检查同步根中的文件是否为占位符文件。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
@@ -549,6 +589,8 @@ CloudDisk_ErrorCode OH_CloudDisk_ConvertPlaceholderToFile(const CloudDisk_SyncFo
 
 将占位符文件转换为0字节普通文件。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -573,6 +615,8 @@ CloudDisk_ErrorCode OH_CloudDisk_UpdatePlaceholder(const CloudDisk_SyncFolderPat
 **描述：**
 
 更新文件元数据（支持占位符和普通文件）。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
@@ -599,6 +643,8 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterCallbackTable(const CloudDisk_SyncFolde
 **描述：**
 
 注册用于水合和脱水请求的回调表。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
@@ -630,6 +676,8 @@ CloudDisk_ErrorCode OH_CloudDisk_UnregisterCallbackTable(const CloudDisk_SyncFol
 
 取消注册用于水合和脱水请求的回调表。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -653,6 +701,8 @@ CloudDisk_ErrorCode OH_CloudDisk_Execute(const OH_CloudDisk_CallbackReqHead reqH
 **描述：**
 
 响应回调请求。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
@@ -679,6 +729,8 @@ CloudDisk_ErrorCode OH_CloudDisk_HydratePlaceholder(const CloudDisk_SyncFolderPa
 **描述：**
 
 主动水合占位符文件或取消水合。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 
@@ -707,6 +759,8 @@ CloudDisk_ErrorCode OH_CloudDisk_DehydrateFile(const CloudDisk_SyncFolderPath *s
 
 对完全水合的占位符文件执行脱水。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -732,6 +786,8 @@ CloudDisk_ErrorCode OH_CloudDisk_RegisterSyncFolderEx(const OH_CloudDisk_SyncFol
 
 使用占位符支持信息注册同步文件夹。
 
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -755,6 +811,8 @@ CloudDisk_ErrorCode OH_CloudDisk_GetSyncFoldersEx(OH_CloudDisk_SyncFolderEx **sy
 **描述：**
 
 获取具有占位符支持信息的同步文件夹。
+
+**系统能力：** SystemCapability.FileManagement.CloudDiskManager
 
 **起始版本：** 26.0.1
 

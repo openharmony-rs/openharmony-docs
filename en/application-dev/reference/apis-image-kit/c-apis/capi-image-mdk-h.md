@@ -6,6 +6,8 @@ Declares functions that access the image rectangle, size, format, and component 
 
 **Library**: libimage_ndk.z.so
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)
@@ -50,6 +52,8 @@ enum anonymous0
 
 Enumerates the image formats.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 | Enum item | Description |
@@ -66,6 +70,8 @@ enum anonymous1
 **Description**
 
 Enumerates the image components.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
 
@@ -88,6 +94,8 @@ ImageNative* OH_Image_InitImageNative(napi_env env, napi_value source)
 **Description**
 
 Parses an [ImageNative](capi-image-imagenative.md) object at the native layer from a JavaScript native API <b>image </b> object.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
 
@@ -119,6 +127,8 @@ int32_t OH_Image_ClipRect(const ImageNative* native, struct OhosImageRect* rect)
 
 Obtains [OhosImageRect](capi-image-ohosimagerect.md) of an [ImageNative](capi-image-imagenative.md) at the native layer.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -148,6 +158,8 @@ int32_t OH_Image_Size(const ImageNative* native, struct OhosImageSize* size)
 **Description**
 
 Obtains [OhosImageSize](capi-image-ohosimagesize.md) of an [ImageNative](capi-image-imagenative.md) object at the native layer.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
 
@@ -179,6 +191,8 @@ int32_t OH_Image_Format(const ImageNative* native, int32_t* format)
 
 Obtains the image format of an [ImageNative](capi-image-imagenative.md) object at the native layer.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -208,6 +222,8 @@ int32_t OH_Image_GetComponent(const ImageNative* native, int32_t componentType, 
 **Description**
 
 Obtains [OhosImageComponent](capi-image-ohosimagecomponent.md) of an [ImageNative](capi-image-imagenative.md) object at the native layer.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
 
@@ -239,6 +255,8 @@ int32_t OH_Image_Release(ImageNative* native)
 **Description**
 
 Releases an [ImageNative](capi-image-imagenative.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>Image</b> object. It is used to release the object [ImageNative](capi-image-imagenative.md) at the native layer parsed by calling [OH_Image_InitImageNative](capi-image-mdk-h.md#oh_image_initimagenative).
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 10
 

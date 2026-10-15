@@ -8,6 +8,8 @@
 
 **库：** libnative_rdb_ndk.z.so
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -31,6 +33,8 @@ enum OH_Rdb_ErrCode
 **描述：**
 
 表示错误码信息。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 

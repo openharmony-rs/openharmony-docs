@@ -6,7 +6,7 @@ typedef struct ArkUI_NodeBorderWidthOption ArkUI_NodeBorderWidthOption
 
 ## Overview
 
-Defines a node border width option.
+Defines a border width configuration option, which is used to set the border width of each side of the render node.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -6,7 +6,7 @@ typedef struct ArkUI_NodeAdapterEvent ArkUI_NodeAdapterEvent
 
 ## Overview
 
-Defines the component adapter event.
+Defines a component adapter event object, used to pass information such as the event type, host node, and data item index in the event callback of the node adapter.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

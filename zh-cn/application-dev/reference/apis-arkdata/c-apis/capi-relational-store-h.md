@@ -8,6 +8,8 @@
 
 **库：** libnative_rdb_ndk.z.so
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -159,6 +161,8 @@ enum OH_Rdb_SecurityLevel
 
 数据库的安全级别枚举。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -177,6 +181,8 @@ enum Rdb_SecurityArea
 **描述：**
 
 描述数据库的安全区域等级。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -198,6 +204,8 @@ enum Rdb_DBType
 
 描述数据库的内核类型。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 | 枚举项 | 描述 |
@@ -215,6 +223,8 @@ enum Rdb_Tokenizer
 **描述：**
 
 描述数据库的分词器类型。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 17
 
@@ -234,6 +244,8 @@ enum Rdb_DistributedType
 
 描述表的分布式类型的枚举。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -249,6 +261,8 @@ enum Rdb_ChangeType
 **描述：**
 
 描述数据变更类型。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -266,6 +280,8 @@ enum Rdb_SubscribeType
 **描述：**
 
 描述订阅类型。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -285,6 +301,8 @@ enum Rdb_SyncMode
 
 表示数据库的同步模式。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -301,6 +319,8 @@ enum Rdb_Progress
 
 **描述：**
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 | 枚举项 | 描述 |
 | -- | -- |
 | RDB_SYNC_BEGIN | 表示端云同步过程开始。 |
@@ -314,6 +334,8 @@ enum Rdb_ProgressCode
 ```
 
 **描述：**
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 | 枚举项 | 描述 |
 | -- | -- |
@@ -338,6 +360,8 @@ OH_Rdb_ConfigV2 *OH_Rdb_CreateConfig()
 
 创建一个[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)实例，并返回指向该实例的指针。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **返回值：**
@@ -360,6 +384,8 @@ int OH_Rdb_DestroyConfig(OH_Rdb_ConfigV2 *config)
 **描述：**
 
 销毁由[OH_Rdb_CreateConfig](capi-relational-store-h.md#oh_rdb_createconfig)创建的[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)对象。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -384,6 +410,8 @@ int OH_Rdb_SetDatabaseDir(OH_Rdb_ConfigV2 *config, const char *databaseDir)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库文件路径。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -410,6 +438,8 @@ int OH_Rdb_SetStoreName(OH_Rdb_ConfigV2 *config, const char *storeName)
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库名称。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -434,6 +464,8 @@ int OH_Rdb_SetBundleName(OH_Rdb_ConfigV2 *config, const char *bundleName)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置应用包名。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -460,6 +492,8 @@ int OH_Rdb_SetModuleName(OH_Rdb_ConfigV2 *config, const char *moduleName)
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置应用模块名。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -484,6 +518,8 @@ int OH_Rdb_SetEncrypted(OH_Rdb_ConfigV2 *config, bool isEncrypted)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库是否加密。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -510,6 +546,8 @@ int OH_Rdb_SetSecurityLevel(OH_Rdb_ConfigV2 *config, int securityLevel)
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库安全级别[OH_Rdb_SecurityLevel](capi-relational-store-h.md#oh_rdb_securitylevel)。 <br>创建数据库时必须调用该方法，否则数据库文件无法创建成功，调用[OH_Rdb_CreateOrOpen](capi-relational-store-h.md#oh_rdb_createoropen)接口时将返回错误码RDB_E_INVALID_ARGS。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -534,6 +572,8 @@ int OH_Rdb_SetArea(OH_Rdb_ConfigV2 *config, int area)
 **描述：**
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库安全区域等级[Rdb_SecurityArea](capi-relational-store-h.md#rdb_securityarea)。 <br>创建数据库时必须调用该方法，否则数据库文件无法创建成功，调用[OH_Rdb_CreateOrOpen](capi-relational-store-h.md#oh_rdb_createoropen)接口时将返回错误码RDB_E_INVALID_ARGS。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -560,6 +600,8 @@ int OH_Rdb_SetDbType(OH_Rdb_ConfigV2 *config, int dbType)
 
 给指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，设置数据库类型[Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -584,6 +626,8 @@ int OH_Rdb_SetCustomDir(OH_Rdb_ConfigV2 *config, const char *customDir)
 **描述：**
 
 设置数据库的自定义目录。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -610,6 +654,8 @@ int OH_Rdb_SetReadOnly(OH_Rdb_ConfigV2 *config, bool readOnly)
 
 设置关系型数据库是否为只读模式。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -634,6 +680,8 @@ int OH_Rdb_SetPlugins(OH_Rdb_ConfigV2 *config, const char **plugins, int32_t len
 **描述：**
 
 设置具有特定功能（如全文检索）的动态库。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -661,6 +709,8 @@ int OH_Rdb_SetCryptoParam(OH_Rdb_ConfigV2 *config, const OH_Rdb_CryptoParam *cry
 
 设置自定义加密参数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -685,6 +735,8 @@ int OH_Rdb_SetTokenizer(OH_Rdb_ConfigV2 *config, Rdb_Tokenizer tokenizer)
 **描述：**
 
 给指定的数据库文件配置设置分词器类型。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 17
 
@@ -711,6 +763,8 @@ int OH_Rdb_SetPersistent(OH_Rdb_ConfigV2 *config, bool isPersistent)
 
 指定数据库是否需要持久化。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -735,6 +789,8 @@ int OH_Rdb_SetSemanticIndex(OH_Rdb_ConfigV2 *config, bool enableSemanticIndex)
 **描述：**
 
 开启或关闭基于语义索引的知识加工。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -761,6 +817,8 @@ int OH_Rdb_IsTokenizerSupported(Rdb_Tokenizer tokenizer, bool *isSupported)
 
 判断当前平台是否支持传入的分词器。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -786,6 +844,8 @@ const int *OH_Rdb_GetSupportedDbType(int *typeCount)
 
 获得支持的数据库类型[Rdb_DBType](capi-relational-store-h.md#rdb_dbtype)。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -810,6 +870,8 @@ OH_VObject *OH_Rdb_CreateValueObject()
 
 创建[OH_VObject](capi-rdb-oh-vobject.md)实例。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **返回值：**
@@ -833,6 +895,8 @@ OH_VBucket *OH_Rdb_CreateValuesBucket()
 
 创建[OH_VBucket](capi-rdb-oh-vbucket.md)实例。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **返回值：**
@@ -855,6 +919,8 @@ OH_Predicates *OH_Rdb_CreatePredicates(const char *table)
 **描述：**
 
 创建[OH_Predicates](capi-rdb-oh-predicates.md)实例。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -884,6 +950,8 @@ OH_Rdb_Store *OH_Rdb_GetOrOpen(const OH_Rdb_Config *config, int *errCode)
 **描述：**
 
 获得一个相关的[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例，操作关系型数据库。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -915,6 +983,8 @@ OH_Rdb_Store *OH_Rdb_CreateOrOpen(const OH_Rdb_ConfigV2 *config, int *errCode)
 
 使用指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)，获得一个对应的[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)实例，用来操作关系型数据库。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -945,6 +1015,8 @@ int OH_Rdb_CloseStore(OH_Rdb_Store *store)
 
 销毁[OH_Rdb_Store](capi-rdb-oh-rdb-store.md)对象，并回收该对象占用的内存。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -973,6 +1045,8 @@ int OH_Rdb_DeleteStore(const OH_Rdb_Config *config)
 **描述：**
 
 使用指定的数据库文件配置删除数据库。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -1003,6 +1077,8 @@ int OH_Rdb_DeleteStoreV2(const OH_Rdb_ConfigV2 *config)
 
 使用指定的数据库文件配置[OH_Rdb_ConfigV2](capi-rdb-oh-rdb-configv2.md)删除数据库。 <br>当使用向量数据库时，在调用接口前，应当确保向量数据库已经打开的OH_Rdb_Store和OH_Cursor均已成功关闭。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -1031,6 +1107,8 @@ int OH_Rdb_Insert(OH_Rdb_Store *store, const char *table, OH_VBucket *valuesBuck
 **描述：**
 
 向目标表中插入一行数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -1063,6 +1141,8 @@ int OH_Rdb_InsertWithConflictResolution(OH_Rdb_Store *store, const char *table, 
 
 向目标表中插入一行数据，并支持冲突解决。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -1091,6 +1171,8 @@ int OH_Rdb_BatchInsert(OH_Rdb_Store *store, const char *table, const OH_Data_VBu
 
 将一批数据插入到目标表中。 <br>单次插入参数的最大数量限制为32766，超出上限会返回RDB_E_INVALID_ARGS错误码。参数数量计算方式为插入数据条数乘以插入数据的所有字段的并集大小。 <br>例如：插入数据的所有字段的并集大小为10，则最多可以插入3276条数据（3276*10=32760）。 <br>请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -1118,6 +1200,8 @@ int OH_Rdb_Update(OH_Rdb_Store *store, OH_VBucket *valuesBucket, OH_Predicates *
 **描述：**
 
 根据指定的条件更新数据库中的数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -1150,6 +1234,8 @@ int OH_Rdb_UpdateWithConflictResolution(OH_Rdb_Store *store, OH_VBucket *row, OH
 
 根据指定条件更新数据库中的数据，并支持冲突解决。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -1177,6 +1263,8 @@ int OH_Rdb_Delete(OH_Rdb_Store *store, OH_Predicates *predicates)
 **描述：**
 
 根据指定的条件删除数据库中的数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -1207,6 +1295,8 @@ OH_Cursor *OH_Rdb_Query(OH_Rdb_Store *store, OH_Predicates *predicates, const ch
 **描述：**
 
 根据指定条件查询数据库中的数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -1240,6 +1330,8 @@ OH_Cursor *OH_Rdb_QueryWithoutRowCount(OH_Rdb_Store *store, OH_Predicates *predi
 
 根据指定条件查询数据库中的数据，不计算行数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -1272,6 +1364,8 @@ OH_Cursor *OH_Rdb_QuerySqlWithoutRowCount(OH_Rdb_Store *store, const char *sql, 
 
 执行有返回值的SQL语句，不计算行数，支持向量数据库。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -1303,6 +1397,8 @@ int OH_Rdb_Execute(OH_Rdb_Store *store, const char *sql)
 
 执行无返回值的SQL语句。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -1332,6 +1428,8 @@ int OH_Rdb_ExecuteV2(OH_Rdb_Store *store, const char *sql, const OH_Data_Values 
 **描述：**
 
 执行有返回值的SQL语句，支持向量数据库。 <br>不支持开头包含注释的语句。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -1365,6 +1463,8 @@ int OH_Rdb_ExecuteByTrxId(OH_Rdb_Store *store, int64_t trxId, const char *sql)
 
 使用指定的事务ID执行无返回值的SQL语句，仅支持向量数据库。 <br>不支持开头包含注释的语句。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -1396,6 +1496,8 @@ OH_Cursor *OH_Rdb_ExecuteQuery(OH_Rdb_Store *store, const char *sql)
 
 根据指定SQL语句查询数据库中的数据，支持向量数据库。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -1425,6 +1527,8 @@ OH_Cursor *OH_Rdb_ExecuteQueryV2(OH_Rdb_Store *store, const char *sql, const OH_
 **描述：**
 
 根据指定SQL语句查询数据库中的数据，支持向量数据库。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 18
 
@@ -1457,6 +1561,8 @@ int OH_Rdb_BeginTransaction(OH_Rdb_Store *store)
 
 在开始执行SQL语句之前，开始事务。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -1485,6 +1591,8 @@ int OH_Rdb_RollBack(OH_Rdb_Store *store)
 **描述：**
 
 回滚已经执行的SQL语句。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -1515,6 +1623,8 @@ int OH_Rdb_Commit(OH_Rdb_Store *store)
 
 提交已执行的SQL语句。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -1543,6 +1653,8 @@ int OH_Rdb_BeginTransWithTrxId(OH_Rdb_Store *store, int64_t *trxId)
 **描述：**
 
 在开始执行SQL语句之前，开始事务，并获得该事务的ID，仅支持向量数据库。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -1574,6 +1686,8 @@ int OH_Rdb_RollBackByTrxId(OH_Rdb_Store *store, int64_t trxId)
 
 使用指定的事务ID，回滚已经执行的SQL语句，仅支持向量数据库。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 14
 
 **参数：**
@@ -1603,6 +1717,8 @@ int OH_Rdb_CommitByTrxId(OH_Rdb_Store *store, int64_t trxId)
 **描述：**
 
 使用指定的事务ID，提交已经执行的SQL语句，仅支持向量数据库。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 14
 
@@ -1634,6 +1750,8 @@ int OH_Rdb_Backup(OH_Rdb_Store *store, const char *databasePath)
 
 以指定路径备份数据库，支持向量数据库。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -1663,6 +1781,8 @@ int OH_Rdb_Restore(OH_Rdb_Store *store, const char *databasePath)
 **描述：**
 
 从指定的数据库备份文件恢复数据库，支持向量数据库。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 10
 
@@ -1694,6 +1814,8 @@ int OH_Rdb_GetVersion(OH_Rdb_Store *store, int *version)
 
 获取数据库版本。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -1724,6 +1846,8 @@ int OH_Rdb_SetVersion(OH_Rdb_Store *store, int version)
 
 设置数据库版本。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -1753,6 +1877,8 @@ int OH_Rdb_SetDistributedTables(OH_Rdb_Store *store, const char *tables[], uint3
 **描述：**
 
 设置分布式数据库表。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -1788,6 +1914,8 @@ OH_Cursor *OH_Rdb_FindModifyTime(OH_Rdb_Store *store, const char *tableName, con
 
 获取数据库表中数据的最后修改时间。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -1822,6 +1950,8 @@ typedef void (*Rdb_BriefObserver)(void *context, const char *values[], uint32_t 
 
 端云数据更改事件的回调函数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -1841,6 +1971,8 @@ typedef void (*Rdb_DetailsObserver)(void *context, const Rdb_ChangeInfo **change
 **描述：**
 
 端云数据更改事件的细节的回调函数。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -1866,6 +1998,8 @@ int OH_Rdb_Subscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Data
 **描述：**
 
 为数据库注册观察者。当分布式数据库或本地数据库中的数据发生更改时，将调用回调。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -1899,6 +2033,8 @@ int OH_Rdb_Unsubscribe(OH_Rdb_Store *store, Rdb_SubscribeType type, const Rdb_Da
 
 从数据库中删除指定类型的指定观察者。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -1931,6 +2067,8 @@ Rdb_TableDetails *OH_Rdb_GetTableDetails(Rdb_ProgressDetails *progress, int32_t 
 
 从端云同步任务的统计信息中获取数据库表的统计信息。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -1962,6 +2100,8 @@ typedef void (*Rdb_ProgressCallback)(void *context, Rdb_ProgressDetails *progres
 
 端云同步进度的回调函数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -1986,6 +2126,8 @@ typedef void (*Rdb_SyncCallback)(Rdb_ProgressDetails *progressDetails)
 
 数据库端云同步的回调函数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -2008,6 +2150,8 @@ int OH_Rdb_CloudSync(OH_Rdb_Store *store, Rdb_SyncMode mode, const char *tables[
 **描述：**
 
 进行端云同步。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -2043,6 +2187,8 @@ int OH_Rdb_SubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressObse
 
 订阅RDB存储的自动同步进度。 <br>当收到自动同步进度的通知时，将调用回调。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 11
 
 **参数：**
@@ -2073,6 +2219,8 @@ int OH_Rdb_UnsubscribeAutoSyncProgress(OH_Rdb_Store *store, const Rdb_ProgressOb
 **描述：**
 
 取消订阅RDB存储的自动同步进程。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 11
 
@@ -2105,6 +2253,8 @@ int OH_Rdb_LockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 根据指定的条件锁定数据库中的数据，锁定数据不执行端云同步。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -2135,6 +2285,8 @@ int OH_Rdb_UnlockRow(OH_Rdb_Store *store, OH_Predicates *predicates)
 
 根据指定的条件解锁数据库中的数据。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -2164,6 +2316,8 @@ OH_Cursor *OH_Rdb_QueryLockedRow(OH_Rdb_Store *store, OH_Predicates *predicates,
 **描述：**
 
 根据指定条件查询数据库中锁定的数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 12
 
@@ -2197,6 +2351,8 @@ int OH_Rdb_CreateTransaction(OH_Rdb_Store *store, const OH_RDB_TransOptions *opt
 
 创建一个事务对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 18
 
 **参数：**
@@ -2228,6 +2384,8 @@ int OH_Rdb_Attach(OH_Rdb_Store *store, const OH_Rdb_ConfigV2 *config, const char
 
 将数据库文件附加到当前连接的数据库。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2255,6 +2413,8 @@ int OH_Rdb_Detach(OH_Rdb_Store *store, const char *attachName, int64_t waitTime,
 **描述：**
 
 从当前数据库中分离指定的数据库。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -2288,6 +2448,8 @@ int OH_Rdb_SetLocale(OH_Rdb_Store *store, const char *locale)
 
 支持不同语言的排序规则。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -2318,6 +2480,8 @@ typedef void (*Rdb_CorruptedHandler)(void *context, OH_Rdb_ConfigV2 *config, OH_
 
 数据库异常处理的回调函数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 22
 
 **参数：**
@@ -2337,6 +2501,8 @@ int OH_Rdb_RegisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *context
 **描述：**
 
 注册数据库异常处理。当数据库发生异常时，将调用异常处理的回调函数。 <br>异常处理逻辑为用户自定义，回调时触发的业务需要用户自行保障。 <br>每个路径只允许注册一次。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 22
 
@@ -2369,6 +2535,8 @@ int OH_Rdb_UnregisterCorruptedHandler(const OH_Rdb_ConfigV2 *config, void *conte
 
 取消注册的数据库异常处理的回调函数。 <br>handler和context必须要和订阅时保持一致，否则取消失败。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 22
 
 **参数：**
@@ -2400,6 +2568,8 @@ int OH_Rdb_RekeyEx(OH_Rdb_Store *store, OH_Rdb_CryptoParam *param)
 
 更改加密数据库密钥。 <br>不支持对非WAL模式的数据库进行密钥更新。 <br>手动更新时需要独占访问数据库，此时若存在任何未释放的结果集、事务或其他进程打开的数据库均会导致更新失败。 <br>支持加密数据库的参数更新，以及加密数据库与非加密数据库之间的相互转换。 <br>数据库越大，执行更新所需的时间越长。 <br>加密参数变更需谨慎，调用OH_Rdb_CreateOrOpen时需要传入正确的加密参数，否则可能打开数据库失败。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 22
 
 **参数：**
@@ -2424,6 +2594,8 @@ int OH_Rdb_BatchInsertWithReturning(OH_Rdb_Store *store, const char *table, cons
 **描述：**
 
 将批量数据插入目标表，并将变更信息输出到上下文中。 <br>一次最多可以插入32766个参数。如果参数数量超过上限，则返回错误代码RDB_E_INVALID_ARGS。 <br>参数数量计算方式为插入数据条数乘以插入数据时所有字段的并集大小。 <br>例如：插入数据的所有字段的并集大小为10则最多可以插入3276条数据（3276*10=32760）。 <br>请确保在调用接口时遵守此限制，以避免因参数数量过多而导致错误。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
 
@@ -2458,6 +2630,8 @@ int OH_Rdb_UpdateWithReturning(OH_Rdb_Store *store, OH_VBucket *row, OH_Predicat
 
 根据指定条件更新数据库中的数据并输出更改信息到上下文。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -2490,6 +2664,8 @@ int OH_Rdb_DeleteWithReturning(OH_Rdb_Store *store, OH_Predicates *predicates, O
 **描述：**
 
 根据指定条件从数据库中删除数据并输出更改信息到上下文。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
 

@@ -6,6 +6,8 @@ Declares APIs for encoding image into data or file.<br> The packing image data m
 
 **Library**: libimage_packer_ndk.z.so
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 11
 
 **Related module**: [Image](capi-image.md)
@@ -42,6 +44,8 @@ int32_t OH_ImagePacker_Create(napi_env env, napi_value *res)
 
 Creates an <b>ImagePacker</b> object at the JavaScript native layer.
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 11
 
 **Parameters**:
@@ -66,6 +70,8 @@ ImagePacker_Native* OH_ImagePacker_InitNative(napi_env env, napi_value packer)
 **Description**
 
 Parses an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the native layer from a JavaScript native API <b>ImagePacker</b> object.
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 11
 
@@ -96,6 +102,8 @@ int32_t OH_ImagePacker_PackToData(ImagePacker_Native* native, napi_value source,
 **Description**
 
 Encoding an <b>ImageSource</b> or a <b>PixelMap</b> into the data with required format
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 11
 
@@ -130,6 +138,8 @@ int32_t OH_ImagePacker_PackToFile(ImagePacker_Native* native, napi_value source,
 
 Encoding an <b>ImageSource</b> or a <b>PixelMap</b> into the a file with fd with required format
 
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
+
 **Since**: 11
 
 **Parameters**:
@@ -161,6 +171,8 @@ int32_t OH_ImagePacker_Release(ImagePacker_Native* native)
 **Description**
 
 Releases an [ImagePacker_Native](capi-image-imagepacker-native.md) object at the native layer. Note: This API is not used to release a JavaScript native API <b>ImagePacker</b> object. It is used to release the object [ImagePacker_Native](capi-image-imagepacker-native.md) at the native layer parsed by calling [OH_ImagePacker_InitNative](capi-image-packer-mdk-h.md#oh_imagepacker_initnative).
+
+**System capability**: SystemCapability.Multimedia.Image.ImagePacker
 
 **Since**: 11
 

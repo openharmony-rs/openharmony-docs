@@ -6,6 +6,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -72,6 +74,8 @@ enum OH_Drawing_PenLineCapStyle
 
 枚举集合定义了画笔笔帽的样式，即画笔在绘制线段时，在线段头尾端点的样式。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
@@ -89,6 +93,8 @@ enum OH_Drawing_PenLineJoinStyle
 **描述：**
 
 枚举集合定义了线条转角的样式，即画笔在绘制折线段时，在折线转角处的样式。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -111,6 +117,8 @@ OH_Drawing_Pen* OH_Drawing_PenCreate(void)
 
 用于创建一个画笔对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **返回值：**
@@ -128,6 +136,8 @@ OH_Drawing_Pen* OH_Drawing_PenCopy(OH_Drawing_Pen* pen)
 **描述：**
 
 创建一个画笔对象副本[OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md)，用于拷贝一个已有画笔对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -153,6 +163,8 @@ void OH_Drawing_PenDestroy(OH_Drawing_Pen* pen)
 
 用于销毁画笔对象并回收该对象占有的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -170,6 +182,8 @@ bool OH_Drawing_PenIsAntiAlias(const OH_Drawing_Pen* pen)
 **描述：**
 
 用于获取画笔是否设置抗锯齿属性，如果为真则说明画笔会启用抗锯齿功能，在绘制图形时会对图形的边缘像素进行半透明的模糊处理。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -195,6 +209,8 @@ void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen* pen, bool antiAlias)
 
 用于设置画笔的抗锯齿属性，设置为真则画笔在绘制图形时会对图形的边缘像素进行半透明的模糊处理。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -213,6 +229,8 @@ uint32_t OH_Drawing_PenGetColor(const OH_Drawing_Pen* pen)
 **描述：**
 
 用于获取画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色，用一个32位（ARGB）的变量表示。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -238,6 +256,8 @@ void OH_Drawing_PenSetColor(OH_Drawing_Pen* pen, uint32_t color)
 
 用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色，用一个32位（ARGB）的变量表示。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -256,6 +276,8 @@ uint8_t OH_Drawing_PenGetAlpha(const OH_Drawing_Pen* pen)
 **描述：**
 
 获取画笔的透明度值。画笔在勾勒图形时透明通道会使用该值。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -281,6 +303,8 @@ void OH_Drawing_PenSetAlpha(OH_Drawing_Pen* pen, uint8_t alpha)
 
 设置画笔透明度。画笔在勾勒图形时透明通道会使用该值。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -299,6 +323,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, floa
 **描述：**
 
 用于设置画笔的颜色属性，颜色属性描述了画笔绘制图形轮廓时使用的颜色。 <br>颜色采用浮点数表示的ARGB格式，色彩空间由[OH_NativeColorSpaceManager](capi-drawing-oh-nativecolorspacemanager.md)指定。 <br>如果colorSpaceManager为NULL，使用SRGB（基于IEC 61966-2.1:1999的标准红绿蓝色彩空间）色彩空间作为默认值。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -329,6 +355,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(OH_Drawing_Pen* pen, float* a)
 
 获取画笔颜色的透明度值。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 20
 
 **参数：**
@@ -353,6 +381,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(OH_Drawing_Pen* pen, float* r)
 **描述：**
 
 获取画笔颜色的红色分量。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -379,6 +409,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(OH_Drawing_Pen* pen, float* g)
 
 获取画笔颜色的绿色分量。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 20
 
 **参数：**
@@ -403,6 +435,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(OH_Drawing_Pen* pen, float* b)
 **描述：**
 
 获取画笔颜色的蓝色分量。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -429,6 +463,8 @@ float OH_Drawing_PenGetWidth(const OH_Drawing_Pen* pen)
 
 用于获取画笔的厚度属性，厚度属性描述了画笔绘制图形轮廓的宽度。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -453,6 +489,8 @@ void OH_Drawing_PenSetWidth(OH_Drawing_Pen* pen, float width)
 
 用于设置画笔的厚度属性，厚度属性描述了画笔绘制图形轮廓的宽度。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -471,6 +509,8 @@ float OH_Drawing_PenGetMiterLimit(const OH_Drawing_Pen* pen)
 **描述：**
 
 用于获取折线尖角的限制值。当画笔绘制折线且转角类型设置为尖角时，该属性用于限制尖角的长度范围； 如果超出限制值则显示为平角，未超出则保持尖角。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -496,6 +536,8 @@ void OH_Drawing_PenSetMiterLimit(OH_Drawing_Pen* pen, float miter)
 
 用于设置折线尖角的限制值。当画笔绘制折线且转角类型设置为尖角时，该属性用于限制尖角的长度范围； 如果超出限制值则显示为平角，未超出则保持尖角。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -514,6 +556,8 @@ OH_Drawing_PenLineCapStyle OH_Drawing_PenGetCap(const OH_Drawing_Pen* pen)
 **描述：**
 
 用于获取画笔笔帽的样式。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -539,6 +583,8 @@ void OH_Drawing_PenSetCap(OH_Drawing_Pen* pen, OH_Drawing_PenLineCapStyle capSty
 
 用于设置画笔笔帽样式。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>capStyle不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -557,6 +603,8 @@ OH_Drawing_PenLineJoinStyle OH_Drawing_PenGetJoin(const OH_Drawing_Pen* pen)
 **描述：**
 
 用于获取画笔绘制折线转角的样式。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -582,6 +630,8 @@ void OH_Drawing_PenSetJoin(OH_Drawing_Pen* pen, OH_Drawing_PenLineJoinStyle join
 
 用于设置画笔绘制转角的样式。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>joinStyle不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -600,6 +650,8 @@ void OH_Drawing_PenSetShaderEffect(OH_Drawing_Pen* pen, OH_Drawing_ShaderEffect*
 **描述：**
 
 设置画笔着色器效果。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -620,6 +672,8 @@ void OH_Drawing_PenSetShadowLayer(OH_Drawing_Pen* pen, OH_Drawing_ShadowLayer* s
 
 设置画笔阴影层效果，设置的阴影层效果当前仅在绘制文字时生效。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -638,6 +692,8 @@ void OH_Drawing_PenSetPathEffect(OH_Drawing_Pen* pen, OH_Drawing_PathEffect* pat
 **描述：**
 
 设置画笔路径效果。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -658,6 +714,8 @@ void OH_Drawing_PenSetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 
 设置画笔滤波器。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -676,6 +734,8 @@ void OH_Drawing_PenGetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 **描述：**
 
 从画笔获取滤波器[OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md)。滤波器是一个容器，可以承载蒙版滤波器和颜色滤波器。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen、filter任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -696,6 +756,8 @@ void OH_Drawing_PenSetBlendMode(OH_Drawing_Pen* pen, OH_Drawing_BlendMode blendM
 
 为画笔设置一个混合器，该混合器实现了指定的混合模式枚举。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>blendMode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -714,6 +776,8 @@ bool OH_Drawing_PenGetFillPath(OH_Drawing_Pen* pen, const OH_Drawing_Path* src, 
 **描述：**
 
 获取使用画笔绘制的源路径轮廓，并用目标路径表示。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen、src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -742,6 +806,8 @@ void OH_Drawing_PenReset(OH_Drawing_Pen* pen)
 **描述：**
 
 将画笔重置至初始值。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>pen为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 

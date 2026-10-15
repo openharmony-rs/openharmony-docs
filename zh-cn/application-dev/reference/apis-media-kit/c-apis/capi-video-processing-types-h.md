@@ -6,6 +6,8 @@
 
 **库：** libvideo_processing.so
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **相关模块：** [VideoProcessing](capi-videoprocessing.md)
@@ -67,6 +69,8 @@ enum VideoDetailEnhancer_QualityLevel
 
 用于细节增强的质量等级。参数[VIDEO_DETAIL_ENHANCER_PARAMETER_KEY_QUALITY_LEVEL](capi-video-processing-types-h.md#变量)的具体取值，设置方法详见开发指南。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -91,6 +95,8 @@ enum VideoMetadataGeneratorStyleControl
 
 视频元数据生成的风格模式。参数的具体取值请参考[VIDEO_METADATA_GENERATOR_STYLE_CONTROL](capi-video-processing-types-h.md#变量)。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 22
 
 | 枚举项 | 描述 |
@@ -112,6 +118,8 @@ enum VideoProcessing_ErrorCode
 **描述：**
 
 视频处理错误码。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -139,6 +147,8 @@ enum VideoProcessing_State
 
 视频处理状态。视频处理状态通过回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)进行报告。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -158,6 +168,8 @@ typedef void (*OH_VideoProcessingCallback_OnError)(OH_VideoProcessing* videoProc
 **描述：**
 
 视频处理过程中报告错误的回调函数指针。 <br>错误码[VideoProcessing_ErrorCode](capi-video-processing-types-h.md#videoprocessing_errorcode)： <br>VIDEO_PROCESSING_ERROR_UNSUPPORTED_PROCESSING，不支持的处理，比如不支持输入输出的颜色空间类型转换。 <br>VIDEO_PROCESSING_ERROR_INVALID_VALUE，无效的视频属性，比如视频的颜色空间无效。 <br>VIDEO_PROCESSING_ERROR_NO_MEMORY，内存不足。 <br>VIDEO_PROCESSING_ERROR_PROCESS_FAILED，处理过程中出错。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -179,6 +191,8 @@ typedef void (*OH_VideoProcessingCallback_OnState)(OH_VideoProcessing* videoProc
 
 报告视频处理状态的回调函数指针。 <br>OH_VideoProcessing_Start成功调用之后状态会变为[VideoProcessing_State](capi-video-processing-types-h.md#videoprocessing_state).VIDEO_PROCESSING_STATE_RUNNING. 调用OH_VideoProcessing_Stop，所有的缓存buffer处理完成后，状态会变为 [VideoProcessing_State](capi-video-processing-types-h.md#videoprocessing_state).VIDEO_PROCESSING_STATE_STOPPED。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -198,6 +212,8 @@ typedef void (*OH_VideoProcessingCallback_OnNewOutputBuffer)(OH_VideoProcessing*
 **描述：**
 
 报告输出buffer已填充好数据的回调函数指针。 <br>每个新输出buffer填充好数据之后该buffer的索引就会报告给用户。 调用OH_VideoProcessing_RenderOutputBuffer根据索引来处理渲染并输出该buffer。如果未注册该函数， 则输出buffer填充好数据后不会报告用户，而是直接进行处理渲染并输出。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 

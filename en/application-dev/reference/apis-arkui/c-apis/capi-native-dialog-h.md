@@ -6,6 +6,8 @@ Defines a set of custom dialog box APIs of ArkUI on the native side.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -99,6 +101,8 @@ enum ArkUI_DismissReason
 
 Enumerates the actions for triggering closure of the dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -117,6 +121,8 @@ enum ArkUI_DialogState
 **Description**
 
 Enumerates the state of dialog.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -139,6 +145,8 @@ enum ArkUI_LevelMode
 
 Enumerates the level mode.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 | Enum item | Description |
@@ -156,6 +164,8 @@ enum ArkUI_ImmersiveMode
 
 Enumerates the immersive mode.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 | Enum item | Description |
@@ -172,6 +182,8 @@ enum OH_ArkUI_DialogDisplayModeInSubWindow
 **Description**
 
 Enumerates the dialog display mode in subwindow.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -193,6 +205,8 @@ typedef bool (*ArkUI_OnWillDismissEvent)(int32_t reason)
 
 Invoked when the dialog box is closed.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 ### OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss()
@@ -204,6 +218,8 @@ void OH_ArkUI_DialogDismissEvent_SetShouldBlockDismiss(ArkUI_DialogDismissEvent*
 **Description**
 
 Sets whether to block the system behavior of dismissing a dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -223,6 +239,8 @@ void* OH_ArkUI_DialogDismissEvent_GetUserData(ArkUI_DialogDismissEvent* event)
 **Description**
 
 Obtains the pointer to user data in a dialog box dismiss event object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -248,6 +266,8 @@ int32_t OH_ArkUI_DialogDismissEvent_GetDismissReason(ArkUI_DialogDismissEvent* e
 
 Obtains the dismiss reason from a dialog box dismiss event object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -271,6 +291,8 @@ int32_t OH_ArkUI_CustomDialog_OpenDialog(ArkUI_CustomDialogOptions* options, voi
 **Description**
 
 Displays a custom dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -297,6 +319,8 @@ typedef void (*ArkUI_OpenDialogCallback)(int32_t errorCode, int32_t dialogId, vo
 
 Callback function when the dialog is displayed.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -317,6 +341,8 @@ void OH_ArkUI_CustomDialog_OpenDialogWithCallback(ArkUI_CustomDialogOptions* opt
 
 Displays a custom dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -336,6 +362,8 @@ int32_t OH_ArkUI_CustomDialog_UpdateDialog(ArkUI_CustomDialogOptions* options, v
 **Description**
 
 Updates a custom dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -362,6 +390,8 @@ int32_t OH_ArkUI_CustomDialog_CloseDialog(int32_t dialogId)
 
 Closes a custom dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -385,6 +415,8 @@ ArkUI_CustomDialogOptions* OH_ArkUI_CustomDialog_CreateOptions(ArkUI_NodeHandle 
 **Description**
 
 Creates custom dialog box options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -410,6 +442,8 @@ void OH_ArkUI_CustomDialog_DisposeOptions(ArkUI_CustomDialogOptions* options)
 
 Destroys the custom dialog box options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -431,6 +465,8 @@ Sets the level mode for a custom dialog box.
 > **Note**:
 >
 > This method must be called before the <b>OH_ArkUI_CustomDialog_OpenDialog</b> method.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -456,6 +492,8 @@ int32_t OH_ArkUI_CustomDialog_SetLevelUniqueId(ArkUI_CustomDialogOptions* option
 **Description**
 
 Sets the level uniqueId for a custom dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -486,6 +524,8 @@ Sets the immersive mode for a custom dialog box.
 >
 > This method must be called before the <b>OH_ArkUI_CustomDialog_OpenDialog</b> method.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -511,6 +551,8 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundColor(ArkUI_CustomDialogOptions* opti
 
 Sets the background color of the dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -535,6 +577,8 @@ int32_t OH_ArkUI_CustomDialog_SetCornerRadius(ArkUI_CustomDialogOptions* options
 **Description**
 
 Sets the corner radius for a custom dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -563,6 +607,8 @@ int32_t OH_ArkUI_CustomDialog_SetBorderWidth(ArkUI_CustomDialogOptions* options,
 **Description**
 
 Sets the border width of the dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -593,6 +639,8 @@ int32_t OH_ArkUI_CustomDialog_SetBorderColor(ArkUI_CustomDialogOptions* options,
 
 Sets the border color of the dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -620,6 +668,8 @@ int32_t OH_ArkUI_CustomDialog_SetBorderStyle(ArkUI_CustomDialogOptions* options,
 **Description**
 
 Sets the border style of the dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -649,6 +699,8 @@ int32_t OH_ArkUI_CustomDialog_SetWidth(ArkUI_CustomDialogOptions* options, float
 
 Sets the width of the dialog box background.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -674,6 +726,8 @@ int32_t OH_ArkUI_CustomDialog_SetHeight(ArkUI_CustomDialogOptions* options, floa
 **Description**
 
 Sets the height of the dialog box background.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -701,6 +755,8 @@ int32_t OH_ArkUI_CustomDialog_SetShadow(ArkUI_CustomDialogOptions* options, ArkU
 
 Sets the shadow of the dialog box background.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -725,6 +781,8 @@ int32_t OH_ArkUI_CustomDialog_SetCustomShadow(ArkUI_CustomDialogOptions* options
 **Description**
 
 Sets the custom shadow of the dialog box background.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -751,6 +809,8 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyle(ArkUI_CustomDialogOptions* 
 
 Sets the background blur style of the dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -775,6 +835,8 @@ int32_t OH_ArkUI_CustomDialog_SetAlignment(ArkUI_CustomDialogOptions* options, i
 **Description**
 
 Sets the alignment mode of the dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -803,6 +865,8 @@ int32_t OH_ArkUI_CustomDialog_SetModalMode(ArkUI_CustomDialogOptions* options, b
 
 Sets the modal mode for a custom dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -828,6 +892,8 @@ int32_t OH_ArkUI_CustomDialog_SetAutoCancel(ArkUI_CustomDialogOptions* options, 
 
 Specifies whether to allow users to touch the mask to dismiss the custom dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -852,6 +918,8 @@ int32_t OH_ArkUI_CustomDialog_SetSubwindowMode(ArkUI_CustomDialogOptions* option
 **Description**
 
 Sets whether to display the dialog box in a subwindow.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -882,6 +950,8 @@ Sets the display mode of the custom dialog box in a subwindow.
 >
 > This method takes effect only when the dialog box is displayed in a subwindow.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -906,6 +976,8 @@ int32_t OH_ArkUI_CustomDialog_SetMask(ArkUI_CustomDialogOptions* options, uint32
 **Description**
 
 Sets the mask for a custom dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -933,6 +1005,8 @@ int32_t OH_ArkUI_CustomDialog_SetKeyboardAvoidMode(ArkUI_CustomDialogOptions* op
 
 Sets the keyboard avoidance mode of the dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -957,6 +1031,8 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeEnabled(ArkUI_CustomDialogOptions* opt
 **Description**
 
 Sets whether to enable the hover mode for the dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -983,6 +1059,8 @@ int32_t OH_ArkUI_CustomDialog_SetHoverModeArea(ArkUI_CustomDialogOptions* option
 
 Set the default display area of the dialog box in hover mode.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1007,6 +1085,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDismissCallback(ArkUI_CustomDialogOp
 **Description**
 
 Registers a callback for the dismissal event of the custom dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1034,6 +1114,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillAppearCallback(ArkUI_CustomDialogOpt
 
 Registers a callback to be invoked when the custom dialog box is about to appear.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1059,6 +1141,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidAppearCallback(ArkUI_CustomDialogOpti
 **Description**
 
 Registers a callback to be invoked when the custom dialog box appears.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1086,6 +1170,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnWillDisappearCallback(ArkUI_CustomDialog
 
 Registers a callback to be invoked when the custom dialog box is about to disappear.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1111,6 +1197,8 @@ int32_t OH_ArkUI_CustomDialog_RegisterOnDidDisappearCallback(ArkUI_CustomDialogO
 **Description**
 
 Registers a callback to be invoked when the custom dialog box disappears.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1138,6 +1226,8 @@ int32_t OH_ArkUI_CustomDialog_GetState(ArkUI_NativeDialogHandle handle, ArkUI_Di
 
 Get state of dialog.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -1162,6 +1252,8 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundBlurStyleOptions(ArkUI_CustomDialogOp
 **Description**
 
 Sets the background blur effect for a dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1188,6 +1280,8 @@ int32_t OH_ArkUI_CustomDialog_SetBackgroundEffect(ArkUI_CustomDialogOptions* opt
 
 Sets the background effect parameters for a dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1213,6 +1307,8 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterialInOptions(ArkUI_Cust
 
 Sets the system material of the dialog box.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1237,6 +1333,8 @@ int32_t OH_ArkUI_NativeModule_CustomDialog_SetSystemMaterial(ArkUI_NativeDialogH
 **Description**
 
 Sets the system material of the dialog box.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 

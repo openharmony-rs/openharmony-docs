@@ -8,6 +8,8 @@
 
 **库：** libnative_media_avmuxer.so
 
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
+
 **起始版本：** 10
 
 **相关模块：** [AVMuxer](capi-avmuxer.md)
@@ -46,6 +48,8 @@ OH_AVMuxer *OH_AVMuxer_Create(int32_t fd, OH_AVOutputFormat format)
 
 通过文件描述符fd和封装格式创建OH_AVMuxer实例。
 
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
+
 **起始版本：** 10
 
 **参数：**
@@ -70,6 +74,8 @@ OH_AVErrCode OH_AVMuxer_SetRotation(OH_AVMuxer *muxer, int32_t rotation)
 **描述：**
 
 设置视频的旋转角度（顺时针，且旋转角度必须为0、90、180或270）。该接口必须在[OH_AVMuxer_Start](capi-native-avmuxer-h.md#oh_avmuxer_start)前调用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
 
 **起始版本：** 10
 
@@ -96,6 +102,8 @@ OH_AVErrCode OH_AVMuxer_SetFormat(OH_AVMuxer *muxer, OH_AVFormat *format)
 
 设置format数据到封装器。 API版本14起，支持设置创建时间OH_MD_KEY_CREATION_TIME。若创建时间未写入成功，请排查OH_MD_KEY_CREATION_TIME字符串设置是否符合ISO 8601标准的时间格式且为UTC时间。 API版本20起，支持： - 设置文件的描述性文本信息OH_MD_KEY_COMMENT。若文件描述信息未写入成功，请排查OH_MD_KEY_COMMENT是否为字符串类型或字符长度大于等于1且小于等于256。 - 设置MP4 moov的位置OH_MD_KEY_ENABLE_MOOV_FRONT。OH_MD_KEY_ENABLE_MOOV_FRONT为0时moov后置，为1时前置，默认后置。
 
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
+
 **起始版本：** 14
 
 **参数：**
@@ -120,6 +128,8 @@ OH_AVErrCode OH_AVMuxer_AddTrack(OH_AVMuxer *muxer, int32_t *trackIndex, OH_AVFo
 **描述：**
 
 向封装器添加音视频轨。每调用一次本接口可以在封装器中添加一个音视频轨。该接口必须在[OH_AVMuxer_Start](capi-native-avmuxer-h.md#oh_avmuxer_start)前调用。
+
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
 
 **起始版本：** 10
 
@@ -147,6 +157,8 @@ OH_AVErrCode OH_AVMuxer_Start(OH_AVMuxer *muxer)
 
 开始封装。该接口必须在[OH_AVMuxer_AddTrack](capi-native-avmuxer-h.md#oh_avmuxer_addtrack)后，[OH_AVMuxer_WriteSample](capi-native-avmuxer-h.md#oh_avmuxer_writesample)前调用。
 
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
+
 **起始版本：** 10
 
 **参数：**
@@ -170,6 +182,8 @@ OH_AVErrCode OH_AVMuxer_WriteSample(OH_AVMuxer *muxer, uint32_t trackIndex, OH_A
 **描述：**
 
 将sample写入封装器。该接口必须在[OH_AVMuxer_Start](capi-native-avmuxer-h.md#oh_avmuxer_start)后，[OH_AVMuxer_Stop](capi-native-avmuxer-h.md#oh_avmuxer_stop)前调用。调用者需要按info中的时间顺序将sample写入正确的音视频轨。
+
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
 
 **起始版本：** 10
 
@@ -202,6 +216,8 @@ OH_AVErrCode OH_AVMuxer_WriteSampleBuffer(OH_AVMuxer *muxer, uint32_t trackIndex
 
 将sample写入封装器。该接口必须在[OH_AVMuxer_Start](capi-native-avmuxer-h.md#oh_avmuxer_start)后，[OH_AVMuxer_Stop](capi-native-avmuxer-h.md#oh_avmuxer_stop)前调用。调用者需要按sample中的时间顺序将sample写入正确的音视频轨。
 
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
+
 **起始版本：** 11
 
 **参数：**
@@ -228,6 +244,8 @@ OH_AVErrCode OH_AVMuxer_Stop(OH_AVMuxer *muxer)
 
 停止封装。封装器停止后不支持重新开始。
 
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
+
 **起始版本：** 10
 
 **参数：**
@@ -251,6 +269,8 @@ OH_AVErrCode OH_AVMuxer_Destroy(OH_AVMuxer *muxer)
 **描述：**
 
 清理内部资源，销毁OH_AVMuxer实例。<br> 注意不能重复销毁，否则会导致程序崩溃。
+
+**系统能力：** SystemCapability.Multimedia.Media.Muxer
 
 **起始版本：** 10
 

@@ -6,6 +6,8 @@ Provides common event constants defined by the system.
 
 **Library**: libohcommonevent.so
 
+**System capability**: SystemCapability.Notification.CommonEvent
+
 **Since**: 12
 
 **Related module**: [OH_CommonEvent](capi-oh-commonevent.md)
@@ -93,6 +95,6 @@ Provides common event constants defined by the system.
 | static const char * const COMMON_EVENT_VOLUME_DECRYPTED = "usual.event.VOLUME_DECRYPTED" | This common event indicates that specific volumes on the device have been decrypted.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Notification.CommonEvent |
 | static const char * const COMMON_EVENT_VOLUME_ENCRYPTED = "usual.event.VOLUME_ENCRYPTED" | This common event indicates that specific volumes on the device have been encrypted.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Notification.CommonEvent |
 | static const char * const COMMON_EVENT_VOLUME_ENCRYPTION_POLICY_SET = "usual.event.VOLUME_ENCRYPTION_POLICY_SET" | This common event indicates that specific volumes on the device have had their encryption policy set.<br> To subscribe to this common event, your application must have the ohos.permission.QUERY_VOLUME_ENCRYPTION_STATUS permission.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Notification.CommonEvent |
-| static const char * const COMMON_EVENT_SKILL_CHANGED = "usual.event.SKILL_CHANGED" | This common event indicates that the skill information of an application has been changed.<br> To receive this common event, your application must have the ohos.permission.MANAGE_SKILL_PRIVILEGE permission.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Notification.CommonEvent |
+| static const char * const COMMON_EVENT_SKILL_CHANGED = "usual.event.SKILL_CHANGED" | This common event indicates that the skill information of an application has been changed.<br> To receive this common event, your application must have the ohos.permission.MANAGE_SKILL permission.<br>**Since**: 26.0.0<br>**System capability**: SystemCapability.Notification.CommonEvent |
 | static const char * const COMMON_EVENT_LID_STATE_CHANGED = "usual.event.LID_STATE_CHANGED" | Indicates the common event that the lid state of a device has been changed.<br>**Since**: 23<br>**System capability**: SystemCapability.Notification.CommonEvent |
 

@@ -6,6 +6,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -106,6 +108,8 @@ enum OH_Drawing_SrcRectConstraint
 
 源矩形区域约束类型枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -122,6 +126,8 @@ enum OH_Drawing_PointMode
 **描述：**
 
 绘制多个点的方式枚举，方式分为离散点、直线或开放多边形。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -141,6 +147,8 @@ enum OH_Drawing_CanvasClipOp
 
 画布裁剪方式的枚举集合。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -157,6 +165,8 @@ enum OH_Drawing_CanvasShadowFlags
 **描述：**
 
 阴影标志枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -176,6 +186,8 @@ enum OH_Drawing_VertexMode
 **描述：**
 
 用于指定如何解释给定顶点的几何形状的枚举类型。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -198,6 +210,8 @@ OH_Drawing_Canvas* OH_Drawing_CanvasCreate(void)
 
 用于创建一个画布对象。画布自带一个默认画刷，画刷为黑色、开启抗锯齿、不具备其他任何样式， 当且仅当画布中主动设置的画刷和画笔都不存在时生效。创建的画布对象在使用完毕后，必须调用 [OH_Drawing_CanvasDestroy](capi-drawing-canvas-h.md#oh_drawing_canvasdestroy)销毁画布对象并释放资源，否则会导致内存泄漏。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **返回值：**
@@ -215,6 +229,8 @@ OH_Drawing_Canvas* OH_Drawing_CanvasCreateWithPixelMap(OH_Drawing_PixelMap* pixe
 **描述：**
 
 用于将一个像素图对象绑定到画布中，使得画布绘制的内容输出到像素图中（即CPU渲染）。绑定像素图对象后的画布为非录制类型画布。 <br>像素图对象应该在调用[OH_Drawing_CanvasDestroy](capi-drawing-canvas-h.md#oh_drawing_canvasdestroy)销毁画布对象之后， 再调用[OH_Drawing_PixelMapDissolve](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapdissolve)解除绑定。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -240,6 +256,8 @@ void OH_Drawing_CanvasDestroy(OH_Drawing_Canvas* canvas)
 
 用于销毁画布对象并回收该对象占用的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -257,6 +275,8 @@ void OH_Drawing_CanvasBind(OH_Drawing_Canvas* canvas, OH_Drawing_Bitmap* bitmap)
 **描述：**
 
 用于将一个位图对象绑定到画布中，使得画布绘制的内容输出到位图中（即CPU渲染）。绑定位图对象后的画布为非录制类型画布。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、bitmap任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -277,6 +297,8 @@ void OH_Drawing_CanvasAttachPen(OH_Drawing_Canvas* canvas, const OH_Drawing_Pen*
 
 用于为画布设置画笔，画布将使用该画笔的样式和颜色绘制图形形状的轮廓。执行该方法后， 若画笔的效果发生改变并且开发者希望该变化生效于接下来的绘制动作，需要再次执行该方法以确保变化生效。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、pen任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -296,6 +318,8 @@ void OH_Drawing_CanvasDetachPen(OH_Drawing_Canvas* canvas)
 
 用于去除画布中的画笔，使用后画布将不绘制图形形状的轮廓。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -313,6 +337,8 @@ void OH_Drawing_CanvasAttachBrush(OH_Drawing_Canvas* canvas, const OH_Drawing_Br
 **描述：**
 
 用于为画布设置画刷，画布将使用该画刷的样式和颜色填充绘制的图形形状。执行该方法后， 若画刷的效果发生改变并且开发者希望该变化生效于接下来的绘制动作，需要再次执行该方法以确保变化生效。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、brush任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -333,6 +359,8 @@ void OH_Drawing_CanvasDetachBrush(OH_Drawing_Canvas* canvas)
 
 用于去除画布中的画刷，使用后画布将不使用此前设置的画刷填充图形形状。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -351,6 +379,8 @@ void OH_Drawing_CanvasSave(OH_Drawing_Canvas* canvas)
 
 用于保存当前画布的状态（画布矩阵）到一个栈顶。需要与恢复接口[OH_Drawing_CanvasRestore](capi-drawing-canvas-h.md#oh_drawing_canvasrestore)配合使用。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -368,6 +398,8 @@ void OH_Drawing_CanvasSaveLayer(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect
 **描述：**
 
 保存矩阵和裁剪区域，为后续绘制分配位图。调用恢复接口[OH_Drawing_CanvasRestore](capi-drawing-canvas-h.md#oh_drawing_canvasrestore)后， 将舍弃对矩阵和裁剪区域所做的更改，并绘制位图。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -389,6 +421,8 @@ void OH_Drawing_CanvasRestore(OH_Drawing_Canvas* canvas)
 
 用于恢复保存在栈顶的画布状态（画布矩阵）。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -406,6 +440,8 @@ uint32_t OH_Drawing_CanvasGetSaveCount(OH_Drawing_Canvas* canvas)
 **描述：**
 
 用于获取栈中保存的画布状态（画布矩阵）的数量。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -431,6 +467,8 @@ void OH_Drawing_CanvasRestoreToCount(OH_Drawing_Canvas* canvas, uint32_t saveCou
 
 用于恢复到指定数量的画布状态（画布矩阵）。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -449,6 +487,8 @@ void OH_Drawing_CanvasDrawLine(OH_Drawing_Canvas* canvas, float x1, float y1, fl
 **描述：**
 
 用于画一条直线段。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -472,6 +512,8 @@ void OH_Drawing_CanvasDrawPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path*
 
 用于画一个自定义路径。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、path任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -490,6 +532,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapMesh(OH_Drawing_Canvas* cCanva
 **描述：**
 
 在网格上绘制像素图，网格均匀分布在像素图上。（只支持画刷，使用画笔没有绘制效果。）
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 
@@ -524,6 +568,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapNine(OH_Drawing_Canvas* canvas
 
 通过绘制两条水平线和两条垂直线将像素图分割成9个部分：四个边、四个角和中心。 <br>若角落的4个区域尺寸不超过目标矩形，则会在不缩放的情况下被绘制在目标矩形，反之则会按比例缩放绘制在目标矩形。 <br>如果还有剩余空间，剩下的5个区域会通过拉伸或压缩来绘制，以便能够完全覆盖目标矩形。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -552,6 +598,8 @@ void OH_Drawing_CanvasDrawPixelMapRect(OH_Drawing_Canvas* canvas, OH_Drawing_Pix
 
 用于将像素图的指定区域绘制到画布的指定区域。与[OH_Drawing_CanvasDrawPixelMapRectConstraint](capi-drawing-canvas-h.md#oh_drawing_canvasdrawpixelmaprectconstraint)的区别是， 本接口不支持指定源矩形区域约束类型。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、pixelMap、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -573,6 +621,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPixelMapRectConstraint(OH_Drawing_Canv
 **描述：**
 
 用于将像素图的指定区域绘制到画布的指定区域。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -603,6 +653,8 @@ void OH_Drawing_CanvasDrawBackground(OH_Drawing_Canvas* canvas, const OH_Drawing
 
 用于以画刷填充画布的当前裁剪区域作为背景。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、brush任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -622,6 +674,8 @@ void OH_Drawing_CanvasDrawRegion(OH_Drawing_Canvas* canvas, const OH_Drawing_Reg
 
 用于绘制一个区域，使用画刷填充区域内部、画笔绘制区域轮廓。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、region任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -640,6 +694,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawPoint(OH_Drawing_Canvas* canvas, const
 **描述：**
 
 用于画一个点。点的视觉大小由当前画布上设置的画笔笔触宽度决定，颜色由画笔颜色决定。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -666,6 +722,8 @@ void OH_Drawing_CanvasDrawPoints(OH_Drawing_Canvas* canvas, OH_Drawing_PointMode
 
 用于画多个点，绘制方式分为绘制单独的点、绘制成线段或绘制成开放多边形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、point2D任意一个为NULL或者count等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER； mode不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -687,6 +745,8 @@ void OH_Drawing_CanvasDrawBitmap(OH_Drawing_Canvas* canvas, const OH_Drawing_Bit
 
 用于画一个位图，位图又称为点阵图像、像素图或栅格图像，是由像素（图片元素）的单个点组成。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、bitmap任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -707,6 +767,8 @@ void OH_Drawing_CanvasDrawBitmapRect(OH_Drawing_Canvas* canvas, const OH_Drawing
 **描述：**
 
 将位图的指定区域绘制到画布的指定区域。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、bitmap、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -730,6 +792,8 @@ void OH_Drawing_CanvasDrawRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 用于画一个矩形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -748,6 +812,8 @@ void OH_Drawing_CanvasDrawCircle(OH_Drawing_Canvas* canvas, const OH_Drawing_Poi
 **描述：**
 
 用于画一个圆形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、point任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>radius小于等于0时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -768,6 +834,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawColor(OH_Drawing_Canvas* canvas, uint3
 **描述：**
 
 用于以指定的颜色及混合模式填充整个画布。该函数将指定颜色按照blendMode定义的混合规则与画布上已有内容进行合成， 不同混合模式产生不同的视觉效果。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -795,6 +863,8 @@ void OH_Drawing_CanvasDrawOval(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 用于画一个椭圆，椭圆内接于参数rect所指定的矩形区域。本接口会产生错误码， 可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。canvas、 rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -813,6 +883,8 @@ void OH_Drawing_CanvasDrawArc(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect* 
 **描述：**
 
 用于绘制内接于参数rect所定义椭圆的一段弧线。当扫描角度的绝对值大于360度时，本接口绘制的是一个椭圆。 与[OH_Drawing_CanvasDrawArcWithCenter](capi-drawing-canvas-h.md#oh_drawing_canvasdrawarcwithcenter)的区别是， 本接口不支持指定圆弧的起点和终点是否连接圆弧的中心点。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -834,6 +906,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawArcWithCenter(OH_Drawing_Canvas* canva
 **描述：**
 
 用于绘制一段圆弧，弧线内接于参数rect所定义的椭圆。本接口允许指定圆弧的起始角度、 扫描角度以及圆弧的起点和终点是否连接椭圆的中心点（即rect的中心点）。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -863,6 +937,8 @@ void OH_Drawing_CanvasDrawRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_
 
 用于画一个圆角矩形。本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。canvas、 roundRect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -881,6 +957,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawNestedRoundRect(OH_Drawing_Canvas* can
 **描述：**
 
 用于绘制两个嵌套的圆角矩形，外部矩形边界必须包含内部矩形边界，否则无绘制效果。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -907,6 +985,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacter(OH_Drawing_Canvas* can
 **描述：**
 
 用于绘制单个字符。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。 与[OH_Drawing_CanvasDrawSingleCharacterWithFeatures](capi-drawing-canvas-h.md#oh_drawing_canvasdrawsinglecharacterwithfeatures)的区别是， 本接口不支持设置字体特征。如需指定字体特征（如连字、字距调整等）， 请使用[OH_Drawing_CanvasDrawSingleCharacterWithFeatures](capi-drawing-canvas-h.md#oh_drawing_canvasdrawsinglecharacterwithfeatures)。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -935,6 +1015,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawSingleCharacterWithFeatures(OH_Drawing
 **描述：**
 
 绘制单个字符，字符带有字体特征。当前字型中的字体不支持待绘制字符时，退化到使用系统字体绘制字符。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 20
 
@@ -965,6 +1047,8 @@ void OH_Drawing_CanvasDrawTextBlob(OH_Drawing_Canvas* canvas, const OH_Drawing_T
 
 用于画一段文字。若构造OH_Drawing_TextBlob的字体不支持待绘制字符，则该部分字符无法绘制。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、textBlob任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -985,6 +1069,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawGlyphs(const OH_Drawing_Canvas* canvas
 **描述：**
 
 绘制具有指定字体的字形数组。如果字形计数小于或等于0，则不绘制任何内容。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 26.0.0
 
@@ -1018,6 +1104,8 @@ void OH_Drawing_CanvasClipRect(OH_Drawing_Canvas* canvas, const OH_Drawing_Rect*
 
 用于裁剪一个矩形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>clipOp不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -1038,6 +1126,8 @@ void OH_Drawing_CanvasClipRoundRect(OH_Drawing_Canvas* canvas, const OH_Drawing_
 **描述：**
 
 用于裁剪一个圆角矩形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、roundRect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>clipOp不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1060,6 +1150,8 @@ void OH_Drawing_CanvasClipPath(OH_Drawing_Canvas* canvas, const OH_Drawing_Path*
 
 用于裁剪一个自定义路径。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、path任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>clipOp不在枚举范围内时返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -1080,6 +1172,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasClipRegion(OH_Drawing_Canvas* canvas, cons
 **描述：**
 
 用于裁剪一个区域。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1107,6 +1201,8 @@ void OH_Drawing_CanvasRotate(OH_Drawing_Canvas* canvas, float degrees, float px,
 
 用于旋转画布。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -1128,6 +1224,8 @@ void OH_Drawing_CanvasTranslate(OH_Drawing_Canvas* canvas, float dx, float dy)
 
 用于平移画布一段距离。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -1147,6 +1245,8 @@ void OH_Drawing_CanvasScale(OH_Drawing_Canvas* canvas, float sx, float sy)
 **描述：**
 
 用于画布缩放。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -1168,6 +1268,8 @@ void OH_Drawing_CanvasSkew(OH_Drawing_Canvas* canvas, float sx, float sy)
 
 用于画布倾斜变换。等同于将当前画布矩阵左乘（premultiply）倾斜变换矩阵，并应用到画布上。其中倾斜变换矩阵为： <br>\|1 sx 0\| <br>\|sy 1 0\| <br>\|0 0 1\|。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1187,6 +1289,8 @@ int32_t OH_Drawing_CanvasGetWidth(OH_Drawing_Canvas* canvas)
 **描述：**
 
 获取画布宽度。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1212,6 +1316,8 @@ int32_t OH_Drawing_CanvasGetHeight(OH_Drawing_Canvas* canvas)
 
 获取画布高度。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1236,6 +1342,8 @@ void OH_Drawing_CanvasGetLocalClipBounds(OH_Drawing_Canvas* canvas, OH_Drawing_R
 
 获取画布裁剪区域的边界。该接口不可用于录制类型画布。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1254,6 +1362,8 @@ void OH_Drawing_CanvasGetTotalMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matri
 **描述：**
 
 获取画布3x3矩阵。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1274,6 +1384,8 @@ void OH_Drawing_CanvasConcatMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix*
 
 画布现有矩阵左乘以传入矩阵，不影响该接口之前的绘制操作。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1292,6 +1404,8 @@ void OH_Drawing_CanvasDrawShadow(OH_Drawing_Canvas* canvas, OH_Drawing_Path* pat
 **描述：**
 
 用于绘制射灯类型阴影，使用路径描述环境光阴影的轮廓。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、path任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER； <br>flag不在枚举范围内返回OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1318,6 +1432,8 @@ void OH_Drawing_CanvasClear(OH_Drawing_Canvas* canvas, uint32_t color)
 
 使用指定颜色清空画布。与[OH_Drawing_CanvasDrawColor](capi-drawing-canvas-h.md#oh_drawing_canvasdrawcolor)的区别是，本接口直接用指定颜色替换画布所有内容， 而OH_Drawing_CanvasDrawColor通过混合模式将颜色与画布现有内容混合。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -1336,6 +1452,8 @@ void OH_Drawing_CanvasSetMatrix(OH_Drawing_Canvas* canvas, OH_Drawing_Matrix* ma
 **描述：**
 
 设置画布的矩阵状态，将画布当前矩阵替换为传入的矩阵，影响后续绘制操作的坐标变换。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、matrix任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1356,6 +1474,8 @@ void OH_Drawing_CanvasResetMatrix(OH_Drawing_Canvas* canvas)
 
 重置当前画布的矩阵为单位矩阵。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1373,6 +1493,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasResetClip(OH_Drawing_Canvas* canvas)
 **描述：**
 
 将当前画布的裁剪状态重置为初始状态。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 26.0.0
 
@@ -1398,6 +1520,8 @@ void OH_Drawing_CanvasDrawImageRectWithSrc(OH_Drawing_Canvas* canvas, const OH_D
 
 将图片绘制到画布的指定区域上，源矩形选定的区域会缩放平移到目标矩形。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、image、src、dst任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1421,6 +1545,8 @@ void OH_Drawing_CanvasDrawImageRect(OH_Drawing_Canvas* canvas, OH_Drawing_Image*
 
 将图片绘制到画布的指定区域上。与[OH_Drawing_CanvasDrawImageRectWithSrc](capi-drawing-canvas-h.md#oh_drawing_canvasdrawimagerectwithsrc)的区别是， 本接口不支持指定源矩形区域约束类型。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、image、rect任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1441,6 +1567,8 @@ void OH_Drawing_CanvasDrawVertices(OH_Drawing_Canvas* canvas, OH_Drawing_VertexM
 **描述：**
 
 用于画顶点数组描述的三角网格。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas或positions为NULL、vertexCount值小于3、indexCount值小于3且不为0， 存在以上任意一种情况时设置错误码为OH_DRAWING_ERROR_INVALID_PARAMETER； <br>vertexMmode、mode任意一个不在枚举范围内时设置错误码为OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1467,6 +1595,8 @@ bool OH_Drawing_CanvasReadPixels(OH_Drawing_Canvas* canvas, OH_Drawing_Image_Inf
 **描述：**
 
 从画布中拷贝像素数据到指定地址。该接口不可用于录制类型画布。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、imageInfo、dstPixels任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1497,6 +1627,8 @@ bool OH_Drawing_CanvasReadPixelsToBitmap(OH_Drawing_Canvas* canvas, OH_Drawing_B
 
 从画布拷贝像素数据到位图中。该接口不可用于录制类型画布。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>canvas、bitmap任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1524,6 +1656,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasIsClipEmpty(OH_Drawing_Canvas* canvas, boo
 
 用于判断裁剪后可绘制区域是否为空。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -1548,6 +1682,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasGetImageInfo(OH_Drawing_Canvas* canvas, OH
 **描述：**
 
 用于获取画布的图像信息。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -1574,6 +1710,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmd(OH_Drawing_Canvas* canvas, O
 
 用于绘制录制指令对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 13
 
 **参数：**
@@ -1599,6 +1737,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasDrawRecordCmdNesting(OH_Drawing_Canvas* ca
 
 用于绘制录制指令对象，支持嵌套。 <br>本接口支持[OH_Drawing_RecordCmdUtilsBeginRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsbeginrecording)接口生成的画布对象作为入参，嵌套调用。 不建议多层嵌套，会影响性能。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 19
 
 **参数：**
@@ -1623,6 +1763,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectPath(OH_Drawing_Canvas* canvas,
 **描述：**
 
 判断路径与画布区域是否不相交。画布区域包含边界。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -1650,6 +1792,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasQuickRejectRect(OH_Drawing_Canvas* canvas,
 
 判断矩形和画布区域是否不相交。画布区域包含边界。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -1675,6 +1819,8 @@ OH_Drawing_ErrorCode OH_Drawing_CanvasIsOpaque(const OH_Drawing_Canvas* canvas, 
 **描述：**
 
 检查当前绘制到设备上的图层是否是不透明的。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 26.0.0
 

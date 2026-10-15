@@ -6,6 +6,8 @@ The file declares the DRM data types.
 
 **Library**: libnative_drm.so
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)
@@ -91,6 +93,8 @@ enum DRM_EventType
 
 Enumerates the types of events that can be subscribed to.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -112,6 +116,8 @@ enum DRM_ContentProtectionLevel
 
 Enumerates the content protection levels.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -132,6 +138,8 @@ enum DRM_MediaKeyType
 
 Enumerates the types of media keys.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -148,6 +156,8 @@ enum DRM_MediaKeyRequestType
 **Description**
 
 Enumerates the types of media key requests.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -170,6 +180,8 @@ enum DRM_OfflineMediaKeyStatus
 
 Enumerates the statuses of offline media keys.
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -187,6 +199,8 @@ enum DRM_CertificateStatus
 **Description**
 
 Enumerates the device certificate statuses.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 
@@ -210,6 +224,8 @@ typedef void (*DRM_MediaKeySystemInfoCallback)(DRM_MediaKeySystemInfo *mediaKeyS
 **Description**
 
 Defines the callback used to obtain DRM information from a media source.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 

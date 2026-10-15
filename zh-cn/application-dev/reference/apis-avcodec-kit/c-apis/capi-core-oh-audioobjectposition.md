@@ -1,7 +1,7 @@
 # OH_AudioObjectPosition
 
 ```c
-union OH_AudioObjectPosition {...}
+struct OH_AudioObjectPosition {...}
 ```
 
 ## 概述
@@ -22,8 +22,8 @@ union OH_AudioObjectPosition {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| [OH_CartesianPosition](capi-core-oh-cartesianposition.md) cartesian | 笛卡尔坐标表示的位置。<br>**起始版本：** 26.0.0 |
-| OH_PolarPosition polar;
- } pos | 极坐标表示的位置。<br>**起始版本：** 26.0.0 |
+| bool isCartesian | 对象声源是否使用笛卡尔坐标表示。<br> true表示使用笛卡尔坐标，false表示不使用笛卡尔坐标系，使用极坐标系。<br>**起始版本：** 26.0.0 |
+| pos.cartesian | 笛卡尔坐标表示的位置。<br>**起始版本：** 26.0.0 |
+| pos.polar | 极坐标表示的位置。<br>**起始版本：** 26.0.0 |
 
 

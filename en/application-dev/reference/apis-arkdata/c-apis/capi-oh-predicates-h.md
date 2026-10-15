@@ -6,6 +6,8 @@ Declared predicate related functions and enumerations.
 
 **Library**: libnative_rdb_ndk.z.so
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 10
 
 **Related module**: [RDB](capi-rdb.md)
@@ -45,6 +47,8 @@ enum OH_OrderType
 
 Result set sort type.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 10
 
 | Enum item | Description |
@@ -64,6 +68,8 @@ int OH_Predicates_NotLike(OH_Predicates *predicates, const char *field, const ch
 **Description**
 
 Sets the OH_Predicates to match the field whose data type is string and value is not like the specified value. This method is similar to "Not like" of the SQL statement.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 
@@ -91,6 +97,8 @@ int OH_Predicates_Glob(OH_Predicates *predicates, const char *field, const char 
 
 Sets the OH_Predicates to match the specified field whose data type is string and the value contains a wildcard. Different from like, the input parameters of this method are case-sensitive.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -117,6 +125,8 @@ int OH_Predicates_NotGlob(OH_Predicates *predicates, const char *field, const ch
 
 Sets the OH_Predicates to not match the specified field whose data type is string and the value contains a wildcard. Different from not like, the input parameters of this method are case-sensitive.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -142,6 +152,8 @@ int OH_Predicates_Having(OH_Predicates *predicates, const char *conditions, cons
 **Description**
 
 Sets the OH_Predicates to specify conditions to filter grouped results that will appear in the final result.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 20
 

@@ -6,6 +6,8 @@ Declare audio download manager related interfaces.
 
 **Library**: libohaudiosuite.so
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -20,6 +22,7 @@ Declare audio download manager related interfaces.
 | -- | -- | -- |
 | [OH_AudioSuite_DownloadStatusInfo(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) | - | Define download status information structure.<br>**System API:** This is a system API. |
 | [OH_AudioSuite_DownloadStatusInfoArray(System API)](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfoarray-sys.md) | - | Define download status information array structure.<br>**System API:** This is a system API. |
+| [OH_AudioSuite_FeatureVersionInfo(System API)](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) | - | Define feature version information structure.<br>**System API:** This is a system API. |
 | [OH_AudioSuite_DownloadManager(System API)](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) | OH_AudioSuite_DownloadManager | Declare the audio download manager. The handle of audio download manager is used for download related functions.<br>**System API:** This is a system API. |
 
 ### Function
@@ -36,6 +39,9 @@ Declare audio download manager related interfaces.
 | [int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_startbackgrounddownload) | - | Start background downloading a feature.<br>**System API:** This is a system API. |
 | [int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName, OH_AudioSuite_DownloadStatusInfo *status)(System API)](#oh_audiosuite_getdownloadstatus) | - | Get download status of a feature.<br>**System API:** This is a system API. |
 | [int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadManager, const char *featureName)(System API)](#oh_audiosuite_uninstallcloudrom) | - | Uninstall a downloaded feature.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, bool *installStatus, uint32_t installStatusSize)(System API)](#oh_audiosuite_isfeatureinstalled) | - | Get install status of features in batch.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_DownloadStatusInfo *statusInfos, uint32_t statusInfosSize)(System API)](#oh_audiosuite_getfeaturestatus) | - | Get download status of features in batch.<br>**System API:** This is a system API. |
+| [int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_FeatureVersionInfo *versionInfos, uint32_t versionInfosSize)(System API)](#oh_audiosuite_getnewversioninfo) | - | Get new version information of features in batch.<br>**System API:** This is a system API. |
 
 ### Variable
 
@@ -54,6 +60,8 @@ typedef void (*OH_AudioSuite_DownloadCallback)(OH_AudioSuite_DownloadStatusInfoA
 **Description**
 
 Callback function for download status update.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -74,6 +82,8 @@ int32_t OH_AudioSuite_GetDownloadManager(OH_AudioSuite_DownloadManager **downloa
 **Description**
 
 Get the audio download manager handle.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -100,6 +110,8 @@ int32_t OH_AudioSuite_RegisterDownloadCallback(OH_AudioSuite_DownloadManager *do
 **Description**
 
 Register download status callback.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -128,6 +140,8 @@ int32_t OH_AudioSuite_UnregisterDownloadCallback(OH_AudioSuite_DownloadManager *
 
 Unregister download status callback.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -154,6 +168,8 @@ int32_t OH_AudioSuite_StartDownload(OH_AudioSuite_DownloadManager *downloadManag
 **Description**
 
 Start downloading a feature.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -182,6 +198,8 @@ int32_t OH_AudioSuite_PauseDownload(OH_AudioSuite_DownloadManager *downloadManag
 
 Pause downloading a feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -208,6 +226,8 @@ int32_t OH_AudioSuite_CancelDownload(OH_AudioSuite_DownloadManager *downloadMana
 **Description**
 
 Cancel downloading a feature.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -236,6 +256,8 @@ int32_t OH_AudioSuite_StartBackgroundDownload(OH_AudioSuite_DownloadManager *dow
 
 Start background downloading a feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -262,6 +284,8 @@ int32_t OH_AudioSuite_GetDownloadStatus(OH_AudioSuite_DownloadManager *downloadM
 **Description**
 
 Get download status of a feature.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -291,6 +315,8 @@ int32_t OH_AudioSuite_UninstallCloudRom(OH_AudioSuite_DownloadManager *downloadM
 
 Uninstall a downloaded feature.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -307,5 +333,101 @@ Uninstall a downloaded feature.
 | Type | Description |
 | -- | -- |
 | int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 if a non-system application calls this system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager or featureName is nullptr.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails or the operation fails.</li> </ul> |
+
+### OH_AudioSuite_IsFeatureInstalled()
+
+```c
+int32_t OH_AudioSuite_IsFeatureInstalled(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, bool *installStatus, uint32_t installStatusSize)
+```
+
+**Description**
+
+Get install status of features in batch.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Since**: 26.0.1
+
+**System API:** This is a system API.
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [in] Download manager handle. |
+| const char **featureNames | [in] Array of feature names. |
+| uint32_t count | [in] Number of feature names in the input array. |
+| bool *installStatus | [out] Caller-allocated boolean array to receive install status. |
+| uint32_t installStatusSize | [in] Capacity of the caller-allocated output array. Must be at least count. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 Permission verification failed. A non-system application calls a system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager, featureNames, installStatus is nullptr, count is 0, or installStatusSize is less than count.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails.</li> </ul> |
+
+### OH_AudioSuite_GetFeatureStatus()
+
+```c
+int32_t OH_AudioSuite_GetFeatureStatus(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_DownloadStatusInfo *statusInfos, uint32_t statusInfosSize)
+```
+
+**Description**
+
+Get download status of features in batch.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Since**: 26.0.1
+
+**System API:** This is a system API.
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [in] Download manager handle. |
+| const char **featureNames | [in] Array of feature names. |
+| uint32_t count | [in] Number of feature names in the input array. |
+| [OH_AudioSuite_DownloadStatusInfo](capi-ohaudiosuite-oh-audiosuite-downloadstatusinfo-sys.md) *statusInfos | [out] Caller-allocated array to receive download status. |
+| uint32_t statusInfosSize | [in] Capacity of the caller-allocated output array. Must be at least count. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 Permission verification failed. A non-system application calls a system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager, featureNames, statusInfos is nullptr, count is 0, or statusInfosSize is less than count.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails.</li> </ul> |
+
+### OH_AudioSuite_GetNewVersionInfo()
+
+```c
+int32_t OH_AudioSuite_GetNewVersionInfo(OH_AudioSuite_DownloadManager *downloadManager, const char **featureNames, uint32_t count, OH_AudioSuite_FeatureVersionInfo *versionInfos, uint32_t versionInfosSize)
+```
+
+**Description**
+
+Get new version information of features in batch.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
+**Since**: 26.0.1
+
+**System API:** This is a system API.
+
+**Parameters**:
+
+| Parameter | Description |
+| -- | -- |
+| [OH_AudioSuite_DownloadManager](capi-ohaudiosuite-oh-audiosuite-downloadmanager-sys.md) *downloadManager | [in] Download manager handle. |
+| const char **featureNames | [in] Array of feature names. |
+| uint32_t count | [in] Number of feature names in the input array. |
+| [OH_AudioSuite_FeatureVersionInfo](capi-ohaudiosuite-oh-audiosuite-featureversioninfo-sys.md) *versionInfos | [out] Caller-allocated array to receive version info. |
+| uint32_t versionInfosSize | [in] Capacity of the caller-allocated output array. Must be at least count. |
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| int32_t | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) If the execution is successful.</li> <li>202 Permission verification failed. A non-system application calls a system API.</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) If downloadManager, featureNames, versionInfos is nullptr, count is 0, or versionInfosSize is less than count.</li> <li>[AUDIOCOMMON_RESULT_ERROR_SERVICE_DIED](capi-native-audio-common-h.md#oh_audiocommon_result) If IPC communication fails.</li> <li>[AUDIOCOMMON_RESULT_ERROR_NETWORK_CONDITION_NOT_MET](capi-native-audio-common-h.md#oh_audiocommon_result) Required network conditions not met. The current network status is unavailable.</li> </ul> |
 
 

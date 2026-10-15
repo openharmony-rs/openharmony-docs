@@ -6,6 +6,8 @@ Declares the APIs of **NativeDrawableDescriptor**.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -68,6 +70,8 @@ enum DrawableDescriptor_AnimationStatus
 
 Enumerates the playback states of DrawableDescriptor animations.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 | Enum item | Description |
@@ -86,6 +90,8 @@ enum DrawableDescriptor_AnimationStopMode
 **Description**
 
 Enumerates the stop modes of DrawableDescriptor animations.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -106,6 +112,8 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromPixelMap(OH_Pixe
 **Description**
 
 Creates a **DrawableDescriptor** object from a **PixelMap** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -130,6 +138,8 @@ ArkUI_DrawableDescriptor* OH_ArkUI_DrawableDescriptor_CreateFromAnimatedPixelMap
 **Description**
 
 Creates a **DrawableDescriptor** object from an array of **PixelMap** objects.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -156,6 +166,8 @@ void OH_ArkUI_DrawableDescriptor_Dispose(ArkUI_DrawableDescriptor* drawableDescr
 
 Disposes of the pointer to a **DrawableDescriptor** object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -173,6 +185,8 @@ OH_PixelmapNativeHandle OH_ArkUI_DrawableDescriptor_GetStaticPixelMap(ArkUI_Draw
 **Description**
 
 Obtains the pointer to a **PixelMap** object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -198,6 +212,8 @@ OH_PixelmapNativeHandle* OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArray(Ar
 
 Obtains an array of **PixelMap** objects for playing an animation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -221,6 +237,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimatedPixelMapArraySize(ArkUI_DrawableD
 **Description**
 
 Obtains the size of the **PixelMap** object array for playing an animation.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -246,6 +264,8 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationDuration(ArkUI_DrawableDescriptor* 
 
 Sets the total playback duration for an array of **PixelMap** objects.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -264,6 +284,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationDuration(ArkUI_DrawableDescripto
 **Description**
 
 Obtains the total playback duration for an array of **PixelMap** objects.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -289,6 +311,8 @@ void OH_ArkUI_DrawableDescriptor_SetAnimationIteration(ArkUI_DrawableDescriptor*
 
 Sets the number of times that an array of **PixelMap** objects is played.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -307,6 +331,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationIteration(ArkUI_DrawableDescript
 **Description**
 
 Obtains the number of times that an array of **PixelMap** objects is played.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -331,6 +357,8 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationFrameDurations(ArkUI_DrawableDes
 **Description**
 
 Sets the duration for each frame in a DrawableDescriptor animation.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -358,6 +386,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationFrameDurations(ArkUI_DrawableDes
 
 Obtains the duration of each frame in a DrawableDescriptor animation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -384,6 +414,8 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationAutoPlay(ArkUI_DrawableDescripto
 
 Specifies whether to enable autoplay for a DrawableDescriptor animation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -408,6 +440,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationAutoPlay(ArkUI_DrawableDescripto
 **Description**
 
 Checks whether autoplay is enabled for a DrawableDescriptor animation.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -434,6 +468,8 @@ int32_t OH_ArkUI_DrawableDescriptor_SetAnimationStopMode(ArkUI_DrawableDescripto
 
 Sets the stop mode for an animation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -459,6 +495,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStopMode(const ArkUI_DrawableDes
 
 Obtains the stop mode of an animation.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -483,6 +521,8 @@ int32_t OH_ArkUI_DrawableDescriptor_CreateAnimationController(ArkUI_DrawableDesc
 **Description**
 
 Creates an animation controller for the DrawableDescriptor.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -510,6 +550,8 @@ void OH_ArkUI_DrawableDescriptor_DisposeAnimationController(ArkUI_DrawableDescri
 
 Disposes of the DrawableDescriptor animation controller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -527,6 +569,8 @@ int32_t OH_ArkUI_DrawableDescriptor_StartAnimation(ArkUI_DrawableDescriptor_Anim
 **Description**
 
 Starts playback from the first frame.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -552,6 +596,8 @@ int32_t OH_ArkUI_DrawableDescriptor_StopAnimation(ArkUI_DrawableDescriptor_Anima
 
 Stops the DrawableDescriptor animation and returns to the first frame.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -575,6 +621,8 @@ int32_t OH_ArkUI_DrawableDescriptor_ResumeAnimation(ArkUI_DrawableDescriptor_Ani
 **Description**
 
 Resumes the DrawableDescriptor animation from the current frame.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -600,6 +648,8 @@ int32_t OH_ArkUI_DrawableDescriptor_PauseAnimation(ArkUI_DrawableDescriptor_Anim
 
 Pauses playback on the current frame.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -623,6 +673,8 @@ int32_t OH_ArkUI_DrawableDescriptor_GetAnimationStatus(ArkUI_DrawableDescriptor_
 **Description**
 
 Obtains the playback status of the DrawableDescriptor animation.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 

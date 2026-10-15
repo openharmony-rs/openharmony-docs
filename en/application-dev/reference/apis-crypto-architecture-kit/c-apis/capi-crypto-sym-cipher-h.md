@@ -8,6 +8,8 @@ Defines the symmetric key cipher interfaces.
 
 **Library**: libohcrypto.so
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Related module**: [CryptoSymCipherApi](capi-cryptosymcipherapi.md)
@@ -53,6 +55,8 @@ enum CryptoSymCipher_ParamsType
 
 Defines the cipher parameter types.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 | Enum item | Description |
@@ -73,6 +77,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_Create(OH_CryptoSymCipherParams **par
 **Description**
 
 Creates symmetric cipher parameters.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -105,6 +111,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipherParams_SetParam(OH_CryptoSymCipherParams *pa
 
 Sets cipher parameters.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -131,6 +139,8 @@ void OH_CryptoSymCipherParams_Destroy(OH_CryptoSymCipherParams *params)
 
 Destroys cipher parameters.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -148,6 +158,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Create(const char *algoName, OH_CryptoSymCi
 **Description**
 
 Creates a symmetric cipher context based on the given algorithm name.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -180,6 +192,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Init(OH_CryptoSymCipher *ctx, Crypto_Cipher
 **Description**
 
 Initializes the cipher operation with the given mode, key, and parameters.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 
@@ -214,6 +228,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Update(OH_CryptoSymCipher *ctx, Crypto_Data
 
 Updates cipher data, outputting encrypted or decrypted data.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
@@ -247,6 +263,8 @@ OH_Crypto_ErrCode OH_CryptoSymCipher_Final(OH_CryptoSymCipher *ctx, Crypto_DataB
 
 Finishes the cipher operation, outputting the final result.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Resource release**: crypto_common/OH_Crypto_FreeDataBlob {out}
@@ -275,6 +293,8 @@ const char *OH_CryptoSymCipher_GetAlgoName(OH_CryptoSymCipher *ctx)
 
 Obtains the symmetric cipher algorithm name.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -298,6 +318,8 @@ void OH_CryptoSymCipher_Destroy(OH_CryptoSymCipher *ctx)
 **Description**
 
 Destroys the symmetric cipher context.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 12
 

@@ -10,7 +10,7 @@ typedef struct OH_ArkUI_NativeModule_LineSpacingOptions OH_ArkUI_NativeModule_Li
 
 **系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
-**起始版本：** 26.0.1
+**起始版本：** 26.2.0
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
 

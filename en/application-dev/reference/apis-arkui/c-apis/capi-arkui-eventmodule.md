@@ -2,7 +2,7 @@
 
 ## Overview
 
-Declares the UI input event capabilities provided by ArkUI on the native side.
+Provides ArkUI UI input event capabilities on the native side, to obtain and process touch, mouse, axis, and key UI input events. It is suitable for scenarios where UI input events need to be processed directly at the C/C++ layer.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -12,4 +12,4 @@ Declares the UI input event capabilities provided by ArkUI on the native side.
 
 | Name | Description |
 | -- | -- |
-| [ui_input_event.h](capi-ui-input-event-h.md) | Provides ArkUI event definitions on the native side. |
+| [ui_input_event.h](capi-ui-input-event-h.md) | Provides input event definitions for ArkUI on the native side, including touch, mouse, axis, and key events. It also supports event attribute obtaining, event bubbling control, and event cloning, enabling native components to identify and process user input. |

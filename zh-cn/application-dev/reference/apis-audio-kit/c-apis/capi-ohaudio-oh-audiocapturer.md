@@ -6,7 +6,7 @@ typedef struct OH_AudioCapturer OH_AudioCapturer
 
 ## 概述
 
-声明音频采集器结构体。音频采集器的实例用于获取输入音频（录音）数据。
+声明音频采集器结构体，该结构体用于调用音频采集流功能接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

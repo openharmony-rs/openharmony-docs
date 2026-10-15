@@ -6,6 +6,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -47,6 +49,8 @@ OH_Drawing_Bitmap* OH_Drawing_BitmapCreate(void)
 
 用于创建一个位图对象。 调用此方法创建的位图对象，在使用完毕后必须调用[OH_Drawing_BitmapDestroy](capi-drawing-bitmap-h.md#oh_drawing_bitmapdestroy)进行销毁并释放内存， 否则会导致内存泄漏。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **返回值：**
@@ -65,6 +69,8 @@ void OH_Drawing_BitmapDestroy(OH_Drawing_Bitmap* bitmap)
 
 用于销毁位图对象并回收该对象占用的内存。 应与[OH_Drawing_BitmapCreate](capi-drawing-bitmap-h.md#oh_drawing_bitmapcreate)或[OH_Drawing_BitmapCreateFromPixels](capi-drawing-bitmap-h.md#oh_drawing_bitmapcreatefrompixels)配对使用， 对已创建的位图对象进行释放，避免内存泄漏。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -82,6 +88,8 @@ OH_Drawing_Bitmap* OH_Drawing_BitmapCreateFromPixels(OH_Drawing_Image_Info* imag
 **描述：**
 
 用于创建一个位图对象，并将位图存储像素的内存地址设置为开发者申请的内存地址。 调用此方法创建的位图对象，在使用完毕后必须调用[OH_Drawing_BitmapDestroy](capi-drawing-bitmap-h.md#oh_drawing_bitmapdestroy)进行销毁并释放内存， 否则会导致内存泄漏。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>imageInfo、pixels任意一个为NULL或者rowBytes等于0时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -109,6 +117,8 @@ void OH_Drawing_BitmapBuild(OH_Drawing_Bitmap* bitmap, const uint32_t width, con
 
 用于初始化位图对象的宽度和高度，并且为该位图设置像素格式。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>bitmap、bitmapFormat任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -129,6 +139,8 @@ uint32_t OH_Drawing_BitmapGetWidth(OH_Drawing_Bitmap* bitmap)
 **描述：**
 
 用于获取指定位图的宽度。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -154,6 +166,8 @@ uint32_t OH_Drawing_BitmapGetHeight(OH_Drawing_Bitmap* bitmap)
 
 用于获取指定位图的高度。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 8
 
 **参数：**
@@ -177,6 +191,8 @@ OH_Drawing_ColorFormat OH_Drawing_BitmapGetColorFormat(OH_Drawing_Bitmap* bitmap
 **描述：**
 
 用于获取指定位图的像素存储格式。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -202,6 +218,8 @@ OH_Drawing_AlphaFormat OH_Drawing_BitmapGetAlphaFormat(OH_Drawing_Bitmap* bitmap
 
 用于获取指定位图的像素透明度分量。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -225,6 +243,8 @@ void* OH_Drawing_BitmapGetPixels(OH_Drawing_Bitmap* bitmap)
 **描述：**
 
 用于获取指定位图的像素地址，可以通过像素地址获取到位图的像素数据。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>bitmap为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 8
 
@@ -250,6 +270,8 @@ void OH_Drawing_BitmapGetImageInfo(OH_Drawing_Bitmap* bitmap, OH_Drawing_Image_I
 
 用于获取指定位图的图片信息，包括宽度、高度、颜色类型和透明度类型等。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>bitmap、imageInfo任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -268,6 +290,8 @@ bool OH_Drawing_BitmapReadPixels(OH_Drawing_Bitmap* bitmap, const OH_Drawing_Ima
 **描述：**
 
 将位图中的矩形区域像素数据读取到指定的内存缓冲区中。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>bitmap、dstInfo、dstPixels任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -297,6 +321,8 @@ OH_Drawing_ErrorCode OH_Drawing_BitmapGetRowBytes(OH_Drawing_Bitmap* bitmap, uin
 **描述：**
 
 用于获取指定位图每行的字节数。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 26.0.0
 

@@ -29,7 +29,7 @@ ArkWeb_JavaScriptValueAPI is a JavaScript-related Native API struct. This struct
 
 | Name | Description |
 | -- | -- |
-| [ArkWeb_JavaScriptValuePtr (\*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)](#createjavascriptvalue) | Creates a JavaScript value to be returned to HTML. This function performs type conversion and encapsulation on the data in the data buffer based on the specified type parameter to generate the corresponding JavaScript value object. NULL is returned if the conversion fails. Before using this function, obtain the JavaScript API through OH_ArkWeb_GetNativeAPI and check the availability of the function pointer. |
+| [ArkWeb_JavaScriptValuePtr (\*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)](#createjavascriptvalue) | - | Creates a JavaScript value to be returned to HTML. This function performs type conversion and encapsulation on the data in the data buffer based on the specified type parameter to generate the corresponding JavaScript value object. NULL is returned if the conversion fails. Before using this function, obtain the JavaScript API through OH_ArkWeb_GetNativeAPI and check the availability of the function pointer. |
 
 ## Member function description
 

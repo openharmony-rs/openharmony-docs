@@ -6,6 +6,8 @@ Defines the child process info type and accessor functions.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.1
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -41,6 +43,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetChildProcessInfoByIndex(OH_Ability
 
 Retrieves a specific child process info handle from the collection by its index.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -67,6 +71,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetPid(OH_AbilityRun
 
 Gets PID of child process info.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -92,6 +98,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetParentPid(OH_Abil
 
 Gets parent PID of child process info.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -116,6 +124,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ChildProcessInfo_GetProcessName(OH_Ab
 **Description**
 
 Gets process name of child process info.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
 
@@ -143,6 +153,8 @@ void OH_AbilityRuntime_ReleaseChildProcessInfos(OH_AbilityRuntime_ChildProcessIn
 **Description**
 
 Releases child process info collection.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
 

@@ -29,7 +29,7 @@ typedef struct ArkUI_NativeGestureAPI_2 {...} ArkUI_NativeGestureAPI_2
 
 | 名称 | 描述 |
 | -- | -- |
-| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | Sets the callback for gesture interruption events. |
+| [int32_t (\*setGestureInterrupterToNode)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureInterruptResult (\*interrupter)(ArkUI_GestureInterruptInfo* info))](#setgestureinterruptertonode) | - | Sets the callback for gesture interruption events. |
 
 ## 成员函数说明
 

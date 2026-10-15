@@ -1,7 +1,7 @@
 # JSVM_CompileOptions
 
 ```c
-typedef union JSVM_CompileOptions {...} JSVM_CompileOptions
+typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions
 ```
 
 ## Overview
@@ -22,9 +22,9 @@ Compile Options
 
 | Name | Description |
 | -- | -- |
-| void *ptr | ptr type. |
-| int num | int type. |
-| bool boolean;
- } content | bool type. |
+| JSVM_CompileOptionId id | compile option id. |
+| content->ptr | ptr type. |
+| content.num | int type. |
+| content.boolean | bool type. |
 
 

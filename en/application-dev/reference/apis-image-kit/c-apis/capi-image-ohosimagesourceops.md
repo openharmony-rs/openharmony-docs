@@ -24,6 +24,6 @@ Defines image source options information [OH_ImageSource_Create](capi-image-sour
 | -- | -- |
 | int32_t density | Pixel density of the image source. |
 | int32_t pixelFormat | Image source pixel format, used to describe YUV buffer usually. |
-| [struct OhosImageSize](capi-image-ohosimagesize.md) size | Image source pixel size of width and height. |
+| struct OhosImageSize size | Image source pixel size of width and height. |
 
 

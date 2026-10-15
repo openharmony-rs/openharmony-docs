@@ -8,6 +8,8 @@
 
 **库：** libavmetadata_extractor.so
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 18
 
 **相关模块：** [AVMetadataExtractor](capi-avmetadataextractor.md)
@@ -58,6 +60,8 @@ OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *
 
 从媒体源中获取指定索引的轨道描述信息。该函数必须在设置资源之后使用。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 23
 
 **参数：**
@@ -71,7 +75,7 @@ OH_AVFormat *OH_AVMetadataExtractor_GetTrackDescription(OH_AVMetadataExtractor *
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | 成功时返回包含轨道描述信息的OH_AVFormat实例指针，失败时返回空指针。可能失败的原因：1. extractor为空指针。2. 未设置媒体源。3. 格式不支持。注意：用户需要使用[OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
+| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | 成功时返回包含轨道描述信息的OH_AVFormat实例指针，失败时返回空指针。可能失败的原因：1. extractor为空指针。2. 未设置媒体源。3. 格式不支持。注意：用户需要使用[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
 
 ### OH_AVMetadataExtractor_GetCustomInfo()
 
@@ -82,6 +86,8 @@ OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extrac
 **描述：**
 
 从媒体源中获取自定义元数据信息。该函数必须在设置资源之后使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 23
 
@@ -95,7 +101,7 @@ OH_AVFormat *OH_AVMetadataExtractor_GetCustomInfo(OH_AVMetadataExtractor *extrac
 
 | 类型 | 说明 |
 | -- | -- |
-| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | 成功时返回包含自定义元数据的OH_AVFormat实例指针，失败时返回空指针。可能失败的原因：1. extractor为空指针。2. 未设置媒体源。3. 未找到自定义信息。注意：用户需要使用[OH_AVFormat_Destroy](../../apis-avcodec-kit/c-apis/capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
+| [OH_AVFormat *](../../apis-avcodec-kit/c-apis/capi-core-oh-avformat.md) | 成功时返回包含自定义元数据的OH_AVFormat实例指针，失败时返回空指针。可能失败的原因：1. extractor为空指针。2. 未设置媒体源。3. 未找到自定义信息。注意：用户需要使用[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)在使用OH_AVFormat后将其释放。 |
 
 ### OH_AVMetadataExtractor_SetMediaSource()
 
@@ -106,6 +112,8 @@ OH_AVErrCode OH_AVMetadataExtractor_SetMediaSource(OH_AVMetadataExtractor *extra
 **描述：**
 
 为提取器设置媒体源。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 23
 
@@ -132,6 +140,8 @@ OH_AVMetadataExtractor* OH_AVMetadataExtractor_Create(void)
 
 创建OH_AVMetadataExtractor实例。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 18
 
 **返回值：**
@@ -149,6 +159,8 @@ OH_AVErrCode OH_AVMetadataExtractor_SetFDSource(OH_AVMetadataExtractor* extracto
 **描述：**
 
 通过媒体文件描述符设置数据源。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 18
 
@@ -177,6 +189,8 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchMetadata(OH_AVMetadataExtractor* extrac
 
 从媒体资源中获取元数据。 此函数必须在[OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)之后调用。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 18
 
 **参数：**
@@ -202,6 +216,8 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchAlbumCover(OH_AVMetadataExtractor* extr
 
 获取音频专辑封面。 此函数必须在[OH_AVMetadataExtractor_SetFDSource](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_setfdsource)之后调用。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 18
 
 **参数：**
@@ -226,6 +242,8 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchFrameByTime(OH_AVMetadataExtractor *ext
 **描述：**
 
 从视频源中提取指定时间点的图像。该函数必须在设置资源之后使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 23
 
@@ -255,6 +273,8 @@ typedef void (*OH_AVMetadataExtractor_OnFrameFetched)(OH_AVMetadataExtractor *ex
 
 定义用于获取AVMetadataExtractor捕获帧的回调函数。注意：frameInfo会在回调后自动释放，但用户需要使用[OH_PixelmapNative_Destroy](../../apis-image-kit/c-apis/capi-pixelmap-native-h.md#oh_pixelmapnative_destroy)手动释放frameInfo. image，避免内存泄漏。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 23
 
 ### OH_AVMetadataExtractor_FetchFramesByTimes()
@@ -266,6 +286,8 @@ OH_AVErrCode OH_AVMetadataExtractor_FetchFramesByTimes(OH_AVMetadataExtractor *e
 **描述：**
 
 从视频源中异步提取多个指定时间点的图像。该函数必须在设置资源之后使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 23
 
@@ -297,6 +319,8 @@ void OH_AVMetadataExtractor_CancelAllFetchFrames(OH_AVMetadataExtractor *extract
 
 取消所有由[OH_AVMetadataExtractor_FetchFramesByTimes](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_fetchframesbytimes)发起的批量获取图像操作。在[OH_AVMetadataExtractor_OnFrameFetched](capi-avmetadata-extractor-h.md#oh_avmetadataextractor_onframefetched) 回调中，挂起的获取操作被取消，回调函数的code参数将返回表示取消的错误码。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 23
 
 **参数：**
@@ -314,6 +338,8 @@ OH_AVErrCode OH_AVMetadataExtractor_Release(OH_AVMetadataExtractor* extractor)
 **描述：**
 
 释放用于OH_AVMetadataExtractor的资源并销毁OH_AVMetadataExtractor实例。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 18
 
@@ -339,6 +365,8 @@ OH_AVMetadataExtractor_OutputParam* OH_AVMetadataExtractor_OutputParam_Create()
 
 创建OH_AVMetadataExtractor_OutputParam实例。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 23
 
 **返回值：**
@@ -357,6 +385,8 @@ void OH_AVMetadataExtractor_OutputParam_Destroy(OH_AVMetadataExtractor_OutputPar
 
 释放OH_AVMetadataExtractor_OutputParam实例。
 
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
+
 **起始版本：** 23
 
 **参数：**
@@ -374,6 +404,8 @@ bool OH_AVMetadataExtractor_OutputParam_SetSize(OH_AVMetadataExtractor_OutputPar
 **描述：**
 
 设置OH_AVMetadataExtractor_OutputParam实例的期望输出尺寸。若width或height小于0，则使用原始宽度或高度。若width或height等于0，则保持宽高比按比例缩放。 若width和height均大于0，则使用输入的width和height参数缩放图像。
+
+**系统能力：** SystemCapability.Multimedia.Media.AVMetadataExtractor
 
 **起始版本：** 23
 

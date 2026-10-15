@@ -1,7 +1,7 @@
 # OH_AudioObjectPosition
 
 ```c
-union OH_AudioObjectPosition {...}
+struct OH_AudioObjectPosition {...}
 ```
 
 ## Overview
@@ -22,8 +22,8 @@ Represents the position of an audio object in three-dimensional space.<br> The p
 
 | Name | Description |
 | -- | -- |
-| [OH_CartesianPosition](capi-core-oh-cartesianposition.md) cartesian | Represents position by Cartesian coordinates.<br>**Since**: 26.0.0 |
-| OH_PolarPosition polar;
- } pos | Represents position by polar coordinates.<br>**Since**: 26.0.0 |
+| bool isCartesian | Indicates whether the position is in Cartesian coordinates.<br> true: use pos.cartesian, false: use pos.polar.<br>**Since**: 26.0.0 |
+| pos.cartesian | Represents position by Cartesian coordinates.<br>**Since**: 26.0.0 |
+| pos.polar | Represents position by polar coordinates.<br>**Since**: 26.0.0 |
 
 

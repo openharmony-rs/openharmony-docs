@@ -6,6 +6,8 @@ Declare the underlying data structure.
 
 **Library**: libohaudio.so
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Related module**: [OHAudio](capi-ohaudio.md)
@@ -80,6 +82,8 @@ enum OH_AudioStream_Result
 
 Define the result of the function execution.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 | Enum item | Description |
@@ -102,6 +106,8 @@ enum OH_AudioStream_Type
 
 Define the audio stream type.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 | Enum item | Description |
@@ -118,6 +124,8 @@ enum OH_AudioStream_SampleFormat
 **Description**
 
 Define the audio stream sample format.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -139,6 +147,8 @@ enum OH_AudioStream_EncodingType
 
 Define the audio encoding type.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 | Enum item | Description |
@@ -156,6 +166,8 @@ enum OH_AudioStream_Usage
 **Description**
 
 Define the audio stream usage. Audio stream usage is used to describe what work scenario the current stream is used for.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -186,6 +198,8 @@ enum OH_AudioStream_LatencyMode
 
 Define the audio latency mode.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 | Enum item | Description |
@@ -202,6 +216,8 @@ enum OH_AudioStream_DirectPlaybackMode
 **Description**
 
 Enumerates audio direct playback modes.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 19
 
@@ -220,6 +236,8 @@ enum OH_AudioStream_Event
 **Description**
 
 Define the audio event.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -240,6 +258,8 @@ enum OH_AudioStream_State
 **Description**
 
 The audio stream states
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -263,6 +283,8 @@ enum OH_AudioInterrupt_ForceType
 
 Defines the audio interrupt type.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 | Enum item | Description |
@@ -279,6 +301,8 @@ enum OH_AudioInterrupt_Hint
 **Description**
 
 Defines the audio interrupt hint type.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -302,6 +326,8 @@ enum OH_AudioStream_SourceType
 **Description**
 
 Defines the audio source type.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -328,6 +354,8 @@ enum OH_AudioInterrupt_Mode
 
 Defines the audio interrupt mode.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -344,6 +372,8 @@ enum OH_AudioStream_AudioEffectMode
 **Description**
 
 Defines the audio effect mode.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -362,6 +392,8 @@ enum OH_AudioStream_FastStatus
 
 Defines the fast status.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 | Enum item | Description |
@@ -378,6 +410,8 @@ enum OH_AudioStream_DeviceChangeReason
 **Description**
 
 Defines reason for device changes of one audio stream.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 11
 
@@ -400,6 +434,8 @@ enum OH_AudioStream_PrivacyType
 
 Defines Enumeration of audio stream privacy type for playback capture.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -418,6 +454,8 @@ enum OH_AudioData_Callback_Result
 
 Defines enumeration of audio data callback result.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -435,6 +473,8 @@ enum OH_AudioStream_VolumeMode
 
 Define the audio stream volume mode.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 19
 
 | Enum item | Description |
@@ -451,6 +491,8 @@ enum OH_AudioStream_LatencyType
 **Description**
 
 Defines audio latency types.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 23
 
@@ -470,6 +512,8 @@ enum OH_AudioStream_PlaybackCaptureMode
 
 Defines mode for playback capture, each mode means different target streams to capture.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 23
 
 | Enum item | Description |
@@ -487,6 +531,8 @@ enum OH_AudioStream_PlaybackCaptureStartState
 **Description**
 
 Defines the playback capture start state, which is returned asynchronously after calling OH_AudioCapturer_RequestPlaybackCaptureStart function.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 23
 
@@ -509,6 +555,8 @@ typedef void (*OH_AudioRenderer_OutputDeviceChangeCallback)(OH_AudioRenderer* re
 
 Callback when the output device of an audio renderer changed.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -529,6 +577,8 @@ typedef void (*OH_AudioRenderer_OnMarkReachedCallback)(OH_AudioRenderer* rendere
 
 Callback when the mark position reached.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -548,6 +598,8 @@ typedef int32_t (*OH_AudioRenderer_WriteDataWithMetadataCallback)(OH_AudioRender
 **Description**
 
 This function pointer will point to the callback function that is used to write audio data with metadata
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -577,6 +629,8 @@ typedef OH_AudioData_Callback_Result (*OH_AudioRenderer_OnWriteDataCallback)(OH_
 **Description**
 
 Callback function of write data.<br> This function is similar with OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnWriteData instead of the return value. The return result of this function indicates whether the data filled in the buffer is valid or invalid. If result is invalid, the data filled by user will not be played.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 

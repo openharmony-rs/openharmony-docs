@@ -18,3 +18,14 @@ move to vk_ohos_native_buffer.h
 
 **Header file**: [vulkan_ohos.h](capi-vulkan-ohos-h.md)
 
+## Summary
+
+### Member variables
+
+| Name | Description |
+| -- | -- |
+| VkStructureType    sType |  |
+| const void*        pNext |  |
+| struct OHBufferHandle*      handle |  |
+
+

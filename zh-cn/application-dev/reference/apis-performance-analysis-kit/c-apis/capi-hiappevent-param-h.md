@@ -2,9 +2,11 @@
 
 ## 概述
 
-定义所有预定义的参数名称。<br> 开发者可以使用特定预定义的参数名称进行打点或对系统事件进行自定义参数规格设置。<br> 示例代码： `ParamList list = OH_HiAppEvent_CreateParamList(); OH_HiAppEvent_AddInt32Param(list, PARAM_USER_ID, 123); int res = OH_HiAppEvent_Write("user_domain", EVENT_USER_LOGIN, BEHAVIOR, list); OH_HiAppEvent_DestroyParamList(list);`
+定义所有预定义的参数名称。<br> 开发者可以使用特定预定义的参数名称进行打点或对系统事件进行自定义参数规格设置。<br> 示例代码： <pre> ParamList list = OH_HiAppEvent_CreateParamList(); OH_HiAppEvent_AddInt32Param(list, PARAM_USER_ID, 123); int res = OH_HiAppEvent_Write("user_domain", EVENT_USER_LOGIN, BEHAVIOR, list); OH_HiAppEvent_DestroyParamList(list); </pre>
 
 **库：** libhiappevent_ndk.z.so
+
+**系统能力：** SystemCapability.HiviewDFX.HiAppEvent
 
 **起始版本：** 8
 
@@ -30,4 +32,5 @@
 | OH_APP_CRASH_PARAM_SIMPLIFY_VMA_PRINTING "simplify_vma_printing" | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否只打印崩溃日志中出现的地址所属的VMA映射信息，以减小CPP_CRASH日志文件大小。<br>**起始版本：** 24 |
 | OH_APP_CRASH_PARAM_MERGE_CPPCRASH_APP_LOG "merge_cppcrash_app_log" | 用于设置APP_CRASH事件中的CPP_CRASH类型的日志规格，是否在CPP_CRASH场景拼接应用沙箱中指定文件的日志。<br>**起始版本：** 24 |
 | OH_APP_CRASH_PARAM_COLLECT_MINIDUMP "collect_minidump" | 用于APP_CRASH事件，是否使能minidump。<br>**起始版本：** 26.0.0 |
+| OH_APP_CRASH_PARAM_PUBLISH_ON_NEXT_LAUNCH "publish_on_next_launch" | 用于APP_CRASH事件，是否使能固定在重启后收到事件回调。<br>**起始版本：** 26.2.0 |
 

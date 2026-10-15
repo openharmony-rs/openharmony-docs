@@ -6,6 +6,8 @@ native_interface_arkweb.h is the core entry header file of ArkWeb Native API. It
 
 **Library**: libohweb.so
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 11
 
 **Related module**: [Web](capi-web.md)
@@ -23,12 +25,6 @@ native_interface_arkweb.h is the core entry header file of ArkWeb Native API. It
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkWebEngineVersion](#arkwebengineversion) | ArkWebEngineVersion | For ArkWeb kernel versions, see Adaptation Guide for the M114 Kernel on OpenHarmony 6.0 and Adaptation Guide for the M132 Kernel on OpenHarmony 7.0. |
-
-### Macro
-
-| Name | Description |
-| -- | -- |
-| NATIVE_INTERFACE_ARKWEB_H | native_interface_arkweb.h is the core entry header file of ArkWeb Native API. It defines the enums, structs, and NDK function interfaces required for interaction between apps and the ArkWeb engine, covering features such as JavaScript execution and proxy injection, cookie management, blankless loading control, and kernel version selection. This module is suitable for scenarios that require deep interaction with the **Web** component through native methods. It addresses the technical challenge that complex capabilities of the ArkWeb component (such as JavaScript bidirectional communication, cookie persistence, and kernel version switching) cannot be directly called at the ArkTS layer, providing developers with complete low-level control to implement high-performance, customizable **Web**<br>component features.<br>**Since**: 11<br>**System capability**: SystemCapability.Web.Webview.Core |
 
 ### Function
 
@@ -55,10 +51,10 @@ native_interface_arkweb.h is the core entry header file of ArkWeb Native API. It
 | [uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)](#oh_nativearkweb_setblanklessloadingcachecapacity) | - | Sets the persistent cache capacity for the blankless loading solution and returns the actual effective value. The default cache capacity is 30 MB, and the maximum value is 100 MB. When the actual cache exceeds the capacity, infrequently used transition frames are evicted for cleanup. Typical use cases: adjusting the cache size based on the app memory usage, optimizing storage space usage, and balancing the blankless effect with system resource consumption. |
 | [ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()](#oh_arkwebcookiemanager_savecookiesync) | - | Persists all cookies currently accessible through the CookieManager API to the disk. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first. Typical use cases: saving cookie states when the app exits or at specific times, for example, saving user login states, app configuration information, and session data, to ensure that the previous state can be restored after the app restarts. |
 | [void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callback)](#oh_arkwebcookiemanager_savecookieasync) | - | Persists all cookies currently accessible through the CookieManager API to the disk. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first. Without initializing the CookieManager API, this API is automatically executed on the UI thread. Typical use cases: asynchronously saving cookie states, for example, saving cookies asynchronously after page loading is complete or after a user operation, to avoid blocking the main thread. |
-| [void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)](#oh_nativearkweb_setactivewebengineversion) | - |  |
-| [ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()](#oh_nativearkweb_getactivewebengineversion) | - |  |
-| [void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)](#oh_nativearkweb_lazyinitializewebengineincookiemanager) | - |  |
-| [bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()](#oh_nativearkweb_isactivewebengineevergreen) | - |  |
+| [void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVersion)](#oh_nativearkweb_setactivewebengineversion) | - | Sets the ArkWeb kernel version. If the system does not support the specified version, the setting is invalid and the system default kernel is used (see Constraints). Used when a specific kernel version needs to be selected based on app compatibility requirements, for example, when an app depends on features of an older kernel version or needs to maintain compatibility on a newer system version, a specific legacy kernel version can be specified.<br> This API is a global static method and must be called before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting of this API is invalid. |
+| [ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()](#oh_nativearkweb_getactivewebengineversion) | - | Obtains the current ArkWeb kernel version. |
+| [void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)](#oh_nativearkweb_lazyinitializewebengineincookiemanager) | - | Sets whether to defer the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not deferred for initialization by default. Typical use cases: the **Web** function is not needed immediately at app startup, and you want to delay kernel initialization to save startup resources; the app only needs to use CookieManager without **Web** component rendering for the time being. This API is a global static method and must be called before using the **Web** component and initializing the ArkWeb kernel; otherwise, the setting is invalid. |
+| [bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()](#oh_nativearkweb_isactivewebengineevergreen) | - | Checks whether the ArkWeb kernel used by the application is the evergreen kernel, that is, the latest kernel of the system. |
 | [ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, char** cookieValue)](#oh_arkwebcookiemanager_fetchcookiesync) | - | Obtains the cookies corresponding to the specified URL. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first. |
 | [void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bool includeHttpOnly, bool includePartitionedCookies, OH_ArkWeb_OnCookieFetchCallback callback)](#oh_arkwebcookiemanager_fetchcookieasync) | - | Asynchronously obtains the cookies corresponding to the specified URL. Without initializing the CookieManager API, this API is automatically executed on the UI thread. |
 
@@ -85,6 +81,8 @@ enum ArkWebEngineVersion
 
 For ArkWeb kernel versions, see Adaptation Guide for the M114 Kernel on OpenHarmony 6.0 and Adaptation Guide for the M132 Kernel on OpenHarmony 7.0.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 | Enum item | Description |
@@ -108,6 +106,8 @@ typedef void (*NativeArkWeb_OnJavaScriptCallback)(const char*)
 
 Called to return the result after the JavaScript code is executed.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 11
 
 ### NativeArkWeb_OnJavaScriptProxyCallback()
@@ -119,6 +119,8 @@ typedef char* (*NativeArkWeb_OnJavaScriptProxyCallback)(const char** argv, int32
 **Description**
 
 Called when a JavaScript proxy is registered.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
 
@@ -132,6 +134,8 @@ typedef void (*NativeArkWeb_OnValidCallback)(const char*)
 
 Called when a **Web** component is valid.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 11
 
 ### NativeArkWeb_OnDestroyCallback()
@@ -144,6 +148,8 @@ typedef void (*NativeArkWeb_OnDestroyCallback)(const char*)
 
 Called when a **Web** component is destroyed.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 11
 
 ### OH_ArkWeb_OnCookieSaveCallback()
@@ -155,6 +161,8 @@ typedef void (*OH_ArkWeb_OnCookieSaveCallback)(ArkWeb_ErrorCode errorCode)
 **Description**
 
 Called when a cookie is saved.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 20
 
@@ -173,6 +181,8 @@ typedef void (*OH_ArkWeb_OnCookieFetchCallback)(ArkWeb_ErrorCode errorCode, char
 **Description**
 
 Defines a pointer to the callback invoked when the cookie fetch operation is complete.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 26.0.0
 
@@ -193,6 +203,8 @@ void OH_NativeArkWeb_RunJavaScript(const char* webTag, const char* jsCode, Nativ
 
 Loads and asynchronously executes a piece of JavaScript code in the context of the current page. This function must be called in the main thread. **Use case**: Used when you need to dynamically modify page content, obtain page runtime information, or interact with page JavaScript at the native layer, for example, obtaining form data or executing custom scripts.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -212,6 +224,8 @@ void OH_NativeArkWeb_RegisterJavaScriptProxy(const char* webTag, const char* obj
 **Description**
 
 Registers a list of object and function names, used to inject native objects into web pages and implement bidirectional communication between the app side and the frontend page. This is used in scenarios such as web pages calling native functions, native code controlling web page behavior, and cross-layer interaction in hybrid apps.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
 
@@ -236,6 +250,8 @@ void OH_NativeArkWeb_UnregisterJavaScriptProxy(const char* webTag, const char* o
 
 Deletes a registered object and its callback functions, used to clean up JavaScript injection objects that are no longer needed. Typical use cases: cleaning up injected objects when a page is destroyed, removing corresponding native interfaces when a function module is unloaded, and preventing memory leaks.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -255,6 +271,8 @@ void OH_NativeArkWeb_SetJavaScriptProxyValidCallback(const char* webTag, NativeA
 
 Sets the callback invoked when an object can be registered. Used when specific logic needs to be executed after a JavaScript proxy object is successfully registered, for example, notifying the page or logging after successful registration.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -273,6 +291,8 @@ NativeArkWeb_OnValidCallback OH_NativeArkWeb_GetJavaScriptProxyValidCallback(con
 **Description**
 
 Obtains the callback used when a registered object is valid.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
 
@@ -298,6 +318,8 @@ void OH_NativeArkWeb_SetDestroyCallback(const char* webTag, NativeArkWeb_OnDestr
 
 Sets the callback invoked when the **Web** component is destroyed. Typical use cases: releasing resources, cleaning up states, or performing finalization operations when the **Web** component is destroyed, for example, releasing JavaScript proxy objects, canceling network requests, or closing file handles.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -316,6 +338,8 @@ NativeArkWeb_OnDestroyCallback OH_NativeArkWeb_GetDestroyCallback(const char* we
 **Description**
 
 Obtains the registered callback invoked when the **Web** component is destroyed.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 11
 
@@ -340,6 +364,8 @@ ArkWeb_ErrorCode OH_NativeArkWeb_LoadData(const char* webTag, const char* data, 
 **Description**
 
 Loads data or a URL. This function must be called in the main thread. Typical use cases: loading page content from the network or local files, dynamically generating and displaying HTML content, implementing offline page display, and custom page rendering.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 15
 
@@ -370,6 +396,8 @@ void OH_NativeArkWeb_RegisterAsyncThreadJavaScriptProxy(const char* webTag, cons
 
 Registers a JavaScript object that contains callback methods with return values. The object is injected into all frames of the current page, including all iframes, and can be accessed by the name specified in ArkWeb_ProxyObjectWithResult. The object takes effect in JavaScript only after the next page load or reload. These methods are executed in the worker thread of ArkWeb. Typical use cases: processing JavaScript calls and returning results in the worker thread, for example, performing time-consuming computations, asynchronous task processing, and complex business logic processing, to avoid blocking the main thread.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -389,6 +417,8 @@ ArkWeb_BlanklessErrorCode OH_NativeArkWeb_SetBlanklessLoadingWithKey(const char*
 **Description**
 
 Sets whether blankless loading is enabled. This API must be used together with OH_NativeArkWeb_GetBlanklessInfoWithKey.<br> > **NOTE**<br>> > - This API must be called after the page loading API is triggered. Other constraints are the same as those of > [OH_NativeArkWeb_GetBlanklessInfoWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_getblanklessinfowithkey). > - The page must be loaded in the component that calls this set of APIs. > - When the similarity is low, the system will deem the scene change too abrupt and frame insertion will fail.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Required permission**: ohos.permission.INTERNET and ohos.permission.GET_NETWORK_INFO
 
@@ -418,6 +448,8 @@ void OH_NativeArkWeb_ClearBlanklessLoadingCache(const char* key[], uint32_t size
 
 Clears the blankless loading cache of the page with a specified key value. <br>In an applet or web application, when the content changes significantly during page loading, an obvious scene change may occur. If you are concerned about this change, you can use this API to clear the page cache.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -436,6 +468,8 @@ ArkWeb_BlanklessInfo OH_NativeArkWeb_GetBlanklessInfoWithKey(const char* webTag,
 **Description**
 
 Obtains the first screen loading prediction information, and starts to generate the loading transition frame. The application determines whether to enable blankless loading based on the information. For details, see [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) . This API must be used together with the [OH_NativeArkWeb_SetBlanklessLoadingWithKey](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingwithkey) API and must be called before the page loading API is triggered and after **WebViewController** is bound to the **Web** component.<br> > **NOTE**<br>> > - The default size of the persistent cache capacity is 30 MB (about 30 pages). You can set the cache capacity by > calling [OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity](capi-native-interface-arkweb-h.md#oh_nativearkweb_setblanklessloadingcachecapacity). For details, see the description of this API. > When the maximum capacity is exceeded, the cache is updated based on the Least Recently Used (LRU) mechanism. The > persistent cache data that has been stored for more than seven days is automatically cleared. After the cache is > cleared, the optimization effect appears when the page is loaded for the third time. > - If the value of **similarity** in [ArkWeb_BlanklessInfo](capi-web-arkweb-blanklessinfo.md) is extremely low, check whether the key value is > correctly passed. > - After this API is called, page loading snapshot detection and transition frame generation calculation are enabled > , which generates certain resource overhead. > - Blankless loading consumes resources, which depends on the resolution of the **Web** component. It is assumed > that a width and a height of the resolution are respectively **w** and **h**. When a page is opened, the peak > memory usage increases by about **12×w×h** B. After the page is opened, the memory is reclaimed, which does not > affect the stable memory usage. When the size of the solid-state application cache is increased, the increased > cache of each page is about **w×h/10** B and the cache is located in the application cache.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Required permission**: ohos.permission.INTERNET and ohos.permission.GET_NETWORK_INFO
 
@@ -464,6 +498,8 @@ uint32_t OH_NativeArkWeb_SetBlanklessLoadingCacheCapacity(uint32_t capacity)
 
 Sets the persistent cache capacity for the blankless loading solution and returns the actual effective value. The default cache capacity is 30 MB, and the maximum value is 100 MB. When the actual cache exceeds the capacity, infrequently used transition frames are evicted for cleanup. Typical use cases: adjusting the cache size based on the app memory usage, optimizing storage space usage, and balancing the blankless effect with system resource consumption.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -488,6 +524,8 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_SaveCookieSync()
 
 Persists all cookies currently accessible through the CookieManager API to the disk. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first. Typical use cases: saving cookie states when the app exits or at specific times, for example, saving user login states, app configuration information, and session data, to ensure that the previous state can be restored after the app restarts.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Returns**:
@@ -506,6 +544,8 @@ void OH_ArkWebCookieManager_SaveCookieAsync(OH_ArkWeb_OnCookieSaveCallback callb
 
 Persists all cookies currently accessible through the CookieManager API to the disk. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first. Without initializing the CookieManager API, this API is automatically executed on the UI thread. Typical use cases: asynchronously saving cookie states, for example, saving cookies asynchronously after page loading is complete or after a user operation, to avoid blocking the main thread.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -522,13 +562,17 @@ void OH_NativeArkWeb_SetActiveWebEngineVersion(ArkWebEngineVersion webEngineVers
 
 **Description**
 
+Sets the ArkWeb kernel version. If the system does not support the specified version, the setting is invalid and the system default kernel is used (see Constraints). Used when a specific kernel version needs to be selected based on app compatibility requirements, for example, when an app depends on features of an older kernel version or needs to maintain compatibility on a newer system version, a specific legacy kernel version can be specified.<br> This API is a global static method and must be called before **initializeWebEngine** is called. If any **Web** component has been loaded, the setting of this API is invalid.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| { | ArkWebEngineVersion } webEngineVersion - ArkWeb kernel version. For details, see [ArkWebEngineVersion](capi-native-interface-arkweb-h.md#arkwebengineversion). |
+| [ArkWebEngineVersion](capi-native-interface-arkweb-h.md#arkwebengineversion) webEngineVersion | - ArkWeb kernel version. For details, see [ArkWebEngineVersion](capi-native-interface-arkweb-h.md#arkwebengineversion). |
 
 ### OH_NativeArkWeb_GetActiveWebEngineVersion()
 
@@ -537,6 +581,10 @@ ArkWebEngineVersion OH_NativeArkWeb_GetActiveWebEngineVersion()
 ```
 
 **Description**
+
+Obtains the current ArkWeb kernel version.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 20
 
@@ -554,13 +602,17 @@ void OH_NativeArkWeb_LazyInitializeWebEngineInCookieManager(bool lazy)
 
 **Description**
 
+Sets whether to defer the initialization of the ArkWeb kernel. If this method is not called, the ArkWeb kernel is not deferred for initialization by default. Typical use cases: the **Web** function is not needed immediately at app startup, and you want to delay kernel initialization to save startup resources; the app only needs to use CookieManager without **Web** component rendering for the time being. This API is a global static method and must be called before using the **Web** component and initializing the ArkWeb kernel; otherwise, the setting is invalid.
+
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 22
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| { | bool } lazy - Controls whether to delay the initialization of the web engine. |
+| bool lazy | - Controls whether to delay the initialization of the web engine. |
 
 ### OH_NativeArkWeb_IsActiveWebEngineEvergreen()
 
@@ -569,6 +621,10 @@ bool OH_NativeArkWeb_IsActiveWebEngineEvergreen()
 ```
 
 **Description**
+
+Checks whether the ArkWeb kernel used by the application is the evergreen kernel, that is, the latest kernel of the system.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 23
 
@@ -587,6 +643,8 @@ ArkWeb_ErrorCode OH_ArkWebCookieManager_FetchCookieSync(const char* url, bool in
 **Description**
 
 Obtains the cookies corresponding to the specified URL. If this API is used in a non-UI thread, you need to initialize the CookieManager API using [OH_ArkWeb_GetNativeAPI](capi-arkweb-interface-h.md#oh_arkweb_getnativeapi) first.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 26.0.0
 
@@ -615,6 +673,8 @@ void OH_ArkWebCookieManager_FetchCookieAsync(const char* url, bool incognito, bo
 **Description**
 
 Asynchronously obtains the cookies corresponding to the specified URL. Without initializing the CookieManager API, this API is automatically executed on the UI thread.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 26.0.0
 

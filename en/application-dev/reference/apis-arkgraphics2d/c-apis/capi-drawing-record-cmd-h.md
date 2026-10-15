@@ -6,6 +6,8 @@ This file declares the functions related to a recording command object.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -36,6 +38,8 @@ OH_Drawing_RecordCmdUtils* OH_Drawing_RecordCmdUtilsCreate(void)
 
 Creates an **OH_Drawing_RecordCmdUtils** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Returns**:
@@ -53,6 +57,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsDestroy(OH_Drawing_RecordCmdUtils*
 **Description**
 
 Destroys an **OH_Drawing_RecordCmdUtils** object and reclaims the memory occupied by the object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 13
 
@@ -77,6 +83,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsBeginRecording(OH_Drawing_RecordCm
 **Description**
 
 Starts recording. This API must be used together with [OH_Drawing_RecordCmdUtilsFinishRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsfinishrecording). The **OH_Drawing_RecordCmdUtils** object generates a canvas object of the recording type and calls the interface of the drawing object to record all drawing commands.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 13
 
@@ -105,6 +113,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsFinishRecording(OH_Drawing_RecordC
 
 Stops video recording. This function must be called after [OH_Drawing_RecordCmdUtilsBeginRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsbeginrecording). The **OH_Drawing_RecordCmdUtils** object ends recording and stores the drawing commands recorded by the canvas object of the recording type into the generated [OH_Drawing_RecordCmdUtilsBeginRecording](capi-drawing-record-cmd-h.md#oh_drawing_recordcmdutilsbeginrecording) object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Parameters**:
@@ -129,6 +139,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetHeight(const OH_Drawing_RecordC
 **Description**
 
 Gets the height of recording canvas.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.1
 
@@ -155,6 +167,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdUtilsGetWidth(const OH_Drawing_RecordCm
 
 Gets the width of recording canvas.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -179,6 +193,8 @@ OH_Drawing_ErrorCode OH_Drawing_RecordCmdDestroy(OH_Drawing_RecordCmd* recordCmd
 **Description**
 
 Destroys an **OH_Drawing_RecordCmd** object and reclaims the memory occupied by the object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 13
 

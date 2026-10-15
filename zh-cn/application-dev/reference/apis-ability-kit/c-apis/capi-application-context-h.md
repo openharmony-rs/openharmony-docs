@@ -6,6 +6,8 @@
 
 **库：** libability_runtime.so
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 13
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -50,6 +52,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* b
 
 获取本应用的应用级的缓存目录。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -76,6 +80,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(Ability
 
 获取本应用的应用级的文件数据加密等级。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -99,6 +105,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char*
 **描述：**
 
 获取应用包名。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 13
 
@@ -126,6 +134,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 
 获取本应用的应用级的临时文件目录。该目录用于存储应用运行期间的临时文件，这些文件在应用退出或系统清理时可能被删除。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 16
 
 **参数：**
@@ -151,6 +161,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 **描述：**
 
 获取本应用的应用级的通用文件目录。该目录用于存储应用需要持久化的文件，如用户生成的文档、下载的文件、应用数据等。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 16
 
@@ -178,6 +190,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char
 
 获取本应用的应用级的数据库文件目录。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 16
 
 **参数：**
@@ -203,6 +217,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(c
 **描述：**
 
 获取本应用的应用级的首选项文件目录。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 16
 
@@ -230,6 +246,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(ch
 
 获取本应用的应用级的安装文件目录。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 16
 
 **参数：**
@@ -255,6 +273,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFiles
 **描述：**
 
 获取本应用的应用级的分布式文件目录。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 16
 
@@ -282,6 +302,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(cha
 
 获取本应用的应用级的云文件目录。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 16
 
 **参数：**
@@ -307,6 +329,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(cons
 **描述：**
 
 获取本应用的应用级的资源目录。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 20
 
@@ -335,6 +359,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *
 
 启动当前应用的UIAbility。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
 
 **起始版本：** 15
@@ -360,6 +386,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
 **描述：**
 
 获取本应用首次启动UIAbility时的WantParams参数，WantParams可参考Want中的parameters参数。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 21
 
@@ -387,6 +415,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
 
 获取本应用最近一次启动UIAbility时的WantParams参数，WantParams可参考Want中的parameters参数。适用于需要获取最近一次启动时传递的参数，用于处理最新的启动请求、 页面跳转参数解析等场景。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 21
 
 **参数：**
@@ -412,6 +442,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(Ab
 **描述：**
 
 通过StartOptions启动当前应用的UIAbility。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -439,6 +471,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 **描述：**
 
 通过StartOptions启动当前应用的UIAbility，并获取目标UIAbility的进程号。 <br>接口不能在应用主线程调用，但可以在应用创建的ChildProcess的主线程中调用。 <br>如果在应用的主线程中调用，会返回ABILITY_RUNTIME_ERROR_CODE_MAIN_THREAD_NOT_SUPPORTED错误码。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -468,6 +502,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char*
 
 获取本应用的应用级的日志文件目录。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 22
 
 **参数：**
@@ -493,6 +529,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(c
 **描述：**
 
 该接口仅支持三方框架调用。三方框架每次切换页面时，将目标页面信息（包含目标页面路径、目标页面路径长度、目标页面对应的窗口ID）通知给系统。系统可按产品策略调整/恢复页面。适用于三方框架页面导航追踪、页面状态同步、 系统级页面优化等场景。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 23
 
@@ -522,6 +560,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_
 
 获取当前应用的UIAbility子进程信息。<br> 包括使用ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT通过startAbility创建的子进程。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.1
 
 **资源释放：** OH_AbilityRuntime_ReleaseChildProcessInfos {infos}
@@ -537,6 +577,6 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_
 
 | 类型 | 说明 |
 | -- | -- |
-| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul> <li>[_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果调用成功则返回</li> <li>[_RUNTIME_ERROR_CODE_PARAM_INVALID](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果提供的参数无效。</li> <li>[_RUNTIME_ERROR_CODE_INTERNAL](capi-ability-runtime-common-h.md#abilityruntime_errorcode)如果发生内部错误</li> |
+| [AbilityRuntime_ErrorCode](capi-ability-runtime-common-h.md#abilityruntime_errorcode) | <ul> <li>_RUNTIME_ERROR_CODE_NO_ERROR如果调用成功则返回</li> <li>_RUNTIME_ERROR_CODE_PARAM_INVALID如果提供的参数无效。</li> <li>_RUNTIME_ERROR_CODE_INTERNAL如果发生内部错误</li> |
 
 

@@ -6,6 +6,8 @@ The file declares the error codes used by the media framework.
 
 **Library**: libnative_media_core.so
 
+**System capability**: SystemCapability.Multimedia.Media.Core
+
 **Since**: 9
 
 **Related module**: [Core](capi-core.md)
@@ -29,6 +31,8 @@ enum OH_AVErrCode
 **Description**
 
 Enumerates the error codes used by the media framework.
+
+**System capability**: SystemCapability.Multimedia.Media.Core
 
 **Since**: 9
 

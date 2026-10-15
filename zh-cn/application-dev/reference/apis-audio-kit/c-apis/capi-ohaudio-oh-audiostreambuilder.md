@@ -6,7 +6,7 @@ typedef struct OH_AudioStreamBuilder OH_AudioStreamBuilder
 
 ## 概述
 
-声明音频流的构造器。构造器实例用于设置音频流属性和创建音频流。
+声明音频流构造器结构体，该结构体用于调用设置音频流属性和创建音频流功能接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

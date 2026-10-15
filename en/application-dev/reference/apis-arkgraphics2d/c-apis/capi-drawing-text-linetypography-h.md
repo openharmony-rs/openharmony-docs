@@ -6,6 +6,8 @@ Provides APIs related to typography lines, such as obtaining the number of chara
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -33,6 +35,8 @@ OH_Drawing_LineTypography* OH_Drawing_CreateLineTypography(OH_Drawing_Typography
 
 Creates a pointer to a typography line object [OH_Drawing_LineTypography](capi-drawing-oh-drawing-linetypography.md). The typography line object serves as a container for storing text content and styles, and can be used to calculate single-line typography information.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
@@ -57,6 +61,8 @@ void OH_Drawing_DestroyLineTypography(OH_Drawing_LineTypography* lineTypography)
 
 Releases the memory occupied by an [OH_Drawing_LineTypography](capi-drawing-oh-drawing-linetypography.md) object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
@@ -74,6 +80,8 @@ size_t OH_Drawing_LineTypographyGetLineBreak(OH_Drawing_LineTypography* lineTypo
 **Description**
 
 Obtains the number of characters that can fit in the layout from the specified position within a limited layout width.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -100,6 +108,8 @@ OH_Drawing_TextLine* OH_Drawing_LineTypographyCreateLine(OH_Drawing_LineTypograp
 **Description**
 
 Creates a pointer to an [OH_Drawing_TextLine](capi-drawing-oh-drawing-textline.md) object based on the text content in a specified range.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 

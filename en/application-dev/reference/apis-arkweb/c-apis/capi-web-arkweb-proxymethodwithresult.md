@@ -22,8 +22,8 @@ ArkWeb_ProxyMethodWithResult is a JavaScript proxy method struct with a return v
 
 | Name | Description |
 | -- | -- |
-| const char* methodName | Pointer to the method name to be injected. |
+| const char* methodName | Name of the native method injected into the JavaScript environment, used for calling the specified native method from the web frontend. This parameter must be a non-null pointer. It is recommended to use a name with clear business semantics to avoid conflicts with existing JavaScript methods. |
 | [ArkWeb_OnJavaScriptProxyCallbackWithResult](capi-arkweb-type-h.md#arkweb_onjavascriptproxycallbackwithresult) callback | Callback invoked when JavaScript calls the native proxy method, used to process the method call and return the execution result. This parameter must be a valid function pointer and cannot be NULL. |
-| void* userData | Custom data to be carried in the callback. |
+| void* userData | Pointer to the custom data, allocated and released by the caller. It must remain valid during callback execution and is used to pass business context or state objects in the callback. NULL if not passed. |
 
 

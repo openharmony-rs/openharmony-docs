@@ -6,6 +6,8 @@ Declare the common types for the extension ability AbilityRuntime.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -43,6 +45,8 @@ typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanc
 **Description**
 
 Define the function that must be in the native code to instantiate the native extension ability.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
 

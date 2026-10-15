@@ -6,7 +6,7 @@ typedef struct ArkUI_LightEffectOptions ArkUI_LightEffectOptions
 
 ## Overview
 
-Defines the light effect options for immersive material. The object is created with a default white color.
+Defines a light sensing interaction effect configuration object for immersive materials, which is used to configure the light sensing response effect generated when users interact with immersive materials. For details about the design logic, see [native_material.h](capi-native-material-h.md). An immersive material is a visual material style with a sense of depth and layering, and the light sensing interaction effect refers to the light and shadow visual feedback generated when users interact with components. After creation, the configuration object must be set to the immersive material object through [OH_ArkUI_NativeModule_ImmersiveMaterial_SetLightEffect](capi-native-material-h.md#oh_arkui_nativemodule_immersivematerial_setlighteffect) to take effect.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

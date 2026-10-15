@@ -6,6 +6,8 @@
 
 **库：** libos_account_ndk.so
 
+**系统能力：** SystemCapability.Account.OsAccount
+
 **起始版本：** 12
 
 **相关模块：** [OsAccount](capi-osaccount.md)
@@ -29,6 +31,8 @@ enum OsAccount_ErrCode
 **描述：**
 
 枚举错误码。
+
+**系统能力：** SystemCapability.Account.OsAccount
 
 **起始版本：** 12
 

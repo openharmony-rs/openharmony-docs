@@ -6,7 +6,7 @@ typedef struct ArkUI_ImmersiveMaterialHandle ArkUI_ImmersiveMaterialHandle
 
 ## Overview
 
-Defines the pointer to the immersive material object.
+Defines the pointer to an immersive material object, which is used to implement immersive visual effects.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

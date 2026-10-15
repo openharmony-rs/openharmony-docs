@@ -6,6 +6,8 @@ Defines APIs for game device events.
 
 **Library**: libohgame_controller.z.so
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Related module**: [GameController](capi-gamecontroller.md)
@@ -60,6 +62,8 @@ enum GameDevice_StatusChangedType
 
 Defines status change types of devices.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 | Enum item | Description |
@@ -76,6 +80,8 @@ enum GameDevice_DeviceType
 **Description**
 
 Defines device types.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -97,6 +103,8 @@ typedef void(* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceE
 
 Defines the callback function used in [OH_GameDevice_RegisterDeviceMonitor](capi-game-device-h.md#oh_gamedevice_registerdevicemonitor). Called when the device goes online or offline.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Parameters**:
@@ -114,6 +122,8 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct G
 **Description**
 
 Obtains the status change type from a device status change event.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -139,6 +149,8 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct Ga
 **Description**
 
 Obtains the device information from a device status change event.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -170,6 +182,8 @@ GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo**
 
 Destroys a device information instance.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Parameters**:
@@ -193,6 +207,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameD
 **Description**
 
 Obtains the device ID from the device information.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -219,6 +235,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevic
 
 Obtains the device name from the device information.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Parameters**:
@@ -243,6 +261,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDe
 **Description**
 
 Obtains the product information from the device information.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -269,6 +289,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDev
 
 Obtains the vendor information from the device information.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -293,6 +315,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDe
 **Description**
 
 Obtains the version information from the device information.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -319,6 +343,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struc
 
 Obtains the physical address from the device information.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Parameters**:
@@ -343,6 +369,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct Gam
 **Description**
 
 Obtains the device type from the device information.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 

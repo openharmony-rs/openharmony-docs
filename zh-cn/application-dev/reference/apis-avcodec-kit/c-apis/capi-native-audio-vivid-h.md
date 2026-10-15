@@ -8,6 +8,8 @@
 
 **库：** libnative_media_core.so
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [Core](capi-core.md)
@@ -56,6 +58,8 @@ enum OH_AudioVividSignalFormat
 
 Audio Vivid编码器信号格式枚举。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -83,6 +87,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Create(OH_AudioVividMetaBuilder **builder,
 >
 > 生命周期管理：**<br> 通过本函数创建的实例不再使用时，必须调用[OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy)手动释放，以避免内存泄漏。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -107,6 +113,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectPos(OH_AudioVividMetaBuilder *
 **描述：**
 
 更新Audio Vivid信号格式为[OH_AudioVividSignalFormat](capi-native-audio-vivid-h.md#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX时的音频对象位置。<br> 在此信号格式下，输入编码的PCM（Pulse Code Modulation）数据中，声道排列顺序为：声床声道在前，对象声道在后。<br> 对象声道按顺序与objectIndex对应，从0开始编号。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 26.0.0
 
@@ -134,6 +142,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateObjectGain(OH_AudioVividMetaBuilder 
 
 更新Audio Vivid信号格式为[OH_AudioVividSignalFormat](capi-native-audio-vivid-h.md#oh_audiovividsignalformat).OH_AUDIO_VIVID_SIGNAL_FORMAT_MIX时的音频对象渲染的线性增益。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -159,6 +169,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMetaLen(const OH_AudioVividMetaBuilder 
 **描述：**
 
 获取元数据长度。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 26.0.0
 
@@ -186,6 +198,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_GetMeta(const OH_AudioVividMetaBuilder *bu
 
 获取元数据缓冲区。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -212,6 +226,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_Destroy(OH_AudioVividMetaBuilder *builder)
 **描述：**
 
 销毁Audio Vivid元数据构建器并释放资源。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 26.0.0
 
@@ -241,6 +257,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_CreateEmptyBuilder(OH_AudioVividMetaBuilde
 >
 > 生命周期管理： 通过本函数创建的实例不再使用时，必须调用[OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy)手动释放，以避免内存泄漏。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -268,6 +286,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_UpdateBaseMeta(OH_AudioVividMetaBuilder *b
 > **说明：**
 >
 > 约束条件： 基础元数据内音频的声床声道数 + 对象数必须小于等于16个。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 26.0.0
 
@@ -299,6 +319,8 @@ Audio Vivid元数据构造器内添加一个音频对象。<br> 添加音频对�
 >
 > 约束条件： 音频的声床声道数 + 对象数必须小于等于16个。
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -323,6 +345,8 @@ OH_AVErrCode OH_AudioVividMetaBuilder_RemoveObject(OH_AudioVividMetaBuilder *bui
 **描述：**
 
 从Audio Vivid元数据构造器内删除一个音频对象。<br> 只有通过[OH_AudioVividMetaBuilder_AddObject](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_addobject)函数创建的音频对象可以被删除。 通过[OH_AudioVividMetaBuilder_Destroy](capi-native-audio-vivid-h.md#oh_audiovividmetabuilder_destroy)函数新增的音频对象无法删除。 删除音频对象后，其他音频对象的索引保持不变。
+
+**系统能力：** SystemCapability.Multimedia.Media.Core
 
 **起始版本：** 26.0.0
 

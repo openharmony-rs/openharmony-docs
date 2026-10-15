@@ -6,6 +6,8 @@ Declare the common types for the context AbilityRuntime.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -49,6 +51,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCacheDir(AbilityRuntime_Co
 
 Obtain the cache directory of the context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -75,6 +79,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetTempDir(AbilityRuntime_Con
 **Description**
 
 Obtain the temp directory of the context.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
 
@@ -103,6 +109,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetFilesDir(AbilityRuntime_Co
 
 Obtain the files directory of the context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -129,6 +137,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDatabaseDir(AbilityRuntime
 **Description**
 
 Obtain the database directory of the context.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
 
@@ -157,6 +167,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetPreferencesDir(AbilityRunt
 
 Obtain the preferences directory of the context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -183,6 +195,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetBundleCodeDir(AbilityRunti
 **Description**
 
 Obtain the bundle code directory of the context.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
 
@@ -211,6 +225,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetDistributedFilesDir(Abilit
 
 Obtain the distributed files directory of the context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -237,6 +253,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetResourceDir(AbilityRuntime
 **Description**
 
 Obtain the resource directory of the context.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
 
@@ -265,6 +283,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetCloudFileDir(AbilityRuntim
 
 Obtain the cloud file directory of the context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -292,6 +312,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetAreaMode(AbilityRuntime_Co
 
 Obtain the area mode of the context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -317,6 +339,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_SetAreaMode(AbilityRuntime_Co
 
 Set the area mode of the context.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 24
 
 **Parameters**:
@@ -341,6 +365,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetLogFileDir(AbilityRuntime_
 **Description**
 
 Obtain the log file directory of the context.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
 
@@ -368,6 +394,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_Context_GetProcessName(AbilityRuntime
 **Description**
 
 Obtain the process name.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 24
 

@@ -6,7 +6,7 @@ typedef struct ArkUI_RectShapeOption ArkUI_RectShapeOption
 
 ## Overview
 
-Defines a rectangle shape option.
+Defines a rectangle shape option. It is used to describe the shape range of a rectangle or an ellipse in an ArkUI render node, and can be used as input for creating mask or clipping options.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

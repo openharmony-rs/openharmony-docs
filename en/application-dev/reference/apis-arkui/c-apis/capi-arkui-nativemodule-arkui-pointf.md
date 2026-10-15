@@ -6,7 +6,7 @@ typedef struct ArkUI_PointF {...} ArkUI_PointF
 
 ## Overview
 
-Defines a two-dimensional point struct, with coordinates stored as float type.
+Defines a two-dimensional coordinate point, used to describe coordinate information such as the component position or offset. The coordinates are stored as floating-point numbers.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
@@ -22,7 +22,7 @@ Defines a two-dimensional point struct, with coordinates stored as float type.
 
 | Name | Description |
 | -- | -- |
-| float x | x-axis coordinate. |
-| float y | y-axis coordinate. |
+| float x | X-coordinate, in px. Value range: (-∞, +∞). |
+| float y | Y-coordinate, in px. Value range: (-∞, +∞). |
 
 

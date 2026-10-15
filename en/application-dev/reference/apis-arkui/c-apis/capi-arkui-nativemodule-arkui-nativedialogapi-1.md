@@ -22,24 +22,24 @@ Provides the custom dialog box APIs for the native side.
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_NativeDialogHandle (\*create)()](#create) | Creates a custom dialog box and returns the pointer to the created dialog box. |
-| [void (\*dispose)(ArkUI_NativeDialogHandle handle)](#dispose) | Destroys a custom dialog box. |
-| [int32_t (\*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)](#setcontent) | Attaches the content of a custom dialog box. |
-| [int32_t (\*removeContent)(ArkUI_NativeDialogHandle handle)](#removecontent) | Detaches the content of a custom dialog box. |
-| [int32_t (\*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)](#setcontentalignment) | Sets the alignment mode for a custom dialog box. |
-| [int32_t (\*resetContentAlignment)(ArkUI_NativeDialogHandle handle)](#resetcontentalignment) | Resets the alignment mode of a custom dialog box to its default settings. |
-| [int32_t (\*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)](#setmodalmode) | Sets the modal mode for a custom dialog box. |
-| [int32_t (\*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)](#setautocancel) | Specifies whether to allow users to touch the mask to dismiss the custom dialog box. |
-| [int32_t (\*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)](#setmask) | Sets the mask for a custom dialog box. |
-| [int32_t (\*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)](#setbackgroundcolor) | Sets the background color for a custom dialog box. |
-| [int32_t (\*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight,float bottomLeft, float bottomRight)](#setcornerradius) | Sets the background corner radius for a custom dialog box. |
-| [int32_t (\*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)](#setgridcolumncount) | Sets the number of grid columns occupied by a custom dialog box. |
-| [int32_t (\*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)](#enablecustomstyle) | Specifies whether to use a custom style for the custom dialog box. |
-| [int32_t (\*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)](#enablecustomanimation) | Specifies whether to use a custom animation for a custom dialog box. |
-| [int32_t (\*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)](#registeronwilldismiss) | Registers a callback for a custom dialog box so that the user can decide whether to close the dialog box after they touch the Back button or press the Esc key. |
-| [int32_t (\*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)](#show) | Shows a custom dialog box. |
-| [int32_t (\*close)(ArkUI_NativeDialogHandle handle)](#close) | Closes a custom dialog box. If the dialog box has been closed, this API does not take effect. |
-| [int32_t (\*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(ArkUI_DialogDismissEvent* event))](#registeronwilldismisswithuserdata) | Registers a listener for the dismiss event of the custom dialog box. |
+| [ArkUI_NativeDialogHandle (\*create)()](#create) | - | Creates a custom dialog box and returns the pointer to the created dialog box. |
+| [void (\*dispose)(ArkUI_NativeDialogHandle handle)](#dispose) | - | Destroys a custom dialog box. |
+| [int32_t (\*setContent)(ArkUI_NativeDialogHandle handle, ArkUI_NodeHandle content)](#setcontent) | - | Attaches the content of a custom dialog box. |
+| [int32_t (\*removeContent)(ArkUI_NativeDialogHandle handle)](#removecontent) | - | Detaches the content of a custom dialog box. |
+| [int32_t (\*setContentAlignment)(ArkUI_NativeDialogHandle handle, int32_t alignment, float offsetX, float offsetY)](#setcontentalignment) | - | Sets the alignment mode for a custom dialog box. |
+| [int32_t (\*resetContentAlignment)(ArkUI_NativeDialogHandle handle)](#resetcontentalignment) | - | Resets the alignment mode of a custom dialog box to its default settings. |
+| [int32_t (\*setModalMode)(ArkUI_NativeDialogHandle handle, bool isModal)](#setmodalmode) | - | Sets the modal mode for a custom dialog box. |
+| [int32_t (\*setAutoCancel)(ArkUI_NativeDialogHandle handle, bool autoCancel)](#setautocancel) | - | Specifies whether to allow users to touch the mask to dismiss the custom dialog box. |
+| [int32_t (\*setMask)(ArkUI_NativeDialogHandle handle, uint32_t maskColor, const ArkUI_Rect* maskRect)](#setmask) | - | Sets the mask for a custom dialog box. |
+| [int32_t (\*setBackgroundColor)(ArkUI_NativeDialogHandle handle, uint32_t backgroundColor)](#setbackgroundcolor) | - | Sets the background color for a custom dialog box. |
+| [int32_t (\*setCornerRadius)(ArkUI_NativeDialogHandle handle, float topLeft, float topRight,float bottomLeft, float bottomRight)](#setcornerradius) | - | Sets the background corner radius for a custom dialog box. |
+| [int32_t (\*setGridColumnCount)(ArkUI_NativeDialogHandle handle, int32_t gridCount)](#setgridcolumncount) | - | Sets the number of grid columns occupied by a custom dialog box. |
+| [int32_t (\*enableCustomStyle)(ArkUI_NativeDialogHandle handle, bool enableCustomStyle)](#enablecustomstyle) | - | Specifies whether to use a custom style for the custom dialog box. |
+| [int32_t (\*enableCustomAnimation)(ArkUI_NativeDialogHandle handle, bool enableCustomAnimation)](#enablecustomanimation) | - | Specifies whether to use a custom animation for a custom dialog box. |
+| [int32_t (\*registerOnWillDismiss)(ArkUI_NativeDialogHandle handle, ArkUI_OnWillDismissEvent eventHandler)](#registeronwilldismiss) | - | Registers a callback for a custom dialog box so that the user can decide whether to close the dialog box after they touch the Back button or press the Esc key. |
+| [int32_t (\*show)(ArkUI_NativeDialogHandle handle, bool showInSubWindow)](#show) | - | Shows a custom dialog box. |
+| [int32_t (\*close)(ArkUI_NativeDialogHandle handle)](#close) | - | Closes a custom dialog box. If the dialog box has been closed, this API does not take effect. |
+| [int32_t (\*registerOnWillDismissWithUserData)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(ArkUI_DialogDismissEvent* event))](#registeronwilldismisswithuserdata) | - | Registers a listener for the dismiss event of the custom dialog box. |
 
 ## Member function description
 

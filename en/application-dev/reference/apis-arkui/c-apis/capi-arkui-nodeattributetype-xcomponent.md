@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the ArkUI style attributes that can be set on the native side.
+Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
@@ -42,7 +42,7 @@ NODE_XCOMPONENT_SURFACE_SIZE
 
 **Description**
 
-Specifies the size of the <b>XComponent</b> component. This attribute is read-only. Attempting to modify the size through [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) will have no effect.<br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: width, in px.</li> <li>.value[1].u32: height, in px.</li> </ul>
+Size of the surface held by the **XComponent** component. This attribute can only be obtained through APIs. If you attempt to modify the size of the surface by using the [setAttribute](capi-arkui-nativemodule-arkui-nativenodeapi-1.md#setattribute) API, the setting does not take effect.<br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: Width, in px.</li> <li>.value[1].u32: Height, in px.</li> </ul>
 
 **Since**: 12
 
@@ -54,7 +54,7 @@ NODE_XCOMPONENT_SURFACE_RECT
 
 **Description**
 
-Defines the rectangle information of surface created by the <b><XComponent></b> component. This attribute can be set and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: The horizontal offset of the surface relative to XComponent, in pixels.</li> <li>.value[1].i32: The vertical offset of the surface relative to XComponent, in pixels.</li> <li>.value[2].i32: The width of the surface created by XComponent, in pixels.</li> <li>.value[3].i32: The height of the surface created by XComponent, in pixels.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: The horizontal offset of the surface relative to XComponent, in pixels.</li> <li>.value[1].i32: The vertical offset of the surface relative to XComponent, in pixels.</li> <li>.value[2].i32: The width of the surface created by XComponent, in pixels.</li> <li>.value[3].i32: The height of the surface created by XComponent, in pixels.</li> </ul>
+Display area of the surface held by the **XComponent** component. This attribute can be set and obtained through APIs. It applies to scenarios where a partial area within the **XComponent** component needs to be specified for rendering, such as cropped video display and partial rendering in PiP mode.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: X-coordinate of the surface display area relative to the upper left corner of the **XComponent** component, in px.</li> <li>.value[1].i32: Y-coordinate of the surface display area relative to the upper left corner of the **XComponent** component, in px.</li> <li>.value[2].i32: Width of the surface display area, in px. The value must be a positive integer. The setting does not take effect when 0 or a negative number is passed.</li> <li>.value[3].i32: Height of the surface display area, in px. The value must be a positive integer. The setting does not take effect when 0 or a negative number is passed.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: X-coordinate of the surface display area relative to the upper left corner of the **XComponent** component, in px.</li> <li>.value[1].i32: Y-coordinate of the surface display area relative to the upper left corner of the **XComponent** component, in px.</li> <li>.value[2].i32: Width of the surface display area, in px. The value must be a non-negative integer.</li> <li>.value[3].i32: Height of the surface display area, in px.</li> </ul>
 
 **Since**: 18
 
@@ -66,7 +66,7 @@ NODE_XCOMPONENT_ENABLE_ANALYZER
 
 **Description**
 
-Defines whether to enable the AI analyzer for the <b><XComponent></b> component. This attribute can be set and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: The parameter type is 1 or 0.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: The parameter type is 1 or 0.</li> </ul>
+Whether to enable the image analyzer for the **XComponent** component. This attribute can be set and obtained as required through APIs. When enabled, content recognition and analysis can be performed on the image displayed in the component. It applies to scenarios such as real-time recognition in camera preview and image content understanding.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable the image analyzer. `1` indicates enable the image analyzer, and `0` indicates the opposite. The default value is `0`. Values other than 0 and 1 are treated as `0`.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether the image analyzer is enabled. `1` indicates that the image analyzer is supported, and `0` indicates the opposite.</li> </ul>
 
 **Since**: 18
 

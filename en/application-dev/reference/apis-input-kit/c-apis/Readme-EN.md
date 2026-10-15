@@ -10,6 +10,7 @@
 - Struct<!--inputkit-struct-->
     - [Input_InterceptorEventCallback](capi-input-input-interceptoreventcallback.md)
     - [Input_DeviceListener](capi-input-input-devicelistener.md)
+    - [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)
     - [Input_KeyState](capi-input-input-keystate.md)
     - [Input_KeyEvent](capi-input-input-keyevent.md)
     - [Input_MouseEvent](capi-input-input-mouseevent.md)
@@ -21,4 +22,3 @@
     - [Input_CustomCursor](capi-input-input-customcursor.md)
     - [Input_CursorConfig](capi-input-input-cursorconfig.md)
     - [Input_InterceptorOptions](capi-input-input-interceptoroptions.md)
-    - [OH_PixelmapNative](capi-input-oh-pixelmapnative.md)

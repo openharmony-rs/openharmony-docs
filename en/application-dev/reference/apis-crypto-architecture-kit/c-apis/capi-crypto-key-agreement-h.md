@@ -8,6 +8,8 @@ Defines the key agreement interfaces.
 
 **Library**: libohcrypto.so
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Related module**: [CryptoKeyAgreementApi](capi-cryptokeyagreementapi.md)
@@ -39,6 +41,8 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_Create(const char *algoName, OH_CryptoKe
 **Description**
 
 Creates a key agreement context based on the given algorithm name.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 
@@ -72,6 +76,8 @@ OH_Crypto_ErrCode OH_CryptoKeyAgreement_GenerateSecret(OH_CryptoKeyAgreement *ct
 
 Generates a shared secret.
 
+**System capability**: SystemCapability.Security.CryptoFramework
+
 **Since**: 20
 
 **Resource release**: crypto_common/OH_Crypto_FreeDataBlob {secret}
@@ -100,6 +106,8 @@ void OH_CryptoKeyAgreement_Destroy(OH_CryptoKeyAgreement *ctx)
 **Description**
 
 Destroys the key agreement context.
+
+**System capability**: SystemCapability.Security.CryptoFramework
 
 **Since**: 20
 

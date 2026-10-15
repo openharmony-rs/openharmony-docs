@@ -6,6 +6,8 @@ Declares the common sensor attributes.
 
 **Library**: libohsensor.so
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Related module**: [Sensor](capi-sensor.md)
@@ -94,6 +96,8 @@ enum Sensor_Type
 
 Enumerates the sensor types.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 | Enum item | Description |
@@ -124,6 +128,8 @@ enum Sensor_Result
 
 Enumerates the sensor result codes.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 | Enum item | Description |
@@ -142,6 +148,8 @@ enum Sensor_Accuracy
 **Description**
 
 Enumerates the accuracy levels of data reported by a sensor.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -164,6 +172,8 @@ Sensor_Info **OH_Sensor_CreateInfos(uint32_t count)
 **Description**
 
 Creates an instance array using a given number. For details, see [Sensor_Info](capi-sensor-sensor-info.md). After the instance is successfully created, a pointer to the array of **count** **Sensor_Info** instances is returned. <br>After the instance array created by calling this function is used, you must call **OH_Sensor_DestroyInfos()** to destroy the instance array and reclaim the memory. Otherwise, resource leak may occur.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -189,6 +199,8 @@ int32_t OH_Sensor_DestroyInfos(Sensor_Info **sensors, uint32_t count)
 
 Destroys the instance array and reclaims the memory. For details, see [Sensor_Info](capi-sensor-sensor-info.md). After this API is successfully called, the memory occupied by the instance array is released, and the **sensors** pointer and all **<br>Sensor_Info** instances to which the pointer points can no longer be used.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -213,6 +225,8 @@ int32_t OH_SensorInfo_GetName(Sensor_Info* sensor, char *sensorName, uint32_t *l
 **Description**
 
 Obtains the sensor name. After the sensor name is obtained, the **sensorName** parameter is filled with the sensor name string, and the **length** parameter returns the length of the string (including the terminator).
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -240,6 +254,8 @@ int32_t OH_SensorInfo_GetVendorName(Sensor_Info* sensor, char *vendorName, uint3
 
 Obtains the sensor's vendor name. After the vendor name is obtained, the **vendorName** parameter is filled with the sensor vendor name string, and the **length** parameter returns the length of the string (including the terminator).
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -266,6 +282,8 @@ int32_t OH_SensorInfo_GetType(Sensor_Info* sensor, Sensor_Type *sensorType)
 
 Obtains the [Sensor_Type](capi-oh-sensor-type-h.md#sensor_type). After the sensor type is obtained, the **sensorType** parameter is filled with the sensor type value.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -290,6 +308,8 @@ int32_t OH_SensorInfo_GetResolution(Sensor_Info* sensor, float *resolution)
 **Description**
 
 Obtains the sensor resolution. After the sensor resolution is obtained, the **resolution** parameter is filled with the sensor resolution value.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -316,6 +336,8 @@ int32_t OH_SensorInfo_GetMinSamplingInterval(Sensor_Info* sensor, int64_t *minSa
 
 Obtains the minimum data reporting interval of a sensor. After the interval is obtained, the **<br>minSamplingInterval** parameter is filled with the minimum data reporting interval of the sensor, in nanoseconds.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -340,6 +362,8 @@ int32_t OH_SensorInfo_GetMaxSamplingInterval(Sensor_Info* sensor, int64_t *maxSa
 **Description**
 
 Obtains the maximum data reporting interval of a sensor. After the interval is obtained, the **<br>maxSamplingInterval** parameter is filled with the maximum data reporting interval of the sensor, in nanoseconds.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -366,6 +390,8 @@ int32_t OH_SensorEvent_GetType(Sensor_Event* sensorEvent, Sensor_Type *sensorTyp
 
 Obtains the sensor type.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -391,6 +417,8 @@ int32_t OH_SensorEvent_GetTimestamp(Sensor_Event* sensorEvent, int64_t *timestam
 
 Obtains the timestamp of sensor data.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -415,6 +443,8 @@ int32_t OH_SensorEvent_GetAccuracy(Sensor_Event* sensorEvent, Sensor_Accuracy *a
 **Description**
 
 Obtains the accuracy of sensor data.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -457,6 +487,8 @@ Obtains sensor data. The data length and content depend on the sensor type. The 
 \| SENSOR_TYPE_LINEAR_ACCELERATION \| This parameter is available since API version 13. **data[0]**, **data[1]**, and **data[2]** indicate the linear acceleration around the x, y, and z axes of a device, respectively, in m/s².\|
 \| SENSOR_TYPE_GAME_ROTATION_VECTOR \| This parameter is available since API version 13. **data[0]**, **data[1]**, and **data[2]** indicate the rotation angles of a device around the x, y, and z axes, respectively, in degree. **data[3]** indicates the rotation vector.\|
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -483,6 +515,8 @@ Sensor_SubscriptionId *OH_Sensor_CreateSubscriptionId(void)
 
 Creates a [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) instance. <br>After using the instance created by calling this function, you must call **OH_Sensor_DestroySubscriptionId()**<br>to destroy the instance and reclaim the memory. Otherwise, resource leakage may occur.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Returns**:
@@ -500,6 +534,8 @@ int32_t OH_Sensor_DestroySubscriptionId(Sensor_SubscriptionId *id)
 **Description**
 
 Destroys a [Sensor_SubscriptionId](capi-sensor-sensor-subscriptionid.md) instance and reclaims the memory.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -524,6 +560,8 @@ int32_t OH_SensorSubscriptionId_GetType(Sensor_SubscriptionId* id, Sensor_Type *
 **Description**
 
 Obtains the sensor type.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -550,6 +588,8 @@ int32_t OH_SensorSubscriptionId_SetType(Sensor_SubscriptionId* id, const Sensor_
 
 Sets the sensor type. After this method is successfully called, the subscription ID type is set to the value of **sensorType**.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -575,6 +615,8 @@ Sensor_SubscriptionAttribute *OH_Sensor_CreateSubscriptionAttribute(void)
 
 Creates a [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) instance. <br>After using the instance created by calling this function, you must call **<br>OH_Sensor_DestroySubscriptionAttribute()** to destroy the instance and reclaim the memory. Otherwise, resource leakage may occur.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Returns**:
@@ -592,6 +634,8 @@ int32_t OH_Sensor_DestroySubscriptionAttribute(Sensor_SubscriptionAttribute *att
 **Description**
 
 Destroys a [Sensor_SubscriptionAttribute](capi-sensor-sensor-subscriptionattribute.md) instance and reclaims the memory.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -616,6 +660,8 @@ int32_t OH_SensorSubscriptionAttribute_SetSamplingInterval(Sensor_SubscriptionAt
 **Description**
 
 Sets the sensor data reporting interval. After this API is called successfully, the sampling interval of the subscription is set to the value of **samplingInterval**. Subsequent sensor data will be reported at this interval.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -642,6 +688,8 @@ int32_t OH_SensorSubscriptionAttribute_GetSamplingInterval(Sensor_SubscriptionAt
 
 Obtains the sensor data reporting interval.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -667,6 +715,8 @@ typedef void (*Sensor_EventCallback)(Sensor_Event *event)
 
 Defines the callback function used to report sensor data.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -685,6 +735,8 @@ Sensor_Subscriber *OH_Sensor_CreateSubscriber(void)
 
 Creates a [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) instance. <br>After using the instance created by calling this function, you must call **OH_Sensor_DestroySubscriber()** to destroy the instance and reclaim the memory. Otherwise, resource leakage may occur.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Returns**:
@@ -702,6 +754,8 @@ int32_t OH_Sensor_DestroySubscriber(Sensor_Subscriber *subscriber)
 **Description**
 
 Destroys a [Sensor_Subscriber](capi-sensor-sensor-subscriber.md) instance and reclaims the memory.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 
@@ -727,6 +781,8 @@ int32_t OH_SensorSubscriber_SetCallback(Sensor_Subscriber* subscriber, const Sen
 
 Sets a callback function to report sensor data. After this API is called successfully, the subscriber will use the specified callback function to report sensor data.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -751,6 +807,8 @@ int32_t OH_SensorSubscriber_GetCallback(Sensor_Subscriber* subscriber, Sensor_Ev
 **Description**
 
 Obtains the callback function used to report sensor data.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Since**: 11
 

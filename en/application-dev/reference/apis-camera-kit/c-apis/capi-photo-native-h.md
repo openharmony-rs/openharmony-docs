@@ -6,6 +6,8 @@ The file declares the camera photo concepts.
 
 **Library**: libohcamera.so
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Related module**: [OH_Camera](capi-oh-camera.md)
@@ -42,6 +44,8 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 Obtains a full-quality image.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -67,6 +71,8 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_P
 
 Obtains an uncompressed image.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -91,6 +97,8 @@ Camera_ErrorCode OH_PhotoNative_GetAuxiliaryImage(const OH_PhotoNative* photo, O
 **Description**
 
 Obtains an auxiliary image.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.1
 
@@ -120,6 +128,8 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedAuxiliaryImage(const OH_PhotoNati
 
 Obtains an uncompressed auxiliary image.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.1
 
 **Resource release**: OH_PhotoNative_ReleasePicture {outImage}
@@ -148,6 +158,8 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 
 Releases a full-quality image.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -172,6 +184,8 @@ Camera_ErrorCode OH_PhotoNative_ReleasePicture(OH_PictureNative* picture)
 
 Releases an allocated native picture instance.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -195,6 +209,8 @@ Camera_ErrorCode OH_PhotoNative_ReleaseImage(OH_ImageNative* image)
 **Description**
 
 Releases an allocated native image instance.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.1
 

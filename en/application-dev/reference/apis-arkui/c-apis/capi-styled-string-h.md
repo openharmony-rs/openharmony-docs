@@ -6,6 +6,8 @@ Defines the text style and layout manager for the component whose [type](capi-oh
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -302,6 +304,8 @@ enum OH_ArkUI_StyledStringKey
 
 Enumerates the styles of a styled string.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 | Enum item | Description |
@@ -332,6 +336,8 @@ enum OH_ArkUI_SuperscriptStyle
 
 Enumerates the text superscript and subscript styles.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 | Enum item | Description |
@@ -349,6 +355,8 @@ enum OH_ArkUI_TextEncoding
 **Description**
 
 Enumerates the text encoding types supported by ArkUI text layout query APIs.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -369,6 +377,8 @@ ArkUI_StyledString* OH_ArkUI_StyledString_Create(OH_Drawing_TypographyStyle* sty
 **Description**
 
 Creates a pointer to the ArkUI_StyledString object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -395,6 +405,8 @@ void OH_ArkUI_StyledString_Destroy(ArkUI_StyledString* handle)
 
 Free the memory occupied by the ArkUI_StyledString object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -412,6 +424,8 @@ void OH_ArkUI_StyledString_PushTextStyle(ArkUI_StyledString* handle, OH_Drawing_
 **Description**
 
 Sets the new layout style to the top of the current format string style stack.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -432,6 +446,8 @@ void OH_ArkUI_StyledString_AddText(ArkUI_StyledString* handle, const char* conte
 
 Sets the corresponding text content based on the current format string style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -451,6 +467,8 @@ void OH_ArkUI_StyledString_PopTextStyle(ArkUI_StyledString* handle)
 
 Removes the top style from the stack in the current format string object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -468,6 +486,8 @@ OH_Drawing_Typography* OH_ArkUI_StyledString_CreateTypography(ArkUI_StyledString
 **Description**
 
 Creates a pointer to an OH_Drawing_Typography object based on a format string object for advanced text estimation and typography.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -493,6 +513,8 @@ void OH_ArkUI_StyledString_AddPlaceholder(ArkUI_StyledString* handle, OH_Drawing
 
 Set the placeholder.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -512,6 +534,8 @@ ArkUI_StyledString_Descriptor* OH_ArkUI_StyledString_Descriptor_Create(void)
 
 Creates an <b>ArkUI_StyledString_Descriptor</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Returns**:
@@ -530,6 +554,8 @@ void OH_ArkUI_StyledString_Descriptor_Destroy(ArkUI_StyledString_Descriptor* des
 
 Destroys an <b>ArkUI_StyledString_Descriptor</b> object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
@@ -547,6 +573,8 @@ const char* OH_ArkUI_ConvertToHtml(ArkUI_StyledString_Descriptor* descriptor)
 **Description**
 
 Converts styled string information into HTML.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -571,6 +599,8 @@ int32_t OH_ArkUI_UnmarshallStyledStringDescriptor(uint8_t* buffer, size_t buffer
 **Description**
 
 Deserializes a byte array containing styled string information into a styled string.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -597,6 +627,8 @@ int32_t OH_ArkUI_MarshallStyledStringDescriptor(uint8_t* buffer, size_t bufferSi
 **Description**
 
 Serializes the styled string information into a byte array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -629,6 +661,8 @@ Creates an [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styleds
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_StyledString_Descriptor_Destroy </b> to destroy it. All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -659,6 +693,8 @@ Creates an [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styleds
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_StyledString_Descriptor_Destroy </b> to destroy it. All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -686,6 +722,8 @@ Creates an [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styleds
 > **Note**:
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_StyledString_Descriptor_Destroy </b> to destroy it. All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -715,6 +753,8 @@ Obtains the length of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -743,6 +783,8 @@ Obtains the text content of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -775,6 +817,8 @@ Checks whether a styled string is the same as another styled string. The two sty
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -804,6 +848,8 @@ Obtains a sub-styled string of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -835,6 +881,8 @@ Obtains the style set within a specified range of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -870,6 +918,8 @@ Converts an HTML string to a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -898,6 +948,8 @@ Replaces the text within a specified range of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -930,6 +982,8 @@ Inserts text at a specified position of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -959,6 +1013,8 @@ Removes the text within a specified range of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -990,6 +1046,8 @@ Replaces the style within a specified range of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1019,6 +1077,8 @@ Sets a new style for a specified range of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1047,6 +1107,8 @@ Removes the specified style for a specified range of a styled string.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1079,6 +1141,8 @@ Clears all styles of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1106,6 +1170,8 @@ Replaces the styled string within a specified range.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1138,6 +1204,8 @@ Inserts a new styled string at a specified position of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1168,6 +1236,8 @@ Appends a new styled string to the end of a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1197,6 +1267,8 @@ Actively refreshes the custom span in a styled string.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1225,6 +1297,8 @@ Creates an [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md) o
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_TextStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -1242,6 +1316,8 @@ void OH_ArkUI_TextStyle_Destroy(OH_ArkUI_TextStyle* textStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_TextStyle](capi-arkui-nativemodule-oh-arkui-textstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1264,6 +1340,8 @@ Sets text color for a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1294,6 +1372,8 @@ Obtains the text color of a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1323,6 +1403,8 @@ Sets a font family for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1351,6 +1433,8 @@ Obtains the font family of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1383,6 +1467,8 @@ Sets font size for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1411,6 +1497,8 @@ Obtains the font size of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1441,6 +1529,8 @@ Sets font weight for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1469,6 +1559,8 @@ Obtains the font weight of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1499,6 +1591,8 @@ Sets font style for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1527,6 +1621,8 @@ Obtains the font style of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1557,6 +1653,8 @@ Sets stroke width for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1585,6 +1683,8 @@ Obtains the stroke width of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1615,6 +1715,8 @@ Sets a stroke color for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1643,6 +1745,8 @@ Obtains the stroke color of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1673,6 +1777,8 @@ Sets superscript and subscript styles for a text font style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1701,6 +1807,8 @@ Obtains the superscript and subscript styles of a text font style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1731,6 +1839,8 @@ Creates an [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md) o
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_SpanStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -1748,6 +1858,8 @@ void OH_ArkUI_SpanStyle_Destroy(OH_ArkUI_SpanStyle* spanStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_SpanStyle](capi-arkui-nativemodule-oh-arkui-spanstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1770,6 +1882,8 @@ Obtains the style of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1800,6 +1914,8 @@ Sets the start position for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1828,6 +1944,8 @@ Obtains the start position of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1858,6 +1976,8 @@ Sets the length for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1886,6 +2006,8 @@ Obtains the length of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1916,6 +2038,8 @@ Sets the text font style for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -1944,6 +2068,8 @@ Obtains the text font style of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -1974,6 +2100,8 @@ Sets the paragraph style for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2002,6 +2130,8 @@ Obtains the paragraph style of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2032,6 +2162,8 @@ Sets the gesture style for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2060,6 +2192,8 @@ Obtains the gesture style of the styled string object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2090,6 +2224,8 @@ Sets the text shadow style for the styled string object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2118,6 +2254,8 @@ Obtains the text shadow style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2148,6 +2286,8 @@ Sets the text decorative line style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2176,6 +2316,8 @@ Obtains the text decorative line style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2206,6 +2348,8 @@ Sets the baseline offset style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2234,6 +2378,8 @@ Obtains the baseline offset style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2264,6 +2410,8 @@ Sets the letter spacing style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2292,6 +2440,8 @@ Obtains the letter spacing style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2322,6 +2472,8 @@ Sets the line height style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2350,6 +2502,8 @@ Obtains the line height style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2380,6 +2534,8 @@ Sets the URL style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2408,6 +2564,8 @@ Obtains the URL style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2438,6 +2596,8 @@ Sets the background color style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2466,6 +2626,8 @@ Obtains the background color style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2496,6 +2658,8 @@ Sets the user data span style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2524,6 +2688,8 @@ Obtains the user data span style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2554,6 +2720,8 @@ Sets the custom span style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2582,6 +2750,8 @@ Obtains the custom span style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2612,6 +2782,8 @@ Sets the image style for the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2640,6 +2812,8 @@ Obtains the image style of the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2670,6 +2844,8 @@ Creates an [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -2687,6 +2863,8 @@ void OH_ArkUI_LeadingMarginSpanDrawInfo_Destroy(OH_ArkUI_LeadingMarginSpanDrawIn
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_LeadingMarginSpanDrawInfo](capi-arkui-nativemodule-oh-arkui-leadingmarginspandrawinfo.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2709,6 +2887,8 @@ Sets the horizontal offset of the current line relative to the component in the 
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2739,6 +2919,8 @@ Obtains the horizontal offset of the current line relative to the component in t
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2767,6 +2949,8 @@ Sets the distance between the top of a line and the top edge of the component in
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2797,6 +2981,8 @@ Obtains the distance between the top of a line and the top edge of the component
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2825,6 +3011,8 @@ Sets the distance between the bottom of a line and the top edge of the component
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2855,6 +3043,8 @@ Obtains the distance between the bottom of a line and the top edge of the compon
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2883,6 +3073,8 @@ Sets the distance between the baseline of the current line and the top edge of t
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2913,6 +3105,8 @@ Obtains the distance between the baseline of the current line and the top edge o
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2941,6 +3135,8 @@ Sets the text direction in the custom drawing information object for paragraph i
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2971,6 +3167,8 @@ Obtains the text direction in the custom drawing information object for paragrap
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2999,6 +3197,8 @@ Sets the start index of the current line in the custom drawing information objec
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3029,6 +3229,8 @@ Obtains the start index of the current line in the custom drawing information ob
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3057,6 +3259,8 @@ Sets the end index of the current line in the custom drawing information object 
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3087,6 +3291,8 @@ Obtains the end index of the current line in the custom drawing information obje
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3115,6 +3321,8 @@ Sets whether the current line is the first line of the paragraph in the custom d
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3145,6 +3353,8 @@ Obtains whether the current line is the first line of the paragraph in the custo
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3174,6 +3384,8 @@ Creates an [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphs
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_ParagraphStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -3191,6 +3403,8 @@ void OH_ArkUI_ParagraphStyle_Destroy(OH_ArkUI_ParagraphStyle* paragraphStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_ParagraphStyle](capi-arkui-nativemodule-oh-arkui-paragraphstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3213,6 +3427,8 @@ Sets the horizontal text alignment method in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3243,6 +3459,8 @@ Obtains the horizontal text alignment method in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3271,6 +3489,8 @@ Sets the first-line text indentation in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3301,6 +3521,8 @@ Obtains the first-line text indentation in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3329,6 +3551,8 @@ Sets the maximum number of lines in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3359,6 +3583,8 @@ Obtains the maximum number of lines in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3387,6 +3613,8 @@ Sets the display mode when the paragraph is too long in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3417,6 +3645,8 @@ Obtains the display mode when the paragraph is too long in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3445,6 +3675,8 @@ Sets the word breaking rule in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3475,6 +3707,8 @@ Obtains the word breaking rule in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3503,6 +3737,8 @@ Sets the PixelMap for paragraph indentation in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3533,6 +3769,8 @@ Obtains the PixelMap for paragraph indentation in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3561,6 +3799,8 @@ Sets the width for paragraph indentation in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3591,6 +3831,8 @@ Obtains the width for paragraph indentation in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3619,6 +3861,8 @@ Sets the height for paragraph indentation in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3649,6 +3893,8 @@ Obtains the height for paragraph indentation in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3677,6 +3923,8 @@ Sets the paragraph spacing in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3707,6 +3955,8 @@ Obtains the paragraph spacing in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3735,6 +3985,8 @@ Sets the vertical text alignment method in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3765,6 +4017,8 @@ Obtains the vertical text alignment method in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3793,6 +4047,8 @@ Sets the callback function triggered when the paragraph indentation is drawn in 
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3823,6 +4079,8 @@ Sets the callback function triggered when the paragraph indentation distance is 
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3851,6 +4109,8 @@ Sets the text direction in the paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3881,6 +4141,8 @@ Obtains the text direction in the paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3910,6 +4172,8 @@ Creates an [OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_GestureStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -3927,6 +4191,8 @@ void OH_ArkUI_GestureStyle_Destroy(OH_ArkUI_GestureStyle* gestureStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_GestureStyle](capi-arkui-nativemodule-oh-arkui-gesturestyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3949,6 +4215,8 @@ Sets the click event callback in the event gesture style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3979,6 +4247,8 @@ Sets the long-pressing event callback in the event gesture style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4007,6 +4277,8 @@ Sets the touch event callback in the event gesture style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4037,6 +4309,8 @@ Creates an [OH_ArkUI_TextShadowStyle](capi-arkui-nativemodule-oh-arkui-textshado
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_TextShadowStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -4054,6 +4328,8 @@ void OH_ArkUI_TextShadowStyle_Destroy(OH_ArkUI_TextShadowStyle* textShadowStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_TextShadowStyle](capi-arkui-nativemodule-oh-arkui-textshadowstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4076,6 +4352,8 @@ Sets the text shadow options for the text shadow style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4106,6 +4384,8 @@ Obtains the text shadow options of the text shadow style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4138,6 +4418,8 @@ Creates an [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decoratio
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_DecorationStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -4155,6 +4437,8 @@ void OH_ArkUI_DecorationStyle_Destroy(OH_ArkUI_DecorationStyle* decorationStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_DecorationStyle](capi-arkui-nativemodule-oh-arkui-decorationstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4177,6 +4461,8 @@ Sets the decoration type for the text decorative line style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4207,6 +4493,8 @@ Obtains the decoration type of the text decorative line style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4235,6 +4523,8 @@ Sets the decoration color for the text decorative line style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4265,6 +4555,8 @@ Obtains the decoration color of the text decorative line style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4293,6 +4585,8 @@ Sets the decoration style for the text decorative line style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4323,6 +4617,8 @@ Obtains the decoration style of the text decorative line style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4351,6 +4647,8 @@ Sets the thickness scaling factor of the text decorative line style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4381,6 +4679,8 @@ Obtains the thickness scaling factor of the text decorative line style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4409,6 +4709,8 @@ Sets whether to enable the display of multiple decorative lines in the text deco
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4439,6 +4741,8 @@ Obtains whether the display of multiple decorative lines is enabled in the text 
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4468,6 +4772,8 @@ Creates an [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-basel
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_BaselineOffsetStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -4485,6 +4791,8 @@ void OH_ArkUI_BaselineOffsetStyle_Destroy(OH_ArkUI_BaselineOffsetStyle* baseline
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_BaselineOffsetStyle](capi-arkui-nativemodule-oh-arkui-baselineoffsetstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4507,6 +4815,8 @@ Sets the baseline offset.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4537,6 +4847,8 @@ Obtains the baseline offset.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4566,6 +4878,8 @@ Creates an [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letter
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_LetterSpacingStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -4583,6 +4897,8 @@ void OH_ArkUI_LetterSpacingStyle_Destroy(OH_ArkUI_LetterSpacingStyle* letterSpac
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_LetterSpacingStyle](capi-arkui-nativemodule-oh-arkui-letterspacingstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4605,6 +4921,8 @@ Sets the letter spacing.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4635,6 +4953,8 @@ Obtains the letter spacing.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4664,6 +4984,8 @@ Creates an [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheigh
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_LineHeightStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -4681,6 +5003,8 @@ void OH_ArkUI_LineHeightStyle_Destroy(OH_ArkUI_LineHeightStyle* lineHeightStyle)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_LineHeightStyle](capi-arkui-nativemodule-oh-arkui-lineheightstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4703,6 +5027,8 @@ Sets the line height.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4733,6 +5059,8 @@ Obtains the line height.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4761,6 +5089,8 @@ Sets a line height multiplier.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -4791,6 +5121,8 @@ Obtains the line height multiplier.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -4819,6 +5151,8 @@ Sets a line spacing style for the styled string style object.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -4849,6 +5183,8 @@ Obtains the line spacing style of the styled string style object.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -4878,6 +5214,8 @@ Creates an [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespac
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_LineSpacingStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Returns**:
@@ -4895,6 +5233,8 @@ void OH_ArkUI_LineSpacingStyle_Destroy(OH_ArkUI_LineSpacingStyle* lineSpacingSty
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_LineSpacingStyle](capi-arkui-nativemodule-oh-arkui-linespacingstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -4917,6 +5257,8 @@ Sets line spacing.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -4947,6 +5289,8 @@ Queries the line spacing.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -4975,6 +5319,8 @@ Sets whether the line spacing takes effect only between lines.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5005,6 +5351,8 @@ Checks whether the line spacing takes effect only between lines.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -5034,6 +5382,8 @@ Creates an [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-back
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_BackgroundColorStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -5051,6 +5401,8 @@ void OH_ArkUI_BackgroundColorStyle_Destroy(OH_ArkUI_BackgroundColorStyle* style)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_BackgroundColorStyle](capi-arkui-nativemodule-oh-arkui-backgroundcolorstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5073,6 +5425,8 @@ Sets the background color for the background color style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5103,6 +5457,8 @@ Obtains the background color of the background color style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5131,6 +5487,8 @@ Sets the background radii for the background color style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5164,6 +5522,8 @@ Obtains the background radii of the background color style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5196,6 +5556,8 @@ Creates an [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md) obj
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_UrlStyle_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -5213,6 +5575,8 @@ void OH_ArkUI_UrlStyle_Destroy(OH_ArkUI_UrlStyle* style)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_UrlStyle](capi-arkui-nativemodule-oh-arkui-urlstyle.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5235,6 +5599,8 @@ Sets the URL content for the URL style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5264,6 +5630,8 @@ Obtains the URL content of the URL style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5296,6 +5664,8 @@ Creates an [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_UserDataSpan_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -5313,6 +5683,8 @@ void OH_ArkUI_UserDataSpan_Destroy(OH_ArkUI_UserDataSpan* userDataSpan)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_UserDataSpan](capi-arkui-nativemodule-oh-arkui-userdataspan.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5335,6 +5707,8 @@ Sets the user data in the user data span style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5365,6 +5739,8 @@ Obtains the user data in the user data span style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5394,6 +5770,8 @@ Creates an [OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md)
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_CustomSpan_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -5411,6 +5789,8 @@ void OH_ArkUI_CustomSpan_Destroy(OH_ArkUI_CustomSpan* customSpan)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_CustomSpan](capi-arkui-nativemodule-oh-arkui-customspan.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5433,6 +5813,8 @@ Sets the callback function triggered when metrics are obtained for the custom sp
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5463,6 +5845,8 @@ Registers the callback function triggered when the custom span is drawn.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5492,6 +5876,8 @@ Creates an [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageatta
 >
 > When the object is no longer in use, invoke <b> OH_ArkUI_ImageAttachment_Destroy </b> to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -5509,6 +5895,8 @@ void OH_ArkUI_ImageAttachment_Destroy(OH_ArkUI_ImageAttachment* imageAttachment)
 **Description**
 
 Releases the memory occupied by the [OH_ArkUI_ImageAttachment](capi-arkui-nativemodule-oh-arkui-imageattachment.md) object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5531,6 +5919,8 @@ Sets the image data source in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5561,6 +5951,8 @@ Obtains the image data source in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5590,6 +5982,8 @@ Sets the image resource address in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5618,6 +6012,8 @@ Obtains the image resource address in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5650,6 +6046,8 @@ Sets the image width in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5678,6 +6076,8 @@ Obtains the image width in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5708,6 +6108,8 @@ Sets the image height in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5736,6 +6138,8 @@ Obtains the image height in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5766,6 +6170,8 @@ Sets the image alignment method in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5794,6 +6200,8 @@ Obtains the image alignment method in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5824,6 +6232,8 @@ Sets the image scaling type in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5852,6 +6262,8 @@ Obtains the image scaling type in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5882,6 +6294,8 @@ Sets the image margin in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5910,6 +6324,8 @@ Obtains the image margin in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5940,6 +6356,8 @@ Sets the image padding in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5969,6 +6387,8 @@ Obtains the image padding in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5997,6 +6417,8 @@ Sets the image border radii in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -6030,6 +6452,8 @@ Obtains the image border radii in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6062,6 +6486,8 @@ Sets the image color filter in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6091,6 +6517,8 @@ Obtains the image color filter in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -6123,6 +6551,8 @@ Sets the image drawing color filter in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6151,6 +6581,8 @@ Obtains the image drawing color filter in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -6181,6 +6613,8 @@ Sets whether to load the image synchronously in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6209,6 +6643,8 @@ Obtains whether the image is loaded synchronously in the image style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -6239,6 +6675,8 @@ Sets whether to enable the enhanced SVG tag parsing feature in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6267,6 +6705,8 @@ Obtains whether the enhanced SVG tag parsing feature is enabled in the image sty
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -6297,7 +6737,9 @@ Sets the resizable image slice in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
-**Since**: 26.0.1
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.2.0
 
 **Parameters**:
 
@@ -6329,7 +6771,9 @@ Obtains the resizable image slice in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
-**Since**: 26.0.1
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.2.0
 
 **Parameters**:
 
@@ -6361,7 +6805,9 @@ Sets the resizable image lattice in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
-**Since**: 26.0.1
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.2.0
 
 **Parameters**:
 
@@ -6390,7 +6836,9 @@ Obtains the resizable image lattice in the image style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
-**Since**: 26.0.1
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
+**Since**: 26.2.0
 
 **Parameters**:
 
@@ -6414,6 +6862,8 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_SetImageTag(OH_ArkUI_ImageAttachment *i
 **Description**
 
 Sets the image text tag in the image style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.2.0
 
@@ -6439,6 +6889,8 @@ ArkUI_ErrorCode OH_ArkUI_ImageAttachment_GetImageTag(const OH_ArkUI_ImageAttachm
 **Description**
 
 Obtains the image text tag in the image style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.2.0
 
@@ -6471,6 +6923,8 @@ Obtains the range of the content to be replaced in the text change information.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6501,6 +6955,8 @@ Obtains the styled string used for replacement in the text change information.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6530,6 +6986,8 @@ Obtains the styled string of the previewed content in the text change informatio
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6555,6 +7013,8 @@ void OH_ArkUI_TextLayoutManager_Dispose(ArkUI_TextLayoutManager* layoutManager)
 
 Dispose an object of the text layout manager.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -6572,6 +7032,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineCount(ArkUI_TextLayoutManager*
 **Description**
 
 Gets the line count.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -6597,6 +7059,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetRectsForRange(ArkUI_TextLayoutMana
 **Description**
 
 Gets the rects for range.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -6627,6 +7091,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphPositionAtCoordinate(ArkUI_Te
 
 Gets the glyph position at coordinate.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -6654,6 +7120,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetLineMetrics(ArkUI_TextLayoutManage
 
 Get line metrics information.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -6679,6 +7147,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterPositionAtCoordinate(ArkU
 **Description**
 
 Gets the character position at coordinate.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -6706,6 +7176,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterPositionAtCoordinateWithE
 **Description**
 
 Gets the character position at coordinate based on the specified encoding type.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -6735,6 +7207,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphRangeForCharacterRange(ArkUI_
 
 Get the glyph range produced by the specified range of characters.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6761,6 +7235,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetGlyphRangeForCharacterRangeWithEnc
 **Description**
 
 Get the glyph range produced by the specified range of characters based on the specified encoding type.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -6790,6 +7266,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterRangeForGlyphRange(ArkUI_
 
 Get the character range that maps to the glyphs in the given glyph range.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -6816,6 +7294,8 @@ ArkUI_ErrorCode OH_ArkUI_TextLayoutManager_GetCharacterRangeForGlyphRangeWithEnc
 **Description**
 
 Get the character range that maps to the glyphs in the given glyph range based on the specified encoding type.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -6849,6 +7329,8 @@ Set linear gradient of paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -6877,6 +7359,8 @@ Get linear gradient of paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -6907,6 +7391,8 @@ Set radial gradient of paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -6935,6 +7421,8 @@ Get radial gradient of paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -6965,6 +7453,8 @@ Set tail indents of paragraph style.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -6994,6 +7484,8 @@ Get tail indents of paragraph style.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 

@@ -6,6 +6,8 @@ Defines enumerations and APIs related to **WaterFlow**.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -58,6 +60,8 @@ enum ArkUI_WaterFlowLayoutMode
 
 Enumerates the layout modes of the WaterFlow component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 18
 
 | Enum item | Description |
@@ -78,6 +82,8 @@ ArkUI_WaterFlowSectionOption* OH_ArkUI_WaterFlowSectionOption_Create()
 
 Creates a water flow section configuration, with an initial array length of 1. Call [OH_ArkUI_WaterFlowSectionOption_Dispose](capi-water-flow-h.md#oh_arkui_waterflowsectionoption_dispose) to release resources after the use.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Returns**:
@@ -95,6 +101,8 @@ void OH_ArkUI_WaterFlowSectionOption_Dispose(ArkUI_WaterFlowSectionOption* optio
 **Description**
 
 Disposes of the pointer to a water flow section configuration created by [OH_ArkUI_WaterFlowSectionOption_Create](capi-water-flow-h.md#oh_arkui_waterflowsectionoption_create). The pointer must not be accessed after being disposed of.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -114,6 +122,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetSize(ArkUI_WaterFlowSectionOption* optio
 
 Sets the array length of a water flow section configuration. For scaling-out, the original configuration is retained and a new group configuration is added at the end of the array. When scaling-in, the configuration within the new length range is retained and the rest are deleted.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -132,6 +142,8 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetSize(ArkUI_WaterFlowSectionOption* op
 **Description**
 
 Obtains the length of the FlowItem section configuration array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -157,6 +169,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetItemCount(ArkUI_WaterFlowSectionOption* 
 
 Sets the number of water flow items in the section.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -176,6 +190,8 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetItemCount(ArkUI_WaterFlowSectionOptio
 **Description**
 
 Obtains the number of water flow items at the corresponding index based on the FlowItem section configuration.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -202,6 +218,8 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndex(ArkU
 
 Registers a callback for the section at the specified index in the section configuration array to provide the main axis size of FlowItem. When **WaterFlow** lays out **FlowItem** in this section, the index of the current **FlowItem** in **WaterFlow** is passed to the callback as **itemIndex**, and the callback return value is used as the main axis size of the **FlowItem**. The main axis size is the height in vertical layout and the width in horizontal layout. To use custom data in the callback, use [OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithUserData](capi-water-flow-h.md#oh_arkui_waterflowsectionoption_registergetitemmainsizecallbackbyindexwithuserdata).
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -221,6 +239,8 @@ void OH_ArkUI_WaterFlowSectionOption_RegisterGetItemMainSizeCallbackByIndexWithU
 **Description**
 
 Registers a callback for the section at the specified index in the section configuration array to provide the main axis size of FlowItem and saves the passed **userData**. When **WaterFlow** lays out **FlowItem** in this section, the index of the current **FlowItem** in **WaterFlow** and **userData** are passed to the callback as the first and second parameters, respectively. **userData** is only used to pass additional data to the callback, and the main axis size of the **FlowItem** is provided by the callback return value. The main axis size is the height in vertical layout and the width in horizontal layout.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -243,6 +263,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetCrossCount(ArkUI_WaterFlowSectionOption*
 
 Sets the number of columns (in a vertical layout) or rows (in a horizontal layout) of a water flow section.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -262,6 +284,8 @@ int32_t OH_ArkUI_WaterFlowSectionOption_GetCrossCount(ArkUI_WaterFlowSectionOpti
 **Description**
 
 Obtains the number of layout grids at the corresponding index based on the FlowItem section configuration.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -288,6 +312,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetColumnGap(ArkUI_WaterFlowSectionOption* 
 
 Sets the gap between columns in the specified water flow section.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -307,6 +333,8 @@ float OH_ArkUI_WaterFlowSectionOption_GetColumnGap(ArkUI_WaterFlowSectionOption*
 **Description**
 
 Obtains the gap between columns in the water flow section that matches the specified index.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -333,6 +361,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetRowGap(ArkUI_WaterFlowSectionOption* opt
 
 Sets the row spacing for the specified group.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -352,6 +382,8 @@ float OH_ArkUI_WaterFlowSectionOption_GetRowGap(ArkUI_WaterFlowSectionOption* op
 **Description**
 
 Obtains the gap between rows in the section at the corresponding index based on the FlowItem section configuration.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -378,6 +410,8 @@ void OH_ArkUI_WaterFlowSectionOption_SetMargin(ArkUI_WaterFlowSectionOption* opt
 
 Sets the margins for the specified water flow section.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -400,6 +434,8 @@ ArkUI_Margin OH_ArkUI_WaterFlowSectionOption_GetMargin(ArkUI_WaterFlowSectionOpt
 **Description**
 
 Obtains the margins of the section at the corresponding index based on the FlowItem section configuration.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

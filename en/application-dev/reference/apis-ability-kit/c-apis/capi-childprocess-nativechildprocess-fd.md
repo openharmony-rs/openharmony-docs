@@ -24,6 +24,6 @@ The struct describes the information about the file descriptor passed to the chi
 | -- | -- |
 | char* fdName |  |
 | int32_t fd |  |
-| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) next |  |
+| struct NativeChildProcess_Fd* next |  |
 
 

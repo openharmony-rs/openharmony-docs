@@ -6,7 +6,7 @@ typedef struct OH_AudioRenderer OH_AudioRenderer
 
 ## 概述
 
-声明输出音频渲染器。输出音频渲染器的实例被用来播放音频数据。
+声明音频渲染器结构体。该结构体用于调用音频播放流功能接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

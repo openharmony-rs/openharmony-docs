@@ -6,6 +6,8 @@ Declares functions related to system font management, used to match and obtain f
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -44,6 +46,8 @@ OH_Drawing_FontMgr* OH_Drawing_FontMgrCreate(void)
 
 Creates an **OH_Drawing_FontMgr** object, which can be used only to manage system fonts.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Returns**:
@@ -62,6 +66,8 @@ void OH_Drawing_FontMgrDestroy(OH_Drawing_FontMgr* drawingFontMgr)
 
 Destroys an **OH_Drawing_FontMgr** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -79,6 +85,8 @@ int OH_Drawing_FontMgrGetFamilyCount(OH_Drawing_FontMgr* drawingFontMgr)
 **Description**
 
 Obtains the number of font families.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -103,6 +111,8 @@ char* OH_Drawing_FontMgrGetFamilyName(OH_Drawing_FontMgr* drawingFontMgr, int in
 **Description**
 
 Obtains the font family name based on an index. When the returned name is no longer needed, use [OH_Drawing_FontMgrDestroyFamilyName](capi-drawing-font-mgr-h.md#oh_drawing_fontmgrdestroyfamilyname) to release the memory occupied by the name.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -129,6 +139,8 @@ void OH_Drawing_FontMgrDestroyFamilyName(char* familyName)
 
 Reclaims the memory occupied by a font family name.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -146,6 +158,8 @@ OH_Drawing_FontStyleSet* OH_Drawing_FontMgrCreateFontStyleSet(OH_Drawing_FontMgr
 **Description**
 
 Creates a font style set object from a font manager object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -172,6 +186,8 @@ void OH_Drawing_FontMgrDestroyFontStyleSet(OH_Drawing_FontStyleSet* drawingFontS
 
 Reclaims the memory occupied by a font style set.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -189,6 +205,8 @@ OH_Drawing_FontStyleSet* OH_Drawing_FontMgrMatchFamily(OH_Drawing_FontMgr* drawi
 **Description**
 
 Obtains a font style set object based on a specified font family name. When the object is no longer needed, use [OH_Drawing_FontMgrDestroyFontStyleSet](capi-drawing-font-mgr-h.md#oh_drawing_fontmgrdestroyfontstyleset) to release it.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -215,6 +233,8 @@ OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyle(OH_Drawing_FontMgr* draw
 
 Obtains a typeface object based on the specified font style information and font family name. When the object is no longer needed, use [OH_Drawing_TypefaceDestroy](capi-drawing-typeface-h.md#oh_drawing_typefacedestroy) to release it.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -240,6 +260,8 @@ OH_Drawing_Typeface* OH_Drawing_FontMgrMatchFamilyStyleCharacter(OH_Drawing_Font
 **Description**
 
 Obtains a typeface for the specified character. A null pointer is returned only when no typeface corresponding to the input UTF-8 character is found in the font management object. When the object is no longer needed, use [OH_Drawing_TypefaceDestroy](capi-drawing-typeface-h.md#oh_drawing_typefacedestroy) to release it.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -270,6 +292,8 @@ OH_Drawing_Typeface* OH_Drawing_FontStyleSetCreateTypeface(OH_Drawing_FontStyleS
 
 Gets a typeface for the specified index. When the object is no longer needed, use [OH_Drawing_TypefaceDestroy](capi-drawing-typeface-h.md#oh_drawing_typefacedestroy) to release it.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -294,6 +318,8 @@ OH_Drawing_FontStyleStruct OH_Drawing_FontStyleSetGetStyle(OH_Drawing_FontStyleS
 **Description**
 
 Obtains the font style. Call [OH_Drawing_FontStyleSetFreeStyleName](capi-drawing-font-mgr-h.md#oh_drawing_fontstylesetfreestylename) to release **styleName** when it is no longer needed, freeing up the allocated memory.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -321,6 +347,8 @@ void OH_Drawing_FontStyleSetFreeStyleName(char** styleName)
 
 Frees the memory occupied by a font style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -338,6 +366,8 @@ OH_Drawing_Typeface* OH_Drawing_FontStyleSetMatchStyle(OH_Drawing_FontStyleSet* 
 **Description**
 
 Obtains the typeface closest to the font style (font weight, font width, and slant). When the object is no longer needed, use [OH_Drawing_TypefaceDestroy](capi-drawing-typeface-h.md#oh_drawing_typefacedestroy) to release it.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -363,6 +393,8 @@ int OH_Drawing_FontStyleSetCount(OH_Drawing_FontStyleSet* fontStyleSet)
 **Description**
 
 Obtains the number of fonts in the font style set.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 

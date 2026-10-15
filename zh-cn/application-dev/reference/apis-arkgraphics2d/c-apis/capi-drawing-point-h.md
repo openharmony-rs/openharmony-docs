@@ -6,6 +6,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -36,6 +38,8 @@ OH_Drawing_Point* OH_Drawing_PointCreate(float x, float y)
 
 创建一个坐标点对象。当此坐标点对象不再需要时，必须调用[OH_Drawing_PointDestroy](capi-drawing-point-h.md#oh_drawing_pointdestroy)销毁并回收内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -60,6 +64,8 @@ OH_Drawing_ErrorCode OH_Drawing_PointGetX(const OH_Drawing_Point* point, float* 
 **描述：**
 
 获取坐标点的x轴坐标值。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -86,6 +92,8 @@ OH_Drawing_ErrorCode OH_Drawing_PointGetY(const OH_Drawing_Point* point, float* 
 
 获取坐标点的y轴坐标值。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -110,6 +118,8 @@ OH_Drawing_ErrorCode OH_Drawing_PointSet(OH_Drawing_Point* point, float x, float
 **描述：**
 
 设置坐标点的x轴和y轴坐标。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -137,6 +147,8 @@ OH_Drawing_ErrorCode OH_Drawing_PointNegate(OH_Drawing_Point* point)
 
 对坐标点的x轴和y轴坐标取反。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -160,6 +172,8 @@ OH_Drawing_ErrorCode OH_Drawing_PointOffset(OH_Drawing_Point* point, float dx, f
 **描述：**
 
 将坐标点沿x轴和y轴方向偏移指定距离。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 26.0.0
 
@@ -186,6 +200,8 @@ void OH_Drawing_PointDestroy(OH_Drawing_Point* point)
 **描述：**
 
 销毁坐标点对象并回收该对象占用的内存。需在[OH_Drawing_PointCreate](capi-drawing-point-h.md#oh_drawing_pointcreate)创建对象后且该对象不再使用时调用。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 

@@ -6,7 +6,7 @@ typedef struct ArkUI_FloatPropertyHandle ArkUI_FloatPropertyHandle
 
 ## Overview
 
-Defines a float property pointer.
+Defines the pointer to an ArkUI native float rendering property, which is used to create, pass, and manage the floating-point property on the target content modifier.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

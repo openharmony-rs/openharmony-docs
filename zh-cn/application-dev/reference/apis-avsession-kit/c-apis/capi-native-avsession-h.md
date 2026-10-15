@@ -6,6 +6,8 @@
 
 **库：** libohavsession.so
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
@@ -86,6 +88,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnCommand)(OH_AVSession*
 
 通用的执行播控命令的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -105,6 +109,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSess
 **描述：**
 
 快进的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -126,6 +132,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* 
 
 快退的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -145,6 +153,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* se
 **描述：**
 
 进度调节的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -166,6 +176,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSess
 
 设置循环模式的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -185,6 +197,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnToggleFavorite)(OH_AVS
 **描述：**
 
 收藏的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -206,6 +220,8 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OutputDeviceChange)(OH_A
 
 设备变化的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -225,6 +241,8 @@ AVSession_ErrCode OH_AVSession_Create(AVSession_Type sessionType, const char* se
 **描述：**
 
 创建会话对象。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -254,6 +272,8 @@ AVSession_ErrCode OH_AVSession_Destroy(OH_AVSession* avsession)
 
 销毁会话对象。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -277,6 +297,8 @@ AVSession_ErrCode OH_AVSession_Activate(OH_AVSession* avsession)
 **描述：**
 
 激活会话。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -302,6 +324,8 @@ AVSession_ErrCode OH_AVSession_Deactivate(OH_AVSession* avsession)
 
 取消激活媒体会话。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -325,6 +349,8 @@ AVSession_ErrCode OH_AVSession_GetSessionType(OH_AVSession* avsession, AVSession
 **描述：**
 
 获取会话类型。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -351,6 +377,8 @@ AVSession_ErrCode OH_AVSession_GetSessionId(OH_AVSession* avsession, const char*
 
 获取会话ID。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -375,6 +403,8 @@ AVSession_ErrCode OH_AVSession_SetAVMetadata(OH_AVSession* avsession, OH_AVMetad
 **描述：**
 
 设置媒体元数据。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -401,6 +431,8 @@ AVSession_ErrCode OH_AVSession_SetPlaybackState(OH_AVSession* avsession, AVSessi
 
 设置播放状态。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -425,6 +457,8 @@ AVSession_ErrCode OH_AVSession_SetPlaybackPosition(OH_AVSession* avsession, AVSe
 **描述：**
 
 设置播放位置。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -451,6 +485,8 @@ AVSession_ErrCode OH_AVSession_SetFavorite(OH_AVSession* avsession, bool favorit
 
 设置收藏状态。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -475,6 +511,8 @@ AVSession_ErrCode OH_AVSession_SetLoopMode(OH_AVSession* avsession, AVSession_Lo
 **描述：**
 
 设置循环模式。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -501,6 +539,8 @@ AVSession_ErrCode OH_AVSession_SetRemoteCastEnabled(OH_AVSession* avsession, boo
 
 请求使能远程投播。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -525,6 +565,8 @@ AVSession_ErrCode OH_AVSession_RegisterCommandCallback(OH_AVSession* avsession, 
 **描述：**
 
 注册通用播控的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -553,6 +595,8 @@ AVSession_ErrCode OH_AVSession_UnregisterCommandCallback(OH_AVSession* avsession
 
 取消注册通用播控的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -578,6 +622,8 @@ AVSession_ErrCode OH_AVSession_RegisterForwardCallback(OH_AVSession* avsession, 
 **描述：**
 
 注册快进的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -605,6 +651,8 @@ AVSession_ErrCode OH_AVSession_UnregisterForwardCallback(OH_AVSession* avsession
 
 取消注册快进的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -629,6 +677,8 @@ AVSession_ErrCode OH_AVSession_RegisterRewindCallback(OH_AVSession* avsession, O
 **描述：**
 
 注册快退的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -656,6 +706,8 @@ AVSession_ErrCode OH_AVSession_UnregisterRewindCallback(OH_AVSession* avsession,
 
 取消注册快退的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -680,6 +732,8 @@ AVSession_ErrCode OH_AVSession_RegisterSeekCallback(OH_AVSession* avsession, OH_
 **描述：**
 
 注册跳转的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -707,6 +761,8 @@ AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, O
 
 取消注册跳转的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -731,6 +787,8 @@ AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsessi
 **描述：**
 
 注册设置循环模式的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -758,6 +816,8 @@ AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avses
 
 取消注册设置循环模式的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -782,6 +842,8 @@ AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avse
 **描述：**
 
 设置收藏的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -809,6 +871,8 @@ AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* av
 
 取消设置收藏的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -833,6 +897,8 @@ AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* 
 **描述：**
 
 注册设备变化的回调。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -859,6 +925,8 @@ AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession
 
 取消注册设备变化的回调。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -883,6 +951,8 @@ AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char
 **描述：**
 
 获取已经存在的媒体会话对象。 当不再使用媒体会话对象时，调用[OH_AVSession_Destroy](capi-native-avsession-h.md#oh_avsession_destroy)进行释放。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -911,6 +981,8 @@ AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, O
 
 创建投播控制器对象。 当投播控制器对象不再使用时，调用[OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy)进行释放。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -936,6 +1008,8 @@ AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)
 
 停止当前投播并断开设备连接。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -959,6 +1033,8 @@ AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSe
 **描述：**
 
 获取当前输出设备。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -984,6 +1060,8 @@ AVSession_ErrCode OH_AVSession_ReleaseOutputDevice(OH_AVSession* avsession, AVSe
 **描述：**
 
 释放输出设备对象。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 

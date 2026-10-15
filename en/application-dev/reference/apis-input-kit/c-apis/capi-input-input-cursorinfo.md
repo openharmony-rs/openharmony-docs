@@ -6,7 +6,7 @@ typedef struct Input_CursorInfo Input_CursorInfo
 
 ## Overview
 
-Defines mouse cursor information. It is used to manage and control the display behavior and appearance properties of the mouse cursor in the input system, including cursor display state, cursor style, cursor size level, and cursor color.
+Defines the mouse cursor information, which is used to describe the display behavior and appearance attributes of the mouse cursor in the input system, including the cursor display state, cursor style, cursor size level, and cursor color.
 
 **System capability**: SystemCapability.MultimodalInput.Input.Core
 

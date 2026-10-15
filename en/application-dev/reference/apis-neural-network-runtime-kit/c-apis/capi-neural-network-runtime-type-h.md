@@ -6,6 +6,8 @@ Defines the structure and enumeration.<br> include "neural_network_runtime/neura
 
 **Library**: libneural_network_runtime.so
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 **Related module**: [NeuralNetworkRuntime](capi-neuralnetworkruntime.md)
@@ -67,6 +69,8 @@ enum OH_NN_PerformanceMode
 
 Defines the hardware performance mode.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 | Enum item | Description |
@@ -87,6 +91,8 @@ enum OH_NN_Priority
 
 Defines the model inference task priority.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 | Enum item | Description |
@@ -105,6 +111,8 @@ enum OH_NN_ReturnCode
 **Description**
 
 Defines error codes.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -136,6 +144,8 @@ enum OH_NN_FuseType
 
 Defines activation function types in the fusion operator.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 | Enum item | Description |
@@ -153,6 +163,8 @@ enum OH_NN_Format
 **Description**
 
 Defines the layout type of tensor data.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -173,6 +185,8 @@ enum OH_NN_DeviceType
 
 Defines device types.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 9
 
 | Enum item | Description |
@@ -191,6 +205,8 @@ enum OH_NN_DataType
 **Description**
 
 Defines tensor data types.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -219,6 +235,8 @@ enum OH_NN_OperationType
 **Description**
 
 Defines operator types.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -342,6 +360,8 @@ enum OH_NN_TensorType
 **Description**
 
 Enumerates the tensor data types.<br> Tensors are usually used to set the input, output, and operator parameters of a model. When a tensor is used as the input or output of a model (or operator), set the tensor type to [OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype). When the tensor is used as an operator parameter, select an enumerated value other than [OH_NN_TENSOR](capi-neural-network-runtime-type-h.md#oh_nn_tensortype) as the tensor type. Assume that the <b>pad</b> parameter of the [OH_NN_OPS_CONV2D](capi-neural-network-runtime-type-h.md#oh_nn_operationtype) operator is being set. You need to set the <b>type</b> attribute of the [OH_NN_Tensor](capi-neuralnetworkruntime-oh-nn-tensor.md) instance to [OH_NN_CONV2D_PAD](capi-neural-network-runtime-type-h.md#oh_nn_tensortype). The settings of other operator parameters are similar. The enumerated values are named in the format OH_NN_{<i>Operator name</i>}_{<i>Attribute name</i>}.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 9
 
@@ -524,6 +544,8 @@ typedef void (*NN_OnRunDone)(void *userData, OH_NN_ReturnCode errCode, void *out
 
 Defines the callback function handle for the post-process when the asynchronous execution has been done.<br> Use <b>userData</b> to identify the asynchronous execution you want to get. It is the argument <b>userData</b> passed to OH_NNExecutor_RunAsync.<br> Use <b>errCode</b> of type [OH_NN_ReturnCode](capi-neural-network-runtime-type-h.md#oh_nn_returncode) to get the error code returned by the asynchronous execution.<br> The <b>outputTensor</b> and <b>outputCount</b> are the inference results, which is the same as ones passed to OH_NNExecutor_RunAsync.
 
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
+
 **Since**: 11
 
 **Parameters**:
@@ -544,6 +566,8 @@ typedef void (*NN_OnServiceDied)(void *userData)
 **Description**
 
 Defines the callback function handle for the post-process when the device driver service is dead during asynchronous execution.<br> You should recompile the model if this callback function is called.<br> Use <b>userData</b> to identify the asynchronous execution you want to get. It is the argument <b>userData</b> passed to OH_NNExecutor_RunAsync.
+
+**System capability**: SystemCapability.AI.NeuralNetworkRuntime
 
 **Since**: 11
 

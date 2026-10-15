@@ -6,6 +6,8 @@
 
 **库：** libohgame_controller.z.so
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)
@@ -75,6 +77,8 @@ GameController_ErrorCode OH_GamePad_LeftShoulder_RegisterButtonInputMonitor(Game
 
 注册LeftShoulder按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -104,6 +108,8 @@ GameController_ErrorCode OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor(vo
 
 取消注册LeftShoulder按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -121,6 +127,8 @@ GameController_ErrorCode OH_GamePad_RightShoulder_RegisterButtonInputMonitor(Gam
 **描述：**
 
 注册RightShoulder按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -151,6 +159,8 @@ GameController_ErrorCode OH_GamePad_RightShoulder_UnregisterButtonInputMonitor(v
 
 取消注册RightShoulder按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -168,6 +178,8 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterButtonInputMonitor(GameP
 **描述：**
 
 注册LeftTrigger按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -198,6 +210,8 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor(voi
 
 取消注册LeftTrigger按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -215,6 +229,8 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterAxisInputMonitor(GamePad
 **描述：**
 
 注册LeftTrigger轴事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -245,6 +261,8 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor(void)
 
 取消注册LeftTrigger轴事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -262,6 +280,8 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterButtonInputMonitor(Game
 **描述：**
 
 注册RightTrigger按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -292,6 +312,8 @@ GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterButtonInputMonitor(vo
 
 取消注册RightTrigger按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -309,6 +331,8 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterAxisInputMonitor(GamePa
 **描述：**
 
 注册RightTrigger轴事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -339,6 +363,8 @@ GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterAxisInputMonitor(void
 
 取消注册RightTrigger轴事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -356,6 +382,8 @@ GameController_ErrorCode OH_GamePad_ButtonMenu_RegisterButtonInputMonitor(GamePa
 **描述：**
 
 注册Menu按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -386,6 +414,8 @@ GameController_ErrorCode OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor(void
 
 取消注册Menu按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -403,6 +433,8 @@ GameController_ErrorCode OH_GamePad_ButtonHome_RegisterButtonInputMonitor(GamePa
 **描述：**
 
 注册Home按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -433,6 +465,8 @@ GameController_ErrorCode OH_GamePad_ButtonHome_UnregisterButtonInputMonitor(void
 
 取消注册Home按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -450,6 +484,8 @@ GameController_ErrorCode OH_GamePad_ButtonA_RegisterButtonInputMonitor(GamePad_B
 **描述：**
 
 注册A按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -480,6 +516,8 @@ GameController_ErrorCode OH_GamePad_ButtonA_UnregisterButtonInputMonitor(void)
 
 取消注册A按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -497,6 +535,8 @@ GameController_ErrorCode OH_GamePad_ButtonB_RegisterButtonInputMonitor(GamePad_B
 **描述：**
 
 注册B按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -527,6 +567,8 @@ GameController_ErrorCode OH_GamePad_ButtonB_UnregisterButtonInputMonitor(void)
 
 取消注册B按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -544,6 +586,8 @@ GameController_ErrorCode OH_GamePad_ButtonX_RegisterButtonInputMonitor(GamePad_B
 **描述：**
 
 注册X按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -574,6 +618,8 @@ GameController_ErrorCode OH_GamePad_ButtonX_UnregisterButtonInputMonitor(void)
 
 取消注册X按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -591,6 +637,8 @@ GameController_ErrorCode OH_GamePad_ButtonY_RegisterButtonInputMonitor(GamePad_B
 **描述：**
 
 注册Y按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -621,6 +669,8 @@ GameController_ErrorCode OH_GamePad_ButtonY_UnregisterButtonInputMonitor(void)
 
 取消注册Y按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -638,6 +688,8 @@ GameController_ErrorCode OH_GamePad_ButtonC_RegisterButtonInputMonitor(GamePad_B
 **描述：**
 
 注册C按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -668,6 +720,8 @@ GameController_ErrorCode OH_GamePad_ButtonC_UnregisterButtonInputMonitor(void)
 
 取消注册C按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -685,6 +739,8 @@ GameController_ErrorCode OH_GamePad_ButtonNonstandard_RegisterButtonInputMonitor
 **描述：**
 
 注册非标准按钮事件的回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 26.0.1
 
@@ -715,6 +771,8 @@ GameController_ErrorCode OH_GamePad_ButtonNonstandard_UnregisterButtonInputMonit
 
 取消注册非标准按钮事件的回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 26.0.1
 
 **返回值：**
@@ -732,6 +790,8 @@ GameController_ErrorCode OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor(G
 **描述：**
 
 注册方向按键的向左按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -762,6 +822,8 @@ GameController_ErrorCode OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor
 
 取消注册方向按键的向左按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -779,6 +841,8 @@ GameController_ErrorCode OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor(
 **描述：**
 
 注册方向按键的向右按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -809,6 +873,8 @@ GameController_ErrorCode OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonito
 
 取消注册方向按键的向右按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -826,6 +892,8 @@ GameController_ErrorCode OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor(Gam
 **描述：**
 
 注册方向按键的向上按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -856,6 +924,8 @@ GameController_ErrorCode OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor(v
 
 取消注册方向按键的向上按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -873,6 +943,8 @@ GameController_ErrorCode OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor(G
 **描述：**
 
 注册方向按键的向下按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -903,6 +975,8 @@ GameController_ErrorCode OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor
 
 取消注册方向按键的向下按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -920,6 +994,8 @@ GameController_ErrorCode OH_GamePad_Dpad_RegisterAxisInputMonitor(GamePad_AxisIn
 **描述：**
 
 注册方向按键轴事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -950,6 +1026,8 @@ GameController_ErrorCode OH_GamePad_Dpad_UnregisterAxisInputMonitor(void)
 
 取消注册方向按键轴事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -967,6 +1045,8 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor(Ga
 **描述：**
 
 注册LeftThumbstick按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -997,6 +1077,8 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor(
 
 取消注册LeftThumbstick按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -1014,6 +1096,8 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor(Game
 **描述：**
 
 注册LeftThumbstick轴事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -1044,6 +1128,8 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor(vo
 
 取消注册LeftThumbstick轴事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -1061,6 +1147,8 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterButtonInputMonitor(G
 **描述：**
 
 注册RightThumbstick按键事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -1091,6 +1179,8 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor
 
 取消注册RightThumbstick按键事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -1108,6 +1198,8 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterAxisInputMonitor(Gam
 **描述：**
 
 注册RightThumbstick轴事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -1137,6 +1229,8 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor(v
 **描述：**
 
 取消注册RightThumbstick轴事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 

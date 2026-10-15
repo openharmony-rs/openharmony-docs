@@ -8,6 +8,8 @@ Provides methods for creating, destroying, reading, and writing the text box con
 
 **Library**: libohinputmethod.so
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Related module**: [InputMethod](capi-inputmethod.md)
@@ -57,6 +59,8 @@ InputMethod_TextConfig *OH_TextConfig_Create(void)
 
 Create a new [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) instance.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Returns**:
@@ -75,6 +79,8 @@ void OH_TextConfig_Destroy(InputMethod_TextConfig *config)
 
 Destroy a [InputMethod_TextConfig](capi-inputmethod-inputmethod-textconfig.md) instance.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -92,6 +98,8 @@ InputMethod_ErrorCode OH_TextConfig_SetInputType(InputMethod_TextConfig *config,
 **Description**
 
 Set input type into TextConfig.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -118,6 +126,8 @@ InputMethod_ErrorCode OH_TextConfig_SetEnterKeyType(InputMethod_TextConfig *conf
 
 Set enter key type into TextConfig.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -143,6 +153,8 @@ InputMethod_ErrorCode OH_TextConfig_SetPreviewTextSupport(InputMethod_TextConfig
 
 Set preview text support into TextConfig.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -167,6 +179,8 @@ InputMethod_ErrorCode OH_TextConfig_SetSelection(InputMethod_TextConfig *config,
 **Description**
 
 Set selection into TextConfig.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -194,6 +208,8 @@ InputMethod_ErrorCode OH_TextConfig_SetWindowId(InputMethod_TextConfig *config, 
 
 Set window id into TextConfig.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -218,6 +234,8 @@ InputMethod_ErrorCode OH_TextConfig_SetPlaceholder(InputMethod_TextConfig *confi
 **Description**
 
 Sets the placeholder text of an InputMethod_TextConfig instance.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 20
 
@@ -245,6 +263,8 @@ InputMethod_ErrorCode OH_TextConfig_SetAbilityName(InputMethod_TextConfig *confi
 
 Sets the ability name of an InputMethod_TextConfig instance.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -271,6 +291,8 @@ InputMethod_ErrorCode OH_TextConfig_SetConsumeKeyEvents(InputMethod_TextConfig *
 
 Set whether the editor supports consuming key events into TextConfig.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -295,6 +317,8 @@ InputMethod_ErrorCode OH_TextConfig_GetInputType(InputMethod_TextConfig *config,
 **Description**
 
 Get input type from TextConfig
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -321,6 +345,8 @@ InputMethod_ErrorCode OH_TextConfig_GetEnterKeyType(InputMethod_TextConfig *conf
 
 Get enter key type from TextConfig
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -345,6 +371,8 @@ InputMethod_ErrorCode OH_TextConfig_IsPreviewTextSupported(InputMethod_TextConfi
 **Description**
 
 Get is preview text supported from TextConfig.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -371,6 +399,8 @@ InputMethod_ErrorCode OH_TextConfig_GetCursorInfo(InputMethod_TextConfig *config
 
 Get cursor info from TextConfig.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -396,6 +426,8 @@ InputMethod_ErrorCode OH_TextConfig_GetTextAvoidInfo(InputMethod_TextConfig *con
 
 Get text avoid information from text configuration.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -420,6 +452,8 @@ InputMethod_ErrorCode OH_TextConfig_GetSelection(InputMethod_TextConfig *config,
 **Description**
 
 Get selection from TextConfig.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -447,6 +481,8 @@ InputMethod_ErrorCode OH_TextConfig_GetWindowId(InputMethod_TextConfig *config, 
 
 Get window id from TextConfig.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -471,6 +507,8 @@ InputMethod_ErrorCode OH_TextConfig_GetPlaceholder(InputMethod_TextConfig *confi
 **Description**
 
 Obtains the placeholder text of an InputMethod_TextConfig instance.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 20
 
@@ -498,6 +536,8 @@ InputMethod_ErrorCode OH_TextConfig_GetAbilityName(InputMethod_TextConfig *confi
 
 Obtains the ability name of an InputMethod_TextConfig instance.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 20
 
 **Parameters**:
@@ -523,6 +563,8 @@ InputMethod_ErrorCode OH_TextConfig_GetConsumeKeyEvents(InputMethod_TextConfig *
 **Description**
 
 Get whether the editor supports consuming key events from TextConfig.
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 26.0.0
 

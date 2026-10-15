@@ -6,6 +6,8 @@
 
 **库：** libohavsession.so
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
@@ -41,6 +43,8 @@ AVSession_ErrCode OH_DeviceInfo_GetAVCastCategory(AVSession_DeviceInfo *deviceIn
 
 获取目标设备的投播类别。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -65,6 +69,8 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceId(AVSession_DeviceInfo *deviceInfo, ch
 **描述：**
 
 获取目标设备的设备ID。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 
@@ -91,6 +97,8 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceName(AVSession_DeviceInfo *deviceInfo, 
 
 获取目标设备的设备名称。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -116,6 +124,8 @@ AVSession_ErrCode OH_DeviceInfo_GetDeviceType(AVSession_DeviceInfo *deviceInfo, 
 
 获取目标设备的设备类型。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -140,6 +150,8 @@ AVSession_ErrCode OH_DeviceInfo_GetSupportedProtocols(AVSession_DeviceInfo *devi
 **描述：**
 
 获取目标设备支持的协议。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 

@@ -6,6 +6,8 @@ Declares the APIs used to obtain details of specific certificates.
 
 **库：** libohcert_manager.z.so
 
+**系统能力：** SystemCapability.Security.CertificateManager
+
 **起始版本：** 22
 
 **相关模块：** [CertManager](capi-certmanager.md)
@@ -33,6 +35,8 @@ int32_t OH_CertManager_GetUkeyCertificate(const OH_CM_Blob *keyUri, const OH_CM_
 **描述：**
 
 获取USB证书凭据的详情信息列表。调用完成后，需要调用OH_CertManager_FreeUkeyCertificate释放certificateList内存。
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -62,6 +66,8 @@ int32_t OH_CertManager_GetPrivateCertificate(const OH_CM_Blob *keyUri, OH_CM_Cre
 
 获取特定应用私有证书凭据详细信息。
 
+**系统能力：** SystemCapability.Security.CertificateManager
+
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
 **起始版本：** 22
@@ -88,6 +94,8 @@ int32_t OH_CertManager_GetPublicCertificate(const OH_CM_Blob *keyUri, OH_CM_Cred
 **描述：**
 
 获取特定用户公共证书凭据详细信息。调用完成后，需要调用OH_CertManager_FreeCredential释放certificate内存。
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 **需要权限：** ohos.permission.ACCESS_CERT_MANAGER
 
@@ -116,6 +124,8 @@ void OH_CertManager_FreeUkeyCertificate(OH_CM_CredentialDetailList *certificateL
 
 销毁证书详情信息列表。
 
+**系统能力：** SystemCapability.Security.CertificateManager
+
 **起始版本：** 22
 
 **参数：**
@@ -133,6 +143,8 @@ void OH_CertManager_FreeCredential(OH_CM_Credential *certificate)
 **描述：**
 
 销毁证书详情。
+
+**系统能力：** SystemCapability.Security.CertificateManager
 
 **起始版本：** 22
 

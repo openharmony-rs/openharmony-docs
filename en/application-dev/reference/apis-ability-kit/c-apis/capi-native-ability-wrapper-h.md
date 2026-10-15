@@ -6,6 +6,8 @@ Declares the native ability wrapper APIs.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -38,6 +40,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityInstanceId(const AbilityRun
 
 Get ability instance ID from NativeAbilityWrapper.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -63,6 +67,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetAbilityName(const AbilityRuntime_N
 **Description**
 
 Get ability name from NativeAbilityWrapper.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -90,6 +96,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetEnv(const AbilityRuntime_NativeAbi
 **Description**
 
 Get napi_env from NativeAbilityWrapper.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 

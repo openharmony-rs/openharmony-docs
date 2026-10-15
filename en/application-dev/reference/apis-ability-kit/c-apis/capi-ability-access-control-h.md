@@ -8,6 +8,8 @@ Declares the APIs for implementing application access control.
 
 **Library**: libability_access_control.so
 
+**System capability**: SystemCapability.Security.AccessToken
+
 **Since**: 12
 
 **Related module**: [AbilityAccessControl](capi-abilityaccesscontrol.md)
@@ -31,6 +33,8 @@ bool OH_AT_CheckSelfPermission(const char *permission)
 **Description**
 
 Checks whether a permission is granted to this application.
+
+**System capability**: SystemCapability.Security.AccessToken
 
 **Since**: 12
 

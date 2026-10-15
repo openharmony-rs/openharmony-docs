@@ -6,6 +6,8 @@ Defines enumerations and APIs related to **List**.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -16,7 +18,7 @@ Defines enumerations and APIs related to **List**.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | Defines the size of the main axis of a child component of the **List** component. |
+| [ArkUI_ListChildrenMainSize](capi-arkui-nativemodule-arkui-listchildrenmainsize.md) | ArkUI_ListChildrenMainSize | Defines the main axis size information of the child component of the **List** component. |
 
 ### Enum
 
@@ -51,6 +53,8 @@ enum ArkUI_ListItemAlignment
 
 Enumerates the alignment modes of items along the cross axis. The default value is **<br>ARKUI_LIST_ITEM_ALIGNMENT_START**.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -69,14 +73,16 @@ enum ArkUI_StickyStyle
 
 Enumerates the modes for pinning the header to the top or the footer to the bottom.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t) and footer of ListItemGroup are not pinned to the top and bottom, respectively. |
-| ARKUI_STICKY_STYLE_HEADER = 1 | [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t) of ListItemGroup is pinned to the top, and footer is not pinned to the bottom. |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t) of ListItemGroup is not pinned to the top, and footer is pinned to the bottom. |
-| ARKUI_STICKY_STYLE_BOTH = 3 | [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t) of ListItemGroup is pinned to the top, and footer is pinned to the bottom. |
+| ARKUI_STICKY_STYLE_NONE = 0 | header and footer of ListItemGroup are not pinned to the top and bottom, respectively. |
+| ARKUI_STICKY_STYLE_HEADER = 1 | header of ListItemGroup is pinned to the top, and footer is not pinned to the bottom. |
+| ARKUI_STICKY_STYLE_FOOTER = 2 | header of ListItemGroup is not pinned to the top, and footer is pinned to the bottom. |
+| ARKUI_STICKY_STYLE_BOTH = 3 | header of ListItemGroup is pinned to the top, and footer is pinned to the bottom. |
 
 ### ArkUI_ListItemGroupArea
 
@@ -88,12 +94,14 @@ enum ArkUI_ListItemGroupArea
 
 Enumerates the areas in the ListItemGroup component. The default value is **<br>ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE**.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 | Enum item | Description |
 | -- | -- |
 | ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | Outside the area of the **ListItemGroup** component. |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | Area without the [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t), footer, and ListItem in the **ListItemGroup** component. |
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | Area without the header, footer, and ListItem in the **ListItemGroup** component. |
 | ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | List item area of the **ListItemGroup** component. |
 | ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | Header area of the **ListItemGroup** component. |
 | ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | Footer area of the **ListItemGroup** component. |
@@ -110,6 +118,8 @@ ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 **Description**
 
 Creates a **ListChildrenMainSize** instance. After use, call [OH_ArkUI_ListChildrenMainSizeOption_Dispose](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_dispose) to release resources.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -129,6 +139,8 @@ void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* opt
 
 Disposes of a **ListChildrenMainSize** instance created by [OH_ArkUI_ListChildrenMainSizeOption_Create](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_create). The instance cannot be accessed after disposal.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -146,6 +158,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 **Description**
 
 Sets the default size of the list item in the List component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -172,6 +186,8 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 
 Obtains the default size of the list item in the List component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -196,6 +212,8 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 
 Adjusts the length of the main axis size array of child items in the List component. When the array is expanded, the initial value of new elements is **-1**.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -214,6 +232,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 **Description**
 
 Deletes **deleteCount** elements from the main axis size array of child items in the List component starting from the specified index position, and inserts **addCount** elements with an initial value of **-1** at that position. If the value of **deleteCount** exceeds the number of remaining elements, deletion proceeds to the end of the array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -242,6 +262,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 
 Updates the size at the specified index in the child item size array of the List component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -267,6 +289,8 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 **Description**
 
 Obtains the size at the specified index in the child item size array of the List component along the main axis. The vertical direction indicates the height, and the horizontal direction indicates the width.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

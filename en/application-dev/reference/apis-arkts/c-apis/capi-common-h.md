@@ -6,6 +6,8 @@ Defines common enum types of ArkTS native module.
 
 **Library**: libace_napi.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
 **Since**: 10
 
 **Related module**: [ArkTS_Napi_NativeModule](capi-arkts-napi-nativemodule.md)
@@ -32,6 +34,8 @@ enum napi_qos_t
 
 Defines common enum types of ArkTS native module.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
+
 **Since**: 10
 
 | Enum item | Description |
@@ -46,6 +50,8 @@ enum napi_event_mode
 **Description**
 
 Indicates the running mode of the native event loop in an asynchronous native thread.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 
@@ -63,6 +69,8 @@ enum napi_task_priority
 **Description**
 
 Indicates the priority of a task dispatched from native thread to ArkTS thread.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Napi
 
 **Since**: 12
 

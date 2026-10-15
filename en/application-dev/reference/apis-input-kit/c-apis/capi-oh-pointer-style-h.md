@@ -2,9 +2,13 @@
 
 ## Overview
 
+Defines the mouse cursor styles.
+
 **Include**: <multimodalinput/oh_pointer_style.h>
 
 **Library**: libohinput.so
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
@@ -16,13 +20,7 @@
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [Input_PointerStyle](#input_pointerstyle) | Input_PointerStyle | Enumerates the pointer styles. |
-
-### Macro
-
-| Name | Description |
-| -- | -- |
-| OH_POINTER_STYLE_H | Defines the mouse pointer styles.<br>**Since**: 22<br>**System capability**: SystemCapability.MultimodalInput.Input.Core |
+| [Input_PointerStyle](#input_pointerstyle) | Input_PointerStyle | Enumerates the cursor styles. |
 
 ## Enum type description
 
@@ -34,13 +32,15 @@ enum Input_PointerStyle
 
 **Description**
 
-Enumerates the pointer styles.
+Enumerates the cursor styles.
+
+**System capability**: SystemCapability.MultimodalInput.Input.Core
 
 **Since**: 22
 
 | Enum item | Description |
 | -- | -- |
-| DEFAULT = 0 | Cursor style displayed when no specific style is set by the application.<br>**Since**: 22 |
+| DEFAULT = 0 | Cursor style displayed when no style is set by the app.<br>**Since**: 22 |
 | EAST = 1 | East arrow<br>**Since**: 22 |
 | WEST = 2 | West arrow<br>**Since**: 22 |
 | SOUTH = 3 | South arrow<br>**Since**: 22 |
@@ -79,7 +79,7 @@ Enumerates the pointer styles.
 | MIDDLE_BTN_SOUTH_EAST = 36 | Scrolling south-east<br>**Since**: 22 |
 | MIDDLE_BTN_SOUTH_WEST = 37 | Scrolling south-west<br>**Since**: 22 |
 | MIDDLE_BTN_NORTH_SOUTH_WEST_EAST = 38 | Moving as a cone in four directions<br>**Since**: 22 |
-| HORIZONTAL_TEXT_CURSOR = 39 | Horizontal text selection<br>**Since**: 22 |
+| HORIZONTAL_TEXT_CURSOR = 39 | Selecting text horizontally<br>**Since**: 22 |
 | CURSOR_CROSS = 40 | Cross<br>**Since**: 22 |
 | CURSOR_CIRCLE = 41 | Circle<br>**Since**: 22 |
 | LOADING = 42 | Loading<br>**Since**: 22 |
@@ -87,11 +87,11 @@ Enumerates the pointer styles.
 | MIDDLE_BTN_EAST_WEST = 44 | Scrolling east-west<br>**Since**: 22 |
 | RUNNING_LEFT = 45 | Running in the background (extension 1)<br>**Since**: 22 |
 | RUNNING_RIGHT = 46 | Running in the background (extension 2)<br>**Since**: 22 |
-| AECH_DEVELOPER_DEFINED_ICON = 47 | Custom circular pointer<br>**Since**: 22 |
-| SCREENRECORDER_CURSOR = 48 | Screen recording<br>**Since**: 22 |
-| LASER_CURSOR = 49 | Floating This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br> In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.<br>**Since**: 22 |
-| LASER_CURSOR_DOT = 50 | Click This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set.<br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.<br>**Since**: 22 |
-| LASER_CURSOR_DOT_RED = 51 | Laser pointer This pointer can be used only when the stylus enters the air mouse mode and cannot be directly set. <br>In air mouse mode, you can rotate the stylus in the air to control the movement of the virtual pointer on the screen and press the button on the stylus to turn pages up or down. This mode is used PPT presentation and air gesture control.<br>**Since**: 22 |
-| DEVELOPER_DEFINED_ICON = -100 | Custom pointer. You can use the OH_Input_SetCustomCursor to set a custom pointer, but not the OH_Input_SetPointerStyle.<br>**Since**: 22 |
+| AECH_DEVELOPER_DEFINED_ICON = 47 | Custom circular cursor<br>**Since**: 22 |
+| SCREENRECORDER_CURSOR = 48 | Screen recording cursor<br>**Since**: 22 |
+| LASER_CURSOR = 49 | Floating cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.<br>**Since**: 22 |
+| LASER_CURSOR_DOT = 50 | Click cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.<br>**Since**: 22 |
+| LASER_CURSOR_DOT_RED = 51 | Laser pointer cursor. This cursor is used when the stylus enters air mouse mode and cannot be set directly.<br>In air mouse mode, the stylus can be rotated in the air to control the movement of the virtual cursor on the screen, and the buttons on the stylus body can be used to implement page up/down, for scenarios such as PPT presentations and air gesture operations.<br>**Since**: 22 |
+| DEVELOPER_DEFINED_ICON = -100 | Custom cursor. You can use the [OH_Input_SetCustomCursor](capi-oh-input-manager-h.md#oh_input_setcustomcursor) to set a custom cursor, but not the [OH_Input_SetPointerStyle](capi-oh-input-manager-h.md#oh_input_setpointerstyle).<br>**Since**: 22 |
 
 

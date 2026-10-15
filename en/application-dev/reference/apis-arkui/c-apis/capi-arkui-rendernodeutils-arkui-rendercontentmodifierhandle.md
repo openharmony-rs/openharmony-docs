@@ -6,7 +6,7 @@ typedef struct ArkUI_RenderContentModifierHandle ArkUI_RenderContentModifierHand
 
 ## Overview
 
-Defines a content modifier pointer.
+Defines the pointer to a render content modifier, which is used to reference a content modifier. A content modifier can be attached to a render node to add render attributes or set the onDraw callback.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -6,6 +6,8 @@
 
 **库：** libhttp_interceptor.so
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 24
 
 **相关模块：** [netstack](capi-netstack.md)
@@ -39,6 +41,8 @@ int32_t OH_Http_AddReadOnlyInterceptor(struct OH_Http_Interceptor *interceptor)
 >
 > The interceptor remains active until it is explicitly removed by the developer. you must call [OH_Http_RemoveInterceptor](capi-http-interceptor-h.md#oh_http_removeinterceptor) to release a specific interceptor or [OH_Http_RemoveAllInterceptors](capi-http-interceptor-h.md#oh_http_removeallinterceptors) to release a group of interceptors.
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 24
@@ -69,6 +73,8 @@ int32_t OH_Http_AddWritableInterceptor(struct OH_Http_Interceptor *interceptor)
 >
 > The interceptor remains active until it is explicitly removed by the developer. you must call [OH_Http_RemoveInterceptor](capi-http-interceptor-h.md#oh_http_removeinterceptor) to release a specific interceptor or [OH_Http_RemoveAllInterceptors](capi-http-interceptor-h.md#oh_http_removeallinterceptors) to release a group of interceptors.
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 26.0.0
@@ -94,6 +100,8 @@ int32_t OH_Http_RemoveInterceptor(struct OH_Http_Interceptor *interceptor)
 **描述：**
 
 删除指定的HTTP全局拦截器。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -125,6 +133,8 @@ int32_t OH_Http_RemoveAllInterceptors(int32_t groupId)
 >
 > The groupId is allocated and managed by the application itself when creating interceptors. If multiple modules within the application need to use interceptors, the application must properly allocate and manage groupId to avoid conflicts. Conflicts in groupId between internal modules may lead to accidental deletion of interceptors when calling this function.
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 24
@@ -151,6 +161,8 @@ int32_t OH_Http_StartAllInterceptors(int32_t groupId)
 
 启用指定组ID的所有HTTP拦截器。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 24
@@ -176,6 +188,8 @@ int32_t OH_Http_StopAllInterceptors(int32_t groupId)
 **描述：**
 
 停用指定组ID的所有HTTP拦截器。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
 

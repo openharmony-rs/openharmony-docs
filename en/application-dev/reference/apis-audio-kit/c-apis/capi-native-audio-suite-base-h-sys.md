@@ -6,6 +6,8 @@ Declare underlying data structure.
 
 **Library**: libohaudiosuite.so
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 22
 
 **System API:** This is a system API.
@@ -38,6 +40,8 @@ enum OH_AudioSuite_SystemNodeType
 **Description**
 
 Define audio node system type.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 

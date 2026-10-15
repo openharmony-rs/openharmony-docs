@@ -6,6 +6,8 @@
 
 **库：** libmedia_asset_manager.so
 
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **起始版本：** 12
 
 **相关模块：** [MediaAssetManager](capi-mediaassetmanager.md)
@@ -29,6 +31,8 @@ MediaLibrary_ErrorCode OH_MediaAccessHelper_ApplyChanges(OH_MediaAssetChangeRequ
 **描述：**
 
 发起应用资产或相册的更改请求。
+
+**系统能力：** SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **需要权限：** ohos.permission.WRITE_IMAGEVIDEO
 

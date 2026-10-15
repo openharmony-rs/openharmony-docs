@@ -6,6 +6,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -35,6 +37,8 @@ OH_Drawing_Filter* OH_Drawing_FilterCreate(void)
 
 创建一个滤波器对象。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **返回值：**
@@ -52,6 +56,8 @@ void OH_Drawing_FilterSetImageFilter(OH_Drawing_Filter* filter, OH_Drawing_Image
 **描述：**
 
 为滤波器对象设置图像滤波器对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>filter为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 
@@ -72,6 +78,8 @@ void OH_Drawing_FilterSetMaskFilter(OH_Drawing_Filter* filter, OH_Drawing_MaskFi
 
 为滤波器对象设置蒙版滤波器对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>filter为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 11
 
 **参数：**
@@ -90,6 +98,8 @@ void OH_Drawing_FilterSetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_Color
 **描述：**
 
 为滤波器对象设置颜色滤波器对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>filter为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 
@@ -110,6 +120,8 @@ void OH_Drawing_FilterGetColorFilter(OH_Drawing_Filter* filter, OH_Drawing_Color
 
 从滤波器对象获取颜色滤波器对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>filter、colorFilter任意一个为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -128,6 +140,8 @@ void OH_Drawing_FilterDestroy(OH_Drawing_Filter* filter)
 **描述：**
 
 销毁滤波器对象，并收回该对象占用的内存。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 11
 

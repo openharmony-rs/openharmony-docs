@@ -6,7 +6,7 @@ typedef struct ArkUI_NodeContentHandle ArkUI_NodeContentHandle
 
 ## Overview
 
-Defines the pointer type of the ArkUI node content.
+Defines the pointer to an **ArkUI_NodeContent** object on the native side, which is used to reference and pass a **NodeContent** instance in native APIs.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

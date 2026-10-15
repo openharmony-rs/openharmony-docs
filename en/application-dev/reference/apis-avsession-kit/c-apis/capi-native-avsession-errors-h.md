@@ -6,6 +6,8 @@ Declare avsession related error.
 
 **Library**: libohavsession.so
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 **Related module**: [OHAVSession](capi-ohavsession.md)
@@ -32,6 +34,8 @@ enum AVSession_ErrCode
 **Description**
 
 AVSession error code
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -101,6 +105,8 @@ enum AVSessionCallback_Result
 
 Defines enumeration of avsession callback result.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -117,6 +123,8 @@ enum AVMetadata_Result
 **Description**
 
 AVMetadata error code
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -135,6 +143,8 @@ enum AVQueueItem_Result
 **Description**
 
 AVQUEUEITEM error code
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 

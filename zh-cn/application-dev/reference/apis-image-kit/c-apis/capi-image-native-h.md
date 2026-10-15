@@ -6,6 +6,8 @@
 
 **库：** libohimage.so
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **相关模块：** [Image_NativeModule](capi-image-nativemodule.md)
@@ -47,6 +49,8 @@ Image_ErrorCode OH_ImageNative_GetImageSize(OH_ImageNative *image, Image_Size *s
 
 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象的[Image_Size](capi-image-nativemodule-image-size.md)信息。 <br>如果OH_ImageNative对象所存储的是相机预览流数据，即YUV图像数据，那么获取到的Image_Size中的宽高分别对应YUV图像的宽高；如果OH_ImageNative对象所存储的是相机拍照流数据，即JPEG图像， 由于已经是编码后的数据，Image_Size中的宽等于JPEG数据大小，高等于1。 <br>OH_ImageNative对象所存储的数据是预览流还是拍照流，取决于应用将receiver中的surfaceId传给相机的previewOutput还是captureOutput。相机预览与拍照最佳实践请参考 预览流二次处理(C/C++)与拍照(C/C++)。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -71,6 +75,8 @@ Image_ErrorCode OH_ImageNative_GetComponentTypes(OH_ImageNative *image, uint32_t
 **描述：**
 
 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象的组件列表信息。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
@@ -98,6 +104,8 @@ Image_ErrorCode OH_ImageNative_GetByteBuffer(OH_ImageNative *image, uint32_t com
 
 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的缓冲区。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -123,6 +131,8 @@ Image_ErrorCode OH_ImageNative_GetBufferSize(OH_ImageNative *image, uint32_t com
 **描述：**
 
 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的缓冲区的大小。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
@@ -150,6 +160,8 @@ Image_ErrorCode OH_ImageNative_GetRowStride(OH_ImageNative *image, uint32_t comp
 
 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的像素行宽。 <br>读取相机预览流数据时，需要考虑按stride进行读取，具体用法参考预览流二次处理(C/C++)。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -175,6 +187,8 @@ Image_ErrorCode OH_ImageNative_GetPixelStride(OH_ImageNative *image, uint32_t co
 **描述：**
 
 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中某个组件类型所对应的像素大小。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
@@ -202,6 +216,8 @@ Image_ErrorCode OH_ImageNative_GetTimestamp(OH_ImageNative *image, int64_t *time
 
 获取Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象中的时间戳信息。时间戳以纳秒为单位，通常是单调递增的。 <br>时间戳的具体含义和基准取决于图像的生产者，在相机预览/拍照场景，生产者就是相机。来自不同生产者的图像的时间戳可能有不同的含义和基准，因此可能无法进行比较。 <br>如果要获取某张照片的生成时间，可以通过[OH_ImageSourceNative_GetImageProperty](capi-image-source-native-h.md#oh_imagesourcenative_getimageproperty)接口读取相关的EXIF信息。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -227,6 +243,8 @@ Image_ErrorCode OH_ImageNative_Release(OH_ImageNative *image)
 
 释放Native [OH_ImageNative](capi-image-nativemodule-oh-imagenative.md)对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -250,6 +268,8 @@ Image_ErrorCode OH_ImageNative_GetColorSpace(OH_ImageNative *image, int32_t *col
 **描述：**
 
 获取图像OH_ImageNative对象中的色彩空间。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 23
 
@@ -276,6 +296,8 @@ Image_ErrorCode OH_ImageNative_GetFormat(OH_ImageNative *image, OH_NativeBuffer_
 
 获取图像OH_ImageNative对象中的图像格式。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -300,6 +322,8 @@ Image_ErrorCode OH_ImageNative_GetBufferData(OH_ImageNative *image, OH_ImageBuff
 **描述：**
 
 获取图像OH_ImageNative对象中的图像缓冲区数据对象。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 23
 

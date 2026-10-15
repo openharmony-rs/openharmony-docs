@@ -6,7 +6,7 @@ typedef struct ArkUI_AnimatorHandle ArkUI_AnimatorHandle
 
 ## Overview
 
-Defines the pointer to an animator object.
+Defines the pointer to an animator object, which is used to operate and control the ArkUI animation object.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

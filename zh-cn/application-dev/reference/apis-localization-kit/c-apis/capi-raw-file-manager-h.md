@@ -6,6 +6,8 @@
 
 **库：** librawfile.z.so
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 8
 
 **相关模块：** [rawfile](capi-rawfile.md)
@@ -47,6 +49,8 @@ NativeResourceManager *OH_ResourceManager_InitNativeResourceManager(napi_env env
 
 初始化NativeResourceManager对象。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 8
 
 **参数：**
@@ -72,6 +76,8 @@ void OH_ResourceManager_ReleaseNativeResourceManager(NativeResourceManager *resM
 
 释放NativeResourceManager对象及其关联资源。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 8
 
 **参数：**
@@ -89,6 +95,8 @@ RawDir *OH_ResourceManager_OpenRawDir(const NativeResourceManager *mgr, const ch
 **描述：**
 
 打开rawfile目录。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 8
 
@@ -121,6 +129,8 @@ RawFile *OH_ResourceManager_OpenRawFile(const NativeResourceManager *mgr, const 
 
 打开rawfile文件并返回RawFile对象，用于读取rawfile文件内容。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 8
 
 **参数：**
@@ -152,6 +162,8 @@ RawFile64 *OH_ResourceManager_OpenRawFile64(const NativeResourceManager *mgr, co
 
 打开rawfile文件并返回RawFile对象，用于读取rawfile文件内容。支持2GB以上的大文件。
 
+**系统能力：** SystemCapability.Global.ResourceManager
+
 **起始版本：** 11
 
 **参数：**
@@ -182,6 +194,8 @@ bool OH_ResourceManager_IsRawDir(const NativeResourceManager *mgr, const char *p
 **描述：**
 
 判断指定路径是否为rawfile的子目录。用于在遍历目录前，判断对应路径是否为目录，或在打开文件前，判断对应路径是否为文件。
+
+**系统能力：** SystemCapability.Global.ResourceManager
 
 **起始版本：** 12
 

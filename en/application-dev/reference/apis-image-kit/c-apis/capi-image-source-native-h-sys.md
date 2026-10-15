@@ -6,6 +6,8 @@ The file declares the APIs for image decoding.
 
 **Library**: libimage_source.so
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 12
 
 **System API:** This is a system API.
@@ -46,6 +48,8 @@ enum OH_ImageSource_SVGResourceLimitLevel
 
 Indicates the enumeration of SVG resource restriction levels. Higher levels allow fewer resources to be used when parsing and rendering SVG images. System resource limits are enforced regardless of the level specified.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 26.0.1
 
 **System API:** This is a system API.
@@ -69,6 +73,8 @@ Image_ErrorCode OH_ImageSourceNative_SetSvgResourceLimitLevel(OH_ImageSourceNati
 **Description**
 
 Sets the SVG resource limit level for the image source. This only takes effect for SVG format images. For non-SVG images, this function has no effect. Must be called before [OH_ImageSourceNative_CreatePixelmap](capi-image-source-native-h.md#oh_imagesourcenative_createpixelmap) to ensure the limit takes effect on both DOM parsing and rendering stages.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.1
 
@@ -97,6 +103,8 @@ Image_ErrorCode OH_ImageSourceNative_GetSvgResourceLimitLevel(OH_ImageSourceNati
 
 Gets the SVG resource limit level of the image source.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 26.0.1
 
 **System API:** This is a system API.
@@ -123,6 +131,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetNeedsDecodeDfxData(OH_DecodingOp
 **Description**
 
 Obtains the **needsDecodeDfxData** parameter in the decoding options.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -151,6 +161,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetNeedsDecodeDfxData(OH_DecodingOp
 
 Sets the **needsDecodeDfxData** parameter in the decoding options.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -177,6 +189,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredSizeForMainPixelmap(OH_De
 **Description**
 
 Gets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -205,6 +219,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredSizeForMainPixelmap(OH_De
 
 Sets the desiredSizeForMainPixelMap number for DecodingOptionsForPicture struct.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -231,6 +247,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_GetDesiredPixelFormat(OH_DecodingOp
 **Description**
 
 Get pixelFormat number for DecodingOptionsForPicture struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 
@@ -259,6 +277,8 @@ Image_ErrorCode OH_DecodingOptionsForPicture_SetDesiredPixelFormat(OH_DecodingOp
 
 Set pixelFormat number for DecodingOptionsForPicture struct.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -285,6 +305,8 @@ Image_ErrorCode OH_ImageSourceNative_ReadImageMetadataByType(OH_ImageSourceNativ
 **Description**
 
 Read metadata of the image source, use metadatatype to specify metadata of interest. If metadataType is not specified, all supported metadata will be returned.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 26.0.0
 

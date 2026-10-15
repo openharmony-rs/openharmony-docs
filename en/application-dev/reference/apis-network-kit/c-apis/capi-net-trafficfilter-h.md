@@ -6,6 +6,8 @@ Declares the C APIs for network traffic filtering and redirection. This header f
 
 **Library**: libnet_trafficfilter.so
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 **Related module**: [TrafficFilter](capi-trafficfilter.md)
@@ -40,6 +42,8 @@ int32_t OH_TrafficFilter_CreateRedirector(uint32_t group_id, uint32_t priority, 
 
 Creates a traffic redirection instance for redirecting TCP traffic to a proxy server. [OH_TrafficFilter_DestroyRedirector](capi-net-trafficfilter-h.md#oh_trafficfilter_destroyredirector) must be called to release resources. If this function fails, no valid redirector is returned.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
 **Since**: 26.0.0
@@ -70,6 +74,8 @@ int32_t OH_TrafficFilter_DestroyRedirector(OH_TrafficFilter_Redirector* redirect
 
 Destroys the redirection instance and releases related resources (including rules). The handle becomes invalid after the function is called.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
 **Since**: 26.0.0
@@ -95,6 +101,8 @@ int32_t OH_TrafficFilter_AddRedirectRule(OH_TrafficFilter_Redirector* redirector
 **Description**
 
 Adds a redirection rule Adds a TCP traffic redirection rule to redirect matched traffic to specified proxy server To clear redirect rules, you need to call [OH_TrafficFilter_ClearRedirectRule](capi-net-trafficfilter-h.md#oh_trafficfilter_clearredirectrule).
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -123,6 +131,8 @@ int32_t OH_TrafficFilter_ClearRedirectRule(OH_TrafficFilter_Redirector* redirect
 
 Clears all redirection rules.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
 **Since**: 26.0.0
@@ -148,6 +158,8 @@ int32_t OH_TrafficFilter_QueryProcess(const OH_TrafficFilter_ConnectionInfo* con
 **Description**
 
 Queries the process information based on network connection. This function queries the process that starts the connection using the five-tuple connection information, including the source IP address, destination IP address, source port number, destination port number, and protocol type.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -180,6 +192,8 @@ Set packet filter rule Add a packet filter rule to controller chain. only packet
 >
 > Logical relationship: - Conditions within a single OH_TrafficFilter_FilterRule structure are combined with logical AND. - Multiple rules added to the same OH_TrafficFilter_PacketController are combined with logical OR. To clear filter rules, you need to call [OH_TrafficFilter_ClearPacketRule](capi-net-trafficfilter-h.md#oh_trafficfilter_clearpacketrule).
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
 **Since**: 26.0.1
@@ -207,6 +221,8 @@ int32_t OH_TrafficFilter_ClearPacketRule(OH_TrafficFilter_PacketController* cont
 
 Clear packet filter rule Clear all packet filter rules in controller.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
 **Since**: 26.0.1
@@ -232,6 +248,8 @@ int32_t OH_TrafficFilter_CreatePacketController(uint32_t groupId, uint32_t prior
 **Description**
 
 Creates a packet controller instance. Creates a packet controller for intercepting and filtering network packets Resource Management: This instance occupies system resources. You must call [OH_TrafficFilter_DestroyPacketController](capi-net-trafficfilter-h.md#oh_trafficfilter_destroypacketcontroller) to release resources. If this function fails, no valid controller is returned.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
@@ -264,6 +282,8 @@ int32_t OH_TrafficFilter_DestroyPacketController(OH_TrafficFilter_PacketControll
 
 Destroys a packet controller instance. Destroys the controller and releases related resources, including rules and callbacks. After calling this function, the handle is invalid. Do not use it again.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
 **Since**: 26.0.1
@@ -294,6 +314,8 @@ Register a packet callback function. Register a callback function to handle inte
 >
 > <strong>Callback Model:</strong> <ul> <li><strong>Single Slot Model:</strong> A single <code>controller</code> instance supports only one active callback at a time.</li> <li><strong>Repeated Registration:</strong> If called again with a non-NULL callback, the new callback <strong>replaces</strong> the previously registered one. The previous callback is immediately unregistered. No error is returned for repeated registration.</li> <li><strong>Unregister/Destroy Semantics:</strong> <ul> <li>Calling [OH_TrafficFilter_UnregisterPacketCallback](capi-net-trafficfilter-h.md#oh_trafficfilter_unregisterpacketcallback) or destroying the <code>controller</code> immediately stops delivery of new packets to the callback.</li> <li><strong>No In-Flight Callbacks:</strong> Once unregistered or destroyed, the framework guarantees that no further callback invocations will occur for that registration, even if packet processing is in progress at the moment of unregistration.</li> </ul> </li> <li><strong>Callback Execution Constraints:</strong> <ul> <li><strong>User Data Lifetime:</strong> The <code>user_data</code> must remain valid from registration until after the callback is unregistered and all ongoing callback invocations have returned.</li> <li><strong>Thread Context:</strong> The callback may be invoked on any thread. Callers must ensure thread safety for shared resources.</li> <li><strong>Ordering and Concurrency:</strong> Callbacks are not guaranteed to be serialized or preserve packet order. Multiple callbacks may be invoked concurrently.</li> <li><strong>Reentrancy:</strong> The callback must not call any <code>OH_TrafficFilter_*</code> registration, unregistration, or controller destruction functions, as this may cause deadlock or undefined behavior.</li> </ul> </li> </ul>
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 
 **Since**: 26.0.1
@@ -321,6 +343,8 @@ int32_t OH_TrafficFilter_UnregisterPacketCallback(OH_TrafficFilter_PacketControl
 **Description**
 
 Unregister a packet callback function. Unregister the current packet callback function. After calling this, no more packets will be delivered to the callback.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Required permission**: ohos.permission.kernel.TRAFFIC_FILTER
 

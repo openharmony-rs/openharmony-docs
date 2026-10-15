@@ -8,6 +8,8 @@
 
 **库：** libscsi.z.so
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **相关模块：** [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
@@ -46,6 +48,8 @@ int32_t OH_ScsiPeripheral_Init(void)
 
 初始化SCSI Peripheral DDK。必须在调用其他所有SCSI Peripheral DDK方法之前调用此方法。使用完毕后必须调用OH_ScsiPeripheral_Release释放资源，否则会导致资源泄漏。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
@@ -66,6 +70,8 @@ int32_t OH_ScsiPeripheral_Release(void)
 
 释放SCSI Peripheral DDK。必须先通过OH_ScsiPeripheral_Init初始化，并在不再使用SCSI Peripheral DDK方法后释放，以避免资源泄漏。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
@@ -85,6 +91,8 @@ int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPe
 **描述：**
 
 打开deviceId和interfaceIndex指定的SCSI设备。其中，deviceId可以通过USB设备的总线编号左移32位后，同其设备地址进行或运算得到， interfaceIndex为需要打开的USB接口的索引值。在使用完设备后，须调用OH_ScsiPeripheral_Close关闭设备并释放资源，否则会导致资源泄漏。
+
+**系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -114,6 +122,8 @@ int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 
 关闭SCSI设备，释放设备句柄资源并使其失效。与OH_ScsiPeripheral_Open配对使用，在设备使用完毕后必须调用此方法关闭设备并释放资源，否则会导致资源泄漏。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
@@ -139,6 +149,8 @@ int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripher
 **描述：**
 
 检查逻辑单元是否已经准备好（逻辑单元是SCSI设备中可独立寻址的I/O操作实体）。
+
+**系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -167,6 +179,8 @@ int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_Inq
 **描述：**
 
 查询SCSI设备的基本信息。
+
+**系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -197,6 +211,8 @@ int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeriphe
 
 获取SCSI设备的容量信息。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
@@ -226,6 +242,8 @@ int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeriphera
 
 获取Sense Data（SCSI设备返回给主机的信息，用于报告设备的状态、错误信息以及诊断信息）。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
@@ -253,6 +271,8 @@ int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORe
 **描述：**
 
 从指定逻辑块读取数据。
+
+**系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -282,6 +302,8 @@ int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IOR
 
 写数据到设备的指定逻辑块。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
@@ -309,6 +331,8 @@ int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_Ve
 **描述：**
 
 校验指定逻辑块。
+
+**系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -338,6 +362,8 @@ int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPerip
 
 以CDB（Command Descriptor Block，命令描述符块）方式发送SCSI命令。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **起始版本：** 18
@@ -366,6 +392,8 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 
 创建缓冲区。请在缓冲区使用完后，调用[OH_ScsiPeripheral_DestroyDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_destroydevicememmap)销毁缓冲区，否则会造成资源泄漏。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **参数：**
@@ -392,6 +420,8 @@ int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMm
 
 销毁缓冲区。请在缓冲区使用完后及时销毁缓冲区，否则会造成资源泄漏。
 
+**系统能力：** SystemCapability.Driver.SCSI.Extension
+
 **起始版本：** 18
 
 **参数：**
@@ -415,6 +445,8 @@ int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseD
 **描述：**
 
 解析基本的Sense Data，包括Information、Command specific information、Sense key specific字段。
+
+**系统能力：** SystemCapability.Driver.SCSI.Extension
 
 **起始版本：** 18
 

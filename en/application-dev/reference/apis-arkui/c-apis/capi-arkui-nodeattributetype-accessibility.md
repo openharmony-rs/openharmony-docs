@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the ArkUI style attributes that can be set on the native side.
+Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
@@ -126,7 +126,7 @@ NODE_ACCESSIBILITY_NEXT_FOCUS_ID = 124
 
 **Description**
 
-Defines the next accessibility focus id of current component for accessibility processing to find the next focus component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: accessibility next focus ID.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: accessibility next focus ID.</li> </ul>
+[NODE_ID](capi-native-node-h.md#arkui_nodeattributetype) of the next focus component for accessibility of this component. After the node ID of the component is set, the accessibility service searches for the component whose node ID is the same as that of the next focus component on the current page. If no such component exists, the setting is invalid. This attribute can be set, reset, and obtained as required through APIs.<br> The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br><br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: accessibility next focus ID.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: accessibility next focus ID.</li> </ul>
 
 **Since**: 26.0.0
 
@@ -138,7 +138,7 @@ NODE_ACCESSIBILITY_DEFAULT_FOCUS = 125
 
 **Description**
 
-Sets the accessibility default focus flag for accessibility services to find the default focus component. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Accessibility default focus. The value <b>1</b> means that the component is defined as default focus in accessibility services.</li> <li>The value is <b>1</b> or <b>0</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Accessibility default focus. The value <b>1</b> means that the component is defined as default focus in accessibility services.</li> <li>The value is <b>1</b> or <b>0</b>.</li> </ul>
+Default focus flag for accessibility to find the default focus component. This attribute can be set, reset, and obtained as required through APIs.<br> The format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute and the format of the return value **ArkUI_AttributeItem** are as follows.<br><br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Accessibility default focus. The value <b>1</b> means that the component is defined as default focus in accessibility services.</li> <li>The value is <b>1</b> or <b>0</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Accessibility default focus. The value <b>1</b> means that the component is defined as default focus in accessibility services.</li> <li>The value is <b>1</b> or <b>0</b>.</li> </ul>
 
 **Since**: 26.0.0
 

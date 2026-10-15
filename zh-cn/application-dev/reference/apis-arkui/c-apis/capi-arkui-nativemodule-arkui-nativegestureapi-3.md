@@ -29,7 +29,7 @@ typedef struct ArkUI_NativeGestureAPI_3 {...} ArkUI_NativeGestureAPI_3
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_ErrorCode (\*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (\*parallelGesture)(ArkUI_ParallelGestureEvent* event))](#setgestureparallelto) | Sets the callback function for a parallel gesture event. |
+| [ArkUI_ErrorCode (\*setGestureParallelTo)(ArkUI_NodeHandle node, void* userData, ArkUI_GestureRecognizer* (\*parallelGesture)(ArkUI_ParallelGestureEvent* event))](#setgestureparallelto) | - | Sets the callback function for a parallel gesture event. |
 
 ## 成员函数说明
 

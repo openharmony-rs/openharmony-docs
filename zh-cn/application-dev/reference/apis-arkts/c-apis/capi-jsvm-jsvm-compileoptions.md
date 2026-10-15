@@ -1,7 +1,7 @@
 # JSVM_CompileOptions
 
 ```c
-typedef union JSVM_CompileOptions {...} JSVM_CompileOptions
+typedef struct JSVM_CompileOptions {...} JSVM_CompileOptions
 ```
 
 ## 概述
@@ -22,9 +22,9 @@ typedef union JSVM_CompileOptions {...} JSVM_CompileOptions
 
 | 名称 | 描述 |
 | -- | -- |
-| void *ptr | 指向编译选项值的指针。 |
-| int num | 存储整数类型的编译选项值。 |
-| bool boolean;
- } content | 存储布尔类型的编译选项值。 |
+| JSVM_CompileOptionId id | JSVM编译选项ID。 |
+| content->ptr | 指向编译选项值的指针。 |
+| content.num | 存储整数类型的编译选项值。 |
+| content.boolean | 存储布尔类型的编译选项值。 |
 
 

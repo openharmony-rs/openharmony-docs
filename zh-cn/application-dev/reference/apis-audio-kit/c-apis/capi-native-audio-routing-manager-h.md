@@ -2,9 +2,11 @@
 
 ## 概述
 
-声明与音频路由管理器相关的接口。 <br>包含用于创建audioRoutingManager，设备连接状态发生变化时的注册和注销功能，以及存储设备信息的指针数组的释放。
+本文件提供音频路由管理功能的接口。 <br>音频系统会为每个音频流选择默认的输入输出设备。对于音频播放流，系统会根据播放流的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)， 在可用的输出设备中选择； 对于音频录制流，系统会根据录制流的 [OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)，在可用的输入设备中选择。 <br>本文件提供的接口，支持开发者查询在线设备，监听设备在线状态变化，查询首选输入或输出设备，监听首选设备变化， 查询麦克风堵塞状态等。 当前并不提供主动选择设备的能力。
 
 **库：** libohaudio.so
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -16,39 +18,39 @@
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) | OH_AudioRoutingManager | 声明音频路由管理器，用于路由和设备相关功能的音频路由管理器的句柄。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) | OH_AudioRoutingManager | 声明音频路由管理结构体，该结构体用于调用音频设备和路由信息查询功能接口。 |
 
 ### 函数
 
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
-| [typedef int32_t (\*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_ondevicechangedcallback) | OH_AudioRoutingManager_OnDeviceChangedCallback | 此函数指针将指向用于返回更改的音频设备描述符的回调函数，可能返回多个音频设备描述符。 |
-| [typedef int32_t (\*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_onpreferredoutputdevicechangedcallback) | OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback | 此函数指针指向用于返回优先级最高的输出设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。 |
-| [typedef int32_t (\*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_onpreferredinputdevicechangedcallback) | OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback | 此函数指针指向用于返回优先级最高的输入设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。 |
-| [OH_AudioCommon_Result OH_AudioManager_GetAudioRoutingManager(OH_AudioRoutingManager **audioRoutingManager)](#oh_audiomanager_getaudioroutingmanager) | - | 查询音频路由管理器句柄，该句柄应设置为路由相关函数中的第一个参数。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_GetDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Flag deviceFlag, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audioroutingmanager_getdevices) | - | 根据输入的deviceFlag查询可用的设备。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audioroutingmanager_getavailabledevices) | - | 获取音频可选设备列表。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredOutputDevice(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_Usage streamUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audioroutingmanager_getpreferredoutputdevice) | - | 根据音频输出流的使用场景，获取优先级最高的输出设备。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredInputDevice(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_SourceType sourceType, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audioroutingmanager_getpreferredinputdevice) | - | 根据音频输入流的使用场景，获取优先级最高的输入设备。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_RegisterDeviceChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Flag deviceFlag, OH_AudioRoutingManager_OnDeviceChangedCallback callback)](#oh_audioroutingmanager_registerdevicechangecallback) | - | 注册音频路由管理器的设备更改回调。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterDeviceChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnDeviceChangedCallback callback)](#oh_audioroutingmanager_unregisterdevicechangecallback) | - | 取消注册音频路由管理器的设备更改回调。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_Usage streamUsage, OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback callback)](#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback) | - | 注册音频路由管理器的最高优先级输出设备变更回调。当指定播放流类型的最高优先级输出设备发生变化时，已注册的客户端将收到回调。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时，必须通过调用[OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback) 来释放回调。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback callback)](#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback) | - | 取消通过[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback) 注册的音频路由管理器最高优先级输出设备变更回调。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_SourceType sourceType, OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback callback)](#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback) | - | 注册音频路由管理器的最高优先级输入设备变更回调。当指定播放流类型的最高优先级输入设备发生变化时，已注册的客户端将收到回调。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时，必须通过调用[OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback) 来释放回调。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback callback)](#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback) | - | 取消通过[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback) 注册的音频路由管理器最高优先级输入设备变更回调。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_ReleaseDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_releasedevices) | - | 释放音频设备描述符数组对象。 |
-| [typedef void (\*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData)](#oh_audioroutingmanager_ondeviceblockstatuscallback) | OH_AudioRoutingManager_OnDeviceBlockStatusCallback | 此函数指针将指向用于返回音频设备堵塞状态的回调函数，可能返回多个音频设备描述符。 |
+| [typedef int32_t (\*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_ondevicechangedcallback) | OH_AudioRoutingManager_OnDeviceChangedCallback | 音频设备在线状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_RegisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerdevicechangecallback)和 [OH_AudioRoutingManager_UnregisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterdevicechangecallback)接口。 <br>可能存在多个音频设备同时发生状态变化。 |
+| [typedef int32_t (\*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_onpreferredoutputdevicechangedcallback) | OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback | 首选输出设备变化回调函数的原型定义， 用于[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback)和 [OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback)接口。 <br>首选设备可以是多个音频输出设备。 |
+| [typedef int32_t (\*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_onpreferredinputdevicechangedcallback) | OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback | 首选输入设备变化回调函数的原型定义， 用于[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback)和 [OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback)接口。 <br>首选设备可以是多个音频输入设备。 |
+| [OH_AudioCommon_Result OH_AudioManager_GetAudioRoutingManager(OH_AudioRoutingManager **audioRoutingManager)](#oh_audiomanager_getaudioroutingmanager) | - | 获取音频路由管理器实例，该实例为单例，用于调用音频设备状态和路由变化查询功能接口。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_GetDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Flag deviceFlag, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audioroutingmanager_getdevices) | - | 查询在线的音频设备，支持按照输入输出维度查询。 <br>在线设备包括内置的音频设备和连接的外设。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Usage deviceUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audioroutingmanager_getavailabledevices) | - | 查询指定场景的可用音频设备，支持按照设备使用场景和输入输出维度查询。 <br>音频系统会根据使用场景选择不同的输入输出设备，主要分为媒体和通话场景。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredOutputDevice(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_Usage streamUsage, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audioroutingmanager_getpreferredoutputdevice) | - | 查询首选音频输出设备。 <br>音频系统会根据播放流的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)确定不同的首选输出设备。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredInputDevice(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_SourceType sourceType, OH_AudioDeviceDescriptorArray **audioDeviceDescriptorArray)](#oh_audioroutingmanager_getpreferredinputdevice) | - | 查询首选音频输入设备。 <br>音频系统会根据录制流的[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)确定不同的首选输入设备。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_RegisterDeviceChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDevice_Flag deviceFlag, OH_AudioRoutingManager_OnDeviceChangedCallback callback)](#oh_audioroutingmanager_registerdevicechangecallback) | - | 注册音频在线设备变化回调。 <br>当音频外设连接和断连时，系统会触发此回调。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时， 必须通过调用[OH_AudioRoutingManager_UnregisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterdevicechangecallback) 来释放回调。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterDeviceChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnDeviceChangedCallback callback)](#oh_audioroutingmanager_unregisterdevicechangecallback) | - | 取消通过[OH_AudioRoutingManager_RegisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerdevicechangecallback)注册的音频在线设备变化回调。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_Usage streamUsage, OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback callback)](#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback) | - | 注册音频首选输出设备变化回调。 <br>当指定播放流使用场景类型的首选输出设备发生变化时，系统会触发此回调。 <br>音频系统会根据播放流的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)确定不同的首选输出设备。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时， 必须通过调用[OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback)来释放回调。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback callback)](#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback) | - | 取消通过[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback) 注册的音频首选输出设备变化回调。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioStream_SourceType sourceType, OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback callback)](#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback) | - | 注册音频首选输入设备变化回调。 <br>当指定录制流使用场景类型的首选输入设备发生变化时，系统会触发此回调。 <br>音频系统会根据录制流的[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)确定不同的首选输入设备。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时， 必须通过调用[OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback)来释放回调。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback callback)](#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback) | - | 取消通过[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback) 注册的音频首选输入设备变更回调。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_ReleaseDevices(OH_AudioRoutingManager *audioRoutingManager, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray)](#oh_audioroutingmanager_releasedevices) | - | 释放音频设备描述符数组对象。 <br>音频路由管理的查询和监听接口，返回的OH_AudioDeviceDescriptorArray均由系统侧申请内存。 开发者不应通过free或delete释放OH_AudioDeviceDescriptorArray指针指向的内存，而需要调用此接口释放。 |
+| [typedef void (\*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData)](#oh_audioroutingmanager_ondeviceblockstatuscallback) | OH_AudioRoutingManager_OnDeviceBlockStatusCallback | 音频设备堵塞状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_SetMicBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_setmicblockstatuscallback)接口。 |
 | [OH_AudioCommon_Result OH_AudioRoutingManager_IsMicBlockDetectionSupported(OH_AudioRoutingManager *audioRoutingManager, bool *supported)](#oh_audioroutingmanager_ismicblockdetectionsupported) | - | 查询当前设备是否支持麦克风堵塞状态检测。 |
-| [OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnDeviceBlockStatusCallback callback, void *userData)](#oh_audioroutingmanager_setmicblockstatuscallback) | - | 设置麦克风是否堵塞状态回调。 <br>在使用此功能之前，用户应查询当前设备是否支持检测，应用只有在使用麦克风录音时，并且所使用的麦克风的堵塞状态发生改变，才会收到回调，目前此检测功能仅支持麦克风位于本地设备上。 |
+| [OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioRoutingManager *audioRoutingManager, OH_AudioRoutingManager_OnDeviceBlockStatusCallback callback, void *userData)](#oh_audioroutingmanager_setmicblockstatuscallback) | - | 设置麦克风是否堵塞状态回调。 <br>当应用正在使用麦克风录音，此场景下麦克风堵塞状态发生变化，系统才会触发此回调。 <br>在使用此功能之前，应通过[OH_AudioRoutingManager_IsMicBlockDetectionSupported](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ismicblockdetectionsupported)查询当前设备是否支持检测。 <br>目前此检测功能仅支持本地设备的内置麦克风。 |
 
 ### 变量
 
 | 名称 | 描述 |
 | -- | -- |
-| int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback) ( OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray ) | 此函数指针将指向用于返回更改的音频设备描述符的回调函数，可能返回多个音频设备描述符。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | 此函数指针指向用于返回优先级最高的输出设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| int32_t (*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | 此函数指针指向用于返回优先级最高的输入设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
-| void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData) | 此函数指针将指向用于返回音频设备堵塞状态的回调函数，可能返回多个音频设备描述符。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+| int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback) ( OH_AudioDevice_ChangeType type, OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray ) | 音频设备在线状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_RegisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerdevicechangecallback)和 [OH_AudioRoutingManager_UnregisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterdevicechangecallback)接口。 <br>可能存在多个音频设备同时发生状态变化。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+| int32_t (*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | 首选输出设备变化回调函数的原型定义， 用于[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback)和 [OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback)接口。 <br>首选设备可以是多个音频输出设备。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+| int32_t (*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback) ( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray) | 首选输入设备变化回调函数的原型定义， 用于[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback)和 [OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback)接口。 <br>首选设备可以是多个音频输入设备。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
+| void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)( OH_AudioDeviceDescriptorArray *audioDeviceDescriptorArray, OH_AudioDevice_BlockStatus status, void *userData) | 音频设备堵塞状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_SetMicBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_setmicblockstatuscallback)接口。<br>**起始版本：** 13<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ## 函数说明
 
@@ -60,7 +62,9 @@ typedef int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice
 
 **描述：**
 
-此函数指针将指向用于返回更改的音频设备描述符的回调函数，可能返回多个音频设备描述符。
+音频设备在线状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_RegisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerdevicechangecallback)和 [OH_AudioRoutingManager_UnregisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterdevicechangecallback)接口。 <br>可能存在多个音频设备同时发生状态变化。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -68,8 +72,8 @@ typedef int32_t (*OH_AudioRoutingManager_OnDeviceChangedCallback)(OH_AudioDevice
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype) type | 设备连接状态类型。 [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype)已连接或断开。 |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 音频设备描述符数组，指向[OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md)设置音频设备描述符值的指针变量， 不要单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) 来释放DeviceDescriptor数组。 |
+| [OH_AudioDevice_ChangeType](capi-native-audio-device-base-h.md#oh_audiodevice_changetype) type | 设备连接状态，连接或断开。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 发生状态变化的音频设备描述符数组。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 ### OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback()
 
@@ -79,7 +83,9 @@ typedef int32_t (*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback)
 
 **描述：**
 
-此函数指针指向用于返回优先级最高的输出设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。
+首选输出设备变化回调函数的原型定义， 用于[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback)和 [OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback)接口。 <br>首选设备可以是多个音频输出设备。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -87,7 +93,7 @@ typedef int32_t (*OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 音频设备描述符数组。 <br>设置音频设备描述符值的指针变量，不能单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) 来释放DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 变化后的首选音频输出设备描述符数组。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 ### OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback()
 
@@ -97,7 +103,9 @@ typedef int32_t (*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback)(
 
 **描述：**
 
-此函数指针指向用于返回优先级最高的输入设备描述符的回调函数，该回调函数会返回一个或多个音频设备描述符。
+首选输入设备变化回调函数的原型定义， 用于[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback)和 [OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback)接口。 <br>首选设备可以是多个音频输入设备。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -105,7 +113,7 @@ typedef int32_t (*OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback)(
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 音频设备描述符数组。 <br>设置音频设备描述符值的指针变量，不能单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices) 来释放DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 变化后的首选音频输入设备描述符数组。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 ### OH_AudioManager_GetAudioRoutingManager()
 
@@ -115,7 +123,9 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioRoutingManager(OH_AudioRoutingMana
 
 **描述：**
 
-查询音频路由管理器句柄，该句柄应设置为路由相关函数中的第一个参数。
+获取音频路由管理器实例，该实例为单例，用于调用音频设备状态和路由变化查询功能接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -123,13 +133,13 @@ OH_AudioCommon_Result OH_AudioManager_GetAudioRoutingManager(OH_AudioRoutingMana
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) **audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) **audioRoutingManager | [out] 指向OH_AudioRoutingManager指针的地址，用于接收获取的音频路由管理器实例。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> </ul> |
 
 ### OH_AudioRoutingManager_GetDevices()
 
@@ -139,7 +149,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetDevices(OH_AudioRoutingManager *
 
 **描述：**
 
-根据输入的deviceFlag查询可用的设备。
+查询在线的音频设备，支持按照输入输出维度查询。 <br>在线设备包括内置的音频设备和连接的外设。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -147,15 +159,15 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetDevices(OH_AudioRoutingManager *
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| [OH_AudioDevice_Flag](capi-native-audio-device-base-h.md#oh_audiodevice_flag) deviceFlag | 音频设备标志，用于选择目标设备的滤波器参数。 |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | 音频设备描述符数组。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用 [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| [OH_AudioDevice_Flag](capi-native-audio-device-base-h.md#oh_audiodevice_flag) deviceFlag | [in] 音频设备标志，用于过滤输入或输出设备。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | [out] 音频设备描述符数组。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1. 参数audioRoutingManager为nullptr；<br>2. 参数deviceFlag无效；<br>3. 参数audioDeviceDescriptorArray为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数deviceFlag无效；3. 参数audioDeviceDescriptorArray为空指针。</li> <li>[AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) 内存不足。</li> </ul> |
 
 ### OH_AudioRoutingManager_GetAvailableDevices()
 
@@ -165,7 +177,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRouting
 
 **描述：**
 
-获取音频可选设备列表。
+查询指定场景的可用音频设备，支持按照设备使用场景和输入输出维度查询。 <br>音频系统会根据使用场景选择不同的输入输出设备，主要分为媒体和通话场景。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -173,15 +187,15 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetAvailableDevices(OH_AudioRouting
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage) deviceUsage | 指向[OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage)用于设置要获取的设备种类。 |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | 音频设备描述符数组。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用 [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| [OH_AudioDevice_Usage](capi-native-audio-device-base-h.md#oh_audiodevice_usage) deviceUsage | [in] 要查询设备的使用场景和输入输出类型。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | [out] 可用音频设备的描述符数组。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1.参数audioRoutingManager为nullptr；<br>2.参数deviceUsage无效; <br>3.参数audioDeviceDescriptorArray为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数deviceUsage无效；3. 参数audioDeviceDescriptorArray为空指针。</li> <li>[AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) 内存不足。</li> </ul> |
 
 ### OH_AudioRoutingManager_GetPreferredOutputDevice()
 
@@ -191,7 +205,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredOutputDevice(OH_AudioRo
 
 **描述：**
 
-根据音频输出流的使用场景，获取优先级最高的输出设备。
+查询首选音频输出设备。 <br>音频系统会根据播放流的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)确定不同的首选输出设备。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -199,15 +215,15 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredOutputDevice(OH_AudioRo
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| OH_AudioStream_Usage streamUsage | 指向[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)用于设置音频输出流的使用场景。 |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | 音频设备描述符数组。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用 [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| OH_AudioStream_Usage streamUsage | [in] 用于确定首选设备的音频播放流使用场景。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | [out] 首选音频输出设备描述符数组。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1.参数audioRoutingManager为nullptr; <br>2.参数streamUsage无效; <br>3.参数audioDeviceDescriptorArray为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数streamUsage无效；3. 参数audioDeviceDescriptorArray为空指针。</li> <li>[AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) 内存不足。</li> </ul> |
 
 ### OH_AudioRoutingManager_GetPreferredInputDevice()
 
@@ -217,7 +233,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredInputDevice(OH_AudioRou
 
 **描述：**
 
-根据音频输入流的使用场景，获取优先级最高的输入设备。
+查询首选音频输入设备。 <br>音频系统会根据录制流的[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)确定不同的首选输入设备。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -225,15 +243,15 @@ OH_AudioCommon_Result OH_AudioRoutingManager_GetPreferredInputDevice(OH_AudioRou
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| OH_AudioStream_SourceType sourceType | 指向[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)用于设置音频输入流的使用场景。 |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | 音频设备描述符数组。设置音频设备描述符值的指针变量，不要单独释放audioDeviceDescriptorArray指针，而是调用 [OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| OH_AudioStream_SourceType sourceType | [in] 用于确定首选设备的音频录制流使用场景。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) **audioDeviceDescriptorArray | [out] 首选音频输入设备描述符数组。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1.参数audioRoutingManager为nullptr; <br>2.参数sourceType无效; <br>3.参数audioDeviceDescriptorArray为nullptr。<br>AUDIOCOMMON_RESULT_ERROR_NO_MEMORY：内存不足。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数sourceType无效；3. 参数audioDeviceDescriptorArray为空指针。</li> <li>[AUDIOCOMMON_RESULT_ERROR_NO_MEMORY](capi-native-audio-common-h.md#oh_audiocommon_result) 内存不足。</li> </ul> |
 
 ### OH_AudioRoutingManager_RegisterDeviceChangeCallback()
 
@@ -243,7 +261,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterDeviceChangeCallback(OH_Aud
 
 **描述：**
 
-注册音频路由管理器的设备更改回调。
+注册音频在线设备变化回调。 <br>当音频外设连接和断连时，系统会触发此回调。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时， 必须通过调用[OH_AudioRoutingManager_UnregisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterdevicechangecallback) 来释放回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -251,15 +271,15 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterDeviceChangeCallback(OH_Aud
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| [OH_AudioDevice_Flag](capi-native-audio-device-base-h.md#oh_audiodevice_flag) deviceFlag | 音频设备标志，用来注册回调。 |
-| [OH_AudioRoutingManager_OnDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondevicechangedcallback) callback | 函数指针将指向用于返回更改的音频设备描述符的回调函数。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| [OH_AudioDevice_Flag](capi-native-audio-device-base-h.md#oh_audiodevice_flag) deviceFlag | [in] 音频设备标志，用来筛选输入输出。 |
+| [OH_AudioRoutingManager_OnDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondevicechangedcallback) callback | [in] 音频设备在线状态变化回调函数指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1. 参数audioRoutingManager为nullptr；<br>2. 参数deviceFlag无效；<br>3. 参数callback为nullptr。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数deviceFlag无效；3. 参数callback为空指针。</li> </ul> |
 
 ### OH_AudioRoutingManager_UnregisterDeviceChangeCallback()
 
@@ -269,7 +289,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterDeviceChangeCallback(OH_A
 
 **描述：**
 
-取消注册音频路由管理器的设备更改回调。
+取消通过[OH_AudioRoutingManager_RegisterDeviceChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerdevicechangecallback)注册的音频在线设备变化回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -277,14 +299,14 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterDeviceChangeCallback(OH_A
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| [OH_AudioRoutingManager_OnDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondevicechangedcallback) callback | 函数指针将指向用于返回更改的音频设备描述符的回调函数。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| [OH_AudioRoutingManager_OnDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondevicechangedcallback) callback | [in] 已注册的音频设备在线状态变化回调函数指针，用于取消。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1. 参数audioRoutingManager为nullptr；<br>2. 参数callback为nullptr。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数callback为空指针。</li> </ul> |
 
 ### OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback()
 
@@ -294,7 +316,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredOutputDevicesChang
 
 **描述：**
 
-注册音频路由管理器的最高优先级输出设备变更回调。当指定播放流类型的最高优先级输出设备发生变化时，已注册的客户端将收到回调。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时，必须通过调用[OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback) 来释放回调。
+注册音频首选输出设备变化回调。 <br>当指定播放流使用场景类型的首选输出设备发生变化时，系统会触发此回调。 <br>音频系统会根据播放流的[OH_AudioStream_Usage](capi-native-audiostream-base-h.md#oh_audiostream_usage)确定不同的首选输出设备。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时， 必须通过调用[OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredoutputdeviceschangecallback)来释放回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -302,15 +326,15 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredOutputDevicesChang
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取。 |
-| OH_AudioStream_Usage streamUsage | 指向OH_AudioStream_Usage，用于注册最高优先级输出设备变化事件的过滤参数设置。 |
-| [OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_onpreferredoutputdevicechangedcallback) callback | 指向OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback，用于接收最高优先级输出设备变化事件。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| OH_AudioStream_Usage streamUsage | [in] 用于确定首选设备的音频播放流使用场景。 |
+| [OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_onpreferredoutputdevicechangedcallback) callback | [in] 指向OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback， 用于接收首选输出设备变化事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。<br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数校验失败。</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) 音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。</li> </ul> |
 
 ### OH_AudioRoutingManager_UnregisterPreferredOutputDevicesChangeCallback()
 
@@ -320,7 +344,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredOutputDevicesCha
 
 **描述：**
 
-取消通过[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback) 注册的音频路由管理器最高优先级输出设备变更回调。
+取消通过[OH_AudioRoutingManager_RegisterPreferredOutputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredoutputdeviceschangecallback) 注册的音频首选输出设备变化回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -328,14 +354,14 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredOutputDevicesCha
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取。 |
-| [OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_onpreferredoutputdevicechangedcallback) callback | 指向OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback，用于接收最高优先级输出设备变化事件。传入nullptr时， 系统将取消所有已注册的最高优先级输出设备变化回调。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| [OH_AudioRoutingManager_OnPreferredOutputDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_onpreferredoutputdevicechangedcallback) callback | [in] 已注册的音频首选输出设备变化回调函数指针，用于取消。 传入空指针时，系统将取消所有已注册的首选输出设备变化回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。<br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数校验失败。</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) 音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。</li> </ul> |
 
 ### OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback()
 
@@ -345,7 +371,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredInputDevicesChange
 
 **描述：**
 
-注册音频路由管理器的最高优先级输入设备变更回调。当指定播放流类型的最高优先级输入设备发生变化时，已注册的客户端将收到回调。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时，必须通过调用[OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback) 来释放回调。
+注册音频首选输入设备变化回调。 <br>当指定录制流使用场景类型的首选输入设备发生变化时，系统会触发此回调。 <br>音频系统会根据录制流的[OH_AudioStream_SourceType](capi-native-audiostream-base-h.md#oh_audiostream_sourcetype)确定不同的首选输入设备。 <br>为避免资源浪费或其他异常情况，当应用程序不再需要此回调时， 必须通过调用[OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_unregisterpreferredinputdeviceschangecallback)来释放回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -353,15 +381,15 @@ OH_AudioCommon_Result OH_AudioRoutingManager_RegisterPreferredInputDevicesChange
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取。 |
-| OH_AudioStream_SourceType sourceType | 指向OH_AudioStream_SourceType，用于注册最高优先级输入设备变化事件的过滤参数设置。 |
-| [OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_onpreferredinputdevicechangedcallback) callback | 指向OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback，用于接收最高优先级输入设备变化事件。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| OH_AudioStream_SourceType sourceType | [in] 用于确定首选设备的音频录制流使用场景。 |
+| [OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_onpreferredinputdevicechangedcallback) callback | [in] 指向OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback，用于接收首选输入设备变化事件。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。<br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数校验失败。</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) 音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。</li> </ul> |
 
 ### OH_AudioRoutingManager_UnregisterPreferredInputDevicesChangeCallback()
 
@@ -371,7 +399,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredInputDevicesChan
 
 **描述：**
 
-取消通过[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback) 注册的音频路由管理器最高优先级输入设备变更回调。
+取消通过[OH_AudioRoutingManager_RegisterPreferredInputDevicesChangeCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_registerpreferredinputdeviceschangecallback) 注册的音频首选输入设备变更回调。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -379,14 +409,14 @@ OH_AudioCommon_Result OH_AudioRoutingManager_UnregisterPreferredInputDevicesChan
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取。 |
-| [OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_onpreferredinputdevicechangedcallback) callback | 指向OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback，用于接收最高优先级输入设备变化事件。传入nullptr时， 系统将取消所有已注册的最高优先级输入设备变化回调。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| [OH_AudioRoutingManager_OnPreferredInputDeviceChangedCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_onpreferredinputdevicechangedcallback) callback | [in] 已注册的音频首选输入设备变化回调函数指针，用于取消。 传入空指针时，系统将取消所有已注册的首选输入设备变化回调。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：参数校验失败。<br>AUDIOCOMMON_RESULT_ERROR_SYSTEM：音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 参数校验失败。</li> <li>[AUDIOCOMMON_RESULT_ERROR_SYSTEM](capi-native-audio-common-h.md#oh_audiocommon_result) 音频客户端在调用音频服务的过程中遇到系统错误，导致调用失败。</li> </ul> |
 
 ### OH_AudioRoutingManager_ReleaseDevices()
 
@@ -396,7 +426,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_ReleaseDevices(OH_AudioRoutingManag
 
 **描述：**
 
-释放音频设备描述符数组对象。
+释放音频设备描述符数组对象。 <br>音频路由管理的查询和监听接口，返回的OH_AudioDeviceDescriptorArray均由系统侧申请内存。 开发者不应通过free或delete释放OH_AudioDeviceDescriptorArray指针指向的内存，而需要调用此接口释放。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 12
 
@@ -404,14 +436,14 @@ OH_AudioCommon_Result OH_AudioRoutingManager_ReleaseDevices(OH_AudioRoutingManag
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 音频设备描述符数组应当被释放，获取请调用[OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices)接口。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | [in] 待释放的音频设备描述符数组。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1. 参数audioRoutingManager为nullptr；<br>2. 参数audioDeviceDescriptorArray为nullptr。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数audioDeviceDescriptorArray为空指针。</li> </ul> |
 
 ### OH_AudioRoutingManager_OnDeviceBlockStatusCallback()
 
@@ -421,7 +453,9 @@ typedef void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDevic
 
 **描述：**
 
-此函数指针将指向用于返回音频设备堵塞状态的回调函数，可能返回多个音频设备描述符。
+音频设备堵塞状态变化回调函数的原型定义，用于[OH_AudioRoutingManager_SetMicBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_setmicblockstatuscallback)接口。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 13
 
@@ -429,9 +463,9 @@ typedef void (*OH_AudioRoutingManager_OnDeviceBlockStatusCallback)(OH_AudioDevic
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 音频设备描述符数组应当被释放，获取请调用[OH_AudioRoutingManager_GetDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_getdevices)接口。设置音频设备描述符值的指针变量， 不要单独释放audioDeviceDescriptorArray指针，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)来释放DeviceDescriptor数组。 |
+| [OH_AudioDeviceDescriptorArray](capi-ohaudio-oh-audiodevicedescriptorarray.md) *audioDeviceDescriptorArray | 发生状态变化的音频设备描述符数组。 <br>不要单独释放此指针指向的内存，而是调用[OH_AudioRoutingManager_ReleaseDevices](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_releasedevices)，在不使用时释放所有内存。 |
 | [OH_AudioDevice_BlockStatus](capi-native-audio-device-base-h.md#oh_audiodevice_blockstatus) status | 音频设备的堵塞状态。 |
-| void *userData | 用户自定义数据指针。 |
+| void *userData | 指向开发者在[OH_AudioRoutingManager_SetMicBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_setmicblockstatuscallback)接口传入的userData数据。 |
 
 ### OH_AudioRoutingManager_IsMicBlockDetectionSupported()
 
@@ -443,20 +477,22 @@ OH_AudioCommon_Result OH_AudioRoutingManager_IsMicBlockDetectionSupported(OH_Aud
 
 查询当前设备是否支持麦克风堵塞状态检测。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 13
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| bool *supported | 查询当前设备是否支持麦克风堵塞状态检测的结果。true表示支持，false表示不支持。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| bool *supported | [out] 获取当前设备是否支持麦克风堵塞状态检测的结果。true表示支持，false表示不支持。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1.参数audioRoutingManager为nullptr；<br>2.参数supported为nullptr。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数supported为空指针。</li> </ul> |
 
 ### OH_AudioRoutingManager_SetMicBlockStatusCallback()
 
@@ -466,7 +502,9 @@ OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioR
 
 **描述：**
 
-设置麦克风是否堵塞状态回调。 <br>在使用此功能之前，用户应查询当前设备是否支持检测，应用只有在使用麦克风录音时，并且所使用的麦克风的堵塞状态发生改变，才会收到回调，目前此检测功能仅支持麦克风位于本地设备上。
+设置麦克风是否堵塞状态回调。 <br>当应用正在使用麦克风录音，此场景下麦克风堵塞状态发生变化，系统才会触发此回调。 <br>在使用此功能之前，应通过[OH_AudioRoutingManager_IsMicBlockDetectionSupported](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ismicblockdetectionsupported)查询当前设备是否支持检测。 <br>目前此检测功能仅支持本地设备的内置麦克风。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 13
 
@@ -474,14 +512,14 @@ OH_AudioCommon_Result OH_AudioRoutingManager_SetMicBlockStatusCallback(OH_AudioR
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | 音频路由管理器句柄。通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取句柄。 |
-| [OH_AudioRoutingManager_OnDeviceBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondeviceblockstatuscallback) callback | 函数指针将指向用于返回接受设备麦克风堵塞状态[OH_AudioRoutingManager_OnDeviceBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondeviceblockstatuscallback)。 |
-| void *userData | 用户自定义数据指针。 |
+| [OH_AudioRoutingManager](capi-ohaudio-oh-audioroutingmanager.md) *audioRoutingManager | [in] 指向通过[OH_AudioManager_GetAudioRoutingManager](capi-native-audio-routing-manager-h.md#oh_audiomanager_getaudioroutingmanager)获取的音频路由管理器实例。 |
+| [OH_AudioRoutingManager_OnDeviceBlockStatusCallback](capi-native-audio-routing-manager-h.md#oh_audioroutingmanager_ondeviceblockstatuscallback) callback | [in] 用于接受麦克风堵塞状态变化事件的回调函数。 |
+| void *userData | [in] 用户自定义数据指针，回调函数触发时会携带。若无需传递数据，可传入空指针。 |
 
 **返回值：**
 
 | 类型 | 说明 |
 | -- | -- |
-| OH_AudioCommon_Result | AUDIOCOMMON_RESULT_SUCCESS：函数执行成功。<br>AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM：<br>1.参数audioRoutingManager为nullptr；<br>2.参数callback为nullptr。 |
+| OH_AudioCommon_Result | <ul> <li>[AUDIOCOMMON_RESULT_SUCCESS](capi-native-audio-common-h.md#oh_audiocommon_result) 函数执行成功。</li> <li>[AUDIOCOMMON_RESULT_ERROR_INVALID_PARAM](capi-native-audio-common-h.md#oh_audiocommon_result) 1. 参数audioRoutingManager为空指针；2. 参数callback为空指针。</li> </ul> |
 
 

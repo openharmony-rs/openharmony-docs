@@ -6,6 +6,8 @@
 
 **库：** libdevicemanager_ndk.so
 
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
+
 **起始版本：** 20
 
 **相关模块：** [DeviceManager](capi-devicemanager.md)
@@ -29,6 +31,8 @@ enum DeviceManager_ErrorCode
 **描述：**
 
 分布式设备管理错误码信息。
+
+**系统能力：** SystemCapability.DistributedHardware.DeviceManager
 
 **起始版本：** 20
 

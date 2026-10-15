@@ -6,6 +6,8 @@ Defines the data structures for the C APIs of the global HTTP interceptor module
 
 **Library**: libhttp_interceptor.so
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 24
 
 **Related module**: [netstack](capi-netstack.md)
@@ -53,6 +55,8 @@ enum OH_Interceptor_Stage
 
 Defines an enum for the interceptor stages.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 24
 
 | Enum item | Description |
@@ -70,6 +74,8 @@ enum OH_Interceptor_Type
 
 Defines an enum for the interceptor types.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 24
 
 | Enum item | Description |
@@ -86,6 +92,8 @@ enum OH_Interceptor_Result
 **Description**
 
 Defines an enum for the interceptor results.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 24
 
@@ -106,6 +114,8 @@ typedef OH_Interceptor_Result (*OH_Http_InterceptorHandler)(OH_Http_Interceptor_
 **Description**
 
 Defines the HTTP interceptor handler function.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 24
 

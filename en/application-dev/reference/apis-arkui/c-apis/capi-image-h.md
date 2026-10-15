@@ -6,6 +6,8 @@ Defines **Image** node types for **NativeNode** APIs.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -36,6 +38,8 @@ enum ArkUI_ImageRepeat
 
 Enumerates the image repeat patterns.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -55,6 +59,8 @@ enum ArkUI_ImageSize
 
 Enumerates the image sizes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -72,6 +78,8 @@ enum ArkUI_ObjectFit
 **Description**
 
 Enumerates the image filling effects of the Image component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -104,6 +112,8 @@ enum ArkUI_ImageInterpolation
 
 Enumerates the image interpolation effects. This attribute mitigates aliasing during image scaling. This attribute is not applicable to SVG images.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -123,6 +133,8 @@ enum ArkUI_DynamicRangeMode
 
 Enumerates the dynamic range modes (for example, SDR/HDR) for images, controlling the display range of image brightness and color gamut.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 21
 
 | Enum item | Description |
@@ -140,6 +152,8 @@ enum ArkUI_ImageRotateOrientation
 **Description**
 
 Enumerates image rotation directions.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -164,6 +178,8 @@ enum ArkUI_ImageRenderMode
 **Description**
 
 Enumerates the image rendering modes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

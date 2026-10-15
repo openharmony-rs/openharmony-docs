@@ -8,6 +8,8 @@
 
 **库：** libohcrypto.so
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **相关模块：** [CryptoSignatureApi](capi-cryptosignatureapi.md)
@@ -67,6 +69,8 @@ enum CryptoSignature_ParamType
 
 定义签名参数类型。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -90,6 +94,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Create(const char *algoName, OH_CryptoVerify *
 **描述：**
 
 根据给定的算法名称创建验签上下文。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -123,6 +129,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Init(OH_CryptoVerify *ctx, OH_CryptoPubKey *pu
 
 使用给定的公钥初始化验签上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -155,6 +163,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Update(OH_CryptoVerify *ctx, Crypto_DataBlob *
 
 追加待验签的消息数据。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -185,6 +195,8 @@ bool OH_CryptoVerify_Final(OH_CryptoVerify *ctx, Crypto_DataBlob *in, Crypto_Dat
 
 验签消息数据。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -210,6 +222,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_Recover(OH_CryptoVerify *ctx, Crypto_DataBlob 
 **描述：**
 
 恢复签名数据，仅支持RSA算法。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -239,6 +253,8 @@ const char *OH_CryptoVerify_GetAlgoName(OH_CryptoVerify *ctx)
 
 获取验签上下文的算法名称。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -262,6 +278,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_SetParam(OH_CryptoVerify *ctx, CryptoSignature
 **描述：**
 
 设置验签上下文的指定参数。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -288,6 +306,8 @@ OH_Crypto_ErrCode OH_CryptoVerify_GetParam(OH_CryptoVerify *ctx, CryptoSignature
 **描述：**
 
 获取验签上下文的指定参数。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 12
 
@@ -317,6 +337,8 @@ void OH_CryptoVerify_Destroy(OH_CryptoVerify *ctx)
 
 销毁验签上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -334,6 +356,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Create(const char *algoName, OH_CryptoSign **sig
 **描述：**
 
 根据给定的算法名称创建签名上下文。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -367,6 +391,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Init(OH_CryptoSign *ctx, OH_CryptoPrivKey *privK
 
 初始化签名上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -398,6 +424,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Update(OH_CryptoSign *ctx, const Crypto_DataBlob
 
 更新待签名的数据。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -428,6 +456,8 @@ OH_Crypto_ErrCode OH_CryptoSign_Final(OH_CryptoSign *ctx, const Crypto_DataBlob 
 
 结束签名操作。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
@@ -456,6 +486,8 @@ const char *OH_CryptoSign_GetAlgoName(OH_CryptoSign *ctx)
 
 获取签名上下文的算法名称。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -479,6 +511,8 @@ OH_Crypto_ErrCode OH_CryptoSign_SetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 **描述：**
 
 设置签名上下文的指定参数。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -505,6 +539,8 @@ OH_Crypto_ErrCode OH_CryptoSign_GetParam(OH_CryptoSign *ctx, CryptoSignature_Par
 **描述：**
 
 获取签名上下文的指定参数。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -534,6 +570,8 @@ void OH_CryptoSign_Destroy(OH_CryptoSign *ctx)
 
 销毁签名上下文。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -551,6 +589,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Create(Crypto_DataBlob *eccSignature
 **描述：**
 
 创建ECC签名规格，同时支持SM2签名。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -585,6 +625,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_GetRAndS(OH_CryptoEccSignatureSpec *
 
 获取ECC签名规格中的r和s值。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **资源释放：** crypto_common/OH_Crypto_FreeDataBlob {r}
@@ -612,6 +654,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_SetRAndS(OH_CryptoEccSignatureSpec *
 **描述：**
 
 设置ECC签名规格中的r和s值。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -644,6 +688,8 @@ OH_Crypto_ErrCode OH_CryptoEccSignatureSpec_Encode(OH_CryptoEccSignatureSpec *sp
 
 将ECC签名规格编码为DER格式的签名数据。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **资源释放：** crypto_common/OH_Crypto_FreeDataBlob {out}
@@ -670,6 +716,8 @@ void OH_CryptoEccSignatureSpec_Destroy(OH_CryptoEccSignatureSpec *spec)
 **描述：**
 
 销毁ECC签名规格。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 

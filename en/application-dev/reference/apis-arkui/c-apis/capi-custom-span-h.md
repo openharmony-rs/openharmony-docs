@@ -6,6 +6,8 @@ Defines enumerations and APIs related to **CustomSpan**, which is used to implem
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -50,6 +52,8 @@ ArkUI_CustomSpanMeasureInfo* OH_ArkUI_CustomSpanMeasureInfo_Create(void)
 
 Creates measurement information for a custom span.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Returns**:
@@ -68,6 +72,8 @@ void OH_ArkUI_CustomSpanMeasureInfo_Dispose(ArkUI_CustomSpanMeasureInfo* info)
 
 Disposes of measurement information of a custom span.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -85,6 +91,8 @@ float OH_ArkUI_CustomSpanMeasureInfo_GetFontSize(ArkUI_CustomSpanMeasureInfo* in
 **Description**
 
 Obtains the font size of the parent text node of a custom span. In the measurement callback of a custom span, the layout size of the custom component can be calculated based on the font size of the parent text node. This API is used to implement precise typesetting in scenarios such as layout of text and images and emoji embedding.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -110,6 +118,8 @@ ArkUI_CustomSpanMetrics* OH_ArkUI_CustomSpanMetrics_Create(void)
 
 Creates measurement metrics for a custom span.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Returns**:
@@ -128,6 +138,8 @@ void OH_ArkUI_CustomSpanMetrics_Dispose(ArkUI_CustomSpanMetrics* metrics)
 
 Disposes of measurement metrics of a custom span.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -145,6 +157,8 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetWidth(ArkUI_CustomSpanMetrics* metrics, fl
 **Description**
 
 Sets the width for a custom span. In text and image layout scenarios, you need to set an appropriate width for embedded images or emojis to match the text line height. In document applications, you may need to set a fixed width for custom marker elements.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -171,6 +185,8 @@ int32_t OH_ArkUI_CustomSpanMetrics_SetHeight(ArkUI_CustomSpanMetrics* metrics, f
 
 Sets the height for a custom span. In emoji embedding scenarios, you need to set an appropriate height based on the emoji size to maintain alignment with the text. In text and image layout scenarios, you need to set a height for embedded elements that matches the text line height.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -196,6 +212,8 @@ ArkUI_CustomSpanDrawInfo* OH_ArkUI_CustomSpanDrawInfo_Create(void)
 
 Creates drawing information for a custom span.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Returns**:
@@ -214,6 +232,8 @@ void OH_ArkUI_CustomSpanDrawInfo_Dispose(ArkUI_CustomSpanDrawInfo* info)
 
 Disposes of drawing information for a custom span.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -231,6 +251,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetXOffset(ArkUI_CustomSpanDrawInfo* info)
 **Description**
 
 Obtains the x-axis offset of the custom span relative to the mounted component. In the custom drawing callback, you need to determine the drawing start position based on the offset value. This API is used to implement precise drawing in scenarios such as emoji embedding and layout of text and images.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -256,6 +278,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineTop(ArkUI_CustomSpanDrawInfo* info)
 
 Obtains the top margin of the custom span relative to the mounted component. In custom drawing, you need to determine the vertical start position of the drawing area based on the top margin. This API is used for precise typesetting in scenarios such as rich text editors and document applications.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -280,6 +304,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetLineBottom(ArkUI_CustomSpanDrawInfo* info)
 
 Obtains the bottom margin of the custom span relative to the mounted component. In custom drawing, you need to calculate the height range of the drawing area by combining the top margin and bottom margin. This API is used for precise layout in scenarios such as layout of text and images and emoji embedding.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -303,6 +329,8 @@ float OH_ArkUI_CustomSpanDrawInfo_GetBaseline(ArkUI_CustomSpanDrawInfo* info)
 **Description**
 
 Obtains the baseline offset of the custom span relative to the mounted component. In the drawing callback of a custom span, use this API to obtain the baseline offset for text alignment and typesetting, achieving precise drawing effects in scenarios such as rich text editors and layout of text and images.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

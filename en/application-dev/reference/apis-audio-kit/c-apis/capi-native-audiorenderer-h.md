@@ -6,6 +6,8 @@ Declare audio stream related interfaces for output type.
 
 **Library**: libohaudio.so
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Related module**: [OHAudio](capi-ohaudio.md)
@@ -77,6 +79,8 @@ OH_AudioStream_Result OH_AudioRenderer_Release(OH_AudioRenderer* renderer)
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -98,6 +102,8 @@ OH_AudioStream_Result OH_AudioRenderer_Start(OH_AudioRenderer* renderer)
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -121,6 +127,8 @@ OH_AudioStream_Result OH_AudioRenderer_Pause(OH_AudioRenderer* renderer)
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -142,6 +150,8 @@ OH_AudioStream_Result OH_AudioRenderer_Stop(OH_AudioRenderer* renderer)
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -165,6 +175,8 @@ OH_AudioStream_Result OH_AudioRenderer_Flush(OH_AudioRenderer* renderer)
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -186,6 +198,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetCurrentState(OH_AudioRenderer* rendere
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -210,6 +224,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSamplingRate(OH_AudioRenderer* rendere
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -232,6 +248,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetStreamId(OH_AudioRenderer* renderer, u
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -256,6 +274,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelCount(OH_AudioRenderer* rendere
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -278,6 +298,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSampleFormat(OH_AudioRenderer* rendere
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -302,6 +324,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatencyMode(OH_AudioRenderer* renderer
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -324,6 +348,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererInfo(OH_AudioRenderer* rendere
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -348,6 +374,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetEncodingType(OH_AudioRenderer* rendere
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -371,6 +399,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetFramesWritten(OH_AudioRenderer* render
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -393,6 +423,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetTimestamp(OH_AudioRenderer* renderer, 
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 10
 
@@ -419,6 +451,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetFrameSizeInCallback(OH_AudioRenderer* 
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 10
 
 **Parameters**:
@@ -441,6 +475,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSpeed(OH_AudioRenderer* renderer, floa
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 11
 
@@ -465,6 +501,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetSpeed(OH_AudioRenderer* renderer, floa
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 11
 
 **Parameters**:
@@ -488,6 +526,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolume(OH_AudioRenderer* renderer, flo
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -510,6 +550,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetVolumeWithRamp(OH_AudioRenderer* rende
 ```
 
 **Description**
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -535,6 +577,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetVolume(OH_AudioRenderer* renderer, flo
 
 **Description**
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -559,6 +603,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetMarkPosition(OH_AudioRenderer* rendere
 **Description**
 
 Set mark position on current renderer. Calling this function will overwrite the mark postion which has already set.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -587,6 +633,8 @@ OH_AudioStream_Result OH_AudioRenderer_CancelMark(OH_AudioRenderer* renderer)
 
 Cancel mark which has set by [OH_AudioRenderer_SetMarkPosition](capi-native-audiorenderer-h.md#oh_audiorenderer_setmarkposition).
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -610,6 +658,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetUnderflowCount(OH_AudioRenderer* rende
 **Description**
 
 Gets the underflow count on this stream.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -636,6 +686,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetChannelLayout(OH_AudioRenderer* render
 
 Query the channel layout of the renderer client.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -660,6 +712,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetEffectMode(OH_AudioRenderer* renderer,
 **Description**
 
 Query current audio effect mode.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -686,6 +740,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetEffectMode(OH_AudioRenderer* renderer,
 
 Set current audio effect mode.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -710,6 +766,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetRendererPrivacy(OH_AudioRenderer* rend
 **Description**
 
 Get the privacy of this stream.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -736,6 +794,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetSilentModeAndMixWithOthers(OH_AudioRen
 
 Set silent and mix with other streams for this stream.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -760,6 +820,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetSilentModeAndMixWithOthers(OH_AudioRen
 **Description**
 
 Query silent and mix with other streams status for this stream.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -786,6 +848,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetDefaultOutputDevice(OH_AudioRenderer* 
 
 Temporarily changes the current audio device This function applys on audiorenderers whose StreamUsage are STREAM_USAGE_VOICE_COMMUNICATIN/STREAM_USAGE_VIDEO_COMMUNICATION/STREAM_USAGE_VOICE_MESSAGE. Setting the device will only takes effect if no other accessory such as headphones are in use.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -810,6 +874,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetAudioTimestampInfo(OH_AudioRenderer* r
 **Description**
 
 Query the timestamp at which a particular frame was presented in clock monotonic timebase, the frame at the returned position was just committed to hardware. This is often used in video synchronization and recording stream alignment.<br> Position is 0 and timestamp is fixed until stream really runs and frame is committed. Position will also be reset while flush function is called. When a audio route change happens, like in device or output type change situations, the position may also be reset but timestamp remains monotonically increasing. So it is better to use the values until they becomes regularly after the change. This interface also adapts to playback speed change. For example, the increseing speed for position will be double for 2x speed playback.<br> For video synchronization usage, there is a best practice document for developer to refer **AV Synchronization**.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 15
 
@@ -837,6 +903,8 @@ typedef void (*OH_AudioRenderer_OnInterruptCallback)(OH_AudioRenderer* renderer,
 
 Called when an interrupt event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnInterruptEvent.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -863,6 +931,8 @@ typedef void (*OH_AudioRenderer_OnErrorCallback)(OH_AudioRenderer* renderer, voi
 
 Called when an error event occurs in an AudioRenderer instance. This function is similar to OH_AudioRenderer_Callbacks_Struct.OH_AudioRenderer_OnError.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -887,6 +957,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetFastStatus(OH_AudioRenderer* renderer,
 **Description**
 
 Gets audio renderer running status, check if it works in fast status.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -913,6 +985,8 @@ typedef void (*OH_AudioRenderer_OnFastStatusChange)(OH_AudioRenderer* renderer, 
 
 Callback function of fast status change event for audio renderer.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -932,6 +1006,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetLoudnessGain(OH_AudioRenderer* rendere
 **Description**
 
 Sets the loudness gain of current renderer. The default loudness gain is 0.0dB. The stream usage of the audio renderer must be [AUDIOSTREAM_USAGE_MUSIC](capi-native-audiostream-base-h.md#oh_audiostream_usage), [AUDIOSTREAM_USAGE_MOVIE](capi-native-audiostream-base-h.md#oh_audiostream_usage) or [AUDIOSTREAM_USAGE_AUDIOBOOK](capi-native-audiostream-base-h.md#oh_audiostream_usage). The latency mode of the audio renderer must be [AUDIOSTREAM_LATENCY_MODE_NORMAL](capi-native-audiostream-base-h.md#oh_audiostream_latencymode). If AudioRenderer is played through the high-resolution pipe, this operation is not supported.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -958,6 +1034,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetLoudnessGain(OH_AudioRenderer* rendere
 
 Get the loudness gain of current renderer.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -982,6 +1060,8 @@ typedef int32_t (*OH_AudioRenderer_OnWriteDataCallbackAdvanced)(OH_AudioRenderer
 **Description**
 
 Callback function of write data on Render.<br> Different with OH_AudioRenderer_OnWriteDataCallback, this function allows the caller to write partial data which ranges from 0 to the callback buffer size. If 0 is returned, the callback thread will sleep for a while. Otherwise, the system may callback again immediately.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 
@@ -1015,6 +1095,8 @@ OH_AudioStream_Result OH_AudioRenderer_GetLatency(OH_AudioRenderer* renderer, OH
 
 Gets the estimated audio latency in milliseconds for current audio route. For wireless connection audio devices cases, the latency result may not be very accurate, system just provides it for reference only. The real-time buffer status is also not taken into consideration, so it is recommended to get it only at the beginning of audio playback, and do not call th function very frequently because it may be blocked by route change. Applications should still use [OH_AudioRenderer_GetAudioTimestampInfo](capi-native-audiorenderer-h.md#oh_audiorenderer_getaudiotimestampinfo) to handle A/V sync after audio data has been output to hardware.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -1040,6 +1122,8 @@ OH_AudioStream_Result OH_AudioRenderer_SetIndependentAudioSessionStrategy(OH_Aud
 **Description**
 
 Configure audio session strategy and behavior parameters to adjust the focus preemption policy. Each time you call this interface to set parameters, you need to call the interface [OH_AudioRenderer_Start](capi-native-audiorenderer-h.md#oh_audiorenderer_start) again for the settings to take effect.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 24
 

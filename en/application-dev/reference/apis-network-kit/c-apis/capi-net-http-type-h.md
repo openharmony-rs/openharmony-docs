@@ -6,6 +6,8 @@ Defines the data structures for the C APIs of the HTTP request module.
 
 **Library**: libnet_http.so
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)
@@ -88,6 +90,8 @@ enum Http_ErrCode
 
 Defines http error code.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 | Enum item | Description |
@@ -137,6 +141,8 @@ enum Http_ResponseCode
 **Description**
 
 Defines http response code.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -189,6 +195,8 @@ enum Http_AddressFamilyType
 
 Defines the address Family.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 | Enum item | Description |
@@ -206,6 +214,8 @@ enum Http_HttpProtocol
 **Description**
 
 Defines the HTTP version.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -226,6 +236,8 @@ enum Http_CertType
 
 Defines the Cert Type.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 | Enum item | Description |
@@ -243,6 +255,8 @@ enum Http_ProxyType
 **Description**
 
 Proxy type. Used to distinguish different proxy configurations.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -265,6 +279,8 @@ typedef void (*Http_ResponseCallback)(struct Http_Response *response, uint32_t e
 
 Callback function that is invoked when response is received.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Parameters**:
@@ -283,6 +299,8 @@ typedef void (*Http_OnDataReceiveCallback)(const char *data, size_t length)
 **Description**
 
 Callback function that is invoked when a response body is received.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -303,6 +321,8 @@ typedef void (*Http_OnProgressCallback)(uint64_t totalSize, uint64_t transferred
 
 Callback function invoked during request/response data transmission.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Parameters**:
@@ -322,6 +342,8 @@ typedef void (*Http_OnHeaderReceiveCallback)(Http_Headers *headers)
 
 Callback called when header are received.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Parameters**:
@@ -339,6 +361,8 @@ typedef void (*Http_OnVoidCallback)(void)
 **Description**
 
 Empty callback function for requested DataEnd or Canceled event callback.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 

@@ -6,6 +6,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -34,6 +36,8 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateFromGpuContext(OH_Drawing_GpuContext
 
 使用图形处理器上下文创建离屏surface对象，用于管理画布绘制的内容。 若需将绘制内容上屏显示（配合[OH_Drawing_SurfaceFlush](capi-drawing-surface-h.md#oh_drawing_surfaceflush)使用），请改用 [OH_Drawing_SurfaceCreateOnScreen](capi-drawing-surface-h.md#oh_drawing_surfacecreateonscreen)创建与屏幕窗口绑定的surface对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>gpuContext为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -59,6 +63,8 @@ OH_Drawing_Surface* OH_Drawing_SurfaceCreateOnScreen(OH_Drawing_GpuContext* gpuC
 **描述：**
 
 使用图形处理器上下文创建一个与屏幕窗口绑定的surface对象，用于管理画布绘制的内容。若不需要上屏显示， 请改用[OH_Drawing_SurfaceCreateFromGpuContext](capi-drawing-surface-h.md#oh_drawing_surfacecreatefromgpucontext) 创建离屏surface对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>gpuContext或window为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。 <br>imageInfo的宽高和window的宽高需保持一致，否则对象创建失败。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 16
 
@@ -86,6 +92,8 @@ OH_Drawing_Canvas* OH_Drawing_SurfaceGetCanvas(OH_Drawing_Surface* surface)
 
 通过surface对象获取画布对象。 <br>本接口会产生错误码，可以通过[OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget)查看错误码的取值。 <br>surface为NULL时返回OH_DRAWING_ERROR_INVALID_PARAMETER。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 12
 
 **参数：**
@@ -110,6 +118,8 @@ OH_Drawing_ErrorCode OH_Drawing_SurfaceFlush(OH_Drawing_Surface* surface)
 
 将surface对象上的画布绘制内容提交给图形处理器处理，完成绘制内容上屏显示。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 16
 
 **参数：**
@@ -133,6 +143,8 @@ void OH_Drawing_SurfaceDestroy(OH_Drawing_Surface* surface)
 **描述：**
 
 销毁surface对象并回收该对象占用的内存。调用本接口销毁surface对象后， 通过[OH_Drawing_SurfaceGetCanvas](capi-drawing-surface-h.md#oh_drawing_surfacegetcanvas)获取的画布对象不应再使用，其生命周期由surface对象管理。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 12
 

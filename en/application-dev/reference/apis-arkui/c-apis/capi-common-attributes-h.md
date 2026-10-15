@@ -2,9 +2,11 @@
 
 ## Overview
 
-Defines the common property and method types for the native module.
+Defines the types of common attributes and events of **NativeModule**, used to support the configuration of common component attributes and event handling, making it easier for native developers to manage component behavior in a unified manner.
 
 **Library**: libace_ndk.z.so
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -16,8 +18,8 @@ Defines the common property and method types for the native module.
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines snapshot options. |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the parameters for visible area change events. |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md) | ArkUI_SnapshotOptions | Defines snapshot options, used to configure the snapshot behavior when taking a snapshot of a component. It applies to scenarios where the snapshot output effect needs to be controlled based on service requirements.<br> To use this struct, first call [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions) to create a snapshot options object, and set the snapshot parameters through [OH_ArkUI_SnapshotOptions_SetScale](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setscale), [OH_ArkUI_SnapshotOptions_SetColorMode](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setcolormode), and [OH_ArkUI_SnapshotOptions_SetDynamicRangeMode](capi-common-attributes-h.md#oh_arkui_snapshotoptions_setdynamicrangemode); then pass the object as the **snapshotOptions** parameter to OH_ArkUI_GetNodeSnapshot. When the object is no longer used, call [OH_ArkUI_DestroySnapshotOptions](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions) to release resources. |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | ArkUI_VisibleAreaEventOptions | Defines the options for visible area change listening, including the threshold array, expected update interval, and visible area calculation mode. This struct can be used to load or release resources based on the visible ratio of a component, and is suitable for scenarios where you need to listen for visible area changes of a component and trigger updates at specified thresholds.<br> When using this struct, you need to first call [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create) to create an **ArkUI_VisibleAreaEventOptions** parameter object. After the object is created, you can configure the listening behavior through the following APIs:<br> Use [OH_ArkUI_VisibleAreaEventOptions_SetRatios](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setratios) to set a threshold array, which defines the threshold conditions for triggering visible area changes.<br> Use [OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) to set an expected update interval, which defines the minimum time interval between two visible area change notifications.<br> Use [OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) to set a calculation mode of a visible area, which defines whether to calculate the visible ratio from the viewport area.<br> To obtain the parameter values that have been set, you can:<br> Use [OH_ArkUI_VisibleAreaEventOptions_GetRatios](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_getratios) to obtain the threshold array.<br> Use [OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) to obtain the expected update interval.<br> Use [OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) to obtain the visible area calculation mode.<br> When the **ArkUI_VisibleAreaEventOptions** object is no longer needed, call [OH_ArkUI_VisibleAreaEventOptions_Dispose](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_dispose) to release resources. |
 
 ### Enum
 
@@ -30,22 +32,22 @@ Defines the common property and method types for the native module.
 | [ArkUI_UIState](#arkui_uistate) | ArkUI_UIState | Enumerates the UI states of a component, used for handling state-specific styles. |
 | [ArkUI_FocusMove](#arkui_focusmove) | ArkUI_FocusMove | Enumerates the focus movement directions. |
 | [ArkUI_ResponseRegionSupportedTool](#arkui_responseregionsupportedtool) | ArkUI_ResponseRegionSupportedTool | Enumerates the input tool types supported for response region configuration. |
-| [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | Enumerates raw input event types. |
+| [ArkUI_RawInputEventType](#arkui_rawinputeventtype) | ArkUI_RawInputEventType | Enumerates the types of raw input events. |
 
 ### Function
 
 | Name | Description |
 | -- | -- |
 | [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions()) when no longer in use. |
-| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | Destroys a snapshot option object. |
-| [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | Sets the scale property in the snapshot options. |
+| [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | Destroys the screenshot option object created by [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions). |
+| [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | Set the scale attribute in screenshot options, which is used to control the scale factor of the generated screenshot. |
 | [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | Sets the color space in the screenshot options. |
 | [int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t dynamicRangeMode, bool isAuto)](#oh_arkui_snapshotoptions_setdynamicrangemode) | Sets the dynamic range mode in the screenshot options. |
-| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | Creates an instance of the parameters for visible area change events. |
-| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | Disposes of the instance of the parameters for visible area change events. |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | Sets the threshold ratios for visible area changes. |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | Sets the expected update interval for visible area changes. |
-| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)](#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) | Sets the visible area calculation mode. |
+| [ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()](#oh_arkui_visibleareaeventoptions_create) | Creates an instance of the parameters for visible area change events. This API is used in scenarios such as list scrolling exposure statistics, lazy loading of images or videos, and triggering business logic when a component enters or leaves the screen. After successful creation, you must first complete the related parameter configuration such as the visible ratio threshold and update interval through related APIs, and then use the parameter object to register the visible area change listener. The system calculates the component visible ratio based on the configured parameters and triggers the corresponding listener event. After use, call [OH_ArkUI_VisibleAreaEventOptions_Dispose](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_dispose) to release the parameter object. After **Dispose** is called, the parameter object must not be used again. |
+| [void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_dispose) | Disposes of the instance of the parameters for visible area change events. The parameter object must be created by [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create), and must not be used after **Dispose** is called. |
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t size)](#oh_arkui_visibleareaeventoptions_setratios) | Sets the threshold array used to determine the change in the visible ratio of a component. This API is applicable to scenarios such as exposure statistics, staged loading of components, and controlling media playback based on the visible ratio. |
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions *option, int32_t value)](#oh_arkui_visibleareaeventoptions_setexpectedupdateinterval) | Sets the expected update interval. This API is used to control the update frequency of the visible area ratio. A smaller interval is suitable for scenarios that require timely awareness of visible area changes, but increases computational overhead. A larger interval is suitable for scenarios that do not require high real-time performance and need to reduce computational overhead. |
+| [int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option, bool measureFromViewport)](#oh_arkui_visibleareaeventoptions_setmeasurefromviewport) | Sets the visible area calculation mode. In scenarios involving scrolling containers, clipping containers, or allowing child components to extend beyond the parent component display, you can select the calculation mode based on whether the actually visible portion within the viewport needs to be included in exposure and visibility determination. |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions* option, float* value, int32_t* size)](#oh_arkui_visibleareaeventoptions_getratios) | Obtains the threshold ratios for visible area changes. |
 | [int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getexpectedupdateinterval) | Obtains the expected update interval for visible area changes. |
 | [bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEventOptions* option)](#oh_arkui_visibleareaeventoptions_getmeasurefromviewport) | Obtains the visible area calculation mode. |
@@ -62,11 +64,13 @@ enum ArkUI_HitTestMode
 
 Enumerates the hit test modes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | Both the node and its child node respond to the hit test of a touch event, but its sibling node is blocked from the hit test. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes. |
+| ARKUI_HIT_TEST_MODE_DEFAULT = 0 | Default hit test mode. The node itself and its child nodes respond to the hit test, but block the hit test of sibling nodes. It does not affect the hit test of ancestor nodes. |
 | ARKUI_HIT_TEST_MODE_BLOCK | The node itself responds to the hit test and blocks the hit test of child nodes, sibling nodes, and ancestor nodes. |
 | ARKUI_HIT_TEST_MODE_TRANSPARENT | Both the node itself and its child nodes respond to the hit test and do not block the hit test of sibling nodes and ancestor nodes. |
 | ARKUI_HIT_TEST_MODE_NONE | The node itself does not respond to the hit test and does not block the hit test of child nodes, sibling nodes, and ancestor nodes. |
@@ -82,6 +86,8 @@ enum ArkUI_Visibility
 **Description**
 
 Enumerates the visibility values.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -101,12 +107,14 @@ enum ArkUI_HoverEffect
 
 Enumerates the hover effects when a component is hovered over.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 | Enum item | Description |
 | -- | -- |
 | ARKUI_HOVER_EFFECT_AUTO = 0 | Default effect. |
-| ARKUI_HOVER_EFFECT_SCALE | Zoom effect. |
+| ARKUI_HOVER_EFFECT_SCALE | Scale effect. |
 | ARKUI_HOVER_EFFECT_HIGHLIGHT | Highlight effect. |
 | ARKUI_HOVER_EFFECT_NONE | No effect. |
 
@@ -119,6 +127,8 @@ enum ArkUI_FocusPriority
 **Description**
 
 Enumerates the priority levels for focus management within the application. These levels determine the sequence in which UI components receive focus during user interaction.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -138,6 +148,8 @@ enum ArkUI_UIState
 
 Enumerates the UI states of a component, used for handling state-specific styles.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 | Enum item | Description |
@@ -146,7 +158,7 @@ Enumerates the UI states of a component, used for handling state-specific styles
 | UI_STATE_PRESSED = 1 << 0 | Pressed state. |
 | UI_STATE_FOCUSED = 1 << 1 | Focused state. |
 | UI_STATE_DISABLED = 1 << 2 | Disabled state. |
-| UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **<br>List**, **Grid**, and **MenuItem**. |
+| UI_STATE_SELECTED = 1 << 3 | Selected state. This state is supported only by specific component types: **Checkbox**, **Radio**, **Toggle**, **List**, **Grid**, and **MenuItem**. |
 | UI_STATE_HOVERED = 1 << 4 |  |
 
 ### ArkUI_FocusMove
@@ -158,6 +170,8 @@ enum ArkUI_FocusMove
 **Description**
 
 Enumerates the focus movement directions.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -180,6 +194,8 @@ enum ArkUI_ResponseRegionSupportedTool
 
 Enumerates the input tool types supported for response region configuration.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 | Enum item | Description |
@@ -197,7 +213,9 @@ enum ArkUI_RawInputEventType
 
 **Description**
 
-Enumerates raw input event types.
+Enumerates the types of raw input events.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -219,13 +237,15 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 Creates a snapshot option object, which must be released using [OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions()) when no longer in use.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_SnapshotOptions*](capi-arkui-nativemodule-arkui-snapshotoptions.md) | Pointer to the created snapshot option object. If a null pointer is returned, creation failed, possibly due to insufficient memory. |
+| [ArkUI_SnapshotOptions*](capi-arkui-nativemodule-arkui-snapshotoptions.md) | Pointer to the created screenshot option object. If the API returns a null pointer, the creation fails, possibly because the address space is full. |
 
 ### OH_ArkUI_DestroySnapshotOptions()
 
@@ -235,7 +255,9 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 
 **Description**
 
-Destroys a snapshot option object.
+Destroys the screenshot option object created by [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -243,7 +265,7 @@ Destroys a snapshot option object.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option. |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option object to be destroyed, used to release the screenshot option object created by [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions). |
 
 ### OH_ArkUI_SnapshotOptions_SetScale()
 
@@ -253,7 +275,9 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 
 **Description**
 
-Sets the scale property in the snapshot options.
+Set the scale attribute in screenshot options, which is used to control the scale factor of the generated screenshot.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -261,14 +285,14 @@ Sets the scale property in the snapshot options.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option. |
-| float scale | Scale factor. |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option object. Before using this parameter, create a valid screenshot option object through [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions) to set the scale attribute of the screenshot. |
+| float scale | Scale factor of the screenshot. The value is a floating-point number greater than 0, and the default value is **1.0**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>A possible cause is that mandatory parameters are left unspecified. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Possible causes: The **snapshotOptions** parameter is null, or the **scale** value does not match the API requirements. To solve this issue, pass a valid screenshot option object pointer and ensure that the value of **scale** is a floating-point number greater than 0. |
 
 ### OH_ArkUI_SnapshotOptions_SetColorMode()
 
@@ -280,21 +304,23 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 
 Sets the color space in the screenshot options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option. |
-| int32_t colorSpace | Color space used for screenshot. <br>If the target component's color space is known, specify it through **colorSpace** and set **isAuto** to **<br>false** to achieve optimal snapshot quality. <br>The supported values are as follows: **3** (RGB color gamut of type Display P3), **4** (RGB color gamut of type sRGB), and **27** (RGB color gamut of type BT.2020). <br>Default value: **4**<br><br>This parameter takes effect only when **isAuto** is set to **false**. |
-| bool isAuto | Whether the system automatically determines the color space to be used. <br>**true**: The system automatically determines the color space to be used. If the color space used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the color space to be used. <br>**false**: The color space type set through the **colorSpace** field is used for screenshot. <br>Default value: **false**. |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option object. Before using this parameter, call [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions) to create a valid screenshot option object to set the color space of the screenshot. |
+| int32_t colorSpace | Color space used for the screenshot. <br>If you know the color space used by the component to be captured, you can specify it through the **colorSpace** parameter and set **isAuto** to **false** to achieve the expected screenshot effect. <br>The supported values are as follows: **3** (Display P3, suitable for scenarios where Display P3 content needs to be retained), **4** (SRGB, suitable for common display devices and compatibility-first scenarios), and **27** (DISPLAY BT2020, suitable for scenarios where the target device supports the BT2020 color gamut). <br>Default value: **4**<br><br>This parameter takes effect only when **isAuto** is set to **false**. |
+| bool isAuto | Whether the system automatically determines the color space to be used. <br>**true**: The system automatically determines the color space to be used. If the color space used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the color space to be used. <br>**false**: The color space type set through the **colorSpace** field is used for screenshot. <br>Default value: **false** |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Possible causes: The **snapshotOptions** parameter is null, or the **colorSpace** value is not supported. To solve this issue, pass a valid screenshot option object pointer and ensure that the **colorSpace** value is a supported color space. |
 
 ### OH_ArkUI_SnapshotOptions_SetDynamicRangeMode()
 
@@ -306,21 +332,23 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 Sets the dynamic range mode in the screenshot options.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 23
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option. |
-| int32_t dynamicRangeMode | Dynamic range mode used for screenshot. <br>If the dynamic range mode used for screenshot is known, you can specify the dynamic range mode using the **<br>dynamicRangeMode** field and set **isAuto** to **false** to achieve the expected snapshot effect. <br>The value can be one of the enumerated values of [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode). <br>Default value: **ARKUI_DYNAMIC_RANGE_MODE_STANDARD**<br><br>This parameter takes effect only when **isAuto** is set to **false**. |
-| bool isAuto | Whether the system automatically determines the dynamic range mode to be used. <br>**true**: whether the system automatically determines the dynamic range mode to be used. If the dynamic range mode used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the dynamic range mode to be used. <br>**false**: The dynamic range mode set by the **dynamicRangeMode** field is used for screenshot. <br>Default value: **false**. |
+| [ArkUI_SnapshotOptions](capi-arkui-nativemodule-arkui-snapshotoptions.md)* snapshotOptions | Pointer to the screenshot option object. Before using this parameter, create a valid screenshot option object through [OH_ArkUI_CreateSnapshotOptions](capi-common-attributes-h.md#oh_arkui_createsnapshotoptions) to set the dynamic range mode of the screenshot. |
+| int32_t dynamicRangeMode | Dynamic range mode used for the screenshot. <br>If you know the dynamic range mode used by the screenshot object, you can specify it through the **dynamicRangeMode** parameter and set **isAuto** to **false** to achieve the expected screenshot effect. <br>The value can be an enumerated value of [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode): **ARKUI_DYNAMIC_RANGE_MODE_HIGH** applies to devices that support HDR display and HDR content, **ARKUI_DYNAMIC_RANGE_MODE_CONSTRAINT** applies to scenarios that require SDR compatibility, and **ARKUI_DYNAMIC_RANGE_MODE_STANDARD** applies to common display devices. <br>Default value: **ARKUI_DYNAMIC_RANGE_MODE_STANDARD**<br><br>This parameter takes effect only when **isAuto** is set to **false**. |
+| bool isAuto | Whether the system automatically determines the dynamic range mode to be used. <br>**true**: The system automatically determines the dynamic range mode to be used. If the dynamic range mode used by the component is uncertain, you are advised to set **isAuto** to **true** so that the system can automatically determine the dynamic range mode to be used. <br>**false**: The dynamic range mode set by the **dynamicRangeMode** field is used for screenshot. <br>Default value: **false** |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Possible causes: The **snapshotOptions** parameter is null, or the **dynamicRangeMode** value is not supported. To solve this issue, pass a valid screenshot option object pointer and ensure that **dynamicRangeMode** is set to a supported dynamic range mode. |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Create()
 
@@ -330,7 +358,9 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 
 **Description**
 
-Creates an instance of the parameters for visible area change events.
+Creates an instance of the parameters for visible area change events. This API is used in scenarios such as list scrolling exposure statistics, lazy loading of images or videos, and triggering business logic when a component enters or leaves the screen. After successful creation, you must first complete the related parameter configuration such as the visible ratio threshold and update interval through related APIs, and then use the parameter object to register the visible area change listener. The system calculates the component visible ratio based on the configured parameters and triggers the corresponding listener event. After use, call [OH_ArkUI_VisibleAreaEventOptions_Dispose](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_dispose) to release the parameter object. After **Dispose** is called, the parameter object must not be used again.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -338,7 +368,7 @@ Creates an instance of the parameters for visible area change events.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions*](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | Pointer to the instance of the parameters for visible area change events. |
+| [ArkUI_VisibleAreaEventOptions*](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) | Pointer to the parameter object of the visible area change listener. If the API returns a null pointer, the creation fails. |
 
 ### OH_ArkUI_VisibleAreaEventOptions_Dispose()
 
@@ -348,7 +378,9 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 
 **Description**
 
-Disposes of the instance of the parameters for visible area change events.
+Disposes of the instance of the parameters for visible area change events. The parameter object must be created by [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create), and must not be used after **Dispose** is called.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -356,7 +388,7 @@ Disposes of the instance of the parameters for visible area change events.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters to be destroyed. |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the parameter object to be disposed of. |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetRatios()
 
@@ -366,7 +398,9 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 
 **Description**
 
-Sets the threshold ratios for visible area changes.
+Sets the threshold array used to determine the change in the visible ratio of a component. This API is applicable to scenarios such as exposure statistics, staged loading of components, and controlling media playback based on the visible ratio.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -374,15 +408,15 @@ Sets the threshold ratios for visible area changes.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. |
-| float* value | Pointer to the array of threshold ratios. Each element represents a ratio of the component's visible area (that is, the area of the component that is visible on screen; only the area within the parent component is counted) to the component's total area. The value range of the threshold is [0.0, 1.0]. If the threshold set exceeds this range, the value **0.0** or **1.0** will be used. |
-| int32_t size | Size of the array of threshold ratios. |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. Before using this parameter, create a valid parameter instance through [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create). |
+| float* value | Pointer to the threshold array. Each element represents the ratio of the visible area of the component to the area of the component itself. By default, only the area within the parent component is calculated. When **measureFromViewport** is set to **true** and **NODE_CLIP** of the parent component is set to **false**, the part of the component beyond the parent component area is also counted into the visible area. The value range of each threshold is [0.0, 1.0]: a value close to 0.0 is suitable for listening to the scenario where the component just enters the visible area, a value close to 0.5 is suitable for listening to the scenario where most of the component is visible, and a value close to 1.0 is suitable for listening to the scenario where the component is fully or almost fully visible. Select the threshold based on the service requirement for the visibility of the component. If the threshold you set exceeds this range, the actual value **0.0** or **1.0** is used. |
+| int32_t size | Number of elements in the threshold array, used to specify the number of thresholds passed by the **value** parameter. The value must be a non-negative integer and must be consistent with the actual number of threshold elements passed by the **value** parameter. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>A possible cause is that mandatory parameters are left unspecified. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Possible causes: The **option** or **value** parameter is null, or the **size** value does not meet the API requirements. To solve this issue, pass a valid parameter pointer and ensure that the **size** value is valid. |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval()
 
@@ -392,7 +426,9 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 **Description**
 
-Sets the expected update interval for visible area changes.
+Sets the expected update interval. This API is used to control the update frequency of the visible area ratio. A smaller interval is suitable for scenarios that require timely awareness of visible area changes, but increases computational overhead. A larger interval is suitable for scenarios that do not require high real-time performance and need to reduce computational overhead.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 17
 
@@ -400,14 +436,14 @@ Sets the expected update interval for visible area changes.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | Pointer to the instance of visible area change event parameters. |
-| int32_t value | Expected update interval, in ms.  Default value: **1000**. |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md) *option | Pointer to the instance of visible area change event parameters. Before using this parameter, create a valid parameter instance through [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create). |
+| int32_t value | Expected update interval, in ms. This parameter is used to control the calculation frequency of the visible area ratio. The value must be a non-negative integer. The default value is 1000 ms, which is used when this parameter is not set. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>A possible cause is that mandatory parameters are left unspecified. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Possible causes: The **option** parameter is null or the **value** parameter does not meet the API requirements. To solve this issue, pass a valid parameter instance and ensure that **value** is valid. |
 
 ### OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport()
 
@@ -417,7 +453,9 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 **Description**
 
-Sets the visible area calculation mode.
+Sets the visible area calculation mode. In scenarios involving scrolling containers, clipping containers, or allowing child components to extend beyond the parent component display, you can select the calculation mode based on whether the actually visible portion within the viewport needs to be included in exposure and visibility determination.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -425,14 +463,14 @@ Sets the visible area calculation mode.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. |
-| bool measureFromViewport | Visible area calculation mode. <br>**true**: The calculation takes the parent component's **NODE_CLIP** attribute into account. If the parent component's **NODE_CLIP** attribute is **false**: Child components can render beyond the parent component's bounds, and the out-of-bounds area is counted as part of the visible area. If the parent component's **NODE_CLIP*<br> attribute is **true**: Child components are clipped to the parent component's bounds, and the out-of-bounds area is treated as invisible. **false**: The area beyond the parent component's bounds is directly treated as invisible, ignoring the parent component's **NODE_CLIP** attribute. <br>Default value: **false**. |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. Before using this parameter, create a valid parameter instance through [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create). |
+| bool measureFromViewport | Visible area calculation mode. <br>When **measureFromViewport** is set to **true**, the system considers the **NODE_CLIP** attribute of the parent component when calculating the visible area of a component: if **NODE_CLIP** of the parent component is set to **false**, the area of the component beyond the parent component is also counted into the visible area; if **NODE_CLIP** of the parent component is set to **true**, the area of the component beyond the parent component is clipped and not counted into the visible area. When **measureFromViewport** is set to **false**, the system does not consider the **NODE_CLIP** attribute and directly treats the part of the component beyond the parent component as the invisible area. <br>Default value: **false** |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>A possible cause is that mandatory parameters are left unspecified. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Possible cause: The **option** parameter is null. To solve this issue, pass a valid instance of visible area change event parameters. |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetRatios()
 
@@ -444,21 +482,23 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 
 Obtains the threshold ratios for visible area changes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 17
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. |
-| float* value | Pointer to the array of threshold ratios. |
-| int32_t* size | Pointer to the size of the array of threshold ratios. |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. Before using this parameter, create a valid parameter instance through [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create). |
+| float* value | Pointer to the buffer used to receive the threshold array, where each element indicates the ratio of the visible area of the component to the area of the component itself, with a value range of [0.0, 1.0]. The array capacity is specified by the **size** parameter. |
+| int32_t* size | Pointer to the size of the threshold array. Before the call, it is used to pass the capacity of the buffer specified by **value**. After the call succeeds, it is used to return the actual number of elements in the threshold array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size is insufficient. <br>A possible cause is that mandatory parameters are left unspecified. |
+| int32_t | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. <br>Returns ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the array size is insufficient. <br>Possible causes: The **option**, **value**, or **size** parameter is null. To solve this issue, pass a valid parameter pointer and ensure that the buffer specified by **value** has sufficient capacity. If the capacity is insufficient, **ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR** is returned. |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval()
 
@@ -470,19 +510,21 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 
 Obtains the expected update interval for visible area changes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 17
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. Before using this parameter, create a valid parameter instance through [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Expected update interval, in ms.  Default value: **1000**. |
+| int32_t | Expected update interval, in ms. Default value: 1000 ms. |
 
 ### OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport()
 
@@ -494,18 +536,20 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 
 Obtains the visible area calculation mode.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. |
+| [ArkUI_VisibleAreaEventOptions](capi-arkui-nativemodule-arkui-visibleareaeventoptions.md)* option | Pointer to the instance of visible area change event parameters. Before using this parameter, create a valid parameter instance through [OH_ArkUI_VisibleAreaEventOptions_Create](capi-common-attributes-h.md#oh_arkui_visibleareaeventoptions_create). |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| bool | Visible area calculation mode. <br>**true**: The calculation takes the parent component's **NODE_CLIP** attribute into account. If the parent component's **NODE_CLIP** attribute is **false**: Child components can render beyond the parent component's bounds, and the out-of-bounds area is counted as part of the visible area. If the parent component's **NODE_CLIP* * attribute is **true**: Child components are clipped to the parent component's bounds, and the out-of-bounds area is treated as invisible. **false**: The area beyond the parent component's bounds is directly treated as invisible, ignoring the parent component's **NODE_CLIP** attribute. <br>Default value: **false**. |
+| bool | Visible area calculation mode. <br>**true**: The calculation takes the parent component's **NODE_CLIP** attribute into account. If the parent component's **NODE_CLIP** attribute is **false**: Child components can render beyond the parent component's bounds, and the out-of-bounds area is counted as part of the visible area. If the parent component's **NODE_CLIP** attribute is **true**: Child components are clipped to the parent component's bounds, and the out-of-bounds area is treated as invisible. **false**: The area beyond the parent component's bounds is directly treated as invisible, ignoring the parent component's **NODE_CLIP** attribute. <br>Default value: **false** |
 
 

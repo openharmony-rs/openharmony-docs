@@ -6,6 +6,8 @@ The file declares the APIs for obtaining the following ability resource informat
 
 **Library**: libbundle_ndk.z.so
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 **Related module**: [Native_Bundle](capi-native-bundle.md)
@@ -45,6 +47,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetBundleName(OH_NativeBundle_AbilityRes
 
 Obtains the bundle name of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -69,6 +73,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetModuleName(OH_NativeBundle_AbilityRes
 **Description**
 
 Obtains the module name of the ability. After using this function, you must manually release the pointer returned to prevent memory leakage.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
 
@@ -95,6 +101,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetAbilityName(OH_NativeBundle_AbilityRe
 
 Obtains the ability name. After using this function, you must manually release the pointer returned to prevent memory leakage.
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -119,6 +127,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetLabel(OH_NativeBundle_AbilityResource
 **Description**
 
 Obtains the application name of the ability. After using this function, you must manually release the pointerreturned to prevent memory leakage.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
 
@@ -145,6 +155,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetAppIndex(OH_NativeBundle_AbilityResou
 
 Obtains the clone index of the ability.
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -169,6 +181,8 @@ BundleManager_ErrorCode OH_NativeBundle_CheckDefaultApp(OH_NativeBundle_AbilityR
 **Description**
 
 Checks whether the application to which the ability belongs is a default application.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
 
@@ -195,6 +209,8 @@ BundleManager_ErrorCode OH_AbilityResourceInfo_Destroy(OH_NativeBundle_AbilityRe
 
 Releases memory allocated for ability resource information.
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -220,6 +236,8 @@ int OH_NativeBundle_GetSize()
 
 Obtains the size of a single [OH_NativeBundle_AbilityResourceInfo](capi-native-bundle-oh-nativebundle-abilityresourceinfo.md) struct.
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 **Returns**:
@@ -238,6 +256,8 @@ BundleManager_ErrorCode OH_NativeBundle_GetDrawableDescriptor(OH_NativeBundle_Ab
 **Description**
 
 Obtains the DrawableDescriptor object of the ability icon resource. After using this function, you must manually release the pointer returned to prevent memory leakage.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
 

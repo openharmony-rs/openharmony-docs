@@ -6,7 +6,7 @@ typedef struct ArkUI_ActiveChildrenInfo ArkUI_ActiveChildrenInfo
 
 ## Overview
 
-Defines active child node information.
+Defines active child node information of the current node. You can query the number of active child nodes, obtain child nodes by subscript, and release resources after use.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

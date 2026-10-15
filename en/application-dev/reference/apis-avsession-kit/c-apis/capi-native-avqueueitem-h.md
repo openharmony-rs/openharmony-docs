@@ -6,6 +6,8 @@ Declare avqueueitem related interfaces.
 
 **Library**: libohavsession.so
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Related module**: [OHAVSession](capi-ohavsession.md)
@@ -67,6 +69,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Create(OH_AVSession_AV
 
 Creates an OH_AVSession_AVMediaDescriptionBuilder instance. Call [OH_AVSession_AVMediaDescriptionBuilder_Destroy](capi-native-avqueueitem-h.md#oh_avsession_avmediadescriptionbuilder_destroy) to release the builder object when it is not used anymore.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -91,6 +95,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_Destroy(OH_AVSession_A
 
 Destroys a builder.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -114,6 +120,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAssetId(OH_AVSessio
 **Description**
 
 Set current asset id of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -140,6 +148,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetTitle(OH_AVSession_
 
 Set the title of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -164,6 +174,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetSubTitle(OH_AVSessi
 **Description**
 
 Set the subtitle of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -190,6 +202,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetArtist(OH_AVSession
 
 Set the artist of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -214,6 +228,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAlbumCoverUri(OH_AV
 **Description**
 
 Set the media image url of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -240,6 +256,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetMediaType(OH_AVSess
 
 Set the media type of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -264,6 +282,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetLyricContent(OH_AVS
 **Description**
 
 Set the lyric content of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -290,6 +310,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetDuration(OH_AVSessi
 
 Set the duration of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -314,6 +336,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetMediaUri(OH_AVSessi
 **Description**
 
 Set the media uri of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -340,6 +364,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetStartPosition(OH_AV
 
 Set the start position of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -364,6 +390,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetMediaSize(OH_AVSess
 **Description**
 
 Set the size of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -390,6 +418,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAlbumTitle(OH_AVSes
 
 Set the album title of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -414,6 +444,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_SetAppName(OH_AVSessio
 **Description**
 
 Set the app name of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -440,6 +472,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAssetId(OH_AVSession_AVMed
 
 Get current asset id of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -464,6 +498,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetTitle(OH_AVSession_AVMedia
 **Description**
 
 Get the title of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -490,6 +526,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetSubtitle(OH_AVSession_AVMe
 
 Get the subtitle of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -514,6 +552,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetArtist(OH_AVSession_AVMedi
 **Description**
 
 Get the artist of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -540,6 +580,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAlbumCoverUri(OH_AVSession
 
 Get the media image url of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -564,6 +606,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetMediaType(OH_AVSession_AVM
 **Description**
 
 Get the media type information
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -590,6 +634,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetLyricContent(OH_AVSession_
 
 Get the lyric content of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -614,6 +660,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetDuration(OH_AVSession_AVMe
 **Description**
 
 Get the duration of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -640,6 +688,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetMediaUri(OH_AVSession_AVMe
 
 Get the media uri of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -664,6 +714,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetStartPosition(OH_AVSession
 **Description**
 
 Get start position of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -690,6 +742,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetMediaSize(OH_AVSession_AVM
 
 Get media size of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -714,6 +768,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAlbumTitle(OH_AVSession_AV
 **Description**
 
 Get the album title of the resource
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -740,6 +796,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_GetAppName(OH_AVSession_AVMed
 
 Get the app name of the resource
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -765,6 +823,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescriptionBuilder_GenerateAVMediaDescrip
 
 Create the avMediaDescription. Call [OH_AVSession_AVMediaDescription_Destroy](capi-native-avqueueitem-h.md#oh_avsession_avmediadescription_destroy) to release the avMediaDescription object when it is not used anymore.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -789,6 +849,8 @@ AVQueueItem_Result OH_AVSession_AVMediaDescription_Destroy(OH_AVSession_AVMediaD
 **Description**
 
 Request to release the avMediaDescription.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 

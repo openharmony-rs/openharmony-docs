@@ -6,6 +6,8 @@
 
 **库：** libability_runtime.so
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 24
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -43,6 +45,8 @@ typedef void AbilityRuntime_Extension_CreateFunc(AbilityRuntime_ExtensionInstanc
 **描述：**
 
 ExtensionAbility创建回调函数类型。ExtensionAbility中必须实现的回调函数类型，用于实例化ExtensionAbility。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 24
 

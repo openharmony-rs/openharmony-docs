@@ -6,7 +6,7 @@ struct OH_AudioSuite_MetaFrame {...}
 
 ## 概述
 
-定义音频元数据帧结构。 该结构用于将音频数据和元数据一起传递。
+定义包含音频数据和元数据的帧结构。
 
 **系统能力：** SystemCapability.Multimedia.Audio.SuiteEngine
 
