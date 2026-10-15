@@ -613,7 +613,7 @@ mechanicManager.searchTarget(targetInfo,
 
 move(mechId: int, params: MoveParams): Promise&lt;Result&gt;
 
-以特定参数移动一个具身设备。
+以特定参数移动一个机械体设备。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
@@ -662,7 +662,7 @@ mechanicManager.move(mechId, param).then((result) => {
 
 moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&gt;
 
-以特定速度移动一个具身设备。
+以特定速度移动一个机械体设备。
 
 **系统能力**：SystemCapability.Mechanic.Core
 
