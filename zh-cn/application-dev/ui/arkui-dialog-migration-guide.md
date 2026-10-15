@@ -596,41 +596,47 @@ export struct ActionSheetAfterMigrate {
 
 <!-- @[show_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogBeforeMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct Index {
+export struct ShowDialogBeforeMigrate {
   @State result: string = '';
 
   build() {
-    Column() {
-      Button('打开 showDialog')
-        .onClick(() => {
-          this.getUIContext().getPromptAction().showDialog({
-            title: '提示',
-            message: '确认删除？',
-            buttons: [
-              { text: '取消', color: '#666666' },
-              { text: '确认', color: '#0000FF' }
-            ]
-          }).then((data) => {
-            this.result = 'click button index: ' + data.index;
-          }).catch((error: BusinessError) => {
-            this.result = `showDialog error: ${error.code}`;
-          });
-        })
+    NavDestination() {
+      Column() {
+        Button('打开 showDialog')
+          .onClick(() => {
+            this.getUIContext()
+              .getPromptAction()
+              .showDialog({
+                title: '提示',
+                message: '确认删除？',
+                buttons: [
+                  { text: '取消', color: '#666666' },
+                  { text: '确认', color: '#0000FF' }
+                ]
+              })
+              .then((data) => {
+                this.result = 'click button index: ' + data.index;
+              })
+              .catch((error: BusinessError) => {
+                this.result = `showDialog error: ${error.code}`;
+              });
+          })
 
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
       }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
 ```
