@@ -267,40 +267,52 @@ export struct CustomDialogAfterMigrate {
 
 <!-- @[alert_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogBeforeMigrate.ets) -->
 
-```typescript
+``` TypeScript
 @Entry
 @Component
-struct Index {
+export struct AlertDialogBeforeMigrate {
   @State result: string = '';
 
   build() {
-    Column() {
-      Button('打开 AlertDialog')
-        .onClick(() => {
-          this.getUIContext().showAlertDialog({
-            title: '提示',
-            message: '确认删除？',
-            autoCancel: true,
-            buttons: [
-              { value: '取消', action: () => { this.result = '取消'; } },
-              { value: '确认', action: () => { this.result = '确认'; } }
-            ],
-            cancel: () => { this.result = 'cancel'; }
-          });
-        })
+    NavDestination() {
+      Column() {
+        Button('打开 AlertDialog')
+          .onClick(() => {
+            this.getUIContext().showAlertDialog({
+              title: '提示',
+              message: '确认删除？',
+              autoCancel: true,
+              buttons: [
+                {
+                  value: '取消', action: () => {
+                  this.result = '取消';
+                }
+                },
+                {
+                  value: '确认', action: () => {
+                  this.result = '确认';
+                }
+                }
+              ],
+              cancel: () => {
+                this.result = 'cancel';
+              }
+            });
+          })
 
-      if (this.result) {
-        Text(this.result)
-          .fontSize(14)
-          .margin({ top: 10 })
+        if (this.result) {
+          Text(this.result)
+            .fontSize(14)
+            .margin({ top: 10 })
+        }
       }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
     }
-    .width('100%')
-    .height('100%')
-    .justifyContent(FlexAlign.Center)
   }
 }
- ```
+```
 
 ![迁移前示例图](figures/AlertDialogBeforeMigrate.png)
 
