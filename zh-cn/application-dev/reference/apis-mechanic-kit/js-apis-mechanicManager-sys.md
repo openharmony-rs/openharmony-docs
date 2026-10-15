@@ -653,9 +653,13 @@ let moveParams: mechanicManager.MoveParams = {
     speedGear: undefined,
     mode: undefined
 };
-mechanicManager.move(mechId, moveParams).then((result) => {
+try {
+  mechanicManager.move(mechId, moveParams).then((result) => {
     console.info(`'result:' ${result}`);
-});
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
 ```
 
 ## mechanicManager.moveBySpeed
@@ -703,9 +707,13 @@ let speedParams: mechanicManager.SpeedParams = {
     mode: undefined
 };
 let duration: number = 1;
-mechanicManager.moveBySpeed(mechId, speedParams, duration).then((result) => {
+try {
+  mechanicManager.moveBySpeed(mechId, speedParams, duration).then((result) => {
     console.info(`'result:' ${result}`);
-});
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
 ```
 
 ## mechanicManager.turnBySpeed
@@ -749,9 +757,13 @@ turnBySpeed(mechId: int, angleSpeed: double, duration: int): Promise&lt;Result&g
 let mechId: number = 0;
 let angleSpeed: number = 1.2;
 let duration: number = 1;
-mechanicManager.turnBySpeed(mechId, angleSpeed, duration).then((result) => {
+try {
+  mechanicManager.turnBySpeed(mechId, angleSpeed, duration).then((result) => {
     console.info(`'result:' ${result}`);
-});
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
 ```
 
 ## mechanicManager.isSupportAction
