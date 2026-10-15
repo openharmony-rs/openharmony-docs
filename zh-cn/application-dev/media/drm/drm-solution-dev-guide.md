@@ -7,7 +7,7 @@
 <!--Tester: @xdlinc-->
 <!--Adviser: @qin_wei_jie-->
 
-DRM 解决方案插件实现DRM HDI接口，DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
+DRM解决方案插件实现DRM HDI接口，DRM Kit的DRM框架将通过HDI接口加载DRM解决方案插件。
 
 插件由DRM解决方案集成方开发，放置在设备的/vendor分区中。
 
