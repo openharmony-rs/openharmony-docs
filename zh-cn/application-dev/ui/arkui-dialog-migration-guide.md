@@ -1529,7 +1529,7 @@ export class DialogPresenterClassNew {
 
 <!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
 
-```typescript
+``` TypeScript
 // Index.ets
 import { ComponentContent, DialogBaseAlignment } from '@kit.ArkUI';
 import { DialogPresenterClassNew } from '../../common/DialogPresenterClassNew';
@@ -1561,10 +1561,8 @@ function buildText(params: Params) {
 export struct OpenDialogAndUpdate {
   @State message: string = 'hello';
   private ctx: UIContext = this.getUIContext();
-  // [Start open_dialog_and_update_create_componentContent]
   private contentNode: ComponentContent<Object> =
     new ComponentContent(this.ctx, wrapBuilder(buildText), new Params(this.message));
-  // [End open_dialog_and_update_create_componentContent]
   aboutToAppear(): void {
     DialogPresenterClassNew.setContext(this.ctx);
     DialogPresenterClassNew.setContentNode(this.contentNode);
@@ -1593,9 +1591,7 @@ export struct OpenDialogAndUpdate {
               DialogPresenterClassNew.openDialog();
 
               setTimeout(() => {
-                // [Start open_dialog_and_update_content]
                 this.contentNode.update(new Params('update'));
-                // [End open_dialog_and_update_content]
               }, 1500)
             })
         }
