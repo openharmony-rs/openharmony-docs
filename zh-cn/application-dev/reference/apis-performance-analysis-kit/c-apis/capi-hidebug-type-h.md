@@ -6,6 +6,8 @@ Defines the code of the HiDebug module.
 
 **库：** libohhidebug.so
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **相关模块：** [HiDebug](capi-hidebug.md)
@@ -108,6 +110,8 @@ enum HiDebug_ErrorCode
 
 错误码定义。用于HiDebug模块各功能接口的返回状态标识，包括成功、参数错误、权限问题、系统内部错误、设备不支持等多种情况。开发者可根据错误码定位问题原因并采取相应的错误处理措施。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -156,6 +160,8 @@ enum HiDebug_TraceFlag
 
 采集trace线程的类型。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -173,6 +179,8 @@ enum HiDebug_StackFrameType
 
 栈帧类型的枚举值定义。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -189,6 +197,8 @@ enum HiDebug_CrashObjType
 **描述：**
 
 维测信息数据类型的枚举。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 23
 
@@ -210,6 +220,8 @@ enum OH_HiDebug_ResourceType
 **描述：**
 
 定义资源采集类型的枚举。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 24
 
@@ -234,6 +246,8 @@ enum OH_HiDebug_MemListenerType
 
 内存监听回调的类型枚举。开发者根据回调类型处理相关逻辑。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -251,6 +265,8 @@ enum OH_HiDebug_ProfilerStackTraceMode
 **描述：**
 
 定义调用栈追踪模式枚举。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 
@@ -272,6 +288,8 @@ typedef void (*OH_HiDebug_RequestTraceCallback)(HiDebug_ErrorCode errorCode, con
 
 请求trace采集的回调类型定义。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 24
 
 **参数：**
@@ -290,6 +308,8 @@ typedef void (*OH_HiDebug_ProfilingCallback)(OH_HiDebug_ProfilingResult* result)
 **描述：**
 
 定义资源采集回调函数。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 24
 

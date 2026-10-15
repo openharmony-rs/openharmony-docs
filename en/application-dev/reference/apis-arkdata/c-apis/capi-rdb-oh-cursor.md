@@ -29,21 +29,21 @@ Define the OH_Cursor structure type.<br> Provides methods for accessing a databa
 
 | Name | Description |
 | -- | -- |
-| [int (\*getColumnCount)(OH_Cursor *cursor, int *count)](#getcolumncount) | Function pointer. Obtains the total number of columns. |
-| [int (\*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)](#getcolumntype) | Function pointer. Obtains data type of the given column's value. |
-| [int (\*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)](#getcolumnindex) | Function pointer. Obtains the zero-based index for the given column name. |
-| [int (\*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)](#getcolumnname) | Function pointer. Obtains the column name at the given column index. |
-| [int (\*getRowCount)(OH_Cursor *cursor, int *count)](#getrowcount) | Function pointer. Obtains the numbers of rows in the result set. |
-| [int (\*goToNextRow)(OH_Cursor *cursor)](#gotonextrow) | Function pointer. Move the cursor to the next row. |
-| [int (\*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)](#getsize) | Function pointer. Obtains the size of blob or text. |
-| [int (\*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)](#gettext) | Function pointer. Obtains the value of the requested column as a string. |
-| [int (\*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)](#getint64) | Function pointer. Obtains the value of the requested column as a int64_t. |
-| [int (\*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)](#getreal) | Function pointer. Obtains the value of the requested column as a double. |
-| [int (\*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)](#getblob) | Function pointer. Obtains the value of the requested column as a byte array. |
-| [int (\*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)](#isnull) | Function pointer. Obtains Whether the value of the requested column is null. |
-| [int (\*destroy)(OH_Cursor *cursor)](#destroy) | Function pointer. Destroy the result set, releasing all of its resources and making it completely invalid. |
-| [int (\*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)](#getasset) | Function pointer. Obtains the value of the requested column as an [Data_Asset](capi-rdb-data-asset.md) instance. |
-| [int (\*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)](#getassets) | Function pointer. Obtains the value of the requested column as an [Data_Asset](capi-rdb-data-asset.md) instance. |
+| [int (\*getColumnCount)(OH_Cursor *cursor, int *count)](#getcolumncount) | - | Function pointer. Obtains the total number of columns. |
+| [int (\*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)](#getcolumntype) | - | Function pointer. Obtains data type of the given column's value. |
+| [int (\*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)](#getcolumnindex) | - | Function pointer. Obtains the zero-based index for the given column name. |
+| [int (\*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)](#getcolumnname) | - | Function pointer. Obtains the column name at the given column index. |
+| [int (\*getRowCount)(OH_Cursor *cursor, int *count)](#getrowcount) | - | Function pointer. Obtains the numbers of rows in the result set. |
+| [int (\*goToNextRow)(OH_Cursor *cursor)](#gotonextrow) | - | Function pointer. Move the cursor to the next row. |
+| [int (\*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)](#getsize) | - | Function pointer. Obtains the size of blob or text. |
+| [int (\*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)](#gettext) | - | Function pointer. Obtains the value of the requested column as a string. |
+| [int (\*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)](#getint64) | - | Function pointer. Obtains the value of the requested column as a int64_t. |
+| [int (\*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)](#getreal) | - | Function pointer. Obtains the value of the requested column as a double. |
+| [int (\*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)](#getblob) | - | Function pointer. Obtains the value of the requested column as a byte array. |
+| [int (\*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)](#isnull) | - | Function pointer. Obtains Whether the value of the requested column is null. |
+| [int (\*destroy)(OH_Cursor *cursor)](#destroy) | - | Function pointer. Destroy the result set, releasing all of its resources and making it completely invalid. |
+| [int (\*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)](#getasset) | - | Function pointer. Obtains the value of the requested column as an [Data_Asset](capi-rdb-data-asset.md) instance. |
+| [int (\*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)](#getassets) | - | Function pointer. Obtains the value of the requested column as an [Data_Asset](capi-rdb-data-asset.md) instance. |
 
 ## Member function description
 

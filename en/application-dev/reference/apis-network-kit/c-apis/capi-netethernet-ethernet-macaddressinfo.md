@@ -12,7 +12,7 @@ Defines the MAC address of the Ethernet NIC.
 
 **Since**: 26.0.0
 
-**Related module**: [netmanager_ext](capi-netmanager-ext.md)
+**Related module**: [NetEthernet](capi-netethernet.md)
 
 **Header file**: [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 

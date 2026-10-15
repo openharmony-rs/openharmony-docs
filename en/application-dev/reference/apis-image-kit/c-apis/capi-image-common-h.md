@@ -6,6 +6,8 @@ The file declares the common enums and structs used by the image interface.
 
 **Library**: libimage_common.so
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **Related module**: [Image_NativeModule](capi-image-nativemodule.md)
@@ -55,6 +57,8 @@ enum Image_ErrorCode
 **Description**
 
 Enumerates the return values that may be used by the interface.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 12
 
@@ -109,6 +113,8 @@ enum Image_MetadataType
 
 Enumerates the metadata types.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -126,6 +132,8 @@ enum IMAGE_ALLOCATOR_MODE
 **Description**
 
 Type of allocator used to allocate memory of a PixelMap.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 20
 
@@ -147,6 +155,8 @@ Image_ErrorCode OH_PictureMetadata_Create(Image_MetadataType metadataType, OH_Pi
 **Description**
 
 Creates the pointer to an OH_PictureMetadata struct.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -172,6 +182,8 @@ Image_ErrorCode OH_PictureMetadata_GetProperty(OH_PictureMetadata *metadata, Ima
 **Description**
 
 Obtains a property of metadata based on the key. **value.data** obtained through this API lacks the string terminator **\0**. Please use it with caution.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -199,6 +211,8 @@ Image_ErrorCode OH_PictureMetadata_GetPropertyWithNull(OH_PictureMetadata *metad
 
 Obtains the metadata value of an OH_PictureMetadata instance. The output **value.data** ends with the string terminator **\0**.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 19
 
 **Parameters**:
@@ -224,6 +238,8 @@ Image_ErrorCode OH_PictureMetadata_SetProperty(OH_PictureMetadata *metadata, Ima
 **Description**
 
 Sets a property of metadata based on the key.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 
@@ -251,6 +267,8 @@ Image_ErrorCode OH_PictureMetadata_SetBlobData(OH_PictureMetadata *metadata, uin
 
 Sets blob data in the metadata.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -277,6 +295,8 @@ Image_ErrorCode OH_PictureMetadata_GetBlobDataSize(OH_PictureMetadata *metadata,
 
 Obtains the size of the blob data in the metadata.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -301,6 +321,8 @@ Image_ErrorCode OH_PictureMetadata_GetBlobData(OH_PictureMetadata *metadata, uin
 **Description**
 
 Obtains blob data from the metadata.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -328,6 +350,8 @@ Image_ErrorCode OH_PictureMetadata_Release(OH_PictureMetadata *metadata)
 
 Releases the pointer to an OH_PictureMetadata struct.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -351,6 +375,8 @@ Image_ErrorCode OH_PictureMetadata_Clone(OH_PictureMetadata *oldMetadata, OH_Pic
 **Description**
 
 Clones metadata.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 13
 

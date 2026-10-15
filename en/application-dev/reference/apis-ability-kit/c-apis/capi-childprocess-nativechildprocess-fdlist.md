@@ -22,6 +22,6 @@ The struct describes a list of file descriptors passed to the child process. The
 
 | Name | Description |
 | -- | -- |
-| [struct NativeChildProcess_Fd*](capi-childprocess-nativechildprocess-fd.md) head |  |
+| struct NativeChildProcess_Fd* head |  |
 
 

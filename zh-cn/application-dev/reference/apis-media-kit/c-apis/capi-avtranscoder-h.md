@@ -76,7 +76,7 @@ OH_AVErrCode OH_AVTranscoderConfig_Release(OH_AVTranscoder_Config* config)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md)* config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md)* config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 
 **返回值：**
 
@@ -100,7 +100,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetSrcFD(OH_AVTranscoder_Config *config, int3
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | int32_t srcFd | 源视频的文件描述符。 |
 | int64_t srcOffset | 源视频在文件描述符中的偏移量，单位：字节/Byte。 |
 | int64_t length | 源视频的长度，单位：字节/Byte。 |
@@ -127,7 +127,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstFD(OH_AVTranscoder_Config *config, int3
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | int32_t dstFd | 输出视频的文件描述符。 |
 
 **返回值：**
@@ -152,7 +152,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoType(OH_AVTranscoder_Config *confi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | const char *mimeType | 输出视频的编码格式，详细请参见参考native_avcodec_base.h。 |
 
 **返回值：**
@@ -177,7 +177,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioType(OH_AVTranscoder_Config *confi
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | const char *mimeType | 输出音频的编码格式，参考native_avcodec_base.h。 |
 
 **返回值：**
@@ -202,7 +202,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstFileType(OH_AVTranscoder_Config *config
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | [OH_AVOutputFormat](../../apis-avcodec-kit/c-apis/capi-native-avcodec-base-h.md#oh_avoutputformat) mimeType | 输出视频的封装格式，参考native_avcodec_base.h。 |
 
 **返回值：**
@@ -227,7 +227,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstAudioBitrate(OH_AVTranscoder_Config *co
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | int32_t bitrate | 输出音频的码率，单位为比特率（bps）。默认设置为48Kbps。 |
 
 **返回值：**
@@ -252,7 +252,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoBitrate(OH_AVTranscoder_Config *co
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。传入的config指针必须为OH_AVTranscoderConfig_Create创建的实例。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | int32_t bitrate | 输出视频的码率，单位为（bps）。默认码率按输出视频的分辨率设置。 [240P,480P]默认码率值为1Mbps。 (480P,720P]默认码率值为2Mbps。 (720P,1080P]默认码率值为4Mbps。 1080P及以上默认码率值为8Mbps。 |
 
 **返回值：**
@@ -277,7 +277,7 @@ OH_AVErrCode OH_AVTranscoderConfig_SetDstVideoResolution(OH_AVTranscoder_Config 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | int32_t width | 输出视频帧的宽，支持范围[240, 3840]，默认设置为源视频帧的宽。 |
 | int32_t height | 输出视频帧的高，支持范围[240, 2160]，默认设置为源视频帧的高。 |
 
@@ -321,8 +321,8 @@ OH_AVErrCode OH_AVTranscoder_Prepare(OH_AVTranscoder *transcoder, OH_AVTranscode
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。传入的transcoder指针必须为OH_AVTranscoder_Create创建的实例。 |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针，参考[OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md)。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针， 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 
 **返回值：**
 
@@ -346,7 +346,7 @@ OH_AVErrCode OH_AVTranscoder_Start(OH_AVTranscoder *transcoder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
 
 **返回值：**
 
@@ -370,7 +370,7 @@ OH_AVErrCode OH_AVTranscoder_Pause(OH_AVTranscoder *transcoder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
 
 **返回值：**
 
@@ -394,7 +394,7 @@ OH_AVErrCode OH_AVTranscoder_Resume(OH_AVTranscoder *transcoder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
 
 **返回值：**
 
@@ -418,7 +418,7 @@ OH_AVErrCode OH_AVTranscoder_Cancel(OH_AVTranscoder *transcoder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
 
 **返回值：**
 
@@ -442,7 +442,7 @@ OH_AVErrCode OH_AVTranscoder_Release(OH_AVTranscoder *transcoder)
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
 
 **返回值：**
 
@@ -466,7 +466,7 @@ OH_AVErrCode OH_AVTranscoder_SetStateCallback(OH_AVTranscoder *transcoder, OH_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。传入的transcoder指针必须为OH_AVTranscoder_Create创建的实例。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
 | [OH_AVTranscoder_OnStateChange](capi-avtranscoder-base-h.md#oh_avtranscoder_onstatechange) callback | 转码状态回调方法，详细说明请参见[OH_AVTranscoder_OnStateChange](capi-avtranscoder-base-h.md#oh_avtranscoder_onstatechange)。 |
 | void *userData | 指向用户特定数据的指针。 |
 
@@ -492,7 +492,7 @@ OH_AVErrCode OH_AVTranscoder_SetErrorCallback(OH_AVTranscoder *transcoder, OH_AV
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
 | [OH_AVTranscoder_OnError](capi-avtranscoder-base-h.md#oh_avtranscoder_onerror) callback | 转码错误回调方法，详细说明请参见[OH_AVTranscoder_OnError](capi-avtranscoder-base-h.md#oh_avtranscoder_onerror)。 |
 | void *userData | 指向用户特定数据的指针。 |
 
@@ -518,7 +518,7 @@ OH_AVErrCode OH_AVTranscoder_SetProgressUpdateCallback(OH_AVTranscoder *transcod
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 |
+| [OH_AVTranscoder](capi-avtranscoder-oh-avtranscoder.md) *transcoder | 指向OH_AVTranscoder实例的指针。 传入的transcoder指针必须为[OH_AVTranscoder_Create](#oh_avtranscoder_create)创建的实例。 |
 | [OH_AVTranscoder_OnProgressUpdate](capi-avtranscoder-base-h.md#oh_avtranscoder_onprogressupdate) callback | 转码进度更新回调方法，详细说明请参见[OH_AVTranscoder_OnProgressUpdate](capi-avtranscoder-base-h.md#oh_avtranscoder_onprogressupdate)。 |
 | void *userData | 指向用户特定数据的指针。 |
 
@@ -544,7 +544,7 @@ OH_AVErrCode OH_AVTranscoderConfig_EnableBFrame(OH_AVTranscoder_Config *config, 
 
 | 参数项 | 描述 |
 | -- | -- |
-| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 |
+| [OH_AVTranscoder_Config](capi-avtranscoder-oh-avtranscoder-config.md) *config | 指向OH_AVTranscoder_Config实例的指针。 传入的config指针必须为[OH_AVTranscoderConfig_Create](#oh_avtranscoderconfig_create)创建的实例。 |
 | bool enabled | 是否使能B帧编码。true表示使能B帧编码，false表示不使能B帧编码，默认为false。 |
 
 **返回值：**

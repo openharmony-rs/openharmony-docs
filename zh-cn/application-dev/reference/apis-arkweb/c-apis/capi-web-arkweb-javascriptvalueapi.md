@@ -29,7 +29,7 @@ ArkWeb_JavaScriptValueAPI是JavaScript相关Native API结构体。该结构体�
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkWeb_JavaScriptValuePtr (\*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)](#createjavascriptvalue) | 创建一个JavaScript值，用于返回给HTML。该函数根据指定的type参数对data缓冲区中的数据进行类型转换和封装，生成对应的JavaScript值对象，转换失败时返回NULL。 使用前需通过OH_ArkWeb_GetNativeAPI获取JavaScript接口，并建议校验函数指针可用性。 |
+| [ArkWeb_JavaScriptValuePtr (\*createJavaScriptValue)(ArkWeb_JavaScriptValueType type, void* data, size_t dataLength)](#createjavascriptvalue) | - | 创建一个JavaScript值，用于返回给HTML。该函数根据指定的type参数对data缓冲区中的数据进行类型转换和封装，生成对应的JavaScript值对象，转换失败时返回NULL。 使用前需通过OH_ArkWeb_GetNativeAPI获取JavaScript接口，并建议校验函数指针可用性。 |
 
 ## 成员函数说明
 

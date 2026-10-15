@@ -6,6 +6,8 @@
 
 **库：** libohgame_controller.z.so
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)
@@ -41,6 +43,8 @@ GameController_ErrorCode OH_GameDevice_GetAllDeviceInfos(GameDevice_AllDeviceInf
 
 获取所有在线设备的信息。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -69,6 +73,8 @@ GameController_ErrorCode OH_GameDevice_RegisterDeviceMonitor(GameDevice_DeviceMo
 **描述：**
 
 注册设备状态变化事件的监听回调。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -99,6 +105,8 @@ GameController_ErrorCode OH_GameDevice_UnregisterDeviceMonitor(void)
 
 取消注册设备状态变化事件的监听回调。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **返回值：**
@@ -116,6 +124,8 @@ GameController_ErrorCode OH_GameDevice_DestroyAllDeviceInfos(GameDevice_AllDevic
 **描述：**
 
 销毁所有设备信息实例。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -141,6 +151,8 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetCount(const struct Game
 
 获取设备数量。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -165,6 +177,8 @@ GameController_ErrorCode OH_GameDevice_AllDeviceInfos_GetDeviceInfo(const struct
 **描述：**
 
 获取指定索引的设备信息。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 

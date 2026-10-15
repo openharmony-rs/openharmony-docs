@@ -1,4 +1,4 @@
-# OHNativeWindow (OH_NativeImage)
+# OHNativeWindow
 
 ```c
 typedef struct OHNativeWindow OHNativeWindow

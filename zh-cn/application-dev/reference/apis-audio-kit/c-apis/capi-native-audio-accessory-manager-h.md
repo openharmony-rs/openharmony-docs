@@ -6,17 +6,13 @@
 
 **库：** libohaudio.so
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [OHAudio](capi-ohaudio.md)
 
 ## 汇总
-
-### 宏定义
-
-| 名称 | 描述 |
-| -- | -- |
-| NATIVE_AUDIO_ACCESSORY_MANAGER_H | 声明音频配件管理相关的接口。<br> 该文件接口用于管理音频配件的创建、连接、断开和销毁等功能。<br>**起始版本：** 26.0.0<br>**系统能力：** SystemCapability.Multimedia.Audio.Core |
 
 ### 函数
 
@@ -50,6 +46,8 @@ typedef bool (*OH_AudioAccessory_SetNoiseReductionCallback)(OH_AudioAccessory *a
 
 音频配件降噪模式变更回调函数。<br> <b>触发时机：</b>当配件的降噪模式发生变更时触发，此回调可以在配件连接后的任意时间触发。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -75,13 +73,15 @@ OH_AudioCommon_Result OH_AudioManager_GetAccessoryManager(OH_AudioAccessoryManag
 
 获取音频配件管理器实例。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| OH_AudioAccessoryManager **outManager | [out] 指向OH_AudioAccessoryManager指针的地址。该指针地址由系统管理，调用方不得释放，否则可能导致使用异常。 |
+| OH_AudioAccessoryManager **outManager | [out] 指向OH_AudioAccessoryManager指针的地址。 该指针地址由系统管理，调用方不得释放，否则可能导致使用异常。 |
 
 **返回值：**
 
@@ -98,6 +98,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_CreateInput(OH_AudioAccessoryMana
 **描述：**
 
 创建音频配件实例并注册其能力。<br> 此函数仅用于创建音频配件实例，不会创建任何输入流。 函数执行成功时，系统通过outOwnedAccessory指针返回创建好的[OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md)句柄。 当应用请求从该音频配件采集音频时，系统会触发openInputStream回调函数。 在一个音频配件的生命周期内，输入流可能被创建和释放多次。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -129,6 +131,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 
 设置与主音频配件组合使用的副配件MAC地址列表。<br> 此函数适用于多配件组合场景（如二合一、四合一），支持动态管理配件组合： - 初始化：配件创建后，调用此接口设置初始副配件列表。 - 动态更新：副配件替换或断开连接时，调用此接口覆盖旧的MAC列表 - 线程安全：录音期间可安全调用。 - 限制：此接口仅用于更新副配件MAC地址列表，不用于更新主配件MAC地址。 主配件断开连接或主配件MAC地址变化时，应先断开并销毁原有配件句柄，再使用新的主配件信息重新创建配件实例。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -155,6 +159,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_RegisterNoiseReductionCapability(
 **描述：**
 
 注册音频配件的降噪能力。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 
@@ -183,6 +189,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetNoiseReductionMode(OH_AudioAcc
 
 设置音频配件的降噪模式。<br> 此函数由配件关联的服务或应用来调用，它更新配件当前降噪模式到系统， 通常在通过其他方式（如硬件按钮或配套应用）更改降噪模式时使用， 以确保系统侧的降噪模式与配件实际降噪模式保持一致。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -208,6 +216,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManage
 **描述：**
 
 将音频配件连接到音频系统。<br> 调用此函数前，必须通过[OH_AudioManager_GetAccessoryManager](capi-native-audio-accessory-manager-h.md#oh_audiomanager_getaccessorymanager)获取的音频配件管理器实例， 并通过[OH_AudioAccessoryManager_CreateInput](capi-native-audio-accessory-manager-h.md#oh_audioaccessorymanager_createinput)创建accessory实例。<br> <b>建议：</b>建议音频配件管理程序优先接入智慧生活应用，为用户提供设备发现与连接体验的一致性； 若以独立音频配件管理应用方式，需要申请ACL权限ohos.permission.MANAGE_AUDIO_ACCESSORY
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **需要权限：** ohos.permission.MANAGE_AUDIO_ACCESSORY
 
@@ -236,6 +246,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryMan
 
 将音频配件从音频系统断开连接。
 
+**系统能力：** SystemCapability.Multimedia.Audio.Core
+
 **需要权限：** ohos.permission.MANAGE_AUDIO_ACCESSORY
 
 **起始版本：** 26.0.0
@@ -262,6 +274,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager 
 **描述：**
 
 销毁音频配件实例。<br> 销毁前必须先断开配件连接。
+
+**系统能力：** SystemCapability.Multimedia.Audio.Core
 
 **起始版本：** 26.0.0
 

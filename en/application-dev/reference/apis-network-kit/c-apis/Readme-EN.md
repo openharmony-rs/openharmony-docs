@@ -2,7 +2,7 @@
 
 - Module<!--networkkit-module-->
     - [netstack](capi-netstack.md)
-    - [netmanager_ext](capi-netmanager-ext.md)
+    - [NetEthernet](capi-netethernet.md)
     - [TrafficFilter](capi-trafficfilter.md)
     - [NetConnection](capi-netconnection.md)
 - Header file<!--networkkit-headerfile-->
@@ -47,11 +47,11 @@
     - [NetStack_CertBlob](capi-netstack-netstack-certblob.md)
     - [NetStack_CertificatePinning](capi-netstack-netstack-certificatepinning.md)
     - [NetStack_Certificates](capi-netstack-netstack-certificates.md)
-    - [Ethernet_MacAddressInfo](capi-netmanager-ext-ethernet-macaddressinfo.md)
-    - [Ethernet_MacAddrInfoList](capi-netmanager-ext-ethernet-macaddrinfolist.md)
-    - [Ethernet_NetAddr](capi-netmanager-ext-ethernet-netaddr.md)
-    - [Ethernet_NetAddrInfo](capi-netmanager-ext-ethernet-netaddrinfo.md)
-    - [Ethernet_NetAddrList](capi-netmanager-ext-ethernet-netaddrlist.md)
+    - [Ethernet_MacAddressInfo](capi-netethernet-ethernet-macaddressinfo.md)
+    - [Ethernet_MacAddrInfoList](capi-netethernet-ethernet-macaddrinfolist.md)
+    - [Ethernet_NetAddr](capi-netethernet-ethernet-netaddr.md)
+    - [Ethernet_NetAddrInfo](capi-netethernet-ethernet-netaddrinfo.md)
+    - [Ethernet_NetAddrList](capi-netethernet-ethernet-netaddrlist.md)
     - [OH_TrafficFilter_IPAddress](capi-trafficfilter-oh-trafficfilter-ipaddress.md)
     - [OH_TrafficFilter_IPCidr](capi-trafficfilter-oh-trafficfilter-ipcidr.md)
     - [OH_TrafficFilter_IPRange](capi-trafficfilter-oh-trafficfilter-iprange.md)

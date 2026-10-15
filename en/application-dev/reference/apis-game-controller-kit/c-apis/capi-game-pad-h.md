@@ -6,6 +6,8 @@ Defines APIs for gamepads.
 
 **Library**: libohgame_controller.z.so
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Related module**: [GameController](capi-gamecontroller.md)
@@ -75,6 +77,8 @@ GameController_ErrorCode OH_GamePad_LeftShoulder_RegisterButtonInputMonitor(Game
 
 Registers a callback for Left Shoulder button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Parameters**:
@@ -104,6 +108,8 @@ GameController_ErrorCode OH_GamePad_LeftShoulder_UnregisterButtonInputMonitor(vo
 
 Unregisters the callback for Left Shoulder button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -121,6 +127,8 @@ GameController_ErrorCode OH_GamePad_RightShoulder_RegisterButtonInputMonitor(Gam
 **Description**
 
 Registers a callback for Right Shoulder button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -151,6 +159,8 @@ GameController_ErrorCode OH_GamePad_RightShoulder_UnregisterButtonInputMonitor(v
 
 Unregisters the callback for Right Shoulder button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -168,6 +178,8 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterButtonInputMonitor(GameP
 **Description**
 
 Registers a callback for Left Trigger button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -198,6 +210,8 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterButtonInputMonitor(voi
 
 Unregisters the callback for Left Trigger button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -215,6 +229,8 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_RegisterAxisInputMonitor(GamePad
 **Description**
 
 Registers a callback for Left Trigger axis events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -245,6 +261,8 @@ GameController_ErrorCode OH_GamePad_LeftTrigger_UnregisterAxisInputMonitor(void)
 
 Unregisters the callback for Left Trigger axis events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -262,6 +280,8 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterButtonInputMonitor(Game
 **Description**
 
 Registers a callback for Right Trigger button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -292,6 +312,8 @@ GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterButtonInputMonitor(vo
 
 Unregisters the callback for Right Trigger button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -309,6 +331,8 @@ GameController_ErrorCode OH_GamePad_RightTrigger_RegisterAxisInputMonitor(GamePa
 **Description**
 
 Registers a callback for Right Trigger axis events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -339,6 +363,8 @@ GameController_ErrorCode OH_GamePad_RightTrigger_UnregisterAxisInputMonitor(void
 
 Unregisters the callback for Right Trigger axis events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -356,6 +382,8 @@ GameController_ErrorCode OH_GamePad_ButtonMenu_RegisterButtonInputMonitor(GamePa
 **Description**
 
 Registers a callback for Menu button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -386,6 +414,8 @@ GameController_ErrorCode OH_GamePad_ButtonMenu_UnregisterButtonInputMonitor(void
 
 Unregisters the callback for Menu button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -403,6 +433,8 @@ GameController_ErrorCode OH_GamePad_ButtonHome_RegisterButtonInputMonitor(GamePa
 **Description**
 
 Registers a callback for Home button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -433,6 +465,8 @@ GameController_ErrorCode OH_GamePad_ButtonHome_UnregisterButtonInputMonitor(void
 
 Unregisters the callback for Home button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -450,6 +484,8 @@ GameController_ErrorCode OH_GamePad_ButtonA_RegisterButtonInputMonitor(GamePad_B
 **Description**
 
 Registers a callback for A button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -480,6 +516,8 @@ GameController_ErrorCode OH_GamePad_ButtonA_UnregisterButtonInputMonitor(void)
 
 Unregisters the callback for A button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -497,6 +535,8 @@ GameController_ErrorCode OH_GamePad_ButtonB_RegisterButtonInputMonitor(GamePad_B
 **Description**
 
 Registers a callback for B button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -527,6 +567,8 @@ GameController_ErrorCode OH_GamePad_ButtonB_UnregisterButtonInputMonitor(void)
 
 Unregisters the callback for B button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -544,6 +586,8 @@ GameController_ErrorCode OH_GamePad_ButtonX_RegisterButtonInputMonitor(GamePad_B
 **Description**
 
 Registers a callback for X button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -574,6 +618,8 @@ GameController_ErrorCode OH_GamePad_ButtonX_UnregisterButtonInputMonitor(void)
 
 Unregisters the callback for X button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -591,6 +637,8 @@ GameController_ErrorCode OH_GamePad_ButtonY_RegisterButtonInputMonitor(GamePad_B
 **Description**
 
 Registers a callback for Y button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -621,6 +669,8 @@ GameController_ErrorCode OH_GamePad_ButtonY_UnregisterButtonInputMonitor(void)
 
 Unregisters the callback for Y button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -638,6 +688,8 @@ GameController_ErrorCode OH_GamePad_ButtonC_RegisterButtonInputMonitor(GamePad_B
 **Description**
 
 Registers a callback for C button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -668,6 +720,8 @@ GameController_ErrorCode OH_GamePad_ButtonC_UnregisterButtonInputMonitor(void)
 
 Unregisters the callback for C button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -685,6 +739,8 @@ GameController_ErrorCode OH_GamePad_ButtonNonstandard_RegisterButtonInputMonitor
 **Description**
 
 Registers a callback for nonstandard button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 26.0.1
 
@@ -715,6 +771,8 @@ GameController_ErrorCode OH_GamePad_ButtonNonstandard_UnregisterButtonInputMonit
 
 Unregisters the callback for nonstandard button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 26.0.1
 
 **Returns**:
@@ -732,6 +790,8 @@ GameController_ErrorCode OH_GamePad_Dpad_LeftButton_RegisterButtonInputMonitor(G
 **Description**
 
 Registers a callback for D-pad Left button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -762,6 +822,8 @@ GameController_ErrorCode OH_GamePad_Dpad_LeftButton_UnregisterButtonInputMonitor
 
 Unregisters the callback for D-pad Left button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -779,6 +841,8 @@ GameController_ErrorCode OH_GamePad_Dpad_RightButton_RegisterButtonInputMonitor(
 **Description**
 
 Registers a callback for D-pad Right button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -809,6 +873,8 @@ GameController_ErrorCode OH_GamePad_Dpad_RightButton_UnregisterButtonInputMonito
 
 Unregisters the callback for D-pad Right button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -826,6 +892,8 @@ GameController_ErrorCode OH_GamePad_Dpad_UpButton_RegisterButtonInputMonitor(Gam
 **Description**
 
 Registers a callback for D-pad Up button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -856,6 +924,8 @@ GameController_ErrorCode OH_GamePad_Dpad_UpButton_UnregisterButtonInputMonitor(v
 
 Unregisters the callback for D-pad Up button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -873,6 +943,8 @@ GameController_ErrorCode OH_GamePad_Dpad_DownButton_RegisterButtonInputMonitor(G
 **Description**
 
 Registers a callback for D-pad Down button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -903,6 +975,8 @@ GameController_ErrorCode OH_GamePad_Dpad_DownButton_UnregisterButtonInputMonitor
 
 Unregisters the callback for D-pad Down button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -920,6 +994,8 @@ GameController_ErrorCode OH_GamePad_Dpad_RegisterAxisInputMonitor(GamePad_AxisIn
 **Description**
 
 Registers a callback for D-pad axis events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -950,6 +1026,8 @@ GameController_ErrorCode OH_GamePad_Dpad_UnregisterAxisInputMonitor(void)
 
 Unregisters the callback for D-pad axis events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -967,6 +1045,8 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterButtonInputMonitor(Ga
 **Description**
 
 Registers a callback for Left Thumbstick button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -997,6 +1077,8 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterButtonInputMonitor(
 
 Unregisters the callback for Left Thumbstick button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -1014,6 +1096,8 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_RegisterAxisInputMonitor(Game
 **Description**
 
 Registers a callback for Left Thumbstick axis events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -1044,6 +1128,8 @@ GameController_ErrorCode OH_GamePad_LeftThumbstick_UnregisterAxisInputMonitor(vo
 
 Unregisters the callback for Left Thumbstick axis events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -1061,6 +1147,8 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterButtonInputMonitor(G
 **Description**
 
 Registers a callback for Right Thumbstick button events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -1091,6 +1179,8 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterButtonInputMonitor
 
 Unregisters the callback for Right Thumbstick button events.
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Returns**:
@@ -1108,6 +1198,8 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_RegisterAxisInputMonitor(Gam
 **Description**
 
 Registers a callback for Right Thumbstick axis events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 
@@ -1137,6 +1229,8 @@ GameController_ErrorCode OH_GamePad_RightThumbstick_UnregisterAxisInputMonitor(v
 **Description**
 
 Unregisters the callback for Right Thumbstick axis events.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 

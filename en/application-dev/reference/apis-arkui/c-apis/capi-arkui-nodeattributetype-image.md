@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the ArkUI style attributes that can be set on the native side.
+Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
@@ -30,7 +30,7 @@ NODE_IMAGE_OBJECT_FIT
 
 **Description**
 
-Defines how the image is resized to fit its container. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: how the image is resized to fit its container. The value is an enum of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: how the image is resized to fit its container. The value is an enum of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).</li> </ul>
+How the image is resized to fit its container. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: image filling effect. The value is an enumerated value of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: image filling effect. The value is an enumerated value of [ArkUI_ObjectFit](capi-image-h.md#arkui_objectfit).</li> </ul>
 
 **Since**: 12
 
@@ -42,7 +42,7 @@ NODE_IMAGE_INTERPOLATION
 
 **Description**
 
-Defines the interpolation effect of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: interpolation effect of the image. The value is an enum of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: interpolation effect of the image. The value is an enum of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul>
+Interpolation effect of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: interpolation effect. The value is an enumerated value of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: interpolation effect. The value is an enumerated value of [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul>
 
 **Since**: 12
 
@@ -54,7 +54,7 @@ NODE_IMAGE_OBJECT_REPEAT
 
 **Description**
 
-Defines how the image is repeated. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: how the image is repeated. The value is an enum of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: how the image is repeated. The value is an enum of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).</li> </ul>
+How the image is repeated. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: image repetition style. The value is an enumerated value of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: image repetition style. The value is an enumerated value of [ArkUI_ImageRepeat](capi-image-h.md#arkui_imagerepeat).</li> </ul>
 
 **Since**: 12
 
@@ -66,7 +66,7 @@ NODE_IMAGE_COLOR_FILTER
 
 **Description**
 
-Defines the color filter of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32 to .value[19].f32: filter matrix array.</li> <li>.size: 5 x 4 filter array size.</li> <li>.object: the pointer to OH_Drawing_ColorFilter. Either .value or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32 to .value[19].f32: filter matrix array.</li> <li>.size: 5 x 4 filter array size.</li> <li>.object: the pointer to OH_Drawing_ColorFilter.</li> </ul>
+Color filter of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32 to .value[19].f32: filter matrix array.</li> <li>.size: 5 x 4 filter array size.</li> <li>.object: color filter pointer. The parameter type is <b>OH_Drawing_ColorFilter</b>. Either <b>.object</b> or <b>.size</b> must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32 to .value[19].f32: filter matrix array.</li> <li>.size: 5 x 4 filter array size.</li> <li>.object: color filter pointer. The parameter type is <b>OH_Drawing_ColorFilter</b>.</li> </ul>
 
 **Since**: 12
 
@@ -78,7 +78,7 @@ NODE_IMAGE_AUTO_RESIZE
 
 **Description**
 
-Defines the auto resize attribute, which can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to resize the image source.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether to resize the image source.</li> </ul>
+Auto resize attribute, which can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to enable auto resize. The default value is <b>false</b>. <b>true</b> to enable; <b>false</b> otherwise.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether auto resize is enabled.</li> </ul>
 
 **Since**: 12
 
@@ -90,7 +90,7 @@ NODE_IMAGE_ALT
 
 **Description**
 
-Defines the placeholder image source. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+Placeholder image address attribute, which can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: address of the placeholder image.</li> <li>.object: <b>PixelMap</b> object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either <b>.object</b> or <b>.string</b> must be set. Network images are not supported.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: address of the placeholder image.</li> <li>.object: <b>PixelMap</b> object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
 
 **Since**: 12
 
@@ -102,7 +102,7 @@ NODE_IMAGE_DRAGGABLE
 
 **Description**
 
-Defines whether the image is draggable. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the image is draggable. The value <b>true</b> means that the image is draggable.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image is draggable.</li> </ul>
+Whether the image is draggable. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the image is draggable. The value <b>true</b> means that the image is draggable.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image is draggable.</li> </ul>
 
 **Since**: 12
 
@@ -114,7 +114,7 @@ NODE_IMAGE_RENDER_MODE
 
 **Description**
 
-Defines the image rendering mode. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: The parameter type is [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).</li> </ul>
+Image rendering mode. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: image rendering mode. The value is an enumerated value of [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: image rendering mode. The value is an enumerated value of [ArkUI_ImageRenderMode](capi-image-h.md#arkui_imagerendermode).</li> </ul>
 
 **Since**: 12
 
@@ -126,7 +126,7 @@ NODE_IMAGE_FIT_ORIGINAL_SIZE
 
 **Description**
 
-Defines whether the image display size follows the image source size. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to follow the image source size. The value <b>true</b> means to follow.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether to follow the image source size. The value <b>true</b> means to follow.</li> </ul>
+Whether the display size of an image follows the original size of the image source. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the display size of an image follows the original size of the image source. The value <b>1</b> indicates that the display size of an image follows the original size of the image source, and the value <b>0</b> indicates the opposite. The default value is <b>0</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the display size of an image follows the original size of the image source. The value <b>1</b> indicates that the display size of an image follows the original size of the image source, and the value <b>0</b> indicates the opposite.</li> </ul>
 
 **Since**: 12
 
@@ -138,7 +138,7 @@ NODE_IMAGE_FILL_COLOR
 
 **Description**
 
-Defines the fill color of the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: fill color, in 0xARGB format. For example, 0xFFFF0000 indicates red.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: fill color, in 0xARGB format.</li> </ul>
+Fill color to be superimposed on the image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: fill color, in 0xARGB format. For example, <b>0xFFFF0000</b> indicates red.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: fill color, in 0xARGB format.</li> </ul>
 
 **Since**: 12
 
@@ -150,7 +150,7 @@ NODE_IMAGE_RESIZABLE
 
 **Description**
 
-Defines how the image is resized when stretched using an array or a lattice object. The parameter types for setting and getting should be the same.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: width of the left edge, in vp.</li> <li>.value[1].f32: width of the top edge, in vp.</li> <li>.value[2].f32: width of the right edge, in vp.</li> <li>.value[3].f32: width of the bottom edge, in vp.</li> <li>.object: The parameter type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md), supported since API version 24.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: width of the left edge, in vp.</li> <li>.value[1].f32: width of the top edge, in vp.</li> <li>.value[2].f32: width of the right edge, in vp.</li> <li>.value[3].f32: width of the bottom edge, in vp.</li> <li>.object: The parameter type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md), supported since API version 24.</li> </ul>
+Resizable image options.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: fixed distance (unchanged during stretching) from the left edge of the image. The unit is vp.</li> <li>.value[1].f32: fixed distance (unchanged during stretching) from the top edge of the image. The unit is vp.</li> <li>.value[2].f32: fixed distance (unchanged during stretching) from the right edge of the image. The unit is vp.</li> <li>.value[3].f32: fixed distance (unchanged during stretching) from the bottom edge of the image. The unit is vp. When this attribute is used together with <b>NODE_IMAGE_ANTIALIASED</b>, the <b>NODE_IMAGE_ANTIALIASED</b> attribute setting does not take effect.</li> <li>.object: The parameter type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: fixed distance (unchanged during stretching) from the left edge of the image. The unit is vp.</li> <li>.value[1].f32: fixed distance (unchanged during stretching) from the top edge of the image. The unit is vp.</li> <li>.value[2].f32: fixed distance (unchanged during stretching) from the right edge of the image. The unit is vp.</li> <li>.value[3].f32: fixed distance (unchanged during stretching) from the bottom edge of the image. The unit is vp.</li> <li>.object: The parameter type is [OH_Drawing_Lattice](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-lattice.md).</li> </ul>
 
 **Since**: 12
 
@@ -162,7 +162,7 @@ NODE_IMAGE_SYNC_LOAD = 4012
 
 **Description**
 
-Defines the synchronous image loading attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to load the image synchronously.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether to load the image synchronously.</li> </ul>
+Synchronous image loading attribute, which can be set, reset, and obtained as required through APIs. The [NODE_IMAGE_ALT](capi-native-node-h.md#arkui_nodeattributetype) placeholder image is always loaded asynchronously, and <b>syncLoad</b> does not take effect on it.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to load the image synchronously. The default value is <b>false</b>. <b>true</b>: Load the image synchronously. <b>false</b>: Load the image asynchronously.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image is loaded synchronously.</li> </ul>
 
 **Since**: 20
 
@@ -174,7 +174,7 @@ NODE_IMAGE_SOURCE_SIZE = 4013
 
 **Description**
 
-Defines the image decoding size attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: width of the decoded image, in px.</li> <li>.value[1].i32: height of the decoded image, in px.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: width of the decoded image, in px.</li> <li>.value[1].i32: height of the decoded image, in px.</li> </ul>
+Decoding size of the image. This attribute works only when the target size is smaller than the source size. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: width for image decoding, in px.</li> <li>.value[1].i32: height for image decoding, in px. If the value of any parameter is less than or equal to 0, the attribute setting fails and ARKUI_ERROR_CODE_PARAM_INVALID is returned, indicating a parameter error.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: width for image decoding, in px.</li> <li>.value[1].i32: height for image decoding, in px.</li> </ul>
 
 **Since**: 21
 
@@ -186,7 +186,7 @@ NODE_IMAGE_IMAGE_MATRIX = 4014
 
 **Description**
 
-Support the implementation of affine image transformations using floating-point numbers. This attribute can be set, reset, and obtained as required through APIs. The parameter types for setting and getting should be the same.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0...15].f32: 16 floating-point numbers.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0...15].f32: 16 floating-point numbers.</li> </ul>
+Transformation matrix of the image. This attribute can be set, reset, and obtained as required through APIs. Affine image transformation can be implemented using floating-point numbers.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0...15].f32: 4 x 4 matrix represented by a floating-point array with a length of 16. If the number of parameters is less than 16, the attribute setting fails, and ARKUI_ERROR_CODE_PARAM_INVALID is returned. If the number of parameters exceeds 16, only the first 16 data entries are used.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0...15].f32: 4 x 4 matrix represented by a floating-point array with a length of 16.</li> </ul>
 
 **Since**: 21
 
@@ -198,7 +198,7 @@ NODE_IMAGE_MATCH_TEXT_DIRECTION = 4015
 
 **Description**
 
-Defines the image follow text direction attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the image follows the text direction.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image follows the text direction.</li> </ul>
+Whether the image follows the system language direction, displaying a mirrored effect in a right-to-left (RTL) language environments. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the image follows the system language direction. The default value is <b>false</b>. <b>true</b>: The image follows the system language direction. <b>false</b>: The image does not follow the system language direction.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image follows the system language direction. <b>true</b>: The image follows the system language direction. <b>false</b>: The image does not follow the system language direction.</li> </ul>
 
 **Since**: 21
 
@@ -210,7 +210,7 @@ NODE_IMAGE_COPY_OPTION = 4016
 
 **Description**
 
-Defines the image copy attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: copy option [ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions). The default value is <b>ARKUI_COPY_OPTIONS_NONE</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: copy option [ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions).</li> </ul>
+Image copy mode. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: image copy mode, specified using the [ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions) enum. The default value is <b>ARKUI_COPY_OPTIONS_NONE</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: image copy mode, specified using the [ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions) enum.</li> </ul>
 
 **Since**: 21
 
@@ -222,7 +222,7 @@ NODE_IMAGE_ENABLE_ANALYZER = 4017
 
 **Description**
 
-Defines the image AI analysis enable attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to enable AI analysis for the image.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether to enable AI analysis for the image.</li> </ul>
+Whether to enable the AI analyzer, which supports subject recognition, text recognition, and object lookup. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to enable the AI analyzer for images. The default value is <b>false</b>. <b>true</b> to enable; <b>false</b> otherwise.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the AI analyzer is enabled for images. <b>true</b> indicates that the AI analyzer is enabled; <b>false</b> otherwise.</li> </ul>
 
 **Since**: 21
 
@@ -234,7 +234,7 @@ NODE_IMAGE_DYNAMIC_RANGE_MODE = 4018
 
 **Description**
 
-Defines the image dynamic display range attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: dynamic range mode [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode). The default value is <b>ARKUI_DYNAMIC_RANGE_MODE_STANDARD</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: dynamic range mode [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode).</li> </ul>
+Dynamic range attribute for image display, specifying the dynamic range mode for image rendering (for example, SDR/HDR). This attribute can be set, reset, and obtained as required through APIs. It is used to match the capabilities of the display device and ensure accurate presentation of image brightness and colors.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: dynamic range mode, specified using [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode). The default value is <b>ARKUI_DYNAMIC_RANGE_MODE_STANDARD</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: dynamic range mode, specified using [ArkUI_DynamicRangeMode](capi-image-h.md#arkui_dynamicrangemode).</li> </ul>
 
 **Since**: 21
 
@@ -246,7 +246,7 @@ NODE_IMAGE_HDR_BRIGHTNESS = 4019
 
 **Description**
 
-Defines the image dynamic display brightness attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: HDR brightness. The value range is [0, 1].</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: HDR brightness. The value range is [0, 1].</li> </ul>
+Brightness attribute of the image in HDR mode, used to control brightness parameters for high dynamic range display. This attribute can be set, reset, and obtained as required through APIs. It is used to ensure accurate presentation of details in the bright and dark areas of HDR images.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].f32: brightness value. The value range is [0, 1]. Values less than 0 or greater than 1.0 are clamped to 1. <b>0</b>: The image is displayed at SDR brightness. <b>1</b>: The image is displayed at the highest allowed HDR brightness.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].f32: brightness value. The value range is [0, 1].</li> </ul>
 
 **Since**: 21
 
@@ -258,7 +258,7 @@ NODE_IMAGE_ORIENTATION = 4020
 
 **Description**
 
-Defines the image display direction attribute. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: orientation ArkUI_Orientation. The default value is <b>ARKUI_ORIENTATION_UP</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: orientation ArkUI_Orientation.</li> </ul>
+Display orientation of the image content. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: expected image content display orientation, specified using [ArkUI_ImageRotateOrientation](capi-image-h.md#arkui_imagerotateorientation). The default value is <b>ARKUI_ORIENTATION_UP</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: expected image content display orientation, specified using [ArkUI_ImageRotateOrientation](capi-image-h.md#arkui_imagerotateorientation).</li> </ul>
 
 **Since**: 21
 
@@ -270,7 +270,7 @@ NODE_IMAGE_SUPPORT_SVG2 = 4021
 
 **Description**
 
-Defines the range of SVG parsing capabilities supported through an enable switch. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: enable switch.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: enable switch.</li> </ul>
+Whether to enable the new SVG parsing capability, which allows you to set the scope of SVG parsing functionality support. This attribute can be set, reset, and obtained as required through APIs. After the <b>Image</b> component is created, the value of this attribute cannot be dynamically changed.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to enable the new SVG parsing capability.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the new SVG parsing capability is enabled.</li> </ul>
 
 **Since**: 21
 
@@ -282,7 +282,7 @@ NODE_IMAGE_CONTENT_TRANSITION = 4022
 
 **Description**
 
-Defines the animation effect for the image content transformation. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: The parameter type is [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: The parameter type is [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md).</li> </ul>
+Transition effect when the image changes. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: custom transition animation. The parameter type is [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: custom transition animation. The parameter type is [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md).</li> </ul>
 
 **Since**: 21
 
@@ -294,7 +294,7 @@ NODE_IMAGE_ALT_PLACEHOLDER = 4023
 
 **Description**
 
-Defines the placeholder image during loading process. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+Placeholder image during the loading process. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: placeholder image address during the loading of the image component.</li> <li>.object: <b>PixelMap</b> object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either <b>.object</b> or <b>.string</b> must be set. Network images are not supported.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: placeholder image address during the loading of the image component.</li> <li>.object: <b>PixelMap</b> object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
 
 **Since**: 22
 
@@ -306,7 +306,7 @@ NODE_IMAGE_ALT_ERROR = 4024
 
 **Description**
 
-Defines the placeholder image when loading fails. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either .string or .object must be set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: placeholder image source.</li> <li>.object: The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
+Placeholder image in the loading failure scenarios. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: placeholder image address in the loading failure scenarios.</li> <li>.object: <b>PixelMap</b> object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md). Either <b>.object</b> or <b>.string</b> must be set. Network images are not supported.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: placeholder image address in the loading failure scenarios.</li> <li>.object: <b>PixelMap</b> object. The parameter type is [ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md).</li> </ul>
 
 **Since**: 22
 
@@ -318,7 +318,7 @@ NODE_IMAGE_ANTIALIASED = 4025
 
 **Description**
 
-Defines image edge anti-aliasing through an enable switch. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: enable switch. The default value is <b>false</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: enable switch.</li> </ul>
+Whether to enable anti-aliasing for the edges of a bitmap image. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to enable anti-aliasing for the edges of a bitmap image. The default value is <b>false</b>. <b>true</b> to enable; <b>false</b> otherwise. This attribute does not take effect when used together with <b>NODE_IMAGE_RESIZABLE</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether anti-aliasing is enabled for the edges of a bitmap image. <b>true</b> means enabled; <b>false</b> otherwise.</li> </ul>
 
 **Since**: 23
 

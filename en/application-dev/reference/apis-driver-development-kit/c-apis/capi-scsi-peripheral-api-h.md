@@ -6,6 +6,8 @@ Declares the SCSI Peripheral DDK APIs used by the host to access the SCSI device
 
 **Library**: libscsi.z.so
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Related module**: [ScsiPeripheralDDK](capi-scsiperipheralddk.md)
@@ -44,6 +46,8 @@ int32_t OH_ScsiPeripheral_Init(void)
 
 Initializes the SCSI Peripheral DDK.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -64,6 +68,8 @@ int32_t OH_ScsiPeripheral_Release(void)
 
 Releases the SCSI Peripheral DDK.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -83,6 +89,8 @@ int32_t OH_ScsiPeripheral_Open(uint64_t deviceId, uint8_t interfaceIndex, ScsiPe
 **Description**
 
 Opens the SCSI device specified by **deviceId** and **interfaceIndex**. The **deviceId** can be obtained by shifting the bus number of the USB device left by 32 bits and then performing a bitwise OR operation with the device address. **interfaceIndex** refers to the index of the USB interface to be opened.
+
+**System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -112,6 +120,8 @@ int32_t OH_ScsiPeripheral_Close(ScsiPeripheral_Device **dev)
 
 Closes the SCSI device.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -137,6 +147,8 @@ int32_t OH_ScsiPeripheral_TestUnitReady(ScsiPeripheral_Device *dev, ScsiPeripher
 **Description**
 
 Checks whether the logical unit is ready.
+
+**System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -165,6 +177,8 @@ int32_t OH_ScsiPeripheral_Inquiry(ScsiPeripheral_Device *dev, ScsiPeripheral_Inq
 **Description**
 
 Queries basic information about the SCSI device.
+
+**System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -195,6 +209,8 @@ int32_t OH_ScsiPeripheral_ReadCapacity10(ScsiPeripheral_Device *dev, ScsiPeriphe
 
 Obtains the capacity information about the SCSI device.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -224,6 +240,8 @@ int32_t OH_ScsiPeripheral_RequestSense(ScsiPeripheral_Device *dev, ScsiPeriphera
 
 Obtains sense data, that is, information returned by the SCSI device to the host to report the device status, error information, and diagnosis information.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -251,6 +269,8 @@ int32_t OH_ScsiPeripheral_Read10(ScsiPeripheral_Device *dev, ScsiPeripheral_IORe
 **Description**
 
 Reads data from the specified logical block(s).
+
+**System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -280,6 +300,8 @@ int32_t OH_ScsiPeripheral_Write10(ScsiPeripheral_Device *dev, ScsiPeripheral_IOR
 
 Writes data to the specified logical block(s) of a device.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -307,6 +329,8 @@ int32_t OH_ScsiPeripheral_Verify10(ScsiPeripheral_Device *dev, ScsiPeripheral_Ve
 **Description**
 
 Verifies the specified logical block(s).
+
+**System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
@@ -336,6 +360,8 @@ int32_t OH_ScsiPeripheral_SendRequestByCdb(ScsiPeripheral_Device *dev, ScsiPerip
 
 Sends SCSI commands in CDB mode.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Required permission**: ohos.permission.ACCESS_DDK_SCSI_PERIPHERAL
 
 **Since**: 18
@@ -364,6 +390,8 @@ int32_t OH_ScsiPeripheral_CreateDeviceMemMap(ScsiPeripheral_Device *dev, size_t 
 
 Creates a buffer. To avoid resource leakage, use [OH_ScsiPeripheral_DestroyDeviceMemMap](capi-scsi-peripheral-api-h.md#oh_scsiperipheral_destroydevicememmap) to destroy a buffer after use.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Parameters**:
@@ -390,6 +418,8 @@ int32_t OH_ScsiPeripheral_DestroyDeviceMemMap(ScsiPeripheral_DeviceMemMap *devMm
 
 Destroys a buffer. To prevent resource leakage, destroy a buffer in time after use.
 
+**System capability**: SystemCapability.Driver.SCSI.Extension
+
 **Since**: 18
 
 **Parameters**:
@@ -413,6 +443,8 @@ int32_t OH_ScsiPeripheral_ParseBasicSenseInfo(uint8_t *senseData, uint8_t senseD
 **Description**
 
 Parses basic sense data, including the **Information**, **Command specific information**, and **Sense key specific** fields.
+
+**System capability**: SystemCapability.Driver.SCSI.Extension
 
 **Since**: 18
 

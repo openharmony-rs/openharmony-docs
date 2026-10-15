@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the ArkUI style attributes that can be set on the native side.
+Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
@@ -30,7 +30,7 @@ NODE_TEXT_EDITOR_CARET_COLOR
 
 **Description**
 
-Caret color of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: Caret color, in 0xARGB format. For example, **0xFFFF0000** indicates red.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: Caret color, in 0xARGB format.</li> </ul>
+Caret color of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].u32: Caret color, in 0xARGB format, for example, **0xFFFF0000** indicates red. The color follows the system theme color by default.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].u32: Caret color, in 0xARGB format, for example, **0xFFFF0000** indicates red. The color follows the system theme color by default.</li> </ul>
 
 **Since**: 24
 
@@ -42,7 +42,7 @@ NODE_TEXT_EDITOR_SCROLL_BAR_COLOR
 
 **Description**
 
-Scroll bar color of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.data[0].u32: Scroll bar color, in 0xARGB format.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.data[0].u32: Scroll bar color, in 0xARGB format.</li> </ul>
+Scroll bar color of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.data[0].u32: Scroll bar color, in 0xARGB format, for example, **0xFFFF0000** indicates red. The color follows the system theme color by default.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.data[0].u32: Scroll bar color, in 0xARGB format, for example, **0xFFFF0000** indicates red. The color follows the system theme color by default.</li> </ul>
 
 **Since**: 24
 
@@ -54,7 +54,7 @@ NODE_TEXT_EDITOR_BAR_STATE
 
 **Description**
 
-Scroll bar display mode of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Scroll bar display mode of the text area. The parameter type is [ArkUI_BarState](capi-scroll-h.md#arkui_barstate). The default value is **ARKUI_BAR_STATE_AUTO**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Scroll bar display mode of the text area. The parameter type is [ArkUI_BarState](capi-scroll-h.md#arkui_barstate).</li> </ul>
+Scroll bar state of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Scroll bar state. The parameter type is [ArkUI_BarState](capi-scroll-h.md#arkui_barstate). The default value is **ARKUI_BAR_STATE_AUTO**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Scroll bar state. The parameter type is [ArkUI_BarState](capi-scroll-h.md#arkui_barstate).</li> </ul>
 
 **Since**: 24
 
@@ -66,7 +66,7 @@ NODE_TEXT_EDITOR_ENABLE_DATA_DETECTOR
 
 **Description**
 
-Whether to enable text entity recognition for the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable text entity recognition. The value **1** indicates to enable text entity recognition, and **0** indicates the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether text entity recognition is enabled.</li> </ul>
+Whether to enable text entity recognition for the **TextEditor** component. When enabled, entities such as phone numbers, email addresses, and URLs in the text are automatically recognized and marked as interactive content. Used together with the **NODE_TEXT_EDITOR_DATA_DETECTOR_CONFIG** attribute, the recognition types and interaction behavior can be customized. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable text entity recognition. The value **1** indicates to enable text entity recognition, and **0** indicates the opposite. The default value is **0**. It is recommended to set this attribute in scenarios where entity information in the text needs to be automatically recognized and highlighted.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether text entity recognition is enabled. **1** indicates enabled, and **0** indicates disabled.</li> </ul>
 
 **Since**: 24
 
@@ -78,7 +78,7 @@ NODE_TEXT_EDITOR_DATA_DETECTOR_CONFIG
 
 **Description**
 
-Recognition configuration for the **TextEditor** component. This attribute can be set and reset as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Recognition configuration. The parameter type is ArkUI_TextDataDetectorConfig.</li> </ul>
+Text entity recognition configuration of the **TextEditor** component. When set, the recognition types and entity display styles can be configured, and whether to enable the long-press preview feature can be selected. This attribute is used together with the **NODE_TEXT_EDITOR_ENABLE_DATA_DETECTOR** attribute. This attribute can be set and reset as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Text entity detection configuration. After it is set, you can specify the text entity types to be recognized (such as phone numbers, email addresses, and URLs) and the interaction behavior after recognition. This parameter is passed only after the text entity recognition feature is enabled (**NODE_TEXT_EDITOR_ENABLE_DATA_DETECTOR** is set to **1**) to customize the recognition types. When not passed, the system default recognition configuration is used. The parameter type is ArkUI_TextDataDetectorConfig.</li> </ul>
 
 **Since**: 24
 
@@ -90,7 +90,7 @@ NODE_TEXT_EDITOR_EDIT_MENU_OPTIONS
 
 **Description**
 
-Extended menu options for the **TextEditor** component. This attribute can be set and reset as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Extended menu options. The parameter type is [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md).</li> </ul>
+Extended menu options for the **TextEditor** component. This attribute can be set and reset as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Extended menu options. After being set, you can customize the behavior of the default menu items or add custom option content. The parameter type is [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md).</li> </ul>
 
 **Since**: 24
 
@@ -102,7 +102,7 @@ NODE_TEXT_EDITOR_PLACEHOLDER
 
 **Description**
 
-Placeholder options when there is no input for the **TextEditor** component. This attribute can be set and reset as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Placeholder options when there is no input. The parameter type is ArkUI_TextEditorPlaceholderOptions.</li> </ul>
+Placeholder options when there is no input for the **TextEditor** component. This attribute can be set and reset as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Placeholder options when there is no input. The parameter type is ArkUI_TextEditorPlaceholderOptions. When not passed, the editor does not display placeholder text when there is no input.</li> </ul>
 
 **Since**: 24
 
@@ -114,7 +114,7 @@ NODE_TEXT_EDITOR_STYLED_STRING_CONTROLLER
 
 **Description**
 
-Styled string controller of the **TextEditor** component. This attribute can be set as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Styled string controller. The parameter type is ArkUI_TextEditorStyledStringController.</li> </ul>
+Styled string controller of the **TextEditor** component. This attribute can be set as required through APIs. After it is set, the content, caret, selection, input style, and editing state in the **TextEditor**<br>component can be managed through the controller. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Styled string controller. The parameter type is ArkUI_TextEditorStyledStringController.</li> </ul>
 
 **Since**: 24
 
@@ -126,7 +126,7 @@ NODE_TEXT_EDITOR_ENABLE_PREVIEW_TEXT
 
 **Description**
 
-Whether to enable preview text for the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable preview text. The value **1** indicates to enable preview text, and **0** indicates the opposite. The default value is **1**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether preview text is enabled. The value **1** indicates preview text is enabled, and **0** indicates the opposite.</li> </ul>
+Whether to enable preview text for the **TextEditor** component. When enabled, the pinyin and stroke characters entered during the input method input process are displayed within the component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable preview text. The value **1** indicates to enable preview text, and **0**<br>indicates the opposite. The default value is **1**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether preview text is enabled. The value **1** indicates preview text is enabled, and **0**<br>indicates the opposite.</li> </ul>
 
 **Since**: 24
 
@@ -138,7 +138,7 @@ NODE_TEXT_EDITOR_LAYOUT_MANAGER
 
 **Description**
 
-**TextLayoutManager** of the **TextEditor** component. This attribute can be obtained as required through APIs. **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Layout manager. The parameter type is [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md).</li> </ul>
+**TextLayoutManager** of the **TextEditor** component. After it is obtained, the layout information of the text, such as the number of lines, line height, and content offset, can be queried through the layout manager. This attribute can be obtained as required through APIs. **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Layout manager, through which the layout information of the text can be queried. The parameter type is [ArkUI_TextLayoutManager](capi-arkui-nativemodule-arkui-textlayoutmanager.md).</li> </ul>
 
 **Since**: 24
 
@@ -150,7 +150,7 @@ NODE_TEXT_EDITOR_ENABLE_SELECTED_DATA_DETECTOR
 
 **Description**
 
-Whether to enable the AI menu for text selection and recognition of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable the AI menu for text selection and recognition. The value **1** means to enable, and **0** means the opposite. The default value is **1**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether the AI menu is enabled for text selection and recognition.</li> </ul>
+Whether to enable the AI menu for text selection and recognition of the TextEditor component, used to control whether the AI recognition menu is displayed when a special text entity is selected. This attribute can be set, reset, and obtained as required through APIs. When enabled, intelligent recognition and operation options can be provided based on the selected text content. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable the AI menu for text selection and recognition. The value **1** means to enable, and **0** means the opposite. The default value is **1**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether the AI menu is enabled for text selection and recognition. **0** indicates disabled, and **1** indicates enabled.</li> </ul>
 
 **Since**: 24
 
@@ -162,7 +162,7 @@ NODE_TEXT_EDITOR_SELECTED_BACKGROUND_COLOR
 
 **Description**
 
-Background color of the selected content in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.data[0].u32: Background color of the selected content, in 0xARGB format.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.data[0].u32: Background color of the selected content, in 0xARGB format.</li> </ul>
+Background color of the selected content in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.data[0].u32: Background color of the selected content, in 0xARGB format, for example, **0xFFFF0000**<br>indicates red. The color follows the system theme color by default.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.data[0].u32: Background color of the selected content, in 0xARGB format, for example, **0xFFFF0000**<br>indicates red. The color follows the system theme color by default.</li> </ul>
 
 **Since**: 24
 
@@ -186,7 +186,7 @@ NODE_TEXT_EDITOR_MAX_LENGTH
 
 **Description**
 
-Maximum number of characters in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Maximum number of characters.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Maximum number of characters.</li> </ul>
+Maximum number of characters in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Maximum number of characters allowed to be entered in the text editor. The value range is [0, +∞). Text input is blocked once this limit is exceeded. The input length is not limited when this parameter is set to **0**, a negative number, or not set.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Maximum number of characters allowed to be entered in the text editor.</li> </ul>
 
 **Since**: 24
 
@@ -198,7 +198,7 @@ NODE_TEXT_EDITOR_MAX_LINES
 
 **Description**
 
-Maximum number of lines in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Maximum number of lines in the text editor.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Maximum number of lines in the text editor.</li> </ul>
+Maximum number of lines in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Maximum number of lines in the text editor. The value range is (0, +∞). When set to 0, a negative number, or not set, the default value **UINT32_MAX** is used, which means no limit on the number of lines. It is recommended to set this parameter in scenarios where a fixed display height is required.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Maximum number of lines in the text editor.</li> </ul>
 
 **Since**: 24
 
@@ -210,7 +210,7 @@ NODE_TEXT_EDITOR_ENABLE_HAPTIC_FEEDBACK
 
 **Description**
 
-Whether to enable haptic feedback of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable haptic feedback in the text editor. The value **1** means to enable, and ** 0** means the opposite. The default value is **1**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether haptic feedback is enabled. The value **1** indicates haptic feedback is enabled, and **0** indicates the opposite.</li> </ul>
+Whether to enable haptic feedback of the **TextEditor** component. When enabled, haptic feedback vibration responses are generated during interactive operations such as text drag and selection. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable haptic feedback in the text editor. The value **1** means to enable, and **0** means the opposite. The default value is **1**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether haptic feedback is enabled. The value **1** indicates haptic feedback is enabled, and **0** indicates the opposite.</li> </ul>
 
 **Since**: 24
 
@@ -222,7 +222,7 @@ NODE_TEXT_EDITOR_COPY_OPTIONS
 
 **Description**
 
-Copy options of the **TextEditor** component, which can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Copy options. The parameter type is [ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions). The default value is ** ARKUI_COPY_OPTIONS_LOCAL_DEVICE**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Copy options. The parameter type is [ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions).</li> </ul>
+Copy options of the **TextEditor** component, which can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Copy options. The parameter type is [ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions). The default value is **ARKUI_COPY_OPTIONS_LOCAL_DEVICE**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Copy options. The parameter type is [ArkUI_CopyOptions](capi-native-type-h.md#arkui_copyoptions).</li> </ul>
 
 **Since**: 24
 
@@ -234,7 +234,7 @@ NODE_TEXT_EDITOR_KEYBOARD_APPEARANCE
 
 **Description**
 
-Keyboard appearance of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Appearance of the keyboard. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance). The default value is **ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Appearance of the keyboard. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance).</li> </ul>
+Keyboard appearance of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Keyboard appearance. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance). The default value is **ARKUI_KEYBOARD_APPEARANCE_NONE_IMMERSIVE**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Keyboard appearance currently set for the text editor. The parameter type is [ArkUI_KeyboardAppearance](capi-text-common-h.md#arkui_keyboardappearance).</li> </ul>
 
 **Since**: 24
 
@@ -246,7 +246,7 @@ NODE_TEXT_EDITOR_STOP_BACK_PRESS
 
 **Description**
 
-Whether the **TextEditor** component blocks the propagation of return events. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to block the propagation of return events. The value **1** indicates to block, and ** 0** indicates the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether the propagation of return events is blocked. The value **1** indicates that the propagation of return events is blocked, and **0** indicates the opposite.</li> </ul>
+Whether the **TextEditor** component blocks the back key event from propagating to the upper layer. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to block the propagation of return events. The value **1** indicates to block, and **0** indicates the opposite. The default value is **0**. It is recommended to set this to **1** when the editor has unsaved content or when the back key needs to be intercepted to prevent accidental exit.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether the propagation of return events is blocked. The value **1** indicates that the propagation of return events is blocked, and **0** indicates the opposite.</li> </ul>
 
 **Since**: 24
 
@@ -258,7 +258,7 @@ NODE_TEXT_EDITOR_ENABLE_AUTO_SPACING
 
 **Description**
 
-Whether to enable automatic spacing for Chinese and Western characters in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable automatic spacing. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether automatic spacing is enabled. The value **1** indicates automatic spacing is enabled, and **0** indicates the opposite.</li> </ul>
+Whether to enable automatic spacing for Chinese and Western characters in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. It is applicable to editing scenarios with mixed Chinese and English content. When enabled, spacing is automatically added between Chinese and Western characters to improve the reading experience of mixed text. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable automatic spacing between Chinese and English characters. The value **1**<br>indicates to enable, and **0** indicates the opposite. The default value is **0**. It is recommended to set this parameter to **1** in editing scenarios with mixed Chinese and English content to improve the reading experience of mixed text.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether automatic spacing is enabled between Chinese and English characters. The value **1**<br>indicates automatic spacing is enabled, and **0** indicates the opposite.</li> </ul>
 
 **Since**: 24
 
@@ -270,7 +270,7 @@ NODE_TEXT_EDITOR_CUSTOM_KEYBOARD
 
 **Description**
 
-Custom keyboard of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0]?.i32: Whether the custom keyboard supports avoidance. The value **0** indicates no, and the value * *1** indicates yes. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0].i32: Whether the custom keyboard supports avoidance. The value **0** indicates no, and the value ** 1** indicates yes.</li> </ul>
+Custom keyboard of the **TextEditor** component. Pass this attribute when the system default keyboard needs to be replaced (for example, special input layouts such as a numeric keyboard or an emoji keyboard). When not passed, the system default keyboard is used. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0]?.i32: Whether the custom keyboard supports content avoidance, that is, whether the page content automatically adjusts its position to avoid being covered by the keyboard when the keyboard is displayed. The value **0** indicates not supported, and **1** indicates supported. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Custom keyboard. The parameter type is [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md).</li> <li>.value[0].i32: Whether the custom keyboard supports content avoidance, that is, whether the page content automatically adjusts its position to avoid being covered by the keyboard when the keyboard is displayed. The value **0** indicates not supported, and **1** indicates supported.</li> </ul>
 
 **Since**: 24
 
@@ -282,7 +282,7 @@ NODE_TEXT_EDITOR_BIND_SELECTION_MENU
 
 **Description**
 
-Binds the custom text selection menu of the **TextEditor** component. This attribute can be set and reset as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Text selection menu. The parameter type is ArkUI_TextEditorSelectionMenuOptions.</li> </ul>
+Binds the custom text selection menu of the **TextEditor** component. This attribute can be set and reset as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Custom text selection menu. When not passed, the system default text selection menu is used. The parameter type is ArkUI_TextEditorSelectionMenuOptions.</li> </ul>
 
 **Since**: 24
 
@@ -294,7 +294,7 @@ NODE_TEXT_EDITOR_INCLUDE_FONT_PADDING
 
 **Description**
 
-Whether to add spacing to the first and last lines of the **TextEditor** component to prevent text truncation. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to add spacing. The value **1** means to add spacing, and **0** means not to add spacing. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether spacing is added. The value **1** means that spacing is added, and **0** means spacing is not added.</li> </ul>
+Whether to enable the anti-truncation spacing for the first and last lines of the **TextEditor**<br>component. When enabled, spacing is added to the first and last lines to avoid text truncation. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to add spacing. The value **1** means to add spacing, and **0** means not to add spacing. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether spacing is added. The value **1** means that spacing is added, and **0** means spacing is not added.</li> </ul>
 
 **Since**: 24
 
@@ -306,7 +306,7 @@ NODE_TEXT_EDITOR_FALLBACK_LINE_SPACING
 
 **Description**
 
-Whether to enable line height adaptation of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable line height adaptation. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether line height adaptation is enabled. The value **1** means line height adaptation is enabled, and **0** means the opposite.</li> </ul>
+Whether to enable line height adaptation of the **TextEditor** component. When multiple lines of text are overlaid, the line height can adapt based on the actual height of the text. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable line height adaptation. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether line height adaptation is enabled. The value **1** means line height adaptation is enabled, and **0** means the opposite.</li> </ul>
 
 **Since**: 24
 
@@ -318,7 +318,7 @@ NODE_TEXT_EDITOR_COMPRESS_LEADING_PUNCTUATION
 
 **Description**
 
-Whether to enable punctuation compression for the beginning of a line in the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable punctuation compression. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether punctuation compression is enabled. The value **1** means punctuation compression is enabled, and **0** means the opposite.</li> </ul>
+Whether to enable leading punctuation compression in the **TextEditor** component. When enabled, the punctuation at the beginning of a line reduces its occupied width to adjust the text layout alignment. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable leading punctuation compression. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether leading punctuation compression is enabled. The value **1** indicates that leading punctuation compression is enabled, and **0** indicates the opposite.</li> </ul>
 
 **Since**: 24
 
@@ -330,7 +330,7 @@ NODE_TEXT_EDITOR_SELECTED_DRAG_PREVIEW_STYLE
 
 **Description**
 
-Selected drag preview style of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Selected drag preview style configuration. The parameter type is [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Selected drag preview style configuration. The parameter type is [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md).</li> </ul>
+Selected drag preview style of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: Selected drag preview style. The parameter type is [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md). Pass this parameter when you need to customize the preview effect when dragging selected text. When not passed, the system default drag preview style is used.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: Selected drag preview style. The parameter type is [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md).</li> </ul>
 
 **Since**: 24
 
@@ -342,7 +342,7 @@ NODE_TEXT_EDITOR_SINGLE_LINE
 
 **Description**
 
-Whether to enable single-line mode for the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable single-line mode. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether single-line mode is enabled. The value **1** means single-line mode is enabled, and ** 0** means the opposite.</li> </ul>
+Whether to enable the single-line mode of the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs. When enabled, the maximum number of lines set by the **NODE_TEXT_EDITOR_MAX_LINES** attribute no longer takes effect. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable the single-line mode. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether the single-line mode is enabled. The value **1** indicates that the single-line mode is enabled, and **0** means the opposite.</li> </ul>
 
 **Since**: 24
 
@@ -354,7 +354,7 @@ NODE_TEXT_EDITOR_ORPHAN_CHAR_OPTIMIZATION
 
 **Description**
 
-Sets whether to enable orphan character optimization for text layout in **TextEditor**. After setting,text layout is improved by more efficiently handling orphan characters (the first character of the last line of a paragraph). When enabled, it adjusts line break points to avoid orphan characters as much as possible. The orphan character optimization feature only works when [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) is not **ARKUI_WORD_BREAK_BREAK_ALL**. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether orphan character optimization is enabled.</li> </ul>
+Whether to enable orphan character optimization during text layout in **TextEditor**. This attribute can be set, reset, and obtained as required through APIs. When enabled, line break positions are adjusted to avoid orphan characters as much as possible. It takes effect only when the [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable orphan character optimization. The value **1** indicates to enable, and **0** indicates the opposite. The default value is **0**. This parameter takes effect only when the [ArkUI_WordBreak](capi-text-common-h.md#arkui_wordbreak) attribute is not set to **ARKUI_WORD_BREAK_BREAK_ALL**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether orphan character optimization is enabled. The value **0** indicates disabled, and **1** indicates enabled.</li> </ul>
 
 **Since**: 26.0.0
 
@@ -366,7 +366,7 @@ NODE_TEXT_EDITOR_HORIZONTAL_SCROLLING
 
 **Description**
 
-Sets whether to enable horizontal scrolling for the **TextEditor** component when the text width exceeds the content area width. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable horizontal scrolling. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether horizontal scrolling is enabled.</li> </ul>
+Whether to enable horizontal scrolling for the **TextEditor** component when the text width exceeds the content area width. This attribute can be set, reset, and obtained as required through APIs. **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable horizontal scrolling. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether horizontal scrolling is enabled. The value **1** means enabled, and **0** means the opposite.</li> </ul>
 
 **Since**: 26.0.0
 
@@ -378,7 +378,7 @@ NODE_TEXT_EDITOR_PUNCTUATION_OVERFLOW
 
 **Description**
 
-Sets whether to enable punctuation overflow at the end of a line. <br>This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to enable punctuation overflow, the default value is false.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether to enable punctuation overflow.</li> </ul>
+Whether to enable punctuation hanging at the end of a line for the **TextEditor** component. This attribute can be set, reset, and obtained as required through APIs.<br>When enabled, a single punctuation mark at the end of a line overflows the layout width without wrapping, preventing the punctuation mark from wrapping to the beginning of the next line and thereby improving the text layout effect.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable punctuation hanging at the end of a line. The value **1** indicates to enable, and **0** indicates the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether punctuation hanging at the end of a line is enabled. The value **1** means punctuation hanging is enabled, and **0** means the opposite.</li> </ul>
 
 **Since**: 26.0.0
 
@@ -402,7 +402,7 @@ NODE_TEXT_EDITOR_SHOW_PASSWORD_ICON = 22032
 
 **Description**
 
-Defines whether to display the password icon at the end of the password text editor. This attribute can be set, reset, and obtained as required through APIs.<br> Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute: .value[0].i32: whether to display the password icon at the end of the password text editor. The value <b>true</b> means to display the password icon, and <b>false</b> means the opposite. Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md): .value[0].i32: The value <b>1</b> means to display the password icon, and <b>0</b> means the opposite.
+Defines whether to display the password icon at the end of the password text editor. This attribute can be set, reset, and obtained as required through APIs.<br> Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute: .value[0].i32: whether to display the password icon at the end of the password text editor. The value <b>true</b> means to display the password icon, and <b>false</b> means the opposite.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md): .value[0].i32: The value <b>1</b> means to display the password icon, and <b>0</b> means the opposite.
 
 **Since**: 26.2.0
 
@@ -414,7 +414,7 @@ NODE_TEXT_EDITOR_PASSWORD_ICON = 22033
 
 **Description**
 
-Defines the password icon of the text editor. This attribute can be set and reset as required through APIs.<br> Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute: .value[0].string: show icon image source. .value[1].string: hide icon image source. Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md): .value[0].string: show icon image source. .value[1].string: hide icon image source.
+Defines the password icon of the text editor. This attribute can be set and reset as required through APIs.<br> Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute: .value[0].string: show icon image source. .value[1].string: hide icon image source.<br> Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md): .value[0].string: show icon image source. .value[1].string: hide icon image source.
 
 **Since**: 26.2.0
 
@@ -426,7 +426,7 @@ NODE_TEXT_EDITOR_ENABLE_AUTO_FILL = 22034
 
 **Description**
 
-Sets whether to enable autofill. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable autofill. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether autofill is enabled. The value **1** means enabled, and **0** means disabled.</li> </ul>
+Whether to enable autofill. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: Whether to enable autofill. The value **1** means to enable, and **0** means the opposite. The default value is **0**.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: Whether autofill is enabled. The value **1** means enabled, and **0** means disabled.</li> </ul>
 
 **Since**: 26.2.0
 
@@ -438,7 +438,7 @@ NODE_TEXT_EDITOR_CONTENT_TYPE = 22035
 
 **Description**
 
-Sets the autofill type. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: autofill type, used to specify the content type for autofill scenarios. <br>The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype). For details about the enum values and applicable scenarios, see [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: autofill type, used to determine the autofill content type. The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype).</li> </ul>
+Autofill type. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: autofill type, used to specify the content type for autofill scenarios. <br>The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype). For details about the enum values and applicable scenarios, see [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype).</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: autofill type, used to determine the autofill content type. The parameter type is [ArkUI_TextInputContentType](capi-text-input-h.md#arkui_textinputcontenttype).</li> </ul>
 
 **Since**: 26.2.0
 
@@ -450,7 +450,7 @@ NODE_TEXT_EDITOR_PASSWORD_RULES = 22036
 
 **Description**
 
-Defines the rules for generating passwords. When autofill is used, these rules are transparently transmitted to Password Vault for generating a new password. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: rules for generating passwords, used to control new password generation by being transparently transmitted to the Password Vault when autofill is triggered.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: rules for generating passwords.</li> </ul>
+Rules for generating passwords. When autofill is used, these rules are transparently transmitted to Password Vault for generating a new password. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.string: rules for generating passwords, used to control new password generation by being transparently transmitted to the Password Vault when autofill is triggered.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.string: rules for generating passwords.</li> </ul>
 
 **Since**: 26.2.0
 

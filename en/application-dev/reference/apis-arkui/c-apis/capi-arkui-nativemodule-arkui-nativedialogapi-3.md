@@ -30,25 +30,25 @@ Provides the custom dialog box APIs for the native side.
 
 | Name | Description |
 | -- | -- |
-| [int32_t (\*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)](#setlevelorder) | Sets the display order for a custom dialog box. |
-| [int32_t (\*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(void* userData))](#registeronwillappear) | Registers a listener callback before the dialog openAnimation starts. |
-| [int32_t (\*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(void* userData))](#registerondidappear) | Registers a listener callback when the dialog appears. |
-| [int32_t (\*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(void* userData))](#registeronwilldisappear) | Registers a listener callback before the dialog closeAnimation starts. |
-| [int32_t (\*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(void* userData))](#registerondiddisappear) | Registers a listener callback when the dialog disappears. |
-| [int32_t (\*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)](#setborderwidth) | Sets the border width of the dialog box. |
-| [int32_t (\*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)](#setbordercolor) | Sets the border color of the dialog box. |
-| [int32_t (\*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t right, int32_t bottom, int32_t left)](#setborderstyle) | Sets the border style of the dialog box. |
-| [int32_t (\*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMetricUnit unit)](#setwidth) | Sets the width of the dialog box background. |
-| [int32_t (\*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_LengthMetricUnit unit)](#setheight) | Sets the height of the dialog box background. |
-| [int32_t (\*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)](#setshadow) | Sets the shadow of the dialog box background. |
-| [int32_t (\*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)](#setcustomshadow) | Sets the custom shadow of the dialog box background. |
-| [int32_t (\*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)](#setbackgroundblurstyle) | Sets the background blur style of the dialog box. |
-| [int32_t (\*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#setkeyboardavoidmode) | Sets the keyboard avoidance mode of the dialog box. |
-| [int32_t (\*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)](#enablehovermode) | Sets whether to enable the hover mode for the dialog box. |
-| [int32_t (\*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)](#sethovermodearea) | Set the default display area of the dialog box in hover mode. |
-| [int32_t (\*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)](#setfocusable) | Sets whether to get focus when the custom dialog is displayed. |
-| [int32_t (\*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)](#setbackgroundblurstyleoptions) | Sets the background blur effect for a custom dialog box. |
-| [int32_t (\*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)](#setbackgroundeffect) | Sets the background effect parameters for a custom dialog box. |
+| [int32_t (\*setLevelOrder)(ArkUI_NativeDialogHandle handle, double levelOrder)](#setlevelorder) | - | Sets the display order for a custom dialog box. |
+| [int32_t (\*registerOnWillAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(void* userData))](#registeronwillappear) | - | Registers a listener callback before the dialog openAnimation starts. |
+| [int32_t (\*registerOnDidAppear)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(void* userData))](#registerondidappear) | - | Registers a listener callback when the dialog appears. |
+| [int32_t (\*registerOnWillDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(void* userData))](#registeronwilldisappear) | - | Registers a listener callback before the dialog closeAnimation starts. |
+| [int32_t (\*registerOnDidDisappear)(ArkUI_NativeDialogHandle handle, void* userData, void (\*callback)(void* userData))](#registerondiddisappear) | - | Registers a listener callback when the dialog disappears. |
+| [int32_t (\*setBorderWidth)(ArkUI_NativeDialogHandle handle, float top, float right, float bottom, float left, ArkUI_LengthMetricUnit unit)](#setborderwidth) | - | Sets the border width of the dialog box. |
+| [int32_t (\*setBorderColor)(ArkUI_NativeDialogHandle handle, uint32_t top, uint32_t right, uint32_t bottom, uint32_t left)](#setbordercolor) | - | Sets the border color of the dialog box. |
+| [int32_t (\*setBorderStyle)(ArkUI_NativeDialogHandle handle, int32_t top, int32_t right, int32_t bottom, int32_t left)](#setborderstyle) | - | Sets the border style of the dialog box. |
+| [int32_t (\*setWidth)(ArkUI_NativeDialogHandle handle, float width, ArkUI_LengthMetricUnit unit)](#setwidth) | - | Sets the width of the dialog box background. |
+| [int32_t (\*setHeight)(ArkUI_NativeDialogHandle handle, float height, ArkUI_LengthMetricUnit unit)](#setheight) | - | Sets the height of the dialog box background. |
+| [int32_t (\*setShadow)(ArkUI_NativeDialogHandle handle, ArkUI_ShadowStyle shadow)](#setshadow) | - | Sets the shadow of the dialog box background. |
+| [int32_t (\*setCustomShadow)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* customShadow)](#setcustomshadow) | - | Sets the custom shadow of the dialog box background. |
+| [int32_t (\*setBackgroundBlurStyle)(ArkUI_NativeDialogHandle handle, ArkUI_BlurStyle blurStyle)](#setbackgroundblurstyle) | - | Sets the background blur style of the dialog box. |
+| [int32_t (\*setKeyboardAvoidMode)(ArkUI_NativeDialogHandle handle, ArkUI_KeyboardAvoidMode keyboardAvoidMode)](#setkeyboardavoidmode) | - | Sets the keyboard avoidance mode of the dialog box. |
+| [int32_t (\*enableHoverMode)(ArkUI_NativeDialogHandle handle, bool enableHoverMode)](#enablehovermode) | - | Sets whether to enable the hover mode for the dialog box. |
+| [int32_t (\*setHoverModeArea)(ArkUI_NativeDialogHandle handle, ArkUI_HoverModeAreaType hoverModeAreaType)](#sethovermodearea) | - | Set the default display area of the dialog box in hover mode. |
+| [int32_t (\*setFocusable)(ArkUI_NativeDialogHandle handle, bool focusable)](#setfocusable) | - | Sets whether to get focus when the custom dialog is displayed. |
+| [int32_t (\*setBackgroundBlurStyleOptions)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundBlurStyleOptions)](#setbackgroundblurstyleoptions) | - | Sets the background blur effect for a custom dialog box. |
+| [int32_t (\*setBackgroundEffect)(ArkUI_NativeDialogHandle handle, const ArkUI_AttributeItem* backgroundEffect)](#setbackgroundeffect) | - | Sets the background effect parameters for a custom dialog box. |
 
 ## Member function description
 

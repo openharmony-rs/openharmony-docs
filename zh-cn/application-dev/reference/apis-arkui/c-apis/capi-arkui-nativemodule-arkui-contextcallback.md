@@ -29,7 +29,7 @@ typedef struct ArkUI_ContextCallback {...} ArkUI_ContextCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*callback)(void* userData)](#callback) |  |
+| [void (\*callback)(void* userData)](#callback) | - |  |
 
 ## 成员函数说明
 

@@ -6,6 +6,8 @@ Reference of TEE object api definitions.
 
 **Library**: NA
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Related module**: [TeeTrusted](capi-teetrusted.md)
@@ -55,6 +57,8 @@ enum Pseudo_PropSetHandle
 
 Enumerates the types of the property set.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 | Enum item | Description |
@@ -76,6 +80,8 @@ TEE_Result TEE_GetPropertyAsString(TEE_PropSetHandle propsetOrEnumerator, const 
 **Description**
 
 Obtains a property from a property set and converts its value into a printable string.<br> *
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -104,6 +110,8 @@ TEE_Result TEE_GetPropertyAsBool(TEE_PropSetHandle propsetOrEnumerator, const ch
 
 Obtains a property from a property set and converts its value into a Boolean value.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -129,6 +137,8 @@ TEE_Result TEE_GetPropertyAsU32(TEE_PropSetHandle propsetOrEnumerator, const cha
 **Description**
 
 Obtains a property from a property set and converts its value into a 32-bit unsigned integer.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -156,6 +166,8 @@ TEE_Result TEE_GetPropertyAsU64(TEE_PropSetHandle propsetOrEnumerator, const cha
 
 Obtains a property from a property set and converts its value into a 64-bit unsigned integer.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -181,6 +193,8 @@ TEE_Result TEE_GetPropertyAsBinaryBlock(TEE_PropSetHandle propsetOrEnumerator, c
 **Description**
 
 Obtains a property from a property set and converts its value into a binary block.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -209,6 +223,8 @@ TEE_Result TEE_GetPropertyAsUUID(TEE_PropSetHandle propsetOrEnumerator, const ch
 
 Obtains a property from a property set and converts its value to the <b>TEE_UUID</b> struct.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -234,6 +250,8 @@ TEE_Result TEE_GetPropertyAsIdentity(TEE_PropSetHandle propsetOrEnumerator, cons
 **Description**
 
 Obtains a property from a property set and converts its value to the <b>TEE_Identity</b> struct.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -261,6 +279,8 @@ TEE_Result TEE_AllocatePropertyEnumerator(TEE_PropSetHandle *enumerator)
 
 Allocates a property enumerator object.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -285,6 +305,8 @@ void TEE_FreePropertyEnumerator(TEE_PropSetHandle enumerator)
 
 Releases a property enumerator object.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -302,6 +324,8 @@ void TEE_StartPropertyEnumerator(TEE_PropSetHandle enumerator, TEE_PropSetHandle
 **Description**
 
 Starts to enumerate the properties in an enumerator.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -322,6 +346,8 @@ void TEE_ResetPropertyEnumerator(TEE_PropSetHandle enumerator)
 
 Resets a property enumerator immediately after allocation.
 
+**System capability**: SystemCapability.Tee.TeeClient
+
 **Since**: 20
 
 **Parameters**:
@@ -339,6 +365,8 @@ TEE_Result TEE_GetPropertyName(TEE_PropSetHandle enumerator, void *nameBuffer, s
 **Description**
 
 Obtains the name of this property in an enumerator.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 
@@ -365,6 +393,8 @@ TEE_Result TEE_GetNextProperty(TEE_PropSetHandle enumerator)
 **Description**
 
 Obtains the next property in an enumerator.
+
+**System capability**: SystemCapability.Tee.TeeClient
 
 **Since**: 20
 

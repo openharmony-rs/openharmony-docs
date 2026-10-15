@@ -13,6 +13,7 @@
     - [napi_critical_scope](capi-arkts-napi-nativemodule-napi-critical-scope.md)
     - [napi_strong_ref](capi-arkts-napi-nativemodule-napi-strong-ref.md)
     - [napi_callsite_info](capi-arkts-napi-nativemodule-napi-callsite-info.md)
+    - [napi_microtask_scope](capi-arkts-napi-nativemodule-napi-microtask-scope.md)
     - [napi_sendable_ref](capi-arkts-napi-nativemodule-napi-sendable-ref.md)
     - [JSVM_CallbackStruct](capi-jsvm-jsvm-callbackstruct.md)
     - [JSVM_HeapStatistics](capi-jsvm-jsvm-heapstatistics.md)

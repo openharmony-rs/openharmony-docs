@@ -6,6 +6,8 @@ Defines the APIs of the HTTP request module.
 
 **Library**: libnet_http.so
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Related module**: [netstack](capi-netstack.md)
@@ -38,6 +40,8 @@ Http_Headers *OH_Http_CreateHeaders(void)
 
 Creates headers for a request or response.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Returns**:
@@ -56,6 +60,8 @@ void OH_Http_DestroyHeaders(Http_Headers **headers)
 
 Destroys the headers of a request or response.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Parameters**:
@@ -73,6 +79,8 @@ uint32_t OH_Http_SetHeaderValue(struct Http_Headers *headers, const char *name, 
 **Description**
 
 Sets the key-value pair of the request or response header.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -100,6 +108,8 @@ Http_HeaderValue *OH_Http_GetHeaderValue(Http_Headers *headers, const char *name
 
 Obtains the value of a request or response header by key.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Parameters**:
@@ -125,6 +135,8 @@ Http_HeaderEntry *OH_Http_GetHeaderEntries(Http_Headers *headers)
 
 Obtains all the key-value pairs of a request or response header.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Parameters**:
@@ -149,6 +161,8 @@ void OH_Http_DestroyHeaderEntries(Http_HeaderEntry **headerEntry)
 
 Destroys all key-value pairs obtained in [OH_Http_GetHeaderEntries](capi-net-http-h.md#oh_http_getheaderentries).
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 20
 
 **Parameters**:
@@ -166,6 +180,8 @@ Http_Request *OH_Http_CreateRequest(const char *url)
 **Description**
 
 Create a http request.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -190,6 +206,8 @@ int OH_Http_Request(Http_Request *request, Http_ResponseCallback callback, Http_
 **Description**
 
 Initiates an HTTP request.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -218,6 +236,8 @@ void OH_Http_Destroy(struct Http_Request **request)
 **Description**
 
 Destroy the HTTP request.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 

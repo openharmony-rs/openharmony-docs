@@ -30,13 +30,13 @@ Define the OH_VBucket structure type.
 
 | Name | Description |
 | -- | -- |
-| [int (\*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | Put the const char * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | Put the int64 value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | Put the double value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | Put the const uint8_t * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*putNull)(OH_VBucket *bucket, const char *field)](#putnull) | Put NULL to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
-| [int (\*clear)(OH_VBucket *bucket)](#clear) | Clear the [OH_VBucket](capi-rdb-oh-vbucket.md) object's values. |
-| [int (\*destroy)(OH_VBucket *bucket)](#destroy) | Destroy the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaim the memory occupied by the object. |
+| [int (\*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | - | Put the const char * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
+| [int (\*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | - | Put the int64 value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
+| [int (\*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | - | Put the double value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
+| [int (\*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | - | Put the const uint8_t * value to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
+| [int (\*putNull)(OH_VBucket *bucket, const char *field)](#putnull) | - | Put NULL to this [OH_VBucket](capi-rdb-oh-vbucket.md) object for the given column name. |
+| [int (\*clear)(OH_VBucket *bucket)](#clear) | - | Clear the [OH_VBucket](capi-rdb-oh-vbucket.md) object's values. |
+| [int (\*destroy)(OH_VBucket *bucket)](#destroy) | - | Destroy the [OH_VBucket](capi-rdb-oh-vbucket.md) object and reclaim the memory occupied by the object. |
 
 ## Member function description
 

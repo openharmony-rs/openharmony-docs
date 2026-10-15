@@ -6,6 +6,8 @@ The file declares the common enums and structs used by the image interface.
 
 **Library**: libimage_common.so
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 12
 
 **System API:** This is a system API.
@@ -32,6 +34,8 @@ Image_ErrorCode OH_PictureMetadata_GetMetadataByType(OH_PictureMetadata **metada
 **Description**
 
 Obtains the PictureMetadata object matching the specified type from the PictureMetadata array.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -61,6 +65,8 @@ Image_ErrorCode OH_PictureMetadatas_Release(OH_PictureMetadata **metadatas, uint
 **Description**
 
 Releases an array of OH_PictureMetadata objects.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 

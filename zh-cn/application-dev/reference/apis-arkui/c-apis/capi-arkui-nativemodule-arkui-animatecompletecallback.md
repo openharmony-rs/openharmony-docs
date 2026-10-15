@@ -30,7 +30,7 @@ typedef struct ArkUI_AnimateCompleteCallback {...} ArkUI_AnimateCompleteCallback
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*callback)(void* userData)](#callback) | 动画播放结束回调，与type和userData配合使用。type参数决定回调触发的时机类型，回调函数接收userData作为入参。设置该回调后，当动画播放结束时将自动调用该函数， 开发者可在回调中通过userData参数执行自定义逻辑，如更新UI状态或处理动画完成后的后续操作。 |
+| [void (\*callback)(void* userData)](#callback) | - | 动画播放结束回调，与type和userData配合使用。type参数决定回调触发的时机类型，回调函数接收userData作为入参。设置该回调后，当动画播放结束时将自动调用该函数， 开发者可在回调中通过userData参数执行自定义逻辑，如更新UI状态或处理动画完成后的后续操作。 |
 
 ## 成员函数说明
 

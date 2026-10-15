@@ -1,7 +1,7 @@
 # OH_AbilityRuntime_ModObjDispatcher_Variant
 
 ```c
-typedef union OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntime_ModObjDispatcher_Variant
+typedef struct OH_AbilityRuntime_ModObjDispatcher_Variant {...} OH_AbilityRuntime_ModObjDispatcher_Variant
 ```
 
 ## Overview
@@ -22,27 +22,30 @@ Defines a variant structure using union + type tag for ABI compatibility.
 
 | Name | Description |
 | -- | -- |
-| void *pvoidVal | Empty value.<br>**Since**: 26.0.0 |
-| bool boolVal | Boolean value.<br>**Since**: 26.0.0 |
-| int8_t i8Val | 8-bit signed integer.<br>**Since**: 26.0.0 |
-| int16_t i16Val | 16-bit signed integer.<br>**Since**: 26.0.0 |
-| int32_t i32Val | 32-bit signed integer.<br>**Since**: 26.0.0 |
-| int64_t i64Val | 64-bit signed integer.<br>**Since**: 26.0.0 |
-| uint8_t u8Val | 8-bit unsigned integer.<br>**Since**: 26.0.0 |
-| uint16_t u16Val | 16-bit unsigned integer.<br>**Since**: 26.0.0 |
-| uint32_t u32Val | 32-bit unsigned integer.<br>**Since**: 26.0.0 |
-| uint64_t u64Val | 64-bit unsigned integer.<br>**Since**: 26.0.0 |
-| float f32Val | 32-bit floating point.<br>**Since**: 26.0.0 |
-| double f64Val | 64-bit floating point.<br>**Since**: 26.0.0 |
-| int32_t enumVal | Enum value.<br>**Since**: 26.0.0 |
-| char* bstrVal | String value (UTF-8) pointer.<br>**Since**: 26.0.0 |
-| [OH_AbilityRuntime_ModObjDispatcher_ArrayHandle](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-arrayhandle.md) parrayVal | Array handle.<br>**Since**: 26.0.0 |
-| [OH_AbilityRuntime_ModObjDispatcher_VectorHandle](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-vectorhandle.md) pvectorVal | Vector handle.<br>**Since**: 26.0.0 |
-| [OH_AbilityRuntime_ModObjDispatcher_SetHandle](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-sethandle.md) psetVal | Set handle.<br>**Since**: 26.0.0 |
-| [OH_AbilityRuntime_ModObjDispatcher_MapHandle](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-maphandle.md) pmapVal | Map handle.<br>**Since**: 26.0.0 |
-| [OH_AbilityRuntime_ModObjDispatcher_StructHandle](capi-abilityruntime-oh-abilityruntime-modobjdispatcher-structhandle.md) pstructVal | Struct handle.<br>**Since**: 26.0.0 |
-| OHIPCRemoteProxy *premoteProxyVal | Ipc remote proxy handle.<br>**Since**: 26.0.0 |
-| OHIPCRemoteStub *premoteStubVal;
- } u | Ipc remote stub handle.<br>**Since**: 26.0.0 |
+| OH_AbilityRuntime_ModObjDispatcher_ValueType vt | Variant type.<br>**Since**: 26.0.0 |
+| uint64_t reserved1 | Reserved field 1 for future use.<br>**Since**: 26.0.0 |
+| uint64_t reserved2 | Reserved field 2 for future use.<br>**Since**: 26.0.0 |
+| uint64_t reserved3 | Reserved field 3 for future use.<br>**Since**: 26.0.0 |
+| u->pvoidVal | Empty value.<br>**Since**: 26.0.0 |
+| u.boolVal | Boolean value.<br>**Since**: 26.0.0 |
+| u.i8Val | 8-bit signed integer.<br>**Since**: 26.0.0 |
+| u.i16Val | 16-bit signed integer.<br>**Since**: 26.0.0 |
+| u.i32Val | 32-bit signed integer.<br>**Since**: 26.0.0 |
+| u.i64Val | 64-bit signed integer.<br>**Since**: 26.0.0 |
+| u.u8Val | 8-bit unsigned integer.<br>**Since**: 26.0.0 |
+| u.u16Val | 16-bit unsigned integer.<br>**Since**: 26.0.0 |
+| u.u32Val | 32-bit unsigned integer.<br>**Since**: 26.0.0 |
+| u.u64Val | 64-bit unsigned integer.<br>**Since**: 26.0.0 |
+| u.f32Val | 32-bit floating point.<br>**Since**: 26.0.0 |
+| u.f64Val | 64-bit floating point.<br>**Since**: 26.0.0 |
+| u.enumVal | Enum value.<br>**Since**: 26.0.0 |
+| u.bstrVal | String value (UTF-8) pointer.<br>**Since**: 26.0.0 |
+| u.parrayVal | Array handle.<br>**Since**: 26.0.0 |
+| u.pvectorVal | Vector handle.<br>**Since**: 26.0.0 |
+| u.psetVal | Set handle.<br>**Since**: 26.0.0 |
+| u.pmapVal | Map handle.<br>**Since**: 26.0.0 |
+| u.pstructVal | Struct handle.<br>**Since**: 26.0.0 |
+| u->premoteProxyVal | Ipc remote proxy handle.<br>**Since**: 26.0.0 |
+| u->premoteStubVal | Ipc remote stub handle.<br>**Since**: 26.0.0 |
 
 

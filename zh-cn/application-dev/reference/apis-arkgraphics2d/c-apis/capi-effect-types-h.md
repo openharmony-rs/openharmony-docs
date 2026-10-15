@@ -6,6 +6,8 @@
 
 **库：** libnative_effect.so
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 **相关模块：** [effectKit](capi-effectkit.md)
@@ -39,6 +41,8 @@ enum EffectErrorCode
 
 定义滤镜效果的状态码。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -57,6 +61,8 @@ enum EffectTileMode
 **描述：**
 
 定义着色器效果平铺模式的枚举。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 14
 

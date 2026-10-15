@@ -6,6 +6,8 @@ Defines the basic APIs of the camera.
 
 **Library**: libohcamera.so
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 **Related module**: [OH_Camera](capi-oh-camera.md)
@@ -106,6 +108,8 @@ enum Camera_ErrorCode
 
 Enumerates the camera error codes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -137,6 +141,8 @@ enum Camera_Status
 
 Enumerates the camera statuses.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -156,13 +162,15 @@ enum Camera_SceneMode
 
 Enumerates the camera scene modes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
 | NORMAL_PHOTO = 1 | Normal photo mode. |
 | NORMAL_VIDEO = 2 | Normal video mode. |
-| SECURE_PHOTO = 12 | Secure mode, which is mainly provided for high-security applications like banking that require features such as biometric verification. The secure mode requires the encryption algorithm framework and trusted application services. For details, see [Device Certificate Kit](../../../security/DeviceCertificateKit/device-certificate-kit-intro.md). |
+| SECURE_PHOTO = 12 | Secure mode, which is mainly provided for high-security applications like banking that require features such as biometric verification. The secure mode requires the encryption algorithm framework and trusted application services. For details, see [Device Certificate Kit](../../../../security/DeviceCertificateKit/device-certificate-kit-intro.md). |
 
 ### Camera_Position
 
@@ -173,6 +181,8 @@ enum Camera_Position
 **Description**
 
 Enumerates the camera positions.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -191,6 +201,8 @@ enum OH_Camera_AutomotiveCameraPosition
 **Description**
 
 Enum for automotive camera position.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -222,6 +234,8 @@ enum Camera_Type
 
 Enumerates the camera types.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -242,6 +256,8 @@ enum Camera_Connection
 
 Enumerates the camera connection types.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -259,6 +275,8 @@ enum OH_Camera_SensorColorFilterArrangement
 **Description**
 
 Sensor color filter arrangement.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 24
 
@@ -278,6 +296,8 @@ enum Camera_Format
 **Description**
 
 Enumerates the camera output formats.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -302,6 +322,8 @@ enum Camera_FlashMode
 
 Enumerates the flash modes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -321,6 +343,8 @@ enum OH_Camera_FlashState
 
 Enum for flash state.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 | Enum item | Description |
@@ -338,6 +362,8 @@ enum Camera_ExposureMode
 **Description**
 
 Enumerates the exposure modes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -359,6 +385,8 @@ enum OH_Camera_ExposureMeteringMode
 
 Enum for exposure metering mode.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 | Enum item | Description |
@@ -377,6 +405,8 @@ enum OH_Camera_ExposureState
 
 Enumerates camera exposure states.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -393,6 +423,8 @@ enum Camera_WhiteBalanceMode
 **Description**
 
 Enumerates the white balance modes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -416,6 +448,8 @@ enum Camera_FocusMode
 
 Enumerates the focus modes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -435,6 +469,8 @@ enum Camera_FocusState
 
 Enumerates the focus states.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -452,6 +488,8 @@ enum Camera_VideoStabilizationMode
 **Description**
 
 Enumerates the video stabilization modes.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -472,6 +510,8 @@ enum Camera_ImageRotation
 **Description**
 
 Enumerates the image rotation angles.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -496,6 +536,8 @@ enum Camera_QualityLevel
 
 Enumerates the image quality levels.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 11
 
 | Enum item | Description |
@@ -513,6 +555,8 @@ enum Camera_MetadataObjectType
 **Description**
 
 Enumerates the metadata object types.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -539,6 +583,8 @@ enum Camera_TorchMode
 
 Enumerates the flashlight modes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -560,6 +606,8 @@ enum Camera_SmoothZoomMode
 
 Enumerates the smooth zoom modes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -576,6 +624,8 @@ enum Camera_PreconfigType
 **Description**
 
 Enumerates the preconfigured photo resolution types.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 12
 
@@ -597,6 +647,8 @@ enum Camera_PreconfigRatio
 
 Enumerates the preconfigured photo aspect ratios.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -615,6 +667,8 @@ enum Camera_HostDeviceType
 
 Enum for remote camera device type.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 15
 
 | Enum item | Description |
@@ -632,6 +686,8 @@ enum Camera_FoldStatus
 **Description**
 
 Enumerates the fold statuses.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 13
 
@@ -654,6 +710,8 @@ enum Camera_QualityPrioritization
 
 Enum for quality prioritization.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 14
 
 | Enum item | Description |
@@ -670,6 +728,8 @@ enum OH_Camera_AuxiliaryPhotoType
 **Description**
 
 Enumerates the camera auxiliary photo types for skin analysis. Use these types to specify the detection target when capturing auxiliary photos for skin health assessment.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.1
 
@@ -688,6 +748,8 @@ enum Camera_ConcurrentType
 
 Enum for camera concurrent type.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 18
 
 | Enum item | Description |
@@ -704,6 +766,8 @@ enum Camera_SystemPressureLevel
 **Description**
 
 Enumerates the system pressure levels.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -725,6 +789,8 @@ enum Camera_PhotoQualityPrioritization
 
 Enumerates the photo quality prioritization strategies.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 21
 
 | Enum item | Description |
@@ -741,6 +807,8 @@ enum Camera_ControlCenterEffectType
 **Description**
 
 Enumerates the effect types of a camera controller.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 20
 
@@ -761,6 +829,8 @@ enum OH_Camera_OISMode
 
 Enum for OIS (Optical Image Stabilization) mode.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 | Enum item | Description |
@@ -779,6 +849,8 @@ enum OH_Camera_OISAxes
 
 Enum for OIS (Optical Image Stabilization) axes.
 
+**System capability**: SystemCapability.Multimedia.Camera.Core
+
 **Since**: 24
 
 | Enum item | Description |
@@ -795,6 +867,8 @@ enum OH_Camera_MetadataObjectEmotion
 **Description**
 
 Enum for metadata object emotion.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 26.0.0
 
@@ -817,6 +891,8 @@ Camera_ErrorCode OH_Camera_GetCameraManager(Camera_Manager** cameraManager)
 **Description**
 
 Obtains a Camera_Manager instance.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 
@@ -841,6 +917,8 @@ Camera_ErrorCode OH_Camera_DeleteCameraManager(Camera_Manager* cameraManager)
 **Description**
 
 Deletes a Camera_Manager instance.
+
+**System capability**: SystemCapability.Multimedia.Camera.Core
 
 **Since**: 11
 

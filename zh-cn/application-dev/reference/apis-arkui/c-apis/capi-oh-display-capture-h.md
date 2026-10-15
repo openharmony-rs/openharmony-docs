@@ -6,6 +6,8 @@ The file declares the capability to take screenshots.
 
 **库：** libnative_display_manager.so
 
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
+
 **起始版本：** 14
 
 **相关模块：** [OH_DisplayManager](capi-oh-displaymanager.md)
@@ -29,6 +31,8 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 **描述：**
 
 获取屏幕全屏截图，可以通过设置不同的屏幕id号截取不同屏幕的截图。
+
+**系统能力：** SystemCapability.WindowManager.WindowManager.Core
 
 **需要权限：** ohos.permission.CUSTOM_SCREEN_CAPTURE [since 14]
 

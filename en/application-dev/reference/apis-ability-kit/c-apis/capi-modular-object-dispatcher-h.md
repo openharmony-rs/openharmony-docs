@@ -6,6 +6,8 @@ Declare common types and interfaces for modular object dispatcher.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -125,6 +127,8 @@ enum OH_AbilityRuntime_ModObjDispatcher_ValueType
 
 Enumerates variant types.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -165,6 +169,8 @@ void OH_AbilityRuntime_ModObjDispatcher_TypeInfoClear(OH_AbilityRuntime_ModObjDi
 
 Clear TypeInfo resources.<br> Recursively release any heap resources held by a TypeInfo struct (idlType strings, child TypeInfo nodes for map/array/vector/set types). After clearing, all pointers are set to NULL but the TypeInfo struct itself is not freed (it is typically stack-allocated by the caller).<br> TypeInfoClear must NOT be called on a shallow copy of another TypeInfo. If TypeInfo t2 = t1 is performed, only clear one of them.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -183,6 +189,8 @@ void OH_AbilityRuntime_ModObjDispatcher_VariantClear(OH_AbilityRuntime_ModObjDis
 
 Clear variant resources.<br> Release any resources held by the variant (strings, container handles, etc.). After clearing, the variant is reset to VT_EMPTY with all fields zeroed.<br> Ownership rules: - When a Variant is passed to a function (e.g. Array_Set, Map_Put), the function performs a deep copy. The caller retains ownership of the original Variant and is responsible for freeing its own resources (e.g. free(bstrVal) for strings, Release for container handles). - When a Variant is returned from a function (e.g. Array_Get, Map_Get, CallMethod), the function performs a deep copy and the caller owns the returned Variant. The caller must call VariantClear exactly once to release the resources. - Simple types (bool, i32, f64, etc.) do not hold heap resources and do not require VariantClear, though calling it is harmless. - VariantClear must NOT be called on a shallow copy of another Variant. If Variant v2 = v1 is performed, only clear one of them.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -200,6 +208,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateMainServiceIns
 **Description**
 
 Create a modular object dispatcher instance from an IPC remote proxy for the main service interface.<br> The type library metadata will be lazily loaded from the remote service on the first call that requires it, such as HasTypeDescriptor, QueryMainServiceInterfaceMemIDsOfNames, or CallMethod.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -225,6 +235,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CreateSubInstance(OH
 **Description**
 
 Create a sub-instance dispatcher bound to a mainService dispatcher.<br> The sub-instance shares the mainService dispatcher's metadata but uses its own IPC proxy. When CallMethod is invoked on the sub-instance, method metadata is resolved from the mainService dispatcher and the call is sent through subProxy.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -252,6 +264,8 @@ void OH_AbilityRuntime_ModObjDispatcher_Release(OH_AbilityRuntime_ModObjDispatch
 
 Release modular object dispatcher instance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -269,6 +283,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_HasTypeDescriptor(OH
 **Description**
 
 Check if the type library metadata is available from the remote service.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -295,6 +311,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_GetTypeDescriptor(OH
 
 Get type descriptor for querying interface metadata information.<br> The type descriptor provides access to type library metadata including interfaces, methods, enums, and structs defined in the remote service's type library. Must call [OH_AbilityRuntime_TypeDescriptor_Release](capi-modular-object-dispatcher-h.md#oh_abilityruntime_typedescriptor_release) to release the handle when no longer needed.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -319,6 +337,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_QueryMainServiceInte
 **Description**
 
 Query member IDs of method names in the main service interface.<br> The returned member IDs can be used as the memID parameter in [OH_AbilityRuntime_ModObjDispatcher_CallMethod](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_callmethod).
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -348,6 +368,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_CallMethod(OH_Abilit
 **Description**
 
 Call a method.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -379,6 +401,8 @@ void OH_AbilityRuntime_TypeDescriptor_Release(OH_AbilityRuntime_ModObjDispatcher
 
 Release TypeDescriptor instance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -396,6 +420,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetVersion(OH_AbilityR
 **Description**
 
 Get version of the type library.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -423,6 +449,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceCount(OH_A
 
 Get total number of interfaces.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -447,6 +475,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceName(OH_Ab
 **Description**
 
 Get interface name by index.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -475,6 +505,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetInterfaceIsCallback
 
 Check if interface is a callback type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -500,6 +532,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMainServiceInterfac
 **Description**
 
 Get main service interface name.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -527,6 +561,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodCount(OH_Abil
 
 Get method count from interface.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -552,6 +588,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodName(OH_Abili
 **Description**
 
 Get method name by index from interface.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -581,6 +619,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodMemberId(OH_A
 
 Get method MemberID by name from interface.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -607,6 +647,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodReturnType(OH
 **Description**
 
 Get method return type by name from interface.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -635,6 +677,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamCount(OH
 
 Get method parameter count by name from interface.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -661,6 +705,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamType(OH_
 **Description**
 
 Get method parameter type by name and index from interface.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -691,6 +737,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetMethodParamName(OH_
 **Description**
 
 Get method parameter name by name and index from interface.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -723,6 +771,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumCount(OH_Abilit
 
 Get enum count.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -747,6 +797,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumName(OH_Ability
 **Description**
 
 Get enum name by index.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -775,6 +827,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValueCount(OH_A
 
 Get enum value count by enum name.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -800,6 +854,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValueName(OH_Ab
 **Description**
 
 Get enum value name by enum name and value index.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -829,6 +885,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetEnumValue(OH_Abilit
 
 Get enum value by enum name and value name.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -856,6 +914,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructCount(OH_Abil
 
 Get struct count.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -880,6 +940,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructName(OH_Abili
 **Description**
 
 Get struct name by index.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -908,6 +970,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldCount(OH
 
 Get struct field count by struct name.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -933,6 +997,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldName(OH_
 **Description**
 
 Get struct field name by struct name and field index.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -962,6 +1028,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_TypeDescriptor_GetStructFieldType(OH_
 
 Get struct field type by struct name and field name.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -989,6 +1057,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayCreate(OH_Abili
 
 Create an array instance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1015,6 +1085,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGetElementType(
 
 Get array element type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1039,6 +1111,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArraySet(OH_AbilityR
 **Description**
 
 Set an array element value.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1066,6 +1140,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGet(OH_AbilityR
 
 Get an array element value.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1092,6 +1168,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_ArrayGetSize(OH_Abil
 
 Get array size.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1117,6 +1195,8 @@ void OH_AbilityRuntime_ModObjDispatcher_ArrayRelease(OH_AbilityRuntime_ModObjDis
 
 Release array instance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1134,6 +1214,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorCreate(OH_Abil
 **Description**
 
 Create a vector instance.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1160,6 +1242,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGetElementType
 
 Get vector element type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1185,6 +1269,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorAdd(OH_Ability
 
 Add an element to vector.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1209,6 +1295,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGet(OH_Ability
 **Description**
 
 Get a vector element value.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1236,6 +1324,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorGetSize(OH_Abi
 
 Get vector size.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1261,6 +1351,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_VectorClear(OH_Abili
 
 Clear vector.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1285,6 +1377,8 @@ void OH_AbilityRuntime_ModObjDispatcher_VectorRelease(OH_AbilityRuntime_ModObjDi
 
 Release vector instance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1302,6 +1396,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetCreate(OH_Ability
 **Description**
 
 Create a set instance.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1328,6 +1424,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetElementType(OH
 
 Get set element type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1352,6 +1450,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetAdd(OH_AbilityRun
 **Description**
 
 Add an element to set.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1378,6 +1478,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetRemove(OH_Ability
 
 Remove an element from set.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1402,6 +1504,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetContains(OH_Abili
 **Description**
 
 Check if an element exists in set.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1429,6 +1533,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetSize(OH_Abilit
 
 Get set size.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1453,6 +1559,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetGetAt(OH_AbilityR
 **Description**
 
 Get a set element value by index.<br> The returned variant is a deep copy owned by the caller. Caller must call [OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear) to release it.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1480,6 +1588,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_SetClear(OH_AbilityR
 
 Clear set.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1504,6 +1614,8 @@ void OH_AbilityRuntime_ModObjDispatcher_SetRelease(OH_AbilityRuntime_ModObjDispa
 
 Release set instance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1521,6 +1633,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapCreate(OH_Ability
 **Description**
 
 Create a map instance.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1548,6 +1662,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetKeyType(OH_Abi
 
 Get map key type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1573,6 +1689,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetValueType(OH_A
 
 Get map value type.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1597,6 +1715,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapPut(OH_AbilityRun
 **Description**
 
 Put a key-value pair into map.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1624,6 +1744,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGet(OH_AbilityRun
 
 Get a value from map by key.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1650,6 +1772,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapRemove(OH_Ability
 
 Remove a key-value pair from map.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1674,6 +1798,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapContainsKey(OH_Ab
 **Description**
 
 Check if a key exists in map.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1701,6 +1827,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetSize(OH_Abilit
 
 Get map size.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1725,6 +1853,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetKeyAt(OH_Abili
 **Description**
 
 Get a map key by index.<br> The returned variant is a deep copy owned by the caller. Caller must call [OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear) to release it.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1752,6 +1882,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapGetValueAt(OH_Abi
 
 Get a map value by index.<br> The returned variant is a deep copy owned by the caller. Caller must call [OH_AbilityRuntime_ModObjDispatcher_VariantClear](capi-modular-object-dispatcher-h.md#oh_abilityruntime_modobjdispatcher_variantclear) to release it.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1778,6 +1910,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_MapClear(OH_AbilityR
 
 Clear map.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1802,6 +1936,8 @@ void OH_AbilityRuntime_ModObjDispatcher_MapRelease(OH_AbilityRuntime_ModObjDispa
 
 Release map instance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1819,6 +1955,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructCreate(const c
 **Description**
 
 Create a struct instance.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1844,6 +1982,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructGetName(OH_Abi
 **Description**
 
 Get struct name.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1871,6 +2011,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructSetField(OH_Ab
 
 Set a struct field value.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1897,6 +2039,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjDispatcher_StructGetField(OH_Ab
 
 Get a struct field value.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1922,6 +2066,8 @@ void OH_AbilityRuntime_ModObjDispatcher_StructRelease(OH_AbilityRuntime_ModObjDi
 **Description**
 
 Release struct instance.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 

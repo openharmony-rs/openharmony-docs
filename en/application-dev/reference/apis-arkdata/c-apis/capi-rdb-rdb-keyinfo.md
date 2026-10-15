@@ -1,7 +1,7 @@
 # Rdb_KeyInfo
 
 ```c
-union Rdb_KeyInfo {...}
+struct Rdb_KeyInfo {...}
 ```
 
 ## Overview
@@ -22,9 +22,10 @@ Describes the primary keys or row-ids of changed rows.
 
 | Name | Description |
 | -- | -- |
-| uint64_t integer | Indicates uint64_t type of the data. |
-| double real | Indicates double type of the data. |
-| const char *text;
- } *data | Indicates const char * type of the data. |
+| int count | Indicates the count of the primary keys or row-ids. |
+| int type | Indicates data type [OH_ColumnType](capi-oh-data-value-h.md#oh_columntype) of the key. |
+| data.integer | Indicates uint64_t type of the data. |
+| data.real | Indicates double type of the data. |
+| data->text | Indicates const char * type of the data. |
 
 

@@ -6,6 +6,8 @@
 
 **库：** libvideo_processing.so
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **相关模块：** [VideoProcessing](capi-videoprocessing.md)
@@ -51,6 +53,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_InitializeEnvironment(void)
 
 初始化视频处理全局环境。 <br>该函数是可选的。 <br>该函数只在主进程启动时被调用一次，用于初始化视频处理全局环境，这样可以减少[OH_VideoProcessing_Create](capi-video-processing-h.md#oh_videoprocessing_create)的时间。 <br>调用[OH_VideoProcessing_DeinitializeEnvironment](capi-video-processing-h.md#oh_videoprocessing_deinitializeenvironment)释放视频处理全局环境。 <br>初始化后，必须释放视频处理全局环境，释放方式及时机详见[OH_VideoProcessing_DeinitializeEnvironment](capi-video-processing-h.md#oh_videoprocessing_deinitializeenvironment)。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **返回值：**
@@ -69,6 +73,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_DeinitializeEnvironment(void)
 
 释放视频处理全局环境。 <br>调用前，必须调用[OH_VideoProcessing_InitializeEnvironment](capi-video-processing-h.md#oh_videoprocessing_initializeenvironment)初始化。 <br>通常在主进程即将退出时调用该函数，以释放通过调用[OH_VideoProcessing_InitializeEnvironment](capi-video-processing-h.md#oh_videoprocessing_initializeenvironment)函数初始化的全局环境。 <br>如果仍有视频处理的实例运行中，就不能调用该函数。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **返回值：**
@@ -86,6 +92,8 @@ bool OH_VideoProcessing_IsColorSpaceConversionSupported(const VideoProcessing_Co
 **描述：**
 
 查询是否支持视频颜色空间转换。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -112,6 +120,8 @@ bool OH_VideoProcessing_IsMetadataGenerationSupported(const VideoProcessing_Colo
 
 查询是否支持视频元数据生成。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -135,6 +145,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Create(OH_VideoProcessing** videoPr
 **描述：**
 
 创建视频处理实例。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -161,6 +173,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Destroy(OH_VideoProcessing* videoPr
 
 销毁视频处理实例。 <br>销毁之前先停止实例，参阅[OH_VideoProcessing_Stop](capi-video-processing-h.md#oh_videoprocessing_stop)。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -184,6 +198,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_RegisterCallback(OH_VideoProcessing
 **描述：**
 
 注册回调函数。 <br>在开始视频处理之前注册回调函数，视频处理过程中无法注册回调函数。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -211,6 +227,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetSurface(OH_VideoProcessing* vide
 
 设置视频处理输出surface。 <br>在视频处理启动之前设置输出surface。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -235,6 +253,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetSurface(OH_VideoProcessing* vide
 **描述：**
 
 创建surface。 <br>在视频处理启动之前创建输入surface。调用OH_NativeWindow_DestroyNativeWindow销毁输入surface。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -261,6 +281,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetParameter(OH_VideoProcessing* vi
 
 设置视频处理输出参数。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -285,6 +307,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_GetParameter(OH_VideoProcessing* vi
 **描述：**
 
 获取视频处理参数。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -311,6 +335,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Start(OH_VideoProcessing* videoProc
 
 启动视频处理。 <br>成功启动后，回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)会报告[VideoProcessing_State](capi-video-processing-types-h.md#videoprocessing_state). VIDEO_PROCESSING_STATE_RUNNING状态。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -335,6 +361,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_Stop(OH_VideoProcessing* videoProce
 
 停止视频处理。 <br>成功停止后，回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)会报告[VideoProcessing_State](capi-video-processing-types-h.md#videoprocessing_state). VIDEO_PROCESSING_STATE_STOPPED状态。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -358,6 +386,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_RenderOutputBuffer(OH_VideoProcessi
 **描述：**
 
 渲染处理并输出buffer。 <br>如果设置了回调函数[OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer)，当输出buffer准备好之后会通过回调函数把buffer的索引返回给用户。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -384,6 +414,8 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_Create(VideoProcessing_Call
 
 创建视频处理回调函数对象。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -408,6 +440,8 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_Destroy(VideoProcessing_Cal
 
 销毁回调对象。回调对象在注册之后就可以销毁。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -431,6 +465,8 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnError(VideoProcessing
 **描述：**
 
 绑定回调函数[OH_VideoProcessingCallback_OnError](capi-video-processing-types-h.md#oh_videoprocessingcallback_onerror)到回调对象。 绑定完成之后，需要调用 [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)， 将回调对象注册到视频处理实例，才能使其生效。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -457,6 +493,8 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnState(VideoProcessing
 
 绑定回调函数[OH_VideoProcessingCallback_OnState](capi-video-processing-types-h.md#oh_videoprocessingcallback_onstate)到回调对象。 绑定完成之后，需要调用 [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)， 将回调对象注册到视频处理实例，才能使其生效。
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 12
 
 **参数：**
@@ -481,6 +519,8 @@ VideoProcessing_ErrorCode OH_VideoProcessingCallback_BindOnNewOutputBuffer(Video
 **描述：**
 
 绑定回调函数[OH_VideoProcessingCallback_OnNewOutputBuffer](capi-video-processing-types-h.md#oh_videoprocessingcallback_onnewoutputbuffer)到回调对象。绑定完成之后，需要调用 [OH_VideoProcessing_RegisterCallback](capi-video-processing-h.md#oh_videoprocessing_registercallback)，将回调对象注册到视频处理实例，才能使其生效。
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 12
 
@@ -507,6 +547,8 @@ bool OH_VideoProcessing_IsAutoEffectSupported(uint32_t type)
 
 Query if the autoeffect is supported.
 
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -530,6 +572,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_UseAutoEffect(uint32_t type, bool e
 **描述：**
 
 Specifies whether the type effect is required in the XComponent named name that will be created.<br> Records the mapping between type, enable, and name in the internal map. This should be called before [OH_VideoProcessing_SetAutoEffectParam](capi-video-processing-h.md#oh_videoprocessing_setautoeffectparam).
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 26.0.1
 
@@ -556,6 +600,8 @@ VideoProcessing_ErrorCode OH_VideoProcessing_SetAutoEffectParam(uint32_t type, c
 **描述：**
 
 Sets parameters for the automatic effect associated with the XComponent. Currently, the AutoEffect only takes effect on the last invoked XComponent.
+
+**系统能力：** SystemCapability.Multimedia.VideoProcessingEngine
 
 **起始版本：** 26.0.1
 

@@ -6,6 +6,8 @@ This file declares the functions related to the typeface in the drawing module. 
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -40,6 +42,8 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateDefault(void)
 
 Creates a default **OH_Drawing_Typeface** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Returns**:
@@ -57,6 +61,8 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFile(const char* path, int ind
 **Description**
 
 Creates an **OH_Drawing_Typeface** object through a file. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **path** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -83,6 +89,8 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromFileWithArguments(const char* 
 
 Creates an **OH_Drawing_Typeface** object with font arguments through a file. If the **OH_Drawing_Typeface** object does not support the variation described in the font arguments, this function creates an **OH_Drawing_Typeface** object with the default font arguments. In this case, this function provides the same capability as [OH_Drawing_TypefaceCreateFromFile](capi-drawing-typeface-h.md#oh_drawing_typefacecreatefromfile).
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Parameters**:
@@ -107,6 +115,8 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromCurrent(const OH_Drawing_Typef
 **Description**
 
 Creates an **OH_Drawing_Typeface** object with font arguments based on an existing **OH_Drawing_Typeface**<br>object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 13
 
@@ -133,6 +143,8 @@ OH_Drawing_Typeface* OH_Drawing_TypefaceCreateFromStream(OH_Drawing_MemoryStream
 
 Creates an **OH_Drawing_Typeface** object through a memory stream. If the memory stream is an invalid font file, a null pointer is returned. After the memory stream is passed in, the ownership is transferred and you cannot release it. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **memoryStream** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -158,6 +170,8 @@ void OH_Drawing_TypefaceDestroy(OH_Drawing_Typeface* typeface)
 
 Destroys an **OH_Drawing_Typeface** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -176,6 +190,8 @@ OH_Drawing_FontArguments* OH_Drawing_FontArgumentsCreate(void)
 
 Creates an **OH_Drawing_FontArguments** object. The font arguments are used to create an **<br>OH_Drawing_Typeface** object with custom attributes.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Returns**:
@@ -193,6 +209,8 @@ OH_Drawing_ErrorCode OH_Drawing_FontArgumentsAddVariation(OH_Drawing_FontArgumen
 **Description**
 
 Adds a variation to an **OH_Drawing_FontArguments** object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 13
 
@@ -220,6 +238,8 @@ OH_Drawing_ErrorCode OH_Drawing_FontArgumentsDestroy(OH_Drawing_FontArguments* f
 
 Destroys an **OH_Drawing_FontArguments** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Parameters**:
@@ -243,6 +263,8 @@ OH_Drawing_ErrorCode OH_Drawing_TypefaceIsBold(const OH_Drawing_Typeface* typefa
 **Description**
 
 Checks whether the typeface is bold.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -268,6 +290,8 @@ OH_Drawing_ErrorCode OH_Drawing_TypefaceIsItalic(const OH_Drawing_Typeface* type
 **Description**
 
 Checks whether the typeface is italic.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 

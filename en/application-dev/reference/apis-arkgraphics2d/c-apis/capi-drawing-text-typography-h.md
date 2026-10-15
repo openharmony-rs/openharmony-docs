@@ -6,6 +6,8 @@ This file declares the functions related to typography in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -306,6 +308,8 @@ enum OH_Drawing_TextDirection
 
 Enumerates the text directions.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 | Enum item | Description |
@@ -322,6 +326,8 @@ enum OH_Drawing_TextAlign
 **Description**
 
 Enumerates the text alignment modes.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -343,6 +349,8 @@ enum OH_Drawing_FontWeight
 **Description**
 
 Enumerates the font weights.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -368,6 +376,8 @@ enum OH_Drawing_TextBaseline
 
 Enumerates the text baselines.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 | Enum item | Description |
@@ -384,6 +394,8 @@ enum OH_Drawing_TextDecoration
 **Description**
 
 Enumerates the text decorations.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -404,6 +416,8 @@ enum OH_Drawing_FontStyle
 
 Font styles, including non-italic, italic, and oblique.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 | Enum item | Description |
@@ -421,6 +435,8 @@ enum OH_Drawing_PlaceholderVerticalAlignment
 **Description**
 
 Enumerates the vertical alignment modes of placeholders.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -444,6 +460,8 @@ enum OH_Drawing_TextDecorationStyle
 
 Enumerates the text decoration styles.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 | Enum item | Description |
@@ -463,6 +481,8 @@ enum OH_Drawing_EllipsisModal
 **Description**
 
 Enumerates the ellipsis styles.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -484,6 +504,8 @@ enum OH_Drawing_BreakStrategy
 
 Enumerates the text break strategies.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 | Enum item | Description |
@@ -501,6 +523,8 @@ enum OH_Drawing_WordBreakType
 **Description**
 
 Enumerates the word break types.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -520,6 +544,8 @@ enum OH_Drawing_RectHeightStyle
 **Description**
 
 Enumerates the rectangle height styles.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -542,6 +568,8 @@ enum OH_Drawing_RectWidthStyle
 
 Enumerates the rectangle width styles.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 | Enum item | Description |
@@ -558,6 +586,8 @@ enum OH_Drawing_FontConfigInfoErrorCode
 **Description**
 
 Enumerates the error codes for the system font configuration information list.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -579,6 +609,8 @@ enum OH_Drawing_TextHeightBehavior
 
 Enumerates the text height modifier patterns.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 | Enum item | Description |
@@ -597,6 +629,8 @@ enum OH_Drawing_TextStyleType
 **Description**
 
 Enumerates the text style types.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -622,6 +656,8 @@ enum OH_Drawing_FontWidth
 
 Enumerates the font widths.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 | Enum item | Description |
@@ -646,6 +682,8 @@ enum OH_Drawing_TextStyleAttributeId
 
 Enumerates the text style attributes.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 21
 
 | Enum item | Description |
@@ -666,6 +704,8 @@ enum OH_Drawing_LineHeightStyle
 
 Enumerates the scaling base styles of the line height. The default style is **TEXT_LINE_HEIGHT_BY_FONT_SIZE**.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 21
 
 | Enum item | Description |
@@ -682,6 +722,8 @@ enum OH_Drawing_TypographyStyleAttributeId
 **Description**
 
 Enumerates the typography style attributes. <br>For the common attributes of the typography styles and text styles, you are advised to use the text style attributes, which can be obtained from [OH_Drawing_TextStyleAttributeId](capi-drawing-text-typography-h.md#oh_drawing_textstyleattributeid).
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 21
 
@@ -710,6 +752,8 @@ enum OH_Drawing_TypographyAttributeId
 
 Enumerates the typography attributes.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -725,6 +769,8 @@ enum OH_Drawing_TextBadgeType
 **Description**
 
 Enumerates the text badge styles.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -743,6 +789,8 @@ enum OH_Drawing_TextVerticalAlignment
 **Description**
 
 Enumerates the vertical alignment modes.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -765,6 +813,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyAttributeBool(const OH_Drawing_Typo
 **Description**
 
 Obtains a bool-type typography attribute.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.0
 
@@ -792,6 +842,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyAttributeBool(OH_Drawing_Typography
 
 Sets a bool-type typography attribute.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -817,6 +869,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeDouble(OH_Drawing_TextStyle
 **Description**
 
 Sets the text style attribute of the **double** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 21
 
@@ -844,6 +898,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeDouble(OH_Drawing_TextStyle
 
 Obtains the text style attribute of the **double** type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 21
 
 **Parameters**:
@@ -869,6 +925,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTextStyleAttributeInt(OH_Drawing_TextStyle* s
 **Description**
 
 Sets the text style attribute of the **int** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 21
 
@@ -896,6 +954,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTextStyleAttributeInt(OH_Drawing_TextStyle* s
 
 Obtains the text style attribute of the **int** type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 21
 
 **Parameters**:
@@ -921,6 +981,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDouble(OH_Drawing_Typ
 **Description**
 
 Sets the typography style attribute of the **double** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 21
 
@@ -948,6 +1010,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDouble(OH_Drawing_Typ
 
 Obtains the typography style attribute of the **double** type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 21
 
 **Parameters**:
@@ -973,6 +1037,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeInt(OH_Drawing_Typogr
 **Description**
 
 Sets the typography style attribute of the **int** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 21
 
@@ -1000,6 +1066,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeInt(OH_Drawing_Typogr
 
 Obtains the typography style attribute of the **int** type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 21
 
 **Parameters**:
@@ -1025,6 +1093,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeBool(OH_Drawing_Typog
 **Description**
 
 Sets the typography style attribute of the **bool** type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -1052,6 +1122,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeBool(OH_Drawing_Typog
 
 Obtains the typography style attribute of the **bool** type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
@@ -1077,6 +1149,8 @@ OH_Drawing_ErrorCode OH_Drawing_SetTypographyStyleAttributeDoubleArray(OH_Drawin
 **Description**
 
 Sets the typography style attribute of the floating-point array type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.0
 
@@ -1105,6 +1179,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetTypographyStyleAttributeDoubleArray(const OH_
 
 Obtains the typography style attribute of the floating-point array type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1132,6 +1208,8 @@ OH_Drawing_TypographyStyle* OH_Drawing_CreateTypographyStyle(void)
 
 Creates an **OH_Drawing_TypographyStyle** object. Release this pointer by calling [OH_Drawing_DestroyTypographyStyle](capi-drawing-text-typography-h.md#oh_drawing_destroytypographystyle) when this object is no longer needed.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Returns**:
@@ -1150,6 +1228,8 @@ void OH_Drawing_DestroyTypographyStyle(OH_Drawing_TypographyStyle* style)
 
 Destroys an **OH_Drawing_TypographyStyle** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1167,6 +1247,8 @@ void OH_Drawing_SetTypographyTextDirection(OH_Drawing_TypographyStyle* style, in
 **Description**
 
 Sets the text direction in a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1187,6 +1269,8 @@ void OH_Drawing_SetTypographyTextAlign(OH_Drawing_TypographyStyle* style, int al
 
 Text alignment mode.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1205,6 +1289,8 @@ void OH_Drawing_SetTypographyTextMaxLines(OH_Drawing_TypographyStyle* style, int
 **Description**
 
 Sets the maximum number of lines in the text.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1225,6 +1311,8 @@ OH_Drawing_TextStyle* OH_Drawing_CreateTextStyle(void)
 
 Creates a pointer to an **OH_Drawing_TextStyle** object. When the [OH_Drawing_TextStyle](capi-drawing-oh-drawing-textstyle.md) is no longer needed, use [OH_Drawing_DestroyTextStyle](capi-drawing-text-typography-h.md#oh_drawing_destroytextstyle) to release the pointer to the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Returns**:
@@ -1243,6 +1331,8 @@ void OH_Drawing_DestroyTextStyle(OH_Drawing_TextStyle* style)
 
 Destroys an **OH_Drawing_TextStyle** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1260,6 +1350,8 @@ void OH_Drawing_SetTextStyleColor(OH_Drawing_TextStyle* style, uint32_t color)
 **Description**
 
 Sets the color for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1280,6 +1372,8 @@ void OH_Drawing_SetTextStyleFontSize(OH_Drawing_TextStyle* style, double fontSiz
 
 Sets the font size for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1298,6 +1392,8 @@ void OH_Drawing_SetTextStyleFontWeight(OH_Drawing_TextStyle* style, int fontWeig
 **Description**
 
 Sets the font weight. Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, only variable fonts in system fonts support font weight adjustment. Starting from <!--RP1-->OpenHarmony 6.1<!--RP1End-->, both system fonts and variable fonts in third-party registered fonts support font weight adjustment. For non-variable fonts, the font weight does not change when the weight value is set to less than semi-bold, and a pseudo-bold effect may be triggered when the weight value is set to semi-bold or greater.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1318,6 +1414,8 @@ void OH_Drawing_SetTextStyleBaseLine(OH_Drawing_TextStyle* style, int baseline)
 
 Sets the baseline for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1336,6 +1434,8 @@ void OH_Drawing_SetTextStyleDecoration(OH_Drawing_TextStyle* style, int decorati
 **Description**
 
 Sets the decoration for a text style. Only one decoration can be set. To add multiple decorations, use [OH_Drawing_AddTextStyleDecoration](capi-drawing-text-typography-h.md#oh_drawing_addtextstyledecoration).
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1356,6 +1456,8 @@ void OH_Drawing_AddTextStyleDecoration(OH_Drawing_TextStyle* style, int decorati
 
 Adds the decoration for a text style. Multiple decoration lines can be displayed.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
@@ -1374,6 +1476,8 @@ void OH_Drawing_RemoveTextStyleDecoration(OH_Drawing_TextStyle* style, int decor
 **Description**
 
 Removes the decoration for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -1394,6 +1498,8 @@ void OH_Drawing_SetTextStyleDecorationColor(OH_Drawing_TextStyle* style, uint32_
 
 Sets the decoration color for a text style. If this API is not called or **color** is set to **0**, the decoration color follows the text color.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1413,6 +1519,8 @@ void OH_Drawing_SetTextStyleFontHeight(OH_Drawing_TextStyle* style, double fontH
 
 Sets the line height based on the multiple of the font size.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1431,6 +1539,8 @@ void OH_Drawing_SetTextStyleFontFamilies(OH_Drawing_TextStyle* style, int fontFa
 **Description**
 
 Sets the font families for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1452,6 +1562,8 @@ void OH_Drawing_SetTextStyleFontStyle(OH_Drawing_TextStyle* style, int fontStyle
 
 Sets the font style for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1470,6 +1582,8 @@ void OH_Drawing_SetTextStyleLocale(OH_Drawing_TextStyle* style, const char* loca
 **Description**
 
 Sets the locale for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1490,6 +1604,8 @@ void OH_Drawing_SetTextStyleForegroundBrush(OH_Drawing_TextStyle* style, OH_Draw
 
 Sets the foreground brush for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1508,6 +1624,8 @@ void OH_Drawing_TextStyleGetForegroundBrush(OH_Drawing_TextStyle* style, OH_Draw
 **Description**
 
 Obtains the foreground brush of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -1528,6 +1646,8 @@ void OH_Drawing_SetTextStyleForegroundPen(OH_Drawing_TextStyle* style, OH_Drawin
 
 Sets the foreground pen for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1546,6 +1666,8 @@ void OH_Drawing_TextStyleGetForegroundPen(OH_Drawing_TextStyle* style, OH_Drawin
 **Description**
 
 Obtains the foreground pen of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -1566,6 +1688,8 @@ void OH_Drawing_SetTextStyleBackgroundBrush(OH_Drawing_TextStyle* style, OH_Draw
 
 Sets the background brush for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1584,6 +1708,8 @@ void OH_Drawing_TextStyleGetBackgroundBrush(OH_Drawing_TextStyle* style, OH_Draw
 **Description**
 
 Obtains the background brush of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -1604,6 +1730,8 @@ void OH_Drawing_SetTextStyleBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawin
 
 Sets the background pen for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1623,6 +1751,8 @@ void OH_Drawing_TextStyleGetBackgroundPen(OH_Drawing_TextStyle* style, OH_Drawin
 
 Obtains the background pen of a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1641,6 +1771,8 @@ OH_Drawing_TypographyCreate* OH_Drawing_CreateTypographyHandler(OH_Drawing_Typog
 **Description**
 
 Creates an **OH_Drawing_TypographyCreate** object. Release this pointer by calling [OH_Drawing_DestroyTypographyHandler](capi-drawing-text-typography-h.md#oh_drawing_destroytypographyhandler) when this object is no longer needed. You are advised to use the [OH_Drawing_CreateSharedFontCollection](capi-drawing-font-collection-h.md#oh_drawing_createsharedfontcollection) function to create an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1667,6 +1799,8 @@ void OH_Drawing_DestroyTypographyHandler(OH_Drawing_TypographyCreate* handler)
 
 Destroys an **OH_Drawing_TypographyCreate** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1684,6 +1818,8 @@ void OH_Drawing_TypographyHandlerPushTextStyle(OH_Drawing_TypographyCreate* hand
 **Description**
 
 Pushes a text style into the text style stack. Any text added afterward will use the style currently on top of the stack.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1704,6 +1840,8 @@ void OH_Drawing_TypographyHandlerAddText(OH_Drawing_TypographyCreate* handler, c
 
 Adds text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1723,6 +1861,8 @@ void OH_Drawing_TypographyHandlerPopTextStyle(OH_Drawing_TypographyCreate* handl
 
 Pops the top text style out of the text style stack.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1740,6 +1880,8 @@ OH_Drawing_Typography* OH_Drawing_CreateTypography(OH_Drawing_TypographyCreate* 
 **Description**
 
 Creates an **OH_Drawing_Typography** object. Release this pointer by calling [OH_Drawing_DestroyTypography](capi-drawing-text-typography-h.md#oh_drawing_destroytypography) when this object is no longer needed.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1765,6 +1907,8 @@ void OH_Drawing_DestroyTypography(OH_Drawing_Typography* typography)
 
 Destroys an **OH_Drawing_Typography** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -1782,6 +1926,8 @@ void OH_Drawing_TypographyLayout(OH_Drawing_Typography* typography, double maxWi
 **Description**
 
 Performs layout calculation on the typography object and wraps text based on the specified maximum width. After this API is called, the properties of the typography object can be correctly obtained.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1801,6 +1947,8 @@ void OH_Drawing_TypographyPaint(OH_Drawing_Typography* typography, OH_Drawing_Ca
 **Description**
 
 Draws text from the upper left corner at a specified position. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called and applied.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -1823,6 +1971,8 @@ void OH_Drawing_TypographyPaintOnPath(OH_Drawing_Typography* typography, OH_Draw
 
 Draws text along a specified path. This API must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called and takes effect. It is recommended to use [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines) to set the maximum number of lines to 1 to avoid overlapping issues caused by text width exceeding the typography width.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -1844,6 +1994,8 @@ OH_Drawing_RectSize OH_Drawing_TypographyLayoutWithConstraintsWithBuffer(OH_Draw
 **Description**
 
 Arranges the text in the constraint rectangle.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
@@ -1872,6 +2024,8 @@ OH_Drawing_Range* OH_Drawing_GetRangeByArrayIndex(OH_Drawing_Array* array, size_
 
 Obtains the pointer to the OH_Drawing_Range object based on the array index.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -1897,6 +2051,8 @@ OH_Drawing_ErrorCode OH_Drawing_ReleaseArrayBuffer(OH_Drawing_Array* array)
 
 Releases the memory occupied by the [OH_Drawing_Array](capi-drawing-oh-drawing-array.md) object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -1920,6 +2076,8 @@ double OH_Drawing_TypographyGetMaxWidth(OH_Drawing_Typography* typography)
 **Description**
 
 Obtains the typography width set by the user. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 9
 
@@ -1945,6 +2103,8 @@ double OH_Drawing_TypographyGetHeight(OH_Drawing_Typography* typography)
 
 Obtains the overall height of a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 9
 
 **Parameters**:
@@ -1968,6 +2128,8 @@ double OH_Drawing_TypographyGetLongestLine(OH_Drawing_Typography* typography)
 **Description**
 
 Obtains the width of the longest line in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. You are advised to round up the return value. If the text content is empty, **0.0** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 9
 
@@ -1993,6 +2155,8 @@ double OH_Drawing_TypographyGetLongestLineWithIndent(OH_Drawing_Typography* typo
 
 Obtains the width of the longest line of a typography object, including its indentation. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. You are advised to round up the return value. If the text content is empty, **0.0** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 13
 
 **Parameters**:
@@ -2016,6 +2180,8 @@ double OH_Drawing_TypographyGetMinIntrinsicWidth(OH_Drawing_Typography* typograp
 **Description**
 
 Obtains the minimum intrinsic width in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 9
 
@@ -2041,6 +2207,8 @@ double OH_Drawing_TypographyGetMaxIntrinsicWidth(OH_Drawing_Typography* typograp
 
 Obtains the maximum intrinsic width in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 9
 
 **Parameters**:
@@ -2064,6 +2232,8 @@ double OH_Drawing_TypographyGetAlphabeticBaseline(OH_Drawing_Typography* typogra
 **Description**
 
 Obtains the alphabetic baseline position of the typography object. This API must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 9
 
@@ -2089,6 +2259,8 @@ double OH_Drawing_TypographyGetIdeographicBaseline(OH_Drawing_Typography* typogr
 
 Obtains the ideographic baseline position of the typography object. This API must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 9
 
 **Parameters**:
@@ -2113,6 +2285,8 @@ void OH_Drawing_TypographyHandlerAddPlaceholder(OH_Drawing_TypographyCreate* han
 
 Adds a placeholder.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2131,6 +2305,8 @@ bool OH_Drawing_TypographyDidExceedMaxLines(OH_Drawing_Typography* typography)
 **Description**
 
 Checks whether the text in the typography object exceeds the line limit. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. It returns **false** if the line limit is not set using [OH_Drawing_SetTypographyTextMaxLines](capi-drawing-text-typography-h.md#oh_drawing_settypographytextmaxlines).
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2155,6 +2331,8 @@ OH_Drawing_TextBox* OH_Drawing_TypographyGetRectsForRange(OH_Drawing_Typography*
 **Description**
 
 Obtains text boxes in a given range of a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. Release this pointer by calling [OH_Drawing_TypographyDestroyTextBox](capi-drawing-text-typography-h.md#oh_drawing_typographydestroytextbox) when this object is no longer needed.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2184,6 +2362,8 @@ OH_Drawing_TextBox* OH_Drawing_TypographyGetRectsForPlaceholders(OH_Drawing_Typo
 
 Obtains text boxes for placeholders in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. Release this pointer by calling [OH_Drawing_TypographyDestroyTextBox](capi-drawing-text-typography-h.md#oh_drawing_typographydestroytextbox) when this object is no longer needed.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2207,6 +2387,8 @@ float OH_Drawing_GetLeftFromTextBox(OH_Drawing_TextBox* textbox, int index)
 **Description**
 
 Obtains the left position of a text box.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2233,6 +2415,8 @@ float OH_Drawing_GetRightFromTextBox(OH_Drawing_TextBox* textbox, int index)
 
 Obtains the right position of a text box.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2257,6 +2441,8 @@ float OH_Drawing_GetTopFromTextBox(OH_Drawing_TextBox* textbox, int index)
 **Description**
 
 Obtains the top position of a text box.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2283,6 +2469,8 @@ float OH_Drawing_GetBottomFromTextBox(OH_Drawing_TextBox* textbox, int index)
 
 Obtains the bottom position of a text box.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2307,6 +2495,8 @@ int OH_Drawing_GetTextDirectionFromTextBox(OH_Drawing_TextBox* textbox, int inde
 **Description**
 
 Obtains the text direction of a text box.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2333,6 +2523,8 @@ size_t OH_Drawing_GetSizeOfTextBox(OH_Drawing_TextBox* textBox)
 
 Obtains the number of text boxes.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2356,6 +2548,8 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinat
 **Description**
 
 Obtains the position and affinity of the glyph at the given coordinates.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2387,6 +2581,8 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetGlyphPositionAtCoordinat
 
 Obtains the index position and affinity of the character cluster to which the text at the coordinate belongs. A character cluster refers to a group of one or more characters. When the [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) is no longer needed, use [OH_Drawing_DestroyPositionAndAffinity](capi-drawing-text-typography-h.md#oh_drawing_destroypositionandaffinity) to release the pointer to the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2413,6 +2609,8 @@ size_t OH_Drawing_GetPositionFromPositionAndAffinity(OH_Drawing_PositionAndAffin
 
 Obtains the position attribute of an **OH_Drawing_PositionAndAffinity** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2437,6 +2635,8 @@ int OH_Drawing_GetAffinityFromPositionAndAffinity(OH_Drawing_PositionAndAffinity
 
 Obtains the affinity attribute of an **OH_Drawing_PositionAndAffinity** object. The affinity determines whether the font is close to the front text or rear text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2460,6 +2660,8 @@ OH_Drawing_Range* OH_Drawing_TypographyGetWordBoundary(OH_Drawing_Typography* ty
 **Description**
 
 Obtains the word boundary in the typography object. When the [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) is no longer needed, use [OH_Drawing_ReleaseRangeBuffer](capi-drawing-text-typography-h.md#oh_drawing_releaserangebuffer) to release the pointer to the object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2486,6 +2688,8 @@ size_t OH_Drawing_GetStartFromRange(OH_Drawing_Range* range)
 
 Obtains the start position of an **OH_Drawing_Range** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2509,6 +2713,8 @@ size_t OH_Drawing_GetEndFromRange(OH_Drawing_Range* range)
 **Description**
 
 Obtains the end position of an **OH_Drawing_Range** object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2534,6 +2740,8 @@ size_t OH_Drawing_TypographyGetLineCount(OH_Drawing_Typography* typography)
 
 Obtains the number of lines in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2558,6 +2766,8 @@ void OH_Drawing_SetTextStyleDecorationStyle(OH_Drawing_TextStyle* style, int dec
 
 Sets the decoration style for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2576,6 +2786,8 @@ void OH_Drawing_SetTextStyleDecorationThicknessScale(OH_Drawing_TextStyle* style
 **Description**
 
 Sets the thickness scale factor for the decoration style of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2596,6 +2808,8 @@ void OH_Drawing_SetTextStyleLetterSpacing(OH_Drawing_TextStyle* style, double le
 
 Sets the letter spacing for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2614,6 +2828,8 @@ void OH_Drawing_SetTextStyleWordSpacing(OH_Drawing_TextStyle* style, double word
 **Description**
 
 Sets the word spacing for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2634,6 +2850,8 @@ void OH_Drawing_SetTextStyleHalfLeading(OH_Drawing_TextStyle* style, bool halfLe
 
 Sets whether to enable half leading for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2652,6 +2870,8 @@ void OH_Drawing_SetTextStyleEllipsis(OH_Drawing_TextStyle* style, const char* el
 **Description**
 
 Sets the ellipsis content for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2676,6 +2896,8 @@ void OH_Drawing_SetTextStyleEllipsisModal(OH_Drawing_TextStyle* style, int ellip
 
 Sets the ellipsis style for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Deprecated**: 18
@@ -2699,6 +2921,8 @@ void OH_Drawing_SetTypographyTextBreakStrategy(OH_Drawing_TypographyStyle* style
 
 Sets the text break strategy.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2717,6 +2941,8 @@ void OH_Drawing_SetTypographyTextWordBreakType(OH_Drawing_TypographyStyle* style
 **Description**
 
 Sets the word break type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2737,6 +2963,8 @@ void OH_Drawing_SetTypographyTextEllipsisModal(OH_Drawing_TypographyStyle* style
 
 Sets the ellipsis style for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2755,6 +2983,8 @@ double OH_Drawing_TypographyGetLineHeight(OH_Drawing_Typography* typography, int
 **Description**
 
 Obtains the line height in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -2781,6 +3011,8 @@ double OH_Drawing_TypographyGetLineWidth(OH_Drawing_Typography* typography, int 
 
 Obtains the line width of a specified line. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -2805,6 +3037,8 @@ OH_Drawing_Range* OH_Drawing_TypographyGetLineTextRange(OH_Drawing_Typography* t
 **Description**
 
 Obtains the line bounds in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. This function can only be used to obtain the bounds of existing lines. That is, the line index must start from 0, and the maximum index is [OH_Drawing_TypographyGetLineCount](capi-drawing-text-typography-h.md#oh_drawing_typographygetlinecount) – 1.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -2832,6 +3066,8 @@ OH_Drawing_FontDescriptor* OH_Drawing_CreateFontDescriptor(void)
 
 Constructs a font descriptor object for describing detailed information about a system font. When the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) is no longer needed, use [OH_Drawing_DestroyFontDescriptor](capi-drawing-text-typography-h.md#oh_drawing_destroyfontdescriptor) to release the pointer to the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Returns**:
@@ -2849,6 +3085,8 @@ void OH_Drawing_DestroyFontDescriptor(OH_Drawing_FontDescriptor* descriptor)
 **Description**
 
 Destroys an **OH_Drawing_FontDescriptor** object and reclaims the memory occupied by the object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -2868,6 +3106,8 @@ OH_Drawing_FontParser* OH_Drawing_CreateFontParser(void)
 
 Constructs a font parser object for parsing system fonts. When the [OH_Drawing_FontParser](capi-drawing-oh-drawing-fontparser.md) is no longer needed, use [OH_Drawing_DestroyFontParser](capi-drawing-text-typography-h.md#oh_drawing_destroyfontparser) to release the pointer to the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Returns**:
@@ -2886,6 +3126,8 @@ void OH_Drawing_DestroyFontParser(OH_Drawing_FontParser* parser)
 
 Destroys an **OH_Drawing_FontParser** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -2903,6 +3145,8 @@ char** OH_Drawing_FontParserGetSystemFontList(OH_Drawing_FontParser* fontParser,
 **Description**
 
 Obtains the list of system font names. When the list is no longer needed, use [OH_Drawing_DestroySystemFontList](capi-drawing-text-typography-h.md#oh_drawing_destroysystemfontlist) to release the memory. This API is supported only on phones and PC/2-in-1 devices.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -2929,6 +3173,8 @@ void OH_Drawing_DestroySystemFontList(char** fontList, size_t num)
 
 Reclaims the memory occupied by the system font list.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -2947,6 +3193,8 @@ OH_Drawing_FontDescriptor* OH_Drawing_FontParserGetFontByName(OH_Drawing_FontPar
 **Description**
 
 Obtains the information about a system font based on the given system font name. This API is supported only on phones and PC/2-in-1 devices.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -2973,6 +3221,8 @@ OH_Drawing_LineMetrics* OH_Drawing_TypographyGetLineMetrics(OH_Drawing_Typograph
 
 Obtains the line metrics in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. Release this pointer by calling [OH_Drawing_DestroyLineMetrics](capi-drawing-text-typography-h.md#oh_drawing_destroylinemetrics) when this object is no longer needed.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -2996,6 +3246,8 @@ size_t OH_Drawing_LineMetricsGetSize(OH_Drawing_LineMetrics* lineMetrics)
 **Description**
 
 Obtains the number of lines.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3021,6 +3273,8 @@ void OH_Drawing_DestroyLineMetrics(OH_Drawing_LineMetrics* lineMetrics)
 
 Destroys an **OH_Drawing_LineMetrics** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3038,6 +3292,8 @@ bool OH_Drawing_TypographyGetLineMetricsAt(OH_Drawing_Typography* typography, in
 **Description**
 
 Obtains the position information of a specified line in the typography object. For details, see the [OH_Drawing_LineMetrics](capi-drawing-oh-drawing-linemetrics.md) struct. This API must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3065,6 +3321,8 @@ void OH_Drawing_SetTypographyTextEllipsis(OH_Drawing_TypographyStyle* style, con
 
 Sets the ellipsis text for a typography style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3083,6 +3341,8 @@ void OH_Drawing_SetTypographyTextLocale(OH_Drawing_TypographyStyle* style, const
 **Description**
 
 Sets the locale for a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3103,6 +3363,8 @@ void OH_Drawing_SetTypographyTextSplitRatio(OH_Drawing_TypographyStyle* style, f
 
 Sets the text division ratio, which is used to determine the cursor position within a glyph when tapping to locate a character.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3121,6 +3383,8 @@ OH_Drawing_TextStyle* OH_Drawing_TypographyGetTextStyle(OH_Drawing_TypographySty
 **Description**
 
 Obtains the default text style of a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3145,6 +3409,8 @@ int OH_Drawing_TypographyGetEffectiveAlignment(OH_Drawing_TypographyStyle* style
 **Description**
 
 Obtains the text alignment mode.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3174,6 +3440,8 @@ bool OH_Drawing_TypographyIsLineUnlimited(OH_Drawing_TypographyStyle* style)
 
 Checks whether the maximum number of lines is limited for text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3197,6 +3465,8 @@ bool OH_Drawing_TypographyIsEllipsized(OH_Drawing_TypographyStyle* style)
 **Description**
 
 Checks whether an ellipsis is configured for a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3222,6 +3492,8 @@ void OH_Drawing_SetTypographyTextStyle(OH_Drawing_TypographyStyle* handler, OH_D
 
 Sets a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3240,6 +3512,8 @@ bool OH_Drawing_TextStyleGetFontMetrics(OH_Drawing_Typography* typography, OH_Dr
 **Description**
 
 Obtains the font metrics of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3266,6 +3540,8 @@ bool OH_Drawing_TypographyGetLineInfo(OH_Drawing_Typography* typography, int lin
 **Description**
 
 Obtains the metrics of a given line or the metrics of the first character in a given line in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3295,6 +3571,8 @@ void OH_Drawing_SetTypographyTextFontWeight(OH_Drawing_TypographyStyle* style, i
 
 Sets the default font weight of the typography style. Before <!--RP1-->OpenHarmony 6.1<!--RP1End-->, only variable fonts in system fonts support font weight adjustment. Starting from <!--RP1-->OpenHarmony 6.1<!--RP1End-->, both system fonts and variable fonts in third-party registered fonts support font weight adjustment. For non- variable fonts, the font weight does not change when the weight value is set to less than semi-bold, and a pseudo- bold effect may be triggered when the weight value is set to semi-bold or greater.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3313,6 +3591,8 @@ void OH_Drawing_SetTypographyTextFontStyle(OH_Drawing_TypographyStyle* style, in
 **Description**
 
 Sets the default font style for a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3333,6 +3613,8 @@ void OH_Drawing_SetTypographyTextFontFamily(OH_Drawing_TypographyStyle* style, c
 
 Sets the font family name for text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3351,6 +3633,8 @@ void OH_Drawing_SetTypographyTextFontSize(OH_Drawing_TypographyStyle* style, dou
 **Description**
 
 Sets the font size for text.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3371,6 +3655,8 @@ void OH_Drawing_SetTypographyTextFontHeight(OH_Drawing_TypographyStyle* style, d
 
 Sets the font height for text typography as a multiple of the current font size.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3389,6 +3675,8 @@ void OH_Drawing_SetTypographyTextHalfLeading(OH_Drawing_TypographyStyle* style, 
 **Description**
 
 Sets whether to enable half leading for text.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3409,6 +3697,8 @@ void OH_Drawing_SetTypographyTextUseLineStyle(OH_Drawing_TypographyStyle* style,
 
 Sets whether to enable the text line style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3427,6 +3717,8 @@ void OH_Drawing_SetTypographyTextLineStyleFontWeight(OH_Drawing_TypographyStyle*
 **Description**
 
 Sets the font weight of the text style in the strut style of the typography style. Before <!--RP1--> OpenHarmony 6.1<!--RP1End-->, only variable fonts in system fonts support font weight adjustment. Starting from <!-- RP1-->OpenHarmony 6.1<!--RP1End-->, both system fonts and variable fonts in third-party registered fonts support font weight adjustment. For non-variable fonts, the font weight does not change when the weight value is set to less than semi-bold, and a pseudo-bold effect may be triggered when the weight value is set to semi-bold or greater.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3447,6 +3739,8 @@ void OH_Drawing_SetTypographyTextLineStyleFontStyle(OH_Drawing_TypographyStyle* 
 
 Sets the font style of the strut style in a typography style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3465,6 +3759,8 @@ void OH_Drawing_SetTypographyTextLineStyleFontFamilies(OH_Drawing_TypographyStyl
 **Description**
 
 Sets the font family of the line style for text typography.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3486,6 +3782,8 @@ void OH_Drawing_SetTypographyTextLineStyleFontSize(OH_Drawing_TypographyStyle* s
 
 Sets the font size for a text line style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3504,6 +3802,8 @@ void OH_Drawing_SetTypographyTextLineStyleFontHeight(OH_Drawing_TypographyStyle*
 **Description**
 
 Sets the font height of the line style for text typography as a multiple of the current font size.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3524,6 +3824,8 @@ void OH_Drawing_SetTypographyTextLineStyleHalfLeading(OH_Drawing_TypographyStyle
 
 Sets whether to enable half leading for a text line style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3542,6 +3844,8 @@ void OH_Drawing_SetTypographyTextLineStyleSpacingScale(OH_Drawing_TypographyStyl
 **Description**
 
 Sets the spacing scale factor for a text line style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3562,6 +3866,8 @@ void OH_Drawing_SetTypographyTextLineStyleOnly(OH_Drawing_TypographyStyle* style
 
 Sets whether to enable the text line style only.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3581,6 +3887,8 @@ OH_Drawing_TextShadow* OH_Drawing_CreateTextShadow(void)
 
 Creates a pointer to a text shadow object. When the [OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md) is no longer needed, use [OH_Drawing_DestroyTextShadow](capi-drawing-text-typography-h.md#oh_drawing_destroytextshadow) to release the pointer to the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Returns**:
@@ -3599,6 +3907,8 @@ void OH_Drawing_DestroyTextShadow(OH_Drawing_TextShadow* shadow)
 
 Releases the memory occupied by the text shadow object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3616,6 +3926,8 @@ OH_Drawing_TextShadow* OH_Drawing_TextStyleGetShadows(OH_Drawing_TextStyle* styl
 **Description**
 
 Obtains the text shadow container. When the [OH_Drawing_TextShadow](capi-drawing-oh-drawing-textshadow.md) is no longer needed, use [OH_Drawing_DestroyTextShadows](capi-drawing-text-typography-h.md#oh_drawing_destroytextshadows) to release the pointer to the object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3641,6 +3953,8 @@ int OH_Drawing_TextStyleGetShadowCount(OH_Drawing_TextStyle* style)
 
 Obtains the size of the text shadow container.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3665,6 +3979,8 @@ void OH_Drawing_TextStyleAddShadow(OH_Drawing_TextStyle* style, const OH_Drawing
 
 Adds a text shadow element to the text shadow container.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3684,6 +4000,8 @@ void OH_Drawing_TextStyleClearShadows(OH_Drawing_TextStyle* style)
 
 Clears all elements in the text shadow container.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3701,6 +4019,8 @@ OH_Drawing_TextShadow* OH_Drawing_TextStyleGetShadowWithIndex(OH_Drawing_TextSty
 **Description**
 
 Obtains the element at the specified index in the text shadow container.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3727,6 +4047,8 @@ void OH_Drawing_TypographySetIndents(OH_Drawing_Typography* typography, int inde
 
 Sets indents for typography. If this function is not called, texts will have no indentation applied.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3746,6 +4068,8 @@ float OH_Drawing_TypographyGetIndentsWithIndex(OH_Drawing_Typography* typography
 **Description**
 
 Obtains indents with a given index in a typography object. The line index starts from 0.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3772,6 +4096,8 @@ void OH_Drawing_DestroyTextShadows(OH_Drawing_TextShadow* shadow)
 
 Releases the memory occupied by the vector composed of **OH_Drawing_TextShadow** objects.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3789,6 +4115,8 @@ void OH_Drawing_TypographyTextSetHeightBehavior(OH_Drawing_TypographyStyle* styl
 **Description**
 
 Sets a text height modifier pattern.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3808,6 +4136,8 @@ OH_Drawing_TextHeightBehavior OH_Drawing_TypographyTextGetHeightBehavior(OH_Draw
 **Description**
 
 Obtains the text height modifier pattern.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3833,6 +4163,8 @@ void OH_Drawing_TextStyleSetBackgroundRect(OH_Drawing_TextStyle* style, const OH
 
 Sets a background rectangle and style ID for a text style. The style ID is valid only when the background box is a rounded rectangle.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3853,6 +4185,8 @@ void OH_Drawing_TypographyHandlerAddSymbol(OH_Drawing_TypographyCreate* handler,
 
 Adds the symbol to use in the typography creation process.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3871,6 +4205,8 @@ void OH_Drawing_TextStyleAddFontFeature(OH_Drawing_TextStyle* style, const char*
 **Description**
 
 Adds a font feature for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3892,6 +4228,8 @@ void OH_Drawing_TextStyleAddFontVariation(OH_Drawing_TextStyle* style, const cha
 
 Adds a font variation. This function takes effect only when the corresponding font file (.ttf file) supports variable adjustment. Otherwise, calling this function does not take effect.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3912,6 +4250,8 @@ void OH_Drawing_TextStyleAddFontVariationWithNormalization(OH_Drawing_TextStyle*
 
 Adds the normalized variable font attributes. This function takes effect only when the corresponding font file (.ttf file) supports variable adjustment.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -3931,6 +4271,8 @@ OH_Drawing_FontFeature* OH_Drawing_TextStyleGetFontFeatures(OH_Drawing_TextStyle
 **Description**
 
 Obtains all the contents in a font feature map container of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3956,6 +4298,8 @@ void OH_Drawing_TextStyleDestroyFontFeatures(OH_Drawing_FontFeature* fontFeature
 
 Reclaims the memory occupied by the struct array that holds all the font features.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -3974,6 +4318,8 @@ size_t OH_Drawing_TextStyleGetFontFeatureSize(OH_Drawing_TextStyle* style)
 **Description**
 
 Obtains the size of a font feature map container in a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -3999,6 +4345,8 @@ void OH_Drawing_TextStyleClearFontFeature(OH_Drawing_TextStyle* style)
 
 Clears all the contents in a font feature map container of a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4016,6 +4364,8 @@ void OH_Drawing_TextStyleSetBaselineShift(OH_Drawing_TextStyle* style, double li
 **Description**
 
 Sets a baseline drift for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4035,6 +4385,8 @@ double OH_Drawing_TextStyleGetBaselineShift(OH_Drawing_TextStyle* style)
 **Description**
 
 Obtains the baseline drift of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4060,6 +4412,8 @@ uint32_t OH_Drawing_TextStyleGetColor(OH_Drawing_TextStyle* style)
 
 Obtains the color of a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4083,6 +4437,8 @@ OH_Drawing_TextDecorationStyle OH_Drawing_TextStyleGetDecorationStyle(OH_Drawing
 **Description**
 
 Obtains the decoration style of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4108,6 +4464,8 @@ OH_Drawing_FontWeight OH_Drawing_TextStyleGetFontWeight(OH_Drawing_TextStyle* st
 
 Obtains the font weight of a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4131,6 +4489,8 @@ OH_Drawing_FontStyle OH_Drawing_TextStyleGetFontStyle(OH_Drawing_TextStyle* styl
 **Description**
 
 Obtains the font style of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4156,6 +4516,8 @@ OH_Drawing_TextBaseline OH_Drawing_TextStyleGetBaseline(OH_Drawing_TextStyle* st
 
 Obtains the baseline of a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4179,6 +4541,8 @@ char** OH_Drawing_TextStyleGetFontFamilies(OH_Drawing_TextStyle* style, size_t* 
 **Description**
 
 Obtains the font family name list.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4205,6 +4569,8 @@ void OH_Drawing_TextStyleDestroyFontFamilies(char** fontFamilies, size_t num)
 
 Reclaims the memory occupied by the font families, where **num** specifies the number of font families.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4223,6 +4589,8 @@ double OH_Drawing_TextStyleGetFontSize(OH_Drawing_TextStyle* style)
 **Description**
 
 Obtains the font size of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4248,6 +4616,8 @@ double OH_Drawing_TextStyleGetLetterSpacing(OH_Drawing_TextStyle* style)
 
 Obtains the letter spacing of a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4271,6 +4641,8 @@ double OH_Drawing_TextStyleGetWordSpacing(OH_Drawing_TextStyle* style)
 **Description**
 
 Obtains the word spacing of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4296,6 +4668,8 @@ double OH_Drawing_TextStyleGetFontHeight(OH_Drawing_TextStyle* style)
 
 Obtains the font height of a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4319,6 +4693,8 @@ bool OH_Drawing_TextStyleGetHalfLeading(OH_Drawing_TextStyle* style)
 **Description**
 
 Checks whether half leading is enabled for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4344,6 +4720,8 @@ void OH_Drawing_SetTypographyVerticalAlignment(OH_Drawing_TypographyStyle* style
 
 Vertical alignment mode of the text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -4362,6 +4740,8 @@ const char* OH_Drawing_TextStyleGetLocale(OH_Drawing_TextStyle* style)
 **Description**
 
 Obtains the locale of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4387,6 +4767,8 @@ void OH_Drawing_SetTextStyleBadgeType(OH_Drawing_TextStyle* style, OH_Drawing_Te
 
 Sets whether to enable superscript or subscript for text typography. If this API is not called, superscript and subscript are disabled by default.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -4406,6 +4788,8 @@ void OH_Drawing_SetTextStyleFontStyleStruct(OH_Drawing_TextStyle* drawingTextSty
 
 Sets the font style, including the font weight, width, and slant, for a text style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4424,6 +4808,8 @@ OH_Drawing_FontStyleStruct OH_Drawing_TextStyleGetFontStyleStruct(OH_Drawing_Tex
 **Description**
 
 Obtains the font style, including the font weight, width, and slant, of a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4449,6 +4835,8 @@ void OH_Drawing_SetTypographyStyleFontStyleStruct(OH_Drawing_TypographyStyle* dr
 
 Sets the font style, including the font weight, width, and slant, for the default text style of a typography style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4467,6 +4855,8 @@ OH_Drawing_FontStyleStruct OH_Drawing_TypographyStyleGetFontStyleStruct(OH_Drawi
 **Description**
 
 Obtains the font style, including the font weight, width, and slant, of the default text style of a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4491,6 +4881,8 @@ bool OH_Drawing_TextStyleIsEqual(const OH_Drawing_TextStyle* style, const OH_Dra
 **Description**
 
 Checks whether two text styles are equal. The word width property is not involved in the comparison.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4517,6 +4909,8 @@ bool OH_Drawing_TextStyleIsEqualByFont(const OH_Drawing_TextStyle* style, const 
 
 Checks whether the font style properties of two text styles are equal.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4541,6 +4935,8 @@ bool OH_Drawing_TextStyleIsAttributeMatched(const OH_Drawing_TextStyle* style, c
 **Description**
 
 Checks whether two text styles have the same font style type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4568,6 +4964,8 @@ void OH_Drawing_TextStyleSetPlaceholder(OH_Drawing_TextStyle* style)
 
 Adds a placeholder.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4585,6 +4983,8 @@ bool OH_Drawing_TextStyleIsPlaceholder(OH_Drawing_TextStyle* style)
 **Description**
 
 Checks whether a placeholder is set for a text style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4610,6 +5010,8 @@ OH_Drawing_TextAlign OH_Drawing_TypographyStyleGetEffectiveAlignment(OH_Drawing_
 
 Obtains the text alignment mode.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4633,6 +5035,8 @@ bool OH_Drawing_TypographyStyleIsHintEnabled(OH_Drawing_TypographyStyle* style)
 **Description**
 
 Checks whether font hinting is enabled for a typography style. Font hinting is used to improve the readability and appearance of small-sized text when rendering it.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4658,6 +5062,8 @@ OH_Drawing_FontConfigInfo* OH_Drawing_GetSystemFontConfigInfo(OH_Drawing_FontCon
 
 Obtains the system font configuration.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4682,6 +5088,8 @@ void OH_Drawing_DestroySystemFontConfigInfo(OH_Drawing_FontConfigInfo* drawFontC
 
 Reclaims the memory occupied by the system font configuration.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4699,6 +5107,8 @@ void OH_Drawing_SetTypographyStyleTextStrutStyle(OH_Drawing_TypographyStyle* sty
 **Description**
 
 Sets the strut style for a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4719,6 +5129,8 @@ void OH_Drawing_TypographyStyleDestroyStrutStyle(OH_Drawing_StrutStyle* strutsty
 
 Reclaims the memory occupied by a strut style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4736,6 +5148,8 @@ OH_Drawing_StrutStyle* OH_Drawing_TypographyStyleGetStrutStyle(OH_Drawing_Typogr
 **Description**
 
 Obtains the strut style of a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4761,6 +5175,8 @@ bool OH_Drawing_TypographyStyleStrutStyleEquals(OH_Drawing_StrutStyle* from, OH_
 
 Checks whether two strut styles are equal.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4780,6 +5196,8 @@ void OH_Drawing_TypographyStyleSetHintsEnabled(OH_Drawing_TypographyStyle* style
 
 Sets whether to enable font hinting for a typography style. Font hinting is used to improve the readability and appearance of small-sized text when rendering it.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4798,6 +5216,8 @@ OH_Drawing_Font_Metrics* OH_Drawing_TypographyGetLineFontMetrics(OH_Drawing_Typo
 **Description**
 
 Obtains all font metrics from a given line in a typography object. This function must be called after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called. Otherwise, a null pointer is returned. Release this pointer by calling [OH_Drawing_TypographyDestroyLineFontMetrics](capi-drawing-text-typography-h.md#oh_drawing_typographydestroylinefontmetrics) when this object is no longer needed.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4825,6 +5245,8 @@ void OH_Drawing_TypographyDestroyLineFontMetrics(OH_Drawing_Font_Metrics* lineFo
 
 Reclaims the memory occupied by the struct array that holds all the font metrics of a given line.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4843,6 +5265,8 @@ void OH_Drawing_TypographyMarkDirty(OH_Drawing_Typography* typography)
 
 Marks a typography object as dirty data. This function is used to initialize the typography state.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4860,6 +5284,8 @@ int32_t OH_Drawing_TypographyGetUnresolvedGlyphsCount(OH_Drawing_Typography* typ
 **Description**
 
 Obtains the number of unresolved glyphs in a typography object. This function can be called only after [OH_Drawing_TypographyLayout](capi-drawing-text-typography-h.md#oh_drawing_typographylayout) is called and applied.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -4885,6 +5311,8 @@ void OH_Drawing_TypographyUpdateFontSize(OH_Drawing_Typography* typography, size
 
 Updates the font size in a typography object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -4906,6 +5334,8 @@ void OH_Drawing_TypographyUpdateFontColor(OH_Drawing_Typography* typography, uin
 
 Updates the font color in a typography object. This API call also updates the decoration color if it hasn't been set yet. The updated font color takes effect after you call [OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint) to draw the text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -4924,6 +5354,8 @@ void OH_Drawing_TypographyUpdateDecoration(OH_Drawing_Typography* typography, OH
 **Description**
 
 Updates the decoration type of a typography object. The updated decoration type takes effect after you call [OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint) to draw the text.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -4944,6 +5376,8 @@ void OH_Drawing_TypographyUpdateDecorationThicknessScale(OH_Drawing_Typography* 
 
 Updates the decoration thickness scale of a typography object. The updated decoration thickness scale takes effect after you call [OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint) to draw the text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -4962,6 +5396,8 @@ void OH_Drawing_TypographyUpdateDecorationStyle(OH_Drawing_Typography* typograph
 **Description**
 
 Updates the decoration style of a typography object. The updated decoration style takes effect after you call [OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint) to draw the text.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -4982,6 +5418,8 @@ void OH_Drawing_TypographyUpdateDecorationColor(OH_Drawing_Typography* typograph
 
 Updates the decoration color of a typography object. <br> The updated decoration color takes effect after you call [OH_Drawing_TypographyPaint](capi-drawing-text-typography-h.md#oh_drawing_typographypaint) to draw the text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -5000,6 +5438,8 @@ bool OH_Drawing_TypographyTextGetLineStyle(OH_Drawing_TypographyStyle* style)
 **Description**
 
 Checks whether the text line style is enabled for a typography style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5025,6 +5465,8 @@ OH_Drawing_FontWeight OH_Drawing_TypographyTextlineStyleGetFontWeight(OH_Drawing
 
 Obtains the font weight of a text line style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5049,6 +5491,8 @@ OH_Drawing_FontStyle OH_Drawing_TypographyTextlineStyleGetFontStyle(OH_Drawing_T
 
 Obtains the font style of the strut style in a typography style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5072,6 +5516,8 @@ char** OH_Drawing_TypographyTextlineStyleGetFontFamilies(OH_Drawing_TypographySt
 **Description**
 
 Obtains the font families of a text line style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5098,6 +5544,8 @@ void OH_Drawing_TypographyTextlineStyleDestroyFontFamilies(char** fontFamilies, 
 
 Releases the memory occupied by the font family name list.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5116,6 +5564,8 @@ double OH_Drawing_TypographyTextlineStyleGetFontSize(OH_Drawing_TypographyStyle*
 **Description**
 
 Obtains the font size of a text line style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5141,6 +5591,8 @@ double OH_Drawing_TypographyTextlineStyleGetHeightScale(OH_Drawing_TypographySty
 
 Obtains the height scale factor of a text line style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5164,6 +5616,8 @@ bool OH_Drawing_TypographyTextlineStyleGetHeightOnly(OH_Drawing_TypographyStyle*
 **Description**
 
 Checks whether only the font height is used for a text line style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5189,6 +5643,8 @@ bool OH_Drawing_TypographyTextlineStyleGetHalfLeading(OH_Drawing_TypographyStyle
 
 Checks whether half leading is enabled for a text line style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5212,6 +5668,8 @@ double OH_Drawing_TypographyTextlineStyleGetSpacingScale(OH_Drawing_TypographySt
 **Description**
 
 Obtains the spacing scale factor of a text line style.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5237,6 +5695,8 @@ bool OH_Drawing_TypographyTextlineGetStyleOnly(OH_Drawing_TypographyStyle* style
 
 Checks whether only the text line style is enabled for a typography style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5260,6 +5720,8 @@ OH_Drawing_TextAlign OH_Drawing_TypographyGetTextAlign(OH_Drawing_TypographyStyl
 **Description**
 
 Obtains the text alignment mode.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5285,6 +5747,8 @@ OH_Drawing_TextDirection OH_Drawing_TypographyGetTextDirection(OH_Drawing_Typogr
 
 Obtains the text direction of a typography style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5308,6 +5772,8 @@ size_t OH_Drawing_TypographyGetTextMaxLines(OH_Drawing_TypographyStyle* style)
 **Description**
 
 Obtains the maximum number of lines.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5333,6 +5799,8 @@ char* OH_Drawing_TypographyGetTextEllipsis(OH_Drawing_TypographyStyle* style)
 
 Obtains the text ellipsis content of a typography style.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5357,6 +5825,8 @@ void OH_Drawing_TypographyDestroyEllipsis(char* ellipsis)
 
 Releases the memory occupied by the ellipsis text.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5374,6 +5844,8 @@ bool OH_Drawing_TypographyStyleEquals(OH_Drawing_TypographyStyle* from, OH_Drawi
 **Description**
 
 Checks whether two typography styles are the same. The text height modifier mode [OH_Drawing_TextHeightBehavior](capi-drawing-text-typography-h.md#oh_drawing_textheightbehavior) is not involved in the comparison.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5400,6 +5872,8 @@ void OH_Drawing_TypographyDestroyTextBox(OH_Drawing_TextBox* textBox)
 
 Releases the memory occupied by a text box.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -5417,6 +5891,8 @@ void OH_Drawing_SetTextShadow(OH_Drawing_TextShadow* shadow, uint32_t color, OH_
 **Description**
 
 Sets the parameters of the text shadow object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -5438,6 +5914,8 @@ OH_Drawing_TextTab* OH_Drawing_CreateTextTab(OH_Drawing_TextAlign alignment, flo
 **Description**
 
 Creates a text tab object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -5464,6 +5942,8 @@ void OH_Drawing_DestroyTextTab(OH_Drawing_TextTab* tab)
 
 Releases the memory occupied by a text tab object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
@@ -5481,6 +5961,8 @@ OH_Drawing_TextAlign OH_Drawing_GetTextTabAlignment(OH_Drawing_TextTab* tab)
 **Description**
 
 Obtains the alignment mode of a text tab.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -5506,6 +5988,8 @@ float OH_Drawing_GetTextTabLocation(OH_Drawing_TextTab* tab)
 
 Obtains the location of a text tab.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
@@ -5530,6 +6014,8 @@ void OH_Drawing_SetTypographyTextTab(OH_Drawing_TypographyStyle* style, OH_Drawi
 
 Sets the alignment mode and location of a text tab. When the text alignment mode or ellipsis style is set, the tab does not take effect. When the tab location is less than 1.0, the tab is replaced with a space.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
@@ -5548,6 +6034,8 @@ size_t OH_Drawing_GetDrawingArraySize(OH_Drawing_Array* drawingArray)
 **Description**
 
 Obtains the number of objects in the input object array [OH_Drawing_Array](capi-drawing-oh-drawing-array.md).
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 14
 
@@ -5573,6 +6061,8 @@ void OH_Drawing_SetTypographyTextTrailingSpaceOptimized(OH_Drawing_TypographySty
 
 Sets whether to include the trailing spaces in alignment calculations during text typography.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -5591,6 +6081,8 @@ void OH_Drawing_TypographyHandlerAddEncodedText(OH_Drawing_TypographyCreate* han
 **Description**
 
 Adds text encoded in a specified format.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -5613,6 +6105,8 @@ void OH_Drawing_SetTypographyTextAutoSpace(OH_Drawing_TypographyStyle* style, bo
 
 Sets whether to enable auto spacing for text typography. <br>Auto spacing is disabled by default. Once enabled, the spacing between CJK (Chinese, Japanese, and Korean characters) and Western characters (Latin, Cyrillic, and Greek letters), CJK and digits, CJK and copyright symbols, copyright symbols and digits, and copyright symbols and Western characters is automatically adjusted.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -5631,6 +6125,8 @@ OH_Drawing_TypographyStyle* OH_Drawing_CopyTypographyStyle(OH_Drawing_Typography
 **Description**
 
 Creates a copy of an existing paragraph style object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -5656,6 +6152,8 @@ OH_Drawing_TextStyle* OH_Drawing_CopyTextStyle(OH_Drawing_TextStyle* style)
 
 Creates a copy of an existing text style object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -5679,6 +6177,8 @@ OH_Drawing_TextShadow* OH_Drawing_CopyTextShadow(OH_Drawing_TextShadow* shadow)
 **Description**
 
 Creates a copy of an existing text shadow object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -5704,6 +6204,8 @@ void OH_Drawing_DestroyPositionAndAffinity(OH_Drawing_PositionAndAffinity* posit
 
 Destroys an [OH_Drawing_PositionAndAffinity](capi-drawing-oh-drawing-positionandaffinity.md) object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
@@ -5721,6 +6223,8 @@ OH_Drawing_Range* OH_Drawing_TypographyGetCharacterRangeForGlyphRangeWithBuffer(
 **Description**
 
 Obtains the character range corresponding to the specified glyph range.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
@@ -5750,6 +6254,8 @@ OH_Drawing_PositionAndAffinity* OH_Drawing_TypographyGetCharacterPositionAtCoord
 
 Obtains the character position information closest to the specified coordinates.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -5776,6 +6282,8 @@ OH_Drawing_Range* OH_Drawing_TypographyGetGlyphRangeForCharacterRangeWithBuffer(
 **Description**
 
 Obtains the glyph range corresponding to the specified character range.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
@@ -5804,6 +6312,8 @@ void OH_Drawing_ReleaseRangeBuffer(OH_Drawing_Range* range)
 **Description**
 
 Releases the memory occupied by the [OH_Drawing_Range](capi-drawing-oh-drawing-range.md) object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 

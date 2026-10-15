@@ -6,6 +6,8 @@ Defines the common types for the native module.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -17,143 +19,143 @@ Defines the common types for the native module.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_ColorStop](capi-arkui-nativemodule-arkui-colorstop.md) | ArkUI_ColorStop | Defines the gradient color stop structure. |
-| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | - | Defines the custom dialog box controller of ArkUI on the native side. |
-| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) | ArkUI_NativeDialogHandle | Defines the pointer to the custom dialog box controller of ArkUI on the native side. |
-| [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | Defines information about gesture collection interception. |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | Defines the accessibility state for the component. |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | ArkUI_AccessibilityValue | Defines the accessibility value for the component. |
-| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | Defines custom property information. |
+| [ArkUI_NativeDialog](capi-arkui-nativemodule-arkui-nativedialog.md) | - | Defines a custom dialog controller object for ArkUI on the native side, which is used to create and manage custom dialog boxes at the native layer, supporting features such as display, dismissal, and attribute configuration of dialog boxes. It is applicable to scenarios where the lifecycle of ArkUI dialog boxes needs to be controlled through C/C++ code. For specific control APIs, see [ArkUI_NativeDialogAPI_1](capi-arkui-nativemodule-arkui-nativedialogapi-1.md), [ArkUI_NativeDialogAPI_2](capi-arkui-nativemodule-arkui-nativedialogapi-2.md), and [ArkUI_NativeDialogAPI_3](capi-arkui-nativemodule-arkui-nativedialogapi-3.md). |
+| [ArkUI_NativeDialogHandle](capi-arkui-nativemodule-arkui-nativedialoghandle.md) | ArkUI_NativeDialogHandle | Defines the pointer to the custom dialog box controller object of ArkUI on the native side, which is used to identify and operate a custom dialog box instance. |
+| [ArkUI_GestureCollectInterceptInfo](capi-arkui-nativemodule-arkui-gesturecollectinterceptinfo.md) | ArkUI_GestureCollectInterceptInfo | Defines gesture collection interception information. During gesture collection in the touch test, this struct is used to provide the gesture and touch recognizers in the response chain to the interception callback, and carries the gesture collection intervention result set by the callback. For details about the related APIs for gesture collection interception, see [native_gesture.h](capi-native-gesture-h.md). |
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md) | ArkUI_AccessibilityState | Defines a component accessibility state, describing the selected, checked, disabled, and other states of the component. It is applicable to scenarios where the accessibility service reads data and interacts with the component, helping users obtain the current state of the component. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | ArkUI_AccessibilityValue | Defines a component accessibility value, describing the accessibility state of the component, such as the minimum, maximum, and current values of a range-type component, as well as text descriptions. It is applicable to scenarios where the current state information of a component needs to be provided to the accessibility service. |
+| [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) | ArkUI_CustomProperty | Defines custom property information, which is used to represent the custom property of a component. You can use related APIs to add, remove, and obtain custom properties for ArkUI components, and obtain the string values of custom properties. |
 | [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) | ArkUI_HostWindowInfo | Defines host window information. |
-| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines active child node information. |
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines a cross-language configuration option. |
-| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | Defines the selected drag preview style configuration. |
-| [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | Defines parameter used by the system font style callback event. |
-| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md) | ArkUI_SelectionOptions | Defines the options for selection operation. |
-| [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md) | ArkUI_ContentTransitionEffect | Set the types and parameters related to content transition effects. |
-| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | OH_ArkUI_LinearGradientOptions | Defines linear gradient options. |
-| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | OH_ArkUI_RadialGradientOptions | Defines radial gradient options. |
+| [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) | ArkUI_ActiveChildrenInfo | Defines active child node information of the current node. You can query the number of active child nodes, obtain child nodes by subscript, and release resources after use. |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | ArkUI_CrossLanguageOption | Defines a cross-language configuration option, which is used to configure the cross-language access capability of a target node, for example, whether cross-language attribute modification is allowed. Since API version 26.0.0, you can also configure cross-language operation status of a node tree. |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md) | ArkUI_SelectedDragPreviewStyle | Defines the text drag preview style in the selected state. It is applicable to scenarios where the preview effect in selected state needs to be displayed during text dragging, improving user interaction experience. |
+| [ArkUI_SystemFontStyleEvent](capi-arkui-nativemodule-arkui-systemfontstyleevent.md) | ArkUI_SystemFontStyleEvent | Defines a system font style change event, which is used to pass the event information to the registered system font style change callback when the system font size or weight changes. |
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md) | ArkUI_SelectionOptions | Defines the options for the selection operation in ArkUI. It is applicable to scenarios where selection interaction is required within an application, providing you with the capability to customize selection behavior. |
+| [ArkUI_ContentTransitionEffect](capi-arkui-nativemodule-arkui-contenttransitioneffect.md) | ArkUI_ContentTransitionEffect | Defines the content transition effect. |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | OH_ArkUI_LinearGradientOptions | Defines linear gradient options, which are used to describe the linear color gradient configuration of UI components. You can set the gradient direction, angle, and color to implement flexible linear gradient effects, improving the visual presentation capability of the UI. This is applicable to scenarios where a linear gradient style needs to be applied to components. |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | OH_ArkUI_RadialGradientOptions | Defines radial gradient options, which are applicable to scenarios where a radial gradient effect needs to be implemented in UI components. This helps you enrich the visual hierarchy of the UI. |
 
 ### Enum
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [ArkUI_CopyOptions](#arkui_copyoptions) | ArkUI_CopyOptions | Enumerates the text copy and paste modes. |
-| [ArkUI_FocusWrapMode](#arkui_focuswrapmode) | ArkUI_FocusWrapMode | Enumerates the focus wrap mode of components. |
-| [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy) | ArkUI_ItemFillPolicy | Specifies the number of columns for different responsive breakpoint specifications. |
-| [ArkUI_CrownSensitivity](#arkui_crownsensitivity) | ArkUI_CrownSensitivity | Enumerates the digital crown sensitivity. |
+| [ArkUI_FocusWrapMode](#arkui_focuswrapmode) | ArkUI_FocusWrapMode | Enumerates the focus wrap mode of components. The default value is **ARKUI_FOCUS_WRAP_MODE_DEFAULT** for the **Grid** and **List** components. |
+| [ArkUI_ItemFillPolicy](#arkui_itemfillpolicy) | ArkUI_ItemFillPolicy | Enumerates column count policies for different responsive breakpoints. |
+| [ArkUI_CrownSensitivity](#arkui_crownsensitivity) | ArkUI_CrownSensitivity | Enumerates crown sensitivity levels. |
 | [ArkUI_BorderStyle](#arkui_borderstyle) | ArkUI_BorderStyle | Enumerates the border styles. |
 | [ArkUI_AccessibilityMode](#arkui_accessibilitymode) | ArkUI_AccessibilityMode | Enumerates the accessibility modes. |
 | [ArkUI_AdaptiveColor](#arkui_adaptivecolor) | ArkUI_AdaptiveColor | Enumerates the adaptive color modes. |
 | [ArkUI_ColorMode](#arkui_colormode) | ArkUI_ColorMode | Enumerates the color modes. |
 | [ArkUI_SystemColorMode](#arkui_systemcolormode) | ArkUI_SystemColorMode | Enumerates the system color modes. |
 | [ArkUI_LengthMetricUnit](#arkui_lengthmetricunit) | ArkUI_LengthMetricUnit | Enumerates the component units. |
-| [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | Defines the state type for the accessibility checkbox. |
-| [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype) | ArkUI_AccessibilityActionType | Define accessible action types. |
-| [ArkUI_SafeAreaType](#arkui_safeareatype) | ArkUI_SafeAreaType | defines the enumerated value of the extended security zone. |
-| [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode) | ArkUI_KeyboardAvoidMode | defines the enumerated value of the customDialog's keyboard avoid mode. |
-| [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype) | ArkUI_HoverModeAreaType | defines the enumerated value of area in hover mode. |
+| [ArkUI_AccessibilityCheckedState](#arkui_accessibilitycheckedstate) | ArkUI_AccessibilityCheckedState | Enumerates the accessibility check box states. |
+| [ArkUI_AccessibilityActionType](#arkui_accessibilityactiontype) | ArkUI_AccessibilityActionType | Enumerates the accessibility action types. |
+| [ArkUI_SafeAreaType](#arkui_safeareatype) | ArkUI_SafeAreaType | Enumerates the types of expanded safe areas. |
+| [ArkUI_KeyboardAvoidMode](#arkui_keyboardavoidmode) | ArkUI_KeyboardAvoidMode | Enumerates the soft keyboard avoidance modes. |
+| [ArkUI_HoverModeAreaType](#arkui_hovermodeareatype) | ArkUI_HoverModeAreaType | Enumerates the types of display areas for the hover mode. |
 | [ArkUI_ExpandMode](#arkui_expandmode) | ArkUI_ExpandMode | Enumerates the expansion mode of child nodes. |
-| [ArkUI_EdgeDirection](#arkui_edgedirection) | ArkUI_EdgeDirection | Enumerates the edge direction. |
+| [ArkUI_EdgeDirection](#arkui_edgedirection) | ArkUI_EdgeDirection | Enumerates rectangle edge directions. |
 | [ArkUI_CornerDirection](#arkui_cornerdirection) | ArkUI_CornerDirection | Enumerates corner directions. |
-| [ArkUI_MenuPolicy](#arkui_menupolicy) | ArkUI_MenuPolicy | Menu pop-up strategy. |
-| [ArkUI_RenderStrategy](#arkui_renderstrategy) | ArkUI_RenderStrategy | Enumerates the graphics rendering strategy. |
-| [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | Enumerates the tree operating status for the cross-language option. |
-| [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | Enumeration of the policy for mounting child node to the target node. |
-| [OH_ArkUI_ArcDirection](#oh_arkui_arcdirection) | OH_ArkUI_ArcDirection | Enumerates the ArcDirection. |
+| [ArkUI_MenuPolicy](#arkui_menupolicy) | ArkUI_MenuPolicy | Enumerates menu display policies. |
+| [ArkUI_RenderStrategy](#arkui_renderstrategy) | ArkUI_RenderStrategy | Enumerates strategies for drawing rounded corners. |
+| [OH_ArkUI_CrossLanguageOperatingStatus](#oh_arkui_crosslanguageoperatingstatus) | OH_ArkUI_CrossLanguageOperatingStatus | Enumerates the node tree operation states of cross-language configuration options. |
+| [OH_ArkUI_NodeMountPolicy](#oh_arkui_nodemountpolicy) | OH_ArkUI_NodeMountPolicy | Enumerates the child node mounting policy types. |
+| [OH_ArkUI_ArcDirection](#oh_arkui_arcdirection) | OH_ArkUI_ArcDirection | Enumerates arc directions. |
 
 ### Function
 
 | Name | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()](#oh_arkui_layoutconstraint_create) | Creates a size constraint. |
-| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_copy) | Creates a deep copy of a size constraint. |
-| [void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_dispose) | Destroys the pointer to a size constraint. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxwidth) | Obtains the maximum width for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminwidth) | Obtains the minimum width for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxheight) | Obtains the maximum height for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminheight) | Obtains the minimum height for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferencewidth) | Obtains the width percentage reference for a size constraint, in px. |
-| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferenceheight) | Obtains the height percentage reference for a size constraint, in px. |
+| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()](#oh_arkui_layoutconstraint_create) | Creates layout constraints. After the created layout constraint pointer is used, call [OH_ArkUI_LayoutConstraint_Dispose](capi-native-type-h.md#oh_arkui_layoutconstraint_dispose) to release it. If the pointer is not released, memory leakage may occur. |
+| [ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_copy) | Performs a deep copy of a layout constraint. The new layout constraint pointer returned by the deep copy is independent of the original pointer. You need to call [OH_ArkUI_LayoutConstraint_Dispose](capi-native-type-h.md#oh_arkui_layoutconstraint_dispose) to release them separately after use. |
+| [void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_dispose) | Disposes of a layout constraint pointer. This API must be used together with [OH_ArkUI_LayoutConstraint_Create](capi-native-type-h.md#oh_arkui_layoutconstraint_create) or [OH_ArkUI_LayoutConstraint_Copy](capi-native-type-h.md#oh_arkui_layoutconstraint_copy). Each layout constraint pointer can be destroyed only once. After being destroyed, the pointer should not be used anymore. |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxwidth) | Obtains the maximum width using a layout constraint. |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminwidth) | Obtains the minimum width using a layout constraint. |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getmaxheight) | Obtains the maximum height using a layout constraint. |
+| [int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getminheight) | Obtains the minimum height using a layout constraint. |
+| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferencewidth) | Obtains the width percentage reference using a layout constraint. |
+| [int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutConstraint* Constraint)](#oh_arkui_layoutconstraint_getpercentreferenceheight) | Obtains the height percentage reference using a layout constraint. |
 | [void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxwidth) | Sets the maximum width. |
 | [void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminwidth) | Sets the minimum width. |
 | [void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setmaxheight) | Sets the maximum height. |
 | [void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setminheight) | Sets the minimum height. |
 | [void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferencewidth) | Sets the width percentage reference. |
 | [void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint* Constraint, int32_t value)](#oh_arkui_layoutconstraint_setpercentreferenceheight) | Sets the height percentage reference. |
-| [void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getcanvas) | Obtains the pointer to a canvas for drawing, which can be converted into the <b>OH_Drawing_Canvas</b> pointer in the <b>Drawing</b> module. |
+| [void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getcanvas) | Obtains the pointer to the canvas for drawing, which can be converted into the [OH_Drawing_Canvas](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-canvas.md) pointer of the graphics library for drawing. |
 | [ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)](#oh_arkui_drawcontext_getsize) | Obtains the size of a drawing area. |
-| [void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight fontWeight)](#oh_arkui_swiperdigitindicator_setfontweight) | Sets the font weight of total count in the digital indicator. |
-| [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontweight) | Gets the font weight of total count in the digital indicator. |
-| [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight selectedFontWeight)](#oh_arkui_swiperdigitindicator_setselectedfontweight) | Sets the font weight of selected index in the digital indicator. |
-| [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontweight) | Gets the font weight of selected index in the digital indicator. |
-| [ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create) | creates content switching animation effects. |
-| [ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)](#oh_arkui_accessibilitystate_create) | Create accessibility state. |
-| [void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_dispose) | Dispose accessibility state. |
-| [void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, int32_t isDisabled)](#oh_arkui_accessibilitystate_setdisabled) | Set accessibility state disabled. |
-| [int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_isdisabled) | Get accessibility state disabled. |
-| [void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, int32_t isSelected)](#oh_arkui_accessibilitystate_setselected) | Set accessibility state selected. |
-| [int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_isselected) | Get accessibility state selected. |
-| [void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state, int32_t checkedState)](#oh_arkui_accessibilitystate_setcheckedstate) | Set accessibility checked state. |
-| [int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_getcheckedstate) | Get accessibility checked state. |
-| [ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)](#oh_arkui_accessibilityvalue_create) | Create accessibility value. |
-| [void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_dispose) | Dispose accessibility value. |
-| [void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t min)](#oh_arkui_accessibilityvalue_setmin) | Set accessibility minimum value. |
-| [int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getmin) | Get accessibility minimum value. |
-| [void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t max)](#oh_arkui_accessibilityvalue_setmax) | Set accessibility minimum value. |
-| [int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getmax) | Get accessibility minimum value. |
-| [void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int32_t current)](#oh_arkui_accessibilityvalue_setcurrent) | Set accessibility current value. |
-| [int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getcurrent) | Get accessibility current value. |
-| [void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, int32_t rangeMin)](#oh_arkui_accessibilityvalue_setrangemin) | Set accessibility minimum value. |
-| [int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangemin) | Get accessibility minimum value. |
-| [void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, int32_t rangeMax)](#oh_arkui_accessibilityvalue_setrangemax) | Set accessibility maximum value. |
-| [int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangemax) | Get accessibility maximum value. |
-| [void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value, int32_t rangeCurrent)](#oh_arkui_accessibilityvalue_setrangecurrent) | Set accessibility current value. |
-| [int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangecurrent) | Get accessibility current value. |
-| [void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)](#oh_arkui_accessibilityvalue_settext) | Set accessibility text value. |
-| [const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_gettext) | Get accessibility text value. |
+| [void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight fontWeight)](#oh_arkui_swiperdigitindicator_setfontweight) | Sets the font weight of the digit-style navigation indicator for the **Swiper** component. |
+| [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getfontweight) | Obtains the font weight of the digit-style navigation indicator of the **Swiper** component. |
+| [void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndicator *indicator, ArkUI_FontWeight selectedFontWeight)](#oh_arkui_swiperdigitindicator_setselectedfontweight) | Sets the font weight of the selected digit-style navigation indicator for the **Swiper** component. |
+| [ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_SwiperDigitIndicator* indicator)](#oh_arkui_swiperdigitindicator_getselectedfontweight) | Obtains the font weight of the selected digit-style navigation indicator of the **Swiper** component. |
+| [ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t type)](#oh_arkui_contenttransitioneffect_create) | Creates a **ContentTransitionEffect** attribute object. |
+| [ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)](#oh_arkui_accessibilitystate_create) | Creates an accessibility state. |
+| [void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_dispose) | Disposes of the pointer to an accessibility state. |
+| [void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, int32_t isDisabled)](#oh_arkui_accessibilitystate_setdisabled) | Sets whether an accessibility state is disabled. |
+| [int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_isdisabled) | Obtains whether an accessibility state is disabled. |
+| [void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, int32_t isSelected)](#oh_arkui_accessibilitystate_setselected) | Sets whether an accessibility state is selected. |
+| [int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_isselected) | Obtains whether an accessibility state is selected. |
+| [void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state, int32_t checkedState)](#oh_arkui_accessibilitystate_setcheckedstate) | Sets the check box state of an accessibility state. |
+| [int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* state)](#oh_arkui_accessibilitystate_getcheckedstate) | Obtains the check box state of an accessibility state. |
+| [ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)](#oh_arkui_accessibilityvalue_create) | Creates an **AccessibilityValue** instance. |
+| [void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_dispose) | Disposes of the pointer to an **AccessibilityValue** instance. |
+| [void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t min)](#oh_arkui_accessibilityvalue_setmin) | Sets the minimum accessibility value. |
+| [int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getmin) | Obtains the minimum accessibility value. |
+| [void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t max)](#oh_arkui_accessibilityvalue_setmax) | Sets the maximum accessibility value. |
+| [int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getmax) | Obtains the maximum accessibility value. |
+| [void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int32_t current)](#oh_arkui_accessibilityvalue_setcurrent) | Sets the current accessibility value. |
+| [int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getcurrent) | Obtains the current accessibility value. |
+| [void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, int32_t rangeMin)](#oh_arkui_accessibilityvalue_setrangemin) | Sets the minimum value for accessibility information of the range-based component. |
+| [int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangemin) | Obtains the minimum value for accessibility information of the range-based component. |
+| [void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, int32_t rangeMax)](#oh_arkui_accessibilityvalue_setrangemax) | Sets the maximum value for accessibility information of the range-based component. |
+| [int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangemax) | Obtains the maximum value for accessibility information of the range-based component. |
+| [void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value, int32_t rangeCurrent)](#oh_arkui_accessibilityvalue_setrangecurrent) | Sets the current value for accessibility information of the range-based component. |
+| [int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_getrangecurrent) | Obtains the current value for accessibility information of the range-based component. |
+| [void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const char* text)](#oh_arkui_accessibilityvalue_settext) | Sets the text description of an **AccessibilityValue** instance. |
+| [const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)](#oh_arkui_accessibilityvalue_gettext) | Obtains the text description of an **AccessibilityValue** instance. |
 | [void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_destroy) | Destroys an [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) instance. |
 | [const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)](#oh_arkui_customproperty_getstringvalue) | Obtains the value of a custom property object. |
 | [const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_getname) | Obtains the window name in an [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object. |
 | [void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)](#oh_arkui_hostwindowinfo_destroy) | Destroys an [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object. |
-| [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | Destroys an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance. |
-| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | Obtains the child node at the specified index in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance. |
-| [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | Obtains the number of nodes in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance. |
-| [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | Create a cross-language option instance. |
+| [void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_destroy) | Destroys the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance and releases the resources allocated when obtaining information about active child nodes. |
+| [ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildrenInfo* handle, int32_t index)](#oh_arkui_activechildreninfo_getnodebyindex) | Obtains the child node whose subscript is index in the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) struct. This API is applicable to traversing active child nodes by subscript. |
+| [int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)](#oh_arkui_activechildreninfo_getcount) | Obtains the number of child nodes in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) struct. This API is applicable to determining the number of child nodes before traversing active child nodes. |
+| [ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)](#oh_arkui_crosslanguageoption_create) | Creates an instance of the cross-language configuration option. |
 | [void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_destroy) | Destroys an instance of the cross-language configuration option. |
 | [void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageOption* option, bool enabled)](#oh_arkui_crosslanguageoption_setattributesettingstatus) | Sets whether cross-language attribute setting is allowed in the configuration option. |
 | [bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_getattributesettingstatus) | Checks whether cross-language attribute setting is allowed in the configuration option. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const char* content)](#oh_arkui_textmenuitem_setcontent) | Set text menu item title. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_getcontent) | Get text menu item title. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const char* icon)](#oh_arkui_textmenuitem_seticon) | Set text menu item icon. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetIcon(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_geticon) | Get text menu item icon. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetLabelInfo(ArkUI_TextMenuItem* item, const char* labelInfo)](#oh_arkui_textmenuitem_setlabelinfo) | Set text menu item label info for keyboard shortcut. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetLabelInfo(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_getlabelinfo) | Get text menu item label info for keyboard shortcut.. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetId(ArkUI_TextMenuItem* item, int32_t id)](#oh_arkui_textmenuitem_setid) | Set text menu item id. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetId(const ArkUI_TextMenuItem* item, int32_t* id)](#oh_arkui_textmenuitem_getid) | Get text menu item id. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetSize(ArkUI_TextMenuItemArray* items, int32_t* size)](#oh_arkui_textmenuitemarray_getsize) | Get the size of text menu items. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetItem(ArkUI_TextMenuItemArray* items, int32_t index, ArkUI_TextMenuItem** item)](#oh_arkui_textmenuitemarray_getitem) | Get text menu item at index. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Insert(ArkUI_TextMenuItemArray* items, ArkUI_TextMenuItem* item, int32_t index)](#oh_arkui_textmenuitemarray_insert) | Insert text menu item at index. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items, int32_t index)](#oh_arkui_textmenuitemarray_erase) | Erase text menu item at index. |
-| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)](#oh_arkui_textmenuitemarray_clear) | Clear all the items. |
-| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextCreateMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeroncreatemenucallback) | Set the event to be called when text menu create. |
-| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextPrepareMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeronpreparemenucallback) | Set the event to be called when menu prepare. |
-| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextMenuItemClickCallback cb)](#oh_arkui_texteditmenuoptions_registeronmenuitemclickcallback) | Set the event to be called when menu item click. |
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType textSpanType)](#oh_arkui_textselectionmenuoptions_setspantype) | Sets the recognition types of a configuration object for selected text recognition. |
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType* spanType)](#oh_arkui_textselectionmenuoptions_getspantype) | Gets the span type select menu options. |
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle node)](#oh_arkui_textselectionmenuoptions_setcontentnode) | Set custom text menu node of text. |
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle* node)](#oh_arkui_textselectionmenuoptions_getcontentnode) | Get custom text menu node of text. |
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType responseType)](#oh_arkui_textselectionmenuoptions_setresponsetype) | Sets the recognition types of a configuration object for selected text recognition. |
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType* responseType)](#oh_arkui_textselectionmenuoptions_getresponsetype) | Gets the response type select menu options. |
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenushowcallback) | Set the event to be called when selection menu show. |
-| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenuhidecallback) | Set the event to be called when selection menu hide. |
-| [ArkUI_SelectionOptions* OH_ArkUI_SelectionOptions_Create()](#oh_arkui_selectionoptions_create) | Create selection options. |
-| [void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_dispose) | Dispose selection options object. |
-| [void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, ArkUI_MenuPolicy menuPolicy)](#oh_arkui_selectionoptions_setmenupolicy) | Sets the menu policy for selection options. |
-| [ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_getmenupolicy) | Gets the menu policy of selection options. |
-| [ArkUI_SelectedDragPreviewStyle* OH_ArkUI_SelectedDragPreviewStyle_Create()](#oh_arkui_selecteddragpreviewstyle_create) | Create a configuration object for selected drag preview style. |
-| [void OH_ArkUI_SelectedDragPreviewStyle_Dispose(ArkUI_SelectedDragPreviewStyle* config)](#oh_arkui_selecteddragpreviewstyle_dispose) | Dispose a configuration object for selected drag preview style. |
-| [void OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle* config, uint32_t color)](#oh_arkui_selecteddragpreviewstyle_setcolor) | Sets the color of background for selected drag preview style. |
-| [uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewStyle* config)](#oh_arkui_selecteddragpreviewstyle_getcolor) | Gets the color of background for selected drag preview style. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const char* content)](#oh_arkui_textmenuitem_setcontent) | Sets the title of a text menu item. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_getcontent) | Obtains the title of a text menu item. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const char* icon)](#oh_arkui_textmenuitem_seticon) | Sets the icon path of a text menu item. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetIcon(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_geticon) | Obtains the icon path of a text menu item. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetLabelInfo(ArkUI_TextMenuItem* item, const char* labelInfo)](#oh_arkui_textmenuitem_setlabelinfo) | Sets the shortcut hint for a text menu item, for example, the shortcut hint for the **Copy** menu item can be set to **Ctrl+C**. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetLabelInfo(const ArkUI_TextMenuItem* item, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_textmenuitem_getlabelinfo) | Obtains the shortcut hint for a text menu item, for example, the shortcut hint for the **Copy** menu item is typically **Ctrl+C**. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetId(ArkUI_TextMenuItem* item, int32_t id)](#oh_arkui_textmenuitem_setid) | Sets the ID of a text menu item. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetId(const ArkUI_TextMenuItem* item, int32_t* id)](#oh_arkui_textmenuitem_getid) | Obtains the ID of a text menu item. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetSize(ArkUI_TextMenuItemArray* items, int32_t* size)](#oh_arkui_textmenuitemarray_getsize) | Obtains the size of the text menu item array. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetItem(ArkUI_TextMenuItemArray* items, int32_t index, ArkUI_TextMenuItem** item)](#oh_arkui_textmenuitemarray_getitem) | Obtains the text menu item at a specified index from the text menu item array. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Insert(ArkUI_TextMenuItemArray* items, ArkUI_TextMenuItem* item, int32_t index)](#oh_arkui_textmenuitemarray_insert) | Inserts a text menu item at a specified index into the text menu item array. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items, int32_t index)](#oh_arkui_textmenuitemarray_erase) | Deletes the text menu item at a specified index from the text menu item array. |
+| [ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)](#oh_arkui_textmenuitemarray_clear) | Clears all text menu items in the text menu item array. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextCreateMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeroncreatemenucallback) | Registers the callback for creating text menus. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextPrepareMenuCallback cb)](#oh_arkui_texteditmenuoptions_registeronpreparemenucallback) | Registers the callback for preparing text menus. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(ArkUI_TextEditMenuOptions* editMenuOptions, void* userData, ArkUI_TextMenuItemClickCallback cb)](#oh_arkui_texteditmenuoptions_registeronmenuitemclickcallback) | Registers the callback for text menu item clicks. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType textSpanType)](#oh_arkui_textselectionmenuoptions_setspantype) | Sets the text recognition type of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextSpanType* spanType)](#oh_arkui_textselectionmenuoptions_getspantype) | Obtains the text recognition type of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle node)](#oh_arkui_textselectionmenuoptions_setcontentnode) | Sets the content node of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_NodeHandle* node)](#oh_arkui_textselectionmenuoptions_getcontentnode) | Obtains the content node of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType responseType)](#oh_arkui_textselectionmenuoptions_setresponsetype) | Sets the response type of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, ArkUI_TextResponseType* responseType)](#oh_arkui_textselectionmenuoptions_getresponsetype) | Obtains the response type of a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenushowcallback) | Registers the callback for the event of showing a custom text selection menu. |
+| [ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(ArkUI_TextSelectionMenuOptions* selectionMenuOptions, void* userData, void (\*callback)(int32_t start, int32_t end, void* userData))](#oh_arkui_textselectionmenuoptions_registeronmenuhidecallback) | Registers the callback for the event of hiding a custom text selection menu. |
+| [ArkUI_SelectionOptions* OH_ArkUI_SelectionOptions_Create()](#oh_arkui_selectionoptions_create) | Creates a selection option. |
+| [void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_dispose) | Releases a selection option object. |
+| [void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, ArkUI_MenuPolicy menuPolicy)](#oh_arkui_selectionoptions_setmenupolicy) | Sets the menu pop-up policy for selection options. |
+| [ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions* options)](#oh_arkui_selectionoptions_getmenupolicy) | Obtains the menu pop-up policy for selection options. |
+| [ArkUI_SelectedDragPreviewStyle* OH_ArkUI_SelectedDragPreviewStyle_Create()](#oh_arkui_selecteddragpreviewstyle_create) | Creates a preview style shown when dragging selected text. |
+| [void OH_ArkUI_SelectedDragPreviewStyle_Dispose(ArkUI_SelectedDragPreviewStyle* config)](#oh_arkui_selecteddragpreviewstyle_dispose) | Destroys the preview style shown when dragging selected text. |
+| [void OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle* config, uint32_t color)](#oh_arkui_selecteddragpreviewstyle_setcolor) | Sets the background color of the preview style shown when dragging selected text. |
+| [uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewStyle* config)](#oh_arkui_selecteddragpreviewstyle_getcolor) | Obtains the background color of the preview style shown when dragging selected text. |
 | [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType type)](#oh_arkui_decorationstyleoptions_settextdecorationtype) | Sets the decoration type of the decorative line style. |
 | [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationType(OH_ArkUI_DecorationStyleOptions* options, ArkUI_TextDecorationType* type)](#oh_arkui_decorationstyleoptions_gettextdecorationtype) | Obtains the decoration type of the decorative line style. |
 | [ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetColor(OH_ArkUI_DecorationStyleOptions* options, uint32_t color)](#oh_arkui_decorationstyleoptions_setcolor) | Sets the color of the decorative line. |
@@ -171,7 +173,7 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetDecorationStyleOptions(OH_ArkUI_TextDataDetectorConfig* config, OH_ArkUI_DecorationStyleOptions* decoration)](#oh_arkui_textdatadetectorconfig_getdecorationstyleoptions) | Obtains the decoration style of the recognized content. |
 | [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetEnablePreviewMenu(OH_ArkUI_TextDataDetectorConfig* config, bool enablePreviewMenu)](#oh_arkui_textdatadetectorconfig_setenablepreviewmenu) | Sets whether to display the preview menu when the recognized content is long-pressed. |
 | [ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetEnablePreviewMenu(OH_ArkUI_TextDataDetectorConfig* config, bool* enablePreviewMenu)](#oh_arkui_textdatadetectorconfig_getenablepreviewmenu) | Obtains whether the preview menu is displayed when the recognized content is long-pressed. |
-| [ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_textcontroller_setstyledstring) | Set the StyledString of the text. |
+| [ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_textcontroller_setstyledstring) | Sets a styled string for the text component. |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetValue(OH_ArkUI_TextEditorPlaceholderOptions* options, const char* value)](#oh_arkui_texteditorplaceholderoptions_setvalue) | Sets the text for the placeholder text options used when there is no input. |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetValue(OH_ArkUI_TextEditorPlaceholderOptions* options, char* buffer, int32_t bufferSize, int32_t* writeLength)](#oh_arkui_texteditorplaceholderoptions_getvalue) | Obtains the text for the placeholder text options used when there is no input. |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontSize(OH_ArkUI_TextEditorPlaceholderOptions* options, float fontSize)](#oh_arkui_texteditorplaceholderoptions_setfontsize) | Sets the font size for the placeholder text options used when there is no input. |
@@ -258,33 +260,33 @@ Defines the common types for the native module.
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledstring) | Sets the styled string displayed using the styled string controller. |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetStyledString(const OH_ArkUI_TextEditorStyledStringController* controller, ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_getstyledstring) | Obtains the styled string displayed using the styled string controller. |
 | [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetStyledPlaceholder(const OH_ArkUI_TextEditorStyledStringController* controller, const ArkUI_StyledString_Descriptor* descriptor)](#oh_arkui_texteditorstyledstringcontroller_setstyledplaceholder) | Sets the placeholder text in the styled string style using the styled string controller. |
-| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)](#oh_arkui_texteditorstyledstringcontroller_scrolltovisible) | Scroll the text editor component to make the specified content visible. |
-| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | Set the parameters of background style. |
-| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | Set the parameters of divider style. |
-| [void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)](#oh_arkui_crosslanguageoption_settreeoperatingstatus) | Sets the tree operating status for the cross-language option. |
-| [OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_gettreeoperatingstatus) | Gets the tree operating status of the cross-language option. |
-| [OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()](#oh_arkui_lineargradientoptions_create) | Creates a linear gradient options object. The returned object must be released by calling <b>OH_ArkUI_LinearGradientOptions_Destroy</b>. |
-| [void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* options)](#oh_arkui_lineargradientoptions_destroy) | Destroys a linear gradient options object. |
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientOptions* options, float angle)](#oh_arkui_lineargradientoptions_setangle) | Sets angle of linear gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGradientOptions* options, float* angle)](#oh_arkui_lineargradientoptions_getangle) | Gets angle of linear gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection direction)](#oh_arkui_lineargradientoptions_setdirection) | Sets direction of linear gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection* direction)](#oh_arkui_lineargradientoptions_getdirection) | Gets direction of linear gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradientOptions* options, bool repeating)](#oh_arkui_lineargradientoptions_setrepeating) | Sets whether colors are repeated in linear gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_LinearGradientOptions* options, bool* repeating)](#oh_arkui_lineargradientoptions_getrepeating) | Gets whether colors are repeated in linear gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_lineargradientoptions_setcolorstop) | Sets color stops of linear gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetColorStop(const OH_ArkUI_LinearGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_lineargradientoptions_getcolorstop) | Gets color stops of linear gradient options. |
-| [OH_ArkUI_RadialGradientOptions* OH_ArkUI_RadialGradientOptions_Create()](#oh_arkui_radialgradientoptions_create) | Creates a radial gradient options object. The returned object must be released by calling <b>OH_ArkUI_RadialGradientOptions_Destroy</b>. |
-| [void OH_ArkUI_RadialGradientOptions_Destroy(OH_ArkUI_RadialGradientOptions* options)](#oh_arkui_radialgradientoptions_destroy) | Destroys a radial gradient options object. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterX(OH_ArkUI_RadialGradientOptions* options, float centerX)](#oh_arkui_radialgradientoptions_setcenterx) | Sets centerX of radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterX(const OH_ArkUI_RadialGradientOptions* options, float* centerX)](#oh_arkui_radialgradientoptions_getcenterx) | Gets centerX of radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterY(OH_ArkUI_RadialGradientOptions* options, float centerY)](#oh_arkui_radialgradientoptions_setcentery) | Sets centerY of radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterY(const OH_ArkUI_RadialGradientOptions* options, float* centerY)](#oh_arkui_radialgradientoptions_getcentery) | Gets centerY of radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRadius(OH_ArkUI_RadialGradientOptions* options, float radius)](#oh_arkui_radialgradientoptions_setradius) | Sets radius of radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRadius(const OH_ArkUI_RadialGradientOptions* options, float* radius)](#oh_arkui_radialgradientoptions_getradius) | Gets radius of radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRepeating(OH_ArkUI_RadialGradientOptions* options, bool repeating)](#oh_arkui_radialgradientoptions_setrepeating) | Sets whether colors are repeated in radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_RadialGradientOptions* options, bool* repeating)](#oh_arkui_radialgradientoptions_getrepeating) | Gets whether colors are repeated in radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_radialgradientoptions_setcolorstop) | Sets color stops of radial gradient options. |
-| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_RadialGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_radialgradientoptions_getcolorstop) | Gets color stops of radial gradient options. |
+| [ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const OH_ArkUI_TextEditorStyledStringController* controller, int32_t start, int32_t end)](#oh_arkui_texteditorstyledstringcontroller_scrolltovisible) | Scrolls the content within the range from the specified start index to the end index to the visible area using the styled string controller. |
+| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorBackground* background)](#oh_arkui_pickerindicatorstyle_configurebackground) | Sets the background style. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_BACKGROUND](capi-picker-h.md#arkui_pickerindicatortype). |
+| [ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndicatorStyle* style, ArkUI_PickerIndicatorDivider* divider)](#oh_arkui_pickerindicatorstyle_configuredivider) | Sets the divider style. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_DIVIDER](capi-picker-h.md#arkui_pickerindicatortype). |
+| [void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOption* option, OH_ArkUI_CrossLanguageOperatingStatus status)](#oh_arkui_crosslanguageoption_settreeoperatingstatus) | Sets the node tree operation state of a cross-language configuration option. |
+| [OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus(ArkUI_CrossLanguageOption* option)](#oh_arkui_crosslanguageoption_gettreeoperatingstatus) | Obtains the node tree operation state of a cross-language configuration option. |
+| [OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()](#oh_arkui_lineargradientoptions_create) | Creates an object for linear gradient effect options. |
+| [void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* options)](#oh_arkui_lineargradientoptions_destroy) | Destroys the object for linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientOptions* options, float angle)](#oh_arkui_lineargradientoptions_setangle) | Sets the angle in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGradientOptions* options, float* angle)](#oh_arkui_lineargradientoptions_getangle) | Obtains the angle in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection direction)](#oh_arkui_lineargradientoptions_setdirection) | Sets the direction in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_LinearGradientOptions* options, ArkUI_LinearGradientDirection* direction)](#oh_arkui_lineargradientoptions_getdirection) | Obtains the direction in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradientOptions* options, bool repeating)](#oh_arkui_lineargradientoptions_setrepeating) | Sets whether the color is repeated in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_LinearGradientOptions* options, bool* repeating)](#oh_arkui_lineargradientoptions_getrepeating) | Obtains whether the color is repeated in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_lineargradientoptions_setcolorstop) | Sets the color stop in linear gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetColorStop(const OH_ArkUI_LinearGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_lineargradientoptions_getcolorstop) | Obtains the color stop in linear gradient effect options. |
+| [OH_ArkUI_RadialGradientOptions* OH_ArkUI_RadialGradientOptions_Create()](#oh_arkui_radialgradientoptions_create) | Creates an object for radial gradient effect options. |
+| [void OH_ArkUI_RadialGradientOptions_Destroy(OH_ArkUI_RadialGradientOptions* options)](#oh_arkui_radialgradientoptions_destroy) | Destroys the object for radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterX(OH_ArkUI_RadialGradientOptions* options, float centerX)](#oh_arkui_radialgradientoptions_setcenterx) | Sets the X coordinate of the center point in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterX(const OH_ArkUI_RadialGradientOptions* options, float* centerX)](#oh_arkui_radialgradientoptions_getcenterx) | Obtains the X coordinate of the center point in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterY(OH_ArkUI_RadialGradientOptions* options, float centerY)](#oh_arkui_radialgradientoptions_setcentery) | Sets the Y coordinate of the center point in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterY(const OH_ArkUI_RadialGradientOptions* options, float* centerY)](#oh_arkui_radialgradientoptions_getcentery) | Obtains the Y coordinate of the center point in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRadius(OH_ArkUI_RadialGradientOptions* options, float radius)](#oh_arkui_radialgradientoptions_setradius) | Sets the radius in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRadius(const OH_ArkUI_RadialGradientOptions* options, float* radius)](#oh_arkui_radialgradientoptions_getradius) | Obtains the radius in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRepeating(OH_ArkUI_RadialGradientOptions* options, bool repeating)](#oh_arkui_radialgradientoptions_setrepeating) | Sets whether the color is repeated in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_RadialGradientOptions* options, bool* repeating)](#oh_arkui_radialgradientoptions_getrepeating) | Obtains whether the color is repeated in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradientOptions* options, const uint32_t* colors, const float* stops, int32_t colorsAndStopsSize)](#oh_arkui_radialgradientoptions_setcolorstop) | Sets the color stop in radial gradient effect options. |
+| [ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_RadialGradientOptions* options, uint32_t* colors, float* stops, int32_t colorsAndStopsSize, int32_t* writeLength)](#oh_arkui_radialgradientoptions_getcolorstop) | Obtains the color stop in radial gradient effect options. |
 
 ## Enum type description
 
@@ -297,6 +299,8 @@ enum ArkUI_CopyOptions
 **Description**
 
 Enumerates the text copy and paste modes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -315,14 +319,16 @@ enum ArkUI_FocusWrapMode
 
 **Description**
 
-Enumerates the focus wrap mode of components.
+Enumerates the focus wrap mode of components. The default value is **ARKUI_FOCUS_WRAP_MODE_DEFAULT** for the **Grid** and **List** components.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
 | Enum item | Description |
 | -- | -- |
 | ARKUI_FOCUS_WRAP_MODE_DEFAULT = 0 | Default mode, where focus does not wrap when arrow keys are used. |
-| ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | Focus wraps automatically when arrow keys are used. |
+| ARKUI_FOCUS_WRAP_WITH_ARROW = 1 | Auto mode, where focus wraps automatically when arrow keys are used. |
 
 ### ArkUI_ItemFillPolicy
 
@@ -332,14 +338,16 @@ enum ArkUI_ItemFillPolicy
 
 **Description**
 
-Specifies the number of columns for different responsive breakpoint specifications.
+Enumerates column count policies for different responsive breakpoints.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ITEMFILLPOLICY_NONE = -1 | No responsive breakpoint configuration. |
-| ARKUI_ITEMFILLPOLICY_DEFAULT = 0 | Default responsive layout: <b>List</b> or <b>Swiper</b> component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger). <b>Grid</b> or <b>WaterFlow</b> component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger). |
+| ARKUI_ITEMFILLPOLICY_NONE = -1 | No responsive breakpoint policy is set. |
+| ARKUI_ITEMFILLPOLICY_DEFAULT = 0 | List** or **Swiper** component: 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger).<br> **Grid** or **WaterFlow** component: 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger). |
 | ARKUI_ITEMFILLPOLICY_SM1MD2LG3 = 1 | 1 column (SM or smaller), 2 columns (MD), 3 columns (LG or larger). |
 | ARKUI_ITEMFILLPOLICY_SM2MD3LG5 = 2 | 2 columns (SM or smaller), 3 columns (MD), 5 columns (LG or larger). |
 
@@ -351,7 +359,9 @@ enum ArkUI_CrownSensitivity
 
 **Description**
 
-Enumerates the digital crown sensitivity.
+Enumerates crown sensitivity levels.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -371,11 +381,13 @@ enum ArkUI_BorderStyle
 
 Enumerates the border styles.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_BORDER_STYLE_SOLID = 0 | Solid border. |
+| ARKUI_BORDER_STYLE_SOLID = 0 | Solid border. This is the default value. |
 | ARKUI_BORDER_STYLE_DASHED | Dashed border. |
 | ARKUI_BORDER_STYLE_DOTTED | Dotted border. |
 
@@ -389,11 +401,13 @@ enum ArkUI_AccessibilityMode
 
 Enumerates the accessibility modes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | Whether the component can be identified by the accessibility service is dependent on the component. |
+| ARKUI_ACCESSIBILITY_MODE_AUTO = 0 | The mode is automatically set to enabled or disabled based on the component. |
 | ARKUI_ACCESSIBILITY_MODE_ENABLED | The component can be identified by the accessibility service. |
 | ARKUI_ACCESSIBILITY_MODE_DISABLED | The component cannot be identified by the accessibility service. |
 | ARKUI_ACCESSIBILITY_MODE_DISABLED_FOR_DESCENDANTS | The component and all its child components cannot be identified by the accessibility service. |
@@ -407,6 +421,8 @@ enum ArkUI_AdaptiveColor
 **Description**
 
 Enumerates the adaptive color modes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -424,6 +440,8 @@ enum ArkUI_ColorMode
 **Description**
 
 Enumerates the color modes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -443,12 +461,14 @@ enum ArkUI_SystemColorMode
 
 Enumerates the system color modes.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | Light color mode. |
-| ARKUI_SYSTEM_COLOR_MODE_DARK | Dark color mode. |
+| ARKUI_SYSTEM_COLOR_MODE_LIGHT = 0 | Light mode. |
+| ARKUI_SYSTEM_COLOR_MODE_DARK | Dark mode. |
 
 ### ArkUI_LengthMetricUnit
 
@@ -460,14 +480,16 @@ enum ArkUI_LengthMetricUnit
 
 Enumerates the component units.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
 | ARKUI_LENGTH_METRIC_UNIT_DEFAULT = -1 | Default, which is fp for fonts and vp for non-fonts. |
-| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | px. |
-| ARKUI_LENGTH_METRIC_UNIT_VP | vp. |
-| ARKUI_LENGTH_METRIC_UNIT_FP | fp. |
+| ARKUI_LENGTH_METRIC_UNIT_PX = 0 | The unit is px. |
+| ARKUI_LENGTH_METRIC_UNIT_VP | The unit is vp. |
+| ARKUI_LENGTH_METRIC_UNIT_FP | The unit is fp. |
 
 ### ArkUI_AccessibilityCheckedState
 
@@ -477,14 +499,16 @@ enum ArkUI_AccessibilityCheckedState
 
 **Description**
 
-Defines the state type for the accessibility checkbox.
+Enumerates the accessibility check box states.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_UNCHECKED = 0 | The Checkbox unchecked. |
-| ARKUI_ACCESSIBILITY_CHECKED | The Checkbox checked. |
+| ARKUI_ACCESSIBILITY_UNCHECKED = 0 | The check box is not selected. |
+| ARKUI_ACCESSIBILITY_CHECKED | The check box is selected. |
 
 ### ArkUI_AccessibilityActionType
 
@@ -494,17 +518,19 @@ enum ArkUI_AccessibilityActionType
 
 **Description**
 
-Define accessible action types.
+Enumerates the accessibility action types.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | click action. |
-| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | long click action. |
-| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | cut action. |
-| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | copy action. |
-| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | paste action. |
+| ARKUI_ACCESSIBILITY_ACTION_CLICK = 1 << 0 | Tapping. |
+| ARKUI_ACCESSIBILITY_ACTION_LONG_CLICK = 1 << 1 | Long press. |
+| ARKUI_ACCESSIBILITY_ACTION_CUT = 1 << 2 | Cut. |
+| ARKUI_ACCESSIBILITY_ACTION_COPY = 1 << 3 | Copy. |
+| ARKUI_ACCESSIBILITY_ACTION_PASTE = 1 << 4 | Paste. |
 
 ### ArkUI_SafeAreaType
 
@@ -514,14 +540,16 @@ enum ArkUI_SafeAreaType
 
 **Description**
 
-defines the enumerated value of the extended security zone.
+Enumerates the types of expanded safe areas.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | The default security zone includes the status bar and navigation bar. |
-| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | Non-secure areas of the device, such as bangs or hole holes. |
+| ARKUI_SAFE_AREA_TYPE_SYSTEM = 1 | Default non-safe area of the system, including the status bar and navigation bar. This is the default value. |
+| ARKUI_SAFE_AREA_TYPE_CUTOUT = 1 << 1 | Non-safe area of the device, for example, the notch area. |
 | ARKUI_SAFE_AREA_TYPE_KEYBOARD = 1 << 2 | Soft keyboard area. |
 
 ### ArkUI_KeyboardAvoidMode
@@ -532,14 +560,16 @@ enum ArkUI_KeyboardAvoidMode
 
 **Description**
 
-defines the enumerated value of the customDialog's keyboard avoid mode.
+Enumerates the soft keyboard avoidance modes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | Defines avoid keyboard when keyboard shows. |
-| ARKUI_KEYBOARD_AVOID_MODE_NONE | Defines not avoid keyboard when keyboard shows. |
+| ARKUI_KEYBOARD_AVOID_MODE_DEFAULT = 0 | Automatically avoids the soft keyboard and compresses the height when reaching the maximum limit. |
+| ARKUI_KEYBOARD_AVOID_MODE_NONE | The layout is not adjusted to avoid the keyboard. |
 
 ### ArkUI_HoverModeAreaType
 
@@ -549,14 +579,16 @@ enum ArkUI_HoverModeAreaType
 
 **Description**
 
-defines the enumerated value of area in hover mode.
+Enumerates the types of display areas for the hover mode.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | Layout top half screen when the phone in hover mode. |
-| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | Layout bottom half screen when the phone in hover mode. |
+| ARKUI_HOVER_MODE_AREA_TYPE_TOP = 0 | Upper half screen. |
+| ARKUI_HOVER_MODE_AREA_TYPE_BOTTOM | Lower half screen. |
 
 ### ArkUI_ExpandMode
 
@@ -567,6 +599,8 @@ enum ArkUI_ExpandMode
 **Description**
 
 Enumerates the expansion mode of child nodes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -584,17 +618,19 @@ enum ArkUI_EdgeDirection
 
 **Description**
 
-Enumerates the edge direction.
+Enumerates rectangle edge directions.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_EDGE_DIRECTION_ALL = 0 | Set all edge direction. |
-| ARKUI_EDGE_DIRECTION_LEFT | Set left edge direction. |
-| ARKUI_EDGE_DIRECTION_RIGHT | Set right edge direction. |
-| ARKUI_EDGE_DIRECTION_TOP | Set top edge direction. |
-| ARKUI_EDGE_DIRECTION_BOTTOM | Set bottom edge direction. |
+| ARKUI_EDGE_DIRECTION_ALL = 0 | All four edges. |
+| ARKUI_EDGE_DIRECTION_LEFT | Left edge. |
+| ARKUI_EDGE_DIRECTION_RIGHT | Right edge. |
+| ARKUI_EDGE_DIRECTION_TOP | Top edge. |
+| ARKUI_EDGE_DIRECTION_BOTTOM | Bottom edge. |
 
 ### ArkUI_CornerDirection
 
@@ -605,6 +641,8 @@ enum ArkUI_CornerDirection
 **Description**
 
 Enumerates corner directions.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -624,15 +662,17 @@ enum ArkUI_MenuPolicy
 
 **Description**
 
-Menu pop-up strategy.
+Enumerates menu display policies.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_MENU_POLICY_DEFAULT = 0 | Determine whether to pop up the menu according to the underlying default logic. |
-| ARKUI_MENU_POLICY_HIDE = 1 | Never pop up the menu. |
-| ARKUI_MENU_POLICY_SHOW = 2 | Always pop up the menu. |
+| ARKUI_MENU_POLICY_DEFAULT = 0 | Whether the menu is displayed depends on the underlying default logic. |
+| ARKUI_MENU_POLICY_HIDE = 1 | The menu is not popped up. |
+| ARKUI_MENU_POLICY_SHOW = 2 | The menu is popped up. |
 
 ### ArkUI_RenderStrategy
 
@@ -642,14 +682,16 @@ enum ArkUI_RenderStrategy
 
 **Description**
 
-Enumerates the graphics rendering strategy.
+Enumerates strategies for drawing rounded corners.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
 | Enum item | Description |
 | -- | -- |
-| ARKUI_RENDERSTRATEGY_FAST = 0 | The current component and its child components will be drawn directly onto the screen canvas. |
-| ARKUI_RENDERSTRATEGY_OFFSCREEN | The current component and its child components will first be drawn onto an off-screen canvas, then undergo some graphic rendering operations, and finally be drawn onto the main canvas. |
+| ARKUI_RENDERSTRATEGY_FAST = 0 | Online drawing mode. |
+| ARKUI_RENDERSTRATEGY_OFFSCREEN | Off-screen drawing mode. |
 
 ### OH_ArkUI_CrossLanguageOperatingStatus
 
@@ -659,7 +701,9 @@ enum OH_ArkUI_CrossLanguageOperatingStatus
 
 **Description**
 
-Enumerates the tree operating status for the cross-language option.
+Enumerates the node tree operation states of cross-language configuration options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -677,7 +721,9 @@ enum OH_ArkUI_NodeMountPolicy
 
 **Description**
 
-Enumeration of the policy for mounting child node to the target node.
+Enumerates the child node mounting policy types.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -694,7 +740,9 @@ enum OH_ArkUI_ArcDirection
 
 **Description**
 
-Enumerates the ArcDirection.
+Enumerates arc directions.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.1
 
@@ -715,9 +763,17 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Create()
 
 **Description**
 
-Creates a size constraint.
+Creates layout constraints. After the created layout constraint pointer is used, call [OH_ArkUI_LayoutConstraint_Dispose](capi-native-type-h.md#oh_arkui_layoutconstraint_dispose) to release it. If the pointer is not released, memory leakage may occur.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
+
+**Returns**:
+
+| Type | Description |
+| -- | -- |
+| [ArkUI_LayoutConstraint*](capi-arkui-nativemodule-arkui-layoutconstraint.md) | Pointer to the created layout constraint. |
 
 ### OH_ArkUI_LayoutConstraint_Copy()
 
@@ -727,7 +783,9 @@ ArkUI_LayoutConstraint* OH_ArkUI_LayoutConstraint_Copy(const ArkUI_LayoutConstra
 
 **Description**
 
-Creates a deep copy of a size constraint.
+Performs a deep copy of a layout constraint. The new layout constraint pointer returned by the deep copy is independent of the original pointer. You need to call [OH_ArkUI_LayoutConstraint_Dispose](capi-native-type-h.md#oh_arkui_layoutconstraint_dispose) to release them separately after use.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -735,13 +793,13 @@ Creates a deep copy of a size constraint.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint*](capi-arkui-nativemodule-arkui-layoutconstraint.md) | Returns the pointer to the new size constraint. |
+| [ArkUI_LayoutConstraint*](capi-arkui-nativemodule-arkui-layoutconstraint.md) | Pointer to the new layout constraint. |
 
 ### OH_ArkUI_LayoutConstraint_Dispose()
 
@@ -751,7 +809,9 @@ void* OH_ArkUI_LayoutConstraint_Dispose(ArkUI_LayoutConstraint* Constraint)
 
 **Description**
 
-Destroys the pointer to a size constraint.
+Disposes of a layout constraint pointer. This API must be used together with [OH_ArkUI_LayoutConstraint_Create](capi-native-type-h.md#oh_arkui_layoutconstraint_create) or [OH_ArkUI_LayoutConstraint_Copy](capi-native-type-h.md#oh_arkui_layoutconstraint_copy). Each layout constraint pointer can be destroyed only once. After being destroyed, the pointer should not be used anymore.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -759,7 +819,7 @@ Destroys the pointer to a size constraint.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
 
 ### OH_ArkUI_LayoutConstraint_GetMaxWidth()
 
@@ -769,7 +829,9 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxWidth(const ArkUI_LayoutConstraint* Cons
 
 **Description**
 
-Obtains the maximum width for a size constraint, in px.
+Obtains the maximum width using a layout constraint.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -777,13 +839,13 @@ Obtains the maximum width for a size constraint, in px.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the maximum width. |
+| int32_t | Maximum width, in px. |
 
 ### OH_ArkUI_LayoutConstraint_GetMinWidth()
 
@@ -793,7 +855,9 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinWidth(const ArkUI_LayoutConstraint* Cons
 
 **Description**
 
-Obtains the minimum width for a size constraint, in px.
+Obtains the minimum width using a layout constraint.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -801,13 +865,13 @@ Obtains the minimum width for a size constraint, in px.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the minimum width. |
+| int32_t | Minimum width, in px. |
 
 ### OH_ArkUI_LayoutConstraint_GetMaxHeight()
 
@@ -817,7 +881,9 @@ int32_t OH_ArkUI_LayoutConstraint_GetMaxHeight(const ArkUI_LayoutConstraint* Con
 
 **Description**
 
-Obtains the maximum height for a size constraint, in px.
+Obtains the maximum height using a layout constraint.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -825,13 +891,13 @@ Obtains the maximum height for a size constraint, in px.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the maximum height. |
+| int32_t | Maximum height, in px. |
 
 ### OH_ArkUI_LayoutConstraint_GetMinHeight()
 
@@ -841,7 +907,9 @@ int32_t OH_ArkUI_LayoutConstraint_GetMinHeight(const ArkUI_LayoutConstraint* Con
 
 **Description**
 
-Obtains the minimum height for a size constraint, in px.
+Obtains the minimum height using a layout constraint.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -849,13 +917,13 @@ Obtains the minimum height for a size constraint, in px.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the minimum height. |
+| int32_t | Minimum height, in px. |
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth()
 
@@ -865,7 +933,9 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceWidth(const ArkUI_LayoutCon
 
 **Description**
 
-Obtains the width percentage reference for a size constraint, in px.
+Obtains the width percentage reference using a layout constraint.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -873,13 +943,13 @@ Obtains the width percentage reference for a size constraint, in px.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the width percentage reference. |
+| int32_t | Width percentage reference. |
 
 ### OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight()
 
@@ -889,7 +959,9 @@ int32_t OH_ArkUI_LayoutConstraint_GetPercentReferenceHeight(const ArkUI_LayoutCo
 
 **Description**
 
-Obtains the height percentage reference for a size constraint, in px.
+Obtains the height percentage reference using a layout constraint.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -897,13 +969,13 @@ Obtains the height percentage reference for a size constraint, in px.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
+| [const ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Returns the height percentage reference. |
+| int32_t | Height percentage reference. |
 
 ### OH_ArkUI_LayoutConstraint_SetMaxWidth()
 
@@ -915,14 +987,16 @@ void OH_ArkUI_LayoutConstraint_SetMaxWidth(ArkUI_LayoutConstraint* Constraint, i
 
 Sets the maximum width.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the maximum width, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
+| int32_t value | Maximum width, in px. The value range is [0, +∞). |
 
 ### OH_ArkUI_LayoutConstraint_SetMinWidth()
 
@@ -934,14 +1008,16 @@ void OH_ArkUI_LayoutConstraint_SetMinWidth(ArkUI_LayoutConstraint* Constraint, i
 
 Sets the minimum width.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the minimum width, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
+| int32_t value | Minimum width, in px. The value range is [0, +∞). |
 
 ### OH_ArkUI_LayoutConstraint_SetMaxHeight()
 
@@ -953,14 +1029,16 @@ void OH_ArkUI_LayoutConstraint_SetMaxHeight(ArkUI_LayoutConstraint* Constraint, 
 
 Sets the maximum height.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the maximum height, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
+| int32_t value | Maximum height, in px. The value range is [0, +∞). |
 
 ### OH_ArkUI_LayoutConstraint_SetMinHeight()
 
@@ -972,14 +1050,16 @@ void OH_ArkUI_LayoutConstraint_SetMinHeight(ArkUI_LayoutConstraint* Constraint, 
 
 Sets the minimum height.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the minimum height, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
+| int32_t value | Minimum height, in px. The value range is [0, +∞). |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth()
 
@@ -991,14 +1071,16 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceWidth(ArkUI_LayoutConstraint* 
 
 Sets the width percentage reference.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the width percentage reference, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
+| int32_t value | Width percentage reference. The value range is [0, +∞). |
 
 ### OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight()
 
@@ -1010,14 +1092,16 @@ void OH_ArkUI_LayoutConstraint_SetPercentReferenceHeight(ArkUI_LayoutConstraint*
 
 Sets the height percentage reference.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Indicates the pointer to the size constraint. |
-| int32_t value | Indicates the height percentage reference, in px. |
+| [ArkUI_LayoutConstraint](capi-arkui-nativemodule-arkui-layoutconstraint.md)* Constraint | Pointer to the layout constraint. |
+| int32_t value | Height percentage reference. The value range is [0, +∞). |
 
 ### OH_ArkUI_DrawContext_GetCanvas()
 
@@ -1027,7 +1111,9 @@ void* OH_ArkUI_DrawContext_GetCanvas(ArkUI_DrawContext* context)
 
 **Description**
 
-Obtains the pointer to a canvas for drawing, which can be converted into the <b>OH_Drawing_Canvas</b> pointer in the <b>Drawing</b> module.
+Obtains the pointer to the canvas for drawing, which can be converted into the [OH_Drawing_Canvas](../../apis-arkgraphics2d/c-apis/capi-drawing-oh-drawing-canvas.md) pointer of the graphics library for drawing.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1035,13 +1121,13 @@ Obtains the pointer to a canvas for drawing, which can be converted into the <b>
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Indicates the pointer to the drawing context. |
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Pointer to the drawing context. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| void* | Returns the pointer to the canvas for drawing. |
+| void* | Pointer to the canvas for drawing. |
 
 ### OH_ArkUI_DrawContext_GetSize()
 
@@ -1053,19 +1139,21 @@ ArkUI_IntSize OH_ArkUI_DrawContext_GetSize(ArkUI_DrawContext* context)
 
 Obtains the size of a drawing area.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Indicates the pointer to the drawing context. |
+| [ArkUI_DrawContext](capi-arkui-nativemodule-arkui-drawcontext.md)* context | Pointer to the drawing context. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | Returns the size of the drawing area. |
+| [ArkUI_IntSize](capi-arkui-nativemodule-arkui-intsize.md) | Size of the drawing area. |
 
 ### OH_ArkUI_SwiperDigitIndicator_SetFontWeight()
 
@@ -1075,7 +1163,9 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontWeight(ArkUI_SwiperDigitIndicator *ind
 
 **Description**
 
-Sets the font weight of total count in the digital indicator.
+Sets the font weight of the digit-style navigation indicator for the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1083,8 +1173,8 @@ Sets the font weight of total count in the digital indicator.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) *indicator | The pointer to the digital indicator. |
-| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) fontWeight | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is <b>ARKUI_FONT_WEIGHT_NORMAL</b>. |
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) *indicator | Pointer to the digit-style navigation indicator. |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) fontWeight | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
 
 ### OH_ArkUI_SwiperDigitIndicator_GetFontWeight()
 
@@ -1094,7 +1184,9 @@ ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetFontWeight(ArkUI_SwiperDigitIn
 
 **Description**
 
-Gets the font weight of total count in the digital indicator.
+Obtains the font weight of the digit-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1102,13 +1194,13 @@ Gets the font weight of total count in the digital indicator.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | The pointer to the digital indicator. |
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
 
 ### OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight()
 
@@ -1118,7 +1210,9 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontWeight(ArkUI_SwiperDigitIndica
 
 **Description**
 
-Sets the font weight of selected index in the digital indicator.
+Sets the font weight of the selected digit-style navigation indicator for the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1126,8 +1220,8 @@ Sets the font weight of selected index in the digital indicator.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) *indicator | The pointer to the digital indicator. |
-| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) selectedFontWeight | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is <b>ARKUI_FONT_WEIGHT_NORMAL</b>. |
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md) *indicator | Pointer to the digit-style navigation indicator. |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) selectedFontWeight | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
 
 ### OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight()
 
@@ -1137,7 +1231,9 @@ ArkUI_FontWeight OH_ArkUI_SwiperDigitIndicator_GetSelectedFontWeight(ArkUI_Swipe
 
 **Description**
 
-Gets the font weight of selected index in the digital indicator.
+Obtains the font weight of the selected digit-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1145,13 +1241,13 @@ Gets the font weight of selected index in the digital indicator.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | The pointer to the digital indicator. |
+| [ArkUI_SwiperDigitIndicator](capi-arkui-nativemodule-arkui-swiperdigitindicator.md)* indicator | Pointer to the digit-style navigation indicator. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) | font weight [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
+| [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight) | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). |
 
 ### OH_ArkUI_ContentTransitionEffect_Create()
 
@@ -1161,7 +1257,9 @@ ArkUI_ContentTransitionEffect* OH_ArkUI_ContentTransitionEffect_Create(int32_t t
 
 **Description**
 
-creates content switching animation effects.
+Creates a **ContentTransitionEffect** attribute object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 21
 
@@ -1169,13 +1267,13 @@ creates content switching animation effects.
 
 | Parameter | Description |
 | -- | -- |
-| int32_t type | content transition type: 0-identity, 1-opacity. |
+| int32_t type | Transition animation type. **0**: No transition animation. **1**: Fade-in and fade-out transition animation. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ContentTransitionEffect*](capi-arkui-nativemodule-arkui-contenttransitioneffect.md) | content transition effect. |
+| [ArkUI_ContentTransitionEffect*](capi-arkui-nativemodule-arkui-contenttransitioneffect.md) | Pointer to the **ContentTransitionEffect** object. |
 
 ### OH_ArkUI_AccessibilityState_Create()
 
@@ -1185,7 +1283,9 @@ ArkUI_AccessibilityState* OH_ArkUI_AccessibilityState_Create(void)
 
 **Description**
 
-Create accessibility state.
+Creates an accessibility state.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1193,7 +1293,7 @@ Create accessibility state.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_AccessibilityState*](capi-arkui-nativemodule-arkui-accessibilitystate.md) | Returns the pointer to the accessibility state object. If a null pointer is returned, the object fails to be created. The possible cause is that the address space is full. |
+| [ArkUI_AccessibilityState*](capi-arkui-nativemodule-arkui-accessibilitystate.md) | Pointer to the created accessibility state object. If a null pointer is returned, the creation fails. A possible cause is that the application address space is full. |
 
 ### OH_ArkUI_AccessibilityState_Dispose()
 
@@ -1203,7 +1303,9 @@ void OH_ArkUI_AccessibilityState_Dispose(ArkUI_AccessibilityState* state)
 
 **Description**
 
-Dispose accessibility state.
+Disposes of the pointer to an accessibility state.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1211,7 +1313,7 @@ Dispose accessibility state.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | accessibility state object. |
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | Pointer to the created accessibility state object. |
 
 ### OH_ArkUI_AccessibilityState_SetDisabled()
 
@@ -1221,7 +1323,9 @@ void OH_ArkUI_AccessibilityState_SetDisabled(ArkUI_AccessibilityState* state, in
 
 **Description**
 
-Set accessibility state disabled.
+Sets whether an accessibility state is disabled.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1229,8 +1333,8 @@ Set accessibility state disabled.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | accessibility state object. |
-| int32_t isDisabled | accessibility state disabled, Value 1 indicates disabled and 0 indicates enbled. |
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | Pointer to the created accessibility state object. |
+| int32_t isDisabled | Whether the accessibility state is disabled. The value **1** means that the accessibility state is disabled, and **0** means the opposite. The default value is **0**. |
 
 ### OH_ArkUI_AccessibilityState_IsDisabled()
 
@@ -1240,7 +1344,9 @@ int32_t OH_ArkUI_AccessibilityState_IsDisabled(ArkUI_AccessibilityState* state)
 
 **Description**
 
-Get accessibility state disabled.
+Obtains whether an accessibility state is disabled.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1248,13 +1354,13 @@ Get accessibility state disabled.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | accessibility state object. |
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | Pointer to the created accessibility state object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | accessibility state disabled, Value 1 indicates disabled and 0 indicates enbled. The default value is 0. If the function parameter is abnormal, return the default value. |
+| int32_t | Whether the accessibility state is disabled. The value **1** means that the accessibility state is disabled, and **0** means the opposite. The default value is **0**.<br> If the value of **state** is null, the default value is returned. |
 
 ### OH_ArkUI_AccessibilityState_SetSelected()
 
@@ -1264,7 +1370,9 @@ void OH_ArkUI_AccessibilityState_SetSelected(ArkUI_AccessibilityState* state, in
 
 **Description**
 
-Set accessibility state selected.
+Sets whether an accessibility state is selected.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1272,8 +1380,8 @@ Set accessibility state selected.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | accessibility state object. |
-| int32_t isSelected | accessibility state selected, Value 1 indicates selected, and 0 indicates not selected. The default value is 0. |
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | Pointer to the created accessibility state object. |
+| int32_t isSelected | Whether the accessibility state is selected. The value **1** means that the accessibility state is selected, and **0** means the opposite. The default value is **0**. |
 
 ### OH_ArkUI_AccessibilityState_IsSelected()
 
@@ -1283,7 +1391,9 @@ int32_t OH_ArkUI_AccessibilityState_IsSelected(ArkUI_AccessibilityState* state)
 
 **Description**
 
-Get accessibility state selected.
+Obtains whether an accessibility state is selected.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1291,13 +1401,13 @@ Get accessibility state selected.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | accessibility state object. |
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | Pointer to the created accessibility state object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | accessibility state selected, Value 1 indicates selected, and 0 indicates not selected. The default value is 0. If the function parameter is abnormal, return the default value. |
+| int32_t | Whether the accessibility state is selected. The value **1** means that the accessibility state is selected, and **0** means the opposite. The default value is **0**.<br> If the value of **state** is null, the default value is returned. |
 
 ### OH_ArkUI_AccessibilityState_SetCheckedState()
 
@@ -1307,7 +1417,9 @@ void OH_ArkUI_AccessibilityState_SetCheckedState(ArkUI_AccessibilityState* state
 
 **Description**
 
-Set accessibility checked state.
+Sets the check box state of an accessibility state.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1315,8 +1427,8 @@ Set accessibility checked state.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | accessibility state object. |
-| int32_t checkedState | checked state, and uses the [ArkUI_AccessibilityCheckedState](capi-native-type-h.md#arkui_accessibilitycheckedstate) enumeration value, The default value is ARKUI_ACCESSIBILITY_UNCHECKED. |
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | Pointer to the created accessibility state object. |
+| int32_t checkedState | Check box status. The parameter type is [ArkUI_AccessibilityCheckedState](capi-native-type-h.md#arkui_accessibilitycheckedstate). The default value is **ARKUI_ACCESSIBILITY_UNCHECKED**. |
 
 ### OH_ArkUI_AccessibilityState_GetCheckedState()
 
@@ -1326,7 +1438,9 @@ int32_t OH_ArkUI_AccessibilityState_GetCheckedState(ArkUI_AccessibilityState* st
 
 **Description**
 
-Get accessibility checked state.
+Obtains the check box state of an accessibility state.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1334,13 +1448,13 @@ Get accessibility checked state.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | accessibility state object. |
+| [ArkUI_AccessibilityState](capi-arkui-nativemodule-arkui-accessibilitystate.md)* state | Pointer to the created accessibility state object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | checked state, and uses the [ArkUI_AccessibilityCheckedState](capi-native-type-h.md#arkui_accessibilitycheckedstate) enumeration value, The default value is ARKUI_ACCESSIBILITY_UNCHECKED. If the function parameter is abnormal, return the default value. |
+| int32_t | Check box status. The parameter type is [ArkUI_AccessibilityCheckedState](capi-native-type-h.md#arkui_accessibilitycheckedstate). The default value is **ARKUI_ACCESSIBILITY_UNCHECKED**.<br> If a parameter error occurs, the default value is returned. |
 
 ### OH_ArkUI_AccessibilityValue_Create()
 
@@ -1350,7 +1464,9 @@ ArkUI_AccessibilityValue* OH_ArkUI_AccessibilityValue_Create(void)
 
 **Description**
 
-Create accessibility value.
+Creates an **AccessibilityValue** instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1358,7 +1474,7 @@ Create accessibility value.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue*](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | Returns the pointer to the accessibility state object. If a null pointer is returned, the object fails to be created. The possible cause is that the address space is full. |
+| [ArkUI_AccessibilityValue*](capi-arkui-nativemodule-arkui-accessibilityvalue.md) | Pointer to the created **AccessibilityValue** instance. |
 
 ### OH_ArkUI_AccessibilityValue_Dispose()
 
@@ -1368,7 +1484,9 @@ void OH_ArkUI_AccessibilityValue_Dispose(ArkUI_AccessibilityValue* value)
 
 **Description**
 
-Dispose accessibility value.
+Disposes of the pointer to an **AccessibilityValue** instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1376,7 +1494,7 @@ Dispose accessibility value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
 
 ### OH_ArkUI_AccessibilityValue_SetMin()
 
@@ -1386,7 +1504,9 @@ void OH_ArkUI_AccessibilityValue_SetMin(ArkUI_AccessibilityValue* value, int32_t
 
 **Description**
 
-Set accessibility minimum value.
+Sets the minimum accessibility value.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1394,8 +1514,8 @@ Set accessibility minimum value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
-| int32_t min | minimum value based on range components, The default value is -1. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
+| int32_t min | Minimum value for the range-based component. The default value is **-1**. |
 
 ### OH_ArkUI_AccessibilityValue_GetMin()
 
@@ -1405,7 +1525,9 @@ int32_t OH_ArkUI_AccessibilityValue_GetMin(ArkUI_AccessibilityValue* value)
 
 **Description**
 
-Get accessibility minimum value.
+Obtains the minimum accessibility value.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1413,13 +1535,13 @@ Get accessibility minimum value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | minimum value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
+| int32_t | Minimum value for the range-based component. The default value is **-1**.<br> If a parameter error occurs, **-1** is returned. |
 
 ### OH_ArkUI_AccessibilityValue_SetMax()
 
@@ -1429,7 +1551,9 @@ void OH_ArkUI_AccessibilityValue_SetMax(ArkUI_AccessibilityValue* value, int32_t
 
 **Description**
 
-Set accessibility minimum value.
+Sets the maximum accessibility value.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1437,8 +1561,8 @@ Set accessibility minimum value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
-| int32_t max | maximum value based on range components, The default value is -1. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
+| int32_t max | Maximum value for the range-based component. The default value is **-1**. |
 
 ### OH_ArkUI_AccessibilityValue_GetMax()
 
@@ -1448,7 +1572,9 @@ int32_t OH_ArkUI_AccessibilityValue_GetMax(ArkUI_AccessibilityValue* value)
 
 **Description**
 
-Get accessibility minimum value.
+Obtains the maximum accessibility value.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1456,13 +1582,13 @@ Get accessibility minimum value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | maximum value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
+| int32_t | Maximum value for the range-based component. The default value is **-1**.<br> If a parameter error occurs, **-1** is returned. |
 
 ### OH_ArkUI_AccessibilityValue_SetCurrent()
 
@@ -1472,7 +1598,9 @@ void OH_ArkUI_AccessibilityValue_SetCurrent(ArkUI_AccessibilityValue* value, int
 
 **Description**
 
-Set accessibility current value.
+Sets the current accessibility value.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1480,8 +1608,8 @@ Set accessibility current value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
-| int32_t current | value based on range components, The default value is -1. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
+| int32_t current | Current value for the range-based component. The default value is **-1**. |
 
 ### OH_ArkUI_AccessibilityValue_GetCurrent()
 
@@ -1491,7 +1619,9 @@ int32_t OH_ArkUI_AccessibilityValue_GetCurrent(ArkUI_AccessibilityValue* value)
 
 **Description**
 
-Get accessibility current value.
+Obtains the current accessibility value.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1499,13 +1629,13 @@ Get accessibility current value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | current value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
+| int32_t | Current value for the range-based component. The default value is **-1**.<br> If a parameter error occurs, **-1** is returned. |
 
 ### OH_ArkUI_AccessibilityValue_SetRangeMin()
 
@@ -1515,7 +1645,9 @@ void OH_ArkUI_AccessibilityValue_SetRangeMin(ArkUI_AccessibilityValue* value, in
 
 **Description**
 
-Set accessibility minimum value.
+Sets the minimum value for accessibility information of the range-based component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -1523,8 +1655,8 @@ Set accessibility minimum value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
-| int32_t rangeMin | minimum value based on range components, The default value is -1. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the accessibility information object of the range-based component for which you want to set the minimum value. |
+| int32_t rangeMin | Minimum value for the range-based component. The default value is **-1**. |
 
 ### OH_ArkUI_AccessibilityValue_GetRangeMin()
 
@@ -1534,7 +1666,9 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeMin(ArkUI_AccessibilityValue* value)
 
 **Description**
 
-Get accessibility minimum value.
+Obtains the minimum value for accessibility information of the range-based component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -1542,13 +1676,13 @@ Get accessibility minimum value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the accessibility information object of the range-based component for which you want to obtain the minimum value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | minimum value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
+| int32_t | Minimum value for the range-based component. The default value is **-1**.<br> If a parameter error occurs, **-1** is returned. |
 
 ### OH_ArkUI_AccessibilityValue_SetRangeMax()
 
@@ -1558,7 +1692,9 @@ void OH_ArkUI_AccessibilityValue_SetRangeMax(ArkUI_AccessibilityValue* value, in
 
 **Description**
 
-Set accessibility maximum value.
+Sets the maximum value for accessibility information of the range-based component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -1566,8 +1702,8 @@ Set accessibility maximum value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
-| int32_t rangeMax | maximum value based on range components, The default value is -1. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the accessibility information object of the range-based component for which you want to set the maximum value. |
+| int32_t rangeMax | Maximum value for the range-based component. The default value is **-1**. |
 
 ### OH_ArkUI_AccessibilityValue_GetRangeMax()
 
@@ -1577,7 +1713,9 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeMax(ArkUI_AccessibilityValue* value)
 
 **Description**
 
-Get accessibility maximum value.
+Obtains the maximum value for accessibility information of the range-based component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -1585,13 +1723,13 @@ Get accessibility maximum value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the accessibility information object of the range-based component for which you want to obtain the minimum value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | maximum value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
+| int32_t | Maximum value for the range-based component. The default value is **-1**.<br> If a parameter error occurs, **-1** is returned. |
 
 ### OH_ArkUI_AccessibilityValue_SetRangeCurrent()
 
@@ -1601,7 +1739,9 @@ void OH_ArkUI_AccessibilityValue_SetRangeCurrent(ArkUI_AccessibilityValue* value
 
 **Description**
 
-Set accessibility current value.
+Sets the current value for accessibility information of the range-based component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -1609,8 +1749,8 @@ Set accessibility current value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
-| int32_t rangeCurrent | value based on range components, The default value is -1. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the accessibility information object of the range-based component for which you want to set the current value. |
+| int32_t rangeCurrent | Current value for the range-based component. The default value is **-1**. |
 
 ### OH_ArkUI_AccessibilityValue_GetRangeCurrent()
 
@@ -1620,7 +1760,9 @@ int32_t OH_ArkUI_AccessibilityValue_GetRangeCurrent(ArkUI_AccessibilityValue* va
 
 **Description**
 
-Get accessibility current value.
+Obtains the current value for accessibility information of the range-based component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -1628,13 +1770,13 @@ Get accessibility current value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the accessibility information object of the range-based component for which you want to obtain the current value. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | current value based on range components, The default value is -1. If the function parameter is abnormal, return -1. |
+| int32_t | Current value for the range-based component. The default value is **-1**.<br> If a parameter error occurs, **-1** is returned. |
 
 ### OH_ArkUI_AccessibilityValue_SetText()
 
@@ -1644,7 +1786,9 @@ void OH_ArkUI_AccessibilityValue_SetText(ArkUI_AccessibilityValue* value, const 
 
 **Description**
 
-Set accessibility text value.
+Sets the text description of an **AccessibilityValue** instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1652,8 +1796,8 @@ Set accessibility text value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
-| const char* text | The textual description information of the component, which defaults to an empty string. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
+| const char* text | Pointer to the text description. The default value is an empty string. |
 
 ### OH_ArkUI_AccessibilityValue_GetText()
 
@@ -1663,7 +1807,9 @@ const char* OH_ArkUI_AccessibilityValue_GetText(ArkUI_AccessibilityValue* value)
 
 **Description**
 
-Get accessibility text value.
+Obtains the text description of an **AccessibilityValue** instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1671,13 +1817,13 @@ Get accessibility text value.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | accessibility value object. |
+| [ArkUI_AccessibilityValue](capi-arkui-nativemodule-arkui-accessibilityvalue.md)* value | Pointer to the created **AccessibilityValue** instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| const char* | The textual description information of the component, which defaults to an empty string; If the function parameter is abnormal, return null. |
+| const char* | Pointer to the text description. The default value is an empty string.<br> If a parameter error occurs, a null pointer is returned. |
 
 ### OH_ArkUI_CustomProperty_Destroy()
 
@@ -1688,6 +1834,8 @@ void OH_ArkUI_CustomProperty_Destroy(ArkUI_CustomProperty* handle)
 **Description**
 
 Destroys an [ArkUI_CustomProperty](capi-arkui-nativemodule-arkui-customproperty.md) instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -1706,6 +1854,8 @@ const char* OH_ArkUI_CustomProperty_GetStringValue(ArkUI_CustomProperty* handle)
 **Description**
 
 Obtains the value of a custom property object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -1731,6 +1881,8 @@ const char* OH_ArkUI_HostWindowInfo_GetName(ArkUI_HostWindowInfo* info)
 
 Obtains the window name in an [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Parameters**:
@@ -1755,6 +1907,8 @@ void OH_ArkUI_HostWindowInfo_Destroy(ArkUI_HostWindowInfo* info)
 
 Destroys an [ArkUI_HostWindowInfo](capi-arkui-nativemodule-arkui-hostwindowinfo.md) object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Parameters**:
@@ -1771,7 +1925,9 @@ void OH_ArkUI_ActiveChildrenInfo_Destroy(ArkUI_ActiveChildrenInfo* handle)
 
 **Description**
 
-Destroys an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
+Destroys the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance and releases the resources allocated when obtaining information about active child nodes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -1789,7 +1945,9 @@ ArkUI_NodeHandle OH_ArkUI_ActiveChildrenInfo_GetNodeByIndex(ArkUI_ActiveChildren
 
 **Description**
 
-Obtains the child node at the specified index in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
+Obtains the child node whose subscript is index in the [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) struct. This API is applicable to traversing active child nodes by subscript.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -1804,7 +1962,7 @@ Obtains the child node at the specified index in an [ArkUI_ActiveChildrenInfo](c
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Handle to the child node at the specified index, or nullptr if an error occurs. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) | Handle to the child node at the specified index, or **nullptr** if an error occurs. |
 
 ### OH_ArkUI_ActiveChildrenInfo_GetCount()
 
@@ -1814,7 +1972,9 @@ int32_t OH_ArkUI_ActiveChildrenInfo_GetCount(ArkUI_ActiveChildrenInfo* handle)
 
 **Description**
 
-Obtains the number of nodes in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) instance.
+Obtains the number of child nodes in an [ArkUI_ActiveChildrenInfo](capi-arkui-nativemodule-arkui-activechildreninfo.md) struct. This API is applicable to determining the number of child nodes before traversing active child nodes.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -1838,7 +1998,9 @@ ArkUI_CrossLanguageOption* OH_ArkUI_CrossLanguageOption_Create(void)
 
 **Description**
 
-Create a cross-language option instance.
+Creates an instance of the cross-language configuration option.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -1846,7 +2008,7 @@ Create a cross-language option instance.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_CrossLanguageOption*](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | Returns a cross-language option instance. If the result is a null pointer, it may be out of memory. |
+| [ArkUI_CrossLanguageOption*](capi-arkui-nativemodule-arkui-crosslanguageoption.md) | Pointer to the [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md) instance created. If a null pointer is returned, creation failed, possibly due to insufficient memory. |
 
 ### OH_ArkUI_CrossLanguageOption_Destroy()
 
@@ -1857,6 +2019,8 @@ void OH_ArkUI_CrossLanguageOption_Destroy(ArkUI_CrossLanguageOption* option)
 **Description**
 
 Destroys an instance of the cross-language configuration option.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -1876,6 +2040,8 @@ void OH_ArkUI_CrossLanguageOption_SetAttributeSettingStatus(ArkUI_CrossLanguageO
 
 Sets whether cross-language attribute setting is allowed in the configuration option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Parameters**:
@@ -1883,7 +2049,7 @@ Sets whether cross-language attribute setting is allowed in the configuration op
 | Parameter | Description |
 | -- | -- |
 | [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option instance. |
-| bool enabled | Whether cross-language attribute setting is allowed. true means that cross-language attribute setting is allowed, and **false** means the opposite. The default value is **false**. |
+| bool enabled | Whether cross-language attribute setting is allowed. **true** means that cross-language attribute setting is allowed, and **false** means the opposite. The default value is **false**. |
 
 ### OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus()
 
@@ -1895,6 +2061,8 @@ bool OH_ArkUI_CrossLanguageOption_GetAttributeSettingStatus(ArkUI_CrossLanguageO
 
 Checks whether cross-language attribute setting is allowed in the configuration option.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 **Parameters**:
@@ -1907,7 +2075,7 @@ Checks whether cross-language attribute setting is allowed in the configuration 
 
 | Type | Description |
 | -- | -- |
-| bool | Whether cross-language attribute setting is allowed. true means that cross-language attribute setting is allowed, and **false** means the opposite. |
+| bool | Whether cross-language attribute setting is allowed. **true** means that cross-language attribute setting is allowed, and **false** means the opposite. |
 
 ### OH_ArkUI_TextMenuItem_SetContent()
 
@@ -1917,7 +2085,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetContent(ArkUI_TextMenuItem* item, const
 
 **Description**
 
-Set text menu item title.
+Sets the title of a text menu item.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -1925,14 +2095,14 @@ Set text menu item title.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item. |
-| const char* content | The name of the text menu item, which defaults to an empty string. The string will copy to framework. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| const char* content | Pointer to the title of a text menu item. The default value is an empty string. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItem_GetContent()
 
@@ -1942,7 +2112,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetContent(const ArkUI_TextMenuItem* item,
 
 **Description**
 
-Get text menu item title.
+Obtains the title of a text menu item.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -1950,16 +2122,16 @@ Get text menu item title.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item object. |
-| char* buffer | The buffer of the text menu content, memory space needs to be allocated by the developer. |
-| int32_t bufferSize | The name of the text menu item, which defaults to an empty string; |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when returning ARKUI_ERROR_CODE_NO_ERROR. Indicates the minimum buffer size that can accommodate the target when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| char* buffer | Pointer to the buffer. You can create it and allocate memory to store the title information of the text menu item. |
+| int32_t bufferSize | Buffer size. |
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if ARKUI_ERROR_CODE_NO_ERROR is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | The error code. ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if the node, buffer or writeLength is null. ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR If the buffer size is less than the minimum buffer size. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size is insufficient.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItem_SetIcon()
 
@@ -1969,7 +2141,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetIcon(ArkUI_TextMenuItem* item, const ch
 
 **Description**
 
-Set text menu item icon.
+Sets the icon path of a text menu item.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -1977,14 +2151,14 @@ Set text menu item icon.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item. |
-| const char* icon | The text menu item icon resource, which defaults to an empty string. The string will copy to framework. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| const char* icon | Pointer to the icon path of the text menu item. The default value is an empty string. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItem_GetIcon()
 
@@ -1994,7 +2168,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetIcon(const ArkUI_TextMenuItem* item, ch
 
 **Description**
 
-Get text menu item icon.
+Obtains the icon path of a text menu item.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2002,16 +2178,16 @@ Get text menu item icon.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item object |
-| char* buffer | The buffer of the text menu content, memory space needs to be allocated by the developer. |
-| int32_t bufferSize | The icon of the text menu item, which defaults to an empty string; |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when returning ARKUI_ERROR_CODE_NO_ERROR. Indicates the minimum buffer size that can accommodate the target when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| char* buffer | Pointer to the buffer. You can create it and allocate memory to store the icon path of the text menu item. |
+| int32_t bufferSize | Buffer size. |
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if ARKUI_ERROR_CODE_NO_ERROR is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | The error code. ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if the node, buffer or writeLength is null. ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR If the buffer size is less than the minimum buffer size. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size is insufficient.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItem_SetLabelInfo()
 
@@ -2021,7 +2197,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetLabelInfo(ArkUI_TextMenuItem* item, con
 
 **Description**
 
-Set text menu item label info for keyboard shortcut.
+Sets the shortcut hint for a text menu item, for example, the shortcut hint for the **Copy** menu item can be set to **Ctrl+C**.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2029,14 +2207,14 @@ Set text menu item label info for keyboard shortcut.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item. |
-| const char* labelInfo | The text menu item shortcut displays, which defaults to an empty string. The string will copy to framework. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| const char* labelInfo | Pointer to the shortcut hint of a text menu item. The default value is an empty string. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItem_GetLabelInfo()
 
@@ -2046,7 +2224,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetLabelInfo(const ArkUI_TextMenuItem* ite
 
 **Description**
 
-Get text menu item label info for keyboard shortcut..
+Obtains the shortcut hint for a text menu item, for example, the shortcut hint for the **Copy** menu item is typically **Ctrl+C**.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2054,16 +2234,16 @@ Get text menu item label info for keyboard shortcut..
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item object |
-| char* buffer | The buffer of the text menu content, memory space needs to be allocated by the developer. |
-| int32_t bufferSize | The shortcuts of the text menu item, which defaults to an empty string; |
-| int32_t* writeLength | Indicates the string length actually written to the buffer when returning ARKUI_ERROR_CODE_NO_ERROR. Indicates the minimum buffer size that can accommodate the target when ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| char* buffer | Pointer to the buffer. You can create it and allocate memory to store the shortcut hint of the text menu item. |
+| int32_t bufferSize | Buffer size. |
+| int32_t* writeLength | Pointer to the length of the data actually written to the buffer if ARKUI_ERROR_CODE_NO_ERROR is returned.<br> Pointer to the minimum length required for writing the entire string to the buffer if ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR is returned. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | The error code. ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. ARKUI_ERROR_CODE_PARAM_INVALID if the node, buffer or writeLength is null. ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR If the buffer size is less than the minimum buffer size. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR if the buffer size is insufficient.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItem_SetId()
 
@@ -2073,7 +2253,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_SetId(ArkUI_TextMenuItem* item, int32_t id
 
 **Description**
 
-Set text menu item id.
+Sets the ID of a text menu item.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2081,14 +2263,14 @@ Set text menu item id.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item. |
-| int32_t id | The text menu id. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| int32_t id | ID of a text menu item. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItem_GetId()
 
@@ -2098,7 +2280,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItem_GetId(const ArkUI_TextMenuItem* item, int3
 
 **Description**
 
-Get text menu item id.
+Obtains the ID of a text menu item.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2106,14 +2290,14 @@ Get text menu item id.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item object |
-| int32_t* id | The text menu item id; |
+| [const ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| int32_t* id | Pointer to the ID of a text menu item. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_GetSize()
 
@@ -2123,7 +2307,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetSize(ArkUI_TextMenuItemArray* item
 
 **Description**
 
-Get the size of text menu items.
+Obtains the size of the text menu item array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2131,14 +2317,14 @@ Get the size of text menu items.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
-| int32_t* size | The size of text menu items. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object. |
+| int32_t* size | Pointer to the size of the text menu item array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_GetItem()
 
@@ -2148,7 +2334,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_GetItem(ArkUI_TextMenuItemArray* item
 
 **Description**
 
-Get text menu item at index.
+Obtains the text menu item at a specified index from the text menu item array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2156,15 +2344,15 @@ Get text menu item at index.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
-| int32_t index | The index of text menu items. |
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | The text menu item at index of array. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object. |
+| int32_t index | Index position. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)** item | Double pointer to the **ArkUI_TextMenuItem** object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_Insert()
 
@@ -2174,7 +2362,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Insert(ArkUI_TextMenuItemArray* items
 
 **Description**
 
-Insert text menu item at index.
+Inserts a text menu item at a specified index into the text menu item array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2182,15 +2372,15 @@ Insert text menu item at index.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
-| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | The text menu item at index of array. The item will copy by framework. |
-| int32_t index | The index of text menu items. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object. |
+| [ArkUI_TextMenuItem](capi-arkui-nativemodule-arkui-textmenuitem.md)* item | Pointer to the **ArkUI_TextMenuItem** object. |
+| int32_t index | Index position of the text menu item to be inserted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_Erase()
 
@@ -2200,7 +2390,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Erase(ArkUI_TextMenuItemArray* items,
 
 **Description**
 
-Erase text menu item at index.
+Deletes the text menu item at a specified index from the text menu item array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2208,14 +2400,14 @@ Erase text menu item at index.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
-| int32_t index | The index of text menu items. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object. |
+| int32_t index | Index of the text menu item to be deleted. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextMenuItemArray_Clear()
 
@@ -2225,7 +2417,9 @@ ArkUI_ErrorCode OH_ArkUI_TextMenuItemArray_Clear(ArkUI_TextMenuItemArray* items)
 
 **Description**
 
-Clear all the items.
+Clears all text menu items in the text menu item array.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2233,13 +2427,13 @@ Clear all the items.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | The text menu items. |
+| [ArkUI_TextMenuItemArray](capi-arkui-nativemodule-arkui-textmenuitemarray.md)* items | Pointer to the **ArkUI_TextMenuItemArray** object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback()
 
@@ -2249,7 +2443,9 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnCreateMenuCallback(ArkUI_
 
 **Description**
 
-Set the event to be called when text menu create.
+Registers the callback for creating text menus.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2257,15 +2453,15 @@ Set the event to be called when text menu create.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
-| void* userData | The user data. |
-| [ArkUI_TextCreateMenuCallback](capi-text-common-h.md#arkui_textcreatemenucallback) cb | The create callback function. |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object. |
+| void* userData | Pointer to the user-defined data. |
+| [ArkUI_TextCreateMenuCallback](capi-text-common-h.md#arkui_textcreatemenucallback) cb | Callback for creating text menus. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback()
 
@@ -2275,7 +2471,9 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnPrepareMenuCallback(ArkUI
 
 **Description**
 
-Set the event to be called when menu prepare.
+Registers the callback for preparing text menus.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2283,15 +2481,15 @@ Set the event to be called when menu prepare.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
-| void* userData | The user data. |
-| [ArkUI_TextPrepareMenuCallback](capi-text-common-h.md#arkui_textpreparemenucallback) cb | The prepare callback function. |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object. |
+| void* userData | Pointer to the user-defined data. |
+| [ArkUI_TextPrepareMenuCallback](capi-text-common-h.md#arkui_textpreparemenucallback) cb | Callback for preparing text menus. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback()
 
@@ -2301,7 +2499,9 @@ ArkUI_ErrorCode OH_ArkUI_TextEditMenuOptions_RegisterOnMenuItemClickCallback(Ark
 
 **Description**
 
-Set the event to be called when menu item click.
+Registers the callback for text menu item clicks.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2309,15 +2509,15 @@ Set the event to be called when menu item click.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the ArkUI_TextEditMenuOptions object. |
-| void* userData | The user data. |
-| [ArkUI_TextMenuItemClickCallback](capi-text-common-h.md#arkui_textmenuitemclickcallback) cb | The menu item click callback function. |
+| [ArkUI_TextEditMenuOptions](capi-arkui-nativemodule-arkui-texteditmenuoptions.md)* editMenuOptions | Pointer to the **ArkUI_TextEditMenuOptions** object. |
+| void* userData | Pointer to the user-defined data. |
+| [ArkUI_TextMenuItemClickCallback](capi-text-common-h.md#arkui_textmenuitemclickcallback) cb | Callback for text menu item clicks. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_SetSpanType()
 
@@ -2327,7 +2527,9 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetSpanType(ArkUI_TextSelectio
 
 **Description**
 
-Sets the recognition types of a configuration object for selected text recognition.
+Sets the text recognition type of a custom text selection menu.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2335,14 +2537,14 @@ Sets the recognition types of a configuration object for selected text recogniti
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype) textSpanType | The span type of [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype). |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object. |
+| [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype) textSpanType | Recognition type of a custom text selection menu. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_GetSpanType()
 
@@ -2352,7 +2554,9 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetSpanType(ArkUI_TextSelectio
 
 **Description**
 
-Gets the span type select menu options.
+Obtains the text recognition type of a custom text selection menu.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2360,14 +2564,14 @@ Gets the span type select menu options.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype)* spanType | the text span type [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype). |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object. |
+| [ArkUI_TextSpanType](capi-text-common-h.md#arkui_textspantype)* spanType | Pointer to the recognition type of a custom text selection menu. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_SetContentNode()
 
@@ -2377,7 +2581,9 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetContentNode(ArkUI_TextSelec
 
 **Description**
 
-Set custom text menu node of text.
+Sets the content node of a custom text selection menu.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2385,14 +2591,14 @@ Set custom text menu node of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | The custom menu node. |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | Content node of the custom text selection menu. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_GetContentNode()
 
@@ -2402,7 +2608,9 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetContentNode(ArkUI_TextSelec
 
 **Description**
 
-Get custom text menu node of text.
+Obtains the content node of a custom text selection menu.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2410,14 +2618,14 @@ Get custom text menu node of text.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | The custom menu node. |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object. |
+| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* node | Pointer to the content node of the custom text selection menu. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_SetResponseType()
 
@@ -2427,7 +2635,9 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_SetResponseType(ArkUI_TextSele
 
 **Description**
 
-Sets the recognition types of a configuration object for selected text recognition.
+Sets the response type of a custom text selection menu.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2435,14 +2645,14 @@ Sets the recognition types of a configuration object for selected text recogniti
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype) responseType | The response type of [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype). |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object. |
+| [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype) responseType | Response type of the custom text selection menu. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_GetResponseType()
 
@@ -2452,7 +2662,9 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_GetResponseType(ArkUI_TextSele
 
 **Description**
 
-Gets the response type select menu options.
+Obtains the response type of a custom text selection menu.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2460,14 +2672,14 @@ Gets the response type select menu options.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype)* responseType | The text response type [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype). |
+| [ArkUI_TextSelectionMenuOptions](capi-arkui-nativemodule-arkui-textselectionmenuoptions.md)* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object. |
+| [ArkUI_TextResponseType](capi-text-common-h.md#arkui_textresponsetype)* responseType | Pointer to the response type of the custom text selection menu. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback()
 
@@ -2477,7 +2689,9 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback(Ark
 
 **Description**
 
-Set the event to be called when selection menu show.
+Registers the callback for the event of showing a custom text selection menu.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2485,15 +2699,15 @@ Set the event to be called when selection menu show.
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| void* userData | The user data. |
-| void (*callback)(int32_t start | The callback function of menu show. start The start offset of the selected content. end The end offset of the selected content. userData The user data. |
+| rkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object. |
+| void* userData | Pointer to the user-defined data, which can be any value. After the setting, the value is returned through the callback. |
+| void (*callback)(int32_t start | Callback for the event of showing a custom text selection menu.<br> **start**: start position of the selected text.<br> **end**: end position of the selected text.<br> **userData**: user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuShowCallback** API. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback()
 
@@ -2503,7 +2717,9 @@ ArkUI_ErrorCode OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback(Ark
 
 **Description**
 
-Set the event to be called when selection menu hide.
+Registers the callback for the event of hiding a custom text selection menu.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2511,15 +2727,15 @@ Set the event to be called when selection menu hide.
 
 | Parameter | Description |
 | -- | -- |
-| rkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the ArkUI_TextSelectionMenuOptions object. |
-| void* userData | The user data. |
-| void (*callback)(int32_t start | The callback function of menu hide. start The start offset of the selected content. end The end offset of the selected content. userData The user data. |
+| rkUI_TextSelectionMenuOptions* selectionMenuOptions | Pointer to the **ArkUI_TextSelectionMenuOptions** object. |
+| void* userData | Pointer to the user-defined data, which can be any value. After the setting, the value is returned through the callback. |
+| void (*callback)(int32_t start | Callback for the event of hiding a custom text selection menu.<br> **start**: start position of the selected text.<br> **end**: end position of the selected text.<br> **userData**: user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextSelectionMenuOptions_RegisterOnMenuHideCallback** API. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_SelectionOptions_Create()
 
@@ -2529,7 +2745,9 @@ ArkUI_SelectionOptions* OH_ArkUI_SelectionOptions_Create()
 
 **Description**
 
-Create selection options.
+Creates a selection option.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -2537,7 +2755,7 @@ Create selection options.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_SelectionOptions*](capi-arkui-nativemodule-arkui-selectionoptions.md) | A pointer to the selection options object. |
+| [ArkUI_SelectionOptions*](capi-arkui-nativemodule-arkui-selectionoptions.md) | Pointer to the selection option. |
 
 ### OH_ArkUI_SelectionOptions_Dispose()
 
@@ -2547,7 +2765,9 @@ void OH_ArkUI_SelectionOptions_Dispose(ArkUI_SelectionOptions* options)
 
 **Description**
 
-Dispose selection options object.
+Releases a selection option object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -2555,7 +2775,7 @@ Dispose selection options object.
 
 | Parameter | Description |
 | -- | -- |
-| {ArkUI_SelectionOptions*} | options Pointer to the selection options object. to be disposed. |
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection option to be released. |
 
 ### OH_ArkUI_SelectionOptions_SetMenuPolicy()
 
@@ -2565,7 +2785,9 @@ void OH_ArkUI_SelectionOptions_SetMenuPolicy(ArkUI_SelectionOptions* options, Ar
 
 **Description**
 
-Sets the menu policy for selection options.
+Sets the menu pop-up policy for selection options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -2573,8 +2795,8 @@ Sets the menu policy for selection options.
 
 | Parameter | Description |
 | -- | -- |
-| {ArkUI_SelectionOptions*} | options Pointer to the selection options. |
-| {ArkUI_MenuPolicy} | menuPolicy The menu policy. |
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection option. |
+| [ArkUI_MenuPolicy](capi-native-type-h.md#arkui_menupolicy) menuPolicy | Menu display policy. |
 
 ### OH_ArkUI_SelectionOptions_GetMenuPolicy()
 
@@ -2584,7 +2806,9 @@ ArkUI_MenuPolicy OH_ArkUI_SelectionOptions_GetMenuPolicy(ArkUI_SelectionOptions*
 
 **Description**
 
-Gets the menu policy of selection options.
+Obtains the menu pop-up policy for selection options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -2592,13 +2816,13 @@ Gets the menu policy of selection options.
 
 | Parameter | Description |
 | -- | -- |
-| {ArkUI_SelectionOptions*} | options Pointer to the selection options object. |
+| [ArkUI_SelectionOptions](capi-arkui-nativemodule-arkui-selectionoptions.md)* options | Pointer to the selection option. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_MenuPolicy](capi-native-type-h.md#arkui_menupolicy) | Returns the menu policy. |
+| [ArkUI_MenuPolicy](capi-native-type-h.md#arkui_menupolicy) | Menu display policy. |
 
 ### OH_ArkUI_SelectedDragPreviewStyle_Create()
 
@@ -2608,7 +2832,9 @@ ArkUI_SelectedDragPreviewStyle* OH_ArkUI_SelectedDragPreviewStyle_Create()
 
 **Description**
 
-Create a configuration object for selected drag preview style.
+Creates a preview style shown when dragging selected text.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -2616,7 +2842,7 @@ Create a configuration object for selected drag preview style.
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_SelectedDragPreviewStyle*](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md) | A pointer to the configuration object. |
+| [ArkUI_SelectedDragPreviewStyle*](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md) | Pointer to the **ArkUI_SelectedDragPreviewStyle** object. |
 
 ### OH_ArkUI_SelectedDragPreviewStyle_Dispose()
 
@@ -2626,7 +2852,9 @@ void OH_ArkUI_SelectedDragPreviewStyle_Dispose(ArkUI_SelectedDragPreviewStyle* c
 
 **Description**
 
-Dispose a configuration object for selected drag preview style.
+Destroys the preview style shown when dragging selected text.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -2634,7 +2862,7 @@ Dispose a configuration object for selected drag preview style.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md)* config | Pointer to the configuration object to be disposed. |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md)* config | Pointer to the **ArkUI_SelectedDragPreviewStyle** object. |
 
 ### OH_ArkUI_SelectedDragPreviewStyle_SetColor()
 
@@ -2644,7 +2872,9 @@ void OH_ArkUI_SelectedDragPreviewStyle_SetColor(ArkUI_SelectedDragPreviewStyle* 
 
 **Description**
 
-Sets the color of background for selected drag preview style.
+Sets the background color of the preview style shown when dragging selected text.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -2652,8 +2882,8 @@ Sets the color of background for selected drag preview style.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md)* config | Pointer to the configuration object to be modified. |
-| uint32_t color | Background color. |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md)* config | Pointer to the **ArkUI_SelectedDragPreviewStyle** object. |
+| uint32_t color | Background color of the preview style shown when dragging selected text, in RGBA format. |
 
 ### OH_ArkUI_SelectedDragPreviewStyle_GetColor()
 
@@ -2663,7 +2893,9 @@ uint32_t OH_ArkUI_SelectedDragPreviewStyle_GetColor(ArkUI_SelectedDragPreviewSty
 
 **Description**
 
-Gets the color of background for selected drag preview style.
+Obtains the background color of the preview style shown when dragging selected text.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -2671,13 +2903,13 @@ Gets the color of background for selected drag preview style.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md)* config | Pointer to the configuration object. |
+| [ArkUI_SelectedDragPreviewStyle](capi-arkui-nativemodule-arkui-selecteddragpreviewstyle.md)* config | Pointer to the **ArkUI_SelectedDragPreviewStyle** object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| uint32_t | Returns the background color. |
+| uint32_t | Background color of the preview style shown when dragging selected text, in RGBA format. |
 
 ### OH_ArkUI_DecorationStyleOptions_SetTextDecorationType()
 
@@ -2689,6 +2921,8 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationType(OH_ArkUI_D
 
 Sets the decoration type of the decorative line style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2696,7 +2930,7 @@ Sets the decoration type of the decorative line style.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | Pointer to the [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) object. |
-| [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype) type | Decoration type ([ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)). |
+| [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype) type | Decoration type, specified using [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype). |
 
 **Returns**:
 
@@ -2714,6 +2948,8 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationType(OH_ArkUI_D
 
 Obtains the decoration type of the decorative line style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2721,7 +2957,7 @@ Obtains the decoration type of the decorative line style.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | Pointer to the [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) object. |
-| [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)* type | Pointer to the decoration type ([ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)). |
+| [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype)* type | Pointer to the decoration type, specified using [ArkUI_TextDecorationType](capi-text-common-h.md#arkui_textdecorationtype). |
 
 **Returns**:
 
@@ -2738,6 +2974,8 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetColor(OH_ArkUI_DecorationStyl
 **Description**
 
 Sets the color of the decorative line.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2764,6 +3002,8 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetColor(OH_ArkUI_DecorationStyl
 
 Obtains the color of the decorative line.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2789,6 +3029,8 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetTextDecorationStyle(OH_ArkUI_
 
 Sets the style of the decorative line.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2796,7 +3038,7 @@ Sets the style of the decorative line.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | Pointer to the [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) object. |
-| [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle) style | Style of the decorative line ([ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)). |
+| [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle) style | Decorative line style, specified using [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle). |
 
 **Returns**:
 
@@ -2814,6 +3056,8 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetTextDecorationStyle(OH_ArkUI_
 
 Obtains the style of the decorative line.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2821,7 +3065,7 @@ Obtains the style of the decorative line.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* options | Pointer to the [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md) object. |
-| [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)* style | Pointer to the style of the decorative line ([ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)). |
+| [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle)* style | Pointer to the decorative line style, specified using [ArkUI_TextDecorationStyle](capi-text-common-h.md#arkui_textdecorationstyle). |
 
 **Returns**:
 
@@ -2838,6 +3082,8 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_SetThicknessScale(OH_ArkUI_Decor
 **Description**
 
 Sets the scale factor of the decorative line thickness.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2864,6 +3110,8 @@ ArkUI_ErrorCode OH_ArkUI_DecorationStyleOptions_GetThicknessScale(OH_ArkUI_Decor
 
 Obtains the scale factor of the decorative line thickness.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2889,6 +3137,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetTypes(OH_ArkUI_TextDataDetect
 
 Sets the types of the text entity recognition configuration.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2896,7 +3146,7 @@ Sets the types of the text entity recognition configuration.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object. |
-| [const ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype)* types | Pointer to the types of the text entity recognition configuration. The value is an enumerated value of { |
+| [const ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype)* types | Type of the text entity recognition configuration. The value is an enumerated value of [ArkUI_TextDataDetectorType](capi-text-h.md#arkui_textdatadetectortype). |
 | int32_t length | Type quantity. |
 
 **Returns**:
@@ -2914,6 +3164,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetTypes(OH_ArkUI_TextDataDetect
 **Description**
 
 Obtains the types of the text entity recognition configuration.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2942,6 +3194,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCall
 
 Sets the callback for text entity recognition result updates.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -2950,7 +3204,7 @@ Sets the callback for text entity recognition result updates.
 | -- | -- |
 | H_ArkUI_TextDataDetectorConfig* config | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object. |
 | void* userData | Pointer to the user data. |
-| void (*callback)(const char* result | detect result update callback. |
+| void (*callback)(const char* result | Pointer to the callback when the recognition result is updated. **result** indicates the recognized text entity content. **length** indicates the end position of the selected text. **userData** indicates the user-defined data, which corresponds to the input parameter **userData** of the **OH_ArkUI_TextDataDetectorConfig_RegisterOnDetectResultUpdateCallback** API. |
 
 **Returns**:
 
@@ -2967,6 +3221,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetColor(OH_ArkUI_TextDataDetect
 **Description**
 
 Sets the color of the recognized content.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -2993,6 +3249,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetColor(OH_ArkUI_TextDataDetect
 
 Obtains the color of the recognized content.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3018,6 +3276,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetDecorationStyleOptions(OH_Ark
 
 Sets the decoration style of the recognized content.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3025,7 +3285,7 @@ Sets the decoration style of the recognized content.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object. |
-| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | Pointer to the decoration style of the recognized content. The value is an enumerated value of [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md). |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | Pointer to the decoration style of the recognized content. |
 
 **Returns**:
 
@@ -3043,6 +3303,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetDecorationStyleOptions(OH_Ark
 
 Obtains the decoration style of the recognized content.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3050,7 +3312,7 @@ Obtains the decoration style of the recognized content.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md)* config | Pointer to the [OH_ArkUI_TextDataDetectorConfig](capi-arkui-nativemodule-oh-arkui-textdatadetectorconfig.md) object. |
-| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | Pointer to the decoration style of the recognized content. The value is an enumerated value of [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md). |
+| [OH_ArkUI_DecorationStyleOptions](capi-arkui-nativemodule-oh-arkui-decorationstyleoptions.md)* decoration | Pointer to the decoration style of the recognized content. |
 
 **Returns**:
 
@@ -3067,6 +3329,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_SetEnablePreviewMenu(OH_ArkUI_Te
 **Description**
 
 Sets whether to display the preview menu when the recognized content is long-pressed.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3093,6 +3357,8 @@ ArkUI_ErrorCode OH_ArkUI_TextDataDetectorConfig_GetEnablePreviewMenu(OH_ArkUI_Te
 
 Obtains whether the preview menu is displayed when the recognized content is long-pressed.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3116,7 +3382,9 @@ ArkUI_ErrorCode OH_ArkUI_TextController_SetStyledString(OH_ArkUI_TextController*
 
 **Description**
 
-Set the StyledString of the text.
+Sets a styled string for the text component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -3124,14 +3392,14 @@ Set the StyledString of the text.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)* controller | the controller of the text. |
-| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | Pointer to an <b>ArkUI_StyledString_Descriptor</b> object, which will be set to Text. |
+| [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md)* controller | Pointer to the [OH_ArkUI_TextController](capi-arkui-nativemodule-oh-arkui-textcontroller.md) object. |
+| [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md)* descriptor | Pointer to the [ArkUI_StyledString_Descriptor](capi-arkui-nativemodule-arkui-styledstring-descriptor.md) object. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_TextEditorPlaceholderOptions_SetValue()
 
@@ -3142,6 +3410,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetValue(OH_ArkUI_TextEdit
 **Description**
 
 Sets the text for the placeholder text options used when there is no input.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3167,6 +3437,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetValue(OH_ArkUI_TextEdit
 **Description**
 
 Obtains the text for the placeholder text options used when there is no input.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3195,6 +3467,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontSize(OH_ArkUI_TextE
 
 Sets the font size for the placeholder text options used when there is no input.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3219,6 +3493,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontSize(OH_ArkUI_TextE
 **Description**
 
 Obtains the font size for the placeholder text options used when there is no input.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3245,6 +3521,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontWeight(OH_ArkUI_Tex
 
 Sets the font weight for the placeholder text options used when there is no input.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3252,7 +3530,7 @@ Sets the font weight for the placeholder text options used when there is no inpu
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | Pointer to the [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md) object. |
-| uint32_t fontWeight | Font weight. The value is an integer multiple of 100 within the [100, 900] range, for example, **<br>100** or **900**. |
+| uint32_t fontWeight | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W400**. |
 
 **Returns**:
 
@@ -3270,6 +3548,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontWeight(OH_ArkUI_Tex
 
 Obtains the font weight for the placeholder text options used when there is no input.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3277,7 +3557,7 @@ Obtains the font weight for the placeholder text options used when there is no i
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md)* options | Pointer to the [OH_ArkUI_TextEditorPlaceholderOptions](capi-arkui-nativemodule-oh-arkui-texteditorplaceholderoptions.md) object. |
-| uint32_t* fontWeight | Pointer to the font weight. The value is an integer multiple of 100 within the [100, 900] range, for example, **100** or **900**. |
+| uint32_t* fontWeight | Pointer to the font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W400**. |
 
 **Returns**:
 
@@ -3294,6 +3574,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontFamily(OH_ArkUI_Tex
 **Description**
 
 Sets the font family for the placeholder text options used when there is no input.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3319,6 +3601,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontFamily(OH_ArkUI_Tex
 **Description**
 
 Obtains the font family for the placeholder text options used when there is no input.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3347,6 +3631,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontStyle(OH_ArkUI_Text
 
 Sets the font style for the placeholder text options used when there is no input.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3371,6 +3657,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontStyle(OH_ArkUI_Text
 **Description**
 
 Obtains the font style for the placeholder text options used when there is no input.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3397,6 +3685,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_SetFontColor(OH_ArkUI_Text
 
 Sets the font color for the placeholder text options used when there is no input.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3421,6 +3711,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorPlaceholderOptions_GetFontColor(OH_ArkUI_Text
 **Description**
 
 Obtains the font color for the placeholder text options used when there is no input.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3447,6 +3739,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetCaretOffset(OH_ArkU
 
 Sets the caret offset using the styled string controller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3472,6 +3766,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretOffset(OH_ArkU
 
 Obtains the caret offset using the styled string controller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3496,6 +3792,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetSelection(OH_ArkUI_
 **Description**
 
 Sets the selected area using the styled string controller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3524,6 +3822,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_IsEditing(OH_ArkUI_Tex
 
 Obtains the editing status of the text editor using the styled string controller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3531,7 +3831,7 @@ Obtains the editing status of the text editor using the styled string controller
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | Pointer to the [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md) object. |
-| bool* isEditing | Pointer to the **isEditing** parameter indicating whether the text editor is in the editing state. *<br>*true** means that the text editor is in the editing state, and **false** means the opposite. |
+| bool* isEditing | Pointer to the **isEditing** parameter indicating whether the text editor is in the editing state. **true** means that the text editor is in the editing state, and **false** means the opposite. |
 
 **Returns**:
 
@@ -3548,6 +3848,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_StopEditing(OH_ArkUI_T
 **Description**
 
 Exits the editing status of the text editor using the styled string controller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3572,6 +3874,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetPreviewText(OH_ArkU
 **Description**
 
 Obtains the preview text using the styled string controller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3601,6 +3905,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetCaretRect(OH_ArkUI_
 
 Obtains the caret-selected rectangle using the styled string controller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3626,6 +3932,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_DeleteBackward(OH_ArkU
 
 Deletes characters using the styled string controller. If no content is selected, one character before the current caret position is deleted. If content is selected, the selected content is deleted.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3649,6 +3957,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextAlign(OH_ArkUI_TextEdit
 **Description**
 
 Sets the text alignment mode in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3675,6 +3985,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextAlign(OH_ArkUI_TextEdit
 
 Obtains the text alignment mode in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3699,6 +4011,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginPixelMap(OH_Ar
 **Description**
 
 Sets the PixelMap for paragraph indentation in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3725,6 +4039,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginPixelMap(OH_Ar
 
 Obtains the PixelMap for paragraph indentation in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3749,6 +4065,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginWidth(OH_ArkUI
 **Description**
 
 Sets the width for paragraph indentation in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3775,6 +4093,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginWidth(OH_ArkUI
 
 Obtains the width for paragraph indentation in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3799,6 +4119,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLeadingMarginHeight(OH_ArkU
 **Description**
 
 Sets the height for paragraph indentation in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3825,6 +4147,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLeadingMarginHeight(OH_ArkU
 
 Obtains the height for paragraph indentation in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3849,6 +4173,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetWordBreak(OH_ArkUI_TextEdit
 **Description**
 
 Sets the word breaking mode in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3875,6 +4201,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetWordBreak(OH_ArkUI_TextEdit
 
 Obtains the word breaking mode in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3899,6 +4227,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetLineBreakStrategy(OH_ArkUI_
 **Description**
 
 Sets the line breaking strategy in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3925,6 +4255,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetLineBreakStrategy(OH_ArkUI_
 
 Obtains the line breaking strategy in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3949,6 +4281,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetParagraphSpacing(OH_ArkUI_T
 **Description**
 
 Sets the paragraph spacing in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -3975,6 +4309,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetParagraphSpacing(OH_ArkUI_T
 
 Obtains the paragraph spacing in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -3999,6 +4335,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextVerticalAlign(OH_ArkUI_
 **Description**
 
 Sets the text vertical alignment mode in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4025,6 +4363,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextVerticalAlign(OH_ArkUI_
 
 Obtains the text vertical alignment mode in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4049,6 +4389,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_SetTextDirection(OH_ArkUI_Text
 **Description**
 
 Sets the text direction in the paragraph style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4075,6 +4417,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorParagraphStyle_GetTextDirection(OH_ArkUI_Text
 
 Obtains the text direction in the paragraph style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4099,6 +4443,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingParagraphStyl
 **Description**
 
 Sets the typing paragraph style using the styled string controller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4125,6 +4471,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontColor(OH_ArkUI_TextEditorTex
 
 Sets the font color of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4149,6 +4497,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontColor(OH_ArkUI_TextEditorTex
 **Description**
 
 Obtains the font color of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4175,6 +4525,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontSize(OH_ArkUI_TextEditorText
 
 Sets the font size of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4199,6 +4551,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontSize(OH_ArkUI_TextEditorText
 **Description**
 
 Obtains the font size of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4225,6 +4579,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontStyle(OH_ArkUI_TextEditorTex
 
 Sets the font style of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4249,6 +4605,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontStyle(OH_ArkUI_TextEditorTex
 **Description**
 
 Obtains the font style of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4275,6 +4633,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontWeight(OH_ArkUI_TextEditorTe
 
 Sets the font weight of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4282,7 +4642,7 @@ Sets the font weight of the text style.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | Pointer to the text style of the **TextEditor** component. |
-| uint32_t fontWeight | Font weight. The value is an integer multiple of 100 within the [100, 900] range, for example, **<br>100** or **900**. |
+| uint32_t fontWeight | Font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W400**. |
 
 **Returns**:
 
@@ -4300,6 +4660,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontWeight(OH_ArkUI_TextEditorTe
 
 Obtains the font weight of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4307,7 +4669,7 @@ Obtains the font weight of the text style.
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | Pointer to the text style of the **TextEditor** component. |
-| uint32_t* fontWeight | Pointer to the font weight. The value is an integer multiple of 100 within the [100, 900] range, for example, **100** or **900**. |
+| uint32_t* fontWeight | Pointer to the font weight. The value is an enumerated value of [ArkUI_FontWeight](capi-text-h.md#arkui_fontweight). The default value is **ARKUI_FONT_WEIGHT_W400**. |
 
 **Returns**:
 
@@ -4324,6 +4686,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontFamily(OH_ArkUI_TextEditorTe
 **Description**
 
 Sets the font family of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4349,6 +4713,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFamily(OH_ArkUI_TextEditorTe
 **Description**
 
 Obtains the font family of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4377,6 +4743,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetDecoration(OH_ArkUI_TextEditorTe
 
 Sets the text decoration options of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4401,6 +4769,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetDecoration(OH_ArkUI_TextEditorTe
 **Description**
 
 Obtains the text decoration options of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4427,6 +4797,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextShadows(OH_ArkUI_TextEditorT
 
 Sets the text shadow options of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4452,6 +4824,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextShadows(OH_ArkUI_TextEditorT
 **Description**
 
 Obtains the text shadow options of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4480,6 +4854,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetLineHeight(OH_ArkUI_TextEditorTe
 
 Sets the line height of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4504,6 +4880,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetLineHeight(OH_ArkUI_TextEditorTe
 **Description**
 
 Obtains the line height of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4530,6 +4908,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetLetterSpacing(OH_ArkUI_TextEdito
 
 Sets the letter spacing of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4554,6 +4934,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetLetterSpacing(OH_ArkUI_TextEdito
 **Description**
 
 Obtains the letter spacing of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4580,6 +4962,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetFontFeature(OH_ArkUI_TextEditorT
 
 Sets the font feature of the text style, such as monospaced digits.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4604,6 +4988,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetFontFeature(OH_ArkUI_TextEditorT
 **Description**
 
 Obtains the font feature of the text style, such as monospaced digits.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4632,6 +5018,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetHalfLeading(OH_ArkUI_TextEditorT
 
 Sets whether to evenly distribute the line spacing to the top and bottom of each line in the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4657,6 +5045,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetHalfLeading(OH_ArkUI_TextEditorT
 
 Obtains whether the line spacing is evenly distributed to the top and bottom of each line in the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4664,7 +5054,7 @@ Obtains whether the line spacing is evenly distributed to the top and bottom of 
 | Parameter | Description |
 | -- | -- |
 | [OH_ArkUI_TextEditorTextStyle](capi-arkui-nativemodule-oh-arkui-texteditortextstyle.md)* style | Pointer to the text style of the **TextEditor** component. |
-| bool* halfLeading | Pointer to the **halfLeading** parameter indicating whether to enable half leading. <br>**true** means to enable, and **false** means the opposite. The default value is **false**. |
+| bool* halfLeading | Pointer to the **halfLeading** parameter indicating whether half leading is enabled. <br>**true** means half leading is enabled, and **false** means the opposite. The default value is **false**. |
 
 **Returns**:
 
@@ -4681,6 +5071,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundColor(OH_ArkUI_Tex
 **Description**
 
 Sets the text background color of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4707,6 +5099,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundColor(OH_ArkUI_Tex
 
 Obtains the text background color of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4731,6 +5125,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_SetTextBackgroundRadius(OH_ArkUI_Te
 **Description**
 
 Sets the radius of the rounded corner of the text background of the text style.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4760,6 +5156,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorTextStyle_GetTextBackgroundRadius(OH_ArkUI_Te
 
 Obtains the radius of the rounded corner of the text background of the text style.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4788,6 +5186,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_SetTypingStyle(OH_ArkU
 
 Sets the typing style using the styled string controller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4812,6 +5212,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_GetTypingStyle(OH_ArkU
 **Description**
 
 Obtains the typing style using the styled string controller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4838,6 +5240,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetSpanType(OH_ArkUI_Tex
 
 Sets the span type of the text selection menu in the text editor.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4862,6 +5266,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetSpanType(OH_ArkUI_Tex
 **Description**
 
 Obtains the span type of the text selection menu in the text editor.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4888,6 +5294,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetContentNode(OH_ArkUI_
 
 Sets the content node of the text selection menu in the text editor.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4912,6 +5320,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetContentNode(OH_ArkUI_
 **Description**
 
 Obtains the content node of the text selection menu in the text editor.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4938,6 +5348,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetResponseType(OH_ArkUI
 
 Sets the response type of the text selection menu in the text editor.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -4962,6 +5374,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetResponseType(OH_ArkUI
 **Description**
 
 Obtains the response type of the text selection menu in the text editor.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -4988,6 +5402,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetMenuType(OH_ArkUI_Tex
 
 Sets the type of the text selection menu in the text editor.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5012,6 +5428,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetMenuType(OH_ArkUI_Tex
 **Description**
 
 Obtains the type of the text selection menu in the text editor.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5038,6 +5456,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuShowCallba
 
 Sets the callback triggered when the text selection menu is displayed.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5046,7 +5466,7 @@ Sets the callback triggered when the text selection menu is displayed.
 | -- | -- |
 | H_ArkUI_TextEditorSelectionMenuOptions* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object. |
 | void* userData | Pointer to the user data. |
-| void (*callback)(int32_t start | The callback function of menu show. start The start offset of the selected content. end The end offset of the selected content. callbackUserData The user data. |
+| void (*callback)(int32_t start | Pointer to the callback when the menu is displayed. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data. |
 
 **Returns**:
 
@@ -5064,6 +5484,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuHideCallba
 
 Sets the callback triggered when the text selection menu is hidden.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5072,7 +5494,7 @@ Sets the callback triggered when the text selection menu is hidden.
 | -- | -- |
 | H_ArkUI_TextEditorSelectionMenuOptions* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object. |
 | void* userData | Pointer to the user data. |
-| void (*callback)(int32_t start | The callback function of menu hide. start The start offset of the selected content. end The end offset of the selected content. userData The user data. |
+| void (*callback)(int32_t start | Pointer to the callback when the menu is hidden. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data. |
 
 **Returns**:
 
@@ -5090,6 +5512,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuAppearCall
 
 Sets the callback triggered when the text selection menu appears.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5098,7 +5522,7 @@ Sets the callback triggered when the text selection menu appears.
 | -- | -- |
 | H_ArkUI_TextEditorSelectionMenuOptions* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object. |
 | void* userData | Pointer to the user data. |
-| void (*callback)(int32_t start | The callback function of menu appear. start The start offset of the selected content. end The end offset of the selected content. userData The user data. |
+| void (*callback)(int32_t start | Pointer to the callback when the menu appears. **start** indicates the start offset of the selected content. **end** indicates the end offset of the selected content. **callbackUserData** indicates the user data. |
 
 **Returns**:
 
@@ -5116,6 +5540,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_RegisterOnMenuDisappearC
 
 Sets the callback triggered when the text selection menu disappears.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5124,7 +5550,7 @@ Sets the callback triggered when the text selection menu disappears.
 | -- | -- |
 | H_ArkUI_TextEditorSelectionMenuOptions* options | Pointer to the [OH_ArkUI_TextEditorSelectionMenuOptions](capi-arkui-nativemodule-oh-arkui-texteditorselectionmenuoptions.md) object. |
 | void* userData | Pointer to the user data. |
-| void (*callback)(void* callbackUserData) | The callback function of menu disappear. userData The user data. |
+| void (*callback)(void* callbackUserData) | Pointer to the callback when the menu disappears. **callbackUserData** indicates the user data. |
 
 **Returns**:
 
@@ -5141,6 +5567,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_SetHapticFeedbackMode(OH
 **Description**
 
 Sets the haptic feedback mode of the text selection menu in the text editor.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5167,6 +5595,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorSelectionMenuOptions_GetHapticFeedbackMode(OH
 
 Obtains the haptic feedback mode of the text selection menu in the text editor.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5191,6 +5621,8 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_CloseSelectionMenu(OH_
 **Description**
 
 Closes the text selection menu of the styled string controller in the text editor.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5219,6 +5651,8 @@ Obtains the selected area using the styled string controller.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5250,6 +5684,8 @@ Sets the styled string displayed using the styled string controller.
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5278,6 +5714,8 @@ Obtains the styled string displayed using the styled string controller.
 > **Note**:
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -5308,6 +5746,8 @@ Sets the placeholder text in the styled string style using the styled string con
 >
 > All input pointer parameters must be allocated, managed, and released by the caller.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Parameters**:
@@ -5331,7 +5771,9 @@ ArkUI_ErrorCode OH_ArkUI_TextEditorStyledStringController_ScrollToVisible(const 
 
 **Description**
 
-Scroll the text editor component to make the specified content visible.
+Scrolls the content within the range from the specified start index to the end index to the visible area using the styled string controller.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5339,15 +5781,15 @@ Scroll the text editor component to make the specified content visible.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | <b>TextEditor</b> styled string controller. |
-| int32_t start | The start offset of the content to be made visible. |
-| int32_t end | The end offset of the content to be made visible |
+| [const OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md)* controller | Pointer to the [OH_ArkUI_TextEditorStyledStringController](capi-arkui-nativemodule-oh-arkui-texteditorstyledstringcontroller.md) object. |
+| int32_t start | Start index.<br> The start index must be less than or equal to the end index. Otherwise, the API call is invalid. The value range is [0, Total length of the content in the **TextEditor** component]. If the start index is less than 0, 0 is used. If the start index is greater than the total length, the total length is used. |
+| int32_t end | End index.<br> The end index must be greater than or equal to the start index. Otherwise, the API call is invalid. The value range is [0, Total length of the content in the **TextEditor** component]. If the end index is less than 0, 0 is used. If the end index is greater than the total length, the total length is used. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code. <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PickerIndicatorStyle_ConfigureBackground()
 
@@ -5357,7 +5799,9 @@ ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureBackground(ArkUI_PickerIn
 
 **Description**
 
-Set the parameters of background style.
+Sets the background style. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_BACKGROUND](capi-picker-h.md#arkui_pickerindicatortype).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -5365,14 +5809,14 @@ Set the parameters of background style.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | The ArkUI_PickerIndicatorStyle instance. |
-| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)* background | The parameters of background style. |
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | Pointer to the [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) instance. |
+| [ArkUI_PickerIndicatorBackground](capi-arkui-nativemodule-arkui-pickerindicatorbackground.md)* background | Pointer to the background. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns ARKUI_ERROR_CODE_NO_ERROR if success. Returns ARKUI_ERROR_CODE_PARAM_INVALID The parameters set need to be consistent with the type of the created instance. If they are not consistent, this error code will be returned. This interface only takes effect when the type is "background". |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_PickerIndicatorStyle_ConfigureDivider()
 
@@ -5382,7 +5826,9 @@ ArkUI_ErrorCode OH_ArkUI_PickerIndicatorStyle_ConfigureDivider(ArkUI_PickerIndic
 
 **Description**
 
-Set the parameters of divider style.
+Sets the divider style. This API takes effect only when the type of the selected item indicator is [ARKUI_PICKER_INDICATOR_DIVIDER](capi-picker-h.md#arkui_pickerindicatortype).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 23
 
@@ -5390,14 +5836,14 @@ Set the parameters of divider style.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | The ArkUI_PickerIndicatorStyle instance. |
-| [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)* divider | The parameters of divider style. |
+| [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md)* style | Pointer to the [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md) instance. |
+| [ArkUI_PickerIndicatorDivider](capi-arkui-nativemodule-arkui-pickerindicatordivider.md)* divider | Pointer to the divider style. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns ARKUI_ERROR_CODE_NO_ERROR if success. Returns ARKUI_ERROR_CODE_PARAM_INVALID The parameters set need to be consistent with the type of the created instance. If they are not consistent, this error code will be returned. This interface only takes effect when the type is "divider". |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Return result.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus()
 
@@ -5407,7 +5853,9 @@ void OH_ArkUI_CrossLanguageOption_SetTreeOperatingStatus(ArkUI_CrossLanguageOpti
 
 **Description**
 
-Sets the tree operating status for the cross-language option.
+Sets the node tree operation state of a cross-language configuration option.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5415,8 +5863,8 @@ Sets the tree operating status for the cross-language option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | The cross-language option. |
-| [OH_ArkUI_CrossLanguageOperatingStatus](capi-native-type-h.md#oh_arkui_crosslanguageoperatingstatus) status | The tree operating status to be set for the cross-language option. Default value: OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED. |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option instance. |
+| [OH_ArkUI_CrossLanguageOperatingStatus](capi-native-type-h.md#oh_arkui_crosslanguageoperatingstatus) status | Node tree operation state to be set. Default value: **OH_ARKUI_TREE_OPERATING_STATUS_UNDEFINED**. |
 
 ### OH_ArkUI_CrossLanguageOption_GetTreeOperatingStatus()
 
@@ -5426,7 +5874,9 @@ OH_ArkUI_CrossLanguageOperatingStatus OH_ArkUI_CrossLanguageOption_GetTreeOperat
 
 **Description**
 
-Gets the tree operating status of the cross-language option.
+Obtains the node tree operation state of a cross-language configuration option.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5434,13 +5884,13 @@ Gets the tree operating status of the cross-language option.
 
 | Parameter | Description |
 | -- | -- |
-| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | The cross-language option. |
+| [ArkUI_CrossLanguageOption](capi-arkui-nativemodule-arkui-crosslanguageoption.md)* option | Pointer to the cross-language configuration option instance. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_CrossLanguageOperatingStatus](capi-native-type-h.md#oh_arkui_crosslanguageoperatingstatus) | Return the tree operating status of the cross-language option. |
+| [OH_ArkUI_CrossLanguageOperatingStatus](capi-native-type-h.md#oh_arkui_crosslanguageoperatingstatus) | Node tree operation state of a cross-language configuration option. |
 
 ### OH_ArkUI_LinearGradientOptions_Create()
 
@@ -5450,7 +5900,9 @@ OH_ArkUI_LinearGradientOptions* OH_ArkUI_LinearGradientOptions_Create()
 
 **Description**
 
-Creates a linear gradient options object. The returned object must be released by calling <b>OH_ArkUI_LinearGradientOptions_Destroy</b>.
+Creates an object for linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5458,7 +5910,7 @@ Creates a linear gradient options object. The returned object must be released b
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_LinearGradientOptions*](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
+| [OH_ArkUI_LinearGradientOptions*](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
 
 ### OH_ArkUI_LinearGradientOptions_Destroy()
 
@@ -5468,7 +5920,9 @@ void OH_ArkUI_LinearGradientOptions_Destroy(OH_ArkUI_LinearGradientOptions* opti
 
 **Description**
 
-Destroys a linear gradient options object.
+Destroys the object for linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5476,7 +5930,7 @@ Destroys a linear gradient options object.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
 
 ### OH_ArkUI_LinearGradientOptions_SetAngle()
 
@@ -5486,7 +5940,9 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetAngle(OH_ArkUI_LinearGradientO
 
 **Description**
 
-Sets angle of linear gradient options.
+Sets the angle in linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5494,14 +5950,14 @@ Sets angle of linear gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
-| float angle | Start angle of linear gradient. |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
+| float angle | Angle in linear gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_LinearGradientOptions_GetAngle()
 
@@ -5511,7 +5967,9 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetAngle(const OH_ArkUI_LinearGra
 
 **Description**
 
-Gets angle of linear gradient options.
+Obtains the angle in linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5519,14 +5977,14 @@ Gets angle of linear gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
-| float* angle | Pointer to the start angle of linear gradient. |
+| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
+| float* angle | Pointer to the angle in linear gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_LinearGradientOptions_SetDirection()
 
@@ -5536,7 +5994,9 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetDirection(OH_ArkUI_LinearGradi
 
 **Description**
 
-Sets direction of linear gradient options.
+Sets the direction in linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5544,14 +6004,14 @@ Sets direction of linear gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
-| [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection) direction | Direction of linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
+| [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection) direction | Direction in linear gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_LinearGradientOptions_GetDirection()
 
@@ -5561,7 +6021,9 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetDirection(const OH_ArkUI_Linea
 
 **Description**
 
-Gets direction of linear gradient options.
+Obtains the direction in linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5569,14 +6031,14 @@ Gets direction of linear gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
-| [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)* direction | Pointer to the direction of linear gradient. The parameter type is [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection). |
+| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
+| [ArkUI_LinearGradientDirection](capi-native-type-visual-h.md#arkui_lineargradientdirection)* direction | Pointer to the direction in linear gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_LinearGradientOptions_SetRepeating()
 
@@ -5586,7 +6048,9 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetRepeating(OH_ArkUI_LinearGradi
 
 **Description**
 
-Sets whether colors are repeated in linear gradient options.
+Sets whether the color is repeated in linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5594,14 +6058,14 @@ Sets whether colors are repeated in linear gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
-| bool repeating | Whether colors are repeated. |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
+| bool repeating | Whether the color is repeated in linear gradient options. The value **false** indicates that the color is not repeated, and the value **true** indicates that the color is repeated. The default value is **false**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_LinearGradientOptions_GetRepeating()
 
@@ -5611,7 +6075,9 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetRepeating(const OH_ArkUI_Linea
 
 **Description**
 
-Gets whether colors are repeated in linear gradient options.
+Obtains whether the color is repeated in linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5619,14 +6085,14 @@ Gets whether colors are repeated in linear gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
-| bool* repeating | Pointer to whether colors are repeated. |
+| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
+| bool* repeating | Pointer to the **repeating** parameter indicating whether the color is repeated in linear gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_LinearGradientOptions_SetColorStop()
 
@@ -5636,7 +6102,9 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_SetColorStop(OH_ArkUI_LinearGradi
 
 **Description**
 
-Sets color stops of linear gradient options.
+Sets the color stop in linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5644,16 +6112,16 @@ Sets color stops of linear gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
+| [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
 | const uint32_t* colors | Pointer to the color array. |
-| const float* stops | Pointer to the stop array. |
-| int32_t colorsAndStopsSize | Number of elements in colors and stops. The number of elements in colors and stops must be the same. |
+| const float* stops | Pointer to the color stop array. |
+| int32_t colorsAndStopsSize | Number of elements in the color and color stop arrays. The number of elements in the color array must be the same as that in the color stop array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_LinearGradientOptions_GetColorStop()
 
@@ -5663,7 +6131,9 @@ ArkUI_ErrorCode OH_ArkUI_LinearGradientOptions_GetColorStop(const OH_ArkUI_Linea
 
 **Description**
 
-Gets color stops of linear gradient options.
+Obtains the color stop in linear gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5671,17 +6141,17 @@ Gets color stops of linear gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the <b>OH_ArkUI_LinearGradientOptions</b> object. |
-| uint32_t* colors | Buffer pointer to the color array. |
-| float* stops | Buffer pointer to the stop array. |
-| int32_t colorsAndStopsSize | Buffer size reserved for color stops by developer. The number of elements in colors and stops must be the same. It should be larger than writeLength, otherwise the operation will return ARKUI_ERROR_CODE_PARAM_INVALID. |
-| int32_t* writeLength | Number of color stops actually written. |
+| [const OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md)* options | Pointer to the [OH_ArkUI_LinearGradientOptions](capi-arkui-nativemodule-oh-arkui-lineargradientoptions.md) object. |
+| uint32_t* colors | Pointer to the color array. |
+| float* stops | Pointer to the color stop array. |
+| int32_t colorsAndStopsSize | Number of elements in the color and color stop arrays. The number of elements in the color array must be the same as that in the color stop array. |
+| int32_t* writeLength | Pointer to the number of colors and color stops that are actually written. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_Create()
 
@@ -5691,7 +6161,9 @@ OH_ArkUI_RadialGradientOptions* OH_ArkUI_RadialGradientOptions_Create()
 
 **Description**
 
-Creates a radial gradient options object. The returned object must be released by calling <b>OH_ArkUI_RadialGradientOptions_Destroy</b>.
+Creates an object for radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5699,7 +6171,7 @@ Creates a radial gradient options object. The returned object must be released b
 
 | Type | Description |
 | -- | -- |
-| [OH_ArkUI_RadialGradientOptions*](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
+| [OH_ArkUI_RadialGradientOptions*](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
 
 ### OH_ArkUI_RadialGradientOptions_Destroy()
 
@@ -5709,7 +6181,9 @@ void OH_ArkUI_RadialGradientOptions_Destroy(OH_ArkUI_RadialGradientOptions* opti
 
 **Description**
 
-Destroys a radial gradient options object.
+Destroys the object for radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5717,7 +6191,7 @@ Destroys a radial gradient options object.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
 
 ### OH_ArkUI_RadialGradientOptions_SetCenterX()
 
@@ -5727,7 +6201,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterX(OH_ArkUI_RadialGradien
 
 **Description**
 
-Sets centerX of radial gradient options.
+Sets the X coordinate of the center point in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5735,14 +6211,14 @@ Sets centerX of radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| float centerX | X-coordinate of center point. |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| float centerX | X coordinate of the center point in radial gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_GetCenterX()
 
@@ -5752,7 +6228,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterX(const OH_ArkUI_RadialG
 
 **Description**
 
-Gets centerX of radial gradient options.
+Obtains the X coordinate of the center point in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5760,14 +6238,14 @@ Gets centerX of radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| float* centerX | Pointer to the X-coordinate of center point. |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| float* centerX | Pointer to the X coordinate of the center point in radial gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_SetCenterY()
 
@@ -5777,7 +6255,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetCenterY(OH_ArkUI_RadialGradien
 
 **Description**
 
-Sets centerY of radial gradient options.
+Sets the Y coordinate of the center point in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5785,14 +6265,14 @@ Sets centerY of radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| float centerY | Y-coordinate of center point. |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| float centerY | Y coordinate of the center point in radial gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_GetCenterY()
 
@@ -5802,7 +6282,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetCenterY(const OH_ArkUI_RadialG
 
 **Description**
 
-Gets centerY of radial gradient options.
+Obtains the Y coordinate of the center point in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5810,14 +6292,14 @@ Gets centerY of radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| float* centerY | Pointer to the Y-coordinate of center point. |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| float* centerY | Pointer to the Y coordinate of the center point in radial gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_SetRadius()
 
@@ -5827,7 +6309,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRadius(OH_ArkUI_RadialGradient
 
 **Description**
 
-Sets radius of radial gradient options.
+Sets the radius in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5835,14 +6319,14 @@ Sets radius of radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| float radius | Radius of radial gradient. |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| float radius | Radius in radial gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_GetRadius()
 
@@ -5852,7 +6336,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRadius(const OH_ArkUI_RadialGr
 
 **Description**
 
-Gets radius of radial gradient options.
+Obtains the radius in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5860,14 +6346,14 @@ Gets radius of radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| float* radius | Pointer to the radius of radial gradient. |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| float* radius | Pointer to the radius in radial gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_SetRepeating()
 
@@ -5877,7 +6363,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetRepeating(OH_ArkUI_RadialGradi
 
 **Description**
 
-Sets whether colors are repeated in radial gradient options.
+Sets whether the color is repeated in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5885,14 +6373,14 @@ Sets whether colors are repeated in radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| bool repeating | Whether colors are repeated. |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| bool repeating | Whether the color is repeated in radial gradient options. The value **false** indicates that the color is not repeated, and the value **true** indicates that the color is repeated. The default value is **false**. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_GetRepeating()
 
@@ -5902,7 +6390,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetRepeating(const OH_ArkUI_Radia
 
 **Description**
 
-Gets whether colors are repeated in radial gradient options.
+Obtains whether the color is repeated in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5910,14 +6400,14 @@ Gets whether colors are repeated in radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| bool* repeating | Pointer to whether colors are repeated. |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| bool* repeating | Pointer to the **repeating** parameter indicating whether the color is repeated in radial gradient effect options. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_SetColorStop()
 
@@ -5927,7 +6417,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_SetColorStop(OH_ArkUI_RadialGradi
 
 **Description**
 
-Sets color stops of radial gradient options.
+Sets the color stop in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5935,16 +6427,16 @@ Sets color stops of radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
+| [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
 | const uint32_t* colors | Pointer to the color array. |
-| const float* stops | Pointer to the stop array. |
-| int32_t colorsAndStopsSize | Number of elements in colors and stops. The number of elements in colors and stops must be the same. |
+| const float* stops | Pointer to the color stop array. |
+| int32_t colorsAndStopsSize | Number of elements in the color and color stop arrays. The number of elements in the color array must be the same as that in the color stop array. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 ### OH_ArkUI_RadialGradientOptions_GetColorStop()
 
@@ -5954,7 +6446,9 @@ ArkUI_ErrorCode OH_ArkUI_RadialGradientOptions_GetColorStop(const OH_ArkUI_Radia
 
 **Description**
 
-Gets color stops of radial gradient options.
+Obtains the color stop in radial gradient effect options.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.0.0
 
@@ -5962,16 +6456,16 @@ Gets color stops of radial gradient options.
 
 | Parameter | Description |
 | -- | -- |
-| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the <b>OH_ArkUI_RadialGradientOptions</b> object. |
-| uint32_t* colors | Buffer pointer to the color array. |
-| float* stops | Buffer pointer to the stop array. |
-| int32_t colorsAndStopsSize | Buffer size reserved for color stops by developer. The number of elements in colors and stops must be the same. It should be larger than writeLength, otherwise the operation will return ARKUI_ERROR_CODE_PARAM_INVALID. |
-| int32_t* writeLength | Number of color stops actually written. |
+| [const OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md)* options | Pointer to the [OH_ArkUI_RadialGradientOptions](capi-arkui-nativemodule-oh-arkui-radialgradientoptions.md) object. |
+| uint32_t* colors | Pointer to the buffer of the color array. |
+| float* stops | Pointer to the color stop array. |
+| int32_t colorsAndStopsSize | Number of elements in the color and color stop arrays. The number of elements in the color array must be the same as that in the color stop array. |
+| int32_t* writeLength | Pointer to the number of color stops that are actually written. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Returns the result code. Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful. Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter exception occurs. |
+| [ArkUI_ErrorCode](capi-error-code-h.md#arkui_errorcode) | Result code.<br> <br>Returns ARKUI_ERROR_CODE_NO_ERROR if the operation is successful.<br> <br>Returns ARKUI_ERROR_CODE_PARAM_INVALID if a parameter error occurs. |
 
 

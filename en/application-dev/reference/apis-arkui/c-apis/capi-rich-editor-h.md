@@ -6,6 +6,8 @@ Defines structs, enumerations, and APIs related to <b>RichEditor</b>. <b>RichEdi
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -59,6 +61,8 @@ enum OH_ArkUI_HapticFeedbackMode
 
 Enumerates vibration effect types.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 | Enum item | Description |
@@ -76,6 +80,8 @@ enum OH_ArkUI_TextEditorSpanType
 **Description**
 
 Enumerates the span types of a custom text selection menu, which are used to identify the span type of the text selection menu in the text editor. Different span types correspond to different content structures, affecting the display and interaction behavior of the custom menu. For example, the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT</b> type is used when the user selects only text content, the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED</b> type is used when the selection contains mixed content such as text and images, and the <b>OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER</b> type is used when a custom menu item layout is required.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -97,6 +103,8 @@ enum OH_ArkUI_TextEditorResponseType
 
 Enumerates the response types of a custom text selection menu, which are used to identify the interaction method that triggers the menu pop-up. Different response types correspond to different user operations (such as right-click, long press, and mouse-based selection), allowing different menu content to be customized based on the response type.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 | Enum item | Description |
@@ -116,6 +124,8 @@ enum OH_ArkUI_TextMenuType
 
 Enumerates text menu types, which are used to distinguish different types of pop-up menus in the text editor, including the text selection menu and the preview menu. Different menu types correspond to different interaction scenarios and menu display modes. For example, the text selection menu pops up when the user selects text and is used for text operations such as copy and delete; the preview menu pops up when the user long-presses an image and is used to trigger image content drag preview as well as copy and deletion operations.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 | Enum item | Description |
@@ -132,6 +142,8 @@ enum OH_ArkUI_TextEditorType
 **Description**
 
 Enumerates the text editor input types.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 26.2.0
 
@@ -162,6 +174,8 @@ OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Cre
 
 Creates an option object for the placeholder text used when there is no input. When the object is no longer used, call [OH_ArkUI_TextEditorPlaceholderOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorplaceholderoptions_destroy) to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -179,6 +193,8 @@ void OH_ArkUI_TextEditorPlaceholderOptions_Destroy(OH_ArkUI_TextEditorPlaceholde
 **Description**
 
 Destroys the option object for the placeholder text used when there is no input.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -198,6 +214,8 @@ OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringContro
 
 Creates a styled string controller object, which is used to control the styled string of the text editor when rich text content needs to be managed through styled strings (such as mixed layout of text and images, dynamic setting of paragraph or character styles, and other scenarios). When the object is no longer used, call [OH_ArkUI_TextEditorStyledStringController_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorstyledstringcontroller_destroy) to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -215,6 +233,8 @@ void OH_ArkUI_TextEditorStyledStringController_Destroy(OH_ArkUI_TextEditorStyled
 **Description**
 
 Destroys the styled string controller object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -234,6 +254,8 @@ OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()
 
 Creates a paragraph style object for the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorParagraphStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorparagraphstyle_destroy) to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -251,6 +273,8 @@ void OH_ArkUI_TextEditorParagraphStyle_Destroy(OH_ArkUI_TextEditorParagraphStyle
 **Description**
 
 Destroys the paragraph style object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -270,6 +294,8 @@ OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()
 
 Creates a text style object. When the object is no longer used, call [OH_ArkUI_TextEditorTextStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditortextstyle_destroy) to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -287,6 +313,8 @@ void OH_ArkUI_TextEditorTextStyle_Destroy(OH_ArkUI_TextEditorTextStyle* style)
 **Description**
 
 Destroys the text style object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 
@@ -306,6 +334,8 @@ OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions
 
 Creates a text selection menu option object of the text editor. When the object is no longer used, call [OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorselectionmenuoptions_destroy) to destroy it.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 24
 
 **Returns**:
@@ -323,6 +353,8 @@ void OH_ArkUI_TextEditorSelectionMenuOptions_Destroy(OH_ArkUI_TextEditorSelectio
 **Description**
 
 Destroys the text selection menu option object of the text editor.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 24
 

@@ -8,6 +8,8 @@ Declares the C APIs for USB device management.
 
 **库：** libohusb_manager.so
 
+**系统能力：** SystemCapability.USB.USBManager
+
 **起始版本：** 26.0.1
 
 **相关模块：** [UsbManager](capi-usbmanager.md)
@@ -62,6 +64,8 @@ enum OH_UsbManager_ErrorCode
 
 枚举USB管理器的错误码。
 
+**系统能力：** SystemCapability.USB.USBManager
+
 **起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
@@ -84,6 +88,8 @@ enum OH_UsbManager_RequestDirection
 
 枚举USB请求方向。
 
+**系统能力：** SystemCapability.USB.USBManager
+
 **起始版本：** 26.0.1
 
 | 枚举项 | 描述 |
@@ -103,6 +109,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetUsbDeviceList(OH_UsbManager_UsbDevice *
 **描述：**
 
 获取所有已连接USB设备的列表。调用者必须调用[OH_UsbManager_FreeUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_freeusbdevicelist) <br>释放返回的数组。
+
+**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -131,6 +139,8 @@ void OH_UsbManager_FreeUsbDeviceList(OH_UsbManager_UsbDevice *devices, uint32_t 
 
 释放之前由[OH_UsbManager_GetUsbDeviceList](capi-ohusb-manager-h.md#oh_usbmanager_getusbdevicelist)返回的设备数组。<br> <br>调用后该指针失效，不得再使用。传入null或数量为0是安全的空操作。
 
+**系统能力：** SystemCapability.USB.USBManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -149,6 +159,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_ConnectDevice(const OH_UsbManager_UsbDevic
 **描述：**
 
 连接USB设备并打开用于通信的管道。返回的管道必须通过调用 <br>[OH_UsbManager_ClosePipe](capi-ohusb-manager-h.md#oh_usbmanager_closepipe)关闭，以避免资源泄漏。<br> <br>仅需要设备结构体中的busNum和devAddress字段；其他字段将被忽略。
+
+**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -175,6 +187,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_HasPermission(const char *deviceName, bool
 
 检查应用是否有权限访问指定设备。
 
+**系统能力：** SystemCapability.USB.USBManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -200,6 +214,8 @@ typedef void (*OH_UsbManager_PermissionCallback)(OH_UsbManager_ErrorCode errorCo
 
 定义用于返回[OH_UsbManager_RequestPermission](capi-ohusb-manager-h.md#oh_usbmanager_requestpermission)结果的 <br>回调类型。
 
+**系统能力：** SystemCapability.USB.USBManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -219,6 +235,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_RequestPermission(const char *deviceName, 
 **描述：**
 
 异步请求访问指定USB设备的权限。这可能触发系统弹窗询问用户是否授权。 <br>函数立即返回，结果通过回调传递。
+
+**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 
@@ -246,6 +264,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_GetFileDescriptor(const OH_UsbManager_UsbP
 
 获取已打开USB设备管道的文件描述符。该fd可用于基于ioctl的 <br>低层USB传输。
 
+**系统能力：** SystemCapability.USB.USBManager
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -270,6 +290,8 @@ OH_UsbManager_ErrorCode OH_UsbManager_ClosePipe(const OH_UsbManager_UsbPipe *pip
 **描述：**
 
 关闭USB设备管道并释放底层资源。该管道必须从[OH_UsbManager_ConnectDevice](capi-ohusb-manager-h.md#oh_usbmanager_connectdevice) <br>获取。
+
+**系统能力：** SystemCapability.USB.USBManager
 
 **起始版本：** 26.0.1
 

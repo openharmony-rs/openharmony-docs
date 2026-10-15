@@ -22,8 +22,8 @@ struct OH_NativeXComponent_MouseEvent_Callback {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| [void (\*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)](#dispatchmouseevent) | 当鼠标事件（例如鼠标按键按下、释放、移动等操作）被触发时调用。 |
-| [void (\*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)](#dispatchhoverevent) | 当悬停事件被触发时调用。 该函数在鼠标或手写笔进入或离开组件时触发。 |
+| [void (\*DispatchMouseEvent)(OH_NativeXComponent* component, void* window)](#dispatchmouseevent) | - | 当鼠标事件（例如鼠标按键按下、释放、移动等操作）被触发时调用。 |
+| [void (\*DispatchHoverEvent)(OH_NativeXComponent* component, bool isHover)](#dispatchhoverevent) | - | 当悬停事件被触发时调用。 该函数在鼠标或手写笔进入或离开组件时触发。 |
 
 ## 成员函数说明
 

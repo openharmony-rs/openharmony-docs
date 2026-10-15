@@ -6,6 +6,8 @@ Defines functions related to font collections in the drawing module, which are u
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -36,6 +38,8 @@ OH_Drawing_FontCollection* OH_Drawing_CreateFontCollection(void)
 
 Creates an [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Resource release**: OH_Drawing_DestroyFontCollection {return}
@@ -60,6 +64,8 @@ void OH_Drawing_DestroyFontCollection(OH_Drawing_FontCollection* fontCollection)
 
 Destroys an **OH_Drawing_FontCollection** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -77,6 +83,8 @@ void OH_Drawing_DisableFontCollectionFallback(OH_Drawing_FontCollection* fontCol
 **Description**
 
 Disables the system fonts.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -100,6 +108,8 @@ void OH_Drawing_DisableFontCollectionSystemFont(OH_Drawing_FontCollection* fontC
 
 Disables system fonts. After disabling, the font collection object can only use registered custom fonts for text rendering.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -117,6 +127,8 @@ OH_Drawing_FontCollection* OH_Drawing_CreateSharedFontCollection(void)
 **Description**
 
 Creates a shareable [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md) object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -138,6 +150,8 @@ void OH_Drawing_ClearFontCaches(OH_Drawing_FontCollection* fontCollection)
 
 Clears the font cache. (The font cache has a memory limit and a clearing mechanism. It occupies limited memory. You are not advised to clear it unless otherwise required.)
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -155,6 +169,8 @@ OH_Drawing_FontCollection* OH_Drawing_GetFontCollectionGlobalInstance(void)
 **Description**
 
 Obtains the global font collection object [OH_Drawing_FontCollection](capi-drawing-oh-drawing-fontcollection.md), which can be used to obtain theme font information. This object is prohibited from being released.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 14
 

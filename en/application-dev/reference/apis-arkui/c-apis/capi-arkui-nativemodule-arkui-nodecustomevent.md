@@ -6,7 +6,7 @@ typedef struct ArkUI_NodeCustomEvent ArkUI_NodeCustomEvent
 
 ## Overview
 
-Defines the general structure of a custom component event.
+Defines a custom component event. This is a general struct type. This struct is used to pass event information in the measurement, layout, and drawing event callbacks of a custom component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

@@ -6,6 +6,8 @@
 
 **库：** libusb_ndk.z.so
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)
@@ -48,6 +50,8 @@ int32_t OH_Usb_Init(void)
 
 初始化USB DDK。必须在调用其他所有USB DDK方法之前调用此方法。请在使用完DDK后调用[OH_Usb_Release](capi-usb-ddk-api-h.md#oh_usb_release)或[OH_Usb_ReleaseResource](capi-usb-ddk-api-h.md#oh_usb_releaseresource)释放资源。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
@@ -68,6 +72,8 @@ void OH_Usb_Release(void)
 
 释放USB DDK。在不再使用USB DDK功能时使用以正确释放资源，需在调用[OH_Usb_Init](capi-usb-ddk-api-h.md#oh_usb_init)完成初始化后使用。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
@@ -81,6 +87,8 @@ int32_t OH_Usb_ReleaseResource(void)
 **描述：**
 
 释放USB DDK。在不再使用USB DDK功能时使用以正确释放资源，需在调用[OH_Usb_Init](capi-usb-ddk-api-h.md#oh_usb_init)完成初始化后使用。该接口返回一个整数值，可用于判断执行结果。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -101,6 +109,8 @@ int32_t OH_Usb_GetDeviceDescriptor(uint64_t deviceId, struct UsbDeviceDescriptor
 **描述：**
 
 获取设备描述符，请确保传入的指针参数是有效的。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -128,6 +138,8 @@ int32_t OH_Usb_GetConfigDescriptor(uint64_t deviceId, uint8_t configIndex, struc
 **描述：**
 
 获取配置描述符。请在描述符使用完后调用[OH_Usb_FreeConfigDescriptor](capi-usb-ddk-api-h.md#oh_usb_freeconfigdescriptor)释放描述符，否则会造成内存泄漏。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -157,6 +169,8 @@ void OH_Usb_FreeConfigDescriptor(struct UsbDdkConfigDescriptor * const config)
 
 释放配置描述符。使用完配置描述符后必须调用此接口释放，否则会造成内存泄漏。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
@@ -176,6 +190,8 @@ int32_t OH_Usb_ClaimInterface(uint64_t deviceId, uint8_t interfaceIndex, uint64_
 **描述：**
 
 声明USB接口，申请USB接口的独占使用权。调用此方法声明接口后，在使用完毕后必须调用OH_Usb_ReleaseInterface释放接口，否则会导致接口资源无法释放。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -205,6 +221,8 @@ int32_t OH_Usb_ReleaseInterface(uint64_t interfaceHandle)
 
 释放USB接口，用于释放对USB设备接口的独占使用权。需要先调用[OH_Usb_ClaimInterface](capi-usb-ddk-api-h.md#oh_usb_claiminterface)声明接口获取interfaceHandle后，在使用完毕后才能调用此方法释放接口。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
@@ -230,6 +248,8 @@ int32_t OH_Usb_SelectInterfaceSetting(uint64_t interfaceHandle, uint8_t settingI
 **描述：**
 
 激活USB接口的备用设置，在需要改变接口工作模式时调用。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -258,6 +278,8 @@ int32_t OH_Usb_GetCurrentInterfaceSetting(uint64_t interfaceHandle, uint8_t *set
 
 获取USB接口当前激活的备用设置。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
@@ -284,6 +306,8 @@ int32_t OH_Usb_SendControlReadRequest(uint64_t interfaceHandle, const struct Usb
 **描述：**
 
 发送控制读请求，该接口为同步接口。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -315,6 +339,8 @@ int32_t OH_Usb_SendControlWriteRequest(uint64_t interfaceHandle, const struct Us
 
 发送控制写请求，该接口为同步接口。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
@@ -345,6 +371,8 @@ int32_t OH_Usb_SendPipeRequest(const struct UsbRequestPipe *pipe, UsbDeviceMemMa
 
 发送管道请求，该接口为同步接口。中断传输和批量传输都使用该接口发送请求。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
@@ -372,6 +400,8 @@ int32_t OH_Usb_SendPipeRequestWithAshmem(const struct UsbRequestPipe *pipe, DDK_
 
 基于共享内存发送管道请求，该接口为同步接口。中断传输和批量传输都使用该接口发送请求。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 12
@@ -398,6 +428,8 @@ int32_t OH_Usb_CreateDeviceMemMap(uint64_t deviceId, size_t size, UsbDeviceMemMa
 **描述：**
 
 创建缓冲区。请在缓冲区使用完后，调用[OH_Usb_DestroyDeviceMemMap](capi-usb-ddk-api-h.md#oh_usb_destroydevicememmap)销毁缓冲区，否则会造成资源泄漏。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -427,6 +459,8 @@ void OH_Usb_DestroyDeviceMemMap(UsbDeviceMemMap *devMmap)
 
 销毁缓冲区。使用完缓冲区后必须调用此接口销毁，否则会造成资源泄漏。
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
 **起始版本：** 10
@@ -446,6 +480,8 @@ int32_t OH_Usb_GetDevices(struct Usb_DeviceArray *devices)
 **描述：**
 
 获取USB设备ID列表。请保证传入的指针参数是有效的，申请的设备ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。获取到的USB设备ID， 已通过驱动配置信息中的vid进行筛选过滤。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -472,6 +508,8 @@ int32_t OH_Usb_ControlTransfer(uint64_t deviceID, const struct UsbControlRequest
 **描述：**
 
 执行USB控制传输，该接口为同步接口。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 
@@ -501,6 +539,8 @@ int32_t OH_Usb_GetNonRootHubs(struct Usb_NonRootHubArray *nonRootHub)
 **描述：**
 
 查询并返回非根集线器列表。请保证传入的指针参数是有效的，申请的非根集线器ID数组的大小建议不超过128，以避免过度占用内存。在使用完结构体之后，需释放成员内存，否则会造成资源泄漏。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_USB
 

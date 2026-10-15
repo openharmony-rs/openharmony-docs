@@ -8,6 +8,8 @@
 
 **库：** libnative_rdb_ndk.z.so
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -53,6 +55,8 @@ enum Rdb_EncryptionAlgo
 
 数据库加密算法。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -71,6 +75,8 @@ enum Rdb_HmacAlgo
 
 打开数据库时支持的HMAC算法。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -88,6 +94,8 @@ enum Rdb_KdfAlgo
 **描述：**
 
 打开数据库时支持的KDF算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -109,6 +117,8 @@ OH_Rdb_CryptoParam *OH_Rdb_CreateCryptoParam(void)
 **描述：**
 
 创建一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -133,6 +143,8 @@ int OH_Rdb_DestroyCryptoParam(OH_Rdb_CryptoParam *param)
 
 销毁一个[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -156,6 +168,8 @@ int OH_Crypto_SetEncryptionKey(OH_Rdb_CryptoParam *param, const uint8_t *key, in
 **描述：**
 
 设置[OH_Rdb_CryptoParam](capi-rdb-oh-rdb-cryptoparam.md)对象的密钥数据。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -183,6 +197,8 @@ int OH_Crypto_SetIteration(OH_Rdb_CryptoParam *param, int64_t iteration)
 
 设置打开加密数据库时使用的KDF算法迭代次数。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -207,6 +223,8 @@ int OH_Crypto_SetEncryptionAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 **描述：**
 
 设置打开加密数据库时使用的加密算法。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 
@@ -233,6 +251,8 @@ int OH_Crypto_SetHmacAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 设置打开加密数据库时使用的HMAC算法。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -258,6 +278,8 @@ int OH_Crypto_SetKdfAlgo(OH_Rdb_CryptoParam *param, int32_t algo)
 
 设置打开加密数据库时使用的KDF算法。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -282,6 +304,8 @@ int OH_Crypto_SetCryptoPageSize(OH_Rdb_CryptoParam *param, int64_t size)
 **描述：**
 
 设置打开加密数据库时使用的页大小。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 20
 

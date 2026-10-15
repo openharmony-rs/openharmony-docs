@@ -6,6 +6,8 @@ Declares the BASE DDK APIs used by the USB host to access USB devices.
 
 **Library**: libddk_base.z.so
 
+**System capability**: SystemCapability.Driver.DDK.Extension
+
 **Since**: 12
 
 **Related module**: [Ddk](capi-ddk.md)
@@ -33,6 +35,8 @@ DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem *
 
 Creates an **Ashmem** object. To prevent resource leakage, call [OH_DDK_DestroyAshmem](capi-ddk-api-h.md#oh_ddk_destroyashmem) to destroy the **Ashmem** object when it is no longer needed.
 
+**System capability**: SystemCapability.Driver.DDK.Extension
+
 **Since**: 12
 
 **Parameters**:
@@ -59,6 +63,8 @@ DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 
 Maps the created **Ashmem** object to the user space. Call [OH_DDK_UnmapAshmem](capi-ddk-api-h.md#oh_ddk_unmapashmem) to unmap the **Ashmem**<br>object when it is no longer needed.
 
+**System capability**: SystemCapability.Driver.DDK.Extension
+
 **Since**: 12
 
 **Parameters**:
@@ -84,6 +90,8 @@ DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 
 Unmaps an **Ashmem** object.
 
+**System capability**: SystemCapability.Driver.DDK.Extension
+
 **Since**: 12
 
 **Parameters**:
@@ -107,6 +115,8 @@ DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 **Description**
 
 Destroys an **Ashmem** object.
+
+**System capability**: SystemCapability.Driver.DDK.Extension
 
 **Since**: 12
 

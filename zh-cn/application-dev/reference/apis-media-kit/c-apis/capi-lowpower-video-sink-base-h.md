@@ -8,6 +8,8 @@
 
 **库：** liblowpower_avsink.so
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **相关模块：** [LowPowerVideoSink](capi-lowpowervideosink.md)
@@ -57,6 +59,8 @@ typedef void (*OH_LowPowerVideoSink_OnDataNeeded)(OH_LowPowerVideoSink* sink, OH
 
 LowPowerVideoSink需要数据时调用该方法。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **参数：**
@@ -76,6 +80,8 @@ typedef void (*OH_LowPowerVideoSink_OnError)(OH_LowPowerVideoSink* sink, OH_AVEr
 **描述：**
 
 LowPowerVideoSink发生错误时调用该方法。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 
@@ -98,6 +104,8 @@ typedef void (*OH_LowPowerVideoSink_OnTargetArrived)(OH_LowPowerVideoSink* sink,
 
 LowPowerVideoSink到达指定的播放目标位置时调用该方法。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **参数：**
@@ -119,6 +127,8 @@ typedef void (*OH_LowPowerVideoSink_OnRenderStarted)(OH_LowPowerVideoSink* sink,
 
 LowPowerVideoSink开始渲染时调用该方法。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **参数：**
@@ -137,6 +147,8 @@ typedef void (*OH_LowPowerVideoSink_OnStreamChanged)(OH_LowPowerVideoSink* sink,
 **描述：**
 
 LowPowerVideoSink流切换时调用该方法。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 
@@ -158,6 +170,8 @@ typedef void (*OH_LowPowerVideoSink_OnFirstFrameDecoded)(OH_LowPowerVideoSink* s
 
 LowPowerVideoSink第一帧解码成功时调用该方法。
 
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
+
 **起始版本：** 20
 
 **参数：**
@@ -176,6 +190,8 @@ typedef void (*OH_LowPowerVideoSink_OnEos)(OH_LowPowerVideoSink* sink, void* use
 **描述：**
 
 LowPowerVideoSink播放完成时调用该方法。
+
+**系统能力：** SystemCapability.Multimedia.Media.LowPowerAVSink
 
 **起始版本：** 20
 

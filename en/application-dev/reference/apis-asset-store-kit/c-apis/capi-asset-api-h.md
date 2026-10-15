@@ -6,6 +6,8 @@ Declares the APIs for accessing assets.
 
 **Library**: libasset_ndk.z.so
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Related module**: [AssetApi](capi-assetapi.md)
@@ -39,6 +41,8 @@ int32_t OH_Asset_Add(const Asset_Attr *attributes, uint32_t attrCnt)
 
 Adds an asset. Permission ohos.permission.STORE_PERSISTENT_DATA is required when the Asset needs to be stored persistently by setting [ASSET_TAG_IS_PERSISTENT](capi-asset-type-h.md#asset_tag) tag.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Parameters**:
@@ -64,6 +68,8 @@ int32_t OH_Asset_Remove(const Asset_Attr *query, uint32_t queryCnt)
 
 Removes one or more assets.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Parameters**:
@@ -88,6 +94,8 @@ int32_t OH_Asset_Update(const Asset_Attr *query, uint32_t queryCnt, const Asset_
 **Description**
 
 Updates an asset.
+
+**System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
 
@@ -116,6 +124,8 @@ int32_t OH_Asset_PreQuery(const Asset_Attr *query, uint32_t queryCnt, Asset_Blob
 
 Performs preprocessing for the asset query. This API is used when user authentication is required for the access to the asset.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Parameters**:
@@ -141,6 +151,8 @@ int32_t OH_Asset_Query(const Asset_Attr *query, uint32_t queryCnt, Asset_ResultS
 **Description**
 
 Queries one or more assets.
+
+**System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
 
@@ -168,6 +180,8 @@ int32_t OH_Asset_PostQuery(const Asset_Attr *handle, uint32_t handleCnt)
 
 Performs postprocessing for the asset query. This API is used when user authentication is required for the access to the asset.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Parameters**:
@@ -192,6 +206,8 @@ int32_t OH_Asset_QuerySyncResult(const Asset_Attr *query, uint32_t queryCnt, Ass
 **Description**
 
 Queries the sync result of an asset.
+
+**System capability**: SystemCapability.Security.Asset
 
 **Since**: 20
 
@@ -219,6 +235,8 @@ Asset_Attr *OH_Asset_ParseAttr(const Asset_Result *result, Asset_Tag tag)
 
 Parses the query result and obtains the specified attribute.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Parameters**:
@@ -244,6 +262,8 @@ void OH_Asset_FreeBlob(Asset_Blob *blob)
 
 Releases the memory occupied by the challenge value.
 
+**System capability**: SystemCapability.Security.Asset
+
 **Since**: 11
 
 **Parameters**:
@@ -261,6 +281,8 @@ void OH_Asset_FreeResultSet(Asset_ResultSet *resultSet)
 **Description**
 
 Releases the memory occupied by the query result.
+
+**System capability**: SystemCapability.Security.Asset
 
 **Since**: 11
 

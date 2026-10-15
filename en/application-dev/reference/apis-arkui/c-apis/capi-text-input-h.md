@@ -6,6 +6,8 @@ Defines enumerations related to **TextInput**, which supports multiple input typ
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -33,6 +35,8 @@ enum ArkUI_TextInputType
 
 Enumerates the input types of single-line text.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -59,6 +63,8 @@ enum ArkUI_CancelButtonStyle
 
 Enumerates the styles of the **Cancel** button.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -76,6 +82,8 @@ enum ArkUI_TextInputContentType
 **Description**
 
 Enumerates autofill types.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -124,6 +132,8 @@ enum ArkUI_TextInputStyle
 **Description**
 
 Enumerates text input styles.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

@@ -6,7 +6,7 @@ typedef struct OH_AudioSessionManager OH_AudioSessionManager
 
 ## 概述
 
-音频会话管理器结构体。用于管理音频会话。
+声明音频会话管理结构体，该结构体用于调用音频会话控制功能接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

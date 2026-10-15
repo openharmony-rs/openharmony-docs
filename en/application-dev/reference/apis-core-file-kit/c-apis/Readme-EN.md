@@ -41,6 +41,7 @@
     - [CloudDisk_SyncFolder](capi-clouddisk-clouddisk-syncfolder.md)
     - [OH_CloudDisk_SyncFolderEx](capi-clouddisk-oh-clouddisk-syncfolderex.md)
     - [OH_CloudDisk_PlaceholderInfo](capi-clouddisk-oh-clouddisk-placeholderinfo.md)
+    - [OH_CloudDisk_PlaceholderCustomInfo](capi-clouddisk-oh-clouddisk-placeholdercustominfo.md)
     - [OH_CloudDisk_DataBuf](capi-clouddisk-oh-clouddisk-databuf.md)
     - [OH_CloudDisk_CallbackReqHead](capi-clouddisk-oh-clouddisk-callbackreqhead.md)
     - [OH_CloudDisk_DehydrateInfo](capi-clouddisk-oh-clouddisk-dehydrateinfo.md)

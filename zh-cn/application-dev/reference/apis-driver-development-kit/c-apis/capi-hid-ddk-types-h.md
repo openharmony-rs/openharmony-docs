@@ -6,6 +6,8 @@
 
 **库：** libhid.z.so
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 **相关模块：** [HidDdk](capi-hidddk.md)
@@ -59,6 +61,8 @@ enum Hid_DeviceProp
 
 输入设备特性定义。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -81,6 +85,8 @@ enum Hid_EventType
 
 事件类型。用于标识HID设备产生的事件类别，在驱动开发中用于事件分类和处理。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -101,6 +107,8 @@ enum Hid_SynEvent
 
 同步事件编码。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -119,6 +127,8 @@ enum Hid_KeyCode
 **描述：**
 
 键值编码。包括键盘、鼠标、触摸屏等输入设备的按键和事件编码。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **起始版本：** 11
 
@@ -245,6 +255,8 @@ enum Hid_AbsAxes
 
 绝对坐标编码。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -286,6 +298,8 @@ enum Hid_RelAxes
 
 相对坐标编码。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -314,6 +328,8 @@ enum Hid_MscEvent
 
 不适合其他类型的输入事件编码。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -334,6 +350,8 @@ enum Hid_DdkErrCode
 **描述：**
 
 HID DDK错误码定义。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **起始版本：** 11
 
@@ -361,6 +379,8 @@ enum Hid_ReportType
 **描述：**
 
 报告（HID设备与主机之间交换的数据包）类型定义，用于标识HID设备与主机之间通信的数据包类型，在设备通信和数据交换场景中使用。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **起始版本：** 18
 

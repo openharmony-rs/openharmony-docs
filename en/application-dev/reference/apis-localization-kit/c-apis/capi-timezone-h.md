@@ -6,6 +6,8 @@ Provides the capability of obtaining time zone information.
 
 **Library**: libohi18n.so
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 **Related module**: [i18n](capi-i18n.md)
@@ -64,6 +66,8 @@ enum DateRuleType
 
 Enumerates the types of rules for defining dates.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 | Enum item | Description |
@@ -82,6 +86,8 @@ enum TimeRuleType
 **Description**
 
 Enumerates the types of rules for defining time.
+
+**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -103,6 +109,8 @@ I18n_ErrorCode OH_i18n_GetTimeZoneRules(const char* timeZoneID, TimeZoneRules* r
 **Description**
 
 Obtains the timezone rules by timezone ID.
+
+**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -129,6 +137,8 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 Obtains the time when the TimeArrayTimeZoneRule first took effect.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 **Parameters**:
@@ -153,6 +163,8 @@ I18n_ErrorCode OH_i18n_GetFirstStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 **Description**
 
 Obtains the time when the AnnualTimeZoneRule first took effect.
+
+**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -179,6 +191,8 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneR
 
 Obtains the time when the TimeArrayTimeZoneRule final took effect.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 **Parameters**:
@@ -203,6 +217,8 @@ I18n_ErrorCode OH_i18n_GetFinalStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* r
 **Description**
 
 Obtains the time when the AnnualTimeZoneRule final took effect.
+
+**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -229,6 +245,8 @@ I18n_ErrorCode OH_i18n_GetNextStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 Obtains the time when the TimeArrayTimeZoneRule next took effect.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 **Parameters**:
@@ -253,6 +271,8 @@ I18n_ErrorCode OH_i18n_GetNextStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 **Description**
 
 Obtains the time when the AnnualTimeZoneRule next took effect.
+
+**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -279,6 +299,8 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromTimeArrayTimeZoneRule(TimeArrayTimeZoneRu
 
 Obtains the time when the TimeArrayTimeZoneRule previous took effect.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 **Parameters**:
@@ -303,6 +325,8 @@ I18n_ErrorCode OH_i18n_GetPrevStartFromAnnualTimeZoneRule(AnnualTimeZoneRule* ru
 **Description**
 
 Obtains the time when the AnnualTimeZoneRule previous took effect.
+
+**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 
@@ -329,6 +353,8 @@ I18n_ErrorCode OH_i18n_GetStartTimeAt(TimeArrayTimeZoneRule* rule, int32_t index
 
 Obtain the effective start time of a specific rule in the TimeArrayTimeZoneRule.
 
+**System capability**: SystemCapability.Global.I18n
+
 **Since**: 22
 
 **Parameters**:
@@ -354,6 +380,8 @@ I18n_ErrorCode OH_i18n_GetStartInYear(AnnualTimeZoneRule* rule, int32_t year, Ti
 **Description**
 
 Obtain the effective start time of a specific rule for target year in the AnnualTimeZoneRule.
+
+**System capability**: SystemCapability.Global.I18n
 
 **Since**: 22
 

@@ -6,6 +6,8 @@
 
 **库：** libohcamera.so
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **相关模块：** [OH_Camera](capi-oh-camera.md)
@@ -38,6 +40,8 @@ Camera_ErrorCode OH_PhotoNative_GetMainImage(OH_PhotoNative* photo, OH_ImageNati
 
 获取全质量图。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -63,6 +67,8 @@ Camera_ErrorCode OH_PhotoNative_GetUncompressedImage(OH_PhotoNative* photo, OH_P
 
 获取非压缩图片。
 
+**系统能力：** SystemCapability.Multimedia.Camera.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -87,6 +93,8 @@ Camera_ErrorCode OH_PhotoNative_Release(OH_PhotoNative* photo)
 **描述：**
 
 释放全质量图实例。
+
+**系统能力：** SystemCapability.Multimedia.Camera.Core
 
 **起始版本：** 12
 

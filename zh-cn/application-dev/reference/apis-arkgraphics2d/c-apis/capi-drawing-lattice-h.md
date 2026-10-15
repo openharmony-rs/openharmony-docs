@@ -6,6 +6,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -37,6 +39,8 @@ enum OH_Drawing_LatticeRectType
 
 定义填充网格的矩形类型的枚举，决定对应网格单元格的渲染方式。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -57,6 +61,8 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeDestroy(OH_Drawing_Lattice* lattice)
 **描述：**
 
 用于销毁由[OH_Drawing_LatticeCreate](capi-drawing-lattice-h.md#oh_drawing_latticecreate)创建的矩形网格对象并回收该对象占用的内存。 与[OH_Drawing_LatticeCreate](capi-drawing-lattice-h.md#oh_drawing_latticecreate)配对使用。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 
@@ -81,6 +87,8 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeCreate(const int* xDivs, const int* yDivs
 **描述：**
 
 创建矩形网格对象。将图像划分为矩形网格，同时处于偶数列（列索引为偶数，即第0、2、 4…列）和偶数行（行索引为偶数，即第0、2、4…行）上的网格是固定的，如果目标网格足够大， 则这些固定网格以其原始大小进行绘制。 如果目标网格太小，无法容纳这些固定网格，则所有固定网格都会按比例缩小以适应目标网格。其余网格将进行缩放， 以适应剩余的空间。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 23
 

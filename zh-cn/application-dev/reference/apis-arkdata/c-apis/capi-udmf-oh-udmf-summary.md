@@ -6,7 +6,7 @@ typedef struct OH_UDMF_Summary OH_UDMF_Summary
 
 ## 概述
 
-描述统一数据的汇总信息。
+描述统一数据对象的数据摘要，包括数据类型和大小。
 
 **系统能力：** SystemCapability.DistributedDataManager.UDMF.Core
 

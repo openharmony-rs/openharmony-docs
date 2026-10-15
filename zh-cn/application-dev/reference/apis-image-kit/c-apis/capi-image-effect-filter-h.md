@@ -6,6 +6,8 @@
 
 **库：** libimage_effect.so
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **相关模块：** [ImageEffect](capi-imageeffect.md)
@@ -104,6 +106,8 @@ enum ImageEffect_DataType
 
 数据类型枚举值。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -127,6 +131,8 @@ enum ImageEffect_Format
 
 像素格式枚举值。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -149,6 +155,8 @@ enum ImageEffect_BufferType
 
 内存类型枚举值。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -170,6 +178,8 @@ OH_EffectFilterInfo *OH_EffectFilterInfo_Create()
 
 创建OH_EffectFilterInfo实例，调用[OH_EffectFilterInfo_Release](capi-image-effect-filter-h.md#oh_effectfilterinfo_release)进行资源释放。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **返回值：**
@@ -187,6 +197,8 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetFilterName(OH_EffectFilterInfo *inf
 **描述：**
 
 设置滤镜名。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -213,6 +225,8 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetFilterName(OH_EffectFilterInfo *inf
 
 获取滤镜名。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -237,6 +251,8 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedBufferTypes(OH_EffectFilte
 **描述：**
 
 设置滤镜所支持的内存类型。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -264,6 +280,8 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedBufferTypes(OH_EffectFilte
 
 获取滤镜所支持的内存类型。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -289,6 +307,8 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_SetSupportedFormats(OH_EffectFilterInf
 **描述：**
 
 设置滤镜所支持的像素格式。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -316,6 +336,8 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_GetSupportedFormats(OH_EffectFilterInf
 
 获取滤镜所支持的像素格式。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -342,6 +364,8 @@ ImageEffect_ErrorCode OH_EffectFilterInfo_Release(OH_EffectFilterInfo *info)
 
 销毁OH_EffectFilterInfo实例。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -366,6 +390,8 @@ OH_EffectBufferInfo *OH_EffectBufferInfo_Create()
 
 创建OH_EffectBufferInfo实例，调用[OH_EffectBufferInfo_Release](capi-image-effect-filter-h.md#oh_effectbufferinfo_release)进行资源释放。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **返回值：**
@@ -383,6 +409,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetAddr(OH_EffectBufferInfo *info, voi
 **描述：**
 
 设置图像内存地址。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -409,6 +437,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetAddr(OH_EffectBufferInfo *info, voi
 
 获取图像内存地址。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -433,6 +463,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetWidth(OH_EffectBufferInfo *info, in
 **描述：**
 
 设置图像宽度。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -459,6 +491,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetWidth(OH_EffectBufferInfo *info, in
 
 获取图像宽度。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -483,6 +517,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetHeight(OH_EffectBufferInfo *info, i
 **描述：**
 
 设置图像高度。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -509,6 +545,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetHeight(OH_EffectBufferInfo *info, i
 
 获取图像高度。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -533,6 +571,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetRowSize(OH_EffectBufferInfo *info, 
 **描述：**
 
 设置图像每一行的字节数。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -559,6 +599,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetRowSize(OH_EffectBufferInfo *info, 
 
 获取图像每一行的字节数。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -583,6 +625,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetEffectFormat(OH_EffectBufferInfo *i
 **描述：**
 
 设置图像的像素格式。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -609,6 +653,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetEffectFormat(OH_EffectBufferInfo *i
 
 获取图像的像素格式。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -633,6 +679,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTextureId(OH_EffectBufferInfo *info
 **描述：**
 
 设置OH_EffectBufferInfo的图像的textureId。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 20
 
@@ -659,6 +707,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTextureId(OH_EffectBufferInfo *info
 
 从OH_EffectBufferInfo中获取图像的textureId。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -684,6 +734,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_Release(OH_EffectBufferInfo *info)
 
 销毁OH_EffectBufferInfo实例。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -707,6 +759,8 @@ typedef bool (*OH_EffectFilterDelegate_SetValue)(OH_EffectFilter *filter, const 
 **描述：**
 
 自定义滤镜设置参数的回调函数，用于开发者校验参数及参数值。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -734,6 +788,8 @@ typedef void (*OH_EffectFilterDelegate_PushData)(OH_EffectFilter *filter, OH_Eff
 
 自定义滤镜传递图像信息到下一级滤镜的函数指针。需要在[OH_EffectFilterDelegate_Render](capi-image-effect-filter-h.md#oh_effectfilterdelegate_render) 的回调中主动调用该函数指针。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -752,6 +808,8 @@ typedef bool (*OH_EffectFilterDelegate_Render)(OH_EffectFilter *filter, OH_Effec
 **描述：**
 
 自定义滤镜渲染图像的回调函数。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -779,6 +837,8 @@ typedef bool (*OH_EffectFilterDelegate_Save)(OH_EffectFilter *filter, char **inf
 
 自定义滤镜序列化的回调函数，按照JSON格式进行滤镜序列化处理。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -804,6 +864,8 @@ typedef OH_EffectFilter *(*OH_EffectFilterDelegate_Restore)(const char *info)
 
 自定义滤镜反序列化的回调函数。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -828,6 +890,8 @@ OH_EffectFilter *OH_EffectFilter_Create(const char *name)
 
 创建OH_EffectFilter实例，调用[OH_EffectFilter_Release](capi-image-effect-filter-h.md#oh_effectfilter_release)进行资源释放。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -851,6 +915,8 @@ ImageEffect_ErrorCode OH_EffectFilter_SetValue(OH_EffectFilter *filter, const ch
 **描述：**
 
 设置滤镜参数。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -878,6 +944,8 @@ ImageEffect_ErrorCode OH_EffectFilter_GetValue(OH_EffectFilter *filter, const ch
 
 获取滤镜参数。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -904,6 +972,8 @@ ImageEffect_ErrorCode OH_EffectFilter_Register(const OH_EffectFilterInfo *info, 
 
 注册自定义滤镜。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -929,6 +999,8 @@ ImageEffect_FilterNames *OH_EffectFilter_LookupFilters(const char *key)
 
 查询满足条件的滤镜。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -953,6 +1025,8 @@ void OH_EffectFilter_ReleaseFilterNames()
 
 释放滤镜名内存资源。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 ### OH_EffectFilter_LookupFilterInfo()
@@ -964,6 +1038,8 @@ ImageEffect_ErrorCode OH_EffectFilter_LookupFilterInfo(const char *name, OH_Effe
 **描述：**
 
 查询滤镜信息。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -990,6 +1066,8 @@ ImageEffect_ErrorCode OH_EffectFilter_Render(OH_EffectFilter *filter, OH_Pixelma
 
 执行图像渲染。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1015,6 +1093,8 @@ ImageEffect_ErrorCode OH_EffectFilter_RenderWithTextureId(OH_EffectFilter *filte
 **描述：**
 
 使用纹理标识渲染滤镜效果。该函数不支持相同的输入和输出图像。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 20
 
@@ -1043,6 +1123,8 @@ ImageEffect_ErrorCode OH_EffectFilter_Release(OH_EffectFilter *filter)
 
 销毁OH_EffectFilter实例。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -1066,6 +1148,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_SetTimestamp(OH_EffectBufferInfo *info
 **描述：**
 
 设置滤镜时间戳。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -1091,6 +1175,8 @@ ImageEffect_ErrorCode OH_EffectBufferInfo_GetTimestamp(OH_EffectBufferInfo *info
 **描述：**
 
 获取滤镜时间戳。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 

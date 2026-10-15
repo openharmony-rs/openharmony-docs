@@ -6,6 +6,8 @@
 
 **库：** libusb_ndk.z.so
 
+**系统能力：** SystemCapability.Driver.USB.Extension
+
 **起始版本：** 10
 
 **相关模块：** [UsbDdk](capi-usbddk.md)
@@ -47,6 +49,8 @@ enum UsbDdkErrCode
 **描述：**
 
 USB DDK 错误码定义。
+
+**系统能力：** SystemCapability.Driver.USB.Extension
 
 **起始版本：** 10
 

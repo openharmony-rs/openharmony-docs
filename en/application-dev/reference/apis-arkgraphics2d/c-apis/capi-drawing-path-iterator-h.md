@@ -6,6 +6,8 @@ This file declares the functions related to the path operation iterator object.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -40,6 +42,8 @@ enum OH_Drawing_PathIteratorVerb
 
 Enumerates the path operation types contained in an iterator. It is used to read path operation instructions.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 | Enum item | Description |
@@ -64,6 +68,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorCreate(const OH_Drawing_Path* path, 
 **Description**
 
 Creates an **OH_Drawing_PathIterator** object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -90,6 +96,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorDestroy(OH_Drawing_PathIterator* pat
 
 Destroys an **OH_Drawing_PathIterator** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
@@ -113,6 +121,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorHasNext(const OH_Drawing_PathIterato
 **Description**
 
 Checks whether there is any next operation in the path operation iterator.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -138,6 +148,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorNext(OH_Drawing_PathIterator* pathIt
 **Description**
 
 Retrieves the next operation in this path and moves the iterator to that operation.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -166,6 +178,8 @@ OH_Drawing_ErrorCode OH_Drawing_PathIteratorPeek(const OH_Drawing_PathIterator* 
 **Description**
 
 Retrieves the next operation in this path, without moving the iterator.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 

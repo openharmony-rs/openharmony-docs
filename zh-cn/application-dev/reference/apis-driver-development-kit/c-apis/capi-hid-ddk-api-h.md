@@ -8,6 +8,8 @@
 
 **库：** libhid.z.so
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **起始版本：** 11
 
 **相关模块：** [HidDdk](capi-hidddk.md)
@@ -49,6 +51,8 @@ int32_t OH_Hid_CreateDevice(Hid_Device *hidDevice, Hid_EventProperties *hidEvent
 
 创建设备。适用于需要模拟虚拟HID输入设备的场景，如模拟键盘、鼠标等输入设备进行自动化测试。必须与[OH_Hid_DestroyDevice](capi-hid-ddk-api-h.md#oh_hid_destroydevice)成对使用。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 11
@@ -75,6 +79,8 @@ int32_t OH_Hid_EmitEvent(int32_t deviceId, const Hid_EmitItem items[], uint16_t 
 **描述：**
 
 向指定设备发送事件列表，事件通过[OH_Hid_CreateDevice](capi-hid-ddk-api-h.md#oh_hid_createdevice)创建的虚拟设备注入到系统中，系统将其作为真实输入事件进行处理。适用于模拟用户输入事件的场景，如模拟按键、鼠标移动、 点击等操作进行自动化测试或远程控制。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
@@ -104,6 +110,8 @@ int32_t OH_Hid_DestroyDevice(int32_t deviceId)
 
 销毁设备。适用于不再需要使用虚拟HID设备时，释放系统资源的场景。必须与[OH_Hid_CreateDevice](capi-hid-ddk-api-h.md#oh_hid_createdevice)成对使用，只能销毁由当前调用者创建的设备。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 11
@@ -130,6 +138,8 @@ int32_t OH_Hid_Init(void)
 
 初始化HID DDK。必须在使用其他所有HID DDK方法之前调用此方法。不再使用任何HID DDK功能时，必须调用[OH_Hid_Release](capi-hid-ddk-api-h.md#oh_hid_release)释放资源。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -150,6 +160,8 @@ int32_t OH_Hid_Release(void)
 
 释放HID DDK。必须与[OH_Hid_Init](capi-hid-ddk-api-h.md#oh_hid_init)成对使用。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -169,6 +181,8 @@ int32_t OH_Hid_Open(uint64_t deviceId, uint8_t interfaceIndex, Hid_DeviceHandle 
 **描述：**
 
 打开deviceId和interfaceIndex指定的设备。适用于需要与特定HID设备进行通信的场景，在使用完毕后调用[OH_Hid_Close](capi-hid-ddk-api-h.md#oh_hid_close)释放设备资源。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
@@ -198,6 +212,8 @@ int32_t OH_Hid_Close(Hid_DeviceHandle **dev)
 
 关闭设备。必须与[OH_Hid_Open](capi-hid-ddk-api-h.md#oh_hid_open)成对使用，适用于不再需要与HID设备通信时，释放设备资源的场景。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -223,6 +239,8 @@ int32_t OH_Hid_Write(Hid_DeviceHandle *dev, uint8_t *data, uint32_t length, uint
 **描述：**
 
 向设备写入HID报告。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
@@ -252,6 +270,8 @@ int32_t OH_Hid_ReadTimeout(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSiz
 **描述：**
 
 在指定的超时时间内从设备读取报告。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
@@ -283,6 +303,8 @@ int32_t OH_Hid_Read(Hid_DeviceHandle *dev, uint8_t *data, uint32_t bufSize, uint
 
 从设备读取报告，默认为阻塞模式（阻塞等待直到有数据可读取），可以调用[OH_Hid_SetNonBlocking](capi-hid-ddk-api-h.md#oh_hid_setnonblocking)改变模式。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -312,6 +334,8 @@ int32_t OH_Hid_SetNonBlocking(Hid_DeviceHandle *dev, int nonBlock)
 
 设置设备读取模式为非阻塞。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -339,6 +363,8 @@ int32_t OH_Hid_GetRawInfo(Hid_DeviceHandle *dev, Hid_RawDevInfo *rawDevInfo)
 
 获取设备原始信息。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -365,6 +391,8 @@ int32_t OH_Hid_GetRawName(Hid_DeviceHandle *dev, char *data, uint32_t bufSize)
 **描述：**
 
 获取设备原始名称。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
@@ -394,6 +422,8 @@ int32_t OH_Hid_GetPhysicalAddress(Hid_DeviceHandle *dev, char *data, uint32_t bu
 
 获取设备物理地址。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -422,6 +452,8 @@ int32_t OH_Hid_GetRawUniqueId(Hid_DeviceHandle *dev, uint8_t *data, uint32_t buf
 
 获取设备原始唯一标识符。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -449,6 +481,8 @@ int32_t OH_Hid_SendReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, cons
 **描述：**
 
 向设备发送指定类型的HID报告。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
@@ -479,6 +513,8 @@ int32_t OH_Hid_GetReport(Hid_DeviceHandle *dev, Hid_ReportType reportType, uint8
 
 从设备获取指定类型的HID报告。
 
+**系统能力：** SystemCapability.Driver.HID.Extension
+
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 
 **起始版本：** 18
@@ -507,6 +543,8 @@ int32_t OH_Hid_GetReportDescriptor(Hid_DeviceHandle *dev, uint8_t *buf, uint32_t
 **描述：**
 
 获取设备报告描述符。
+
+**系统能力：** SystemCapability.Driver.HID.Extension
 
 **需要权限：** ohos.permission.ACCESS_DDK_HID
 

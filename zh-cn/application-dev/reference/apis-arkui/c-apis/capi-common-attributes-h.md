@@ -6,6 +6,8 @@ Defines the common property and method types for the native module.
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -36,7 +38,7 @@ Defines the common property and method types for the native module.
 
 | 名称 | 描述 |
 | -- | -- |
-| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | 创建一个截图选项，当返回值不再使用时必须通过OH_ArkUI_DestroySnapshotOptions()释放。 |
+| [ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()](#oh_arkui_createsnapshotoptions) | 创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions())释放。 |
 | [void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)](#oh_arkui_destroysnapshotoptions) | 销毁截图选项指针。 |
 | [int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions, float scale)](#oh_arkui_snapshotoptions_setscale) | 配置截图选项中的缩放属性。 |
 | [int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOptions, int32_t colorSpace, bool isAuto)](#oh_arkui_snapshotoptions_setcolormode) | 设置截图选项中的色彩空间。 |
@@ -62,6 +64,8 @@ enum ArkUI_HitTestMode
 
 触摸测试控制枚举值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -83,6 +87,8 @@ enum ArkUI_Visibility
 
 控制组件的显隐枚举值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -100,6 +106,8 @@ enum ArkUI_HoverEffect
 **描述：**
 
 组件被悬停时的效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -120,6 +128,8 @@ enum ArkUI_FocusPriority
 
 应用程序内焦点管理的优先级级别。确定UI组件在交互期间接收焦点的顺序。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -137,6 +147,8 @@ enum ArkUI_UIState
 **描述：**
 
 组件的UI状态枚举，用于处理状态样式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 20
 
@@ -159,6 +171,8 @@ enum ArkUI_FocusMove
 
 定义焦点移动方向的枚举值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -180,6 +194,8 @@ enum ArkUI_ResponseRegionSupportedTool
 
 定义支持响应区域设置的事件工具类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -199,6 +215,8 @@ enum ArkUI_RawInputEventType
 
 原始输入事件类型枚举。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -217,7 +235,9 @@ ArkUI_SnapshotOptions* OH_ArkUI_CreateSnapshotOptions()
 
 **描述：**
 
-创建一个截图选项，当返回值不再使用时必须通过OH_ArkUI_DestroySnapshotOptions()释放。
+创建一个截图选项，当返回值不再使用时必须通过[OH_ArkUI_DestroySnapshotOptions()](capi-common-attributes-h.md#oh_arkui_destroysnapshotoptions())释放。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -237,6 +257,8 @@ void OH_ArkUI_DestroySnapshotOptions(ArkUI_SnapshotOptions* snapshotOptions)
 
 销毁截图选项指针。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -254,6 +276,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetScale(ArkUI_SnapshotOptions* snapshotOptions
 **描述：**
 
 配置截图选项中的缩放属性。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -279,6 +303,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetColorMode(ArkUI_SnapshotOptions* snapshotOpt
 **描述：**
 
 设置截图选项中的色彩空间。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -306,6 +332,8 @@ int32_t OH_ArkUI_SnapshotOptions_SetDynamicRangeMode(ArkUI_SnapshotOptions* snap
 
 设置截图选项中的动态范围模式。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -332,6 +360,8 @@ ArkUI_VisibleAreaEventOptions* OH_ArkUI_VisibleAreaEventOptions_Create()
 
 创建可见区域变化监听的参数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 17
 
 **返回值：**
@@ -350,6 +380,8 @@ void OH_ArkUI_VisibleAreaEventOptions_Dispose(ArkUI_VisibleAreaEventOptions* opt
 
 销毁可见区域变化监听的参数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 17
 
 **参数：**
@@ -367,6 +399,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetRatios(ArkUI_VisibleAreaEventOptions
 **描述：**
 
 设置阈值数组。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
 
@@ -394,6 +428,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetExpectedUpdateInterval(ArkUI_Visible
 
 设置预期更新间隔，单位为ms。定义了开发者期望的更新间隔。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 17
 
 **参数：**
@@ -419,6 +455,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_SetMeasureFromViewport(ArkUI_VisibleAre
 
 设置可见区域计算模式。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 22
 
 **参数：**
@@ -443,6 +481,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetRatios(ArkUI_VisibleAreaEventOptions
 **描述：**
 
 获取阈值数组。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 17
 
@@ -470,6 +510,8 @@ int32_t OH_ArkUI_VisibleAreaEventOptions_GetExpectedUpdateInterval(ArkUI_Visible
 
 获取预期更新间隔。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 17
 
 **参数：**
@@ -493,6 +535,8 @@ bool OH_ArkUI_VisibleAreaEventOptions_GetMeasureFromViewport(ArkUI_VisibleAreaEv
 **描述：**
 
 获取可见区域计算模式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 22
 

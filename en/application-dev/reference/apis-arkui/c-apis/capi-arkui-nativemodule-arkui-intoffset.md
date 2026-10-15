@@ -22,7 +22,7 @@ Describes the position of a component.
 
 | Name | Description |
 | -- | -- |
-| int32_t x |  |
-| int32_t y |  |
+| int32_t x | Horizontal coordinate, in px.<br>**Since**: 12 |
+| int32_t y | Vertical coordinate, in px.<br>**Since**: 12 |
 
 

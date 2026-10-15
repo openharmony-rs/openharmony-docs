@@ -6,6 +6,8 @@ Declares APIs for decoding an image source into a pixel map.
 
 **Library**: libimage_source_ndk.z.so
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Related module**: [Image](capi-image.md)
@@ -83,6 +85,8 @@ int32_t OH_ImageSource_Create(napi_env env, struct OhosImageSource* src, struct 
 
 Creates an <b>ImageSource</b> object at the JavaScript native layer based on the specified [OhosImageSource](capi-image-ohosimagesource.md) and [OhosImageSourceOps](capi-image-ohosimagesourceops.md) structs.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Deprecated**: 11
@@ -119,6 +123,8 @@ int32_t OH_ImageSource_CreateFromUri(napi_env env, char* uri, size_t size, struc
 
 Creates an <b>ImageSource</b> object at the JavaScript native layer based on the specified image source URI and [OhosImageSourceOps](capi-image-ohosimagesourceops.md) structs.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 11
 
 **Parameters**:
@@ -152,6 +158,8 @@ int32_t OH_ImageSource_CreateFromFd(napi_env env, int32_t fd, struct OhosImageSo
 
 Creates an <b>ImageSource</b> object at the JavaScript native layer based on the specified image source file descriptor and [OhosImageSourceOps](capi-image-ohosimagesourceops.md) structs.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 11
 
 **Parameters**:
@@ -183,6 +191,8 @@ int32_t OH_ImageSource_CreateFromData(napi_env env, uint8_t* data, size_t dataSi
 **Description**
 
 Creates an <b>ImageSource</b> object at the JavaScript native layer based on the specified image source data and [OhosImageSourceOps](capi-image-ohosimagesourceops.md) structs.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 11
 
@@ -217,6 +227,8 @@ int32_t OH_ImageSource_CreateFromRawFile(napi_env env, RawFileDescriptor rawFile
 
 Creates an <b>ImageSource</b> object at the JavaScript native layer based on the specified raw file's file descriptor and [OhosImageSourceOps](capi-image-ohosimagesourceops.md) structs.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 11
 
 **Parameters**:
@@ -248,6 +260,8 @@ int32_t OH_ImageSource_CreateIncremental(napi_env env, struct OhosImageSource* s
 **Description**
 
 Creates an incremental <b>ImageSource</b> object at the JavaScript native layer based on the specified [OhosImageSource](capi-image-ohosimagesource.md) and [OhosImageSourceOps](capi-image-ohosimagesourceops.md) structs. The image source data will be updated through [OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata).
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 
@@ -285,6 +299,8 @@ int32_t OH_ImageSource_CreateIncrementalFromData(napi_env env, uint8_t* data, si
 
 Creates an incremental <b>ImageSource</b> object at the JavaScript native layer based on the specified image source data and [OhosImageSourceOps](capi-image-ohosimagesourceops.md) structs. The image source data will be updated through [OH_ImageSource_UpdateData](capi-image-source-mdk-h.md#oh_imagesource_updatedata).
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 11
 
 **Parameters**:
@@ -318,6 +334,8 @@ int32_t OH_ImageSource_GetSupportedFormats(struct OhosImageSourceSupportedFormat
 
 Obtains all supported decoding formats.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Parameters**:
@@ -346,6 +364,8 @@ ImageSourceNative* OH_ImageSource_InitNative(napi_env env, napi_value source)
 **Description**
 
 Converts an ImageSource object at the JavaScript native layer to an <b>ImageSourceNative</b> object at the C++ native layer.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 
@@ -376,6 +396,8 @@ int32_t OH_ImageSource_CreatePixelMap(const ImageSourceNative* native, struct Oh
 **Description**
 
 Decodes an <b>ImageSource</b> object to obtain a <b>PixelMap</b> object at the JavaScript native layer based on the specified [OhosImageDecodingOps](capi-image-ohosimagedecodingops.md) struct.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 
@@ -408,6 +430,8 @@ int32_t OH_ImageSource_CreatePixelMapList(const ImageSourceNative* native, struc
 
 Decodes an <b>ImageSource</b> to obtain all the <b>PixelMap</b> objects at the JavaScript native layer based on the specified [OhosImageDecodingOps](capi-image-ohosimagedecodingops.md) struct.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Parameters**:
@@ -439,6 +463,8 @@ int32_t OH_ImageSource_GetDelayTime(const ImageSourceNative* native, struct Ohos
 
 Obtains the delay time list from some <b>ImageSource</b> objects (such as GIF image sources).
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Parameters**:
@@ -469,6 +495,8 @@ int32_t OH_ImageSource_GetFrameCount(const ImageSourceNative* native, uint32_t *
 
 Obtains the number of frames from an <b>ImageSource</b> object.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Parameters**:
@@ -498,6 +526,8 @@ int32_t OH_ImageSource_GetImageInfo(const ImageSourceNative* native, int32_t ind
 **Description**
 
 Obtains image source information from an <b>ImageSource</b> object by index.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 
@@ -530,6 +560,8 @@ int32_t OH_ImageSource_GetImageProperty(const ImageSourceNative* native, struct 
 
 Obtains the value of an image property from an <b>ImageSource</b> object.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Parameters**:
@@ -560,6 +592,8 @@ int32_t OH_ImageSource_ModifyImageProperty(const ImageSourceNative* native, stru
 **Description**
 
 Modifies the value of an image property of an <b>ImageSource</b> object.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 
@@ -592,6 +626,8 @@ int32_t OH_ImageSource_UpdateData(const ImageSourceNative* native, struct OhosIm
 
 Updates the data of an <b>ImageSource</b> object.
 
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
+
 **Since**: 10
 
 **Parameters**:
@@ -621,6 +657,8 @@ int32_t OH_ImageSource_Release(ImageSourceNative* native)
 **Description**
 
 Releases an <b>ImageSourceNative</b> object.
+
+**System capability**: SystemCapability.Multimedia.Image.ImageSource
 
 **Since**: 10
 

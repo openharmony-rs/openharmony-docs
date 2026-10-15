@@ -22,9 +22,9 @@ A union that encapsulates callback request context information.
 
 | Name | Description |
 | -- | -- |
-| OH_CloudDisk_FetchDataRequest *fetchData | Fetch data request. It takes effect when callbackType is [CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
-| CloudDisk_PathInfo *cancelFetchData | Cancel fetch data request. It takes effect when callbackType is [CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
-| OH_CloudDisk_DehydrateInfo *dehydrateData | Dehydrate authorization request. It takes effect when callbackType is [CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
-| OH_CloudDisk_FetchRangeDataRequest *fetchRangeData | Fetch range data request. It takes effect when callbackType is [CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.2.0 |
+| OH_CloudDisk_FetchDataRequest *fetchData | Fetch data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
+| CloudDisk_PathInfo *cancelFetchData | Cancel fetch data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_CANCEL_FETCH_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
+| OH_CloudDisk_DehydrateInfo *dehydrateData | Dehydrate authorization request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_DEHYDRATE](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.0.1 |
+| OH_CloudDisk_FetchRangeDataRequest *fetchRangeData | Fetch range data request. It takes effect when callbackType is [OH_CLOUD_DISK_CALLBACK_TYPE_FETCH_RANGE_DATA](capi-oh-cloud-disk-manager-h.md#oh_clouddisk_callbacktype).<br>**Since**: 26.2.0 |
 
 

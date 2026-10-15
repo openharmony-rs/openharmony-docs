@@ -6,7 +6,7 @@ typedef struct ArkUI_DrawContext ArkUI_DrawContext
 
 ## Overview
 
-Defines the structure of the component drawing context.
+Defines component drawing context, which is used to provide drawing context information during the drawing of a custom component. You can obtain the canvas pointer used for drawing and the size of the drawing area.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

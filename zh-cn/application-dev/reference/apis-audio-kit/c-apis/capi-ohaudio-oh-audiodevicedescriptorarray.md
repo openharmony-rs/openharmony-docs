@@ -6,7 +6,7 @@ struct OH_AudioDeviceDescriptorArray {...}
 
 ## 概述
 
-声明音频设备描述符数组。
+声明音频设备描述符数组的结构体，该结构体表示一组音频设备描述符，通过每个描述符可查询设备详细信息。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 
@@ -22,7 +22,7 @@ struct OH_AudioDeviceDescriptorArray {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| uint32_t size | 音频设备描述符数组大小。 |
-| OH_AudioDeviceDescriptor **descriptors | 音频设备描述符数组。 |
+| uint32_t size | 音频设备描述符数组元素个数。 |
+| OH_AudioDeviceDescriptor **descriptors | 指向音频设备描述符数组的指针。 |
 
 

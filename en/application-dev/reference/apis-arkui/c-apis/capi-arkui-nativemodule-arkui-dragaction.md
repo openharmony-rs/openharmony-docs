@@ -6,7 +6,7 @@ typedef struct ArkUI_DragAction ArkUI_DragAction
 
 ## Overview
 
-Defines a drag action.
+Defines a drag action handle, which is used to proactively initiate dragging, where you proactively call an API to start dragging, as opposed to passively responding to drag events. This handle supports creating, configuring, executing, and destroying a drag action. You can set drag data and proactively start dragging.<br> The usage process of **ArkUI_DragAction** is as follows:<br> 1. Create an object by calling [OH_ArkUI_CreateDragActionWithNode](capi-drag-and-drop-h.md#oh_arkui_createdragactionwithnode) or [OH_ArkUI_CreateDragActionWithContext](capi-drag-and-drop-h.md#oh_arkui_createdragactionwithcontext). 2. Set drag parameters by calling APIs such as **OH_ArkUI_DragAction_SetData**. 3. Start dragging by calling [OH_ArkUI_StartDrag](capi-drag-and-drop-h.md#oh_arkui_startdrag). 4. When the object is no longer needed, call [OH_ArkUI_DragAction_Dispose](capi-drag-and-drop-h.md#oh_arkui_dragaction_dispose) to destroy the object and release resources.<br> For details about the creation, configuration, and execution mechanisms, see Binding Drag Events.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

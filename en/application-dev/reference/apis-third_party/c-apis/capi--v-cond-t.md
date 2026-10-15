@@ -8,6 +8,11 @@
 
 | Name | Description |
 | -- | -- |
-| [](capi--pollfd.md) | TODO: retained for ABI compatibility; remove me in v2.x. |
+| CONDITION_VARIABLE cond_var |  |
+| unused_.waiters_count |  |
+| unused_.waiters_count_lock |  |
+| unused_.signal_event |  |
+| unused_.broadcast_event |  |
+| /* TODO: retained for ABI compatibility; remove me in v2.x. */ |  |
 
 

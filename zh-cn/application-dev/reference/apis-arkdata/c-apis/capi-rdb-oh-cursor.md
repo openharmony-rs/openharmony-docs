@@ -29,21 +29,21 @@ typedef struct OH_Cursor {...} OH_Cursor
 
 | 名称 | 描述 |
 | -- | -- |
-| [int (\*getColumnCount)(OH_Cursor *cursor, int *count)](#getcolumncount) | 函数指针，获取结果集中的列数。 |
-| [int (\*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)](#getcolumntype) | 函数指针，根据指定的列索引获取列类型。 |
-| [int (\*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)](#getcolumnindex) | 函数指针，根据指定的列名获取列索引。 |
-| [int (\*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)](#getcolumnname) | 函数指针，根据指定的列索引获取列名。 |
-| [int (\*getRowCount)(OH_Cursor *cursor, int *count)](#getrowcount) | 函数指针，获取结果集中的行数。 |
-| [int (\*goToNextRow)(OH_Cursor *cursor)](#gotonextrow) | 函数指针，转到结果集的下一行。 |
-| [int (\*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)](#getsize) | 函数指针，当结果集中列的数据类型是BLOB或者TEXT时，获取其值所需的内存。 |
-| [int (\*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)](#gettext) | 函数指针，以字符串形式获取当前行中指定列的值。 |
-| [int (\*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)](#getint64) | 函数指针，以int64_t形式获取当前行中指定列的值。 |
-| [int (\*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)](#getreal) | 函数指针，以double形式获取当前行中指定列的值。 |
-| [int (\*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)](#getblob) | 函数指针，以字节数组的形式获取当前行中指定列的值。 |
-| [int (\*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)](#isnull) | 函数指针，检查当前行中指定列的值是否为null。 |
-| [int (\*destroy)(OH_Cursor *cursor)](#destroy) | 函数指针，关闭结果集。 |
-| [int (\*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)](#getasset) | 函数指针，以资产的形式获取当前行中指定列的值。 |
-| [int (\*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)](#getassets) | 函数指针，以资产数组的形式获取当前行中指定列的值。 |
+| [int (\*getColumnCount)(OH_Cursor *cursor, int *count)](#getcolumncount) | - | 函数指针，获取结果集中的列数。 |
+| [int (\*getColumnType)(OH_Cursor *cursor, int32_t columnIndex, OH_ColumnType *columnType)](#getcolumntype) | - | 函数指针，根据指定的列索引获取列类型。 |
+| [int (\*getColumnIndex)(OH_Cursor *cursor, const char *name, int *columnIndex)](#getcolumnindex) | - | 函数指针，根据指定的列名获取列索引。 |
+| [int (\*getColumnName)(OH_Cursor *cursor, int32_t columnIndex, char *name, int length)](#getcolumnname) | - | 函数指针，根据指定的列索引获取列名。 |
+| [int (\*getRowCount)(OH_Cursor *cursor, int *count)](#getrowcount) | - | 函数指针，获取结果集中的行数。 |
+| [int (\*goToNextRow)(OH_Cursor *cursor)](#gotonextrow) | - | 函数指针，转到结果集的下一行。 |
+| [int (\*getSize)(OH_Cursor *cursor, int32_t columnIndex, size_t *size)](#getsize) | - | 函数指针，当结果集中列的数据类型是BLOB或者TEXT时，获取其值所需的内存。 |
+| [int (\*getText)(OH_Cursor *cursor, int32_t columnIndex, char *value, int length)](#gettext) | - | 函数指针，以字符串形式获取当前行中指定列的值。 |
+| [int (\*getInt64)(OH_Cursor *cursor, int32_t columnIndex, int64_t *value)](#getint64) | - | 函数指针，以int64_t形式获取当前行中指定列的值。 |
+| [int (\*getReal)(OH_Cursor *cursor, int32_t columnIndex, double *value)](#getreal) | - | 函数指针，以double形式获取当前行中指定列的值。 |
+| [int (\*getBlob)(OH_Cursor *cursor, int32_t columnIndex, unsigned char *value, int length)](#getblob) | - | 函数指针，以字节数组的形式获取当前行中指定列的值。 |
+| [int (\*isNull)(OH_Cursor *cursor, int32_t columnIndex, bool *isNull)](#isnull) | - | 函数指针，检查当前行中指定列的值是否为null。 |
+| [int (\*destroy)(OH_Cursor *cursor)](#destroy) | - | 函数指针，关闭结果集。 |
+| [int (\*getAsset)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset *value)](#getasset) | - | 函数指针，以资产的形式获取当前行中指定列的值。 |
+| [int (\*getAssets)(OH_Cursor *cursor, int32_t columnIndex, Data_Asset **value, uint32_t *length)](#getassets) | - | 函数指针，以资产数组的形式获取当前行中指定列的值。 |
 
 ## 成员函数说明
 

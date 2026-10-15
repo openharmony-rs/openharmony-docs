@@ -6,6 +6,8 @@
 
 **库：** libohhidebug.so
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **相关模块：** [HiDebug](capi-hidebug.md)
@@ -94,6 +96,8 @@ double OH_HiDebug_GetSystemCpuUsage()
 
 获取系统的CPU资源占用情况百分比。注意：由于该接口涉及跨进程通信，耗时较长，建议不要在主线程中直接调用。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **返回值：**
@@ -111,6 +115,8 @@ double OH_HiDebug_GetAppCpuUsage()
 **描述：**
 
 获取进程的CPU使用率百分比。注意：由于该接口涉及跨进程通信，耗时较长，建议不要在主线程中直接调用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 12
 
@@ -130,6 +136,8 @@ HiDebug_ThreadCpuUsagePtr OH_HiDebug_GetAppThreadCpuUsage()
 
 获取应用所有线程CPU使用情况。注意：由于该接口涉及跨进程通信，耗时较长，建议不要在主线程中直接调用。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **返回值：**
@@ -147,6 +155,8 @@ void OH_HiDebug_FreeThreadCpuUsage(HiDebug_ThreadCpuUsagePtr *threadCpuUsage)
 **描述：**
 
 释放线程数据结构。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 12
 
@@ -166,6 +176,8 @@ void OH_HiDebug_GetSystemMemInfo(HiDebug_SystemMemInfo *systemMemInfo)
 
 获取系统内存信息。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **参数：**
@@ -184,6 +196,8 @@ void OH_HiDebug_GetAppNativeMemInfo(HiDebug_NativeMemInfo *nativeMemInfo)
 
 获取应用程序进程的内存信息。注意：由于该接口需要读取/proc/{pid}/smaps_rollup节点信息，耗时较长，建议不要在主线程中直接调用。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **参数：**
@@ -201,6 +215,8 @@ void OH_HiDebug_GetAppNativeMemInfoWithCache(HiDebug_NativeMemInfo *nativeMemInf
 **描述：**
 
 获取应用程序进程的内存信息，该接口存在缓存机制以提高接口性能。缓存值的有效期为5分钟。注意：由于该接口需要读取/proc/{pid}/smaps_rollup节点信息，耗时较长，建议不要在主线程中直接调用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 20
 
@@ -221,6 +237,8 @@ void OH_HiDebug_GetAppMemoryLimit(HiDebug_MemoryLimit *memoryLimit)
 
 获取应用程序进程的内存限制。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **参数：**
@@ -238,6 +256,8 @@ HiDebug_ErrorCode OH_HiDebug_StartAppTraceCapture(HiDebug_TraceFlag flag, uint64
 **描述：**
 
 启动应用trace采集。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 12
 
@@ -267,6 +287,8 @@ HiDebug_ErrorCode OH_HiDebug_StopAppTraceCapture()
 
 停止采集应用程序trace。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 12
 
 **返回值：**
@@ -284,6 +306,8 @@ HiDebug_ErrorCode OH_HiDebug_RequestTrace(OH_HiDebug_RequestTraceConfig *config,
 **描述：**
 
 根据设置的采集配置请求trace采集。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 24
 
@@ -310,6 +334,8 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemory(uint32_t *value)
 
 获取应用GPU显存大小。注意：由于该接口涉及多次跨进程通信，其耗时可能超过1秒，建议不要在主线程中直接调用该接口。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 14
 
 **参数：**
@@ -333,6 +359,8 @@ HiDebug_ErrorCode OH_HiDebug_GetGraphicsMemorySummary(uint32_t interval, HiDebug
 **描述：**
 
 获取应用显存占用的详细数据。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 21
 
@@ -359,6 +387,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMallocDispatchTable(struct HiDebug_MallocDispatc
 
 通过设置基础库C库中的MallocDispatch表，将原始内存操作函数（例如：malloc/free/calloc/realloc/mmap/munmap）临时替换为开发者自定义的内存操作函数。 MallocDispatch表是基础库C库中封装malloc/calloc/realloc/free等内存操作函数的结构体，HiDebug_MallocDispatch只是MallocDispatch结构体的一部分。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 20
 
 **参数：**
@@ -383,6 +413,8 @@ HiDebug_MallocDispatch* OH_HiDebug_GetDefaultMallocDispatchTable(void)
 
 获取基础库C库当前默认MallocDispatch表，调用[OH_HiDebug_RestoreMallocDispatchTable](capi-hidebug-h.md#oh_hidebug_restoremallocdispatchtable)可恢复。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 20
 
 **返回值：**
@@ -401,6 +433,8 @@ void OH_HiDebug_RestoreMallocDispatchTable(void)
 
 恢复基础库C库MallocDispatch表。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 20
 
 ### OH_HiDebug_BacktraceFromFp()
@@ -412,6 +446,8 @@ int OH_HiDebug_BacktraceFromFp(HiDebug_Backtrace_Object object, void* startFp, v
 **描述：**
 
 根据给定的fp地址进行栈回溯，该函数异步信号安全。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 20
 
@@ -440,6 +476,8 @@ typedef void (*OH_HiDebug_SymbolicAddressCallback)(void* pc, void* arg, const Hi
 
 若[OH_HiDebug_SymbolicAddress](capi-hidebug-h.md#oh_hidebug_symbolicaddress)接口调用成功，将通过该函数将解析后的栈信息返回给调用者。注意：由于该接口涉及多次IO操作，耗时较长，建议不要在主线程中直接调用。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 20
 
 **参数：**
@@ -459,6 +497,8 @@ HiDebug_ErrorCode OH_HiDebug_SymbolicAddress(HiDebug_Backtrace_Object object, vo
 **描述：**
 
 通过给定的pc地址获取详细的符号信息，该函数非异步信号安全。不能在异步信号处理函数中使用。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 20
 
@@ -487,6 +527,8 @@ HiDebug_Backtrace_Object OH_HiDebug_CreateBacktraceObject(void)
 
 创建一个用于栈回溯及栈解析的对象，该函数非异步信号安全。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 20
 
 **返回值：**
@@ -505,6 +547,8 @@ void OH_HiDebug_DestroyBacktraceObject(HiDebug_Backtrace_Object object)
 
 销毁由[OH_HiDebug_CreateBacktraceObject](capi-hidebug-h.md#oh_hidebug_createbacktraceobject)创建的对象，以释放栈回溯及栈解析过程中申请的资源，该函数非异步信号安全。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 20
 
 **参数：**
@@ -522,6 +566,8 @@ uint64_t OH_HiDebug_SetCrashObj(HiDebug_CrashObjType type, void* addr)
 **描述：**
 
 将维测信息添加到崩溃日志中，与[OH_HiDebug_ResetCrashObj](capi-hidebug-h.md#oh_hidebug_resetcrashobj)配对使用。若程序在OH_HiDebug_SetCrashObj与OH_HiDebug_ResetCrashObj之间发生崩溃， 会将OH_HiDebug_SetCrashObj设置的维测信息添加到记录本次崩溃的日志中。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 23
 
@@ -548,6 +594,8 @@ void OH_HiDebug_ResetCrashObj(uint64_t crashObj)
 
 将维测信息对象还原到使用OH_HiDebug_SetCrashObj之前的状态。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 23
 
 **参数：**
@@ -566,6 +614,8 @@ typedef void (*OH_HiDebug_ThreadLiteSamplingCallback)(const char* stacks)
 
 轻量级Perf采样栈内容的回调函数定义。注意：采样数据仅在该回调函数执行期间有效，若需在函数外使用，务必对采样栈内容进行深拷贝。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 22
 
 **参数：**
@@ -581,6 +631,8 @@ HiDebug_ErrorCode OH_HiDebug_RequestThreadLiteSampling(HiDebug_ProcessSamplerCon
 ```
 
 **描述：**
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 22
 
@@ -606,6 +658,8 @@ HiDebug_ErrorCode OH_HiDebug_StartProfiler(OH_HiDebug_ResourceType type, OH_HiDe
 **描述：**
 
 异步启动当前进程资源采集功能。 <br>回调函数只在终止采集（含系统自动停止采集）时调用，其携带采集资源类型和采集文件路径。 <br>若采集异常，则文件路径为NULL。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 24
 
@@ -633,6 +687,8 @@ HiDebug_ErrorCode OH_HiDebug_StopProfiler(void)
 
 停止当前进程资源采集功能。该接口可在[OH_HiDebug_StartProfiler](capi-hidebug-h.md#oh_hidebug_startprofiler)接口调用后使用，且调用间隔不能超过最大持续时间。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 24
 
 **返回值：**
@@ -650,6 +706,8 @@ typedef bool (*OH_HiDebug_MemDumpListener)(int32_t fd, OH_HiDebug_MemListenerTyp
 **描述：**
 
 触发监听的回调函数。开发者在应用中使用FD来写入内存数据，这样就可以使用hidumper命令导出数据。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.0
 
@@ -678,6 +736,8 @@ HiDebug_ErrorCode OH_HiDebug_RegisterMemDumpListener(const char* name, OH_HiDebu
 
 注册内存导出监听。当应用的内存占用较高，或通过hidumper命令手动导出内存信息时，系统会主动调用已注册的回调函数。 <br>第三方应用框架或开发者可借此将应用内部内存信息转储到hidumper中，或通过商业灰度上传至OEM厂商。 <br>对应的注销函数为：[OH_HiDebug_UnregisterMemDumpListener](capi-hidebug-h.md#oh_hidebug_unregistermemdumplistener)。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -703,6 +763,8 @@ HiDebug_ErrorCode OH_HiDebug_UnregisterMemDumpListener(const char* name)
 
 注销已经注册成功的内存导出监听。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -727,6 +789,8 @@ uint64_t OH_HiDebug_AcquireAsyncContext()
 
 Profiler辅助接口，获取一个AsyncContext供后续使用。对应的释放函数为：[OH_HiDebug_ReleaseAsyncContext](capi-hidebug-h.md#oh_hidebug_releaseasynccontext)。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.0
 
 **返回值：**
@@ -745,13 +809,15 @@ void OH_HiDebug_PushAsyncContext(uint64_t ctx)
 
 Profiler辅助接口，将AsyncContext压入运行上下文栈表。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext()获取的异步线程上下文。 |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_PopAsyncContext()
 
@@ -763,13 +829,15 @@ void OH_HiDebug_PopAsyncContext(uint64_t ctx)
 
 Profiler辅助接口，将AsyncContext从运行上下文栈表中弹出。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext()获取的异步线程上下文。 |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_ReleaseAsyncContext()
 
@@ -781,13 +849,15 @@ void OH_HiDebug_ReleaseAsyncContext(uint64_t ctx)
 
 Profiler辅助接口，将AsyncContext释放给系统。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.0
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| uint64_t ctx | 由OH_HiDebug_AcquireAsyncContext()获取的异步线程上下文。 |
+| uint64_t ctx | 由[OH_HiDebug_AcquireAsyncContext()](capi-hidebug-h.md#oh_hidebug_acquireasynccontext())获取的异步线程上下文。 |
 
 ### OH_HiDebug_CreateProfilerOptions()
 
@@ -798,6 +868,8 @@ OH_HiDebug_ProfilerOptions *OH_HiDebug_CreateProfilerOptions(void)
 **描述：**
 
 创建Profiler选项。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 
@@ -818,6 +890,8 @@ HiDebug_ErrorCode OH_HiDebug_DestroyProfilerOptions(OH_HiDebug_ProfilerOptions *
 **描述：**
 
 销毁Profiler配置。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 
@@ -842,6 +916,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncNestingDepth(OH_HiDebug_ProfilerOptions 
 **描述：**
 
 设置异步调用最大嵌套深度。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 
@@ -868,6 +944,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxAsyncTaskStackDepth(OH_HiDebug_ProfilerOption
 
 设置异步任务函数的最大栈深。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -892,6 +970,8 @@ HiDebug_ErrorCode OH_HiDebug_SetSampleIntervalBytes(OH_HiDebug_ProfilerOptions *
 **描述：**
 
 设置采样间隔（单位：字节）。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 
@@ -918,6 +998,8 @@ HiDebug_ErrorCode OH_HiDebug_SetStatisticsIntervalSec(OH_HiDebug_ProfilerOptions
 
 设置统计时间间隔（单位：秒）。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -942,6 +1024,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxStackDepth(OH_HiDebug_ProfilerOptions *opts, 
 **描述：**
 
 设置最大回栈深度。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 
@@ -968,6 +1052,8 @@ HiDebug_ErrorCode OH_HiDebug_SetFilterSize(OH_HiDebug_ProfilerOptions *opts, uin
 
 设置过滤大小。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -992,6 +1078,8 @@ HiDebug_ErrorCode OH_HiDebug_SetMaxDurationSec(OH_HiDebug_ProfilerOptions *opts,
 **描述：**
 
 设置最大采集持续时间（单位：秒）。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 
@@ -1018,6 +1106,8 @@ HiDebug_ErrorCode OH_HiDebug_SetStackTraceMode(OH_HiDebug_ProfilerOptions *opts,
 
 设置调用栈追踪模式。
 
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -1042,6 +1132,8 @@ HiDebug_ErrorCode OH_HiDebug_StartProfilerWithOptions(OH_HiDebug_ResourceType ty
 **描述：**
 
 根据指定资源类型和配置启动分配栈trace日志采集。
+
+**系统能力：** SystemCapability.HiviewDFX.HiProfiler.HiDebug
 
 **起始版本：** 26.0.1
 

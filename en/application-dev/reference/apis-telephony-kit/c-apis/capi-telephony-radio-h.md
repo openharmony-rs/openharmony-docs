@@ -8,9 +8,11 @@ Provides C interface for the telephony radio.
 
 **Library**: libtelephony_radio.so
 
+**System capability**: SystemCapability.Telephony.CoreService
+
 **Since**: 13
 
-**Related module**: [Telephony](capi-telephony.md)
+**Related module**: [](capi-.md)
 
 ## Summary
 
@@ -31,6 +33,8 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 **Description**
 
 Obtains the network status.
+
+**System capability**: SystemCapability.Telephony.CoreService
 
 **Required permission**: ohos.permission.GET_NETWORK_INFO
 

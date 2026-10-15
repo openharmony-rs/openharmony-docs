@@ -8,6 +8,8 @@
 
 **库：** libohinputmethod.so
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **相关模块：** [InputMethod](capi-inputmethod.md)
@@ -49,6 +51,8 @@ InputMethod_AttachOptions *OH_AttachOptions_Create(bool showKeyboard)
 
 创建一个[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例，适用于仅需控制键盘显示状态的简单场景。 如需同时指定触发输入法拉起的场景原因，建议使用[OH_AttachOptions_CreateWithRequestKeyboardReason] (#oh_attachoptions_createwithrequestkeyboardreason)。 <br> <br>配对调用：必须与[OH_AttachOptions_Destroy](#oh_attachoptions_destroy)配对调用，OH_AttachOptions_Create创建的对象 必须通过OH_AttachOptions_Destroy销毁，否则会导致内存泄漏。 <br> <br>生命周期管理： <br>- 创建后可多次读取（IsShowKeyboard）。 <br>- 将options传入Attach函数后，Attach函数将读取配置信息。Attach完成后options可立即销毁，因为配置已被读取。 <br>- 不可将已销毁的options再次使用。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -72,6 +76,8 @@ InputMethod_AttachOptions *OH_AttachOptions_CreateWithRequestKeyboardReason(bool
 **描述：**
 
 创建一个[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例，同时指定键盘显示状态和请求键盘的原因。 requestKeyboardReason参数用于标识触发输入法拉起的场景原因，帮助系统识别输入场景以提供更好的用户体验。 <br> <br>配对调用：必须与[OH_AttachOptions_Destroy](#oh_attachoptions_destroy)配对调用，Create创建的对象必须通过 OH_AttachOptions_Destroy销毁。 <br> <br>生命周期管理：与OH_AttachOptions_Create一致。创建后可多次读取，Attach完成后可立即销毁。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 15
 
@@ -98,6 +104,8 @@ void OH_AttachOptions_Destroy(InputMethod_AttachOptions *options)
 
 销毁一个[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)实例，释放由OH_AttachOptions_Create函数分配的内存资源。 该方法与OH_AttachOptions_Create和OH_AttachOptions_CreateWithRequestKeyboardReason配对使用。 <br> <br>配对调用：必须与OH_AttachOptions_Create或OH_AttachOptions_CreateWithRequestKeyboardReason配对调用。每个 OH_AttachOptions_Create创建的实例必须且只能调用一次OH_AttachOptions_Destroy。 <br> <br>生命周期管理： <br>- OH_AttachOptions_Destroy后，options指针不再有效，不可继续使用。 <br>- 不可对同一个options指针调用两次OH_AttachOptions_Destroy，否则会导致重复释放（double-free）。 <br>- 建议在Attach成功后立即调用OH_AttachOptions_Destroy，因为Attach已读取完配置信息。
 
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
+
 **起始版本：** 12
 
 **参数：**
@@ -115,6 +123,8 @@ InputMethod_ErrorCode OH_AttachOptions_IsShowKeyboard(InputMethod_AttachOptions 
 **描述：**
 
 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取是否显示键盘的值。 <br> <br>前置条件：options必须是通过OH_AttachOptions_Create函数创建的有效实例，showKeyboard必须指向有效的bool变量。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 12
 
@@ -140,6 +150,8 @@ InputMethod_ErrorCode OH_AttachOptions_GetRequestKeyboardReason(InputMethod_Atta
 **描述：**
 
 从[InputMethod_AttachOptions](capi-inputmethod-inputmethod-attachoptions.md)中获取请求键盘输入的原因。 <br> <br>前置条件：options必须是通过OH_AttachOptions_CreateWithRequestKeyboardReason创建的实例 （通过OH_AttachOptions_Create创建的实例的requestKeyboardReason默认值为IME_REQUEST_REASON_NONE）。 requestKeyboardReason必须指向有效的InputMethod_RequestKeyboardReason变量。
+
+**系统能力：** SystemCapability.MiscServices.InputMethodFramework
 
 **起始版本：** 15
 

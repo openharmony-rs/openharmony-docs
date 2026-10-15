@@ -2,9 +2,11 @@
 
 ## 概述
 
-声明可以锁定并访问pixelmap数据的方法，声明解锁的方法。推荐使用[pixelmap_native.h](capi-pixelmap-native-h.md)。
+声明可以锁定并访问pixelmap数据的方法，声明解锁的方法。推荐使用[pixelmap_native.h](./image/pixelmap_native.h)。
 
 **库：** libpixelmap_ndk.z.so
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -66,6 +68,8 @@ enum anonymous0
 
 PixelMap透明度类型的枚举。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -85,6 +89,8 @@ enum anonymous1
 
 PixelMap编辑类型的枚举。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -101,6 +107,8 @@ enum OH_PixelMap_AntiAliasingLevel
 **描述：**
 
 Pixelmap缩放时采用的缩放算法。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
@@ -123,6 +131,8 @@ int32_t OH_PixelMap_CreatePixelMap(napi_env env, OhosPixelMapCreateOps info, voi
 **描述：**
 
 创建PixelMap对象。当前只支持输入流为BGRA格式的流。<br> 该接口传入的buf不支持stride。<br> 该接口不支持DMA内存。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -151,6 +161,8 @@ int32_t OH_PixelMap_CreatePixelMapWithStride(napi_env env, OhosPixelMapCreateOps
 **描述：**
 
 创建PixelMap对象。<br> 当前只支持输入流为BGRA格式的流。pixelmap内存在RGBA格式下，默认为DMA内存（图片512\*512以上）。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
@@ -181,6 +193,8 @@ int32_t OH_PixelMap_CreateAlphaPixelMap(napi_env env, napi_value source, napi_va
 
 根据Alpha通道的信息，来生成一个仅包含Alpha通道信息的PixelMap对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -207,6 +221,8 @@ NativePixelMap* OH_PixelMap_InitNativePixelMap(napi_env env, napi_value source)
 
 初始化NativePixelMap对象。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -231,6 +247,8 @@ int32_t OH_PixelMap_GetBytesNumberPerRow(const NativePixelMap* native, int32_t* 
 **描述：**
 
 获取PixelMap对象每行字节数。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -257,6 +275,8 @@ int32_t OH_PixelMap_GetIsEditable(const NativePixelMap* native, int32_t* editabl
 
 获取PixelMap对象是否可编辑的状态。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -281,6 +301,8 @@ int32_t OH_PixelMap_IsSupportAlpha(const NativePixelMap* native, int32_t* alpha)
 **描述：**
 
 获取PixelMap对象是否支持Alpha通道。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -307,6 +329,8 @@ int32_t OH_PixelMap_SetAlphaAble(const NativePixelMap* native, int32_t alpha)
 
 设置PixelMap对象的Alpha通道。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -331,6 +355,8 @@ int32_t OH_PixelMap_GetDensity(const NativePixelMap* native, int32_t* density)
 **描述：**
 
 获取PixelMap对象像素密度。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -357,6 +383,8 @@ int32_t OH_PixelMap_SetDensity(const NativePixelMap* native, int32_t density)
 
 设置PixelMap对象像素密度。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -381,6 +409,8 @@ int32_t OH_PixelMap_SetOpacity(const NativePixelMap* native, float opacity)
 **描述：**
 
 设置PixelMap对象的透明度。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -407,6 +437,8 @@ int32_t OH_PixelMap_Scale(const NativePixelMap* native, float x, float y)
 
 设置PixelMap对象的缩放。<br> 从API 12开始，推荐使用新接口[OH_PixelmapNative_Scale](capi-pixelmap-native-h.md#oh_pixelmapnative_scale)。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -432,6 +464,8 @@ int32_t OH_PixelMap_ScaleWithAntiAliasing(const NativePixelMap* native, float x,
 **描述：**
 
 根据指定的缩放算法和输入的宽高对图片进行缩放。<br> 从API 12开始，推荐使用新接口[OH_PixelmapNative_ScaleWithAntiAliasing](capi-pixelmap-native-h.md#oh_pixelmapnative_scalewithantialiasing)。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 12
 
@@ -460,6 +494,8 @@ int32_t OH_PixelMap_Translate(const NativePixelMap* native, float x, float y)
 
 设置PixelMap对象的偏移。<br> 从API 12开始，推荐使用新接口[OH_PixelmapNative_Translate](capi-pixelmap-native-h.md#oh_pixelmapnative_translate)。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -486,6 +522,8 @@ int32_t OH_PixelMap_Rotate(const NativePixelMap* native, float angle)
 
 设置PixelMap对象的旋转。<br> 从API 12开始，推荐使用新接口[OH_PixelmapNative_Rotate](capi-pixelmap-native-h.md#oh_pixelmapnative_rotate)。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -510,6 +548,8 @@ int32_t OH_PixelMap_Flip(const NativePixelMap* native, int32_t x, int32_t y)
 **描述：**
 
 设置PixelMap对象的翻转。<br> 从API 12开始，推荐使用新接口[OH_PixelmapNative_Flip](capi-pixelmap-native-h.md#oh_pixelmapnative_flip)。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -536,6 +576,8 @@ int32_t OH_PixelMap_Crop(const NativePixelMap* native, int32_t x, int32_t y, int
 **描述：**
 
 设置PixelMap对象的裁剪。<br> 从API 12开始，推荐使用新接口[OH_PixelmapNative_Crop](capi-pixelmap-native-h.md#oh_pixelmapnative_crop)。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 
@@ -565,6 +607,8 @@ int32_t OH_PixelMap_GetImageInfo(const NativePixelMap* native, OhosPixelMapInfos
 
 获取PixelMap对象图像信息。<br> 从API 12开始，推荐使用新接口[OH_PixelmapNative_GetImageInfo](capi-pixelmap-native-h.md#oh_pixelmapnative_getimageinfo)。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -590,6 +634,8 @@ int32_t OH_PixelMap_AccessPixels(const NativePixelMap* native, void** addr)
 
 获取native PixelMap对象数据的内存地址，并锁定该内存。
 
+**系统能力：** SystemCapability.Multimedia.Image.Core
+
 **起始版本：** 10
 
 **参数：**
@@ -614,6 +660,8 @@ int32_t OH_PixelMap_UnAccessPixels(const NativePixelMap* native)
 **描述：**
 
 释放native PixelMap对象数据的内存锁，用于匹配方法[OH_PixelMap_AccessPixels](capi-image-pixel-map-mdk-h.md#oh_pixelmap_accesspixels)。
+
+**系统能力：** SystemCapability.Multimedia.Image.Core
 
 **起始版本：** 10
 

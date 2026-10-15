@@ -6,7 +6,7 @@ typedef struct OH_AudioWorkgroup OH_AudioWorkgroup
 
 ## 概述
 
-声明音频工作组。用于对关键音频线程进行分组管理。
+声明音频工作组结构体，该结构体表示一组用于协同处理音频数据任务的线程， 系统会以工作组为单元管理其使用的CPU资源。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

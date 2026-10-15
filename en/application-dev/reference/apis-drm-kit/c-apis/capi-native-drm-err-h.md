@@ -6,6 +6,8 @@ The file declares the DRM error codes.
 
 **Library**: libnative_drm.so
 
+**System capability**: SystemCapability.Multimedia.Drm.Core
+
 **Since**: 11
 
 **Related module**: [Drm](capi-drm.md)
@@ -29,6 +31,8 @@ enum Drm_ErrCode
 **Description**
 
 Enumerates the DRM error codes.
+
+**System capability**: SystemCapability.Multimedia.Drm.Core
 
 **Since**: 11
 

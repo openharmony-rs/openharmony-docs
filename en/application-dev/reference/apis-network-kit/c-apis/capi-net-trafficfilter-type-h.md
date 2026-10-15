@@ -6,6 +6,8 @@ Declares the common types and error codes required for network traffic filtering
 
 **Library**: libnet_trafficfilter.so
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 **Related module**: [TrafficFilter](capi-trafficfilter.md)
@@ -97,6 +99,8 @@ enum OH_TrafficFilter_ErrCode
 
 Defines the error codes for traffic filtering and redirection.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -120,6 +124,8 @@ enum OH_TrafficFilter_IPMatchType
 
 Defines an IP match type.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -140,6 +146,8 @@ enum OH_TrafficFilter_IPFamily
 
 Defines an IP address family.
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -157,6 +165,8 @@ enum OH_TrafficFilter_PortMatchType
 **Description**
 
 Defines a port match type.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
 
@@ -176,6 +186,8 @@ enum OH_TrafficFilter_HookPoint
 **Description**
 
 Enumerates the hook points, specifying where the rule takes effect in the network protocol stack. As packets pass through the kernel network protocol stack, hook points are triggered at different stages, and the rule intercepts packets at the corresponding hook points. For example, the INPUT chain processes packets entering the local device, and the OUTPUT chain processes packets sent from the local device.
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.0
 
@@ -197,6 +209,8 @@ enum OH_TrafficFilter_PacketDecision
 
 Packet decision type
 
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
+
 **Since**: 26.0.1
 
 | Enum item | Description |
@@ -213,6 +227,8 @@ enum OH_TrafficFilter_PacketCopyMode
 **Description**
 
 Packet copy mode enumeration
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.1
 
@@ -235,6 +251,8 @@ typedef OH_TrafficFilter_PacketDecision (*OH_TrafficFilter_PacketCallback)(const
 **Description**
 
 Packet callback function type
+
+**System capability**: SystemCapability.Communication.NetManager.NetFirewall
 
 **Since**: 26.0.1
 

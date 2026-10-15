@@ -6,6 +6,8 @@ Defines C APIs for the SSL/TLS certificate chain verification module.
 
 **Library**: libnet_ssl.so
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)
@@ -38,6 +40,8 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 Provides certificate chain verification APIs for external systems.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Parameters**:
@@ -62,6 +66,8 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 **Description**
 
 Obtains the certificate lock information.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 12
 
@@ -88,6 +94,8 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 
 Obtains the certificate information.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 12
 
 **Parameters**:
@@ -113,6 +121,8 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 
 Releases the certificate content.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 12
 
 **Parameters**:
@@ -130,6 +140,8 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 **Description**
 
 Boolean value indicating whether plaintext HTTP is allowed.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -157,6 +169,8 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 
 Boolean value indicating whether host name–based plaintext HTTP is allowed.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 18
@@ -183,6 +197,8 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 **Description**
 
 Checks whether plaintext HTTP interception is enabled.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 20
 
@@ -213,6 +229,8 @@ Creates and verifies a sorted certificate chain.
 >
 > After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -241,6 +259,8 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 **Description**
 
 Frees the certificate chain allocated by OH_NetStack_CreateAndVerifySortedCertChain.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Since**: 26.0.0
 

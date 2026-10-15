@@ -2,9 +2,11 @@
 
 ## 概述
 
-Defines the enumerations related to the **NavDestination** and **Router** components.
+定义Navigation或Router组件的枚举和接口。
 
 **库：** libace_ndk.z.so
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -17,7 +19,7 @@ Defines the enumerations related to the **NavDestination** and **Router** compon
 | 名称 | typedef关键字 | 描述 |
 | -- | -- | -- |
 | [ArkUI_NavDestinationState](#arkui_navdestinationstate) | ArkUI_NavDestinationState | 定义NavDestination组件的状态。 |
-| [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | 定义Router（路由页面）的状态。 |
+| [ArkUI_RouterPageState](#arkui_routerpagestate) | ArkUI_RouterPageState | 定义[Router]Router（路由页面）的状态。 |
 
 ## 枚举类型说明
 
@@ -31,21 +33,23 @@ enum ArkUI_NavDestinationState
 
 定义NavDestination组件的状态。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 |  |
-| ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 |  |
+| ARKUI_NAV_DESTINATION_STATE_ON_SHOW = 0 | NavDestination组件显示。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_HIDE = 1 | NavDestination组件隐藏。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_APPEAR = 2 | NavDestination从组件树上挂载。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_DISAPPEAR = 3 | NavDestination从组件树上卸载。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_SHOW = 4 | NavDestination组件显示之前。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_HIDE = 5 | NavDestination组件隐藏之前。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_APPEAR = 6 | NavDestination挂载到组件树之前。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_WILL_DISAPPEAR = 7 | NavDestination从组件树上卸载之前。<br>**起始版本：** 12 |
+| ARKUI_NAV_DESTINATION_STATE_ON_ACTIVE = 8 | NavDestination组件处于激活态。<br>**起始版本：** 26.2.0 |
+| ARKUI_NAV_DESTINATION_STATE_ON_INACTIVE = 9 | NavDestination组件处于非激活态。<br>**起始版本：** 26.2.0 |
+| ARKUI_NAV_DESTINATION_STATE_ON_BACK_PRESS = 100 | NavDestination从组件返回。<br>**起始版本：** 12 |
 
 ### ArkUI_RouterPageState
 
@@ -55,16 +59,18 @@ enum ArkUI_RouterPageState
 
 **描述：**
 
-定义Router（路由页面）的状态。
+定义[Router]Router（路由页面）的状态。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0 |  |
-| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1 |  |
-| ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2 |  |
-| ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3 |  |
-| ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4 |  |
+| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_APPEAR = 0 | Router Page即将创建。<br>**起始版本：** 12 |
+| ARKUI_ROUTER_PAGE_STATE_ABOUT_TO_DISAPPEAR = 1 | Router Page即将销毁。<br>**起始版本：** 12 |
+| ARKUI_ROUTER_PAGE_STATE_ON_SHOW = 2 | Router Page显示。<br>**起始版本：** 12 |
+| ARKUI_ROUTER_PAGE_STATE_ON_HIDE = 3 | Router Page隐藏。<br>**起始版本：** 12 |
+| ARKUI_ROUTER_PAGE_STATE_ON_BACK_PRESS = 4 | Router Page返回时。<br>**起始版本：** 12 |
 
 

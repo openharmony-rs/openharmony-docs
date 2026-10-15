@@ -6,6 +6,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -51,6 +53,8 @@ enum ArkUI_ProgressType
 
 定义进度条类型枚举值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -74,6 +78,8 @@ ArkUI_ProgressLinearStyleOption* OH_ArkUI_ProgressLinearStyleOption_Create(void)
 
 创建线性进度条样式信息。使用完毕后必须调用[OH_ArkUI_ProgressLinearStyleOption_Destroy](capi-progress-h.md#oh_arkui_progresslinearstyleoption_destroy)释放资源，避免内存泄漏。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **返回值：**
@@ -92,6 +98,8 @@ void OH_ArkUI_ProgressLinearStyleOption_Destroy(ArkUI_ProgressLinearStyleOption*
 
 销毁线性进度条样式信息。必须与[OH_ArkUI_ProgressLinearStyleOption_Create](capi-progress-h.md#oh_arkui_progresslinearstyleoption_create)配对使用， 参数option应通过OH_ArkUI_ProgressLinearStyleOption_Create()获取，调用OH_ArkUI_ProgressLinearStyleOption_Destroy()后不应再使用该对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -109,6 +117,8 @@ void OH_ArkUI_ProgressLinearStyleOption_SetScanEffectEnabled(ArkUI_ProgressLinea
 **描述：**
 
 设置扫光效果的开关。适用于需要增强进度条视觉反馈效果的加载场景，如数据加载、文件上传等。扫光效果指进度条上有光线扫描移动的动态视觉效果。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -129,6 +139,8 @@ void OH_ArkUI_ProgressLinearStyleOption_SetSmoothEffectEnabled(ArkUI_ProgressLin
 
 设置进度平滑动效的开关。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -147,6 +159,8 @@ void OH_ArkUI_ProgressLinearStyleOption_SetStrokeWidth(ArkUI_ProgressLinearStyle
 **描述：**
 
 设置进度条宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -167,6 +181,8 @@ void OH_ArkUI_ProgressLinearStyleOption_SetStrokeRadius(ArkUI_ProgressLinearStyl
 
 设置进度条圆角半径。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -185,6 +201,8 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetScanEffectEnabled(ArkUI_ProgressLinea
 **描述：**
 
 获取扫光效果的开关信息。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -210,6 +228,8 @@ bool OH_ArkUI_ProgressLinearStyleOption_GetSmoothEffectEnabled(ArkUI_ProgressLin
 
 获取进度平滑动效的开关信息。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -234,6 +254,8 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeWidth(ArkUI_ProgressLinearStyl
 
 获取进度条宽度。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -257,6 +279,8 @@ float OH_ArkUI_ProgressLinearStyleOption_GetStrokeRadius(ArkUI_ProgressLinearSty
 **描述：**
 
 获取进度条圆角半径值。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 

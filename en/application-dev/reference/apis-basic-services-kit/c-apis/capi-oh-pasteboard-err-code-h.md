@@ -8,6 +8,8 @@ Declaration error code information.
 
 **Library**: libpasteboard.so
 
+**System capability**: SystemCapability.MiscServices.Pasteboard
+
 **Since**: 13
 
 **Related module**: [Pasteboard](capi-pasteboard.md)
@@ -31,6 +33,8 @@ enum PASTEBOARD_ErrCode
 **Description**
 
 Enumerates the error codes.
+
+**System capability**: SystemCapability.MiscServices.Pasteboard
 
 **Since**: 13
 

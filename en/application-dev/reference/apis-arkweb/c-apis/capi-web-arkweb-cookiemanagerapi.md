@@ -29,11 +29,11 @@ ArkWeb_CookieManagerAPI is a Native API struct for cookie management. This struc
 
 | Name | Description |
 | -- | -- |
-| [ArkWeb_ErrorCode (\*fetchCookieSync)(const char* url, bool incognito, bool includeHttpOnly, char** cookieValue)](#fetchcookiesync) | Obtains the cookie value of a specified URL. This method is used in scenarios such as user login state maintenance, session management, and personalized configuration reading. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
-| [ArkWeb_ErrorCode (\*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)](#configcookiesync) | Sets the cookie value of a specified URL. This method is used in scenarios such as saving user preference settings, maintaining login state, and saving session information. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
-| [bool (\*existCookies)(bool incognito)](#existcookies) | Check whether cookies exist. |
-| [void (\*clearAllCookiesSync)(bool incognito)](#clearallcookiessync) | Clears all cookies (including persistent cookies and session cookies). This method is used in scenarios such as user logout, clearing privacy data, and resetting user state. If you only need to clear session cookies, you are advised to use [clearSessionCookiesSync](capi-web-arkweb-cookiemanagerapi.md#clearsessioncookiessync). This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
-| [void (\*clearSessionCookiesSync)()](#clearsessioncookiessync) | Clears all session cookies. This method is used in scenarios such as clearing temporary session data, closing all sessions, and cleaning up session timeouts. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
+| [ArkWeb_ErrorCode (\*fetchCookieSync)(const char* url, bool incognito, bool includeHttpOnly, char** cookieValue)](#fetchcookiesync) | - | Obtains the cookie value of a specified URL. This method is used in scenarios such as user login state maintenance, session management, and personalized configuration reading. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
+| [ArkWeb_ErrorCode (\*configCookieSync)(const char* url,const char* cookieValue, bool incognito, bool includeHttpOnly)](#configcookiesync) | - | Sets the cookie value of a specified URL. This method is used in scenarios such as saving user preference settings, maintaining login state, and saving session information. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
+| [bool (\*existCookies)(bool incognito)](#existcookies) | - | Checks whether cookies exist. This method is used in scenarios such as determining whether a user is logged in, checking whether a session is valid, and verifying identity status. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
+| [void (\*clearAllCookiesSync)(bool incognito)](#clearallcookiessync) | - | Clears all cookies (including persistent cookies and session cookies). This method is used in scenarios such as user logout, clearing privacy data, and resetting user state. If you only need to clear session cookies, you are advised to use [clearSessionCookiesSync](capi-web-arkweb-cookiemanagerapi.md#clearsessioncookiessync). This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
+| [void (\*clearSessionCookiesSync)()](#clearsessioncookiessync) | - | Clears all session cookies. This method is used in scenarios such as clearing temporary session data, closing all sessions, and cleaning up session timeouts. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer. |
 
 ## Member function description
 
@@ -95,7 +95,7 @@ bool (*existCookies)(bool incognito)
 
 **Description**
 
-Check whether cookies exist.
+Checks whether cookies exist. This method is used in scenarios such as determining whether a user is logged in, checking whether a session is valid, and verifying identity status. This method must be called in the UI thread. Before calling, you are advised to check the availability of the function pointer.
 
 **Parameters**:
 

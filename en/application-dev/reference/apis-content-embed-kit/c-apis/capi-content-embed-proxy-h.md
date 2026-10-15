@@ -6,6 +6,8 @@ Provides the client application with the API for querying the OE Extension infor
 
 **Library**: libcontent_embed_ndk.so
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Related module**: [ContentEmbed](capi-contentembed.md)
@@ -84,6 +86,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedInfo(ContentEmbed_Info 
 
 Creates an [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance. <br>You can destroy the instance by calling [OH_ContentEmbed_DestroyContentEmbedInfo](capi-content-embed-proxy-h.md#oh_contentembed_destroycontentembedinfo) to avoid memory leaks.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Resource release**: OH_ContentEmbed_DestroyContentEmbedInfo {info}
@@ -110,6 +114,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedInfo(ContentEmbed_Info
 
 Destroys a [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -133,6 +139,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedInfo(const char *locale, C
 **Description**
 
 Obtains a [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance based on the region settings.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Required permission**: ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
@@ -161,6 +169,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatCountFromInfo(const ContentEmbed
 
 Obtains the number of [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instances in the [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -185,6 +195,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetFormatFromInfo(const ContentEmbed_Info
 **Description**
 
 Obtains the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance at the specified index from the [ContentEmbed_Info](capi-contentembed-contentembed-info.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -212,6 +224,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateContentEmbedFormat(ContentEmbed_For
 
 Creates a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance. <br>You can destroy the instance using [OH_ContentEmbed_DestroyContentEmbedFormat](capi-content-embed-proxy-h.md#oh_contentembed_destroycontentembedformat) to avoid memory leaks.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Resource release**: OH_ContentEmbed_DestroyContentEmbedFormat {format}
@@ -238,6 +252,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyContentEmbedFormat(ContentEmbed_Fo
 
 Destroys an [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -261,6 +277,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetContentEmbedFormatByOEidAndLocale(cons
 **Description**
 
 Obtains an [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance based on the OEID and region settings.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Required permission**: ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
@@ -290,6 +308,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetOEidFromFormat(const ContentEmbed_Form
 
 Obtains the OEID of the [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -314,6 +334,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetNameAndDescriptionFromFormat(const Con
 **Description**
 
 Obtains the localized display name and description from a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -341,6 +363,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_GetIconFromFormat(const ContentEmbed_Form
 
 Obtains the icon of a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -366,6 +390,8 @@ char** OH_ContentEmbed_GetFileNameExtensionsFromFormat(const ContentEmbed_Format
 
 Obtains the list of file name extensions of a [ContentEmbed_Format](capi-contentembed-contentembed-format.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -390,6 +416,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_CreateExtensionProxy(ContentEmbed_Documen
 **Description**
 
 Creates a [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) instance. <br>You can destroy the instance using [OH_ContentEmbed_DestroyExtensionProxy](capi-content-embed-proxy-h.md#oh_contentembed_destroyextensionproxy) to avoid memory leaks.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -419,6 +447,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_DestroyExtensionProxy(ContentEmbed_Extens
 
 Destroys a [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) instance.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -443,6 +473,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnUpdateFunc)(ContentEmbed_Extensio
 
 Callback function type for notifying the client when the OE document is updated. <br>You need to implement this function and register it with the client's OE object through [OH_ContentEmbed_Proxy_RegisterOnUpdateFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronupdatefunc).
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -460,6 +492,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnErrorFunc)(ContentEmbed_Extension
 **Description**
 
 Callback function type for notifying the client when an error occurs in the OE document. <br>You need to implement this function and register it with the client's OE object through [OH_ContentEmbed_Proxy_RegisterOnErrorFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronerrorfunc).
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -480,6 +514,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnEditingFinishedFunc)(ContentEmbed
 
 Callback function type for notifying the client when the OE document editing is complete. <br>You need to implement this function and register it with the client's OE object through [OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeroneditingfinishedfunc).
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -499,6 +535,8 @@ typedef void (*OH_ContentEmbed_ClientCallbackOnExtensionStoppedFunc)(ContentEmbe
 
 Callback function type when the OE Extension stops. <br>You need to implement this function and register it with the client's OE object through [OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc](capi-content-embed-proxy-h.md#oh_contentembed_proxy_registeronextensionstoppedfunc).
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -516,6 +554,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnUpdateFunc(ContentEmbed_E
 **Description**
 
 Registers the callback function for updating an [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) document with the client.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -542,6 +582,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnErrorFunc(ContentEmbed_Ex
 
 Registers the callback function for triggering an error when an error occurs in the document of the client's object.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -566,6 +608,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnEditingFinishedFunc(Conte
 **Description**
 
 Registers the callback function for the client to be invoked when an [ContentEmbed_ExtensionProxy](capi-contentembed-contentembed-extensionproxy.md) document is edited.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -592,6 +636,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_RegisterOnExtensionStoppedFunc(Cont
 
 Registers the callback function for stopping the OE Extension to the client's OE object.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -616,6 +662,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StartWork(ContentEmbed_ExtensionPro
 **Description**
 
 Connects to the server-side OE Extension and establishes a communication channel with the OE Extension.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Required permission**: ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
@@ -643,6 +691,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_StopWork(ContentEmbed_ExtensionProx
 
 Disconnects the communication channel with the OE Extension.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Required permission**: ohos.permission.CONNECT_OBJECTEDITOR_EXTENSION
 
 **Since**: 24
@@ -668,6 +718,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetSnapshot(ContentEmbed_ExtensionP
 **Description**
 
 Obtains the snapshot image of the current OE document from the client OE object for preview or thumbnail display.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -696,6 +748,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_DoEdit(ContentEmbed_ExtensionProxy 
 
 Requests the OE Extension instance to enter the edit mode from the client's OE object.
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -719,6 +773,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetEditStatus(ContentEmbed_Extensio
 **Description**
 
 Queries the current editing state and modification state of the OE document by the server-side OE Extension instance.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 
@@ -746,6 +802,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetCapability(ContentEmbed_Extensio
 
 Obtains the capabilities of the server-side OE Extension instance. The capabilities are returned in the form of bit masks. For details about the meaning of each bit, see [ContentEmbed_CapabilityCode](capi-content-embed-common-h.md#contentembed_capabilitycode).
 
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
+
 **Since**: 24
 
 **Parameters**:
@@ -770,6 +828,8 @@ ContentEmbed_ErrorCode OH_ContentEmbed_Proxy_GetDocument(ContentEmbed_ExtensionP
 **Description**
 
 Obtains the associated OE document object from the client's OE object. <br>The OE document object is created in [OH_ContentEmbed_CreateDocumentByOEid](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyoeid), [OH_ContentEmbed_CreateDocumentByFile](capi-content-embed-document-h.md#oh_contentembed_createdocumentbyfile), or [OH_ContentEmbed_LoadDocumentFromFile](capi-content-embed-document-h.md#oh_contentembed_loaddocumentfromfile) mode. <br>When the OE document is no longer needed, call [OH_ContentEmbed_DestroyDocument](capi-content-embed-document-h.md#oh_contentembed_destroydocument) to destroy it.
+
+**System capability**: SystemCapability.ContentEmbed.ObjectEditor
 
 **Since**: 24
 

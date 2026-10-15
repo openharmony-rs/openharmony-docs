@@ -6,6 +6,8 @@
 
 **库：** libnet_ssl.so
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 11
 
 **相关模块：** [netstack](capi-netstack.md)
@@ -38,6 +40,8 @@ uint32_t OH_NetStack_CertVerification(const struct NetStack_CertBlob *cert, cons
 
 对外暴露的证书链校验接口。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 11
 
 **参数：**
@@ -62,6 +66,8 @@ int32_t OH_NetStack_GetPinSetForHostName(const char *hostname, NetStack_Certific
 **描述：**
 
 获取证书锁定信息。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 12
 
@@ -88,6 +94,8 @@ int32_t OH_NetStack_GetCertificatesForHostName(const char *hostname, NetStack_Ce
 
 获取证书信息。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 12
 
 **参数：**
@@ -113,6 +121,8 @@ void OH_Netstack_DestroyCertificatesContent(NetStack_Certificates *certs)
 
 释放证书内容。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 12
 
 **参数：**
@@ -130,6 +140,8 @@ int32_t OH_Netstack_IsCleartextPermitted(bool *isCleartextPermitted)
 **描述：**
 
 整体明文HTTP是否允许。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **需要权限：** ohos.permission.INTERNET
 
@@ -157,6 +169,8 @@ int32_t OH_Netstack_IsCleartextPermittedByHostName(const char *hostname, bool *i
 
 按域名明文HTTP是否允许。
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **需要权限：** ohos.permission.INTERNET
 
 **起始版本：** 18
@@ -183,6 +197,8 @@ int32_t OH_Netstack_IsCleartextCfgByComponent(const char *component, bool *compo
 **描述：**
 
 检查组件是否已配置开启明文HTTP拦截功能。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 20
 
@@ -213,6 +229,8 @@ uint32_t OH_NetStack_CreateAndVerifySortedCertChain(const struct NetStack_CertBl
 >
 > After use, you must call [OH_NetStack_FreeCertChain](capi-net-ssl-c-h.md#oh_netstack_freecertchain) to release the allocated memory pointed by outSortedChain. Failure to do so will cause memory leaks.
 
+**系统能力：** SystemCapability.Communication.NetStack
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -241,6 +259,8 @@ void OH_NetStack_FreeCertChain(struct NetStack_CertBlob *certChain, size_t certC
 **描述：**
 
 释放由OH_NetStack_CreateAndVerifySortedCertChain分配的证书链。
+
+**系统能力：** SystemCapability.Communication.NetStack
 
 **起始版本：** 26.0.0
 

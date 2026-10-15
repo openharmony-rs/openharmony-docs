@@ -6,6 +6,8 @@ The file declares the APIs related to moving photos. You can use the APIs to obt
 
 **Library**: libmedia_asset_manager.so
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Related module**: [MediaAssetManager](capi-mediaassetmanager.md)
@@ -34,6 +36,8 @@ MediaLibrary_ErrorCode OH_MovingPhoto_GetUri(OH_MovingPhoto* movingPhoto, const 
 
 Obtains the URI of a moving photo.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -58,6 +62,8 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUris(OH_MovingPhoto* mov
 **Description**
 
 Requests the image data and video data of a moving photo and writes them to the specified URIs, respectively.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
@@ -87,6 +93,8 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithUri(OH_MovingPhoto* movi
 
 Requests the moving photo content of the specified resource type and writes it to the specified URI.
 
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
+
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
 **Since**: 13
@@ -114,6 +122,8 @@ MediaLibrary_ErrorCode OH_MovingPhoto_RequestContentWithBuffer(OH_MovingPhoto* m
 **Description**
 
 Requests the moving photo content of the specified resource type and returns it in ArrayBuffer format.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Required permission**: ohos.permission.READ_IMAGEVIDEO
 
@@ -143,6 +153,8 @@ MediaLibrary_ErrorCode OH_MovingPhoto_Release(OH_MovingPhoto* movingPhoto)
 **Description**
 
 Releases an [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) instance.
+
+**System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Since**: 13
 

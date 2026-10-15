@@ -6,6 +6,8 @@ Declares MIDI related interfaces.<br> MIDI is a technical standard that enables 
 
 **Library**: libohmidi.so
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Related module**: [OHMIDI](capi-ohmidi.md)
@@ -49,6 +51,8 @@ Creates a MIDI client instance.
 >
 > Resource Management & Best Practices**: MIDI is a delay-sensitive system service. To ensure real-time performance (QoS) and system stability, the service enforces the following limits: 1. **System-wide limit**: A global maximum number of active MIDI clients that are allowed. 2. **Per-Application limit**: A maximum number of MIDI clients that are allowed per app uid. Applications are **strongly recommended** to maintain a single `OH_MIDIClient` instance throughout their lifecycle and use it to manage multiple devices/ports. Use [OH_MIDIClient_Destroy](capi-native-midi-h.md#oh_midiclient_destroy) to release the client and all associated resources.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -79,6 +83,8 @@ Destroys the MIDI client and releases resources.
 >
 > Destroying the client will close all devices and ports (fail-safe mechanism) automatically. It is recommended to close resources in reverse order (ports->devices->client) for code clarity, but this is not a mandatory requirement.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -102,6 +108,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetDeviceCount(const OH_MIDIClient *client, size
 **Description**
 
 Gets the number of connected MIDI devices.<br> This function is used to determine the size of the array needed to get devices information.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -131,6 +139,8 @@ Gets the information of connected MIDI devices.<br> Fills the user-allocated arr
 > **Note**:
 >
 > The actual number of connected devices may be larger than the capacity of the input parameter 'infos' array. If this happens, the output 'infos' array will only contain partial devices information, the output 'actualDeviceCount' will be equal to 'capacity', and the function returns [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode). If the actual number is less than or equal to 'capacity', all available devices information will be filled into 'infos', and the output 'actualDeviceCount' reflects the actual devices number.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -163,6 +173,8 @@ Opens a MIDI device.
 >
 > Use [OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice) to release the device resource.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -192,6 +204,8 @@ Opens MIDI BLE device asynchronously.<br> Initiates the opening of a Bluetooth L
 > **Note**:
 >
 > This function triggers a BLE scan so the opening process may take time. Use [OH_MIDIClient_CloseDevice](capi-native-midi-h.md#oh_midiclient_closedevice) to release the device resource.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Required permission**: ohos.permission.ACCESS_BLUETOOTH
 
@@ -226,6 +240,8 @@ Closes the MIDI device.
 >
 > Closing a device automatically closes all opened ports on that device. Paired with [OH_MIDIClient_OpenDevice](capi-native-midi-h.md#oh_midiclient_opendevice) or [OH_MIDIClient_OpenBLEDevice](capi-native-midi-h.md#oh_midiclient_openbledevice).
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -250,6 +266,8 @@ OH_MIDIStatusCode OH_MIDIClient_GetPortCount(const OH_MIDIClient *client, int64_
 **Description**
 
 Gets the number of ports for a specific MIDI device.<br> This function is used to determine the size of the array needed to get ports information.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -280,6 +298,8 @@ Get the port information of a specific MIDI device.<br> Fills the user-allocated
 > **Note**:
 >
 > The actual number of connected devices may be larger than the capacity of the input parameter 'infos' array. If this happens, the output 'infos' array will only contain partial devices information, the output 'actualPortCount' will be equal to 'capacity', and the function returns [OH_MIDI_STATUS_OK](capi-native-midi-base-h.md#oh_midistatuscode). If the actual number is less than or equal to 'capacity', all available ports information will be filled into 'infos', and the output 'actualPortCount' reflects the actual ports number.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -313,6 +333,8 @@ Opens a MIDI input port (Receive data).<br> Registers a callback to receive MIDI
 >
 > Use [OH_MIDIDevice_CloseInputPort](capi-native-midi-h.md#oh_mididevice_closeinputport) to close the input port.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -344,6 +366,8 @@ Opens a MIDI output port (Send data).
 >
 > Use [OH_MIDIDevice_CloseOutputPort](capi-native-midi-h.md#oh_mididevice_closeoutputport) to close the output port.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -372,6 +396,8 @@ Closes the MIDI input port.
 > **Note**:
 >
 > Paired with [OH_MIDIDevice_OpenInputPort](capi-native-midi-h.md#oh_mididevice_openinputport).
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -402,6 +428,8 @@ Closes the MIDI output port.
 >
 > Paired with [OH_MIDIDevice_OpenOutputPort](capi-native-midi-h.md#oh_mididevice_openoutputport).
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -426,6 +454,8 @@ OH_MIDIStatusCode OH_MIDIDevice_Send(OH_MIDIDevice *device, uint32_t portIndex, 
 **Description**
 
 Sends MIDI events (Batch, Non-blocking & Atomic).<br> Attempts to write an array of events to the shared memory buffer.<br> - Atomicity: Each event in the array is treated atomically. It is either fully written or not written at all. - Partial Success: If the buffer becomes full midway, the function returns [OH_MIDI_STATUS_WOULD_BLOCK](capi-native-midi-base-h.md#oh_midistatuscode) and sets eventsWritten to the number of events successfully enqueued.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 
@@ -459,6 +489,8 @@ Sends a large SysEx message (Byte-Stream to UMP Helper).<br> This is a utility f
 >
 > BLOCKING CALL**: This function executes a loop and may block if the buffer fills up.
 
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
+
 **Since**: 24
 
 **Parameters**:
@@ -489,6 +521,8 @@ Flushes pending events in output buffer.<br> Immediately discards all MIDI event
 > **Note**:
 >
 > This function does not send "All Notes Off" event. It simply clears the queue.
+
+**System capability**: SystemCapability.Multimedia.Audio.MIDI
 
 **Since**: 24
 

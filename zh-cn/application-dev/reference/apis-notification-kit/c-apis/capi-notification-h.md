@@ -6,6 +6,8 @@
 
 **库：** libohnotification.so
 
+**系统能力：** SystemCapability.Notification.Notification
+
 **起始版本：** 13
 
 **相关模块：** [NOTIFICATION](capi-notification.md)
@@ -29,6 +31,8 @@ bool OH_Notification_IsNotificationEnabled(void)
 **描述：**
 
 查询当前应用通知使能状态。
+
+**系统能力：** SystemCapability.Notification.Notification
 
 **起始版本：** 13
 

@@ -6,6 +6,8 @@ Provides the capabilities to operate on rawfiles, including reading files, obtai
 
 **Library**: librawfile.z.so
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 **Related module**: [rawfile](capi-rawfile.md)
@@ -62,6 +64,8 @@ int OH_ResourceManager_ReadRawFile(const RawFile *rawFile, void *buf, size_t len
 
 Reads data of the specified length from the current offset position of a rawfile file. The offset position moves forward by the specified length after the read operation. For example, if the current offset position is [0] and the specified length is 10, the offset position after data reading is [10].
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 **Parameters**:
@@ -87,6 +91,8 @@ int OH_ResourceManager_SeekRawFile(const RawFile *rawFile, long offset, int when
 **Description**
 
 Adjusts the offset position of a rawfile based on the specified offset and offset mode.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 
@@ -114,6 +120,8 @@ long OH_ResourceManager_GetRawFileSize(RawFile *rawFile)
 
 Obtains the length (in bytes) of a rawfile.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 **Parameters**:
@@ -137,6 +145,8 @@ long OH_ResourceManager_GetRawFileRemainingLength(const RawFile *rawFile)
 **Description**
 
 Obtains the remaining length (in bytes) of a rawfile from the current offset position to the end of the file.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
 
@@ -162,6 +172,8 @@ void OH_ResourceManager_CloseRawFile(RawFile *rawFile)
 
 Closes a `RawFile` object and releases all associated resources.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 8
 
 **Parameters**:
@@ -184,6 +196,8 @@ long OH_ResourceManager_GetRawFileOffset(const RawFile *rawFile)
 **Description**
 
 Obtains the current offset position (in bytes) of a rawfile. This information can be used to track progress during segmented reading, or to confirm the current offset position after seeking.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 
@@ -208,6 +222,8 @@ bool OH_ResourceManager_GetRawFileDescriptor(const RawFile *rawFile, RawFileDesc
 **Description**
 
 Obtains the rawfile descriptor information. After obtaining the file descriptor information, you can call functions such as **pread** to read the rawfile.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 
@@ -238,6 +254,8 @@ bool OH_ResourceManager_GetRawFileDescriptorData(const RawFile *rawFile, RawFile
 
 Obtains the rawfile descriptor information. After obtaining the file descriptor information, you can call functions such as **pread** to read the rawfile.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -262,6 +280,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor(const RawFileDescriptor &descri
 **Description**
 
 Releases the file descriptor of a rawfile. To prevent file descriptor leakage, you are advised to release a rawfile descriptor immediately after use.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 8
 
@@ -291,6 +311,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptorData(const RawFileDescriptor *de
 
 Releases rawfile file descriptor resources. After successful release, `fd` in `descriptor` becomes invalid and cannot be used any more.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 12
 
 **Parameters**:
@@ -314,6 +336,8 @@ int64_t OH_ResourceManager_ReadRawFile64(const RawFile64 *rawFile, void *buf, in
 **Description**
 
 Reads data of the specified length from the current offset position of a rawfile file. The offset position moves forward by the specified length after the read operation. For example, if the current offset position is [0] and the specified length is 10, the offset position after data reading is [10]. <br>Files larger than 2 GB are supported.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
 
@@ -341,6 +365,8 @@ int OH_ResourceManager_SeekRawFile64(const RawFile64 *rawFile, int64_t offset, i
 
 Adjusts the offset position of a rawfile based on the specified offset and offset mode. Files larger than 2 GB are supported.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 11
 
 **Parameters**:
@@ -367,6 +393,8 @@ int64_t OH_ResourceManager_GetRawFileSize64(RawFile64 *rawFile)
 
 Obtains the length (in bytes) of a rawfile. Files larger than 2 GB are supported.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 11
 
 **Parameters**:
@@ -390,6 +418,8 @@ int64_t OH_ResourceManager_GetRawFileRemainingLength64(const RawFile64 *rawFile)
 **Description**
 
 Obtains the remaining length (in bytes) of a rawfile from the current offset position to the end of the file. Files larger than 2 GB are supported.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
 
@@ -415,6 +445,8 @@ void OH_ResourceManager_CloseRawFile64(RawFile64 *rawFile)
 
 Closes a `RawFile64` object and releases all associated resources.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 11
 
 **Parameters**:
@@ -437,6 +469,8 @@ int64_t OH_ResourceManager_GetRawFileOffset64(const RawFile64 *rawFile)
 **Description**
 
 Obtains the current offset position (in bytes) of a rawfile. This information can be used to track progress during segmented reading, or to confirm the current offset position after seeking. <br>Files larger than 2 GB are supported.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
 
@@ -462,6 +496,8 @@ bool OH_ResourceManager_GetRawFileDescriptor64(const RawFile64 *rawFile, RawFile
 
 Obtains the rawfile descriptor information. After obtaining the file descriptor information, you can call functions such as **pread** to read the rawfile. Files larger than 2 GB are supported.
 
+**System capability**: SystemCapability.Global.ResourceManager
+
 **Since**: 11
 
 **Parameters**:
@@ -486,6 +522,8 @@ bool OH_ResourceManager_ReleaseRawFileDescriptor64(const RawFileDescriptor64 *de
 **Description**
 
 Releases rawfile file descriptor resources. After successful release, `fd` in `descriptor` becomes invalid and cannot be used any more.
+
+**System capability**: SystemCapability.Global.ResourceManager
 
 **Since**: 11
 

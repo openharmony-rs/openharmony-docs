@@ -1,4 +1,4 @@
-# ArkUI_NodeHandle (ArkUI_Accessibility)
+# ArkUI_NodeHandle
 
 ```c
 typedef struct ArkUI_NodeHandle ArkUI_NodeHandle

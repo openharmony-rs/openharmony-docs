@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the ArkUI style attributes that can be set on the native side.
+Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
@@ -30,7 +30,7 @@ NODE_PICKER_ENABLE_HAPTIC_FEEDBACK = 1018001
 
 **Description**
 
-Defines whether haptic feedback. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to feedback. The value <b>true</b> means to feedback, and <b>false</b> means the opposite.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>value[0].i32: whether to feedback.</li> </ul>
+Defines whether to enable haptic feedback. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to enable haptic feedback. <b>1</b> indicates to enable, and <b>0</b> indicates opposite. Default value: <b>1</b>. When enabled, whether haptic feedback exists depends on the hardware support of the system.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether haptic feedback is enabled. <b>1</b> indicates enabled, and <b>0</b> indicates the opposite. Whether haptic feedback exists depends on the hardware support of the system.</li> </ul>
 
 **Since**: 23
 
@@ -42,7 +42,7 @@ NODE_PICKER_CAN_LOOP = 1018002
 
 **Description**
 
-Defines whether to support scroll looping for the picker. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether to support scroll looping. The value <b>true</b> means to support scroll looping, and <b>false</b> means the opposite.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>value[0].i32: The value <b>1</b> means to support scroll looping, and <b>0</b> means the opposite.</li> </ul>
+Whether the picker supports looping. This attribute can be set, reset, and obtained as required through APIs.<br> Use scenario: Looping is suitable for scenarios with limited options where a quick selection experience is desired (such as gender selection). Non-looping is suitable for scenarios where options have clear boundaries and the user selection range needs to be restricted.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the picker supports looping. <b>1</b> to support; <b>0</b> otherwise. The default value is <b>1</b>.<br> If the number of child components is less than 8, looping will not occur regardless of whether the value is <b>1</b> or <b>0</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the picker supports looping. <b>1</b> indicates that scrolling is supported; <b>0</b> indicates that scrolling is not supported.</li> </ul>
 
 **Since**: 23
 
@@ -54,7 +54,7 @@ NODE_PICKER_SELECTION_INDICATOR = 1018003
 
 **Description**
 
-Sets the type and parameters of the selection indicator. This attribute can be set, reset, and obtained as required through APIs.<br> **Attribute setting method parameter [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) Format:**<br><ul> <li>.object: Parameter type [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md).</li> </ul><br> **Attribute fetch method return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) format:**<br><ul> <li>.object: Parameter type [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md).</li> </ul>
+Picker indicator style. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.object: picker indicator style. The parameter type is [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md). Default value:<br> {<br> type: PickerIndicatorType.BACKGROUND,<br> borderRadius: {<br> value:12,<br> unit:LengthUnit.vp<br> },<br> backgroundColor: 'sys.color.comp_background_tertiary'<br> }<br> When not set, the default value is used.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.object: picker indicator style. The parameter type is [ArkUI_PickerIndicatorStyle](capi-arkui-nativemodule-arkui-pickerindicatorstyle.md).</li> </ul>
 
 **Since**: 23
 

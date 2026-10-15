@@ -6,6 +6,8 @@ Declare audio suite engine related interfaces.<br> This file provides interfaces
 
 **Library**: libohaudiosuite.so
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 22
 
 **System API:** This is a system API.
@@ -46,6 +48,8 @@ int32_t OH_AudioSuiteEngine_MetaRenderFrame(OH_AudioSuitePipeline* audioSuitePip
 
 The application uses this interface for audio data and meta data processing.<br> The application needs to set the audioData and metaData pointers in the metaFrame structure, as well as the data sizes (audioDataSize and metaDataSize). The actual sizes of the processed data will be returned through responseAudioSize and responseMetaSize.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -76,6 +80,8 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetNodeType(OH_AudioNodeBuilder* builder,
 
 Set the audio node type to be created by the builder.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -103,6 +109,8 @@ int32_t OH_AudioSuiteNodeBuilderSystem_SetFormat(OH_AudioNodeBuilder* builder, O
 
 Set the audio format supported by the node.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -129,6 +137,8 @@ typedef int32_t (*OH_InputNode_RequestMetaDataCallback)(OH_AudioNode* audioNode,
 **Description**
 
 Callback function of request meta data, Only [INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type) support this setting.<br> Each time the application or user invokes [OH_AudioSuiteEngine_MetaRenderFrame](capi-native-audio-suite-engine-h.md#oh_audiosuiteengine_metarenderframe), the callback is triggered once.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -160,6 +170,8 @@ int32_t OH_AudioSuiteNodeBuilder_SetRequestMetaDataCallback(OH_AudioNodeBuilder*
 
 Set input node request meta data callback with frame structure, Only [INPUT_NODE_TYPE_DEFAULT](capi-native-audio-suite-base-h.md#oh_audionode_type) support this setting.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -188,6 +200,8 @@ int32_t OH_AudioSuiteEngineSystem_SetAudioFormat(OH_AudioNode* audioNode, OH_Aud
 
 Set the audio format for input and output nodes, specify the audio format of the audio source for the input node, or specify the target audio format for the output node.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -214,6 +228,8 @@ int32_t OH_AudioSuiteEngineSystem_SetNodeParam(OH_AudioNode* audioNode, uint8_t*
 **Description**
 
 Set param of system node.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 
@@ -243,6 +259,8 @@ int32_t OH_AudioSuiteEngineSystem_GetNodeParam(OH_AudioNode* audioNode, uint8_t*
 
 Get param of system node.
 
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -270,6 +288,8 @@ int32_t OH_AudioSuiteEngineSystem_GetNodeInOutSize(OH_AudioNode* audioNode, uint
 **Description**
 
 Get input and output frame size of system node.
+
+**System capability**: SystemCapability.Multimedia.Audio.SuiteEngine
 
 **Since**: 26.0.0
 

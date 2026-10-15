@@ -6,7 +6,7 @@ typedef struct OH_ArkUI_TextEditorChangeEvent OH_ArkUI_TextEditorChangeEvent
 
 ## Overview
 
-Defines a struct for the text content change event of the **TextEditor** component.
+Defines a text content change event of the **TextEditor** component.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

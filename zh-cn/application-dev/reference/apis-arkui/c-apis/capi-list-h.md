@@ -6,6 +6,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -51,6 +53,8 @@ enum ArkUI_ListItemAlignment
 
 交叉轴方向的布局方式，默认值为ARKUI_LIST_ITEM_ALIGNMENT_START。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -69,14 +73,16 @@ enum ArkUI_StickyStyle
 
 定义列表是否吸顶和吸底枚举值。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
 | -- | -- |
-| ARKUI_STICKY_STYLE_NONE = 0 | [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t) and footer of ListItemGroup are not pinned to the top and bottom, respectively. |
-| ARKUI_STICKY_STYLE_HEADER = 1 | [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t) of ListItemGroup is pinned to the top, and footer is not pinned to the bottom. |
-| ARKUI_STICKY_STYLE_FOOTER = 2 | [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t) of ListItemGroup is not pinned to the top, and footer is pinned to the bottom. |
-| ARKUI_STICKY_STYLE_BOTH = 3 | [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t) of ListItemGroup is pinned to the top, and footer is pinned to the bottom. |
+| ARKUI_STICKY_STYLE_NONE = 0 | header and footer of ListItemGroup are not pinned to the top and bottom, respectively. |
+| ARKUI_STICKY_STYLE_HEADER = 1 | header of ListItemGroup is pinned to the top, and footer is not pinned to the bottom. |
+| ARKUI_STICKY_STYLE_FOOTER = 2 | header of ListItemGroup is not pinned to the top, and footer is pinned to the bottom. |
+| ARKUI_STICKY_STYLE_BOTH = 3 | header of ListItemGroup is pinned to the top, and footer is pinned to the bottom. |
 
 ### ArkUI_ListItemGroupArea
 
@@ -88,12 +94,14 @@ enum ArkUI_ListItemGroupArea
 
 定义ListItemGroup组件区域，默认值为ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 | 枚举项 | 描述 |
 | -- | -- |
 | ARKUI_LIST_ITEM_GROUP_AREA_OUTSIDE = 0 | ListItemGroup区域外。 |
-| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | Area without the [header](../../apis-function-flow-runtime-kit/c-apis/capi-type-def-h.md#ffrt_storage_size_t), footer, and ListItem in the **ListItemGroup** component. |
+| ARKUI_LIST_ITEM_SWIPE_AREA_NONE | Area without the header, footer, and ListItem in the **ListItemGroup** component. |
 | ARKUI_LIST_ITEM_SWIPE_AREA_ITEM | ListItemGroup的ListItem区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_HEADER | ListItemGroup的header区域。 |
 | ARKUI_LIST_ITEM_SWIPE_AREA_FOOTER | ListItemGroup的footer区域。 |
@@ -110,6 +118,8 @@ ArkUI_ListChildrenMainSize* OH_ArkUI_ListChildrenMainSizeOption_Create()
 **描述：**
 
 创建ListChildrenMainSize接口设置的配置项。使用结束后需调用[OH_ArkUI_ListChildrenMainSizeOption_Dispose](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_dispose)释放资源。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -129,6 +139,8 @@ void OH_ArkUI_ListChildrenMainSizeOption_Dispose(ArkUI_ListChildrenMainSize* opt
 
 销毁由[OH_ArkUI_ListChildrenMainSizeOption_Create](capi-list-h.md#oh_arkui_listchildrenmainsizeoption_create)创建的ListChildrenMainSize实例。销毁后不得继续访问该实例。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -146,6 +158,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_SetDefaultMainSize(ArkUI_ListChildre
 **描述：**
 
 设置List组件列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -172,6 +186,8 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetDefaultMainSize(ArkUI_ListChildrenM
 
 获取List组件的列表项在主轴方向的默认尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -196,6 +212,8 @@ void OH_ArkUI_ListChildrenMainSizeOption_Resize(ArkUI_ListChildrenMainSize* opti
 
 调整List组件子项主轴尺寸数组的长度。扩大数组时，新增元素的初始值为-1。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -214,6 +232,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_Splice(ArkUI_ListChildrenMainSize* o
 **描述：**
 
 从指定索引位置开始删除deleteCount个List组件子项主轴尺寸数组元素，并在该位置插入addCount个初始值为-1的元素。deleteCount超出剩余元素个数时，删除至数组末尾。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -242,6 +262,8 @@ int32_t OH_ArkUI_ListChildrenMainSizeOption_UpdateSize(ArkUI_ListChildrenMainSiz
 
 更新List组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -267,6 +289,8 @@ float OH_ArkUI_ListChildrenMainSizeOption_GetMainSize(ArkUI_ListChildrenMainSize
 **描述：**
 
 获取List组件子项主轴尺寸数组中指定索引位置的尺寸。主轴方向为纵向时表示高度，为横向时表示宽度。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 

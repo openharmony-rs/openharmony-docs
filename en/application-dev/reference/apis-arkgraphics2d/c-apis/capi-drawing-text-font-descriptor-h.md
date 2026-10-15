@@ -6,6 +6,8 @@ Defines APIs related to font information, such as obtaining font information, fi
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 14
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -74,6 +76,8 @@ enum OH_Drawing_SystemFontType
 
 Defines an enum for the system font types.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 14
 
 | Enum item | Description |
@@ -93,6 +97,8 @@ enum OH_Drawing_FontFullDescriptorAttributeId
 **Description**
 
 Enumerates font descriptor attributes. You can use the corresponding APIs to obtain the attributes of different font descriptor types. For example, if **FULL_DESCRIPTOR_ATTR_I_WEIGHT** is of the int type, use the [OH_Drawing_GetFontFullDescriptorAttributeInt](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorattributeint) API to obtain its attribute value.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 22
 
@@ -131,6 +137,8 @@ enum OH_Drawing_FontVariationAxisAttributeId
 
 Enumerates font variable axis attributes.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 | Enum item | Description |
@@ -153,6 +161,8 @@ enum OH_Drawing_FontVariationInstanceAttributeId
 
 Enumerates font variable instance attributes.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 | Enum item | Description |
@@ -172,6 +182,8 @@ OH_Drawing_FontDescriptor* OH_Drawing_MatchFontDescriptors(OH_Drawing_FontDescri
 **Description**
 
 Obtains all system font descriptors that match a font descriptor. In the [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) struct, the **path** field is not used for matching, and other fields are valid only when they are not set to their default values. <br>If all fields in **desc** are set to their default values, all system font descriptors are returned. <br>If no matching is found, NULL is returned. Call [OH_Drawing_DestroyFontDescriptors](capi-drawing-text-font-descriptor-h.md#oh_drawing_destroyfontdescriptors) to release this pointer when the object is no longer needed.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 18
 
@@ -198,6 +210,8 @@ void OH_Drawing_DestroyFontDescriptors(OH_Drawing_FontDescriptor* descriptors, s
 
 Releases an array of [OH_Drawing_FontDescriptor](capi-drawing-oh-drawing-fontdescriptor.md) objects.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 18
 
 **Parameters**:
@@ -216,6 +230,8 @@ OH_Drawing_FontDescriptor* OH_Drawing_GetFontDescriptorByFullName(const OH_Drawi
 **Description**
 
 Obtains the specified font descriptor based on the font name and font type. This API supports system fonts, style fonts, and user-installed fonts. If the acquisition fails, NULL is returned. <br>A font descriptor is a data structure that describes font characteristics. It contains detailed information that defines the appearance and properties of a font.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 14
 
@@ -242,6 +258,8 @@ OH_Drawing_Array* OH_Drawing_GetSystemFontFullNamesByType(OH_Drawing_SystemFontT
 
 Obtains an array of font names by font type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 14
 
 **Parameters**:
@@ -265,6 +283,8 @@ const OH_Drawing_String* OH_Drawing_GetSystemFontFullNameByIndex(OH_Drawing_Arra
 **Description**
 
 Obtains the font name at the corresponding position in the font name array by index. If the index is out of range or the array is invalid, NULL is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 14
 
@@ -291,6 +311,8 @@ void OH_Drawing_DestroySystemFontFullNames(OH_Drawing_Array* fullNameArray)
 
 Releases the memory occupied by the font name array obtained by font type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 14
 
 **Parameters**:
@@ -308,6 +330,8 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromStream(const void* data, 
 **Description**
 
 Obtains the font descriptor array based on the original binary data.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 22
 
@@ -334,6 +358,8 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorsFromPath(const char* path)
 
 Obtains an array of font descriptors based on the font file path.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 22
 
 **Parameters**:
@@ -357,6 +383,8 @@ const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByIndex(OH_
 **Description**
 
 Obtains the font descriptor from the font descriptor array based on the index.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 22
 
@@ -383,6 +411,8 @@ void OH_Drawing_DestroyFontFullDescriptors(OH_Drawing_Array* descriptorArray)
 
 Releases the memory occupied by the font descriptor array.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 22
 
 **Parameters**:
@@ -401,6 +431,8 @@ void OH_Drawing_DestroyFontFullDescriptor(const OH_Drawing_FontFullDescriptor* d
 
 Releases the memory occupied by the font descriptor pointer. This function can be used to release the font descriptor pointer obtained by the [OH_Drawing_GetFontFullDescriptorByFullName](capi-drawing-text-font-descriptor-h.md#oh_drawing_getfontfulldescriptorbyfullname) API.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -418,6 +450,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromFile(const char* fontSrc,
 **Description**
 
 Obtains the Unicode code array from a font file.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -445,6 +479,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontUnicodeArrayFromBuffer(uint8_t* fontBuffe
 **Description**
 
 Obtains the Unicode code array from a font byte stream buffer.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -474,6 +510,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeInt(const OH_Drawi
 
 Obtains the attributes of a font descriptor of the int type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 22
 
 **Parameters**:
@@ -499,6 +537,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontFullDescriptorAttributeBool(const OH_Draw
 **Description**
 
 Obtains the font descriptor attribute of the bool type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 22
 
@@ -530,6 +570,8 @@ Obtains the attributes of the [OH_Drawing_String](capi-drawing-oh-drawing-string
 >
 > The caller is responsible for manually releasing the internal <b>strData</b> member of the <b>OH_Drawing_String</b> structure when it is no longer needed.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 22
 
 **Parameters**:
@@ -556,6 +598,8 @@ OH_Drawing_Array* OH_Drawing_GetFontFullDescriptorAttributeArray(const OH_Drawin
 
 Obtains the object array attributes of the font descriptor.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -580,6 +624,8 @@ OH_Drawing_FontVariationAxis* OH_Drawing_GetFontVariationAxisByIndex(OH_Drawing_
 **Description**
 
 Obtains the corresponding font variable axis from the font variable axis array by index.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
@@ -606,6 +652,8 @@ void OH_Drawing_DestroyFontVariationAxis(OH_Drawing_Array* fontVariaAxisArray)
 
 Releases the memory occupied by the font variable axis array.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -623,6 +671,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeDouble(OH_Drawing_F
 **Description**
 
 Obtains the font variable axis attributes of the double type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
@@ -649,6 +699,8 @@ OH_Drawing_ErrorCode OH_Drawing_GetFontVariationAxisAttributeInt(OH_Drawing_Font
 **Description**
 
 Obtains the font variable axis attributes of the int type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
@@ -680,6 +732,8 @@ Obtains the font variable axis attributes of the [OH_Drawing_String](capi-drawin
 >
 > The caller is responsible for manually releasing the internal <b>strData</b> member of the <b>OH_Drawing_String</b> structure when it is no longer needed.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -706,6 +760,8 @@ OH_Drawing_FontVariationInstance* OH_Drawing_GetFontVariationInstanceByIndex(OH_
 
 Obtains the corresponding font variable instance from the font variable instance array by index.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -731,6 +787,8 @@ void OH_Drawing_DestroyFontVariationInstance(OH_Drawing_Array* fontVariaAxisInst
 
 Releases the memory occupied by the font variable instance array.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -752,6 +810,8 @@ Obtains the font variable instance attributes of the [OH_Drawing_String](capi-dr
 > **Note**:
 >
 > The caller is responsible for manually releasing the internal <b>strData</b> member of the <b>OH_Drawing_String</b> structure when it is no longer needed.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
@@ -779,6 +839,8 @@ OH_Drawing_FontVariationInstanceCoordinate* OH_Drawing_GetFontVariationInstanceC
 
 Obtains the variable font attribute object of the font variable instance.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 24
 
 **Parameters**:
@@ -803,6 +865,8 @@ const OH_Drawing_FontFullDescriptor* OH_Drawing_GetFontFullDescriptorByFullName(
 **Description**
 
 Obtains the complete font descriptor object based on the font name and type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 24
 
@@ -829,6 +893,8 @@ uint32_t OH_Drawing_GetFontCountFromFile(const char* fontSrc)
 
 Obtains the number of fonts contained in a font file.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Parameters**:
@@ -852,6 +918,8 @@ uint32_t OH_Drawing_GetFontCountFromBuffer(uint8_t* fontBuffer, size_t length)
 **Description**
 
 Obtains the number of fonts contained in a font buffer.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -877,6 +945,8 @@ OH_Drawing_String* OH_Drawing_GetFontPathsByType(OH_Drawing_SystemFontType fontT
 **Description**
 
 Obtains all font file paths of the specified font type.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 

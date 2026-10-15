@@ -6,6 +6,8 @@ Declare audio manager related interfaces.
 
 **Library**: libohaudio.so
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 12
 
 **Related module**: [OHAudio](capi-ohaudio.md)
@@ -17,12 +19,6 @@ Declare audio manager related interfaces.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [OH_AudioManager](capi-ohaudio-oh-audiomanager.md) | OH_AudioManager | Declare the audio manager. The handle of audio manager is used for audio management related functions. |
-
-### Macro
-
-| Name | Description |
-| -- | -- |
-| NATIVE_AUDIO_MANAGER_H | Declare audio manager related interfaces.<br>**Since**: 12<br>**System capability**: SystemCapability.Multimedia.Audio.Core |
 
 ### Function
 
@@ -52,6 +48,8 @@ typedef void (*OH_AudioManager_OnAudioSceneChangeCallback)(void *userData, OH_Au
 
 Prototype for the audio scene change function that is passed to [OH_AudioManager_RegisterAudioSceneChangeCallback](capi-native-audio-manager-h.md#oh_audiomanager_registeraudioscenechangecallback).
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -70,6 +68,8 @@ OH_AudioCommon_Result OH_GetAudioManager(OH_AudioManager **audioManager)
 **Description**
 
 Get audio manager handle.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -94,6 +94,8 @@ OH_AudioCommon_Result OH_GetAudioScene(OH_AudioManager* manager, OH_AudioScene *
 **Description**
 
 Get audio scene.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 12
 
@@ -120,6 +122,8 @@ OH_AudioCommon_Result OH_AudioManager_RegisterAudioSceneChangeCallback(OH_AudioM
 
 Register callback to receive audio scene changed events.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -145,6 +149,8 @@ OH_AudioCommon_Result OH_AudioManager_UnregisterAudioSceneChangeCallback(OH_Audi
 **Description**
 
 Unregister audio scene change callback.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 20
 

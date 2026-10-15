@@ -8,6 +8,8 @@ Defines the OpenHarmony Universal KeyStore (HUKS) APIs for external key manageme
 
 **Library**: libhuks_external_crypto.z.so
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Since**: 22
 
 **Related module**: [HuksExternalCryptoApi](capi-huksexternalcryptoapi.md)
@@ -42,6 +44,8 @@ struct OH_Huks_Result OH_Huks_RegisterProvider(const struct OH_Huks_Blob *provid
 
 Registers an external key management extension provider.
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Required permission**: ohos.permission.CRYPTO_EXTENSION_REGISTER
 
 **Since**: 22
@@ -68,6 +72,8 @@ struct OH_Huks_Result OH_Huks_UnregisterProvider(const struct OH_Huks_Blob *prov
 **Description**
 
 Unregisters an external key management extension provider.
+
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
 
 **Required permission**: ohos.permission.CRYPTO_EXTENSION_REGISTER
 
@@ -96,6 +102,8 @@ struct OH_Huks_Result OH_Huks_OpenResource(const struct OH_Huks_Blob *resourceId
 
 Opens a resource based on the specified resource ID. <br>Note: The opened resource must be closed using [OH_Huks_CloseResource](capi-native-huks-external-crypto-api-h.md#oh_huks_closeresource).
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Since**: 22
 
 **Parameters**:
@@ -120,6 +128,8 @@ struct OH_Huks_Result OH_Huks_CloseResource(const struct OH_Huks_Blob *resourceI
 **Description**
 
 Closes a resource based on the specified resource ID.
+
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
 
 **Since**: 22
 
@@ -146,6 +156,8 @@ struct OH_Huks_Result OH_Huks_GetUkeyPinAuthState(const struct OH_Huks_Blob *res
 
 Obtains the PIN authorization state of the specified UKey resource ID.
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Since**: 22
 
 **Parameters**:
@@ -171,6 +183,8 @@ struct OH_Huks_Result OH_Huks_GetProperty(const struct OH_Huks_Blob *resourceId,
 **Description**
 
 Obtains the property information of the external key management capability extension provider.
+
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
 
 **Since**: 22
 
@@ -199,6 +213,8 @@ struct OH_Huks_Result OH_Huks_InitExternalCryptoParamSet(OH_Huks_ExternalCryptoP
 
 Initializes a parameter set.
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Since**: 22
 
 **Parameters**:
@@ -222,6 +238,8 @@ struct OH_Huks_Result OH_Huks_AddExternalCryptoParams(OH_Huks_ExternalCryptoPara
 **Description**
 
 Adds parameters to a parameter set.
+
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
 
 **Since**: 22
 
@@ -249,6 +267,8 @@ struct OH_Huks_Result OH_Huks_BuildExternalCryptoParamSet(OH_Huks_ExternalCrypto
 
 Builds a parameter set.
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Since**: 22
 
 **Parameters**:
@@ -273,6 +293,8 @@ void OH_Huks_FreeExternalCryptoParamSet(OH_Huks_ExternalCryptoParamSet **paramSe
 
 Destroys a parameter set and releases related memory.
 
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
+
 **Since**: 22
 
 **Parameters**:
@@ -290,6 +312,8 @@ struct OH_Huks_Result OH_Huks_GetExternalCryptoParam(OH_Huks_ExternalCryptoParam
 **Description**
 
 Obtains a specified parameter from a parameter set.
+
+**System capability**: SystemCapability.Security.Huks.CryptoExtension
 
 **Since**: 22
 

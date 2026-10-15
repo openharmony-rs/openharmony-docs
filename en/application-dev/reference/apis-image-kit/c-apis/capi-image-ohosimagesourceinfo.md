@@ -26,6 +26,6 @@ Defines the image source information, which is obtained by calling [OH_ImageSour
 | int32_t colorSpace | Color space of the image source. |
 | int32_t alphaType | Alpha type of the image source. |
 | int32_t density | Image density of the image source. It is set in [OH_ImageSource_Create](capi-image-source-mdk-h.md#oh_imagesource_create). |
-| [struct OhosImageSize](capi-image-ohosimagesize.md) size | Pixel width and height of the image source. |
+| struct OhosImageSize size | Pixel width and height of the image source. |
 
 

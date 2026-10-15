@@ -6,6 +6,8 @@ Provides type define related to the data value.
 
 **Library**: libnative_rdb_ndk.z.so
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 **Related module**: [RDB](capi-rdb.md)
@@ -47,6 +49,8 @@ enum Rdb_ConflictResolution
 
 Describe the security area of the database.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 18
 
 | Enum item | Description |
@@ -71,6 +75,8 @@ OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)
 
 Creates an OH_RDB_ReturningContext instance object.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 23
 
 **Returns**:
@@ -94,6 +100,8 @@ void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)
 
 Destroys an OH_RDB_ReturningContext instance object.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -111,6 +119,8 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 **Description**
 
 Set the returning fields.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 
@@ -138,6 +148,8 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 
 Set the maximum returning value.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -163,6 +175,8 @@ OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 
 Get the cursor of data changes, includes 1024 by default.
 
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **Since**: 23
 
 **Parameters**:
@@ -186,6 +200,8 @@ int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)
 **Description**
 
 Get the number of rows affected by this operation.
+
+**System capability**: SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **Since**: 23
 

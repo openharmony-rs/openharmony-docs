@@ -8,6 +8,8 @@ fileio模块接口定义，提供获取文件存储位置的native接口，帮�
 
 **库：** libohfileio.so
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 12
 
 **相关模块：** [FileIO](capi-fileio.md)
@@ -38,6 +40,8 @@ enum FileIO_FileLocation
 
 文件存储位置枚举值。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -59,6 +63,8 @@ enum FileIO_FileLocation
 
 Obtains the location of a file.
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 12
 
 **参数：**
@@ -73,6 +79,6 @@ Obtains the location of a file.
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. ERR_ENOENT 13900002 - No such file or directory. ERR_ENOMEM 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码[ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_ENOENT](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900002 - No such file or directory. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 

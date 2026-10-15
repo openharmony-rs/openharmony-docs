@@ -6,6 +6,8 @@ Declares the modular object extension manager.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -55,6 +57,8 @@ enum OH_AbilityRuntime_LaunchMode
 
 The launch mode of a modular object extension.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -71,6 +75,8 @@ enum OH_AbilityRuntime_ProcessMode
 **Description**
 
 The process mode of a modular object extension.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -89,6 +95,8 @@ enum OH_AbilityRuntime_ThreadMode
 **Description**
 
 The thread mode of a modular object extension.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -110,6 +118,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMo
 **Description**
 
 Gets the launch mode from modular object extension info.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -136,6 +146,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessM
 
 Gets the process mode from modular object extension info.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -160,6 +172,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMo
 **Description**
 
 Gets the thread mode from modular object extension info.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -186,6 +200,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementN
 
 Gets elementName from modular object extension info.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -210,6 +226,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableS
 **Description**
 
 Gets the disable state of modular object extension.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -236,6 +254,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfo
 
 Acquires all modular object extension infos within the self application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Resource release**: OH_AbilityRuntime_ReleaseAllExtensionInfos {outOwnedAllExtensionInfos}
@@ -261,6 +281,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRu
 **Description**
 
 Releases the specified all modular object extension infos.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -291,6 +313,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(O
 
 Gets the exact count of modular object extension infos present in the collection.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -315,6 +339,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_Abil
 **Description**
 
 Retrieves a specific modular object extension info handle from the collection by its index.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -342,6 +368,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectModularObjectExtensionAbility(
 
 Connect to a modular object extension ability.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -367,6 +395,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbili
 **Description**
 
 Disconnect the modular object extension ability.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 

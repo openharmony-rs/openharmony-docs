@@ -12,7 +12,7 @@ Defines the MAC address list of Ethernet NICs.
 
 **Since**: 26.0.0
 
-**Related module**: [netmanager_ext](capi-netmanager-ext.md)
+**Related module**: [NetEthernet](capi-netethernet.md)
 
 **Header file**: [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 
@@ -22,7 +22,7 @@ Defines the MAC address list of Ethernet NICs.
 
 | Name | Description |
 | -- | -- |
-| [Ethernet_MacAddressInfo](capi-netmanager-ext-ethernet-macaddressinfo.md) macInfoList[ETHERNET_MAX_NET_SIZE] |  |
+| [Ethernet_MacAddressInfo](capi-netethernet-ethernet-macaddressinfo.md) macInfoList[ETHERNET_MAX_NET_SIZE] |  |
 | int32_t macInfoListSize |  |
 
 

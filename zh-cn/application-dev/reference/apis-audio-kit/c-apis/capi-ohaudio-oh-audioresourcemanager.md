@@ -6,7 +6,7 @@ typedef struct OH_AudioResourceManager OH_AudioResourceManager
 
 ## 概述
 
-声明音频资源管理器。用于管理音频资源相关功能。
+声明音频资源管理结构体，该结构体用于调用音频资源管理和线程调度优化功能接口。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

@@ -6,6 +6,8 @@ This file declares the functions related to the shader effect in the drawing mod
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -47,6 +49,8 @@ enum OH_Drawing_TileMode
 
 Defines an enum for the tile modes of the shader effect.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 | Enum item | Description |
@@ -68,6 +72,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateColorShader(const uint32_t
 **Description**
 
 Creates an **OH_Drawing_ShaderEffect** object with a single color.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -92,6 +98,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradient(const OH_Dr
 **Description**
 
 Creates a **ShaderEffect** object that generates a linear gradient between two points. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If any of **startPt**, **endPt**, and **colors** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **tileMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -121,6 +129,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateLinearGradientWithLocalMat
 **Description**
 
 Creates a **ShaderEffect** object that generates a linear gradient between two points. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If any of **startPt**, **endPt**, and **colors** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **tileMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -152,6 +162,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradient(const OH_Dr
 
 Creates an **OH_Drawing_ShaderEffect** object that generates a radial gradient based on the center and radius of a circle. The radial gradient transitions colors from the center to the ending shape in a radial manner. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **centerPt** or **colors** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **tileMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -180,6 +192,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateRadialGradientWithLocalMat
 **Description**
 
 Creates an **OH_Drawing_ShaderEffect** object that generates a radial gradient based on the center and radius of a circle. The radial gradient transitions colors from the center to the ending shape in a radial manner. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **centerPt** or **colors** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **tileMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -211,6 +225,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradientWithLocalMatr
 
 Creates an **OH_Drawing_ShaderEffect** object that generates a sweep gradient based on the matrix transformation at the given center. A sweep gradient paints a gradient in a sweeping arc ranging from 0° to 360°.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -240,6 +256,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateSweepGradient(const OH_Dra
 
 Creates an **OH_Drawing_ShaderEffect** object that generates a sweep gradient based on the center. A sweep gradient paints a gradient in a sweeping arc ranging from 0° to 360°. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **centerPt** or **colors** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **tileMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -267,6 +285,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateImageShader(OH_Drawing_Ima
 **Description**
 
 Creates an **OH_Drawing_ShaderEffect** object for an image shader. You are advised not to use the function for the canvas of the capture type because it affects the performance. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **image** or **samplingOptions** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If either **tileX** or **tileY** is not set to one of the enumerated values, **<br>OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -296,6 +316,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreatePixelMapShader(OH_Drawing_
 
 Creates a PixelMap shader object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -323,6 +345,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateTwoPointConicalGradient(co
 **Description**
 
 Creates an **OH_Drawing_ShaderEffect** object that generates a gradient between two given circles. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If any of **startPt**, **endPt**, and **colors** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **tileMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -356,6 +380,8 @@ OH_Drawing_ShaderEffect* OH_Drawing_ShaderEffectCreateCompose(OH_Drawing_ShaderE
 
 Creates a shader by blending two existing shaders in a certain way.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -381,6 +407,8 @@ void OH_Drawing_ShaderEffectDestroy(OH_Drawing_ShaderEffect* shaderEffect)
 **Description**
 
 Destroys an **OH_Drawing_ShaderEffect** object and reclaims the memory occupied by the object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 

@@ -2,7 +2,7 @@
 
 ## 概述
 
-定义IPC序列化/反序列化C接口，用于在IPC通信过程中对数据进行序列化和反序列化操作。
+提供IPC序列化/反序列化C接口，用于在IPC通信过程中对数据进行序列化和反序列化操作。
 
 **系统能力：** SystemCapability.Communication.IPC.Core
 

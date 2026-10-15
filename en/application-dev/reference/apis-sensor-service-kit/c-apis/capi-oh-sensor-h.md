@@ -6,6 +6,8 @@ Declares the APIs for the sensor service, including obtaining sensor information
 
 **Library**: libohsensor.so
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Related module**: [Sensor](capi-sensor.md)
@@ -32,6 +34,8 @@ Sensor_Result OH_Sensor_GetInfos(Sensor_Info **infos, uint32_t *count)
 
 Obtains information about all sensors on the device. Use scenarios: When an app is launched, it queries the list of sensors supported by the device, displays or hides related functions based on the sensor capabilities, and selects appropriate sensors for subscription. After the call is successful, the sensor information array is returned through the pointer **infos**, and the number of sensors is returned through the pointer **count**.
 
+**System capability**: SystemCapability.Sensors.Sensor
+
 **Since**: 11
 
 **Parameters**:
@@ -56,6 +60,8 @@ Sensor_Result OH_Sensor_Subscribe(const Sensor_SubscriptionId *id, const Sensor_
 **Description**
 
 Subscribes to sensor data. The system will report sensor data to the subscriber at the specified frequency. The subscription is implemented through the event callback mechanism. Use scenarios: Health and fitness apps monitor users' step count and heart rate in real time. Game apps use the accelerometer to implement gravity sensing. Navigation apps use the gyroscope sensor to assist in positioning. <br>Permission description: To subscribe to data of acceleration sensors, request the **ohos.permission. ACCELEROMETER** permission. To subscribe to data of gyroscope sensors, request the **ohos.permission.GYROSCOPE**<br>permission. To subscribe to data of pedometer-related sensors, request the **ohos.permission.ACTIVITY_MOTION**<br>permission. To subscribe to data of health-related sensors, such as heart rate sensors, request the **ohos. permission.READ_HEALTH_DATA** permission. Otherwise, the subscription fails. You do not need to request any permission to subscribe to data of other types of sensors.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Required permission**: ohos.permission.ACCELEROMETER or ohos.permission.GYROSCOPE or ohos.permission.ACTIVITY_MOTION or ohos.permission.READ_HEALTH_DATA
 
@@ -84,6 +90,8 @@ Sensor_Result OH_Sensor_Unsubscribe(const Sensor_SubscriptionId *id, const Senso
 **Description**
 
 Unsubscribes from sensor data. This operation will stop the reporting of sensor data. <br>To unsubscribe from data of acceleration sensors, request the **ohos.permission.ACCELEROMETER** permission. To unsubscribe from data of gyroscope sensors, request the **ohos.permission.GYROSCOPE** permission. To unsubscribe from data of pedometer-related sensors, request the **ohos.permission.ACTIVITY_MOTION** permission. To unsubscribe from data of health-related sensors (such as the heart rate sensor), request the **ohos.permission.READ_HEALTH_DATA**<br>permission. Otherwise, the unsubscription fails. You do not need to request any permission to unsubscribe from data of other types of sensors.
+
+**System capability**: SystemCapability.Sensors.Sensor
 
 **Required permission**: ohos.permission.ACCELEROMETER or ohos.permission.GYROSCOPE or ohos.permission.ACTIVITY_MOTION or ohos.permission.READ_HEALTH_DATA
 

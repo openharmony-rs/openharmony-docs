@@ -6,7 +6,7 @@ typedef struct OHIPCParcel OHIPCParcel
 
 ## Overview
 
-Defines an IPC serialized object.
+IPC serialization object, used for serializing and deserializing data in cross-process communication. This object must be created and destroyed through related functions. You must follow the lifecycle management specifications of the object and properly manage memory resources.
 
 **System capability**: SystemCapability.Communication.IPC.Core
 

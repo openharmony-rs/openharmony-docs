@@ -126,7 +126,7 @@ NODE_SCROLL_OFFSET
 
 **描述：**
 
-设置Scroll组件滑动到指定位置，支持属性设置，属性重置和属性获取。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 水平滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。</li> <li>.value[1].f32 垂直滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。</li> <li>.value[2]?.i32 可选值，滚动时长，单位为毫秒，默认值1000。滚动时长大于0或使能默认弹簧动效时，滚动带动画效果。</li> <li>.value[3]?.i32 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-h.md#arkui_animationcurve)。</li> <li>.value[4]?.i32 可选值，是否使能默认弹簧动效，默认值为0不使能。</li> <li>.value[5]?.i32 可选值，设置动画滚动到边界是否转换为越界回弹动画，默认值为0不转换越界回弹动画。</li> <li>.value[6]?.i32 可选值，设置滚动是否可以停留在越界位置，默认值为0不停留在越界位置。该参数从API version 20开始支持。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 水平滑动偏移，单位为vp。</li> <li>.value[1].f32 垂直滑动偏移，单位为vp。</li> </ul>
+设置Scroll组件滑动到指定位置，支持属性设置，属性重置和属性获取。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 水平滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。</li> <li>.value[1].f32 垂直滑动偏移，单位为vp。取值范围：[0, +∞)，设置为小于0的值时按0处理。值为0时滚动到起始位置，值大于0时滚动到指定偏移位置。</li> <li>.value[2]?.i32 可选值，滚动时长，单位为毫秒，默认值1000。滚动时长大于0或使能默认弹簧动效时，滚动带动画效果。</li> <li>.value[3]?.i32 可选值，滚动曲线，参数类型[ArkUI_AnimationCurve](capi-native-type-visual-h.md#arkui_animationcurve)。默认值为[ARKUI_CURVE_EASE](capi-native-type-visual-h.md#arkui_animationcurve)。</li> <li>.value[4]?.i32 可选值，是否使能默认弹簧动效，默认值为0不使能。</li> <li>.value[5]?.i32 可选值，设置动画滚动到边界是否转换为越界回弹动画，默认值为0不转换越界回弹动画。</li> <li>.value[6]?.i32 可选值，设置滚动是否可以停留在越界位置，默认值为0不停留在越界位置。该参数从API version 20开始支持。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].f32 水平滑动偏移，单位为vp。</li> <li>.value[1].f32 垂直滑动偏移，单位为vp。</li> </ul>
 
 **起始版本：** 12
 
@@ -342,7 +342,7 @@ NODE_SCROLL_ENABLE_SCROLL_WITH_MOUSE = 1002027
 
 **描述：**
 
-设置是否支持鼠标左键按下拖动滚动，支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。默认值：0。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 是否支持鼠标左键按下拖动滚动，0：不支持鼠标左键按下拖动滚动，1：支持鼠标左键按下拖动滚动。</li> </ul>
+是否支持鼠标左键进行滚动。此属性可以设置、重置和根据需要通过API获取。 <br>设置属性的 [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) 参数的格式和返回值**ArkUI_AttributeItem**如下所示。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32: 是否支持鼠标左键滚动。0：不支持；1：支持。 API26.2.0版本之前，默认值为0。从API版本26.2.0开始，当可滚动组件水平滚动时，默认值为1，否则为0。</li> </ul><br> **返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32: 是否支持鼠标左键进行滚动。0：不支持；1：支持。</li> </ul>
 
 **起始版本：** 26.0.0
 
@@ -370,6 +370,18 @@ NODE_SCROLL_BAR_HEIGHT = 1002029
 
 **起始版本：** 26.0.0
 
+### NODE_SCROLL_STATE
+
+```c
+NODE_SCROLL_STATE = 1002030
+```
+
+**描述：**
+
+获取当前滚动状态。 该属性可以根据需要通过API获取。<br> **返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：当前滚动状态。参数类型为[ArkUI_ScrollState](capi-scroll-h.md#arkui_scrollstate)。</li> </ul>
+
+**起始版本：** 26.2.0
+
 ### NODE_LIST_DIRECTION
 
 ```c
@@ -378,7 +390,7 @@ NODE_LIST_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_LIST
 
 **描述：**
 
-设置List组件排列方向。支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 List组件排列方向，数据类型[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。</li> </ul>
+设置List组件排列方向。支持属性设置，属性重置和属性获取接口。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 List组件排列方向，数据类型[ArkUI_Axis](capi-layout-h.md#arkui_axis)，默认值ARKUI_AXIS_VERTICAL。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 List组件排列方向，数据类型[ArkUI_Axis](capi-layout-h.md#arkui_axis)。</li> </ul>
 
 **起始版本：** 12
 
@@ -810,7 +822,7 @@ NODE_WATER_FLOW_LAYOUT_DIRECTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_WATER_FLOW
 
 **描述：**
 
-定义瀑布流组件布局主轴方向，支持属性设置、重置和获取。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 主轴方向，参数类型[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)。默认值[ARKUI_FLEX_DIRECTION_COLUMN](capi-native-type-h.md#arkui_flexdirection)。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 主轴方向，参数类型[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)。</li> </ul>
+定义瀑布流组件布局主轴方向，支持属性设置、重置和获取。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 主轴方向，参数类型[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)。默认值[ARKUI_FLEX_DIRECTION_COLUMN](capi-layout-h.md#arkui_flexdirection)。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 主轴方向，参数类型[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)。</li> </ul>
 
 **起始版本：** 12
 
@@ -978,7 +990,7 @@ NODE_WATER_FLOW_SUPPORT_EMPTY_BRANCH_IN_LAZY_LOADING = 1010014
 
 **描述：**
 
-设置当前WaterFlow组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 > **说明：**<br>> > 当通过NODE_WATER_FLOW_SECTION_OPTION设置了[ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)分组， > 或通过NODE_WATER_FLOW_LAYOUT_MODE设置为[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) > 布局模式时，设置0或1时空分支后的FlowItem都会显示。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 WaterFlow组件是否支持空分支。0：不支持，1：支持。默认值：0。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 WaterFlow组件是否支持空分支。0：不支持，1：支持。</li> </ul><br> 当通过NODE_WATER_FLOW_SECTION_OPTION设置了[ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)分组， 或通过NODE_WATER_FLOW_LAYOUT_MODE设置为[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) 布局模式时，设置0或1时空分支后的FlowItem都会显示。
+设置当前WaterFlow组件是否支持在LazyForEach或Repeat中使用if/else渲染控制语法生成不包含任何子组件的空分支节点。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。 > **说明：**<br>> > 当通过[NODE_WATER_FLOW_SECTION_OPTION](capi-native-node-h.md#arkui_nodeattributetype)设置了[ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)分组， > 或通过[NODE_WATER_FLOW_LAYOUT_MODE](capi-native-node-h.md#arkui_nodeattributetype)设置为[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) > 布局模式时，设置0或1时空分支后的FlowItem都会显示。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 WaterFlow组件是否支持空分支。0：不支持，1：支持。默认值：0。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 WaterFlow组件是否支持空分支。0：不支持，1：支持。</li> </ul><br> 当通过[NODE_WATER_FLOW_SECTION_OPTION](capi-native-node-h.md#arkui_nodeattributetype)设置了[ArkUI_WaterFlowSectionOption](capi-arkui-nativemodule-arkui-waterflowsectionoption.md)分组， 或通过[NODE_WATER_FLOW_LAYOUT_MODE](capi-native-node-h.md#arkui_nodeattributetype)设置为[ARKUI_WATER_FLOW_LAYOUT_MODE_SLIDING_WINDOW](capi-water-flow-h.md#arkui_waterflowlayoutmode) 布局模式时，设置0或1时空分支后的FlowItem都会显示。
 
 **起始版本：** 26.0.0
 
@@ -1146,7 +1158,7 @@ NODE_GRID_MULTI_SELECTABLE = 1013013
 
 **描述：**
 
-Grid组件是否启用鼠标框选。支持属性设置，属性重置和属性获取接口。 启用后在Grid范围内鼠标框选会触发GridItem的NODE_GRID_ITEM_ON_SELECT事件。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 Grid组件是否启用鼠标框选。0：不启用，1：启用。默认值：0。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 Grid组件是否启用鼠标框选。0：不启用，1：启用。</li> </ul>
+Grid组件是否启用鼠标框选。支持属性设置，属性重置和属性获取接口。 启用后在Grid范围内鼠标框选会触发GridItem的[NODE_GRID_ITEM_ON_SELECT](./capi-native-node-h.md#arkui_nodeeventtype)事件。 作为属性设置方法参数、属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式如下。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 Grid组件是否启用鼠标框选。0：不启用，1：启用。默认值：0。</li> </ul><br> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32 Grid组件是否启用鼠标框选。0：不启用，1：启用。</li> </ul>
 
 **起始版本：** 23
 

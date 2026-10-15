@@ -6,6 +6,8 @@ Provides Button node type definitions for <b>NativeNode</b> APIs.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -29,6 +31,8 @@ enum ArkUI_ButtonType
 **Description**
 
 Enumerates the button types.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

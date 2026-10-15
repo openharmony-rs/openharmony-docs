@@ -6,6 +6,8 @@ Declares the Vulkan APIs extended by OpenHarmony. File to include: <vulkan/vulka
 
 **Library**: libvulkan.so
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Related module**: [Vulkan](capi-vulkan.md)
@@ -92,6 +94,8 @@ enum VkSwapchainImageUsageFlagBitsOHOS
 
 move to vk_ohos_native_buffer.h
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Deprecated**: 23
@@ -111,6 +115,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkCreateSurfaceOHOS)(VkInstance instance, const
 **Description**
 
 Defines the function pointer for creating a Vulkan surface.
+
+**System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
@@ -139,6 +145,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkSetNativeFenceFdOpenHarmony)(VkDevice device,
 
 this type is deprecated, please use PFN_vkAcquireImageOHOS instead
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Deprecated**: 10
@@ -152,6 +160,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetNativeFenceFdOpenHarmony)(VkQueue queue, u
 **Description**
 
 this type is deprecated, please use PFN_vkQueueSignalReleaseImageOHOS instead
+
+**System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
@@ -167,6 +177,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetSwapchainGrallocUsageOHOS)(VkDevice device
 
 move to vk_ohos_native_buffer.h
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Deprecated**: 23
@@ -180,6 +192,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkAcquireImageOHOS)(VkDevice device, VkImage im
 **Description**
 
 move to vk_ohos_native_buffer.h
+
+**System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
@@ -195,6 +209,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkQueueSignalReleaseImageOHOS)(VkQueue queue, u
 
 move to vk_ohos_native_buffer.h
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Deprecated**: 23
@@ -208,6 +224,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkSetNativeFenceFdOpenHarmony(VkDevice device, in
 **Description**
 
 this interface is deprecated, please use vkAcquireImageOHOS instead
+
+**System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
@@ -223,6 +241,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeFenceFdOpenHarmony(VkQueue queue, uint
 
 this interface is deprecated, please use vkQueueSignalReleaseImageOHOS instead
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Deprecated**: 10
@@ -236,6 +256,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetSwapchainGrallocUsageOHOS(VkDevice device, V
 **Description**
 
 Returns the appropriate gralloc usage flag based on the given Vulkan device, image format, and image usage flag. move to vk_ohos_native_buffer.h
+
+**System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
@@ -265,6 +287,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkAcquireImageOHOS(VkDevice device, VkImage image
 **Description**
 
 Obtains the ownership of the swap chain image and imports the fence of the external signal to the VkSemaphore and VkFence objects. move to vk_ohos_native_buffer.h
+
+**System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
@@ -296,6 +320,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkQueueSignalReleaseImageOHOS(VkQueue queue, uint
 
 Sends a signal to the system hardware buffer to release an image once it is no longer needed so that other components can access it. move to vk_ohos_native_buffer.h
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Deprecated**: 23
@@ -326,6 +352,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetNativeBufferPropertiesOHOS)(VkDevice devic
 
 Defines a function pointer used to obtain <b>OH_NativeBuffer</b> properties.
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Parameters**:
@@ -351,6 +379,8 @@ typedef VkResult (VKAPI_PTR *PFN_vkGetMemoryNativeBufferOHOS)(VkDevice device, c
 **Description**
 
 Defines a function pointer used to obtain an <b>OH_NativeBuffer</b> instance.
+
+**System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 
@@ -378,6 +408,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetNativeBufferPropertiesOHOS(VkDevice device, 
 
 Obtains the properties of an <b>OH_NativeBuffer</b> instance.
 
+**System capability**: SystemCapability.Graphic.Vulkan
+
 **Since**: 10
 
 **Parameters**:
@@ -403,6 +435,8 @@ VKAPI_ATTR VkResult VKAPI_CALL vkGetMemoryNativeBufferOHOS(VkDevice device, cons
 **Description**
 
 Obtains an <b>OH_NativeBuffer</b> instance.
+
+**System capability**: SystemCapability.Graphic.Vulkan
 
 **Since**: 10
 

@@ -6,6 +6,8 @@
 
 **库：** libohgame_controller.z.so
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **相关模块：** [GameController](capi-gamecontroller.md)
@@ -60,6 +62,8 @@ enum GameDevice_StatusChangedType
 
 此枚举定义设备的状态变化类型。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 | 枚举项 | 描述 |
@@ -76,6 +80,8 @@ enum GameDevice_DeviceType
 **描述：**
 
 此枚举定义设备类型。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -97,6 +103,8 @@ typedef void(* GameDevice_DeviceMonitorCallback)(const struct GameDevice_DeviceE
 
 定义[OH_GameDevice_RegisterDeviceMonitor](capi-game-device-h.md#oh_gamedevice_registerdevicemonitor)中使用的回调函数。当设备上线或下线时，该回调函数将被调用。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -114,6 +122,8 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetChangedType(const struct G
 **描述：**
 
 从设备状态变化事件中获取状态变化类型。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -139,6 +149,8 @@ GameController_ErrorCode OH_GameDevice_DeviceEvent_GetDeviceInfo(const struct Ga
 **描述：**
 
 从设备状态变化事件中获取设备信息。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -170,6 +182,8 @@ GameController_ErrorCode OH_GameDevice_DestroyDeviceInfo(GameDevice_DeviceInfo**
 
 销毁设备信息实例。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -193,6 +207,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceId(const struct GameD
 **描述：**
 
 从设备信息中获取设备ID。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -219,6 +235,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetName(const struct GameDevic
 
 从设备信息中获取设备名称。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -243,6 +261,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetProduct(const struct GameDe
 **描述：**
 
 从设备信息中获取产品信息。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -269,6 +289,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVendor(const struct GameDev
 
 从设备信息中获取厂商信息。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 26.0.1
 
 **参数：**
@@ -293,6 +315,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetVersion(const struct GameDe
 **描述：**
 
 从设备信息中获取版本信息。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 
@@ -319,6 +343,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetPhysicalAddress(const struc
 
 从设备信息中获取物理地址。
 
+**系统能力：** SystemCapability.Game.GameController
+
 **起始版本：** 21
 
 **参数：**
@@ -343,6 +369,8 @@ GameController_ErrorCode OH_GameDevice_DeviceInfo_GetDeviceType(const struct Gam
 **描述：**
 
 从设备信息中获取设备类型。
+
+**系统能力：** SystemCapability.Game.GameController
 
 **起始版本：** 21
 

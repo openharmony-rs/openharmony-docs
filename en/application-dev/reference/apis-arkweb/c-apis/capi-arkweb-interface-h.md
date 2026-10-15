@@ -6,6 +6,8 @@
 
 **Library**: libohweb.so
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Related module**: [Web](capi-web.md)
@@ -43,6 +45,8 @@ enum ArkWeb_NativeAPIVariantKind
 
 Enumerates the native API types.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -67,6 +71,8 @@ ArkWeb_AnyNativeAPI* OH_ArkWeb_GetNativeAPI(ArkWeb_NativeAPIVariantKind type)
 
 Obtains the corresponding Native API struct based on the API type passed in. It is used in scenarios such as obtaining a Controller in native code to control Web component behavior, obtaining a CookieManager to manage cookies, obtaining a WebMessagePort for message communication, and obtaining a JavaScriptValue to operate JavaScript objects.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -90,6 +96,8 @@ bool OH_ArkWeb_RegisterScrollCallback(const char* webTag, ArkWeb_OnScrollCallbac
 **Description**
 
 Registers a callback for the component scroll event. It is used in scenarios such as monitoring user scroll behavior for lazy loading, detecting scroll position for back-to-top functionality, recording user browsing behavior for data analysis, and implementing visual effects during scrolling.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 18
 

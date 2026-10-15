@@ -1,7 +1,7 @@
 # TEE_Attribute
 
 ```c
-typedef union TEE_Attribute {...} TEE_Attribute
+typedef struct TEE_Attribute {...} TEE_Attribute
 ```
 
 ## Overview
@@ -22,14 +22,10 @@ Defines an object attribute.
 
 | Name | Description |
 | -- | -- |
-| [](capi-teetrusted---tee-objecthandle.md)s[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md)r[](capi-teetrusted---tee-objecthandle.md)u[](capi-teetrusted---tee-objecthandle.md)c[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md) | Reference type content.<br>**Since**: 20 |
-| void *buffer | Buffer pointer. |
-| size_t length;
- } ref | Length of the buffer. |
-| [](capi-teetrusted---tee-objecthandle.md)s[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md)r[](capi-teetrusted---tee-objecthandle.md)u[](capi-teetrusted---tee-objecthandle.md)c[](capi-teetrusted---tee-objecthandle.md)t[](capi-teetrusted---tee-objecthandle.md) | Value type content.<br>**Since**: 20 |
-| uint32_t a | First value. |
-| uint32_t b;
- } value;
- } content | Second value. |
+| uint32_t attributeID | Attribute ID. |
+| content.ref->buffer | Buffer pointer. |
+| content.ref.length | Length of the buffer. |
+| content.value.a | First value. |
+| content.value.b | Second value. |
 
 

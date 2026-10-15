@@ -6,6 +6,8 @@ Defines enumerations related to **ImageSpan**, which are used to embed images in
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -29,6 +31,8 @@ enum ArkUI_ImageSpanAlignment
 **Description**
 
 Enumerates image alignment modes based on text.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

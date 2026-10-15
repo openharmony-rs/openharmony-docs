@@ -6,6 +6,8 @@ Declares the battery APIs that are used to obtain the current battery capacity a
 
 **Library**: libohbattery_info.so
 
+**System capability**: SystemCapability.PowerManager.BatteryManager.Core
+
 **Since**: 13
 
 **Related module**: [OH_BatteryInfo](capi-oh-batteryinfo.md)
@@ -45,6 +47,8 @@ enum BatteryInfo_BatteryPluggedType
 
 Enumerates the battery plugged types.
 
+**System capability**: SystemCapability.PowerManager.BatteryManager.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -68,6 +72,8 @@ int32_t OH_BatteryInfo_GetCapacity()
 
 Obtains the current battery capacity in percent.
 
+**System capability**: SystemCapability.PowerManager.BatteryManager.Core
+
 **Since**: 13
 
 **Returns**:
@@ -85,6 +91,8 @@ BatteryInfo_BatteryPluggedType OH_BatteryInfo_GetPluggedType()
 **Description**
 
 Obtains the battery plugged type.
+
+**System capability**: SystemCapability.PowerManager.BatteryManager.Core
 
 **Since**: 13
 

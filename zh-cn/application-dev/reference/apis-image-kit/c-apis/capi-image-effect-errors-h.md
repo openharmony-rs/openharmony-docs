@@ -6,6 +6,8 @@
 
 **库：** libimage_effect.so
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **相关模块：** [ImageEffect](capi-imageeffect.md)
@@ -29,6 +31,8 @@ enum ImageEffect_ErrorCode
 **描述：**
 
 效果器错误码。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 

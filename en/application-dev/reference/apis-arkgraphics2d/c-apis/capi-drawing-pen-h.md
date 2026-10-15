@@ -6,6 +6,8 @@ This file declares functions related to the pen in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -72,6 +74,8 @@ enum OH_Drawing_PenLineCapStyle
 
 Enumerates the line cap styles of a pen. The line cap style defines the style of both ends of a line segment drawn by the pen.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 | Enum item | Description |
@@ -89,6 +93,8 @@ enum OH_Drawing_PenLineJoinStyle
 **Description**
 
 Enumerates the line join styles of a pen. The line join style defines the shape of the joints of a polyline segment drawn by the pen.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -111,6 +117,8 @@ OH_Drawing_Pen* OH_Drawing_PenCreate(void)
 
 Creates an **OH_Drawing_Pen** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Returns**:
@@ -128,6 +136,8 @@ OH_Drawing_Pen* OH_Drawing_PenCopy(OH_Drawing_Pen* pen)
 **Description**
 
 Creates a copy of the [OH_Drawing_Pen](capi-drawing-oh-drawing-pen.md) object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -153,6 +163,8 @@ void OH_Drawing_PenDestroy(OH_Drawing_Pen* pen)
 
 Destroys an **OH_Drawing_Pen** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -170,6 +182,8 @@ bool OH_Drawing_PenIsAntiAlias(const OH_Drawing_Pen* pen)
 **Description**
 
 Checks whether anti-aliasing is enabled for a pen. Anti-aliasing makes the pixels around the shape edges semi- transparent. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -195,6 +209,8 @@ void OH_Drawing_PenSetAntiAlias(OH_Drawing_Pen* pen, bool antiAlias)
 
 Enables or disables anti-aliasing for a pen. Anti-aliasing makes the pixels around the shape edges semi- transparent. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -213,6 +229,8 @@ uint32_t OH_Drawing_PenGetColor(const OH_Drawing_Pen* pen)
 **Description**
 
 Obtains the color of a pen. The color is used by the pen to outline a shape. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -238,6 +256,8 @@ void OH_Drawing_PenSetColor(OH_Drawing_Pen* pen, uint32_t color)
 
 Sets the color for a pen. The color is used by the pen to outline a shape. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -256,6 +276,8 @@ uint8_t OH_Drawing_PenGetAlpha(const OH_Drawing_Pen* pen)
 **Description**
 
 Obtains the alpha value of a pen. This value is used by the alpha channel when the pen outlines a shape. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -281,6 +303,8 @@ void OH_Drawing_PenSetAlpha(OH_Drawing_Pen* pen, uint8_t alpha)
 
 Sets the alpha value for a pen. This value is used by the alpha channel when the pen outlines a shape. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -299,6 +323,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenSetColor4f(OH_Drawing_Pen* pen, float a, floa
 **Description**
 
 Sets the color for a pen, which is used to outline a shape. The color is in ARGB format represented by floating-point numbers. The color space is specified by [OH_NativeColorSpaceManager](capi-drawing-oh-nativecolorspacemanager.md) . If **colorSpaceManager** is a null pointer, the SRGB (standard red, green, and blue color space based on IEC 61966-2. 1:1999) color space is used as the default value.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -329,6 +355,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetAlphaFloat(OH_Drawing_Pen* pen, float* a)
 
 Obtains the alpha value of the pen color.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -353,6 +381,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetRedFloat(OH_Drawing_Pen* pen, float* r)
 **Description**
 
 Obtains the red component of the pen color.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -379,6 +409,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetGreenFloat(OH_Drawing_Pen* pen, float* g)
 
 Obtains the green component of the pen color.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 20
 
 **Parameters**:
@@ -403,6 +435,8 @@ OH_Drawing_ErrorCode OH_Drawing_PenGetBlueFloat(OH_Drawing_Pen* pen, float* b)
 **Description**
 
 Obtains the blue component of the pen color.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 20
 
@@ -429,6 +463,8 @@ float OH_Drawing_PenGetWidth(const OH_Drawing_Pen* pen)
 
 Obtains the thickness of a pen. This thickness determines the width of the outline of a shape. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -453,6 +489,8 @@ void OH_Drawing_PenSetWidth(OH_Drawing_Pen* pen, float width)
 
 Sets the thickness for a pen. This thickness determines the width of the outline of a shape. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -471,6 +509,8 @@ float OH_Drawing_PenGetMiterLimit(const OH_Drawing_Pen* pen)
 **Description**
 
 Obtains the stroke miter limit of a polyline drawn by a pen. When the corner type is bevel, a beveled corner is displayed if the miter limit is exceeded, and a mitered corner is displayed if the miter limit is not exceeded. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -496,6 +536,8 @@ void OH_Drawing_PenSetMiterLimit(OH_Drawing_Pen* pen, float miter)
 
 Sets the stroke miter limit for a polyline drawn by a pen. When the corner type is bevel, a beveled corner is displayed if the miter limit is exceeded, and a mitered corner is displayed if the miter limit is not exceeded. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -514,6 +556,8 @@ OH_Drawing_PenLineCapStyle OH_Drawing_PenGetCap(const OH_Drawing_Pen* pen)
 **Description**
 
 Obtains the line cap style of a pen. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -539,6 +583,8 @@ void OH_Drawing_PenSetCap(OH_Drawing_Pen* pen, OH_Drawing_PenLineCapStyle capSty
 
 Sets the line cap style for a pen. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **capStyle** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -557,6 +603,8 @@ OH_Drawing_PenLineJoinStyle OH_Drawing_PenGetJoin(const OH_Drawing_Pen* pen)
 **Description**
 
 Obtains the line join style of a pen. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 8
 
@@ -582,6 +630,8 @@ void OH_Drawing_PenSetJoin(OH_Drawing_Pen* pen, OH_Drawing_PenLineJoinStyle join
 
 Sets the join style for this pen. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **joinStyle** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 8
 
 **Parameters**:
@@ -600,6 +650,8 @@ void OH_Drawing_PenSetShaderEffect(OH_Drawing_Pen* pen, OH_Drawing_ShaderEffect*
 **Description**
 
 Sets the shader effect for this pen. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -620,6 +672,8 @@ void OH_Drawing_PenSetShadowLayer(OH_Drawing_Pen* pen, OH_Drawing_ShadowLayer* s
 
 Sets the shadow layer for a pen. The shadow layer effect takes effect only when text is drawn. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -638,6 +692,8 @@ void OH_Drawing_PenSetPathEffect(OH_Drawing_Pen* pen, OH_Drawing_PathEffect* pat
 **Description**
 
 Sets the path effect for this pen. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -658,6 +714,8 @@ void OH_Drawing_PenSetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 
 Sets a filter for a pen. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -676,6 +734,8 @@ void OH_Drawing_PenGetFilter(OH_Drawing_Pen* pen, OH_Drawing_Filter* filter)
 **Description**
 
 Obtains the [OH_Drawing_Filter](capi-drawing-oh-drawing-filter.md) object from the pen. The filter is a container that holds a mask filter and color filter. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **pen** or **filter** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -696,6 +756,8 @@ void OH_Drawing_PenSetBlendMode(OH_Drawing_Pen* pen, OH_Drawing_BlendMode blendM
 
 Sets a blender for a pen. The blender implements the specified blend mode. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **blendMode** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -714,6 +776,8 @@ bool OH_Drawing_PenGetFillPath(OH_Drawing_Pen* pen, const OH_Drawing_Path* src, 
 **Description**
 
 Obtains the source path outline drawn using this pen and represents it using a destination path. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If any of **pen**, **src**, and **dst** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -742,6 +806,8 @@ void OH_Drawing_PenReset(OH_Drawing_Pen* pen)
 **Description**
 
 Resets a pen to the initial state. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **pen** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 

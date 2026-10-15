@@ -30,13 +30,13 @@ typedef struct OH_VBucket {...} OH_VBucket
 
 | 名称 | 描述 |
 | -- | -- |
-| [int (\*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | 将char*值放入给定列名的OH_VBucket对象中。 |
-| [int (\*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | 将int64_t值放入给定列名的OH_VBucket对象中。 |
-| [int (\*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | 将double值放入给定列名的OH_VBucket对象中。 |
-| [int (\*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | 将const uint8_t *值放入给定列名的OH_VBucket对象中。 |
-| [int (\*putNull)(OH_VBucket *bucket, const char *field)](#putnull) | 将NULL值放入给定列名的OH_VBucket对象中。 |
-| [int (\*clear)(OH_VBucket *bucket)](#clear) | 清空[OH_VBucket](capi-rdb-oh-vbucket.md)对象。 |
-| [int (\*destroy)(OH_VBucket *bucket)](#destroy) | 销毁[OH_VBucket](capi-rdb-oh-vbucket.md)对象，并回收该对象占用的内存。 |
+| [int (\*putText)(OH_VBucket *bucket, const char *field, const char *value)](#puttext) | - | 将char*值放入给定列名的OH_VBucket对象中。 |
+| [int (\*putInt64)(OH_VBucket *bucket, const char *field, int64_t value)](#putint64) | - | 将int64_t值放入给定列名的OH_VBucket对象中。 |
+| [int (\*putReal)(OH_VBucket *bucket, const char *field, double value)](#putreal) | - | 将double值放入给定列名的OH_VBucket对象中。 |
+| [int (\*putBlob)(OH_VBucket *bucket, const char *field, const uint8_t *value, uint32_t size)](#putblob) | - | 将const uint8_t *值放入给定列名的OH_VBucket对象中。 |
+| [int (\*putNull)(OH_VBucket *bucket, const char *field)](#putnull) | - | 将NULL值放入给定列名的OH_VBucket对象中。 |
+| [int (\*clear)(OH_VBucket *bucket)](#clear) | - | 清空[OH_VBucket](capi-rdb-oh-vbucket.md)对象。 |
+| [int (\*destroy)(OH_VBucket *bucket)](#destroy) | - | 销毁[OH_VBucket](capi-rdb-oh-vbucket.md)对象，并回收该对象占用的内存。 |
 
 ## 成员函数说明
 

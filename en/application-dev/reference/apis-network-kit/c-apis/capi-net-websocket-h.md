@@ -6,6 +6,8 @@ Defines the APIs for the websocket client module.
 
 **Library**: libnet_websocket.so
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Related module**: [netstack](capi-netstack.md)
@@ -35,6 +37,8 @@ struct WebSocket *OH_WebSocketClient_Constructor(WebSocket_OnOpenCallback onOpen
 
 Constructor used to create a WebSocket client.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Parameters**:
@@ -62,6 +66,8 @@ int OH_WebSocketClient_AddHeader(struct WebSocket *client, struct WebSocket_Head
 
 Adds the header information to the client request.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Since**: 11
 
 **Parameters**:
@@ -86,6 +92,8 @@ int OH_WebSocketClient_Connect(struct WebSocket *client, const char *url, struct
 **Description**
 
 Connects the WebSocket client to the server.
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
 
@@ -115,6 +123,8 @@ int OH_WebSocketClient_Send(struct WebSocket *client, char *data, size_t length)
 
 Sends data from the WebSocket client to the server.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
@@ -143,6 +153,8 @@ int OH_WebSocketClient_Close(struct WebSocket *client, struct WebSocket_CloseOpt
 
 Closes the connection on the WebSocket client.
 
+**System capability**: SystemCapability.Communication.NetStack
+
 **Required permission**: ohos.permission.INTERNET
 
 **Since**: 11
@@ -169,6 +181,8 @@ int OH_WebSocketClient_Destroy(struct WebSocket *client)
 **Description**
 
 Destroys the WebSocket client and releases the context and resources of the WebSocket connection. Usage:
+
+**System capability**: SystemCapability.Communication.NetStack
 
 **Required permission**: ohos.permission.INTERNET
 

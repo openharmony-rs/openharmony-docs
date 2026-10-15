@@ -6,7 +6,7 @@ typedef struct ArkUI_Matrix4ScaleOptions ArkUI_Matrix4ScaleOptions
 
 ## Overview
 
-Defines a matrix scaling object.
+Defines the configuration options for 4 × 4 matrix scaling. For details about the parameters and their value principles, see member variable descriptions.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

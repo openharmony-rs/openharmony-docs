@@ -6,6 +6,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -52,6 +54,8 @@ int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, 
 
 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -60,7 +64,7 @@ int32_t OH_ArkUI_GetNodeHandleFromNapiValue(napi_env env, napi_value frameNode, 
 | -- | -- |
 | napi_env env | Node-API的环境指针。 |
 | napi_value frameNode | ArkTS侧创建的FrameNode对象。 |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md)* handle | ArkUI_NodeHandle指针。 |
+| ArkUI_NodeHandle* handle | ArkUI_NodeHandle指针。 |
 
 **返回值：**
 
@@ -77,6 +81,8 @@ int32_t OH_ArkUI_GetContextFromNapiValue(napi_env env, napi_value value, ArkUI_C
 **描述：**
 
 获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -104,6 +110,8 @@ int32_t OH_ArkUI_GetNodeContentFromNapiValue(napi_env env, napi_value value, Ark
 
 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -129,6 +137,8 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromNapiValue(napi_env env, napi_value val
 **描述：**
 
 将ArkTS侧创建的DrawableDescriptor对象映射到Native侧的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 12
 
@@ -156,6 +166,8 @@ int32_t OH_ArkUI_GetDrawableDescriptorFromResourceNapiValue(napi_env env, napi_v
 
 将ArkTS侧通过$r()获取的资源对象转换为Native侧可使用的[ArkUI_DrawableDescriptor](capi-arkui-nativemodule-arkui-drawabledescriptor.md)对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
@@ -182,13 +194,15 @@ ArkUI_ErrorCode OH_ArkUI_GetNavigationId(ArkUI_NodeHandle node, char* buffer, in
 
 获取当前节点所在的Navigation组件的ID。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，NavigationID写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
 | int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
@@ -209,13 +223,15 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationName(ArkUI_NodeHandle node, char* buff
 
 获取当前节点所在的NavDestination组件的名称。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，被查询的NavDestination名称写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
 | int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
@@ -236,13 +252,15 @@ ArkUI_ErrorCode OH_ArkUI_GetNavStackLength(ArkUI_NodeHandle node, int32_t* lengt
 
 获取当前节点所在的Navigation栈的长度。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | int32_t* length | 栈的长度。查询成功后将结果写回该参数。 |
 
 **返回值：**
@@ -261,13 +279,15 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationNameByIndex(ArkUI_NodeHandle node, int
 
 根据给定索引值，获取当前节点所在的Navigation栈中的页面名称。索引值从0开始计数，0为栈底。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | int32_t index | 被查询NavDestination在栈中的索引。 |
 | char* buffer | 缓冲区，被查询页面的名称写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
@@ -289,13 +309,15 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationId(ArkUI_NodeHandle node, char* buffer
 
 获取当前节点所在的NavDestination组件的ID。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，NavDestinationID写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
 | int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
@@ -316,13 +338,15 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationState(ArkUI_NodeHandle node, ArkUI_Nav
 
 获取当前节点所在的NavDestination组件的状态。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | [ArkUI_NavDestinationState](capi-native-type-h.md#arkui_navdestinationstate)* state | NavDestination的状态值写回该参数中。 |
 
 **返回值：**
@@ -341,13 +365,15 @@ ArkUI_ErrorCode OH_ArkUI_GetNavDestinationIndex(ArkUI_NodeHandle node, int32_t* 
 
 获取当前节点所在的NavDestination组件在页面栈中的索引。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | int32_t* index | 索引值，从0开始计数。 |
 
 **返回值：**
@@ -366,13 +392,15 @@ napi_value OH_ArkUI_GetNavDestinationParam(ArkUI_NodeHandle node)
 
 获取当前节点所在的NavDestination组件的参数。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 
 **返回值：**
 
@@ -390,13 +418,15 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageIndex(ArkUI_NodeHandle node, int32_t* inde
 
 获取当前节点所在Router页面栈中的索引。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | int32_t* index | 索引值，从1开始计数。 |
 
 **返回值：**
@@ -415,13 +445,15 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageName(ArkUI_NodeHandle node, char* buffer, 
 
 获取当前节点所在Router页面的名称。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，页面名称写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
 | int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
@@ -442,13 +474,15 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPagePath(ArkUI_NodeHandle node, char* buffer, 
 
 获取当前节点所在Router页面的路径。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，页面路径写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
 | int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
@@ -469,13 +503,15 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageState(ArkUI_NodeHandle node, ArkUI_RouterP
 
 获取当前节点所在Router页面的状态。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | [ArkUI_RouterPageState](capi-native-type-h.md#arkui_routerpagestate)* state | Router页面的状态值写回该参数中。 |
 
 **返回值：**
@@ -494,13 +530,15 @@ ArkUI_ErrorCode OH_ArkUI_GetRouterPageId(ArkUI_NodeHandle node, char* buffer, in
 
 获取当前节点所在Router页面的ID。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 12
 
 **参数：**
 
 | 参数项 | 描述 |
 | -- | -- |
-| [ArkUI_NodeHandle](capi-arkui-nativemodule-arkui-nodehandle.md) node | 指定的节点。 |
+| ArkUI_NodeHandle node | 指定的节点。 |
 | char* buffer | 缓冲区，页面ID写入该内存区域。 |
 | int32_t bufferSize | 缓冲区大小。 |
 | int32_t* writeLength | 在返回ARKUI_ERROR_CODE_NO_ERROR时表示实际写入到缓冲区的字符串长度。 <br>在返回ARKUI_ERROR_CODE_BUFFER_SIZE_ERROR时表示可以容纳目标的最小缓冲区大小。 |
@@ -520,6 +558,8 @@ int32_t OH_ArkUI_PostFrameCallback(ArkUI_ContextHandle uiContext, void* userData
 **描述：**
 
 注册一个回调函数，以便在下一帧渲染时执行，适用于Native侧在下一帧执行界面刷新或渲染相关任务的场景。不允许在非UI线程调用；如果检查到在非UI线程调用，程序会主动中止。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 18
 
@@ -549,6 +589,8 @@ int32_t OH_ArkUI_PostIdleCallback(ArkUI_ContextHandle uiContext, void* userData,
 
 注册一个回调函数，在下一帧渲染结束后如果距离下一帧到来剩余时间大于1ms时，该回调函数将被执行；如果剩余时间小于1ms时，回调函数将被顺延至当某个下一帧的剩余时间大于1ms时再执行。如果当前没有下一帧，将自动请求下一帧。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -577,6 +619,8 @@ ArkUI_ErrorCode OH_ArkUI_InitModuleForArkTSEnv(napi_env env)
 
 初始化指定上下文环境的ArkUI相关接口。该函数禁止在非UI线程中调用，否则程序将主动abort。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -601,6 +645,8 @@ void OH_ArkUI_NotifyArkTSEnvDestroy(napi_env env)
 
 通知指定的上下文环境已销毁。该函数禁止在非UI线程中调用，否则程序将主动abort。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 20
 
 **参数：**
@@ -618,6 +664,8 @@ ArkUI_ErrorCode OH_ArkUI_EnableEventPassthrough(ArkUI_ContextHandle uiContext, b
 **描述：**
 
 启用或禁用事件透传。事件透传表示在事件分发过程中，事件直接传递给组件而不进行重采样。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.0.0
 

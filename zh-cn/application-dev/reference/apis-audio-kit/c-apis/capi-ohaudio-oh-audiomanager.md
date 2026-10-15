@@ -6,7 +6,7 @@ typedef struct OH_AudioManager OH_AudioManager
 
 ## 概述
 
-声明音频管理器。用于管理音频管理相关功能。
+声明音频管理结构体，该结构体用于调用音频基础管理功能接口，如查询系统音频场景。
 
 **系统能力：** SystemCapability.Multimedia.Audio.Core
 

@@ -6,7 +6,7 @@ typedef struct ArkUI_RoundRectShapeOption ArkUI_RoundRectShapeOption
 
 ## Overview
 
-Defines a rounded rectangle shape option.
+Defines a rounded rectangle shape option, which can be used to create a mask or clipping for a render node.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

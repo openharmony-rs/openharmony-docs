@@ -26,10 +26,10 @@ Declaring the callback struct for renderer stream.
 
 | Name | Description |
 | -- | -- |
-| [int32_t (\*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer,void* userData,void* buffer,int32_t length)](#oh_audiorenderer_onwritedata) |  |
-| [int32_t (\*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_Event event)](#oh_audiorenderer_onstreamevent) |  |
-| [int32_t (\*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)](#oh_audiorenderer_oninterruptevent) |  |
-| [int32_t (\*OH_AudioRenderer_OnError)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_Result error)](#oh_audiorenderer_onerror) |  |
+| [int32_t (\*OH_AudioRenderer_OnWriteData)(OH_AudioRenderer* renderer,void* userData,void* buffer,int32_t length)](#oh_audiorenderer_onwritedata) | - |  |
+| [int32_t (\*OH_AudioRenderer_OnStreamEvent)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_Event event)](#oh_audiorenderer_onstreamevent) | - |  |
+| [int32_t (\*OH_AudioRenderer_OnInterruptEvent)(OH_AudioRenderer* renderer,void* userData,OH_AudioInterrupt_ForceType type,OH_AudioInterrupt_Hint hint)](#oh_audiorenderer_oninterruptevent) | - |  |
+| [int32_t (\*OH_AudioRenderer_OnError)(OH_AudioRenderer* renderer,void* userData,OH_AudioStream_Result error)](#oh_audiorenderer_onerror) | - |  |
 
 ## Member function description
 

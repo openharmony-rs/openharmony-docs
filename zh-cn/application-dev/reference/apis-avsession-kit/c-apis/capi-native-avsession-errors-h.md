@@ -6,6 +6,8 @@
 
 **库：** libohavsession.so
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 **相关模块：** [OHAVSession](capi-ohavsession.md)
@@ -32,6 +34,8 @@ enum AVSession_ErrCode
 **描述：**
 
 播控错误码。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -101,6 +105,8 @@ enum AVSessionCallback_Result
 
 定义音视频会话回调结果枚举。
 
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -117,6 +123,8 @@ enum AVMetadata_Result
 **描述：**
 
 播控元数据错误码。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 13
 
@@ -135,6 +143,8 @@ enum AVQueueItem_Result
 **描述：**
 
 播放列表中单项的错误码。
+
+**系统能力：** SystemCapability.Multimedia.AVSession.Core
 
 **起始版本：** 23
 

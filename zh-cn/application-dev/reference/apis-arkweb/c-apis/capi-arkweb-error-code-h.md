@@ -6,6 +6,8 @@
 
 **库：** libohweb.so
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 **相关模块：** [Web](capi-web.md)
@@ -19,12 +21,6 @@
 | [ArkWeb_ErrorCode](#arkweb_errorcode) | ArkWeb_ErrorCode | 定义ArkWeb NDK接口异常错误码。 |
 | [ArkWeb_BlanklessErrorCode](#arkweb_blanklesserrorcode) | ArkWeb_BlanklessErrorCode | 定义无白屏加载的异常错误码。 |
 
-### 宏定义
-
-| 名称 | 描述 |
-| -- | -- |
-| ARKWEB_ERROR_CODE_H | 声明ArkWeb NDK接口异常错误码，用于在ArkWeb相关接口调用失败时返回具体的错误信息，帮助开发者快速定位和解决问题。这些错误码覆盖了初始化、参数校验、URL处理、Cookie管理、库加载等常见异常场景。<br>**起始版本：** 12<br>**系统能力：** SystemCapability.Web.Webview.Core |
-
 ## 枚举类型说明
 
 ### ArkWeb_ErrorCode
@@ -37,6 +33,8 @@ enum ArkWeb_ErrorCode
 
 定义ArkWeb NDK接口异常错误码。
 
+**系统能力：** SystemCapability.Web.Webview.Core
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -48,11 +46,11 @@ enum ArkWeb_ErrorCode
 | ARKWEB_SCHEME_REGISTER_FAILED = 17100102 | &nbsp;注册scheme的配置失败，应该在创建ArkWeb之前注册。 |
 | ARKWEB_INVALID_URL = 17100103 | &nbsp;无效的URL，请检查URL格式或协议支持。 |
 | ARKWEB_INVALID_COOKIE_VALUE = 17100104 | &nbsp;无效的cookie值，请检查cookie格式与有效性。 |
-| ARKWEB_LIBRARY_OPEN_FAILURE = 17100105 | 打开动态链接库失败。请检查动态链接库文件是否存在、路径是否正确、以及是否有读取权限。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| ARKWEB_LIBRARY_SYMBOL_NOT_FOUND = 17100106 | 动态链接库中找不到所需的符号。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core |
-| ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED = 17100107 | CookieManager未初始化。请先调用初始化接口完成CookieManager的初始化。<br>**起始版本：** 20 |
-| ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED = 17100108 | CookieManager初始化失败，请检查系统能力与权限配置。<br>**起始版本：** 20 |
-| ARKWEB_COOKIE_SAVE_FAILED = 17100109 | 保存cookie失败。请检查存储空间是否充足、是否有写入权限，以及cookie值是否符合规范。<br>**起始版本：** 20 |
+| ARKWEB_LIBRARY_OPEN_FAILURE = 17100105 | &nbsp;打开动态链接库失败。请检查动态链接库文件是否存在、路径是否正确、以及是否有读取权限。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core |
+| ARKWEB_LIBRARY_SYMBOL_NOT_FOUND = 17100106 | &nbsp;动态链接库中找不到所需的符号。<br>**起始版本：** 15<br>**系统能力：** SystemCapability.Web.Webview.Core |
+| ARKWEB_COOKIE_MANAGER_NOT_INITIALIZED = 17100107 | &nbsp;CookieManager未初始化。请先调用初始化接口完成CookieManager的初始化。<br>**起始版本：** 20 |
+| ARKWEB_COOKIE_MANAGER_INITIALIZE_FAILED = 17100108 | &nbsp;CookieManager初始化失败，请检查系统能力与权限配置。<br>**起始版本：** 20 |
+| ARKWEB_COOKIE_SAVE_FAILED = 17100109 | &nbsp;保存cookie失败。请检查存储空间是否充足、是否有写入权限，以及cookie值是否符合规范。<br>**起始版本：** 20 |
 
 ### ArkWeb_BlanklessErrorCode
 
@@ -63,6 +61,8 @@ enum ArkWeb_BlanklessErrorCode
 **描述：**
 
 定义无白屏加载的异常错误码。
+
+**系统能力：** SystemCapability.Web.Webview.Core
 
 **起始版本：** 20
 

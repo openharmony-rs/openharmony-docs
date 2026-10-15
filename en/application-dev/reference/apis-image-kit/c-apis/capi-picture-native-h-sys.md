@@ -6,6 +6,8 @@ The file declares the APIs for obtaining picture data and information.
 
 **Library**: libpicture.so
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 13
 
 **System API:** This is a system API.
@@ -47,6 +49,8 @@ Image_ErrorCode OH_AuxiliaryPictureNative_CreateUsingAllocator(uint8_t *data, ui
 
 Creates an OH_AuxiliaryPictureNative object with a specified memory type. By default, the system selects the memory type based on the image type, image size, platform capability, and other factors. When processing the auxiliary picture returned by this API, always consider the impact of stride. If **data** is null or **dataLength**<br>is less than or equal to 0, the auxiliary picture will not be initialized.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.0
 
 **Resource release**: picture_native/OH_AuxiliaryPictureNative_Release {auxiliaryPicture}
@@ -60,7 +64,7 @@ Creates an OH_AuxiliaryPictureNative object with a specified memory type. By def
 | uint8_t *data | Pointer to the image data. |
 | uint32_t dataLength | Length of the image data. |
 | [OH_AuxiliaryPictureInfo](capi-image-nativemodule-oh-auxiliarypictureinfo.md) *info | Pointer to the basic information of the auxiliary picture. |
-| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | Memory type used by the auxiliary picture. For details about the available options, see [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_errorcode). |
+| [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode) allocator | Memory type used by the auxiliary picture. For details about the available options, see [IMAGE_ALLOCATOR_MODE](capi-image-common-h.md#image_allocator_mode). |
 | [OH_AuxiliaryPictureNative](capi-image-nativemodule-oh-auxiliarypicturenative.md) **auxiliaryPicture | Double pointer to the OH_AuxiliaryPictureNative object created. |
 
 **Returns**:
@@ -78,6 +82,8 @@ Image_ErrorCode OH_DecomposeOptions_Create(OH_DecomposeOptions **outOwnedOptions
 **Description**
 
 Creates an OH_DecomposeOptions object.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -107,6 +113,8 @@ Image_ErrorCode OH_DecomposeOptions_SetIsFullSizeGainmap(OH_DecomposeOptions *op
 
 Sets whether to generate a full-size gainmap.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -133,6 +141,8 @@ Image_ErrorCode OH_DecomposeOptions_GetIsFullSizeGainmap(OH_DecomposeOptions *op
 **Description**
 
 Gets whether to generate a full-size gainmap.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -161,6 +171,8 @@ Image_ErrorCode OH_DecomposeOptions_SetDesiredPixelFormat(OH_DecomposeOptions *o
 
 Sets the desired pixel format of the SDR pixel map generated after HDR decomposition.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -187,6 +199,8 @@ Image_ErrorCode OH_DecomposeOptions_GetDesiredPixelFormat(OH_DecomposeOptions *o
 **Description**
 
 Gets the desired pixel format of the SDR pixel map generated after HDR decomposition.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -215,6 +229,8 @@ Image_ErrorCode OH_DecomposeOptions_Release(OH_DecomposeOptions *options)
 
 Releases an OH_DecomposeOptions object.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.0
 
 **System API:** This is a system API.
@@ -240,6 +256,8 @@ Image_ErrorCode OH_PictureNative_DecomposeToPicture(OH_PixelmapNative *hdrPixelm
 **Description**
 
 Decomposes an HDR pixel map into a Picture object which contains an SDR pixel map and a gainmap.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.0
 
@@ -271,6 +289,8 @@ Image_ErrorCode OH_PictureNative_ConvertPictureNativeToNapi(napi_env env, OH_Pic
 
 Converts an [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) object to an ArkTS <b>Picture</b> object represented by a napi_value. The returned ArkTS Picture object holds its own strong reference to the same underlying Picture as pictureNative. This function does not copy the main image, auxiliary pictures, or metadata.
 
+**System capability**: SystemCapability.Multimedia.Image.Core
+
 **Since**: 26.0.1
 
 **System API:** This is a system API.
@@ -298,6 +318,8 @@ Image_ErrorCode OH_PictureNative_ConvertPictureNativeFromNapi(napi_env env, napi
 **Description**
 
 Converts an ArkTS <b>Picture</b> object represented by a napi_value to an [OH_PictureNative](capi-image-nativemodule-oh-picturenative.md) object. The returned OH_PictureNative object and pictureNapi share the same underlying Picture object. This function does not copy the main image, auxiliary pictures, or metadata.
+
+**System capability**: SystemCapability.Multimedia.Image.Core
 
 **Since**: 26.0.1
 

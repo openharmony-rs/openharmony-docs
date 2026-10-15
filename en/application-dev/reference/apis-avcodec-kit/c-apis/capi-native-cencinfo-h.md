@@ -6,6 +6,8 @@ The file declares the native APIs used to set decryption parameters.
 
 **Library**: libnative_media_avcencinfo.so
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 **Related module**: [Multimedia_Drm](capi-multimedia-drm.md)
@@ -59,6 +61,8 @@ enum DrmCencAlgorithm
 
 Enumerates the DRM CENC algorithm types.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 | Enum item | Description |
@@ -80,6 +84,8 @@ enum DrmCencInfoMode
 
 Enumerates the modes for setting the key ID, IV, and subsample in the CENC information.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 | Enum item | Description |
@@ -100,6 +106,8 @@ OH_AVCencInfo *OH_AVCencInfo_Create()
 
 Creates an OH_AVCencInfo instance for setting the CENC information.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 **Returns**:
@@ -117,6 +125,8 @@ OH_AVErrCode OH_AVCencInfo_Destroy(OH_AVCencInfo *cencInfo)
 **Description**
 
 Destroys an OH_AVCencInfo instance and clears internal resources.<br> An instance can be destroyed only once. Do not use the instance until it is created again. You are advised to set the instance pointer to nullptr once the instance is destroyed.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
 
@@ -142,6 +152,8 @@ OH_AVErrCode OH_AVCencInfo_SetAlgorithm(OH_AVCencInfo *cencInfo, enum DrmCencAlg
 
 Sets an encryption algorithm of the CENC information.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 **Parameters**:
@@ -166,6 +178,8 @@ OH_AVErrCode OH_AVCencInfo_SetKeyIdAndIv(OH_AVCencInfo *cencInfo, uint8_t *keyId
 **Description**
 
 Sets the key ID and IV in the CENC information.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
 
@@ -194,6 +208,8 @@ OH_AVErrCode OH_AVCencInfo_SetSubsampleInfo(OH_AVCencInfo *cencInfo, uint32_t en
 **Description**
 
 Sets the subsample information in the CENC information.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
 
@@ -224,6 +240,8 @@ OH_AVErrCode OH_AVCencInfo_SetMode(OH_AVCencInfo *cencInfo, enum DrmCencInfoMode
 
 Sets the CENC information mode.
 
+**System capability**: SystemCapability.Multimedia.Media.Spliter
+
 **Since**: 12
 
 **Parameters**:
@@ -248,6 +266,8 @@ OH_AVErrCode OH_AVCencInfo_SetAVBuffer(OH_AVCencInfo *cencInfo, OH_AVBuffer *buf
 **Description**
 
 Sets the CENC information to an AVBuffer.
+
+**System capability**: SystemCapability.Multimedia.Media.Spliter
 
 **Since**: 12
 

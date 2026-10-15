@@ -6,6 +6,8 @@ The file declares the error codes defined by BundleManager.
 
 **Library**: libbundle_ndk.z.so
 
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
+
 **Since**: 21
 
 **Related module**: [Native_Bundle](capi-native-bundle.md)
@@ -29,6 +31,8 @@ enum BundleManager_ErrorCode
 **Description**
 
 Enumerates the error codes.
+
+**System capability**: SystemCapability.BundleManager.BundleFramework.Core
 
 **Since**: 21
 

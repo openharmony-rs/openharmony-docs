@@ -8,6 +8,8 @@
 
 **库：** liboharchive.so
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **相关模块：** [Archive](capi-archive.md)
@@ -92,6 +94,8 @@ enum OH_Archive_Format
 
 文件格式枚举。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -107,6 +111,8 @@ enum OH_Archive_CompressMethod
 **描述：**
 
 压缩算法枚举。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -125,6 +131,8 @@ enum OH_Archive_OpenMode
 
 文件打开模式枚举。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -140,6 +148,8 @@ enum OH_Archive_ProgressType
 **描述：**
 
 文件进度控制类型枚举。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -157,6 +167,8 @@ enum OH_Archive_StreamChecksumAlg
 **描述：**
 
 用于计算校验和的哈希算法。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -177,6 +189,8 @@ typedef OH_Archive_ProgressType (*OH_Archive_ProgressHandlerWithData)(int32_t pr
 **描述：**
 
 定义进度处理回调函数的类型。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -202,6 +216,8 @@ typedef uint64_t (*OH_Archive_Stream_OutputHandler)(const void* data, uint64_t s
 **描述：**
 
 用户自定义回调函数指针类型，用于处理压缩后的数据。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -229,6 +245,8 @@ OH_Archive_Reader_Ctx OH_Archive_Reader_OpenFile(const char *infile)
 
 打开文件进行读取。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **资源释放：** archive/OH_Archive_Reader_Close {return}
@@ -254,6 +272,8 @@ OH_Archive_ErrCode OH_Archive_Reader_SetProgressHandlerWithData(OH_Archive_Reade
 **描述：**
 
 设置文件解压缩器的进度回调函数及用户数据。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -281,6 +301,8 @@ OH_Archive_ErrCode OH_Archive_Reader_ExtractAllFile(OH_Archive_Reader_Ctx arc, c
 
 从压缩包中提取所有文件。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -306,6 +328,8 @@ OH_Archive_ErrCode OH_Archive_Reader_Close(OH_Archive_Reader_Ctx arc)
 
 关闭已打开的压缩文件并释放相关资源。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -329,6 +353,8 @@ OH_Archive_Writer_Ctx OH_Archive_Writer_OpenFile(const char *outfile, OH_Archive
 **描述：**
 
 创建并打开压缩文件。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -358,6 +384,8 @@ OH_Archive_ErrCode OH_Archive_Writer_SetCompressMethod(OH_Archive_Writer_Ctx arc
 
 设置压缩文件的压缩算法。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -383,6 +411,8 @@ OH_Archive_ErrCode OH_Archive_Writer_SetProgressHandlerWithData(OH_Archive_Write
 **描述：**
 
 设置文件压缩器的进度回调函数及用户数据。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -410,6 +440,8 @@ OH_Archive_ErrCode OH_Archive_Writer_Add(OH_Archive_Writer_Ctx arc, const char *
 
 向压缩包中添加文件列表。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -436,6 +468,8 @@ OH_Archive_ErrCode OH_Archive_Writer_Close(OH_Archive_Writer_Ctx arc)
 
 关闭文件压缩器。 该函数完成压缩包写入过程，将缓冲数据刷新到输出，并释放与文件压缩器的上下文结构体相关的资源。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -459,6 +493,8 @@ uint64_t OH_Archive_BufferWriteCompressBound(OH_Archive_CompressMethod method, u
 **描述：**
 
 计算给定源数据长度的最大压缩后数据大小。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -484,6 +520,8 @@ OH_Archive_ErrCode OH_Archive_BufferWrite(uint8_t *dstBuffer, uint64_t *dstSize,
 **描述：**
 
 向缓冲区写入数据并进行压缩。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -514,6 +552,8 @@ OH_Archive_ErrCode OH_Archive_BufferRead(uint8_t *dstBuffer, uint64_t *dstSize, 
 
 从缓冲区读取数据并进行解压缩。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -542,6 +582,8 @@ OH_Archive_StreamWrite_Ctx OH_Archive_StreamWrite_Create(OH_Archive_Stream_Confi
 
 创建流式压缩的上下文结构体。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **资源释放：** archive/OH_Archive_StreamWrite_Destroy {return}
@@ -567,6 +609,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Start(OH_Archive_StreamWrite_Ctx ctx, 
 **描述：**
 
 启动压缩任务，初始化用户回调函数和用户数据。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -594,6 +638,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_SetCompressLevel(OH_Archive_StreamWrit
 
 设置流式压缩的压缩级别。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -619,6 +665,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Cancel(OH_Archive_StreamWrite_Ctx ctx)
 
 强制取消当前压缩操作。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -642,6 +690,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_Update(OH_Archive_StreamWrite_Ctx ctx,
 **描述：**
 
 提交压缩数据。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -669,6 +719,8 @@ OH_Archive_ErrCode OH_Archive_StreamWrite_End(OH_Archive_StreamWrite_Ctx ctx, OH
 
 结束压缩，刷新所有剩余数据。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -694,6 +746,8 @@ void OH_Archive_StreamWrite_Destroy(OH_Archive_StreamWrite_Ctx ctx)
 
 销毁压缩实例并释放相关资源。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -711,6 +765,8 @@ OH_Archive_StreamRead_Ctx OH_Archive_StreamRead_Create(OH_Archive_Stream_Config 
 **描述：**
 
 创建流式解压缩的上下文结构体。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -738,6 +794,8 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Start(OH_Archive_StreamRead_Ctx ctx, OH
 
 启动解压缩任务，初始化用户回调函数和用户数据。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -764,6 +822,8 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Cancel(OH_Archive_StreamRead_Ctx ctx)
 
 强制取消当前解压缩操作。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -787,6 +847,8 @@ OH_Archive_ErrCode OH_Archive_StreamRead_Update(OH_Archive_StreamRead_Ctx ctx, c
 **描述：**
 
 提交解压缩数据。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 
@@ -814,6 +876,8 @@ OH_Archive_ErrCode OH_Archive_StreamRead_End(OH_Archive_StreamRead_Ctx ctx, OH_A
 
 结束解压缩，刷新所有剩余数据并清理内存。
 
+**系统能力：** SystemCapability.FileManagement.File.FileIO
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -838,6 +902,8 @@ void OH_Archive_StreamRead_Destroy(OH_Archive_StreamRead_Ctx ctx)
 **描述：**
 
 销毁解压缩实例并释放相关资源。
+
+**系统能力：** SystemCapability.FileManagement.File.FileIO
 
 **起始版本：** 26.0.0
 

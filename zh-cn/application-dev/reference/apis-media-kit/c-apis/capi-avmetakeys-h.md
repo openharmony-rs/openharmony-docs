@@ -8,6 +8,8 @@
 
 **库：** libavmedia_base.so
 
+**系统能力：** SystemCapability.Multimedia.Media.Core
+
 **起始版本：** 23
 
 **相关模块：** [AVMediaBase](capi-avmediabase.md)

@@ -6,6 +6,8 @@
 
 **库：** libnative_buffer.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 9
 
 **相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)
@@ -64,6 +66,8 @@ enum OH_NativeBuffer_Usage
 
 OH_NativeBuffer的用途。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 10
 
 | 枚举项 | 描述 |
@@ -86,6 +90,8 @@ enum OH_NativeBuffer_ColorGamut
 **描述：**
 
 OH_NativeBuffer的色域。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 12
 
@@ -116,6 +122,8 @@ OH_NativeBuffer* OH_NativeBuffer_Alloc(const OH_NativeBuffer_Config* config)
 
 通过OH_NativeBuffer_Config创建OH_NativeBuffer实例，每次调用都会产生一个新的OH_NativeBuffer实例。 本接口需要与OH_NativeBuffer_Unreference接口配合使用，否则会存在内存泄露。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 9
 
 **参数：**
@@ -139,6 +147,8 @@ int32_t OH_NativeBuffer_Reference(OH_NativeBuffer *buffer)
 **描述：**
 
 将OH_NativeBuffer对象的引用计数加1。 本接口需要与OH_NativeBuffer_Unreference接口配合使用，否则会存在内存泄露。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 9
 
@@ -164,6 +174,8 @@ int32_t OH_NativeBuffer_Unreference(OH_NativeBuffer *buffer)
 
 将OH_NativeBuffer对象的引用计数减1，当引用计数为0的时候，该NativeBuffer对象会被析构掉。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 9
 
 **参数：**
@@ -188,6 +200,8 @@ void OH_NativeBuffer_GetConfig(OH_NativeBuffer *buffer, OH_NativeBuffer_Config* 
 
 用于获取OH_NativeBuffer的属性。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 9
 
 **参数：**
@@ -206,6 +220,8 @@ int32_t OH_NativeBuffer_Map(OH_NativeBuffer *buffer, void **virAddr)
 **描述：**
 
 将OH_NativeBuffer对应的ION内存映射到进程空间。 需注意调用该接口的OH_NativeBuffer的usage必须带有CPU_READ属性，否则可能导致稳定性问题。 通过OH_NativeBuffer_Alloc申请的OH_NativeBuffer，需保证参数config.usage带有NATIVEBUFFER_USAGE_CPU_READ。 通过OH_NativeBuffer_FromNativeWindowBuffer转换来的OH_NativeBuffer，需保证原OH_NativeWindowBuffer申请前， 通过OH_NativeWindow_NativeWindowHandleOpt接口设置的USAGE带有NATIVEBUFFER_USAGE_CPU_READ。 本接口需要与OH_NativeBuffer_Unmap接口配合使用。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 9
 
@@ -232,6 +248,8 @@ int32_t OH_NativeBuffer_Unmap(OH_NativeBuffer *buffer)
 
 将OH_NativeBuffer对应的ION内存从进程空间移除。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 9
 
 **参数：**
@@ -256,6 +274,8 @@ uint32_t OH_NativeBuffer_GetSeqNum(OH_NativeBuffer *buffer)
 
 获取OH_NativeBuffer的序列号。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 9
 
 **参数：**
@@ -279,6 +299,8 @@ int32_t OH_NativeBuffer_MapPlanes(OH_NativeBuffer *buffer, void **virAddr, OH_Na
 **描述：**
 
 将OH_NativeBuffer对应的多通道ION内存映射到进程空间。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 12
 
@@ -306,6 +328,8 @@ int32_t OH_NativeBuffer_FromNativeWindowBuffer(OHNativeWindowBuffer *nativeWindo
 
 将OHNativeWindowBuffer实例转换为OH_NativeBuffer实例。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 12
 
 **参数：**
@@ -330,6 +354,8 @@ int32_t OH_NativeBuffer_SetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_C
 **描述：**
 
 为OH_NativeBuffer设置颜色空间属性。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 11
 
@@ -356,6 +382,8 @@ int32_t OH_NativeBuffer_GetColorSpace(OH_NativeBuffer *buffer, OH_NativeBuffer_C
 
 获取OH_NativeBuffer颜色空间属性。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 12
 
 **参数：**
@@ -380,6 +408,8 @@ int32_t OH_NativeBuffer_SetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffe
 **描述：**
 
 为OH_NativeBuffer设置元数据属性值。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 12
 
@@ -408,6 +438,8 @@ int32_t OH_NativeBuffer_GetMetadataValue(OH_NativeBuffer *buffer, OH_NativeBuffe
 
 获取OH_NativeBuffer元数据属性值。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 12
 
 **参数：**
@@ -435,6 +467,8 @@ int32_t OH_NativeBuffer_MapWaitFence(OH_NativeBuffer *buffer, int32_t fenceFd, v
 
 将OH_NativeBuffer对应的ION内存映射到进程空间，永久阻塞传入的fenceFd。 如果接口返回OK，系统会将fenceFd关闭，无需用户close，否则，用户需要自行关闭fenceFd。 本接口需要与OH_NativeBuffer_Unmap接口配合使用。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 23
 
 **参数：**
@@ -461,6 +495,8 @@ int32_t OH_NativeBuffer_WriteToParcel(OH_NativeBuffer* buffer, OHIPCParcel* parc
 
 将OH_NativeBuffer对象写入IPC序列化对象中。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 23
 
 **参数：**
@@ -485,6 +521,8 @@ int32_t OH_NativeBuffer_ReadFromParcel(OHIPCParcel* parcel, OH_NativeBuffer** bu
 **描述：**
 
 从IPC序列化对象中读取OH_NativeBuffer对象。 本接口将会创建一个OH_NativeBuffer，当OH_NativeBuffer对象使用完，开发者需要与OH_NativeBuffer_Unreference接口配合使用，否则会存在内存泄漏。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 23
 
@@ -511,6 +549,8 @@ int32_t OH_NativeBuffer_IsSupported(OH_NativeBuffer_Config config, bool* isSuppo
 
 检查系统是否支持传入的OH_NativeBuffer_Config配置信息。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 23
 
 **参数：**
@@ -535,6 +575,8 @@ int32_t OH_NativeBuffer_MapAndGetConfig(OH_NativeBuffer* buffer, void** virAddr,
 **描述：**
 
 将OH_NativeBuffer对应的多通道ION内存映射到进程空间，并获取OH_NativeBuffer对应的OH_NativeBuffer_Config。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 23
 
@@ -561,6 +603,8 @@ int32_t OH_NativeBuffer_SetDmaBufferName(OH_NativeBuffer *buffer, const char *na
 **描述：**
 
 设置OH_NativeBuffer的DMA buffer名称。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 26.0.1
 

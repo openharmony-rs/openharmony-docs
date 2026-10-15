@@ -8,6 +8,8 @@
 
 **库：** libnative_media_venc.so
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **相关模块：** [VideoEncoder](capi-videoencoder.md)
@@ -95,6 +97,8 @@ enum OH_VideoEncodeBitrateMode
 
 视频编码器的码率控制模式。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **废弃版本：** 14
@@ -120,6 +124,8 @@ typedef void (*OH_VideoEncoder_OnNeedInputParameter)(OH_AVCodec *codec, uint32_t
 
 配置随帧参数，当需要设置index对应帧的编码参数时，可以通过该接口设置。只在Surface模式生效。<br> 该接口只能在Surface模式下使用，使用前需要调用OH_VideoEncoder_RegisterParameterCallback接口注册。<br> 在Buffer模式下，OH_AVBuffer可以直接携带帧的编码参数，当前可以支持的随帧参数有帧级QPMin/QPMax，指定LTR设置参考帧。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 12
 
 **参数：**
@@ -140,6 +146,8 @@ OH_AVCodec *OH_VideoEncoder_CreateByMime(const char *mime)
 **描述：**
 
 根据MIME类型创建视频编码器实例，推荐使用。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 9
 
@@ -165,6 +173,8 @@ OH_AVCodec *OH_VideoEncoder_CreateByName(const char *name)
 
 根据视频编码器名称创建视频编码器实例。使用此接口的前提是知道编码器的确切名称，编码器的名称可以通过能力查询获取。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -188,6 +198,8 @@ OH_AVErrCode OH_VideoEncoder_CreatePrimaryWithPreproc(const char *mime, OH_AVCod
 **描述：**
 
 创建支持前处理的主视频编码器实例。<br> 该编码器支持以下能力：<br> 1. 前处理功能（降采样、裁剪、丢帧）。<br> 2. 从该主编码器创建副编码器实现一入二出双路编码。<br> 通过该接口创建的编码器仅支持Surface模式，不支持Buffer模式和同步模式。创建成功后需通过[OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy)销毁。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 26.0.0
 
@@ -218,6 +230,8 @@ OH_AVErrCode OH_VideoEncoder_CreateSecondaryFromPrimary(OH_AVCodec *primary, OH_
 >
 > 生命周期管理： <br>- 主编码器的生命周期必须长于从编码器。 <br>- 建议销毁顺序：先销毁从编码器，再销毁主编码器。 <br>- 若主编码器在从编码器之前被销毁，系统会在释放主编码器资源前自动销毁从编码器。 <br>- 两个编码器都必须通过调用 [OH_VideoEncoder_Destroy](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_destroy) 接口完成销毁。 <br>- 一个主编码器同一时刻仅可关联一个从编码器。 从编码器销毁完成后，可基于同一个主编码器重新创建新的从编码器。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -243,6 +257,8 @@ OH_AVErrCode OH_VideoEncoder_Destroy(OH_AVCodec *codec)
 
 清理编码器内部资源，销毁编码器实例。不能重复销毁。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -266,6 +282,8 @@ OH_AVErrCode OH_VideoEncoder_SetCallback(OH_AVCodec *codec, OH_AVCodecAsyncCallb
 **描述：**
 
 设置OH_AVCodecAsyncCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 9
 
@@ -297,6 +315,8 @@ OH_AVErrCode OH_VideoEncoder_RegisterCallback(OH_AVCodec *codec, OH_AVCodecCallb
 
 注册OH_AVCodecCallback回调函数，让应用可以响应视频编码器生成的事件。在调用OH_VideoEncoder_Prepare接口之前，必须调用此接口。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 11
 
 **参数：**
@@ -322,6 +342,8 @@ OH_AVErrCode OH_VideoEncoder_RegisterParameterCallback(OH_AVCodec *codec, OH_Vid
 **描述：**
 
 注册OH_VideoEncoder_OnNeedInputParameter输入参数回调函数，让应用可以响应视频编码器生成的事件。编码Surface模式，<br> 需要设置随帧参数时，须使用该接口。如果使用该接口，必须在[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)之前调用该接口。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 12
 
@@ -369,6 +391,8 @@ OH_AVErrCode OH_VideoEncoder_Configure(OH_AVCodec *codec, OH_AVFormat *format)
 \| \\ \| \\ \| BITRATE_MODE_VBR、BITRATE_MODE_CBR \| AV_ERR_OK \| 使用编码器默认码率\|
 \| \\ \| \\ \| BITRATE_MODE_CQ \| AV_ERR_OK \| 使用默认quality \|
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -394,6 +418,8 @@ OH_AVErrCode OH_VideoEncoder_Prepare(OH_AVCodec *codec)
 
 准备编码器的内部资源，在OH_VideoEncoder_Configure接口后调用。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -417,6 +443,8 @@ OH_AVErrCode OH_VideoEncoder_Start(OH_AVCodec *codec)
 **描述：**
 
 调用[OH_VideoEncoder_Prepare](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_prepare)接口成功后调用此接口启动编码器。成功启动后，编码器将开始报告注册的回调事件。<br> Surface模式下，在surface中有正确的输入后，每完成一帧编码会触发OnNewOutputBuffer。<br> Buffer模式下，编码器会立即触发输入回调，开发者每完成一次输入，编码器执行编码，每完成一帧编码会触发OnNewOutputBuffer。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 9
 
@@ -442,6 +470,8 @@ OH_AVErrCode OH_VideoEncoder_Stop(OH_AVCodec *codec)
 
 停止编码器，释放输入输出buffer。停止之后，可以通过调用OH_VideoEncoder_Start接口重新进入Running状态。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -465,6 +495,8 @@ OH_AVErrCode OH_VideoEncoder_Flush(OH_AVCodec *codec)
 **描述：**
 
 清除编码器中缓存的输入和输出数据及参数集如H.264格式的PPS/SPS。<br> 调用此接口后，以前通过异步回调上报的所有缓冲区index都将失效，请确保不要访问这些index对应的缓冲区。该接口不能连续调用。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 9
 
@@ -490,6 +522,8 @@ OH_AVErrCode OH_VideoEncoder_Reset(OH_AVCodec *codec)
 
 重置编码器，编码器回到初始化状态。如果要继续编码，需要再次调用OH_VideoEncoder_Configure接口配置编码器实例。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -514,6 +548,8 @@ OH_AVFormat *OH_VideoEncoder_GetOutputDescription(OH_AVCodec *codec)
 
 获取编码器输出数据的OH_AVFormat信息。<br> 需要注意的是，返回值指向的OH_AVFormat实例的生命周期需要开发者通过调用接口[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)释放。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -537,6 +573,8 @@ OH_AVErrCode OH_VideoEncoder_SetParameter(OH_AVCodec *codec, OH_AVFormat *format
 **描述：**
 
 在编码器运行时设置编码器参数。 注意，此接口只有在编码器启动后才能调用。同时，不正确的参数设置可能会导致编码失败。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 9
 
@@ -563,6 +601,8 @@ OH_AVErrCode OH_VideoEncoder_GetSurface(OH_AVCodec *codec, OHNativeWindow **wind
 
 从视频编码器获取输入surface，必须在调用OH_VideoEncoder_Configure接口之后OH_VideoEncoder_Prepare接口之前调用此接口。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -587,6 +627,8 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputData(OH_AVCodec *codec, uint32_t index)
 **描述：**
 
 将处理后的输出缓冲区返回给编码器。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 9
 
@@ -617,6 +659,8 @@ OH_AVErrCode OH_VideoEncoder_NotifyEndOfStream(OH_AVCodec *codec)
 
 通知视频编码器输入流已结束。建议使用此接口进行通知。该接口只在Surface模式下使用， Buffer模式通过OH_AVBuffer携带EOS信息，通知输入流的结束。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 9
 
 **参数：**
@@ -640,6 +684,8 @@ OH_AVErrCode OH_VideoEncoder_PushInputData(OH_AVCodec *codec, uint32_t index, OH
 **描述：**
 
 将填入数据的输入缓冲区提交给视频编码器。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 10
 
@@ -671,6 +717,8 @@ OH_AVErrCode OH_VideoEncoder_PushInputBuffer(OH_AVCodec *codec, uint32_t index)
 
 Buffer模式下，将index对应的OH_AVBuffer送入编码器编码。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 11
 
 **参数：**
@@ -695,6 +743,8 @@ OH_AVErrCode OH_VideoEncoder_PushInputParameter(OH_AVCodec *codec, uint32_t inde
 **描述：**
 
 Surface模式下，将index对应帧的编码参数送入编码器编码。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 12
 
@@ -721,6 +771,8 @@ OH_AVErrCode OH_VideoEncoder_FreeOutputBuffer(OH_AVCodec *codec, uint32_t index)
 
 将处理后的index对应的OH_AVBuffer退回给编码器。开发者使用完需要及时调用此接口释放输出缓存区，否则会阻塞编码流程。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 11
 
 **参数：**
@@ -746,6 +798,8 @@ OH_AVFormat *OH_VideoEncoder_GetInputDescription(OH_AVCodec *codec)
 
 编码器接收到的图像的描述信息。调用[OH_VideoEncoder_Configure](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_configure)后调用此接口。<br> 需要注意的是，返回指针所指向的OH_AVFormat实例的生命周期需要由开发者通过调用[OH_AVFormat_Destroy](capi-native-avformat-h.md#oh_avformat_destroy)接口释放。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 10
 
 **参数：**
@@ -769,6 +823,8 @@ OH_AVErrCode OH_VideoEncoder_IsValid(OH_AVCodec *codec, bool *isValid)
 **描述：**
 
 在编码器实例存在的情况下，检查当前编码器服务是否有效。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 10
 
@@ -794,6 +850,8 @@ OH_AVErrCode OH_VideoEncoder_QueryInputBuffer(struct OH_AVCodec *codec, uint32_t
 **描述：**
 
 查询下一个可用输入缓冲区的索引。<br> 调用此接口后需要接着调用[OH_VideoEncoder_GetInputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getinputbuffer)接口获取缓冲区实例，并通过[OH_VideoEncoder_PushInputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_pushinputbuffer)接口传递给编码器。<br> 需要注意的是，上述操作仅在同步模式下支持。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 20
 
@@ -821,6 +879,8 @@ OH_AVBuffer *OH_VideoEncoder_GetInputBuffer(struct OH_AVCodec *codec, uint32_t i
 
 获取可用输入缓冲区的实例。<br> 需要注意的是，此接口仅适用于同步模式。
 
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
+
 **起始版本：** 20
 
 **参数：**
@@ -845,6 +905,8 @@ OH_AVErrCode OH_VideoEncoder_QueryOutputBuffer(struct OH_AVCodec *codec, uint32_
 **描述：**
 
 查询下一个可用输出缓冲区的索引。<br> 通过[OH_VideoEncoder_GetOutputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_getoutputbuffer)接口获取的缓冲区实例可以通过[OH_VideoEncoder_FreeOutputBuffer](capi-native-avcodec-videoencoder-h.md#oh_videoencoder_freeoutputbuffer)接口将处理后的输出缓冲区返回到编码器。<br> 需要注意的是，上述操作仅在同步模式下支持。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 20
 
@@ -871,6 +933,8 @@ OH_AVBuffer *OH_VideoEncoder_GetOutputBuffer(struct OH_AVCodec *codec, uint32_t 
 **描述：**
 
 获取可用输出缓冲区的实例。<br> 需要注意的是，此接口仅适用于同步模式。
+
+**系统能力：** SystemCapability.Multimedia.Media.VideoEncoder
 
 **起始版本：** 20
 

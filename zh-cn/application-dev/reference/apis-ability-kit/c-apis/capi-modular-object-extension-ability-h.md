@@ -6,6 +6,8 @@
 
 **库：** libability_runtime.so
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -56,6 +58,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc)(OH_Ability
 
 ModularObjectExtensionAbility创建时触发的回调函数，用于初始化。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -75,6 +79,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc)(OH_Abilit
 
 ModularObjectExtensionAbility销毁前触发的回调函数。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -92,6 +98,8 @@ typedef OHIPCRemoteStub* (*OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFun
 **描述：**
 
 ModularObjectExtensionAbility被连接时触发的回调函数。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -112,6 +120,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc)(OH_Abi
 
 当前ModularObjectExtensionAbility的所有连接都断开时触发的回调函数。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -129,6 +139,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCrea
 **描述：**
 
 向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md)注册 [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc)回调函数。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -155,6 +167,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDest
 
 向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md)注册 [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc)回调函数。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -179,6 +193,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConn
 **描述：**
 
 向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md)注册 [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc)回调函数。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -205,6 +221,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisc
 
 向[OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md)注册 [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc)回调函数。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -230,6 +248,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetContextFrom
 
 从ModularObjectExtensionAbility实例中获取ExtensionAbility上下文。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -254,6 +274,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetInstanceFro
 **描述：**
 
 从基础ExtensionAbility实例中获取ModularObjectExtensionAbility实例。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 

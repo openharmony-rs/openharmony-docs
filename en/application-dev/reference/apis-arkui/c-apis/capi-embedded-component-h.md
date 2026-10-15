@@ -6,6 +6,8 @@ Defines embedded component attribute and interface.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -46,6 +48,8 @@ ArkUI_EmbeddedComponentOption* OH_ArkUI_EmbeddedComponentOption_Create()
 
 Creates an **EmbeddedComponent** option object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Returns**:
@@ -63,6 +67,8 @@ void OH_ArkUI_EmbeddedComponentOption_Dispose(ArkUI_EmbeddedComponentOption* opt
 **Description**
 
 Disposes of an **EmbeddedComponent** option object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -82,6 +88,8 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnError(ArkUI_EmbeddedComponentOption* 
 
 Sets the [onError](../../apis-camera-kit/c-apis/capi-oh-camera-camerainput-callbacks.md) callback for the **EmbeddedComponent** component. This callback is triggered when an error occurs during the running of the **EmbeddedComponent** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -100,6 +108,8 @@ void OH_ArkUI_EmbeddedComponentOption_SetOnTerminated(ArkUI_EmbeddedComponentOpt
 **Description**
 
 Sets the onTerminated callback for the **EmbeddedComponent** component. This callback is triggered when the **EmbeddedComponent** component exits properly.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 

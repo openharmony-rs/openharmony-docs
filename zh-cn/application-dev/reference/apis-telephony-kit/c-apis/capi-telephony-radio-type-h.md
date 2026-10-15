@@ -6,9 +6,11 @@ Provides the data structures for the C APIs of the the telephony radio.
 
 **库：** libtelephony_radio.so
 
+**系统能力：** SystemCapability.Telephony.CoreService
+
 **起始版本：** 13
 
-**相关模块：** [Telephony](capi-telephony.md)
+**相关模块：** [](capi-.md)
 
 ## 汇总
 
@@ -46,6 +48,8 @@ enum Telephony_RadioResult
 
 错误码类型枚举。
 
+**系统能力：** SystemCapability.Telephony.CoreService
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -67,6 +71,8 @@ enum Telephony_RegState
 
 设备的网络注册状态类型。
 
+**系统能力：** SystemCapability.Telephony.CoreService
+
 **起始版本：** 13
 
 | 枚举项 | 描述 |
@@ -85,6 +91,8 @@ enum Telephony_RadioTechnology
 **描述：**
 
 设备的无线接入技术类型。
+
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **起始版本：** 13
 
@@ -113,6 +121,8 @@ enum Telephony_NsaState
 **描述：**
 
 设备的NSA网络注册状态类型。
+
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **起始版本：** 13
 

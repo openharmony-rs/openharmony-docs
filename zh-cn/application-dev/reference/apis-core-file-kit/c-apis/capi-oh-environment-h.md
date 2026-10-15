@@ -8,6 +8,8 @@ environment模块接口定义，使用environment提供的native接口，获取�
 
 **库：** libohenvironment.so
 
+**系统能力：** SystemCapability.FileManagement.File.Environment.FolderObtain
+
 **起始版本：** 12
 
 **相关模块：** [Environment](capi-environment.md)
@@ -34,6 +36,8 @@ environment模块接口定义，使用environment提供的native接口，获取�
 
 获取当前用户下载目录的沙箱路径，用于访问对应目录中的文件。
 
+**系统能力：** SystemCapability.FileManagement.File.Environment.FolderObtain
+
 **起始版本：** 12
 
 **参数：**
@@ -46,7 +50,7 @@ environment模块接口定义，使用environment提供的native接口，获取�
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. ERR_ENOMEM 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。[ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDesktopDir()
 
@@ -57,6 +61,8 @@ environment模块接口定义，使用environment提供的native接口，获取�
 **描述：**
 
 获取当前用户桌面目录的沙箱路径，用于访问对应目录中的文件。
+
+**系统能力：** SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **起始版本：** 12
 
@@ -70,7 +76,7 @@ environment模块接口定义，使用environment提供的native接口，获取�
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. ERR_ENOMEM 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。[ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 ### OH_Environment_GetUserDocumentDir()
 
@@ -81,6 +87,8 @@ environment模块接口定义，使用environment提供的native接口，获取�
 **描述：**
 
 获取当前用户文档目录的沙箱路径，用于访问对应目录中的文件。
+
+**系统能力：** SystemCapability.FileManagement.File.Environment.FolderObtain
 
 **起始版本：** 12
 
@@ -94,6 +102,6 @@ environment模块接口定义，使用environment提供的native接口，获取�
 
 | 类型 | 说明 |
 | -- | -- |
-| FileManagement_ErrCode | 返回FileManagement模块错误码。ERR_INVALID_PARAMETER 401 - Invalid input parameter, pointer is null. ERR_DEVICE_NOT_SUPPORTED 801 - Device not supported. ERR_ENOMEM 13900011 - Failed to apply for memory. |
+| FileManagement_ErrCode | 返回FileManagement模块错误码。[ERR_INVALID_PARAMETER](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 401 - Invalid input parameter, pointer is null. [ERR_DEVICE_NOT_SUPPORTED](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 801 - Device not supported. [ERR_ENOMEM](../../apis-arkui/c-apis/capi-error-code-h.md#filemanagement_errcode) 13900011 - Failed to apply for memory. |
 
 

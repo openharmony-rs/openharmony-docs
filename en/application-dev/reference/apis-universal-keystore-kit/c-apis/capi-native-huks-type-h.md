@@ -8,6 +8,8 @@ Defines enums, structs, macros, and error codes in HUKS.
 
 **Library**: libhuks_ndk.z.so
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 **Related module**: [HuksTypeApi](capi-hukstypeapi.md)
@@ -94,6 +96,8 @@ enum OH_Huks_KeyPurpose
 
 Enumerates the key purposes. Multiple purposes can be combined using bitwise OR (\\|).
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -118,6 +122,8 @@ enum OH_Huks_KeyDigest
 
 Enumerates the digest algorithms.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -140,6 +146,8 @@ enum OH_Huks_KeyPadding
 **Description**
 
 Enumerates the padding algorithm types.
+
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -164,6 +172,8 @@ enum OH_Huks_CipherMode
 
 Cipher mode.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -185,6 +195,8 @@ enum OH_Huks_KeySize
 **Description**
 
 Enumerates the key sizes of different algorithms.
+
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -224,6 +236,8 @@ enum OH_Huks_KeyAlg
 
 Enumerates the algorithms for keys.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -256,6 +270,8 @@ enum OH_Huks_AlgSuite
 
 Enumerates the algorithm suites that can be used for importing of a key in ciphertext. <br>Key material format for **OH_HUKS_UNWRAP_SUITE_X25519_AES_256_GCM_NOPADDING**: <br>\| x25519_plain_pubkey_length (4 Byte) \| x25519_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_ECDH_AES_256_GCM_NOPADDING**: <br>\| ECC_plain_pubkey_length (4 Byte) \| ECC_plain_pubkey \| agreekey_aad_length (4 Byte) \| agreekey_aad <br>\| agreekey_nonce_length (4 Byte) \| agreekey_nonce \| agreekey_aead_tag_len(4 Byte) \| agreekey_aead_tag <br>\| kek_enc_data_length (4 Byte) \| kek_enc_data \| kek_aad_length (4 Byte) \| kek_aad <br>\| kek_nonce_length (4 Byte) \| kek_nonce \| kek_aead_tag_len (4 Byte) \| kek_aead_tag <br>\| key_material_size_len (4 Byte) \| key_material_size \| key_mat_enc_length (4 Byte) \| key_mat_enc_data<br> <br>Key material format for **OH_HUKS_UNWRAP_SUITE_SM2_SM4_ECB_NOPADDING**: <br>\| kek_SM4_enc_length (4 Byte) \| EN_SM4_key \| importkey_enc_length (4 Byte) \| importkey_enc
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -274,6 +290,8 @@ enum OH_Huks_KeyGenerateType
 
 Enumerates the types of the key generated.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -291,6 +309,8 @@ enum OH_Huks_KeyFlag
 **Description**
 
 Enumerates the key generation types.
+
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -311,6 +331,8 @@ enum OH_Huks_KeyStorageType
 
 Enumerates the key storage types.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -330,6 +352,8 @@ enum OH_Huks_ImportKeyType
 
 Enumerates the types of the key to import. By default, a public key is imported. This field is not required when a symmetric key is imported.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -348,6 +372,8 @@ enum OH_Huks_RsaPssSaltLenType
 
 Enumerates the length types of the salt value in PSS padding mode of the RSA algorithm.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 10
 
 | Enum item | Description |
@@ -364,6 +390,8 @@ enum OH_Huks_ErrCode
 **Description**
 
 Enumerates error codes.
+
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -409,6 +437,8 @@ enum OH_Huks_TagType
 
 Enumerates parameter types.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -435,6 +465,8 @@ enum OH_Huks_UserAuthType
 
 Enumerates the user authentication types in key access control.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -454,6 +486,8 @@ enum OH_Huks_AuthAccessType
 
 Enumerates the rules for invalidating a key.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -471,6 +505,8 @@ enum OH_Huks_AuthStorageLevel
 **Description**
 
 Enumerates the security levels for storing the key generated or imported.
+
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 11
 
@@ -490,6 +526,8 @@ enum OH_Huks_UserAuthMode
 
 Enumerates the user authentication modes in key access control.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 12
 
 | Enum item | Description |
@@ -506,6 +544,8 @@ enum OH_Huks_ChallengeType
 **Description**
 
 Enumerates the types of the challenge generated when a key is used.
+
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 
@@ -530,6 +570,8 @@ enum OH_Huks_ChallengePosition
 
 Enumerates the positions of the 8-byte valid value in a custom challenge generated.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -549,6 +591,8 @@ enum OH_Huks_SecureSignType
 
 Enumerates the signature types of the key generated or imported.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 9
 
 | Enum item | Description |
@@ -564,6 +608,8 @@ enum OH_Huks_KeyClassType
 **Description**
 
 Key type.
+
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 22
 
@@ -582,6 +628,8 @@ enum OH_Huks_KeyWrapType
 
 Enumerates the wrap type of the key generated or imported.
 
+**System capability**: SystemCapability.Security.Huks.Core
+
 **Since**: 20
 
 | Enum item | Description |
@@ -597,6 +645,8 @@ enum OH_Huks_Tag
 **Description**
 
 Enumerates the tags contained in a parameter set. <br>1 to 200: key parameter tag values. <br>301 to 500: tag values related to access control and authentication of key usage. <br>501 to 600: tag values related to key authentication. <br>601 to 1000: reserved values for other types of tag values. <br>1001 to 9999: extended tag values. <br>11000 to 12000: reserved values. <br>20001 to N: reserved tag values.
+
+**System capability**: SystemCapability.Security.Huks.Core
 
 **Since**: 9
 

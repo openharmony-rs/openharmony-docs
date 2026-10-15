@@ -8,6 +8,8 @@
 
 **库：** libddk_base.z.so
 
+**系统能力：** SystemCapability.Driver.DDK.Extension
+
 **起始版本：** 12
 
 **相关模块：** [Ddk](capi-ddk.md)
@@ -35,6 +37,8 @@ DDK_RetCode OH_DDK_CreateAshmem(const uint8_t *name, uint32_t size, DDK_Ashmem *
 
 创建共享内存。为了防止资源泄漏，应通过调用[OH_DDK_DestroyAshmem](capi-ddk-api-h.md#oh_ddk_destroyashmem)接口来销毁不再需要的共享内存。
 
+**系统能力：** SystemCapability.Driver.DDK.Extension
+
 **起始版本：** 12
 
 **参数：**
@@ -61,6 +65,8 @@ DDK_RetCode OH_DDK_MapAshmem(DDK_Ashmem *ashmem, const uint8_t ashmemMapType)
 
 映射创建的共享内存到用户空间。需先调用[OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem)接口创建共享内存。通过调用[OH_DDK_UnmapAshmem](capi-ddk-api-h.md#oh_ddk_unmapashmem)接口取消映射不需要的共享内存。
 
+**系统能力：** SystemCapability.Driver.DDK.Extension
+
 **起始版本：** 12
 
 **参数：**
@@ -86,6 +92,8 @@ DDK_RetCode OH_DDK_UnmapAshmem(DDK_Ashmem *ashmem)
 
 取消映射共享内存。需先调用[OH_DDK_MapAshmem](capi-ddk-api-h.md#oh_ddk_mapashmem)接口映射共享内存。不再访问共享内存时应取消映射，以节省地址空间。
 
+**系统能力：** SystemCapability.Driver.DDK.Extension
+
 **起始版本：** 12
 
 **参数：**
@@ -109,6 +117,8 @@ DDK_RetCode OH_DDK_DestroyAshmem(DDK_Ashmem *ashmem)
 **描述：**
 
 销毁由[OH_DDK_CreateAshmem](capi-ddk-api-h.md#oh_ddk_createashmem)创建的共享内存。建议先调用[OH_DDK_UnmapAshmem](capi-ddk-api-h.md#oh_ddk_unmapashmem)接口取消映射。共享内存不再使用时应及时销毁以释放系统资源。
+
+**系统能力：** SystemCapability.Driver.DDK.Extension
 
 **起始版本：** 12
 

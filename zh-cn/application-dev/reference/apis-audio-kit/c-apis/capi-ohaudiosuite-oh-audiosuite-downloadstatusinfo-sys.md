@@ -14,7 +14,7 @@ struct OH_AudioSuite_DownloadStatusInfo {...}
 
 **系统接口：** 此接口为系统接口。
 
-**相关模块：** [AudioSuite](capi-audiosuite.md)
+**相关模块：** [OHAudioSuite](capi-ohaudiosuite.md)
 
 **所在头文件：** [native_audio_suite_download_manager.h（系统接口）](capi-native-audio-suite-download-manager-h-sys.md)
 

@@ -8,6 +8,8 @@
 
 **库：** libhuks_ndk.z.so
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **相关模块：** [HuksParamSetApi](capi-huksparamsetapi.md)
@@ -42,6 +44,8 @@ struct OH_Huks_Result OH_Huks_InitParamSet(struct OH_Huks_ParamSet **paramSet)
 
 初始化参数集，无参数信息，分配参数集默认可用内存空间。初始化后的参数集需要通过[OH_Huks_FreeParamSet](capi-native-huks-param-h.md#oh_huks_freeparamset)释放。 添加参数的参数集需要使用[OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams)并且必须使用[OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset)构造参数集。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **参数：**
@@ -65,6 +69,8 @@ struct OH_Huks_Result OH_Huks_AddParams(struct OH_Huks_ParamSet *paramSet, const
 **描述：**
 
 添加参数到参数集里面。添加完成之后需要使用[OH_Huks_BuildParamSet](capi-native-huks-param-h.md#oh_huks_buildparamset)构造参数集。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -92,6 +98,8 @@ struct OH_Huks_Result OH_Huks_BuildParamSet(struct OH_Huks_ParamSet **paramSet)
 
 构造参数集，在调用[OH_Huks_InitParamSet](capi-native-huks-param-h.md#oh_huks_initparamset)初始化参数集和[OH_Huks_AddParams](capi-native-huks-param-h.md#oh_huks_addparams)添加参数操作之后，序列化参数集， 将blob类型的数据拷贝到paramSet结构尾部相邻内存区域。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **参数：**
@@ -116,6 +124,8 @@ void OH_Huks_FreeParamSet(struct OH_Huks_ParamSet **paramSet)
 
 销毁参数集。销毁由[OH_Huks_InitParamSet](capi-native-huks-param-h.md#oh_huks_initparamset)分配的内存空间。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **参数：**
@@ -133,6 +143,8 @@ struct OH_Huks_Result OH_Huks_CopyParamSet(const struct OH_Huks_ParamSet *fromPa
 **描述：**
 
 复制参数集（深拷贝）。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -160,6 +172,8 @@ struct OH_Huks_Result OH_Huks_GetParam(const struct OH_Huks_ParamSet *paramSet, 
 
 从参数集中获取参数。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **参数：**
@@ -186,6 +200,8 @@ struct OH_Huks_Result OH_Huks_FreshParamSet(struct OH_Huks_ParamSet *paramSet, b
 
 刷新参数集内[OH_Huks_Blob](capi-hukstypeapi-oh-huks-blob.md)类型的数据。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **参数：**
@@ -211,6 +227,8 @@ struct OH_Huks_Result OH_Huks_IsParamSetTagValid(const struct OH_Huks_ParamSet *
 
 检查参数集中的参数是否有效、是否有重复。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **参数：**
@@ -234,6 +252,8 @@ struct OH_Huks_Result OH_Huks_IsParamSetValid(const struct OH_Huks_ParamSet *par
 **描述：**
 
 检查参数集大小是否有效。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 9
 
@@ -260,6 +280,8 @@ struct OH_Huks_Result OH_Huks_CheckParamMatch(const struct OH_Huks_Param *basePa
 
 比较两个参数是否相同。
 
+**系统能力：** SystemCapability.Security.Huks.Core
+
 **起始版本：** 9
 
 **参数：**
@@ -284,6 +306,8 @@ void OH_Huks_FreeKeyAliasSet(struct OH_Huks_KeyAliasSet *keyAliasSet)
 **描述：**
 
 销毁密钥别名的参数集。
+
+**系统能力：** SystemCapability.Security.Huks.Core
 
 **起始版本：** 20
 

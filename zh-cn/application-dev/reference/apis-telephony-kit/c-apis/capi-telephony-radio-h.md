@@ -8,9 +8,11 @@ Provides C interface for the telephony radio.
 
 **库：** libtelephony_radio.so
 
+**系统能力：** SystemCapability.Telephony.CoreService
+
 **起始版本：** 13
 
-**相关模块：** [Telephony](capi-telephony.md)
+**相关模块：** [](capi-.md)
 
 ## 汇总
 
@@ -31,6 +33,8 @@ Telephony_RadioResult OH_Telephony_GetNetworkState(Telephony_NetworkState *state
 **描述：**
 
 获取网络状态。
+
+**系统能力：** SystemCapability.Telephony.CoreService
 
 **需要权限：** ohos.permission.GET_NETWORK_INFO
 

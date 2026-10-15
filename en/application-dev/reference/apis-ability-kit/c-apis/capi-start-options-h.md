@@ -6,6 +6,8 @@ Defines the start options APIs.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -77,6 +79,8 @@ AbilityRuntime_StartOptions* OH_AbilityRuntime_CreateStartOptions(void)
 
 Create start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Returns**:
@@ -94,6 +98,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DestroyStartOptions(AbilityRuntime_St
 **Description**
 
 Destroy input start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -118,6 +124,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowMode(AbilityRunt
 **Description**
 
 Set window mode for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -144,6 +152,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowMode(AbilityRunt
 
 Get window mode from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -168,6 +178,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsDisplayId(AbilityRunti
 **Description**
 
 Set display id for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -194,6 +206,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsDisplayId(AbilityRunti
 
 Get display id from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -218,6 +232,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWithAnimation(AbilityR
 **Description**
 
 Set with animation flag for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -244,6 +260,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWithAnimation(AbilityR
 
 Get with animation from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -268,6 +286,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowLeft(AbilityRunt
 **Description**
 
 Set window left for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -294,6 +314,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowLeft(AbilityRunt
 
 Get window left from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -318,6 +340,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowTop(AbilityRunti
 **Description**
 
 Set window top for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -344,6 +368,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowTop(AbilityRunti
 
 Get window top from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -368,6 +394,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowHeight(AbilityRu
 **Description**
 
 Set window height for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -394,6 +422,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowHeight(AbilityRu
 
 Get window height from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -418,6 +448,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsWindowWidth(AbilityRun
 **Description**
 
 Set window width for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -444,6 +476,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowWidth(AbilityRun
 
 Get window width from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -468,6 +502,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartVisibility(Abilit
 **Description**
 
 Set start visibility for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -494,6 +530,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibility(Abilit
 
 Get start visibility from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -518,6 +556,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowIcon(Abilit
 **Description**
 
 Set start window icon for start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -544,6 +584,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowIcon(Abilit
 
 Get start window icon from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -569,6 +611,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsStartWindowBackgroundC
 
 Set start window background color for start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -593,6 +637,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartWindowBackgroundC
 **Description**
 
 Get start window background color from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -620,6 +666,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsSupportedWindowModes(A
 
 Set start window modes for start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -645,6 +693,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsSupportedWindowModes(A
 **Description**
 
 Get the supported start window modes from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -674,6 +724,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMinWindowWidth(Ability
 
 Set min window width for start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -698,6 +750,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowWidth(Ability
 **Description**
 
 Get min window width from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -724,6 +778,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMaxWindowWidth(Ability
 
 Set max window width for start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -748,6 +804,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowWidth(Ability
 **Description**
 
 Get max window width from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -774,6 +832,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMinWindowHeight(Abilit
 
 Set min window height for start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -798,6 +858,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeight(Abilit
 **Description**
 
 Get min window height from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -824,6 +886,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_SetStartOptionsMaxWindowHeight(Abilit
 
 Set max window height for start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 17
 
 **Parameters**:
@@ -848,6 +912,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeight(Abilit
 **Description**
 
 Get max window height from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 17
 
@@ -874,6 +940,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowModeValue(Abilit
 
 Get the window mode from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -898,6 +966,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsDisplayIdValue(Ability
 **Description**
 
 Get the display ID from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -924,6 +994,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWithAnimationValue(Abi
 
 Get whether animation is enabled from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -948,6 +1020,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowLeftValue(Abilit
 **Description**
 
 Get the window left position from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -974,6 +1048,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowTopValue(Ability
 
 Get the window top position from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -998,6 +1074,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowHeightValue(Abil
 **Description**
 
 Get the window height from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1024,6 +1102,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsWindowWidthValue(Abili
 
 Get the window width from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1048,6 +1128,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsStartVisibilityValue(A
 **Description**
 
 Get the start visibility from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1077,6 +1159,8 @@ Get the start window background color from start options.
 > **Note**:
 >
 > If the background color is not set, [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned, *startWindowBackgroundColor remains NULL, and *size is set to 0.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1110,6 +1194,8 @@ Get the supported start window modes from start options.
 >
 > If no supported window modes are set, [ABILITY_RUNTIME_ERROR_CODE_NO_ERROR](capi-ability-runtime-common-h.md#abilityruntime_errorcode) is returned, *supportedWindowModes remains NULL, and *size is set to 0.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Resource release**: free {supportedWindowModes}
@@ -1138,6 +1224,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowWidthValue(Ab
 
 Get the minimum window width from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1163,6 +1251,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowWidthValue(Ab
 
 Get the maximum window width from start options.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -1187,6 +1277,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMinWindowHeightValue(A
 **Description**
 
 Get the minimum window height from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -1214,6 +1306,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetStartOptionsMaxWindowHeightValue(A
 **Description**
 
 Get the maximum window height from start options.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 

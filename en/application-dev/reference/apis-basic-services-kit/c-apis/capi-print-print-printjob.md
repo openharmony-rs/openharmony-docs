@@ -38,6 +38,6 @@ Defines a struct for the print job.
 | [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) orientationMode | Orientation mode. |
 | [Print_Quality](capi-ohprint-h.md#print_quality) printQuality | Print quality. |
 | [Print_DocumentFormat](capi-ohprint-h.md#print_documentformat) documentFormat | Document format. |
-| char *advancedOptions | Advanced options in JSON format.<br>The supported keys are as follows:<br>- **isReverse**: Boolean type, indicating whether to print in reverse order.<br>- **isCollate**: Boolean type, indicating whether to print copies one by one. |
+| char *advancedOptions | Advanced options in JSON format.<br>The supported keys are as follows:<br> - **isReverse**: Boolean type, indicating whether to print in reverse order.<br> - **isCollate**: Boolean type, indicating whether to print copies one by one.<br> - **printPages**: Integer type, indicating the actual number of pages to print. The value must be greater than or equal to 1. Default value is 1. |
 
 

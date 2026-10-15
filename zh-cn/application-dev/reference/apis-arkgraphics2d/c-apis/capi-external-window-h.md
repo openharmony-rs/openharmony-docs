@@ -6,6 +6,8 @@
 
 **库：** libnative_window.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **相关模块：** [NativeWindow](capi-nativewindow.md)
@@ -90,6 +92,8 @@ enum NativeWindowOperation
 
 OH_NativeWindow_NativeWindowHandleOpt函数中的操作码。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 | 枚举项 | 描述 |
@@ -131,6 +135,8 @@ enum OHScalingMode
 
 Indicates Scaling Mode.
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -154,6 +160,8 @@ enum OHScalingModeV2
 
 Indicates Scaling Mode.
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -174,6 +182,8 @@ enum OHHDRMetadataKey
 
 Enumerates the HDR metadata keys.
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -190,6 +200,8 @@ enum OHSurfaceSource
 **描述：**
 
 本地窗口内容来源类型枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 12
 
@@ -214,6 +226,8 @@ OHNativeWindow* OH_NativeWindow_CreateNativeWindow(void* pSurface)
 
 创建OHNativeWindow实例，每次调用都会产生一个新的OHNativeWindow实例。 说明：此接口不可用，可通过OH_NativeImage_AcquireNativeWindow创建，或通过XComponent创建。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **废弃版本：** 12
@@ -222,7 +236,7 @@ OHNativeWindow* OH_NativeWindow_CreateNativeWindow(void* pSurface)
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* pSurface | 一个指向生产者ProduceSurface的指针，类型为sptr\<OHOS::Surface\>。 |
+| void* pSurface | 一个指向生产者ProduceSurface的指针，类型为sptr<OHOS::Surface>。 |
 
 **返回值：**
 
@@ -239,6 +253,8 @@ void OH_NativeWindow_DestroyNativeWindow(OHNativeWindow* window)
 **描述：**
 
 将OHNativeWindow对象的引用计数减1，当引用计数为0的时候，该OHNativeWindow对象会被析构掉。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 8
 
@@ -258,6 +274,8 @@ OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer(
 
 创建OHNativeWindowBuffer实例，每次调用都会产生一个新的OHNativeWindowBuffer实例。 说明：此接口不可用，使用OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer替代。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **废弃版本：** 12
@@ -268,7 +286,7 @@ OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromSurfaceBuffer(
 
 | 参数项 | 描述 |
 | -- | -- |
-| void* pSurfaceBuffer | 一个指向生产者buffer的指针，类型为sptr\<OHOS::SurfaceBuffer\>。 |
+| void* pSurfaceBuffer | 一个指向生产者buffer的指针，类型为sptr<OHOS::SurfaceBuffer>。 |
 
 **返回值：**
 
@@ -285,6 +303,8 @@ OHNativeWindowBuffer* OH_NativeWindow_CreateNativeWindowBufferFromNativeBuffer(O
 **描述：**
 
 创建OHNativeWindowBuffer实例，每次调用都会产生一个新的OHNativeWindowBuffer实例。 本接口需要与OH_NativeWindow_DestroyNativeWindowBuffer接口配合使用，否则会存在内存泄露。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 11
 
@@ -310,6 +330,8 @@ void OH_NativeWindow_DestroyNativeWindowBuffer(OHNativeWindowBuffer* buffer)
 
 将OHNativeWindowBuffer对象的引用计数减1，当引用计数为0的时候，该OHNativeWindowBuffer对象会被析构掉。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **参数：**
@@ -327,6 +349,8 @@ int32_t OH_NativeWindow_NativeWindowRequestBuffer(OHNativeWindow *window, OHNati
 **描述：**
 
 通过OHNativeWindow对象申请一块OHNativeWindowBuffer，用以内容生产。 在调用本接口前，需要通过SET_BUFFER_GEOMETRY对OHNativeWindow设置宽高。 本接口需要与OH_NativeWindow_NativeWindowFlushBuffer接口配合使用，否则内存会耗尽。 当fenceFd使用完，用户需要将其close。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 8
 
@@ -354,6 +378,8 @@ int32_t OH_NativeWindow_NativeWindowFlushBuffer(OHNativeWindow *window, OHNative
 
 通过OHNativeWindow将生产好内容的OHNativeWindowBuffer放回到Buffer队列中，用以内容消费。 系统会将fenceFd关闭，无需用户close。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **参数：**
@@ -380,6 +406,8 @@ int32_t OH_NativeWindow_GetLastFlushedBuffer(OHNativeWindow *window, OHNativeWin
 **描述：**
 
 从OHNativeWindow获取上次送回到buffer队列中的OHNativeWindowBuffer。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 11
 
@@ -412,6 +440,8 @@ int32_t OH_NativeWindow_NativeWindowAbortBuffer(OHNativeWindow *window, OHNative
 
 通过OHNativeWindow将之前申请出来的OHNativeWindowBuffer返还到Buffer队列中，供下次再申请。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **参数：**
@@ -436,6 +466,8 @@ int32_t OH_NativeWindow_NativeWindowHandleOpt(OHNativeWindow *window, int code, 
 **描述：**
 
 设置/获取OHNativeWindow的属性，包括设置/获取宽高、内容格式等。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 8
 
@@ -463,6 +495,8 @@ BufferHandle *OH_NativeWindow_GetBufferHandleFromNative(OHNativeWindowBuffer *bu
 
 通过OHNativeWindowBuffer获取该buffer的BufferHandle指针。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **参数：**
@@ -486,6 +520,8 @@ int32_t OH_NativeWindow_NativeObjectReference(void *obj)
 **描述：**
 
 增加一个NativeObject的引用计数。 本接口需要与OH_NativeWindow_NativeObjectUnreference接口配合使用，否则会存在内存泄露。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 8
 
@@ -511,6 +547,8 @@ int32_t OH_NativeWindow_NativeObjectUnreference(void *obj)
 
 减少一个NativeObject的引用计数，当引用计数减少为0时，该NativeObject将被析构掉。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **参数：**
@@ -535,6 +573,8 @@ int32_t OH_NativeWindow_GetNativeObjectMagic(void *obj)
 
 获取NativeObject的MagicId。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 8
 
 **参数：**
@@ -558,6 +598,8 @@ int32_t OH_NativeWindow_NativeWindowSetScalingMode(OHNativeWindow *window, uint3
 **描述：**
 
 设置OHNativeWindow的ScalingMode。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 9
 
@@ -589,6 +631,8 @@ int32_t OH_NativeWindow_NativeWindowSetMetaData(OHNativeWindow *window, uint32_t
 
 设置OHNativeWindow的元数据。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -617,6 +661,8 @@ int32_t OH_NativeWindow_NativeWindowSetMetaDataSet(OHNativeWindow *window, uint3
 **描述：**
 
 设置OHNativeWindow的元数据集。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 9
 
@@ -648,6 +694,8 @@ int32_t OH_NativeWindow_NativeWindowSetTunnelHandle(OHNativeWindow *window, cons
 
 设置OHNativeWindow的TunnelHandle。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 9
 
 **废弃版本：** 10
@@ -675,6 +723,8 @@ int32_t OH_NativeWindow_NativeWindowAttachBuffer(OHNativeWindow *window, OHNativ
 
 将OHNativeWindowBuffer添加进OHNativeWindow中。 本接口需要与OH_NativeWindow_NativeWindowDetachBuffer接口配合使用，否则会存在内存管理混乱问题。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **参数：**
@@ -699,6 +749,8 @@ int32_t OH_NativeWindow_NativeWindowDetachBuffer(OHNativeWindow *window, OHNativ
 **描述：**
 
 将OHNativeWindowBuffer从OHNativeWindow中分离。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 12
 
@@ -725,6 +777,8 @@ int32_t OH_NativeWindow_GetSurfaceId(OHNativeWindow *window, uint64_t *surfaceId
 
 通过OHNativeWindow获取对应的surfaceId。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **参数：**
@@ -749,6 +803,8 @@ int32_t OH_NativeWindow_CreateNativeWindowFromSurfaceId(uint64_t surfaceId, OHNa
 **描述：**
 
 通过surfaceId创建对应的OHNativeWindow。 本接口需要与OH_NativeWindow_DestroyNativeWindow接口配合使用，否则会存在内存泄露。 如果存在并发释放OHNativeWindow的情况，需要通过OH_NativeWindow_NativeObjectReference和 OH_NativeWindow_NativeObjectUnreference对OHNativeWindow进行引用计数加一和减一。 通过surfaceId获取的surface需要是在本进程中创建的，不能跨进程获取surface。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 12
 
@@ -775,6 +831,8 @@ int32_t OH_NativeWindow_NativeWindowSetScalingModeV2(OHNativeWindow *window, OHS
 
 设置OHNativeWindow的渲染缩放模式。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **参数：**
@@ -800,6 +858,8 @@ void OH_NativeWindow_SetBufferHold(OHNativeWindow *window)
 
 启用单帧缓存机制，通过提前缓存一帧buffer并延迟显示，用于平滑帧率波动。 启用后，系统会预留一帧buffer作为缓冲，该帧会延迟一个显示周期才上屏。当后续渲染出现超长帧或帧间不均匀时，可使用该缓存帧填补空白，减少画面卡顿。 建议在预知即将出现渲染高峰前提前调用，以建立缓冲保护；缓存仅生效一次，被消费后自动失效，如需持续保护需重新调用本接口。 适用于游戏、动画、复杂UI渲染等对帧率稳定性要求较高的场景，但会引入一帧显示延迟（比如，在60hz的刷新率下，会延迟16.6ms上屏显示），不建议在高交互实时场景中使用。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **参数：**
@@ -817,6 +877,8 @@ int32_t OH_NativeWindow_WriteToParcel(OHNativeWindow *window, OHIPCParcel *parce
 **描述：**
 
 将窗口对象写入IPC序列化对象中。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 12
 
@@ -843,6 +905,8 @@ int32_t OH_NativeWindow_ReadFromParcel(OHIPCParcel *parcel, OHNativeWindow **win
 
 从IPC序列化对象中读取窗口对象。 本接口将会创建一个OHNativeWindow，当窗口对象使用完，开发者需要与OH_NativeWindow_DestroyNativeWindow接口配合使用，否则会存在内存泄漏。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **参数：**
@@ -867,6 +931,8 @@ int32_t OH_NativeWindow_GetLastFlushedBufferV2(OHNativeWindow *window, OHNativeW
 **描述：**
 
 从OHNativeWindow获取上次送回到buffer队列中的OHNativeWindowBuffer，与OH_NativeWindow_GetLastFlushedBuffer的差异在于matrix不同。 本接口需要与OH_NativeWindow_NativeObjectUnreference接口配合使用，否则会存在内存泄露。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 12
 
@@ -895,6 +961,8 @@ int32_t OH_NativeWindow_SetColorSpace(OHNativeWindow *window, OH_NativeBuffer_Co
 
 为OHNativeWindow设置颜色空间属性。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **参数：**
@@ -920,6 +988,8 @@ int32_t OH_NativeWindow_GetColorSpace(OHNativeWindow *window, OH_NativeBuffer_Co
 
 获取OHNativeWindow颜色空间属性。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **参数：**
@@ -944,6 +1014,8 @@ int32_t OH_NativeWindow_SetMetadataValue(OHNativeWindow *window, OH_NativeBuffer
 **描述：**
 
 为OHNativeWindow设置元数据属性值。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 12
 
@@ -972,6 +1044,8 @@ int32_t OH_NativeWindow_GetMetadataValue(OHNativeWindow *window, OH_NativeBuffer
 
 获取OHNativeWindow元数据属性值。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 12
 
 **参数：**
@@ -999,6 +1073,8 @@ int32_t OH_NativeWindow_CleanCache(OHNativeWindow *window)
 
 清理OHNativeWindow中的OHNativeWindowBuffer缓存。 使用该接口清理缓存前，需确保已通过OH_NativeWindow_NativeWindowRequestBuffer接口成功申请OHNativeWindowBuffer。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 19
 
 **参数：**
@@ -1022,6 +1098,8 @@ int32_t OH_NativeWindow_PreAllocBuffers(OHNativeWindow *window, uint32_t allocBu
 **描述：**
 
 通过OHNativeWindow对象提前申请多块OHNativeWindowBuffer，用以内容生产。 在调用本接口前，需要通过OH_NativeWindow_NativeWindowHandleOpt对OHNativeWindow设置宽高。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 22
 
@@ -1047,6 +1125,8 @@ int32_t OH_NativeWindow_LockBuffer(OHNativeWindow* window, Region region, OHNati
 **描述：**
 
 通过OHNativeWindow对象申请一块OHNativeWindowBuffer，用以内容生产，并对该OHNativeWindowBuffer加锁。 本接口需要和OH_NativeWindow_UnlockAndFlushBuffer接口配合使用。 本接口对OHNativeWindowBuffer加锁后，需要调OH_NativeWindow_UnlockAndFlushBuffer接口解锁后才能重新对OHNativeWindowBuffer加锁。 若用本接口重复对OHNativeWindowBuffer加锁，会返回操作非法错误码。 本接口支持通过CPU上的内存读写直接渲染图像。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 23
 
@@ -1074,6 +1154,8 @@ int32_t OH_NativeWindow_UnlockAndFlushBuffer(OHNativeWindow* window)
 
 通过OHNativeWindow将生产好内容的OHNativeWindowBuffer放回到Buffer队列中，用以内容消费，并对OHNativeWindowBuffer解锁。 本接口需要和OH_NativeWindow_LockBuffer接口配合使用。 若用本接口重复对OHNativeWindowBuffer解锁，会返回操作非法错误码。 本接口为非线程安全类型接口。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
+
 **起始版本：** 23
 
 **参数：**
@@ -1097,6 +1179,8 @@ int32_t OH_NativeWindow_Set3DMetadataValue(OHNativeWindow *window, OH_NativeBuff
 **描述：**
 
 设置OHNativeWindow的3D元数据。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 26.0.0
 
@@ -1124,6 +1208,8 @@ int32_t OH_NativeWindow_Get3DMetadataValue(OHNativeWindow *window, OH_NativeBuff
 **描述：**
 
 获取OHNativeWindow的3D元数据。 本接口为非线程安全类型接口。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeWindow
 
 **起始版本：** 26.0.0
 

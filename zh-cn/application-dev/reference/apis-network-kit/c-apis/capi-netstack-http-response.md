@@ -22,8 +22,8 @@ struct Http_Response {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| [Http_Buffer](capi-netstack-http-buffer.md) body | HTTP response data. For details, see [Http_Buffer](capi-netstack-http-buffer.md). |
-| [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode) responseCode | HTTP response code. For details, see [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode). |
+| Http_Buffer body | HTTP response data. For details, see [Http_Buffer](capi-netstack-http-buffer.md). |
+| Http_ResponseCode responseCode | HTTP response code. For details, see [Http_ResponseCode](capi-net-http-type-h.md#http_responsecode). |
 | Http_Headers *headers | Pointer to the HTTP response header. For details, see [Http_Headers](capi-netstack-http-headers.md). |
 | char *cookies | HTTP响应Cookies。 |
 | Http_PerformanceTiming *performanceTiming | Pointer to the HTTP response timing. For details, see [Http_PerformanceTiming](capi-netstack-http-performancetiming.md). |
@@ -31,9 +31,9 @@ struct Http_Response {...}
 
 ### 成员函数
 
-| 名称 | 描述 |
-| -- | -- |
-| [void (\*destroyResponse)(struct Http_Response **response)](#destroyresponse) | 销毁HTTP响应的回调函数 |
+| 名称 | 完整引用 | 描述 |
+| -- | -- | -- |
+| [void (\*destroyResponse)(struct Http_Response **response)](#destroyresponse) | destroyResponse() | 销毁HTTP响应的回调函数 |
 
 ## 成员函数说明
 

@@ -6,6 +6,8 @@ Declares the APIs for obtaining the time zone information.
 
 **Library**: libtime_service_ndk.so
 
+**System capability**: SystemCapability.MiscServices.Time
+
 **Since**: 12
 
 **Related module**: [TimeService](capi-timeservice.md)
@@ -17,12 +19,6 @@ Declares the APIs for obtaining the time zone information.
 | Name | typedef keyword | Description |
 | -- | -- | -- |
 | [TimeService_ErrCode](#timeservice_errcode) | TimeService_ErrCode | Enumerates the error codes. |
-
-### Macro
-
-| Name | Description |
-| -- | -- |
-| TIME_SERVICE_H | Declares the APIs for obtaining the time zone information.<br>**Since**: 12<br>**System capability**: SystemCapability.MiscServices.Time |
 
 ### Function
 
@@ -41,6 +37,8 @@ enum TimeService_ErrCode
 **Description**
 
 Enumerates the error codes.
+
+**System capability**: SystemCapability.MiscServices.Time
 
 **Since**: 12
 
@@ -62,6 +60,8 @@ TimeService_ErrCode OH_TimeService_GetTimeZone(char *timeZone, uint32_t len)
 **Description**
 
 Obtains the current system time zone.
+
+**System capability**: SystemCapability.MiscServices.Time
 
 **Since**: 12
 

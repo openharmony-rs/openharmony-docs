@@ -6,6 +6,8 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 
 **Library**: libohweb.so
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Related module**: [Web](capi-web.md)
@@ -31,17 +33,11 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 | [ArkWeb_CustomSchemeOption](#arkweb_customschemeoption) | ArkWeb_CustomSchemeOption | Enumerates the custom scheme options. |
 | [ArkWeb_ResourceType](#arkweb_resourcetype) | ArkWeb_ResourceType | Enumerates the resource types of the request. The resource types match the corresponding items of **ResourceType** in Chromium and should not be renumbered. |
 
-### Macro
-
-| Name | Description |
-| -- | -- |
-| ARKWEB_SCHEME_HANDLER_H | The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for intercepting and customizing network requests. This module defines **ArkWeb_SchemeHandler** for registering custom scheme interceptors, **ArkWeb_ResourceHandler** for sending custom responses, **ArkWeb_Response** for building HTTP responses, **ArkWeb_ResourceRequest** for inspecting request details, as well as **ArkWeb_HttpBodyStream** for reading upload data and **ArkWeb_RequestHeaderList** for accessing request headers. This API works with the **ArkWeb_NativeAPIVariantKind** system and is registered through **OH_ArkWeb_SetSchemeHandler** or **OH_ArkWebServiceWorker_SetSchemeHandler**. Developers can implement custom protocol resource loading and responses, suitable for scenarios such as local resource replacement, encrypted data transmission, and offline caching. By intercepting and customizing network requests, it helps developers address special business requirements that standard protocols cannot fulfill, enhancing app security and data control capabilities while optimizing network resource loading efficiency.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
-
 ### Function
 
 | Name | typedef keyword | Description |
 | -- | -- | -- |
-| [typedef void (\*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler, ArkWeb_ResourceRequest* resourceRequest, const ArkWeb_ResourceHandler* resourceHandler, bool* intercept)](#arkweb_onrequeststart) | ArkWeb_OnRequestStart | Called when a request starts. This callback is used on the IO thread. It intercepts and handles network requests of a specified scheme at the start of the request. Developers can use this callback to implement custom protocol handling, local resource replacement, encrypted data transmission, and other features. |
+| [typedef void (\*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler, ArkWeb_ResourceRequest* resourceRequest, const ArkWeb_ResourceHandler* resourceHandler, bool* intercept)](#arkweb_onrequeststart) | ArkWeb_OnRequestStart | Called when a request starts. This callback is used on the IO thread. It intercepts and handles network requests of a specified scheme at the start of the request. Developers can use this callback to implement custom protocol handling, local resource replacement, encrypted data transmission, and other features.<br> > **NOTE**<br>> > - Redirected URLs cannot be intercepted individually. To intercept a redirected URL, you must also intercept > the original request URL. |
 | [typedef void (\*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, const ArkWeb_ResourceRequest* resourceRequest)](#arkweb_onrequeststop) | ArkWeb_OnRequestStop | Called when the request stops. This callback is used on the IO thread. It is used to perform resource cleanup, status updates, or logging when the request completes. You should use **OH_ArkWebResourceRequest_Destroy** to destroy the **resourceRequest** and use **OH_ArkWebResourceHandler_Destroy** to destroy the **ArkWeb_ResourceHandler** received in **ArkWeb_OnRequestStart**. |
 | [typedef void (\*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bytesRead)](#arkweb_httpbodystreamreadcallback) | ArkWeb_HttpBodyStreamReadCallback | Called when the **OH_ArkWebHttpBodyStream_Read** read operation is complete. This callback runs on the ArkWeb worker thread. |
 | [typedef void (\*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream *httpBodyStream, uint8_t *buffer, int bytesRead)](#arkweb_httpbodystreamasyncreadcallback) | ArkWeb_HttpBodyStreamAsyncReadCallback | Called when the **OH_ArkWebHttpBodyStream_AsyncRead** read operation is complete. This callback runs on the ArkWeb worker thread. |
@@ -126,7 +122,7 @@ The `arkweb_scheme_handler.h` file is a complete C API header file in ArkWeb for
 
 | Name | Description |
 | -- | -- |
-| void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler, ArkWeb_ResourceRequest* resourceRequest, const ArkWeb_ResourceHandler* resourceHandler, bool* intercept) | Called when a request starts. This callback is used on the IO thread. It intercepts and handles network requests of a specified scheme at the start of the request. Developers can use this callback to implement custom protocol handling, local resource replacement, encrypted data transmission, and other features.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
+| void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler, ArkWeb_ResourceRequest* resourceRequest, const ArkWeb_ResourceHandler* resourceHandler, bool* intercept) | Called when a request starts. This callback is used on the IO thread. It intercepts and handles network requests of a specified scheme at the start of the request. Developers can use this callback to implement custom protocol handling, local resource replacement, encrypted data transmission, and other features.<br> > **NOTE**<br>> > - Redirected URLs cannot be intercepted individually. To intercept a redirected URL, you must also intercept > the original request URL.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
 | void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, const ArkWeb_ResourceRequest* resourceRequest) | Called when the request stops. This callback is used on the IO thread. It is used to perform resource cleanup, status updates, or logging when the request completes. You should use **OH_ArkWebResourceRequest_Destroy** to destroy the **resourceRequest** and use **OH_ArkWebResourceHandler_Destroy** to destroy the **ArkWeb_ResourceHandler** received in **ArkWeb_OnRequestStart**.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
 | void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* httpBodyStream, uint8_t* buffer, int bytesRead) | Called when the **OH_ArkWebHttpBodyStream_Read** read operation is complete. This callback runs on the ArkWeb worker thread.<br>**Since**: 12<br>**System capability**: SystemCapability.Web.Webview.Core |
 | void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStream *httpBodyStream, uint8_t *buffer, int bytesRead) | Called when the **OH_ArkWebHttpBodyStream_AsyncRead** read operation is complete. This callback runs on the ArkWeb worker thread.<br>**Since**: 20<br>**System capability**: SystemCapability.Web.Webview.Core |
@@ -144,10 +140,13 @@ enum ArkWeb_CustomSchemeOption
 
 Enumerates the custom scheme options.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 | Enum item | Description |
 | -- | -- |
+| OH_ARKWEB_SCHEME_OPTION_NONE = 0 | No special behavior or capability is assigned when the custom scheme is registered. |
 | ARKWEB_SCHEME_OPTION_STANDARD = 1 << 0 | The scheme is processed as a standard scheme. The standard schemes need to comply with the URL normalization and parsing rules defined in Section 3.1 of RFC 1738, which can be found in the http://www.ietf.org/rfc/rfc1738.txt. |
 | ARKWEB_SCHEME_OPTION_LOCAL = 1 << 1 | The scheme is processed using the same security rule as the file URL. |
 | ARKWEB_SCHEME_OPTION_DISPLAY_ISOLATED = 1 << 2 | The request of the scheme can be initiated only by the page that is loaded using the same scheme. |
@@ -166,6 +165,8 @@ enum ArkWeb_ResourceType
 **Description**
 
 Enumerates the resource types of the request. The resource types match the corresponding items of **ResourceType** in Chromium and should not be renumbered.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -203,7 +204,9 @@ typedef void (*ArkWeb_OnRequestStart)(const ArkWeb_SchemeHandler* schemeHandler,
 
 **Description**
 
-Called when a request starts. This callback is used on the IO thread. It intercepts and handles network requests of a specified scheme at the start of the request. Developers can use this callback to implement custom protocol handling, local resource replacement, encrypted data transmission, and other features.
+Called when a request starts. This callback is used on the IO thread. It intercepts and handles network requests of a specified scheme at the start of the request. Developers can use this callback to implement custom protocol handling, local resource replacement, encrypted data transmission, and other features.<br> > **NOTE**<br>> > - Redirected URLs cannot be intercepted individually. To intercept a redirected URL, you must also intercept > the original request URL.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -226,6 +229,8 @@ typedef void (*ArkWeb_OnRequestStop)(const ArkWeb_SchemeHandler* schemeHandler, 
 
 Called when the request stops. This callback is used on the IO thread. It is used to perform resource cleanup, status updates, or logging when the request completes. You should use **OH_ArkWebResourceRequest_Destroy** to destroy the **resourceRequest** and use **OH_ArkWebResourceHandler_Destroy** to destroy the **ArkWeb_ResourceHandler** received in **ArkWeb_OnRequestStart**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -244,6 +249,8 @@ typedef void (*ArkWeb_HttpBodyStreamReadCallback)(const ArkWeb_HttpBodyStream* h
 **Description**
 
 Called when the **OH_ArkWebHttpBodyStream_Read** read operation is complete. This callback runs on the ArkWeb worker thread.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -265,6 +272,8 @@ typedef void (*ArkWeb_HttpBodyStreamAsyncReadCallback)(const ArkWeb_HttpBodyStre
 
 Called when the **OH_ArkWebHttpBodyStream_AsyncRead** read operation is complete. This callback runs on the ArkWeb worker thread.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -285,6 +294,8 @@ typedef void (*ArkWeb_HttpBodyStreamInitCallback)(const ArkWeb_HttpBodyStream* h
 
 Called when **ArkWeb_HttpBodyStream** initialization is complete.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -304,6 +315,8 @@ void OH_ArkWebRequestHeaderList_Destroy(ArkWeb_RequestHeaderList* requestHeaderL
 
 Destroys an **ArkWeb_RequestHeaderList** object.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -321,6 +334,8 @@ int32_t OH_ArkWebRequestHeaderList_GetSize(const ArkWeb_RequestHeaderList* reque
 **Description**
 
 Obtains the size of a request header list.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -346,6 +361,8 @@ void OH_ArkWebRequestHeaderList_GetHeader(const ArkWeb_RequestHeaderList* reques
 
 Obtains a specified request header.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -366,6 +383,8 @@ int32_t OH_ArkWebResourceRequest_SetUserData(ArkWeb_ResourceRequest* resourceReq
 **Description**
 
 Sets user data to the **ArkWeb_ResourceRequest** object. It is used to pass context information between different request callbacks or store request-associated state, which can later be retrieved through [OH_ArkWebResourceRequest_GetUserData()](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcerequest_getuserdata()).
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -392,6 +411,8 @@ void* OH_ArkWebResourceRequest_GetUserData(const ArkWeb_ResourceRequest* resourc
 
 Obtains user data from **ArkWeb_ResourceRequest**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -416,6 +437,8 @@ void OH_ArkWebResourceRequest_GetMethod(const ArkWeb_ResourceRequest* resourceRe
 
 Obtains the method of a request.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -434,6 +457,8 @@ void OH_ArkWebResourceRequest_GetUrl(const ArkWeb_ResourceRequest* resourceReque
 **Description**
 
 Obtains the URL of a request.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -454,6 +479,8 @@ void OH_ArkWebResourceRequest_GetHttpBodyStream(const ArkWeb_ResourceRequest* re
 
 Creates an **ArkWeb_HttpBodyStream** to read the uploaded data of the request.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -473,6 +500,8 @@ void OH_ArkWebResourceRequest_DestroyHttpBodyStream(ArkWeb_HttpBodyStream* httpB
 
 Destroys an **ArkWeb_HttpBodyStream** object.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -490,6 +519,8 @@ int32_t OH_ArkWebResourceRequest_GetResourceType(const ArkWeb_ResourceRequest* r
 **Description**
 
 Obtains the resource type of a request.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -515,6 +546,8 @@ void OH_ArkWebResourceRequest_GetFrameUrl(const ArkWeb_ResourceRequest* resource
 
 Obtains the URL of the frame that triggers this request.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -533,6 +566,8 @@ int32_t OH_ArkWebHttpBodyStream_SetUserData(ArkWeb_HttpBodyStream* httpBodyStrea
 **Description**
 
 Sets user data to the **ArkWeb_HttpBodyStream** object.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -559,6 +594,8 @@ void* OH_ArkWebHttpBodyStream_GetUserData(const ArkWeb_HttpBodyStream* httpBodyS
 
 Obtains user data from **ArkWeb_HttpBodyStream**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -582,6 +619,8 @@ int32_t OH_ArkWebHttpBodyStream_SetReadCallback(ArkWeb_HttpBodyStream* httpBodyS
 **Description**
 
 Sets a callback for **OH_ArkWebHttpBodyStream_Read**. The result of **OH_ArkWebHttpBodyStream_Read** is notified to the caller through **readCallback**, <br>which will run in the same thread as **OH_ArkWebHttpBodyStream_Read**.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -608,6 +647,8 @@ int32_t OH_ArkWebHttpBodyStream_SetAsyncReadCallback(ArkWeb_HttpBodyStream* http
 
 Sets a callback for **OH_ArkWebHttpBodyStream_AsyncRead**. The result of **OH_ArkWebHttpBodyStream_AsyncRead**<br>is notified to the caller through **readCallback**, which runs in the ArkWeb worker thread.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -632,6 +673,8 @@ int32_t OH_ArkWebHttpBodyStream_Init(ArkWeb_HttpBodyStream* httpBodyStream, ArkW
 **Description**
 
 Initializes **ArkWeb_HttpBodyStream**. This function establishes the internal data structures and connections of **httpBodyStream** in preparation for subsequent read operations. During initialization, it allocates necessary resources and establishes a communication mechanism with the worker thread. This function must be called before any other function; otherwise, other operations will not execute properly. This API needs to be called on the IO thread to ensure thread safety and correct initialization order.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -658,6 +701,8 @@ void OH_ArkWebHttpBodyStream_Read(const ArkWeb_HttpBodyStream* httpBodyStream, u
 
 Reads the upload data of a request into the buffer. This function uses an asynchronous read mechanism, submitting the read task to the worker thread for execution and returning the result through a callback. The buffer size must be greater than or equal to **bufLen** to accommodate the data to be read. Data is read from the worker thread into the buffer, so the buffer should not be used in other threads before the callback returns, to avoid concurrency issues. After the read operation completes, the caller is notified through the previously set callback, which returns the actual number of bytes read.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -678,6 +723,8 @@ void OH_ArkWebHttpBodyStream_AsyncRead(const ArkWeb_HttpBodyStream* httpBodyStre
 
 Exports the uploaded data of a request to the buffer. The buffer size must be greater than **bufLen**. The data from the worker thread is exported to the buffer. Therefore, before the callback returns the data, the buffer should not be used in other threads to avoid concurrency problems.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 20
 
 **Parameters**:
@@ -697,6 +744,8 @@ uint64_t OH_ArkWebHttpBodyStream_GetSize(const ArkWeb_HttpBodyStream* httpBodySt
 **Description**
 
 Obtains the size of **httpBodyStream**. When data is chunked or **httpBodyStream** is invalid, **0** is always returned.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -722,6 +771,8 @@ uint64_t OH_ArkWebHttpBodyStream_GetPosition(const ArkWeb_HttpBodyStream* httpBo
 
 Obtains the position of **httpBodyStream**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -745,6 +796,8 @@ bool OH_ArkWebHttpBodyStream_IsChunked(const ArkWeb_HttpBodyStream* httpBodyStre
 **Description**
 
 Determines whether **httpBodyStream** is chunked.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -770,6 +823,8 @@ bool OH_ArkWebHttpBodyStream_IsEof(const ArkWeb_HttpBodyStream* httpBodyStream)
 
 Determines whether all data in **httpBodyStream** has been read. **true** is returned if all data in **httpBodyStream** has been read. **false** is returned before the chunked **httpBodyStream** is read for the first time.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -793,6 +848,8 @@ bool OH_ArkWebHttpBodyStream_IsInMemory(const ArkWeb_HttpBodyStream* httpBodyStr
 **Description**
 
 Determines whether all the uploaded data in **httpBodyStream** is in memory and all read requests are synchronized successfully. If yes, **true** is returned. **false** is returned if the data is chunked.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -818,6 +875,8 @@ int32_t OH_ArkWebResourceRequest_Destroy(const ArkWeb_ResourceRequest* resourceR
 
 Destroys an **ArkWeb_ResourceRequest** object.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -842,6 +901,8 @@ void OH_ArkWebResourceRequest_GetReferrer(const ArkWeb_ResourceRequest* resource
 
 Obtains the referrer of a request.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -861,6 +922,8 @@ void OH_ArkWebResourceRequest_GetRequestHeaders(const ArkWeb_ResourceRequest* re
 
 Obtains the request header list **ArkWeb_RequestHeaderList** of the request. This function allocates memory for **requestHeaderList**, and the caller must use **OH_ArkWebRequestHeaderList_Destroy** to release **requestHeaderList**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -879,6 +942,8 @@ bool OH_ArkWebResourceRequest_IsRedirect(const ArkWeb_ResourceRequest* resourceR
 **Description**
 
 Determines whether a request is redirected.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -904,6 +969,8 @@ bool OH_ArkWebResourceRequest_IsMainFrame(const ArkWeb_ResourceRequest* resource
 
 Determines whether a request is from main frame.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -928,6 +995,8 @@ bool OH_ArkWebResourceRequest_HasGesture(const ArkWeb_ResourceRequest* resourceR
 
 Determines whether a request is triggered by a user gesture.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -951,6 +1020,8 @@ int32_t OH_ArkWeb_RegisterCustomSchemes(const char* scheme, int32_t option)
 **Description**
 
 Registers a custom scheme with **ArkWeb**. This function should not be called for built-in HTTP, HTTPS, FILE, FTP, ABOUT, and DATA protocols. This function should be called on the main thread before kernel initialization.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -977,6 +1048,8 @@ bool OH_ArkWebServiceWorker_SetSchemeHandler(const char* scheme, ArkWeb_SchemeHa
 
 Sets an **ArkWeb_SchemeHandler** for a specified scheme to intercept requests of the scheme type triggered by **ServiceWorker**. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1001,6 +1074,8 @@ bool OH_ArkWeb_SetSchemeHandler(const char* scheme, const char* webTag, ArkWeb_S
 **Description**
 
 Sets an **ArkWeb_SchemeHandler** to intercept requests of a specified scheme type. **SchemeHandler** should be set after **BrowserContext** is created. <br>You can use **WebviewController.initializeWebEngine** to initialize **BrowserContext** without creating the **Web** component.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1028,6 +1103,8 @@ int32_t OH_ArkWebServiceWorker_ClearSchemeHandlers()
 
 Clears the **SchemeHandler** registered for **ServiceWorker**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Returns**:
@@ -1045,6 +1122,8 @@ int32_t OH_ArkWeb_ClearSchemeHandlers(const char* webTag)
 **Description**
 
 Clears the **SchemeHandler** registered for the specified **Web** component.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1070,6 +1149,8 @@ void OH_ArkWeb_CreateSchemeHandler(ArkWeb_SchemeHandler** schemeHandler)
 
 Creates an **ArkWeb_SchemeHandler** object.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1088,6 +1169,8 @@ void OH_ArkWeb_DestroySchemeHandler(ArkWeb_SchemeHandler* schemeHandler)
 
 Destroys an **ArkWeb_SchemeHandler** object.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1105,6 +1188,8 @@ int32_t OH_ArkWebSchemeHandler_SetUserData(ArkWeb_SchemeHandler* schemeHandler, 
 **Description**
 
 Sets user data to the **ArkWeb_SchemeHandler** object.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1131,6 +1216,8 @@ void* OH_ArkWebSchemeHandler_GetUserData(const ArkWeb_SchemeHandler* schemeHandl
 
 Obtains the user data from **ArkWeb_SchemeHandler**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1154,6 +1241,8 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStart(ArkWeb_SchemeHandler* schemeHan
 **Description**
 
 Sets an **OnRequestStart** callback for **SchemeHandler**.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1180,6 +1269,8 @@ int32_t OH_ArkWebSchemeHandler_SetOnRequestStop(ArkWeb_SchemeHandler* schemeHand
 
 Sets an **OnRequestStop** callback for **SchemeHandler**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1205,6 +1296,8 @@ void OH_ArkWeb_CreateResponse(ArkWeb_Response** response)
 
 Creates an **ArkWeb_Response** object for the intercepted request.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1223,6 +1316,8 @@ void OH_ArkWeb_DestroyResponse(ArkWeb_Response* response)
 
 Destroys an **ArkWeb_Response** object.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1240,6 +1335,8 @@ int32_t OH_ArkWebResponse_SetUrl(ArkWeb_Response* response, const char* url)
 **Description**
 
 Sets the resolved URL after redirection or HSTS changes. After setting, a navigation is triggered. It is used to implement URL redirection in custom responses, such as URL normalization, domain redirection, and HTTP-to-HTTPS upgrade.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1266,6 +1363,8 @@ void OH_ArkWebResponse_GetUrl(const ArkWeb_Response* response, char** url)
 
 Obtains the parsed URL that has been redirected or changed due to HSTS.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1284,6 +1383,8 @@ int32_t OH_ArkWebResponse_SetError(ArkWeb_Response* response, ArkWeb_NetError er
 **Description**
 
 Sets an error code for the **ArkWeb_Response** object. It is used together with **DidFailWithError** to inform the client of the specific reason for the request failure through the error code, such as permission errors or resource not found.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1310,6 +1411,8 @@ ArkWeb_NetError OH_ArkWebResponse_GetError(const ArkWeb_Response* response)
 
 Obtains the error code of **ArkWeb_Response**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1333,6 +1436,8 @@ int32_t OH_ArkWebResponse_SetStatus(ArkWeb_Response* response, int status)
 **Description**
 
 Sets an HTTP status code for **ArkWeb_Response**.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1359,6 +1464,8 @@ int OH_ArkWebResponse_GetStatus(const ArkWeb_Response* response)
 
 Obtains the HTTP status code of **ArkWeb_Response**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1382,6 +1489,8 @@ int32_t OH_ArkWebResponse_SetStatusText(ArkWeb_Response* response, const char* s
 **Description**
 
 Sets a status text for **ArkWeb_Response**.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1408,6 +1517,8 @@ void OH_ArkWebResponse_GetStatusText(const ArkWeb_Response* response, char** sta
 
 Obtains the status text of **ArkWeb_Response**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1426,6 +1537,8 @@ int32_t OH_ArkWebResponse_SetMimeType(ArkWeb_Response* response, const char* mim
 **Description**
 
 Sets a mime type for **ArkWeb_Response**.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1452,6 +1565,8 @@ void OH_ArkWebResponse_GetMimeType(const ArkWeb_Response* response, char** mimeT
 
 Obtains the mime type of **ArkWeb_Response**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1470,6 +1585,8 @@ int32_t OH_ArkWebResponse_SetCharset(ArkWeb_Response* response, const char* char
 **Description**
 
 Sets a character set for **ArkWeb_Response**.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1496,6 +1613,8 @@ void OH_ArkWebResponse_GetCharset(const ArkWeb_Response* response, char** charse
 
 Obtains the character set of **ArkWeb_Response**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1514,6 +1633,8 @@ int32_t OH_ArkWebResponse_SetHeaderByName(ArkWeb_Response* response, const char*
 **Description**
 
 Sets a header for **ArkWeb_Response**.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1542,6 +1663,8 @@ void OH_ArkWebResponse_GetHeaderByName(const ArkWeb_Response* response, const ch
 
 Obtains the header from **ArkWeb_Response**.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1561,6 +1684,8 @@ int32_t OH_ArkWebResourceHandler_Destroy(const ArkWeb_ResourceHandler* resourceH
 **Description**
 
 Destroys an **ArkWeb_ResourceHandler** object.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1586,6 +1711,8 @@ int32_t OH_ArkWebResourceHandler_DidReceiveResponse(const ArkWeb_ResourceHandler
 
 Passes the constructed response header to the intercepted request. Called when intercepting a request and preparing to return a custom response, it is used to set response header information such as the HTTP response status code, media type, and character set.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1610,6 +1737,8 @@ int32_t OH_ArkWebResourceHandler_DidReceiveData(const ArkWeb_ResourceHandler* re
 **Description**
 
 Passes the constructed response body to the intercepted request. Called after setting the response header, it is used to send response data. It can be called multiple times for chunked transfer of data. After the transfer is complete, **OH_ArkWebResourceHandler_DidFinish** must be called to notify the end of the request.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1637,6 +1766,8 @@ int32_t OH_ArkWebResourceHandler_DidFinish(const ArkWeb_ResourceHandler* resourc
 
 Notifies the ArkWeb kernel that the intercepted request is complete and no more data is available. This function sends a completion signal to the kernel, which will end the processing of the request and clean up related internal resources. After calling this function, no other processing functions can be called for this request. If an error occurs during the request, use **OH_ArkWebResourceHandler_DidFailWithError** to notify the kernel.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1660,6 +1791,8 @@ int32_t OH_ArkWebResourceHandler_DidFailWithError(const ArkWeb_ResourceHandler* 
 **Description**
 
 Notifies the ArkWeb kernel that the intercepted request should fail. Called in scenarios such as permission verification failure, resource not found, or network errors, it is used to mark the request as failed and inform the client of the specific failure reason through an error code.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 
@@ -1685,6 +1818,8 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorV2(const ArkWeb_ResourceHandler
 **Description**
 
 Notifies the ArkWeb kernel that the intercepted request fails. Compared with the [OH_ArkWebResourceHandler_DidFailWithError](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didfailwitherror) API, the **completeIfNoResponse** parameter is added. With this parameter set to **true**, if [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) has not been called, a response is automatically generated to complete the network request and the network error code is **-104**. With this parameter set to **false**, the system waits for the application to call [OH_ArkWebResourceHandler_DidReceiveResponse](capi-arkweb-scheme-handler-h.md#oh_arkwebresourcehandler_didreceiveresponse) and pass the response.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 20
 
@@ -1712,6 +1847,8 @@ void OH_ArkWeb_CreateErrorInfo(ArkWeb_ErrorInfo** errorInfo)
 
 Creates an ArkWeb_ErrorInfo object.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -1730,6 +1867,8 @@ void OH_ArkWeb_DestroyErrorInfo(ArkWeb_ErrorInfo* errorInfo)
 
 Destroys the ArkWeb_ErrorInfo.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -1747,6 +1886,8 @@ int32_t OH_ArkWebErrorInfo_SetCompleteIfNoResponse(ArkWeb_ErrorInfo* errorInfo, 
 **Description**
 
 Sets whether to automatically generate a response if no response has been received.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 26.0.1
 
@@ -1773,6 +1914,8 @@ bool OH_ArkWebErrorInfo_GetCompleteIfNoResponse(const ArkWeb_ErrorInfo* errorInf
 
 Gets whether to automatically generate a response if no response has been received.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -1796,6 +1939,8 @@ int32_t OH_ArkWebErrorInfo_SetCustomErrorCode(ArkWeb_ErrorInfo* errorInfo, int32
 **Description**
 
 Sets the custom error code for ArkWeb_ErrorInfo.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 26.0.1
 
@@ -1822,6 +1967,8 @@ int32_t OH_ArkWebErrorInfo_GetCustomErrorCode(const ArkWeb_ErrorInfo* errorInfo)
 
 Gets the custom error code from the ArkWeb_ErrorInfo.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -1845,6 +1992,8 @@ int32_t OH_ArkWebErrorInfo_SetErrorCode(ArkWeb_ErrorInfo* errorInfo, ArkWeb_NetE
 **Description**
 
 Sets the error code for ArkWeb_ErrorInfo.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 26.0.1
 
@@ -1871,6 +2020,8 @@ ArkWeb_NetError OH_ArkWebErrorInfo_GetErrorCode(const ArkWeb_ErrorInfo* errorInf
 
 Gets the error code from the ArkWeb_ErrorInfo. Refer to arkweb_net_error_list.h.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -1894,6 +2045,8 @@ int32_t OH_ArkWebResponse_SetErrorInfo(ArkWeb_Response* response, ArkWeb_ErrorIn
 **Description**
 
 Sets the error info for the ArkWeb_Response.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 26.0.1
 
@@ -1920,6 +2073,8 @@ ArkWeb_ErrorInfo* OH_ArkWebResponse_GetErrorInfo(const ArkWeb_Response* response
 
 Gets the error info from the ArkWeb_Response.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 26.0.1
 
 **Parameters**:
@@ -1943,6 +2098,8 @@ int32_t OH_ArkWebResourceHandler_DidFailWithErrorInfo(const ArkWeb_ResourceHandl
 **Description**
 
 Notify the web engine that this request should fail with error info.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 26.0.1
 
@@ -1969,6 +2126,8 @@ void OH_ArkWeb_ReleaseString(char* string)
 
 Releases the string created by NDK APIs.
 
+**System capability**: SystemCapability.Web.Webview.Core
+
 **Since**: 12
 
 **Parameters**:
@@ -1986,6 +2145,8 @@ void OH_ArkWeb_ReleaseByteArray(uint8_t* byteArray)
 **Description**
 
 Releases the byte array created by NDK APIs.
+
+**System capability**: SystemCapability.Web.Webview.Core
 
 **Since**: 12
 

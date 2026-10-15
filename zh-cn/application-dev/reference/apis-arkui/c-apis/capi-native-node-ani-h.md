@@ -6,6 +6,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -35,6 +37,8 @@ int32_t OH_ArkUI_NativeModule_GetNodeHandleFromAniValue(ani_env* env, ani_object
 
 获取ArkTS侧创建的FrameNode节点对象映射到Native侧的ArkUI_NodeHandle。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -60,6 +64,8 @@ int32_t OH_ArkUI_NativeModule_GetContextFromAniValue(ani_env* env, ani_object co
 **描述：**
 
 获取ArkTS侧创建的UIContext对象映射到Native侧的ArkUI_ContextHandle。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -87,6 +93,8 @@ int32_t OH_ArkUI_NativeModule_GetNodeContentFromAniValue(ani_env *env, ani_objec
 
 获取ArkTS侧创建的NodeContent对象映射到Native侧的ArkUI_NodeContentHandle。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -112,6 +120,8 @@ ArkUI_ErrorCode OH_ArkUI_NativeModule_GetNavDestinationAniParam(ArkUI_NodeHandle
 **描述：**
 
 获取指定节点所在的NavDestination页面的参数。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 
@@ -139,6 +149,8 @@ int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromAniValue(ani_env *env, an
 
 获取ArkTS侧的<b>DrawableDescriptor</b>对象，并将其映射到Native侧的<b>ArkUI_DrawableDescriptor</b>对象。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 23
 
 **参数：**
@@ -164,6 +176,8 @@ int32_t OH_ArkUI_NativeModule_GetDrawableDescriptorFromResourceAniValue(ani_env 
 **描述：**
 
 获取ArkTS侧的<b>Resource</b>对象，并将其映射到Native侧的<b>ArkUI_DrawableDescriptor</b>对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 23
 

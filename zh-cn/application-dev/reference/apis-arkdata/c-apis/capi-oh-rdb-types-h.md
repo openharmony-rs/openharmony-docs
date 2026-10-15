@@ -8,6 +8,8 @@
 
 **库：** libnative_rdb_ndk.z.so
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 18
 
 **相关模块：** [RDB](capi-rdb.md)
@@ -49,6 +51,8 @@ enum Rdb_ConflictResolution
 
 表示冲突解决策略的枚举。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 18
 
 | 枚举项 | 描述 |
@@ -73,6 +77,8 @@ OH_RDB_ReturningContext *OH_RDB_CreateReturningContext(void)
 
 创建[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)的实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 23
 
 **返回值：**
@@ -96,6 +102,8 @@ void OH_RDB_DestroyReturningContext(OH_RDB_ReturningContext *context)
 
 销毁[OH_RDB_ReturningContext](capi-rdb-oh-rdb-returningcontext.md)实例对象。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -113,6 +121,8 @@ int OH_RDB_SetReturningFields(OH_RDB_ReturningContext *context, const char *cons
 **描述：**
 
 设置结果集中返回的字段。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
 
@@ -140,6 +150,8 @@ int OH_RDB_SetMaxReturningCount(OH_RDB_ReturningContext *context, int32_t count)
 
 设置返回结果集的最大行数量。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -165,6 +177,8 @@ OH_Cursor *OH_RDB_GetReturningValues(OH_RDB_ReturningContext *context)
 
 获取数据变化的游标，默认包含1024行。
 
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
+
 **起始版本：** 23
 
 **参数：**
@@ -188,6 +202,8 @@ int64_t OH_RDB_GetChangedCount(OH_RDB_ReturningContext *context)
 **描述：**
 
 获取受此操作影响的数据行的数量。
+
+**系统能力：** SystemCapability.DistributedDataManager.RelationalStore.Core
 
 **起始版本：** 23
 

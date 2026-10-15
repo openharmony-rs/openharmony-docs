@@ -1,4 +1,4 @@
-# netmanager_ext
+# NetEthernet
 
 ## Overview
 

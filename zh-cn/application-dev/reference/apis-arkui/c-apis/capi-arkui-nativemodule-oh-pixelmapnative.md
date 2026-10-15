@@ -1,4 +1,4 @@
-# OH_PixelmapNative (ArkUI_NativeModule)
+# OH_PixelmapNative
 
 ```c
 struct OH_PixelmapNative

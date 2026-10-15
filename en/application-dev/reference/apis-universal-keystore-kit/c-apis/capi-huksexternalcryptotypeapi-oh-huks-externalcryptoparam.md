@@ -1,7 +1,7 @@
 # OH_Huks_ExternalCryptoParam
 
 ```c
-union OH_Huks_ExternalCryptoParam {...}
+struct OH_Huks_ExternalCryptoParam {...}
 ```
 
 ## Overview
@@ -22,11 +22,11 @@ Defines a single parameter in a parameter set.
 
 | Name | Description |
 | -- | -- |
-| bool boolParam | Parameter of the Boolean type.<br>**Since**: 22 |
-| int32_t int32Param | Parameter of the int32_t type.<br>**Since**: 22 |
-| uint32_t uint32Param | Parameter of the uint32_t type.<br>**Since**: 22 |
-| uint64_t uint64Param | Parameter of the uint64_t type.<br>**Since**: 22 |
-| struct OH_Huks_Blob blob;
- } | Parameter of the struct OH_Huks_Blob type.<br>**Since**: 22 |
+| uint32_t tag | Tag value.<br>**Since**: 22 |
+| boolParam | Parameter of the Boolean type.<br>**Since**: 22 |
+| int32Param | Parameter of the int32_t type.<br>**Since**: 22 |
+| uint32Param | Parameter of the uint32_t type.<br>**Since**: 22 |
+| uint64Param | Parameter of the uint64_t type.<br>**Since**: 22 |
+| blob | Parameter of the struct OH_Huks_Blob type.<br>**Since**: 22 |
 
 

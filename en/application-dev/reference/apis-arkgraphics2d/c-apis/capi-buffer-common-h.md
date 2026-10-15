@@ -6,6 +6,8 @@ Defines the common types for native buffer.
 
 **Library**: libnative_buffer.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 **Related module**: [OH_NativeBuffer](capi-oh-nativebuffer.md)
@@ -44,6 +46,8 @@ enum OH_NativeBuffer_ColorSpace
 **Description**
 
 Indicates the color space of a native buffer. Move from native_buffer.h to native_common.h
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 12
 
@@ -94,6 +98,8 @@ enum OH_NativeBuffer_MetadataType
 
 Indicates the HDR metadata type of a native buffer.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 | Enum item | Description |
@@ -117,6 +123,8 @@ enum OH_NativeBuffer_MetadataKey
 
 Indicates the descriptive information of a native buffer, such as HDR metadata, ROI metadata, etc.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 | Enum item | Description |
@@ -135,6 +143,8 @@ enum OH_NativeBuffer_Format
 **Description**
 
 Indicates the format of a native buffer.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 10
 
@@ -195,6 +205,8 @@ enum OH_NativeBuffer_TransformType
 
 Indicates the transform type of a native buffer.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 12
 
 | Enum item | Description |
@@ -222,6 +234,8 @@ enum OH_NativeBuffer_VideoDimensionType
 
 Indicates video dimension type.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **Since**: 26.0.0
 
 | Enum item | Description |
@@ -240,6 +254,8 @@ enum OH_NativeBuffer_3D_MetadataKey
 **Description**
 
 Indicates the descriptive 3D information of a native buffer.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **Since**: 26.0.0
 

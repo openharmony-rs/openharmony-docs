@@ -8,6 +8,8 @@ Declares interfaces for shared memory and named semaphores in group-specific dir
 
 **Library**: libc.so
 
+**System capability**: SystemCapability.Base
+
 **Since**: 26.2.0
 
 **Related module**: [MuslGroupIPC](capi-muslgroupipc.md)
@@ -35,6 +37,8 @@ sem_t *group_sem_open(const char *name, int flags, gid_t gid, ...)
 
 Creates or opens a named semaphore in the directory selected by gid.<br> When O_CREAT is specified, the variadic arguments must be a mode_t mode followed by an unsigned int value. These creation attributes are ignored when opening an existing semaphore. This function is a POSIX handle-returning function, not a status-code function: the return value is a semaphore handle, and SEM_FAILED is the sentinel failure value. It uses the common errno error model; the return type matches the POSIX sem_open declaration.
 
+**System capability**: SystemCapability.Base
+
 **Since**: 26.2.0
 
 **Parameters**:
@@ -61,6 +65,8 @@ int group_sem_unlink(const char *name, gid_t gid)
 
 Removes the name of a group-scoped semaphore.<br> This function is a POSIX status-style function and uses the common errno error model: the return type matches the POSIX sem_unlink declaration, success is 0, and failure is -1 with errno set. No dedicated module error-code enum or module-specific error codes are defined.
 
+**System capability**: SystemCapability.Base
+
 **Since**: 26.2.0
 
 **Parameters**:
@@ -85,6 +91,8 @@ int group_shm_open(const char *name, int flag, mode_t mode, gid_t gid)
 **Description**
 
 Creates or opens a shared memory object in the directory selected by gid.<br> This function is a POSIX handle-returning function, not a status-code function: the nonnegative return value is a file descriptor and -1 is the sentinel failure value. It uses the common errno error model; the return type matches the POSIX shm_open declaration.
+
+**System capability**: SystemCapability.Base
 
 **Since**: 26.2.0
 
@@ -112,6 +120,8 @@ int group_shm_unlink(const char *name, gid_t gid)
 **Description**
 
 Removes the name of a group-scoped shared memory object.<br> This function is a POSIX status-style function and uses the common errno error model: the return type matches the POSIX shm_unlink declaration, success is 0, and failure is -1 with errno set. No dedicated module error-code enum or module-specific error codes are defined.
+
+**System capability**: SystemCapability.Base
 
 **Since**: 26.2.0
 

@@ -6,6 +6,8 @@
 
 **库：** libnative_drawing.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **相关模块：** [Drawing](capi-drawing.md)
@@ -54,6 +56,8 @@ OH_Drawing_Array* OH_Drawing_TypographyGetTextLines(OH_Drawing_Typography* typog
 
 获取排版对象的文本行数组。文本行数组中包含一个或多个文本行对象。不再需要[OH_Drawing_Array](capi-drawing-oh-drawing-array.md)时，请使用[OH_Drawing_DestroyTextLines](capi-drawing-text-line-h.md#oh_drawing_destroytextlines) 接口释放该对象的指针。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -78,6 +82,8 @@ void OH_Drawing_DestroyTextLines(OH_Drawing_Array* lines)
 
 释放文本行数组的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -96,6 +102,8 @@ void OH_Drawing_DestroyTextLine(OH_Drawing_TextLine* line)
 
 释放单个文本行对象的内存。只能释放单独申请内存的文本行对象，不能释放通过[OH_Drawing_GetTextLineByIndex](capi-drawing-text-line-h.md#oh_drawing_gettextlinebyindex)从文本行数组中获取的文本行对象的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -113,6 +121,8 @@ OH_Drawing_TextLine* OH_Drawing_GetTextLineByIndex(OH_Drawing_Array* lines, size
 **描述：**
 
 获取文本行数组指定索引处的文本行对象。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -139,6 +149,8 @@ double OH_Drawing_TextLineGetGlyphCount(OH_Drawing_TextLine* line)
 
 获取文本行对象中字形的数量。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -163,6 +175,8 @@ void OH_Drawing_TextLineGetTextRange(OH_Drawing_TextLine* line, size_t* start, s
 
 获取文本行对象中的文本在整个段落文本中的索引区间。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -182,6 +196,8 @@ OH_Drawing_Array* OH_Drawing_TextLineGetGlyphRuns(OH_Drawing_TextLine* line)
 **描述：**
 
 获取文本行对象中的文本渲染单元[OH_Drawing_Run](capi-drawing-oh-drawing-run.md)数组。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -207,6 +223,8 @@ void OH_Drawing_DestroyRuns(OH_Drawing_Array* runs)
 
 释放文本渲染单元数组的内存。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -224,6 +242,8 @@ OH_Drawing_Run* OH_Drawing_GetRunByIndex(OH_Drawing_Array* runs, size_t index)
 **描述：**
 
 获取文本渲染单元数组指定索引处的文本渲染单元对象。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -250,6 +270,8 @@ void OH_Drawing_TextLinePaint(OH_Drawing_TextLine* line, OH_Drawing_Canvas* canv
 
 在画布上以坐标点 (x, y) 为左上角位置绘制文本行。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -270,6 +292,8 @@ OH_Drawing_TextLine* OH_Drawing_TextLineCreateTruncatedLine(OH_Drawing_TextLine*
 **描述：**
 
 创建一个截断的文本行对象。根据传入的宽度、截断类型和截断标记字符串，对原始文本行进行截断处理，在截断位置插入指定的标记字符串，生成并返回一个新的独立文本行对象，原始文本不受影响。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -298,6 +322,8 @@ double OH_Drawing_TextLineGetTypographicBounds(OH_Drawing_TextLine* line, double
 
 获取文本行对象的排版边界。文本行排版边界与排版字体、排版字号有关，与字符本身无关。 <br>例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，排版边界就包括行首和末尾空格的边界。例如字符串为"j"或"E"，排版边界相同，即与字符本身无关。 <br>可通过height = ascent + descent + leading来计算文本高度。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -325,6 +351,8 @@ OH_Drawing_Rect* OH_Drawing_TextLineGetImageBounds(OH_Drawing_TextLine* line)
 
 获取文本行对象的图像边界。文本行图像边界与排版字体、排版字号、字符本身都有关，相当于视觉边界。 <br>例如字符串为" a b "，'a'字符前面有1个空格，'b'字符后面有1个空格，用户在界面上只能看到"a b"，图像边界即为不包括行首和末尾空格的边界。 <br>例如字符串为"j"或"E"，视觉边界不同，即与字符本身有关，"j"字符串的视觉边界宽度小于"E"字符串的视觉边界宽度，"j"字符串的视觉边界高度大于"E"字符串的视觉边界高度。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -349,6 +377,8 @@ double OH_Drawing_TextLineGetTrailingSpaceWidth(OH_Drawing_TextLine* line)
 
 获取文本行对象尾部空白字符的宽度。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -372,6 +402,8 @@ int32_t OH_Drawing_TextLineGetStringIndexForPosition(OH_Drawing_TextLine* line, 
 **描述：**
 
 获取文本行对象中指定位置处的字符串索引。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -398,6 +430,8 @@ double OH_Drawing_TextLineGetOffsetForStringIndex(OH_Drawing_TextLine* line, int
 
 获取文本行对象中指定字符串索引处的偏移量。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -422,6 +456,8 @@ typedef bool (*Drawing_CaretOffsetsCallback)(double offset, int32_t index, bool 
 **描述：**
 
 用户自定义的回调函数。将文本行对象中每个字符的偏移量、索引值作为参数传递给用户自定义的回调函数。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 
@@ -449,6 +485,8 @@ void OH_Drawing_TextLineEnumerateCaretOffsets(OH_Drawing_TextLine* line, Drawing
 
 枚举文本行对象中每个字符的偏移量和索引值，传递给用户自定义的回调函数，用户可以使用偏移量和索引值进行其他操作。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **起始版本：** 18
 
 **参数：**
@@ -467,6 +505,8 @@ double OH_Drawing_TextLineGetAlignmentOffset(OH_Drawing_TextLine* line, double a
 **描述：**
 
 获取文本行对象根据对齐因子和对齐宽度计算对齐后所需的偏移量。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **起始版本：** 18
 

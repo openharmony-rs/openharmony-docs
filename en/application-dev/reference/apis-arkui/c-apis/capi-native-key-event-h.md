@@ -2,9 +2,11 @@
 
 ## Overview
 
-Declares the APIs of **NativeKeyEvent**.
+Declares the APIs of **NativeKeyEvent** for obtaining the type, key code, key value, input device type, key intent, and Unicode value of a key event. It supports controlling key event bubbling or consumption, dispatching key events, and querying the **NumLock**, **CapsLock**, and **ScrollLock** states. It is applicable to scenarios where the native side needs fine-grained processing of key input events, enabling you to obtain detailed key event information and flexibly control event propagation and consumption behavior.
 
 **Library**: libace_ndk.z.so
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -29,11 +31,11 @@ Declares the APIs of **NativeKeyEvent**.
 | [int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeycode) | Obtains the key code from the specified key event. |
 | [const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeytext) | Obtains the key value from the specified key event. |
 | [ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeysource) | Obtains the type of input device that triggers the specified key event. |
-| [void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_keyevent_stoppropagation) | Stops the specified key event from bubbling upwards or downwards. |
+| [void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool stopPropagation)](#oh_arkui_keyevent_stoppropagation) | Stops event bubbling in the key event callback. This API applies to scenarios where a child component has already handled a key event in a nested component structure and does not want the parent component to respond to the same key again, for example, stopping the event from bubbling upward when handling custom shortcuts. Unlike **OH_ArkUI_KeyEvent_SetConsumed**, this API controls the bubbling of the event, whereas **OH_ArkUI_KeyEvent_SetConsumed** sets whether the event is consumed by the callback. The two APIs can be used together without affecting each other. You are advised to select the appropriate API based on whether you need to stop bubbling or mark consumption. |
 | [ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getkeyintensioncode) | Obtains the intention code associated with the specified key event. |
-| [uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getunicode) | Obtains the Unicode value of the specified key event. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event. |
-| [void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)](#oh_arkui_keyevent_setconsumed) | Sets whether the specified key event is consumed in the key event callback. |
-| [void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_dispatch) | Dispatches the specified key event to a specific node. |
+| [uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_getunicode) | Obtains the Unicode value of the key. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event. |
+| [void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsumed)](#oh_arkui_keyevent_setconsumed) | Sets whether the event is consumed by the callback in the key event callback. This API applies to scenarios such as shortcut key handling and custom key response of a component, where the event needs to be marked as handled to avoid repeated processing. Unlike **OH_ArkUI_KeyEvent_StopPropagation**, this API marks whether the event is consumed by the current callback rather than controlling event bubbling. To stop the event from bubbling upward, use **OH_ArkUI_KeyEvent_StopPropagation**.<br> For the process and specific timing of key event triggering, see [Key Event Data Flow](../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow). |
+| [void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent* event)](#oh_arkui_keyevent_dispatch) | Dispatches the key event to the specified component node. After this API is called, the key event triggers the key event callback registered on the target node. This API can be used in the key event callback to forward the current key event to the specified component node for secondary processing. Unlike **StopPropagation** and **SetConsumed**, **Dispatch** does not affect the processing state of the current event. |
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isnumlockon) | Obtains the state of the NumLock key when the specified key event occurs. |
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_iscapslockon) | Obtains the state of the CapsLock key when the specified key event occurs. |
 | [ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event, bool* state)](#oh_arkui_keyevent_isscrolllockon) | Obtains the state of the ScrollLock key when the specified key event occurs. |
@@ -49,6 +51,8 @@ enum ArkUI_KeyCode
 **Description**
 
 Enumerates the key codes for key events.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -74,7 +78,7 @@ Enumerates the key codes for key events.
 | ARKUI_KEYCODE_7 = 2007 | Key 7 |
 | ARKUI_KEYCODE_8 = 2008 | Key 8 |
 | ARKUI_KEYCODE_9 = 2009 | Key 9 |
-| ARKUI_KEYCODE_STAR = 2010 | Key + |
+| ARKUI_KEYCODE_STAR = 2010 | Key |
 | ARKUI_KEYCODE_POUND = 2011 | Key # |
 | ARKUI_KEYCODE_DPAD_UP = 2012 | Up key on D-pad. |
 | ARKUI_KEYCODE_DPAD_DOWN = 2013 | Down key on D-pad. |
@@ -211,6 +215,8 @@ enum ArkUI_KeyEventType
 
 Enumerates the types of key events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 | Enum item | Description |
@@ -231,6 +237,8 @@ enum ArkUI_KeySourceType
 
 Enumerates the types of input devices that trigger key events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 | Enum item | Description |
@@ -250,6 +258,8 @@ enum ArkUI_KeyIntension
 
 Enumerates the intentions corresponding to key events.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 | Enum item | Description |
@@ -260,7 +270,7 @@ Enumerates the intentions corresponding to key events.
 | ARKUI_KEY_INTENSION_LEFT = 3 | Leftward. |
 | ARKUI_KEY_INTENSION_RIGHT = 4 | Rightward. |
 | ARKUI_KEY_INTENSION_SELECT = 5 | Select. |
-| ARKUI_KEY_INTENSION_ESCAPE = 6 | Escape |
+| ARKUI_KEY_INTENSION_ESCAPE = 6 | Return. |
 | ARKUI_KEY_INTENSION_BACK = 7 | Back. |
 | ARKUI_KEY_INTENSION_FORWARD = 8 | Forward. |
 | ARKUI_KEY_INTENSION_MENU = 9 | Menu. |
@@ -269,7 +279,7 @@ Enumerates the intentions corresponding to key events.
 | ARKUI_KEY_INTENSION_PAGE_DOWN = 12 | Next. |
 | ARKUI_KEY_INTENSION_ZOOM_OUT = 13 | Zoom out. |
 | ARKUI_KEY_INTENSION_ZOOM_IN = 14 | Zoom in. |
-| ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100 | Play or pause |
+| ARKUI_KEY_INTENTION_MEDIA_PLAY_PAUSE = 100 | Play/Pause. |
 | ARKUI_KEY_INTENTION_MEDIA_FAST_FORWARD = 101 | Fast-forward. |
 | ARKUI_KEY_INTENTION_MEDIA_FAST_PLAYBACK = 103 | Fast playback. |
 | ARKUI_KEY_INTENTION_MEDIA_NEXT = 104 | Play the next media asset. |
@@ -293,19 +303,21 @@ ArkUI_KeyEventType OH_ArkUI_KeyEvent_GetType(const ArkUI_UIInputEvent* event)
 
 Obtains the type of the specified key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the key event type corresponding to the event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_KeyEventType](capi-native-key-event-h.md#arkui_keyeventtype) | Key event type. |
+| [ArkUI_KeyEventType](capi-native-key-event-h.md#arkui_keyeventtype) | Key type. |
 
 ### OH_ArkUI_KeyEvent_GetKeyCode()
 
@@ -317,19 +329,21 @@ int32_t OH_ArkUI_KeyEvent_GetKeyCode(const ArkUI_UIInputEvent* event)
 
 Obtains the key code from the specified key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the code value of the key corresponding to the event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| int32_t | Key code. |
+| int32_t | Key code, corresponding to the code value defined in the **ArkUI_KeyCode** enumeration. |
 
 ### OH_ArkUI_KeyEvent_GetKeyText()
 
@@ -341,19 +355,21 @@ const char *OH_ArkUI_KeyEvent_GetKeyText(const ArkUI_UIInputEvent* event)
 
 Obtains the key value from the specified key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the key value text of the key corresponding to the event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| const char * | Key value. |
+| const char * | Pointer to the text character content corresponding to the key, that is, the key value string generated by the key. |
 
 ### OH_ArkUI_KeyEvent_GetKeySource()
 
@@ -365,19 +381,21 @@ ArkUI_KeySourceType OH_ArkUI_KeyEvent_GetKeySource(const ArkUI_UIInputEvent* eve
 
 Obtains the type of input device that triggers the specified key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the input device type that triggers the key event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_KeySourceType](capi-native-key-event-h.md#arkui_keysourcetype) | Input device type. |
+| [ArkUI_KeySourceType](capi-native-key-event-h.md#arkui_keysourcetype) | Input device type of the current key. |
 
 ### OH_ArkUI_KeyEvent_StopPropagation()
 
@@ -387,7 +405,9 @@ void OH_ArkUI_KeyEvent_StopPropagation(const ArkUI_UIInputEvent* event, bool sto
 
 **Description**
 
-Stops the specified key event from bubbling upwards or downwards.
+Stops event bubbling in the key event callback. This API applies to scenarios where a child component has already handled a key event in a nested component structure and does not want the parent component to respond to the same key again, for example, stopping the event from bubbling upward when handling custom shortcuts. Unlike **OH_ArkUI_KeyEvent_SetConsumed**, this API controls the bubbling of the event, whereas **OH_ArkUI_KeyEvent_SetConsumed** sets whether the event is consumed by the callback. The two APIs can be used together without affecting each other. You are advised to select the appropriate API based on whether you need to stop bubbling or mark consumption.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -395,8 +415,8 @@ Stops the specified key event from bubbling upwards or downwards.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
-| bool stopPropagation | Whether to stop event propagation. The value **true** means to stop event propagation, and **<br>false** means the opposite. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event for which the bubbling behavior is to be set. |
+| bool stopPropagation | Whether to stop event bubbling. The value **true** indicates to stop event bubbling, and **false** indicates the opposite. |
 
 ### OH_ArkUI_KeyEvent_GetKeyIntensionCode()
 
@@ -408,19 +428,21 @@ ArkUI_KeyIntension OH_ArkUI_KeyEvent_GetKeyIntensionCode(const ArkUI_UIInputEven
 
 Obtains the intention code associated with the specified key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the key intent corresponding to the event. |
 
 **Returns**:
 
 | Type | Description |
 | -- | -- |
-| [ArkUI_KeyIntension](capi-native-key-event-h.md#arkui_keyintension) | Intention code associated with the key event. |
+| [ArkUI_KeyIntension](capi-native-key-event-h.md#arkui_keyintension) | Key intent. |
 
 ### OH_ArkUI_KeyEvent_GetUnicode()
 
@@ -430,7 +452,9 @@ uint32_t OH_ArkUI_KeyEvent_GetUnicode(const ArkUI_UIInputEvent* event)
 
 **Description**
 
-Obtains the Unicode value of the specified key event. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event.
+Obtains the Unicode value of the key. Non-space basic Latin characters in the 0x0021-0x007E range are supported. Characters with a value of 0 are not supported. In the case of key combination, this API returns the Unicode value of the key corresponding to the key event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -438,7 +462,7 @@ Obtains the Unicode value of the specified key event. Non-space basic Latin char
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the Unicode value of the key corresponding to the event. |
 
 **Returns**:
 
@@ -454,7 +478,9 @@ void OH_ArkUI_KeyEvent_SetConsumed(const ArkUI_UIInputEvent* event, bool isConsu
 
 **Description**
 
-Sets whether the specified key event is consumed in the key event callback.
+Sets whether the event is consumed by the callback in the key event callback. This API applies to scenarios such as shortcut key handling and custom key response of a component, where the event needs to be marked as handled to avoid repeated processing. Unlike **OH_ArkUI_KeyEvent_StopPropagation**, this API marks whether the event is consumed by the current callback rather than controlling event bubbling. To stop the event from bubbling upward, use **OH_ArkUI_KeyEvent_StopPropagation**.<br> For the process and specific timing of key event triggering, see [Key Event Data Flow](../../ui/arkts-interaction-development-guide-keyboard.md#key-event-data-flow).
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 14
 
@@ -462,8 +488,8 @@ Sets whether the specified key event is consumed in the key event callback.
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
-| bool isConsumed | Whether the key event is consumed by the callback. The value **true** means that the key event is consumed, and **false** the opposite. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, indicating the key event for which whether it is consumed by the current callback is to be set. |
+| bool isConsumed | Whether the event is consumed by the callback. The value **true** indicates that the event is consumed, and **false** indicates the opposite. |
 
 ### OH_ArkUI_KeyEvent_Dispatch()
 
@@ -473,7 +499,9 @@ void OH_ArkUI_KeyEvent_Dispatch(ArkUI_NodeHandle node, const ArkUI_UIInputEvent*
 
 **Description**
 
-Dispatches the specified key event to a specific node.
+Dispatches the key event to the specified component node. After this API is called, the key event triggers the key event callback registered on the target node. This API can be used in the key event callback to forward the current key event to the specified component node for secondary processing. Unlike **StopPropagation** and **SetConsumed**, **Dispatch** does not affect the processing state of the current event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -481,8 +509,8 @@ Dispatches the specified key event to a specific node.
 
 | Parameter | Description |
 | -- | -- |
-| ArkUI_NodeHandle node | Target node. |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
+| ArkUI_NodeHandle node | Target component node that receives the dispatched key event. The value must be a valid non-null **ArkUI_NodeHandle** node handle. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, which indicates the key event to be dispatched to the target component node. |
 
 ### OH_ArkUI_KeyEvent_IsNumLockOn()
 
@@ -494,14 +522,16 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsNumLockOn(const ArkUI_UIInputEvent* event, b
 
 Obtains the state of the NumLock key when the specified key event occurs.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
-| bool* state | Output parameter that returns the state of the NumLock key. The value **true** indicates an activated state, and **false** indicates an inactivated state. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the NumLock key state when the key event occurs. It must be a **UIInputEvent** of the key type. |
+| bool* state | Pointer to the NumLock key state, which is an output parameter. The value **true** indicates an activated state, and **false** indicates an inactivated state. |
 
 **Returns**:
 
@@ -519,14 +549,16 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsCapsLockOn(const ArkUI_UIInputEvent* event, 
 
 Obtains the state of the CapsLock key when the specified key event occurs.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
-| bool* state | Output parameter that returns the state of the CapsLock key. The value **true** indicates an activated state, and **false** indicates an inactivated state. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the CapsLock key state when the key event occurs. |
+| bool* state | Pointer to the CapsLock key state, which is an output parameter. The value **true** indicates an activated state, and **false** indicates an inactivated state. |
 
 **Returns**:
 
@@ -544,14 +576,16 @@ ArkUI_ErrorCode OH_ArkUI_KeyEvent_IsScrollLockOn(const ArkUI_UIInputEvent* event
 
 Obtains the state of the ScrollLock key when the specified key event occurs.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
 
 | Parameter | Description |
 | -- | -- |
-| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the target **ArkUI_UIInputEvent** object. |
-| bool* state | Output parameter that returns the state of the ScrollLock key. The value **true** indicates an activated state, and **false** indicates an inactivated state. |
+| [const ArkUI_UIInputEvent](capi-arkui-eventmodule-arkui-uiinputevent.md)* event | Pointer to the key input event, used to obtain the ScrollLock key state when the key event occurs. |
+| bool* state | Pointer to the ScrollLock key state, which is an output parameter. The value **true**<br>indicates an activated state, and **false** indicates an inactivated state. |
 
 **Returns**:
 

@@ -6,6 +6,8 @@ Defines the enumerations and APIs of the **Swiper** component for implementing s
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -111,6 +113,8 @@ enum ArkUI_SwiperArrow
 
 Enumerates arrow styles of the navigation indicator of the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -129,6 +133,8 @@ enum ArkUI_SwiperNestedScrollMode
 
 Enumerates the nested scrolling modes of the **Swiper** component and its parent container.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 | Enum item | Description |
@@ -145,6 +151,8 @@ enum ArkUI_PageFlipMode
 **Description**
 
 Enumerates the page flipping modes using the mouse wheel for the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 15
 
@@ -163,6 +171,8 @@ enum ArkUI_SwiperAnimationMode
 
 Enumerates the animation modes for the **Swiper** component when jumping to the page with the specified index.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 15
 
 | Enum item | Description |
@@ -180,6 +190,8 @@ enum ArkUI_SwiperIndicatorType
 **Description**
 
 Enumerates the navigation indicator types of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -200,6 +212,8 @@ ArkUI_SwiperIndicator* OH_ArkUI_SwiperIndicator_Create(ArkUI_SwiperIndicatorType
 **Description**
 
 Creates a navigation indicator for the **Swiper** component. After calling this API, you must call **<br>OH_ArkUI_SwiperIndicator_Dispose** to dispose of the navigation indicator object pointer to release resources after use, so as to avoid memory leaks.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -225,6 +239,8 @@ void OH_ArkUI_SwiperIndicator_Dispose(ArkUI_SwiperIndicator* indicator)
 
 Disposes of the pointer to the navigation indicator of the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -242,6 +258,8 @@ void OH_ArkUI_SwiperIndicator_SetStartPosition(ArkUI_SwiperIndicator* indicator,
 **Description**
 
 Sets the distance between a navigation indicator and the left edge of the **Swiper** component. In the language mode displayed from right to left, use this API to set its distance from the right side of the **Swiper**<br>component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -261,6 +279,8 @@ float OH_ArkUI_SwiperIndicator_GetStartPosition(ArkUI_SwiperIndicator* indicator
 **Description**
 
 Obtains the distance between the navigation indicator and the left edge of the **Swiper** component. In the language mode displayed from right to left, use this API to obtain its distance from the right side of the **Swiper**<br>component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -286,6 +306,8 @@ void OH_ArkUI_SwiperIndicator_SetTopPosition(ArkUI_SwiperIndicator* indicator, f
 
 Sets the distance between a navigation indicator and the top edge of the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -304,6 +326,8 @@ float OH_ArkUI_SwiperIndicator_GetTopPosition(ArkUI_SwiperIndicator* indicator)
 **Description**
 
 Obtains the distance between the navigation indicator and the top edge of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -329,6 +353,8 @@ void OH_ArkUI_SwiperIndicator_SetEndPosition(ArkUI_SwiperIndicator* indicator, f
 
 Sets the distance between the navigation indicator and the right edge of the **Swiper** component. In the language mode displayed from right to left, use this API to set its distance from the left side of the **Swiper**<br>component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -347,6 +373,8 @@ float OH_ArkUI_SwiperIndicator_GetEndPosition(ArkUI_SwiperIndicator* indicator)
 **Description**
 
 Obtains the distance from the navigation indicator to the right edge of the **Swiper** component. In the language mode displayed from right to left, use this API to obtain its distance to the left side of the **Swiper**<br>component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -372,6 +400,8 @@ void OH_ArkUI_SwiperIndicator_SetBottomPosition(ArkUI_SwiperIndicator* indicator
 
 Sets the distance between a navigation indicator and the bottom edge of the **Swiper** component. You can use [OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom](capi-swiper-h.md#oh_arkui_swiperindicator_setignoresizeofbottom) to set whether to ignore the navigation indicator size.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -390,6 +420,8 @@ float OH_ArkUI_SwiperIndicator_GetBottomPosition(ArkUI_SwiperIndicator* indicato
 **Description**
 
 Obtains the distance between the navigation indicator and the bottom edge of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -415,6 +447,8 @@ void OH_ArkUI_SwiperIndicator_SetItemWidth(ArkUI_SwiperIndicator* indicator, flo
 
 Sets the width of a dot-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -433,6 +467,8 @@ float OH_ArkUI_SwiperIndicator_GetItemWidth(ArkUI_SwiperIndicator* indicator)
 **Description**
 
 Obtains the width of the dot-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -458,6 +494,8 @@ void OH_ArkUI_SwiperIndicator_SetItemHeight(ArkUI_SwiperIndicator* indicator, fl
 
 Sets the height of a dot-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -476,6 +514,8 @@ float OH_ArkUI_SwiperIndicator_GetItemHeight(ArkUI_SwiperIndicator* indicator)
 **Description**
 
 Obtains the height of the dot-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -501,6 +541,8 @@ void OH_ArkUI_SwiperIndicator_SetSelectedItemWidth(ArkUI_SwiperIndicator* indica
 
 Sets the width of a selected dot-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -519,6 +561,8 @@ float OH_ArkUI_SwiperIndicator_GetSelectedItemWidth(ArkUI_SwiperIndicator* indic
 **Description**
 
 Obtains the width of the selected dot-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -544,6 +588,8 @@ void OH_ArkUI_SwiperIndicator_SetSelectedItemHeight(ArkUI_SwiperIndicator* indic
 
 Sets the height of a selected dot-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -562,6 +608,8 @@ float OH_ArkUI_SwiperIndicator_GetSelectedItemHeight(ArkUI_SwiperIndicator* indi
 **Description**
 
 Obtains the height of the selected dot-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -587,6 +635,8 @@ void OH_ArkUI_SwiperIndicator_SetMask(ArkUI_SwiperIndicator* indicator, int32_t 
 
 Sets whether to enable the mask for a dot-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -605,6 +655,8 @@ int32_t OH_ArkUI_SwiperIndicator_GetMask(ArkUI_SwiperIndicator* indicator)
 **Description**
 
 Obtains whether the mask is enabled for the dot-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -630,6 +682,8 @@ void OH_ArkUI_SwiperIndicator_SetColor(ArkUI_SwiperIndicator* indicator, uint32_
 
 Sets the color of a dot-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -648,6 +702,8 @@ uint32_t OH_ArkUI_SwiperIndicator_GetColor(ArkUI_SwiperIndicator* indicator)
 **Description**
 
 Obtains the color of the dot-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -673,6 +729,8 @@ void OH_ArkUI_SwiperIndicator_SetSelectedColor(ArkUI_SwiperIndicator* indicator,
 
 Sets the color of a selected dot-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -691,6 +749,8 @@ uint32_t OH_ArkUI_SwiperIndicator_GetSelectedColor(ArkUI_SwiperIndicator* indica
 **Description**
 
 Obtains the color of the selected dot-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -715,6 +775,8 @@ int32_t OH_ArkUI_SwiperIndicator_SetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 **Description**
 
 Sets the maximum number of dots for a dot-style navigation indicator.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -741,6 +803,8 @@ int32_t OH_ArkUI_SwiperIndicator_GetMaxDisplayCount(ArkUI_SwiperIndicator* indic
 
 Obtains the maximum number of dots for the dot-style navigation indicator.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -765,6 +829,8 @@ void OH_ArkUI_SwiperIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* indic
 
 Sets whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the navigation indicator size.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -783,6 +849,8 @@ int32_t OH_ArkUI_SwiperIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperIndicator* in
 **Description**
 
 Obtains whether the **OH_ArkUI_SwiperIndicator_SetBottomPosition** API ignores the navigation indicator size.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -808,6 +876,8 @@ void OH_ArkUI_SwiperIndicator_SetSpace(ArkUI_SwiperIndicator* indicator, float s
 
 Sets the spacing between navigation indicators.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -826,6 +896,8 @@ float OH_ArkUI_SwiperIndicator_GetSpace(ArkUI_SwiperIndicator* indicator)
 **Description**
 
 Obtains the spacing between navigation indicators.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -851,6 +923,8 @@ ArkUI_SwiperDigitIndicator *OH_ArkUI_SwiperDigitIndicator_Create()
 
 Creates a digit-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Returns**:
@@ -868,6 +942,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetStartPosition(ArkUI_SwiperDigitIndicator* 
 **Description**
 
 Sets the start position of a digit-style navigation indicator for the **Swiper** component. This determines the distance from the left edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the right edge of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -887,6 +963,8 @@ float OH_ArkUI_SwiperDigitIndicator_GetStartPosition(ArkUI_SwiperDigitIndicator*
 **Description**
 
 Obtains the start position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the left edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the right edge of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -912,6 +990,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetTopPosition(ArkUI_SwiperDigitIndicator* in
 
 Sets the distance from a digit-style navigation indicator to the top edge of the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -930,6 +1010,8 @@ float OH_ArkUI_SwiperDigitIndicator_GetTopPosition(ArkUI_SwiperDigitIndicator* i
 **Description**
 
 Obtains the distance from the digit-style navigation indicator to the top edge of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -955,6 +1037,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetEndPosition(ArkUI_SwiperDigitIndicator* in
 
 Sets the end position of a digit-style navigation indicator for the **Swiper** component. This determines the distance from the right edge of the **Swiper** component. For right-to-left scripts, this determines the distance from the left edge of the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -973,6 +1057,8 @@ float OH_ArkUI_SwiperDigitIndicator_GetEndPosition(ArkUI_SwiperDigitIndicator* i
 **Description**
 
 Obtains the end position of the digit-style navigation indicator for the **Swiper** component. This indicates the distance from the right edge of the **Swiper** component. For right-to-left scripts, this indicates the distance from the left edge of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -998,6 +1084,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetBottomPosition(ArkUI_SwiperDigitIndicator*
 
 Sets the distance from a digit-style navigation indicator to the bottom edge of the **Swiper** component. You can use [OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom](capi-swiper-h.md#oh_arkui_swiperdigitindicator_setignoresizeofbottom) to set whether to ignore the navigation indicator size.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1016,6 +1104,8 @@ float OH_ArkUI_SwiperDigitIndicator_GetBottomPosition(ArkUI_SwiperDigitIndicator
 **Description**
 
 Obtains the distance from the digit-style navigation indicator to the bottom edge of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1041,6 +1131,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontColor(ArkUI_SwiperDigitIndicator* indi
 
 Sets the font color of a digit-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1059,6 +1151,8 @@ uint32_t OH_ArkUI_SwiperDigitIndicator_GetFontColor(ArkUI_SwiperDigitIndicator* 
 **Description**
 
 Obtains the font color of the digit-style navigation indicator for the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1084,6 +1178,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontColor(ArkUI_SwiperDigitIndicat
 
 Sets the font color of a selected digit-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1102,6 +1198,8 @@ uint32_t OH_ArkUI_SwiperDigitIndicator_GetSelectedFontColor(ArkUI_SwiperDigitInd
 **Description**
 
 Obtains the font color of the selected digit-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1127,6 +1225,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetFontSize(ArkUI_SwiperDigitIndicator* indic
 
 Sets the font size of a digit-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1145,6 +1245,8 @@ float OH_ArkUI_SwiperDigitIndicator_GetFontSize(ArkUI_SwiperDigitIndicator* indi
 **Description**
 
 Obtains the font size of the digit-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1170,6 +1272,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetSelectedFontSize(ArkUI_SwiperDigitIndicato
 
 Sets the font size of a selected digit-style navigation indicator for the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1188,6 +1292,8 @@ float OH_ArkUI_SwiperDigitIndicator_GetSelectedFontSize(ArkUI_SwiperDigitIndicat
 **Description**
 
 Obtains the font size of the selected digit-style navigation indicator of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1213,6 +1319,8 @@ void OH_ArkUI_SwiperDigitIndicator_Destroy(ArkUI_SwiperDigitIndicator *indicator
 
 Destroys the pointer to the digit-style navigation indicator of the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1230,6 +1338,8 @@ void OH_ArkUI_SwiperDigitIndicator_SetIgnoreSizeOfBottom(ArkUI_SwiperDigitIndica
 **Description**
 
 Sets whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the navigation indicator size.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1249,6 +1359,8 @@ int32_t OH_ArkUI_SwiperDigitIndicator_GetIgnoreSizeOfBottom(ArkUI_SwiperDigitInd
 **Description**
 
 Obtains whether the **OH_ArkUI_SwiperDigitIndicator_SetBottomPosition** API ignores the navigation indicator size.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1274,6 +1386,8 @@ ArkUI_SwiperArrowStyle *OH_ArkUI_SwiperArrowStyle_Create()
 
 Creates a navigation arrow for the **Swiper** component. After calling this API, you must call **<br>OH_ArkUI_SwiperArrowStyle_Destroy** to destroy the navigation arrow object pointer to release resources after use, so as to avoid memory leaks.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Returns**:
@@ -1291,6 +1405,8 @@ void OH_ArkUI_SwiperArrowStyle_SetShowBackground(ArkUI_SwiperArrowStyle *arrowSt
 **Description**
 
 Sets whether to display the background of a navigation arrow for the **Swiper** component. After the background display is enabled, the value of **arrowSize** will be fixed to 3/4 of the value of **backgroundSize**.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1310,6 +1426,8 @@ int32_t OH_ArkUI_SwiperArrowStyle_GetShowBackground(ArkUI_SwiperArrowStyle* arro
 **Description**
 
 Obtains whether the background of the navigation arrow is displayed for the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1335,6 +1453,8 @@ void OH_ArkUI_SwiperArrowStyle_SetShowSidebarMiddle(ArkUI_SwiperArrowStyle* arro
 
 Sets the position of a navigation arrow for the **Swiper** component. The mode on both sides of the navigation indicator is suitable for scenarios where navigation areas are used for centralized interaction, and the mode on both sides of the **Swiper** component is suitable for scenarios where pages need to be turned quickly within a large area.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1353,6 +1473,8 @@ int32_t OH_ArkUI_SwiperArrowStyle_GetShowSidebarMiddle(ArkUI_SwiperArrowStyle* a
 **Description**
 
 Obtains the position of the navigation arrow for the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1378,6 +1500,8 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundSize(ArkUI_SwiperArrowStyle* arrowSt
 
 Sets the background size for a navigation arrow of the **Swiper** component. When the navigation arrow background is displayed (set through [OH_ArkUI_SwiperArrowStyle_SetShowBackground](capi-swiper-h.md#oh_arkui_swiperarrowstyle_setshowbackground)), the value of **arrowSize**<br>will be fixed to 3/4 of the value of **backgroundSize**.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1396,6 +1520,8 @@ float OH_ArkUI_SwiperArrowStyle_GetBackgroundSize(ArkUI_SwiperArrowStyle *arrowS
 **Description**
 
 Obtains the background size of the navigation arrow of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1421,6 +1547,8 @@ void OH_ArkUI_SwiperArrowStyle_Destroy(ArkUI_SwiperArrowStyle *arrowStyle)
 
 Destroys the navigation arrow pointer of the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1438,6 +1566,8 @@ void OH_ArkUI_SwiperArrowStyle_SetBackgroundColor(ArkUI_SwiperArrowStyle *arrowS
 **Description**
 
 Sets the background color for a navigation arrow of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1457,6 +1587,8 @@ uint32_t OH_ArkUI_SwiperArrowStyle_GetBackgroundColor(ArkUI_SwiperArrowStyle* ar
 **Description**
 
 Obtains the background color of the navigation arrow of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1482,6 +1614,8 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle, 
 
 Sets the size for a navigation arrow of the **Swiper** component. When the navigation arrow background is displayed (set through **OH_ArkUI_SwiperArrowStyle_SetShowBackground**), the value of **arrowSize** is fixed to 3/4 of the value of **backgroundSize**, and setting **arrowSize** in this case does not take effect.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1500,6 +1634,8 @@ float OH_ArkUI_SwiperArrowStyle_GetArrowSize(ArkUI_SwiperArrowStyle* arrowStyle)
 **Description**
 
 Obtains the size of the navigation arrow of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1525,6 +1661,8 @@ void OH_ArkUI_SwiperArrowStyle_SetArrowColor(ArkUI_SwiperArrowStyle* arrowStyle,
 
 Sets the color for a navigation arrow of the **Swiper** component.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1543,6 +1681,8 @@ uint32_t OH_ArkUI_SwiperArrowStyle_GetArrowColor(ArkUI_SwiperArrowStyle* arrowSt
 **Description**
 
 Obtains the color of the navigation arrow of the **Swiper** component.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 

@@ -6,6 +6,8 @@ Defines common types used in **OsAccount** APIs.
 
 **Library**: libos_account_ndk.so
 
+**System capability**: SystemCapability.Account.OsAccount
+
 **Since**: 12
 
 **Related module**: [OsAccount](capi-osaccount.md)
@@ -29,6 +31,8 @@ enum OsAccount_ErrCode
 **Description**
 
 Enumerates the error codes.
+
+**System capability**: SystemCapability.Account.OsAccount
 
 **Since**: 12
 

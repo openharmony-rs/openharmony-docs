@@ -6,6 +6,8 @@ Defines the enumerations related to the **NavDestination** and **Router** compon
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Related module**: [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -30,6 +32,8 @@ enum ArkUI_NavDestinationState
 **Description**
 
 Enumerates the states of the **NavDestination** component, used to describe the lifecycle state changes of **<br>NavDestination** during navigation.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -56,6 +60,8 @@ enum ArkUI_RouterPageState
 **Description**
 
 Enumerates the states of the Router component (route page), used to describe the lifecycle state changes of **Router** during routing.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 

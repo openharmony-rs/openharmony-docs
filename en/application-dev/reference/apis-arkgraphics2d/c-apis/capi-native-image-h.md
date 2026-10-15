@@ -6,6 +6,8 @@ Defines the functions for obtaining and using a native image.
 
 **Library**: libnative_image.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 9
 
 **Related module**: [OH_NativeImage](capi-oh-nativeimage.md)
@@ -70,6 +72,8 @@ typedef void (*OH_OnFrameAvailable)(void *context)
 
 The callback function of frame available.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 11
 
 **Parameters**:
@@ -87,6 +91,8 @@ OH_NativeImage* OH_NativeImage_Create(uint32_t textureId, uint32_t textureTarget
 **Description**
 
 Create a <b>OH_NativeImage</b> related to an Opengl ES texture and target. This interface needs to be used in conjunction with <b>OH_NativeImage_Destroy</b>, otherwise memory leaks will occur. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 9
 
@@ -113,6 +119,8 @@ OHNativeWindow* OH_NativeImage_AcquireNativeWindow(OH_NativeImage* image)
 
 Acquire the OHNativeWindow for the OH_NativeImage. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 9
 
 **Parameters**:
@@ -136,6 +144,8 @@ int32_t OH_NativeImage_AttachContext(OH_NativeImage* image, uint32_t textureId)
 **Description**
 
 Attach the OH_NativeImage to Opengl ES context, and the Opengl ES texture is bound to the GL_TEXTURE_EXTERNAL_OES, which will update by the OH_NativeImage. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 9
 
@@ -162,6 +172,8 @@ int32_t OH_NativeImage_DetachContext(OH_NativeImage* image)
 
 Detach the OH_NativeImage from the Opengl ES context. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 9
 
 **Parameters**:
@@ -185,6 +197,8 @@ int32_t OH_NativeImage_UpdateSurfaceImage(OH_NativeImage* image)
 **Description**
 
 Update the related Opengl ES texture with the OH_NativeImage acquired buffer. This interface needs to be called in the Opengl ES context thread. This interface needs to be called after receiving the <b>OH_OnFrameAvailableListener</b> callback. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 9
 
@@ -210,6 +224,8 @@ int64_t OH_NativeImage_GetTimestamp(OH_NativeImage* image)
 
 Get the timestamp of the texture image set by the most recent call to OH_NativeImage_UpdateSurfaceImage. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 9
 
 **Parameters**:
@@ -233,6 +249,8 @@ int32_t OH_NativeImage_GetTransformMatrix(OH_NativeImage* image, float matrix[16
 **Description**
 
 Return the transform matrix of the texture image set by the most recent call to OH_NativeImage_UpdateSurfaceImage.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 9
 
@@ -263,6 +281,8 @@ int32_t OH_NativeImage_GetSurfaceId(OH_NativeImage* image, uint64_t* surfaceId)
 
 Return the native image's surface id. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 11
 
 **Parameters**:
@@ -287,6 +307,8 @@ int32_t OH_NativeImage_SetOnFrameAvailableListener(OH_NativeImage* image, OH_OnF
 **Description**
 
 Set the frame available callback. Not allow calling other interfaces in the callback function. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 11
 
@@ -313,6 +335,8 @@ int32_t OH_NativeImage_UnsetOnFrameAvailableListener(OH_NativeImage* image)
 
 Unset the frame available callback. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 11
 
 **Parameters**:
@@ -337,6 +361,8 @@ void OH_NativeImage_Destroy(OH_NativeImage** image)
 
 Destroy the <b>OH_NativeImage</b> created by OH_NativeImage_Create, and the pointer to <b>OH_NativeImage</b> will be null after this operation. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 9
 
 **Parameters**:
@@ -354,6 +380,8 @@ int32_t OH_NativeImage_GetTransformMatrixV2(OH_NativeImage* image, float matrix[
 **Description**
 
 Obtains the transform matrix of the texture image by producer transform type. The matrix will not be update until <b>OH_NativeImage_UpdateSurfaceImage</b> is called. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 12
 
@@ -380,6 +408,8 @@ int32_t OH_NativeImage_GetBufferMatrix(OH_NativeImage* image, float matrix[16])
 
 Obtains the transform matrix that combines with crop rect.<br> This API returns a transform matrix that combines the crop rect. Note that the matrix will not be updated until <b>OH_NativeImage_UpdateSurfaceImage</b> is called. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 15
 
 **Parameters**:
@@ -404,6 +434,8 @@ int32_t OH_NativeImage_AcquireNativeWindowBuffer(OH_NativeImage* image, OHNative
 **Description**
 
 Acquire an <b>OHNativeWindowBuffer</b> through an <b>OH_NativeImage</b> instance for content consumer. This method can not be used at the same time with <b>OH_NativeImage_UpdateSurfaceImage</b>. This method will create an <b>OHNativeWindowBuffer</b>. When using <b>OHNativeWindowBuffer</b>, need to increase its reference count by <b>OH_NativeWindow_NativeObjectReference</b>. When the <b>OHNativeWindowBuffer</b> is used up, its reference count needs to be decremented by <b>OH_NativeWindow_NativeObjectUnreference</b>. This interface needs to be used in conjunction with <b>OH_NativeImage_ReleaseNativeWindowBuffer</b>, otherwise memory leaks will occur. When the fenceFd is used up, you need to close it. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 12
 
@@ -431,6 +463,8 @@ int32_t OH_NativeImage_ReleaseNativeWindowBuffer(OH_NativeImage* image, OHNative
 
 Release the <b>OHNativeWindowBuffer</b> to the buffer queue through an <b>OH_NativeImage</b> instance for reuse. The fenceFd will be closed by system. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 12
 
 **Parameters**:
@@ -457,6 +491,8 @@ OH_NativeImage* OH_ConsumerSurface_Create(void)
 
 Create a <b>OH_NativeImage</b> as a consumerSurface. This interface is only used for memory rotation on the surface consumer, the <b>OH_NativeImage</b> will not actively perform memory rendering processing. This method can not be used at the same time with <b>OH_NativeImage_UpdateSurfaceImage</b>. This interface is used in conjunction with <b>OH_NativeImage_AcquireNativeWindowBuffer</b> and <b>OH_NativeImage_ReleaseNativeWindowBuffer</b>. This interface needs to be used in conjunction with <b>OH_NativeImage_Destroy</b>, otherwise memory leaks will occur. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 12
 
 **Returns**:
@@ -474,6 +510,8 @@ int32_t OH_ConsumerSurface_SetDefaultUsage(OH_NativeImage* image, uint64_t usage
 **Description**
 
 Set the default usage of the <b>OH_NativeImage</b>. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 13
 
@@ -499,6 +537,8 @@ int32_t OH_ConsumerSurface_SetDefaultSize(OH_NativeImage* image, int32_t width, 
 **Description**
 
 Set the default size of the <b>OH_NativeImage</b>. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 13
 
@@ -526,6 +566,8 @@ int32_t OH_NativeImage_SetDropBufferMode(OH_NativeImage* image, bool isOpen)
 
 Set the rendering in drop buffer mode of the <b>OH_NativeImage</b>. In this mode, most of the buffers produced by the producer will be discarded, and the latest buffer will be selected for rending. This mode can not simultaneously guarantee high frame rate requirements. This interface suggest be called after the <b>OH_NativeImage_Create</b> call immediately. This interface will only take effect when used together with the <b>OH_NativeImage_UpdateSurfaceImage</b>. The listener callback set through <b>OH-NativeImage_SetOnFrameAvailableListener</b> will not decrease due to the frame loss mode being set. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 17
 
 **Parameters**:
@@ -550,6 +592,8 @@ OH_NativeImage* OH_NativeImage_CreateWithSingleBufferMode(uint32_t textureId, ui
 **Description**
 
 Create a <b>OH_NativeImage</b> related to an Opengl ES texture and target with textureId, and choose whether to set single buffer mode.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 22
 
@@ -577,6 +621,8 @@ OH_NativeImage* OH_ConsumerSurface_CreateWithSingleBufferMode(bool singleBufferM
 
 Create a <b>OH_NativeImage</b> as consumerSurface, and choose whether to set single buffer mode. This method can not be used at the same time with <b>OH_NativeImage_UpdateSurfaceImage</b>. This interface needs to be used in conjunction with <b>OH_NativeImage_Destroy</b>, otherwise memory leaks will occur.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 22
 
 **Parameters**:
@@ -600,6 +646,8 @@ int32_t OH_NativeImage_ReleaseTextImage(OH_NativeImage* image)
 **Description**
 
 Release the <b>OH_NativeImage</b> in single buffer mode. This interface suggest be called after the producer flushes the buffer to let the buffer queue rotate, in the single buffer mode. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 22
 
@@ -625,6 +673,8 @@ int32_t OH_NativeImage_GetColorSpace(OH_NativeImage* image, OH_NativeBuffer_Colo
 
 Get the colorSpace of <b>OH_NativeImage</b>. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 22
 
 **Parameters**:
@@ -649,6 +699,8 @@ int32_t OH_NativeImage_AcquireLatestNativeWindowBuffer(OH_NativeImage* image, OH
 **Description**
 
 Acquire a latest <b>OHNativeWindowBuffer</b> through an <b>OH_NativeImage</b> instance for content consumer. This method can get the latest <b>OHNativeWindowBuffer</b> and drop other <b>OHNativeWindowBuffers</b>, but consumer can receive the callbacks of all available buffers. This method can not be used at the same time with <b>OH_NativeImage_UpdateSurfaceImage</b>. This method will create an <b>OHNativeWindowBuffer</b>. If there is a situation when <b>OHNativeWindowBuffer</b> is still used after calling <b>OH_NativeImage_ReleaseNativeWindowBuffer</b>, you must pay attention to the following two points. 1) When using <b>OHNativeWindowBuffer</b>, need to increase its reference count by <b>OH_NativeWindow_NativeObjectReference</b>. 2) When the <b>OHNativeWindowBuffer</b> is used up, its reference count needs to be decremented by <b>OH_NativeWindow_NativeObjectUnreference</b>. This interface needs to be used in conjunction with <b>OH_NativeImage_ReleaseNativeWindowBuffer</b>, otherwise memory leaks will occur. When the fenceFd is used up, you need to close it.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 22
 
@@ -676,6 +728,8 @@ int32_t OH_NativeImage_IsReleased(OH_NativeImage* image, bool* isReleased)
 
 Check whether the texture releated to the <b>OH_NativeImage</b> has been released. This interface is a non-thread-safe type interface.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
+
 **Since**: 23
 
 **Parameters**:
@@ -700,6 +754,8 @@ int32_t OH_NativeImage_Release(OH_NativeImage* image)
 **Description**
 
 Clean all <b>OHNativeWindowBuffer</b> caches of the <b>OHNativeWindow</b> for the <b>OH_NativeImage</b>, and detach the OH_NativeImage from the Opengl ES context. This interface is a non-thread-safe type interface.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeImage
 
 **Since**: 23
 

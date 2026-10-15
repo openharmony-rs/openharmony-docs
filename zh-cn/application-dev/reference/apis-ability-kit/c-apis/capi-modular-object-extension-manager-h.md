@@ -6,6 +6,8 @@
 
 **库：** libability_runtime.so
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -55,6 +57,8 @@ enum OH_AbilityRuntime_LaunchMode
 
 定义ModularObjectExtensionAbility的启动模式。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -71,6 +75,8 @@ enum OH_AbilityRuntime_ProcessMode
 **描述：**
 
 定义ModularObjectExtensionAbility的进程模式。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -89,6 +95,8 @@ enum OH_AbilityRuntime_ThreadMode
 **描述：**
 
 定义ModularObjectExtensionAbility的线程模式。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -110,6 +118,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoLaunchMo
 **描述：**
 
 从指定的ModularObjectExtensionAbility信息中获取启动模式。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -136,6 +146,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoProcessM
 
 从指定的ModularObjectExtensionAbility信息中获取进程模式。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -160,6 +172,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoThreadMo
 **描述：**
 
 从指定的ModularObjectExtensionAbility信息中获取线程模式。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -186,6 +200,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoElementN
 
 从指定的ModularObjectExtensionAbility信息中获取组件名称（[AbilityBase_Element](capi-abilitybase-abilitybase-element.md)）。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -210,6 +226,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModularObjectExtensionInfoDisableS
 **描述：**
 
 从指定的ModularObjectExtensionAbility信息中获取禁用状态。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -236,6 +254,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfo
 
 获取当前应用所有已注册的ModularObjectExtensionAbility信息。该接口返回一个包含当前应用所有已注册的ModularObjectExtensionAbility信息集合句柄。开发者可通过 [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos)和 [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex)遍历集合中的各个ModularObjectExtensionAbility信息， 进而获取每个ModularObjectExtensionAbility的启动模式、进程模式、线程模式等属性。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **资源释放：** OH_AbilityRuntime_ReleaseAllExtensionInfos {outOwnedAllExtensionInfos}
@@ -261,6 +281,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ReleaseAllExtensionInfos(OH_AbilityRu
 **描述：**
 
 释放由[OH_AbilityRuntime_AcquireSelfModularObjectExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_acquireselfmodularobjectextensioninfos)获取的ModularObjectExtensionAbility信息集合。 当不再需要使用ModularObjectExtensionAbility信息集合时，必须调用此接口释放相关资源，避免内存泄漏。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -291,6 +313,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos(O
 
 获取ModularObjectExtensionAbility信息集合中包含的ModularObjectExtensionAbility信息数量。返回的数量可用于确定遍历集合时的索引上限，配合 [OH_AbilityRuntime_GetModObjExtensionInfoByIndex](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getmodobjextensioninfobyindex)逐个访问集合中的ModularObjectExtensionAbility信息。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -315,6 +339,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_GetModObjExtensionInfoByIndex(OH_Abil
 **描述：**
 
 根据索引从ModularObjectExtensionAbility信息集合中获取指定的ModularObjectExtensionAbility信息。索引的有效范围为[0, count)，其中count可通过 [OH_AbilityRuntime_GetCountFromAllModObjExtensionInfos](capi-modular-object-extension-manager-h.md#oh_abilityruntime_getcountfromallmodobjextensioninfos)获取。 获取到的ModularObjectExtensionAbility信息句柄可用于查询该ModularObjectExtensionAbility的启动模式、进程模式、线程模式等属性。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -342,6 +368,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ConnectModularObjectExtensionAbility(
 
 连接ModularObjectExtensionAbility。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -367,6 +395,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_DisconnectModularObjectExtensionAbili
 **描述：**
 
 断开与ModularObjectExtensionAbility的连接。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 

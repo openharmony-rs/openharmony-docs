@@ -6,7 +6,7 @@ typedef struct OH_ArkUI_RadialGradientOptions OH_ArkUI_RadialGradientOptions
 
 ## Overview
 
-Defines radial gradient options.
+Defines radial gradient options, which are applicable to scenarios where a radial gradient effect needs to be implemented in UI components. This helps you enrich the visual hierarchy of the UI.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

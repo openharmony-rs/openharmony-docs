@@ -6,6 +6,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -59,13 +61,15 @@ enum OH_ArkUI_HapticFeedbackMode
 
 触感反馈模式枚举，用于控制文本编辑器在用户交互（如长按、拖拽等操作）时的触感反馈行为。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 |  |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 |  |
-| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 |  |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_DISABLED = 0 | 无振动效果。<br>**起始版本：** 24 |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_ENABLED = 1 | 有振动效果。<br>**起始版本：** 24 |
+| OH_ARKUI_HAPTIC_FEEDBACK_MODE_AUTO = 2 | 跟随系统的振动效果。<br>**起始版本：** 24 |
 
 ### OH_ArkUI_TextEditorSpanType
 
@@ -77,15 +81,17 @@ enum OH_ArkUI_TextEditorSpanType
 
 自定义文本选择菜单span类型枚举，用于标识文本编辑器中文本选择菜单的span类型。不同span类型对应不同的内容结构，影响自定义菜单的显示和交互行为。 例如，当用户选中纯文本内容时使用OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT类型，选中包含图文等混合内容时使用OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED类型， 需要自定义菜单项布局时使用OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER类型。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0 |  |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1 |  |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2 |  |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3 |  |
-| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4 |  |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_TEXT = 0 | 文本span。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_IMAGE = 1 | 图片span。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_MIXED = 2 | 混合span。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_BUILDER = 3 | 自定义布局span。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_SPAN_TYPE_DEFAULT = 4 | 默认span。<br>**起始版本：** 24 |
 
 ### OH_ArkUI_TextEditorResponseType
 
@@ -97,14 +103,16 @@ enum OH_ArkUI_TextEditorResponseType
 
 自定义文本选择菜单响应类型枚举，用于标识触发菜单弹出的交互方式。不同响应类型对应不同的用户操作（如右键点击、长按、鼠标选中），可根据响应类型定制不同的菜单内容。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0 |  |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1 |  |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2 |  |
-| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3 |  |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_RIGHT_CLICK = 0 | 通过鼠标右键触发菜单弹出。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_LONG_PRESS = 1 | 通过长按触发菜单弹出。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_SELECT = 2 | 通过鼠标选中触发菜单弹出。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_RESPONSE_TYPE_DEFAULT = 3 | 默认响应类型。<br>**起始版本：** 24 |
 
 ### OH_ArkUI_TextMenuType
 
@@ -116,12 +124,14 @@ enum OH_ArkUI_TextMenuType
 
 文本菜单类型枚举，用于区分文本编辑器中不同类型的弹出菜单，包括文本选择菜单和预览菜单。 不同菜单类型分别对应不同的交互场景和菜单展示方式。例如，文本选择菜单在用户选中文字时弹出，用于复制、删除等文本操作； 预览菜单在用户长按图片时弹出，用于触发图片内容拖拽预览以及复制、删除等操作。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 | 枚举项 | 描述 |
 | -- | -- |
-| OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 |  |
-| OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 |  |
+| OH_ARKUI_TEXT_EDITOR_SELECTION_MENU = 0 | 文本选择菜单。<br>**起始版本：** 24 |
+| OH_ARKUI_TEXT_EDITOR_PREVIEW_MENU = 1 | 预览菜单。<br>**起始版本：** 24 |
 
 ### OH_ArkUI_TextEditorType
 
@@ -132,6 +142,8 @@ enum OH_ArkUI_TextEditorType
 **描述：**
 
 文本编辑器输入类型枚举，用于指定文本编辑器的输入模式。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 26.2.0
 
@@ -162,6 +174,8 @@ OH_ArkUI_TextEditorPlaceholderOptions* OH_ArkUI_TextEditorPlaceholderOptions_Cre
 
 创建一个无输入时的提示文本的选项对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorPlaceholderOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorplaceholderoptions_destroy)销毁。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 **返回值：**
@@ -179,6 +193,8 @@ void OH_ArkUI_TextEditorPlaceholderOptions_Destroy(OH_ArkUI_TextEditorPlaceholde
 **描述：**
 
 销毁无输入时的提示文本的选项对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -198,6 +214,8 @@ OH_ArkUI_TextEditorStyledStringController* OH_ArkUI_TextEditorStyledStringContro
 
 创建一个属性字符串控制器对象，用于在需要通过属性字符串管理富文本内容（如混合排版文本与图片、动态设置段落或字符样式等场景）时控制文本编辑器的属性字符串。当该对象不再使用时，请调用 [OH_ArkUI_TextEditorStyledStringController_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorstyledstringcontroller_destroy)销毁。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 **返回值：**
@@ -215,6 +233,8 @@ void OH_ArkUI_TextEditorStyledStringController_Destroy(OH_ArkUI_TextEditorStyled
 **描述：**
 
 销毁属性字符串控制器。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -234,6 +254,8 @@ OH_ArkUI_TextEditorParagraphStyle* OH_ArkUI_TextEditorParagraphStyle_Create()
 
 创建一个段落样式对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorParagraphStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorparagraphstyle_destroy)销毁。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 **返回值：**
@@ -251,6 +273,8 @@ void OH_ArkUI_TextEditorParagraphStyle_Destroy(OH_ArkUI_TextEditorParagraphStyle
 **描述：**
 
 销毁段落样式对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -270,6 +294,8 @@ OH_ArkUI_TextEditorTextStyle* OH_ArkUI_TextEditorTextStyle_Create()
 
 创建一个文本样式对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorTextStyle_Destroy](capi-rich-editor-h.md#oh_arkui_texteditortextstyle_destroy)销毁。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 **返回值：**
@@ -287,6 +313,8 @@ void OH_ArkUI_TextEditorTextStyle_Destroy(OH_ArkUI_TextEditorTextStyle* style)
 **描述：**
 
 销毁文本样式对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 
@@ -306,6 +334,8 @@ OH_ArkUI_TextEditorSelectionMenuOptions* OH_ArkUI_TextEditorSelectionMenuOptions
 
 创建一个文本编辑器文本选择菜单选项对象。当该对象不再使用时，请调用[OH_ArkUI_TextEditorSelectionMenuOptions_Destroy](capi-rich-editor-h.md#oh_arkui_texteditorselectionmenuoptions_destroy)销毁。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 24
 
 **返回值：**
@@ -323,6 +353,8 @@ void OH_ArkUI_TextEditorSelectionMenuOptions_Destroy(OH_ArkUI_TextEditorSelectio
 **描述：**
 
 销毁文本编辑器文本选择菜单选项对象。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 24
 

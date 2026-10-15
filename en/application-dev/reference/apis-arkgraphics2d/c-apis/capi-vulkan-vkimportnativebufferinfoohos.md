@@ -22,8 +22,8 @@ Defines the pointer to an <b>OH_NativeBuffer</b> struct.
 
 | Name | Description |
 | -- | -- |
-| VkStructureType sType | Struct type. |
-| const void* pNext | Pointer to the next-level struct. |
-| [struct OH_NativeBuffer*](capi-vulkan-oh-nativebuffer.md) buffer | Pointer to an <b>OH_NativeBuffer</b> struct. |
+| VkStructureType            sType | Struct type. |
+| const void*                pNext | Pointer to the next-level struct. |
+| struct OH_NativeBuffer*    buffer | Pointer to an <b>OH_NativeBuffer</b> struct. |
 
 

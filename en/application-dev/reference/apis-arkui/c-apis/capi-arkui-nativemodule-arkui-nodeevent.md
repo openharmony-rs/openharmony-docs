@@ -6,7 +6,7 @@ typedef struct ArkUI_NodeEvent ArkUI_NodeEvent
 
 ## Overview
 
-Defines the common structure type of a component event.
+Defines a component event. This is a general struct type. This struct is used to pass event information in the component event handling process.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

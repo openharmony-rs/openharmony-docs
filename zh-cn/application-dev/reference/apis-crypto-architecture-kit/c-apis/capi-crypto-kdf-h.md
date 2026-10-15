@@ -8,6 +8,8 @@
 
 **库：** libohcrypto.so
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **相关模块：** [CryptoKdfApi](capi-cryptokdfapi.md)
@@ -50,6 +52,8 @@ enum CryptoKdf_ParamType
 
 定义KDF参数类型。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 | 枚举项 | 描述 |
@@ -75,6 +79,8 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_Create(const char *algoName, OH_CryptoKdfPa
 **描述：**
 
 创建KDF参数。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -108,6 +114,8 @@ OH_Crypto_ErrCode OH_CryptoKdfParams_SetParam(OH_CryptoKdfParams *params, Crypto
 
 设置KDF参数。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -134,6 +142,8 @@ void OH_CryptoKdfParams_Destroy(OH_CryptoKdfParams *params)
 
 销毁KDF参数。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **参数：**
@@ -151,6 +161,8 @@ OH_Crypto_ErrCode OH_CryptoKdf_Create(const char *algoName, OH_CryptoKdf **ctx)
 **描述：**
 
 根据给定的算法名称创建KDF上下文。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 
@@ -184,6 +196,8 @@ OH_Crypto_ErrCode OH_CryptoKdf_Derive(OH_CryptoKdf *ctx, const OH_CryptoKdfParam
 
 派生密钥。
 
+**系统能力：** SystemCapability.Security.CryptoFramework
+
 **起始版本：** 20
 
 **资源释放：** crypto_common/OH_Crypto_FreeDataBlob {key}
@@ -212,6 +226,8 @@ void OH_CryptoKdf_Destroy(OH_CryptoKdf *ctx)
 **描述：**
 
 销毁KDF上下文。
+
+**系统能力：** SystemCapability.Security.CryptoFramework
 
 **起始版本：** 20
 

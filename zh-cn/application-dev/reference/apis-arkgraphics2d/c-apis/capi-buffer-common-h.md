@@ -6,6 +6,8 @@
 
 **库：** libnative_buffer.so
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 12
 
 **相关模块：** [OH_NativeBuffer](capi-oh-nativebuffer.md)
@@ -44,6 +46,8 @@ enum OH_NativeBuffer_ColorSpace
 **描述：**
 
 OH_NativeBuffer的颜色空间。 Move from native_buffer.h to native_common.h
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 12
 
@@ -94,6 +98,8 @@ enum OH_NativeBuffer_MetadataType
 
 OH_NativeBuffer的图像标准。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -117,6 +123,8 @@ enum OH_NativeBuffer_MetadataKey
 
 表示OH_NativeBuffer的描述信息的键值，如HDR元数据，ROI元数据等。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -135,6 +143,8 @@ enum OH_NativeBuffer_Format
 **描述：**
 
 OH_NativeBuffer格式的枚举。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 10
 
@@ -195,6 +205,8 @@ enum OH_NativeBuffer_TransformType
 
 OH_NativeBuffer转换类型的枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -222,6 +234,8 @@ enum OH_NativeBuffer_VideoDimensionType
 
 视频维度类型枚举。
 
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
+
 **起始版本：** 26.0.0
 
 | 枚举项 | 描述 |
@@ -240,6 +254,8 @@ enum OH_NativeBuffer_3D_MetadataKey
 **描述：**
 
 表示NativeBuffer的3D元数据枚举属性。
+
+**系统能力：** SystemCapability.Graphic.Graphic2D.NativeBuffer
 
 **起始版本：** 26.0.0
 

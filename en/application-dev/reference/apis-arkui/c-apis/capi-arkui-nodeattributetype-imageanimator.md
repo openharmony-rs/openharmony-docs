@@ -2,7 +2,7 @@
 
 ## Overview
 
-Defines the ArkUI style attributes that can be set on the native side.
+Enumerates the attribute types that can be set by ArkUI on the native side.
 
 **Since**: 12
 
@@ -30,7 +30,7 @@ NODE_IMAGE_ANIMATOR_STATE = 19001
 
 **Description**
 
-Defines the playback status of the animation for the image animator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: playback status of the animation. The parameter type is [ArkUI_AnimationStatus](capi-image-animator-h.md#arkui_animationstatus). The default value is <b>ARKUI_ANIMATION_STATUS_INITIAL</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: playback status of the animation. The parameter type is [ArkUI_AnimationStatus](capi-image-animator-h.md#arkui_animationstatus).</li> </ul>
+Playback status of the frame-by-frame animation. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: playback status of the frame-by-frame animation. The parameter type is [ArkUI_AnimationStatus](capi-image-animator-h.md#arkui_animationstatus). The default state is initial.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: playback status of the frame-by-frame animation. The parameter type is [ArkUI_AnimationStatus](capi-image-animator-h.md#arkui_animationstatus).</li> </ul>
 
 **Since**: 12
 
@@ -42,7 +42,7 @@ NODE_IMAGE_ANIMATOR_DURATION = 19002
 
 **Description**
 
-Defines the playback duration for the image animator. When the duration is 0, no image is played. The value change takes effect only at the beginning of the next cycle. When a separate duration is set in images, the setting of this attribute is invalid. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: playback duration, in ms. The default value is 1000.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: playback duration, in ms.</li> </ul>
+Playback duration of the frame-by-frame animation. This attribute does not take effect when a separate duration is set for any of the image frames. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: playback duration, in milliseconds. The default value is <b>1000</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: playback duration, in milliseconds. The default value is <b>1000</b>.</li> </ul>
 
 **Since**: 12
 
@@ -54,7 +54,7 @@ NODE_IMAGE_ANIMATOR_REVERSE = 19003
 
 **Description**
 
-Defines the playback direction for the image animator. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: playback direction. <b>0</b> indicates that images are played from the first one to the last one, and <b>1</b> indicates that images are played from the last one to the first one.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: playback direction. <b>0</b> indicates that images are played from the first one to the last one, and <b>1</b> indicates that images are played from the last one to the first one.</li> </ul>
+Playback direction of the frame-by-frame animation. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: playback direction. The value <b>0</b> indicates that images are played from the first one to the last one, and <b>1</b> indicates that images are played from the last one to the first one. The default value is <b>0</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: playback direction. The value <b>0</b> indicates that images are played from the first one to the last one, and <b>1</b> indicates that images are played from the last one to the first one.</li> </ul>
 
 **Since**: 12
 
@@ -66,7 +66,7 @@ NODE_IMAGE_ANIMATOR_FIXED_SIZE = 19004
 
 **Description**
 
-Defines whether the image size is the same as the component size. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the image size is the same as the component size. <b>1</b> indicates that the image size is the same as the component size. In this case, the width, height, top, and left attributes of the image are invalid. <b>0</b> indicates that the image size is customized. The width, height, top, and left attributes of each image must be set separately.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image size is the same as the component size. <b>1</b> indicates that the image size is the same as the component size. <b>0</b> indicates that the image size is customized.</li> </ul>
+Whether the image size is fixed at the component size. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: whether the image size is fixed at the component size. The value <b>1</b> indicates that the image size is fixed at the component size. The value <b>0</b> indicates that the <b>width</b>, <b>height</b>, <b>top</b>, and <b>left</b> attributes of each image must be set separately. The default value is <b>1</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: whether the image size is fixed at the component size. The value <b>1</b> indicates that the image size is fixed at the component size. The value <b>0</b> indicates that the <b>width</b>, <b>height</b>, <b>top</b>, and <b>left</b> attributes of each image must be set separately.</li> </ul>
 
 **Since**: 12
 
@@ -78,7 +78,7 @@ NODE_IMAGE_ANIMATOR_FILL_MODE = 19005
 
 **Description**
 
-Defines the status before and after execution of the animation in the current playback direction. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: status before and after execution of the animation in the current playback direction. The parameter type is [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode). The default value is <b>ARKUI_ANIMATION_FILL_MODE_FORWARDS</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: status before and after execution of the animation in the current playback direction. The parameter type is [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode).</li> </ul>
+Status before and after execution of the frame-by-frame animation in the current playback direction. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: status before and after execution of the frame-by-frame animation in the current playback direction. The parameter type is [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode). The default value is <b>ARKUI_ANIMATION_FILL_MODE_FORWARDS</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: status before and after execution of the frame-by-frame animation in the current playback direction. The parameter type is [ArkUI_AnimationFillMode](capi-native-type-visual-h.md#arkui_animationfillmode).</li> </ul>
 
 **Since**: 12
 
@@ -90,8 +90,20 @@ NODE_IMAGE_ANIMATOR_ITERATION = 19006
 
 **Description**
 
-Defines the number of times that the animation is played. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: number of times that the animation is played.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: number of times that the animation is played.</li> </ul>
+Number of times that the frame-by-frame animation is played. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: number of times that the animation is played.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: number of times that the animation is played.</li> </ul>
 
 **Since**: 12
+
+### NODE_IMAGE_ANIMATOR_INTERPOLATION
+
+```c
+NODE_IMAGE_ANIMATOR_INTERPOLATION = 19007
+```
+
+**Description**
+
+Defines the interpolation effect of the frame images, which mitigates aliasing during image scaling. This attribute can be set, reset, and obtained as required through APIs.<br> **Format of the [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md) parameter for setting the attribute:**<br><ul> <li>.value[0].i32: interpolation effect of the frame images. The parameter type is [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation). The default value is <b>ARKUI_IMAGE_INTERPOLATION_LOW</b>.</li> </ul><br> **Format of the return value [ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md):**<br><ul> <li>.value[0].i32: interpolation effect of the frame images. The parameter type is [ArkUI_ImageInterpolation](capi-image-h.md#arkui_imageinterpolation).</li> </ul>
+
+**Since**: 26.0.1
 
 

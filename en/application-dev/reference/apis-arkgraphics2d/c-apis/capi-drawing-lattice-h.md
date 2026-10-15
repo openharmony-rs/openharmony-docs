@@ -6,6 +6,8 @@ This file declares the functions related to the rectangular lattice object.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -37,6 +39,8 @@ enum OH_Drawing_LatticeRectType
 
 Enumerates the types of rectangles used to fill the lattices. It is applicable only to rectangular lattice objects.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 23
 
 | Enum item | Description |
@@ -57,6 +61,8 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeDestroy(OH_Drawing_Lattice* lattice)
 **Description**
 
 Destroys an **OH_Drawing_Lattice** object and reclaims the memory occupied by the object.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 
@@ -81,6 +87,8 @@ OH_Drawing_ErrorCode OH_Drawing_LatticeCreate(const int* xDivs, const int* yDivs
 **Description**
 
 Divides the image into lattices. The lattices on both even columns and even rows are fixed, and they are drawn at their original size if the target is large enough. If the target is too small to hold the fixed lattices, all the fixed lattices are scaled down to fit the target, and the lattices that are not on even columns and even rows are scaled to accommodate the remaining space.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 23
 

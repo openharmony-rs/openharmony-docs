@@ -6,6 +6,8 @@ Declare avsession base info.
 
 **Library**: libohavsession.so
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 **Related module**: [OHAVSession](capi-ohavsession.md)
@@ -42,6 +44,8 @@ enum AVSession_Type
 
 Enum for avsession type.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -61,6 +65,8 @@ enum AVSession_PlaybackState
 **Description**
 
 Enum for playback state.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -90,6 +96,8 @@ enum AVSession_LoopMode
 
 Defines the playback mode.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -109,6 +117,8 @@ enum AVSession_ControlCommand
 **Description**
 
 Enum for different control command.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 13
 
@@ -131,6 +141,8 @@ enum AVMetadata_SkipIntervals
 
 Defines the skip interval when fastforward or rewind.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -149,6 +161,8 @@ enum AVMetadata_DisplayTag
 
 Display tag
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 13
 
 | Enum item | Description |
@@ -164,6 +178,8 @@ enum AVSession_ConnectionState
 **Description**
 
 Enum for device connection state.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -183,6 +199,8 @@ enum AVSession_AVCastCategory
 
 Enum for cast category indicating different playback scenes.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 | Enum item | Description |
@@ -199,6 +217,8 @@ enum AVSession_DeviceType
 **Description**
 
 Enum for Device type .
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -219,6 +239,8 @@ enum AVSession_ProtocolType
 
 Enum for Protocol type .
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 | Enum item | Description |
@@ -237,6 +259,8 @@ enum AVSession_AVCastControlCommandType
 **Description**
 
 Enum for command type .
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 
@@ -263,6 +287,8 @@ enum AVSession_PlaybackSpeed
 
 Enum for playback speed type.
 
+**System capability**: SystemCapability.Multimedia.AVSession.Core
+
 **Since**: 23
 
 | Enum item | Description |
@@ -284,6 +310,8 @@ enum AVSession_PlaybackFilter
 **Description**
 
 Enum for playbackstate filter.
+
+**System capability**: SystemCapability.Multimedia.AVSession.Core
 
 **Since**: 23
 

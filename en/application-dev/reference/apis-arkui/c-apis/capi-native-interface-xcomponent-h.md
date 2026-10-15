@@ -6,6 +6,8 @@ Declares APIs for accessing a Native XComponent.
 
 **Library**: libace_ndk.z.so
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 8
 
 **Related module**: [OH_NativeXComponent Native XComponent](capi-oh-nativexcomponent-native-xcomponent.md)
@@ -142,6 +144,8 @@ enum anonymous0
 
 Enumerates the API access states.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 8
 
 | Enum item | Description |
@@ -159,6 +163,8 @@ enum ArkUI_XComponent_ImageAnalyzerState
 **Description**
 
 Status code for AI analyzer.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -180,6 +186,8 @@ enum OH_NativeXComponent_TouchEventType
 
 Represents the type of touch event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 8
 
 | Enum item | Description |
@@ -199,6 +207,8 @@ enum OH_NativeXComponent_TouchPointToolType
 **Description**
 
 Represents the touch point tool type.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 9
 
@@ -224,6 +234,8 @@ enum OH_NativeXComponent_EventSourceType
 
 Represents the touch event source type.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 9
 
 | Enum item | Description |
@@ -245,6 +257,8 @@ enum OH_NativeXComponent_MouseEventAction
 
 Represents the mouse event action.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 9
 
 | Enum item | Description |
@@ -261,6 +275,8 @@ enum OH_NativeXComponent_MouseEventButton
 
 Represents the mouse event button.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 9
 
 | Enum item | Description |
@@ -275,6 +291,8 @@ enum OH_NativeXComponent_TouchEvent_SourceTool
 **Description**
 
 Represents the source tool type of TouchEvent
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 10
 
@@ -293,6 +311,8 @@ int32_t OH_NativeXComponent_GetXComponentId(OH_NativeXComponent* component, char
 **Description**
 
 Obtains the ID of the ArkUI XComponent.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 8
 
@@ -319,6 +339,8 @@ int32_t OH_NativeXComponent_GetXComponentSize(OH_NativeXComponent* component, co
 **Description**
 
 Obtains the size of the surface held by the ArkUI XComponent.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 8
 
@@ -347,6 +369,8 @@ int32_t OH_NativeXComponent_GetXComponentOffset(OH_NativeXComponent* component, 
 
 Obtains the offset of the surface held by the ArkUI XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 8
 
 **Parameters**:
@@ -374,6 +398,8 @@ int32_t OH_NativeXComponent_GetTouchEvent(OH_NativeXComponent* component, const 
 
 Obtains the touch event dispatched by the ArkUI XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 8
 
 **Parameters**:
@@ -399,6 +425,8 @@ int32_t OH_NativeXComponent_GetTouchPointToolType(OH_NativeXComponent* component
 **Description**
 
 Obtains the touch pointer tool type by the ArkUI XComponent.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 9
 
@@ -426,6 +454,8 @@ int32_t OH_NativeXComponent_GetTouchPointTiltX(OH_NativeXComponent* component, u
 
 Obtains the touch pointer tiltX by the ArkUI XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 9
 
 **Parameters**:
@@ -451,6 +481,8 @@ int32_t OH_NativeXComponent_GetTouchPointTiltY(OH_NativeXComponent* component, u
 **Description**
 
 Obtains the touch pointer tiltX by the ArkUI XComponent.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 9
 
@@ -478,6 +510,8 @@ int32_t OH_NativeXComponent_GetTouchPointWindowX(OH_NativeXComponent* component,
 
 Obtains the x coordinate of a specific touch point relative to the upper left corner of the current application window from the ArkUI XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -503,6 +537,8 @@ int32_t OH_NativeXComponent_GetTouchPointWindowY(OH_NativeXComponent* component,
 **Description**
 
 Obtains the y coordinate of a specific touch point relative to the upper left corner of the current application window from the ArkUI XComponent.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -530,6 +566,8 @@ int32_t OH_NativeXComponent_GetTouchPointDisplayX(OH_NativeXComponent* component
 
 Obtains the x coordinate of a specific touch point relative to the upper left corner of the current screen from the ArkUI XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -556,6 +594,8 @@ int32_t OH_NativeXComponent_GetTouchPointDisplayY(OH_NativeXComponent* component
 
 Obtains the y coordinate of a specific touch point relative to the upper left corner of the current screen from the ArkUI XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -581,6 +621,8 @@ int32_t OH_NativeXComponent_GetHistoricalPoints(OH_NativeXComponent* component, 
 **Description**
 
 Obtains the touch event dispatched by the ArkUI XComponent.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 10
 
@@ -609,6 +651,8 @@ int32_t OH_NativeXComponent_GetMouseEvent(OH_NativeXComponent* component, const 
 
 Obtains the mouse event dispatched by the ArkUI XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 9
 
 **Parameters**:
@@ -635,6 +679,8 @@ int32_t OH_NativeXComponent_RegisterCallback(OH_NativeXComponent* component, OH_
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 8
 
 **Parameters**:
@@ -659,6 +705,8 @@ int32_t OH_NativeXComponent_RegisterMouseEventCallback(OH_NativeXComponent* comp
 **Description**
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 9
 
@@ -685,6 +733,8 @@ int32_t OH_NativeXComponent_GetExtraMouseEventInfo(OH_NativeXComponent* componen
 
 Obtains the extra mouse event dispatched by the ArkUI XComponent.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -709,6 +759,8 @@ int32_t OH_NativeXComponent_GetMouseEventModifierKeyStates(OH_NativeXComponent_E
 **Description**
 
 Obtains the state of the modifier keys of the mouse event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -735,6 +787,8 @@ int32_t OH_NativeXComponent_RegisterFocusEventCallback(OH_NativeXComponent* comp
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 10
 
 **Parameters**:
@@ -759,6 +813,8 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallback(OH_NativeXComponent* compon
 **Description**
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 10
 
@@ -785,6 +841,8 @@ int32_t OH_NativeXComponent_RegisterBlurEventCallback(OH_NativeXComponent* compo
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 10
 
 **Parameters**:
@@ -809,6 +867,8 @@ int32_t OH_NativeXComponent_GetKeyEvent(OH_NativeXComponent* component, OH_Nativ
 **Description**
 
 Obtains the key event dispatched by the ArkUI XComponent.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 10
 
@@ -835,6 +895,8 @@ int32_t OH_NativeXComponent_GetKeyEventAction(OH_NativeXComponent_KeyEvent* keyE
 
 Obtains the action of the key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 10
 
 **Parameters**:
@@ -859,6 +921,8 @@ int32_t OH_NativeXComponent_GetKeyEventCode(OH_NativeXComponent_KeyEvent* keyEve
 **Description**
 
 Obtains the keyCode of the key event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 10
 
@@ -885,6 +949,8 @@ int32_t OH_NativeXComponent_GetKeyEventSourceType(OH_NativeXComponent_KeyEvent* 
 
 Obtains the sourceType of the key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 10
 
 **Parameters**:
@@ -909,6 +975,8 @@ int32_t OH_NativeXComponent_GetKeyEventDeviceId(OH_NativeXComponent_KeyEvent* ke
 **Description**
 
 Obtains the deviceId of the key event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 10
 
@@ -935,6 +1003,8 @@ int32_t OH_NativeXComponent_GetKeyEventTimestamp(OH_NativeXComponent_KeyEvent* k
 
 Obtains the timestamp of the key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 10
 
 **Parameters**:
@@ -959,6 +1029,8 @@ int32_t OH_NativeXComponent_GetKeyEventModifierKeyStates(OH_NativeXComponent_Key
 **Description**
 
 Obtains the state of the modifier keys of the key event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -985,6 +1057,8 @@ int32_t OH_NativeXComponent_GetKeyEventNumLockState(OH_NativeXComponent_KeyEvent
 
 Obtains the Num Lock state of the key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -1009,6 +1083,8 @@ int32_t OH_NativeXComponent_GetKeyEventCapsLockState(OH_NativeXComponent_KeyEven
 **Description**
 
 Obtains the Caps Lock state of the key event.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -1035,6 +1111,8 @@ int32_t OH_NativeXComponent_GetKeyEventScrollLockState(OH_NativeXComponent_KeyEv
 
 Obtains the Scroll Lock state of the key event.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -1059,6 +1137,8 @@ int32_t OH_NativeXComponent_SetExpectedFrameRateRange(OH_NativeXComponent* compo
 **Description**
 
 Set the Expected FrameRateRange.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 11
 
@@ -1085,6 +1165,8 @@ int32_t OH_NativeXComponent_RegisterOnFrameCallback(OH_NativeXComponent* compone
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 11
 
 **Parameters**:
@@ -1110,6 +1192,8 @@ int32_t OH_NativeXComponent_UnregisterOnFrameCallback(OH_NativeXComponent* compo
 
 UnRegister a callback for this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 11
 
 **Parameters**:
@@ -1133,6 +1217,8 @@ int32_t OH_NativeXComponent_AttachNativeRootNode(OH_NativeXComponent* component,
 **Description**
 
 Attaches the UI component created through the native API of ArkUI to this <b>OH_NativeXComponent</b> instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1163,6 +1249,8 @@ int32_t OH_NativeXComponent_DetachNativeRootNode(OH_NativeXComponent* component,
 
 Detaches the native component of ArkUI from this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Deprecated**: 20
@@ -1192,6 +1280,8 @@ int32_t OH_NativeXComponent_RegisterSurfaceShowCallback(OH_NativeXComponent* com
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1217,6 +1307,8 @@ int32_t OH_NativeXComponent_RegisterSurfaceHideCallback(OH_NativeXComponent* com
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1241,6 +1333,8 @@ int32_t OH_NativeXComponent_RegisterUIInputEventCallback(OH_NativeXComponent* co
 **Description**
 
 Registers a UI input event callback for an <b>OH_NativeXComponent</b> instance and enables the callback to be invoked when a UI input event is received. Currently, only axis events are supported.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1268,6 +1362,8 @@ int32_t OH_NativeXComponent_SetNeedSoftKeyboard(OH_NativeXComponent* component, 
 
 Set whether the <b>OH_NativeXComponent</b> instance needs soft keyboard.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1293,6 +1389,8 @@ int32_t OH_NativeXComponent_RegisterOnTouchInterceptCallback(OH_NativeXComponent
 
 Registers a custom event intercept callback for an <b>OH_NativeXComponent</b> instance. This enables the specified during hit testing. UI input-related operations are not supported on event objects received through this callback. For full functionality, use the <b>NODE_ON_TOUCH_INTERCEPT</b> event on native nodes instead.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1317,6 +1415,8 @@ int32_t OH_NativeXComponent_GetTouchEventSourceType(OH_NativeXComponent* compone
 **Description**
 
 Obtains the touch event's source type dispatched by the ArkUI XComponent.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 12
 
@@ -1344,6 +1444,8 @@ OH_NativeXComponent* OH_NativeXComponent_GetNativeXComponent(ArkUI_NodeHandle no
 
 Obtains the pointer to an <b>OH_NativeXComponent</b> instance based on the specified component instance created by the native API.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 12
 
 **Parameters**:
@@ -1367,6 +1469,8 @@ int32_t OH_NativeXComponent_GetNativeAccessibilityProvider(OH_NativeXComponent* 
 **Description**
 
 Obtains the pointer to the <b> ArkUI_AccessibilityProvider</b> instance of this <b>OH_NativeXComponent</b> instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 13
 
@@ -1393,6 +1497,8 @@ int32_t OH_NativeXComponent_RegisterKeyEventCallbackWithResult(OH_NativeXCompone
 
 Registers a callback for this <b>OH_NativeXComponent</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 14
 
 **Parameters**:
@@ -1417,6 +1523,8 @@ int32_t OH_ArkUI_XComponent_StartImageAnalyzer(ArkUI_NodeHandle node, void* user
 **Description**
 
 Start image analyzer for the specified XComponent instance created by the native API.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 18
 
@@ -1444,6 +1552,8 @@ int32_t OH_ArkUI_XComponent_StopImageAnalyzer(ArkUI_NodeHandle node)
 
 Stop image analyzer for the specified XComponent instance created by the native API.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 18
 
 **Parameters**:
@@ -1467,6 +1577,8 @@ OH_ArkUI_SurfaceHolder* OH_ArkUI_SurfaceHolder_Create(ArkUI_NodeHandle node)
 **Description**
 
 Create a <b>OH_ArkUI_SurfaceHolder</b> object from an XComponent node.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1492,6 +1604,8 @@ void OH_ArkUI_SurfaceHolder_Dispose(OH_ArkUI_SurfaceHolder* surfaceHolder)
 
 Disposes of a <b>OH_ArkUI_SurfaceHolder</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1509,6 +1623,8 @@ int32_t OH_ArkUI_SurfaceHolder_SetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder
 **Description**
 
 Saves custom data on the <b>OH_ArkUI_SurfaceHolder</b> instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1535,6 +1651,8 @@ void* OH_ArkUI_SurfaceHolder_GetUserData(OH_ArkUI_SurfaceHolder* surfaceHolder)
 
 Obtains the custom data saved on the <b>OH_ArkUI_SurfaceHolder</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1559,6 +1677,8 @@ OH_ArkUI_SurfaceCallback* OH_ArkUI_SurfaceCallback_Create()
 
 Create a <b>OH_ArkUI_SurfaceCallback</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Returns**:
@@ -1577,6 +1697,8 @@ void OH_ArkUI_SurfaceCallback_Dispose(OH_ArkUI_SurfaceCallback* callback)
 
 Disposes of a <b>OH_ArkUI_SurfaceCallback</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1594,6 +1716,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceCreatedEvent(OH_ArkUI_SurfaceCallback* c
 **Description**
 
 Set the surface created event of the surface callback.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1614,6 +1738,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceChangedEvent(OH_ArkUI_SurfaceCallback* c
 
 Set the surface changed event of the surface callback.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1633,6 +1759,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceDestroyedEvent(OH_ArkUI_SurfaceCallback*
 
 Set the surface destroyed event of the surface callback.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1651,6 +1779,8 @@ int32_t OH_ArkUI_SurfaceHolder_AddSurfaceCallback(OH_ArkUI_SurfaceHolder* surfac
 **Description**
 
 Adds a surface lifecycle callback for this <b>OH_ArkUI_SurfaceHolder</b> instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1677,6 +1807,8 @@ int32_t OH_ArkUI_SurfaceHolder_RemoveSurfaceCallback(OH_ArkUI_SurfaceHolder* sur
 
 Removes a previously added surface lifecycle callback from this <b>OH_ArkUI_SurfaceHolder</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1702,6 +1834,8 @@ OHNativeWindow* OH_ArkUI_XComponent_GetNativeWindow(OH_ArkUI_SurfaceHolder* surf
 
 Obtains the nativeWindow associated with a <b>OH_ArkUI_SurfaceHolder</b> instance.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1725,6 +1859,8 @@ int32_t OH_ArkUI_XComponent_SetAutoInitialize(ArkUI_NodeHandle node, bool autoIn
 **Description**
 
 Set whether the XComponent node needs to initialize automatically.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1751,6 +1887,8 @@ int32_t OH_ArkUI_XComponent_Initialize(ArkUI_NodeHandle node)
 
 Initialize the XComponent node.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1775,6 +1913,8 @@ int32_t OH_ArkUI_XComponent_Finalize(ArkUI_NodeHandle node)
 
 Finalize the XComponent node.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 19
 
 **Parameters**:
@@ -1798,6 +1938,8 @@ int32_t OH_ArkUI_XComponent_IsInitialized(ArkUI_NodeHandle node, bool* isInitial
 **Description**
 
 Obtains whether the XComponent node has initialized or not.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 19
 
@@ -1824,6 +1966,8 @@ int32_t OH_ArkUI_XComponent_SetExpectedFrameRateRange(ArkUI_NodeHandle node, OH_
 
 Set the Expected FrameRateRange for the XComponent node.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -1848,6 +1992,8 @@ int32_t OH_ArkUI_XComponent_RegisterOnFrameCallback(ArkUI_NodeHandle node, void 
 **Description**
 
 Registers an onFrame callback for the XComponent node.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -1874,6 +2020,8 @@ int32_t OH_ArkUI_XComponent_UnregisterOnFrameCallback(ArkUI_NodeHandle node)
 
 UnRegister the onFrame callback for the XComponent node.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -1897,6 +2045,8 @@ int32_t OH_ArkUI_XComponent_SetNeedSoftKeyboard(ArkUI_NodeHandle node, bool need
 **Description**
 
 Set whether the XComponent node needs soft keyboard when focused.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -1923,6 +2073,8 @@ ArkUI_AccessibilityProvider* OH_ArkUI_AccessibilityProvider_Create(ArkUI_NodeHan
 
 Create a <b>ArkUI_AccessibilityProvider</b> object from an XComponent node.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -1947,6 +2099,8 @@ void OH_ArkUI_AccessibilityProvider_Dispose(ArkUI_AccessibilityProvider* provide
 
 Disposes of an <b>ArkUI_AccessibilityProvider</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -1964,6 +2118,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceShowEvent(OH_ArkUI_SurfaceCallback* call
 **Description**
 
 Set the surface show event of the surface callback.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 20
 
@@ -1984,6 +2140,8 @@ void OH_ArkUI_SurfaceCallback_SetSurfaceHideEvent(OH_ArkUI_SurfaceCallback* call
 
 Set the surface hide event of the surface callback.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 20
 
 **Parameters**:
@@ -2003,6 +2161,8 @@ ArkUI_XComponentSurfaceConfig* OH_ArkUI_XComponentSurfaceConfig_Create()
 
 Create an <b>ArkUI_XComponentSurfaceConfig</b> object.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Returns**:
@@ -2020,6 +2180,8 @@ void OH_ArkUI_XComponentSurfaceConfig_Dispose(ArkUI_XComponentSurfaceConfig* con
 **Description**
 
 Dispose of an <b>ArkUI_XComponentSurfaceConfig</b> object.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 
@@ -2039,6 +2201,8 @@ void OH_ArkUI_XComponentSurfaceConfig_SetIsOpaque(ArkUI_XComponentSurfaceConfig*
 
 Set whether the surface held by XComponent needs to be considered opaque, even if the surface has translucent pixel.
 
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
+
 **Since**: 22
 
 **Parameters**:
@@ -2057,6 +2221,8 @@ int32_t OH_ArkUI_SurfaceHolder_SetSurfaceConfig(OH_ArkUI_SurfaceHolder *surfaceH
 **Description**
 
 Set surface config for this <b>OH_ArkUI_SurfaceHolder</b> instance.
+
+**System capability**: SystemCapability.ArkUI.ArkUI.Full
 
 **Since**: 22
 

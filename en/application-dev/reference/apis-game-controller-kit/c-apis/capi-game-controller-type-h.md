@@ -6,6 +6,8 @@ Defines common enumeration types for the GameController module.
 
 **Library**: libohgame_controller.z.so
 
+**System capability**: SystemCapability.Game.GameController
+
 **Since**: 21
 
 **Related module**: [GameController](capi-gamecontroller.md)
@@ -29,6 +31,8 @@ enum GameController_ErrorCode
 **Description**
 
 Defines error codes of the game controller.
+
+**System capability**: SystemCapability.Game.GameController
 
 **Since**: 21
 

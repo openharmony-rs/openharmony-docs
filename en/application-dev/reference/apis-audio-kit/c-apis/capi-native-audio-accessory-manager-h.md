@@ -6,6 +6,8 @@ Declare audio accessory manager related interfaces.
 
 **Library**: libohaudio.so
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Related module**: [OHAudio](capi-ohaudio.md)
@@ -44,6 +46,8 @@ typedef bool (*OH_AudioAccessory_SetNoiseReductionCallback)(OH_AudioAccessory *a
 
 Callback for noise reduction mode change on an accessory.<br> <b>When Called:</b> When the system requests a change to the noise reduction mode on the accessory. This callback may be called at any time after the accessory is connected.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -69,6 +73,8 @@ OH_AudioCommon_Result OH_AudioManager_GetAccessoryManager(OH_AudioAccessoryManag
 
 Obtains the audio accessory manager instance.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -92,6 +98,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_CreateInput(OH_AudioAccessoryMana
 **Description**
 
 Creates an input audio accessory instance and registers its capabilities.<br> This function creates only the audio accessory instance. It does not create any input stream immediately.<br> The framework performs a deep copy of the accessoryName, manufacturer, modelNumber, and macAddress fields. The caller may free these buffers after this function returns. The framework also performs a deep copy of the streamProperties array in capabilities. The caller may free this array after this function returns.<br> On success, the framework allocates an [OH_AudioAccessory](capi-ohaudio-oh-audioaccessory.md) handle and returns it through accessory pointer.<br> Input streams are created lazily by the framework when an application actually starts recording from this accessory. At that time, the framework creates a new [OH_AudioAccessoryInputStream](capi-ohaudio-oh-audioaccessoryinputstream.md) handle and invokes open stream. The callback receives the newly created stream handle and the requested stream information, and is where the caller must register the required stream callbacks.<br> The stream handle is managed by the framework and must not be released by the caller. A stream remains valid until the framework invokes [OH_AudioAccessoryInputStream_ReleaseCallback](capi-native-audio-accessory-input-stream-manager-h.md#oh_audioaccessoryinputstream_releasecallback) for that stream. After the release callback returns, the stream handle becomes invalid and must not be used again. During the lifetime of one accessory handle, input streams may be created and released multiple times.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
@@ -123,6 +131,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetAssociatedMacAddresses(OH_Audi
 
 Sets the list of associated MAC addresses for the audio accessory.<br> This interface replaces the existing list of associated MAC addresses linked to the accessory instance. It is designed for multi-transmitter scenarios (e.g., 1-to-2, 1-to-4 systems) where the group of connected transmitters may change dynamically.Call this after the accessory is created to report all currently active transmitters associated with the primary MAC. If a transmitter is replaced or disconnected, call this again with the updated list to overwrite the previous state. Safe to call during an active recording session.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -149,6 +159,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_RegisterNoiseReductionCapability(
 **Description**
 
 Registers the noise reduction capability of an audio accessory.<br> The framework performs a deep copy of the supportedModes array and other fields in the capability structure. The caller may free the capability structure and the supportedModes array after this function returns.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 
@@ -177,6 +189,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_SetNoiseReductionMode(OH_AudioAcc
 
 Sets the noise reduction mode of an audio accessory.<br> This function allows the accessory service to actively synchronize the current noise reduction mode to the framework. It is typically used when the mode is changed through other means (e.g., hardware buttons or a companion app), ensuring the framework stays updated with the accessory's actual state.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -202,6 +216,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Connected(OH_AudioAccessoryManage
 **Description**
 
 Connects the audio accessory to the audio framework.<br> All required capabilities must be registered before calling this function.<br> <b>Recommendation:</b> It is recommended that third-party audio accessories prioritize integration with the Smart Life app. This ensures a consistent user experience for device discovery and connection, allowing the accessory service to avoid direct permission management.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Required permission**: ohos.permission.MANAGE_AUDIO_ACCESSORY
 
@@ -230,6 +246,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Disconnected(OH_AudioAccessoryMan
 
 Disconnects the audio accessory from the audio framework.
 
+**System capability**: SystemCapability.Multimedia.Audio.Core
+
 **Required permission**: ohos.permission.MANAGE_AUDIO_ACCESSORY
 
 **Since**: 26.0.0
@@ -256,6 +274,8 @@ OH_AudioCommon_Result OH_AudioAccessoryManager_Destroy(OH_AudioAccessoryManager 
 **Description**
 
 Destroys the audio accessory instance.<br> The accessory must be disconnected before destroying.
+
+**System capability**: SystemCapability.Multimedia.Audio.Core
 
 **Since**: 26.0.0
 

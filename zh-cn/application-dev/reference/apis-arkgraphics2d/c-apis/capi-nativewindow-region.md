@@ -22,7 +22,10 @@ struct Region {...}
 
 | 名称 | 描述 |
 | -- | -- |
-| struct Rect | 如果rects是空指针nullptr，默认Buffer大小为脏区 |
+| rects.x |  |
+| rects.y |  |
+| rects.w |  |
+| rects.h |  |
 | int32_t rectNumber | 如果rectNumber是0，默认Buffer大小为脏区 |
 
 

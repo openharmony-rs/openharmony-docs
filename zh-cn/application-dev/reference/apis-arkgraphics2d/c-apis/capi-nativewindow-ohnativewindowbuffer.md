@@ -1,4 +1,4 @@
-# OHNativeWindowBuffer (NativeWindow)
+# OHNativeWindowBuffer
 
 ```c
 typedef struct OHNativeWindowBuffer OHNativeWindowBuffer

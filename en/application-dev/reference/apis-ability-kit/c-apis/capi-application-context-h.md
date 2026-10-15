@@ -6,6 +6,8 @@ The file declares the APIs related to the application-level context.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -51,6 +53,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCacheDir(char* b
 
 Obtains the application-level cache directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -77,6 +81,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetAreaMode(Ability
 
 Obtains the application-level file data encryption level of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 13
 
 **Parameters**:
@@ -100,6 +106,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleName(char*
 **Description**
 
 Obtains the bundle name of the application.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 13
 
@@ -127,6 +135,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetTempDir(char* bu
 
 Obtains the application-level temporary file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -152,6 +162,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetFilesDir(char* b
 **Description**
 
 Obtains the application-level common file directory of the application.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -179,6 +191,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDatabaseDir(char
 
 Obtains the application-level database file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -204,6 +218,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetPreferencesDir(c
 **Description**
 
 Obtains the application-level preferences file directory of the application.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -231,6 +247,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetBundleCodeDir(ch
 
 Obtains the application-level installation file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -256,6 +274,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetDistributedFiles
 **Description**
 
 Obtains the application-level distributed file directory of the application.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 16
 
@@ -283,6 +303,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetCloudFileDir(cha
 
 Obtains the application-level cloud file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 16
 
 **Parameters**:
@@ -308,6 +330,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetResourceDir(cons
 **Description**
 
 Obtains the application-level resource directory of the application.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 20
 
@@ -336,6 +360,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbility(AbilityBase_Want *
 
 Starts the UIAbility of the current application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
 **Since**: 15
@@ -361,6 +387,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithStartOptions(Ab
 **Description**
 
 Starts the UIAbility of the current application using **StartOptions**.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -389,6 +417,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetVersionCode(int6
 
 Obtains the application version code.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -412,6 +442,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLaunchParameter(
 **Description**
 
 Obtains **WantParams** passed for the initial launch of the UIAbility of the current application. For details about **WantParams**, see parameters in Want.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 21
 
@@ -439,6 +471,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLatestParameter(
 
 Obtains **WantParams** passed for the mose recent launch of the UIAbility of the current application. For details about **WantParams**, see parameters in Want.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 21
 
 **Parameters**:
@@ -464,6 +498,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_StartSelfUIAbilityWithPidResult(Abili
 **Description**
 
 Starts the UIAbility of the current application using **StartOptions** and obtains the process ID of the target UIAbility.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Required permission**: ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -493,6 +529,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextGetLogFileDir(char*
 
 Obtains the application-level log file directory of the application.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 22
 
 **Parameters**:
@@ -518,6 +556,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ApplicationContextNotifyPageChanged(c
 **Description**
 
 This API can be called only from third-party frameworks. Each time a third-party framework switches pages, it notifies the system of the target page information (including the target page path, the length of the target page path, and the window ID corresponding to the target page). The system can adjust or recover the page according to product policies.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 23
 
@@ -546,6 +586,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_AcquireUIAbilityChildProcessInfos(OH_
 **Description**
 
 Acquires UIAbility child process infos of the current application.<br> Includes child processes created via startAbility with ProcessMode.NEW_PROCESS_ATTACH_TO_PARENT.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.1
 

@@ -6,6 +6,8 @@ Declares the APIs for starting or stopping vibration. Two vibration modes are su
 
 **Library**: libohvibrator.z.so
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Since**: 11
 
 **Related module**: [Vibrator](capi-vibrator.md)
@@ -31,6 +33,8 @@ int32_t OH_Vibrator_PlayVibration(int32_t duration, Vibrator_Attribute attribute
 **Description**
 
 Configures the vibrator to vibrate continuously for a given duration. After the API is successfully called, the vibrator starts to vibrate immediately and automatically stops after the specified duration. This method is applicable to scenarios where the vibrator needs to vibrate for a fixed duration, such as alarm clock, timing reminder, game feedback, and message notification.
+
+**System capability**: SystemCapability.Sensors.MiscDevice
 
 **Required permission**: ohos.permission.VIBRATE
 
@@ -65,6 +69,8 @@ int32_t OH_Vibrator_PlayVibrationCustom(Vibrator_FileDescription fileDescription
 
 Configures the vibrator to vibrate with the custom sequence. After the API is successfully called, the system plays the vibration effect based on the custom vibration sequence. This method is applicable to scenarios that require complex vibration patterns, such as notification reminders, games, and tactile feedback, to provide personalized vibration experiences and enhance user immersion.
 
+**System capability**: SystemCapability.Sensors.MiscDevice
+
 **Required permission**: ohos.permission.VIBRATE
 
 **Since**: 11
@@ -96,6 +102,8 @@ int32_t OH_Vibrator_Cancel()
 **Description**
 
 Stops the vibration. After the API is successfully called, the ongoing vibration or custom vibration sequence is stopped immediately. This method is applicable to scenarios where vibration needs to be stopped immediately, such as when a user cancels an operation, switches between apps, or clears a system notification. It helps optimize user experience and reduce device power consumption.
+
+**System capability**: SystemCapability.Sensors.MiscDevice
 
 **Required permission**: ohos.permission.VIBRATE
 

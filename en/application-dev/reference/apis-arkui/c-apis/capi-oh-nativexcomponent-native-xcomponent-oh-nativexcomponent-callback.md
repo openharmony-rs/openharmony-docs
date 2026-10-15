@@ -22,10 +22,10 @@ Registers the surface lifecycle and touch event callbacks.
 
 | Name | Description |
 | -- | -- |
-| [void (\*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)](#onsurfacecreated) | Called when the surface is created. |
-| [void (\*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)](#onsurfacechanged) | Called when the surface is changed. |
-| [void (\*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)](#onsurfacedestroyed) | Called when the surface is destroyed. |
-| [void (\*DispatchTouchEvent)(OH_NativeXComponent* component, void* window)](#dispatchtouchevent) | Called when a touch event is triggered. |
+| [void (\*OnSurfaceCreated)(OH_NativeXComponent* component, void* window)](#onsurfacecreated) | - | Called when the surface is created. |
+| [void (\*OnSurfaceChanged)(OH_NativeXComponent* component, void* window)](#onsurfacechanged) | - | Called when the surface is changed. |
+| [void (\*OnSurfaceDestroyed)(OH_NativeXComponent* component, void* window)](#onsurfacedestroyed) | - | Called when the surface is destroyed. |
+| [void (\*DispatchTouchEvent)(OH_NativeXComponent* component, void* window)](#dispatchtouchevent) | - | Called when a touch event is triggered. |
 
 ## Member function description
 

@@ -6,6 +6,8 @@
 
 **库：** libace_ndk.z.so
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **相关模块：** [ArkUI_NativeModule](capi-arkui-nativemodule.md)
@@ -40,6 +42,8 @@ enum ArkUI_KeyProcessingMode
 
 按键事件处理的优先级。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 | 枚举项 | 描述 |
@@ -59,6 +63,8 @@ ArkUI_ErrorCode OH_ArkUI_FocusRequest(ArkUI_NodeHandle node)
 **描述：**
 
 为特定节点请求焦点。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -84,6 +90,8 @@ void OH_ArkUI_FocusClear(ArkUI_ContextHandle uiContext)
 
 将当前焦点清除到根容器节点。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -101,6 +109,8 @@ void OH_ArkUI_FocusActivate(ArkUI_ContextHandle uiContext, bool isActive, bool i
 **描述：**
 
 设置当前界面的焦点激活态，获焦节点显示焦点框。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 
@@ -122,6 +132,8 @@ void OH_ArkUI_FocusSetAutoTransfer(ArkUI_ContextHandle uiContext, bool autoTrans
 
 设置页面切换时，焦点转移行为。
 
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
 **起始版本：** 15
 
 **参数：**
@@ -140,6 +152,8 @@ void OH_ArkUI_FocusSetKeyProcessingMode(ArkUI_ContextHandle uiContext, ArkUI_Key
 **描述：**
 
 设置按键事件处理的优先级。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 **起始版本：** 15
 

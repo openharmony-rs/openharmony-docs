@@ -6,6 +6,8 @@
 
 **库：** libability_runtime.so
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **相关模块：** [AbilityRuntime](capi-abilityruntime.md)
@@ -41,6 +43,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_GetBaseContext
 
 从ModularObjectExtensionAbility上下文中获取基础上下文。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -65,6 +69,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **描述：**
 
 启动当前应用的UIAbility。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -92,6 +98,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_StartSelfUIAbi
 **描述：**
 
 通过StartOptions启动当前应用的UIAbility。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **需要权限：** ohos.permission.NDK_START_SELF_UI_ABILITY
 
@@ -121,6 +129,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionContext_TerminateSelf(
 
 销毁ModularObjectExtensionAbility自身。
 
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -144,6 +154,8 @@ OHIPCRemoteStub* OH_AbilityRuntime_ModObjExtensionContext_CreateIPCRemoteStub(OH
 **描述：**
 
 创建一个OHIPCRemoteStub对象，回调函数将在ExtensionAbility指定的线程上运行。requestCallback和destroyCallback将在由ExtensionAbility的 [OH_AbilityRuntime_ThreadMode](capi-modular-object-extension-manager-h.md#oh_abilityruntime_threadmode)决定的线程上按顺序执行。调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)后，不会再有新的requestCallback回调， 且正在执行的requestCallback完成后才会回调destroyCallback。调用方需调用 [OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub](capi-modular-object-extension-context-h.md#oh_abilityruntime_modobjextensioncontext_destroyipcremotestub)销毁返回的对象，避免内存泄漏。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 
@@ -172,6 +184,8 @@ void OH_AbilityRuntime_ModObjExtensionContext_DestroyIPCRemoteStub(OH_AbilityRun
 **描述：**
 
 销毁OHIPCRemoteStub对象。
+
+**系统能力：** SystemCapability.Ability.AbilityRuntime.Core
 
 **起始版本：** 26.0.0
 

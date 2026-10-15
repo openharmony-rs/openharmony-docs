@@ -6,6 +6,8 @@ This file declares the functions related to the text blob in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -49,6 +51,8 @@ OH_Drawing_TextBlobBuilder* OH_Drawing_TextBlobBuilderCreate(void)
 
 Creates an **OH_Drawing_TextBlobBuilder** object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Returns**:
@@ -66,6 +70,8 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromText(const void* text, size_t 
 **Description**
 
 Creates an **OH_Drawing_TextBlob** object from the text. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **text** or **font** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **textEncoding** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -93,6 +99,8 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromTextWithFallback(const void *t
 **Description**
 
 Creates a sequence of `OH_Drawing_TextBlob` objects from the text with font fallback support. When the typeface of the current font does not support certain characters, it automatically finds fallback typefaces from the system. One text blob is created per run of consecutive codepoints that share the same typeface. All blobs share the coordinate system of the whole string: each blob's glyph positions already include the advance of preceding runs, so every blob should be drawn at the same origin.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.1
 
@@ -125,6 +133,8 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromPosText(const void* text, size
 
 Creates an **OH_Drawing_TextBlob** object from the text. The coordinates of each character in the **<br>OH_Drawing_TextBlob** object are determined by the coordinate information in the **OH_Drawing_Point2D** array. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If any of **text**, **point2D**, and **font** is NULL or **byteLength** is **0**, **<br>OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **textEncoding** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -152,6 +162,8 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromPosTextWithFallback(const void
 **Description**
 
 Creates a sequence of `OH_Drawing_TextBlob` objects from text with font fallback support. When the typeface of the current font does not support certain characters, it automatically finds fallback typefaces from the system. If no fallback typeface is found, the typeface of the current font is still used. One text blob is created per run of consecutive codepoints that share the same typeface. The coordinates of each character in the `OH_Drawing_TextBlob` object are determined by the coordinate information in the `OH_Drawing_Point2D` array.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.1
 
@@ -185,6 +197,8 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobCreateFromString(const char* str, const 
 
 Creates an **OH_Drawing_TextBlob** object from a string. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **str** or **font** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned. If **textEncoding** is not set to one of the enumerated values, **OH_DRAWING_ERROR_PARAMETER_OUT_OF_RANGE** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -210,6 +224,8 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobCreateFromStringWithFallback(const char 
 **Description**
 
 Creates a sequence of `OH_Drawing_TextBlob` objects from a string with font fallback support. When the typeface of the current font does not support certain characters, it automatically finds fallback typefaces from the system. One text blob is created per run of consecutive codepoints that share the same typeface. All blobs share the coordinate system of the whole string: each blob's glyph positions already include the advance of preceding runs, so every blob should be drawn at the same origin.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.1
 
@@ -241,6 +257,8 @@ void OH_Drawing_TextBlobGetBounds(OH_Drawing_TextBlob* textBlob, OH_Drawing_Rect
 
 Obtains the bounds of an **OH_Drawing_TextBlob** object. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **textBlob** or **rect** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -259,6 +277,8 @@ uint32_t OH_Drawing_TextBlobUniqueID(const OH_Drawing_TextBlob* textBlob)
 **Description**
 
 Obtains the unique identifier of a text blob. The identifier is a non-zero value. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **textBlob** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 
@@ -283,6 +303,8 @@ const OH_Drawing_RunBuffer* OH_Drawing_TextBlobBuilderAllocRunPos(OH_Drawing_Tex
 **Description**
 
 Allocates a run to store glyphs and positions. The pointer returned does not need to be managed by the caller. It can no longer be used after [OH_Drawing_TextBlobBuilderMake](capi-drawing-text-blob-h.md#oh_drawing_textblobbuildermake) is called. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If either **textBlobBuilder** or **font** is NULL or **count** is less than or equal to 0, **<br>OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 11
 
@@ -311,6 +333,8 @@ OH_Drawing_TextBlob* OH_Drawing_TextBlobBuilderMake(OH_Drawing_TextBlobBuilder* 
 
 Makes an **OH_Drawing_TextBlob** object from an **OH_Drawing_TextBlobBuilder**. This API may return an error code. For details, call [OH_Drawing_ErrorCodeGet](capi-drawing-error-code-h.md#oh_drawing_errorcodeget). If **textBlobBuilder** is NULL, **OH_DRAWING_ERROR_INVALID_PARAMETER** is returned.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -335,6 +359,8 @@ void OH_Drawing_TextBlobDestroy(OH_Drawing_TextBlob* textBlob)
 
 Destroys an **OH_Drawing_TextBlob** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -353,6 +379,8 @@ void OH_Drawing_TextBlobBuilderDestroy(OH_Drawing_TextBlobBuilder* textBlobBuild
 
 Destroys an **OH_Drawing_TextBlobBuilder** object and reclaims the memory occupied by the object.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 11
 
 **Parameters**:
@@ -370,6 +398,8 @@ OH_Drawing_ErrorCode OH_Drawing_TextBlobsArrayDestroy(OH_Drawing_TextBlob **text
 **Description**
 
 Destroys an array of `OH_Drawing_TextBlob` objects and reclaims the memory occupied by the array. This function destroys every text blob in the array that is still alive and releases the array itself. <b>count</b> must be exactly the number reported when the array was created; passing any other value results in undefined behavior.
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 26.0.1
 

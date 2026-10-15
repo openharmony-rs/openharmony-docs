@@ -6,6 +6,8 @@ This file declares the functions related to the pixel map in the drawing module.
 
 **Library**: libnative_drawing.so
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Related module**: [Drawing](capi-drawing.md)
@@ -39,6 +41,8 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromNativePixelMap(NativePixelMap_* n
 
 Obtains the pixel map defined by this module from a pixel map defined by the image framework.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -63,6 +67,8 @@ OH_Drawing_PixelMap* OH_Drawing_PixelMapGetFromOhPixelMapNative(OH_PixelmapNativ
 
 Obtains the pixel map defined by this module from a pixel map defined by the image framework.
 
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
+
 **Since**: 12
 
 **Parameters**:
@@ -86,6 +92,8 @@ void OH_Drawing_PixelMapDissolve(OH_Drawing_PixelMap* pixelMap)
 **Description**
 
 Removes the relationship between a pixel map defined by this module and a pixel map defined by the image framework. The relationship is established by calling [OH_Drawing_PixelMapGetFromNativePixelMap](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromnativepixelmap) or [OH_Drawing_PixelMapGetFromOhPixelMapNative](capi-drawing-pixel-map-h.md#oh_drawing_pixelmapgetfromohpixelmapnative) .
+
+**System capability**: SystemCapability.Graphic.Graphic2D.NativeDrawing
 
 **Since**: 12
 

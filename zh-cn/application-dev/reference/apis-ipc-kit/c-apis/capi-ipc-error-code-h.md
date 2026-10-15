@@ -8,6 +8,8 @@
 
 **库：** libipc_capi.so
 
+**系统能力：** SystemCapability.Communication.IPC.Core
+
 **起始版本：** 12
 
 **相关模块：** [OHIPCErrorCode](capi-ohipcerrorcode.md)
@@ -31,6 +33,8 @@ enum OH_IPC_ErrorCode
 **描述：**
 
 IPC错误码定义。
+
+**系统能力：** SystemCapability.Communication.IPC.Core
 
 **起始版本：** 12
 

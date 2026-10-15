@@ -6,6 +6,8 @@
 
 **库：** libimage_effect.so
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **相关模块：** [ImageEffect](capi-imageeffect.md)
@@ -64,6 +66,8 @@ OH_ImageEffect *OH_ImageEffect_Create(const char *name)
 
 创建OH_ImageEffect实例，调用[OH_ImageEffect_Release](capi-image-effect-h.md#oh_imageeffect_release)进行资源释放。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -87,6 +91,8 @@ OH_EffectFilter *OH_ImageEffect_AddFilter(OH_ImageEffect *imageEffect, const cha
 **描述：**
 
 添加滤镜。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -113,6 +119,8 @@ ImageEffect_ErrorCode OH_ImageEffect_AddFilterByFilter(OH_ImageEffect *imageEffe
 
 添加指定滤镜。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -137,6 +145,8 @@ OH_EffectFilter *OH_ImageEffect_InsertFilter(OH_ImageEffect *imageEffect, uint32
 **描述：**
 
 插入滤镜。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -164,6 +174,8 @@ ImageEffect_ErrorCode OH_ImageEffect_InsertFilterByFilter(OH_ImageEffect *imageE
 
 按指定位置插入滤镜。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -190,6 +202,8 @@ int32_t OH_ImageEffect_RemoveFilter(OH_ImageEffect *imageEffect, const char *fil
 
 移除滤镜。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -215,6 +229,8 @@ ImageEffect_ErrorCode OH_ImageEffect_RemoveFilterByIndex(OH_ImageEffect *imageEf
 
 移除指定位置滤镜。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -239,6 +255,8 @@ OH_EffectFilter *OH_ImageEffect_ReplaceFilter(OH_ImageEffect *imageEffect, uint3
 **描述：**
 
 替换滤镜。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -266,6 +284,8 @@ ImageEffect_ErrorCode OH_ImageEffect_ReplaceFilterByFilter(OH_ImageEffect *image
 
 替换指定位置滤镜。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -292,6 +312,8 @@ int32_t OH_ImageEffect_GetFilterCount(OH_ImageEffect *imageEffect)
 
 查询已添加滤镜个数。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -315,6 +337,8 @@ OH_EffectFilter *OH_ImageEffect_GetFilter(OH_ImageEffect *imageEffect, uint32_t 
 **描述：**
 
 查询已添加滤镜。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -340,6 +364,8 @@ ImageEffect_ErrorCode OH_ImageEffect_Configure(OH_ImageEffect *imageEffect, cons
 **描述：**
 
 设置配置信息。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -367,6 +393,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputSurface(OH_ImageEffect *imageEffec
 
 设置输出Surface。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -391,6 +419,8 @@ ImageEffect_ErrorCode OH_ImageEffect_GetInputSurface(OH_ImageEffect *imageEffect
 **描述：**
 
 获取输入Surface。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -417,6 +447,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputPixelmap(OH_ImageEffect *imageEffec
 
 设置输入的Pixelmap。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -441,6 +473,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputPixelmap(OH_ImageEffect *imageEffe
 **描述：**
 
 设置输出的Pixelmap。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -467,6 +501,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputNativeBuffer(OH_ImageEffect *imageE
 
 设置输入的NativeBuffer。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -491,6 +527,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputNativeBuffer(OH_ImageEffect *image
 **描述：**
 
 设置输出的NativeBuffer。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -517,6 +555,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputUri(OH_ImageEffect *imageEffect, co
 
 设置输入的URI。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -541,6 +581,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputUri(OH_ImageEffect *imageEffect, c
 **描述：**
 
 设置输出的URI。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -567,6 +609,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputPicture(OH_ImageEffect *imageEffect
 
 设置输入的Picture。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -592,6 +636,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputPicture(OH_ImageEffect *imageEffec
 
 设置输出的Picture。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 13
 
 **参数：**
@@ -616,6 +662,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetInputTextureId(OH_ImageEffect *imageEffe
 **描述：**
 
 配置输入包含图片内容的纹理标识。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 20
 
@@ -643,6 +691,8 @@ ImageEffect_ErrorCode OH_ImageEffect_SetOutputTextureId(OH_ImageEffect *imageEff
 
 配置输出包含渲染后的纹理标识。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 20
 
 **参数：**
@@ -668,6 +718,8 @@ ImageEffect_ErrorCode OH_ImageEffect_Start(OH_ImageEffect *imageEffect)
 
 启动效果器。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -691,6 +743,8 @@ ImageEffect_ErrorCode OH_ImageEffect_Stop(OH_ImageEffect *imageEffect)
 **描述：**
 
 停止生效效果。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -716,6 +770,8 @@ ImageEffect_ErrorCode OH_ImageEffect_Release(OH_ImageEffect *imageEffect)
 
 释放OH_ImageEffect实例资源。
 
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
+
 **起始版本：** 12
 
 **参数：**
@@ -739,6 +795,8 @@ ImageEffect_ErrorCode OH_ImageEffect_Save(OH_ImageEffect *imageEffect, char **in
 **描述：**
 
 序列化效果器。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 
@@ -764,6 +822,8 @@ OH_ImageEffect *OH_ImageEffect_Restore(const char *info)
 **描述：**
 
 反序列化效果器。
+
+**系统能力：** SystemCapability.Multimedia.ImageEffect.Core
 
 **起始版本：** 12
 

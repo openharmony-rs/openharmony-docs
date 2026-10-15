@@ -8,6 +8,8 @@ Provides methods for creating, destroying, reading, and writing the text box avo
 
 **Library**: libohinputmethod.so
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Related module**: [InputMethod](capi-inputmethod.md)
@@ -43,6 +45,8 @@ InputMethod_TextAvoidInfo *OH_TextAvoidInfo_Create(double positionY, double heig
 
 Create a new [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -68,6 +72,8 @@ void OH_TextAvoidInfo_Destroy(InputMethod_TextAvoidInfo *info)
 
 Destroy a [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md) instance.
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -85,6 +91,8 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetPositionY(InputMethod_TextAvoidInfo *i
 **Description**
 
 Set positionY value into [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md).
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 
@@ -111,6 +119,8 @@ InputMethod_ErrorCode OH_TextAvoidInfo_SetHeight(InputMethod_TextAvoidInfo *info
 
 Set height value into [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md).
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -136,6 +146,8 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetPositionY(InputMethod_TextAvoidInfo *i
 
 Get positionY value from [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md).
 
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
+
 **Since**: 12
 
 **Parameters**:
@@ -160,6 +172,8 @@ InputMethod_ErrorCode OH_TextAvoidInfo_GetHeight(InputMethod_TextAvoidInfo *info
 **Description**
 
 Get height value from [InputMethod_TextAvoidInfo](capi-inputmethod-inputmethod-textavoidinfo.md).
+
+**System capability**: SystemCapability.MiscServices.InputMethodFramework
 
 **Since**: 12
 

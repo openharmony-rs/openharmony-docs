@@ -66,7 +66,7 @@ NODE_ALIGNMENT
 
 **描述：**
 
-设置组件内容在元素绘制区域内的对齐方式，支持属性设置，属性重置和属性获取接口。<br> 在Stack中该属性与NODE_STACK_ALIGN_CONTENT效果一致，只能设置子组件在容器内的对齐方式。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32： 设置对齐方式，数据类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值ARKUI_ALIGNMENT_CENTER。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32： 对齐方式，数据类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。</li> </ul>
+设置组件内容在元素绘制区域内的对齐方式，支持属性设置，属性重置和属性获取接口。<br> 在Stack中该属性与NODE_STACK_ALIGN_CONTENT效果一致，只能设置子组件在容器内的对齐方式。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32： 设置对齐方式，数据类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值ARKUI_ALIGNMENT_CENTER。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32： 对齐方式，数据类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。</li> </ul>
 
 **起始版本：** 12
 
@@ -138,7 +138,7 @@ NODE_DIRECTION
 
 **描述：**
 
-设置容器元素内主轴方向上的布局，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置容器元素内主轴方向上的布局类型，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：容器元素内主轴方向上的布局类型，参数类型[ArkUI_Direction](capi-native-type-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。</li> </ul>
+设置容器元素内主轴方向上的布局，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置容器元素内主轴方向上的布局类型，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：容器元素内主轴方向上的布局类型，参数类型[ArkUI_Direction](capi-layout-h.md#arkui_direction)，默认值为ARKUI_DIRECTION_AUTO。</li> </ul>
 
 **起始版本：** 12
 
@@ -198,7 +198,7 @@ NODE_ALIGN_SELF
 
 **描述：**
 
-设置子组件在父容器交叉轴的对齐格式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在父容器交叉轴的对齐格式类型，参数类型[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在父容器交叉轴的对齐格式类型，参数类型[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。</li> </ul>
+设置子组件在父容器交叉轴的对齐格式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在父容器交叉轴的对齐格式类型，参数类型[ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在父容器交叉轴的对齐格式类型，参数类型[ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_AUTO。</li> </ul>
 
 **起始版本：** 12
 
@@ -330,7 +330,7 @@ NODE_RELATIVE_LAYOUT_CHAIN_MODE
 
 **描述：**
 
-指定以该组件为链头所构成的链的参数，支持属性设置、属性重置和属性获取接口。<br> 仅当父容器为RelativeContainer时生效。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。</li> <li>.value[1].i32：设置链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：链的方向。枚举[ArkUI_Axis](capi-native-type-h.md#arkui_axis)。</li> <li>.value[1].i32：链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-native-type-h.md#arkui_relativelayoutchainstyle)。</li> </ul>
+指定以该组件为链头所构成的链的参数，支持属性设置、属性重置和属性获取接口。<br> 仅当父容器为RelativeContainer时生效。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置链的方向。枚举[ArkUI_Axis](capi-layout-h.md#arkui_axis)。</li> <li>.value[1].i32：设置链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：链的方向。枚举[ArkUI_Axis](capi-layout-h.md#arkui_axis)。</li> <li>.value[1].i32：链的样式。枚举[ArkUI_RelativeLayoutChainStyle](capi-layout-h.md#arkui_relativelayoutchainstyle)。</li> </ul>
 
 **起始版本：** 12
 
@@ -390,7 +390,7 @@ NODE_EXPAND_SAFE_AREA = 92
 
 **描述：**
 
-定义控制组件扩展其安全区域，支持属性设置，属性重置和属性获取。<br> **属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：**<br><ul> <li>.value[0]?.u32：设置扩展安全区域的枚举值集合[ArkUI_SafeAreaType](capi-native-type-h.md#arkui_safeareatype)，例如：ARKUI_SAFE_AREA_TYPE_SYSTEM \| ARKUI_SAFE_AREA_TYPE_CUTOUT。</li> <li>.value[1]?.u32：设置扩展安全区域的方向枚举值集合[ArkUI_SafeAreaEdge](capi-native-type-h.md#arkui_safeareaedge)。例如：ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：扩展安全区域。</li> <li>.value[1].u32：扩展安全区域的方向。</li> </ul>
+定义控制组件扩展其安全区域，支持属性设置，属性重置和属性获取。<br> **属性设置方法[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)参数格式：**<br><ul> <li>.value[0]?.u32：设置扩展安全区域的枚举值集合[ArkUI_SafeAreaType](capi-native-type-h.md#arkui_safeareatype)，例如：ARKUI_SAFE_AREA_TYPE_SYSTEM \| ARKUI_SAFE_AREA_TYPE_CUTOUT。</li> <li>.value[1]?.u32：设置扩展安全区域的方向枚举值集合[ArkUI_SafeAreaEdge](capi-layout-h.md#arkui_safeareaedge)。例如：ARKUI_SAFE_AREA_EDGE_TOP \| ARKUI_SAFE_AREA_EDGE_BOTTOM。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：扩展安全区域。</li> <li>.value[1].u32：扩展安全区域的方向。</li> </ul>
 
 **起始版本：** 12
 
@@ -402,7 +402,7 @@ NODE_WIDTH_LAYOUTPOLICY = 105
 
 **描述：**
 
-设置组件宽度布局策略，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置组件宽度布局策略；参数类型为[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：组件宽度布局策略；参数类型为[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。</li> </ul>
+设置组件宽度布局策略，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置组件宽度布局策略；参数类型为[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：组件宽度布局策略；参数类型为[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。</li> </ul>
 
 **起始版本：** 21
 
@@ -414,7 +414,7 @@ NODE_HEIGHT_LAYOUTPOLICY = 106
 
 **描述：**
 
-设置组件高度布局策略，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置组件高度布局策略；参数类型为[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：组件高度布局策略；参数类型为[ArkUI_LayoutPolicy](capi-native-type-h.md#arkui_layoutpolicy)。</li> </ul>
+设置组件高度布局策略，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置组件高度布局策略；参数类型为[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：组件高度布局策略；参数类型为[ArkUI_LayoutPolicy](capi-layout-h.md#arkui_layoutpolicy)。</li> </ul>
 
 **起始版本：** 21
 
@@ -462,7 +462,7 @@ NODE_IGNORE_LAYOUT_SAFE_AREA = 119
 
 **描述：**
 
-设置扩展组件布局时的安全区域，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：设置扩展安全区域的类型。参数类型为[ArkUI_LayoutSafeAreaType](capi-native-type-h.md#arkui_layoutsafeareatype)，默认值：ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM。设置异常值时，按默认值显示。</li> <li>.value[1].u32：设置扩展安全区域的方向。参数类型为[ArkUI_LayoutSafeAreaEdge](capi-native-type-h.md#arkui_layoutsafeareaedge)，默认值：ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL。例如：ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_START。设置异常值时，按默认值显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：扩展安全区域的类型。</li> <li>.value[1].u32：扩展安全区域的方向。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。
+设置扩展组件布局时的安全区域，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：设置扩展安全区域的类型。参数类型为[ArkUI_LayoutSafeAreaType](capi-layout-h.md#arkui_layoutsafeareatype)，默认值：ARKUI_LAYOUT_SAFE_AREA_TYPE_SYSTEM。设置异常值时，按默认值显示。</li> <li>.value[1].u32：设置扩展安全区域的方向。参数类型为[ArkUI_LayoutSafeAreaEdge](capi-layout-h.md#arkui_layoutsafeareaedge)，默认值：ARKUI_LAYOUT_SAFE_AREA_EDGE_ALL。例如：ARKUI_LAYOUT_SAFE_AREA_EDGE_TOP \| ARKUI_LAYOUT_SAFE_AREA_EDGE_START。设置异常值时，按默认值显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].u32：扩展安全区域的类型。</li> <li>.value[1].u32：扩展安全区域的方向。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。
 
 **起始版本：** 23
 
@@ -498,7 +498,7 @@ NODE_LAYOUT_GRAVITY = 122
 
 **描述：**
 
-设置Stack容器中子组件的对齐规则，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment)，默认值：ARKUI_ALIGNMENT_CENTER。设置异常值时，按默认值显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-native-type-h.md#arkui_localizedalignment)。</li> </ul>
+设置Stack容器中子组件的对齐规则，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment)，默认值：ARKUI_ALIGNMENT_CENTER。设置异常值时，按默认值显示。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：Stack容器中子组件的对齐规则。参数类型为[ArkUI_LocalizedAlignment](capi-layout-h.md#arkui_localizedalignment)。</li> </ul>
 
 **起始版本：** 23
 
@@ -522,7 +522,7 @@ NODE_STACK_ALIGN_CONTENT = MAX_NODE_SCOPE_NUM * ARKUI_NODE_STACK
 
 **描述：**
 
-设置子组件在Stack容器中的对齐方式，支持属性设置，属性重置和属性获取接口。<br> 该属性与通用属性NODE_ALIGNMENT同时设置时，后设置的属性生效。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32： 设置子组件在Stack容器中的对齐方式，数据类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)，默认值ARKUI_ALIGNMENT_CENTER。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32： 子组件在Stack容器中的对齐方式，数据类型[ArkUI_Alignment](capi-native-type-h.md#arkui_alignment)。</li> </ul>
+设置子组件在Stack容器中的对齐方式，支持属性设置，属性重置和属性获取接口。<br> 该属性与通用属性NODE_ALIGNMENT同时设置时，后设置的属性生效。 **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32： 设置子组件在Stack容器中的对齐方式，数据类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)，默认值ARKUI_ALIGNMENT_CENTER。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32： 子组件在Stack容器中的对齐方式，数据类型[ArkUI_Alignment](capi-layout-h.md#arkui_alignment)。</li> </ul>
 
 **起始版本：** 12
 
@@ -534,7 +534,7 @@ NODE_COLUMN_ALIGN_ITEMS = MAX_NODE_SCOPE_NUM * ARKUI_NODE_COLUMN
 
 **描述：**
 
-设置子组件在Column容器中水平方向上的对齐方式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在Column容器中水平方向上的对齐方式，数据类型[ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment)，默认值ARKUI_HORIZONTAL_ALIGNMENT_CENTER。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：Column子组件在Column容器中水平方向上的对齐方式，数据类型[ArkUI_HorizontalAlignment](capi-native-type-h.md#arkui_horizontalalignment)。</li> </ul>
+设置子组件在Column容器中水平方向上的对齐方式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在Column容器中水平方向上的对齐方式，数据类型[ArkUI_HorizontalAlignment](capi-layout-h.md#arkui_horizontalalignment)，默认值ARKUI_HORIZONTAL_ALIGNMENT_CENTER。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：Column子组件在Column容器中水平方向上的对齐方式，数据类型[ArkUI_HorizontalAlignment](capi-layout-h.md#arkui_horizontalalignment)。</li> </ul>
 
 **起始版本：** 12
 
@@ -546,7 +546,7 @@ NODE_COLUMN_JUSTIFY_CONTENT
 
 **描述：**
 
-设置子组件在Column容器中垂直方向上的对齐方式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在Column容器中垂直方向上的对齐方式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值ARKUI_FLEX_ALIGNMENT_START。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在Column容器中垂直方向上的对齐方式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)。</li> </ul>
+设置子组件在Column容器中垂直方向上的对齐方式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在Column容器中垂直方向上的对齐方式，数据类型[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)，默认值ARKUI_FLEX_ALIGNMENT_START。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在Column容器中垂直方向上的对齐方式，数据类型[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)。</li> </ul>
 
 **起始版本：** 12
 
@@ -582,7 +582,7 @@ NODE_ROW_ALIGN_ITEMS = MAX_NODE_SCOPE_NUM * ARKUI_NODE_ROW
 
 **描述：**
 
-设置子组件在Row容器中垂直方向上的对齐格式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在Row容器中垂直方向上的对齐方式，数据类型[ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment)，默认值ARKUI_VERTICAL_ALIGNMENT_CENTER。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在Row容器中垂直方向上的对齐方式，数据类型[ArkUI_VerticalAlignment](capi-native-type-h.md#arkui_verticalalignment)。</li> </ul>
+设置子组件在Row容器中垂直方向上的对齐格式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在Row容器中垂直方向上的对齐方式，数据类型[ArkUI_VerticalAlignment](capi-layout-h.md#arkui_verticalalignment)，默认值ARKUI_VERTICAL_ALIGNMENT_CENTER。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在Row容器中垂直方向上的对齐方式，数据类型[ArkUI_VerticalAlignment](capi-layout-h.md#arkui_verticalalignment)。</li> </ul>
 
 **起始版本：** 12
 
@@ -594,7 +594,7 @@ NODE_ROW_JUSTIFY_CONTENT
 
 **描述：**
 
-设置Row子组件在水平方向上的对齐格式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在Row容器中水平方向上的对齐方式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值ARKUI_FLEX_ALIGNMENT_START。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在Row容器中水平方向上的对齐方式，数据类型[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)。</li> </ul>
+设置Row子组件在水平方向上的对齐格式，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：设置子组件在Row容器中水平方向上的对齐方式，数据类型[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)，默认值ARKUI_FLEX_ALIGNMENT_START。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在Row容器中水平方向上的对齐方式，数据类型[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)。</li> </ul>
 
 **起始版本：** 12
 
@@ -606,7 +606,7 @@ NODE_FLEX_OPTION = MAX_NODE_SCOPE_NUM * ARKUI_NODE_FLEX
 
 **描述：**
 
-设置Flex属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0]?.i32：设置子组件在Flex容器上排列的方向[ArkUI_FlexDirection](capi-native-type-h.md#arkui_flexdirection)，默认值为ARKUI_FLEX_DIRECTION_ROW。</li> <li>.value[1]?.i32：设置排列规则[ArkUI_FlexWrap](capi-native-type-h.md#arkui_flexwrap)，默认值为ARKUI_FLEX_WRAP_NO_WRAP。</li> <li>.value[2]?.i32：设置主轴上的对齐格式[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START。</li> <li>.value[3]?.i32：设置交叉轴上的对齐格式[ArkUI_ItemAlignment](capi-native-type-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_START。</li> <li>.value[4]?.i32：设置交叉轴中有额外的空间时，多行内容的对齐方式[ArkUI_FlexAlignment](capi-native-type-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在Flex容器上排列的方向的枚举值。</li> <li>.value[1].i32：排列规则的枚举值。</li> <li>.value[2].i32：主轴上的对齐格式的枚举值。</li> <li>.value[3].i32：交叉轴上的对齐格式的枚举值。</li> <li>.value[4].i32：交叉轴中有额外的空间时，多行内容的对齐方式的枚举值。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。
+设置Flex属性，支持属性设置，属性重置和属性获取接口。<br> **属性设置方法参数[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0]?.i32：设置子组件在Flex容器上排列的方向[ArkUI_FlexDirection](capi-layout-h.md#arkui_flexdirection)，默认值为ARKUI_FLEX_DIRECTION_ROW。</li> <li>.value[1]?.i32：设置排列规则[ArkUI_FlexWrap](capi-layout-h.md#arkui_flexwrap)，默认值为ARKUI_FLEX_WRAP_NO_WRAP。</li> <li>.value[2]?.i32：设置主轴上的对齐格式[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START。</li> <li>.value[3]?.i32：设置交叉轴上的对齐格式[ArkUI_ItemAlignment](capi-layout-h.md#arkui_itemalignment)，默认值为ARKUI_ITEM_ALIGNMENT_START。</li> <li>.value[4]?.i32：设置交叉轴中有额外的空间时，多行内容的对齐方式[ArkUI_FlexAlignment](capi-layout-h.md#arkui_flexalignment)，默认值为ARKUI_FLEX_ALIGNMENT_START。</li> </ul> **属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)格式：**<br><ul> <li>.value[0].i32：子组件在Flex容器上排列的方向的枚举值。</li> <li>.value[1].i32：排列规则的枚举值。</li> <li>.value[2].i32：主轴上的对齐格式的枚举值。</li> <li>.value[3].i32：交叉轴上的对齐格式的枚举值。</li> <li>.value[4].i32：交叉轴中有额外的空间时，多行内容的对齐方式的枚举值。</li> </ul><br> 属性获取方法返回值[ArkUI_AttributeItem](capi-arkui-nativemodule-arkui-attributeitem.md)中size为无效值。
 
 **起始版本：** 12
 

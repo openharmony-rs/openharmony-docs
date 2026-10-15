@@ -8,6 +8,8 @@
 
 **库：** libavplayer.so
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 11
 
 **相关模块：** [AVPlayer](capi-avplayer.md)
@@ -119,6 +121,8 @@ enum AVPlayerState
 
 播放状态。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -143,6 +147,8 @@ enum AVPlayerSeekMode
 
 跳转模式。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 11
 
 | 枚举项 | 描述 |
@@ -161,6 +167,8 @@ enum AVPlaybackSpeed
 **描述：**
 
 播放速度。
+
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
 
@@ -186,6 +194,8 @@ enum AVPlayerOnInfoType
 **描述：**
 
 OnInfo类型。 可用于OH_AVPlayerOnInfoCallback和OH_AVPlayerOnInfo(已废弃)，用于表示收到的播放器信息类型。 从API version 12开始，推荐用户使用[OH_AVPlayerOnInfoCallback](capi-avplayer-base-h.md#oh_avplayeroninfocallback)。不同的OnInfo类型，可获取到不同信息（infoBody），infoBody中包含key-value关系表， 详见下述枚举值表。 使用API version 11版本的开发者，需要使用旧接口。针对已废弃接口OH_AVPlayerOnInfo中使用的对应关系，可直接参考[OH_AVPlayerOnInfo](capi-avplayer-base-h.md#oh_avplayeroninfo)的API说明。
+
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
 
@@ -222,6 +232,8 @@ enum AVPlayerBufferingType
 
 播放缓冲消息类型定义。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 12
 
 | 枚举项 | 描述 |
@@ -241,6 +253,8 @@ enum AVPlayerTrackSwitchMode
 
 枚举轨道切换模式。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 23
 
 | 枚举项 | 描述 |
@@ -258,6 +272,8 @@ enum OH_VideoOutputResult
 **描述：**
 
 视频输出的结果。
+
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 26.0.0
 
@@ -278,6 +294,8 @@ typedef void (*OH_AVPlayerOnInfo)(OH_AVPlayer *player, AVPlayerOnInfoType type, 
 **描述：**
 
 收到播放器消息时调用。
+
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
 
@@ -303,6 +321,8 @@ typedef void (*OH_AVPlayerOnInfoCallback)(OH_AVPlayer *player, AVPlayerOnInfoTyp
 
 收到播放器消息时被调用。如果应用成功设置该回调，则不会回调OH_AVPlayerOnInfo函数。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 12
 
 **参数：**
@@ -323,6 +343,8 @@ typedef void (*OH_AVPlayerOnError)(OH_AVPlayer *player, int32_t errorCode, const
 **描述：**
 
 在API version 11以上的版本发生错误时调用。
+
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 11
 
@@ -348,6 +370,8 @@ typedef void (*OH_AVPlayerOnErrorCallback)(OH_AVPlayer *player, int32_t errorCod
 
 发生错误时被调用。如果应用成功设置该回调，则不会调用OH_AVPlayerOnError函数。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 12
 
 **参数：**
@@ -368,6 +392,8 @@ typedef void (*OH_AVPlayerOnAmplitudeUpdateCallback)(OH_AVPlayer *player, double
 **描述：**
 
 当计算出最大音频电平值时调用。
+
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 23
 
@@ -390,6 +416,8 @@ typedef void (*OH_AVPlayerOnSeiMessageReceivedCallback)(OH_AVPlayer *player, OH_
 
 用于获取SEI消息的回调处理函数。在订阅SEI消息事件时使用，回调返回详细的SEI信息。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 23
 
 **参数：**
@@ -411,6 +439,8 @@ typedef void (*OH_AVPlayerPCMOutputCallback)(OH_AVPlayer *player, OH_AVBuffer *p
 
 如果应用成功设置该回调，则会获取音频PCM数据输出。PCM数据为原始音频数据，格式（采样率、声道数、位深等）与媒体源一致。回调在音频解码后触发，数据仅在此回调期间有效，需及时处理或拷贝。适用于音频分析、特效处理等场景。
 
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
+
 **起始版本：** 26.0.0
 
 **参数：**
@@ -430,6 +460,8 @@ typedef void (*OH_AVPlayerPCMProcessorCallback)(OH_AVPlayer *player, OH_AVBuffer
 **描述：**
 
 如果应用成功设置该回调，则AVPlayer需要使用处理后的数据进行音频播放，且处理必须在回调返回前及时完成，否则会阻塞播放。 使用本方法期间请勿更改采样率、声道数或采样格式，避免数据获取出现异常。
+
+**系统能力：** Syscap SystemCapability.Multimedia.Media.AVPlayer
 
 **起始版本：** 26.0.0
 

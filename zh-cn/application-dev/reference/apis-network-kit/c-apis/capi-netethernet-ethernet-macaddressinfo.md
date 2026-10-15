@@ -12,7 +12,7 @@ struct Ethernet_MacAddressInfo {...}
 
 **起始版本：** 26.0.0
 
-**相关模块：** [netmanager_ext](capi-netmanager-ext.md)
+**相关模块：** [NetEthernet](capi-netethernet.md)
 
 **所在头文件：** [net_ethernet_type.h](capi-net-ethernet-type-h.md)
 

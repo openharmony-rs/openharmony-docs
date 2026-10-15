@@ -6,6 +6,8 @@ Declares the modular object extension ability.
 
 **Library**: libability_runtime.so
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Related module**: [AbilityRuntime](capi-abilityruntime.md)
@@ -56,6 +58,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc)(OH_Ability
 
 Callback invoked when a modular object extension is started for initialization.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -75,6 +79,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc)(OH_Abilit
 
 Callback invoked before a modular object extension is destroyed.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -92,6 +98,8 @@ typedef OHIPCRemoteStub* (*OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFun
 **Description**
 
 Callback invoked when a modular object extension is connected to an ability.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -112,6 +120,8 @@ typedef void (*OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc)(OH_Abi
 
 Callback invoked when all abilities connected to a modular object extension are disconnected.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -129,6 +139,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnCrea
 **Description**
 
 Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnCreateFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_oncreatefunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md).
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -155,6 +167,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDest
 
 Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDestroyFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondestroyfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md).
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -179,6 +193,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnConn
 **Description**
 
 Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnConnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_onconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md).
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 
@@ -205,6 +221,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_RegisterOnDisc
 
 Registers the function [OH_AbilityRuntime_ModObjExtensionAbility_OnDisconnectFunc](capi-modular-object-extension-ability-h.md#oh_abilityruntime_modobjextensionability_ondisconnectfunc) with [OH_AbilityRuntime_ModObjExtensionInstance](capi-abilityruntime-oh-abilityruntime-modobjextensioninstance.md).
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -230,6 +248,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetContextFrom
 
 Gets the extension context from the modular object extension instance.
 
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
+
 **Since**: 26.0.0
 
 **Parameters**:
@@ -254,6 +274,8 @@ AbilityRuntime_ErrorCode OH_AbilityRuntime_ModObjExtensionAbility_GetInstanceFro
 **Description**
 
 Gets the modular object extension instance from a base extension instance.
+
+**System capability**: SystemCapability.Ability.AbilityRuntime.Core
 
 **Since**: 26.0.0
 

@@ -6,7 +6,7 @@ typedef struct ArkUI_DragPreviewOption ArkUI_DragPreviewOption
 
 ## Overview
 
-Defines a struct for custom drag preview options.
+Sets a custom drag preview option (such as the shadow and rounded corner effect), which is used to customize the preview image display effect in drag scenarios and help applications provide a drag interaction experience that better meets service requirements.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

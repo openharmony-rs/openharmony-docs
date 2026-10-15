@@ -6,7 +6,7 @@ typedef struct ArkUI_CurveHandle ArkUI_CurveHandle
 
 ## Overview
 
-Defines the pointer to an interpolation curve.
+Defines the pointer to interpolation object of the curve. Curve interpolation is used to control how animation attribute values change over time. Different types of interpolation curves can achieve different animation transition effects.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 

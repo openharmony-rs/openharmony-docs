@@ -6,6 +6,8 @@ The file declares the capability to take screenshots.
 
 **Library**: libnative_display_manager.so
 
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
+
 **Since**: 14
 
 **Related module**: [OH_DisplayManager](capi-oh-displaymanager.md)
@@ -29,6 +31,8 @@ NativeDisplayManager_ErrorCode OH_NativeDisplayManager_CaptureScreenPixelmap(uin
 **Description**
 
 Takes a screenshot of the entire screen. This function can be used to capture a full-screen screenshot on the specified display.
+
+**System capability**: SystemCapability.WindowManager.WindowManager.Core
 
 **Required permission**: ohos.permission.CUSTOM_SCREEN_CAPTURE [since 14]
 

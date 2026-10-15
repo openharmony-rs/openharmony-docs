@@ -6,7 +6,7 @@ typedef struct ArkUI_StringAsyncEvent {...} ArkUI_StringAsyncEvent
 
 ## Overview
 
-Defines the string type parameter used by the component callback event.
+Defines the type of string parameters used in component callback events. This struct is used to pass string data in the asynchronous event callback of a component. It is applicable to scenarios where the component callback event needs to carry text information.
 
 **System capability**: SystemCapability.ArkUI.ArkUI.Full
 
