@@ -6,7 +6,7 @@
 <!--Tester: @wangbeibei-->
 <!--Adviser: @w_Machine_cc-->
 
-The **PhotoPickerComponent** can be embedded in the UI of an app. This component allows the app to select media files without requesting any permissions. The photo picker component component supports two view modes: grid view and large image preview. It provides both single and multiple selection modes. Users can take new photos using the camera entry, and preview and select moving photos. Once the users have made their selection, your application gets read-only access to the chosen images or videos.
+The **PhotoPickerComponent** can be embedded in the UI of an app. This component allows the app to select media files without requesting any permissions. The photo picker component supports two view modes: grid view and large image preview. It provides both single and multiple selection modes. Users can take new photos using the camera entry, and preview and select moving photos. Once the users have made their selection, your application gets read-only access to the chosen images or videos.
 
 Note that the photo picker component does not support nesting. Additionally, prevent overlaying components with the **overlay** attribute or of higher levels on top the component, as this will prevent it from receiving gesture events.
 

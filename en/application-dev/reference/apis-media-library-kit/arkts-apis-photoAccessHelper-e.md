@@ -474,7 +474,7 @@ Enumerates the grid pinch mode types.
 
 > **NOTE**
 >
-> - In the photo picker, users can use the two-finger pinch gesture to to adjust the grid display density.
+> - In the photo picker, users can use the two-finger pinch gesture to adjust the grid display density.
 > - After zooming out, more images are displayed in the grid, facilitating quick browsing and selection.
 > - After zooming in, fewer but larger images are displayed in the grid, facilitating precise viewing.
     
