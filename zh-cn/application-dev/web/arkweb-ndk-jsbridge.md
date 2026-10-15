@@ -229,7 +229,6 @@
 ### 完整示例
 
 * 前端页面代码
-
   ```html
   <!-- entry/src/main/resources/rawfile/runJS.html -->
   <!-- runJS.html -->
@@ -300,6 +299,7 @@
   ```
 
 * ArkTS侧代码
+  <!-- @[interact_with_the_webview_via_the_native_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/ets/pages/Index.ets) -->
 
   ```javascript
   // entry/src/main/ets/pages/Index.ets
@@ -358,7 +358,7 @@
 
 * Node-API侧暴露ArkTS接口
 
-  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry4/src/main/cpp/types/libentry4/Index.d.ts) -->    
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/types/libentry/Index.d.ts) -->    
   
   ``` TypeScript
   // entry4/src/main/cpp/types/libentry4/index.d.ts
@@ -396,6 +396,7 @@
   ```
 
 * Node-API层代码
+  <!-- @[node_api_layer_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/hello.cpp) -->  
 
   ```c++
   // entry/src/main/cpp/hello.cpp
@@ -676,6 +677,7 @@
   ```
 
 * Native侧业务代码
+  <!-- @[the_service_code_on_the_native_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/jsbridge_object.h) -->
 
   ```c++
   // entry/src/main/cpp/jsbridge_object.h
@@ -699,6 +701,8 @@
       std::weak_ptr<JSBridgeObject> weak_ptr_;
   };
   ```
+
+  <!-- @[handles_javascript_calls_from_webview](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/cpp/jsbridge_object.cpp) -->  
 
   ```c++
   // entry/src/main/cpp/jsbridge_object.cpp
@@ -888,7 +892,6 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
 ### 完整示例
 
 * 前端页面代码
-
   ```html
   <!-- entry/src/main/resources/rawfile/runJS.html -->
   <!-- runJS.html -->
@@ -957,6 +960,7 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
   ```
 
 * ArkTS侧代码
+  <!-- @[interact_with_the_webview_via_the_native_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/ets/pages/Index.ets) -->
 
   ```javascript
   // entry/src/main/ets/pages/Index.ets
@@ -1014,6 +1018,7 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
   ```
 
 * Node-API侧暴露ArkTS接口
+  <!-- @[the_arkts_interface_is_exposed_on_the_node_api_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
   ```javascript
   // entry/src/main/cpp/types/libentry/index.d.ts
@@ -1051,6 +1056,7 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
   ```
 
 * Node-API层代码
+  <!-- @[node_api_layer_code](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/hello.cpp) -->  
 
   ```c++
   // entry/src/main/cpp/hello.cpp
@@ -1307,6 +1313,7 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
   ```
 
 * Native侧业务代码
+  <!-- @[jsbridge_object_h](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/jsbridge_object.h) -->
 
   ```c++
   // entry/src/main/cpp/jsbridge_object.h
@@ -1330,6 +1337,8 @@ ArkWeb Native侧需要先获取API结构体，才能调用结构体里的Native 
       std::weak_ptr<JSBridgeObject> weak_ptr_;
   };
   ```
+
+  <!-- @[jsbridge_object_cpp](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridge/entry/src/main/cpp/jsbridge_object.cpp) -->
 
   ```c++
   // entry/src/main/cpp/jsbridge_object.cpp

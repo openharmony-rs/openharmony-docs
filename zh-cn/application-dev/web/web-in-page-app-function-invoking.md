@@ -294,6 +294,8 @@ struct WebComponent {
 ### 应用侧和前端页面之间传递Array
 
  Array可以作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
+  <!-- @[pass_an_array_between_the_application_side_and_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_one.ets) -->
+
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -369,6 +371,8 @@ struct WebComponent {
 ### 非Function等复杂类型使用
 
   非Function等复杂类型作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
+  <!-- @[the_base_type_is_passed_between_the_app_side_and_front_end_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_two.ets) -->
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -433,7 +437,7 @@ struct WebComponent {
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index9.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -450,6 +454,8 @@ struct WebComponent {
 ### 应用侧调用前端页面的Callback
 
   Callback可以作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
+  <!-- @[the_application_side_calls_the_callback_of_the_front_end_page](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_three.ets) -->
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -507,7 +513,7 @@ struct WebComponent {
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index8.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -524,6 +530,8 @@ struct WebComponent {
 ### 应用侧调用前端页面Object里的Function
 
   前端页面Object里的Function可以作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
+  <!-- @[call_the_function_in_the_object_of_the_front_end_page_on_the_application_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_four.ets) -->
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -581,7 +589,7 @@ struct WebComponent {
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index6.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -623,6 +631,8 @@ struct WebComponent {
 ### 前端页面调用应用侧Object里的Function
 
   应用侧Object里的Function可以作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
+  <!-- @[the_front_end_page_calls_the_function_in_the_object_on_the_application_side](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_five.ets) -->
+
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -695,7 +705,7 @@ struct WebComponent {
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index5.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -713,6 +723,8 @@ struct WebComponent {
 ### Promise场景
 
   第一种使用方法，在应用侧new Promise，将Promise作为对象方法的参数或返回值，向前端页面传递。
+  <!-- @[on_the_application_side_of_new_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_one.ets) -->
+  
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -776,7 +788,7 @@ struct WebComponent {
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index2.html -->
   <!DOCTYPE html>
   <html>
   <body>
@@ -791,6 +803,8 @@ struct WebComponent {
   </html>
   ```
   第二种使用方法，在前端页面new Promise，将Promise作为对象方法的参数或返回值，向应用侧传递。
+  <!-- @[on_the_front_end_page_new_promise](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/Promise_two.ets) -->
+
   ```ts
   // xxx.ets
   import { webview } from '@kit.ArkWeb';
@@ -848,7 +862,7 @@ struct WebComponent {
   ```
 
   ```html
-  <!-- index.html -->
+  <!-- index3.html -->
   <!DOCTYPE html>
   <html>
   <body>
