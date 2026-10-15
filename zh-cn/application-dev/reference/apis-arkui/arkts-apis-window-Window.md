@@ -18785,7 +18785,7 @@ ArkTS-Sta: convertOrientationAndRotation(from: RotationInfoType, to: RotationInf
 
 | 类型                | 说明                      |
 | ------------------- | ------------------------- |
-| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回目标类型的转换值，取值范围为[0, 3]。值的含义取决于参数to的类型，具体对应关系详见上方说明中的表格。 |
+| ArkTS-Dyn: number<br>ArkTS-Sta: int | 返回目标类型的转换值，该参数为整数，取值范围为[0, 3]。值的含义取决于参数to的类型，具体对应关系详见上方说明中的表格。 |
 
 **错误码：**
 
