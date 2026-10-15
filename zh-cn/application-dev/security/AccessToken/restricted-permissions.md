@@ -1740,7 +1740,7 @@ USB串口DDK API可用于开发以下类型的外设扩展驱动：
 
 <!--RP113--><!--RP113End-->
 
-**权限级别**：system_basic
+**授权方式**：normal
 
 **授权方式**：系统授权（manual_settings）
 

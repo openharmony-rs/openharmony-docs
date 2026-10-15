@@ -1746,7 +1746,7 @@ With this permission, the application can record system UI elements (such as sta
 
 <!--RP113--><!--RP113End-->
 
-**Permission level**: system_basic
+**Permission level**: normal
 
 **Authorization mode**: manual_settings
 
