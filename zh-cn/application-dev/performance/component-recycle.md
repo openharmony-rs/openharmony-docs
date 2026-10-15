@@ -249,7 +249,7 @@ struct GoodItems {
 
 ![using reuse](./figures/using-recycle.png)
 
-|                | 创建组件时间 |
+|       /        | 创建组件时间 |
 | -------------- | ------------ |
 | 不使能组件复用 | 1813us       |
 | 使能组件复用   | 570us        |

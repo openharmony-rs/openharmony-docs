@@ -158,14 +158,14 @@ struct WebComponent {
 
 1. 在应用代码中设置[UIContext](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md)的软键盘避让模式[setKeyboardAvoidMode](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#setkeyboardavoidmode11)。ArkWeb组件支持Resize和Offset两种模式。
 
-- Resize模式下，应用窗口高度可缩小避开软键盘，ArkWeb组件跟随ArkUI重新布局。
-- Offset模式下（以及默认模式），应用窗口高度不变，ArkWeb组件根据自身的避让模式进行避让。
+   - Resize模式下，应用窗口高度可缩小避开软键盘，ArkWeb组件跟随ArkUI重新布局。
+   - Offset模式下（以及默认模式），应用窗口高度不变，ArkWeb组件根据自身的避让模式进行避让。
 
-（1）设置UIContext的软键盘避让模式。
+   （1）设置UIContext的软键盘避让模式。
 
-ArkTS-Dyn示例：
+   ArkTS-Dyn示例：
 
-<!-- @[soft_keyboard_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+   <!-- @[soft_keyboard_entryability](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
 
 ``` TypeScript
 import { KeyboardAvoidMode } from '@kit.ArkUI';
@@ -188,9 +188,9 @@ onWindowStageCreate(windowStage: window.WindowStage) {
 }
 ```
 
-ArkTS-Sta示例：
+   ArkTS-Sta示例：
 
-<!-- @[soft_keyboard_entryability_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
+   <!-- @[soft_keyboard_entryability_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/entry2ability/Entry2Ability.ets) -->
 
 ``` TypeScript
 'use static'
@@ -216,7 +216,7 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 }
 ```
 
-（2）在Web组件中调起软键盘。
+   （2）在Web组件中调起软键盘。
 
 ```html
 <!-- index.html -->
@@ -232,9 +232,9 @@ import { hilog } from '@kit.PerformanceAnalysisKit';
 </html>
 ```
 
-ArkTS-Dyn示例：
+   ArkTS-Dyn示例：
 
-<!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+   <!-- @[soft_keyboard_index](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // Index.ets
@@ -254,9 +254,9 @@ struct KeyboardAvoidExample {
 }
 ```
 
-ArkTS-Sta示例：
+   ArkTS-Sta示例：
 
-<!-- @[soft_keyboard_index_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
+   <!-- @[soft_keyboard_index_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
 // Index.ets
@@ -278,15 +278,15 @@ struct KeyboardAvoidExample {
 }
 ```
 
-ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
+   ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
-**图1**  Web组件网页默认软键盘避让模式
+   **图1**  Web组件网页默认软键盘避让模式
 
-![default-keyboardavoid](figures/default-keyboardavoid.png)
+   ![default-keyboardavoid](figures/default-keyboardavoid.png)
 
-**图2**  Web组件网页跟随ArkUI软键盘避让模式
+   **图2**  Web组件网页跟随ArkUI软键盘避让模式
 
-![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
+   ![arkui-keyboardavoid](figures/arkui-keyboardavoid.png)
 
 2. 在UIContext的键盘避让模式为Offset模式时，应用可通过[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)设置ArkWeb组件的键盘避让模式。Web组件的[WebKeyboardAvoidMode()](../reference/apis-arkweb/arkts-basic-components-web-e.md#webkeyboardavoidmode12)接口优先级高于W3C侧virtualKeyboard.overlayContent。
 
