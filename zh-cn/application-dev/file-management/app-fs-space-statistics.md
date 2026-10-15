@@ -50,18 +50,18 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   
   ```
   <!--@[storageStatistics_statfs_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
-
-   ``` TypeScript
-   let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
-   let path = context.filesDir;
-   statfs.getFreeSize(path, (err: BusinessError, number: number) => {
-     if (err) {
-       console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
-     } else {
-       console.info(`Invoke getFreeSize succeeded, size is ${number}`);
-     }
-   });
-   ```
+  
+  ``` TypeScript
+  let context = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  let path = context.filesDir;
+  statfs.getFreeSize(path, (err: BusinessError, freeSize: number) => {
+    if (err) {
+      console.error(`Invoke getFreeSize failed, code is ${err.code}, message is ${err.message}`);
+    } else {
+      console.info(`Invoke getFreeSize succeeded, size is ${freeSize}`);
+    }
+  });
+  ```
 
 
 - 获取当前应用的存储空间大小。
@@ -92,8 +92,8 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   <!--@[storageStatistics_getTotalSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->     
   
   ``` TypeScript
-  storageStatistics.getTotalSize().then((number: number) => {
-    console.info(`getTotalSize successfully, number is ${number}`);
+  storageStatistics.getTotalSize().then((totalSize: number) => {
+    console.info(`getTotalSize successfully, number is ${totalSize}`);
   }).catch((err: BusinessError) => {
     console.error(`getTotalSize failed with error, code is ${err.code}, message is ${err.message}`);
   });
@@ -128,8 +128,8 @@ API的详细介绍请参见[ohos.file.statvfs](../reference/apis-core-file-kit/j
   <!--@[storageStatistics_getFreeSize](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/AppFsSpcaeStatisticsSample/entry/src/main/ets/pages/Index.ets)-->      
   
   ``` TypeScript
-  storageStatistics.getFreeSize().then((number: number) => {
-    console.info(`getFreeSize successfully, number is ${number}`);
+  storageStatistics.getFreeSize().then((freeSize: number) => {
+    console.info(`getFreeSize successfully, number is ${freeSize}`);
   }).catch((err: BusinessError) => {
     console.error(`getFreeSize failed with error, code is ${err.code}, message is ${err.message}`);
   });
