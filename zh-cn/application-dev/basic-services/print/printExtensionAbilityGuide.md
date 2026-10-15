@@ -2,9 +2,9 @@
 
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Print-->
-<!--Owner: @guoshengbang-->
+<!--Owner: @Zouhaifeng1-->
 <!--Designer: @baozewei-->
-<!--Tester: @guoshengbang-->
+<!--Tester: @baozewei-->
 <!--Adviser: @fang-jinxu-->
 
 ## 概述
