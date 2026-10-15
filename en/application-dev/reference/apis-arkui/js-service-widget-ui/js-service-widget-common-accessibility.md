@@ -1,12 +1,11 @@
 # Accessibility
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @wangyinhua-->
 <!--Designer: @dutie123-->
 <!--Tester: @fredyuan0912-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:28:32.855Z pushedAt=2026-07-27T09:23:36.770Z -->
+<!-- md-trans-meta sourceCommit=de2cbbad2e242bbdc0d24308a806d704a23e2435 translatedAt=2026-10-12T04:01:01.129Z pushedAt=2026-10-12T06:46:04.272Z -->
 
 You can set accessibility attributes and events for components, such as the accessibility group, accessibility text, accessibility description, and accessibility importance. In addition, events dispatched by the accessibility service can be received, enabling custom accessibility interactions. This is suitable for scenarios where screen reader and other accessibility features need to be provided for service widgets, helping visually impaired users and other special groups clearly understand the currently selected component and the consequences of operations, and improving the accessibility and reachability of the app.
 
@@ -24,7 +23,7 @@ You can set accessibility attributes and events for components, such as the acce
 | accessibilityimportance | string | auto | Accessibility importance, which is used to decide whether a component can be identified by the accessibility service. The value can be **auto**, **yes**, **no**, or **no-hide-descendants**. **auto**: The system automatically determines whether the component can be identified by the accessibility service based on the component type. **yes**: The current component can be identified by the accessibility service. **no**: The current component cannot be identified by the accessibility service. **no-hide-descendants**: The accessibility service ignores the current component and all its child components. |
 
 - accessibilitygroup
-
+  
   ```html
   <div accessibilitygroup="true">
     <text>text1</text>
@@ -33,13 +32,13 @@ You can set accessibility attributes and events for components, such as the acce
   ```
 
 - accessibilitytext
-
+  
   ```html
   <image src="common/image/barrierfree.jpg" accessibilitytext=" This is a landscape image. "></image>
   ```
 
 - accessibilitydescription
-
+  
   ```html
   <!-- showDialog is a custom event processing function, which must be defined in the .js file. -->
   <button accessibilitydescription="Click this button to open a dialog box" onclick="showDialog">button</button>
@@ -47,13 +46,15 @@ You can set accessibility attributes and events for components, such as the acce
 
 - accessibilityimportance
 
-By default (when **accessibilityimportance** is set to **auto**), the container and text components without interactive semantics, such as **div** and **text**, are not selected by the accessibility service. To select a component that is unselected by default, add **accessibilityimportance="yes"** to the component. The following example shows that when **accessibilityimportance** is set to **no-hide-descendants**, the current component and its child components are ignored by the accessibility service:
+  By default (when **accessibilityimportance** is set to **auto**), the container and text components without interactive semantics, such as **div** and **text**, are not selected by the accessibility service. To select a component that is unselected by default, add **accessibilityimportance="yes"** to the component. The following example shows that when **accessibilityimportance** is set to **no-hide-descendants**, the current component and its child components are ignored by the accessibility service:
 
+  
   ```html
   <div accessibilityimportance="no-hide-descendants">
     <text>text</text>
   </div>
   ```
+
 
 ## Accessibility Events
 

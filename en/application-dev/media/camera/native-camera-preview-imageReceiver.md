@@ -1,12 +1,11 @@
 # Secondary Processing of Preview Streams (C/C++)
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=92637e66fde45a3fccdf6e7082b1121eb02199b4 translatedAt=2026-08-10T09:19:58.359Z pushedAt=2026-08-10T13:23:36.095Z -->
+<!-- md-trans-meta sourceCommit=132342cdd19e09e8d1c7a964e48a57b6cf30fc8d translatedAt=2026-09-28T02:44:46.934Z pushedAt=2026-09-29T08:25:37.955Z -->
 
 You can use the APIs in **ImageReceiver** to create a PreviewOutput instance and obtain real-time data of the preview stream for secondary processing. For example, you can add a filter algorithm to the preview stream.
 
@@ -17,7 +16,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
 1. Import the NDK, which provides camera-related properties and methods.
 
    <!-- @[import_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/camera_manager.h) -->    
-
+   
    ``` C
    #include <cstdint>
    #include <cstdlib>
@@ -61,7 +60,7 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
    Call **OH_ImageReceiverNative_Create** of the image module to create an OH_ImageReceiverNative instance, and call **OH_ImageReceiverNative_GetReceivingSurfaceId** of the instance to obtain a surface ID.
 
    <!-- @[init_image_receiver](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/napi_init.cpp) -->
-
+   
    ``` C++
    void InitImageReceiver(uint64_t &receiverSurfaceID)
    {
@@ -116,8 +115,8 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
 
 6. Register an ImageReceiver callback to listen for the image content reported by each frame.
 
-   <!-- @[image_receiver_callback_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/napi_init.cpp) -->    
-
+   <!-- @[image_receiver_callback_show](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Camera/NDKPreviewImageSample/entry/src/main/cpp/napi_init.cpp) -->
+   
    ``` C++
    void copyBuffer(OH_NativeBuffer *srcBuffer, size_t srcSize, OHNativeWindowBuffer *dstBuffer)
    {
@@ -139,18 +138,22 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
        OH_NativeBuffer_Unmap(srcBuffer);
        OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest %{public}s SUCCESS", __func__);
    }
-
+   
    void ShowImage(OH_ImageNative *image)
    {
        OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest %{public}s IN", __func__);
+       if (g_ndkCamera == nullptr) {
+           return;
+       }
        uint64_t xComponentSurfaceId = std::stoull(g_xComponentSurfaceIdSlave);
        OH_LOG_ERROR(LOG_APP, "ImageReceiverNativeCTest %{public}s XComponentId is : %{public}lu.", __func__,
            xComponentSurfaceId);
        OHNativeWindow *nativeWindow = nullptr;
        int32_t res = OH_NativeWindow_CreateNativeWindowFromSurfaceId(xComponentSurfaceId, &nativeWindow);
+       OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest %{public}s XComponentId is : %{public}lu.",
+           __func__, xComponentSurfaceId);
        if (res != 0) {
-           OH_LOG_ERROR(LOG_APP,
-               "ShowImage CreateNativeWindowFromSurfaceId failed, errCode: %{public}d.", res);
+           OH_LOG_ERROR(LOG_APP, "CreateSurfaceId failed, errCode: %{public}d.", res);
            return;
        }
    
@@ -174,11 +177,10 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
        }
        Image_Size imgSize = {};
        OH_ImageNative_GetImageSize(image, &imgSize);
-       OH_LOG_INFO(LOG_APP, "ImageReceiverNativeCTest %{public}s imgSize is : %{public}u, %{public}u.", __func__,
-           imgSize.width, imgSize.height);
+       OH_LOG_INFO(LOG_APP, "%{public}s imgSize is : %{public}u, %{public}u.", __func__, imgSize.width, imgSize.height);
        size_t bufSize = 0;
        OH_ImageNative_GetBufferSize(image, g_jpegComponent, &bufSize);
-
+   
        OHNativeWindowBuffer *nativeWindowBuffer = nullptr;
        int fenceFd = -1;
        res = OH_NativeWindow_NativeWindowRequestBuffer(nativeWindow, &nativeWindowBuffer, &fenceFd);
@@ -186,7 +188,6 @@ For detailed API descriptions, refer to [OH_Camera](../../reference/apis-camera-
            OH_LOG_ERROR(LOG_APP, "ShowImage RequestBuffer failed, errCode: %{public}d.", res);
            return;
        }
-   
        // Copy the image data to the nativeWindowBuffer.
        copyBuffer(imageBuffer, bufSize, nativeWindowBuffer);
    

@@ -5,7 +5,6 @@
 <!--Designer: @liweilu1-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=b4558baf2653dbc4e06627859cd656768663a602 translatedAt=2026-06-23T07:32:05.559Z pushedAt=2026-06-23T09:25:46.738Z -->
 
 > **NOTE**
 >
@@ -30,7 +29,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | count | number | Yes   | No   |  Number of files in the album.|
 | coverUri | string | Yes   | No   | URI of the cover file of the album.|
 | lpath<sup>23+</sup> | string | Yes   | Yes   | Virtual path of the album.|
-| changeTime<sup>23+</sup> | number | Yes    | Yes    | Change time of the album, in seconds. |
+| changeTime<sup>23+</sup> | number | Yes   | Yes   | Time when the album is changed, in seconds.|
 
 ## getAssets
 
@@ -47,24 +46,23 @@ Obtains image and video assets. This API uses an asynchronous callback to return
 | Name  | Type                     | Mandatory| Description      |
 | -------- | ------------------------- | ---- | ---------- |
 | options | [FetchOptions](arkts-apis-photoAccessHelper-i.md#fetchoptions) | Yes  | Retrieval options.|
-| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt;&gt; | Yes  | Callback function. If files from the album are obtained successfully, **err** is **undefined**, and **data** is the result set of the obtained image and video data ([FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)). Otherwise, **err** is an error object.|
+| callback | AsyncCallback&lt;[FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt;&gt; | Yes  | Callback function. If files from the album are obtained successfully, **err** is **undefined**, and **data** is the result set of the obtained image and video data ([FetchResult](arkts-apis-photoAccessHelper-FetchResult.md)). Otherwise, **err** is an error object, and **data** is **undefined**.|
 
 **Error codes**
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-In API version 13 and earlier versions, if the caller does not have the required permission, error code 13900012 is returned. Starting from API version 14, the same situation raises error code 201.
-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 12+       |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 11        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+Create **phAccessHelper** by referring to the [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper) example.
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';
@@ -83,7 +81,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let albumList: photoAccessHelper.FetchResult<photoAccessHelper.Album> = await phAccessHelper.getAlbums(photoAccessHelper.AlbumType.USER, photoAccessHelper.AlbumSubtype.USER_GENERIC, albumFetchOptions);
   let album: photoAccessHelper.Album = await albumList.getFirstObject();
   album.getAssets(fetchOption, (err, albumFetchResult) => {
-    if (albumFetchResult !== undefined) {
+    if (!err) {
       console.info('album getAssets successfully, getCount: ' + albumFetchResult.getCount());
     } else {
       console.error(`album getAssets failed with error: ${err.code}, ${err.message}`);
@@ -120,18 +118,17 @@ Obtains image and video assets. This API uses a promise to return the result.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-In API version 13 and earlier versions, if the caller does not have the required permission, error code 13900012 is returned. Starting from API version 14, the same situation raises error code 201.
-
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types; 3. Parameter verification failed. | 
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 20+       |
+| 13900012     | Permission denied. <br> Applicable versions: 10 to 19        |
 | 13900020     | Invalid argument.         |
 | 14000011       | System inner fail.         |
 
 **Example**
 
-For details about how to create a phAccessHelper instance, see the example provided in [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper).
+Create **phAccessHelper** by referring to the [photoAccessHelper.getPhotoAccessHelper](arkts-apis-photoAccessHelper-f.md#photoaccesshelpergetphotoaccesshelper) example.
 
 ```ts
 import { dataSharePredicates } from '@kit.ArkData';

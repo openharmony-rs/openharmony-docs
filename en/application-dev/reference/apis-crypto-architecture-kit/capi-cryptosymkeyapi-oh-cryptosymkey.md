@@ -13,7 +13,7 @@ typedef struct OH_CryptoSymKey OH_CryptoSymKey
 
 ## Overview
 
-Defines a struct for a symmetric key.
+Defines a symmetric key struct.
 
 **Since**: 12
 

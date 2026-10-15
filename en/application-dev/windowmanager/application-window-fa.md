@@ -1,18 +1,17 @@
 # Application Window Development (FA Model)
-
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=d92a834fa37fa220b93af036aac498daf001d662 translatedAt=2026-08-11T10:10:31.776Z pushedAt=2026-08-12T02:23:28.840Z -->
+<!-- md-trans-meta sourceCommit=c429c2340edd1d2f5ff202df8ce417025061402b translatedAt=2026-10-08T08:59:30.100Z pushedAt=2026-10-08T11:01:15.304Z -->
 
 ## Basic Concepts
 
 Window immersive capability: the ability to control system windows such as the status bar and navigation bar, reducing the visual abruptness of these system UI elements to deliver an optimal user experience.
 
-The immersive capability takes effect only when the main window of an application (app for short) is used as a full-screen window. Generally, auxiliary windows such as app subwindows, global floating windows, and modal windows, as well as the app main window in free window mode, cannot use the immersive capability.
+The immersive capability takes effect only when the main window of an application (app for short) is used as a full-screen window. Generally, auxiliary windows such as app subwindows, global floating windows, and modal windows, as well as the app main window in freeform window mode, cannot use the immersive capability.
 
 > **NOTE**
 >
@@ -28,6 +27,7 @@ In the FA model, typical scenarios for managing app windows include:
 
 The specific development methods are described below.
 
+
 ## APIs
 
 The common APIs involved in the above scenarios are shown in the following table. For more API descriptions, see [@ohos.window (Window)](../reference/apis-arkui/arkts-apis-window.md).
@@ -41,20 +41,21 @@ The common APIs involved in the above scenarios are shown in the following table
 | Window | setWindowBrightness(brightness: number, callback: AsyncCallback&lt;void&gt;): void | Sets the screen brightness value. |
 | Window | resize(width: number, height: number, callback: AsyncCallback&lt;void&gt;): void | Changes the current window size. |
 | Window | setWindowLayoutFullScreen(isLayoutFullScreen: boolean): Promise&lt;void&gt; | Sets whether the layout of the main window or subwindow is an immersive layout. The value **true** indicates an immersive layout, and **false** indicates a non-immersive layout. |
-| Window | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | <!--RP1-->Sets the display modes for the status bar and the three‑button navigation bar of the main window.<!--RP1End--> The status bar is managed via the status setting, while the navigation bar is managed via the navigation setting. <br>For example, if this parameter is set to `['status',&nbsp;'navigation']`, all are shown; if set to `[]`, none are shown. |
-| Window | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | Sets the properties of the navigation bar and status bar within the window..<br>`systemBarProperties`: A collection of properties for the navigation bar and status bar. |
+| Window         | setWindowSystemBarEnable(names: Array&lt;'status'\|'navigation'&gt;): Promise&lt;void&gt; | <!--RP1-->Sets the visibility mode of the status bar and three-button navigation bar of the main window. The status bar is controlled by `status`, and the three-button navigation bar is controlled by `navigation`<!--RP1End-->.<br>For example, if this parameter is set to `['status', 'navigation']`, both are displayed; if it is set to `[]`, neither is displayed.|
+| Window         | setWindowSystemBarProperties(systemBarProperties: SystemBarProperties): Promise&lt;void&gt; | Sets the properties of the navigation bar and status bar in the window.<br>`systemBarProperties`: the set of properties of the navigation bar and status bar. |
 | Window | showWindow(callback: AsyncCallback\<void>): void | Shows the current window. |
 | Window | on(type: 'touchOutside', callback: Callback&lt;void&gt;): void | Enables listening for tap events outside the current window area. |
 | Window | destroyWindow(callback: AsyncCallback\<void>): void | Destroys the current window. |
+
 
 ## Setting an App Subwindow
 
 You can create app subwindows as needed, such as dialogs, and perform operations like setting their attributes.
 
-> **NOTE**
+> **NOTE**  
 > The following scenarios are not recommended for using subwindows. You are advised to prioritize using the control [overlay](../reference/apis-arkui/arkui-ts/ts-universal-attributes-overlay.md) capability.
-> - On mobile devices (tablets in non-freeform mode and phones), subwindows cannot extend beyond the main window range when the main window is in multi-window floating window mode or split-screen mode, which is consistent with controls.
-> - In split-screen window and freeform window modes, controls have a better real-time following capability than subwindows when the main window position and size change.
+> - On mobile devices (tablets in non-freeform mode and phones), subwindows cannot extend beyond the main window range when the main window is in multi-window floating window mode or split-screen mode, which is consistent with controls.  
+> - In split-screen window and freeform window modes, controls have a better real-time following capability than subwindows when the main window position and size change.  
 > - On some device platforms, due to actual system configuration restrictions, subwindows only have the system's default animation effects and rounded corner shadows, which apps cannot set, resulting in low flexibility.
 
 ### How to Develop
@@ -124,7 +125,7 @@ You can create app subwindows as needed, such as dialogs, and perform operations
 
 3. Load and display the specific content of the subwindow.
 
-Load and display the specific content of the subwindow through the `setUIContent` and `showWindow` APIs.
+   Load and display the specific content of the subwindow through the `setUIContent` and `showWindow` APIs.
 
    ```ts
    // Load the corresponding target page for the subwindow.
@@ -153,7 +154,7 @@ Load and display the specific content of the subwindow through the `setUIContent
 
 4. Destroy the subwindow.
 
-When a subwindow is no longer needed, you can destroy it using the **destroyWindow** API based on the scenario-specific implementation logic.
+   When a subwindow is no longer needed, you can destroy it using the `destroyWindow` API based on the scenario-specific implementation logic.
 
    ```ts
    // When a subwindow is no longer needed, destroy it using the destroyWindow API based on the scenario-specific implementation logic.
@@ -171,11 +172,12 @@ When a subwindow is no longer needed, you can destroy it using the **destroyWind
 
 In scenarios such as watching videos or playing games, users often prefer to hide unnecessary system windows such as the status bar and navigation bar for a better immersive experience. The window immersive capability (which applies only to the main window) can be used to achieve this effect. Starting from API version 10, an immersive window is configured to full-screen size by default, with its layout controlled by the component module. The status bar and navigation bar backgrounds are transparent, and the text color is black. When the app window calls the `setWindowLayoutFullScreen` API, setting it to `true` means the component module controls an immersive full-screen layout that ignores the status bar and navigation bar, while setting it to `false` means the component module controls a non-immersive full-screen layout that avoids the status bar and navigation bar.
 
+
 ### How to Develop
 
 1. Obtain the main window object.
 
-   > **NOTE**
+   > **NOTE** 
    >
    > The immersive capability requires that the main window object has been successfully obtained.
    >
@@ -211,7 +213,6 @@ In scenarios such as watching videos or playing games, users often prefer to hid
 2. Implement the immersive effect. There are two approaches:
 
    - Approach 1: When the app main window is a full-screen window, call the `setWindowSystemBarEnable` API to set the navigation bar and status bar to be hidden, thereby achieving the immersive effect.
-
    - Approach 2: Call the `setWindowLayoutFullScreen` API to set the app main window to an immersive layout. Then call the `setWindowSystemBarProperties` API to configure attributes such as transparency, background/text colors, and highlighted icons for the navigation bar and status bar, keeping them consistent with the main window display to achieve the immersive effect.
 
    ```ts

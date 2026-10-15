@@ -6,6 +6,7 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=44cc3978a01b17856a98c72090b06049c02dfb64 translatedAt=2026-10-09T01:11:00.275Z pushedAt=2026-10-09T08:26:18.718Z -->
 
 The **SaveButton** component comes with the privilege for saving data, which allows an application to temporarily save data without any authorization.
 
@@ -15,7 +16,7 @@ This component allows for simpler operations than Pickers, which have to start a
 
 The following figure shows the effect of the **SaveButton** component.
 
-![](figures/SaveButton_effect.png)
+![save-control-effect](figures/save-control-effect.png)
 
 ## Constraints
 
@@ -39,22 +40,22 @@ The following figure shows the effect of the **SaveButton** component.
 For example, to save the image in the dialog box shown above, the application only needs to use the image saving feature for a short period of time in the foreground. In this case, you can use the **SaveButton** component to obtain temporary permission to save the image without requesting the related permission for the application.
 
 1. Import the dependencies.
-   
+
    ```ts
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { fileIo } from '@kit.CoreFileKit';
    ```
 
 2. Set the image asset and add the **SaveButton** component.
-   
+
    **SaveButton** is a button-like security component consisting of an icon, text, and background. The background is mandatory, and at least one of the icon and text must be selected. You can select icons and text from the existing options or customize them using [setIcon](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#seticon20) and [setText](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md#settext20). When declaring the API for creating a security component, you can determine whether to pass in parameters. If no parameter is passed, a button containing the icon, text, and background is created by default. If parameters are passed, a button is created based on the parameters, excluding the unconfigured elements.
 
    The following example uses the default parameters. For details, see [SaveButton](../../reference/apis-arkui/arkui-ts/ts-security-components-savebutton.md). In addition, all security components inherit the [Security Component Universal Attributes](../../reference/apis-arkui/arkui-ts/ts-securitycomponent-attributes.md), which can be used to customize styles.
-   
+
    For details about saving images to the media library, see [Saving Media Library Resources](../../media/medialibrary/photoAccessHelper-savebutton.md).
 
    <!-- @[use_save_button](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/SecurityComponent/entry/src/main/ets/securitycomponent/pages/Save.ets) -->    
-   
+
    ``` TypeScript
    import { photoAccessHelper } from '@kit.MediaLibraryKit';
    import { fileIo } from '@kit.CoreFileKit';
@@ -114,3 +115,4 @@ For example, to save the image in the dialog box shown above, the application on
      }
    }
    ```
+

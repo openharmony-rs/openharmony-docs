@@ -5,7 +5,7 @@
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=64db332a97c9e5fae1808d5b350a09f58b532f1a translatedAt=2026-10-12T09:33:29.507Z pushedAt=2026-10-13T06:39:37.252Z -->
 
 Modal transition is a type of transition achieved by a modal – a view that appears on top of the current view while the current view remains.
 
@@ -35,7 +35,7 @@ You can bind a full-screen modal to a component through the [bindContentCover](.
      Column() {
       Text('my modal view')
      }
-     // Use the transition API to implement the transition animation for component appearance and disappearance. The transition API must be added to the first component of the builder.
+     // Use the transition API to implement the transition animation for component appearance and disappearance. The transition API must be added to the first component of the builder. 
      .transition(TransitionEffect.translate({ y: 1000 }).animation({ curve: curves.springMotion(0.6, 0.8) }))
    }
    ```
@@ -471,7 +471,7 @@ struct BindContextMenuDemo {
     $r('app.string.modal_transition_text26'),
     // Replace $r('app.string.modal_transition_text27') with the actual resource file. In this example, the value in the resource file is "Search".
     $r('app.string.modal_transition_text27')];
-  // Replace $r('app.media.icon_2') with the actual resource file.
+  // Replace $r('app.media.icon_2') with the actual resource file. 
   private pics: Resource[] = [$r('app.media.icon_1'), $r('app.media.icon_2')];
 
   // Use @Builder to build custom menu items.
@@ -538,7 +538,7 @@ struct BindContextMenuDemo {
 
 You can bind a popup to a component through the [bindPopup](../reference/apis-arkui/arkui-ts/ts-universal-attributes-popup.md#bindpopup) attribute, specifying its content, interaction logic, and display status.
 
-Below is the complete sample code and effect.
+The complete example and effect are as follows.
 
 
 <!-- @[bind_popup_demo](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template5/BindPopupDemo.ets) -->
@@ -606,7 +606,7 @@ struct BindPopupDemo {
 
 In addition to the preceding modal transition APIs, you can also use the **if** syntax to create a modal transition, eliminating the need for binding to the component and listening for state variable changes.
 
-Below is the complete sample code and effect.
+The complete example and effect are as follows.
 
 
 <!-- @[modal_transition_with_if](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Animation/entry/src/main/ets/pages/modalTransition/template6/ModalTransitionWithIf.ets) -->

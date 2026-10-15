@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=3780eaa820092ee975c32f64eb288f44d3471751 translatedAt=2026-08-13T08:23:58.032Z pushedAt=2026-08-13T10:20:24.710Z -->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:54:00.970Z pushedAt=2026-10-13T03:11:16.928Z -->
 
 Ensure network connection during the operation.
 
@@ -23,7 +23,6 @@ Ensure network connection during the operation.
 4. Use [anonAttestKeyItem](../../reference/apis-universal-keystore-kit/js-apis-huks.md#huksanonattestkeyitem11) with the key alias and parameter set to perform key attestation.
 
 ## Development Case
-
 <!-- @[anonymous_key_proof](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/AnonymousKeyProof/entry/src/main/ets/pages/AnonymousKeyProof.ets) -->
 
 ``` TypeScript
@@ -114,11 +113,11 @@ function stringToUint8Array(str: string) {
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject) {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -134,8 +133,8 @@ async function publicGenKeyFunc(keyAlias: string, huksOptions: huks.HuksOptions)
   let throwObject: ThrowObject = { isThrow: false };
   try {
     await generateKeyItem(keyAlias, huksOptions, throwObject)
-      .then((data) => {
-        console.info(`promise: generateKeyItem success, data = ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`promise: generateKeyItem success`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {

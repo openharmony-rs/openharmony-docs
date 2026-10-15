@@ -27,22 +27,22 @@ The file declares the native APIs provided by the OH_LowPowerAudioSink instance.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerAudioSink* OH_LowPowerAudioSink_CreateByMime(const char* mime)](#oh_lowpoweraudiosink_createbymime) | Creates an OH_LowPowerAudioSink instance.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_configure) | Configures an OH_LowPowerAudioSink instance. This function must be called before [OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare).|
-| [OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_setparameter) | Sets parameters for an OH_LowPowerAudioSink instance. The parameters can be dynamically set after [OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare).|
-| [OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AVFormat* format)](#oh_lowpoweraudiosink_getparameter) | Obtains the parameters of an OH_LowPowerAudioSink instance.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_prepare) | Prepares an OH_LowPowerAudioSink instance for decoding and rendering. This function must be called after [OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure).<br> Before calling this function, you must call [OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink) of the LowPowerVideoSink.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_start) | Starts an OH_LowPowerAudioSink instance. This function must be called after a successful call to [OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare).<br> After successful startup, the OH_LowPowerAudioSink instance starts reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_pause) | Pauses an OH_LowPowerAudioSink instance. This function must be called after [OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume).<br> After successful pause, the OH_LowPowerAudioSink instance stops reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_resume) | Resumes an OH_LowPowerAudioSink instance. This function must be called after [OH_LowPowerAudioSink_Pause](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_pause).<br> After successful resumption, the OH_LowPowerAudioSink instance resumes reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_flush) | Clears all input and output data from the decoders and render buffers of an OH_LowPowerAudioSink instance.<br> You are not advised to call this function after [OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume).<br> Note that if the decoder has previously received data, you must input the codec data again.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_stop) | Stops an OH_LowPowerAudioSink instance.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_reset) | Resets an OH_LowPowerAudioSink instance.<br> To reuse the instance, you must call [OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure) to configure the instance again.|
-| [OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_destroy) | Clears internal resources of an OH_LowPowerAudioSink instance and destroys the instance. You only need to call the function once.|
-| [OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const float volume)](#oh_lowpoweraudiosink_setvolume) | Sets the rendering volume for an OH_LowPowerAudioSink instance.|
-| [OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, float loudnessGain)](#oh_lowpoweraudiosink_setloudnessgain) | Sets the loudness gain for an OH_LowPowerAudioSink instance.|
-| [OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, const float speed)](#oh_lowpoweraudiosink_setplaybackspeed) | Sets the audio rendering speed for an OH_LowPowerAudioSink instance.|
+| [OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_configure) | Configures a **LowPowerAudioSink** instance. This function must be called before [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).|
+| [OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const OH_AVFormat* format)](#oh_lowpoweraudiosink_setparameter) | Sets parameters for a **LowPowerAudioSink** instance. The parameters can be dynamically set after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).|
+| [OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AVFormat* format)](#oh_lowpoweraudiosink_getparameter) | Obtains the parameters of an OH_LowPowerAudioSink instance. This function should be called after [OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure) is called to configure parameters.|
+| [OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_prepare) | Prepares an **OH_LowPowerAudioSink** instance for decoding and rendering. This function must be called after [OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure).<br> Before calling this function, you must call [OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink) of the LowPowerVideoSink.|
+| [OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_start) | Starts an **OH_LowPowerAudioSink** instance. This function must be called after a successful call to [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).<br> After successful startup, the OH_LowPowerAudioSink instance starts reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.|
+| [OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_pause) | Pauses a **LowPowerAudioSink** instance. This function must be called after [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Resume](#oh_lowpoweraudiosink_resume).<br> After successful pause, the OH_LowPowerAudioSink instance stops reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.|
+| [OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_resume) | Resumes a **LowPowerAudioSink** instance. This function must be called after [OH_LowPowerAudioSink_Pause](#oh_lowpoweraudiosink_pause).<br> After successful resumption, the OH_LowPowerAudioSink instance resumes reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.|
+| [OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_flush) | Clears all input and output data from the decoders and render buffers of an OH_LowPowerAudioSink instance.<br> You are not advised to call this function after [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Resume](#oh_lowpoweraudiosink_resume).<br> Note that if the decoder has previously received data, you must input the codec data again.|
+| [OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_stop) | Stops an OH_LowPowerAudioSink instance. This function must be called after [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Pause](#oh_lowpoweraudiosink_pause).|
+| [OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_reset) | Resets an OH_LowPowerAudioSink instance.<br> To reuse the instance, you must call [OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure) to configure the instance again.|
+| [OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)](#oh_lowpoweraudiosink_destroy) | Clears internal resources of an OH_LowPowerAudioSink instance and destroys the instance. You are advised to call this function after [OH_LowPowerAudioSink_Stop](#oh_lowpoweraudiosink_stop). You only need to call the function once.|
+| [OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const float volume)](#oh_lowpoweraudiosink_setvolume) | Sets the rendering volume for an OH_LowPowerAudioSink instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).|
+| [OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, float loudnessGain)](#oh_lowpoweraudiosink_setloudnessgain) | Sets the loudness gain for an OH_LowPowerAudioSink instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).|
+| [OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, const float speed)](#oh_lowpoweraudiosink_setplaybackspeed) | Sets the audio rendering speed for an OH_LowPowerAudioSink instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).|
 | [OH_AVErrCode OH_LowPowerAudioSink_ReturnSamples(OH_LowPowerAudioSink* sink, OH_AVSamplesBuffer* samples)](#oh_lowpoweraudiosink_returnsamples) | Provides a buffer to an OH_LowPowerAudioSink instance for procesing.|
-| [OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, OH_LowPowerAudioSinkCallback* callback)](#oh_lowpoweraudiosink_registercallback) | Registers a callback for an OH_LowPowerAudioSink instance.|
+| [OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, OH_LowPowerAudioSinkCallback* callback)](#oh_lowpoweraudiosink_registercallback) | Registers a callback for an OH_LowPowerAudioSink instance. This function must be called before [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) to ensure that the event callback can be received properly.|
 | [OH_LowPowerAudioSinkCallback* OH_LowPowerAudioSinkCallback_Create(void)](#oh_lowpoweraudiosinkcallback_create) | Creates an OH_LowPowerAudioSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerAudioSinkCallback_Destroy(OH_LowPowerAudioSinkCallback* callback)](#oh_lowpoweraudiosinkcallback_destroy) | Destroys an OH_LowPowerAudioSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerAudioSinkCallback_SetPositionUpdateListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnPositionUpdated onPositionUpdated, void* userData)](#oh_lowpoweraudiosinkcallback_setpositionupdatelistener) | Sets a progress update listener for an OH_LowPowerAudioSinkCallback instance.|
@@ -50,7 +50,7 @@ The file declares the native APIs provided by the OH_LowPowerAudioSink instance.
 | [OH_AVErrCode OH_LowPowerAudioSinkCallback_SetErrorListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnError onError, void* userData)](#oh_lowpoweraudiosinkcallback_seterrorlistener) | Sets an error listener for an OH_LowPowerAudioSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerAudioSinkCallback_SetInterruptListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnInterrupted onInterrupted, void* userData)](#oh_lowpoweraudiosinkcallback_setinterruptlistener) | Sets an audio focus interruption listener for an OH_LowPowerAudioSinkCallback instance.|
 | [OH_AVErrCode OH_LowPowerAudioSinkCallback_SetDeviceChangeListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnDeviceChanged onDeviceChanged, void* userData)](#oh_lowpoweraudiosinkcallback_setdevicechangelistener) | Sets an audio device change listener for an OH_LowPowerAudioSinkCallback instance.|
-| [OH_AVErrCode OH_LowPowerAudioSinkCallback_SetEosListener(OH_LowPowerAudioSinkCallback *callback, OH_LowPowerAudioSink_OnEos onEos, void* userData)](#oh_lowpoweraudiosinkcallback_seteoslistener) | Sets an end-of-stream listener for an OH_LowPowerAudioSinkCallback instance.|
+| [OH_AVErrCode OH_LowPowerAudioSinkCallback_SetEosListener(OH_LowPowerAudioSinkCallback* callback, OH_LowPowerAudioSink_OnEos onEos, void* userData)](#oh_lowpoweraudiosinkcallback_seteoslistener) | Sets an end-of-stream listener for an OH_LowPowerAudioSinkCallback instance.|
 
 ## Function Description
 
@@ -70,7 +70,7 @@ Creates an OH_LowPowerAudioSink instance.
 
 | Name| Description|
 | -- | -- |
-| const char* mime | Pointer to the MIME type of the audio decoder. For details about the available options, see [AVCODEC_MIME_TYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
+| const char* mime | Pointer to the MIME type of the audio decoder. For details about the available options, see [OH_AVCODEC_MIMETYPE](../apis-avcodec-kit/capi-native-avcodec-base-h.md#variables).|
 
 **Returns**
 
@@ -86,7 +86,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Configure(OH_LowPowerAudioSink* sink, const OH
 
 **Description**
 
-Configures an OH_LowPowerAudioSink instance. This function must be called before [OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare).
+Configures a **LowPowerAudioSink** instance. This function must be called before [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).
 
 **Since**: 20
 
@@ -111,7 +111,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetParameter(OH_LowPowerAudioSink* sink, const
 
 **Description**
 
-Sets parameters for an OH_LowPowerAudioSink instance. The parameters can be dynamically set after [OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare).
+Sets parameters for a **LowPowerAudioSink** instance. The parameters can be dynamically set after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).
 
 **Since**: 20
 
@@ -136,7 +136,7 @@ OH_AVErrCode OH_LowPowerAudioSink_GetParameter(OH_LowPowerAudioSink* sink, OH_AV
 
 **Description**
 
-Obtains the parameters of an OH_LowPowerAudioSink instance.
+Obtains the parameters of an OH_LowPowerAudioSink instance. This function should be called after [OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure) is called to configure parameters.
 
 **Since**: 20
 
@@ -161,7 +161,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Prepare(OH_LowPowerAudioSink* sink)
 
 **Description**
 
-Prepares an OH_LowPowerAudioSink instance for decoding and rendering. This function must be called after [OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure).<br> Before calling this function, you must call [OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink) of the LowPowerVideoSink.
+Prepares an **OH_LowPowerAudioSink** instance for decoding and rendering. This function must be called after [OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure).<br> Before calling this function, you must call [OH_LowPowerVideoSink_SetSyncAudioSink](capi-lowpower-video-sink-h.md#oh_lowpowervideosink_setsyncaudiosink) of the LowPowerVideoSink.
 
 **Since**: 20
 
@@ -185,7 +185,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Start(OH_LowPowerAudioSink* sink)
 
 **Description**
 
-Starts an OH_LowPowerAudioSink instance. This function must be called after a successful call to [OH_LowPowerAudioSink_Prepare](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_prepare).<br> After successful startup, the OH_LowPowerAudioSink instance starts reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.
+Starts an **OH_LowPowerAudioSink** instance. This function must be called after a successful call to [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).<br> After successful startup, the OH_LowPowerAudioSink instance starts reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.
 
 **Since**: 20
 
@@ -209,7 +209,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Pause(OH_LowPowerAudioSink* sink)
 
 **Description**
 
-Pauses an OH_LowPowerAudioSink instance. This function must be called after [OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume).<br> After successful pause, the OH_LowPowerAudioSink instance stops reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.
+Pauses a **LowPowerAudioSink** instance. This function must be called after [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Resume](#oh_lowpoweraudiosink_resume).<br> After successful pause, the OH_LowPowerAudioSink instance stops reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.
 
 **Since**: 20
 
@@ -233,7 +233,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Resume(OH_LowPowerAudioSink* sink)
 
 **Description**
 
-Resumes an OH_LowPowerAudioSink instance. This function must be called after [OH_LowPowerAudioSink_Pause](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_pause).<br> After successful resumption, the OH_LowPowerAudioSink instance resumes reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.
+Resumes a **LowPowerAudioSink** instance. This function must be called after [OH_LowPowerAudioSink_Pause](#oh_lowpoweraudiosink_pause).<br> After successful resumption, the OH_LowPowerAudioSink instance resumes reporting the [OH_LowPowerAudioSink_OnDataNeeded](capi-lowpower-audio-sink-base-h.md#oh_lowpoweraudiosink_ondataneeded) event.
 
 **Since**: 20
 
@@ -257,7 +257,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Flush(OH_LowPowerAudioSink* sink)
 
 **Description**
 
-Clears all input and output data from the decoders and render buffers of an OH_LowPowerAudioSink instance.<br> You are not advised to call this function after [OH_LowPowerAudioSink_Start](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Resume](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_resume).<br> Note that if the decoder has previously received data, you must input the codec data again.
+Clears all input and output data from the decoders and render buffers of an OH_LowPowerAudioSink instance.<br> You are not advised to call this function after [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Resume](#oh_lowpoweraudiosink_resume).<br> Note that if the decoder has previously received data, you must input the codec data again.
 
 **Since**: 20
 
@@ -281,7 +281,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Stop(OH_LowPowerAudioSink* sink)
 
 **Description**
 
-Stops an OH_LowPowerAudioSink instance.
+Stops an OH_LowPowerAudioSink instance. This function must be called after [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) or [OH_LowPowerAudioSink_Pause](#oh_lowpoweraudiosink_pause).
 
 **Since**: 20
 
@@ -305,7 +305,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Reset(OH_LowPowerAudioSink* sink)
 
 **Description**
 
-Resets an OH_LowPowerAudioSink instance.<br> To reuse the instance, you must call [OH_LowPowerAudioSink_Configure](capi-lowpower-audio-sink-h.md#oh_lowpoweraudiosink_configure) to configure the instance again.
+Resets an OH_LowPowerAudioSink instance.<br> To reuse the instance, you must call [OH_LowPowerAudioSink_Configure](#oh_lowpoweraudiosink_configure) to configure the instance again.
 
 **Since**: 20
 
@@ -329,7 +329,7 @@ OH_AVErrCode OH_LowPowerAudioSink_Destroy(OH_LowPowerAudioSink* sink)
 
 **Description**
 
-Clears internal resources of an OH_LowPowerAudioSink instance and destroys the instance. You only need to call the function once.
+Clears internal resources of an OH_LowPowerAudioSink instance and destroys the instance. You are advised to call this function after [OH_LowPowerAudioSink_Stop](#oh_lowpoweraudiosink_stop). You only need to call the function once.
 
 **Since**: 20
 
@@ -353,7 +353,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetVolume(OH_LowPowerAudioSink* sink, const fl
 
 **Description**
 
-Sets the rendering volume for an OH_LowPowerAudioSink instance.
+Sets the rendering volume for an OH_LowPowerAudioSink instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).
 
 **Since**: 20
 
@@ -378,7 +378,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetLoudnessGain(OH_LowPowerAudioSink* sink, fl
 
 **Description**
 
-Sets the loudness gain for an OH_LowPowerAudioSink instance.
+Sets the loudness gain for an OH_LowPowerAudioSink instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).
 
 **Since**: 21
 
@@ -403,7 +403,7 @@ OH_AVErrCode OH_LowPowerAudioSink_SetPlaybackSpeed(OH_LowPowerAudioSink* sink, c
 
 **Description**
 
-Sets the audio rendering speed for an OH_LowPowerAudioSink instance.
+Sets the audio rendering speed for an OH_LowPowerAudioSink instance. You need to call this function after [OH_LowPowerAudioSink_Prepare](#oh_lowpoweraudiosink_prepare).
 
 **Since**: 20
 
@@ -437,7 +437,7 @@ Provides a buffer to an OH_LowPowerAudioSink instance for procesing.
 | Name| Description|
 | -- | -- |
 | [OH_LowPowerAudioSink](capi-lowpoweraudiosink-oh-lowpoweraudiosink.md)* sink | Pointer to an OH_LowPowerAudioSink instance.|
-| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | Pointer to the OH_AVSamplesBuffer instance to be provided. Batch input of samples is supported.|
+| [OH_AVSamplesBuffer](capi-avsinkbase-oh-avsamplesbuffer.md)* samples | Pointer to the **OH_AVSamplesBuffer** instance to be provided. Batch input of samples is supported.|
 
 **Returns**
 
@@ -453,7 +453,7 @@ OH_AVErrCode OH_LowPowerAudioSink_RegisterCallback(OH_LowPowerAudioSink* sink, O
 
 **Description**
 
-Registers a callback for an OH_LowPowerAudioSink instance.
+Registers a callback for an OH_LowPowerAudioSink instance. This function must be called before [OH_LowPowerAudioSink_Start](#oh_lowpoweraudiosink_start) to ensure that the event callback can be received properly.
 
 **Since**: 20
 

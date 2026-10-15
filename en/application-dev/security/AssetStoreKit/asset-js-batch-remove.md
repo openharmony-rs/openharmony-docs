@@ -6,6 +6,7 @@
 <!--Designer: @skye_you-->
 <!--Tester: @nacyli-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b3dcf2109b956a292ded4a48a27d9302526f580a translatedAt=2026-10-09T01:14:03.956Z pushedAt=2026-10-09T09:00:35.917Z -->
 
 ## Available APIs
 
@@ -20,24 +21,7 @@ The following table describes the attributes of **AssetMap** for removing assets
 | Attribute Name (Tag)       | Value                                            | Mandatory | Description                                            |
 | --------------------- | ------------------------------------------------------------ | -------- | ------------------------------------------------ |
 | ALIAS                 | Type: Uint8Array<br>Length: 1-256 bytes                           | No    | Asset alias, which uniquely identifies an asset.           |
-| ACCESSIBILITY         | Type: number<br>Value range: see [Accessibility](../../reference/apis-asset-store-kit/js-apis-asset.md#accessibility)| No    | Access control based on the lock screen status.                                    |
-| REQUIRE_PASSWORD_SET  | Type: Boolean                                                  | No    | Whether the asset is accessible only when a lock screen password is set. The value **true** means the asset is accessible only when a lock screen password is set. The value **false** means that the asset can be accessed regardless of whether a lock screen password is set.    |
-| AUTH_TYPE             | Type: number<br>Value range: see [AuthType](../../reference/apis-asset-store-kit/js-apis-asset.md#authtype)| No    | Type of user authentication required for accessing the asset.                  |
-| SYNC_TYPE             | Type: number<br>Value range: see [SyncType](../../reference/apis-asset-store-kit/js-apis-asset.md#synctype)| No    | Type of sync supported by the asset.                          |
-| IS_PERSISTENT         | Type: Boolean                                                  | No    | Whether to retain the asset when the application is uninstalled. The value **true** means to retain the asset even after the application is uninstalled. The value **false** means the opposite.              |
-| DATA_LABEL_CRITICAL_1 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_2 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_3 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_CRITICAL_4 | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service with integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_1   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_2   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_3   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_4   | Type: Uint8Array<br>Length: 1-2048 bytes                       | No    | Asset attribute information customized by the service without integrity protection.<br>**NOTE**: The data length is 1 to 512 bytes before API version 12.|
-| DATA_LABEL_NORMAL_LOCAL_1<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_2<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_3<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| DATA_LABEL_NORMAL_LOCAL_4<sup>12+</sup> | Type: Uint8Array<br>Length: 1-2048 bytes| No| Local attribute information about the asset. The value is assigned by the service without integrity protection and will not be synced.|
-| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: Boolean| No| Whether to delete the encrypted data of service customized supplementary information. The value **true** means to delete the encrypted data of service customized supplementary information; the value **false** means to delete the non-encrypted data of service customized supplementary information. The default value is **false**.|
+| REQUIRE_ATTR_ENCRYPTED<sup>14+</sup> | Type: boolean| No| Whether to delete encrypted data of service-defined additional information. **true** is to delete the service-defined additional information stored in encrypted form, and **false** is to delete the service-defined additional information stored in unencrypted form. The default value is **false**.|
 | GROUP_ID<sup>18+</sup> | Type: Uint8Array<br>Length: 7-127 bytes| No| Group to which the asset to be removed belongs. By default, this parameter is not specified.|
 
 ## Constraints
@@ -48,17 +32,17 @@ A maximum of 100 assets can be removed in batches.
 
 ## Development Procedure
 
-> **NOTE**
+> **Note:**
 >
-> The following is an example of using the batch removal API.
+> The following is an example of using the Batch Delete API.
 >
-> Before removing an asset, ensure that the asset exists. For details about how to add an asset, see [Adding an Asset](asset-js-add.md). Otherwise, the **NOT_FOUND** error (24000002) is reported.
+> Before deletion, ensure that assets already exist. You can refer to the [guide](asset-js-add.md) to add assets. Otherwise, a NOT_FOUND error (error code 24000002) will be thrown.
 
 Remove two assets whose aliases are demo_alias1 and demo_alias2 in batches.
 
 1. Include the header file and define the tool function.
    <!-- @[import](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
-   
+
    ``` TypeScript
    import { asset } from '@kit.AssetStoreKit';
    import { util } from '@kit.ArkTS';
@@ -72,7 +56,7 @@ Remove two assets whose aliases are demo_alias1 and demo_alias2 in batches.
 
 2. Develop the desired feature.
    <!-- @[batch_remove](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/AssetStoreKit/AssetStoreArkTS/entry/src/main/ets/operations/batch_operation.ets) -->
-   
+
    ``` TypeScript
    let assetsToBeRemoved: asset.AssetMap[] = [];
    let query1: asset.AssetMap = new Map();
@@ -93,4 +77,3 @@ Remove two assets whose aliases are demo_alias1 and demo_alias2 in batches.
      console.error(`Failed to batch remove Asset. Code is ${err.code}, message is ${err.message}`);
    }
    ```
-<!--no_check-->

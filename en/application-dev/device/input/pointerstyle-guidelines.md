@@ -6,7 +6,7 @@
 <!--Designer: @hanruofei-->
 <!--Tester: @Lyuxin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=deff468b8adbfa4199da5cbe7b6cbc33f2bddb1e translatedAt=2026-06-24T07:41:07.597Z pushedAt=2026-06-25T06:58:22.916Z -->
+<!-- md-trans-meta sourceCommit=7de74d10089ae65ef9185e98373eb2da78c06dde translatedAt=2026-09-28T02:26:45.878Z pushedAt=2026-09-30T04:27:23.845Z -->
 
 ## When to Use
 
@@ -24,10 +24,10 @@ The following table lists common APIs for mouse pointer management. For details,
 
 | API                                                      | Description                                                        |
 | ------------------------------------------ | ------------------------------------------------------- |
-| isPointerVisible(callback: AsyncCallback\<boolean>): void | Obtains the visible status of the mouse pointer.                                |
-| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | Sets the visible status of the mouse pointer. This setting takes effect for the mouse pointer globally.|
-| setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | Sets the mouse pointer style. This setting takes effect for the mouse pointer style of a specified window.        |
-| getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | Obtains the mouse pointer style.                                          |
+| isPointerVisible(callback: AsyncCallback\<boolean>): void | Obtains the display/hide state of the current window. |
+| setPointerVisible(visible: boolean, callback: AsyncCallback\<void>): void | Sets the pointer display/hide state, which applies to all windows of the current process. |
+| setPointerStyle(windowId: number, pointerStyle: PointerStyle, callback: AsyncCallback\<void>): void | Sets the mouse pointer style type of the specified window. This API can only set the mouse pointer style type of windows in the current application process. |
+| getPointerStyle(windowId: number, callback: AsyncCallback\<PointerStyle>): void | Obtains the mouse pointer style type of the specified window. This API can only obtain the mouse pointer style type of windows in the current application process. |
 
 ## Hiding the Mouse Pointer
 
@@ -87,7 +87,7 @@ Text("Click to display pointer")
 
 ## Setting the Mouse Pointer Style
 
-When you design the color picker feature, you can switch the mouse cursor style to the color picker style, and set the mouse cursor style back to the default after color selection is complete.This API sets and queries the cursor style of a specified window within the current application. A total of 49 cursor styles are available. For details, see [PointerStyle](../../reference/apis-input-kit/js-apis-pointer.md#pointerstyle).
+When you design the color picker feature, you can switch the mouse pointer style to the color picker style, and set the mouse pointer style back to the default after color pickup is complete. This API sets and queries the pointer style of a specified window in the current application. A total of 49 pointer styles are available. For details, see [PointerStyle](../../reference/apis-input-kit/js-apis-pointer.md#pointerstyle).
 
 ### How to Develop
 
@@ -157,3 +157,4 @@ Text(`Click to set the mouse pointer style to default style`)
       });
   })
 ```
+

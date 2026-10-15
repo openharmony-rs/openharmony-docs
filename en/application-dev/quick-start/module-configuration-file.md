@@ -5,7 +5,7 @@
 <!--Designer: @hanfeng6-->
 <!--Tester: @memghaiyang-->
 <!--Adviser: @HelloCrease-->
-<!-- md-trans-meta sourceCommit=f2901656406b0d6ce4e050dbd02ddfe192f66cb7 translatedAt=2026-09-01T02:49:32.992Z pushedAt=2026-09-02T07:19:53.877Z -->
+<!-- md-trans-meta sourceCommit=eff57b282d964a5f1ad470729a43e0d632d098ff translatedAt=2026-10-08T03:51:04.387Z pushedAt=2026-10-08T06:59:36.297Z -->
 
 A module-level configuration file provides the basic configuration of the module, information about the **UIAbility** and **ExtensionAbility** components, and permissions required during application running for the compilation tool, OS, and AppGallery. Each module must contain a **module.json5** configuration file, which is stored in the ***project or module name*/src/main/module.json5** directory, for example, **entry/src/main/module.json5**.
 
@@ -127,16 +127,16 @@ As shown above, the **module.json5** file contains several tags.
 
 | Attribute Name | Description | Data Type | Whether It Can Be Omitted |
 | -------- | -------- | -------- | -------- |
-| name | Identifies the name of the current module. The name must be unique within the entire app. The naming rules are as follows&nbsp;:<br/>-&nbsp;It consists of letters, digits, and underscores, and must start with a letter.<br/>-&nbsp;The maximum length is 128 bytes.<br/>You can change the name during an app upgrade, but the app must adapt to the migration of the module-related data directories. For details, see [@ohos.file.fs (File Management)](../reference/apis-core-file-kit/js-apis-file-fs.md).<br/>**Note:**<br/>When creating a module in DevEco Studio, the module name cannot exceed 31 characters. If this length does not meet your requirements, you can change this tag in the configuration file. | string | This tag cannot be omitted. |
+| name | Identifies the name of the current module. The name must be unique within the app. The naming rules are as follows&nbsp;:<br/>-&nbsp;It consists of letters, digits, and underscores, and must start with a letter.<br/>-&nbsp;The maximum length is 128 bytes.<br/>You can change the name during an app upgrade, but the app must adapt to the migration of the module-related data directories. For details, see [@ohos.file.fs (File Management)](../reference/apis-core-file-kit/js-apis-file-fs.md).<br/>**Note:**<br/>When creating a module in DevEco Studio, the module name cannot exceed 31 characters. If this length does not meet your requirements, you can change this tag in the configuration file. | string | This tag cannot be omitted. |
 | type | Identifies the type of the current module. The supported values are as follows:<br/>-&nbsp;entry: the main module of the app.<br/>-&nbsp;feature: the dynamic feature module of the app.<br/>-&nbsp;har: the static shared package module.<br/>-&nbsp;shared: the dynamic shared package module.<br/>-&nbsp;skill: the skill package module, used to define the skill capabilities of an AI agent. A module of this type must have the [skillProfiles](#skillprofiles) tag configured. Only when [bundleType](./app-configuration-file.md#tags-in-the-configuration-file) of the app is set to skill, that is, when bundleType in the app.json5 configuration file is skill, can the type of the module be set to skill. In this case, the app can contain only one module. This tag is supported since API version 26.0.0. It takes effect only for preset apps. | string | This tag cannot be omitted. |
 | srcEntry | Identifies the code path of the AbilityStage component. For details, see [AbilityStage Component Container](../application-models/abilitystage.md). The value is a string of no more than 127 bytes. | string | This tag can be omitted. The default value is empty. |
 | description | Identifies the description of the current module. You can use this tag to describe the functions and purpose of the current module. The value is a string of no more than 255 bytes, and can be in the string resource index format. | string | This tag can be omitted. The default value is empty. |
 | <!--DelRow-->process | Identifies the process name of the current module. The value is a string of no more than 31 bytes. If process is configured under the HAP tag, all UIAbility, DataShareExtensionAbility, and ServiceExtensionAbility of the module run in this process.<br/>**Note:**<br/>This takes effect only when the [multi-instance privilege](../../device-dev/subsystems/subsys-app-privilege-config-guide.md#privileges-that-can-be-configured-by-device-vendors) is enabled. The configuration does not take effect for third-party applications. | string | This tag can be omitted. The default value is bundleName under the app tag in the app.json5 file. |
 | mainElement | Identifies the name of the entry UIAbility of the current module. The value is a string of no more than 255 bytes. For details, see [Configuration Priority and Build Policy](./layered-image.md#configuration-priority-and-build-policy) in Configuring the App Icon and Name. | string | This tag can be omitted. The default value is empty. |
 | [deviceTypes](#devicetypes) | Identifies the types of devices on which the current module can run.<br/>**Note:**<br/>When there are multiple modules, the configuration of each module can be different, but each must include the device types on which it will be installed to ensure normal running. | string array | This tag cannot be omitted. |
-| deliveryWithInstall | Indicates whether the current module is installed when the user actively installs the app, that is, whether the HAP/HSP corresponding to the module is installed together with the app.<br/>-&nbsp;true: installed together with the app.<br/>-&nbsp;false: not installed together with the app.<!--RP11--><!--RP11End--> | boolean | When the current module type is HAP or HSP, this tag cannot be omitted. |
+| deliveryWithInstall | Indicates whether the current module is installed when the user installs the app, that is, whether the HAP/HSP corresponding to the module is installed together with the app.<br/>-&nbsp;true: installed together with the app.<br/>-&nbsp;false: not installed together with the app.<!--RP11--><!--RP11End--> | boolean | When the current module type is HAP or HSP, this tag cannot be omitted. |
 | installationFree | Indicates whether the current module supports the installation-free feature.<br/>-&nbsp;true: the installation-free feature is supported and the installation-free constraints are met.<br/>-&nbsp;false: the installation-free feature is not supported. | boolean | This tag can be omitted. It is automatically generated during compilation and building, and manual configuration does not take effect.<br/>**Note:**<br/>When [bundleType](./app-configuration-file.md#tags-in-the-configuration-file) is an atomic service, this tag is automatically set to true. Otherwise, it is automatically set to false. |
-| virtualMachine | Identifies the target virtual machine type on which the current module runs, for cloud distribution, such as the app market and distribution center. If the target virtual machine type is the ArkTS engine, the value is "ark+version number". | string | This tag can be omitted. Manual configuration does not take effect, and it is automatically generated during compilation and building. |
+| virtualMachine | Identifies the target virtual machine type on which the current module runs, for cloud distribution, such as the AppGallery and distribution center. If the target virtual machine type is the ArkTS engine, the value is "ark+version number". | string | This tag can be omitted. Manual configuration does not take effect, and it is automatically generated during compilation and building. |
 | [pages](#pages) | Identifies the profile resource of the current module, used to list the information of each page. The value is a string of no more than 255 bytes. | string | This tag can be omitted. The default value is empty. |
 | [metadata](#metadata) | Identifies the custom metadata of the current module. You can configure [distributionFilter](#distributionfilter), [shortcuts](#shortcuts), and other information by referencing resources. It takes effect only for the current module, UIAbility, and ExtensionAbility. | object array | This tag can be omitted. The default value is empty. |
 | [abilities](#abilities) | Identifies the configuration information of UIAbility in the current module. It takes effect only for the current UIAbility. | object array | This tag can be omitted. The default value is empty. |
@@ -154,9 +154,9 @@ As shown above, the **module.json5** file contains several tags.
 | compressNativeLibs | When packaging a HAP, this tag indicates whether the libs library is packaged into the HAP in a compressed manner.<br/>-&nbsp;true: the libs library is stored in a compressed manner.<br/>-&nbsp;false: the libs library is stored in an uncompressed manner. | boolean | This tag can be omitted. When packaging a HAP, the default value is false. |
 | extractNativeLibs | Indicates whether the libs library is extracted to the app installation directory when the app is installed. When both compressNativeLibs and extractNativeLibs are set to false, the app is installed without extracting the libs library. In other scenarios, the app is installed with the libs library extracted.<br/>**Note:**<br/>This tag is supported since API version 20. | boolean | This tag can be omitted. The default value is true. |
 | libIsolation | Indicates whether a directory named after the module is generated under the libs directory to store .so files, so as to distinguish the .so files of different HAPs in the same app and prevent .so file conflicts.<br/>-&nbsp;true: the .so files of the current HAP are stored in the path named after the module under the libs directory.<br/>-&nbsp;false: the .so files of the current HAP are stored directly in the libs directory. | boolean | This tag can be omitted. The default value is false. |
-| [fileContextMenu](#filecontextmenu) | Identifies the context menu configuration item of the current HAP. It is a profile file resource. The value is a string of no more than 255 bytes.<br/>**Note:**<br/>It takes effect only on PC/2in1 devices.<br/>It can be configured only in modules of the entry type. | string | This tag can be omitted. The default value is empty. |
+| [fileContextMenu](right-click-menu.md#declaring-the-context-menu) | Identifies the context menu configuration item of the current HAP. It is a profile file resource. The value is a string of no more than 255 bytes.<br/>**Note:**<br/>It takes effect only on PCs/2-in-1 devices.<br/>It can be configured only in modules of the entry type. | String | This tag can be omitted. The default value is empty. |
 | querySchemes | Identifies the URL schemes that the current app is allowed to query for redirection. It can be configured only in modules of the entry type. Each string value is no more than 128 bytes.<br/>**Note:**<br/>Since API version 21, a maximum of 200 URL schemes can be configured. In API version 20 and earlier, a maximum of 50 URL schemes can be configured.  | string array | This tag can be omitted. The default value is empty. |
-| [routerMap](#routermap) | Identifies the path of the route table configured for the current module. The value is a string of no more than 255 bytes. | string | This tag can be omitted. The default value is empty. |
+| [routerMap](#routermap) | Identifies the path of the routing table configured for the current module. The value is a string of no more than 255 bytes. | string | This tag can be omitted. The default value is empty. |
 | [appEnvironments](#appenvironments) | Identifies the app environment variables configured for the current module. It can be configured only in modules of the entry and feature types. | object array | This tag can be omitted. The default value is empty. |
 | appStartup | Identifies the configuration path of the [startup framework](../application-models/app-startup.md) of the current module. It can be configured only in modules of the entry type.<br>Since API version 18, configuration in HSPs and HARs is supported.<br>Since API version 20, configuration in modules of the feature type is supported. | string | This tag can be omitted. The default value is empty. |
 | [hnpPackages](#hnppackages) | Identifies the information of the native software packages included in the current app. It can be configured only in modules of the entry type. | object array | This tag can be omitted. The default value is empty. |
@@ -628,9 +628,9 @@ Indicates the type of the current ExtensionAbility component. The supported valu
 
 ## shortcuts
 
-The **shortcuts** tag provides the shortcut information of an application. The value is an array and consists of four sub-attributes: **shortcutId**, **label**, **icon**, and **wants**.
+The **shortcuts** tag provides the shortcut information of an application. The value is an array and consists of four subtags: **shortcutId**, **label**, **icon**, and **wants**.
 
-The **shortcut** information is specified in **metadata**, where:
+The **shortcut** information is specified in [metadata](#metadata), where:
 
 - **name** indicates the name of the shortcut, identified by **ohos.ability.shortcuts**.
 
@@ -647,7 +647,7 @@ The **shortcut** information is specified in **metadata**, where:
 | label | Label of the shortcut, that is, the text description displayed for the shortcut. The value is a string with a maximum of 255 bytes. It can be descriptive content or a resource index.| String| Yes (initial value: left empty)|
 | icon | Icon of the shortcut. The value is the index of the icon resource file.<br>**NOTE**<br>Icons are classified into single-layer icons and layered icons. A single-layer icon contains only one image, and a layered icon contains a foreground image and a background image. The following configurations are recommended:<br>1. Foreground image: a transparent layer whose icon size is 450 × 450 px and resource size is 1024 × 1024 px.<br>2. Background image: The size is 1024 × 1024 px.<br>| String| Yes (initial value: left empty)|
 | visible | Whether the shortcut is visible. The value **true** indicates that the shortcut is visible; **false** indicates the opposite.<br>**NOTE**<br>This tag is supported since API version 20.<br>| Boolean| Yes (initial value: **true**)|
-| [wants](#wants) | Wants to which the shortcut points. If the **startShortcut** API of **launcherBundleManager** is called, the first target component in the wants is started. As such, you are advised to configure only one element for **wants**.| Object| Yes (initial value: left empty)|
+| [wants](#wants) | Wants to which the shortcut points<!--Del-->. If the **startShortcut()** API of **launcherBundleManager** is called, the first target component in the wants is started. As such, you are advised to configure only one element for **wants**<!--DelEnd-->. | object | Yes (initial value: left empty) |
 
 
 1. Configure the **shortcuts_config.json** file in **/resources/base/profile/**.
@@ -678,7 +678,7 @@ The **shortcut** information is specified in **metadata**, where:
 2. In the **abilities** tag of the **module.json5** file, configure the **metadata** tag for the **UIAbility** component to which a shortcut needs to be added so that the shortcut configuration file takes effect for the **UIAbility**.
 
    <!-- @[module_abilities_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5)  -->
-
+   
    ``` JSON5
    {
      "module": {
@@ -745,7 +745,7 @@ Example of the **wants** tag:
 
 ## distributionFilter
 
-The **distributionFilter** tag defines the rules for distributing HAP files based on different device specifications, so that precise matching can be performed when the application market distributes applications.
+The **distributionFilter** tag defines the rules for distributing HAP files based on different device specifications, so that precise matching can be performed when the AppGallery distributes applications.
 
 > **NOTE**
 > This tag is supported since API version 10. For API version 9 and earlier, the **distroFilter** tag is used.
@@ -753,7 +753,7 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
 - **Application scenario**: If a project has multiple entry-type modules and the values of **deviceType** configured for these modules overlap, you need to use this tag to distinguish the modules. In the following example, both entry-type modules support the tablet type, and therefore the **distributionFilter** tag is required.
 
   <!-- @[module_distributionFilter_01](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5) -->
-
+  
   ``` JSON5
   // Device types supported by entry1
   {
@@ -771,7 +771,7 @@ The **distributionFilter** tag defines the rules for distributing HAP files base
 
 
   <!-- @[module_distributionFilter_02](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile02/entry2/src/main/module.json5) -->
-
+  
   ``` JSON5
   // Device types supported by entry2
   {
@@ -887,7 +887,7 @@ Example:
 2. Configure **metadata** in the **module** tag in the **module.json5** file.
 
   <!-- @[module_distributionFilter_metadata](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile03/entry1/src/main/module.json5)   -->
-
+  
   ``` JSON5
   {
     "module": {
@@ -1215,99 +1215,12 @@ Example of the **hnpPackages** structure:
 }
 ```
 
-## fileContextMenu
-
-The **fileContextMenu** tag provides configuration options for the context menu (displayed upon right-clicking) of the current HAP. It is a profile that contains the context menu configuration registered by the application. This tag takes effect only on PCs/2-in-1 devices and can be configured only in entry modules.
-
-Example of the **fileContextMenu** structure:
-
-<!-- @[module_fileContextMenu](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/bmsSample/ModuleConfigurationFile01/entry/src/main/module.json5) -->
-
-``` JSON5
-{
-  "module": {
-    // ...
-    "fileContextMenu": "$profile:menu", // Resource configuration, which points to the menu.json configuration file defined in the profile.
-    // ...
-  }
-}
-```
-
-Define the **menu.json** file under **resources/base/profile** in the development view. The file name (**menu.json** in this example) can be customized, but must be consistent with the information specified by the **fileContextMenu** tag. The file describes the items and response behavior of the context menu registered by the application.
-
-The root node of the file is **fileContextMenu**, which is an object array and indicates the number of context menus registered by the current module. (The number must not exceed 5 per module and per application. If the number exceeds 5, only five random menus are parsed.)
-
-**Table 25** fileContextMenu
-
-| Name| Description| Data Type| Initial Value Allowed|
-| -------- | -------- | -------- | -------- |
-| abilityName | Name of the ability to be started for the context menu.| String| No|
-| menuItem | Information displayed on the context menu. Naming rules:<br>Rule 1: [Action] + [Application name]. Example: **Open with {*application*}**, or **Open with {*application*} ({*plugin*})**.<br>Rule 2: [Action] + [Purpose]. Example: **Compress to {*file name*}**, **Compress to {*path*}**, or **Convert to {*format*} with {*application*}**.| Resource ID| No|
-| menuHandler | Context menu handler. An ability can be used to create multiple shortcut menus. Each tag corresponds to one shortcut menu item, so you can customize the value of this tag to ensure that each tag is unique in the ability. When a user right-clicks a context menu to start an application, this tag is passed to the application as a parameter.| String| No|
-| menuContext | Context required for displaying the context menu. Multiple contexts are supported.| Object array| No|
-
-**Table 26** menuContext
-
-| Name| Description| Data Type| Initial Value Allowed|
-| -------- | -------- | -------- | -------- |
-| menuKind | Condition in which the context menu is displayed. The options are as follows:<br>- **0**: blank area<br>- **1**: file<br>- **2**: folder<br>- **3**: file and folder| Number| No|
-| menuRule | Operations that can trigger context menu. The options are as follows:<br>- **single**: Single file or folder is selected.<br>- **multi**: Multiple files or folders are selected.<br>- **both**: Both.| String| No (This tag is read when **menuKind** is set to **1** or **2**.)|
-| fileSupportType | Supported types of files. The context menu is displayed when the selected file list contains files of these types.<br>If the value of this tag is set to **["*"]**, the **fileNotSupportType** tag is read.<br>When the value is left empty, no processing is performed.| String array| No (This tag is read when **menuKind** is set to **1**.)|
-| fileNotSupportType | Types of files not supported. The context menu is not displayed when the selected file list contains files of these types.<br>This tag is read only when **menuKind** is set to **1** and **fileSupportType** is set to **["*"]**.| String array| Yes (initial value: left empty)|
-
-Example of the **menu.json** file in the **resources/base/profile** directory:
-```json
-{
-  "fileContextMenu": [
-    {
-      "abilityName": "EntryAbility",
-      "menuItem": "$string:module_desc",
-      "menuHandler": "openCompress",
-      "menuContext": [
-        {
-          "menuKind": 0
-        },
-        {
-          "menuKind": 1,
-          "menuRule": "both",
-          "fileSupportType": [
-            ".rar",
-            ".zip"
-          ],
-          "fileNotSupportType": [
-            ""
-          ]
-        },
-        {
-          "menuKind": 2,
-          "menuRule": "single"
-        },
-        {
-          "menuKind": 3
-        }
-      ]
-    }
-  ]
-}
-```
-
-**Response Behavior**
-
-After a context menu is registered, the **More** option of the menu, when clicked, displays a sublist of menu items specified in **menuItem**. After you click any of the items, the file manager starts the third-party application using **startAbility** by default. In addition to the bundle name and ability name of the third-party application, the following tags are also passed in **parameter** of **want**:
-
-**Table 27** parameter field in want
-
-| Name| Value| Data Type|
-| -------- | -------- | -------- |
-| menuHandler | Value of **menuHandler** in the registration configuration file.| String|
-| uriList | URIs for redirection when the user right-clicks files. If the context menu is displayed by right-clicking a blank area, the value is null. If the context menu is displayed by right-clicking a single file, the array length is 1. If the context menu is displayed by right-clicking multiple files, the URIs of all files should be passed in.| String array|
-
 ## startWindow
 
 This tag points to a profile resource and is used to define the configuration file **start_window.json** of the **UIAbility** startup page in **resources/base/profile**. If this tag is set, the **startWindowIcon** and **startWindowBackground** tags do not take effect.
 
 <!--RP4-->
-> **NOTE**
+> **NOTE** 
 >
 > Since API version 20, this tag can be used to configure an enhanced starting window.<!--RP4End-->
 

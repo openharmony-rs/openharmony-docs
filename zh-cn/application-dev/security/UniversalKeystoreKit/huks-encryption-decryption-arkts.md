@@ -95,11 +95,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getAesGenerateProperties() {
@@ -298,11 +294,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getAesGenerateProperties() {
@@ -739,11 +731,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getRsaGenerateProperties() {
@@ -938,11 +926,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getRsaGenerateProperties() {
@@ -1104,7 +1088,7 @@ async function deleteKey() {
    * 1. 调用deleteKeyItem删除密钥
    */
   await huks.deleteKeyItem(rsaKeyAlias, emptyOptions)
-    .then((data) => {
+    .then(() => {
       console.info(`promise: delete data success`);
     }).catch((error: BusinessError) => {
       console.error(`promise: delete data failed, errCode : ${error.code}, errMsg : ${error.message}`);
@@ -1137,11 +1121,7 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
 
 function getSm2GenerateProperties() {
@@ -1327,13 +1307,8 @@ function stringToUint8Array(str: string) {
 }
 
 function uint8ArrayToString(fileData: Uint8Array) {
-  let dataString = '';
-  for (let i = 0; i < fileData.length; i++) {
-    dataString += String.fromCharCode(fileData[i]);
-  }
-  return dataString;
+  return Array.from(fileData, byte => String.fromCharCode(byte)).join('');
 }
-
 function getDesGenerateProperties() {
   let properties: huks.HuksParam[] = [{
     tag: huks.HuksTag.HUKS_TAG_ALGORITHM,

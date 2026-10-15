@@ -1,14 +1,15 @@
 # Animation Smoothing
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @hehongyang3-->
 <!--Designer: @hehongyang3-->
 <!--Tester: @lxl007-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=5676df03a5c7f39e1f4c1a810694dac229a591ff translatedAt=2026-07-29T12:43:05.003Z pushedAt=2026-07-30T01:10:07.715Z -->
+<!-- md-trans-meta sourceCommit=56f4ce2c21ec32221aec4b4c16d073cd82052f76 translatedAt=2026-10-10T06:03:57.857Z pushedAt=2026-10-12T07:25:13.245Z -->
 
-When running animations, the UI is also interacting with users in real time. It must respond immediately to changes in user behavior. For example, if the user swipes up to exit in the midst of an application launch process, the UI should immediately transit from the startup animation to the exit animation, rather than finishing the startup animation before exiting. For scenarios such as desktop page‑turning where an animation is triggered after the finger lifts from the screen following a dragging gesture, the initial velocity of the post‑lift animation should inherit the gesture velocity to avoid a sense of stutter caused by velocity discontinuity. For the preceding and similar scenarios, the system provides efficient APIs for smoothing between animations and between animations and gestures while minimizing development complexity.
+In addition to running animations, the UI also interacts with users in real time. It must respond immediately to changes in user behavior. For example, if the user swipes up to exit during an application launch, the UI should immediately transition from the startup animation to the exit animation, rather than finishing the startup animation before exiting. For scenarios such as desktop page-turning, where an animation is triggered from finger-following to finger-lift, the initial velocity of the post-lift animation should inherit the gesture velocity to avoid a sense of stutter caused by velocity discontinuity. For these and similar scenarios, the system provides capabilities for smooth transitions between animations and between gestures and animations, while minimizing development complexity.
+
+## Animation-to-Animation Continuity
 
 Assume that there is a running animation for an animatable property. If the end value of the property changes due to an operation on the UI, you can create a new animation for it, by changing the property value in the [animateTo](../reference/apis-arkui/arkui-ts/ts-explicit-animation.md) closure or by changing the input parameter value of the [animation](../reference/apis-arkui/arkui-ts/ts-animatorproperty.md) API. The system then automatically connects the previous animation with the new animation. You only need to focus on the implementation of the current single animation.
 
@@ -65,7 +66,10 @@ struct AnimationToAnimationDemo {
 }
 ```
 
+
 ![en-us_image_0000001599971890](figures/Animation-smoothing.gif)
+
+
 
 ## Smoothing Between Gestures and Animations
 
@@ -142,5 +146,7 @@ struct SpringMotionDemo {
   }
 }
 ```
+
+
 
 ![en-us_image_0000001647027001](figures/Smoothing-Gestures-Animations.gif)

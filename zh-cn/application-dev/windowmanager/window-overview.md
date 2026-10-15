@@ -3,7 +3,7 @@
 <!--Subsystem: Window-->
 <!--Owner: @Pakoo007-->
 <!--Designer: @ki_ja-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
 
 ## 窗口模块的定义

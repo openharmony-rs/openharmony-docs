@@ -527,6 +527,10 @@ getAbilityState(ability: UIAbility): number
 
 获取指定Ability的生命周期状态。
 
+> **说明：**
+> 
+> 当前接口在调用失败时返回undefined，未包含401错误码。
+
 **原子化服务API：** 从API version 11开始，该接口支持在原子化服务中使用。
 
 **系统能力**：SystemCapability.Ability.AbilityRuntime.Core

@@ -561,7 +561,7 @@ export struct NestDialogNew {
 
 ## 实现弹出框的物理返回拦截
 
-执行点击遮障层关闭、侧滑（左滑或右滑）、三键Back、键盘ESC关闭等交互操作时，如果注册了[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的onWillDismiss回调函数，弹出框不会立即关闭。在回调函数中，通过[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)中的reason属性获取阻拦关闭弹出框的操作类型，根据原因决定是否关闭弹出框。
+执行点击遮障层关闭、侧滑（左滑或右滑）、三键Back、键盘ESC关闭等交互操作时，如果注册了[CustomDialogControllerOptions](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontrolleroptions对象说明)中的onWillDismiss()回调函数，弹出框不会立即关闭。在回调函数中，通过[DismissDialogAction](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#dismissdialogaction12)中的reason属性获取阻拦关闭弹出框的操作类型，根据原因决定是否关闭弹出框。
  
 <!-- @[dialog_with_physical_back](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/DialogProject/entry/src/main/ets/pages/customdialog/DialogWithPhysicalBack.ets) -->
 
@@ -739,7 +739,7 @@ export struct DialogAvoidSoftKeyboard {
 
 在业务模块中，页面上可能会同时出现多个弹出框。为避免重复打开相同的弹出框，建议在显示弹出框前，先通过控制器检查其当前状态。如果弹出框已处于显示状态，则不应再次打开。
 
-从API version 20开始，新增了getState接口，用于获取弹出框的当前状态。具体的弹出框状态信息，请参见[CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20)枚举的详细说明。
+从API version 20开始，新增了getState()接口，用于获取弹出框的当前状态。具体的弹出框状态信息，请参见[CommonState](../reference/apis-arkui/js-apis-promptAction.md#commonstate20)枚举的详细说明。
 
 以下示例通过[getDialogController](../reference/apis-arkui/arkui-ts/ts-custom-component-api.md#getdialogcontroller18)和[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)两种方法，实现了获取弹出框当前状态的功能。
 

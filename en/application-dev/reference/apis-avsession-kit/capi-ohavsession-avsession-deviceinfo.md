@@ -1,8 +1,8 @@
 # AVSession_DeviceInfo
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -12,7 +12,7 @@ typedef struct AVSession_DeviceInfo AVSession_DeviceInfo
 
 ## Overview
 
-Defines a struct for the device information. This instance is used to obtain more device information and its detailed properties.
+Describes a struct for the device information. This struct is used to store the detailed attributes of a device.
 
 **Since:** 23
 

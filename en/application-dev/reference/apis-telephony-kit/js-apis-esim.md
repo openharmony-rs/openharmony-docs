@@ -1,12 +1,12 @@
 # @ohos.telephony.esim (eSIM Management)
 <!--Kit: Telephony Kit-->
 <!--Subsystem: Telephony-->
-<!--Owner: @yangyannanyangyannan-->
+<!--Owner: @Fanyl8-->
 <!--Designer: @ghxbob-->
 <!--Tester: @weitiantian-->
 <!--Adviser: @zhang_yixin13-->
 
-The **esim** module provides basic eSIM management capabilities, including checking whether a specified card slot supports the eSIM function.
+The eSIM management module provides basic eSIM management capabilities, including checking whether a specified card slot supports the eSIM function.
 
 > **NOTE**
 >
@@ -23,7 +23,7 @@ import { eSIM } from '@kit.TelephonyKit';
 
 isSupported\(slotId: number\): boolean
 
-Checks whether the specified card slot supports the eSIM function.
+Checks whether the specified card slot supports the eSIM function. For debug version, the value of **eSIM.isSupported** is always **false**. For release version, the value is returned based on the actual device support.
 
 **System capability**: SystemCapability.Telephony.CoreService.Esim
 
@@ -45,7 +45,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 | ID             | Error Message                          |
 | --------------------- | ---------------------------------- |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.   |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.   |
 |3120001| Service connection failed. |
 |3120002| System internal error.     |
 
@@ -62,7 +62,7 @@ console.info(`the esim is Supported:` + isSupported);
 
 addProfile\(profile: DownloadableProfile\): Promise\<boolean\>
 
-Launches the download page for the user to add a single profile. This API uses a promise to return the result.
+This API is called to guide the user to download and add a configuration file when the user needs to activate a new eSIM, for example, when a new card is issued or the card is changed. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.SET_TELEPHONY_ESIM_STATE_OPEN
 
@@ -78,7 +78,7 @@ Launches the download page for the user to add a single profile. This API uses a
 
 | Type                 | Description                              |
 | --------------------- | ---------------------------------- |
-| Promise\<boolean\> | Promise used to return the result. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
+| Promise\<boolean\> | Promise used to return the result of adding a single profile. The value **true** indicates that the operation is successful, and the value **false** indicates the opposite.|
 
 **Error codes**
 
@@ -87,7 +87,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID             | Error Message                          |
 | --------------------- | ---------------------------------- |
 | 201 | Permission denied.           |
-| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3.Parameter verification failed.     |
+| 401 | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified. 2. Incorrect parameter types. 3. Parameter verification failed.     |
 | 801 | Capability not supported.    |
 |3120001| Service connection failed. |
 |3120002| System internal error.     |
@@ -125,9 +125,9 @@ Defines a downloadable profile.
 | Name| Type                                  |  Read-Only| Optional| Description|
 | ----- |--------------------------------------| ----- | ---- | -----|
 | activationCode   | string                               |  No |  No | Activation code. For a profile that does not require an activation code, the value may be left empty.|
-| confirmationCode | string                               |  No |  Yes | Confirmation code.    |
-| carrierName      | string                               |  No |  Yes | Carrier name.  |
-| accessRules      | Array\<[AccessRule](#accessrule20)\> |  No |  Yes | Access rule array.|
+| confirmationCode | string                               |  No |  Yes | Confirmation code. If no value is passed, the default value is an empty string.    |
+| carrierName      | string                               |  No |  Yes | Carrier name. If no value is passed, the default value is an empty string.  |
+| accessRules      | Array\<[AccessRule](#accessrule20)\> |  No |  Yes | Access rule array. If no value is passed, the default value is an empty array.|
 
 ## AccessRule<sup>20+</sup>
 
@@ -137,6 +137,6 @@ Defines access rules.
 
 | Name| Type| Read-Only| Optional| Description|
 | ----- | ----- |----|----| -----|
-| certificateHashHexStr | string  | No | No | Hex string of the certificate hash.|
+| certificateHashHexStr | string  | No | No | Hex string of the certificate hash. The value contains 40 or 64 characters. It can contain digits (0-9) and letters a-f or A-F.|
 | packageName           | string  | No | No | Package name.|
 | accessType            | number  | No | No | Rule type.|

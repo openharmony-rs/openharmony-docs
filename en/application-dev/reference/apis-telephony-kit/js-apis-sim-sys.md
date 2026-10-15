@@ -3609,6 +3609,7 @@ Enumerates contact types.
 | --------------- | ---- | ---------- |
 | GENERAL_CONTACT | 1    | Common contact number.|
 | FIXED_DIALING   | 2    | Fixed dialing number.  |
+| SDN_DIALING<sup>24+</sup>      | 3    | Dialing. |
 
 ## OperatorConfigKey<sup>9+</sup>
 
@@ -3694,3 +3695,17 @@ Defines the SIM card authentication response.
 | simStatusWord1 | number |  Yes | SIM card status word 1.|
 | simStatusWord2 | number |  Yes | SIM card status word 2.|
 | response       | string |  Yes | Authentication response.    |
+
+## IccAccountInfo<sup>10+</sup>
+
+Defines the ICC account information.
+
+**System API**: This is a system API.
+
+**System capability**: SystemCapability.Telephony.CoreService
+
+
+| Name      | Type   | Read-Only|Optional| Description            |
+| -------------| ------ | ---- | ---------- |---------- |
+| simLabelIndex  | number  |  No| Yes| Slot position.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|
+| operatorName | string  |  No| Yes| Operator name of the SIM card.<br>**Since:** 26.0.0<br>**Model restriction:** This API can be used only in the stage model.|

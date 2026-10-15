@@ -6,7 +6,7 @@
 <!--Designer: @qq_43802146-->
 <!--Tester: @furryfurry123-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=18467ea3590ba4fb3e7e74d620f73d08c1b6767d translatedAt=2026-09-01T02:10:18.152Z pushedAt=2026-09-01T11:30:10.750Z -->
+<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-09-28T02:22:40.929Z pushedAt=2026-09-28T11:39:59.826Z -->
 
 - [About This Kit](connectivity-kit-intro.md)
 - Bluetooth<!--bluetooth-->
@@ -36,3 +36,12 @@
   - [Converged Short-Range Service Development](fusion-connectivity/fusion-connectivity-overview.md)
   - [Interconnection Between Partner Devices and OpenHarmony Devices](fusion-connectivity/partneragent-life-application-guide.md)
   - [Converged Short-Range Glossary](fusion-connectivity/fusion-connectivity-terminology.md)
+- NearLink<!--nearlink-->
+  - [NearLink Overview](nearlink/nearlink-introduction-guide.md)
+  - [Getting Started](nearlink/nearlink-preparations-guide.md)
+  - [Discovering NearLink Devices](nearlink/nearlink-device-discovery-guide.md)
+  - [Managing SSAP Connections and Services](nearlink/nearlink-ssap-connection-guide.md)
+  - [Transferring Data over NearLink](nearlink/nearlink-data-transfer-guide.md)
+  - [Obtaining NearLink Coordinated Devices Set Information](nearlink/nearlink-cdsm-information-guide.md)
+  - [FAQs](nearlink/nearlink-faq-guide.md)
+  - [Glossary](nearlink/nearlink-glossary-guide.md)

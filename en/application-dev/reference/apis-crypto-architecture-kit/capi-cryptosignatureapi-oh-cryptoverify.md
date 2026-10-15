@@ -13,7 +13,7 @@ typedef struct OH_CryptoVerify OH_CryptoVerify
 
 ## Overview
 
-Defines the data used for signature verification.
+Defines a struct for signature verification, which indicates the signature verification context.
 
 **Since**: 12
 

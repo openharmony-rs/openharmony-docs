@@ -1,13 +1,14 @@
 # OH_Drawing_Font_Metrics
 <!--Kit: ArkGraphics 2D-->
 <!--Subsystem: Graphics-->
-<!--Owner: @hangmengxin-->
-<!--Designer: @wangyanglan-->
+<!--Owner: @dreamyhhh-->
+<!--Designer: @wanyanglan-->
 <!--Tester: @nobuggers-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=3b75f30d038321e59d140485862ef0f48205e17e translatedAt=2026-10-09T12:33:45.043Z pushedAt=2026-10-10T09:59:23.738Z -->
 
-```
-typedef struct {...} OH_Drawing_Font_Metrics
+```c
+typedef struct OH_Drawing_Font_Metrics {...} OH_Drawing_Font_Metrics
 ```
 
 ## Overview
@@ -42,3 +43,5 @@ This struct describes the measurement information about a font.
 | float underlinePosition | Position of the underline, that is, vertical distance from the baseline to the top of the underline. Generally, the value is a positive value.|
 | float strikeoutThickness | Thickness of the strikethrough.|
 | float strikeoutPosition | Position of the strikethrough, that is, vertical distance from the baseline to the bottom of the strikethrough. Generally, the value is a negative value.|
+
+

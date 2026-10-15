@@ -7,7 +7,7 @@
 <!--Adviser: @HelloCrease-->
 
 ```c
-typedef struct {...} OH_NativeBundle_ElementName
+typedef struct OH_NativeBundle_ElementName {...} OH_NativeBundle_ElementName
 ```
 
 ## 概述

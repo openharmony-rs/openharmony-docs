@@ -1,12 +1,11 @@
 # Sharing an Application File
-
 <!--Kit: Core File Kit-->
 <!--Subsystem: FileManagement-->
 <!--Owner: @gzhuangzhuang-->
 <!--Designer: @wang_zhangjun; @chenxi0605-->
 <!--Tester: @liuhonggang123-->
 <!--Adviser: @jinqiuheng-->
-<!-- md-trans-meta sourceCommit=db7022f0cb4327ce8c3bb45927411e792eeb9d9a translatedAt=2026-08-01T07:28:36.460Z pushedAt=2026-08-01T11:24:30.790Z -->
+<!-- md-trans-meta sourceCommit=997b48ee5e71530600745f754b3672c77104e27b translatedAt=2026-10-08T03:44:39.442Z pushedAt=2026-10-08T06:20:04.262Z -->
 
 An application can share a file with another application based on the uniform resource identifier (URI) of the file.
 
@@ -37,7 +36,7 @@ The file URIs are in the following format:
 > **NOTE**
 >
 > - URI processing involves encoding and decoding. The system cannot guarantee the availability of the URI address that an application combines by itself.
-> - You are advised to use the APIs provided by the system to obtain URIs, for example, [getUriFromPath](../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath).
+> - You are advised to use the APIs provided by the system to obtain URIs, for example, [getUriFromPath()](../reference/apis-core-file-kit/js-apis-file-fileuri.md#fileurigeturifrompath).
 
 ## Samples
 

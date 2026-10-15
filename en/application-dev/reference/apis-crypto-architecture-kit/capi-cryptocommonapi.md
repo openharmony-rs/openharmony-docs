@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides common APIs for cryptographic operations.
+Describes the common APIs provided by OpenHarmony for encrypting and decrypting data.
 
 **Since**: 12
 
@@ -17,4 +17,4 @@ Provides common APIs for cryptographic operations.
 
 | Name| Description|
 | -- | -- |
-| [crypto_common.h](capi-crypto-common-h.md) | Defines common APIs for cryptographic operations.|
+| [crypto_common.h](capi-crypto-common-h.md) | Defines the common data structures and error codes for encryption and decryption.|

@@ -6,7 +6,7 @@
 <!--Designer: @JiDong-CS1-->
 <!--Tester: @pan9f-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=3de182f5b788a3afd1b8fcd773572aaabf69c317 translatedAt=2026-08-17T09:28:42.375Z pushedAt=2026-08-18T03:02:26.973Z -->
+<!-- md-trans-meta sourceCommit=60343150647673f5d619b80a455b8a6094616173 translatedAt=2026-10-09T12:22:50.050Z pushedAt=2026-10-10T06:07:00.667Z -->
 
 This module provides APIs for managing distributed accounts, including querying and updating account login states. This module is applicable to multi-device collaboration, improving the consistency and user experience of cross-device account management. Typical application scenarios include multi-device collaboration, distributed data synchronization, and cross-device capability calling.
 
@@ -408,11 +408,11 @@ Represents the distributed account information about an OS account.
 
 | Name| Type| Read-Only | Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
-| name | string | No| No | Name of the distributed account. It must be a non-null string.|
-| id | string | No| No | UID of the distributed account. It must be a non-null string.|
+| name | string | No | No | Name of the distributed account. It is a non-empty string with a maximum length of 256 bytes. |
+| id | string | No | No | UID of the distributed account. It is a non-empty string with a maximum length of 512 bytes. |
 | event | string | No| No | Login state of the distributed account. The state can be login, logout, token invalid, or logoff, which correspond to the following strings respectively:<br>-&nbsp;Ohos.account.event.LOGIN<br>-&nbsp;Ohos.account.event.LOGOUT<br>-&nbsp;Ohos.account.event.TOKEN_INVALID<br>-&nbsp;Ohos.account.event.LOGOFF |
-| nickname<sup>9+</sup> | string | No | Yes | Nickname of the distributed account. Set this parameter when the user nickname needs to be displayed. If this parameter is not set, it is left empty by default, which does not affect the account function. |
-| avatar<sup>9+</sup> | string | No | Yes | Avatar of the distributed account. Set this parameter when the user avatar needs to be displayed. If this parameter is not set, it is left empty by default, which does not affect the account function. |
+| nickname<sup>9+</sup> | string | No | Yes | Nickname of the distributed account. It is set when the user nickname needs to be displayed. When not set, the default is empty, which does not affect account functionality. The maximum length is 1024 bytes. |
+| avatar<sup>9+</sup> | string | No | Yes | Avatar of the distributed account. It is set when the user avatar needs to be displayed. When not set, the default is empty, which does not affect account functionality. The maximum length is 10 MB (10485760 bytes). |
 | status<sup>10+</sup> | [DistributedAccountStatus](#distributedaccountstatus10) | Yes | Yes | Status of the distributed account. The value is of the enumerated type. This parameter is used when the account login status needs to be queried or set. If this parameter is not set, the default value is **NOT_LOGGED_IN** (not logged in). |
 | scalableData<sup>8+</sup> | object | No | Yes | Scalable data about the distributed account. Set this parameter when customized service information needs to be passed in key-value (KV) pairs. If this parameter is not set, it is left empty by default, which does not affect the basic account function. |
 

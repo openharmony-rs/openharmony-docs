@@ -32,7 +32,7 @@ The file declares the structs and enums for the media asset manager.
 | [OH_MediaAssetChangeRequest](capi-mediaassetmanager-oh-mediaassetchangerequest.md) | OH_MediaAssetChangeRequest | Describes a media asset change request.<br>This struct provides the capability of handling media asset change requests.|
 | [OH_MovingPhoto](capi-mediaassetmanager-oh-movingphoto.md) | OH_MovingPhoto | Describes a moving photo.<br>This struct provides the capability of obtaining information about a moving photo.|
 | [OH_MediaAsset](capi-mediaassetmanager-oh-mediaasset.md) | OH_MediaAsset | Describes a media asset.<br>This struct provides the capability of encapsulating media file attributes.|
-| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) | MediaLibrary_RequestOptions | Defines how media assets are requested and processed.<br>You can use this struct to set options related to the media asset quality, delivery mode, and more.|
+| [MediaLibrary_RequestOptions](capi-mediaassetmanager-medialibrary-requestoptions.md) | MediaLibrary_RequestOptions | Defines how media assets are requested and processed. This struct is used to define the request policy of a media asset.          |
 
 ### Enums
 
@@ -44,16 +44,17 @@ The file declares the structs and enums for the media asset manager.
 | [MediaLibrary_MediaSubType](#medialibrary_mediasubtype) | MediaLibrary_MediaSubType | Enumerates the media asset subtypes.|
 | [MediaLibrary_ResourceType](#medialibrary_resourcetype) | MediaLibrary_ResourceType | Enumerates the media library resource types.|
 | [MediaLibrary_ImageFileType](#medialibrary_imagefiletype) | MediaLibrary_ImageFileType | Enumerates the image file types.|
-| [MediaLibrary_MediaQuality](#medialibrary_mediaquality) | MediaLibrary_MediaQuality | Enumerates the media resource quality, which varies with the specified delivery mode for the requested media asset.|
+| [MediaLibrary_MediaQuality](#medialibrary_mediaquality) | MediaLibrary_MediaQuality | Enumerates the media resource quality, which varies with the specified delivery mode for the requested media asset. For details about the delivery modes, see [MediaLibrary_DeliveryMode](#medialibrary_deliverymode).|
 | [MediaLibrary_MediaContentType](#medialibrary_mediacontenttype) | MediaLibrary_MediaContentType | Enumerates the media content types.|
 
 ### Functions
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [typedef void (\*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_RequestId requestId)](#oh_medialibrary_ondataprepared) | OH_MediaLibrary_OnDataPrepared | Called when the requested media asset is ready.|
-| [typedef void (\*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)](#oh_medialibrary_onimagedataprepared) | OH_MediaLibrary_OnImageDataPrepared | Called when the requested image is ready.|
-| [typedef void (\*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_MovingPhoto* movingPhoto)](#oh_medialibrary_onmovingphotodataprepared) | OH_MediaLibrary_OnMovingPhotoDataPrepared | Called when the requested moving photo is ready.|
+| [typedef void (\*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_RequestId requestId)](#oh_medialibrary_ondataprepared) | OH_MediaLibrary_OnDataPrepared | Callback used to return the result of the media resource request. This callback is triggered when the requested media asset is ready. This callback is used to notify the app of the request result. The app can determine whether the request is successful based on the result and match the request based on the request ID.|
+| [typedef void (\*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type,OH_ImageSourceNative* imageSourceNative)](#oh_medialibrary_onimagedataprepared) | OH_MediaLibrary_OnImageDataPrepared | Callback used to return the result of the image source request. This callback is triggered when the requested image source is ready. This callback is used to return the image source object to the app. You can use **imageSourceNative** to perform subsequent operations such as image decoding.|
+| [typedef void (\*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_MovingPhoto* movingPhoto)](#oh_medialibrary_onmovingphotodataprepared) | OH_MediaLibrary_OnMovingPhotoDataPrepared | Callback used to return the result of the moving photo request. This callback is triggered when the requested moving photo is ready. It is used to return the moving photo object to the app. You can obtain the image and video data contained in the moving photo using **movingPhoto**.|
+| [typedef void (\*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode result, MediaLibrary_RequestId requestId, MediaLibrary_MediaQuality mediaQuality, MediaLibrary_MediaContentType type, OH_ImageSourceNative* imageSourceNative, OH_PictureNative* pictureNative)](#oh_medialibrary_onquickimagedataprepared) | OH_MediaLibrary_OnQuickImageDataPrepared | This callback is called when the requested image source is ready. If an image buffer exists in the system, an image object is returned, reducing the encoding time.|
 
 ### Variables
 
@@ -191,13 +192,7 @@ enum MediaLibrary_MediaQuality
 
 Enumerates the media resource quality,
 
-which varies with the specified delivery mode for the requested media asset.
-
-**MEDIA_LIBRARY_FAST_MODE**: Deliver the media asset available without considering its quality.
-
-**MEDIA_LIBRARY_HIGH_QUALITY_MODE**: Deliver a media asset with high quality. If there is no high-quality asset available, trigger the process for creating a high-quality asset. Then, return the high-quality asset that is successfully created.
-
-**MEDIA_LIBRARY_BALANCED_MODE**: Return the high-quality asset if there is any. Otherwise, return a low-quality asset first and trigger the process for creating a high-quality asset. Then, return the high-quality asset that is successfully created.
+which varies with the specified delivery mode for the requested media asset. For details about the delivery modes, see [MediaLibrary_DeliveryMode](#medialibrary_deliverymode).
 
 **Since**: 12
 
@@ -234,7 +229,7 @@ typedef void (*OH_MediaLibrary_OnDataPrepared)(int32_t result, MediaLibrary_Requ
 
 **Description**
 
-Called when the requested media asset is ready.
+Callback used to return the result of the media resource request. This callback is triggered when the requested media asset is ready. This callback is used to notify the app of the request result. The app can determine whether the request is successful based on the result and match the request based on the request ID.
 
 **Since**: 12
 
@@ -254,7 +249,7 @@ typedef void (*OH_MediaLibrary_OnImageDataPrepared)(MediaLibrary_ErrorCode resul
 
 **Description**
 
-Called when the requested image is ready.
+Callback used to return the result of the image source request. This callback is triggered when the requested image source is ready. This callback is used to return the image source object to the app. You can use **imageSourceNative** to perform subsequent operations such as image decoding.
 
 **Since**: 12
 
@@ -277,7 +272,7 @@ typedef void (*OH_MediaLibrary_OnMovingPhotoDataPrepared)(MediaLibrary_ErrorCode
 
 **Description**
 
-Called when the requested moving photo is ready.
+Callback used to return the result of the moving photo request. This callback is triggered when the requested moving photo is ready. It is used to return the moving photo object to the app. You can obtain the image and video data contained in the moving photo using **movingPhoto**.
 
 **Since**: 13
 
@@ -300,7 +295,7 @@ typedef void (*OH_MediaLibrary_OnQuickImageDataPrepared)(MediaLibrary_ErrorCode 
 
 **Description**
 
-This callback is called when the requested image source is ready. If an image buffer exists in the system, an image object is returned, reducing the encoding time.
+Callback used to return the result of a quick image resource request. This callback is triggered when the requested image data is ready. If an image buffer exists in the system, an image object is returned through **pictureNative**, reducing the encoding time. Otherwise, an image source object is returned through **imageSourceNative**.
 
 **Since**: 23
 
@@ -312,5 +307,5 @@ This callback is called when the requested image source is ready. If an image bu
 | [MediaLibrary_RequestId](capi-mediaassetmanager-medialibrary-requestid.md) requestId | **MediaLibrary_RequestId** of the requested resource.|
 | [MediaLibrary_MediaQuality](capi-media-asset-base-capi-h.md#medialibrary_mediaquality) mediaQuality | **MediaLibrary_MediaQuality** of the requested resource.|
 | [MediaLibrary_MediaContentType](capi-media-asset-base-capi-h.md#medialibrary_mediacontenttype) type | **MediaLibrary_MediaContentType** of the requested resource.|
-| [OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | Used to obtain the **OH_ImageSourceNative** information when preparing the image file. Otherwise, **imageSourceNative** is null.|
-| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)\* pictureNative | Used to obtain the **OH_PictureNative** information when preparing the image source. Otherwise, **pictureNative** is null.|
+| [OH_ImageSourceNative](../apis-image-kit/capi-image-nativemodule-oh-imagesourcenative.md)\* imageSourceNative | Used to obtain the **OH_ImageSourceNative** information when preparing the image file. Otherwise, **imageSourceNative** is null.            |
+| [OH_PictureNative](../apis-image-kit/capi-image-nativemodule-oh-picturenative.md)\* pictureNative | Used to obtain the **OH_PictureNative** information when preparing the image source. Otherwise, **pictureNative** is null.           |

@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=ce38dccd1ec5f587cf7d6bc68b44aa475ae014f7 translatedAt=2026-10-12T08:39:30.276Z pushedAt=2026-10-13T06:55:17.703Z -->
 
 ## Overview
 
@@ -83,4 +84,6 @@ Enumerates the UKey PIN authentication states.
 | -- | -- |
 | OH_HUKS_EXT_CRYPTO_PIN_NO_AUTH = 0 | PIN code not authenticated.|
 | OH_HUKS_EXT_CRYPTO_PIN_AUTH_SUCCEEDED = 1 | PIN code authentication succeeded.|
-| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | PIN code locked.|
+| OH_HUKS_EXT_CRYPTO_PIN_LOCKED = 2 | The PIN is locked. |
+
+

@@ -3,10 +3,10 @@
 <!--Kit: ArkUI-->
 <!--Subsystem: Window-->
 <!--Owner: @lizihao_73-->
-<!--Designer: @wambers584-->
+<!--Designer: @zhoulin_-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=eb297c120685014d3e534d0011425fa2c96518e7 translatedAt=2026-08-11T10:12:49.868Z pushedAt=2026-08-12T02:49:08.103Z -->
+<!-- md-trans-meta sourceCommit=1bdc82b052cd863f64c1f80ead9b6889711e044a translatedAt=2026-10-08T09:05:14.752Z pushedAt=2026-10-09T00:41:50.479Z -->
 
 Window rotation provides a rich set of rotation policies, enabling apps to adapt their orientation in various scenarios.
 
@@ -25,8 +25,8 @@ The sample code is as follows:
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/DeviceDifferentiationSample/entry/src/main/ets/pages/Index.ets) --> 
 
 ``` TypeScript
-import { window } from '@kit.ArkUI'
-import common from '@ohos.app.ability.common';
+import { window } from '@kit.ArkUI';
+import { common } from '@kit.AbilityKit';
 import { Callback } from '@kit.BasicServicesKit';
 import { display } from '@kit.ArkUI';
 

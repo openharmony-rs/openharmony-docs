@@ -6,8 +6,9 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=e852a9793c23f1c08716ebd417cc0b132ef00a32 translatedAt=2026-10-12T08:45:36.550Z pushedAt=2026-10-13T06:55:17.710Z -->
 
-Provides the functionalities such as registration and deregistration of external key management extension, PIN authentication, and acquisition of authentication state.
+This module provides capabilities such as registration and unregistration of external key management extensions, PIN authentication, and authentication status retrieval.
 
 > **Description**
 >
@@ -33,8 +34,8 @@ Authenticates a Ukey PIN. This API uses a promise to return the result.
 
 | Name  | Type| Mandatory| Description|
 | -------- | -------- | ---- | -------|
-| resourceId | string | Yes  | Resource ID of a container in the Ukey, which can be obtained using [certificateManagerDialog.openAuthorizeDialog22+](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22). The result contains **resourceId**.|
-| params  | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | Yes  | Parameters to be passed during the operation. The mandatory tag is [HUKS_EXT_CRYPTO_TAG_UKEY_PIN](js-apis-huksExternalCrypto.md#huksexternalcryptotag).|
+| resourceId | string | Yes | Resource ID of a container in the UKey, which can be obtained through [openAuthorizeDialog](../apis-device-certificate-kit/js-apis-certManagerDialog.md#certificatemanagerdialogopenauthorizedialog22). The result returned by this API contains the resource ID. |
+| params | Array\<[HuksExternalCryptoParam](js-apis-huksExternalCrypto.md#huksexternalcryptoparam)> | Yes | Parameters to be passed in during the operation. Required TAG: [HUKS_EXT_CRYPTO_TAG_UKEY_PIN](js-apis-huksExternalCrypto.md#huksexternalcryptotag).<br>Since API version 26.0.1, the optional TAG [HUKS_EXT_CRYPTO_TAG_TIMEOUT](js-apis-huksExternalCrypto.md#huksexternalcryptotag) is added to customize the timeout period of the asynchronous API. If it is not passed in, the default value of 60 seconds is used. |
 
 **Return value**
 
@@ -51,22 +52,22 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 202 | The caller is not a system application and is not allowed to use system applications. |
 | 801 | api is not supported. |
 | 12000005 | IPC communication failed. |
-| 12000006 | the Ukey driver operation failed. |
+| 12000006 | the UKey driver operation failed. |
 | 12000011 | queried entity does not exist. |
 | 12000012 | Device environment or input parameter abnormal. This error may occur if the process function is not found, or due to other issues. |
 | 12000014 | memory is insufficient. |
 | 12000018 | the input parameter is invalid. |
 | 12000020 | the provider operation failed. |
-| 12000021 | the Ukey PIN is locked. |
-| 12000022 | the Ukey PIN is incorrect. |
-| 12000024 | the provider or Ukey is busy. |
+| 12000021 | the UKey PIN is locked. |
+| 12000022 | the UKey PIN is incorrect. |
+| 12000024 | the provider or UKey is busy. |
 
 **Example**
 
 ```ts
 import { huksExternalCrypto } from '@kit.UniversalKeystoreKit';
 
-function StringToUint8Array(str: string) {
+function stringToUint8Array(str: string) {
   let arr: number[] = [];
   for (let i = 0, j = str.length; i < j; ++i) {
     arr.push(str.charCodeAt(i));
@@ -76,18 +77,18 @@ function StringToUint8Array(str: string) {
 
 let uid: number = 3511;
 const testResourceId = "{\"providerName\":\"testProviderName\", \"bundleName\":\"com.example.cryptoapplication\", \"abilityName\":\"CryptoExtension\",\"index\":{\"key\":\"testKey\"}}";
-const pin = "123456";
+const pin = "123456"; // This is an example. Replace it with the actual user PIN in real services.
 const extProperties: Array<huksExternalCrypto.HuksExternalCryptoParam> = [
   {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UID,
     value: uid
   }, {
     tag: huksExternalCrypto.HuksExternalCryptoTag.HUKS_EXT_CRYPTO_TAG_UKEY_PIN,
-    value: StringToUint8Array(pin)
+    value: stringToUint8Array(pin)
   }
 ];
 huksExternalCrypto.authUkeyPin(testResourceId, extProperties)
-    .then((data) => {
+    .then(() => {
         console.info(`promise: authUkeyPin success`);
     });
 ```

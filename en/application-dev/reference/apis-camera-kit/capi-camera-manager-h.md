@@ -1,12 +1,11 @@
 # camera_manager.h
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=24fda3c85dbda24aa54f2b583638cbacb52c758e translatedAt=2026-08-11T02:01:53.733Z pushedAt=2026-08-12T02:25:16.827Z -->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-12T11:58:25.794Z pushedAt=2026-10-13T04:58:00.895Z -->
 
 ## Overview
 
@@ -980,7 +979,7 @@ Turns on the flashlight and sets the brightness level.
 
 | Name| Description|
 | -- | -- |
-| [const Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance.|
+| [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance. |
 | double torchLevel | Target brightness level. The value range is [0.0, 1.0].|
 
 **Returns**
@@ -1088,7 +1087,7 @@ Obtains the concurrency information of the specified cameras.
 | -- | -- |
 | [Camera_Manager](capi-oh-camera-camera-manager.md)* cameraManager | Pointer to the **Camera_Manager** instance.|
 | [const Camera_Device](capi-oh-camera-camera-device.md)* camera | List of cameras used for query. You are advised to set this parameter to the camera list that contains the front and rear cameras obtained using [OH_CameraManager_GetCameraDevice](capi-camera-manager-h.md#oh_cameramanager_getcameradevice).|
-| uint32_t deviceSize | Length of the camera device list. The value must be set to 2 (indicating that both the front and rear cameras are used for concurrency information query).|
+| uint32_t deviceSize | Length of the camera device list. The value must be set to 2 (indicating that both the front and rear cameras are used for concurrency information query). |
 | [Camera_ConcurrentInfo](capi-oh-camera-camera-concurrentinfo.md)** cameraConcurrentInfo | Double pointer to an array of **Camera_ConcurrentInfo** objects representing the concurrency information of the cameras. This parameter must be set to NULL by default when being passed in.<br> If the camera supports concurrency, it is assigned the **Camera_ConcurrentInfo** array obtained.<br> If the camera does not support concurrency, the passed-in value is retained and the error code [Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR is returned.|
 | uint32_t* infoSize | Pointer to the length of the array. This parameter must be set to **0** by default when being passed in.<br> If the camera supports concurrency, it is assigned the length of the **Camera_ConcurrentInfo** array obtained.<br> If the camera does not support concurrency, the passed-in value is retained and the error code [Camera_ErrorCode](capi-camera-h.md#camera_errorcode).CAMERA_SERVICE_FATAL_ERROR is returned.|
 
@@ -1097,3 +1096,5 @@ Obtains the concurrency information of the specified cameras.
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal, or the camera does not support concurrency.|
+
+

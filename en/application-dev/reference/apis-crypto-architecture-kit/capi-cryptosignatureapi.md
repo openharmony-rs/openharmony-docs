@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for signature verification.
+Describes the APIs provided by OpenHarmony for signature verification.
 
 **Since**: 12
 

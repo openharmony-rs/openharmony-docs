@@ -1,4 +1,4 @@
-# Refined Key Access Control Development
+# Refined Access Control Development
 
 <!--Kit: Universal Keystore Kit-->
 <!--Subsystem: Security-->
@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:57:11.576Z pushedAt=2026-10-13T03:12:27.662Z -->
 
 As an extension of the access control based on user identity authentication, the refined key access control provides fine-grained access control capabilities via secondary identity authentication based on biometric features and lock screen passwords. You can set whether identity authentication is required for a key in one or more scenarios such as encryption, decryption, signing, signature verification, key agreement, and key derivation.
 
@@ -93,11 +94,11 @@ const KEY_GENERATION_PROPERTIES: huks.HuksParam[] = [
 function generateKeyItem(keyAlias: string, huksOptions: huks.HuksOptions, throwObject: ThrowObject): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     try {
-      huks.generateKeyItem(keyAlias, huksOptions, (error, data) => {
+      huks.generateKeyItem(keyAlias, huksOptions, (error) => {
         if (error) {
           reject(error);
         } else {
-          resolve(data);
+          resolve();
         }
       });
     } catch (error) {
@@ -118,8 +119,8 @@ async function step1GenerateKey(): Promise<void> {
   let throwObject: ThrowObject = { isThrow: true };
   try {
     await generateKeyItem(KEY_ALIAS, generateOptions, throwObject)
-      .then((data) => {
-        console.info(`Key generated successfully: ${JSON.stringify(data)}`);
+      .then(() => {
+        console.info(`Key generated successfully.`);
       })
       .catch((error: Error) => {
         if (throwObject.isThrow) {

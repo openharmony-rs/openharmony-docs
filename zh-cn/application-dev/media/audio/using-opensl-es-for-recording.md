@@ -78,7 +78,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    #include "SLES/OpenSLES_Platform.h"
    ```
 
-2. 使用slCreateEngine接口创建引擎对象和实例化引擎对象engine。
+2. 使用slCreateEngine()接口创建并实例化引擎对象。
      
    ```cpp
    SLObjectItf engineObject = nullptr;
@@ -86,7 +86,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*engineObject)->Realize(engineObject, SL_BOOLEAN_FALSE);
    ```
 
-3. 获取接口SL_IID_ENGINE的引擎接口engineEngine实例。
+3. 获取SL_IID_ENGINE对应的引擎接口句柄。
      
    ```cpp
    SLEngineItf engineItf = nullptr;
@@ -131,7 +131,7 @@ target_link_libraries(sample PUBLIC libOpenSLES.so)
    (*pcmCapturerObject)->Realize(pcmCapturerObject, SL_BOOLEAN_FALSE);
    ```
 
-5. 获取录音接口SL_IID_RECORD的recordItf接口实例。
+5. 获取SL_IID_RECORD对应的录音接口句柄。
      
    ```cpp
    SLRecordItf  recordItf;

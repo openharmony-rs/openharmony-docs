@@ -5,7 +5,7 @@
 <!--Designer: @trytocalm-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f3efdb02e23121aaefae0a5dab0a37bc284fa9d3 translatedAt=2026-09-23T08:20:49.364Z pushedAt=2026-09-23T08:28:54.976Z -->
+<!-- md-trans-meta sourceCommit=88f287e47beec862be42bfd7ca8f0205a07cd4c0 translatedAt=2026-09-28T02:37:23.690Z pushedAt=2026-09-29T06:54:32.858Z -->
 
 ## Scenarios
 
@@ -46,7 +46,7 @@ Before using **OH_MIDI** APIs, you need to complete the following preparations:
 - Link the dynamic library in the CMake script.
 
   <!-- @[ohmidi_cmake](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/CMakeLists.txt) -->
-
+  
   ``` Text
   target_link_libraries(entry PUBLIC
       libace_napi.z.so
@@ -522,7 +522,7 @@ To send MIDI messages, you need to first construct data in the Universal MIDI Pa
 
 Construct an array of [OH_MIDIEvent](../../reference/apis-audio-kit/capi-ohmidi-oh-midievent.md) events, and send MIDI messages through the [OH_MIDIDevice_Send](../../reference/apis-audio-kit/capi-native-midi-h.md#oh_mididevice_send) API.
 
-<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->  
+<!-- @[send_midi](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/Audio/Midi/entry/src/main/cpp/napi_init.cpp) -->
 
 ``` C++
 static napi_value SendMIDI(napi_env env, napi_callback_info info)
@@ -561,14 +561,8 @@ static napi_value SendMIDI(napi_env env, napi_callback_info info)
 
     uint32_t eventsWritten = 0;
     OH_MIDIStatusCode status = OH_MIDIDevice_Send(it->second, portIndex, events.data(), eventCount, &eventsWritten);
-    napi_create_object(env, &result);
-    napi_value statusValue;
-    napi_create_int32(env, static_cast<int32_t>(status), &statusValue);
-    napi_set_named_property(env, result, "status", statusValue);
-    napi_value writtenValue;
-    napi_create_uint32(env, eventsWritten, &writtenValue);
-    napi_set_named_property(env, result, "eventsWritten", writtenValue);
-    return result;
+    // ...
+}
 ```
 
 **UMP format description**

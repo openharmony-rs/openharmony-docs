@@ -2,8 +2,8 @@
 <!--Kit: Sensor Service Kit-->
 <!--Subsystem: Sensors-->
 <!--Owner: @dilligencer-->
-<!--Designer: @andeszhang-->
-<!--Tester: @liuhaonan2-->
+<!--Designer: @butterls-->
+<!--Tester: @zhaofangyuan-->
 <!--Adviser: @hu-zhiqiong-->
 
 ```c
@@ -12,7 +12,7 @@ typedef struct Sensor_Event Sensor_Event
 
 ## Overview
 
-Defines a struct for the sensor data information.
+Defines a struct for the sensor event, including the sensor type, timestamp, and sensor data.
 
 **Since**: 11
 

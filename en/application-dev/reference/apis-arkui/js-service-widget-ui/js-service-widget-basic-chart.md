@@ -1,12 +1,11 @@
 # chart
-
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @Zhang-Dong-hui-->
 <!--Designer: @xiangyuan6-->
 <!--Tester: @jiaoaozihao-->
 <!--Adviser: @Brilliantry_Rui-->
-<!-- md-trans-meta sourceCommit=dfb15c325281e5e789ea7ade45dfdd45876606ad translatedAt=2026-07-27T02:28:04.468Z pushedAt=2026-07-27T09:23:36.762Z -->
+<!-- md-trans-meta sourceCommit=50f5d66e38b8b4fff9b1e5a462513d4b69c2569d translatedAt=2026-10-12T03:59:20.423Z pushedAt=2026-10-12T06:46:04.266Z -->
 
 The **\<chart>** component displays line charts, gauge charts, and bar charts.
 
@@ -17,6 +16,7 @@ The **\<chart>** component displays line charts, gauge charts, and bar charts.
 ## Child Components
 
 Not supported.
+
 
 ## Attributes
 
@@ -108,8 +108,8 @@ In addition to the [universal attributes](js-service-widget-common-attributes.md
 
 | Name        | Type    | Default Value | Mandatory  | Description                                      |
 | ---------- | ------ | ---- | ---- | ---------------------------------------- |
-| startColor | Color  | -    | No   | Color of the start position. If this attribute is set, **endColor** must be set. If this attribute is not set, the default color array preset in the system is used. For details about the color values, see the next table.|
-| endColor   | Color  | -    | No   | Color of the end position. If this attribute is set, **startColor** must be set.<br>If this attribute is not set, the default color array preset in the system is used.|
+| startColor | Color  | -    | No    | Color of the start position. This attribute must be set together with **endColor**. If this attribute is not set, the default color array preset in the system is used. For details about the color values, see the next table. |
+| endColor   | Color  | -    | No   | Color of the end position. If this attribute is set, **startColor** must be set.<br> If this attribute is not set, the default color array preset in the system is used.|
 | value      | number | 0    | Yes   | Percentage for the current data segment. The maximum value is **100**.                        |
 | name       | string | -    | No   | Name of this data segment.                                |
 
@@ -131,6 +131,7 @@ For the **gauge** charts, the following attributes are also supported.
 | ------- | ------ | ---- | ---- | ---------------------- |
 | percent | number | 0    | No   | Percentage of the current value to the total value. The value ranges from 0 to 100.|
 
+
 ## Styles
 
 In addition to the [universal styles](js-service-widget-common-styles.md), the following styles are supported.
@@ -148,14 +149,16 @@ In addition to the [universal styles](js-service-widget-common-styles.md), the f
 | font-family  | Array          | -                          | No   | Font style of the description text. You can use a [custom font](js-service-widget-common-customizing-font.md).|
 | font-size    | &lt;length&gt; | -                          | No   | Font size of the description text.                           |
 
+
 ## Events
 
 The [universal events](js-service-widget-common-events.md) are supported.
 
+
 ## Example
 
 1. Line chart
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -165,7 +168,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </stack>
    </div>
    ```
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -185,7 +188,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      height: 600px;
    }
    ```
-
+   
    ```json
    // xxx.json
    {
@@ -252,11 +255,11 @@ The [universal events](js-service-widget-common-events.md) are supported.
      }
    }
    ```
-
+   
    ![string-diagram](figures/string-diagram.png)
 
 2. Bar chart
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -266,7 +269,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </stack>
    </div>
    ```
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -286,7 +289,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      height: 400px;
    }
    ```
-
+   
    ```json
    {
      "data": {
@@ -320,11 +323,11 @@ The [universal events](js-service-widget-common-events.md) are supported.
      }
    }
    ```
-
+    
    ![barchart](figures/barchart.PNG)
 
 3. Gauge chart
-
+   
    ```html
    <!-- xxx.hml -->
    <div class="container">
@@ -333,7 +336,7 @@ The [universal events](js-service-widget-common-events.md) are supported.
      </div>
    </div>
    ```
-
+   
    ```css
    /* xxx.css */
    .container {
@@ -350,5 +353,5 @@ The [universal events](js-service-widget-common-events.md) are supported.
      weights: 4, 2, 1;
    }
    ```
-
+   
    ![gauge](figures/gauge.PNG)

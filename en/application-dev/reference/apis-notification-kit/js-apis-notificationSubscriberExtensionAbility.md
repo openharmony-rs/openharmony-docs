@@ -2,11 +2,14 @@
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T10:28:58.639Z pushedAt=2026-10-12T08:05:06.667Z -->
 
-NotificationSubscriberExtensionAbility is the base class for notification subscription extensions, providing the core functionality for subscribing to notifications.
+NotificationSubscriberExtensionAbility is the base class of the [notification subscription](../../notification/notification-glossary.md#notification-subscription) extension ability, providing notification subscription related capabilities. Third-party wearable applications (such as companion applications for watches) implement callback logic by inheriting from this class, receive notification information when a notification is published on the local device and forward it to the wearable device over Bluetooth. When a local notification is canceled, they receive the cancellation callback and forward it to the wearable device to delete the corresponding notification.
+
+Use this module when your wearable application needs to obtain local notifications and sync them to a paired wearable device. This module is used together with the **notificationExtensionSubscription** module. This module is responsible for receiving and processing notification data in callbacks, while the **notificationExtensionSubscription** module is responsible for management operations such as authorization, subscription, and unsubscription.
 
 > **NOTE**
 >
@@ -23,6 +26,9 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 **System capability**: SystemCapability.Notification.Notification
 
+### Attributes
+
+**System capability**: SystemCapability.Notification.Notification
 
 | Name| Type| Read-Only| Optional| Description|
 | -------- | -------- | -------- | -------- | -------- |
@@ -33,7 +39,7 @@ import { notificationExtensionSubscription, NotificationSubscriberExtensionAbili
 
 onDestroy(): void
 
-Called when the notification subscription extension is destroyed.
+Triggered when the [notification subscription](../../notification/notification-glossary.md#notification-subscription) extension is destroyed.
 
 **System capability**: SystemCapability.Notification.Notification
 
@@ -61,7 +67,7 @@ Called when a notification is received.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| notificationInfo |  [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes| Notification information delivered to the [onReceiveMessage](js-apis-notificationSubscriberExtensionAbility.md#onreceivemessage) callback of ExtensionAbility for notification subscriptions.|
+| notificationInfo | [NotificationInfo](../apis-notification-kit/js-apis-inner-notification-notificationInfo.md) | Yes | Callback information about the notification received in the notification subscription extension ability. |
 
 **Example**:
 
@@ -87,7 +93,7 @@ Called when notifications are canceled.
 
 | Name| Type| Mandatory| Description|
 | -------- | -------- | -------- | -------- |
-| hashCodes |  Array\<string\>| Yes| Array of hash codes representing the notifications to be canceled.|
+| hashCodes |  Array\<string\>| Yes | List of hash codes of the notifications to cancel, obtained through [onReceiveMessage](#onreceivemessage). |
 
 **Example**:
 

@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:18.157Z pushedAt=2026-06-26T03:00:41.288Z -->
+<!-- md-trans-meta sourceCommit=2188f48fcd967ec2074a4390970c003bc388f9d7 translatedAt=2026-09-28T01:24:53.629Z pushedAt=2026-10-09T02:44:31.113Z -->
 
 > **NOTE**
 >
@@ -58,7 +58,7 @@ The WebSocket URL is incorrect.
 
 **Solution**
 
-1. Check whether the WebSocket URL is empty or does not contain the correct protocol (ws:// or wss://).
+1. Check whether the URL is empty or does not contain the correct protocol (ws:// or wss://).
 
 2. Check whether the WebSocket URL length exceeds 2048 characters.
 
@@ -82,6 +82,7 @@ The certificate path is incorrect or no certificate is configured.
 
 2. If the **WebSocketRequestOptions.clientCert** is specified, check whether the certificate path and private key path are valid.
 
+
 ## 2302003 WebSocket Connection Already Exists
 
 **Error Message**
@@ -104,7 +105,7 @@ The WebSocket connection has been established. You do not need to call the **Web
 
 **Error Message**
 
-Can't listen to the given NIC.
+Can't listen on the given NIC.
 
 **Description**
 
@@ -112,7 +113,7 @@ This error code is reported if the WebSocketServer failed to perform listening o
 
 **Possible Causes**
 
-The IP address in the WebSocketServer configuration file is invalid.
+The IP address in the WebSocketServer server configuration file is invalid.
 
 **Solution**
 
@@ -122,7 +123,7 @@ Check whether the network connection is normal and whether the IP address is val
 
 **Error Message**
 
-Can't listen to the given Port.
+Can't listen on the given Port.
 
 **Description**
 
@@ -135,6 +136,24 @@ The port number in the WebSocketServer configuration file is invalid.
 **Solution**
 
 Check whether the port number is valid.
+
+## 2302006 WebSocketServer Connection Does Not Exist
+
+**Error Message**
+
+websocket connection does not exist.
+
+**Description**
+
+The WebSocketServer connection does not exist.
+
+**Possible Causes**
+
+The WebSocketServer connection to be operated (closed or sent a message) has been disconnected or does not exist.
+
+**Solution**
+
+Check whether the connection is still valid, and re-establish the connection before performing the operation if necessary.
 
 ## 2302007 Listening Port Already Occupied
 

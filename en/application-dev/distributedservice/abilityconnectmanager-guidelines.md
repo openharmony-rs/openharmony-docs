@@ -5,8 +5,7 @@
 <!--Designer: @gsxiaowen-->
 <!--Tester: @hanjiawei-->
 <!--Adviser: @hu-zhiqiong-->
-<!-- md-trans-meta sourceCommit=265662c3f1bebcccc82375e5952ee48da32366a3 translatedAt=2026-09-16T02:43:30.461Z pushedAt=2026-09-16T06:29:02.791Z -->
-
+<!-- md-trans-meta sourceCommit=ad7911190ca18721b642c0b2a354bbd6b85aac56 translatedAt=2026-09-28T02:30:37.378Z pushedAt=2026-09-29T06:19:38.357Z -->
 
 ## Introduction
 
@@ -23,7 +22,7 @@ Since API version 18, the system has supported cross-device collaborative connec
 Before you start developing cross-device connection management for applications, familiarize yourself with the following concepts:
 
 - **Distributed Management Service (DMS)**
-
+  
   DMS is the distributed component management framework that provides distributed component management capabilities.
 
 - **UIAbility**
@@ -31,7 +30,7 @@ Before you start developing cross-device connection management for applications,
   [UIAbility](https://developer.huawei.com/consumer/en/doc/harmonyos-guides/uiability-overview) describes the UI interaction capabilities of an application. It is responsible for managing the lifecycle of application pages, user interaction, and UI rendering.
 
 - **Byte stream**
-
+  
   A byte stream is data of the [ArrayBuffer Object](../arkts-utils/arraybuffer-object.md) type and can be used to store binary data such as image or audio data.
 
 ### Implementation Principles
@@ -51,7 +50,7 @@ Cross-device connection management for applications relies on the distributed co
 <!--Del-->
 - The byte stream, image, and transport stream capabilities are supported only for system applications.
 <!--DelEnd-->
-- After service collaboration is complete, end the collaboration state in a timely manner. For system security and proper resource utilization, if an application has not requested a long-running task, the collaboration lifecycle ends when the screen is locked or the application stays in the background for more than 5 seconds.
+- After service collaboration is complete, end the collaboration state in a timely manner. For system security and proper resource utilization, if an application has not requested a continuous task, the collaboration lifecycle ends when the screen is locked or the application stays in the background for more than 5 seconds.
 
 - The distributed component management framework does not review transmitted content during collaboration. If privacy-sensitive data is involved, it is recommended that the application notify users by using measures such as dialog boxes.
 
@@ -68,7 +67,7 @@ Prepare devices A and B that can sign in to a HUAWEI ID. The devices must be suc
 
 ### Setting Up the Environment
 
-1. Install DevEco Studio on the PC. For details, see [Downloading Software](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-software-download-V5) and [Installing DevEco Studio](https://developer.huawei.com/consumer/en/doc/harmonyos-guides-V5/ide-software-install-V5). DevEco Studio 4.1 or later is required.
+1. Install [DevEco Studio](https://developer.huawei.com/consumer/en/download/deveco-studio) on the PC. DevEco Studio 4.1 or later is required.
 2. Update the public-SDK to API 18 or later.
 3. Connect either debugging device, device A or device B, to the PC using a USB cable.
 4. Enable Wi-Fi and Bluetooth on devices A and B. If the devices are signed in with the same HUAWEI ID, they automatically form a network. If they are not signed in with the same HUAWEI ID, first use [Discovering Devices](devicemanager-guidelines.md#discovering-devices) and [Binding a Device](devicemanager-guidelines.md#binding-a-device) to establish a trusted relationship and complete networking.
@@ -305,12 +304,13 @@ After the applications are successfully connected, you can call `sendMessage()` 
   ```ts
   import { abilityConnectionManager } from '@kit.DistributedServiceKit';
   import { hilog } from '@kit.PerformanceAnalysisKit';
+  import { BusinessError } from '@kit.BasicServicesKit';
 
-  abilityConnectionManager.sendMessage(this.sessionId, "message send success").then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
-  }).catch(() => {
-    hilog.error(0x0000, 'testTag', "connect failed");
-  })
+  abilityConnectionManager.sendMessage(this.sessionId, 'message send success').then(() => {
+    hilog.info(0x0000, 'testTag', 'sendMessage success');
+  }).catch((error: BusinessError) => {
+    hilog.error(0x0000, 'testTag', 'sendMessage failed');
+  });
   ```
 **2. Sending byte stream data**
 
@@ -327,10 +327,10 @@ After the applications are successfully connected, you can call `sendData()` on 
   const arrayBuffer  = textEncoder.encodeInto("data send success");
 
   abilityConnectionManager.sendData(this.sessionId, arrayBuffer.buffer).then(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage success");
+    hilog.info(0x0000, 'testTag', 'sendData success');
   }).catch(() => {
-    hilog.info(0x0000, 'testTag', "sendMessage failed");
-  })
+    hilog.error(0x0000, 'testTag', 'sendData failed');
+  });
   ```
 
 **Ending Collaboration**
@@ -377,7 +377,7 @@ After application-side development is complete, install the application on devic
 **Solution**
 
 - For cause 1, enable USB debugging on devices A and B, and connect the devices to the PC using USB cables. Run the following shell command:
-
+   
   ```shell
   hdc shell
   hidumper -s 4700 -a "buscenter -l remote_device_info"
@@ -390,7 +390,7 @@ After application-side development is complete, install the application on devic
 
 **Possible Cause**
 
-During collaboration, DMS listens for the lifecycle of the application. If the screen is locked or the application remains in the background for 5 seconds, the collaboration state of an application that has not requested a long-running task is ended.
+During collaboration, DMS listens for the lifecycle of the application. If the screen is locked or the application remains in the background for 5 seconds, the collaboration state of an application that has not requested a continuous task is ended.
 
 **Solution**
 

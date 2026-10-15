@@ -1,8 +1,8 @@
 # native_avplaybackstate.h
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -57,7 +57,7 @@ Obtains the playback state.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Pointer to the playback state instance object.|
-| [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate)* state | Pointer to the playback state value.|
+| [AVSession_PlaybackState](capi-native-avsession-base-h.md#avsession_playbackstate)* state | Pointer to the playback state.|
 
 **Return value**
 
@@ -75,14 +75,14 @@ AVSession_ErrCode OH_AVSession_GetPlaybackPosition(OH_AVSession_AVPlaybackState*
 
 Obtains the playback position.
 
-**Since**: 23
+**Since:** 23
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Pointer to the playback state instance object.|
-| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)* position | Pointer to the playback position value.|
+| [AVSession_PlaybackPosition](capi-ohavsession-avsession-playbackposition.md)* position | Pointer to the playback position.|
 
 **Return value**
 
@@ -100,14 +100,14 @@ AVSession_ErrCode OH_AVSession_GetPlaybackSpeed(OH_AVSession_AVPlaybackState* pl
 
 Obtains the playback speed.
 
-**Since**: 23
+**Since:** 23
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Pointer to the playback state instance object.|
-| int32_t* speed | Pointer to the playback speed value.|
+| int32_t* speed | Pointer to the playback speed.|
 
 **Return value**
 
@@ -125,14 +125,14 @@ AVSession_ErrCode OH_AVSession_GetPlaybackVolume(OH_AVSession_AVPlaybackState* p
 
 Obtains the playback volume.
 
-**Since**: 23
+**Since:** 23
 
 **Parameters**
 
 | Name| Description|
 | -- | -- |
 | [OH_AVSession_AVPlaybackState](capi-ohavsession-oh-avsession-avplaybackstate.md)* playbackState | Pointer to the playback state instance object.|
-| int32_t* volume | Pointer to the playback volume value.|
+| int32_t* volume | Pointer to the playback volume.|
 
 **Return value**
 

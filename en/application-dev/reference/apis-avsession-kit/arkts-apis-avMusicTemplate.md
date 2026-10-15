@@ -2,11 +2,11 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
-The audio template provides the data writing and receiving features. It allows the media application to access the audio template controller to display pages in a unified style and respond to the operation instructions from the audio template controller.
+The audio template provides data interaction capabilities. This method allows media apps to access the audio template controller, which displays pages in a unified manner and responds to operation instructions.
 
 This module provides the following features:
 

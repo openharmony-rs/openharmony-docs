@@ -2,7 +2,7 @@
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @gcw_gyH0B0hP-->
-<!--Designer: @ccfriend-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chen-gong1-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -15,7 +15,7 @@ This module provides the following features:
 > **NOTE**
 >
 > - The initial APIs of this module are supported since API version 23. Newly added APIs will be marked with a superscript to indicate their earliest API version.
-> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimedia.avMusicTemplate (Audio Template)](arkts-apis-avMusicTemplate.md).
+> - This topic describes only system APIs provided by the module. For details about its public APIs, see [@ohos.multimedia.avMusicTemplate (audio template)](arkts-apis-avMusicTemplate.md).
 > - This module applies only to cars running API version 23 or later.
 
 ## Modules to Import
@@ -48,7 +48,7 @@ Creates an audio template controller and returns the audio template controller o
 
 | Type                                                        | Description                                                        |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [AVMusicTemplateController](arkts-apis-avMusicTemplate-AVMusicTemplateController.md) | Audio template controller, which can be used to obtain the unique ID of the audio template controller and exchange data with the media application accessing the audio template.|
+| [AVMusicTemplateController](arkts-apis-avMusicTemplate-AVMusicTemplateController.md) | Audio template controller, which can be used to exchange data with the media application accessing the audio template.|
 
 **Error codes**
 
@@ -100,7 +100,7 @@ export class ControllerManager {
     };
 
   /**
-   * Create a template using getAllAVMusicTemplateDescriptors.
+   * Obtain the template description by calling getAllAVMusicTemplateDescriptors and create a controller.
    */
   public createAvMusicTemplateController(bundleName: string) {
     if (this.isStringEmpty(bundleName)) {
@@ -159,7 +159,7 @@ export class ControllerManager {
 
   private createController(sessionId: string, bundleName: string) {
     if (this.currentBundleName === null || this.currentBundleName === undefined) {
-      console.warn(TAG, 'createController: sessionId is invalid');
+      console.warn(TAG, 'createController: currentBundleName is invalid');
       return;
     }
     if (sessionId === null || sessionId === undefined) {
@@ -180,7 +180,7 @@ export class ControllerManager {
     }
     try {
       this.controller = avMusicTemplate.createAVMusicTemplateController(sessionId);
-      console.info('Succeeded in creating controller.');
+      console.info(TAG, 'Succeeded in creating controller.');
     } catch (e) {
       console.error(TAG, `createController: errCode: ${e?.code}`);
     }
@@ -266,7 +266,7 @@ Obtains all audio template descriptors and returns a collection of audio templat
 
 | Name| Type| Mandatory| Description    |
 | ------ | ---- | ---- | -------- |
-| userId | number  | No  | User ID. The value is subject to the user input and can be empty.|
+| userId | number  | No  | User ID. This parameter is optional. If it is not specified, the value is null.|
 
 **Return value**
 
@@ -335,7 +335,7 @@ Registers a listener for audio template creation. This API uses an asynchronous 
 
 | Name  | Type                                                        | Mandatory| Description                                                |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | Yes  | Callback used to return the audio template descriptor. It is used to process the command for creating a session.|
+| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | Yes  | Callback used to return the result. The parameter is the audio template descriptor. This callback is used to listen for audio template creation events.|
 
 **Error codes**
 
@@ -400,7 +400,7 @@ Unregisters the listener for audio template creation.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | No  | Callback used to return the audio template descriptor. If this parameter is left empty, all callbacks of this type are unregistered.|
+| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | No  | Callback used to return the result. The parameter is the audio template descriptor. If this parameter is left empty, all callbacks of this type are unregistered.|
 
 **Error codes**
 
@@ -451,7 +451,7 @@ Registers a listener for audio template destroy. This API uses an asynchronous c
 
 | Name  | Type                                                        | Mandatory| Description                        |
 | -------- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | Yes  | Callback used to return the audio template descriptor.|
+| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | Yes  | Callback used to return the result. The parameter is the audio template descriptor. This callback is used to listen for audio template destruction events.|
 
 **Error codes**
 
@@ -507,7 +507,7 @@ Unregister the listener for audio template destroy.
 
 | Name  | Type                                                        | Mandatory| Description                                                        |
 | -------- | ------------------------------------------------------------ | ---- | ------------------------------------------------------------ |
-| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | No  | Callback used to return the audio template descriptor. If this parameter is left empty, all callbacks of this type are unregistered.|
+| callback | Callback<[AVMusicTemplateDescriptor](#avmusictemplatedescriptor)> | No  | Callback used to return the result. The parameter is the audio template descriptor. If this parameter is left empty, all callbacks of this type are unregistered.|
 
 **Error codes**
 

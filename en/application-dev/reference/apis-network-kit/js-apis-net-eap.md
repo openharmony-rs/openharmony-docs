@@ -3,10 +3,10 @@
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @foredward-->
-<!--Designer: @h00918518-->
+<!--Designer: @gcw_3Lx1FoMT-->
 <!--Tester: @WIFIroam-test-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:50:42.905Z pushedAt=2026-06-26T03:00:41.291Z -->
+<!-- md-trans-meta sourceCommit=f9f6b37ec87d9c0bf979f62eb07082fa84f5f2fe translatedAt=2026-09-28T01:31:58.212Z pushedAt=2026-10-09T03:25:34.605Z -->
 
 The **eap** module provides the extensible authentication mechanism to enable third-party clients to access custom 802.1X (a port-based network access control protocol) authentication, such as Extensible Authentication Protocol (EAP) authentication.
 
@@ -36,7 +36,7 @@ The system will encapsulate the eligible EAP packets into the callback function 
 
 | Name                             | Type|Mandatory|Description|
 | ----------------------------- | ---------- |---------- |---------- |
-| netType| number|Yes|Network type. The value can be **1** or **2**.<br>The value **1** indicates WLAN, and the value **2** indicates Ethernet.|
+| netType| number|Yes|Network type. The value is 1 or 2.<br>netType=1 indicates WLAN (WLAN is supported only on PC/2-in-1 devices), and netType=2 indicates Ethernet.|
 | eapCode|number |Yes|EAP code. The value can be any of the following:<br>code=1 Request, code=2 Response, code=3 Success, code=4 Failure.|
 | eapType| number |Yes|EAP method. The value range is [0, 255].<br>Common values include the following: eapType=1 Identity, eapType=2 Notification, eapType=3 NAK, eapType=4 MD5-Challenge, eapType=5 OTP (One-Time Password), eapType=6 GTC (Generic Token Card), eapType=13 EAP-TLS, eapType=21 EAP-TTLS, eapType=25 EAP-PEAP, eapType=254 Expanded Types, and eapType=255 Experimental use.|
 | callback| Callback\<[EapData](#eapdata)\> |Yes|Callback function, which returns the packet of the specified eapCode+eapType.|
@@ -83,7 +83,7 @@ Unregisters the custom handler of EAP packets for extensible authentication. Thi
 
 | Name                           | Type|Mandatory|Description|
 | ----------------------------- | ---------- |---------- |---------- |
-| netType| number|Yes|Network type. The value can be **1** or **2**.<br>The value **1** indicates WLAN, and the value **2** indicates Ethernet.|
+| netType| number|Yes|Network type. The value is 1 or 2.<br>netType=1 indicates WLAN (WLAN is supported only on PC/2-in-1 devices), and netType=2 indicates Ethernet.|
 | eapCode|number |Yes|EAP code. The value can be any of the following:<br>code=1 Request, code=2 Response, code=3 Success, code=4 Failure.|
 | eapType| number |Yes|EAP method. The value range is [0, 255].<br>Common values include the following: eapType=1 Identity, eapType=2 Notification, eapType=3 NAK, eapType=4 MD5-Challenge, eapType=5 OTP (One-Time Password), eapType=6 GTC (Generic Token Card), eapType=13 EAP-TLS, eapType=21 EAP-TTLS, eapType=25 EAP-PEAP, eapType=254 Expanded Types, and eapType=255 Experimental use.|
 | callback| Callback\<[EapData](#eapdata)\> |Yes|Callback function, which returns the packet of the specified eapCode+eapType.|
@@ -280,7 +280,7 @@ Defines the EAP data.
 | -------- | -------- | -------- | -------- | -------- |
 | msgId | number | No| No| Pseudo random number used to associate the EAP data before and after processing.|
 | eapBuffer | Uint8Array | No| No| Raw EAP data starting from the EAP header, which is not encrypted.|
-| bufferLen| number | No| No| Data length.|
+| bufferLen| number | No | No | Data length. Unit: Byte. |
 
 ## CustomResult
 

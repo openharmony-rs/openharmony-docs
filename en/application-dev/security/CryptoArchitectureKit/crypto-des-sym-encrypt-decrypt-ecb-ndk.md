@@ -1,4 +1,4 @@
-# Encryption and Decryption with a DES Symmetric Key (ECB Mode) (C/C++)
+# Encryption and Decryption with a DES Symmetric Key (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,8 +6,9 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:42:39.410Z pushedAt=2026-10-10T02:11:17.442Z -->
 
-For details about the algorithm specifications, see [DES](crypto-sym-encrypt-decrypt-spec.md#des).
+For details about the algorithm specifications, see [DES](crypto-encryption-decryption.md#des).
 
 ## Adding the Dynamic Library in the CMake Script
 ```txt
@@ -16,27 +17,29 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 
 ## How to Develop
 
+### Encrypting and Decrypting with DES Symmetric Key (ECB Mode)
+
 **Creating an Object**
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (**OH_CryptoSymKey**) with the key algorithm being DES and the key length being 64 bits.
-   
-   In addition to the example in this topic, [DES](crypto-sym-key-generation-conversion-spec.md#des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key-ndk.md) may help you better understand how to generate a DES symmetric key pair. Note that the input parameters in the reference documents may be different from those in the example below.
+
+   To understand how to generate a DES symmetric key, refer to the example below and also see [Symmetric Key Generation and Conversion Specifications: DES](crypto-key-generation-conversion.md#des) and [Converting Binary Data into a Symmetric Key](crypto-convert-binary-data-to-sym-key-ndk.md). Note that the referenced documents may differ from the current example in input parameters, so read them with care.
 
 **Encryption**
 
 1. Call [OH_CryptoSymCipher_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_create) with the string parameter **'DES64|ECB|PKCS7'** to create a **Cipher** instance for encryption. The key type is **DES64**, block cipher mode is **ECB**, and the padding mode is **PKCS7**.
 
 2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_ENCRYPT_MODE**, and specify the key for encryption (**OH_CryptoSymKey**).
-   
+
    If ECB mode is used, set **params** to **null**.
 
 3. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update data (in plaintext).
-   
+
    - If a small amount of data is to be encrypted, you can use **OH_CryptoSymCipher_Final()** immediately after **OH_CryptoSymCipher_Init()**.
    - If a large amount of data is to be encrypted, you can call **OH_CryptoSymCipher_Update** multiple times to pass in the data by segment.
 
 4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the encrypted data.
-   
+
    - If **OH_CryptoSymCipher_Update** is used to pass in data, set **data** to **null**. If **OH_CryptoSymCipher_Final** is used to pass in data, pass in the plaintext via **data**.
    - The output of **OH_CryptoSymCipher_Final** may be **null**. To avoid exceptions, always check whether the result is **null** before accessing specific data.
 
@@ -47,10 +50,10 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 2. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to initialize the **Cipher** instance. Specifically, set **mode** to **CRYPTO_DECRYPT_MODE**, and specify the key for decryption (**OH_CryptoSymKey**). If ECB mode is used, pass in **null**.
 
 3. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update data (in ciphertext).
-   
+
    - If a small amount of data is to be encrypted, you can use **OH_CryptoSymCipher_Final()** immediately after **OH_CryptoSymCipher_Init()**.
    - If a large amount of data is to be encrypted, you can call **OH_CryptoSymCipher_Update** multiple times to pass in the data by segment.
-   - You can determine the method to use based on the data size. For example, if the message is greater than 20 bytes, use **Cipher.update**.
+   - You can determine the method to use based on the data size. For example, if the data exceeds 20 bytes, use `update`.
 
 4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 

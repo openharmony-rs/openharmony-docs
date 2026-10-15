@@ -301,7 +301,7 @@ filter.distort(-0.5)
 
 
 ### radiusGradientBlur<sup>19+</sup>
-radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
+radiusGradientBlur(radius: number, gradientParam: LinearGradientBlurOptions): Filter
 
 为组件内容添加半径线性渐变模糊效果。
 
@@ -312,8 +312,8 @@ radiusGradientBlur(value: number, options: LinearGradientBlurOptions): Filter
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| value  | number         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
-| options  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
+| radius  | number         | 是   | 模糊半径，单位为px，模糊半径越大越模糊。取值范围为[0, 128]。模糊半径设置为0时不模糊；模糊半径设置小于0的值时，按值为0处理；设置大于128的值时，按值为128处理。|
+| gradientParam  | [LinearGradientBlurOptions](../apis-arkui/arkui-ts/ts-universal-attributes-image-effect.md#lineargradientbluroptions12)         | 是   | 线性渐变参数，包含两个部分fractionStops和direction。|
 
 **返回值：**
 
@@ -640,7 +640,7 @@ struct DisplacementDistortExample {
 ```
 
 ### maskDispersion<sup>20+</sup>
-maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
+maskDispersion(dispersionMap: Mask, alpha: number, rFactor?: [number, number], gFactor?: [number, number], bFactor?: [number, number]): Filter
 
 为组件内容添加由置换贴图控制的色散效果。
 
@@ -651,7 +651,7 @@ maskDispersion(dispersionMask: Mask, alpha: number, rFactor?: [number, number], 
 **参数：**
 | 参数名         | 类型                  | 必填 | 说明                       |
 | ------------- | --------------------- | ---- | ------------------------- |
-| dispersionMask  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图。|
+| dispersionMap  | [Mask](#mask20)         | 是   | 置换贴图，用于控制色散的强度、方向和透明度。建议使用PixelMapMask类型的置换贴图。|
 | alpha  | number         | 是   | 色散整体透明度，透明度越小效果越透明。取值范围为[0, 1.0]。透明度设置为0时色散效果不生效；透明度设置小于0的值时，按值为0处理；设置大于1.0的值时，按值为1.0处理。|
 | rFactor  | [number, number]         | 否   | X/Y方向上R通道的色散基础偏移，偏移越大红色色散效果越明显。每个方向上的取值范围为[-1.0, 1.0]。偏移设置小于-1.0的值时，按值为-1.0处理；设置大于1.0的值时，按值为1.0处理。|
 | gFactor  | [number, number]         | 否   | X/Y方向上G通道的色散基础偏移，偏移越大绿色色散效果越明显。取值范围同rFactor。|
@@ -1941,6 +1941,8 @@ struct Index {
 
 ## BrightnessBlenderParam
 BrightnessBlender参数列表。
+
+**卡片能力：** 从API version 22开始，该接口支持在ArkTS卡片中使用。
 
 **系统能力：** SystemCapability.Graphics.Drawing
 

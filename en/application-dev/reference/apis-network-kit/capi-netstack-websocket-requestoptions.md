@@ -6,6 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-09-28T01:15:40.509Z pushedAt=2026-10-09T01:47:31.056Z -->
 
 ```c
 struct WebSocket_RequestOptions {...}
@@ -13,7 +14,7 @@ struct WebSocket_RequestOptions {...}
 
 ## Overview
 
-Defines the parameters for the connection between the WebSocket client and server.
+Defines the parameters for establishing a connection between the WebSocket client and server.
 
 **Since**: 11
 

@@ -6,7 +6,7 @@
 <!--Designer: @gcw_sPCsris4-->
 <!--Tester: @qinliwen0417-->
 <!--Adviser: @ge-yafang-->
-<!-- md-trans-meta sourceCommit=279d7d8e7f77f1675b7e5fea89cc7d4dfef86da1 translatedAt=2026-08-11T10:11:03.098Z pushedAt=2026-08-11T11:19:36.715Z -->
+<!-- md-trans-meta sourceCommit=ac2c5e9f74ce9bcf182c95f541d22451265f0894 translatedAt=2026-10-08T09:01:14.021Z pushedAt=2026-10-08T11:13:45.917Z -->
 
 ## How to Use
 
@@ -38,7 +38,7 @@ Privacy windows are used to protect sensitive content within a window, preventin
 
 - When the service scenario explicitly requires a valid screenshot of a privacy window, you can use the [snapshotIgnorePrivacy()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotignoreprivacy18) API to achieve this.
 
-- When the business scenario explicitly requires screen recording of a privacy window, you need to first call the [setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1) API and pass in **false** to cancel the privacy mode of the window, so as to avoid being unable to obtain the corresponding window content.
+- When the service scenario explicitly requires screen recording of a privacy window, you need to first call the [setWindowPrivacyMode()](../reference/apis-arkui/arkts-apis-window-Window.md#setwindowprivacymode9-1) API and pass in **false** to cancel the privacy mode of the window, so as to avoid being unable to obtain the corresponding window content.
 
 ### Setting Privacy Mode
 
@@ -51,8 +51,7 @@ For pages that require protection against screenshots, screen recording, or scre
 Window screenshots are classified into single-window screenshot and multi-window screenshot. Through the corresponding listening capability, you can receive a screenshot listening callback when a window screenshot is taken.
 
 ### Single-Window Screenshot
-
-You can take a screenshot of the current window by calling the [snapshot()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshot9-1)/[snapshotSync()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotsync20) API.
+You can take a screenshot of the current window by calling the [snapshot()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshot9-1)/[snapshotSync()](../reference/apis-arkui/arkts-apis-window-Window.md#snapshotsync20) API.  
 
   <!--@[Snapshot_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
 
@@ -178,7 +177,7 @@ You can take a screenshot of the current window by calling the [snapshot()](../r
       }
     }
   
-    // Synchronously captures the current window. The calling method is more direct, but it returns a PixelMap synchronously.
+    // Synchronously capture the current window. The calling method is more direct, but it returns a PixelMap synchronously.
     private takeWindowSnapshotSync(): void {
       if (!this.currentWindow) {
         this.statusText = 'window.snapshotSync failed: current window is unavailable.';
@@ -195,7 +194,7 @@ You can take a screenshot of the current window by calling the [snapshot()](../r
       }
     }
   
-    // Captures the current window ignoring privacy mode. Use only when explicitly required by the business and supported by the device.
+    // Capture the current window ignoring privacy mode. Use only when explicitly required by the business and supported by the device.
     private async takeWindowSnapshotIgnorePrivacy(): Promise<void> {
       if (!await this.ensureWindow()) {
         return;
@@ -213,12 +212,12 @@ You can take a screenshot of the current window by calling the [snapshot()](../r
   
     build() {
     // ...
+    }
   }
   ```
 
-### Multi-window Screenshot
-
-You can call the [getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetmainwindowsnapshot21) API to capture one or more main windows (specified by **windowId**).
+### Multi-Window Screenshot
+You can call the [getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-window-f.md#windowgetmainwindowsnapshot21) API to capture one or more main windows (specified by **windowId**).  
 
   <!--@[SnapshotMore_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/snapshot/entry/src/main/ets/pages/Index.ets) -->
 
@@ -344,6 +343,7 @@ You can call the [getMainWindowSnapshot()](../reference/apis-arkui/arkts-apis-wi
   
     build() {
     // ...
+    }
   }
   ```
 
@@ -491,6 +491,7 @@ struct Index {
 
   build() {
   // ...
+  }
 }
 ```
 

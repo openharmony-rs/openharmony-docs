@@ -6,7 +6,7 @@
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
 <!--Adviser: @zzs911-->
-<!-- md-trans-meta sourceCommit=6d605decf40142075029c14b3e6fb59bd1308296 translatedAt=2026-09-14T09:59:10.177Z pushedAt=2026-09-15T13:39:26.540Z -->
+<!-- md-trans-meta sourceCommit=8ab3e46f731e35060d4b1ff830f568a2c4b344ac translatedAt=2026-09-28T02:49:13.410Z pushedAt=2026-09-29T08:42:46.305Z -->
 
 Screen capture enables you to collect screen data for scenarios like screen recording, meeting sharing, and live streaming. By calling the C APIs of the [AVScreenCapture](media-kit-intro.md#avscreencapture) module, you can collect audio and video data from both internal and external sources. The AVScreenCapture module works with the Window and Graphics modules to complete video capture.
 
@@ -107,7 +107,7 @@ OH_AudioInfo audioInfo = {
     .micCapInfo = micCapInfo,
     .innerCapInfo = innerCapInfo,
     .audioEncInfo = audioEncInfo
-};  
+};
 // You can set the microphone switch separately.
 bool isMic = true;
 OH_AVScreenCapture_SetMicrophoneEnabled(g_avCapture, isMic);
@@ -149,7 +149,7 @@ OH_VideoEncInfo videoEncInfo = {
 OH_VideoInfo videoInfo = {
     .videoCapInfo = videoCapInfo,
     .videoEncInfo = videoEncInfo
-};  
+};
 ```
 
 ### Initializing the AVScreenCapture Instance Configuration
@@ -187,7 +187,7 @@ Callback functions are primarily used to listen for events during screen capture
 void OnError(OH_AVScreenCapture *capture, int32_t errorCode, void *userData)
 {
     (void)capture;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnError errorCode is %{public}d", errorCode);
+    OH_LOG_ERROR(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnError errorCode is %{public}d", errorCode);
     (void)userData;
 }
 
@@ -239,7 +239,7 @@ void HandleVideoBuffer(OH_AVBuffer *buffer)
     }
     OH_NativeBuffer_Unreference(nativebuffer);
     buffer = nullptr;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable inner audio");
+    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable Video");
 }
 
 void HandleAudioBuffer(OH_AVBuffer *buffer, FILE *file, const char *logMsg)
@@ -280,7 +280,7 @@ void OnBufferAvailable(OH_AVScreenCapture *capture, OH_AVBuffer *buffer, OH_AVSc
 void OnDisplaySelected(struct OH_AVScreenCapture *capture, uint64_t displayId, void *userData)
 {
     (void)capture;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnError errorCode is %{public}uld", displayId);
+    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== OnDisplaySelected displayId is %{public}uld", displayId);
     (void)userData;
 }
 
@@ -312,7 +312,7 @@ Depending on the audio and video capture parameters, different data streams are 
 <!-- @[screenCapture_config_buffer_OnBufferAvailable](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Media/ScreenCapture/ScreenCaptureSample/entry/src/main/cpp/napi_init.cpp) --> 
 
 ``` C++
-// Obtain and process the OnBufferAvailable() callback function of the original audio and video stream data.
+// Obtain and process the original audio and video stream data in the OnBufferAvailable() callback function.
 void HandleVideoBuffer(OH_AVBuffer *buffer)
 {
     OH_NativeBuffer *nativebuffer = OH_AVBuffer_GetNativeBuffer(buffer);
@@ -339,7 +339,7 @@ void HandleVideoBuffer(OH_AVBuffer *buffer)
     }
     OH_NativeBuffer_Unreference(nativebuffer);
     buffer = nullptr;
-    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable inner audio");
+    OH_LOG_INFO(LOG_APP, "==ScreenCaptureSample== ScreenCapture OnBufferAvailable Video");
 }
 
 void HandleAudioBuffer(OH_AVBuffer *buffer, FILE *file, const char *logMsg)

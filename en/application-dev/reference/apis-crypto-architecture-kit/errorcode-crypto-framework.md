@@ -42,11 +42,15 @@ The **Native** object fails to be obtained or the parameter conversion fails.
 
 **Possible Causes**
 
-An unexpected error occurs.
+1. The instance object used to call the API is not created by an API of the current module. As a result, the **Native** object fails to be obtained.
+2. A null pointer occurs inside the system.
+3. An unexpected error occurs.
 
 **Solution**
 
-Check whether the system is running properly.
+1. Check whether the instance object used to call the API is correctly created by an API of the current module.
+2. Check whether the system is normal. If not, try again later or restart the device.
+3. If the fault persists, collect log information and contact Huawei technical support.
 
 ## 17620003 Parameter Check Failed
 
@@ -173,7 +177,7 @@ If **doFinal** fails, the tag verification fails because the input value of **ta
 2. If **iv** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
 3. If **aad** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 4. If **ciphertext** is incorrect, the plaintext obtained by **update** is incorrect, and **doFinal** fails. That is, the tag verification fails.
-5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails. 
+5. If **tag** is incorrect, the plaintext obtained by **update** is correct, and **doFinal** fails. That is, the tag verification fails.
 
 **Solution**
 
@@ -256,7 +260,7 @@ If **doFinal** fails, the tag verification fails because the input value of **ta
 
 Ensure that the **key**, **iv**, and **aad** parameters for encryption and decryption are the same, and the **ciphertext** and **tag** input during decryption are correct.
 
-### Failed to Call doFinal During Decryption Using SM4-ECB/CBC
+### Failed to Call doFinal During Decryption Using SM4-ECB or SM4-CBC
 
 **Symptom**
 

@@ -42,6 +42,6 @@ typedef struct {...} Print_PrintJob
 | [Print_OrientationMode](capi-ohprint-h.md#print_orientationmode) orientationMode | 方向模式。纵向模式适合常规文档打印，横向模式适合表格、图表等宽幅内容，反向横向模式适合需要镜像翻转的横向内容，反向纵向模式适合需要镜像翻转的纵向内容，未指定表示由系统自动选择方向。 |
 | [Print_Quality](capi-ohprint-h.md#print_quality) printQuality | 打印质量。高质量模式适合最终输出或正式文档，正常模式适合日常打印，草稿模式适合快速预览以节省耗材。 |
 | [Print_DocumentFormat](capi-ohprint-h.md#print_documentformat) documentFormat | 文档的 MIME 媒体类型，如 PDF（application/pdf）、JPEG（image/jpeg）等。 |
-| char *advancedOptions | JSON 格式的高级选项。<br>支持的键为以下两种：<br>- **isReverse**：布尔类型，表示是否逆序打印。<br>- **isCollate**：布尔类型，表示是否逐份打印。 |
+| char *advancedOptions | JSON 格式的高级选项。<br>支持的键为以下几种：<br>- **isReverse**：布尔类型，表示是否逆序打印。<br>- **isCollate**：布尔类型，表示是否逐份打印。<br>- **printPages**：整数类型，表示实际打印的页数。取值必须大于等于 1，默认值为 1。 |
 
 

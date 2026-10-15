@@ -1,8 +1,8 @@
 # native_avsession.h
 <!--Kit: AVSession Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @ccfriend; @devil_red-->
-<!--Designer: @ccfriend-->
+<!--Owner: @gcw_7KSyM10J; @devil_red-->
+<!--Designer: @gcw_7KSyM10J-->
 <!--Tester: @chenmingxi1_huawei-->
 <!--Adviser: @w_Machine_cc-->
 
@@ -26,7 +26,7 @@ The file declares the AVSession definition, which can be used to set metadata, p
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [OH_AVSession](capi-ohavsession-oh-avsession.md) | OH_AVSession | Defines a struct for the playback control session object. You can use the [OH_AVSession_Create](capi-native-avsession-h.md#oh_avsession_create) method to create a playback control session object.|
+| [OH_AVSession](capi-ohavsession-oh-avsession.md) | OH_AVSession | Defines a struct for the playback control session object. You can use the [OH_AVSession_Create](#oh_avsession_create) method to create a playback control session object.|
 | [OH_AVCastController](capi-ohavsession-oh-avcastcontroller.md) | OH_AVCastController | Defines a struct for the casting controller object. You can use the [OH_AVSession_CreateAVCastController](capi-native-avsession-h.md#oh_avsession_createavcastcontroller) method to create a casting controller object.|
 
 ### Functions
@@ -34,9 +34,9 @@ The file declares the AVSession definition, which can be used to set metadata, p
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
 | [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnCommand)(OH_AVSession* session, AVSession_ControlCommand command, void* userData)](#oh_avsessioncallback_oncommand) | OH_AVSessionCallback_OnCommand | Defines a callback for a common playback control command.|
-| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData)](#oh_avsessioncallback_onfastforward) | OH_AVSessionCallback_OnFastForward | Defines a callback for the fast-forward operation.|
-| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData)](#oh_avsessioncallback_onrewind) | OH_AVSessionCallback_OnRewind | Defines a callback for the rewind operation.|
-| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData)](#oh_avsessioncallback_onseek) | OH_AVSessionCallback_OnSeek | Defines a callback for the seek operation.|
+| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnFastForward)(OH_AVSession* session, uint32_t seekTime, void* userData)](#oh_avsessioncallback_onfastforward) | OH_AVSessionCallback_OnFastForward | Defines a callback for the fast-forward operation. The unit of **seekTime** is millisecond.|
+| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnRewind)(OH_AVSession* session, uint32_t seekTime, void* userData)](#oh_avsessioncallback_onrewind) | OH_AVSessionCallback_OnRewind | Defines a callback for the rewind operation. The unit of **seekTime** is millisecond.|
+| [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnSeek)(OH_AVSession* session, uint64_t seekTime, void* userData)](#oh_avsessioncallback_onseek) | OH_AVSessionCallback_OnSeek | Defines a callback for the seek operation. The unit of **seekTime** is millisecond.|
 | [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnSetLoopMode)(OH_AVSession* session, AVSession_LoopMode curLoopMode, void* userData)](#oh_avsessioncallback_onsetloopmode) | OH_AVSessionCallback_OnSetLoopMode | Defines a callback for the operation of setting the loop mode.|
 | [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OnToggleFavorite)(OH_AVSession* session, const char* assetId, void* userData)](#oh_avsessioncallback_ontogglefavorite) | OH_AVSessionCallback_OnToggleFavorite | Defines a callback for the operation of favoriting a media asset.|
 | [typedef AVSessionCallback_Result (\*OH_AVSessionCallback_OutputDeviceChange)(OH_AVSession* session, AVSession_ConnectionState state, AVSession_OutputDeviceInfo* outputDeviceInfo)](#oh_avsessioncallback_outputdevicechange) | OH_AVSessionCallback_OutputDeviceChange | Defines a callback for the device changes.|
@@ -62,11 +62,11 @@ The file declares the AVSession definition, which can be used to set metadata, p
 | [AVSession_ErrCode OH_AVSession_UnregisterSeekCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSeek callback)](#oh_avsession_unregisterseekcallback) | - | Unregisters the callback for the seek operation.|
 | [AVSession_ErrCode OH_AVSession_RegisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback, void* userData)](#oh_avsession_registersetloopmodecallback) | - | Registers a callback for the operation of setting the loop mode.|
 | [AVSession_ErrCode OH_AVSession_UnregisterSetLoopModeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnSetLoopMode callback)](#oh_avsession_unregistersetloopmodecallback) | - | Unregisters the callback for the operation of setting the loop mode.|
-| [AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback, void* userData)](#oh_avsession_registertogglefavoritecallback) | - | Registers a callback for the operation of favoriting a media asset.|
-| [AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback)](#oh_avsession_unregistertogglefavoritecallback) | - | Unregisters the callback for the operation of favoriting a media asset.|
+| [AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback, void* userData)](#oh_avsession_registertogglefavoritecallback) | - | Registers a callback for the favorite operation.|
+| [AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* avsession, OH_AVSessionCallback_OnToggleFavorite callback)](#oh_avsession_unregistertogglefavoritecallback) | - | Unregisters the callback for the favorite operation.|
 | [AVSession_ErrCode OH_AVSession_RegisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)](#oh_avsession_registeroutputdevicechangecallback) | - | Registers a callback for device changes.|
 | [AVSession_ErrCode OH_AVSession_UnregisterOutputDeviceChangeCallback(OH_AVSession* avsession, OH_AVSessionCallback_OutputDeviceChange callback)](#oh_avsession_unregisteroutputdevicechangecallback) | - | Unregisters the callback for device changes.|
-| [AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)](#oh_avsession_acquiresession) | - | Obtains an existing media session object. When the media session object is no longer needed, call [OH_AVSession_Destroy](capi-native-avsession-h.md#oh_avsession_destroy) to release it.|
+| [AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char* bundleName, const char* abilityName, OH_AVSession** avsession)](#oh_avsession_acquiresession) | - | Obtains an existing media session object. When the media session object is no longer needed, call [OH_AVSession_Destroy](#oh_avsession_destroy) to release it.|
 | [AVSession_ErrCode OH_AVSession_CreateAVCastController(OH_AVSession* avsession, OH_AVCastController** avcastcontroller)](#oh_avsession_createavcastcontroller) | - | Creates a casting controller object. When the casting controller object is no longer needed, call [OH_AVCastController_Destroy](capi-native-avcastcontroller-h.md#oh_avcastcontroller_destroy) to release it.|
 | [AVSession_ErrCode OH_AVSession_StopCasting(OH_AVSession* avsession)](#oh_avsession_stopcasting) | - | Stops the current casting and disconnects the device.|
 | [AVSession_ErrCode OH_AVSession_AcquireOutputDevice(OH_AVSession* avsession, AVSession_OutputDeviceInfo** outputDeviceInfo)](#oh_avsession_acquireoutputdevice) | - | Obtains the current output device.|
@@ -94,7 +94,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnFastForward)(OH_AVSess
 
 **Description**
 
-Defines a callback for the fast-forward operation.
+Defines a callback for the fast-forward operation. The unit of **seekTime** is millisecond.
 
 **Since**: 13
 
@@ -106,7 +106,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnRewind)(OH_AVSession* 
 
 **Description**
 
-Defines a callback for the rewind operation.
+Defines a callback for the rewind operation. The unit of **seekTime** is millisecond.
 
 **Since**: 13
 
@@ -118,7 +118,7 @@ typedef AVSessionCallback_Result (*OH_AVSessionCallback_OnSeek)(OH_AVSession* se
 
 **Description**
 
-Defines a callback for the seek operation.
+Defines a callback for the seek operation. The unit of **seekTime** is millisecond.
 
 **Since**: 13
 
@@ -175,9 +175,9 @@ Creates a session object.
 | Name| Description|
 | -- | -- |
 | [AVSession_Type](capi-native-avsession-base-h.md#avsession_type) sessionType |  Session type. For details about the available options, see [AVSession_Type](capi-native-avsession-base-h.md#avsession_type).|
-| const char* sessionTag |   Pointer to the session tag.|
+| const char* sessionTag |   Custom session tag set by the application.|
 | const char* bundleName |   Pointer to the bundle name.|
-| const char* abilityName |  Pointer to the ability name.|
+| const char* abilityName | Ability component name.|
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)** avsession |    Double pointer to the session object created.|
 
 **Returns**
@@ -300,7 +300,7 @@ Obtains the session ID.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| const char** sessionId | Double pointer to the session ID obtained.|
+| const char** sessionId | Session ID.|
 
 **Returns**
 
@@ -450,7 +450,7 @@ Requests to enable remote casting.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| bool enabled | Whether to enable remote casting. **true** to enable, **false** otherwise.|
+| bool enabled | Whether to enable remote casting. The value **true** indicates it is enabled, and **false** indicates it is disabled.|
 
 **Returns**
 
@@ -723,7 +723,7 @@ AVSession_ErrCode OH_AVSession_RegisterToggleFavoriteCallback(OH_AVSession* avse
 
 **Description**
 
-Registers a callback for the operation of favoriting a media asset.
+Registers a callback for the favorite operation.
 
 **Since**: 13
 
@@ -732,7 +732,7 @@ Registers a callback for the operation of favoriting a media asset.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [OH_AVSessionCallback_OnToggleFavorite](capi-native-avsession-h.md#oh_avsessioncallback_ontogglefavorite) callback | Callback for the operation of favoriting a media asset.|
+| [OH_AVSessionCallback_OnToggleFavorite](#oh_avsessioncallback_ontogglefavorite) callback | Callback for the operation of favoriting a media asset.|
 | void* userData | Pointer to the application data passed through the callback functions.|
 
 **Returns**
@@ -749,7 +749,7 @@ AVSession_ErrCode OH_AVSession_UnregisterToggleFavoriteCallback(OH_AVSession* av
 
 **Description**
 
-Unregisters the callback for the operation of favoriting a media asset.
+Unregisters the callback for the favorite operation.
 
 **Since**: 13
 
@@ -758,7 +758,7 @@ Unregisters the callback for the operation of favoriting a media asset.
 | Name| Description|
 | -- | -- |
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)* avsession | Pointer to a session object.|
-| [OH_AVSessionCallback_OnToggleFavorite](capi-native-avsession-h.md#oh_avsessioncallback_ontogglefavorite) callback | Callback for the operation of favoriting a media asset.|
+| [OH_AVSessionCallback_OnToggleFavorite](#oh_avsessioncallback_ontogglefavorite) callback | Callback for the operation of favoriting a media asset.|
 
 **Returns**
 
@@ -824,7 +824,7 @@ AVSession_ErrCode OH_AVSession_AcquireSession(const char* sessionTag, const char
 
 **Description**
 
-Obtains an existing media session object. When the media session object is no longer needed, call [OH_AVSession_Destroy](capi-native-avsession-h.md#oh_avsession_destroy) to release it.
+Obtains an existing media session object. When the media session object is no longer needed, call [OH_AVSession_Destroy](#oh_avsession_destroy) to release it.
 
 **Since:** 23
 
@@ -832,7 +832,7 @@ Obtains an existing media session object. When the media session object is no lo
 
 | Name| Description|
 | -- | -- |
-| const char* sessionTag | Pointer to the custom session tag set by the application.|
+| const char* sessionTag | Custom session tag set by the application.|
 | const char* bundleName | Pointer to the application bundle name.|
 | const char* abilityName | Pointer to the application ability name.|
 | [OH_AVSession](capi-ohavsession-oh-avsession.md)** avsession | Double pointer to the **OH_AVSession**.|

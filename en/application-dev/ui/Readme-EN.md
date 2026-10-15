@@ -122,7 +122,7 @@
       - [Page Routing](./arkts-navigation-jump.md)
       - [Transition Animation](./arkts-navigation-animation.md)
       - [Cross-Package Routing](./arkts-navigation-cross-package.md)
-      - [Split-Column Layout](./arkts-navigation-split-mode.md)
+      - [Split-View Layout](./arkts-navigation-split-mode.md)
     - [Page Routing (@ohos.router) (Not Recommended)](arkts-routing.md)
     - [Transition from Router to Navigation](arkts-router-to-navigation.md)
   - Component Layouts<!--arkts-layout-development-->
@@ -242,7 +242,7 @@
       - [Shadow Effect](arkts-shadow-effect.md)
       - [Color Effect](arkts-color-effect.md)
       - Blur<!--arkts-blur-->
-        - [Dynamic Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
+        - [Motion Blur](arkts-blur-effect.md)<!--RP13--><!--RP13End-->
     - [Frame Animation (ohos.animator)](arkts-animator.md)<!--RP10--><!--RP10End-->
   - Using Customization Capabilities<!--arkts-user-defined-capabilities-->
     - [Customization Capability Overview](arkts-user-defined.md)
@@ -276,7 +276,7 @@
     - [Inspecting Page Layouts](arkts-inspector-overview.md)
     - [Media Query (@ohos.mediaquery)](arkts-layout-development-media-query.md)
     - Using Embedded Components<!--arkts-ui-cross-process-->
-      - [Atomic Service Full Screen Launch Component (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
+      - [Full-Screen Launch of Atomic Services (FullScreenLaunchComponent)](arkts-FullScreenComponent.md)
       - [In-Application Embedded Component (EmbeddedComponent)](arkts-embedded-components.md)
     <!--Del-->
     - [Cross-Process Application Capability Extension (UIExtension, for System Applications Only)](arkts-ui-extension-components-sys.md)

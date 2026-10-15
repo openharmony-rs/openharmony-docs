@@ -266,7 +266,7 @@ napi_value X25519AgreeKey(napi_env env, napi_callback_info info)
     struct OH_Huks_Blob outData02 = {.size = X25519_COMMON_SIZE, .data = nullptr};
     OH_Huks_Result ohResult;
     do {
-        /* 1.确定密钥别名集成密钥参数集 */
+        /* 1.确定密钥别名，并集成密钥参数集 */
         ohResult = InitializeAgreeParamSets(&genParamSet, &initParamSet01, &finishParamSet01,
                                             &initParamSet02, &finishParamSet02);
         if (ohResult.errorCode != OH_HUKS_SUCCESS) {

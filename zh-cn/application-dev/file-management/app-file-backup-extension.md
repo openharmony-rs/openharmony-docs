@@ -105,7 +105,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
     }
     ```
 
-   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   <!-- @[on_backup_restore](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->  
    
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -153,7 +153,7 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
 
    下面的示例展示了需要清理临时文件目录时`onRelease`的实现：
 
-   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->    
+   <!-- @[on_release](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/CoreFile/FileBackupExtension/entry/src/main/ets/common/BackupExtension.ets) -->  
    
    ``` TypeScript
    import { BackupExtensionAbility } from '@kit.CoreFileKit';
@@ -164,13 +164,13 @@ BackupExtensionAbility是[Stage模型](../application-models/stage-model-develop
    
    const SCENARIO_BACKUP: number = 1;
    const SCENARIO_RESTORE: number = 2;
-   // 需要清理的临时目录
-   let filePath: string = '/data/storage/el2/base/.temp/';
    
    class BackupExt extends BackupExtensionAbility {
      // ...
      // onRelease
      async onRelease(scenario: number): Promise<void> {
+       // 清理应用在此目录下创建的备份或恢复临时文件。
+       let filePath: string = this.context.filesDir + '/.temp/';
        try {
          if (scenario == SCENARIO_BACKUP) {
            // 备份场景，应用自行实现处理，以清理备份产生的临时文件为例

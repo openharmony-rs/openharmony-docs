@@ -1,18 +1,18 @@
 # Managing the Notification Badge
-
 <!--Kit: Notification Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
-<!-- md-trans-meta sourceCommit=b0e965054b682272b6c9e3890a6020b1129a6551 translatedAt=2026-08-22T02:16:10.665Z pushedAt=2026-08-22T07:03:02.463Z -->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-08T03:47:50.301Z pushedAt=2026-10-08T06:46:35.106Z -->
 
 The system provides APIs for setting the notification badge, which is displayed in the upper right corner of the application icon on the home screen to notify the user of the count of unread notifications.
 
 When a new notification arrives, the count on the badge is incremented by 1.
 
 After a notification is read, the count on the badge is decremented by 1. If there is no unread notification, the badge is not displayed.
+
 
 ## Available APIs
 
@@ -30,12 +30,13 @@ When the badge count is set to a value less than or equal to 0, the badge is cle
   | -------- | -------- |
   | setBadgeNumber(badgeNumber: number): Promise\<void\> | Sets the number count on the badge.|
 
+
 ## How to Develop
 
 1. Import the **NotificationManager** module.
 
    <!-- @[manage_notification_badges_header](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->    
-
+   
    ``` TypeScript
    import { notificationManager } from '@kit.NotificationKit';
    import { hilog } from '@kit.PerformanceAnalysisKit';
@@ -44,15 +45,15 @@ When the badge count is set to a value less than or equal to 0, the badge is cle
    const TAG: string = '[PublishOperation]';
    const DOMAIN_NUMBER: number = 0xFF00;
    ```
-
+   
 2. Increase the count on the badge.
 
-When publishing a notification, you can carry the related information in the **badgeNumber** field of [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). For details, see [Publishing a Text Notification](text-notification.md).
-
+   When publishing a notification, you can carry the related information in the **badgeNumber** field of [NotificationRequest](../reference/apis-notification-kit/js-apis-inner-notification-notificationRequest.md#notificationrequest-1). For details, see [Publishing a Text Notification](text-notification.md).
+   
    In this example, the **setBadgeNumber** API is called to add a badge. This API is called after a new notification is published.
 
    <!-- @[add_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
-
+   
    ``` TypeScript
    let badgeNumber: number = 9;
    notificationManager.setBadgeNumber(badgeNumber).then(() => {
@@ -68,7 +69,7 @@ When publishing a notification, you can carry the related information in the **b
    After a notification is read, the application needs to call the API to set the number of remaining unread notifications. The badge is then updated.
 
    <!-- @[reduce_badge_count](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
-
+   
    ``` TypeScript
    let badgeNumber: number = 8;
    notificationManager.setBadgeNumber(badgeNumber).then(() => {
@@ -90,7 +91,7 @@ When publishing a notification, you can carry the related information in the **b
     The sample code is as follows:
 
     <!-- @[increase_badge_count_seq](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
-
+    
     ``` TypeScript
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {
@@ -115,7 +116,7 @@ When publishing a notification, you can carry the related information in the **b
     The sample code is as follows:
 
     <!-- @[update_badge_count_idempotent](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Notification-Kit/Notification/entry/src/main/ets/filemanager/ManageNotificationBadges.ets) -->
-
+    
     ``` TypeScript
     let badgeNumber: number = 10;
     notificationManager.setBadgeNumber(badgeNumber).then(() => {

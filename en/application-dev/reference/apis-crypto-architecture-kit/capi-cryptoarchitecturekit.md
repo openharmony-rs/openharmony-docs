@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides an access point to encrypted header files.
+Provides a unified entry for encrypted header files.
 
 **System capability**: SystemCapability.Security.CryptoFramework
 
@@ -19,4 +19,4 @@ Provides an access point to encrypted header files.
 
 | Name| Description|
 | -- | -- |
-| [crypto_architecture_kit.h](capi-crypto-architecture-kit-h.md) | Provides an access point to encrypted header files so that you can simply import one header file to use APIs from other header files.|
+| [crypto_architecture_kit.h](capi-crypto-architecture-kit-h.md) | Provides a unified entry for encrypted header files.|
