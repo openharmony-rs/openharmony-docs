@@ -3811,7 +3811,7 @@ struct Index {
 
 ## UIRect
 
-表示矩形区域。
+表示矩形区域。仅在[UIAccessibilityElement](#uiaccessibilityelement)中被使用，用于表示组件所在的矩形区域的范围。
 
 **模型约束：** 此接口仅可在Stage模型下使用。
 
@@ -3936,7 +3936,7 @@ getFocusedUIAccessibilityElement(): Promise&lt;UIAccessibilityElement | undefine
 **示例：**
 
 ```ts
-import accessibility, { UIAccessibilityElement } from '@ohos.accessibility';
+import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 accessibility.getFocusedUIAccessibilityElement().then((data: UIAccessibilityElement) => {
@@ -3982,7 +3982,7 @@ onUIAccessibilityFocusChanged(callback: Callback&lt;UIAccessibilityFocusChangeIn
 **示例：**
 
 ```ts
-import accessibility from '@ohos.accessibility';
+import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
@@ -4060,7 +4060,7 @@ offUIAccessibilityFocusChanged(callback?: Callback&lt;UIAccessibilityFocusChange
 **示例：**
 
 ```ts
-import accessibility from '@ohos.accessibility';
+import { accessibility } from '@kit.AccessibilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
