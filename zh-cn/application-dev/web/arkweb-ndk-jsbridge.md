@@ -300,55 +300,56 @@
 
 * ArkTS侧代码
   <!-- @[interact_with_the_webview_via_the_native_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/ArkWebJsInteraction/NdkJsBridgeEX/entry/src/main/ets/pages/Index.ets) -->
-
-  ```javascript
+  
+  ``` TypeScript
   // entry/src/main/ets/pages/Index.ets
   import testNapi from 'libentry.so';
   import { webview } from '@kit.ArkWeb';
-
+  
   class testObj {
     constructor() {
     }
-
+  
     test(): string {
       console.info('ArkUI Web Component');
-      return "ArkUI Web Component";
+      return 'ArkUI Web Component';
     }
-
+  
     toString(): void {
       console.info('Web Component toString');
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
+    // 自定义webTag，在WebviewController创建时作为入参传入，建立controller与webTag的映射关系
     webTag: string = 'ArkWeb1';
     controller: webview.WebviewController = new webview.WebviewController(this.webTag);
-    @State testObjtest: testObj = new testObj();
-
+    @State testObjectTest: testObj = new testObj();
+    // 在aboutToAppear方法中，通过Node-API接口将webTag传入C++侧，C++侧使用webTag作为ArkWeb组件的唯一标识
     aboutToAppear() {
-      console.info("aboutToAppear")
-      //初始化web ndk
+      console.info('aboutToAppear');
+      //初始化web Native Development Kit
       testNapi.nativeWebInit(this.webTag);
     }
-
+  
     build() {
       Column() {
         Row() {
           Button('runJS hello')
             .fontSize(12)
             .onClick(() => {
-              testNapi.runJavaScript(this.webTag, "runJSRetStr(\"" + "hello" + "\")");
+              testNapi.runJavaScript(this.webTag, 'runJSRetStr(\"" + "hello" + "\")');
             })
         }.height('20%')
-
+  
         Row() {
           Web({ src: $rawfile('runJS.html'), controller: this.controller })
             .javaScriptAccess(true)
             .fileAccess(true)
             .onControllerAttached(() => {
-              console.error("ndk onControllerAttached webId: " + this.controller.getWebId());
+              console.info('Native Development Kit onControllerAttached webId: ' + this.controller.getWebId());
             })
         }.height('80%')
       }
