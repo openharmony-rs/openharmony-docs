@@ -1,4 +1,10 @@
 # OH_ArkUI_NativeModule_ImageCollection
+<!--Kit: ArkUI-->
+<!--Subsystem: ArkUI-->
+<!--Owner: @lushi871202-->
+<!--Designer: @lushi871202 -->
+<!--Tester: @sally__-->
+<!--Adviser: @Brilliantry_Rui-->
 
 ```c
 typedef struct OH_ArkUI_NativeModule_ImageCollection OH_ArkUI_NativeModule_ImageCollection
