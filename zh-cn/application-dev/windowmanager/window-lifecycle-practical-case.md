@@ -15,7 +15,7 @@
 
 在PC/2in1设备上，应用主窗口进入后台状态后，可通过调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
 
-对于已将应用图标注册到状态栏托盘区的应用，可通过监听托盘图标的点击事件，在用户点击托盘图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复主窗口。
+对于已将应用图标添加到状态栏的应用，可通过监听状态栏图标点击事件，在用户点击状态栏图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复应用主窗口。应用如何接入状态栏请参考[应用接入状态栏](https://developer.huawei.com/consumer/cn/doc/doccenter-capabilities/statusbar-extension-guide)
 
 > **说明：**
 >
