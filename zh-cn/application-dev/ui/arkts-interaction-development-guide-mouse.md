@@ -583,7 +583,7 @@ mouse2TouchEventMode可配置字段说明。
 | 字段名              | 类型 | 说明                         | 可选 |
 | -------------------- | ---- | ---------------------------- | ---- |
 | rightMouse2LongPress | boolean | 是否启用右键转长按策略。取值范围：true表示启用右键转长按策略，右键点击事件将被转换为长按事件；false表示不启用，右键点击事件将按系统默认行为处理。当取值为false时，needTransferComponent配置不生效。 | 否   |
-| needTransferComponent | string[] | 指定生效组件列表，决定哪些组件上的右键事件会被转换为长按事件。数组可为空，为空时表示不转换任何组件的右键事件。数组元素必须为下方枚举值之一。不配置时默认为空数组。needTransferComponent为空数组时，即使 rightMouse2LongPress为true，也不会转换任何组件的右键事件。 | 是   |
+| needTransferComponent | string[] | 指定生效组件列表，决定哪些组件上的右键事件会被转换为长按事件。数组可为空，为空时表示不转换任何组件的右键事件。数组元素必须为下方枚举值之一。不配置时默认为空数组。needTransferComponent为空数组时，即使rightMouse2LongPress为true，也不会转换任何组件的右键事件。 | 是   |
 
 needTransferComponent数组中可选枚举类型说明。
 | 枚举值            | 说明           |
@@ -602,7 +602,7 @@ needTransferComponent数组中可选枚举类型说明。
 needTransferComponent字段额外说明。
 | 规则               | 说明                                                         |
 | ------------------ | ------------------------------------------------------------ |
-| 全部生效           | 设置`"needTransferComponent": ["All"]`表示所有 ArkUI 组件均生效。|
+| 全部生效           | 设置`"needTransferComponent": ["All"]`表示所有ArkUI组件均生效。|
 | 大小写敏感         | 组件名称区分大小写，必须严格按照上述列表填写，否则编译时会报错。|
 | 不允许重复         | 组件列表中不允许出现重复的组件名，否则编译时会报错。|
 | All与其他组件共存 | 当列表中同时包含具体组件名和"All"时，具体组件名将被忽略，等价于仅配置"All"。建议仅使用"All"以简化配置。|
