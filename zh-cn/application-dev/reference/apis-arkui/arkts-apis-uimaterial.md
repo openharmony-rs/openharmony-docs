@@ -28,7 +28,13 @@ import { uiMaterial } from '@kit.ArkUI';
    - [Slider](./arkui-ts/ts-basic-components-slider.md)、[Toggle](./arkui-ts/ts-basic-components-toggle.md)、[Select](./arkui-ts/ts-basic-components-select.md)的沉浸光感效果可在全页面生效。
    - 其他组件仅在Navigation/NavDestination标题栏或横向Tabs中barPosition为BarPosition.End的底部TabBar中生效。在其他区域中设置沉浸光感效果不生效。
 
-沉浸式材质根据设备是否支持沉浸式材质和设备算力有分档表现，可通过[uiMaterial.isImmersiveMaterialSupported](#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质，通过[uiMaterial.getGlobalMaterialLevel](#uimaterialgetglobalmateriallevel)获取设备的材质等级。在不支持沉浸式材质的设备上可设置沉浸式材质但无效果。在支持沉浸式材质的高算力和中算力设备上，通过材质层滤镜属性[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果，当[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性生效后，已设置的背景色属性[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)会被恢复为透明色，已设置的边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)属性会被恢复为无边框效果。在支持沉浸式材质的低算力设备上，通过背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果。同一材质的效果，会受到系统设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
+沉浸式材质根据设备是否支持沉浸式材质和设备算力有分档表现：
+
+- 设备支持判断：可通过[uiMaterial.isImmersiveMaterialSupported](#uimaterialisimmersivematerialsupported)判断设备是否支持沉浸式材质。在不支持沉浸式材质的设备上可设置沉浸式材质但无效果。
+- 算力等级获取：在支持沉浸式材质的设备上，可通过[uiMaterial.getGlobalMaterialLevel](#uimaterialgetglobalmateriallevel)获取设备的材质等级。
+- 高算力和中算力设备：通过材质层滤镜属性[materialFilter](arkui-ts/ts-universal-attributes-filter-effect.md#materialfilter23)和阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果。当[systemMaterial](arkui-ts/ts-universal-attributes-image-effect.md#systemmaterial)属性生效后，已设置的背景色属性[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)会被恢复为透明色，已设置的边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)属性会被恢复为无边框效果。
+- 低算力设备：通过背景色[backgroundColor](arkui-ts/ts-universal-attributes-background.md#backgroundcolor)、边框颜色[borderColor](arkui-ts/ts-universal-attributes-border.md#bordercolor)、边框宽度[borderWidth](arkui-ts/ts-universal-attributes-border.md#borderwidth)、阴影[shadow](arkui-ts/ts-universal-attributes-image-effect.md#shadow)属性实现材质效果。
+- 系统设置影响：同一材质的效果，会受到系统设置应用中沉浸光感配置项的影响，不同强弱程度的沉浸光感配置下，材质的参数和效果存在差异。
 
 ### constructor
 
