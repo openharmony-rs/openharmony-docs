@@ -3,8 +3,9 @@
 <!--Subsystem: Window-->
 <!--Owner: @fei_1007-->
 <!--Designer: @gcw_sPCsris4-->
-<!--Tester: @qinliwen0417-->
+<!--Tester: @jingbotao-->
 <!--Adviser: @ge-yafang-->
+<!-- md-trans-meta sourceCommit=494f31a35d1b25179fe202754d9ee44d527d8ab6 translatedAt=2026-10-10T10:44:18.174Z pushedAt=2026-10-15T03:38:48.289Z -->
 
 ## Overview
 
@@ -40,7 +41,7 @@ The file declares the common enums and definitions of the window manager.
 
 | Name| typedef Keyword| Description|
 | -- | -- | -- |
-| [WindowManager_ErrorCode](#windowmanager_errorcode) | WindowManager_ErrorCode | Enumerates the status codes returned by the window manager interface.|
+| [WindowManager_ErrorCode](#windowmanager_errorcode) | WindowManager_ErrorCode | Enumerates the status codes returned by the window manager API.|
 | [WindowManager_AvoidAreaType](#windowmanager_avoidareatype) | WindowManager_AvoidAreaType | Enumerates the avoid area types.|
 | [WindowManager_WindowType](#windowmanager_windowtype) | WindowManager_WindowType | Enumerates the window types.|
 
@@ -61,7 +62,7 @@ enum WindowManager_ErrorCode
 
 **Description**
 
-Enumerates the status codes returned by the window manager interface.
+Enumerates the status codes returned by the window manager API.
 
 **Since**: 12
 
@@ -72,6 +73,7 @@ Enumerates the status codes returned by the window manager interface.
 | WINDOW_MANAGER_ERRORCODE_INVALID_PARAM = 401 | Invalid parameter.<br>**Since**: 15|
 | WINDOW_MANAGER_ERRORCODE_DEVICE_NOT_SUPPORTED = 801 | Not supported by the device.<br>**Since**: 15|
 | INVAILD_WINDOW_ID = 1000 | Invalid window ID.|
+| INVALID_WINDOW_ID = INVAILD_WINDOW_ID | Invalid window ID.<br>**Since:** 26.0.0 |
 | SERVICE_ERROR = 2000 | Service error.|
 | WINDOW_MANAGER_ERRORCODE_STATE_ABNORMAL = 1300002 | Abnormal window status.<br>**Since**: 15|
 | WINDOW_MANAGER_ERRORCODE_SYSTEM_ABNORMAL = 1300003 | Abnormal window manager service.<br>**Since**: 15|
