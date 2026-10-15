@@ -36,7 +36,7 @@
 | napi_create_typedarray | 用于在Node-API模块中创建指定类型的TypedArray，例如Uint8Array、Int32Array等，通常用于将Node-API模块中的数据转换为ArkTS中的TypedArray，以便进行高性能的数据处理操作。 |
 | napi_is_typedarray | 用于在Node-API模块中判断一个给定的napi_value是否为TypedArray对象。 |
 | napi_get_typedarray_info | 用于在Node-API模块中获得某个TypedArray的各种属性。 |
-| napi_create_dataview |  用于在Node-API模块中创建一个DataView对象，可以访问和操作二进制数据。 |
+| napi_create_dataview | 用于在Node-API模块中创建一个DataView对象，可以访问和操作二进制数据。 |
 | napi_is_dataview | 用于在Node-API模块中判断给定的napi_value是否为ArkTS中的DataView对象。 |
 | napi_get_dataview_info | 用于在Node-API模块中获得某个DataView的各种属性。 |
 
