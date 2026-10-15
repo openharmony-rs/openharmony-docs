@@ -1337,8 +1337,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | 名称   | 类型 | 只读 | 可选 | 说明|
 | ----- | ---- | ---- | --- | --- |
 | targetType | [TargetType](#targettype21) | 否 | 否 | 搜索目标的相关信息。 |
- 
- 
+
 ## SearchParams<sup>21+<sup>
 
 指定搜索的方向。
@@ -1363,7 +1362,6 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | ----- | ---- | ---- | --- | --- |
 | targetCount | number | 否 | 否 | 搜索到的目标数量。 |
 
-
 ## MoveParams
 
 设备移动参数。
@@ -1381,7 +1379,6 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | speedGear | [SpeedGear](#speedgear) | 否 | 是 | 速度档位。|
 | mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
 
-
 ## SpeedParams
 
 速度控制参数。
@@ -1397,41 +1394,6 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | speed | number | 否 | 否 | 转动或移动速度（取值限定为整数）。|
 | angle | double | 否 | 否 | 转动角度。|
 | mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
-
-
-## BatteryLevelInfo
-
-电量状态变化信息。
-  
-**起始版本**：26.2.0
-
-**系统能力**：SystemCapability.Mechanic.Core
-
-**系统接口**：该接口为系统接口。
-
-| 名称   | 类型 | 只读 | 可选 | 说明|
-| ----- | ---- | ---- | --- | --- |
-| mechId | number | 否 | 否 | 机械体设备ID。 |
-| batteryLevel | number | 否 | 否 | 设备电量。 |
-| isCharging | boolean | 否 | 否 | 是否充电中。 |
-
-
-## AdsorbState  
-
-设备吸附状态的枚举。
-  
-**起始版本**：26.2.0
-
-**系统能力**：SystemCapability.Mechanic.Core
-
-**系统接口**：该接口为系统接口。
-
-| 名称 | 类型 | 值 | 说明 |
-| ----------- | ------|---- | --------------- |
-| UNKNOWN  | int | -1 | 未知状态。 |
-| ADSORBED  | int | 0 | 已吸附。 |
-| UNADSORBED   | int | 1 | 未吸附。 |
-
 
 ## SpeedGear
 
@@ -1551,7 +1513,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | address | string | 否 | 否 | 配件设备地址。 |
 | addressType | [AddressType](#addresstype) | 否 | 否 | 地址类型。 |
 
-## AddressType  
+## AddressType
 
 机械体设备地址类型。
   
@@ -1643,3 +1605,36 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | DESKTOP_GIMBAL_DEVICE  | int | 1 | 桌面云台。 |
 | WHEELED_BASE_DEVICE  | int | 2 | 轮式底座。 |
 | POCKET_GIMBAL_CAMERA_DEVICE  | int | 3 | 口袋云台相机。 |
+
+## BatteryLevelInfo
+
+电量状态变化信息。
+  
+**起始版本**：26.2.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| mechId | number | 否 | 否 | 机械体设备ID。 |
+| batteryLevel | number | 否 | 否 | 设备电量。 |
+| isCharging | boolean | 否 | 否 | 是否充电中。 |
+
+
+## AdsorbState
+
+设备吸附状态的枚举。
+  
+**起始版本**：26.2.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称 | 类型 | 值 | 说明 |
+| ----------- | ------|---- | --------------- |
+| UNKNOWN  | int | -1 | 未知状态。 |
+| ADSORBED  | int | 0 | 已吸附。 |
+| UNADSORBED   | int | 1 | 未吸附。 |
