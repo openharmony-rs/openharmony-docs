@@ -3,10 +3,10 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=f27c946fc782ac1d031692b6ff0d2063a86e9e01 translatedAt=2026-08-03T02:10:40.717Z pushedAt=2026-08-03T07:53:29.581Z -->
+<!-- md-trans-meta sourceCommit=848a140286337012cdfb8844002b58247a33b2e7 translatedAt=2026-10-09T12:34:45.232Z pushedAt=2026-10-10T06:57:30.299Z -->
 
 > **NOTE**
 >
@@ -56,7 +56,7 @@ The device address has already been bound with PartnerAgentExtensionAbility.
 
 **Description**
 
-The device address has been registered with [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md).
+The device address has been bound to a [PartnerAgentExtensionAbility](js-apis-fusionConnectivity-partnerAgentExtensionAbility.md).
 
 **Possible Causes**
 

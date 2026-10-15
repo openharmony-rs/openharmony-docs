@@ -4,8 +4,7 @@
 <!--Owner: @chenkun613227-->
 <!--Designer: @yxc2-->
 <!--Tester: @xdlinc-->
-<!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=4b1a2f751fcd33c52248528ed8c23a9b2935126b translatedAt=2026-06-23T01:06:08.248Z pushedAt=2026-06-23T06:12:23.702Z -->
+<!--Adviser: @zzs911-->
 
 ```c
 typedef struct OH_AVScreenCapture OH_AVScreenCapture
@@ -14,6 +13,8 @@ typedef struct OH_AVScreenCapture OH_AVScreenCapture
 ## Overview
 
 The OH_AVScreenCapture struct allows you to obtain original video and audio streams.
+
+You need to create an instance and set capture parameters through related APIs, and then perform screen capture to obtain the stream data. For details about the design logic and implementation mechanism of the module, see [AVScreenCapture](capi-avscreencapture.md). It is applicable to scenarios where screen content and system/microphone audio need to be captured, such as screen capture and live streaming. It helps apps implement high-quality screen capture and obtain audio and video data.
 
 **Since**: 10
 

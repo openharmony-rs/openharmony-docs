@@ -315,6 +315,11 @@ const workerFA3: worker.ThreadWorker = new worker.ThreadWorker('ThreadFile/worke
                 // 发送消息给Worker线程
                 workerInstance.postMessage('1');
                 // ...
+      
+                // 延迟1秒等待其他步骤完成后手动销毁Worker线程
+                setTimeout(() => {
+                  workerInstance.terminate();
+                }, 1000);
               })
           }
           .height('100%')

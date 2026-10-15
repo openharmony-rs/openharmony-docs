@@ -181,14 +181,15 @@ import { UIContext } from '@kit.ArkUI';
 /* context is application context information, which is obtained by the caller. The context here is only an example. */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 /* pageType specifies the type of the page to display. In this example, pageType is PAGE_MAIN, which indicates the main page of the Certificate Management application. */
-let pageType: certificateManagerDialog.CertificateDialogPageType = certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
+let pageType: certificateManagerDialog.CertificateDialogPageType =
+  certificateManagerDialog.CertificateDialogPageType.PAGE_MAIN;
 try {
   certificateManagerDialog.openCertificateManagerDialog(context, pageType).then(() => {
     console.info('Succeeded in opening certificate manager dialog.');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to open certificate manager dialog. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to open certificate manager dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -216,7 +217,7 @@ Opens a dialog box for installing a certificate. After the certificate is instal
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | Yes  | Context of the application.|
 | certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to install. Only **CA_CERT**, **CREDENTIAL_USER**, and **CREDENTIAL_SYSTEM** are currently supported.|
 | certScope | [CertificateScope](#certificatescope14)                   | Yes  | Usage scope of the certificate to install. Only **CURRENT_USER** and **NOT_SPECIFIED** are currently supported.|
-| cert | Uint8Array                  | Yes  | Data of the certificate to install.|
+| cert | Uint8Array                  | Yes  | Certificate data. The size cannot exceed 8 KB.<br>If **certType** is set to **CA_CERT**, the value must be certificate data in PEM or DER encoding format.<br>If **certType** is set to **CREDENTIAL_USER** or **CREDENTIAL_SYSTEM**, the value must be certificate credential data in P12 encoding format.|
 
 **Return value**
 
@@ -236,8 +237,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the installation operation.     |
 | 29700003 | The user install certificate failed in the certificate manager dialog, such as the certificate is in an invalid format.     |
-| 29700004 | To ensure user security, the current device does not support this API. When certType is set to CA_CERT, this API can be invoked only on 2in1 devices. This error code is returned on other devices. |
-| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.<br>Applicable version: 18+|
+| 29700004 | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to determine whether the device supports opening the dialog box for installing a CA certificate with certType set to CA. |
+| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user.<br>Applicable version: 18+|
 
 **Example**
 ```ts
@@ -251,18 +252,20 @@ let context: common.Context = new UIContext().getHostContext() as common.Context
 /* certificateType specifies the certificate type. The value CA_CERT here indicates a CA certificate. */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certificateScope specifies the usage scope of the certificate. The value CURRENT_USER here means the certificate can be used by the current user. */
-let certificateScope: certificateManagerDialog.CertificateScope = certificateManagerDialog.CertificateScope.CURRENT_USER;
+let certificateScope: certificateManagerDialog.CertificateScope =
+  certificateManagerDialog.CertificateScope.CURRENT_USER;
 /* The CA certificate data must be assigned by the service. In this example, the data is not CA certificate data. */
 let caCert: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 try {
-  certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert).then((uri: string) => {
+  certificateManagerDialog.openInstallCertificateDialog(context, certificateType, certificateScope, caCert)
+    .then((uri: string) => {
     console.info('Succeeded in opening install certificate');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to open install certificate dialog. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to open install certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -288,7 +291,7 @@ Opens a dialog box for uninstalling a certificate. This API uses a promise to re
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | Yes  | Context of the application.|
 | certType | [CertificateType](#certificatetype14)                   | Yes  | Type of the certificate to uninstall. Only **CA_CERT** is currently supported.|
-| certUri | string                  | Yes  | Unique identifier of the certificate to uninstall. The value contains up to 256 bytes.|
+| certUri | string                  | Yes  | Unique ID of the certificate to be uninstalled. You can obtain the value by calling the API for installing a CA certificate or the API for querying the CA certificate list.|
 
 **Return value**
 
@@ -307,8 +310,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.     |
 | 29700002 | The user cancels the uninstallation operation.     |
 | 29700003 | The user uninstall certificate failed in the certificate manager dialog, such as the certificate uri is not exist.     |
-| 29700004 | The API is not supported on this device.     |
-| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the ca certificate of the global user.     |
+| 29700004 | For security purposes, the current device does not support this API. You can use the [supportsCACertDialog](#certificatemanagerdialogsupportscacertdialog) to determine whether the device can open the dialog box for deleting a CA certificate with certType set to CA.     |
+| 29700005 | The operation does not comply with the device security policy, such as the device does not allow users to manage the CA certificate of the global user.     |
 
 **Example**
 ```ts
@@ -322,14 +325,14 @@ let context: common.Context = new UIContext().getHostContext() as common.Context
 /* certificateType specifies the certificate type. The value CA_CERT indicates a CA certificate is deleted. */
 let certificateType: certificateManagerDialog.CertificateType = certificateManagerDialog.CertificateType.CA_CERT;
 /* certUri is the unique identifier of the certificate installed. The value here is only an example. */
-let certUri: string = "test";
+let certUri: string = 'test';
 try {
   certificateManagerDialog.openUninstallCertificateDialog(context, certificateType, certUri).then(() => {
     console.info('Succeeded in opening uninstall certificate');
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to open uninstall certificate dialog. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to open uninstall certificate dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -354,7 +357,7 @@ Opens the certificate management dialog box and displays the certificate details
 | Name  | Type                                             | Mandatory| Description                      |
 | -------- | ------------------------------------------------- | ---- | -------------------------- |
 | context | [common.Context](../apis-ability-kit/js-apis-app-ability-common.md#context)                   | Yes  | Context of the application.|
-| cert     | Uint8Array                                                   | Yes  | Data of the certificate to install.            |
+| cert     | Uint8Array                                                   | Yes  | Certificate data.            |
 | property | [CertificateDialogProperty](#certificatedialogproperty18) | Yes  | Property of the certificate management dialog box.|
 
 **Return value**
@@ -386,7 +389,7 @@ import { UIContext } from '@kit.ArkUI';
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 /* The CA certificate data must be assigned by the service. In this example, the data is not CA certificate data. */
 let caCert: Uint8Array = new Uint8Array([
-  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01,
+  0x30, 0x82, 0x0b, 0xc1, 0x02, 0x01
 ]);
 let property: certificateManagerDialog.CertificateDialogProperty = {
   showInstallButton: false /* Do not display the button for installing the certificate.*/
@@ -397,7 +400,7 @@ try {
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to open certificate detail dialog. Code: ${err.code}, message: ${err.message}`);
-  })
+  });
 } catch (error) {
   console.error(`Failed to open certificate detail dialog. Code: ${error.code}, message: ${error.message}`);
 }
@@ -434,7 +437,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | ID   | Error Message                                                                                                                                           |
 |----------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 201      | Permission verification failed. The application does not have the permission required to call the API.                                          |
-| 401      | Invalid parameter. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
+| 401      | Parameter error. Possible causes: 1. A mandatory parameter is left unspecified. 2. Incorrect parameter type. 3. Parameter verification failed. |
 | 801      | The certificate management application Hap is not preinstalled in the system, and the capability is not supported.<br>Applicable versions: 26.0.0+|
 | 29700001 | Internal error. Possible causes: 1. IPC communication failed; 2. Memory operation error; 3. File operation error. Please try again.        |
 | 29700002 | The user cancels the authorization.                                                                                                             |
@@ -449,8 +452,9 @@ import { UIContext } from '@kit.ArkUI';
 /* context is application context information, which is obtained by the caller. The context here is only an example. */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 try {
+  /* Opens the certificate credential authorization page of the certificate management dialog box. */
   certificateManagerDialog.openAuthorizeDialog(context).then((uri: string) => {
-    console.info(`Succeeded in authorizing certificate, uri: ${uri}`)
+    console.info(`Succeeded in authorizing certificate, uri: ${uri}`);
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to authorize certificate. Code: ${err.code}, message: ${err.message}`);
@@ -470,11 +474,11 @@ Opens the certificate credential authorization page of the certificate managemen
 
 **System capability**: SystemCapability.Security.CertificateManagerDialog
 
-**Model restriction**: This API can be used only in the stage model.
-
 **Device behavior differences**:
 - Since API version 26.0.0, this API has no behavior difference on any device.
 - In API versions 22 to 24, if the **authorizeRequest.certTypes** array contains only the **CREDENTIAL_UKEY** value, this API can be called on PCs and 2-in-1 devices. On other device types, error code 801 is returned. If the **authorizeRequest.certTypes** array contains the **CREDENTIAL_UKEY** value and other credential types, this API can be called on PCs and 2-in-1 devices. On other device types, the **CREDENTIAL_UKEY** credential is ignored.
+
+**Model restriction**: This API can be used only in the stage model.
 
 **Parameters**
 
@@ -519,9 +523,10 @@ let certTypes: Array<certificateManagerDialog.CertificateType> = [
 let certPurpose: certificateManager.CertificatePurpose = certificateManager.CertificatePurpose.PURPOSE_DEFAULT;
 let authorizeRequest: certificateManagerDialog.AuthorizeRequest = { certTypes: certTypes, certPurpose: certPurpose };
 try {
-  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest).then((certReference: certificateManagerDialog.CertReference) => {
+  certificateManagerDialog.openAuthorizeDialog(context, authorizeRequest)
+    .then((certReference: certificateManagerDialog.CertReference) => {
     let reference = certReference;
-    console.info(`Succeeded in opening authorize dialog.`)
+    console.info(`Succeeded in opening authorize dialog.`);
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to open authorize dialog. Code: ${err.code}, message: ${err.message}`);
@@ -583,11 +588,11 @@ import { UIContext } from '@kit.ArkUI';
 /* context is application context information, which is obtained by the caller. The context here is only an example. */
 let context: common.Context = new UIContext().getHostContext() as common.Context;
 /* keyUri is the unique identifier of the credential. The invoker obtains the value by itself. The value here is only an example. */
-let keyUri: string = "test"
-let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri }
+let keyUri: string = 'test';
+let ukeyAuthRequest: certificateManagerDialog.UkeyAuthRequest = { keyUri: keyUri };
 try {
   certificateManagerDialog.openUkeyAuthDialog(context, ukeyAuthRequest).then(() => {
-    console.info(`Succeeded in opening ukey authorization dialog`)
+    console.info(`Succeeded in opening ukey authorization dialog`);
   }).catch((error: Error) => {
     let err = error as BusinessError;
     console.error(`Failed to open ukey authorization dialog. Code: ${err.code}, message: ${err.message}`);
@@ -630,10 +635,12 @@ import { certificateManagerDialog } from '@kit.DeviceCertificateKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 try {
+  /* Checks whether the CA certificate management dialog box can be opened. */
   let isSupport: boolean = certificateManagerDialog.supportsCACertDialog();
-  console.info(`Succeeded in checking whether the device supports CA dialog.`)
+  console.info(`Succeeded in checking whether the device supports CA dialog.`);
 } catch (err) {
   let error = err as BusinessError;
-  console.error(`Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
+  console.error(
+    `Failed to check whether the device supports CA dialog. Code: ${error.code}, message: ${error.message}`);
 }
 ```

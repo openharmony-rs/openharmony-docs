@@ -26,7 +26,7 @@ import { photoAccessHelper } from '@kit.MediaLibraryKit';
 | ------------------------- | ------------------------ | ---- | ---- | ------------------------------------------------------ |
 | uri                       | string                   | Yes  | No  | Media asset URI, for example, **file://media/Photo/1/IMG_datetime_0001/displayName.jpg**. For details, see [Media File URI](../../file-management/user-file-uri-intro.md#media-file-uri).<br>**Atomic service API**: This API can be used in atomic services since API version 12.        |
 | photoType   | [PhotoType](arkts-apis-photoAccessHelper-e.md#phototype) | Yes  | No  | Type of the file.<br>**Atomic service API**: This API can be used in atomic services since API version 20.                                              |
-| displayName               | string                   | Yes  | No  | File name, including the file name extension, to display. The string length ranges from 1 to 255.<br>**Atomic service API**: This API can be used in atomic services since API version 20.          |
+| displayName               | string                   | Yes  | No  | File name, including the file name extension, to display. The string length ranges from 1 to 255 characters.<br>**Atomic service API**: This API can be used in atomic services since API version 20.        |
 
 ## get
 
@@ -42,7 +42,7 @@ Obtains a **PhotoAsset** member parameter.
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | Yes   | Name of the member parameter to obtain. Except **'uri'**, **'media_type'**, **'subtype'**, and **'display_name'**, you need to pass in [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) in **fetchColumns**. For example, to obtain the title, pass in **fetchColumns: ['title']**.|
+| member | string | Yes   | Name of the member parameter to obtain. Except **'uri'**, **'media_type'**, **'subtype'**, and **'display_name'**, you need to pass in [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) in **fetchColumns**. For example, to obtain the title, pass in **['title']** in **fetchColumns**.|
 
 **Return value**
 
@@ -52,7 +52,7 @@ Obtains a **PhotoAsset** member parameter.
 
 **Error codes**
 
-For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
+For details about the error codes, see [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
@@ -97,8 +97,8 @@ Sets a **PhotoAsset** member parameter.
 
 | Name     | Type                       | Mandatory  | Description   |
 | -------- | ------------------------- | ---- | ----- |
-| member | string | Yes   | Name of the member parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The string length ranges from 1 to 255.|
-| value | string | Yes   | Value of the member parameter to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ]  |
+| member | string | Yes   | Name of the member parameter to set, for example, [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE. The string length range is [1, 255], in bytes.|
+| value | string | Yes   | Value to set. Only the value of [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys).TITLE can be changed. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ] |
 
 **Error codes**
 
@@ -157,13 +157,14 @@ Commits the modification on the file metadata to the database. This API uses an 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md) and [File Management Error Codes](../apis-core-file-kit/errorcode-filemanagement.md).
 
-If error code 14000001 is returned, refer to [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) to learn about the format and length requirements of the file name.
+If error code 14000001 is returned, it indicates the display name is invalid. Refer to the **DISPLAY_NAME** field in [PhotoKeys](arkts-apis-photoAccessHelper-e.md#photokeys) to learn about the format and length requirements of the file name.
 
 
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 11+       |
+| 13900012     | Permission denied. <br> Applicable version: 10        |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
 | 14000011       | System inner fail.         |
@@ -182,14 +183,21 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     fetchColumns: ['title'],
     predicates: predicates
   };
+  // Obtain the photo asset set.
   let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
+  // Obtain the first photo asset object.
   let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
+  if (photoAsset === undefined) {
+    console.error('photoAsset is undefined');
+    return;
+  }
   let title: string = photoAccessHelper.PhotoKeys.TITLE.toString();
+  // Obtain the current title value.
   let photoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
   console.info('photoAsset get photoAssetTitle = ', photoAssetTitle);
   photoAsset.set(title, 'newTitle2');
   photoAsset.commitModify((err) => {
-    if (err === undefined) {
+    if (!err) {
       let newPhotoAssetTitle: photoAccessHelper.MemberType = photoAsset.get(title);
       console.info('photoAsset get newPhotoAssetTitle = ', newPhotoAssetTitle);
     } else {
@@ -228,7 +236,8 @@ In API version 13 and earlier versions, if the caller does not have the required
 | ID| Error Message|
 | -------- | ---------------------------------------- |
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
-| 201     | Permission denied.         |
+| 201     | Permission denied. <br> Applicable versions: 11+       |
+| 13900012     | Permission denied. <br> Applicable version: 10        |
 | 13900020     | Invalid argument.         |
 | 14000001      | Invalid display name.         |
 | 14000011       | System inner fail.         |
@@ -313,7 +322,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let photoAsset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    let fd: number = await photoAsset.open('rw');
+    let fd: number = await photoAsset.getReadOnlyFd();
     console.info('file fd', fd);
     photoAsset.close(fd, (err) => {
       if (err === undefined) {
@@ -379,7 +388,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     };
     let fetchResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOption);
     let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
-    let fd = await asset.open('rw');
+    let fd: number = await asset.getReadOnlyFd();
     console.info('file fd', fd);
     await asset.close(fd);
     console.info('asset close succeed.');
@@ -397,7 +406,7 @@ Obtains the thumbnail of a file. This API uses an asynchronous callback to retur
 
 **Required permissions**: ohos.permission.READ_IMAGEVIDEO
 
-**Atomic service API**: This API can be used in atomic services since API version 22.
+**Atomic service API:** This API can be used in atomic services since API version 22.
 
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
@@ -438,7 +447,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let asset: photoAccessHelper.PhotoAsset = await fetchResult.getFirstObject();
   console.info('asset displayName = ', asset.displayName);
   asset.getThumbnail((err, pixelMap) => {
-    if (err === undefined) {
+    if (!err) {
       console.info('getThumbnail successful ' + pixelMap);
     } else {
       console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
@@ -463,7 +472,7 @@ Obtains the file thumbnail of the given size. This API uses an asynchronous call
 
 | Name     | Type                                 | Mandatory  | Description              |
 | -------- | ----------------------------------- | ---- | ---------------- |
-| size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | Yes   | Size of the thumbnail.           |
+| size     | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | Yes   | Size of the thumbnail. The values of **width** and **height** must be positive integers, in pixels.|
 | callback | AsyncCallback&lt;[image.PixelMap](../apis-image-kit/arkts-apis-image-PixelMap.md)&gt; | Yes   | Callback function. If the thumbnail of a file is successfully obtained, **err** is **undefined**, and **data** is the PixelMap of the thumbnail. Otherwise, **err** is an error object. |
 
 **Error codes**
@@ -500,7 +509,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
     let asset = await fetchResult.getFirstObject();
     console.info('asset displayName = ', asset.displayName);
     asset.getThumbnail(size, (err, pixelMap) => {
-      if (err === undefined) {
+      if (!err) {
         console.info('getThumbnail successful ' + pixelMap);
       } else {
         console.error(`getThumbnail fail with error: ${err.code}, ${err.message}`);
@@ -528,7 +537,7 @@ Obtains the file thumbnail of the given size. This API uses a promise to return 
 
 | Name | Type            | Mandatory  | Description   |
 | ---- | -------------- | ---- | ----- |
-| size | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No   | Size of the thumbnail.|
+| size | [image.Size](../apis-image-kit/arkts-apis-image-i.md#size) | No   | Size of the thumbnail. The values of **width** and** height** must be positive integers, in pixels. If they are not specified, the default dimensions 256 x 256 are used.  |
 
 **Return value**
 
@@ -591,13 +600,13 @@ Clones a media asset. The file name can be set, but the file type cannot be chan
 
 | Name       | Type     | Mandatory  | Description                                |
 | ---------- | ------- | ---- | ---------------------------------- |
-| title| string | Yes   | Title of the cloned asset. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ] |
+| title| string | Yes   | Title of the cloned asset. The title must meet the following requirements:<br>- It must not contain a file name extension.<br>- The string length ranges from 1 to 255 characters. (The asset file name is in the format of title + file name extension.)<br>- It must not contain any invalid characters, which are:\ / : * ? " ' ` < > \| { } [ ] |
 
 **Return value**
 
 | Type               | Description                   |
 | ------------------- | ----------------------- |
-| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Promise used to return the [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) instance.|
+| Promise&lt;[PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md)&gt; | Promise used to return the [PhotoAsset](arkts-apis-photoAccessHelper-PhotoAsset.md) instance after cloning.|
 
 **Error codes**
 
@@ -668,7 +677,7 @@ In API version 13 and earlier versions, if the caller does not have the required
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.        |
+| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -688,7 +697,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
   let assetResult: photoAccessHelper.FetchResult<photoAccessHelper.PhotoAsset> = await phAccessHelper.getAssets(fetchOptions);
   let photoAsset: photoAccessHelper.PhotoAsset = await assetResult.getFirstObject();
   photoAsset.getReadOnlyFd((err, fd) => {
-    if (fd !== undefined) {
+    if (!err) {
       console.info('File fd' + fd);
       photoAsset.close(fd);
     } else {
@@ -731,7 +740,7 @@ In API version 13 and earlier versions, if the caller does not have the required
 | 401    | Parameter error. Possible causes: 1. Mandatory parameters are left unspecified; 2. Incorrect parameter types. |
 | 201     | Permission denied.         |
 | 13900020     | Invalid argument.         |
-| 14000011       | System inner fail.        |
+| 14000011       | System inner fail. Possible causes: 1. The database is corrupted; 2. The file system is abnormal; 3. The IPC request timed out. |
 
 **Example**
 
@@ -756,7 +765,7 @@ async function example(phAccessHelper: photoAccessHelper.PhotoAccessHelper) {
       return;
     }
     let fd: number = await photoAsset.getReadOnlyFd();
-    if (fd !== undefined) {
+    if (!err) {
       console.info('File fd' + fd);
       photoAsset.close(fd);
     } else {

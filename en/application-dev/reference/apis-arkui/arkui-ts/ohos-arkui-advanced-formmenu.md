@@ -5,6 +5,8 @@
 <!--Designer: @cx983299475-->
 <!--Tester: @mahailong123456-->
 <!--Adviser: @HelloShuo-->
+<!-- md-trans-meta sourceCommit=15aee162771b6a1512ccf4080a74fce6fe8d0774 translatedAt=2026-10-10T01:48:39.961Z pushedAt=2026-10-10T07:53:51.929Z -->
+
 The **FormMenu** component encapsulates an **Add to home screen** menu, which allows users to long-press a component in the application to add it to their home screen for direct access. During application usage, this component acts as a portal for retention and re-engagement, encouraging users to conveniently add features to their home screen.
 
 This component facilitates the quick addition of service widgets to the home screen through a long-press menu within the application:
@@ -18,11 +20,13 @@ This component facilitates the quick addition of service widgets to the home scr
 
 > **NOTE**
 >
-> This component is supported since API version 12. Updates will be marked with a superscript to indicate their earliest API version.
+> This component is supported since API version 12. Newly added content in later versions will be marked with a superscript to indicate its initial version.
 >
 > This component is not supported on wearables.
 >
-> For details about how to develop a service widget, see the [service widget development guidelines](../../../form/formkit-overview.md).
+> For details about widget development, see [Widget Development Guide](../../../form/formkit-overview.md).
+>
+> Since API version 18, you are advised to use [formProvider.openFormManager](../../apis-form-kit/js-apis-app-form-formProvider.md#formprovideropenformmanager18).
 
 
 ## Modules to Import
@@ -39,15 +43,9 @@ Not supported
 ## Attributes
 The [universal attributes](ts-component-general-attributes.md) are not supported.
 
-## AddFormMenuItem 
+## AddFormMenuItem
 
-```ts
-AddFormMenuItem(
-  want: Want,
-  componentId: string,
-  options?: AddFormOptions
-): void
-```
+AddFormMenuItem(want: Want, componentId: string, options?: AddFormOptions): void
 
 **Decorator**: @Builder
 
@@ -137,11 +135,11 @@ struct Index {
             }
           },
           style: {
-            // options: {
-            // startIcon: $r("app.media.icon"), // Menu icon, which can be provided by yourself. The default value is "sys.media.ic_public_add."
-            //   content: "Add to home screen",  // Menu content, which can be provided by yourself. The default value is "sys.string.ohos_add_form_to_desktop."
-            //   endIcon: $r("app.media.icon") // Menu icon, which can be provided by yourself.
-            // }
+            options: {
+              startIcon: $r("app.media.icon"), // Menu icon. You can provide your own. The system uses "sys.media.ic_public_add" by default.
+              content: "Add to home screen",  // Menu content. You can provide your own. "sys.string.ohos_add_form_to_desktop" is used by default.
+              endIcon: $r("app.media.icon") // Menu icon. You can provide your own.
+            }
           }
         }
       )
@@ -223,10 +221,10 @@ struct WidgetCard {
 
 **UI of the FormMenu component**
 
-![addFormToDesktop](figures/addFormToDesktop.jpeg)
+![en-us_image_0000001616959836](figures/add-form-to-desktop.jpeg)
 
 **Result of using Add to home screen with the FormMenu component**
 
-The figure below shows the results when **formbindingdata** is empty (left), and when it is set to **{ data: 'share' }** (right).
+The left side shows the result of adding to the home screen when **formBindingData** is empty, and the right side shows the result when **formBindingData** is **{ data: 'share' }**.
 
-![addFormToDesktopResult](figures/addFormToDesktopResult.jpeg)
+<!--Del--> <!--DelEnd-->

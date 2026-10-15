@@ -1,12 +1,11 @@
 # preview_output.h
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=49098dc8bf8e2b87271445659fa4b6b57bf81d5e translatedAt=2026-08-11T02:03:52.519Z pushedAt=2026-08-12T07:52:34.000Z -->
+<!-- md-trans-meta sourceCommit=8b512243901c55915aa61df5cc70cfb3620f6e97 translatedAt=2026-10-12T12:04:32.601Z pushedAt=2026-10-13T04:58:00.907Z -->
 
 ## Overview
 
@@ -119,6 +118,7 @@ Defines the callback defined in the [PreviewOutput_Callbacks](capi-oh-camera-pre
 **See also**
 
 [CAMERA_SERVICE_FATAL_ERROR](capi-camera-h.md#camera_errorcode)
+
 
 ### OH_PreviewOutput_RegisterCallback()
 
@@ -518,7 +518,7 @@ Enables preview bandwidth compression.<br> This function must be called prior to
 
 | Type| Description|
 | -- | -- |
-| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>     **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>    **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The camera session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+| [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>     **CAMERA_OPERATION_NOT_ALLOWED**: The operation is not allowed.<br>    **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SESSION_NOT_CONFIG**: The camera session is not configured.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal. |
 
 ### OH_PreviewOutput_AddDeferredSurface()
 
@@ -561,7 +561,7 @@ Checks whether view assist is supported.
 
 | Name | Description |
 | -- | -- |
-| [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | Pointer to the target **PreviewOutput** instance. |
+| const [Camera_PreviewOutput](capi-oh-camera-camera-previewoutput.md)* previewOutput | Pointer to the target **PreviewOutput** instance. |
 
 **Returns**
 

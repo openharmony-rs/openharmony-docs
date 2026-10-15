@@ -3,11 +3,12 @@
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @enjoy_sunshine-->
-<!--Designer: @chengguohong; @tangjia15-->
+<!--Designer: @tangjia15-->
 <!--Tester: @wangfeng517-->
 <!--Adviser: @zhang_yixin13-->
+<!-- md-trans-meta sourceCommit=ca9cb26047d0b3f89295b759af81b72a379c30be translatedAt=2026-10-09T12:38:22.612Z pushedAt=2026-10-10T06:58:43.758Z -->
 
-The **access** module provides APIs for enabling and disabling Bluetooth and obtaining the Bluetooth status.
+The **access** module provides APIs for enabling and disabling Bluetooth, as well as obtaining the Bluetooth status. It can be used to control the Bluetooth status, query Bluetooth connection information, and perform system-level Bluetooth configuration management.
 
 > **NOTE**
 >
@@ -38,7 +39,7 @@ Restores the Bluetooth factory settings. This API uses an asynchronous callback 
 
 | Name  | Type                                              | Mandatory | Description                                                      |
 | -------- | ------------------------------------------------- | ----- | ---------------------------------------------------------- |
-| callback     | AsyncCallback&lt;void&gt;             | Yes   | Callback used to return the result.<br> If the Bluetooth factory settings are restored successfully, **err** is **undefined**. Otherwise, **err** is an error object.      |
+| callback     | AsyncCallback&lt;void&gt;             | Yes    | Callback used to return the result. If the Bluetooth factory settings are restored successfully, **err** is **undefined**. Otherwise, **err** is an error object.       |
 
 **Error codes**
 
@@ -159,7 +160,7 @@ try {
 
 restrictBluetooth(): Promise&lt;void&gt;
 
-Restricts the BR/EDR capability of this Bluetooth device.
+Restricts the BR/EDR capability of this Bluetooth device, after which, the classic Bluetooth function of the device is restricted. This method applies to scenarios where only BLE is required. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 

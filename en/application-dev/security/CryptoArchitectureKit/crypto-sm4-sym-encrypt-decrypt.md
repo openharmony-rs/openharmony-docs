@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-08-31T09:28:10.772Z pushedAt=2026-08-31T10:11:59.529Z -->
+<!-- md-trans-meta sourceCommit=1b9dc846389405d57ea9496c8b5a7a7ff4d36877 translatedAt=2026-10-09T02:05:06.068Z pushedAt=2026-10-10T02:49:01.678Z -->
 
 For the corresponding algorithm specifications, see [Symmetric Encryption and Decryption Algorithm Specifications: SM4](crypto-encryption-decryption.md#sm4).
 
@@ -14,7 +14,7 @@ For the corresponding algorithm specifications, see [Symmetric Encryption and De
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
 
    For details about how to generate an SM4 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
@@ -44,7 +44,7 @@ For the corresponding algorithm specifications, see [Symmetric Encryption and De
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
 
-If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB/CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecbcbc).
+If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB or SM4-CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecb-or-sm4-cbc).
 
 - Example (using asynchronous APIs):
 
@@ -146,7 +146,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
 
    For details about how to generate an SM4 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
@@ -174,7 +174,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 
 4. Call [Cipher.doFinal](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#dofinal-1) to obtain the decrypted data.
 
-If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB/CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecbcbc).
+If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call doFinal During Decryption Using SM4-ECB or SM4-CBC](../../reference/apis-crypto-architecture-kit/errorcode-crypto-framework.md#failed-to-call-dofinal-during-decryption-using-sm4-ecb-or-sm4-cbc).
 
 - Example (using asynchronous APIs):
 
@@ -318,7 +318,7 @@ If SM4 (CBC mode) decryption fails with error code 17630001, see [Failed to Call
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
 
    For details about how to generate an SM4 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 
@@ -523,7 +523,7 @@ If SM4 (GCM mode) decryption fails with error code 17630001, see [Failed to Call
 
 **Encryption**
 
-1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.generateSymKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#generatesymkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
+1. Call [cryptoFramework.createSymKeyGenerator](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#cryptoframeworkcreatesymkeygenerator) and [SymKeyGenerator.convertKey](../../reference/apis-crypto-architecture-kit/js-apis-cryptoFramework.md#convertkey-1) to generate a 128-bit SM4 symmetric key (**SymKey**).
 
    For details about how to generate an SM4 symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: SM4](crypto-key-generation-conversion.md#sm4) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly.md). The referenced documents may differ from the current example in input parameters. Pay attention to these differences when reading.
 

@@ -1,4 +1,4 @@
-# @ohos.net.mdns (MDNS Management)
+# @ohos.net.mdns (mDNS Management)
 
 <!--Kit: Network Kit-->
 <!--Subsystem: Communication-->
@@ -6,7 +6,7 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:51:47.222Z pushedAt=2026-06-26T03:00:41.302Z -->
+<!-- md-trans-meta sourceCommit=2543a5d4cb00b733edfde6e9e63ba542fdb6d61b translatedAt=2026-09-28T01:34:09.872Z pushedAt=2026-10-09T03:28:06.915Z -->
 
 Multicast DNS (MDNS) provides functions such as adding, removing, discovering, and resolving local services on a LAN.
 
@@ -59,7 +59,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -120,6 +119,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 | 2204008 | Failed to delete the service instance. |
 | 2204010 | Failed to send the message. |
 
+
 **Example**
 
 >**NOTE**
@@ -129,7 +129,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -184,6 +183,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 | 2204008 | Failed to delete the service instance. |
 | 2204010 | Failed to send the message. |
 
+
 **Example**
 
 >**NOTE**
@@ -193,7 +193,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -263,7 +262,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -307,7 +305,7 @@ Creates a **DiscoveryService** object, which is used to discover MDNS services o
 
 | Type                        | Description                    |
 | ----------------------------- |---------------------------------|
-| DiscoveryService | **DiscoveryService** object obtained based on the specified **serviceType** and **context**.|
+| [DiscoveryService](#discoveryservice) | Discovery service object based on the specified service type (**serviceType**) and **Context**. |
 
 **Error codes**
 
@@ -326,7 +324,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -370,6 +367,7 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 | 2204006 | Request timeout.                |
 | 2204010 | Failed to send the message.                  |
 
+
 **Example**
 
 >**NOTE**
@@ -379,7 +377,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -449,7 +446,6 @@ For details about the error codes, see [MDNS Error Codes](errorcode-net-mdns.md)
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -472,7 +468,6 @@ mdns.resolveLocalService(context, localServiceInfo).then((data: mdns.LocalServic
   console.info(JSON.stringify(data));
 });
 ```
-
 ## DiscoveryService
 
 Defines a **DiscoveryService** object for discovering MDNS services of the specified type.
@@ -496,7 +491,6 @@ Searches for MDNS services on the LAN.
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -528,7 +522,6 @@ Stops searching for MDNS services on the LAN.
 Stage model:
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -565,7 +558,6 @@ Enables listening for **discoveryStart** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -608,7 +600,6 @@ Disables listening for **discoveryStart** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -655,7 +646,6 @@ Enables listening for **discoveryStop** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -676,7 +666,7 @@ discoveryService.stopSearchingMDNS();
 
 ### off('discoveryStop')
 
-off(type: 'discoveryStop', callback?: Callback\<[DiscoveryEventInfo](#discoveryeventinfo11)\>): void
+off(type: 'discoveryStop', callback?: Callback\<DiscoveryEventInfo\>): void
 
 Disables listening for **discoveryStop** events.
 
@@ -698,7 +688,6 @@ Disables listening for **discoveryStop** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -736,7 +725,7 @@ Enables listening for **serviceFound** events.
 | Name       | Type                            | Mandatory| Description                                    |
 |-------------|--------------|-----------|-----------------------------------------------------|
 | type     | string                          | Yes      |Event type. This field has a fixed value of **serviceFound**.<br>**serviceFound**: event indicating an MDNS service is found.|
-| callback | Callback<[LocalServiceInfo](#localserviceinfo)>                 | Yes       |   Callback used to return the MDNS service information. You need to call **resolveLocalService** to parse the information.     |
+| callback | Callback<[LocalServiceInfo](#localserviceinfo)>                 | Yes       |   Callback used to return the MDNS service information. You need to call **resolveLocalService** to resolve the information.     |
 
 **Example**
 
@@ -745,7 +734,6 @@ Enables listening for **serviceFound** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -791,7 +779,6 @@ Disables listening for **serviceFound** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -841,7 +828,6 @@ Enables listening for **serviceLost** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -884,7 +870,6 @@ Disables listening for **serviceLost** events.
 >In the sample code provided in this topic, **this.context** is used to obtain **UIAbilityContext**, where **this** indicates a UIAbility instance inherited from **UIAbility**. To use **UIAbilityContext** APIs on pages, see [Obtaining the Context of UIAbility](../../application-models/uiability-usage.md#obtaining-the-context-of-uiability).
 
 <!--code_no_check-->
-
 ```ts
 import { mdns } from '@kit.NetworkKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -919,7 +904,7 @@ MDNS service information.
 | -------- | ---------------------------------------------- | ---- | --- | ---------------------- |
 | serviceType   | string                             |  No  | No| MDNS service type. The value is in the format of **\_\<name>.<_tcp/_udp>**, where **name** contains a maximum of 63 characters excluding periods (.).|
 | serviceName | string                             |  No  | No| MDNS service name.                                                |
-| port            | number           |  No  | Yes| Service port number. The value range is [0, 65535].                                 |
+| port            | number           |  No   | Yes | Port number of the MDNS service. The value ranges from 0 to 65535.                                  |
 | host           |  [NetAddress](js-apis-net-connection.md#netaddress) |  No  | Yes| IP address of the device that provides the MDNS service. The IP address is not effective when an MDNS service is added or removed.                     |
 | serviceAttribute     | Array\<[ServiceAttribute](#serviceattribute)> |  No  | Yes| MDNS service attribute information.                                               |
 

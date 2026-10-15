@@ -6,10 +6,11 @@
 <!--Designer: @linshuqing; @hehehe-li-->
 <!--Tester: @leiyuqian-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=b3dcf2109b956a292ded4a48a27d9302526f580a translatedAt=2026-10-09T01:08:37.134Z pushedAt=2026-10-09T03:31:13.103Z -->
 
 To comply with the minimum authorization principle and protect user data against unauthorized access from applications and abuse, the **Allow this time only** option is added to the user authorization dialog box for certain sensitive permissions.
 
-During development, simply call requestPermissionsFromUser()[Requesting User Authorization](request-user-authorization.md) without any additional configurations. The system displays a dialog box based on the [requested permissions](#supported-permissions).
+During development, simply call requestPermissionsFromUser()[Requesting User Authorization](request-user-authorization.md) without any additional configurations. The system displays a dialog box based on the [supported permissions](#supported-permissions).
 
 The following figure shows an example of the user authorization dialog box.
 
@@ -27,7 +28,7 @@ Path: **Settings** > **Privacy** > **Permission manager** > **Apps** > *Target a
 
 Currently, the **Allow this time only** option is available only for the following permissions. When an application requests any of these permissions, the user authorization dialog box displayed contains the **Allow this time only** option, and permission settings dialog box contains the **Ask each time** option.
 
-- [ohos.permission.READ_PASTEBOARD](restricted-permissions.md#ohospermissionread_pasteboard)
+- Clipboard: ["ohos.permission.READ_PASTEBOARD"](restricted-permissions.md#ohospermissionread_pasteboard)
 - [ohos.permission.APPROXIMATELY_LOCATION](permissions-for-all-user.md#ohospermissionapproximately_location)
 - [ohos.permission.LOCATION](permissions-for-all-user.md#ohospermissionlocation)
 - [ohos.permission.LOCATION_IN_BACKGROUND](permissions-for-all-user.md#ohospermissionlocation_in_background)
@@ -36,12 +37,12 @@ Currently, the **Allow this time only** option is available only for the followi
 
 - When the user selects **Allow this time only**, the permission is authorized to the application temporarily.
 
-  - The authorized permission remains valid as long as the application is running in the foreground, the application widget is [visible on the home screen](../../form/arkts-ui-widget-lifecycle.md), or the application has a [continuous task](../../task-management/continuous-task.md) (currently, only the location task is supported) in the background.
+  - The temporary permission remains valid as long as the application is running in the foreground, the application widget is [visible on the home screen](../../form/arkts-ui-widget-lifecycle.md), or the application has a [continuous task](../../task-management/continuous-task.md) (currently, only the location task is supported) in the background.
 
      In other cases, the permission will be revoked after a 10-second timer has expired. If the application needs the permission again, you need to request the permission.
 
-  - When an application with the temporary permission is switched to the background, a 10-second timer starts. During the 10 seconds, if the application widget is visible on the home screen or the application has a continuous task, the timer stops.
-  
+  - When the application switches to the background, a 10-second timer starts. If the application widget is visible or a continuous task is set during this period, the timer stops.
+
       When the application widget is invisible on the home screen or the continuous task is complete, the timer starts again. The temporary permission will be revoked when the timer has expired.
 
       <!--RP2-->

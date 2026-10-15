@@ -121,7 +121,6 @@ static napi_value HandleScope(napi_env env, napi_callback_info info)
 
 接口声明
 
-index.d.ts
 <!-- @[napi_open_close_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -224,7 +223,6 @@ static napi_value EscapableHandleScopeTest(napi_env env, napi_callback_info info
 
 接口声明
 
-index.d.ts
 <!-- @[napi_open_close_escapable_handle_scope_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript
@@ -334,8 +332,6 @@ static napi_value GetWeakReferenceValue(napi_env env, napi_callback_info info)
 
 接口声明
 
-// index.d.ts
-
 ``` TypeScript
 export const createWeakReference: () => void;
 
@@ -349,7 +345,7 @@ try {
     testNapi.createWeakReference();
     hilog.info(0x0000, 'testTag', 'reference test: %{public}s', testNapi.getWeakReferenceValue());
 } catch (error) {
-    hilog.error(0x0000, 'testTag', `调用错误：${error.message}`);
+    hilog.error(0x0000, 'testTag', `call error: ${error.message}`);
 }
 ```
 
@@ -423,8 +419,6 @@ static napi_value CleanupStrongReference(napi_env env, napi_callback_info info) 
 ```
 
 接口声明
-
-// index.d.ts
 
 ``` TypeScript
 export const createStrongReference: () => void;
@@ -591,7 +585,6 @@ static napi_value DeleteReference(napi_env env, napi_callback_info info)
 
 接口声明
 
-// index.d.ts
 <!-- @[napi_create_delete_reference_api](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkTS/NodeAPI/NodeAPIUse/NodeAPILifeCycle/entry/src/main/cpp/types/libentry/Index.d.ts) -->
 
 ``` TypeScript

@@ -377,6 +377,59 @@ call.answerCall(1).then(() => {
 });
 ```
 
+## call.answerCall<sup>22+</sup>
+
+answerCall(videoState: VideoStateType, callId: number, isRtt:boolean\): Promise\<void\>
+
+Answers an RTT call. This API uses a promise to return the result.
+
+**System API**: This is a system API.
+
+**Required permission**: ohos.permission.ANSWER_CALL
+
+**System capability**: SystemCapability.Telephony.CallManager
+
+**Parameters**
+
+| Name| Type  | Mandatory| Description                                                        |
+| ------ | ------ | ---- | ------------------------------------------------------------ |
+| videoState | [VideoStateType](#videostatetype7) | Yes  | Call answered as a video or voice call.|
+| callId | number | Yes  | ID of the call to be answered.|
+| isRtt | boolean | Yes  | Whether the call is a real-time transmission (RTT) call.<br>**true**: The call is an RTT call.<br>**false**: The call is not an RTT call.|
+
+**Return value**
+
+| Type               | Description                       |
+| ------------------- | --------------------------- |
+| Promise&lt;void&gt; | Promise that returns no value.|
+
+**Error codes**
+
+For details about the error codes, see [Telephony Error Codes](errorcode-telephony.md) and [Universal Error Codes](../errorcode-universal.md).
+
+| ID| Error Message                                    |
+| -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
+| 202      | Non-system applications use system APIs.     |
+| 8400001  | Invalid parameter value.                     |
+| 8400002  | Operation failed. Cannot connect to service. |
+| 8400003  | System internal error.                       |
+| 8400999  | Unknown error code.                          |
+
+**Example**
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+let callId: number = 1;
+
+call.answerCall(call.VideoStateType.TYPE_VOICE, callId, true).then(() => {
+    console.info(`answerCall success, RTT call answered.`);
+}).catch((err: BusinessError) => {
+    console.error(`answerCall fail, code:${err.code}, message:${err.message}`);
+});
+```
+
 ## call.hangUpCall<sup>9+</sup>
 
 hangUpCall\(callId: number, callback: AsyncCallback\<void\>\): void
@@ -433,7 +486,7 @@ Ends a call. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
-**Required permission**: ohos.permission.ANSWER_CALL
+**Required permissions:** ohos.permission.ANSWER_CALL or ohos.permission.SET_TELEPHONY_STATE
 
 **System capability**: SystemCapability.Telephony.CallManager
 
@@ -1669,6 +1722,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -1794,6 +1848,8 @@ Stops playing DTMF tones. This API uses a promise to return the result.
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -1814,6 +1870,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 801      | Capability not supported.                    |
@@ -2624,6 +2681,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -2655,6 +2713,8 @@ Separates calls from a conference call. This API uses a promise to return the re
 
 **System API**: This is a system API.
 
+**Required permission**: ohos.permission.SET_TELEPHONY_STATE
+
 **System capability**: SystemCapability.Telephony.CallManager
 
 **Parameters**
@@ -2675,6 +2735,7 @@ For details about the error codes, see [Telephony Error Codes](errorcode-telepho
 
 | ID|                 Error Message                    |
 | -------- | -------------------------------------------- |
+| 201      | Permission denied.                           |
 | 202      | Non-system applications use system APIs.     |
 | 401      | Parameter error. Possible causes: 1.Mandatory parameters are left unspecified; 2. Incorrect parameters types;|
 | 8300001  | Invalid parameter value.                     |
@@ -4826,7 +4887,7 @@ Provides an option for determining whether a call is a video call.
 | videoState <sup>9+</sup> | [VideoStateType](#videostatetype7) | No  | Video state type.                              |
 | dialScene <sup>9+</sup>  | [DialScene](#dialscene8)           | No  | Dialup scenario.                                  |
 | dialType <sup>9+</sup>   | [DialType](#dialtype8)             | No  | Dialup type.                                  |
-| xCallType                | [xCallType](#xcalltype)            | No  | XCALL type.<br>**Since:** 26.0.0        |
+| xCallType                | [xCallType](#xcalltype)            | No  | X-Call.<br>**Since:** 26.0.0        |
 
 
 ## ImsCallMode<sup>8+</sup>
@@ -4982,7 +5043,8 @@ Defines the call attribute options.
 | originalCallType<sup>11+</sup> | number                    | Yes  | Original call type of the Video RBT service.|
 | numberLocation<sup>12+</sup> | string | No| Home location area of the number.|
 | numberMarkInfo<sup>12+</sup> | [NumberMarkInfo](#numbermarkinfo12) | No| Number mark.|
-| xCallType | [xCallType](#xcalltype) | No| X-Call type.<br>**Since:** 26.0.0|
+| xCallType | [xCallType](#xcalltype) | No| X-Call.<br>**Since:** 26.0.0|
+| isCustomAccessibility  | boolean              | No| Whether the app supports custom accessibility. The default value is **false**.<br>-**true**: supported<br>-**false**: not supported<br>**Since:** 26.0.0|
 
 ## VoipCallAttribute<sup>11+</sup>
 
@@ -5065,7 +5127,7 @@ Enumerates detailed call states.
 | CALL_STATUS_ACTIVE        | 0    | Active state.  |
 | CALL_STATUS_HOLDING       | 1    | Hold state.  |
 | CALL_STATUS_DIALING       | 2    | Dialing state.  |
-| CALL_STATUS_ALERTING      | 3    | Alerting state.  |
+| CALL_STATUS_ALERTING      | 3    | Ringing state.  |
 | CALL_STATUS_INCOMING      | 4    | Incoming state.  |
 | CALL_STATUS_WAITING       | 5    | Enumerates call waiting states.  |
 | CALL_STATUS_DISCONNECTED  | 6    | Disconnected state.|

@@ -13,7 +13,7 @@ typedef struct OH_CryptoSymCipher OH_CryptoSymCipher
 
 ## Overview
 
-Defines a symmetric encryption and decryption instance.
+Defines a symmetric cipher struct, indicating the symmetric cipher context.
 
 **Since**: 12
 

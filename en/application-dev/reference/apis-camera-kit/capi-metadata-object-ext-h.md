@@ -1,12 +1,11 @@
 # metadata_object_ext.h
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=f0e09e3de648081eea4659387ebc6bc9008f04fc translatedAt=2026-08-11T02:02:06.030Z pushedAt=2026-08-12T03:21:22.184Z -->
+<!-- md-trans-meta sourceCommit=df87acf923e130990786714480599026acdf8bca translatedAt=2026-10-12T12:01:07.820Z pushedAt=2026-10-13T04:58:00.899Z -->
 
 ## Overview
 
@@ -64,7 +63,7 @@ Obtains the metadata object type.
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [Camera_MetadataObjectType](capi-camera-h.md#camera_metadataobjecttype)* type | Pointer to a **Camera_MetadataObjectType** instance.|
 
 **Returns**
@@ -89,7 +88,7 @@ Obtains the timestamp of a metadata object.
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | int64_t* timestamp | Pointer to the timestamp.|
 
 **Returns**
@@ -114,7 +113,7 @@ Obtains the bounding box of a metadata object.
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to an **OH_Camera_Rect_Ext** instance.|
 
 **Returns**
@@ -139,7 +138,7 @@ Obtains the pitch angle of a metadata object (such as a face). The value range i
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | float* pitchAngle | Pointer to the pitch angle.|
 
 **Returns**
@@ -164,7 +163,7 @@ Obtains the yaw angle of a metadata object (such as a face). The value range is 
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | float* yawAngle | Pointer to the yaw angle.|
 
 **Returns**
@@ -189,7 +188,7 @@ Obtains the roll angle of a metadata object (such as a face). The value range is
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | float* rollAngle | Pointer to the roll angle.|
 
 **Returns**
@@ -214,7 +213,7 @@ Obtains the left eye bounding box of a metadata object (such as a face).
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to an **OH_Camera_Rect_Ext** instance.|
 
 **Returns**
@@ -239,7 +238,7 @@ Obtains the right eye bounding box of a metadata object (such as a face).
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [OH_Camera_Rect_Ext](capi-oh-camera-oh-camera-rect-ext.md)* boundingBox | Pointer to an **OH_Camera_Rect_Ext** instance.|
 
 **Returns**
@@ -264,7 +263,7 @@ Obtains the emotion of a metadata object (such as a face).
 
 | Name| Description|
 | -- | -- |
-| [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance.|
+| const [OH_Camera_MetadataObjectExt](capi-oh-camera-oh-camera-metadataobjectext.md)* metadataObjectExt | Pointer to an **OH_Camera_MetadataObjectExt** instance. |
 | [OH_Camera_MetadataObjectEmotion](capi-camera-h.md#oh_camera_metadataobjectemotion)* emotion | Pointer to an **OH_Camera_MetadataObjectEmotion** instance.|
 
 **Returns**

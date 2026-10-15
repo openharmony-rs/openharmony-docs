@@ -1,12 +1,11 @@
 # camera.h
-
 <!--Kit: Camera Kit-->
 <!--Subsystem: Multimedia-->
 <!--Owner: @qano-->
 <!--Designer: @leo_ysl-->
 <!--Tester: @xchaosioda-->
 <!--Adviser: @w_Machine_cc-->
-<!-- md-trans-meta sourceCommit=9bee8cbce88e74e911451ede628deb5598986bb1 translatedAt=2026-08-11T02:02:50.204Z pushedAt=2026-08-12T02:21:34.200Z -->
+<!-- md-trans-meta sourceCommit=1a90449abe56ae310254be96c4e5d2c7b281a047 translatedAt=2026-10-12T11:58:03.781Z pushedAt=2026-10-13T04:58:00.891Z -->
 
 ## Overview
 
@@ -96,6 +95,7 @@ Defines the basic APIs of the camera.
 | [OH_Camera_OISAxes](#oh_camera_oisaxes) | OH_Camera_OISAxes | Enumerates the OIS axes.|
 | [OH_Camera_ExposureState](#oh_camera_exposurestate) | OH_Camera_ExposureState | Enumerates the exposure states of the camera.|
 | [OH_Camera_MetadataObjectEmotion](#oh_camera_metadataobjectemotion) | OH_Camera_MetadataObjectEmotion | Enumerates the metadata object emotion types.|
+| [OH_Camera_AutomotiveCameraPosition](#oh_camera_automotivecameraposition) | OH_Camera_AutomotiveCameraPosition | Enumerates the camera positions on a car. |
 
 ### Functions
 
@@ -845,3 +845,5 @@ Deletes a Camera_Manager instance.
 | Type| Description|
 | -- | -- |
 | [Camera_ErrorCode](capi-camera-h.md#camera_errorcode) | **CAMERA_OK**: The operation is successful.<br>         **CAMERA_INVALID_ARGUMENT**: A parameter is missing or the parameter type is incorrect.<br>         **CAMERA_SERVICE_FATAL_ERROR**: The camera service is abnormal.|
+
+

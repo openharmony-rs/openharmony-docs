@@ -6,6 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:56:23.247Z pushedAt=2026-10-13T03:12:09.064Z -->
 
 This topic walks you through on how to randomly generate a key with the ECC algorithm. For details about the scenarios and supported algorithms, see [Supported Algorithms](huks-key-generation-overview.md#supported-algorithms).
 
@@ -49,12 +50,10 @@ OH_Huks_Result InitParamSet(struct OH_Huks_ParamSet **paramSet, const struct OH_
     }
     ret = OH_Huks_AddParams(*paramSet, params, paramCount);
     if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
         return ret;
     }
     ret = OH_Huks_BuildParamSet(paramSet);
     if (ret.errorCode != OH_HUKS_SUCCESS) {
-        OH_Huks_FreeParamSet(paramSet);
         return ret;
     }
     return ret;

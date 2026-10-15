@@ -13,7 +13,7 @@ typedef struct OH_CryptoKdfParams OH_CryptoKdfParams
 
 ## Overview
 
-Defines a struct for key derivation function (KDF) parameters.
+Defines a KDF parameter struct, which indicates the KDF parameters.
 
 **Since**: 20
 

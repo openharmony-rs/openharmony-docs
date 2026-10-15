@@ -2,9 +2,10 @@
 <!--Kit: Basic Services Kit-->
 <!--Subsystem: Notification-->
 <!--Owner: @HuYueRong-->
-<!--Designer: @dongqingran-->
+<!--Designer: @wangsen1994-->
 <!--Tester: @wanghong1997-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=4faed534b39ef26ef8f9b647802a53e9f8d2b792 translatedAt=2026-10-09T12:08:50.377Z pushedAt=2026-10-10T05:58:46.859Z -->
 
 The **StaticSubscriberExtensionContext** module, inherited from **StaticSubscriberExtensionAbility**, provides context for StaticSubscriberExtensionAbilities.
 
@@ -26,7 +27,7 @@ import { StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
 
 ## Usage
 
-Before using the **StaticSubscriberExtensionContext** module, you must first obtain a **StaticSubscriberExtensionAbility** instance.
+Before using the **StaticSubscriberExtensionContext** module, you must first use **StaticSubscriberExtensionAbility** to obtain the context.
 
 ```ts
 import { StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } from '@kit.BasicServicesKit';
@@ -36,11 +37,7 @@ import { StaticSubscriberExtensionAbility, StaticSubscriberExtensionContext } fr
 
 startAbility(want: Want, callback: AsyncCallback&lt;void&gt;): void
 
-Starts an ability that belongs to the same application as this StaticSubscriberExtensionAbility. This API uses an asynchronous callback to return the result.
-
-Observe the following when using this API:
- - If an application running in the background needs to call this API to start an ability, it must have the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission.
- - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the **ohos.permission.START_INVISIBLE_ABILITY** permission.
+Starts an ability that belongs to the same application as this **StaticSubscriberExtensionAbility**. This API uses an asynchronous callback to return the result.
 
 **Required permissions**: ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -52,8 +49,8 @@ Observe the following when using this API:
 
 | Name  | Type                               | Mandatory| Description                      |
 | -------- | ----------------------------------- | ---- | -------------------------- |
-| want     | [Want](../apis-ability-kit/js-apis-wantAgent.md) | Yes  | Want information about the target ability.   |
-| callback | AsyncCallback&lt;void&gt;           | Yes  | Callback used to return the result.|
+| want     | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Yes   | Want information about the target ability. The target ability must belong to the same app as the static subscription.    |
+| callback | AsyncCallback&lt;void&gt;           | Yes   | Callback used to receive the result of starting the ability. |
 
 **Error codes**
 
@@ -85,8 +82,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { Want } from '@kit.AbilityKit';
 
   let want: Want = {
-    bundleName: "com.example.myapp",
-    abilityName: "MyAbility"
+    bundleName: 'com.example.myapp',
+    abilityName: 'MyAbility'
   };
 
   class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
@@ -97,7 +94,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
         this.context.startAbility(want, (error: BusinessError) => {
           if (error) {
             // Process service logic errors.
-            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+            console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
             return;
           }
           // Carry out normal service processing.
@@ -117,11 +114,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 
 startAbility(want: Want): Promise&lt;void&gt;
 
-Starts an ability that belongs to the same application as this StaticSubscriberExtensionAbility. This API uses a promise to return the result.
-
-Observe the following when using this API:
- - If an application running in the background needs to call this API to start an ability, it must have the **ohos.permission.START_ABILITIES_FROM_BACKGROUND** permission.
- - If **visible** of the target ability is **false** in cross-application scenarios, the caller must have the **ohos.permission.START_INVISIBLE_ABILITY** permission.
+Starts an ability that belongs to the same application as this **StaticSubscriberExtensionAbility**. This API uses a promise to return the result.
 
 **Required permissions**: ohos.permission.START_ABILITIES_FROM_BACKGROUND
 
@@ -133,13 +126,13 @@ Observe the following when using this API:
 
 | Name| Type                               | Mandatory| Description                   |
 | ------ | ----------------------------------- | ---- | ----------------------- |
-| want   | [Want](../apis-ability-kit/js-apis-wantAgent.md) | Yes  | Want information about the target ability.|
+| want   | [Want](../apis-ability-kit/js-apis-app-ability-want.md) | Required   | Want information about the target ability. The target ability must belong to the same app as the static subscription. |
 
 **Return value**
 
 | Type               | Description                     |
 | ------------------- | ------------------------- |
-| Promise&lt;void&gt; | Promise used to return the result.|
+| Promise&lt;void&gt; | Promise that returns no value. |
 
 **Error codes**
 
@@ -171,8 +164,8 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
   import { Want } from '@kit.AbilityKit';
 
   let want: Want = {
-    bundleName: "com.example.myapp",
-    abilityName: "MyAbility"
+    bundleName: 'com.example.myapp',
+    abilityName: 'MyAbility'
   };
 
   class MyStaticSubscriberExtensionAbility extends StaticSubscriberExtensionAbility {
@@ -186,7 +179,7 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
           })
           .catch((error: BusinessError) => {
             // Process service logic errors.
-            console.error(`startAbility failed, error.code: ${JSON.stringify(error.code)}, error.message: ${JSON.stringify(error.message)}.`);
+            console.error(`startAbility failed, error.code: ${error.code}, error.message: ${error.message}.`);
           });
       } catch (paramError) {
         // Process input parameter errors.

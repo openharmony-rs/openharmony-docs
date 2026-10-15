@@ -1,13 +1,14 @@
 # OH_AudioSuite_SpaceRenderPositionParams
 <!--Kit: Audio Kit-->
 <!--Subsystem: Multimedia-->
-<!--Owner: @songshenke-->
-<!--Designer: @caixuejiang; @hao-liangfei; @zhanganxiang-->
+<!--Owner: @xxngwang-->
+<!--Designer: @jay-liusong-->
 <!--Tester: @Filger-->
 <!--Adviser: @w_Machine_cc-->
+<!-- md-trans-meta sourceCommit=e9ec8701c87cf0327fd7aa17be40e1c4aeed0156 translatedAt=2026-10-08T12:46:55.206Z pushedAt=2026-10-13T08:00:03.843Z -->
 
 ```c
-typedef struct {...} OH_AudioSuite_SpaceRenderPositionParams
+typedef struct OH_AudioSuite_SpaceRenderPositionParams {...} OH_AudioSuite_SpaceRenderPositionParams
 ```
 
 ## Overview
@@ -29,3 +30,5 @@ Defines configuration parameters for the fixed positioning mode of effect nodes 
 | float x | X coordinate in the space. The value range is [-5.0, 5.0], in meters.|
 | float y | Y coordinate in the space. The value range is [-5.0, 5.0], in meters.|
 | float z | Z coordinate in the space. The value range is [-5.0, 5.0], in meters.|
+
+

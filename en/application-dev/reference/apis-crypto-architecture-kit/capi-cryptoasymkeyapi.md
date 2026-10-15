@@ -9,7 +9,7 @@
 
 ## Overview
 
-Provides APIs for asymmetric key generation and conversion.
+Describes the APIs provided by OpenHarmony for managing asymmetric keys.
 
 **Since**: 12
 
@@ -17,4 +17,4 @@ Provides APIs for asymmetric key generation and conversion.
 
 | Name| Description|
 | -- | -- |
-| [crypto_asym_key.h](capi-crypto-asym-key-h.md) | Defines APIs for asymmetric keys.|
+| [crypto_asym_key.h](capi-crypto-asym-key-h.md) | Defines APIs for asymmetric key operations.|

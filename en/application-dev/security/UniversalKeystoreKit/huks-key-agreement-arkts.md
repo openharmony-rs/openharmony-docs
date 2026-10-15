@@ -6,7 +6,7 @@
 <!--Designer: @HighLowWorld-->
 <!--Tester: @wxy1234564846-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=f01b22944cb3edd4be9413d1125ef0a9649c6d07 translatedAt=2026-08-13T08:23:37.282Z pushedAt=2026-08-13T10:20:24.705Z -->
+<!-- md-trans-meta sourceCommit=4a0d60c413ad51190440217475c8f9ea1644f828 translatedAt=2026-10-13T01:53:21.987Z pushedAt=2026-10-13T03:09:39.774Z -->
 
 This topic uses X25519, DH, and ECDH as an example to demonstrate how to perform key agreement for HUKS-managed keys. For details about the scenarios and supported algorithm specifications, see [Supported Algorithms](huks-key-agreement-overview.md#supported-algorithms).
 
@@ -49,13 +49,10 @@ Note: The tag value set in key agreement should not conflict with the tag value 
 Delete the keys from device A and device B when the keys are not required. For details, see [Deleting a Key](huks-delete-key-arkts.md).
 
 ## Development Cases
-
-The following uses the X25519, DH, and ECDH keys as examples for key agreement. 
+The following uses the X25519, DH, and ECDH keys as examples for key agreement.  
 
 ### X25519 asymmetric key agreement example
-
 Prepare the X25519 key agreement materials.
-
 <!-- @[prepare_X25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/X25519.ets) -->
 
 ``` TypeScript
@@ -168,11 +165,8 @@ let finishOptionsSecond: huks.HuksOptions = {
   inData: stringToUint8Array(agreeX25519InData)
 }
 ```
-
 <!-- -->
-
 Perform key agreement.
-
 <!-- @[key_agreement_X25519](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/X25519.ets) -->
 
 ``` TypeScript
@@ -271,10 +265,10 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1. Set the key alias srcKeyAliasFirst for device A and srcKeyAliasSecond for device B, and parameters for generating the key pairs. */
-  /* 2. Generate an asymmetric key pair for device A. */
+  /* 1. Determine the key alias and integrate the key parameter set. Device A: srcKeyAliasFirst; Device B: srcKeyAliasSecond */
+  /* 2. Generate an asymmetric key for device A. */
   await generateKeyItem(srcKeyAliasFirst, huksOptions);
-  /* 3. Generate an asymmetric key pair for device B. */
+  /* 3. Generate an asymmetric key for device B. */
   await generateKeyItem(srcKeyAliasSecond, huksOptions);
   /* 4. Export the public keys of the key pairs of device A and device B. */
   await exportKeyItem(srcKeyAliasFirst, huksOptions);
@@ -296,11 +290,9 @@ async function testAgree() {
   await deleteKeyItem(srcKeyAliasSecond, huksOptions);
 }
 ```
-
 <!-- -->
 
 ### DH key agreement example
-
 <!-- @[key_agreement_dh](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/DH.ets) -->  
 
 ``` TypeScript
@@ -569,13 +561,10 @@ async function huksDhAgreeTest() {
   await deleteKeyItem(aliasBob, emptyOptions);
 }
 ```
-
 <!-- -->
 
 ### ECDH Key Agreement
-
 Prepare the ECDH key agreement materials.
-
 <!-- @[prepare_ECDH](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/ECDH.ets) -->
 
 ``` TypeScript
@@ -713,11 +702,8 @@ let finishOptionsSecond: huks.HuksOptions = {
   inData: stringToUint8Array(agreeECDHInData)
 }
 ```
-
 <!-- -->
-
 Perform key agreement.
-
 <!-- @[key_agreement_ECDH](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/Security/UniversalKeystoreKit/KeyUsage/KeyExchange/entry/src/main/ets/pages/ECDH.ets) -->
 
 ``` TypeScript
@@ -815,10 +801,10 @@ async function deleteKeyItem(keyAlias: string, huksOptions: huks.HuksOptions) {
 }
 
 async function testAgree() {
-  /* 1. Set the key alias srcKeyAliasFirst for device A and srcKeyAliasSecond for device B, and parameters for generating the key pairs. */
-  /* 2. Generate an asymmetric key pair for device A. */
+  /* 1. Determine the key alias and integrate the key parameter set. Device A: srcKeyAliasFirst; Device B: srcKeyAliasSecond */
+  /* 2. Generate an asymmetric key for device A. */
   await generateKeyItem(srcKeyAliasFirst, genHuksOptions);
-  /* 3. Generate an asymmetric key pair for device B. */
+  /* 3. Generate an asymmetric key for device B. */
   await generateKeyItem(srcKeyAliasSecond, genHuksOptions);
   /* 4. Export the public keys of the key pairs of device A and device B. */
   await exportKeyItem(srcKeyAliasFirst, genHuksOptions);

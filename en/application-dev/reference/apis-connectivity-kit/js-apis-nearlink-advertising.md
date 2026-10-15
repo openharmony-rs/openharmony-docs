@@ -1,22 +1,26 @@
 # @ohos.nearlink.advertising (NearLink Advertising Capability)
-
 <!--Kit: Connectivity Kit-->
 <!--Subsystem: Communication-->
 <!--Owner: @CCCZKing-->
 <!--Designer: @lilong32; @CCCZKing-->
 <!--Tester: @zhangjiaji111-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=1f7ebf6194dca265f1a8eeefc330905f60a6cb97 translatedAt=2026-08-17T08:48:24.949Z pushedAt=2026-08-18T11:10:11.754Z -->
+<!-- md-trans-meta sourceCommit=304517cf5105092ff7ebb1be0da01c6a3f1d16fb translatedAt=2026-10-09T13:24:47.598Z pushedAt=2026-10-10T07:12:55.326Z -->
+
+
 
 This module provides Nearlink advertising functions, including starting and stopping advertising as well as subscribing to the advertising status.
 
+
 **Since**: 26.0.0
+
 
 ## Modules to Import
 
 ```typescript
 import { advertising } from '@kit.ConnectivityKit';
 ```
+
 
 ## AdvertisingParams
 
@@ -33,6 +37,7 @@ Enumerates the advertising parameters.
 | advertisingSettings | [AdvertisingSettings](#advertisingsettings) | No | No | Advertising settings. |
 | advertisingData | [AdvertisingData](#advertisingdata) | No | No | Advertising data packet. |
 
+
 ## AdvertisingSettings
 
 Represents the advertising settings.
@@ -48,6 +53,7 @@ Represents the advertising settings.
 | interval | number | No | Yes | Advertising interval, in slots. The value ranges from 160 to 16777215, and the default value is **5000**. One slot equals to 0.125 ms. For example, 5000 slots equal to 625 ms. |
 | power | [TxPowerMode](#txpowermode) | No | Yes | Advertising transmission power. If this parameter is not specified, the default value **ADV_TX_POWER_LOW** is used. |
 | isConnectable | boolean | No | Yes | Whether advertising is connectable. **true**: Advertising is connectable. **false**: Advertising is not connectable. The default value is **true**. |
+
 
 ## AdvertisingData
 
@@ -66,6 +72,7 @@ Represents an advertising data packet.
 | serviceData | [ServiceData](#servicedata)[] | No | Yes | Service data. By default, this field is not carried if it is not set. |
 | includeDeviceName | boolean | No | Yes | Whether the advertising data contains the local device name. **true**: **yes**. false: no. The default value is **false**. |
 
+
 ## ManufacturerData
 
 Represents the manufacturer data.
@@ -80,6 +87,7 @@ Represents the manufacturer data.
 | -------- | -------- | -------- | -------- | -------- |
 | manufacturerId | number | No | No | Manufacturer ID. The value range is [1, 65535]. |
 | manufacturerData | ArrayBuffer | No | No | Manufacturer data. |
+
 
 ## ServiceData
 
@@ -96,6 +104,7 @@ Represents the service data.
 | serviceUuid | string | No | No | Service UUID. A UUID must contain 36 characters, including 32 hexadecimal digits and four hyphens (-). |
 | serviceData | ArrayBuffer | No | No | Service data. |
 
+
 ## AdvertisingStateChangeInfo
 
 Represents the advertising state change information.
@@ -110,6 +119,7 @@ Represents the advertising state change information.
 | -------- | -------- | -------- | -------- | -------- |
 | advertisingId | number | No | No | Advertising ID. The value range is [0, 255]. |
 | state | [AdvertisingState](#advertisingstate) | No | No | Advertising state. |
+
 
 ## TxPowerMode
 
@@ -127,6 +137,7 @@ Enumerates the advertising transmission power modes.
 | ADV_TX_POWER_MEDIUM | 2 | Medium power consumption mode. |
 | ADV_TX_POWER_HIGH | 3 | High power consumption mode. |
 
+
 ## AdvertisingState
 
 Enumerates the advertising states.
@@ -141,6 +152,7 @@ Enumerates the advertising states.
 | -------- | -------- | -------- |
 | STARTED | 1 | Advertising started. |
 | STOPPED | 2 | Advertising stopped. |
+
 
 ## advertising.startAdvertising
 
@@ -182,7 +194,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { advertising } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -200,21 +211,21 @@ serviceValueBuffer[3] = 8;
 console.info('manufactureValueBuffer = ' + JSON.stringify(manufactureValueBuffer));
 console.info('serviceValueBuffer = ' + JSON.stringify(serviceValueBuffer));
 let setting: advertising.AdvertisingSettings = {
-  interval:5000,
-  power:advertising.TxPowerMode.ADV_TX_POWER_LOW
+  interval: 5000,
+  power: advertising.TxPowerMode.ADV_TX_POWER_LOW
 };
 let manufactureDataUnit: advertising.ManufacturerData = {
-  manufacturerId:4567,
-  manufacturerData:manufactureValueBuffer.buffer
+  manufacturerId: 4567,
+  manufacturerData: manufactureValueBuffer.buffer
 };
 let serviceDataUnit: advertising.ServiceData = {
-  serviceUuid:'FFFFFFFF-1234-5678-ABCD-000000001234',
-  serviceData:serviceValueBuffer.buffer
+  serviceUuid: 'FFFFFFFF-1234-5678-ABCD-000000001234',
+  serviceData: serviceValueBuffer.buffer
 };
 let advData: advertising.AdvertisingData = {
-  serviceUuids:['FFFFFFFF-1234-5678-ABCD-000000001234'],
-  manufacturerData:[manufactureDataUnit],
-  serviceData:[serviceDataUnit]
+  serviceUuids: ['FFFFFFFF-1234-5678-ABCD-000000001234'],
+  manufacturerData: [manufactureDataUnit],
+  serviceData: [serviceDataUnit]
 };
 let advertisingParams: advertising.AdvertisingParams = {
   advertisingSettings: setting,
@@ -232,6 +243,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## advertising.stopAdvertising
 
@@ -272,7 +284,6 @@ For details about the error codes, see [General Error Codes](../errorcode-univer
 | 36100099 | Operation failed. |
 
 **Example** 
-
 ```typescript
 import { advertising } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -288,6 +299,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## advertising.onAdvertisingStateChange
 
@@ -318,7 +330,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not supported because the chip does not support it. |
 
 **Example** 
-
 ```typescript
 import { advertising } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -334,6 +345,7 @@ try {
   console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
 }
 ```
+
 
 ## advertising.offAdvertisingStateChange
 
@@ -362,7 +374,6 @@ For details about the error codes, see [Universal Error Codes](../errorcode-univ
 | 801 | Capability not supported because the chip does not support it. |
 
 **Example** 
-
 ```typescript
 import { advertising } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';

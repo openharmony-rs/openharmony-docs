@@ -5,7 +5,7 @@
 <!--Designer: @fangzhiyuan1-->
 <!--Tester: @gouyuanyuan-->
 <!--Adviser: @Brilliantry_Rui-->
-
+<!-- md-trans-meta sourceCommit=ef178f16f660427ccb002c86238fcc793129557d translatedAt=2026-10-12T09:39:25.439Z pushedAt=2026-10-13T03:40:14.101Z -->
 
 Page routing refers to the redirection and data transfer between different pages in an application. It can be implemented through APIs of the **Router** module. Through different URLs, you can easily navigate users through pages. This document outlines the key features of the **Router** module, including: [Page Redirection](#page-redirection), [Page Return](#page-return), [Adding a Confirmation Dialog Box Before Page Return](#adding-a-confirmation-dialog-box-before-page-return), and [Named Route](#named-route).
 
@@ -17,7 +17,7 @@ Page routing refers to the redirection and data transfer between different pages
 
 Page redirection is an important part of the development process. When using an application, you usually need to jump between different pages, and sometimes you need to pass data from one page to another.
 
-  **Figure 1** Page redirection 
+  **Figure 1** Page redirection  
 ![router-jump-to-detail](figures/router-jump-to-detail.gif)
 
 The **Router** module provides two redirection modes: [pushUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushurl) and [replaceUrl](../reference/apis-arkui/arkts-apis-uicontext-router.md#replaceurl). Whether the target page will replace the current page depends on the mode used.
@@ -26,7 +26,7 @@ The **Router** module provides two redirection modes: [pushUrl](../reference/api
 
 - **replaceUrl**: The target page replaces the current page, and the current page is destroyed. In this mode, the resources of the current page can be released, and users cannot return to the current page.
 
->**NOTE**
+>**NOTE** 
 >
 >- When creating a page, configure the route to this page by following instructions in <!--RP1-->[Building the Second Page](../quick-start/start-with-ets-stage.md#building-the-second-page)<!--RP1End-->.
 >
@@ -253,7 +253,7 @@ private age: number = this.params.info.age; // Obtain the value of the age attri
 
 Implement the page return feature so that users can return to the previous page or a specified page. You can pass parameters to the target page during the return process.
 
-  **Figure 2** Page return 
+  **Figure 2** Page return
 
 ![router-back-to-home](figures/router-back-to-home.gif)
 
@@ -475,7 +475,7 @@ During application development, to prevent misoperations or data loss, a dialog 
 
 Such a dialog box can be in the [default style](#default-confirmation-dialog-box) or [custom style](#custom-confirmation-dialog-box).
 
-  **Figure 3** Adding a confirmation dialog box before page return 
+  **Figure 3** Adding a confirmation dialog box before page return
 
 ![router-add-query-box-before-back](figures/router-add-query-box-before-back.gif)
 
@@ -594,11 +594,11 @@ When the user clicks the back button, the custom confirmation dialog box is disp
 
 To redirect to a page in a [HAR](../quick-start/har-package.md) or [HSP](../quick-start/in-app-hsp.md), you can use [pushNamedRoute](../reference/apis-arkui/arkts-apis-uicontext-router.md#pushnamedroute).
 
-  **Figure 4** Named route redirection 
+  **Figure 4** Named route redirection
 
 ![(figures/router-add-query-box-before-back.gif)](figures/namedroute-jump-to-mypage.gif)
 
-In the target[HAR](../quick-start/har-package.md) or [HSP](../quick-start/in-app-hsp.md), name the [@Entry](../ui/state-management/arkts-create-custom-components.md#entry) decorated custom component in **EntryOptions**.
+In the [HAR](../quick-start/har-package.md) or [HSP](../quick-start/in-app-hsp.md) page that you want to navigate to, name the `EntryOptions` of the custom component decorated by [@Entry](../ui/state-management/arkts-create-custom-components.md#entry):
 
 <!-- @[page_router_hsp2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/Navigation/entry/src/main/ets/pages/pageRouter/hsp/Hsp12.ets) -->
 

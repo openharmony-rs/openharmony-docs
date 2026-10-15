@@ -6,18 +6,13 @@
 <!--Designer: @guo-min_net-->
 <!--Tester: @tongxilin-->
 <!--Adviser: @zhang_yixin13-->
-<!-- md-trans-meta sourceCommit=66333f405b8ba85b102d9221d24e54901f6cfbf8 translatedAt=2026-06-25T01:52:47.455Z pushedAt=2026-06-26T03:00:41.308Z -->
+<!-- md-trans-meta sourceCommit=742fd8e7f742ee980eb300ddfd075065ca362dff translatedAt=2026-09-28T01:43:11.917Z pushedAt=2026-10-09T03:44:16.672Z -->
 
 The Traffic Management module provides the capability to obtain device network traffic data. This module supports querying packet traffic usage from multiple dimensions, for example:
-
 - Obtaining the uplink/downlink traffic data of a specified NIC.
-
 - Obtaining the total traffic data of all NICs, facilitating the viewing of overall device network usage.
-
 - Obtaining the traffic data of a specified application based on the application UID, helping you monitor the network resource consumption of applications.
-
 - Obtaining traffic statistics for a specified socket, providing a data foundation for fine-grained network performance analysis.
-
 - Obtaining the historical traffic usage of an application within a specified time period, facilitating the analysis of long-term network usage trends of the application.
 
 > **NOTE**
@@ -88,7 +83,6 @@ Obtains the total downlink traffic (in bytes) of the specified NIC from the last
 | nic    | string | Yes  | NIC name.|
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise\<number> | Promise used to return the total downlink traffic (in bytes) of the specified NIC from the last startup to the current moment. |
@@ -177,7 +171,6 @@ Obtains the total uplink traffic (in bytes) of the specified NIC from the last s
 | nic    | string | Yes  | NIC name.|
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise\<number> | Promise used to return the total uplink traffic (in bytes) of the specified NIC from the last startup to the time when the API is called. |
@@ -266,7 +259,6 @@ Obtains the total downlink traffic (in bytes) of the NIC corresponding to the cu
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise\<number> | Promise used to return the total downlink traffic (in bytes) of the specified NIC from the last startup to the time when the API is called. |
@@ -353,7 +345,6 @@ Obtains the total uplink traffic (in bytes) of the NIC corresponding to the curr
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise\<number> | Promise used to return the total uplink traffic (in bytes) consumed on the cellular network since the last startup to the current moment. |
@@ -386,7 +377,7 @@ statistics.getCellularTxBytes().then((stats: number) => {
 
 getAllRxBytes(callback: AsyncCallback\<number>): void
 
-Obtains the total downlink traffic (in bytes) of all NICs from the last startup to the time when this API is called. This API uses an asynchronous callback to return the result.
+Obtains the total downlink traffic of all network cards from the last boot to the time of interface call (in bytes). This API uses an asynchronous callback to return the result.
 
 **Atomic service API**: This API can be used in atomic services since API version 15.
 
@@ -435,7 +426,6 @@ Obtains the total downlink traffic (in bytes) of all NICs from the last startup 
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise\<number> | Promise used to return the total downlink traffic (in bytes) of all NICs from the last startup to the current moment. |
@@ -516,7 +506,6 @@ Obtains the total uplink traffic (in bytes) of all NICs from the last startup to
 **System capability**: SystemCapability.Communication.NetManager.Core
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise\<number> | Promise used to return the real-time uplink traffic (in bytes) of all NICs. |
@@ -555,7 +544,6 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 **Required permissions**
 
 - API versions earlier than API version 26.0.0: N/A
-
 - Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **System capability**: SystemCapability.Communication.NetManager.Core
@@ -573,6 +561,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 
 | ID| Error Message                                    |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  Applicable versions: 26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -610,7 +599,6 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 **Required permissions**
 
 - API versions earlier than API version 26.0.0: N/A
-
 - Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **Parameters**
@@ -620,7 +608,6 @@ Obtains the total downlink traffic (in bytes) of the specified application from 
 | uid    | number | Yes  | Application UID.|
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise\<number> | Promise used to return the total downlink traffic (in bytes) of the specified application from the last startup to the current moment. |
@@ -631,6 +618,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 
 | ID| Error Message                                    |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  Applicable versions: 26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -663,7 +651,6 @@ Obtains the total uplink traffic (in bytes) of the specified application from th
 **Required permissions**
 
 - API versions earlier than API version 26.0.0: N/A
-
 - Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **Parameters**
@@ -671,7 +658,7 @@ Obtains the total uplink traffic (in bytes) of the specified application from th
 | Name  | Type                  | Mandatory| Description                                                                                                                   |
 | -------- | ---------------------- | ---- | ---------------------------------------------------------------------------------------------------------------------- |
 | uid      | number                 | Yes  | Application UID.                                                                                                   |
-| callback | AsyncCallback\<number> | Yes | Callback used to return the result. If the application's real-time uplink traffic is successfully obtained, **error** is **undefined** and **stats** is the obtained application uplink traffic (in bytes). Otherwise, it is an error object. |
+| callback | AsyncCallback\<number> | Yes | Callback function. When the real-time uplink traffic of the application is obtained successfully, error is undefined and stats is the obtained uplink traffic of the application (in bytes); otherwise, it is an error object. |
 
 **Error codes**
 
@@ -679,6 +666,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 
 | ID| Error Message                                    |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  Applicable versions: 26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -716,7 +704,6 @@ Obtains the total uplink traffic of the specified application from the last star
 **Required permissions**
 
 - API versions earlier than API version 26.0.0: N/A
-
 - Since API version 26.0.0: **ohos.permission.GET_NETWORK_STATS** (You need to apply for this permission only when the value of **uid** is different from that of the API caller, that is, when you query the traffic data of other applications.)
 
 **Parameters**
@@ -726,7 +713,6 @@ Obtains the total uplink traffic of the specified application from the last star
 | uid    | number | Yes  | Application UID.|
 
 **Return value**
-
 | Type| Description|
 | -------- | -------- |
 | Promise\<number> | Promise used to return the total uplink traffic (in bytes) of the specified application from the last startup to the time when the API is called. |
@@ -737,6 +723,7 @@ For details about the error codes, see [Traffic Management Error Codes](errorcod
 
 | ID| Error Message                                    |
 | --------- | -------------------------------------------- |
+| 201       | Permission denied. <br>  Applicable versions: 26.0.0+    |
 | 401       | Parameter error.                             |
 | 2100002   | Failed to connect to the service.            |
 | 2100003   | System internal error.                       |
@@ -753,6 +740,7 @@ statistics.getUidTxBytes(uid).then((stats: number) => {
   console.info(JSON.stringify(stats));
 });
 ```
+
 
 ## statistics.getSockfdRxBytes<sup>11+</sup>
 

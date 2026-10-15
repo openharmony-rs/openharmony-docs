@@ -73,7 +73,7 @@ Sets the strategy for processing a moving photo while it is being played.
 **System capability**: SystemCapability.FileManagement.PhotoAccessHelper.Core
 
 **Parameters**
- 	 
+  
 | Name| Type                                                                         | Mandatory| Description                            |
 | ------ | ----------------------------------------------------------------------------- | ---- | -------------------------------- |
 | strategy  | [media.PlaybackStrategy](../../../application-dev/reference/apis-media-kit/arkts-apis-media-i.md#playbackstrategy12) | Yes  | Strategy for processing a moving photo while it is being played.|
@@ -82,7 +82,7 @@ Sets the strategy for processing a moving photo while it is being played.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |
 
@@ -160,7 +160,7 @@ Pauses playback and freezes on the current frame. Once resumed, playback continu
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |
 
@@ -180,7 +180,7 @@ Returns to the cover frame and rewinds the video. The next play starts from the 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |
 
@@ -200,7 +200,7 @@ Restarts playback from the beginning while keeping the current playback range an
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |
 
@@ -225,7 +225,7 @@ Sets the playback range, which takes effect for the next playback.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |
 
@@ -249,7 +249,7 @@ Enables or disables the zoom-in transition effect when the video starts to play.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |
 
@@ -273,12 +273,12 @@ Enables or disables the embedded video in a moving photo to play automatically, 
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |
 
 ### notifyMovingPhotoTransition<sup>23+</sup>
- 	 
+  
 notifyMovingPhotoTransition(): void
 
 Notifies the component to execute the transition animation for the cover image.
@@ -293,6 +293,6 @@ Notifies the component to execute the transition animation for the cover image.
 
 For details about the error codes, see [Universal Error Codes](../errorcode-universal.md).
 
-| Error Code| Error Message|
+| ID| Error Message|
 | -------- | ---------------------------------------- |
 | 202 | Non-system applications are not allowed to use system APIs. |

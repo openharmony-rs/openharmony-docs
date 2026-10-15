@@ -1,4 +1,4 @@
-# AES Symmetric Key Encryption and Decryption (C/C++)
+# Encryption and Decryption with an AES Symmetric Key (C/C++)
 
 <!--Kit: Crypto Architecture Kit-->
 <!--Subsystem: Security-->
@@ -6,7 +6,7 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
-<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-08-31T02:36:22.718Z pushedAt=2026-09-01T06:09:23.230Z -->
+<!-- md-trans-meta sourceCommit=1b9dc846389405d57ea9496c8b5a7a7ff4d36877 translatedAt=2026-10-09T01:34:55.574Z pushedAt=2026-10-10T01:39:21.749Z -->
 
 For details about the algorithm specifications, see [Symmetric Key Encryption and Decryption Algorithm Specifications: AES](crypto-encryption-decryption.md#aes).
 
@@ -55,6 +55,10 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 3. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init), set the mode to decryption (CRYPTO_DECRYPT_MODE), specify the decryption key (OH_CryptoSymKey) and the decryption parameters corresponding to GCM mode (OH_CryptoSymCipherParams), and initialize the decryption Cipher instance.
 
 4. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update the data (ciphertext).
+
+   - For a small amount of data, you can use **OH_CryptoSymCipher_Final()** immediately after **OH_CryptoSymCipher_Init()**.
+   - For a large amount of data, you can call **OH_CryptoSymCipher_Update** multiple times to pass in the data by segment.
+   - You can decide the operation mode based on the data size. For example, use **update** when the data exceeds 1 KB.
 
 5. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 
@@ -213,14 +217,20 @@ Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-
 
 4. Call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) to update the data (ciphertext).
 
-   There is no limit on the length of a single `update` call. You can determine the length of data to pass to a single `update` call based on the ciphertext length.
+   There is no limit on the length of a single **update** call. You can determine the length of data to pass to each **update** call based on the ciphertext length.
    > **NOTE**
    >
-   > The CCM mode does not support segmented encryption or decryption.
+   > CCM mode does not support segmented encryption/decryption.
+   >
+   > When the data size is small, you can call **final** directly after **init** completes.
 
 5. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
-   - If data has already been passed through `update`, pass `null` for `data` here.
-   - Before accessing the specific data in the `final` output, check whether the result is `null` to avoid exceptions.
+
+   > **NOTE**
+   >
+   > If data has been passed through **update**, pass `null` for `data` here.
+   >
+   > Before accessing the specific data in the **final** output, check whether the result is `null` to avoid exceptions.
 
 **Destroying Objects**
 
@@ -556,7 +566,7 @@ end:
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (OH_CryptoSymKey) with the AES algorithm and a key length of 128 bits.
 
-For details about how to generate an AES symmetric key, refer to the following example together with [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md). Note that the reference documents may differ from the current example in input parameters.
+   For details about how to generate an AES symmetric key, refer to the following example together with [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md). Note that the reference documents may differ from the current example in input parameters.
 
 **Encrypting**
 
@@ -590,13 +600,11 @@ For details about how to generate an AES symmetric key, refer to the following e
 
 2. Call [OH_CryptoSymCipherParams_SetParam](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipherparams_setparam) to set authTag as the authentication information for decryption.
 
-In GCM mode, take the last 16 bytes from the encrypted data as the authentication information for decryption initialization. In this example, the authTag is exactly 16 bytes.
+   In GCM mode, take the last 16 bytes from the encrypted data as the authentication information for decryption initialization. In this example, the authTag is exactly 16 bytes.
 
 3. Call [OH_CryptoSymCipher_Init](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_init) to set the mode to decryption (CRYPTO_DECRYPT_MODE), specify the decryption key (OH_CryptoSymKey) and the decryption parameters corresponding to GCM mode (OH_CryptoSymCipherParams), and initialize the decryption Cipher instance.
 
-4. Set the amount of data passed in at a time to 20 bytes, and call [OH_CryptoSymCipher_Update](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_update) multiple times to update the data (ciphertext).
-
-5. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
+4. Call [OH_CryptoSymCipher_Final](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-cipher-h.md#oh_cryptosymcipher_final) to obtain the decrypted data.
 
 **Destroying Objects**
 

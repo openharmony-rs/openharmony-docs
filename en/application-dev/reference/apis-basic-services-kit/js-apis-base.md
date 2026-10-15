@@ -5,6 +5,7 @@
 <!--Designer: @majiajun518-->
 <!--Tester: @jiyong_sd-->
 <!--Adviser: @fang-jinxu-->
+<!-- md-trans-meta sourceCommit=a6c31d94a76001ec2569481af36de5e521d8dabb translatedAt=2026-10-09T12:10:20.878Z pushedAt=2026-10-10T05:59:03.369Z -->
 
 The **Base** module defines the public callback types of ArkTS APIs, including the common and error callbacks. These callbacks provide a unified asynchronous processing mechanism for processing asynchronous operation results and error messages. They can help developers simplify the asynchronous programming model and improve code readability and maintainability.
 
@@ -16,7 +17,7 @@ The **Base** module defines the public callback types of ArkTS APIs, including t
 
 ## Modules to Import
 
-ArkTS example:
+ArkTS example: 
 ```typescript
 import { AsyncCallback, BusinessError, Callback, ErrorCallback } from '@kit.BasicServicesKit';
 ```
@@ -34,9 +35,7 @@ Callback\<T> {
 
 }
 
-Defines a common callback.
-
-You can set **data** to customize the data type of the information returned by the callback.
+Defines a common callback used to return the processing result when an asynchronous operation is successful. You need to define the callback type.
 
 **Widget capability**: This API can be used in ArkTS widgets since API version 12.
 
@@ -58,9 +57,9 @@ ErrorCallback\<T extends Error = BusinessError> {
 
 }
 
-Defines a common callback that carries an error parameter.
+Defines a common callback that carries an error parameter. It is used to return error information when an asynchronous operation fails. The specific error code is defined by each API. For details, please refer to the error code description of the corresponding API.
 
-The information returned by the callback is of the [BusinessError](#businesserror) type.
+The information returned by the callback is an error parameter of the [BusinessError](#businesserror) type.
 
 **Atomic service API**: This API can be used in atomic services since API version 11.
 
@@ -70,7 +69,7 @@ The information returned by the callback is of the [BusinessError](#businesserro
 
 | Name| Type| Mandatory| Description                        |
 | ---- | ---- | ---- | ---------------------------- |
-| err  | T    | Yes  | Common error message returned when the API fails to be called.|
+| err  | T    | Yes   | Common error message of a failed API call. The type defaults to BusinessError, which contains the error code and optional additional data. |
 
 ## AsyncCallback
 
@@ -80,7 +79,7 @@ AsyncCallback\<T, E = void> {
 
 }
 
-Defines a common callback that carries an error parameter and asynchronous return value.
+Defines a common callback that carries an error parameter and asynchronous return value. It is used to return error information or success data when an asynchronous operation is complete.
 
 The error parameter is of the [BusinessError](#businesserror) type.
 
@@ -96,7 +95,7 @@ The type of the asynchronous return value is defined by the developer.
 
 | Name| Type                                                        | Mandatory| Description                        |
 | ---- | ------------------------------------------------------------ | ---- | ---------------------------- |
-| err  | [BusinessError](#businesserror) | Yes  | Common error message returned when the API fails to be called.|
+| err  | [BusinessError](#businesserror) | Yes   | Common error message of a failed API call. This parameter returns null when the API call is successful. |
 | data | T                                                            | Yes  | Data returned asynchronously when the API is successfully called. The data type is defined by the developer. This parameter is unavailable when the API fails to be called.  |
 
 ## BusinessError
@@ -114,4 +113,4 @@ Defines the error parameter.
 | Name| Type  | Read-Only| Optional| Description                                                      |
 | ---- | ------ | ---- | ---- | ---------------------------------------------------------- |
 | code | number | No| No  | Error code returned when the API fails to be called.                            |
-| data | T      | No| Yes  | Error message returned when the API fails to be called. If this parameter is left empty, the error object does not contain additional data.|
+| data<sup>9+</sup> | T      | No | Yes   | Additional error information returned when the API call fails. If this parameter is left empty, the error object does not contain additional data. |

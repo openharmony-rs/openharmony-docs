@@ -6,10 +6,11 @@
 <!--Designer: @lanming-->
 <!--Tester: @PAFT-->
 <!--Adviser: @zengyawen-->
+<!-- md-trans-meta sourceCommit=64044667f2ece520228c37a4e282d90b2e014ba4 translatedAt=2026-10-09T01:34:42.147Z pushedAt=2026-10-10T01:42:39.308Z -->
 
-From API version 22, the crypto algorithm library supports encryption and decryption with AES-WRAP.
+Starting from API version 22, the algorithm library supports encryption and decryption using this algorithm.
 
-For details, see [AES-WRAP encryption and decryption algorithm specifications](crypto-sym-encrypt-decrypt-spec.md#aes-wrap).
+See [AES-WRAP Encryption and Decryption Algorithm Specifications](crypto-encryption-decryption.md#aes-wrap).
 
 ## Adding the Dynamic Library in the CMake Script
 ```txt
@@ -21,8 +22,8 @@ target_link_libraries(entry PUBLIC libohcrypto.so)
 **Creating an Object**
 
 Call [OH_CryptoSymKeyGenerator_Create](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_create) and [OH_CryptoSymKeyGenerator_Generate](../../reference/apis-crypto-architecture-kit/capi-crypto-sym-key-h.md#oh_cryptosymkeygenerator_generate) to generate a symmetric key (**OH_CryptoSymKey**) with the key algorithm being AES and the key length being 128 bits.
-   
-   In addition to the example in this topic, [AES](crypto-sym-key-generation-conversion-spec.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md) may help you better understand how to generate an AES symmetric key. Note that the input parameters in the reference documents may be different from those in the example below.
+
+   For details about how to generate an AES symmetric key, refer to the following example and also see [Symmetric Key Generation and Conversion Specifications: AES](crypto-key-generation-conversion.md#aes) and [Randomly Generating a Symmetric Key](crypto-generate-sym-key-randomly-ndk.md). Note that the referenced documents may differ from the current example in input parameters.
 
 **Encryption**
 

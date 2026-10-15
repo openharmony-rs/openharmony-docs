@@ -13,7 +13,7 @@ typedef struct OH_CryptoKdf OH_CryptoKdf
 
 ## Overview
 
-Defines a struct for a key derivation function (KDF).
+Defines a KDF struct, which indicates the KDF context.
 
 **Since**: 20
 
