@@ -1226,6 +1226,8 @@ EllipsisMode.START和EllipsisMode.MIDDLE仅在单行超长文本生效。
 | rightTopRadius     | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  否   | 矩形框的右上半径。       |
 | rightBottomRadius  | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  否   | 矩形框的右下半径。       |
 | leftBottomRadius   | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  否   | 矩形框的左下半径。       |
+| borderColor        | [common2D.Color](js-apis-graphics-common2D.md#color) | 否  |  是   | 矩形边框的颜色，默认值为白色。<br>**起始版本：** 26.2.0<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。               |
+| borderWidth        | ArkTS-Dyn: number<br>ArkTS-Sta: double                                               | 否  |  是   | 矩形边框的宽度，单位为物理像素px，默认值为0。<br>**起始版本：** 26.2.0<br>**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。<br>**模型约束：** 此接口仅可在Stage模型下使用。 |
 
 ## FontFeature
 
