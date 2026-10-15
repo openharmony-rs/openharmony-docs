@@ -3469,26 +3469,29 @@ client端刷新已连接server端设备的服务缓存。使用Promise异步回�
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-// Promise 模式。
-let device: ble.GattClientDevice = ble.createGattClientDevice("11:22:33:44:55:66");
-function ConnectStateChanged(state: ble.BLEConnectionChangeState) {
-    console.info('bluetooth connect state changed');
-    let connectState: ble.ProfileConnectionState = state.state;
-    if (connectState == constant.ProfileConnectionState.STATE_CONNECTED) {
+
+let device: ble.GattClientDevice = ble.createGattClientDevice('11:22:33:44:55:66');
+// 订阅连接状态：GATT连接成功后刷新服务缓存，并获取刷新后的服务列表
+let connectStateChanged = (state: ble.BLEConnectionChangeState) => {
+    if (state.state == constant.ProfileConnectionState.STATE_CONNECTED) {
         device.refreshServices().then(() => {
-            console.info('refreshServices successfully');
-            device.getServices().then((result: Array<ble.GattService>) => {
-                console.info('getServices successfully:' + JSON.stringify(result));
+            console.info('Succeeded in refreshing services.');
+            device.getServices().then((services: Array<ble.GattService>) => {
+                console.info(`Succeeded in getting services, services is ${JSON.stringify(services)}`);
+            }).catch((err: BusinessError) => {
+                console.error(`Failed to get services. Code is ${err.code}, message is ${err.message}`);
             });
         }).catch((err: BusinessError) => {
-            console.error('errCode: ' + err.code + ', errMessage: ' + err.message);
+            console.error(`Failed to refresh services. Code is ${err.code}, message is ${err.message}`);
         });
     }
-}
+};
+device.on('connectionStateChange', connectStateChanged);
 try {
     device.connect();
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+} catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to connect. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 

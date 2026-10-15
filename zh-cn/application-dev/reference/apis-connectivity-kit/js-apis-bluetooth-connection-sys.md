@@ -1085,12 +1085,15 @@ getBleMacByBrMac(brMac: string): string
 **示例：**
 
 ```js
+import { connection } from '@kit.ConnectivityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
+
 try {
-    let bleMac: string = connection.getBleMacByBrMac('11:22:33:AA:BB:FF');
-    console.info('getBleMacByBrMac success, bleMac: ' + bleMac);
-} catch (err) {
-    console.error('errCode: ' + (err as BusinessError).code + ', errMessage: ' + (err as BusinessError).message);
+    let bleMac: string = connection.getBleMacByBrMac('11:22:33:AA:BB:FF'); // 入参为已配对对端设备的真实BR地址
+    console.info(`Succeeded in getting bleMac, bleMac is ${bleMac}`);
+} catch (error) {
+    const err: BusinessError = error as BusinessError;
+    console.error(`Failed to get bleMac by brMac. Code is ${err.code}, message is ${err.message}`);
 }
 ```
 
