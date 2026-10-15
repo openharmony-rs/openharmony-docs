@@ -1555,7 +1555,7 @@ startUIServiceExtensionAbility(want: Want): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异**: 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -1696,7 +1696,7 @@ connectUIServiceExtensionAbility(want: Want, callback: UIServiceExtensionConnect
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异**: 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
@@ -1845,7 +1845,7 @@ disconnectUIServiceExtensionAbility(proxy: UIServiceProxy): Promise&lt;void&gt;
 
 **ArkTS-Sta起始版本：** 23
 
-**设备行为差异**: 该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
+**设备行为差异**：该接口仅在PC/2in1设备中可正常调用，在其他设备中返回801错误码。
 
 **参数：**
 
