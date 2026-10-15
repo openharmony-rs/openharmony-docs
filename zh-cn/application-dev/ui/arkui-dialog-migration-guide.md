@@ -1237,15 +1237,15 @@ export struct OpenCustomDialogWithControllerAfterMigrate {
 
 <!-- @[custom_dialog_old_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogOldInterface.ets) -->
 
-```ts
+``` TypeScript
 import { ComponentContent } from '@kit.ArkUI';
 import { AbilityConstant, Configuration, EnvironmentCallback, ConfigurationConstant } from '@kit.AbilityKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { resourceManager } from '@kit.LocalizationKit';
 
 class Params {
-  text: string = "";
-  colorMode: resourceManager.ColorMode = resourceManager.ColorMode.LIGHT
+  public text: string = '';
+  public colorMode: resourceManager.ColorMode = resourceManager.ColorMode.LIGHT
 
   constructor(text: string, colorMode: resourceManager.ColorMode) {
     this.text = text
@@ -1254,19 +1254,19 @@ class Params {
 }
 
 @Builder
-function BuilderDialog(params: Params) {
+function builderDialog(params: Params) {
   Column() {
     Text(params.text)
       .fontSize(50)
       .fontWeight(FontWeight.Bold)
       .margin({ bottom: 36 })
-  }.backgroundColor(params.colorMode == resourceManager.ColorMode.LIGHT ? "#D5D5D5" : "#004AAF")
+  }.backgroundColor(params.colorMode == resourceManager.ColorMode.LIGHT ? '#D5D5D5' : '#004AAF')
 }
 
 @Entry
 @Component
-struct Index {
-  @State message: string = "hello";
+export struct CustomDialogOldInterface {
+  @State message: string = 'hello';
   contentNode: ComponentContent<Params> | null = null;
   callbackId: number | undefined = 0;
 
@@ -1302,33 +1302,38 @@ struct Index {
   }
 
   build() {
-    Row() {
-      Column() {
-        Button("click me")
-          .onClick(() => {
-            let uiContext = this.getUIContext();
-            let promptAction = uiContext.getPromptAction();
-            if (this.contentNode == null && uiContext.getHostContext() != undefined) {
-              this.contentNode = new ComponentContent(uiContext, wrapBuilder(BuilderDialog), new Params(this.message,
-                uiContext.getHostContext()!!.getApplicationContext().resourceManager.getConfigurationSync().colorMode))
-            }
-            if (this.contentNode == null) {
-              return
-            }
-            promptAction.closeCustomDialog(this.contentNode)
-            // 先关闭已存在的弹窗，再重新打开
-            promptAction.openCustomDialog(this.contentNode).then(() => {
-              console.info("succeeded")
-            }).catch((error: BusinessError) => {
-              console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+    NavDestination() {
+      Row() {
+        Column() {
+          Button('click me')
+            .onClick(() => {
+              let uiContext = this.getUIContext();
+              let promptAction = uiContext.getPromptAction();
+              if (this.contentNode == null && uiContext.getHostContext() != undefined) {
+                this.contentNode = new ComponentContent(uiContext, wrapBuilder(builderDialog), new Params(this.message,
+                  uiContext.getHostContext()!!.getApplicationContext()
+                    .resourceManager
+                    .getConfigurationSync()
+                    .colorMode))
+              }
+              if (this.contentNode == null) {
+                return
+              }
+              promptAction.closeCustomDialog(this.contentNode)
+              // 先关闭已存在的弹窗，再重新打开
+              promptAction.openCustomDialog(this.contentNode).then(() => {
+                console.info('succeeded')
+              }).catch((error: BusinessError) => {
+                console.error(`OpenCustomDialog args error code is ${error.code}, message is ${error.message}`);
+              })
             })
-          })
+        }
+        .width('100%')
+        .height('100%')
+        .justifyContent(FlexAlign.Center)
       }
-      .width('100%')
       .height('100%')
-      .justifyContent(FlexAlign.Center)
     }
-    .height('100%')
   }
 }
 ```
