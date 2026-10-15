@@ -3435,7 +3435,7 @@ refreshServices(): Promise&lt;void&gt;
 
 client端刷新已连接server端设备的服务缓存。使用Promise异步回调。
 
-- 刷新后会清空并重新发现server端服务的缓存。刷新请求下发到服务后Promise即兑现，重新服务发现异步进行。可通过[getServices](#getservices)方法获取刷新后的服务列表。
+- 调用本接口后会清空server端服务的缓存，并异步重新执行服务发现。刷新请求下发到蓝牙服务后Promise即兑现，无需等待服务发现完成；可通过[getServices](#getservices)方法获取刷新后的服务列表。
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
 **需要权限**：ohos.permission.ACCESS_BLUETOOTH
