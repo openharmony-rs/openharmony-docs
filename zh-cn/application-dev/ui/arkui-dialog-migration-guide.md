@@ -647,47 +647,49 @@ export struct ShowDialogBeforeMigrate {
 
 <!-- @[show_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogAfterMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct ShowDialogMigrationPage {
+export struct ShowDialogAfterMigrate {
   private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
 
   build() {
-    Row() {
-      Column() {
-        Text('showDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
+    NavDestination() {
+      Row() {
+        Column() {
+          Text('showDialog 迁移示例')
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+            .margin({ bottom: 20 })
 
-        Button('老接口：promptAction.showDialog')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 js-apis-promptAction.md';
-          })
+          Button('老接口：promptAction.showDialog')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.result = '老接口示例请参考 js-apis-promptAction.md';
+            })
 
-        Button('新接口：DialogPresenter.present（对话框）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewDialog();
-          })
+          Button('新接口：DialogPresenter.present（对话框）')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.showNewDialog();
+            })
 
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
+          if (this.result) {
+            Text(this.result)
+              .fontSize(14)
+              .margin({ top: 10 })
+          }
         }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 
   private showNewDialog(): void {
