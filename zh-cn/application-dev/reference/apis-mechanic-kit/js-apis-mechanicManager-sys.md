@@ -962,7 +962,7 @@ connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise&lt;AttachSta
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| Promise&lt;[AttachStateChangeInfo](#attachstatechangeinfo)&gt;| Promise对象，返回设备吸附状态。 |
+| Promise&lt;[AttachStateChangeInfo](#attachstatechangeinfo)&gt;| Promise对象，返回设备附加状态。 |
 
 **错误码：**
 
@@ -1560,7 +1560,7 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 
 ## AttachState
 
-机械体设备连接状态。
+机械体设备附加状态。
   
 **起始版本**：26.0.0
 
