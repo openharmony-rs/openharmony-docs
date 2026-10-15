@@ -1,3 +1,16 @@
+---
+kit: Media Kit
+shortdes: 介绍屏幕录制支持矩形区域录制功能
+keywords:
+  - 屏幕录制
+  - 矩形区域录制
+  - SetCaptureArea
+  - AVScreenCapture
+  - 区域捕获
+doctype: guide
+status: active
+---
+
 # 屏幕录制支持矩形区域录制
 
 <!--Kit: Media Kit-->
