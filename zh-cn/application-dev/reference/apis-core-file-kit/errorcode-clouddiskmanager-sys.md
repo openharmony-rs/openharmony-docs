@@ -14,7 +14,7 @@
 
 **错误信息**
 
-Invalid argument.
+The input parameter is invalid.
 
 **错误描述**
 
@@ -32,7 +32,7 @@ Invalid argument.
 
 **错误信息**
 
-IPC communication failed
+IPC communication failed.
 
 **错误描述**
 
@@ -50,7 +50,7 @@ IPC通信失败。
 
 **错误信息**
 
-The sync root path is not registered.
+No sync root is registered, or the registered sync roots cannot be queried.
 
 **错误描述**
 
@@ -68,7 +68,7 @@ The sync root path is not registered.
 
 **错误信息**
 
-The sync root path does not exist.
+The sync root path does not exist, or the target file or sync root mount path is missing during path resolution.
 
 **错误描述**
 
@@ -86,7 +86,7 @@ The sync root path does not exist.
 
 **错误信息**
 
-Temporary failure, Retry is recommended (e.g., network issues).
+Temporary failure. Retry is recommended (e.g., network issues).
 
 **错误描述**
 
@@ -134,13 +134,13 @@ The target path is not a placeholder file.
 
 **处理步骤**
 
-可调用[getAllSyncFolders](js-apis-file-clouddiskmanager-sys.md#getallsyncfolders)()确认目标文件位于三方云盘应用已注册的同步根目录内，且为云盘应用创建的文件（本地仅保留元数据、内容在云端）后再调用。
+可调用[getAllSyncFolders](js-apis-file-clouddiskmanager-sys.md#getallsyncfolders)()确认目标文件位于三方网盘应用已注册的同步根目录内，且为网盘应用创建的文件（本地仅保留元数据、内容在云侧）后再调用。
 
 ## 34400019 水合任务已在进行中
 
 **错误信息**
 
-Hydration in progress.
+A hydrate task for the target file is already pending or in progress.
 
 **错误描述**
 
@@ -158,7 +158,7 @@ Hydration in progress.
 
 **错误信息**
 
-The available disk space is insufficient.
+The available disk space is insufficient, or the disk quota has been exhausted.
 
 **错误描述**
 
@@ -176,25 +176,25 @@ The available disk space is insufficient.
 
 **错误信息**
 
-The callback table is not registered.
+The cloud disk provider's callback table is not registered, or no usable sync root matches the path.
 
 **错误描述**
 
-云盘应用回调表未注册，或没有匹配该路径的可用同步根。
+网盘应用回调表未注册，或没有匹配该路径的可用同步根。
 
 **可能原因**
 
-目标路径不在任何已注册的同步根目录范围内，或目标路径所属同步根对应的三方云盘应用未注册回调表。
+目标路径不在任何已注册的同步根目录范围内，或目标路径所属同步根对应的三方网盘应用未注册回调表。
 
 **处理步骤**
 
-确认目标路径位于已注册的同步根目录范围内，且对应的三方云盘应用已完成回调表注册。
+确认目标路径位于已注册的同步根目录范围内，且对应的三方网盘应用已完成回调表注册。
 
 ## 34400023 路径父目录不是目录
 
 **错误信息**
 
-The parent directory of the target path is not a directory.
+A path component that must be a directory is not a directory.
 
 **错误描述**
 
@@ -212,7 +212,7 @@ The parent directory of the target path is not a directory.
 
 **错误信息**
 
-The target path does not exist.
+A required file or directory does not exist while resolving or accessing the target path.
 
 **错误描述**
 
@@ -244,29 +244,29 @@ The file name or path is too long.
 
 单个文件名最长255字节、完整路径最长4096字节，请缩短文件名或路径后重试。
 
-## 34400029 云盘应用拒绝脱水
+## 34400029 网盘应用拒绝脱水
 
 **错误信息**
 
-The application denied placeholder dehydration.
+The cloud disk provider did not approve the dehydration request.
 
 **错误描述**
 
-三方云盘应用拒绝了脱水授权。
+三方网盘应用拒绝了脱水授权。
 
 **可能原因**
 
-脱水前系统向三方云盘应用发起脱水授权请求，云盘应用返回不允许脱水（如文件正在被云端使用）。
+脱水前系统向三方网盘应用发起脱水授权请求，网盘应用返回不允许脱水（如文件正在被云侧使用）。
 
 **处理步骤**
 
-该错误表示三方云盘应用未授权本次脱水，文件保持不变，无需处理。
+该错误表示三方网盘应用未授权本次脱水，文件保持不变，无需处理。
 
 ## 34400031 占位符文件已完全水合
 
 **错误信息**
 
-The placeholder file is already fully hydrated.
+The placeholder is already fully hydrated.
 
 **错误描述**
 
@@ -284,7 +284,7 @@ The placeholder file is already fully hydrated.
 
 **错误信息**
 
-No hydration task is in progress for the target file.
+Cancellation was requested, but no hydrate task is pending or in progress.
 
 **错误描述**
 
@@ -302,7 +302,7 @@ No hydration task is in progress for the target file.
 
 **错误信息**
 
-The stored placeholder state is invalid.
+The placeholder state or its stored attribute is invalid.
 
 **错误描述**
 
@@ -314,13 +314,13 @@ The stored placeholder state is invalid.
 
 **处理步骤**
 
-请确认占位符文件由三方云盘应用正常创建、状态值在有效范围内后重试；若持续出现该错误，请三方云盘应用重建该占位符文件。
+请确认占位符文件由三方网盘应用正常创建、状态值在有效范围内后重试；若持续出现该错误，请三方网盘应用重建该占位符文件。
 
 ## 34400034 活跃水合任务数量达到上限
 
 **错误信息**
 
-The number of active placeholder hydration tasks has reached the limit.
+The limit on pending hydrate tasks has been reached.
 
 **错误描述**
 
@@ -328,7 +328,7 @@ The number of active placeholder hydration tasks has reached the limit.
 
 **可能原因**
 
-单个云盘应用处于待处理状态的水合任务数达到20个，或全局处于待处理状态的水合任务数达到40个。
+单个网盘应用或全局处于待处理状态的水合任务数达到系统上限。
 
 **处理步骤**
 
