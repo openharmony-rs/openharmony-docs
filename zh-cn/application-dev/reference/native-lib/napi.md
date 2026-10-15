@@ -119,7 +119,7 @@ OpenHarmony的Node-API组件对Node-API的接口进行了重新实现，底层�
 |FUNC|napi_has_named_property|判断给定`Object`中是否有给定名称的属性。|10|
 |FUNC|napi_set_element|在给定`Object`的指定索引处，设置元素。|10|
 |FUNC|napi_get_element|获取给定`Object`指定索引处的元素。|10|
-|FUNC|napi_has_element|判断给定Object的指定索引处是否存在元素。|10|
+|FUNC|napi_has_element|判断给定`Object`的指定索引处是否存在元素。|10|
 |FUNC|napi_delete_element|尝试删除给定`Object`的指定索引处的元素。|10|
 |FUNC|napi_define_properties|批量的向给定`Object`中定义属性。|10|
 |FUNC|napi_type_tag_object|将tag指针的值与`Object`关联。|10|
@@ -1078,7 +1078,7 @@ napi_status napi_create_ark_runtime(napi_env *env)
 
 **参数：**
 
-- [out] env：新创建的Node-API环境对象。
+- [out] env: 新创建的Node-API环境对象。
 
 **返回：**
 
