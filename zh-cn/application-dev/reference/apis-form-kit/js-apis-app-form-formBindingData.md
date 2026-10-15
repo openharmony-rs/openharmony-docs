@@ -55,6 +55,7 @@ FormBindingData对象的属性定义。
 | -------- | -------- | -------- |-------- | -------- |
 | data | ArkTS-Dyn: Object<br>ArkTS-Sta: RecordData | 否 | 否 | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。|
 | proxies<sup>10+</sup> | Array<[ProxyData](#proxydata10)> | 否 | 是 | 卡片代理刷新的订阅信息，配置后会订阅代理刷新消息。默认为空数组，表示不订阅代理刷新消息。当需要使用卡片代理刷新功能时传入此参数，不传入时默认为空数组（不使用代理刷新）。<br>**模型约束：** 此接口仅可在Stage模型下使用。<br>|
+| isSupportMoreImages<sup>26.0.1+</sup> | boolean | 否 | 是 | 是否支持更多图片数据，在卡片数据使用共享内存时，当设置值为false时，最多支持正常显示的图片是20张，当设置为true时，最多支持正常显示的图片是30张。更多图片有数据总量超过10M的风险，导致卡片数据更新失败。<br>默认值：false。<br>**模型约束：** 此接口仅可在Stage模型下使用。|
 
 ## formBindingData.createFormBindingData
 
@@ -168,5 +169,76 @@ try {
   console.error(`catch error, code: ${code}, message: ${message}`);
 } finally {
   fileIo.closeSync(file.fd);
+}
+```
+
+## formBindingData.createFormBindingDataEx<sup>26.0.1+</sup>
+
+ArkTS-Dyn: createFormBindingDataEx(obj?: Object | string): FormBindingData
+
+ArkTS-Sta: createFormBindingDataEx(obj?: RecordData): FormBindingData
+
+创建一个FormBindingData对象，并将isSupportMoreImages设为true。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**原子化服务API：** 从API version 26.0.1开始，该接口支持在原子化服务中使用。
+
+**系统能力：** SystemCapability.Ability.Form
+
+**参数：**
+
+| 参数名 | 类型           | 必填 | 说明                                                         |
+| ------ | -------------- | ---- | ------------------------------------------------------------ |
+| obj    | Object \| string | 否   | 卡片要展示的数据。可以是包含若干键值对的Object或者JSON格式的字符串。其中图片数据以'formImages'作为标识，内容为图片标识与图片文件描述符的键值对`{'formImages': {'key1': fd1, 'key2': fd2}}`。<br>**说明：** 在[卡片刷新](../../form/arkts-ui-widget-interaction-overview.md)过程中，卡片UI通过[@LocalStorageProp](../../ui/state-management/arkts-localstorage.md#localstorageprop)接收卡片数据时，FormBindingData对象会序列化，即卡片数据会转换成string类型。如果卡片刷新的数据通过共享内存更新，刷新数据总大小不超过10MB，刷新图片数量不超过30张，超出限制的图片会显示异常。 |
+
+**返回值：**
+
+| 类型                                | 说明                                    |
+| ----------------------------------- | --------------------------------------- |
+| [FormBindingData](#formbindingdata) | 基于传入数据创建的FormBindingData对象，isSupportMoreImages为true。 |
+
+**示例：**
+
+```ts
+import { formBindingData } from '@kit.FormKit';
+import { fileIo } from '@kit.CoreFileKit';
+import { common } from '@kit.AbilityKit';
+
+@Entry
+@Component
+struct Index {
+  content = this.getUIContext().getHostContext() as common.UIAbilityContext;
+  pathDir: string = this.content.filesDir;
+
+  createFormBindingDataEx() {
+    let filePath = this.pathDir + "/form.png";
+    let fd: number = -1;
+    try {
+      fd = fileIo.openSync(filePath, fileIo.OpenMode.READ_ONLY).fd;
+      let formImagesParam: Record<string, number> = {
+        'image': fd
+      };
+      let createFormBindingDataExParam: Record<string, string | Record<string, number>> = {
+        'name': '21°',
+        'imgSrc': 'image',
+        'formImages': formImagesParam
+      };
+      let formBindingDataObj = formBindingData.createFormBindingDataEx(createFormBindingDataExParam);
+    } catch (error) {
+      console.error(`catch error, code: ${(error as BusinessError).code}, message: ${(error as BusinessError).message}`);
+    } finally {
+      if (fd !== -1) {
+        fileIo.closeSync(fd);
+      }
+    }
+  }
+
+  build() {
+    Button('createFormBindingDataEx')
+      .onClick((event: ClickEvent) => {
+        this.createFormBindingDataEx();
+      })
+  }
 }
 ```
