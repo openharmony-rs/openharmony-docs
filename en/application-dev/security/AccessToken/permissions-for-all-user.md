@@ -266,9 +266,11 @@ See the [alternative solution of the **Files** permission group](app-permission-
 
 ## ohos.permission.WINDOW_CAPTURE
 
-Allows an application to capture the content information of a specified window.
+Allows an application to obtain the content of a specified window and capture screenshots of it.
 
-With this permission, the application can capture the content information of specified window.
+With this permission, the application can query the ID of a specified window and the package name of the application that owns it, and take screenshots of that window. 
+
+This permission applies to window content awareness scenarios for agent applications, such as passing the window content to a large language model (LLM) for analysis.
 
 **Permission level**: normal
 
