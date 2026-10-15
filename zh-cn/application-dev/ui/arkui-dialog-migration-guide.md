@@ -1710,8 +1710,7 @@ struct Next {
 
 <!-- @[page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogInNavigation.ets) -->
 
-```typescript
-// PageLevelDialogInNavigation.ets
+``` TypeScript
 import { LevelMode, ImmersiveMode, DialogResult } from '@kit.ArkUI';
 
 let customDialogId: number = 0;
