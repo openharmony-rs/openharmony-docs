@@ -630,7 +630,7 @@ move(mechId: int, params: MoveParams): Promise&lt;Result&gt;
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| Promise&lt;[Result](#result)&gt; | Promise对象，返回旋转执行结果。 |
+| Promise&lt;[Result](#result)&gt; | Promise对象，返回移动执行结果。 |
 
 **错误码：**
 
@@ -684,7 +684,7 @@ moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&
 
 | 类型                                        | 说明        |
 | ------------------------------------------- | --------- |
-| Promise&lt;[Result](#result)&gt;| Promise对象，返回旋转执行结果。 |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回移动执行结果。 |
 
 **错误码：**
 
