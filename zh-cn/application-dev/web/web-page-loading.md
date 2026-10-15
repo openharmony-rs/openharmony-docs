@@ -268,8 +268,7 @@ Web页面加载失败问题复杂多样，本文详细列举常见问题的排�
 
     <!-- @[script2](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/WebWriteScreenIssue/entry2/src/main/resources/resfile/js/script.js) -->
     
-    ```javascript
-    // main/resources/resfile/js/script.js
+    ``` JavaScript
     const body = document.body;
     const element = document.createElement('div');
     element.textContent = 'success';
