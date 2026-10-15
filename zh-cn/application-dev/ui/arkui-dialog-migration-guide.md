@@ -488,47 +488,49 @@ export struct ActionSheetBeforeMigrate {
 
 <!-- @[action_sheet_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetAfterMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 @Entry
 @Component
-struct ActionSheetMigrationPage {
+export struct ActionSheetAfterMigrate {
   private presenter: DialogPresenter = this.getUIContext().getDialogPresenter();
   @State result: string = '';
 
   build() {
-    Row() {
-      Column() {
-        Text('ActionSheet 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
+    NavDestination() {
+      Row() {
+        Column() {
+          Text('ActionSheet 迁移示例')
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+            .margin({ bottom: 20 })
 
-        Button('老接口：showActionSheet')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.result = '老接口示例请参考 ts-methods-action-sheet.md';
-          })
+          Button('老接口：showActionSheet')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.result = '老接口示例请参考 ts-methods-action-sheet.md';
+            })
 
-        Button('新接口：DialogPresenter.present（列表选择弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewActionSheet();
-          })
+          Button('新接口：DialogPresenter.present（列表选择弹窗）')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.showNewActionSheet();
+            })
 
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
+          if (this.result) {
+            Text(this.result)
+              .fontSize(14)
+              .margin({ top: 10 })
+          }
         }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 
   private showNewActionSheet(): void {
