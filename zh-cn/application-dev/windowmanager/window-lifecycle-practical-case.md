@@ -11,9 +11,11 @@
 
 开发者在开发应用时，要兼顾应用的生命周期在多种设备类型上的体验，为了帮助开发者快速上手，针对如下典型场景提供适配示例。
 
-## PC应用从托盘区恢复主窗
+## PC设备应用从后台恢复至前台
 
-在PC/2in1设备上，可通过DeskTopExtensionKit提供的[statusBarManager](../reference/apis-ability-kit/js-apis-app-ability-statusBarManager.md)接口将应用图标注册到状态栏托盘区，并监听托盘图标的点击事件。应用主窗口进入后台状态后，当用户点击托盘图标时，应用可调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。
+在PC/2in1设备上，应用主窗口进入后台状态后，可通过调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口将主窗口恢复到前台显示，并恢复到进入后台状态之前的大小和位置。若主窗口已处于前台状态，调用该接口仅抬升主窗口层级。
+
+对于已将应用图标注册到状态栏托盘区的应用，可通过监听托盘图标的点击事件，在用户点击托盘图标时调用[restore()](../reference/apis-arkui/arkts-apis-window-Window.md#restore14)接口恢复主窗口。
 
 > **说明：**
 >
@@ -26,115 +28,44 @@
 <!-- @[quick_start](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkUIWindowSamples/WindowRestoreSample/entry/src/main/ets/pages/Index.ets) -->
 
 ``` TypeScript
-import { common } from '@kit.AbilityKit';
-import { BusinessError, emitter } from '@kit.BasicServicesKit';
-import { hilog } from '@kit.PerformanceAnalysisKit';
-import { statusBarManager } from '@kit.DeskTopExtensionKit';
-import { image } from '@kit.ImageKit';
+import hilog from '@ohos.hilog';
 import { window } from '@kit.ArkUI';
+import { BusinessError } from '@kit.BasicServicesKit';
 
 const DOMAIN: number = 0xFF00;
 const TAG: string = '[Sample_WindowRestore]';
-// 默认弹窗高度，单位vp
-const QUICK_OPERATION_HEIGHT: number = 300;
 
 @Entry
 @Component
 struct Index {
-  private mainWindow: window.Window | undefined;
+  mainWindow: window.Window | undefined;
 
   aboutToAppear() {
+    // 在 EntryAbility.ets 中通过 windowStage.getMainWindowSync() 保存主窗
     this.mainWindow = AppStorage.get('mainWindow_Restore') as window.Window;
+  }
+
+  minimizeAndRestore() {
     if (!this.mainWindow) {
-      hilog.error(DOMAIN, TAG, '%{public}s', 'Failed to get main window from AppStorage.');
-      return;
-    }
-    const context = this.getUIContext().getHostContext() as common.Context;
-    if (!context) {
-      hilog.error(DOMAIN, TAG, '%{public}s', 'Failed to get host context.');
-      return;
-    }
-    this.addToStatusBar(context);
-  }
-
-  onStatusBarIconClick = (eventData: emitter.EventData) => {
-    // 自定义图标点击业务
-    const data = eventData.data;
-    if (data) {
-      switch (data['iconClickType']) {
-        case 'leftClick':
-          this.restoreMainWindow();
-          break;
-        default:
-          break;
-      }
-    }
-  }
-
-  async addToStatusBar(context: common.Context): Promise<void> {
-    // 使用应用默认图标作为托盘图标
-    const iconData = await context.resourceManager.getMediaContent($r('app.media.foreground'));
-    const imageSource = image.createImageSource(iconData.buffer);
-    const pixelMap: image.PixelMap = await imageSource.createPixelMap();
-    const icon: statusBarManager.StatusBarIcon = {
-      white: pixelMap,
-      black: pixelMap
-    };
-
-    // 构建左键业务弹窗信息。abilityName传空字符串时，支持通过监听statusBarIconClick事件处理点击业务
-    const operation: statusBarManager.QuickOperation = {
-      abilityName: '',
-      title: 'Demo',
-      height: QUICK_OPERATION_HEIGHT
-    };
-
-    // 构建添加到状态栏的图标详细信息
-    const item: statusBarManager.StatusBarItem = {
-      icons: icon,
-      quickOperation: operation
-    };
-
-    try {
-      statusBarManager.addToStatusBar(context, item);
-      statusBarManager.on('statusBarIconClick', this.onStatusBarIconClick);
-      hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in adding icon to status bar.');
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      hilog.error(DOMAIN, TAG, 'Failed to add icon to status bar. Code: %{public}s, message: %{public}s',
-        `${err.code}`, `${err.message}`);
-    }
-  }
-
-  minimizeMainWindow() {
-    if (!this.mainWindow) {
-      hilog.error(DOMAIN, TAG, '%{public}s', 'Failed to minimize the window. Main window is not available.');
+      hilog.error(DOMAIN, TAG, '%{public}s', 'Main window is not available.');
       return;
     }
     try {
+      // 调用minimize()接口，使主窗进入后台状态
       this.mainWindow.minimize();
+      // 设置延时函数，延时5秒钟后对主窗进行恢复
+      setTimeout(() => {
+        // 调用restore()接口，将主窗口恢复到前台显示
+        this.mainWindow?.restore().then(() => {
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in restoring the window.');
+        }).catch((err: BusinessError) => {
+          hilog.error(DOMAIN, TAG, 'Failed to restore the window. Code: %{public}s, message: %{public}s',
+            `${err.code}`, `${err.message}`);
+        });
+      }, 5000);
     } catch (error) {
       const err: BusinessError = error as BusinessError;
-      hilog.error(DOMAIN, TAG, 'Failed to minimize the window. Code: %{public}s, message: %{public}s',
-        `${err.code}`, `${err.message}`);
-    }
-  }
-
-  restoreMainWindow() {
-    if (!this.mainWindow) {
-      hilog.error(DOMAIN, TAG, '%{public}s', 'Failed to restore the window. Main window is not available.');
-      return;
-    }
-    try {
-      // 调用restore()接口，将主窗口从最小化状态恢复到前台显示
-      this.mainWindow.restore().then(() => {
-        hilog.info(DOMAIN, TAG, '%{public}s', 'Succeeded in restoring the window.');
-      }).catch((err: BusinessError) => {
-        hilog.error(DOMAIN, TAG, 'Failed to restore the window. Code: %{public}s, message: %{public}s',
-          `${err.code}`, `${err.message}`);
-      });
-    } catch (error) {
-      const err: BusinessError = error as BusinessError;
-      hilog.error(DOMAIN, TAG, 'Failed to restore the window. Code: %{public}s, message: %{public}s',
+      hilog.error(DOMAIN, TAG, 'Failed to minimize and restore the window. Code: %{public}s, message: %{public}s',
         `${err.code}`, `${err.message}`);
     }
   }
@@ -147,7 +78,8 @@ struct Index {
       Button($r('app.string.minimize_button'))
         .id('minimizeButton')
         .onClick(() => {
-          this.minimizeMainWindow();
+          hilog.info(DOMAIN, TAG, '%{public}s', 'Click: Minimize and restore');
+          this.minimizeAndRestore();
         })
         .margin({ top: 20 })
     }
