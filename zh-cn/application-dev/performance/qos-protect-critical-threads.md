@@ -45,7 +45,6 @@
     }
 
     ```
-
     ```c++
     // 负载任务
     void AddLoads(int n) { 
@@ -111,7 +110,7 @@
                 return;
             }
         } else {
-            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "set level qos failed!");
+            OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "get level qos failed!");
             return;
         }
 
@@ -121,7 +120,7 @@
         if (sched_setaffinity(0, sizeof(mask), &mask) != 0) {
             OH_LOG_Print(LOG_APP, LOG_ERROR, LOG_PRINT_DOMAIN, "QoS", "bind qos thread failed");
             return;
-        }
+         }
         // 统计执行完斐波那契数列计算任务后所耗时间
         auto startTime = std::chrono::system_clock::now();
         // 执行斐波那契数列计算任务
@@ -183,13 +182,14 @@
 
     ```
 
-    计算线程（线程id：39260）设置低QoS等级trace图
+    计算线程（线程id：39260）设置低QoS等级trace图           
 
-    ![](./figures/qos-low.png)
+    ![](./figures/qos-low.png)   
 
     如上图所示，计算线程执行完计算任务耗时726.8毫秒。
 
-    - **正例：** 给计算线程配置高QoS等级
+    - **正例：** 给计算线程配置高QoS等级 
+    
 
     ```c++
     static napi_value highQoSCalculate(napi_env env, napi_callback_info info) {
@@ -218,11 +218,11 @@
 
     ```
 
-    计算线程（线程id：39204）设置高QoS等级trace图
+    计算线程（线程id：39204）设置高QoS等级trace图    
 
     ![](./figures/qos-high.png)  
 
-    如上图所示，计算线程执行完计算任务耗时323.9毫秒。
+    如上图所示，计算线程执行完计算任务耗时323.9毫秒。    
 
     > **说明：**
     >

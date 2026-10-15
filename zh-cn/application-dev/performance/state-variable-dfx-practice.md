@@ -35,6 +35,7 @@
 下面通过一个点击按钮更改状态变量引起组件刷新的场景示例，为开发者提供工具的实践指导。场景示例仅展示部分关键代码，完整代码请访问[示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/DFXStateManagement/src/main/ets/view/DFXStateBeforeOptimization.ets)。
 
 在以下代码中，创建了自定义组件ComponentA、SpecialImage，每个组件都拥有一些状态变量和UI组件。组件ComponentA中存在Move和Scale两个按钮，在按钮的点击回调中改变状态变量的值刷新相应的组件。
+
 ```javascript
 // feature/DFXStateManagement/src/main/ets/view/DFXStateBeforeOptimization.ets  
 
@@ -125,7 +126,7 @@ struct SpecialImage {
 
 运行上述示例并分别点击按钮，可以看到点击Move按钮和Scale按钮时组件SpecialImage都出现了刷新，运行效果图如下。
 
-![](./figures/state-variable-dfx-practice-pic1.gif) 
+![](./figures/state-variable-dfx-practice-pic1.gif)
 
 下面以自定义组件ComponentA和其中的状态变量uiStyle为例介绍工具的使用过程。
 
@@ -137,7 +138,7 @@ struct SpecialImage {
     hdc shell "hidumper -s WindowManagerService -a '-a'"
     ```
 
-    ![](./figures/state-variable-dfx-practice-pic2.png) 
+    ![](./figures/state-variable-dfx-practice-pic2.png)
 
 3. 基于上一步获取的窗口Id 11，使用-viewHierarchy命令携带-r 参数递归打印应用的自定义组件树。从结果中找到目标组件ComponentA，后面括号中的内容即为组件ComponentA的节点Id 70。
 
@@ -181,101 +182,101 @@ struct SpecialImage {
 
 5. 以状态变量uiStyle为例。
 
-① Sync peers表示uiStyle在自定义组件SpecialImage中存在@Link/@Consume类型的状态变量specialImageUiStyle订阅数据变化。
+    ① Sync peers表示uiStyle在自定义组件SpecialImage中存在@Link/@Consume类型的状态变量specialImageUiStyle订阅数据变化。
 
-② Dependent components表示在ComponentA组件中存在组件Stack[79]和Image[81]使用了状态变量uiStyle，关联组件的数量为2。
+    ② Dependent components表示在ComponentA组件中存在组件Stack[79]和Image[81]使用了状态变量uiStyle，关联组件的数量为2。
 
-所以当uiStyle变化时，影响的组件范围为自定义组件SpecialImage以及系统组件Stack[79]和Image[81]。
+    所以当uiStyle变化时，影响的组件范围为自定义组件SpecialImage以及系统组件Stack[79]和Image[81]。
 
-![](./figures/state-variable-dfx-practice-pic3.png) 
+    ![](./figures/state-variable-dfx-practice-pic3.png)
 
-示例中组件SpecialImage仅使用了uiStyle传递到specialImageUiStyle中的属性scaleX、scaleY，但是点击Move按钮修改uiStyle中的属性translateY时引起的uiStyle变化也会导致组件SpecialImage的刷新，所以可以将uiStyle中的属性scaleX、scaleY提取到状态变量scaleStyle中，属性translateX和translateY提取到状态变量translateStyle中，仅传递scaleStyle给组件SpecialImage，避免不必要的刷新。
+    示例中组件SpecialImage仅使用了uiStyle传递到specialImageUiStyle中的属性scaleX、scaleY，但是点击Move按钮修改uiStyle中的属性translateY时引起的uiStyle变化也会导致组件SpecialImage的刷新，所以可以将uiStyle中的属性scaleX、scaleY提取到状态变量scaleStyle中，属性translateX和translateY提取到状态变量translateStyle中，仅传递scaleStyle给组件SpecialImage，避免不必要的刷新。
 
-由于提取后存在Class的嵌套，所以需要使用@Observed/@ObjectLink装饰器装饰相应的Class和状态变量。修改后的部分代码如下，完整代码可访问[示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/DFXStateManagement/src/main/ets/view/DFXStateAfterOptimization.ets)获取。
+    由于提取后存在Class的嵌套，所以需要使用@Observed/@ObjectLink装饰器装饰相应的Class和状态变量。修改后的部分代码如下，完整代码可访问[示例代码](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/Performance/PerformanceLibrary/feature/DFXStateManagement/src/main/ets/view/DFXStateAfterOptimization.ets)获取。
 
-```javascript
-// feature/DFXStateManagement/src/main/ets/view/DFXStateAfterOptimization.ets
+    ```javascript
+    // feature/DFXStateManagement/src/main/ets/view/DFXStateAfterOptimization.ets
 
-// 常量声明
-// ...
-// 样式属性类，嵌套ScaleStyle, TranslateStyle  
-@Observed  
-class UIStyle {  
-  translateStyle: TranslateStyle = new TranslateStyle();  
-  scaleStyle: ScaleStyle = new ScaleStyle();  
-}  
-
-// 缩放属性类  
-@Observed  
-class ScaleStyle {  
-  public scaleX: number = 0.3;  
-  public scaleY: number = 0.3;  
-}  
-
-// 位移属性类  
-@Observed  
-class TranslateStyle {  
-  public translateX: number = 0;  
-  public translateY: number = 0;  
-}  
-
-@Component  
-struct ComponentA {  
-  @ObjectLink scaleStyle: ScaleStyle;  
-  @ObjectLink translateStyle: TranslateStyle;  
-  
-  build() {  
-    Column() {  
-      SpecialImage({  
-        specialImageScaleStyle: this.scaleStyle  
-      })  
-      // 其他UI组件  
+    // 常量声明
+    // ...
+    // 样式属性类，嵌套ScaleStyle, TranslateStyle  
+    @Observed  
+    class UIStyle {  
+      translateStyle: TranslateStyle = new TranslateStyle();  
+      scaleStyle: ScaleStyle = new ScaleStyle();  
     }  
-  }  
-}  
-  
-@Component  
-struct SpecialImage {  
-  @Link specialImageScaleStyle: ScaleStyle;  
-  
-  // isRenderSpecialImage函数  
-  build() {  
-    Column() {  
-      Image($r('app.media.icon'))  
-        .scale({  
-          x: this.specialImageScaleStyle.scaleX,  
-          y: this.specialImageScaleStyle.scaleY  
-        })  
-        .opacity(this.isRenderSpecialImage())   
-      Text("SpecialImage")  
+
+    // 缩放属性类  
+    @Observed  
+    class ScaleStyle {  
+      public scaleX: number = 0.3;  
+      public scaleY: number = 0.3;  
+    }  
+
+    // 位移属性类  
+    @Observed  
+    class TranslateStyle {  
+      public translateX: number = 0;  
+      public translateY: number = 0;  
+    }  
+
+    @Component  
+    struct ComponentA {  
+      @ObjectLink scaleStyle: ScaleStyle;  
+      @ObjectLink translateStyle: TranslateStyle;  
+      
+      build() {  
+        Column() {  
+          SpecialImage({  
+            specialImageScaleStyle: this.scaleStyle  
+          })  
+          // 其他UI组件  
+        }  
+      }  
+    }  
+      
+    @Component  
+    struct SpecialImage {  
+      @Link specialImageScaleStyle: ScaleStyle;  
+      
+      // isRenderSpecialImage函数  
+      build() {  
+        Column() {  
+          Image($r('app.media.icon'))  
+            .scale({  
+              x: this.specialImageScaleStyle.scaleX,  
+              y: this.specialImageScaleStyle.scaleY  
+            })  
+            .opacity(this.isRenderSpecialImage())   
+          Text("SpecialImage")  
+        }
+      }  
     }
-  }  
-}
-// 页面根组件，ComponentA的父组件
-```
+    // 页面根组件，ComponentA的父组件
+    ```
 
-修改后的示例运行效果图如下，只有点击Scale按钮时SpecialImage产生刷新现象，点击Move按钮时SpecialImage不会刷新。
+    修改后的示例运行效果图如下，只有点击Scale按钮时SpecialImage产生刷新现象，点击Move按钮时SpecialImage不会刷新。
 
-![](./figures/state-variable-dfx-practice-pic4.gif) 
+    ![](./figures/state-variable-dfx-practice-pic4.gif)
 
-可以使用上文步骤再次获取ComponentA组件的状态变量信息如下，可以看到ComponentA中状态变量scaleStyle影响组件SpecialImage[74]和Image[78]，状态变量translateStyle影响组件Stack[76]，translateStyle的变化不会再导致SpecialImage的刷新。
+    可以使用上文步骤再次获取ComponentA组件的状态变量信息如下，可以看到ComponentA中状态变量scaleStyle影响组件SpecialImage[74]和Image[78]，状态变量translateStyle影响组件Stack[76]，translateStyle的变化不会再导致SpecialImage的刷新。
 
-```shell
---------------ViewPU State Variables--------------  
-[-stateVariables, viewId=70, isRecursive=false]  
-  
-|--ComponentA[70]  
-  @ObjectLink (class SynchedPropertyNestedObjectPU) 'scaleStyle'[71]  
-  |--Owned by @Component 'ComponentA'[70]  
-  |--Sync peers: {  
-    @Link/@Consume (class SynchedPropertyTwoWayPU) 'specialImageScaleStyle'[75] <@Component 'SpecialImage'[74]>  
-  }  
-  |--Dependent components: 1 elmtIds: 'Image[78]'  
-  @ObjectLink (class SynchedPropertyNestedObjectPU) 'translateStyle'[72]  
-  |--Owned by @Component 'ComponentA'[70]  
-  |--Sync peers: none  
-  |--Dependent components: 1 elmtIds: 'Stack[76]'
-```
+    ```shell
+    --------------ViewPU State Variables--------------  
+    [-stateVariables, viewId=70, isRecursive=false]  
+      
+    |--ComponentA[70]  
+      @ObjectLink (class SynchedPropertyNestedObjectPU) 'scaleStyle'[71]  
+      |--Owned by @Component 'ComponentA'[70]  
+      |--Sync peers: {  
+        @Link/@Consume (class SynchedPropertyTwoWayPU) 'specialImageScaleStyle'[75] <@Component 'SpecialImage'[74]>  
+      }  
+      |--Dependent components: 1 elmtIds: 'Image[78]'  
+      @ObjectLink (class SynchedPropertyNestedObjectPU) 'translateStyle'[72]  
+      |--Owned by @Component 'ComponentA'[70]  
+      |--Sync peers: none  
+      |--Dependent components: 1 elmtIds: 'Stack[76]'
+    ```
 
 ## 调试命令和输出详解
 
@@ -328,7 +329,7 @@ struct ComponentB {
     hdc shell "hidumper -s WindowManagerService -a '-a'"
     ```
 
-    ![](./figures/state-variable-dfx-practice-pic5.png) 
+    ![](./figures/state-variable-dfx-practice-pic5.png)
 
 2. 打印自定义组件树。
 
@@ -390,23 +391,23 @@ struct ComponentB {
     ```
 
     - @State/@Provide：状态变量的装饰器类型。
-    - 'message'[5]：状态变量的名称和节点Id，但是不能使用-viewId=5来获取相应的dump信息。
+    - 'indexMessage'[5]：状态变量的名称和节点Id，但是不能使用-viewId=5来获取相应的dump信息。
     - Owned by @Component 'Index'[4]：状态变量所属组件。
     - Sync peers： 要同步的其他状态变量和其所属的组件。
     - Dependent components：当前状态变量在此组件中关联的节点Id，即依赖该变量的系统或自定义组件的节点Id。
 
-    >**注意：**<br>
-    >stateVariables只支持打印指定viewId的状态变量信息，不支持递归打印。所以只能获取单个自定义组件的状态变量信息进行逐级分析，目前无法从全局查看某个状态变量影响到的所有组件。
+      >**注意：**<br>
+      >stateVariables只支持打印指定viewId的状态变量信息，不支持递归打印。所以只能获取单个自定义组件的状态变量信息进行逐级分析，目前无法从全局查看某个状态变量影响到的所有组件。
 
 4. 打印所有信息，包含自定义组件树和状态变量信息。未指定节点时默认打印根节点，携带-viewId参数打印指定节点信息，携带-r参数递归打印。
 
-```shell
-hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -dumpAll'"
-```
+  ```shell
+  hdc shell "hidumper -s WindowManagerService -a '-w 11 -jsdump -dumpAll'"
+  ```
 
-输出结果如下图：
+  输出结果如下图：
 
-![](./figures/state-variable-dfx-practice-pic6.png) 
+  ![](./figures/state-variable-dfx-practice-pic6.png)
 
 1. 自定义组件树，对应命令-viewHierarchy。
 
