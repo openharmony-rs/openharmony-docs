@@ -8,40 +8,40 @@
 
 ## 概述
 
-本文档帮助开发者了解[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[promptAction.openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹窗类别提供从老接口到新接口的迁移映射。
+本文档帮助开发者了解[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[promptAction.openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹出框类别提供从老接口到新接口的迁移映射。
 
 > 从API版本26.0.1开始，[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)提供统一的Dialog类型声明能力。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
-## 能力介绍
+## 接口说明
 
 [@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口在完全兼容老接口能力的基础上，新增支持返回错误码的能力。
 
 | 接口名 | 说明 |
 |--------|------|
-| [DialogTextStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions) | 文本样式选项，控制弹窗消息内容的断行方式，作为 `DialogMessage` 的基类。 |
-| [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) | 弹窗按钮配置，用于 `DialogStyleOptions.buttons` 数组元素。 |
+| [DialogTextStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogtextstyleoptions) | 文本样式选项，控制弹出框消息内容的断行方式，作为 `DialogMessage` 的基类。 |
+| [DialogButton](../reference/apis-arkui/js-apis-dialog.md#dialogbutton) | 弹出框按钮配置，用于 `DialogStyleOptions.buttons` 数组元素。 |
 | [DialogSheet](../reference/apis-arkui/js-apis-dialog.md#dialogsheet) | Action-sheet 风格的菜单项，用于 `DialogStyleOptions.sheets` 数组元素。 |
-| [DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) | 所有弹窗样式的基类选项，承载通用样式和行为配置，被 `DialogStyleOptions` 和 `DialogCustomOptions` 继承。 |
+| [DialogBaseOptions](../reference/apis-arkui/js-apis-dialog.md#dialogbaseoptions) | 所有弹出框样式的基类选项，承载通用样式和行为配置，被 `DialogStyleOptions` 和 `DialogCustomOptions` 继承。 |
 | [DialogMessage](../reference/apis-arkui/js-apis-dialog.md#dialogmessage) | 消息内容与文本样式，继承自 `DialogTextStyleOptions`，用于 `DialogStyleOptions.message`。 |
-| [DialogStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions) | 固定样式弹窗选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(options)`。 |
-| [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) | 自定义样式弹窗选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(content, options)`。 |
-| [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) | 弹窗控制器类，通过 `DialogBaseOptions.controller` 传入，提供 `close()` 和 `getState()` 方法。 |
-| [DialogResult](../reference/apis-arkui/js-apis-dialog.md#dialogresult) | 弹窗操作结果，`present()` 的 Promise 返回值，包含 `dialogId`。 |
-| [DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal) | 弹窗关闭信息，`onWillDismiss` 回调参数，包含 `dismiss` 和 `reason`。 |
-| [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) | 弹窗对齐方式枚举（TOP/CENTER/BOTTOM/DEFAULT 等 10 种）。 |
+| [DialogStyleOptions](../reference/apis-arkui/js-apis-dialog.md#dialogstyleoptions) | 固定样式弹出框选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(options)`。 |
+| [DialogCustomOptions](../reference/apis-arkui/js-apis-dialog.md#dialogcustomoptions) | 自定义样式弹出框选项，继承自 `DialogBaseOptions`，用于 `DialogPresenter.present(content, options)`。 |
+| [DialogBaseController](../reference/apis-arkui/js-apis-dialog.md#dialogbasecontroller) | 弹出框控制器类，通过 `DialogBaseOptions.controller` 传入，提供 `close()` 和 `getState()` 方法。 |
+| [DialogResult](../reference/apis-arkui/js-apis-dialog.md#dialogresult) | 弹出框操作结果，`present()` 的 Promise 返回值，包含 `dialogId`。 |
+| [DialogDismissal](../reference/apis-arkui/js-apis-dialog.md#dialogdismissal) | 弹出框关闭信息，`onWillDismiss` 回调参数，包含 `dismiss` 和 `reason`。 |
+| [DialogBaseAlignment](../reference/apis-arkui/js-apis-dialog.md#dialogbasealignment) | 弹出框对齐方式枚举（TOP/CENTER/BOTTOM/DEFAULT 等 10 种）。 |
 | [DialogButtonOrientation](../reference/apis-arkui/js-apis-dialog.md#dialogbuttonorientation) | 按钮排列方向枚举（AUTO/HORIZONTAL/VERTICAL）。 |
-| [DialogState](../reference/apis-arkui/js-apis-dialog.md#dialogstate) | 弹窗状态枚举（UNINITIALIZED~DISAPPEARED），通过 `DialogBaseController.getState()` 查询。 |
+| [DialogState](../reference/apis-arkui/js-apis-dialog.md#dialogstate) | 弹出框状态枚举（UNINITIALIZED~DISAPPEARED），通过 `DialogBaseController.getState()` 查询。 |
 
-## Dialog新老接口差异
+## 弹出框新老接口差异
 
 新老接口在“属性”和“使用方式”两个维度存在一定差异，详见下方对应小节：
 
-- **属性差异**：按弹窗类型逐一定义老接口与新接口的属性映射，以及高级动画参数差异。每类弹窗提供属性对照表（含编程模型、内容构建、对齐、偏移、蒙层、边框、阴影、动画回调、键盘避让、悬浮模式、层级模式、系统材质等属性）和“迁移前/迁移后”完整代码示例。
-- **使用方式差异**：聚焦老接口无法实现、仅新接口支持的能力，包括弹出后动态修改弹窗位置（对齐、偏移、蒙层颜色等）而无需关闭重开，以及自定义弹窗场景支持系统材质，并配有代码示例对比说明。
+- **属性差异**：按弹出框类型逐一定义老接口与新接口的属性映射，以及高级动画参数差异。每类弹出框提供属性对照表（含编程模型、内容构建、对齐、偏移、蒙层、边框、阴影、动画回调、键盘避让、悬浮模式、层级模式、系统材质等属性）和“迁移前/迁移后”完整代码示例。
+- **使用方式差异**：聚焦老接口无法实现、仅新接口支持的能力，包括弹出后动态修改弹出框位置（对齐、偏移、蒙层颜色等）而无需关闭重开，以及自定义弹出框场景支持系统材质，并配有代码示例对比说明。
 
 ### 属性差异
 
-1. CustomDialog（自定义弹窗）
+1. CustomDialog（自定义弹出框）
 
 老接口使用CustomDialogController的open和close接口打开和关闭弹出框，新接口使用DialogPresenter的present和dismiss接口打开和关闭弹出框，具体示例见表格下方。
 
@@ -78,6 +78,8 @@
 
 **迁移前示例（老接口）：**
 
+<!-- @[custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogBeforeMigrate.ets) -->
+
  ```typescript
  @CustomDialog
  struct CustomDialogExample {
@@ -113,6 +115,8 @@
  ![迁移前示例图](figures/CustomDialogBeforeMigrate.png)
 
 **迁移后示例（新接口）：**
+
+<!-- @[custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogAfterMigrate.ets) -->
 
 ```typescript
 import { DialogPresenter, DialogBaseAlignment, DialogResult, ComponentContent } from '@kit.ArkUI';
@@ -255,6 +259,8 @@ struct CustomDialogMigrationPage {
 
 **迁移前示例（老接口）：**
 
+<!-- @[alert_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogBeforeMigrate.ets) -->
+
 ```typescript
 @Entry
 @Component
@@ -293,6 +299,8 @@ struct Index {
 ![迁移前示例图](figures/AlertDialogBeforeMigrate.png)
 
 **迁移后示例（新接口）：**
+
+<!-- @[alert_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/AlertDialogAfterMigrate.ets) -->
 
 ```typescript
 import { DialogBaseAlignment, DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -369,7 +377,7 @@ struct AlertDialogMigrationPage {
 
 ![迁移后示例图](figures/AlertDialogAfterMigrate.png)
 
-3. ActionSheet（列表选择弹窗）
+3. ActionSheet（列表选择弹出框）
 
 老接口使用UIContext.showActionSheet弹出列表选择弹出框，新接口使用DialogPresenter.present弹出列表选择弹出框，具体示例见表格下方。
 
@@ -404,6 +412,8 @@ struct AlertDialogMigrationPage {
 | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
+
+<!-- @[action_sheet_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetBeforeMigrate.ets) -->
 
 ```typescript
 @Entry
@@ -443,6 +453,8 @@ struct Index {
 ![迁移前示例图](figures/ActionSheetBeforeMigrate.png)
 
 **迁移后示例（新接口）：**
+
+<!-- @[action_sheet_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionSheetAfterMigrate.ets) -->
 
 ```typescript
 import { DialogDismissal, DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -548,6 +560,8 @@ struct ActionSheetMigrationPage {
 
 **迁移前示例（老接口）：**
 
+<!-- @[show_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogBeforeMigrate.ets) -->
+
 ```typescript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -590,6 +604,8 @@ struct Index {
 ![迁移前示例图](figures/ShowDialogBeforeMigrate.png)
 
 **迁移后示例（新接口）：**
+
+<!-- @[show_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ShowDialogAfterMigrate.ets) -->
 
 ```typescript
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -690,6 +706,8 @@ struct ShowDialogMigrationPage {
 
 **迁移前示例（老接口）：**
 
+<!-- @[action_menu_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuBeforeMigrate.ets) -->
+
 ```typescript
 import { BusinessError } from '@kit.BasicServicesKit';
 
@@ -732,6 +750,8 @@ struct Index {
 ![迁移前示例图](figures/ActionMenuBeforeMigrate.png)
 
 **迁移后示例（新接口）：**
+
+<!-- @[action_menu_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/ActionMenuAfterMigrate.ets) -->
 
 ```typescript
 import { DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -795,9 +815,9 @@ struct ShowActionMenuMigrationPage {
 
 ![迁移后示例图](figures/ActionMenuAfterMigrate.png)
 
-6. promptAction.presentCustomDialog（自定义弹窗）
+6. promptAction.presentCustomDialog（自定义弹出框）
 
-老接口使用promptAction.presentCustomDialog弹出自定义弹窗，新接口使用DialogPresenter.present弹出自定义弹窗，具体示例见表格下方。
+老接口使用promptAction.presentCustomDialog弹出自定义弹出框，新接口使用DialogPresenter.present弹出自定义弹出框，具体示例见表格下方。
 
 | 属性 | 老接口（promptAction.presentCustomDialog） | 新接口（DialogPresenter.present + DialogCustomOptions） |
 |------|------|------|
@@ -829,6 +849,8 @@ struct ShowActionMenuMigrationPage {
 | 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
+
+<!-- @[present_custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogBeforeMigrate.ets) -->
 
 ```typescript
 import { promptAction } from '@kit.ArkUI';
@@ -884,6 +906,8 @@ struct Index {
 ![迁移前示例图](figures/PresentCustomDialogBeforeMigrate.png)
 
 **迁移后示例（新接口）：**
+
+<!-- @[present_custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/PresentCustomDialogAfterMigrate.ets) -->
 
 ```typescript
 import { DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -960,9 +984,9 @@ struct PresentCustomDialogMigrationPage {
 
 ![迁移后示例图](figures/PresentCustomDialogAfterMigrate.png)
 
-7. promptAction.openCustomDialogWithController（带控制器的自定义弹窗）
+7. promptAction.openCustomDialogWithController（带控制器的自定义弹出框）
 
-老接口使用promptAction.openCustomDialogWithController弹出带控制器的自定义弹窗，新接口使用DialogPresenter.present弹出带控制器的自定义弹窗，具体示例见表格下方。
+老接口使用promptAction.openCustomDialogWithController弹出带控制器的自定义弹出框，新接口使用DialogPresenter.present弹出带控制器的自定义弹出框，具体示例见表格下方。
 
 | 属性 | 老接口（promptAction.openCustomDialogWithController） | 新接口（DialogPresenter.present + DialogCustomOptions） |
 |------|------|------|
@@ -994,6 +1018,8 @@ struct PresentCustomDialogMigrationPage {
 | 系统材质 | `systemMaterial: SystemUiMaterial`  | `systemMaterial: SystemUiMaterial` |
 
 **迁移前示例（老接口）：**
+
+<!-- @[open_custom_dialog_with_controller_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerBeforeMigrate.ets) -->
 
 ```typescript
 import { ComponentContent, promptAction } from '@kit.ArkUI';
@@ -1059,6 +1085,8 @@ struct Index {
 ![迁移前示例图](figures/OpenCustomDialogWithControllerBeforeMigrate.png)
 
 **迁移后示例（新接口）：**
+
+<!-- @[open_custom_dialog_with_controller_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenCustomDialogWithControllerAfterMigrate.ets) -->
 
 ```typescript
 import { DialogBaseAlignment, DialogBaseController, DialogPresenter, DialogResult } from '@kit.ArkUI';
@@ -1142,9 +1170,11 @@ struct OpenCustomDialogWithControllerMigrationPage {
 
 ### 使用方式差异
 
-新接口可以支持一些新的使用方式而老接口不能使用，比如老接口不支持弹出后动态修改弹窗位置，新接口可以；老接口在自定义场景不能使用系统材质，新接口可以。
+新接口可以支持一些新的使用方式而老接口不能使用，比如老接口不支持弹出后动态修改弹出框位置，新接口可以；老接口在自定义场景不能使用系统材质，新接口可以。
 
 老接口示例：
+
+<!-- @[custom_dialog_old_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogOldInterface.ets) -->
 
 ```ts
 import { ComponentContent } from '@kit.ArkUI';
@@ -1245,6 +1275,8 @@ struct Index {
 ![老接口示例图](figures/CustomDialogOldInterface.gif)
 
 新接口示例：
+
+<!-- @[custom_dialog_new_interface](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogNewInterface.ets) -->
 
 ```
 import {
@@ -1353,6 +1385,8 @@ struct Index {
 
 **迁移后示例（新接口）：**
 
+<!-- @[dialog_presenter_class_new](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/common/DialogPresenterClassNew.ts) -->
+
 ```typescript
 // DialogPresenterClassNew.ts
 import { BusinessError } from '@kit.BasicServicesKit';
@@ -1427,6 +1461,8 @@ export class DialogPresenterClassNew {
   }
 }
 ```
+
+<!-- @[open_dialog_and_update](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/OpenDialogAndUpdate.ets) -->
 
 ```typescript
 // Index.ets
@@ -1520,6 +1556,8 @@ export struct OpenDialogAndUpdate {
 
 下述示例为基于Router路由模式下的页面级弹出框。
 
+<!-- @[page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogBox.ets) -->
+
 ```typescript
 // PageLevelDialogBox.ets
 import { LevelMode, ImmersiveMode, DialogResult } from '@kit.ArkUI';
@@ -1590,6 +1628,8 @@ export struct PageLevelDialogBox {
 }
 ```
 
+<!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
+
 ```typescript
 // Next.ets
 // Next.ets
@@ -1618,6 +1658,8 @@ struct Next {
 ![页面级弹出框1](figures/RoutePageLevelDialogBasePresenter.gif)
 
 下述示例为基于Navigation导航模式下的页面级弹出框。使用本示例前需要参考[Navigation使用NavDestination作为导航页](../reference/apis-arkui/arkui-ts/ts-basic-components-navigation.md#示例16navigation使用navdestination作为导航页)文档完成Index首页和router_map.json的创建与配置。并使用下述示例代码中的PageLevelDialogInNavigation和PageLevelDialogInNavigationTestTwo组件替换Navigation参考文档中的PageHome和PageOne组件。
+
+<!-- @[page_level_dialog](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/PageLevelDialogInNavigation.ets) -->
 
 ```typescript
 // PageLevelDialogInNavigation.ets
