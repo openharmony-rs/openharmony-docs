@@ -812,6 +812,54 @@ try {
 }
 ```
 
+## mechanicManager.doAction
+
+function doAction(mechId: int, actionType: ActionType): Promise&lt;Result&gt;
+
+执行一个动作序列。
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+**参数：**
+
+| 参数名     | 类型                    | 必填 | 说明   |
+| ---------- | ---------------------- | ---- | ----- |
+| mechId | number | 是 | 机械体设备ID。 |
+| actionType | [ActionType](#actiontype) | 是 | 动作序列类型。|
+
+**返回值：**
+
+| 类型                                        | 说明        |
+| ------------------------------------------- | --------- |
+| Promise&lt;[Result](#result)&gt;| Promise对象，返回执行结果。 |
+
+**错误码：**
+
+以下的错误码的详细介绍请参见[机械体控制模块错误码](errorcode-mechanic.md)和[通用错误码](../errorcode-universal.md)。
+
+| 错误码ID | 错误信息           |
+| -------- | ----------------- |
+| 202 | Not system application. |
+| 33300001 | Service exception. |
+| 33300002 | Device not connected. |
+| 33300003 | Feature not supported. |
+
+**示例：**
+
+```ts
+let mechId: number = 0;
+let actionType = mechanicManager.ActionType.HEAD_UP;
+try {
+  mechanicManager.doAction(mechId, actionType).then((result) => {
+    console.info(`'result:' ${result}`);
+  })
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
+
 ## mechanicManager.onBatteryLevelChange
 
 onBatteryLevelChange(mechId: number, callback: Callback&lt;BatteryLevelInfo&gt;): void
