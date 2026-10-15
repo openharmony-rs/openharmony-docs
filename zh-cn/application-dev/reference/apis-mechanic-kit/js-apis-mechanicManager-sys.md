@@ -643,6 +643,21 @@ move(mechId: int, params: MoveParams): Promise&lt;Result&gt;
 | 33300002 | Device not connected. |
 | 33300003 | Feature not supported. |
 
+**示例：**
+
+```ts
+let mechId: number = 0;
+let param: mechanicManager.MoveParams = {
+    distance: 0,
+    angle: 0,
+    speedGear: undefined,
+    mode: undefined
+};
+mechanicManager.move(mechId, param).then((result) => {
+    console.info(`'result:' ${result}`);
+});
+```
+
 ## mechanicManager.moveBySpeed
 
 moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&gt;
@@ -658,7 +673,7 @@ moveBySpeed(mechId: int, params: SpeedParams, duration: int): Promise&lt;Result&
 | 参数名     | 类型                    | 必填 | 说明   |
 | ---------- | ---------------------- | ---- | ----- |
 | mechId | number | 是 | 机械体设备ID。 |
-| params | [MoveParams](#moveparams) | 是 | 移动参数。|
+| params | [SpeedParams](#speedparams) | 是 | 移动参数。|
 | mechId | number | 是 | 移动时长，单位ms。 |
 
 **返回值：**
@@ -1016,6 +1031,23 @@ console.info(`'Query the adsorb state successfully, adsorb state:' ${adsorbState
 | distance | number | 否 | 否 | 移动距离（取值限定为整数）。|
 | angle | double | 否 | 否 | 转动角度。|
 | speedGear | [SpeedGear](#speedgear) | 否 | 是 | 速度档位。|
+| mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
+
+
+## SpeedParams
+
+速度控制参数。
+  
+**起始版本**：26.0.0
+
+**系统能力**：SystemCapability.Mechanic.Core
+
+**系统接口**：该接口为系统接口。
+
+| 名称   | 类型 | 只读 | 可选 | 说明|
+| ----- | ---- | ---- | --- | --- |
+| speed | number | 否 | 否 | 转动或移动速度（取值限定为整数）。|
+| angle | double | 否 | 否 | 转动角度。|
 | mode | [MarchingMode](#marchingmode) | 否 | 是 | 行进方式。|
 
 
