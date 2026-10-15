@@ -688,14 +688,14 @@ onBackground(): void {
    检查是否已在module.json5中添加网络权限，添加方法请参考[在配置文件中声明权限](../security/AccessToken/declare-permissions.md#在配置文件中声明权限)。
 
    <!-- @[add_network_permission](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseOfflineWebComp/entry2/src/main/module.json5) -->
-
-``` JSON5
-"requestPermissions":[
-  {
-    "name" : "ohos.permission.INTERNET"
-  }
-],
-```
+   
+   ``` JSON5
+   "requestPermissions":[
+     {
+       "name" : "ohos.permission.INTERNET"
+     }
+   ],
+   ```
 
 
 2. 排查[NodeContainer](../reference/apis-arkui/arkui-ts/ts-basic-components-nodecontainer.md)与节点绑定的逻辑。
