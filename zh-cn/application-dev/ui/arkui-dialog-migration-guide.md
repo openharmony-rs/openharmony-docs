@@ -80,37 +80,41 @@
 
 <!-- @[custom_dialog_before_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogBeforeMigrate.ets) -->
 
- ```typescript
- @CustomDialog
- struct CustomDialogExample {
-   controller?: CustomDialogController
-   build() {
-     Column() {
-       Text('自定义弹窗内容')
-       Button('关闭').onClick(() => { this.controller?.close() })
-     }
-   }
- }
+``` TypeScript
+@CustomDialog
+struct CustomDialogExample {
+  controller?: CustomDialogController
+  build() {
+    Column() {
+      Text('自定义弹窗内容')
+      Button('关闭').onClick(() => { this.controller?.close() })
+    }
+  }
+}
 
- @Entry
- @Component
- struct Index {
-   dialogController: CustomDialogController = new CustomDialogController({
-     builder: CustomDialogExample(),
-     alignment: DialogAlignment.Center,
-     autoCancel: true,
-     maskColor: 0x33000000
-   })
-   build() {
-     Column() {
-       Button('打开弹窗').onClick(() => { this.dialogController.open() })
-     }
-     .width('100%')
-     .height('100%')
-     .justifyContent(FlexAlign.Center)
-   }
- }
- ```
+@Entry
+@Component
+export struct CustomDialogBeforeMigrate {
+  dialogController: CustomDialogController = new CustomDialogController({
+    builder: CustomDialogExample(),
+    alignment: DialogAlignment.Center,
+    autoCancel: true,
+    maskColor: 0x33000000
+  })
+  build() {
+    NavDestination() {
+      Column() {
+        Button('打开弹窗').onClick(() => {
+          this.dialogController.open()
+        })
+      }
+      .width('100%')
+      .height('100%')
+      .justifyContent(FlexAlign.Center)
+    }
+  }
+}
+```
 
  ![迁移前示例图](figures/CustomDialogBeforeMigrate.png)
 
