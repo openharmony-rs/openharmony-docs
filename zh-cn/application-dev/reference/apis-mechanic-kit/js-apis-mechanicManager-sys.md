@@ -974,6 +974,27 @@ connectDevice(addrInfo: AddressInfo, params: ConnectParam): Promise&lt;AttachSta
 | 202 | Not system application. |
 | 33300001 | Service exception. |
 
+**示例：**
+
+```ts
+let addrInfo: mechanicManager.AddressInfo = {
+  address: '123',
+  addressType: mechanicManager.AddressType.BLE_ADDR
+}
+let params: mechanicManager.ConnectParam = {
+  deviceName: "deviceName",
+  custdata: '123',
+  identifier: Number('0x551b9225')
+}
+try {
+  mechanicManager.connectDevice(addrInfo, params)
+    .then((info: mechanicManager.AttachStateChangeInfo) => {
+      console.info(`connectDevice -- info: ${JSON.stringify(info)}`);
+  });
+} catch (e) {
+  console.error(`Code is ${e.code}, message is ${e.message}`);
+}
+```
 
 ## mechanicManager.disconnectDevice
 
