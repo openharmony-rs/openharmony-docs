@@ -1215,6 +1215,38 @@ getFrameNode(): FrameNode | undefined
 | --- | --- |
 | [FrameNode](../js-apis-arkui-frameNode.md) \| undefined | 当Scroller已绑定到Scroll、List、Grid、WaterFlow等滚动类组件时，返回对应组件的FrameNode；如果Scroller未绑定组件，则返回undefined。 |
 
+### getScrollState
+
+getScrollState(): ScrollState
+
+获取滚动组件的当前滚动状态。
+
+> **说明：**
+>
+> 通过鼠标滚轮滚动设置了[scrollSnapAlign](ts-container-list.md#scrollsnapalign10枚举说明)的List时，限位吸附动画滚动期间返回[Fling](ts-container-list.md#scrollstate枚举说明)。
+
+**起始版本：** 26.2.0
+
+**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
+
+**模型约束：** 此接口仅可在Stage模型下使用。
+
+**系统能力：** SystemCapability.ArkUI.ArkUI.Full
+
+**返回值：**
+
+| 类型 | 说明 |
+| --- | --- |
+| [ScrollState](ts-container-list.md#scrollstate枚举说明) | 当前滚动状态。 |
+
+**错误码：**
+
+以下错误码详细介绍请参考[滚动类组件错误码](../errorcode-scroll.md)。
+
+| 错误码ID | 错误信息 |
+| ------- | -------- |
+| 100004   | Controller not bound to a component. |
+
 ## OffsetResult<sup>11+</sup>对象说明
 
 滑动偏移量对象。
@@ -2226,3 +2258,93 @@ struct Index {
   }
 }
 ```
+
+### 示例14（获取滚动状态）
+
+该示例通过[getScrollState](#getscrollstate)接口，实现了获取滚动状态的功能。
+
+从API版本26.2.0开始，新增getScrollState接口。
+
+```ts
+import { BusinessError } from '@kit.BasicServicesKit';
+
+/**
+ * 滚动状态查询示例
+ *
+ * 通过Scroller.getScrollState()获取当前滚动状态，并利用定时器每4ms自动查询一次，实时展示滚动过程中的状态变化。
+ */
+@Entry
+@Component
+struct ScrollExample {
+  // 当前滚动状态（Idle：空闲、Scroll：手指拖动、Fling：惯性滚动）
+  @State scrollStateStr: string = 'Idle';
+  // 滚动控制器，用于绑定Scroll组件并查询滚动状态
+  scroller: Scroller = new Scroller();
+  // 定时器ID，用于页面销毁时清除定时器
+  private timerId: number = -1;
+  // 列表数据
+  private arr: number[] = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+  aboutToAppear() {
+    // 每4ms自动查询一次滚动状态，实现近乎实时的展示
+    this.timerId = setInterval(() => {
+      this.queryScrollState();
+    }, 4);
+  }
+
+  aboutToDisappear() {
+    // 页面销毁时清除定时器，避免资源泄漏
+    clearInterval(this.timerId);
+  }
+
+  // 获取当前滚动状态并更新展示文本
+  private queryScrollState(): void {
+    try {
+      // 通过调用getScrollState函数获取当前滚动状态
+      const state: ScrollState = this.scroller.getScrollState();
+      // 将滚动状态转换为可读文本
+      this.scrollStateStr = this.scrollStateToStr(state);
+    } catch (error) {
+      // Scroller未绑定组件时会抛异常，需要加上try catch保护
+      let err: BusinessError = error as BusinessError;
+      console.error(`Failed to get scrollState. Code: ${err.code}, message: ${err.message}`);
+    }
+  }
+
+  // 将滚动状态枚举转换为可读文本
+  private scrollStateToStr(state: ScrollState): string {
+    return state === ScrollState.Idle ? 'Idle' :
+      state === ScrollState.Scroll ? 'Scroll' : 'Fling';
+  }
+
+  build() {
+    Column() {
+      // 实时展示getScrollState获取到的滚动状态，每4ms自动刷新
+      Text('ScrollState：' + this.scrollStateStr)
+        .fontColor(Color.Black)
+        .height(50)
+
+      Stack({ alignContent: Alignment.TopStart }) {
+        Scroll(this.scroller) {
+          Column() {
+            ForEach(this.arr, (item: number) => {
+              Text(item.toString())
+                .width('90%')
+                .height(150)
+                .backgroundColor(0xFFFFFF)
+                .border({ width: 1, color: 0xCCCCCC })
+                .borderRadius(15)
+                .fontSize(16)
+                .textAlign(TextAlign.Center)
+                .margin({ top: 15 })
+            }, (item: number) => item.toString())
+          }.width('100%')
+        }
+        .edgeEffect(EdgeEffect.Spring, { alwaysEnabled: true, effectEdge: EffectEdge.START })
+      }
+    }
+  }
+}
+```
+
+![scrollGetScrollState](figures/scrollGetScrollState.gif)
