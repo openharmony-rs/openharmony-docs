@@ -1,4 +1,4 @@
-# 弹出框迁移指南（@ohos.arkui.dialog）
+# 弹出框迁移指南
 <!--Kit: ArkUI-->
 <!--Subsystem: ArkUI-->
 <!--Owner: @houguobiao-->
@@ -8,9 +8,9 @@
 
 ## 概述
 
-本文档帮助开发者了解[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[promptAction.showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[promptAction.showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[promptAction.openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog)、[promptAction.openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[promptAction.presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹出框类别提供从老接口到新接口的迁移映射。
+本文档帮助开发者了解[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)新接口与老接口（[CustomDialogController](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box.md#customdialogcontroller)、[showAlertDialog](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showalertdialog)、[showActionSheet](../reference/apis-arkui/arkts-apis-uicontext-uicontext.md#showactionsheet)、[showDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showdialog)、[showActionMenu](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#showactionmenu)、[openCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialog)、[openCustomDialogWithController](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#opencustomdialogwithcontroller18)、[presentCustomDialog](../reference/apis-arkui/arkts-apis-uicontext-promptaction.md#presentcustomdialog18)）的能力差异，并按弹出框类别提供从老接口到新接口的迁移映射。
 
-> 从API版本26.0.1开始，[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)提供统一的Dialog类型声明能力。版本状态以 [`@ohos.arkui.dialog.d.ts`](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
+> 从API版本26.0.1开始，[@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md)提供统一的Dialog类型声明能力。版本状态以 [@ohos.arkui.dialog (弹出框)](../reference/apis-arkui/js-apis-dialog.md) 实际 `@since` 标注为准。
 
 ## 接口说明
 
@@ -41,7 +41,7 @@
 
 ### 属性差异
 
-1. CustomDialog（自定义弹出框）
+- CustomDialog（自定义弹出框）
 
 老接口使用CustomDialogController的open和close接口打开和关闭弹出框，新接口使用DialogPresenter的present和dismiss接口打开和关闭弹出框，具体示例见表格下方。
 
@@ -73,7 +73,7 @@
 | 层级模式 | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` | `levelMode` + `levelUniqueId` + `immersiveMode` + `levelOrder` |
 | 系统材质 | `systemMaterial: SystemUiMaterial` | `systemMaterial: SystemUiMaterial` |
 <!--Del-->
-| 系统接口属性 | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [系统接口](../reference/apis-arkui/ts-methods-custom-dialog-box-sys.md) | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [系统接口](../reference/apis-arkui/js-apis-dialog-sys.md) |
+| 系统接口属性 | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [自定义弹窗 (CustomDialog) (系统接口)](../reference/apis-arkui/arkui-ts/ts-methods-custom-dialog-box-sys.md) | `distortionMode`（@systemapi）、`edgeLightMode`（@systemapi）——见 [@ohos.arkui.dialog (弹出框)(系统接口)](../reference/apis-arkui/js-apis-dialog-sys.md) |
 <!--DelEnd-->
 
 **迁移前示例（老接口）：**
@@ -228,7 +228,7 @@ export struct CustomDialogAfterMigrate {
 
 ![迁移后示例图](figures/CustomDialogAfterMigrate.png)
 
-2. AlertDialog（告警弹出框）
+- AlertDialog（告警弹出框）
 
 老接口使用UIContext.showAlertDialog弹出告警框，新接口使用DialogPresenter.present弹出告警框，具体示例见表格下方。
 
@@ -397,7 +397,7 @@ export struct AlertDialogAfterMigrate {
 
 ![迁移后示例图](figures/AlertDialogAfterMigrate.png)
 
-3. ActionSheet（列表选择弹出框）
+- ActionSheet（列表选择弹出框）
 
 老接口使用UIContext.showActionSheet弹出列表选择弹出框，新接口使用DialogPresenter.present弹出列表选择弹出框，具体示例见表格下方。
 
@@ -557,7 +557,7 @@ export struct ActionSheetAfterMigrate {
 
 ![迁移后示例图](figures/ActionSheetAfterMigrate.png)
 
-4. promptAction.showDialog（对话框）
+- promptAction.showDialog（对话框）
 
 老接口使用promptAction.showDialog弹出对话框，新接口使用DialogPresenter.present弹出对话框，具体示例见表格下方。
 
@@ -711,7 +711,7 @@ export struct ShowDialogAfterMigrate {
 
 ![迁移后示例图](figures/ShowDialogAfterMigrate.png)
 
-5. promptAction.showActionMenu（操作菜单）
+- promptAction.showActionMenu（操作菜单）
 
 老接口使用promptAction.showActionMenu弹出操作菜单，新接口使用DialogPresenter.present弹出操作菜单，具体示例见表格下方。
 
@@ -865,7 +865,7 @@ export struct ActionMenuAfterMigrate {
 
 ![迁移后示例图](figures/ActionMenuAfterMigrate.png)
 
-6. promptAction.presentCustomDialog（自定义弹出框）
+- promptAction.presentCustomDialog（自定义弹出框）
 
 老接口使用promptAction.presentCustomDialog弹出自定义弹出框，新接口使用DialogPresenter.present弹出自定义弹出框，具体示例见表格下方。
 
@@ -1040,7 +1040,7 @@ export struct PresentCustomDialogAfterMigrate {
 
 ![迁移后示例图](figures/PresentCustomDialogAfterMigrate.png)
 
-7. promptAction.openCustomDialogWithController（带控制器的自定义弹出框）
+- promptAction.openCustomDialogWithController（带控制器的自定义弹出框）
 
 老接口使用promptAction.openCustomDialogWithController弹出带控制器的自定义弹出框，新接口使用DialogPresenter.present弹出带控制器的自定义弹出框，具体示例见表格下方。
 
@@ -1225,7 +1225,7 @@ export struct OpenCustomDialogWithControllerAfterMigrate {
 
 ![迁移后示例图](figures/OpenCustomDialogWithControllerAfterMigrate.png)
 
-8. 高级动画参数差异
+- 高级动画参数差异
 
 老接口使用 `customStyle: boolean` 控制是否使用自定义样式，`openAnimation` / `closeAnimation`（`AnimateParam`）控制打开和关闭动画。新接口使用 `dialogTransition: TransitionEffect` 控制内容区动画，`maskTransition: TransitionEffect` 控制蒙层动画。两者参数类型不同，**不存在等效映射**，迁移时需按新接口 `TransitionEffect` 重写动画参数。
 
