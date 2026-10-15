@@ -2372,6 +2372,7 @@ try {
 | rssi     | number      | 否    | 否    | 扫描到的设备信号强度，单位：dBm。|
 | deviceName     | string      | 否    | 否    | 扫描到的设备名称。|
 | deviceClass     | [DeviceClass](#deviceclass)      | 否    | 否    | 扫描到的设备类型。|
+| transport<sup>27+</sup>     | [BluetoothTransport](#bluetoothtransport)      | 否    | 是    | 扫描到的设备的传输类型。|
 
 ## HashAlgorithmType<sup>24+</sup>
 
