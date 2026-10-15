@@ -1680,8 +1680,7 @@ export struct PageLevelDialogBox {
 
 <!-- @[next](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/customdialog/pageleveldialogbox/Next.ets) -->
 
-```typescript
-// Next.ets
+``` TypeScript
 // Next.ets
 @Entry
 @Component
