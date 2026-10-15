@@ -856,7 +856,7 @@ windowClass.on('avoidAreaChange', (data) => {
 
 在PC设备上，如果应用需要在锁屏状态下被启动，需要申请权限`ohos.permission.START_WINDOW_BELOW_LOCK_SCREEN`。
 
-该权限允许应用在PC设备的锁屏状态下被启动。获取该权限后，应用可以在锁屏状态下被启动，PC设备解锁后可直接看到应用启动界面。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
+该权限允许应用在PC设备的锁屏状态下被启动至前台，设备解锁后应用窗口保持前台状态。获取该权限后，应用可以在锁屏状态下被启动，PC设备解锁后可直接看到应用启动界面。权限声明需要在[module.json5配置文件](../quick-start/module-configuration-file.md)的requestPermissions标签中声明，详细声明方式请参考[声明权限](../security/AccessToken/declare-permissions.md)。
 
 > **说明：**
 > 
