@@ -3429,7 +3429,7 @@ try {
 ```
 
 
-### refreshServices<sup>26.2.0+</sup>
+### refreshServices
 
 refreshServices(): Promise&lt;void&gt;
 
@@ -3438,19 +3438,22 @@ client端刷新已连接server端设备的服务缓存。使用Promise异步回�
 - 调用本接口后会清空server端服务的缓存，并异步重新执行服务发现。刷新请求下发到蓝牙服务后Promise即兑现，无需等待服务发现完成；可通过[getServices](#getservices)方法获取刷新后的服务列表。
 - 需先调用[connect](#connect)方法，等GATT profile连接成功后才能使用。
 
-**需要权限**：ohos.permission.ACCESS_BLUETOOTH
 
-**系统能力**：SystemCapability.Communication.Bluetooth.Core
+**起始版本：** 26.2.0
 
-**模型约束**：此接口仅可在Stage模型下使用。
+**模型约束：** 此接口仅可在Stage模型下使用。
 
-**返回值**：
+**需要权限：** ohos.permission.ACCESS_BLUETOOTH
+
+**系统能力：** SystemCapability.Communication.Bluetooth.Core
+
+**返回值：**
 
 | 类型                                       | 说明                          |
 | ---------------------------------------- | --------------------------- |
 | Promise&lt;void&gt; | Promise对象，无返回结果。 |
 
-**错误码**：
+**错误码：**
 
 以下错误码的详细介绍请参见[通用错误码说明文档](../errorcode-universal.md)和[蓝牙服务子系统错误码](errorcode-bluetoothManager.md)。
 
@@ -3461,7 +3464,7 @@ client端刷新已连接server端设备的服务缓存。使用Promise异步回�
 |2900099 | Operation failed.                        |
 |2901003 | The connection is not established.                        |
 
-**示例**：
+**示例：**
 
 ```js
 import { ble, constant } from '@kit.ConnectivityKit';
