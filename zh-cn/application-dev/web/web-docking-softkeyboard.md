@@ -256,26 +256,25 @@ struct WebComponent {
    ArkTS-Sta示例：
 
    <!-- @[soft_keyboard_index_static](https://gitcode.com/openharmony/applications_app_samples/blob/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkWeb-Sta/ManageWebPageInteracts/entry2/src/main/ets/pages/Index.ets) -->
-
-``` TypeScript
-// Index.ets
-'use static'
-import webview from '@ohos.web.webview';
-import { $rawfile, TextAlign, Color, Web, Entry, Text, Row, Column, ColumnOptions, Component } from '@ohos.arkui.component'
-
-@Entry
-@Component
-struct KeyboardAvoidExample {
-  controller: webview.WebviewController = new webview.WebviewController(undefined);
-  build() {
-    Column() {
-      Row().height("50%").width("100%").backgroundColor(Color.Gray)
-      Web({ src: $rawfile("index.html"),controller: this.controller})
-      Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
-    }.width('100%').height("100%")
-  }
-}
-```
+   
+   ``` TypeScript
+   // Index.ets
+   import webview from '@ohos.web.webview';
+   import { $rawfile, TextAlign, Color, Web, Entry, Text, Row, Column, ColumnOptions, Component } from '@ohos.arkui.component'
+   
+   @Entry
+   @Component
+   struct KeyboardAvoidExample {
+     controller: webview.WebviewController = new webview.WebviewController(undefined);
+     build() {
+       Column() {
+         Row().height("50%").width("100%").backgroundColor(Color.Gray)
+         Web({ src: $rawfile("index.html"),controller: this.controller})
+         Text("I can see the bottom of the page").width("100%").textAlign(TextAlign.Center).backgroundColor(Color.Pink).layoutWeight(1)
+       }.width('100%').height("100%")
+     }
+   }
+   ```
 
    ArkWeb组件将跟随ArkUI重新布局，效果如图1和图2所示。
 
