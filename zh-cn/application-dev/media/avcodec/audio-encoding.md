@@ -128,7 +128,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        (void)codec;
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (!IsCallbackUnavailable(codecUserData)) {
+       if (codecUserData != nullptr && !codecUserData->isDestroyed.load()) {
            codecUserData->SignalError();
        }
        AVCODEC_SAMPLE_LOGE("On codec error, error code: %{public}d", errorCode);
@@ -141,7 +141,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (IsCallbackUnavailable(codecUserData)) {
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
            return;
        }
        if (codec == nullptr || buffer == nullptr) {
@@ -163,7 +163,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (IsCallbackUnavailable(codecUserData)) {
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
            return;
        }
        if (codec == nullptr || buffer == nullptr) {

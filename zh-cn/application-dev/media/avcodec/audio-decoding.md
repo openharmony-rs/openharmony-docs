@@ -129,7 +129,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    {
        (void)codec;
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (!IsCallbackUnavailable(codecUserData)) {
+       if (codecUserData != nullptr && !codecUserData->isDestroyed.load()) {
            codecUserData->SignalError();
        }
        AVCODEC_SAMPLE_LOGE("On codec error, error code: %{public}d", errorCode);
@@ -144,7 +144,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
        (void)codec;
        AVCODEC_SAMPLE_LOGI("On codec format change");
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (IsCallbackUnavailable(codecUserData) || format == nullptr) {
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load() || format == nullptr) {
            return;
        }
        // 音频码流信息变化：采样率/声道数/采样格式。应用可据此判断变化并做对应处理。
@@ -170,7 +170,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
            codecUserData->widthStride, codecUserData->heightStride, pixelFormat);
    }
    ```
-   
+
    示例函数同时服务于音视频编解码，其中UpdateVideoOutputInfo()为视频宽高、像素格式等信息的更新逻辑；OnNeedInputBuffer()中的UpdateEncoderFirstInputDescription()为视频编码首帧的信息获取逻辑（内部调用OH_VideoEncoder_GetInputDescription()）。音频解码场景均不会生效，可忽略。
 
    <!-- @[SampleCallback::OnNeedInputBuffer](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/BasicFeature/Media/AVCodec/entry/src/main/cpp/common/sample_callback.cpp) -->
@@ -179,7 +179,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    void SampleCallback::OnNeedInputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (IsCallbackUnavailable(codecUserData)) {
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
            return;
        }
        if (codec == nullptr || buffer == nullptr) {
@@ -199,7 +199,7 @@ target_link_libraries(sample PUBLIC libnative_media_acodec.so)
    void SampleCallback::OnNewOutputBuffer(OH_AVCodec *codec, uint32_t index, OH_AVBuffer *buffer, void *userData)
    {
        auto *codecUserData = static_cast<CodecUserData *>(userData);
-       if (IsCallbackUnavailable(codecUserData)) {
+       if (codecUserData == nullptr || codecUserData->isDestroyed.load()) {
            return;
        }
        if (codec == nullptr || buffer == nullptr) {
