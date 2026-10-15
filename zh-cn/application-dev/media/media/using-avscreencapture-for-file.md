@@ -6,7 +6,7 @@ keywords:
   - 录屏写文件
   - C/C++
   - OH_CAPTURE_FILE
-  - 录屏录制
+  - 屏幕录制
 doctype: guide
 status: active
 ---
