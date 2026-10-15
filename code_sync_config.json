@@ -1066,14 +1066,14 @@
 				"file_name":"openharmony/applications_app_samples/OpenHarmony_feature_sta_20260331/code/DocsSample/ArkData/VectorStore/entry/src/main/ets/pages/crud/vectorStoreCTUD.ets",
 				"functions":[
 					{
-						"end_line":42,
+						"end_line":39,
 						"name":"vector_TS_isVectorSupported",
 						"start_line":16
 					},
 					{
-						"end_line":58,
+						"end_line":55,
 						"name":"vector_TS_getStore",
-						"start_line":23
+						"start_line":22
 					},
 					{
 						"end_line":169,
