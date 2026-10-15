@@ -191,7 +191,7 @@ try {
 
 onHydrateProgress(callback: Callback&lt;HydrateProgress&gt;): void
 
-订阅本实例发起的水合及取消操作的进度事件，适用于文件管理应用展示文件水合进度的场景。
+订阅本实例发起的水合及取消操作的进度事件，适用于文件管理应用展示文件水合进度的场景。使用callback异步回调。
 
 > **说明：**
 >
@@ -213,7 +213,7 @@ onHydrateProgress(callback: Callback&lt;HydrateProgress&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress)&gt; | 是 | 回调函数，返回当前水合进度。 |
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress)&gt; | 是 | 回调函数，在水合任务进度或状态变化时通过此函数进行通知。 |
 
 **错误码：**
 
@@ -254,7 +254,7 @@ try {
 
 offHydrateProgress(callback?: Callback&lt;HydrateProgress&gt;): void
 
-取消订阅本实例的水合进度事件。
+取消订阅本实例的水合进度事件。使用callback异步回调。
 
 > **说明：**
 >
@@ -275,7 +275,7 @@ offHydrateProgress(callback?: Callback&lt;HydrateProgress&gt;): void
 
 | 参数名 | 类型 | 必填 | 说明 |
 | -------- | -------- | -------- | -------- |
-| callback | Callback&lt;[HydrateProgress](#hydrateprogress)&gt; | 否 | 取消当前实例已注册的水合进度回调。 |
+| callback | Callback&lt;[HydrateProgress](#hydrateprogress)&gt; | 否 | 回调函数，取消当前实例已注册的水合进度回调；不传入时效果相同。 |
 
 **错误码：**
 
