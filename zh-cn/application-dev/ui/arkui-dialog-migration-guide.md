@@ -122,13 +122,13 @@ export struct CustomDialogBeforeMigrate {
 
 <!-- @[custom_dialog_after_migrate](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkUISample/ArkuiDialogMigrationSample/entry/src/main/ets/pages/opencustomdialog/CustomDialogAfterMigrate.ets) -->
 
-```typescript
+``` TypeScript
 import { DialogPresenter, DialogBaseAlignment, DialogResult, ComponentContent } from '@kit.ArkUI';
 import { BusinessError } from '@kit.BasicServicesKit';
 
 // 定义参数类，用于向自定义弹出框内容传递数据
 class Params {
-  text: string = '';
+  public text: string = '';
 
   constructor(text: string) {
     this.text = text;
@@ -163,47 +163,49 @@ let dialogPresenter: DialogPresenter | null = null;
 
 @Entry
 @Component
-struct CustomDialogMigrationPage {
+export struct CustomDialogAfterMigrate {
   @State result: string = '';
 
   aboutToAppear(): void {
     // 获取DialogPresenter实例
     dialogPresenter = this.getUIContext().getDialogPresenter();
     // 创建ComponentContent，绑定自定义构建器函数和参数
-    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params("自定义弹窗内容"));
+    contentNode = new ComponentContent(this.getUIContext(), wrapBuilder(buildText), new Params('自定义弹窗内容'));
   }
 
   build() {
-    Row() {
-      Column() {
-        Text('CustomDialog 迁移示例')
-          .fontSize(18)
-          .fontWeight(FontWeight.Bold)
-          .margin({ bottom: 20 })
+    NavDestination() {
+      Row() {
+        Column() {
+          Text('CustomDialog 迁移示例')
+            .fontSize(18)
+            .fontWeight(FontWeight.Bold)
+            .margin({ bottom: 20 })
 
-        Button('老接口：@CustomDialog + CustomDialogController')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showOldCustomDialog();
-          })
+          Button('老接口：@CustomDialog + CustomDialogController')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.showOldCustomDialog();
+            })
 
-        Button('新接口：DialogPresenter.present（自定义弹窗）')
-          .width('90%')
-          .margin({ bottom: 10 })
-          .onClick(() => {
-            this.showNewCustomDialog();
-          })
+          Button('新接口：DialogPresenter.present（自定义弹窗）')
+            .width('90%')
+            .margin({ bottom: 10 })
+            .onClick(() => {
+              this.showNewCustomDialog();
+            })
 
-        if (this.result) {
-          Text(this.result)
-            .fontSize(14)
-            .margin({ top: 10 })
+          if (this.result) {
+            Text(this.result)
+              .fontSize(14)
+              .margin({ top: 10 })
+          }
         }
+        .width('100%')
       }
-      .width('100%')
+      .height('100%')
     }
-    .height('100%')
   }
 
   private showOldCustomDialog(): void {
