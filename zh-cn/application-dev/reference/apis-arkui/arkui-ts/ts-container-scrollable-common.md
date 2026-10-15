@@ -1414,10 +1414,10 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 
 用于自定义限位滚动的距离和吸附位置。目前仅[Grid](ts-container-grid.md)组件的[scrollSnapStrategy](ts-container-grid.md#scrollsnapstrategy)属性支持此接口。开发者实现该接口后，将对象传入scrollSnapStrategy即可使用。
 
-自定义限位滚动分为两个阶段：先按指定的距离惯性滚动，再通过限位动画滚动到目标吸附位置。两个回调分别用于计算这两个阶段的距离和位置：
+自定义限位滚动分为两个阶段：先按指定的距离惯性滚动，再通过限位动画滚动到目标吸附位置。两个回调分别在两个阶段的起始时机调用：
 
-- calculateApproachOffset：惯性滚动开始时调用一次，返回该阶段的滚动距离。
-- calculateSnapOffset：惯性阶段结束、限位动画开始前调用一次，返回最终吸附位置相对内容起点的滚动偏移量。
+- calculateApproachOffset：在惯性滚动开始时调用一次。
+- calculateSnapOffset：在惯性阶段结束、限位动画开始前调用一次。
 
 实现本接口时需要注意：
 
@@ -1431,12 +1431,6 @@ type OnVisibleIndexesChangeCallback = (start: number, end: number) => void
 > - decayOffset表示按默认惯性滚动预测的滑行距离，数值不小于0。
 
 **起始版本：** 26.2.0
-
-**原子化服务API：** 从API版本26.2.0开始，该接口支持在原子化服务中使用。
-
-**模型约束：** 此接口仅可在Stage模型下使用。
-
-**系统能力：** SystemCapability.ArkUI.ArkUI.Full
 
 ### calculateApproachOffset
 
