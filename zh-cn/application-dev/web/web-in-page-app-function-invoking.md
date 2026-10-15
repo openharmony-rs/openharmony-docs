@@ -375,37 +375,36 @@ struct WebComponent {
   非Function等复杂类型作为注册对象方法的参数或返回值，在应用侧和前端页面之间传递。
   <!-- @[the_base_type_is_passed_between_the_app_side_and_front_end_pages](https://gitcode.com/openharmony/applications_app_samples/blob/master/code/DocsSample/ArkWeb/UseFrontendJSApp/entry2/src/main/ets/pages/UsageOfComplexTypes_two.ets) -->
   
-  ```ts
-  // xxx.ets
+  ``` TypeScript
   import { webview } from '@kit.ArkWeb';
   import { BusinessError } from '@kit.BasicServicesKit';
-
+  
   class Student {
-    name: string = '';
-    age: string = '';
+    public name: string = '';
+    public age: string = '';
   }
-
+  
   class TestClass {
     constructor() {
     }
-
-    // 传递的基础类型name:"jeck", age:"12"。
+  
+    // 传递的基础类型name:'jeck', age:'12'。
     test(): Student {
-      let st: Student = { name: "jeck", age: "12" };
+      let st: Student = { name: 'jeck', age: '12' };
       return st;
     }
-
+  
     toString(param: ESObject): void {
-      console.info('Web Component toString' + param["name"]);
+      console.info('Web Component toString' + param['name']);
     }
   }
-
+  
   @Entry
   @Component
   struct Index {
     webviewController: webview.WebviewController = new webview.WebviewController();
     @State testObj: TestClass = new TestClass();
-
+  
     build() {
       Column() {
         Button('refresh')
@@ -413,26 +412,29 @@ struct WebComponent {
             try {
               this.webviewController.refresh();
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('Register JavaScript To Window')
           .onClick(() => {
             try {
-              this.webviewController.registerJavaScriptProxy(this.testObj, "testObjName", ["test", "toString"]);
+              this.webviewController.registerJavaScriptProxy(this.testObj, 'testObjName', ['test', 'toString']);
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
         Button('deleteJavaScriptRegister')
           .onClick(() => {
             try {
-              this.webviewController.deleteJavaScriptRegister("testObjName");
+              this.webviewController.deleteJavaScriptRegister('testObjName');
             } catch (error) {
-              console.error(`ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
+              console.error(
+                `ErrorCode: ${(error as BusinessError).code},  Message: ${(error as BusinessError).message}`);
             }
           })
-        Web({ src: $rawfile('index.html'), controller: this.webviewController })
+        Web({ src: $rawfile('index9.html'), controller: this.webviewController })
       }
     }
   }
